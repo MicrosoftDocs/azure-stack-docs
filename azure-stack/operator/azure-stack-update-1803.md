@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 1802 Update | Microsoft Docs
-description: Learn about what's in the 1802 update for Azure Stack integrated systems, the known issues, and where to download the update.
+title: Azure Stack 1803 Update | Microsoft Docs
+description: Learn about what's in the 1803 update for Azure Stack integrated systems, the known issues, and where to download the update.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -13,23 +13,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 04/03/2018
 ms.author: brenduns
 ms.reviewer: justini
 
 ---
 
-# Azure Stack 1802 update
+# Azure Stack 1803 update
 
 *Applies to: Azure Stack integrated systems*
 
-This article describes the improvements and fixes in the 1802 update package, known issues for this release, and where to download the update. Known issues are divided into issues directly related to the update process and issues with the build (post-installation).
+This article describes the improvements and fixes in the 1803 update package, known issues for this release, and where to download the update. Known issues are divided into issues directly related to the update process and issues with the build (post-installation).
 
 > [!IMPORTANT]        
 > This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
 
 ## Build reference    
-The Azure Stack 1802 update build number is **20180302.1**.  
+The Azure Stack 1803 update build number is **20180329.1**.
 
 
 ## Before you begin    
@@ -38,66 +38,62 @@ The Azure Stack 1802 update build number is **20180302.1**.
 
 
 ### Prerequisites
-- Install the Azure Stack [1712 Update](azure-stack-update-1712.md) before you apply the Azure Stack 1802 update.    
-
-- Install **AzS Hotfix – 1.0.180312.1- Build 20180222.2** before you apply the Azure Stack 1802 update. This hotfix updates Windows Defender, and is available when you download updates for Azure Stack.
-
-  To install the hotfix, follow the normal procedures for [installing updates for Azure Stack](azure-stack-apply-updates.md). The name of the update appears as **AzS Hotfix – 1.0.180312.1**, and includes the following files: 
-    - PUPackageHotFix_20180222.2-1.exe
-    - PUPackageHotFix_20180222.2-1.bin
-    - Metadata.xml
-
-  After uploading these files to a storage account and container, run the install from the Update tile in the admin portal. 
-  
-  Unlike updates to Azure Stack, installing this update does not change the version of Azure Stack.  To confirm this update is installed, view the list of **Installed updates**.
- 
+- Install the Azure Stack [1802 Update](azure-stack-update-1802.md) before you apply the Azure Stack 1803 update.    
 
 
 ### Post-update steps
-*There are no post-update steps for update 1802.*
+*There are no post-update steps for update 1803.*
 
 
-### New features and fixes
+### New features 
 This update includes the following improvements and fixes for Azure Stack.
 
-- **Support is added for the following Azure Storage Service API versions**:
-    - 2017-04-17 
-    - 2016-05-31 
-    - 2015-12-11 
-    - 2015-07-08 
-    
-    For more information, see [Azure Stack Storage: Differences and considerations](/azure/azure-stack/user/azure-stack-acs-differences).
+- **Update Azure Stack secrets** - (Accounts and Certificates). For more information about managing secrets, see [Rotate secrets in Azure Stack](azure-stack-rotate-secrets.md). 
 
-- **Support for larger [Block Blobs](azure-stack-acs-differences.md)**:
-    - The maximum allowable block size is increased from 4 MB to 100 MB.
-    - The maximum blob size is increased from 195 GB to 4.75 TB.  
+- <!-- 1914853 --> **Automatic redirect to HTTPS** when you use HTTP to access the administrator and user portals. This improvement was made based on [UserVoice](https://feedback.azure.com/forums/344565-azure-stack/suggestions/32205385-it-would-be-great-if-there-was-a-automatic-redirec) feedback for Azure Stack. 
 
-- **Infrastructure backup** now appears in the Resource Providers tile, and alerts for backup are enabled. For more information about the Infrastructure Backup Service, see [Backup and data recovery for Azure Stack with the Infrastructure Backup Service](azure-stack-backup-infrastructure-backup.md).
+- <!-- 2202621  --> **Access the Marketplace** – You can now open the Azure Stack Marketplace by using the [+New](https://ms.portal.azure.com/#create/hub) option from within the admin and user portals the same way you do in the Azure portals.
+ 
+- <!-- 2202621 --> **Azure Monitor** - Azure Stack adds [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor) to the admin and user portals. This includes new explorers for metrics and activity logs. To access this Azure Monitor from external networks, port **13012** must be open in firewall configurations. For more information about ports required by Azure Stack, see [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md).
 
-- **Update to the *Test-AzureStack* cmdlet** to improve diagnostics for storage. For more information on this cmdlet, see [Validation for Azure Stack](azure-stack-diagnostic-test.md).
+   Also as part of this change, under **More services**, *Audit logs* now appears as *Activity logs*. The functionality is now consistent with the Azure portal. 
 
-- **Role-Based Access Control (RBAC) improvements** - You can now use RBAC to delegate permissions to Universal User Groups when Azure Stack is deployed with AD FS. To learn more about RBAC, see [Manage RBAC](azure-stack-manage-permissions.md).
-
-- **Support is added for multiple fault domains**.  For more information, see [High availability for Azure Stack](azure-stack-key-features.md#high-availability-for-azure-stack).
-
-- **Various fixes** for performance, stability, security, and the operating system that is used by Azure stack.
-
-<!--
-#### New features
--->
+- <!-- 1664791 --> **Sparse files** -  When you add a New image to Azure Stack, or add an image through marketplace syndication, the image is converted to a sparse file. Images that were added prior to using Azure Stack version 1803 cannot be converted. Instead, you must use marketplace syndication to resubmit those images to take advantage of this feature. 
+ 
+   Sparse files are an efficient file format used to reduce storage space use, and improve I/O.  For more information, see [Fsutil sparse](https://docs.microsoft.com/windows-server/administration/windows-commands/fsutil-sparse) for Windows Server. 
 
 
-<!--
-#### Fixes
--->
+### Fixed issues
+
+- <!-- 1739988 -->  **Fixed** - Internal Load Balancing (ILB) now properly handles MAC addresses for back-end VMs, which causes ILB to drop packets to the back-end network when using Linux instances on the back-end network. ILB works fine with Windows instances on the back-end network. 
+
+- <!-- 1805496 --> **Fixed** - An issue where VPN Connections between Azure Stack would become disconnected due to Azure Stack using different settings for the IKE policy than Azure.  The values now match the values in Azure. 
+
+- <!-- 2209262 --> **Fixed** - The IP issue where VPN Connections was previously visible in the portal; however enabling or toggling IP Forwarding has no effect. The feature is turned on by default and the ability to change this not yet supported.  The control has been removed from the portal. 
+
+- <!-- 1766332 --> **Fixed** - Azure Stack does not support Policy Based VPN Gateways, even though the option appears in the Portal.  The option has been removed from the Portal. 
+
+- <!-- 1868283 --> **Fixed** - Azure Stack now prevents resizing of a virtual machine that is created with dynamic disks. 
+
+- <!-- 1756324--> **Fixed** - Usage data for virtual machines is now separated at hourly intervals. This is consistent with Azure. 
+
+- <!--  2253274 --> **Fixed** - The issue where in the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) cmdlet to view and manage this information.
+
+- **Fixed** - When you create a virtual machine, the message *Unable to display pricing* no longer appears when choosing a size for the VM size.
+
+- **Various fixes** for performance, stability, security, and the operating system that is used by Azure Stack.
+
+
+### Changes
+- The way to change the state of a newly created offer from *private* to *public* or *decommissioned* has changed. For more information, see [Create an offer](azure-stack-create-offer.md).
 
 
 ### Known issues with the update process    
-*There are no known issues for the installation of update 1802.*
+*There are no known issues for the installation of update 1803.*
 
 
 ### Known issues (post-installation)
-The following are post-installation known issues for build  **20180302.1**
+The following are post-installation known issues for build  **20180323.2**.
 
 #### Portal
 - The ability [to open a new support request from the dropdown](azure-stack-manage-portals.md#quick-access-to-help-and-support) from within the administrator portal isn’t available. Instead, use the following link:     
@@ -117,32 +113,25 @@ The following are post-installation known issues for build  **20180302.1**
 
 - In the dashboard of the admin portal, the Update tile fails to display information about updates. To resolve this issue, click on the tile to refresh it.
 
--	In the admin portal you might see a critical alert for the Microsoft.Update.Admin component. The Alert name, description, and remediation all display as:  
+- In the admin portal, you might see a critical alert for the *Microsoft.Update.Admin* component. The Alert name, description, and remediation all display as:  
     - *ERROR - Template for FaultType ResourceProviderTimeout is missing.*
 
-    This alert can be safely ignored. 
-
-- <!-- 2253274 --> In the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) cmdlet to view and  manage this information.
-
-- In both the admin portal and user portal, the Overview blade fails to load when you select the Overview blade for storage accounts that were created with an older API version (example: 2015-06-15). This includes system storage accounts like **updateadminaccount** that is used during patch and update. 
-
-  As a workaround, use PowerShell to run the **Start-ResourceSynchronization.ps1** script to restore access to the storage account details. [The script is available from GitHub]( https://github.com/Azure/AzureStack-Tools/tree/master/Support/scripts), and must run with service administrator credentials on the privileged endpoint. 
-
-- The **Service Health** blade fails to load. When you open the Service Health blade in either the admin or user portal, Azure Stack displays an error and does not load information. This is expected behavior. Although you can select and open Service Health, this feature is not yet available but will be implemented in a future version of Azure Stack.
+  This alert can be safely ignored. 
 
 
-#### Health and monitoring
-There are no known issues after updating to 1802.
+<!-- #### Health and monitoring --> 
 
 #### Marketplace
 - Users can browse the full marketplace without a subscription and can see administrative items like plans and offers. These items are non-functional to users.
 
+
+
 #### Compute
 - Scaling settings for virtual machine scale sets are not available in the portal. As a workaround, you can use [Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set). Because of PowerShell version differences, you must use the `-Name` parameter instead of `-VMScaleSetName`.
 
-- Azure Stack supports using only Fixed type VHDs. Some images offered through the marketplace on Azure Stack use dynamic VHDs but those have been removed. Resizing a virtual machine (VM) with a dynamic disk attached to it leaves the VM in a failed state.
+- <!-- 2290877  --> You cannot scale up a virtual machine scale set (VMSS) that was created when using Azure Stack prior to version 1802. This is due to the change in support for using availability sets with virtual machine scale sets. This support was added with version 1802.  When you attempt to add additional instances to scale a VMSS that was created prior to this support being added, the action fails with the message *Provisioning state failed*. 
 
-  To mitigate this issue, delete the VM without deleting the VM’s disk, a VHD blob in a storage account. Then convert the VHD from a dynamic disk to a fixed disk, and then re-create the virtual machine.
+  To resolve this issue, contact Support to request Hotfix **1.0.180302.4** for Azure Stack. 
 
 - When you create an availability set in the portal by going to **New** > **Compute** > **Availability set**, you can only create an availability set with a fault domain and update domain of 1. As a workaround, when creating a new virtual machine, create the availability set by using PowerShell, CLI, or from within the portal.
 
@@ -159,8 +148,6 @@ There are no known issues after updating to 1802.
 - <!-- 1662991 --> Linux VM diagnostics is not supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings.  
 
 
-
-
 #### Networking
 - After a VM is created and associated with a public IP address, you can't disassociate that VM from that IP address. Disassociation appears to work, but the previously assigned public IP address remains associated with the original VM.
 
@@ -168,9 +155,7 @@ There are no known issues after updating to 1802.
 
   This behavior occurs even if you reassign the IP address to a new VM (commonly referred to as a *VIP swap*). All future attempts to connect through this IP address result in a connection to the originally associated VM, and not to the new one.
 
-- Internal Load Balancing (ILB) improperly handles MAC addresses for back-end VMs, which causes ILB to break when using Linux instances on the Back-End network.  ILB works fine with Windows instances on the Back-End Network.
 
--	The IP Forwarding feature is visible in the portal, however enabling IP Forwarding has no effect. This feature is not yet supported.
 
 - Azure Stack supports a single *local network gateway* per IP address. This is true across all tenant subscriptions. After the creation of the first local network gateway connection, subsequent attempts to create a local network gateway resource with the same IP address are blocked.
 
@@ -178,7 +163,7 @@ There are no known issues after updating to 1802.
 
 - Azure Stack does not support adding additional network interfaces to a VM instance after the VM is deployed. If the VM requires more than one network interface, they must be defined at deployment time.
 
--	<!-- 2096388 --> You cannot use the admin portal to update rules for a network security group. 
+- <!-- 2096388 --> You cannot use the admin portal to update rules for a network security group. 
 
     Workaround for App Service: If you need to remote desktop to the Controller instances, you modify the security rules within the network security groups with PowerShell.  Following are examples of how to *allow*, and then restore the configuration to *deny*:  
     
@@ -242,27 +227,30 @@ There are no known issues after updating to 1802.
         ```
 
 
-
-
-
 #### SQL and MySQL
- - Before proceeding, review the important note in [before you begin](#before-you-begin) near the start of these release notes.
+- Before proceeding, review the important note in [before you begin](#before-you-begin) near the start of these release notes.
+
 - It can take up to one hour before users can create databases in a new SQL or MySQL deployment.
 
 - Only the resource provider is supported to create items on servers that host SQL or MySQL. Items created on a host server that are not created by the resource provider might result in a mismatched state.  
 
 
 > [!NOTE]  
-> After you update to Azure Stack 1802, you can continue to use the SQL and MySQL resource providers that you previously deployed.  We recommend you update SQL and MySQL when a new release becomes available. Like Azure Stack, apply updates to SQL and MySQL resource providers sequentially.  For example, if you use version 1710, first apply version 1711, then 1712, and then update to 1802.      
+> After you update to Azure Stack 1803, you can continue to use the SQL and MySQL resource providers that you previously deployed.  We recommend you update SQL and MySQL when a new release becomes available. Like Azure Stack, apply updates to SQL and MySQL resource providers sequentially.  For example, if you use version 1711, first apply version 1712, then 1802, and then update to 1803.      
 >   
-> The install of update 1802 does not affect the current use of SQL or MySQL resource providers by your users.
+> The install of update 1803 does not affect the current use of SQL or MySQL resource providers by your users.
 > Regardless of the version of the resource providers you use, your users data in their databases is not touched, and remains accessible.    
+
 
 
 #### App Service
 - Users must register the storage resource provider before they create their first Azure Function in the subscription.
 
 - In order to scale out infrastructure (workers, management, front-end roles), you must use PowerShell as described in the release notes for Compute.
+
+
+#### Usage  
+- Usage Public IP address usage meter data shows the same *EventDateTime* value for each record instead of the *TimeDate* stamp that shows when the record was created. Currently, you can’t use this data to perform accurate accounting of public IP address usage.
 
 <!--
 #### Identity
@@ -278,15 +266,10 @@ There are no known issues after updating to 1802.
 
 
 ## Download the update
-You can download the Azure Stack 1802 update package from [here](https://aka.ms/azurestackupdatedownload).
+You can download the Azure Stack 1803 update package from [here](https://aka.ms/azurestackupdatedownload).
 
-
-## More information
-Microsoft has provided a way to monitor and resume updates using the Privileged End Point (PEP) installed with Update 1710.
-
-- See the [Monitor updates in Azure Stack using the privileged endpoint documentation](https://docs.microsoft.com/azure/azure-stack/azure-stack-monitor-update).
 
 ## See also
-
+- To use the Privileged End Point (PEP) to monitor and resume updates, see [Monitor updates in Azure Stack using the privileged endpoint](azure-stack-monitor-update.md).
 - For an overview of the update management in Azure Stack, see [Manage updates in Azure Stack overview](azure-stack-updates.md).
 - For more information about how to apply updates with Azure Stack, see [Apply updates in Azure Stack](azure-stack-apply-updates.md).
