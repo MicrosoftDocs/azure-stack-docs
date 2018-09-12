@@ -1,9 +1,9 @@
 ---
-title: Azure Stack 1808 Update | Microsoft Docs
-description: Learn about what's new in the 1808 update for Azure Stack integrated systems, including the known issues and where to download the update.
+title: Azure Stack 1809 Update | Microsoft Docs
+description: Learn about what's new in the 1809 update for Azure Stack integrated systems, including the known issues and where to download the update.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: justini
 
 ---
 
-# Azure Stack 1808 update
+# Azure Stack 1809 update
 
 *Applies to: Azure Stack integrated systems*
 
-This article describes the contents of the 1808 update package. The update package includes improvements, fixes, and known issues for this version of Azure Stack. This article also includes a link so you can download the update. Known issues are divided into issues directly related to the update process and issues with the build (post-installation).
+This article describes the contents of the 1809 update package. The update package includes improvements, fixes, and known issues for this version of Azure Stack. This article also includes a link so you can download the update. Known issues are divided into issues directly related to the update process and issues with the build (post-installation).
 
 > [!IMPORTANT]  
 > This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
 
 ## Build reference
 
-The Azure Stack 1808 update build number is **1.1808.0.97**.  
+The Azure Stack 1809 update build number is **1.1809.x.xx**.  
 
 ### New features
 
@@ -47,6 +47,8 @@ This update includes the following improvements for Azure Stack.
 - <!-- IS --> **Gallery items for Virtual Machine Scale Sets are now built-in**.  The Virtual Machine Scale Set gallery item is now made available in the user and administrator portals without having to download it.  If you upgrade to 1808 it is available upon completion of upgrade.  
 
 - <!-- IS, ASDK --> **Virtual Machine Scale Set scaling**.  You can use the portal to [scale a Virtual Machine Scale Set](azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (VMSS).    
+
+- <!-- TFS# | IS, ASDK --> **The API version profile 2017-03-09-profile has been updated to 2018-03-01-hybrid**. API profiles specify the Azure resource provider and the API version for Azure REST endpoints. For more information about profiles, see [Manage API version profiles in Azure Stack](/user/azure-stack-version-profiles.md).
 
 - <!-- 2489570 | IS ASDK--> **Support for custom IPSec/IKE policy configurations** for [VPN gateways in Azure Stack](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways).
 
@@ -67,8 +69,6 @@ This update includes the following improvements for Azure Stack.
 - <!-- 1697698  | IS, ASDK --> *Quickstart tutorials* in the User portal dashboard now link to relevant articles in the on-line Azure Stack documentation.
 
 - <!-- 2515955   | IS ,ASDK--> *All services* replaces *More services* in the Azure Stack admin and user portals. You can now use *All services* as an alternative to navigate in the Azure Stack portals the same way you do in the Azure portals.
-
-- <!-- TBD | IS, ASDK --> **+ Create a resource** replaces **+ New** in the Azure Stack admin and user portals.  You can now use *+ Create a resource* as an alternative to navigate in the Azure Stack portals the same way you do in the Azure portals. 
 
 - <!--  TBD – IS, ASDK --> *Basic A* virtual machine sizes are retired for [creating virtual machine scale sets](azure-stack-compute-add-scalesets.md) (VMSS) through the portal. To create a VMSS with this size, use PowerShell or a template.  
 
@@ -102,7 +102,7 @@ This update also contains the mitigation for the speculative execution side chan
 
 ### Prerequisites
 
-- Install the Azure Stack [1807 Update](azure-stack-update-1807.md) before you apply the Azure Stack 1808 update. 
+- Install the Azure Stack [1808 Update](azure-stack-update-1808.md) before you apply the Azure Stack 1809 update. 
 
   > [!TIP]  
   > Subscribe to the following *RRS* or *Atom* feeds to keep up with Azure Stack Hotfixes:
@@ -126,7 +126,7 @@ This update also contains the mitigation for the speculative execution side chan
 
 ### Post-update steps
 
-*There are no post-update steps for update 1808.*
+*There are no post-update steps for update 1809.*
 
 <!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
  - [Link to KB]()  
@@ -195,7 +195,7 @@ The following are post-installation known issues for this build version.
 
    You can safely ignore the warning that says: *You've chosen to use a standard disk on a size that supports premium disks. This could impact operating system performance and is not recommended. Consider using premium storage (SSD) instead.*
 
-- <!-- 2967447 - IS, ASDK --> The virtual machine scale set (VMSS) create experience provides CentOS-based 7.2 as an option for deployment. Because that image is not available on Azure Stack, either select another OS for your deployment or use an ARM template specifying another CentOS image which has been downloaded prior to deployment from the marketplace by the operator.  
+- <!-- 2967447 - IS, ASDK --> The virtual machine scale set (VMSS) create experience provides CentOS-based 7.2 as an option for deployment. Because that image is not available on Azure Stack, either select another OS for your deployment or use an Azure Resource Manager template specifying another CentOS image which has been downloaded prior to deployment from the marketplace by the operator.  
 
 - <!-- 2724873 - IS --> When using the PowerShell cmdlets **Start-AzsScaleUnitNode** or  **Stop-AzsScaleunitNode** to manage scale units, the first attempt to start or stop the scale unit might fail. If the cmdlet fails on the first run, run the cmdlet a second time. The second run should succeed to complete the operation. 
 
@@ -223,7 +223,7 @@ The following are post-installation known issues for this build version.
 
 - <!-- 2529607 - IS ASDK --> During Azure Stack *Secret Rotation*, there is a period in which Public IP Addresses are unreachable for two to five minutes.
 
--	<!-- 2664148 - IS ASDK --> In scenarios where the tenant is accessing their virtual machines by using a S2S VPN tunnel, they might encounter a scenario where connection attempts fail if the on-premise subnet was added to the Local Network Gateway after gateway was already created. 
+-	<!-- 2664148 - IS ASDK --> In scenarios where the tenant is accessing their virtual machines by using a S2S VPN tunnel, they might encounter a scenario where connection attempts fail if the on-premises subnet was added to the Local Network Gateway after gateway was already created. 
 
 
 <!-- ### SQL and MySQL-->
@@ -246,7 +246,7 @@ The following are post-installation known issues for this build version.
 
 
 ## Download the update
-You can download the Azure Stack 1808 update package from [here](https://aka.ms/azurestackupdatedownload).
+You can download the Azure Stack 1809 update package from [here](https://aka.ms/azurestackupdatedownload).
   
 
 ## Next steps
