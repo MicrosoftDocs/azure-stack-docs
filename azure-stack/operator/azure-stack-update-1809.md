@@ -1,9 +1,9 @@
 ---
-title: Azure Stack 1808 Update | Microsoft Docs
-description: Learn about what's new in the 1808 update for Azure Stack integrated systems, including the known issues and where to download the update.
+title: Azure Stack 1809 Update | Microsoft Docs
+description: Learn about what's new in the 1809 update for Azure Stack integrated systems, including the known issues and where to download the update.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: justini
 
 ---
 
-# Azure Stack 1808 update
+# Azure Stack 1809 update
 
 *Applies to: Azure Stack integrated systems*
 
-This article describes the contents of the 1808 update package. The update package includes improvements, fixes, and known issues for this version of Azure Stack. This article also includes a link so you can download the update. Known issues are divided into issues directly related to the update process and issues with the build (post-installation).
+This article describes the contents of the 1809 update package. The update package includes improvements, fixes, and known issues for this version of Azure Stack. This article also includes a link so you can download the update. Known issues are divided into issues directly related to the update process and issues with the build (post-installation).
 
 > [!IMPORTANT]  
 > This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
 
 ## Build reference
 
-The Azure Stack 1808 update build number is **1.1808.0.97**.  
+The Azure Stack 1809 update build number is **1.1809.x.xx**.  
 
 ### New features
 
@@ -48,12 +48,9 @@ This update includes the following improvements for Azure Stack.
 
 - <!-- IS, ASDK --> **Virtual Machine Scale Set scaling**.  You can use the portal to [scale a Virtual Machine Scale Set](azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (VMSS).    
 
+- <!-- TFS# | IS, ASDK --> **The API version profile 2017-03-09-profile has been updated to 2018-03-01-hybrid**. API profiles specify the Azure resource provider and the API version for Azure REST endpoints. For more information about profiles, see [Manage API version profiles in Azure Stack](/user/azure-stack-version-profiles.md).
+
 - <!-- 2489570 | IS ASDK--> **Support for custom IPSec/IKE policy configurations** for [VPN gateways in Azure Stack](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways).
-
-- <!-- | IS ASDK--> **Kubernetes marketplace item**. You can now deploy Kubernetes clusters using the [Kubernetes Marketplace item](azure-stack-solution-template-kubernetes-cluster-add.md). Users can select the Kubernetes item and fill out a few parameters to deploy a Kubernetes cluster to Azure Stack. The purpose of the templates is to make it simple to users to setup dev/test Kubernetes deployments in a few steps.
-
-- <!-- | IS ASDK--> **Blockchain templates**. You can now execute [Ethereum consortium deployments](azure-stack-ethereum.md) on Azure Stack. You can find three new templates in the [Azure Stack Quick Start Templates](https://github.com/Azure/AzureStack-QuickStart-Templates). They allow the user to deploy and configure a multi-member consortium Ethereum network with minimal Azure and Ethereum knowledge. The purpose of the templates is to make it simple to users to setup dev/test Blockchain deployments in a few steps.
-
 
 
  ### Fixed issues
@@ -105,16 +102,19 @@ This update also contains the mitigation for the speculative execution side chan
 
 ### Prerequisites
 
-- Install the Azure Stack [1807 Update](azure-stack-update-1807.md) before you apply the Azure Stack 1808 update. 
+- Install the Azure Stack [1808 Update](azure-stack-update-1808.md) before you apply the Azure Stack 1809 update. 
 
-- Install the latest available [update or hotfix for version 1805](azure-stack-update-1805.md#post-update-steps).  
   > [!TIP]  
   > Subscribe to the following *RRS* or *Atom* feeds to keep up with Azure Stack Hotfixes:
   > - RRS: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss … 
   > - Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom …
 
 
-- Before you start installation of this update, run [Test-AzureStack](azure-stack-diagnostic-test.md) to validate the status of your Azure Stack and resolve any operational issues found, including all warnings and failures. Also review active alerts, and resolve any that require action.
+- Before you start installation of this update, run [Test-AzureStack](azure-stack-diagnostic-test.md) with the following parameters to validate the status of your Azure Stack and resolve any operational issues found, including all warnings and failures. Also review active alerts, and resolve any that require action.  
+
+  ```PowerShell
+  Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
+  ``` 
 
 ### Known issues with the update process
 
@@ -126,7 +126,7 @@ This update also contains the mitigation for the speculative execution side chan
 
 ### Post-update steps
 
-*There are no post-update steps for update 1808.*
+*There are no post-update steps for update 1809.*
 
 <!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
  - [Link to KB]()  
@@ -144,8 +144,6 @@ The following are post-installation known issues for this build version.
 - <!--2760466 – IS  ASDK --> When you install a new Azure Stack environment that runs this version, the alert that indicates *Activation Required* might not display. [Activation](azure-stack-registration.md) is required before you can use marketplace syndication.  
 
 - <!-- TBD - IS ASDK --> The two administrative subscription types that were [introduced with version 1804](azure-stack-update-1804.md#new-features) should not be used. The subscription types are **Metering subscription**, and **Consumption subscription**. These subscription types are visible in new Azure Stack environments beginning with version 1804 but are not yet ready for use. You should continue to use the **Default Provider** subscription type.
-
-- <!-- TBD - IS --> It might not be possible to view compute or storage resources in the administrator portal. The cause of this issue is an error during the installation of the update that causes the update to be incorrectly reported as successful. If this issue occurs, contact Microsoft Customer Support Services for assistance.
 
 - <!-- TBD - IS --> You might see a blank dashboard in the portal. To recover the dashboard, select the gear icon in the upper right corner of the portal, and then select **Restore default settings**.
 
@@ -195,7 +193,7 @@ The following are post-installation known issues for this build version.
 
    You can safely ignore the warning that says: *You've chosen to use a standard disk on a size that supports premium disks. This could impact operating system performance and is not recommended. Consider using premium storage (SSD) instead.*
 
-- <!-- 2967447 - IS, ASDK --> The virtual machine scale set (VMSS) create experience provides CentOS-based 7.2 as an option for deployment. Because that image is not available on Azure Stack, either select another OS for your deployment or use an ARM template specifying another CentOS image which has been downloaded prior to deployment from the marketplace by the operator.  
+- <!-- 2967447 - IS, ASDK --> The virtual machine scale set (VMSS) create experience provides CentOS-based 7.2 as an option for deployment. Because that image is not available on Azure Stack, either select another OS for your deployment or use an Azure Resource Manager template specifying another CentOS image which has been downloaded prior to deployment from the marketplace by the operator.  
 
 - <!-- 2724873 - IS --> When using the PowerShell cmdlets **Start-AzsScaleUnitNode** or  **Stop-AzsScaleunitNode** to manage scale units, the first attempt to start or stop the scale unit might fail. If the cmdlet fails on the first run, run the cmdlet a second time. The second run should succeed to complete the operation. 
 
@@ -223,7 +221,7 @@ The following are post-installation known issues for this build version.
 
 - <!-- 2529607 - IS ASDK --> During Azure Stack *Secret Rotation*, there is a period in which Public IP Addresses are unreachable for two to five minutes.
 
--	<!-- 2664148 - IS ASDK --> In scenarios where the tenant is accessing their virtual machines by using a S2S VPN tunnel, they might encounter a scenario where connection attempts fail if the on-premise subnet was added to the Local Network Gateway after gateway was already created. 
+-	<!-- 2664148 - IS ASDK --> In scenarios where the tenant is accessing their virtual machines by using a S2S VPN tunnel, they might encounter a scenario where connection attempts fail if the on-premises subnet was added to the Local Network Gateway after gateway was already created. 
 
 
 <!-- ### SQL and MySQL-->
@@ -246,7 +244,7 @@ The following are post-installation known issues for this build version.
 
 
 ## Download the update
-You can download the Azure Stack 1808 update package from [here](https://aka.ms/azurestackupdatedownload).
+You can download the Azure Stack 1809 update package from [here](https://aka.ms/azurestackupdatedownload).
   
 
 ## Next steps
