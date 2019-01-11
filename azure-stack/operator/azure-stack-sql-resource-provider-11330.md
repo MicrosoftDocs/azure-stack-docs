@@ -13,23 +13,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/09/2019
+ms.date: 01/09/2019
 ms.author: jeffgilb
 ms.reviewer: georgel
 ---
 
-# SQL resource provider 1.1.30.0 release notes
+# SQL resource provider 1.1.33.0 release notes
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-These release notes describe the improvements and known issues in SQL resource provider version 1.1.30.0.
+These release notes describe the improvements and known issues in SQL resource provider version 1.1.33.0.
 
 ## Build reference
 Download the SQL resource provider binary and then run the self-extractor to extract the contents to a temporary directory. The resource provider has a minimum corresponding Azure Stack build. The minimum Azure Stack release version required to install this version of the SQL resource provider is listed below:
 
 > |Minimum Azure Stack version|SQL resource provider version|
 > |-----|-----|
-> |Version 1808 (1.1808.0.97)|[1.1.30.0](https://aka.ms/azurestacksqlrp11300)|
+> |Version 1808 (1.1808.0.97)|[SQL RP version 1.1.33.0](https://aka.ms/azurestacksqlrp11330)|  
 > |     |     |
 
 > [!IMPORTANT]
@@ -38,17 +38,15 @@ Download the SQL resource provider binary and then run the self-extractor to ext
 ## New features and fixes
 This version of the Azure Stack SQL resource provider includes the following improvements and fixes:
 
-- **Telemetry enabled for SQL resource provider deployments**. Telemetry collection has been enabled for SQL resource provider deployments. Telemetry collected includes resource provider deployment, start and stop times, exit status, exit messages, and error details (if applicable).
-
-- **TLS 1.2 encryption update**. Enabled TLS 1.2-only support for resource provider communication with internal Azure Stack components. 
-
 ### Fixes
+- **SQL resource provider portal extension might choose the wrong subscription**. The SQL resource provider uses Azure Resource Manager calls to determine the first service admin subscription to use, which might not be the *Default Provider Subscription*. If that happens, the SQL resource provider does not work normally. 
 
-- **SQL resource provider Azure Stack PowerShell compatability**. The SQL resource provider has been updated to work with the Azure Stack 2018-03-01-hybrid PowerShell profile and to provide compatibility with AzureRM 1.3.0 and later.
+- **SQL hosting server does not list hosted databases.** User-created databases might not be listed when viewing tenant resources for SQL hosting servers.
 
-- **SQL login change password blade**. Fixed an issue where the password can’t be changed on the change password blade. Removed links from password change notifications.
+- **Previous SQL resource provider (1.1.30.0) deployment could fail if TLS 1.2 is not enabled**. Updated the SQL resource provider 1.1.33.0 to enable TLS 1.2 when deploying the resource provider, updating the resource provider, or rotating secrets. 
 
-- **SQL hosting server settings blade update**. Fixed an issue where the settings blade was incorrectly titled as “Password”.
+- **SQL resource provider secret rotation fails**. Fixed issue resulting in the following error code when rotating secrets:
+` New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
 
 ## Known issues 
 
@@ -64,23 +62,10 @@ This version of the Azure Stack SQL resource provider includes the following imp
 
     **Workaround**: Always use different logins for different databases under the same subscription.
 
-- **TLS 1.2 support requirement**. If you try to deploy or update the SQL resource provider from a computer where TLS 1.2 is not enabled, the operation might fail. Run the following PowerShell command on the computer being used to deploy or update the resource provider to verify that TLS 1.2 is returned as supported:
-
-  ```powershell
-  [System.Net.ServicePointManager]::SecurityProtocol
-  ```
-
-  If **Tls12** is not included in the output of the command, TLS 1.2 is not enabled on the computer.
-
-    **Workaround**: Run the following PowerShell command to enable TLS 1.2 and then start the resource provider deployment or update script from the same PowerShell session:
-
-    ```powershell
-    [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
-    ```
 - **SQL resource provider fails to add SQL Server Always On listener**. When using the listener IP address of the SQL Server Always On Listener, the SQL resource provider VM cannot resolve the listener’s host name.
 
     **Workaround**: Ensure that DNS works correctly to resolve the listener IP to listener host name.
-    
+
 ### Known issues for Cloud Admins operating Azure Stack
 Refer to the documentation in the [Azure Stack Release Notes](azure-stack-servicing-policy.md).
 
