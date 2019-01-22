@@ -47,9 +47,9 @@ Azure Stack offers the VPN gateway SKUs shown in the following table.
 
 |	| VPN gateway throughput |VPN gateway maximum IPsec tunnels |
 |-------|-------|-------|
-|**Basic SKU** 	| 100 Mbps	| 10	|
-|**Standard SKU** 		    | 100 Mbps 	| 10	|
-|**High Performance SKU** | 200 Mbps	| 5	|
+|**Basic SKU** 	| 100 Mbps	| 20	|
+|**Standard SKU** 		    | 100 Mbps 	| 20	|
+|**High Performance SKU** | 200 Mbps	| 10	|
 
 ### Resizing gateway SKUs
 
@@ -119,7 +119,7 @@ The following table lists the requirements for VPN gateways.
 |--|--|--|--|--|
 | **Site-to-Site connectivity (S2S connectivity)** | Not Supported | RouteBased VPN configuration | RouteBased VPN configuration | RouteBased VPN configuration |
 | **Authentication method**  | Not Supported | Pre-shared key for S2S connectivity  | Pre-shared key for S2S connectivity  | Pre-shared key for S2S connectivity  |   
-| **Maximum number of S2S connections**  | Not Supported | 10 | 10| 5|
+| **Maximum number of S2S connections**  | Not Supported | 20 | 20| 10|
 |**Active routing support (BGP)** | Not supported | Not supported | Supported | Supported |
 
 ### Gateway subnet
@@ -140,7 +140,7 @@ Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.
 ```
 
 > [!IMPORTANT]
-> When working with gateway subnets, avoid associating a network security group (NSG) to the gateway subnet. Associating a network security group to this subnet can cause your VPN gateway to stop functioning as expected. For more information about network security groups, see [What is a network security group?](../virtual-network/virtual-networks-nsg.md).
+> When working with gateway subnets, avoid associating a network security group (NSG) to the gateway subnet. Associating a network security group to this subnet can cause your VPN gateway to stop functioning as expected. For more information about network security groups, see [What is a network security group?](../../virtual-network/virtual-networks-nsg.md).
 
 ### Local network gateways
 
@@ -155,7 +155,7 @@ New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg
 -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
 ```
 
-Sometimes you need to modify the local network gateway settings; for example, when you add or modify the address range, or if the IP address of the VPN device changes. See [Modify local network gateway settings using PowerShell](../vpn-gateway/vpn-gateway-modify-local-network-gateway.md).
+Sometimes you need to modify the local network gateway settings; for example, when you add or modify the address range, or if the IP address of the VPN device changes. See [Modify local network gateway settings using PowerShell](../../vpn-gateway/vpn-gateway-modify-local-network-gateway.md).
 
 ## IPsec/IKE parameters
 
@@ -189,4 +189,4 @@ Unlike Azure, which supports multiple offers as both an initiator and a responde
 
 ## Next steps
 
-- [Connect using ExpressRoute](azure-stack-connect-expressroute.md)
+* [Connect using ExpressRoute](../azure-stack-connect-expressroute.md)
