@@ -15,6 +15,7 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2019
 ms.author: sethm
+ms.lastreviewed: 01/04/2019
 ---
 
 # About VPN gateway for Azure Stack
@@ -29,7 +30,7 @@ When you create a virtual network gateway, you specify the gateway type that you
 
 Each virtual network can have two virtual network gateways, but only one of each type. Depending on the settings that you choose, you can create multiple connections to a single VPN gateway. An example is a multi-site connection configuration.
 
-Before you create and configure VPN Gateways for Azure Stack, review the [considerations for Azure Stack networking](user/azure-stack-network-differences.md) to learn how configurations for Azure Stack differ from Azure.
+Before you create and configure VPN Gateways for Azure Stack, review the [considerations for Azure Stack networking](azure-stack-network-differences.md) to learn how configurations for Azure Stack differ from Azure.
 
 >[!NOTE]
 >In Azure, the bandwidth throughput for the VPN gateway SKU you choose must be divided across all connections that are connected to the gateway. In Azure Stack however, the bandwidth value for the VPN gateway SKU is applied to each connection resource that is connected to the gateway.
