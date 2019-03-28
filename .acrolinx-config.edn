@@ -1,0 +1,1 @@
+{:allowed-branchname-matches ["^master$" "^release..*"]}
