@@ -2,7 +2,7 @@
   "docsets_to_publish": [
     {
       "docset_name": "AzureStack",
-      "build_source_folder": ".",
+      "build_source_folder": "azure-stack",
       "build_output_subfolder": "AzureStack",
       "locale": "en-us",
       "monikers": [],
