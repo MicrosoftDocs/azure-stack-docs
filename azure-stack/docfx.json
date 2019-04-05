@@ -22,7 +22,8 @@
       {
         "files": [
           "**/*.png",
-          "**/*.jpg"
+          "**/*.jpg",
+          "**/*.svg"
         ],
         "exclude": [
           "**/obj/**",
@@ -37,7 +38,13 @@
     "globalMetadata": {
       "breadcrumb_path": "/azure-stack/breadcrumb/toc.json",
       "extendBreadcrumb": true,
-      "feedback_system": "None"
+      "feedback_system": "None",
+      "_op_documentIdPathDepotMapping": {
+        "./": {
+          "depot_name": "Azure.azure-documents",
+          "folder_relative_path_in_docset": "articles/azure-stack/"
+        }
+      }          
     },
     "fileMetadata": {},
     "template": [],
