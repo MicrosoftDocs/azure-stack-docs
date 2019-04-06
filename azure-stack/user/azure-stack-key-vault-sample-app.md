@@ -27,10 +27,10 @@ Follow the steps in this article to run a sample application named **HelloKeyVau
 
 ## Prerequisites
 
-You can install the following prerequisites from the Azure Stack [Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), or from a Windows-based external client if you are [connected through VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+You can install the following prerequisites from the Azure Stack [Development Kit](../asdk/asdk-connect.md#connect-to-azure-stack-with-remote-desktop), or from a Windows-based external client if you are [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-with-vpn):
 
-* Install [Azure Stack-compatible Azure PowerShell modules](azure-stack-powershell-install.md).
-* Download the [tools required to work with Azure Stack](azure-stack-powershell-download.md).
+* Install [Azure Stack-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
+* Download the [tools required to work with Azure Stack](../operator/azure-stack-powershell-download.md).
 
 ## Create and get the key vault and application settings
 

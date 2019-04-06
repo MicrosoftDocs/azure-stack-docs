@@ -54,9 +54,9 @@
 - name: Related
   items:
   - name: Azure Stack Operator Documentation
-    href: /azure/azure-stack/
+    href: /azure-stack/operator
   - name: Azure Stack User Documentation
-    href: /azure/azure-stack/user/
+    href: /azure-stack/user/
 - name: Resources
   items:
   - name: Azure Stack roadmap
@@ -70,4 +70,4 @@
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: Training and certification
-    href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
+    href: /azure-stack/azure-stack-train-and-cert

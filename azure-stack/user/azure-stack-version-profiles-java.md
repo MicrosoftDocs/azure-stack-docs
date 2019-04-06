@@ -24,7 +24,7 @@ ms.lastreviewed: 09/28/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-The Java SDK for the Azure Stack Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include compute, networking, storage, app services, and [KeyVault](../../key-vault/key-vault-whatis.md). The Java SDK incorporates API profiles by including dependencies in the Pom.xml file that loads the correct modules in the .java file. However, you can add multiple profiles as dependencies, such as the **2018-03-01-hybrid**, or **latest**, as the Azure profile. Using these dependencies loads the correct module so that when you create your resource type, you are able to select which API version from those profiles you want to use. This enables you to use the latest versions in Azure, while developing against the most current API versions for Azure Stack. Using the Java SDK enables a true hybrid cloud developer experience. API profiles in the Java SDK enable hybrid cloud development by helping you switch between global Azure resources and resources in Azure Stack.
+The Java SDK for the Azure Stack Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include compute, networking, storage, app services, and [KeyVault](/azure/key-vault/key-vault-whatis). The Java SDK incorporates API profiles by including dependencies in the Pom.xml file that loads the correct modules in the .java file. However, you can add multiple profiles as dependencies, such as the **2018-03-01-hybrid**, or **latest**, as the Azure profile. Using these dependencies loads the correct module so that when you create your resource type, you are able to select which API version from those profiles you want to use. This enables you to use the latest versions in Azure, while developing against the most current API versions for Azure Stack. Using the Java SDK enables a true hybrid cloud developer experience. API profiles in the Java SDK enable hybrid cloud development by helping you switch between global Azure resources and resources in Azure Stack.
 
 ## Java and API version profiles
 
@@ -62,7 +62,7 @@ Use the following steps to install the Java SDK:
 
 1. Follow the official instructions to install Git. For instructions, see [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-2. Follow the instructions to install the [Java SDK](https://zulu.org/download/) and [Maven](https://maven.apache.org/). The correct version is version 8 of the Java Developer Kit. The correct Apache Maven is version 3.0 or above. The JAVA_HOME environment variable must be set to the install location of the Java Development Kit to complete the quickstart. For more information, see [Create your first function with Java and Maven](../../azure-functions/functions-create-first-java-maven.md).
+2. Follow the instructions to install the [Java SDK](https://zulu.org/download/) and [Maven](https://maven.apache.org/). The correct version is version 8 of the Java Developer Kit. The correct Apache Maven is version 3.0 or above. The JAVA_HOME environment variable must be set to the install location of the Java Development Kit to complete the quickstart. For more information, see [Create your first function with Java and Maven](/azure/azure-functions/functions-create-first-java-maven).
 
 3. To install the correct dependency packages, open the Pom.xml file in your Java application. Add a dependency, as shown in the following code:
 

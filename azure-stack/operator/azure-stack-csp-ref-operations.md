@@ -41,7 +41,7 @@ You can associate a single Azure subscription with a tenant. If you try to add a
 
 The registration cmdlets require that you specify an API profile when running PowerShell. API profiles represent a set of Azure resource providers and their API versions. They help you use the right version of the API when interacting with multiple Azure clouds. For instance, you work with multiple clouds when working with global Azure and Azure Stack. Profiles specify a name that matches their release date. You will need to use the **2017-09-03** profile.
 
-For more information about Azure Stack and API Profiles, see [Manage API version profiles in Azure Stack](user/azure-stack-version-profiles.md). For instructions on getting up and running with API Profile with PowerShell, see [Use API version profiles for PowerShell in Azure Stack](user/azure-stack-version-profiles-powershell.md).
+For more information about Azure Stack and API Profiles, see [Manage API version profiles in Azure Stack](../user/azure-stack-version-profiles.md). For instructions on getting up and running with API Profile with PowerShell, see [Use API version profiles for PowerShell in Azure Stack](../user/azure-stack-version-profiles-powershell.md).
 
 ### Parameters
 

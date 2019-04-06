@@ -119,7 +119,7 @@ This section walks you through the steps to create a site-to-site VPN connection
 ![site-to-site-policy](media/azure-stack-vpn-s2s/site-to-site.png)
 
 For more detailed step-by-step instructions for creating a site-to-site VPN
-connection, see [Create a site-to-site VPN connection](../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md).
+connection, see [Create a site-to-site VPN connection](/azure/vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell).
 
 ### Prerequisites
 
@@ -127,7 +127,7 @@ Before you begin, ensure that you have the following prerequisites:
 
 - An Azure subscription. If you don't already have an Azure subscription, you can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), or sign up for a [free account](https://azure.microsoft.com/pricing/free-trial/).
 
-- The Azure Resource Manager PowerShell cmdlets. See [Install PowerShell for Azure Stack](../azure-stack-powershell-install.md) for more information about installing the PowerShell cmdlets.
+- The Azure Resource Manager PowerShell cmdlets. See [Install PowerShell for Azure Stack](../../operator/azure-stack-powershell-install.md) for more information about installing the PowerShell cmdlets.
 
 ### Step 1 - Create the virtual network, VPN gateway, and local network gateway
 

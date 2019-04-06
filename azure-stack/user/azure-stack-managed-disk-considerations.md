@@ -22,7 +22,7 @@ ms.lastreviewed: 03/23/2019
 
 # Azure Stack managed disks: differences and considerations
 
-This article summarizes the known differences between [Azure Stack managed disks](azure-stack-manage-vm-disks.md) and [managed disks for Azure](../../virtual-machines/windows/managed-disks-overview.md). To learn about high-level differences between Azure Stack and Azure, see the [Key considerations](azure-stack-considerations.md) article.
+This article summarizes the known differences between [Azure Stack managed disks](azure-stack-manage-vm-disks.md) and [managed disks for Azure](/azure/virtual-machines/windows/managed-disks-overview). To learn about high-level differences between Azure Stack and Azure, see the [Key considerations](azure-stack-considerations.md) article.
 
 Managed disks simplifies disk management for IaaS VMs by managing the [storage accounts](../azure-stack-manage-storage-accounts.md) associated with the VM disks.
 
@@ -148,13 +148,13 @@ You can use the portal, PowerShell or CLI to create the managed image. Follow th
 
 Make sure to generalize your VM correctly before performing this step. After generalization, you can no longer use this VM. Creating a VM from an image that has not been properly generalized will lead to a **VMProvisioningTimeout** error.
 
-Follow the instructions [here](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account) to create a managed image from a generalized VHD in a storage account. You can use this image going forward to create managed VMs.
+Follow the instructions [here](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-vhd-in-a-storage-account) to create a managed image from a generalized VHD in a storage account. You can use this image going forward to create managed VMs.
 
 #### Case 2: Create managed VM from managed image using Powershell
 
-After creating an image from an existing managed disk VM using the script [here](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-managed-disk-using-powershell), the following example script creates a similar Linux VM from an existing image object:
+After creating an image from an existing managed disk VM using the script [here](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-managed-disk-using-powershell), the following example script creates a similar Linux VM from an existing image object:
 
-Azure Stack PowerShell module 1.7.0 or later: follow the instructions [here](../../virtual-machines/windows/create-vm-generalized-managed.md).
+Azure Stack PowerShell module 1.7.0 or later: follow the instructions [here](/azure/virtual-machines/windows/create-vm-generalized-managed).
 
 Azure Stack PowerShell module 1.6.0 or earlier:
 
@@ -208,7 +208,7 @@ Add-AzureRmVMNetworkInterface -Id $nic.Id
 New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-You can also use the portal to create a VM from a managed image. For more information, see the Azure managed image articles [Create a managed image of a generalized VM in Azure](../../virtual-machines/windows/capture-image-resource.md) and [Create a VM from a managed image](../../virtual-machines/windows/create-vm-generalized-managed.md).
+You can also use the portal to create a VM from a managed image. For more information, see the Azure managed image articles [Create a managed image of a generalized VM in Azure](/azure/virtual-machines/windows/capture-image-resource) and [Create a VM from a managed image](/azure/virtual-machines/windows/create-vm-generalized-managed).
 
 ## Configuration
 

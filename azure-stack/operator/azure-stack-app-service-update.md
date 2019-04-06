@@ -98,7 +98,7 @@ To upgrade your deployment of App Service on Azure Stack, follow these steps:
 
 ## Next steps
 
-You can also try out other [platform as a service (PaaS) services](azure-stack-tools-paas-services.md).
+You can also try out other [platform as a service (PaaS) services](azure-stack-offer-services-overview.md).
 
 * [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md)
 * [MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md)

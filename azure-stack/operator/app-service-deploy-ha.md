@@ -50,7 +50,7 @@ Before using this template, ensure that the following [Azure Stack marketplace i
 ### Deploy the App Service infrastructure
 Use the steps in this section to create a custom deployment using the **appservice-fileshare-sqlserver-ha** Azure Stack Quickstart template.
 
-1. [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+1. [!INCLUDE [azs-admin-portal](../includes/azs-admin-portal.md)]
 
 2. Select **\+** **Create a resource** > **Custom**, and then **Template deployment**.
 
@@ -89,7 +89,7 @@ Ensure you record each of these output values:
 
 Follow these steps to discover the template output values:
 
-1. [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+1. [!INCLUDE [azs-admin-portal](../includes/azs-admin-portal.md)]
 
 2. In the administration portal, select **Resource groups** and then the name of the resource group you created for the custom deployment (**app-service-ha** in this example). 
 

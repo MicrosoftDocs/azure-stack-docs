@@ -27,7 +27,7 @@ sections:
     - image: 
         src: https://docs.microsoft.com/media/common/i_deploy.svg
       text: Deploy Azure Stack Development Kit
-      href: azure-stack-deploy-overview.md
+      href: asdk/asdk-download.md
 - title: Step-by-Step Tutorials
   items:
   - type: paragraph

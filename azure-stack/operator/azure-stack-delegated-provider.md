@@ -160,4 +160,4 @@ This is useful when:
 
 ## Next steps
 
-* [Provision a VM](azure-stack-provision-vm.md)
+* [Provision a VM](../user/azure-stack-create-vm-template)

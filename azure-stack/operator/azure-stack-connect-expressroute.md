@@ -84,7 +84,7 @@ To set up the Azure Stack environment for the first tenant, use the steps in fol
 
 Before you start configuring Azure Stack, you need:
 
-* An Azure Stack integrated system deployment or an Azure Stack Development Kit (ASDK) deployment. For information about deploying the ASDK, see the [Azure Stack Development Kit deployment quickstart](azure-stack-deploy-overview.md).
+* An Azure Stack integrated system deployment or an Azure Stack Development Kit (ASDK) deployment. For information about deploying the ASDK, see the [Azure Stack Development Kit deployment quickstart](../asdk/asdk-download.md).
 * An offer in Azure Stack that your users can subscribe to. For more information, see [plans, offers, and subscriptions](azure-stack-plan-offer-quota-overview.md).
 
 ### Create network resources in Azure Stack
@@ -317,7 +317,7 @@ The example Azure network infrastructure is configured as follows:
 1. Create a subnet using the 192.168.2.0/25 address range, and add a gateway subnet using the 192.168.2.128/27 address range.
 1. Create the spoke VNet and subnet using the 10.100.0.0/16 address range.
 
-For more information about creating virtual networks in Azure, see [Create a virtual network](../virtual-network/manage-virtual-network.md#create-a-virtual-network).
+For more information about creating virtual networks in Azure, see [Create a virtual network](/azure/virtual-network/manage-virtual-network#create-a-virtual-network).
 
 ### Configure an ExpressRoute circuit
 
@@ -340,7 +340,7 @@ To link the ExpressRoute circuit to the hub VNet, follow the steps in [Connect a
 
 ### Peer the VNets
 
-Peer the hub and spoke VNets using the steps in [Create a virtual network peering using the Azure portal](../virtual-network/virtual-networks-create-vnetpeering-arm-portal.md). When configuring VNet peering, make sure you use the following options:
+Peer the hub and spoke VNets using the steps in [Create a virtual network peering using the Azure portal](/azure/virtual-network/virtual-networks-create-vnetpeering-arm-portal). When configuring VNet peering, make sure you use the following options:
 
 * From the hub to the spoke, **Allow gateway transit**.
 * From the spoke to the hub, **Use remote gateway**.
@@ -630,4 +630,4 @@ If you want to know how much traffic is passing through your connection, you can
 
 ## Next steps
 
-[Deploy apps to Azure and Azure Stack](azure-stack-solution-pipeline.md)
+[Deploy apps to Azure and Azure Stack](..user/azure-stack-solution-pipeline.md )

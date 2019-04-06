@@ -301,5 +301,5 @@ To run the sample, ensure that you have installed Ruby. If you are using Visual 
 
 ## Next steps
 
-- [Install PowerShell for Azure Stack](azure-stack-powershell-install.md)
+- [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md)
 - [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md)  

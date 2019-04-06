@@ -36,7 +36,7 @@ You can create a Windows Server 2016 virtual machine by using Azure Stack PowerS
 
 * Make sure that your Azure Stack operator has added the **Windows Server 2016** image to the Azure Stack marketplace.
 
-* Azure Stack requires a specific version of Azure PowerShell to create and manage the resources. If you don't have PowerShell configured for Azure Stack, follow the steps to [install](azure-stack-powershell-install.md) PowerShell.
+* Azure Stack requires a specific version of Azure PowerShell to create and manage the resources. If you don't have PowerShell configured for Azure Stack, follow the steps to [install](../operator/azure-stack-powershell-install.md) PowerShell.
 
 * With the Azure Stack PowerShell set up, you will need to connect to your Azure Stack environment. For instruction, see [Connect to Azure Stack with PowerShell as a user](azure-stack-powershell-configure-user.md).
 

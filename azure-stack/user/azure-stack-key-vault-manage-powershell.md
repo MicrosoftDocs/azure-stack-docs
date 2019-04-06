@@ -35,7 +35,7 @@ You can manage Key Vault in Azure Stack using PowerShell. Learn how to use Key V
 ## Prerequisites
 
 * You must subscribe to an offer that includes the Azure Key Vault service.
-* [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).
+* [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md).
 * [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md).
 
 ## Enable your tenant subscription for Key Vault operations
@@ -176,5 +176,5 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalNa
 
 ## Next steps
 
-* [Deploy a VM with a password stored in Key Vault](azure-stack-kv-deploy-vm-with-secret.md)
-* [Deploy a VM with a certificate stored in Key Vault](azure-stack-kv-push-secret-into-vm.md)
+* [Deploy a VM with a password stored in Key Vault](azure-stack-key-vault-deploy-vm-with-secret.md)
+* [Deploy a VM with a certificate stored in Key Vault](azure-stack-key-vault-push-secret-into-vm.md)

@@ -55,7 +55,7 @@ This tutorial also assumes that you have an Azure subscription. If you don't hav
 
 Before you start this tutorial, make sure you can meet the following requirements:
 
-- An Azure Stack Development Kit (ASDK) or a subscription on an Azure Stack Integrated System. To deploy an Azure Stack Development Kit, follow the instructions in [Deploy the ASDK using the installer](../asdk/asdk-deploy.md).
+- An Azure Stack Development Kit (ASDK) or a subscription on an Azure Stack Integrated System. To deploy an Azure Stack Development Kit, follow the instructions in [Deploy the ASDK using the installer](../asdk/asdk-install).
 - Your Azure Stack installation should have the following installed:
   - The Azure App Service. Work with your Azure Stack Operator to deploy and configure the Azure App Service on your environment. This tutorial requires the  App Service have at least one (1) available dedicated worker role.
   - A Windows Server 2016 image

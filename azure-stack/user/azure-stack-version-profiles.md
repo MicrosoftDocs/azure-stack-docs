@@ -91,6 +91,6 @@ The Python SDK supports API version profiles to target different cloud platforms
 
 ## Next steps
 
-* [Install PowerShell for Azure Stack](azure-stack-powershell-install.md)
+* [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md)
 * [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md)
 * [Review details about resource provider API versions supported by the profiles](azure-stack-profiles-azure-resource-manager-versions.md).

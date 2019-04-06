@@ -104,4 +104,4 @@ There are two ways to change the state of an offer:
 ## Next steps
 
 - [Create subscriptions](azure-stack-subscribe-plan-provision-vm.md)
-- [Provision a virtual machine](azure-stack-provision-vm.md)
+- [Provision a virtual machine](../user/azure-stack-create-vm-template)

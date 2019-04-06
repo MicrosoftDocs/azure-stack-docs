@@ -37,7 +37,7 @@ See [Azure Marketplace items for Azure Stack](azure-stack-marketplace-azure-item
 If Azure Stack connects to the internet, you can use the admin portal to download marketplace items.
 
 ### Prerequisites
-Your Azure Stack deployment must have internet connectivity, and be [registered with Azure](azure-stack-register.md).
+Your Azure Stack deployment must have internet connectivity, and be [registered with Azure](azure-stack-registration.md ).
 
 ### Use the portal to download marketplace items  
 1. Sign in to the Azure Stack administrator portal.
@@ -77,7 +77,7 @@ There are two parts to this scenario:
 
 
 ### Prerequisites
-- Your Azure Stack deployment must be [registered with Azure](azure-stack-register.md).  
+- Your Azure Stack deployment must be [registered with Azure](azure-stack-registration.md ).  
 
 - The computer that has internet connectivity must have **Azure Stack PowerShell Module version 1.2.11** or higher. If not already present, [install Azure Stack specific PowerShell modules](azure-stack-powershell-install.md).  
 

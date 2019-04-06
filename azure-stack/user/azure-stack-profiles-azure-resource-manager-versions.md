@@ -165,7 +165,7 @@ The operations call result is a representation of the available network cloud op
 
 ### Microsoft.Resources
 
-Azure Resource Manager enables you to deploy and manage the infrastructure for your Azure solutions. You organize related resources in resource groups, and deploy your resources with JSON templates. For an introduction to deploying and managing resources with Resource Manager, see the [Azure Resource Manager overview](../../azure-resource-manager/resource-group-overview.md).
+Azure Resource Manager enables you to deploy and manage the infrastructure for your Azure solutions. You organize related resources in resource groups, and deploy your resources with JSON templates. For an introduction to deploying and managing resources with Resource Manager, see the [Azure Resource Manager overview](/azure/azure-resource-manager/resource-group-overview).
 
 | Resource Types | API Versions |
 |-----------------------------------------|-------------------|
@@ -305,5 +305,5 @@ The Storage Resource Provider (SRP) enables you to manage your storage account a
 
 ## Next steps
 
-* [Install PowerShell for Azure Stack](azure-stack-powershell-install.md)
+* [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md)
 * [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md)  

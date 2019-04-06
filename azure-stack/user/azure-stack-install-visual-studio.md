@@ -24,7 +24,7 @@ ms.lastreviewed: 01/04/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can use Visual Studio to write and deploy Azure Resource Manager [templates](azure-stack-arm-templates.md) to Azure Stack. The steps in this article walk you through installing Visual Studio on [Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), or on an external computer if you plan to use Azure Stack through [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn).
+You can use Visual Studio to write and deploy Azure Resource Manager [templates](azure-stack-arm-templates.md) to Azure Stack. The steps in this article walk you through installing Visual Studio on [Azure Stack](../asdk/asdk-connect.md#connect-to-azure-stack-with-remote-desktop), or on an external computer if you plan to use Azure Stack through [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-with-vpn).
 
 ## Install Visual Studio
 
@@ -38,7 +38,7 @@ You can use Visual Studio to write and deploy Azure Resource Manager [templates]
 
     ![Screenshot of WebPI install steps](./media/azure-stack-install-visual-studio/image1.png) 
 
-5. [Install PowerShell for Azure Stack](azure-stack-powershell-install.md)
+5. [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md)
 
 6. Restart the operating system after the installation completes.
 

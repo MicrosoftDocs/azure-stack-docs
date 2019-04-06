@@ -72,7 +72,7 @@ As a user, you can sign in to the user portal to locate and subscribe to public 
 
 ### To subscribe to an offer
 
-1. [Sign in](azure-stack-connect-azure-stack.md) to the [Azure Stack user portal](https://portal.local.azurestack.external) and select **Get a Subscription**.
+1. [Sign in](../asdk/asdk-connect.md) to the [Azure Stack user portal](https://portal.local.azurestack.external) and select **Get a Subscription**.
 
    ![Get a subscription](media/azure-stack-subscribe-plan-provision-vm/image01.png)
   
@@ -96,4 +96,4 @@ If an offer has an add-on plan, you can add that plan to your subscription at an
 
 ## Next steps
 
-- [Provision a virtual machine](azure-stack-provision-vm.md)
+- [Provision a virtual machine](../user/azure-stack-create-vm-template)

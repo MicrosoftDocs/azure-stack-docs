@@ -29,9 +29,9 @@ If you're using an Azure Stack integrated system, updated versions of Azure Stac
  
 ### Development kit
 
-If you're using the Azure Stack Development Kit, review the [What is Azure Stack?](./asdk/asdk-what-is.md) article to make sure you understand the purpose of the development kit, and its limitations. You should use the development kit as a "sandbox," where you can evaluate Azure Stack, and develop and test your apps in a non-production environment. (For deployment information, see the [Azure Stack Development Kit deployment](./asdk/asdk-install.md) article.)
+If you're using the Azure Stack Development Kit, review the [What is Azure Stack?](../asdk/asdk-what-is.md) article to make sure you understand the purpose of the development kit, and its limitations. You should use the development kit as a "sandbox," where you can evaluate Azure Stack, and develop and test your apps in a non-production environment. (For deployment information, see the [Azure Stack Development Kit deployment](../asdk/asdk-install.md) article.)
 
-Like Azure, we innovate rapidly. We'll regularly release new builds. If you're running the development kit and you want to move to the latest build, you must [redeploy Azure Stack](./asdk/asdk-redeploy.md). You cannot apply update packages. This process takes time, but the benefit is that you can try out the latest features. The development kit documentation on our website reflects the latest release build.
+Like Azure, we innovate rapidly. We'll regularly release new builds. If you're running the development kit and you want to move to the latest build, you must [redeploy Azure Stack](../asdk/asdk-redeploy.md). You cannot apply update packages. This process takes time, but the benefit is that you can try out the latest features. The development kit documentation on our website reflects the latest release build.
 
 ## Learn about available services
 
@@ -105,19 +105,19 @@ You'll need to let your users know how to work with services in Azure Stack, how
 
 There's information your users must understand before they use services and build apps in Azure Stack. For example, there are specific PowerShell and API version requirements. Also, there are some feature deltas between a service in Azure and the equivalent service in Azure Stack. Make sure that your users review the following articles:
 
-- [Key considerations: Using services or building apps for Azure Stack](user/azure-stack-considerations.md)
-- [Considerations for Virtual Machines in Azure Stack](user/azure-stack-vm-considerations.md)
-- [Storage: differences and considerations](user/azure-stack-acs-differences.md)
+- [Key considerations: Using services or building apps for Azure Stack](../user/azure-stack-considerations.md)
+- [Considerations for Virtual Machines in Azure Stack](../user/azure-stack-vm-considerations.md)
+- [Storage: differences and considerations](../user/azure-stack-acs-differences.md)
 
 The information in these articles summarizes the differences between a service in Azure and Azure Stack. It supplements the information that's available for an Azure service in the global Azure documentation.
 
 **Connect to Azure Stack as a user**
 
-In a development kit environment, if a user doesn't have Remote Desktop access to the development kit host, they must configure a virtual private network (VPN) connection before they can access Azure Stack. See [Connect to Azure Stack](azure-stack-connect-azure-stack.md). 
+In a development kit environment, if a user doesn't have Remote Desktop access to the development kit host, they must configure a virtual private network (VPN) connection before they can access Azure Stack. See [Connect to Azure Stack](../asdk/asdk-connect.md). 
 
-Your users will want to know how to [access the user portal](user/azure-stack-use-portal.md) or how to connect through PowerShell. In an integrated systems environment, the user portal address varies per deployment. You'll need to provide your users with the correct URL.
+Your users will want to know how to [access the user portal](../user/azure-stack-use-portal.md) or how to connect through PowerShell. In an integrated systems environment, the user portal address varies per deployment. You'll need to provide your users with the correct URL.
 
-If using PowerShell, users may have to register resource providers before they can use services. (A resource provider manages a service. For example, the networking resource provider manages resources such as virtual networks, network interfaces, and load balancers.) They must [install](user/azure-stack-powershell-install.md) PowerShell, [download](user/azure-stack-powershell-download.md) additional modules, and [configure](user/azure-stack-powershell-configure-user.md) PowerShell (which includes resource provider registration).
+If using PowerShell, users may have to register resource providers before they can use services. (A resource provider manages a service. For example, the networking resource provider manages resources such as virtual networks, network interfaces, and load balancers.) They must [install](../user/azure-stack-powershell-install.md) PowerShell, [download](../user/azure-stack-powershell-download.md) additional modules, and [configure](../user/azure-stack-powershell-configure-user.md) PowerShell (which includes resource provider registration).
 
 **Subscribe to an offer**
 

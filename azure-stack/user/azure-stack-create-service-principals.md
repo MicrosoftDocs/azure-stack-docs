@@ -53,7 +53,7 @@ The steps for assigning a service principal to a role the same for Azure AD and 
 If your Azure Stack uses Azure AD as the identity store, you can create a service principal using the same steps as in Azure, using the Azure portal.
 
 > [!NOTE]
-> Check to see that you have the [required Azure AD permissions](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) before you start creating a service principal.
+> Check to see that you have the [required Azure AD permissions](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) before you start creating a service principal.
 
 ### Create service principal
 
@@ -95,7 +95,7 @@ For details on how to create the service principal, see [Create service principa
 
 ## Assign the service principal to a role
 
-To access resources in your subscription, you must assign the application to a role. Decide which role represents the right permissions for the application. To learn about the available roles, see [RBAC: Built in Roles](../../role-based-access-control/built-in-roles.md).
+To access resources in your subscription, you must assign the application to a role. Decide which role represents the right permissions for the application. To learn about the available roles, see [RBAC: Built in Roles](/azure/role-based-access-control/built-in-roles).
 
 > [!NOTE]
 > You can set a role's scope at the level of a subscription, a resource group, or a resource. Permissions are inherited to lower levels of scope. For example, an app with the Reader role for a resource group means that the app can read any of the resources in the resource group.

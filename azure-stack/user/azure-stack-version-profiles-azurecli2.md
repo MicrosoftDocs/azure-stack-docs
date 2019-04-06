@@ -230,7 +230,7 @@ To trust the Azure Stack CA root certificate, append it to the existing Python c
     >[!NOTE]  
     >If you are running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2018-03-01-hybrid**. You will need to be using a recent version of the Azure CLI.
  
-1. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](../../active-directory/develop/app-objects-and-service-principals.md). 
+1. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
    - Sign in as a *user*: 
 
@@ -350,7 +350,7 @@ If you are using the ASDK, you will need to trust the CA root certificate on you
     >[!NOTE]  
     >If you are running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2018-03-01-hybrid**. You will need to be using a recent version of the Azure CLI.
 
-1. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](../../active-directory/develop/app-objects-and-service-principals.md). 
+1. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
    - Sign in as a *user*:
 
@@ -466,7 +466,7 @@ Use the following steps to connect to Azure Stack:
     >[!NOTE]  
     >If you are running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2018-03-01-hybrid**. You will need to be using a recent version of the Azure CLI.
 
-5. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](../../active-directory/develop/app-objects-and-service-principals.md). 
+5. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
    * Sign in as a *user*:
 
@@ -577,7 +577,7 @@ Use the following steps to connect to Azure Stack:
     >[!NOTE]  
     >If you are running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2018-03-01-hybrid**. You will need to be using a recent version of the Azure CLI.
 
-5. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](../../active-directory/develop/app-objects-and-service-principals.md). 
+5. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
 6. Sign in: 
 

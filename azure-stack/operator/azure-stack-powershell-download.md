@@ -51,14 +51,14 @@ The **AzureStack-Tools** repository contains PowerShell modules that support the
 
 | Functionality | Description | Who can use this module? |
 | --- | --- | --- |
-| [Cloud capabilities](user/azure-stack-validate-templates.md) | Use this module to get the cloud capabilities of a cloud. For example, by using this module, you can get the cloud capabilities such as API version and Azure Resource Manager resources. You can also get the VM extensions for Azure Stack and Azure clouds by using this module. | Cloud operators and users |
-| [Resource Manager policy for Azure Stack](user/azure-stack-policy-module.md) | Use this module to configure an Azure subscription or an Azure resource group with the same versioning and service availability as Azure Stack. | Cloud operators and users |
-| [Register with Azure](azure-stack-register.md) | Use this module to register your development kit instance with Azure. After registering, you can download the marketplace items from Azure and use them in Azure Stack. | Cloud operators |
-| [Azure Stack deployment](azure-stack-run-powershell-script.md) | Use this module to prepare the Azure Stack host computer to deploy and redeploy by using the Azure Stack virtual hard disk (VHD) image. | Cloud operators|
-| [Connecting to Azure Stack](azure-stack-connect-powershell.md) | Use this module to configure VPN connectivity to Azure Stack. | Cloud operators and users |
-| [Template validator](user/azure-stack-validate-templates.md) | Use this module to verify if an existing or a new template can be deployed to Azure Stack. | Cloud operators and users|
+| [Cloud capabilities](../user/azure-stack-validate-templates.md) | Use this module to get the cloud capabilities of a cloud. For example, by using this module, you can get the cloud capabilities such as API version and Azure Resource Manager resources. You can also get the VM extensions for Azure Stack and Azure clouds by using this module. | Cloud operators and users |
+| [Resource Manager policy for Azure Stack](../user/azure-stack-policy-module.md) | Use this module to configure an Azure subscription or an Azure resource group with the same versioning and service availability as Azure Stack. | Cloud operators and users |
+| [Register with Azure](azure-stack-registration.md ) | Use this module to register your development kit instance with Azure. After registering, you can download the marketplace items from Azure and use them in Azure Stack. | Cloud operators |
+| [Azure Stack deployment](../asdk/asdk-install) | Use this module to prepare the Azure Stack host computer to deploy and redeploy by using the Azure Stack virtual hard disk (VHD) image. | Cloud operators|
+| [Connecting to Azure Stack](azure-stack-powershell-install.md) | Use this module to configure VPN connectivity to Azure Stack. | Cloud operators and users |
+| [Template validator](../user/azure-stack-validate-templates.md) | Use this module to verify if an existing or a new template can be deployed to Azure Stack. | Cloud operators and users|
 
 
 ## Next steps
-* [Configure the Azure Stack user's PowerShell environment](user/azure-stack-powershell-configure-user.md)   
-* [Connect to Azure Stack Development Kit over a VPN](azure-stack-connect-azure-stack.md)  
+* [Configure the Azure Stack user's PowerShell environment](../user/azure-stack-powershell-configure-user.md)   
+* [Connect to Azure Stack Development Kit over a VPN](../asdk/asdk-connect.md)  

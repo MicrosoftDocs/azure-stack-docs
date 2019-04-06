@@ -45,7 +45,7 @@
 - name: Related
   items:
   - name: Azure Stack Documentation
-    href: /azure/azure-stack
+    href: /azure-stack/operator
   - name: Azure Active Directory
     href: /azure/active-directory/
     maintainContext: true
@@ -62,4 +62,4 @@
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: Training and certification
-    href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
+    href: /azure-stack/operator/azure-stack-train-and-cert

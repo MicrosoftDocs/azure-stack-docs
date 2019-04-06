@@ -283,6 +283,6 @@ In scenarios that require a proxy server to access the Internet, you must first 
 ## Next steps
 
 - [Download Azure Stack tools from GitHub](azure-stack-powershell-download.md)
-- [Configure the Azure Stack user's PowerShell environment](user/azure-stack-powershell-configure-user.md)
+- [Configure the Azure Stack user's PowerShell environment](../user/azure-stack-powershell-configure-user.md)
 - [Configure the Azure Stack operator's PowerShell environment](azure-stack-powershell-configure-admin.md)
-- [Manage API version profiles in Azure Stack](user/azure-stack-version-profiles.md)
+- [Manage API version profiles in Azure Stack](../user/azure-stack-version-profiles.md)

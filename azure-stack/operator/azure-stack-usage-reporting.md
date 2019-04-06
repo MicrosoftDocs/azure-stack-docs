@@ -35,7 +35,7 @@ Usage data is sent from Azure Stack to Azure through the Azure Bridge. In Azure,
 
 ## Set up usage data reporting
 
-To set up usage data reporting, you must [register your Azure Stack instance with Azure](azure-stack-register.md). As a part of the registration process, the Azure Bridge component of Azure Stack, which connects Azure Stack to Azure and sends the usage data, is configured. The following usage data is sent from Azure Stack to Azure:
+To set up usage data reporting, you must [register your Azure Stack instance with Azure](azure-stack-registration.md ). As a part of the registration process, the Azure Bridge component of Azure Stack, which connects Azure Stack to Azure and sends the usage data, is configured. The following usage data is sent from Azure Stack to Azure:
 
 - **Meter ID** – Unique ID for the resource that was consumed.
 - **Quantity** – Amount of resource usage.
@@ -46,7 +46,7 @@ To set up usage data reporting, you must [register your Azure Stack instance wit
 
 ## Generate usage data reporting
 
-- To test usage data reporting, create a few resources in Azure Stack. For example, you can create a [storage account](azure-stack-provision-storage-account.md), [Windows Server VM](azure-stack-provision-vm.md) and a Linux VM with Basic and Standard SKUs to see how core usage is reported. The usage data for different types of resources are reported under different meters.
+- To test usage data reporting, create a few resources in Azure Stack. For example, you can create a [storage account](azure-stack-provision-storage-account.md), [Windows Server VM](../user/azure-stack-create-vm-template) and a Linux VM with Basic and Standard SKUs to see how core usage is reported. The usage data for different types of resources are reported under different meters.
 
 - Leave your resources running for few hours. Usage information is collected approximately once every hour. After collecting, this data is transmitted to Azure and processed into the Azure commerce system. This process can take up to a few hours.
 
@@ -80,11 +80,11 @@ Users are only charged for VMs that run under tenant subscriptions. All workload
 
 ## I have a Windows Server license I want to use on Azure Stack, how do I do it?
 
-Using the existing licenses avoids generating usage meters. Existing Windows Server licenses can be used in Azure Stack, as described in the "Using existing software with Azure Stack" section of the [Azure Stack Licensing Guide](https://go.microsoft.com/fwlink/?LinkId=851536). Customers must deploy their Windows Server virtual machines as described in the [Hybrid benefit for Windows Server license](../virtual-machines/windows/hybrid-use-benefit-licensing.md) article in order to use their existing licenses.
+Using the existing licenses avoids generating usage meters. Existing Windows Server licenses can be used in Azure Stack, as described in the "Using existing software with Azure Stack" section of the [Azure Stack Licensing Guide](https://go.microsoft.com/fwlink/?LinkId=851536). Customers must deploy their Windows Server virtual machines as described in the [Hybrid benefit for Windows Server license](/azure/virtual-machines/windows/hybrid-use-benefit-licensing) article in order to use their existing licenses.
 
 ## Which subscription is charged for the resources consumed?
 
-The subscription that is provided when [registering Azure Stack with Azure](azure-stack-register.md) is charged.
+The subscription that is provided when [registering Azure Stack with Azure](azure-stack-registration.md ) is charged.
 
 ## What types of subscriptions are supported for usage data reporting?
 

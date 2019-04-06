@@ -43,7 +43,7 @@ To set this up, you will:
 
 As an example, you can create an offer that lets users create DNN web content management systems. It requires the SQL Server service which you already enabled by installing the SQL Server resource provider.
 
-1.	[Set a quota](azure-stack-setting-quotas.md) and name it *AppServiceQuota*. Select **Microsoft.Web** for the **Namespace** field.
+1.	[Set a quota](azure-stack-plan-offer-quota-overview.md ) and name it *AppServiceQuota*. Select **Microsoft.Web** for the **Namespace** field.
 2.	[Create a plan](azure-stack-create-plan.md). Name it *TestAppServicePlan*, select the **Microsoft.SQL** service and the **AppService Quota** quota.
 
     > [!NOTE]
@@ -97,4 +97,4 @@ In this tutorial, you learned how to:
 Advance to the next tutorial to learn how to:
 
 > [!div class="nextstepaction"]
-> [Deploy apps to Azure and Azure Stack](user/azure-stack-solution-pipeline.md)
+> [Deploy apps to Azure and Azure Stack](../user/azure-stack-solution-pipeline.md)

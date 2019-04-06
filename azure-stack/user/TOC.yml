@@ -160,12 +160,12 @@
     - name: Set up development environment
       items:
       - name: Install Azure Stack PowerShell
-        href: ../azure-stack-powershell-install.md
+        href: /azure-stack/operator/azure-stack-powershell-install.md
         maintainContext: true
       - name: Connect with PowerShell
         href: azure-stack-powershell-configure-user.md
       - name: Download Azure Stack tools
-        href: ../azure-stack-powershell-download.md
+        href: /azure-stack/operator/azure-stack-powershell-download.md
         maintainContext: true
       - name: Install Visual Studio
         href: azure-stack-install-visual-studio.md
@@ -217,9 +217,9 @@
 - name: Related
   items:
   - name: Azure Stack Operator Documentation
-    href: /azure/azure-stack/
+    href: /azure-stack/operator/
   - name: ASDK Documentation
-    href: /azure/azure-stack/asdk/
+    href: /azure-stack/asdk/
 - name: Resources
   items:
   - name: Azure Stack roadmap
@@ -233,4 +233,4 @@
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: Training and certification
-    href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
+    href: /azure-stack/operator/azure-stack-train-and-cert

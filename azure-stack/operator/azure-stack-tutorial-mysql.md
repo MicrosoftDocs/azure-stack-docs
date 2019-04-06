@@ -63,7 +63,7 @@ Use the steps in this section to deploy the MySQL Server cluster using the [MySQ
 - Three Linux VMs to host the MySQL cluster
 
 1. 
-   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+   [!INCLUDE [azs-admin-portal](../includes/azs-admin-portal.md)]
 
 2. Select **\+** **Create a resource** > **Compute**, and then **MySQL with Replication**.
 
@@ -165,7 +165,7 @@ After the MySQL cluster has been created, configured, and added as an Azure Stac
 > Run these steps from the Azure Stack user portal as a tenant user with a subscription providing MySQL Server capabilities (Microsoft.MySQLAdapter service).
 
 1. 
-   [!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
+   [!INCLUDE [azs-user-portal](../includes/azs-user-portal.md)]
 
 2. Select **\+** **Create a resource** > **Data \+ Storage**, and then **MySQL Database**.<br><br>Provide the required database property information including name, collation, the subscription to use, and location to use for the deployment. 
 

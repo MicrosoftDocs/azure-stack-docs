@@ -37,7 +37,7 @@ To access the administrator portal, browse to the portal URL and sign in by usin
 | | |
 
 > [!TIP]
-> For an ASDK environment, you need to first make sure that you can [connect to the development kit host](azure-stack-connect-azure-stack.md) through Remote Desktop Connection or through a virtual private network (VPN).
+> For an ASDK environment, you need to first make sure that you can [connect to the development kit host](../asdk/asdk-connect.md) through Remote Desktop Connection or through a virtual private network (VPN).
 
  ![The administration portal](media/azure-stack-manage-portals/admin-portal.png)
 
@@ -53,7 +53,7 @@ In the administrator portal, you can do things like:
 
 The **Quickstart tutorial** tile provides links to online documentation for the most common tasks.
 
-Although an operator can create resources such as virtual machines, virtual networks, and storage accounts in the administration portal, you should [sign in to the user portal](user/azure-stack-use-portal.md) to create and test resources.
+Although an operator can create resources such as virtual machines, virtual networks, and storage accounts in the administration portal, you should [sign in to the user portal](../user/azure-stack-use-portal.md) to create and test resources.
 
 >[!NOTE]
 >The **Create a virtual machine** link in the quickstart tutorial tile has you create a virtual machine in the administration portal, but this is only intended to validate that Azure Stack has been deployed successfully.

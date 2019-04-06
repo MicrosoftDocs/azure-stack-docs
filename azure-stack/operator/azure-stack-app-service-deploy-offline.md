@@ -255,7 +255,7 @@ After you deploy and register the App Service resource provider, test it to make
 
 ## Next steps
 
-You can also try out other [platform as a service (PaaS) services](azure-stack-tools-paas-services.md).
+You can also try out other [platform as a service (PaaS) services](azure-stack-offer-services-overview.md).
 
 - [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md)
 - [MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md)

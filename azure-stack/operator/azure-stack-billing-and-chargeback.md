@@ -31,7 +31,7 @@ You can also get usage data and export it to your own billing or charge back sys
 
 Each resource provider in Azure Stack posts usage data per resource usage. The usage service periodically (hourly and daily) aggregates usage data and stores it in the usage database. Azure Stack operators and users can access the stored usage data through the Azure Stack resource usage APIs.
 
-If you have [Registered your Azure Stack instance with Azure](azure-stack-register.md), Azure Stack is configured to send the usage data to Azure Commerce. After the data is uploaded to Azure, you can access it through the billing portal or by using Azure resource usage APIs. For more information about what usage data is reported to Azure, see [Usage data reporting](azure-stack-usage-reporting.md).  
+If you have [Registered your Azure Stack instance with Azure](azure-stack-registration.md ), Azure Stack is configured to send the usage data to Azure Commerce. After the data is uploaded to Azure, you can access it through the billing portal or by using Azure resource usage APIs. For more information about what usage data is reported to Azure, see [Usage data reporting](azure-stack-usage-reporting.md).  
 
 The following image shows the key components in the usage pipeline:
 

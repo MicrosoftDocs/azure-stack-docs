@@ -44,8 +44,8 @@ You can establish a split tunnel Virtual Private Network (VPN) connection to an 
 
 ### Prerequisites
 
-* Install [Azure Stack compatible Azure PowerShell](azure-stack-powershell-install.md) on your local computer.  
-* Download the [tools required to work with Azure Stack](azure-stack-powershell-download.md). 
+* Install [Azure Stack compatible Azure PowerShell](../operator/azure-stack-powershell-install.md) on your local computer.  
+* Download the [tools required to work with Azure Stack](../operator/azure-stack-powershell-download.md). 
 
 ### Configure VPN connectivity
 

@@ -28,11 +28,11 @@ In this article, you'll learn how to connect to your Azure Stack subscriptions a
 
 If you haven't installed storage explorer yet, [download storage explorer](https://www.storageexplorer.com/) and install it.
 
-After you connect to an Azure Stack subscription or a storage account, you can use the [Azure storage explorer articles](../../vs-azure-tools-storage-manage-with-storage-explorer.md) to work with your Azure Stack data. 
+After you connect to an Azure Stack subscription or a storage account, you can use the [Azure storage explorer articles](/azure/vs-azure-tools-storage-manage-with-storage-explorer) to work with your Azure Stack data. 
 
 ## Prepare for connecting to Azure Stack
 
-You need direct access to the Azure Stack or a VPN connection for storage explorer to access the Azure Stack subscription. To learn how to set up a VPN connection to Azure Stack, see [Connect to Azure Stack with VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn).
+You need direct access to the Azure Stack or a VPN connection for storage explorer to access the Azure Stack subscription. To learn how to set up a VPN connection to Azure Stack, see [Connect to Azure Stack with VPN](../asdk/asdk-connect.md#connect-to-azure-stack-with-vpn).
 
 For the Azure Stack Development Kit (ASDK), you need to export the Azure Stack authority root certificate.
 
@@ -157,6 +157,6 @@ You can also connect to an Azure Stack storage account using storage account nam
 
 ## Next steps
 
-* [Get started with storage explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [Get started with storage explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 * [Azure Stack storage: differences and considerations](azure-stack-acs-differences.md)
-* To learn more about Azure storage, see [Introduction to Microsoft Azure storage](../../storage/common/storage-introduction.md)
+* To learn more about Azure storage, see [Introduction to Microsoft Azure storage](/azure/storage/common/storage-introduction)

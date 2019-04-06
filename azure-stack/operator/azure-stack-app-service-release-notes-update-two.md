@@ -94,7 +94,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 
 ### Known issues for Cloud Admins operating Azure App Service on Azure Stack
 
-Refer to the documentation in the [Azure Stack 1804 Release Notes](azure-stack-update-1804.md)
+Refer to the documentation in the [Azure Stack 1804 Release Notes](azure-stack-update-1903.md)
 
 ## Next steps
 

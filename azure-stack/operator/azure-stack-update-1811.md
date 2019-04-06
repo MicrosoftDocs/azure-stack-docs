@@ -92,11 +92,11 @@ This update includes the following new features and improvements for Azure Stack
 
 - With this release, the [extension host](azure-stack-extension-host-prepare.md) is enabled. The extension host simplifies network integration and improves the security posture of Azure Stack.
 
-- Added support for device authentication with Active Directory Federated Services (AD FS), when using Azure CLI in particular. For more information, see [Use API version profiles with Azure CLI in Azure Stack](./user/azure-stack-version-profiles-azurecli2.md)
+- Added support for device authentication with Active Directory Federated Services (AD FS), when using Azure CLI in particular. For more information, see [Use API version profiles with Azure CLI in Azure Stack](../user/azure-stack-version-profiles-azurecli2.md)
 
 - Added support for Service Principals using a client secret with Active Directory Federated Services (AD FS). For more information, see [Create service principal for AD FS](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
 
-- This release adds support for the following Azure Storage Service API versions: **2017-07-29**, **2017-11-09**. Support is also added for the following Azure Storage Resource Provider API versions: **2016-05-01**, **2016-12-01**, **2017-06-01**, and **2017-10-01**. For more information, see [Azure Stack storage: Differences and considerations](./user/azure-stack-acs-differences.md).
+- This release adds support for the following Azure Storage Service API versions: **2017-07-29**, **2017-11-09**. Support is also added for the following Azure Storage Resource Provider API versions: **2016-05-01**, **2016-12-01**, **2017-06-01**, and **2017-10-01**. For more information, see [Azure Stack storage: Differences and considerations](../user/azure-stack-acs-differences.md).
 
 - Added new privileged endpoint commands to update and remove service principles for ADFS. For more information, see [Create service principal for AD FS](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
 
@@ -277,7 +277,7 @@ The following are post-installation known issues for this build version.
 
    The error occurs if you enable boot diagnostics on a VM but delete your boot diagnostics storage account. To work around this issue, recreate the storage account with the same name as you used previously.
 
-- When creating a [Dv2 series VM](./user/azure-stack-vm-considerations.md#virtual-machine-sizes), D11-14v2 VMs allow you to create 4, 8, 16, and 32 data disks respectively. However, the create VM pane shows 8, 16, 32, and 64 data disks.
+- When creating a [Dv2 series VM](../user/azure-stack-vm-considerations.md#virtual-machine-sizes), D11-14v2 VMs allow you to create 4, 8, 16, and 32 data disks respectively. However, the create VM pane shows 8, 16, 32, and 64 data disks.
 
 - Usage records on Azure Stack may contain unexpected capitalization; for example:
 

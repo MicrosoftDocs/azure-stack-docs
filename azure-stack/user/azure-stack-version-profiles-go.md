@@ -299,5 +299,5 @@ This example shows a sample of Go code that creates a virtual network on Azure S
 
 ## Next steps
 
-- [Install PowerShell for Azure Stack](azure-stack-powershell-install.md)
+- [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md)
 - [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md)  

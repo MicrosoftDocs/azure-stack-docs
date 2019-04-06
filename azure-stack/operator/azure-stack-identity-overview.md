@@ -32,7 +32,7 @@ Your choice of either Azure AD or AD FS is determined by the mode in which you d
 For more information about your options, which depend on your Azure Stack environment, see the following articles:
 
 - Azure Stack deployment kit: [Identity considerations](azure-stack-datacenter-integration.md#identity-considerations).
-- Azure Stack integrated systems: [Deployment planning decisions for Azure Stack integrated systems](azure-stack-deployment-decisions.md).
+- Azure Stack integrated systems: [Deployment planning decisions for Azure Stack integrated systems](azure-stack-connection-models.md).
 
 ## Common concepts for identity
 
@@ -191,7 +191,7 @@ For information about how to use RBAC with Azure Stack, see the following articl
 
 ### Authenticate with Azure PowerShell
 
-Details about using Azure PowerShell to authenticate with Azure Stack can be found at [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md).
+Details about using Azure PowerShell to authenticate with Azure Stack can be found at [Configure the Azure Stack user's PowerShell environment](../user/azure-stack-powershell-configure-user.md).
 
 ### Authenticate with Azure CLI
 

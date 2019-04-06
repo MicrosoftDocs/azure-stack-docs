@@ -44,7 +44,7 @@ To learn more, see [Key features and concepts in Azure Stack](azure-stack-key-fe
 
 Offers are groups of one or more plans that providers present to users to purchase or subscribe to. The process of creating an offer has several steps. First, you're prompted to create the offer, then a plan, and finally, quotas.
 
-1. [Sign in](azure-stack-connect-azure-stack.md) to the portal as a cloud administrator and then select **+ Create a resource** > **Offers + Plans** > **Offer**.
+1. [Sign in](../asdk/asdk-connect.md) to the portal as a cloud administrator and then select **+ Create a resource** > **Offers + Plans** > **Offer**.
 
    ![New offer](media/azure-stack-tutorial-tenant-vm/image01.png)
 

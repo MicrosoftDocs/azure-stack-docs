@@ -57,18 +57,18 @@ AzCopy is a command-line utility designed to copy data to and from Microsoft Azu
 There are two versions of the AzCopy utility: AzCopy on Windows and AzCopy on Linux.
 
  - **AzCopy on Windows**
-    - Download the supported version of AzCopy for Azure Stack. You can install and use AzCopy on Azure Stack the same way as Azure. For more information, see [AzCopy on Windows](../../storage/common/storage-use-azcopy.md).
+    - Download the supported version of AzCopy for Azure Stack. You can install and use AzCopy on Azure Stack the same way as Azure. For more information, see [AzCopy on Windows](/azure/storage/common/storage-use-azcopy).
         - For the 1811 update, or newer versions, [download AzCopy 7.3.0](https://aka.ms/azcopyforazurestack20171109).
         - For previous versions (1802 to 1809 update), [download AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417).
 
  - **AzCopy on Linux**
 
-    - You can install and use AzCopy on Azure Stack the same way as Azure. For more information, see [AzCopy on Linux](../../storage/common/storage-use-azcopy-linux.md).
-    - For previous versions (1802 to 1809 updates), see the [installation steps for AzCopy 7.1 and earlier versions](../../storage/common/storage-use-azcopy-linux.md#installation-steps-for-azcopy-71-and-earlier-versions).
+    - You can install and use AzCopy on Azure Stack the same way as Azure. For more information, see [AzCopy on Linux](/azure/storage/common/storage-use-azcopy-linux).
+    - For previous versions (1802 to 1809 updates), see the [installation steps for AzCopy 7.1 and earlier versions](/azure/storage/common/storage-use-azcopy-linux#installation-steps-for-azcopy-71-and-earlier-versions).
 
 ### AzCopy command examples for data transfer
 
-The following examples follow typical scenarios for copying data to and from Azure Stack blobs. To learn more, see [AzCopy on Windows](../../storage/common/storage-use-azcopy.md) and [AzCopy on Linux](../../storage/common/storage-use-azcopy-linux.md).
+The following examples follow typical scenarios for copying data to and from Azure Stack blobs. To learn more, see [AzCopy on Windows](/azure/storage/common/storage-use-azcopy) and [AzCopy on Linux](/azure/storage/common/storage-use-azcopy-linux).
 
 ### Download all blobs to a local disk
 
@@ -139,14 +139,14 @@ Azure PowerShell is a module that provides cmdlets for managing services on both
 
 ### Install and Configure PowerShell for Azure Stack
 
-Azure Stack compatible Azure PowerShell modules are required to work with Azure Stack. For more information, see [Install PowerShell for Azure Stack](azure-stack-powershell-install.md) and [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md) to learn more.
+Azure Stack compatible Azure PowerShell modules are required to work with Azure Stack. For more information, see [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md) and [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md) to learn more.
 
 ### PowerShell Sample script for Azure Stack 
 
-This sample assume you have successfully [Installed PowerShell for Azure Stack](azure-stack-powershell-install.md). This script will help you complete the configuration and ask your Azure Stack tenant credentials to add your account to the local PowerShell environment. Then, the script will set the default Azure subscription, create a new storage account in Azure, create a new container in this new storage account, and upload an existing image file (blob) to that container. After the script lists all blobs in that container, it will create a new destination directory on your local computer and download the image file.
+This sample assume you have successfully [Installed PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md). This script will help you complete the configuration and ask your Azure Stack tenant credentials to add your account to the local PowerShell environment. Then, the script will set the default Azure subscription, create a new storage account in Azure, create a new container in this new storage account, and upload an existing image file (blob) to that container. After the script lists all blobs in that container, it will create a new destination directory on your local computer and download the image file.
 
-1. Install [Azure Stack-compatible Azure PowerShell modules](azure-stack-powershell-install.md).
-2. Download the [tools required to work with Azure Stack](azure-stack-powershell-download.md).
+1. Install [Azure Stack-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
+2. Download the [tools required to work with Azure Stack](../operator/azure-stack-powershell-download.md).
 3. Open **Windows PowerShell ISE** and **Run as Administrator**, click **File** > **New** to create a new script file.
 4. Copy the script below and paste to the new script file.
 5. Update the script variables based on your configuration settings.
@@ -244,7 +244,7 @@ The Azure CLI is Azure’s command-line experience for managing Azure resources.
 
 Azure CLI is optimized for managing and administering Azure resources from the command line, and for building automation scripts that work against the Azure Resource Manager. It provides many of the same functions found in the Azure Stack portal, including rich data access.
 
-Azure Stack requires Azure CLI version 2.0 or later. For more information about installing and configuring Azure CLI with Azure Stack, see [Install and configure Azure Stack CLI](azure-stack-version-profiles-azurecli2.md). For more information about how to use the Azure CLI to perform several tasks working with resources in your Azure Stack storage account, see [Using the Azure CLI with Azure storage](../../storage/storage-azure-cli.md)
+Azure Stack requires Azure CLI version 2.0 or later. For more information about installing and configuring Azure CLI with Azure Stack, see [Install and configure Azure Stack CLI](azure-stack-version-profiles-azurecli2.md). For more information about how to use the Azure CLI to perform several tasks working with resources in your Azure Stack storage account, see [Using the Azure CLI with Azure storage](/azure/storage/storage-azure-cli)
 
 ### Azure CLI sample script for Azure Stack
 
@@ -301,7 +301,7 @@ echo "Done"
 Microsoft Azure storage explorer is a standalone app from Microsoft. It allows you to easily work with both Azure storage and Azure Stack storage data on Windows, macOS and Linux computers. If you want an easy way to manage your Azure Stack storage data, then consider using Microsoft Azure storage explorer.
 
 * To learn more about configuring Azure storage explorer to work with Azure Stack, see [Connect storage explorer to an Azure Stack subscription](azure-stack-storage-connect-se.md).
-* To learn more about Microsoft Azure storage explorer, see [Get started with storage explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* To learn more about Microsoft Azure storage explorer, see [Get started with storage explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 
 ## Blobfuse 
 
@@ -334,6 +334,6 @@ blobEndpoint myaccount.blob.local.azurestack.external
 ## Next steps
 
 * [Connect storage explorer to an Azure Stack subscription](azure-stack-storage-connect-se.md)
-* [Get started with storage explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [Get started with storage explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 * [Azure-consistent storage: differences and considerations](azure-stack-acs-differences.md)
-* [Introduction to Microsoft Azure storage](../../storage/common/storage-introduction.md)
+* [Introduction to Microsoft Azure storage](/azure/storage/common/storage-introduction)

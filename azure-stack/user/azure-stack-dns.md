@@ -32,7 +32,7 @@ You can specify a DNS domain name label for public IP resources. Azure Stack use
 
 For example, if you create a public IP resource with **contoso** as a domain name label in the local Azure Stack location, the [fully qualified domain name (FQDN)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) **contoso.local.cloudapp.azurestack.external** resolves to the public IP address of the resource. You can use this FQDN to create a custom domain CNAME record that points to the public IP address in Azure Stack.
 
-To learn more about name resolution, see the [DNS resolution](../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) article.
+To learn more about name resolution, see the [DNS resolution](/azure/dns/dns-for-azure-services?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) article.
 
 > [!IMPORTANT]
 > Each domain name label you create must be unique within its Azure Stack location.
@@ -63,7 +63,7 @@ DNS in Azure Stack is similar to DNS in Azure, but there are a few important exc
 
 * **Tags, metadata, and Etags**: There are minor differences in how Azure Stack handles tags, metadata, Etags, and limits.
 
-To learn more about Azure DNS, see [DNS zones and records](../../dns/dns-zones-records.md).
+To learn more about Azure DNS, see [DNS zones and records](/azure/dns/dns-zones-records).
 
 ### Tags
 

@@ -47,7 +47,7 @@ Refer to the [Before You Get Started documentation](azure-stack-app-service-befo
 
 Azure App Service on Azure Stack Update 1 includes the following improvements and fixes:
 
-- **High Availability of Azure App Service** - The Azure Stack 1802 update enabled workloads to be deployed across fault domains. Therefore App Service infrastructure is able to be fault tolerant as it will be deployed across fault domains. By default all new deployments of Azure App Service has this capability however for deployments completed prior to Azure Stack 1802 update being applied refer to the [App Service Fault Domain documentation](azure-stack-app-service-fault-domain-update.md)
+- **High Availability of Azure App Service** - The Azure Stack 1802 update enabled workloads to be deployed across fault domains. Therefore App Service infrastructure is able to be fault tolerant as it will be deployed across fault domains. By default all new deployments of Azure App Service has this capability however for deployments completed prior to Azure Stack 1802 update being applied refer to the [App Service Fault Domain documentation](azure-stack-app-service-before-you-get-started.md )
 
 - **Deploy in existing virtual network** - Customers can now deploy App Service on Azure Stack within an existing virtual network. Deploying in an existing virtual network enables customers to connect to the SQL Server and File Server, required for Azure App Service, over private ports. During deployment, customers can select to deploy in an existing virtual network, however [must create subnets for use by App Service](azure-stack-app-service-before-you-get-started.md#virtual-network) prior to deployment.
 
@@ -213,7 +213,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 
 ### Known issues for Cloud Admins operating Azure App Service on Azure Stack
 
-Refer to the documentation in the [Azure Stack 1802 Release Notes](azure-stack-update-1802.md)
+Refer to the documentation in the [Azure Stack 1802 Release Notes](azure-stack-update-1903.md)
 
 ## Next steps
 

@@ -39,7 +39,7 @@ The deployment process is described in detail in the [use SQL databases on Azure
 
 ## Create an offer
 
-1.	[Set a quota](azure-stack-setting-quotas.md) and name it *SQLServerQuota*. Select **Microsoft.SQLAdapter** for the **Namespace** field.
+1.	[Set a quota](azure-stack-plan-offer-quota-overview.md ) and name it *SQLServerQuota*. Select **Microsoft.SQLAdapter** for the **Namespace** field.
 2.	[Create a plan](azure-stack-create-plan.md). Name it *TestSQLServerPlan*, select the **Microsoft.SQLAdapter** service, and **SQLServerQuota** quota.
 
     > [!NOTE]

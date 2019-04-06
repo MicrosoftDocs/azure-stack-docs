@@ -56,7 +56,7 @@ Azure service versions may differ between Azure and Azure Stack. Each resource r
 
 ## Template functions
 
-Azure Resource Manager [functions](../../azure-resource-manager/resource-group-template-functions.md) provide the capabilities required to build dynamic templates. As an example, you can use functions for tasks such as:
+Azure Resource Manager [functions](/azure/azure-resource-manager/resource-group-template-functions) provide the capabilities required to build dynamic templates. As an example, you can use functions for tasks such as:
 
 * Concatenating or trimming strings.
 * Referencing values from other resources.

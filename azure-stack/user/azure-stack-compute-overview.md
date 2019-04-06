@@ -127,8 +127,8 @@ The following table shows you some of the ways you can get information about a V
 |Method|Description|
 |---------|---------|
 |Azure Stack portal|On the hub menu, click Virtual Machines and then select the VM from the list. On the page for the VM, you have access to overview information, setting values, and monitoring metrics.|
-|Azure PowerShell|Managing VMs is similar in Azure and Azure Stack. For more information about using PowerShell, see the following Azure topic:<br>[Create and Manage Windows VMs with the Azure PowerShell module](../../virtual-machines/windows/tutorial-manage-vm.md#understand-vm-sizes)|
-|Client SDKs|Using C# to manage VMs is similar in Azure and Azure Stack. For more information, see the following Azure topic:<br>[Create and manage Windows VMs in Azure using C#](../../virtual-machines/windows/csharp.md)|
+|Azure PowerShell|Managing VMs is similar in Azure and Azure Stack. For more information about using PowerShell, see the following Azure topic:<br>[Create and Manage Windows VMs with the Azure PowerShell module](/azure/virtual-machines/windows/tutorial-manage-vm#understand-vm-sizes)|
+|Client SDKs|Using C# to manage VMs is similar in Azure and Azure Stack. For more information, see the following Azure topic:<br>[Create and manage Windows VMs in Azure using C#](/azure/virtual-machines/windows/csharp)|
 
 ### Connect to your VM
 
