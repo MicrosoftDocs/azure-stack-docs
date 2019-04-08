@@ -23,7 +23,7 @@ ms.lastreviewed: 09/17/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-[Microsoft Azure Stack](azure-stack-poc.md) is a hybrid cloud platform that lets you deliver services from your datacenter. As a service provider, you can offer services to your tenants. Within a business or government agency, you can offer on-premises services to your employees. 
+[Microsoft Azure Stack](azure-stack-overview.md) is a hybrid cloud platform that lets you deliver services from your datacenter. As a service provider, you can offer services to your tenants. Within a business or government agency, you can offer on-premises services to your employees. 
 
 You can offer [Infrastructure as a Service](https://azure.microsoft.com/overview/what-is-iaas/) (IaaS) services that enable your users to build an on-demand computing infrastructure, provisioned and managed from the Azure Stack user portal.
 

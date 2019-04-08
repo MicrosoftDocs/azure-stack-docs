@@ -33,7 +33,7 @@ To get set up:
 
 ## Prerequisites
 
-You can configure these prerequisites from the [development kit](../asdk/asdk-connect.md#connect-to-azure-stack-with-remote-desktop), or from a Windows-based external client if you are [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-with-vpn):
+You can configure these prerequisites from the [development kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), or from a Windows-based external client if you are [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn):
 
 * Install [Azure Stack-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
 * Download the [tools required to work with Azure Stack](../operator/azure-stack-powershell-download.md).
@@ -94,4 +94,4 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 - [Develop templates for Azure Stack](azure-stack-develop-templates.md)
 - [Deploy templates with PowerShell](azure-stack-deploy-template-powershell.md)
 - [Azure Stack PowerShell Module Reference](https://docs.microsoft.com/powershell/azure/azure-stack/overview)
-- If you want to set up PowerShell for the cloud operator environment, refer to the [Configure the Azure Stack operator's PowerShell environment](../azure-stack-powershell-configure-admin.md) article.
+- If you want to set up PowerShell for the cloud operator environment, refer to the [Configure the Azure Stack operator's PowerShell environment](../operator/azure-stack-powershell-configure-admin.md) article.

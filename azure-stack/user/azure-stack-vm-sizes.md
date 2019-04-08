@@ -33,7 +33,7 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They are used f
 ### Basic A
 
 > [!NOTE]
-> *Basic A* virtual machine sizes are retired for [creating virtual machine scale sets](../azure-stack-compute-add-scalesets.md) (VMSS) through the portal. To create a VMSS with this size, use PowerShell or a template.
+> *Basic A* virtual machine sizes are retired for [creating virtual machine scale sets](../operator/azure-stack-compute-add-scalesets.md) (VMSS) through the portal. To create a VMSS with this size, use PowerShell or a template.
 
 |Size - Size\Name |vCPU     |Memory | Max temporary disk size | Max OS disk throughput: (IOPS) | Max temp storage throughput (IOPS) | Max data disk throughput (IOPS) | Max NICs |    
 |-----------------|-----|---------|---------|-----|------|-----------|----|

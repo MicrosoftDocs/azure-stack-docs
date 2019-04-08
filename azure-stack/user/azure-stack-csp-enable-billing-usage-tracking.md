@@ -49,4 +49,4 @@ Add the CSP as **owner** to your subscription.
 
 ## Next steps
 
-* To learn more about how to retrieve resource usage information from Azure Stack, see [Usage and billing in Azure Stack](../azure-stack-billing-and-chargeback.md).
+* To learn more about how to retrieve resource usage information from Azure Stack, see [Usage and billing in Azure Stack](../operator/azure-stack-billing-and-chargeback.md).

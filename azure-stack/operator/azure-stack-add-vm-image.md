@@ -211,4 +211,4 @@ When you no longer need the virtual machine image that you uploaded, you can del
 
 ## Next steps
 
-[Provision a virtual machine](../user/azure-stack-create-vm-template)
+[Provision a virtual machine](../user/azure-stack-create-vm-template.md)

@@ -631,5 +631,5 @@ There are known issues when using CLI in Azure Stack:
 ## Next steps
 
 - [Deploy templates with Azure CLI](azure-stack-deploy-template-command-line.md)
-- [Enable Azure CLI for Azure Stack users (Operator)](../azure-stack-cli-admin.md)
+- [Enable Azure CLI for Azure Stack users (Operator)](../operator/azure-stack-cli-admin.md)
 - [Manage user permissions](azure-stack-manage-permissions.md) 

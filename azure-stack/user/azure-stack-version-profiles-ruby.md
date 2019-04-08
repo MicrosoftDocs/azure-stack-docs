@@ -46,9 +46,9 @@ An API profile is a combination of resource providers and service versions. You 
   - Install the development kit during Ruby installation when prompted.
   - Next, install the bundler using the following command:  
     `Gem install bundler`
-- If not available, create a subscription and save the subscription ID to be used later. Instructions to create a subscription are [here](../azure-stack-subscribe-plan-provision-vm.md).
-- Create a service principal and save its ID and secret. Instructions to create a service principal for Azure Stack are [here](../azure-stack-create-service-principals.md).
-- Make sure your service principal has contributor/owner role on your subscription. Instructions on how to assign role to service principal are [here](../azure-stack-create-service-principals.md).
+- If not available, create a subscription and save the subscription ID to be used later. Instructions to create a subscription are [here](../operator/azure-stack-subscribe-plan-provision-vm.md).
+- Create a service principal and save its ID and secret. Instructions to create a service principal for Azure Stack are [here](../operator/azure-stack-create-service-principals.md).
+- Make sure your service principal has contributor/owner role on your subscription. Instructions on how to assign role to service principal are [here](../operator/azure-stack-create-service-principals.md).
 
 ## Install the Rubygem packages
 
@@ -229,7 +229,7 @@ To run the sample, ensure that you have installed Ruby. If you are using Visual 
 
 3. Create an Azure service principal using PowerShell and retrieve the values needed.
 
-   For instructions on creating a service principal, see [Use Azure PowerShell to create a service principal with a certificate](../azure-stack-create-service-principals.md).
+   For instructions on creating a service principal, see [Use Azure PowerShell to create a service principal with a certificate](../operator/azure-stack-create-service-principals.md).
 
    Values needed are:
    - Tenant ID

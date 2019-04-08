@@ -96,4 +96,4 @@ If an offer has an add-on plan, you can add that plan to your subscription at an
 
 ## Next steps
 
-- [Provision a virtual machine](../user/azure-stack-create-vm-template)
+- [Provision a virtual machine](../user/azure-stack-create-vm-template.md)

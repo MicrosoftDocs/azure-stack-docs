@@ -133,7 +133,7 @@
     - name: Set up management environment
       items:
       - name: Install Azure Stack PowerShell
-        href: operator/azure-stack-powershell-install.md
+        href: azure-stack-powershell-install.md
       - name: Download tools
         href: azure-stack-powershell-download.md
       - name: Connect with PowerShell

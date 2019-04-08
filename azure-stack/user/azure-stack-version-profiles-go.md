@@ -81,7 +81,7 @@ To run a sample of Go code on Azure Stack, follow these steps:
    }
    ```
 
-3. If not available, create a subscription and save the subscription ID to be used later. For information about creating a subscription, see [Create subscriptions to offers in Azure Stack](../azure-stack-subscribe-plan-provision-vm.md).
+3. If not available, create a subscription and save the subscription ID to be used later. For information about creating a subscription, see [Create subscriptions to offers in Azure Stack](../operator/azure-stack-subscribe-plan-provision-vm.md).
 
 4. Create a service principal with **Subscription** scope and **Owner** role. Save the service principal ID and secret. For information about creating a service principal for Azure Stack, see [Create service principal](azure-stack-create-service-principals.md). Your Azure Stack environment is now set up.
 

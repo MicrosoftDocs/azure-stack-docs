@@ -80,11 +80,11 @@ Use the following steps to install the Java SDK:
    - **com.microsoft.azure**
      - **latest**
 
-5. If not available, create a subscription and save the subscription ID for later use. For instructions on how to create a subscription, see [Create subscriptions to offers in Azure Stack](../azure-stack-subscribe-plan-provision-vm.md).
+5. If not available, create a subscription and save the subscription ID for later use. For instructions on how to create a subscription, see [Create subscriptions to offers in Azure Stack](../operator/azure-stack-subscribe-plan-provision-vm.md).
 
-6. Create a service principal and save the client ID and the client secret. For instructions on how to create a service principal for Azure Stack, see [Provide applications access to Azure Stack](../azure-stack-create-service-principals.md). Note that the client ID is also known as the application ID when creating a service principal.
+6. Create a service principal and save the client ID and the client secret. For instructions on how to create a service principal for Azure Stack, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md). Note that the client ID is also known as the application ID when creating a service principal.
 
-7. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack](../azure-stack-create-service-principals.md).
+7. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md).
 
 ## Prerequisites
 
@@ -92,14 +92,14 @@ To use the Azure Java SDK with Azure Stack, you must supply the following values
 
 | Value                     | Environment variables | Description                                                                                                                                                                                                          |
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Tenant ID                 | AZURE_TENANT_ID            | The value of your Azure Stack [tenant ID](../azure-stack-identity-overview.md).                                                          |
+| Tenant ID                 | AZURE_TENANT_ID            | The value of your Azure Stack [tenant ID](../operator/azure-stack-identity-overview.md).                                                          |
 | Client ID                 | AZURE_CLIENT_ID             | The service principal application ID saved when the service principal was created in the previous section.                                                                                              |
-| Subscription ID           | AZURE_SUBSCRIPTION_ID      | The [subscription ID](../azure-stack-plan-offer-quota-overview.md#subscriptions) is how you access offers in Azure Stack.                |
+| Subscription ID           | AZURE_SUBSCRIPTION_ID      | The [subscription ID](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) is how you access offers in Azure Stack.                |
 | Client Secret             | AZURE_CLIENT_SECRET        | The service principal application secret saved when the service principal was created.                                                                                                                                   |
 | Resource Manager Endpoint | ARM_ENDPOINT              | See [the Azure Stack Resource Manager endpoint](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
 | Location                  | RESOURCE_LOCATION    | **Local** for Azure Stack.                                                                                                                                                                                                |
 
-To find the tenant ID for your Azure Stack, see the instructions [here](../azure-stack-csp-ref-operations.md). To set your environment variables, do the following:
+To find the tenant ID for your Azure Stack, see the instructions [here](../operator/azure-stack-csp-ref-operations.md). To set your environment variables, do the following:
 
 ### Microsoft Windows
 
@@ -245,7 +245,7 @@ You can use the following GitHub samples as references for creating solutions wi
 
    `git clone https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group.git`
 
-2. Create an Azure service principal and assign a role to access the subscription. For instructions on creating a service principal, see [Use Azure PowerShell to create a service principal with a certificate](../azure-stack-create-service-principals.md).
+2. Create an Azure service principal and assign a role to access the subscription. For instructions on creating a service principal, see [Use Azure PowerShell to create a service principal with a certificate](../operator/azure-stack-create-service-principals.md).
 
 3. Retrieve the following required environment variable values:
 

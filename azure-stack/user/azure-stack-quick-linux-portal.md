@@ -33,7 +33,7 @@ You can create an Ubuntu Server 16.04 LTS virtual machine by using the Azure Sta
 
 * **A Linux image in the Azure Stack marketplace**
 
-   The Azure Stack marketplace doesn't have a Linux image by default. Check that you have the Azure Stack operator provides the **Ubuntu Server 16.04 LTS** image in your marketplace. The operator can use the steps described in the [Download marketplace items from Azure to Azure Stack](../azure-stack-download-azure-marketplace-item.md) article.
+   The Azure Stack marketplace doesn't have a Linux image by default. Check that you have the Azure Stack operator provides the **Ubuntu Server 16.04 LTS** image in your marketplace. The operator can use the steps described in the [Download marketplace items from Azure to Azure Stack](../operator/azure-stack-download-azure-marketplace-item.md) article.
 
 * **Access to an SSH client**
 

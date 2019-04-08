@@ -21,7 +21,7 @@ ms.lastreviewed: 04/04/2019
 
 # ASDK release notes
 
-This article provides information about changes, fixes, and known issues in the Azure Stack Development Kit (ASDK). If you're not sure which version you're running, you can [use the portal to check](../azure-stack-updates.md#determine-the-current-version).
+This article provides information about changes, fixes, and known issues in the Azure Stack Development Kit (ASDK). If you're not sure which version you're running, you can [use the portal to check](../operator/azure-stack-updates.md#determine-the-current-version).
 
 Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [feed](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
 
@@ -33,18 +33,18 @@ The 1903 payload does not include an ASDK release.
 
 ### New features
 
-- The 1902 build introduces a new user interface on the Azure Stack Administrator portal for creating plans, offers, quotas, and add-on plans. For more information, including screenshots, see [Create plans, offers, and quotas](../azure-stack-create-plan.md).
+- The 1902 build introduces a new user interface on the Azure Stack Administrator portal for creating plans, offers, quotas, and add-on plans. For more information, including screenshots, see [Create plans, offers, and quotas](../operator/azure-stack-create-plan.md).
 
-- For a list of other changes and improvements in this release, see [this section](../azure-stack-update-1902.md#improvements) in the Azure Stack release notes.
+- For a list of other changes and improvements in this release, see [this section](../operator/azure-stack-update-1902.md#improvements) in the Azure Stack release notes.
 
 <!-- ### New features
 
-- For a list of new features in this release, see [this section](../azure-stack-update-1902.md#new-features) of the Azure Stack release notes.
+- For a list of new features in this release, see [this section](../operator/azure-stack-update-1902.md#new-features) of the Azure Stack release notes.
 
 ### Fixed and known issues
 
-- For a list of issues fixed in this release, see [this section](../azure-stack-update-1902.md#fixed-issues) of the Azure Stack release notes. For a list of known issues, see [this section](../azure-stack-update-1902.md#known-issues-post-installation).
-- Note that [available Azure Stack hotfixes](../azure-stack-update-1902.md#azure-stack-hotfixes) are not applicable to the Azure Stack ASDK. -->
+- For a list of issues fixed in this release, see [this section](../operator/azure-stack-update-1902.md#fixed-issues) of the Azure Stack release notes. For a list of known issues, see [this section](../operator/azure-stack-update-1902.md#known-issues-post-installation).
+- Note that [available Azure Stack hotfixes](../operator/azure-stack-update-1902.md#azure-stack-hotfixes) are not applicable to the Azure Stack ASDK. -->
 
 ### Known issues
 
@@ -62,7 +62,7 @@ The 1903 payload does not include an ASDK release.
 
 ## Build 1.1901.0.95
 
-See the [important build information in the Azure Stack release notes](../azure-stack-update-1901.md#build-reference).
+See the [important build information in the Azure Stack release notes](../operator/azure-stack-update-1901.md#build-reference).
 
 ### Changes
 
@@ -73,12 +73,12 @@ This build includes the following improvements for Azure Stack:
 
 ### New features
 
-- For a list of new features in this release, see [this section](../azure-stack-update-1901.md#new-features) of the Azure Stack release notes.
+- For a list of new features in this release, see [this section](../operator/azure-stack-update-1901.md#new-features) of the Azure Stack release notes.
 
 ### Fixed and known issues
 
-- For a list of issues fixed in this release, see [this section](../azure-stack-update-1901.md#fixed-issues) of the Azure Stack release notes. For a list of known issues, see [this section](../azure-stack-update-1901.md#known-issues-post-installation).
-- Note that [available Azure Stack hotfixes](../azure-stack-update-1901.md#azure-stack-hotfixes) are not applicable to the Azure Stack ASDK.
+- For a list of issues fixed in this release, see [this section](../operator/azure-stack-update-1901.md#fixed-issues) of the Azure Stack release notes. For a list of known issues, see [this section](../operator/azure-stack-update-1901.md#known-issues-post-installation).
+- Note that [available Azure Stack hotfixes](../operator/azure-stack-update-1901.md#azure-stack-hotfixes) are not applicable to the Azure Stack ASDK.
 
 ## Build 1.1811.0.101
 
@@ -90,8 +90,8 @@ This build includes the following improvements for Azure Stack:
 
 ### New features
 
-For a list of new features in this release, see [this section](../azure-stack-update-1811.md#new-features) of the Azure Stack release notes.
+For a list of new features in this release, see [this section](../operator/azure-stack-update-1811.md#new-features) of the Azure Stack release notes.
 
 ### Fixed and known issues
 
-For a list of issues fixed in this release, see [this section](../azure-stack-update-1811.md#fixed-issues) of the Azure Stack release notes. For a list of known issues, see [this section](../azure-stack-update-1811.md#known-issues-post-installation).
+For a list of issues fixed in this release, see [this section](../operator/azure-stack-update-1811.md#fixed-issues) of the Azure Stack release notes. For a list of known issues, see [this section](../operator/azure-stack-update-1811.md#known-issues-post-installation).

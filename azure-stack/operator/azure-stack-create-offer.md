@@ -20,7 +20,7 @@ ms.lastreviewed: 03/07/2019
 ---
 # Create an offer in Azure Stack
 
-[Offers](azure-stack-key-features.md) are groups of one or more plans that providers present to users, which those users can buy or subscribe to. This article describes how to create an offer that includes the [plan that you created](azure-stack-create-plan.md). This offer gives subscribers the ability to set up virtual machines (VMs).
+[Offers](azure-stack-overview.md) are groups of one or more plans that providers present to users, which those users can buy or subscribe to. This article describes how to create an offer that includes the [plan that you created](azure-stack-create-plan.md). This offer gives subscribers the ability to set up virtual machines (VMs).
 
 ## Create an offer (1902 and later)
 
@@ -104,4 +104,4 @@ There are two ways to change the state of an offer:
 ## Next steps
 
 - [Create subscriptions](azure-stack-subscribe-plan-provision-vm.md)
-- [Provision a virtual machine](../user/azure-stack-create-vm-template)
+- [Provision a virtual machine](../user/azure-stack-create-vm-template.md)

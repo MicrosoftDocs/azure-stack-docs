@@ -64,7 +64,7 @@ You need to have components in place to build a hybrid CI/CD pipeline. The follo
 This tutorial assumes that you have some basic knowledge of Azure and Azure Stack. To learn more before starting the tutorial, read the following articles:
 
 * [Introduction to Azure](https://azure.microsoft.com/overview/what-is-azure/)
-* [Azure Stack Key Concepts](https://docs.microsoft.com/azure/azure-stack/azure-stack-key-features)
+* [Azure Stack Key Concepts](https://docs.microsoft.com/azure/azure-stack/azure-stack-overview)
 
 ### Azure requirements
 

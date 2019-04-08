@@ -95,7 +95,7 @@ Update the DNS zone file for the domain. Azure AD will verify ownership of the c
 Set up hybrid continuous integration and continuous deployment (CI/CD) to deploy Web App to Azure and Azure Stack, and auto push changes to both clouds.
 
 > [!Note]  
-> Azure Stack with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. Review the App Service documentation "[Before you get started with App Service on Azure Stack](../azure-stack-app-service-before-you-get-started.md)" section for Azure Stack Operator.
+> Azure Stack with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. Review the App Service documentation "[Before you get started with App Service on Azure Stack](../operator/azure-stack-app-service-before-you-get-started.md)" section for Azure Stack Operator.
 
 ### Add Code to Azure Repos
 
@@ -259,7 +259,7 @@ Now that the endpoint information exists, the Azure Pipelines to Azure Stack con
 ## Develop the application build
 
 > [!Note]  
-> Azure Stack with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. Review the App Service documentation "[Before you get started with App Service on Azure Stack](../azure-stack-app-service-before-you-get-started.md)" section for Azure Stack Operator.
+> Azure Stack with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. Review the App Service documentation "[Before you get started with App Service on Azure Stack](../operator/azure-stack-app-service-before-you-get-started.md)" section for Azure Stack Operator.
 
 Use [Azure Resource Manager templates like web](https://azure.microsoft.com/resources/templates/) app code from Azure Repos to deploy to both clouds.
 

@@ -87,7 +87,7 @@ There are two parts to this scenario:
 
 - The marketplace syndication tool is downloaded during the first procedure. 
 
-- You can install [AzCopy](../storage/common/storage-use-azcopy.md) for optimal download performance, but this is not required.
+- You can install [AzCopy]((/azure/storage/common/storage-use-azcopy) for optimal download performance, but this is not required.
 
 ### Use the marketplace syndication tool to download marketplace items
 

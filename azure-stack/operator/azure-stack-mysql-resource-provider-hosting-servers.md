@@ -20,7 +20,7 @@ ms.lastreviewed: 02/28/2019
 
 # Add hosting servers for the MySQL resource provider
 
-You can host a MySQL hosting server instance on a virtual machine (VM) in [Azure Stack](azure-stack-poc.md), or on a VM outside your Azure Stack environment, as long as the MySQL resource provider can connect to the instance.
+You can host a MySQL hosting server instance on a virtual machine (VM) in [Azure Stack](azure-stack-overview.md), or on a VM outside your Azure Stack environment, as long as the MySQL resource provider can connect to the instance.
 
 > [!NOTE]
 > The MySQL resource provider should be created in the default provider subscription while MySQL hosting servers should be created in billable, user subscriptions. The resource provider server should not be used to host user databases.

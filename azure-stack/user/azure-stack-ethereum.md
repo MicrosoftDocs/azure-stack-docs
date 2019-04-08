@@ -27,7 +27,7 @@ To set up:
 
 ## Prerequisites
 
-Download the latest items [from the Marketplace](../azure-stack-download-azure-marketplace-item.md):
+Download the latest items [from the Marketplace](../operator/azure-stack-download-azure-marketplace-item.md):
 
 - Ubuntu Server 16.04 LTS
 - Windows Server 2016

@@ -127,7 +127,7 @@ Before you begin, ensure that you have the following prerequisites:
 
 - An Azure subscription. If you don't already have an Azure subscription, you can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), or sign up for a [free account](https://azure.microsoft.com/pricing/free-trial/).
 
-- The Azure Resource Manager PowerShell cmdlets. See [Install PowerShell for Azure Stack](../../operator/azure-stack-powershell-install.md) for more information about installing the PowerShell cmdlets.
+- The Azure Resource Manager PowerShell cmdlets. See [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md) for more information about installing the PowerShell cmdlets.
 
 ### Step 1 - Create the virtual network, VPN gateway, and local network gateway
 

@@ -45,7 +45,7 @@ To complete the connection configuration, ensure that you have the following ite
 To complete the connection configuration, you must deploy two ASDK environments.
 
 > [!NOTE]
-> For each ASDK that you deploy, follow the [deployment instructions](../asdk/asdk-install). In this article, the ASDK environments are called **POC1** and **POC2**.
+> For each ASDK that you deploy, follow the [deployment instructions](../asdk/asdk-install.md). In this article, the ASDK environments are called **POC1** and **POC2**.
 
 ## Prepare an offer on POC1 and POC2
 

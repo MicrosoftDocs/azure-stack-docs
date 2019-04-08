@@ -39,9 +39,9 @@ The Python SDK supports API version profiles to target different cloud platforms
 
 1. Install Git from [the official site](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 2. For instructions on how install the Python SDK, see [Azure for Python developers](/python/azure/python-sdk-azure-install?view=azure-python).
-3. If not available, create a subscription and save the subscription ID to use later. For instructions on creating a subscription, see [Create subscriptions to offers in Azure Stack](../azure-stack-subscribe-plan-provision-vm.md).
-4. Create a service principal and save its ID and secret. For instructions on how to create a service principal for Azure Stack, see [Provide applications access to Azure Stack](../azure-stack-create-service-principals.md).
-5. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign role to service principal, see [Provide applications access to Azure Stack](../azure-stack-create-service-principals.md).
+3. If not available, create a subscription and save the subscription ID to use later. For instructions on creating a subscription, see [Create subscriptions to offers in Azure Stack](../operator/azure-stack-subscribe-plan-provision-vm.md).
+4. Create a service principal and save its ID and secret. For instructions on how to create a service principal for Azure Stack, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md).
+5. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign role to service principal, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md).
 
 ## Prerequisites
 
@@ -49,9 +49,9 @@ In order to use the Python Azure SDK with Azure Stack, you must supply the follo
 
 | Value | Environment variables | Description |
 |---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
-| Tenant ID | AZURE_TENANT_ID | The value of your Azure Stack [tenant ID](../azure-stack-identity-overview.md). |
+| Tenant ID | AZURE_TENANT_ID | The value of your Azure Stack [tenant ID](../operator/azure-stack-identity-overview.md). |
 | Client ID | AZURE_CLIENT_ID | The service principal application ID saved when service principal was created in the previous section of this article. |
-| Subscription ID | AZURE_SUBSCRIPTION_ID | The [subscription ID](../azure-stack-plan-offer-quota-overview.md#subscriptions) is how you access offers in Azure Stack. |
+| Subscription ID | AZURE_SUBSCRIPTION_ID | The [subscription ID](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) is how you access offers in Azure Stack. |
 | Client Secret | AZURE_CLIENT_SECRET | The service principal application secret saved when the service principal was created. |
 | Resource Manager Endpoint | ARM_ENDPOINT | See the [Azure Stack Resource Manager endpoint](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
 | Resource Location | AZURE_RESOURCE_LOCATION | The resource location of your Azure Stack Environment.
@@ -167,7 +167,7 @@ Each operation is clearly labeled with a comment and a print function. The examp
     pip install -r requirements.txt
     ```
 
-6. Create a [service principal](../azure-stack-create-service-principals.md) to work with Azure Stack. Make sure your service principal has [contributor/owner role](../azure-stack-create-service-principals.md#assign-a-role) on your subscription.
+6. Create a [service principal](../operator/azure-stack-create-service-principals.md) to work with Azure Stack. Make sure your service principal has [contributor/owner role](../operator/azure-stack-create-service-principals.md#assign-a-role) on your subscription.
 
 7. Set the following variables and export these environment variables into your current shell:
 
@@ -180,7 +180,7 @@ Each operation is clearly labeled with a comment and a print function. The examp
     export AZURE_RESOURCE_LOCATION={your AzureStack Resource location}
     ```
 
-8. In order to run this sample, Ubuntu 16.04-LTS and WindowsServer 2012-R2-DataCenter images must be present in the Azure Stack marketplace. These can be either [downloaded from Azure](../azure-stack-download-azure-marketplace-item.md), or added to the [Platform Image Repository](../azure-stack-add-vm-image.md).
+8. In order to run this sample, Ubuntu 16.04-LTS and WindowsServer 2012-R2-DataCenter images must be present in the Azure Stack marketplace. These can be either [downloaded from Azure](../operator/azure-stack-download-azure-marketplace-item.md), or added to the [Platform Image Repository](../operator/azure-stack-add-vm-image.md).
 
 9. Run the sample:
 

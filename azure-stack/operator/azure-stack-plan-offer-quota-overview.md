@@ -23,7 +23,7 @@ ms.lastreviewed: 10/12/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-[Azure Stack](azure-stack-poc.md) enables you to deliver a wide variety of services, such as virtual machines, SQL Server databases, SharePoint, Exchange, and even [Azure Marketplace items](azure-stack-marketplace-azure-items.md). As an Azure Stack operator, you configure and deliver such services in Azure Stack by using plans, offers, and quotas.
+[Azure Stack](azure-stack-overview.md) enables you to deliver a wide variety of services, such as virtual machines, SQL Server databases, SharePoint, Exchange, and even [Azure Marketplace items](azure-stack-marketplace-azure-items.md). As an Azure Stack operator, you configure and deliver such services in Azure Stack by using plans, offers, and quotas.
 
 Offers contain one or more plans, and each plan includes one or more services. By creating plans and combining them into different offers, you can manage:
 

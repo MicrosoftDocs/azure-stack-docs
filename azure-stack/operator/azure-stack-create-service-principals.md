@@ -41,7 +41,7 @@ Once you've created the service principal, a set of steps common to both AD FS a
 
 ## Manage service principal for Azure AD
 
-If you have deployed Azure Stack with Azure Active Directory (Azure AD) as your identity management service, you can create service principals just like you do for Azure. This section shows you how to perform the steps through the portal. Check that you have the [required Azure AD permissions](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) before beginning.
+If you have deployed Azure Stack with Azure Active Directory (Azure AD) as your identity management service, you can create service principals just like you do for Azure. This section shows you how to perform the steps through the portal. Check that you have the [required Azure AD permissions]((/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) before beginning.
 
 ### Create service principal
 
@@ -357,7 +357,7 @@ The following information is required as input for the automation parameters:
 
 ## Assign a role
 
-To access resources in your subscription, you must assign the application to a role. Decide which role represents the right permissions for the application. To learn about the available roles, see [RBAC: Built in Roles](../role-based-access-control/built-in-roles.md).
+To access resources in your subscription, you must assign the application to a role. Decide which role represents the right permissions for the application. To learn about the available roles, see [RBAC: Built in Roles]((/azure/role-based-access-control/built-in-roles).
 
 You can set the scope at the level of the subscription, resource group, or resource. Permissions are inherited to lower levels of scope. For example, adding an application to the Reader role for a resource group means it can read the resource group and any resources it contains.
 

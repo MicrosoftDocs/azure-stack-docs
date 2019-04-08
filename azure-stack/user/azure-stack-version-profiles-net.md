@@ -77,7 +77,7 @@ To use the .NET Azure SDK with Azure Stack, you must supply the following values
 | Resource Manager Endpoint | ARM_ENDPOINT           | See [*the Azure Stack Resource Manager endpoint*][].                                                                    |
 | Location                  | RESOURCE_LOCATION     | Location for Azure Stack.
 
-To find the Tenant ID for your Azure Stack, follow the instructions found [here](../azure-stack-csp-ref-operations.md). To set your environment variables, do the following steps:
+To find the Tenant ID for your Azure Stack, follow the instructions found [here](../operator/azure-stack-csp-ref-operations.md). To set your environment variables, do the following steps:
 
 ### Microsoft Windows
 

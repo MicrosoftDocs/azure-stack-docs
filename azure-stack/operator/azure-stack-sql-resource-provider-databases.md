@@ -22,7 +22,7 @@ ms.lastreviewed: 10/16/2018
 
 You can create and manage self-service databases in the user portal. An Azure Stack user needs a subscription with an offer that includes the SQL database service.
 
-1. Sign in to the [Azure Stack](azure-stack-poc.md) user portal.
+1. Sign in to the [Azure Stack](azure-stack-overview.md) user portal.
 
 2. Select **+ New** &gt;**Data + Storage** &gt; **SQL Server Database** &gt; **Add**.
 

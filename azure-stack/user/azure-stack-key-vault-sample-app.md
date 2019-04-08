@@ -27,7 +27,7 @@ Follow the steps in this article to run a sample application named **HelloKeyVau
 
 ## Prerequisites
 
-You can install the following prerequisites from the Azure Stack [Development Kit](../asdk/asdk-connect.md#connect-to-azure-stack-with-remote-desktop), or from a Windows-based external client if you are [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-with-vpn):
+You can install the following prerequisites from the Azure Stack [Development Kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), or from a Windows-based external client if you are [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn):
 
 * Install [Azure Stack-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
 * Download the [tools required to work with Azure Stack](../operator/azure-stack-powershell-download.md).

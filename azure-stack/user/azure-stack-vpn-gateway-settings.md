@@ -190,4 +190,4 @@ Unlike Azure, which supports multiple offers as both an initiator and a responde
 
 ## Next steps
 
-* [Connect using ExpressRoute](../azure-stack-connect-expressroute.md)
+* [Connect using ExpressRoute](../operator/azure-stack-connect-expressroute.md)

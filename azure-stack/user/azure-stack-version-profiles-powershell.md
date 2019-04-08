@@ -50,7 +50,7 @@ The following table lists the required API profile version and PowerShell admini
 
 ## Install a profile
 
-Use the **Install-AzureRmProfile** cmdlet with the **2018-03-01-hybrid** API version profile to install the AzureRM modules required by Azure Stack. The Azure Stack operator modules are not installed with this API version profile. They should be installed separately as specified in the Step 3 of the [Install PowerShell for Azure Stack](../../operator/azure-stack-powershell-install.md) article.
+Use the **Install-AzureRmProfile** cmdlet with the **2018-03-01-hybrid** API version profile to install the AzureRM modules required by Azure Stack. The Azure Stack operator modules are not installed with this API version profile. They should be installed separately as specified in the Step 3 of the [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md) article.
 
 ```powershell
 Install-AzureRMProfile -Profile 2018-03-01-hybrid

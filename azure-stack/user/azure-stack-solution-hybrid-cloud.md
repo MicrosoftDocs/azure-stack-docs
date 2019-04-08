@@ -47,7 +47,7 @@ This tutorial covers the following tasks:
 This tutorial assumes that you have a basic knowledge of global Azure and Azure Stack. If you want to learn more before starting the tutorial, review these articles:
 
  - [Introduction to Azure](https://azure.microsoft.com/overview/what-is-azure/)
- - [Azure Stack Key Concepts](https://docs.microsoft.com/azure/azure-stack/azure-stack-key-features)
+ - [Azure Stack Key Concepts](https://docs.microsoft.com/azure/azure-stack/azure-stack-overview)
 
 This tutorial also assumes that you have an Azure subscription. If you don't have a subscription, you can [create a free account](https://azure.microsoft.com/free/) before you begin.
 

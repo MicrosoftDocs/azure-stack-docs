@@ -21,7 +21,7 @@ ms.lastreviewed: 09/17/2018
 
 # Add a new Azure Stack tenant account in Azure Active Directory
 
-After [deploying the Azure Stack Development Kit](../asdk/asdk-install), you'll need a tenant user account so you can explore the tenant portal and test your offers and plans. You can create a tenant account by [using the Azure portal](#create-an-azure-stack-tenant-account-using-the-azure-portal) or by using PowerShell.
+After [deploying the Azure Stack Development Kit](../asdk/asdk-install.md), you'll need a tenant user account so you can explore the tenant portal and test your offers and plans. You can create a tenant account by [using the Azure portal](#create-an-azure-stack-tenant-account-using-the-azure-portal) or by using PowerShell.
 
 ## Create an Azure Stack tenant account using the Azure portal
 
@@ -39,8 +39,8 @@ You must have an Azure subscription to use the Azure portal.
 
    - **Name (required).** The first and last name of the new user. For example, Mary Parker.
    - **User name (required).** The user name of the new user. For example, mary@contoso.com.
-       The domain part of the user name must use either the initial default domain name, <_yourdomainname_>.onmicrosoft.com, or a custom domain name, such as contoso.com. For more information about how to create a custom domain name, see [How to add a custom domain name to Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md).
-   - **Profile.** Optionally, you can add more information about the user. You can also add user information at a later time. For more information about adding user info, see [How to add or change user profile information](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
+       The domain part of the user name must use either the initial default domain name, <_yourdomainname_>.onmicrosoft.com, or a custom domain name, such as contoso.com. For more information about how to create a custom domain name, see [How to add a custom domain name to Azure Active Directory]((/azure/active-directory/fundamentals/add-custom-domain).
+   - **Profile.** Optionally, you can add more information about the user. You can also add user information at a later time. For more information about adding user info, see [How to add or change user profile information]((/azure/active-directory/fundamentals/active-directory-users-profile-azure-portal).
    - **Directory role.**  choose **User**.
 
 5. Check **Show Password** and copy the auto-generated password provided in the **Password** box. You'll need this password for the initial sign-in process.
