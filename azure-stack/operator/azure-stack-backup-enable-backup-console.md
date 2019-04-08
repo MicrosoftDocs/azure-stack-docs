@@ -26,7 +26,7 @@ However, the Infrastructure Backup Service does not back up IaaS VMs, network co
 
 Administrators and users are responsible for backing up and restoring IaaS and PaaS resources separately from the infrastructure backup processes. For information about backing up IaaS and PaaS resources, see the following links:
 
-- [Virtual Machines](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-manage-vm-protect)
+- [Virtual Machines](../user/azure-stack-manage-vm-protect.md)
 - [App Service](https://docs.microsoft.com/azure/app-service/manage-backup)
 - [SQL Server](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview)
 

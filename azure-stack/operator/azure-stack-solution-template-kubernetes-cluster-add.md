@@ -252,7 +252,7 @@ When updating the Kubernetes item, you'll remove the previous item in the Market
 
 To remove the Kubernetes item:
 
-1. Connect to Azure Stack with PowerShell as an operator. For instruction, see [Connect to Azure Stack with PowerShell as an operator](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-admin).
+1. Connect to Azure Stack with PowerShell as an operator. For instruction, see [Connect to Azure Stack with PowerShell as an operator](azure-stack-powershell-configure-admin.md).
 
 2. Find the current Kubernetes Cluster item in the gallery.
 
@@ -272,6 +272,6 @@ To remove the Kubernetes item:
 
 ## Next steps
 
-[Deploy a Kubernetes to Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-template-kubernetes-deploy)
+[Deploy a Kubernetes to Azure Stack](../user/azure-stack-solution-template-kubernetes-deploy.md)
 
 [Overview of offering services in Azure Stack](azure-stack-offer-services-overview.md)

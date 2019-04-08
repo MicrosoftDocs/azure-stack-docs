@@ -91,7 +91,7 @@ Running secret rotation using the instructions below will remediate these alerts
 
    > [!IMPORTANT]
    > If secret rotation has already been performed on your Azure Stack environment then you must update the system to version 1811 or later before you execute secret rotation again.
-   > Secret Rotation must be executed by via the [Privileged Endpoint](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint) and requires Azure Stack Operator credentials.
+   > Secret Rotation must be executed by via the [Privileged Endpoint](azure-stack-privileged-endpoint.md) and requires Azure Stack Operator credentials.
    > If your environment Azure Stack Operator(s) do not know whether secret rotation has been run on your environment, update to 1811 before executing secret rotation again.
 
 1. It is highly recommended that you update your Azure Stack instance to version 1811.
@@ -106,8 +106,8 @@ Running secret rotation using the instructions below will remediate these alerts
     > [!Note]
     > The next steps only apply when rotating Azure Stack external secrets.
 
-4. Run **[Test-AzureStack](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test)** and confirm all test outputs are healthy prior to rotating secrets.
-5. Prepare a new set of replacement external certificates. The new set matches the certificate specifications outlined in the [Azure Stack PKI certificate requirements](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs). You can generate a certificate signing request (CSR) for purchasing or creating new certificates using the steps outlined in [Generate PKI Certificates](https://docs.microsoft.com/azure/azure-stack/azure-stack-get-pki-certs) and prepare them for use in your Azure Stack environment using the steps in [Prepare Azure Stack PKI Certificates](https://docs.microsoft.com/azure/azure-stack/azure-stack-prepare-pki-certs). Be sure to validate the certificates you prepare with the steps outlined in [Validate PKI Certificates](https://docs.microsoft.com/azure/azure-stack/azure-stack-validate-pki-certs).
+4. Run **[Test-AzureStack](azure-stack-diagnostic-test.md)** and confirm all test outputs are healthy prior to rotating secrets.
+5. Prepare a new set of replacement external certificates. The new set matches the certificate specifications outlined in the [Azure Stack PKI certificate requirements](azure-stack-pki-certs.md). You can generate a certificate signing request (CSR) for purchasing or creating new certificates using the steps outlined in [Generate PKI Certificates](azure-stack-get-pki-certs.md) and prepare them for use in your Azure Stack environment using the steps in [Prepare Azure Stack PKI Certificates](azure-stack-prepare-pki-certs.md). Be sure to validate the certificates you prepare with the steps outlined in [Validate PKI Certificates](azure-stack-validate-pki-certs.md).
 6. Store a back up to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the file share with the backup copies before you rerun the rotation. Note, keep backup copies in the secure backup location.
 7. Create a fileshare you can access from the ERCS VMs. The file share must be  readable and writable for the **CloudAdmin** identity.
 8. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare.
@@ -141,7 +141,7 @@ Running secret rotation using the instructions below will remediate these alerts
 
 To rotate external secrets:
 
-1. Within the newly created **\Certificates\\\<IdentityProvider>** directory created in the Pre-steps, place the new set of replacement external certificates in the directory structure according to the format outlined in the Mandatory Certificates section of the [Azure Stack PKI certificate requirements](https://docs.microsoft.com/azure/azure-stack/azure-stack-pki-certs#mandatory-certificates).
+1. Within the newly created **\Certificates\\\<IdentityProvider>** directory created in the Pre-steps, place the new set of replacement external certificates in the directory structure according to the format outlined in the Mandatory Certificates section of the [Azure Stack PKI certificate requirements](azure-stack-pki-certs.md#mandatory-certificates).
 
     Example of folder structure for the AAD Identity Provider:
     ```powershell
@@ -184,7 +184,7 @@ To rotate external secrets:
 
     ```
 
-2. Create a PowerShell Session with the [Privileged Endpoint](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint) using the **CloudAdmin** account and store the sessions as a variable. You will use this variable as the parameter in the next step.
+2. Create a PowerShell Session with the [Privileged Endpoint](azure-stack-privileged-endpoint.md) using the **CloudAdmin** account and store the sessions as a variable. You will use this variable as the parameter in the next step.
 
     > [!IMPORTANT]  
     > Do not enter the session, store the session as a variable.
@@ -241,7 +241,7 @@ Remove-PSSession -Session $PEPSession
 > These alerts are inaccurate and should be ignored without running internal secret rotation.
 > Inaccurate internal secret expiration alerts are a known issue that is resolved in 1811– internal secrets will not expire unless the environment has been active for two years.
 
-1. Create a PowerShell session with the [Privileged Endpoint](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
+1. Create a PowerShell session with the [Privileged Endpoint](azure-stack-privileged-endpoint.md).
 2. In the Privileged Endpoint session, run **Start-SecretRotation -Internal**.
 
     > [!Note]
@@ -307,7 +307,7 @@ The **Start-SecretRotation** cmdlet rotates the infrastructure secrets of an Azu
 
 #### Rotate only internal infrastructure secrets
 
-This must be run via your Azure Stack [environment's privileged endpoint](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
+This must be run via your Azure Stack [environment's privileged endpoint](azure-stack-privileged-endpoint.md).
 
 ```powershell
 PS C:\> Start-SecretRotation -Internal

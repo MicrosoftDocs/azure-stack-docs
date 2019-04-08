@@ -39,4 +39,4 @@ The following training and certification opportunities are available to help you
 
 ## Next steps
 
-[Azure Stack documentation](https://docs.microsoft.com/azure/azure-stack/)
+[Azure Stack documentation](/azure-stack/operator)

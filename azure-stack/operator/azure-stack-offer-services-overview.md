@@ -29,11 +29,11 @@ You can offer [Infrastructure as a Service](https://azure.microsoft.com/overview
 
 You can also deploy [Platform as a Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) services for Azure Stack from Microsoft and other 3rd party providers. The services that you can deliver include, but aren't limited to:
 
-- [Add an App Service resource provider to Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-overview)
+- [Add an App Service resource provider to Azure Stack](azure-stack-app-service-overview.md)
 
-- [Add a SQL Server resource provider to Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-sql-resource-provider-deploy)
+- [Add a SQL Server resource provider to Azure Stack](azure-stack-sql-resource-provider-deploy.md)
 
-- [Add a MySQL Server resource provider to Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-mysql-resource-provider-deploy)
+- [Add a MySQL Server resource provider to Azure Stack](azure-stack-mysql-resource-provider-deploy.md)
 
 
 You can even combine services to integrate and build complex solutions for different users.

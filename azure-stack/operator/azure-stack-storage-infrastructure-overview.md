@@ -220,4 +220,4 @@ Some drives just aren't ready to be in Azure Stack storage pool. You can find ou
 
 ## Next step
 
-[Manage storage capacity](https://docs.microsoft.com/azure/azure-stack/azure-stack-manage-storage-shares) 
+[Manage storage capacity](azure-stack-manage-storage-shares.md) 

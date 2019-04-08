@@ -24,7 +24,7 @@ ms.lastreviewed: 03/04/2019
 
 Registering Azure Stack with Azure allows you to download marketplace items from Azure and to set up commerce data reporting back to Microsoft. After you register Azure Stack, usage is reported to Azure commerce and you can see it under the Azure billing Subscription ID used for registration.
 
-The information in this article describes registering Azure Stack integrated systems with Azure. For information about registering the ASDK with Azure, see [Azure Stack registration](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-register) in the ASDK documentation.
+The information in this article describes registering Azure Stack integrated systems with Azure. For information about registering the ASDK with Azure, see [Azure Stack registration](../asdk/asdk-register.md) in the ASDK documentation.
 
 > [!IMPORTANT]  
 > Registration is required to support full Azure Stack functionality, including offering items in the marketplace. In addition, you will be in violation of Azure Stack licensing terms if you do not register when using the pay-as-you-use billing model. To learn more about Azure Stack licensing models, please see the [How to buy page](https://azure.microsoft.com/overview/azure-stack/how-to-buy/).
@@ -77,7 +77,7 @@ Ensure the output returns **FullLanguageMode**. If any other language mode is re
 
 Use the latest PowerShell for Azure Stack to register with Azure.
 
-If the latest version is not already installed, see [install PowerShell for Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-install).
+If the latest version is not already installed, see [install PowerShell for Azure Stack](azure-stack-powershell-install.md).
 
 ### Download the Azure Stack tools
 
