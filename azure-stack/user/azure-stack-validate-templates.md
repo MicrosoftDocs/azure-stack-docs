@@ -41,7 +41,7 @@ Before you use the template validator, run the **AzureRM.CloudCapabilities** Pow
 >[!NOTE]
 >If you update your integrated system, or add any new services or virtual extensions, you should run this module again.
 
-1. Make sure you have connectivity to Azure Stack. These steps can be performed from the Azure Stack development kit host, or you can use a [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-with-vpn) to connect from your workstation.
+1. Make sure you have connectivity to Azure Stack. These steps can be performed from the Azure Stack development kit host, or you can use a [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) to connect from your workstation.
 2. Import the **AzureRM.CloudCapabilities** PowerShell module:
 
     ```powershell

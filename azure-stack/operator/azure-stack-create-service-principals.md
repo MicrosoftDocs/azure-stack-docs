@@ -235,7 +235,7 @@ The example creates a self-signed certificate. When you run the cmdlets in a pro
 
 When creating a service principal while using AD FS for identity, you can use a certificate. You will use the privileged end point to run the cmdlets.
 
-These scripts are run from the privileged endpoint on an ERCS virtual machine. For more information about the privileged end point, see [Using the privileged endpoint in Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
+These scripts are run from the privileged endpoint on an ERCS virtual machine. For more information about the privileged end point, see [Using the privileged endpoint in Azure Stack](azure-stack-privileged-endpoint.md).
 
 #### Parameters
 

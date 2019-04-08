@@ -32,7 +32,7 @@ After you connect to an Azure Stack subscription or a storage account, you can u
 
 ## Prepare for connecting to Azure Stack
 
-You need direct access to the Azure Stack or a VPN connection for storage explorer to access the Azure Stack subscription. To learn how to set up a VPN connection to Azure Stack, see [Connect to Azure Stack with VPN](../asdk/asdk-connect.md#connect-to-azure-stack-with-vpn).
+You need direct access to the Azure Stack or a VPN connection for storage explorer to access the Azure Stack subscription. To learn how to set up a VPN connection to Azure Stack, see [Connect to Azure Stack with VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn).
 
 For the Azure Stack Development Kit (ASDK), you need to export the Azure Stack authority root certificate.
 
