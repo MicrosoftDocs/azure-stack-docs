@@ -5,3 +5,16 @@
   - name: Azure Stack 
     tocHref: /azure-stack/
     topicHref: /azure-stack/
+    items:
+    - name: ASDK
+      tocHref: /asdk/
+      topicHref: /asdk/
+    - name: Operator
+      tocHref: /operator/
+      topicHref: /operator/
+    - name: Partner
+      tocHref: /partner/
+      topicHref: /partner/
+    - name: User
+      tocHref: /user/
+      topicHref: /user/                  
