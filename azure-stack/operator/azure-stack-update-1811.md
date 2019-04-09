@@ -68,7 +68,7 @@ Azure Stack releases hotfixes on a regular basis. Be sure to install the [latest
     the SSL certificates required for Extension Host, which simplifies network 
     integration and increases the security posture of Azure Stack. Refer to this 
     link to prepare for Extension Host:
-    https://docs.microsoft.com/azure-stack/azure-stack-extension-host-prepare`
+    https://docs.microsoft.com/azure-stack/operator/azure-stack-extension-host-prepare`
 
 - The Azure Stack 1811 update requires that you have properly imported the mandatory extension host certificates into your Azure Stack environment. To proceed with installation of the 1811 update, you must import the SSL certificates required for the extension host. To import the certificates, see [this section](azure-stack-extension-host-prepare.md#import-extension-host-certificates).
 
@@ -76,7 +76,7 @@ Azure Stack releases hotfixes on a regular basis. Be sure to install the [latest
  
     `The required SSL certificates for the Extension Host have not been found.
     The Azure Stack update will halt. Refer to this link to prepare for 
-    Extension Host: https://docs.microsoft.com//azure-stack/operator/azure-stack-extension-host-prepare,
+    Extension Host: https://docs.microsoft.com/azure-stack/operator/azure-stack-extension-host-prepare,
     then resume the update.
     Exception: The Certificate path does not exist: [certificate path here]` 
  
