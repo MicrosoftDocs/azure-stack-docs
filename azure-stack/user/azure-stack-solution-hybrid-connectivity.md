@@ -52,7 +52,7 @@ An Azure Stack Operator must deploy the App Service, create plans and offers, cr
 This tutorial assumes that you have some basic knowledge of Azure and Azure Stack. To learn more before starting the tutorial, read the following articles:
 
  - [Introduction to Azure](https://azure.microsoft.com/overview/what-is-azure/)
- - [Azure Stack Key Concepts](https://docs.microsoft.com/azure/azure-stack/azure-stack-overview)
+ - [Azure Stack Key Concepts](../operator/azure-stack-overview.md)
 
 ### Azure
 
@@ -65,9 +65,9 @@ This tutorial assumes that you have some basic knowledge of Azure and Azure Stac
    >[!Note]
    >Deploying the ASDK can take up to 7 hours, so plan accordingly.
 
- - Deploy [App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) PaaS services to Azure Stack.
- - [Create plans and offers](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) in the Azure Stack environment.
- - [Create tenant subscription](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) within the Azure Stack environment.
+ - Deploy [App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
+ - [Create plans and offers](../operator/azure-stack-plan-offer-quota-overview.md) in the Azure Stack environment.
+ - [Create tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) within the Azure Stack environment.
 
 ### Before you begin
 

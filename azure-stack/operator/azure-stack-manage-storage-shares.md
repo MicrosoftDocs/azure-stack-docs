@@ -54,7 +54,7 @@ Shares on volumes hold tenant data. Tenant data includes page blobs, block blobs
 
 When a share is low on free space and actions to [reclaim](#reclaim-capacity) space are not successful or available, the Azure Stack cloud operator can migrate the blob containers from one share to another.
 
-- For information about how tenant users work with blob storage in Azure Stack, see [Azure Stack Storage services](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services).
+- For information about how tenant users work with blob storage in Azure Stack, see [Azure Stack Storage services](/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services).
 
 
 ### Containers

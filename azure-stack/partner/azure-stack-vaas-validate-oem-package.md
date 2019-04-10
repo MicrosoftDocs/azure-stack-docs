@@ -191,7 +191,7 @@ The following tests are required for OEM package validation:
 
    1. **Run** Test-AzureStack on the stamp. If any failures occur, do not continue with the test and contact [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com).
 
-       For information on how to run the Test-AzureStack command, see [Validate Azure Stack system state](https://docs.microsoft.com/azure/azure-stack/azure-stack-diagnostic-test).
+       For information on how to run the Test-AzureStack command, see [Validate Azure Stack system state](../operator/azure-stack-diagnostic-test.md).
 
    1. **Select** "Next" to execute the postcheck script. This is an automated test and marks the end of the Azure Stack update process.
 

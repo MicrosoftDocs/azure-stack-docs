@@ -64,7 +64,7 @@ You need to have components in place to build a hybrid CI/CD pipeline. The follo
 This tutorial assumes that you have some basic knowledge of Azure and Azure Stack. To learn more before starting the tutorial, read the following articles:
 
 * [Introduction to Azure](https://azure.microsoft.com/overview/what-is-azure/)
-* [Azure Stack Key Concepts](https://docs.microsoft.com/azure/azure-stack/azure-stack-overview)
+* [Azure Stack Key Concepts](../operator/azure-stack-overview.md)
 
 ### Azure requirements
 
@@ -74,15 +74,15 @@ This tutorial assumes that you have some basic knowledge of Azure and Azure Stac
 ### Azure Stack requirements
 
 * Use an Azure Stack integrated system or deploy the Azure Stack Development Kit (ASDK). To deploy the ASDK:
-  * The [Tutorial: deploy the ASDK using the installer](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-install) gives detailed deployment instructions.
+  * The [Tutorial: deploy the ASDK using the installer](../asdk/asdk-install.md) gives detailed deployment instructions.
   * Use the [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) PowerShell script to automate ASDK post-deployment steps.
 
     > [!Note]
     > The ASDK installation takes approximately seven hours to complete, so plan accordingly.
 
-  * Deploy [App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) PaaS services to Azure Stack.
-  * Create [Plan/Offers](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) in Azure Stack.
-  * Create a [tenant subscription](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) in Azure Stack.
+  * Deploy [App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
+  * Create [Plan/Offers](../operator/azure-stack-plan-offer-quota-overview.md) in Azure Stack.
+  * Create a [tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) in Azure Stack.
   * Create a Web App in the tenant subscription. Make note of the new Web App URL for later use.
   * Deploy a Windows Server 2012 Virtual Machine in the tenant subscription. You will use this server as your build server and to run Azure DevOps Services.
 * Provide a Windows Server 2016 image with .NET 3.5 for a virtual machine (VM). This VM will be built on your Azure Stack as a private build agent.
@@ -287,9 +287,9 @@ You can create a service connection using the following mapping:
 | Scope level | Subscription | The scope of the connection. |
 | Subscription ID | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | User subscription ID from Azure Stack |
 | Subscription name | name@contoso.com | User subscription name from Azure Stack. |
-| Service Principal client ID | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | The principal ID from [this](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#create-a-service-principal) section in this article. |
+| Service Principal client ID | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | The principal ID from [this](azure-stack-solution-pipeline.md#create-a-service-principal) section in this article. |
 | Service Principal key | THESCRETGOESHERE= | The key from the same article (or the password if you used the script). |
-| Tenant ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | The tenant ID you retrieve following the instruction at [Get the tenant ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id).  |
+| Tenant ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | The tenant ID you retrieve following the instruction at [Get the tenant ID](azure-stack-solution-pipeline.md#get-the-tenant-id).  |
 | Connection: | Not verified | Validate your connection settings to the service principal. |
 
 Now that the endpoint is created, the DevOps to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from DevOps, and then the agent conveys endpoint information for communication with Azure Stack.
@@ -314,7 +314,7 @@ You can create a service connection using the following mapping:
 | Subscription name | name@contoso.com | User subscription name from Azure Stack. |
 | Service Principal client ID | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | The client ID from the Service Principal you created for AD FS. |
 | Certificate | `<certificate>` |  Convert the certificate file from PFX to PEM. Paste certificate PEM file content into this field. <br> Converting PFX to PEM:<br>`openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` |
-| Tenant ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | The tenant ID you retrieve following the instruction at [Get the tenant ID](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline#get-the-tenant-id). |
+| Tenant ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | The tenant ID you retrieve following the instruction at [Get the tenant ID](azure-stack-solution-pipeline.md#get-the-tenant-id). |
 | Connection: | Not verified | Validate your connection settings to the service principal. |
 
 Now that the endpoint is created, the Azure DevOps to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from Azure DevOps, and then the agent conveys endpoint information for communication with Azure Stack.

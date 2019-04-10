@@ -46,7 +46,7 @@ In this tutorial, build a sample environment to:
 
 Some preparation is required to build this solution:
 
--   An installed and functioning Azure Stack (more information can be found here: [Azure Stack overview](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-storage-overview))
+-   An installed and functioning Azure Stack (more information can be found here: [Azure Stack overview](azure-stack-storage-overview.md)
 
 -   An Azure subscription. (Create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
 
