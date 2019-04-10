@@ -160,13 +160,11 @@
     - name: Set up development environment
       items:
       - name: Install Azure Stack PowerShell
-        href: /azure-stack/operator/azure-stack-powershell-install.md
-        maintainContext: true
+        href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Connect with PowerShell
         href: azure-stack-powershell-configure-user.md
       - name: Download Azure Stack tools
-        href: /azure-stack/operator/azure-stack-powershell-download.md
-        maintainContext: true
+        href: /azure-stack/operator/azure-stack-powershell-download?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
       - name: Install Visual Studio
         href: azure-stack-install-visual-studio.md
       - name: Using API version profiles

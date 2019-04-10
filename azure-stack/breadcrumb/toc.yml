@@ -12,10 +12,10 @@
     - name: Operator
       tocHref: /azure-stack/operator/
       topicHref: /azure-stack/operator/index
-    - name: Operator
+    - name: Operatorx
       tocHref: /azure/backup/
       topicHref: /azure-stack/operator/How-to guides/Back up Azure Stack
-    - name: Operator
+    - name: Operatorx
       tocHref: /azure/site-recovery/
       topicHref: /azure-stack/operator/How-to guides/Back up Azure Stack
     - name: Partner
