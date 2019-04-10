@@ -48,25 +48,25 @@ You must have Azure Stack operator permissions for the steps in this tutorial.
 
 ## Create a service principal for Azure AD in the portal
 
-If you've deployed Azure Stack using Azure AD as the identity store, you can create service principals just like you do for Azure. The [create service principals](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals#create-service-principal-for-azure-ad) article shows you how to perform the steps through the portal. Check to see that you
-have the [required Azure AD permissions](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) before beginning.
+If you've deployed Azure Stack using Azure AD as the identity store, you can create service principals just like you do for Azure. The [create service principals](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad) article shows you how to perform the steps through the portal. Check to see that you
+have the [required Azure AD permissions](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) before beginning.
 
 ## Create a service principal for AD FS using PowerShell
 
-If you have deployed Azure Stack with AD FS, you can use PowerShell to create a service principal, assign a role for access, and sign in from PowerShell using that identity. [Create service principal for AD FS](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals#create-service-principal-for-ad-fs) shows you how to perform the required steps using PowerShell.
+If you have deployed Azure Stack with AD FS, you can use PowerShell to create a service principal, assign a role for access, and sign in from PowerShell using that identity. [Create service principal for AD FS](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs) shows you how to perform the required steps using PowerShell.
 
 ## Using the Azure Stack API
 
-The [Azure Stack API](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-rest-api-use) tutorial walks you through the process of retrieving a token to access the Azure Stack API.
+The [Azure Stack API](azure-stack-rest-api-use.md) tutorial walks you through the process of retrieving a token to access the Azure Stack API.
 
 ## Connect to Azure Stack using Powershell
 
-The quickstart [to get up and running with PowerShell in Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart)
+The quickstart [to get up and running with PowerShell in Azure Stack](../operator/azure-stack-powershell-install.md)
 walks you through the steps needed to install Azure PowerShell and connect to your Azure Stack installation.
 
 ### Prerequisites
 
-An Azure Stack installation connected to Azure Active Directory with a subscription you can access. If you don’t have an Azure Stack installation, you can use these instructions to set up an [Azure Stack Development Kit](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-install).
+An Azure Stack installation connected to Azure Active Directory with a subscription you can access. If you don’t have an Azure Stack installation, you can use these instructions to set up an [Azure Stack Development Kit](../asdk/asdk-install.md).
 
 #### Connect to Azure Stack using code
 
@@ -74,9 +74,9 @@ To connect to Azure Stack using code, use the Azure Resource Manager endpoints A
 [GitHub](https://github.com/shriramnat/HybridARMApplication).
 
 >[!Note]
->Unless the Azure SDK for your language of choice supports Azure API Profiles, the SDK may not work with Azure Stack. To learn more about Azure API Profiles, see the [manage API version profiles](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles) article.
+>Unless the Azure SDK for your language of choice supports Azure API Profiles, the SDK may not work with Azure Stack. To learn more about Azure API Profiles, see the [manage API version profiles](azure-stack-version-profiles.md) article.
 
 ## Next steps
 
- - To learn more about how identity is handled in Azure Stack, see [Identity architecture for Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-architecture).
+ - To learn more about how identity is handled in Azure Stack, see [Identity architecture for Azure Stack](../operator/azure-stack-identity-architecture.md).
  - To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns).

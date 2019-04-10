@@ -306,4 +306,4 @@ Update-AzureRmVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
 
 ## Next steps
 
-To learn more about Azure Stack virtual machines, see [Considerations for Virtual Machines in Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-considerations).
+To learn more about Azure Stack virtual machines, see [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md).

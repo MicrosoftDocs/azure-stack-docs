@@ -47,7 +47,7 @@ This tutorial covers the following tasks:
 This tutorial assumes that you have a basic knowledge of global Azure and Azure Stack. If you want to learn more before starting the tutorial, review these articles:
 
  - [Introduction to Azure](https://azure.microsoft.com/overview/what-is-azure/)
- - [Azure Stack Key Concepts](https://docs.microsoft.com/azure/azure-stack/azure-stack-overview)
+ - [Azure Stack Key Concepts](../operator/azure-stack-overview.md)
 
 This tutorial also assumes that you have an Azure subscription. If you don't have a subscription, you can [create a free account](https://azure.microsoft.com/free/) before you begin.
 
@@ -138,7 +138,7 @@ The Azure App Service simplifies running and managing a web application. Because
 
 The App Service on Azure Stack must be routable from the public Internet to let users access your application. If your Azure Stack is accessible from the Internet, make a note of the public-facing IP address or URL for the Azure Stack web app.
 
-If you're using an ASDK, you can [configure a static NAT mapping](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-vpn-connection-one-node#configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal) to expose App Service outside the virtual environment.
+If you're using an ASDK, you can [configure a static NAT mapping](../operator/azure-stack-create-vpn-connection-one-node.md#configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal) to expose App Service outside the virtual environment.
 
 ### Connect a web app in Azure to a hybrid network
 

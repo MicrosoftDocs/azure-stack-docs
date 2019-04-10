@@ -40,8 +40,8 @@ The following checklist is for optimal performance of SQL Server on Azure Stack 
 
 |Area|Optimizations|
 |-----|-----|
-|Virtual machine size |[DS3](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) or higher for SQL Server Enterprise edition.<br><br>[DS2](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) or higher for SQL Server Standard edition and Web edition.|
-|Storage |Use a virtual machine family that supports [Premium storage](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-acs-differences).|
+|Virtual machine size |[DS3](azure-stack-vm-sizes.md) or higher for SQL Server Enterprise edition.<br><br>[DS2](azure-stack-vm-sizes.md) or higher for SQL Server Standard edition and Web edition.|
+|Storage |Use a virtual machine family that supports [Premium storage](azure-stack-acs-differences.md).|
 |Disks |Use a minimum of two data disks (one for log files and one for data file and TempDB), and choose the disk size based on your capacity needs. Set the default data file locations to these disks during the SQL Server install.<br><br>Avoid using operating system or temporary disks for database storage or logging.<br>Stripe multiple Azure data disks to get increased IO throughput using Storage Spaces.<br><br>Format with documented allocation sizes.|
 |I/O|Enable instant file initialization for data files.<br><br>Limit autogrow on the databases with reasonably small fixed increments (64 MB-256 MB).<br><br>Disable autoshrink on the database.<br><br>Set up default backup and database file locations on data disks, not the operating system disk.<br><br>Enable locked pages.<br><br>Apply SQL Server service packs and cumulative updates.|
 |Feature-specific|Back up directly to blob storage (if supported by the SQL Server version in use).|
@@ -51,7 +51,7 @@ For more information on *how* and *why* to make these optimizations, please revi
 
 ## Virtual machine size guidance
 
-For performance-sensitive applications, the following [virtual machine sizes](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) are recommended:
+For performance-sensitive applications, the following [virtual machine sizes](azure-stack-vm-sizes.md) are recommended:
 
 - **SQL Server Enterprise edition:** DS3 or higher
 
@@ -63,7 +63,7 @@ With Azure Stack there is no performance difference between the DS and DS_v2 vir
 
 DS-series (along with DSv2-series) virtual machines in Azure Stack provide the maximum operating system disk and data disk throughput (IOPS). A virtual machine from the DS or DSv2 series provides up to 1,000 IOPS for the operating system disk and up to 2,300 IOPS per data disk, no matter the type or size of the chosen disk.
 
-Data disk throughput is determined uniquely based on the virtual machine family series. You can [refer to this article](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) to identify the data disk throughput per virtual machine family series.
+Data disk throughput is determined uniquely based on the virtual machine family series. You can [refer to this article](azure-stack-vm-sizes.md) to identify the data disk throughput per virtual machine family series.
 
 > [!NOTE]  
 > For production workloads, select a DS-series or DSv2-series virtual machine to provide the maximum possible IOPS on the operating system disk and data disks.
@@ -94,12 +94,12 @@ We recommend storing TempDB on a data disk as each data disk provides a maximum 
 
 ### Data disks
 
-- **Use data disks for data and log files.** If you are not using disk striping, use two data disks from a virtual machine that supports Premium storage, where one disk contains the log files and the other contains the data and TempDB files. Each data disk provides a number of IOPS and bandwidth (MB/s) depending on the virtual machine family, as described in [Virtual machine sizes supported in Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes). If you are using a disk-striping technique, such as Storage Spaces, place all data and log files on the same drive (including TempDB). This configuration gives you the maximum number of IOPS available for SQL Server to consume, no matter which file needs them at any particular time.
+- **Use data disks for data and log files.** If you are not using disk striping, use two data disks from a virtual machine that supports Premium storage, where one disk contains the log files and the other contains the data and TempDB files. Each data disk provides a number of IOPS and bandwidth (MB/s) depending on the virtual machine family, as described in [Virtual machine sizes supported in Azure Stack](azure-stack-vm-sizes.md). If you are using a disk-striping technique, such as Storage Spaces, place all data and log files on the same drive (including TempDB). This configuration gives you the maximum number of IOPS available for SQL Server to consume, no matter which file needs them at any particular time.
 
 > [!NOTE]  
 > When you provision a SQL Server virtual machine in the portal, you have the option of editing your storage configuration. Depending on your configuration, Azure Stack configures one or more disks. Multiple disks are combined into a single storage pool. Both the data and log files reside together in this configuration.
 
-- **Disk striping:** For more throughput, you can add additional data disks and use disk striping. To determine the number of data disks you need, analyze the number of IOPS and bandwidth required for your log files and for your data and TempDB files. Notice that IOPS limits are per data disk based on the virtual machine series family, and not based on the virtual machine size. Network bandwidth limits, however, are based on the virtual machine size. See the tables on [Virtual machine sizes in Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) for more detail. Use the following guidelines:
+- **Disk striping:** For more throughput, you can add additional data disks and use disk striping. To determine the number of data disks you need, analyze the number of IOPS and bandwidth required for your log files and for your data and TempDB files. Notice that IOPS limits are per data disk based on the virtual machine series family, and not based on the virtual machine size. Network bandwidth limits, however, are based on the virtual machine size. See the tables on [Virtual machine sizes in Azure Stack](azure-stack-vm-sizes.md) for more detail. Use the following guidelines:
 
   - For Windows Server 2012 or later, use [Storage Spaces](https://technet.microsoft.com/library/hh831739.aspx) with the following guidelines:
 
@@ -116,8 +116,8 @@ We recommend storing TempDB on a data disk as each data disk provides a maximum 
        New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false
        ```
 
-- Determine the number of disks associated with your storage pool based on your load expectations. Keep in mind that different virtual machine sizes allow different numbers of attached data disks. For more information, see [Virtual machine sizes supported in Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes).
-- In order to get the maximum possible IOPS for data disks, the recommendation is to add the maximum number of data disks supported by your [virtual machine size](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) and use disk striping.
+- Determine the number of disks associated with your storage pool based on your load expectations. Keep in mind that different virtual machine sizes allow different numbers of attached data disks. For more information, see [Virtual machine sizes supported in Azure Stack](azure-stack-vm-sizes.md).
+- In order to get the maximum possible IOPS for data disks, the recommendation is to add the maximum number of data disks supported by your [virtual machine size](azure-stack-vm-sizes.md) and use disk striping.
 - **NTFS allocation unit size:** When formatting the data disk, it is recommended that you use a 64-KB allocation unit size for data and log files as well as TempDB.
 - **Disk management practices:** When removing a data disk, stop the SQL Server service during the change. Also, don't change cache settings on the disks as it doesn't provide any performance improvements.
 

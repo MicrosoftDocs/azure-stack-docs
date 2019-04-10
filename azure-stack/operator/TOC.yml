@@ -363,9 +363,9 @@
     - name: Back up Azure Stack
       href: azure-stack-backup-back-up-azure-stack.md
     - name: Back up files and applications on Azure Stack
-      href: /azure/backup/backup-mabs-files-applications-azure-stack?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+      href: /azure/backup/backup-mabs-files-applications-azure-stack?toc=/azure-stack/operator/toc.json&bc=/azure-stack/operator/breadcrumb/toc.json
     - name: Replicate Azure Stack VMs to Azure 
-      href: /azure/site-recovery/azure-stack-site-recovery?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+      href: /azure/site-recovery/azure-stack-site-recovery?toc=/azure-stack/operator/toc.json&bc=/azure-stack/operator/breadcrumb/toc.json
     - name: Recover from catastrophic data loss
       href: azure-stack-backup-recover-data.md
     - name: Backup best practices
@@ -386,10 +386,10 @@
     href: /powershell/azure/azure-stack/overview
 - name: Related
   items:
-  - name: Azure Stack User Documentation
-    href: /azure/azure-stack/user/
-  - name: ASDK Documentation
-    href: /azure/azure-stack/asdk/
+  - name: Azure Stack User documentation
+    href: /azure-stack/user/ 
+  - name: ASDK documentation
+    href: /azure-stack/asdk/ 
 - name: Resources
   items:
   - name: Azure Stack roadmap

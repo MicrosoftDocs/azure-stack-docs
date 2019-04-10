@@ -50,11 +50,11 @@ In this tutorial, you will build a sample environment to:
     - You find instructions for installing Azure Stack at [Install the Azure Stack Development Kit](../asdk/asdk-install.md).
     - [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) This installation may require a few hours to complete.
 
--   Deploy [App Service](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-deploy) PaaS services to Azure Stack.
+-   Deploy [App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
 
--   [Create Plan/Offers](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview) within the Azure Stack environment.
+-   [Create Plan/Offers](../operator/azure-stack-plan-offer-quota-overview.md) within the Azure Stack environment.
 
--   [Create tenant subscription](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm) within the Azure Stack environment.
+-   [Create tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) within the Azure Stack environment.
 
 -   Create a Web App within the tenant subscription. Make note of the new Web App URL for later use.
 
@@ -62,7 +62,7 @@ In this tutorial, you will build a sample environment to:
 
 -   Windows Server 2016 VM with .NET 3.5 required. This VM will be built in the tenant subscription on Azure Stack as the private build agent.
 
--   [Windows Server 2016 with SQL 2017 VM Image](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image#add-a-vm-image-through-the-portal) is available in the Azure Stack Marketplace. If this image is not available, work with an Azure Stack Operator to ensure it is added to the environment.
+-   [Windows Server 2016 with SQL 2017 VM Image](../operator/azure-stack-add-vm-image.md#add-a-vm-image-through-the-portal) is available in the Azure Stack Marketplace. If this image is not available, work with an Azure Stack Operator to ensure it is added to the environment.
 
 ## Issues and considerations
 

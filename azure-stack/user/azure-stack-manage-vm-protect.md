@@ -37,7 +37,7 @@ If the Azure Stack cloud is offline for an extended time or permanently unrecove
 * Keeps critical VMs, such as database servers, running
 * Enables applications to keep servicing user requests
 
-The operator of the Azure Stack cloud is responsible for creating a recovery plan for the underlying Azure Stack infrastructure and services. To learn more, read the article [Recover from catastrophic data loss](https://docs.microsoft.com/azure/azure-stack/azure-stack-backup-recover-data).
+The operator of the Azure Stack cloud is responsible for creating a recovery plan for the underlying Azure Stack infrastructure and services. To learn more, read the article [Recover from catastrophic data loss](../operator/azure-stack-backup-recover-data.md).
 
 ## Considerations for IaaS VMs
 The operating system installed in the IaaS VM will limit which products you can use to protect the data it contains. For Windows based IaaS VMs, you can use Microsoft and partner products to protect data. For Linux based IaaS VMs, the only option is to use partner products. Refer to [this datasheet for all the BC/DR partners with validated products for Azure Stack](https://aka.ms/azurestackbcdrpartners).
