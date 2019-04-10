@@ -4,17 +4,17 @@
   items:
   - name: Azure Stack 
     tocHref: /azure-stack/
-    topicHref: /azure-stack/operator/
+    topicHref: /azure-stack/operator/index
     items:
     - name: ASDK
-      tocHref: /asdk/
-      topicHref: /asdk/
+      tocHref: /azure-stack/asdk/
+      topicHref: /azure-stack/asdk/index
     - name: Operator
-      tocHref: /operator/
-      topicHref: /operator/
+      tocHref: /azure-stack/operator/
+      topicHref: /azure-stack/operator/index
     - name: Partner
-      tocHref: /partner/
-      topicHref: /partner/
+      tocHref: /azure-stack/partner/
+      topicHref: /azure-stack/partner/index
     - name: User
-      tocHref: /user/
-      topicHref: /user/                  
+      tocHref: /azure-stack/user/
+      topicHref: /azure-stack/user/index
