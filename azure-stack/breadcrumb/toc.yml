@@ -12,15 +12,21 @@
     - name: Operator
       tocHref: /azure-stack/operator/
       topicHref: /azure-stack/operator/index
-    - name: Operatorx
-      tocHref: /azure/backup/
-      topicHref: /azure-stack/operator/How-to guides/Back up Azure Stack
-    - name: Operatorx
-      tocHref: /azure/site-recovery/
-      topicHref: /azure-stack/operator/How-to guides/Back up Azure Stack
+      items:
+      - name: How-to guides / Back up Azure Stack
+        tocHref: /azure/backup/azure-stack-backup-infrastructure-backup/
+        topicHref: /azure/backup/azure-stack-backup-infrastructure-backup/
+        items:
+        - name: How-to guides / Back up Azure Stack / Back up files and applications on Azure Stack
+          tocHref: /azure/backup/backup-mabs-files-applications-azure-stack
+          topicHref: /azure/backup/backup-mabs-files-applications-azure-stack
+        - name: How-to guides / Back up Azure Stack / Replicate Azure Stack VMs to Azure
+          tocHref: /azure/site-recovery/azure-stack-site-recovery
+          topicHref: /azure/site-recovery/azure-stack-site-recovery
     - name: Partner
       tocHref: /azure-stack/partner/
       topicHref: /azure-stack/partner/index
     - name: User
       tocHref: /azure-stack/user/
       topicHref: /azure-stack/user/index
+
