@@ -119,7 +119,7 @@ You need to work with your Azure Stack administrator to set up your service prin
        | Secret name | The secret name used to reference the certificate stored in the vault. |
        | Key vault name | The name of the key vault created in the previous step. |
        | Azure Resource Manager Endpoint | The endpoint in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/`<br>The endpoint in integrated systems is: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
-       | Your Subscription ID | The [subscription ID](../operator/azure-stack-plan-offer-quota-overview#subscriptions.md) is how you access offers in Azure Stack. |
+       | Your Subscription ID | The [subscription ID](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) is how you access offers in Azure Stack. |
 
    - Open PowerShell with an elevated prompt, and [connect to Azure Stack](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Run the following script with the parameters updated to your values:
 
