@@ -48,7 +48,6 @@
     href: /azure-stack/operator
   - name: Azure Active Directory
     href: /azure/active-directory/
-    maintainContext: true
 - name: Resources
   items:
   - name: Azure Stack roadmap
