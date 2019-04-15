@@ -546,9 +546,9 @@ In the web app page, select **SL settings**. Then, in **HTTPS Only**, select **O
 
 When the operation is complete, navigate to any of the HTTP URLs that point to the app. For example:
 
--   http://<app_name>.azurewebsites.net
--   http://northwindcloud.com
--   <http://www.northwindcloud.com>
+-   https://<app_name>.azurewebsites.net
+-   https://northwindcloud.com
+-   <https://www.northwindcloud.com>
 
 #### Enforce TLS 1.1/1.2
 

@@ -62,7 +62,7 @@ To install via Composer: (take the blob as an example).
 | Client library | Azure Stack supported version | Link | Endpoint specification |
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
 | .NET | 8.7.0 | Nuget package:<br>https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0<br> <br>GitHub release:<br>https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0 | app.config file |
-| Java | 6.1.0 | Maven package:<br>http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0<br> <br>GitHub release:<br>https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0 | Connection string setup |
+| Java | 6.1.0 | Maven package:<br>https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0<br> <br>GitHub release:<br>https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0 | Connection string setup |
 | Node.js | 2.7.0 | NPM link:<br>https://www.npmjs.com/package/azure-storage<br>(Run: `npm install azure-storage@2.7.0`)<br> <br>Github release:<br>https://github.com/Azure/azure-storage-node/releases/tag/v2.7.0 | Service instance declaration |
 | C++ | 3.1.0 | Nuget package:<br>https://www.nuget.org/packages/wastorage.v140/3.1.0<br> <br>GitHub release:<br>https://github.com/Azure/azure-storage-cpp/releases/tag/v3.1.0 | Connection string setup |
 | PHP | 1.0.0 | GitHub release:<br>Common: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-common<br>Blob: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-blob<br>Queue:<br>https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-queue<br>Table: https://github.com/Azure/azure-storage-php/releases/tag/v1.0.0-table<br> <br>Install via Composer (see the details below).) | Connection string setup |
@@ -141,9 +141,9 @@ EndpointSuffix=local.azurestack.external"));
 For Azure Stack, the endpoint suffix is specified in the setup of connection string:
 
 ```php
-$connectionString = 'BlobEndpoint=http://<storage account name>.blob.local.azurestack.external/;
-QueueEndpoint=http:// <storage account name>.queue.local.azurestack.external/;
-TableEndpoint=http:// <storage account name>.table.local.azurestack.external/;
+$connectionString = 'BlobEndpoint=https://<storage account name>.blob.local.azurestack.external/;
+QueueEndpoint=https:// <storage account name>.queue.local.azurestack.external/;
+TableEndpoint=https:// <storage account name>.table.local.azurestack.external/;
 AccountName=<storage account name>;AccountKey=<storage account key>'
 ```
 

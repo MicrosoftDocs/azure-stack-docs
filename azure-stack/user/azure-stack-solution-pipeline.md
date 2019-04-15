@@ -505,7 +505,7 @@ This section shows how you can monitor and track all your deployments. The relea
 
 4. Select an environment link (**Azure** or **Azure Stack**) to see information about existing and pending deployments to a specific environment. You can use these views as a quick way to verify that the same build was deployed to both environments.
 
-5. Open the **deployed production app** in your browser. For example, for the Azure App Services website, open the URL `http://[your-app-name].azurewebsites.net`.
+5. Open the **deployed production app** in your browser. For example, for the Azure App Services website, open the URL `https://[your-app-name].azurewebsites.net`.
 
 ## Next steps
 

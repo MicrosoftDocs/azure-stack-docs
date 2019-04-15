@@ -195,7 +195,7 @@ Details about using Azure PowerShell to authenticate with Azure Stack can be fou
 
 ### Authenticate with Azure CLI
 
-For information about using Azure PowerShell to authenticate with Azure Stack, see [Install and configure Azure CLI for use with Azure Stack](/azure-stack/user/azure-stack-connect-cli).
+For information about using Azure PowerShell to authenticate with Azure Stack, see [Install and configure Azure CLI for use with Azure Stack](/azure-stack/user/azure-stack-version-profiles-azurecli2).
 
 ## Next steps
 
