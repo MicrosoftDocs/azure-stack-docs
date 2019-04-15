@@ -90,7 +90,7 @@ $applicationPassword = GenerateSymmetricKey
 
 # Create a new Azure AD application.
 $identifierUri = [string]::Format("http://localhost:8080/{0}",[Guid]::NewGuid().ToString("N"))
-$homePage = "http://contoso.com"
+$homePage = "https://contoso.com"
 
 Write-Host "Creating a new AAD Application"
 $ADApp = New-AzureRmADApplication `

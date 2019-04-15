@@ -27,7 +27,7 @@ sections:
     - image: 
         src: https://docs.microsoft.com/media/common/i_deploy.svg
       text: Deploy Azure Stack Development Kit
-      href: asdk/asdk-download.md
+      href: ../asdk/asdk-download.md
 - title: Step-by-Step Tutorials
   items:
   - type: paragraph
@@ -35,11 +35,11 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure-stack/azure-stack-tutorial-tenant-vm">Offer Virtual Machines on Azure Stack</a>
-    - html: <a href="/azure-stack/azure-stack-tutorial-sql-server">Offer SQL Databases on Azure Stack</a>
-    - html: <a href="/azure-stack/azure-stack-tutorial-sql">Create highly available SQL databases</a>
-    - html: <a href="/azure-stack/azure-stack-tutorial-mysql">Create highly available MySQL databases</a>
-    - html: <a href="/azure-stack/azure-stack-tutorial-app-service">Offer Web Apps on Azure Stack</a>
+    - html: <a href="/azure-stack/operator/azure-stack-tutorial-tenant-vm">Offer Virtual Machines on Azure Stack</a>
+    - html: <a href="/azure-stack/operator/azure-stack-tutorial-sql-server">Offer SQL Databases on Azure Stack</a>
+    - html: <a href="/azure-stack/operator/azure-stack-tutorial-sql">Create highly available SQL databases</a>
+    - html: <a href="/azure-stack/operator/azure-stack-tutorial-mysql">Create highly available MySQL databases</a>
+    - html: <a href="/azure-stack/operator/azure-stack-tutorial-app-service">Offer Web Apps on Azure Stack</a>
 - title: Free Pluralsight Video Training
   items:
   - type: list

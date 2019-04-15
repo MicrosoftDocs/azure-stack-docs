@@ -12,7 +12,7 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: 
+ms.topic: article
 ms.date: 03/23/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg

@@ -370,7 +370,7 @@ Creating a release definition is the final step in the application build process
 
 5.  Select an environment link (**Azure** or **Azure Stack**) to see information about existing and pending deployments to a specific environment. Use these views as a quick way to verify that the same build was deployed to both environments.
 
-6.  Open the **deployed production app** in the browser. For example, for the Azure App Services website, open the URL [http://[your-app-name\].azurewebsites.net](http:// [your-app-name].azurewebsites.net).
+6.  Open the **deployed production app** in the browser. For example, for the Azure App Services website, open the URL [https://[your-app-name\].azurewebsites.net](https:// [your-app-name].azurewebsites.net).
 
 **Integration of Azure and Azure Stack provides a scalable cross-cloud solution**
 

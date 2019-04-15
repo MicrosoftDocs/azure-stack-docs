@@ -108,7 +108,7 @@ The following are post-installation known issues for this build version.
 
 ### Portal
 
-- In the user portal dashboard, when you try to click on the **Feedback** tile, an empty browser tab opens. As a workaround, you can use [Azure Stack User Voice](http://aka.ms/azurestackuservoice) to file a user voice request.
+- In the user portal dashboard, when you try to click on the **Feedback** tile, an empty browser tab opens. As a workaround, you can use [Azure Stack User Voice](https://aka.ms/azurestackuservoice) to file a user voice request.
 
 <!-- 2930820 - IS ASDK -->
 - In both the administrator and user portals, if you search for "Docker," the item is incorrectly returned. It is not available in Azure Stack. If you try to create it, a blade with an error indication is displayed.
@@ -139,7 +139,7 @@ The following are post-installation known issues for this build version.
 
 - When logged into the Azure Stack portals you might see notifications about the public Azure portal. You can safely ignore these notifications, as they do not currently apply to Azure Stack (for example, "1 new update - The following updates are now available: Azure portal April 2019 update").
 
-- In the user portal dashboard, when you select the **Feedback** tile, an empty browser tab opens. As a workaround, you can use [Azure Stack User Voice](http://aka.ms/azurestackuservoice) to file a User Voice request.
+- In the user portal dashboard, when you select the **Feedback** tile, an empty browser tab opens. As a workaround, you can use [Azure Stack User Voice](https://aka.ms/azurestackuservoice) to file a User Voice request.
 
 <!-- ### Health and monitoring -->
 
