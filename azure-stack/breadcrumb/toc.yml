@@ -1,0 +1,32 @@
+- name: Docs
+  tocHref: /
+  topicHref: /
+  items:
+  - name: Azure Stack 
+    tocHref: /azure-stack/
+    topicHref: /azure-stack/operator/index
+    items:
+    - name: ASDK
+      tocHref: /azure-stack/asdk/
+      topicHref: /azure-stack/asdk/index
+    - name: Operator
+      tocHref: /azure-stack/operator/
+      topicHref: /azure-stack/operator/index
+      items:
+      - name: How-to guides / Back up Azure Stack
+        tocHref: /azure-stack/operator/azure-stack-backup-infrastructure-backup/
+        topicHref: /azure-stack/operator/azure-stack-backup-infrastructure-backup/
+        items:
+        - name: Back up files and applications on Azure Stack
+          tocHref: /azure/backup/backup-mabs-files-applications-azure-stack
+          topicHref: /azure/backup/backup-mabs-files-applications-azure-stack
+        - name: Replicate Azure Stack VMs to Azure
+          tocHref: /azure/site-recovery/azure-stack-site-recovery
+          topicHref: /azure/site-recovery/azure-stack-site-recovery
+    - name: Partner
+      tocHref: /azure-stack/partner/
+      topicHref: /azure-stack/partner/index
+    - name: User
+      tocHref: /azure-stack/user/
+      topicHref: /azure-stack/user/index
+

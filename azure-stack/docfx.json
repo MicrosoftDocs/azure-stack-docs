@@ -1,0 +1,56 @@
+{
+  "build": {
+    "content": [
+      {
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "**/*.png",
+          "**/*.jpg",
+          "**/*.svg"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**"
+        ]
+      }
+    ],
+    "overwrite": [],
+    "externalReference": [],
+    "globalMetadata": {
+      "feedback_system": "GitHub",
+      "feedback_github_repo": "MicrosoftDocs/azure-stack-docs",
+      "feedback_product_url": "https://feedback.azure.com/forums/344565-azure-stack",
+      "breadcrumb_path": "/azure-stack/breadcrumb/toc.json",
+      "extendBreadcrumb": true,
+      "_op_documentIdPathDepotMapping": {
+        "./": {
+          "depot_name": "Azure.azure-documents",
+          "folder_relative_path_in_docset": "articles/azure-stack/"
+        }
+      }          
+    },
+    "fileMetadata": {},
+    "template": [],
+    "dest": "AzureStack",
+    "markdownEngineName": "markdig"
+  }
+}
