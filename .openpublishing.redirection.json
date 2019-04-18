@@ -1,0 +1,9 @@
+{
+  "redirections": [
+    {
+      "source_path": "index.yml",
+      "redirect_url": "/azure-stack/operator",
+      "redirect_document_id": false
+    }
+  ]
+}
