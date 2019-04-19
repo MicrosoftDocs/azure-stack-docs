@@ -47,11 +47,11 @@ This article contains a checklist of update-related activities for Azure Stack o
 
 ## After Azure Stack update
 
-<!-- | Activity              | Details                                                                          |
+| Activity              | Details                                                                          |
 |-----------------------|----------------------------------------------------------------------------------|
 | Apply latest hotfixes | Apply the latest hotfixes applicable to updated version.                          |
 | Retrieve encryption keys | Retrieve the data at rest encryption keys and securely store them outside of your Azure Stack deployment. Follow the [instructions on how to retrieve the keys](azure-stack-security-bitlocker.md). |
-| (activity)            | (details)                                                                        | -->
+| (activity)            | (details)                                                                        | 
 
 ## Next steps
 

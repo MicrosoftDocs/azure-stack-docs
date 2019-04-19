@@ -51,10 +51,10 @@ Changes and product improvements with tangible customer-facing value.
 
 Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it.
 
-<!-- | Case #                | Details                                                                          |
+| Case #                | Details                                                                          |
 |-----------------------|----------------------------------------------------------------------------------|
 | N/A                   | Details about the fix.                                                           |
-| ##########            | Details about the fix.                                                           | -->
+| ##########            | Details about the fix.                                                           |
 
 ### Security updates
 
