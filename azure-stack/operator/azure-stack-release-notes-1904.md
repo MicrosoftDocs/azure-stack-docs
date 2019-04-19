@@ -28,10 +28,8 @@ This article describes the contents of the 1904 update package. The update inclu
 - [Description of what's new, improvements, fixes, and security updates](azure-stack-release-notes-1904.md#whats-in-this-update)
 - [Update planning](azure-stack-release-notes-1904.md#update-planning)
 
-<!-- WHY DO WE NEED THIS? 
 > [!IMPORTANT]  
 > This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
--->
 
 ## Build reference
 
@@ -47,20 +45,20 @@ What's new, also net new experiences and features.
 
 ### Improvements
 
-Changes and product improvements with tangible custer facing value.
+Changes and product improvements with tangible customer-facing value.
 
 ### Fixes
 
 Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it.
 
-| Case #                | Details                                                                          |
+<!-- | Case #                | Details                                                                          |
 |-----------------------|----------------------------------------------------------------------------------|
 | N/A                   | Details about the fix.                                                           |
-| ##########            | Details about the fix.                                                           |
+| ##########            | Details about the fix.                                                           | -->
 
 ### Security updates
 
-This update contains several updates for identified vulnerabilities. For more information about these updates see Microsoft Knowledge Base article [xxxxxxx] (https://support.microsoft.com/en-us/help/xxxxxxxx). See [Azure Stack security updates](azure-stack-release-notes-security-updates-1904.md) for a complete list of updates.
+This update contains several updates for identified vulnerabilities. For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base article [4487006](https://support.microsoft.com/en-us/help/4487006). See [Azure Stack security updates](azure-stack-release-notes-security-updates-1904.md) for a complete list of updates.
 
 ## Update planning
 
@@ -72,7 +70,7 @@ Before applying the update, make sure to review the following information:
 
 ## Download the update
 
-You can download the Azure Stack 1904 update package from [here](https://aka.ms/azurestackupdatedownload).
+You can download the Azure Stack 1904 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
 
 ### Automatic update notifications
 
