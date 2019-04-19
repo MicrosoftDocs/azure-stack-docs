@@ -1,5 +1,5 @@
 ---
-redirect_url: https://docs.microsoft.com/azure-stack/operator
+redirect_url: /azure-stack/operator
 redirect_document_id: false
 title: Temp file for redirection
 author: BryanLa
