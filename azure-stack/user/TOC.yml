@@ -156,15 +156,26 @@
     - name: Develop for Azure Stack
       href: azure-stack-developer.md
     - name: Set up development environment
+      href:  azure-stack-dev-start.md
       items:
+      - name: Azure Stack PowerShell overview
+        href: azure-stack-powershell-overview.md
       - name: Install Azure Stack PowerShell
         href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        maintainContext: true
       - name: Connect with PowerShell
         href: azure-stack-powershell-configure-user.md
       - name: Download Azure Stack tools
         href: /azure-stack/operator/azure-stack-powershell-download?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+        maintainContext: true
+      - name: Use Docker to run PowerShell
+        href: azure-stack-powershell-user-docker.md
       - name: Install Visual Studio
         href: azure-stack-install-visual-studio.md
+      - name: Use an SSH public key
+        href: azure-stack-dev-start-howto-SSH-public-key.md
+      - name: Deploy a Linux VM for a web app
+        href: azure-stack-dev-start-howto-deploy-linux.md
       - name: Using API version profiles
         href: azure-stack-version-profiles.md
         items:
@@ -184,6 +195,21 @@
           href: azure-stack-version-profiles-python.md
         - name: Resource provider APIs supported by profiles
           href: azure-stack-profiles-azure-resource-manager-versions.md
+    - name: Common deployments for Azure Stack
+      href: azure-stack-dev-start-deploy-app.md
+      items:
+      - name: Deploy .Net Core (C#) to a VM
+        href: azure-stack-dev-start-howto-vm-dotnet.md
+      - name: Deploy Java to a VM
+        href: azure-stack-dev-start-howto-vm-java.md
+      - name: Deploy Go to a VM
+        href: azure-stack-dev-start-howto-vm-go.md
+      - name: Deploy Ruby to a VM
+        href: azure-stack-dev-start-howto-vm-ruby.md
+      - name: Deploy Python to a VM
+        href: azure-stack-dev-start-howto-vm-python.md
+      - name: Deploy NodeJS to a VM
+        href: azure-stack-dev-start-howto-vm-nodejs.md
     - name: Use the Azure Stack Policy module
       href: azure-stack-policy-module.md
     - name: Use templates
