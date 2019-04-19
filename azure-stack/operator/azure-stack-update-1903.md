@@ -48,7 +48,8 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 
 ### Azure Stack hotfixes
 
-- **1902**: [KB 4481548 – Azure Stack hotfix 1.1902.2.73](https://support.microsoft.com/help/4494719)
+- **1902**: [KB 4500637 – Azure Stack hotfix 1.1902.3.75](https://support.microsoft.com/help/4500637)
+- **1903**: [KB 4500638 – Azure Stack hotfix 1.1903.2.39](https://support.microsoft.com/help/4500638)
 
 ## Improvements
 
