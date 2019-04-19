@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 04/20/2019
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 04/04/2019
@@ -79,19 +79,3 @@ This build includes the following improvements for Azure Stack:
 
 - For a list of issues fixed in this release, see [this section](../operator/azure-stack-update-1901.md#fixed-issues) of the Azure Stack release notes. For a list of known issues, see [this section](../operator/azure-stack-update-1901.md#known-issues-post-installation).
 - Note that [available Azure Stack hotfixes](../operator/azure-stack-update-1901.md#azure-stack-hotfixes) are not applicable to the Azure Stack ASDK.
-
-## Build 1.1811.0.101
-
-### Changes
-
-This build includes the following improvements for Azure Stack:  
-
-- There is a set of new minimum and recommended hardware and software requirements for the ASDK. These new recommended specs are documented in [Azure Stack deployment planning considerations](asdk-deploy-considerations.md). As the Azure Stack platform has evolved, more services are now available and more resources may be required. The increased specs reflect these revised recommendations.
-
-### New features
-
-For a list of new features in this release, see [this section](../operator/azure-stack-update-1811.md#new-features) of the Azure Stack release notes.
-
-### Fixed and known issues
-
-For a list of issues fixed in this release, see [this section](../operator/azure-stack-update-1811.md#fixed-issues) of the Azure Stack release notes. For a list of known issues, see [this section](../operator/azure-stack-update-1811.md#known-issues-post-installation).
