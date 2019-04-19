@@ -9,6 +9,7 @@ editor: ''
 
 ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
 ms.service: azure-stack
+
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -28,6 +29,7 @@ You can use Azure Resource Manager templates to deploy and provision all the res
 These templates can be deployed with the Microsoft Azure Stack portal, PowerShell, the command line, and Visual Studio.
 
 The following quickstart templates are available on [GitHub](https://aka.ms/azurestackgithub):
+
 
 ## Deploy SharePoint Server (non-high-availability deployment)
 
@@ -78,4 +80,6 @@ To cancel a running template deployment, use the [Stop-AzureRmResourceGroupDeplo
 ## Next steps
 
 * [Deploy templates with the portal](azure-stack-deploy-template-portal.md)
+* [Deploy templates with PowerShell](azure-stack-deploy-template-powershell.md)
+* [Deploy templates with Visual Studio](azure-stack-deploy-template-visual-studio.md)
 * [Azure Resource Manager overview](/azure/azure-resource-manager/resource-group-overview)
