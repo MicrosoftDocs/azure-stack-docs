@@ -36,7 +36,7 @@ You can create a Ubuntu Server 16.04 LTS virtual machine by using the Azure CLI.
 
 * Azure Stack requires a specific version of the Azure CLI to create and manage the resources. If you don't have the Azure CLI configured for Azure Stack, sign in to the [development kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), or a Windows-based external client if you are [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) and follow the steps to [install and configure Azure CLI](azure-stack-version-profiles-azurecli2.md).
 
-* A public SSH key with the name id_rsa.pub saved in the .ssh directory of your Windows user profile. For detailed information about creating SSH keys, see [Creating SSH keys on Windows](/azure/virtual-machines/linux/ssh-from-windows).
+* A public SSH key with the name id_rsa.pub saved in the .ssh directory of your Windows user profile. For detailed information about creating SSH keys, see [How to use an SSH public key](azure-stack\user\azure-stack-dev-start-howto-SSH-public-key.md).
 
 ## Create a resource group
 

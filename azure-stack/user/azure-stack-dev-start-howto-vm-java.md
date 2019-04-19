@@ -6,10 +6,10 @@ author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: overview
-ms.date: 03/11/2019
+ms.date: 04/24/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 04/24/2019
 
 # keywords:  Deploy an app to Azure Stack
 # Intent: I am developer using Windows 10 or Linux Ubuntu who would like to deploy an app for Azure Stack.
@@ -257,7 +257,9 @@ Apache Tomcat, often referred to as Tomcat Server, is an open-source Java Servle
 
 ## Create an app
 
-You will need to create a WAR to deploy to Tomcat. You can find a tutorial on creating WAR files with Java at [Deploy a Spring Boot JAR file web app to Azure App Service on Linux](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?view=azure-java-stable)
+You will need to create a WAR to deploy to Tomcat. If you would just like to check your environment, you can find an example War at the Apache TomCat site: [sample app](https://tomcat.apache.org/tomcat-6.0-doc/appdev/sample/).
+
+For guidance about developing Java apps in Azure, see [Build and deploy Java apps on Azure](https://azure.microsoft.com/develop/java/).
 
 ## Deploy and run the app
 
@@ -276,21 +278,12 @@ You will need to create a WAR to deploy to Tomcat. You can find a tutorial on cr
 
 3. Connect to your VM with FileZilla to clear the webapps folder and then load your new or updated WAR. For instructions on using FileZila, see [Connect with SFTP with FileZilla](azure-stack-dev-start-howto-SSH-public-key.md#connect-with-sftp-with-filezilla).
     - Clear `TOMCAT_HOME/webapps`.
-    - Add your WAR to` TOMCAT_HOME/webapps`.
+    - Add your WAR to ` TOMCAT_HOME/webapps`, for example  `/opt/tomcat/webapps/`.
 
-4. Start the Tomcat service to run the app:
-
-    ```bash  
-        sudo systemctl start tomcat
-    ```
-
-5.  Now navigate to your new server and you should see your running web application.
+4.  Tomcat automatically expands and deploys the application. You can view it with the DNS name you created earlier. For example:
 
     ```HTTP  
-       http://yourmachine.local.cloudapp.azurestack.external:8080/<warname>
-    ```
-
-    For example: http://java1901.local.cloudapp.azurestack.external:8080/gs-spring-boot-0.1.0/
+       http://yourmachine.local.cloudapp.azurestack.external:8080/sample
 
 ## Next steps
 

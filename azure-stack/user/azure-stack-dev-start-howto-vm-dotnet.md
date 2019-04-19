@@ -6,10 +6,10 @@ author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: overview
-ms.date: 03/11/2019
+ms.date: 04/24/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 04/24/2019
 
 # keywords:  Deploy an app to Azure Stack
 # Intent: I am developer using Windows 10 or Linux Ubuntu who would like to deploy an app for Azure Stack.
@@ -28,8 +28,8 @@ This article will use a C# 6.0 app using ASP.NET running on a Windows 2016 serve
 1. Create a [Windows Server VM](azure-stack-quick-windows-portal.md).
 
 2. Run the following script to install the components on your VM. The script:
-      - Install IIS (with Management Console)
-      - Install ASP.NET 4.6
+      - Install IIS (with Management Console).
+      - Install ASP.NET 4.6.
 
         ```PowerShell  
         # Install IIS (with Management Console)
@@ -44,16 +44,11 @@ This article will use a C# 6.0 app using ASP.NET running on a Windows 2016 serve
 
 3. Download the [MSI for Web deployment 3.6](https://www.microsoft.com/download/details.aspx?id=43717). Install from the MSI and then enable on all of the features.
 
-4. Install the .NET Core Hosting Bundle for 2.2 on the your server. For the steps, see [Install the .NET Core Hosting Bundle
-](https://docs.microsoft.com/aspnet/core/host-and-deploy/iis/?view=aspnetcore-2.2#install-the-net-core-hosting-bundle).
+4. Install the .NET Core Hosting Bundle for 2.2 on the your server. For the steps, see [.NET Core Installer](https://dotnet.microsoft.com/download/dotnet-core/2.2).
 
-https://go.microsoft.com/fwlink/?LinkID=798306&clcid=0x409
+    > [!Note] Make sure you are using the same version of .NET Core on both your development machine and your target server.
 
-https://docs.microsoft.com/en-us/dotnet/core/windows-prerequisites?tabs=netcore2x
-
-https://dotnet.microsoft.com/download/dotnet-core/2.2
-
-5. Return to the Azure Stack portal, and open the ports In the Networking settings for your VM.
+5. Return to the Azure Stack portal, and open the ports in the network settings for your VM.
 
     1. Open the Azure Stack portal for your tenant.
     2. Find your VM. You may have pinned the VM to your dashboard, or you can search for the VM in the **Search resources** box.
@@ -80,7 +75,7 @@ https://dotnet.microsoft.com/download/dotnet-core/2.2
     1. **Name** and provide a **Description** so that you can make a note of why you opened the port.
     1. Select Add.
 
-5.  In the Networking settings for your VM in Azure Stack, create a DNS name for your server. Users can connect to your web site using the URL.
+5.  In the **Networking** settings for your VM in Azure Stack, create a DNS name for your server. Users can connect to your web site using the URL.
 
     1. Open the Azure Stack portal for your tenant.
     1. Find your VM. You may have pinned the VM to your dashboard, or you can search for the VM in the **Search resources** box.
@@ -119,7 +114,7 @@ Create a publish target to your VM in Azure Stack.
 
 9. Select **Validate connection** to validate your web deploy configuration. And then click **Next**.
 10. Set your **Configuration** as **Release**.
-11. Set **Target Framework** as **netcoreapp2.0**.
+11. Set **Target Framework** as **netcoreapp2.2**.
 12. Set **Target Runtime** as **Portable**.
 13. Select **Save**.
 14. Select **Publish**.
