@@ -111,7 +111,7 @@ The following cloud scenarios are tested by the validation tool:
 
 - The parameter **List** can be used to display all available test categories.
 
-- The parameters **Include** and **Ignore** can be used to include or exclude test categories. See the [Tests available](azure-stack-diagnostic-test.md#tests-available) section for more information on shorthand to be used with these arguments.
+- The parameters **Include** and **Ignore** can be used to include or exclude test categories. See the following section for more information about the information to be used with these arguments.
 
   ```powershell
   Test-AzureStack -Include AzsSFRoleSummary, AzsInfraCapacity
