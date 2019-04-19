@@ -1,9 +1,4 @@
 {
   "redirections": [
-    {
-      "source_path": "index.md",
-      "redirect_url": "/azure-stack/operator",
-      "redirect_document_id": false
-    }
   ]
 }
