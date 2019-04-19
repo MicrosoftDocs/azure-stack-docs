@@ -73,7 +73,7 @@
         - name: Extension host
           href: azure-stack-extension-host-prepare.md
     - name: Deployment worksheet
-      href: azure-stack-datacenter-integration.md
+      href: azure-stack-deployment-worksheet.md
     - name: Identity integration
       items:    
       - name: Choose an identity provider
