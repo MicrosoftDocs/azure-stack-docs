@@ -93,9 +93,10 @@ These low impact tests work on an infrastructure level and provide you with info
 
 ### Cloud scenario tests
 
-In addition to the infrastructure tests above, you also have the ability to run cloud scenario tests to check functionality across infrastructure components. Cloud administrator credentials are required to run these tests as they involve resource deployment. 
-	> [!NOTE]
-	> Currently you cannot run cloud scenario tests using Active Directory Federated Services (AD FS) credentials. 
+In addition to the infrastructure tests above, you also have the ability to run cloud scenario tests to check functionality across infrastructure components. Cloud administrator credentials are required to run these tests as they involve resource deployment.
+
+> [!NOTE]
+> Currently you cannot run cloud scenario tests using Active Directory Federated Services (AD FS) credentials. 
 
 The following cloud scenarios are tested by the validation tool:
 - Resource group creation   
