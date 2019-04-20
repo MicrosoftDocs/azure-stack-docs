@@ -82,7 +82,7 @@ Use these steps to prepare and to validate the Azure Stack PKI certificates for 
     > AD FS and Graph are required if you are using AD FS as your identity system. For example:
     >
     > ```powershell  
-    > $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'ADFS', 'Admin Extension Host', 'Admin Portal', 'ARM Admin', 'ARM Public',  'Graph', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal'
+    > $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'ADFS', 'Admin Extension Host', 'Admin Portal', 'ARM Admin', 'ARM Public', 'Graph', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal'
     > ```
     
      - Place your certificate(s) in the appropriate directories created in the previous step. For example:  
