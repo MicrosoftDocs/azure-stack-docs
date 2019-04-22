@@ -45,7 +45,7 @@ ms.topic: hub-page
                                 </div>
                             </div>
                             <div class="cardText">
-                                <h3>What is the difference between global Azure, Azure Stack, and Azure Stack HCI?</h3>
+                                <h3>The difference between global Azure, Azure Stack, and Azure Stack HCI</h3>
                                 <p>Learn how Microsoft provides Azure and the Azure Stack family of services in one Azure ecosystem.</p>
                             </div>
                         </div>
@@ -75,7 +75,7 @@ ms.topic: hub-page
 </ul>
 
 <h2>Role-based documentation</h2>
-<ul class="cardsM panelContent singlePanelContent cols cols3" style="display:flex!important;">
+<ul class="cardsM panelContent singlePanelContent cols cols4" style="display:flex!important;">
     <li>
         <a class="card" href="/azure-stack/operator/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
             <div class="cardText">
@@ -219,45 +219,6 @@ ms.topic: hub-page
     </li>        
 </ul>
 
-<h2>Step-by-Step Tutorials (Operator)</h2>
-<ul class="cardsM panelContent singlePanelContent cols cols3" style="display:flex!important;">
-    <li>
-        <a class="card" href="/azure-stack/operator/azure-stack-tutorial-tenant-vm" data-linktype="external"><img class="cardImage" alt="" src="media/index/i_tasks.svg" data-linktype="external">
-            <div class="cardText">
-                <h3>Offer virtual machines</h3>
-            </div>
-        </a>
-    </li>
-    <li>
-        <a class="card" href="/azure-stack/operator/azure-stack-tutorial-sql-server" data-linktype="external"><img class="cardImage" alt="" src="media/index/i_tasks.svg" data-linktype="external">
-            <div class="cardText">
-                <h3>Offer SQL databases</h3>
-            </div>
-        </a>
-    </li>   
-    <li>
-        <a class="card" href="/azure-stack/operator/azure-stack-tutorial-sql" data-linktype="external"><img class="cardImage" alt="" src="media/index/i_tasks.svg" data-linktype="external">
-            <div class="cardText">
-                <h3>Offer highly available SQL databases</h3>
-            </div>
-        </a>
-    </li>    
-    <li>
-        <a class="card" href="/azure-stack/operator/azure-stack-tutorial-mysql" data-linktype="external"><img class="cardImage" alt="" src="media/index/i_tasks.svg" data-linktype="external">
-            <div class="cardText">
-                <h3>Offer highly available MySQL databases</h3>
-            </div>
-        </a>
-    </li>            
-    <li>
-        <a class="card" href="/azure-stack/operator/azure-stack-tutorial-app-service" data-linktype="external"><img class="cardImage" alt="" src="media/index/i_tasks.svg" data-linktype="external">
-            <div class="cardText">
-                <h3>Offer web apps</h3>
-            </div>
-        </a>
-    </li>        
-</ul>
-
 <h2>Reference</h2>
 <ul class="cardsF panelContent singlePanelContent" style="display:flex!important;">
     <li>
@@ -281,7 +242,7 @@ ms.topic: hub-page
                     <div class="cardText">
                         <h3>API</h3>
 						<p><a href="/rest/api/">Azure REST APIs</a></p>
-						<p><a href="https://docs.microsoft.com/en-us/rest/api/azure-stack/">Azure Stack Admin REST APIs</a></p>
+						<p><a href="/rest/api/azure-stack/">Azure Stack Admin REST APIs</a></p>
                      </div>
                 </div>
             </div>
