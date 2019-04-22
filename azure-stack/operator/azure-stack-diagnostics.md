@@ -9,7 +9,7 @@ cloud: azure-stack
 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/16/2018
+ms.date: 04/16/2019
 ms.author: jeffgilb
 ms.reviewer: adshar
 ms.lastreviewed: 11/20/2018
@@ -103,12 +103,6 @@ Collect logs from VirtualMachines and BareMetal roles, with date filtering for l
 ```powershell
 Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
 ```
-
-<!-- Collect logs and store them in the specified Azure Storage blob container. An example of the SAS Uri parameter is `https://<StorageAccountName>.blob.core.windows.net/<ContainerName><SAS Token>`:
-
-```powershell
-Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
-``` -->
 
 ### Parameter considerations for both ASDK and integrated systems
 
