@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 04/20/2019
 ms.author: jeffgilb
 ms.reviewer: adshar
 ms.lastreviewed: 12/03/2018
@@ -65,32 +65,38 @@ These low impact tests work on an infrastructure level and provide you with info
 
 | Test Category                                        | Argument for -Include and -Ignore |
 | :--------------------------------------------------- | :-------------------------------- |
+| Azure Stack ACS Summary                              | AzsAcsSummary                     |
+| Azure Stack Active Directory Summary                 | AzsAdSummary                      |
 | Azure Stack Alert Summary                            | AzsAlertSummary                   |
+| Azure Stack Application Crash Summary                | AzsApplicationCrashSummary        |
 | Azure Stack Backup Share Accessibility Summary       | AzsBackupShareAccessibility       |
+| Azure Stack BMC Summary                              | AzsStampBMCSummary                |
+| Azure Stack Cloud Hosting Infrastructure Summary     | AzsHostingInfraSummary            |
+| Azure Stack Cloud Hosting Infrastructure Utilization | AzsHostingInfraUtilization        |
 | Azure Stack Control Plane Summary                    | AzsControlPlane                   |
 | Azure Stack Defender Summary                         | AzsDefenderSummary                |
 | Azure Stack Hosting Infrastructure Firmware Summary  | AzsHostingInfraFWSummary          |
-| Azure Stack Cloud Hosting Infrastructure Summary     | AzsHostingInfraSummary            |
-| Azure Stack Cloud Hosting Infrastructure Utilization | AzsHostingInfraUtilization        |
 | Azure Stack Infrastructure Capacity                  | AzsInfraCapacity                  |
 | Azure Stack Infrastructure Performance               | AzsInfraPerformance               |
 | Azure Stack Infrastructure Role Summary              | AzsInfraRoleSummary               |
-| Azure Stack Update Summary                           | AzsInfraUpdateSummary             |
 | Azure Stack Portal and API Summary                   | AzsPortalAPISummary               |
 | Azure Stack Scale Unit VM Events                     | AzsScaleUnitEvents                |
 | Azure Stack Scale Unit VM Resources                  | AzsScaleUnitResources             |
+| Azure Stack Scenarios                                | AzsScenarios                      |
 | Azure Stack SDN Validation Summary                   | AzsSDNValidation                  |
 | Azure Stack Service Fabric Role Summary              | AzsSFRoleSummary                  |
-| Azure Stack BMC Summary                              | AzsStampBMCSummary                |
+| Azure Stack Storage Data Plane                       | AzsStorageDataPlane               |
 | Azure Stack Storage Services Summary                 | AzsStorageSvcsSummary             |
 | Azure Stack SQL Store Summary                        | AzsStoreSummary                   |
+| Azure Stack Update Summary                           | AzsInfraUpdateSummary             |
 | Azure Stack VM Placement Summary                     | AzsVmPlacement                    |
 
 ### Cloud scenario tests
 
-In addition to the infrastructure tests above, you also have the ability to run cloud scenario tests to check functionality across infrastructure components. Cloud administrator credentials are required to run these tests as they involve resource deployment. 
-	> [!NOTE]
-	> Currently you cannot run cloud scenario tests using Active Directory Federated Services (AD FS) credentials. 
+In addition to the infrastructure tests above, you also have the ability to run cloud scenario tests to check functionality across infrastructure components. Cloud administrator credentials are required to run these tests as they involve resource deployment.
+
+> [!NOTE]
+> Currently you cannot run cloud scenario tests using Active Directory Federated Services (AD FS) credentials. 
 
 The following cloud scenarios are tested by the validation tool:
 - Resource group creation   
@@ -106,7 +112,7 @@ The following cloud scenarios are tested by the validation tool:
 
 - The parameter **List** can be used to display all available test categories.
 
-- The parameters **Include** and **Ignore** can be used to include or exclude test categories. See the [Tests available](azure-stack-diagnostic-test.md#tests-available) section for more information on shorthand to be used with these arguments.
+- The parameters **Include** and **Ignore** can be used to include or exclude test categories. See the following section for more information about the information to be used with these arguments.
 
   ```powershell
   Test-AzureStack -Include AzsSFRoleSummary, AzsInfraCapacity
@@ -116,11 +122,14 @@ The following cloud scenarios are tested by the validation tool:
   Test-AzureStack -Ignore AzsInfraPerformance
   ```
 
-- A tenant VM is deployed as part of one the cloud scenario tests. You can use **DoNotDeployTenantVm** to disable this. 
+- A tenant VM is deployed as part of one the cloud scenario tests. You can use **DoNotDeployTenantVm** to disable this.
 
 - You need to supply the **ServiceAdminCredential** parameter to run cloud scenario tests as described in the [Use case examples](azure-stack-diagnostic-test.md#use-case-examples) section.
 
 - **BackupSharePath** and **BackupShareCredential** are used when testing infrastructure backup settings as shown in the [Use case examples](azure-stack-diagnostic-test.md#use-case-examples) section.
+
+- **DetailedResults** can be used to get pass/fail/warning information for each test, as well as the overall run. When not specified, **Test-AzureStack** returns **$true** if there are no failures, and **$false** if there are failures.
+- **TimeoutSeconds** can be used to set a specific time for each group to complete.
 
 - The validation tool also supports common PowerShell parameters: Verbose, Debug, ErrorAction, ErrorVariable, WarningAction, WarningVariable, OutBuffer, PipelineVariable, and OutVariable. For more information, see [About Common Parameters](https://go.microsoft.com/fwlink/?LinkID=113216).  
 
@@ -153,9 +162,43 @@ Test-AzureStack -ServiceAdminCredential "<Cloud administrator user name>" -Inclu
 
 The cloud administrator user name must be typed in the UPN format: serviceadmin@contoso.onmicrosoft.com (Azure AD). When prompted, type the password to the cloud administrator account.
 
-### Run validation tool to test system readiness before installing update or hotfix
+### Groups
 
-Before you start installation of an update or hotfix, you should run the validation tool to check the status of your Azure Stack:
+To improve the operator experience, a **Group** parameter has been enabled to run multiple test categories at the same time. Currently, there are 3 groups defined: **Default**, **UpdateReadiness** and **SecretRotationReadiness**.
+
+- **Default**: Considered to be a standard run of **Test-AzureStack**. This group is run by default if no other groups are selected.
+- **UpdateReadiness**: A check to see if the stamp can be updated. When the **UpdateReadiness** group is run, warnings are displayed as errors in the console output, and should be considered as blockers for the update. The following categories are part of the **UpdateReadiness** group:
+
+  - **AzsAcsSummary**
+  - **AzsDefenderSummary**
+  - **AzsHostingInfraSummary**
+  - **AzsInfraCapacity**
+  - **AzsInfraRoleSummary**
+  - **AzsPortalAPISummary**
+  - **AzsSFRoleSummary**
+  - **AzsStoreSummary**
+
+- **SecretRotationReadiness**: A check to see if the stamp is in a in which secret rotation can be run. When the **SecretRotationReadiness** group is run, warnings are displayed as errors in the console output and should be considered as blockers for secret rotation. The following categories are part of the SecretRotationReadiness Group:
+
+  - **AzsAcsSummary**
+  - **AzsDefenderSummary**
+  - **AzsHostingInfraSummary**
+  - **AzsInfraCapacity**
+  - **AzsInfraRoleSummary**
+  - **AzsPortalAPISummary**
+  - **AzsSFRoleSummary**
+  - **AzsStorageSvcsSummary**
+  - **AzsStoreSummary**
+
+#### Group parameter example
+
+The following example runs **Test-AzureStack** to test system readiness before installing an update or hotfix using **Group**. Before you start the installation of an update or hotfix, you should run **Test-AzureStack** to check the status of your Azure Stack:
+
+```powershell
+Test-AzureStack -Group UpdateReadiness
+```
+
+However, if your Azure Stack is running a version below 1811, use the following PowerShell commands to run **Test-AzureStack**:
 
 ```powershell
 New-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
