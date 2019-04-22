@@ -48,7 +48,7 @@ Azure Stack imposes resource limits to avoid over consumption of resources (serv
 
 - For networking egress from the VM, there are bandwidth caps in place. Caps in Azure Stack are the same as the caps in Azure.
 - For storage resources, Azure Stack implements storage IOPS limits to avoid basic overconsumption of resources by tenants for storage access.
-- For VMs with multiple attached data disks, the maximum throughput of each data disk is 500 IOPS for HDDs, and 2300 IOPS for SSDs.
+- For VM disks, disk IOPS (Input/Output Operations Per Second) on Azure Stack is a function of virtual machine (VM) size instead of the disk type. This means that for a Standard_Fs series VM, regardless of whether you choose SSD or HDD for the disk type, the IOPS limit for a single additional data disk is 2300 IOPS.
 
 The following table lists the VMs that are supported on Azure Stack along with their configuration:
 
