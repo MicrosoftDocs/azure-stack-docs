@@ -112,7 +112,7 @@ Several steps must be performed by the partner before the solution is handed off
 
 Actions that should be taken by the OEM Partner are:
 
-- [Run test-azurestack](azure-stack-diagnostic-test.md#run-validation-tool-to-test-system-readiness-before-installing-update-or-hotfix)
+- [Run test-azurestack](azure-stack-diagnostic-test.md)
 
 - [Registration with Azure](azure-stack-registration.md)
 

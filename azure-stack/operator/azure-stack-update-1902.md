@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2019
+ms.date: 04/20/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/05/2019
+ms.lastreviewed: 04/20/2019
 ---
 
 # Azure Stack 1902 update
@@ -45,10 +45,8 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 
 ### Azure Stack hotfixes
 
-- **1809**: [KB 4481548 – Azure Stack hotfix 1.1809.12.114](https://support.microsoft.com/help/4481548/)
-- **1811**: No current hotfix available.
-- **1901**: [KB 4495662 – Azure Stack hotfix 1.1901.3.105](https://support.microsoft.com/help/4495662)
-- **1902**: [KB 4494719 – Azure Stack hotfix 1.1902.2.73](https://support.microsoft.com/help/4494719)
+- **1901**: [KB 4500636 – Azure Stack hotfix 1.1901.5.109](https://support.microsoft.com/help/4500636)
+- **1902**: [KB 4500637 – Azure Stack hotfix 1.1902.3.75](https://support.microsoft.com/help/4500637)
 
 ## Prerequisites
 
