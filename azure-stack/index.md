@@ -65,7 +65,7 @@ ms.topic: hub-page
                             </div>
                             <div class="cardText">
                                 <h3>Release notes and servicing</h3>
-                                <p>Learn about the Azure Stack servicing policy, how to keep an integrated system in a supported state, and recent releases.</p>
+                                <p>Learn about Azure Stack servicing, keeping an integrated system in a supported state, and recent releases.</p>
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@ ms.topic: hub-page
         </li>
 </ul>
 
-<h2>Role-based documentation</h2>
+<h2>Role-oriented documentation</h2>
 <ul class="cardsM panelContent singlePanelContent cols cols4" style="display:flex!important;">
     <li>
         <a class="card" href="/azure-stack/operator/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
@@ -93,18 +93,10 @@ ms.topic: hub-page
         </a>
     </li>
     <li>
-        <a class="card" href="/azure-stack/partner/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
-            <div class="cardText">
-                <h3>Partner</h3>
-                <p>Documentation for the partner role, including OEMs.</p>
-            </div>
-        </a>
-    </li>
-    <li>
         <a class="card" href="/azure-stack/asdk/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
             <div class="cardText">
-                <h3>ASDK</h3>
-                <p>Documentation for the Azure Stack Development Kit.</p>
+                <h3>Evaluator</h3>
+                <p>Documentation for the Azure Stack Development Kit (ASDK).</p>
             </div>
         </a>
     </li>
