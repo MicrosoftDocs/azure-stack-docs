@@ -65,7 +65,7 @@ ms.topic: hub-page
                             </div>
                             <div class="cardText">
                                 <h3>Release notes and servicing.</h3>
-                                <p>Learn about the Azure Stack servicing policy, how to keep an integrated system in a supported state, and release notes for recent releases.</p>
+                                <p>Learn about the Azure Stack servicing policy, how to keep an integrated system in a supported state, and recent releases.</p>
                             </div>
                         </div>
                     </div>
