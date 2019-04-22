@@ -41,11 +41,11 @@ ms.topic: hub-page
                         <div class="card">
                             <div class="cardImageOuter">
                                 <div class="cardImage">
-                                    <img src="media/index/i_guidelines.svg" alt="" />
+                                    <img src="media/index/i_overview.svg" alt="" />
                                 </div>
                             </div>
                             <div class="cardText">
-                                <h3>The difference between global Azure, Azure Stack, and Azure Stack HCI</h3>
+                                <h3>Azure vs. Azure Stack vs. Azure Stack HCI</h3>
                                 <p>Learn how Microsoft provides Azure and the Azure Stack family of services in one Azure ecosystem.</p>
                             </div>
                         </div>
@@ -80,7 +80,7 @@ ms.topic: hub-page
         <a class="card" href="/azure-stack/operator/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
             <div class="cardText">
                 <h3>Operator</h3>
-                <h5>Documentation for the operator/administrator role.</h5>
+                <p>Documentation for the operator/administrator role.</p>
             </div>
         </a>
     </li>
@@ -88,7 +88,7 @@ ms.topic: hub-page
         <a class="card" href="/azure-stack/user/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
             <div class="cardText">
                 <h3>User</h3>
-                <h5>Documentation for the user role, including developer.</h5>
+                <p>Documentation for the user role, including developer.</p>
             </div>
         </a>
     </li>
@@ -96,7 +96,7 @@ ms.topic: hub-page
         <a class="card" href="/azure-stack/partner/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
             <div class="cardText">
                 <h3>Partner</h3>
-                <h5>Documentation for the partner role, including OEMs.</h5>
+                <p>Documentation for the partner role, including OEMs.</p>
             </div>
         </a>
     </li>
@@ -104,7 +104,7 @@ ms.topic: hub-page
         <a class="card" href="/azure-stack/asdk/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
             <div class="cardText">
                 <h3>ASDK</h3>
-                <h5>Documentation for the Azure Stack Development Kit.</h5>
+                <p>Documentation for the Azure Stack Development Kit.</p>
             </div>
         </a>
     </li>
