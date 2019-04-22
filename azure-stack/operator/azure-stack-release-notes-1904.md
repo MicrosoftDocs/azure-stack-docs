@@ -47,6 +47,8 @@ What's new, also net new experiences and features.
 
 Changes and product improvements with tangible customer-facing value.
 
+Added a notification in the administrator portal, when the currently logged in user does not have the necessary permissions, which will allow the dashboard to load properly as well as a link to the documentation on which accounts have the appropriate permissions depending on the identity provider used during deployment.
+
 ### Fixes
 
 Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it.
