@@ -61,7 +61,7 @@ We have added fixes to improve VM resiliency and uptime which resolves the scena
 
 ### Security updates
 
-This update contains several updates for identified vulnerabilities. For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base article [4487006](https://support.microsoft.com/en-us/help/4487006). See [Azure Stack security updates](azure-stack-release-notes-security-updates-1904.md) for a complete list of updates.
+This update of Azure Stack does not include any security updates to the underlying operating system which hosts Azure Stack.
 
 ## Update planning
 
