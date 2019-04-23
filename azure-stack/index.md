@@ -84,7 +84,7 @@ ms.topic: hub-page
                             </div>
                             <div class="cardText">
                                 <h3>Operator</h3>
-                                <p>Documentation for the operator/administrator role.<br></p>
+                                <p>Documentation for the operator/administrator role.<br><br></p>
                             </div>
                         </div>
                     </div>
@@ -103,7 +103,7 @@ ms.topic: hub-page
                             </div>
                             <div class="cardText">
                                 <h3>User</h3>
-                                <p>Documentation for the user role.<br></p>
+                                <p>Documentation for the user role.<br><br></p>
                             </div>
                         </div>
                     </div>
