@@ -79,36 +79,11 @@ This article lists known issues with supported releases of Azure Stack. The list
 - Remediation: Use PowerShell to verify permissions.
 - Occurrence: Common
 
-### Access policies
-
-- Applicable: This issue applies to all supported releases
-- Cause: In the user portal, when you navigate to a blob within a storage account and try to open Access Policy from the navigation tree, the subsequent window fails to load.
-- Remediation: the following PowerShell cmdlets enable creating, retrieving, setting and deleting access policies, respectively:
-  - New-AzureStorageContainerStoredAccessPolicy
-  - Get-AzureStorageContainerStoredAccessPolicy
-  - Set-AzureStorageContainerStoredAccessPolicy
-  - Remove-AzureStorageContainerStoredAccessPolicy
-- Occurrence: Common
-
 ### Upload blob
 
 - Applicable: This issue applies to all supported releases
 - Cause: In the user portal, when you try to upload a blob using the OAuth(preview) option, the task fails with an error message.
 - Remediation: Upload the blob using the SAS option.
-- Occurrence: Common
-
-### Notifications
-
-- Applicable: This issue applies to all supported releases
-- Cause: When logged into the Azure Stack portals you might see notifications about the global Azure portal.
-- Remediation: You can safely ignore these notifications, as they do not currently apply to Azure Stack (for example, "1 new update - The following updates are now available: Azure portal April 2019 update").
-- Occurrence: Common
-
-### Feedback
-
-- Applicable: This issue applies to all supported releases
-- Cause: In the user portal dashboard, when you select the Feedback tile, an empty browser tab opens.
-- Remediation: you can use Azure Stack User Voice to file a User Voice request.
 - Occurrence: Common
 
 ## Compute
