@@ -83,14 +83,6 @@ Before applying the update, make sure to review the following information:
 
 You can download the Azure Stack 1904 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
 
-### Automatic update notifications
-
-Customers with systems that can access the internet from the infrastructure network will see the **Update available** message in the operator portal. Systems without internet access can download and import the .zip file with the corresponding .xml.
-
-## System monitoring
-
-When Azure Stack is managed by System Center Operations Manager, make sure to update the [Management Pack for Microsoft Azure Stack](https://www.microsoft.com/download/details.aspx?id=55184) to version 1.0.3.11 before applying 1903.
-
 ## Hotfixes
 
 Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1903 before updating Azure Stack to 1904.
@@ -102,7 +94,11 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 The 1904 release of Azure Stack must be applied on the 1903 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- No hotfixes available for 1903.
+- [Azure Stack hotfix 1.1903.2.39](https://support.microsoft.com/help/4500638)
+
+#### System monitoring
+
+When Azure Stack is managed by System Center Operations Manager, make sure to update the [Management Pack for Microsoft Azure Stack](https://www.microsoft.com/download/details.aspx?id=55184) to version 1.0.3.11 before applying 1903.
 
 ### After successfully applying the 1904 update
 
@@ -110,6 +106,10 @@ After the installation of this update, install any applicable hotfixes. For more
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
 - No hotfixes available for 1904.
+
+## Automatic update notifications
+
+Customers with systems that can access the internet from the infrastructure network will see the **Update available** message in the operator portal. Systems without internet access can download and import the .zip file with the corresponding .xml.
 
 > [!TIP]  
 > Subscribe to the following *RSS* or *Atom* feeds to keep up with Azure Stack hotfixes:
