@@ -53,7 +53,7 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 
 Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it.
 
-| Case #                | Details                                                                          |
+| Case ID                  | Details                                                                          |
 |-----------------------|----------------------------------------------------------------------------------|
 | N/A                   | Fixed an issue in which the syslog configuration was not persisted through an update cycle, causing the syslog client to lose its configuration, and the syslog messages to stop being forwarded. Syslog configuration is now preserved.                                                        |
 
