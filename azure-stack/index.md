@@ -144,15 +144,15 @@ ms.topic: hub-page
         <a class="card" href="/azure-stack/user/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
             <div class="cardText">
                 <h3>User</h3>
-                <p>Documentation for the user role, including developer.</p>
+                <p>Documentation for the user role.</p>
             </div>
         </a>
     </li>
     <li>
         <a class="card" href="/azure-stack/asdk/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
             <div class="cardText">
-                <h3>Evaluation/Test</h3>
-                <p>Documentation for the Azure Stack Development Kit (ASDK).</p>
+                <h3>Evaluation</h3>
+                <p>Azure Stack Development Kit (ASDK) documentation, for operating/using in a non-production environment.</p>
             </div>
         </a>
     </li>
