@@ -14,7 +14,7 @@ ms.topic: hub-page
 <div id="main" class="v2">
 <h1>Azure Stack Documentation</h1>
 <p style="font-size: 1.12rem;margin-bottom: 1rem;">Learn how to use Azure Stack to deliver Azure services from your datacenter. Learn and demonstrate features from a Development Kit or an integrated systems environment. Tutorials, quickstarts, API references, and examples show you how.</p>
-<ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
+<ul class="cardsM panelContent singlePanelContent" style="display:flex!important;">
         <li>
             <a href="/azure-stack/operator/azure-stack-overview">
                 <div class="cardSize">
@@ -122,7 +122,7 @@ ms.topic: hub-page
                             </div>
                             <div class="cardText">
                                 <h3>Evaluation</h3>
-                                <p>Documentation for evaluation and operating/using in a non-production environment.</p>
+                                <p>Azure Stack Development Kit (ASDK) documentation, for operating/using in a non-production environment.</p>
                             </div>
                         </div>
                     </div>
