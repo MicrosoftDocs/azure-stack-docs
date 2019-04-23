@@ -26,29 +26,6 @@ This article lists known issues with supported releases of Azure Stack. The list
 > [!IMPORTANT]  
 > Review this section before applying the update.
 
-<!-- TEMPLATE -->
-<!-- ### (Feature area) -->
-
-<!--Bug xxxxxxx: bug title; new issue or existing issue,  PM owner-->
-<!-- Issues that drop off this list better make it in as an improvement or a fix on release notes page -->
-<!-- (Detailed customer facing description of the issue)   -->
-
-<!-- PICK ONE
-- Applicable: (All supported releases of Azure Stack - carry over); (Starting in YYMM release of Azure Stack, new issue)
-- Cause: (cause of the issue)
-- Remediation: (how to work around this, if there is one)
-- Occurrence: (rate of occurrence) -->
-
-<!-- ### Portal -->
-<!-- ### Compute -->
-<!-- ### Storage -->
-<!-- ### Networking -->
-<!-- ### SQL and MySQL-->
-<!-- ### App Service -->
-<!-- ### Usage -->
-<!-- #### Identity -->
-<!-- #### Marketplace -->
-
 ## Portal
 
 ### Add-on plans
@@ -61,14 +38,14 @@ This article lists known issues with supported releases of Azure Stack. The list
 ### Administrative Subscriptions
 
 - Applicable: This issue applies to all supported releases
-- Cause: The two administrative subscription types that were introduced with version 1804 should not be used. The subscription types are Metering subscription, and Consumption subscription. 
-- Remediation: These subscription types are visible in new Azure Stack environments beginning with version 1804 but are not yet ready for use. You should continue to use the Default Provider subscription type. 
+- Cause: The two administrative subscription types that were introduced with version 1804 should not be used. The subscription types are Metering subscription, and Consumption subscription.
+- Remediation: These subscription types are visible in new Azure Stack environments beginning with version 1804 but are not yet ready for use. You should continue to use the Default Provider subscription type.
 - Occurrence: Common
 
 ### Subscription resources
 
 - Applicable: This issue applies to all supported releases
-- Cause: Deleting user subscriptions results in orphaned resources. 
+- Cause: Deleting user subscriptions results in orphaned resources.
 - Remediation: First delete user resources or the entire resource group, and then delete the user subscriptions.
 - Occurrence: Common
 
@@ -125,14 +102,14 @@ The error occurs if you enable boot diagnostics on a VM but delete your boot dia
 ### Virtual machine scale set
 
 - Applicable: This issue applies to all supported releases
-- Cause: The Virtual Machine Scale Set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack. 
-- Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator. 
+- Cause: The Virtual Machine Scale Set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack.
+- Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
 - Occurrence: Common
 
 ### Managed disks
 
 - Applicable: This issue applies to all supported releases
-- Cause: If the subscription was created before the 1808 update, deploying a VM with Managed Disks might fail with an internal error message. 
+- Cause: If the subscription was created before the 1808 update, deploying a VM with Managed Disks might fail with an internal error message.
 - Remediation: Follow these steps for each subscription:
   - In the Tenant portal, go to Subscriptions and find the subscription. Select Resource Providers, then select Microsoft.Compute, and then click Re-register.
   - Under the same subscription, go to Access Control (IAM), and verify that Azure Stack – Managed Disk is listed.
@@ -169,14 +146,14 @@ The virtual machine associated with this network interface will be restarted to 
   - Internet
   - VirtualNetwork
   - AzureLoadBalancer
-- Remediation: The other options are not supported as source tags in Azure Stack. Similarly, if you add an outbound security rule and select Service Tag as the destination, the same list of options for Source Tag is displayed. The only valid options are the same as for Source Tag, as described in the previous list. 
+- Remediation: The other options are not supported as source tags in Azure Stack. Similarly, if you add an outbound security rule and select Service Tag as the destination, the same list of options for Source Tag is displayed. The only valid options are the same as for Source Tag, as described in the previous list.
 - Occurrence: Common
 
 ### Network Security Groups
 
 - Applicable: This issue applies to all supported releases
 - Cause: Network security groups (NSGs) do not work in Azure Stack in the same way as global Azure. In Azure, you can set multiple ports on one NSG rule (using the portal, PowerShell, and Resource Manager templates). In Azure Stack however, you cannot set multiple ports on one NSG rule via the portal.
-- Remediation: To work around this issue, use a Resource Manager template or PowerShell to set these additional rules. 
+- Remediation: To work around this issue, use a Resource Manager template or PowerShell to set these additional rules.
 - Occurrence: Common
 
 ### Network interfaces
@@ -195,6 +172,13 @@ After enabling automatic backups, the scheduler service goes into disabled state
 - Cause: This issue is due to a bug in the service that results in loss of scheduler configuration. This bug does not change the storage location, user name, password, or encryption key.
 - Remediation: To mitigate this issue, open the backup controller settings blade in the Infrastructure Backup resource provider and select **Enable Automatic Backups**. Make sure to set the desired frequency and retention period.
 - Occurrence: Low
+
+<!-- ## Storage -->
+<!-- ## SQL and MySQL-->
+<!-- ## App Service -->
+<!-- ## Usage -->
+<!-- ### Identity -->
+<!-- ### Marketplace -->
 
 ## Next steps
 
