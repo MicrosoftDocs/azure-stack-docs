@@ -1,6 +1,6 @@
 ---
-title: Deploy an app to Azure Stack | Microsoft Docs
-description: Deploy an app to Azure Stack.
+title: Deploy a C# ASP.net web app to a VM Azure Stack | Microsoft Docs
+description: Deploy a C# ASP.net web app to a VM to Azure Stack.
 services: azure-stack
 author: mattbriggs
 
@@ -13,11 +13,12 @@ ms.lastreviewed: 04/24/2019
 
 # keywords:  Deploy an app to Azure Stack
 # Intent: I am developer using Windows 10 or Linux Ubuntu who would like to deploy an app for Azure Stack.
+
 ---
 
 # How to deploy a C# ASP.net web app to a VM in Azure Stack
 
-You can create a VM to host your C# (ASP.NET) Web app in Azure Stack. This article looks at the steps you will to follow in setting up server, configuring the server to host your C# (ASP.NET) web app, and then deploying your app right from Visual Studio.
+You can create a VM to host your C# (ASP.NET) Web app in Azure Stack. This article looks at the steps you will follow in setting up server, configuring the server to host your C# (ASP.NET) web app, and then deploying your app right from Visual Studio.
 
 C# is a general-purpose, multi-paradigm programming language encompassing strong typing, lexically scoped, imperative, declarative, functional, generic, object-oriented, and component-oriented programming disciplines. It was developed around 2000 by Microsoft within its.NET initiative and later approved as a standard by Ecma and ISO. C# is one of the programming languages designed for the Common Language Infrastructure. ASP.NET is an open-source server-side web application framework designed for web development to produce dynamic web pages. It was developed by Microsoft to allow programmers to build dynamic web sites, web applications and web services. To learn the C# programming language and find additional resources for C#, see the [C# Guide](https://docs.microsoft.com/dotnet/csharp/).
 
@@ -44,7 +45,7 @@ This article will use a C# 6.0 app using ASP.NET running on a Windows 2016 serve
 
 3. Download the [MSI for Web deployment 3.6](https://www.microsoft.com/download/details.aspx?id=43717). Install from the MSI and then enable on all of the features.
 
-4. Install the .NET Core Hosting Bundle for 2.2 on the your server. For the steps, see [.NET Core Installer](https://dotnet.microsoft.com/download/dotnet-core/2.2).
+4. Install the .NET Core Hosting Bundle for 2.2 on your server. For the steps, see [.NET Core Installer](https://dotnet.microsoft.com/download/dotnet-core/2.2).
 
     > [!Note] Make sure you are using the same version of .NET Core on both your development machine and your target server.
 

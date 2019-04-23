@@ -77,9 +77,9 @@ A Windows 10 machine will allow you to work with PowerShell 5.0, Visual Studio, 
 
 ### Set up your tools 
 
-1. Get set up with PowerShell. For instruction, follow the steps in [Install Azure Stack Powershell](../azure-stack-powershell-install.md). 
+1. Get set up with PowerShell. For instruction, follow the steps in [Install Azure Stack Powershell](../operator/azure-stack-powershell-install.md). 
 
-2. Download Azure Stack Tools. For instructions, follow the steps in [Download Azure Stack tools from GitHub](../azure-stack-powershell-download.md). 
+2. Download Azure Stack Tools. For instructions, follow the steps in [Download Azure Stack tools from GitHub](../operator/azure-stack-powershell-download.md). 
 
 3. If you are using an ASDK, install and configure [VPN connection to the Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). 
 

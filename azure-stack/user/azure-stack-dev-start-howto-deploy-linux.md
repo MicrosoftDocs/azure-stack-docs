@@ -37,21 +37,23 @@ You can jump right into the instructions, or your may want to make sure you have
 - You will need an Azure Stack subscription.
 - Your subscription will need access to the **Ubuntu Server 16.04 LTS** image. You can use a later version of the image, but these instructions are written with the 16.04 LTS in mind. If you do not have this image, talk to your cloud operator to get the image into your Azure Stack marketplace.
 
+<!-- Azure Stack specific considerations
+
 ### Authentication
 
-<!-- Azure Stack works with two identity management services, Azure Active Directory (Azure AD) and Active Directory Federated Services (AD FS).  This section addresses how this procedure will work with either version. -->
+Azure Stack works with two identity management services, Azure Active Directory (Azure AD) and Active Directory Federated Services (AD FS).  This section addresses how this procedure will work with either version.
 
 ### Connectivity
 
-<!-- Azure Stack can be run in connected to completely disconnected scenarios. This section addresses considerations about the use case in relation to connectivity. -->
+Azure Stack can be run in connected to completely disconnected scenarios. This section addresses considerations about the use case in relation to connectivity.
 
 ### Azure Stack Development Kit and Integrated Systems
 
-<!-- While the two version of the product are the same product both version behave differently. Call out considerations about either version. -->
+While the two version of the product are the same product both version behave differently. Call out considerations about either version. 
 
 ### Azure Stack version
 
-<!-- Place any version specific calls outs. The procedure will contain steps for the latest version. This section will contain call outs for previous version that are still supported. -->
+Place any version specific calls outs. The procedure will contain steps for the latest version. This section will contain call outs for previous version that are still supported. -->
 
 ## Deploy VM using the portal
 
@@ -86,7 +88,7 @@ Create an SSH public key for your server using an app such as Putty. Access your
     - Using a standard disk rather than a premium disk could impact operating system performance.
 
 1. in **3. Configure optional** features type:
-    1. For High availability,** you can select an availability set. To provide redundancy to your application, you can group two or more virtual machines in an availability set. This configuration ensures that during a planned or unplanned maintenance event, at least one virtual machine will be available and meet the 99.95% Azure SLA. The availability set of a virtual machine can't be changed after it is created.
+    1. For **High availability,** you can select an availability set. To provide redundancy to your application, you can group two or more virtual machines in an availability set. This configuration ensures that during a planned or unplanned maintenance event, at least one virtual machine will be available and meet the 99.95% Azure SLA. The availability set of a virtual machine can't be changed after it is created.
     1. For **Storage** select **Premium disks (SSD)** or **Standard disks (HDD)**. Premium disks (SSD) are backed by solid-state drives and offer consistent, low-latency performance. They provide the best balance between price and performance, and are ideal for I/O-intensive applications and production workloads. Standard disks (HDD) are backed by magnetic drives and are preferable for applications where data is accessed infrequently. Zone- redundant disks are backed by Zone redundant storage (ZRS) that replicates your data across multiple zones and are available even if a single zone is down. 
     1. You can select **Use managed disks**. Enable this feature to have Azure automatically manage the availability of disks to provide data redundancy and fault tolerance, without creating and managing storage accounts on your own. Managed disks may not be available in all regions. For more information, see [Introduction to Azure managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
     1. Select **virtual network** to configure your network. Virtual networks are logically isolated from each other in Azure. You can configure their IP address ranges, subnets, route tables, gateways, and security settings, much like a traditional network in your data center. Virtual machines in the same virtual network can access each other by default. 
@@ -117,7 +119,7 @@ You can modify the destination protocol and port range for predefined service, l
 1. Select **Networking** in your VM blade.
 1. Select **Add inbound port** rule to open a port.
 1. For Source, leave the default to **Any**.
-1. For Source port range,** leave the wildcard (*).
+1. For Source port range, leave the wildcard (*).
 1. For Destination port range, add the port you would like to open, such as `3000`.
 1. For **Protocol** leave **Any**.
 1. For **Action** set to **Allow**.
@@ -144,6 +146,8 @@ In addition, you can create a DNS name for your server, and then users can conne
         sudo apt-get update
         sudo apt-get -y upgrade
     ```
+
+<!--
 
 ## Deploy VM using the PowerShell
 
@@ -200,6 +204,8 @@ Include a sentence or two to explain only what is needed to complete the procedu
     ```CLI  
     verb-command -item "dog"
     ```
+
+-->
 
 ## Next steps
 

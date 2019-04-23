@@ -35,6 +35,13 @@ You can use Docker to create Windows-based containers on which to run the specif
 
 4. You will need to run Docker from a machine joined to the same domain as Azure Stack. If you are using the ASDK, you will need to install [the VPN on your remote machine](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn).
 
+## Service principals for using PowerShell
+
+You will need a service principal in your Azure AD tenant to use PowerShell to access resource in Azure Stack. You will delegate permissions with used role-based access control.
+
+1. Set up your principal by following the instructions at [Give applications access to Azure Stack resources by creating service principals](azure-stack-create-service-principals.md).
+2. Make note of the application ID, secret, and your tenant ID.
+
 ## Docker - Azure Stack API Profiles module
 
 The Dockerfile opens the Microsoft image microsoft/windowsservercore which has Windows PowerShell 5.1 installed. The file then loads Nuget, the Azure Stack PowerShell modules, and grabs the tools from Azure Stack Tools.
@@ -65,15 +72,27 @@ The Dockerfile opens the Microsoft image microsoft/windowsservercore which has W
     PS C:\>
     ```
 
-## Docker - PowerShell 6.1
+6. Connect to your Azure Stack using the service principal. You are now using a PowerShell prompt in Docker. 
 
-You can find the Microsoft maintained docker image at: https://hub.docker.com/_/microsoft-powershell.
+    ```Powershell
+    $passwd = ConvertTo-SecureString <Secret> -AsPlainText -Force
+    $pscredential = New-Object System.Management.Automation.PSCredential('<ApplicationID>', $passwd)
+    Connect-AzureRmAccount -ServicePrincipal -Credential $pscredential -TenantId <TenantID>
+    ```
 
-Open a command-line interface on and type:
+   PowerShell returns your account object:
 
-```bash
-docker run -it microsoft/powershell
-```
+    ```PowerShell  
+    Account    SubscriptionName    TenantId    Environment
+    -------    ----------------    --------    -----------
+    <AccountID>    <SubName>       <TenantID>  AzureCloud
+    ```
+
+7. Test your connectivity by creating a resource group in Azure Stack.
+
+    ```PowerShell  
+    New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
+    ```
 
 ## Next steps
 
