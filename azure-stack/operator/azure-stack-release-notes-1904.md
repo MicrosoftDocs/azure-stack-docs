@@ -49,7 +49,7 @@ Changes and product improvements with tangible customer-facing value.
 
 Added a notification in the administrator portal, when the currently logged in user does not have the necessary permissions, which will allow the dashboard to load properly as well as a link to the documentation on which accounts have the appropriate permissions depending on the identity provider used during deployment.
 
-We have added fixes to improve VM resiliency in the cases where a storage volume goes offline.
+We have added fixes to improve VM resiliency and uptime which resolves the scenario where all VMs go offline if the storage volume containing the VM configuration files goes offline.
 
 ### Fixes
 
