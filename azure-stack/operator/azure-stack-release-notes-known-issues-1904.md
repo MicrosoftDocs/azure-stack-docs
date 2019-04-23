@@ -111,7 +111,7 @@ After enabling automatic backups, the scheduler service goes into disabled state
 ### Notifications
 
 - Applicable: This issue applies to all supported releases
-- Cause: When logged into the Azure Stack portals you might see notifications about the public Azure portal.
+- Cause: When logged into the Azure Stack portals you might see notifications about the global Azure portal.
 - Remediation: You can safely ignore these notifications, as they do not currently apply to Azure Stack (for example, "1 new update - The following updates are now available: Azure portal April 2019 update").
 - Occurrence: Common
 
@@ -133,7 +133,7 @@ The error occurs if you enable boot diagnostics on a VM but delete your boot dia
 - Remediation: Recreate the storage account with the same name as you used previously.
 - Occurrence: Common
 
-### VM Scale Set
+### Virtual machine scale set
 
 - Applicable: This issue applies to all supported releases
 - Cause: The Virtual Machine Scale Set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack. 
