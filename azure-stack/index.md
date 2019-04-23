@@ -212,7 +212,7 @@ ms.topic: hub-page
 </ul>
 
 <h2>Reference</h2>
-<ul class="cardsF panelContent singlePanelContent" style="display:flex!important;">
+<ul class="cardsF panelContent singlePanelContent cols cols3" style="display:flex!important;">
     <li>
         <div class="cardSize">
             <div class="cardPadding">
