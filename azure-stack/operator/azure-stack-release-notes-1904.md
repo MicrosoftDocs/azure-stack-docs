@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 04/24/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 04/10/2019
+ms.lastreviewed: 04/24/2019
 ---
 
 # Azure Stack 1904 update
@@ -37,26 +37,25 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 
 ## What's in this update
 
-The current theme (if any) of this release.
+<!-- The current theme (if any) of this release. -->
 
 ### What's new
 
-What's new, also net new experiences and features.
+<!-- What's new, also net new experiences and features. -->
 
 ### Improvements
 
-Changes and product improvements with tangible customer-facing value.
+<!-- Changes and product improvements with tangible customer-facing value. -->
 
-Added a notification in the administrator portal, when the currently logged in user does not have the necessary permissions, which will allow the dashboard to load properly as well as a link to the documentation on which accounts have the appropriate permissions depending on the identity provider used during deployment.
+- Added a notification in the administrator portal, when the currently logged in user does not have the necessary permissions, which will allow the dashboard to load properly as well as a link to the documentation on which accounts have the appropriate permissions depending on the identity provider used during deployment.
 
 ### Fixes
 
-Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it.
+<!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
-| Case #                | Details                                                                          |
+| Case ID                  | Details                                                                          |
 |-----------------------|----------------------------------------------------------------------------------|
-| N/A                   | Details about the fix.                                                           |
-| ##########            | Details about the fix.                                                           |
+| N/A                   | Fixed an issue in which the syslog configuration was not persisted through an update cycle, causing the syslog client to lose its configuration, and the syslog messages to stop being forwarded. Syslog configuration is now preserved.                                                        |
 
 ### Security updates
 

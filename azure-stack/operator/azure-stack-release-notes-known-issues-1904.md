@@ -1,6 +1,6 @@
 ---
-title: Azure Stack release notes - known issues | Microsoft Docs
-description: Learn about known issues in Azure Stack.
+title: Azure Stack release notes - known issues in 1904 | Microsoft Docs
+description: Learn about known issues in Azure Stack 1904.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -25,17 +25,6 @@ This article lists known issues with supported releases of Azure Stack. The list
 
 > [!IMPORTANT]  
 > Review this section before applying the update.
-
-<!-- EXAMPLE -->
-## Infrastructure backup
-
-<!--Bug 3615401 - scheduler config lost; new issue in YYMM;  hectorl-->
-After enabling automatic backups, the scheduler service goes into disabled state unexpectedly. The backup controller service will detect that automatic backups are disabled and raise a warning in the administrator portal. This warning is expected when automatic backups are disabled.
-
-- Applicable: This is a new issue with release 1904.
-- Cause: This issue is due to a bug in the service that results in loss of scheduler configuration. This bug does not change the storage location, user name, password, or encryption key.
-- Remediation: To mitigate this issue, open the backup controller settings blade in the Infrastructure Backup resource provider and select **Enable Automatic Backups**. Make sure to set the desired frequency and retention period.
-- Occurrence: Low
 
 <!-- TEMPLATE -->
 <!-- ### (Feature area) -->
@@ -89,7 +78,7 @@ After enabling automatic backups, the scheduler service goes into disabled state
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
 - Remediation: Use PowerShell to verify permissions.
 - Occurrence: Common
- 
+
 ### Access policies
 
 - Applicable: This issue applies to all supported releases
@@ -197,14 +186,15 @@ The virtual machine associated with this network interface will be restarted to 
 - Remediation: No mitigation.
 - Occurrence: Common
 
-## Syslog
+## Infrastructure backup
 
-### Syslog configuration
+<!--Bug 3615401 - scheduler config lost; new issue in YYMM;  hectorl-->
+After enabling automatic backups, the scheduler service goes into disabled state unexpectedly. The backup controller service will detect that automatic backups are disabled and raise a warning in the administrator portal. This warning is expected when automatic backups are disabled.
 
-- Applicable: This issue applies to all supported releases
-- Cause: The syslog configuration is not persisted through an update cycle, causing the syslog client to lose its configuration, and the syslog messages to stop being forwarded.
-- Remediation: Reconfigure the syslog client after applying an Azure Stack update.
-- Occurrence: Common
+- Applicable: This is a new issue with release 1904.
+- Cause: This issue is due to a bug in the service that results in loss of scheduler configuration. This bug does not change the storage location, user name, password, or encryption key.
+- Remediation: To mitigate this issue, open the backup controller settings blade in the Infrastructure Backup resource provider and select **Enable Automatic Backups**. Make sure to set the desired frequency and retention period.
+- Occurrence: Low
 
 ## Next steps
 
