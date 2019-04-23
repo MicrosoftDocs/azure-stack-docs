@@ -13,7 +13,7 @@ ms.topic: hub-page
 
 <div id="main" class="v2">
 <h1>Azure Stack Documentation</h1>
-        <p style="font-size: 1.12rem;margin-bottom: 1rem;">Learn how to use Azure Stack to deliver Azure services from your datacenter. Learn and demonstrate features from a Development Kit or an integrated systems environment. Tutorials, quickstarts, API references, and examples show you how.</p>
+<p style="font-size: 1.12rem;margin-bottom: 1rem;">Learn how to use Azure Stack to deliver Azure services from your datacenter. Learn and demonstrate features from a Development Kit or an integrated systems environment. Tutorials, quickstarts, API references, and examples show you how.</p>
 <ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
         <li>
             <a href="/azure-stack/operator/azure-stack-overview">
@@ -72,10 +72,66 @@ ms.topic: hub-page
                 </div>
             </a>
         </li>
+        <li>
+            <a href="/azure-stack/operator/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/azure-stack.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Operator</h3>
+                                <p>Documentation for the operator/administrator role.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a href="/azure-stack/user/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/azure-stack.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>User</h3>
+                                <p>Documentation for the user role.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>     
+        <li>
+            <a href="/azure-stack/asdk/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                    <img src="media/index/azure-stack.svg" alt="" />
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Evaluation</h3>
+                                <p>Documentation for evaluation and operating/using in a non-production environment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>     
 </ul>
-
 <h2>Role-oriented documentation</h2>
-<ul class="cardsM panelContent singlePanelContent cols cols4" style="display:flex!important;">
+<ul class="cardsM panelContent singlePanelContent cols cols3" style="display:flex!important;">
     <li>
         <a class="card" href="/azure-stack/operator/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
             <div class="cardText">
@@ -95,7 +151,7 @@ ms.topic: hub-page
     <li>
         <a class="card" href="/azure-stack/asdk/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
             <div class="cardText">
-                <h3>Evaluator</h3>
+                <h3>Evaluation/Test</h3>
                 <p>Documentation for the Azure Stack Development Kit (ASDK).</p>
             </div>
         </a>
