@@ -60,7 +60,7 @@ You can view and edit existing quotas using the Administrator portal: select **R
 
 ![delsub3](media/azure-stack-delete-offer/delsub3.png)
 
-Alternatively, you can delete some quotas using these admin REST APIs:
+Alternatively, you can delete some quotas using these REST APIs:
 
 - [Compute](/rest/api/azurestack/quotas%20(compute)/delete)
 - [Network](/rest/api/azurestack/quotas%20(network)/delete)
