@@ -49,7 +49,13 @@ What's new, also net new experiences and features. -->
 
 - Added a notification in the administrator portal, when the currently logged in user does not have the necessary permissions, which will allow the dashboard to load properly as well as a link to the documentation on which accounts have the appropriate permissions depending on the identity provider used during deployment.
 
-We have added fixes to improve VM resiliency and uptime which resolves the scenario where all VMs go offline if the storage volume containing the VM configuration files goes offline.
+- We have added fixes to improve VM resiliency and uptime which resolves the scenario where all VMs go offline if the storage volume containing the VM configuration files goes offline.
+
+<!-- 1901,2,3 related hotfix -->
+- Added optimization to the number of VMs evacuated concurrently and place a cap on bandwidth consumed to address VM brownouts or blackouts if the network is under heavy load. This change will increase VM uptime when a system is updating. 
+
+<!-- 1901,2,3 related hotfix -->
+- Improved resource throttling when a system is running at scale to protect against internal processes exhausting platform resources resulting in failed operations in the portal. 
 
 ### Fixes
 
@@ -57,7 +63,9 @@ We have added fixes to improve VM resiliency and uptime which resolves the scena
 
 | Case ID                  | Details                                                                          |
 |-----------------------|----------------------------------------------------------------------------------|
-| N/A                   | Fixed an issue in which the syslog configuration was not persisted through an update cycle, causing the syslog client to lose its configuration, and the syslog messages to stop being forwarded. Syslog configuration is now preserved.                                                        |
+| N/A                   | Fixed an issue in which the syslog configuration was not persisted through an update cycle, causing the syslog client to lose its configuration, and the syslog messages to stop being forwarded. Syslog configuration is now preserved. |
+| N/A                   | Fixed an issue in CRP to address an error during stop-deallocate, the operation fails due to time out. |
+| N/A                   | Fixed issue with Windows Defender engine impacting access to scale-unit storage. |
 
 ### Security updates
 
