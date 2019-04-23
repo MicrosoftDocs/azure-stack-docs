@@ -14,7 +14,7 @@ ms.topic: hub-page
 <div id="main" class="v2">
 <h1>Azure Stack Documentation</h1>
 <p style="font-size: 1.12rem;margin-bottom: 1rem;">Learn how to use Azure Stack to deliver Azure services from your datacenter. Learn and demonstrate features from a Development Kit or an integrated systems environment. Tutorials, quickstarts, API references, and examples show you how.</p>
-<ul class="cardsM panelContent singlePanelContent" style="display:flex!important;">
+<ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
         <li>
             <a href="/azure-stack/operator/azure-stack-overview">
                 <div class="cardSize">
@@ -84,7 +84,7 @@ ms.topic: hub-page
                             </div>
                             <div class="cardText">
                                 <h3>Operator</h3>
-                                <p>Documentation for the operator/administrator role.</p>
+                                <p>Documentation for the operator/administrator role.\n</p>
                             </div>
                         </div>
                     </div>
@@ -103,7 +103,7 @@ ms.topic: hub-page
                             </div>
                             <div class="cardText">
                                 <h3>User</h3>
-                                <p>Documentation for the user role.</p>
+                                <p>Documentation for the user role.\n</p>
                             </div>
                         </div>
                     </div>
