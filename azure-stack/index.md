@@ -73,62 +73,6 @@ ms.topic: hub-page
             </a>
         </li>
         <li>
-            <a href="/azure-stack/operator/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/azure-stack.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>Operator</h3>
-                                <p>Documentation for the operator/administrator role.<br><br></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a href="/azure-stack/user/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/azure-stack.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>User</h3>
-                                <p>Documentation for the user role.<br><br></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>     
-        <li>
-            <a href="/azure-stack/asdk/">
-                <div class="cardSize">
-                    <div class="cardPadding">
-                        <div class="card">
-                            <div class="cardImageOuter">
-                                <div class="cardImage">
-                                    <img src="media/index/azure-stack.svg" alt="" />
-                                </div>
-                            </div>
-                            <div class="cardText">
-                                <h3>Evaluation</h3>
-                                <p>Azure Stack Development Kit (ASDK) documentation, for operating/using in a non-production environment.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </li>     
 </ul>
 <h2>Role-oriented documentation</h2>
 <ul class="cardsM panelContent singlePanelContent cols cols3" style="display:flex!important;">
@@ -151,7 +95,7 @@ ms.topic: hub-page
     <li>
         <a class="card" href="/azure-stack/asdk/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
             <div class="cardText">
-                <h3>Evaluation</h3>
+                <h3>ASDK</h3>
                 <p>Azure Stack Development Kit (ASDK) documentation, for operating/using in a non-production environment.</p>
             </div>
         </a>
