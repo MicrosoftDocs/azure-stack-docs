@@ -220,7 +220,6 @@ ms.topic: hub-page
                     <div class="cardText">
                         <h3>Command line</h3>
                         <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p>
-                        <p><a href="/azure-stack/"><span>Azure Stack PowerShell PEP&nbsp;<sup style="font-size:70%">PREVIEW</sup></span></a></p>
                         <p><a href="/cli/azure/?view=azure-cli-2017-03-09-profile">Azure CLI</a></p>
                     </div>
                 </div>
