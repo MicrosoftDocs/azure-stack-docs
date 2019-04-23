@@ -39,9 +39,9 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 
 <!-- The current theme (if any) of this release. -->
 
-### What's new
+<!-- ### What's new
 
-<!-- What's new, also net new experiences and features. -->
+What's new, also net new experiences and features. -->
 
 ### Improvements
 
