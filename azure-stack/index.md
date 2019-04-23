@@ -74,7 +74,7 @@ ms.topic: hub-page
         </li>
         <li>
 </ul>
-<h2>Role-oriented documentation</h2>
+<h2>Documentation sets</h2>
 <ul class="cardsM panelContent singlePanelContent cols cols3" style="display:flex!important;">
     <li>
         <a class="card" href="/azure-stack/operator/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
@@ -95,8 +95,8 @@ ms.topic: hub-page
     <li>
         <a class="card" href="/azure-stack/asdk/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
             <div class="cardText">
-                <h3>ASDK</h3>
-                <p>Azure Stack Development Kit (ASDK) documentation, for operating/using in a non-production environment.</p>
+                <h3>Azure Stack Development Kit (ASDK)</h3>
+                <p>Documentation for operating/using in a non-production environment.</p>
             </div>
         </a>
     </li>
