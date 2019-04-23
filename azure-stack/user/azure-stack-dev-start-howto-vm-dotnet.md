@@ -13,7 +13,6 @@ ms.lastreviewed: 04/24/2019
 
 # keywords:  Deploy an app to Azure Stack
 # Intent: I am developer using Windows 10 or Linux Ubuntu who would like to deploy an app for Azure Stack.
-
 ---
 
 # How to deploy a C# ASP.net web app to a VM in Azure Stack
@@ -45,9 +44,7 @@ This article will use a C# 6.0 app using ASP.NET running on a Windows 2016 serve
 
 3. Download the [MSI for Web deployment 3.6](https://www.microsoft.com/download/details.aspx?id=43717). Install from the MSI and then enable on all of the features.
 
-4. Install the .NET Core Hosting Bundle for 2.2 on your server. For the steps, see [.NET Core Installer](https://dotnet.microsoft.com/download/dotnet-core/2.2).
-
-    > [!Note] Make sure you are using the same version of .NET Core on both your development machine and your target server.
+4. Install the .NET Core Hosting Bundle for 2.2 on your server. For the steps, see [.NET Core Installer](https://dotnet.microsoft.com/download/dotnet-core/2.2). Make sure you are using the same version of .NET Core on both your development machine and your target server.
 
 5. Return to the Azure Stack portal, and open the ports in the network settings for your VM.
 
@@ -121,9 +118,9 @@ Create a publish target to your VM in Azure Stack.
 14. Select **Publish**.
 15.  Navigate to your new server and you should see your running web application.
 
-  ```HTTP  
-     mywebapp.local.cloudapp.azurestack.external
-  ```
+```HTTP  
+    mywebapp.local.cloudapp.azurestack.external
+```
 
 ## Next steps
 
