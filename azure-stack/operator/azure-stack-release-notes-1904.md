@@ -57,6 +57,9 @@ What's new, also net new experiences and features. -->
 <!-- 1901,2,3 related hotfix -->
 - Improved resource throttling when a system is running at scale to protect against internal processes exhausting platform resources resulting in failed operations in the portal. 
 
+<!-- this applies to bug 3725384 and bug #4225643 -->
+- Improved syslog message volume by filtering out unnecessary events and providing a configuration parameter to select desired severity level for forwarded messages. For more information on how to configure the severity level, refer to [Azure Stack datacenter integration - syslog forwarding](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-integrate-security).
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
