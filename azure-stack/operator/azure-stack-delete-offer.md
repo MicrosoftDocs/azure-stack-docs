@@ -44,7 +44,7 @@ To delete an offer, in the Administrator portal, go to **All services**, then **
 
 ![delsub1](media/azure-stack-delete-offer/delsub1.png)
 
-You can only delete an offer when there are no subscriptions using it. If subscriptions exist based on the offer, the **Delete** option is greyed out. In this case, see the Delete a subscription section.
+You can only delete an offer when there are no subscriptions using it. If subscriptions exist based on the offer, the **Delete** option is greyed out. In this case, see the [Delete a subscription](#delete-a-subscription) section.
 
 ## Delete a plan
 
