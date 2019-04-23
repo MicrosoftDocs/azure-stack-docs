@@ -37,7 +37,7 @@ You can create an Ubuntu Server 16.04 LTS virtual machine by using the Azure Sta
 
 * **Access to an SSH client**
 
-   If you are using the Azure Stack Development Kit (ASDK), you might not have access to an SSH client. If you need a client, there are several packages that include an SSH client. For example, PuTTY includes an SSH client and SSH key generator (puttygen.exe). For more information about available packages, read the following Azure article: [How to use an SSH public key](azure-stack\user\azure-stack-dev-start-howto-SSH-public-key.md).
+   If you are using the Azure Stack Development Kit (ASDK), you might not have access to an SSH client. If you need a client, there are several packages that include an SSH client. For example, PuTTY includes an SSH client and SSH key generator (puttygen.exe). For more information about available packages, read the following Azure article: [How to use an SSH public key](azure-stack-dev-start-howto-SSH-public-key.md).
 
    This Quickstart uses PuTTY to generate the SSH keys and to connect to the Linux server virtual machine. To download and install PuTTY, go to [https://www.putty.org/](https://www.putty.org).
 

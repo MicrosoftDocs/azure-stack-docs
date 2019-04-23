@@ -38,7 +38,7 @@ You can create an Ubuntu Server 16.04 LTS virtual machine by using Azure Stack P
 
 * With the Azure Stack PowerShell set up, you will need to connect to your Azure Stack environment. For instruction, see [Connect to Azure Stack with PowerShell as a user](azure-stack-powershell-configure-user.md).
 
-* A public SSH key with the name id_rsa.pub saved in the .ssh directory of your Windows user profile. For detailed information about creating SSH keys, see [How to use an SSH public key](azure-stack\user\azure-stack-dev-start-howto-SSH-public-key.md).
+* A public SSH key with the name id_rsa.pub saved in the .ssh directory of your Windows user profile. For detailed information about creating SSH keys, see [How to use an SSH public key](azure-stack-dev-start-howto-SSH-public-key.md).
 
 ## Create a resource group
 

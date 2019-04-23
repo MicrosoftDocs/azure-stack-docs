@@ -98,5 +98,5 @@ The Dockerfile opens the Microsoft image microsoft/windowsservercore which has W
 
 -  Read an overview of [Azure Stack PowerShell on Azure Stack](azure-stack-powershell-overview.md).
 - Read about [API Profiles for PowerShell](azure-stack-version-profiles.md) on Azure Stack.
-- [Install Azure Stack Powershell](../azure-stack-powershell-install.md).
+- [Install Azure Stack Powershell]../operator/azure-stack-powershell-install.md).
 - Read about creating [Azure Resource Manager templates](azure-stack-develop-templates.md) for cloud consistency.

@@ -32,7 +32,7 @@ There are four sets of APIs that you can interact with when you use PowerShell o
 | 1. Global Azure Resource Manager | [Azure PowerShell Modules](https://github.com/Azure/azure-powershell/blob/master/documentation/azure-powershell-modules.md) | [REST API Browser](https://docs.microsoft.com/en-us/rest/api/) |
 | 2. Azure Stack Resource Manager | [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md) | [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md) |
 | 3. Azure Stack Administrator endpoints | [Azure Stack Module](https://docs.microsoft.com/powershell/azure/azure-stack/overview) | [REST API Browser - Azure Stack](https://docs.microsoft.com/en-us/rest/api/?term=Azure%20Azure%20Stack%20Admin) |
-| 4.  Azure Stack Privileged Endpoint | [Using the privileged endpoint in Azure Stack](../azure-stack-privileged-endpoint.md) | |
+| 4.  Azure Stack Privileged Endpoint | [Using the privileged endpoint in Azure Stack](../operator/azure-stack-privileged-endpoint.md) | |
 
 Each interface contacts resource providers in global Azure or Azure Stack. Resource providers enable Azure capabilities. For example, The Azure Compute resource provider gives you programmatic access to the creation and management of virtual machines and their supporting resources.
 
@@ -54,11 +54,11 @@ Azure Stack PowerShell provides a set of cmdlets that use prior versions of the 
 
 ### Azure Stack Administrator
 
-Azure Stack exposes a set of resource providers to the Cloud operator in order to install and maintain Azure Stack. In global Azure this interaction is abstracted from the user and handled behind the scenes as part of Azure. Azure Stack, however, provides enterprises the ability to support a private cloud. In order to perform these tasks, the operator interacts with the Azure Stack Admin APIs. For more information, see [Install PowerShell for Azure Stack](../azure-stack-powershell-install.md).
+Azure Stack exposes a set of resource providers to the Cloud operator in order to install and maintain Azure Stack. In global Azure this interaction is abstracted from the user and handled behind the scenes as part of Azure. Azure Stack, however, provides enterprises the ability to support a private cloud. In order to perform these tasks, the operator interacts with the Azure Stack Admin APIs. For more information, see [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md).
 
 ### Azure Stack Privileged Endpoint
 
-For operator activities on Azure Stack, such as testing the installation and accessing logs, operators can interact with the privileged endpoint (PEP). The PEP is a pre-configured remote PowerShell console that provides operators with just enough access to help perform specific tasks. The endpoint uses PowerShell JEA (Just Enough Administration) to expose a restricted set of cmdlets. For more information, see [Using the privileged endpoint in Azure Stack](../azure-stack-privileged-endpoint.md).
+For operator activities on Azure Stack, such as testing the installation and accessing logs, operators can interact with the privileged endpoint (PEP). The PEP is a pre-configured remote PowerShell console that provides operators with just enough access to help perform specific tasks. The endpoint uses PowerShell JEA (Just Enough Administration) to expose a restricted set of cmdlets. For more information, see [Using the privileged endpoint in Azure Stack](../operator/azure-stack-privileged-endpoint.md).
 
 ### AzureStack-Tools
 
@@ -74,5 +74,5 @@ If you spend much time working with Azure Stack PowerShell, you'll find yourself
 ## Next steps
 
 - Read about [API Profiles for PowerShell](azure-stack-version-profiles.md) on Azure Stack.
-- [Install Azure Stack Powershell](../azure-stack-powershell-install.md)
+- [Install Azure Stack Powershell](../operator/azure-stack-powershell-install.md)
 - Read about creating [Azure Resource Manager templates](azure-stack-develop-templates.md) for cloud consistency.
