@@ -52,7 +52,11 @@ To delete a plan, in the Administrator portal go to **All services**, then **Pla
 
 ![delsub2](media/azure-stack-delete-offer/delsub2.png)
 
-You can only delete a plan when there are no offers using it. If there are current offers that use the plan, delete the plan, allow it to fail, and you will receive an error message. You can select **Parent offers** to display a list of offers that use the plan. For more information about deleting offers, see [Delete an offer](#delete-an-offer).
+You can only delete a plan when there are no offers or subscriptions using it. If there are offers that use the plan, delete the plan, allow it to fail, and you will receive an error message. You can select **Parent offers** to display a list of offers that use the plan. For more information about deleting offers, see [Delete an offer](#delete-an-offer).
+
+Plans might have been added directly to a subscription as add-on plans, even if they are not part of the offer. In this case, they must be removed from the subscriptions that use them before the plan can be deleted.
+
+Also, a plan cannot be removed from a subscription if it is the only source of a given resource for that subscription. For example, if Plan A has been added to Subscription 1, and it is the only plan providing a network quota to the subscription, it cannot be removed from the subscription. Therefore, it cannot be deleted.
 
 ## Edit and delete a quota
 
