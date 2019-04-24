@@ -9,7 +9,7 @@ cloud: azure-stack
 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/22/2019
+ms.date: 04/25/2019
 ms.author: jeffgilb
 ms.reviewer: adshar
 ms.lastreviewed: 11/20/2018
@@ -80,29 +80,61 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
 
 #### Examples
 
-Collect all logs for all roles:
+* Collect all logs for all roles:
 
-```powershell
-Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred
-```
+  ```powershell
+  Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred
+  ```
 
-Collect logs from VirtualMachines and BareMetal roles:
+* Collect logs from VirtualMachines and BareMetal roles:
 
-```powershell
-Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal
-```
+  ```powershell
+  Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal
+  ```
 
-Collect logs from VirtualMachines and BareMetal roles, with date filtering for log files for the past 8 hours:
+* Collect logs from VirtualMachines and BareMetal roles, with date filtering for log files for the past 8 hours:
 
-```powershell
-Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
-```
+  ```powershell
+  Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
+  ```
 
-Collect logs from VirtualMachines and BareMetal roles, with date filtering for log files for the time period between 8 hours ago and 2 hours ago:
+* Collect logs from VirtualMachines and BareMetal roles, with date filtering for log files for the time period between 8 hours ago and 2 hours ago:
 
-```powershell
-Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
-```
+  ```powershell
+  Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
+  ```
+
+* Collect logs and store them in the specified Azure Storage blob container:
+
+  ```powershell
+  Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
+  ```
+
+  An example of the SAS Uri parameter is:
+
+  ```http
+  https://<StorageAccountName>.blob.core.windows.net/<ContainerName><SAS Token>`
+  ```
+
+  When generating the SAS token, the following permissions are required:
+
+  * Allowed services = Blob -> ss=b
+  * Allowed resource types = Container -> sr=c
+  * Allowed permissions = Read, Write, List-> sp=rwl
+  * Valid start and expiry/end date
+
+  To create a SAS Uri to be used for the `-OutputSasUri` parameter for **Get-Azurestacklog**, perform the following steps:
+
+  1. Create a Storage account.
+  2. Open Azure Storage Explorer.
+  3. Connect to the storage account created in step 1.
+  4. Select **Blob Containers**.
+  5. Create a new container.
+  6. Right click the container, then click **Get Shared Access Signature**.
+  7. Select the required **Start Time** and **End Time**.
+  8. For permissions, select **Read**, **Write**, **List**.
+  9. Select **Create**.
+  10. You will get a Shared Access Signature. Copy the URL portion, and provide it to the `-OutputSasUri` parameter
 
 ### Parameter considerations for both ASDK and integrated systems
 
