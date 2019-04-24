@@ -13,21 +13,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2019
+ms.date: 04/25/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 04/24/2019
+ms.lastreviewed: 04/25/2019
 ---
 
 # Delete quotas, plans, offers, and subscriptions
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-This article describes how to delete quotas, plans, offers, and subscriptions that you no longer need. The general principle is that you can delete only what is not in use. For example, deleting an offer is only possible if there are no subscriptions that belong to it.
+This article describes how to delete quotas, plans, offers, and subscriptions that you no longer need. As a general principle, you can delete only what is not in use. For example, deleting an offer is only possible if there are no subscriptions that belong to that offer.
 
-Subscriptions are the exception to this general principle: you can delete subscriptions that contain resources; the resources will be deleted along with the subscription.
+Subscriptions are the exception to this general principle: you can delete subscriptions that contain resources; and the resources will be deleted along with the subscription.
 
-So, if you want to delete a quota, you need to work back through any plans and offers that use that quota: starting with the offers, ensure they have no subscriptions, and delete each offers; then delete the plans that use the quota, etc.
+Therefore, if you want to delete a quota, you must work back through any plans and offers that use that quota: starting with the offers, ensure they have no subscriptions, delete each offer, then delete the plans that use the quota, and so on.
 
 ## Delete a subscription
 
