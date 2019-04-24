@@ -63,6 +63,37 @@ This article lists known issues with supported releases of Azure Stack. The list
 - Remediation: Upload the blob using the SAS option.
 - Occurrence: Common
 
+### Load Balancer
+
+- Applicable: This issue applies to all supported releases
+- Cause: In the user portal, if you attempt to add a **Backend Pool** to a Load Balancer the operation fails with error message 'failed to update Load Balancer...'
+- Remediation: Use PowerShell, CLI or ARM Template to associate Backend Pool with a Load Balancer resource.
+- Occurence: Common
+
+- Applicable: This iss applies to all supported releases
+- Cause: In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer** the operation will fail with the error message 'Failed to update Load Balancer...'
+- Remediation: Use PowerShell, CLI or ARM Template to associate Backend Pool with a Load Balancer resource.
+- Occurence: Common
+
+- Applicable: This iss applies to all supported releases
+- Cause: In the user portal, the **Create Load Balancer** blade show an option to create a **Standard** Load Balancer SKU.  This option is not supported in Azure Stack.
+- Remediation: Use Basic Load Balancer option instead.
+- Occurence: Common
+
+### Public IP Address
+
+- Applicable: This iss applies to all supported releases
+- Cause: In the user portal, the **Create Public IP Address** blade shows an option to create a **Standard** SKU.  The **Standard** SKU is not supported in Azure Stack.
+- Remediation: Use Basic SKU instead for Public IP Address.
+- Occurence: Common
+
+### Network Interface 
+
+- Applicable: This iss applies to all supported releases
+- Cause: In the user portal, if you attempt to **Attach Network Interface** to an existing VM via the **Networking** blade the operation fails with the error message: 'Failed to attach network interface...'
+- Remediation: Use PowerShell, CLI or ARM Template to associate the network interface with the VM.
+- Occurence: Common
+
 ## Compute
 
 ### VM boot diagnostics
@@ -105,31 +136,6 @@ The error occurs if you enable boot diagnostics on a VM but delete your boot dia
 - Occurrence: Common
 
 ## Networking
-
-### Static IP warning
-
-- Applicable: This issue applies to all supported releases
-- Cause: In the Azure Stack portal, when you change a static IP address for an IP configuration that is bound to a network adapter attached to a VM instance, you will see a warning message that states
-The virtual machine associated with this network interface will be restarted to utilize the new private IP address...
-- Remediation: You can safely ignore this message; the IP address will be changed even if the VM instance does not restart.
-- Occurrence: Common
-
-### Inbound security rules
-
-- Applicable: This issue applies to all supported releases
-- Cause: In the portal, if you add an inbound security rule and select Service Tag as the source, several options are displayed in the Source Tag list that are not available for Azure Stack. The only options that are valid in Azure Stack are as follows.
-  - Internet
-  - VirtualNetwork
-  - AzureLoadBalancer
-- Remediation: The other options are not supported as source tags in Azure Stack. Similarly, if you add an outbound security rule and select Service Tag as the destination, the same list of options for Source Tag is displayed. The only valid options are the same as for Source Tag, as described in the previous list.
-- Occurrence: Common
-
-### Network Security Groups
-
-- Applicable: This issue applies to all supported releases
-- Cause: Network security groups (NSGs) do not work in Azure Stack in the same way as global Azure. In Azure, you can set multiple ports on one NSG rule (using the portal, PowerShell, and Resource Manager templates). In Azure Stack however, you cannot set multiple ports on one NSG rule via the portal.
-- Remediation: To work around this issue, use a Resource Manager template or PowerShell to set these additional rules.
-- Occurrence: Common
 
 ### Network interfaces
 
