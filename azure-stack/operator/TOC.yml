@@ -337,6 +337,8 @@
       href: azure-stack-create-offer.md
     - name: Subscribe to an offer
       href: azure-stack-subscribe-plan-provision-vm.md
+    - name: Delete offers
+      href: azure-stack-delete-offer.md
     - name: Delegate offers in Azure Stack
       href: azure-stack-delegated-provider.md
     - name: Quota types
