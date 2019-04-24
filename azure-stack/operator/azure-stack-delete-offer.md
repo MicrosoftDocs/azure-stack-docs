@@ -52,7 +52,7 @@ To delete a plan, in the Administrator portal go to **All services**, then **Pla
 
 ![delsub2](media/azure-stack-delete-offer/delsub2.png)
 
-You can only delete a plan when there are no offers using it. If there are current offers that use the plan, delete the plan, allow it to fail, and you will get an error message. You can select **Parent offers** to display a list of offers that use the plan. For more information about deleting offers, see [Delete an offer](#delete-an-offer).
+You can only delete a plan when there are no offers using it. If there are current offers that use the plan, delete the plan, allow it to fail, and you will receive an error message. You can select **Parent offers** to display a list of offers that use the plan. For more information about deleting offers, see [Delete an offer](#delete-an-offer).
 
 ## Edit and delete a quota
 
