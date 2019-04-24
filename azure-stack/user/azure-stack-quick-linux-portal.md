@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Quick Start - Create VM Portal
-description: Azure Stack Quick Start - Create a Linux VM using the portal
+title: Azure Stack quickstart - Create VM Portal
+description: Azure Stack quickstart - Create a Linux VM using the portal
 services: azure-stack
 cloud: azure-stack
 author: mattbriggs
@@ -37,7 +37,7 @@ You can create an Ubuntu Server 16.04 LTS virtual machine by using the Azure Sta
 
 * **Access to an SSH client**
 
-   If you are using the Azure Stack Development Kit (ASDK), you might not have access to an SSH client. If you need a client, there are several packages that include an SSH client. For example, PuTTY includes an SSH client and SSH key generator (puttygen.exe). For more information about available packages,  read the following Azure article: [How to Use SSH keys with Windows on Azure](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows#windows-packages-and-ssh-clients).
+   If you are using the Azure Stack Development Kit (ASDK), you might not have access to an SSH client. If you need a client, there are several packages that include an SSH client. For example, PuTTY includes an SSH client and SSH key generator (puttygen.exe). For more information about available packages, read the following Azure article: [How to use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
 
    This Quickstart uses PuTTY to generate the SSH keys and to connect to the Linux server virtual machine. To download and install PuTTY, go to [https://www.putty.org/](https://www.putty.org).
 
