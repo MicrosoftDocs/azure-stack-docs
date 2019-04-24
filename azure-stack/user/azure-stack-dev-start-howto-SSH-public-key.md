@@ -1,4 +1,4 @@
----
+git git ---
 title: How to use an SSH public key with Azure Stack | Microsoft Docs
 description: How to use an SSH public key
 services: azure-stack
