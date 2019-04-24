@@ -60,9 +60,9 @@ What's new, also net new experiences and features. -->
 <!-- 1901,2,3 related hotfix -->
 - Fixed a bug in computing that blocked deallocating virtual machines. Previously, if a VM contained multiple large managed disks, deallocating the VM might have failed with a timeout error.
 
-- New Marketplace management experience launched with separate blades for Marketplace images and Resource providers along with improved filtering. In the future, new PaaS service offerings will show up in the resource providers blade and be managed from this blade; this section will be empty for now. New filtering capabilities allow operators to apply multiple filters at a time. You will only be able to sort on the Name column in the new experience. 
+- There is a new Marketplace management experience, with separate blades for Marketplace images and resource providers, along with improved filtering. For now, the **Resource providers** window is empty. New filtering capabilities enable operators to apply multiple filters at the same time. You can only sort on the **Name** column in the new user interface.
 
-- Improvements to offers, plans, quotas, and subscriptions deletion experience. You will now be able to successfully delete offers, quotas, plans, and subscriptions from the administrator portal if the object you are trying to delete has no dependencies. Read [this article](azure-stack-delete-offer.md) for more details.  
+- Improvements to the process of deleting offers, plans, quotas, and subscriptions. You can now successfully delete offers, quotas, plans, and subscriptions from the Administrator portal if the object you want to delete has no dependencies. For more information, see [this article](azure-stack-delete-offer.md).  
 
 ### Fixes
 
