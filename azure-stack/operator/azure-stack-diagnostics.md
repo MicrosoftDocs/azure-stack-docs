@@ -104,16 +104,18 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
   Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
 
-* Collect logs and store them in the specified Azure Storage blob container. An example of the SAS Uri parameter is `https://<StorageAccountName>.blob.core.windows.net/<ContainerName><SAS Token>`. When generating the SAS token, the following permissions are required:
+* Collect logs and store them in the specified Azure Storage blob container.
+
+  ```powershell
+  Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
+  ```
+
+  An example of the SAS Uri parameter is `https://<StorageAccountName>.blob.core.windows.net/<ContainerName><SAS Token>`. When generating the SAS token, the following permissions are required:
 
   * Allowed services = Blob -> ss=b
   * Allowed resource types = Container -> sr=c
   * Allowed permissions = Read, Write, List-> sp=rwl
   * Valid start and expiry/end date
-
-  ```powershell
-  Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
-  ```
 
   To create a SAS Uri to be used for the `-OutputSasUri` parameter for **Get-Azurestacklog**, perform the following steps:
 
@@ -122,7 +124,7 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
   3. Connect to the storage account created in step 1.
   4. Select **Blob Containers**.
   5. Create a new container.
-  6. Right click the container, then click **Get Shared Access Signature**
+  6. Right click the container, then click **Get Shared Access Signature**.
   7. Select the required **Start Time** and **End Time**.
   8. For permissions, select **Read**, **Write**, **List**.
   9. Select **Create**.
