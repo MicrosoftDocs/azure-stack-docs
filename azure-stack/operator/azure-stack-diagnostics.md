@@ -104,13 +104,19 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
   Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
 
-* Collect logs and store them in the specified Azure Storage blob container.
+* Collect logs and store them in the specified Azure Storage blob container:
 
   ```powershell
   Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
   ```
 
-  An example of the SAS Uri parameter is `https://<StorageAccountName>.blob.core.windows.net/<ContainerName><SAS Token>`. When generating the SAS token, the following permissions are required:
+  An example of the SAS Uri parameter is:
+
+  ```http
+  https://<StorageAccountName>.blob.core.windows.net/<ContainerName><SAS Token>`
+  ```
+
+  When generating the SAS token, the following permissions are required:
 
   * Allowed services = Blob -> ss=b
   * Allowed resource types = Container -> sr=c
