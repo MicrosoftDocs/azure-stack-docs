@@ -42,7 +42,7 @@ Resource Providers provide functionality, but also provide a surface for managin
 
 The following block diagram shows the relationship of each set of PowerShell modules. From your machine, you can load the PowerShell modules and manage both global Azure and Azure Stack.
 
-![Azure Stack Powershell](media/azure-stack-powershell-overview/Azure_Stack_PowerShell.png)
+![Azure Stack Powershell](media/azure-stack-powershell-overview/Azure-Stack-PowerShell.png)
 
 ### Global Azure
 

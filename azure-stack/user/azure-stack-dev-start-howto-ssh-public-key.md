@@ -28,7 +28,8 @@ In this section, you will use PuTTY's key generator to create a public SSH key a
 
 1. Set the **Parameters** to **RSA**.
 
-1. Set the number of bits in a generated key to `2048`.
+1. Set the number of bits in a generated key to `2048`.  
+
     ![Use PuTTY to generate an SSH public key](media/azure-stack-dev-start-howto-ssh-public-key/001-putty-key-gen-start.png)
 
 1. Select **Generate**. In the **Key** area, generate some randomness by moving the cursor over the blank area.

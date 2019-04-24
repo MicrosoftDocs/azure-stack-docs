@@ -65,7 +65,7 @@ Create an SSH public key for your server using an app such as Putty. Access your
 2. Open your Azure Stack portal.
 3. Select **Create a resource** > **Compute** > **Ubuntu Server 16.04 LTS**.
 
-    ![Deploy a web app to an Azure Stack VM](media/azure-stack-dev-start-howto-deploy-linux/001_portal_compute.png)
+    ![Deploy a web app to an Azure Stack VM](media/azure-stack-dev-start-howto-deploy-linux/001-portal-compute.png)
 
 4. In the **Create a virtual machine** blade, for **1. Configure basic settings**:
     1. Type the **Name of your VM**.
