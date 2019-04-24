@@ -69,7 +69,7 @@ The 1903 payload does not include an ASDK release.
       $connection = Add-VpnConnection -Name $ConnectionName -ServerAddress $ServerAddress -TunnelType L2tp -EncryptionLevel Required -AuthenticationMethod Eap -L2tpPsk $PlainPassword -Force -RememberCredential -PassThru -SplitTunneling
       ```
 
-   2. Change the **Connect-AzsVpn** cmdlet from using `rasdial @ConnectionName $User $PlainPassword` to using `rasphone`, as EAP requires interactive sign-on:
+   2. Change the **Connect-AzsVpn** cmdlet from using `rasdial @ConnectionName $User $PlainPassword` to using `rasphone`, as EAP requires interactive sign in:
 
       ```powershell
       rasphone $ConnectionName
