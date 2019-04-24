@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: powershell
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 04/24/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 04/24/2019
 
 ---
 
@@ -25,13 +25,13 @@ PowerShell is designed for managing and administering resources from the command
 
 This article helps you get orient yourself to the different PowerShell modules used on Azure Stack. A PowerShell module can be defined as a set of PowerShell functions that are grouped to manage all the aspects of a particular area.
 
-There are four sets of APIs that you can interact with when you use PowerShell on Azure Stack. The Azure Stack Resource Manager uses API Profiles.
+There are four sets of APIs that you can interact with when you use PowerShell on Azure Stack.
 
 | API | PowerShell reference | REST reference |
 | --- | --- | --- |
-| 1. Global Azure Resource Manager | [Azure PowerShell Modules](https://github.com/Azure/azure-powershell/blob/master/documentation/azure-powershell-modules.md) | [REST API Browser](https://docs.microsoft.com/en-us/rest/api/) |
+| 1. Global Azure Resource Manager | [Azure PowerShell Modules](https://github.com/Azure/azure-powershell/blob/master/documentation/azure-powershell-modules.md) | [REST API Browser](https://docs.microsoft.com/rest/api/) |
 | 2. Azure Stack Resource Manager | [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md) | [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md) |
-| 3. Azure Stack Administrator endpoints | [Azure Stack Module](https://docs.microsoft.com/powershell/azure/azure-stack/overview) | [REST API Browser - Azure Stack](https://docs.microsoft.com/en-us/rest/api/?term=Azure%20Azure%20Stack%20Admin) |
+| 3. Azure Stack Administrator endpoints | [Azure Stack Module](https://docs.microsoft.com/powershell/azure/azure-stack/overview) | [REST API Browser - Azure Stack](https://docs.microsoft.com/rest/api/?term=Azure%20Azure%20Stack%20Admin) |
 | 4.  Azure Stack Privileged Endpoint | [Using the privileged endpoint in Azure Stack](../operator/azure-stack-privileged-endpoint.md) | |
 
 Each interface contacts resource providers in global Azure or Azure Stack. Resource providers enable Azure capabilities. For example, The Azure Compute resource provider gives you programmatic access to the creation and management of virtual machines and their supporting resources.
@@ -50,7 +50,7 @@ Azure PowerShell provides a set of cmdlets that use the current version of the A
 
 ### Azure Stack Resource Manager
 
-Azure Stack PowerShell provides a set of cmdlets that use prior versions of the Azure Resource Manger compatible with the resource providers in Azure Stack. Each resource provider in Azure Stack uses an older version of the provider found in global Azure. To help you coordinate the version of each provider supported by Azure Stack, you can use API Profiles. Azure Stack PowerShell uses PowerShell 5.1 and is only available on Windows. For more information, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md).
+Azure Stack PowerShell provides a set of cmdlets that use prior versions of the Azure Resource Manager compatible with the resource providers in Azure Stack. Each resource provider in Azure Stack uses an older version of the provider found in global Azure. To help you coordinate the version of each provider supported by Azure Stack, you can use API Profiles. Azure Stack PowerShell uses PowerShell 5.1 and is only available on Windows. For more information, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md).
 
 ### Azure Stack Administrator
 
@@ -66,7 +66,7 @@ In addition, Azure Stack provides scripts and additional cmdlets available via a
 
 ## Working with PowerShell on Azure Stack
 
-PowerShell provides a programmatic way to interact with the Azure Resource Manager. You can either work with an interactive command prompt or write scripts if you are automatic tasks.
+PowerShell provides a programmatic way to interact with the Azure Resource Manager. You can either work with an interactive command prompt or write scripts if you are automating tasks.
 
 If you spend much time working with Azure Stack PowerShell, you'll find yourself installing and reinstalling the modules. This can be challenging if you're working with global Azure at the same time since you'll need to uninstall and reinstall your modules depending on your target. You can use Docker containers to isolate each version of PowerShell on your local machine. [Use Docker to run PowerShell](azure-stack-powershell-user-docker.md) looks at using Docker containers so that you can switch from PowerShell module set to PowerShell module set.
 

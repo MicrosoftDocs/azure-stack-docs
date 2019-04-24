@@ -1,6 +1,6 @@
 ---
-title: Deploy an app to Azure Stack | Microsoft Docs
-description: Deploy an app to Azure Stack.
+title: Deploy an Java WAR to a virtual machine in Azure Stack | Microsoft Docs
+description:  Deploy an Java WAR to a virtual machine in Azure Stack.
 services: azure-stack
 author: mattbriggs
 
@@ -20,7 +20,7 @@ ms.lastreviewed: 04/24/2019
 
 You can create a VM to host your Python Web app in Azure Stack. This article looks at the steps you will follow in setting up server, configuring the server to host your Python web app, and then deploying your app.
 
-Java is a general-purpose computer-programming language that is concurrent, class-based, object-oriented, and designed to have as few implementation dependencies as possible. It is intended to let application developers "write once, run anywhere", meaning that compiled Java code can run on all platforms that support Java without the need for recompilation. Java applications are typically compiled to "bytecode" that can run on any Java virtual machine regardless of the underlying computer architecture. The language derives many of its original features from SmallTalk, with a syntax similar to C and C++, but it has fewer low-level facilities than either of them. To learn the Java programming language and find additional resources for Java, see [Java.com](https://www.java.com).
+Java is a general-purpose computer-programming language that is concurrent, class-based, object-oriented, and designed to have as few implementation dependencies as possible. It is intended to let application developers "write once, run anywhere", meaning that compiled Java code can run on all platforms that support Java without the need for recompilation. To learn the Java programming language and find additional resources for Java, see [Java.com](https://www.java.com).
 
 This article will walk through installing and configuring an Apache Tomcat server on a Linux VM in Azure Stack, and then loading a Java Web application Resource (WAR) file into the server. A WAR file is used to distribute a collection of JAR-files, JavaServer Pages, Java Servlets, Java classes, XML files, tag libraries, static web pages (HTML and related files) and other resources that together constitute a web application.
 
@@ -42,7 +42,7 @@ Apache Tomcat, often referred to as Tomcat Server, is an open-source Java Servle
 
 ## Install Java
 
-1. Connect to your VM using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-SSH-public-key.md#connect-via-ssh-with-putty).
+1. Connect to your VM using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-ssh-public-key.md#connect-via-ssh-with-putty).
 2. At your bash prompt on your VM, type the following commands:
 
     ```bash  
@@ -57,7 +57,7 @@ Apache Tomcat, often referred to as Tomcat Server, is an open-source Java Servle
 
 ## Install and configure Tomcat
 
-1. Connect to your VM using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-SSH-public-key.md#connect-via-ssh-with-putty).
+1. Connect to your VM using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-ssh-public-key.md#connect-via-ssh-with-putty).
 
 2. Create Tomcat user.
     - First, create a new Tomcat group:
@@ -118,7 +118,7 @@ Apache Tomcat, often referred to as Tomcat Server, is an open-source Java Servle
             sudo nano /etc/systemd/system/tomcat.service
         ```
 
-    - Paste the following contents into your service file. Modify the value o **JAVA_HOME** if necessary to match the value you found on your system. You may also want to modify the memory allocation settings that are specified in CATALINA_OPTS:
+    - Paste the following contents into your service file. Modify the value of **JAVA_HOME** if necessary to match the value you found on your system. You may also want to modify the memory allocation settings that are specified in CATALINA_OPTS:
 
         ```Text  
             [Unit]
@@ -200,7 +200,7 @@ Apache Tomcat, often referred to as Tomcat Server, is an open-source Java Servle
         <user username="<username>" password="<password>" roles="tomcat,manager-gui,admin-gui"/>
     ```
 
-    - For example you final 1 file may look something like:
+    - For example, your final file may look something like:
 
     ```XML  
         <tomcat-users xmlns="http://tomcat.apache.org/xml"
@@ -215,7 +215,7 @@ Apache Tomcat, often referred to as Tomcat Server, is an open-source Java Servle
     - Save and close the file.
 
 
-10. Tomcat restricts access to the **Manager** and **Host Manager** apps to connections coming from the server. Since you are installing Tomcat on a VM in Azure Stack, you will want to remove this restriction. Change the IP address restrictions on these, open the appropriate `context.xml` files.
+10. Tomcat restricts access to the **Manager** and **Host Manager** apps to connections coming from the server. Since you are installing Tomcat on a VM in Azure Stack, you will want to remove this restriction. Change the IP address restrictions on these apps, by editing the appropriate `context.xml` files.
 
     - Update  `context.xml` the Manager app:
 
@@ -253,7 +253,7 @@ Apache Tomcat, often referred to as Tomcat Server, is an open-source Java Servle
     - Select Server Status to review the status of the Tomcat server and verify you have access.
     - Sign in with your Tomcat credentials.
 
-![Apache Tomcat on an Azure Stack VM](media/azure-stack-dev-start-howto-vm-java/apache-tomcat-managementapp.png)
+![Apache Tomcat on an Azure Stack VM](media/azure-stack-dev-start-howto-vm-java/apache-tomcat-management-app.png)
 
 ## Create an app
 
@@ -263,7 +263,7 @@ For guidance about developing Java apps in Azure, see [Build and deploy Java app
 
 ## Deploy and run the app
 
-1. Connect to your VM using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-SSH-public-key.md#connect-via-ssh-with-putty).
+1. Connect to your VM using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-ssh-public-key.md#connect-via-ssh-with-putty).
 1. Stop the Tomcat service to update the server with your app package:
 
     ```bash  
@@ -276,7 +276,7 @@ For guidance about developing Java apps in Azure, see [Build and deploy Java app
         sudo usermod -a -G tomcat <VM-user>
     ```
 
-3. Connect to your VM with FileZilla to clear the webapps folder and then load your new or updated WAR. For instructions on using FileZila, see [Connect with SFTP with FileZilla](azure-stack-dev-start-howto-SSH-public-key.md#connect-with-sftp-with-filezilla).
+3. Connect to your VM with FileZilla to clear the webapps folder and then load your new or updated WAR. For instructions on using FileZila, see [Connect with SFTP with FileZilla](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-sftp-with-filezilla).
     - Clear `TOMCAT_HOME/webapps`.
     - Add your WAR to ` TOMCAT_HOME/webapps`, for example  `/opt/tomcat/webapps/`.
 

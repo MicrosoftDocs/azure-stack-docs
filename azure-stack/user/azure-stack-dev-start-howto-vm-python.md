@@ -1,6 +1,6 @@
 ---
-title: How to deploy a Python web app to a VM in Azure Stack | Microsoft Docs
-description: Deploy an app to Azure Stack.
+title: How to deploy a Python web app to a virtual machine in Azure Stack | Microsoft Docs
+description: Deploy a Python web app to a virtual machine in Azure Stack.
 services: azure-stack
 author: mattbriggs
 
@@ -40,7 +40,7 @@ This article will use Python 3.x running Flask in a virtual environment on a Ngn
 
 ## Install Python
 
-1. Connect to your VM using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-SSH-public-key.md#connect-via-ssh-with-putty).
+1. Connect to your VM using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-ssh-public-key.md#connect-via-ssh-with-putty).
 2. At your bash prompt on your VM, type the following commands:
 
     ```bash  

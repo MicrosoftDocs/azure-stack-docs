@@ -1,5 +1,5 @@
 ---
-title: Deploy a Linux VM Azure Stack | Microsoft Docs
+title: Deploy a Linux VM to Azure Stack | Microsoft Docs
 description: Deploy an app to Azure Stack.
 services: azure-stack
 author: mattbriggs
@@ -12,7 +12,7 @@ ms.reviewer: sijuman
 ms.lastreviewed: 04/24/2019
 
 # keywords: Deploy a web app to Azure Stack
-# Intent: I am developer who would like to deploy an app for Azure Stack. I am may be using the portal, PowerShell, or Azure CI to do this task.
+# Intent: I am developer who would like to deploy an app for Azure Stack. I may be using the portal, PowerShell, or Azure CI to do this task.
 ---
 
 # Deploy a Linux VM to host a web app in Azure Stack
@@ -22,7 +22,7 @@ You can create and deploy a basic Linux VM using the Ubunutu image in the market
 - **Python**. Common Python web frameworks include Flask, Bottle, and Django.
 - **Go**. Common Go frameworks include Revel, Martini, Gocraft/web, and Gorilla. 
 - **Ruby**. You can set up a Ruby on Rails as a framework to deliver your Ruby web apps. 
-- **Java**. Java can be used to develop web apps posted to an n Apache Tomcat Server. You can install Tomcat on Linux, and then deploy your Java WAR files directly to the server. 
+- **Java**. Java can be used to develop web apps posted to an Apache Tomcat Server. You can install Tomcat on Linux, and then deploy your Java WAR files directly to the server. 
 
 You can use the instructions in this article to get up and running with any web app, framework, and back-end technology that uses the Linux OS. You can then use Azure Stack to manage your infrastructure, and the management tools within your technology to handle maintenance tasks for your app.
 
@@ -30,7 +30,7 @@ You can use the instructions in this article to get up and running with any web 
 
 You will create a secret key, use the base image of the Linux VM, specify the particular attributes of the VM, and then create the VM. When the VM has been created, you will open the ports you will need to work with the VM and for the VM to host your app. You will also create the DNS name. Finally, you will connect to the VM and update the machine using apt-get. When you are done with this how to article, you will have a VM in your Azure Stack ready to host your web app.
 
-You can jump right into the instructions, or your may want to make sure you have everything you need in place.
+You can jump right into the instructions, or you may want to make sure you have everything you need in place.
 
 ## Prerequisites and considerations
 
@@ -61,7 +61,7 @@ Create an SSH public key for your server using an app such as Putty. Access your
 
 ### Create your VM
 
-1. Create an SSH public key for your server. For more information, see [How to use an SSH public key](azure-stack-dev-start-howto-SSH-public-key.md).
+1. Create an SSH public key for your server. For more information, see [How to use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
 2. Open your Azure Stack portal.
 3. Select **Create a resource** > **Compute** > **Ubuntu Server 16.04 LTS**.
 
@@ -96,8 +96,8 @@ Create an SSH public key for your server using an app such as Putty. Access your
     1. Select **Public IP address** to configure access to your VM or services running on your VM. Use a public IP address if you want to communicate with the virtual machine from outside the virtual network. 
     1. Select **Network Security Group**, **Basic, or **Advanced**. Set rules that allow or deny network traffic to the VM 
     1. Select **public inbound ports** to set access for common or custom protocols to your VM. The service specifies the destination protocol and port range for this rule. You can choose a predefined service, like RDP or SSH, or provide a custom port range.  
-        For the  web server, you are gong to want to HTTP (80), HTTPS (443), and SSH (22) open. If you plan on managing the machine with an RDP connection, open port 3389.
-    1. Select **Extensions** if you would like to add Extension to your VM. Extensions add new features, like configuration management or antivirus protection, to your virtual machine using extensions. Learn more 
+        For the  web server, you are going to want to HTTP (80), HTTPS (443), and SSH (22) open. If you plan on managing the machine with an RDP connection, open port 3389.
+    1. Select **Extensions** if you would like to add Extension to your VM. Extensions add new features, like configuration management or antivirus protection, to your virtual machine using extensions. 
     1. Disable or enable **Monitoring**. Capture serial console output and screenshots of the virtual machine running on a host to help diagnose startup issues. 
     1. Select **diagnostics storage account** to specify the storage account holding your metrics. Metrics are written to a storage account so you can analyze them with your own tools. . 
     1. Select **OK**.
@@ -140,7 +140,7 @@ In addition, you can create a DNS name for your server, and then users can conne
 
 ### Connect via SSH to update your VM
 
-1. On the same network as your Azure Stack, open your SSH client. For more information, see [How to use an SSH public key](azure-stack-dev-start-howto-SSH-public-key.md).
+1. On the same network as your Azure Stack, open your SSH client. For more information, see [How to use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
 1. Type:
     ```bash  
         sudo apt-get update

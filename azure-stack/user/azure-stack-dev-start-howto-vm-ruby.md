@@ -1,6 +1,6 @@
 ---
-title: Deploy an app to Azure Stack | Microsoft Docs
-description: Deploy an app to Azure Stack.
+title: Deploy an Ruby app to a virtual machine in Azure Stack | Microsoft Docs
+description: Deploy an Ruby app to a virtual machine in Azure Stack.
 services: azure-stack
 author: mattbriggs
 
@@ -39,7 +39,7 @@ This article will use Ruby and a Ruby on Rails web framework.
 
 ## Install Ruby
 
-1. Connect to your VM using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-SSH-public-key.md#connect-via-ssh-with-putty).
+1. Connect to your VM using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-ssh-public-key.md#connect-via-ssh-with-putty).
 1. Install the PPA repository. At your bash prompt on your VM, type the following commands:
 
     ```bash  

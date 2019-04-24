@@ -1,5 +1,5 @@
 ---
-title: How to use an SSH public key | Microsoft Docs
+title: How to use an SSH public key with Azure Stack | Microsoft Docs
 description: How to use an SSH public key
 services: azure-stack
 author: mattbriggs
@@ -29,16 +29,16 @@ In this section, you will use PuTTY's key generator to create a public SSH key a
 1. Set the **Parameters** to **RSA**.
 
 1. Set the number of bits in a generated key to `2048`.
-    ![Use PuTTY to generate an SSH public key](media/azure-stack-dev-start-howto-SSH-public-key/001-puTTYkeygenstart.png)
+    ![Use PuTTY to generate an SSH public key](media/azure-stack-dev-start-howto-ssh-public-key/001-putty-key-gen-start.png)
 
 1. Select **Generate**. In the **Key** area, generate some randomness by moving the cursor over the blank area.
 
 1. Add a **Key passphrase** and confirm it in the **Confirm** box. Make note of your passphrase.
-    ![Use PuTTY to generate an SSH public key](media/azure-stack-dev-start-howto-SSH-public-key/002-puTTYkeygenresult.png)
+    ![Use PuTTY to generate an SSH public key](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-key-gen-result.png)
 
 1. Select **Save the public key** and save to a location where you can access it.
 
-1. Select **Save private key** to and save to a location where you can access it remember that is belongs with the public key.
+1. Select **Save private key** and save to a location where you can access it and remember that it belongs with the public key.
 
 Your public key is stored in the text file you saved. If you open it, it will contain text that looks like:
 
@@ -77,24 +77,22 @@ Before you connect, you will need:
 
 1. Open Putty.
 
-    ![Use PuTTY to connect](media/azure-stack-dev-start-howto-SSH-public-key/002-puTTYconnect.png)
+    ![Use PuTTY to connect](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-connect.png)
 
 2. Add the username and public IP address of the machine. For example, `username@192.XXX.XXX.XX` for the **Host Name**. 
 3. Validate that **Port** `22` is set and **Connection type** is set to `SSH`.
 4. Expand **SSH** > **Auth** in the **Category** tree.
 
-    ![SSH private key](media/azure-stack-dev-start-howto-SSH-public-key/002-puTTYsetprivatekey.png)
+    ![SSH private key](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-set-private-key.png)
 
 5. Select **Browse** and find your private key file (filename.ppk) of your public and private key pair.
 6. Select Session in the Category tree.
 
-    ![SSH public key with private key](media/azure-stack-dev-start-howto-SSH-public-key/003-puTTYsavesession.png)
+    ![SSH public key with private key](media/azure-stack-dev-start-howto-ssh-public-key/003-puTTY-save-session.png)
 
 7. Type a name for the session under **Saved Sessions** and Select *Save*.
 8. Select the name of the session and **Load**.
 9. Select **Open**. The SSH session will open.
-
-![Use SSH public key to connect via openSSH](media/azure-stack-dev-start-howto-SSH-public-key/004-openSSHSession.png)
 
 ## Connect with SFTP with FileZilla
 
@@ -106,7 +104,7 @@ You can use Filezilla as an FTP client that supports SFTP to move files to and f
 1. Open FileZilla.
 1. Select **File** > **Site Manager**.
 
-    ![SSH public key with private key](media/azure-stack-dev-start-howto-SSH-public-key/005-FileZilla-Site-Manger.png)
+    ![SSH public key with private key](media/azure-stack-dev-start-howto-ssh-public-key/005-filezilla-file-manager.png)
 
 1. Select **SFTP - SSH File Transfer Protocol** for **Protocol**.
 1. Add the public IP address for your machine in the **Host** box.
@@ -115,7 +113,7 @@ You can use Filezilla as an FTP client that supports SFTP to move files to and f
 1. Select **OK**.
 1. Select **Edit** > **Settings**.
 
-    ![SSH public key with private key](media/azure-stack-dev-start-howto-SSH-public-key/006-Filezilla-addprivatekey.png)
+    ![SSH public key with private key](media/azure-stack-dev-start-howto-ssh-public-key/006-filezilla-add-private-key.png)
 
 1. Expand **Connection** in the **Select page** tree. Select **SFTP**.
 1. Select **Add key file** and add your private key file (filename.ppk).

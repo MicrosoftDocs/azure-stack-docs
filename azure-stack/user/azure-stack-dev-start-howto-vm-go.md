@@ -1,5 +1,5 @@
 ---
-title: How to deploy a GO web app to a VM in Azure Stack | Microsoft Docs
+title: How to deploy a GO web app to a virtual machine in Azure Stack | Microsoft Docs
 description: How to deploy a GO web app to a VM in Azure Stack
 services: azure-stack
 author: mattbriggs
@@ -20,7 +20,7 @@ ms.lastreviewed: 04/24/2019
 
 You can create a VM to host your Go Web app in Azure Stack. This article looks at the steps you will follow in setting up server, configuring the server to host your GO web app, and then deploying your app.
 
-Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make it easy to write programs that get the most out of multicore and networked machines, while its novel type system enables flexible and modular program construction. Go compiles quickly to machine code yet has the convenience of garbage collection and the power of run-time reflection. It's a fast, statically typed, compiled language that feels like a dynamically typed, interpreted language. To learn the Go programming language and find additional resources for GO, see [Golang.org](https://golang.org).
+Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make it easy to write programs that get the most out of multicore and networked machines, while its type system enables flexible and modular program construction. To learn the Go programming language and find additional resources for GO, see [Golang.org](https://golang.org).
 
 ## Create a VM
 
@@ -38,7 +38,7 @@ Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make
 
 ## Install GO
 
-1. Connect to your VM using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-SSH-public-key.md#connect-via-ssh-with-putty).
+1. Connect to your VM using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-ssh-public-key.md#connect-via-ssh-with-putty).
 1. At your bash prompt on your VM, type the following commands:
 
     ```bash  

@@ -1,5 +1,5 @@
 ---
-title: Deploy an Node.js app to Azure Stack | Microsoft Docs
+title: Deploy an Node.js app to a virtual machine in Azure Stack | Microsoft Docs
 description: Deploy an Node.js app to Azure Stack.
 services: azure-stack
 author: mattbriggs
@@ -38,7 +38,7 @@ Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. As an as
 
 ## Install Node
 
-1. Connect to your VM using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-SSH-public-key.md#connect-via-ssh-with-putty).
+1. Connect to your VM using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-ssh-public-key.md#connect-via-ssh-with-putty).
 1. At your bash prompt on your VM, type the following commands:
 
     ```bash  

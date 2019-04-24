@@ -173,7 +173,7 @@
       - name: Install Visual Studio
         href: azure-stack-install-visual-studio.md
       - name: Use an SSH public key
-        href: azure-stack-dev-start-howto-SSH-public-key.md
+        href: azure-stack-dev-start-howto-ssh-public-key.md
       - name: Deploy a Linux VM for a web app
         href: azure-stack-dev-start-howto-deploy-linux.md
       - name: Using API version profiles
