@@ -81,22 +81,6 @@ The error occurs if you enable boot diagnostics on a VM but delete your boot dia
 - Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
 - Occurrence: Common
 
-### Managed disks
-
-- Applicable: This issue applies to all supported releases
-- Cause: If the subscription was created before the 1808 update, deploying a VM with Managed Disks might fail with an internal error message.
-- Remediation: Follow these steps for each subscription:
-  - In the Tenant portal, go to Subscriptions and find the subscription. Select Resource Providers, then select Microsoft.Compute, and then click Re-register.
-  - Under the same subscription, go to Access Control (IAM), and verify that Azure Stack – Managed Disk is listed.
-- Occurrence: Common
-
-### Managed disks with multi-tenancy
-
-- Applicable: This issue applies to all supported releases
-- Cause: If you have configured a multi-tenant environment, deploying VMs in a subscription associated with a guest directory might fail with an internal error message.
-- Remediation: follow these steps in this article to reconfigure each of your guest directories.
-- Occurrence: Common
-
 ### Ubuntu SSH access
 
 - Applicable: This issue applies to all supported releases
