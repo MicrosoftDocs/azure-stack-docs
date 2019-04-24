@@ -46,15 +46,15 @@ Your Azure Stack deployment must have internet connectivity, and be [registered 
 
 2.	Review the available storage space before downloading marketplace items. Later, when you select items for download, you can compare the download size to your available storage capacity. If capacity is limited, consider options for [managing available space](azure-stack-manage-storage-shares.md#manage-available-space). 
 
-    To review available space, in **Region management** select the region you want to explore, and then go to **Resource Providers** > **Storage**.
+    To review available space, in **Region management** select the region you want to explore, and then go to **Resource Providers** > **Storage**:
 
     ![Review storage space](media/azure-stack-download-azure-marketplace-item/storage.png)
 
-3. Open the Azure Stack Marketplace and connect to Azure. To do so, select **Marketplace items**, and then select **Add from Azure**.
+3. Open the Azure Stack Marketplace and connect to Azure. To do so, select **Marketplace items**, and then select **Add from Azure**:
 
     ![Add from Azure](media/azure-stack-download-azure-marketplace-item/marketplace.png)
 
-    The portal displays the list of items available for download from the Azure Marketplace. You can click on each item to view its description and additional information about it, including its download size. 
+    The portal displays the list of items available for download from the Azure Marketplace. You can filter products by name, publisher and/or type of product. You can also click on each item to view its description and additional information, including its download size:
 
     ![Marketplace list](media/azure-stack-download-azure-marketplace-item/image03.PNG)
 
