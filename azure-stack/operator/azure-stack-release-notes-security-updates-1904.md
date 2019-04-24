@@ -21,15 +21,15 @@ ms.lastreviewed: 04/23/2019
 
 # Azure Stack security updates
 
-This article lists all the security updates in the last three updates of Azure Stack. This information is provided for reference purposes only.
+This article lists all the security updates in the last four updates of Azure Stack. This information is provided for reference purposes only.
 
 ## 1904 update
 
-None.
+This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack.
 
 ## 1903 update
 
-None.  
+This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack.  
 
 ## 1902 update
 
