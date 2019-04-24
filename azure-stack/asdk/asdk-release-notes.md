@@ -53,7 +53,7 @@ The 1903 payload does not include an ASDK release.
    First, make changes to the authentication protocol used on the ASDK server side:
 
    1. RDP to the ASDK host.
-   2. Open an elevated PowerShell session, logging in as AzureStack\AzureStackAdmin, using the password you provided at the time of deployment.
+   2. Open an elevated PowerShell session, signing in as AzureStack\AzureStackAdmin, using the password you provided at the time of deployment.
    3. Run the following commands:
 
       ```powershell
@@ -69,7 +69,7 @@ The 1903 payload does not include an ASDK release.
       $connection = Add-VpnConnection -Name $ConnectionName -ServerAddress $ServerAddress -TunnelType L2tp -EncryptionLevel Required -AuthenticationMethod Eap -L2tpPsk $PlainPassword -Force -RememberCredential -PassThru -SplitTunneling
       ```
 
-   2. Change the **Connect-AzsVpn** cmdlet from using `rasdial @ConnectionName $User $PlainPassword` to using `rasphone`, as EAP requires interactive logon:
+   2. Change the **Connect-AzsVpn** cmdlet from using `rasdial @ConnectionName $User $PlainPassword` to using `rasphone`, as EAP requires interactive sign-on:
 
       ```powershell
       rasphone $ConnectionName
