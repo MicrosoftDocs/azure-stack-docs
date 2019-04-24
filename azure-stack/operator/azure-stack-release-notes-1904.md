@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 04/24/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 04/10/2019
+ms.lastreviewed: 04/24/2019
 ---
 
 # Azure Stack 1904 update
@@ -37,30 +37,39 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 
 ## What's in this update
 
-The current theme (if any) of this release.
+<!-- The current theme (if any) of this release. -->
 
-### What's new
+<!-- ### What's new
 
-What's new, also net new experiences and features.
+What's new, also net new experiences and features. -->
 
 ### Improvements
 
-Changes and product improvements with tangible customer-facing value.
+<!-- Changes and product improvements with tangible customer-facing value. -->
 
-Added a notification in the administrator portal, when the currently logged in user does not have the necessary permissions, which will allow the dashboard to load properly as well as a link to the documentation on which accounts have the appropriate permissions depending on the identity provider used during deployment.
+- Added a notification in the administrator portal, when the currently logged in user does not have the necessary permissions, which enables the dashboard to load properly. It also contains a link to the documentation that explains which accounts have the appropriate permissions, depending on the identity provider used during deployment.
+
+- Added fixes to improve VM resiliency and uptime, which resolves the scenario in which all VMs go offline if the storage volume containing the VM configuration files goes offline.
+
+<!-- 1901,2,3 related hotfix -->
+- Added optimization to the number of VMs evacuated concurrently and placed a cap on bandwidth consumed, to address VM brownouts or blackouts if the network is under heavy load. This change increases VM uptime when a system is updating.
+
+<!-- 1901,2,3 related hotfix -->
+- Improved resource throttling when a system is running at scale to protect against internal processes exhausting platform resources, resulting in failed operations in the portal.
 
 ### Fixes
 
-Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it.
+<!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
-| Case #                | Details                                                                          |
+| Case ID                  | Details                                                                          |
 |-----------------------|----------------------------------------------------------------------------------|
-| N/A                   | Details about the fix.                                                           |
-| ##########            | Details about the fix.                                                           |
+| N/A                   | Fixed an issue in which the syslog configuration was not persisted through an update cycle, causing the syslog client to lose its configuration, and the syslog messages to stop being forwarded. Syslog configuration is now preserved. |
+| N/A                   | Fixed an issue in CRP to address an error during stop-deallocate, in which the operation failed due to a timeout. |
+| N/A                   | Fixed issue with Windows Defender engine impacting access to scale-unit storage. |
 
 ### Security updates
 
-This update contains several updates for identified vulnerabilities. For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base article [4487006](https://support.microsoft.com/en-us/help/4487006). See [Azure Stack security updates](azure-stack-release-notes-security-updates-1904.md) for a complete list of updates.
+This update of Azure Stack does not include any security updates to the underlying operating system which hosts Azure Stack.
 
 ## Update planning
 
@@ -74,14 +83,6 @@ Before applying the update, make sure to review the following information:
 
 You can download the Azure Stack 1904 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
 
-### Automatic update notifications
-
-Customers with systems that can access the internet from the infrastructure network will see the **Update available** message in the operator portal. Systems without internet access can download and import the .zip file with the corresponding .xml.
-
-## System monitoring
-
-When Azure Stack is managed by System Center Operations Manager, make sure to update the [Management Pack for Microsoft Azure Stack](https://www.microsoft.com/download/details.aspx?id=55184) to version 1.0.3.11 before applying 1903.
-
 ## Hotfixes
 
 Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1903 before updating Azure Stack to 1904.
@@ -93,7 +94,11 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 The 1904 release of Azure Stack must be applied on the 1903 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- No hotfixes available for 1903.
+- [Azure Stack hotfix 1.1903.2.39](https://support.microsoft.com/help/4500638)
+
+#### System monitoring
+
+When Azure Stack is managed by System Center Operations Manager, make sure to update the [Management Pack for Microsoft Azure Stack](https://www.microsoft.com/download/details.aspx?id=55184) to version 1.0.3.11 before applying 1903.
 
 ### After successfully applying the 1904 update
 
@@ -101,6 +106,10 @@ After the installation of this update, install any applicable hotfixes. For more
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
 - No hotfixes available for 1904.
+
+## Automatic update notifications
+
+Customers with systems that can access the internet from the infrastructure network will see the **Update available** message in the operator portal. Systems without internet access can download and import the .zip file with the corresponding .xml.
 
 > [!TIP]  
 > Subscribe to the following *RSS* or *Atom* feeds to keep up with Azure Stack hotfixes:
