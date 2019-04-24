@@ -64,6 +64,9 @@ What's new, also net new experiences and features. -->
 
 - Improvements to the process of deleting offers, plans, quotas, and subscriptions. You can now successfully delete offers, quotas, plans, and subscriptions from the Administrator portal if the object you want to delete has no dependencies. For more information, see [this article](azure-stack-delete-offer.md).  
 
+<!-- this applies to bug 3725384 and bug #4225643 -->
+- Improved syslog message volume by filtering out unnecessary events and providing a configuration parameter to select desired severity level for forwarded messages. For more information on how to configure the severity level, refer to [Azure Stack datacenter integration - syslog forwarding](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-integrate-security).
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
