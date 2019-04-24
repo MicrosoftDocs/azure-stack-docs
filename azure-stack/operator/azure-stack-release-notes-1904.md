@@ -57,6 +57,9 @@ What's new, also net new experiences and features. -->
 <!-- 1901,2,3 related hotfix -->
 - Improved resource throttling when a system is running at scale to protect against internal processes exhausting platform resources, resulting in failed operations in the portal.
 
+<!-- 1901,2,3 related hotfix -->
+- Fixed a bug in computing that blocked deallocating virtual machines. Previously, if a VM contains multiple large managed disks, deallocating the VM might fail with a timeout error.
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
