@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: powershell
 ms.topic: article
-ms.date: 04/24/2019
+ms.date: 04/25/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 04/24/2019
@@ -20,7 +20,7 @@ ms.lastreviewed: 04/24/2019
 ---
 # Use Docker to run PowerShell
 
-You can use Docker to create Windows-based containers on which to run the specific version of PowerShell needed to work the different interfaces. You must be using Windows-based containers in Docker.
+You can use Docker to create Windows-based containers on which to run the specific version of PowerShell needed to work the different interfaces. You must be use Windows-based containers in Docker.
 
 ## Docker prerequisites
 
@@ -28,7 +28,7 @@ You can use Docker to create Windows-based containers on which to run the specif
 2. Open a command line, such as Powershell or Bash and type:
 
     ```bash
-        Docker –version to check that you have it installed.
+        Docker –version
     ```
 
 3. You will need to run Docker using Windows containers that will require Windows 10. When running Docker, switch to Windows containers.
@@ -39,7 +39,7 @@ You can use Docker to create Windows-based containers on which to run the specif
 
 You will need a service principal in your Azure AD tenant to use PowerShell to access resource in Azure Stack. You will delegate permissions with user role-based access control.
 
-1. Set up your principal by following the instructions at [Give applications access to Azure Stack resources by creating service principals](azure-stack-create-service-principals.md).
+1. Set up your principal by following the instructions in the article, [Give applications access to Azure Stack resources by creating service principals](azure-stack-create-service-principals.md).
 2. Make note of the application ID, secret, and your tenant ID.
 
 ## Docker - Azure Stack API Profiles module
