@@ -49,16 +49,13 @@ What's new, also net new experiences and features. -->
 
 - Added a notification in the administrator portal, when the currently logged in user does not have the necessary permissions, which enables the dashboard to load properly. It also contains a link to the documentation that explains which accounts have the appropriate permissions, depending on the identity provider used during deployment.
 
-- Added fixes to improve VM resiliency and uptime, which resolves the scenario in which all VMs go offline if the storage volume containing the VM configuration files goes offline.
+- Added improvements to VM resiliency and uptime, which resolves the scenario in which all VMs go offline if the storage volume containing the VM configuration files goes offline.
 
 <!-- 1901,2,3 related hotfix -->
 - Added optimization to the number of VMs evacuated concurrently and placed a cap on bandwidth consumed, to address VM brownouts or blackouts if the network is under heavy load. This change increases VM uptime when a system is updating.
 
 <!-- 1901,2,3 related hotfix -->
 - Improved resource throttling when a system is running at scale to protect against internal processes exhausting platform resources, resulting in failed operations in the portal.
-
-<!-- 1901,2,3 related hotfix -->
-- Fixed a bug in computing that blocked deallocating virtual machines. Previously, if a VM contained multiple large managed disks, deallocating the VM might have failed with a timeout error.
 
 - There is a new Marketplace management experience, with separate screens for Marketplace images and resource providers, along with improved filtering. For now, the **Resource providers** window is empty, but in future releases new PaaS service offerings will appear and be managed in the **Resource providers** window. New filtering capabilities enable operators to apply multiple filters at the same time. You can only sort on the **Name** column in the new user interface.
 
@@ -81,7 +78,7 @@ What's new, also net new experiences and features. -->
 | Case ID                  | Details                                                                          |
 |-----------------------|----------------------------------------------------------------------------------|
 | N/A                   | Fixed an issue in which the syslog configuration was not persisted through an update cycle, causing the syslog client to lose its configuration, and the syslog messages to stop being forwarded. Syslog configuration is now preserved. |
-| N/A                   | Fixed an issue in CRP to address an error during stop-deallocate, in which the operation failed due to a timeout. |
+| N/A                   | Fixed an issue in CRP that blocked deallocation of VMs. Previously, if a VM contained multiple large managed disks, deallocating the VM might have failed with a timeout error. |
 | N/A                   | Fixed issue with Windows Defender engine impacting access to scale-unit storage. |
 
 ### Security updates
