@@ -30,28 +30,28 @@ This article lists known issues with supported releases of Azure Stack. The list
 
 ### Add-on plans
 
-- Applicable: This issue applies to all supported releases
+- Applicable: This issue applies to all supported releases.
 - Cause: Plans that are added to a user subscription as an add-on plan cannot be deleted, even when you remove the plan from the user subscription. The plan will remain until the subscriptions that reference the add-on plan are also deleted.
 - Remediation: No mitigation.
 - Occurrence: Common
 
-### Administrative Subscriptions
+### Administrative subscriptions
 
-- Applicable: This issue applies to all supported releases
-- Cause: The two administrative Subscriptions that were introduced with version 1804 should not be used. The subscription types are Metering subscription, and Consumption subscription.
-- Remediation: These Subscriptions will be suspended starting 1905 and eventually deleted in a future release. If you have resources running on these two Subscriptions, recreate them in user subscriptions prior to 1905.
+- Applicable: This issue applies to all supported releases.
+- Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
+- Remediation: These subscriptions will be suspended starting with 1905 and eventually deleted. If you have resources running on these two subscriptions, recreate them in user subscriptions prior to 1905.
 - Occurrence: Common
 
 ### Subscription resources
 
-- Applicable: This issue applies to all supported releases
+- Applicable: This issue applies to all supported releases.
 - Cause: Deleting user subscriptions results in orphaned resources.
 - Remediation: First delete user resources or the entire resource group, and then delete the user subscriptions.
 - Occurrence: Common
 
 ### Subscription permissions
 
-- Applicable: This issue applies to all supported releases
+- Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
 - Remediation: Use PowerShell to verify permissions.
 - Occurrence: Common
