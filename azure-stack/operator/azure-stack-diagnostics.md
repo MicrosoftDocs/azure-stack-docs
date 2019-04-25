@@ -123,7 +123,7 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
 
   To generate a SAS Uri value to be used for the `-OutputSasUri` parameter, perform the following steps:
 
-  1. Create a Storage account, following the steps [in this article](/azure/storage/common/storage-quickstart-create-account.md?tabs=azure-portal#create-a-storage-account).
+  1. Create a Storage account, following the steps [in this article](/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal#create-a-storage-account).
   2. Open an instance of the Azure Storage Explorer.
   3. Connect to the storage account created in step 1.
   4. Navigate to **Blob Containers** in **Storage Services**.
