@@ -87,13 +87,6 @@ This article lists known issues with supported releases of Azure Stack. The list
 - Remediation: Use Basic SKU instead for public IP address.
 - Occurrence: Common
 
-### Network Interface 
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, if you attempt to **Attach Network Interface** to an existing VM via the **Networking** blade the operation fails with the error message: 'Failed to attach network interface...'.
-- Remediation: Use PowerShell, CLI or a Resource Manager template to associate the network interface with the VM.
-- Occurrence: Common
-
 ## Compute
 
 ### VM boot diagnostics
@@ -119,14 +112,6 @@ The error occurs if you enable boot diagnostics on a VM but delete your boot dia
 - Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
 - Occurrence: Common
 
-## Networking
-
-### Network interfaces
-
-- Applicable: This issue applies to all supported releases
-- Cause: Azure Stack does not support attaching more than 4 Network Interfaces (NICs) to a VM instance today, regardless of the instance size.
-- Remediation: No mitigation.
-- Occurrence: Common
 
 ## Infrastructure backup
 
