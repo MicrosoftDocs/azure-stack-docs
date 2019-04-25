@@ -80,9 +80,9 @@ What's new, also net new experiences and features. -->
 | N/A                   | Fixed an issue in which the syslog configuration was not persisted through an update cycle, causing the syslog client to lose its configuration, and the syslog messages to stop being forwarded. Syslog configuration is now preserved. |
 | N/A                   | Fixed an issue in CRP that blocked deallocation of VMs. Previously, if a VM contained multiple large managed disks, deallocating the VM might have failed with a timeout error. |
 | N/A                   | Fixed issue with Windows Defender engine impacting access to scale-unit storage. |
-| N/A                   | Fixed a portal issue in which the Access Policy window for blob storage accounts failed to load. |
-| N/A                   | Fixed a portal issue in which erroneous notifications about the global Azure portal were displayed. |
-| N/A                   | Fixed a portal issue in which selecting the **Feedback** tile caused an empty browser tab to open. |
+| N/A                   | Fixed a user portal issue in which the Access Policy window for blob storage accounts failed to load. |
+| N/A                   | Fixed an issue in both administrator and user portals, in which erroneous notifications about the global Azure portal were displayed. |
+| N/A                   | Fixed a user portal issue in which selecting the **Feedback** tile caused an empty browser tab to open. |
 | N/A                   | Fixed a portal issue in which changing a static IP address for an IP configuration that was bound to a network adapter attached to a VM instance, caused an error message to be displayed. |
 | N/A                   | Fixed a portal issue in which adding an inbound security rule and selecting **Service Tag** as the source, displayed several options that are not available for Azure Stack. |
 | N/A                   | Fixed the issue in which Network Security Groups (NSGs) did not work in Azure Stack in the same way as global Azure. |
