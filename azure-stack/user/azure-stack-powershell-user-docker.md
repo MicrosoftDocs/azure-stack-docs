@@ -20,7 +20,7 @@ ms.lastreviewed: 04/24/2019
 ---
 # Use Docker to run PowerShell
 
-You can use Docker to create Windows-based containers on which to run the specific version of PowerShell needed to work the different interfaces. You must be use Windows-based containers in Docker.
+You can use Docker to create Windows-based containers on which to run the specific version of PowerShell needed to work the different interfaces. You must use Windows-based containers in Docker.
 
 ## Docker prerequisites
 
