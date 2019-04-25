@@ -96,7 +96,7 @@ ms.topic: hub-page
         <a class="card" href="/azure-stack/asdk/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
             <div class="cardText">
                 <h3>Azure Stack Development Kit (ASDK)</h3>
-                <p>Documentation for operating/using in a non-production environment.</p>
+                <p>Documentation for operating/using in a non-production environment for evaluation.</p>
             </div>
         </a>
     </li>
