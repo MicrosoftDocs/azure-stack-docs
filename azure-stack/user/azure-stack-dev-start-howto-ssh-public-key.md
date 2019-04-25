@@ -6,7 +6,7 @@ author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: overview
-ms.date: 04/24/2019
+ms.date: 04/25/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 04/24/2019
@@ -91,7 +91,7 @@ Before you connect, you will need:
 
     ![SSH public key with private key](media/azure-stack-dev-start-howto-ssh-public-key/003-puTTY-save-session.png)
 
-7. Type a name for the session under **Saved Sessions** and Select *Save*.
+7. Type a name for the session under **Saved Sessions** and Select **Save**.
 8. Select the name of the session and **Load**.
 9. Select **Open**. The SSH session will open.
 
@@ -117,7 +117,7 @@ You can use Filezilla as an FTP client that supports SFTP to move files to and f
     ![SSH public key with private key](media/azure-stack-dev-start-howto-ssh-public-key/006-filezilla-add-private-key.png)
 
 1. Expand **Connection** in the **Select page** tree. Select **SFTP**.
-1. Select **Add key file** and add your private key file (filename.ppk).
+1. Select **Add key file** and add your private key file, such as filename.ppk.
 1. Select **OK**.
 
 ### Open your connection
