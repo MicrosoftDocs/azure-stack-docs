@@ -69,6 +69,8 @@ What's new, also net new experiences and features. -->
 
 - The Azure Stack Infrastructure consumes an additional 12 GB + (4 GB * Number of Azure Stack hosts) from the 1904 update onwards. This means in a 4 node stamp there will be an additional capacity consumption of 28 GB (12 GB + 4 GB * 4) reflected in the capacity screen of the Azure Stack administrator portal. Your update to the 1904 release should succeed even if the additional memory consumption puts your Azure Stack stamp over capacity. If your Azure Stack stamp is over memory usage AFTER the update is completed, you will see an alert reflecting this state, with remediation steps to de-allocate some VMs. 
 
+- Added a new memory check in Test-AzureStack 'UpdateReadiness' Group, which will check to see if you have enough memory available on the stack for the update to complete successfully. 
+
 
 ### Fixes
 
