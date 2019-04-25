@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 04/25/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 03/14/2019
@@ -69,7 +69,7 @@ In the same PowerShell session, edit the following PowerShell script by adding t
 
 	New-Item -Path "C:\" -Name "Certs" -ItemType "Directory" 
 
-	#make sure to export the PFX format of the certificate with the public and private keys and then delete the certifcate from the local certificate store of the machine where you created the certificate
+	#make sure to export the PFX format of the certificate with the public and private keys and then delete the certificate from the local certificate store of the machine where you created the certificate
 	
 	Export-Certificate `
     	-Cert $cert `
