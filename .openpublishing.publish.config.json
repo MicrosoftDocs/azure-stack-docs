@@ -48,10 +48,10 @@
       "Publish",
       "PDF"
     ],
-    "release-stack-migration": [
+    "release-1904": [
       "Publish",
       "PDF"
-    ]
+    ] 
   },
   "need_generate_pdf_url_template": true,
   "targets": {
