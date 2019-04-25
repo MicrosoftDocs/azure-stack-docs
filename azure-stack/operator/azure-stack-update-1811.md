@@ -166,7 +166,7 @@ This update includes the following new features and improvements for Azure Stack
 - Fixed an issue that generated noisy alerts indicating that an Infrastructure Role Instance was unavailable or Scale Unit Node was offline.
 
 <!-- 2724961 - IS ASDK -->
-- Fiexed an issue in which the VM overview page cannot correctly show the VM metrics chart. 
+- Fixed an issue in which the VM overview page cannot correctly show the VM metrics chart. 
 
 ## Changes
 
