@@ -31,20 +31,20 @@ You can use Docker to create Windows-based containers on which to run the specif
         Docker –version
     ```
 
-3. You will need to run Docker using Windows containers that will require Windows 10. When running Docker, switch to Windows containers.
+3. You need to run Docker using Windows containers that require Windows 10. When running Docker, switch to Windows containers.
 
-4. You will need to run Docker from a machine joined to the same domain as Azure Stack. If you are using the ASDK, you will need to install [the VPN on your remote machine](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn).
+4. You must run Docker from a machine joined to the same domain as Azure Stack. If you are using the ASDK, you need to install [the VPN on your remote machine](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn).
 
 ## Service principals for using PowerShell
 
-You will need a service principal in your Azure AD tenant to use PowerShell to access resource in Azure Stack. You will delegate permissions with user role-based access control.
+You need a service principal in your Azure AD tenant to use PowerShell to access resource in Azure Stack. You delegate permissions with user role-based access control.
 
-1. Set up your principal by following the instructions in the article, [Give applications access to Azure Stack resources by creating service principals](azure-stack-create-service-principals.md).
+1. Set up your principal by following the instructions in the article [Give applications access to Azure Stack resources by creating service principals](azure-stack-create-service-principals.md).
 2. Make note of the application ID, secret, and your tenant ID.
 
 ## Docker - Azure Stack API Profiles module
 
-The Dockerfile opens the Microsoft image microsoft/windowsservercore which has Windows PowerShell 5.1 installed. The file then loads Nuget, the Azure Stack PowerShell modules, and grabs the tools from Azure Stack Tools.
+The Dockerfile opens the Microsoft image microsoft/windowsservercore, which has Windows PowerShell 5.1 installed. The file then loads NuGet, the Azure Stack PowerShell modules, and downloads the tools from Azure Stack Tools.
 
 1. Download this repository as a ZIP or clone the repository:  
 [https://github.com/mattbriggs/azure-stack-powershell](https://github.com/mattbriggs/azure-stack-powershell)
