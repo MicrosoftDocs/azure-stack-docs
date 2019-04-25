@@ -78,7 +78,7 @@ What's new, also net new experiences and features. -->
 | Case ID                  | Details                                                                          |
 |-----------------------|----------------------------------------------------------------------------------|
 | N/A                   | Fixed an issue in which the syslog configuration was not persisted through an update cycle, causing the syslog client to lose its configuration, and the syslog messages to stop being forwarded. Syslog configuration is now preserved. |
-| N/A                   | Fixed a bug in CRP that blocked deallocation of VMs. Previously, if a VM contained multiple large managed disks, deallocating the VM might have failed with a timeout error. |
+| N/A                   | Fixed an issue in CRP that blocked deallocation of VMs. Previously, if a VM contained multiple large managed disks, deallocating the VM might have failed with a timeout error. |
 | N/A                   | Fixed issue with Windows Defender engine impacting access to scale-unit storage. |
 
 ### Security updates
