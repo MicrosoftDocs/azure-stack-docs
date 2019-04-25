@@ -61,6 +61,8 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 
 - Improvements to the detection and remediation of low disk space conditions.
 
+- Azure Stack now supports Windows Azure Linux agents greater than version 2.2.35. This support allows customers to maintain consistent Linux images between Azure and Azure Stack. It was added as part of the 1901 and 1902 hotfixes.
+
 ### Secret management
 
 - Azure Stack now supports rotation of the root certificate used by certificates for external secret rotation. For more information, [see this article](azure-stack-rotate-secrets.md).
@@ -164,8 +166,6 @@ The following are post-installation known issues for this build version.
    - If you have configured a multi-tenant environment, deploying VMs in a subscription associated with a guest directory might fail with an internal error message. To resolve the error, follow these steps in [this article](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) to reconfigure each of your guest directories.
 
 - An Ubuntu 18.04 VM created with SSH authorization enabled will not allow you to use the SSH keys to sign in. As a workaround, use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
-
-- Azure Stack now supports Windows Azure Linux agents greater than version 2.2.20. This support allows customers to maintain consistent Linux images between Azure and Azure Stack. It was added as part of the 1901 and 1902 hotfixes.
 
 - If you do not have a Hardware Lifecycle Host (HLH): before build 1902, you had to set group policy **Computer Configuration\Windows Settings\Security Settings\Local Policies\Security Options** to **Send LM & NTLM – use NTLMv2 session security if negotiated**. Since build 1902, you must leave it as **Not Defined** or set it to **Send NTLMv2 response only** (which is the default value). Otherwise, you won't be able to establish a PowerShell remote session and you will see an **Access is denied** error:
 
