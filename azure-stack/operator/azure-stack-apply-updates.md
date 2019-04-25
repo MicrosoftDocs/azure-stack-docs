@@ -11,7 +11,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 04/25/2019
 ms.author: mabrigg
 ms.reviewer: justini
 ms.lastreviewed: 02/11/2019
@@ -90,7 +90,7 @@ The following procedure shows how to import and install update packages in the a
  
     ![Shows how to get to Blobs for the storage account](media/azure-stack-apply-updates/ApplyUpdates3.png) 
 
-4. Under **Blob service**, select **+ Container** to create a  container. Enter a name (for example *Update-1811*), and then select **OK**.
+4. Under **Blob service**, select **+ Container** to create a  container. Enter a name (for example *update-1811*), and then select **OK**.
  
      ![Shows how to add a container in the storage account](media/azure-stack-apply-updates/ApplyUpdates4.png)
 
