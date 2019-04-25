@@ -1,24 +1,24 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Stack
+title: Azure Stack User Documentation
 metadata:
-  title: CLI
+  title: Azure Stack Documentation - Tutorials, API Reference
   meta.description: from-team
-  services: from-team
+  services: azure-stack
   author:   
-  manager: from-team
+  manager: femila
   layout: LandingPage
-  ms.assetid: 
-  ms.service: from-team
+  ms.assetid: cbf798da-6f1a-7d4d-7707-5d5e02589e22
+  ms.service: azure-stack
   ms.tgt_pltfrm: from-team
   ms.devlang: from-team
   ms.topic: landing-page
   ms.date: 04/25/2018
-  ms.author: from-team
+  ms.author: mabrigg
 abstract:
-  description: 
+  description: Azure Stack is a hybrid cloud platform that lets you use Azure services from your company's or service provider's datacenter. As a developer, you can build apps on Azure Stack. You can then deploy them to Azure Stack, to Azure, or you can build truly hybrid apps that leverage the connectivity between an Azure Stack cloud and Azure. Learn how to create resources and deploy apps with our quickstarts and tutorials.<br/><br/>If you're an Azure Stack operator who manages the infrastructure and offers services, see our <a href="/azure/azure-stack/">operator documentation</a>.<br/><br/>If you are an Azure Stack operator interested in the Azure Stack Development Kit (ASDK), a single-node deployment of Azure Stack that you can download and use for free, see our <a href="../asdk">ASDK documentation</a>.
 sections:
-  - title: 
+  - title: Azure Stack DevOps
     items:
     - type: list
       style: cards
