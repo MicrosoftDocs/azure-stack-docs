@@ -58,41 +58,41 @@ This article lists known issues with supported releases of Azure Stack. The list
 
 ### Upload blob
 
-- Applicable: This issue applies to all supported releases
+- Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, when you try to upload a blob using the OAuth(preview) option, the task fails with an error message.
 - Remediation: Upload the blob using the SAS option.
 - Occurrence: Common
 
 ### Load Balancer
 
-- Applicable: This issue applies to all supported releases
-- Cause: In the user portal, if you attempt to add a **Backend Pool** to a Load Balancer the operation fails with error message 'failed to update Load Balancer...'
-- Remediation: Use PowerShell, CLI or ARM Template to associate Backend Pool with a Load Balancer resource.
-- Occurence: Common
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, if you attempt to add a **Backend Pool** to a **Load Balancer**, the operation fails with the error message 'failed to update Load Balancer...'.
+- Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
+- Occurrence: Common
 
-- Applicable: This iss applies to all supported releases
-- Cause: In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer** the operation will fail with the error message 'Failed to update Load Balancer...'
-- Remediation: Use PowerShell, CLI or ARM Template to associate Backend Pool with a Load Balancer resource.
-- Occurence: Common
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer**, the operation fails with the error message 'Failed to update Load Balancer...'.
+- Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
+- Occurrence: Common
 
-- Applicable: This iss applies to all supported releases
-- Cause: In the user portal, the **Create Load Balancer** blade show an option to create a **Standard** Load Balancer SKU.  This option is not supported in Azure Stack.
-- Remediation: Use Basic Load Balancer option instead.
-- Occurence: Common
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Create Load Balancer** window shows an option to create a **Standard** Load Balancer SKU. This option is not supported in Azure Stack.
+- Remediation: Use the Basic Load Balancer options instead.
+- Occurrence: Common
 
 ### Public IP Address
 
-- Applicable: This iss applies to all supported releases
-- Cause: In the user portal, the **Create Public IP Address** blade shows an option to create a **Standard** SKU.  The **Standard** SKU is not supported in Azure Stack.
-- Remediation: Use Basic SKU instead for Public IP Address.
-- Occurence: Common
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Create Public IP Address** window shows an option to create a **Standard** SKU. The **Standard** SKU is not supported in Azure Stack.
+- Remediation: Use Basic SKU instead for public IP address.
+- Occurrence: Common
 
 ### Network Interface 
 
-- Applicable: This iss applies to all supported releases
-- Cause: In the user portal, if you attempt to **Attach Network Interface** to an existing VM via the **Networking** blade the operation fails with the error message: 'Failed to attach network interface...'
-- Remediation: Use PowerShell, CLI or ARM Template to associate the network interface with the VM.
-- Occurence: Common
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, if you attempt to **Attach Network Interface** to an existing VM via the **Networking** blade the operation fails with the error message: 'Failed to attach network interface...'.
+- Remediation: Use PowerShell, CLI or a Resource Manager template to associate the network interface with the VM.
+- Occurrence: Common
 
 ## Compute
 
