@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/24/2019
+ms.date: 04/26/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 04/24/2019
+ms.lastreviewed: 04/26/2019
 ---
 
 # Azure Stack 1904 update
@@ -72,8 +72,7 @@ What's new, also net new experiences and features. -->
 <!--this applied to Bug 1473487 -->
 - Added a new capability to the **Get-AzureStackLog** cmdlet by incorporating an additonal parameter, `-OutputSASUri`. You can now collect Azure Stack logs from your environment and store them in the specified Azure Storage blob container. For more information, see [Azure Stack diagnostics](azure-stack-diagnostics.md#examples).
 
-- Added a new memory check in Test-AzureStack 'UpdateReadiness' Group, which will check to see if you have enough memory available on the stack for the update to complete successfully. 
-
+- Added a new memory check in the **Test-AzureStack** `UpdateReadiness` group, which checks to see if you have enough memory available on the stack for the update to complete successfully.
 
 ### Fixes
 
