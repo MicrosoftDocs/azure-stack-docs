@@ -86,7 +86,7 @@ What's new, also net new experiences and features. -->
 
 ### Security updates
 
-This update of Azure Stack does not include any security updates to the underlying operating system which hosts Azure Stack.
+This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack. For information, see [Azure Stack security updates.](azure-stack-release-notes-security-updates-1904.md)
 
 ## Update planning
 
