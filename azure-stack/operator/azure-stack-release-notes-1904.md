@@ -83,6 +83,7 @@ What's new, also net new experiences and features. -->
 | N/A                   | Fixed a portal issue in which the Access Policy window for blob storage accounts failed to load. |
 | N/A                   | Fixed a portal issue in which erroneous notifications about the global Azure portal were displayed. |
 | N/A                   | Fixed a portal issue in which selecting the **Feedback** tile caused an empty browser tab to open. |
+| N/A                   | Fixed an issue in Marketplace management which hides all downloaded products if registration expires or is removed. |
 
 ### Security updates
 
