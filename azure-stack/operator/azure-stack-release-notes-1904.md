@@ -83,6 +83,9 @@ What's new, also net new experiences and features. -->
 | N/A                   | Fixed an issue in which the syslog configuration was not persisted through an update cycle, causing the syslog client to lose its configuration, and the syslog messages to stop being forwarded. Syslog configuration is now preserved. |
 | N/A                   | Fixed an issue in CRP to address an error during stop-deallocate, in which the operation failed due to a timeout. |
 | N/A                   | Fixed issue with Windows Defender engine impacting access to scale-unit storage. |
+| N/A                   | Fixed a portal issue in which the Access Policy window for blob storage accounts failed to load. |
+| N/A                   | Fixed a portal issue in which erroneous notifications about the global Azure portal were displayed. |
+| N/A                   | Fixed a portal issue in which selecting the **Feedback** tile caused an empty browser tab to open. |
 
 ### Security updates
 
