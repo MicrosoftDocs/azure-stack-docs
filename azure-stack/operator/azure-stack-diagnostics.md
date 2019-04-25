@@ -104,43 +104,35 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
   Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
 
-* Collect logs and store them in the specified Azure Storage blob container:
-
-  ```powershell
-  Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
-  ```
-
-  An example of the SAS Uri parameter is:
-
-  ```http
-  https://<StorageAccountName>.blob.core.windows.net/<ContainerName><SAS Token>`
-  ```
-
-  When generating the SAS token, the following permissions are required:
-
-  * Allowed services = Blob -> ss=b
-  * Allowed resource types = Container -> sr=c
-  * Allowed permissions = Read, Write, List-> sp=rwl
-  * Valid start and expiry/end date
-
-  To create a SAS Uri to be used for the `-OutputSasUri` parameter for **Get-Azurestacklog**, perform the following steps:
-
-  1. Create a Storage account.
-  2. Open Azure Storage Explorer.
-  3. Connect to the storage account created in step 1.
-  4. Select **Blob Containers**.
-  5. Create a new container.
-  6. Right click the container, then click **Get Shared Access Signature**.
-  7. Select the required **Start Time** and **End Time**.
-  8. For permissions, select **Read**, **Write**, **List**.
-  9. Select **Create**.
-  10. You will get a Shared Access Signature. Copy the URL portion, and provide it to the `-OutputSasUri` parameter.
-
-* Store the collected Azure Stack logs in a user-specified Azure Storage blob container using the `-OutputSasURI` parameter:
+* Collect logs and store them in the specified Azure Storage blob container. The general syntax for this operation is as follows:
 
   ```powershell
   Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -OutputSasUri "<Blob service SAS Uri>"
   ```
+
+  For example:
+
+  ```powershell
+  Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -OutputSasUri "https://<storageAccountName>.blob.core.windows.net/<ContainerName><SAS Token>"
+  ```
+
+  To generate the SAS token for the storage account, the following permissions are required:
+
+  * Access to the Blob Storage service
+  * Access to the container resource type
+
+  To generate a SAS Uri value to be used for the `-OutputSasUri` parameter, perform the following steps:
+
+  1. Create a Storage account, following the steps [in this article](/azure/storage/common/storage-quickstart-create-account).
+  2. Open an instance of the Azure Storage Explorer.
+  3. Connect to the storage account created in step 1.
+  4. Navigate to **Blob Containers** in **Storage Services**.
+  5. Select **Create a new container**.
+  6. Right-click the new container, then click **Get Shared Access Signature**.
+  7. Select a valid **Start Time** and **End Time**, depending on your requirements.
+  8. For the required permissions, select **Read**, **Write**, and **List**.
+  9. Select **Create**.
+  10. You will get a Shared Access Signature. Copy the URL portion, and provide it to the `-OutputSasUri` parameter.
 
 ### Parameter considerations for both ASDK and integrated systems
 
