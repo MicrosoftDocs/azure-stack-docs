@@ -72,6 +72,8 @@ What's new, also net new experiences and features. -->
 <!--this applied to Bug 1473487 -->
 - Added a new capability to the **Get-AzureStackLog** cmdlet by incorporating an additonal parameter, `-OutputSASUri`. You can now collect Azure Stack logs from your environment and store them in the specified Azure Storage blob container. For more information, see [Azure Stack diagnostics](azure-stack-diagnostics.md#examples).
 
+- Added a new memory check in Test-AzureStack 'UpdateReadiness' Group, which will check to see if you have enough memory available on the stack for the update to complete successfully. 
+
 
 ### Fixes
 
