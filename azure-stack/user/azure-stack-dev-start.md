@@ -6,7 +6,7 @@ services: azure-stack
 author: mattbriggs 
 ms.service: azure-stack 
 ms.topic: overview 
-ms.date: 04/24/2019
+ms.date: 04/25/2019
 ms.author: mabrigg 
 ms.reviewer: sijuman 
 ms.lastreviewed: 04/24/2019
@@ -18,9 +18,9 @@ ms.lastreviewed: 04/24/2019
 
 # Set up a development environment on Azure Stack 
 
-You can develop applications for Azure Stack using a Windows 10 machine, Linux, or macOS. In this article we look at: 
+You can develop applications for Azure Stack using a Windows 10, Linux, or macOS workstation. In this article we look at: 
 
-- The various contexts in which your app runs on Azure Stack 
+- The various contexts in which your app runs on Azure Stack. 
 - The steps you can follow to get you set up with a Windows 10, Linux, or macOS workstation. 
 - Steps to create resource in Azure Stack and deployed an app. 
 
@@ -36,7 +36,7 @@ You can write scripts and apps that can accomplish everything in Azure Stack. Ho
 
 ###  Infrastructure-as-a-Service and Platform-as-a-Service 
 
-In addition as a cloud, Azure Stack supports both: 
+As a cloud, Azure Stack supports both: 
 
 - Infrastructure-as-a-Service (IaaS) 
 - Platform-as-a-Service (PaaS) 
@@ -45,7 +45,7 @@ Both IaaS and PaaS inform how you would like to set up your development machine.
 
 IaaS is the virtualization of the parts of the data center from network gear, the network, and servers. When you deploy an app to a VM that hosts the web server, you are working in an IaaS paradigm. In this paradigm, Azure Stack manages the virtual gear and your app is on a virtual server. Azure Stack resource providers support network components and virtual servers. 
 
-PaaS abstract the infrastructure layer so that you deploy your app to an endpoint that then runs your app. In the PaaS paradigm you might use containers to host your app, and then deploy your containerized app to a service that runs the container, or you might push your app directly to a service then run the app. Azure Stack can be used to run Azure App service and Kubernetes. 
+PaaS abstracts the infrastructure layer so that you deploy your app to an endpoint that then runs your app. In the PaaS paradigm you might use containers to host your app, and then deploy your containerized app to a service that runs the container, or you might push your app directly to a service that runs your app. Azure Stack can be used to run Azure App service and Kubernetes. 
 
 ### Azure Stack Resource Manager 
 
@@ -67,7 +67,7 @@ You will need:
 
 - Access to the Azure Stack user portal. 
 - The name of your tenant. 
-- To know if you're using Azure AD or AD FS as your identity manger. 
+- To know if you're using Azure Active directory (Azure AD) or Active Directory Federated Services (AD FS) as your identity manger. 
 
 If you have any questions about your Azure Stack, contact your cloud operator. 
 
@@ -81,7 +81,7 @@ A Windows 10 machine will allow you to work with PowerShell 5.0, Visual Studio, 
 
 2. Download Azure Stack Tools. For instructions, follow the steps in [Download Azure Stack tools from GitHub](../operator/azure-stack-powershell-download.md). 
 
-3. If you are using an ASDK, install and configure [VPN connection to the Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). 
+3. If you are using an ASDK, install and configure a [VPN connection to the Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). 
 
 4. Install and configure Azure CLI. For instructions, follow the steps in [Use API version profiles with Azure CLI in Azure Stack](azure-stack-version-profiles-azurecli2.md). 
 
@@ -105,10 +105,10 @@ A Windows 10 machine will allow you to work with PowerShell 5.0, Visual Studio, 
 
 ## Linux 
 
-A Linux machine will allow you to work with Azure CLI and Visual Studio Code, or your own integrated development environment. 
+A Linux machine will allow you to work with Azure CLI and Visual Studio Code, or your own preferred integrated development environment. 
 
 > [!Note]   
-> If you are using a Linux machine with the ASDK, your remote machine will need to be in the same network as the ASDK. You will not be able to connect using a Virtual Private Network connection. 
+> If you're using a Linux machine with the ASDK, your remote machine will need to be in the same network as the ASDK. You will not be able to connect using a Virtual Private Network connection. 
 
 ### Set up your tools 
 
@@ -134,10 +134,10 @@ A Linux machine will allow you to work with Azure CLI and Visual Studio Code, or
 
 ## macOs 
 
-A macOS machine will allow you to work with Azure CLI and Visual Studio Code, or your own integrated development environment. 
+A macOS machine will allow you to work with Azure CLI and Visual Studio Code, or your own preferred integrated development environment. 
 
 > [!Note]   
-> If you are using a macOS machine with the ASDK, your remote machine will need to be in the same network as the ASDK. You will not be able to connect using a Virtual Private Network connection. 
+> If you're using a macOS machine with the ASDK, your remote machine will need to be in the same network as the ASDK. You will not be able to connect using a Virtual Private Network connection. 
 
 ### Set up your tools 
 
