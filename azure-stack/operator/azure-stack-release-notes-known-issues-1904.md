@@ -38,8 +38,8 @@ This article lists known issues with supported releases of Azure Stack. The list
 ### Administrative Subscriptions
 
 - Applicable: This issue applies to all supported releases
-- Cause: The two administrative subscription types that were introduced with version 1804 should not be used. The subscription types are Metering subscription, and Consumption subscription.
-- Remediation: These subscription types are visible in new Azure Stack environments beginning with version 1804 but are not yet ready for use. You should continue to use the Default Provider subscription type.
+- Cause: The two administrative Subscriptions that were introduced with version 1804 should not be used. The subscription types are Metering subscription, and Consumption subscription.
+- Remediation: These Subscriptions will be suspended starting 1905 and eventually deleted in a future release. If you have resources running on these two Subscriptions, recreate them in user subscriptions prior to 1905.
 - Occurrence: Common
 
 ### Subscription resources
