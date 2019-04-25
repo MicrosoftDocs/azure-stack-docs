@@ -9,7 +9,7 @@ cloud: azure-stack
 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 04/26/2019
 ms.author: jeffgilb
 ms.reviewer: adshar
 ms.lastreviewed: 11/20/2018
@@ -134,7 +134,13 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
   7. Select the required **Start Time** and **End Time**.
   8. For permissions, select **Read**, **Write**, **List**.
   9. Select **Create**.
-  10. You will get a Shared Access Signature. Copy the URL portion, and provide it to the `-OutputSasUri` parameter
+  10. You will get a Shared Access Signature. Copy the URL portion, and provide it to the `-OutputSasUri` parameter.
+
+* Store the collected Azure Stack logs in a user-specified Azure Storage blob container using the `-OutputSasURI` parameter:
+
+  ```powershell
+  Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -OutputSasUri "<Blob service SAS Uri>"
+  ```
 
 ### Parameter considerations for both ASDK and integrated systems
 
