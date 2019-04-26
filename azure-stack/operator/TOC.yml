@@ -399,9 +399,9 @@
 - name: Related
   items:
   - name: Azure Stack User Documentation
-    href: /azure/azure-stack/user/
+    href: /azure-stack/user/
   - name: ASDK Documentation
-    href: /azure/azure-stack/asdk/
+    href: /azure-stack/asdk/
 - name: Resources
   items:
   - name: Azure Stack roadmap
