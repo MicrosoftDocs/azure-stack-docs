@@ -398,9 +398,9 @@
     href: /powershell/azure/azure-stack/overview
 - name: Related
   items:
-  - name: Azure Stack User Documentation
+  - name: Azure Stack User documentation
     href: /azure-stack/user/
-  - name: ASDK Documentation
+  - name: ASDK documentation
     href: /azure-stack/asdk/
 - name: Resources
   items:
