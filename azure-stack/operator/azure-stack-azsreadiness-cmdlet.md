@@ -240,7 +240,7 @@ In this example, the service administrator account credentials are required for 
 
 ```PowerSHell
 $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant e.g. serviceadmin@contoso.onmicrosoft.com"
-Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -DeploymentDataJSONPath .\contoso-depploymentdata.json
+Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -DeploymentDataJSONPath .\contoso-deploymentdata.json
 ```
 
 In this example, the service administrator account credentials are required for security, and `Start-AzsReadinessChecker` checks that the Azure account and Azure Active Directory are valid for an AAD deployment, where **AzureCloud** and **TenantName** are read from the deployment data JSON file generated for the deployment.
