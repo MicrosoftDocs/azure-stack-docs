@@ -37,7 +37,7 @@ Managed disks simplifies disk management for IaaS VMs by managing the [storage a
 |Image          | Support managed custom image |Supported|
 |Backup options |Support Azure Backup Service |Not yet supported |
 |Disaster recovery options |Support Azure Site Recovery |Not yet supported|
-|Disk types     |Premium SSD, Standard SSD (Preview), and Standard HDD |Premium SSD, Standard HDD |
+|Disk types     |Premium SSD, Standard SSD, and Standard HDD |Premium SSD, Standard HDD |
 |Premium disks  |Fully supported |Can be provisioned, but no performance limit or guarantee  |
 |Premium disks IOPs  |Depends on disk size  |2300 IOPs per disk |
 |Premium disks throughput |Depends on disk size |145 MB/second per disk |
