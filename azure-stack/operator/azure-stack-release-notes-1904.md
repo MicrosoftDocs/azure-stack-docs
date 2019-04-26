@@ -55,7 +55,7 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 <!-- 1901,2,3 related hotfix -->
 - Improved resource throttling when a system is running at scale to protect against internal processes exhausting platform resources, resulting in failed operations in the portal.
 
-- There is a new Marketplace management experience, with separate screens for Marketplace images and resource providers, along with improved filtering. For now, the **Resource providers** window is empty, but in future releases new PaaS service offerings will appear and be managed in the **Resource providers** window. New filtering capabilities enable operators to apply multiple filters at the same time. You can only sort on the **Name** column in the new user interface.
+- Improved filtering capabilities enable operators to apply multiple filters at the same time. You can only sort on the **Name** column in the new user interface.
 
 - Improvements to the process of deleting offers, plans, quotas, and subscriptions. You can now successfully delete offers, quotas, plans, and subscriptions from the Administrator portal if the object you want to delete has no dependencies. For more information, see [this article](azure-stack-delete-offer.md).  
 
@@ -82,6 +82,12 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 
 <!-- Feature 3906611 -->
 - Removed the option for Azure Stack operators to stop and shut down infrastructure role instances in the administrator portal. The restart functionality does ensure a clean shutdown attempt before restarting the the infrastructure role instance. For advanced scenarios, the API and PowerShell functionality remains available.
+
+<!-- Feature ## 4199257 -->
+- There is a new Marketplace management experience, with separate screens for Marketplace images and resource providers. For now, the **Resource providers** window is empty, but in future releases new PaaS service offerings will appear and be managed in the **Resource providers** window. 
+
+<!-- Feature ## 4199257 -->
+- Changes to the**Update** experience in the operator portal. There is a new grid resource provider updates. The ability to update resource providers is not available yet.
 
 ### Fixes
 
