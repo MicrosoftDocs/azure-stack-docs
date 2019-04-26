@@ -31,7 +31,7 @@ This article lists known issues with supported releases of Azure Stack. The list
 ### Add-on plans
 
 - Applicable: This issue applies to all supported releases.
-- Cause: Plans that are added to a user subscription as an add-on plan cannot be deleted, even when you remove the plan from the user subscription. The plan will remain until the subscriptions that reference the add-on plan are also deleted.
+- Cause: Plans that are added to a user subscription as an add-on plan cannot be deleted, even when you remove the plan from the user subscription. The plan remains until the subscriptions that reference the add-on plan are also deleted.
 - Remediation: No mitigation.
 - Occurrence: Common
 
