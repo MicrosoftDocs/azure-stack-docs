@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2019
+ms.date: 04/26/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/24/2019
@@ -77,7 +77,7 @@ Resource providers aren’t automatically registered for new user subscriptions 
 foreach($s in (Get-AzureRmSubscription)) {
         Select-AzureRmSubscription -SubscriptionId $s.SubscriptionId | Out-Null
         Write-Progress $($s.SubscriptionId + " : " + $s.SubscriptionName)
-Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider -Force
+Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider
     }
 ```
 
