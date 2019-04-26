@@ -53,7 +53,7 @@ This article lists known issues with supported releases of Azure Stack. The list
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use PowerShell to verify permissions.
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
 - Occurrence: Common
 
 ### Upload blob
