@@ -79,7 +79,7 @@ You can find code samples to help you integrate your solution with your preferre
 - **.NET**
 You can use the .NET API profile to get the latest, most stable version of each resource type in a resource provider package. For more information, see [Use API version profiles with .NET in Azure Stack](azure-stack-version-profiles-net.md).
 - **PowerShell**  
-You can use the  **AzureRM.Bootstrapper** module available through the PowerShell Gallery to get the PowerShell cmdlets required to work with API version profiles. For information, see [Use API version profiles for PowerShell](azure-stack-version-profiles-powershell.md).
+You can use the  **AzureRM.Bootstrapper** module available through the PowerShell Gallery to get the PowerShell cmdlets required to work with API version profiles.
 - **Azure CLI**  
 You can update your environment configuration to use the Azure Stack specific API version profile. For information, see [Use API version profiles for Azure CLI](azure-stack-version-profiles-azurecli2.md).
 - **Go**  
