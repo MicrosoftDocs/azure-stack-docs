@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/26/2019
+ms.date: 04/27/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 04/26/2019
+ms.lastreviewed: 04/27/2019
 ---
 
 # Azure Stack known issues
@@ -31,7 +31,7 @@ This article lists known issues with supported releases of Azure Stack. The list
 ### Add-on plans
 
 - Applicable: This issue applies to all supported releases.
-- Cause: Plans that are added to a user subscription as an add-on plan cannot be deleted, even when you remove the plan from the user subscription. The plan will remain until the subscriptions that reference the add-on plan are also deleted.
+- Cause: Plans that are added to a user subscription as an add-on plan cannot be deleted, even when you remove the plan from the user subscription. The plan remains until the subscriptions that reference the add-on plan are also deleted.
 - Remediation: No mitigation.
 - Occurrence: Common
 
@@ -91,27 +91,26 @@ This article lists known issues with supported releases of Azure Stack. The list
 
 ### VM boot diagnostics
 
-- Applicable: This issue applies to all supported releases
+- Applicable: This issue applies to all supported releases.
 - Cause: When creating a new Windows Virtual Machine (VM), the following error may be displayed:
-'Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'
-The error occurs if you enable boot diagnostics on a VM but delete your boot diagnostics storage account.
-- Remediation: Recreate the storage account with the same name as you used previously.
+**Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'**.
+The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
+- Remediation: Recreate the storage account with the same name you used previously.
 - Occurrence: Common
 
 ### Virtual machine scale set
 
-- Applicable: This issue applies to all supported releases
-- Cause: The Virtual Machine Scale Set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack.
+- Applicable: This issue applies to all supported releases.
+- Cause: The Virtual Machine Scale Set (VMSS) creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack.
 - Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
 - Occurrence: Common
 
 ### Ubuntu SSH access
 
-- Applicable: This issue applies to all supported releases
-- Cause: An Ubuntu 18.04 VM created with SSH authorization enabled will not allow you to use the SSH keys to sign in.
+- Applicable: This issue applies to all supported releases.
+- Cause: An Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in.
 - Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
 - Occurrence: Common
-
 
 ## Infrastructure backup
 
