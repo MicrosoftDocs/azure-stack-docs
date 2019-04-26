@@ -79,7 +79,7 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 - Improvements to idempotency of infrastructure backup action plan.
 
 <!--Bug/Task 3139609 -->
-- Improvements to Azure Stack log collection , which reduces the time it takes to retrieve the bundle of logs. You will see that the **Get-AzureStackLog** cmdlet will no longer generate default logs for the OEM role. You will need to execute the **Invoke-AzureStackOnDemandLog** cmdlet specifying the role to retrieve the OEM logs. For more information , see [Azure Stack diagnostics]
+- Improvements to Azure Stack log collection. These improvements reduce the time it takes to retrieve the set of logs. Also, you can see that the **Get-AzureStackLog** cmdlet no longer generates default logs for the OEM role. You must execute the **Invoke-AzureStackOnDemandLog** cmdlet, specifying the role to retrieve the OEM logs. For more information , see [Azure Stack diagnostics](azure-stack-diagnostics.md).
 
 ### Changes
 
