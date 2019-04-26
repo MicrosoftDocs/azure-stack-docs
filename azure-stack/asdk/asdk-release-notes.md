@@ -35,7 +35,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 
 ### Fixed and known issues
 
-- Fixed the VPN connection issue identified here, [in release 1902](#known-issues).
+- Fixed the VPN connection issue identified [here, in release 1902](#known-issues).
 
 - For a list of other Azure Stack issues fixed in this release, see [this section](../operator/azure-stack-release-notes-1904.md#fixes) of the Azure Stack release notes.
 - For a list of known issues, see [this article](../operator/azure-stack-release-notes-known-issues-1904.md).
