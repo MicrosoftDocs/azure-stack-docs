@@ -89,6 +89,13 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 <!-- Feature ## 4199257 -->
 - Changes to the update experience in the operator portal. There is a new grid for resource provider updates. The ability to update resource providers is not available yet.
 
+<!-- Task ## 3748423  -->
+- Changes to the update installation experience in the operator portal. To help Azure Stack operators respond appropriately to an update issue, the portal will now provide more specific recommendations based on the health of the scale unit as derived automatically running Test-AzureStack and parsing the results. Based on the result, it will inform the operator to take one of two actions. 
+
+Either a "soft" warning alert will be displayed in the portal that reads, "The most recent update needs attention. Microsoft recommends opening a service request during normal business hours. As part of the update process, Test-AzureStack is performed, and based on the output we generate the most appropriate alert. In this case, Test-AzureStack passed."
+
+Or a "hard" critical alert will be displayed in the portal that reads, "The most recent update failed. Microsoft recommends opening a service request as soon as possible. As part of the update process, Test-AzureStack is performed, and based on the output we generate the most appropriate alert. In this case, Test-AzureStack also failed."
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
