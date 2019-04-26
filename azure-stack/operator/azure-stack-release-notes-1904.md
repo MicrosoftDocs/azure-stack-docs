@@ -69,6 +69,9 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 
 - Added a new memory check in the **Test-AzureStack** `UpdateReadiness` group, which checks to see if you have enough memory available on the stack for the update to complete successfully.
 
+<!-- feature: 2976966 -->
+- Improvements to hardware updates, which reduces the time it takes to complete drive firmware update to 2-4 hours. The update engine dynamically determines which portions of the update need to execute, based on content in the package.
+
 <!-- Feature 3906611 -->
 - Added robust handling to prevent disruptive operations to infrastructure role instance that affects availability.
 
