@@ -72,6 +72,9 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 <!-- Feature 3906611 -->
 - Added robust handling to prevent disruptive operations to infrastructure role instance that affects availability.
 
+<!-- Feature 3780326 -->
+- Improvements to idempotency of infrastructure backup action plan.
+
 ### Changes
 
 <!-- Feature 3906611 -->
