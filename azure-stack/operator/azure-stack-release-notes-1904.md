@@ -72,7 +72,7 @@ What's new, also net new experiences and features. -->
 - Added a new memory check in the **Test-AzureStack** `UpdateReadiness` group, which checks to see if you have enough memory available on the stack for the update to complete successfully.
 
 <!-- feature: 2976966 -->
-- Improvements to hardware updates, reducing the time to complete drive firmware update to 2-4 hours. The update engine will dynamically determine which portions of update need to execute based on content in the package.
+- Improvements to hardware updates, which reduces the time it takes to complete drive firmware update to 2-4 hours. The update engine dynamically determines which portions of the update need to execute, based on content in the package.
 
 ### Fixes
 
