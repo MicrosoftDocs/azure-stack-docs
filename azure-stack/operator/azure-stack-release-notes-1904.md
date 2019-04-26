@@ -87,7 +87,7 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 - There is a new Marketplace management experience, with separate screens for Marketplace images and resource providers. For now, the **Resource providers** window is empty, but in future releases new PaaS service offerings will appear and be managed in the **Resource providers** window. 
 
 <!-- Feature ## 4199257 -->
-- Changes to the**Update** experience in the operator portal. There is a new grid resource provider updates. The ability to update resource providers is not available yet.
+- Changes to the update experience in the operator portal. There is a new grid for resource provider updates. The ability to update resource providers is not available yet.
 
 ### Fixes
 
