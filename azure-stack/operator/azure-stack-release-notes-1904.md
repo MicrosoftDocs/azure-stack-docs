@@ -73,8 +73,9 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 - Added robust handling to prevent disruptive operations to infrastructure role instance that affects availability.
 
 ### Changes
+
 <!-- Feature 3906611 -->
-- Removed the option for Azure Stack operators to stop and shutdown infrastructure role instances in the Admin Portal. The restart functionality does ensure a clean shutdown attempt before restarting the the infrastructure role instance.  For advanced scenarios the API and PowerShell functionality remains available.
+- Removed the option for Azure Stack operators to stop and shut down infrastructure role instances in the administrator portal. The restart functionality does ensure a clean shutdown attempt before restarting the the infrastructure role instance. For advanced scenarios, the API and PowerShell functionality remains available.
 
 ### Fixes
 
