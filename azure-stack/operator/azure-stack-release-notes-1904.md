@@ -71,6 +71,9 @@ What's new, also net new experiences and features. -->
 
 - Added a new memory check in the **Test-AzureStack** `UpdateReadiness` group, which checks to see if you have enough memory available on the stack for the update to complete successfully.
 
+<!-- Feature 3780326 -->
+- Improvements to idempotency of infrastructure backup action plan.
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
