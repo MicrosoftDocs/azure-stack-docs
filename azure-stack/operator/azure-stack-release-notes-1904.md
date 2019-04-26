@@ -73,7 +73,7 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 - Improvements to hardware updates, which reduces the time it takes to complete drive firmware update to 2-4 hours. The update engine dynamically determines which portions of the update need to execute, based on content in the package.
 
 <!-- Feature 3906611 -->
-- Added robust handling to prevent disruptive operations to infrastructure role instance that affects availability.
+- Added robust operation prechecks to prevent disruptive infrastructure role instance operations that affect availability.
 
 <!-- Feature 3780326 -->
 - Improvements to idempotency of infrastructure backup action plan.
@@ -84,7 +84,7 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 ### Changes
 
 <!-- Feature 3906611 -->
-- Removed the option for Azure Stack operators to stop and shut down infrastructure role instances in the administrator portal. The restart functionality does ensure a clean shutdown attempt before restarting the the infrastructure role instance. For advanced scenarios, the API and PowerShell functionality remains available.
+- Removed the option for Azure Stack operators to stop and shut down infrastructure role instances in the administrator portal. The restart functionality ensures a clean shutdown attempt before restarting the infrastructure role instance. For advanced scenarios, the API and PowerShell functionality remains available.
 
 <!-- Feature ## 4199257 -->
 - There is a new Marketplace management experience, with separate screens for Marketplace images and resource providers. For now, the **Resource providers** window is empty, but in future releases new PaaS service offerings will appear and be managed in the **Resource providers** window. 
