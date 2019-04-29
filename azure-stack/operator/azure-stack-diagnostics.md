@@ -206,13 +206,13 @@ Currently, you can use the `-FilterByRole` parameter to filter log collection by
 * SLB
 * Gateway
 
-#### Example
+#### Example of collecting on-demand logs
 
 ```powershell
-$ip = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
+$ip = "<IP address of the PEP VM>" # You can also use the machine name instead of IP here.
 
-$pwd= ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
-$cred = New-Object System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $pwd)
+$pwd= ConvertTo-SecureString "<cloud admin password>" -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential ("<domain name>\CloudAdmin", $pwd)
 
 $shareCred = Get-Credential
 
@@ -223,8 +223,8 @@ $toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period fo
 
 Invoke-Command -Session $s
 {
-   Invoke-AzureStackOnDemandLog -Generate -FilterByRole <<On-demand Role Name>> #Provide the supported on-demand role name : OEM, NC, SLB , Gateway
-   Get-AzureStackLog -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate
+   Invoke-AzureStackOnDemandLog -Generate -FilterByRole "<on-demand role name>" #Provide the supported on-demand role name : OEM, NC, SLB , Gateway
+   Get-AzureStackLog -OutputSharePath "<external share address>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate
 
 }
 
