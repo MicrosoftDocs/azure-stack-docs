@@ -58,8 +58,8 @@ This article lists known issues with supported releases of Azure Stack. The list
 
 ### Marketplace management
 
-- Applicable: This issue applies to 1905.
-- Cause: Marketplace management blade is not visible when you log into administrator portal. 
+- Applicable: This issue applies to 1904.
+- Cause: The marketplace management screen is not visible when you sign on to the administrator portal.
 - Remediation: Refresh the browser.
 - Occurrence: Intermittent
 
