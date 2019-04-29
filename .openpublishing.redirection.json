@@ -1,4 +1,9 @@
 {
   "redirections": [
+    {
+      "source_path": "azure-stack/user/azure-stack-version-profiles-powershell.md",
+      "redirect_url": "https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-powershell-install",
+      "redirect_document_id": true
+    }
   ]
 }
