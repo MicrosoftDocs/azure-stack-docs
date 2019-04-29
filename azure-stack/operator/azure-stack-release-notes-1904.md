@@ -33,7 +33,7 @@ This article describes the contents of the 1904 update package. The update inclu
 
 ## Build reference
 
-The Azure Stack 1904 update build number is **1.1904.0.xx**.
+The Azure Stack 1904 update build number is **1.1904.0.36**.
 
 ## What's in this update
 
