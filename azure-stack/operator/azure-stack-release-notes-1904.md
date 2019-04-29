@@ -119,9 +119,9 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 | N/A                   | Fixed a portal issue in which adding an inbound security rule and selecting **Service Tag** as the source, displayed several options that are not available for Azure Stack. |
 | N/A                   | Fixed the issue in which Network Security Groups (NSGs) did not work in Azure Stack in the same way as global Azure. |
 | N/A                   | Fixed an issue in Marketplace management which hides all downloaded products if registration expires or is removed. |
-| N/A                   | Fixed an issue where issuing a Set-AzureRmVirtualNetworkGatewayConnection command in PowerShell to an existing Virtual Network Gateway Connection would fail with the error message 'Invalid shared key configured...'. |
-| 119021925001193       | Fixed an issue that would cause the NRP to be out of sync with the Network Controller resulting in duplicate resources being requested.  In some cases this would result in leaving the parent resource in an error state. |
-| 109934636             | Fixed an issue where if a user that was assigned a Contributor Role to a subscription, but was not explicitly given Read permissions would get an error "...The client 'somelogonaccount@domain.com' with object id {GUID} does not have authorization to perform action..." when attempting to save a change to a resource.
+| N/A                   | Fixed an issue where issuing a Set-AzureRmVirtualNetworkGatewayConnection command in PowerShell to an existing Virtual Network Gateway Connection failed with the error message **Invalid shared key configured...**. |
+| 119021925001193       | Fixed an issue that caused the NRP to be out of sync with the network controller, resulting in duplicate resources being requested. In some cases, this resulted in leaving the parent resource in an error state. |
+| 109934636             | Fixed an issue in which if a user that was assigned a contributor role to a subscription, but was not explicitly given Read permissions, an error was generated that read **...The client 'somelogonaccount@domain.com' with object id {GUID} does not have authorization to perform action...** when attempting to save a change to a resource.
 
 
 ### Security updates
