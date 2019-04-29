@@ -120,6 +120,7 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 | N/A                   | Fixed a portal issue in which adding an inbound security rule and selecting **Service Tag** as the source, displayed several options that are not available for Azure Stack. |
 | N/A                   | Fixed the issue in which Network Security Groups (NSGs) did not work in Azure Stack in the same way as global Azure. |
 | N/A                   | Fixed an issue in Marketplace management which hides all downloaded products if registration expires or is removed. |
+| N/A                   | Fixed an issue where the marketplace management blade would display as empty if the offline syndication tool was used to upload images and any one of them was missing the icon URI(s) |
 
 ### Security updates
 
