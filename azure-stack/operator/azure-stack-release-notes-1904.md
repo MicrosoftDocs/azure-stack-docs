@@ -84,7 +84,7 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 ### Changes
 
 <!-- Feature 3906611 -->
-- Removed the option for Azure Stack operators to stop and shut down infrastructure role instances in the administrator portal. The restart functionality ensures a clean shutdown attempt before restarting the infrastructure role instance. For advanced scenarios, the API and PowerShell functionality remains available.
+- Removed the option for Azure Stack operators to shut down infrastructure role instances in the administrator portal. The restart functionality ensures a clean shutdown attempt before restarting the infrastructure role instance. For advanced scenarios, the API and PowerShell functionality remains available.
 
 <!-- Feature ## 4199257 -->
 - There is a new Marketplace management experience, with separate screens for Marketplace images and resource providers. For now, the **Resource providers** window is empty, but in future releases new PaaS service offerings will appear and be managed in the **Resource providers** window. 
