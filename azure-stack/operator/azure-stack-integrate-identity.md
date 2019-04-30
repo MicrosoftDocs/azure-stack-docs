@@ -149,7 +149,7 @@ For this procedure, use a computer that can communicate with the privileged endp
 Beginning with version 1807, use this method if the either of the following conditions are true:
 
 - The certificate chain is different for AD FS compared to all other endpoints in Azure Stack.
-- There’s no network connectivity to the existing AD FS server from Azure Stack’s AD FS instance.
+- There's no network connectivity to the existing AD FS server from Azure Stack's AD FS instance.
 
 The following information is required as input for the automation parameters:
 

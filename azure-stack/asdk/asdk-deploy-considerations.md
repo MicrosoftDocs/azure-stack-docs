@@ -43,8 +43,8 @@ Before you deploy the Azure Stack Development Kit (ASDK), make sure your develop
 **HBA configuration options**
 
 * (Preferred) Simple HBA
-* RAID HBA – Adapter must be configured in “pass through” mode
-* RAID HBA – Disks should be configured as Single-Disk, RAID-0
+* RAID HBA - Adapter must be configured in "pass through" mode
+* RAID HBA - Disks should be configured as Single-Disk, RAID-0
 
 **Supported bus and media type combinations**
 
@@ -56,7 +56,7 @@ Before you deploy the Azure Stack Development Kit (ASDK), make sure your develop
 * SAS SSD + SAS HDD
 * NVMe
 
-<sup>*</sup> RAID controllers without pass-through capability can’t recognize the media type. Such controllers mark both HDD and SSD as Unspecified. In that case, the SSD is used as persistent storage instead of caching devices. Therefore, you can deploy the development kit on those SSDs.
+<sup>*</sup> RAID controllers without pass-through capability can't recognize the media type. Such controllers mark both HDD and SSD as Unspecified. In that case, the SSD is used as persistent storage instead of caching devices. Therefore, you can deploy the development kit on those SSDs.
 
 **Example HBAs**: LSI 9207-8i, LSI-9300-8i, or LSI-9265-8i in pass-through mode
 
@@ -65,7 +65,7 @@ Sample OEM configurations are available.
 ## Operating system
 |  | **Requirements** |
 | --- | --- |
-| **OS Version** |Windows Server 2016 or later. The operating system version isn’t critical before the deployment starts, as you'll boot the host computer into the VHD that's included in the Azure Stack installation. The operating system and all required patches are already integrated into the image. Don’t use any keys to activate any Windows Server instances used in the development kit. |
+| **OS Version** |Windows Server 2016 or later. The operating system version isn't critical before the deployment starts, as you'll boot the host computer into the VHD that's included in the Azure Stack installation. The operating system and all required patches are already integrated into the image. Don't use any keys to activate any Windows Server instances used in the development kit. |
 
 > [!TIP]
 > After installing the operating system, you can use the [Deployment Checker for Azure Stack](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) to confirm that your hardware meets all the requirements.
@@ -79,7 +79,7 @@ If your environment is not connected to the internet, or you don't want to use A
 > If you deploy by using the AD FS option, you must redeploy Azure Stack to switch to Azure AD.
 
 ### Azure Active Directory accounts
-To deploy Azure Stack by using an Azure AD account, you must prepare an Azure AD account before you run the deployment PowerShell script. This account becomes the Global Admin for the Azure AD tenant. It's used to provision and delegate applications and service principals for all Azure Stack services that interact with Azure Active Directory and Graph API. It's also used as the owner of the default provider subscription (which you can later change). You can log in to your Azure Stack system’s administrator portal by using this account.
+To deploy Azure Stack by using an Azure AD account, you must prepare an Azure AD account before you run the deployment PowerShell script. This account becomes the Global Admin for the Azure AD tenant. It's used to provision and delegate applications and service principals for all Azure Stack services that interact with Azure Active Directory and Graph API. It's also used as the owner of the default provider subscription (which you can later change). You can log in to your Azure Stack system's administrator portal by using this account.
 
 1. Create an Azure AD account that is the directory administrator for at least one Azure AD. If you already have one, you can use that. Otherwise, you can create one for free at [https://azure.microsoft.com/free/](https://azure.microsoft.com/free/) (in China, visit <https://go.microsoft.com/fwlink/?LinkID=717821> instead). If you plan to later [register Azure Stack with Azure](asdk-register.md), you must also have a subscription in this newly created account.
    
@@ -93,7 +93,7 @@ To deploy Azure Stack by using an Azure AD account, you must prepare an Azure AD
    | Work or school account with valid China Azure Subscription |Yes |
    | Work or school account with valid US Government Azure Subscription |Yes |
 
-After deployment, Azure Active Directory global administrator permission is not required. However, some operations may require the global administrator credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily re-instate the account’s global administrator permissions or use a separate global administrator account that is an owner of the *default provider subscription*.
+After deployment, Azure Active Directory global administrator permission is not required. However, some operations may require the global administrator credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily re-instate the account's global administrator permissions or use a separate global administrator account that is an owner of the *default provider subscription*.
 
 ## Network
 ### Switch
