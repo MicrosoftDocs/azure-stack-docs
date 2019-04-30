@@ -44,7 +44,7 @@ Azure Stack releases hotfixes on a regular basis. Be sure to install the [latest
 
 ### Azure Stack hotfixes
 
-- **1809**: [KB 4481548 – Azure Stack hotfix 1.1809.12.114](https://support.microsoft.com/help/4481548/)
+- **1809**: [KB 4481548 - Azure Stack hotfix 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**: No current hotfix available.
 
 ## Prerequisites
@@ -135,7 +135,7 @@ This update includes the following new features and improvements for Azure Stack
 <!-- TBD - IS ASDK --> 
 - Fixed an issue in which the public IP address usage meter data showed the same **EventDateTime** value for each record instead of the **TimeDate** stamp that shows when the record was created. You can now use this data to perform accurate accounting of public IP address usage.
 
-<!-- 3099544 – IS, ASDK --> 
+<!-- 3099544 - IS, ASDK --> 
 - Fixed an issue that occurred when creating a new virtual machine (VM) using the Azure Stack portal. Selecting the VM size caused the **USD/Month** column to display an **Unavailable** message. This column no longer appears; displaying the VM pricing column is not supported in Azure Stack.
 
 <!-- 2930718 - IS ASDK --> 
@@ -147,16 +147,16 @@ This update includes the following new features and improvements for Azure Stack
 <!-- 2930799 - IS ASDK --> 
 - Fixed an issue in both the administrator and user portals: under **All services**, the asset **DDoS protection plans** was incorrectly listed. It is not available in Azure Stack. The listing has been removed.
  
-<!--2760466 – IS  ASDK --> 
+<!--2760466 - IS  ASDK --> 
 - Fixed an issue that occurred when you installed a new Azure Stack environment, in which the alert that indicates **Activation Required** did not display. It now correctly displays.
 
-<!--1236441 – IS  ASDK --> 
+<!--1236441 - IS  ASDK --> 
 - Fixed an issue that prevented applying RBAC policies to a user group when using ADFS.
 
 <!--3463840 - IS, ASDK --> 
 - Fixed an issue with infrastructure backups failing due to an inaccessible file server from the public VIP network. This fix moves the infrastructure backup service back to the public infrastructure network. If you applied the  latest [Azure Stack hotfix for 1809](#azure-stack-hotfixes) that addresses this issue, the 1811 update will not make any further modifications. 
 
-<!-- 2967387 – IS, ASDK --> 
+<!-- 2967387 - IS, ASDK --> 
 - Fixed an issue in which the account you used to sign in to the Azure Stack admin or user portal displayed as **Unidentified user**. This message was displayed when the account did not have either a **First** or **Last** name specified.   
 
 <!--  2873083 - IS ASDK --> 
@@ -217,7 +217,7 @@ For more information about these vulnerabilities, click on the preceding links, 
 
 - When you run [Test-AzureStack](azure-stack-diagnostic-test.md), a warning message from the Baseboard Management Controller (BMC) is displayed. You can safely ignore this warning.
 
-- <!-- 2468613 - IS --> During installation of this update, you might see alerts with the title `Error – Template for FaultType UserAccounts.New is missing.`  You can safely ignore these alerts. The alerts close automatically after the installation of this update completes.
+- <!-- 2468613 - IS --> During installation of this update, you might see alerts with the title `Error - Template for FaultType UserAccounts.New is missing.`  You can safely ignore these alerts. The alerts close automatically after the installation of this update completes.
 
 - <!-- 3139614 | IS --> If you've applied an update to Azure Stack from your OEM, the **Update available** notification may not appear in the Azure Stack administrator portal. To install the Microsoft update, download and import it manually using the instructions located here [Apply updates in Azure Stack](azure-stack-apply-updates.md).
 
@@ -236,7 +236,7 @@ The following are post-installation known issues for this build version.
 <!-- 2930820 - IS ASDK --> 
 - In both the administrator and user portals, if you search for "Docker," the item is incorrectly returned. It is not available in Azure Stack. If you try to create it, a blade with an error indication is displayed. 
 
-<!-- 2931230 – IS  ASDK --> 
+<!-- 2931230 - IS  ASDK --> 
 - Plans that are added to a user subscription as an add-on plan cannot be deleted, even when you remove the plan from the user subscription. The plan will remain until the subscriptions that reference the add-on plan are also deleted. 
 
 <!-- TBD - IS ASDK --> 
@@ -287,15 +287,15 @@ The following are post-installation known issues for this build version.
 
    In this example, the name of the resource group should be **AndrewRG**. You can safely ignore this inconsistency.
 
-<!-- 3235634 – IS, ASDK -->
+<!-- 3235634 - IS, ASDK -->
 - To deploy VMs with sizes containing a **v2** suffix; for example, **Standard_A2_v2**, specify the suffix as **Standard_A2_v2** (lowercase v). Do not use **Standard_A2_V2** (uppercase V). This works in global Azure and is an inconsistency on Azure Stack.
 
-<!-- 2869209 – IS, ASDK --> 
+<!-- 2869209 - IS, ASDK --> 
 - When using the [**Add-AzsPlatformImage** cmdlet](/powershell/module/azs.compute.admin/add-azsplatformimage), you must use the **-OsUri** parameter as the storage account URI where the disk is uploaded. If you use the local path of the disk, the cmdlet fails with the following error: 
 
     `Long running operation failed with status 'Failed'`
 
-<!--  2795678 – IS, ASDK --> 
+<!--  2795678 - IS, ASDK --> 
 - When you use the portal to create virtual machines (VMs) in a premium VM size (DS,Ds_v2,FS,FSv2), the VM is created in a standard storage account. Creation in a standard storage account does not affect functionally, IOPs, or billing. You can safely ignore the warning that says: 
 
     `You've chosen to use a standard disk on a size that supports premium disks. This could impact operating system performance and is not recommended. Consider using premium storage (SSD) instead.`

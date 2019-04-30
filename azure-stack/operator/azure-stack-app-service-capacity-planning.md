@@ -85,7 +85,7 @@ When deciding on the number of shared web worker roles to use, review these cons
 
    For example, if there are 5,000 applications on environment that is running 10 web worker roles, each web worker role VM should have 7060-MB RAM:
 
-   `5,000 * 70 * 0.05 – (10 * 1044) = 7060 (= about 7 GB)`
+   `5,000 * 70 * 0.05 - (10 * 1044) = 7060 (= about 7 GB)`
 
    For information about adding more worker instances, see [Adding more worker roles](azure-stack-app-service-add-worker-roles.md).
 
