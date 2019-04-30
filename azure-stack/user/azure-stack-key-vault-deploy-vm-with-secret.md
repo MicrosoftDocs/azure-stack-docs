@@ -27,7 +27,7 @@ This article steps through deploying a Windows Server virtual machine using a pa
 
 You can store values such as a password as a secret in an Azure Stack key vault. After you create a secret, you can reference it in Azure Resource Manager templates. Using secrets with Resource Manager provides the following benefits:
 
-* You don’t have to manually enter secret each time you deploy a resource.
+* You don't have to manually enter secret each time you deploy a resource.
 * You can specify which users or service principals can access a secret.
 
 ## Prerequisites

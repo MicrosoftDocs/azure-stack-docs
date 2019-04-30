@@ -82,21 +82,21 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
 
 * Collect all logs for all roles:
 
-  ```powershell
-  Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred
-  ```
+```powershell
+Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred
+```
 
 * Collect logs from VirtualMachines and BareMetal roles:
 
-  ```powershell
-  Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal
-  ```
+```powershell
+Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal
+```
 
 * Collect logs from VirtualMachines and BareMetal roles, with date filtering for log files for the past 8 hours:
 
-  ```powershell
-  Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
-  ```
+```powershell
+Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
+```
 
 * Collect logs from VirtualMachines and BareMetal roles, with date filtering for log files for the time period between 8 hours ago and 2 hours ago:
 
@@ -133,6 +133,9 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
   8. For the required permissions, select **Read**, **Write**, and **List**.
   9. Select **Create**.
   10. You will get a Shared Access Signature. Copy the URL portion, and provide it to the `-OutputSasUri` parameter.
+```powershell
+Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
+```
 
 ### Parameter considerations for both ASDK and integrated systems
 
@@ -143,13 +146,13 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
 * Use the **FilterByNode** parameter to filter logs by computer name. For example:
 
     ```powershell
-    Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByNode azs-xrp01
+    Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByNode azs-xrp01
     ```
 
 * Use the **FilterByLogType** parameter to filter logs by type. You can choose to filter by File, Share or WindowsEvent. For example:
 
     ```powershell
-    Get-AzureStackLog -OutputSharePath “<path>” -OutputShareCredential $cred -FilterByLogType File
+    Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByLogType File
     ```
 
 * You can use the **TimeOutInMinutes** parameter to set the timeout for log collection. It is set to 150 (2.5 hours) by default.

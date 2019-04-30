@@ -314,7 +314,7 @@ Once you remove the custom policy from a connection, the Azure VPN gateway rever
 $RG1 = "TestPolicyRG1"
 $Connection16 = "VNet1toSite6"
 $connection6 = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
-$connection6.SharedKey = “AzS123”
+$connection6.SharedKey = "AzS123"
 $currentpolicy = $connection6.IpsecPolicies[0]
 $connection6.IpsecPolicies.Remove($currentpolicy)
 

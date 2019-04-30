@@ -94,7 +94,7 @@ There are two parts to this scenario:
 
 1. On a computer with an Internet connection, open a PowerShell console as an administrator.
 
-2. Add the Azure account that you have used to register Azure Stack. To add the account, in PowerShell run `Add-AzureRmAccount` without any parameters. You are prompted to enter your Azure account credentials and you might have to use 2-factor authentication based on your account’s configuration.
+2. Add the Azure account that you have used to register Azure Stack. To add the account, in PowerShell run `Add-AzureRmAccount` without any parameters. You are prompted to enter your Azure account credentials and you might have to use 2-factor authentication based on your account's configuration.
 
 3. If you have multiple subscriptions, run the following command to select the one you have used for registration:  
 
@@ -146,7 +146,7 @@ There are two parts to this scenario:
 10. If the download fails, you can try again by re-running the following PowerShell cmdlet:
 
     ```powershell
-    Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes”
+    Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes"
     ```
 
     Before retrying, remove the product folder in which the download failed. For example, if the download script fails when downloading to `D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1`, remove the `D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1` folder, then rerun the cmdlet.
@@ -233,7 +233,7 @@ There are two parts to this scenario:
     ```powershell  
     Add-AzsGalleryItem `
      -GalleryItemUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg" `
-     –Verbose
+     -Verbose
     ```
 5. After you publish a gallery item, it is now available to use. To confirm the gallery item is published, go to **All services**, and then under the **GENERAL** category, select **Marketplace**.  If your download is a solution template, make sure you add any dependent VHD image for that solution template.  
   [![View marketplace](media/azure-stack-download-azure-marketplace-item/view-marketplacesm.png "View marketplace")](media/azure-stack-download-azure-marketplace-item/view-marketplace.png#lightbox)  
