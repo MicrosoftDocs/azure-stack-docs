@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 05/01/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 04/10/2019
+ms.lastreviewed: 05/01/2019
 
 ---
 
@@ -34,6 +34,7 @@ This article contains a checklist of update-related activities for Azure Stack o
 | Resolve issues        | Resolve any operational issues identified by Test-AzureStack                     |
 | Apply latest hotfixes | Apply the latest hotfixes that apply to the currently installed release.         |
 | (activity)            | (details)                                                                        |
+| Run capacity planner tool | Make sure to use the latest version of [the Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) tool to do your workload planning and sizing. The latest version contains bug fixes and provides new features that are released with each Azure Stack update. |
 
 ## During Azure Stack update
 
