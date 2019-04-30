@@ -30,7 +30,7 @@ There are two types of *Owners* that are assigned to a subscription:
 
   You can use the PowerShell cmdlet [Set-AzsUserSubscription](/powershell/module/azs.subscriptions.admin/set-azsusersubscription) to change the billing owner.  
 
-- **Owners added through RBAC roles** – Additional users can be granted the **Owner** role using the [Role Based Access Control](azure-stack-manage-permissions.md) (RBAC) system. Any number of additional user accounts can be added as owners to compliment the billing owner. Additional owners are also administrators of the subscription and have all privileges for the subscription, except permission to delete the billing owner.
+- **Owners added through RBAC roles** - Additional users can be granted the **Owner** role using the [Role Based Access Control](azure-stack-manage-permissions.md) (RBAC) system. Any number of additional user accounts can be added as owners to compliment the billing owner. Additional owners are also administrators of the subscription and have all privileges for the subscription, except permission to delete the billing owner.
 
   You can use PowerShell to manage additional owners. For more information, see [this article](/azure/role-based-access-control/role-assignments-powershell).
 

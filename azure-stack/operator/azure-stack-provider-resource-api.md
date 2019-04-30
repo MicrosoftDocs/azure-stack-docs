@@ -28,7 +28,7 @@ The term *provider* applies to the service administrator and to any delegated pr
 ### Request
 The request gets consumption details for the requested subscriptions and for the requested time frame. There is no request body.
 
-This usage API is a provider API, so the caller must be assigned an Owner, Contributor, or Reader role in the provider’s subscription.
+This usage API is a provider API, so the caller must be assigned an Owner, Contributor, or Reader role in the provider's subscription.
 
 | **Method** | **Request URI** |
 | --- | --- |
@@ -43,7 +43,7 @@ This usage API is a provider API, so the caller must be assigned an Owner, Contr
 | *reportedStartTime* |Start time of the query. The value for *DateTime* should be in Coordinated Universal Time (UTC) and at the beginning of the hour, for example, 13:00. For daily aggregation, set this value to UTC midnight. The format is *escaped* ISO 8601. For example, *2015-06-16T18%3a53%3a11%2b00%3a00Z*, where the colon is escaped to *%3a* and the plus is escaped to *%2b* so that it's URI friendly. |
 | *reportedEndTime* |End time of the query. The constraints that apply to *reportedStartTime* also apply to this argument. The value for *reportedEndTime* can't be in the future or the current date. If it is, the result is set to "processing not complete." |
 | *aggregationGranularity* |Optional parameter that has two discrete potential values: daily and hourly. As the values suggest, one returns the data in daily granularity, and the other is an hourly resolution. The daily option is the default. |
-| *subscriberId* |Subscription ID. To get filtered data, the subscription ID of a direct tenant of the provider is required. If no subscription ID parameter is specified, the call returns usage data for all the provider’s direct tenants. |
+| *subscriberId* |Subscription ID. To get filtered data, the subscription ID of a direct tenant of the provider is required. If no subscription ID parameter is specified, the call returns usage data for all the provider's direct tenants. |
 | *api-version* |Version of the protocol that's used to make this request. This value is set to *2015-06-01-preview*. |
 | *continuationToken* |Token retrieved from the last call to the usage API provider. This token is needed when a response is greater than 1,000 lines and it acts as a bookmark for the progress. If the token is not present, the data is retrieved from the beginning of the day or hour, based on the granularity passed in. |
 
@@ -74,7 +74,7 @@ meterID1",
 }
 },
 
-…
+. . .
 ```
 
 ### Response details
@@ -96,7 +96,7 @@ meterID1",
 
 ### PowerShell
 
-To generate the usage data, you should have resources that are running and actively using the system, For example, an active virtual machine, or a storage account containing some data etc. If you’re not sure whether you have any resources running in Azure Stack Marketplace, deploy a virtual machine (VM), and verify the VM monitoring blade to make sure it’s running. Use the following PowerShell cmdlets to view the usage data:
+To generate the usage data, you should have resources that are running and actively using the system, For example, an active virtual machine, or a storage account containing some data etc. If you're not sure whether you have any resources running in Azure Stack Marketplace, deploy a virtual machine (VM), and verify the VM monitoring blade to make sure it's running. Use the following PowerShell cmdlets to view the usage data:
 
 1. [Install PowerShell for Azure Stack.](azure-stack-powershell-install.md)
 2. [Configure the Azure Stack user's](../user/azure-stack-powershell-configure-user.md) or the [Azure Stack operator's](azure-stack-powershell-configure-admin.md) PowerShell environment 

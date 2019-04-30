@@ -61,8 +61,8 @@ This section describes the important requirements for Infrastructure Backup. We 
 
 The requirements include:
 
-  - **Software requirements** – describes supported storage locations and sizing guidance. 
-  - **Network requirements** – describes network requirements for different storage locations.  
+  - **Software requirements** - describes supported storage locations and sizing guidance. 
+  - **Network requirements** - describes network requirements for different storage locations.  
 
 ### Software requirements
 

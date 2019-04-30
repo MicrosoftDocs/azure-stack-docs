@@ -42,7 +42,7 @@ The following are required to deploy the Service Fabric cluster:
    This is the certificate that the client will use to authenticate to the Service Fabric cluster, which can be self-signed. See [requirements](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) for creating this client cert.
 
 1. **The following items must be available in the Azure Stack Marketplace:**
-    - **Windows Server 2016** – The template uses the Windows Server 2016 image to create the cluster.  
+    - **Windows Server 2016** - The template uses the Windows Server 2016 image to create the cluster.  
     - **Custom Script Extension** - Virtual Machine Extension from Microsoft.  
     - **PowerShell Desired Stage Configuration** - Virtual Machine Extension from Microsoft.
 
@@ -164,7 +164,7 @@ You can access the Service Fabric cluster by using either the Service Fabric Exp
        > [!NOTE]  
        > This certificate is not the Cluster certificate that was previously added to KeyVault.  
 
-    c. Ensure that you have “Personal Information Exchange” selected in the extension dropdown of the File Explorer window.  
+    c. Ensure that you have "Personal Information Exchange" selected in the extension dropdown of the File Explorer window.  
 
        ![Personal information exchange](media/azure-stack-solution-template-service-fabric-cluster/image8.png)  
 
@@ -183,7 +183,7 @@ You can access the Service Fabric cluster by using either the Service Fabric Exp
 1. To find the URL for the Service Fabric Explorer, and the Client connection endpoint, review the results of the Template deployment.
 
 1. In your browser, go to https://*FQDN*:19080. Replace *FQDN* with the FQDN of your Service Fabric cluster from step 2.   
-   If you’ve used a self-signed certificate, you’ll get a warning that the connection is not secure. To proceed to the web site, select **More Information**, and then **Go on to the webpage**. 
+   If you've used a self-signed certificate, you'll get a warning that the connection is not secure. To proceed to the web site, select **More Information**, and then **Go on to the webpage**. 
 
 1. To authenticate to the site, you must select a certificate to use. Select **More choices**, pick the appropriate certificate, and then click **OK** to connect to the Service Fabric Explorer. 
 
