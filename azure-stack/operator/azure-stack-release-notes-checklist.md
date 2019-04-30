@@ -33,7 +33,6 @@ This article contains a checklist of update-related activities for Azure Stack o
 | Run Test-AzureStack   | Run *Test-AzureStack -Group UpdateReadiness* to identify operational issues      |
 | Resolve issues        | Resolve any operational issues identified by Test-AzureStack                     |
 | Apply latest hotfixes | Apply the latest hotfixes that apply to the currently installed release.         |
-| (activity)            | (details)                                                                        |
 | Run capacity planner tool | Make sure to use the latest version of [the Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) tool to do your workload planning and sizing. The latest version contains bug fixes and provides new features that are released with each Azure Stack update. |
 
 ## During Azure Stack update
@@ -52,7 +51,6 @@ This article contains a checklist of update-related activities for Azure Stack o
 |-----------------------|----------------------------------------------------------------------------------|
 | Apply latest hotfixes | Apply the latest hotfixes applicable to updated version.                          |
 | Retrieve encryption keys | Retrieve the data at rest encryption keys and securely store them outside of your Azure Stack deployment. Follow the [instructions on how to retrieve the keys](azure-stack-security-bitlocker.md). |
-| (activity)            | (details)                                                                        | 
 
 ## Next steps
 
