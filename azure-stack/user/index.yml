@@ -3,7 +3,7 @@ documentType: LandingData
 title: Azure Stack User Documentation
 metadata:
   title: Azure Stack Documentation - Tutorials, API Reference
-  meta.description: from-team
+  meta.description: azure-stack
   services: azure-stack
   author:   
   manager: femila
