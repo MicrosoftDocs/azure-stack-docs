@@ -151,10 +151,6 @@ The 1904 release of Azure Stack must be applied on the 1903 release with the fol
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
 - [Azure Stack hotfix 1.1903.2.39](https://support.microsoft.com/help/4500638)
 
-#### System monitoring
-
-When Azure Stack is managed by System Center Operations Manager, make sure to update the [Management Pack for Microsoft Azure Stack](https://www.microsoft.com/download/details.aspx?id=55184) to version 1.0.3.11 before applying 1903.
-
 ### After successfully applying the 1904 update
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [Servicing Policy](azure-stack-servicing-policy.md).
