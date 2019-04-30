@@ -123,7 +123,7 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 | N/A                   | Fixed the issue in which Network Security Groups (NSGs) did not work in Azure Stack in the same way as global Azure. |
 | N/A                   | Fixed an issue in Marketplace management which hides all downloaded products if registration expires or is removed. |
 | N/A                   | Fixed an issue in which issuing a **Set-AzureRmVirtualNetworkGatewayConnection** command in PowerShell to an existing virtual network gateway connection failed with the error message **Invalid shared key configured...**. |
-| 119021925001193       | Fixed an issue that caused the NRP to be out of sync with the network controller, resulting in duplicate resources being requested. In some cases, this resulted in leaving the parent resource in an error state. |
+| 119021925001193       | Fixed an issue that caused the Network Resource Provider (NRP) to be out of sync with the network controller, resulting in duplicate resources being requested. In some cases, this resulted in leaving the parent resource in an error state. |
 | 109934636             | Fixed an issue in which if a user that was assigned a contributor role to a subscription, but was not explicitly given read permissions, an error was generated that read **...The client 'somelogonaccount@domain.com' with object id {GUID} does not have authorization to perform action...** when attempting to save a change to a resource.
 | N/A                   | Fixed an issue in which the marketplace management screen was empty if the offline syndication tool was used to upload images, and any one of them was missing the icon URI(s).
 
