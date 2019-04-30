@@ -36,7 +36,7 @@ Because the cmdlets are new in the 1710 update package for Azure Stack, the 1710
 
 You can also determine whether the cmdlets are available  programmatically by querying the command list from the privileged endpoint. To do this, run the following commands from the hardware lifecycle host or from a Privileged Access Workstation. Also, make sure the privileged endpoint is a trusted host. For more information, see step 1 of [Access the privileged endpoint](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). 
 
-1. Create a PowerShell session on any of the ERCS virtual machines in your Azure Stack environment (*Prefix*-ERCS01, *Prefix*-ERCS02, or *Prefix*-ERCS03). Replace *Prefix* with the virtual machine prefix string that’s specific to your environment.
+1. Create a PowerShell session on any of the ERCS virtual machines in your Azure Stack environment (*Prefix*-ERCS01, *Prefix*-ERCS02, or *Prefix*-ERCS03). Replace *Prefix* with the virtual machine prefix string that's specific to your environment.
 
    ```powershell
    $cred = Get-Credential

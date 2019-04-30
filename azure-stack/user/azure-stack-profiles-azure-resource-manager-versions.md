@@ -33,7 +33,7 @@ For an explanation of API profiles and version release cadence for Azure Stack, 
 > [!Note]  
 > The **latest** API profile contains the latest version of the resource provider API, and is not listed in this article.
 
-## Overview of 2018 – 03-01-hybrid
+## Overview of 2018 - 03-01-hybrid
 
 | Resource provider | Api-version |
 |-----------------------------------------------|-----------------------------------------------------|
@@ -78,7 +78,7 @@ You use role-based access control to manage the actions users in your organizati
 |----------------------------------|----------------------|
 | Delegated Provider Subscriptions | 2015-06-01 - preview |
 | Delegated Usage Aggregates | 2015-06-01 - preview |
-| Estimate Resource Spend | 2015-06-01 – preview |
+| Estimate Resource Spend | 2015-06-01 - preview |
 | Operations | 2015-06-01 - preview |
 | Subscriber Usage Aggregates | 2015-06-01 - preview |
 | Usage Aggregates | 2015-06-01 - preview |

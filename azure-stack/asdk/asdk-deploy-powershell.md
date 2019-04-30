@@ -91,7 +91,7 @@ Run the following PowerShell commands to deploy the development kit using Azure 
 
 A few minutes into ASDK installation you will be prompted for Azure AD credentials. You must provide global administrator credentials for your Azure AD tenant. 
 
-After deployment, Azure Active Directory global administrator permission is not required. However, some operations may require the global administrator credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily re-instate the account’s global administrator permissions or use a separate global administrator account that is an owner of the *default provider subscription*.
+After deployment, Azure Active Directory global administrator permission is not required. However, some operations may require the global administrator credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily re-instate the account's global administrator permissions or use a separate global administrator account that is an owner of the *default provider subscription*.
 
 ### Deploy Azure Stack using AD FS 
 To deploy the development kit **using AD FS as the identity provider**, run the following PowerShell commands (you just need to add the -UseADFS parameter): 
@@ -104,7 +104,7 @@ To deploy the development kit **using AD FS as the identity provider**, run the 
 
 In AD FS deployments, the default stamp Directory Service is used as the identity provider. The default account to sign in with is azurestackadmin@azurestack.local, and the password will be set to what you provided as part of the PowerShell setup commands.
 
-The deployment process can take a few hours, during which time the system automatically reboots once. When the deployment succeeds, the PowerShell console displays: **COMPLETE: Action ‘Deployment’**. If the deployment fails, you can try running the script again using the -rerun parameter. Or, you can [redeploy ASDK](asdk-redeploy.md) from scratch.
+The deployment process can take a few hours, during which time the system automatically reboots once. When the deployment succeeds, the PowerShell console displays: **COMPLETE: Action ‘Deployment'**. If the deployment fails, you can try running the script again using the -rerun parameter. Or, you can [redeploy ASDK](asdk-redeploy.md) from scratch.
 
 > [!IMPORTANT]
 > If you want to monitor the deployment progress after the ASDK host reboots, you must sign in as AzureStack\AzureStackAdmin. If you sign in as a local administrator after the host computer is restarted (and joined to the azurestack.local domain), you won't see the deployment progress. Do not rerun deployment, instead sign in as AzureStack\AzureStackAdmin with the same password as the local administrator to validate that the setup is running.
@@ -164,7 +164,7 @@ You must register Azure Stack with Azure so that you can [download Azure marketp
 **[Register Azure Stack with Azure](asdk-register.md)**
 
 ## Next steps
-Congratulations! After completing these steps, you’ll have a development kit environment with both [administrator](https://adminportal.local.azurestack.external) and [user](https://portal.local.azurestack.external) portals. 
+Congratulations! After completing these steps, you'll have a development kit environment with both [administrator](https://adminportal.local.azurestack.external) and [user](https://portal.local.azurestack.external) portals. 
 
 [Post ASDK installation configuration tasks](asdk-post-deploy.md)
 

@@ -31,7 +31,7 @@ This article summarizes the known Azure Stack Storage differences from Azure Sto
 | Feature | Azure (global) | Azure Stack |
 | --- | --- | --- |
 |File storage|Cloud-based SMB file shares supported|Not yet supported
-|Azure storage service encryption for data at Rest|256-bit AES encryption. Support encryption using customer-managed keys in Key Vault.|BitLocker 128-bit AES encryption. Encryption using customer-managed keys isn’t supported.
+|Azure storage service encryption for data at Rest|256-bit AES encryption. Support encryption using customer-managed keys in Key Vault.|BitLocker 128-bit AES encryption. Encryption using customer-managed keys isn't supported.
 |Storage account type|General-purpose V1, V2, and Blob storage accounts|General-purpose V1 only.
 |Replication options|Locally redundant storage, geo-redundant storage, read-access geo-redundant storage, and zone-redundant storage|Locally redundant storage.
 |Premium storage|Fully supported|Can be provisioned, but no performance limit or guarantee.
@@ -46,7 +46,7 @@ This article summarizes the known Azure Stack Storage differences from Azure Sto
 |Page blob max size|8 TB|1 TB
 |Page blob page size|512 bytes|4 KB
 |Table partition key and row key size|1,024 characters (2,048 bytes)|400 characters (800 bytes)
-|Blob snapshot|The max number of snapshots of one blob isn’t limited.|The max number of snapshots of one blob is 1,000.
+|Blob snapshot|The max number of snapshots of one blob isn't limited.|The max number of snapshots of one blob is 1,000.
 |Azure AD Authentication for storage|In preview|Not yet supported.
 |Immutable Blobs|General available|Not yet supported.
 |Firewall and virtual network rules for storage|General available|Not yet supported.|
