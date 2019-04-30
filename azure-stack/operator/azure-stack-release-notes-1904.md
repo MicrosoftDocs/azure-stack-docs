@@ -33,7 +33,7 @@ This article describes the contents of the 1904 update package. The update inclu
 
 ## Build reference
 
-The Azure Stack 1904 update build number is **1.1904.0.xx**.
+The Azure Stack 1904 update build number is **1.1904.0.36**.
 
 ## What's in this update
 
@@ -70,6 +70,9 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 - Added a new capability to the **Get-AzureStackLog** cmdlet by incorporating an additonal parameter, `-OutputSASUri`. You can now collect Azure Stack logs from your environment and store them in the specified Azure Storage blob container. For more information, see [Azure Stack diagnostics](azure-stack-diagnostics.md#examples).
 
 - Added a new memory check in the **Test-AzureStack** `UpdateReadiness` group, which checks to see if you have enough memory available on the stack for the update to complete successfully.
+
+<!-- Bug/Task 4311058 -->
+- Improvements to **Test-AzureStack** for evaluating Service Fabric health.
 
 <!-- feature: 2976966 -->
 - Improvements to hardware updates, which reduces the time it takes to complete drive firmware update to 2-4 hours. The update engine dynamically determines which portions of the update need to execute, based on content in the package.
@@ -121,8 +124,8 @@ The Azure Stack 1904 update build number is **1.1904.0.xx**.
 | N/A                   | Fixed an issue in Marketplace management which hides all downloaded products if registration expires or is removed. |
 | N/A                   | Fixed an issue in which issuing a **Set-AzureRmVirtualNetworkGatewayConnection** command in PowerShell to an existing virtual network gateway connection failed with the error message **Invalid shared key configured...**. |
 | 119021925001193       | Fixed an issue that caused the NRP to be out of sync with the network controller, resulting in duplicate resources being requested. In some cases, this resulted in leaving the parent resource in an error state. |
-| 109934636             | Fixed an issue in which if a user that was assigned a contributor role to a subscription, but was not explicitly given Read permissions, an error was generated that read **...The client 'somelogonaccount@domain.com' with object id {GUID} does not have authorization to perform action...** when attempting to save a change to a resource.
-
+| 109934636             | Fixed an issue in which if a user that was assigned a contributor role to a subscription, but was not explicitly given read permissions, an error was generated that read **...The client 'somelogonaccount@domain.com' with object id {GUID} does not have authorization to perform action...** when attempting to save a change to a resource.
+| N/A                   | Fixed an issue in which the marketplace management screen was empty if the offline syndication tool was used to upload images, and any one of them was missing the icon URI(s).
 
 ### Security updates
 

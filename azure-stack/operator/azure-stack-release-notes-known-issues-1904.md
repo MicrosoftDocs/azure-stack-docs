@@ -56,6 +56,13 @@ This article lists known issues with supported releases of Azure Stack. The list
 - Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
 - Occurrence: Common
 
+### Marketplace management
+
+- Applicable: This issue applies to 1904.
+- Cause: The marketplace management screen is not visible when you sign on to the administrator portal.
+- Remediation: Refresh the browser.
+- Occurrence: Intermittent
+
 ### Upload blob
 
 - Applicable: This issue applies to all supported releases.
