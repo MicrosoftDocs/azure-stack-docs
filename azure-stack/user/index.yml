@@ -36,3 +36,39 @@ sections:
               <img height="48" width="48" src="../media/index/azure_dev-7.svg" alt="">
               <br><b>Azure Command-Line Interface (CLI)</b></a>
               <p>Command-line experience for managing Azure Stack resources</p>
+  - title: Section
+    items:
+    - type: list
+      style: cards
+      className: cardsA
+      items:  
+      - html: <a href="https://www.google.com">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
+              <br><b>Title</b></a>
+              <p>Subtitle - call to action</p>
+      - html: <a href="https://www.google.com">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
+              <br><b>Title</b></a>
+              <p>Subtitle - call to action</p>
+      - html: <a href="https://www.google.com">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
+              <br><b>Title</b></a>
+              <p>Subtitle - call to action</p>
+  - title: Section
+    items:
+    - type: list
+      style: cards
+      className: cardsA
+      items:  
+      - html: <a href="https://www.google.com">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
+              <br><b>Title</b></a>
+              <p>Subtitle - call to action</p>
+      - html: <a href="https://www.google.com">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
+              <br><b>Title</b></a>
+              <p>Subtitle - call to action</p>
+      - html: <a href="https://www.google.com">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
+              <br><b>Title</b></a>
+              <p>Subtitle - call to action</p>
