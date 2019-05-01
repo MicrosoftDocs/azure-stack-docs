@@ -110,24 +110,37 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
-| Case ID                  | Details                                                                          |
-|-----------------------|----------------------------------------------------------------------------------|
-| N/A                   | Fixed an issue in which the syslog configuration was not persisted through an update cycle, causing the syslog client to lose its configuration, and the syslog messages to stop being forwarded. Syslog configuration is now preserved. |
-| N/A                   | Fixed an issue in CRP that blocked deallocation of VMs. Previously, if a VM contained multiple large managed disks, deallocating the VM might have failed with a timeout error. |
-| N/A                   | Fixed issue with Windows Defender engine impacting access to scale-unit storage. |
-| N/A                   | Fixed a user portal issue in which the Access Policy window for blob storage accounts failed to load. |
-| N/A                   | Fixed an issue in both administrator and user portals, in which erroneous notifications about the global Azure portal were displayed. |
-| N/A                   | Fixed a user portal issue in which selecting the **Feedback** tile caused an empty browser tab to open. |
-| N/A                   | Fixed a portal issue in which changing a static IP address for an IP configuration that was bound to a network adapter attached to a VM instance, caused an error message to be displayed. |
-| N/A                   | Fixed a user portal issue in which attempting to **Attach Network Interface** to an existing VM via the **Networking** window caused the operation to fail with an error message. |
-| N/A                   | Fixed an issue in which Azure Stack did not support attaching more than 4 Network Interfaces (NICs) to a VM instance. |
-| N/A                   | Fixed a portal issue in which adding an inbound security rule and selecting **Service Tag** as the source, displayed several options that are not available for Azure Stack. |
-| N/A                   | Fixed the issue in which Network Security Groups (NSGs) did not work in Azure Stack in the same way as global Azure. |
-| N/A                   | Fixed an issue in Marketplace management which hides all downloaded products if registration expires or is removed. |
-| N/A                   | Fixed an issue in which issuing a **Set-AzureRmVirtualNetworkGatewayConnection** command in PowerShell to an existing virtual network gateway connection failed with the error message **Invalid shared key configured...**. |
-| 119021925001193       | Fixed an issue that caused the Network Resource Provider (NRP) to be out of sync with the network controller, resulting in duplicate resources being requested. In some cases, this resulted in leaving the parent resource in an error state. |
-| 109934636             | Fixed an issue in which if a user that was assigned a contributor role to a subscription, but was not explicitly given read permissions, an error was generated that read **...The client 'somelogonaccount@domain.com' with object id {GUID} does not have authorization to perform action...** when attempting to save a change to a resource.
-| N/A                   | Fixed an issue in which the marketplace management screen was empty if the offline syndication tool was used to upload images, and any one of them was missing the icon URI(s).
+- Fixed an issue in which the syslog configuration was not persisted through an update cycle, causing the syslog client to lose its configuration, and the syslog messages to stop being forwarded. Syslog configuration is now preserved. 
+
+- Fixed an issue in CRP that blocked deallocation of VMs. Previously, if a VM contained multiple large managed disks, deallocating the VM might have failed with a timeout error. 
+
+- Fixed issue with Windows Defender engine impacting access to scale-unit storage.
+
+- Fixed a user portal issue in which the Access Policy window for blob storage accounts failed to load. 
+
+- Fixed an issue in both administrator and user portals, in which erroneous notifications about the global Azure portal were displayed. 
+
+- Fixed a user portal issue in which selecting the **Feedback** tile caused an empty browser tab to open. 
+
+- Fixed a portal issue in which changing a static IP address for an IP configuration that was bound to a network adapter attached to a VM instance, caused an error message to be displayed. 
+
+- Fixed a user portal issue in which attempting to **Attach Network Interface** to an existing VM via the **Networking** window caused the operation to fail with an error message. 
+
+- Fixed an issue in which Azure Stack did not support attaching more than 4 Network Interfaces (NICs) to a VM instance. 
+
+- Fixed a portal issue in which adding an inbound security rule and selecting **Service Tag** as the source, displayed several options that are not available for Azure Stack. 
+
+- Fixed the issue in which Network Security Groups (NSGs) did not work in Azure Stack in the same way as global Azure. 
+
+- Fixed an issue in Marketplace management which hides all downloaded products if registration expires or is removed. 
+
+- Fixed an issue in which issuing a **Set-AzureRmVirtualNetworkGatewayConnection** command in PowerShell to an existing virtual network gateway connection failed with the error message **Invalid shared key configured...**. 
+
+- Fixed an issue that caused the Network Resource Provider (NRP) to be out of sync with the network controller, resulting in duplicate resources being requested. In some cases, this resulted in leaving the parent resource in an error state.
+
+- Fixed an issue in which if a user that was assigned a contributor role to a subscription, but was not explicitly given read permissions, an error was generated that read **...The client 'somelogonaccount@domain.com' with object id {GUID} does not have authorization to perform action...** when attempting to save a change to a resource.
+
+- Fixed an issue in which the marketplace management screen was empty if the offline syndication tool was used to upload images, and any one of them was missing the icon URI(s).
 
 ### Security updates
 
