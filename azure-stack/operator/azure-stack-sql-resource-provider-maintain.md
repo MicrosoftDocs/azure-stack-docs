@@ -57,7 +57,7 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
     -Privilegedendpoint $Privilegedendpoint `
     -CloudAdminCredential $cloudCreds `
     -AzCredential $adminCreds `
-    –DiagnosticsUserPassword $passwd `
+    -DiagnosticsUserPassword $passwd `
     -DependencyFilesLocalPath $certPath `
     -DefaultSSLCertificatePassword $certPasswd  `
     -VMLocalCredential $localCreds
@@ -70,7 +70,7 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
     -Privilegedendpoint $Privilegedendpoint `
     -CloudAdminCredential $cloudCreds `
     -AzCredential $adminCreds `
-    –DiagnosticsUserPassword  $passwd
+    -DiagnosticsUserPassword  $passwd
 ```
 
 **Change the VM local administrator account password.**
@@ -132,7 +132,7 @@ To update the Windows Defender definitions:
 
    Alternatively, use [this direct link](https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64) to download/run the fpam-fe.exe file.
 
-2. Create a PowerShell session to the SQL resource provider  adapter virtual machine’s maintenance endpoint.
+2. Create a PowerShell session to the SQL resource provider  adapter virtual machine's maintenance endpoint.
 
 3. Copy the definitions update file to the virtual machine using the maintenance endpoint session.
 

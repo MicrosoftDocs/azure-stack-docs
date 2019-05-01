@@ -67,7 +67,7 @@ Azure Stack uses a feature called registration. A registration is an object stor
 Using registration Azure Stack can:
 
 - Forward Azure Stack usage data to Azure Commerce and bill an Azure subscription.
-- Report each customer'’s usage on a different subscription with a multitenant Azure Stack deployment. Multitenancy enables Azure Stack to support different organizations on the same Azure Stack instance.
+- Report each customer''s usage on a different subscription with a multitenant Azure Stack deployment. Multitenancy enables Azure Stack to support different organizations on the same Azure Stack instance.
 
 For each Azure Stack, there is one default subscription and many tenant subscriptions. The default subscription is an Azure subscription that is charged if there is no tenant-specific subscription. It must be the first subscription to be registered. For multi-tenant usage reporting to work, the subscription must be a CSP or APSS subscription.
 

@@ -78,7 +78,7 @@ Set-ExecutionPolicy RemoteSigned
 # Import the Connect module.
 Import-Module .\Connect\AzureStack.Connect.psm1
 
-# Add the development kit host computer’s IP address as the ASDK certificate authority (CA) to the list of trusted hosts. Make sure you update the IP address and password values for your environment.
+# Add the development kit host computer's IP address as the ASDK certificate authority (CA) to the list of trusted hosts. Make sure you update the IP address and password values for your environment.
 
 $hostIP = "<Azure Stack host IP address>"
 
@@ -115,7 +115,7 @@ If setup succeeds, **azurestack** appears in your list of VPN connections.
 
   * On your local computer, select **Network Settings** > **VPN** > **azurestack** > **connect**. At the sign-in prompt, enter the user name (**AzureStack\AzureStackAdmin**) and your password.
 
-The first time you connect, you will be prompted to install the Azure Stack root certificate from **AzureStackCertificateAuthority** in your local computer’s certificate store. This step adds the ASDK certificate authority (CA) to the list of trusted hosts. Click **Yes** to install the certificate.
+The first time you connect, you will be prompted to install the Azure Stack root certificate from **AzureStackCertificateAuthority** in your local computer's certificate store. This step adds the ASDK certificate authority (CA) to the list of trusted hosts. Click **Yes** to install the certificate.
 
 ![Root certificate](media/asdk-connect/cert.png)  
   

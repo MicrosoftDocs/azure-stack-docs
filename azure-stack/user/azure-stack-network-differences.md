@@ -37,7 +37,7 @@ This article provides an overview of the unique considerations for Azure Stack n
 |  | Scale Set IP Configurations | Supported | Not yet supported. |
 |  | Private Access Services (Subnet) | Supported | Not yet supported. |
 |  | Service Endpoints | Supported for internal (non-Internet) connection to Azure Services. | Not yet supported. |
-| Only IPv4 is supported. | Service Endpoint Policies | Supported | Not yet supported. |
+|  | Service Endpoint Policies | Supported | Not yet supported. |
 |  | Service Tunnels | Supported | Not yet supported.  |
 | Network Security Groups | Augmented Security Rules | Supported | Not yet supported. |
 |  | Effective Security Rules | Supported | Not yet supported. |
