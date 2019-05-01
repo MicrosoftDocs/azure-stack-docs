@@ -62,7 +62,7 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 - Improvements to the process of deleting offers, plans, quotas, and subscriptions. You can now successfully delete offers, quotas, plans, and subscriptions from the Administrator portal if the object you want to delete has no dependencies. For more information, see [this article](azure-stack-delete-offer.md).  
 
 <!-- this applies to bug 3725384 and bug #4225643 -->
-- Improved syslog message volume by filtering out unnecessary events and providing a configuration parameter to select desired severity level for forwarded messages. For more information on how to configure the severity level, refer to [Azure Stack datacenter integration - syslog forwarding](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-integrate-security).
+- Improved syslog message volume by filtering out unnecessary events and providing a configuration parameter to select desired severity level for forwarded messages. For more information about how to configure the severity level, see [Azure Stack datacenter integration - syslog forwarding](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-integrate-security).
 
 - The Azure Stack Infrastructure consumes an additional 12 GB + (4 GB * Number of Azure Stack hosts) from the 1904 update onwards. This means that in a 4 node stamp there will be an additional capacity consumption of 28 GB (12 GB + 4 GB * 4) reflected in the capacity screen of the Azure Stack administrator portal. Your update to the 1904 release should succeed even if the additional memory consumption puts your Azure Stack stamp over capacity. If your Azure Stack stamp is over memory usage AFTER the update is completed, you will see an alert reflecting this state, with remediation steps to de-allocate some VMs. 
 
@@ -132,13 +132,13 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 
 - Fixed the issue in which Network Security Groups (NSGs) did not work in Azure Stack in the same way as global Azure. 
 
-- Fixed an issue in Marketplace management which hides all downloaded products if registration expires or is removed. 
+- Fixed an issue in Marketplace management, which hides all downloaded products if registration expires or is removed.
 
 - Fixed an issue in which issuing a **Set-AzureRmVirtualNetworkGatewayConnection** command in PowerShell to an existing virtual network gateway connection failed with the error message **Invalid shared key configured...**. 
 
 - Fixed an issue that caused the Network Resource Provider (NRP) to be out of sync with the network controller, resulting in duplicate resources being requested. In some cases, this resulted in leaving the parent resource in an error state.
 
-- Fixed an issue in which if a user that was assigned a contributor role to a subscription, but was not explicitly given read permissions, an error was generated that read **...The client 'somelogonaccount@domain.com' with object id {GUID} does not have authorization to perform action...** when attempting to save a change to a resource.
+- Fixed an issue in which if a user that was assigned a contributor role to a subscription, but was not explicitly given read permissions, an error was generated that read **...The client 'somelogonaccount@domain.com' with object ID {GUID} does not have authorization to perform action...** when attempting to save a change to a resource.
 
 - Fixed an issue in which the marketplace management screen was empty if the offline syndication tool was used to upload images, and any one of them was missing the icon URI(s).
 
