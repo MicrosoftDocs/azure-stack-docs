@@ -40,8 +40,8 @@ This article contains a checklist of update-related activities for Azure Stack o
 
 | Activity              | Details                                                                          |
 |-----------------------|----------------------------------------------------------------------------------|
-| Manage the update         | [Manage updates in Azure Stack using the operator portal](/azure-stack-updates) |
-| Monitor the update        | If the operator portal is unavailable, [monitor updates in Azure Stack using the operator portal](/azure-stack-monitor-update.md) |
+| Manage the update         | [Manage updates in Azure Stack using the operator portal](azure-stack-updates) |
+| Monitor the update        | If the operator portal is unavailable, [monitor updates in Azure Stack using the operator portal](azure-stack-monitor-update.md) |
 | Resume updates            | After remediating a failed update, [resume updates in Azure Stack using the privileged endpoint](azure-stack-monitor-update.md) |
 
 > [!IMPORTANT]  
