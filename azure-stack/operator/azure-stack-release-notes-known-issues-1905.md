@@ -19,9 +19,9 @@ ms.reviewer: hectorl
 ms.lastreviewed: 05/02/2019
 ---
 
-# Azure Stack known issues
+# Azure Stack 1905 known issues
 
-This article lists known issues with supported releases of Azure Stack. The list is updated as new releases and hotfixes are released.
+This article lists known issues in the 1905 release of Azure Stack. The list is updated as new issues are identified.
 
 > [!IMPORTANT]  
 > Review this section before applying the update.
