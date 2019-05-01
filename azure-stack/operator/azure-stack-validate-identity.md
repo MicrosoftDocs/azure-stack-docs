@@ -165,7 +165,7 @@ Invoke-AzsAzureIdentityValidation Completed
 **Resolution** - Confirm that the account is valid for the specified Azure environment. In PowerShell, run the following command to verify the account is valid for a specific environment:
 
 ```powershell
-Login-AzureRmAccount –EnvironmentName AzureChinaCloud
+Login-AzureRmAccount -EnvironmentName AzureChinaCloud
 ```
 
 ### Account is not an administrator

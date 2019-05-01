@@ -39,7 +39,7 @@ more by clicking the  **Load more** link at the bottom of the list.
 
 OR
 
-If you are interested in a particular storage account – you can **filter
+If you are interested in a particular storage account - you can **filter
 and fetch the relevant accounts** only.
 
 
@@ -87,7 +87,7 @@ In Azure Stack, there is a simple way to do that:
 6. Select **Yes** to confirm.
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
-7. The recovery is now in *process…wait* for an indication that it was
+7. The recovery is now in *process. . .wait* for an indication that it was
    successful.
    You can also select the "bell" icon at the top of the portal to
    view progress indications.

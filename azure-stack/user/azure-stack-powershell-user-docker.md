@@ -28,7 +28,7 @@ You can use Docker to create Windows-based containers on which to run the specif
 2. Open a command line, such as Powershell or Bash and type:
 
     ```bash
-        Docker –version
+        Docker -version
     ```
 
 3. You need to run Docker using Windows containers that require Windows 10. When running Docker, switch to Windows containers.

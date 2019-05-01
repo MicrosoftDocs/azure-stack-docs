@@ -43,7 +43,7 @@ The following steps provide a high-level overview of the add memory process.
 > The entire scale unit must be shut down as a rolling memory upgrade is not supported.
 
 1. Stop Azure Stack using the steps documented in the [Start and stop Azure Stack](azure-stack-start-and-stop.md) article.
-2. Upgrade the memory on each physical computer using your hardware manufacturer’s documentation.
+2. Upgrade the memory on each physical computer using your hardware manufacturer's documentation.
 3. Start Azure Stack using the steps in the [Start and stop Azure Stack](azure-stack-start-and-stop.md) article.
 
 ## Next steps

@@ -75,7 +75,7 @@ You can choose to deploy Azure Stack either **connected** to the internet (and t
 Azure Stack uses either Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS) as an identity provider to establish Azure Stack identities. 
 
 > [!IMPORTANT]
-> This is a key decision point! Choosing Azure AD or AD FS as your identity provider is a one-time decision that you must make at deployment time. You can’t change this later without re-deploying the entire system.
+> This is a key decision point! Choosing Azure AD or AD FS as your identity provider is a one-time decision that you must make at deployment time. You can't change this later without re-deploying the entire system.
 
 Azure AD is Microsoft's cloud-based, multi-tenant identity provider. Most hybrid scenarios with internet-connected deployments use Azure AD as the identity store. However, you may choose to use Active Directory Federation Services (AD FS) for disconnected deployments of Azure Stack. Azure Stack resource providers, and other applications, work much the same way with AD FS as they do with Azure AD. Azure Stack includes its own Active Directory instance and an Active Directory Graph API. 
 
@@ -123,7 +123,7 @@ While the infrastructure of Azure Stack is already resilient to failures, the un
 ## Role Based Access Control
 You can use Role Based Access Control (RBAC) to grant system access to authorized users, groups, and services by assigning them roles at a subscription, resource group, or individual resource level. Each role defines the access level a user, group, or service has over Microsoft Azure Stack resources.
 
-Azure Stack RBAC has three basic roles that apply to all resource types: Owner, Contributor, and Reader. Owner has full access to all resources including the right to delegate access to others. Contributor can create and manage all types of Azure resources but can’t grant access to others. Reader can only view existing resources. The rest of the RBAC roles allow management of specific Azure resources. For instance, the Virtual Machine Contributor role allows creation and management of virtual machines but does not allow management of the virtual network or the subnet that the virtual machine connects to.
+Azure Stack RBAC has three basic roles that apply to all resource types: Owner, Contributor, and Reader. Owner has full access to all resources including the right to delegate access to others. Contributor can create and manage all types of Azure resources but can't grant access to others. Reader can only view existing resources. The rest of the RBAC roles allow management of specific Azure resources. For instance, the Virtual Machine Contributor role allows creation and management of virtual machines but does not allow management of the virtual network or the subnet that the virtual machine connects to.
 
 > See [Manage Role-Based Access Control](azure-stack-manage-permissions.md) for more information. 
 

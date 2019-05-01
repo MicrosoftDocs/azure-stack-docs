@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2019
+ms.date: 04/20/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
@@ -43,16 +43,16 @@ There are two types of update packages for integrated systems:
 
 ## Update package release cadence
 
-Microsoft expects to release software update packages on a monthly cadence. However, it’s possible to have multiple, or no update releases in a month. OEM hardware vendors release their updates on an as-needed basis.
+Microsoft expects to release software update packages on a monthly cadence. However, it's possible to have multiple, or no update releases in a month. OEM hardware vendors release their updates on an as-needed basis.
 
 Find documentation on how to plan for and manage updates, and how to determine your current version in [Manage updates overview](azure-stack-updates.md).
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
+- [Azure Stack 1904 update](azure-stack-release-notes-1904.md)
 - [Azure Stack 1903 update](azure-stack-update-1903.md)
 - [Azure Stack 1902 update](azure-stack-update-1902.md)
 - [Azure Stack 1901 update](azure-stack-update-1901.md)
-- [Azure Stack 1811 update](azure-stack-update-1811.md)
 
 ## Hotfixes
 

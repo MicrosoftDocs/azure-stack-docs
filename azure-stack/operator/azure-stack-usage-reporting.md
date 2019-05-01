@@ -37,12 +37,12 @@ Usage data is sent from Azure Stack to Azure through the Azure Bridge. In Azure,
 
 To set up usage data reporting, you must [register your Azure Stack instance with Azure](azure-stack-registration.md ). As a part of the registration process, the Azure Bridge component of Azure Stack, which connects Azure Stack to Azure and sends the usage data, is configured. The following usage data is sent from Azure Stack to Azure:
 
-- **Meter ID** – Unique ID for the resource that was consumed.
-- **Quantity** – Amount of resource usage.
-- **Location** – Location where the current Azure Stack resource is deployed.
-- **Resource URI** – Fully qualified URI of the resource for which usage is being reported.
-- **Subscription ID** – Subscription ID of the Azure Stack user, which is the local (Azure Stack) subscription.
-- **Time** – Start and end time of the usage data. There is some delay between the time when these resources are consumed in Azure Stack and when the usage data is reported to commerce. Azure Stack aggregates usage data for every 24 hours and reporting usage data to the commerce pipeline in Azure takes another few hours. So, usage that occurs shortly before midnight may show up in Azure the following day.
+- **Meter ID** - Unique ID for the resource that was consumed.
+- **Quantity** - Amount of resource usage.
+- **Location** - Location where the current Azure Stack resource is deployed.
+- **Resource URI** - Fully qualified URI of the resource for which usage is being reported.
+- **Subscription ID** - Subscription ID of the Azure Stack user, which is the local (Azure Stack) subscription.
+- **Time** - Start and end time of the usage data. There is some delay between the time when these resources are consumed in Azure Stack and when the usage data is reported to commerce. Azure Stack aggregates usage data for every 24 hours and reporting usage data to the commerce pipeline in Azure takes another few hours. So, usage that occurs shortly before midnight may show up in Azure the following day.
 
 ## Generate usage data reporting
 
@@ -56,11 +56,11 @@ If you registered your Azure Stack using a CSP subscription, you can view your u
 
 ![partner center](media/azure-stack-usage-reporting/partner-center.png)
 
-## View usage – Enterprise Agreement subscriptions
+## View usage - Enterprise Agreement subscriptions
 
 If you registered your Azure Stack using an Enterprise Agreement subscription, you can view your usage and charges in the [EA portal](https://ea.azure.com/). Azure Stack usage is included in the advanced downloads along with Azure usage under the reports section in this portal. 
 
-## View usage – other subscriptions
+## View usage - other subscriptions
 
 If you registered your Azure Stack using any other subscription type; for example, a Pay As You Go subscription, you can view usage and charges in the Azure account center. Sign in to the [Azure Account Center](https://account.windowsazure.com/Subscriptions) as the Azure account administrator and select the Azure subscription that you used to register the Azure Stack. You can view the Azure Stack usage data, the amount charged for each of the used resources as shown in the following image:
 
@@ -94,7 +94,7 @@ For Azure Stack multi-node, Enterprise Agreement (EA) and CSP subscriptions are 
 
 In the Azure Stack Development Kit, usage data reporting requires subscriptions that are created in the global Azure system. Subscriptions created in one of the sovereign clouds (the Azure Government, Azure Germany, and Azure China clouds) cannot be registered with Azure, so they don't support usage data reporting.
 
-## Why doesn’t the usage reported in Azure Stack match the report generated from Azure Account Center?
+## Why doesn't the usage reported in Azure Stack match the report generated from Azure Account Center?
 
 There is always a delay between the usage data reported by the Azure Stack usage APIs and the usage data reported  by the Azure Account Center. This delay is the time required to upload usage data from Azure Stack to Azure commerce. Due to this delay, usage that occurs shortly before midnight may show up in Azure the following day. If you use the [Azure Stack usage APIs](azure-stack-provider-resource-api.md), and compare the results to the usage reported in the Azure billing portal, you can see a difference.
 

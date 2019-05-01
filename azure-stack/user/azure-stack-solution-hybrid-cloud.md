@@ -28,7 +28,7 @@ By using a hybrid cloud solution, you can combine the compliance benefits of a p
 
 ## Overview and assumptions
 
-You can follow this tutorial to set up a workflow that lets developers deploy an identical web application to a public cloud and a private cloud. This application will be able to access a non-Internet routable network hosted on the private cloud. These web applications are monitored and when there’s a spike in traffic, a program modifies the DNS records to redirect traffic to the public cloud. When traffic drops to the level before the spike, traffic is routed back to the private cloud.
+You can follow this tutorial to set up a workflow that lets developers deploy an identical web application to a public cloud and a private cloud. This application will be able to access a non-Internet routable network hosted on the private cloud. These web applications are monitored and when there's a spike in traffic, a program modifies the DNS records to redirect traffic to the public cloud. When traffic drops to the level before the spike, traffic is routed back to the private cloud.
 
 This tutorial covers the following tasks:
 
@@ -61,7 +61,7 @@ Before you start this tutorial, make sure you can meet the following requirement
   - A Windows Server 2016 image
   - A Windows Server 2016 with a Microsoft SQL Server image
   - The appropriate plans and offers
-  - A domain name for your web application. If you don’t have a domain name you can buy one from a domain provider such as GoDaddy, Bluehost, and InMotion.
+  - A domain name for your web application. If you don't have a domain name you can buy one from a domain provider such as GoDaddy, Bluehost, and InMotion.
 - An SSL certificate for your domain from a trusted certificate authority such as LetsEncrypt.
 - A web application that communicates with a SQL Server database, and supports Application Insights. You can download the [dotnetcore-sqldb-tutorial](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial) sample app from GitHub.
 - A hybrid network between an Azure virtual network and Azure Stack virtual network. For detailed instructions, see [Configure hybrid cloud connectivity with Azure and Azure Stack](azure-stack-solution-hybrid-connectivity.md).
@@ -126,7 +126,7 @@ Before you start this tutorial, make sure you can meet the following requirement
 
 ## Create web apps in Azure and Azure Stack
 
-The Azure App Service simplifies running and managing a web application. Because Azure Stack is consistent with Azure,  the App Service can run in both environments. You’ll use the App Service to host your application.
+The Azure App Service simplifies running and managing a web application. Because Azure Stack is consistent with Azure,  the App Service can run in both environments. You'll use the App Service to host your application.
 
 ### Create web apps
 

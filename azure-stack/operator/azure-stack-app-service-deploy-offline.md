@@ -111,7 +111,7 @@ To deploy App Service in a disconnected environment, you must first create an of
    ![App Service Installer][8]
 
 10. On the next page:
-    1. In the **Identity Application ID** box, enter the GUID for the application you’re using for identity (from Azure AD).
+    1. In the **Identity Application ID** box, enter the GUID for the application you're using for identity (from Azure AD).
     2. In the **Identity Application certificate file** box, enter (or browse to) the location of the certificate file.
     3. In the **Identity Application certificate password** box, enter the password for the certificate. This password is the one that you made note of when you used the script to create the certificates.
     4. In the **Azure Resource Manager root certificate file** box, enter (or browse to) the location of the certificate file.
@@ -127,7 +127,7 @@ To deploy App Service in a disconnected environment, you must first create an of
     | **App Service API SSL certificate file** | api.appservice.local.AzureStack.external.pfx |
     | **App Service Publisher SSL certificate file** | ftp.appservice.local.AzureStack.external.pfx |
 
-    If you used a different domain suffix when you created the certificates, your certificate file names don’t use *local.AzureStack.external*. Instead, use your custom domain information.
+    If you used a different domain suffix when you created the certificates, your certificate file names don't use *local.AzureStack.external*. Instead, use your custom domain information.
 
     ![App Service Installer][11]
 
@@ -247,7 +247,7 @@ After you deploy and register the App Service resource provider, test it to make
 
 ## Deploy a WordPress, DNN, or Django website (optional)
 
-1. In the Azure Stack tenant portal, click **+**, go to the Azure Marketplace, deploy a Django website, and wait for successful completion. The Django web platform uses a file system-based database. It doesn’t require any additional resource providers, such as SQL or MySQL.
+1. In the Azure Stack tenant portal, click **+**, go to the Azure Marketplace, deploy a Django website, and wait for successful completion. The Django web platform uses a file system-based database. It doesn't require any additional resource providers, such as SQL or MySQL.
 
 2. If you also deployed a MySQL resource provider, you can deploy a WordPress website from the Marketplace. When you're prompted for database parameters, enter the user name as *User1\@Server1*, with the user name and server name of your choice.
 

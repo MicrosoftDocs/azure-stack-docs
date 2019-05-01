@@ -56,7 +56,7 @@ You manage updates from the administrator portal. As an Azure Stack operator you
 - View important information such as the current version.
 - Install updates and monitor progress.
 - Review update history for previously installed updates.
-- View the cloud’s current OEM package version
+- View the cloud's current OEM package version
  
 ## Determine the current version
 

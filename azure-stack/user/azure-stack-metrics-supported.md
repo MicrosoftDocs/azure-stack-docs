@@ -48,9 +48,9 @@ The following tables list the metrics  available with Azure Monitor's metric pip
 
 | Metric | Metric Display Name | Unit | Aggregation Type | Description | Dimensions |
 |----------------------|------------------------|--------------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|
-| BlobCapacity | Blob Capacity | Bytes | Total | The amount of storage used by the storage account’s Blob service in bytes. | BlobType |
-| BlobCount | Blob Count | Count | Total | The number of Blob in the storage account’s Blob service. | BlobType |
-| ContainerCount | Blob Container Count | Count | Average | The number of containers in the storage account’s Blob service. | No Dimensions |
+| BlobCapacity | Blob Capacity | Bytes | Total | The amount of storage used by the storage account's Blob service in bytes. | BlobType |
+| BlobCount | Blob Count | Count | Total | The number of Blob in the storage account's Blob service. | BlobType |
+| ContainerCount | Blob Container Count | Count | Average | The number of containers in the storage account's Blob service. | No Dimensions |
 | Transactions | Transactions | Count | Total | The number of requests made to a storage service or the specified API operation. This number includes successful and failed requests, as well as requests which produced errors. Use ResponseType dimension for the number of different type of response. | ResponseType, GeoType, ApiName |
 | Ingress | Ingress | Bytes | Total | The amount of ingress data, in bytes. This number includes ingress from an external client into Azure Storage as well as ingress within Azure. | GeoType, ApiName |
 | Egress | Egress | Bytes | Total | The amount of egress data, in bytes. This number includes egress from an external client into Azure Storage as well as egress within Azure. As a result, this number does not reflect billable egress. | GeoType, ApiName |
@@ -62,9 +62,9 @@ The following tables list the metrics  available with Azure Monitor's metric pip
 
 | Metric | Metric Display Name | Unit | Aggregation Type | Description | Dimensions |
 |----------------------|------------------------|--------------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|
-| TableCapacity | Table Capacity | Bytes | Average | The amount of storage used by the storage account’s Table service in bytes. | No Dimensions |
-| TableCount | Table Count | Count | Average | The number of table in the storage account’s Table service. | No Dimensions |
-| TableEntityCount | Table Entity Count | Count | Average | The number of table entities in the storage account’s Table service. | No Dimensions |
+| TableCapacity | Table Capacity | Bytes | Average | The amount of storage used by the storage account's Table service in bytes. | No Dimensions |
+| TableCount | Table Count | Count | Average | The number of table in the storage account's Table service. | No Dimensions |
+| TableEntityCount | Table Entity Count | Count | Average | The number of table entities in the storage account's Table service. | No Dimensions |
 | Transactions | Transactions | Count | Total | The number of requests made to a storage service or the specified API operation. This number includes successful and failed requests, as well as requests which produced errors. Use ResponseType dimension for the number of different type of response. | ResponseType, GeoType, ApiName |
 | Ingress | Ingress | Bytes | Total | The amount of ingress data, in bytes. This number includes ingress from an external client into Azure Storage as well as ingress within Azure. | GeoType, ApiName |
 | Egress | Egress | Bytes | Total | The amount of egress data, in bytes. This number includes egress from an external client into Azure Storage as well as egress within Azure. As a result, this number does not reflect billable egress. | GeoType, ApiName |
@@ -76,9 +76,9 @@ The following tables list the metrics  available with Azure Monitor's metric pip
 
 | Metric | Metric Display Name | Unit | Aggregation Type | Description | Dimensions |
 |----------------------|------------------------|--------------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|
-| QueueCapacity | Queue Capacity | Bytes | Average | The amount of storage used by the storage account’s Queue service in bytes. | No Dimensions |
-| QueueCount | Queue Count | Count | Average | The number of queue in the storage account’s Queue service. | No Dimensions |
-| QueueMessageCount | Queue Message Count | Count | Average | The approximate number of queue messages in the storage account’s Queue service. | No Dimensions |
+| QueueCapacity | Queue Capacity | Bytes | Average | The amount of storage used by the storage account's Queue service in bytes. | No Dimensions |
+| QueueCount | Queue Count | Count | Average | The number of queue in the storage account's Queue service. | No Dimensions |
+| QueueMessageCount | Queue Message Count | Count | Average | The approximate number of queue messages in the storage account's Queue service. | No Dimensions |
 | Transactions | Transactions | Count | Total | The number of requests made to a storage service or the specified API operation. This number includes successful and failed requests, as well as requests which produced errors. Use ResponseType dimension for the number of different type of response. | ResponseType, GeoType, ApiName |
 | Ingress | Ingress | Bytes | Total | The amount of ingress data, in bytes. This number includes ingress from an external client into Azure Storage as well as ingress within Azure. | GeoType, ApiName |
 | Egress | Egress | Bytes | Total | The amount of egress data, in bytes. This number includes egress from an external client into Azure Storage as well as egress within Azure. As a result, this number does not reflect billable egress. | GeoType, ApiName |
