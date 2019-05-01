@@ -131,7 +131,7 @@ azcopy \
 
  - Any AzCopy operation on a file store is not available because file storage is not yet available in Azure Stack.
  - Asynchronous data transfer between Azure storage and Azure Stack is not supported. You can specify the transfer with the **/SyncCopy** option to copy the data.
- - The Linux version of Azcopy only supports 1802 update or later versions. And it doesn’t support Table service.
+ - The Linux version of Azcopy only supports 1802 update or later versions. And it doesn't support Table service.
 
 ## Azure PowerShell
 
@@ -213,14 +213,14 @@ $blobs = Get-AzureStorageBlob -Container $ContainerName
 New-Item -Path $DestinationFolder -ItemType Directory -Force  
 
 # Download blobs into the local destination directory.
-$blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
+$blobs | Get-AzureStorageBlobContent -Destination $DestinationFolder
 
 # end
 ```
 
 ### PowerShell known issues
 
-The current compatible Azure PowerShell module version for Azure Stack is 1.2.11 for the user operations. It’s different from the latest version of Azure PowerShell. This difference impacts storage services operation:
+The current compatible Azure PowerShell module version for Azure Stack is 1.2.11 for the user operations. It's different from the latest version of Azure PowerShell. This difference impacts storage services operation:
 
 The return value format of `Get-AzureRmStorageAccountKey` in version 1.2.11 has two properties: `Key1` and `Key2`, while the current Azure version returns an array containing all the account keys.
 
@@ -240,7 +240,7 @@ For more information, see [Get-​Azure​Rm​Storage​Account​Key](/powersh
 
 ## Azure CLI
 
-The Azure CLI is Azure’s command-line experience for managing Azure resources. You can install it on macOS, Linux, and Windows and run it from the command line.
+The Azure CLI is Azure's command-line experience for managing Azure resources. You can install it on macOS, Linux, and Windows and run it from the command line.
 
 Azure CLI is optimized for managing and administering Azure resources from the command line, and for building automation scripts that work against the Azure Resource Manager. It provides many of the same functions found in the Azure Stack portal, including rich data access.
 
@@ -311,7 +311,7 @@ To learn more about mounting Blob storage as a file system with Blobfuse on Linu
 
 For Azure Stack, **blobEndpoint** needs to be specified besides accountName, accountKey/sasToken, containerName, while configuring your Storage account credentials in the step of preparing for mounting. 
 
-In the Azure Stack development Kit, the blobEndpoint should be `myaccount.blob.local.azurestack.external`. In Azure Stack integrated system, contact your cloud administrator if you’re not sure about your endpoint. 
+In the Azure Stack development Kit, the blobEndpoint should be `myaccount.blob.local.azurestack.external`. In Azure Stack integrated system, contact your cloud administrator if you're not sure about your endpoint. 
 
 Please be aware that accountKey and sasToken can only be configured one at a time. When storage account key is given, the credentials configuration file is in the following format: 
 

@@ -86,7 +86,7 @@ To access the Azure Stack Operator documentation, use the Help and support icon 
 If you select the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then select **New support request**, one of the following results happens:
 
 - If you're using an integrated system, this action opens a site where you can directly open a support ticket with Microsoft Customer Support Services (CSS). Refer to [Where to get support](azure-stack-manage-basics.md#where-to-get-support) to understand when you should go through Microsoft support or through your original equipment manufacturer (OEM) hardware vendor support.
-- If you’re using the ASDK, this action opens the [Azure Stack forums site](https://social.msdn.microsoft.com/Forums/home?forum=AzureStack) directly. These forums are regularly monitored. Because the ASDK is an evaluation environment, there is no official support offered through Microsoft CSS.
+- If you're using the ASDK, this action opens the [Azure Stack forums site](https://social.msdn.microsoft.com/Forums/home?forum=AzureStack) directly. These forums are regularly monitored. Because the ASDK is an evaluation environment, there is no official support offered through Microsoft CSS.
 
 ### Quick access to the Azure roadmap
 

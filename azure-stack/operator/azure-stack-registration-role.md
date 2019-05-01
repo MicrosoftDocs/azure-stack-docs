@@ -22,7 +22,7 @@ ms.lastreviewed: 02/13/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-For scenarios where you don’t want to give owner permissions in the Azure subscription, you can create a custom role to assign permissions to a user account to register your Azure Stack.
+For scenarios where you don't want to give owner permissions in the Azure subscription, you can create a custom role to assign permissions to a user account to register your Azure Stack.
 
 > [!WARNING]
 > This is not a security posture feature. Use it in scenarios where you want constraints to prevent accidental changes to the Azure Subscription. When a user is delegated rights to this custom role, the user has rights to edit permissions and elevate rights. Only assign users you trust to the custom role.

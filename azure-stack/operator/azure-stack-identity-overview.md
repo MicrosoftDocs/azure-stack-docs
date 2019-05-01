@@ -160,7 +160,7 @@ To authenticate with the identity provider and receive a JSON Web Token, you mus
 
 When a principal (a client, application, or user) makes an authentication request to access a resource, the request must include:
 
-- The principal’s credentials.
+- The principal's credentials.
 - The app ID URI of the resource that the principal wants to access.
 
 The credentials are validated by the identity provider. The identity provider also validates that the app ID URI is for a registered application, and that the principal has the correct privileges to obtain a token for that resource. If the request is valid, a JSON Web Token is granted.
@@ -177,7 +177,7 @@ When all validations are complete, Azure Resource Manager uses the *objected* (o
 ![Diagram of the token exchange protocol](media/azure-stack-identity-overview/token-exchange.png)
 
 > [!NOTE]
-> After deployment, Azure Active Directory global administrator permission is not required. However, some operations may require the global administrator credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily re-instate the account’s global administrator permissions or use a separate global administrator account that is an owner of the *default provider subscription*.
+> After deployment, Azure Active Directory global administrator permission is not required. However, some operations may require the global administrator credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily re-instate the account's global administrator permissions or use a separate global administrator account that is an owner of the *default provider subscription*.
 
 ### Use Role-Based Access Control
 

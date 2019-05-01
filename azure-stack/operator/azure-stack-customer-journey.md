@@ -63,7 +63,7 @@ The [general datacenter integration considerations](azure-stack-datacenter-integ
 
 In the pre-deployment phase you will need to decide on the following:
 
-- **Azure Stack connection model and identity provider**. You can choose to deploy Azure Stack either [connected to the internet (and to Azure) or disconnected](azure-stack-connection-models.md). To get the most benefit from Azure Stack, including hybrid scenarios, you'd want to deploy connected to Azure. Choosing Active Directory Federation Services (AD FS) or Azure Active Directory (Azure AD) is a one-time decision that you must make at deployment time. **You can’t change this later without redeploying the entire system**.
+- **Azure Stack connection model and identity provider**. You can choose to deploy Azure Stack either [connected to the internet (and to Azure) or disconnected](azure-stack-connection-models.md). To get the most benefit from Azure Stack, including hybrid scenarios, you'd want to deploy connected to Azure. Choosing Active Directory Federation Services (AD FS) or Azure Active Directory (Azure AD) is a one-time decision that you must make at deployment time. **You can't change this later without redeploying the entire system**.
 
 - **Licensing model**. The licensing model options for you to choose from depend on the kind of deployment you will have. Your identity provider choice has no bearing on tenant virtual machines or the identity system and accounts they use.
     - Customers that are in a [disconnected deployment](azure-stack-disconnected-deployment.md) have only one option: capacity-based billing.

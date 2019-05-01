@@ -29,7 +29,7 @@ This article describes how to create a site-to-site VPN connection between two v
 
 ### Connection
 
-The following figure shows what the connection configuration should look like when you’re done.
+The following figure shows what the connection configuration should look like when you're done.
 
 ![Site-to-site VPN connection configuration](media/azure-stack-create-vpn-connection-one-node-tp2/OneNodeS2SVPN.png)
 
@@ -97,7 +97,7 @@ Now you can create the POC1 network resources that you need to set up your gatew
 
 ### Sign in as a tenant
 
-A service administrator can sign in as a tenant to test the plans, offers, and subscriptions that their tenants might use. If you don’t already have one, [create a tenant account](azure-stack-add-new-user-aad.md) before you sign in.
+A service administrator can sign in as a tenant to test the plans, offers, and subscriptions that their tenants might use. If you don't already have one, [create a tenant account](azure-stack-add-new-user-aad.md) before you sign in.
 
 ### Create the virtual network and VM subnet
 
@@ -189,7 +189,7 @@ The next step is to create the network resources for POC2. The following instruc
 
 ### Sign in as a tenant again
 
-A service administrator can sign in as a tenant to test the plans, offers, and subscriptions that their tenants might use. If you don’t already have one, [create a tenant account](azure-stack-add-new-user-aad.md) before you sign in.
+A service administrator can sign in as a tenant to test the plans, offers, and subscriptions that their tenants might use. If you don't already have one, [create a tenant account](azure-stack-add-new-user-aad.md) before you sign in.
 
 ### Create virtual network and VM subnet
 
@@ -354,8 +354,8 @@ To ensure that you send the traffic through the site-to-site connection, ensure 
 
    ```powershell
    New-NetFirewallRule `
-    –DisplayName “Allow ICMPv4-In” `
-    –Protocol ICMPv4
+    -DisplayName "Allow ICMPv4-In" `
+    -Protocol ICMPv4
    ```
 
 ### Sign in to the tenant VM in POC2
@@ -372,8 +372,8 @@ To ensure that you send the traffic through the site-to-site connection, ensure 
 
    ```powershell
    New-NetFirewallRule `
-    –DisplayName “Allow ICMPv4-In” `
-    –Protocol ICMPv4
+    -DisplayName "Allow ICMPv4-In" `
+    -Protocol ICMPv4
    ```
 
 10. From the virtual machine on POC2, ping the virtual machine on POC1, through the tunnel. To do this, you ping the DIP that you recorded from VM01. In the example environment, this is **10.0.10.4**, but be sure to ping the address you noted in your lab. You should see a result that looks like the following example:
