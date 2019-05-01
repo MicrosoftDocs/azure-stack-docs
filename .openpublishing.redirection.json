@@ -1,7 +1,7 @@
 {
   "redirections": [
     {
-      "source_path": "articles/azure-stack/azure-stack-update-1811.md",
+      "source_path": "azure-stack/operator/azure-stack-update-1811.md",
       "redirect_url": "/azure-stack/operator/azure-stack-release-notes-1904",
       "redirect_document_id": false
     },
