@@ -45,7 +45,7 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
-- Signficant improvements have been made to the Software Defined Networking (SDN) Stack in 1904. These improvments increase the overall servicing and reliability of the SDN stack in Azure Stack.
+- Significant improvements have been made to the Software Defined Networking (SDN) Stack in 1904. These improvements increase the overall servicing and reliability of the SDN stack in Azure Stack.
 
 - Added a notification in the administrator portal, when the currently logged in user does not have the necessary permissions, which enables the dashboard to load properly. It also contains a link to the documentation that explains which accounts have the appropriate permissions, depending on the identity provider used during deployment.
 
@@ -62,12 +62,12 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 - Improvements to the process of deleting offers, plans, quotas, and subscriptions. You can now successfully delete offers, quotas, plans, and subscriptions from the Administrator portal if the object you want to delete has no dependencies. For more information, see [this article](azure-stack-delete-offer.md).  
 
 <!-- this applies to bug 3725384 and bug #4225643 -->
-- Improved syslog message volume by filtering out unnecessary events and providing a configuration parameter to select desired severity level for forwarded messages. For more information on how to configure the severity level, refer to [Azure Stack datacenter integration - syslog forwarding](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-integrate-security).
+- Improved syslog message volume by filtering out unnecessary events and providing a configuration parameter to select desired severity level for forwarded messages. For more information about how to configure the severity level, see [Azure Stack datacenter integration - syslog forwarding](azure-stack-integrate-security.md).
 
-- The Azure Stack Infrastructure consumes an additional 12 GB + (4 GB * Number of Azure Stack hosts) from the 1904 update onwards. This means that in a 4 node stamp there will be an additional capacity consumption of 28 GB (12 GB + 4 GB * 4) reflected in the capacity screen of the Azure Stack administrator portal. Your update to the 1904 release should succeed even if the additional memory consumption puts your Azure Stack stamp over capacity. If your Azure Stack stamp is over memory usage AFTER the update is completed, you will see an alert reflecting this state, with remediation steps to de-allocate some VMs. 
+- The Azure Stack Infrastructure consumes an additional 12 GB + (4 GB * Number of Azure Stack hosts) from the 1904 update onwards. This means that in a 4 node stamp there will be an additional capacity consumption of 28 GB (12 GB + 4 GB * 4) reflected in the capacity screen of the Azure Stack administrator portal. Your update to the 1904 release should succeed even if the additional memory consumption puts your Azure Stack stamp over capacity. If your Azure Stack stamp is over memory usage AFTER the update is completed, you will see an alert reflecting this state, with remediation steps to de-allocate some VMs.
 
 <!--this applied to Bug 1473487 -->
-- Added a new capability to the **Get-AzureStackLog** cmdlet by incorporating an additonal parameter, `-OutputSASUri`. You can now collect Azure Stack logs from your environment and store them in the specified Azure Storage blob container. For more information, see [Azure Stack diagnostics](azure-stack-diagnostics.md#examples).
+- Added a new capability to the **Get-AzureStackLog** cmdlet by incorporating an additional parameter, `-OutputSASUri`. You can now collect Azure Stack logs from your environment and store them in the specified Azure Storage blob container. For more information, see [Azure Stack diagnostics](azure-stack-diagnostics.md#examples).
 
 - Added a new memory check in the **Test-AzureStack** `UpdateReadiness` group, which checks to see if you have enough memory available on the stack for the update to complete successfully.
 
@@ -92,13 +92,13 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 - Removed the option for Azure Stack operators to shut down infrastructure role instances in the administrator portal. The restart functionality ensures a clean shutdown attempt before restarting the infrastructure role instance. For advanced scenarios, the API and PowerShell functionality remains available.
 
 <!-- Feature ## 4199257 -->
-- There is a new Marketplace management experience, with separate screens for Marketplace images and resource providers. For now, the **Resource providers** window is empty, but in future releases new PaaS service offerings will appear and be managed in the **Resource providers** window. 
+- There is a new Marketplace management experience, with separate screens for Marketplace images and resource providers. For now, the **Resource providers** window is empty, but in future releases new PaaS service offerings will appear and be managed in the **Resource providers** window.
 
 <!-- Feature ## 4199257 -->
 - Changes to the update experience in the operator portal. There is a new grid for resource provider updates. The ability to update resource providers is not available yet.
 
 <!-- Task ## 3748423  -->
-- Changes to the update installation experience in the operator portal. To help Azure Stack operators respond appropriately to an update issue, the portal now provides more specific recommendations based on the health of the scale unit, as derived automatically by running **Test-AzureStack** and parsing the results. Based on the result, it will inform the operator to take one of two actions: 
+- Changes to the update installation experience in the operator portal. To help Azure Stack operators respond appropriately to an update issue, the portal now provides more specific recommendations based on the health of the scale unit, as derived automatically by running **Test-AzureStack** and parsing the results. Based on the result, it will inform the operator to take one of two actions:
 
   - A "soft" warning alert is displayed in the portal that reads "The most recent update needs attention. Microsoft recommends opening a service request during normal business hours. As part of the update process, Test-AzureStack is performed, and based on the output we generate the most appropriate alert. In this case, Test-AzureStack passed."
 
@@ -110,35 +110,35 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
-- Fixed an issue in which the syslog configuration was not persisted through an update cycle, causing the syslog client to lose its configuration, and the syslog messages to stop being forwarded. Syslog configuration is now preserved. 
+- Fixed an issue in which the syslog configuration was not persisted through an update cycle, causing the syslog client to lose its configuration, and the syslog messages to stop being forwarded. Syslog configuration is now preserved.
 
-- Fixed an issue in CRP that blocked deallocation of VMs. Previously, if a VM contained multiple large managed disks, deallocating the VM might have failed with a timeout error. 
+- Fixed an issue in CRP that blocked deallocation of VMs. Previously, if a VM contained multiple large managed disks, deallocating the VM might have failed with a timeout error.
 
 - Fixed issue with Windows Defender engine impacting access to scale-unit storage.
 
-- Fixed a user portal issue in which the Access Policy window for blob storage accounts failed to load. 
+- Fixed a user portal issue in which the Access Policy window for blob storage accounts failed to load.
 
-- Fixed an issue in both administrator and user portals, in which erroneous notifications about the global Azure portal were displayed. 
+- Fixed an issue in both administrator and user portals, in which erroneous notifications about the global Azure portal were displayed.
 
-- Fixed a user portal issue in which selecting the **Feedback** tile caused an empty browser tab to open. 
+- Fixed a user portal issue in which selecting the **Feedback** tile caused an empty browser tab to open.
 
-- Fixed a portal issue in which changing a static IP address for an IP configuration that was bound to a network adapter attached to a VM instance, caused an error message to be displayed. 
+- Fixed a portal issue in which changing a static IP address for an IP configuration that was bound to a network adapter attached to a VM instance, caused an error message to be displayed.
 
-- Fixed a user portal issue in which attempting to **Attach Network Interface** to an existing VM via the **Networking** window caused the operation to fail with an error message. 
+- Fixed a user portal issue in which attempting to **Attach Network Interface** to an existing VM via the **Networking** window caused the operation to fail with an error message.
 
-- Fixed an issue in which Azure Stack did not support attaching more than 4 Network Interfaces (NICs) to a VM instance. 
+- Fixed an issue in which Azure Stack did not support attaching more than 4 Network Interfaces (NICs) to a VM instance.
 
-- Fixed a portal issue in which adding an inbound security rule and selecting **Service Tag** as the source, displayed several options that are not available for Azure Stack. 
+- Fixed a portal issue in which adding an inbound security rule and selecting **Service Tag** as the source, displayed several options that are not available for Azure Stack.
 
-- Fixed the issue in which Network Security Groups (NSGs) did not work in Azure Stack in the same way as global Azure. 
+- Fixed the issue in which Network Security Groups (NSGs) did not work in Azure Stack in the same way as global Azure.
 
-- Fixed an issue in Marketplace management which hides all downloaded products if registration expires or is removed. 
+- Fixed an issue in Marketplace management, which hides all downloaded products if registration expires or is removed.
 
-- Fixed an issue in which issuing a **Set-AzureRmVirtualNetworkGatewayConnection** command in PowerShell to an existing virtual network gateway connection failed with the error message **Invalid shared key configured...**. 
+- Fixed an issue in which issuing a **Set-AzureRmVirtualNetworkGatewayConnection** command in PowerShell to an existing virtual network gateway connection failed with the error message **Invalid shared key configured...**.
 
 - Fixed an issue that caused the Network Resource Provider (NRP) to be out of sync with the network controller, resulting in duplicate resources being requested. In some cases, this resulted in leaving the parent resource in an error state.
 
-- Fixed an issue in which if a user that was assigned a contributor role to a subscription, but was not explicitly given read permissions, an error was generated that read **...The client 'somelogonaccount@domain.com' with object id {GUID} does not have authorization to perform action...** when attempting to save a change to a resource.
+- Fixed an issue in which if a user that was assigned a contributor role to a subscription, but was not explicitly given read permissions, an error was generated that read **...The client 'somelogonaccount@domain.com' with object ID {GUID} does not have authorization to perform action...** when attempting to save a change to a resource.
 
 - Fixed an issue in which the marketplace management screen was empty if the offline syndication tool was used to upload images, and any one of them was missing the icon URI(s).
 
