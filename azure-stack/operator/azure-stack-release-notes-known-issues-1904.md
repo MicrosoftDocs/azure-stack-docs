@@ -70,18 +70,23 @@ This article lists known issues with supported releases of Azure Stack. The list
 - Remediation: Upload the blob using the SAS option.
 - Occurrence: Common
 
+## Networking
+
 ### Load Balancer
 
+#### Add Backend Pool
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, if you attempt to add a **Backend Pool** to a **Load Balancer**, the operation fails with the error message 'failed to update Load Balancer...'.
 - Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
 - Occurrence: Common
 
+#### Create Inbound NAT
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer**, the operation fails with the error message 'Failed to update Load Balancer...'.
 - Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
 - Occurrence: Common
 
+#### Create Load Balancer 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, the **Create Load Balancer** window shows an option to create a **Standard** Load Balancer SKU. This option is not supported in Azure Stack.
 - Remediation: Use the Basic Load Balancer options instead.
