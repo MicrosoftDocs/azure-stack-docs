@@ -76,7 +76,7 @@ ms.lastreviewed: 01/08/2019
 12. To package the folders into an .azpkg file, open a command prompt and run the following command:
 
     ```shell
-    AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
+    AzureGalleryPackager.exe package -m <path to manifest.json> -o <output location for the package>
     ```
 
     > [!NOTE]
@@ -92,7 +92,7 @@ ms.lastreviewed: 01/08/2019
 
    ```powershell
    Add-AzsGalleryItem -GalleryItemUri `
-   https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
+   https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg -Verbose
    ```
 
    | Parameter | Description |
@@ -113,7 +113,7 @@ ms.lastreviewed: 01/08/2019
 6. You can remove a Marketplace item by using the **Remove-AzureRMGalleryItem** cmdlet. For example:
 
    ```powershell
-   Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
+   Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  -Verbose
    ```
 
    > [!NOTE]

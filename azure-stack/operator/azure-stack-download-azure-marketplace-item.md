@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/14/2019
+ms.date: 04/24/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/10/2018
@@ -27,39 +27,40 @@ As a cloud operator, you can download items from the Azure Marketplace and make 
 
 There are two scenarios for connecting to the Azure Marketplace: 
 
-- **A connected scenario** - that requires your Azure Stack environment to be connected to the internet. You use the Azure Stack portal to locate and download items. 
-- **A disconnected or partially connected scenario** - that requires you to access the Internet using the marketplace syndication tool to download marketplace items. Then, you transfer your downloads to your disconnected Azure Stack installation. This scenario uses PowerShell.
+- **A connected scenario** - requires your Azure Stack environment to be connected to the internet. You use the Azure Stack portal to locate and download items. 
+- **A disconnected or partially connected scenario** - requires you to access the Internet using the Marketplace syndication tool to download Marketplace items. Then, you transfer your downloads to your disconnected Azure Stack installation. This scenario uses PowerShell.
 
 See [Azure Marketplace items for Azure Stack](azure-stack-marketplace-azure-items.md) for a list of the marketplace items you can download.
 
-
 ## Connected scenario
+
 If Azure Stack connects to the internet, you can use the admin portal to download marketplace items.
 
 ### Prerequisites
+
 Your Azure Stack deployment must have internet connectivity, and be [registered with Azure](azure-stack-registration.md ).
 
-### Use the portal to download marketplace items  
+### Use the portal to download marketplace items
+  
 1. Sign in to the Azure Stack administrator portal.
 
 2.	Review the available storage space before downloading marketplace items. Later, when you select items for download, you can compare the download size to your available storage capacity. If capacity is limited, consider options for [managing available space](azure-stack-manage-storage-shares.md#manage-available-space). 
 
-    To review available space, in **Region management** select the region you want to explore, and then go to **Resource Providers** > **Storage**.
+    To review available space, in **Region management** select the region you want to explore, and then go to **Resource Providers** > **Storage**:
 
-    [![Review storage space](media/azure-stack-download-azure-marketplace-item/storagesm.png "Review storage space")](media/azure-stack-download-azure-marketplace-item/storage.png#lightbox)
+    ![Review storage space](media/azure-stack-download-azure-marketplace-item/storage.png)
 
-    
-3. Open the Azure Stack Marketplace and connect to Azure. To do so, select **Marketplace management**, and then select **Add from Azure**.
+3. Open the Azure Stack Marketplace and connect to Azure. To do so, select **Marketplace items**, and then select **Add from Azure**:
 
-    [![Add from Azure](media/azure-stack-download-azure-marketplace-item/marketplacesm.png "Add from Azure")](media/azure-stack-download-azure-marketplace-item/marketplace.png#lightbox)
+    ![Add from Azure](media/azure-stack-download-azure-marketplace-item/marketplace.png)
 
-    The portal displays the list of items available for download from the Azure Marketplace. You can click on each item to view its description and additional information about it, including its download size. 
+    The portal displays the list of items available for download from the Azure Marketplace. You can filter products by name, publisher and/or type of product. You can also click on each item to view its description and additional information, including its download size:
 
-    [![Marketplace list](media/azure-stack-download-azure-marketplace-item/image03sm.png "Marketplace list")](media/azure-stack-download-azure-marketplace-item/image03.png#lightbox)
+    ![Marketplace list](media/azure-stack-download-azure-marketplace-item/image03.PNG)
 
 4. Select the item you want, and then select **Download**. Download times vary.
 
-    [![Download message](media/azure-stack-download-azure-marketplace-item/image04.png "Download message")](media/azure-stack-download-azure-marketplace-item/image04.png#lightbox)
+    ![Download message](media/azure-stack-download-azure-marketplace-item/image04.png)
 
     After the download completes, you can deploy the new marketplace item as either an Azure Stack operator or user.
 
@@ -93,7 +94,7 @@ There are two parts to this scenario:
 
 1. On a computer with an Internet connection, open a PowerShell console as an administrator.
 
-2. Add the Azure account that you have used to register Azure Stack. To add the account, in PowerShell run `Add-AzureRmAccount` without any parameters. You are prompted to enter your Azure account credentials and you might have to use 2-factor authentication based on your account’s configuration.
+2. Add the Azure account that you have used to register Azure Stack. To add the account, in PowerShell run `Add-AzureRmAccount` without any parameters. You are prompted to enter your Azure account credentials and you might have to use 2-factor authentication based on your account's configuration.
 
 3. If you have multiple subscriptions, run the following command to select the one you have used for registration:  
 
@@ -145,7 +146,7 @@ There are two parts to this scenario:
 10. If the download fails, you can try again by re-running the following PowerShell cmdlet:
 
     ```powershell
-    Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes”
+    Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes"
     ```
 
     Before retrying, remove the product folder in which the download failed. For example, if the download script fails when downloading to `D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1`, remove the `D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1` folder, then rerun the cmdlet.
@@ -232,7 +233,7 @@ There are two parts to this scenario:
     ```powershell  
     Add-AzsGalleryItem `
      -GalleryItemUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg" `
-     –Verbose
+     -Verbose
     ```
 5. After you publish a gallery item, it is now available to use. To confirm the gallery item is published, go to **All services**, and then under the **GENERAL** category, select **Marketplace**.  If your download is a solution template, make sure you add any dependent VHD image for that solution template.  
   [![View marketplace](media/azure-stack-download-azure-marketplace-item/view-marketplacesm.png "View marketplace")](media/azure-stack-download-azure-marketplace-item/view-marketplace.png#lightbox)  

@@ -36,11 +36,11 @@ Azure Stack telemetry is based on the Windows Server 2016 Connected User Experie
 > To support telemetry data flow, port 443 (HTTPS) must be open in your network. The Connected User Experience and Telemetry component connects to the Microsoft Data Management service at https://v10.vortex-win.data.microsoft.com. The Connected User Experience and Telemetry component also connects to https://settings-win.data.microsoft.com to download configuration information.
 
 ## Privacy considerations
-The ETW service routes telemetry data back to protected cloud storage. The principle of least privileged guides access to telemetry data. Only Microsoft personnel with a valid business need are permitted access to the telemetry data. Microsoft does not share personal data of our customers with third parties, except at the customer’s discretion or for the limited purposes described in the [Azure Stack Privacy Statement](https://privacy.microsoft.com/PrivacyStatement). We do share business reports with OEMs and partners that include aggregated, anonymized telemetry information. Data sharing decisions are made by an internal Microsoft team including privacy, legal, and data management stakeholders.
+The ETW service routes telemetry data back to protected cloud storage. The principle of least privileged guides access to telemetry data. Only Microsoft personnel with a valid business need are permitted access to the telemetry data. Microsoft does not share personal data of our customers with third parties, except at the customer's discretion or for the limited purposes described in the [Azure Stack Privacy Statement](https://privacy.microsoft.com/PrivacyStatement). We do share business reports with OEMs and partners that include aggregated, anonymized telemetry information. Data sharing decisions are made by an internal Microsoft team including privacy, legal, and data management stakeholders.
 
-Microsoft believes in and practices information minimization. We strive to gather only the information that we need, and we store it for only as long as it’s needed to provide a service or for analysis. Much of the information about how the Azure Stack system and Azure services are functioning is deleted within six months. Summarized or aggregated data are kept for a longer period.
+Microsoft believes in and practices information minimization. We strive to gather only the information that we need, and we store it for only as long as it's needed to provide a service or for analysis. Much of the information about how the Azure Stack system and Azure services are functioning is deleted within six months. Summarized or aggregated data are kept for a longer period.
 
-We understand that the privacy and security of our customers’ information is important. We have taken a thoughtful and comprehensive approach to customer privacy and the protection of customer data with Azure Stack. IT administrators have controls to customize features and privacy settings at any time. Our commitment to transparency and trust is clear:
+We understand that the privacy and security of our customers' information is important. We have taken a thoughtful and comprehensive approach to customer privacy and the protection of customer data with Azure Stack. IT administrators have controls to customize features and privacy settings at any time. Our commitment to transparency and trust is clear:
 - We are open with customers about the types of data we gather.
 - We put enterprise customers in control—they can customize their own privacy settings.
 - We put customer privacy and security first.
@@ -50,9 +50,9 @@ We understand that the privacy and security of our customers’ information is i
 Microsoft does not intend to gather sensitive information, such as credit card numbers, usernames and passwords, email addresses, or other similarly sensitive information. If we determine that sensitive information has been inadvertently received, we delete it.
 
 ## Examples of how Microsoft uses the telemetry data
-Telemetry plays an important role in helping us quickly identify and fix critical reliability issues in our customers’ deployments and configurations. Insights into the telemetry data that we gather help us quickly identify issues with services or hardware configurations. Microsoft’s ability to get this data from customers and drive improvements into the ecosystem helps raise the bar for the quality of our integrated Azure Stack solutions.
+Telemetry plays an important role in helping us quickly identify and fix critical reliability issues in our customers' deployments and configurations. Insights into the telemetry data that we gather help us quickly identify issues with services or hardware configurations. Microsoft's ability to get this data from customers and drive improvements into the ecosystem helps raise the bar for the quality of our integrated Azure Stack solutions.
 
-Telemetry also helps Microsoft to better understand how customers deploy components, use features, and use services to achieve their business goals. Getting insights from that data helps prioritize engineering investments in areas that can directly impact our customers’ experiences and workloads.
+Telemetry also helps Microsoft to better understand how customers deploy components, use features, and use services to achieve their business goals. Getting insights from that data helps prioritize engineering investments in areas that can directly impact our customers' experiences and workloads.
 
 Some examples include customer usage of containers, storage, and networking configurations that are associated with Azure Stack roles. We also use the insights to drive improvements and intelligence into some of our management and monitoring solutions. This helps customers to diagnose quality issues and save money by making fewer support calls to Microsoft.
 
@@ -79,7 +79,7 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 
 The telemetry levels are cumulative and categorized into four levels (0-3):
 
-**0 (Security)**. Security data only. Information that’s required to help keep the operating system secure, including data about the Connected User Experience and Telemetry component settings and Windows Defender. No Azure Stack specific telemetry is emitted at this level.
+**0 (Security)**. Security data only. Information that's required to help keep the operating system secure, including data about the Connected User Experience and Telemetry component settings and Windows Defender. No Azure Stack specific telemetry is emitted at this level.
 
 **1 (Basic)**. Security data, and Basic Health and Quality data. Basic device information, including: quality-related data, app compatibility, app usage data, and data from the Security level. Setting your telemetry level to Basic enables Azure Stack telemetry. The data gathered at this level includes:
 

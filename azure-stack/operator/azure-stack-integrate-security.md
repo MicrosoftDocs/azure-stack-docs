@@ -6,10 +6,10 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 04/23/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.lastreviewed: 01/28/2019
+ms.lastreviewed: 04/23/2019
 keywords:
 ---
 
@@ -50,7 +50,7 @@ Set-SyslogServer [-ServerName <String>] [-ServerPort <String>] [-NoEncryption] [
 
 ### cmdlet to configure the certificate for the syslog client to authenticate with the server
 
-Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCertificate] 
+Set-SyslogClient [-pfxBinary <Byte[]>] [-CertPassword <SecureString>] [-RemoveCertificate] [-OutputSeverity]
 ```
 #### Cmdlets parameters
 
@@ -73,7 +73,7 @@ Parameters for *Set-SyslogClient* cmdlet:
 | *pfxBinary* | pfx file containing the certificate to be used by the client as identity to authenticate against the syslog server  | Byte[] |
 | *CertPassword* |  Password to import the private key that is associated with the pfx file | SecureString |
 |*RemoveCertificate* | Remove certificate from the client | flag|
-
+| *OutputSeverity* | Level of output logging. Values are **Default** or **Verbose**. Default includes severity levels warning, critical, or error. Verbose includes all severity levels - verbose, informational, warning, critical, or error  | String |
 ### Configuring syslog forwarding with TCP, mutual authentication, and TLS 1.2 encryption
 
 In this configuration, the syslog client in Azure Stack forwards the messages to the syslog server over TCP, with TLS 1.2 encryption. During the initial handshake, the client verifies that the server provides a valid, trusted certificate; similarly, the client also provides a certificate to the server as proof of its identity. This configuration is the most secure as it provides a full validation of the identity of both the client and the server and it sends messages over an encrypted channel. 

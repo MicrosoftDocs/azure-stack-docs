@@ -40,14 +40,14 @@ After you create a subscription for a user, they can sign in to the user portal 
 1. In the Admin portal, go to **User subscriptions.**
 2. Select **Add**. Under **New user subscription**, enter the following information:  
 
-   - **Display name** – A friendly name for identifying the subscription that appears as the *User subscription name*.
-   - **User** – Specify a user from an available directory tenant for this subscription. The user name appears as *Owner*.  The format of the user name depends on your identity solution. For example:
+   - **Display name** - A friendly name for identifying the subscription that appears as the *User subscription name*.
+   - **User** - Specify a user from an available directory tenant for this subscription. The user name appears as *Owner*.  The format of the user name depends on your identity solution. For example:
 
      - **Azure AD:** `<user1>@<contoso.onmicrosoft.com>`
 
      - **AD FS:** `<user1>@<azurestack.local>`
 
-   - **Directory tenant** –  Select the directory tenant where the user account belongs. If you haven't enabled multi-tenancy, only your local directory tenant is available.
+   - **Directory tenant** -  Select the directory tenant where the user account belongs. If you haven't enabled multi-tenancy, only your local directory tenant is available.
 
 3. Select **Offer**. Under **Offers**, choose an **Offer** for this subscription. Because you're creating the subscription for a user, select **Private** as the Accessibility state.
 

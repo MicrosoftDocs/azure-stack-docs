@@ -152,7 +152,7 @@ Use of the following command to deploy the cognitive service containers
 ```
 Use of the following command to monitor how it deploys: 
 ```bash  
-    Kubectl get pod – watch
+    Kubectl get pod - watch
 ```
 
 ## Test the cognitive service
