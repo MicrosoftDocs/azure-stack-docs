@@ -6,7 +6,7 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 05/02/2019
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 03/04/2019
@@ -14,6 +14,7 @@ ms.lastreviewed: 03/04/2019
 ---
 
 # Azure Stack datacenter integration - Identity
+
 You can deploy Azure Stack using Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS) as the identity providers. You must make the choice before you deploy Azure Stack. In a connected scenario, you can choose Azure AD or AD FS. For a disconnected scenario, only AD FS is supported.
 
 > [!IMPORTANT]
@@ -52,8 +53,8 @@ The following information is required as inputs for the automation parameters:
 
 |Parameter|Description|Example|
 |---------|---------|---------|
-|CustomADGlobalCatalog|FQDN of the target Active Directory forest<br>that you want to integrate with|Contoso.com|
-|CustomADAdminCredentials|A user with LDAP Read permission|YOURDOMAIN\graphservice|
+|`CustomADGlobalCatalog`|FQDN of the target Active Directory forest<br>that you want to integrate with|Contoso.com|
+|`CustomADAdminCredentials`|A user with LDAP Read permission|YOURDOMAIN\graphservice|
 
 ### Configure Active Directory Sites
 
@@ -97,6 +98,13 @@ For this procedure, use a computer in your datacenter network that can communica
 
    > [!IMPORTANT]
    > Wait for the credentials pop-up (Get-Credential is not supported in the privileged endpoint) and enter the Graph Service Account credentials.
+
+3. The **Register-DirectoryService** cmdlet has optional parameters that you can use in certain scenarios where the existing Active Directory validation fails. When this cmdlet is executed, it validates that the provided domain is the root domain, a global catalog server can be reached, and the provided account grants read access.
+
+   |Parameter|Description|
+   |---------|---------|
+   |`-SkipRootDomainValidation`|Specifies that a child domain must be used, rather than the recommended root domain.|
+   |`-Force`|Bypasses all validation checks.|
 
 #### Graph protocols and ports
 
