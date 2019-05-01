@@ -53,8 +53,8 @@ The following information is required as inputs for the automation parameters:
 
 |Parameter|Description|Example|
 |---------|---------|---------|
-|CustomADGlobalCatalog|FQDN of the target Active Directory forest<br>that you want to integrate with|Contoso.com|
-|CustomADAdminCredentials|A user with LDAP Read permission|YOURDOMAIN\graphservice|
+|`CustomADGlobalCatalog`|FQDN of the target Active Directory forest<br>that you want to integrate with|Contoso.com|
+|`CustomADAdminCredentials`|A user with LDAP Read permission|YOURDOMAIN\graphservice|
 
 ### Configure Active Directory Sites
 
@@ -103,8 +103,8 @@ For this procedure, use a computer in your datacenter network that can communica
 
    |Parameter|Description|
    |---------|---------|
-   |-SkipRootDomainValidation|Specifies that a child domain must be used, rather than the recommended root domain.|
-   |-Force|Bypasses all validation checks.|
+   |`-SkipRootDomainValidation`|Specifies that a child domain must be used, rather than the recommended root domain.|
+   |`-Force`|Bypasses all validation checks.|
 
 #### Graph protocols and ports
 
