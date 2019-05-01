@@ -46,7 +46,7 @@ After ensuring that your development kit host computer meets the basic requireme
 6. Copy or move the CloudBuilder.vhdx file to the root of the C:\ drive (C:\CloudBuilder.vhdx) on the ASDK host computer.
 
 > [!NOTE]
-> After you extract the files, you can delete the .EXE and .BIN files to recover hard disk space. Or, you can back up these files so that you don’t need to download the files again if you need to redeploy the ASDK.
+> After you extract the files, you can delete the .EXE and .BIN files to recover hard disk space. Or, you can back up these files so that you don't need to download the files again if you need to redeploy the ASDK.
 
 
 ## Next steps

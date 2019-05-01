@@ -143,7 +143,7 @@ Next, create the network resources in Azure Stack.
 
 ### Sign in as a user
 
-A service administrator can sign in as a user to test the plans, offers, and subscriptions that their users might use. If you don’t already have one, [create a user account](../operator/azure-stack-add-new-user-aad.md) before you sign in.
+A service administrator can sign in as a user to test the plans, offers, and subscriptions that their users might use. If you don't already have one, [create a user account](../operator/azure-stack-add-new-user-aad.md) before you sign in.
 
 ### Create the virtual network and a VM subnet
 
@@ -259,8 +259,8 @@ address of the virtual machine on the remote subnet, not the VIP.
 
    ```powershell
    New-NetFirewallRule `
-    –DisplayName “Allow ICMPv4-In” `
-    –Protocol ICMPv4
+    -DisplayName "Allow ICMPv4-In" `
+    -Protocol ICMPv4
    ```
 
 ### Sign in to the tenant VM in Azure
@@ -277,8 +277,8 @@ address of the virtual machine on the remote subnet, not the VIP.
 
    ```powershell
    New-NetFirewallRule `
-    –DisplayName “Allow ICMPv4-In” `
-    –Protocol ICMPv4
+    -DisplayName "Allow ICMPv4-In" `
+    -Protocol ICMPv4
    ```
 
 10. From the virtual machine in Azure, ping the virtual machine in Azure Stack, through the tunnel. To do this, you ping the DIP that you recorded from Azs-VM. In the example environment, this is **10.1.0.4**, but be sure to ping the address you noted in your lab. You should see a result that looks like the following screen capture:

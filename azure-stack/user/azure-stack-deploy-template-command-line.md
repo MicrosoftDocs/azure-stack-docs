@@ -35,7 +35,7 @@ Use the command line to deploy Azure Resource Manager templates in the Azure Sta
 Navigate to the folder into which these files were downloaded, and run the following command to deploy the template:
 
 ```azurecli
-az group create "cliRG" "local" –f azuredeploy.json –d "testDeploy" –e azuredeploy.parameters.json
+az group create "cliRG" "local" -f azuredeploy.json -d "testDeploy" -e azuredeploy.parameters.json
 ```
 
 This command deploys the template to the resource group **cliRG** in the Azure Stack POC default location.

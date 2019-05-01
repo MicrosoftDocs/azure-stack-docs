@@ -106,7 +106,7 @@ The following steps describe what's required to configure authentication:
 
 1. Create a Service Principal, or use an existing Service Principal.
 2. Create Authentication keys for the Service Principal.
-3. Validate the Azure Stack Subscription via Role-Based Access Control to allow the Service Principal Name (SPN) to be part of the Contributor’s role.
+3. Validate the Azure Stack Subscription via Role-Based Access Control to allow the Service Principal Name (SPN) to be part of the Contributor's role.
 4. Create a new Service Definition in Azure DevOps Services using the Azure Stack endpoints and SPN information.
 
 ### Create a Service Principal
