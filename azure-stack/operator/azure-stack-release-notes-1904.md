@@ -156,6 +156,9 @@ Before applying the update, make sure to review the following information:
 - [Security updates](azure-stack-release-notes-security-updates-1904.md)
 - [Checklist of activities before and after applying the update](azure-stack-release-notes-checklist.md)
 
+> [!NOTE]
+> Make sure to use the latest version of the [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) tool to perform your workload planning and sizing. The latest version contains bug fixes and provides new features that are released with each Azure Stack update.
+
 ## Download the update
 
 You can download the Azure Stack 1904 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
