@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 04/13/2019
+ms.date: 05/01/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 04/13/2019
+ms.lastreviewed: 05/01/2019
 ---
 
 # Install PowerShell for Azure Stack
@@ -94,7 +94,18 @@ Installation has three steps:
 
 Run the following PowerShell script to install these modules on your development workstation:
 
-- Azure Stack version 1901 or later, only install the two modules below:
+For 1904 builds or later:
+
+    ```powershell  
+    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
+    Install-Module -Name AzureRM.BootStrapper
+    
+    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
+    Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
+    Install-Module -Name AzureStack -RequiredVersion 1.7.2
+    ```
+  
+- Azure Stack version 1903 or earlier, only install the two modules below:
 
     ```powershell  
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
@@ -120,21 +131,6 @@ Run the following PowerShell script to install these modules on your development
 
     Install-Module -Name AzureStack -RequiredVersion 1.6.0
     ```
-
-- Azure Stack 1810 or earlier, install the profile using **AzureRM.Bootstrapper**:
-
-    ```powershell  
-    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
-    Install-Module -Name AzureRM.BootStrapper
-
-    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-    Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
-
-    Install-Module -Name AzureStack -RequiredVersion 1.5.0
-    ```
-
-> [!Note]  
-> To upgrade Azure PowerShell from the **2017-03-09-profile** to **2018-03-01-hybrid**, please see the [Migration guide](https://github.com/azure/azure-powershell/blob/AzureRM/documentation/migration-guides/Stack/migration-guide.2.3.0.md).
 
 ### Enable additional storage features
 
