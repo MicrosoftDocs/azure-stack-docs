@@ -62,9 +62,9 @@ Hotfixes are downloaded and installed just like the regular full update packages
 
 ## Keep your system under support
 
-To continue to receive support, you must keep your Azure Stack deployment current. The deferral policy for updates is: For your Azure Stack deployment to remain in support, it must run the most recently released update version or run either of the two preceding update versions. Hotfixes are not considered major update versions. If your Azure Stack cloud is behind by *more than two updates*, it's considered out of compliance and must update to at least the minimum supported version to receive support.
+To continue to receive support, you must keep your Azure Stack deployment current. The deferral policy for updates is: for your Azure Stack deployment to remain in support, it must run the most recently released update version or run either of the two preceding update versions. Hotfixes are not considered major update versions. If your Azure Stack cloud is behind by *more than two updates*, it's considered out of compliance and must update to at least the minimum supported version to receive support.
 
-For example, if the most recently available update version is 1805, and the previous two update packages were versions 1804 and 1803, both 1803 and 1804 remain in support. However, 1802 is out of support. The policy holds true when there is no release for a month or two. For example, if the current release is 1805 and there was no 1804 release, the previous two update packages of 1803 and 1802 remain in support.
+For example, if the most recently available update version is 1904, and the previous two update packages were versions 1903 and 1902, both 1902 and 1903 remain in support. However, 1901 is out of support. The policy holds true when there is no release for a month or two. For example, if the current release is 1807 and there was no 1806 release, the previous two update packages of 1805 and 1804 remain in support.
 
 Microsoft software update packages are non-cumulative and require the previous update package or hotfix as a prerequisite. If you decide to defer one or more updates, consider the overall runtime if you want to get  to the latest version.
 
