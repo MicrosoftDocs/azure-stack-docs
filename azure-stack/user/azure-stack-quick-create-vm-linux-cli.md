@@ -45,7 +45,7 @@ A resource group is a logical container where you can deploy and manage Azure St
 > [!NOTE]
 >  Values are assigned for all the variables in the code examples. However, you can assign new values if you want to.
 
-The following example creates a resource group named myResourceGroup in the local location.
+The following example creates a resource group named myResourceGroup in the local location: 
 
 ```cli
 az group create --name myResourceGroup --location local
@@ -53,7 +53,7 @@ az group create --name myResourceGroup --location local
 
 ## Create a virtual machine
 
-Create a virtual machine by using the [az vm create](/cli/azure/vm#az-vm-create) command. The following example creates a VM named myVM. This example uses Demouser for an administrative user name and Demouser@123 as the user password. Change these values to something that is appropriate for your environment.
+Create a virtual machine by using the [az vm create](/cli/azure/vm#az-vm-create) command. The following example creates a VM named myVM. This example uses Demouser for an admin username and Demouser@123 as the admin password. Change these values to something that is appropriate for your environment.
 
 ```cli
 az vm create \
@@ -65,11 +65,11 @@ az vm create \
   --location local
 ```
 
-The public IP address is returned in the **PublicIpAddress** parameter. Write down this address because you need it to access the virtual machine.
+The public IP address is returned in the **PublicIpAddress** parameter. Write down this address because you need it to use the virtual machine.
 
 ## Open port 80 for web traffic
 
-Because this virtual machine is going to run the IIS web server, you need to open port 80 to Internet traffic. Use the [az vm open-port](/cli/azure/vm) command to open the desired port.
+Because this virtual machine is going to run the IIS web server, you need to open port 80 to internet traffic. Use the [az vm open-port](/cli/azure/vm) command to open the desired port: 
 
 ```cli
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
