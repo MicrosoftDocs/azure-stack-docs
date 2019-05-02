@@ -25,7 +25,7 @@ The following architectural diagram shows the different network layers and ACLs:
 
 A set of infrastructure VIPs is required for publishing Azure Stack endpoints to external networks. The *Endpoint (VIP)* table shows each endpoint, the required port, and protocol. Refer to the specific resource provider deployment documentation for endpoints that require additional resource providers, such as the SQL resource provider.
 
-Internal infrastructure VIPs aren't listed because they’re not required for publishing Azure Stack.
+Internal infrastructure VIPs aren't listed because they're not required for publishing Azure Stack.
 
 > [!Note]  
 > User VIPs are dynamic, defined by the users themselves with no control by the Azure Stack operator.

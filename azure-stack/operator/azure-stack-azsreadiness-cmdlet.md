@@ -206,7 +206,7 @@ $PaaSCertificates = @{
     'PaaSFTPCert' = @{'pfxPath' = '<Path to FTP PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
     'PaaSSSOCert' = @{'pfxPath' = '<Path to SSO PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
 }
-Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates – RegionName east -FQDN azurestack.contoso.com
+Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates - RegionName east -FQDN azurestack.contoso.com
 ```
 
 In this example, a hashtable is constructed with paths and passwords to each PaaS certificate. Certificates can be omitted. `Start-AzsReadinessChecker` checks that each PFX path exists, and validates them using the region **east** and external FQDN **azurestack.contoso.com**.

@@ -27,7 +27,7 @@ This article describes the general process to replace a physical disk in Azure S
 
 You can use this procedure for integrated systems, and for development kit deployments that have hot-swappable disks.
 
-Actual disk replacement steps will vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor’s field replaceable unit (FRU) documentation for detailed steps that are specific to your system.
+Actual disk replacement steps will vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor's field replaceable unit (FRU) documentation for detailed steps that are specific to your system.
 
 ## Review disk alert information
 When a disk fails, you receive an alert that tells you that connectivity has been lost to a physical disk.
@@ -38,7 +38,7 @@ If you open the alert, the alert description contains the scale unit node and th
 
 ## Replace the disk
 
-Follow your OEM hardware vendor’s FRU instructions for actual disk replacement.
+Follow your OEM hardware vendor's FRU instructions for actual disk replacement.
 
 > [!note]
 > Replace disks for one scale unit node at a time. Wait for the virtual disk repair jobs to complete before moving on to the next scale unit node

@@ -71,7 +71,7 @@ Make sure you replace the following script variables with values from your Azure
 
 ## Register resource providers
 
-Resource providers aren’t automatically registered for new user subscriptions that don’t have any resources deployed through the portal. You can explicitly register a resource provider by running the following script:
+Resource providers aren't automatically registered for new user subscriptions that don't have any resources deployed through the portal. You can explicitly register a resource provider by running the following script:
 
 ```powershell  
 foreach($s in (Get-AzureRmSubscription)) {
