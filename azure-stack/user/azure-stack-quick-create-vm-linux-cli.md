@@ -1,6 +1,6 @@
 ---
-title: Create a Linux virtual machine by using Azure CLI in Azure Stack | Microsoft Docs
-description: Create a Linux virtual machine with CLI in Azure Stack.
+title: Create a Linux virtual machine using Azure CLI in Azure Stack | Microsoft Docs
+description: Create a Linux virtual machine using CLI in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,7 +18,7 @@ ms.custom: mvc
 ms.lastreviewed: 01/14/2019
 ---
 
-# Quickstart: create a Linux server virtual machine by using Azure CLI in Azure Stack
+# Quickstart: Create a Linux server virtual machine using Azure CLI in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
