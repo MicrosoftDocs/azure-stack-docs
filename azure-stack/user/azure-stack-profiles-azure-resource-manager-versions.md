@@ -3,7 +3,7 @@ title: Resource provider API versions supported by profiles in Azure Stack | Mic
 description: Learn about the Azure Resource Manager API versions supported by profiles in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mabrigg
+author: mattbriggs
 manager: femila
 
 ms.service: azure-stack
@@ -47,7 +47,7 @@ For an explanation of API profiles and version release cadence for Azure Stack, 
 | Microsoft.Authorization (policy operations) | 2016-09-01 |
 | Microsoft.Insights | 2018-01-01 |
 
-For a list of the versions for each resource type for the providers in the API profile, see [Details for the 2018-03-01-hybrid](#details-for-the-2018-03-01-hybrid) profile.
+For a list of the versions for each resource type for the providers in the API profile, see [Details for the 2019-03-01-hybrid](#details-for-the-2019-03-01-hybrid) profile.
 
 ## Details for the 2019-03-01-hybrid
 

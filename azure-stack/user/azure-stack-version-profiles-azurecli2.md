@@ -360,7 +360,7 @@ If you are using the ASDK, you will need to trust the CA root certificate on you
 
 Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
 
-1. Find the certificate location on your machine. The location may vary depending on where you have installed Python. You will need to have pip and the certifi [module installed](#install-python-on-linux). You can use the following Python command from the bash prompt:
+1. Find the certificate location on your machine. The location may vary depending on where you have installed Python. You will need to have pip and the certifi module installed. You can use the following Python command from the bash prompt:
 
     ```bash  
     python3 -c "import certifi; print(certifi.where())"
@@ -471,7 +471,7 @@ If you are using the ASDK, you will need to trust the CA root certificate on you
 
 Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
 
-1. Find the certificate location on your machine. The location may vary depending on where you have installed Python. You will need to have pip and the certifi [module installed](#install-python-on-linux). You can use the following Python command from the bash prompt:
+1. Find the certificate location on your machine. The location may vary depending on where you have installed Python. You will need to have pip and the certifi module installed. You can use the following Python command from the bash prompt:
 
     ```bash  
     python3 -c "import certifi; print(certifi.where())"
