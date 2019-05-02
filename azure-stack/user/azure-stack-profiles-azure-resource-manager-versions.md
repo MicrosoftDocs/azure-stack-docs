@@ -163,7 +163,6 @@ Azure Resource Manager lets you deploy and manage the infrastructure for your Az
 
 | Resource Types | API Versions |
 |-----------------------------------------|-------------------|
-
 | Deployments | 2018-05-01 |
 | Deployments/operations | 2018-05-01 |
 | Links | 2018-05-01 |

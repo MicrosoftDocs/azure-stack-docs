@@ -94,7 +94,7 @@ Installation has three steps:
 
 Run the following PowerShell script to install these modules on your development workstation:
 
-For 1904 builds or later:
+- For 1904 builds or later:
 
     ```powershell  
     # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
