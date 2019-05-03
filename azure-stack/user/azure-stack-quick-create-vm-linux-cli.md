@@ -99,13 +99,13 @@ apt-get -y install nginx
 
 ## View the NGINX welcome page
 
-With NGINX installed, and port 80 open on your virtual machine, you can access the web server using the virtual machine's public IP address. Open a web browser, and browse to ```http://<public IP address>```.
+With NGINX installed, and port 80 open on your virtual machine, you can access the web server using the virtual machine's public IP address. Open a browser, and go to ```http://<public IP address>```.
 
 ![NGINX web server Welcome page](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
 
 ## Clean up resources
 
-Clean up the resources that you don't need any longer. You can use the [az group delete](/cli/azure/group#az-group-delete) command to remove these resources. To delete the resource group and all its resources, run the following command:
+Clean up the resources that you don't need any longer. You can use the [az group delete](/cli/azure/group#az-group-delete) command to delete these resources. To delete the resource group and all its resources, run the following command:
 
 ```cli
 az group delete --name myResourceGroup
