@@ -205,7 +205,7 @@ New-AzureRmVM `
 ## Quick Create virtual machine - Full script
 
 > [!NOTE]
-> This is essentially the code above merged, but with a password rather than SSH key for authentication.
+> This is essentially the code above merged together, but with a password rather than SSH key for authentication.
 
 ```powershell
 ## Create a resource group
