@@ -45,7 +45,7 @@ You can create an Ubuntu Server 16.04 LTS virtual machine by using Azure Stack P
 A resource group is a logical container where you can deploy and manage Azure Stack resources. From your development kit or the Azure Stack integrated system, run the following code block to create a resource group. 
 
 > [!NOTE]
->  Values are assigned for all variables in the code examples. However, you can assign new values if you want to.
+> Values are assigned for all variables in the code examples. However, you can assign new values if you want to.
 
 ```powershell  
 # Create variables to store the location and resource group names.
@@ -205,7 +205,7 @@ New-AzureRmVM `
 ## Quick Create virtual machine - Full script
 
 > [!NOTE]
-> It is more or less the code above merged, but with a password rather than SSH key for authentication.
+> This is essentially the code above merged, but with a password rather than SSH key for authentication.
 
 ```powershell
 ## Create a resource group
@@ -373,7 +373,7 @@ New-AzureRmVM `
 
 ## Connect to the virtual machine
 
-After the virtual machine is deployed, configure an SSH connection for the virtual machine. Use the [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) command to return the public IP address of the virtual machine.
+After the virtual machine is deployed, configure an SSH connection for the virtual machine. Use the [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) command to get the public IP address of the virtual machine.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
@@ -403,7 +403,7 @@ apt-get -y install nginx
 
 ## View the NGINX welcome page
 
-With NGINX installed, and port 80 open on your virtual machine, you can access the web server using the virtual machine's public IP address. Open a web browser, and browse to ```http://<public IP address>```.
+With NGINX installed, and port 80 open on your virtual machine, you can access the web server using the virtual machine's public IP address. Open a web browser, and go to ```http://<public IP address>```.
 
 ![NGINX web server Welcome page](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
 

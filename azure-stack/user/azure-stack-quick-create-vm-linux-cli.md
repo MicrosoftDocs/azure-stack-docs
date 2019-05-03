@@ -43,7 +43,7 @@ You can create a Ubuntu Server 16.04 LTS virtual machine by using the Azure CLI.
 A resource group is a logical container where you can deploy and manage Azure Stack resources. From your development kit or the Azure Stack integrated system, run the [az group create](/cli/azure/group#az-group-create) command to create a resource group.
 
 > [!NOTE]
->  Values are assigned for all variables in the code examples. However, you can assign new values if you want to.
+> Values are assigned for all variables in the code examples. However, you can assign new values if you want to.
 
 The following example creates a resource group named myResourceGroup in the local location: 
 
@@ -105,7 +105,7 @@ With NGINX installed, and port 80 open on your virtual machine, you can access t
 
 ## Clean up resources
 
-Clean up the resources that you don't need any longer. You can use the [az group delete](/cli/azure/group#az-group-delete) command to delete these resources. To delete the resource group and all its resources, run the following command:
+Clean up the resources that you don't need any longer. You can use the [az group delete](/cli/azure/group#az-group-delete) command to remove these resources. To delete the resource group and all its resources, run the following command:
 
 ```cli
 az group delete --name myResourceGroup
