@@ -1,6 +1,6 @@
 ---
-title: Create a Linux virtual machine by using PowerShell in Azure Stack | Microsoft Docs
-description: Create a Linux virtual machine with PowerShell in Azure Stack.
+title: Create a Linux virtual machine using PowerShell in Azure Stack | Microsoft Docs
+description: Create a Linux virtual machine using PowerShell in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,7 +18,7 @@ ms.custom: mvc
 ms.lastreviewed: 12/03/2018
 ---
 
-# Quickstart: Create a Linux server virtual machine by using PowerShell in Azure Stack
+# Quickstart: Create a Linux server virtual machine using PowerShell in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -42,7 +42,10 @@ You can create an Ubuntu Server 16.04 LTS virtual machine by using Azure Stack P
 
 ## Create a resource group
 
-A resource group is a logical container where you can deploy and manage Azure Stack resources. From your development kit or the Azure Stack integrated system, run the following code block to create a resource group. Values are assigned for all the variables in this document, you can use these values or assign new values.
+A resource group is a logical container where you can deploy and manage Azure Stack resources. From your development kit or the Azure Stack integrated system, run the following code block to create a resource group. 
+
+> [!NOTE]
+>  Values are assigned for all variables in the code examples. However, you can assign new values if you want to.
 
 ```powershell  
 # Create variables to store the location and resource group names.
