@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: 
-ms.date: 02/08/2019
+ms.date: 05/06/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
@@ -63,7 +63,7 @@ To configure the ASDK host computer to boot from CloudBuilder.vhdx:
 > Ensure that you have direct physical or KVM access to the development kit host computer before restarting it. When the VM first starts, it prompts you to complete Windows Server Setup. Provide the same administrator credentials you used to log into the development kit host computer. 
 
 ### Prepare the development kit host using PowerShell 
-After the development kit host computer successfully boots into the CloudBuilder.vhdx image, log in with the same local administrator credentials you used to log into the development kit host computer (and that you provided as part of finalizing Windows Server Setup when the host computer booted from VHD). 
+After the development kit host computer successfully boots into the CloudBuilder.vhdx image, sign in with the same local administrator credentials you used to log into the development kit host computer (and that you provided as part of finalizing Windows Server Setup when the host computer booted from VHD). 
 
 > [!NOTE]
 > Optionally, you can also configure [Azure Stack telemetry settings](asdk-telemetry.md#set-telemetry-level-in-the-windows-registry) *before* installing the ASDK.
@@ -91,7 +91,7 @@ Run the following PowerShell commands to deploy the development kit using Azure 
 
 A few minutes into ASDK installation you will be prompted for Azure AD credentials. You must provide global administrator credentials for your Azure AD tenant. 
 
-After deployment, Azure Active Directory global administrator permission is not required. However, some operations may require the global administrator credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily re-instate the account's global administrator permissions or use a separate global administrator account that is an owner of the *default provider subscription*.
+After deployment, Azure Active Directory global administrator permission is not required. However, some operations may require the global administrator credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily reinstate the account's global administrator permissions or use a separate global administrator account that is an owner of the *default provider subscription*.
 
 ### Deploy Azure Stack using AD FS 
 To deploy the development kit **using AD FS as the identity provider**, run the following PowerShell commands (you just need to add the -UseADFS parameter): 
@@ -143,9 +143,9 @@ If your environment does not have DHCP enabled, then you must include the follow
 |InfraAzureDirectoryTenantName|Required|Sets the tenant directory. Use this parameter to specify a specific directory where the AAD account has permissions to manage multiple directories. Full Name of an AAD Directory Tenant in the format of .onmicrosoft.com or an Azure AD verified custom domain name.|
 |TimeServer|Required|Use this parameter to specify a specific time server. This parameter must be provided as a valid time server IP address. Server names are not supported.|
 |InfraAzureDirectoryTenantAdminCredential|Optional|Sets the Azure Active Directory user name and password. These Azure credentials must be an Org ID.|
-|InfraAzureEnvironment|Optional|Select the Azure Environment with which you want to register this Azure Stack deployment. Options include Public Azure, Azure - China, Azure - US Government.|
+|InfraAzureEnvironment|Optional|Select the Azure Environment with which you want to register this Azure Stack deployment. Options include global Azure, Azure - China, Azure - US Government.|
 |DNSForwarder|Optional|A DNS server is created as part of the Azure Stack deployment. To allow computers inside the solution to resolve names outside of the stamp, provide your existing infrastructure DNS server. The in-stamp DNS server forwards unknown name resolution requests to this server.|
-|Rerun|Optional|Use this flag to rerun deployment. All previous input is used. Re-entering data previously provided is not supported because several unique values are generated and used for deployment.|
+|Rerun|Optional|Use this flag to rerun deployment. All previous input is used. Reentering data previously provided is not supported because several unique values are generated and used for deployment.|
 
 
 ## Perform post-deployment configurations
