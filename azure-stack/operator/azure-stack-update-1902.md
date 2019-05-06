@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2019
+ms.date: 05/06/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/20/2019
+ms.lastreviewed: 05/06/2019
 ---
 
 # Azure Stack 1902 update
@@ -119,6 +119,9 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 - Improvements hardware inventory collection in Get-AzureStackStampInformation.
 
 - To improve reliability of operations running on ERCS infrastructure, the memory for each ERCS instance increases from 8 GB to 12 GB. On an Azure Stack integrated systems installation, this results in a 12 GB increase overall.
+
+<!-- 110303935 IcM Reported by HKEX -->
+- 1902 fixes an issue in the Network Controllers VSwitch Service, in which all VMs on a specific node went offline.  The issue caused it to get stuck in a primary loss state, where the primary cannot be contacted but the role has not been failed over to another, healthy instance, which could only be resolved by contacting Microsoft support services.
 
 > [!IMPORTANT]
 > To make sure the patch and update process results in the least amount of tenant downtime, make sure your Azure Stack stamp has more than 12 GB of available space in the **Capacity** blade. You can see this memory increase reflected in the **Capacity** blade after a successful installation of the update.
