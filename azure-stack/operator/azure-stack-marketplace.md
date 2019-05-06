@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 05/07/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 01/09/2019
+ms.lastreviewed: 05/07/2019
 
 ---
 # Azure Stack Marketplace overview
@@ -32,7 +32,7 @@ As an Azure Stack operator, you decide which items to add (publish) to the Marke
 
 To open the Marketplace, in the administrator portal select **+ Create a resource**.
 
-![Marketplace](media/azure-stack-publish-custom-marketplace-item/image1.png)
+![Marketplace](media/azure-stack-marketplace/marketplace1.png)
 
 ## Marketplace items
 
@@ -44,7 +44,7 @@ Every Marketplace item has:
 * Metadata, such as strings, icons, and other marketing collateral.
 * Formatting information to display the item in the portal.
 
-Every item published to the Marketplace uses the Azure Gallery Package (.azpkg) format. Add deployment or runtime resources (code, zip files with software, or virtual machine images) to Azure Stack separately, not as part of the Marketplace item.
+Every item published to the Marketplace uses the Azure Gallery Package (.azpkg) format. Add deployment or runtime resources (code, .zip files with software, or virtual machine images) to Azure Stack separately, not as part of the Marketplace item.
 
 With version 1803 and later, Azure Stack converts images to sparse files when they download from Azure or when you upload custom images. This process adds time when adding an image, but saves space and speeds up the deployment of those images. Conversion only applies to new images. Existing images are not changed.
 
