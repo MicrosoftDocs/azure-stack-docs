@@ -74,31 +74,65 @@ ms.topic: hub-page
         </li>
         <li>
 </ul>
+
 <h2>Documentation sets</h2>
-<ul class="cardsM panelContent singlePanelContent cols cols3" style="display:flex!important;">
+<ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
     <li>
-        <a class="card" href="/azure-stack/operator/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
-            <div class="cardText">
-                <h3>Operator</h3>
-                <p>Documentation for operator tasks.</p>
-            </div>
-        </a>
+        <a href="/en-us/azure-stack/operator/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                     <img alt="" src="media/index/azure-stack.svg">
+                                 </div>
+                            </div>
+                            <div class="cardText x-hidden-focus">
+                                <h3>Operator</h3>
+                                <p>Documentation for operator tasks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
     </li>
     <li>
-        <a class="card" href="/azure-stack/user/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
-            <div class="cardText">
-                <h3>User</h3>
-                <p>Documentation for user tasks.</p>
-            </div>
-        </a>
+        <a href="/en-us/azure-stack/user/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                     <img alt="" src="media/index/azure-stack.svg">
+                                </div>
+                            </div>
+                            <div class="cardText">
+                                <h3 class="x-hidden-focus">User</h3>
+                                <p>Documentation for user tasks.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
     </li>
     <li>
-        <a class="card" href="/azure-stack/asdk/" data-linktype="external"><img class="cardImage" alt="" src="media/index/azure-stack.svg" data-linktype="external">
-            <div class="cardText">
-                <h3>Azure Stack Development Kit (ASDK)</h3>
-                <p>Documentation for operating/using in a non-production environment for evaluation.</p>
-            </div>
-        </a>
+        <a href="/en-us/azure-stack/asdk/">
+                <div class="cardSize">
+                    <div class="cardPadding">
+                        <div class="card">
+                            <div class="cardImageOuter">
+                                <div class="cardImage">
+                                      <img alt="" src="media/index/azure-stack.svg">
+                                 </div>
+                            </div>
+                            <div class="cardText">
+                                <h3>Azure Stack Development Kit (ASDK)</h3>
+                                <p>Documentation for operating/using in a non-production environment for evaluation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
     </li>
 </ul>
 
