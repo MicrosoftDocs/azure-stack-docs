@@ -32,7 +32,7 @@ As an Azure Stack operator, you decide which items to add (publish) to the Marke
 
 To open the Marketplace, in the administrator portal select **+ Create a resource**.
 
-![Marketplace](media/azure-stack-publish-custom-marketplace-item/image1.png)
+![Marketplace](media/azure-stack-marketplace/marketplace1.png)
 
 ## Marketplace items
 
