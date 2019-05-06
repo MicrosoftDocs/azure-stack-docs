@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 05/06/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
@@ -31,7 +31,7 @@ The steps in this article show you how to deploy the ASDK using a graphical user
 > The installer user interface for the Azure Stack Development Kit is an open-sourced script based on WCF and PowerShell.
 
 
-1. After the host computer successfully boots into the CloudBuilder.vhdx image, log in using the administrator credentials specified when you [prepared the development kit host computer](asdk-prepare-host.md) for ASDK installation. This should be the same as the development kit host local administrator credentials.
+1. After the host computer successfully boots into the CloudBuilder.vhdx image, sign in using the administrator credentials specified when you [prepared the development kit host computer](asdk-prepare-host.md) for ASDK installation. This should be the same as the development kit host local administrator credentials.
 2. Open an elevated PowerShell console and run the **&lt;drive letter>\AzureStack_Installer\asdk-installer.ps1** PowerShell script. Note that the script might now be on a different drive than C:\ in the CloudBuilder.vhdx image. Click **Install**.
 
     ![](media/asdk-install/1.PNG) 
@@ -40,7 +40,7 @@ The steps in this article show you how to deploy the ASDK using a graphical user
 
     ![](media/asdk-install/2.PNG) 
   
-   If you choose an Azure subscription identity provider, you need an internet connection, the full name of an Azure AD directory tenant in the form of *domainname*.onmicrosoft.com or an Azure AD verified custom domain name, and global admin credentials for the specified directory.<br><br>After deployment, Azure Active Directory global administrator permission is not required. However, some operations may require the global administrator credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily re-instate the account's global administrator permissions or use a separate global administrator account that is an owner of the *default provider subscription*.<br><br>When using AD FS as the identity provider, the default stamp directory service is used. The default account to sign in with is azurestackadmin@azurestack.local, and the password to use is the one you provided as part of setup.
+   If you choose an Azure subscription identity provider, you need an internet connection, the full name of an Azure AD directory tenant in the form of *domainname*.onmicrosoft.com or an Azure AD verified custom domain name, and global admin credentials for the specified directory.<br><br>After deployment, Azure Active Directory global administrator permission is not required. However, some operations may require the global administrator credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily reinstate the account's global administrator permissions or use a separate global administrator account that is an owner of the *default provider subscription*.<br><br>When using AD FS as the identity provider, the default stamp directory service is used. The default account to sign in with is azurestackadmin@azurestack.local, and the password to use is the one you provided as part of setup.
 
    > [!NOTE]
    > For best results, even if you want to use a disconnected Azure Stack environment using AD FS as the identity provider, it is best to install the ASDK while connected to the internet. That way, the Windows Server 2016 evaluation version included with the development kit installation can be activated at deployment time.
