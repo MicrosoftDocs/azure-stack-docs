@@ -229,7 +229,7 @@ To check the VPN connection, create two VMs: one in Azure, and one in Azure Stac
 6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
 7. On the **Size** section, for this instance, select a virtual machine size, and then select **Select**.
 8. On the **Settings** section, accept the defaults. Make sure that the **Azs-VNet** virtual network is selected. Verify that the subnet is set to **10.1.0.0/24**. Then select **OK**.
-9. On the **Summary** section, review the settings, and then select *OK**.
+9. On the **Summary** section, review the settings, and then select **OK**.
 
 ## Test the connection
 
