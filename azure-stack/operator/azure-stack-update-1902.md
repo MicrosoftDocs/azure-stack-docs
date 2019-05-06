@@ -120,6 +120,9 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 
 - To improve reliability of operations running on ERCS infrastructure, the memory for each ERCS instance increases from 8 GB to 12 GB. On an Azure Stack integrated systems installation, this results in a 12 GB increase overall.
 
+<!-- 110303935 IcM Reported by HKEX -->
+- Fixed an issue in the Network Controllers VSwitch Service where all VMs on a specific node would go offline.  The issue would cause it to get stuck in a Primary Loss state where the primary cannot be contacted but the role has not been failed over to another, healthy instance, which could only be resolved by contacting Microsoft Support Services.  This issue has been fixed in 1902.
+
 > [!IMPORTANT]
 > To make sure the patch and update process results in the least amount of tenant downtime, make sure your Azure Stack stamp has more than 12 GB of available space in the **Capacity** blade. You can see this memory increase reflected in the **Capacity** blade after a successful installation of the update.
 
