@@ -51,10 +51,10 @@ Graph only supports integration with a single Active Directory forest. If multip
 
 The following information is required as inputs for the automation parameters:
 
-|Parameter|Description|Example|
-|---------|---------|---------|
-|`CustomADGlobalCatalog`|FQDN of the target Active Directory forest<br>that you want to integrate with|Contoso.com|
-|`CustomADAdminCredentials`|A user with LDAP Read permission|YOURDOMAIN\graphservice|
+|Parameter|Deployment Worksheet Parameter|Description|Example|
+|---------|---------|---------|---------|
+|`CustomADGlobalCatalog`|ADFS Forest FQDN|FQDN of the target Active Directory forest<br>that you want to integrate with|Contoso.com|
+|`CustomADAdminCredentials`| |A user with LDAP Read permission|YOURDOMAIN\graphservice|
 
 ### Configure Active Directory Sites
 
@@ -123,10 +123,10 @@ Graph service in Azure Stack uses the following protocols and ports to communica
 
 The following information is required as input for the automation parameters:
 
-|Parameter|Description|Example|
-|---------|---------|---------|
-|CustomAdfsName|Name of the claims provider.<br>It appears that way on the AD FS landing page.|Contoso|
-|CustomAD<br>FSFederationMetadataEndpointUri|Federation metadata link| https:\//ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
+|Parameter|Deployment Worksheet Parameter|Description|Example|
+|---------|---------|---------|---------|
+|CustomAdfsName|ADFS Provider Name|Name of the claims provider.<br>It appears that way on the AD FS landing page.|Contoso|
+|CustomAD<br>FSFederationMetadataEndpointUri|ADFS Metadata URI|Federation metadata link| https:\//ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
 
 
 ### Trigger automation to configure claims provider trust in Azure Stack
