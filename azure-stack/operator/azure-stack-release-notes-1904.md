@@ -45,6 +45,8 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
+- The 1904 update payload contains an update to components of Azure Stack that do not include the underlying operating system which hosts Azure Stack. This enables certain updates to be scoped. As a result, the expected time it takes for the 1904 update to complete is less (approx. 16 hours, but exact times can vary). This decrease in runtime is similar to 1903 update. However, subsequent updates may contain updates to the operating system, implying different runtimes. Future updates will provide similar guidance on the expected time the update takes to complete, depending on the payload included.
+
 - Significant improvements have been made to the Software Defined Networking (SDN) Stack in 1904. These improvements increase the overall servicing and reliability of the SDN stack in Azure Stack.
 
 - Added a notification in the administrator portal, when the currently logged in user does not have the necessary permissions, which enables the dashboard to load properly. It also contains a link to the documentation that explains which accounts have the appropriate permissions, depending on the identity provider used during deployment.
