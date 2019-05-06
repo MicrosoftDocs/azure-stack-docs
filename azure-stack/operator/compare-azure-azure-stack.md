@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/29/2019
+ms.date: 05/03/2019
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: 
@@ -55,8 +55,8 @@ In addition to the resource providers described above, there are additional PaaS
 
 - Service Fabric
 - Kubernetes Container Service
-- IoT Hub and Event Hub
-- Etherium Blockchain
+- IoT Hub and Event Hubs
+- Ethereum Blockchain
 - Cloud Foundry
 
 ### Example use cases for Azure Stack:

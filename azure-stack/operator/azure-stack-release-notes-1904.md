@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 05/06/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 05/02/2019
+ms.lastreviewed: 05/06/2019
 ---
 
 # Azure Stack 1904 update
@@ -44,6 +44,8 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
+
+- The 1904 update payload contains an update to components of Azure Stack that do not include the underlying operating system which hosts Azure Stack. This enables certain updates to be scoped. As a result, the expected time it takes for the 1904 update to complete is less (approximately 16 hours, but exact times can vary). This decrease in runtime is similar to the 1903 update. However, subsequent updates may contain updates to the operating system, implying different runtimes. Future updates will provide similar guidance on the expected time the update takes to complete, depending on the payload included.
 
 - Significant improvements have been made to the Software Defined Networking (SDN) Stack in 1904. These improvements increase the overall servicing and reliability of the SDN stack in Azure Stack.
 
