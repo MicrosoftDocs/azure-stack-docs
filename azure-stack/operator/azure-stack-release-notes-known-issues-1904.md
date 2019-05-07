@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 05/07/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 05/02/2019
+ms.lastreviewed: 05/07/2019
 ---
 
 # Azure Stack 1904 known issues
@@ -115,6 +115,11 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Applicable: This issue applies to all supported releases.
 - Cause: The Virtual Machine Scale Set (VMSS) creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack.
 - Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
+- Occurrence: Common
+
+- Applicable: This issue applies to all supported releases.
+- Cause: You cannot remove a scale set from the **Virtual Machine Scale Sets** blade.
+- Remediation: Select the scale set that you want to remove, then click the **Delete** button from the **Overview** pane.
 - Occurrence: Common
 
 ### Ubuntu SSH access
