@@ -24,17 +24,15 @@ Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility o
 
 Microsoft Azure is a consistent hybrid cloud. Azure allows you to reuse code developed in Azure and deploy your app to sovereign Azure clouds and Azure Stack. Applications that span clouds are also referred to as *hybrid applications*.
 
-Hybrid scenarios vary greatly with the resources that are available for development, and span considerations such as geography, security, Internet access, and other considerations. Although
-these scenarios cannot address your specific requirements, they can provide some key guidelines and
-examples for you to explore implementing hybrid solutions.
+Hybrid scenarios vary greatly with the resources that are available for development, and span considerations such as geography, security, Internet access, and other considerations. Although these scenarios can't address your specific requirements, they can provide some key guidelines and examples for you to explore implementing hybrid solutions.
 
 You can use the hybrid cloud to handle:
-- Sample tiered data
-- SQL Server in Azure and Azure Stack
-- Mongo database end-to-end deployments in Azure and Azure Stack
-- Microsoft Edge artificial intelligence inference void detection
+- Sample tiered data.
+- SQL Server in Azure and Azure Stack.
+- Mongo database end-to-end deployments in Azure and Azure Stack.
+- Microsoft Edge artificial intelligence inference void detection.
 
-## Step-by-Step tutorials
+## Step-by-step tutorials
 
 - [Deploy apps across both Azure and Azure Stack](azure-stack-solution-pipeline.md)
 - [Deploy apps to Azure Stack and Azure](azure-stack-solution-hybrid-identity.md)
