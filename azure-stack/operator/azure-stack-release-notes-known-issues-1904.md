@@ -113,7 +113,7 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Remediation: Recreate the storage account with the same name you used previously.
 - Occurrence: Common
 
-### Virtual machine scale set
+### Virtual Machine Scale Set
 
 #### CentOS
 
