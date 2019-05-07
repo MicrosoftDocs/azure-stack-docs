@@ -75,24 +75,27 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 ### Load Balancer
 
 #### Add Backend Pool
+
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, if you attempt to add a **Backend Pool** to a **Load Balancer**, the operation fails with the error message 'failed to update Load Balancer...'.
+- Cause: In the user portal, if you attempt to add a **Backend Pool** to a **Load Balancer**, the operation fails with the error message **Failed to update Load Balancer...**.
 - Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
 - Occurrence: Common
 
 #### Create Inbound NAT
+
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer**, the operation fails with the error message 'Failed to update Load Balancer...'.
+- Cause: In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer**, the operation fails with the error message **Failed to update Load Balancer...**.
 - Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
 - Occurrence: Common
 
-#### Create Load Balancer 
+#### Create Load Balancer
+
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, the **Create Load Balancer** window shows an option to create a **Standard** Load Balancer SKU. This option is not supported in Azure Stack.
-- Remediation: Use the Basic Load Balancer options instead.
+- Remediation: Use the Basic load balancer options instead.
 - Occurrence: Common
 
-### Public IP Address
+#### Public IP Address
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, the **Create Public IP Address** window shows an option to create a **Standard** SKU. The **Standard** SKU is not supported in Azure Stack.
@@ -112,10 +115,14 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 
 ### Virtual machine scale set
 
+#### CentOS
+
 - Applicable: This issue applies to all supported releases.
 - Cause: The Virtual Machine Scale Set (VMSS) creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack.
 - Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
 - Occurrence: Common
+
+#### Remove scale set
 
 - Applicable: This issue applies to all supported releases.
 - Cause: You cannot remove a scale set from the **Virtual Machine Scale Sets** blade.
