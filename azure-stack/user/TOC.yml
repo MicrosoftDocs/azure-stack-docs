@@ -27,7 +27,8 @@
         href: azure-stack-subscribe-services.md
       - name: Create a VM from a template
         href: azure-stack-create-vm-template.md
-    - name: Hybrid cloud patterns
+    - name: Hybrid cloud apps
+      href: azure-stack-hybrid-cloud-patterns.md
       items:
       - name: Deploy apps to Azure and Azure Stack
         href: azure-stack-solution-pipeline.md
