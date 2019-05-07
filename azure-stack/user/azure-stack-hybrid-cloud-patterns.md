@@ -48,4 +48,4 @@ You can use the hybrid cloud to handle:
 ## Next steps
 
 - Read the whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) to review pillars of software quality for designing, deploying, and operating hybrid applications.
-- [Set up a development environment on Azure Stack](azure-stack-dev-start) and [deploy your first app](azure-stack-dev-start-deploy-app) on Azure Stack.
+- [Set up a development environment on Azure Stack](azure-stack-dev-start.md) and [deploy your first app](azure-stack-dev-start-deploy-app.md) on Azure Stack.
