@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2019
+ms.date: 05/07/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.lastreviewed: 01/05/2019
+ms.lastreviewed: 05/07/2019
 
 ---
 
 # Resource provider API versions supported by profiles in Azure Stack
 
-You can find the resource provider and version numbers for each API profile used by Azure Stack in this article. The tables in this article list the versions supported for each resource provider and the API versions of the profiles. Each resource provider contains a set of resource types and specific version numbers.
+You can find the resource provider and version numbers for each API profile used by Azure Stack listed in this article. The tables in this article list the versions supported for each resource provider and the API versions of the profiles. Each resource provider contains a set of resource types and specific version numbers.
 
 The API profile uses three naming conventions:
 
- - **latest**
- - **yyyy-mm-dd-hybrid**
- - **yyyy-mm-dd-profile**
+- **latest**
+- **yyyy-mm-dd-hybrid**
+- **yyyy-mm-dd-profile**
 
 For an explanation of API profiles and version release cadence for Azure Stack, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md).
 
@@ -129,7 +129,6 @@ The Azure Compute APIs give you programmatic access to virtual machines and thei
 | Diagnostic Settings | 2017-05-01-preview |
 | Diagnostic Settings Categories | 2017-05-01-preview |
 
-
 ### Microsoft.KeyVault
 
 Managing your key vaults as well as the keys, secrets, and certificates within your key vaults. For more information, see the [Azure Key Vault REST API reference](/rest/api/keyvault/).
@@ -195,7 +194,7 @@ Azure Resource Manager enables you to deploy and manage the infrastructure for y
 | Subscriptions/tagNames/tagValues | 2016-09-01 |
 | Tenants | 2017-08-01 |
 
-### Microsoft.Storage 
+### Microsoft.Storage
 
 The Storage Resource Provider (SRP) enables you to manage your storage account and keys programmatically. For more information, see the [Azure Storage Resource Provider REST API reference](/rest/api/storagerp/).
 
@@ -305,5 +304,5 @@ The Storage Resource Provider (SRP) enables you to manage your storage account a
 
 ## Next steps
 
-* [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md)
-* [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md)  
+- [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md)
+- [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md)  
