@@ -11,10 +11,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
-ms.author: mattbriggs
+ms.date: 05/08/2019
+ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 05/02/2019
+ms.lastreviewed: 05/08/2019
 
 ---
 
@@ -24,9 +24,9 @@ You can find the resource provider and version numbers for each API profile used
 
 The API profile uses three naming conventions:
 
- - **latest**
- - **yyyy-mm-dd-hybrid**
- - **yyyy-mm-dd-profile**
+- **latest**
+- **yyyy-mm-dd-hybrid**
+- **yyyy-mm-dd-profile**
 
 For an explanation of API profiles and version release cadence for Azure Stack, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md).
 
@@ -123,7 +123,6 @@ The Azure Compute APIs give you programmatic access to virtual machines and thei
 | Diagnostic Settings | 2017-05-01-preview |
 | Diagnostic Settings Categories | 2017-05-01-preview |
 
-
 ### Microsoft.KeyVault
 
 Manage your Key Vault as well as the keys, secrets, and certificates within your Key Vault. For more information, see the [Azure Key Vault REST API reference](/rest/api/keyvault/).
@@ -182,7 +181,7 @@ Azure Resource Manager lets you deploy and manage the infrastructure for your Az
 | Subscriptions/tagNames/tagValues | 2018-05-01 |
 | Tenants | 2016-06-01 |
 
-### Microsoft.Storage 
+### Microsoft.Storage
 
 The Storage Resource Provider (SRP) lets you manage your storage account and keys programmatically. For more information, see the [Azure Storage Resource Provider REST API reference](/rest/api/storagerp/).
 

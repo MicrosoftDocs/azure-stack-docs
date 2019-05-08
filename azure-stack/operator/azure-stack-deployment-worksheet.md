@@ -43,7 +43,7 @@ For each release of the deployment worksheet, you must perform a one-time instal
 2. In the PowerShell window, install the module from the [PowerShell gallery](https://www.powershellgallery.com/packages/Azs.Deployment.Worksheet/):
 
    ```PowerShell
-   Install-Module -Name Azs.Deployment.Worksheet -RequiredVersion 1.1902.TBD.1 -Repository PSGallery
+   Install-Module -Name Azs.Deployment.Worksheet -Repository PSGallery
    ```
 
 If you receive a message about installing from an untrusted repository, press **Y** to continue installation.
