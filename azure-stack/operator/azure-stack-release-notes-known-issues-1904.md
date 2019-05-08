@@ -1,5 +1,5 @@
 ---
-title: Azure Stack release notes - known issues in 1904 | Microsoft Docs
+title: Azure Stack 1904 known issues | Microsoft Docs
 description: Learn about known issues in Azure Stack 1904.
 services: azure-stack
 documentationcenter: ''
