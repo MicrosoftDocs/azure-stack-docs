@@ -24,7 +24,7 @@ ms.lastreviewed: 05/08/2019
 
 To work with your cloud, you must install Azure Stack compatible PowerShell modules. Compatibility is enabled through a feature called *API profiles*.
 
-API profiles provide a way to manage version differences between Azure and Azure Stack. An API version profile is a set of Azure Resource Manager PowerShell modules with specific API versions. Each cloud platform has a set of supported API version profiles. For example, Azure Stack supports a specific profile version such as **2018-03-01-hybrid**. When you install a profile, the Azure Resource Manager PowerShell modules that correspond to the specified profile are installed. Profiles are used for Azure Stack version 1811 or earlier. For Azure Stack version 1901 or later, developers can use AzureRM modules **2.4.0** to install the correct Azure Resource Manager PowerShell modules.
+API profiles provide a way to manage version differences between Azure and Azure Stack. An API version profile is a set of Azure Resource Manager PowerShell modules with specific API versions. Each cloud platform has a set of supported API version profiles. For example, Azure Stack supports a specific profile version such as **2018-03-01-hybrid**. When you install a profile, the Azure Resource Manager PowerShell modules that correspond to the specified profile are installed. 
 
 You can install Azure Stack compatible PowerShell modules in Internet connected, partially connected, or disconnected scenarios. This article walks you through the detailed instructions for these scenarios.
 
