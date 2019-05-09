@@ -77,13 +77,13 @@ If you're using a Windows 10 machine, you can work with PowerShell 5.0 and Visua
 
 ### Set up your tools 
 
-1. Get set up with PowerShell. For instruction, follow the steps in [Install Azure Stack Powershell](../operator/azure-stack-powershell-install.md). 
+1. Get set up with PowerShell. For instructions, see [Install Azure Stack Powershell](../operator/azure-stack-powershell-install.md). 
 
-2. Download Azure Stack Tools. For instructions, follow the steps in [Download Azure Stack tools from GitHub](../operator/azure-stack-powershell-download.md). 
+2. Download Azure Stack Tools. For instructions, see [Download Azure Stack tools from GitHub](../operator/azure-stack-powershell-download.md). 
 
 3. If you're using an ASDK, install and configure a [VPN connection to Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). 
 
-4. Install and configure Azure CLI. For instructions, follow the steps in [Use API version profiles with Azure CLI in Azure Stack](azure-stack-version-profiles-azurecli2.md). 
+4. Install and configure Azure CLI. For instructions, see [Use API version profiles with Azure CLI in Azure Stack](azure-stack-version-profiles-azurecli2.md). 
 
 5. Install and configure Azure storage explorer. Azure storage explorer is a standalone app that enables you to work with Azure Stack storage data. For instructions, follow the steps in [Connect storage explorer to an Azure Stack subscription or a storage account](azure-stack-storage-connect-se.md). 
 
@@ -112,7 +112,7 @@ A Linux machine will allow you to work with Azure CLI and Visual Studio Code, or
 
 ### Set up your tools 
 
-1. Install and configure Azure CLI. For instructions, follow the steps in [Use API version profiles with Azure CLI in Azure Stack](azure-stack-version-profiles-azurecli2.md). 
+1. Install and configure Azure CLI. For instructions, see [Use API version profiles with Azure CLI in Azure Stack](azure-stack-version-profiles-azurecli2.md). 
 
 2. Install and configure Azure storage explorer. Azure storage explorer is a standalone app that enables you to work with Azure Stack storage data. For instructions, follow the steps in [Connect storage explorer to an Azure Stack subscription or a storage account](azure-stack-storage-connect-se.md). 
 
@@ -141,7 +141,7 @@ A macOS machine will allow you to work with Azure CLI and Visual Studio Code, or
 
 ### Set up your tools 
 
-1. Install and configure Azure CLI. For instructions, follow the steps in [Use API version profiles with Azure CLI in Azure Stack](azure-stack-version-profiles-azurecli2.md). 
+1. Install and configure Azure CLI. For instructions, see [Use API version profiles with Azure CLI in Azure Stack](azure-stack-version-profiles-azurecli2.md). 
 
 2. Install and configure Azure storage explorer. Azure storage explorer is a standalone app that enables you to work with Azure Stack storage data. For instructions, follow the steps in [Connect storage explorer to an Azure Stack subscription or a storage account](azure-stack-storage-connect-se.md). 
 
