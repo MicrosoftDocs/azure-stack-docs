@@ -22,9 +22,9 @@ ms.lastreviewed: 01/25/2019
 
 Use the **Service Fabric Cluster** item from the Azure Marketplace to deploy a secured Service Fabric cluster in Azure Stack. 
 
-For more information about working with Service Fabric, see [Overview of Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) and [Service Fabric cluster security scenarios](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security), in the Azure documentation.
+For more information about working with Service Fabric, see [Overview of Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) and [Service Fabric cluster security scenarios](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) in the Azure documentation.
 
-The Service Fabric cluster in Azure Stack does not use the resource provider Microsoft.ServiceFabric. Rather, in Azure Stack, the Service Fabric cluster is a virtual machine scale set with preinstalled software set using [Desired State Configuration (DSC)](https://docs.microsoft.com/en-us/powershell/dsc/overview/overview).
+The Service Fabric cluster in Azure Stack doesn't use the resource provider Microsoft.ServiceFabric. Instead, in Azure Stack, the Service Fabric cluster is a virtual machine scale set with preinstalled software using [Desired State Configuration (DSC)](https://docs.microsoft.com/en-us/powershell/dsc/overview/overview).
 
 ## Prerequisites
 
@@ -38,8 +38,8 @@ The following are required to deploy the Service Fabric cluster:
      > [!NOTE]  
      > You can use a self-signed certificate inplace of the X.509 server certificate for test purposes. Self-signed certificates do not need to match the FQDN of the cluster.
 
-1. **Admin Client certificate** 
-   This is the certificate that the client will use to authenticate to the Service Fabric cluster, which can be self-signed. See [requirements](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) for creating this client cert.
+1. **Admin Client certificate**  
+   This is the certificate that the client uses to authenticate to the Service Fabric cluster, which can be self-signed. See [requirements](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) for creating this client cert.
 
 1. **The following items must be available in the Azure Stack Marketplace:**
     - **Windows Server 2016** - The template uses the Windows Server 2016 image to create the cluster.  
@@ -183,7 +183,7 @@ You can access the Service Fabric cluster by using either the Service Fabric Exp
 1. To find the URL for the Service Fabric Explorer, and the Client connection endpoint, review the results of the Template deployment.
 
 1. In your browser, go to <https://*FQDN*:19080>. Replace *FQDN* with the FQDN of your Service Fabric cluster from step 2.   
-   If you've used a self-signed certificate, you'll get a warning that the connection is not secure. To proceed to the web site, select **More Information**, and then **Go on to the webpage**. 
+   If you've used a self-signed certificate, you'll get a warning that the connection isn't secure. To proceed to the web site, select **More Information**, and then **Go on to the webpage**. 
 
 1. To authenticate to the site, you must select a certificate to use. Select **More choices**, pick the appropriate certificate, and then click **OK** to connect to the Service Fabric Explorer. 
 
