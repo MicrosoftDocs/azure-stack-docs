@@ -137,8 +137,8 @@ PowerShell](azure-stack-key-vault-manage-powershell.md).
 
    For the *Admin Client Certificate Thumbprint*, enter the thumbprint of the *Admin Client certificate*. (See the [prerequisites](#prerequisites).)
    
-   - Source Key Vault:  Specify entire *keyVault id* string from the script results. 
-   - Cluster Certificate URL: Specify the entire URL from the *Secret Id* from the script results. 
+   - Source Key Vault:  Specify entire `keyVault id` string from the script results. 
+   - Cluster Certificate URL: Specify the entire URL from the `Secret Id` from the script results. 
    - Cluster Certificate thumbprint: Specify the *Cluster Certificate Thumbprint* from the script results.
    - Admin Client Certificate Thumbprints: Specify the *Admin Client Certificate Thumbprint* created in the prerequisites. 
 
