@@ -119,7 +119,7 @@ To deploy the VM, follow the instructions in the next several sections.
 
     i. To add extensions to your VM, select **Extensions**. Extensions add new features, such as configuration management or antivirus protection, to your virtual machine. 
 
-    j. Disable or enable **Monitoring**. To help diagnose startup issues, you can use monitoring to capture serial console output and screenshots of a virtual machine that's running on a host. 
+    j. Disable or enable **Monitoring**. To help diagnose startup issues, you can use monitoring to capture the serial console output and screenshots of a virtual machine that's running on a host. 
 
     k. To specify the storage account that holds your metrics, select **diagnostics storage account**. Metrics are written to a storage account so that you can analyze them with your own tools. 
 
