@@ -136,6 +136,15 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
 - Occurrence: Common
 
+### Compute host agent alert
+
+- Applicable: This is a new issue with release 1904.
+- Cause: "Compute host agent" warning will appear after restarting a node in the scale-unit. The restart changes the default start-up setting for the compute host agent service.
+- Remediation: 
+  - This alert can be ignored. The agent not responding does not have any impact on operator and user operations or user applications. The alert will reappear after 24 hours if it is closed manually. 
+  - Microsoft support can remediate the issue by by changing the start-up setting for the service. This will require opening a support ticket. If the node is restarted again, a new alert will appear. 
+- Occurrence: Common
+
 ## Infrastructure backup
 
 <!--Bug 3615401 - scheduler config lost; new issue in YYMM;  hectorl-->
