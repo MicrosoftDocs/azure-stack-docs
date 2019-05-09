@@ -1,6 +1,6 @@
 --- 
 
-title: Set up a development environment on Azure Stack | Microsoft Docs 
+title: Set up a development environment in Azure Stack | Microsoft Docs 
 description: Get started developing applications for Azure Stack. 
 services: azure-stack 
 author: mattbriggs 
@@ -16,19 +16,19 @@ ms.lastreviewed: 04/24/2019
 
 --- 
 
-# Set up a development environment on Azure Stack 
+# Set up a development environment in Azure Stack 
 
 You can develop applications for Azure Stack by using a Windows 10, Linux, or macOS workstation. In this article, we look at: 
 
-- The various contexts in which your app runs on Azure Stack. 
-- The steps you can follow to get you set up with a Windows 10, Linux, or macOS workstation. 
+- The various contexts in which your app runs in Azure Stack. 
+- The steps to follow to get you set up with a Windows 10, Linux, or macOS workstation. 
 - The steps for creating resources in Azure Stack and deploy them to an app. 
 
 ## Azure Stack context and your code 
 
-You can write scripts and apps that can accomplish everything in Azure Stack. However, it can be helpful to limit your scope to the following three modes: 
+You can write scripts and apps to accomplish many tasks in Azure Stack. However, it's helpful to limit your scope to the following three modes: 
 
-1. In the first mode, you can create apps that provision resources in Azure Stack by using Azure Resource Manager templates. For example, you can write a script that constructs an Azure Resource Manager template that in turn creates a virtual network and the VMs that will host your app. 
+1. In the first mode, you can create apps that provision resources in Azure Stack by using Azure Resource Manager templates. For example, you might write a script that constructs an Azure Resource Manager template that in turn creates a virtual network and the VMs that will host your app. 
 
 2. In the second mode, you work directly with endpoints by using the REST API and a REST client that were created in your code. In this mode, you would write a script that creates a virtual network and the VMs by sending requests to the APIs. 
 
@@ -43,17 +43,17 @@ As a cloud platform product, Azure Stack supports both:
 
 Both IaaS and PaaS inform how to set up your development machine. 
 
-IaaS is the virtualization of the parts of the datacenter that come from network gear, the network, and servers. When you deploy an app to a VM that hosts the web server, you're working in an IaaS paradigm. In this paradigm, Azure Stack manages the virtual gear, and your app is on a virtual server. Azure Stack resource providers support network components and virtual servers. 
+IaaS is the virtualization of the parts of the datacenter that come from network gear, the network, and servers. When you deploy an app to a VM that hosts the web server, you're working in an IaaS model. In this model, Azure Stack manages the virtual gear, and your app is on a virtual server. Azure Stack resource providers support network components and virtual servers. 
 
-PaaS abstracts the infrastructure layer so that you deploy your app to an endpoint that then runs the app. In the PaaS paradigm, you might use containers to host your app and then deploy the containerized app to a service that runs the container. Alternatively, you might push your app directly to a service that runs the app. You can use Azure Stack to run Azure App Service and Kubernetes. 
+PaaS abstracts the infrastructure layer so that you deploy your app to an endpoint that then runs the app. In the PaaS model, you might use containers to host your app and then deploy the containerized app to a service that runs the container. Or you might push your app directly to a service that runs the app. You can use Azure Stack to run Azure App Service and Kubernetes. 
 
-### Azure Stack resource manager 
+### Azure Stack Resource Manager 
 
-The three previously mentioned modes, as well as PaaS or IaaS, are enabled by the Azure Stack version of the Azure Resource Manager. This management framework allows you to deploy, manage, and monitor Azure Stack resources. It lets you work with the resources as a group in a single operation. For more information about working with the Azure Stack resource manager, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md). 
+The three previously mentioned modes, as well as PaaS or IaaS, are enabled by the Azure Stack version of the Azure Resource Manager. This management framework allows you to deploy, manage, and monitor Azure Stack resources. It lets you work with the resources as a group in a single operation. For more information about working with the Azure Stack Resource Manager, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md). 
 
 ### Azure Stack development kits 
 
-Azure Stack uses an Azure Stack version of the Azure Resource Manager. To help you work with the Azure Stack resource manager by using your code of choice, we've provided a number of software development kits. These include: 
+Azure Stack uses an Azure Stack version of the Azure Resource Manager. To help you work with the Azure Stack Resource Manager by using your code of choice, we've provided a number of SDKs, including: 
 
 - [.NET/C#](azure-stack-version-profiles-net.md)
 - [Java](azure-stack-version-profiles-java.md)
@@ -73,7 +73,7 @@ If you have any questions about your Azure Stack, contact your cloud operator.
 
 ## Windows 10 
 
-A Windows 10 machine will allow you to work with PowerShell 5.0, Visual Studio, and if you're working with an ASDK connect to your environment with a VPN connection. 
+If you're using a Windows 10 machine, you can work with PowerShell 5.0 and Visual Studio. And if you're working with an ASDK, you can connect to your environment with a VPN connection. 
 
 ### Set up your tools 
 
@@ -95,7 +95,7 @@ A Windows 10 machine will allow you to work with PowerShell 5.0, Visual Studio, 
      - Visual Studio (.NET/C#). Download Visual Studio Community edition from [visualstudio.microsoft.com](https://visualstudio.microsoft.com/vs/community/). 
      - Eclipse (Java). Download Eclipse from [eclipse.org](https://www.eclipse.org/downloads/). 
 
-2. Install the software development kit (SDK) for your code. 
+2. Install the SDK for your code: 
 
      - [.NET/C#](azure-stack-version-profiles-net.md) 
      - [Java](azure-stack-version-profiles-java.md) 
@@ -124,7 +124,7 @@ A Linux machine will allow you to work with Azure CLI and Visual Studio Code, or
      - Visual Studio (.NET/C#). Download Visual Studio Community edition from [visualstudio.microsoft.com](https://visualstudio.microsoft.com/vs/community/). 
      - Eclipse (Java). Download Eclipse from [eclipse.org](https://www.eclipse.org/downloads/). 
 
-2. Install the software development kit (SDK) for your code. 
+2. Install the SDK for your code: 
 
      - [.NET/C#](azure-stack-version-profiles-net.md) 
      - [Java](azure-stack-version-profiles-java.md) 
@@ -153,7 +153,7 @@ A macOS machine will allow you to work with Azure CLI and Visual Studio Code, or
      - Visual Studio (.NET/C#). Download Visual Studio Community edition from [visualstudio.microsoft.com](https://visualstudio.microsoft.com/vs/community/). 
      - Eclipse (Java). Download Eclipse from [eclipse.org](https://www.eclipse.org/downloads/). 
 
-2. Install the software development kit (SDK) for your code. 
+2. Install the SDK for your code: 
 
      - [.NET/C#](azure-stack-version-profiles-net.md) 
      - [Java](azure-stack-version-profiles-java.md) 
@@ -163,4 +163,4 @@ A macOS machine will allow you to work with Azure CLI and Visual Studio Code, or
 
 ## Next steps 
 
-Deploy an app to resources in Azure Stack. You can find the steps in [Common deployments for Azure Stack](azure-stack-dev-start-deploy-app.md).
+To deploy an app to resources in Azure Stack, see [Common deployments for Azure Stack](azure-stack-dev-start-deploy-app.md).
