@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/30/2018
+ms.date: 05/09/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 12/04/2018
+ms.lastreviewed: 05/09/2019
 
 ---
 
@@ -206,7 +206,7 @@ $PaaSCertificates = @{
     'PaaSFTPCert' = @{'pfxPath' = '<Path to FTP PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
     'PaaSSSOCert' = @{'pfxPath' = '<Path to SSO PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
 }
-Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates - RegionName east -FQDN azurestack.contoso.com
+Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -RegionName east -FQDN azurestack.contoso.com
 ```
 
 In this example, a hashtable is constructed with paths and passwords to each PaaS certificate. Certificates can be omitted. `Start-AzsReadinessChecker` checks that each PFX path exists, and validates them using the region **east** and external FQDN **azurestack.contoso.com**.
@@ -238,7 +238,7 @@ In this example, the service administrator account credentials are required for 
 
 ### Example: validate Azure identity with deployment data (deployment support)
 
-```PowerSHell
+```PowerShell
 $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant e.g. serviceadmin@contoso.onmicrosoft.com"
 Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -DeploymentDataJSONPath .\contoso-deploymentdata.json
 ```
@@ -275,7 +275,7 @@ Start-AzsReadinessChecker -PfxPassword $password -PfxPath .\certificates\ssl.pfx
 
 In this example, the PFX password is required for security. The Ssl.pfx file is imported into the local machine certificate store, re-exported with the same password, and saved as Ssl_new.pfx. This procedure is used when certificate validation flagged that a private key does not have the **Local Machine** attribute set, the certificate chain is broken, irrelevant certificates are present in the PFX, or the certificate chain is in the wrong order.
 
-### Example: view validation report (deployment support)
+### Example: view validation report (deployment and support)
 
 ```powershell
 Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json
