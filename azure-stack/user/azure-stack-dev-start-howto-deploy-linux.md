@@ -71,7 +71,7 @@ To deploy the VM, follow the instructions in the next several sections.
 
     a. Enter the **Name of your VM**.
 
-    b. Select the **VM disk type**, either **Premium SSD** (for Premium disks [SSD]) or **Standard HDD** (for Standard Disks [HDD]).
+    b. Select the **VM disk type**, either **Premium SSD** (for Premium disks [SSD]) or **Standard HDD** (for Standard disks [HDD]).
 
     c. Enter your **Username**.
 
@@ -96,13 +96,13 @@ To deploy the VM, follow the instructions in the next several sections.
     > [!NOTE]
     > - The prices presented are estimates in your local currency. The prices include only Azure infrastructure costs and any discounts for the subscription and location. They don't include any applicable software costs. 
     > - The recommended sizes are determined by the publisher of the selected image and are based on hardware and software requirements.
-    > - Using a standard disk rather than a premium disk might affect operating system performance.
+    > - Using Standard disks (HDD) rather than Premium disks (SSD) might affect operating system performance.
 
 1. In **3. Configure optional** features type:
 
     a. For **High availability,** select an availability set. To provide redundancy to your application, group two or more virtual machines in an availability set. This configuration ensures that during a planned or unplanned maintenance event, at least one virtual machine will be available and meet the 99.95% Azure service-level agreement (SLA). The availability set of a virtual machine can't be changed after it's created.
 
-    b. For **Storage**, select **Premium disks (SSD)** or **Standard disks (HDD)**. Premium disks (SSD) are backed by solid-state drives and offer consistent, low-latency performance. They provide the best balance between price and performance and are ideal for I/O-intensive applications and production workloads. Standard disks (HDD) are backed by magnetic drives and are preferable for applications where data is accessed infrequently. Zone-redundant disks are backed by zone-redundant storage (ZRS), which replicates your data across multiple zones, and they're available even if a single zone is down. 
+    b. For **Storage**, select **Premium disks (SSD)** or **Standard disks (HDD)**. Premium disks (SSD) are backed by solid-state drives and offer consistent, low-latency performance. They provide the best balance between price and performance and are ideal for I/O-intensive applications and production workloads. Standard disks are backed by magnetic drives and are preferable for applications where data is accessed infrequently. Zone-redundant disks are backed by zone-redundant storage (ZRS), which replicates your data across multiple zones, and they're available even if a single zone is down. 
 
     c. Select **Use managed disks**. When you enable this feature, Azure automatically manages the availability of disks. You benefit from data redundancy and fault tolerance, without having to create and manage storage accounts on your own. Managed disks might not be available in all regions. For more information, see [Introduction to Azure managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
 
