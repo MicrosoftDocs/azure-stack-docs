@@ -6,10 +6,10 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 05/09/2019
 ms.author: patricka
 ms.reviewer: thoroet
-ms.lastreviewed: 03/04/2019
+ms.lastreviewed: 05/09/2019
 
 ---
 
@@ -318,7 +318,7 @@ If an error occurs that leaves the environment in a state where you can no longe
 2. Then run the following cmdlet:
 
    ```powershell  
-   Reset-DatacenterIntegrationConfiguration
+   Reset-DatacenterIntegationConfiguration
    ```
 
    After running the rollback action, all configuration changes are rolled back. Only authentication with the built-in **CloudAdmin** user is possible.
