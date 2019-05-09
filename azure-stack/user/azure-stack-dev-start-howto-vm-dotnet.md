@@ -15,7 +15,7 @@ ms.lastreviewed: 04/24/2019
 # Intent: I am developer using Windows 10 or Linux Ubuntu who would like to deploy an app to Azure Stack.
 ---
 
-# How to deploy a C# ASP.NET web app to a VM in Azure Stack
+# Deploy a C# ASP.NET web app to a VM in Azure Stack
 
 You can create a virtual machine (VM) to host your C# ASP.NET web app in Azure Stack. This article discusses the instructions to follow when you set up your server, configure it to host your C# ASP.NET web app, and then deploy the app right from Visual Studio.
 
