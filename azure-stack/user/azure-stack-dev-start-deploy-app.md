@@ -21,7 +21,7 @@ Azure Stack supports both infrastructure as a service (IaaS) and platform as a s
 
 ## Before you begin
 
-Before you begin to deploy an app to Azure Stack, set up your development machine. For instructions on getting ready to work with Azure Stack as a developer, see [Set up a development environment on Azure Stack](azure-stack-dev-start.md).
+Before you begin to deploy an app to Azure Stack, set up your development machine. For instructions on getting ready to work with Azure Stack as a developer, see [Set up a development environment in Azure Stack](azure-stack-dev-start.md).
 
 ## Deploy an app to a VM
 
@@ -69,5 +69,5 @@ The following how-to articles walk you through deploying your Docker container t
 
 ## Next steps
 
-- Set up a [development environment on Azure Stack](azure-stack-dev-start.md).
-- Set up a [continuous integration/continuous delivery (CI/CD) pipeline on Azure Stack](azure-stack-solution-pipeline.md).
+- Set up a [development environment in Azure Stack](azure-stack-dev-start.md).
+- Set up a [continuous integration/continuous delivery (CI/CD) pipeline in Azure Stack](azure-stack-solution-pipeline.md).
