@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot Kubernetes deployment on Azure Stack | Microsoft Docs
-description: Learn how to troubleshoot Kubernetes deployment on Azure Stack.
+title: Troubleshoot Kubernetes deployment to Azure Stack | Microsoft Docs
+description: Learn how to troubleshoot Kubernetes deployment to Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -25,11 +25,11 @@ ms.lastreviewed: 03/20/2019
 > [!Note]  
 > Kubernetes on Azure Stack is in preview. Azure Stack disconnected scenario is not currently supported by the preview.
 
-The following article looks at troubleshooting your Kubernetes cluster. You can review the deployment alert and review the status of your deployment by the elements required for the deployment. You might need to collect the deployment logs from Azure Stack or the Linux VMs that host Kubernetes. You might also need to work with your Azure Stack administrator to retrieve logs from an administrative endpoint.
+This article reviews how to troubleshoot your Kubernetes cluster. You can review the deployment alert and review the status of your deployment by the elements required for the deployment. You might need to collect the deployment logs from Azure Stack or the Linux VMs that host Kubernetes. You might also need to work with your Azure Stack administrator to retrieve logs from an administrative endpoint.
 
 ## Overview of Kubernetes deployment
 
-Before you start troubleshooting your cluster, you might want to review the Azure Stack Kubernetes cluster deployment process. The deployment uses an Azure Resource Manager solution template to create the VMs and install the ACS Engine for your cluster.
+Before you troubleshoot your cluster, review the Azure Stack Kubernetes cluster deployment process. The deployment uses an Azure Resource Manager solution template to create the VMs and install the ACS Engine for your cluster.
 
 ### Kubernetes deployment workflow
 
@@ -45,7 +45,7 @@ The following diagram shows the general process for deploying the cluster.
     -  **User name**: The user name for the Linux virtual machines that are part of the Kubernetes cluster and DVM.
     -  **SSH public key**: The key that's used for the authorization of all Linux machines that were created as part of the Kubernetes cluster and DVM.
     -  **Service principal**: The ID that's used by the Kubernetes Azure cloud provider. The client ID identified as the application ID when you created your service principal. 
-    -  **Client secret**: They key you created when you created your service principal.
+    -  **Client secret**: The key you created when you created your service principal.
 
 2. Create the deployment VM and custom script extension.
     -  Create the deployment Linux VM by using the marketplace Linux image **Ubuntu Server 16.04-LTS**.
@@ -78,7 +78,7 @@ The following diagram shows the general process for deploying the cluster.
     - Sets up the **kubelet** service.
     - Joins the Kubernetes cluster.
 
-## Steps for troubleshooting
+## Steps to troubleshoot Kubernetes
 
 You can collect logs on the VMs that support your Kubernetes cluster. You can also review the deployment log. You might need to talk to your Azure Stack administrator to verify the version of Azure Stack that you need to use, and to get logs from Azure Stack that are related to your deployment.
 
@@ -102,9 +102,9 @@ When you deploy your Kubernetes cluster, you can review the deployment status to
 2. Select **Resource groups**, and then select the name of the resource group that you used when deploying the Kubernetes cluster.
 3. Select **Deployments**, and then select the **Deployment name**.
 
-    ![Troubleshooting](media/azure-stack-solution-template-kubernetes-trouble/azure-stack-kub-trouble-report.png)
+    ![Troubleshoot Kubernetes: select deployment](media/azure-stack-solution-template-kubernetes-trouble/azure-stack-kub-trouble-report.png)
 
-4.  Consult the troubleshooting window. Each deployed resource provides the following information:
+4.  Consult the troubleshoot window. Each deployed resource provides the following information:
     
     | Property | Description |
     | ----     | ----        |
@@ -147,7 +147,7 @@ Follow these steps to collect and download the cluster logs:
     | -h, --help  | Print command usage. | |
     | -i, --identity-file | The RSA private key file passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | C:\data\id_rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH)
     | -m, --master-host   | The public IP or the fully qualified domain name (FQDN) of a Kubernetes master node. The virtual machine name starts with `k8s-master-`. | IP: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
-    | -u, --user          | The user name passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes | azureuser (default value) |
+    | -u, --user          | The user name passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | azureuser (default value) |
 
 
    When you add your parameter values, your command might look something like this:
