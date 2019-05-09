@@ -25,7 +25,7 @@ ms.lastreviewed: 03/20/2019
 > [!Note]  
 > Kubernetes on Azure Stack is in preview. Azure Stack disconnected scenario is not currently supported by the preview.
 
-This article reviews how to troubleshoot your Kubernetes cluster. You can review the deployment alert and review the status of your deployment by understanding the elements required for the deployment. You might need to collect the deployment logs from Azure Stack or the Linux VMs that host Kubernetes. You might also need to work with your Azure Stack administrator to retrieve logs from an administrative endpoint.
+This article reviews how to troubleshoot your Kubernetes cluster. You can review the status of your deployment by understanding the elements required for the deployment. You might need to collect the deployment logs from Azure Stack or the Linux VMs that host Kubernetes. You might also need to work with your Azure Stack administrator to retrieve logs from an administrative endpoint.
 
 ## Overview of Kubernetes deployment
 
@@ -80,7 +80,7 @@ The following diagram shows the general process for deploying the cluster.
 
 ## Steps to troubleshoot Kubernetes
 
-You can collect logs on the VMs that support your Kubernetes cluster. You can also review the deployment log. You might need to talk to your Azure Stack administrator to verify the version of Azure Stack that you need to use, and to get logs from Azure Stack that are related to your deployment.
+You can collect and review deployment logs on the VMs that support your Kubernetes cluster. Talk to your Azure Stack administrator to verify the version of Azure Stack that you need to use, and to get logs from Azure Stack that are related to your deployment.
 
 1. Review the [deployment status](#review-deployment-status) and retrieve the logs from the master node in your Kubernetes cluster.
 2. Be sure that you're using the latest version of Azure Stack. If you're unsure which version you're using, contact your Azure Stack administrator.
@@ -118,7 +118,7 @@ When you deploy your Kubernetes cluster, you can review the deployment status to
 
 ## Review deployment logs
 
-If the Azure Stack portal does not provide enough information for you to troubleshoot or overcome a deployment failure, the next step is to dig into the cluster logs. To manually retrieve the deployment logs, you typically need to connect to one of the cluster's master virtual machines. A simpler alternative approach would be to download and run the following [Bash script](https://aka.ms/AzsK8sLogCollectorScript) provided by the Azure Stack team. This script connects to the DVM and cluster's virtual machines, collects relevant system and cluster logs, and downloads them back to your workstation.
+If the Azure Stack portal doesn't provide enough information for you to troubleshoot or overcome a deployment failure, the next step is to dig into the cluster logs. To manually retrieve the deployment logs, you typically need to connect to one of the cluster's master virtual machines. A simpler alternative approach would be to download and run the following [Bash script](https://aka.ms/AzsK8sLogCollectorScript) provided by the Azure Stack team. This script connects to the DVM and cluster's virtual machines, collects relevant system and cluster logs, and downloads them back to your workstation.
 
 ### Prerequisites
 
@@ -150,15 +150,15 @@ Follow these steps to collect and download the cluster logs:
     | -u, --user          | The user name passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | azureuser (default value) |
 
 
-   When you add your parameter values, your command might look something like this:
+   When you add your parameter values, your command might look something like this example:
 
     ```Bash  
     ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmd-host 192.168.102.37
      ```
 
-4. After a few minutes, the script will output the collected logs to a directory named `KubernetesLogs_{{time-stamp}}`. There you will find a directory for each virtual machine that belongs to the cluster.
+4. After a few minutes, the script will output the collected logs to a directory named `KubernetesLogs_{{time-stamp}}`. There'll find a directory for each virtual machine that belongs to the cluster.
 
-    The log collector script will also look for errors in the log files and include troubleshooting steps if it happens to find a known issue. Make sure you are running the latest version of the script to increase chances of finding known issues.
+    The log collector script will also look for errors in the log files and include troubleshooting steps if it finds a known issue. Make sure you're running the latest version of the script to increase chances of finding known issues.
 
 > [!Note]  
 > Check out this GitHub [repository](https://github.com/msazurestackworkloads/azurestack-gallery/tree/master/diagnosis) to learn more details about the log collector script.
