@@ -46,6 +46,19 @@ To use this example DNS namespace for an Azure Stack deployment, the following c
 
 To be able to resolve DNS names for Azure Stack endpoints and instances from outside Azure Stack, you need to integrate the DNS servers that host the external DNS zone for Azure Stack with the DNS servers that host the parent zone you want to use.
 
+### DNS Name Labels
+Azure Stack supports adding a DNS Name label to a Public IP Address to allow name resolution for Public IP addresses.  This can be a convenient way for users to reach applications and services hosted in Azure Stack by name.  The DNS Name label uses a slightly different namespace than the infrastructure endpoints.  Following the example namespace above, the namespace for DNS name labels looks like this.
+
+`*.east.cloudapp.cloud.fabrikam.com`
+
+So if a tenant indicates a value **Myapp** in the DNS name label field of a Public IP address resource, it creates an A record for **myapp** in the zone **east.cloudapp.cloud.fabrikam.com** on the Azure Stack External DNS Server.  The resulting FQDN for this looks like this:
+
+`myapp.east.cloudapp.cloud.fabrikam.com`
+
+If you want to leverage this functionality and use this namespace, you will need to integrate the DNS servers that host the external DNS zone for Azure Stack with the DNS servers that host the parent zone you want to use as well.  This is a different namespace than the namespace for the Azure Stack service endpoints, so you need to cerate an additional delegation or conditional forwarding rule for this.
+
+You can find more information about how the DNS Name label works at [Using DNS in Azure Stack](https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-dns). 
+
 
 ## Resolution and delegation
 
