@@ -25,7 +25,7 @@ Before you begin to deploy an app to Azure Stack, set up your development machin
 
 ## Deploy an app to a VM
 
-The following how-to articles walk you through setting up a virtual machine (VM) in Azure Stack and then deploying your app from your development workstation to Azure Stack.
+In the following how-to articles, you set up a virtual machine (VM) in Azure Stack and then deploy your app from your development workstation to Azure Stack.
 
 - [.NET Core (C#)](azure-stack-dev-start-howto-vm-dotnet.md)
 - [Java](azure-stack-dev-start-howto-vm-java.md)
