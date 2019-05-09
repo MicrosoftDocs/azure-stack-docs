@@ -71,7 +71,7 @@ To deploy the VM, follow the instructions in the next several sections.
 
     a. Enter the **Name of your VM**.
 
-    b. Select the **VM disk type**, either **Premium SSD** (for Premium disks \[SSD]) or **Standard HDD** (for Standard Disks \[HDD]).
+    b. Select the **VM disk type**, either **Premium SSD** (for Premium disks [SSD]) or **Standard HDD** (for Standard Disks [HDD]).
 
     c. Enter your **Username**.
 
