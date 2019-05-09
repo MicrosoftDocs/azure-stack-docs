@@ -30,7 +30,7 @@ Use the instructions in this article to get up and running with any web app, fra
 
 ## Deploy a Linux VM for a web app
 
-In this process, you create a secret key, use the base image of the Linux VM, specify the particular attributes of the VM, and then create the VM. When the VM has been created, you open the ports that you need for working with the VM and for the VM to host your app. You also create the DNS name. Finally, you connect to the VM and update the machine by using the apt-get utility. After you've completed the process, you'll have a VM in your Azure Stack that's ready to host your web app.
+In this process, you create a secret key, use the base image of the Linux VM, specify the particular attributes of the VM, and then create the VM. After you create the VM, you open the ports that are necessary for working with the VM and for the VM to host your app. Next, you create the DNS name. Finally, you connect to the VM and update the machine by using the apt-get utility. After you've completed the process, you'll have a VM in your Azure Stack that's ready to host your web app.
 
 Before you begin, make sure that you have everything you need in place.
 
@@ -71,7 +71,7 @@ To deploy the VM, follow the instructions in the next several sections.
 
     a. Enter the **Name of your VM**.
 
-    b. Select the **VM disc type**, either **Premium SSD** or **Standard HDD**.
+    b. Select the **VM disk type**, either **Premium SSD** (for Premium disks \[SSD]) or **Standard HDD** (for Standard Disks \[HDD]).
 
     c. Enter your **Username**.
 
