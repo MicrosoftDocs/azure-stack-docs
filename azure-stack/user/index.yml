@@ -27,22 +27,22 @@ sections:
     items: 
     - title: Develop with Azure Stack
       html: <p>Set up your development environment to deploy apps on Azure Stack.</p>
-      href: /azure/blockchain-workbench/blockchain-workbench-deploy 
+      href: /azure-stack/user/azure-stack-dev-start
       image: 
         src: https://docs.microsoft.com/media/common/i_code-edit.svg
-        href: /azure/azure-stack/test/
+        href: /azure-stack/user/azure-stack-dev-start
     - title: Configure PowerShell
       html: <p>PowerShell orientation and instructions on getting your modules.</p>
-      href: /azure/blockchain-workbench/blockchain-workbench-deploy
+      href: /azure-stack/operator/azure-stack-powershell-install
       image: 
         src: https://docs.microsoft.com/media/common/i_code-automate.svg
-        href: /azure/azure-stack/test/
+        href: /azure-stack/operator/azure-stack-powershell-install
     - title: Configure CLI
       html: <p>Get set up with CLI for Azure Stack.</p>
-      href: /azure/blockchain-workbench/blockchain-workbench-deploy
+      href: /azure-stack/user/azure-stack-version-profiles-azurecli2
       image: 
         src: https://docs.microsoft.com/media/common/i_cligeneric.svg
-        href: /azure/azure-stack/test/
+        href: /azure-stack/user/azure-stack-version-profiles-azurecli2
 - title: Hybrid cloud apps
   items:
   - type: paragraph
@@ -51,24 +51,24 @@ sections:
     style: cards
     className: cardsF
     items: 
-    - title: Card item 1
-      html: <p>Description of item.</p>
-      href: /azure/blockchain-workbench/blockchain-workbench-deploy
+    - title: Hybrid app continuous integration and delivery
+      html: <p>Deploy hybrid apps to Azure and Azure Stack using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.</p>
+      href: /azure-stack-solution-pipeline
       image: 
         src: https://docs.microsoft.com/media/common/i_portal.svg
         href: /azure/azure-stack/test/
-    - title: Card item 2
-      html: <p>Description of item.</p>
-      href: /azure/blockchain-workbench/blockchain-workbench-deploy
+    - title: Configure hybrid cloud identity
+      html: <p>Configure a hybrid cloud identity for your Azure and Azure Stack applications.</p>
+      href: /azure-stack/user/azure-stack-solution-hybrid-identity
       image: 
         src: https://docs.microsoft.com/media/common/i_portal.svg
-        href: /azure/azure-stack/test/
-    - title: Card item 3
-      html: <p>Description of item.</p>
-      href: /azure/blockchain-workbench/blockchain-workbench-deploy
+        href: /azure-stack/user/azure-stack-solution-hybrid-identity
+    - title: Cross-cloud scaling solutions
+      html: <p>Create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack hosted web app, to an Azure hosted web app.</p>
+      href: /azure-stack/user/azure-stack-solution-cloud-burst
       image: 
         src: https://docs.microsoft.com/media/common/i_portal.svg
-        href: /azure/azure-stack/test/
+        href: /azure-stack/user/azure-stack-solution-cloud-burst
 - title: IaaS on Azure Stack
   items:
   - type: paragraph
