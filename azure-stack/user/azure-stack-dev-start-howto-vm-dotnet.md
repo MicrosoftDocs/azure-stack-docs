@@ -100,7 +100,7 @@ This article uses a C# 6.0 app that uses ASP.NET Core 2.2 running on a Windows 2
 ## Create an app 
 
 You can use either your own web app or the example at [Publish an ASP.NET Core app to Azure with Visual Studio](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-2.2&tabs=visual-studio
-). The article describes how to create and publish an ASP.NET web app to an Azure virtual machine by using the Azure Virtual Machines publishing feature in Visual Studio 2017. After you've installed and made sure that your app is running locally, you'll update your publishing target to the Windows VM in your Azure Stack.
+). The article describes how to create and publish an ASP.NET web app to an Azure virtual machine by using the Azure Virtual Machines publishing feature in Visual Studio 2017. After you've installed and made sure that your app is running locally, you'll update your publishing target to the Windows VM in your Azure Stack instance.
 
 ## Deploy and run the app
 
