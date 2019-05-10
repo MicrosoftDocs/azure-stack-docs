@@ -6,17 +6,19 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 05/09/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.lastreviewed: 10/15/2018
+ms.lastreviewed: 05/09/2019
 keywords:
 ---
 
 # Azure Stack datacenter integration - DNS
+
 To be able to access Azure Stack endpoints (**portal**, **adminportal**, **management**, **adminmanagement**, etc.)  from outside Azure Stack, you need to integrate the Azure Stack DNS services with the DNS servers that host the DNS zones you want to use in Azure Stack.
 
 ## Azure Stack DNS namespace
+
 You are required to provide some important information related to DNS when you deploy Azure Stack.
 
 
@@ -46,6 +48,19 @@ To use this example DNS namespace for an Azure Stack deployment, the following c
 
 To be able to resolve DNS names for Azure Stack endpoints and instances from outside Azure Stack, you need to integrate the DNS servers that host the external DNS zone for Azure Stack with the DNS servers that host the parent zone you want to use.
 
+### DNS name labels
+
+Azure Stack supports adding a DNS name label to a public IP address to allow name resolution for public IP addresses. This can be a convenient way for users to reach applications and services hosted in Azure Stack by name. The DNS name label uses a slightly different namespace than the infrastructure endpoints. Following the previous example namespace, the namespace for DNS name labels appears as follows:
+
+`*.east.cloudapp.cloud.fabrikam.com`
+
+Therefore, if a tenant indicates a value **Myapp** in the DNS name label field of a public IP address resource, it creates an A record for **myapp** in the zone **east.cloudapp.cloud.fabrikam.com** on the Azure Stack external DNS server. The resulting fully qualified domain name appears as follows:
+
+`myapp.east.cloudapp.cloud.fabrikam.com`
+
+If you want to leverage this functionality and use this namespace, you must integrate the DNS servers that host the external DNS zone for Azure Stack with the DNS servers that host the parent zone you want to use as well. This is a different namespace than the namespace for the Azure Stack service endpoints, so you must create an additional delegation or conditional forwarding rule.
+
+For more information about how the DNS Name label works, see [Using DNS in Azure Stack](../user/azure-stack-dns.md).
 
 ## Resolution and delegation
 
