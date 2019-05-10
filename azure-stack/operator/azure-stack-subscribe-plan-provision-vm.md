@@ -13,9 +13,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/09/2019
-ms.author: efemmano
-ms.lastreviewed: 01/09/2019
+ms.date: 05/10/2019
+ms.author: sethm
+ms.lastreviewed: 05/10/2019
 
 ---
 # Create subscriptions to offers in Azure Stack
@@ -49,7 +49,7 @@ After you create a subscription for a user, they can sign in to the user portal 
 
    - **Directory tenant** -  Select the directory tenant where the user account belongs. If you haven't enabled multi-tenancy, only your local directory tenant is available.
 
-3. Select **Offer**. Under **Offers**, choose an **Offer** for this subscription. Because you're creating the subscription for a user, select **Private** as the Accessibility state.
+3. Select **Offer**. Under **Offers**, choose an **Offer** for this subscription. Because you're creating the subscription for a user, select **Private** as the accessibility state.
 
 4. Select **Create** to create the subscription. The new subscription appears under **User subscription**. When the user signs in to the user portal, they can see the subscription details.
 
@@ -88,11 +88,11 @@ As a user, you can sign in to the user portal to locate and subscribe to public 
 
 If an offer has an add-on plan, you can add that plan to your subscription at any time.  
 
-1. In the user portal, select **All services**. Next, under the **GENERAL** category, select **Subscriptions**, and then select the subscription that you want change. If there are any add-on plans available, **+Add plan** is active and there is a tile for **Add-on plans**. 
+1. In the user portal, select **All services**. Next, under the **GENERAL** category, select **Subscriptions**, and then select the subscription that you want change. If there are any add-on plans available, **+ Add plan** is active and there is a tile for **Add-on plans**.
 
-   If **+Add plan** is not active, then there are no add-on plans for the offer associated with that subscription.
+   If **+ Add plan** is not active, then there are no add-on plans for the offer associated with that subscription.
 
-1. Select **+Add plan** or the **Add-on plans** tile. Under **Add-on plans**, select the plan you want to add.
+1. Select **+ Add plan** or the **Add-on plans** tile. Under **Add-on plans**, select the plan you want to add.
 
 ## Next steps
 
