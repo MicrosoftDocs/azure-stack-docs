@@ -1,5 +1,5 @@
 ---
-title: Use SQL Server best practices and to increase performance in Azure Stack virtual machines | Microsoft Docs
+title: SQL Server best practices to optimize performance in Azure Stack. | Microsoft Docs
 description: This article provides SQL server best practices to help increase performance and optimize SQL Server in Azure Stack VMs.
 services: azure-stack
 documentationcenter: ''
@@ -21,7 +21,7 @@ ms.lastreviewed: 01/14/2019
 
 # SQL server best practices to optimize performance in Azure Stack
 
-This article provides SQL server best practices to optimize SQL Server and improve performance in Microsoft Azure Stack virtual machines. When running SQL Server in Azure Stack virtual machines, use the same database performance-tuning options applicable to SQL Server in an on-premises server environment. The performance of a relational database in an Azure Stack cloud depends on many factors. Factors include the family size of a virtual machine, and the configuration of the data disks.
+This article provides SQL server best practices to optimize SQL Server and improve performance in Microsoft Azure Stack virtual machines. When running SQL Server in Azure Stack virtual machines, use the same database performance-tuning options applicable to SQL Server in an on-premises server environment. The performance of a relational database in an Azure Stack cloud depends on many factors, including family size of a virtual machine and the configuration of the data disks.
 
 When creating SQL Server images, [consider provisioning your virtual machines in the Azure Stack portal](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Download the SQL IaaS Extension from Marketplace Management in the Azure Stack Admin Portal and download your choice of SQL virtual machine virtual hard drives (VHDs). These include SQL2014SP2, SQL2016SP1, and SQL2017.
 
@@ -68,7 +68,7 @@ Data disk throughput is determined uniquely based on the virtual machine family 
 > [!NOTE]  
 > For production workloads, select a DS-series or DSv2-series virtual machine to provide the maximum possible IOPS on the operating system disk and data disks.
 
-When creating a storage account in Azure Stack, the geo-replication option has no effect because this capability is not available in Azure Stack.
+When creating a storage account in Azure Stack, the geo-replication option has no effect because this capability isn't available in Azure Stack.
 
 ## Disks guidance
 
@@ -129,7 +129,7 @@ We recommend storing TempDB on a data disk as each data disk provides a maximum 
 - Consider enabling instant file initialization to reduce the time that is required for initial file allocation. To take advantage of instant file initialization, you grant the SQL Server (MSSQLSERVER) service account with **SE_MANAGE_VOLUME_NAME** and add it to the **Perform Volume Maintenance Tasks** security policy. If you are using a SQL Server platform image for Azure, the default service account (**NT Service\MSSQLSERVER**) isn't added to the **Perform Volume Maintenance Tasks** security policy. In other words, instant file initialization is not enabled in a SQL Server Azure platform image. After adding the SQL Server service account to the **Perform Volume Maintenance Tasks** security policy, restart the SQL Server service. There could be security considerations for using this feature. For more information, see [Database File Initialization](https://msdn.microsoft.com/library/ms175935.aspx).
 - **Autogrow** is a contingency for unexpected growth. Do not manage your data and log growth on a day-to-day basis with autogrow. If autogrow is used, pre-grow the file using the **Size** switch.
 - Make sure **autoshrink** is disabled to avoid unnecessary overhead that can negatively affect performance.
-- Setup default backup and database file locations. Use the recommendations in this article and make the changes in the Server properties window. For instructions, see [View or Change the Default Locations for Data and Log Files (SQL Server Management Studio)](https://msdn.microsoft.com/library/dd206993.aspx). The following screenshot demonstrates where to make these changes:
+- Setup default backup and database file locations. Use the recommendations in this article and make the changes in the Server properties window. For instructions, see [View or Change the Default Locations for Data and Log Files (SQL Server Management Studio)](https://msdn.microsoft.com/library/dd206993.aspx). The following screenshot shows where to make these changes:
 
     > ![View or Change the Default Locations](./media/sql-server-vm-considerations/image1.png)
 
@@ -143,11 +143,10 @@ Some deployments may achieve additional performance benefits using more advanced
 
 - **Back up to Azure** **storage.** When performing backups for SQL Server running in Azure Stack virtual machines, you can use SQL Server Backup to URL. This feature is available starting with SQL Server 2012 SP1 CU2 and recommended for backing up to the attached data disks.
 
-    When your backup or restore using Azure storage, follow the recommendations provided in [SQL Server Backup to URL Best Practices and Troubleshooting](https://msdn.microsoft.com/library/jj919149.aspx) and [Restoring From Backups Stored in Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017). You can also automate these backups using [Automated Backup for SQL Server in Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup).
+    When you backup or restore using Azure storage, follow the recommendations provided in [SQL Server Backup to URL Best Practices and Troubleshooting](https://msdn.microsoft.com/library/jj919149.aspx) and [Restoring From Backups Stored in Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017). You can also automate these backups using [Automated Backup for SQL Server in Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup).
 
 -   **Back up to Azure Stack storage.** You can back up to Azure Stack storage in a similar fashion as with backing up to Azure Storage. When you create a backup inside SQL Server Management Studio (SSMS), you need to enter the configuration information manually. You cannot use SSMS to create the storage container or the Shared Access Signature. SSMS only connects to Azure subscriptions, not Azure Stack subscriptions. Instead, you need to create the storage account, container, and Shared Access Signature in the Azure Stack portal or with PowerShell.
 
-    When you place the information into the SQL Server Backup dialog:
 
     ![SQL Server Backup](./media/sql-server-vm-considerations/image3.png)
 
