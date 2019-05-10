@@ -73,7 +73,7 @@ If you have any questions about Azure Stack, contact your cloud operator.
 
 ## Windows 10 
 
-If you're using a Windows 10 machine, you can work with PowerShell 5.0 and Visual Studio. And if you're working with an Azure Stack SDK, you can connect to your environment with a VPN connection. 
+If you're using a Windows 10 machine, you can work with PowerShell 5.0 and Visual Studio. And if you're working with an Azure Stack Development Kit, you can connect to your environment with a VPN connection. 
 
 ### Set up your tools 
 
@@ -81,7 +81,7 @@ If you're using a Windows 10 machine, you can work with PowerShell 5.0 and Visua
 
 2. Download Azure Stack Tools. For instructions, see [Download Azure Stack tools from GitHub](../operator/azure-stack-powershell-download.md). 
 
-3. If you're using an Azure Stack SDK, install and configure a [VPN connection to Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). 
+3. If you're using an Azure Stack Development Kit, install and configure a [VPN connection to Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). 
 
 4. Install and configure the Azure CLI. For instructions, see [Use API version profiles with the Azure CLI in Azure Stack](azure-stack-version-profiles-azurecli2.md). 
 
@@ -108,7 +108,7 @@ If you're using a Windows 10 machine, you can work with PowerShell 5.0 and Visua
 If you're using a Linux machine, you can work with the Azure CLI, Visual Studio Code, or your own preferred integrated development environment. 
 
 > [!Note]   
-> If you're using a Linux machine with the Azure Stack SDK, your remote machine will need to be in the same network as the Azure Stack SDK. You will not be able to connect using a Virtual Private Network connection. 
+> If you're using a Linux machine with the Azure Stack Development Kit, your remote machine will need to be in the same network as the Azure Stack Development Kit. You will not be able to connect using a Virtual Private Network connection. 
 
 ### Set up your tools 
 
@@ -137,7 +137,7 @@ If you're using a Linux machine, you can work with the Azure CLI, Visual Studio 
 A macOS machine will allow you to work with the Azure CLI and Visual Studio Code, or your own preferred integrated development environment. 
 
 > [!Note]   
-> If you're using a macOS machine with the Azure Stack SDK, your remote machine will need to be in the same network as the Azure Stack SDK. You will not be able to connect using a Virtual Private Network connection. 
+> If you're using a macOS machine with the Azure Stack Development Kit, your remote machine will need to be in the same network as the Azure Stack Development Kit. You will not be able to connect using a Virtual Private Network connection. 
 
 ### Set up your tools 
 
