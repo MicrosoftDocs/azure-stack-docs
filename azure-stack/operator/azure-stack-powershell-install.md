@@ -94,7 +94,7 @@ Installation has three steps:
 
 Run the following PowerShell script to install these modules on your development workstation:
 
-- For 1904 builds or later:
+- For Azure Stack 1904 or later:
 
     ```powershell  
     # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
@@ -178,7 +178,18 @@ Installation has four steps:
 
 ### Install Azure Stack PowerShell
 
-- Azure Stack 1901 or later.
+- Azure Stack 1904 or later.
+
+    ```powershell
+    Import-Module -Name PowerShellGet -ErrorAction Stop
+    Import-Module -Name PackageManagement -ErrorAction Stop
+
+    $Path = "<Path that is used to save the packages>"
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.7.2
+    ```
+
+- Azure Stack 1903 or earlier.
 
     ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop
