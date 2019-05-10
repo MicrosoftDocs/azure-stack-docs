@@ -38,24 +38,6 @@ Before you begin, make sure that you have everything you need in place.
 
 - An Azure Stack subscription, with access to the Ubuntu Server 16.04 LTS image. You can use a later version of the image, but these instructions are written with the 16.04 LTS in mind. If you don't have this image, contact your cloud operator to get the image into your Azure Stack marketplace.
 
-<!-- Azure Stack specific considerations
-
-### Authentication
-
-Azure Stack works with two identity management services, Azure Active Directory (Azure AD) and Active Directory Federation Services (AD FS). This section addresses how this procedure will work with either version.
-
-### Connectivity
-
-Azure Stack can be run in connected to completely disconnected scenarios. This section addresses considerations about the use case in relation to connectivity.
-
-### Azure Stack Development Kit and Integrated Systems
-
-Although the two versions of the product are virtually the same, they behave differently. Call out considerations about either version. 
-
-### Azure Stack version
-
-Place any version specific calls outs. The procedure will contain steps for the latest version. This section will contain call outs for previous version that are still supported. -->
-
 ## Deploy the VM by using the portal
 
 To deploy the VM, follow the instructions in the next several sections.
@@ -78,7 +60,8 @@ To deploy the VM, follow the instructions in the next several sections.
     d. Select the **Authentication type** as **SSH Public key**.
 
     e. Retrieve the SSH public key that you created. Open it in a text editor, copy the key, and then paste it into the **SSH public key** box. Include the text from `---- BEGIN SSH2 PUBLIC KEY ----` to `---- END SSH2 PUBLIC KEY ----`. Paste the entire block of text into the key box:
-       ```text  
+
+            ```text  
             ---- BEGIN SSH2 PUBLIC KEY ----
             Comment: "rsa-key-20190207"
             <Your key block>
@@ -94,7 +77,7 @@ To deploy the VM, follow the instructions in the next several sections.
     - You can either browse the list or filter for the size of your VM by **Compute type**, **CPUs**, and storage space.
     
     > [!NOTE]
-    > - The prices presented are estimates in your local currency. The prices include only Azure infrastructure costs and any discounts for the subscription and location. They don't include any applicable software costs. 
+    > - The prices presented are estimates in your local currency. They include only Azure infrastructure costs and any discounts for the subscription and location. They don't include any applicable software costs. 
     > - The recommended sizes are determined by the publisher of the selected image and are based on hardware and software requirements.
     > - Using Standard disks (HDD) rather than Premium disks (SSD) might affect operating system performance.
 
@@ -180,73 +163,14 @@ In addition, you can create a DNS name for your server, so that users can connec
 
 ### Connect via SSH to update your VM
 
-1. On the same network as your Azure Stack, open your SSH client. For more information, see [How to use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
+1. On the same network as your Azure Stack, open your SSH client. For more information, see [Use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
 
 1. Enter the following commands:
+
     ```bash  
         sudo apt-get update
         sudo apt-get -y upgrade
     ```
-
-<!--
-
-## Deploy VM using the PowerShell
-
-Include a sentence or two to explain only what is needed to complete the procedure.
-
-1. Step one of the procedures.
-
-    | Parameter | Example | Description |
-    | --- | --- | --- |
-    | item      | "dog"   | Describe what it is and where to find the information. |
-
-2. Step two of the procedure
-
-    ```PowerShell  
-    verb-command -item "dog"
-    ```
-
-3. Step three of the procedures.
-
-    ```PowerShell  
-    verb-command -item "dog"
-    ```
-
-4. Step four of the procedures.
-
-    ```PowerShell  
-    verb-command -item "dog"
-    ```
-
-## Deploy VM using the CLI
-
-Include a sentence or two to explain only what is needed to complete the procedure.
-
-1. Step one of the procedures.
-
-    | Parameter | Example | Description |
-    | --- | --- | --- |
-    | item      | "dog"   | Describe what it is and where to find the information. |
-
-2. Step two of the procedure
-
-    ```CLI  
-    verb-command -item "dog"
-    ```
-
-3. Step three of the procedures.
-
-    ```CLI  
-    verb-command -item "dog"
-    ```
-
-4. Step four of the procedures.
-
-    ```CLI  
-    verb-command -item "dog"
-    ```
-
--->
 
 ## Next steps
 
