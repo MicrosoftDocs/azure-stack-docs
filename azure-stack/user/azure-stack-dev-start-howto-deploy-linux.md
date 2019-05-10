@@ -72,7 +72,7 @@ To deploy the VM, follow the instructions in the next several sections.
 
     g. Create a new resource group or use an existing one, depending on how you want to organize the resources for your app.
 
-    h. Select your location. The Azure Stack SDK is usually in a *local* region. The location depends on your Azure Stack instance.
+    h. Select your location. The Azure Stack Development Kit is usually in a *local* region. The location depends on your Azure Stack instance.
 1. For **2. Size**, type:
     - Select the size of data and RAM for your VM that's available in your Azure Stack instance.
     - You can either browse the list or filter for the size of your VM by **Compute type**, **CPUs**, and **Storage space**.
@@ -160,7 +160,7 @@ In addition, you can create a DNS name for your server, so that users can connec
 
 1. For **Assignment**, select **Dynamic**.
 
-1. Enter the DNS name label, such as **mywebapp**, so that your full URL becomes *mywebapp.local.cloudapp.azurestack.external* (for an Azure Stack SDK app).
+1. Enter the DNS name label, such as **mywebapp**, so that your full URL becomes *mywebapp.local.cloudapp.azurestack.external* (for an Azure Stack Development Kit app).
 
 ### Connect via SSH to update your VM
 
