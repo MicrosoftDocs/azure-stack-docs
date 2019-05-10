@@ -34,39 +34,6 @@ In the following how-to articles, you set up a virtual machine (VM) in Azure Sta
 - [Python](azure-stack-dev-start-howto-vm-python.md)
 - [NodeJS](azure-stack-dev-start-howto-vm-nodejs.md)
 
-<!-- 
-## Deploy an app using Azure Stack Resource Manager
-
-The following how-to articles walk you through using the Azure Stack SDK (ASDK) for your language to create an Azure Stack resource manager template to create your resources, and then deploy the resources in Azure Stack.
-
-- .NET Core (C#)
-- Java
-- Go
-- Ruby
-- Python
-
-## Deploy an app to Azure Stack App Service
-
-The following how-to articles walk you through deploying your app to the Azure Stack App Service.
-
-- .NET Core (C#)
-- Java
-- Go
-- Ruby
-- Python
-
-## Deploy an app with Docker to Kubernetes
-
-The following how-to articles walk you through deploying your Docker container to Kubernetes hosted by Azure Stack.
-
-- .NET Core (C#)
-- Java
-- Go
-- Ruby
-- Python
-
--->
-
 ## Next steps
 
 - Set up a [development environment in Azure Stack](azure-stack-dev-start.md).
