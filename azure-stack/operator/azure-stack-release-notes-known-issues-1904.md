@@ -145,16 +145,6 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
   - Microsoft support can remediate the issue by changing the start-up setting for the service. This will require opening a support ticket. If the node is restarted again, a new alert will appear. 
 - Occurrence: Common
 
-## Infrastructure backup
-
-<!--Bug 3615401 - scheduler config lost; new issue in YYMM;  hectorl-->
-After enabling automatic backups, the scheduler service goes into disabled state unexpectedly. The backup controller service will detect that automatic backups are disabled and raise a warning in the administrator portal. This warning is expected when automatic backups are disabled.
-
-- Applicable: This is a new issue with release 1904.
-- Cause: This issue is due to a bug in the service that results in loss of scheduler configuration. This bug does not change the storage location, user name, password, or encryption key.
-- Remediation: To mitigate this issue, open the backup controller settings blade in the Infrastructure Backup resource provider and select **Enable Automatic Backups**. Make sure to set the desired frequency and retention period.
-- Occurrence: Low
-
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
 <!-- ## App Service -->
