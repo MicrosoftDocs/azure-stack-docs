@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 1905 update | Microsoft Docs
+title: Azure Stack 1905 release notes | Microsoft Docs
 description: Learn about the 1905 update for Azure Stack integrated systems, including what's new, known issues, and where to download the update.
 services: azure-stack
 documentationcenter: ''

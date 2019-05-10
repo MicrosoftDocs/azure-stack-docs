@@ -1,5 +1,5 @@
 ---
-title: Azure Stack release notes - known issues in 1905 | Microsoft Docs
+title: Azure Stack 1905 known issues | Microsoft Docs
 description: Learn about known issues in Azure Stack 1905.
 services: azure-stack
 documentationcenter: ''
@@ -75,21 +75,24 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 ### Load Balancer
 
 #### Add Backend Pool
+
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, if you attempt to add a **Backend Pool** to a **Load Balancer**, the operation fails with the error message 'failed to update Load Balancer...'.
+- Cause: In the user portal, if you attempt to add a **Backend Pool** to a **Load Balancer**, the operation fails with the error message **failed to update Load Balancer...**.
 - Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
 - Occurrence: Common
 
 #### Create Inbound NAT
+
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer**, the operation fails with the error message 'Failed to update Load Balancer...'.
+- Cause: In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer**, the operation fails with the error message **Failed to update Load Balancer...**.
 - Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
 - Occurrence: Common
 
-#### Create Load Balancer 
+#### Create Load Balancer
+
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, the **Create Load Balancer** window shows an option to create a **Standard** Load Balancer SKU. This option is not supported in Azure Stack.
-- Remediation: Use the Basic Load Balancer options instead.
+- Remediation: Use the basic load balancer options instead.
 - Occurrence: Common
 
 ### Public IP Address
@@ -110,11 +113,20 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Remediation: Recreate the storage account with the same name you used previously.
 - Occurrence: Common
 
-### Virtual machine scale set
+### Virtual Machine Scale Set
+
+#### CentOS
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The Virtual Machine Scale Set (VMSS) creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack.
 - Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
+- Occurrence: Common
+
+#### Remove scale set
+
+- Applicable: This issue applies to all supported releases.
+- Cause: You cannot remove a scale set from the **Virtual Machine Scale Sets** blade.
+- Remediation: Select the scale set that you want to remove, then click the **Delete** button from the **Overview** pane.
 - Occurrence: Common
 
 ### Ubuntu SSH access
@@ -124,15 +136,14 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
 - Occurrence: Common
 
-## Infrastructure backup
-
-<!--Bug 3615401 - scheduler config lost; new issue in YYMM;  hectorl-->
-After enabling automatic backups, the scheduler service goes into disabled state unexpectedly. The backup controller service will detect that automatic backups are disabled and raise a warning in the administrator portal. This warning is expected when automatic backups are disabled.
+### Compute host agent alert
 
 - Applicable: This is a new issue with release 1904.
-- Cause: This issue is due to a bug in the service that results in loss of scheduler configuration. This bug does not change the storage location, user name, password, or encryption key.
-- Remediation: To mitigate this issue, open the backup controller settings blade in the Infrastructure Backup resource provider and select **Enable Automatic Backups**. Make sure to set the desired frequency and retention period.
-- Occurrence: Low
+- Cause: "Compute host agent" warning appears after restarting a node in the scale unit. The restart changes the default startup setting for the compute host agent service.
+- Remediation:
+  - This alert can be ignored. The agent not responding does not have any impact on operator and user operations or user applications. The alert will reappear after 24 hours if it is closed manually.
+  - Microsoft support can remediate the issue by changing the startup setting for the service. This requires opening a support ticket. If the node is restarted again, a new alert appears.
+- Occurrence: Common
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
