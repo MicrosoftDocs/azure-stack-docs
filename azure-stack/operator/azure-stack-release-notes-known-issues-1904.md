@@ -26,6 +26,13 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 > [!IMPORTANT]  
 > Review this section before applying the update.
 
+## Update process
+
+- Applicable: This issue applies to all supported releases.
+- Cause: When attempting to install an Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing.
+- Remediation: Starting at version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and starts the download again.
+- Occurrence: Common
+
 ## Portal
 
 ### Add-on plans
