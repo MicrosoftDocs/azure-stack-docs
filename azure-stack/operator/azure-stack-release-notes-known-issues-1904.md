@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/10/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 05/07/2019
+ms.lastreviewed: 05/10/2019
 ---
 
 # Azure Stack 1904 known issues
@@ -139,10 +139,10 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 ### Compute host agent alert
 
 - Applicable: This is a new issue with release 1904.
-- Cause: "Compute host agent" warning will appear after restarting a node in the scale-unit. The restart changes the default start-up setting for the compute host agent service.
-- Remediation: 
-  - This alert can be ignored. The agent not responding does not have any impact on operator and user operations or user applications. The alert will reappear after 24 hours if it is closed manually. 
-  - Microsoft support can remediate the issue by changing the start-up setting for the service. This will require opening a support ticket. If the node is restarted again, a new alert will appear. 
+- Cause: "Compute host agent" warning appears after restarting a node in the scale unit. The restart changes the default startup setting for the compute host agent service.
+- Remediation:
+  - This alert can be ignored. The agent not responding does not have any impact on operator and user operations or user applications. The alert will reappear after 24 hours if it is closed manually.
+  - Microsoft support can remediate the issue by changing the startup setting for the service. This requires opening a support ticket. If the node is restarted again, a new alert appears.
 - Occurrence: Common
 
 <!-- ## Storage -->
