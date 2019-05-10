@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 05/07/2019
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 01/08/2019
+ms.lastreviewed: 05/07/2019
 
 ---
 # Create and publish a Marketplace item
@@ -36,10 +36,10 @@ ms.lastreviewed: 01/08/2019
    /Contoso.TodoList/DeploymentTemplates/
    ```
 
-3. [Create an Azure Resource Manager template]((/azure/azure-resource-manager/resource-group-authoring-templates) or choose a template from GitHub. The Marketplace item uses this template to create a resource.
+3. [Create an Azure Resource Manager template](/azure/azure-resource-manager/resource-group-authoring-templates) or choose a template from GitHub. The Marketplace item uses this template to create a resource.
 
-    > [!Note]  
-    > Never hard code any secrets like product keys, password or any customer identifiable information in the Azure Resource Manager template. Template JSON files are accessible without the need for authentication once published in the gallery. Store all secrets in [Key Vault]((/azure/azure-resource-manager/resource-manager-keyvault-parameter) and call them from within the template.
+    > [!NOTE]  
+    > Never hard code any secrets such as product keys, password, or any customer identifiable information in the Azure Resource Manager template. Template JSON files are accessible without the need for authentication once published in the gallery. Store all secrets in [Key Vault](/azure/azure-resource-manager/resource-manager-keyvault-parameter) and call them from within the template.
 
 4. To ensure that the resource can be deployed successfully, test the template with the Microsoft Azure Stack APIs.
 5. If your template relies on a virtual machine image, follow the instructions to [add a virtual machine image to Azure Stack](azure-stack-add-vm-image.md).
@@ -50,6 +50,7 @@ ms.lastreviewed: 01/08/2019
    > All four icon sizes (small, medium, large, wide) are required for building the Marketplace item correctly.
    >
    >
+
 8. In the **Manifest.json** file, change **name** to the name of your Marketplace item. Also change **publisher** to your name or company.
 9. Under **artifacts**, change **name** and **path** to the correct information for the Azure Resource Manager template that you included:
 
@@ -76,11 +77,11 @@ ms.lastreviewed: 01/08/2019
 12. To package the folders into an .azpkg file, open a command prompt and run the following command:
 
     ```shell
-    AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
+    AzureGalleryPackager.exe package -m <path to manifest.json> -o <output location for the package>
     ```
 
     > [!NOTE]
-    > The full path to the output package must exist. For example, if the output path is C:\MarketPlaceItem\yourpackage.azpkg, the folder C:\MarketPlaceItem must exist.
+    > The full path to the output package must exist. For example, if the output path is C:\MarketPlaceItem\yourpackage.azpkg, the folder **C:\MarketPlaceItem** must exist.
     >
     >
 
@@ -92,7 +93,7 @@ ms.lastreviewed: 01/08/2019
 
    ```powershell
    Add-AzsGalleryItem -GalleryItemUri `
-   https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg –Verbose
+   https://sample.blob.core.windows.net/gallerypackages/Microsoft.SimpleTemplate.1.0.0.azpkg -Verbose
    ```
 
    | Parameter | Description |
@@ -104,7 +105,8 @@ ms.lastreviewed: 01/08/2019
 4. Go to the portal. You can now see the Marketplace item in the portal, as an operator or as a user. The package might take several minutes to appear.
 
 5. Your Marketplace item has now been saved to the Azure Stack Marketplace. You can choose to delete it from your Blob storage location.
-    > [!Caution]  
+
+    > [!CAUTION]  
     > All default gallery artifacts and your custom gallery artifacts are now accessible without authentication under the following URLs:  
 `https://adminportal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`
 `https://portal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`
@@ -113,7 +115,7 @@ ms.lastreviewed: 01/08/2019
 6. You can remove a Marketplace item by using the **Remove-AzureRMGalleryItem** cmdlet. For example:
 
    ```powershell
-   Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  –Verbose
+   Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  -Verbose
    ```
 
    > [!NOTE]
@@ -135,12 +137,12 @@ ms.lastreviewed: 01/08/2019
 
 | Name | Required | Type | Constraints | Description |
 | --- | --- | --- | --- | --- |
-| DisplayName |X |String |Recommendation of 80 characters |The portal might not display your item name gracefully if it is longer than 80 characters. |
-| PublisherDisplayName |X |String |Recommendation of 30 characters |The portal might not display your publisher name gracefully if it is longer than 30 characters. |
+| DisplayName |X |String |Recommendation of 80 characters |The portal might not display your item name correctly if it is longer than 80 characters. |
+| PublisherDisplayName |X |String |Recommendation of 30 characters |The portal might not display your publisher name correctly if it is longer than 30 characters. |
 | PublisherLegalName |X |String |Maximum of 256 characters | |
 | Summary |X |String |60 to 100 characters | |
 | LongSummary |X |String |140 to 256 characters |Not yet applicable in Azure Stack. |
-| Description |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 to 5,000 characters | |
+| Description |X |[HTML](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-metadata-html-sanitization) |500 to 5,000 characters | |
 
 ### Images
 
@@ -156,7 +158,7 @@ The Marketplace uses the following icons:
 
 ### Categories
 
-Each Marketplace item should be tagged with a category that identifies where the item appears on the portal UI. You can choose one of the existing categories in Azure Stack (Compute, Data + Storage, etc.) or choose a new one.
+Each Marketplace item should be tagged with a category that identifies where the item appears on the portal UI. You can choose one of the existing categories in Azure Stack (**Compute**, **Data + Storage**, etc.), or choose a new one.
 
 ### Links
 
@@ -164,7 +166,7 @@ Each Marketplace item can include various links to additional content. The links
 
 | Name | Required | Type | Constraints | Description |
 | --- | --- | --- | --- | --- |
-| DisplayName |X |String |Maximum of 64 characters | |
+| DisplayName |X |String |Maximum of 64 characters. | |
 | Uri |X |URI | | |
 
 ### Additional properties
@@ -173,12 +175,12 @@ In addition to the preceding metadata, Marketplace authors can provide custom ke
 
 | Name | Required | Type | Constraints | Description |
 | --- | --- | --- | --- | --- |
-| DisplayName |X |String |Maximum of 25 characters | |
-| Value |X |String |Maximum of 30 characters | |
+| DisplayName |X |String |Maximum of 25 characters. | |
+| Value |X |String |Maximum of 30 characters. | |
 
 ### HTML sanitization
 
-For any field that allows HTML, the following elements and attributes are allowed:
+For any field that allows HTML, the following [elements and attributes are allowed](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-metadata-html-sanitization):
 
 `h1, h2, h3, h4, h5, p, ol, ul, li, a[target|href], br, strong, em, b, i`
 
@@ -193,3 +195,8 @@ Icons and text for Marketplace items as seen in the Azure Stack portal are as fo
 ### Marketplace item details blade
 
 ![Marketplace item details blade](media/azure-stack-create-and-publish-marketplace-item/image3.png)
+
+## Next steps
+
+* [Azure Stack Marketplace overview](azure-stack-marketplace.md)
+* [Download Marketplace items](azure-stack-download-azure-marketplace-item.md)

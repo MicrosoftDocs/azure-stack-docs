@@ -90,7 +90,7 @@ To install via Composer: (take blob as example).
 
 An Azure Stack endpoint includes two parts: the name of a region and the Azure Stack domain.
 In the Azure Stack Development Kit, the default endpoint is **local.azurestack.external**.
-Contact your cloud administrator if you’re not sure about your endpoint.
+Contact your cloud administrator if you're not sure about your endpoint.
 
 ## Examples
 

@@ -13,9 +13,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 05/06/2019
 ms.author: jeffgilb
-ms.reviewer: unknown
+ms.reviewer: prchint
 ms.lastreviewed: 01/23/2019
 
 ---
@@ -32,7 +32,7 @@ The recommendations for troubleshooting issues that are described in this sectio
 ### General deployment failure
 If you experience a failure during installation, you can restart the deployment from the failed step by using the -rerun option of the deployment script.  
 
-### At the end of ASDK deployment, the PowerShell session is still open and doesn’t show any output.
+### At the end of ASDK deployment, the PowerShell session is still open and doesn't show any output.
 This behavior is probably just the result of the default behavior of a PowerShell command window, when it has been selected. The development kit deployment has succeeded but the script was paused when selecting the window. You can verify setup has completed by looking for the word "select" in the titlebar of the command window.  Press the ESC key to unselect it, and the completion message should be shown after it.
 
 ### Deployment fails due to lack of external access

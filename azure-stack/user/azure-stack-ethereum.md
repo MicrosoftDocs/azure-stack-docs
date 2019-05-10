@@ -100,7 +100,7 @@ Deployment can take 20 minutes or longer to complete.
 
 After deployment completes, you can review the deployment summary for **Microsoft. Template** in the deployment section of the resource group. The summary contains output values that can be used to join consortium members.
 
-To verify leader’s deployment, browse leader’s admin site. You can find admin site address in the output section of **Microsoft.Template** deployment.  
+To verify leader's deployment, browse leader's admin site. You can find admin site address in the output section of **Microsoft.Template** deployment.  
 
 ![Leader deployment summary](./media/azure-stack-ethereum/ethereum-node-status.png)
 
@@ -127,9 +127,9 @@ To verify leader’s deployment, browse leader’s admin site. You can find admi
     NUMTXNODES | Number of transaction nodes. | Between 1 and 5. | 1
     TXNODEVMSIZE | VM size of the transaction nodes. | | Standard_A1
     TXSTORAGEACCOUNTTYPE | Storage performance of the transaction nodes. | | Standard_LRS
-    CONSORTIUMDATA | The URL pointing to the relevant consortium configuration data provided by another member’s deployment. This value can be found on Leader’s deployment output. | |
-    REMOTEMEMBERVNETADDRESSSPACE | The NVA IP address of the leader. This value can be found on leader’s deployment output. | | 
-    REMOTEMEMBERNVAPUBLICIP | The NVA IP address of the leader. This value can be found on leader’s deployment output. | | 
+    CONSORTIUMDATA | The URL pointing to the relevant consortium configuration data provided by another member's deployment. This value can be found on Leader's deployment output. | |
+    REMOTEMEMBERVNETADDRESSSPACE | The NVA IP address of the leader. This value can be found on leader's deployment output. | | 
+    REMOTEMEMBERNVAPUBLICIP | The NVA IP address of the leader. This value can be found on leader's deployment output. | | 
     CONNECTIONSHAREDKEY | A pre-established secret between the members of the consortium network that are establishing a connection. | |
     BASEURL | Base URL for the template. | Use the default value unless you want to customize the deployment templates. | 
 
@@ -148,11 +148,11 @@ Deployment can take 20 minutes or longer to complete.
 
 After deployment completes, you can review the deployment summary for **Microsoft.Template** in the deployment section of the resource group. The summary contains output values that can be used to connect consortium members.
 
-To verify member’s deployment, browse member’s admin site. You can find admin site address in the output section of Microsoft.Template deployment.
+To verify member's deployment, browse member's admin site. You can find admin site address in the output section of Microsoft.Template deployment.
 
 ![Member deployment summary](./media/azure-stack-ethereum/ethereum-node-status-2.png)
 
-As shown in the picture, member’s nodes status is **Not running**. This status is because the connection between member and leader is not established. The connection between member and leader is a two-way connection. When you deploy member, template automatically creates the connection from member to the leader. To create the connection from leader to member, go to the next step.
+As shown in the picture, member's nodes status is **Not running**. This status is because the connection between member and leader is not established. The connection between member and leader is a two-way connection. When you deploy member, template automatically creates the connection from member to the leader. To create the connection from leader to member, go to the next step.
 
 ### Connect member and leader
 
@@ -173,11 +173,11 @@ This template creates a connection from the leader to a remote member.
     Parameter Name | Description | Allowed Values | Sample value
     ---------------|-------------|----------------|-------------
     MEMBERNAMEPREFIX | Leader's name prefix. This value can be found on leader's deployment output.  | Alphanumeric characters with length 1 to 6 | |
-    MEMBERROUTETABLENAME | Name of the leader’s route table. This value can be found on leader’s deployment output. |  | 
-    REMOTEMEMBERVNETADDRESSSPACE | Address space of the member. This value can be found on member’s deployment output. | |
+    MEMBERROUTETABLENAME | Name of the leader's route table. This value can be found on leader's deployment output. |  | 
+    REMOTEMEMBERVNETADDRESSSPACE | Address space of the member. This value can be found on member's deployment output. | |
     CONNECTIONSHAREDKEY | A pre-established secret between the members of the consortium network that are establishing a connection.  | |
-    REMOTEMEMBERNVAPUBLICIP | The NVA IP address of the member. This value can be found on member’s deployment output. | |
-    MEMBERNVAPRIVATEIP | Leader's private NVA IP address. This value can be found on leader’s deployment output. | |
+    REMOTEMEMBERNVAPUBLICIP | The NVA IP address of the member. This value can be found on member's deployment output. | |
+    MEMBERNVAPRIVATEIP | Leader's private NVA IP address. This value can be found on leader's deployment output. | |
     LOCATION | Location of your Azure Stack environment. | | local
     BASEURL | Base URL for the template. | Use the default value unless you want to customize the deployment templates. | 
 
@@ -194,7 +194,7 @@ This template creates a connection from the leader to a remote member.
 
 8. Select **Create**.
 
-After deployment is complete, it takes few minutes for leader and member to start communication. To verify the deployment, refresh member’s admin site. Status of the member’s nodes should be running. 
+After deployment is complete, it takes few minutes for leader and member to start communication. To verify the deployment, refresh member's admin site. Status of the member's nodes should be running. 
 
 ![Verify the deployment](./media/azure-stack-ethereum/ethererum-node-status-3.png)
 

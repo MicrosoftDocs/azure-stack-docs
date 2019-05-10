@@ -22,7 +22,7 @@ ms.lastreviewed: 12/06/2018
 
 *Applies to: Azure Stack integrated systems*
 
-This article describes the general process to replace hardware components that are non hot-swappable. Actual replacement steps vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor’s field replaceable unit (FRU) documentation for detailed steps that are specific to your Azure Stack integrated system.
+This article describes the general process to replace hardware components that are non hot-swappable. Actual replacement steps vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor's field replaceable unit (FRU) documentation for detailed steps that are specific to your Azure Stack integrated system.
 
 Non hot-swappable components include the following:
 
@@ -34,7 +34,7 @@ Non hot-swappable components include the following:
 - Operating system disk*
 - Data drives (drives that don't support hot swap, for example PCI-e add-in cards)*
 
-*These components may support hot swap, but can vary based on vendor implementation. See your OEM vendor’s FRU documentation for detailed steps.
+*These components may support hot swap, but can vary based on vendor implementation. See your OEM vendor's FRU documentation for detailed steps.
 
 The following flow diagram shows the general FRU process to replace a non hot-swappable hardware component.
 

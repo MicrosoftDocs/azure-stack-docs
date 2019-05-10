@@ -77,7 +77,7 @@ When you [create an offer](azure-stack-create-offer.md), you must include at lea
 
 A subscription is how users access your offers. If you are an Azure Stack operator for a service provider, your users (tenants) buy your services by subscribing to your offers. If you're an Azure Stack operator at an organization, your users (employees) can subscribe to the services you offer without paying.
 
-Each combination of a user with an offer is a unique subscription. A user can have subscriptions to multiple offers, but each subscription only applies to one offer. Plans, offers, and quotas only apply to a unique subscription – they cannot be shared between subscriptions. Each resource that a user creates is associated with one subscription.
+Each combination of a user with an offer is a unique subscription. A user can have subscriptions to multiple offers, but each subscription only applies to one offer. Plans, offers, and quotas only apply to a unique subscription - they cannot be shared between subscriptions. Each resource that a user creates is associated with one subscription.
 
 ### Default provider subscription
 

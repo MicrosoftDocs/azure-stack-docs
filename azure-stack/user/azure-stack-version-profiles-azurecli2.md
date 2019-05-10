@@ -11,10 +11,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 05/08/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 02/28/2019
+ms.lastreviewed: 05/08/2019
 
 ---
 # Use API version profiles with Azure CLI in Azure Stack
@@ -77,69 +77,20 @@ You can set up a publicly accessible endpoint that hosts a virtual machine alias
 
 ### Install or upgrade CLI
 
-Sign in to your development workstation and install CLI. Azure Stack requires version 2.0 or later of Azure CLI. The latest version of the API Profiles requires a current version of the CLI.  You can install the CLI by using the steps described in the [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) article. To verify whether the installation was successful, open a terminal or command prompt window, and run the following command:
+Sign in to your development workstation and install CLI. Azure Stack requires version 2.0 or later of Azure CLI. The latest version of the API Profiles requires a current version of the CLI.  You can install the CLI by using the steps described in the [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) article. 
 
-```shell
-az --version
-```
+1. To verify whether the installation was successful, open a terminal or command prompt window, and run the following command:
 
-You should see the version of Azure CLI and other dependent libraries that are installed on your computer.
-
-### Install Python on Windows
-
-1. Install [Python 3 on your system](https://www.python.org/downloads/).
-
-2. Upgrade PIP. PIP is a package manager for Python. Open a cmd prompt or an elevated PowerShell prompt, and type the following command:
-
-    ```powershell  
-    python -m pip install --upgrade pip
+    ```shell
+    az --version
     ```
 
-3. Install the **certifi** module. [Certifi](https://pypi.org/project/certifi/) is a module and a collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Open a cmd prompt or an elevated PowerShell prompt, and type the following command:
+    You should see the version of Azure CLI and other dependent libraries that are installed on your computer.
 
-    ```powershell
-    pip install certifi
-    ```
+    ![Azure CLI on Azure Stack Python location](media/azure-stack-version-profiles-azurecli2/cli-python-location.png)
 
-### Install Python on Linux
+2. Make note of the CLI's Python location. If you are running the ASDK, you will need to this location to add your certificate.
 
-1. The Ubuntu 16.04 image comes with Python 2.7 and Python 3.5 installed by default. You can verify your version of Python 3 by running the following command:
-
-    ```bash  
-    python3 --version
-    ```
-
-2. Upgrade PIP. PIP is a package manager for Python. Open a cmd prompt or an elevated PowerShell prompt, and type the following command:
-
-    ```bash  
-    sudo -H pip3 install --upgrade pip
-    ```
-
-3. Install the **certifi** module. [Certifi](https://pypi.org/project/certifi/) is a collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Open a cmd prompt or an elevated PowerShell prompt, and type the following command:
-
-    ```bash
-    pip3 install certifi
-    ```
-
-### Install Python on macOS
-
-1. Install [Python 3 on your system](https://www.python.org/downloads/). For Python 3.7 releases, Python.org provides two binary installer options for download. The default variant is 64-bit-only and works on macOS 10.9 (Mavericks) and later systems. Check your python version by opening the terminal, and typing the following command:
-
-    ```bash  
-    python3 --version
-    ```
-
-2. Upgrade PIP. PIP is a package manager for Python. Open a cmd prompt or an elevated PowerShell prompt, and type the following command:
-
-    ```bash  
-    sudo -H pip3 install --upgrade pip
-    ```
-
-3. Install the **certifi** module. [Certifi](https://pypi.org/project/certifi/) is a module and a collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Open a cmd prompt or an elevated PowerShell prompt, and type the following command:
-
-    ```bash
-    pip3 install certifi
-    ```
 
 ## Windows (Azure AD)
 
@@ -149,15 +100,20 @@ This section will walk you through setting up CLI if you are using Azure AD as y
 
 If you are using the ASDK, you will need to trust the CA root certificate on your remote machine. You will not need to do this with the integrated systems.
 
-To trust the Azure Stack CA root certificate, append it to the existing Python certificate.
+To trust the Azure Stack CA root certificate, append it to the existing Python certificate for the Python version installed with the Azure CLI. You may be running your own instance of Python. Azure CLI includes its own version of Python.
 
-1. Find the certificate location on your machine. The location may vary depending on where you have installed Python. Open a cmd prompt or an elevated PowerShell prompt, and type the following command:
+1. Find the certificate location on your machine.  You can find the location by running the command  `az --version`.
+
+2. Navigate to the folder that contains your the CLI Python application. You will want to run this version of python. If you have set up Python in your system PATH, running Python will execute your own version of Python. Instead, you will want to run the version used by CLI and add your certificate to that version. For example, your CLI Python may be at: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\`.
+
+    Use the following commands:
 
     ```powershell  
-      python -c "import certifi; print(certifi.where())"
+    cd "c:\pathtoyourcliversionofpython"
+    .\python -c "import certifi; print(certifi.where())"
     ```
 
-    Make a note of the certificate location. For example, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Your particular path will depend on your OS and the version of Python that you have installed.
+    Make a note of the certificate location. For example, `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem`. Your particular path will depend on your OS and your CLI installation.
 
 2. Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
 
@@ -208,7 +164,7 @@ To trust the Azure Stack CA root certificate, append it to the existing Python c
     | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you are operator, specify `AzureStackAdmin`. |
     | Resource Manager endpoint | https://management.local.azurestack.external | The **ResourceManagerUrl** in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` If you have a question about the integrated system endpoint, contact your cloud operator. |
     | Storage endpoint | local.azurestack.external | `local.azurestack.external` is for the ASDK. For an integrated system, you will want to use an endpoint for your system.  |
-    | Keyvalut suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an  integrated system, you will want to use an endpoint for your system.  |
+    | Keyvault suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an  integrated system, you will want to use an endpoint for your system.  |
     | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document which contains virtual machine image aliases. For more information, see [### Set up the virtual machine aliases endpoint](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
@@ -224,7 +180,7 @@ To trust the Azure Stack CA root certificate, append it to the existing Python c
 1. Update your environment configuration to use the Azure Stack specific API version profile. To update the configuration, run the following command:
 
     ```azurecli
-    az cloud update --profile 2018-03-01-hybrid
+    az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
@@ -328,7 +284,7 @@ If you are using the ASDK, you will need to trust the CA root certificate on you
     | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you are operator, specify `AzureStackAdmin`. |
     | Resource Manager endpoint | https://management.local.azurestack.external | The **ResourceManagerUrl** in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` If you have a question about the integrated system endpoint, contact your cloud operator. |
     | Storage endpoint | local.azurestack.external | `local.azurestack.external` is for the ASDK. For an integrated system, you will want to use an endpoint for your system.  |
-    | Keyvalut suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an  integrated system, you will want to use an endpoint for your system.  |
+    | Keyvault suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an  integrated system, you will want to use an endpoint for your system.  |
     | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document which contains virtual machine image aliases. For more information, see [### Set up the virtual machine aliases endpoint](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
@@ -404,7 +360,7 @@ If you are using the ASDK, you will need to trust the CA root certificate on you
 
 Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
 
-1. Find the certificate location on your machine. The location may vary depending on where you have installed Python. You will need to have pip and the certifi [module installed](#install-python-on-linux). You can use the following Python command from the bash prompt:
+1. Find the certificate location on your machine. The location may vary depending on where you have installed Python. You will need to have pip and the certifi module installed. You can use the following Python command from the bash prompt:
 
     ```bash  
     python3 -c "import certifi; print(certifi.where())"
@@ -444,7 +400,7 @@ Use the following steps to connect to Azure Stack:
     | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you are operator, specify `AzureStackAdmin`. |
     | Resource Manager endpoint | https://management.local.azurestack.external | The **ResourceManagerUrl** in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` If you have a question about the integrated system endpoint, contact your cloud operator. |
     | Storage endpoint | local.azurestack.external | `local.azurestack.external` is for the ASDK. For an integrated system, you will want to use an endpoint for your system.  |
-    | Keyvalut suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an  integrated system, you will want to use an endpoint for your system.  |
+    | Keyvault suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an  integrated system, you will want to use an endpoint for your system.  |
     | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document which contains virtual machine image aliases. For more information, see [### Set up the virtual machine aliases endpoint](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
@@ -515,7 +471,7 @@ If you are using the ASDK, you will need to trust the CA root certificate on you
 
 Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
 
-1. Find the certificate location on your machine. The location may vary depending on where you have installed Python. You will need to have pip and the certifi [module installed](#install-python-on-linux). You can use the following Python command from the bash prompt:
+1. Find the certificate location on your machine. The location may vary depending on where you have installed Python. You will need to have pip and the certifi module installed. You can use the following Python command from the bash prompt:
 
     ```bash  
     python3 -c "import certifi; print(certifi.where())"
@@ -555,7 +511,7 @@ Use the following steps to connect to Azure Stack:
     | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you are operator, specify `AzureStackAdmin`. |
     | Resource Manager endpoint | https://management.local.azurestack.external | The **ResourceManagerUrl** in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` If you have a question about the integrated system endpoint, contact your cloud operator. |
     | Storage endpoint | local.azurestack.external | `local.azurestack.external` is for the ASDK. For an integrated system, you will want to use an endpoint for your system.  |
-    | Keyvalut suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an  integrated system, you will want to use an endpoint for your system.  |
+    | Keyvault suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an  integrated system, you will want to use an endpoint for your system.  |
     | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document which contains virtual machine image aliases. For more information, see [### Set up the virtual machine aliases endpoint](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  

@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 05/06/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
@@ -63,7 +63,7 @@ This version of the Azure Stack SQL resource provider includes the following imp
 
     **Workaround**: Always use different logins for different databases under the same subscription.
 
-- **SQL resource provider fails to add SQL Server Always On listener**. When using the listener IP address of the SQL Server Always On Listener, the SQL resource provider VM cannot resolve the listener’s host name.
+- **SQL resource provider fails to add SQL Server Always On listener**. When using the listener IP address of the SQL Server Always On Listener, the SQL resource provider VM cannot resolve the listener's host name.
 
     **Workaround**: Ensure that DNS works correctly to resolve the listener IP to listener host name.
 

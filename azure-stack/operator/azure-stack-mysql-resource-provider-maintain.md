@@ -11,7 +11,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 05/06/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
@@ -41,7 +41,7 @@ To update the Defender definitions, follow these steps:
 
     Alternatively, use [this direct link](https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64) to download/run the fpam-fe.exe file.
 
-2. Open a PowerShell session to the MySQL resource provider adapter virtual machine’s maintenance endpoint.
+2. Open a PowerShell session to the MySQL resource provider adapter virtual machine's maintenance endpoint.
 
 3. Copy the definitions update file to the resource provider adapter VM using the maintenance endpoint session.
 
@@ -106,7 +106,7 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
     -Privilegedendpoint $Privilegedendpoint `
     -CloudAdminCredential $cloudCreds `
     -AzCredential $adminCreds `
-    –DiagnosticsUserPassword $passwd `
+    -DiagnosticsUserPassword $passwd `
     -DependencyFilesLocalPath $certPath `
     -DefaultSSLCertificatePassword $certPasswd `  
     -VMLocalCredential $localCreds
@@ -120,7 +120,7 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
     -Privilegedendpoint $Privilegedendpoint `
     -CloudAdminCredential $cloudCreds `
     -AzCredential $adminCreds `
-    –DiagnosticsUserPassword  $passwd
+    -DiagnosticsUserPassword  $passwd
 
 ```
 

@@ -140,5 +140,5 @@ To view a report that is filtered on a single type of validation, use the **-Rep
 For example, to view the report summary for certificates only, use the following PowerShell command line:
 
 ```powershell
-Read-AzsReadinessReport -ReportPath .\Contoso-AzsReadinessReport.json -ReportSections Certificate – Summary
+Read-AzsReadinessReport -ReportPath .\Contoso-AzsReadinessReport.json -ReportSections Certificate - Summary
 ```

@@ -3,7 +3,7 @@ title: Using API version profiles with .NET SDK in Azure Stack | Microsoft Docs
 description: Learn about using API version profiles with .NET in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,8 +13,8 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2018
-ms.author: sethm
+ms.date: 04/26/2018
+ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/07/2018
 

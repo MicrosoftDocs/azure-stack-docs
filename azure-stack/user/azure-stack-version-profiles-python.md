@@ -3,7 +3,7 @@ title: Using API version profiles with Python in Azure Stack | Microsoft Docs
 description: Learn about using API version profiles with Python in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 
 ms.service: azure-stack
@@ -12,7 +12,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2019
-ms.author: sethm
+ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 01/05/2019
 <!-- dev: viananth -->
