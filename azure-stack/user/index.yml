@@ -55,19 +55,19 @@ sections:
       html: <p>Deploy hybrid apps to Azure and Azure Stack using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.</p>
       href: /azure-stack-solution-pipeline
       image: 
-        src: https://docs.microsoft.com/media/common/i_portal.svg
+        src: https://docs.microsoft.com/media/common/i_workflow.svg
         href: /azure/azure-stack/test/
     - title: Configure hybrid cloud identity
       html: <p>Configure a hybrid cloud identity for your Azure and Azure Stack applications.</p>
       href: /azure-stack/user/azure-stack-solution-hybrid-identity
       image: 
-        src: https://docs.microsoft.com/media/common/i_portal.svg
+        src: https://docs.microsoft.com/media/common/i_identity-protection.svg
         href: /azure-stack/user/azure-stack-solution-hybrid-identity
     - title: Cross-cloud scaling solutions
       html: <p>Create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack hosted web app, to an Azure hosted web app.</p>
       href: /azure-stack/user/azure-stack-solution-cloud-burst
       image: 
-        src: https://docs.microsoft.com/media/common/i_portal.svg
+        src: https://docs.microsoft.com/media/common/i_multi-connect.svg
         href: /azure-stack/user/azure-stack-solution-cloud-burst
 - title: IaaS on Azure Stack
   items:
@@ -77,24 +77,24 @@ sections:
     style: cards
     className: cardsF
     items: 
-    - title: Overview - Deploy apps in IaaS
-      html: <p>Use Azure Stack to deploy a virtual topology to deliver your solution. </p>
-      href: /azure/blockchain-workbench/blockchain-workbench-deploy
+    - title: Overview - Deploy a VM in IaaS
+      html: <p>Can create a VM using Azure Resource Manager templates </p>
+      href: /azure-stack/user/azure-stack-create-vm-template
       image: 
-        src: https://docs.microsoft.com/media/common/i_multi-connect.svg
-        href: /azure/azure-stack/test/
+        src: https://docs.microsoft.com/media/common/i_package.svg
+        href: /azure-stack/user/azure-stack-create-vm-template
     - title: Quickstart - Create a VM
       html: <p>Create a VM that host your app.</p>
-      href: /azure/blockchain-workbench/blockchain-workbench-deploy
+      href: /azure-stack/user/azure-stack-quick-linux-portal
       image: 
         src: https://docs.microsoft.com/media/common/i_vmm-cloud.svg
-        href: /azure/azure-stack/test/
-    - title: Tutorial - Deploy an app to a VM
-      html: <p>Create the context for app and then deploy your code.</p>
-      href: /azure/blockchain-workbench/blockchain-workbench-deploy
+        href: /azure-stack/user/azure-stack-quick-linux-portal
+    - title: Deploy an app to a VM
+      html: <p>Set up a VM in Azure Stack and the deploying your app</p>
+      href: /azure-stack/user/azure-stack-dev-start-deploy-app
       image: 
         src: https://docs.microsoft.com/media/common/i_web-color.svg
-        href: /azure/azure-stack/test/
+        href: /azure-stack/user/azure-stack-dev-start-deploy-app
 - title: PaaS on Azure Stack
   items:
   - type: paragraph
