@@ -136,15 +136,14 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
 - Occurrence: Common
 
-## Infrastructure backup
-
-<!--Bug 3615401 - scheduler config lost; new issue in YYMM;  hectorl-->
-After enabling automatic backups, the scheduler service goes into disabled state unexpectedly. The backup controller service will detect that automatic backups are disabled and raise a warning in the administrator portal. This warning is expected when automatic backups are disabled.
+### Compute host agent alert
 
 - Applicable: This is a new issue with release 1904.
-- Cause: This issue is due to a bug in the service that results in loss of scheduler configuration. This bug does not change the storage location, user name, password, or encryption key.
-- Remediation: To mitigate this issue, open the backup controller settings blade in the Infrastructure Backup resource provider and select **Enable Automatic Backups**. Make sure to set the desired frequency and retention period.
-- Occurrence: Low
+- Cause: "Compute host agent" warning appears after restarting a node in the scale unit. The restart changes the default startup setting for the compute host agent service.
+- Remediation:
+  - This alert can be ignored. The agent not responding does not have any impact on operator and user operations or user applications. The alert will reappear after 24 hours if it is closed manually.
+  - Microsoft support can remediate the issue by changing the startup setting for the service. This requires opening a support ticket. If the node is restarted again, a new alert appears.
+- Occurrence: Common
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
