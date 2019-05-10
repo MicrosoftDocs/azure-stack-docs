@@ -189,7 +189,7 @@ Installation has four steps:
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.7.2
     ```
 
-- Azure Stack 1903 or later.
+- Azure Stack 1903 or earlier.
 
     ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop
