@@ -49,11 +49,11 @@ PaaS abstracts the infrastructure layer so that you deploy your app to an endpoi
 
 ### Azure Stack Resource Manager 
 
-The three previously mentioned modes, as well as PaaS or IaaS, are enabled by the Azure Stack version of the Azure Resource Manager. This management framework allows you to deploy, manage, and monitor Azure Stack resources. It lets you work with the resources as a group in a single operation. For more information about working with the Azure Stack Resource Manager, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md). 
+The three previously mentioned modes, as well as PaaS or IaaS, are enabled by the Azure Stack version of Azure Resource Manager. This management framework allows you to deploy, manage, and monitor Azure Stack resources. It lets you work with the resources as a group in a single operation. For more information about working with the Azure Stack Resource Manager, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md). 
 
 ### Azure Stack development kits 
 
-Azure Stack uses an Azure Stack version of the Azure Resource Manager. To help you work with the Azure Stack Resource Manager by using your code of choice, we've provided a number of SDKs, including: 
+Azure Stack uses an Azure Stack version of Azure Resource Manager. To help you work with the Azure Stack Resource Manager by using your code of choice, we've provided a number of SDKs, including: 
 
 - [.NET/C#](azure-stack-version-profiles-net.md)
 - [Java](azure-stack-version-profiles-java.md)
@@ -67,13 +67,13 @@ Before you begin setting up your environment, you need:
 
 - Access to the Azure Stack user portal. 
 - The name of your tenant. 
-- To determine whether you're using Azure Active directory (Azure AD) or Active Directory Federation Services (AD FS), as your identity manager. 
+- To determine whether you're using Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS), as your identity manager. 
 
-If you have any questions about your Azure Stack, contact your cloud operator. 
+If you have any questions about Azure Stack, contact your cloud operator. 
 
 ## Windows 10 
 
-If you're using a Windows 10 machine, you can work with PowerShell 5.0 and Visual Studio. And if you're working with an ASDK, you can connect to your environment with a VPN connection. 
+If you're using a Windows 10 machine, you can work with PowerShell 5.0 and Visual Studio. And if you're working with an Azure Stack SDK, you can connect to your environment with a VPN connection. 
 
 ### Set up your tools 
 
@@ -81,11 +81,11 @@ If you're using a Windows 10 machine, you can work with PowerShell 5.0 and Visua
 
 2. Download Azure Stack Tools. For instructions, see [Download Azure Stack tools from GitHub](../operator/azure-stack-powershell-download.md). 
 
-3. If you're using an ASDK, install and configure a [VPN connection to Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). 
+3. If you're using an Azure Stack SDK, install and configure a [VPN connection to Azure Stack](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). 
 
-4. Install and configure Azure CLI. For instructions, see [Use API version profiles with Azure CLI in Azure Stack](azure-stack-version-profiles-azurecli2.md). 
+4. Install and configure the Azure CLI. For instructions, see [Use API version profiles with the Azure CLI in Azure Stack](azure-stack-version-profiles-azurecli2.md). 
 
-5. Install and configure Azure storage explorer. Azure storage explorer is a standalone app that enables you to work with Azure Stack storage data. For instructions, follow the steps in [Connect storage explorer to an Azure Stack subscription or a storage account](azure-stack-storage-connect-se.md). 
+5. Install and configure Azure Storage Explorer. Storage Explorer is a standalone app that enables you to work with Azure Stack storage data. For instructions, see [Connect Storage Explorer to an Azure Stack subscription or a storage account](azure-stack-storage-connect-se.md). 
 
 ### Install your integrated development environment 
 
@@ -105,16 +105,16 @@ If you're using a Windows 10 machine, you can work with PowerShell 5.0 and Visua
 
 ## Linux 
 
-A Linux machine will allow you to work with Azure CLI and Visual Studio Code, or your own preferred integrated development environment. 
+If you're using a Linux machine, you can work with the Azure CLI, Visual Studio Code, or your own preferred integrated development environment. 
 
 > [!Note]   
-> If you're using a Linux machine with the ASDK, your remote machine will need to be in the same network as the ASDK. You will not be able to connect using a Virtual Private Network connection. 
+> If you're using a Linux machine with the Azure Stack SDK, your remote machine will need to be in the same network as the Azure Stack SDK. You will not be able to connect using a Virtual Private Network connection. 
 
 ### Set up your tools 
 
-1. Install and configure Azure CLI. For instructions, see [Use API version profiles with Azure CLI in Azure Stack](azure-stack-version-profiles-azurecli2.md). 
+1. Install and configure the Azure CLI. For instructions, see [Use API version profiles with the Azure CLI in Azure Stack](azure-stack-version-profiles-azurecli2.md). 
 
-2. Install and configure Azure storage explorer. Azure storage explorer is a standalone app that enables you to work with Azure Stack storage data. For instructions, follow the steps in [Connect storage explorer to an Azure Stack subscription or a storage account](azure-stack-storage-connect-se.md). 
+2. Install and configure Azure Storage Explorer. Storage Explorer is a standalone app that enables you to work with Azure Stack storage data. For instructions, see [Connect Storage Explorer to an Azure Stack subscription or a storage account](azure-stack-storage-connect-se.md). 
 
 ### Install your integrated development environment 
 
@@ -132,18 +132,18 @@ A Linux machine will allow you to work with Azure CLI and Visual Studio Code, or
      - [Ruby](azure-stack-version-profiles-python.md) 
      - [Python](azure-stack-version-profiles-python.md) 
 
-## macOs 
+## macOS 
 
-A macOS machine will allow you to work with Azure CLI and Visual Studio Code, or your own preferred integrated development environment. 
+A macOS machine will allow you to work with the Azure CLI and Visual Studio Code, or your own preferred integrated development environment. 
 
 > [!Note]   
-> If you're using a macOS machine with the ASDK, your remote machine will need to be in the same network as the ASDK. You will not be able to connect using a Virtual Private Network connection. 
+> If you're using a macOS machine with the Azure Stack SDK, your remote machine will need to be in the same network as the Azure Stack SDK. You will not be able to connect using a Virtual Private Network connection. 
 
 ### Set up your tools 
 
-1. Install and configure Azure CLI. For instructions, see [Use API version profiles with Azure CLI in Azure Stack](azure-stack-version-profiles-azurecli2.md). 
+1. Install and configure the Azure CLI. For instructions, see [Use API version profiles with the Azure CLI in Azure Stack](azure-stack-version-profiles-azurecli2.md). 
 
-2. Install and configure Azure storage explorer. Azure storage explorer is a standalone app that enables you to work with Azure Stack storage data. For instructions, follow the steps in [Connect storage explorer to an Azure Stack subscription or a storage account](azure-stack-storage-connect-se.md). 
+2. Install and configure Azure Storage Explorer. Storage Explorer is a standalone app that enables you to work with Azure Stack storage data. For instructions, see [Connect Storage Explorer to an Azure Stack subscription or a storage account](azure-stack-storage-connect-se.md). 
 
 ### Install your integrated development environment 
 
@@ -157,7 +157,7 @@ A macOS machine will allow you to work with Azure CLI and Visual Studio Code, or
 
      - [.NET/C#](azure-stack-version-profiles-net.md) 
      - [Java](azure-stack-version-profiles-java.md) 
-     - [Go](azure-stack-version-profiles-go.md) 
+     - [Go](azure-stack-version-profiles-go.md)
      - [Ruby](azure-stack-version-profiles-python.md) 
      - [Python](azure-stack-version-profiles-python.md) 
 
