@@ -1,9 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Stack User Documentation
 metadata:
 document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
-title: Azure Stack Documentation - Tutorials, API Reference
+title: Azure Stack User Documentation - Tutorials, API Reference
 description: Learn how to use Azure Stack services and how to build apps for Azure Stack.
 services: azure-stack
 author: mattbriggs
@@ -84,7 +83,7 @@ sections:
         src: https://docs.microsoft.com/media/common/i_package.svg
         href: /azure-stack/user/azure-stack-create-vm-template
     - title: Quickstart - Create a VM
-      html: <p>Create a VM that host your app.</p>
+      html: <p>Create a VM to host your app.</p>
       href: /azure-stack/user/azure-stack-quick-linux-portal
       image: 
         src: https://docs.microsoft.com/media/common/i_vmm-cloud.svg
@@ -98,7 +97,7 @@ sections:
 - title: PaaS on Azure Stack
   items:
   - type: paragraph
-    text: 'You can use Azure Stack to your Plateform-as-a-Service (PaaS) workloads:'
+    text: 'You can use Azure Stack to your Platform-as-a-Service (PaaS) workloads:'
   - type: list
     style: cards
     className: cardsF
@@ -111,10 +110,10 @@ sections:
         href: /azure/azure-stack/test/
     - title: Quickstart - Deploy Wordpress to a Kuberentes Cluster
       html: <p>Create a content management system in orchestrated containers.</p>
-      href: /azure/blockchain-workbench/blockchain-workbench-deploy
+      href: /azure-stack/user/azure-stack-solution-template-kubernetes-deploy
       image: 
-        src: https://docs.microsoft.com/media/common/i_data-collection.svg
-        href: /azure/azure-stack/test/
+        src: /media/index/kubernetes.png
+        href: /azure-stack/user/azure-stack-solution-template-kubernetes-deploy
     - title: Quickstart - Deploy your container to Azure Stack
       html: <p>Create a Docker container with your app and host it in Azure Stack.</p>
       href: /azure/blockchain-workbench/blockchain-workbench-deploy
