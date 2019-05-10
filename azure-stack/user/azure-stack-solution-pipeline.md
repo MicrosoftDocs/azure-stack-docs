@@ -90,7 +90,7 @@ This tutorial assumes that you have some basic knowledge of Azure and Azure Stac
 ### Developer tool requirements
 
 * Create an [Azure DevOps Services workspace](https://docs.microsoft.com/azure/devops/repos/tfvc/create-work-workspaces). The sign-up process creates a project named **MyFirstProject**.
-* [Install Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) and [sign-in to Azure DevOps Services](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
+* [Install Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) and [sign-in to Azure DevOps Services](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
 * Connect to your project and [clone it locally](https://www.visualstudio.com/docs/git/gitquickstart).
 
   > [!Note]
