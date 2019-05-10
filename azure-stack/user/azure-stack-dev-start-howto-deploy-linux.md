@@ -30,13 +30,13 @@ Use the instructions in this article to get up and running with any web app, fra
 
 ## Deploy a Linux VM for a web app
 
-In this process, you create a secret key, use the base image of the Linux VM, specify the particular attributes of the VM, and then create the VM. After you create the VM, you open the ports that are necessary for working with the VM and for the VM to host your app. Next, you create the DNS name. Finally, you connect to the VM and update the machine by using the apt-get utility. After you've completed the process, you'll have a VM in your Azure Stack that's ready to host your web app.
+In this process, you create a secret key, use the base image of the Linux VM, specify the particular attributes of the VM, and then create the VM. After you create the VM, you open the ports that are necessary for working with the VM and for the VM to host your app. Next, you create the DNS name. Finally, you connect to the VM and update the machine by using the apt-get utility. After you've completed the process, you'll have a VM in your Azure Stack instance that's ready to host your web app.
 
 Before you begin, make sure that you have everything you need in place.
 
 ## Prerequisites
 
-- An Azure Stack subscription, with access to the Ubuntu Server 16.04 LTS image. You can use a later version of the image, but these instructions are written with the 16.04 LTS in mind. If you don't have this image, contact your cloud operator to get the image into your Azure Stack marketplace.
+- An Azure Stack subscription, with access to the Ubuntu Server 16.04 LTS image. You can use a later version of the image, but these instructions are written with the 16.04 LTS in mind. If you don't have this image, contact your cloud operator to get the image into the Azure Stack marketplace.
 
 ## Deploy the VM by using the portal
 
@@ -45,7 +45,7 @@ To deploy the VM, follow the instructions in the next several sections.
 ### Create your VM
 
 1. Create a Secure Shell (SSH) public key for your server. For more information, see [How to use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
-1. In your Azure Stack portal, select **Create a resource** > **Compute** > **Ubuntu Server 16.04 LTS**.
+1. In the Azure Stack portal, select **Create a resource** > **Compute** > **Ubuntu Server 16.04 LTS**.
 
     ![Deploy a web app to an Azure Stack VM](media/azure-stack-dev-start-howto-deploy-linux/001-portal-compute.png)
 
@@ -61,27 +61,28 @@ To deploy the VM, follow the instructions in the next several sections.
 
     e. Retrieve the SSH public key that you created. Open it in a text editor, copy the key, and then paste it into the **SSH public key** box. Include the text from `---- BEGIN SSH2 PUBLIC KEY ----` to `---- END SSH2 PUBLIC KEY ----`. Paste the entire block of text into the key box:
 
-            ```text  
-            ---- BEGIN SSH2 PUBLIC KEY ----
-            Comment: "rsa-key-20190207"
-            <Your key block>
-            ---- END SSH2 PUBLIC KEY ----```
+        ```text  
+        ---- BEGIN SSH2 PUBLIC KEY ----
+        Comment: "rsa-key-20190207"
+        <Your key block>
+        ---- END SSH2 PUBLIC KEY ----
+        ```
 
-    f. Select your Azure Stack subscription.
+    f. Select the subscription for your Azure Stack instance.
 
     g. Create a new resource group or use an existing one, depending on how you want to organize the resources for your app.
 
-    h. Select your location. The ASDK is usually in a *local* region. The location depends on your Azure Stack.
-1. For **2. Size** type:
-    - Select the size of data and RAM for your VM that's available in your Azure Stack.
-    - You can either browse the list or filter for the size of your VM by **Compute type**, **CPUs**, and storage space.
+    h. Select your location. The ASDK is usually in a *local* region. The location depends on your Azure Stack instance.
+1. For **2. Size**, type:
+    - Select the size of data and RAM for your VM that's available in your Azure Stack instance.
+    - You can either browse the list or filter for the size of your VM by **Compute type**, **CPUs**, and **Storage space**.
     
     > [!NOTE]
     > - The prices presented are estimates in your local currency. They include only Azure infrastructure costs and any discounts for the subscription and location. They don't include any applicable software costs. 
     > - The recommended sizes are determined by the publisher of the selected image and are based on hardware and software requirements.
     > - Using Standard disks (HDD) rather than Premium disks (SSD) might affect operating system performance.
 
-1. In **3. Configure optional** features type:
+1. In **3. Configure optional** features, type:
 
     a. For **High availability,** select an availability set. To provide redundancy to your application, group two or more virtual machines in an availability set. This configuration ensures that during a planned or unplanned maintenance event, at least one virtual machine will be available and meet the 99.95% Azure service-level agreement (SLA). The availability set of a virtual machine can't be changed after it's created.
 
@@ -163,7 +164,7 @@ In addition, you can create a DNS name for your server, so that users can connec
 
 ### Connect via SSH to update your VM
 
-1. On the same network as your Azure Stack, open your SSH client. For more information, see [Use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
+1. On the same network as your Azure Stack instance, open your SSH client. For more information, see [Use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
 
 1. Enter the following commands:
 
