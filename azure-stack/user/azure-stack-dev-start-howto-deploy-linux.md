@@ -61,12 +61,12 @@ To deploy the VM, follow the instructions in the next several sections.
 
     e. Retrieve the SSH public key that you created. Open it in a text editor, copy the key, and then paste it into the **SSH public key** box. Include the text from `---- BEGIN SSH2 PUBLIC KEY ----` to `---- END SSH2 PUBLIC KEY ----`. Paste the entire block of text into the key box:
 
-        ```text  
-        ---- BEGIN SSH2 PUBLIC KEY ----
-        Comment: "rsa-key-20190207"
-        <Your key block>
-        ---- END SSH2 PUBLIC KEY ----
-        ```
+    ```text  
+    ---- BEGIN SSH2 PUBLIC KEY ----
+    Comment: "rsa-key-20190207"
+    <Your key block>
+    ---- END SSH2 PUBLIC KEY ----
+    ```
 
     f. Select the subscription for your Azure Stack instance.
 
