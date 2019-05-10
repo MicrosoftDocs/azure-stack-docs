@@ -51,6 +51,8 @@ The Azure Stack 1905 update build number is **1.1905.x.xx**.
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
+- Fixed an issue in which a "Compute host agent" warning appeared after restarting a node in the scale unit.
+
 ### Security updates
 
 This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack. For information, see [Azure Stack security updates.](azure-stack-release-notes-security-updates-1904.md)
