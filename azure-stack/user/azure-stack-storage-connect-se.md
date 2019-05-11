@@ -80,7 +80,7 @@ Use the following steps to connect Storage Explorer to an Azure Stack subscripti
 
     ![Add an Azure Stack account](./media/azure-stack-storage-connect-se/add-azure-stack-account.png)
 
-3. In the Connect to Azure Storage dialog box, under **Azure environment**, select **Azure**, **Azure China**, **Azure Germany**, **Azure US Government**, or **Add New Environment**, which depends on the Azure Stack account that is being used. Select **Sign in** to sign in with the Azure Stack account associated with at least one active Azure Stack subscription.
+3. In the Connect to Azure Storage dialog box, under **Azure environment**, select **Azure**, **Azure China 21Vianet**, **Azure Germany**, **Azure US Government**, or **Add New Environment**. This depends on the Azure Stack account being used. Select **Sign in** to sign in with the Azure Stack account associated with at least one active Azure Stack subscription.
 
     ![Connect to Azure storage](./media/azure-stack-storage-connect-se/azure-stack-connect-to-storage.png)
 
@@ -114,7 +114,7 @@ Use the following steps to connect Storage Explorer to an Azure Stack subscripti
     | Environment name | The field can be customized by user. |
     | Azure Resource Manager endpoint | The samples of Azure Resource Manager resource endpoints of Azure Stack Development Kit.<br>For operators: https://adminmanagement.local.azurestack.external <br> For users: https://management.local.azurestack.external |
 
-    If you are working on Azure Stack integrated system and don't know your management endpoint, contact your operator.
+    If you're working on Azure Stack integrated system and don't know your management endpoint, contact your operator.
 
     ![Add an account - Custom Environments](./media/azure-stack-storage-connect-se/custom-environments.png)
 
@@ -144,7 +144,7 @@ You can also connect to an Azure Stack storage account using storage account nam
 
 3. In the Connect to Azure Storage dialog box, select **Use a storage account name and key**.
 
-4. Input your account name in the **Account name**, paste account key into the **Account key** text box, select **Other (enter below)** in **Storage endpoints domain** and input the Azure Stack endpoint.
+4. Input your account name in the **Account name** and paste the account key into the **Account key** text box. Then, select **Other (enter below)** in **Storage endpoints domain** and input the Azure Stack endpoint.
 
     An Azure Stack endpoint includes two parts: the name of a region and the Azure Stack domain. In the Azure Stack Development Kit, the default endpoint is **local.azurestack.external**. Contact your cloud admin if you're not sure about your endpoint.
 
