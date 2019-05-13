@@ -3,7 +3,7 @@ title: Azure Stack Development Kit deployment (ASDK) prerequisites | Microsoft D
 description: Review the environment and hardware requirements for Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2018
-ms.author: jeffgilb
+ms.date: 05/13/2019
+ms.author: mabrigg
 ms.reviewer: misainat
-ms.lastreviewed: 12/12/2018
+ms.lastreviewed: 05/13/2019
 
 
 ---
@@ -39,6 +39,8 @@ Before you deploy the Azure Stack Development Kit (ASDK), make sure your develop
 <sup>*</sup> You need more than this recommended capacity if you plan on adding many of the [marketplace items](../operator/azure-stack-create-and-publish-marketplace-item.md) from Azure.
 
 **Data disk drive configuration:** All data drives must be of the same type (all SAS, all SATA, or all NVMe) and capacity. If SAS disk drives are used, the disk drives must be attached via a single path (no MPIO, multi-path support is provided).
+
+If you mix SSD and HDD in your system, you must have at least $SimpleDiskCountThresholdWithSsd = 5 HDDs. For example, if you had 6 HHD and 3 SSD in your system. You would want 1 cache disk for every two discs providing storage capacity such that your ratio of cache to storage would be 1:4.
 
 **HBA configuration options**
 
