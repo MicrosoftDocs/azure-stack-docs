@@ -3,7 +3,7 @@ title: Recover App Service on Azure Stack | Microsoft Docs
 description: Detailed guidance for Azure Stack App Service disaster recovery
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: apwestgarth
 ms.lastreviewed: 03/21/2019
 
