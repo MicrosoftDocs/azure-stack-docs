@@ -73,7 +73,7 @@ To use a two-way mirror configuration for storage resiliency:
 
 - HDD capacity in the system of greater than two terabytes.
 - If you don't have SSDs in your ASDK, you will need at least eight HDDs for a two-way mirror configuration.
-- If you have have SSDs in your ASDK, along with HDDs, you'll need at least five HDDs. However, six HHDs are recommended. For six HDDs, it would also be recommended to have at least corresponding three SSDs in the system so that you have one cache disk (SSD) serve two capacity drives (HDD).
+- If you have SSDs in your ASDK, along with HDDs, you'll need at least five HDDs. However, six HHDs are recommended. For six HDDs, it would also be recommended to have at least corresponding three SSDs in the system so that you have one cache disk (SSD) serve two capacity drives (HDD).
 
 Example two-way mirror configuration:
 
