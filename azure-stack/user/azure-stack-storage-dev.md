@@ -22,7 +22,7 @@ Microsoft Azure Stack provides a set of storage services that includes blob, tab
 Use this article as a guide to get started using Azure Stack storage development tools. You can find more detailed information and sample code in corresponding Azure storage tutorials.
 
 > [!NOTE]  
-> There are known differences between Azure Stack storage and Azure storage, including specific requirements for each platform. For example, there are specific client libraries and specific endpoint suffix requirements for Azure Stack. For more information, see [Azure Stack storage: Differences and considerations](azure-stack-acs-differences.md).
+> There are differences between Azure Stack storage and Azure storage, including specific requirements for each platform. For example, there are specific client libraries and endpoint suffix requirements for Azure Stack. For more information, see [Azure Stack storage: Differences and considerations](azure-stack-acs-differences.md).
 
 ## Azure client libraries
 
@@ -90,7 +90,7 @@ To install via Composer: (take blob as example).
 
 An Azure Stack endpoint includes two parts: the name of a region and the Azure Stack domain.
 In the Azure Stack Development Kit, the default endpoint is **local.azurestack.external**.
-Contact your cloud administrator if you're not sure about your endpoint.
+Contact your cloud admin if you're not sure about your endpoint.
 
 ## Examples
 
