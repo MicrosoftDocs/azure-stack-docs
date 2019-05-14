@@ -3,7 +3,7 @@ title: Make virtual machines available to your Azure Stack users| Microsoft Docs
 description: Learn how to make virtual machines available on Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: unknown
 ms.lastreviewed: 09/11/2018
 ms.custom: mvc
