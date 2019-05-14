@@ -3,7 +3,7 @@ title: General datacenter integration considerations for Azure Stack integrated 
 description: Learn what you can do to plan now and prepare for datacenter integration with multi-node Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2018
 ---
