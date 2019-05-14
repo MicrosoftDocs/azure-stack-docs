@@ -156,7 +156,7 @@ Follow these steps to collect and download the cluster logs:
     ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmd-host 192.168.102.37
      ```
 
-4. After a few minutes, the script will output the collected logs to a directory named `KubernetesLogs_{{time-stamp}}`. There'll find a directory for each virtual machine that belongs to the cluster.
+4. After a few minutes, the script will output the collected logs to a directory named `KubernetesLogs_{{time-stamp}}`. There you'll find a directory for each virtual machine that belongs to the cluster.
 
     The log collector script will also look for errors in the log files and include troubleshooting steps if it finds a known issue. Make sure you're running the latest version of the script to increase chances of finding known issues.
 
