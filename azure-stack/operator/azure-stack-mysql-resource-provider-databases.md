@@ -3,7 +3,7 @@ title: Using databases provided by the MySQL Adapter RP on AzureStack | Microsof
 description: How to create and manage MySQL databases provisioned using the MySQL Adapter Resource Provider
 services: azure-stack
 documentationCenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: quying
 ms.lastreviewed: 10/16/2018
 
