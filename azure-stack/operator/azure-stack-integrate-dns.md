@@ -2,12 +2,12 @@
 title: Azure Stack datacenter integration - DNS
 description: Learn how to integrate Azure Stack DNS with your datacenter DNS
 services: azure-stack
-author: jeffgilb
+author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
 ms.date: 05/09/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 05/09/2019
 keywords:
