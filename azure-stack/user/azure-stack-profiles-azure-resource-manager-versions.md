@@ -15,12 +15,11 @@ ms.date: 05/08/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 05/08/2019
-
 ---
 
 # Resource provider API versions supported by profiles in Azure Stack
 
-You can find the resource provider and version numbers for each API profile used by Azure Stack in this article. The tables in this article list the versions supported for each resource provider and the API versions of the profiles. Each resource provider contains a set of resource types and specific version numbers. 
+You can find the resource provider and version numbers for each API profile used by Azure Stack in this article. The tables in this article list the versions supported for each resource provider and the API versions of the profiles. Each resource provider contains a set of resource types and specific version numbers.
 
 The API profile uses three naming conventions:
 
@@ -30,10 +29,10 @@ The API profile uses three naming conventions:
 
 For an explanation of API profiles and version release cadence for Azure Stack, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md).
 
-> [!Note]  
+> [!Note]
 > The **latest** API profile contains the latest version of the resource provider API, and is not listed in this article.
 
-## Overview of 2019 - 03-01-hybrid
+## Overview of 2019-03-01-hybrid
 
 | Resource provider | Api-version |
 |-----------------------------------------------|-----------------------------------------------------|
