@@ -39,7 +39,7 @@ This article uses Ruby and a Ruby on Rails web framework.
 
 ## Install Ruby
 
-1. Connect to your VM by using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-ssh-public-key.md#connect-via-ssh-with-putty).
+1. Connect to your VM by using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
 
 1. Install the PPA repository. At the bash prompt on your VM, enter the following commands:
 
