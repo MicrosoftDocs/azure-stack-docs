@@ -15,7 +15,7 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.reviewer: ppacent
 ms.author: mabrigg
-ms.lastreviewed: 04/15/2019
+ms.lastreviewed: 05/14/2019
 
 ---
 
@@ -31,7 +31,7 @@ All the certificates, passwords, secure strings, and keys used by the Azure Stac
 
 - **External secrets**
 
-Infrastructure service certificates for external-facing services that provided by the Azure Stack Operator. External secrets include the certificates for the following services:
+Infrastructure service certificates for external-facing services that are provided by the Azure Stack Operator. External secrets include the certificates for the following services:
 
 - Administrator Portal
 - Public Portal
