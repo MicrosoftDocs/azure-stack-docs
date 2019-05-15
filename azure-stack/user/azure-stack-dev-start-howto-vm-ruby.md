@@ -35,7 +35,7 @@ This article uses Ruby and a Ruby on Rails web framework.
     | 443 | HTTPS | The Hypertext Transfer Protocol Secure (HTTPS) is an extension of HTTP. It's used for secure communication over a computer network. Clients connect to your web app with either the public IP or DNS name of your VM. |
     | 22 | SSH | The Secure Shell (SSH) Protocol is a cryptographic network protocol for operating network services securely over an unsecured network. You use this connection with an SSH client to configure the VM and deploy the app. |
     | 3389 | RDP | Optional. The Remote Desktop Protocol (RDP) allows a remote desktop connection to use a graphic user interface on your machine.   |
-    | 3000 | Custom | Port 3000 is used by the Go web framework in development. For a production server, you route your traffic through 80 and 443. |
+    | 3000 | Custom | Port 3000 is used by the Ruby on Rails web framework in development. For a production server, you route your traffic through 80 and 443. |
 
 ## Install Ruby
 
