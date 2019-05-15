@@ -3,7 +3,7 @@ title: Protect VMs deployed on Azure Stack | Microsoft Docs
 description:  Guidelines on how to protect virtual machines deployed on Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/06/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 3/19/2018
 ---

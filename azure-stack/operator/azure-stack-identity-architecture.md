@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 05/09/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.lastreviewed: 02/11/2019
+ms.lastreviewed: 05/09/2019
 ---
 
 
@@ -38,7 +38,7 @@ The identity provider that you choose can limit your options, including support 
 |Support for tools such as Azure CLI, Visual Studio, and PowerShell  |Yes |Yes|
 |Create service principals through the Azure portal     |Yes |No|
 |Create service principals with certificates      |Yes |Yes|
-|Create service principals with secrets (keys)    |Yes |No|
+|Create service principals with secrets (keys)    |Yes |Yes|
 |Applications can use the Graph service           |Yes |No|
 |Applications can use identity provider for sign-in |Yes |Yes. Requires applications to federate with on-premises AD FS instances. |
 

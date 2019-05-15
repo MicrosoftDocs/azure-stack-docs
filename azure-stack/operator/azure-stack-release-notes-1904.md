@@ -146,6 +146,8 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 
 - Fixed an issue in which the marketplace management screen was empty if the offline syndication tool was used to upload images, and any one of them was missing the icon URI(s).
 
+- Fixed an issue which prevented products that failed to download from being deleted in marketplace management.
+
 ### Security updates
 
 This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack. For information, see [Azure Stack security updates.](azure-stack-release-notes-security-updates-1904.md)
