@@ -19,8 +19,6 @@ ms.lastreviewed: 04/24/2019
 
 You can create a virtual machine (VM) to host your C# ASP.NET web app in Azure Stack. This article discusses the instructions to follow when you set up your server, configure it to host your C# ASP.NET web app, and then deploy the app right from Visual Studio.
 
-C# is a general-purpose, multi-paradigm programming language encompassing strong typing, lexically scoped, imperative, declarative, functional, generic, object-oriented, and component-oriented programming disciplines. To learn the C# programming language and find additional resources for C#, see the [C# Guide](https://docs.microsoft.com/dotnet/csharp/).
-
 This article uses a C# 6.0 app that uses ASP.NET Core 2.2 running on a Windows 2016 server.
 
 ## Create a VM
@@ -58,10 +56,11 @@ This article uses a C# 6.0 app that uses ASP.NET Core 2.2 running on a Windows 2
 
     | Port | Protocol | Description |
     | --- | --- | --- |
-    | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems. Clients will connect to your web app with either the public IP or DNS name of your VM. |
-    | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is an extension of the Hypertext Transfer Protocol (HTTP). It's used for secure communication over a computer network. Clients will connect to your web app with either the public IP or DNS name of your VM. |
-    | 22 | SSH | Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network. You use this connection with an SSH client to configure the VM and deploy the app. |
-    | 3389 | RDP | Optional. Remote Desktop Protocol (RDP) allows a remote desktop connection to use a graphic user interface with your machine.   |
+    | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is the protocol used to deliver web pages from servers. Clients connect via HTTP with a DNS name or IP address. |
+    | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is a secure version of HTTP that requires a security certificate and allows for the encrypted transmission of information.  |
+    | 22 | SSH | Secure Shell (SSH) is an encrypted network protocol for secure communications. You will use this connection with an SSH client to configure the VM and deploy the app. |
+    | 3389 | RDP | Optional. The Remote Desktop Protocol allows for a remote desktop connection to use a graphic user interface your machine.   |
+    | 8080 | Custom | The default port for the Apache Tomcat service is 8080. For a production server, you will want to route your traffic through 80 and 443. |
 
     For each port:
 
@@ -138,3 +137,4 @@ Create a publish target to your VM in Azure Stack.
 
 - Learn how to [Set up a development environment in Azure Stack](azure-stack-dev-start.md).
 - Learn about [common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
+- To learn the C# programming language and find additional resources for C#, see the [C# Guide](https://docs.microsoft.com/dotnet/csharp/)
