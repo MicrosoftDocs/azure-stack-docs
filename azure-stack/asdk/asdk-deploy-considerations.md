@@ -13,30 +13,33 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2018
+ms.date: 05/13/2019
 ms.author: mabrigg
 ms.reviewer: misainat
-ms.lastreviewed: 12/12/2018
+ms.lastreviewed: 05/13/2019
 
 
 ---
 
 # Azure Stack deployment planning considerations
+
 Before you deploy the Azure Stack Development Kit (ASDK), make sure your development kit host computer meets the requirements described in this article.
 
-
 ## Hardware
+
 | Component | Minimum | Recommended |
 | --- | --- | --- |
 | Disk drives: Operating System |1 operating system disk with minimum of 200 GB available for system partition (SSD or HDD) |1 OS disk with minimum of 200 GB available for system partition (SSD or HDD) |
 | Disk drives: General development kit data<sup>*</sup>  |4 disks. Each disk provides a minimum of 240 GB of capacity (SSD or HDD). All available disks are used. |4 disks. Each disk provides a minimum of 400 GB of capacity (SSD or HDD). All available disks are used. |
 | Compute: CPU |Dual-Socket: 16 Physical Cores (total) |Dual-Socket: 20 Physical Cores (total) |
-| Compute: Memory |192 GB RAM |256 GB RAM |
+| Compute: Memory |192-GB RAM |256-GB RAM |
 | Compute: BIOS |Hyper-V Enabled (with SLAT support) |Hyper-V Enabled (with SLAT support) |
 | Network: NIC |Windows Server 2012 R2 Certification. No specialized features required |Windows Server 2012 R2 Certification. No specialized features required |
 | HW logo certification |[Certified for Windows Server 2012 R2](https://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Certified for Windows Server 2016](https://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
 
 <sup>*</sup> You need more than this recommended capacity if you plan on adding many of the [marketplace items](../operator/azure-stack-create-and-publish-marketplace-item.md) from Azure.
+
+### Hardware notes
 
 **Data disk drive configuration:** All data drives must be of the same type (all SAS, all SATA, or all NVMe) and capacity. If SAS disk drives are used, the disk drives must be attached via a single path (no MPIO, multi-path support is provided).
 
@@ -61,6 +64,22 @@ Before you deploy the Azure Stack Development Kit (ASDK), make sure your develop
 **Example HBAs**: LSI 9207-8i, LSI-9300-8i, or LSI-9265-8i in pass-through mode
 
 Sample OEM configurations are available.
+
+### Storage resiliency for the ASDK
+
+As a single node system, the ASDK isn't designed for validating production redundancy of an Azure Stack integrated system. However, you can increase the level of the underlying storage redundancy of the ASDK through the optimal mix of HDD and SSD drives. You can deploy a two-way mirror configuration, similar to a RAID1, rather than a simple resiliency configuration, which is similar to a RAID0. Use enough capacity, type, and number of drives for the underlying Storage Spaces Direct configuration.
+
+To use a two-way mirror configuration for storage resiliency:
+
+- HDD capacity in the system of greater than two terabytes.
+- If you don't have SSDs in your ASDK, you will need at least eight HDDs for a two-way mirror configuration.
+- If you have SSDs in your ASDK, along with HDDs, you'll need at least five HDDs. However, six HHDs are recommended. For six HDDs, it would also be recommended to have at least corresponding three SSDs in the system so that you have one cache disk (SSD) serve two capacity drives (HDD).
+
+Example two-way mirror configuration:
+
+- Eight HDDs
+- Three SSD / six HDD
+- Four SSD / eight HDD
 
 ## Operating system
 |  | **Requirements** |
@@ -124,4 +143,7 @@ Azure Stack requires access to the Internet, either directly or through a transp
 
 
 ## Next steps
-[Download the ASDK deployment package](asdk-download.md)
+
+- [Download the ASDK deployment package](asdk-download.md)
+- To learn more about Storage Spaces Direct, see [Storage Spaces Direct overview](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview).
+
