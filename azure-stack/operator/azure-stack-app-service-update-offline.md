@@ -3,7 +3,7 @@ title: 'Update Azure App Service Offline | Microsoft Docs'
 description: Detailed guidance for updating Azure App Service on Azure Stack offline
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 

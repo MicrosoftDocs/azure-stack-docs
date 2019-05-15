@@ -2,7 +2,7 @@
 title: Diagnostics in Azure Stack
 description: How to collect log files for diagnostics in Azure Stack
 services: azure-stack
-author: jeffgilb
+author: mattbriggs
 manager: femila
 services: azure-stack
 cloud: azure-stack
@@ -10,7 +10,7 @@ cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
 ms.date: 04/30/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: adshar
 ms.lastreviewed: 11/20/2018
 ---
