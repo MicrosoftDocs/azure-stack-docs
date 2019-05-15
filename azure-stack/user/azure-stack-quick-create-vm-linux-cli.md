@@ -22,7 +22,7 @@ ms.lastreviewed: 01/14/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can create a Ubuntu Server 16.04 LTS virtual machine by using the Azure CLI. Follow the steps in this article to create and use a virtual machine. This article also gives you the steps to:
+You can create an Ubuntu Server 16.04 LTS virtual machine by using the Azure CLI. Follow the steps in this article to create and use a virtual machine. This article also gives you the steps to:
 
 * Connect to the virtual machine with a remote client.
 * Install the NGINX web server and view the default home page.
