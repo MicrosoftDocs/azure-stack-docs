@@ -32,7 +32,7 @@ For an explanation of API profiles and version release cadence for Azure Stack, 
 > [!Note]
 > The **latest** API profile contains the latest version of the resource provider API, and is not listed in this article.
 
-## Overview of 2019-03-01-hybrid
+## Overview of the 2019-03-01-hybrid profile
 
 | Resource provider | Api-version |
 |-----------------------------------------------|-----------------------------------------------------|
@@ -46,9 +46,9 @@ For an explanation of API profiles and version release cadence for Azure Stack, 
 | Microsoft.Authorization (policy operations) | 2016-09-01 |
 | Microsoft.Insights | 2018-01-01 |
 
-For a list of the versions for each resource type for the providers in the API profile, see [Details for the 2019-03-01-hybrid](#details-for-the-2019-03-01-hybrid) profile.
+For a list of the versions for each resource type for the providers in the API profile, see [Details for the 2019-03-01-hybrid profile](#details-for-the-2019-03-01-hybrid-profile).
 
-## Details for the 2019-03-01-hybrid
+## Details for the 2019-03-01-hybrid profile
 
 ### Microsoft.Authorization
 
