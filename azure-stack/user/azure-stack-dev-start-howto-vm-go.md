@@ -18,9 +18,9 @@ ms.lastreviewed: 04/24/2019
 
 # How to deploy a GO web app to a VM in Azure Stack
 
-You can create a VM to host your Go Web app in Azure Stack. This article looks at the steps you will follow in setting up server, configuring the server to host your GO web app, and then deploying your app.
+You can create a VM to host your Go Web app in Azure Stack. This article looks at the steps you will follow in setting up server, configuring the server to host your GO web app, and then deploying your app. 
 
-Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make it easy to write programs that get the most out of multicore and networked machines, while its type system enables flexible and modular program construction. To learn the Go programming language and find additional resources for GO, see [Golang.org](https://golang.org).
+To learn the Go programming language and find additional resources for GO, see [Golang.org](https://golang.org).
 
 ## Create a VM
 
