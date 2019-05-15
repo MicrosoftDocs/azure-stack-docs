@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2019
+ms.date: 05/15/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 05/10/2019
+ms.lastreviewed: 05/15/2019
 ---
 
 # Azure Stack 1904 known issues
@@ -65,10 +65,18 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 
 ### Marketplace management
 
-- Applicable: This issue applies to 1904.
-- Cause: The marketplace management screen is not visible when you sign on to the administrator portal.
+- Applicable: This is a new issue with release 1904.
+- Cause: The marketplace management screen is not visible when you sign in to the administrator portal.
 - Remediation: Refresh the browser.
 - Occurrence: Intermittent
+
+### Marketplace management
+
+- Applicable: This issue applies to 1904.
+- Cause: When you filter results on "Add from Azure" blade in Marketplace management tab in administrator portal, you may see incorrect filtered results. 
+- Remediation: Sort results by Name column and the results will be corrected. 
+- Occurrence: Intermittent
+
 
 ### Upload blob
 
@@ -79,34 +87,34 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 
 ## Networking
 
-### Load Balancer
+### Load balancer
 
-#### Add Backend Pool
+#### Add backend pool
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, if you attempt to add a **Backend Pool** to a **Load Balancer**, the operation fails with the error message **Failed to update Load Balancer...**.
-- Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
+- Remediation: Use PowerShell, CLI, or an Azure Resource Manager template to associate the backend pool with a load balancer resource.
 - Occurrence: Common
 
-#### Create Inbound NAT
+#### Create inbound NAT
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer**, the operation fails with the error message **Failed to update Load Balancer...**.
-- Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
+- Remediation: Use PowerShell, CLI, or an Azure Resource Manager template to associate the backend pool with a load balancer resource.
 - Occurrence: Common
 
-#### Create Load Balancer
+#### Create load balancer
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Create Load Balancer** window shows an option to create a **Standard** Load Balancer SKU. This option is not supported in Azure Stack.
+- Cause: In the user portal, the **Create Load Balancer** window shows an option to create a **Standard** load balancer SKU. This option is not supported in Azure Stack.
 - Remediation: Use the Basic load balancer options instead.
 - Occurrence: Common
 
-#### Public IP Address
+#### Public IP address
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, the **Create Public IP Address** window shows an option to create a **Standard** SKU. The **Standard** SKU is not supported in Azure Stack.
-- Remediation: Use Basic SKU instead for public IP address.
+- Remediation: Use the **Basic** SKU instead for public IP addresses.
 - Occurrence: Common
 
 ## Compute
@@ -146,7 +154,7 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 ### Compute host agent alert
 
 - Applicable: This is a new issue with release 1904.
-- Cause: "Compute host agent" warning appears after restarting a node in the scale unit. The restart changes the default startup setting for the compute host agent service.
+- Cause: A **Compute host agent** warning appears after restarting a node in the scale unit. The restart changes the default startup setting for the compute host agent service.
 - Remediation:
   - This alert can be ignored. The agent not responding does not have any impact on operator and user operations or user applications. The alert will reappear after 24 hours if it is closed manually.
   - Microsoft support can remediate the issue by changing the startup setting for the service. This requires opening a support ticket. If the node is restarted again, a new alert appears.
