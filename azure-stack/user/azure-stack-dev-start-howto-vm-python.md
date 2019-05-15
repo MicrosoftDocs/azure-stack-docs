@@ -40,7 +40,7 @@ This article uses Python 3.x running Flask in a virtual environment on an Nginx 
 
 ## Install Python
 
-1. Connect to your VM by using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-ssh-public-key.md#connect-via-ssh-with-putty).
+1. Connect to your VM by using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
 2. At your bash prompt on your VM, enter the following command:
 
     ```bash  
