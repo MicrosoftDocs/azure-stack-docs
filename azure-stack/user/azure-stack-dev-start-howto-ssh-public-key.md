@@ -89,7 +89,7 @@ Before you connect, you will need:
 
     ![The PuTTY Configuration pane - SSH private key](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-set-private-key.png)
 
-5. Next to the **Private key file for authentication** box, select **Browse**, and then search for the private key file (\<filename>.ppk) of your public and private key pair.
+5. Next to the **Private key file for authentication** box, select **Browse**, and then search for the private key file (*\<filename>.ppk*) of your public and private key pair.
 6. In the **Category** tree, select **Session**.
 
     ![The PuTTY Configuration pane "Saved Sessions" box](media/azure-stack-dev-start-howto-ssh-public-key/003-puTTY-save-session.png)
@@ -100,7 +100,7 @@ Before you connect, you will need:
 
 ## Connect with SFTP with FileZilla
 
-To move files to and from your Linux machine, you can use FileZilla as an FTP client that supports Secure FTP (SFTP). FileZilla runs on Windows 10, Linux, and macOS. The FileZilla client supports FTP, FTP over TLS (FTPS), and SFTP. It is open-source software that's distributed free of charge under the terms of the GNU General Public License.
+To move files to and from your Linux machine, you can use FileZilla, an FTP client that supports Secure FTP (SFTP). FileZilla runs on Windows 10, Linux, and macOS. The FileZilla client supports FTP, FTP over TLS (FTPS), and SFTP. It is open-source software that's distributed free of charge under the terms of the GNU General Public License.
 
 ### Set your connection
 
@@ -127,7 +127,7 @@ To move files to and from your Linux machine, you can use FileZilla as an FTP cl
 
 1. Open FileZilla.
 1. Select **File** > **Site Manager**.
-1. Select the name of your site, and select **Connect**.
+1. Select the name of your site, and then select **Connect**.
 
 ## Next steps
 
