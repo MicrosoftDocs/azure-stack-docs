@@ -38,7 +38,7 @@ Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make
 
 ## Install Go
 
-1. Connect to your VM by using your SSH client. For instructions, see [Connect via SSH with PuTTY ](azure-stack-dev-start-howto-ssh-public-key.md#connect-via-ssh-with-putty).
+1. Connect to your VM by using your SSH client. For instructions, see [Connect via SSH with PuTTY ](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
 
 1. At the bash prompt on your VM, enter the following commands:
 
