@@ -1,6 +1,6 @@
 ---
-title: Create a Linux virtual machine by using PowerShell in Azure Stack | Microsoft Docs
-description: Create a Linux virtual machine with PowerShell in Azure Stack.
+title: Create a Linux virtual machine using PowerShell in Azure Stack | Microsoft Docs
+description: Create a Linux virtual machine using PowerShell in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,7 +18,7 @@ ms.custom: mvc
 ms.lastreviewed: 12/03/2018
 ---
 
-# Quickstart: Create a Linux server virtual machine by using PowerShell in Azure Stack
+# Quickstart: Create a Linux server virtual machine using PowerShell in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -36,13 +36,16 @@ You can create an Ubuntu Server 16.04 LTS virtual machine by using Azure Stack P
 
 * Azure Stack requires a specific version of Azure PowerShell to create and manage the resources. If you don't have PowerShell configured for Azure Stack, follow the steps to [install](../operator/azure-stack-powershell-install.md) PowerShell.
 
-* With the Azure Stack PowerShell set up, you will need to connect to your Azure Stack environment. For instruction, see [Connect to Azure Stack with PowerShell as a user](azure-stack-powershell-configure-user.md).
+* With the Azure Stack PowerShell set up, you'll need to connect to your Azure Stack environment. For instruction, see [Connect to Azure Stack with PowerShell as a user](azure-stack-powershell-configure-user.md).
 
 * A public SSH key with the name id_rsa.pub saved in the .ssh directory of your Windows user profile. For detailed information about creating SSH keys, see [How to use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
 
 ## Create a resource group
 
-A resource group is a logical container where you can deploy and manage Azure Stack resources. From your development kit or the Azure Stack integrated system, run the following code block to create a resource group. Values are assigned for all the variables in this document, you can use these values or assign new values.
+A resource group is a logical container where you can deploy and manage Azure Stack resources. From your development kit or the Azure Stack integrated system, run the following code block to create a resource group. 
+
+> [!NOTE]
+> Values are assigned for all variables in the code examples. However, you can assign new values if you want to.
 
 ```powershell  
 # Create variables to store the location and resource group names.
@@ -202,7 +205,7 @@ New-AzureRmVM `
 ## Quick Create virtual machine - Full script
 
 > [!NOTE]
-> It is more or less the code above merged, but with a password rather than SSH key for authentication.
+> This is essentially the code above merged together, but with a password rather than SSH key for authentication.
 
 ```powershell
 ## Create a resource group
@@ -370,13 +373,13 @@ New-AzureRmVM `
 
 ## Connect to the virtual machine
 
-After the virtual machine is deployed, configure an SSH connection for the virtual machine. Use the [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) command to return the public IP address of the virtual machine.
+After the virtual machine is deployed, configure an SSH connection for the virtual machine. Use the [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) command to get the public IP address of the virtual machine.
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 ```
 
-From a client system with SSH installed, use the following command to connect to the virtual machine. If you are working on Windows, you can use [Putty](https://www.putty.org/) to create the connection.
+From a client system with SSH installed, use the following command to connect to the virtual machine. If you're working on Windows, you can use [Putty](https://www.putty.org/) to create the connection.
 
 ```
 ssh <Public IP Address>
@@ -400,7 +403,7 @@ apt-get -y install nginx
 
 ## View the NGINX welcome page
 
-With NGINX installed, and port 80 open on your virtual machine, you can access the web server using the virtual machine's public IP address. Open a web browser, and browse to ```http://<public IP address>```.
+With NGINX installed, and port 80 open on your virtual machine, you can access the web server using the virtual machine's public IP address. Open a web browser, and go to ```http://<public IP address>```.
 
 ![NGINX web server Welcome page](./media/azure-stack-quick-create-vm-linux-cli/nginx.png)
 

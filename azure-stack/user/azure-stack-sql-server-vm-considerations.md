@@ -1,5 +1,5 @@
 ---
-title: Use SQL Server best practices and to increase performance in Azure Stack virtual machines | Microsoft Docs
+title: SQL Server best practices to optimize performance in Azure Stack. | Microsoft Docs
 description: This article provides SQL server best practices to help increase performance and optimize SQL Server in Azure Stack VMs.
 services: azure-stack
 documentationcenter: ''
@@ -21,7 +21,7 @@ ms.lastreviewed: 01/14/2019
 
 # SQL server best practices to optimize performance in Azure Stack
 
-This article provides SQL server best practices to optimize SQL Server and improve performance in Microsoft Azure Stack virtual machines. When running SQL Server in Azure Stack virtual machines, use the same database performance-tuning options applicable to SQL Server in an on-premises server environment. The performance of a relational database in an Azure Stack cloud depends on many factors. Factors include the family size of a virtual machine, and the configuration of the data disks.
+This article provides SQL server best practices to optimize SQL Server and improve performance in Microsoft Azure Stack virtual machines. When running SQL Server in Azure Stack virtual machines, use the same database performance-tuning options applicable to SQL Server in an on-premises server environment. The performance of a relational database in an Azure Stack cloud depends on many factors, including family size of a virtual machine and the configuration of the data disks.
 
 When creating SQL Server images, [consider provisioning your virtual machines in the Azure Stack portal](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Download the SQL IaaS Extension from Marketplace Management in the Azure Stack Admin Portal and download your choice of SQL virtual machine virtual hard drives (VHDs). These include SQL2014SP2, SQL2016SP1, and SQL2017.
 
@@ -47,7 +47,7 @@ The following checklist is for optimal performance of SQL Server on Azure Stack 
 |Feature-specific|Back up directly to blob storage (if supported by the SQL Server version in use).|
 |||
 
-For more information on *how* and *why* to make these optimizations, please review the details and guidance provided in the following sections.
+For more information on *how* and *why* to make these optimizations, review the details and guidance provided in the following sections.
 
 ## Virtual machine size guidance
 
@@ -57,7 +57,7 @@ For performance-sensitive applications, the following [virtual machine sizes](az
 
 - **SQL Server Standard edition and Web edition:** DS2 or higher
 
-With Azure Stack there is no performance difference between the DS and DS_v2 virtual machine family series.
+With Azure Stack, there's no performance difference between the DS and DS_v2 virtual machine family series.
 
 ## Storage guidance
 
@@ -68,7 +68,7 @@ Data disk throughput is determined uniquely based on the virtual machine family 
 > [!NOTE]  
 > For production workloads, select a DS-series or DSv2-series virtual machine to provide the maximum possible IOPS on the operating system disk and data disks.
 
-When creating a storage account in Azure Stack, the geo-replication option has no effect because this capability is not available in Azure Stack.
+When creating a storage account in Azure Stack, the geo-replication option has no effect because this capability isn't available in Azure Stack.
 
 ## Disks guidance
 
@@ -88,13 +88,13 @@ An operating system disk is a VHD that you can boot and mount as a running versi
 
 ### Temporary disk
 
-The temporary storage drive, labeled as the **D** drive, is not persisted. Do not store any data you are unwilling to lose, such as your user database files or user transaction log files, on the **D** drive.
+The temporary storage drive, labeled as the **D** drive, isn't persistent. Don't store any data you're unwilling to lose on the **D** drive. This includes your user database files and user transaction log files.
 
 We recommend storing TempDB on a data disk as each data disk provides a maximum of up to 2,300 IOPS per data disk.
 
 ### Data disks
 
-- **Use data disks for data and log files.** If you are not using disk striping, use two data disks from a virtual machine that supports Premium storage, where one disk contains the log files and the other contains the data and TempDB files. Each data disk provides a number of IOPS and bandwidth (MB/s) depending on the virtual machine family, as described in [Virtual machine sizes supported in Azure Stack](azure-stack-vm-sizes.md). If you are using a disk-striping technique, such as Storage Spaces, place all data and log files on the same drive (including TempDB). This configuration gives you the maximum number of IOPS available for SQL Server to consume, no matter which file needs them at any particular time.
+- **Use data disks for data and log files.** If you're not using disk striping, use two data disks from a virtual machine that supports Premium storage, where one disk contains the log files and the other contains the data and TempDB files. Each data disk provides a number of IOPS and bandwidth (MB/s) depending on the virtual machine family, as described in [Virtual machine sizes supported in Azure Stack](azure-stack-vm-sizes.md). If you're using a disk-striping technique, such as Storage Spaces, place all data and log files on the same drive (including TempDB). This configuration gives you the maximum number of IOPS available for SQL Server to consume, no matter which file needs them at any particular time.
 
 > [!NOTE]  
 > When you provision a SQL Server virtual machine in the portal, you have the option of editing your storage configuration. Depending on your configuration, Azure Stack configures one or more disks. Multiple disks are combined into a single storage pool. Both the data and log files reside together in this configuration.
@@ -117,8 +117,8 @@ We recommend storing TempDB on a data disk as each data disk provides a maximum 
        ```
 
 - Determine the number of disks associated with your storage pool based on your load expectations. Keep in mind that different virtual machine sizes allow different numbers of attached data disks. For more information, see [Virtual machine sizes supported in Azure Stack](azure-stack-vm-sizes.md).
-- In order to get the maximum possible IOPS for data disks, the recommendation is to add the maximum number of data disks supported by your [virtual machine size](azure-stack-vm-sizes.md) and use disk striping.
-- **NTFS allocation unit size:** When formatting the data disk, it is recommended that you use a 64-KB allocation unit size for data and log files as well as TempDB.
+- To get the maximum possible IOPS for data disks, the recommendation is to add the maximum number of data disks supported by your [virtual machine size](azure-stack-vm-sizes.md) and to use disk striping.
+- **NTFS allocation unit size:** When formatting the data disk, we recommend you use a 64-KB allocation unit size for data and log files as well as TempDB.
 - **Disk management practices:** When removing a data disk, stop the SQL Server service during the change. Also, don't change cache settings on the disks as it doesn't provide any performance improvements.
 
 > [!WARNING]  
@@ -126,10 +126,10 @@ We recommend storing TempDB on a data disk as each data disk provides a maximum 
 
 ## I/O guidance
 
-- Consider enabling instant file initialization to reduce the time that is required for initial file allocation. To take advantage of instant file initialization, you grant the SQL Server (MSSQLSERVER) service account with **SE_MANAGE_VOLUME_NAME** and add it to the **Perform Volume Maintenance Tasks** security policy. If you are using a SQL Server platform image for Azure, the default service account (**NT Service\MSSQLSERVER**) isn't added to the **Perform Volume Maintenance Tasks** security policy. In other words, instant file initialization is not enabled in a SQL Server Azure platform image. After adding the SQL Server service account to the **Perform Volume Maintenance Tasks** security policy, restart the SQL Server service. There could be security considerations for using this feature. For more information, see [Database File Initialization](https://msdn.microsoft.com/library/ms175935.aspx).
-- **Autogrow** is a contingency for unexpected growth. Do not manage your data and log growth on a day-to-day basis with autogrow. If autogrow is used, pre-grow the file using the **Size** switch.
+- Consider enabling instant file initialization to reduce the time that is required for initial file allocation. To take advantage of instant file initialization, you grant the SQL Server (MSSQLSERVER) service account with **SE_MANAGE_VOLUME_NAME** and add it to the **Perform Volume Maintenance Tasks** security policy. If you're using a SQL Server platform image for Azure, the default service account (**NT Service\MSSQLSERVER**) isn't added to the **Perform Volume Maintenance Tasks** security policy. In other words, instant file initialization isn't enabled in a SQL Server Azure platform image. After adding the SQL Server service account to the **Perform Volume Maintenance Tasks** security policy, restart the SQL Server service. There could be security considerations for using this feature. For more information, see [Database File Initialization](https://msdn.microsoft.com/library/ms175935.aspx).
+- **Autogrow** is a contingency for unexpected growth. Don't manage your data and log growth on a day-to-day basis with autogrow. If autogrow is used, pre-grow the file using the **Size** switch.
 - Make sure **autoshrink** is disabled to avoid unnecessary overhead that can negatively affect performance.
-- Setup default backup and database file locations. Use the recommendations in this article and make the changes in the Server properties window. For instructions, see [View or Change the Default Locations for Data and Log Files (SQL Server Management Studio)](https://msdn.microsoft.com/library/dd206993.aspx). The following screenshot demonstrates where to make these changes:
+- Setup default backup and database file locations. Use the recommendations in this article and make the changes in the Server properties window. For instructions, see [View or Change the Default Locations for Data and Log Files (SQL Server Management Studio)](https://msdn.microsoft.com/library/dd206993.aspx). The following screenshot shows where to make these changes:
 
     > ![View or Change the Default Locations](./media/sql-server-vm-considerations/image1.png)
 
@@ -141,13 +141,12 @@ We recommend storing TempDB on a data disk as each data disk provides a maximum 
 
 Some deployments may achieve additional performance benefits using more advanced configuration techniques. The following list highlights some SQL Server features that may help you achieve better performance:
 
-- **Back up to Azure** **storage.** When performing backups for SQL Server running in Azure Stack virtual machines, you can use SQL Server Backup to URL. This feature is available starting with SQL Server 2012 SP1 CU2 and recommended for backing up to the attached data disks.
+- **Back up to Azure** **storage.** When making backups for SQL Server running in Azure Stack virtual machines, you can use SQL Server Backup to URL. This feature is available starting with SQL Server 2012 SP1 CU2 and recommended for backing up to the attached data disks.
 
-    When your backup or restore using Azure storage, follow the recommendations provided in [SQL Server Backup to URL Best Practices and Troubleshooting](https://msdn.microsoft.com/library/jj919149.aspx) and [Restoring From Backups Stored in Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017). You can also automate these backups using [Automated Backup for SQL Server in Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup).
+    When you backup or restore using Azure storage, follow the recommendations provided in [SQL Server Backup to URL Best Practices and Troubleshooting](https://msdn.microsoft.com/library/jj919149.aspx) and [Restoring From Backups Stored in Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017). You can also automate these backups using [Automated Backup for SQL Server in Azure Virtual Machines](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup).
 
--   **Back up to Azure Stack storage.** You can back up to Azure Stack storage in a similar fashion as with backing up to Azure Storage. When you create a backup inside SQL Server Management Studio (SSMS), you need to enter the configuration information manually. You cannot use SSMS to create the storage container or the Shared Access Signature. SSMS only connects to Azure subscriptions, not Azure Stack subscriptions. Instead, you need to create the storage account, container, and Shared Access Signature in the Azure Stack portal or with PowerShell.
+-   **Back up to Azure Stack storage.** You can back up to Azure Stack storage in a similar fashion as with backing up to Azure Storage. When you create a backup inside SQL Server Management Studio (SSMS), you need to enter the configuration information manually. You can't use SSMS to create the storage container or the Shared Access Signature. SSMS only connects to Azure subscriptions, not Azure Stack subscriptions. Instead, you need to create the storage account, container, and Shared Access Signature in the Azure Stack portal or with PowerShell.
 
-    When you place the information into the SQL Server Backup dialog:
 
     ![SQL Server Backup](./media/sql-server-vm-considerations/image3.png)
 
