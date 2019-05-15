@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 05/10/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/20/2019
@@ -93,6 +93,8 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 <!-- ## Common vulnerabilities and exposures -->
 
 ## Known issues with the update process
+
+- When attempting to install an Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing. Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and starts the download again.
 
 - When you run [Test-AzureStack](azure-stack-diagnostic-test.md), a warning message from the Baseboard Management Controller (BMC) is displayed. You can safely ignore this warning.
 
@@ -210,7 +212,8 @@ The following are post-installation known issues for this build version.
 ### App Service
 
 <!-- 2352906 - IS ASDK -->
-- You must register the storage resource provider before you create your first Azure Function in the subscription.
+- Tenants must register the storage resource provider before creating their first Azure Function in the subscription.
+- Some tenant portal user experiences are broken due to an incompatibility with the portal framework shipped in 1903.  Principally the UX for Deployment Slots, Testing in Production and Site Extensions.  To work around this issue, use the [Azure App Service PowerShell module](https://docs.microsoft.com/azure/app-service/deploy-staging-slots#automate-with-powershell) or the [Azure CLI](https://docs.microsoft.com/cli/azure/webapp/deployment/slot?view=azure-cli-latest).  The portal experience will be restored in the upcoming release of Azure App Service on Azure Stack 1.6 (Update 6).
 
 <!-- ### Usage -->
 

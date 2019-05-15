@@ -3,7 +3,7 @@ title: VM update and management with Azure Stack | Microsoft Docs
 description: Learn how to use the Azure Monitor for VMs, Update Management, Change Tracking, and Inventory solutions in Azure Automation to manage Windows and Linux VMs that are deployed in Azure Stack. 
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: rtiberiu
 ms.lastreviewed: 03/20/2019
 ---

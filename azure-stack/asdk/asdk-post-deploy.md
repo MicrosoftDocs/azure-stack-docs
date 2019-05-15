@@ -3,7 +3,7 @@ title: Post deployment configurations for the Azure Stack Development Kit (ASDK)
 description: Describes the recommended configuration changes to make after installing the Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: misainat
 ms.lastreviewed: 10/10/2018
 
@@ -51,6 +51,7 @@ You can install the latest Azure Stack PowerShell module with or without Interne
       Install-Module -Name AzureRM.BootStrapper
       
       # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
+      Get-AzureRMProfile -Update
       Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
       Install-Module -Name AzureStack -RequiredVersion 1.7.2
     ```

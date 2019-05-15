@@ -223,6 +223,8 @@
         href: azure-stack-deploy-template-portal.md
       - name: Deploy with PowerShell
         href: azure-stack-deploy-template-powershell.md
+      - name: Deploy with CLI
+        href: azure-stack-deploy-template-command-line.md
       - name: Deploy with Visual Studio
         href: azure-stack-deploy-template-visual-studio.md
   - name: Enable a Cloud Service Provider
