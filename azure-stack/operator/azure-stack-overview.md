@@ -3,7 +3,7 @@ title: What is Azure Stack? | Microsoft Docs
 description: Learn how Azure Stack lets you to run Azure services in your datacenter.  
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 03/29/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: unknown
 ms.custom: 
-ms.lastreviewed: 03/29/2019
+ms.lastreviewed: 05/14/2019
 
 ---
 # Azure Stack overview
@@ -72,17 +72,17 @@ You can choose to deploy Azure Stack either **connected** to the internet (and t
 > For more information, see the considerations for [connected](azure-stack-connected-deployment.md) and [disconnected](azure-stack-disconnected-deployment.md) deployment models. 
 
 ### Identity provider 
-Azure Stack uses either Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS) as an identity provider to establish Azure Stack identities. 
+Azure Stack uses either Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS) to provide identities. Azure AD is Microsoft's cloud-based, multi-tenant identity provider. Most hybrid scenarios with internet-connected deployments use Azure AD as the identity store. 
+
+For disconnected deployments of Azure Stack, you need to use Active Directory Federation Services (AD FS). Azure Stack resource providers and other applications work similarly with AD FS or Azure AD. Azure Stack includes its own Active Directory instance and an Active Directory Graph API.
 
 > [!IMPORTANT]
-> This is a key decision point! Choosing Azure AD or AD FS as your identity provider is a one-time decision that you must make at deployment time. You can't change this later without re-deploying the entire system.
-
-Azure AD is Microsoft's cloud-based, multi-tenant identity provider. Most hybrid scenarios with internet-connected deployments use Azure AD as the identity store. However, you may choose to use Active Directory Federation Services (AD FS) for disconnected deployments of Azure Stack. Azure Stack resource providers, and other applications, work much the same way with AD FS as they do with Azure AD. Azure Stack includes its own Active Directory instance and an Active Directory Graph API. 
+> You cannot change the identity provider after deployment. To use a different identity provider, you need to re-deploy Azure Stack.
 
 > You can learn more about Azure Stack identity considerations at [Overview of identity for Azure Stack](azure-stack-identity-overview.md).
 
 ## How is Azure Stack managed?
-After Azure Stack has been deployed in either an integrated systems deployment or an ASDK installation, the primary methods of interacting with Azure Stack are the administration portal, user portal, and PowerShell. The Azure Stack portals are each backed by separate instances of Azure Resource Manager. An **Azure Stack Operator** uses the administration portal to manage Azure Stack, and to do things like create tenant offerings, and maintain the health and monitor status of the integrated system. The user portal (also referred to as the tenant portal) provides a self-service experience for consumption of cloud resources, like virtual machines, storage accounts, and web apps. 
+You can manage Azure Stack with the administration portal, user portal, or [PowerShell](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.7.1). The Azure Stack portals are each backed by separate instances of Azure Resource Manager. An **Azure Stack Operator** uses the administration portal to manage Azure Stack, and to do things like create tenant offerings, and maintain the health and monitor status of the integrated system. The user portal (also referred to as the tenant portal) provides a self-service experience for consumption of cloud resources such as virtual machines, storage accounts, and web apps. 
 
 > For more information about managing Azure Stack using the administration portal, see the use the [Azure Stack administration portal quickstart](azure-stack-manage-portals.md).
 
@@ -98,17 +98,17 @@ When Azure Stack is configured, an **Azure Stack User** (also referred to as a t
 Resource providers are web services that form the foundation for all Azure Stack IaaS and PaaS services. Azure Resource Manager relies on different resource providers to provide access to services. Each resource provider helps you configure and control its respective resources. Service administrators can also add new custom resource providers. 
 
 ### Foundational resource providers 
-There are three foundational IaaS resource providers: Compute, Network, and Storage:
+There are three foundational IaaS resource providers: 
 
-- **Compute**. The Compute Resource Provider allows Azure Stack tenants to create their own virtual machines. The Compute Resource Provider includes the ability to create virtual machines as well as Virtual Machine extensions. The Virtual Machine extension service helps provide IaaS capabilities for Windows and Linux virtual machines.  As an example, you can use the Compute Resource Provider to provision a Linux virtual machine and run Bash scripts during deployment to configure the VM.
+- **Compute**. The Compute Resource Provider allows Azure Stack tenants to create their own virtual machines. The Compute Resource Provider includes the ability to create virtual machines as well as Virtual Machine extensions. The Virtual Machine extension service helps provide IaaS capabilities for Windows and Linux virtual machines. As an example, you can use the Compute Resource Provider to provision a Linux virtual machine and run Bash scripts during deployment to configure the VM.
 - **Network Resource Provider**. The Network Resource Provider delivers a series of Software Defined Networking (SDN) and Network Function Virtualization (NFV) features for the private cloud. You can use the Network Resource Provider to create resources like software load balancers, public IPs, network security groups, and virtual networks.
-- **Storage Resource Provider**. The Storage Resource Provider delivers four Azure-consistent storage services: [blob](https://docs.microsoft.com/azure/storage/common/storage-introduction#blob-storage), [queue](https://docs.microsoft.com/azure/storage/common/storage-introduction#queue-storage), [table](https://docs.microsoft.com/azure/storage/common/storage-introduction#table-storage), and KeyVault account management providing management and auditing of secrets, such as passwords and certificates. The storage resource provider also offers a storage cloud administration service to facilitate service provider administration of Azure-consistent Storage services. Azure Storage provides the flexibility to store and retrieve large amounts of unstructured data, such as documents and media files with Azure Blobs, and structured NoSQL based data with Azure Tables. 
+- **Storage Resource Provider**. The Storage Resource Provider delivers four Azure-consistent storage services: [blob](https://docs.microsoft.com/azure/storage/common/storage-introduction#blob-storage), [queue](https://docs.microsoft.com/azure/storage/common/storage-introduction#queue-storage), [table](https://docs.microsoft.com/azure/storage/common/storage-introduction#table-storage), and [KeyVault](https://docs.microsoft.com/azure/key-vault/) account management providing management and auditing of secrets, such as passwords and certificates. The storage resource provider also offers a storage cloud administration service to facilitate service provider administration of Azure-consistent Storage services. Azure Storage provides the flexibility to store and retrieve large amounts of unstructured data, such as documents and media files with Azure Blobs, and structured NoSQL based data with Azure Tables. 
 
 ### Optional resource providers
-There are three optional PaaS resource providers that you can deploy and use with Azure Stack: App Service, SQL Server, and MySQL Server resource providers:
+There are three optional PaaS resource providers that you can deploy and use with Azure Stack: 
 
 - **App Service**. [Azure App Service on Azure Stack](azure-stack-app-service-overview.md) is a platform-as-a-service (PaaS) offering of Microsoft Azure available to Azure Stack. The service enables your internal or external customers to create web, API, and Azure Functions applications for any platform or device. 
-- **SQL Server**. Use the [SQL Server resource provider](azure-stack-sql-resource-provider.md) to offer SQL databases as a service of Azure Stack. After you install the resource provider, and connect it to one or more SQL Server instances, you and your users can create databases for cloud-native apps, Websites that use SQL, and other workloads that use SQL.
+- **SQL Server**. Use the [SQL Server resource provider](azure-stack-sql-resource-provider.md) to offer SQL databases as a service of Azure Stack. After you install the resource provider and connect it to one or more SQL Server instances, you and your users can create databases for cloud-native apps, websites that use SQL, and other workloads that use SQL.
 - **MySQL Server**. Use the [MySQL Server resource provider](azure-stack-mysql-resource-provider-deploy.md) to expose MySQL databases as an Azure Stack service. The MySQL resource provider runs as a service on a Windows Server 2016 Server Core virtual machine (VM).
 
 ## Providing high availability
@@ -116,7 +116,7 @@ To achieve high availability of a multi-VM production system in Azure, VMs are p
 
 While the infrastructure of Azure Stack is already resilient to failures, the underlying technology (failover clustering) still incurs some downtime for VMs on an impacted physical server if there is a hardware failure. Azure Stack supports having an availability set with a maximum of three fault domains to be consistent with Azure.
 
-- **Fault domains**. VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack nodes). If there is a hardware failure, VMs from the failed fault domain will be restarted in other fault domains, but, if possible, kept in separate fault domains from the other VMs in the same availability set. When the hardware comes back online, VMs will be rebalanced to maintain high availability. 
+- **Fault domains**. VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack nodes). If there is a hardware failure, VMs from the failed fault domain will be restarted in other fault domains, but kept in separate fault domains from the other VMs in the same availability set if possible. When the hardware comes back online, VMs will be rebalanced to maintain high availability. 
  
 - **Update domains**. Update domains are another Azure concept that provides high availability in availability sets. An update domain is a logical group of underlying hardware that can undergo maintenance at the same time. VMs located in the same update domain will be restarted together during planned maintenance. As tenants create VMs within an availability set, the Azure platform automatically distributes VMs across these update domains. In Azure Stack, VMs are live migrated across the other online hosts in the cluster before their underlying host is updated. Since there is no tenant downtime during a host update, the update domain feature on Azure Stack only exists for template compatibility with Azure. 
 
@@ -128,7 +128,7 @@ Azure Stack RBAC has three basic roles that apply to all resource types: Owner, 
 > See [Manage Role-Based Access Control](azure-stack-manage-permissions.md) for more information. 
 
 ## Reporting usage data
-Microsoft Azure Stack collects and aggregates usage data across all resource providers, and transmits it to Azure for processing by Azure commerce. The usage data collected on Azure Stack can be viewed via a REST API. There is an Azure-consistent Tenant API as well as Provider and Delegated Provider APIs to get usage data across all tenant subscriptions. This data can be used to integrate with an external tool or service for billing or chargeback. Once usage has been processed by Azure commerce, it can be viewed in the Azure billing portal.
+Azure Stack collects and aggregates usage data across all resource providers, and transmits it to Azure for processing by Azure commerce. The usage data collected on Azure Stack can be viewed via a REST API. There is an Azure-consistent Tenant API as well as Provider and Delegated Provider APIs to get usage data across all tenant subscriptions. This data can be used to integrate with an external tool or service for billing or chargeback. Once usage has been processed by Azure commerce, it can be viewed in the Azure billing portal.
 
 > Learn more about [reporting Azure Stack usage data to Azure](azure-stack-usage-reporting.md).
 

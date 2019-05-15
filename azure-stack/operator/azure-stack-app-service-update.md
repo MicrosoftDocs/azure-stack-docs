@@ -3,7 +3,7 @@ title: 'Update Azure App Service on Azure Stack | Microsoft Docs'
 description: Detailed guidance for updating Azure App Service on Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
