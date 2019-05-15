@@ -3,7 +3,7 @@ title: Azure Stack integrated systems connection models | Microsoft Docs
 description: Determine deployment planning decisions for multi-node Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,13 +14,13 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 02/21/2019
 
 ---
 # Azure Stack integrated systems connection models
-If you’re interested in purchasing an Azure Stack integrated system, you’ll need to understand [several datacenter integration considerations](azure-stack-datacenter-integration.md) for Azure Stack deployment to determine how the system will fit into your datacenter. In addition, you'll need to decide how you will integrate Azure Stack into your hybrid cloud environment. This article provides an overview of these major decisions including Azure connection, identity store, and billing model decisions.
+If you're interested in purchasing an Azure Stack integrated system, you'll need to understand [several datacenter integration considerations](azure-stack-datacenter-integration.md) for Azure Stack deployment to determine how the system will fit into your datacenter. In addition, you'll need to decide how you will integrate Azure Stack into your hybrid cloud environment. This article provides an overview of these major decisions including Azure connection, identity store, and billing model decisions.
 
 If you decide to purchase an integrated system, your original equipment manufacturer (OEM) hardware vendor helps guide you through much of the planning process in more detail. They will also perform the actual deployment.
 
@@ -30,7 +30,7 @@ You can choose to deploy Azure Stack either connected to the internet (and to Az
 ![Azure Stack deployment and billing scenarios](media/azure-stack-connection-models/azure-stack-scenarios.png)	
   
 > [!IMPORTANT]
-> This is a key decision point! Choosing Active Directory Federation Services (AD FS) or Azure Active Directory (Azure AD) is a one-time decision that you must make at deployment time. You can’t change this later without re-deploying the entire system.  
+> This is a key decision point! Choosing Active Directory Federation Services (AD FS) or Azure Active Directory (Azure AD) is a one-time decision that you must make at deployment time. You can't change this later without re-deploying the entire system.  
 
 
 |Options|Connected to Azure|Disconnected from Azure|

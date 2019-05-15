@@ -90,7 +90,7 @@ This tutorial assumes that you have some basic knowledge of Azure and Azure Stac
 ### Developer tool requirements
 
 * Create an [Azure DevOps Services workspace](https://docs.microsoft.com/azure/devops/repos/tfvc/create-work-workspaces). The sign-up process creates a project named **MyFirstProject**.
-* [Install Visual Studio 2017](https://docs.microsoft.com/visualstudio/install/install-visual-studio) and [sign-in to Azure DevOps Services](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
+* [Install Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) and [sign-in to Azure DevOps Services](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
 * Connect to your project and [clone it locally](https://www.visualstudio.com/docs/git/gitquickstart).
 
   > [!Note]
@@ -106,7 +106,7 @@ The following steps describe what's required to configure authentication:
 
 1. Create a Service Principal, or use an existing Service Principal.
 2. Create Authentication keys for the Service Principal.
-3. Validate the Azure Stack Subscription via Role-Based Access Control to allow the Service Principal Name (SPN) to be part of the Contributor’s role.
+3. Validate the Azure Stack Subscription via Role-Based Access Control to allow the Service Principal Name (SPN) to be part of the Contributor's role.
 4. Create a new Service Definition in Azure DevOps Services using the Azure Stack endpoints and SPN information.
 
 ### Create a Service Principal

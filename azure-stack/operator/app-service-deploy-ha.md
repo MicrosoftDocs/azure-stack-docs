@@ -3,7 +3,7 @@ title: Deploy Azure Stack App Service in a highly available configuration | Micr
 description: Learn how to deploy App Service in Azure Stack using a highly available configuration.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/23/2019
 ---
@@ -114,7 +114,7 @@ After you install the App Service resource provider, you can include it in your 
 Before you can run the App Service installer, several steps are required as described in the [Before you get started with App Service on Azure Stack article](azure-stack-app-service-before-you-get-started.md):
 
 > [!TIP]
-> Not all steps described in the before you get started article are required because the template deploymnet configures the infrastructure VMs for you. 
+> Not all steps described in the before you get started article are required because the template deployment configures the infrastructure VMs for you. 
 
 - [Download the App Service installer and helper scripts](azure-stack-app-service-before-you-get-started.md#download-the-installer-and-helper-scripts).
 - [Download the latest custom script extension to the Azure Stack marketplace](azure-stack-app-service-before-you-get-started.md#syndicate-the-custom-script-extension-from-the-marketplace).

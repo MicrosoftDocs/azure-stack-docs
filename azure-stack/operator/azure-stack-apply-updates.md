@@ -11,7 +11,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 04/25/2019
 ms.author: mabrigg
 ms.reviewer: justini
 ms.lastreviewed: 02/11/2019
@@ -64,14 +64,14 @@ If you are using an integrated systems version 1807 or earlier, you must downloa
 
 When a Microsoft or OEM update package for Azure Stack is available, download the package to a location that's reachable from Azure Stack, and review the package contents. An update package typically consists of the following files:
 
-- A self-extracting `<PackageName>.exe` file. This file contains the payload for the update, for example the latest cumulative update for Windows Server.
+- A self-extracting `<PackageName>.zip` file. This file contains the payload for the update, for example the latest cumulative update for Windows Server.
 
-- Corresponding `<PackageName>.bin` files. These files provide compression for the payload that's associated with the *PackageName*.exe file.
+- Corresponding `<PackageName>.bin` files. These files provide compression for the payload that's associated with the *PackageName*.zip file.
 
 - A `Metadata.xml` file. This file contains essential information about the update, for example the publisher, name, prerequisite, size, and support path URL.
 
 > [!IMPORTANT]  
-> After the Azure Stack 1901 update package is applied, the packaging format for Azure Stack update pacakges will move from .exe, .bin(s), and .xml format to a .zip(s) and .xml format. Azure Stack operators that have connected stamps won't be impacted. Azure Stack operators that are disconnected will simply import the .xml and .zip file(s) by using the same process described below.
+> After the Azure Stack 1901 update package is applied, the packaging format for Azure Stack update packages will move from .zip, .bin(s), and .xml format to a .zip(s) and .xml format. Azure Stack operators that have connected stamps won't be impacted. Azure Stack operators that are disconnected will simply import the .xml and .zip file(s) by using the same process described below.
 
 ## Import and install updates
 
@@ -90,7 +90,7 @@ The following procedure shows how to import and install update packages in the a
  
     ![Shows how to get to Blobs for the storage account](media/azure-stack-apply-updates/ApplyUpdates3.png) 
 
-4. Under **Blob service**, select **+ Container** to create a  container. Enter a name (for example *Update-1811*), and then select **OK**.
+4. Under **Blob service**, select **+ Container** to create a  container. Enter a name (for example *update-1811*), and then select **OK**.
  
      ![Shows how to add a container in the storage account](media/azure-stack-apply-updates/ApplyUpdates4.png)
 
@@ -98,13 +98,14 @@ The following procedure shows how to import and install update packages in the a
  
     ![Shows how to upload the package files](media/azure-stack-apply-updates/ApplyUpdates5.png)
 
-6. Under **Upload blob**, click the folder icon, browse to the update package's .exe file, and then click **Open** in the file explorer window.
+6. Under **Upload blob**, click the folder icon, browse to the update package's .zip file, and then click **Open** in the file explorer window.
   
 7. Under **Upload blob**, click **Upload**.
   
     ![Shows where to upload each package file](media/azure-stack-apply-updates/ApplyUpdates6.png)
 
-8. Repeat steps 6 and 7 for the *PackageName*.bin and Metadata.xml files. Do not import the Supplemental Notice.txt file if included.
+8. Repeat steps 6 and 7 for the *PackageName*.bin and Metadata.xml files. Do not import the Supplemental Notice.txt file if included. Note the files will be .zip starting at 1901 as opposed to .bin and .zip - continue to import the .xml as usual.
+
 9. When done, you can review the notifications (bell icon in the top-right corner of the portal). The notifications should indicate that the upload has completed.
 10. Navigate back to the Update tile on the dashboard. The tile should indicate that an update is available. Click the tile to review the newly added update package.
 11. To install the update, select the package that's marked as **Ready** and either right-click the package and select **Update now**, or click the **Update now** action near the top.

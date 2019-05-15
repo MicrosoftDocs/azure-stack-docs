@@ -10,14 +10,22 @@
     items:
     - name: Recent updates
       href: azure-stack-servicing-policy.md
+    - name: Checklist for applying updates
+      href: azure-stack-release-notes-checklist.md
+    - name: Security updates
+      href: azure-stack-release-notes-security-updates-1904.md
+    - name: 1904 update
+      items:
+      - name: Release notes
+        href: azure-stack-release-notes-1904.md
+      - name: Known issues
+        href: azure-stack-release-notes-known-issues-1904.md
     - name: 1903 update
       href: azure-stack-update-1903.md
     - name: 1902 update
       href: azure-stack-update-1902.md      
     - name: 1901 update 
       href: azure-stack-update-1901.md      
-    - name: 1811 update 
-      href: azure-stack-update-1811.md
 - name: Quickstarts
   expanded: true
   items:
@@ -72,6 +80,8 @@
           href: azure-stack-integrate-endpoints.md
         - name: Extension host
           href: azure-stack-extension-host-prepare.md
+    - name: Deployment worksheet
+      href: azure-stack-deployment-worksheet.md
     - name: Identity integration
       items:    
       - name: Choose an identity provider
@@ -327,6 +337,8 @@
       href: azure-stack-create-offer.md
     - name: Subscribe to an offer
       href: azure-stack-subscribe-plan-provision-vm.md
+    - name: Delete offers
+      href: azure-stack-delete-offer.md
     - name: Delegate offers in Azure Stack
       href: azure-stack-delegated-provider.md
     - name: Quota types
@@ -363,9 +375,9 @@
     - name: Back up Azure Stack
       href: azure-stack-backup-back-up-azure-stack.md
     - name: Back up files and applications on Azure Stack
-      href: /azure/backup/backup-mabs-files-applications-azure-stack?toc=/azure-stack/operator/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      href: /azure/backup/backup-mabs-files-applications-azure-stack.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
     - name: Replicate Azure Stack VMs to Azure 
-      href: /azure/site-recovery/azure-stack-site-recovery?toc=/azure-stack/operator/toc.json&bc=/azure-stack/breadcrumb/toc.json
+      href: /azure/site-recovery/azure-stack-site-recovery.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
     - name: Recover from catastrophic data loss
       href: azure-stack-backup-recover-data.md
     - name: Backup best practices
@@ -387,9 +399,9 @@
 - name: Related
   items:
   - name: Azure Stack User documentation
-    href: /azure-stack/user/ 
+    href: /azure-stack/user/
   - name: ASDK documentation
-    href: /azure-stack/asdk/ 
+    href: /azure-stack/asdk/
 - name: Resources
   items:
   - name: Azure Stack roadmap

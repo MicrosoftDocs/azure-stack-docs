@@ -143,7 +143,7 @@ Next, create the network resources in Azure Stack.
 
 ### Sign in as a user
 
-A service administrator can sign in as a user to test the plans, offers, and subscriptions that their users might use. If you don’t already have one, [create a user account](../operator/azure-stack-add-new-user-aad.md) before you sign in.
+A service administrator can sign in as a user to test the plans, offers, and subscriptions that their users might use. If you don't already have one, [create a user account](../operator/azure-stack-add-new-user-aad.md) before you sign in.
 
 ### Create the virtual network and a VM subnet
 
@@ -229,7 +229,7 @@ To check the VPN connection, create two VMs: one in Azure, and one in Azure Stac
 6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
 7. On the **Size** section, for this instance, select a virtual machine size, and then select **Select**.
 8. On the **Settings** section, accept the defaults. Make sure that the **Azs-VNet** virtual network is selected. Verify that the subnet is set to **10.1.0.0/24**. Then select **OK**.
-9. On the **Summary** section, review the settings, and then select *OK**.
+9. On the **Summary** section, review the settings, and then select **OK**.
 
 ## Test the connection
 
@@ -259,8 +259,8 @@ address of the virtual machine on the remote subnet, not the VIP.
 
    ```powershell
    New-NetFirewallRule `
-    –DisplayName “Allow ICMPv4-In” `
-    –Protocol ICMPv4
+    -DisplayName "Allow ICMPv4-In" `
+    -Protocol ICMPv4
    ```
 
 ### Sign in to the tenant VM in Azure
@@ -277,8 +277,8 @@ address of the virtual machine on the remote subnet, not the VIP.
 
    ```powershell
    New-NetFirewallRule `
-    –DisplayName “Allow ICMPv4-In” `
-    –Protocol ICMPv4
+    -DisplayName "Allow ICMPv4-In" `
+    -Protocol ICMPv4
    ```
 
 10. From the virtual machine in Azure, ping the virtual machine in Azure Stack, through the tunnel. To do this, you ping the DIP that you recorded from Azs-VM. In the example environment, this is **10.1.0.4**, but be sure to ping the address you noted in your lab. You should see a result that looks like the following screen capture:

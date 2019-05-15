@@ -3,7 +3,7 @@ title: Enable backup for Azure Stack from the administration portal | Microsoft 
 description: Enable the Infrastructure Backup Service through the administration portal so that Azure Stack can be restored if there is a failure.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 03/14/2019
 

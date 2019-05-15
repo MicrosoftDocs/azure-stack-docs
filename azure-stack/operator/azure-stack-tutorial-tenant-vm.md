@@ -3,7 +3,7 @@ title: Make virtual machines available to your Azure Stack users| Microsoft Docs
 description: Learn how to make virtual machines available on Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: unknown
 ms.lastreviewed: 09/11/2018
 ms.custom: mvc
@@ -102,13 +102,13 @@ For information about adding different items to the marketplace, see [The Azure 
 
 ## Test the offer
 
-Now that you’ve created an offer, you can test it. You'll sign in as a user, subscribe to the offer, and then add a virtual machine.
+Now that you've created an offer, you can test it. You'll sign in as a user, subscribe to the offer, and then add a virtual machine.
 
 1. **Subscribe to an offer**
 
    a. Sign in to the user portal with a user account and select the **Get a Subscription** tile.
-   - For an integrated system, the URL varies based on your operator’s region and external domain name, and will be in the format https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;.
-   - If you’re using the Azure Stack Development Kit, the portal address is https://portal.local.azurestack.external.
+   - For an integrated system, the URL varies based on your operator's region and external domain name, and will be in the format https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;.
+   - If you're using the Azure Stack Development Kit, the portal address is https://portal.local.azurestack.external.
 
    ![Get a subscription](media/azure-stack-tutorial-tenant-vm/image10.png)
 
@@ -126,8 +126,8 @@ Now that you’ve created an offer, you can test it. You'll sign in as a user, s
    From the user portal you can provision a virtual machine using the new subscription.
 
    a. Sign in to the user portal with a user account.
-   - For an integrated system, the URL varies based on your operator’s region and external domain name, and will be in the format https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;.
-     - If you’re using the Azure Stack Development Kit, the portal address is https://portal.local.azurestack.external.
+   - For an integrated system, the URL varies based on your operator's region and external domain name, and will be in the format https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;.
+     - If you're using the Azure Stack Development Kit, the portal address is https://portal.local.azurestack.external.
 
    b.  On the dashboard, select **+Create a resource** > **Compute** > **Windows Server 2016 Datacenter Eval**, and then select **Create**.
 

@@ -146,7 +146,7 @@ You can also connect to an Azure Stack storage account using storage account nam
 
 4. Input your account name in the **Account name**, paste account key into the **Account key** text box, select **Other (enter below)** in **Storage endpoints domain** and input the Azure Stack endpoint.
 
-    An Azure Stack endpoint includes two parts: the name of a region and the Azure Stack domain. In the Azure Stack Development Kit, the default endpoint is **local.azurestack.external**. Contact your cloud administrator if you’re not sure about your endpoint.
+    An Azure Stack endpoint includes two parts: the name of a region and the Azure Stack domain. In the Azure Stack Development Kit, the default endpoint is **local.azurestack.external**. Contact your cloud administrator if you're not sure about your endpoint.
 
     ![Attach name and key](./media/azure-stack-storage-connect-se/azure-stack-attach-name-and-key.png)
 

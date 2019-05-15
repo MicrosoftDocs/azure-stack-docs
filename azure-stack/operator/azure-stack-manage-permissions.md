@@ -24,7 +24,7 @@ ms.lastreviewed: 01/14/2019
 
 A user in Azure Stack can be a reader, owner, or contributor for each instance of a subscription, resource group, or service. For example, User A might have reader permissions to Subscription One, but have owner permissions to Virtual Machine Seven.
 
- - Reader: User can view everything, but can’t make any changes.
+ - Reader: User can view everything, but can't make any changes.
  - Contributor: User can manage everything except access to resources.
  - Owner: User can manage everything, including access to resources.
 

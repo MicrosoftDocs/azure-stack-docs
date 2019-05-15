@@ -29,7 +29,7 @@ Azure Stack virtual machines provide on-demand, scalable computing resources. Be
 
 | Feature | Azure (global) | Azure Stack |
 | --- | --- | --- |
-| Virtual machine images | The Azure Marketplace contains images that you can use to create a virtual machine. See the [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) page to view the list of images that are available in the Azure Marketplace. | By default, there aren’t any images available in the Azure Stack marketplace. The Azure Stack cloud administrator should publish or download images to the Azure Stack marketplace before users can use them. |
+| Virtual machine images | The Azure Marketplace contains images that you can use to create a virtual machine. See the [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) page to view the list of images that are available in the Azure Marketplace. | By default, there aren't any images available in the Azure Stack marketplace. The Azure Stack cloud administrator should publish or download images to the Azure Stack marketplace before users can use them. |
 | Virtual machine sizes | Azure supports a wide variety of sizes for virtual machines. To learn about the available sizes and options, refer to the [Windows virtual machines sizes](/azure/virtual-machines/virtual-machines-windows-sizes) and [Linux virtual machine sizes](/azure/virtual-machines/linux/sizes) topics. | Azure Stack supports a subset of Virtual Machine sizes that are available in Azure. To view the list of supported sizes, refer to the [virtual machine sizes](#virtual-machine-sizes) section of this article. |
 | Virtual machine quotas | [Quota limits](/azure/azure-subscription-service-limits#service-specific-limits) are set by Microsoft | The Azure Stack cloud administrator must assign quotas before they offer virtual machines to their users. |
 | Virtual machine extensions |Azure supports a wide variety of virtual machine extensions. To learn about the available extensions, refer to the [virtual machine extensions and features](/azure/virtual-machines/windows/extensions-features) article.| Azure Stack supports a subset of extensions that are available in Azure and each of the extension have specific versions. The Azure Stack cloud administrator can choose which extensions to be made available to for their users. To view the list of supported extensions, refer to the [virtual machine extensions](#virtual-machine-extensions) section of this article. |
@@ -48,7 +48,7 @@ Azure Stack imposes resource limits to avoid over consumption of resources (serv
 
 - For networking egress from the VM, there are bandwidth caps in place. Caps in Azure Stack are the same as the caps in Azure.
 - For storage resources, Azure Stack implements storage IOPS limits to avoid basic overconsumption of resources by tenants for storage access.
-- For VMs with multiple attached data disks, the maximum throughput of each data disk is 500 IOPS for HDDs, and 2300 IOPS for SSDs.
+- For VM disks, disk IOPS (Input/Output Operations Per Second) on Azure Stack is a function of virtual machine (VM) size instead of the disk type. This means that for a Standard_Fs series VM, regardless of whether you choose SSD or HDD for the disk type, the IOPS limit for a single additional data disk is 2300 IOPS.
 
 The following table lists the VMs that are supported on Azure Stack along with their configuration:
 
@@ -96,7 +96,7 @@ Get-AzureRmResourceProvider | `
   Select ProviderNamespace -Expand ResourceTypes | `
   Select * -Expand ApiVersions | `
   Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} | `
-  where-Object {$_.ProviderNamespace -like “Microsoft.compute”}
+  where-Object {$_.ProviderNamespace -like "Microsoft.compute"}
 ```
 
 The list of supported resource types and API versions may vary if the cloud operator updates your Azure Stack environment to a newer version.

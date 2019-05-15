@@ -3,7 +3,7 @@ title: Azure Stack firewall planning for Azure Stack integrated systems | Micros
 description: Describes the Azure Stack firewall considerations for multi-node Azure Stack Azure-connected deployments.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
 

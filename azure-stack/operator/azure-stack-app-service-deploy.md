@@ -3,7 +3,7 @@ title: 'Deploy App Services: Azure Stack | Microsoft Docs'
 description: Detailed guidance for deploying App Service in Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -104,7 +104,7 @@ To deploy App Service resource provider, follow these steps:
 
 9. On the next App Service Installer page, follow these steps:
 
-   a. In the **Identity Application ID** box, enter the GUID for the application you’re using for identity (from Azure AD).
+   a. In the **Identity Application ID** box, enter the GUID for the application you're using for identity (from Azure AD).
 
    b. In the **Identity Application certificate file** box, enter (or browse to) the location of the certificate file.
 
@@ -124,7 +124,7 @@ To deploy App Service resource provider, follow these steps:
     | **App Service API SSL certificate file** | api.appservice.local.AzureStack.external.pfx |
     | **App Service Publisher SSL certificate file** | ftp.appservice.local.AzureStack.external.pfx |
 
-    If you used a different domain suffix when you created the certificates, your certificate file names don’t use *local.AzureStack.external*. Instead, use your custom domain information.
+    If you used a different domain suffix when you created the certificates, your certificate file names don't use *local.AzureStack.external*. Instead, use your custom domain information.
 
     ![App Service Installer][10]
 
@@ -237,7 +237,7 @@ To create a test web app, follow these steps:
 
 ## Deploy a WordPress, DNN, or Django website (optional)
 
-1. In the Azure Stack tenant portal, select **+**, go to the Azure Marketplace, deploy a Django website, and then wait for the deployment to finish. The Django web platform uses a file system-based database. It doesn’t require any additional resource providers, such as SQL or MySQL.
+1. In the Azure Stack tenant portal, select **+**, go to the Azure Marketplace, deploy a Django website, and then wait for the deployment to finish. The Django web platform uses a file system-based database. It doesn't require any additional resource providers, such as SQL or MySQL.
 
 2. If you also deployed a MySQL resource provider, you can deploy a WordPress website from the Marketplace. When you're prompted for database parameters, enter the user name as *User1\@Server1*, with the user name and server name of your choice.
 

@@ -3,7 +3,7 @@ title: Back up App Service on Azure Stack | Microsoft Docs
 description: Detailed guidance for Azure Stack App Service backup.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,8 +13,8 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2019
-ms.author: jeffgilb
+ms.date: 04/23/2019
+ms.author: mabrigg
 ms.reviewer: apwestgarth
 ms.lastreviewed: 03/21/2019
 

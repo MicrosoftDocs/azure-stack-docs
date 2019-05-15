@@ -32,7 +32,7 @@ With iDNS in Azure Stack, you get the following capabilities, without having to 
 - Authoritative DNS service for name resolution and DNS registration within the tenant virtual network.
 - Recursive DNS service for resolution of Internet names from tenant VMs. Tenants no longer need to specify custom DNS entries to resolve Internet names (for example, www.bing.com.)
 
-You can still bring your own DNS and use custom DNS servers. However, by using iDNS, you can resolve Internet DNS names and connect to other VMs in the same virtual network, you don’t need to create custom DNS entries.
+You can still bring your own DNS and use custom DNS servers. However, by using iDNS, you can resolve Internet DNS names and connect to other VMs in the same virtual network, you don't need to create custom DNS entries.
 
 ## What doesn't iDNS do?
 
@@ -43,7 +43,7 @@ In Azure, you have the option of specifying a DNS name label that is associated 
 
 ![Example of a DNS name label](media/azure-stack-understanding-dns-in-tp2/image3.png)
 
-As the previous image shows, Azure will create an “A” record in DNS for the DNS name label specified under the zone **westus.cloudapp.azure.com**. The prefix and the suffix are combined to compose a [fully qualified domain name](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN) that can be resolved from anywhere on the public Internet.
+As the previous image shows, Azure will create an "A" record in DNS for the DNS name label specified under the zone **westus.cloudapp.azure.com**. The prefix and the suffix are combined to compose a [fully qualified domain name](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN) that can be resolved from anywhere on the public Internet.
 
 Azure Stack only supports iDNS for internal name
 registration, so it cannot do the following:

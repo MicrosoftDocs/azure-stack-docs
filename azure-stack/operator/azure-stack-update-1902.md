@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2019
+ms.date: 05/10/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/05/2019
+ms.lastreviewed: 05/07/2019
 ---
 
 # Azure Stack 1902 update
@@ -45,10 +45,8 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 
 ### Azure Stack hotfixes
 
-- **1809**: [KB 4481548 – Azure Stack hotfix 1.1809.12.114](https://support.microsoft.com/help/4481548/)
-- **1811**: No current hotfix available.
-- **1901**: [KB 4495662 – Azure Stack hotfix 1.1901.3.105](https://support.microsoft.com/help/4495662)
-- **1902**: [KB 4494719 – Azure Stack hotfix 1.1902.2.73](https://support.microsoft.com/help/4494719)
+- **1901**: [KB 4500636 - Azure Stack hotfix 1.1901.5.109](https://support.microsoft.com/help/4500636)
+- **1902**: [KB 4500637 - Azure Stack hotfix 1.1902.3.75](https://support.microsoft.com/help/4500637)
 
 ## Prerequisites
 
@@ -76,7 +74,7 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 - The 1902 build introduces a new user interface on the Azure Stack Administrator portal for creating plans, offers, quotas, and add-on plans. For more information, including screenshots, see [Create plans, offers, and quotas](azure-stack-create-plan.md).
 
 <!-- 1460884	Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator	Add node -->
-- Improvements to the reliability of capacity expansion during an add node operation when switching the scale unit state from “Expanding storage” to “Running”.
+- Improvements to the reliability of capacity expansion during an add node operation when switching the scale unit state from "Expanding storage" to "Running".
 
 <!--
 1426197	3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout	PNU
@@ -86,13 +84,13 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 1381018	[1902] 3610787 - Infra VM creation should fail if the ClusterGroup already exists	PNU
 -->
 - To improve package integrity and security, as well as easier management for offline ingestion, Microsoft has changed the format of the Update package from .exe and .bin files to a .zip file. The new format adds additional reliability of the unpacking process that at times, can cause the preparation of the update to stall. The same package format also applies to update packages from your OEM.
-- To improve the Azure Stack operator experience when running Test-AzureStack, operators can now simply use, “Test-AzureStack -Group UpdateReadiness” as opposed to passing ten additional parameters after an Include statement.
+- To improve the Azure Stack operator experience when running Test-AzureStack, operators can now simply use, "Test-AzureStack -Group UpdateReadiness" as opposed to passing ten additional parameters after an Include statement.
 
   ```powershell
     Test-AzureStack -Group UpdateReadiness  
   ```  
   
-- To improve on the overall reliability and availability of core infrastructure services during the update process, the native Update resource provider as part of the update action plan will detect and invoke automatic global remediations as-needed. Global remediation “repair” workflows include:
+- To improve on the overall reliability and availability of core infrastructure services during the update process, the native Update resource provider as part of the update action plan will detect and invoke automatic global remediations as-needed. Global remediation "repair" workflows include:
 
   - Checking for infrastructure virtual machines that are in a non-optimal state and attempt to repair them as-needed.
   - Check for SQL service issues as part of the control plan and attempt to repair them as-needed.
@@ -115,12 +113,15 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 - Improvements to the reliability of Test-AzureStack for secret rotation readiness test.
 
 <!-- 1404751	3617292: Graph: Remove dependency on ADWS.	Identity -->
-- Improvements to increase AD Graph reliability when communicating with customer’s Active Directory environment
+- Improvements to increase AD Graph reliability when communicating with customer's Active Directory environment
 
 <!-- 1391444	[ISE] Telemetry for Hardware Inventory - Fill gap for hardware inventory info	System info -->
 - Improvements hardware inventory collection in Get-AzureStackStampInformation.
 
 - To improve reliability of operations running on ERCS infrastructure, the memory for each ERCS instance increases from 8 GB to 12 GB. On an Azure Stack integrated systems installation, this results in a 12 GB increase overall.
+
+<!-- 110303935 IcM Reported by HKEX -->
+- 1902 fixes an issue in the Network Controllers VSwitch Service, in which all VMs on a specific node went offline.  The issue caused it to get stuck in a primary loss state, where the primary cannot be contacted but the role has not been failed over to another, healthy instance, which could only be resolved by contacting Microsoft support services.
 
 > [!IMPORTANT]
 > To make sure the patch and update process results in the least amount of tenant downtime, make sure your Azure Stack stamp has more than 12 GB of available space in the **Capacity** blade. You can see this memory increase reflected in the **Capacity** blade after a successful installation of the update.
@@ -163,9 +164,11 @@ For more information about these vulnerabilities, click on the preceding links, 
 
 ## Known issues with the update process
 
+- When attempting to install an Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing. Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and starts the download again.
+
 - When you run [Test-AzureStack](azure-stack-diagnostic-test.md), a warning message from the Baseboard Management Controller (BMC) is displayed. You can safely ignore this warning.
 
-- <!-- 2468613 - IS --> During installation of this update, you might see alerts with the title `Error – Template for FaultType UserAccounts.New is missing.`  You can safely ignore these alerts. The alerts close automatically after the installation of this update completes.
+- <!-- 2468613 - IS --> During installation of this update, you might see alerts with the title `Error - Template for FaultType UserAccounts.New is missing.`  You can safely ignore these alerts. The alerts close automatically after the installation of this update completes.
 
 ## Post-update steps
 
@@ -182,7 +185,7 @@ The following are post-installation known issues for this build version.
 <!-- 2930820 - IS ASDK --> 
 - In both the administrator and user portals, if you search for "Docker," the item is incorrectly returned. It is not available in Azure Stack. If you try to create it, a blade with an error indication is displayed. 
 
-<!-- 2931230 – IS  ASDK --> 
+<!-- 2931230 - IS  ASDK --> 
 - Plans that are added to a user subscription as an add-on plan cannot be deleted, even when you remove the plan from the user subscription. The plan will remain until the subscriptions that reference the add-on plan are also deleted. 
 
 <!-- TBD - IS ASDK --> 
@@ -220,10 +223,12 @@ The following are post-installation known issues for this build version.
 
    - If the subscription was created before the 1808 update, deploying a VM with Managed Disks might fail with an internal error message. To resolve the error, follow these steps for each subscription:
       1. In the Tenant portal, go to **Subscriptions** and find the subscription. Select **Resource Providers**, then select **Microsoft.Compute**, and then click **Re-register**.
-      2. Under the same subscription, go to **Access Control (IAM)**, and verify that **Azure Stack – Managed Disk** is listed.
+      2. Under the same subscription, go to **Access Control (IAM)**, and verify that **Azure Stack - Managed Disk** is listed.
    - If you have configured a multi-tenant environment, deploying VMs in a subscription associated with a guest directory might fail with an internal error message. To resolve the error, follow these steps in [this article](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) to reconfigure each of your guest directories.
 
 - An Ubuntu 18.04 VM created with SSH authorization enabled will not allow you to use the SSH keys to log in. As a workaround, use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
+
+- You cannot remove a scale set from the **Virtual Machine Scale Sets** blade. As a workaround, select the scale set that you want to remove, then click the **Delete** button from the **Overview** pane.
 
 ### Networking  
 

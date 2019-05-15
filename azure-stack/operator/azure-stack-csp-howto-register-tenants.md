@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2019
+ms.date: 05/07/2019
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 01/05/2019
+ms.lastreviewed: 05/07/2019
 
 ---
 
@@ -29,31 +29,33 @@ CSPs often offer services to multiple end customers (tenants) on their Azure Sta
 
 The following figure shows the steps that a CSP needs to follow to enable a new customer to use Azure Stack, and to set up usage tracking for the customer. By adding the end customer, you are also able to manage resources in Azure Stack. You have two options for managing their resources:
 
-1. You can maintain the end customer and provide credentials for the local Azure Stack subscription to the end customer.  
-2. The end customer can work with their subscription locally and add the CSP as a guest with owner permissions.  
+- You can maintain the end customer and provide credentials for the local Azure Stack subscription to the end customer.  
+- The end customer can work with their subscription locally and add the CSP as a guest with owner permissions.  
 
-## Steps to add an end customer
+## Add an end customer
+
+Perform the following steps to add an end customer, as pictured in the following figure:
 
 ![Set up Cloud Service Provider for usage tracking and to manage the end customer account](media/azure-stack-csp-enable-billing-usage-tracking/process-csp-enable-billing.png)
 
 ### Create a new customer in Partner Center
 
-In Partner Center, create a new Azure subscription for the customer. For instructions, see [Add a new customer](https://msdn.microsoft.com/partner-center/add-a-new-customer).
+In Partner Center, create a new Azure subscription for the customer. For instructions, see [Add a new customer](/partner-center/add-a-new-customer).
 
 ### Create an Azure subscription for the end customer
 
-After you have created a record of your customer in Partner Center, you can sell them subscriptions to products in the catalog. For instructions, see [Create, suspend, or cancel customer subscriptions](https://msdn.microsoft.com/partner-center/create-a-new-subscription).
+After you have created a record of your customer in Partner Center, you can sell them subscriptions to products in the catalog. For instructions, see [Create, suspend, or cancel customer subscriptions](/partner-center/create-a-new-subscription).
 
 ### Create a guest user in the end customer directory
 
-If the end customer manages their own account, create a guest user in their directory, and send them the information. The end user will then add the guest and elevate the guest permission to **Owner** for the Azure Stack CSP account.
+If the end customer manages their own account, create a guest user in their directory, and send them the information. The end user then adds the guest and elevates the guest permission to **Owner** for the Azure Stack CSP account.
 
 ### Update the registration with the end customer subscription
 
-Update your registration with the new customer subscription. Azure reports the customer's usage using the customer identity from Partner Center. This step ensures that each customer's usage is reported under that customer's individual CSP subscription. This makes tracking user usage and billing easier.
+Update your registration with the new customer subscription. Azure reports the customer usage using the customer identity from Partner Center. This step ensures that each customer's usage is reported under that customer's individual CSP subscription. This makes tracking user usage and billing easier.
 
 > [!NOTE]  
-> To perform this step, you must have [registered Azure Stack](azure-stack-registration.md ).
+> To perform this step, you must have [registered Azure Stack](azure-stack-registration.md).
 
 1. Open Windows PowerShell with an elevated prompt, and run:  
     `Add-AzureRmAccount`

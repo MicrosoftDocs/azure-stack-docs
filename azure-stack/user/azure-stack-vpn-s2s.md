@@ -12,9 +12,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/19/2019
+ms.date: 05/07/2019
 ms.author: sethm
-ms.lastreviewed: 01/19/2019
+ms.lastreviewed: 05/07/2019
 ---
 
 # Configure IPsec/IKE policy for site-to-site VPN connections
@@ -26,11 +26,9 @@ This article walks through the steps to configure an IPsec/IKE policy for site-t
 
 ## IPsec and IKE policy parameters for VPN gateways
 
-The IPsec and IKE protocol standard supports a wide range of cryptographic algorithms in various combinations. To see which parameters are supported in Azure Stack, see [IPsec/IKE parameters](azure-stack-vpn-gateway-settings.md#ipsecike-parameters), which can help satisfy
-your compliance or security requirements.
+The IPsec and IKE protocol standard supports a wide range of cryptographic algorithms in various combinations. To see which parameters are supported in Azure Stack, see [IPsec/IKE parameters](azure-stack-vpn-gateway-settings.md#ipsecike-parameters), which can help satisfy your compliance or security requirements.
 
-This article provides instructions on how to create and configure an IPsec/IKE
-policy and apply to a new or existing connection.
+This article provides instructions on how to create and configure an IPsec/IKE policy and apply to a new or existing connection.
 
 ## Considerations
 
@@ -314,7 +312,7 @@ Once you remove the custom policy from a connection, the Azure VPN gateway rever
 $RG1 = "TestPolicyRG1"
 $Connection16 = "VNet1toSite6"
 $connection6 = Get-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1
-$connection6.SharedKey = “AzS123”
+$connection6.SharedKey = "AzS123"
 $currentpolicy = $connection6.IpsecPolicies[0]
 $connection6.IpsecPolicies.Remove($currentpolicy)
 

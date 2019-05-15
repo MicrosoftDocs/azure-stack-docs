@@ -3,7 +3,7 @@ title: Compute capacity planning for Azure Stack | Microsoft Docs
 description: Learn about compute capacity planning for Azure Stack deployments.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: prchint
 ms.lastreviewed: 04/03/2019
 ms.custom: 
@@ -40,7 +40,7 @@ If a server fails, VMs hosted on the failed server will be restarted on remainin
 
 The following calculation results in the total, available memory that can be used for tenant VM placement. This memory capacity is for the entirety of the Azure Stack Scale Unit.
 
-  Available Memory for VM placement = Total Server Memory – Resiliency Reserve – Memory used by running VMs - Azure Stack Infrastructure Overhead <sup>1</sup>
+  Available Memory for VM placement = Total Server Memory - Resiliency Reserve - Memory used by running VMs - Azure Stack Infrastructure Overhead <sup>1</sup>
 
   Resiliency reserve = H + R * ((N-1) * H) + V * (N-2)
 

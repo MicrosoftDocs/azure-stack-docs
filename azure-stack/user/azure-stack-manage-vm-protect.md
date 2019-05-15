@@ -3,7 +3,7 @@ title: Protect VMs deployed on Azure Stack | Microsoft Docs
 description:  Guidelines on how to protect virtual machines deployed on Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,8 +13,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2018
-ms.author: jeffgilb
+ms.date: 05/06/2019
+ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 3/19/2018
 ---
@@ -50,8 +50,8 @@ Plan your backup-recovery and disaster-recovery strategy for each application to
 
 |  | Global Azure | Azure Stack deployed into CSP datacenter and operated by CSP | Azure Stack deployed into customer datacenter and operated by customer |
 |------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
-| **Azure Stack deployed into CSP datacenter and operated by CSP** | User VMs are deployed to the CSP operated Azure Stack.<br><br>User VMs are restored from backup or failed over directly to Azure. | CSP operates the primary and secondary instances of Azure Stack in their own datacenters.<br><br>User VMs are restored or failed over between the two Azure Stack instances. | CSP operates Azure Stack in the primary site.<br><br>Customer’s datacenter is the restore or failover target. |
-| **Azure Stack deployed into customer datacenter and operated by customer** | User VMs are deployed to the customer operated Azure Stack.<br><br>User VMs are restored from backup or failed over directly to Azure. | Customer operates Azure Stack in the primary site.<br><br>CSP’s datacenter is the restore or failover target. | Customer operates the primary and secondary instances of Azure Stack in their own datacenters.<br><br>User VMs are restored or failed over between the two Azure Stack instances. |
+| **Azure Stack deployed into CSP datacenter and operated by CSP** | User VMs are deployed to the CSP operated Azure Stack.<br><br>User VMs are restored from backup or failed over directly to Azure. | CSP operates the primary and secondary instances of Azure Stack in their own datacenters.<br><br>User VMs are restored or failed over between the two Azure Stack instances. | CSP operates Azure Stack in the primary site.<br><br>Customer's datacenter is the restore or failover target. |
+| **Azure Stack deployed into customer datacenter and operated by customer** | User VMs are deployed to the customer operated Azure Stack.<br><br>User VMs are restored from backup or failed over directly to Azure. | Customer operates Azure Stack in the primary site.<br><br>CSP's datacenter is the restore or failover target. | Customer operates the primary and secondary instances of Azure Stack in their own datacenters.<br><br>User VMs are restored or failed over between the two Azure Stack instances. |
 
 ![Source-target combinations](media/azure-stack-manage-vm-backup/vm_backupdataflow_01.png)
 

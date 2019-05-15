@@ -3,7 +3,7 @@ title: Network integration considerations for Azure Stack integrated systems | M
 description: Learn what you can do to plan for datacenter network integration with multi-node Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 08/30/2018
 ---
@@ -62,10 +62,10 @@ This /24 (254 host IPs) network is private to the Azure Stack region (does not e
 - **Internal virtual IP network**. A /25 network dedicated to internal-only VIPs for the software load balancer.
 
 ### Azure Stack infrastructure network
-This /24 network is dedicated to internal Azure Stack components so that they can communicate and exchange data among themselves. This subnet requires routable IP addresses, but is kept private to the solution by using Access Control Lists (ACLs). It isn’t expected to be routed beyond the border switches except for a small range equivalent in size to a /27 network utilized by some of these services when they require access to external resources and/or the internet. 
+This /24 network is dedicated to internal Azure Stack components so that they can communicate and exchange data among themselves. This subnet requires routable IP addresses, but is kept private to the solution by using Access Control Lists (ACLs). It isn't expected to be routed beyond the border switches except for a small range equivalent in size to a /27 network utilized by some of these services when they require access to external resources and/or the internet. 
 
 ### Public VIP network
-The Public VIP Network is assigned to the network controller in Azure Stack. It’s not a logical network on the switch. The SLB uses the pool of addresses and assigns /32 networks for tenant workloads. On the switch routing table, these /32 IPs are advertised as an available route via BGP. This network contains the external-accessible or public IP addresses. The Azure Stack infrastructure reserves the first 31 addresses from this Public VIP Network while the remainder is used by tenant VMs. The network size on this subnet can range from a minimum of /26 (64 hosts) to a maximum of /22 (1022 hosts), we recommend that you plan for a /24 network.
+The Public VIP Network is assigned to the network controller in Azure Stack. It's not a logical network on the switch. The SLB uses the pool of addresses and assigns /32 networks for tenant workloads. On the switch routing table, these /32 IPs are advertised as an available route via BGP. This network contains the external-accessible or public IP addresses. The Azure Stack infrastructure reserves the first 31 addresses from this Public VIP Network while the remainder is used by tenant VMs. The network size on this subnet can range from a minimum of /26 (64 hosts) to a maximum of /22 (1022 hosts), we recommend that you plan for a /24 network.
 
 ### Switch infrastructure network
 This /26 network is the subnet that contains the routable point-to-point IP /30 (2 host IPs) subnets and the loopbacks, which are dedicated /32 subnets for in-band switch management and BGP router ID. This range of IP addresses must be routable externally of the Azure Stack solution to your datacenter, they may be private or public IPs.
