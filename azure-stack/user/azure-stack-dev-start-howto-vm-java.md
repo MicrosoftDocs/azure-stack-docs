@@ -42,7 +42,7 @@ Java is a general-purpose, computer-programming language that's concurrent, clas
 
 ## Install Java
 
-1. Connect to your VM by using your SSH client. For instructions, see [Connect via SSH with PuTTY](azure-stack-dev-start-howto-ssh-public-key.md#connect-via-ssh-with-putty).
+1. Connect to your VM by using your SSH client. For instructions, see [Connect via SSH with PuTTY](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
 
 2. At the bash prompt on your VM, run the following command:
 
@@ -58,7 +58,7 @@ Java is a general-purpose, computer-programming language that's concurrent, clas
 
 ## Install and configure Tomcat
 
-1. Connect to your VM by using your SSH client. For instructions, see [Connect via SSH with PuTTY](azure-stack-dev-start-howto-ssh-public-key.md#connect-via-ssh-with-putty).
+1. Connect to your VM by using your SSH client. For instructions, see [Connect via SSH with PuTTY](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
 
 1. Create a Tomcat user by doing the following:
 
@@ -272,7 +272,7 @@ For guidance about developing Java apps in Azure, see [Build and deploy Java app
 
 ## Deploy and run the app
 
-1. Connect to your VM by using your SSH client. For instructions, see [Connect via SSH with PuTTY](azure-stack-dev-start-howto-ssh-public-key.md#connect-via-ssh-with-putty).
+1. Connect to your VM by using your SSH client. For instructions, see [Connect via SSH with PuTTY](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
 
 1. To update the server with your app package, stop the Tomcat service:
 
