@@ -15,12 +15,9 @@ ms.lastreviewed: 04/24/2019
 # Intent: I am developer using Windows 10 or Linux Ubuntu who would like to deploy an Go web app for Azure Stack.
 ---
 
-
 # How to deploy a GO web app to a VM in Azure Stack
 
-You can create a VM to host your Go Web app in Azure Stack. This article looks at the steps you will follow in setting up server, configuring the server to host your GO web app, and then deploying your app. 
-
-To learn the Go programming language and find additional resources for GO, see [Golang.org](https://golang.org).
+You can create a VM to host your Go Web app in Azure Stack. This article looks at the steps you will follow in setting up server, configuring the server to host your GO web app, and then deploying your app.
 
 ## Create a VM
 
@@ -30,9 +27,9 @@ To learn the Go programming language and find additional resources for GO, see [
 
     | Port | Protocol | Description |
     | --- | --- | --- |
-    | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems. Clients will connect to your web app with either the public IP or DNS name of your VM. |
-    | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is an extension of the Hypertext Transfer Protocol (HTTP). It is used for secure communication over a computer network. Clients will connect to your web app with the either the public IP or DNS name of your VM. |
-    | 22 | SSH | Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network. You will use this connection with an SSH client to configure the VM and deploy the app. |
+    | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is the protocol used to deliver web pages from servers. Clients connect via HTTP with a DNS name or IP address. |
+    | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is a secure version of HTTP that requires a security certificate and allows for the encrypted transmission of information.  |
+    | 22 | SSH | Secure Shell (SSH) is an encrypted network protocol for secure communications. You will use this connection with an SSH client to configure the VM and deploy the app. |
     | 3389 | RDP | Optional. The Remote Desktop Protocol allows for a remote desktop connection to use a graphic user interface your machine.   |
     | 3000 | Custom | Port 3000 is used by the GO web framework in development. For a production server, you will want to route your traffic through 80 and 443. |
 
@@ -96,3 +93,4 @@ To learn the Go programming language and find additional resources for GO, see [
 
 - Learn more about how to [Develop for Azure Stack](azure-stack-dev-start.md)
 - Learn about [common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
+- To learn the Go programming language and find additional resources for GO, see [Golang.org](https://golang.org).
