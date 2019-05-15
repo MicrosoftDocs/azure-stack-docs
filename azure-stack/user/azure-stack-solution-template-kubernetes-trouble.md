@@ -29,7 +29,7 @@ The following article looks at troubleshooting your Kubernetes cluster. You can 
 
 ## Overview of Kubernetes deployment
 
-Before you start troubleshooting your cluster, you might want to review the Azure Stack Kubernetes cluster deployment process. The deployment uses an Azure Resource Manager solution template to create the VMs and install the ACS Engine for your cluster.
+Before you start troubleshooting your cluster, you might want to review the Azure Stack Kubernetes cluster deployment process. The deployment uses an Azure Resource Manager solution template to create the VMs and install the AKS engine for your cluster.
 
 ### Kubernetes deployment workflow
 
@@ -53,8 +53,8 @@ The following diagram shows the general process for deploying the cluster.
     -  Run the DVM custom script. The script does the following tasks:
         1. Gets the gallery endpoint from the Azure Resource Manager metadata endpoint.
         2. Gets the active directory resource ID from the Azure Resource Manager metadata endpoint.
-        3. Loads the API model for the ACS Engine.
-        4. Deploys the ACS Engine to the Kubernetes cluster and saves the Azure Stack cloud profile to `/etc/kubernetes/azurestackcloud.json`.
+        3. Loads the API model for the AKS engine.
+        4. Deploys the AKS engine to the Kubernetes cluster and saves the Azure Stack cloud profile to `/etc/kubernetes/azurestackcloud.json`.
 3. Create the master VMs.
 
 4. Download and run custom script extensions.
