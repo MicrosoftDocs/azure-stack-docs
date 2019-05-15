@@ -14,34 +14,39 @@ ms.lastreviewed: 04/24/2019
 # keywords: Create an SSH key and connect to a VM.
 ---
 
-# How to use an SSH public key
+# Use an SSH public key
 
-You may need to create an SSH public and private key pair to use an open SSH connection from your development machine and the server VM in Azure Stack hosting your web app. This article walks you through the steps of getting your keys and using the keys to connect to your server. You can use an SSH client to get a bash prompt on the Linux server, or an SFTP client to move files to and from the server.
+To use an open SSH connection from your development machine to the server VM in your Azure Stack instance that hosts your web app, you might need to create a Secure Shell (SSH) public and private key pair. 
+
+In this article, you create your keys and then use them to connect to your server. You can use an SSH client to get a bash prompt on the Linux server or use a Secure FTP (SFTP) client to move files to and from the server.
 
 ## Create an SSH public key on Windows
 
-In this section, you will use PuTTY's key generator to create a public SSH key and private key pair to use when creating a secure connection to Linux machines on your Azure Stack. PuTTY is a free implementation of SSH and Telnet for Windows and Unix platforms, along with an `xterm` terminal emulator.
+In this section, you use the PuTTY Key Generator to create a public SSH key and private key pair to use when you create a secure connection to Linux machines in your Azure Stack instance. PuTTY is a free implementation of SSH and Telnet for Windows and UNIX platforms, along with an *xterm* terminal emulator.
 
 1. [Download and install PuTTY for your machine.](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
 1. Open the PuTTY Key Generator.
 
-1. Set the **Parameters** to **RSA**.
+    ![The PuTTY Key Generator with a blank Key box](media/azure-stack-dev-start-howto-ssh-public-key/001-putty-key-gen-start.png)
 
-1. Set the number of bits in a generated key to `2048`.  
+1. Under **Parameters**, select **RSA**.
 
-    ![Use PuTTY to generate an SSH public key](media/azure-stack-dev-start-howto-ssh-public-key/001-putty-key-gen-start.png)
+1. In the **Number of bits in a generated key** box, enter **2048**.  
 
-1. Select **Generate**. In the **Key** area, generate some randomness by moving the cursor over the blank area.
+1. Select **Generate**.
 
-1. Add a **Key passphrase** and confirm it in the **Confirm** box. Make note of your passphrase.
-    ![Use PuTTY to generate an SSH public key](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-key-gen-result.png)
+1. In the **Key** area, generate some random characters by moving the cursor over the blank area.
 
-1. Select **Save the public key** and save to a location where you can access it.
+    ![The PuTTY Key Generator with a populated Key box](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-key-gen-result.png)
 
-1. Select **Save private key** and save to a location where you can access it and remember that it belongs with the public key.
+1. Enter a **Key passphrase** and confirm it in the **Confirm passphrase** box. Note your passphrase for later use.
 
-Your public key is stored in the text file you saved. If you open it, it will contain text that looks like:
+1. Select **Save public key**, and save it to a location where you can access it.
+
+1. Select **Save private key**, and save it to a location where you can access it. Remember that it belongs with the public key.
+
+Your public key is stored in the text file you saved. The text looks like the following:
 
 ```text  
 ---- BEGIN SSH2 PUBLIC KEY ----
@@ -55,49 +60,47 @@ BvpmONCSR3YnyUtgWV27N6zC7U1OBdmv7TN6M7g01uOYQKI/GQ==
 ---- END SSH2 PUBLIC KEY ----
 ```
 
-When using the public key, you copy and paste the entire contexts of the text box as the value when an application asks for the key.
+When an application requests the key, you copy and paste the entire contents of the text file.
 
 <!-- 
 ## Create an SSH public key on Linux
 
 ToDo: I need to write this section.
-
 -->
-## Connect with SSH using PuTTY
 
-If you have installed PuTTY, you have both the key generator and an SSH client. Open the SSH client, PuTTY, configure your connection values and SSH key, and if you are on the same network as your Azure Stack, connect to your VM.
+## Connect with SSH by using PuTTY
+
+When you install PuTTY, you have both the PuTTY Key Generator and an SSH client. In this section, you open the SSH client, PuTTY, and configure your connection values and SSH key. If you're on the same network as your Azure Stack instance, you connect to your VM.
 
 Before you connect, you will need:
 - PuTTY
-- The IP address and username for the Linux machine in your Azure Stack that uses an SSH Public key as the Authentication type.
+- The IP address and username for the Linux machine in your Azure Stack instance that uses an SSH public key as the Authentication type.
 - Port 22 needs to be open for the machine.
-- The public SSH key that you used when creating the machine.
-- Your client machine running PuTTY to be on the same network as your Azure Stack.
+- The public SSH key that you used when you created the machine.
+- The client machine that runs PuTTY to be on the same network as your Azure Stack instance.
 
-### Connect via SSH with PuTTy
+1. Open PuTTY.
 
-1. Open Putty.
+    ![The PuTTY Configuration pane](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-connect.png)
 
-    ![Use PuTTY to connect](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-connect.png)
+2. In the **Host Name (or IP address)** box, enter the username and public IP address of the machine (for example, **username@192.XXX.XXX.XX**). 
+3. Validate that the **Port** is **22** and the **Connection type** is **SSH**.
+4. In the **Category** tree, expand **SSH** and **Auth**.
 
-2. Add the username and public IP address of the machine. For example, `username@192.XXX.XXX.XX` for the **Host Name**. 
-3. Validate that **Port** `22` is set and **Connection type** is set to `SSH`.
-4. Expand **SSH** > **Auth** in the **Category** tree.
+    ![The PuTTY Configuration pane - SSH private key](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-set-private-key.png)
 
-    ![SSH private key](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-set-private-key.png)
+5. Next to the **Private key file for authentication** box, select **Browse**, and then search for the private key file (\<filename>.ppk) of your public and private key pair.
+6. In the **Category** tree, select **Session**.
 
-5. Select **Browse** and find your private key file (filename.ppk) of your public and private key pair.
-6. Select Session in the Category tree.
+    ![The PuTTY Configuration pane "Saved Sessions" box](media/azure-stack-dev-start-howto-ssh-public-key/003-puTTY-save-session.png)
 
-    ![SSH public key with private key](media/azure-stack-dev-start-howto-ssh-public-key/003-puTTY-save-session.png)
-
-7. Type a name for the session under **Saved Sessions** and Select **Save**.
-8. Select the name of the session and **Load**.
-9. Select **Open**. The SSH session will open.
+7. Under **Saved Sessions**, enter a name for the session, and then select **Save**.
+8. In the **Saved Sessions** list, select the name of your session, and then select **Load**.
+9. Select **Open**. The SSH session opens.
 
 ## Connect with SFTP with FileZilla
 
-You can use Filezilla as an FTP client that supports SFTP to move files to and from your Linux machine. FileZilla runs on Windows 10, Linux, and macOS. The FileZilla Client supports FTP, but also FTP over TLS (FTPS) and SFTP. It is open-source software distributed free of charge under the terms of the GNU General Public License.
+To move files to and from your Linux machine, you can use FileZilla as an FTP client that supports Secure FTP (SFTP). FileZilla runs on Windows 10, Linux, and macOS. The FileZilla client supports FTP, FTP over TLS (FTPS), and SFTP. It is open-source software that's distributed free of charge under the terms of the GNU General Public License.
 
 ### Set your connection
 
@@ -105,19 +108,19 @@ You can use Filezilla as an FTP client that supports SFTP to move files to and f
 1. Open FileZilla.
 1. Select **File** > **Site Manager**.
 
-    ![SSH public key with private key](media/azure-stack-dev-start-howto-ssh-public-key/005-filezilla-file-manager.png)
+    ![The FileZilla Site Manager pane](media/azure-stack-dev-start-howto-ssh-public-key/005-filezilla-file-manager.png)
 
-1. Select **SFTP - SSH File Transfer Protocol** for **Protocol**.
-1. Add the public IP address for your machine in the **Host** box.
-1. Select **Normal** for **sign in Type**.
-1. Add your user name and password.
+1. In the **Protocol** drop-down list, select **SFTP - SSH File Transfer Protocol**.
+1. In the **Host** box, enter the public IP address for your machine.
+1. In the **Logon Type** box, select **Normal**.
+1. Enter your username and password.
 1. Select **OK**.
 1. Select **Edit** > **Settings**.
 
-    ![SSH public key with private key](media/azure-stack-dev-start-howto-ssh-public-key/006-filezilla-add-private-key.png)
+    ![The FileZilla Settings pane](media/azure-stack-dev-start-howto-ssh-public-key/006-filezilla-add-private-key.png)
 
-1. Expand **Connection** in the **Select page** tree. Select **SFTP**.
-1. Select **Add key file** and add your private key file, such as filename.ppk.
+1. In the **Select page** tree, expand **Connection**, and then select **SFTP**.
+1. Select **Add key file**, and then enter your private key file (for example, *\<filename>.ppk*.
 1. Select **OK**.
 
 ### Open your connection
@@ -128,4 +131,4 @@ You can use Filezilla as an FTP client that supports SFTP to move files to and f
 
 ## Next steps
 
-Learn more about how to [Develop for Azure Stack](azure-stack-dev-start.md)
+Learn how to [Set up a development environment in Azure Stack](azure-stack-dev-start.md).
