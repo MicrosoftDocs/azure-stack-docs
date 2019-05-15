@@ -70,6 +70,14 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 - Remediation: Refresh the browser.
 - Occurrence: Intermittent
 
+### Marketplace management
+
+- Applicable: This issue applies to 1904.
+- Cause: When you filter results on "Add from Azure" blade in Marketplace management tab in administrator portal, you may see incorrect filtered results. 
+- Remediation: Sort results by Name column and the results will be corrected. 
+- Occurrence: Intermittent
+
+
 ### Upload blob
 
 - Applicable: This issue applies to all supported releases.
