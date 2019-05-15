@@ -13,7 +13,7 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 05/16/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
@@ -26,7 +26,7 @@ ms.lastreviewed: 01/11/2019
 Use the guidance in this article to deploy App Service in Azure Stack.
 
 > [!IMPORTANT]  
-> Apply the 1901 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.5.
+> Apply the 1904 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.6.
 
 You can give your users the ability to create web and API applications. To let users create these applications, you need to:
 
@@ -34,7 +34,7 @@ You can give your users the ability to create web and API applications. To let u
  - After you install the App Service resource provider, you can include it in your offers and plans. Users can then subscribe to get the service and start creating applications.
 
 > [!IMPORTANT]  
-> Before you run the resource provider installer, make sure that you've followed the guidance in [Before you get started](azure-stack-app-service-before-you-get-started.md) and have read the [release notes](azure-stack-app-service-release-notes-update-five.md), which accompany the 1.5 release, to learn about new functionality, fixes, and any known issues which could affect your deployment.
+> Before you run the resource provider installer, make sure that you've followed the guidance in [Before you get started](azure-stack-app-service-before-you-get-started.md) and have read the [release notes](azure-stack-app-service-release-notes-update-six.md), which accompany the 1.6 release, to learn about new functionality, fixes, and any known issues which could affect your deployment.
 
 ## Run the App Service resource provider installer
 

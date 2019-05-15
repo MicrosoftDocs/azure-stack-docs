@@ -13,7 +13,7 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 05/16/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/11/2019
@@ -27,7 +27,7 @@ ms.lastreviewed: 03/11/2019
 Before you deploy Azure App Service on Azure Stack, you must complete the prerequisite steps in this article.
 
 > [!IMPORTANT]
-> Apply the 1901 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.5.
+> Apply the 1904 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.6.
 
 ## Download the installer and helper scripts
 

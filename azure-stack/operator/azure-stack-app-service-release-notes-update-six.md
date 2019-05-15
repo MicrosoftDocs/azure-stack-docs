@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2019
+ms.date: 05/16/2019
 ms.author: anwestg
 ms.reviewer: 
 
@@ -60,9 +60,16 @@ Azure App Service on Azure Stack Update 6 includes the following improvements an
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
 
 - **Updates to the following application frameworks and tools**:
-  - Added ASP.NET Core 2.1.6 and 2.2.0
-  - Added NodeJS 10.14.1
-  - Added NPM 6.4.1
+  - ASP.NET Core 2.2.4
+  - NodeJS 10.15.2
+  - Zulu OpenJDK 8.36.0.1
+  - Tomcat 7.0.81
+  - Tomcat 8.5.37
+  - Tomcat 9.0.14
+  - PHP 5.6.39
+  - PHP 7.0.33
+  - PHP 7.1.25
+  - PHP 7.2.13 
   - Updated Kudu to 81.10329.3844
   
 - **Updates to underlying operating system of all roles**:
