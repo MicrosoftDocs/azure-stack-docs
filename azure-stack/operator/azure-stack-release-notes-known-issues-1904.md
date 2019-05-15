@@ -162,7 +162,10 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
-<!-- ## App Service -->
+## App Service
+
+- Tenants must register the storage resource provider before creating their first Azure Function in the subscription.
+- Some tenant portal user experiences are broken due to an incompatibility with the portal framework shipped in 1903.  Principally the UX for Deployment Slots, Testing in Production and Site Extensions.  To work around this issue, use the [Azure App Service PowerShell module](https://docs.microsoft.com/azure/app-service/deploy-staging-slots#automate-with-powershell) or the [Azure CLI](https://docs.microsoft.com/cli/azure/webapp/deployment/slot?view=azure-cli-latest).  The portal experience will be restored in the upcoming release of Azure App Service on Azure Stack 1.6 (Update 6).
 <!-- ## Usage -->
 <!-- ### Identity -->
 <!-- ### Marketplace -->
