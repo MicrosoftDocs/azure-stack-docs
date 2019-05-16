@@ -69,7 +69,7 @@ When you install PuTTY, you have both PuTTY Key Generator and an SSH client. In 
 Before you connect, you will need:
 - PuTTY
 - The IP address and username for the Linux machine in your Azure Stack instance that uses an SSH public key as the Authentication type.
-- Port 22 needs to be open for the machine.
+- Port 22 to be open for the machine.
 - The public SSH key that you used when you created the machine.
 - The client machine that runs PuTTY to be on the same network as your Azure Stack instance.
 
@@ -114,7 +114,7 @@ To move files to and from your Linux machine, you can use FileZilla, an FTP clie
     ![The FileZilla Settings pane](media/azure-stack-dev-start-howto-ssh-public-key/006-filezilla-add-private-key.png)
 
 1. In the **Select page** tree, expand **Connection**, and then select **SFTP**.
-1. Select **Add key file**, and then enter your private key file (for example, *\<filename>.ppk*.
+1. Select **Add key file**, and then enter your private key file (for example, *\<filename>.ppk*).
 1. Select **OK**.
 
 ### Open your connection
