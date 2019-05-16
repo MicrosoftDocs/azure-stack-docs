@@ -23,7 +23,7 @@ ms.lastreviewed: 12/19/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Azure Stack virtual machines provide on-demand, scalable computing resources. Before you deploy virtual machines (VMs), you must understand the differences between the virtual machine features available in Azure Stack and Microsoft Azure. This article describes these differences and identifies key considerations for planning virtual machine deployments. To learn about high-level differences between Azure Stack and Azure, see the [Key considerations](azure-stack-considerations.md) article.
+Azure Stack virtual machines provide on-demand, scalable computing resources. Before you deploy virtual machines (VMs), you should understand the differences between the virtual machine features available in Azure Stack and Microsoft Azure. This article describes these differences and identifies key considerations for planning virtual machine deployments. To learn about high-level differences between Azure Stack and Azure, see the [Key considerations](azure-stack-considerations.md) article.
 
 ## Cheat sheet: Virtual machine differences
 
@@ -35,9 +35,9 @@ Azure Stack virtual machines provide on-demand, scalable computing resources. Be
 | Virtual machine extensions |Azure supports a wide variety of virtual machine extensions. To learn about the available extensions, refer to the [virtual machine extensions and features](/azure/virtual-machines/windows/extensions-features) article.| Azure Stack supports a subset of extensions that are available in Azure and each of the extensions have specific versions. The Azure Stack cloud admin can choose which extensions to be made available to for their users. To view the list of supported extensions, refer to the [virtual machine extensions](#virtual-machine-extensions) section of this article. |
 | Virtual machine network | Public IP addresses assigned to a tenant virtual machine are accessible over the Internet.<br><br><br>Azure virtual machines have a fixed DNS name. | Public IP addresses assigned to a tenant virtual machine are accessible within the Azure Stack Development Kit environment only. A user must have access to the Azure Stack Development Kit via [RDP](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp) or [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) to connect to a virtual machine that is created in Azure Stack.<br><br>Virtual machines created within a specific Azure Stack instance have a DNS name based on the value that is configured by the cloud admin. |
 | Virtual machine storage | Supports [managed disks.](/azure/virtual-machines/windows/managed-disks-overview) | Managed disks are supported in Azure Stack with version 1808 and later. |
-| Virtual machine disk performance | Depends on disk type and size. | Depends on VM size of VM which the disks are attached to, refer to the [Virtual machine sizes supported in Azure Stack](azure-stack-vm-sizes.md) article.
+| Virtual machine disk performance | Depends on disk type and size. | Depends on VM size of the VM which the disks are attached to. For more info, refer to the [Virtual machine sizes supported in Azure Stack](azure-stack-vm-sizes.md) article.
 | API versions | Azure always has the latest API versions for all the virtual machine features. | Azure Stack supports specific Azure services and specific API versions for these services. To view the list of supported API versions, refer to the [API versions](#api-versions) section of this article. |
-| Azure Instance Metadata Service | The Azure Instance Metadata Service provides info about running virtual machine instances that can be used to manage and configure your virtual machines.  | The Azure Instance Metadata Service is not supported on Azure Stack. |
+| Azure Instance Metadata Service | The Azure Instance Metadata Service provides info about running virtual machine instances that can be used to manage and configure your virtual machines.  | The Azure Instance Metadata Service isn't supported on Azure Stack. |
 | Virtual machine availability sets|Multiple fault domains (2 or 3 per region).<br>Multiple update domains.|Multiple fault domains (2 or 3 per region).<br>Multiple update domains (up to 20).|
 | Virtual machine scale sets|Autoscale is supported.|Autoscale isn't supported.<br><br>Add more instances to a scale set using the portal, Resource Manager templates, or PowerShell. |
 | Virtual machine diagnostics | Linux VM diagnostics are supported. | Linux VM diagnostics aren't supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings.
@@ -47,8 +47,8 @@ Azure Stack virtual machines provide on-demand, scalable computing resources. Be
 Azure Stack imposes resource limits to avoid over consumption of resources (server local and service-level.) These limits improve the tenant experience by reducing the impact of resource consumption by other tenants.
 
 - For networking egress from the VM, there are bandwidth caps in place. Caps in Azure Stack are the same as the caps in Azure.
-- For storage resources, Azure Stack implements storage IOPS limits to avoid basic overconsumption of resources by tenants for storage access.
-- For VM disks, disk IOPS (Input/Output Operations Per Second) on Azure Stack is a function of virtual machine (VM) size instead of the disk type. This means that for a Standard_Fs series VM, regardless of whether you choose SSD or HDD for the disk type, the IOPS limit for a single additional data disk is 2300 IOPS.
+- For storage resources, Azure Stack implements storage IOPS (Input/Output Operations Per Second) limits to avoid basic overconsumption of resources by tenants for storage access.
+- For VM disks, disk IOPS on Azure Stack is a function of virtual machine (VM) size instead of the disk type. This means that for a Standard_Fs series VM, regardless of whether you choose SSD or HDD for the disk type, the IOPS limit for a single additional data disk is 2300 IOPS.
 
 The following table lists the VMs that are supported on Azure Stack along with their configuration:
 
@@ -65,7 +65,7 @@ The following table lists the VMs that are supported on Azure Stack along with t
 |Memory optimized|Dv2-series     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
 |Memory optimized|DSv2-series -  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
 
-Virtual machine sizes and their associated resource quantities are consistent between Azure Stack and Azure. This includes the amount of memory, the number of cores, and the number/size of data disks that can be created. However, performance of VMs with the same size depends on the underlying characteristics of a particular Azure Stack environment.
+Virtual machine sizes and their associated resource quantities are consistent between Azure Stack and Azure. This consistency includes the amount of memory, the number of cores, and the number/size of data disks that can be created. However, performance of VMs with the same size depends on the underlying characteristics of a particular Azure Stack environment.
 
 ## Virtual machine extensions
 
@@ -106,7 +106,7 @@ The list of supported resource types and API versions may vary if the cloud oper
 Windows products must be used in accordance with Product Use Rights and Microsoft license terms. Azure Stack uses [Automatic VM Activation](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v%3dws.11)) (AVMA) to activate Windows Server virtual machines (VMs).
 
 - Azure Stack host activates Windows with AVMA keys for Windows Server 2016. All VMs that run Windows Server 2012 R2 or later are automatically activated.
-- VMs that run Windows Server 2012 or earlier are not automatically activated and must be activated by using [MAK activation](https://technet.microsoft.com/library/ff793438.aspx). To use MAK activation, you must provide your own product key.
+- VMs that run Windows Server 2012 or earlier aren't automatically activated and must be activated by using [MAK activation](https://technet.microsoft.com/library/ff793438.aspx). To use MAK activation, you must provide your own product key.
 
 Microsoft Azure uses KMS activation to activate Windows VMs. If you move a VM from Azure Stack to Azure and encounter activation problems, see [Troubleshoot Azure Windows virtual machine activation problems](https://docs.microsoft.com/azure/virtual-machines/windows/troubleshoot-activation-problems). Additional info can be found at the [Troubleshooting Windows activation failures on Azure VMs](https://blogs.msdn.microsoft.com/mast/2017/06/14/troubleshooting-windows-activation-failures-on-azure-vms/) Azure Support Team Blog post.
 
