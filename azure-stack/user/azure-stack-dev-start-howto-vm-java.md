@@ -18,9 +18,7 @@ ms.lastreviewed: 04/24/2019
 
 # Deploy a Java web app to a VM in Azure Stack
 
-You can create a virtual machine (VM) to host your Python web app in Azure Stack. In this article, you install and configure an Apache Tomcat server on a Linux VM in Azure Stack, and then load a Java Web Application Resource (WAR) file into the server. 
-
-In this article, you install and configure an Apache Tomcat server on a Linux VM in Azure Stack. You then load a WAR file into the server. A WAR file is used to distribute a collection of Java archive (JAR) files, compressed files that contain Java resources such as classes, text, images, XML, and HTML, and other resources that are used to deliver a web application.
+You can create a virtual machine (VM) to host your Python web app in Azure Stack. In this article, you install and configure an Apache Tomcat server on a Linux VM in Azure Stack. You then load a Java Web Application Resource (WAR) file into the server. A WAR file is used to distribute a collection of Java archive (JAR) files, compressed files that contain Java resources such as classes, text, images, XML, and HTML, and other resources that are used to deliver a web application.
 
 ## Create a VM
 
