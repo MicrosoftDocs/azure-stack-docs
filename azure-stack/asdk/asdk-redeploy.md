@@ -35,7 +35,7 @@ To remove the registration resource, use the **Remove-AzsRegistration** cmdlet t
 
 2. Run the following PowerShell commands to unregister your ASDK installation and delete the **azurestack** resource group from your Azure subscription:
 
-   ```Powershell    
+   ```powershell    
    #Import the registration module that was downloaded with the GitHub tools
    Import-Module C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1
 
