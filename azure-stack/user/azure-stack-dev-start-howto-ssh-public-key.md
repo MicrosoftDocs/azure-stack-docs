@@ -20,7 +20,7 @@ You may need to create an SSH public and private key pair to use an open SSH con
 
 ## Create an SSH public key on Windows
 
-In this section, you will use PuTTY's key generator to create a public SSH key and private key pair to use when creating a secure connection to Linux machines on your Azure Stack. PuTTY is a free implementation of SSH and Telnet for Windows and Unix platforms, along with an `xterm` terminal emulator.
+In this section, you will use PuTTY's key generator to create a public SSH key and private key pair to use when creating a secure connection to Linux machines on your Azure Stack. PuTTY is a free terminal emulator that can allow you to connect to a server via SSH and Telnet.
 
 1. [Download and install PuTTY for your machine.](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
@@ -57,12 +57,6 @@ BvpmONCSR3YnyUtgWV27N6zC7U1OBdmv7TN6M7g01uOYQKI/GQ==
 
 When using the public key, you copy and paste the entire contexts of the text box as the value when an application asks for the key.
 
-<!-- 
-## Create an SSH public key on Linux
-
-ToDo: I need to write this section.
-
--->
 ## Connect with SSH using PuTTY
 
 If you have installed PuTTY, you have both the key generator and an SSH client. Open the SSH client, PuTTY, configure your connection values and SSH key, and if you are on the same network as your Azure Stack, connect to your VM.
