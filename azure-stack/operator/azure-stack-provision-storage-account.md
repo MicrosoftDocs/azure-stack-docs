@@ -33,6 +33,6 @@ Storage accounts in Azure Stack include Blob and Table services, and the unique 
 ### Next steps
 [Use Azure Resource Manager templates](../user/azure-stack-arm-templates.md)
 
-[Learn about Azure storage accounts]((/azure/storage/common/storage-create-storage-account)
+[Learn about Azure storage accounts](/azure/storage/common/storage-create-storage-account)
 
 [Download the Azure Stack Azure-consistent Storage Validation Guide](https://aka.ms/azurestacktp1doc)
