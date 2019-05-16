@@ -8,7 +8,7 @@ manager: femila
 
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 03/11/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.custom: mvc
@@ -45,7 +45,7 @@ You can create an Ubuntu Server 16.04 LTS virtual machine by using the Azure Sta
 
 You need an SSH key pair to finish all the steps in this article. If you have an existing SSH key pair, you can skip this step.
 
-1. Navigate to the PuTTY installation folder (the default location is ```C:\Program Files\PuTTY```) and run ```puttygen.exe```.
+1. Navigate to the PuTTY installation folder (the default location is `C:\Program Files\PuTTY`) and run `puttygen.exe`.
 2. In the PuTTY Key Generator window, ensure the **Type of key to generate** is set to **RSA**, and the **Number of bits in a generated key** is set to **2048**. When you're ready, click **Generate**.
 
    ![PuTTY Key Generator configuration](media/azure-stack-quick-linux-portal/Putty01.PNG)
@@ -102,7 +102,7 @@ Sign in to the Azure Stack portal. The address of the Azure Stack portal depends
    ![Connect virtual machine](media/azure-stack-quick-linux-portal/putty03.PNG)
 
 4. Scroll up in the **Category** window, and then click **Session**.
-5. In the **Host Name (or IP address)** box, paste the connection string shown in the Azure Stack portal. In this example, the string is ```asadmin@192.168.102.34```.
+5. In the **Host Name (or IP address)** box, paste the connection string shown in the Azure Stack portal. In this example, the string is `asadmin@192.168.102.34`.
 
    ![PuTTY configuration connection string](media/azure-stack-quick-linux-portal/Putty04.PNG)
 
@@ -141,7 +141,7 @@ A Network security group (NSG) secures inbound and outbound traffic. When a virt
 
 With NGINX installed, and port 80 open on your virtual machine, you can access the web server using the virtual machine's public IP address. (The public IP address is shown on the virtual machine's Overview page.)
 
-Open a web browser, and browse to ```http://<public IP address>```.
+Open a web browser, and browse to `http://<public IP address>`.
 
 ![NGINX web server Welcome page](media/azure-stack-quick-linux-portal/linux-05.PNG)
 

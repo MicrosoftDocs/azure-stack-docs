@@ -20,8 +20,6 @@ ms.lastreviewed: 04/24/2019
 
 You can create a VM to host your Python Web app in Azure Stack. This article looks at the steps you will follow in setting up server, configuring the server to host your Python web app, and then deploying your app.
 
-Python is an interpreted, high-level, general-purpose programming language. Created by Guido van Rossum and first released in 1991, Python has a design philosophy that emphasizes code readability, notably using significant whitespace. It provides constructs that enable clear programming on both small and large scales. To learn the Python programming language and find additional resources for Python, see [Python.org](https://www.python.org).
-
 This article will use Python 3.x running Flask in a virtual environment on a Ngnix server.
 
 ## Create a VM
@@ -32,9 +30,9 @@ This article will use Python 3.x running Flask in a virtual environment on a Ngn
 
     | Port | Protocol | Description |
     | --- | --- | --- |
-    | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems. Clients will connect to your web app with either the public IP or DNS name of your VM. |
-    | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is an extension of the Hypertext Transfer Protocol (HTTP). It is used for secure communication over a computer network. Clients will connect to your web app with the either the public IP or DNS name of your VM. |
-    | 22 | SSH | Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network. You will use this connection with an SSH client to configure the VM and deploy the app. |
+    | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is the protocol used to deliver web pages from servers. Clients connect via HTTP with a DNS name or IP address. |
+    | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is a secure version of HTTP that requires a security certificate and allows for the encrypted transmission of information.  |
+    | 22 | SSH | Secure Shell (SSH) is an encrypted network protocol for secure communications. You will use this connection with an SSH client to configure the VM and deploy the app. |
     | 3389 | RDP | Optional. The Remote Desktop Protocol allows for a remote desktop connection to use a graphic user interface your machine.   |
     | 5000, 8000 | Custom | Ports  5000, 8000 are used by the Flask web framework in development. For a production server, you will want to route your traffic through 80 and 443. |
 
@@ -54,7 +52,7 @@ This article will use Python 3.x running Flask in a virtual environment on a Ngn
     ```
 
 
-3. Install Nginx. [Nginx](https://www.nginx.com/resources/wiki/) is a web server, which can also be used as a reverse proxy, load balancer, mail proxy, and HTTP cache. Still connected to your VM in your SSH session, type the following commands:
+3. Install Nginx. [Nginx](https://www.nginx.com/resources/wiki/) is a light weight web server. Still connected to your VM in your SSH session, type the following commands:
 
     ```bash  
        sudo apt-get -y install nginx git
@@ -117,3 +115,4 @@ This article will use Python 3.x running Flask in a virtual environment on a Ngn
 
 - Learn more about how to [Develop for Azure Stack](azure-stack-dev-start.md)
 - Learn about [common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
+- To learn the Python programming language and find additional resources for Python, see [Python.org](https://www.python.org).

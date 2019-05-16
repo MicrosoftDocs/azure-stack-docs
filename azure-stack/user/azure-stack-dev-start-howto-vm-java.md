@@ -1,6 +1,6 @@
 ---
-title: Deploy an Java WAR to a virtual machine in Azure Stack | Microsoft Docs
-description:  Deploy an Java WAR to a virtual machine in Azure Stack.
+title: Deploy a Java WAR to a virtual machine in Azure Stack | Microsoft Docs
+description:  Deploy a Java WAR to a virtual machine in Azure Stack.
 services: azure-stack
 author: mattbriggs
 
@@ -20,11 +20,7 @@ ms.lastreviewed: 04/24/2019
 
 You can create a VM to host your Python Web app in Azure Stack. This article looks at the steps you will follow in setting up server, configuring the server to host your Python web app, and then deploying your app.
 
-Java is a general-purpose computer-programming language that is concurrent, class-based, object-oriented, and designed to have as few implementation dependencies as possible. It is intended to let application developers "write once, run anywhere", meaning that compiled Java code can run on all platforms that support Java without the need for recompilation. To learn the Java programming language and find additional resources for Java, see [Java.com](https://www.java.com).
-
-This article will walk through installing and configuring an Apache Tomcat server on a Linux VM in Azure Stack, and then loading a Java Web application Resource (WAR) file into the server. A WAR file is used to distribute a collection of JAR-files, JavaServer Pages, Java Servlets, Java classes, XML files, tag libraries, static web pages (HTML and related files) and other resources that together constitute a web application.
-
-Apache Tomcat, often referred to as Tomcat Server, is an open-source Java Servlet Container developed by the Apache Software Foundation. Tomcat implements several Java EE specifications including Java Servlet, JavaServer Pages, Java EL, and WebSocket, and provides a "pure Java" HTTP web server environment in which Java code can run.
+This article will walk through installing and configuring an Apache Tomcat server on a Linux VM in Azure Stack, and then loading a Java Web application Resource (WAR) file into the server. A WAR file is used to distribute a collection of JAR-files, a compressed file that contains Java resources such as classes, text, images, XML, and HTML, and other resources used to deliver a web application.
 
 ## Create a VM
 
@@ -34,9 +30,9 @@ Apache Tomcat, often referred to as Tomcat Server, is an open-source Java Servle
 
     | Port | Protocol | Description |
     | --- | --- | --- |
-    | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems. Clients will connect to your web app with either the public IP or DNS name of your VM. |
-    | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is an extension of the Hypertext Transfer Protocol (HTTP). It is used for secure communication over a computer network. Clients will connect to your web app with the either the public IP or DNS name of your VM. |
-    | 22 | SSH | Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network. You will use this connection with an SSH client to configure the VM and deploy the app. |
+    | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is the protocol used to deliver web pages from servers. Clients connect via HTTP with a DNS name or IP address. |
+    | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is a secure version of HTTP that requires a security certificate and allows for the encrypted transmission of information.  |
+    | 22 | SSH | Secure Shell (SSH) is an encrypted network protocol for secure communications. You will use this connection with an SSH client to configure the VM and deploy the app. |
     | 3389 | RDP | Optional. The Remote Desktop Protocol allows for a remote desktop connection to use a graphic user interface your machine.   |
     | 8080 | Custom | The default port for the Apache Tomcat service is 8080. For a production server, you will want to route your traffic through 80 and 443. |
 
@@ -65,7 +61,7 @@ Apache Tomcat, often referred to as Tomcat Server, is an open-source Java Servle
             sudo groupadd tomcat
         ```
      
-    - Second, create a new Tomcat user and make this user a member of the tomcat group with a home directory of `/opt/tomcat`, which is where you will install Tomcat, and with a shell of `/bin/false` (so nobody can log into the account):
+    - Second, create a Tomcat user. Add this user to the tomcat group with a home directory of `/opt/tomcat`. You will deploy Tomcat to this directory:
         ```bash  
             sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
         ```
@@ -79,7 +75,7 @@ Apache Tomcat, often referred to as Tomcat Server, is an open-source Java Servle
             curl -O <URL for the tar for the latest version of Tomcat 8>
         ```
 
-    - Third, install Tomcat to the `/opt/tomcat` directory. Create the directory, then extract the archive using the following commands:
+    - Third, install Tomcat to the `/opt/tomcat` directory. Create the folder.  Open the archive:
 
         ```bash  
             sudo mkdir /opt/tomcat
@@ -97,7 +93,7 @@ Apache Tomcat, often referred to as Tomcat Server, is an open-source Java Servle
 
 5. Create a `systemd` service file. so that you can run Tomcat as a service.
 
-    - Tomcat needs to know where Java is installed. This path is commonly referred to as **JAVA_HOME**. Find the location by running:
+    - Tomcat needs to know where you installed Java. This path is commonly referred to as **JAVA_HOME**. Find the location by running:
 
         ```bash  
             sudo update-java-alternatives -l
@@ -289,3 +285,4 @@ For guidance about developing Java apps in Azure, see [Build and deploy Java app
 
 - Learn more about how to [Develop for Azure Stack](azure-stack-dev-start.md)
 - Learn about [common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
+- To learn the Java programming language and find additional resources for Java, see [Java.com](https://www.java.com).
