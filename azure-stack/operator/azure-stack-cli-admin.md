@@ -12,9 +12,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: CLI
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
-ms.lastreviewed: 01/15/2019
+ms.lastreviewed: 05/16/2019
 
 ---
 # Enable Azure CLI for Azure Stack users
