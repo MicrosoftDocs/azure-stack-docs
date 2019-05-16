@@ -20,8 +20,6 @@ ms.lastreviewed: 04/24/2019
 
 You can create a virtual machine (VM) to host a Node.js web app in Azure Stack. In this article, you set up a server, configure the server to host your Node.js web app, and then deploy the app to Azure Stack.
 
-Node.js is a JavaScript runtime that's built on the Chrome V8 JavaScript engine. As an asynchronous, event-driven JavaScript runtime, Node is designed to help you build scalable network applications. To learn the Node programming language and find additional resources for Node, see [Nodejs.org](https://nodejs.org).
-
 ## Create a VM
 
 1. Set up your VM in Azure Stack by following the instructions in [Deploy a Linux VM to host a web app in Azure Stack](azure-stack-dev-start-howto-deploy-linux.md).
@@ -30,11 +28,11 @@ Node.js is a JavaScript runtime that's built on the Chrome V8 JavaScript engine.
 
     | Port | Protocol | Description |
     | --- | --- | --- |
-    | 80 | HTTP | The Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems. Clients connect to your web app with either the public IP or DNS name of your VM. |
-    | 443 | HTTPS | The Hypertext Transfer Protocol Secure (HTTPS) is an extension of HTTP. It's used for secure communication over a computer network. Clients connect to your web app with either the public IP or DNS name of your VM. |
-    | 22 | SSH | The Secure Shell (SSH) Protocol is a cryptographic network protocol for operating network services securely over an unsecured network. You use this connection with an SSH client to configure the VM and deploy the app. |
+    | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is the protocol that's used to deliver webpages from servers. Clients connect via HTTP with a DNS name or IP address. |
+    | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is a secure version of HTTP that requires a security certificate and allows for the encrypted transmission of information. |
+    | 22 | SSH | Secure Shell (SSH) is an encrypted network protocol for secure communications. You use this connection with an SSH client to configure the VM and deploy the app. |
     | 3389 | RDP | Optional. The Remote Desktop Protocol (RDP) allows a remote desktop connection to use a graphic user interface on your machine.   |
-    | 1337 | Custom | Port 1337 is used by Node.js. For a production server, you route your traffic through 80 and 443. |
+    | 1337 | Custom | The port that's used by Node.js. For a production server, you route your traffic through 80 and 443. |
 
 ## Install Node
 
@@ -89,5 +87,6 @@ Node.js is a JavaScript runtime that's built on the Chrome V8 JavaScript engine.
 
 ## Next steps
 
-- Learn how to [Set up a development environment in Azure Stack](azure-stack-dev-start.md).
-- Learn about [Common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
+- Learn more about how to [develop for Azure Stack](azure-stack-dev-start.md).
+- Learn about [common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
+- To learn the Node programming language and find additional resources for Node, see [Nodejs.org](https://nodejs.org).

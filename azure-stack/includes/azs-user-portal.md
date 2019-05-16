@@ -1,9 +1,9 @@
 ---
-author: jeffgilb
+author: mattbriggs
 ms.service: azure-stack 
 ms.topic: include
 ms.date: 10/23/2018
-ms.author: jeffgilb
+ms.author: mabrigg
 ---
 
 Sign in to the user portal:

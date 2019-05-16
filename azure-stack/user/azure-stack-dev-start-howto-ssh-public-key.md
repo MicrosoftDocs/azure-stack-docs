@@ -22,13 +22,13 @@ In this article, you create your keys and then use them to connect to your serve
 
 ## Create an SSH public key on Windows
 
-In this section, you use the PuTTY Key Generator to create a public SSH key and private key pair to use when you create a secure connection to Linux machines in your Azure Stack instance. PuTTY is a free implementation of SSH and Telnet for Windows and UNIX platforms, along with an *xterm* terminal emulator.
+In this section, you use PuTTY Key Generator to create a public SSH key and private key pair to use when you create a secure connection to Linux machines in your Azure Stack instance. PuTTY is a free terminal emulator that can allow you to connect to a server via SSH and Telnet.
 
 1. [Download and install PuTTY for your machine.](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
-1. Open the PuTTY Key Generator.
+1. Open PuTTY Key Generator.
 
-    ![The PuTTY Key Generator with a blank Key box](media/azure-stack-dev-start-howto-ssh-public-key/001-putty-key-gen-start.png)
+    ![PuTTY Key Generator with a blank Key box](media/azure-stack-dev-start-howto-ssh-public-key/001-putty-key-gen-start.png)
 
 1. Under **Parameters**, select **RSA**.
 
@@ -38,7 +38,7 @@ In this section, you use the PuTTY Key Generator to create a public SSH key and 
 
 1. In the **Key** area, generate some random characters by moving the cursor over the blank area.
 
-    ![The PuTTY Key Generator with a populated Key box](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-key-gen-result.png)
+    ![PuTTY Key Generator with a populated Key box](media/azure-stack-dev-start-howto-ssh-public-key/002-putty-key-gen-result.png)
 
 1. Enter a **Key passphrase** and confirm it in the **Confirm passphrase** box. Note your passphrase for later use.
 
@@ -62,15 +62,9 @@ BvpmONCSR3YnyUtgWV27N6zC7U1OBdmv7TN6M7g01uOYQKI/GQ==
 
 When an application requests the key, you copy and paste the entire contents of the text file.
 
-<!-- 
-## Create an SSH public key on Linux
-
-ToDo: I need to write this section.
--->
-
 ## Connect with SSH by using PuTTY
 
-When you install PuTTY, you have both the PuTTY Key Generator and an SSH client. In this section, you open the SSH client, PuTTY, and configure your connection values and SSH key. If you're on the same network as your Azure Stack instance, you connect to your VM.
+When you install PuTTY, you have both PuTTY Key Generator and an SSH client. In this section, you open the SSH client, PuTTY, and configure your connection values and SSH key. If you're on the same network as your Azure Stack instance, you connect to your VM.
 
 Before you connect, you will need:
 - PuTTY

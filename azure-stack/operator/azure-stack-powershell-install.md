@@ -61,7 +61,7 @@ Get-PSRepository -Name "PSGallery"
 If the repository is not registered, open an elevated PowerShell session and run the following command:
 
 ```powershell
-Register-PsRepository -Default
+Register-PSRepository -Default
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 ```
 
@@ -94,14 +94,14 @@ Installation has three steps:
 
 Run the following PowerShell script to install these modules on your development workstation:
 
-- For 1904 builds or later:
+- For Azure Stack 1904 or later:
 
     ```powershell  
     # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
     Install-Module -Name AzureRM.BootStrapper
     
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-    Get-AzureRMProfile -Update
+    Get-AzureRmProfile -Update
     Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
     Install-Module -Name AzureStack -RequiredVersion 1.7.2
     ```
@@ -111,7 +111,7 @@ Run the following PowerShell script to install these modules on your development
     ```powershell  
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
 
-    Install-Module AzureRM -RequiredVersion 2.4.0
+    Install-Module -Name AzureRM -RequiredVersion 2.4.0
     Install-Module -Name AzureStack -RequiredVersion 1.7.1
     ```
 
@@ -145,7 +145,7 @@ Install-Module -Name Azure.Storage -RequiredVersion 4.5.0 -Force -AllowClobber
 Install-Module -Name AzureRM.Storage -RequiredVersion 5.0.4 -Force -AllowClobber
 
 # Remove incompatible storage module installed by AzureRM.Storage
-Uninstall-Module Azure.Storage -RequiredVersion 4.6.1 -Force
+Uninstall-Module -Name Azure.Storage -RequiredVersion 4.6.1 -Force
 
 # Load the modules explicitly specifying the versions
 Import-Module -Name Azure.Storage -RequiredVersion 4.5.0
@@ -178,7 +178,18 @@ Installation has four steps:
 
 ### Install Azure Stack PowerShell
 
-- Azure Stack 1901 or later.
+- Azure Stack 1904 or later.
+
+    ```powershell
+    Import-Module -Name PowerShellGet -ErrorAction Stop
+    Import-Module -Name PackageManagement -ErrorAction Stop
+
+    $Path = "<Path that is used to save the packages>"
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.7.2
+    ```
+
+- Azure Stack 1903 or earlier.
 
     ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop
@@ -247,7 +258,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
    $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
    $RepoName = "MyNuGetSource"
 
-   Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation  -InstallationPolicy Trusted
+   Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
 
    Install-Module -Name AzureRM -Repository $RepoName
 

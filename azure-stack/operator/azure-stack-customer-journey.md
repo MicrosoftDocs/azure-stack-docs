@@ -3,7 +3,7 @@ title: Azure Stack datacenter integration walkthrough | Microsoft Docs
 description: Learn what to expect for a successful on-site deployment of Azure Stack in your datacenter.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: asganesh
 ms.lastreviewed: 12/10/2018
 ---

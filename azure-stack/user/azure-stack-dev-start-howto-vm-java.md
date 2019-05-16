@@ -20,11 +20,7 @@ ms.lastreviewed: 04/24/2019
 
 You can create a virtual machine (VM) to host your Python web app in Azure Stack. In this article, you install and configure an Apache Tomcat server on a Linux VM in Azure Stack, and then load a Java Web Application Resource (WAR) file into the server. 
 
-You use a WAR file to distribute a collection of JAR-files, JavaServer Pages, Java Servlets, Java classes, XML files, tag libraries, static web pages (HTML and related files), and other resources that together constitute a web application.
-
-Apache Tomcat, often referred to as Tomcat Server, is an open-source Java Servlet Container that was developed by the Apache Software Foundation. Tomcat implements several Java EE specifications, including Java Servlet, JavaServer Pages, Java EL, and WebSocket. Tomcat provides a "pure Java" HTTP web server environment in which Java code can run.
-
-Java is a general-purpose, computer-programming language that's concurrent, class-based, object-oriented, and designed to have as few implementation dependencies as possible. It's intended to let application developers "write once, run anywhere," which means that compiled Java code can run on all platforms that support Java without your having to recompile it. To learn the Java programming language and find additional resources for Java, go to [Java.com](https://www.java.com).
+In this article, you install and configure an Apache Tomcat server on a Linux VM in Azure Stack. You then load a Java Web Application Resource (WAR) file into the server. A WAR file is used to distribute a collection of Java archive (JAR) files, compressed files that contain Java resources such as classes, text, images, XML, and HTML, and other resources that are used to deliver a web application.
 
 ## Create a VM
 
@@ -34,11 +30,11 @@ Java is a general-purpose, computer-programming language that's concurrent, clas
 
     | Port | Protocol | Description |
     | --- | --- | --- |
-    | 80 | HTTP | The Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems. Clients connect to your web app with either the public IP or DNS name of your VM. |
-    | 443 | HTTPS | The Hypertext Transfer Protocol Secure (HTTPS) is an extension of the Hypertext Transfer Protocol (HTTP). It's used for secure communication over a computer network. Clients connect to your web app with the either the public IP or DNS name of your VM. |
-    | 22 | SSH | Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network. You use this connection with an SSH client to configure the VM and deploy the app. |
-    | 3389 | RDP | Optional. The Remote Desktop Protocol allows for a remote desktop connection to use a graphic user interface your machine.   |
-    | 8080 | Custom | The default port for the Apache Tomcat service is 8080. For a production server, you route your traffic through 80 and 443. |
+    | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is the protocol that's used to deliver webpages from servers. Clients connect via HTTP with a DNS name or IP address. |
+    | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is a secure version of HTTP that requires a security certificate and allows for the encrypted transmission of information. |
+    | 22 | SSH | Secure Shell (SSH) is an encrypted network protocol for secure communications. You use this connection with an SSH client to configure the VM and deploy the app. |
+    | 3389 | RDP | Optional. The Remote Desktop Protocol (RDP) allows a remote desktop connection to use a graphic user interface on your machine.   |
+    | 8080 | Custom | The default port for the Apache Tomcat service. For a production server, you route your traffic through 80 and 443. |
 
 ## Install Java
 
@@ -68,7 +64,7 @@ Java is a general-purpose, computer-programming language that's concurrent, clas
         sudo groupadd tomcat
     ```
      
-    b. Create a new Tomcat user. Make this user a member of the Tomcat group with a home directory of */opt/tomcat*, which is where you'll install Tomcat, and with a shell of `/bin/false` (so nobody can sign in to the account). Run the following command:
+    b. Create a new Tomcat user. Add this user to the Tomcat group with a home directory of */opt/tomcat*. You deploy Tomcat to this directory:
 
     ```bash  
         sudo useradd -s /bin/false -g tomcat -d /opt/tomcat tomcat
@@ -85,7 +81,7 @@ Java is a general-purpose, computer-programming language that's concurrent, clas
         curl -O <URL for the tar for the latest version of Tomcat 8>
     ```
 
-    c. Install Tomcat to the */opt/tomcat* directory. Create the directory, and then extract the archive by running the following commands:
+    c. Install Tomcat to the */opt/tomcat* directory. Create the folder, and then open the archive:
 
     ```bash  
         sudo mkdir /opt/tomcat
@@ -103,13 +99,13 @@ Java is a general-purpose, computer-programming language that's concurrent, clas
 
 1. Create a *systemd* service file, so that you can run Tomcat as a service.
 
-   a. Tomcat needs to know where Java is installed. This path is commonly referred to as *JAVA_HOME*. Find the location by running:
+   a. Tomcat needs to know where you installed Java. This path is commonly referred to as *JAVA_HOME*. Find the location by running:
 
     ```bash  
         sudo update-java-alternatives -l
     ```
 
-    This will produce something like the following:
+    This produces something like the following:
 
     ```Text  
         Output
@@ -299,5 +295,6 @@ For guidance about developing Java apps in Azure, see [Build and deploy Java app
 
 ## Next steps
 
-- Learn how to [Set up a development environment in Azure Stack](azure-stack-dev-start.md).
-- Learn about [Common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
+- Learn more about how to [develop for Azure Stack](azure-stack-dev-start.md).
+- Learn about [common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
+- To learn the Java programming language and find additional resources for Java, see [Java.com](https://www.java.com).
