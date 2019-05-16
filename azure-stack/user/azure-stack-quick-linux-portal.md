@@ -46,7 +46,7 @@ You can create an Ubuntu Server 16.04 LTS virtual machine by using the Azure Sta
 You need an SSH key pair to finish all the steps in this article. If you have an existing SSH key pair, you can skip this step.
 
 1. Navigate to the PuTTY installation folder (the default location is `C:\Program Files\PuTTY`) and run `puttygen.exe`.
-2. In the PuTTY Key Generator window, ensure the **Type of key to generate** is set to **RSA**, and the **Number of bits in a generated key** is set to **2048**. When you're ready, click **Generate**.
+2. In the PuTTY Key Generator window, set the **Type of key to generate** to **RSA**, and the **Number of bits in a generated key** to **2048**. When you're ready, click **Generate**.
 
    ![PuTTY Key Generator configuration](media/azure-stack-quick-linux-portal/Putty01.PNG)
 
@@ -57,7 +57,7 @@ You need an SSH key pair to finish all the steps in this article. If you have an
 
 ## Sign in to the Azure Stack portal
 
-The address of the Azure Stack portal depends on which Azure Stack product you are connecting to:
+The address of the Azure Stack portal depends on which Azure Stack product you're connecting to:
 
 * For Azure Stack Development Kit (ASDK), go to: https://portal.local.azurestack.external.
 * For an Azure Stack integrated system, go to the URL that your Azure Stack operator provided.
@@ -98,7 +98,7 @@ The address of the Azure Stack portal depends on which Azure Stack product you a
 
 2. Open PuTTY.
 
-3. On the PuTTY Configuration screen, you will use the **Category** window to scroll up or down. Scroll down to **SSH**, expand **SSH**, and then click **Auth**. Click **Browse** and pick the private key file that you saved.
+3. On the PuTTY Configuration screen, you'll use the **Category** window to scroll up or down. Scroll down to **SSH**, expand **SSH**, and then click **Auth**. Click **Browse** and pick the private key file that you saved.
    ![Connect virtual machine](media/azure-stack-quick-linux-portal/putty03.PNG)
 
 4. Scroll up in the **Category** window, and then click **Session**.
