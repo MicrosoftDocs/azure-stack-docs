@@ -13,8 +13,9 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
+ms.reviewer: thoroet
 ms.lastreviewed: 01/22/2019
 
 ---
@@ -32,7 +33,7 @@ Actual disk replacement steps will vary based on your original equipment manufac
 ## Review disk alert information
 When a disk fails, you receive an alert that tells you that connectivity has been lost to a physical disk.
 
- ![Alert showing connectivity lost to physical disk](media/azure-stack-replace-disk/DiskAlert.png)
+![Alert showing connectivity lost to physical disk](media/azure-stack-replace-disk/DiskAlert.png)
 
 If you open the alert, the alert description contains the scale unit node and the exact physical slot location for the disk that you must replace. Azure Stack further helps you to identify the failed disk by using LED indicator capabilities.
 

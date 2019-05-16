@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
@@ -60,5 +60,7 @@ The **AzureStack-Tools** repository contains PowerShell modules that support the
 
 
 ## Next steps
-* [Configure the Azure Stack user's PowerShell environment](../user/azure-stack-powershell-configure-user.md)   
-* [Connect to Azure Stack Development Kit over a VPN](../asdk/asdk-connect.md)  
+
+- [../user/azure-stack-powershell-overview.md](Get started with PowerShell on Azure Stack)
+- [Configure the Azure Stack user's PowerShell environment](../user/azure-stack-powershell-configure-user.md)   
+- [Connect to Azure Stack Development Kit over a VPN](../asdk/asdk-connect.md)  
