@@ -129,7 +129,7 @@ Create a publish target to your VM in Azure Stack.
 1. Select **Publish**.
 1. Go to your new server. You should see your running web application.
 
-    ```HTTP  
+    ```http  
         mywebapp.local.cloudapp.azurestack.external
     ```
 
