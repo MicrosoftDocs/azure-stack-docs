@@ -45,7 +45,7 @@ You can create a virtual machine (VM) to host a Go web app in Azure Stack. In th
     sudo mv go /usr/local
     ```
 
-2. Set up the Go environment on your VM. Still connected to your VM in your SSH session, enter the following commands:
+2. Set up the Go environment on your VM. While you're still connected to your VM in your SSH session, enter the following commands:
 
     ```bash  
     export GOROOT=/usr/local/go
@@ -55,13 +55,13 @@ You can create a virtual machine (VM) to host a Go web app in Azure Stack. In th
     vi ~/.profile
     ```
 
-3. Validate your installation. Still connected to your VM in your SSH session, enter the following command:
+3. Validate your installation. While you're still connected to your VM in your SSH session, enter the following command:
 
     ```bash  
         go version
     ```
 
-3. [Install Git](https://git-scm.com), a widely distributed version control and source code management (SCM) system. Still connected to your VM in your SSH session, enter the following command:
+3. [Install Git](https://git-scm.com), a widely distributed version control and source code management (SCM) system. While you're still connected to your VM in your SSH session, enter the following command:
 
     ```bash  
        sudo apt-get -y install git
@@ -69,7 +69,7 @@ You can create a virtual machine (VM) to host a Go web app in Azure Stack. In th
 
 ## Deploy and run the app
 
-1. Set up your Git repository on the VM. Still connected to your VM in your SSH session, enter the following commands:
+1. Set up your Git repository on the VM. While you're still connected to your VM in your SSH session, enter the following commands:
 
     ```bash  
        git clone https://github.com/appleboy/go-hello
@@ -78,7 +78,7 @@ You can create a virtual machine (VM) to host a Go web app in Azure Stack. In th
        go get -d
     ```
 
-2. Start the app. Still connected to your VM in your SSH session, enter the following command:
+2. Start the app. While you're still connected to your VM in your SSH session, enter the following command:
 
     ```bash  
        go run hello-world.go
