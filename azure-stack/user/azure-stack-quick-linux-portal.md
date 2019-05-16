@@ -1,6 +1,6 @@
 ---
-title: Azure Stack quickstart - Create VM Portal
-description: Azure Stack quickstart - Create a Linux VM using the portal
+title: Create a Linux virtual machine with Azure Stack
+description: Create a Linux server virtual machine with Azure Stack.
 services: azure-stack
 cloud: azure-stack
 author: mattbriggs
@@ -15,7 +15,7 @@ ms.custom: mvc
 ms.lastreviewed: 12/03/2018
 ---
 
-# Quickstart: create a Linux server virtual machine with the Azure Stack portal
+# Quickstart: Create a Linux server virtual machine with the Azure Stack portal
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -26,18 +26,18 @@ You can create an Ubuntu Server 16.04 LTS virtual machine by using the Azure Sta
 * Clean up your resources.
 
 > [!NOTE]  
-> The screen images in this article are updated to match changes introduced with Azure Stack version 1808. 1808 adds support for using *managed disks* in addition to unmanaged disks. If you use an earlier version, some images for tasks like disk selection will be different than what is displayed in this article.  
+> The screenshots in this article are updated to match changes introduced in Azure Stack version 1808. 1808 adds support for using *managed disks* in addition to unmanaged disks. If you use an earlier version, some screenshots for tasks like disk selection will appear different than what you see in your UI.  
 
 
 ## Prerequisites
 
 * **A Linux image in the Azure Stack marketplace**
 
-   The Azure Stack marketplace doesn't have a Linux image by default. Check that you have the Azure Stack operator provides the **Ubuntu Server 16.04 LTS** image in your marketplace. The operator can use the steps described in the [Download marketplace items from Azure to Azure Stack](../operator/azure-stack-download-azure-marketplace-item.md) article.
+   The Azure Stack marketplace doesn't have a Linux image by default. Get your Azure Stack operator to provide the **Ubuntu Server 16.04 LTS** image in your marketplace. The operator can use the steps described in the [Download marketplace items from Azure to Azure Stack](../operator/azure-stack-download-azure-marketplace-item.md) article.
 
 * **Access to an SSH client**
 
-   If you are using the Azure Stack Development Kit (ASDK), you might not have access to an SSH client. If you need a client, there are several packages that include an SSH client. For example, PuTTY includes an SSH client and SSH key generator (puttygen.exe). For more information about available packages, read the following Azure article: [How to use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
+   If you're using the Azure Stack Development Kit (ASDK), you might not have access to an SSH client. If you need a client, there are several packages that include an SSH client. For example, PuTTY includes an SSH client and SSH key generator (puttygen.exe). For more information about available packages, read the [How to use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md) article.
 
    This Quickstart uses PuTTY to generate the SSH keys and to connect to the Linux server virtual machine. To download and install PuTTY, go to [https://www.putty.org/](https://www.putty.org).
 
@@ -57,9 +57,9 @@ You need an SSH key pair to finish all the steps in this article. If you have an
 
 ## Sign in to the Azure Stack portal
 
-Sign in to the Azure Stack portal. The address of the Azure Stack portal depends on which Azure Stack product you are connecting to:
+The address of the Azure Stack portal depends on which Azure Stack product you are connecting to:
 
-* For Azure Stack Development Kit (ASDK) go to: https://portal.local.azurestack.external.
+* For Azure Stack Development Kit (ASDK), go to: https://portal.local.azurestack.external.
 * For an Azure Stack integrated system, go to the URL that your Azure Stack operator provided.
 
 ## Create the virtual machine
@@ -74,7 +74,7 @@ Sign in to the Azure Stack portal. The address of the Azure Stack portal depends
 4. Type the virtual machine information. For **Authentication type**, select **SSH public key**. Paste in the SSH public key that you saved, and then click **OK**.
 
    > [!NOTE]
-   > Make sure you remove any leading or trailing white space for they key.
+   > Make sure you remove any leading or trailing white space for the key.
 
    ![Basics panel - Configure virtual machine](media/azure-stack-quick-linux-portal/linux-01.PNG)
 
@@ -84,7 +84,7 @@ Sign in to the Azure Stack portal. The address of the Azure Stack portal depends
 
 6. On the **Settings** page, make any desired changes to the defaults.
    
-   - Beginning with Azure Stack version 1808, you can configure **Storage** where you can choose to use *managed disks*. Prior to version 1808 only unmanaged disks can be used.    
+   - Beginning with Azure Stack version 1808, you can configure **Storage** and choose to use *managed disks*. In versions prior to 1808, only unmanaged disks can be used.
      ![Configure storage for managed disks](media/azure-stack-quick-linux-portal/linux-03.PNG)
     
      When your configurations are ready, select **OK** to continue.
@@ -128,20 +128,20 @@ When you finish installing NGINX, close the SSH session and open the virtual mac
 
 ## Open port 80 for web traffic
 
-A Network security group (NSG) secures inbound and outbound traffic. When a virtual machine is created in the Azure Stack portal, an inbound rule is created on port 22 for SSH connections. Because this virtual machine hosts a web server, an NSG rule needs to be created to allow web traffic on port 80.
+A network security group (NSG) secures inbound and outbound traffic. When a virtual machine is created in the Azure Stack portal, an inbound rule is created on port 22 for SSH connections. Because this virtual machine hosts a web server, an NSG rule needs to be created to allow web traffic on port 80.
 
 1. On the virtual machine **Overview** page, click the name of the **Resource group**.
 2. Select the **network security group** for the virtual machine. The NSG can be identified using the **Type** column.
 3. On the left-hand menu, under **Settings**, click **Inbound security rules**.
 4. Click **Add**.
 5. In **Name**, type **http**. Make sure **Port range** is set to 80 and **Action** is set to **Allow**.
-6. Click **OK**
+6. Click **OK**.
 
 ## View the NGINX welcome page
 
 With NGINX installed, and port 80 open on your virtual machine, you can access the web server using the virtual machine's public IP address. (The public IP address is shown on the virtual machine's Overview page.)
 
-Open a web browser, and browse to `http://<public IP address>`.
+Open a browser, and go to `http://<public IP address>`.
 
 ![NGINX web server Welcome page](media/azure-stack-quick-linux-portal/linux-05.PNG)
 
