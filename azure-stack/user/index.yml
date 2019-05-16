@@ -1,130 +1,74 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
+title: Azure Stack User Documentation
 metadata:
-document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
-title: Azure Stack User Documentation - Tutorials, API Reference
-description: Learn how to use Azure Stack services and how to build apps for Azure Stack.
-services: azure-stack
-author: mattbriggs
-manager: femila
-ms.service: azure-stack
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: landing-page
-ms.date: 05/15/2019
-ms.author: mabrigg
+  title: Azure Stack Documentation - Tutorials, API Reference
+  meta.description: azure-stack
+  services: azure-stack
+  author:   
+  manager: femila
+  layout: LandingPage
+  ms.assetid: cbf798da-6f1a-7d4d-7707-5d5e02589e22
+  ms.service: azure-stack
+  ms.tgt_pltfrm: from-team
+  ms.devlang: from-team
+  ms.topic: landing-page
+  ms.date: 04/25/2018
+  ms.author: mabrigg
 abstract:
-  description: Azure Stack is a hybrid cloud platform that lets you use Azure services from your company's or service provider's datacenter. As a developer, you can build apps on Azure Stack. You can then deploy them to Azure Stack, to Azure, or you can build truly hybrid apps that leverage the connectivity between an Azure Stack cloud and Azure. Learn how to create resources and deploy apps with our quickstarts and tutorials.<br/><br/>If you're an Azure Stack operator who manages the infrastructure and offers services, see our <a href="/azure/azure-stack/">operator documentation</a>.<br/><br/>If you are an Azure Stack operator interested in the Azure Stack Development Kit (ASDK), a single-node deployment of Azure Stack that you can download and use for free, see our <a href="/azure/azure-stack/asdk">ASDK documentation</a>.
+  description: Azure Stack is a hybrid cloud platform that lets you use Azure services from your company's or service provider's datacenter. As a developer, you can build apps on Azure Stack. You can then deploy them to Azure Stack, to Azure, or you can build truly hybrid apps that leverage the connectivity between an Azure Stack cloud and Azure. Learn how to create resources and deploy apps with our quickstarts and tutorials.<br/><br/>If you're an Azure Stack operator who manages the infrastructure and offers services, see our <a href="/azure/azure-stack/">operator documentation</a>.<br/><br/>If you are an Azure Stack operator interested in the Azure Stack Development Kit (ASDK), a single-node deployment of Azure Stack that you can download and use for free, see our <a href="../asdk">ASDK documentation</a>.
 sections:
-- title: Azure Stack DevOps
-  items:
-  - type: paragraph
-    text: 'Learn how to deploy a Windows virtual machine on Azure Stack:'
-  - type: list
-    style: cards
-    className: cardsF
-    items: 
-    - title: Develop with Azure Stack
-      html: <p>Set up your development environment to deploy apps on Azure Stack.</p>
-      href: /azure-stack/user/azure-stack-dev-start
-      image: 
-        src: https://docs.microsoft.com/media/common/i_code-edit.svg
-        href: /azure-stack/user/azure-stack-dev-start
-    - title: Configure PowerShell
-      html: <p>PowerShell orientation and instructions on getting your modules.</p>
-      href: /azure-stack/operator/azure-stack-powershell-install
-      image: 
-        src: https://docs.microsoft.com/media/common/i_code-automate.svg
-        href: /azure-stack/operator/azure-stack-powershell-install
-    - title: Configure CLI
-      html: <p>Get set up with CLI for Azure Stack.</p>
-      href: /azure-stack/user/azure-stack-version-profiles-azurecli2
-      image: 
-        src: https://docs.microsoft.com/media/common/i_cligeneric.svg
-        href: /azure-stack/user/azure-stack-version-profiles-azurecli2
-- title: Hybrid cloud apps
-  items:
-  - type: paragraph
-    text: 'You can develop and deploy apps in Azure, with full flexibility to deploy on-premises on Azure Stack to meet your regulatory or policy requirements, with no code changes needed.'
-  - type: list
-    style: cards
-    className: cardsF
-    items: 
-    - title: Hybrid app continuous integration and delivery
-      html: <p>Deploy hybrid apps to Azure and Azure Stack using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.</p>
-      href: /azure-stack-solution-pipeline
-      image: 
-        src: https://docs.microsoft.com/media/common/i_workflow.svg
-        href: /azure/azure-stack/test/
-    - title: Configure hybrid cloud identity
-      html: <p>Configure a hybrid cloud identity for your Azure and Azure Stack applications.</p>
-      href: /azure-stack/user/azure-stack-solution-hybrid-identity
-      image: 
-        src: https://docs.microsoft.com/media/common/i_identity-protection.svg
-        href: /azure-stack/user/azure-stack-solution-hybrid-identity
-    - title: Cross-cloud scaling solutions
-      html: <p>Create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack hosted web app, to an Azure hosted web app.</p>
-      href: /azure-stack/user/azure-stack-solution-cloud-burst
-      image: 
-        src: https://docs.microsoft.com/media/common/i_multi-connect.svg
-        href: /azure-stack/user/azure-stack-solution-cloud-burst
-- title: IaaS on Azure Stack
-  items:
-  - type: paragraph
-    text: 'You can use Azure Stack to your Infrastructure-as-a-Service (IaaS) workloads:'
-  - type: list
-    style: cards
-    className: cardsF
-    items: 
-    - title: Overview - Deploy a VM in IaaS
-      html: <p>Can create a VM using Azure Resource Manager templates </p>
-      href: /azure-stack/user/azure-stack-create-vm-template
-      image: 
-        src: https://docs.microsoft.com/media/common/i_package.svg
-        href: /azure-stack/user/azure-stack-create-vm-template
-    - title: Quickstart - Create a VM
-      html: <p>Create a VM to host your app.</p>
-      href: /azure-stack/user/azure-stack-quick-linux-portal
-      image: 
-        src: https://docs.microsoft.com/media/common/i_vmm-cloud.svg
-        href: /azure-stack/user/azure-stack-quick-linux-portal
-    - title: Deploy an app to a VM
-      html: <p>Set up a VM in Azure Stack and the deploying your app</p>
-      href: /azure-stack/user/azure-stack-dev-start-deploy-app
-      image: 
-        src: https://docs.microsoft.com/media/common/i_web-color.svg
-        href: /azure-stack/user/azure-stack-dev-start-deploy-app
-- title: PaaS on Azure Stack
-  items:
-  - type: paragraph
-    text: 'You can use Azure Stack to your Platform-as-a-Service (PaaS) workloads:'
-  - type: list
-    style: cards
-    className: cardsF
-    items: 
-    - title: Quickstart - Create an Azure function
-      html: <p>Create an HTTP triggered serverless function.</p>
-      href: /azure/blockchain-workbench/blockchain-workbench-deploy
-      image: 
-        src: https://docs.microsoft.com/media/common/i_event.svg
-        href: /azure/azure-stack/test/
-    - title: Quickstart - Deploy Wordpress to a Kuberentes Cluster
-      html: <p>Create a content management system in orchestrated containers.</p>
-      href: /azure-stack/user/azure-stack-solution-template-kubernetes-deploy
-      image: 
-        src: /media/index/kubernetes.png
-        href: /azure-stack/user/azure-stack-solution-template-kubernetes-deploy
-    - title: Quickstart - Deploy your container to Azure Stack
-      html: <p>Create a Docker container with your app and host it in Azure Stack.</p>
-      href: /azure/blockchain-workbench/blockchain-workbench-deploy
-      image: 
-        src: https://docs.microsoft.com/media/common/i_method.svg
-        href: /azure/azure-stack/test/
-- title: Reference
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+  - title: Azure Stack DevOps
     items:
-    - title: Command-Line
-      html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p><p><a href="/cli/azure/reference-index?view=azure-cli-2017-03-09-profile">Azure Stack CLI</a></p>
+    - type: list
+      style: cards
+      className: cardsA
+      items:  
+      - html: <a href="https://docs.microsoft.com/azure-stack/user/azure-stack-dev-start">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_code-edit.svg" alt="">
+              <br><b>Develop solutions with Azure Stack</b></a>
+              <p>Develop applications for Azure Stack using a Windows 10, Linux, or macOS workstation.</p>
+      - html: <a href="https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
+              <br><b>Azure Stack PowerShell</b></a>
+              <p>Easily manage your Azure Stack resources from PowerShell</p>
+      - html: <a href="https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-azurecli2">
+              <img height="48" width="48" src="../media/index/azure_dev-7.svg" alt="">
+              <br><b>Azure Command-Line Interface (CLI)</b></a>
+              <p>Command-line experience for managing Azure Stack resources</p>
+  - title: Section
+    items:
+    - type: list
+      style: cards
+      className: cardsA
+      items:  
+      - html: <a href="https://www.google.com">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
+              <br><b>Title</b></a>
+              <p>Subtitle - call to action</p>
+      - html: <a href="https://www.google.com">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
+              <br><b>Title</b></a>
+              <p>Subtitle - call to action</p>
+      - html: <a href="https://www.google.com">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
+              <br><b>Title</b></a>
+              <p>Subtitle - call to action</p>
+  - title: Section
+    items:
+    - type: list
+      style: cards
+      className: cardsA
+      items:  
+      - html: <a href="https://www.google.com">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
+              <br><b>Title</b></a>
+              <p>Subtitle - call to action</p>
+      - html: <a href="https://www.google.com">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
+              <br><b>Title</b></a>
+              <p>Subtitle - call to action</p>
+      - html: <a href="https://www.google.com">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
+              <br><b>Title</b></a>
+              <p>Subtitle - call to action</p>
