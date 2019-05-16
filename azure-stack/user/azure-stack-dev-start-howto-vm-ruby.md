@@ -19,7 +19,7 @@ ms.lastreviewed: 04/24/2019
 
 You can create a VM to host your Ruby Web app in Azure Stack. This article looks at the steps you will follow in setting up server, configuring the server to host your Ruby web app, and then deploying your app.
 
-Ruby is a language of careful balance. Its creator, Yukihiro "Matz" Matsumoto, blended parts of his favorite languages (Perl, Smalltalk, Eiffel, Ada, and Lisp) to form a new language that balanced functional programming with imperative programming. To learn the Ruby programming language and find additional resources for Python, see [Ruby-lang.org](https://www.ruby-lang.org).
+
 
 This article will use Ruby and a Ruby on Rails web framework.
 
@@ -31,9 +31,9 @@ This article will use Ruby and a Ruby on Rails web framework.
 
     | Port | Protocol | Description |
     | --- | --- | --- |
-    | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems. Clients will connect to your web app with either the public IP or DNS name of your VM. |
-    | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is an extension of the Hypertext Transfer Protocol (HTTP). It is used for secure communication over a computer network. Clients will connect to your web app with the either the public IP or DNS name of your VM. |
-    | 22 | SSH | Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network. You will use this connection with an SSH client to configure the VM and deploy the app. |
+    | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is the protocol used to deliver web pages from servers. Clients connect via HTTP with a DNS name or IP address. |
+    | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is a secure version of HTTP that requires a security certificate and allows for the encrypted transmission of information.  |
+    | 22 | SSH | Secure Shell (SSH) is an encrypted network protocol for secure communications. You will use this connection with an SSH client to configure the VM and deploy the app. |
     | 3389 | RDP | Optional. The Remote Desktop Protocol allows for a remote desktop connection to use a graphic user interface your machine.   |
     | 3000 | Custom | Port 3000 is used by the Ruby-on-rails web framework in development. For a production server, you will want to route your traffic through 80 and 443. |
 
@@ -102,3 +102,4 @@ This article will use Ruby and a Ruby on Rails web framework.
 
 - Learn more about how to [Develop for Azure Stack](azure-stack-dev-start.md)
 - Learn about [common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
+- To learn the Ruby programming language and find additional resources for Python, see [Ruby-lang.org](https://www.ruby-lang.org).
