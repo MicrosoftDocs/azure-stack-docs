@@ -45,7 +45,7 @@ This article uses Python 3.x running Flask in a virtual environment on an Nginx 
     sudo apt-get -y install python3 python3-venv python3-dev
     ```
 
-3. Validate your installation. Still connected to your VM in your SSH session, enter the following command:
+3. Validate your installation. While you're still connected to your VM in your SSH session, enter the following command:
 
     ```bash  
         python -version
@@ -57,7 +57,7 @@ This article uses Python 3.x running Flask in a virtual environment on an Nginx 
        sudo apt-get -y install nginx git
     ```
 
-4. [Install Git](https://git-scm.com), a widely distributed version control and source code management (SCM) system. Still connected to your VM in your SSH session, enter the following command:
+4. [Install Git](https://git-scm.com), a widely distributed version control and source code management (SCM) system. While you're still connected to your VM in your SSH session, enter the following command:
 
     ```bash  
        sudo apt-get -y install git
@@ -65,7 +65,7 @@ This article uses Python 3.x running Flask in a virtual environment on an Nginx 
 
 ## Deploy and run the app
 
-1. Set up your Git repository on the VM. Still connected to your VM in your SSH session, enter the following commands:
+1. Set up your Git repository on the VM. While you're still connected to your VM in your SSH session, enter the following commands:
 
     ```bash  
        git clone https://github.com/mattbriggs/flask-hello-world.git
@@ -73,7 +73,7 @@ This article uses Python 3.x running Flask in a virtual environment on an Nginx 
        cd flask-hello-world
     ```
 
-2. Create a virtual environment, and populate it with all the package dependencies. Still connected to your VM in your SSH session, enter the following commands:
+2. Create a virtual environment, and populate it with all the package dependencies. While you're still connected to your VM in your SSH session, enter the following commands:
 
     ```bash  
     python3 -m venv venv
