@@ -250,10 +250,10 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 3. Now register this location as the default repository and install the AzureRM and AzureStack modules from this repository:
 
    ```powershell
-   #requires -Version 5
-   #requires -RunAsAdministrator
-   #requires -Module PowerShellGet
-   #requires -Module PackageManagement
+   # requires -Version 5
+   # requires -RunAsAdministrator
+   # requires -Module PowerShellGet
+   # requires -Module PackageManagement
 
    $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
    $RepoName = "MyNuGetSource"
