@@ -44,11 +44,11 @@ The following block diagram shows the relationship of each set of PowerShell mod
 
 ### Global Azure
 
-Azure PowerShell provides a set of cmdlets that use the current version of the Azure Resource Manager model for managing your Azure resources. Azure PowerShell uses .NET Standard, making it available for Windows, macOS, and Linux. Azure PowerShell is also available on Azure Cloud Shell. For more information, see [Get started with Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+Azure PowerShell contains a set of cmdlets that use the current version of the Azure Resource Manager for working with your Azure resources. Azure PowerShell uses the .NET Standard. This means you can use versions of PowerShell with Windows, macOS, and Linux. Azure PowerShell is also available on Azure Cloud Shell. For more information, see [Get started with Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
 ### Azure Stack Resource Manager
 
-Azure Stack PowerShell provides a set of cmdlets that use prior versions of the Azure Resource Manager compatible with the resource providers in Azure Stack. Each resource provider in Azure Stack uses an older version of the provider found in global Azure. To help you coordinate the version of each provider supported by Azure Stack, you can use API Profiles. Azure Stack PowerShell uses PowerShell 5.1 and is only available on Windows. For more information, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md).
+Azure Stack PowerShell provides a set of cmdlets that use previous versions of the Azure Resource Manager. These cmdlets are compatible with the resource providers in Azure Stack. Each resource provider in Azure Stack uses an older version of the provider found in global Azure. To help you coordinate the version of each provider supported by Azure Stack, you can use API Profiles. Azure Stack PowerShell uses PowerShell 5.1 and is only available on Windows. For more information, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md).
 
 ### Azure Stack Administrator
 
