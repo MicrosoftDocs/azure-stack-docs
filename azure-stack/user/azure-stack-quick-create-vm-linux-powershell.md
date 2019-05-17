@@ -199,7 +199,7 @@ New-AzureRmVM `
   -VM $VirtualMachine
 ```
 
-## Quick Create virtual machine - Full script
+## Quick-create a virtual machine: Full script
 
 > [!NOTE]
 > This is essentially the preceding code merged together, but with a password rather than an SSH key for authentication.
