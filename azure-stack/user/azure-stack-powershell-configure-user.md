@@ -23,9 +23,9 @@ ms.lastreviewed: 01/24/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can connect to Azure Stack with PowerShell. You must connect to manage Azure Stack resources with PowerShell. For example, you can use PowerShell to subscribe to offers, create virtual machines, and deploy Azure Resource Manager templates.
+You can connect to Azure Stack with PowerShell to manage Azure Stack resources. For example, you can use PowerShell to subscribe to offers, create virtual machines, and deploy Azure Resource Manager templates.
 
-To get set up:
+To get setup:
   - Make sure you have the requirements.
   - Connect with Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS). 
   - Register resource providers.
@@ -33,7 +33,7 @@ To get set up:
 
 ## Prerequisites to connect using PowerShell
 
-Configure these prerequisites from the [development kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), or from a Windows-based external client if you are [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn):
+Configure these prerequisites from the [development kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), or from a Windows-based external client if you're [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn):
 
 * Install [Azure Stack-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
 * Download the [tools required to work with Azure Stack](../operator/azure-stack-powershell-download.md).
@@ -83,7 +83,7 @@ Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider
 
 ## Test the connectivity
 
-When you've got everything set up, test connectivity by using PowerShell to create resources in Azure Stack. As a test, create a resource group for an application and add a virtual machine. Run the following command to create a resource group named "MyResourceGroup":
+When you've got everything setup, test connectivity by using PowerShell to create resources in Azure Stack. As a test, create a resource group for an application and add a virtual machine. Run the following command to create a resource group named "MyResourceGroup":
 
 ```powershell  
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
