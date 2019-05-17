@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 05/17/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
@@ -58,25 +58,21 @@ Set up a service principal in Azure. The service principal gives your applicatio
 
 1. Create an Azure AD application.
 
-    a. Select **Azure Active Directory** > **+ App Registrations** > **New Application Registration**.
-
-    b. Enter a **Name** of the application.
-
-    c. Select **Web app / API**.
-
-    d. Enter `http://localhost` for the **Sign-on URL**.
-
-    c. Click **Create**.
+    a. Sign in to your Azure Account through the [Azure portal](https://portal.azure.com).  
+    b. Select **Azure Active Directory** > **App registrations** > **New registration**.  
+    c. Provide a name and URL for the application.  
+    d. Select the **Supported account types**.  
+    e.  Add `http://localhost` for the URI for the application. Select **Web**  for the type of application you want to create. After setting the values, select **Register**.
 
 1. Make note of the **Application ID**. You will need the ID when creating the cluster. The ID is referenced as **Service Principal Client ID**.
 
-1. Select **Settings** > **Keys**.
+1. In the blade for the service principle, select **New client secret**. **Settings** > **Keys**. You need to generate an authentication key for the service principle.
 
     a. Enter the **Description**.
 
     b. Select **Never expires** for **Expires**.
 
-    c. Select **Save**. Make note the key string. You will need the key string when creating the cluster. The key is referenced as the **Service Principal Client Secret**.
+    c. Select **Add**. Make note the key string. You will need the key string when creating the cluster. The key is referenced as the **Service Principal Client Secret**.
 
 ## Give the service principal access
 
