@@ -20,7 +20,7 @@ ms.lastreviewed: 04/24/2019
 ---
 # Use Docker to run PowerShell in Azure Stack
 
-You can use Docker to create Windows-based containers on which to run the version of PowerShell that you need to work with the various interfaces. You must use Windows-based containers in Docker.
+In this article, you use Docker to create Windows-based containers on which to run the version of PowerShell that's required for working with the various interfaces. In Docker, you must use Windows-based containers.
 
 ## Docker prerequisites
 
@@ -32,9 +32,9 @@ You can use Docker to create Windows-based containers on which to run the versio
         Docker -version
     ```
 
-1. You need to run Docker using Windows containers that require Windows 10. When you run Docker, switch to Windows containers.
+1. You need to run Docker by using Windows containers that require Windows 10. When you run Docker, switch to Windows containers.
 
-1. You must run Docker from a machine that's joined to the same domain as Azure Stack. If you are using the Azure Stack Development Kit (ASDK), you need to install [the VPN on your remote machine](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn).
+1. Run Docker from a machine that's joined to the same domain as Azure Stack. If you are using the Azure Stack Development Kit (ASDK), you need to install [the VPN on your remote machine](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn).
 
 ## Set up a service principal for using PowerShell
 
