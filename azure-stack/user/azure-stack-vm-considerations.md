@@ -1,5 +1,5 @@
 ---
-title: Differences and considerations for virtual machines in Azure Stack | Microsoft Docs
+title: Azure Stack virtual machines&#58; Differences and considerations | Microsoft Docs
 description: Learn about differences and considerations when working with virtual machines in Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -19,7 +19,7 @@ ms.lastreviewed: 12/19/2018
 
 ---
 
-# Considerations for using virtual machines in Azure Stack
+# Azure Stack virtual machines&#58; Differences and considerations
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
