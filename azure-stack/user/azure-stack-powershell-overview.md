@@ -52,15 +52,15 @@ Azure Stack PowerShell provides a set of cmdlets that use previous versions of A
 
 ### Azure Stack administrator
 
-Azure Stack exposes a set of resource providers to the cloud operator in order to install and maintain Azure Stack. In global Azure, this interaction is abstracted from the user and handled behind the scenes as part of Azure. With Azure Stack, however, enterprises can support a private cloud. To perform these tasks, the operator interacts with the Azure Stack Admin APIs. For more information, see [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md).
+Azure Stack exposes a set of resource providers to the cloud operator in order to install and maintain Azure Stack. In global Azure, this interaction is abstracted from the user and handled behind the scenes as part of Azure. With Azure Stack, however, enterprises can support a private cloud. To do these tasks, the operator interacts with the Azure Stack Admin APIs. For more information, see [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md).
 
 ### Azure Stack privileged endpoint
 
-For operator activities in Azure Stack, such as testing the installation and accessing logs, operators can interact with the privileged endpoint (PEP). The PEP is a pre-configured remote PowerShell console that provides operators with just enough access to help perform specific tasks. The endpoint uses PowerShell Just Enough Administration (JEA) to expose a restricted set of cmdlets. For more information, see [Use the privileged endpoint in Azure Stack](../operator/azure-stack-privileged-endpoint.md).
+For operator activities in Azure Stack, such as testing the installation and accessing logs, operators can interact with the privileged endpoint (PEP). The PEP is a pre-configured remote PowerShell console that gives operators enough access to do specific tasks. The endpoint uses PowerShell Just Enough Administration (JEA) to expose a restricted set of cmdlets. For more information, see [Use the privileged endpoint in Azure Stack](../operator/azure-stack-privileged-endpoint.md).
 
 ### Azure Stack Tools
 
-In addition, Azure Stack makes scripts and additional cmdlets available in a GitHub repository, *AzureStack-Tools*. AzureStack-Tools hosts PowerShell modules for managing and deploying resources to Azure Stack. If you're planning to establish VPN connectivity, you can download these PowerShell modules to the Azure Stack Development Kit, or to a Windows-based external client. For more information, go to the [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools) page.
+Azure Stack makes scripts and additional cmdlets available in a GitHub repository, *AzureStack-Tools*. AzureStack-Tools hosts PowerShell modules for managing and deploying resources to Azure Stack. If you're planning to establish VPN connectivity, you can download these PowerShell modules to the Azure Stack Development Kit, or to a Windows-based external client. For more information, go to the [AzureStack-Tools](https://github.com/Azure/AzureStack-Tools) page.
 
 ## Work with PowerShell in Azure Stack
 
