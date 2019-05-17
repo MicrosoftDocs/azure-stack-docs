@@ -80,7 +80,7 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 ### Marketplace management
 
 - Applicable: This issue applies to 1904.
-- Cause: When you filter results in Marketplace management in administrator portal, you will see duplicated publisher names under the publisher drop-down. 
+- Cause: When you filter results in Marketplace management in the administrator portal, you will see duplicated publisher names under the publisher drop-down. 
 - Remediation: Select all the duplicates to have the correct list of all the Marketplace products that are available under that publisher. 
 - Occurrence: Intermittent
 
