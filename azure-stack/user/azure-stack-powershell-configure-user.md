@@ -31,7 +31,7 @@ To get setup:
   - Register resource providers.
   - Test your connectivity.
 
-## Prerequisites to connect using PowerShell
+## Prerequisites to connecting with PowerShell
 
 Configure these prerequisites from the [development kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), or from a Windows-based external client if you're [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn):
 
@@ -45,7 +45,7 @@ Make sure you replace the following script variables with values from your Azure
 - **Azure Resource Manager endpoint**  
   For Azure Stack development kit, this value is set to https://management.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
 
-## Connect with Azure AD
+## Connect to Azure Stack with Azure AD
 
 ```powershell  
     Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
@@ -59,7 +59,7 @@ Make sure you replace the following script variables with values from your Azure
     Add-AzureRmAccount -EnvironmentName "AzureStackUser" -TenantId $TenantId
 ```
 
-## Connect with AD FS
+## Connect to Azure Stack with AD FS
 
   ```powershell  
   # Register an Azure Resource Manager environment that targets your Azure Stack instance
