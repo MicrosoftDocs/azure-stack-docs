@@ -41,7 +41,7 @@ Configure these prerequisites from the [development kit](../asdk/asdk-connect.md
 Make sure you replace the following script variables with values from your Azure Stack configuration:
 
 - **Azure AD tenant name**  
-  The name of your Azure AD tenant used to manage Azure Stack, for example, yourdirectory.onmicrosoft.com.
+  The name of your Azure AD tenant used to manage Azure Stack. For example, yourdirectory.onmicrosoft.com.
 - **Azure Resource Manager endpoint**  
   For Azure Stack development kit, this value is set to https://management.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
 

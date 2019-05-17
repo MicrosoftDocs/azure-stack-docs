@@ -19,7 +19,7 @@ ms.lastreviewed: 12/19/2018
 
 ---
 
-# Azure Stack virtual machines&#58; Differences and considerations
+# Azure Stack virtual machines: Differences and considerations
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
