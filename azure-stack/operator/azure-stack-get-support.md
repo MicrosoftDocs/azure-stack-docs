@@ -28,7 +28,7 @@ This topic covers improvements that make it easier to get support for Microsoft 
 
 Beginning with 1905 release, Azure Stack includes more options for operators who need support. 
 
-![Get support options](media/azure-stack-get-support/get-support-options.PNG)
+![Get support options](media/azure-stack-get-support/get-support-options.png)
 
 ## Documentation
 
