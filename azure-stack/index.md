@@ -219,8 +219,8 @@ ms.topic: hub-page
                 <div class="card">
                     <div class="cardText">
                         <h3>Command line</h3>
-                        <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p>
-                        <p><a href="/cli/azure/?view=azure-cli-2017-03-09-profile">Azure CLI</a></p>
+                        <p><a href="/powershell/azure/azure-stack/overview">Azure Stack PowerShell</a></p>
+                        <p><a href="/cli/azure/?view=azure-cli-latest">Azure CLI</a></p>
                     </div>
                 </div>
             </div>
@@ -232,8 +232,8 @@ ms.topic: hub-page
                 <div class="card">
                     <div class="cardText">
                         <h3>API</h3>
-						<p><a href="/rest/api/">Azure REST APIs</a></p>
 						<p><a href="/rest/api/azure-stack/">Azure Stack Admin REST APIs</a></p>
+						<p><a href="/rest/api/azure">Azure REST APIs</a></p>
                      </div>
                 </div>
             </div>
