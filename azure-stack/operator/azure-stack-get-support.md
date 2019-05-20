@@ -51,3 +51,5 @@ Learn how to
 ## Tutorials
 
 A customized set of tutorials appears for either integrated systems and ASDK deployments. 
+
+![Get support tutorials](media/azure-stack-get-support/get-support-tutorials.png)
