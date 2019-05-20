@@ -108,7 +108,7 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 
 - Updated Azure Linux Agent version 2.2.38.0. This support allows customers to maintain consistent Linux images between Azure and Azure Stack.
 
-- Changes to the update logs in the operator portal. Requests to retrieve successful update logs are no longer available. Failed update logs, because they are actionable for diagnostics are still available for download.
+- Changes to the update logs in the operator portal. Requests to retrieve successful update logs are no longer available. Failed update logs, because they are actionable for diagnostics, are still available for download.
 
 ### Fixes
 
