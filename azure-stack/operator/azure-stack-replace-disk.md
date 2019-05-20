@@ -13,8 +13,9 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
+ms.reviewer: thoroet
 ms.lastreviewed: 01/22/2019
 
 ---
@@ -27,18 +28,18 @@ This article describes the general process to replace a physical disk in Azure S
 
 You can use this procedure for integrated systems, and for development kit deployments that have hot-swappable disks.
 
-Actual disk replacement steps will vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor’s field replaceable unit (FRU) documentation for detailed steps that are specific to your system.
+Actual disk replacement steps will vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor's field replaceable unit (FRU) documentation for detailed steps that are specific to your system.
 
 ## Review disk alert information
 When a disk fails, you receive an alert that tells you that connectivity has been lost to a physical disk.
 
- ![Alert showing connectivity lost to physical disk](media/azure-stack-replace-disk/DiskAlert.png)
+![Alert showing connectivity lost to physical disk](media/azure-stack-replace-disk/DiskAlert.png)
 
 If you open the alert, the alert description contains the scale unit node and the exact physical slot location for the disk that you must replace. Azure Stack further helps you to identify the failed disk by using LED indicator capabilities.
 
 ## Replace the disk
 
-Follow your OEM hardware vendor’s FRU instructions for actual disk replacement.
+Follow your OEM hardware vendor's FRU instructions for actual disk replacement.
 
 > [!note]
 > Replace disks for one scale unit node at a time. Wait for the virtual disk repair jobs to complete before moving on to the next scale unit node

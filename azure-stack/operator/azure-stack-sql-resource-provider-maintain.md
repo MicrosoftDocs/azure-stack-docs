@@ -3,7 +3,7 @@ title: Maintaining the SQL resource provider on Azure Stack | Microsoft Docs
 description: Learn how you can maintain the SQL resource provider service on Azure Stack.
 services: azure-stack
 documentationCenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -12,8 +12,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
-ms.author: jeffgilb
+ms.date: 05/06/2019
+ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
 ---
@@ -57,7 +57,7 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
     -Privilegedendpoint $Privilegedendpoint `
     -CloudAdminCredential $cloudCreds `
     -AzCredential $adminCreds `
-    –DiagnosticsUserPassword $passwd `
+    -DiagnosticsUserPassword $passwd `
     -DependencyFilesLocalPath $certPath `
     -DefaultSSLCertificatePassword $certPasswd  `
     -VMLocalCredential $localCreds
@@ -70,7 +70,7 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
     -Privilegedendpoint $Privilegedendpoint `
     -CloudAdminCredential $cloudCreds `
     -AzCredential $adminCreds `
-    –DiagnosticsUserPassword  $passwd
+    -DiagnosticsUserPassword  $passwd
 ```
 
 **Change the VM local administrator account password.**
@@ -132,7 +132,7 @@ To update the Windows Defender definitions:
 
    Alternatively, use [this direct link](https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64) to download/run the fpam-fe.exe file.
 
-2. Create a PowerShell session to the SQL resource provider  adapter virtual machine’s maintenance endpoint.
+2. Create a PowerShell session to the SQL resource provider  adapter virtual machine's maintenance endpoint.
 
 3. Copy the definitions update file to the virtual machine using the maintenance endpoint session.
 

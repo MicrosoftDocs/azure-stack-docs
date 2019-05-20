@@ -3,7 +3,7 @@ title: Integrate external monitoring solution with Azure Stack | Microsoft Docs
 description: Learn how to integrate Azure Stack with an external monitoring solution in your datacenter.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
 ms.date: 02/06/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 02/06/2019
 
@@ -26,7 +26,7 @@ For external monitoring of the Azure Stack infrastructure, you need to monitor t
 - Physical computers can make health and alert information available via the baseboard management controllers (BMCs).
 - Physical network devices can make health and alert information available via the SNMP protocol.
 
-Each Azure Stack solution ships with a hardware lifecycle host. This host runs the Original Equipment Manufacturer (OEM) hardware vendor’s monitoring software for the physical servers and network devices. Please check with your OEM provider if their monitoring solutions can integrate with existing monitoring solutions in your datacenter.
+Each Azure Stack solution ships with a hardware lifecycle host. This host runs the Original Equipment Manufacturer (OEM) hardware vendor's monitoring software for the physical servers and network devices. Please check with your OEM provider if their monitoring solutions can integrate with existing monitoring solutions in your datacenter.
 
 > [!IMPORTANT]
 > The external monitoring solution you use must be agentless. You can't install third-party agents inside Azure Stack components.
@@ -65,7 +65,7 @@ The following diagram shows integration of Azure Stack with an existing System C
 
 ## Integrate with Nagios
 
-A Nagios monitoring plugin was developed together with the partner Cloudbase solutions, which is available under the permissive free software license – MIT (Massachusetts Institute of Technology).
+A Nagios monitoring plugin was developed together with the partner Cloudbase solutions, which is available under the permissive free software license - MIT (Massachusetts Institute of Technology).
 
 The plugin is written in Python and leverages the health resource provider REST API. It offers basic functionality to retrieve and close alerts in Azure Stack. Like the System Center management pack, it enables you to add multiple Azure Stack deployments and to send notifications.
 
@@ -73,7 +73,7 @@ The plugin works with Nagios Enterprise and Nagios Core. You can download it [he
 
 ### Plugin parameters
 
-Configure the plugin file “Azurestack_plugin.py” with the following parameters:
+Configure the plugin file "Azurestack_plugin.py" with the following parameters:
 
 | Parameter | Description | Example |
 |---------|---------|---------|
@@ -86,7 +86,7 @@ Configure the plugin file “Azurestack_plugin.py” with the following paramete
 | *region* |  Azure Stack region name | local |
 |  |  |
 
-*The PowerShell GUID that’s provided is universal. You can use it for each deployment.
+*The PowerShell GUID that's provided is universal. You can use it for each deployment.
 
 ## Use PowerShell to monitor health and alerts
 

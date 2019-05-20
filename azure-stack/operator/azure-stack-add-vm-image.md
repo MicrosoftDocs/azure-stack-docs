@@ -84,7 +84,7 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
     Add-AzsPlatformimage -publisher "<publisher>" `
       -offer "<offer>" `
       -sku "<sku>" `
-      -version "<#.#.#>” `
+      -version "<#.#.#>" `
       -OSType "<ostype>" `
       -OSUri "<osuri>"
    ```
@@ -167,7 +167,7 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
 7. Open PowerShell with an elevated prompt, and run:
 
    ```powershell
-    Add-AzsPlatformimage -publisher "<publisher>" -offer "<offer>" -sku "<sku>" -version "<#.#.#>” -OSType "<ostype>" -OSUri "<osuri>"
+    Add-AzsPlatformimage -publisher "<publisher>" -offer "<offer>" -sku "<sku>" -version "<#.#.#>" -OSType "<ostype>" -OSUri "<osuri>"
    ```
 
     For more information about the Add-AzsPlatformimage cmdlet and New-DataDiskObject cmdlet, see the Microsoft PowerShell [Azure Stack Operator module documentation](https://docs.microsoft.com/powershell/module/).

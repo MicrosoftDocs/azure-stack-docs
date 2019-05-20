@@ -3,7 +3,7 @@ title: Azure Stack MySQL resource provider 1.1.30.0 release notes | Microsoft Do
 description: Learn about what's in the latest Azure Stack MySQL resource provider update, including any known issues, and where to download it.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,8 +13,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2018
-ms.author: jeffgilb
+ms.date: 05/06/2019
+ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 12/10/2018
 ---
@@ -47,7 +47,7 @@ This version of the Azure Stack MySQL resource provider includes the following i
 
 - **MySQL resource provider Azure Stack PowerShell compatibility**. The MySQL resource provider has been updated to work with the Azure Stack 2018-03-01-hybrid PowerShell profile and to provide compatibility with AzureRM 1.3.0 and later.
 
-- **MySQL login change password blade**. Fixed an issue where the password can’t be changed on the change password blade. Removed links from password change notifications.
+- **MySQL login change password blade**. Fixed an issue where the password can't be changed on the change password blade. Removed links from password change notifications.
 
 ## Known issues 
 

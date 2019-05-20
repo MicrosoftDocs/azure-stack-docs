@@ -3,7 +3,7 @@ title: Microsoft Azure Stack troubleshooting | Microsoft Docs
 description: Azure Stack Development Kit (ASDK) troubleshooting information.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
 
@@ -38,7 +38,7 @@ If you experience a failure during installation, you can restart the deployment 
   .\InstallAzureStackPOC.ps1 -Rerun
   ```
 
-### At the end of the deployment, the PowerShell session is still open and doesn’t show any output
+### At the end of the deployment, the PowerShell session is still open and doesn't show any output
 This behavior is probably just the result of the default behavior of a PowerShell command window, when it has been selected. The development kit deployment has succeeded but the script was paused when selecting the window. You can verify setup has completed by looking for the word "select" in the titlebar of the command window. Press the ESC key to unselect it, and the completion message should be shown after it.
 
 ## Virtual machines

@@ -3,7 +3,7 @@ title: Updating the Azure Stack MySQL resource provider | Microsoft Docs
 description: Learn how you can update the Azure Stack MySQL resource provider.
 services: azure-stack 
 documentationCenter: '' 
-author: jeffgilb 
+author: mattbriggs 
 manager: femila 
 editor: '' 
 ms.service: azure-stack 
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na 
 ms.topic: article 
 ms.date: 03/29/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
 
