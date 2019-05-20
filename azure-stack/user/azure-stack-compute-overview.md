@@ -7,7 +7,7 @@ manager: femila
 
 ms.service: azure-stack
 ms.topic: conceptual
-ms.date: 01/05/2019
+ms.date: 05/20/2019
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/05/2019
@@ -23,18 +23,15 @@ An Azure Stack VM gives you the flexibility of virtualization without the need t
 
 You can use Azure Stack virtual machines in several ways. For example:
 
-- **Development and test**  
-    Azure Stack VMs enable you to create a computer with a specific configuration required to code and test an application.
+- **Development and test**: Azure Stack VMs enable you to create a computer with a specific configuration required to code and test an application.
 
-- **Applications in the cloud**  
-    Because demand for your application can fluctuate, it might make economic sense to run it on a VM in Azure Stack. You pay for extra VMs when you need them and shut them down when you don't.
+- **Applications in the cloud**: Because demand for your application can fluctuate, it might make economic sense to run it on a VM in Azure Stack. You pay for extra VMs when you need them and shut them down when you don't.
 
-- **Extended datacenter**  
-    Virtual machines in an Azure Stack virtual network can be connected to your organization's network or to Azure.
+- **Extended datacenter**: Virtual machines in an Azure Stack virtual network can be connected to your organization's network or to Azure.
 
 The VMs that your application uses can scale up, or scale out, to whatever is required to meet your needs.
 
-## What do I need to think about before creating a VM
+## Before creating a VM
 
 There are always design considerations when you build out an application infrastructure in Azure Stack. These aspects of a VM are important to think about before you start creating your infrastructure:
 
@@ -61,7 +58,7 @@ Your subscription has default quota limits in place that can impact the deployme
 
 ### Operating system disks and images
 
-Virtual machines use virtual hard disks (VHDs) to store their operating system (OS) and data. VHDs are also used for the images you can choose from to install an OS. Azure Stack provides a marketplace to use with various versions and types of operating systems. Marketplace images are identified by image publisher, offer, SKU, and version (typically the version is specified as **latest**.)
+Virtual machines use virtual hard disks (VHDs) to store their operating system (OS) and data. VHDs are also used for the images you can choose from to install an OS. Azure Stack provides a marketplace to use with various versions and types of operating systems. Marketplace images are identified by image publisher, offer, SKU, and version (typically the version is specified as **latest**).
 
 The following table shows how to find the information for an image:
 
@@ -78,14 +75,11 @@ You can choose to upload and use your own image. If you do, the publisher name, 
 VM extensions give your VM additional capabilities through post deployment configuration and automated tasks.
 These common tasks can be accomplished using extensions:
 
-- **Run custom scripts**  
-    The Custom Script extension helps you to configure workloads on the VM by running your script when the VM is provisioned.
+- **Run custom scripts**: The Custom Script extension helps you to configure workloads on the VM by running your script when the VM is provisioned.
 
-- **Deploy and manage configurations**  
-    The PowerShell Desired State Configuration (DSC) extension helps you set up DSC on a VM to manage configurations and environments.
+- **Deploy and manage configurations**: The PowerShell Desired State Configuration (DSC) extension helps you set up DSC on a VM to manage configurations and environments.
 
-- **Collect diagnostics data**  
-    The Azure Diagnostics extension helps you configure the VM to collect diagnostics data that can be used to monitor the health of your application.
+- **Collect diagnostics data**: The Azure Diagnostics extension helps you configure the VM to collect diagnostics data that can be used to monitor the health of your application.
 
 ### Related resources
 
@@ -94,7 +88,7 @@ The resources in the following table are used by the VM and need to exist or be 
 |Resource|Required|Description|
 |---------|---------|---------|
 |Resource group|Yes|The VM must be contained in a resource group.|
-|Storage account|No|The VM does not need the storage account to store its virtual hard disks if using Managed Disks. <br>The VM does need the storage account to store its virtual hard disks if using unmanaged disks.|
+|Storage account|No|The VM does not need the storage account to store its virtual hard disks if using managed disks. <br>The VM does need the storage account to store its virtual hard disks if using unmanaged disks.|
 |Virtual network|Yes|The VM must be a member of a virtual network.|
 |Public IP address|No|The VM can have a public IP address assigned to it to remotely access it.|
 |Network interface|Yes|The VM needs the network interface to communicate in the network.|
@@ -126,7 +120,7 @@ The following table shows you some of the ways you can get information about a V
 
 |Method|Description|
 |---------|---------|
-|Azure Stack portal|On the hub menu, click Virtual Machines and then select the VM from the list. On the page for the VM, you have access to overview information, setting values, and monitoring metrics.|
+|Azure Stack portal|On the hub menu, click **Virtual Machines** and then select the VM from the list. On the page for the VM, you have access to overview information, setting values, and monitoring metrics.|
 |Azure PowerShell|Managing VMs is similar in Azure and Azure Stack. For more information about using PowerShell, see the following Azure topic:<br>[Create and Manage Windows VMs with the Azure PowerShell module](/azure/virtual-machines/windows/tutorial-manage-vm#understand-vm-sizes)|
 |Client SDKs|Using C# to manage VMs is similar in Azure and Azure Stack. For more information, see the following Azure topic:<br>[Create and manage Windows VMs in Azure using C#](/azure/virtual-machines/windows/csharp)|
 
