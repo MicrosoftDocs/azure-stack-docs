@@ -1,5 +1,5 @@
 ---
-title: Connect Azure Stack to Azure using VPN
+title: Connect Azure Stack to Azure using VPN | Microsoft Docs
 description: How to connect virtual networks in Azure Stack to virtual networks in Azure using VPN.
 services: azure-stack
 documentationcenter: ''
@@ -57,6 +57,7 @@ First, create the network resources for Azure. The following instructions show h
 ### Create the virtual network and virtual machine (VM) subnet
 
 1. Sign in to the [Azure portal](https://portal.azure.com/) using your Azure account.
+
 2. In the user portal, select **+ Create a resource**.
 3. Go to **Marketplace**, and then select **Networking**.
 4. Select **Virtual network**.
@@ -81,7 +82,8 @@ First, create the network resources for Azure. The following instructions show h
 
 ### Create the virtual network gateway
 
-1. In the Azure portal, select **+ Create a resource**.  
+1. In the Azure portal, select **+ Create a resource**.
+
 2. Go to **Marketplace**, and then select **Networking**.
 3. From the list of network resources, select **Virtual network gateway**.
 4. In the **Name** field, type **Azure-GW**.
@@ -93,6 +95,7 @@ First, create the network resources for Azure. The following instructions show h
 ### Create the local network gateway resource
 
 1. In the Azure portal, select **+ Create a resource**.
+
 2. Go to **Marketplace**, and then select **Networking**.
 3. From the list of resources, select **Local network gateway**.
 4. In the **Name** field, type **Azs-GW**.
@@ -125,7 +128,7 @@ Now create a virtual machine in Azure, and put it on your VM subnet in your virt
 2. Go to **Marketplace**, and then select **Compute**.
 3. In the list of virtual machine images, select the **Windows Server 2016 Datacenter Eval** image.
 4. On the **Basics** section, for **Name**, type **AzureVM**.
-5. Type a valid username and password. You use this account to sign in to the virtual machine after it is created.
+5. Type a valid username and password. You use this account to sign in to the virtual machine after it's created.
 6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
 7. On the **Size** section, select a virtual machine size for this instance, and then select **Select**.
 8. In the **Settings** section, you can use the default settings. Before you select **OK**, confirm that:
@@ -225,7 +228,7 @@ To check the VPN connection, create two VMs: one in Azure, and one in Azure Stac
 2. Go to **Marketplace**, and then select **Compute**.
 3. In the list of virtual machine images, select the **Windows Server 2016 Datacenter Eval** image.
 4. On the **Basics** section, in **Name**, type **Azs-VM**.
-5. Type a valid username and password. You use this account to sign in to the VM after it is created.
+5. Type a valid username and password. You use this account to sign in to the VM after it's created.
 6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
 7. On the **Size** section, for this instance, select a virtual machine size, and then select **Select**.
 8. On the **Settings** section, accept the defaults. Make sure that the **Azs-VNet** virtual network is selected. Verify that the subnet is set to **10.1.0.0/24**. Then select **OK**.
@@ -287,11 +290,11 @@ address of the virtual machine on the remote subnet, not the VIP.
 
 11. A reply from the remote virtual machine indicates a successful test. You can close the virtual machine window.
 
-You should also do more rigorous data transfer testing; for example, copying different sized files in both directions.
+You should also do more rigorous data transfer testing; for example, copying differently sized files in both directions.
 
 ### Viewing data transfer statistics through the gateway connection
 
-If you want to know how much data passes through your site-to-site connection, this information is available in the **Connection** section. This test is also another way to verify that the ping you just sent actually
+If you want to know how much data passes through your site-to-site connection, this information is available in the **Connection** section. This test is also another way to verify the ping you just sent actually
 went through the VPN connection.
 
 1. While signed in to the user virtual machine in Azure Stack, use your user account to sign in to the user portal.
