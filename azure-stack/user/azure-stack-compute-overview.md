@@ -7,7 +7,7 @@ manager: femila
 
 ms.service: azure-stack
 ms.topic: conceptual
-ms.date: 01/05/2019
+ms.date: 05/20/2019
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/05/2019
@@ -26,11 +26,9 @@ You can use Azure Stack virtual machines in several ways. For example:
 - **Development and testing**  
     Azure Stack VMs enable you to create a computer with a specific configuration required to code and test an application.
 
-- **Applications in the cloud**  
-    Because demand for your application can fluctuate, it might make economic sense to run it on a VM in Azure Stack. You pay for extra VMs when you need them and shut them down when you don't.
+- **Applications in the cloud**: Because demand for your application can fluctuate, it might make economic sense to run it on a VM in Azure Stack. You pay for extra VMs when you need them and shut them down when you don't.
 
-- **Extended datacenter**  
-    Virtual machines in an Azure Stack virtual network can be connected to your organization's network or to Azure.
+- **Extended datacenter**: Virtual machines in an Azure Stack virtual network can be connected to your organization's network or to Azure.
 
 The VMs that your application uses can scale up, or scale out, to whatever is required to meet your needs.
 
@@ -126,7 +124,7 @@ The following table shows you some of the ways you can get information about a V
 
 |Method|Description|
 |---------|---------|
-|Azure Stack portal|On the hub menu, click Virtual Machines and then select the VM from the list. On the page for the VM, you have access to overview information, setting values, and monitoring metrics.|
+|Azure Stack portal|On the hub menu, click **Virtual Machines** and then select the VM from the list. On the page for the VM, you have access to overview information, setting values, and monitoring metrics.|
 |Azure PowerShell|Managing VMs is similar in Azure and Azure Stack. For more information about using PowerShell, see the following Azure topic:<br>[Create and Manage Windows VMs with the Azure PowerShell module](/azure/virtual-machines/windows/tutorial-manage-vm#understand-vm-sizes)|
 |Client SDKs|Using C# to manage VMs is similar in Azure and Azure Stack. For more information, see the following Azure topic:<br>[Create and manage Windows VMs in Azure using C#](/azure/virtual-machines/windows/csharp)|
 
