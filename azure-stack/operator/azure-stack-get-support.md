@@ -26,7 +26,7 @@ This topic covers improvements that make it easier to get support for Microsoft 
 > [!NOTE]
 > Because the Azure Stack Technical Development Kit (ASDK) is offered as an evaluation environment, there is no official support from Microsoft Customer Support Services. If you are experiencing an issue, make sure to check the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) for further assistance and information.  
 
-Beginning with 1905 release, Azure Stack has more ways for operators to get help. **Help + Support** helps operators self-service and reduces support requests 
+Beginning with 1905 release, Azure Stack has more ways for operators to get help. **Help + Support** has self-service resources to help operators avoid new support requests. 
 
 ![Get support options](media/azure-stack-get-support/get-support-options.png)
 
