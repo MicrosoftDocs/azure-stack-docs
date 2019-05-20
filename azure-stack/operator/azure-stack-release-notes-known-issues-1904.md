@@ -35,13 +35,6 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 
 ## Portal
 
-### Add-on plans
-
-- Applicable: This issue applies to all supported releases.
-- Cause: Plans that are added to a user subscription as an add-on plan cannot be deleted, even when you remove the plan from the user subscription. The plan remains until the subscriptions that reference the add-on plan are also deleted.
-- Remediation: No mitigation.
-- Occurrence: Common
-
 ### Administrative subscriptions
 
 - Applicable: This issue applies to all supported releases.
