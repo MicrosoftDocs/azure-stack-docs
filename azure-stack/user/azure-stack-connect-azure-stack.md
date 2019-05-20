@@ -26,7 +26,7 @@ To manage resources, you must connect to the Azure Stack Development Kit. This a
 * Virtual Private Network (VPN): lets multiple concurrent users connect from clients outside of the Azure Stack infrastructure (requires configuration).
 
 ## Connect to Azure Stack with Remote Desktop
-With a Remote Desktop Connection (RDC), a single concurrent user can work with the portal to manage resources.
+With a Remote Desktop Connection, a single concurrent user can work with the portal to manage resources.
 
 1. Open a Remote Desktop Connection and connect to the development kit. Enter **AzureStack\AzureStackAdmin** as the username, and the administrative password that you provided during Azure Stack setup.  
 
@@ -97,7 +97,7 @@ Connect to the Azure Stack instance by using either of the following two methods
 
   When prompted, trust the Azure Stack host and install the certificate from **AzureStackCertificateAuthority** onto your local computer's certificate store. The prompt might appear behind the PowerShell session window. 
 
-* On your local computer, go to **Network Settings** > **VPN** > click `azurestack` > **connect**. At the sign-in prompt, enter the username (AzureStack\AzureStackAdmin) and the password.
+* On your local computer, go to **Network Settings** > **VPN** > select `azurestack` > **connect**. At the sign-in prompt, enter the username (AzureStack\AzureStackAdmin) and the password.
 
 ### Test the VPN connectivity
 

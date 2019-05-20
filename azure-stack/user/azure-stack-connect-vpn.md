@@ -84,10 +84,10 @@ First, create the network resources for Azure. The following instructions show h
 1. In the Azure portal, select **+ Create a resource**.  
 2. Go to **Marketplace**, and then select **Networking**.
 3. From the list of network resources, select **Virtual network gateway**.
-4. In **Name**, type **Azure-GW**.
+4. In the **Name** field, type **Azure-GW**.
 5. To choose a virtual network, select **Virtual network**. Then select **AzureVnet** from the list.
 6. Select **Public IP address**. When the **Choose public IP address** section opens, select **Create new**.
-7. In **Name**, type **Azure-GW-PiP**, and then select **OK**.
+7. In the **Name** field, type **Azure-GW-PiP**, and then select **OK**.
 8. Verify that **Subscription** and **Location** are correct. You can pin the resource to the dashboard. Select **Create**.
 
 ### Create the local network gateway resource
@@ -95,9 +95,9 @@ First, create the network resources for Azure. The following instructions show h
 1. In the Azure portal, select **+ Create a resource**.
 2. Go to **Marketplace**, and then select **Networking**.
 3. From the list of resources, select **Local network gateway**.
-4. In **Name**, type **Azs-GW**.
-5. In **IP address**, type the public IP address for your Azure Stack Virtual Network Gateway that is listed previously in the network configuration table.
-6. In **Address Space**, from Azure Stack, type the **10.1.0.0/24** and **10.1.1.0/24** address space for **AzureVNet**.
+4. In the **Name** field, type **Azs-GW**.
+5. In the **IP address** field, type the public IP address for your Azure Stack Virtual Network Gateway that is listed previously in the network configuration table.
+6. In the **Address Space** field, from Azure Stack, type the **10.1.0.0/24** and **10.1.1.0/24** address space for **AzureVNet**.
 7. Verify that your **Subscription**, **Resource Group**, and **Location** are correct, and then select **Create**.
 
 ## Create the connection
@@ -199,9 +199,9 @@ A more generic description is that the local network gateway resource always ind
 2. In the user portal, select **+ Create a resource**.
 3. Go to **Marketplace**, and then select **Networking**.
 4. From the list of resources, select **local network gateway**.
-5. In **Name**, type **Azure-GW**.
-6. In **IP address**, type the public IP address for the virtual network gateway in Azure **Azure-GW-PiP**. This address appears earlier in the network configuration table.
-7. In **Address Space**, for the address space of the Azure VNET that you created, type **10.100.0.0/24** and **10.100.1.0/24**.
+5. In the **Name** field, type **Azure-GW**.
+6. In the **IP address** field, type the public IP address for the virtual network gateway in Azure **Azure-GW-PiP**. This address appears earlier in the network configuration table.
+7. In the **Address Space** field, for the address space of the Azure VNET that you created, type **10.100.0.0/24** and **10.100.1.0/24**.
 8. Verify that your **Subscription**, **Resource Group**, and **location** values are correct, and then select **Create**.
 
 ### Create the connection
