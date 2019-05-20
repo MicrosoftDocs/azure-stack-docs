@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
@@ -24,7 +24,7 @@ ms.lastreviewed: 01/14/2019
 
 A user in Azure Stack can be a reader, owner, or contributor for each instance of a subscription, resource group, or service. For example, User A might have reader permissions to Subscription One, but have owner permissions to Virtual Machine Seven.
 
- - Reader: User can view everything, but can’t make any changes.
+ - Reader: User can view everything, but can't make any changes.
  - Contributor: User can manage everything except access to resources.
  - Owner: User can manage everything, including access to resources.
 
@@ -46,5 +46,5 @@ A user in Azure Stack can be a reader, owner, or contributor for each instance o
 4. In the **Roles** blade, click **Add** to add permissions for the Universal Group Active Directory Group.
 
 ## Next steps
-[Add an Azure Stack tenant](azure-stack-add-new-user-aad.md)
 
+[Add an Azure Stack tenant](azure-stack-add-new-user-aad.md)

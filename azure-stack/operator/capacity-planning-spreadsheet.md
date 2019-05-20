@@ -3,7 +3,7 @@ title: Capacity planning spreadsheet for Azure Stack | Microsoft Docs
 description: Learn about the capacity planning spreadsheet for Azure Stack deployments.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,8 +13,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2018
-ms.author: jeffgilb
+ms.date: 05/06/2019
+ms.author: mabrigg
 ms.reviewer: prchint
 ms.lastreviewed: 12/11/2018
 ---

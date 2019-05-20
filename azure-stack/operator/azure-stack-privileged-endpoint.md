@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/25/2019
@@ -37,7 +37,7 @@ The PEP logs every action (and its corresponding output) that you perform in the
 
 ## Access the privileged endpoint
 
-You access the PEP through a remote PowerShell session on the virtual machine that hosts the PEP. In the ASDK, this virtual machine is named **AzS-ERCS01**. If you’re using an integrated system, there are three instances of the PEP, each running inside a virtual machine (*Prefix*-ERCS01, *Prefix*-ERCS02, or *Prefix*-ERCS03) on different hosts for resiliency. 
+You access the PEP through a remote PowerShell session on the virtual machine that hosts the PEP. In the ASDK, this virtual machine is named **AzS-ERCS01**. If you're using an integrated system, there are three instances of the PEP, each running inside a virtual machine (*Prefix*-ERCS01, *Prefix*-ERCS02, or *Prefix*-ERCS03) on different hosts for resiliency. 
 
 Before you begin this procedure for an integrated system, make sure you can access the PEP either by IP address, or through DNS. After the initial deployment of Azure Stack, you can access the PEP only by IP address because DNS integration is not yet set up. Your OEM hardware vendor will provide you with a JSON file named **AzureStackStampDeploymentInfo** that contains the PEP IP addresses.
 
@@ -52,7 +52,7 @@ Before you begin this procedure for an integrated system, make sure you can acce
       ```powershell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ```
-    - If you’re running the ASDK, sign in to the development kit host.
+    - If you're running the ASDK, sign in to the development kit host.
 
 2. On the hardened virtual machine running on the hardware lifecycle host or the Privileged Access Workstation, open a Windows PowerShell session. Run the following commands to establish a remote session on the virtual machine that hosts the PEP:
  
@@ -64,7 +64,7 @@ Before you begin this procedure for an integrated system, make sure you can acce
          -ConfigurationName PrivilegedEndpoint -Credential $cred
      ```
      The `ComputerName` parameter can be either the IP address or the DNS name of one of the virtual machines that hosts the PEP. 
-   - If you’re running the ASDK:
+   - If you're running the ASDK:
      
      ```powershell
        $cred = Get-Credential
@@ -124,7 +124,7 @@ To import the PEP session on your local machine, do the following steps:
       ```powershell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ```
-    - If you’re running the ASDK, sign in to the development kit host.
+    - If you're running the ASDK, sign in to the development kit host.
 
 2. On the hardened virtual machine running on the hardware lifecycle host or the Privileged Access Workstation, open a Windows PowerShell session. Run the following commands to establish a remote session on the virtual machine that hosts the PEP:
  
@@ -136,7 +136,7 @@ To import the PEP session on your local machine, do the following steps:
          -ConfigurationName PrivilegedEndpoint -Credential $cred
      ```
      The `ComputerName` parameter can be either the IP address or the DNS name of one of the virtual machines that hosts the PEP. 
-   - If you’re running the ASDK:
+   - If you're running the ASDK:
      
      ```powershell
       $cred = Get-Credential
@@ -164,7 +164,7 @@ To close the endpoint session:
 
 1. Create an external file share that is accessible by the PEP. In a development kit environment, you can just create a file share on the development kit host.
 2. Run the `Close-PrivilegedEndpoint` cmdlet. 
-3. You're prompted for a path on which to store the transcript log file. Specify the file share that you created earlier, in the format &#92;&#92;*servername*&#92;*sharename*. If you don’t specify a path, the cmdlet fails and the session remains open. 
+3. You're prompted for a path on which to store the transcript log file. Specify the file share that you created earlier, in the format &#92;&#92;*servername*&#92;*sharename*. If you don't specify a path, the cmdlet fails and the session remains open. 
 
     ![Close-PrivilegedEndpoint cmdlet output that shows where you specify the transcript destination path](media/azure-stack-privileged-endpoint/closeendpoint.png)
 

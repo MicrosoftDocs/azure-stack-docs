@@ -27,7 +27,8 @@
         href: azure-stack-subscribe-services.md
       - name: Create a VM from a template
         href: azure-stack-create-vm-template.md
-    - name: Hybrid cloud patterns
+    - name: Hybrid cloud apps
+      href: azure-stack-hybrid-cloud-patterns.md
       items:
       - name: Deploy apps to Azure and Azure Stack
         href: azure-stack-solution-pipeline.md
@@ -183,8 +184,6 @@
           href: azure-stack-version-profiles-net.md
         - name: Java
           href: azure-stack-version-profiles-java.md
-        - name: PowerShell
-          href: azure-stack-version-profiles-powershell.md
         - name: Azure CLI
           href: azure-stack-version-profiles-azurecli2.md
         - name: Go
@@ -224,6 +223,8 @@
         href: azure-stack-deploy-template-portal.md
       - name: Deploy with PowerShell
         href: azure-stack-deploy-template-powershell.md
+      - name: Deploy with CLI
+        href: azure-stack-deploy-template-command-line.md
       - name: Deploy with Visual Studio
         href: azure-stack-deploy-template-visual-studio.md
   - name: Enable a Cloud Service Provider

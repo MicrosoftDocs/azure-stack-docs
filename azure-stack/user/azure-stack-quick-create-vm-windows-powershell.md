@@ -39,11 +39,14 @@ You can create a Windows Server 2016 virtual machine (VM) by using Azure Stack P
 
 * Azure Stack requires a specific version of Azure PowerShell to create and manage the resources. If you don't have PowerShell configured for Azure Stack, follow the steps to [install](../operator/azure-stack-powershell-install.md) PowerShell.
 
-* With the Azure Stack PowerShell set up, you will need to connect to your Azure Stack environment. For instruction, see [Connect to Azure Stack with PowerShell as a user](azure-stack-powershell-configure-user.md).
+* With the Azure Stack PowerShell set up, you'll need to connect to your Azure Stack environment. For instruction, see [Connect to Azure Stack with PowerShell as a user](azure-stack-powershell-configure-user.md).
 
 ## Create a resource group
 
-A resource group is a logical container into which Azure Stack resources are deployed and managed. From your development kit or the Azure Stack integrated system, run the following code block to create a resource group. Values are assigned for all the variables in this document, you can use these values or assign new values.
+A resource group is a logical container into which Azure Stack resources are deployed and managed. From your development kit or the Azure Stack integrated system, run the following code block to create a resource group. 
+
+> [!NOTE]
+> Values are assigned for all variables in the code examples. However, you can assign new values if you want to.
 
 ```powershell
 # Create variables to store the location and resource group names.
@@ -57,7 +60,7 @@ New-AzureRmResourceGroup `
 
 ## Create storage resources
 
-Create a storage account, and a storage container to store the Windows Server 2016 image.
+Create a storage account and a storage container to store the Windows Server 2016 image.
 
 ```powershell
 # Create variables to store the storage account name and the storage account SKU information
@@ -106,7 +109,7 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### Create a network security group and a network security group rule
 
-The network security group secures the virtual machine by using inbound and outbound rules. Lets create an inbound rule for port 3389 to allow incoming Remote Desktop connections and an inbound rule for port 80 to allow incoming web traffic.
+The network security group secures the virtual machine by using inbound and outbound rules. Let's create an inbound rule for port 3389 to allow incoming Remote Desktop connections and an inbound rule for port 80 to allow incoming web traffic.
 
 ```powershell
 # Create an inbound network security group rule for port 3389
@@ -211,7 +214,7 @@ Get-AzureRmPublicIpAddress `
   -ResourceGroupName $ResourceGroupName | Select IpAddress
 ```
 
-Use the following command to create a Remote Desktop session with the virtual machine. Replace the IP address with the publicIPAddress of your virtual machine. When prompted, enter the username and password that you used when creating the virtual machine.
+Use the following command to create a Remote Desktop session with the virtual machine. Replace the IP address with the *publicIPAddress* of your virtual machine. When prompted, enter the username and password used when creating the virtual machine.
 
 ```powershell
 mstsc /v <publicIpAddress>
@@ -219,7 +222,7 @@ mstsc /v <publicIpAddress>
 
 ## Install IIS via PowerShell
 
-Now that you have logged in to the Azure VM, you can use a single line of PowerShell to install IIS and enable the local firewall rule to allow web traffic. Open a PowerShell prompt and run the following command:
+Now that you have signed in to the Azure VM, you can use a single line of PowerShell to install IIS and enable the local firewall rule to allow web traffic. Open a PowerShell prompt and run the following command:
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -227,7 +230,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## View the IIS welcome page
 
-With IIS installed, and with port 80 open on your VM, you can use a web browser of your choice to view the default IIS welcome page. Use the *publicIpAddress* you documented in the previous section to visit the default page.
+With IIS installed, and with port 80 open on your VM, you can use any browser to view the default IIS welcome page. Use the *publicIpAddress* you documented in the previous section to visit the default page.
 
 ![IIS default site](./media/azure-stack-quick-create-vm-windows-powershell/default-iis-website.png)
 
@@ -242,4 +245,4 @@ Remove-AzureRmResourceGroup `
 
 ## Next steps
 
-In this quickstart, you’ve deployed a simple Windows virtual machine. To learn more about Azure Stack virtual machines, continue to [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md).
+In this quickstart, you've deployed a simple Windows virtual machine. To learn more about Azure Stack virtual machines, continue to [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md).

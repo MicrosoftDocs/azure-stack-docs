@@ -3,7 +3,7 @@ title: Connect to Azure Stack | Microsoft Docs
 description: Learn how to connect to the ASDK.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,8 +13,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.date: 05/06/2019
+ms.author: mabrigg
 ms.reviewer: knithinc
 ms.lastreviewed: 10/25/2018
 
@@ -78,7 +78,7 @@ Set-ExecutionPolicy RemoteSigned
 # Import the Connect module.
 Import-Module .\Connect\AzureStack.Connect.psm1
 
-# Add the development kit host computer’s IP address as the ASDK certificate authority (CA) to the list of trusted hosts. Make sure you update the IP address and password values for your environment.
+# Add the development kit host computer's IP address as the ASDK certificate authority (CA) to the list of trusted hosts. Make sure you update the IP address and password values for your environment.
 
 $hostIP = "<Azure Stack host IP address>"
 
@@ -98,7 +98,7 @@ Add-AzsVpnConnection `
 
 ```
 
-If setup succeeds, **azurestack** appears in your list of VPN connections.
+If setup succeeds, **Azure Stack** appears in your list of VPN connections.
 
 ![Network connections](media/asdk-connect/vpn.png)  
 
@@ -113,9 +113,9 @@ If setup succeeds, **azurestack** appears in your list of VPN connections.
       -Password $Password
     ```
 
-  * On your local computer, select **Network Settings** > **VPN** > **azurestack** > **connect**. At the sign-in prompt, enter the user name (**AzureStack\AzureStackAdmin**) and your password.
+  * On your local computer, select **Network Settings** > **VPN** > **Azure Stack** > **connect**. At the sign-in prompt, enter the user name (**AzureStack\AzureStackAdmin**) and your password.
 
-The first time you connect, you will be prompted to install the Azure Stack root certificate from **AzureStackCertificateAuthority** in your local computer’s certificate store. This step adds the ASDK certificate authority (CA) to the list of trusted hosts. Click **Yes** to install the certificate.
+The first time you connect, you will be prompted to install the Azure Stack root certificate from **AzureStackCertificateAuthority** in your local computer's certificate store. This step adds the ASDK certificate authority (CA) to the list of trusted hosts. Click **Yes** to install the certificate.
 
 ![Root certificate](media/asdk-connect/cert.png)  
   

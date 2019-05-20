@@ -3,7 +3,7 @@ title: Using API version profiles with GO in Azure Stack | Microsoft Docs
 description: Learn about using API version profiles with GO in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 
 ms.service: azure-stack
@@ -11,10 +11,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/19/2019
-ms.author: sethm
+ms.date: 05/26/2019
+ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 01/19/2019
+ms.lastreviewed: 05/26/2019
 
 ---
 

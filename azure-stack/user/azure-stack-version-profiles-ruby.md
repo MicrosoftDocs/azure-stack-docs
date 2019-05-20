@@ -3,7 +3,7 @@ title: Using API version profiles with Ruby in Azure Stack | Microsoft Docs
 description: Learn about using API version profiles with Ruby in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2019
-ms.author: sethm
+ms.date: 05/16/2019
+ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 01/09/2019
+ms.lastreviewed: 05/16/2019
 
 ---
 

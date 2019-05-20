@@ -15,7 +15,7 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.reviewer: ppacent
 ms.author: mabrigg
-ms.lastreviewed: 04/15/2019
+ms.lastreviewed: 05/14/2019
 
 ---
 
@@ -31,7 +31,7 @@ All the certificates, passwords, secure strings, and keys used by the Azure Stac
 
 - **External secrets**
 
-Infrastructure service certificates for external-facing services that provided by the Azure Stack Operator. External secrets include the certificates for the following services:
+Infrastructure service certificates for external-facing services that are provided by the Azure Stack Operator. External secrets include the certificates for the following services:
 
 - Administrator Portal
 - Public Portal
@@ -85,7 +85,7 @@ Running secret rotation using the instructions below will remediate these alerts
 > [!Note]
 > Azure Stack environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations.
 > These alerts are inaccurate and should be ignored without running internal secret rotation.
-> Inaccurate internal secret expiration alerts are a known issue that is resolved in 1811– internal secrets will not expire unless the environment has been active for two years.
+> Inaccurate internal secret expiration alerts are a known issue that is resolved in 1811- internal secrets will not expire unless the environment has been active for two years.
 
 ## Pre-steps for secret rotation
 
@@ -239,7 +239,7 @@ Remove-PSSession -Session $PEPSession
 > Internal Secret Rotation should only be done if you suspect an internal secret has been compromised by a malicious entity, or if you have received an alert (on build 1811 or later) indicating internal certificates are nearing expiration.
 > Azure Stack environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations.
 > These alerts are inaccurate and should be ignored without running internal secret rotation.
-> Inaccurate internal secret expiration alerts are a known issue that is resolved in 1811– internal secrets will not expire unless the environment has been active for two years.
+> Inaccurate internal secret expiration alerts are a known issue that is resolved in 1811- internal secrets will not expire unless the environment has been active for two years.
 
 1. Create a PowerShell session with the [Privileged Endpoint](azure-stack-privileged-endpoint.md).
 2. In the Privileged Endpoint session, run **Start-SecretRotation -Internal**.
@@ -251,7 +251,7 @@ Remove-PSSession -Session $PEPSession
 
 When secret rotation successfully completes, your console will display **Overall action status: Success**.
     > [!Note]
-    > If secret rotation fails, follow the instructions in the error message and rerun **Start-SecretRotation** with the  **–Internal** and **-ReRun** parameters.  
+    > If secret rotation fails, follow the instructions in the error message and rerun **Start-SecretRotation** with the  **-Internal** and **-ReRun** parameters.  
 
 ```powershell
 Start-SecretRotation -Internal -ReRun

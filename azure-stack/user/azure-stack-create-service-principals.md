@@ -65,6 +65,8 @@ To create a service principal for your application:
 4. Select the **Supported account types**.
 5.  Add a URI for the application. Select **Web**  for the type of application you want to create. After setting the values, select **Register**.
 
+You have created a service principal for your application.
+
 ### Get credentials
 
 When logging in programmatically, use the ID for your application and an authentication key. To get these values:

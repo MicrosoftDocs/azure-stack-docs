@@ -14,6 +14,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: mabrigg
+ms.reviewer: thoroet
 ms.lastreviewed: 12/06/2018
 
 ---
@@ -22,7 +23,7 @@ ms.lastreviewed: 12/06/2018
 
 *Applies to: Azure Stack integrated systems*
 
-This article describes the general process to replace a physical computer (also referred to as a scale unit node) on an Azure Stack integrated system. Actual scale unit node replacement steps will vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor’s field replaceable unit (FRU) documentation for detailed steps that are specific to your system.
+This article describes the general process to replace a physical computer (also referred to as a scale unit node) on an Azure Stack integrated system. Actual scale unit node replacement steps will vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor's field replaceable unit (FRU) documentation for detailed steps that are specific to your system.
 
 The following flow diagram shows the general FRU process to replace an entire scale unit node.
 

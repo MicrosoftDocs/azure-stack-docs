@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2019
+ms.date: 05/02/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
@@ -43,16 +43,16 @@ There are two types of update packages for integrated systems:
 
 ## Update package release cadence
 
-Microsoft expects to release software update packages on a monthly cadence. However, it’s possible to have multiple, or no update releases in a month. OEM hardware vendors release their updates on an as-needed basis.
+Microsoft expects to release software update packages on a monthly cadence. However, it's possible to have multiple, or no update releases in a month. OEM hardware vendors release their updates on an as-needed basis.
 
 Find documentation on how to plan for and manage updates, and how to determine your current version in [Manage updates overview](azure-stack-updates.md).
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
+- [Azure Stack 1904 update](azure-stack-release-notes-1904.md)
 - [Azure Stack 1903 update](azure-stack-update-1903.md)
 - [Azure Stack 1902 update](azure-stack-update-1902.md)
 - [Azure Stack 1901 update](azure-stack-update-1901.md)
-- [Azure Stack 1811 update](azure-stack-update-1811.md)
 
 ## Hotfixes
 
@@ -62,9 +62,9 @@ Hotfixes are downloaded and installed just like the regular full update packages
 
 ## Keep your system under support
 
-To continue to receive support, you must keep your Azure Stack deployment current. The deferral policy for updates is: For your Azure Stack deployment to remain in support, it must run the most recently released update version or run either of the two preceding update versions. Hotfixes are not considered major update versions. If your Azure Stack cloud is behind by *more than two updates*, it's considered out of compliance and must update to at least the minimum supported version to receive support.
+To continue to receive support, you must keep your Azure Stack deployment current. The deferral policy for updates is: for your Azure Stack deployment to remain in support, it must run the most recently released update version or run either of the two preceding update versions. Hotfixes are not considered major update versions. If your Azure Stack cloud is behind by *more than two updates*, it's considered out of compliance and must update to at least the minimum supported version to receive support.
 
-For example, if the most recently available update version is 1805, and the previous two update packages were versions 1804 and 1803, both 1803 and 1804 remain in support. However, 1802 is out of support. The policy holds true when there is no release for a month or two. For example, if the current release is 1805 and there was no 1804 release, the previous two update packages of 1803 and 1802 remain in support.
+For example, if the most recently available update version is 1904, and the previous two update packages were versions 1903 and 1902, both 1902 and 1903 remain in support. However, 1901 is out of support. The policy holds true when there is no release for a month or two. For example, if the current release is 1807 and there was no 1806 release, the previous two update packages of 1805 and 1804 remain in support.
 
 Microsoft software update packages are non-cumulative and require the previous update package or hotfix as a prerequisite. If you decide to defer one or more updates, consider the overall runtime if you want to get  to the latest version.
 
