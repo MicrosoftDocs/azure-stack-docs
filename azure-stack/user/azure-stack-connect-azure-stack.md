@@ -80,7 +80,7 @@ Add-AzsVpnConnection `
 
 ```
 
-If the setup succeeds, you'll see `**azurestack**` in your list of VPN connections.
+If the setup succeeds, you'll see `azurestack` in your list of VPN connections.
 
 ![Network connections](media/azure-stack-connect-azure-stack/image3.png)  
 
@@ -97,7 +97,7 @@ Connect to the Azure Stack instance by using either of the following two methods
 
   When prompted, trust the Azure Stack host and install the certificate from **AzureStackCertificateAuthority** onto your local computer's certificate store. The prompt might appear behind the PowerShell session window. 
 
-* On your local computer, go to **Network Settings** > **VPN** > click **azurestack** > **connect**. At the sign-in prompt, enter the username (AzureStack\AzureStackAdmin) and the password.
+* On your local computer, go to **Network Settings** > **VPN** > click `azurestack` > **connect**. At the sign-in prompt, enter the username (AzureStack\AzureStackAdmin) and the password.
 
 ### Test the VPN connectivity
 
