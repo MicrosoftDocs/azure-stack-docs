@@ -13,19 +13,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 05/21/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 05/20/2019
+ms.lastreviewed: 05/21/2019
 
 ---
 # Get Support for Microsoft Azure Stack
 
-Beginning with 1905 release, Azure Stack **Help + Support** improvements make it easier for operators to research issues and get expert help. 
+Beginning with 1905 release, Azure Stack **Help + support** improvements make it easier for operators to research issues and get expert help. 
 
 ## Self-service support
 
-At the top of **Help + Support** are self-service links to read more about an issue, get info about billing, or see what support options are available. 
+At the top of **Help + support** are self-service links to read more about an issue, get info about billing, or see which support options are available. 
 
 ![Self-service support](media/azure-stack-get-support/get-support-tiles.png)
 
@@ -35,9 +35,11 @@ At the top of **Help + Support** are self-service links to read more about an is
 
 ### Learn about billing
 
-Azure Stack groups usage data for resources, and the billing information is available for [analysis and charge back](azure-stack-billing-and-chargeback.md). You can export usage data to your own charge-back system or business intelligence tools such as Microsoft Power BI. Azure Stack forwards this data to Azure Commerce, which charges for Azure Stack and Azure usage similarly. 
+Learn tips for monitoring usage and understanding your bill.
 
 ### Support options
+
+Azure Stack operators can choose from a range of [Azure support options](https://azure.microsoft.com/support/options/) that can fit the needs of any enterprise. 
 
 ## Get expert help 
 
@@ -45,13 +47,17 @@ You can also get help from experts in Microsoft Customer Support and the MSDN Fo
 
 ![Get expert help](media/azure-stack-get-support/get-support-cards.png)
 
-### Support
+### Support requests
+
+Open a case with Microsoft Customer Support Services for expert help with any problem related to Azure Stack.
 
 ### Community 
 
-Because the Azure Stack Development Kit (ASDK) is offered as an evaluation environment, there is no official support from Microsoft Customer Support Services. If you are experiencing an issue, make sure to check the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) for further assistance and information.
+The [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) is a community of Azure Stack experts who help answer questions and solve problems.
 
 ### Learning
+
+Online courses help build your skills for configuring and operating Azure Stack. 
 
 ## Tutorials
 
