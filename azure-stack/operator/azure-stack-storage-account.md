@@ -21,9 +21,13 @@ ms.lastreviewed: 05/21/2019
 ---
 # Microsoft Azure Stack storage account for automatic log collection
 
-What it is, why you need it
+What it is, why do you need it...
 
 https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-manage-storage-accounts 
+
+You'll need to enter a blob service shared access signature (SAS) URL. 
+
+![Automatic log collection](media/azure-stack-automatic-log-collection/azure-stack-enable-automatic-log-collection.png)
 
 prerequisites: any permissions, subscription requirements, or anything similar?
 
