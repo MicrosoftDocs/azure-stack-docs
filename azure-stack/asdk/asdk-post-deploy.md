@@ -121,7 +121,7 @@ You can install the latest Azure Stack PowerShell module with or without Interne
     -OutFile master.zip
 
   # Expand the downloaded files.
-  Expand-Archive master.zip -DestinationPath . -Force
+  Expand-Archive -Path master.zip -DestinationPath . -Force
 
   # Change to the tools directory.
   cd AzureStack-Tools-master
