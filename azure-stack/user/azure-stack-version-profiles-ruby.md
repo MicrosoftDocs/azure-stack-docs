@@ -70,7 +70,7 @@ The Azure Resource Manager Ruby SDK is in preview and will likely have breaking 
 
 ## Use the azure_sdk gem
 
-The gem, **azure_sdk**, is a rollup of all the supported gems in the Ruby SDK. This gem consists of a **Latest** profile, which supports the latest version of all services. It includes versioned profile **V2017_03_09** and **V2019_03_01_Hybrid** profiles, which are built for Azure Stack.
+The gem, **azure_sdk**, is a rollup of all the supported gems in the Ruby SDK. This gem consists of a **Latest** profile, which supports the latest version of all services. It includes versioned profiles **V2017_03_09** and **V2019_03_01_Hybrid**, which are built for Azure Stack.
 
 You can install the azure_sdk rollup gem with the following command:  
 

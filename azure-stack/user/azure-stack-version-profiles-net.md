@@ -34,7 +34,7 @@ An API profile is a combination of resource providers and API versions. You can 
 
 -   To use the services compatible with Azure Stack, use one of the following packages:
     - **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg** 
-    -  **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
+    - **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
     
     Ensure that the **ResourceProvider** portion of the above NuGet package is changed to the correct provider.
 
