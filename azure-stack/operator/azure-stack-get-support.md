@@ -29,17 +29,14 @@ At the top of **Help + support** are self-service links to read more about an is
 
 ![Self-service support](media/azure-stack-get-support/get-support-tiles.png)
 
-### Documentation
+- Documentation
+  [Azure Stack Operator Documentation](index.yml) includes concepts, how-to topics and tutorials that show how to offer Azure Stack services such as virtual machines, SQL databases, web apps, and more. 
 
-[Azure Stack Operator Documentation](index.yml) includes concepts, how-to topics and tutorials that show how to offer Azure Stack services such as virtual machines, SQL databases, web apps, and more. 
+- Learn about billing
+  Learn tips for monitoring usage and understanding your bill.
 
-### Learn about billing
-
-Learn tips for monitoring usage and understanding your bill.
-
-### Support options
-
-Azure Stack operators can choose from a range of [Azure support options](https://azure.microsoft.com/support/options/) that can fit the needs of any enterprise. 
+- Support options
+  Azure Stack operators can choose from a range of [Azure support options](https://azure.microsoft.com/support/options/) that can fit the needs of any enterprise. 
 
 ## Get expert help 
 
@@ -47,17 +44,14 @@ You can also get help from experts in Microsoft Customer Support and the MSDN Fo
 
 ![Get expert help](media/azure-stack-get-support/get-support-cards.png)
 
-### Support requests
+- Support requests
+  Open a case with Microsoft Customer Support Services for expert help with any problem related to Azure Stack.
 
-Open a case with Microsoft Customer Support Services for expert help with any problem related to Azure Stack.
+- Community 
+  The [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) is a community of Azure Stack experts who help answer questions and solve problems.
 
-### Community 
-
-The [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) is a community of Azure Stack experts who help answer questions and solve problems.
-
-### Learning
-
-Online courses help build your skills for configuring and operating Azure Stack. 
+- Learning
+  Online courses help build your skills for configuring and operating Azure Stack. 
 
 ## Tutorials
 
