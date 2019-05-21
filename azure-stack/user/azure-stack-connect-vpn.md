@@ -146,7 +146,7 @@ Next, create the network resources in Azure Stack.
 
 ### Sign in as a user
 
-A service administrator can sign in as a user to test the plans, offers, and subscriptions that their users might use. If you don't already have one, [create a user account](../operator/azure-stack-add-new-user-aad.md) before you sign in.
+A service admin can sign in as a user to test the plans, offers, and subscriptions that their users might use. If you don't already have one, [create a user account](../operator/azure-stack-add-new-user-aad.md) before you sign in.
 
 ### Create the virtual network and a VM subnet
 
@@ -186,6 +186,7 @@ A service administrator can sign in as a user to test the plans, offers, and sub
 6. Select the **Public IP address** menu item. When the **Choose public IP address** section opens, select **Create new**.
 7. In **Name**, type **Azs-GW-PiP**, and then select **OK**.
 8. By default, **Route-based** is selected for **VPN type**. Keep the **Route-based** VPN type.
+
 9. Verify that **Subscription** and **Location** are correct. You can pin the resource to the dashboard. Select **Create**.
 
 ### Create the local network gateway
@@ -205,6 +206,7 @@ A more generic description is that the local network gateway resource always ind
 5. In the **Name** field, type **Azure-GW**.
 6. In the **IP address** field, type the public IP address for the virtual network gateway in Azure **Azure-GW-PiP**. This address appears earlier in the network configuration table.
 7. In the **Address Space** field, for the address space of the Azure VNET that you created, type **10.100.0.0/24** and **10.100.1.0/24**.
+
 8. Verify that your **Subscription**, **Resource Group**, and **location** values are correct, and then select **Create**.
 
 ### Create the connection
@@ -218,6 +220,7 @@ A more generic description is that the local network gateway resource always ind
 7. Select **Local network gateway**, and then select **Azure-GW**.
 8. In **Connection Name**, type **Azs-Azure**.
 9. In **Shared key (PSK)**, type **12345**, and then select **OK**.
+
 10. On the **Summary** section, select **OK**.
 
 ### Create a virtual machine (VM)
@@ -232,6 +235,7 @@ To check the VPN connection, create two VMs: one in Azure, and one in Azure Stac
 6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
 7. On the **Size** section, for this instance, select a virtual machine size, and then select **Select**.
 8. On the **Settings** section, accept the defaults. Make sure that the **Azs-VNet** virtual network is selected. Verify that the subnet is set to **10.1.0.0/24**. Then select **OK**.
+
 9. On the **Summary** section, review the settings, and then select **OK**.
 
 ## Test the connection
@@ -306,3 +310,4 @@ went through the VPN connection.
 ## Next steps
 
 * [Deploy apps to Azure and Azure Stack](azure-stack-solution-pipeline.md)
+1
