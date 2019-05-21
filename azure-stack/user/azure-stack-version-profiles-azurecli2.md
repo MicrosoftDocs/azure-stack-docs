@@ -44,7 +44,7 @@ To export the ASDK root certificate in PEM format:
 2. Sign in to the machine, open an elevated PowerShell prompt, and then run the following script:
 
     ```powershell  
-      $label = "AzureStackSelfSignedRootCert"
+      $label = "<the name of your azure stack root cert>" # Eg: AzureStackSelfSignedRootCert
       Write-Host "Getting certificate from the current user trusted store with subject CN=$label"
       $root = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Subject -eq "CN=$label" | select -First 1
       if (-not $root)
@@ -184,7 +184,7 @@ To trust the Azure Stack CA root certificate, append it to the existing Python c
    ```
 
     >[!NOTE]  
-    >If you are running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2018-03-01-hybrid**. You will need to be using a recent version of the Azure CLI.
+    >If you are running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You will need to be using a recent version of the Azure CLI.
  
 1. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
@@ -300,11 +300,11 @@ If you are using the ASDK, you will need to trust the CA root certificate on you
 1. Update your environment configuration to use the Azure Stack specific API version profile. To update the configuration, run the following command:
 
     ```azurecli
-    az cloud update --profile 2018-03-01-hybrid
+    az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >If you are running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2018-03-01-hybrid**. You will need to be using a recent version of the Azure CLI.
+    >If you are running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You will need to be using a recent version of the Azure CLI.
 
 1. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
@@ -313,7 +313,7 @@ If you are using the ASDK, you will need to trust the CA root certificate on you
      You can either specify the username and password directly within the `az login` command, or authenticate by using a browser. You must do the latter if your account has multi-factor authentication enabled:
 
      ```azurecli
-     az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-active-directory-resource-id "https://management.adfs.azurestack.local/<tenantID>" --endpoint-active-directory-graph-resource-id "https://graph.local.azurestack.external/" --endpoint-active-directory "https://adfs.local.azurestack.external/adfs/" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>   --profile "2018-03-01-hybrid"
+     az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-active-directory-resource-id "https://management.adfs.azurestack.local/<tenantID>" --endpoint-active-directory-graph-resource-id "https://graph.local.azurestack.external/" --endpoint-active-directory "https://adfs.local.azurestack.external/adfs/" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>   --profile "2019-03-01-hybrid"
      ```
 
      > [!NOTE]
@@ -416,11 +416,11 @@ Use the following steps to connect to Azure Stack:
 4. Update your environment configuration to use the Azure Stack specific API version profile. To update the configuration, run the following command:
 
     ```azurecli
-      az cloud update --profile 2018-03-01-hybrid
+      az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >If you are running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2018-03-01-hybrid**. You will need to be using a recent version of the Azure CLI.
+    >If you are running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You will need to be using a recent version of the Azure CLI.
 
 5. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
@@ -527,11 +527,11 @@ Use the following steps to connect to Azure Stack:
 4. Update your environment configuration to use the Azure Stack specific API version profile. To update the configuration, run the following command:
 
     ```azurecli
-      az cloud update --profile 2018-03-01-hybrid
+      az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >If you are running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2018-03-01-hybrid**. You will need to be using a recent version of the Azure CLI.
+    >If you are running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You will need to be using a recent version of the Azure CLI.
 
 5. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
