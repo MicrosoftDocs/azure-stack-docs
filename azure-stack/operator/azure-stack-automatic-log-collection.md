@@ -22,14 +22,16 @@ ms.lastreviewed: 05/21/2019
 # Microsoft Azure Stack automatic log collection
 
 
-Beginning with the 1906 release, Azure Stack includes an easy way for operators to upload log files for analysis by Customer Support Services. 
+Beginning with the 1906 release, Azure Stack includes an easy way for operators to upload log files for analysis by Customer Support Services. This helps streamline the process for troubleshooting problems. 
+
+Automatic log collection is not enabled by default. 
 
 ## How to collect Azure Stack logs
 
 There are two ways to automatically collect logs:
 
 1. Based on system health conditions
-2. Based on demand. You specify custom options, including a time range between 1-4 hours, up to 7 days in the past. 
+2. Based on custom options that you specify, including a timeframe between 1-4 hours up to 7 days in the past. 
 
 ## How to upload logs
 
