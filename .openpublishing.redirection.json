@@ -9,6 +9,56 @@
       "source_path": "azure-stack/user/azure-stack-version-profiles-powershell.md",
       "redirect_url": "https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-powershell-install",
       "redirect_document_id": true
-    }
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1802.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-1904",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1803.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-1904",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1804.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-1904",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1805.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-1904",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1807.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-1904",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1808.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-1904",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1809.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-1904",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1710.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-1904",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1711.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-1904",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1712.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-1904",
+      "redirect_document_id": false
+    }    
   ]
 }

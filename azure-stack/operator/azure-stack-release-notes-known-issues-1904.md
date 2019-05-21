@@ -35,13 +35,6 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 
 ## Portal
 
-### Add-on plans
-
-- Applicable: This issue applies to all supported releases.
-- Cause: Plans that are added to a user subscription as an add-on plan cannot be deleted, even when you remove the plan from the user subscription. The plan remains until the subscriptions that reference the add-on plan are also deleted.
-- Remediation: No mitigation.
-- Occurrence: Common
-
 ### Administrative subscriptions
 
 - Applicable: This issue applies to all supported releases.
@@ -73,10 +66,16 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 ### Marketplace management
 
 - Applicable: This issue applies to 1904.
-- Cause: When you filter results on "Add from Azure" blade in Marketplace management tab in administrator portal, you may see incorrect filtered results. 
-- Remediation: Sort results by Name column and the results will be corrected. 
+- Cause: When you filter results in the **Add from Azure** blade in the Marketplace management tab in the administrator portal, you may see incorrect filtered results. 
+- Remediation: Sort results by the Name column and the results will be corrected. 
 - Occurrence: Intermittent
 
+### Marketplace management
+
+- Applicable: This issue applies to 1904.
+- Cause: When you filter results in Marketplace management in the administrator portal, you will see duplicated publisher names under the publisher drop-down. 
+- Remediation: Select all the duplicates to have the correct list of all the Marketplace products that are available under that publisher. 
+- Occurrence: Intermittent
 
 ### Upload blob
 

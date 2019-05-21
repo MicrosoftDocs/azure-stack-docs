@@ -1,6 +1,6 @@
 ---
 title: Add Linux images to Azure Stack
-description: Learn how add Linux images to Azure Stack.
+description: Learn how to add Linux images to Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 05/21/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/16/2018
@@ -26,16 +26,17 @@ You can deploy Linux virtual machines (VMs) on Azure Stack by adding a Linux-bas
 
 ## Marketplace Management
 
-To download Linux images from the Azure Marketplace, use the procedures in the [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md) article. Select the Linux images that you want to offer users on your Azure Stack. 
+To download Linux images from the Azure Marketplace, use the procedures in the [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md) article. Select the Linux images that you want to offer users on your Azure Stack.
 
-Note that there are frequent updates to these images, so check Marketplace Management often to keep up-to-date.
+There are frequent updates to these images, so check Marketplace Management often to keep up-to-date.
 
 ## Prepare your own image
 
-Wherever possible, download the images available through Marketplace Management which have been prepared and tested for Azure Stack.
+Wherever possible, download the images available through Marketplace Management. These images have been prepared and tested for Azure Stack.
 
 ### Azure Linux Agent
-The Azure Linux Agent (typically called `WALinuxAgent` or `walinuxagent`) is required, and not all versions of the agent will work on Azure Stack. Versions between 2.2.20 and 2.2.35 are not supported on Azure Stack. To use the latest agent versions above 2.2.35, please apply the 1901 hotfix/1902 hotfix or update your Azure Stack to the 1903 release (or above). Note that [cloud-init](https://cloud-init.io/) is not supported on Azure Stack at this time.
+
+The Azure Linux Agent (typically called `WALinuxAgent` or `walinuxagent`) is required, and not all versions of the agent work on Azure Stack. Versions between 2.2.20 and 2.2.35 are not supported on Azure Stack. To use the latest agent versions above 2.2.35, apply the 1901 hotfix/1902 hotfix, or update your Azure Stack to the 1903 release (or above). Note that [cloud-init](https://cloud-init.io/) is not supported on Azure Stack at this time.
 
 | Azure Stack build | Azure Linux Agent build |
 | ------------- | ------------- |
@@ -62,7 +63,5 @@ After you've added the image to the Marketplace, a Marketplace item is created a
 
 ## Next steps
 
-See the following articles for more information:
-
-- [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md)
-- [Azure Stack Marketplace overview](azure-stack-marketplace.md)
+* [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md)
+* [Azure Stack Marketplace overview](azure-stack-marketplace.md)
