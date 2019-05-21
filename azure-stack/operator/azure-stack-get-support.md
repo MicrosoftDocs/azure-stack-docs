@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 05/21/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 05/20/2019
+ms.lastreviewed: 05/21/2019
 
 ---
 # Get Support for Microsoft Azure Stack
@@ -53,9 +53,11 @@ Open a case with Microsoft Customer Support Services for expert help with any pr
 
 ### Community 
 
-Because the Azure Stack Development Kit (ASDK) is offered as an evaluation environment, there is no official support from Microsoft Customer Support Services. If you are experiencing an issue, make sure to check the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) for further assistance and information.
+The [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) is a community of Azure Stack experts who help answer questions and solve problems.
 
 ### Learning
+
+Online courses help build your skills for configuring and operating Azure Stack. 
 
 ## Tutorials
 
