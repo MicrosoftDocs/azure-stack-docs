@@ -35,7 +35,7 @@ PowerShell commands for Azure Stack are installed through the PowerShell Gallery
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 ```
 
-You can use API version profiles  to specify Azure Stack compatible AzureRM modules.  API version profiles provide a way to manage version differences between Azure and Azure Stack. An API version profile is a set of AzureRM PowerShell modules with specific API versions. The **AzureRM.Bootstrapper** module that is available through the PowerShell Gallery provides PowerShell cmdlets that are required to work with API version profiles.
+You can use API version profiles  to specify Azure Stack compatible AzureRM modules.  API version profiles provide a way to manage version differences between Azure and Azure Stack. An API version profile is a set of AzureRM PowerShell modules with specific API versions. The **AzureRM.BootStrapper** module that is available through the PowerShell Gallery provides PowerShell cmdlets that are required to work with API version profiles.
 
 You can install the latest Azure Stack PowerShell module with or without Internet connectivity to the ASDK host computer:
 
@@ -69,7 +69,7 @@ You can install the latest Azure Stack PowerShell module with or without Interne
   - Azure Stack 1811:
 
     ``` PowerShell
-    # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 
+    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet. 
     Install-Module -Name AzureRM.BootStrapper
 
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.

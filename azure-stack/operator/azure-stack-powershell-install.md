@@ -116,11 +116,11 @@ Run the following PowerShell script to install these modules on your development
 
     > [!Note]  
     > - The Azure Stack module version 1.7.1 is a breaking change release. To migrate from Azure Stack 1.6.0 please refer to the [migration guide](https://aka.ms/azspshmigration171).
-    > - The AzureRm module version 2.4.0 comes with a breaking change for the cmdlet Remove-AzureRmStorageAccount. This cmdlet expects -Force parameter to be specified for removing the storage account without confirmation.
-    > - You don't need to install **AzureRM.Bootstrapper** to install the modules for Azure Stack version 1901 or later.
+    > - The AzureRM module version 2.4.0 comes with a breaking change for the cmdlet Remove-AzureRmStorageAccount. This cmdlet expects -Force parameter to be specified for removing the storage account without confirmation.
+    > - You don't need to install **AzureRM.BootStrapper** to install the modules for Azure Stack version 1901 or later.
     > - Don't install the 2018-03-01-hybrid profile in addition to using the above AzureRM modules on Azure Stack version 1901 or later.
 
-- Azure Stack version 1811, install the profile using **AzureRM.Bootstrapper**, in addition to the versions indicated in the cmdlets:
+- Azure Stack version 1811, install the profile using **AzureRM.BootStrapper**, in addition to the versions indicated in the cmdlets:
 
     ```powershell  
     # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
@@ -140,7 +140,7 @@ To make use of the additional storage features (mentioned in the connected secti
 # Install the Azure.Storage module version 4.5.0
 Install-Module -Name Azure.Storage -RequiredVersion 4.5.0 -Force -AllowClobber
 
-# Install the AzureRm.Storage module version 5.0.4
+# Install the AzureRM.Storage module version 5.0.4
 Install-Module -Name AzureRM.Storage -RequiredVersion 5.0.4 -Force -AllowClobber
 
 # Remove incompatible storage module installed by AzureRM.Storage
