@@ -1,6 +1,6 @@
 ---
 title: Connect to Azure Stack | Microsoft Docs
-description: Learn how to connect Azure Stack
+description: Learn how to connect Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs

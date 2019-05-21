@@ -1,6 +1,6 @@
 ---
-title: Introduction to Azure Stack virtual machines
-description: Learn about Azure Stack virtual machines
+title: Introduction to Azure Stack virtual machines | Microsoft Docs
+description: Learn about Azure Stack virtual machines.
 services: azure-stack
 author: sethmanheim
 manager: femila
@@ -17,7 +17,7 @@ ms.lastreviewed: 01/05/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Azure Stack offers virtual machines (VMs) as one type of an on-demand, scalable computing resource. You can choose a VM when you need more control over the computing environment. This article provides details before you create your first VM.
+Azure Stack offers virtual machines (VMs) as a type of an on-demand, scalable computing resource. You can choose a VM when you need more control over the computing environment. This article provides details before you create your first VM.
 
 An Azure Stack VM gives you the flexibility of virtualization without the need to manage clusters or individual machines. However, you still need to maintain the VM by performing tasks such as configuring, patching, and installing the software that runs on it.
 
@@ -46,7 +46,7 @@ There are always design considerations when you build out an application infrast
 
 A virtual machine has a name assigned to it and it has a computer name configured as part of the operating system. The name of a VM can be up to 15 characters.
 
-If you use Azure Stack to create the operating system disk, the computer name and the virtual machine name are the same. If you upload and use your own image that contains a previously configured operating system and use it to create a virtual machine, the names may be different. When you upload your own image file, as a best practice, make sure the computer name in the operating system and the virtual machine name are the same.
+If you use Azure Stack to create the operating system disk, the computer name and the virtual machine name are the same. If you upload and use your own image that contains a previously configured operating system and use it to create a virtual machine, the names may be different. When you upload your own image file, as a best practice, make sure the computer name in the operating system matches the virtual machine name.
 
 ### VM size
 
@@ -58,7 +58,7 @@ Your subscription has default quota limits in place that can impact the deployme
 
 ### Operating system disks and images
 
-Virtual machines use virtual hard disks (VHDs) to store their operating system (OS) and data. VHDs are also used for the images you can choose from to install an OS. Azure Stack provides a marketplace to use with various versions and types of operating systems. Marketplace images are identified by image publisher, offer, SKU, and version (typically the version is specified as **latest**).
+Virtual machines use virtual hard disks (VHDs) to store their operating system (OS) and data. VHDs are also used for the images you choose from to install an OS. Azure Stack provides a marketplace to use with various versions and types of operating systems. Marketplace images are identified by image publisher, offer, SKU, and version (typically the latest version is specified as **latest**).
 
 The following table shows how to find the information for an image:
 
@@ -68,7 +68,7 @@ The following table shows how to find the information for an image:
 |Azure Stack PowerShell|`Get-AzureRMVMImagePublisher -Location "location"`<br>`Get-AzureRMVMImageOffer -Location "location" -Publisher "publisherName"`<br>`Get-AzureRMVMImageSku -Location "location" -Publisher "publisherName" -Offer "offerName"`|
 |REST APIs     |[List image publishers](/rest/api/compute/platformimages/platformimages-list-publishers)<br>[List image offers](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<br>[List image SKUs](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus)|
 
-You can choose to upload and use your own image. If you do, the publisher name, offer, and SKU are not used.
+You can choose to upload and use your own image. If you do, the publisher name, offer, and SKU aren't used.
 
 ### Extensions
 
@@ -88,7 +88,7 @@ The resources in the following table are used by the VM and need to exist or be 
 |Resource|Required|Description|
 |---------|---------|---------|
 |Resource group|Yes|The VM must be contained in a resource group.|
-|Storage account|No|The VM does not need the storage account to store its virtual hard disks if using managed disks. <br>The VM does need the storage account to store its virtual hard disks if using unmanaged disks.|
+|Storage account|No|The VM doesn't need the storage account to store its virtual hard disks if using managed disks. <br>The VM does need the storage account to store its virtual hard disks if using unmanaged disks.|
 |Virtual network|Yes|The VM must be a member of a virtual network.|
 |Public IP address|No|The VM can have a public IP address assigned to it to remotely access it.|
 |Network interface|Yes|The VM needs the network interface to communicate in the network.|
