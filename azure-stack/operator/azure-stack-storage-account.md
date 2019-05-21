@@ -21,3 +21,10 @@ ms.lastreviewed: 05/21/2019
 ---
 # Microsoft Azure Stack storage account for automatic log collection
 
+What it is, why you need it
+
+https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-manage-storage-accounts 
+
+prerequisites: any permissions, subscription requirements, or anything similar?
+
+how to configure it?

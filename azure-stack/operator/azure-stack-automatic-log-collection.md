@@ -28,7 +28,7 @@ Beginning with the 1906 release, Azure Stack includes an easy way for operators 
 
 There are two ways to automatically collect logs:
 
-1. Based on conditions
+1. Based on system health conditions
 2. Based on demand. You specify custom options, including a time range between 1-4 hours, up to 7 days in the past. 
 
 ## How to upload logs
