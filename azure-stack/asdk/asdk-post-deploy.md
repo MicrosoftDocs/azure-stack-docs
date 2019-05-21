@@ -142,7 +142,7 @@ The tests take a few minutes to complete. If the installation was successful, th
 
 If there was a failure, follow the troubleshooting steps to get help.
 
-## Reset the password expiration policy 
+## Reset the password expiration policy
 
 To make sure that the password for the development kit host doesn't expire before your evaluation period ends, follow these steps after you deploy the ASDK.
 
