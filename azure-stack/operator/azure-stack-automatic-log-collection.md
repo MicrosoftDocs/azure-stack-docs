@@ -22,9 +22,9 @@ ms.lastreviewed: 05/21/2019
 # Microsoft Azure Stack automatic log collection
 
 
-Beginning with the 1906 release, Azure Stack includes an easy way for operators to upload log files for analysis by Customer Support Services. This helps streamline the process for troubleshooting problems. 
+Beginning with the 1906 release, Azure Stack includes an easy way for operators to upload log files for analysis by Customer Support Services. These improvements help streamline the process for troubleshooting problems. 
 
-Automatic log collection is not enabled by default. Before you can enable it, you need to [configure an Azure storage account](azure-stack-storage-account.md) where the logs can be uploaded. 
+Automatic log collection isn't enabled by default. Before you can enable it, you need to [configure an Azure storage account](azure-stack-storage-account.md) where the logs can be uploaded. 
 
 ## How to collect Azure Stack logs
 
