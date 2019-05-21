@@ -13,9 +13,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 05/21/2019
 ms.author: sethm
-ms.lastreviewed: 01/04/2019
+ms.lastreviewed: 05/21/2019
 ---
 
 # About VPN gateway for Azure Stack
@@ -30,14 +30,15 @@ When you create a virtual network gateway, you specify the gateway type that you
 
 Each virtual network can have two virtual network gateways, but only one of each type. Depending on the settings that you choose, you can create multiple connections to a single VPN gateway. An example is a multi-site connection configuration.
 
-Before you create and configure VPN Gateways for Azure Stack, review the [considerations for Azure Stack networking](azure-stack-network-differences.md) to learn how configurations for Azure Stack differ from Azure.
+Before you create and configure VPN gateways for Azure Stack, review the [considerations for Azure Stack networking](azure-stack-network-differences.md) to learn how configurations for Azure Stack differ from Azure.
 
 >[!NOTE]
 >In Azure, the bandwidth throughput for the VPN gateway SKU you choose must be divided across all connections that are connected to the gateway. In Azure Stack however, the bandwidth value for the VPN gateway SKU is applied to each connection resource that is connected to the gateway.
 >
 > For example:
+>
 > * In Azure, the basic VPN gateway SKU can accommodate approximately 100 Mbps of aggregate throughput. If you create two connections to that VPN gateway, and one connection is using 50 Mbps of bandwidth, then 50 Mbps is available to the other connection.
-> * In Azure Stack, *each* connection to the basic VPN gateway SKU gets allocated 100 Mbps of throughput.
+> * In Azure Stack, **each connection** to the basic VPN gateway SKU gets allocated 100 Mbps of throughput.
 
 ## Configuring a VPN gateway
 
@@ -47,7 +48,7 @@ A VPN gateway connection relies on several resources that are configured with sp
 
 The settings that you choose for each resource are critical for creating a successful connection.
 
-For information about individual resources and settings for a VPN gateway, see [About VPN gateway settings for Azure Stack](azure-stack-vpn-gateway-settings.md). This article will help you understand:
+For information about individual resources and settings for a VPN gateway, see [About VPN gateway settings for Azure Stack](azure-stack-vpn-gateway-settings.md). This article helps you understand:
 
 * Gateway types, VPN types, and connection types.
 * Gateway subnets, local network gateways, and other resource settings that you might want to consider.
@@ -103,11 +104,11 @@ Consider the following when you select the SKU:
 
 The following table shows the gateway types and the estimated aggregate throughput by gateway SKU:
 
-|	| VPN Gateway throughput *(1)* | VPN Gateway max IPsec tunnels *(2)* |
+|| VPN Gateway throughput *(1)* | VPN Gateway max IPsec tunnels *(2)* |
 |-------|-------|-------|
-|**Basic SKU** ***(3)*** 	| 100 Mbps	| 20	|
-|**Standard SKU** 		| 100 Mbps 	| 20	|
-|**High Performance SKU** | 200 Mbps	| 10	|
+|**Basic SKU** ***(3)*** | 100 Mbps | 20 |
+|**Standard SKU** | 100 Mbps | 20 |
+|**High Performance SKU** | 200 Mbps | 10 |
 
 **Table notes:**
 
@@ -120,4 +121,4 @@ The following table shows the gateway types and the estimated aggregate throughp
 
 ## Next steps
 
-[VPN gateway configuration settings for Azure Stack](azure-stack-vpn-gateway-settings.md)
+* [VPN gateway configuration settings for Azure Stack](azure-stack-vpn-gateway-settings.md)
