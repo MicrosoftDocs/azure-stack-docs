@@ -19,7 +19,7 @@ ms.lastreviewed: 01/05/2019
 
 Azure Stack offers virtual machines (VMs) as a type of an on-demand, scalable computing resource. You can choose a VM when you need more control over the computing environment. This article provides details before you create your first VM.
 
-An Azure Stack VM gives you the flexibility of virtualization without the need to manage clusters or individual machines. However, you still need to maintain the VM by performing tasks such as configuring, patching, and installing the software that runs on it.
+An Azure Stack VM gives you the flexibility of virtualization without the need to manage clusters or individual machines. However, you still need to maintain the VM by doing tasks such as configuring, patching, and installing the software that runs on it.
 
 You can use Azure Stack virtual machines in several ways. For example:
 
@@ -50,7 +50,7 @@ If you use Azure Stack to create the operating system disk, the computer name an
 
 ### VM size
 
-The size of the VM that you use is determined by the workload that you want to run. The size that you choose then determines factors such as processing power, memory, and storage capacity. Azure Stack offers a variety of sizes to support many types of uses.
+The size of the VM that you use is determined by the workload that you want to run. The size that you choose then determines factors such as processing power, memory, and storage capacity. Azure Stack offers different kinds of sizes to support many types of uses.
 
 ### VM limits
 
@@ -107,7 +107,7 @@ You have several choices to create a VM. Your choice depends on your environment
 
 ## Manage your VM
 
-You can manage VMs using a browser-based portal, command-line tools with support for scripting, or directly through APIs. Some typical management tasks that you might perform are:
+You can manage VMs using a browser-based portal, command-line tools with support for scripting, or directly through APIs. Some typical management tasks that you might do are:
 
 - Getting information about a VM
 - Connecting to a VM
