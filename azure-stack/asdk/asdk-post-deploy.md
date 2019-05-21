@@ -117,7 +117,7 @@ You can install the latest Azure Stack PowerShell module with or without Interne
   # Enforce usage of TLSv1.2 to download the Azure Stack tools archive from GitHub
   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
   Invoke-WebRequest `
-    https://github.com/Azure/AzureStack-Tools/archive/master.zip `
+    -Uri https://github.com/Azure/AzureStack-Tools/archive/master.zip `
     -OutFile master.zip
 
   # Expand the downloaded files.
