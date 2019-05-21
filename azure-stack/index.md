@@ -84,7 +84,7 @@ ms.topic: hub-page
                         <div class="card">
                             <div class="cardImageOuter">
                                 <div class="cardImage">
-                                     <img alt="" src="media/index/azure-stack.svg">
+                                     <img src="media/index/azure-stack2.svg" alt="" >
                                 </div>
                             </div>
                             <div class="cardText x-hidden-focus">
@@ -103,7 +103,7 @@ ms.topic: hub-page
                         <div class="card">
                             <div class="cardImageOuter">
                                 <div class="cardImage">
-                                     <img alt="" src="media/index/azure-stack.svg">
+                                     <img src="media/index/azure-stack2.svg" alt="">
                                 </div>
                             </div>
                             <div class="cardText">
@@ -122,7 +122,7 @@ ms.topic: hub-page
                         <div class="card">
                             <div class="cardImageOuter">
                                 <div class="cardImage">
-                                      <img alt="" src="media/index/azure-stack.svg">
+                                      <img src="media/index/azure-stack2.svg" alt="">
                                 </div>
                             </div>
                             <div class="cardText">
