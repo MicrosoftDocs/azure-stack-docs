@@ -69,7 +69,7 @@ You can install the latest Azure Stack PowerShell module with or without Interne
   - Azure Stack 1811:
 
     ``` PowerShell
-    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet. 
+    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet.
     Install-Module -Name AzureRM.BootStrapper
 
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
