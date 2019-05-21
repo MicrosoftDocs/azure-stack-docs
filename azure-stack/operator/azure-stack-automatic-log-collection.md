@@ -28,10 +28,10 @@ Automatic log collection is not enabled by default. Before you can enable it, yo
 
 ## How to collect Azure Stack logs
 
-There are two ways to automatically collect logs:
+You can collect diagnostic logs in two different ways:
 
-1. Based on system health conditions
-2. Based on custom options that you specify, including a timeframe between 1-4 hours up to 7 days in the past. 
+1. Automatically based on system health conditions
+2. Manually based on a specific timeframe between 1-4 hours, up to 7 days in the past. 
 
 ## How to upload logs
 
