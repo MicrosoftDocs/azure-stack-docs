@@ -89,7 +89,7 @@ ms.topic: hub-page
                             </div>
                             <div class="cardText x-hidden-focus">
                                 <h3>Operator</h3>
-                                <p>Documentation for operator tasks.<br></p>
+                                <p>Documentation for operator tasks.<br><br></p>
                             </div>
                         </div>
                     </div>
@@ -108,7 +108,7 @@ ms.topic: hub-page
                             </div>
                             <div class="cardText">
                                 <h3 class="x-hidden-focus">User</h3>
-                                <p>Documentation for user tasks.<br></p>
+                                <p>Documentation for user tasks.<br><br></p>
                             </div>
                         </div>
                     </div>
