@@ -1,6 +1,6 @@
 ---
-title: Understand the key differences between Azure and Azure Stack when using services and building apps| Microsoft Docs
-description: What you need to know to use services or build apps for Azure Stack.
+title: Differences between Azure and Azure Stack when using services and building apps| Microsoft Docs
+description: Understand the differences between Azure and Azure Stack when using services and building apps.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -44,16 +44,16 @@ The following table describes the high-level differences between Azure Stack and
 | Area | Azure (global) | Azure Stack |
 | -------- | ------------- | ----------|
 | Who operates it? | Microsoft | Your organization or service provider.|
-| Who do you contact for support? | Microsoft | For an integrated system, contact your Azure Stack operator (at your organization or service provider) for support.<br><br>For Azure Stack Development Kit support, visit the [Microsoft forums](https://social.msdn.microsoft.com/Forums/home?forum=azurestack). Because the development kit is an evaluation environment, there is no official support offered through Microsoft Customer Support Services (CSS).
+| Who do you contact for support? | Microsoft | For an integrated system, contact your Azure Stack operator (at your organization or service provider) for support.<br><br>For Azure Stack Development Kit support, visit the [Microsoft forums](https://social.msdn.microsoft.com/Forums/home?forum=azurestack). Because the development kit is an evaluation environment, there's no official support offered through Microsoft Customer Support Services (CSS).
 | Available services | See the list of [Azure products](https://azure.microsoft.com/services/?b=17.04b). Available services vary by Azure region. | Azure Stack supports a subset of Azure services. Actual services will vary based on what your organization or service provider chooses to offer.
 | Azure Resource Manager endpoint* | https://management.azure.com | For an Azure Stack integrated system, use the endpoint that your Azure Stack operator provides.<br><br>For the development kit, use: https://management.local.azurestack.external.
 | Portal URL* | [https://portal.azure.com](https://portal.azure.com) | For an Azure Stack integrated system, use the URL that your Azure Stack operator provides.<br><br>For the development kit, use: https://portal.local.azurestack.external.
 | Region | You can select which region you want to deploy to. | For an  Azure Stack integrated system, use the region that's available on your system.<br><br>For the development kit, the region will always be **local**.
 | Resource groups | A resource group can span regions. | For both integrated systems and the development kit, there's only one region.
-|Supported namespaces, resource types, and API versions | The latest (or earlier versions that are not yet deprecated). | Azure Stack supports specific versions. See the [Version requirements](#version-requirements) section of this article.
+|Supported namespaces, resource types, and API versions | The latest (or earlier versions that aren't yet deprecated). | Azure Stack supports specific versions. See the [Version requirements](#version-requirements) section of this article.
 | | |
 
-*If you are an Azure Stack operator, see [Using the administrator portal](../operator/azure-stack-manage-portals.md) and [Administration basics](../operator/azure-stack-manage-basics.md) for more information.
+*If you're an Azure Stack operator, see [Using the administrator portal](../operator/azure-stack-manage-portals.md) and [Administration basics](../operator/azure-stack-manage-basics.md) for more information.
 
 ## Helpful tools and best practices
 
@@ -75,7 +75,7 @@ To make sure that you use a correct version of Azure PowerShell, use [API versio
 > [!NOTE]
 > If you're using the Azure Stack Development Kit, and you have administrative access, see the [Determine the current version](../operator/azure-stack-updates.md#determine-the-current-version) section to determine the Azure Stack build.
 
-For other APIs, run the following PowerShell command to output the namespaces, resource types, and API versions that are supported in your Azure Stack subscription. Note that there may still be differences at a property level. For this command to work, you must have already [installed](../operator/azure-stack-powershell-install.md) and [configured](azure-stack-powershell-configure-user.md) PowerShell for an Azure Stack environment. You must also have a subscription to an Azure Stack offer.
+For other APIs, run the following PowerShell command to output the namespaces, resource types, and API versions that are supported in your Azure Stack subscription (there may still be differences at a property level). For this command to work, you must have already [installed](../operator/azure-stack-powershell-install.md) and [configured](azure-stack-powershell-configure-user.md) PowerShell for an Azure Stack environment. You must also have a subscription to an Azure Stack offer.
 
 ```powershell
 Get-AzureRmResourceProvider | Select ProviderNamespace -Expand ResourceTypes | Select * -Expand ApiVersions | `
