@@ -294,7 +294,7 @@ address of the virtual machine on the remote subnet, not the VIP.
 
 11. A reply from the remote virtual machine indicates a successful test. You can close the virtual machine window.
 
-You should also do more rigorous data transfer testing; for example, copying differently sized files in both directions.
+You should also do more rigorous data transfer testing (for example, copying differently-sized files in both directions).
 
 ### Viewing data transfer statistics through the gateway connection
 
@@ -310,4 +310,3 @@ went through the VPN connection.
 ## Next steps
 
 * [Deploy apps to Azure and Azure Stack](azure-stack-solution-pipeline.md)
-1

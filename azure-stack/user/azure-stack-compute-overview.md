@@ -17,7 +17,7 @@ ms.lastreviewed: 01/05/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Azure Stack offers virtual machines (VMs) as a type of an on-demand, scalable computing resource. You can choose a VM when you need more control over the computing environment. This article provides details before you create your first VM.
+Azure Stack offers virtual machines (VMs) as a type of on-demand and scalable computing resource. You can choose a VM when you need more control over the computing environment. This article provides details before you create your first VM.
 
 An Azure Stack VM gives you the flexibility of virtualization without the need to manage clusters or individual machines. However, you still need to maintain the VM by doing tasks such as configuring, patching, and installing the software that runs on it.
 
