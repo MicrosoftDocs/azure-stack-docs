@@ -41,11 +41,16 @@ The Azure Stack 1905 update build number is **1.1905.x.xx**.
 
 <!-- What's new, also net new experiences and features. -->
 
+- With this update, the Patch & Update engine in Azure Stack can update the firmware of scale unit nodes. This requires a compliant update package from the hardware partners. Reach
+out to your hardware partner for details about availability.
+
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
 ### Changes
+
+- Added an additional infra role instance for domain services to increase reliability and availability during planned and unplanned maintenace scenarios.
 
 ### Fixes
 
