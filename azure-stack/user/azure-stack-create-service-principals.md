@@ -26,7 +26,7 @@ You can give an application access to Azure Stack resources by creating a servic
 As a best practice, you should use service principals for your applications. Service principals are preferable to running an app using your own credentials for the following reasons:
 
 * You can assign permissions to the service principal that are different than your own account permissions. Typically, a service principal's permissions are restricted to exactly what the app needs to do.
-* You do not have to change the app's credentials if your role or responsibilities change.
+* You don't have to change the app's credentials if your role or responsibilities change.
 * You can use a certificate to automate authentication when running an unattended script.
 
 ## Example scenario
@@ -46,7 +46,7 @@ The way you configured Active Directory for Azure Stack determines how you creat
 * Create a service principal for [Azure Active Directory (Azure AD)](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad).
 * Create a service principal for [Active Directory Federation Services (AD FS)](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).
 
-The steps for assigning a service principal to a role the same for Azure AD and AD FS. After you create the service principal, you can [delegate permissions](azure-stack-create-service-principals.md) by assigning it to a role.
+The steps for assigning a service principal to a role are the same for Azure AD and AD FS. After you create the service principal, you can delegate permissions by assigning it to a role.
 
 ## Create service principal for Azure AD
 
