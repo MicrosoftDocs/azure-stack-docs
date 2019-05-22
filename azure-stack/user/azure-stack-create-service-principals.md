@@ -1,6 +1,6 @@
 ---
 title: Create a Service Principal for Azure Stack | Microsoft Docs
-description: Describes how to create a service principal that can be used with the role-based access control in Azure Resource Manager to manage access to resources.
+description: Learn how to create a service principal to use with role-based access control in Azure Resource Manager to manage access to resources.
 services: azure-resource-manager
 documentationcenter: na
 author: mattbriggs
@@ -17,7 +17,7 @@ ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
 
 ---
-# Give applications access to Azure Stack resources by creating service principals
+# Create service principals to give applications access to Azure Stack resources
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -65,7 +65,7 @@ To create a service principal for your application:
 4. Select the **Supported account types**.
 5.  Add a URI for the application. Select **Web**  for the type of application you want to create. After setting the values, select **Register**.
 
-You have created a service principal for your application.
+You've created a service principal for your application.
 
 ### Get credentials
 
