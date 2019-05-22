@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 05/02/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 05/22/2019
+ms.lastreviewed: 05/02/2019
 ---
 
 # Azure Stack 1905 update
@@ -44,6 +44,14 @@ The Azure Stack 1905 update build number is **1.1905.x.xx**.
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
+- As a part of enforcing TLS 1.2 on Azure Stack, the following extensions have been updated to these versions below:
+microsoft.customscriptextension-arm-1.9.3
+microsoft.iaasdiagnostics-1.12.2.2
+microsoft.antimalware-windows-arm-1.5.5.9
+microsoft.dsc-arm-2.77.0.0
+microsoft.vmaccessforlinux-1.5.2
+
+Please download these versions of the extensions immediately so that new deployments of the extension do not fail. Always set autoupdateminorversion=true so that minor version updates to extensions (eg. 1.8 to 1.9) are automatically done.
 
 ### Changes
 
@@ -80,7 +88,8 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 The 1905 release of Azure Stack must be applied on the 1904 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1904.4.45](https://support.microsoft.com/help/4505688)
+- No hotfix available for 1904.
+<!-- - [Azure Stack hotfix 1.1903.2.39](https://support.microsoft.com/help/4500638) -->
 
 ### After successfully applying the 1905 update
 
