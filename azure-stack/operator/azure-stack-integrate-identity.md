@@ -344,10 +344,8 @@ If any of the cmdlets fail, you can collect additional logs by using the `Get-Az
 2. Then, run the following cmdlet:
 
    ```powershell  
-   Get-AzureStackLog -OutputPath \\myworstation\AzureStackLogs -FilterByRole ECE
+   Get-AzureStackLog -OutputPath \\myworkstation\AzureStackLogs -FilterByRole ECE
    ```
 
-
-## Next steps
 
 [Integrate external monitoring solutions](azure-stack-integrate-monitor.md)

@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 05/22/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 05/06/2019
+ms.lastreviewed: 05/22/2019
 ---
 
 # Azure Stack 1904 update
@@ -186,8 +186,7 @@ The 1904 release of Azure Stack must be applied on the 1903 release with the fol
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [Servicing Policy](azure-stack-servicing-policy.md).
 
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- No hotfixes available for 1904.
+- [Azure Stack hotfix 1.1904.4.45](https://support.microsoft.com/help/4505688)
 
 ## Automatic update notifications
 
