@@ -39,12 +39,21 @@ If you are using an integrated system, you don't need to export the CA root cert
 
 To export the ASDK root certificate in PEM format:
 
-1. [Create a Windows VM on Azure Stack](azure-stack-quick-windows-portal.md).
+1. Get the name of your Azure Stack Root Cert:
+    - Sign into the Azure Stack Tenant or Admin portal.
+    - Click on "Secure" near the address bar.
+    - On the pop-up window, Click "Valid".
+    - On the Certificate Window, click "Certification Path" tab. 
+    - Note down the name of your Azure Stack Root Cert.
 
-2. Sign in to the machine, open an elevated PowerShell prompt, and then run the following script:
+![Azure Stack Root Certificate](media/azure-stack-version-profiles-azurecli2/root-cert-name.png)
+
+2. [Create a Windows VM on Azure Stack](azure-stack-quick-windows-portal.md).
+
+3. Sign in to the machine, open an elevated PowerShell prompt, and then run the following script:
 
     ```powershell  
-      $label = "<the name of your azure stack root cert>" # Eg: AzureStackSelfSignedRootCert
+      $label = "<the name of your azure stack root cert from Step 1>"
       Write-Host "Getting certificate from the current user trusted store with subject CN=$label"
       $root = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Subject -eq "CN=$label" | select -First 1
       if (-not $root)
@@ -60,7 +69,7 @@ To export the ASDK root certificate in PEM format:
     certutil -encode root.cer root.pem
     ```
 
-3. Copy the certificate to your local machine.
+4. Copy the certificate to your local machine.
 
 
 ### Set up the virtual machine aliases endpoint
@@ -100,9 +109,9 @@ This section will walk you through setting up CLI if you are using Azure AD as y
 
 If you are using the ASDK, you will need to trust the CA root certificate on your remote machine. You will not need to do this with the integrated systems.
 
-To trust the Azure Stack CA root certificate, append it to the existing Python certificate for the Python version installed with the Azure CLI. You may be running your own instance of Python. Azure CLI includes its own version of Python.
+To trust the Azure Stack CA root certificate, append it to the existing Python certificate store for the Python version installed with the Azure CLI. You may be running your own instance of Python. Azure CLI includes its own version of Python.
 
-1. Find the certificate location on your machine.  You can find the location by running the command  `az --version`.
+1. Find the certificate store location on your machine.  You can find the location by running the command  `az --version`.
 
 2. Navigate to the folder that contains your the CLI Python application. You will want to run this version of python. If you have set up Python in your system PATH, running Python will execute your own version of Python. Instead, you will want to run the version used by CLI and add your certificate to that version. For example, your CLI Python may be at: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\`.
 
