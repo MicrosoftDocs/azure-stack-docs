@@ -23,7 +23,7 @@ ms.lastreviewed: 05/21/2019
 
 Beginning with 1905 release, Azure Stack **Help + support** improvements make it easier for operators to research issues, get expert help, or learn more about Azure Stack. 
 
-## Research issues
+## Research an issue
 
 At the top of **Help + support** are self-service links to read more about an issue, get info about billing, or see which support options are available. 
 
@@ -41,14 +41,14 @@ You can also get help from experts in Microsoft Customer Support and the MSDN Fo
 
 ![Get expert help](media/azure-stack-help-and-support/get-support-cards.png)
 
-- **Support requests**. Open a case with Microsoft Customer Support Services for expert help with any problem related to Azure Stack.
+- **Support requests**. Open a case with Microsoft Customer Support Services for specialized help with any problem related to Azure Stack.
 
 - **Community**. The [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) is a community of Azure Stack experts who help answer questions and solve problems.
 
-- **Learning**. Online courses help build your skills for configuring and operating Azure Stack. 
+- **Learning**. Online courses to help build your skills for configuring and operating Azure Stack. 
 
-## Tutorials
+## Get up to speed with Azure Stack
 
-This set of tutorials is customized depending on whether you're running the ASDK or integrated systems to help you learn the specific needs for your deployment. 
+This set of tutorials is customized depending on whether you're running the ASDK or integrated systems so you can quickly get up to speed with your environment. 
 
 ![Get support tutorials](media/azure-stack-help-and-support/get-support-tutorials.png)
