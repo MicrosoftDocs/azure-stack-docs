@@ -1,6 +1,6 @@
 ---
-title: Introduction to Azure Stack virtual machines | Microsoft Docs
-description: Learn about Azure Stack virtual machines.
+title: Introduction to Azure Stack VMs | Microsoft Docs
+description: Learn about Azure Stack VMs.
 services: azure-stack
 author: sethmanheim
 manager: femila
@@ -13,7 +13,7 @@ ms.reviewer: kivenkat
 ms.lastreviewed: 01/05/2019
 
 ---
-# Introduction to Azure Stack virtual machines
+# Introduction to Azure Stack VMs
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -21,13 +21,13 @@ Azure Stack offers virtual machines (VMs) as a type of on-demand and scalable co
 
 An Azure Stack VM gives you the flexibility of virtualization without the need to manage clusters or individual machines. However, you still need to maintain the VM by doing tasks such as configuring, patching, and installing the software that runs on it.
 
-You can use Azure Stack virtual machines in several ways. For example:
+You can use Azure Stack VMs in several ways. For example:
 
 - **Development and test**: Azure Stack VMs enable you to create a computer with a specific configuration required to code and test an application.
 
 - **Applications in the cloud**: Because demand for your application can fluctuate, it might make economic sense to run it on a VM in Azure Stack. You pay for extra VMs when you need them and shut them down when you don't.
 
-- **Extended datacenter**: Virtual machines in an Azure Stack virtual network can be connected to your organization's network or to Azure.
+- **Extended datacenter**: VMs in an Azure Stack virtual network can be connected to your organization's network or to Azure.
 
 The VMs that your application uses can scale up, or scale out, to whatever is required to meet your needs.
 
@@ -44,9 +44,9 @@ There are always design considerations when you build out an application infrast
 
 ### Naming
 
-A virtual machine has a name assigned to it and it has a computer name configured as part of the operating system. The name of a VM can be up to 15 characters.
+A VM has a name assigned to it and it has a computer name configured as part of the operating system. The name of a VM can be up to 15 characters.
 
-If you use Azure Stack to create the operating system disk, the computer name and the virtual machine name are the same. If you upload and use your own image that contains a previously configured operating system and use it to create a virtual machine, the names may be different. When you upload your own image file, as a best practice, make sure the computer name in the operating system matches the virtual machine name.
+If you use Azure Stack to create the operating system disk, the computer name and the VM name are the same. If you upload and use your own image that contains a previously configured operating system and use it to create a VM, the names may be different. When you upload your own image file, as a best practice, make sure the computer name in the operating system matches the VM name.
 
 ### VM size
 
@@ -58,7 +58,7 @@ Your subscription has default quota limits in place that can impact the deployme
 
 ### Operating system disks and images
 
-Virtual machines use virtual hard disks (VHDs) to store their operating system (OS) and data. VHDs are also used for the images you choose from to install an OS. Azure Stack provides a marketplace to use with various versions and types of operating systems. Marketplace images are identified by image publisher, offer, SKU, and version (typically the latest version is specified as **latest**).
+VMs use virtual hard disks (VHDs) to store their operating system (OS) and data. VHDs are also used for the images you choose from to install an OS. Azure Stack provides a marketplace to use with various versions and types of operating systems. Marketplace images are identified by image publisher, offer, SKU, and version (typically the latest version is specified as **latest**).
 
 The following table shows how to find the information for an image:
 
@@ -100,10 +100,10 @@ You have several choices to create a VM. Your choice depends on your environment
 
 |Method|Article|
 |---------|---------|
-|Azure Stack portal|Create a Windows virtual machine with the Azure Stack portal<br>[Create a Linux virtual machine using the Azure Stack portal](azure-stack-quick-linux-portal.md)|
-|Templates|Azure Stack Quickstart templates are located at:<br> [https://github.com/Azure/AzureStack-QuickStart-Templates](https://github.com/Azure/AzureStack-QuickStart-Templates)|
-|PowerShell|[Create a Windows virtual machine by using PowerShell in Azure Stack](azure-stack-quick-create-vm-windows-powershell.md)<br>[Create a Linux virtual machine by using PowerShell in Azure Stack](azure-stack-quick-create-vm-linux-powershell.md)|
-|CLI|[Create a Windows virtual machine by using CLI in Azure Stack](azure-stack-quick-create-vm-windows-cli.md)<br>[Create a Linux virtual machine by using CLI in Azure Stack](azure-stack-quick-create-vm-linux-cli.md)|
+|Azure Stack portal|Create a Windows VM with the Azure Stack portal<br>[Create a Linux VM using the Azure Stack portal](azure-stack-quick-linux-portal.md)|
+|Templates|Azure Stack Quickstart templates are located at:<br> [https://github.com/Azure/AzureStack-QuickStart-Templates](https://github.com/Azure/AzureStack-QuickStarvirtualt-Templates)|
+|PowerShell|[Create a Windows VM by using PowerShell in Azure Stack](azure-stack-quick-create-vm-windows-powershell.md)<br>[Create a Linux VM by using PowerShell in Azure Stack](azure-stack-quick-create-vm-linux-powershell.md)|
+|CLI|[Create a Windows VM by using CLI in Azure Stack](azure-stack-quick-create-vm-windows-cli.md)<br>[Create a Linux VM by using CLI in Azure Stack](azure-stack-quick-create-vm-linux-cli.md)|
 
 ## Manage your VM
 
@@ -130,4 +130,4 @@ You can use the **Connect** button in the Azure Stack portal to connect to your 
 
 ## Next steps
 
-- [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md)
+- [Considerations for VMs in Azure Stack](azure-stack-vm-considerations.md)
