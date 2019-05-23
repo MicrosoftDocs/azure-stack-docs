@@ -16,7 +16,7 @@ ms.topic: article
 ms.date: 05/21/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 05/21/2019
+ms.lastreviewed: 05/23/2019
 
 ---
 # Microsoft Azure Stack Help and support
@@ -31,7 +31,7 @@ At the top of **Help + support** are self-service links to read more about an is
 
 - **Documentation**. [Azure Stack Operator Documentation](index.yml) includes concepts, how-to topics and tutorials that show how to offer Azure Stack services such as virtual machines, SQL databases, web apps, and more. 
 
-- **Learn about billing**. Learn tips for [monitoring usage](azure-stack-usage-reporting.md) and [understanding your bill](azure-stack-billing-and-chargeback.md).
+- **Learn about billing**. Get tips for [monitoring usage](azure-stack-usage-reporting.md) and [understanding your bill](azure-stack-billing-and-chargeback.md).
 
 - **Support options**. Azure Stack operators can choose from a range of [Azure support options](https://azure.microsoft.com/support/options/) that can fit the needs of any enterprise. 
 
