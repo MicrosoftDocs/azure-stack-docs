@@ -182,7 +182,7 @@ Please disable Compute Host Agent feature flag and collect logs for further diag
 
 - Applicable: This issue applies to all supported releases.
 - Cause: [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) is not supported in Azure Stack and will result in creating a disk with $null ID. This will in turn prevent you from doing operations on said VM like: start and stop. The disk will not show in the UI, nor will it show via API. VM at that point cannot be fixed and has to be deleted.
-- Remediation: To convert your disks correctly follow [Convert to managed disks guide](/user/azure-stack-managed-disk-considerations.md#convert-to-managed-disks)
+- Remediation: To convert your disks correctly follow the [convert to managed disks guide](/user/azure-stack-managed-disk-considerations.md#convert-to-managed-disks).
 
 ## App Service
 
