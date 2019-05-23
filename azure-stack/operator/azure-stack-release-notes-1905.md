@@ -52,6 +52,8 @@ out to your hardware partner for details about availability.
 
 - Added an additional infra role instance for domain services to increase reliability and availability during planned and unplanned maintenace scenarios.
 
+- With this update, during repair & add node operations the hardware is validated to ensure homegenous scale unit nodes within a scale unit.
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
