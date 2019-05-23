@@ -45,20 +45,20 @@ Shared workers are multi-tenant and host Free and Shared App Service Plans and C
 
 ## Dedicated workers
 
-Dedicated workers are tied to the App Service plans which tenant(s) create.  For example, in the S1 SKU, by default tenants can scale to 10 instances by default.  Therefore when a tenant creates an S1 App Service Plan, Azure App Service will allocate one of the instances in the Small Worker Tier scale set to that tenant's app Service Plan.  Subsequently the assigned worker will no longer be available to be assigned to any other tenants.  If the tenant chooses to scale the App Service Plan to 10 instances then a further 9 workers are removed from the available pool and are assigned to the tenants' App Service Plan.
+Dedicated workers are tied to the App Service plans which tenant(s) create.  For example, in the S1 SKU, by default tenants can scale to 10 instances by default.  Therefore when a tenant creates an S1 App Service Plan, Azure App Service will allocate one of the instances in the Small Worker Tier scale set to that tenant's app Service Plan.  Subsequently the assigned worker will no longer be available to be assigned to any other tenants.  If the tenant chooses to scale the App Service Plan to 10 instances, then a further nine workers are removed from the available pool and are assigned to the tenants' App Service Plan.
 
 Meters are emitted for dedicated workers when they are:
 
 1. Marked as Ready in the Azure App Service Resource Provider;
 1. Are assigned to an App Service Plan
 
-This billing model therefore enables Cloud Operators to provision a pool of dedicated workers ready for customers to use without paying for the workers until they are effectively reserved by their tenant's app service plan.  For example, if you have 20 workers in the Small Worker Tier and then you have five customers create two S1 App Service Plans each and they each scale those up to two instances then you will have no workers available. As a result there will also be no capacity for any of your customers or new customers to scale out or create new App Service Plans.  Cloud Operators can view the current number of available workers per worker tier by looking at the Worker Tiers in the Azure App Service on Azure Stack administration.
+This billing model therefore enables Cloud Operators to provision a pool of dedicated workers ready for customers to use without paying for the workers until they are effectively reserved by their tenant's app service plan.  For example, if you have 20 workers in the Small Worker Tier and then you have five customers create two S1 App Service Plans each and they each scale App Service Plan up to two instances then you will have no workers available. As a result there will also be no capacity for any of your customers or new customers to scale out or create new App Service Plans.  Cloud Operators can view the current number of available workers per worker tier by looking at the Worker Tiers in the Azure App Service on Azure Stack administration.
 
 ![App Service Worker Tiers][1]
 
 ## See customer usage using the Azure Stack Usage Service
 
-Cloud Operators can query the [Azure Stack tenant usage API](azure-stack-tenant-resource-usage-api.md) to retrieve usage information for their customers and you can find all of the individual meters that App Service emits to describe tenant usage in the [Usage FAQ](azure-stack-usage-related-faq.md).  These meters can then be used to calculate the usage per customer subscription which, can then be used to calculate charges.
+Cloud Operators can query the [Azure Stack tenant usage API](azure-stack-tenant-resource-usage-api.md) to retrieve usage information for their customers and you can find all of the individual meters that App Service emits to describe tenant usage in the [Usage FAQ](azure-stack-usage-related-faq.md).  These meters can then be used to calculate the usage per customer subscription that, can then be used to calculate charges.
 
 ## Frequently Asked Questions
 
