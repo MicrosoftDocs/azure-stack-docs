@@ -28,9 +28,9 @@ The guidance in this document illustrates how Cloud Operators are billed for off
 
 ## Billing Overview
 
-Azure Stack Cloud Operators choose to deploy the Azure App Service on Azure Stack onto their Azure Stack stamp in order to offer the tenant capabilities of Azure App Service and Azure Functions to their customers.  The Azure App Service resource provider consists of multiple types of roles which can be divided between infrastructure and worker tiers.
+Azure Stack Cloud Operators choose to deploy the Azure App Service on Azure Stack onto their Azure Stack stamp in order to offer the tenant capabilities of Azure App Service and Azure Functions to their customers.  The Azure App Service resource provider consists of multiple types of roles that can be divided between infrastructure and worker tiers.
 
-Infrastructure roles are **not billed** for as they are required for the core operation of the service.  These can be scaled out as required to support the demands of the Cloud Operator's tenants.  The infrastructure roles are as follows:
+Infrastructure roles are **not billed** for as they are required for the core operation of the service.  Infrastructure roles can be scaled out as required to support the demands of the Cloud Operator's tenants.  The infrastructure roles are as follows:
 
 - Controllers
 - Management Roles
@@ -41,34 +41,34 @@ Worker tiers consist of two main types - shared and dedicated.  Worker usage is 
 
 ## Shared Workers
 
-Shared workers are multi-tenant and host Free and Shared App Service Plans and Consumption based Azure Functions for many tenants.  Shared workers emit usage meters when marked as Ready in the Azure App Service Resource Provider.
+Shared workers are multi-tenant and host Free and Shared App Service Plans and Consumption-based Azure Functions for many tenants.  Shared workers emit usage meters when marked as Ready in the Azure App Service Resource Provider.
 
 ## Dedicated workers
 
-Dedicated workers are tied to the App Service plans which tenant(s) create.  For example in the S1 SKU by default. tenants can scale to 10 instances by default.  Therefore when a tenant creates an S1 App Service Plan, Azure App Service will allocated one of the instances in the Small Worker Tier scale set to that tenant's app Service Plan.  Subsequently the assigned worker will no longer be available to be assigned to any other tenants.  If the tenant chooses to scale the App Service Plan to 10 instances then a further 9 workers are removed from the available pool and are assigned to the tenants' App Service Plan.
+Dedicated workers are tied to the App Service plans which tenant(s) create.  For example, in the S1 SKU, by default tenants can scale to 10 instances by default.  Therefore when a tenant creates an S1 App Service Plan, Azure App Service will allocate one of the instances in the Small Worker Tier scale set to that tenant's app Service Plan.  Subsequently the assigned worker will no longer be available to be assigned to any other tenants.  If the tenant chooses to scale the App Service Plan to 10 instances then a further 9 workers are removed from the available pool and are assigned to the tenants' App Service Plan.
 
 Meters are emitted for dedicated workers when they are:
 
 1. Marked as Ready in the Azure App Service Resource Provider;
 1. Are assigned to an App Service Plan
 
-This therefore enables Cloud Operators to provision a pool of dedicated workers ready for customers to use without paying for the workers until they are effectively reserved by their tenant's app service plan.  For example if you have 20 workers in the Small Worker Tier and then you have 5 customers create 2 S1 App Service Plans each and they each scale those up to 2 instances then you will have no workers available. As a result there will also be no capacity for any of your customers or new customers to scale out or create new App Service Plans.  Cloud Operators can view the current number of available workers per worker tier by looking at the Worker Tiers in the Azure App Service on Azure Stack administration.
+This billing model therefore enables Cloud Operators to provision a pool of dedicated workers ready for customers to use without paying for the workers until they are effectively reserved by their tenant's app service plan.  For example, if you have 20 workers in the Small Worker Tier and then you have five customers create two S1 App Service Plans each and they each scale those up to two instances then you will have no workers available. As a result there will also be no capacity for any of your customers or new customers to scale out or create new App Service Plans.  Cloud Operators can view the current number of available workers per worker tier by looking at the Worker Tiers in the Azure App Service on Azure Stack administration.
 
 ![App Service Worker Tiers][1]
 
 ## See customer usage using the Azure Stack Usage Service
 
-Cloud Operators can query the [Azure Stack tenant usage API](azure-stack-tenant-resource-usage-api.md) to retrieve usage information for their customers and you can find all of the individual meters that App Service emits to describe tenant usage in the [Usage FAQ](azure-stack-usage-related-faq.md).  These meters can then be used to calculate the usage per customer subscription which can then be used to calculate charges.
+Cloud Operators can query the [Azure Stack tenant usage API](azure-stack-tenant-resource-usage-api.md) to retrieve usage information for their customers and you can find all of the individual meters that App Service emits to describe tenant usage in the [Usage FAQ](azure-stack-usage-related-faq.md).  These meters can then be used to calculate the usage per customer subscription which, can then be used to calculate charges.
 
 ## Frequently Asked Questions
 
 ### How do I license the SQL Server and File Server infrastructure required in the pre-requisites
 
-This is covered in the Azure App Service on Azure Stack - [Before you get started](azure-stack-app-service-before-you-get-started.md#licensing-concerns-for-required-file-server-and-sql-server) documentation.
+Licensing for SQL and File Server infrastructure, required by the Azure App Service resource provider, is covered in the Azure App Service on Azure Stack - [Before you get started](azure-stack-app-service-before-you-get-started.md#licensing-concerns-for-required-file-server-and-sql-server) documentation.
 
 ### The Usage FAQ lists the tenant meters but not the prices for those meters, where can I find them
 
-Cloud Operators are free to apply their own pricing model to their end customers.  The usage service provides the usage metering and the Cloud Operator must then use the meter quantity to then charge their customers based on the pricing model they determine.  This enables operators to differentiate from other Azure Stack operators.
+Cloud Operators are free to apply their own pricing model to their end customers.  The usage service provides the usage metering and the Cloud Operator must then use the meter quantity to then charge their customers based on the pricing model they determine.  Having this ability to set pricing enables operators to differentiate from other Azure Stack operators.
 
 ## Next Steps
 
