@@ -39,11 +39,11 @@ At the top of **Help + support** are self-service links to read more about an is
 
 If you run Azure Stack as an integrated system, you can open a case with Microsoft Customer Support Services for specialized help with any problem related to Azure Stack.  
 
-![Get expert help for integrated systems](media/azure-stack-help-and-support/get-support-cards-integrated.png)
+![Get expert help for integrated systems](media/azure-stack-help-and-support/get-support-integrated.png)
 
 If you run the Azure Stack Development Kit (ASDK), you can get help from a community of experts in the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
 
-![Get expert help for ASDK](media/azure-stack-help-and-support/get-support-cards-asdk.png)
+![Get expert help for ASDK](media/azure-stack-help-and-support/get-support-asdk.png)
 
 And you can reach out to the MSDN Forums with any question, or take online training and improve your own skills. 
 
