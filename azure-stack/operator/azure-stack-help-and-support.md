@@ -49,9 +49,6 @@ And you can reach out to the MSDN Forums with any question, or take online train
 
 ![Get expert help](media/azure-stack-help-and-support/get-support-cards.png)
 
-- **Community**. Azure Stack community members can help answer questions and solve problems.
-
-- **Learning**. Online courses can build your skills for configuring and operating Azure Stack. 
 
 ## Get up to speed with Azure Stack
 
