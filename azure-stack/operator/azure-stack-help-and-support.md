@@ -21,11 +21,11 @@ ms.lastreviewed: 05/23/2019
 ---
 # Microsoft Azure Stack Help and support
 
-Beginning with 1905 release, Azure Stack **Help + support** improvements make it easier for operators to research issues, get expert help, or learn more about Azure Stack. 
+Beginning with the 1905 release, Azure Stack **Help + support** improvements make it easier for operators to research issues, get expert help, or learn more about Azure Stack. 
 
 ## Research an issue
 
-At the top of **Help + support** are self-service links to read more about an issue, get info about billing, or see which support options are available. 
+At the top of **Help + support** are links to read more about an issue, get info about billing, or see which support options are available. 
 
 ![Self-service support](media/azure-stack-help-and-support/get-support-tiles.png)
 
