@@ -384,14 +384,10 @@
       href: azure-stack-backup-best-practices.md
     - name: Backup reference
       href: azure-stack-backup-reference.md
-  - name: Get help and support 
+  - name: Get help  
     items:
-    - name: Get support
-      href: azure-stack-get-support.md
-    - name: Create a storage account
-      href: azure-stack-storage-account.md
-    - name: Upload diagnostic logs
-      href: azure-stack-automatic-log-collection.md
+    - name: Help + support
+      href: azure-stack-help-and-support.md
     - name: Troubleshoot
       items:
       - name: Known issues
