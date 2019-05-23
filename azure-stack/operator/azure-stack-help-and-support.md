@@ -45,7 +45,7 @@ You can also get help from experts in Microsoft Customer Support and the MSDN Fo
 
 - **Community**. The [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) is a community of Azure Stack experts who help answer questions and solve problems.
 
-- **Learning**.  Online courses help build your skills for configuring and operating Azure Stack. 
+- **Learning**. Online courses help build your skills for configuring and operating Azure Stack. 
 
 ## Tutorials
 
