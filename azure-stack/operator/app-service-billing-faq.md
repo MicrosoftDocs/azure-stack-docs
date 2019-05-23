@@ -74,7 +74,5 @@ Cloud Operators are free to apply their own pricing model to their end customers
 
 [Azure Stack Tenant Usage API](azure-stack-tenant-resource-usage-api.md)
 
-[Azure Stack Tenant Usage FAQ](azure-stack-usage-related-faq.md)
-
 <!--Image references-->
 [1]: ./media/app-service-billing-faq/app-service-worker-tiers.png
