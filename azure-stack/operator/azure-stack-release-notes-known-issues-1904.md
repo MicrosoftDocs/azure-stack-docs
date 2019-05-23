@@ -181,11 +181,9 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 
 ## Storage
 
-### Converting currently provisioned VM from unmanaged to managed disks
-
 - Applicable: This issue applies to all supported releases.
-- Cause: [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) is not supported in Azure Stack and will result in creating a disk with $null ID. This will in turn prevent you from performing operations on the VM such as start and stop. The disk will not show in the UI, nor will it show via API. The VM at that point cannot be repaired and has to be deleted.
-- Remediation: To convert your disks correctly follow the [convert to managed disks guide](/user/azure-stack-managed-disk-considerations.md#convert-to-managed-disks).
+- Cause: [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) is not supported in Azure Stack and results in creating a disk with **$null** ID. This prevents you from performing operations on the VM, such as start and stop. The disk does not appear in the UI, nor does it appear via the API. The VM at that point cannot be repaired and must be deleted.
+- Remediation: To convert your disks correctly, follow the [convert to managed disks guide](../user/azure-stack-managed-disk-considerations.md#convert-to-managed-disks).
 
 ## App Service
 
