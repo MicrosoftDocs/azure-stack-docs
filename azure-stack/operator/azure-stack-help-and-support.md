@@ -27,7 +27,7 @@ Beginning with 1905 release, Azure Stack **Help + support** improvements make it
 
 At the top of **Help + support** are self-service links to read more about an issue, get info about billing, or see which support options are available. 
 
-![Self-service support](media/azure-stack-get-support/get-support-tiles.png)
+![Self-service support](media/azure-stack-help-and-support/get-support-tiles.png)
 
 - **Documentation**
 
@@ -45,7 +45,7 @@ At the top of **Help + support** are self-service links to read more about an is
 
 You can also get help from experts in Microsoft Customer Support and the MSDN Forums, or take online training and improve your own skills. 
 
-![Get expert help](media/azure-stack-get-support/get-support-cards.png)
+![Get expert help](media/azure-stack-help-and-support/get-support-cards.png)
 
 - **Support requests**
 
@@ -63,4 +63,4 @@ You can also get help from experts in Microsoft Customer Support and the MSDN Fo
 
 This set of tutorials is customized depending on whether you're running the ASDK or integrated systems to help you learn the specific needs for your deployment. 
 
-![Get support tutorials](media/azure-stack-get-support/get-support-tutorials.png)
+![Get support tutorials](media/azure-stack-help-and-support/get-support-tutorials.png)
