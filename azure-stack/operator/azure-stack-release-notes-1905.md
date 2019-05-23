@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 05/23/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 05/22/2019
+ms.lastreviewed: 05/23/2019
 ---
 
 # Azure Stack 1905 update
@@ -41,8 +41,7 @@ The Azure Stack 1905 update build number is **1.1905.x.xx**.
 
 <!-- What's new, also net new experiences and features. -->
 
-- With this update, the Patch & Update engine in Azure Stack can update the firmware of scale unit nodes. This requires a compliant update package from the hardware partners. Reach
-out to your hardware partner for details about availability.
+- With this update, the update engine in Azure Stack can update the firmware of scale unit nodes. This requires a compliant update package from the hardware partners. Reach out to your hardware partner for details about availability.
 
 ### Improvements
 
@@ -50,9 +49,9 @@ out to your hardware partner for details about availability.
 
 ### Changes
 
-- Added an additional infra role instance for domain services to increase reliability and availability during planned and unplanned maintenace scenarios.
+- To increase reliability and availability during planned and unplanned maintenance scenarios, Azure Stack adds an additional infrastructure role instance for domain services.
 
-- With this update, during repair & add node operations the hardware is validated to ensure homegenous scale unit nodes within a scale unit.
+- With this update, during repair and add node operations, the hardware is validated to ensure homogenous scale unit nodes within a scale unit.
 
 ### Fixes
 
