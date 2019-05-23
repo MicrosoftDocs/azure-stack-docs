@@ -29,7 +29,7 @@ At the top of **Help + support** are self-service links to read more about an is
 
 ![Self-service support](media/azure-stack-help-and-support/get-support-tiles.png)
 
-- **Documentation**. [Azure Stack Operator Documentation](index.yml) includes concepts, how-to topics and tutorials that show how to offer Azure Stack services such as virtual machines, SQL databases, web apps, and more. 
+- **Documentation**. [Azure Stack Documentation](https://docs.microsoft.com/azure/#pivot=products&panel=stack) includes concepts, how-to topics and tutorials that show how to offer Azure Stack services such as virtual machines, SQL databases, web apps, and more. 
 
 - **Learn about billing**. Get tips for [monitoring usage](azure-stack-usage-reporting.md) and [understanding your bill](azure-stack-billing-and-chargeback.md).
 
