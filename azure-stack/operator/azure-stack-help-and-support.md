@@ -41,7 +41,9 @@ You can also get help from experts in Microsoft Customer Support and the MSDN Fo
 
 ![Get expert help](media/azure-stack-help-and-support/get-support-cards.png)
 
-- **Support requests**. Open a case with Microsoft Customer Support Services for specialized help with any problem related to Azure Stack.
+<!-- Support and Community both link to MSDN forum. What's the intent for each? --->
+
+- **Support**. Open a case with Microsoft Customer Support Services for specialized help with any problem related to Azure Stack.
 
 - **Community**. The [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) is a community of Azure Stack experts who help answer questions and solve problems.
 
