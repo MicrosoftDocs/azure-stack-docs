@@ -26,7 +26,7 @@ This article provides SQL server best practices to optimize SQL Server and impro
 When creating SQL Server images, [consider provisioning your VMs in the Azure Stack portal](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Download the SQL IaaS Extension from Marketplace Management in the Azure Stack Admin Portal and download your choice of SQL VM virtual hard drives (VHDs). These include SQL2014SP2, SQL2016SP1, and SQL2017.
 
 > [!NOTE]  
-> While the article describes how to provision a SQL Server VM using the global Azure portal, the guidance also applies to Azure Stack with the following differences: SSD is not available for the operating system disk, managed disks are not available, and there are minor differences in storage configuration.
+> While the article describes how to provision a SQL Server VM using the global Azure portal, the guidance also applies to Azure Stack with the following differences: SSD isn't available for the operating system disk, managed disks are not available, and there are minor differences in storage configuration.
 
 Getting the *best* performance for SQL Server on Azure Stack VMs is the focus of this article. If your workload is less demanding, you might not require every recommended optimization. Consider your performance needs and workload patterns as you evaluate these recommendations.
 
