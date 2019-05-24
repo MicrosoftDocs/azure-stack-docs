@@ -13,11 +13,12 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/05/2019
+ms.date: 05/21/2019
 ms.author: sethm
-ms.lastreviewed: 01/05/2019
+ms.lastreviewed: 05/21/2019
 
 ---
+
 # Introduction to Key Vault in Azure Stack
 
 ## Prerequisites
@@ -46,7 +47,7 @@ Anybody with an Azure Stack subscription can create and use key vaults. Although
 
 The operator can then provide developers with Uniform Resource Identifiers (URIs) to call from their applications. Operators can also provide security administrators with key-usage logging information.
 
-Developers can also manage the keys directly, by using APIs. For more information, see the Key Vault developer's guide.
+Developers can also manage the keys directly, by using APIs. For more information, see the [Key Vault developer's guide](/azure/key-vault/key-vault-developers-guide).
 
 ## Scenarios
 
@@ -74,4 +75,3 @@ The following scenarios describe how Key Vault can help meet the needs of develo
 
 * [Manage Key Vault in Azure Stack by the portal](azure-stack-key-vault-manage-portal.md)  
 * [Manage Key Vault in Azure Stack by using PowerShell](azure-stack-key-vault-manage-powershell.md)
-

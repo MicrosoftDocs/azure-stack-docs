@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 05/22/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 05/06/2019
+ms.lastreviewed: 05/22/2019
 ---
 
 # Azure Stack 1904 update
@@ -110,6 +110,8 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 
 - Updated Azure Linux Agent version 2.2.38.0. This support allows customers to maintain consistent Linux images between Azure and Azure Stack.
 
+- Changes to the update logs in the operator portal. Requests to retrieve successful update logs are no longer available. Failed update logs, because they are actionable for diagnostics, are still available for download.
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
@@ -184,8 +186,7 @@ The 1904 release of Azure Stack must be applied on the 1903 release with the fol
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [Servicing Policy](azure-stack-servicing-policy.md).
 
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- No hotfixes available for 1904.
+- [Azure Stack hotfix 1.1904.4.45](https://support.microsoft.com/help/4505688)
 
 ## Automatic update notifications
 

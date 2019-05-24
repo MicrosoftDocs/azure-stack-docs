@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 05/23/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/19/2019
@@ -164,8 +164,7 @@ Migration consolidates all a containers blob on the new share.
 3. Identify the best destination shares to hold the container you migrate:
 
    ```powershell
-   $destinationshares = Get-AzsStorageShare -SourceShareName
-   $shares[0].ShareName -Intent ContainerMigration
+   $destinationshare = ($shares | Sort-Object FreeCapacity -Descending)[0]
    ```
 
    Then examine $destinationshares:
