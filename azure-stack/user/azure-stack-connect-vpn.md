@@ -120,17 +120,17 @@ First, create the network resources for Azure. The following instructions show h
 
 10. Review the **Summary** section, and then select **OK**.
 
-## Create a virtual machine
+## Create a VM
 
-Now create a virtual machine in Azure, and put it on your VM subnet in your virtual network.
+Now create a VM in Azure, and put it on your VM subnet in your virtual network.
 
 1. In the Azure portal, select **+ Create a resource**.
 2. Go to **Marketplace**, and then select **Compute**.
-3. In the list of virtual machine images, select the **Windows Server 2016 Datacenter Eval** image.
+3. In the list of VM images, select the **Windows Server 2016 Datacenter Eval** image.
 4. On the **Basics** section, for **Name**, type **AzureVM**.
-5. Type a valid username and password. You use this account to sign in to the virtual machine after it's created.
+5. Type a valid username and password. You use this account to sign in to the VM after it's created.
 6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-7. On the **Size** section, select a virtual machine size for this instance, and then select **Select**.
+7. On the **Size** section, select a VM size for this instance, and then select **Select**.
 8. In the **Settings** section, you can use the default settings. Before you select **OK**, confirm that:
 
    * The **AzureVnet** virtual network is selected.
@@ -223,17 +223,17 @@ A more generic description is that the local network gateway resource always ind
 
 10. On the **Summary** section, select **OK**.
 
-### Create a virtual machine (VM)
+### Create a VM
 
 To check the VPN connection, create two VMs: one in Azure, and one in Azure Stack. After you create these VMs, you can use them to send and receive data through the VPN tunnel.
 
 1. In the Azure portal, select **+ Create a resource**.
 2. Go to **Marketplace**, and then select **Compute**.
-3. In the list of virtual machine images, select the **Windows Server 2016 Datacenter Eval** image.
+3. In the list of VM images, select the **Windows Server 2016 Datacenter Eval** image.
 4. On the **Basics** section, in **Name**, type **Azs-VM**.
 5. Type a valid username and password. You use this account to sign in to the VM after it's created.
 6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-7. On the **Size** section, for this instance, select a virtual machine size, and then select **Select**.
+7. On the **Size** section, for this instance, select a VM size, and then select **Select**.
 8. On the **Settings** section, accept the defaults. Make sure that the **Azs-VNet** virtual network is selected. Verify that the subnet is set to **10.1.0.0/24**. Then select **OK**.
 
 9. On the **Summary** section, review the settings, and then select **OK**.
@@ -242,27 +242,27 @@ To check the VPN connection, create two VMs: one in Azure, and one in Azure Stac
 
 After the site-to-site connection is established, you should verify that you can get data flowing in both directions. The easiest way to test the connection is by doing a ping test:
 
-* Sign in to the virtual machine you created in Azure Stack and ping the virtual machine in Azure.
-* Sign in to the virtual machine you created in Azure and ping the virtual machine in Azure Stack.
+* Sign in to the VM you created in Azure Stack and ping the VM in Azure.
+* Sign in to the VM you created in Azure and ping the VM in Azure Stack.
 
 >[!NOTE]
 >To make sure that you're sending traffic through the site-to-site connection, ping the Direct IP (DIP)
-address of the virtual machine on the remote subnet, not the VIP.
+address of the VM on the remote subnet, not the VIP.
 
 ### Sign in to the user VM in Azure Stack
 
 1. Sign in to the Azure Stack portal.
 2. In the left navigation bar, select **Virtual Machines**.
 3. In the list of VMs, find **Azs-VM** that you created previously, and then select it.
-4. On the section for the virtual machine, select **Connect**, and then open the Azs-VM.rdp file.
+4. On the section for the VM, select **Connect**, and then open the Azs-VM.rdp file.
 
      ![Connect button](media/azure-stack-connect-vpn/image17.png)
 
-5. Sign in with the account that you configured when you created the virtual machine.
+5. Sign in with the account that you configured when you created the VM.
 6. Open an elevated Windows PowerShell prompt.
 7. Type **ipconfig /all**.
 8. In the output, find the **IPv4 Address**, and then save the address for later use. This is the address that you ping from Azure. In the example environment, the address is **10.1.0.4**, but in your environment it might be different. It should fall within the **10.1.0.0/24** subnet that you created previously.
-9. To create a firewall rule that allows the virtual machine to respond to pings, run the following PowerShell command:
+9. To create a firewall rule that allows the VM to respond to pings, run the following PowerShell command:
 
    ```powershell
    New-NetFirewallRule `
@@ -274,13 +274,13 @@ address of the virtual machine on the remote subnet, not the VIP.
 
 1. Sign in to the Azure portal.
 2. In the left navigation bar, select **Virtual Machines**.
-3. From the list of virtual machines, find **Azure-VM** that you created previously, and then select it.
-4. On the section for the virtual machine, select **Connect**.
-5. Sign in with the account that you configured when you created the virtual machine.
+3. From the list of VMs, find **Azure-VM** that you created previously, and then select it.
+4. On the section for the VM, select **Connect**.
+5. Sign in with the account that you configured when you created the VM.
 6. Open an elevated **Windows PowerShell** window.
 7. Type **ipconfig /all**.
 8. You should see an IPv4 address that falls within **10.100.0.0/24**. In the example environment, the address is **10.100.0.4**, but your address might be different.
-9. To create a firewall rule that allows the virtual machine to respond to pings, run the following PowerShell command:
+9. To create a firewall rule that allows the VM to respond to pings, run the following PowerShell command:
 
    ```powershell
    New-NetFirewallRule `
@@ -288,11 +288,11 @@ address of the virtual machine on the remote subnet, not the VIP.
     -Protocol ICMPv4
    ```
 
-10. From the virtual machine in Azure, ping the virtual machine in Azure Stack, through the tunnel. To do this, you ping the DIP that you recorded from Azs-VM. In the example environment, this is **10.1.0.4**, but be sure to ping the address you noted in your lab. You should see a result that looks like the following screen capture:
+10. From the VM in Azure, ping the VM in Azure Stack, through the tunnel. To do this, you ping the DIP that you recorded from Azs-VM. In the example environment, this is **10.1.0.4**, but be sure to ping the address you noted in your lab. You should see a result that looks like the following screen capture:
 
     ![Successful ping](media/azure-stack-connect-vpn/image19b.png)
 
-11. A reply from the remote virtual machine indicates a successful test. You can close the virtual machine window.
+11. A reply from the remote VM indicates a successful test. You can close the VM window.
 
 You should also do more rigorous data transfer testing (for example, copying differently-sized files in both directions).
 
@@ -301,7 +301,7 @@ You should also do more rigorous data transfer testing (for example, copying dif
 If you want to know how much data passes through your site-to-site connection, this information is available in the **Connection** section. This test is also another way to verify the ping you just sent actually
 went through the VPN connection.
 
-1. While signed in to the user virtual machine in Azure Stack, use your user account to sign in to the user portal.
+1. While signed in to the user VM in Azure Stack, use your user account to sign in to the user portal.
 2. Go to **All resources**, and then select the **Azs-Azure** connection. **Connections** appears.
 3. On the **Connection** section, the statistics for **Data in** and **Data out** appear. In the following screen capture, the large numbers are attributed to additional file transfer. You should see some nonzero values there.
 

@@ -1,6 +1,6 @@
 ---
-title: Cheat sheet for Azure Stack VMs | Microsoft Docs
-description: Cheat sheet describing differences and considerations when working with VMs in Azure Stack.
+title: Azure Stack VM features | Microsoft Docs
+description: Learn about different features and considerations when working with VMs in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -19,7 +19,7 @@ ms.lastreviewed: 12/19/2018
 
 ---
 
-# Cheat sheet for Azure Stack VMs
+# Azure Stack VM features
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 

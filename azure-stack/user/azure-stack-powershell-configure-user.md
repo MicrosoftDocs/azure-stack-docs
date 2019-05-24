@@ -23,7 +23,7 @@ ms.lastreviewed: 01/24/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can connect to Azure Stack with PowerShell to manage Azure Stack resources. For example, you can use PowerShell to subscribe to offers, create virtual machines, and deploy Azure Resource Manager templates.
+You can connect to Azure Stack with PowerShell to manage Azure Stack resources. For example, you can use PowerShell to subscribe to offers, create virtual machines (VMs), and deploy Azure Resource Manager templates.
 
 To get setup:
   - Make sure you have the requirements.
@@ -83,7 +83,7 @@ Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider
 
 ## Test the connectivity
 
-When you've got everything setup, test connectivity by using PowerShell to create resources in Azure Stack. As a test, create a resource group for an application and add a virtual machine. Run the following command to create a resource group named "MyResourceGroup":
+When you've got everything setup, test connectivity by using PowerShell to create resources in Azure Stack. As a test, create a resource group for an application and add a VM. Run the following command to create a resource group named "MyResourceGroup":
 
 ```powershell  
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"

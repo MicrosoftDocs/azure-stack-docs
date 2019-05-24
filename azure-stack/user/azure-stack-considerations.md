@@ -20,7 +20,7 @@ ms.lastreviewed: 12/27/2018
 ---
 # Differences between Azure Stack and Azure when using services and building apps
 
-Before you use services or build apps for Azure Stack, it's important to understand the differences between Azure Stack and Azure. This article identifies key considerations when you use Azure Stack as your hybrid cloud development environment.
+Before you use services or build apps for Azure Stack, it's important to understand the differences between Azure Stack and Azure. This article identifies different features and key considerations when using Azure Stack as your hybrid cloud development environment.
 
 ## Overview
 
@@ -89,6 +89,6 @@ Example output (truncated):
 
 For more detailed information about differences at a service level, see:
 
-* [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md)
+* [Considerations for VMS in Azure Stack](azure-stack-vm-considerations.md)
 * [Considerations for Storage in Azure Stack](azure-stack-acs-differences.md)
 * [Considerations for Azure Stack networking](azure-stack-network-differences.md)
