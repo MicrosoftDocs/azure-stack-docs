@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/03/2019
+ms.date: 05/24/2019
 ms.author: mabrigg
 ms.reviewer: prchint
 ms.lastreviewed: 04/03/2019
@@ -33,12 +33,12 @@ While the infrastructure of Azure Stack is resilient to failures, the underlying
 
 Another concept that is used by Azure to provide high availability is in the form of update domains in availability sets. An update domain is a logical group of underlying hardware that can undergo maintenance or be rebooted at the same time. In Azure Stack, VMs are live migrated across the other online hosts in the cluster before their underlying host is updated. Since there is no tenant downtime during a host update, the update domain feature on Azure Stack only exists for template compatibility with Azure.
 
-## Azure Stack resiliency resources
+## Azure Stack memory 
 To allow for patch and update of an Azure Stack integrated system, and to be resilient to physical hardware failures, a portion of the total server memory is reserved and unavailable for tenant virtual machine (VM) placement.
 
-If a server fails, VMs hosted on the failed server will be restarted on remaining, available servers to provide for VM availability. Similarly, during the patch and update process, all VMs running on a server will be live migrated to other available, server. This VM management or movement can only be achieved if there is reserved capacity to allow for the restart or migration to occur.
+If a server fails, VMs hosted on the failed server will be restarted on remaining, available servers to provide for VM availability. Similarly, during the patch and update process, all VMs running on a server will be live migrated to another available server. This VM management or movement can only be achieved if there is reserved capacity to allow for the restart or migration to occur.
 
-The following calculation results in the total, available memory that can be used for tenant VM placement. This memory capacity is for the entirety of the Azure Stack Scale Unit.
+The following calculation results in the total available memory that can be used for tenant VM placement. This memory capacity is for the entirety of the Azure Stack Scale Unit.
 
   Available Memory for VM placement = Total Server Memory - Resiliency Reserve - Memory used by running VMs - Azure Stack Infrastructure Overhead <sup>1</sup>
 
@@ -47,12 +47,12 @@ The following calculation results in the total, available memory that can be use
 > Where:
 > -	H = Size of single server memory
 > - N = Size of Scale Unit (number of servers)
-> -	R = Operating system reserve for OS overhead<sup>2</sup>
+> -	R = The operating system reserve for OS overhead, which is .15 in this formula<sup>2</sup>
 > -	V = Largest VM in the scale unit
 
-  <sup>1</sup> Azure Stack Infrastructure Overhead = 230 GB
+  <sup>1</sup> Azure Stack Infrastructure Overhead = 242 GB (4 x # of nodes)
 
-  <sup>2</sup> Operating system reserve for overhead = 15% of node memory. The operating system reserve value is an estimate and will vary based on the physical memory capacity of the server and general operating system overhead.
+  <sup>2</sup> Operating system reserve for overhead = 15% (.15) of node memory. The operating system reserve value is an estimate and will vary based on the physical memory capacity of the server and general operating system overhead.
 
 The value V, largest VM in the scale unit, is dynamically based on the largest tenant VM memory size. For example, the largest VM value could be 7 GB or 112 GB or any other supported VM memory size in the Azure Stack solution.
 
