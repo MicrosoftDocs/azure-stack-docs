@@ -37,7 +37,7 @@ The Azure Stack 1905 update build number is **1.1905.x.xx**.
 
 ### Type
 
-The Azure Stack 1905 update build type is **Full**. For more information about update build types, refer to the Manage updates in Azure Stack over documentation here https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-updates
+The Azure Stack 1905 update build type is **Full**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article.
 
 ## What's in this update
 
@@ -85,7 +85,7 @@ Before applying the update, make sure to review the following information:
 
 ## Download the update
 
-You can download the Azure Stack 1904 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
+You can download the Azure Stack 1905 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
 
 ## Hotfixes
 
