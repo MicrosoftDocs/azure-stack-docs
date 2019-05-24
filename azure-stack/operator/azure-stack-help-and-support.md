@@ -21,11 +21,11 @@ ms.lastreviewed: 05/23/2019
 ---
 # Microsoft Azure Stack Help and support
 
-Beginning with 1905 release, Azure Stack **Help + support** improvements make it easier for operators to research issues, get expert help, or learn more about Azure Stack. 
+Beginning with the 1905 release, Azure Stack **Help + support** improvements make it easier for operators to research issues, get expert help, or learn more about Azure Stack. 
 
 ## Research an issue
 
-At the top of **Help + support** are self-service links to read more about an issue, get info about billing, or see which support options are available. 
+At the top of **Help + support** are links to read more about an issue, get info about billing, or see which support options are available. 
 
 ![Self-service support](media/azure-stack-help-and-support/get-support-tiles.png)
 
@@ -37,15 +37,18 @@ At the top of **Help + support** are self-service links to read more about an is
 
 ## Get expert help 
 
-You can also get help from experts in Microsoft Customer Support and the MSDN Forums, or take online training and improve your own skills. 
+If you run Azure Stack as an integrated system, you can open a case with Microsoft Customer Support Services for specialized help with any problem related to Azure Stack.  
+
+![Get expert help for integrated systems](media/azure-stack-help-and-support/get-support-integrated.png)
+
+If you run the Azure Stack Development Kit (ASDK), you can get help from a community of experts in the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
+
+![Get expert help for ASDK](media/azure-stack-help-and-support/get-support-asdk.png)
+
+And you can reach out to the MSDN Forums with any question, or take online training and improve your own skills. 
 
 ![Get expert help](media/azure-stack-help-and-support/get-support-cards.png)
 
-- **Support**. Open a case with Microsoft Customer Support Services for specialized help with any problem related to Azure Stack.
-
-- **Community**. The [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) is a community of Azure Stack experts who help answer questions and solve problems.
-
-- **Learning**. Online courses to help build your skills for configuring and operating Azure Stack. 
 
 ## Get up to speed with Azure Stack
 
