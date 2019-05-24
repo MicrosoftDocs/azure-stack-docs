@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 05/23/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 05/02/2019
+ms.lastreviewed: 05/23/2019
 ---
 
 # Azure Stack 1905 update
@@ -41,6 +41,8 @@ The Azure Stack 1905 update build number is **1.1905.x.xx**.
 
 <!-- What's new, also net new experiences and features. -->
 
+- With this update, the update engine in Azure Stack can update the firmware of scale unit nodes. This requires a compliant update package from the hardware partners. Reach out to your hardware partner for details about availability.
+
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
@@ -54,6 +56,10 @@ microsoft.vmaccessforlinux-1.5.2
 Please download these versions of the extensions immediately so that new deployments of the extension do not fail. Always set autoupdateminorversion=true so that minor version updates to extensions (eg. 1.8 to 1.9) are automatically done.
 
 ### Changes
+
+- To increase reliability and availability during planned and unplanned maintenance scenarios, Azure Stack adds an additional infrastructure role instance for domain services.
+
+- With this update, during repair and add node operations, the hardware is validated to ensure homogenous scale unit nodes within a scale unit.
 
 ### Fixes
 
