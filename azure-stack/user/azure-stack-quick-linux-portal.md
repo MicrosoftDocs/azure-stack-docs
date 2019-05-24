@@ -1,6 +1,6 @@
 ---
-title: Create a Linux virtual machine with Azure Stack | Microsoft Docs
-description: Create a Linux server virtual machine with Azure Stack.
+title: Create a Linux server VM with Azure Stack | Microsoft Docs
+description: Create a Linux server VM with Azure Stack.
 services: azure-stack
 cloud: azure-stack
 author: mattbriggs
@@ -15,13 +15,13 @@ ms.custom: mvc
 ms.lastreviewed: 12/03/2018
 ---
 
-# Quickstart: Create a Linux server virtual machine with the Azure Stack portal
+# Quickstart: Create a Linux server VM with the Azure Stack portal
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can create an Ubuntu Server 16.04 LTS virtual machine by using the Azure Stack portal. Follow the steps in this article to create and use a virtual machine. This article also gives you the steps to:
+You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using the Azure Stack portal. Follow the steps in this article to create and use a VM. This article also gives you the steps to:
 
-* Connect to the virtual machine with a remote client.
+* Connect to the VM with a remote client.
 * Install an NGINX web server.
 * Clean up your resources.
 
@@ -39,7 +39,7 @@ You can create an Ubuntu Server 16.04 LTS virtual machine by using the Azure Sta
 
    If you're using the Azure Stack Development Kit (ASDK), you might not have access to an SSH client. If you need a client, there are several packages that include an SSH client. For example, PuTTY includes an SSH client and SSH key generator (puttygen.exe). For more information about available packages, read the [How to use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md) article.
 
-   This Quickstart uses PuTTY to generate the SSH keys and to connect to the Linux server virtual machine. To download and install PuTTY, go to [https://www.putty.org/](https://www.putty.org).
+   This Quickstart uses PuTTY to generate the SSH keys and to connect to the Linux server VM. To download and install PuTTY, go to [https://www.putty.org/](https://www.putty.org).
 
 ## Create an SSH key pair
 
@@ -62,7 +62,7 @@ The address of the Azure Stack portal depends on which Azure Stack product you'r
 * For Azure Stack Development Kit (ASDK), go to: https://portal.local.azurestack.external.
 * For an Azure Stack integrated system, go to the URL that your Azure Stack operator provided.
 
-## Create the virtual machine
+## Create the VM
 
 1. Click **Create a resource** in the upper left-hand corner of the Azure Stack portal.
 
@@ -71,16 +71,16 @@ The address of the Azure Stack portal depends on which Azure Stack product you'r
    ![Select the Linux server](media/azure-stack-quick-linux-portal/select.png)
 1. Click **Create**.
 
-4. Type the virtual machine information. For **Authentication type**, select **SSH public key**. Paste in the SSH public key that you saved, and then click **OK**.
+4. Type the VM information. For **Authentication type**, select **SSH public key**. Paste in the SSH public key that you saved, and then click **OK**.
 
    > [!NOTE]
    > Make sure you remove any leading or trailing white space for the key.
 
-   ![Basics panel - Configure virtual machine](media/azure-stack-quick-linux-portal/linux-01.PNG)
+   ![Basics panel - Configure VM](media/azure-stack-quick-linux-portal/linux-01.PNG)
 
-5. Select **D1** for the virtual machine.
+5. Select **D1** for the VM.
 
-   ![Size panel - Choose a virtual machine size](media/azure-stack-quick-linux-portal/linux-02.PNG)
+   ![Size panel - Choose a VM size](media/azure-stack-quick-linux-portal/linux-02.PNG)
 
 6. On the **Settings** page, make any desired changes to the defaults.
    
@@ -89,30 +89,30 @@ The address of the Azure Stack portal depends on which Azure Stack product you'r
     
      When your configurations are ready, select **OK** to continue.
 
-7. On the **Summary** page, click **OK** to start the virtual machine deployment.  
+7. On the **Summary** page, click **OK** to start the VM deployment.  
    ![Deploy](media/azure-stack-quick-linux-portal/deploy.png)
 
-## Connect to the virtual machine
+## Connect to the VM
 
-1. Click **Connect** on the virtual machine page. You can find the SSH connection string that you need to connect to the virtual machine. 
+1. Click **Connect** on the VM page. You can find the SSH connection string that you need to connect to the VM. 
 
 2. Open PuTTY.
 
 3. On the PuTTY Configuration screen, you'll use the **Category** window to scroll up or down. Scroll down to **SSH**, expand **SSH**, and then click **Auth**. Click **Browse** and pick the private key file that you saved.
-   ![Connect virtual machine](media/azure-stack-quick-linux-portal/putty03.PNG)
+   ![Connect VM](media/azure-stack-quick-linux-portal/putty03.PNG)
 
 4. Scroll up in the **Category** window, and then click **Session**.
 5. In the **Host Name (or IP address)** box, paste the connection string shown in the Azure Stack portal. In this example, the string is `asadmin@192.168.102.34`.
 
    ![PuTTY configuration connection string](media/azure-stack-quick-linux-portal/Putty04.PNG)
 
-6. Click **Open** to open a session for the virtual machine.
+6. Click **Open** to open a session for the VM.
 
    ![Linux session](media/azure-stack-quick-linux-portal/Putty05.PNG)
 
 ## Install the NGINX web server
 
-Use the following bash commands to update package sources and install the latest NGINX package on the virtual machine.
+Use the following bash commands to update package sources and install the latest NGINX package on the VM.
 
 ```bash
 #!/bin/bash
@@ -124,14 +124,14 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-When you finish installing NGINX, close the SSH session and open the virtual machine Overview page in the Azure Stack portal.
+When you finish installing NGINX, close the SSH session and open the VM Overview page in the Azure Stack portal.
 
 ## Open port 80 for web traffic
 
-A network security group (NSG) secures inbound and outbound traffic. When a virtual machine is created in the Azure Stack portal, an inbound rule is created on port 22 for SSH connections. Because this virtual machine hosts a web server, an NSG rule needs to be created to allow web traffic on port 80.
+A network security group (NSG) secures inbound and outbound traffic. When a VM is created in the Azure Stack portal, an inbound rule is created on port 22 for SSH connections. Because this VM hosts a web server, an NSG rule needs to be created to allow web traffic on port 80.
 
-1. On the virtual machine **Overview** page, click the name of the **Resource group**.
-2. Select the **network security group** for the virtual machine. The NSG can be identified using the **Type** column.
+1. On the VM **Overview** page, click the name of the **Resource group**.
+2. Select the **network security group** for the VM. The NSG can be identified using the **Type** column.
 3. On the left-hand menu, under **Settings**, click **Inbound security rules**.
 4. Click **Add**.
 5. In **Name**, type **http**. Make sure **Port range** is set to 80 and **Action** is set to **Allow**.
@@ -139,7 +139,7 @@ A network security group (NSG) secures inbound and outbound traffic. When a virt
 
 ## View the NGINX welcome page
 
-With NGINX installed, and port 80 open on your virtual machine, you can access the web server using the virtual machine's public IP address. (The public IP address is shown on the virtual machine's Overview page.)
+With NGINX installed, and port 80 open on your VM, you can access the web server using the VM's public IP address. (The public IP address is shown on the VM's Overview page.)
 
 Open a browser, and go to `http://<public IP address>`.
 
@@ -147,8 +147,8 @@ Open a browser, and go to `http://<public IP address>`.
 
 ## Clean up resources
 
-Clean up the resources that you don't need any longer. To delete the virtual machine and its resources, select the resource group on the virtual machine page and then click **Delete**.
+Clean up the resources that you don't need any longer. To delete the VM and its resources, select the resource group on the VM page and then click **Delete**.
 
 ## Next steps
 
-In this quickstart, you deployed a basic Linux server virtual machine with a web server. To learn more about Azure Stack virtual machines, continue to [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md).
+In this quickstart, you deployed a basic Linux server VM with a web server. To learn more about Azure Stack VMs, continue to [Considerations for VMs in Azure Stack](azure-stack-vm-considerations.md).

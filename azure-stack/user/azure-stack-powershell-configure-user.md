@@ -1,6 +1,6 @@
 ---
 title: Connect to Azure Stack with PowerShell as a user | Microsoft Docs
-description: Steps to connect to Azure Stack using PowerShell. 
+description: Learn how to connect to Azure Stack with Powershell. 
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
