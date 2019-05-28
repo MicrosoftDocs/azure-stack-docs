@@ -74,6 +74,7 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
 - Fixed an issue in which a "Compute host agent" warning appeared after restarting a node in the scale unit.
+- Fixed issues in Marketplace Management in Administrator portal which showed incorrect results when filters were applied and duplicate publisher names in publisher filter. Also, made performance improvements to display results faster.   
 
 ### Security updates
 
