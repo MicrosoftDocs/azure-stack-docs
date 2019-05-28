@@ -33,7 +33,7 @@ In this tutorial, you learn how to:
 
 ## Azure Stack quickstart templates
 
-Azure Stack quickstart templates are stored in the GitHub [public Azure Stack QuickStart templates repo](https://github.com/Azure/AzureStack-QuickStart-Templates). This repo (repository) contains Azure Resource Manager deployment templates that have been tested with the Microsoft Azure Stack Development Kit (ASDK). You can use them to make it easier for you to evaluate Azure Stack and use the ASDK environment.
+Azure Stack quickstart templates are stored in the GitHub [global Azure Stack quickstart templates repo](https://github.com/Azure/AzureStack-QuickStart-Templates). This repo (repository) contains Azure Resource Manager deployment templates that have been tested with the Microsoft Azure Stack Development Kit (ASDK). You can use them to make it easier for you to evaluate Azure Stack and use the ASDK environment.
 
 Over time, many GitHub users have contributed to the repo, resulting in a collection of more than 400 deployment templates. This repo is a great starting point to get a better understanding of how you can deploy various kinds of environments to Azure Stack.
 
