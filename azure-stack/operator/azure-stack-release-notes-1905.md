@@ -50,14 +50,15 @@ The Azure Stack 1905 update build type is **Full**. For more information about u
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
-- As a part of enforcing TLS 1.2 on Azure Stack, the following extensions have been updated to these versions below:
-microsoft.customscriptextension-arm-1.9.3
-microsoft.iaasdiagnostics-1.12.2.2
-microsoft.antimalware-windows-arm-1.5.5.9
-microsoft.dsc-arm-2.77.0.0
-microsoft.vmaccessforlinux-1.5.2
+- As a part of enforcing TLS 1.2 on Azure Stack, the following extensions have been updated to these versions:
 
-Please download these versions of the extensions immediately so that new deployments of the extension do not fail. Always set autoupdateminorversion=true so that minor version updates to extensions (eg. 1.8 to 1.9) are automatically done.
+  microsoft.customscriptextension-arm-1.9.3
+  microsoft.iaasdiagnostics-1.12.2.2
+  microsoft.antimalware-windows-arm-1.5.5.9
+  microsoft.dsc-arm-2.77.0.0
+  microsoft.vmaccessforlinux-1.5.2
+
+  Please download these versions of the extensions immediately, so that new deployments of the extension do not fail. Always set **autoupdateminorversion=true** so that minor version updates to extensions (for example, 1.8 to 1.9) are automatically performed.
 
 ### Changes
 
