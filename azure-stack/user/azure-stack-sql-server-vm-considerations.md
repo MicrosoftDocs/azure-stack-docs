@@ -3,7 +3,7 @@ title: SQL Server best practices to optimize performance in Azure Stack. | Micro
 description: This article provides SQL server best practices to help increase performance and optimize SQL Server in Azure Stack VMs.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: bryanla
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2019
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
 ---
