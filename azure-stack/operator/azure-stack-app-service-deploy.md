@@ -187,15 +187,15 @@ To deploy App Service resource provider, follow these steps:
 
 If you're deploying to an existing virtual network and using an internal IP address to connect to your file server, you must add an outbound security rule. This rule enables SMB traffic between the worker subnet and the file server.  Go to the WorkersNsg, Network Security Group, in the Admin Portal and add an outbound security rule with the following properties:
 
-    - Source: Any
-    - Source port range: *
-    - Destination: IP Addresses
-    - Destination IP address range: Range of IPs for your file server
-    - Destination port range: 445
-    - Protocol: TCP
-    - Action: Allow
-    - Priority: 700
-    - Name: Outbound_Allow_SMB445
+- Source: Any
+- Source port range: *
+- Destination: IP Addresses
+- Destination IP address range: Range of IPs for your file server
+- Destination port range: 445
+- Protocol: TCP
+- Action: Allow
+- Priority: 700
+- Name: Outbound_Allow_SMB445
 
 ## Validate the App Service on Azure Stack installation
 
