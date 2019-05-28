@@ -46,7 +46,7 @@ To export the ASDK root certificate in PEM format:
     - On the Certificate Window, click "Certification Path" tab. 
     - Note down the name of your Azure Stack Root Cert.
 
-![Azure Stack Root Certificate](media/azure-stack-version-profiles-azurecli2/root-cert-name.png)
+    ![Azure Stack Root Certificate](media/azure-stack-version-profiles-azurecli2/root-cert-name.png)
 
 2. [Create a Windows VM on Azure Stack](azure-stack-quick-windows-portal.md).
 
