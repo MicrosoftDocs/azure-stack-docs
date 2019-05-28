@@ -3,7 +3,7 @@ title: Create a Service Principal for Azure Stack | Microsoft Docs
 description: Learn how to create a service principal to use with role-based access control in Azure Resource Manager to manage access to resources.
 services: azure-resource-manager
 documentationcenter: na
-author: mattbriggs
+author: PatAltimore
 manager: femila
 
 ms.service: azure-resource-manager
@@ -12,7 +12,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/15/2019
-ms.author: mabrigg
+ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
 
