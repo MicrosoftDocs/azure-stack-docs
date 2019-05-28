@@ -13,45 +13,45 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 05/28/2019
 ms.author: mabrigg
 ms.reviewer: prchint
 ms.lastreviewed: 12/11/2018
 ---
 
 # Azure Stack Capacity Planner
-The Azure Stack Capacity Planner is a spreadsheet used for Azure Stack resource capacity planning. The capacity planner provides you with the ability to design various allocations of computing resources and see how these would fit across a selection of hardware offerings. Detailed instructions for the use of the Azure Stack Calculator are provided below.
+The Azure Stack Capacity Planner is a spreadsheet that shows how different allocations of computing resources would fit across a selection of hardware offerings. 
 
 ## Worksheet descriptions
-The following is a short summary of the worksheets contained in the Azure Stack Capacity Planner spreadsheet that can be downloaded from [https://aka.ms/azstackcapacityplanner](https://aka.ms/azstackcapacityplanner):
+The following table has a decsription for each worksheet in the Azure Stack Capacity Planner, which can be downloaded from [https://aka.ms/azstackcapacityplanner](https://aka.ms/azstackcapacityplanner). 
 
 |Tab Name|Description|
 |-----|-----|
-|Version-Disclaimer|Brief overview of the purpose of the calculator, version number, and released date.|
-|Instructions|Provides detailed instructions for the use of the Azure Stack Capacity Planner.|
-|DefinedSolutionSKUs|Multi-column table that contains up to five hardware definitions. The entries in this sheet are examples. The intent is that the user will change details to match system configurations being considered for use or purchase.|
-|DefineByVMFootprint|Find the appropriate hardware SKU by creating a collection of various sizes and quantities of VMs.|
+|Version-Disclaimer|Purpose of the calculator, version number, and release date.|
+|Instructions|Step-by-step instructions to model capacity planning for a collection of virtual machines (VMs).|
+|DefinedSolutionSKUs|Table with up to five hardware definitions. The entries are examples. Change the details to match system configurations under consideration.|
+|DefineByVMFootprint|Find the appropriate hardware SKU by comparing configurations with different sizes and quantities of VMs.|
 |DefineByWorkloadFootprint|Find the appropriate hardware SKU by creating a collection of Azure Stack workloads.|
 |  |  |
 
 ## DefinedSolutionSKUs instructions
-This worksheet contains up to five hardware definition examples. Change details to match the system configurations being considered for use or purchase.
+This worksheet contains up to five hardware definition examples. Change details to match the system configurations under consideration.
 
 ### Hardware selections provided by Authorized Hardware Partners
-Azure Stack is delivered as an integrated system with software installed by solution partners. These solution partners will have their own, authoritative versions of Azure Stack capacity planning tools and those tools should be used to finalize discussions of solution capacity.
+Azure Stack is delivered as an integrated system with software installed by solution partners. Solution partners provide their own authoritative versions of Azure Stack capacity planning tools. Use those tools for final discussions of solution capacity.
 
-### Multiple Ways to Model Computing Resources
-The basic building blocks used for resource modeling within the Azure Stack planner are the various sizes of Azure Stack virtual machines (VMs). These VMs range in size from the smallest, "Basic 0", up to the current largest VM, "Standard_Fsv2." Based on your needs, various quantities of differing VMs can be used to create computing resource allocations using this tool in two different ways.
+### Multiple ways to model computing resources
+Resource modeling within the Azure Stack planner depends upon the various sizes of Azure Stack VMs. VMs range in size from the smallest Basic 0 up to the largest Standard_Fsv2. You can model computing resource allocations in two different ways:
 
-1. The planner user selects a specific hardware offering and sees which combinations of various resources fit within this hardware resource. 
+1. Select a specific hardware offering and see which combinations of various resources fit. 
 
-2. The planner user creates a specific combination of VM allocations and then lets the Azure Resource Calculator shows which available hardware SKUs are capable of supporting this VM configuration.
+2. Create a specific combination of VM allocations and let the Azure Resource Calculator show which available hardware SKUs are capable of supporting this VM configuration.
 
-This tool provides two methods for allocating VM resources; either as one single collection of VM resource allocations or as a collection of up to six differing Workload configurations. Each Workload configuration can contain a different allocation of available VM resources. Detailed information for creating and using each of these allocation models is provided below. Only values contained in non-background shaded cells, or within SKU pull-down lists on this worksheet should be modified. Changes made within shaded cells may break resource calculations.
+This tool provides two methods for allocating VM resources: either as one single collection of VM resource allocations or as a collection of up to six differing Workload configurations. Each Workload configuration can contain a different allocation of available VM resources. The next sections have step-by-step instructions to create and use each of these allocation models. Only values contained in non-background shaded cells, or within SKU pull-down lists on this worksheet should be modified. Changes made within shaded cells may break resource calculations.
 
 
 ## DefineByVMFootprint instructions
-To create a model using a single collection of various sizes and quantities of VMs, select the "DefineByVMFootprint" Tab and follow this sequence of steps.
+To create a model using a single collection of various sizes and quantities of VMs, select the "DefineByVMFootprint" Tab and follow these steps:
 
 1. In the upper right corner of this worksheet, use the provided pull-down list box controls to select an initial number of servers (between 4 and 16) you want installed in each hardware system (SKU). This number of servers may be modified at any time during the modeling process to see how this affects overall available resources for your resource allocation model.
 2. If you want to model various VM resource allocations against one specific hardware configuration, find the blue pull-down list box directly below the "Current SKU" label in the upper right-hand corner of the page. Pull down this list box and select your desired hardware SKU.
