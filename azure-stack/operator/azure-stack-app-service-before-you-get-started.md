@@ -193,6 +193,9 @@ A [reference architecture quickstart template](https://github.com/Azure/AzureSta
 >[!IMPORTANT]
 > If you choose to deploy App Service in an existing Virtual Network, the File Server should be deployed into a separate Subnet from App Service.
 
+>[!NOTE]
+> If you have chosen to deploy a file server using either of the Quickstart templates mentioned above, you can skip this section as the file servers are configured as part of the template deployment.
+
 #### Provision groups and accounts in Active Directory
 
 1. Create the following Active Directory global security groups:
@@ -292,6 +295,9 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 ```
 
 ## Prepare the SQL Server instance
+
+>[!NOTE]
+> If you have chosen to deploy the Quickstart template for Highly Available File Server and SQL Server you can skip this section as the template deploys and configures SQL Server in a HA configuration.
 
 For the Azure App Service on Azure Stack hosting and metering databases, you must prepare a SQL Server instance to hold the App Service databases.
 
