@@ -42,7 +42,7 @@ The following diagram shows the general process for deploying the cluster.
 1. Collect input parameters from the marketplace item.
 
     Enter the values you need to set up the Kubernetes cluster, including:
-    -  **User name**: The user name for the Linux virtual machines that are part of the Kubernetes cluster and DVM.
+    -  **User name**: The user name for the Linux virtual machines (VMs) that are part of the Kubernetes cluster and DVM.
     -  **SSH public key**: The key that's used for the authorization of all Linux machines that were created as part of the Kubernetes cluster and DVM.
     -  **Service principal**: The ID that's used by the Kubernetes Azure cloud provider. The client ID identified as the application ID when you created your service principal. 
     -  **Client secret**: The key you created when you created your service principal.
@@ -118,7 +118,7 @@ When you deploy your Kubernetes cluster, you can review the deployment status to
 
 ## Review deployment logs
 
-If the Azure Stack portal doesn't provide enough information for you to troubleshoot or overcome a deployment failure, the next step is to dig into the cluster logs. To manually retrieve the deployment logs, you typically need to connect to one of the cluster's master virtual machines. A simpler alternative approach would be to download and run the following [Bash script](https://aka.ms/AzsK8sLogCollectorScript) provided by the Azure Stack team. This script connects to the DVM and cluster's virtual machines, collects relevant system and cluster logs, and downloads them back to your workstation.
+If the Azure Stack portal doesn't provide enough information for you to troubleshoot or overcome a deployment failure, the next step is to dig into the cluster logs. To manually retrieve the deployment logs, you typically need to connect to one of the cluster's master VMs. A simpler alternative approach would be to download and run the following [Bash script](https://aka.ms/AzsK8sLogCollectorScript) provided by the Azure Stack team. This script connects to the DVM and cluster's VMs, collects relevant system and cluster logs, and downloads them back to your workstation.
 
 ### Prerequisites
 
@@ -143,10 +143,10 @@ Follow these steps to collect and download the cluster logs:
 
     | Parameter           | Description                                                                                                      | Example                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -d, --vmd-host      | The public IP or the fully qualified domain name (FQDN) of the DVM. The virtual machine name starts with `vmd-`. | IP: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
+    | -d, --vmd-host      | The public IP or the fully qualified domain name (FQDN) of the DVM. The VM name starts with `vmd-`. | IP: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
     | -h, --help  | Print command usage. | |
     | -i, --identity-file | The RSA private key file passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | C:\data\id_rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH)
-    | -m, --master-host   | The public IP or the fully qualified domain name (FQDN) of a Kubernetes master node. The virtual machine name starts with `k8s-master-`. | IP: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
+    | -m, --master-host   | The public IP or the fully qualified domain name (FQDN) of a Kubernetes master node. The VM name starts with `k8s-master-`. | IP: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
     | -u, --user          | The user name passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | azureuser (default value) |
 
 
@@ -156,7 +156,7 @@ Follow these steps to collect and download the cluster logs:
     ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser --vmd-host 192.168.102.37
      ```
 
-4. After a few minutes, the script will output the collected logs to a directory named `KubernetesLogs_{{time-stamp}}`. There you'll find a directory for each virtual machine that belongs to the cluster.
+4. After a few minutes, the script will output the collected logs to a directory named `KubernetesLogs_{{time-stamp}}`. There you'll find a directory for each VM that belongs to the cluster.
 
     The log collector script will also look for errors in the log files and include troubleshooting steps if it finds a known issue. Make sure you're running the latest version of the script to increase chances of finding known issues.
 
