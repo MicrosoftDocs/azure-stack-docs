@@ -3,7 +3,7 @@ title: Compare Azure Stack and global Azure | Microsoft Docs
 description: Learn how Microsoft provides Azure and the Azure Stack family of services in one Azure ecosystem  
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 05/03/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.reviewer: unknown
 ms.custom: 
 ms.lastreviewed: 03/29/2019

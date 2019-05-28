@@ -1,6 +1,6 @@
 ---
-title: Virtual Machine sizes supported in Azure Stack | Microsoft Docs
-description: Reference for the supported Virtual machine sizes in Azure Stack.
+title: VM sizes supported in Azure Stack | Microsoft Docs
+description: Reference for the supported VM sizes in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,22 +18,22 @@ ms.lastreviewed: 01/11/2019
 
 ---
 
-# Virtual machine sizes supported in Azure Stack
+# VM sizes supported in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-This article lists the virtual machine sizes that are available in Azure Stack.
+This article lists the virtual machine (VM) sizes that are available in Azure Stack.
 
-Disk IOPS (Input/Output Operations Per Second) on Azure Stack is a function of virtual machine (VM) size instead of the disk type. This means that for a Standard_Fs series VM, regardless of whether you choose SSD or HDD for the disk type, the IOPS limit for a single additional data disk is 2300 IOPS. The IOPS limits imposed is a cap (maximum possible) to prevent noisy neighbors. It is not an assurance of IOPS that you will get on a specific VM size.
+Disk IOPS (Input/Output Operations Per Second) on Azure Stack is a function of VM size instead of the disk type. This means that for a Standard_Fs series VM, regardless of whether you choose SSD or HDD for the disk type, the IOPS limit for a single additional data disk is 2300 IOPS. The IOPS limits imposed is a cap (maximum possible) to prevent noisy neighbors. It isn't an assurance of IOPS that you'll get on a specific VM size.
 
-## Virtual machine general purpose
+## VM general purpose
 
-General-purpose VM sizes provide a balanced CPU-to-memory ratio. They are used for testing and development, small to medium databases, and low to medium traffic web servers. Each data disk is 2300 IOPS for the premium VM sizes, except for the Basic A series. For Basic A, the data disk size is 500 IOPS.
+General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used for testing and development, small to medium databases, and low to medium traffic web servers. Each data disk is 2300 IOPS for the premium VM sizes, except for the Basic A series. For Basic A, the data disk size is 500 IOPS.
 
 ### Basic A
 
 > [!NOTE]
-> *Basic A* virtual machine sizes are retired for [creating virtual machine scale sets](../operator/azure-stack-compute-add-scalesets.md) (VMSS) through the portal. To create a VMSS with this size, use PowerShell or a template.
+> *Basic A* VM sizes are retired for [creating virtual machine scale sets](../operator/azure-stack-compute-add-scalesets.md) (VMSS) through the portal. To create a VMSS with this size, use PowerShell or a template.
 
 |Size - Size\Name |vCPU     |Memory | Max temporary disk size | Max OS disk throughput: (IOPS) | Max temp storage throughput (IOPS) | Max data disk throughput (IOPS) | Max NICs |    
 |-----------------|-----|---------|---------|-----|------|-----------|----|
@@ -182,4 +182,4 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 
 ## Next steps
 
-[Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md)
+[Azure Stack VM features](azure-stack-vm-considerations.md)

@@ -3,7 +3,7 @@ title: Connect to Azure Stack | Microsoft Docs
 description: Learn how to connect to the ASDK.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.reviewer: knithinc
 ms.lastreviewed: 10/25/2018
 
