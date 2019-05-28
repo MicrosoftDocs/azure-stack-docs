@@ -49,7 +49,7 @@ In this example tutorial, the [101-vm-linux-minikube](https://github.com/Azure/A
 Minikube is a tool that makes it easy to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster inside a VM, enabling you to try out Kubernetes or develop with it day-to-day. It supports a simple, one-node Kubernetes cluster running on a Linux VM. Minikube is the fastest and most straightforward way to get a fully functional Kubernetes cluster running. It enables developers to develop and test their Kubernetes-based application deployments on their local machines. Architecturally, the Minikube VM runs both Master and Agent Node Components locally:
 
 * Master Node components such as API Server, Scheduler, and [etcd Server](https://coreos.com/etcd/) are run in a single Linux process called **LocalKube**.
-* Agent Node components are run inside docker containers exactly as they would run on a normal Agent Node. From an application deployment standpoint, there is no difference between when the application is deployed on a Minikube, or in a regular Kubernetes cluster.
+* Agent Node components are run inside docker containers exactly as they would run on a normal Agent Node. From an application deployment standpoint, there is no difference between deploying the application on a Minikube or in a regular Kubernetes cluster.
 
 This template installs the following components:
 
@@ -87,7 +87,7 @@ This template installs the following components:
 
     ![Parameters](media/azure-stack-create-vm-template/6.PNG)
 
-7. Choose the subscription to use, create or choose an existing resource group name, and then select **Create** to initiate the template deployment.
+7. Choose the subscription to use and then create or choose an existing resource group name. Then, select **Create** to initiate the template deployment.
 
     ![Choose subscription](media/azure-stack-create-vm-template/7.PNG)
 
