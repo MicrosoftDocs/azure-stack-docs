@@ -3,7 +3,7 @@ title: Manage a Service Principal for Azure Stack | Microsoft Docs
 description: Describes how to manage a new service principal that can be used with the role-based access control in Azure Resource Manager to manage access to resources.
 services: azure-resource-manager
 documentationcenter: na
-author: sethmanheim
+author: PatAltimore
 manager: femila
 
 ms.service: azure-resource-manager
@@ -12,7 +12,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/17/2019
-ms.author: sethm
+ms.author: patricka
 ms.lastreviewed: 05/17/2019
 
 ---
