@@ -3,7 +3,7 @@ title: Capacity planning for Azure Stack | Microsoft Docs
 description: Learn about capacity planning for Azure Stack deployments.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/29/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 03/29/2019
 ---
