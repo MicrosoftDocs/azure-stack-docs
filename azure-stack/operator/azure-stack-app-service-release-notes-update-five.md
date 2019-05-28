@@ -3,7 +3,7 @@ title: App Service on Azure Stack update 5 release notes | Microsoft Docs
 description: Learn about what's in update five for App Service on Azure Stack, the known issues, and where to download the update.
 services: azure-stack
 documentationcenter: ''
-author: apwestgarth
+author: bryanla
 manager: stefsch
 editor: ''
 
@@ -15,7 +15,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: anwestg
-ms.reviewer: 
+ms.reviewer: anwestg
+ms.lastreviewed: 03/25/2019
 
 ---
 # App Service on Azure Stack update 5 release notes
