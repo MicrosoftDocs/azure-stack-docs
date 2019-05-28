@@ -176,7 +176,7 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 
 - Remediation:
   - This alert can be ignored. The agent not responding does not have any impact on operator and user operations or user applications. The alert will reappear after 24 hours if it is closed manually.
-  - This issue is fixed in the latest [Azure Stack hotfix for 1904](https://support.microsoft.com/help/4505688).
+  - The issue is fixed in the latest [Azure Stack hotfix for 1904](https://support.microsoft.com/help/4505688).
 - Occurrence: Common
 
 ## Storage
