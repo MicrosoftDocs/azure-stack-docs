@@ -13,9 +13,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 05/28/2019
 ms.author: anwestg
-ms.reviewer: 
+ms.reviewer:
 
 ---
 # App Service on Azure Stack update 6 release notes
@@ -30,7 +30,7 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 ## Build reference
 
-The App Service on Azure Stack Update 6 build number is **82.0.2.47**
+The App Service on Azure Stack Update 6 build number is **82.0.2.50**
 
 ### Prerequisites
 
@@ -69,120 +69,16 @@ Azure App Service on Azure Stack Update 6 includes the following improvements an
   - PHP 5.6.39
   - PHP 7.0.33
   - PHP 7.1.25
-  - PHP 7.2.13 
+  - PHP 7.2.13
   - Updated Kudu to 81.10329.3844
-  
+
 - **Updates to underlying operating system of all roles**:
   - [2019-04 Cumulative Update for Windows Server 2016 for x64-based Systems (KB4493473)](https://support.microsoft.com/help/4493473/windows-10-update-kb4493473)
 
 ### Post-deployment Steps
 
-> [!IMPORTANT]  
-> If you have provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
-
-### Post-update steps
-
-For customers wishing to migrate to contained database for existing Azure App Service on Azure Stack deployments, execute these steps after the Azure App Service on Azure Stack 1.6 update has completed:
-
 > [!IMPORTANT]
-> The migration procedure takes approximately 5-10 minutes.  The procedure involves killing the existing database login sessions.  Plan for downtime to migrate and validate Azure App Service on Azure Stack post migration.  If you completed these steps after updating to Azure App Service on Azure Stack 1.3 then these steps are not required.
->
->
-
-1. Add [AppService databases (appservice_hosting and appservice_metering) to an Availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)
-
-1. Enable contained database
-    ```sql
-
-        sp_configure 'contained database authentication', 1;
-        GO
-        RECONFIGURE;
-            GO
-    ```
-
-1. Converting a Database to Partially Contained, the conversion will incur downtime as all active sessions need to be killed
-
-    ```sql
-        /******** [appservice_metering] Migration Start********/
-            USE [master];
-
-            -- kill all active sessions
-            DECLARE @kill varchar(8000) = '';  
-            SELECT @kill = @kill + 'kill ' + CONVERT(varchar(5), session_id) + ';'  
-            FROM sys.dm_exec_sessions
-            WHERE database_id  = db_id('appservice_metering')
-
-            EXEC(@kill);
-
-            USE [master]  
-            GO  
-            ALTER DATABASE [appservice_metering] SET CONTAINMENT = PARTIAL  
-            GO  
-
-        /********[appservice_metering] Migration End********/
-
-        /********[appservice_hosting] Migration Start********/
-
-            -- kill all active sessions
-            USE [master];
-
-            DECLARE @kill varchar(8000) = '';  
-            SELECT @kill = @kill + 'kill ' + CONVERT(varchar(5), session_id) + ';'  
-            FROM sys.dm_exec_sessions
-            WHERE database_id  = db_id('appservice_hosting')
-
-            EXEC(@kill);
-
-            -- Convert database to contained
-            USE [master]  
-            GO  
-            ALTER DATABASE [appservice_hosting] SET CONTAINMENT = PARTIAL  
-            GO  
-
-            /********[appservice_hosting] Migration End********/
-    '''
-
-1. Migrate Logins to Contained Database Users
-
-    ```sql
-        IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
-        BEGIN
-        DECLARE @username sysname ;  
-        DECLARE user_cursor CURSOR  
-        FOR
-            SELECT dp.name
-            FROM sys.database_principals AS dp  
-            JOIN sys.server_principals AS sp
-                ON dp.sid = sp.sid  
-                WHERE dp.authentication_type = 1 AND dp.name NOT IN ('dbo','sys','guest','INFORMATION_SCHEMA');
-            OPEN user_cursor  
-            FETCH NEXT FROM user_cursor INTO @username  
-                WHILE @@FETCH_STATUS = 0  
-                BEGIN  
-                    EXECUTE sp_migrate_user_to_contained
-                    @username = @username,  
-                    @rename = N'copy_login_name',  
-                    @disablelogin = N'do_not_disable_login';  
-                FETCH NEXT FROM user_cursor INTO @username  
-            END  
-            CLOSE user_cursor ;  
-            DEALLOCATE user_cursor ;
-            END
-        GO
-    ```
-
-Validate
-
-1. Check if SQL Server has containment enabled
-
-    ```sql
-        sp_configure  @configname='contained database authentication'
-    ```
-
-1. Check existing contained behavior
-    ```sql
-        SELECT containment FROM sys.databases WHERE NAME LIKE (SELECT DB_NAME())
-    ```
+> If you have provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
 ### Known issues (post-installation)
 

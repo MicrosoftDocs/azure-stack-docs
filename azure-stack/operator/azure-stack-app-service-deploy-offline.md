@@ -13,7 +13,7 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 05/28/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
@@ -31,7 +31,7 @@ By following the instructions in this article, you can install the [App Service 
 - not connected to the Internet
 - secured by Active Directory Federation Services (AD FS).
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > Before you run the resource provider installer, make sure that you've followed the guidance in [Before you get started](azure-stack-app-service-before-you-get-started.md) and have read the [release notes](azure-stack-app-service-release-notes-update-six.md) which accompany the 6 release learn about new functionality, fixes, and any known issues that could affect your deployment.
 
 To add the App Service resource provider to your offline Azure Stack deployment, you must complete these top-level tasks:
@@ -81,11 +81,11 @@ To deploy App Service in a disconnected environment, you must first create an of
    1. Click the **Connect** button next to the **Azure Stack Subscriptions** box.
       - Provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and click **Sign In**.
    2. In the **Azure Stack Subscriptions** box, select the **Default Provider Subscription**.
-    
+
       > [!NOTE]
       > App Service can only be deployed into the **Default Provider Subscription**.
       >
-    
+
    3. In the **Azure Stack Locations** box, select the location that corresponds to the region you're deploying to. For example, select **local** if your deploying to the Azure Stack Development Kit.
    4. Click **Next**.
 
@@ -140,14 +140,14 @@ To deploy App Service in a disconnected environment, you must first create an of
     > ```sql
     >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
     >    ***********************************************************
-    >    sp_configure 'contained database authentication', 1;  
-    >    GO  
-    >    RECONFIGURE;  
+    >    sp_configure 'contained database authentication', 1;
+    >    GO
+    >    RECONFIGURE;
     >    GO
     >    ***********************************************************
     > ```
     > Refer to the [release notes for Azure App Service on Azure Stack 1.3](azure-stack-app-service-release-notes-update-three.md) for more details.
-   
+
     ![App Service Installer][12]
 
 13. Review the role instance and SKU options. The defaults are populated with the minimum number of instances and the minimum SKU for each role in an ASDK Deployment. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, click **Next**.
@@ -194,8 +194,20 @@ To deploy App Service in a disconnected environment, you must first create an of
 
 ## Post-deployment Steps
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > If you have provided the App Service RP with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
+
+If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server.  To do this, go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
+
+- Source: Any
+- Source port range: *
+- Destination: IP Addresses
+- Destination IP address range: Range of IPs for your file server
+- Destination port range: 445
+- Protocol: TCP
+- Action: Allow
+- Priority: 700
+- Name: Outbound_Allow_SMB445
 
 ## Validate the App Service on Azure Stack installation
 
@@ -204,19 +216,6 @@ To deploy App Service in a disconnected environment, you must first create an of
 2. In the overview, under status, check to see that the **Status** displays **All roles are ready**.
 
     ![App Service Management](media/azure-stack-app-service-deploy/image12.png)
-
-> [!NOTE]
-> If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server.  To do this, go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
-> * Source: Any
-> * Source port range: *
-> * Destination: IP Addresses
-> * Destination IP address range: Range of IPs for your file server
-> * Destination port range: 445
-> * Protocol: TCP
-> * Action: Allow
-> * Priority: 700
-> * Name: Outbound_Allow_SMB445
->
 
 ## Test drive App Service on Azure Stack
 

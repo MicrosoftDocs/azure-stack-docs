@@ -13,7 +13,7 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 05/28/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 
@@ -23,7 +23,7 @@ ms.reviewer: anwestg
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Apply the 1904 update or later to your Azure Stack integrated system or deploy the latest Azure Stack development kit before deploying Azure App Service 1.6. 
+> Apply the 1904 update or later to your Azure Stack integrated system or deploy the latest Azure Stack development kit before deploying Azure App Service 1.6.
 
 By following the instructions in this article, you can upgrade the [App Service resource provider](azure-stack-app-service-overview.md) deployed in an Azure Stack environment that is:
 
