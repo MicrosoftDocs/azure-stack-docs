@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 05/28/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 05/22/2019
+ms.lastreviewed: 05/28/2019
 ---
 
 # Azure Stack 1904 known issues
@@ -176,7 +176,7 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 
 - Remediation:
   - This alert can be ignored. The agent not responding does not have any impact on operator and user operations or user applications. The alert will reappear after 24 hours if it is closed manually.
-  - Microsoft support can remediate the issue by changing the startup setting for the service. This requires opening a support ticket. If the node is restarted again, a new alert appears.
+  - This issue is fixed in the latest [Azure Stack hotfix for 1904](https://support.microsoft.com/help/4505688).
 - Occurrence: Common
 
 ## Storage
