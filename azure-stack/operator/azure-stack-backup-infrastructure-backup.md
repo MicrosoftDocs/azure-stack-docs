@@ -3,7 +3,7 @@ title: Backup and data recovery for Azure Stack with the Infrastructure Backup S
 description: You can back up and restore configuration and service data using the Infrastructure Backup Service.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 
 ms.service: azure-stack
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.reviewer: hectorl
 ms.lastreviewed: 05/16/2019
 

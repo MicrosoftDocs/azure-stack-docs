@@ -3,7 +3,7 @@ title: Before you deploy App Service on Azure Stack | Microsoft Docs
 description: Steps to complete before you deploy App Service on Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: BryanLa
 manager: femila
 editor: ''
 

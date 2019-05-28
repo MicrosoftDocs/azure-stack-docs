@@ -3,7 +3,7 @@ title: Using the administration portal in Azure Stack | Microsoft Docs
 description: As an Azure Stack operator, learn how to use the administration portal.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 02/25/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.custom: mvc
 ms.reviewer: efemmano
 ms.lastreviewed: 02/25/2019
