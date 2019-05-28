@@ -47,10 +47,8 @@ The Azure Stack 1905 update build type is **Full**. For more information about u
 
 - With this update, the update engine in Azure Stack can update the firmware of scale unit nodes. This requires a compliant update package from the hardware partners. Reach out to your hardware partner for details about availability.
 
-### Feature
-
-Windows Server 2019 is now supported and available to syndicate through the Azure Stack Marketplace.
-With this update, Windows Server 2019 can now be successfully activated on a 2016 Host. 
+- Windows Server 2019 is now supported and available to syndicate through the Azure Stack Marketplace.
+With this update, Windows Server 2019 can now be successfully activated on a 2016 host.
 
 ### Improvements
 
