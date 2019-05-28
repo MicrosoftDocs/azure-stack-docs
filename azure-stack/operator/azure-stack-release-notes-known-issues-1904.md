@@ -56,6 +56,13 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 - Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
 - Occurrence: Common
 
+
+### Docker extension
+- Applicable: This issue applies to all supported releases.
+- Cause: In both the administrator and user portals, if you search for "Docker", the item is incorrectly returned. It is not available       in Azure Stack. If you try to create it, a blade with an error indication is displayed.
+- Remediation: No mitigation.
+- Occurrence: Common
+
 ### Marketplace management
 
 - Applicable: This is a new issue with release 1904.
@@ -76,6 +83,13 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 - Cause: When you filter results in Marketplace management in the administrator portal, you will see duplicated publisher names under the publisher drop-down. 
 - Remediation: Select all the duplicates to have the correct list of all the Marketplace products that are available under that publisher.
 - Occurrence: Intermittent
+
+### Docker extension
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In both the administrator and user portals, if you search for **Docker**, the item is incorrectly returned. It is not available in Azure Stack. If you try to create it, an error is displayed.
+- Remediation: No mitigation.
+- Occurrence: Common
 
 ### Upload blob
 
