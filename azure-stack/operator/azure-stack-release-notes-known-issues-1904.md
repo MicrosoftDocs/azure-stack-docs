@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/22/2019
+ms.date: 05/28/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 05/22/2019
+ms.lastreviewed: 05/28/2019
 ---
 
 # Azure Stack 1904 known issues
@@ -56,6 +56,13 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 - Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
 - Occurrence: Common
 
+
+### Docker extension
+- Applicable: This issue applies to all supported releases.
+- Cause: In both the administrator and user portals, if you search for "Docker", the item is incorrectly returned. It is not available       in Azure Stack. If you try to create it, a blade with an error indication is displayed.
+- Remediation: No mitigation.
+- Occurrence: Common
+
 ### Marketplace management
 
 - Applicable: This is a new issue with release 1904.
@@ -76,6 +83,13 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 - Cause: When you filter results in Marketplace management in the administrator portal, you will see duplicated publisher names under the publisher drop-down. 
 - Remediation: Select all the duplicates to have the correct list of all the Marketplace products that are available under that publisher.
 - Occurrence: Intermittent
+
+### Docker extension
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In both the administrator and user portals, if you search for **Docker**, the item is incorrectly returned. It is not available in Azure Stack. If you try to create it, an error is displayed.
+- Remediation: No mitigation.
+- Occurrence: Common
 
 ### Upload blob
 
@@ -176,7 +190,7 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 
 - Remediation:
   - This alert can be ignored. The agent not responding does not have any impact on operator and user operations or user applications. The alert will reappear after 24 hours if it is closed manually.
-  - Microsoft support can remediate the issue by changing the startup setting for the service. This requires opening a support ticket. If the node is restarted again, a new alert appears.
+  - The issue is fixed in the latest [Azure Stack hotfix for 1904](https://support.microsoft.com/help/4505688).
 - Occurrence: Common
 
 ## Storage
