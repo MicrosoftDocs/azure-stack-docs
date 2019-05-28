@@ -13,7 +13,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2019
-ms.author: sethm
+ms.author: sethmanheim
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
 
