@@ -59,7 +59,7 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 
 ### Docker extension
 - Applicable: This issue applies to all supported releases.
-- Cause: In both the administrator and user portals, if you search for "Docker," the item is incorrectly returned. It is not available       in Azure Stack. If you try to create it, a blade with an error indication is displayed.
+- Cause: In both the administrator and user portals, if you search for "Docker", the item is incorrectly returned. It is not available       in Azure Stack. If you try to create it, a blade with an error indication is displayed.
 - Remediation: No mitigation.
 - Occurrence: Common
 
