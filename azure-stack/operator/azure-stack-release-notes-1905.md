@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2019
+ms.date: 05/28/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 05/23/2019
+ms.lastreviewed: 05/28/2019
 ---
 
 # Azure Stack 1905 update
@@ -33,7 +33,7 @@ This article describes the contents of the 1905 update package. The update inclu
 
 ## Build reference
 
-The Azure Stack 1905 update build number is **1.1905.x.xx**.
+The Azure Stack 1905 update build number is **1.1905.0.36**.
 
 ### Type
 
@@ -52,11 +52,11 @@ The Azure Stack 1905 update build type is **Full**. For more information about u
 <!-- Changes and product improvements with tangible customer-facing value. -->
 - As a part of enforcing TLS 1.2 on Azure Stack, the following extensions have been updated to these versions:
 
-  microsoft.customscriptextension-arm-1.9.3
-  microsoft.iaasdiagnostics-1.12.2.2
-  microsoft.antimalware-windows-arm-1.5.5.9
-  microsoft.dsc-arm-2.77.0.0
-  microsoft.vmaccessforlinux-1.5.2
+  - microsoft.customscriptextension-arm-1.9.3
+  - microsoft.iaasdiagnostics-1.12.2.2
+  - microsoft.antimalware-windows-arm-1.5.5.9
+  - microsoft.dsc-arm-2.77.0.0
+  - microsoft.vmaccessforlinux-1.5.2
 
   Please download these versions of the extensions immediately, so that new deployments of the extension do not fail. Always set **autoupdateminorversion=true** so that minor version updates to extensions (for example, 1.8 to 1.9) are automatically performed.
 
@@ -74,14 +74,14 @@ The Azure Stack 1905 update build type is **Full**. For more information about u
 
 ### Security updates
 
-This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack. For information, see [Azure Stack security updates.](azure-stack-release-notes-security-updates-1904.md)
+This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack. For information, see [Azure Stack security updates.](azure-stack-release-notes-security-updates-1905.md)
 
 ## Update planning
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](azure-stack-release-notes-known-issues-1904.md)
-- [Security updates](azure-stack-release-notes-security-updates-1904.md)
+- [Known issues](azure-stack-release-notes-known-issues-1905.md)
+- [Security updates](azure-stack-release-notes-security-updates-1905.md)
 - [Checklist of activities before and after applying the update](azure-stack-release-notes-checklist.md)
 
 ## Download the update
