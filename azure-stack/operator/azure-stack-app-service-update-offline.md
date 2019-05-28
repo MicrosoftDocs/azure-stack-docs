@@ -13,7 +13,7 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 05/28/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 
@@ -23,7 +23,7 @@ ms.reviewer: anwestg
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Apply the 1901 update or later to your Azure Stack integrated system or deploy the latest Azure Stack development kit before deploying Azure App Service 1.5. 
+> Apply the 1904 update or later to your Azure Stack integrated system or deploy the latest Azure Stack development kit before deploying Azure App Service 1.6.
 
 By following the instructions in this article, you can upgrade the [App Service resource provider](azure-stack-app-service-overview.md) deployed in an Azure Stack environment that is:
 
@@ -31,13 +31,13 @@ By following the instructions in this article, you can upgrade the [App Service 
 * secured by Active Directory Federation Services (AD FS).
 
 > [!IMPORTANT]
-> Prior to running the upgrade, make sure that you have already completed the [deployment of the Azure App Service on Azure Stack Resource Provider](azure-stack-app-service-deploy-offline.md) and that you have read the [release notes](azure-stack-app-service-release-notes-update-five.md), which accompany the 1.5 release, to learn about new functionality, fixes, and any known issues that could affect your deployment.
+> Prior to running the upgrade, make sure that you have already completed the [deployment of the Azure App Service on Azure Stack Resource Provider](azure-stack-app-service-deploy-offline.md) and that you have read the [release notes](azure-stack-app-service-release-notes-update-six.md), which accompany the 1.6 release, to learn about new functionality, fixes, and any known issues that could affect your deployment.
 
 ## Run the App Service resource provider installer
 
 To upgrade the App Service resource provider in an Azure Stack environment, you must complete these tasks:
 
-1. Download the [App Service Installer](https://aka.ms/appsvcupdate4installer)
+1. Download the [App Service Installer](https://aka.ms/appsvcupdate6installer)
 2. Create an offline upgrade package.
 3. Run the App Service installer (appservice.exe) and complete the upgrade.
 

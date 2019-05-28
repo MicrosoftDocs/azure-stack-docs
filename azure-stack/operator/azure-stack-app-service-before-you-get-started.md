@@ -13,7 +13,7 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 05/28/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/11/2019
@@ -27,7 +27,7 @@ ms.lastreviewed: 03/11/2019
 Before you deploy Azure App Service on Azure Stack, you must complete the prerequisite steps in this article.
 
 > [!IMPORTANT]
-> Apply the 1901 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.5.
+> Apply the 1904 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.6.
 
 ## Download the installer and helper scripts
 
@@ -193,6 +193,9 @@ A [reference architecture quickstart template](https://github.com/Azure/AzureSta
 >[!IMPORTANT]
 > If you choose to deploy App Service in an existing Virtual Network, the File Server should be deployed into a separate Subnet from App Service.
 
+>[!NOTE]
+> If you have chosen to deploy a file server using either of the Quickstart templates mentioned above, you can skip this section as the file servers are configured as part of the template deployment.
+
 #### Provision groups and accounts in Active Directory
 
 1. Create the following Active Directory global security groups:
@@ -293,6 +296,9 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 ## Prepare the SQL Server instance
 
+>[!NOTE]
+> If you have chosen to deploy the Quickstart template for Highly Available File Server and SQL Server you can skip this section as the template deploys and configures SQL Server in a HA configuration.
+
 For the Azure App Service on Azure Stack hosting and metering databases, you must prepare a SQL Server instance to hold the App Service databases.
 
 For Azure Stack Development Kit deployments, you can use SQL Server Express 2014 SP2 or later.
@@ -303,7 +309,7 @@ The SQL Server instance for Azure App Service on Azure Stack must be accessible 
 
 > [!NOTE]
 > A number of SQL IaaS virtual machine images are available through the Marketplace Management feature. Make sure you always download the latest version of the SQL IaaS Extension before you deploy a VM using a Marketplace item. The SQL images are the same as the SQL VMs that are available in Azure. For SQL VMs created from these images, the IaaS extension and corresponding portal enhancements provide features such as automatic patching and backup capabilities.
-> 
+>
 > For any of the SQL Server roles, you can use a default instance or a named instance. If you use a named instance, be sure to manually start the SQL Server Browser service and open port 1434.
 
 The App Service installer will check to ensure the SQL Server has database containment enabled. To enable database containment on the SQL Server that will host the App Service databases, run these SQL commands:
