@@ -36,7 +36,7 @@ To support the automated update of all physical server and infrastructure softwa
 
 The VM capacity is determined by available memory. The virtual-cores to physical-core ratios exemplify how the VM density will change available CPU capacity unless the solution is constructed with a larger number of physical cores (another CPU is chosen). The same is true of storage capacity and storage cache capacity.
 
-The above examples of VM density are for explanation purposes only. There is further complexity in the calculations in support. Contact with Microsoft or a solution partner is required to further understand capacity planning choices and the resulting, available capacity.
+Examples are for explanation purposes only. Contact Microsoft or a solution partner to better understand how choices impact available capacity.
 
 The remainder of this section describes Azure Stack deployment requirements for compute and storage. Use this information to gain a base understanding of what components are required and their minimum configuration values. Additional information is also provided to describe how the solution is configured with regards to available capacity and potential limits of the system with regard to tenant capacity and performance capability.
 
