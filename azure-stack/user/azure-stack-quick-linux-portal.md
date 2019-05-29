@@ -153,7 +153,7 @@ A network security group (NSG) secures inbound and outbound traffic. When a VM i
 
 1. Make sure that **Port range** is set to 80 and **Action** is set to **Allow**.
 
-1. Select **OK**
+1. Select **OK**.
 
 ## View the Welcome to nginx page
 
