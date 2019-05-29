@@ -130,7 +130,7 @@ Before a user can use services, they must [subscribe to an offer](azure-stack-su
 
 For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
 
-If there is a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). If you select the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then select **Help + support** and then select on **New support request** under the **Support** section. Open a support request.
+If there is a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). If you select the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then select **Help + support** and then select **New support request** under the **Support** section. Open a support request.
 
 If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, like software running on the hardware lifecycle host, contact your OEM hardware vendor first.
 
@@ -138,7 +138,7 @@ For anything else, contact Microsoft CSS.
 
 ### Azure Stack Development Kit (ASDK)
 
-For the ASDK, you can ask support-related questions in the [Microsoft forums](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). If you select the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then select **Help + support** and then select on **New support request** under the **Support** section.  The forum site opens. These forums are regularly monitored. Because the ASDK is an evaluation environment, there is no official support offered through Microsoft CSS.
+For the ASDK, you can ask support-related questions in the [Microsoft forums](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). If you select the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then select **Help + support** and then select **New support request** under the **Support** section.  The forum site opens. These forums are regularly monitored. Because the ASDK is an evaluation environment, there is no official support offered through Microsoft CSS.
 
 ## Next steps
 
