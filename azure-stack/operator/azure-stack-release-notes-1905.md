@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 05/29/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 05/28/2019
+ms.lastreviewed: 05/29/2019
 ---
 
 # Azure Stack 1905 update
@@ -74,7 +74,8 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
 - Fixed an issue in which a "Compute host agent" warning appeared after restarting a node in the scale unit.
-- Fixed issues in Marketplace Management in Administrator portal which showed incorrect results when filters were applied and duplicate publisher names in publisher filter. Also, made performance improvements to display results faster.   
+
+- Fixed issues in marketplace management in the administrator portal which showed incorrect results when filters were applied, and showed duplicate publisher names in the publisher filter. Also, made performance improvements to display results faster.
 
 ### Security updates
 
