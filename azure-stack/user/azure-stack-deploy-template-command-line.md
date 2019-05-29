@@ -18,7 +18,7 @@ ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019
 
 ---
-# Deploy templates in Azure Stack using the command line
+# Deploy templates with the command line in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 

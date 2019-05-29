@@ -1,6 +1,6 @@
 ---
-title: Deploy templates using the portal in Azure Stack | Microsoft Docs
-description: Learn how to use the Azure Stack portal to deploy templates.
+title: Deploy a template using the portal in Azure Stack | Microsoft Docs
+description: Learn how to use the Azure Stack portal to deploy a template.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -20,7 +20,7 @@ ms.lastreviewed: 05/07/2019
 
 ---
 
-# Deploy templates using the portal in Azure Stack
+# Deploy a template using the portal in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
