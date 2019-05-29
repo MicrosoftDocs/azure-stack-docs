@@ -4,7 +4,7 @@
   items:
   - name: Azure Stack 
     tocHref: /azure-stack/
-    topicHref: /azure-stack/operator/index
+    topicHref: /azure-stack/
     items:
     - name: ASDK
       tocHref: /azure-stack/asdk/
