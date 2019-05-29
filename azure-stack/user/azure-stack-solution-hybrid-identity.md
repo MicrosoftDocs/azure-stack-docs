@@ -3,7 +3,7 @@ title:  Configure hybrid cloud identity with Azure and Azure Stack applications 
 description: Learn how to configure hybrid cloud identity with Azure and Azure Stack applications.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: bryanla
 manager: femila
 editor: ''
 
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/14/2019
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
 ---

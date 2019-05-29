@@ -3,7 +3,7 @@ title: Post deployment configurations for the Azure Stack Development Kit (ASDK)
 description: Describes the recommended configuration changes to make after installing the Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/10/2018
 
@@ -23,7 +23,7 @@ ms.lastreviewed: 10/10/2018
 
 # Post ASDK installation configuration tasks
 
-After [installing the Azure Stack Development Kit (ASDK)](asdk-install.md), you should make a few recommended post-installation configuration changes while signed in as AzureStack\AzureStackAdmin on the ASDK host computer. 
+After [installing the Azure Stack Development Kit (ASDK)](asdk-install.md), you should make a few recommended post-installation configuration changes while signed in as AzureStack\AzureStackAdmin on the ASDK host computer.
 
 ## Install Azure Stack PowerShell
 
@@ -35,7 +35,7 @@ PowerShell commands for Azure Stack are installed through the PowerShell Gallery
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 ```
 
-You can use API version profiles  to specify Azure Stack compatible AzureRM modules.  API version profiles provide a way to manage version differences between Azure and Azure Stack. An API version profile is a set of AzureRM PowerShell modules with specific API versions. The **AzureRM.Bootstrapper** module that is available through the PowerShell Gallery provides PowerShell cmdlets that are required to work with API version profiles.
+You can use API version profiles  to specify Azure Stack compatible AzureRM modules.  API version profiles provide a way to manage version differences between Azure and Azure Stack. An API version profile is a set of AzureRM PowerShell modules with specific API versions. The **AzureRM.BootStrapper** module that is available through the PowerShell Gallery provides PowerShell cmdlets that are required to work with API version profiles.
 
 You can install the latest Azure Stack PowerShell module with or without Internet connectivity to the ASDK host computer:
 
@@ -44,23 +44,22 @@ You can install the latest Azure Stack PowerShell module with or without Interne
 
 - **With an internet connection** from the ASDK host computer. Run the following PowerShell script to install these modules on your development kit installation:
 
-- For 1904 builds or later:
+  - For 1904 builds or later:
 
     ```powershell  
       # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
       Install-Module -Name AzureRM.BootStrapper
-      
+
       # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-      Get-AzureRMProfile -Update
       Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
       Install-Module -Name AzureStack -RequiredVersion 1.7.2
     ```
 
-- Azure Stack version 1903 or earlier, only install the two modules below:
+  - Azure Stack version 1903 or earlier, only install the two modules below:
 
     ```powershell
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-    Install-Module AzureRM -RequiredVersion 2.4.0
+    Install-Module -Name AzureRM -RequiredVersion 2.4.0
     Install-Module -Name AzureStack -RequiredVersion 1.7.1
     ```
 
@@ -70,8 +69,8 @@ You can install the latest Azure Stack PowerShell module with or without Interne
   - Azure Stack 1811:
 
     ``` PowerShell
-    # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 
-    Install-Module -Name AzureRm.BootStrapper
+    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet.
+    Install-Module -Name AzureRM.BootStrapper
 
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
     Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
@@ -117,12 +116,12 @@ You can install the latest Azure Stack PowerShell module with or without Interne
 
   # Enforce usage of TLSv1.2 to download the Azure Stack tools archive from GitHub
   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-  invoke-webrequest `
-    https://github.com/Azure/AzureStack-Tools/archive/master.zip `
+  Invoke-WebRequest `
+    -Uri https://github.com/Azure/AzureStack-Tools/archive/master.zip `
     -OutFile master.zip
 
   # Expand the downloaded files.
-  expand-archive master.zip -DestinationPath . -Force
+  Expand-Archive -Path master.zip -DestinationPath . -Force
 
   # Change to the tools directory.
   cd AzureStack-Tools-master
@@ -143,7 +142,7 @@ The tests take a few minutes to complete. If the installation was successful, th
 
 If there was a failure, follow the troubleshooting steps to get help.
 
-## Reset the password expiration policy 
+## Reset the password expiration policy
 
 To make sure that the password for the development kit host doesn't expire before your evaluation period ends, follow these steps after you deploy the ASDK.
 

@@ -1,9 +1,9 @@
 ---
 title: Create a Service Principal for Azure Stack | Microsoft Docs
-description: Describes how to create a service principal that can be used with the role-based access control in Azure Resource Manager to manage access to resources.
+description: Learn how to create a service principal to use with role-based access control in Azure Resource Manager to manage access to resources.
 services: azure-resource-manager
 documentationcenter: na
-author: mattbriggs
+author: PatAltimore
 manager: femila
 
 ms.service: azure-resource-manager
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/15/2019
-ms.author: mabrigg
+ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
 
 ---
-# Give applications access to Azure Stack resources by creating service principals
+# Create service principals to give applications access to Azure Stack resources
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -26,7 +26,7 @@ You can give an application access to Azure Stack resources by creating a servic
 As a best practice, you should use service principals for your applications. Service principals are preferable to running an app using your own credentials for the following reasons:
 
 * You can assign permissions to the service principal that are different than your own account permissions. Typically, a service principal's permissions are restricted to exactly what the app needs to do.
-* You do not have to change the app's credentials if your role or responsibilities change.
+* You don't have to change the app's credentials if your role or responsibilities change.
 * You can use a certificate to automate authentication when running an unattended script.
 
 ## Example scenario
@@ -46,7 +46,7 @@ The way you configured Active Directory for Azure Stack determines how you creat
 * Create a service principal for [Azure Active Directory (Azure AD)](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad).
 * Create a service principal for [Active Directory Federation Services (AD FS)](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).
 
-The steps for assigning a service principal to a role the same for Azure AD and AD FS. After you create the service principal, you can [delegate permissions](azure-stack-create-service-principals.md) by assigning it to a role.
+The steps for assigning a service principal to a role are the same for Azure AD and AD FS. After you create the service principal, you can delegate permissions by assigning it to a role.
 
 ## Create service principal for Azure AD
 
@@ -64,6 +64,8 @@ To create a service principal for your application:
 3. Provide a name.
 4. Select the **Supported account types**.
 5.  Add a URI for the application. Select **Web**  for the type of application you want to create. After setting the values, select **Register**.
+
+You've created a service principal for your application.
 
 ### Get credentials
 
