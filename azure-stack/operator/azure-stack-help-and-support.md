@@ -16,7 +16,7 @@ ms.topic: article
 ms.date: 05/21/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 05/23/2019
+ms.lastreviewed: 05/29/2019
 
 ---
 # Microsoft Azure Stack Help and support
@@ -72,13 +72,11 @@ Previous releases also have a link to **Help + support** that redirects to the [
 
 ![Get support tutorials](media/azure-stack-help-and-support/get-support-previous.png)
 
+- For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our OEM partners.
+  If there is a cloud services issue, support is offered through Microsoft CSS. 
 
-For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our OEM partners.
-If there is a cloud services issue, support is offered through Microsoft CSS. 
+  If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, such as software running on the hardware lifecycle host, contact your OEM hardware vendor first.
+  For anything else, contact Microsoft CSS.
 
-If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, such as software running on the hardware lifecycle host, contact your OEM hardware vendor first.
-For anything else, contact Microsoft CSS.
-
-
-For the development kit, you can ask support-related questions in the Microsoft forums. 
-Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
+- For the development kit, you can ask support-related questions in the Microsoft forums. 
+  Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
