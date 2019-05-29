@@ -151,7 +151,7 @@ The virtual-disks created automatically and their capacities are as follows:
 The Azure Stack Capacity Planner is a spreadsheet that shows how different allocations of computing resources would fit across a selection of hardware offerings. 
 
 ### Worksheet descriptions
-The following table has a decsription for each worksheet in the Azure Stack Capacity Planner, which can be downloaded from [https://aka.ms/azstackcapacityplanner](https://aka.ms/azstackcapacityplanner). 
+The following table has a description for each worksheet in the Azure Stack Capacity Planner, which can be downloaded from [https://aka.ms/azstackcapacityplanner](https://aka.ms/azstackcapacityplanner). 
 
 |Tab Name|Description|
 |-----|-----|
