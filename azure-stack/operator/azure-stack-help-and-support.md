@@ -23,7 +23,7 @@ ms.lastreviewed: 05/29/2019
 
 Beginning with the 1905 release, Azure Stack **Help + support** improvements make it easier for operators to research issues, get expert help, or learn more about Azure Stack. 
 
-## Research an issue
+## Check your support options
 
 At the top of **Help + support** are links to read more about an issue, get info about billing, or see which support options are available. 
 
@@ -49,7 +49,7 @@ For anything else, contact Microsoft CSS.
 ![Get expert help for integrated systems](media/azure-stack-help-and-support/get-support-integrated.png)
 
 For the Azure Stack Development Kit (ASDK), you can ask support-related questions in the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
-If you click **Help and support** (question mark) in the upper-right corner of the administrator portal, and then click **New support request**, this opens the forums site directly. 
+If you click **Help and support** (question mark) in the upper-right corner of the administrator portal, and then click **MSDN Forums**, this opens the forums site directly. 
 These forums are regularly monitored. 
 Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
 
@@ -65,10 +65,10 @@ You can also reach out to the MSDN Forums to discuss an issue, or take online tr
 This set of tutorials is customized depending on whether you're running the ASDK or integrated systems so you can quickly get up to speed with your environment. 
 
 ![Get support tutorials](media/azure-stack-help-and-support/get-support-tutorials.png)
+)
+## Help and Support for earlier realeases Azure Stack (pre-1905)
 
-## Help and Support for previous Azure Stack releases
-
-Previous releases also have a link to **Help + support** that redirects to the [Azure Stack User Documentation](https://docs.microsoft.com/azure-stack/user/).
+Previous Azure Stack releases also have a link to **Help + support** that redirects to the [Azure Stack User Documentation](https://docs.microsoft.com/azure-stack/user/).
 
 ![Get support tutorials](media/azure-stack-help-and-support/get-support-previous.png)
 
