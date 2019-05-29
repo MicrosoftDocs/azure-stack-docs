@@ -156,7 +156,7 @@ The following table has a decsription for each worksheet in the Azure Stack Capa
 |Tab Name|Description|
 |-----|-----|
 |Version-Disclaimer|Purpose of the calculator, version number, and release date.|
-|Instructions|Step-by-step instructions to model capacity planning for a collection of virtual machines (VMs).|
+|Instructions|Step-by-step instructions to model capacity planning for a collection of VMs.|
 |DefinedSolutionSKUs|Table with up to five hardware definitions. The entries are examples. Change the details to match system configurations under consideration.|
 |DefineByVMFootprint|Find the appropriate hardware SKU by comparing configurations with different sizes and quantities of VMs.|
 |DefineByWorkloadFootprint|Find the appropriate hardware SKU by creating a collection of Azure Stack workloads.|
@@ -205,7 +205,7 @@ To create a model using a collection of Azure Stack Workloads, select the "Defin
 5. You may include a particular quantity of each Workload type by entering a value at the bottom of that column directly below the "Quantity" label.
 6. Once Workload types and quantities have been created, clicking the "Suggested SKU" button found in the upper right corner of the page, directly below the "Current SKU" label, will cause the smallest SKU with sufficient resources to support this overall configuration of Workloads to be displayed.
 7. Further modeling may be accomplished by modifying the number of servers selected for a hardware SKU, or changing the VM allocations or quantities within your Workload configurations. The associated graphs will display immediate feedback showing how your changes affect the overall resource consumption.
-8. Once you are satisfied with your changes, clicking the "Suggested SKU" button again will display the SKU suggested for your new configuration. You can click the drop-down menu to select your desired SKU.
+8. Once you are satisfied with your changes, clicking **Suggested SKU** again will display the SKU suggested for your new configuration. You can click the drop-down menu to select your desired SKU.
 
 
 ## Next steps
