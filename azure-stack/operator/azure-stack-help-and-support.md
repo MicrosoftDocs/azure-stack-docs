@@ -66,7 +66,7 @@ This set of tutorials is customized depending on whether you're running the ASDK
 
 ![Get support tutorials](media/azure-stack-help-and-support/get-support-tutorials.png)
 )
-## Help and Support for earlier realeases Azure Stack (pre-1905)
+## Help and Support for earlier releases Azure Stack (pre-1905)
 
 Previous Azure Stack releases also have a link to **Help + support** that redirects to the [Azure Stack User Documentation](https://docs.microsoft.com/azure-stack/user/).
 
