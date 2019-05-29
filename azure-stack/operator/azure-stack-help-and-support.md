@@ -33,7 +33,7 @@ At the top of **Help + support** are links to read more about an issue, get info
 
 - **Learn about billing**. Get tips for [monitoring usage](azure-stack-usage-reporting.md) and [understanding your bill](azure-stack-billing-and-chargeback.md).
 
-- **Support options**. Azure Stack operators can choose from a range of [Azure support options](https://azure.microsoft.com/support/options/) that can fit the needs of any enterprise. 
+- **Support options**. Azure Stack operators can choose from a range of [Azure support options](aka.ms/azstacksupport) that can fit the needs of any enterprise. 
 
 ## Get expert help 
 
