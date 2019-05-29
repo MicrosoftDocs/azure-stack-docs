@@ -3,7 +3,7 @@ title: Register tenants for usage tracking in Azure Stack | Microsoft Docs
 description: Details about operations used to manage  tenant registrations and how tenant usage is tracked in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 
@@ -12,8 +12,8 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: mabrigg
+ms.date: 05/16/2019
+ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/08/2019
 
@@ -41,7 +41,7 @@ You can associate a single Azure subscription with a tenant. If you try to add a
 
 The registration cmdlets require that you specify an API profile when running PowerShell. API profiles represent a set of Azure resource providers and their API versions. They help you use the right version of the API when interacting with multiple Azure clouds. For instance, you work with multiple clouds when working with global Azure and Azure Stack. Profiles specify a name that matches their release date. You will need to use the **2017-09-03** profile.
 
-For more information about Azure Stack and API Profiles, see [Manage API version profiles in Azure Stack](../user/azure-stack-version-profiles.md). For instructions on getting up and running with API Profile with PowerShell, see [Use API version profiles for PowerShell in Azure Stack](../user/azure-stack-version-profiles-powershell.md).
+For more information about Azure Stack and API Profiles, see [Manage API version profiles in Azure Stack](../user/azure-stack-version-profiles.md).
 
 ### Parameters
 

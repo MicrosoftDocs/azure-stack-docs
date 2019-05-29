@@ -3,7 +3,7 @@ title: Compare Azure Stack and global Azure | Microsoft Docs
 description: Learn how Microsoft provides Azure and the Azure Stack family of services in one Azure ecosystem  
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: justinha
 manager: femila
 editor: ''
 
@@ -13,8 +13,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/29/2019
-ms.author: jeffgilb
+ms.date: 05/03/2019
+ms.author: justinha
 ms.reviewer: unknown
 ms.custom: 
 ms.lastreviewed: 03/29/2019
@@ -30,7 +30,7 @@ This article describes global Azure, Azure Stack, and Azure Stack HCI capabiliti
 
 ## Global Azure
 
-Microsoft Azure is an ever-expanding set of cloud services to help your organization meet your business challenges. It’s the freedom to build, manage, and deploy applications on a massive, global network using your favorite tools and frameworks.
+Microsoft Azure is an ever-expanding set of cloud services to help your organization meet your business challenges. It's the freedom to build, manage, and deploy applications on a massive, global network using your favorite tools and frameworks.
 
 Global Azure offers more than 100 services available in 54 regions around the globe. For the most current list of global Azure services, see the [*Products available by region*](https://azure.microsoft.com/regions/services). The services available in Azure are listed by category, as well as whether they are Generally Available or available through preview.
 
@@ -55,8 +55,7 @@ In addition to the resource providers described above, there are additional PaaS
 
 - Service Fabric
 - Kubernetes Container Service
-- IoT Hub and Event Hub
-- Etherium Blockchain
+- Ethereum Blockchain
 - Cloud Foundry
 
 ### Example use cases for Azure Stack:

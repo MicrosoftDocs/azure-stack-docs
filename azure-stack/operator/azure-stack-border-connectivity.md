@@ -3,7 +3,7 @@ title: Border connectivity network integration considerations for Azure Stack in
 description: Learn what you can do to plan for datacenter border network connectivity with multi-node Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 08/30/2018
 ---
@@ -45,7 +45,7 @@ The border device must be configured with static routes pointing to the TOR devi
 
 The TOR devices come configured with a static default route sending all traffic to the border devices. The one traffic exception to the default rule is for the private space, which is blocked using an Access Control List applied on the TOR to border connection.
 
-Static routing applies only to the uplinks between the TOR and border switches. BGP dynamic routing is used inside the rack because it is an essential tool for the SLB and other components and can’t be disabled or removed.
+Static routing applies only to the uplinks between the TOR and border switches. BGP dynamic routing is used inside the rack because it is an essential tool for the SLB and other components and can't be disabled or removed.
 
 ![Static routing](media/azure-stack-border-connectivity/static-routing.png)
 
@@ -59,7 +59,7 @@ Static routing applies only to the uplinks between the TOR and border switches. 
 If your datacenter requires all traffic to use a proxy, you must configure a *transparent proxy* to process all traffic from the rack to handle it according to policy, separating traffic between the zones on your network.
 
 > [!IMPORTANT]
-> The Azure Stack solution doesn’t support normal web proxies.  
+> The Azure Stack solution doesn't support normal web proxies.  
 
 A transparent proxy (also known as an intercepting, inline, or forced proxy) intercepts normal communication at the network layer without requiring any special client configuration. Clients need not to be aware of the existence of the proxy.
 

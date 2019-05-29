@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2019
+ms.date: 05/21/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 01/05/2019
+ms.lastreviewed: 05/21/2019
 
 ---
 
@@ -24,7 +24,7 @@ ms.lastreviewed: 01/05/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can get started developing applications today, even if you don't have access to an Azure Stack environment. Because Azure Stack delivers Microsoft Azure services that run in your datacenter, you can use similar tools and processes to develop against Azure Stack as you would with Azure.
+You can get started developing applications today, even if you don't have access to an Azure Stack environment. Because Azure Stack delivers Microsoft Azure services that run in your datacenter, you can use similar tools and processes to develop on Azure Stack as you would with Azure.
 
 ## Development considerations
 

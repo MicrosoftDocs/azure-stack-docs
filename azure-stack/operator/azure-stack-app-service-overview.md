@@ -3,7 +3,7 @@ title: App Service on Azure Stack overview | Microsoft Docs
 description: Overview of App Service on Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: BryanLa
 manager: femila
 
 ms.assetid:
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: anwestg
 ms.lastreviewed: 10/16/2018
 

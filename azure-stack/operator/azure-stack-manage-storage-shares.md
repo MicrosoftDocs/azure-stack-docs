@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 03/29/2019
+ms.date: 05/23/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/19/2019
@@ -27,7 +27,7 @@ ms.lastreviewed: 03/19/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-The information in this article helps the Azure Stack cloud operator monitor and manage the storage capacity of their Azure Stack deployment. The Azure Stack storage infrastructure allocates a subset of the total storage capacity of the Azure Stack deployment, to be used for **storage services**. The storage services store a tenant’s data in shares on volumes that correspond to the nodes of the deployment.
+The information in this article helps the Azure Stack cloud operator monitor and manage the storage capacity of their Azure Stack deployment. The Azure Stack storage infrastructure allocates a subset of the total storage capacity of the Azure Stack deployment, to be used for **storage services**. The storage services store a tenant's data in shares on volumes that correspond to the nodes of the deployment.
 
 As a cloud operator, you have a limited amount of storage to work with. The amount of storage is defined by the solution you implement. Your solution is provided by your OEM vendor when you use a multi-node solution, or by the hardware on which you install the Azure Stack Development Kit.
 
@@ -164,8 +164,7 @@ Migration consolidates all a containers blob on the new share.
 3. Identify the best destination shares to hold the container you migrate:
 
    ```powershell
-   $destinationshares = Get-AzsStorageShare -SourceShareName
-   $shares[0].ShareName -Intent ContainerMigration
+   $destinationshare = ($shares | Sort-Object FreeCapacity -Descending)[0]
    ```
 
    Then examine $destinationshares:

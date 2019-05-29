@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2019
+ms.date: 05/10/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 03/27/2019
@@ -55,7 +55,7 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 If you already have 1901 and you have not installed any hotfixes yet, you can [install 1902 directly](azure-stack-update-1902.md), without first installing the 1901 hotfix.
 
 - **1811**: No current hotfix available.
-- **1901**: [KB 4500636 – Azure Stack hotfix 1.1901.5.109](https://support.microsoft.com/help/4500636)
+- **1901**: [KB 4500636 - Azure Stack hotfix 1.1901.5.109](https://support.microsoft.com/help/4500636)
 
 ## Prerequisites
 
@@ -110,13 +110,13 @@ To review the reference for the updated modules, see [Azure Stack Module Referen
 
 - Fixed an issue in which the portal showed an option to create policy-based VPN gateways, which are not supported in Azure Stack. This option has been removed from the portal.
 
-<!-- 16523695 – IS, ASDK -->
+<!-- 16523695 - IS, ASDK -->
 - Fixed an issue in which after updating your DNS Settings for your Virtual Network from **Use Azure Stack DNS** to **Custom DNS**, the instances were not updated with the new setting.
 
-- <!-- 3235634 – IS, ASDK -->
+- <!-- 3235634 - IS, ASDK -->
   Fixed an issue in which deploying VMs with sizes containing a **v2** suffix; for example, **Standard_A2_v2**, required specifying the suffix as **Standard_A2_v2** (lowercase v). As with global Azure, you can now use **Standard_A2_V2** (uppercase V).
 
-<!--  2795678 – IS, ASDK --> 
+<!--  2795678 - IS, ASDK --> 
 - Fixed an issue that produced a warning when you used the portal to create virtual machines (VMs) in a premium VM size (DS,Ds_v2,FS,FSv2). The VM was created in a standard storage account. Although this did not affect functionally, IOPs, or billing, the warning has been fixed.
 
 <!-- 1264761 - IS ASDK -->  
@@ -219,11 +219,13 @@ For more information about these vulnerabilities, click on the preceding links, 
 
 ## Known issues with the update process
 
+- When attempting to install an Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing. Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and starts the download again.
+
 - When running [Test-AzureStack](azure-stack-diagnostic-test.md), if either the **AzsInfraRoleSummary** or the **AzsPortalApiSummary** test fails, you are prompted to run **Test-AzureStack** with the `-Repair` flag.  If you run this command, it fails with the following error message:  `Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.`
 
 - When you run [Test-AzureStack](azure-stack-diagnostic-test.md), a warning message from the Baseboard Management Controller (BMC) is displayed. You can safely ignore this warning.
 
-- <!-- 2468613 - IS --> During installation of this update, you might see alerts with the title `Error – Template for FaultType UserAccounts.New is missing.`  You can safely ignore these alerts. The alerts close automatically after the installation of this update completes.
+- <!-- 2468613 - IS --> During installation of this update, you might see alerts with the title `Error - Template for FaultType UserAccounts.New is missing.`  You can safely ignore these alerts. The alerts close automatically after the installation of this update completes.
 
 ## Post-update steps
 
@@ -240,7 +242,7 @@ The following are post-installation known issues for this build version.
 <!-- 2930820 - IS ASDK --> 
 - In both the administrator and user portals, if you search for "Docker," the item is incorrectly returned. It is not available in Azure Stack. If you try to create it, a blade with an error indication is displayed. 
 
-<!-- 2931230 – IS  ASDK --> 
+<!-- 2931230 - IS  ASDK --> 
 - Plans that are added to a user subscription as an add-on plan cannot be deleted, even when you remove the plan from the user subscription. The plan will remain until the subscriptions that reference the add-on plan are also deleted. 
 
 <!-- TBD - IS ASDK --> 
@@ -274,6 +276,8 @@ The following are post-installation known issues for this build version.
    - If you have configured a multi-tenant environment, deploying VMs in a subscription associated with a guest directory might fail with an internal error message. To resolve the error, follow these steps in [this article](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) to reconfigure each of your guest directories.
 
 - An Ubuntu 18.04 VM created with SSH authorization enabled will not allow you to use the SSH keys to log in. As a workaround, use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
+
+- You cannot remove a scale set from the **Virtual Machine Scale Sets** blade. As a workaround, select the scale set that you want to remove, then click the **Delete** button from the **Overview** pane.
 
 ### Networking  
 

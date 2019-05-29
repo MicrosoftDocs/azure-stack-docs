@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 05/16/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.lastreviewed: 01/09/2019
+ms.lastreviewed: 05/16/2019
 
 ---
 
@@ -31,7 +31,7 @@ The Ruby SDK for the Azure Stack Resource Manager provides tools to help you bui
 An API profile is a combination of resource providers and service versions. You can use an API profile to combine different resource types.
 
 - To use the latest versions of all the services, use the **Latest** profile of the Azure SDK rollup gem.
-- To use the services compatible with the Azure Stack, use the **V2018_03_01** profile of the Azure SDK rollup gem.
+- To use the services compatible with the Azure Stack, use the **V2019_03_01_Hybrid** or **V2018_03_01** profile of the Azure SDK rollup gem.
 - To use the latest **api-version** of a service, use the **Latest** profile of the specific gem. For example, if you would like to use the latest **api-version** of compute service alone, use the **Latest** profile of the **Compute** gem.
 - To use a specific **api-version** for a service, use the specific API versions defined inside the gem.
 
@@ -70,7 +70,7 @@ The Azure Resource Manager Ruby SDK is in preview and will likely have breaking 
 
 ## Use the azure_sdk gem
 
-The gem, **azure_sdk**, is a rollup of all the supported gems in the Ruby SDK. This gem consists of a **Latest** profile, which supports the latest version of all services. It introduces two versioned profile **V2017_03_09** and **V2018_03_01** profiles, which are built for Azure Stack.
+The gem, **azure_sdk**, is a rollup of all the supported gems in the Ruby SDK. This gem consists of a **Latest** profile, which supports the latest version of all services. It includes versioned profiles **V2017_03_09** and **V2019_03_01_Hybrid**, which are built for Azure Stack.
 
 You can install the azure_sdk rollup gem with the following command:  
 
@@ -129,7 +129,7 @@ In Unix based systems, you can use the following command:
 
 The Azure_sdk rollup gem has the following three profiles:
 
-1. **V2018_03_01**
+1. **V2019_03_01_Hybrid**
   Profile built for Azure Stack. Use this profile for utilizing all the latest versions of services available in Azure Stack.
 2. **V2017_03_09**  
   Profile built for Azure Stack. Use this profile for services to be most compatible with the Azure Stack.
@@ -160,7 +160,7 @@ options = {
 }
 
 # Target profile built for Azure Stack
-client = Azure::Resources::Profiles::V2018_03_01::Mgmt::Client.new(options)
+client = Azure::Resources::Profiles::V2019_03_01_Hybrid::Mgmt::Client.new(options)
 ```
 
 The profile client can be used to access individual resource providers, such as compute, storage, and network:
@@ -174,7 +174,7 @@ purchase_plan_obj = profile_client.compute.model_classes.purchase_plan.new
 
 # Option 2: To access the models associated with Compute
 # Notice Namespace: Azure::Profiles::<Profile Name>::<Service Name>::Mgmt::Models::<Model Name>
-purchase_plan_obj = Azure::Profiles::V2018_03_01::Compute::Mgmt::Models::PurchasePlan.new
+purchase_plan_obj = Azure::Profiles::V2019_03_01_Hybrid::Compute::Mgmt::Models::PurchasePlan.new
 ```
 
 ## Define Azure Stack environment setting functions
@@ -204,7 +204,7 @@ end
 You can use the following samples found on GitHub as references for creating solutions with Ruby and Azure Stack API profiles:
 
 - [Manage Azure resources and resource groups with Ruby](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Resources-And-Groups)
-- [Manage virtual machines using Ruby](https://github.com/Azure-Samples/Hybrid-Compute-Ruby-Manage-VM)
+- [Manage virtual machines using Ruby](https://github.com/Azure-Samples/Hybrid-Compute-Ruby-Manage-VM) (Sample that uses 2019-03-01-hybrid profile to target the latest API versions supported by Azure Stack).
 - [Deploy an SSH Enabled VM with a Template in Ruby](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Template-Deployment)
 
 ### Sample Resource Manager and groups
@@ -271,7 +271,7 @@ To run the sample, ensure that you have installed Ruby. If you are using Visual 
 7. Create a profile client that targets the Azure Stack profile:
 
    ```ruby  
-   client = Azure::Resources::Profiles::V2018_03_01::Mgmt::Client.new(options)
+   client = Azure::Resources::Profiles::V2019_03_01_Hybrid::Mgmt::Client.new(options)
    ```
 
 8. To authenticate the service principal with Azure Stack, the endpoints should be defined using **get_active_directory_settings()**. This method uses the **ARM_Endpoint** environment variable that you set when establishing your environmental variables:

@@ -1,0 +1,149 @@
+---
+title: Azure Stack 1905 known issues | Microsoft Docs
+description: Learn about known issues in Azure Stack 1905.
+services: azure-stack
+documentationcenter: ''
+author: sethmanheim
+manager: femila
+editor: ''
+
+ms.assetid:  
+ms.service: azure-stack
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 05/28/2019
+ms.author: sethm
+ms.reviewer: hectorl
+ms.lastreviewed: 05/28/2019
+---
+
+# Azure Stack 1905 known issues
+
+This article lists known issues in the 1905 release of Azure Stack. The list is updated as new issues are identified.
+
+> [!IMPORTANT]  
+> Review this section before applying the update.
+
+## Update process
+
+- Applicable: This issue applies to all supported releases.
+- Cause: When attempting to install the 1905 Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing. The 1905 update package is larger than previous update packages which may make this issue more likely to occur. 
+- Remediation: Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and starts the download again. If the problem persists, we recommend manually uploading the update package by following the [Import and install updates section](azure-stack-apply-updates.md#import-and-install-updates).
+- Occurrence: Common
+
+## Portal
+
+### Administrative subscriptions
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
+- Remediation: These subscriptions will be suspended starting with 1906 and eventually deleted. If you have resources running on these two subscriptions, recreate them in user subscriptions prior to 1906.
+- Occurrence: Common
+
+### Subscription resources
+
+- Applicable: This issue applies to all supported releases.
+- Cause: Deleting user subscriptions results in orphaned resources.
+- Remediation: First delete user resources or the entire resource group, and then delete the user subscriptions.
+- Occurrence: Common
+
+### Subscription permissions
+
+- Applicable: This issue applies to all supported releases.
+- Cause: You cannot view permissions to your subscription using the Azure Stack portals.
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Occurrence: Common
+
+### Docker extension
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In both the administrator and user portals, if you search for **Docker**, the item is incorrectly returned. It is not available in Azure Stack. If you try to create it, an error is displayed.
+- Remediation: No mitigation.
+- Occurrence: Common
+
+### Upload blob
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you try to upload a blob using the OAuth(preview) option, the task fails with an error message.
+- Remediation: Upload the blob using the SAS option.
+- Occurrence: Common
+
+## Networking
+
+### Load Balancer
+
+#### Add Backend Pool
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, if you attempt to add a **Backend Pool** to a **Load Balancer**, the operation fails with the error message **failed to update Load Balancer...**.
+- Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
+- Occurrence: Common
+
+#### Create Inbound NAT
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer**, the operation fails with the error message **Failed to update Load Balancer...**.
+- Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
+- Occurrence: Common
+
+#### Create Load Balancer
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Create Load Balancer** window shows an option to create a **Standard** Load Balancer SKU. This option is not supported in Azure Stack.
+- Remediation: Use the basic load balancer options instead.
+- Occurrence: Common
+
+### Public IP Address
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Create Public IP Address** window shows an option to create a **Standard** SKU. The **Standard** SKU is not supported in Azure Stack.
+- Remediation: Use Basic SKU instead for public IP address.
+- Occurrence: Common
+
+## Compute
+
+### VM boot diagnostics
+
+- Applicable: This issue applies to all supported releases.
+- Cause: When creating a new Windows Virtual Machine (VM), the following error may be displayed:
+**Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'**.
+The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
+- Remediation: Recreate the storage account with the same name you used previously.
+- Occurrence: Common
+
+### Virtual Machine Scale Set
+
+#### CentOS
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The Virtual Machine Scale Set (VMSS) creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack.
+- Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
+- Occurrence: Common
+
+#### Remove scale set
+
+- Applicable: This issue applies to all supported releases.
+- Cause: You cannot remove a scale set from the **Virtual Machine Scale Sets** blade.
+- Remediation: Select the scale set that you want to remove, then click the **Delete** button from the **Overview** pane.
+- Occurrence: Common
+
+### Ubuntu SSH access
+
+- Applicable: This issue applies to all supported releases.
+- Cause: An Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in.
+- Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
+- Occurrence: Common
+
+<!-- ## Storage -->
+<!-- ## SQL and MySQL-->
+<!-- ## App Service -->
+<!-- ## Usage -->
+<!-- ### Identity -->
+<!-- ### Marketplace -->
+
+## Next steps
+
+- [Review update activity checklist](azure-stack-release-notes-checklist.md)
+- [Review list of security updates](azure-stack-release-notes-security-updates-1905.md)

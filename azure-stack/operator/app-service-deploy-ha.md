@@ -3,7 +3,7 @@ title: Deploy Azure Stack App Service in a highly available configuration | Micr
 description: Learn how to deploy App Service in Azure Stack using a highly available configuration.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: BryanLa
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2019
-ms.author: jeffgilb
+ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/23/2019
 ---

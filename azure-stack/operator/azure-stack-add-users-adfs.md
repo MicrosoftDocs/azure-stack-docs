@@ -29,7 +29,7 @@ You can use the **Active Directory Users and Computers** snap-in to add addition
 2. Select **File > Add or remove snap-in**.
 3. Select **Active Directory Users and Computers** > **AzureStack.local** > **Users**.
 4. Select **Action** > **New** > **User**.
-5. In New Object – User, provide user information details. Select **Next**.
+5. In New Object - User, provide user information details. Select **Next**.
 6. Provide and confirm a password.
 7. Select **Next** to finalize the values. Select **Finish** to create the user.
 

@@ -599,8 +599,8 @@ By default, Windows Server 2016 does not allow incoming ICMP packets through the
 ```powershell
 # Create ICMP firewall rule.
 New-NetFirewallRule `
-  –DisplayName “Allow ICMPv4-In” `
-  –Protocol ICMPv4
+  -DisplayName "Allow ICMPv4-In" `
+  -Protocol ICMPv4
 ```
 
 ### Ping the Azure Stack virtual machine

@@ -3,7 +3,7 @@ title: Azure Stack Infrastructure Backup Service reference | Microsoft Docs
 description: This article contains reference material for the Azure Stack Infrastructure Backup Service.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: justinha
 ms.reviewer: hectorl
 ms.lastreviewed: 10/25/2018
 
@@ -61,8 +61,8 @@ This section describes the important requirements for Infrastructure Backup. We 
 
 The requirements include:
 
-  - **Software requirements** – describes supported storage locations and sizing guidance. 
-  - **Network requirements** – describes network requirements for different storage locations.  
+  - **Software requirements** - describes supported storage locations and sizing guidance. 
+  - **Network requirements** - describes network requirements for different storage locations.  
 
 ### Software requirements
 

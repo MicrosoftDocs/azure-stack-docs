@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
@@ -24,7 +24,7 @@ ms.lastreviewed: 01/14/2019
 
 *Applies to: Azure Stack integrated systems*
 
-To increase the total available memory capacity for Azure Stack, you can add additional memory. In Azure Stack your physical server is also referred to as a *scale unit node*. All scale unit nodes that are members of a single scale unit must have the same amount of memory.
+To increase the total available memory capacity for Azure Stack, you can add additional memory. In Azure Stack, your physical server is also referred to as a *scale unit node*. All scale unit nodes that are members of a single scale unit must have the same amount of memory.
 
 > [!note]  
 > Before you continue, consult your hardware manufacturer's documentation to see if a your manufacturer supports a physical memory upgrade. Your OEM hardware vendor support contract may require that the vendor perform the physical server rack placement and the device firmware update.
@@ -43,7 +43,7 @@ The following steps provide a high-level overview of the add memory process.
 > The entire scale unit must be shut down as a rolling memory upgrade is not supported.
 
 1. Stop Azure Stack using the steps documented in the [Start and stop Azure Stack](azure-stack-start-and-stop.md) article.
-2. Upgrade the memory on each physical computer using your hardware manufacturer’s documentation.
+2. Upgrade the memory on each physical computer using your hardware manufacturer's documentation.
 3. Start Azure Stack using the steps in the [Start and stop Azure Stack](azure-stack-start-and-stop.md) article.
 
 ## Next steps
