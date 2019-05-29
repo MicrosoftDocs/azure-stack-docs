@@ -20,10 +20,15 @@ ms.lastreviewed: 03/29/2019
 ---
 
 # Azure Stack capacity planning
-When evaluating an Azure Stack Solution, there are hardware configuration choices that have a direct impact on the overall capacity of the Azure Stack Cloud. These are the classic choices of CPU, memory density, storage configuration, and overall solution scale or number of servers. Unlike a traditional virtualization solution, the simple arithmetic of these components to determine usable capacity does not apply. The first reason for this is that Azure Stack is architected to host the infrastructure or management components within the solution itself. The second reason is that some of the solution's capacity is reserved in support of resiliency, the updating of the solution's software in a way to minimize disruption of tenant workloads. <!--- is the reserve only for fault tolerance in the case of server failure or also for updating? compute planing topic says only fault tolerance. >
+When evaluating an Azure Stack Solution, there are hardware configuration choices that have a direct impact on the overall capacity of the Azure Stack Cloud. These are the classic choices of CPU, memory density, storage configuration, and overall solution scale or number of servers. Unlike a traditional virtualization solution, the simple arithmetic of these components to determine usable capacity does not apply. The first reason for this is that Azure Stack is architected to host the infrastructure or management components within the solution itself. The second reason is that some of the solution's capacity is reserved in support of resiliency, the updating of the solution's software in a way to minimize disruption of tenant workloads. 
+
+<!--- is the reserve only for fault tolerance in the case of server failure or also for updating? compute planing topic says only fault tolerance. --->
 
 > [!IMPORTANT]
-> This capacity planning information and the [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) are a starting point for Azure Stack planning and configuration decisions. They are not intended to replace your own investigation and analysis. <!--- what do they need to analyze? Are there monitoring indicators or events or similar?>
+> This capacity planning information and the [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) are a starting point for Azure Stack planning and configuration decisions. They are not intended to replace your own investigation and analysis. 
+
+<!--- what do they need to analyze? Are there monitoring indicators or events or similar?--->
+
 
 An Azure Stack Solution is built as a hyper-converged cluster of compute and storage. The convergence allows for the sharing of the hardware capacity in the cluster, referred to as a *scale unit*. In Azure Stack, a scale unit provides the availability and scalability of resources. A scale unit consists of a set of Azure Stack servers, referred to as *hosts*. The infrastructure software is hosted within a set of VMs and shares the same physical servers as the tenant VMs. All Azure Stack VMs are then managed by the scale unit’s Windows Server clustering technologies and individual Hyper-V instances. The scale unit simplifies the acquisition and management Azure Stack. The scale unit also allows for the movement and scalability of all services (tenant and infrastructure) across Azure Stack. 
 
@@ -33,12 +38,12 @@ You can review a pie chart in the Administration portal that shows the free and 
 
 Used memory is made up of several components. The following components consume the memory in the use section of the pie chart.  
 
-1. Host OS usage or reserve – This is the memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the Spaces Direct memory cache.  
-2. Infrastructure services – These are the infrastructure VMs that make up Azure Stack. As of the 1902 release version of Azure Stack, this entails 31 VMs that take up 242GB of memory and 146 cores. This internal service structure allows for the future introduction of new infrastructure services as they are developed.<!--- Theebs to review, should it say 1902 or 1904>
+1. Host OS usage or reserve – This is the memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the Spaces Direct memory cache. 4
+2. Infrastructure services – These are the infrastructure VMs that make up Azure Stack. As of the 1902 release version of Azure Stack, this entails 31 VMs that take up 242 GB + 4 x # of nodes. This internal service structure allows for the future introduction of new infrastructure services as they are developed.
+
 3. Resiliency reserve – Azure Stack reserves a portion of the memory to allow for tenant availability during a single host failure as well as during patch and update to allow for successful live migration of VMs. 
 4. Tenant VMs – These are the tenant VMs created by Azure Stack users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in **Creating** or **Failed** state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option will not consume memory from Azure Stack. 
 
-   ![Capacity usage](media/azure-stack-capacity-planning/capacity-usage-on-4-node.png)
 
 ## VM placement
 
@@ -59,6 +64,7 @@ In addition, Azure Stack nodes can be filled up at varying levels prior to tryin
 
 Azure Stack doesn't over-commit memory. However, an over-commit of the number of physical cores is allowed. 
 Since placement algorithms don't look at the existing virtual to physical core over-provisioning ratio as a factor, each host could have a different ratio. 
+As Microsoft, we do not provide guidance on the physical-to-virtual core ratio because of the variation in workloads and service level requirements. 
 
 ## Azure Stack memory 
 
@@ -84,7 +90,7 @@ This memory capacity is for the entirety of the Azure Stack scale unit.
 > -	R = The operating system reserve for OS overhead, which is .15 in this formula<sup>2</sup>
 > -	V = Largest VM in the scale unit
 
-  <sup>1</sup> Azure Stack Infrastructure Overhead = 242 GB (4 x # of nodes). Approximately 31 VMs are used to host Azure Stack's infrastructure and, in total, consume about 242 GB of memory and 146 virtual cores. The rationale for this number of VMs is to satisfy the needed service separation to meet security, scalability, servicing and patching requirements. This internal service structure allows for the future introduction of new infrastructure services as they are developed. <!--- need to confirm 4 x # of nodes>
+  <sup>1</sup> Azure Stack Infrastructure Overhead = 242 GB + 4 x # of nodes. Approximately 31 VMs are used to host Azure Stack's infrastructure and, in total, consume about 242 GB of memory + 4 x # of nodes and 146 virtual cores. The rationale for this number of VMs is to satisfy the needed service separation to meet security, scalability, servicing and patching requirements. This internal service structure allows for the future introduction of new infrastructure services as they are developed. 
 
   <sup>2</sup> Operating system reserve for overhead = 15% (.15) of node memory. The operating system reserve value is an estimate and will vary based on the physical memory capacity of the server and general operating system overhead.
 
@@ -92,19 +98,6 @@ This memory capacity is for the entirety of the Azure Stack scale unit.
 The value V, largest VM in the scale unit, is dynamically based on the largest tenant VM memory size. 
 For example, the largest VM value could be 7 GB or 112 GB or any other supported VM memory size in the Azure Stack solution. 
 Changing the largest VM on the Azure Stack fabric will result in an increase in the resiliency reserve in addition to the increase in the memory of the VM itself. 
-
-This is a graph of a 12 node Azure Stack with 384 GB memory per node and how the amount of available memory varies depending on the size of the largest VM on the Azure Stack. 
-The largest VM in these examples is the only VM that has been placed on the Azure Stack. 
-
-![Available memory for Azure Stack](media/azure-stack-capacity-planning/available-memory.png)
-  
-The resiliency reserve is also a function of the size of the host. 
-The following graph shows available memory on different node memory size Azure Stacks given the possible largest VM memory sizes. 
-
-![Available memory per largest VM](media/azure-stack-capacity-planning/available-memory-per-largest-vm.png)
-
-
-This calculation is an estimate and subject to change. The ability to deploy tenant VMs and services is based on specific factors of the deployed solution. This example calculation is a guide, but not an absolute answer to whether a VM can be deployed to a server.
 
 > [!NOTE]
 > The capacity planning requirements for networking are minimal as only the size of the Public VIP is configurable. For information about how to add more Public IP Addresses to Azure Stack, see [Add Public IP Addresses](azure-stack-add-ips.md).
@@ -218,7 +211,7 @@ To create a model using a collection of Azure Stack Workloads, select the "Defin
 5. You may include a particular quantity of each Workload type by entering a value at the bottom of that column directly below the "Quantity" label.
 6. Once Workload types and quantities have been created, clicking the "Suggested SKU" button found in the upper right corner of the page, directly below the "Current SKU" label, will cause the smallest SKU with sufficient resources to support this overall configuration of Workloads to be displayed.
 7. Further modeling may be accomplished by modifying the number of servers selected for a hardware SKU, or changing the VM allocations or quantities within your Workload configurations. The associated graphs will display immediate feedback showing how your changes affect the overall resource consumption.
-8. Once you are satisfied with your changes, clicking the "Suggested SKU" button again will display the SKU suggested for your new configuration.
+8. Once you are satisfied with your changes, clicking the "Suggested SKU" button again will display the SKU suggested for your new configuration. You can click the drop-down menu to select your desired SKU.
 
 
 ## Next steps
