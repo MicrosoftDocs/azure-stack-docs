@@ -24,6 +24,8 @@ ms.custom:
 # Azure Stack compute capacity planning
 The [VM sizes supported on Azure Stack](../user/azure-stack-vm-sizes.md) are a subset of those supported on Azure. Azure imposes resource limits to avoid overconsumption of resources at either the service-level or locally for the server. Without consumption limits, tenant experiences would suffer when other tenants overconsume resources. Networking egress bandwidth from a virtual machine (VM) has the same limitation as Azure. For storage resources, storage IOPs limits have been implemented on Azure Stack to avoid basic overconsumption of resources by tenants for storage access.  <!--- is the intent to compare AS cap restrictions to Azure as a point of reference? If so, how do storage IOPs compare? Also, it's not really clear why the para starts with VM sizes. Is the intent to compare Azure Stack to Azure for VM size, egress, and storage? Maybe we could show that in a table?>
 
+
+
 ## VM placement and virtual to physical core overprovisioning
 
 A tenant can't place a VM on a specific server, so the only consideration when placing VMs is whether the server has enough memory to host that VM type. Azure Stack does not overcommit memory; however, an overcommit of the number of cores is allowed. Since placement algorithms do not look at the existing virtual to physical core overprovisioning ratio as a factor, each host could have a different ratio. 
@@ -33,6 +35,8 @@ To achieve high availability, VMs are placed in an availability set spread acros
 While the infrastructure of Azure Stack is resilient to failures, the underlying technology (failover clustering) still incurs some downtime for VMs on an impacted physical server in the event of a hardware failure. To be consistent with Azure, Azure Stack supports up to three fault domains within an availablity set. VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple Azure Stack nodes. If there is a hardware failure, VMs from the failed fault domain will be restarted in other nodes, but, if possible, kept in separate fault domains from the other VMs in the same availability set. When the hardware comes back online, VMs will be rebalanced to maintain high availability.
 
 Azure also provides update domains in availability sets. An update domain is a logical group of underlying hardware that can undergo maintenance or be rebooted at the same time. In Azure Stack, VMs are live migrated across the other online hosts in the cluster before their underlying host is updated. Since there is no tenant downtime during a host update, the update domain feature on Azure Stack only exists for template compatibility with Azure.
+
+
 
 ## Azure Stack memory 
 To allow for patch and update of an Azure Stack integrated system, and to be resilient to physical hardware failures, a portion of the total server memory is reserved and unavailable for tenant VM placement. This reserved capacity allows VMs to be migrated and restarted on another server.
@@ -56,8 +60,6 @@ The following calculation results in the total available memory that can be used
 The value V, largest VM in the scale unit, is dynamically based on the largest tenant VM memory size. For example, the largest VM value could be 7 GB or 112 GB or any other supported VM memory size in the Azure Stack solution.
 
 This calculation is an estimate and subject to change based on the current version of Azure Stack. The ability to deploy tenant VMs and services is based on specific factors of the deployed solution. This example calculation is a guide, but not an absolute answer to whether a VM can be deployed to a server.
-
-<!--- Are there any events or other indicators they should monitor ongoing to determine if the capacity is optmized? >
 
 
 
