@@ -30,7 +30,7 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 ## Build reference
 
-The App Service on Azure Stack Update 6 build number is **82.0.50.0**
+The App Service on Azure Stack Update 6 build number is **82.0.1.50**
 
 ### Prerequisites
 
