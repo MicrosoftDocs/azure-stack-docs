@@ -22,13 +22,9 @@ ms.lastreviewed: 03/29/2019
 # Azure Stack capacity planning
 When evaluating an Azure Stack Solution, there are hardware configuration choices that have a direct impact on the overall capacity of the Azure Stack Cloud. These are the classic choices of CPU, memory density, storage configuration, and overall solution scale or number of servers. Unlike a traditional virtualization solution, the simple arithmetic of these components to determine usable capacity does not apply. The first reason for this is that Azure Stack is architected to host the infrastructure or management components within the solution itself. The second reason is that some of the solution's capacity is reserved in support of resiliency, the updating of the solution's software in a way to minimize disruption of tenant workloads. 
 
-<!--- is the reserve only for fault tolerance in the case of server failure or also for updating? compute planing topic says only fault tolerance. --->
-
 > [!IMPORTANT]
-> This capacity planning information and the [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) are a starting point for Azure Stack planning and configuration decisions. They are not intended to replace your own investigation and analysis. 
-
-<!--- what do they need to analyze? Are there monitoring indicators or events or similar?--->
-
+> This capacity planning information and the [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) are a starting point for Azure Stack planning and configuration decisions. It is not intended to serve as a substitute for your own investigation and analysis. Microsoft makes no representations or warranties, express or implied, with respect to the information provided here.
+ 
 
 An Azure Stack Solution is built as a hyper-converged cluster of compute and storage. The convergence allows for the sharing of the hardware capacity in the cluster, referred to as a *scale unit*. In Azure Stack, a scale unit provides the availability and scalability of resources. A scale unit consists of a set of Azure Stack servers, referred to as *hosts*. The infrastructure software is hosted within a set of VMs and shares the same physical servers as the tenant VMs. All Azure Stack VMs are then managed by the scale unit’s Windows Server clustering technologies and individual Hyper-V instances. The scale unit simplifies the acquisition and management Azure Stack. The scale unit also allows for the movement and scalability of all services (tenant and infrastructure) across Azure Stack. 
 
@@ -38,12 +34,10 @@ You can review a pie chart in the Administration portal that shows the free and 
 
 Used memory is made up of several components. The following components consume the memory in the use section of the pie chart.  
 
-1. Host OS usage or reserve – This is the memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the Spaces Direct memory cache. 4
-2. Infrastructure services – These are the infrastructure VMs that make up Azure Stack. As of the 1902 release version of Azure Stack, this entails 31 VMs that take up 242 GB + 4 x # of nodes. This internal service structure allows for the future introduction of new infrastructure services as they are developed.
-
+1. Host OS usage or reserve – This is the memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the Spaces Direct memory cache. 
+2. Infrastructure services – These are the infrastructure VMs that make up Azure Stack. As of the 1902 release version of Azure Stack, this entails 31 VMs that take up 242 GB + (4 GB x # of nodes). This internal service structure allows for the future introduction of new infrastructure services as they are developed.
 3. Resiliency reserve – Azure Stack reserves a portion of the memory to allow for tenant availability during a single host failure as well as during patch and update to allow for successful live migration of VMs. 
 4. Tenant VMs – These are the tenant VMs created by Azure Stack users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in **Creating** or **Failed** state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option will not consume memory from Azure Stack. 
-
 
 ## VM placement
 
@@ -90,7 +84,7 @@ This memory capacity is for the entirety of the Azure Stack scale unit.
 > -	R = The operating system reserve for OS overhead, which is .15 in this formula<sup>2</sup>
 > -	V = Largest VM in the scale unit
 
-  <sup>1</sup> Azure Stack Infrastructure Overhead = 242 GB + 4 x # of nodes. Approximately 31 VMs are used to host Azure Stack's infrastructure and, in total, consume about 242 GB of memory + 4 x # of nodes and 146 virtual cores. The rationale for this number of VMs is to satisfy the needed service separation to meet security, scalability, servicing and patching requirements. This internal service structure allows for the future introduction of new infrastructure services as they are developed. 
+  <sup>1</sup> Azure Stack Infrastructure Overhead = 242 GB + (4 GB x # of nodes). Approximately 31 VMs are used to host Azure Stack's infrastructure and, in total, consume about 242 GB + (4 GB x # of nodes) of memory and 146 virtual cores. The rationale for this number of VMs is to satisfy the needed service separation to meet security, scalability, servicing and patching requirements. This internal service structure allows for the future introduction of new infrastructure services as they are developed. 
 
   <sup>2</sup> Operating system reserve for overhead = 15% (.15) of node memory. The operating system reserve value is an estimate and will vary based on the physical memory capacity of the server and general operating system overhead.
 
