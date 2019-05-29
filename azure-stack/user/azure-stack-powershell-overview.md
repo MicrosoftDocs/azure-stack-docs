@@ -52,7 +52,7 @@ Azure Stack PowerShell provides a set of cmdlets that use previous versions of A
 
 ### Azure Stack administrator
 
-Azure Stack exposes a set of resource providers to the cloud operator in order to install and maintain Azure Stack. In global Azure, this interaction is abstracted from the user and handled behind the scenes as part of Azure. With Azure Stack, however, enterprises can support a private cloud. To do these tasks, the operator interacts with the Azure Stack Admin APIs. For more information, see [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md).
+Azure Stack exposes a set of resource providers to the cloud operator so that the operator can install and maintain Azure Stack. In global Azure, this interaction is abstracted from the user and handled behind the scenes as part of Azure. With Azure Stack, however, enterprises can support a private cloud. To do these tasks, the operator interacts with the Azure Stack Admin APIs. For more information, see [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md).
 
 ### Azure Stack privileged endpoint
 
