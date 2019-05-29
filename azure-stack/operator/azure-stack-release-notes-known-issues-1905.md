@@ -35,13 +35,6 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 
 ## Portal
 
-### Add-on plans
-
-- Applicable: This issue applies to all supported releases.
-- Cause: Plans that are added to a user subscription as an add-on plan cannot be deleted, even when you remove the plan from the user subscription. The plan remains until the subscriptions that reference the add-on plan are also deleted.
-- Remediation: No mitigation.
-- Occurrence: Common
-
 ### Administrative subscriptions
 
 - Applicable: This issue applies to all supported releases.
@@ -62,13 +55,6 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
 - Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
 - Occurrence: Common
-
-### Marketplace management
-
-- Applicable: This issue applies to 1904.
-- Cause: The marketplace management screen is not visible when you sign on to the administrator portal.
-- Remediation: Refresh the browser.
-- Occurrence: Intermittent
 
 ### Docker extension
 
