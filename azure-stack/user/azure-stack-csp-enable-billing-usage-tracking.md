@@ -1,6 +1,6 @@
 ---
 title: Let your Cloud Service Provider manage your Azure Stack subscription | Microsoft Docs
-description: Learn how to let your Cloud Service Provider manager your Azure Stack subscription for you.
+description: Learn how to let your Cloud Service Provider (CSP) manage your Azure Stack subscription for you.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
