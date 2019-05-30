@@ -19,9 +19,9 @@ ms.reviewer: prchint
 ms.lastreviewed: 05/29/2019
 
 ---
-# Microsoft Azure Stack Help and support
+# Microsoft Azure Stack Portal Help and Support
 
-Beginning with the 1905 release, Azure Stack **Help + support** improvements make it easier for operators to research issues, get expert help, or learn more about Azure Stack. 
+Beginning with the 1905 release, the Azure Stack portal has **Help + support** improvements to make make it easier for operators to check their support options, get expert help, and learn more about Azure Stack. 
 
 ## Documentation, Billing, and Support
 
@@ -65,18 +65,18 @@ You can also reach out to the MSDN Forums to discuss an issue, or take online tr
 This set of tutorials is customized depending on whether you're running the ASDK or integrated systems so you can quickly get up to speed with your environment. 
 
 ![Get support tutorials](media/azure-stack-help-and-support/get-support-tutorials.png)
-)
+
 ## Help and Support for earlier releases Azure Stack (pre-1905)
 
 Previous Azure Stack releases also have a link to **Help + support** that redirects to the [Azure Stack User Documentation](https://docs.microsoft.com/azure-stack/user/).
 
 ![Get support tutorials](media/azure-stack-help-and-support/get-support-previous.png)
 
-- For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our OEM partners.
-  If there is a cloud services issue, support is offered through Microsoft CSS. 
+For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our OEM partners. 
+If there is a cloud services issue, support is offered through Microsoft CSS. 
 
-  If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, such as software running on the hardware lifecycle host, contact your OEM hardware vendor first.
-  For anything else, contact Microsoft CSS.
+If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, such as software running on the hardware lifecycle host, contact your OEM hardware vendor first. 
+For anything else, contact Microsoft CSS.
 
-- For the development kit, you can ask support-related questions in the Microsoft forums. 
-  Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
+For the development kit, you can ask support-related questions in the Microsoft forums. 
+Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
