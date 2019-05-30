@@ -21,7 +21,7 @@ ms.lastreviewed: 05/29/2019
 ---
 # Microsoft Azure Stack Portal Help and Support
 
-Beginning with the 1905 release, the Azure Stack portal has **Help + support** improvements to make make it easier for operators to check their support options, get expert help, and learn more about Azure Stack. 
+Beginning with the 1905 release, the Azure Stack portal has **Help + support** improvements to make it easier for operators to check their support options, get expert help, and learn more about Azure Stack. 
 
 ## Documentation, Billing, and Support
 
