@@ -28,16 +28,6 @@ When evaluating an Azure Stack Solution, there are hardware configuration choice
 
 An Azure Stack Solution is built as a hyper-converged cluster of compute and storage. The convergence allows for the sharing of the hardware capacity in the cluster, referred to as a *scale unit*. In Azure Stack, a scale unit provides the availability and scalability of resources. A scale unit consists of a set of Azure Stack servers, referred to as *hosts*. The infrastructure software is hosted within a set of VMs and shares the same physical servers as the tenant VMs. All Azure Stack VMs are then managed by the scale unit’s Windows Server clustering technologies and individual Hyper-V instances. The scale unit simplifies the acquisition and management Azure Stack. The scale unit also allows for the movement and scalability of all services (tenant and infrastructure) across Azure Stack. 
 
-You can review a pie chart in the Administration portal that shows the free and used memory in Azure Stack. The following diagram shows the physical memory capacity on an Azure Stack scale unit in the Azure Stack: 
-
-![Physical memory capacity](media/azure-stack-capacity-planning/physical-memory-capacity.png)
-
-Used memory is made up of several components. The following components consume the memory in the use section of the pie chart.  
-
-1. Host OS usage or reserve – This is the memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the Spaces Direct memory cache. 
-2. Infrastructure services – These are the infrastructure VMs that make up Azure Stack. As of the 1902 release version of Azure Stack, this entails 31 VMs that take up 242 GB + (4 GB x # of nodes). This internal service structure allows for the future introduction of new infrastructure services as they are developed.
-3. Resiliency reserve – Azure Stack reserves a portion of the memory to allow for tenant availability during a single host failure as well as during patch and update to allow for successful live migration of VMs. 
-4. Tenant VMs – These are the tenant VMs created by Azure Stack users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in **Creating** or **Failed** state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option will not consume memory from Azure Stack. 
 
 ## VM placement
 
@@ -70,7 +60,23 @@ If there is a need to reboot a physical host, an attempt is made to move the VMs
 This VM management or movement can only be achieved if there is reserved memory capacity to allow for the restart or migration to occur. 
 A portion of the total host memory is reserved and unavailable for tenant VM placement. 
 
-The following calculation results in the total, available memory that can be used for tenant VM placement. 
+You can review a pie chart in the Administration portal that shows the free and used memory in Azure Stack. The following diagram shows the physical memory capacity on an Azure Stack scale unit in the Azure Stack:
+
+You can review a pie chart in the Administration portal that shows the free and used memory in Azure Stack. The following diagram shows the physical memory capacity on an Azure Stack scale unit in the Azure Stack: 
+
+![Physical memory capacity](media/azure-stack-capacity-planning/physical-memory-capacity.png)
+
+Used memory is made up of several components. The following components consume the memory in the use section of the pie chart.  
+
+1. Host OS usage or reserve – This is the memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the Spaces Direct memory cache. 
+2. Infrastructure services – These are the infrastructure VMs that make up Azure Stack. As of the 1902 release version of Azure Stack, this entails 31 VMs that take up 242 GB + (4 GB x # of nodes). This internal service structure allows for the future introduction of new infrastructure services as they are developed.
+3. Resiliency reserve – Azure Stack reserves a portion of the memory to allow for tenant availability during a single host failure as well as during patch and update to allow for successful live migration of VMs. 
+4. Tenant VMs – These are the tenant VMs created by Azure Stack users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in **Creating** or **Failed** state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option will not consume memory from Azure Stack. 
+
+The best way to understand memory consumption on the portal is to use the [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) to see the impact of various workloads. 
+The following is the actual calculation used by the planner.
+
+This calculation results in the total, available memory that can be used for tenant VM placement. 
 This memory capacity is for the entirety of the Azure Stack scale unit. 
 
 
@@ -205,7 +211,7 @@ To create a model using a collection of Azure Stack Workloads, select the "Defin
 5. You may include a particular quantity of each Workload type by entering a value at the bottom of that column directly below the "Quantity" label.
 6. Once Workload types and quantities have been created, clicking the "Suggested SKU" button found in the upper right corner of the page, directly below the "Current SKU" label, will cause the smallest SKU with sufficient resources to support this overall configuration of Workloads to be displayed.
 7. Further modeling may be accomplished by modifying the number of servers selected for a hardware SKU, or changing the VM allocations or quantities within your Workload configurations. The associated graphs will display immediate feedback showing how your changes affect the overall resource consumption.
-8. Once you are satisfied with your changes, clicking **Suggested SKU** again will display the SKU suggested for your new configuration. You can click the drop-down menu to select your desired SKU.
+8. Once you are satisfied with your changes, clicking **Suggested SKU** again will display the SKU suggested for your new configuration. You can also click the drop-down menu to select your desired SKU.
 
 
 ## Next steps
