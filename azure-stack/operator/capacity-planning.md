@@ -28,8 +28,14 @@ When evaluating an Azure Stack Solution, there are hardware configuration choice
 
 An Azure Stack Solution is built as a hyper-converged cluster of compute and storage. The convergence allows for the sharing of the hardware capacity in the cluster, referred to as a *scale unit*. In Azure Stack, a scale unit provides the availability and scalability of resources. A scale unit consists of a set of Azure Stack servers, referred to as *hosts*. The infrastructure software is hosted within a set of VMs and shares the same physical servers as the tenant VMs. All Azure Stack VMs are then managed by the scale unit’s Windows Server clustering technologies and individual Hyper-V instances. The scale unit simplifies the acquisition and management Azure Stack. The scale unit also allows for the movement and scalability of all services (tenant and infrastructure) across Azure Stack. 
 
+## Azure Stack compute
 
-## VM placement
+The [VM sizes](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) supported on Azure Stack are a subset of those supported on Azure. Azure imposes resource limits along many vectors to avoid overconsumption of resources (server local and service-level). Without imposing some limits on tenant consumption, the tenant experiences will suffer when other tenants overconsume resources. For networking egress from the VM, there are bandwidth caps in place on Azure Stack that match Azure limitations. For storage resources, storage IOPS limits have been implemented on Azure Stack to avoid basic overconsumption of resources by tenants for storage access.
+
+>[!IMPORTANT]
+>The [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPS performance.
+
+### VM placement
 
 In Azure Stack, tenant VM placement is done automatically by the placement engine across available hosts. 
 The only two considerations when placing VMs are whether there is enough memory on the host for that VM type, and if the VMs are a part of an [availability set](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) or are [virtual machine scale sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).  
@@ -49,13 +55,6 @@ In addition, Azure Stack nodes can be filled up at varying levels prior to tryin
 Azure Stack doesn't over-commit memory. However, an over-commit of the number of physical cores is allowed. 
 Since placement algorithms don't look at the existing virtual to physical core over-provisioning ratio as a factor, each host could have a different ratio. 
 As Microsoft, we do not provide guidance on the physical-to-virtual core ratio because of the variation in workloads and service level requirements. 
-
-## Azure Stack compute
-
-The [VM sizes](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) supported on Azure Stack are a subset of those supported on Azure. Azure imposes resource limits along many vectors to avoid overconsumption of resources (server local and service-level). Without imposing some limits on tenant consumption, the tenant experiences will suffer when other tenants overconsume resources. For networking egress from the VM, there are bandwidth caps in place on Azure Stack that match Azure limitations. For storage resources, storage IOPS limits have been implemented on Azure Stack to avoid basic overconsumption of resources by tenants for storage access.
-
->[!IMPORTANT]
->The [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPS performance.
 
 ### Azure Stack memory 
 
