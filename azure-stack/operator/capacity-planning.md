@@ -62,8 +62,6 @@ A portion of the total host memory is reserved and unavailable for tenant VM pla
 
 You can review a pie chart in the Administration portal that shows the free and used memory in Azure Stack. The following diagram shows the physical memory capacity on an Azure Stack scale unit in the Azure Stack:
 
-You can review a pie chart in the Administration portal that shows the free and used memory in Azure Stack. The following diagram shows the physical memory capacity on an Azure Stack scale unit in the Azure Stack: 
-
 ![Physical memory capacity](media/azure-stack-capacity-planning/physical-memory-capacity.png)
 
 Used memory is made up of several components. The following components consume the memory in the use section of the pie chart.  
@@ -74,7 +72,7 @@ Used memory is made up of several components. The following components consume t
 4. Tenant VMs – These are the tenant VMs created by Azure Stack users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in **Creating** or **Failed** state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option will not consume memory from Azure Stack. 
 
 The best way to understand memory consumption on the portal is to use the [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) to see the impact of various workloads. 
-The following is the actual calculation used by the planner.
+The following calculation is the same one used by the planner.
 
 This calculation results in the total, available memory that can be used for tenant VM placement. 
 This memory capacity is for the entirety of the Azure Stack scale unit. 
