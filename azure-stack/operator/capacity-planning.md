@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2019
+ms.date: 05/30/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 03/29/2019
+ms.lastreviewed: 05/30/2019
 ---
 
 # Azure Stack capacity planning
@@ -50,7 +50,14 @@ Azure Stack doesn't over-commit memory. However, an over-commit of the number of
 Since placement algorithms don't look at the existing virtual to physical core over-provisioning ratio as a factor, each host could have a different ratio. 
 As Microsoft, we do not provide guidance on the physical-to-virtual core ratio because of the variation in workloads and service level requirements. 
 
-## Azure Stack memory 
+## Azure Stack compute
+
+The [VM sizes](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) supported on Azure Stack are a subset of those supported on Azure. Azure imposes resource limits along many vectors to avoid overconsumption of resources (server local and service-level). Without imposing some limits on tenant consumption, the tenant experiences will suffer when other tenants overconsume resources. For networking egress from the VM, there are bandwidth caps in place on Azure Stack that match Azure limitations. For storage resources, storage IOPS limits have been implemented on Azure Stack to avoid basic overconsumption of resources by tenants for storage access.
+
+>[!IMPORTANT]
+>The [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPS performance.
+
+### Azure Stack memory 
 
 Azure Stack is designed to keep VMs running that have been successfully provisioned. 
 For example, if a host is offline because of a hardware failure, Azure Stack will attempt to restart that VM on another host. 
