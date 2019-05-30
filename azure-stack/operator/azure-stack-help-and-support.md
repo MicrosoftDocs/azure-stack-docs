@@ -42,15 +42,15 @@ For an integrated system, there is a coordinated escalation and resolution proce
 If there is a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). 
 You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open the Help + Support overview page and submit a new support request.
 
-If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, such as software running on the hardware lifecycle host, contact your OEM hardware vendor first.
-
+If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, such as software running on the hardware lifecycle host, contact your OEM hardware vendor first. 
 For anything else, contact Microsoft CSS.
 
 ![Get expert help for integrated systems](media/azure-stack-help-and-support/get-support-integrated.png)
 
 For the Azure Stack Development Kit (ASDK), you can ask support-related questions in the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
-If you click **Help** (question mark) in the upper-right corner of the administrator portal, and then click **Help + support**, this opens the forums site directly. 
-These forums are regularly monitored. 
+
+You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open the forum directly. 
+MSDN forums are regularly monitored. 
 Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
 
 ![Get expert help for ASDK](media/azure-stack-help-and-support/get-support-asdk.png)
@@ -73,7 +73,7 @@ Previous Azure Stack releases also have a link to **Help + support** that redire
 ![Get support tutorials](media/azure-stack-help-and-support/get-support-previous.png)
 
 If there is a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). 
-If you click **Help and Support** (question mark) in the upper-right corner of the administrator portal, and then click **New support request**, you can directly submit a new support request with CSS.
+You can click **Help** (question mark) in the upper-right corner of the administrator portal, click **Help and Support**, and then click **New support request** to directly submit a new support request with CSS.
 
 For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our OEM partners. 
 If there is a cloud services issue, support is offered through Microsoft CSS. 
@@ -81,6 +81,6 @@ If there is a cloud services issue, support is offered through Microsoft CSS.
 If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, such as software running on the hardware lifecycle host, contact your OEM hardware vendor first. 
 For anything else, contact Microsoft CSS.
 
-For the development kit, you can ask support-related questions in the Microsoft forums. 
-If you click **Help and Support** (question mark) in the upper-right corner of the administrator portal, and then click **MSDN forums**, you'll be redirected to the forum where you can get help from the Azure Stack community.
+For the development kit, you can ask support-related questions in the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
+You can click **Help** (question mark) in the upper-right corner of the administrator portal, click **Help and Support**, and then click **MSDN forums** to get help from experts in the Azure Stack community.
 Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
