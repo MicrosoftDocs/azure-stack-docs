@@ -255,7 +255,7 @@ The following are post-installation known issues for this build version.
 
 - In the user portal, if you attempt to add a **Backend Pool** to a **Load Balancer**, the operation fails with the error message **Failed to update Load Balancer....**  To work around this issue, use PowerShell, CLI, or an Azure Resource Manager template to associate the backend pool with a load balancer resource.
 
-- In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer**, the operation fails with the error message **Failed to update Load Balancer....**  To work aroundthis issue, use PowerShell, CLI, or an Azure Resource Manager template to associate the backend pool with a load balancer resource.
+- In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer**, the operation fails with the error message **Failed to update Load Balancer....**  To work around this issue, use PowerShell, CLI, or an Azure Resource Manager template to associate the backend pool with a load balancer resource.
 
 - In the user portal, the **Create Load Balancer** window shows an option to create a **Standard** load balancer SKU. This option is not supported in Azure Stack.
 
