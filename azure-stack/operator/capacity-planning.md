@@ -52,10 +52,10 @@ As Microsoft, we do not provide guidance on the physical-to-virtual core ratio b
 
 ## Azure Stack compute
 
-The [VM sizes](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) supported on Azure Stack are a subset of those supported on Azure. Azure imposes resource limits along many vectors to avoid overconsumption of resources (server local and service-level). Without imposing some limits on tenant consumption, the tenant experiences will suffer when other tenants overconsume resources. For networking egress from the VM, there are bandwidth caps in place on Azure Stack that match Azure limitations. For storage resources, storage IOPs limits have been implemented on Azure Stack to avoid basic overconsumption of resources by tenants for storage access.
+The [VM sizes](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) supported on Azure Stack are a subset of those supported on Azure. Azure imposes resource limits along many vectors to avoid overconsumption of resources (server local and service-level). Without imposing some limits on tenant consumption, the tenant experiences will suffer when other tenants overconsume resources. For networking egress from the VM, there are bandwidth caps in place on Azure Stack that match Azure limitations. For storage resources, storage IOPS limits have been implemented on Azure Stack to avoid basic overconsumption of resources by tenants for storage access.
 
 >[!IMPORTANT]
->The [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPs performance.
+>The [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPS performance.
 
 ### Azure Stack memory 
 
