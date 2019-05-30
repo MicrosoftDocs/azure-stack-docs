@@ -21,11 +21,11 @@ ms.lastreviewed: 05/29/2019
 ---
 # Microsoft Azure Stack Portal Help and Support
 
-Beginning with the 1905 release, the Azure Stack portal has **Help + support** improvements to make it easier for operators to check their support options, get expert help, and learn more about Azure Stack. 
+Beginning with the 1905 release, **Help + support** improvements in the Azure Stack portal make it easier for operators to check their support options, get expert help, and learn more about Azure Stack. 
 
 ## Documentation, Billing, and Support
 
-At the top of **Help + support** are links to read more about an issue, get info about billing, or see which support options are available. 
+At the top of **Help + support** are links to places you might try first, like read up about a new concept, understand how billing works, or see which support options are available. 
 
 ![Self-service support](media/azure-stack-help-and-support/get-support-tiles.png)
 
@@ -40,7 +40,7 @@ At the top of **Help + support** are links to read more about an issue, get info
 For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
 
 If there is a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). 
-If you click **Help** (question mark) in the upper-right corner of the administrator portal, and then click **Help + support**, The Help + Support overvire page will open, where you can submit a new support request.
+You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open the Help + Support overview page and submit a new support request.
 
 If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, such as software running on the hardware lifecycle host, contact your OEM hardware vendor first.
 
