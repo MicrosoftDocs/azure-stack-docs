@@ -66,10 +66,10 @@ You can review a pie chart in the Administration portal that shows the free and 
 
 Used memory is made up of several components. The following components consume the memory in the use section of the pie chart.  
 
-1. Host OS usage or reserve – This is the memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the Spaces Direct memory cache. 
-2. Infrastructure services – These are the infrastructure VMs that make up Azure Stack. As of the 1902 release version of Azure Stack, this entails 31 VMs that take up 242 GB + (4 GB x # of nodes). This internal service structure allows for the future introduction of new infrastructure services as they are developed.
-3. Resiliency reserve – Azure Stack reserves a portion of the memory to allow for tenant availability during a single host failure as well as during patch and update to allow for successful live migration of VMs. 
-4. Tenant VMs – These are the tenant VMs created by Azure Stack users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in **Creating** or **Failed** state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option will not consume memory from Azure Stack. 
+- Host OS usage or reserve – This is the memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the Spaces Direct memory cache. 
+- Infrastructure services – These are the infrastructure VMs that make up Azure Stack. As of the 1902 release version of Azure Stack, this entails 31 VMs that take up 242 GB + (4 GB x # of nodes). This internal service structure allows for the future introduction of new infrastructure services as they are developed.
+- Resiliency reserve – Azure Stack reserves a portion of the memory to allow for tenant availability during a single host failure as well as during patch and update to allow for successful live migration of VMs. 
+- Tenant VMs – These are the tenant VMs created by Azure Stack users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in **Creating** or **Failed** state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option will not consume memory from Azure Stack. 
 
 The best way to understand memory consumption on the portal is to use the [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) to see the impact of various workloads. 
 The following calculation is the same one used by the planner.
@@ -175,9 +175,9 @@ Azure Stack is delivered as an integrated system with software installed by solu
 #### Multiple ways to model computing resources
 Resource modeling within the Azure Stack planner depends upon the various sizes of Azure Stack VMs. VMs range in size from the smallest Basic 0 up to the largest Standard_Fsv2. You can model computing resource allocations in two different ways:
 
-1. Select a specific hardware offering and see which combinations of various resources fit. 
+- Select a specific hardware offering and see which combinations of various resources fit. 
 
-2. Create a specific combination of VM allocations and let the Azure Resource Calculator show which available hardware SKUs are capable of supporting this VM configuration.
+- Create a specific combination of VM allocations and let the Azure Resource Calculator show which available hardware SKUs are capable of supporting this VM configuration.
 
 This tool provides two methods for allocating VM resources: either as one single collection of VM resource allocations or as a collection of up to six differing Workload configurations. Each Workload configuration can contain a different allocation of available VM resources. The next sections have step-by-step instructions to create and use each of these allocation models. Only values contained in non-background shaded cells, or within SKU pull-down lists on this worksheet should be modified. Changes made within shaded cells may break resource calculations.
 
