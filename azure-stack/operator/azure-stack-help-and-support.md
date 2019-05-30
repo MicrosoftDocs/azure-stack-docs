@@ -31,7 +31,7 @@ At the top of **Help + support** are links to read more about an issue, get info
 
 - **Documentation**. [Azure Stack Operator Documentation](index.yml) includes concepts, how-to topics and tutorials that show how to offer Azure Stack services such as virtual machines, SQL databases, web apps, and more. 
 
-- **Learn about billing**. Get tips for [monitoring usage](azure-stack-usage-reporting.md) and [understanding your bill](azure-stack-billing-and-chargeback.md).
+- **Learn about billing**. Get tips on [usage and billing](azure-stack-billing-and-chargeback.md).
 
 - **Support options**. Azure Stack operators can choose from a range of [Azure support options](https://aka.ms/azstacksupport) that can fit the needs of any enterprise. 
 
@@ -40,7 +40,7 @@ At the top of **Help + support** are links to read more about an issue, get info
 For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
 
 If there is a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). 
-If you click **Help and support** (question mark) in the upper-right corner of the administrator portal, and then click **New support request**, you can directly open a support request.
+If you click **Help** (question mark) in the upper-right corner of the administrator portal, and then click **Help + support**, The Help + Support overvire page will open, where you can submit a new support request.
 
 If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, such as software running on the hardware lifecycle host, contact your OEM hardware vendor first.
 
@@ -49,7 +49,7 @@ For anything else, contact Microsoft CSS.
 ![Get expert help for integrated systems](media/azure-stack-help-and-support/get-support-integrated.png)
 
 For the Azure Stack Development Kit (ASDK), you can ask support-related questions in the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
-If you click **Help and support** (question mark) in the upper-right corner of the administrator portal, and then click **MSDN Forums**, this opens the forums site directly. 
+If you click **Help** (question mark) in the upper-right corner of the administrator portal, and then click **Help + support**, this opens the forums site directly. 
 These forums are regularly monitored. 
 Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
 
@@ -68,9 +68,12 @@ This set of tutorials is customized depending on whether you're running the ASDK
 
 ## Help and Support for earlier releases Azure Stack (pre-1905)
 
-Previous Azure Stack releases also have a link to **Help + support** that redirects to the [Azure Stack User Documentation](https://docs.microsoft.com/azure-stack/user/).
+Previous Azure Stack releases also have a link to **Help + support** that redirects to the [Azure Stack Operator Documentation](https://aka.ms/adminportaldocs).
 
 ![Get support tutorials](media/azure-stack-help-and-support/get-support-previous.png)
+
+If there is a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). 
+If you click **Help and Support** (question mark) in the upper-right corner of the administrator portal, and then click **New support request**, you can directly submit a new support request with CSS.
 
 For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our OEM partners. 
 If there is a cloud services issue, support is offered through Microsoft CSS. 
@@ -79,4 +82,5 @@ If there is an issue with deployment, patch and update, hardware (including fiel
 For anything else, contact Microsoft CSS.
 
 For the development kit, you can ask support-related questions in the Microsoft forums. 
+If you click **Help and Support** (question mark) in the upper-right corner of the administrator portal, and then click **MSDN forums**, you'll be redirected to the forum where you can get help from the Azure Stack community.
 Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
