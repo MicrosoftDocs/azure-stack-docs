@@ -51,7 +51,7 @@ Follow these steps to register the ASDK with Azure.
 
 2. On the ASDK host computer, open the file **C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1** in an editor with elevated permissions.
 
-3. On line 1249, add a `-TimeoutInSeconds 1800` parameter at the end. This is required due to a service principal timeout when running the registration script. Line 1249 should now appear as follows:
+3. On line 1249, add a `-TimeoutInSeconds 1800` parameter at the end. This is required, in order to prevent a service principal timeout when running the registration script. Line 1249 should now appear as follows:
 
    ```powershell
    $servicePrincipal = Invoke-Command -Session $PSSession -ScriptBlock { New-AzureBridgeServicePrincipal -RefreshToken $using:RefreshToken -AzureEnvironment $using:AzureEnvironmentName -TenantId $using:TenantId -TimeoutInSeconds 1800 }
