@@ -200,23 +200,23 @@ You can set the scope at the level of the subscription, resource group, or resou
 
 Instead of managing each agent separately, you can organize agents into agent pools. An agent pool defines the sharing boundary for all agents in that pool. In Azure DevOps Services, agent pools are scoped to the Azure DevOps Services organization, which means that you can share an agent pool across projects. To learn more about agent pools, see [Create Agent Pools and Queues](https://docs.microsoft.com/azure/devops/pipelines/agents/pools-queues?view=vsts).
 
-### Add a Personal Access Token (PAT) for Azure Stack
+### Add a personal access token (PAT) for Azure Stack
 
-Create a Personal Access Token to access Azure DevOps Services.
+Create a personal access token to access Azure DevOps Services.
 
 1. Sign in to your Azure DevOps Services organization and select your organization profile name.
 
-2. Select **Manage Security** to access token creation page.
-
-    ![User sign-in](media/azure-stack-solution-hybrid-pipeline/000_17.png)
+2. Select **Manage Security** to access token creation page. 
 
     ![Select a project](media/azure-stack-solution-hybrid-pipeline/000_18.png)
+
+3. Click **Add** to create a new personal access token.
 
     ![Add Personal access token](media/azure-stack-solution-hybrid-pipeline/000_18a.png)
 
     ![Create token](media/azure-stack-solution-hybrid-pipeline/000_18b.png)
 
-3. Copy the token.
+4. Copy the token.
 
     > [!Note]
     > Save the token information. This information isn't stored and won't be shown again when you leave the web page.
