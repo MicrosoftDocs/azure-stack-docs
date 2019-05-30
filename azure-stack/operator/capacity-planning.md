@@ -57,7 +57,7 @@ The [VM sizes](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes)
 >[!IMPORTANT]
 >The [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPs performance.
 
-## Azure Stack memory 
+### Azure Stack memory 
 
 Azure Stack is designed to keep VMs running that have been successfully provisioned. 
 For example, if a host is offline because of a hardware failure, Azure Stack will attempt to restart that VM on another host. 
