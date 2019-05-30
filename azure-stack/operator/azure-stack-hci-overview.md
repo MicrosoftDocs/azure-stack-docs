@@ -1,6 +1,6 @@
 ---
 title: Azure Stack HCI overview
-description: Azure Stack HCI is a hyper-converged Windows Server 2019 cluster that uses validated hardware to run virtualized workloads on-premises, optionally connecting to Azure services for cloud-based backup, site-recovery and more. Azure Stack HCI solutions use Microsoft-validated hardware to ensure optimal performance and reliability, and include support for technologies such as NVMe drives, persistent memory, and remote-direct memory access (RDMA) networking.
+description: Azure Stack HCI is a hyper-converged Windows Server 2019 cluster that uses validated hardware to run virtualized workloads on-premises, optionally connecting to Azure services for cloud-based backup, site-recovery, and more. Azure Stack HCI solutions use Microsoft-validated hardware to ensure optimal performance and reliability, and include support for technologies such as NVMe drives, persistent memory, and remote-direct memory access (RDMA) networking.
 ms.technology: storage
 ms.topic: article
 author: jasongerend
@@ -13,7 +13,7 @@ ms.date: 05/30/2019
 
 >Applies to: Windows Server 2019
 
-Azure Stack HCI is a hyper-converged Windows Server 2019 cluster that uses validated hardware to run virtualized workloads on-premises, optionally connecting to Azure services for cloud-based backup, site-recovery and more. Azure Stack HCI solutions use Microsoft-validated hardware to ensure optimal performance and reliability, and include support for technologies such as NVMe drives, persistent memory, and remote-direct memory access (RDMA) networking.
+Azure Stack HCI is a hyper-converged Windows Server 2019 cluster that uses validated hardware to run virtualized workloads on-premises. You can also optionally connect to Azure services for cloud-based backup, site-recovery, and more. Azure Stack HCI solutions use Microsoft-validated hardware to ensure optimal performance and reliability, and include support for technologies such as NVMe drives, persistent memory, and remote-direct memory access (RDMA) networking.
 
 Azure Stack HCI is a solution that combines several products:
 
@@ -69,7 +69,7 @@ You can take advantage of cloud and on-premises working together with a hypercon
 
 - Azure Site Recovery for high availability and disaster recovery as a service (DRaaS).
 
-- Azure Monitor, a centralized hub to track what’s happening across your applications, network and infrastructure – with advanced analytics powered by AI.
+- Azure Monitor, a centralized hub to track what’s happening across your applications, network, and infrastructure – with advanced analytics powered by AI.
 
 - Cloud Witness, to use Azure as the lightweight tie breaker for cluster quorum.
 
@@ -128,7 +128,7 @@ Many Microsoft customers have complex IT environments and our goal is to provide
 
 ### Does Azure Stack HCI need to be connected to Azure?
 
-No, it’s totally optional. You can take advantage of integration with Azure for hybrid scenarios such as off-site backup and disaster recovery, cloud-based monitoring and update management, but they are optional. We fully understand and accommodate you if you prefer or need to run disconnected.
+No, it’s optional. You can take advantage of integration with Azure for hybrid scenarios such as off-site backup and disaster recovery, as well as cloud-based monitoring and update management, but they're optional. It's no problem to run disconnected from the Internet.
 
 ### How does Azure Stack HCI relate to Windows Server?
 
@@ -171,7 +171,7 @@ As your organization digitally transforms, you may find that you can move faster
 
 |Azure Stack|Azure Stack HCI|
 |--------|-------|
-|Use Azure Stack for self-service Infrastructure-as-a-Service (IaaS), with strong isolation and precise usage tracking and chargeback for multiple co-located tenants. Ideal for service providers and enterprise private clouds. Templates from the Azure Marketplace.|Azure Stack HCI does not natively enforce or provide for multi-tenancy.|
+|Use Azure Stack for self-service Infrastructure-as-a-Service (IaaS), with strong isolation and precise usage tracking and chargeback for multiple colocated tenants. Ideal for service providers and enterprise private clouds. Templates from the Azure Marketplace.|Azure Stack HCI does not natively enforce or provide for multi-tenancy.|
 |Use Azure Stack to develop and run apps that rely on Platform-as-a-Service (PaaS) services like Web Apps, Functions, or Event Hubs on-premises. These services run on Azure Stack exactly like they do in Azure, providing a consistent hybrid development and runtime environment.|Azure Stack HCI does not run PaaS services on premises.
 |Use Azure Stack to modernize app deployment and operation with DevOps practices like infrastructure as code, continuous integration and continuous deployment (CI/CD), and convenient features like Azure-consistent VM Extensions. Ideal for Dev and DevOps teams.|Azure Stack HCI does not natively include any DevOps tooling.
 
@@ -181,4 +181,4 @@ As your organization digitally transforms, you may find that you can move faster
 |---------------|---------------|
 |Azure Stack requires minimum 4 nodes and its own network switches.|Use Azure Stack HCI for the minimum footprint for remote-office / branch-office (ROBO). Start with just 2 server nodes and switchless back-to-back networking for peak simplicity and affordability. Hardware offers start at 4 drives, 64 GB of memory, well under $10k / node.
 |Azure Stack constrains Hyper V configurability and feature set for consistency with Azure.|Use Azure Stack HCI for no-frills Hyper-V virtualization for classic enterprise apps like Exchange, SharePoint, and SQL Server, and to virtualize Windows Server roles like File Server, DNS, DHCP, IIS, and AD. Unrestricted access to all Hyper-V features like Shielded VMs.|
-|Azure Stack does not expose these infrastructural technologies.|Use Azure Stack HCI to substitute software-defined infrastructure in place of aging storage arrays or network appliances, without major re-architecture. Built-in Storage Spaces Direct and Software-Defined Networking (SDN) offer frictionless integration with Hyper-V environments.|
+|Azure Stack does not expose these infrastructural technologies.|Use Azure Stack HCI to substitute software-defined infrastructure in place of aging storage arrays or network appliances, without major rearchitecture. Built-in Storage Spaces Direct and Software-Defined Networking (SDN) offer frictionless integration with Hyper-V environments.|
