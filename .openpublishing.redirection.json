@@ -1,8 +1,18 @@
 {
   "redirections": [
     {
-      "source_path": "azure-stack/operator/azure-stack-update-1811.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-1904",
+      "source_path": "azure-stack/operator/capacity-planning-storage.md",
+      "redirect_url": "/azure-stack/operator/capacity-planning",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/capacity-planning-compute.md",
+      "redirect_url": "/azure-stack/operator/capacity-planning",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/capacity-planning-spreadsheet.md",
+      "redirect_url": "/azure-stack/operator/capacity-planning",
       "redirect_document_id": false
     },
     {
