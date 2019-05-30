@@ -56,10 +56,10 @@ To learn more about CI and CD:
 You need to have components in place to build a hybrid CI/CD pipeline. The following components will take time to prepare:
 
 * An Azure OEM/hardware partner can deploy a production Azure Stack. All users can deploy the Azure Stack Development Kit (ASDK).
-* An Azure Stack Operator must also: deploy the App Service, create plans and offers, create a tenant subscription, and add the Windows Server 2016 image.
+* An Azure Stack Operator must do the following: deploy the App Service, create plans and offers, create a tenant subscription, and add the Windows Server 2016 image.
 
 >[!NOTE]
->If you already have some of these components deployed, make sure they meet the all the requirements before you start this tutorial.
+>If you already have some of these components deployed, make sure they meet the all the requirements before starting this tutorial.
 
 This tutorial assumes that you have some basic knowledge of Azure and Azure Stack. To learn more before starting the tutorial, read the following articles:
 
@@ -74,7 +74,7 @@ This tutorial assumes that you have some basic knowledge of Azure and Azure Stac
 ### Azure Stack requirements
 
 * Use an Azure Stack integrated system or deploy the Azure Stack Development Kit (ASDK). To deploy the ASDK:
-  * The [Tutorial: deploy the ASDK using the installer](../asdk/asdk-install.md) gives detailed deployment instructions.
+  * The [Tutorial: Deploy the ASDK using the installer](../asdk/asdk-install.md) article gives detailed deployment instructions.
   * Use the [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) PowerShell script to automate ASDK post-deployment steps.
 
     > [!Note]
@@ -84,7 +84,7 @@ This tutorial assumes that you have some basic knowledge of Azure and Azure Stac
   * Create [Plan/Offers](../operator/azure-stack-plan-offer-quota-overview.md) in Azure Stack.
   * Create a [tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) in Azure Stack.
   * Create a Web App in the tenant subscription. Make note of the new Web App URL for later use.
-  * Deploy a Windows Server 2012 Virtual Machine in the tenant subscription. You will use this server as your build server and to run Azure DevOps Services.
+  * Deploy a Windows Server 2012 Virtual Machine in the tenant subscription. You'll use this server as your build server and to run Azure DevOps Services.
 * Provide a Windows Server 2016 image with .NET 3.5 for a virtual machine (VM). This VM will be built on your Azure Stack as a private build agent.
 
 ### Developer tool requirements
@@ -120,13 +120,13 @@ Refer to the [Service Principal Creation](https://docs.microsoft.com/azure/activ
 
 ### Create an access key
 
-A Service Principal requires a key for authentication. Use the following steps to generate a key.
+A Service Principal requires a key for authentication. Use the following steps to generate a key:
 
-1. From **App registrations** in Azure Active Directory, select your application.
+1. From **App registrations** in Azure Active Directory, select your app.
 
     ![Select the application](media/azure-stack-solution-hybrid-pipeline/000_01.png)
 
-2. Make note of the value of **Application ID**. You will use that value when configuring the service endpoint in Azure DevOps Services.
+2. Make note of the value of **Application ID**. You'll use that value when configuring the service endpoint in Azure DevOps Services.
 
     ![Application ID](media/azure-stack-solution-hybrid-pipeline/000_02.png)
 
@@ -142,13 +142,13 @@ A Service Principal requires a key for authentication. Use the following steps t
 
     ![Key description and duration](media/azure-stack-solution-hybrid-pipeline/000_05.png)
 
-    After you save the key, the key **VALUE** is displayed. Copy this value because you can't get this value later. You provide the **key value** with the application ID to sign in as the application. Store the key value where your application can retrieve it.
+    After you save the key, the key **VALUE** is displayed. Copy this value because you can't get this value later. You provide the **key value** with the **application ID** to sign in as the app. Store the key value where your app can retrieve it.
 
     ![Key VALUE](media/azure-stack-solution-hybrid-pipeline/000_06.png)
 
 ### Get the tenant ID
 
-As part of the service endpoint configuration, Azure DevOps Services requires the **Tenant ID** that corresponds to the AAD Directory that your Azure Stack stamp is deployed to. Use the following steps to get the Tenant ID.
+As part of the service endpoint configuration, Azure DevOps Services requires the **tenant ID** that corresponds to the AAD Directory that your Azure Stack stamp is deployed to. Use the following steps to get the tenant ID.
 
 1. Select **Azure Active Directory**.
 
@@ -164,9 +164,9 @@ As part of the service endpoint configuration, Azure DevOps Services requires th
 
 ### Grant the service principal rights to deploy resources in the Azure Stack subscription
 
-To access resources in your subscription, you must assign the application to a role. Decide which role represents the best permissions for the application. To learn about the available roles, see [RBAC: Built in Roles](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+To access resources in your subscription, you must assign the app to a role. Decide which role represents the best permissions for the app. To learn about the available roles, see [RBAC: Built in Roles](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
 
-You can set the scope at the level of the subscription, resource group, or resource. Permissions are inherited to lower levels of scope. For example, adding an application to the Reader role for a resource group means it can read the resource group and any of its resources.
+You can set the scope at the level of the subscription, resource group, or resource. Permissions are inherited to lower levels of scope. For example, adding an app to the Reader role for a resource group means it can read the resource group and any of its resources.
 
 1. Navigate to the level of scope you wish to assign the application to. For example, to assign a role at the subscription scope, select **Subscriptions**.
 
@@ -182,15 +182,15 @@ You can set the scope at the level of the subscription, resource group, or resou
 
     ![Add](media/azure-stack-solution-hybrid-pipeline/000_13.png)
 
-5. In **Add permissions**, select the role you that you want to assign to the application. In this example, the **Owner** role.
+5. In **Add permissions**, select the role you that you want to assign to the app. In this example, it's the **Owner** role.
 
     ![Owner role](media/azure-stack-solution-hybrid-pipeline/000_14.png)
 
-6. By default, Azure Active Directory applications aren't displayed in the available options. To find your application, you must provide its name in the **Select** field to search for it. Select the app.
+6. By default, Azure Active Directory apps aren't displayed in the available options. To find your app, you must provide its name in the **Select** field to search for it. Select the app.
 
     ![App search result](media/azure-stack-solution-hybrid-pipeline/000_16.png)
 
-7. Select **Save** to finish assigning the role. You see your application in the list of users assigned to a role for that scope.
+7. Select **Save** to finish assigning the role. You can see your app in the list of users assigned to a role for that scope.
 
 ### Role-Based Access Control
 
