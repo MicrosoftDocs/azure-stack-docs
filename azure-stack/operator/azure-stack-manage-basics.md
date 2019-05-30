@@ -3,7 +3,7 @@ title: Azure Stack administration basics | Microsoft Docs
 description: Learn what you need to know to administer Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 
@@ -13,9 +13,9 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
-ms.author: mabrigg
-ms.lastreviewed: 10/15/2018
+ms.date: 05/30/2019
+ms.author: justinha
+ms.lastreviewed: 05/30/2018
 
 ---
 # Azure Stack administration basics
@@ -129,15 +129,19 @@ Before a user can access services, they must [subscribe to an offer](azure-stack
 
 For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
 
-If there is a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). If you click the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then click **New support request**, this opens a site where you can directly open a support request.
+If there is a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). 
+You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open the Help + Support overview page and submit a new support request.
 
-If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, such as software running on the hardware lifecycle host, contact your OEM hardware vendor first.
-
+If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, such as software running on the hardware lifecycle host, contact your OEM hardware vendor first. 
 For anything else, contact Microsoft CSS.
 
 ### Development kit
 
-For the development kit, you can ask support-related questions in the [Microsoft forums](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). If you click the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then click **New support request**, this opens the forums site directly. These forums are regularly monitored. Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
+For the Azure Stack Development Kit (ASDK), you can ask support-related questions in the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
+
+You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open Help + Support **Overview**, which has a link to the forum. 
+MSDN forums are regularly monitored.  
+Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
 
 ## Next steps
 
