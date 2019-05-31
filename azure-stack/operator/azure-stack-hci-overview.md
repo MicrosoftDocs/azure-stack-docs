@@ -7,7 +7,7 @@ author: jasongerend
 ms.author: jgerend
 ms.localizationpriority: medium
 ms.prod: windows-server-threshold
-ms.date: 05/30/2019
+ms.date: 05/31/2019
 ---
 # Azure Stack HCI overview
 
@@ -25,7 +25,7 @@ Azure Stack HCI is a solution that combines several products:
 
 - Azure services (optional)
 
-![Azure Stack HCI is Microsoft’s hyperconverged solution available from a wide range of hardware partners.](media/azure-stack-hci/AS_HCI_solution.png)
+![Azure Stack HCI is Microsoft’s hyperconverged solution available from a wide range of hardware partners.](media/azure-stack-hci/azure-stack-hci-solution.png)
 
 Azure Stack HCI is Microsoft’s hyperconverged solution available from a wide range of hardware partners. Consider the following scenarios for a hyperconverged solution to help you determine if Azure Stack HCI is the solution that best suits your needs:
 
@@ -43,7 +43,7 @@ Azure Stack HCI is part of the Azure and Azure Stack family, using the same soft
 - [Azure Stack](azure-stack-overview.md) - Operate cloud services on-premises
 - [Azure Stack HCI](https://azure.microsoft.com/overview/azure-stack/hci) - Run virtualized apps on-premises, with optional connections to Azure
 
-![Azure and Azure Stack run cloud services, while Azure Stack HCI runs virtualized applications on-premises](media/azure-stack-hci/azure_family.png)
+![Azure and Azure Stack run cloud services, while Azure Stack HCI runs virtualized applications on-premises](media/azure-stack-hci/azure-family.png)
 
 |Azure: Use public cloud services|Azure Stack: Operate cloud services on-premises|Azure Stack HCI: Run virtualized apps on-premises|
 |-----------------|-----------------|-----------------|
@@ -156,7 +156,7 @@ Follow these steps:
 1. Install Windows Server 2019 Datacenter edition and Windows Admin Center for management and the ability to connect to Azure for cloud services
 1. Optionally use your Azure account to attach cloud-based management and security services to your workloads.
 
-![To buy Azure Stack HCI solutions, choose the hardware partner and configuration that best fits your needs.](media/azure-stack-hci/howbuy_ashci.png)
+![To buy Azure Stack HCI solutions, choose the hardware partner and configuration that best fits your needs.](media/azure-stack-hci/buying-azure-stack-hci.png)
 
 ## Compare Azure Stack and Azure Stack HCI
 
@@ -179,6 +179,6 @@ As your organization digitally transforms, you may find that you can move faster
 
 |Azure Stack|Azure Stack HCI|
 |---------------|---------------|
-|Azure Stack requires minimum 4 nodes and its own network switches.|Use Azure Stack HCI for the minimum footprint for remote-office / branch-office (ROBO). Start with just 2 server nodes and switchless back-to-back networking for peak simplicity and affordability. Hardware offers start at 4 drives, 64 GB of memory, well under $10k / node.
+|Azure Stack requires minimum 4 nodes and its own network switches.|Use Azure Stack HCI for the minimum footprint for remote offices and branches. Start with just 2 server nodes and switchless back-to-back networking for peak simplicity and affordability. Hardware offers start at 4 drives, 64 GB of memory, well under $10k / node.
 |Azure Stack constrains Hyper V configurability and feature set for consistency with Azure.|Use Azure Stack HCI for no-frills Hyper-V virtualization for classic enterprise apps like Exchange, SharePoint, and SQL Server, and to virtualize Windows Server roles like File Server, DNS, DHCP, IIS, and AD. Unrestricted access to all Hyper-V features like Shielded VMs.|
 |Azure Stack doesn't expose these infrastructural technologies.|Use Azure Stack HCI to use software-defined infrastructure in place of aging storage arrays or network appliances, without major rearchitecture. Built-in Hyper-V, Storage Spaces Direct, and Software-Defined Networking (SDN) are directly accessible and manageable.|
