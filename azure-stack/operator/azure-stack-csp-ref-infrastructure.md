@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2019
+ms.date: 05/31/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/09/2019
@@ -31,7 +31,7 @@ There are some differences between how services are priced in Azure Stack and Az
 
 You can find out about the Azure Stack meters used in Commerce and their prices in Partner Center, in the same way as you would for Azure services:
 
-1. In Partner Center, go to the **Dashboard menu** > **Pricing and offers**.
+1. In Partner Center, go to the **Dashboard menu**, then **Sell**, then select **Pricing and offers**.
 2. Under **Usage-based services**, select **Current**.
 3. Open the **Azure in Global CSP price list** spreadsheet.
 4. Filter on **Region = Azure Stack**.
