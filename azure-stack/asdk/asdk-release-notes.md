@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2019
+ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 05/01/2019
+ms.lastreviewed: 05/30/2019
 
 ---
 
@@ -34,6 +34,15 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 - For a list of new features in this release, see [this section](../operator/azure-stack-release-notes-1904.md#whats-in-this-update) of the Azure Stack release notes.
 
 ### Fixed and known issues
+
+- Due to a service principal timeout when running the registration script, in order to [register the ASDK](asdk-register.md) successfully you must edit the **RegisterWithAzure.psm1** PowerShell script. Do the following:
+
+  1. On the ASDK host computer, open the file **C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1** in an editor with elevated permissions.
+  2. On line 1249, add a `-TimeoutInSeconds 1800` parameter at the end. This is required due to a service principal timeout when running the registration script. Line 1249 should now appear as follows:
+
+     ```powershell
+      $servicePrincipal = Invoke-Command -Session $PSSession -ScriptBlock { New-AzureBridgeServicePrincipal -RefreshToken $using:RefreshToken -AzureEnvironment $using:AzureEnvironmentName -TenantId $using:TenantId -TimeoutInSeconds 1800 }
+      ```
 
 - Fixed the VPN connection issue identified [here, in release 1902](#known-issues).
 
