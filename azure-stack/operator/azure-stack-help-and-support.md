@@ -25,7 +25,7 @@ Beginning with the 1905 release, **Help + support** improvements in the Azure St
 
 ## Documentation, Billing, and Support
 
-At the top of **Help + support** are links to places you might try first, like read up about a new concept, understand how billing works, or see which support options are available. 
+At the top of **Help + support** are links to things you might try first, like read up about a new concept, understand how billing works, or see which support options are available. 
 
 ![Self-service support](media/azure-stack-help-and-support/get-support-tiles.png)
 
