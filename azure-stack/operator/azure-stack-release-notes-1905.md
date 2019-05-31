@@ -43,7 +43,10 @@ The Azure Stack 1905 update build number is **1.1905.x.xx**.
 
 ### Improvements
 
-<!-- Changes and product improvements with tangible customer-facing value. -->
+<!-- Changes and product improvements with tangible customer-facing value. --->
+
+- A new Help and Support Overview in the Azure Stack portal makes it easier for operators to check their support options, get expert help, and learn more about Azure Stack. For more information, see [Azure Stack Help and Support](azure-stack-help-and-support.md).
+
 
 ### Changes
 
