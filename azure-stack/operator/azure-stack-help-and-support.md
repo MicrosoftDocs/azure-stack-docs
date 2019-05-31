@@ -40,7 +40,7 @@ At the top of **Help + support** are links to places you might try first, like r
 For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
 
 If there is a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). 
-You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open the Help + Support overview page and submit a new support request.
+You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open **Help + Support Overview** and submit a new support request.
 
 If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, such as software running on the hardware lifecycle host, contact your OEM hardware vendor first. 
 For anything else, contact Microsoft CSS.
@@ -49,7 +49,7 @@ For anything else, contact Microsoft CSS.
 
 For the Azure Stack Development Kit (ASDK), you can ask support-related questions in the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
 
-You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open Help + Support **Overview**, which has a link to the forum. 
+You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open **Help + Support Overview**, which has a link to the forum. 
 MSDN forums are regularly monitored.  
 Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
 
