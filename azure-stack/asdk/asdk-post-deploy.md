@@ -47,6 +47,9 @@ You can install the latest Azure Stack PowerShell module with or without Interne
   - For 1904 builds or later:
 
     ```powershell  
+      Get-Module -Name Azs.* -ListAvailable | Uninstall-Module -Force -Verbose
+      Get-Module -Name Azure* -ListAvailable | Uninstall-Module -Force -Verbose
+
       # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
       Install-Module -Name AzureRM.BootStrapper
 
