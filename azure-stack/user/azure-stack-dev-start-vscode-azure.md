@@ -17,12 +17,12 @@ ms.lastreviewed: 05/31/2019
 
 # Connect to Azure Stack using Azure Account Extension in Visual Studio Code
 
-In this article, we will you through how to connect to Azure Stack using the Azure Account extension. You will need to update your Visual Studio Code (VS Code) settings.
+In this article, we will walk you through how to connect to Azure Stack using the Azure Account extension. You will need to update your Visual Studio Code (VS Code) settings.
 
 VS Code is a light-weight editor for building and debug web and cloud applications. It is used by ASP.NET Core, Python, NodeJS, Go, and other developers. With the Azure Account extension, you can use a single Azure sign-in with subscription filtering for additional Azure extensions. The extension makes the Azure Cloud Shell available in the VS Code-integrated terminal. Using the extension, you can connect to your Azure Stack subscription using both Azure AD (Azure AD) and Active Directory Federated Services (AD FS) for your identity manager. This allows you to sign in to Azure Stack, select your subscription, and open a new command line in a cloud shell. 
 
 > [!Note]  
-> You can use the steps in this article for an Active Directory Federated Services (AS FS) environment. Use your AD FS credentials and endpoints.
+> You can use the steps in this article for an Active Directory Federated Services (AD FS) environment. Use your AD FS credentials and endpoints.
 
 ## Pre-requisites for the Azure Account Extension
 
