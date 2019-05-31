@@ -33,6 +33,3 @@ The following topics provide more details about each component:
 - [Azure Stack compute](azure-stack-capacity-planning-compute.md)
 - [Azure Stack storage](azure-stack-capacity-planning-storage.md)
 - [Azure Stack Capacity Planner](azure-stack-capacity-planner.md)
-
-## Next steps
-Learn about [Azure Stack compute](azure-stack-capacity-planning-compute.md)
