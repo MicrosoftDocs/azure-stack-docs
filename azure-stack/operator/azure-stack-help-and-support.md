@@ -82,5 +82,5 @@ If there is an issue with deployment, patch and update, hardware (including fiel
 For anything else, contact Microsoft CSS.
 
 For the development kit, you can ask support-related questions in the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
-You can click **Help** (question mark) in the upper-right corner of the administrator portal, click **Help and Support**, and then click **MSDN forums** to get help from experts in the Azure Stack community.
+You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **New support request** to get help from experts in the Azure Stack community.
 Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
