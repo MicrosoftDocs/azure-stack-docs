@@ -1,5 +1,5 @@
 ---
-title: Deploy your app to Azure and Azure Stack | Microsoft Docs
+title: Tutorial&#58; Deploy apps to Azure and Azure Stack | Microsoft Docs
 description: Learn how to deploy apps to Azure and Azure Stack with a hybrid CI/CD pipeline.
 services: azure-stack
 documentationcenter: ''
@@ -31,11 +31,11 @@ In this tutorial, you'll create a sample environment to:
 > * Automatically deploy your app to global Azure for user acceptance testing.
 > * When your code passes testing, automatically deploy the app to Azure Stack.
 
-## Benefits of the hybrid delivery build pipe
+## Benefits of the hybrid delivery build pipeline
 
 Continuity, security, and reliability are key elements of app deployment. These elements are essential to your organization and critical to your development team. A hybrid CI/CD pipeline lets you consolidate your build pipes across your on-premises environment and the public cloud. A hybrid delivery model also lets you change deployment locations without changing your app.
 
-Other benefits to using the hybrid approach are:
+Other benefits of using the hybrid approach are:
 
 * You can maintain a consistent set of development tools across your on-premises Azure Stack environment and the Azure public cloud.  A common tool set makes it easier to implement CI/CD patterns and practices.
 * Apps and services deployed in Azure or Azure Stack are interchangeable and the same code can run in either location. You can take advantage of on-premises and public cloud features and capabilities.
@@ -124,27 +124,27 @@ A Service Principal requires a key for authentication. Use the following steps t
 
 1. From **App registrations** in Azure Active Directory, select your app.
 
-    ![Select the application](media/azure-stack-solution-hybrid-pipeline/000_01.png)
+    ![Select the application - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_01.png)
 
 2. Make note of the value of **Application ID**. You'll use that value when configuring the service endpoint in Azure DevOps Services.
 
-    ![Application ID](media/azure-stack-solution-hybrid-pipeline/000_02.png)
+    ![Application ID - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_02.png)
 
 3. To generate an authentication key, select **Settings**.
 
-    ![Edit app settings](media/azure-stack-solution-hybrid-pipeline/000_03.png)
+    ![Edit app settings - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_03.png)
 
 4. To generate an authentication key, select **Keys**.
 
-    ![Configure key settings](media/azure-stack-solution-hybrid-pipeline/000_04.png)
+    ![Configure key settings - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_04.png)
 
 5. Provide a description for the key, and set the duration of the key. When done, select **Save**.
 
-    ![Key description and duration](media/azure-stack-solution-hybrid-pipeline/000_05.png)
+    ![Key description and duration - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_05.png)
 
     After you save the key, the key **VALUE** is displayed. Copy this value because you can't get this value later. You provide the **key value** with the **application ID** to sign in as the app. Store the key value where your app can retrieve it.
 
-    ![Key VALUE](media/azure-stack-solution-hybrid-pipeline/000_06.png)
+    ![Key VALUE - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_06.png)
 
 ### Get the tenant ID
 
@@ -156,11 +156,11 @@ As part of the service endpoint configuration, Azure DevOps Services requires th
 
 2. To get the tenant ID, select **Properties** for your Azure AD tenant.
 
-    ![View tenant properties](media/azure-stack-solution-hybrid-pipeline/000_08.png)
+    ![View tenant properties - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_08.png)
 
 3. Copy the **Directory ID**. This value is your tenant ID.
 
-    ![Directory ID](media/azure-stack-solution-hybrid-pipeline/000_09.png)
+    ![Directory ID - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_09.png)
 
 ### Grant the service principal rights to deploy resources in the Azure Stack subscription
 
@@ -170,25 +170,25 @@ You can set the scope at the level of the subscription, resource group, or resou
 
 1. Navigate to the level of scope you wish to assign the application to. For example, to assign a role at the subscription scope, select **Subscriptions**.
 
-    ![Select Subscriptions](media/azure-stack-solution-hybrid-pipeline/000_10.png)
+    ![Select Subscriptions - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_10.png)
 
 2. In **Subscription**, select Visual Studio Enterprise.
 
-    ![Visual Studio Enterprise](media/azure-stack-solution-hybrid-pipeline/000_11.png)
+    ![Visual Studio Enterprise - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_11.png)
 
 3. In Visual Studio Enterprise, select **Access Control (IAM)**.
 
 4. Select **Add role assignment**.
 
-    ![Add](media/azure-stack-solution-hybrid-pipeline/000_13.png)
+    ![Add role assignment - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_13.png)
 
 5. In **Add permissions**, select the role you that you want to assign to the app. In this example, it's the **Owner** role.
 
-    ![Owner role](media/azure-stack-solution-hybrid-pipeline/000_14.png)
+    ![Owner role permissions - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_14.png)
 
 6. By default, Azure Active Directory apps aren't displayed in the available options. To find your app, you must provide its name in the **Select** field to search for it. Select the app.
 
-    ![App search result](media/azure-stack-solution-hybrid-pipeline/000_16.png)
+    ![App search result - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_16.png)
 
 7. Select **Save** to finish assigning the role. You can see your app in the list of users assigned to a role for that scope.
 
@@ -208,20 +208,20 @@ Create a personal access token to access Azure DevOps Services.
 
 2. Select **Manage Security** to access token creation page. 
 
-    ![Select a project](media/azure-stack-solution-hybrid-pipeline/000_18.png)
+    ![Manage Security - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_18.png)
 
 3. Click **Add** to create a new personal access token.
 
-    ![Add Personal access token](media/azure-stack-solution-hybrid-pipeline/000_18a.png)
+    ![Add Personal access token - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_18a.png)
 
-    ![Create token](media/azure-stack-solution-hybrid-pipeline/000_18b.png)
+    ![Create token - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_18b.png)
 
 4. Copy the token.
 
     > [!Note]
     > Save the token information. This information isn't stored and won't be shown again when you leave the web page.
 
-    ![Personal access token](media/azure-stack-solution-hybrid-pipeline/000_19.png)
+    ![Personal access token - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_19.png)
 
 ### Install the Azure DevOps Services build agent on the Azure Stack hosted build server
 
@@ -335,19 +335,19 @@ Hybrid CI/CD can apply to both application code and infrastructure code. Use [Az
 
 ### Add code to an Azure DevOps Services project
 
-1. Sign in to Azure DevOps Services with an organization that has project creation rights on Azure Stack. The next screen capture shows how to connect to the HybridCICD project.
+1. Sign in to Azure DevOps Services with an organization that has project creation rights in Azure Stack. The next screen capture shows how to connect to the HybridCICD project.
 
-    ![Connect to a Project](media/azure-stack-solution-hybrid-pipeline/017_connect_to_project.png)
+    ![Connect to a Project - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/017_connect_to_project.png)
 
 2. **Clone the repository** by creating and opening the default web app.
 
-    ![Clone repository](media/azure-stack-solution-hybrid-pipeline/018_link_arm.png)
+    ![Clone repository - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/018_link_arm.png)
 
 ### Create self-contained web app deployment for App Services in both clouds
 
 1. Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and then add `win10-x64.` For more information, see [Self-contained deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.
 
-    ![Configure `Runtimeidentifier`](media/azure-stack-solution-hybrid-pipeline/019_runtimeidentifer.png)
+    ![Configure Runtimeidentifier](media/azure-stack-solution-hybrid-pipeline/019_runtimeidentifer.png)
 
 2. Use Team Explorer to check the code into Azure DevOps Services.
 
@@ -380,89 +380,89 @@ Creating a release pipeline is the final step in your app build process. This re
 1. Sign in to Azure DevOps Services and navigate to **Azure Pipelines** for your project.
 2. On the **Releases** tab, select **\[ + ]**  and then pick **Create release definition**.
 
-   ![Create release pipeline](media/azure-stack-solution-hybrid-pipeline/021a_releasedef.png)
+   ![Create release pipeline - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/021a_releasedef.png)
 
 3. On the **Select a Template** page, choose **Azure App Service Deployment**, and then select **Apply**.
 
-    ![Apply template](media/azure-stack-solution-hybrid-pipeline/102.png)
+    ![Apply template - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/102.png)
 
 4. On the **Add artifact** page, from the **Source (Build definition)** pull-down menu, select the Azure Cloud build app.
 
-    ![Add artifact](media/azure-stack-solution-hybrid-pipeline/103.png)
+    ![Add artifact - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/103.png)
 
 5. On the **Pipeline** tab, select the **1 Phase**, **1 Task** link to **View environment tasks**.
 
-    ![Pipeline view tasks](media/azure-stack-solution-hybrid-pipeline/104.png)
+    ![Pipeline view tasks - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/104.png)
 
 6. On the **Tasks** tab, enter Azure as the **Environment name** and select the AzureCloud Traders-Web EP from the **Azure subscription** drop-down list.
 
-    ![Set environment variables](media/azure-stack-solution-hybrid-pipeline/105.png)
+    ![Set environment variables - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/105.png)
 
 7. Enter the **Azure app service name**, which is "northwindtraders" in the next screen capture.
 
-    ![App service name](media/azure-stack-solution-hybrid-pipeline/106.png)
+    ![App service name - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/106.png)
 
 8. For the Agent phase, select **Hosted VS2017** from the **Agent queue** drop-down list.
 
-    ![Hosted agent](media/azure-stack-solution-hybrid-pipeline/107.png)
+    ![Hosted agent - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/107.png)
 
 9. In **Deploy Azure App Service**, select the valid **Package or folder** for the environment.
 
-    ![Select package or folder](media/azure-stack-solution-hybrid-pipeline/108.png)
+    ![Select package or folder - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/108.png)
 
 10. On the **Select File or Folder** page, select **OK** for the folder location.
 
-    ![Alt Text](media/azure-stack-solution-hybrid-pipeline/109.png)
+    ![Select file or folder - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/109.png)
 
 11. Save all changes and go back to **Pipeline**.
 
-    ![Alt Text](media/azure-stack-solution-hybrid-pipeline/110.png)
+    ![Save changes - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/110.png)
 
 12. On the **Pipeline** tab, select **Add artifact**, and choose the **NorthwindCloud Traders-Vessel** from the **Source (Build Definition)** drop-down list.
 
-    ![Add new artifact](media/azure-stack-solution-hybrid-pipeline/111.png)
+    ![Add new artifact - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/111.png)
 
 13. On the **Select a Template** page, add another environment. Pick **Azure App Service Deployment** and then select **Apply**.
 
-    ![Select template](media/azure-stack-solution-hybrid-pipeline/112.png)
+    ![Select template - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/112.png)
 
 14. Enter "Azure Stack" as the **Environment name**.
 
-    ![Environment name](media/azure-stack-solution-hybrid-pipeline/113.png)
+    ![Environment name - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/113.png)
 
 15. On the **Tasks** tab, find and select Azure Stack.
 
-    ![Azure Stack environment](media/azure-stack-solution-hybrid-pipeline/114.png)
+    ![Azure Stack environment - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/114.png)
 
 16. From the **Azure subscription** drop-down list, select  "AzureStack Traders-Vessel EP" for the Azure Stack endpoint.
 
-    ![Alt Text](media/azure-stack-solution-hybrid-pipeline/115.png)
+    ![Azure subscription drop-down - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/115.png)
 
 17. Enter the Azure Stack web app name as the **App service name**.
 
-    ![App service name](media/azure-stack-solution-hybrid-pipeline/116.png)
+    ![App service name - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/116.png)
 
 18. Under **Agent selection**, pick "AzureStack -bDouglas Fir" from the **Agent queue** drop-down list.
 
-    ![Pick agent](media/azure-stack-solution-hybrid-pipeline/117.png)
+    ![Pick agent - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/117.png)
 
 19. For **Deploy Azure App Service**, select the valid **Package or folder** for the environment. On **Select File Or Folder**, select **OK** for the folder **Location**.
 
-    ![Pick package or folder](media/azure-stack-solution-hybrid-pipeline/118.png)
+    ![Pick package or folder - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/118.png)
 
-    ![Approve location](media/azure-stack-solution-hybrid-pipeline/119.png)
+    ![Approve location - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/119.png)
 
 20. On the **Variables** tab, find the variable named **VSTS_ARM_REST_IGNORE_SSL_ERRORS**. Set the variable value to **true**, and set its scope to **Azure Stack**.
 
-    ![Configure variable](media/azure-stack-solution-hybrid-pipeline/120.png)
+    ![Configure variable - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/120.png)
 
 21. On the **Pipeline** tab, select the **Continuous deployment trigger** icon for the NorthwindCloud Traders-Web artifact and set the **Continuous deployment trigger** to **Enabled**.  Do the same thing for the "NorthwindCloud Traders-Vessel" artifact.
 
-    ![Set continuous deployment trigger](media/azure-stack-solution-hybrid-pipeline/121.png)
+    ![Set continuous deployment trigger - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/121.png)
 
 22. For the Azure Stack environment, select the **Pre-deployment conditions** icon set the trigger to **After release**.
 
-    ![Set pre-deployment conditions trigger](media/azure-stack-solution-hybrid-pipeline/122.png)
+    ![Set pre-deployment conditions trigger - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/122.png)
 
 23. Save all your changes.
 
@@ -475,15 +475,15 @@ Now that you've completed the modifications to the release pipeline, it's time t
 
 1. On the **Pipeline** tab, open the **Release** drop-down list and select **Create release**.
 
-    ![Create a release](media/azure-stack-solution-hybrid-pipeline/200.png)
+    ![Create a release - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/200.png)
 
 2. Enter a description for the release, check to see that the correct artifacts are selected, and then select **Create**. After a few moments, a banner appears indicating that the new release was created, and the release name is displayed as a link. Select the link to see the release summary page.
 
-    ![Release creation banner](media/azure-stack-solution-hybrid-pipeline/201.png)
+    ![Release creation banner - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/201.png)
 
 3. The release summary page for shows details about the release. In the following screen capture for "Release-2", the **Environments** section shows the **Deployment status** for Azure as "IN PROGRESS", and the status for Azure Stack is "SUCCEEDED". When the deployment status for the Azure environment changes to "SUCCEEDED", a banner appears indicating that the release is ready for approval. When a deployment is pending or has failed, a blue **(i)** information icon is shown. Hover over the icon to see a pop-up that contains the reason for delay or failure.
 
-    ![Release summary page](media/azure-stack-solution-hybrid-pipeline/202.png)
+    ![Release summary page - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/202.png)
 
 Other views, such as the list of releases, will also display an icon that indicates approval is pending. The pop-up for this icon shows the environment name and more details related to the deployment. It's easy for an administrator see the overall progress of releases and see which releases are waiting for approval.
 
@@ -497,7 +497,7 @@ This section shows how you can monitor and track all your deployments. The relea
 
 2. After the deployment finishes, the entire log file is displayed in the right pane. Select any **Step** in the left pane to see the log file for a single step, such as "Initialize Job". The ability to see individual logs makes it easier to trace and debug  parts of the overall deployment. You can also **Save** the log file for a step, or **Download all logs as zip**.
 
-    ![Release logs](media/azure-stack-solution-hybrid-pipeline/203.png)
+    ![Release logs - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/203.png)
 
 3. Open the **Summary** tab to see general information about the release. This view shows details about the build, the environments it was deployed to, deployment status, and other information about the release.
 
