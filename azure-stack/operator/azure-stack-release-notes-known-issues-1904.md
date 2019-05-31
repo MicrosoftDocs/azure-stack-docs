@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 05/31/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 05/28/2019
+ms.lastreviewed: 05/31/2019
 ---
 
 # Azure Stack 1904 known issues
@@ -140,6 +140,12 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
 - Remediation: Recreate the storage account with the same name you used previously.
 - Occurrence: Common
+
+### VM/VMSS create failures during patch and update on 4-node Azure Stack environments
+ 
+- Applicable: This issue applies to all supported releases.
+- Cause: Creating VMs in an availability set of 3 fault domains and creating a VMSS instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
+- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, VMSS instance creation is still not available during the update process on a 4-node Azure Stack.
 
 ### Virtual Machine Scale Set
 
