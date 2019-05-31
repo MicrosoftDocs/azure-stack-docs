@@ -11,26 +11,29 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 05/31/2019
 
-# keywords: Azure Stack VSCode
+# keywords: Azure Stack Visual Studio Code
 # Intent: I am a developer using Visual Studio Code and I would like to connect to Azure Stack. or Linux Ubuntu who would like to deploy an app to Azure Stack.
 ---
 
 # Connect to Azure Stack using Azure Account Extension in Visual Studio Code
 
-In this article, we will you through how to connect to Azure Stack using the Azure Account extension. You will need to update your Visual Studio Code settings.
+In this article, we will you through how to connect to Azure Stack using the Azure Account extension. You will need to update your Visual Studio Code (VS Code) settings.
 
-You can use Visual Studio Code (VS Code), a light-weight editor, to build and debug modern web and cloud applications. With the Azure Account extension, you can use a single Azure sign-in with subscription filtering for additional Azure extensions. The extension makes the Azure Cloud Shell available in the VS Code-integrated terminal. Using the extension, you can connect to your Azure Stack subscription using both Azure AD (Azure AD) and Active Directory Federated Services (AD FS) for your identity manager. This allows you to sign in to Azure Stack, select your subscription, and open a new command line in a cloud shell. 
+VS Code is a light-weight editor for building and debug web and cloud applications. It is used by ASP.NET Core, Python, NodeJS, Go, and other developers. With the Azure Account extension, you can use a single Azure sign-in with subscription filtering for additional Azure extensions. The extension makes the Azure Cloud Shell available in the VS Code-integrated terminal. Using the extension, you can connect to your Azure Stack subscription using both Azure AD (Azure AD) and Active Directory Federated Services (AD FS) for your identity manager. This allows you to sign in to Azure Stack, select your subscription, and open a new command line in a cloud shell. 
+
+> [!Note]  
+> You can use the steps in this article for an Active Directory Federated Services (AS FS) environment. Use your AD FS credentials and endpoints.
 
 ## Pre-requisites for the Azure Account Extension
 
 1. Azure Stack environment 1904 build or later
-2. Visual Studio Code
-3. Azure Account Extension
-4. An Azure Stack subscription
+2. [Visual Studio Code](https://code.visualstudio.com/)
+3. [Azure Account Extension](https://github.com/Microsoft/vscode-azure-account)
+4. [An Azure Stack subscription](https://azure.microsoft.com/overview/azure-stack/)
 
 ## Steps to connect to Azure Stack
 
-1. Open Visual Studio Code.
+1. Open VS Code.
 
 2. Select **Extensions** on the left-side corner.
 
@@ -38,43 +41,51 @@ You can use Visual Studio Code (VS Code), a light-weight editor, to build and de
 
 4. Select **Azure Account** and select **Install**.
 
-  ![Azure accounts connecting to Azure Stack](media/azure-stack-dev-start-vscode-azure/image1.png)
+      ![Azure Stack Visual Studio Code](media/azure-stack-dev-start-vscode-azure/image1.png)
 
-1. Once installed and Visual Studio Code is reloaded, use **Ctrl + Shift + P,** and select **Preferences: Open User Settings**.
+5. Restart VS Code to load the extension.
 
-2. Select the brackets on the top-right corner.
+6. Retrieve the metadata to connect to the Azure Resource Manager in your Azure Stack. 
+    
+    The Microsoft Azure Resource Manager is a management framework that allows you to deploy, manage, and monitor Azure resources.
+    - The Resource Manager URL for the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/` 
+    - The Resource Manager URL for an integrated system is: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`
+    - Add the following text to your URL to access the metadata: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
 
-  ![A screenshot of a cell phone
-Description automatically generated](media/azure-stack-dev-start-vscode-azure/image2.png)
+    For example, the URL to retrieve the metadata for your Azure Resource Manager endpoint may look something like: `https://management.local.azurestack.external/metadata/endpoints?api-version=1.0`
 
-1. In the code editor, paste the following code snippet and enter  the credentials for your Azure Stack subscription.
+    Make a note of the return JSON. You will need the values for the `loginEndpoint` and `loginEndgraphEndpointpoint` property.
 
-  ```JSON
-  "azure.tenant": "tenant-ID",
-  "azure.ppe": {
-      "activeDirectoryEndpointUrl": "Login endpoint",
-      "activeDirectoryResourceId": "graph audience",
-      "resourceManagerEndpointUrl": "Management Endpoint",
-  },
-  "azure.cloud": "AzurePPE"
-```
+7. Press **Ctrl+Shift+P,** and select **Preferences: Open User Settings (JSON)**.
 
-> [!Note] 
-> To find the value of the `activeDirectoryEndpointURL` and `activeDirectoryResourceID`, use the link below and paste the values within the quotes. The resource manager endpoint URL is needed to be placed within the below link to gather the rest of the information.
+8. In the code editor, update the following JSON snippet with the values for your environment, and then paste snippet into the settings block.
 
-```HTTP
-https://management.location.xxxx.com/metadata/endpoints?api-version=1.0
-```
+    - Values:
 
-8. Save the User Settings and use **Ctrl + Shift + P** once again. Select **Azure: Sign in to Azure Cloud**.
+        | Parameter | Description |
+        | --- | --- |
+        | `tenant-ID` | The value of your Azure Stack [tenant ID](../operator/azure-stack-identity-overview.md). |
+        | `activeDirectoryEndpointUrl` | This is the URL from loginEndpoint property. |
+        | `activeDirectoryResourceId` | This is the URL from loginEndgraphEndpointpoint property.
+        | `resourceManagerEndpointUrl` | This is the root URL for the Azure Resource Manager for Azure Stack. | 
 
-9. A new option will appear that says **Azure PPE**
+    - JSON snippet:
 
-10. Select this option and it will redirect you to your browser to sign in to the endpoint specified. Once you have entered your credentials, you will see the message that shows that you have been signed in to Visual Studio Code and can now close the window.
+      ```JSON  
+      "azure.tenant": "tenant-ID",
+      "azure.ppe": {
+          "activeDirectoryEndpointUrl": "Login endpoint",
+          "activeDirectoryResourceId": "graph audience",
+          "resourceManagerEndpointUrl": "Management Endpoint",
+      },
+      "azure.cloud": "AzurePPE"
+      ```
 
-11. To test that you have successfully logged into your Azure Stack subscription, use **Ctrl + Shift + P** and select **Azure: Select Subscription** and see if the subscription you have is available.
+8. Save the User Settings and use **Ctrl+Shift+P** once again. Select **Azure: Sign in to Azure Cloud**. The new option, **AzurePPE**, appears in the list of targets.
 
-The steps here can be replicated for Active Directory Federated Services environments and only requires a change to the user settings above with the values for AD FS.
+9. Select **AzurePPE**. The authentication page loads in your browser. Sign in to your endpoint.
+
+11. To test that you have successfully logged into your Azure Stack subscription, use **Ctrl+Shift+ P** and select **Azure: Select Subscription** and see if the subscription you have is available.
 
 ## Commands
 
@@ -83,7 +94,7 @@ The steps here can be replicated for Active Directory Federated Services environ
 | Azure: Sign In with Device Code | Sign in to your Azure subscription with a device code. Use this in setups where the Sign In command does not work. |
 | Azure: Sign In to Azure Cloud | Sign in to your Azure subscription in one of the sovereign clouds. |
 | Azure: Sign Out | Sign out of your Azure subscription. |
-| Azure: Select Subscriptions | Pick the set of subscriptions you want to work with. Extensions respect this list and only show resources within the filtered subscriptions. |
+| Azure: Select Subscriptions | Pick the set of subscriptions you want to work with. The extension only shows resources within the filtered subscriptions. |
 | Azure: Create an Account | If you don't have an Azure Account, you can [sign up](https://azure.microsoft.com/free/?utm_source=campaign&utm_campaign=vscode-azure-account&mktingSource=vscode-azure-account) for one today and receive \$200 in free credits. |
 | Azure: Open Bash in Cloud Shell | Open a new terminal running Bash in Cloud Shell. |
 | Azure: Open PowerShell in Cloud Shell | Open a new terminal running PowerShell in Cloud Shell. |
