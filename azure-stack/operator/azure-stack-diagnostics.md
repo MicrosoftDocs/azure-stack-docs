@@ -82,21 +82,21 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
 
 * Collect all logs for all roles:
 
-```powershell
-Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred
-```
+  ```powershell
+  Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred
+  ```
 
 * Collect logs from VirtualMachines and BareMetal roles:
 
-```powershell
-Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal
-```
+  ```powershell
+  Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal
+  ```
 
 * Collect logs from VirtualMachines and BareMetal roles, with date filtering for log files for the past 8 hours:
 
-```powershell
-Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
-```
+  ```powershell
+  Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
+  ```
 
 * Collect logs from VirtualMachines and BareMetal roles, with date filtering for log files for the time period between 8 hours ago and 2 hours ago:
 
@@ -116,6 +116,9 @@ Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -Filter
   Get-AzureStackLog -OutputSasUri "https://<storageAccountName>.blob.core.windows.net/<ContainerName><SAS token>"
   ```
 
+  > [!NOTE]
+  > This procedure is useful when you open a case with Microsoft Support and are asked to upload logs. Even if you do not have an SMB share accessible from the ERCS VM and your ERCS VM does not have internet access, you can create a blob storage account on your Azure Stack to transfer the logs, and then use your client to retrieve those logs and upload them to Microsoft.  
+
   To generate the SAS token for the storage account, the following permissions are required:
 
   * Access to the Blob Storage service
@@ -133,9 +136,6 @@ Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -Filter
   8. For the required permissions, select **Read**, **Write**, and **List**.
   9. Select **Create**.
   10. You will get a Shared Access Signature. Copy the URL portion, and provide it to the `-OutputSasUri` parameter.
-
-  > [!NOTE]
-  > This procedure is useful when you open a case with Microsoft Support and are asked to upload logs. Even if you do not have an SMB share accessible from the ERCS VM and your ERCS VM does not have internet access, you can create a blob storage account on your Azure Stack to transfer the logs, and then use your client to retrieve those logs and upload them to Microsoft.  
 
 ### Parameter considerations for both ASDK and integrated systems
 
