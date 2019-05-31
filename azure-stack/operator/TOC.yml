@@ -30,8 +30,6 @@
       href: azure-stack-update-1903.md
     - name: 1902 update
       href: azure-stack-update-1902.md      
-    - name: 1901 update 
-      href: azure-stack-update-1901.md      
 - name: Quickstarts
   expanded: true
   items:
