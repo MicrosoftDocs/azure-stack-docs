@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Help and support | Microsoft Docs
-description: Get Support for Microsoft Azure Stack.
+title: Microsoft Azure Stack help and support | Microsoft Docs
+description: Get support for Microsoft Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -13,17 +13,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2019
+ms.date: 05/31/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 05/29/2019
+ms.lastreviewed: 05/31/2019
 
 ---
-# Microsoft Azure Stack Portal Help and Support
+# Microsoft Azure Stack help and support
 
 Beginning with the 1905 release, **Help + support** improvements in the Azure Stack portal make it easier for operators to check their support options, get expert help, and learn more about Azure Stack. 
 
-## Documentation, Billing, and Support
+## Documentation, billing, and support
 
 At the top of **Help + support** are links to things you might try first, like read up about a new concept, understand how billing works, or see which support options are available. 
 
@@ -66,7 +66,7 @@ This set of tutorials is customized depending on whether you're running the ASDK
 
 ![Get support tutorials](media/azure-stack-help-and-support/get-support-tutorials.png)
 
-## Help and Support for earlier releases Azure Stack (pre-1905)
+## Help and support for earlier releases Azure Stack (pre-1905)
 
 Previous Azure Stack releases also have a link to **Help + support** that redirects to the [Azure Stack Operator Documentation](https://aka.ms/adminportaldocs).
 
@@ -84,3 +84,6 @@ For anything else, contact Microsoft CSS.
 For the development kit, you can ask support-related questions in the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
 You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **New support request** to get help from experts in the Azure Stack community.
 Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
+
+## Next steps
+- Learn about the [Troubleshooting Azure Stack](azure-stack-troubleshooting.md)
