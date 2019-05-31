@@ -141,12 +141,6 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Remediation: Recreate the storage account with the same name you used previously.
 - Occurrence: Common
 
-### VM/VMSS create failures during patch and update on 4-node Azure Stack environments
- 
-- Applicable: This issue applies to all supported releases.
-- Cause: Creating VMs in an availability set of 3 fault domains and creating a VMSS instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
-- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, VMSS instance creation is still not available during the update process on a 4-node Azure Stack.
-
 ### Virtual Machine Scale Set
 
 #### CentOS
@@ -162,6 +156,12 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Cause: You cannot remove a scale set from the **Virtual Machine Scale Sets** blade.
 - Remediation: Select the scale set that you want to remove, then click the **Delete** button from the **Overview** pane.
 - Occurrence: Common
+
+#### VM/VMSS create failures during patch and update on 4-node Azure Stack environments
+
+- Applicable: This issue applies to all supported releases.
+- Cause: Creating VMs in an availability set of 3 fault domains and creating a VMSS instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
+- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, VMSS instance creation is still not available during the update process on a 4-node Azure Stack.
 
 ### Ubuntu SSH access
 
