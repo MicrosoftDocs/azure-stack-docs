@@ -135,6 +135,12 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a VMSS instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, VMSS instance creation is still not available during the update process on a 4-node Azure Stack.
 
+#### VMSS Instance view blade doesn't load
+ 
+- Applicable: This issue applies to 1904 and 1905 release.
+- Cause: The instance view blade of a scaleset located at Azure Stack Portal -> Dashboard  ->  Virtual machine scale sets  -> AnyScaleSet - Instances  ->  AnyScaleSetInstance fails to load with crying cloud.
+- Remediation: There is currently no remediation and we are working on a fix. Until then, please use CLI commandlet az vmss get-instance-view to get the instance view of a VMSS
+
 ### Ubuntu SSH access
 
 - Applicable: This issue applies to all supported releases.
