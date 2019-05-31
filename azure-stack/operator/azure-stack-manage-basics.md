@@ -138,7 +138,7 @@ For anything else, contact Microsoft CSS.
 
 ### Azure Stack Development Kit (ASDK)
 
-For the ASDK, you can ask support-related questions in the [Microsoft forums](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). If you select the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then select **Help + support** and then select **New support request** under the **Support** section.  The forum site opens. These forums are regularly monitored. Because the ASDK is an evaluation environment, there is no official support offered through Microsoft CSS.
+For the ASDK, you can ask support-related questions in the [Microsoft forums](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). If you select the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then select **Help + support** and then select **MSDN Forums** under the **Support** section.  The forum site opens. These forums are regularly monitored. Because the ASDK is an evaluation environment, there is no official support offered through Microsoft CSS.
 
 ## Next steps
 
