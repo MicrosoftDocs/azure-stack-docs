@@ -226,7 +226,7 @@ Create a personal access token to access Azure DevOps Services.
 ### Install the Azure DevOps Services build agent on the Azure Stack hosted build server
 
 1. Connect to your build server that you deployed on the Azure Stack host.
-2. Download and deploy the build agent as a service using your personal access token (PAT) and run as the VM admin account.
+2. Download and deploy the build agent as a service using your personal access token (PAT) and run it as the VM admin.
 
     ![Download build agent](media/azure-stack-solution-hybrid-pipeline/010_downloadagent.png)
 
@@ -345,9 +345,9 @@ Hybrid CI/CD can apply to both application code and infrastructure code. Use [Az
 
 ### Create self-contained web app deployment for App Services in both clouds
 
-1. Edit the **WebApplication.csproj** file: Select **Runtimeidentifier** and then add `win10-x64.` For more information, see [Self-contained deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.
+1. Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and then add `win10-x64.` For more information, see [Self-contained deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.
 
-    ![Configure Runtimeidentifier](media/azure-stack-solution-hybrid-pipeline/019_runtimeidentifer.png)
+    ![Configure `Runtimeidentifier`](media/azure-stack-solution-hybrid-pipeline/019_runtimeidentifer.png)
 
 2. Use Team Explorer to check the code into Azure DevOps Services.
 
@@ -471,7 +471,7 @@ Creating a release pipeline is the final step in your app build process. This re
 
 ## Create a release
 
-Now that you've completed the modifications to the release pipeline, it's time to start the deployment. To do this, you create a release from the release pipeline. A release may be created automatically; for example, the continuous deployment trigger is set in the release pipeline. This means that modifying the source code will start a new build and, from that, a new release. However, in this section you will create a new release manually.
+Now that you've completed the modifications to the release pipeline, it's time to start the deployment. To do this, you create a release from the release pipeline. A release may be created automatically; for example, the continuous deployment trigger is set in the release pipeline. This means that modifying the source code will start a new build and, from that, a new release. However, in this section you'll create a new release manually.
 
 1. On the **Pipeline** tab, open the **Release** drop-down list and select **Create release**.
 
