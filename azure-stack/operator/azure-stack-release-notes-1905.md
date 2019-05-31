@@ -65,7 +65,7 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
   - microsoft.dsc-arm-2.77.0.0
   - microsoft.vmaccessforlinux-1.5.2
 
-  Please download these versions of the extensions immediately, so that new deployments of the extension do not fail. Always set **autoupdateminorversion=true** so that minor version updates to extensions (for example, 1.8 to 1.9) are automatically performed.
+  Please download these versions of the extensions immediately, so that new deployments of the extension do not fail when TLS 1.2 is enforced in a future release. Always set **autoupdateminorversion=true** so that minor version updates to extensions (for example, 1.8 to 1.9) are automatically performed.
 
 ### Changes
 
