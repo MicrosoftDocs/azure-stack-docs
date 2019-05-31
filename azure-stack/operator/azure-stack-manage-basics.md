@@ -126,6 +126,9 @@ Before a user can use services, they must [subscribe to an offer](azure-stack-su
 
 ## Where to get support
 
+> [!Note]  
+> To get find support information for earlier releases of Azure Stack (pre-1905), see [Help and Support for earlier releases Azure Stack (pre-1905)](azure-stack-help-and-support-overview.md#help-and-support-for-earlier-releases-azure-stack-pre-1905).
+
 ### Integrated systems
 
 For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
