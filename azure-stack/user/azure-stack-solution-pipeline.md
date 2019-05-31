@@ -223,10 +223,10 @@ Create a personal access token to access Azure DevOps Services.
 
     ![Personal access token](media/azure-stack-solution-hybrid-pipeline/000_19.png)
 
-### Install the Azure DevOps Services build agent on the Azure Stack hosted Build Server
+### Install the Azure DevOps Services build agent on the Azure Stack hosted build server
 
-1. Connect to your Build Server that you deployed on the Azure Stack host.
-2. Download and Deploy the build agent as a service using your personal access token (PAT) and run as the VM Admin account.
+1. Connect to your build server that you deployed on the Azure Stack host.
+2. Download and deploy the build agent as a service using your personal access token (PAT) and run as the VM admin account.
 
     ![Download build agent](media/azure-stack-solution-hybrid-pipeline/010_downloadagent.png)
 
@@ -249,7 +249,7 @@ By creating endpoints, a Visual Studio Online (VSTO) build can deploy Azure Serv
 ![NorthwindCloud sample app in VSTO](media/azure-stack-solution-hybrid-pipeline/012_securityendpoints.png)
 
 1. Sign in to VSTO and navigate to the app settings page.
-2. On **Settings**, select **Security**.
+2. In **Settings**, select **Security**.
 3. In **Azure DevOps Services Groups**, select **Endpoint Creators**.
 
     ![NorthwindCloud Endpoint Creators](media/azure-stack-solution-hybrid-pipeline/013_endpoint_creators.png)
@@ -258,17 +258,17 @@ By creating endpoints, a Visual Studio Online (VSTO) build can deploy Azure Serv
 
     ![Add a member](media/azure-stack-solution-hybrid-pipeline/014_members_tab.png)
 
-5. In **Add users and groups**, enter a user name and select that user from the list of users.
+5. On the **Add users and groups** page, enter a user name and select that user from the list of users.
 6. Select **Save changes**.
 7. In the **Azure DevOps Services Groups** list, select **Endpoint Administrators**.
 
     ![NorthwindCloud Endpoint Administrators](media/azure-stack-solution-hybrid-pipeline/015_save_endpoint.png)
 
 8. On the **Members** tab, select **Add**.
-9. In **Add users and groups**, enter a user name and select that user from the list of users.
+9. On the **Add users and groups** page, enter a user name and select that user from the list of users.
 10. Select **Save changes**.
 
-Now that the endpoint information exists, the Azure DevOps Services to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from Azure DevOps Services, and then the agent conveys endpoint information for communication with Azure Stack.
+Now that the endpoint information exists, the Azure DevOps Services to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from Azure DevOps Services and then the agent conveys endpoint information for communication with Azure Stack.
 
 ## Create an Azure Stack endpoint
 
@@ -276,8 +276,6 @@ Now that the endpoint information exists, the Azure DevOps Services to Azure Sta
 
 You can follow the instructions in [Create an Azure Resource Manager service connection with an existing service principal
 ](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) article to create a service connection with an existing service principal and use the following mapping:
-
-You can create a service connection using the following mapping:
 
 | Name | Example | Description |
 | --- | --- | --- |
@@ -292,13 +290,13 @@ You can create a service connection using the following mapping:
 | Tenant ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | The tenant ID you retrieve following the instruction at [Get the tenant ID](azure-stack-solution-pipeline.md#get-the-tenant-id).  |
 | Connection: | Not verified | Validate your connection settings to the service principal. |
 
-Now that the endpoint is created, the DevOps to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from DevOps, and then the agent conveys endpoint information for communication with Azure Stack.
+Now that the endpoint is created, the DevOps to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from DevOps and then the agent conveys endpoint information for communication with Azure Stack.
 
 ![Build agent Azure AD](media/azure-stack-solution-hybrid-pipeline/016_save_changes.png)
 
 ### Create an endpoint for AD FS
 
-The latest update to Azure DevOps allows to create a service connection using a service principal with a certificate for authentication. This is required when Azure Stack is deployed with AD FS as identity provider. 
+The latest update to Azure DevOps lets you create a service connection using a service principal with a certificate for authentication. This is required when Azure Stack is deployed with AD FS as the identity provider. 
 
 ![Build agent AD FS](media/azure-stack-solution-hybrid-pipeline/image06.png)
 
@@ -317,7 +315,7 @@ You can create a service connection using the following mapping:
 | Tenant ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | The tenant ID you retrieve following the instruction at [Get the tenant ID](azure-stack-solution-pipeline.md#get-the-tenant-id). |
 | Connection: | Not verified | Validate your connection settings to the service principal. |
 
-Now that the endpoint is created, the Azure DevOps to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from Azure DevOps, and then the agent conveys endpoint information for communication with Azure Stack.
+Now that the endpoint is created, the Azure DevOps to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from Azure DevOps and then the agent conveys endpoint information for communication with Azure Stack.
 
 > [!Note]
 > If your Azure Stack User ARM endpoint is not exposed to the Internet, the connection validation will fail. This is expected and you can validate your connection by creating a release pipeline with a simple task. 
@@ -367,7 +365,7 @@ Hybrid CI/CD can apply to both application code and infrastructure code. Use [Az
 
 4. Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that can run on Azure and Azure Stack.
 
-### Use an Azure hosted build agent
+### Use an Azure-hosted build agent
 
 Using a hosted build agent in Azure DevOps Services is a convenient option for building and deploying web apps. Agent maintenance and upgrades are automatically performed by Microsoft Azure, which enables a continuous and uninterrupted development cycle.
 
@@ -377,18 +375,18 @@ Azure DevOps Services and Team Foundation Server (TFS) provide a highly configur
 
 ### Create release pipeline
 
-Creating a release pipeline is the final step in your application build process. This release pipeline is used to create a release and deploy a build.
+Creating a release pipeline is the final step in your app build process. This release pipeline is used to create a release and deploy a build.
 
 1. Sign in to Azure DevOps Services and navigate to **Azure Pipelines** for your project.
 2. On the **Releases** tab, select **\[ + ]**  and then pick **Create release definition**.
 
    ![Create release pipeline](media/azure-stack-solution-hybrid-pipeline/021a_releasedef.png)
 
-3. On **Select a Template**, choose **Azure App Service Deployment**, and then select **Apply**.
+3. On the **Select a Template** page, choose **Azure App Service Deployment**, and then select **Apply**.
 
     ![Apply template](media/azure-stack-solution-hybrid-pipeline/102.png)
 
-4. On **Add artifact**, from the **Source (Build definition)** pull-down menu, select the Azure Cloud build app.
+4. On the **Add artifact** page, from the **Source (Build definition)** pull-down menu, select the Azure Cloud build app.
 
     ![Add artifact](media/azure-stack-solution-hybrid-pipeline/103.png)
 
@@ -412,7 +410,7 @@ Creating a release pipeline is the final step in your application build process.
 
     ![Select package or folder](media/azure-stack-solution-hybrid-pipeline/108.png)
 
-10. In **Select File or Folder**, select **OK** to **Location**.
+10. On the **Select File or Folder** page, select **OK** for the folder location.
 
     ![Alt Text](media/azure-stack-solution-hybrid-pipeline/109.png)
 
@@ -424,7 +422,7 @@ Creating a release pipeline is the final step in your application build process.
 
     ![Add new artifact](media/azure-stack-solution-hybrid-pipeline/111.png)
 
-13. On **Select a Template**, add another environment. Pick **Azure App Service Deployment** and then select **Apply**.
+13. On the **Select a Template** page, add another environment. Pick **Azure App Service Deployment** and then select **Apply**.
 
     ![Select template](media/azure-stack-solution-hybrid-pipeline/112.png)
 
@@ -454,7 +452,7 @@ Creating a release pipeline is the final step in your application build process.
 
     ![Approve location](media/azure-stack-solution-hybrid-pipeline/119.png)
 
-20. On the **Variable** tab, find the variable named **VSTS_ARM_REST_IGNORE_SSL_ERRORS**. Set the variable value to **true**, and set its scope to **Azure Stack**.
+20. On the **Variables** tab, find the variable named **VSTS_ARM_REST_IGNORE_SSL_ERRORS**. Set the variable value to **true**, and set its scope to **Azure Stack**.
 
     ![Configure variable](media/azure-stack-solution-hybrid-pipeline/120.png)
 
@@ -473,17 +471,17 @@ Creating a release pipeline is the final step in your application build process.
 
 ## Create a release
 
-Now that you have completed the modifications to the release pipeline, it's time to start the deployment. To do this, you create a release from the release pipeline. A release may be created automatically; for example, the continuous deployment trigger is set in the release pipeline. This means that modifying the source code will start a new build and, from that, a new release. However, in this section you will create a new release manually.
+Now that you've completed the modifications to the release pipeline, it's time to start the deployment. To do this, you create a release from the release pipeline. A release may be created automatically; for example, the continuous deployment trigger is set in the release pipeline. This means that modifying the source code will start a new build and, from that, a new release. However, in this section you will create a new release manually.
 
-1. On the **Pipeline** tab, open the **Release** drop-down list and choose **Create release**.
+1. On the **Pipeline** tab, open the **Release** drop-down list and select **Create release**.
 
     ![Create a release](media/azure-stack-solution-hybrid-pipeline/200.png)
 
-2. Enter a description for the release, check to see that the correct artifacts are selected, and then choose **Create**. After a few moments, a banner appears indicating that the new release was created, and the release name is displayed as a link. Choose the link to see the release summary page.
+2. Enter a description for the release, check to see that the correct artifacts are selected, and then select **Create**. After a few moments, a banner appears indicating that the new release was created, and the release name is displayed as a link. Select the link to see the release summary page.
 
     ![Release creation banner](media/azure-stack-solution-hybrid-pipeline/201.png)
 
-3. The release summary page for shows details about the release. In the following screen capture for "Release-2", the **Environments** section shows the **Deployment status** for the Azure as "IN PROGRESS", and the status for Azure Stack is "SUCCEEDED". When the deployment status for the Azure environment changes to "SUCCEEDED", a banner appears indicating that the release is ready for approval. When a deployment is pending or has failed, a blue **(i)** information icon is shown. Hover over the icon to see a pop-up that contains the reason for delay or failure.
+3. The release summary page for shows details about the release. In the following screen capture for "Release-2", the **Environments** section shows the **Deployment status** for Azure as "IN PROGRESS", and the status for Azure Stack is "SUCCEEDED". When the deployment status for the Azure environment changes to "SUCCEEDED", a banner appears indicating that the release is ready for approval. When a deployment is pending or has failed, a blue **(i)** information icon is shown. Hover over the icon to see a pop-up that contains the reason for delay or failure.
 
     ![Release summary page](media/azure-stack-solution-hybrid-pipeline/202.png)
 
@@ -495,9 +493,9 @@ This section shows how you can monitor and track all your deployments. The relea
 
 1. On the "Release-2" summary page, select **Logs**. During a deployment, this page shows the live log from the agent. The left pane shows the status of each operation in the deployment for each environment.
 
-    You can choose a person icon in the **Action** column for a Pre-deployment or Post-deployment approval to see who approved (or rejected) the deployment, and the message they provided.
+    Select the person icon in the **Action** column for a Pre-deployment or Post-deployment approval to see who approved (or rejected) the deployment, and the message they provided.
 
-2. After the deployment finishes, the entire log file is displayed in the right pane. You can select any **Step** in the left pane to see the log file for a single step, such as "Initialize Job". The ability to see individual logs makes it easier to trace and debug  parts of the overall deployment. You can also **Save** the log file for a step, or **Download all logs as zip**.
+2. After the deployment finishes, the entire log file is displayed in the right pane. Select any **Step** in the left pane to see the log file for a single step, such as "Initialize Job". The ability to see individual logs makes it easier to trace and debug  parts of the overall deployment. You can also **Save** the log file for a step, or **Download all logs as zip**.
 
     ![Release logs](media/azure-stack-solution-hybrid-pipeline/203.png)
 
