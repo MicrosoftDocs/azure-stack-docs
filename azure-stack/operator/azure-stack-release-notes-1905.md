@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 05/02/2019
+ms.lastreviewed: 05/30/2019
 ---
 
 # Azure Stack 1905 update
@@ -31,9 +31,17 @@ This article describes the contents of the 1905 update package. The update inclu
 > [!IMPORTANT]  
 > This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
 
+## Archived release notes
+
+You can see [older versions of Azure Stack release notes on the TechNet Gallery](http://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For further assistance, contact Microsoft Customer Support Services.
+
 ## Build reference
 
-The Azure Stack 1905 update build number is **1.1905.x.xx**.
+The Azure Stack 1905 update build number is **1.1905.0.37**.
+
+### Type
+
+The Azure Stack 1905 update build type is **Full**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article.
 
 ## What's in this update
 
@@ -41,14 +49,31 @@ The Azure Stack 1905 update build number is **1.1905.x.xx**.
 
 <!-- What's new, also net new experiences and features. -->
 
+- With this update, the update engine in Azure Stack can update the firmware of scale unit nodes. This requires a compliant update package from the hardware partners. Reach out to your hardware partner for details about availability.
+
+- Windows Server 2019 is now supported and available to syndicate through the Azure Stack Marketplace.
+With this update, Windows Server 2019 can now be successfully activated on a 2016 host.
+
 ### Improvements
 
-<!-- Changes and product improvements with tangible customer-facing value. --->
+<!-- Changes and product improvements with tangible customer-facing value. -->
+- As a part of enforcing TLS 1.2 on Azure Stack, the following extensions have been updated to these versions:
+
+  - microsoft.customscriptextension-arm-1.9.3
+  - microsoft.iaasdiagnostics-1.12.2.2
+  - microsoft.antimalware-windows-arm-1.5.5.9
+  - microsoft.dsc-arm-2.77.0.0
+  - microsoft.vmaccessforlinux-1.5.2
+
+  Please download these versions of the extensions immediately, so that new deployments of the extension do not fail. Always set **autoupdateminorversion=true** so that minor version updates to extensions (for example, 1.8 to 1.9) are automatically performed.
 
 - A new Help and Support Overview in the Azure Stack portal makes it easier for operators to check their support options, get expert help, and learn more about Azure Stack. For more information, see [Azure Stack Help and Support](azure-stack-help-and-support.md).
 
-
 ### Changes
+
+- To increase reliability and availability during planned and unplanned maintenance scenarios, Azure Stack adds an additional infrastructure role instance for domain services.
+
+- With this update, during repair and add node operations, the hardware is validated to ensure homogenous scale unit nodes within a scale unit.
 
 ### Fixes
 
@@ -56,21 +81,23 @@ The Azure Stack 1905 update build number is **1.1905.x.xx**.
 
 - Fixed an issue in which a "Compute host agent" warning appeared after restarting a node in the scale unit.
 
+- Fixed issues in marketplace management in the administrator portal which showed incorrect results when filters were applied, and showed duplicate publisher names in the publisher filter. Also, made performance improvements to display results faster.
+
 ### Security updates
 
-This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack. For information, see [Azure Stack security updates.](azure-stack-release-notes-security-updates-1904.md)
+This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack. For information, see [Azure Stack security updates.](azure-stack-release-notes-security-updates-1905.md)
 
 ## Update planning
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](azure-stack-release-notes-known-issues-1904.md)
-- [Security updates](azure-stack-release-notes-security-updates-1904.md)
+- [Known issues](azure-stack-release-notes-known-issues-1905.md)
+- [Security updates](azure-stack-release-notes-security-updates-1905.md)
 - [Checklist of activities before and after applying the update](azure-stack-release-notes-checklist.md)
 
 ## Download the update
 
-You can download the Azure Stack 1904 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
+You can download the Azure Stack 1905 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
 
 ## Hotfixes
 
@@ -83,8 +110,7 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 The 1905 release of Azure Stack must be applied on the 1904 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- No hotfix available for 1904.
-<!-- - [Azure Stack hotfix 1.1903.2.39](https://support.microsoft.com/help/4500638) -->
+- [Azure Stack hotfix 1.1904.4.45](https://support.microsoft.com/help/4505688)
 
 ### After successfully applying the 1905 update
 

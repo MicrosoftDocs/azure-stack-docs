@@ -25,6 +25,29 @@ This article provides information about changes, fixes, and known issues in the 
 
 Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [RSS feed](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
 
+## Build 1.1905.0.37
+
+<!-- ### Changes -->
+
+### New features
+
+- For a list of new features in this release, see [this section](../operator/azure-stack-release-notes-1905.md#whats-in-this-update) of the Azure Stack release notes.
+
+### Fixed and known issues
+
+- Due to a service principal timeout when running the registration script, in order to [register the ASDK](asdk-register.md) successfully you must edit the **RegisterWithAzure.psm1** PowerShell script. Do the following:
+
+  1. On the ASDK host computer, open the file **C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1** in an editor with elevated permissions.
+  2. On line 1249, add a `-TimeoutInSeconds 1800` parameter at the end. This is required due to a service principal timeout when running the registration script. Line 1249 should now appear as follows:
+
+     ```powershell
+      $servicePrincipal = Invoke-Command -Session $PSSession -ScriptBlock { New-AzureBridgeServicePrincipal -RefreshToken $using:RefreshToken -AzureEnvironment $using:AzureEnvironmentName -TenantId $using:TenantId -TimeoutInSeconds 1800 }
+      ```
+
+- For a list of other Azure Stack issues fixed in this release, see [this section](../operator/azure-stack-release-notes-1905.md#fixes) of the Azure Stack release notes.
+- For a list of known issues, see [this article](../operator/azure-stack-release-notes-known-issues-1905.md).
+- Note that [available Azure Stack hotfixes](../operator/azure-stack-release-notes-1905.md#hotfixes) are not applicable to the Azure Stack ASDK.
+
 ## Build 1.1904.0.36
 
 <!-- ### Changes -->
@@ -115,23 +138,3 @@ The 1903 payload does not include an ASDK release.
   netsh interface ipv4 set sub "hostnic" mtu=1660
   netsh interface ipv4 set sub "management" mtu=1660
   ```
-
-## Build 1.1901.0.95
-
-See the [important build information in the Azure Stack release notes](../operator/azure-stack-update-1901.md#build-reference).
-
-### Changes
-
-This build includes the following improvements for Azure Stack:
-
-- BGP and NAT components are now deployed on the physical host. This eliminates the need to have two public or corporate IP addresses for deploying the ASDK, and also simplifies deployment.
-- Azure Stack integrated systems backups can now [be validated](asdk-validate-backup.md) using the **asdk-installer.ps1** PowerShell script.
-
-### New features
-
-- For a list of new features in this release, see [this section](../operator/azure-stack-update-1901.md#new-features) of the Azure Stack release notes.
-
-### Fixed and known issues
-
-- For a list of issues fixed in this release, see [this section](../operator/azure-stack-update-1901.md#fixed-issues) of the Azure Stack release notes. For a list of known issues, see [this section](../operator/azure-stack-update-1901.md#known-issues-post-installation).
-- Note that [available Azure Stack hotfixes](../operator/azure-stack-update-1901.md#azure-stack-hotfixes) are not applicable to the Azure Stack ASDK.

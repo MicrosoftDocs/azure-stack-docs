@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2019
+ms.date: 05/31/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 05/10/2019
+ms.lastreviewed: 05/31/2019
 ---
 
 # Azure Stack 1905 known issues
@@ -29,24 +29,17 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 ## Update process
 
 - Applicable: This issue applies to all supported releases.
-- Cause: When attempting to install an Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing.
-- Remediation: Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and starts the download again.
+- Cause: When attempting to install the 1905 Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing. The 1905 update package is larger than previous update packages which may make this issue more likely to occur. 
+- Remediation: Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and starts the download again. If the problem persists, we recommend manually uploading the update package by following the [Import and install updates section](azure-stack-apply-updates.md#import-and-install-updates).
 - Occurrence: Common
 
 ## Portal
-
-### Add-on plans
-
-- Applicable: This issue applies to all supported releases.
-- Cause: Plans that are added to a user subscription as an add-on plan cannot be deleted, even when you remove the plan from the user subscription. The plan remains until the subscriptions that reference the add-on plan are also deleted.
-- Remediation: No mitigation.
-- Occurrence: Common
 
 ### Administrative subscriptions
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
-- Remediation: These subscriptions will be suspended starting with 1905 and eventually deleted. If you have resources running on these two subscriptions, recreate them in user subscriptions prior to 1905.
+- Remediation: These subscriptions will be suspended starting with 1906 and eventually deleted. If you have resources running on these two subscriptions, recreate them in user subscriptions prior to 1906.
 - Occurrence: Common
 
 ### Subscription resources
@@ -63,12 +56,12 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 - Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
 - Occurrence: Common
 
-### Marketplace management
+### Docker extension
 
-- Applicable: This issue applies to 1904.
-- Cause: The marketplace management screen is not visible when you sign on to the administrator portal.
-- Remediation: Refresh the browser.
-- Occurrence: Intermittent
+- Applicable: This issue applies to all supported releases.
+- Cause: In both the administrator and user portals, if you search for **Docker**, the item is incorrectly returned. It is not available in Azure Stack. If you try to create it, an error is displayed.
+- Remediation: No mitigation.
+- Occurrence: Common
 
 ### Upload blob
 
@@ -135,6 +128,12 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Cause: You cannot remove a scale set from the **Virtual Machine Scale Sets** blade.
 - Remediation: Select the scale set that you want to remove, then click the **Delete** button from the **Overview** pane.
 - Occurrence: Common
+
+#### VM/VMSS create failures during patch and update on 4-node Azure Stack environments
+
+- Applicable: This issue applies to all supported releases.
+- Cause: Creating VMs in an availability set of 3 fault domains and creating a VMSS instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
+- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, VMSS instance creation is still not available during the update process on a 4-node Azure Stack.
 
 ### Ubuntu SSH access
 
