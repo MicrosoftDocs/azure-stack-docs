@@ -5,13 +5,13 @@ services: azure-stack
 keywords: 
 author: PatAltimore
 ms.author: patricka
-ms.date: 02/04/2019
+ms.date: 06/03/2019
 ms.topic: tutorial
 ms.service: azure-stack
 ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
-ms.lastreviewed: 02/04/2019
+ms.lastreviewed: 06/03/2019
 
 ---
 # Deploy an Ethereum blockchain network on Azure Stack
