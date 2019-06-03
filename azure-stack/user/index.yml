@@ -33,7 +33,7 @@ sections:
               <br><b>Azure Stack PowerShell</b></a>
               <p>Easily manage your Azure Stack resources from PowerShell</p>
       - html: <a href="/azure-stack/user/azure-stack-version-profiles-azurecli2">
-              <img height="48" width="48" src="../media/index/azure_dev-7.svg" alt="">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_cligeneric.svg" alt="">
               <br><b>Azure Command-Line Interface (CLI)</b></a>
               <p>Command-line experience for managing Azure Stack resources</p>
   - title: Hybrid cloud apps
