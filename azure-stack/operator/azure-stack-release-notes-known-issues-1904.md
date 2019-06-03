@@ -199,6 +199,12 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
   - The issue is fixed in the latest [Azure Stack hotfix for 1904](https://support.microsoft.com/help/4505688).
 - Occurrence: Common
 
+### VMSS instance view
+
+- Applicable: This issue applies to the 1904 and 1905 releases.
+- Cause: The instance view blade of a scaleset located on the Azure Stack portal, in **Dashboard** > **Virtual machine scale sets** > **AnyScaleSet - Instances** > **AnyScaleSetInstance** fails to load.
+- Remediation: There is currently no remediation and we are working on a fix. Until then, please use the CLI cmdlet `az vmss get-instance-view` to get the instance view of a VMSS.
+
 ## Storage
 
 - Applicable: This issue applies to all supported releases.
