@@ -31,7 +31,7 @@ Your OEM vendor will also release updates, such as driver and firmware updates. 
 To keep your system under support, you must keep Azure Stack updated to a specific version level. Make sure that you review the [Azure Stack servicing policy](azure-stack-servicing-policy.md).
 
 > [!NOTE]
-> You cannot apply Azure Stack update packages to the Azure Stack Development Kit (ASDK). The update packages are designed for integrated systems. For information, see [Redeploy the ASDK](/azure-stack/asdk).
+> You cannot apply Azure Stack update packages to the Azure Stack Development Kit (ASDK). The update packages are designed for integrated systems. For information, see [Redeploy the ASDK](../asdk/asdk-redeploy.md).
 
 ## The update resource provider
 
