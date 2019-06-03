@@ -31,11 +31,11 @@ sections:
       - html: <a href="/azure-stack/operator/azure-stack-powershell-install">
               <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
               <br><b>Azure Stack PowerShell</b></a>
-              <p>Easily manage your Azure Stack resources from PowerShell</p>
+              <p>Easily manage your Azure Stack resources from PowerShell.</p>
       - html: <a href="/azure-stack/user/azure-stack-version-profiles-azurecli2">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_cligeneric.svg" alt="">
               <br><b>Azure Command-Line Interface (CLI)</b></a>
-              <p>Command-line experience for managing Azure Stack resources</p>
+              <p>Command-line experience for managing Azure Stack resources.</p>
   - title: Hybrid cloud apps
     items:
     - type: list
@@ -63,7 +63,7 @@ sections:
       - html: <a href="/azure-stack/user/azure-stack-create-vm-template">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_package.svg" alt="">
               <br><b>Overview - Deploy a VM in IaaS</b></a>
-              <pCan create a VM using Azure Resource Manager templates</p>
+              <p>Can create a VM using Azure Resource Manager templates</p>
       - html: <a href="/azure-stack/user/azure-stack-quick-linux-portal">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_vmm-cloud.svg" alt="">
               <br><b>Quickstart - Create a VM</b></a>
@@ -78,33 +78,15 @@ sections:
       style: cards
       className: cardsA
       items:  
-      - html: <a href="https://www.google.com">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
-              <br><b>Title</b></a>
-              <p>Subtitle - call to action</p>
-      - html: <a href="https://www.google.com">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
-              <br><b>Title</b></a>
-              <p>Subtitle - call to action</p>
-      - html: <a href="https://www.google.com">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
-              <br><b>Title</b></a>
-              <p>Subtitle - call to action</p>
-  - title: Section
-    items:
-    - type: list
-      style: cards
-      className: cardsA
-      items:  
-      - html: <a href="https://www.google.com">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
-              <br><b>Title</b></a>
-              <p>Subtitle - call to action</p>
-      - html: <a href="https://www.google.com">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
-              <br><b>Title</b></a>
-              <p>Subtitle - call to action</p>
-      - html: <a href="https://www.google.com">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
-              <br><b>Title</b></a>
-              <p>Subtitle - call to action</p>
+      - html: <a href="/azure-stack/user/azure-stack-solution-template-kubernetes-deploy">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_event.svg" alt="">
+              <br><b>Quickstart - Create an Azure function</b></a>
+              <p>Create an HTTP triggered serverless function.</p>
+      - html: <a href="/azure-stack/user/azure-stack-solution-template-kubernetes-deploy">
+              <img height="48" width="48" src="/azure-stack/user/media/index/kubernetes.png" alt="">
+              <br><b>Quickstart - Deploy Wordpress to a Kuberentes Cluster</b></a>
+              <p>Create a content management system in orchestrated containers.</p>
+      - html: <a href="/azure-stack/user/azure-stack-solution-template-kubernetes-deploy">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_method.svg" alt="">
+              <br><b>Quickstart - Deploy your container to Azure Stack</b></a>
+              <p>Create a Docker container with your app and host it in Azure Stack.</p>
