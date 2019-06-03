@@ -22,7 +22,7 @@ ms.lastreviewed: 12/01/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Learn how to use both on-premises and public cloud environments to meet the demands of multi-facility enterprises. Azure Stack offers a rapid, secure, and flexible solution for collecting, processing, storing, and distributing local and remote data. This is particularly important when security, confidentiality, corporate policy, and regulatory requirements may differ between locations and users.
+Learn how to use both on-premises and public cloud environments to meet the demands of multi-facility enterprises. Azure Stack offers a rapid, secure, and flexible solution for collecting, processing, storing, and distributing local and remote data. This is important when security, confidentiality, corporate policy, and regulatory requirements may differ between locations and users.
 
 In this pattern, your customers are collecting data that requires analysis at the point of collection so that quick decisions can be made. Often this data collection occurs with no Internet access. When connectivity is established, you may need to do a resource-intensive analysis of the data to gain additional insight. You can still analyze data when a public cloud is too late or unavailable.
 
