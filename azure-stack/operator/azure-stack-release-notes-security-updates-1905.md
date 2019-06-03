@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2019
+ms.date: 06/04/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 05/23/2019
+ms.lastreviewed: 06/04/2019
 ---
 
 # Azure Stack security updates
@@ -161,7 +161,6 @@ The 1902 update installs the following security updates:
 - [CVE-2019-0663](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0663)
 
 For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base articles [4487006](https://support.microsoft.com/en-us/help/4487006).
-
 
 ## Next steps
 

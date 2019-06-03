@@ -13,16 +13,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 06/04/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 05/28/2019
+ms.lastreviewed: 06/04/2019
 
 ---
 
 # Azure Stack update activity checklist
 
-This article contains a checklist of update-related activities for Azure Stack operators. If you are getting ready to apply an update to Azure Stack, you can review this information.
+This article contains a checklist of update-related activities for Azure Stack operators. If you are preparing to apply an update to Azure Stack, you can review this information.
 
 ## Prepare for Azure Stack update
 

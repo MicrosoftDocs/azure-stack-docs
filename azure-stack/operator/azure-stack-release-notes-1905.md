@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/04/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 05/30/2019
+ms.lastreviewed: 06/04/2019
 ---
 
 # Azure Stack 1905 update
@@ -37,7 +37,7 @@ You can see [older versions of Azure Stack release notes on the TechNet Gallery]
 
 ## Build reference
 
-The Azure Stack 1905 update build number is **1.1905.0.37**.
+The Azure Stack 1905 update build number is **1.1905.0.40**.
 
 ### Type
 
@@ -67,7 +67,7 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 
   Please download these versions of the extensions immediately, so that new deployments of the extension do not fail. Always set **autoupdateminorversion=true** so that minor version updates to extensions (for example, 1.8 to 1.9) are automatically performed.
 
-- A new Help and Support Overview in the Azure Stack portal makes it easier for operators to check their support options, get expert help, and learn more about Azure Stack. For more information, see [Azure Stack Help and Support](azure-stack-help-and-support.md).
+- A new **Help + support** option in the Azure Stack portal makes it easier for operators to check their support options, get expert help, and learn more about Azure Stack. For more information, see [Azure Stack help and support](azure-stack-help-and-support-overview.md).
 
 ### Changes
 
@@ -79,9 +79,9 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
-- Fixed an issue in which a "Compute host agent" warning appeared after restarting a node in the scale unit.
+- Fixed an issue in which a **Compute host agent** warning appeared after restarting a node in the scale unit.
 
-- Fixed issues in marketplace management in the administrator portal which showed incorrect results when filters were applied, and showed duplicate publisher names in the publisher filter. Also, made performance improvements to display results faster.
+- Fixed issues in marketplace management in the administrator portal which showed incorrect results when filters were applied, and showed duplicate publisher names in the publisher filter. Also made performance improvements to display results faster.
 
 ### Security updates
 
