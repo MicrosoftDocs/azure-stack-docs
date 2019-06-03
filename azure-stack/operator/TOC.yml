@@ -15,13 +15,7 @@
     - name: Checklist for applying updates
       href: azure-stack-release-notes-checklist.md
     - name: Security updates
-      href: azure-stack-release-notes-security-updates-1905.md
-    - name: 1905 update
-      items:
-      - name: Release notes
-        href: azure-stack-release-notes-1905.md
-      - name: Known issues
-        href: azure-stack-release-notes-known-issues-1905.md
+      href: azure-stack-release-notes-security-updates-1904.md
     - name: 1904 update
       items:
       - name: Release notes
@@ -32,6 +26,8 @@
       href: azure-stack-update-1903.md
     - name: 1902 update
       href: azure-stack-update-1902.md      
+    - name: 1901 update 
+      href: azure-stack-update-1901.md      
 - name: Quickstarts
   expanded: true
   items:
@@ -52,7 +48,15 @@
 - name: Concepts
   items:
   - name: Capacity Planning
-    href: capacity-planning.md
+    items:
+    - name: Overview
+      href: azure-stack-capacity-planning-overview.md
+    - name: Compute
+      href: azure-stack-capacity-planning-compute.md
+    - name: Storage
+      href: azure-stack-capacity-planning-storage.md
+    - name: Azure Stack Capacity Planner
+      href: azure-stack-capacity-planner.md
   - name: Datacenter integration
     href: azure-stack-customer-journey.md
     items:
@@ -378,27 +382,23 @@
     - name: Back up Azure Stack
       href: azure-stack-backup-back-up-azure-stack.md
     - name: Back up files and applications on Azure Stack
-      href: https://docs.microsoft.com/azure/backup/backup-mabs-files-applications-azure-stack?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+      href: /azure/backup/backup-mabs-files-applications-azure-stack?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
     - name: Replicate Azure Stack VMs to Azure 
-      href: https://docs.microsoft.com/azure/site-recovery/azure-stack-site-recovery?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+      href: /azure/site-recovery/azure-stack-site-recovery?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
     - name: Recover from catastrophic data loss
       href: azure-stack-backup-recover-data.md
     - name: Backup best practices
       href: azure-stack-backup-best-practices.md
     - name: Backup reference
       href: azure-stack-backup-reference.md
-  - name: Get support  
+  - name: Troubleshoot  
     items:
-    - name: Help and Support  
-      href: azure-stack-help-and-support-overview.md
-    - name: Troubleshoot  
-      items:
-      - name: Known issues
-        href: azure-stack-troubleshooting.md
-      - name: Diagnostics in Azure Stack
-        href: azure-stack-diagnostics.md
-      - name: Validation for Azure Stack
-        href: azure-stack-diagnostic-test.md  
+    - name: Known issues
+      href: azure-stack-troubleshooting.md
+    - name: Diagnostics in Azure Stack
+      href: azure-stack-diagnostics.md
+    - name: Validation for Azure Stack
+      href: azure-stack-diagnostic-test.md  
 - name: Reference
   items:
   - name: Azure Stack PowerShell
