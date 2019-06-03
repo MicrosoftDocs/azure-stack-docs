@@ -72,30 +72,30 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 
 ## Networking
 
-### Load Balancer
+### Load balancer
 
-#### Add Backend Pool
+#### Add backend pool
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, if you attempt to add a **Backend Pool** to a **Load Balancer**, the operation fails with the error message **failed to update Load Balancer...**.
 - Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
 - Occurrence: Common
 
-#### Create Inbound NAT
+#### Create inbound NAT
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer**, the operation fails with the error message **Failed to update Load Balancer...**.
 - Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
 - Occurrence: Common
 
-#### Create Load Balancer
+#### Create load balancer
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, the **Create Load Balancer** window shows an option to create a **Standard** load balancer SKU. This option is not supported in Azure Stack.
 - Remediation: Use the **Basic** load balancer options instead.
 - Occurrence: Common
 
-### Public IP Address
+### Public IP address
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, the **Create Public IP Address** window shows an option to create a **Standard** SKU. The **Standard** SKU is not supported in Azure Stack.
