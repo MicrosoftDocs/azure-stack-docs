@@ -14,13 +14,13 @@ ms.workload: azure-vs
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2019
+ms.date: 05/21/2019
 ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 01/05/2019
-
+ms.lastreviewed: 05/21/2019
 
 ---
+
 # Deploy templates in Azure Stack using Visual Studio
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*

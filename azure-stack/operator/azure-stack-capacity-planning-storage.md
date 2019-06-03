@@ -1,24 +1,26 @@
 ---
-title: Storage capacity planning for Azure Stack | Microsoft Docs
-description: Learn about storage capacity planning for Azure Stack deployments.
+title: Azure Stack capacity planning storage | Microsoft Docs
+description: Learn about capacity planning for Azure Stack deployments.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: prchint
 manager: femila
 editor: ''
+
 ms.assetid:
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2019
-ms.author: mabrigg
+ms.date: 05/31/2019
+ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 02/20/2019
+ms.lastreviewed: 05/31/2019
 ---
 
-# Azure Stack storage capacity planning
+# Azure Stack storage
+
 The following sections provide Azure Stack storage capacity planning information to assist in planning for the solutions's storage needs.
 
 ## Uses and Organization of Storage Capacity
@@ -69,5 +71,6 @@ The virtual-disks created automatically and their capacities are as follows:
 
 <sup>3</sup> The virtual-disks created for use by ACS are a simple division of the remaining capacity. As noted, all virtual-disks are a three-way mirror and one Capacity drive's worth of capacity for each server is unallocated. The various virtual-disks enumerated above are allocated first and the remaining capacity is then used for the ACS virtual-disks.
 
+
 ## Next steps
-[Learn about the Azure Stack capacity planning spreadsheet](capacity-planning-spreadsheet.md)
+Learn about the [Azure Stack Capacity Planner](azure-stack-capacity-planner.md)

@@ -3,7 +3,7 @@ title: Make virtual machines available to your Azure Stack users| Microsoft Docs
 description: Learn how to make virtual machines available on Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.reviewer: unknown
 ms.lastreviewed: 09/11/2018
 ms.custom: mvc
@@ -38,7 +38,7 @@ In Azure Stack, services are delivered to users using subscriptions, offers, and
 
 ![Subscriptions, offers, and plans](media/azure-stack-key-features/image4.png)
 
-To learn more, see [Key features and concepts in Azure Stack](azure-stack-overview.md).
+To learn more, see [Plan, offer, quota, and subscription overview](azure-stack-plan-offer-quota-overview.md).
 
 ## Create an offer
 

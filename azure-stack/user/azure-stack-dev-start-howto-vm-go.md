@@ -1,6 +1,6 @@
 ---
-title: How to deploy a GO web app to a virtual machine in Azure Stack | Microsoft Docs
-description: How to deploy a GO web app to a VM in Azure Stack
+title: Deploy a Go web app to a virtual machine in Azure Stack | Microsoft Docs
+description: How to deploy a Go web app to a VM in Azure Stack
 services: azure-stack
 author: mattbriggs
 
@@ -11,35 +11,33 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 04/24/2019
 
-# keywords:  Deploy an Go web app to Azure Stack
-# Intent: I am developer using Windows 10 or Linux Ubuntu who would like to deploy an Go web app for Azure Stack.
+# keywords:  Deploy a Go web app to Azure Stack
+# Intent: I am a developer using Windows 10 or Linux Ubuntu who would like to deploy a Go web app for Azure Stack.
 ---
 
+# Deploy a Go web app to a VM in Azure Stack
 
-# How to deploy a GO web app to a VM in Azure Stack
-
-You can create a VM to host your Go Web app in Azure Stack. This article looks at the steps you will follow in setting up server, configuring the server to host your GO web app, and then deploying your app.
-
-Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make it easy to write programs that get the most out of multicore and networked machines, while its type system enables flexible and modular program construction. To learn the Go programming language and find additional resources for GO, see [Golang.org](https://golang.org).
+You can create a virtual machine (VM) to host a Go web app in Azure Stack. In this article, you set up a server, configure the server to host your Go web app, and then deploy the app to Azure Stack.
 
 ## Create a VM
 
-1. Set up your VM set up in Azure Stack. Follow the steps in [Deploy a Linux VM to host a web app in Azure Stack](azure-stack-dev-start-howto-deploy-linux.md).
+1. Set up your VM in Azure Stack by following the instructions in [Deploy a Linux VM to host a web app in Azure Stack](azure-stack-dev-start-howto-deploy-linux.md).
 
-2. In the VM network blade, make sure the following ports are accessible:
+2. In the VM network pane, make sure that the following ports are accessible:
 
     | Port | Protocol | Description |
     | --- | --- | --- |
-    | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is an application protocol for distributed, collaborative, hypermedia information systems. Clients will connect to your web app with either the public IP or DNS name of your VM. |
-    | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is an extension of the Hypertext Transfer Protocol (HTTP). It is used for secure communication over a computer network. Clients will connect to your web app with the either the public IP or DNS name of your VM. |
-    | 22 | SSH | Secure Shell (SSH) is a cryptographic network protocol for operating network services securely over an unsecured network. You will use this connection with an SSH client to configure the VM and deploy the app. |
-    | 3389 | RDP | Optional. The Remote Desktop Protocol allows for a remote desktop connection to use a graphic user interface your machine.   |
-    | 3000 | Custom | Port 3000 is used by the GO web framework in development. For a production server, you will want to route your traffic through 80 and 443. |
+    | 80 | HTTP | Hypertext Transfer Protocol (HTTP) is the protocol that's used to deliver webpages from servers. Clients connect via HTTP with a DNS name or IP address. |
+    | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is a secure version of HTTP that requires a security certificate and allows for the encrypted transmission of information. |
+    | 22 | SSH | Secure Shell (SSH) is an encrypted network protocol for secure communications. You use this connection with an SSH client to configure the VM and deploy the app. |
+    | 3389 | RDP | Optional. The Remote Desktop Protocol (RDP) allows a remote desktop connection to use a graphic user interface on your machine.   |
+    | 3000 | Custom | Port 3000 is used by the Go web framework in development. For a production server, you route your traffic through 80 and 443. |
 
-## Install GO
+## Install Go
 
-1. Connect to your VM using your SSH client. For instructions, see [Connect via SSH with PuTTy](azure-stack-dev-start-howto-ssh-public-key.md#connect-via-ssh-with-putty).
-1. At your bash prompt on your VM, type the following commands:
+1. Connect to your VM by using your SSH client. For instructions, see [Connect via SSH with PuTTY ](azure-stack-dev-start-howto-ssh-public-key.md#connect-with-ssh-by-using-putty).
+
+1. At the bash prompt on your VM, enter the following commands:
 
     ```bash  
     wget https://dl.google.com/go/go1.10.linux-amd64.tar.gz
@@ -47,7 +45,7 @@ Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make
     sudo mv go /usr/local
     ```
 
-2. Set up the GO environment on your VM. Still connected to your VM in your SSH session, type the following commands:
+2. Set up the Go environment on your VM. While you're still connected to your VM in your SSH session, enter the following commands:
 
     ```bash  
     export GOROOT=/usr/local/go
@@ -57,13 +55,13 @@ Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make
     vi ~/.profile
     ```
 
-3. Validate your installation. Still connected to your VM in your SSH session, type the following commands:
+3. Validate your installation. While you're still connected to your VM in your SSH session, enter the following command:
 
     ```bash  
         go version
     ```
 
-3. Install Git. [Git](https://git-scm.com) is a widely distributed revision control and source code management (SCM) system. Still connected to your VM in your SSH session, type the following commands:
+3. [Install Git](https://git-scm.com), a widely distributed version control and source code management (SCM) system. While you're still connected to your VM in your SSH session, enter the following command:
 
     ```bash  
        sudo apt-get -y install git
@@ -71,7 +69,7 @@ Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make
 
 ## Deploy and run the app
 
-1. Set up your Git repository on the VM. Still connected to your VM in your SSH session, type the following commands:
+1. Set up your Git repository on the VM. While you're still connected to your VM in your SSH session, enter the following commands:
 
     ```bash  
        git clone https://github.com/appleboy/go-hello
@@ -80,13 +78,13 @@ Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make
        go get -d
     ```
 
-2. Start the app. Still connected to your VM in your SSH session, type the following command:
+2. Start the app. While you're still connected to your VM in your SSH session, enter the following command:
 
     ```bash  
        go run hello-world.go
     ```
 
-3.  Now navigate to your new server and you should see your running web application.
+3. Go to your new server. You should see your running web application.
 
     ```HTTP  
        http://yourhostname.cloudapp.net:3000
@@ -94,5 +92,6 @@ Go is expressive, concise, clean, and efficient. Its concurrency mechanisms make
 
 ## Next steps
 
-- Learn more about how to [Develop for Azure Stack](azure-stack-dev-start.md)
+- Learn more about how to [develop for Azure Stack](azure-stack-dev-start.md).
 - Learn about [common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
+- To learn the Go programming language and find additional resources for Go, see [Golang.org](https://golang.org).

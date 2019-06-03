@@ -4,6 +4,8 @@
   items:
   - name: What is Azure Stack?
     href: azure-stack-overview.md
+  - name: What is Azure Stack HCI?
+    href: azure-stack-hci-overview.md
   - name: Comparing the Azure ecosystem
     href: compare-azure-azure-stack.md
   - name: Release notes
@@ -46,14 +48,15 @@
 - name: Concepts
   items:
   - name: Capacity Planning
-    href: capacity-planning.md
     items:
-    - name: Compute capacity planning
-      href: capacity-planning-compute.md
-    - name: Storage capacity planning
-      href: capacity-planning-storage.md
+    - name: Overview
+      href: azure-stack-capacity-planning-overview.md
+    - name: Compute
+      href: azure-stack-capacity-planning-compute.md
+    - name: Storage
+      href: azure-stack-capacity-planning-storage.md
     - name: Azure Stack Capacity Planner
-      href: capacity-planning-spreadsheet.md
+      href: azure-stack-capacity-planner.md
   - name: Datacenter integration
     href: azure-stack-customer-journey.md
     items:
@@ -293,6 +296,8 @@
     items:
     - name: App Service capacity planning
       href: azure-stack-app-service-capacity-planning.md
+    - name: App Service billing FAQ
+      href: app-service-billing-faq.md
     - name: Before you get started
       href: azure-stack-app-service-before-you-get-started.md
     - name: Deploy App Service
@@ -325,6 +330,8 @@
         href: azure-stack-app-service-release-notes-update-four.md
       - name: App Service on Azure Stack update 5 release notes
         href: azure-stack-app-service-release-notes-update-five.md
+      - name: App Service on Azure Stack update 6 release notes
+        href: azure-stack-app-service-release-notes-update-six.md
   - name: Create plans, offers, and quotas
     items:
     - name: Plan, offer, quota, and subscription overview
@@ -375,23 +382,23 @@
     - name: Back up Azure Stack
       href: azure-stack-backup-back-up-azure-stack.md
     - name: Back up files and applications on Azure Stack
-      href: /azure/backup/backup-mabs-files-applications-azure-stack.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+      href: /azure/backup/backup-mabs-files-applications-azure-stack?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
     - name: Replicate Azure Stack VMs to Azure 
-      href: /azure/site-recovery/azure-stack-site-recovery.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+      href: /azure/site-recovery/azure-stack-site-recovery?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
     - name: Recover from catastrophic data loss
       href: azure-stack-backup-recover-data.md
     - name: Backup best practices
       href: azure-stack-backup-best-practices.md
     - name: Backup reference
       href: azure-stack-backup-reference.md
-  - name: Troubleshoot
+  - name: Troubleshoot  
     items:
     - name: Known issues
       href: azure-stack-troubleshooting.md
     - name: Diagnostics in Azure Stack
       href: azure-stack-diagnostics.md
     - name: Validation for Azure Stack
-      href: azure-stack-diagnostic-test.md
+      href: azure-stack-diagnostic-test.md  
 - name: Reference
   items:
   - name: Azure Stack PowerShell

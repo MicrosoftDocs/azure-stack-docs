@@ -3,7 +3,7 @@ title: Using API version profiles with Python in Azure Stack | Microsoft Docs
 description: Learn about using API version profiles with Python in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 
 ms.service: azure-stack
@@ -11,10 +11,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2019
-ms.author: mabrigg
+ms.date: 05/16/2019
+ms.author: sethm
 ms.reviewer: sijuman
-ms.lastreviewed: 01/05/2019
+ms.lastreviewed: 05/16/2019
 <!-- dev: viananth -->
 ---
 
@@ -28,8 +28,10 @@ The Python SDK supports API version profiles to target different cloud platforms
 
 - **latest**  
     This profile targets the most recent API versions for all service providers in the Azure Platform.
-- **2018-03-01-hybrid**     
+- **2019-03-01-hybrid**  
     This profile targets the latest API versions for all the resource providers in Azure Stack platform.
+- **2018-03-01-hybrid**  
+    This profile targets the most compatible API versions for all the resource providers in Azure Stack platform.
 - **2017-03-09-profile**  
     This profile targets the most compatible API versions of the resource providers supported by Azure Stack.
 
@@ -113,7 +115,7 @@ Some of the code samples available for Azure Stack using Python SDK are:
 
 - [Manage Resources and Resource Groups](https://azure.microsoft.com/resources/samples/hybrid-resourcemanager-python-manage-resources/).
 - [Manage Storage Account](https://azure.microsoft.com/resources/samples/hybrid-storage-python-manage-storage-account/).
-- [Manage Virtual Machines](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/).
+- [Manage Virtual Machines](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/). (Sample that uses 2019-03-01-hybrid which targets the latest API versions supported by Azure Stack)
 
 ## Python manage virtual machine sample
 

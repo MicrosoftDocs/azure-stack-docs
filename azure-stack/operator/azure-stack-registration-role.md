@@ -29,7 +29,7 @@ For scenarios where you don't want to give owner permissions in the Azure subscr
 
 When registering Azure Stack, the registration account requires the following Azure Active Directory permissions and Azure Subscription permissions:
 
-* **Application registration permissions in your Azure Active Directory tenant:** Administrators have application registration permissions. The permission for users is a global setting for all users in the tenant. To view or change the setting, see [create an Azure AD application and service principal that can access resources]((/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+* **Application registration permissions in your Azure Active Directory tenant:** Administrators have application registration permissions. The permission for users is a global setting for all users in the tenant. To view or change the setting, see [create an Azure AD application and service principal that can access resources](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
     The *user can register applications* setting must be set to **Yes** for you to enable a user account to register Azure Stack. If the app registrations setting is set to **No**, you can't use a user account and must use a global administrator account to register Azure Stack.
 
@@ -37,7 +37,7 @@ When registering Azure Stack, the registration account requires the following Az
 
 ## Create a custom role using PowerShell
 
-To create a custom role, you must have the `Microsoft.Authorization/roleDefinitions/write` permission on all `AssignableScopes`, such as [Owner]((/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator]((/azure/role-based-access-control/built-in-roles#user-access-administrator). Use the following JSON template to simplify defining the custom role. The template creates a custom role that allows the required read and write access for Azure Stack registration.
+To create a custom role, you must have the `Microsoft.Authorization/roleDefinitions/write` permission on all `AssignableScopes`, such as [Owner](/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator). Use the following JSON template to simplify defining the custom role. The template creates a custom role that allows the required read and write access for Azure Stack registration.
 
 1. Create a JSON file. For example,  `C:\CustomRoles\registrationrole.json`
 2. Add the following JSON to the file. Replace `<SubscriptionID>` with your Azure subscription ID.
@@ -66,7 +66,7 @@ To create a custom role, you must have the `Microsoft.Authorization/roleDefiniti
     }
     ```
 
-3. In PowerShell, connect to Azure to use Azure Resource Manager. When prompted, authenticate using an account with sufficient permissions such as [Owner]((/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator]((/azure/role-based-access-control/built-in-roles#user-access-administrator).
+3. In PowerShell, connect to Azure to use Azure Resource Manager. When prompted, authenticate using an account with sufficient permissions such as [Owner](/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator).
 
     ```azurepowershell
     Connect-AzureRmAccount
@@ -82,7 +82,7 @@ To create a custom role, you must have the `Microsoft.Authorization/roleDefiniti
 
 After the registration custom role is created, assign the role users registering Azure Stack.
 
-1. Sign in with the account with sufficient permission on the Azure subscription to delegate rights - such as [Owner]((/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator]((/azure/role-based-access-control/built-in-roles#user-access-administrator) .
+1. Sign in with the account with sufficient permission on the Azure subscription to delegate rights - such as [Owner](/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) .
 2. In **Subscriptions**, select **Access control (IAM) > Add role assignment**.
 3. In **Role**, choose the custom role you created *Azure Stack registration role*.
 4. Select the users you want to assign to the role.
@@ -90,7 +90,7 @@ After the registration custom role is created, assign the role users registering
 
     ![Select users to assign to role](media/azure-stack-registration-role/assign-role.png)
 
-For more information on using custom roles, see [manage access using RBAC and the Azure portal]((/azure/role-based-access-control/role-assignments-portal).
+For more information on using custom roles, see [manage access using RBAC and the Azure portal](/azure/role-based-access-control/role-assignments-portal).
 
 ## Next steps
 

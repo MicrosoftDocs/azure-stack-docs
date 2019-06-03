@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 1904 release notes | Microsoft Docs
-description: Learn about the 1904 update for Azure Stack integrated systems, including what's new, known issues, and where to download the update.
+description: Learn about the 1904 update for Azure Stack integrated systems, including what's new, known issues, and where to download the update and archived Azure Stack release notes.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 05/06/2019
+ms.lastreviewed: 05/30/2019
 ---
 
 # Azure Stack 1904 update
@@ -30,6 +30,10 @@ This article describes the contents of the 1904 update package. The update inclu
 
 > [!IMPORTANT]  
 > This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
+
+## Archived release notes
+
+You can see [older versions of Azure Stack release notes on the TechNet Gallery](http://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For further assistance, contact Microsoft Customer Support Services.
 
 ## Build reference
 
@@ -110,6 +114,8 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 
 - Updated Azure Linux Agent version 2.2.38.0. This support allows customers to maintain consistent Linux images between Azure and Azure Stack.
 
+- Changes to the update logs in the operator portal. Requests to retrieve successful update logs are no longer available. Failed update logs, because they are actionable for diagnostics, are still available for download.
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
@@ -184,8 +190,7 @@ The 1904 release of Azure Stack must be applied on the 1903 release with the fol
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [Servicing Policy](azure-stack-servicing-policy.md).
 
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- No hotfixes available for 1904.
+- [Azure Stack hotfix 1.1904.4.45](https://support.microsoft.com/help/4505688)
 
 ## Automatic update notifications
 
