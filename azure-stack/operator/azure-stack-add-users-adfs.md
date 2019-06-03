@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 06/03/2019
 ms.author: patricka
 ms.reviewer: unknown
-ms.lastreviewed: 02/21/2019
+ms.lastreviewed: 06/03/2019
 
 ---
 # Add Azure Stack users in AD FS
-You can use the **Active Directory Users and Computers** snap-in to add additional users to an Azure Stack environment leveraging AD FS as its identity provider.
+You can use the **Active Directory Users and Computers** snap-in to add additional users to an Azure Stack environment using AD FS as its identity provider.
 
 ## Add Windows Server Active Directory users
 > [!TIP]

@@ -141,12 +141,12 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Remediation: Recreate the storage account with the same name you used previously.
 - Occurrence: Common
 
-### Virtual Machine Scale Set
+### Virtual machine scale set
 
 #### CentOS
 
 - Applicable: This issue applies to all supported releases.
-- Cause: The Virtual Machine Scale Set (VMSS) creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack.
+- Cause: The virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack.
 - Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
 - Occurrence: Common
 
@@ -157,11 +157,11 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Remediation: Select the scale set that you want to remove, then click the **Delete** button from the **Overview** pane.
 - Occurrence: Common
 
-#### VM/VMSS create failures during patch and update on 4-node Azure Stack environments
+#### Create failures during patch and update on 4-node Azure Stack environments
 
 - Applicable: This issue applies to all supported releases.
-- Cause: Creating VMs in an availability set of 3 fault domains and creating a VMSS instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
-- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, VMSS instance creation is still not available during the update process on a 4-node Azure Stack.
+- Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
+- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack.
 
 ### Ubuntu SSH access
 
@@ -199,11 +199,11 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
   - The issue is fixed in the latest [Azure Stack hotfix for 1904](https://support.microsoft.com/help/4505688).
 - Occurrence: Common
 
-### VMSS instance view
+### Virtual machine scale set instance view
 
 - Applicable: This issue applies to the 1904 and 1905 releases.
-- Cause: The instance view blade of a scaleset located on the Azure Stack portal, in **Dashboard** > **Virtual machine scale sets** > **AnyScaleSet - Instances** > **AnyScaleSetInstance** fails to load.
-- Remediation: There is currently no remediation and we are working on a fix. Until then, please use the CLI cmdlet `az vmss get-instance-view` to get the instance view of a VMSS.
+- Cause: The instance view blade of a scale set located on the Azure Stack portal, in **Dashboard** > **Virtual machine scale sets** > **AnyScaleSet - Instances** > **AnyScaleSetInstance** fails to load.
+- Remediation: There is currently no remediation and we are working on a fix. Until then, please use the CLI cmdlet `az vmss get-instance-view` to get the instance view of a virtual machine scale set.
 
 ## Storage
 

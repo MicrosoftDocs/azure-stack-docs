@@ -1,13 +1,18 @@
 {
   "redirections": [
     {
-      "source_path": "azure-stack/operator/azure-stack-help-and-support.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-diagnostics",
+      "source_path": "azure-stack/operator/capacity-planning.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-capacity-planning-overview",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/operator/capacity-planning-storage.md",
       "redirect_url": "/azure-stack/operator/capacity-planning",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-help-and-support.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-diagnostics",
       "redirect_document_id": false
     },
     {
