@@ -67,7 +67,7 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 
   Please download these versions of the extensions immediately, so that new deployments of the extension do not fail. Always set **autoupdateminorversion=true** so that minor version updates to extensions (for example, 1.8 to 1.9) are automatically performed.
 
-- A new "Help and Support Overview" in the Azure Stack portal makes it easier for operators to check their support options, get expert help, and learn more about Azure Stack. For more information, see [Azure Stack help and support](azure-stack-help-and-support.md).
+- A new **Help + support** option in the Azure Stack portal makes it easier for operators to check their support options, get expert help, and learn more about Azure Stack. For more information, see [Azure Stack help and support](azure-stack-help-and-support-overview.md).
 
 ### Changes
 
