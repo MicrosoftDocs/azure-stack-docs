@@ -72,9 +72,9 @@ In addition to the resource providers described above, there are additional PaaS
 
 Learn more about Azure Stack at [What is Azure Stack](azure-stack-overview.md).
 
-## Azure Stack HCI 
+## Azure Stack HCI
 
-Azure Stack HCI solutions allow you to run virtual machines on-premises and easily connect to Azure with a hyperconverged infrastructure (HCI) solution. Build and run cloud applications using consistent Azure services on-premises to meet regulatory or technical requirements. In addition to running virtualized applications on-premises, Azure Stack HCI enables you to replace and consolidate aging server infrastructure and connect to Azure for cloud services using the Windows Admin Center.
+[Azure Stack HCI](azure-stack-hci-overview.md) solutions enable you to run virtual machines on-premises and easily connect to Azure with a hyperconverged infrastructure (HCI) solution. Build and run cloud applications using consistent Azure services on-premises to meet regulatory or technical requirements. In addition to running virtualized applications on-premises, Azure Stack HCI enables you to replace and consolidate aging server infrastructure and connect to Azure for cloud services using the Windows Admin Center.
 
 Azure Stack HCI provides validated HCI solutions powered by Hyper-V and Storage Spaces Direct with Windows Server 2019 Software-Defined Datacenter (SDDC). The Windows Admin Center is used for management and integrated access to Azure services such as:
 
