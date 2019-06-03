@@ -48,7 +48,7 @@ To prevent the use of an unsupported disk in an integrated system, the system bl
 
 After you replace the disk, Azure Stack automatically discovers the new disk and starts the virtual disk repair process.
 
-## Check the status virtual disk repair using Azure Stack PowerShell
+## Check the status of virtual disk repair using Azure Stack PowerShell
 
 After you replace the disk, you can monitor the virtual disk health status and repair job progress by using Azure Stack PowerShell.
 
