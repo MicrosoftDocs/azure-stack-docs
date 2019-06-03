@@ -86,7 +86,7 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 
 ### Security updates
 
-This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack. For information, see [Azure Stack security updates.](azure-stack-release-notes-security-updates-1905.md)
+This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack. For information, see [Azure Stack security updates](azure-stack-release-notes-security-updates-1905.md).
 
 ## Update planning
 
