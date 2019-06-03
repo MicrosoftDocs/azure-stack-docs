@@ -22,7 +22,7 @@ ms.lastreviewed: 12/01/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Learn how to use both on-premises and public cloud environments to meet the demands of multi-facility enterprises. Azure Stack offers a rapid, secure, and flexible solution for collecting, processing, storing, and distributing local and remote data, particularly when security, confidentiality, corporate policy, and regulatory requirements may differ between locations and users.
+Learn how to use both on-premises and public cloud environments to meet the demands of multi-facility enterprises. Azure Stack offers a rapid, secure, and flexible solution for collecting, processing, storing, and distributing local and remote data. This is particularly important when security, confidentiality, corporate policy, and regulatory requirements may differ between locations and users.
 
 In this pattern, your customers are collecting data that requires analysis at the point of collection so that quick decisions can be made. Often this data collection occurs with no Internet access. When connectivity is established, you may need to do a resource-intensive analysis of the data to gain additional insight. You can still analyze data when a public cloud is too late or unavailable.
 
@@ -149,7 +149,7 @@ Create a new Azure Stack function to move clean data from Azure Stack to Azure.
 
 6.  Select the Notification icon in the upper-right corner of the portal and watch for the **Deployment succeeded** message.
 
-    ![Deployment succeed - new function](media/azure-stack-solution-staged-data-analytics/image7.png)
+    ![Deployment succeeded - new function](media/azure-stack-solution-staged-data-analytics/image7.png)
 
 7.  Select **Go to resource** to view new function app.
 
@@ -215,7 +215,7 @@ Create an Azure Stack storage account containing a blob and a queue.
 
 ### Storage Blob  Data archiving
 
-This storage account will house two containers. These containers are one blob used to hold archive data, and a queue used for the processing of data assigned for main office distribution.
+This storage account will house two containers. These containers consist of one blob used to hold archive data and a queue used for the processing of data assigned for main office distribution.
 
 Use the steps and settings outlined above to create another storage account and blob container as our archive storage.
 
@@ -231,7 +231,7 @@ Use the steps and settings outlined above to create another storage account and 
 
     ![Storage queue](media/azure-stack-solution-staged-data-analytics/image14.png)
 
-    ![Add name to new stoarge queue](media/azure-stack-solution-staged-data-analytics/image15.png)
+    ![Add name to new storage queue](media/azure-stack-solution-staged-data-analytics/image15.png)
 
 ## Create a queue triggered function
 
