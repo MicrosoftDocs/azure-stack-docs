@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/13/2018
@@ -46,10 +46,10 @@ If you want to contribute Azure Resource Manager templates to GitHub, make your 
 
 In this example tutorial, the [101-vm-linux-minikube](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-linux-minikube) Azure Stack quickstart template is used to deploy an Ubuntu 16.04 virtual machine on Azure Stack running Minikube to manage a Kubernetes cluster.
 
-Minikube is a tool that makes it easy to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster inside a VM, enabling you to try out Kubernetes or develop with it day-to-day. It supports a simple, one-node Kubernetes cluster running on a Linux VM. Minikube is the fastest and most straightforward way to get a fully functional Kubernetes cluster running. It enables developers to develop and test their Kubernetes-based application deployments on their local machines. Architecturally, the Minikube VM runs both Master and Agent Node Components locally:
+Minikube is a tool that makes it easy to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster inside a VM, enabling you to try out Kubernetes or develop with it day-to-day. It supports a simple, one-node Kubernetes cluster running on a Linux VM. Minikube is the fastest and most straightforward way to get a fully functional Kubernetes cluster running. It enables developers to develop and test their Kubernetes-based application deployments on their local machines. Architecturally, the Minikube VM runs both master and agent node components locally:
 
-* Master Node components such as API Server, Scheduler, and [etcd Server](https://coreos.com/etcd/) are run in a single Linux process called **LocalKube**.
-* Agent Node components are run inside docker containers exactly as they would run on a normal Agent Node. From an application deployment standpoint, there is no difference between when the application is deployed on a Minikube, or in a regular Kubernetes cluster.
+* Master node components such as API server, scheduler, and [etcd Server](https://coreos.com/etcd/) are run in a single Linux process called **LocalKube**.
+* Agent node components are run inside docker containers exactly as they would run on a normal agent node. From an application deployment standpoint, there is no difference between when the application is deployed on a Minikube, or in a regular Kubernetes cluster.
 
 This template installs the following components:
 
