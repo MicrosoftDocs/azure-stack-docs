@@ -39,7 +39,7 @@ You can see [older versions of Azure Stack release notes on the TechNet Gallery]
 
 The Azure Stack 1905 update build number is **1.1905.0.40**.
 
-### Type
+### Update type
 
 The Azure Stack 1905 update build type is **Full**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article.
 
