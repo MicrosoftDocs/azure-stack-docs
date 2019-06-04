@@ -31,10 +31,6 @@ This article describes the contents of the 1905 update package. The update inclu
 > [!IMPORTANT]  
 > This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
 
-## Archived release notes
-
-You can see [older versions of Azure Stack release notes on the TechNet Gallery](http://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
-
 ## Build reference
 
 The Azure Stack 1905 update build number is **1.1905.0.40**.
@@ -140,6 +136,10 @@ Customers with systems that can access the internet from the infrastructure netw
 >
 > - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
 > - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
+
+## Archived release notes
+
+You can see [older versions of Azure Stack release notes on the TechNet Gallery](http://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 
 ## Next steps
 
