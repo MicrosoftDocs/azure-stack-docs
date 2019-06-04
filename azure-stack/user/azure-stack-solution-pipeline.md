@@ -22,7 +22,7 @@ ms.lastreviewed: 11/07/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Learn how to deploy an app to Azure and Azure Stack using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.
+Learn how to deploy apps to Azure and Azure Stack using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.
 
 In this tutorial, you'll create a sample environment to:
 
@@ -56,7 +56,7 @@ To learn more about CI and CD:
 You need to have components in place to build a hybrid CI/CD pipeline. The following components will take time to prepare:
 
 * An Azure OEM/hardware partner can deploy a production Azure Stack. All users can deploy the Azure Stack Development Kit (ASDK).
-* An Azure Stack Operator must do the following: deploy the App Service, create plans and offers, create a tenant subscription, and add the Windows Server 2016 image.
+* An Azure Stack Operator must complete the following items: deploy the App Service, create plans and offers, create a tenant subscription, and add the Windows Server 2016 image.
 
 >[!NOTE]
 >If you already have some of these components deployed, make sure they meet the all the requirements before starting this tutorial.
@@ -236,7 +236,7 @@ Create a personal access token to access Azure DevOps Services.
 
     ![Register build agent](media/azure-stack-solution-hybrid-pipeline/000_21.png)
 
-4. When the config.cmd finishes, the build agent folder is updated with additional files. The folder with the extracted contents should look like the following:
+4. When the config.cmd finishes, the build agent folder is updated with additional files. The folder with the extracted contents should look like the following example:
 
     ![Build agent folder update](media/azure-stack-solution-hybrid-pipeline/009_token_file.png)
 
@@ -296,7 +296,7 @@ Now that the endpoint is created, the DevOps to Azure Stack connection is ready 
 
 ### Create an endpoint for AD FS
 
-The latest update to Azure DevOps lets you create a service connection using a service principal with a certificate for authentication. This is required when Azure Stack is deployed with AD FS as the identity provider. 
+The latest update to Azure DevOps lets you create a service connection using a service principal with a certificate for authentication. This connection is required when Azure Stack is deployed with AD FS as the identity provider. 
 
 ![Build agent AD FS](media/azure-stack-solution-hybrid-pipeline/image06.png)
 
@@ -359,7 +359,7 @@ Hybrid CI/CD can apply to both application code and infrastructure code. Use [Az
 
 2. Navigate to the **Build Web Application** page for the project.
 
-3. In **Arguments**, add **-r win10-x64** code. This is required to trigger a self-contained deployment with .NET Core.
+3. In **Arguments**, add **-r win10-x64** code. This step is required to trigger a self-contained deployment with .NET Core.
 
     ![Add argument build pipeline](media/azure-stack-solution-hybrid-pipeline/020_publish_additions.png)
 
@@ -471,7 +471,7 @@ Creating a release pipeline is the final step in your app build process. This re
 
 ## Create a release
 
-Now that you've completed the modifications to the release pipeline, it's time to start the deployment. To do this, you create a release from the release pipeline. A release may be created automatically; for example, the continuous deployment trigger is set in the release pipeline. This means that modifying the source code will start a new build and, from that, a new release. However, in this section you'll create a new release manually.
+Now that you've completed the modifications to the release pipeline, it's time to start the deployment. To begin deployment, create a release from the release pipeline. A release may be created automatically; for example, when the continuous deployment trigger is set in the release pipeline. Setting this trigger means that modifying the source code will start a new build and then a new release. However, in this section you'll create a new release manually.
 
 1. On the **Pipeline** tab, open the **Release** drop-down list and select **Create release**.
 
