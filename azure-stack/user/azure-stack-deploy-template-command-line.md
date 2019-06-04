@@ -1,5 +1,5 @@
 ---
-title: Deploy templates with the command line in Azure Stack | Microsoft Docs
+title: Deploy a template with the command line in Azure Stack | Microsoft Docs
 description: Learn how to use the cross-platform command-line interface (CLI) to deploy templates to Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -18,7 +18,7 @@ ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019
 
 ---
-# Deploy templates with the command line in Azure Stack
+# Deploy a template with the command line in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
