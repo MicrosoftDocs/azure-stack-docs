@@ -33,7 +33,7 @@ This article describes the contents of the 1905 update package. The update inclu
 
 ## Archived release notes
 
-You can see [older versions of Azure Stack release notes on the TechNet Gallery](http://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For further assistance, contact Microsoft Customer Support Services.
+You can see [older versions of Azure Stack release notes on the TechNet Gallery](http://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 
 ## Build reference
 
@@ -68,7 +68,7 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
   Please download these versions of the extensions immediately, so that new deployments of the extension do not fail. Always set **autoupdateminorversion=true** so that minor version updates to extensions (for example, 1.8 to 1.9) are automatically performed.
 
 - A new **Help + support** option in the Azure Stack portal makes it easier for operators to check their support options, get expert help, and learn more about Azure Stack. For more information, see [Azure Stack help and support](azure-stack-help-and-support-overview.md).
-- When multiple Azure Active Directories are onboarded (through [this process](azure-stack-enable-multitenancy.md)), it’s easy to miss rerunning the script when certain updates occur, or when changes to the AAD Service Principal authorization create missing rights. This can cause various issues, from blocked access for certain features, to more discrete failures which are hard to trace back to the original issue. To prevent this, in 1905 we’ve introduced a new feature which checks for these permissions and creates an alert when certain configuration issues are found. This validation runs every hour, and displays the remediation actions required to fix the issue. The alert closes once all the tenants are in a healthy state.
+- When multiple Azure Active Directories are onboarded (through [this process](azure-stack-enable-multitenancy.md)), it is possible to neglect rerunning the script when certain updates occur, or when changes to the AAD Service Principal authorization cause rights to be missing. This can cause various issues, from blocked access for certain features, to more discrete failures which are hard to trace back to the original issue. To prevent this, 1905 introduces a new feature that checks for these permissions and creates an alert when certain configuration issues are found. This validation runs every hour, and displays the remediation actions required to fix the issue. The alert closes once all the tenants are in a healthy state.
 
 ### Changes
 
@@ -115,7 +115,7 @@ The 1905 release of Azure Stack must be applied on the 1904 release with the fol
 
 ### After successfully applying the 1905 update
 
-After the installation of this update, install any applicable hotfixes. For more information, see our [Servicing Policy](azure-stack-servicing-policy.md).
+After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
 - No hotfix available for 1905.
