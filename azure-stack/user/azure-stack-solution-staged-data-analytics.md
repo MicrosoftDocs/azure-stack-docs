@@ -46,9 +46,9 @@ In this tutorial, you'll build a sample environment to:
 
 Some preparation is required to build this solution:
 
--   An installed and functioning Azure Stack. (More information can be found here: [Azure Stack overview](azure-stack-storage-overview.md))
+-   An installed and functioning Azure Stack. For more information, see the [Azure Stack overview](azure-stack-storage-overview.md) article.
 
--   An Azure subscription. (Create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F))
+-   An Azure subscription. You can [create a free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 -   Download and install the [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
