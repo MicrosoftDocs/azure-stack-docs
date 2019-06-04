@@ -5,12 +5,12 @@ services: azure-stack
 keywords: 
 author: mattbriggs
 manager: femila
-ms.date: 05/16/2019
+ms.date: 06/04/2019
 ms.topic: article
 ms.service: azure-stack
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.lastreviewed: 01/25/2019
+ms.lastreviewed: 06/04/2019
 
 ---
 
@@ -64,6 +64,7 @@ This article provides an overview of the unique considerations for Azure Stack n
 |  | Application Security Groups | Supported | Not yet supported. |
 |  | Internal DNS Name Label | Supported | Not yet supported. |
 |  | Private IP Address Version | Both IPv6 and IPv4 are supported. | Only IPv4 is supported. |
+|  | Static MAC Address | Not supported | Not supported. Each Azure Stack system uses the same MAC address pool. |
 | Network Watcher | Network Watcher tenant network monitoring capabilities | Supported | Not yet supported. |
 | CDN | Content Delivery Network profiles | Supported | Not yet supported. |
 | Application gateway | Layer-7 load balancing | Supported | Not yet supported. |

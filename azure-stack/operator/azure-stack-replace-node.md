@@ -66,7 +66,7 @@ The following steps are provided as a high-level overview of the scale unit node
 
 4. Replace the physical computer. Typically, this is done by your OEM hardware vendor.
 5. Use the [Repair](azure-stack-node-actions.md#repair) action to add the new physical computer to the scale unit.
-6. Use the privileged endpoint to [check the status of virtual disk repair](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair). With new data drives, a full storage repair job can take multiple hours depending on system load and consumed space.
+6. Use the privileged endpoint to [check the status of virtual disk repair](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair-using-the-privileged-endpoint). With new data drives, a full storage repair job can take multiple hours depending on system load and consumed space.
 7. After the repair action has finished, validate that all active alerts have been automatically closed.
 
 ## Next steps
