@@ -38,7 +38,7 @@ In Azure Stack, services are delivered to users using subscriptions, offers, and
 
 ![Subscriptions, offers, and plans](media/azure-stack-key-features/image4.png)
 
-To learn more, see [Key features and concepts in Azure Stack](azure-stack-overview.md).
+To learn more, see [Plan, offer, quota, and subscription overview](azure-stack-plan-offer-quota-overview.md).
 
 ## Create an offer
 
