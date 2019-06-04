@@ -72,6 +72,8 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 
 - Improved reliability of infrastructure backup operations during service failover. 
 
+- An new version of the Azure Stack Nagios pluign is available that now uses the adal library for authentication. The plugin now also supports Azure Active Directory (AAD) and Active Directory Federation Services (ADFS) deployments of Azure Stack. (https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)
+
 ### Changes
 
 - To increase reliability and availability during planned and unplanned maintenance scenarios, Azure Stack adds an additional infrastructure role instance for domain services.
