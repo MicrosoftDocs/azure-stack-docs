@@ -76,6 +76,8 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 
 - With this update, during repair and add node operations, the hardware is validated to ensure homogenous scale unit nodes within a scale unit.
 
+- If scheduled backups are failing to complete and the defined retention period is exceeded, the infrastructure backup controller will ensure at least one successful backup is retained. 
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
