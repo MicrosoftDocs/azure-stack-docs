@@ -36,6 +36,10 @@ You can see [older versions of Azure Stack release notes on the TechNet Gallery]
 
 The Azure Stack 1903 update build number is **1.1903.0.35**.
 
+### Update type
+
+The Azure Stack 1903 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. The expected time it takes for the 1903 update to complete is approximately 16 hours, but exact times can vary. This runtime approximation is specific to the 1903 update and should not be compared to other Azure Stack updates.
+
 > [!IMPORTANT]
 > The 1903 payload does not include an ASDK release.
 
