@@ -43,6 +43,10 @@ The Azure Stack 1901 update build number is **1.1901.0.95** or **1.1901.0.99** a
 >
 > Customers with either version of 1901 will not be impacted when installing the next full or hotfix package.
 
+### Update type
+
+The Azure Stack 1901 update build type is **Full**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article.
+
 ## Hotfixes
 
 Azure Stack releases hotfixes on a regular basis. Be sure to install the [latest Azure Stack hotfix](#azure-stack-hotfixes) for 1811 before updating Azure Stack to 1901.
