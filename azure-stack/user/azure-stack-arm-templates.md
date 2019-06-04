@@ -14,7 +14,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 11/14/2018
@@ -28,12 +28,11 @@ You can use Azure Resource Manager templates to deploy and provision all the res
 
 These templates can be deployed with the Microsoft Azure Stack portal, PowerShell, the command line, and Visual Studio.
 
-The following quickstart templates are available on [GitHub](https://aka.ms/azurestackgithub):
-
+The following quickstart templates are [available on GitHub](https://aka.ms/azurestackgithub):
 
 ## Deploy SharePoint Server (non-high-availability deployment)
 
-Use the PowerShell [Desired State Configuration](https://docs.microsoft.com/powershell/dsc/overview/overview) (DSC) extension to [create a SharePoint Server 2013 farm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) that includes the following resources:
+Use the PowerShell [Desired State Configuration](/powershell/dsc/overview/overview) (DSC) extension to [create a SharePoint Server 2013 farm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) that includes the following resources:
 
 * A virtual network
 * Three storage accounts
@@ -75,7 +74,7 @@ Use the PowerShell DSC extension to configure an existing virtual machine Local 
 
 ## Cancel a running template deployment
 
-To cancel a running template deployment, use the [Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell [cmdlet](https://docs.microsoft.com/powershell/developer/cmdlet/cmdlet-overview).
+To cancel a running template deployment, use the [Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell [cmdlet](/powershell/developer/cmdlet/cmdlet-overview).
 
 ## Next steps
 
