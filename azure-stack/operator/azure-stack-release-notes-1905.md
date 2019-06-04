@@ -90,6 +90,9 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 
 - Fixed issue in the available backup blade that listed a new available backup before it completed upload to the external storage location. Now the available backup will show in the list after it is successfully uploaded to the storage location. 
 
+<!-- ICM: 114819337; Task: 4408136 -->
+- Fixed issue with retrieving recovery keys during backup operation. 
+
 ### Security updates
 
 This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack. For information, see [Azure Stack security updates](azure-stack-release-notes-security-updates-1905.md).
