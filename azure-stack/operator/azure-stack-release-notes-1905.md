@@ -70,6 +70,8 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 - A new **Help + support** option in the Azure Stack portal makes it easier for operators to check their support options, get expert help, and learn more about Azure Stack. For more information, see [Azure Stack help and support](azure-stack-help-and-support-overview.md).
 - When multiple Azure Active Directories are onboarded (through [this process](azure-stack-enable-multitenancy.md)), it’s easy to miss rerunning the script when certain updates occur, or when changes to the AAD Service Principal authorization create missing rights. This can cause various issues, from blocked access for certain features, to more discrete failures which are hard to trace back to the original issue. To prevent this, in 1905 we’ve introduced a new feature which checks for these permissions and creates an alert when certain configuration issues are found. This validation runs every hour, and displays the remediation actions required to fix the issue. The alert closes once all the tenants are in a healthy state.
 
+- Improve reliability of infrastructure backup operations during service failover. 
+
 ### Changes
 
 - To increase reliability and availability during planned and unplanned maintenance scenarios, Azure Stack adds an additional infrastructure role instance for domain services.
