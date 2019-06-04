@@ -70,6 +70,12 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 
 - A new version of the [Azure Stack Nagios plugin](azure-stack-integrate-monitor.md#integrate-with-nagios) is available that uses the [Azure Active Directory authentication libraries](/azure/active-directory/develop/active-directory-authentication-libraries) (ADAL) for authentication. The plugin now also supports Azure Active Directory (AAD) and Active Directory Federation Services (ADFS) deployments of Azure Stack. For more information, see the [Nagios plugin exchange](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details) site.
 
+- A new hybrid profile **2019-03-01-Hybrid** was released that supports all the latest features in Azure Stack. Both Azure PowerShell and Azure CLI support the **2019-03-01-Hybrid** profile. The DotNet, Ruby, Node JS, Go, and Python SDKs have published packages that support the **2019-03-01-Hybrid** profile. The respective documentation and some samples have been updated to reflect the changes.
+
+- The [NodeJS SDK](https://www.npmjs.com/search?q=2019-03-01-hybrid) now supports API profiles. Packages that support the **2019-03-01-Hybrid** profile are published.
+
+- With build 1904, Azure Stack introduced an extension that works on Visual Studio Code. Using the **Azure Account** extension, developers can now target Azure Stack by logging in and viewing subscriptions, as well as a number of other services. The Azure Account extension works on both AAD environments as well as ADFS environments and only requires a small change in the user settings of Visual Studio Code to input Azure Stack metadata values. For more information, [see the documentation here](../user/azure-stack-dev-start-vscode-azure.md).
+
 ### Changes
 
 - To increase reliability and availability during planned and unplanned maintenance scenarios, Azure Stack adds an additional infrastructure role instance for domain services.
