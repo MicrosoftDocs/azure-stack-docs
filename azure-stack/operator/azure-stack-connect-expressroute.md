@@ -30,7 +30,7 @@ You can use this article as a tutorial and use the examples to set up the same t
 
 Azure ExpressRoute lets you extend your on-premises networks into the Microsoft cloud over a private connection supplied by a connectivity provider. ExpressRoute is not a VPN connection over the public internet.
 
-For more information about Azure ExpressRoute, see the [ExpressRoute overview]((/azure/expressroute/expressroute-introduction).
+For more information about Azure ExpressRoute, see the [ExpressRoute overview](/azure/expressroute/expressroute-introduction).
 
 ### Assumptions
 
@@ -44,7 +44,7 @@ This article assumes that:
 
 To connect Azure Stack and Azure using ExpressRoute, you must meet the following requirements:
 
-* A provisioned [ExpressRoute circuit]((/azure/expressroute/expressroute-circuit-peerings) through a [connectivity provider]((/azure/expressroute/expressroute-locations).
+* A provisioned [ExpressRoute circuit](/azure/expressroute/expressroute-circuit-peerings) through a [connectivity provider](/azure/expressroute/expressroute-locations).
 * An Azure subscription to create an ExpressRoute circuit and VNets in Azure.
 * A router that must:
   * Support Site-to-Site VPN connections between its LAN interface and Azure Stack Multitenant Gateway.
@@ -321,22 +321,22 @@ For more information about creating virtual networks in Azure, see [Create a vir
 
 ### Configure an ExpressRoute circuit
 
-1. Review the ExpressRoute prerequisites in [ExpressRoute prerequisites & checklist]((/azure/expressroute/expressroute-prerequisites).
+1. Review the ExpressRoute prerequisites in [ExpressRoute prerequisites & checklist](/azure/expressroute/expressroute-prerequisites).
 
-1. Follow the steps in [Create and modify an ExpressRoute circuit]((/azure/expressroute/expressroute-howto-circuit-portal-resource-manager) to create an ExpressRoute circuit using your Azure subscription.
+1. Follow the steps in [Create and modify an ExpressRoute circuit](/azure/expressroute/expressroute-howto-circuit-portal-resource-manager) to create an ExpressRoute circuit using your Azure subscription.
 
    >[!NOTE]
    >Give the service key for your circuit to your service so they can set up your ExpressRoute circuit at their end.
 
-1. Follow the steps in [Create and modify peering for an ExpressRoute circuit]((/azure/expressroute/expressroute-howto-routing-portal-resource-manager) to configure private peering on the ExpressRoute circuit.
+1. Follow the steps in [Create and modify peering for an ExpressRoute circuit](/azure/expressroute/expressroute-howto-routing-portal-resource-manager) to configure private peering on the ExpressRoute circuit.
 
 ### Create the virtual network gateway
 
-Follow the steps in [Configure a virtual network gateway for ExpressRoute using PowerShell]((/azure/expressroute/expressroute-howto-add-gateway-resource-manager) to create a virtual network gateway for ExpressRoute in the hub VNet.
+Follow the steps in [Configure a virtual network gateway for ExpressRoute using PowerShell](/azure/expressroute/expressroute-howto-add-gateway-resource-manager) to create a virtual network gateway for ExpressRoute in the hub VNet.
 
 ### Create the connection
 
-To link the ExpressRoute circuit to the hub VNet, follow the steps in [Connect a virtual network to an ExpressRoute circuit]((/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager).
+To link the ExpressRoute circuit to the hub VNet, follow the steps in [Connect a virtual network to an ExpressRoute circuit](/azure/expressroute/expressroute-howto-linkvnet-portal-resource-manager).
 
 ### Peer the VNets
 
