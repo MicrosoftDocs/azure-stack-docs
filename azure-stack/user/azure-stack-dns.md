@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2019
+ms.date: 06/05/2019
 ms.author: sethm
 ms.lastreviewed: 01/05/2019
 
@@ -21,14 +21,14 @@ ms.lastreviewed: 01/05/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Azure Stack supports the following Domain Name System (DNS) features:
+Azure Stack supports the following Azure DNS features:
 
 * DNS hostname resolution
 * Create and manage DNS zones and records using the API
 
 ## Support for DNS hostname resolution
 
-You can specify a DNS domain name label for public IP resources. Azure Stack uses **domainnamelabel.location.cloudapp.azurestack.external** for the label name and maps it to the public IP address in Azure Stack managed DNS servers.
+You can specify a DNS domain name label for public IP resources. Azure Stack uses **domainnamelabel.location.cloudapp.azurestack.external** for the label name and maps it to the public IP address in Azure Stack-managed DNS servers.
 
 For example, if you create a public IP resource with **contoso** as a domain name label in the local Azure Stack location, the [fully qualified domain name (FQDN)](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) **contoso.local.cloudapp.azurestack.external** resolves to the public IP address of the resource. You can use this FQDN to create a custom domain CNAME record that points to the public IP address in Azure Stack.
 
@@ -59,7 +59,7 @@ DNS in Azure Stack is similar to DNS in Azure, but there are a few important exc
 
 * **Does not support AAAA records**: Azure Stack does not support AAAA records because Azure Stack does not support IPv6 addresses. This is a key difference between DNS in Azure and Azure Stack.
 
-* **Is not multi-tenant**: The DNS Service in Azure Stack is not multi-tenant. Each tenant cannot create the same DNS zone. Only the first subscription that attempts to create the zone succeeds, and subsequent requests fail. This is a key difference between Azure and Azure Stack DNS.
+* **Is not multi-tenant**: The DNS Service in Azure Stack is not multi-tenant. Each tenant cannot create the same DNS zone. Only the first subscription that attempts to create the zone succeeds, and subsequent requests fail. This is another key difference between Azure and Azure Stack DNS.
 
 * **Tags, metadata, and Etags**: There are minor differences in how Azure Stack handles tags, metadata, Etags, and limits.
 
@@ -102,4 +102,4 @@ The following default limits apply when using Azure Stack DNS:
 
 ## Next steps
 
-- [Introducing iDNS for Azure Stack](azure-stack-understanding-dns.md)
+* [Introducing iDNS for Azure Stack](azure-stack-understanding-dns.md)
