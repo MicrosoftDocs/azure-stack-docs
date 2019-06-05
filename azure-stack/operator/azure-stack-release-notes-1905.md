@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 06/05/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 06/04/2019
+ms.lastreviewed: 06/05/2019
 ---
 
 # Azure Stack 1905 update
@@ -74,7 +74,7 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 
 - The [Node.js SDK](https://www.npmjs.com/search?q=2019-03-01-hybrid) now supports API profiles. Packages that support the **2019-03-01-Hybrid** profile are published.
 
-- With build 1904, Azure Stack introduced an extension that works on Visual Studio Code. Using the **Azure Account** extension, developers can now target Azure Stack by logging in and viewing subscriptions, as well as a number of other services. The Azure Account extension works on both AAD environments as well as ADFS environments and only requires a small change in the user settings of Visual Studio Code to input Azure Stack metadata values. For more information, [see the documentation here](../user/azure-stack-dev-start-vscode-azure.md).
+- There is now an Azure Stack extension that works on Visual Studio Code. Using the **Azure Account** extension, developers can target Azure Stack by logging in and viewing subscriptions, as well as a number of other services. The Azure Account extension works on both AAD environments as well as ADFS environments and only requires a small change in the user settings of Visual Studio Code to input Azure Stack metadata values. For more information, [see the documentation here](../user/azure-stack-dev-start-vscode-azure.md).
 
 ### Changes
 
