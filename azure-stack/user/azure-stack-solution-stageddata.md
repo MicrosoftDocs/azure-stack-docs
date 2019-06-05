@@ -17,7 +17,7 @@ ms.reviewer: anajod
 ms.lastreviewed: 06/04/2019
 ---
 
-# Deploy a staged data analytics solution to Azure Stack
+# Tutorial: Deploy a staged data analytics solution to Azure Stack
 
 This article will show you how to deploy a solution for collecting data
 that requires analysis at the point of collection so that quick
@@ -26,13 +26,14 @@ Internet access. When connectivity is established, you may need to do a
 resource-intensive analysis of the data to gain additional insight.
 
 In this tutorial, you'll create a sample environment to:
-  - Create the raw data storage blob.
-  - Create a New Azure Stack Function to move clean data from Azure
-    Stack to Azure.
-  - Create a Blob storage triggered function.
-  - Create an Azure Stack storage account containing a blob and a queue.
-  - Create a queue triggered function.
-  - Test the queue triggered function.
+
+> [!div class="checklist"]
+> - Create the raw data storage blob.
+> - Create a New Azure Stack Function to move clean data from Azure Stack to Azure.
+> - Create a Blob storage triggered function.
+> - Create an Azure Stack storage account containing a blob and a queue.
+> - Create a queue triggered function.
+> - Test the queue triggered function.
 
 ## Architecture
 

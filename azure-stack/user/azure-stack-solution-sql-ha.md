@@ -18,7 +18,7 @@ ms.reviewer: anajod
 ms.lastreviewed: 06/04/2019
 ---
 
-# Deploy a SQL 2016 availability group to Azure and Azure Stack
+# Tutorial: Deploy a SQL 2016 availability group to Azure and Azure Stack
 
 This article will step you through an automated deployment of a basic highly available (HA) SQL Server 2016 Enterprise cluster with an
 asynchronous disaster recovery (DR) site across two Azure Stack environments. To learn more about SQL Server 2016 and high availability,
@@ -26,11 +26,12 @@ see [Always On availability groups: a high-availability and disaster-recovery so
 
 This pattern and architecture was created through customer research by one of our summer interns, Suren Jamiyanaa.
 
-You'll learn how to:
+In this tutorial, you will build a sample environment to:
 
-  - Orchestrate a deployment across two Azure Stacks
-  - Use Docker to minimize dependency issues with Azure API Profiles
-  - Deploy a basic highly available SQL Server 2016 Enterprise cluster with a disaster recovery site
+> [!div class="checklist"]
+> - Orchestrate a deployment across two Azure Stacks
+> - Use Docker to minimize dependency issues with Azure API Profiles
+> - Deploy a basic highly available SQL Server 2016 Enterprise cluster with a disaster recovery site
 
 ## Architecture 
 

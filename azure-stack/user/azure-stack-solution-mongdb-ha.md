@@ -18,17 +18,17 @@ ms.reviewer: anajod
 ms.lastreviewed: 06/04/2019
 ---
 
-# Deploy a highly available MongoDB solution to Azure and Azure Stack
+# Tutorial: Deploy a highly available MongoDB solution to Azure and Azure Stack
 
 This article will step you through an automated deployment of a basic highly available (HA) MongoDB cluster with a disaster recovery (DR) site
 across two Azure Stack environments. To learn more about MongoDB and high availability, see [Replica Set Members](https://docs.mongodb.com/manual/core/replica-set-members/).
 
-You'll learn how to:
+In this tutorial, you'll create a sample environment to:
 
-  - Orchestrate a deployment across two Azure Stacks
-  - Use Docker to minimize dependency issues with Azure API Profiles
-  - Deploy a basic highly available MongoDB cluster with a disaster
-    recovery site
+> [!div class="checklist"]
+> - Orchestrate a deployment across two Azure Stacks
+> - Use Docker to minimize dependency issues with Azure API Profiles
+> - Deploy a basic highly available MongoDB cluster with a disaster recovery site
 
 ## Architecture
 
