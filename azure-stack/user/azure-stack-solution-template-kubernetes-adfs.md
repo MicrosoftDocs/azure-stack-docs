@@ -26,7 +26,7 @@ ms.lastreviewed: 02/11/2019
 > [!Note]  
 > Kubernetes on Azure Stack is in preview. Azure Stack disconnected scenario is not currently supported by the preview.
 
-You can follow the steps in this article to deploy and set up the resources for Kubernetes. Use these steps when Active Directory Federated Services (AD FS) is your identity management service.
+Follow the steps in this article to deploy and set up the resources for Kubernetes when Active Directory Federated Services (AD FS) is your identity management service.
 
 ## Prerequisites 
 
@@ -36,21 +36,21 @@ To get started, make sure you have the right permissions and that your Azure Sta
 
     For instructions on generating a key, see [SSH Key Generation](https://github.com/msazurestackworkloads/acs-engine/blob/master/docs/ssh.md#ssh-key-generation).
 
-1. Check that you have a valid subscription in your Azure Stack tenant portal, and that you have enough public IP addresses available to add new applications.
+1. Check that you have a valid subscription in your Azure Stack tenant portal, and that you have enough public IP addresses available to add new apps.
 
-    The cluster cannot be deployed to an Azure Stack **Administrator** subscription. You must use a **User** subscription. 
+    The cluster can't be deployed to an Azure Stack **Admin** subscription. You must use a **User** subscription. 
 
-1. You will need the Key Vault Service in your Azure Stack subscription.
+1. You'll need the Key Vault Service in your Azure Stack subscription.
 
-1. You will need the Kubernetes Cluster in your marketplace. 
+1. You'll need the Kubernetes Cluster in your marketplace. 
 
-If you are missing the Key Vault Service and Kubernetes Cluster marketplace item, talk to your Azure Stack administrator.
+If you're missing the Key Vault Service and Kubernetes Cluster marketplace item, talk to your Azure Stack admin.
 
 ## Create a service principal
 
-You need to work with your Azure Stack administrator to set up your service principal when using AD FS as your identity solution. The service principal gives your application access to Azure Stack resources.
+You need to work with your Azure Stack admin to set up your service principal when using AD FS as your identity solution. The service principal gives your app access to Azure Stack resources.
 
-1. Your Azure Stack administrator provides you with a certificate and the information for the service principal.
+1. Your Azure Stack admin provides you with a certificate and the information for the service principal.
 
    - The service principal information should look like:
 
@@ -63,17 +63,17 @@ You need to work with your Azure Stack administrator to set up your service prin
        RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
      ```
 
-   - Your certificate will be a file with the extension `.pfx`. You will store your certificate in a keyvault as a secret.
+   - Your certificate will be a file with the extension `.pfx`. You'll store your certificate in a keyvault as a secret.
 
 2. Assign your new service principal a role as a contributor to your subscription. For instructions, see [Assign a role](../operator/azure-stack-create-service-principals.md).
 
-3. Create a key vault to store your certificate for deployment. Use the following PowerShell scripts rather than the Portal.
+3. Create a key vault to store your certificate for deployment. Use the following PowerShell scripts rather than the Portal:
 
    - You need the following pieces of information:
 
        | Value | Description |
        | ---   | ---         |
-       | Azure Resource Manager Endpoint | The Microsoft Azure Resource Manager is a management framework that allows administrators to deploy, manage, and monitor Azure resources. Azure Resource Manager can handle these tasks as a group, rather than individually, in a single operation.<br>The endpoint in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/`<br>The endpoint in integrated systems is: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
+       | Azure Resource Manager Endpoint | The Microsoft Azure Resource Manager is a management framework that allows admins to deploy, manage, and monitor Azure resources. Azure Resource Manager can handle these tasks as a group, rather than individually, in a single operation.<br>The endpoint in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/`<br>The endpoint in integrated systems is: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
        | Your Subscription ID | The [subscription ID](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) is how you access offers in Azure Stack. |
        | Your user name | Use just your user name rather than your domain name and user name, such as `username` instead of `azurestack\username`. |
        | The resource group name  | The name of a new resource group or select an existing resource group. The resource name needs to be alphanumeric and lowercase. |
@@ -158,13 +158,13 @@ You need to work with your Azure Stack administrator to set up your service prin
 
 1. Select **+ Create a resource** > **Compute** > **Kubernetes Cluster**. Click **Create**.
 
-    ![Deploy Solution Template](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
+    ![Create Kubernetes cluster](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
 ### 1. Basics
 
 1. Select **Basics** in Create Kubernetes Cluster.
 
-    ![Deploy Solution Template](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
+    ![Basics in create Kubernetes cluster](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
 
 1. Select your **Subscription** ID.
 
@@ -176,13 +176,13 @@ You need to work with your Azure Stack administrator to set up your service prin
 
 1. Select **Kubernetes Cluster Settings** in Create Kubernetes Cluster.
 
-    ![Deploy Solution Template](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings-adfs.png)
+    ![Kubernetes cluster settings](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings-adfs.png)
 
-1. Enter the **Linux VM Admin Username**. User name for the Linux Virtual Machines that are part of the Kubernetes cluster and DVM.
+1. Enter the **Linux VM Admin Username** for the Linux Virtual Machines that are part of the Kubernetes cluster and DVM.
 
 1. Enter the **SSH Public Key** used for authorization to all Linux machines created as part of the Kubernetes cluster and DVM.
 
-1. Enter the **Master Profile DNS Prefix** that is unique to the region. This must be a region-unique name, such as `k8s-12345`. Try to chose it same as the resource group name as best practice.
+1. Enter the **Master Profile DNS Prefix** that is unique to the region. This must be a region-unique name, such as `k8s-12345`. Try to make it match the resource group name as a best practice.
 
     > [!Note]  
     > For each cluster, use a new and unique master profile DNS prefix.
@@ -197,13 +197,13 @@ You need to work with your Azure Stack administrator to set up your service prin
 
 1. Select **ADFS** for the **Azure Stack identity system** for your Azure Stack installation.
 
-1. Enter the **Service Principal ClientId** This is used by the Kubernetes Azure cloud provider. The Client ID identified as the Application ID when your Azure Stack administrator created the service principal.
+1. Enter the **Service Principal ClientId**. This is used by the Kubernetes Azure cloud provider. The Client ID identified as the Application ID when your Azure Stack administrator created the service principal.
 
 1. Enter the **Key Vault resource group**  that sources the key vault that contains your certificate.
 
-1. Enter the **Key Vault name** the name of the key vault that contains your certificate as a secret. 
+1. Enter the **Key Vault name**. This is the name of the key vault that contains your certificate as a secret. 
 
-1. Enter the **Key Vault secret**. The secret name references your certificate.
+1. Enter the **Key Vault secret**. This secret name references your certificate.
 
 1. Enter the **Kubernetes Azure Cloud Provider Version**. This is the version for the Kubernetes Azure provider. Azure Stack releases a custom Kubernetes build for each Azure Stack version.
 
@@ -211,14 +211,14 @@ You need to work with your Azure Stack administrator to set up your service prin
 
 1. Select Summary. The blade displays a validation message for your Kubernetes Cluster configurations settings.
 
-    ![Deploy Solution Template](media/azure-stack-solution-template-kubernetes-deploy/04_preview.png)
+    ![Kubernetes cluster configuration summary](media/azure-stack-solution-template-kubernetes-deploy/04_preview.png)
 
 2. Review your settings.
 
 3. Select **OK** to deploy your cluster.
 
 > [!TIP]  
->  If you have questions about your deployment, you can post your question or see if someone has already answered the question in the [Azure Stack Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
+>  If you have questions about your deployment, post your question or see if someone has already answered the question in the [Azure Stack Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
 
 ## Next steps
 
