@@ -16,7 +16,7 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 05/31/2019
+ms.lastreviewed: 06/05/2019
 
 ---
 # Microsoft Azure Stack help and support
@@ -40,7 +40,7 @@ At the top of **Help + support** are links to things you might try first, like r
 For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
 
 If there is a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). 
-You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open **Help + Support Overview** and submit a new support request.
+You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open **Help + Support Overview** and submit a new support request. The support request is pre-filled with information about your stamp to assist Microsoft Customer Support Services (CSS) with problem resolution. We highly recommend that customers use this experience to submit tickets rather than using the public Azure portal. 
 
 If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, such as software running on the hardware lifecycle host, contact your OEM hardware vendor first. 
 For anything else, contact Microsoft CSS.
