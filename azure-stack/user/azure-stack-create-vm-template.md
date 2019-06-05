@@ -1,6 +1,6 @@
 ---
 title: Create a VM using a community template | Microsoft Docs
-description: Learn how to use the ASDK to create a VM using a predefined template and a GitHub custom template.
+description: Learn how to use the Azure Stack Development Kit (ASDK) to create a VM using a predefined template and a GitHub custom template.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/13/2018
@@ -33,9 +33,9 @@ In this tutorial, you learn how to:
 
 ## Azure Stack quickstart templates
 
-Azure Stack quickstart templates are stored in the GitHub [public Azure Stack QuickStart templates repo](https://github.com/Azure/AzureStack-QuickStart-Templates). This repo (repository) contains Azure Resource Manager deployment templates that have been tested with the Microsoft Azure Stack Development Kit (ASDK). You can use them to make it easier for you to evaluate Azure Stack and use the ASDK environment.
+Azure Stack quickstart templates are stored in the GitHub [global Azure Stack quickstart templates repo](https://github.com/Azure/AzureStack-QuickStart-Templates). This repo (repository) contains Azure Resource Manager deployment templates that have been tested with the Microsoft Azure Stack Development Kit (ASDK). You can use them to make it easier for you to evaluate Azure Stack and use the ASDK environment.
 
-Over time, many GitHub users have contributed to the repo, resulting in a collection of more than 400 deployment templates. This repo is a great starting point to get a better understanding of how you can deploy various kinds of environments to Azure Stack.
+Over time, many GitHub users have contributed to the repo, resulting in a collection of more than 400 deployment templates. This repo is a great starting point to better understanding how you can deploy various kinds of environments to Azure Stack.
 
 >[!IMPORTANT]
 > Some of these templates are created by members of the community and not by Microsoft. Each template is licensed under a license agreement by its owner, not Microsoft. Microsoft is not responsible for these templates and does not screen for security, compatibility, or performance. Community templates are not supported under any Microsoft support program or service, and are made available "AS IS," without warranty of any kind.
@@ -46,10 +46,10 @@ If you want to contribute Azure Resource Manager templates to GitHub, make your 
 
 In this example tutorial, the [101-vm-linux-minikube](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-linux-minikube) Azure Stack quickstart template is used to deploy an Ubuntu 16.04 VM on Azure Stack running Minikube to manage a Kubernetes cluster.
 
-Minikube is a tool that makes it easy to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster inside a VM, enabling you to try out Kubernetes or develop with it day-to-day. It supports a simple, one-node Kubernetes cluster running on a Linux VM. Minikube is the fastest and most straightforward way to get a fully functional Kubernetes cluster running. It enables developers to develop and test their Kubernetes-based application deployments on their local machines. Architecturally, the Minikube VM runs both Master and Agent Node Components locally:
+Minikube is a tool that makes it easy to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster inside a VM, enabling you to try out Kubernetes or develop with it day-to-day. It supports a simple, one-node Kubernetes cluster running on a Linux VM. Minikube is the fastest and most straightforward way to get a fully functional Kubernetes cluster running. It enables developers to develop and test their Kubernetes-based application deployments on their local machines. Architecturally, the Minikube VM runs both master and agent node components locally:
 
-* Master Node components such as API Server, Scheduler, and [etcd Server](https://coreos.com/etcd/) are run in a single Linux process called **LocalKube**.
-* Agent Node components are run inside docker containers exactly as they would run on a normal Agent Node. From an application deployment standpoint, there is no difference between when the application is deployed on a Minikube, or in a regular Kubernetes cluster.
+* Master node components such as API Server, Scheduler, and [etcd Server](https://coreos.com/etcd/) are run in a single Linux process called **LocalKube**.
+* Agent node components are run inside docker containers exactly as they would run on a normal agent node. From an application deployment standpoint, there's no difference between deploying the application on a Minikube or in a regular Kubernetes cluster.
 
 This template installs the following components:
 
@@ -87,7 +87,7 @@ This template installs the following components:
 
     ![Parameters](media/azure-stack-create-vm-template/6.PNG)
 
-7. Choose the subscription to use, create or choose an existing resource group name, and then select **Create** to initiate the template deployment.
+7. Choose the subscription to use and then create or choose an existing resource group name. Then, select **Create** to start the template deployment.
 
     ![Choose subscription](media/azure-stack-create-vm-template/7.PNG)
 
@@ -124,7 +124,7 @@ Now that the Linux VM has been successfully created, you can sign in to start Mi
 
     ![Dashboard](media/azure-stack-create-vm-template/12.PNG)
 
-5. To deploy a sample application, visit the official Kubernetes documentation page, and skip the "Create Minikube Cluster" section as you have already created one. Jump to the section "Create your Node.js application" at https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/.
+5. To deploy a sample application, visit the official Kubernetes documentation page, and skip the "Create Minikube Cluster" section as you've already created one. Jump to the section "Create your Node.js application" at https://kubernetes.io/docs/tutorials/stateless-application/hello-minikube/.
 
 ## Next steps
 

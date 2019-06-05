@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 06/04/2019
 ms.author: sethm
 ms.reviewer: shnatara
 ms.lastreviewed: 10/19/2018
@@ -30,7 +30,7 @@ There are two types of *Owners* that are assigned to a subscription:
 
   You can use the PowerShell cmdlet [Set-AzsUserSubscription](/powershell/module/azs.subscriptions.admin/set-azsusersubscription) to change the billing owner.  
 
-- **Owners added through RBAC roles** - Additional users can be granted the **Owner** role using the [Role Based Access Control](azure-stack-manage-permissions.md) (RBAC) system. Any number of additional user accounts can be added as owners to compliment the billing owner. Additional owners are also administrators of the subscription and have all privileges for the subscription, except permission to delete the billing owner.
+- **Owners added through RBAC roles** - Additional users can be granted the **Owner** role using [role-based access control](azure-stack-manage-permissions.md) (RBAC). Any number of additional user accounts can be added as owners to compliment the billing owner. Additional owners are also administrators of the subscription and have all privileges for the subscription, except permission to delete the billing owner.
 
   You can use PowerShell to manage additional owners. For more information, see [this article](/azure/role-based-access-control/role-assignments-powershell).
 
@@ -39,7 +39,7 @@ There are two types of *Owners* that are assigned to a subscription:
 Run the following script to change the billing owner of a user subscription. The computer that you use to run the script must connect to Azure Stack and run the Azure Stack PowerShell module 1.3.0 or later. For more information, see [Install Azure Stack PowerShell](azure-stack-powershell-install.md).
 
 >[!NOTE]
->In a multi-tenant Azure Stack, the new owner must be in the same directory as the existing owner. Before you can provide ownership of the subscription to a user that is in another directory, you must first [invite that user as a guest into your directory]((/azure/active-directory/b2b/add-users-administrator).
+>In a multi-tenant Azure Stack, the new owner must be in the same directory as the existing owner. Before you can provide ownership of the subscription to a user that is in another directory, you must first [invite that user as a guest into your directory](/azure/active-directory/b2b/add-users-administrator).
 
 Replace the following values in the script before it runs:
 

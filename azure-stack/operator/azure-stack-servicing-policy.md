@@ -49,10 +49,10 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
+- [Azure Stack 1905 update](azure-stack-release-notes-1905.md)
 - [Azure Stack 1904 update](azure-stack-release-notes-1904.md)
 - [Azure Stack 1903 update](azure-stack-update-1903.md)
 - [Azure Stack 1902 update](azure-stack-update-1902.md)
-- [Azure Stack 1901 update](azure-stack-update-1901.md)
 
 ## Hotfixes
 

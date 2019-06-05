@@ -36,6 +36,10 @@ You can see [older versions of Azure Stack release notes on the TechNet Gallery]
 
 The Azure Stack 1902 update build number is **1.1902.0.69**.
 
+### Update type
+
+The Azure Stack 1902 update build type is **Full**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article.
+
 ## Hotfixes
 
 Azure Stack releases hotfixes on a regular basis. Be sure to install the [latest Azure Stack hotfix](#azure-stack-hotfixes) for 1901 before updating Azure Stack to 1902.
@@ -55,7 +59,7 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 ## Prerequisites
 
 > [!IMPORTANT]
-> You can install 1902 directly from either the [1.1901.0.95 or 1.1901.0.99](azure-stack-update-1901.md#build-reference) release, without first installing any 1901 hotfix. However, if you have installed the older **1901.2.103** hotfix, you must install the newer [1901.3.105 hotfix](https://support.microsoft.com/help/4495662) before proceeding to 1902.
+> You can install 1902 directly from either the **1.1901.0.95** or **1.1901.0.99** release, without first installing any 1901 hotfix. However, if you have installed the older **1901.2.103** hotfix, you must install the newer [1901.3.105 hotfix](https://support.microsoft.com/help/4495662) before proceeding to 1902.
 
 - Before you start installation of this update, run [Test-AzureStack](azure-stack-diagnostic-test.md) with the following parameters to validate the status of your Azure Stack and resolve any operational issues found, including all warnings and failures. Also review active alerts, and resolve any that require action:
 

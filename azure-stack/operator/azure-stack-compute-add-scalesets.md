@@ -8,7 +8,7 @@ editor: ''
 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 06/04/2019
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/22/2018
@@ -26,14 +26,14 @@ This article guides you through the process of making scale sets available in th
 Virtual machine scale sets on Azure Stack are similar to virtual machine scale sets on Azure. For more information, see the following videos:
 
 * [Mark Russinovich talks Azure scale sets](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)
-* [Virtual Machine Scale Sets with Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
+* [Virtual Machine scale sets with Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
 On Azure Stack, virtual machine scale sets do not support auto-scale. You can add more instances to a scale set using Resource Manager templates, CLI, or PowerShell.
 
 ## Prerequisites
 
 * **The Marketplace:** Register Azure Stack with global Azure to enable the availability of items in the Marketplace. Follow the instructions in [Register Azure Stack with Azure](azure-stack-registration.md).
-* **Operating system image:** Before a virtual machine scale set can be created, you must download the VM images for use in the VMSS from the [Azure Stack marketplace](azure-stack-download-azure-marketplace-item.md). The images must already be present before a user can create a new VMSS.
+* **Operating system image:** Before a virtual machine scale set can be created, you must download the VM images for use in the scale set from the [Azure Stack marketplace](azure-stack-download-azure-marketplace-item.md). The images must already be present before a user can create a new scale set.
 
 ## Use the Azure Stack portal
 
