@@ -12,7 +12,7 @@
     },
     {
       "source_path": "azure-stack/operator/azure-stack-help-and-support.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-diagnostics",
+      "redirect_url": "/azure-stack/operator/azure-stack-help-and-support-overview",
       "redirect_document_id": false
     },
     {
