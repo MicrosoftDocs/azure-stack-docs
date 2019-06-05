@@ -1,5 +1,5 @@
 ---
-title:Deploy a highly-available MongoDB solution to Azure and Azure Stack | Microsoft Docs
+title: Deploy a highly-available MongoDB solution to Azure and Azure Stack | Microsoft Docs
 description: Learn how deploy a highly-available MongoDB solution to Azure and Azure Stack
 services: azure-stack
 documentationcenter: ''
