@@ -44,6 +44,12 @@
         href: azure-stack-solution-geo-distributed.md
       - name: Deploy a hybrid cloud solution
         href: azure-stack-solution-hybrid-cloud.md
+      - name: Deploy staged data analytics
+        href: azure-stack-solution-stageddata.md
+      - name: Deploy high-availability MongoDB
+        href: azure-stack-solution-mongdb-ha.md
+      - name: Deploy high-availability SQL 2016
+        href: azure-stack-solution-sql-ha.md
 - name: How-to guides
   items:
   - name: Use the Azure Stack Portal
