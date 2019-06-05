@@ -48,7 +48,7 @@ If you're missing the Key Vault Service and Kubernetes Cluster marketplace item,
 
 ## Create a service principal
 
-You need to work with your Azure Stack admin to set up your service principal when using AD FS as your identity solution. The service principal gives your app access to Azure Stack resources.
+Wrk with your Azure Stack admin to set up your service principal when using AD FS as your identity solution. The service principal gives your app access to Azure Stack resources.
 
 1. Your Azure Stack admin provides you with a certificate and the information for the service principal.
 
@@ -78,7 +78,7 @@ You need to work with your Azure Stack admin to set up your service principal wh
        | Your user name | Use just your user name rather than your domain name and user name, such as `username` instead of `azurestack\username`. |
        | The resource group name  | The name of a new resource group or select an existing resource group. The resource name needs to be alphanumeric and lowercase. |
        | Keyvault name | Name of the vault.<br> Regex pattern: `^[a-zA-Z0-9-]{3,24}$` |
-       | Resource group location | The location of the resource group. This is the region you choose for your Azure Stack installation. |
+       | Resource group location | The location of the resource group and the region you choose for your Azure Stack installation. |
 
    - Open PowerShell with an elevated prompt, and [connect to Azure Stack](azure-stack-powershell-configure-user.md#connect-to-azure-stack-with-ad-fs). Run the following script with the parameters updated to your values:
 
@@ -182,7 +182,7 @@ You need to work with your Azure Stack admin to set up your service principal wh
 
 1. Enter the **SSH Public Key** used for authorization to all Linux machines created as part of the Kubernetes cluster and DVM.
 
-1. Enter the **Master Profile DNS Prefix** that is unique to the region. This must be a region-unique name, such as `k8s-12345`. Try to make it match the resource group name as a best practice.
+1. Enter the **Master Profile DNS Prefix** that is unique to the region. This name must be a region-unique, such as `k8s-12345`. Try to make it match the resource group name as a best practice.
 
     > [!Note]  
     > For each cluster, use a new and unique master profile DNS prefix.
@@ -193,11 +193,11 @@ You need to work with your Azure Stack admin to set up your service principal wh
 
 1. Select the **Kubernetes Node Pool Profile Count**. The count contains the number of agents in the cluster. 
 
-1. Select the **Storage Profile**. You can choose **Blob Disk** or **Managed Disk**. This specifies the VM Size of Kubernetes node VMs. 
+1. Select the **Storage Profile**. You can choose **Blob Disk** or **Managed Disk**. This selection specifies the VM Size of Kubernetes node VMs. 
 
 1. Select **ADFS** for the **Azure Stack identity system** for your Azure Stack installation.
 
-1. Enter the **Service Principal ClientId**. This is used by the Kubernetes Azure cloud provider. The Client ID identified as the Application ID when your Azure Stack administrator created the service principal.
+1. Enter the **Service Principal ClientId**. This identifier is used by the Kubernetes Azure cloud provider. The Client ID is referred to as the Application ID when your Azure Stack administrator creates the service principal.
 
 1. Enter the **Key Vault resource group**  that sources the key vault that contains your certificate.
 
@@ -205,7 +205,7 @@ You need to work with your Azure Stack admin to set up your service principal wh
 
 1. Enter the **Key Vault secret**. This secret name references your certificate.
 
-1. Enter the **Kubernetes Azure Cloud Provider Version**. This is the version for the Kubernetes Azure provider. Azure Stack releases a custom Kubernetes build for each Azure Stack version.
+1. Enter the **Kubernetes Azure Cloud Provider Version**. This is the version number for the Kubernetes Azure provider. Azure Stack releases a custom Kubernetes build for each Azure Stack version.
 
 ### 3. Summary
 
