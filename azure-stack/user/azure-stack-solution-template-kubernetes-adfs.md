@@ -32,7 +32,7 @@ Follow the steps in this article to deploy and set up the resources for Kubernet
 
 To get started, make sure you have the right permissions and that your Azure Stack is ready.
 
-1. Generate an SSH public and private key pair to sign in to the Linux VM on Azure Stack. You need the public key when creating the cluster.
+1. Generate an SSH public and private key pair to sign in to the Linux virtual machine (VM) on Azure Stack. You need the public key when creating the cluster.
 
     For instructions on generating a key, see [SSH Key Generation](https://github.com/msazurestackworkloads/acs-engine/blob/master/docs/ssh.md#ssh-key-generation).
 
@@ -182,7 +182,7 @@ Work with your Azure Stack admin to set up your service principal when using AD 
 
 1. Enter the **SSH Public Key** used for authorization to all Linux machines created as part of the Kubernetes cluster and DVM.
 
-1. Enter the **Master Profile DNS Prefix** that is unique to the region. This name must be a region-unique, such as `k8s-12345`. Try to make it match the resource group name as a best practice.
+1. Enter the **Master Profile DNS Prefix**. This name must be a region-unique, such as `k8s-12345`. Try to make it match the resource group name as a best practice.
 
     > [!Note]  
     > For each cluster, use a new and unique master profile DNS prefix.
