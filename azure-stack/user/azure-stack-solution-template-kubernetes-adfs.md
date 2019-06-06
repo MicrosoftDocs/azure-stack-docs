@@ -48,7 +48,7 @@ If you're missing the Key Vault Service and Kubernetes Cluster marketplace item,
 
 ## Create a service principal
 
-Wrk with your Azure Stack admin to set up your service principal when using AD FS as your identity solution. The service principal gives your app access to Azure Stack resources.
+Work with your Azure Stack admin to set up your service principal when using AD FS as your identity solution. The service principal gives your app access to Azure Stack resources.
 
 1. Your Azure Stack admin provides you with a certificate and the information for the service principal.
 
@@ -170,7 +170,7 @@ Wrk with your Azure Stack admin to set up your service principal when using AD F
 
 1. Enter the name of a new resource group or select an existing resource group. The resource name needs to be alphanumeric and lowercase.
 
-1. Select the **Location** of the resource group. This is the region you choose for your Azure Stack installation.
+1. Select the **Location** of the resource group. This location is the region you choose for your Azure Stack installation.
 
 ### 2. Kubernetes Cluster Settings
 
