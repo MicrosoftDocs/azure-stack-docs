@@ -33,7 +33,7 @@ This article describes the contents of the 1906 update package. The update inclu
 
 ## Build reference
 
-The Azure Stack 1905 update build number is **1.1906.x.xx**.
+The Azure Stack 1906 update build number is **1.1906.x.xx**.
 
 ### Update type
 
