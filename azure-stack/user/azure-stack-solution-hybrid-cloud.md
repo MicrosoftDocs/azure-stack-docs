@@ -251,7 +251,7 @@ You'll configure the application code to report telemetry to the correct Applica
 
 1. Open your web application in Microsoft Visual Studio.
 
-2. [Add Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core#add-application-insights-telemetry) to your project to transmit the telemetry that Application Insights uses to create alerts when web traffic increases or decreases.
+2. [Add Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-client-side-telemetry-for-web-applications) to your project to transmit the telemetry that Application Insights uses to create alerts when web traffic increases or decreases.
 
 ### Configure dynamic connection strings
 
