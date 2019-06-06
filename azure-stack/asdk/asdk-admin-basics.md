@@ -57,7 +57,10 @@ In addition to providing services, you must perform all the regular duties of an
 - Replace failed development kit host computer hardware 
 
 ## Where to get support
-For the development kit, your only support option is to ask support-related questions in the [Microsoft Azure Stack forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). If you click the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then click **New support request**, this opens the forums site directly. These forums are regularly monitored. 
+For the Azure Stack Development Kit (ASDK), you can ask support-related questions in the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
+
+You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open Help + Support **Overview**, which has a link to the forum. 
+MSDN forums are regularly monitored.  
 
 > [!IMPORTANT]
 > Because the ASDK is an evaluation environment, there is no official support offered through Microsoft Customer Support Services (CSS).
