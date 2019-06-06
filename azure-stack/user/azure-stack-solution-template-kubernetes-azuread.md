@@ -64,9 +64,9 @@ The service principal gives your application access to Azure Stack resources.
     d. Select the **Supported account types**.  
     e.  Add `http://localhost` for the URI for the app. Select **Web**  for the type of app you want to create. After setting the values, select **Register**.
 
-1. Make note of the **Application ID**. You will need the ID when creating the cluster. The ID is referenced as **Service Principal Client ID**.
+1. Make note of the **Application ID**. You'll need the ID when creating the cluster. The ID is referenced as **Service Principal Client ID**.
 
-1. In the blade for the service principle, select **New client secret** > **Settings** > **Keys**. You need to generate an authentication key for the service principle.
+1. In the blade for the service principle, select **New client secret** > **Settings** > **Keys** and then generate an authentication key for the service principle.
 
     a. Enter the **Description**.
 
