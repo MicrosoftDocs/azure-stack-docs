@@ -75,7 +75,7 @@ This process authorizes your tenant with the **Azure Stack Validation Service** 
     |--------------------------------|---------------------------------------------------------------------------------------------|
     | Organization Name | The official organization name. |
     | Azure AD Tenant Directory Name | The Azure AD Tenant Directory name being registered. |
-    | Azure AD Tenant Directory ID | The Azure AD Tenant Directory GUID associated with the directory. For information on how to find your Azure AD Tenant Directory ID, see [Get tenant ID](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id). |
+    | Azure AD Tenant Directory ID | The Azure AD Tenant Directory GUID associated with the directory. For information on how to find your Azure AD Tenant Directory ID, see [Get tenant ID](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-values-for-signing-in). |
 
 2. Wait for confirmation from the Azure Stack Validation team to check that your tenant can use the VaaS portal.
 
