@@ -22,23 +22,23 @@ ms.lastreviewed: 04/19/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit* 
 > [!Note]   
-> Kubernetes on Azure Stack is in preview. Azure Stack disconnected scenario is not currently supported by the preview. 
+> Kubernetes on Azure Stack is in preview. Azure Stack disconnected scenario isn't currently supported by the preview. 
 
-Kubernetes includes a web dashboard that you can use for basic management operations. This dashboard lets you view basic health status and metrics for your applications, create and deploy services, and edit existing applications. This article shows you how to set up the Kubernetes dashboard on Azure Stack.
+Kubernetes includes a web dashboard used for basic management operations. This dashboard lets you view basic health status and metrics for your applications, create and deploy services, and edit existing apps. This article shows you how to set up the Kubernetes dashboard on Azure Stack.
 
 ## Prerequisites for Kubernetes Dashboard
 
 * Azure Stack Kubernetes cluster
 
-    You will need to have deployed a Kubernetes cluster to Azure Stack. For more information, see [Deploy Kubernetes](azure-stack-solution-template-kubernetes-deploy.md).
+    You'll need to have deployed a Kubernetes cluster to Azure Stack. For more information, see [Deploy Kubernetes](azure-stack-solution-template-kubernetes-deploy.md).
 
 * SSH client
 
-    You'll need an SSH client to security connect to your master node in the cluster. If you're using Windows, you can use [Putty](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm). You will need the private key used when you deployed your Kubernetes cluster.
+    You'll need an SSH client to securely connect to your master node in the cluster. If you're using Windows, you can use [Putty](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm). You'll need the private key used when you deployed your Kubernetes cluster.
 
 * FTP (PSCP)
 
-    You may also need an FTP client that supports SSH and SSH File Transfer Protocol to transfer the certificates from the master node to your Azure Stack management machine. You can use [FileZilla](https://filezilla-project.org/download.php?type=client). You will need the private key used when you deployed your Kubernetes cluster.
+    You may also need an FTP client that supports SSH and SSH File Transfer Protocol (FTP) to transfer the certificates from the master node to your Azure Stack management machine. You can use [FileZilla](https://filezilla-project.org/download.php?type=client). You'll need the private key used when you deployed your Kubernetes cluster.
 
 ## Overview of steps to enable dashboard
 
@@ -52,12 +52,12 @@ You can retrieve the URL for the dashboard from the master node in your cluster.
 
 1. Get the public IP address and username for your cluster master from the Azure Stack dashboard. To get this information:
 
-    - Sign in to the [Azure Stack portal](https://portal.local.azurestack.external/)
+    - Sign in to the [Azure Stack portal](https://portal.local.azurestack.external/).
     - Select **All services** > **All resources**. Find the master in your cluster resource group. The master is named `k8s-master-<sequence-of-numbers>`. 
 
 2. Open the master node in the portal. Copy the **Public IP** address. Click **Connect** to get your user name in the  **Login using VM local account** box. This is the same user name you set when creating your cluster. Use the public IP address rather than the private IP address listed in the connect blade.
 
-3.  Open an SSH client to connect to the master. If you are working on Windows, you can use [Putty](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm) to create the connection. You will use the public IP address for the master node, the username, and add the private key you used when creating the cluster.
+3.  Open an SSH client to connect to the master. If you're working on Windows, you can use [Putty](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm) to create the connection. You'll use the public IP address for the master node, the username, and add the private key you used when creating the cluster.
 
 4.  When the terminal connects, type `kubectl` to open the Kubernetes command-line client.
 
@@ -91,7 +91,7 @@ You can retrieve the URL for the dashboard from the master node in your cluster.
 
 ## Import the certificate
 
-1. Open Filezilla and connect to the master node. You will need the:
+1. Open Filezilla and connect to the master node. You need the:
 
     - the master node public IP
     - the username
@@ -110,10 +110,10 @@ You can retrieve the URL for the dashboard from the master node in your cluster.
 
 ## Open the Kubernetes dashboard 
 
-1. Disable the pop-up blocker on your Web browser.
+1. Disable the pop-up blocker on your browser.
 
-2. Point your browser to the URL noted when you ran the command `kubectl cluster-info`. For example:
-   https:\//azurestackdomainnamefork8sdashboard/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy 
+2. Go to the URL noted when you ran the command `kubectl cluster-info`. For example:
+   `https:\//azurestackdomainnamefork8sdashboard/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy` 
 3. Select the client certificate.
 4. Enter the token. 
 5. Reconnect to the bash command line on the master node and give permissions to `kubernetes-dashboard`. Run the following command:
@@ -122,9 +122,9 @@ You can retrieve the URL for the dashboard from the master node in your cluster.
     kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard 
     ``` 
 
-    The script gives `kubernetes-dashboard` Cloud administrator privileges. For more information, see [For RBAC-enabled clusters](https://docs.microsoft.com/azure/aks/kubernetes-dashboard).
+    The script gives `kubernetes-dashboard` cloud admin privileges. For more information, see [For RBAC-enabled clusters](https://docs.microsoft.com/azure/aks/kubernetes-dashboard).
 
-You can use the dashboard. For more information on the Kubernetes dashboard, see [Kubernetes Web UI Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) 
+The dashboard is ready to go. For more information on the Kubernetes dashboard, see [Kubernetes Web UI Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) 
 
 ![Azure Stack Kubernetes Dashboard](media/azure-stack-solution-template-kubernetes-dashboard/azure-stack-kub-dashboard.png)
 

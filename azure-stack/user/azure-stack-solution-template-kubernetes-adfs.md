@@ -24,7 +24,7 @@ ms.lastreviewed: 02/11/2019
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 > [!Note]  
-> Kubernetes on Azure Stack is in preview. Azure Stack disconnected scenario is not currently supported by the preview.
+> Kubernetes on Azure Stack is in preview. Azure Stack disconnected scenario isn't currently supported by the preview.
 
 Follow the steps in this article to deploy and set up the resources for Kubernetes when Active Directory Federated Services (AD FS) is your identity management service.
 
