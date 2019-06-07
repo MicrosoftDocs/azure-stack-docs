@@ -66,7 +66,7 @@ Used memory is made up of several components. The following components consume t
  -	Host OS usage or reserve – This is the memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the Spaces Direct memory cache. Since this value is dependent on the memory used by the different Hyper-V processes running on the host, it can fluctuate.
  - Infrastructure services – These are the infrastructure VMs that make up Azure Stack. As of the 1904 release version of Azure Stack, this entails ~31 VMs that take up 242 GB + (4 GB x # of nodes) of memory. The memory utilization of the infrastructure services component may change as we work on making our infrastructure services more scalable and resilient.
  - Resiliency reserve – Azure Stack reserves a portion of the memory to allow for tenant availability during a single host failure as well as during patch and update to allow for successful live migration of VMs.
- - Tenant VMs – These are the tenant VMs created by Azure Stack users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in “Creating” or “Failed” state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option from portal/powershell/cli will not consume memory from Azure Stack.
+ - Tenant VMs – These are the tenant VMs created by Azure Stack users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in "Creating" or "Failed" state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option from portal/powershell/cli will not consume memory from Azure Stack.
  - Add-on RPs – VMs deployed for the Add-on RPs like SQL, MySQL, App Service etc
 
 
@@ -105,7 +105,7 @@ Q: The number of deployed VMs on my Azure Stack has not changed, but my capacity
 A: The available memory for VM placement has multiple dependencies, one of which is the host OS reserve. This value is dependent on the memory used by the different Hyper-V processes running on the host which is not a constant value.
 
 Q: What state do Tenant VMs have to be in to consume memory?
-A: In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs that are in “Creating”, “Failed” or VMs shut down from within the guest as opposed to stop deallocated from portal/powershell/cli will consume memory.
+A: In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs that are in "Creating", "Failed" or VMs shut down from within the guest as opposed to stop deallocated from portal/powershell/cli will consume memory.
 
 
 Q: I have a 4 host Azure Stack. My tenant has 3 VMs that consume 56 GB RAM (D5_v2) each. One of the VMs is resized to 112 GB RAM (D14_v2), and available memory reporting on dashboard resulted in a spike of 168 GB usage on the capacity blade. Subsequent resizing of the other two D5_v2 VMs to D14_v2, resulted in only 56GB of RAM increase each. Why is this so?
