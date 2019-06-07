@@ -30,7 +30,7 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 
 ### Host node update prerequisite failure
 -	Applicable: This issue applies to the 1905 update.
--	Cause: When attempting to install the 1905 Azure Stack update, the status for the update might fail due to “Host Node Update Prerequisite”. This is generally caused by a host node having insufficient free disk space. 
+-	Cause: When attempting to install the 1905 Azure Stack update, the status for the update might fail due to Host Node Update Prerequisite. This is generally caused by a host node having insufficient free disk space. 
 -	Remediation: Contact Azure Stack support to receive assistance clearing disk space on the host node.
 -	Occurrence: Uncommon
 
