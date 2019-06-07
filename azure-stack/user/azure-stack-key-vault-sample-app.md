@@ -1,6 +1,6 @@
 ---
-title: Create an app that uses Azure Stack Key Vault secrets | Microsoft Docs
-description: Use a sample app to work with Azure Stack Key Vault
+title: Use a sample app that uses Azure Stack Key Vault secrets | Microsoft Docs
+description: Learn how to run a sample app that retrieves keys and secrets from a key vault in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -19,7 +19,7 @@ ms.lastreviewed: 04/08/2019
 
 ---
 
-# Create an app that uses Azure Stack Key Vault secrets
+# Use a sample app that uses Azure Stack Key Vault secrets
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -150,7 +150,7 @@ To load the **HelloKeyVault** sample:
 In Visual Studio:
 
 1. Open the HelloKeyVault\App.config file and find the `<appSettings>` element.
-2. Update the **VaultUrl**, **AuthClientId**, and **AuthClientSecret** keys with the values returned by those used to create the key vault. By default, the App.config file has a placeholder for `AuthCertThumbprint`. Replace this placeholder with `AuthClientSecret`.
+2. Update the **VaultUrl**, **AuthClientId**, and **AuthClientSecret** keys with the values returned when creating the key vault. By default, the App.config file has a placeholder for `AuthCertThumbprint`. Replace this placeholder with `AuthClientSecret`.
 
    ![App settings](media/azure-stack-key-vault-sample-app/appconfig.png)
 
