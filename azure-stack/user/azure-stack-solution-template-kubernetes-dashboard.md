@@ -38,7 +38,7 @@ Kubernetes includes a web dashboard used for basic management operations. This d
 
 * FTP (PSCP)
 
-    You may also need an FTP client that supports SSH and SSH File Transfer Protocol (FTP) to transfer the certificates from the master node to your Azure Stack management machine. You can use [FileZilla](https://filezilla-project.org/download.php?type=client). You'll need the private key used when you deployed your Kubernetes cluster.
+    You may also need an FTP client (like [FileZilla](https://filezilla-project.org/download.php?type=client)) that supports SSH and SSH FTP to transfer the certificates from the master node to your Azure Stack management machine. You'll need the private key used when you deployed your Kubernetes cluster.
 
 ## Overview of steps to enable dashboard
 
@@ -55,7 +55,7 @@ You can retrieve the URL for the dashboard from the master node in your cluster.
     - Sign in to the [Azure Stack portal](https://portal.local.azurestack.external/).
     - Select **All services** > **All resources**. Find the master in your cluster resource group. The master is named `k8s-master-<sequence-of-numbers>`. 
 
-2. Open the master node in the portal. Copy the **Public IP** address. Click **Connect** to get your user name in the  **Login using VM local account** box. This is the same user name you set when creating your cluster. Use the public IP address rather than the private IP address listed in the connect blade.
+2. Open the master node in the portal. Copy the **Public IP** address. Click **Connect** to get your user name in the  **Login using VM local account** box. This name is the same username you set when creating your cluster. Use the public IP address rather than the private IP address listed in the connect blade.
 
 3.  Open an SSH client to connect to the master. If you're working on Windows, you can use [Putty](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-connect-vm) to create the connection. You'll use the public IP address for the master node, the username, and add the private key you used when creating the cluster.
 
