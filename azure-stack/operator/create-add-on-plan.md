@@ -14,10 +14,10 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
-ms.date: 03/07/2019
+ms.date: 06/07/2019
 ms.author: sethm
 ms.reviewer: efemmano
-ms.lastreviewed: 03/07/2019
+ms.lastreviewed: 06/07/2019
 ---
 
 # Azure Stack add-on plans
