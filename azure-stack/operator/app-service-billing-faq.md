@@ -82,9 +82,9 @@ The Azure App Service team created sample PowerShell scripts to assist with quer
 
 The scripts available are:
 
-- Get-AppServiceBillingRecords - this sample fetches Azure App Service on Azure Stack billing records from the Azure Stack Usage API
-- Get-AppServiceSubscriptionUsage - this sample calculates Azure App Service on Azure Stack usage amounts per subscription.  This script calculates usage amounts based on data from the Usage API and the Prices provided per meter by the Cloud Operator.
-- Suspend-UserSubscriptions - this sample suspends or enables subscription based on usage limit specified by the Cloud Operator.
+- [Get-AppServiceBillingRecords](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Get-AppServiceBillingRecords.ps1) - this sample fetches Azure App Service on Azure Stack billing records from the Azure Stack Usage API
+- [Get-AppServiceSubscriptionUsage](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Get-AppServiceSubscriptionUsage.ps1) - this sample calculates Azure App Service on Azure Stack usage amounts per subscription.  This script calculates usage amounts based on data from the Usage API and the Prices provided per meter by the Cloud Operator.
+- [Suspend-UserSubscriptions](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Suspend-UserSubscriptions.ps1) - this sample suspends or enables subscription based on usage limit specified by the Cloud Operator.
 
 ## Next steps
 
