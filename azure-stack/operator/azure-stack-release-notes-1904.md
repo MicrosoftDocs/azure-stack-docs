@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 1904 release notes | Microsoft Docs
-description: Learn about the 1904 update for Azure Stack integrated systems, including what's new, known issues, and where to download the update.
+description: Learn about the 1904 update for Azure Stack integrated systems, including what's new, known issues, and where to download the update and archived Azure Stack release notes.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 05/06/2019
+ms.lastreviewed: 05/30/2019
 ---
 
 # Azure Stack 1904 update
@@ -31,9 +31,17 @@ This article describes the contents of the 1904 update package. The update inclu
 > [!IMPORTANT]  
 > This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
 
+## Archived release notes
+
+You can see [older versions of Azure Stack release notes on the TechNet Gallery](http://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For further assistance, contact Microsoft Customer Support Services.
+
 ## Build reference
 
 The Azure Stack 1904 update build number is **1.1904.0.36**.
+
+### Update type
+
+The Azure Stack 1904 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. The expected time it takes for the 1904 update to complete is approximately 16 hours, but exact times can vary. This runtime approximation is specific to the 1904 update and should not be compared to other Azure Stack updates.
 
 ## What's in this update
 
@@ -44,8 +52,6 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
-
-- The 1904 update payload contains an update to components of Azure Stack that do not include the underlying operating system which hosts Azure Stack. This enables certain updates to be scoped. As a result, the expected time it takes for the 1904 update to complete is less (approximately 16 hours, but exact times can vary). This decrease in runtime is similar to the 1903 update. However, subsequent updates may contain updates to the operating system, implying different runtimes. Future updates will provide similar guidance on the expected time the update takes to complete, depending on the payload included.
 
 - Significant improvements have been made to the Software Defined Networking (SDN) Stack in 1904. These improvements increase the overall servicing and reliability of the SDN stack in Azure Stack.
 
@@ -110,6 +116,8 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 
 - Updated Azure Linux Agent version 2.2.38.0. This support allows customers to maintain consistent Linux images between Azure and Azure Stack.
 
+- Changes to the update logs in the operator portal. Requests to retrieve successful update logs are no longer available. Failed update logs, because they are actionable for diagnostics, are still available for download.
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
@@ -145,6 +153,8 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 - Fixed an issue in which if a user that was assigned a contributor role to a subscription, but was not explicitly given read permissions, an error was generated that read **...The client 'somelogonaccount@domain.com' with object ID {GUID} does not have authorization to perform action...** when attempting to save a change to a resource.
 
 - Fixed an issue in which the marketplace management screen was empty if the offline syndication tool was used to upload images, and any one of them was missing the icon URI(s).
+
+- Fixed an issue which prevented products that failed to download from being deleted in marketplace management.
 
 ### Security updates
 
@@ -182,8 +192,7 @@ The 1904 release of Azure Stack must be applied on the 1903 release with the fol
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [Servicing Policy](azure-stack-servicing-policy.md).
 
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- No hotfixes available for 1904.
+- [Azure Stack hotfix 1.1904.4.45](https://support.microsoft.com/help/4505688)
 
 ## Automatic update notifications
 
@@ -201,4 +210,4 @@ Customers with systems that can access the internet from the infrastructure netw
 - For more information about how to apply updates with Azure Stack, see [Apply updates in Azure Stack](azure-stack-apply-updates.md).
 - To review the servicing policy for Azure Stack integrated systems, and what you must do to keep your system in a supported state, see [Azure Stack servicing policy](azure-stack-servicing-policy.md).  
 - To use the Privileged End Point (PEP) to monitor and resume updates, see [Monitor updates in Azure Stack using the privileged endpoint](azure-stack-monitor-update.md).  
-- Fill out survey to provide [feedback on release notes](https://forms.microsoft.com).
+

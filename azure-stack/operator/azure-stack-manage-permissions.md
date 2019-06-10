@@ -3,7 +3,7 @@ title: Manage permissions to resources per user in Azure Stack (service administ
 description: As a service administrator or tenant, learn how to manage RBAC permissions.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: PatAltimore
 manager: femila
 editor: ''
 
@@ -12,8 +12,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2019
-ms.author: mabrigg
+ms.date: 05/16/2019
+ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
 
@@ -46,5 +46,5 @@ A user in Azure Stack can be a reader, owner, or contributor for each instance o
 4. In the **Roles** blade, click **Add** to add permissions for the Universal Group Active Directory Group.
 
 ## Next steps
-[Add an Azure Stack tenant](azure-stack-add-new-user-aad.md)
 
+[Add an Azure Stack tenant](azure-stack-add-new-user-aad.md)

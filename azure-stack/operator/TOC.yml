@@ -4,6 +4,8 @@
   items:
   - name: What is Azure Stack?
     href: azure-stack-overview.md
+  - name: What is Azure Stack HCI?
+    href: azure-stack-hci-overview.md
   - name: Comparing the Azure ecosystem
     href: compare-azure-azure-stack.md
   - name: Release notes
@@ -13,7 +15,13 @@
     - name: Checklist for applying updates
       href: azure-stack-release-notes-checklist.md
     - name: Security updates
-      href: azure-stack-release-notes-security-updates-1904.md
+      href: azure-stack-release-notes-security-updates-1905.md
+    - name: 1905 update
+      items:
+      - name: Release notes
+        href: azure-stack-release-notes-1905.md
+      - name: Known issues
+        href: azure-stack-release-notes-known-issues-1905.md
     - name: 1904 update
       items:
       - name: Release notes
@@ -24,8 +32,6 @@
       href: azure-stack-update-1903.md
     - name: 1902 update
       href: azure-stack-update-1902.md      
-    - name: 1901 update 
-      href: azure-stack-update-1901.md      
 - name: Quickstarts
   expanded: true
   items:
@@ -46,14 +52,15 @@
 - name: Concepts
   items:
   - name: Capacity Planning
-    href: capacity-planning.md
     items:
-    - name: Compute capacity planning
-      href: capacity-planning-compute.md
-    - name: Storage capacity planning
-      href: capacity-planning-storage.md
+    - name: Overview
+      href: azure-stack-capacity-planning-overview.md
+    - name: Compute
+      href: azure-stack-capacity-planning-compute.md
+    - name: Storage
+      href: azure-stack-capacity-planning-storage.md
     - name: Azure Stack Capacity Planner
-      href: capacity-planning-spreadsheet.md
+      href: azure-stack-capacity-planner.md
   - name: Datacenter integration
     href: azure-stack-customer-journey.md
     items:
@@ -293,6 +300,8 @@
     items:
     - name: App Service capacity planning
       href: azure-stack-app-service-capacity-planning.md
+    - name: App Service billing FAQ
+      href: app-service-billing-faq.md
     - name: Before you get started
       href: azure-stack-app-service-before-you-get-started.md
     - name: Deploy App Service
@@ -325,6 +334,8 @@
         href: azure-stack-app-service-release-notes-update-four.md
       - name: App Service on Azure Stack update 5 release notes
         href: azure-stack-app-service-release-notes-update-five.md
+      - name: App Service on Azure Stack update 6 release notes
+        href: azure-stack-app-service-release-notes-update-six.md
   - name: Create plans, offers, and quotas
     items:
     - name: Plan, offer, quota, and subscription overview
@@ -375,20 +386,20 @@
     - name: Back up Azure Stack
       href: azure-stack-backup-back-up-azure-stack.md
     - name: Back up files and applications on Azure Stack
-      href: /azure/backup/backup-mabs-files-applications-azure-stack.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+      href: /azure/backup/backup-mabs-files-applications-azure-stack?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
     - name: Replicate Azure Stack VMs to Azure 
-      href: /azure/site-recovery/azure-stack-site-recovery.md?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
+      href: /azure/site-recovery/azure-stack-site-recovery?toc=/azure/azure-stack/toc.json&bc=/azure/azure-stack/breadcrumb/toc.json
     - name: Recover from catastrophic data loss
       href: azure-stack-backup-recover-data.md
     - name: Backup best practices
       href: azure-stack-backup-best-practices.md
     - name: Backup reference
       href: azure-stack-backup-reference.md
-  - name: Get help  
+  - name: Get support  
     items:
-    - name: Help + support
-      href: azure-stack-help-and-support.md
-    - name: Troubleshoot
+    - name: Help and Support  
+      href: azure-stack-help-and-support-overview.md
+    - name: Troubleshoot  
       items:
       - name: Known issues
         href: azure-stack-troubleshooting.md
@@ -408,6 +419,8 @@
     href: /azure-stack/asdk/
 - name: Resources
   items:
+  - name: Training and certification
+    href: azure-stack-train-and-cert.md
   - name: Azure Stack roadmap
     href: https://azure.microsoft.com/roadmap/?tag=azure-stack
   - name: Azure Stack MSDN forum
@@ -418,5 +431,3 @@
     href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-stack
-  - name: Training and certification
-    href: azure-stack-train-and-cert.md

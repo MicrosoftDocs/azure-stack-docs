@@ -3,7 +3,7 @@ title: Deploy a hybrid cloud with Azure and Azure Stack | Microsoft Docs
 description: Learn how to deploy a hybrid cloud with Azure and Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: bryanla
 manager: femila
 editor: ''
 
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/25/2019
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/25/2019
 ---
@@ -251,7 +251,7 @@ You'll configure the application code to report telemetry to the correct Applica
 
 1. Open your web application in Microsoft Visual Studio.
 
-2. [Add Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core#add-application-insights-telemetry) to your project to transmit the telemetry that Application Insights uses to create alerts when web traffic increases or decreases.
+2. [Add Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-client-side-telemetry-for-web-applications) to your project to transmit the telemetry that Application Insights uses to create alerts when web traffic increases or decreases.
 
 ### Configure dynamic connection strings
 

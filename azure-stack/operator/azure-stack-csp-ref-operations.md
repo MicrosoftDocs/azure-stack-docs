@@ -3,7 +3,7 @@ title: Register tenants for usage tracking in Azure Stack | Microsoft Docs
 description: Details about operations used to manage  tenant registrations and how tenant usage is tracked in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 
@@ -12,8 +12,8 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2019
-ms.author: mabrigg
+ms.date: 05/16/2019
+ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/08/2019
 

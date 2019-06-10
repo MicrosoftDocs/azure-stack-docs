@@ -3,7 +3,7 @@ title: Compare Azure Stack and global Azure | Microsoft Docs
 description: Learn how Microsoft provides Azure and the Azure Stack family of services in one Azure ecosystem  
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.date: 05/03/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.reviewer: unknown
 ms.custom: 
 ms.lastreviewed: 03/29/2019
@@ -55,7 +55,6 @@ In addition to the resource providers described above, there are additional PaaS
 
 - Service Fabric
 - Kubernetes Container Service
-- IoT Hub and Event Hubs
 - Ethereum Blockchain
 - Cloud Foundry
 
@@ -73,9 +72,9 @@ In addition to the resource providers described above, there are additional PaaS
 
 Learn more about Azure Stack at [What is Azure Stack](azure-stack-overview.md).
 
-## Azure Stack HCI 
+## Azure Stack HCI
 
-Azure Stack HCI solutions allow you to run virtual machines on-premises and easily connect to Azure with a hyperconverged infrastructure (HCI) solution. Build and run cloud applications using consistent Azure services on-premises to meet regulatory or technical requirements. In addition to running virtualized applications on-premises, Azure Stack HCI enables you to replace and consolidate aging server infrastructure and connect to Azure for cloud services using the Windows Admin Center.
+[Azure Stack HCI](azure-stack-hci-overview.md) solutions enable you to run virtual machines on-premises and easily connect to Azure with a hyperconverged infrastructure (HCI) solution. Build and run cloud applications using consistent Azure services on-premises to meet regulatory or technical requirements. In addition to running virtualized applications on-premises, Azure Stack HCI enables you to replace and consolidate aging server infrastructure and connect to Azure for cloud services using the Windows Admin Center.
 
 Azure Stack HCI provides validated HCI solutions powered by Hyper-V and Storage Spaces Direct with Windows Server 2019 Software-Defined Datacenter (SDDC). The Windows Admin Center is used for management and integrated access to Azure services such as:
 

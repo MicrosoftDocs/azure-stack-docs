@@ -3,7 +3,7 @@ title: Manage a Service Principal for Azure Stack | Microsoft Docs
 description: Describes how to manage a new service principal that can be used with the role-based access control in Azure Resource Manager to manage access to resources.
 services: azure-resource-manager
 documentationcenter: na
-author: sethmanheim
+author: PatAltimore
 manager: femila
 
 ms.service: azure-resource-manager
@@ -11,9 +11,9 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
-ms.author: sethm
-ms.lastreviewed: 12/18/2018
+ms.date: 05/17/2019
+ms.author: patricka
+ms.lastreviewed: 05/17/2019
 
 ---
 # Provide applications access to Azure Stack
@@ -41,15 +41,17 @@ Once you've created the service principal, a set of steps common to both AD FS a
 
 ## Manage service principal for Azure AD
 
-If you have deployed Azure Stack with Azure Active Directory (Azure AD) as your identity management service, you can create service principals just like you do for Azure. This section shows you how to perform the steps through the portal. Check that you have the [required Azure AD permissions]((/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) before beginning.
+If you have deployed Azure Stack with Azure Active Directory (Azure AD) as your identity management service, you can create service principals just like you do for Azure. This section shows you how to perform the steps through the portal. Check that you have the [required Azure AD permissions](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) before beginning.
 
 ### Create service principal
 
 In this section, you create an application (service principal) in Azure AD that represents your application.
 
 1. Sign in to your Azure Account through the [Azure portal](https://portal.azure.com).
-2. Select **Azure Active Directory** > **App registrations** > **New application registration**
-3. Provide a name and URL for the application. Select either **Web app / API** or **Native** for the type of application you want to create. After setting the values, select **Create**.
+2. Select **Azure Active Directory** > **App registrations** > **New registration**.
+3. Provide a name and URL for the application. 
+4. Select the **Supported account types**.
+5.  Add a URI for the application. Select **Web**  for the type of application you want to create. After setting the values, select **Register**.
 
 You have created a service principal for your application.
 
@@ -57,18 +59,17 @@ You have created a service principal for your application.
 
 When programmatically logging in, you use the ID for your application, and for a Web app / API, an authentication key. To get those values, use the following steps:
 
-1. From **App registrations** in Active Directory, select your application.
+1. Select **Azure Active Directory** > **App registrations**. Select your application.
 
 2. Copy the **Application ID** and store it in your application code. The applications in the sample applications section refer to this value as the client ID.
 
-     ![Client id](./media/azure-stack-create-service-principal/image12.png)
-3. To generate an authentication key for a Web app / API, select **Settings** > **Keys**. 
+3. To generate an authentication key for a Web app / API, select **Certificates & secrets**. Select **New client secret**.
 
-4. Provide a description of the key, and a duration for the key. When done, select **Save**.
+4. Provide a description of the key, and a duration for the key. When done, select **Add**.
 
 After saving the key, the value of the key is displayed. Copy this value to Notepad or some other temporary location, because you cannot retrieve the key later. You provide the key value with the application ID to sign as the application. Store the key value in a place where your application can retrieve it.
 
-![Saved key](./media/azure-stack-create-service-principal/image15.png)
+![Saved key](./media/azure-stack-create-service-principal/create-service-principal-in-azure-stack-secret.png)
 
 Once complete, you can assign your application a role.
 
@@ -357,7 +358,7 @@ The following information is required as input for the automation parameters:
 
 ## Assign a role
 
-To access resources in your subscription, you must assign the application to a role. Decide which role represents the right permissions for the application. To learn about the available roles, see [RBAC: Built in Roles]((/azure/role-based-access-control/built-in-roles).
+To access resources in your subscription, you must assign the application to a role. Decide which role represents the right permissions for the application. To learn about the available roles, see [RBAC: Built in Roles](/azure/role-based-access-control/built-in-roles).
 
 You can set the scope at the level of the subscription, resource group, or resource. Permissions are inherited to lower levels of scope. For example, adding an application to the Reader role for a resource group means it can read the resource group and any resources it contains.
 
