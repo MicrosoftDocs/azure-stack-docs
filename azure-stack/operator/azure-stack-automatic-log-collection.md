@@ -72,12 +72,12 @@ Here are some errors you might see during automatic log collection:
 
 - The storage container has not been created
 
-  ![Over time eror](media\azure-stack-log-collection\azure-stack-log-collection-container-does-not-exist-error.png)
+  ![Storage container has not been created error](media\azure-stack-log-collection\azure-stack-log-collection-container-does-not-exist-error.png)
 
 - The account used to collect the logs is not authorized
 
-  ![Under time error](media\azure-stack-log-collection\azure-stack-log-collection-not-authorized-error.png.png)
+  ![Not authorized error](media\azure-stack-log-collection\azure-stack-log-collection-not-authorized-error.png.png)
 
 - Time range is more than 4 hours
 
-  ![Over time error](media\azure-stack-log-collection\azure-stack-log-collection-over-time-error.png)
+  ![Server could not authenticate error](media\azure-stack-log-collection\azure-stack-log-collection-server-could-not-authenticate-error.png)
