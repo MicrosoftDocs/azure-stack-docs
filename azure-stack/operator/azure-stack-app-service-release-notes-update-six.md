@@ -103,7 +103,7 @@ Refer to the documentation in the [Azure Stack 1904 Release Notes](azure-stack-r
 
 - Deployment Center is greyed out
 
-Tenants cannot yet make use of Deployment Center, which is a feature which was released in the public cloud in late 2018.  Tenants can still use the standard deployment methods (FTP, Web Deploy, Git, etc;) via the portal, CLI and PowerShell.
+Tenants cannot yet make use of Deployment Center, which is a feature that was released in the public cloud in late 2018.  Tenants can still use the standard deployment methods (FTP, Web Deploy, Git, etc.) via the portal, CLI, and PowerShell.
 
 - Deployment options (Classic) UX and Deployment credentials portal options not available
 
