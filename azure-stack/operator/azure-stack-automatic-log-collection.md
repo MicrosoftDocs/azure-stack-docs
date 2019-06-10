@@ -38,7 +38,11 @@ You can collect diagnostic logs in two different ways:
 
 ## Workflow
 
-workflow for uploading logs 
+1. Open Help and support Overview.
+2. Click **Enable automatic log collection**.
+3. Set Automatic log collection to **Enabled**.
+4. Enter the SAS URL:
+   ![Enable log collection](media\azure-stack-log-collection\azure-stack-enable-automatic-log-collection.png)
 
 ## Alerts
 
