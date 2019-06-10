@@ -41,7 +41,7 @@ You can collect diagnostic logs in two different ways:
 1. Open Help and support Overview.
 2. Click **Enable automatic log collection**.
 3. Set Automatic log collection to **Enabled**.
-4. Enter the SAS URL:
+4. Enter the shared access signature (SAS) URL of the storage account.
    ![Enable log collection](media\azure-stack-log-collection\azure-stack-enable-automatic-log-collection.png)
 
 ## Alerts
