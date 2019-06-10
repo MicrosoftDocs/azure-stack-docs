@@ -44,6 +44,10 @@ You can collect diagnostic logs in two different ways:
 4. Enter the shared access signature (SAS) URL of the storage account.
    ![Enable log collection](media\azure-stack-log-collection\azure-stack-enable-automatic-log-collection.png)
 
+## Limitations
+
+<!--- Need to confirm what Theebs wanted to cover here--->
+
 ## Alerts
 
 There are two types of alerts: 
