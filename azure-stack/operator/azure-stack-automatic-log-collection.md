@@ -21,7 +21,6 @@ ms.lastreviewed: 06/10/2019
 ---
 # Microsoft Azure Stack automatic log collection
 
-
 Beginning with the 1906 release, Azure Stack includes an easy way for operators to upload log files for analysis by Customer Support Services. These improvements help streamline the process for troubleshooting problems. 
 
 Automatic log collection isn't enabled by default. Before you can enable it, you need to [configure an Azure storage account](azure-stack-storage-account.md) where the logs can be uploaded. 
@@ -31,7 +30,7 @@ Automatic log collection isn't enabled by default. Before you can enable it, you
 You can collect diagnostic logs in two different ways:
 
 - Automatically based on system health conditions
-- On demand based on any 1-4 hour period over the last week
+- On demand based on any 1-4 hour period over the previous week
 
 ## Prerequisites
 
@@ -42,7 +41,11 @@ You can collect diagnostic logs in two different ways:
 workflow for uploading logs 
 
 ## Alerts
-two types of alerts (failed and date approaching)
+
+There are two types of alerts: 
+
+- Failed 
+- Date approaching
 
 ## Troubleshooting errors
 
