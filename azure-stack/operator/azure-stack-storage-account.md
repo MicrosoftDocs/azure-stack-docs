@@ -21,7 +21,8 @@ ms.lastreviewed: 06/10/2019
 ---
 # Microsoft Azure Stack storage account for automatic log collection
 
-What it is, why do you need it...
+<!--- is the storage account dedicated to log collection?--->
+<Explain what the storage account is and why it's needed...> 
 
 https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-manage-storage-accounts 
 
