@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2019
+ms.date: 06/10/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 05/21/2019
+ms.lastreviewed: 06/10/2019
 
 ---
 # Microsoft Azure Stack storage account for automatic log collection
@@ -29,6 +29,8 @@ You'll need to enter a blob service shared access signature (SAS) URL.
 
 ![Automatic log collection](media/azure-stack-automatic-log-collection/azure-stack-enable-automatic-log-collection.png)
 
-prerequisites: any permissions, subscription requirements, or anything similar?
+## Prerequisites
 
-how to configure it?
+<!--- any permissions, subscription requirements, or anything similar?--->
+
+## How to configure a storage account
