@@ -1,5 +1,5 @@
 ---
-title: Deploy templates with the command line in Azure Stack | Microsoft Docs
+title: Deploy a template with the command line in Azure Stack | Microsoft Docs
 description: Learn how to use the cross-platform command-line interface (CLI) to deploy templates to Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -18,11 +18,11 @@ ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019
 
 ---
-# Deploy templates in Azure Stack using the command line
+# Deploy a template with the command line in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Use the Azure Command-Line Interface (CLI) to deploy Azure Resource Manager templates in Azure Stack. Azure Resource Manager templates deploy and provision resources for your app in a single, coordinated operation.
+Use the Azure command-line interface (CLI) to deploy Azure Resource Manager templates in Azure Stack. Azure Resource Manager templates deploy and provision resources for your app in a single, coordinated operation.
 
 ## Before you begin
 
@@ -31,7 +31,7 @@ Use the Azure Command-Line Interface (CLI) to deploy Azure Resource Manager temp
 
 ## Deploy template
 
-Navigate to the folder into which these files were downloaded, and run the following command to deploy the template:
+Navigate to the folder into which these files were downloaded and run the following command to deploy the template:
 
 ```azurecli
 az group create "cliRG" "local" -f azuredeploy.json -d "testDeploy" -e azuredeploy.parameters.json

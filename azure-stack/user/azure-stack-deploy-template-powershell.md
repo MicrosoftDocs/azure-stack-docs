@@ -1,6 +1,6 @@
 ---
-title: Deploy templates using PowerShell in Azure Stack | Microsoft Docs
-description: Deploy a template to Azure Stack using PowerShell.
+title: Deploy a template using PowerShell in Azure Stack | Microsoft Docs
+description: Deploy a template using PowerShell in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -20,7 +20,7 @@ ms.lastreviewed: 01/04/2019
 
 ---
 
-# Deploy a template to Azure Stack using PowerShell
+# Deploy a template using Powershell in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -66,4 +66,4 @@ This example uses **AzureRM** PowerShell cmdlets and a template stored on GitHub
 
 ## Next steps
 
-- [Deploy templates with Visual Studio](azure-stack-deploy-template-visual-studio.md)
+- [Deploy a template with Visual Studio](azure-stack-deploy-template-visual-studio.md)

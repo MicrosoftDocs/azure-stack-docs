@@ -70,7 +70,7 @@ As a solution, Azure Monitor for VMs includes support for monitoring performance
 
 3. Dependency map: Displays the interconnected components with the VM from various resource groups and subscriptions.
 
-After the Log Analytics Workspace is created, you will need to enable performance counters in the workspace for collection on Linux and Windows VMs, as well as install and enable the ServiceMap and InfrastructureInsights solution in your workspace. The process is described in the [Deploy Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-onboard#deploy-azure-monitor-for-vms) guide.
+After the Log Analytics Workspace is created, you will need to enable performance counters in the workspace for collection on Linux and Windows VMs, as well as install and enable the ServiceMap and InfrastructureInsights solution in your workspace. The process is described in the [Deploy Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-onboard#how-to-enable-azure-monitor-for-vms-preview) guide.
 
 ### In the Azure Stack Administration Portal
 After enabling the Azure Automation solutions in the Azure portal, you next need to sign in to the Azure Stack administration portal as a cloud administrator and download the **Azure Monitor, Update and Configuration Management** and the **Azure Monitor, Update and Configuration Management for Linux** extension Azure Stack marketplace items. 
