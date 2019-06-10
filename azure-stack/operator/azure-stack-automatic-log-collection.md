@@ -48,8 +48,13 @@ You can collect diagnostic logs in two different ways:
 
 There are two types of alerts: 
 
-- Failed 
-- Date approaching
+- Expiration date approaching
+
+  ![Expiration date approaching](media\azure-stack-log-collection\alert-expiration-date.png)
+
+- SAS URL has expired
+  
+  ![SAS URL expired](media\azure-stack-log-collection\alert-url-expired.png)
 
 ## Troubleshooting errors
 
