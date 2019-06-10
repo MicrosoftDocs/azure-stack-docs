@@ -70,6 +70,12 @@ Licensing for SQL and file server infrastructure, required by the Azure App Serv
 
 Cloud operators are free to apply their own pricing model to their end customers. The usage service provides the usage metering and the cloud operator must then use the meter quantity to charge their customers based on the pricing model they determine. Having this ability to set pricing enables operators to differentiate from other Azure Stack operators.
 
+### As a CSP how can I offer free and shared SKUs for customers to trial the service
+
+As a cloud operator you will incur costs for offering free and shared SKUs, as we do in Azure, as they are hosted in Shared Workers.  In order to minimize that cost you can choose to scale down the Shared Worker Tier to a bare minimum.  For example to offer Free and Shared App Service Plan SKUs and to offer consumption based functions you need to have a minimum of 1 A1 instance available.  Shared workers are multi-tenant, therefore they can host multiple customer apps, each individually isolated by the App Service Sandbox.  This then limits your outlay to the cost of 1vCPU per month (approximately $42).
+
+Additionally you can then choose to create a quota, for use in a plan, which only offers free and shared SKUs and limits the number of free and shared app service plans your customer can create.
+
 ## Next steps
 
 - [Azure Stack Tenant Usage API](azure-stack-tenant-resource-usage-api.md)
