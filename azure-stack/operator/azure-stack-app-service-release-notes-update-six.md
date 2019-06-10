@@ -99,6 +99,16 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 
 Refer to the documentation in the [Azure Stack 1904 Release Notes](azure-stack-release-notes-1904.md)
 
+### Known issues for Tenants deploying applications on Azure App Service on Azure Stack
+
+- Deployment Center is greyed out
+
+Tenants cannot yet make use of Deployment Center, which is a feature which was released in the public cloud in late 2018.  Tenants can still use the standard deployment methods (FTP, Web Deploy, Git, etc;) via the portal, CLI and PowerShell.
+
+- Deployment options (Classic) UX and Deployment credentials portal options not available
+
+In order to reach the deployment options and deployment credentials user experiences in the Azure Stack deployment, tenants should access the portal using this URL format - https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;/?websitesExtension_oldvsts=true - which, for the ASDK would be [https://portal.local.azurestack.external/?websitesExtension_oldvsts=true](https://portal.local.azurestack.external/?websitesExtension_oldvsts=true) , and then navigate to their applications normally.
+
 ## Next steps
 
 - For an overview of Azure App Service, see [Azure App Service on Azure Stack overview](azure-stack-app-service-overview.md).
