@@ -30,7 +30,10 @@ Internal infrastructure VIPs aren't listed because they're not required for publ
 > [!Note]  
 > User VIPs are dynamic, defined by the users themselves with no control by the Azure Stack operator.
 
-> [!Note]
+> [!Note]  
+> IKEv2 VPN. IKEv2 VPN is a standards-based IPsec VPN solution that uses UDP port 500 and 4500 and IP protocol no. 50. Firewalls do not always open these ports, so there is a possibility of IKEv2 VPN not being able to traverse proxies and firewalls.
+
+> [!Note]  
 > As of the 1811 update, ports in the range of 12495-30015 are no longer required to be open due to the addition of the [Extension Host](azure-stack-extension-host-prepare.md).
 
 |Endpoint (VIP)|DNS host A record|Protocol|Ports|
