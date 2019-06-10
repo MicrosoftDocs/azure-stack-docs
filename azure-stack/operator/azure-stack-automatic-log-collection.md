@@ -31,7 +31,7 @@ Automatic log collection isn't enabled by default. Before you can enable it, you
 You can collect diagnostic logs in two different ways:
 
 1. Automatically based on system health conditions
-2. Manually based on a specific timeframe between 1-4 hours, up to 7 days in the past. 
+2. Manually based on any 1-4 hour period over the last week. 
 
 ## How to upload logs
 
