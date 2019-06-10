@@ -64,6 +64,13 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 - Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
 - Occurrence: Common
 
+### Marketplace management
+
+- Applicable: This issue applies to 1904 and 1905
+- Cause: The marketplace management screen is not visible when you sign in to the administrator portal.
+- Remediation: Refresh the browser or go to **Settings** and select the option **Reset to default settings**.
+- Occurrence: Intermittent
+
 ### Docker extension
 
 - Applicable: This issue applies to all supported releases.
