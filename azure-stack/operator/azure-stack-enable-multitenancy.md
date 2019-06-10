@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 06/10/2019
 ms.author: patricka
 ms.reviewer: bryanr
-ms.lastreviewed: 03/04/2019
+ms.lastreviewed: 06/10/2019
 ---
 
 # Multi-tenancy in Azure Stack

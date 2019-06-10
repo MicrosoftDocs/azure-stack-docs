@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 06/10/2019
 ms.author: patricka
 ms.reviewer: rtiberiu
-ms.lastreviewed: 02/13/2019
+ms.lastreviewed: 06/10/2019
 
 ---
 # Create a registration role for Azure Stack
