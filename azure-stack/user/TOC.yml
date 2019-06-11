@@ -198,17 +198,19 @@
       items:
       - name: Deploy a C# web app to a Windows VM
         href: azure-stack-dev-start-howto-vm-dotnet.md
-      - name: Deploy a Linux VM for a web app
-        href: azure-stack-dev-start-howto-deploy-linux.md  
-        - name: Deploy a Java web app to a VM
+      - name: Deploy a web app to a Linux VM
+        items:
+        - name: Deploy a Linux VM for a web app
+          href: azure-stack-dev-start-howto-deploy-linux.md  
+        - name: Deploy a Java web app 
           href: azure-stack-dev-start-howto-vm-java.md
-        - name: Deploy a Go web app to a VM
+        - name: Deploy a Go web app 
           href: azure-stack-dev-start-howto-vm-go.md
-        - name: Deploy a Ruby web app to a VM
+        - name: Deploy a Ruby web app 
           href: azure-stack-dev-start-howto-vm-ruby.md
-        - name: Deploy a Python web app to a VM
+        - name: Deploy a Python web app 
           href: azure-stack-dev-start-howto-vm-python.md
-        - name: Deploy a NodeJS web app to a VM
+        - name: Deploy a NodeJS web app 
           href: azure-stack-dev-start-howto-vm-nodejs.md
     - name: Use the Azure Stack Policy module
       href: azure-stack-policy-module.md
