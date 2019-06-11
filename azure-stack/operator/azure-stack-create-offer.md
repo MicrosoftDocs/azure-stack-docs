@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/07/2019
+ms.date: 06/11/2019
 ms.author: sethm
 ms.reviewer: efemmano
-ms.lastreviewed: 06/07/2019
+ms.lastreviewed: 06/11/2019
 
 ---
 # Create an offer in Azure Stack
@@ -63,7 +63,7 @@ There are two ways to change the state of an offer:
 
    ![Choose the state](media/azure-stack-create-offer/change-state.png)
 
-2. In **All resources**, select the name of the offer. Then select **Offer settings**. Choose the state you want to use (for example, **Public**), then select **Save**.
+2. Select **Offer settings**. Choose the state you want to use (for example, **Public**), then select **Save**.
 
    ![Select Accessibility state](media/azure-stack-create-offer/offer-settings.png)
 

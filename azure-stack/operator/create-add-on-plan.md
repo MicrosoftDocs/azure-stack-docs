@@ -14,10 +14,10 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
-ms.date: 06/07/2019
+ms.date: 06/11/2019
 ms.author: sethm
 ms.reviewer: efemmano
-ms.lastreviewed: 06/07/2019
+ms.lastreviewed: 06/11/2019
 ---
 
 # Azure Stack add-on plans
@@ -43,7 +43,7 @@ Add-on plans are created by modifying an existing offer.
 
    ![Create add-on plan](media/create-add-on-plan/add-on1.png)
 
-4. Scroll to the bottom of the offer properties and select **Add-on plans**. Click **Add**.
+4. At the bottom of the offer properties, select **Add-on plans**. Click **Add**.
 
     ![Create add-on plan](media/create-add-on-plan/add-on2.png)
 
