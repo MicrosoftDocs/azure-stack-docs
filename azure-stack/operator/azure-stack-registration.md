@@ -505,9 +505,9 @@ Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-Privil
 ## Registration failures
 
 You might see one of the errors below while attempting registration of your Azure Stack:
-1. Could not retrieve mandatory hardware info for $hostName. Please check physical host and connectivity then try to re-run registration.
+1. Could not retrieve mandatory hardware info for $hostName. Check physical host and connectivity then try to rerun registration.
 
-2. Cannot connect to $hostName to get hardware info - please check physical host and connectivity then try to re-run registration.
+2. Cannot connect to $hostName to get hardware info - please check physical host and connectivity then try to rerun registration.
 
 > Cause: this is typically because we try to obtain hardware details such as UUID, Bios and CPU from the hosts to attempt activation and were not able to due to the inability to connect to the physical host.
 
