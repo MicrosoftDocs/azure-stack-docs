@@ -29,7 +29,7 @@ Azure Stack supports the Windows guest operating systems listed in the following
 
 | Operating system | Description | Available in Marketplace |
 | --- | --- | --- |
-| Windows Server, version 1709 | 64-bit | Core with Containers |
+| Windows Server, version 1709 | 64-bit | Core with containers |
 | Windows Server 2019 | 64-bit |  Datacenter, Datacenter core, Datacenter with containers |
 | Windows Server 2016 | 64-bit |  Datacenter, Datacenter core, Datacenter with containers |
 | Windows Server 2012 R2 | 64-bit |  Datacenter |
