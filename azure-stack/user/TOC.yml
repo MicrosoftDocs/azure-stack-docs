@@ -50,8 +50,6 @@
     href: azure-stack-use-portal.md
   - name: Connect with PowerShell
     href: azure-stack-powershell-configure-user.md
-  - name: Use the Azure Stack API
-    href: azure-stack-rest-api-use.md
   - name: Security & compliance
     items:
     - name: Use role-based access control
@@ -198,20 +196,20 @@
         href: azure-stack-dev-start-howto-ssh-public-key.md
     - name: Deploy a VM and web app
       items:
-      - name: Deploy a C# web app to a VM
+      - name: Deploy a C# web app to a Windows VM
         href: azure-stack-dev-start-howto-vm-dotnet.md
       - name: Deploy a Linux VM for a web app
         href: azure-stack-dev-start-howto-deploy-linux.md  
-      - name: Deploy a Java web app to a VM
-        href: azure-stack-dev-start-howto-vm-java.md
-      - name: Deploy a Go web app to a VM
-        href: azure-stack-dev-start-howto-vm-go.md
-      - name: Deploy a Ruby web app to a VM
-        href: azure-stack-dev-start-howto-vm-ruby.md
-      - name: Deploy a Python web app to a VM
-        href: azure-stack-dev-start-howto-vm-python.md
-      - name: Deploy a NodeJS web app to a VM
-        href: azure-stack-dev-start-howto-vm-nodejs.md
+        - name: Deploy a Java web app to a VM
+          href: azure-stack-dev-start-howto-vm-java.md
+        - name: Deploy a Go web app to a VM
+          href: azure-stack-dev-start-howto-vm-go.md
+        - name: Deploy a Ruby web app to a VM
+          href: azure-stack-dev-start-howto-vm-ruby.md
+        - name: Deploy a Python web app to a VM
+          href: azure-stack-dev-start-howto-vm-python.md
+        - name: Deploy a NodeJS web app to a VM
+          href: azure-stack-dev-start-howto-vm-nodejs.md
     - name: Use the Azure Stack Policy module
       href: azure-stack-policy-module.md
     - name: Use templates
@@ -232,6 +230,8 @@
         href: azure-stack-deploy-template-command-line.md
       - name: Deploy with Visual Studio
         href: azure-stack-deploy-template-visual-studio.md
+    - name: Use REST to access resources
+      href: azure-stack-rest-api-use.md
   - name: Enable a Cloud Service Provider
     href: azure-stack-csp-enable-billing-usage-tracking.md
 - name: Reference
