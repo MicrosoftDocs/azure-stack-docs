@@ -21,15 +21,16 @@ ms.lastreviewed: 05/31/2019
 
 # Azure Stack compute
 
-The [VM sizes](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) supported on Azure Stack are a subset of those supported on Azure. Azure imposes resource limits along many vectors to avoid overconsumption of resources (server local and service-level). Without imposing some limits on tenant consumption, the tenant experiences will suffer when other tenants overconsume resources. For networking egress from the VM, there are bandwidth caps in place on Azure Stack that match Azure limitations. For storage resources, storage IOPS limits have been implemented on Azure Stack to avoid basic overconsumption of resources by tenants for storage access.
+The [VM sizes](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) supported on Azure Stack are a subset of those supported on Azure. Azure imposes resource limits along many vectors to avoid overconsumption of resources (server local and service-level). Without imposing some limits on tenant consumption, the tenant experiences will suffer when other tenants overconsume resources. For networking egress from the VM, there are bandwidth caps in place on Azure Stack that match Azure limitations. For storage resources on Azure Stack, storage IOPS limits avoid basic over consumption of resources by tenants for storage access.
 
 >[!IMPORTANT]
 >The [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) does not consider or guarantee IOPS performance.
 
 ## VM placement
 
-In Azure Stack, tenant VM placement is done automatically by the placement engine across available hosts. 
-The only two considerations when placing VMs are whether there is enough memory on the host for that VM type, and if the VMs are a part of an [availability set](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) or are [virtual machine scale sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).  
+The Azure Stack placement engine places tenant VMs across the available hosts.
+
+Azure Stack uses two considerations when placing VMs. One, is enough memory on the host for that VM type. Two, are the VMs a part of an [availability set](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) or are [virtual machine scale sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
 
 To achieve high availability of a multi-VM production system in Azure Stack, VMs are placed in an availability set that spreads them across multiple fault domains. 
 A fault domain in an availability set is defined as a single node in the scale unit. 
@@ -66,8 +67,8 @@ Used memory is made up of several components. The following components consume t
  -	Host OS usage or reserve – This is the memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the Spaces Direct memory cache. Since this value is dependent on the memory used by the different Hyper-V processes running on the host, it can fluctuate.
  - Infrastructure services – These are the infrastructure VMs that make up Azure Stack. As of the 1904 release version of Azure Stack, this entails ~31 VMs that take up 242 GB + (4 GB x # of nodes) of memory. The memory utilization of the infrastructure services component may change as we work on making our infrastructure services more scalable and resilient.
  - Resiliency reserve – Azure Stack reserves a portion of the memory to allow for tenant availability during a single host failure as well as during patch and update to allow for successful live migration of VMs.
- - Tenant VMs – These are the tenant VMs created by Azure Stack users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in “Creating” or “Failed” state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option from portal/powershell/cli will not consume memory from Azure Stack.
- - Add-on RPs – VMs deployed for the Add-on RPs like SQL, MySQL, App Service etc
+ - Tenant VMs – These are the tenant VMs created by Azure Stack users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in "Creating" or "Failed" state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option from portal/powershell/cli will not consume memory from Azure Stack.
+ - Add-on RPs – VMs deployed for the Add-on RPs like SQL, MySQL, App Service etc.
 
 
 The best way to understand memory consumption on the portal is to use the [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) to see the impact of various workloads. 
@@ -105,7 +106,7 @@ Q: The number of deployed VMs on my Azure Stack has not changed, but my capacity
 A: The available memory for VM placement has multiple dependencies, one of which is the host OS reserve. This value is dependent on the memory used by the different Hyper-V processes running on the host which is not a constant value.
 
 Q: What state do Tenant VMs have to be in to consume memory?
-A: In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs that are in “Creating”, “Failed” or VMs shut down from within the guest as opposed to stop deallocated from portal/powershell/cli will consume memory.
+A: In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs that are in "Creating", "Failed" or VMs shut down from within the guest as opposed to stop deallocated from portal/powershell/cli will consume memory.
 
 
 Q: I have a 4 host Azure Stack. My tenant has 3 VMs that consume 56 GB RAM (D5_v2) each. One of the VMs is resized to 112 GB RAM (D14_v2), and available memory reporting on dashboard resulted in a spike of 168 GB usage on the capacity blade. Subsequent resizing of the other two D5_v2 VMs to D14_v2, resulted in only 56GB of RAM increase each. Why is this so?

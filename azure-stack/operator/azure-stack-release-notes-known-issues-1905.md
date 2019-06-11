@@ -28,6 +28,14 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 
 ## Update process
 
+### Host node update prerequisite failure
+-	Applicable: This issue applies to the 1905 update.
+-	Cause: When attempting to install the 1905 Azure Stack update, the status for the update might fail due to Host Node Update Prerequisite. This is generally caused by a host node having insufficient free disk space. 
+-	Remediation: Contact Azure Stack support to receive assistance clearing disk space on the host node.
+-	Occurrence: Uncommon
+
+
+### Preparation failed
 - Applicable: This issue applies to all supported releases.
 - Cause: When attempting to install the 1905 Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing. The 1905 update package is larger than previous update packages which may make this issue more likely to occur.
 - Remediation: Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and restarts the download. If the problem persists, we recommend manually uploading the update package by following the [Import and install updates section](azure-stack-apply-updates.md#import-and-install-updates).
@@ -55,6 +63,13 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 - Cause: You cannot view permissions to your subscription using the Azure Stack portals.
 - Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
 - Occurrence: Common
+
+### Marketplace management
+
+- Applicable: This issue applies to 1904 and 1905
+- Cause: The marketplace management screen is not visible when you sign in to the administrator portal.
+- Remediation: Refresh the browser or go to **Settings** and select the option **Reset to default settings**.
+- Occurrence: Intermittent
 
 ### Docker extension
 
@@ -118,7 +133,7 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 #### CentOS
 
 - Applicable: This issue applies to all supported releases.
-- Cause: The virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack.
+- Cause: The virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack Marketplace which will cause deployment failures calling out that the image is not found.
 - Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
 - Occurrence: Common
 
