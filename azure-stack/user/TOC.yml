@@ -152,13 +152,11 @@
           href: azure-stack-solution-template-kubernetes-trouble.md
       - name: Deploy Cognitive Services
         href: azure-stack-solution-template-cognitive-services.md
-  - name: Using Azure Stack Resource Manager
+  - name: Use Azure Stack Resource Manager
     items:
-    - name: Start by using Azure
-      href: azure-stack-developer.md
-    - name: Provisioning resources
+    - name: Configure your client
       items:
-      - name: Using API version profiles
+      - name: Use API version profiles
         items:
         - name: Overview
           href: azure-stack-version-profiles.md
@@ -222,6 +220,8 @@
         href: azure-stack-arm-templates.md
       - name: Template considerations
         href: azure-stack-develop-templates.md
+      - name: Develop templates in Azure
+        href: azure-stack-developer.md  
       - name: Check templates
         href: azure-stack-validate-templates.md
       - name: Deploy with the portal
