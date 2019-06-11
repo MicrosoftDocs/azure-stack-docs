@@ -13,17 +13,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/07/2019
+ms.date: 06/11/2019
 ms.author: sethm
 ms.reviewer: efemmano
-ms.lastreviewed: 03/07/2019
+ms.lastreviewed: 06/11/2019
 
 ---
 # Create a plan in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-[Plans](azure-stack-overview.md) are groupings of one or more services and their quotas. As a provider, you can create plans to offer to your users. In turn, your users subscribe to your offers to use the plans, services, and quotas they include. This example shows you how to create a plan that includes the compute, network, and storage resource providers. This plan gives subscribers the ability to provision virtual machines.
+[Azure Stack plans](azure-stack-overview.md) are groupings of one or more services and their quotas. As a provider, you can create plans to offer to your users. In turn, your users subscribe to your offers to use the plans, services, and quotas they include. This example shows you how to create a plan that includes the compute, network, and storage resource providers. This plan gives subscribers the ability to provision virtual machines.
 
 ## Create a plan (1902 and later)
 
@@ -43,11 +43,11 @@ ms.lastreviewed: 03/07/2019
 
    ![Specify the resource group](media/azure-stack-create-plan/resource-group.png)
 
-5. Select the **Services** tab, and then select the checkbox for **Microsoft.Compute**, **Microsoft.Network**, and **Microsoft.Storage**.
+5. Select the **Services** tab, or click the **Next : Services >** button, and then select the checkbox for **Microsoft.Compute**, **Microsoft.Network**, and **Microsoft.Storage**.
   
    ![Select services](media/azure-stack-create-plan/services.png)
 
-6. Select the **Quotas** tab. Next to **Microsoft.Storage**, choose either the default quota from the dropdown box, or select **Create New** to create a customized quota.
+6. Select the **Quotas** tab, or click the **Next : Quotas >** button. Next to **Microsoft.Storage**, choose either the default quota from the dropdown box, or select **Create New** to create a customized quota.
   
    ![Quotas](media/azure-stack-create-plan/quotas.png)
 
@@ -65,13 +65,13 @@ ms.lastreviewed: 03/07/2019
 
 10. When you are ready, select **Create** to create the plan.
 
-11. To see the new plan, select **Plans**, then search for the plan and select its name. If your list of resources is long, use **Search** to locate your plan by name.
+11. To see the new plan, on the left-hand side click **All services**, select **Plans**, and then search for the plan and select its name. If your list of resources is long, use **Search** to locate your plan by name.
 
 ## Create a plan (1901 and earlier)
 
 1. Sign in to the [Azure Stack administrator portal](https://adminportal.local.azurestack.external).
 
-2. To create a plan and offer that users can subscribe to, select **+ Create a resource**, then **Offers + Plans**, then **Plan**.
+2. To create a plan and offer that users can subscribe to, select **+ New**, then **Offers + Plans**, then **Plan**.
   
    ![Select a plan](media/azure-stack-create-plan/select-plan1901.png)
 
