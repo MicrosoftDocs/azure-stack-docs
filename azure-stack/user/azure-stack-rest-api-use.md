@@ -1,5 +1,5 @@
 ---
-title: Use the Azure Stack API | Microsoft Docs
+title: Make API requests to Azure Stack | Microsoft Docs
 description: Learn how to retrieve an authentication from Azure to make API requests to Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -20,7 +20,7 @@ ms.lastreviewed: 01/14/2019
 
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
-# Use the Azure Stack API
+# Make API requests to Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -165,7 +165,7 @@ Response:
 
 ## API queries
 
-Once you get your access token, add it as a header to each of your API requests. Do this by creating a header **authorization** with the value: `Bearer <access token>`. For example:
+Once you get your access token, add it as a header to each of your API requests. To add it as a header, create a header **authorization** with the value: `Bearer <access token>`. For example:
 
 Request:
 
