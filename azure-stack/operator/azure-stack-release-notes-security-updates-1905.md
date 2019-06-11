@@ -27,6 +27,7 @@ This article lists all the security updates in the last four updates of Azure St
 
 The 1905 update installs the following security updates:
 
+- [ADV190013](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV190013)
 - [CVE-2019-0707](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0707)
 - [CVE-2019-0725](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0725)
 - [CVE-2019-0727](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0727)
