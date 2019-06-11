@@ -154,24 +154,6 @@
     items:
     - name: Configure your client
       items:
-      - name: Use API version profiles
-        items:
-        - name: Overview
-          href: azure-stack-version-profiles.md
-        - name: .NET
-          href: azure-stack-version-profiles-net.md
-        - name: Java
-          href: azure-stack-version-profiles-java.md
-        - name: Azure CLI
-          href: azure-stack-version-profiles-azurecli2.md
-        - name: Go
-          href: azure-stack-version-profiles-go.md
-        - name: Ruby
-          href: azure-stack-version-profiles-ruby.md
-        - name: Python
-          href: azure-stack-version-profiles-python.md
-        - name: Resource provider APIs supported by profiles
-          href: azure-stack-profiles-azure-resource-manager-versions.md
       - name: Azure SDK clients
         href: azure-stack-dev-start.md
       - name: Azure Stack PowerShell client
@@ -194,6 +176,24 @@
         href: azure-stack-install-visual-studio.md
       - name: Secure Shell client
         href: azure-stack-dev-start-howto-ssh-public-key.md
+      - name: Use API version profiles
+        items:
+        - name: Overview
+          href: azure-stack-version-profiles.md
+        - name: .NET
+          href: azure-stack-version-profiles-net.md
+        - name: Java
+          href: azure-stack-version-profiles-java.md
+        - name: Azure CLI
+          href: azure-stack-version-profiles-azurecli2.md
+        - name: Go
+          href: azure-stack-version-profiles-go.md
+        - name: Ruby
+          href: azure-stack-version-profiles-ruby.md
+        - name: Python
+          href: azure-stack-version-profiles-python.md
+        - name: Resource provider APIs supported by profiles
+          href: azure-stack-profiles-azure-resource-manager-versions.md        
     - name: Deploy a VM and web app
       items:
       - name: Deploy a C# web app to a Windows VM
