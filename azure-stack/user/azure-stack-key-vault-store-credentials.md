@@ -93,7 +93,7 @@ To create a key vault, follow these steps:
 
 8. Select **Create** to start the deployment.
 
-After the secret is successfully created, the service principal information is stored there. You can select it at any time under **Secrets** and view or modify its properties. The properties section contains the secret identifier, which is a Uwhich is a Uniform Resource Identifier (URI) that external apps use to access this secret.
+After the secret is successfully created, the service principal information is stored there. You can select it at any time under **Secrets** and view or modify its properties. The properties section contains the secret identifier, which is a Uniform Resource Identifier (URI) that external apps use to access this secret.
 
 ## Next steps
 
