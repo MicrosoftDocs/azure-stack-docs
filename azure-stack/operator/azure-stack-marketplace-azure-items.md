@@ -87,9 +87,9 @@ Microsoft Azure Stack supports the following Azure Marketplace virtual machines 
 | ![CentOS-based 7.3](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.3](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased73HPC) | This distribution of Linux is based on CentOS and is provided by Rogue Wave Software. | Rogue Wave Software (formerly OpenLogic) |
 | ![CentOS-based 7.5](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.5](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased75) | This distribution of Linux is based on CentOS and is provided by Rogue Wave Software. | Rogue Wave Software (formerly OpenLogic) |
 | ![CentOS-based 7.5-LVM](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.5-LVM](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased75) | This distribution of Linux is based on CentOS and is provided by Rogue Wave Software. | Rogue Wave Software (formerly OpenLogic) |
-| ![SLES 11 SP4 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 11 SP4 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES) | SUSE Linux Enterprise Server 11 SP4. | SUSE |
-| ![SLES 12 SP3 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP3 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES) | SUSE Linux Enterprise Server 12 SP3. | SUSE |
-| ![SLES 15 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 15 SP3 (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SLES) | SUSE Linux Enterprise Server 15. | SUSE |
+| ![SLES 11 SP4 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 11 SP4 (BYOS)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-byos) | SUSE Linux Enterprise Server 11 SP4. | SUSE |
+| ![SLES 12 SP3 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP4 (BYOS)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-byos) | SUSE Linux Enterprise Server 12 SP4. | SUSE |
+| ![SLES 15 (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 15 (BYOS)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/suse.sles-byos) | SUSE Linux Enterprise Server 15. | SUSE |
 
 ## Third-Party BYOL, free, trial images, and solution templates
 
