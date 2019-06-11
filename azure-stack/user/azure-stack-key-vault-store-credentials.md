@@ -20,7 +20,7 @@ ms.lastreviewed: 01/16/2019
 
 # Store service principal credentials in Azure Stack Key Vault
 
-Developing apps on Azure Stack typically requires creating a service principal and using those credentials to authenticate before deploying. However, sometimes the stored credentials for the service principal are misplaced. This article describes how to create a service principal and store the values in Azure Key Vault for later retrieval.
+Developing apps on Azure Stack typically requires creating a service principal and using those credentials to authenticate before deploying. However, sometimes you lose the stored credentials for the service principal. This article describes how to create a service principal and store the values in Azure Key Vault for later retrieval.
 
 For more information about Key Vault, see [this article](azure-stack-key-vault-intro.md).
 
@@ -41,7 +41,7 @@ To create a key vault, follow these steps:
 
    ![Create key vault](media/azure-stack-key-vault-store-credentials/create-key-vault.png)
 
-3. In the **Create Key Vault** pane, assign a **Name** for your vault. Vault names can contain only alphanumeric characters and the hyphen (-) character. They should not start with a number.
+3. In the **Create Key Vault** pane, assign a **Name** for your vault. Vault names can contain only alphanumeric characters and the hyphen (-) character. They shouldn't start with a number.
 
 4. Choose a subscription from the list of available subscriptions.
 
@@ -81,7 +81,7 @@ To create a key vault, follow these steps:
 
 2. In the **Secret** pane, select **Generate/Import**.
 
-3. In the **Create a secret** pane, select **Manual** from the list of options. If you've created the service principal using certificates, select the certificates from the drop down list, and then upload the file.
+3. In the **Create a secret** pane, select **Manual** from the list of options. If you've created the service principal using certificates, select the certificates from the drop-down list, and then upload the file.
 
 4. Enter **the Application ID** copied from the service principal as the name for your key. The key name can contain only alphanumeric characters and the hyphen (-) character.
 
@@ -93,7 +93,7 @@ To create a key vault, follow these steps:
 
 8. Select **Create** to start the deployment.
 
-After the secret is successfully created, the service principal information is stored there. You can select it at any time under **Secrets** and view or modify its properties. The properties section contains the secret identifier which is a Uniform Resource Identifier (URI) that external apps use to access this secret.
+After the secret is successfully created, the service principal information is stored there. You can select it at any time under **Secrets** and view or modify its properties. The properties section contains the secret identifier, which is a Uwhich is a Uniform Resource Identifier (URI) that external apps use to access this secret.
 
 ## Next steps
 
