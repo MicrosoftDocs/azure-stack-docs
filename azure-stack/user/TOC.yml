@@ -231,6 +231,18 @@
         href: azure-stack-deploy-template-visual-studio.md
   - name: Enable a Cloud Service Provider
     href: azure-stack-csp-enable-billing-usage-tracking.md
+- name: Concepts
+  items:
+  - name: Edge patterns
+    items: 
+      - name: Intelligent Edge patterns overview
+        href: azure-stack-edge-pattern-overview.md
+      - name: Cross Cloud Scaling
+        href: azure-stack-edge-pattern-cross-cloud-scaling.md
+      - name: Hybrid CI/CD
+        href: azure-stack-edge-pattern-hybrid-ci-cd.md
+      - name: Geo-distributed application
+        href: azure-stack-edge-pattern-geo-distribution.md
 - name: Reference
   items:
   - name: Azure Stack PowerShell
