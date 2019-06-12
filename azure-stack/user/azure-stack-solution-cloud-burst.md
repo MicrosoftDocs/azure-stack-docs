@@ -23,14 +23,14 @@ ms.lastreviewed: 01/14/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Learn how to create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack hosted web app, to an Azure hosted web app with auto-scaling via traffic manager, ensuring flexible and scalable cloud utility when under load.
+Learn how to create a cross-cloud solution to provide a manually-triggered process for switching from an Azure Stack hosted web app to an Azure hosted web app with auto-scaling via traffic manager. This process ensures flexible and scalable cloud utility when under load.
 
-With this pattern, your tenant may not be ready to run your application in the public cloud. However, it may not be economically feasible for the business to maintain the capacity required in their on-premises environment to handle spikes in demand for the app. Your tenant can take use the elasticity of the public cloud with their on-premises solution.
+With this pattern, your tenant may not be ready to run your app in the public cloud. However, it may not be economically feasible for the business to maintain the capacity required in their on-premises environment to handle spikes in demand for the app. Your tenant make use of the elasticity of the public cloud with their on-premises solution.
 
 In this tutorial, you will build a sample environment to:
 
 > [!div class="checklist"]
-> - Create a multi-node web application.
+> - Create a multi-node web app.
 > - Configure and manage the Continuous Deployment (CD) process.
 > - Publish the web app to Azure Stack.
 > - Create a release.
@@ -38,17 +38,18 @@ In this tutorial, you will build a sample environment to:
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment and enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
+> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
 > 
-> The whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid application design, minimizing challenges in production environments.
+> The whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
 ## Prerequisites
 
 -   Azure subscription. If needed, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before beginning.
 
 - An Azure Stack Integrated System or deployment of Azure Stack Development Kit.
-    - You find instructions for installing Azure Stack at [Install the Azure Stack Development Kit](../asdk/asdk-install.md).
-    - [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) This installation may require a few hours to complete.
+    - For instructions on installing Azure Stack, see [Install the Azure Stack Development Kit](../asdk/asdk-install.md).
+    - For an ASDK post-deployment automation script, go to: [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) 
+    - This installation may require a few hours to complete.
 
 -   Deploy [App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
 
@@ -56,13 +57,13 @@ In this tutorial, you will build a sample environment to:
 
 -   [Create tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) within the Azure Stack environment.
 
--   Create a Web App within the tenant subscription. Make note of the new Web App URL for later use.
+-   Create a web app within the tenant subscription. Make note of the new web app URL for later use.
 
--   Deploy Azure Pipelines Virtual Machine within the tenant subscription.
+-   Deploy Azure Pipelines Virtual Machine (VM) within the tenant subscription.
 
--   Windows Server 2016 VM with .NET 3.5 required. This VM will be built in the tenant subscription on Azure Stack as the private build agent.
+-   Windows Server 2016 VM with .NET 3.5 is required. This VM will be built in the tenant subscription on Azure Stack as the private build agent.
 
--   [Windows Server 2016 with SQL 2017 VM Image](../operator/azure-stack-add-vm-image.md#add-a-vm-image-through-the-portal) is available in the Azure Stack Marketplace. If this image is not available, work with an Azure Stack Operator to ensure it is added to the environment.
+-   [Windows Server 2016 with SQL 2017 VM Image](../operator/azure-stack-add-vm-image.md#add-a-vm-image-through-the-portal) is available in the Azure Stack Marketplace. If this image isn't available, work with an Azure Stack Operator to ensure it's added to the environment.
 
 ## Issues and considerations
 
