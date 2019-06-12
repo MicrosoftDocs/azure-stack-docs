@@ -6,10 +6,10 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 06/10/2019
 ms.author: patricka
 ms.reviewer: thoroet
-ms.lastreviewed: 02/11/2019
+ms.lastreviewed: 06/10/2019
 keywords:
 ---
 

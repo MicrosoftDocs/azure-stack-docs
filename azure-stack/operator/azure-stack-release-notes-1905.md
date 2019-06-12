@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 06/10/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 06/05/2019
+ms.lastreviewed: 06/10/2019
 ---
 
 # Azure Stack 1905 update
@@ -63,7 +63,8 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 
   Please download these versions of the extensions immediately, so that new deployments of the extension do not fail when TLS 1.2 is enforced in a future release. Always set **autoupdateminorversion=true** so that minor version updates to extensions (for example, 1.8 to 1.9) are automatically performed.
 
-- A new **Help and Support Overview** in the Azure Stack portal makes it easier for operators to check their support options, get expert help, and learn more about Azure Stack. On integrated systems, support requests are pre-filled with information about your stamp to assist Microsoft Customer Support Services (CSS) with problem resolution. We highly recommend that customers use this experience to submit tickets rather than using the public Azure portal. For more information, see [Azure Stack Help and Support](azure-stack-help-and-support-overview.md).
+- A new **Help and Support Overview** in the Azure Stack portal makes it easier for operators to check their support options, get expert help, and learn more about Azure Stack. On integrated systems, creating a support request will preselect Azure Stack service. We highly recommend that customers use this experience to submit tickets rather than using the public Azure portal. For more information, see [Azure Stack Help and Support](azure-stack-help-and-support-overview.md).
+
 - When multiple Azure Active Directories are onboarded (through [this process](azure-stack-enable-multitenancy.md)), it is possible to neglect rerunning the script when certain updates occur, or when changes to the AAD Service Principal authorization cause rights to be missing. This can cause various issues, from blocked access for certain features, to more discrete failures which are hard to trace back to the original issue. To prevent this, 1905 introduces a new feature that checks for these permissions and creates an alert when certain configuration issues are found. This validation runs every hour, and displays the remediation actions required to fix the issue. The alert closes once all the tenants are in a healthy state.
 
 - Improved reliability of infrastructure backup operations during service failover. 

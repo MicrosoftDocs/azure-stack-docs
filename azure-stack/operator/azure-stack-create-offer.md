@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/07/2019
+ms.date: 06/11/2019
 ms.author: sethm
 ms.reviewer: efemmano
-ms.lastreviewed: 03/07/2019
+ms.lastreviewed: 06/11/2019
 
 ---
 # Create an offer in Azure Stack
@@ -30,11 +30,11 @@ ms.lastreviewed: 03/07/2019
 
 2. A tabbed user interface appears that enables you to define the offer name, and add existing or create new base plans and add-on plans. Most importantly, you can review the details of the offer you create, before you decide to create it.
 
-   In the **Basics** tab, under **New Offer**, enter a **Display Name** and a **Resource Name**, and then under **Resource Group**, select **Create new** or **Use existing**. The display name is the friendly name for the offer. This friendly name is the only information about the offer that users see when they subscribe to an offer in the user portal. Use an intuitive name that helps users understand what comes with the offer. Only the admin can see the resource name. It's the name that admins use to work with the offer as an Azure Resource Manager resource. In this tab, you can also choose to make this offer public or keep it private, which is the default. You can [change the public or private state of the offer](#change-the-state-of-an-offer) later, as well.
+   In the **Basics** tab, enter a **Display Name** and a **Resource Name**, and then under **Resource Group**, select **Create new** or **Use existing**. The display name is the friendly name for the offer. This friendly name is the only information about the offer that users see when they subscribe to an offer in the user portal. Use an intuitive name that helps users understand what comes with the offer. Only the admin can see the resource name. It's the name that admins use to work with the offer as an Azure Resource Manager resource. In this tab, you can also choose to make this offer public or keep it private, which is the default. You can [change the public or private state of the offer](#change-the-state-of-an-offer) later, as well.
 
    ![New Offer](media/azure-stack-create-offer/new-offer.png)
   
-3. Select the **Base plans** tab. Select the plan(s) you want to include in the offer.
+3. Select the **Base plans** tab or click the **Next : Base plans >** button. Select the plan(s) you want to include in the offer.
 
    ![Select plan](media/azure-stack-create-offer/select-plan.png)
 
@@ -63,7 +63,7 @@ There are two ways to change the state of an offer:
 
    ![Choose the state](media/azure-stack-create-offer/change-state.png)
 
-2. In **All resources**, select the name of the offer. Then select **Offer settings**. Choose the state you want to use (for example, **Public**), then select **Save**.
+2. Select **Offer settings**. Choose the state you want to use (for example, **Public**), then select **Save**.
 
    ![Select Accessibility state](media/azure-stack-create-offer/offer-settings.png)
 
