@@ -207,6 +207,8 @@
     items:
     - name: Security overview
       href: azure-stack-security-foundations.md
+    - name: Configure security
+      href: azure-stack-security-configuration.md
     - name: Identity
       items:
       - name: Identity overview
