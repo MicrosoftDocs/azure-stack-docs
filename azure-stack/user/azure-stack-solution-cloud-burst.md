@@ -156,76 +156,76 @@ Azure Pipelines and Azure DevOps Server provide a highly configurable and manage
 
 4. Under Pipeline tab, select the **Phase, Task** link of the environment and set the Azure cloud environment values.
 
-   ![Alt text](media/azure-stack-solution-cloud-burst/image8.png)
+   ![Set Azure cloud environment values](media/azure-stack-solution-cloud-burst/image8.png)
 
 5. Set the **environment name** and select the **Azure aubscription** for the Azure Cloud endpoint.
 
-      ![Alt text](media/azure-stack-solution-cloud-burst/image9.png)
+      ![Select Azure subscription for Azure Cloud endpoint](media/azure-stack-solution-cloud-burst/image9.png)
 
 6. Under **App service name**, set the required Azure app service name.
 
-      ![Alt text](media/azure-stack-solution-cloud-burst/image10.png)
+      ![Set Azure app service name](media/azure-stack-solution-cloud-burst/image10.png)
 
 7. Enter "Hosted VS2017" under **Agent queue** for Azure cloud hosted environment.
 
-      ![Alt text](media/azure-stack-solution-cloud-burst/image11.png)
+      ![Set Agent queue for Azure cloud hosted environment](media/azure-stack-solution-cloud-burst/image11.png)
 
 8. In Deploy Azure App Service menu, select the valid **Package or Folder** for the environment. Select **OK** to **folder location**.
   
-      ![Alt text](media/azure-stack-solution-cloud-burst/image12.png)
+      ![Select package or folder for Azure App Service environment](media/azure-stack-solution-cloud-burst/image12.png)
 
-      ![Alt text](media/azure-stack-solution-cloud-burst/image13.png)
+      ![Select package or folder for Azure App Service environmen](media/azure-stack-solution-cloud-burst/image13.png)
 
 9. Save all changes and go back to **release pipeline**.
 
-    ![Alt text](media/azure-stack-solution-cloud-burst/image14.png)
+    ![Save changes in release pipeline](media/azure-stack-solution-cloud-burst/image14.png)
 
 10. Add a new artifact selecting the build for the Azure Stack app.
     
-    ![Alt text](media/azure-stack-solution-cloud-burst/image15.png)
+    ![Add new artifact for Azure Stack app](media/azure-stack-solution-cloud-burst/image15.png)
 
 
 11. Add one more environment by applying the Azure App Service Deployment.
     
-    ![Alt text](media/azure-stack-solution-cloud-burst/image16.png)
+    ![Add environment to Azure App Service Deployment](media/azure-stack-solution-cloud-burst/image16.png)
 
 12. Name the new environment Azure Stack.
     
-    ![Alt text](media/azure-stack-solution-cloud-burst/image17.png)
+    ![Name environment in Azure App Service Deployment](media/azure-stack-solution-cloud-burst/image17.png)
 
 13. Find the Azure Stack environment under **Task** tab.
     
-    ![Alt text](media/azure-stack-solution-cloud-burst/image18.png)
+    ![Azure Stack environment](media/azure-stack-solution-cloud-burst/image18.png)
 
 14. Select the subscription for the Azure Stack endpoint.
     
-    ![Alt text](media/azure-stack-solution-cloud-burst/image19.png)
+    ![Select the subscription for the Azure Stack endpoint](media/azure-stack-solution-cloud-burst/image19.png)
 
 15. Set the Azure Stack web app name as the App service name.
 
-    ![Alt text](media/azure-stack-solution-cloud-burst/image20.png)
+    ![Set Azure Stack web app name](media/azure-stack-solution-cloud-burst/image20.png)
 
 16. Select the Azure Stack agent.
     
-    ![Alt text](media/azure-stack-solution-cloud-burst/image21.png)
+    ![Select the Azure Stack agent](media/azure-stack-solution-cloud-burst/image21.png)
 
 17. Under the Deploy Azure App Service section select the valid **Package or Folder** for the environment. Select **OK** to folder location.
 
-    ![Alt text](media/azure-stack-solution-cloud-burst/image22.png)
+    ![Select folder for Azure App Service Deployment](media/azure-stack-solution-cloud-burst/image22.png)
 
-    ![Alt text](media/azure-stack-solution-cloud-burst/image23.png)
+    ![Select folder for Azure App Service Deployment](media/azure-stack-solution-cloud-burst/image23.png)
 
 18. Under Variable tab add a variable named `VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS`, set its value as **true**, and scope to Azure Stack.
     
-    ![Alt text](media/azure-stack-solution-cloud-burst/image24.png)
+    ![Add variable to Azure App Deployment](media/azure-stack-solution-cloud-burst/image24.png)
 
 19. Select the **Continuous** deployment trigger icon in both artifacts and enable the **Continues** deployment trigger.
     
-    ![Alt text](media/azure-stack-solution-cloud-burst/image25.png)
+    ![Select continuous deployment trigger](media/azure-stack-solution-cloud-burst/image25.png)
 
 20. Select the **Pre-deployment** conditions icon in the Azure Stack environment and set the trigger to **After release.**
     
-    ![Alt text](media/azure-stack-solution-cloud-burst/image26.png)
+    ![Select pre-deployment conditions](media/azure-stack-solution-cloud-burst/image26.png)
 
 21. Save all changes.
 
