@@ -39,6 +39,10 @@ You can see [older versions of Azure Stack release notes on the TechNet Gallery]
 
 The Azure Stack 1904 update build number is **1.1904.0.36**.
 
+### Update type
+
+The Azure Stack 1904 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. The expected time it takes for the 1904 update to complete is approximately 16 hours, but exact times can vary. This runtime approximation is specific to the 1904 update and should not be compared to other Azure Stack updates.
+
 ## What's in this update
 
 <!-- The current theme (if any) of this release. -->
@@ -48,8 +52,6 @@ The Azure Stack 1904 update build number is **1.1904.0.36**.
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
-
-- The 1904 update payload contains an update to components of Azure Stack that do not include the underlying operating system which hosts Azure Stack. This enables certain updates to be scoped. As a result, the expected time it takes for the 1904 update to complete is less (approximately 16 hours, but exact times can vary). This decrease in runtime is similar to the 1903 update. However, subsequent updates may contain updates to the operating system, implying different runtimes. Future updates will provide similar guidance on the expected time the update takes to complete, depending on the payload included.
 
 - Significant improvements have been made to the Software Defined Networking (SDN) Stack in 1904. These improvements increase the overall servicing and reliability of the SDN stack in Azure Stack.
 
@@ -208,4 +210,4 @@ Customers with systems that can access the internet from the infrastructure netw
 - For more information about how to apply updates with Azure Stack, see [Apply updates in Azure Stack](azure-stack-apply-updates.md).
 - To review the servicing policy for Azure Stack integrated systems, and what you must do to keep your system in a supported state, see [Azure Stack servicing policy](azure-stack-servicing-policy.md).  
 - To use the Privileged End Point (PEP) to monitor and resume updates, see [Monitor updates in Azure Stack using the privileged endpoint](azure-stack-monitor-update.md).  
-- Fill out survey to provide [feedback on release notes](https://forms.microsoft.com).
+
