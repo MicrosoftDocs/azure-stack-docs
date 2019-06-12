@@ -16,7 +16,7 @@ ms.topic: article
 ms.date: 06/10/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 06/10/2019
+ms.lastreviewed: 06/12/2019
 
 ---
 # Microsoft Azure Stack storage account for automatic log collection
