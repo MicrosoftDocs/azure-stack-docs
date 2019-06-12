@@ -42,7 +42,7 @@ You can collect diagnostic logs in two different ways:
 2. Click **Enable automatic log collection**.
 3. Set Automatic log collection to **Enabled**.
 4. Enter the shared access signature (SAS) URL of the storage account.
-   ![Enable log collection](media\azure-stack-automatic-log-collection\azure-stack-enable-automatic-log-collection.png)
+   ![Enable log collection](media/azure-stack-automatic-log-collection/azure-stack-enable-automatic-log-collection.png)
 
 ## Limitations
 
@@ -54,11 +54,11 @@ There are two types of alerts:
 
 - Expiration date approaching
 
-  ![Expiration date approaching](media\azure-stack-automatic-log-collection\alert-expiration-date.png)
+  ![Expiration date approaching](media/azure-stack-automatic-log-collection/alert-expiration-date.png)
 
 - SAS URL has expired
   
-  ![SAS URL expired](media\azure-stack-automatic-log-collection\alert-url-expired.png)
+  ![SAS URL expired](media/azure-stack-automatic-log-collection/alert-url-expired.png)
 
 ## Troubleshooting errors
 
@@ -68,7 +68,7 @@ Here are some errors you might see when you specify a custom time range:
 
 - End time is before start time
 
-  ![Over time eror](media\azure-stack-automatic-log-collection\azure-stack-log-collection-over-time-error.png)
+  ![Over time eror](media/azure-stack-automatic-log-collection/azure-stack-log-collection-over-time-error.png)
 
 - Time range is less than 1 hour
 
@@ -92,7 +92,7 @@ Here are some errors you might see during automatic log collection:
 
 - The account used to collect the logs is not authorized
 
-  ![Not authorized error](media\azure-stack-automatic-log-collection\azure-stack-log-collection-not-authorized-error.png.png)
+  ![Not authorized error](media\azure-stack-automatic-log-collection\azure-stack-log-collection-not-authorized-error.png)
 
 - Time range is more than 4 hours
 
