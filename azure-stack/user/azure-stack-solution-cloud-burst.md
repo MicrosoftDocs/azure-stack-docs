@@ -23,7 +23,7 @@ ms.lastreviewed: 01/14/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Learn how to create a cross-cloud solution to provide a manually-triggered process for switching from an Azure Stack hosted web app to an Azure hosted web app with auto-scaling via traffic manager. This process ensures flexible and scalable cloud utility when under load.
+Learn how to create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack hosted web app to an Azure hosted web app with auto-scaling via traffic manager. This process ensures flexible and scalable cloud utility when under load.
 
 With this pattern, your tenant may not be ready to run your app in the public cloud. However, it may not be economically feasible for the business to maintain the capacity required in their on-premises environment to handle spikes in demand for the app. Your tenant make use of the elasticity of the public cloud with their on-premises solution.
 
@@ -67,15 +67,15 @@ In this tutorial, you will build a sample environment to:
 
 ## Issues and considerations
 
-### Scalability considerations
+### Scalability
 
-The key component of cross-cloud Scaling is the ability to deliver immediate, on-demand scaling between public and on-premises cloud infrastructure, proving consistent, reliable service as prescribed by the demand.
+The key component of cross-cloud scaling is the ability to deliver immediate and on-demand scaling between public and on-premises cloud infrastructure, providing consistent and reliable service as prescribed by the demand.
 
-### Availability considerations
+### Availability
 
 Ensure locally deployed apps are configured for high-availability through on-premises hardware configuration and software deployment.
 
-### Manageability considerations
+### Manageability
 
 The cross-cloud solution ensures seamless management and familiar interface between environments. PowerShell is recommended for cross-platform management.
 
@@ -85,11 +85,11 @@ The cross-cloud solution ensures seamless management and familiar interface betw
 
 Update the DNS zone file for the domain. Azure AD will verify ownership of the custom domain name. Use [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) for Azure/Office 365/external DNS records within Azure, or add the DNS entry at [a different DNS registrar](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/).
 
-1.  Register a custom domain with a public Registrar.
+1.  Register a custom domain with a public registrar.
 
-2.  Sign in to the domain name registrar for the domain. An approved admin may be required to make DNS updates. 
+2.  Sign in to the domain name registrar for the domain. An approved admin may be required to make DNS updates.
 
-3.  Update the DNS zone file for the domain by adding the DNS entry provided by Azure AD. (The DNS entry will not affect mail routing or web hosting behaviors.) 
+3.  Update the DNS zone file for the domain by adding the DNS entry provided by Azure AD. (The DNS entry won't affect mail routing or web hosting behaviors.)
 
 ### Create a default multi-node web app in Azure Stack
 
