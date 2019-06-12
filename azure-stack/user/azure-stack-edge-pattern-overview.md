@@ -90,15 +90,13 @@ A hybrid application inherently has a placement consideration, such as for the d
 
 Placement is the important task of positioning components so that they can best service a hybrid application. By definition, hybrid applications span locations, such as from on-premises to the cloud and among different clouds. You can place components of the application on clouds in two ways:
 
--   **Vertical hybrid applications**
+-   **Vertical hybrid applications**  
+    Application components are distributed across locations. Each individual component can have multiple instances located only in a single location.
 
-> Application components are distributed across locations. Each individual component can have multiple instances located only in a single location.
-
--   **Horizontal hybrid applications**
-
-> Application components are distributed across locations. Each individual component can have multiple instances spanning multiple locations.
->
-> Some components can be aware of their location while others do not have any knowledge of their location and placement. This virtuousness can be achieved with an abstraction layer. This layer, with a modern application framework like microservices, can define how the application is serviced by the placement of application components operating on nodes across clouds.
+-   **Horizontal hybrid applications**  
+    Application components are distributed across locations. Each individual component can have multiple instances spanning multiple locations.
+    
+    Some components can be aware of their location while others do not have any knowledge of their location and placement. This virtuousness can be achieved with an abstraction layer. This layer, with a modern application framework like microservices, can define how the application is serviced by the placement of application components operating on nodes across clouds.
 
 ### Placement checklist
 
@@ -128,7 +126,7 @@ In hybrid scenarios, scaling out individual components requires additional consi
 
 Some application components can scale out linearly, while others have scaling dependencies and might be limited to what extend they are able to scale. For example, a VPN tunnel providing hybrid connectivity for the application components locations has a limit to the bandwidth and latency it can be scaled to. How are components of the application scaled to ensure these requirements are met?
 
-## Scalability checklist
+### Scalability checklist
 
 **Ascertain scaling thresholds.** To handle the various dependencies in your application, determine the extent to which application components in different clouds can scale independently of each other, while still meeting the requirements to run the application. Hybrid applications often need to scale particular areas in the application to handle a feature as it interacts and affects the rest of the application. For example, exceeding a number of front-end instances may require scaling the back-end.
 
