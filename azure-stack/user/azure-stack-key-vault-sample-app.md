@@ -37,7 +37,7 @@ You can install the following prerequisites from the [Azure Stack Development Ki
 To prepare for the sample application:
 
 * Create a key vault in Azure Stack.
-* Register an application in Azure Active Directory (Azure AD).
+* Register an app in Azure Active Directory (Azure AD).
 
 Use the Azure portal or PowerShell to prepare for the sample app.
 

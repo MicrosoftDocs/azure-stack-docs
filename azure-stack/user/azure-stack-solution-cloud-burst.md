@@ -134,7 +134,7 @@ Azure Repos
 
 ## Use an Azure hosted agent
 
-Using a hosted agent in Azure Pipelines is a convenient option to build and deploy web apps. Maintenance and upgrades are done automatically by Microsoft Azure, enabling continual and uninterrupted development, testing and deployment.
+Using a hosted build agent in Azure Pipelines is a convenient option to build and deploy web apps. Maintenance and upgrades are done automatically by Microsoft Azure, enabling a continuous and uninterrupted development cycle.
 
 ### Manage and configure the CD process
 
@@ -291,7 +291,7 @@ Use [Azure Resource Manager templates](https://azure.microsoft.com/resources/tem
 
 #### Use an Azure hosted build agent
 
-Using a hosted build agent in Azure Pipelines is a convenient option for building and deploying web apps. Agent maintenance and upgrades are automatically performed by Microsoft Azure, which enables a continuous and uninterrupted development cycle.
+Using a hosted build agent in Azure Pipelines is a convenient option to build and deploy web apps. Maintenance and upgrades are done automatically by Microsoft Azure, enabling a continuous and uninterrupted development cycle.
 
 ### Configure the continuous deployment (CD) process
 

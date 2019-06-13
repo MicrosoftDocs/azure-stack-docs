@@ -75,7 +75,7 @@ For each value:
    ```
 
   > [!NOTE]  
-  > If you're an admin trying to access the tenant API then you must make sure to use the tenant endpoint, for example: `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
+  > If you're an admin trying to access the tenant API, make sure to use the tenant endpoint. For example: `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
 
   For example, with the Azure Stack Development Kit as an endpoint:
 
