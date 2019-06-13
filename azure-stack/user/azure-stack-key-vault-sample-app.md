@@ -1,5 +1,5 @@
 ---
-title: Use a sample app that uses Azure Stack Key Vault secrets | Microsoft Docs
+title: Allow apps to access Azure Stack Key Vault secrets | Microsoft Docs
 description: Learn how to run a sample app that retrieves keys and secrets from a key vault in Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -19,7 +19,7 @@ ms.lastreviewed: 04/08/2019
 
 ---
 
-# Use a sample app that uses Azure Stack Key Vault secrets
+# Allow apps to access Azure Stack Key Vault secrets
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
