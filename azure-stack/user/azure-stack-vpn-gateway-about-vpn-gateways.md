@@ -98,7 +98,6 @@ Consider the following when you select the SKU:
 * Azure Stack does not support policy-based gateways.
 * Border Gateway Protocol (BGP) is not supported on the Basic SKU.
 * ExpressRoute-VPN gateway coexisting configurations are not supported in Azure Stack.
-* Active-active S2S VPN gateway connections can be configured on the High Performance SKU only.
 
 ## Estimated aggregate throughput by SKU
 
