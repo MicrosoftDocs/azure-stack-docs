@@ -24,7 +24,7 @@ ms.lastreviewed: 05/31/2019
 The following sections provide Azure Stack storage capacity planning information to assist in planning for the solution's storage needs.
 
 ## Uses and organization of storage capacity
-The hyper-converged configuration of Azure Stack allows for the sharing of physical storage devices. There are three main divisions of the available storage that can be shared: the infrastructure, the temporary storage of the tenant virtual machines, and the storage backing the blobs, tables, and queues of the Azure Consistent Storage (ACS) services.
+The hyperconverged configuration of Azure Stack allows for the sharing of physical storage devices. There are three main divisions of the available storage that can be shared: the infrastructure, the temporary storage of the tenant virtual machines, and the storage backing the blobs, tables, and queues of the Azure Consistent Storage (ACS) services.
 
 ## Storage Spaces Direct cache and capacity tiers
 There is storage capacity used for the operating system, local logging, dumps, and other temporary infrastructure storage needs. This local storage capacity is separate (devices and capacity) from the storage devices brought under management of the Storage Spaces Direct configuration. The remainder of the storage devices is placed in a single pool of storage capacity, regardless of the number of servers in the scale unit.
@@ -42,7 +42,7 @@ In the all flash configuration, the configuration can be either a two-tier or a 
 In the hybrid, two-tier configuration, the cache is a choice among NVMe, SATA, or SAS SSD, and the capacity is HDD. 
 
 A brief summary of the Storage Spaces Direct and Azure Stack storage configuration is as follows:
-- One Storage Spaces pool per scale unit (all storage devices are configured within a single pool).
+- One Storage Spaces Direct pool per scale unit (all storage devices are configured within a single pool).
 - Virtual disks are created as a three copy mirror for best performance and resiliency.
 - Each virtual disk is formatted as an ReFS file system.
 - Virtual disk capacity is calculated and allocated in a way as to leave one capacity device's amount of data capacity unallocated in the pool. This is the equivalent of one capacity drive per server.
@@ -59,7 +59,7 @@ The virtual disks created automatically, and their capacities, are as follows:
 
 <sup>1</sup> Minimum storage capacity required of the Azure Stack solution partner.
 
-<sup>2</sup> The virtual disk size used for tenant virtual machine temporary disks is calculated as a ratio of the physical memory of the server. The temporary disk is a ratio of the physical memory assigned to the virtual machine. The allocation done for "temp disk" storage in Azure Stack captures most use cases, but may not be able to satisfy all temp disk storage needs. The ratio is a trade-off between making temporary storage available, and not consuming a majority of the storage capacity of the solution for temp disk capacity only. One temporary storage disk is created per server in the scale unit. The capacity of the temporary storage doesn't grow beyond 10 percent of the overall available storage capacity in the storage pool of the scale unit. The calculation is something like the following example:
+<sup>2</sup> The virtual disk size used for tenant virtual machine temporary disks is calculated as a ratio of the physical memory of the server. The temporary disk is a ratio of the physical memory assigned to the virtual machine. The allocation done for "temp disk" storage in Azure Stack captures most use cases, but might not be able to satisfy all temp disk storage needs. The ratio is a trade-off between making temporary storage available, and not consuming a majority of the storage capacity of the solution for temp disk capacity only. One temporary storage disk is created per server in the scale unit. The capacity of the temporary storage doesn't grow beyond 10 percent of the overall available storage capacity in the storage pool of the scale unit. The calculation is something like the following example:
 
 ```
   DesiredTempStoragePerServer = PhysicalMemory * 0.65 * 8
@@ -71,7 +71,7 @@ The virtual disks created automatically, and their capacities, are as follows:
       TempVirtualDiskSize = (TotalAvailableCapacity * 0.1) / NumberOfServers
 ```
 
-<sup>3</sup> The virtual disks created for use by ACS are a simple division of the remaining capacity. As noted, all virtual disks are a three-way mirror, and one capacity drive's worth of capacity for each server is unallocated. The various virtual disks previously enumerated are allocated first, and the remaining capacity is then used for the ACS virtual-disks.
+<sup>3</sup> The virtual disks created for use by ACS are a simple division of the remaining capacity. As noted, all virtual disks are a three-way mirror, and one capacity drive's worth of capacity for each server is unallocated. The various virtual disks previously enumerated are allocated first, and the remaining capacity is then used for the ACS virtual disks.
 
 
 ## Next steps
