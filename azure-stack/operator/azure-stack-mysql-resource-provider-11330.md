@@ -3,7 +3,7 @@ title: Azure Stack MySQL resource provider 1.1.30.0 release notes | Microsoft Do
 description: Learn about what's in the latest Azure Stack MySQL resource provider update, including any known issues, and where to download it.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: branla
 manager: femila
 editor: ''
 
@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 06/13/2019
 ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
