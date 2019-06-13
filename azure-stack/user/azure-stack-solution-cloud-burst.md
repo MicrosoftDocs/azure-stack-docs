@@ -230,7 +230,7 @@ Azure Pipelines and Azure DevOps Server provide a highly configurable and manage
 21. Save all changes.
 
 > [!Note]  
-> Some settings for the tasks may have been automatically defined as [environment variables](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts&tabs=batch#custom-variables) when creating a release definition from a template. These settings cannot be modified in the task settings; instead, the parent environment item must be selected to edit these settings
+> Some settings for the tasks may have been automatically defined as [environment variables](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts&tabs=batch#custom-variables) when creating a release definition from a template. These settings can't be modified in the task settings; instead, the parent environment item must be selected to edit these settings.
 
 ## Publish to Azure Stack via Visual Studio
 
@@ -261,9 +261,9 @@ Now that the endpoint information exists, the Azure Pipelines to Azure Stack con
 ## Develop the application build
 
 > [!Note]  
-> Azure Stack with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. Review the App Service documentation "[Before you get started with App Service on Azure Stack](../operator/azure-stack-app-service-before-you-get-started.md)" section for Azure Stack Operator.
+> Azure Stack with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. For more information, review the App Service documentation [Before you get started with App Service on Azure Stack](../operator/azure-stack-app-service-before-you-get-started.md).
 
-Use [Azure Resource Manager templates like web](https://azure.microsoft.com/resources/templates/) app code from Azure Repos to deploy to both clouds.
+Use [Azure Resource Manager templates](https://azure.microsoft.com/resources/templates/) like web app code from Azure Repos to deploy to both clouds.
 
 ### Add code to an Azure Repos project
 
@@ -273,11 +273,11 @@ Use [Azure Resource Manager templates like web](https://azure.microsoft.com/reso
 
 #### Create self-contained web app deployment for App Services in both clouds
 
-1.  Edit the **WebApplication.csproj** file: Select **Runtimeidentifier** and then add win10-x64. For more information, see [Self-contained deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.
+1.  Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and then add `win10-x64`. For more information, see [Self-contained deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.
 
 2.  Use Team Explorer to check the code into Azure Repos.
 
-3.  Confirm that the application code was checked into Azure Repos.
+3.  Confirm that the app code was checked into Azure Repos.
 
 ### Create the build definition
 
@@ -307,7 +307,7 @@ Creating a release definition is the final step in the application build process
 
 3.  On **Select a Template**, choose **Azure App Service Deployment**, and then select **Apply**.
 
-4.  On **Add artifact**, from the **Source (Build definition)** select the Azure Cloud build app.
+4.  On **Add artifact**, from the **Source (Build definition)**, select the Azure Cloud build app.
 
 5.  On the **Pipeline** tab, select the **1 Phase**, **1 Task** link to **View environment tasks**.
 
@@ -352,11 +352,11 @@ Creating a release definition is the final step in the application build process
 
 ## Create a release
 
-1.  On the **Pipeline** tab, open the **Release** list and choose **Create release**.
+1.  On the **Pipeline** tab, open the **Release** list and select **Create release**.
 
-2.  Enter a description for the release, check to see that the correct artifacts are selected, and then choose **Create**. After a few moments, a banner appears indicating that the new release was created, and the release name is displayed as a link. Choose the link to see the release summary page.
+2.  Enter a description for the release, check to see that the correct artifacts are selected, and then select **Create**. After a few moments, a banner appears indicating that the new release was created and the release name is displayed as a link. Select the link to see the release summary page.
 
-3.  The release summary page for shows details about the release. In the following screen capture for "Release-2", the **Environments** section shows the **Deployment status** for the Azure as "IN PROGRESS", and the status for Azure Stack is "SUCCEEDED". When the deployment status for the Azure environment changes to "SUCCEEDED", a banner appears indicating that the release is ready for approval. When a deployment is pending or has failed, a blue **(i)** information icon is shown. Hover over the icon to see a pop-up that contains the reason for delay or failure.
+3.  The release summary page shows details about the release. In the following screen capture for "Release-2", the **Environments** section shows the **Deployment status** for Azure as "IN PROGRESS", and the status for Azure Stack is "SUCCEEDED". When the deployment status for the Azure environment changes to "SUCCEEDED", a banner appears indicating that the release is ready for approval. When a deployment is pending or has failed, a blue **(i)** information icon is shown. Hover over the icon to see a pop-up that contains the reason for delay or failure.
 
 4.  Other views, such as the list of releases, also display an icon that indicates approval is pending. The pop-up for this icon shows the environment name and more details related to the deployment. It's easy for an administrator see the overall progress of releases and see which releases are waiting for approval.
 
@@ -364,7 +364,7 @@ Creating a release definition is the final step in the application build process
 
 1.  On the **Release-2** summary page, select **Logs**. During a deployment, this page shows the live log from the agent. The left pane shows the status of each operation in the deployment for each environment.
 
-2.  Choose a person icon in the **Action** column for a Pre-deployment or Post-deployment approval to see who approved (or rejected) the deployment, and the message they provided.
+2.  Choose a person icon in the **Action** column for a pre-deployment or post-deployment approval to see who approved (or rejected) the deployment, and the message they provided.
 
 3.  After the deployment finishes, the entire log file is displayed in the right pane. Select any **Step** in the left pane to see the log file for a single step, such as **Initialize Job**. The ability to see individual logs makes it easier to trace and debug parts of the overall deployment. **Save** the log file for a step, or **Download all logs as zip**.
 
@@ -372,11 +372,11 @@ Creating a release definition is the final step in the application build process
 
 5.  Select an environment link (**Azure** or **Azure Stack**) to see information about existing and pending deployments to a specific environment. Use these views as a quick way to verify that the same build was deployed to both environments.
 
-6.  Open the **deployed production app** in the browser. For example, for the Azure App Services website, open the URL [https://[your-app-name\].azurewebsites.net](https:// [your-app-name].azurewebsites.net).
+6.  Open the **deployed production app** in a browser. For example, for the Azure App Services website, open the URL `https://[your-app-name\].azurewebsites.net`.
 
 **Integration of Azure and Azure Stack provides a scalable cross-cloud solution**
 
-A flexible and robust multi-cloud service provides data security, back up and redundancy, consistent and rapid availability, scalable storage and distribution, and geo-compliant routing. This manually triggered process ensures reliable and efficient load switching between Hosted Web apps, ensuring immediate availability of crucial data. 
+A flexible and robust multi-cloud service provides data security, back up and redundancy, consistent and rapid availability, scalable storage and distribution, and geo-compliant routing. This manually triggered process ensures reliable and efficient load switching between hosted web apps, ensuring immediate availability of crucial data.
 
 ## Next steps
 - To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns).
