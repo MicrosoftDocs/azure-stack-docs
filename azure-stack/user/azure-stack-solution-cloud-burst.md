@@ -1,5 +1,5 @@
 ---
-title: Create cross-cloud scaling solutions with Azure | Microsoft Docs
+title: Create cross-cloud scaling app solutions with Azure and Azure Stack | Microsoft Docs
 description: Learn how to create cross-cloud scaling solutions with Azure.
 services: azure-stack
 documentationcenter: ''
@@ -19,15 +19,15 @@ ms.lastreviewed: 01/14/2019
 
 ---
 
-# Tutorial: Create cross-cloud scaling solutions with Azure
+# Tutorial: Create cross-cloud scaling app solutions with Azure and Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 Learn how to create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack hosted web app to an Azure hosted web app with auto-scaling via traffic manager. This process ensures flexible and scalable cloud utility when under load.
 
-With this pattern, your tenant may not be ready to run your app in the public cloud. However, it may not be economically feasible for the business to maintain the capacity required in their on-premises environment to handle spikes in demand for the app. Your tenant make use of the elasticity of the public cloud with their on-premises solution.
+With this pattern, your tenant may not be ready to run your app in the public cloud. However, it may not be economically feasible for the business to maintain the capacity required in their on-premises environment to handle spikes in demand for the app. Your tenant can make use of the elasticity of the public cloud with their on-premises solution.
 
-In this tutorial, you will build a sample environment to:
+In this tutorial, you'll build a sample environment to:
 
 > [!div class="checklist"]
 > - Create a multi-node web app.
@@ -69,7 +69,7 @@ In this tutorial, you will build a sample environment to:
 
 ### Scalability
 
-The key component of cross-cloud scaling is the ability to deliver immediate and on-demand scaling between public and on-premises cloud infrastructure, providing consistent and reliable service as prescribed by the demand.
+The key component of cross-cloud scaling is the ability to deliver immediate and on-demand scaling between public and on-premises cloud infrastructure, providing consistent and reliable service.
 
 ### Availability
 
@@ -114,7 +114,7 @@ Azure Repos
 
 ### Create self-contained web app deployment for App Services in both clouds
 
-1.  Edit the **WebApplication.csproj** file. Select **Runtimeidentifier** and add **win10-x64**. (See [Self-contained Deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.) 
+1.  Edit the **WebApplication.csproj** file. Select `Runtimeidentifier` and add `win10-x64`. (See [Self-contained Deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.) 
 
     ![Edit web app project file](media/azure-stack-solution-cloud-burst/image3.png)
 
@@ -126,7 +126,7 @@ Azure Repos
 
 1. Sign in to Azure Pipelines to confirm the ability to create build definitions.
 
-2. Add **-r win10-x64** code. This is necessary to trigger a self-contained deployment with .NET Core.
+2. Add **-r win10-x64** code. This addition is necessary to trigger a self-contained deployment with .NET Core.
 
     ![Add code to the web app](media/azure-stack-solution-cloud-burst/image4.png)
 
@@ -134,7 +134,7 @@ Azure Repos
 
 ## Use an Azure hosted agent
 
-Using a hosted agent in Azure Pipelines is a convenient option to build and deploy web apps. Maintenance and upgrades are automatically performed by Microsoft Azure, enabling continual and uninterrupted development, testing, and deployment.
+Using a hosted agent in Azure Pipelines is a convenient option to build and deploy web apps. Maintenance and upgrades are done automatically by Microsoft Azure, enabling continual and uninterrupted development, testing and deployment.
 
 ### Manage and configure the CD process
 
@@ -158,7 +158,7 @@ Azure Pipelines and Azure DevOps Server provide a highly configurable and manage
 
    ![Set Azure cloud environment values](media/azure-stack-solution-cloud-burst/image8.png)
 
-5. Set the **environment name** and select the **Azure aubscription** for the Azure Cloud endpoint.
+5. Set the **environment name** and select the **Azure subscription** for the Azure Cloud endpoint.
 
       ![Select Azure subscription for Azure Cloud endpoint](media/azure-stack-solution-cloud-burst/image9.png)
 
@@ -174,7 +174,7 @@ Azure Pipelines and Azure DevOps Server provide a highly configurable and manage
   
       ![Select package or folder for Azure App Service environment](media/azure-stack-solution-cloud-burst/image12.png)
 
-      ![Select package or folder for Azure App Service environmen](media/azure-stack-solution-cloud-burst/image13.png)
+      ![Select package or folder for Azure App Service environment](media/azure-stack-solution-cloud-burst/image13.png)
 
 9. Save all changes and go back to **release pipeline**.
 
@@ -209,7 +209,7 @@ Azure Pipelines and Azure DevOps Server provide a highly configurable and manage
     
     ![Select the Azure Stack agent](media/azure-stack-solution-cloud-burst/image21.png)
 
-17. Under the Deploy Azure App Service section select the valid **Package or Folder** for the environment. Select **OK** to folder location.
+17. Under the Deploy Azure App Service section, select the valid **Package or Folder** for the environment. Select **OK** to folder location.
 
     ![Select folder for Azure App Service Deployment](media/azure-stack-solution-cloud-burst/image22.png)
 
@@ -285,7 +285,7 @@ Use [Azure Resource Manager templates](https://azure.microsoft.com/resources/tem
 
 2.  Navigate to the **Build Web Application** page for the project.
 
-3.  In **Arguments**, add **-r win10-x64** code. This is required to trigger a self-contained deployment with .NET Core.
+3.  In **Arguments**, add **-r win10-x64** code. This addition is required to trigger a self-contained deployment with .NET Core.
 
 4.  Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that can run on Azure and Azure Stack.
 
@@ -364,7 +364,7 @@ Creating a release definition is the final step in the application build process
 
 1.  On the **Release-2** summary page, select **Logs**. During a deployment, this page shows the live log from the agent. The left pane shows the status of each operation in the deployment for each environment.
 
-2.  Choose a person icon in the **Action** column for a pre-deployment or post-deployment approval to see who approved (or rejected) the deployment, and the message they provided.
+2.  Select the person icon in the **Action** column for a pre-deployment or post-deployment approval to see who approved (or rejected) the deployment, and the message they provided.
 
 3.  After the deployment finishes, the entire log file is displayed in the right pane. Select any **Step** in the left pane to see the log file for a single step, such as **Initialize Job**. The ability to see individual logs makes it easier to trace and debug parts of the overall deployment. **Save** the log file for a step, or **Download all logs as zip**.
 
@@ -376,7 +376,7 @@ Creating a release definition is the final step in the application build process
 
 **Integration of Azure and Azure Stack provides a scalable cross-cloud solution**
 
-A flexible and robust multi-cloud service provides data security, back up and redundancy, consistent and rapid availability, scalable storage and distribution, and geo-compliant routing. This manually triggered process ensures reliable and efficient load switching between hosted web apps, ensuring immediate availability of crucial data.
+A flexible and robust multi-cloud service provides data security, back up and redundancy, consistent and rapid availability, scalable storage and distribution, and geo-compliant routing. This manually triggered process ensures reliable and efficient load switching between hosted web apps and immediate availability of crucial data.
 
 ## Next steps
 - To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns).
