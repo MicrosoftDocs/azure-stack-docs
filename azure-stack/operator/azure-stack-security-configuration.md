@@ -6,10 +6,10 @@ author: PatAltimore
 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 06/12/2019
+ms.date: 06/14/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.lastreviewed: 06/12/2019
+ms.lastreviewed: 06/14/2019
 # As a service administrator, I want to learn about the security controls applied to Azure Stack, so that I can configure security.
 ---
 
@@ -28,7 +28,7 @@ The Transport Layer Security (TLS) protocol is a widely adopted cryptographic pr
 Since TLS 1.0 and 1.1 are incrementally being deprecated or banned by organizations and compliance standards, beginning with the 1906 update, you can now configure the TLS policy in Azure Stack. You can enforce a TLS 1.2 only policy where any attempt of establishing a TLS session with a version lower than 1.2 is not permitted and rejected.
 
 > [!IMPORTANT]
-> Using a TLS 1.2 only policy is intended for production environments. For non-production environments, allow TLS negotiation for backward compatibility.
+> Using a TLS 1.2 only policy is intended for production environments.
 
 ## Configure the TLS policy in Azure Stack
 
@@ -47,16 +47,21 @@ Get-TLSPolicy
 To set the TLS policy for all Azure Stack endpoints:
 
 ```powershell
-Set-TLSPolicy [-Version <String>]
+Set-TLSPolicy -Version <String>
 ```
 
-The version parameter is required. Use one of the following values to configure the permitted TLS versions for all Azure Stack endpoints:
+Parameters for *Set-TLSPolicy* cmdlet:
 
-| Version value | Description | 
+| Parameter | Description | Type | Required |
+|---------|---------|---------|---------|
+| *Version* | Allowed version(s) of TLS in Azure Stack | String | yes|
+
+Use one of the following values to configure the permitted TLS versions for all Azure Stack endpoints:
+
+| Version value | Description |
 |---------|---------|
 | *TLS_All* | Azure Stack TLS endpoints support TLS 1.2, but down negotiation to TLS 1.1 and TLS 1.0 is allowed. |
 | *TLS_1.2* | Azure Stack TLS endpoints support TLS 1.2 only. | 
-
 
 Updating the TLS policy takes a few minutes to complete.
 
@@ -66,7 +71,7 @@ The following configuration examples and output. The example scripts must be run
 
 ### Enforce TLS 1.2 configuration example
 
-This example shows how to set your TLS policy to enforce TLS 1.2 only.
+This example sets your TLS policy to enforce TLS 1.2 only.
 
 ```powershell
 Set-TLSPolicy -Version TLS_1.2
@@ -74,7 +79,7 @@ Set-TLSPolicy -Version TLS_1.2
 
 Example output:
 
-```
+```powershell
 VERBOSE: Successfully setting enforce TLS 1.2 to True
 VERBOSE: Invoking action plan to update GPOs
 VERBOSE: Create Client for execution of action plan
@@ -93,7 +98,7 @@ VERBOSE: TLS 1.2 is enforced
 
 ### Allow all versions of TLS (1.2, 1.1 and 1.0) configuration example
 
-This example shows how to set your TLS policy to allow all versions of TLS (1.2, 1.1 and 1.0).
+This example sets your TLS policy to allow all versions of TLS (1.2, 1.1 and 1.0).
 
 ```powershell
 Set-TLSPolicy -Version TLS_All
@@ -101,7 +106,7 @@ Set-TLSPolicy -Version TLS_All
 
 Example output:
 
-```
+```powershell
 VERBOSE: Successfully setting enforce TLS 1.2 to False
 VERBOSE: Invoking action plan to update GPOs
 VERBOSE: Create Client for execution of action plan
@@ -116,6 +121,20 @@ VERBOSE:     TLS protocol TLS 1.0 enabled value: 1
 VERBOSE:     TLS protocol TLS 1.1 enabled value: 1
 VERBOSE:     TLS protocol TLS 1.2 enabled value: 1
 VERBOSE: TLS 1.2 is not enforced
+```
+
+### Get TLS policy example
+
+This example gets your TLS policy.
+
+```powershell
+Get-TLSPolicy
+```
+
+Example output:
+
+```powershell
+TLS_1.2
 ```
 
 ## Next steps
