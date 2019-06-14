@@ -115,7 +115,7 @@ The 1905 update installs the following security updates:
 - [CVE-2019-0797](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0797)
 - [CVE-2019-0821](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0821)
 
-Because of the cumulative nature of Windows updates, this update contains also the previous months' security payloads. The list of CVEs above reflects the security payload of March, April and May 2019.
+Because of the cumulative nature of Windows updates, this update contains also the previous months' security payloads. The list of CVEs above reflects the security payload of March, April, and May 2019.
 For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base articles [4499177](https://support.microsoft.com/en-us/help/4499177).
 
 ## 1904 update
