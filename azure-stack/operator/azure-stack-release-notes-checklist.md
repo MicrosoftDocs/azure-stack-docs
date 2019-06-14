@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/14/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 06/06/2019
+ms.lastreviewed: 06/14/2019
 
 ---
 
@@ -34,7 +34,7 @@ This article contains a checklist of update-related activities for Azure Stack o
 | Resolve issues        | Resolve any operational issues identified by **Test-AzureStack**.                |
 | Apply latest hotfixes | Apply the latest hotfixes that apply to the currently installed release.         |
 | Run capacity planner tool | Make sure to use the latest version of the [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) tool to perform your workload planning and sizing. The latest version contains bug fixes and provides new features that are released with each Azure Stack update. |
-| Update available       | In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. Disconnected customers can download and import the new 1905 package using the  [process described here](azure-stack-apply-updates.md).               |
+| Update available       | In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. Disconnected customers can download and import the new 1906 package using the  [process described here](azure-stack-apply-updates.md).               |
 
 ## During Azure Stack update
 
