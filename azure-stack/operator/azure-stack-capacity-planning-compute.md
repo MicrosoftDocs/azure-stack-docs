@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 06/13/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 05/31/2019
+ms.lastreviewed: 06/13/2019
 ---
 
 # Azure Stack compute
@@ -99,19 +99,21 @@ Changing the largest VM on the Azure Stack fabric will result in an increase in 
 
 ## Frequently Asked Questions
 
-Q: My tenant deployed a new VM, how long will it take for the capability chart on the admin portal to show remaining capacity?
-A: The capacity blade refreshes every 15 minutes, so please take that into consideration.
+**Q**: My tenant deployed a new VM, how long will it take for the capability chart on the admin portal to show remaining capacity?
 
-Q: The number of deployed VMs on my Azure Stack has not changed, but my capacity is fluctuating. Why?
-A: The available memory for VM placement has multiple dependencies, one of which is the host OS reserve. This value is dependent on the memory used by the different Hyper-V processes running on the host which is not a constant value.
+**A**: The capacity blade refreshes every 15 minutes, so please take that into consideration.
 
-Q: What state do Tenant VMs have to be in to consume memory?
-A: In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs that are in "Creating", "Failed" or VMs shut down from within the guest as opposed to stop deallocated from portal/powershell/cli will consume memory.
+**Q**: The number of deployed VMs on my Azure Stack has not changed, but my capacity is fluctuating. Why?
 
+**A**: The available memory for VM placement has multiple dependencies, one of which is the host OS reserve. This value is dependent on the memory used by the different Hyper-V processes running on the host which is not a constant value.
 
-Q: I have a 4 host Azure Stack. My tenant has 3 VMs that consume 56 GB RAM (D5_v2) each. One of the VMs is resized to 112 GB RAM (D14_v2), and available memory reporting on dashboard resulted in a spike of 168 GB usage on the capacity blade. Subsequent resizing of the other two D5_v2 VMs to D14_v2, resulted in only 56GB of RAM increase each. Why is this so?
+**Q**: What state do Tenant VMs have to be in to consume memory?
 
-A: The available memory is a function of the resiliency reserve maintained by Azure Stack. The Resiliency reserve is a function of the largest VM size on the Azure Stack stamp. At first, the largest VM on the stamp was 56 GB memory. When the VM was resized, the largest VM on the stamp became 112 GB memory which not only increased the memory used by that tenant VM but also  increased the Resiliency reserve. This resulted in an increase of 56 GB (56 GB to 112 GB tenant VM memory increase) + 112 GB resiliency reserve memory increase. When subsequent VMs were resized, the largest VM size remained as the 112 GB VM and therefore there was no resultant resiliency reserve increase. The increase in memory consumption was only the tenant VM memory increase (56 GB). 
+v: In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs that are in "Creating", "Failed" or VMs shut down from within the g
+
+**Q**: I have a 4 host Azure Stack. My tenant has 3 VMs that consume 56 GB RAM (D5_v2) each. One of the VMs is resized to 112 GB RAM (D14_v2), and available memory reporting on dashboard resulted in a spike of 168 GB usage on the capacity blade. Subsequent resizing of the other two D5_v2 VMs to D14_v2, resulted in only 56GB of RAM increase each. Why is this so?
+
+**A**: The available memory is a function of the resiliency reserve maintained by Azure Stack. The Resiliency reserve is a function of the largest VM size on the Azure Stack stamp. At first, the largest VM on the stamp was 56 GB memory. When the VM was resized, the largest VM on the stamp became 112 GB memory which not only increased the memory used by that tenant VM but also  increased the Resiliency reserve. This resulted in an increase of 56 GB (56 GB to 112 GB tenant VM memory increase) + 112 GB resiliency reserve memory increase. When subsequent VMs were resized, the largest VM size remained as the 112 GB VM and therefore there was no resultant resiliency reserve increase. The increase in memory consumption was only the tenant VM memory increase (56 GB). 
 
 
 > [!NOTE]
