@@ -36,9 +36,11 @@ You'll need to enter a blob service shared access signature (SAS) URL.
 
 ## How to configure a storage account
 
-1. create a Blob container in Azure Storage
-2. provide the SAS Uri as input.
+1. Create a Blob container in Azure Storage
+2. Provide the SAS URL as input
+
+   ![Screenshot of the SAS URL](media/azure-stack-automatic-log-collection/blob-sas-url.png)
 
 
 ...
-An alert is triggered, and after a predefined pause to filter out transient alerts, the logs start to apper in the storage account.
+When an alert is triggered, there is a predefined pause to filter out transient alerts, then logs start to appear in the storage account.
