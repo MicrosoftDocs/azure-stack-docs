@@ -24,7 +24,7 @@ ms.lastreviewed: 01/14/2019
 
 Learn how to direct traffic to specific endpoints based on various metrics using the geo-distributed apps pattern. Creating a Traffic Manager profile with geographic-based routing and endpoint configuration ensures information is routed to endpoints based on regional requirements, corporate and international regulation, and your data needs.
 
-In this tutorial, you will build a sample environment to:
+In this tutorial, you'll build a sample environment to:
 
 > [!div class="checklist"]
 > - Create a Geo-Distributed App.
@@ -32,25 +32,25 @@ In this tutorial, you will build a sample environment to:
 
 ## Use the geo-distributed apps pattern
 
-With the geo-distributed pattern, your app can spans regions. You can default to the public cloud, but some of users may require that their data remain in their region. You can direct users to the most suitable cloud based on their requirements.
+With the geo-distributed pattern, your app spans regions. You can default to the public cloud, but some of your users may require that their data remain in their region. You can direct users to the most suitable cloud based on their requirements.
 
 ### Issues and considerations
 
 #### Scalability considerations
 
-The solution you will build with this tutorial is not to accommodate scalability. However, if used in combination with other Azure and On-Premises technologies and solutions you can accommodate scalability requirements. For information on creating a hybrid solution with auto-scaling via traffic manager, see [Create cross-cloud scaling solutions with Azure](azure-stack-solution-cloud-burst.md).
+The solution you'll build with this tutorial isn't to accommodate scalability. However, if used in combination with other Azure and on-premises solutions, you can accommodate scalability requirements. For information on creating a hybrid solution with auto-scaling via traffic manager, see [Create cross-cloud scaling solutions with Azure](azure-stack-solution-cloud-burst.md).
 
 #### Availability considerations
 
-As is the case with scalability considerations, this solution doesn't directly address availability. However, also similar to our scalability considerations, Azure, and on-premises technologies and solutions can be implemented within this solution to ensure high availability for all components involved.
+As is the case with scalability considerations, this solution doesn't directly address availability. However, Azure and on-premises solutions can be implemented within this solution to ensure high availability for all components involved.
 
 ### When to use this pattern
 
 - Your organization has international branches requiring custom regional security and distribution policies.
 
-- Each of your organizations offices pulls employee, business, and facility data, requiring reporting activity per local regulations and time zone.
+- Each of your organizations offices pulls employee, business, and facility data which requires reporting activity per local regulations and time zones.
 
-- High scale requirements can be met by horizontally scaling out apps, with multiple app deployments being made within a single region, as well as across regions, to handle extreme load requirements.
+- High scale requirements can be met by horizontally scaling out apps with multiple app deployments within a single region, as well as across regions, to handle extreme load requirements.
 
 ### Planning the topology
 
