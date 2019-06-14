@@ -15,7 +15,7 @@
     - name: Checklist for applying updates
       href: azure-stack-release-notes-checklist.md
     - name: Security updates
-      href: azure-stack-release-notes-security-updates-1905.md
+      href: azure-stack-release-notes-security-updates-1906.md
     - name: 1906 update
       items:
       - name: Release notes
