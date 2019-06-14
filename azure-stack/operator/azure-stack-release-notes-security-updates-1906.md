@@ -1,6 +1,6 @@
 ---
-title: Azure Stack release notes - security updates for 1905 | Microsoft Docs
-description: Learn about the 1905 security updates for Azure Stack.
+title: Azure Stack release notes - security updates for 1906 | Microsoft Docs
+description: Learn about the 1906 security updates for Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,15 +13,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 06/14/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 06/05/2019
+ms.lastreviewed: 06/14/2019
 ---
 
 # Azure Stack security updates
 
 This article lists all the security updates in the last four updates of Azure Stack. This information is provided for reference purposes only.
+
+## 1906 update
+
+The 1906 update installs the following security updates:
 
 ## 1905 update
 
@@ -166,4 +170,4 @@ For more information about these vulnerabilities, click on the preceding links, 
 ## Next steps
 
 - [Review update activity checklist](azure-stack-release-notes-checklist.md)
-- [Review list of known issues](azure-stack-release-notes-known-issues-1905.md)
+- [Review list of known issues](azure-stack-release-notes-known-issues-1906.md)

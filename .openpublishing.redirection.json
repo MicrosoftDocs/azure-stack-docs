@@ -77,7 +77,12 @@
     },
     {
       "source_path": "azure-stack/operator/azure-stack-release-notes-security-updates-1904.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-security-updates-1905",
+      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-security-updates-1906",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-release-notes-security-updates-1905.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-security-updates-1906",
       "redirect_document_id": false
     },
     {
