@@ -79,7 +79,7 @@ Set-TLSPolicy -Version TLS_1.2
 
 Example output:
 
-```powershell
+```
 VERBOSE: Successfully setting enforce TLS 1.2 to True
 VERBOSE: Invoking action plan to update GPOs
 VERBOSE: Create Client for execution of action plan
@@ -106,7 +106,7 @@ Set-TLSPolicy -Version TLS_All
 
 Example output:
 
-```powershell
+```
 VERBOSE: Successfully setting enforce TLS 1.2 to False
 VERBOSE: Invoking action plan to update GPOs
 VERBOSE: Create Client for execution of action plan
@@ -133,7 +133,7 @@ Get-TLSPolicy
 
 Example output:
 
-```powershell
+```
 TLS_1.2
 ```
 
