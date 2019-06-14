@@ -1,5 +1,5 @@
 ---
-title: Use the Azure Stack API | Microsoft Docs
+title: Make API requests to Azure Stack | Microsoft Docs
 description: Learn how to retrieve an authentication from Azure to make API requests to Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -20,23 +20,23 @@ ms.lastreviewed: 01/14/2019
 
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
-# Use the Azure Stack API
+# Make API requests to Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can use the Application Programming Interface (API) to automate operations such as adding a VM to your Azure Stack cloud.
+You can use the Application Programming Interface (API) to automate operations such as adding a virtual machine (VM) to your Azure Stack cloud.
 
 The API requires your client to authenticate to the Microsoft Azure sign-in endpoint. The endpoint returns a token to use in the header of every request sent to the Azure Stack API. Microsoft Azure uses Oauth 2.0.
 
-This article provides examples that use the **cURL** utility to create Azure Stack requests. The application, cURL, is a command-line tool with a library for transferring data. These examples walk through the process of retrieving a token to access the Azure Stack API. Most programming languages provide Oauth 2.0 libraries, which have robust token management and handle tasks such refreshing the token.
+This article provides examples that use the **cURL** utility to create Azure Stack requests. cURL is a command-line tool with a library for transferring data. These examples walk through the process of retrieving a token to access the Azure Stack API. Most programming languages provide Oauth 2.0 libraries, which have robust token management and handle tasks such as refreshing the token.
 
-Review the entire process of using the Azure Stack REST API with a generic REST client, such as **cURL**, to help you understand the underlying requests, and shows what you can expect to receive in a response payload.
+Review the entire process of using the Azure Stack REST API with a generic REST client, such as **cURL**, to help you understand the underlying requests and what you can expect in a response payload.
 
 This article doesn't explore all the options available for retrieving tokens such as interactive sign-in or creating dedicated App IDs. To get information about these topics, see [Azure REST API Reference](https://docs.microsoft.com/rest/api/).
 
 ## Get a token from Azure
 
-Create a request body formatted using the content type x-www-form-urlencoded to obtain an access token. POST your request to the Azure REST Authentication and Login endpoint.
+Create a request body formatted using the content type x-www-form-urlencoded to obtain an access token. POST your request to the Azure REST authentication and login endpoint.
 
 ### URI
 
@@ -63,19 +63,19 @@ grant_type=password
 
 For each value:
 
-- **grant_type**  
-   The type of authentication scheme you will using. In this example, the value is `password`
+- **grant_type**:  
+   The type of authentication scheme you'll be using. In this example, the value is `password`.
 
-- **resource**  
-   The resource the token accesses. You can find the resource by querying the Azure Stack management metadata endpoint. Look at the **audiences** section
+- **resource**:  
+   The resource the token accesses. You can find the resource by querying the Azure Stack management metadata endpoint. Look at the **audiences** section.
 
-- **Azure Stack management endpoint**  
+- **Azure Stack management endpoint**:  
    ```
    https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
    ```
 
   > [!NOTE]  
-  > If you are an administrator trying to access the tenant API then you must make sure to use tenant endpoint, for example: `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
+  > If you're an admin trying to access the tenant API, make sure to use the tenant endpoint. For example: `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`  
 
   For example, with the Azure Stack Development Kit as an endpoint:
 
@@ -165,7 +165,7 @@ Response:
 
 ## API queries
 
-Once you get your access token, you need to add it as a header to each of your API requests. In order to do so, you need to create a header **authorization** with value: `Bearer <access token>`. For example:
+Once you get your access token, add it as a header to each of your API requests. To add it as a header, create a header **authorization** with the value: `Bearer <access token>`. For example:
 
 Request:
 
@@ -187,7 +187,7 @@ subscriptionPolicies : @{locationPlacementId=AzureStack}
 
 ### URL structure and query syntax
 
-Generic request URI, consists of: {URI-scheme} :// {URI-host} / {resource-path} ? {query-string}
+Generic request URI, consists of: `{URI-scheme} :// {URI-host} / {resource-path} ? {query-string}`
 
 - **URI scheme**:  
 The URI indicates the protocol used to send the request. For example, `http` or `https`.
