@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/10/2019
+ms.date: 06/14/2019
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 06/12/2019
@@ -35,3 +35,10 @@ You'll need to enter a blob service shared access signature (SAS) URL.
 <!--- any permissions, subscription requirements, or anything similar?--->
 
 ## How to configure a storage account
+
+1. create a Blob container in Azure Storage
+2. provide the SAS Uri as input.
+
+
+...
+An alert is triggered, and after a predefined pause to filter out transient alerts, the logs start to apper in the storage account.

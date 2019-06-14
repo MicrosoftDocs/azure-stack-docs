@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/10/2019
+ms.date: 06/14/2019
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 06/12/2019
@@ -21,9 +21,18 @@ ms.lastreviewed: 06/12/2019
 ---
 # Microsoft Azure Stack automatic log collection
 
-Beginning with the 1906 release, Azure Stack includes an easy way for operators to upload log files for analysis by Customer Support Services. These improvements help streamline the process for troubleshooting problems. 
+The Support Bridge Service resource provider in Azure Stack streamlines the process for troubleshooting problems by helping operators easily upload log files for analysis by Microsoft Customer Support Services (CSS). 
+Support Bridge enables automatic log collection and upload based on alerts. 
+The service is resilient to Storage Spaces Direct and Software Defined Networking (SDN) failures. 
+<!--- can we add how the resiliency helps here?--->
+
+## Workflow
 
 Automatic log collection isn't enabled by default. Before you can enable it, you need to [configure an Azure storage account](azure-stack-storage-account.md) where the logs can be uploaded. 
+
+Create an Azure Storage Container SAS Uri
+Enable automatic log collection using the SAS Uri
+Support Bridge Service triggers collection and uploads logs based on alerts
 
 ## How to collect Azure Stack logs
 
@@ -36,7 +45,9 @@ You can collect diagnostic logs in two different ways:
 
 <!--- any permissions, subscription requirements, or anything similar?--->
 
-## Workflow
+## How to collect Azure Stack logs
+
+### Administration portal
 
 1. Open Help and support Overview.
 2. Click **Enable automatic log collection**.
@@ -44,11 +55,15 @@ You can collect diagnostic logs in two different ways:
 4. Enter the shared access signature (SAS) URL of the storage account.
    ![Enable log collection](media/azure-stack-automatic-log-collection/azure-stack-enable-automatic-log-collection.png)
 
+### PowerShell
+
 ## Limitations
 
 <!--- Need to confirm what Theebs wanted to cover here--->
 
 ## Alerts
+
+<!--- demo says log collection (for all logs) triggers on alerts. See spec for algorithm--->
 
 There are two types of alerts: 
 
@@ -61,6 +76,8 @@ There are two types of alerts:
   ![SAS URL expired](media/azure-stack-automatic-log-collection/alert-url-expired.png)
 
 ## Troubleshooting errors
+
+The next sections cover errors you might see while configuring automatic log collection. 
 
 ### Custom time range errors
 
