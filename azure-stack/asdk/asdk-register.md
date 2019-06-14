@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 06/14/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 01/16/2019
+ms.lastreviewed: 06/14/2019
 
 
 ---
@@ -49,15 +49,7 @@ Follow these steps to register the ASDK with Azure.
 
 1. Open a PowerShell console as an administrator.  
 
-2. On the ASDK host computer, open the file **C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1** in an editor with elevated permissions.
-
-3. On line 1249, add a `-TimeoutInSeconds 1800` parameter at the end. This is required, in order to prevent a service principal timeout when running the registration script. Line 1249 should now appear as follows:
-
-   ```powershell
-   $servicePrincipal = Invoke-Command -Session $PSSession -ScriptBlock { New-AzureBridgeServicePrincipal -RefreshToken $using:RefreshToken -AzureEnvironment $using:AzureEnvironmentName -TenantId $using:TenantId -TimeoutInSeconds 1800 }
-   ```
-
-4. Run the following PowerShell commands to register your ASDK installation with Azure. You will need to sign in to both your Azure billing Subscription ID and the local ASDK installation. If you don't have an Azure billing subscription ID yet, you can [create a free Azure account here](https://azure.microsoft.com/free/?b=17.06). Registering Azure Stack incurs no cost on your Azure subscription.<br><br>Set a unique name for the registration when you run the **Set-AzsRegistration** cmdlet. The **RegistrationName** parameter has a default value of **AzureStackRegistration**. However, if you use the same name on more than one instance of Azure Stack, the script will fail.
+2. Run the following PowerShell commands to register your ASDK installation with Azure. You will need to sign in to both your Azure billing Subscription ID and the local ASDK installation. If you don't have an Azure billing subscription ID yet, you can [create a free Azure account here](https://azure.microsoft.com/free/?b=17.06). Registering Azure Stack incurs no cost on your Azure subscription.<br><br>Set a unique name for the registration when you run the **Set-AzsRegistration** cmdlet. The **RegistrationName** parameter has a default value of **AzureStackRegistration**. However, if you use the same name on more than one instance of Azure Stack, the script will fail.
 
     ```powershell  
     # Add the Azure cloud subscription environment name. 
@@ -85,7 +77,7 @@ Follow these steps to register the ASDK with Azure.
     -UsageReportingEnabled:$true
     ```
 
-5. When the script completes, you should see this message: **Your environment is now registered and activated using the provided parameters.**
+3. When the script completes, you should see this message: **Your environment is now registered and activated using the provided parameters.**
 
     ![Your environment is now registered](media/asdk-register/1.PNG)
 
