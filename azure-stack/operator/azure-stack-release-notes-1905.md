@@ -75,6 +75,21 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 
 - The [Node.js SDK](https://www.npmjs.com/search?q=2019-03-01-hybrid) now supports API profiles. Packages that support the **2019-03-01-Hybrid** profile are published.
 
+- The 1905 Azure Stack update adds two new infrastructure roles to improve platform reliability and supportability.  
+  - **Infrastructure Ring**: In the future the infrastructure ring will host containerized versions of existing infrastructure roles – for example, xrp - that currently require their own designated infrastructure VMs. This will improve platform reliability and reduce the number of infrastructure VMs that Azure Stack requires. This subsequently reduces the overall resource consumption of Azure Stack's infrastructure roles in the future.  
+  - **Support Ring**: In the future the support ring will be used to handle enhanced support scenarios for customers.  
+
+  In addition, we added an extra instance of the domain controller VM for improved availability of this role.  
+
+  These changes will increase the resource consumption of Azure Stack infrastructure in the following ways:
+  
+    | Azure Stack SKU | Increase in Compute Consumption | Increase in Memory Consumption |
+    | -- | -- | -- |
+    |4 Nodes|22 vCPU|28 GB|
+    |8 Nodes|38 vCPU|44 GB|
+    |12 Nodes|54 vCPU|60 GB|
+    |16 Nodes|70 vCPU|76 GB|
+  
 - There is now an Azure Stack extension that works on Visual Studio Code. Using the **Azure Account** extension, developers can target Azure Stack by logging in and viewing subscriptions, as well as a number of other services. The Azure Account extension works on both AAD environments as well as ADFS environments and only requires a small change in the user settings of Visual Studio Code to input Azure Stack metadata values. For more information, [see the documentation here](../user/azure-stack-dev-start-vscode-azure.md).
 
 ### Changes
