@@ -6,10 +6,10 @@ author: PatAltimore
 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 06/17/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.lastreviewed: 06/14/2019
+ms.lastreviewed: 06/17/2019
 # As a service administrator, I want to learn about the security controls applied to Azure Stack, so that I can configure security.
 ---
 
@@ -30,21 +30,31 @@ Since TLS 1.0 and 1.1 are incrementally being deprecated or banned by organizati
 > [!IMPORTANT]
 > Using a TLS 1.2 only policy is intended for production environments.
 
-## Configure the TLS policy in Azure Stack
+## Get TLS policy
 
-To configure the TLS policy, use the [privileged endpoint (PEP)](azure-stack-privileged-endpoint.md). In the PEP, you can get or set the TLS policy.
-
-### Get TLS policy
-
-To view the TLS policy for all Azure Stack endpoints:
+Use the [privileged endpoint (PEP)](azure-stack-privileged-endpoint.md) to view the TLS policy for all Azure Stack endpoints:
 
 ```powershell
 Get-TLSPolicy
 ```
 
-### Set TLS policy
+### Get TLS policy example
 
-To set the TLS policy for all Azure Stack endpoints:
+This example gets your TLS policy.
+
+```powershell
+Get-TLSPolicy
+```
+
+Example output:
+
+```
+TLS_1.2
+```
+
+## Set TLS policy
+
+Use the [privileged endpoint (PEP)](azure-stack-privileged-endpoint.md) to set the TLS policy for all Azure Stack endpoints:
 
 ```powershell
 Set-TLSPolicy -Version <String>
@@ -64,10 +74,6 @@ Use one of the following values to configure the permitted TLS versions for all 
 | *TLS_1.2* | Azure Stack TLS endpoints support TLS 1.2 only. | 
 
 Updating the TLS policy takes a few minutes to complete.
-
-## Configuration examples
-
-The following configuration examples and output. The example scripts must be run on the PEP.
 
 ### Enforce TLS 1.2 configuration example
 
@@ -121,20 +127,6 @@ VERBOSE:     TLS protocol TLS 1.0 enabled value: 1
 VERBOSE:     TLS protocol TLS 1.1 enabled value: 1
 VERBOSE:     TLS protocol TLS 1.2 enabled value: 1
 VERBOSE: TLS 1.2 is not enforced
-```
-
-### Get TLS policy example
-
-This example gets your TLS policy.
-
-```powershell
-Get-TLSPolicy
-```
-
-Example output:
-
-```
-TLS_1.2
 ```
 
 ## Next steps
