@@ -15,8 +15,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: sethm
-ms.reviewer: unknown
-ms.lastreviewed: 01/29/2019
+ms.reviewer: ihcherie
+ms.lastreviewed: 06/14/2019
 
 ---
 # Azure Marketplace items available for Azure Stack
@@ -50,7 +50,7 @@ Microsoft Azure Stack supports the following Azure Marketplace virtual machines 
 
 |  | Item name | Description | Publisher |
 | --- | --- | --- | --- |
-| ![Windows Server](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer) | Enterprise-class solutions that are simple to deploy, cost-effective, application-focused, and user-centric. These images are updated regularly with the latest patches. **Important information: Images downloaded before January 18, 2018 must be deleted and replaced with the latest versions.** | Microsoft |
+| ![Windows Server](media/azure-stack-marketplace-azure-items/windowsserver.png) | [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/MicrosoftWindowsServer.WindowsServer) | Enterprise-class solutions that are simple to deploy, cost-effective, application-focused, and user-centric. These images are updated regularly with the latest patches. **Important information: Images downloaded before January 18, 2018 must be deleted and replaced with the latest versions.** | Microsoft |
 | ![SharePoint Server 2013 Trial](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2013 Trial](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2013Trial) | Microsoft SharePoint Server 2013 Trial on Windows Server 2012 Datacenter and Visual Studio 2019 community edition. | Microsoft |
 | ![SharePoint Server 2016 Trial](media/azure-stack-marketplace-azure-items/sharepoint.png) | [SharePoint Server 2016 Trial](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.SharePointServer2016Trial) | Microsoft SharePoint Server 2016 Trial on Windows Server 2016 Datacenter. | Microsoft |
 | ![SQL Server 2014 SP2 on Windows Server 2012 R2](media/azure-stack-marketplace-azure-items/sql.png) | [SQL Server 2014 SP2 on Windows Server 2012 R2](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftsqlserver.sql2014sp2-ws2012r2) | SQL Server 2014 Service Pack 2. **Required download:** SQL IaaS Extension. | Microsoft |
