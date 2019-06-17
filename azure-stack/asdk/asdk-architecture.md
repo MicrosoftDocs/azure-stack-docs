@@ -42,7 +42,7 @@ The ASDK offers services using the following VMs hosted on the development kit h
 | **AzS-WAS01** | Azure Stack administrative portal and Azure Resource Manager services.|
 | **AzS-WASP01**| Azure Stack user (tenant) portal and Azure Resource Manager services.|
 | **AzS-XRP01** | Infrastructure management controller for Microsoft Azure Stack, including the Compute, Network, and Storage resource providers.|
-| **AzS-SRNG01** | Additional infrastructure role for domain services beginning with the 1905 release. |
+| **AzS-SRNG01** | Infrastructure role for reliability and availability during planned and unplanned maintenance. |
 
 ## Next steps
 [Learn about basic ASDK administration tasks](asdk-admin-basics.md)
