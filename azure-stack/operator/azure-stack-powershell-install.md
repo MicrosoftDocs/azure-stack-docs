@@ -82,7 +82,7 @@ Before installing the required version, make sure that you uninstall any previou
 
 ## 4. Connected: Install PowerShell for Azure Stack with Internet connectivity
 
-The API version profile and Azure Stack PowerShell modules you require will depend on the version of Azure Stack your are running.
+The API version profile and Azure Stack PowerShell modules you require will depend on the version of Azure Stack you are running.
 
 ### Install Azure Stack PowerShell
 
