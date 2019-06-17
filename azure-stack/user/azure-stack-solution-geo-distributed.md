@@ -74,7 +74,7 @@ Before building out a distributed app footprint, it helps to know the following 
 
 ## Part 1: Create a geo-distributed app
 
-In this part, you will create a web app.
+In this part, you'll create a web app.
 
 > [!div class="checklist"]
 > - Create web apps and publish
@@ -92,7 +92,7 @@ An Azure subscription and Azure Stack installation are required.
 
 Update the DNS zone file for the domain. Azure AD can then verify ownership of the custom domain name. Use [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) for Azure/Office 365/external DNS records within Azure, or add the DNS entry at [a different DNS registrar](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/).
 
-1. Register a custom domain with a public Registrar.
+1. Register a custom domain with a public registrar.
 
 2. Sign in to the domain name registrar for the domain. An approved admin may be required to make the DNS updates.
 
@@ -100,28 +100,28 @@ Update the DNS zone file for the domain. Azure AD can then verify ownership of t
 
 ### Create web apps and publish
 
-Set up hybrid CI/CD to deploy Web App to Azure and Azure Stack, and auto push changes to both clouds.
+Set up Hybrid Continuous Integration/Continuous Delivery (CI/CD) to deploy Web App to Azure and Azure Stack, and auto push changes to both clouds.
 
 > [!Note]  
-> Azure Stack with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. Review the App Service documentation [Before you get started with App Service on Azure Stack](../operator/azure-stack-app-service-before-you-get-started.md) section for Azure Stack Operator.
+> Azure Stack with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. For more information, see [Before you get started with App Service on Azure Stack](../operator/azure-stack-app-service-before-you-get-started.md) in the Azure Stack Operator documentation.
 
 #### Add Code to Azure Repos
 
 1. Sign in to Visual Studio with an **account that has project creation rights** on Azure Repos.
 
-    Hybrid Continuous Integration/Continuous Delivery (CI/CD) can apply to both application code and infrastructure code. Use [Azure Resource Manager templates](https://azure.microsoft.com/resources/templates/) for both private and hosted cloud development.
+    CI/CD can apply to both app code and infrastructure code. Use [Azure Resource Manager templates](https://azure.microsoft.com/resources/templates/) for both private and hosted cloud development.
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image1.JPG)
+    ![Connect to a project in Visual Studio](media/azure-stack-solution-geo-distributed/image1.JPG)
 
 2. **Clone the repository** by creating and opening the default web app.
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image2.png)
+    ![Clone repository in Visual Studio](media/azure-stack-solution-geo-distributed/image2.png)
 
 ### Create web app deployment in both clouds
 
-1.  Edit the **WebApplication.csproj** file: Select **Runtimeidentifier** and add **win10-x64**. (See [Self-contained Deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.)
+1.  Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and add `win10-x64`. (See [Self-contained Deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.)
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image3.png)
+    ![Edit web application project file in Visual Studio](media/azure-stack-solution-geo-distributed/image3.png)
 
 1.  **Check in the code to Azure Repos** using Team Explorer.
 
@@ -129,113 +129,113 @@ Set up hybrid CI/CD to deploy Web App to Azure and Azure Stack, and auto push ch
 
 ### Create the build definition
 
-1. **Log into Azure Pipelines** to confirm ability to create build definitions.
+1. **Log in to Azure Pipelines** to confirm ability to create build definitions.
 
-2. Add **-r win10-x64** code. This is necessary to trigger a self-contained deployment with .NET Core.
+2. Add `-r win10-x64` code. This is necessary to trigger a self-contained deployment with .NET Core.
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image4.png)
+    ![Add code to the build definition](media/azure-stack-solution-geo-distributed/image4.png)
 
 3. **Run the build**. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that can run on Azure and Azure Stack.
 
 **Using an Azure Hosted Agent**
 
-Using a hosted agent in Azure Pipelines is a convenient option to build and deploy web apps. Maintenance and upgrades are automatically performed by Microsoft Azure, enabling continual, uninterrupted development, testing, and deployment.
+Using a hosted agent in Azure Pipelines is a convenient option to build and deploy web apps. Maintenance and upgrades are automatically performed by Microsoft Azure which enables uninterrupted development, testing, and deployment.
 
 ### Manage and configure the CD process
 
 Azure DevOps and Azure DevOps Server provide a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, QA, and production environments; including requiring approvals at specific stages.
 
-#### Create release definition
+## Create release definition
 
+1.  Select the **plus** button to add a new release under the **Releases** tab in the **Build and Release** section of VSO.
 
-![Alt text](media/azure-stack-solution-geo-distributed/image5.png)
+    ![Create a release definition](media/azure-stack-solution-geo-distributed/image5.png)
 
-1. Select the **plus** button to add a new Release under the **Releases tab** in the Build and Release page of Visual Studio Online (VSO).
+2. Apply the Azure App Service Deployment template.
 
-   ![Alt text](media/azure-stack-solution-geo-distributed/image6.png)
+   ![Apply Azure App Service Deployment template](meDia/azure-stack-solution-geo-distributed/image6.png)
 
-2. Apply the **Azure App Service Deployment** template.
+3. Under **Add artifact**, add the artifact for the Azure Cloud build app.
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image7.png)
+   ![Add artifact to Azure Cloud build](media/azure-stack-solution-geo-distributed/image7.png)
 
-3. Under Add artifact pull-down menu, **add the artifact** for the Azure Cloud build app.
+4. Under Pipeline tab, select the **Phase, Task** link of the environment and set the Azure cloud environment values.
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image8.png)
+   ![Set Azure cloud environment values](media/azure-stack-solution-geo-distributed/image8.png)
 
-4. Under Pipeline tab, Select the **Phase, Task** link of the environment and set the Azure cloud environment values.
+5. Set the **environment name** and select the **Azure subscription** for the Azure Cloud endpoint.
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image9.png)
+      ![Select Azure subscription for Azure Cloud endpoint](media/azure-stack-solution-geo-distributed/image9.png)
 
-5. Set the **environment name** and select Azure **Subscription** for the Azure Cloud endpoint.
+6. Under **App service name**, set the required Azure app service name.
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image10.png)
+      ![Set Azure app service name](media/azure-stack-solution-geo-distributed/image10.png)
 
-6. Under Environment name, set the required **Azure app service name**.
+7. Enter "Hosted VS2017" under **Agent queue** for Azure cloud hosted environment.
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image11.png)
+      ![Set Agent queue for Azure cloud hosted environment](media/azure-stack-solution-geo-distributed/image11.png)
 
-7. Enter **Hosted VS2017** under Agent queue for Azure cloud hosted environment.
+8. In Deploy Azure App Service menu, select the valid **Package or Folder** for the environment. Select **OK** to **folder location**.
+  
+      ![Select package or folder for Azure App Service environment](media/azure-stack-solution-geo-distributed/image12.png)
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image12.png)
-
-8. In Deploy Azure App Service menu, select the valid **Package or Folder** for the environment. Select OK to **folder location**.
-
-    ![Alt text](media/azure-stack-solution-geo-distributed/image13.png)
-
-    ![Alt text](media/azure-stack-solution-geo-distributed/image14.png)
+      ![Select package or folder for Azure App Service environment](media/azure-stack-solution-geo-distributed/image13.png)
 
 9. Save all changes and go back to **release pipeline**.
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image15.png)
+    ![Save changes in release pipeline](media/azure-stack-solution-geo-distributed/image14.png)
 
-10. Add a **new artifact** selecting the build for the Azure Stack app.
+10. Add a new artifact selecting the build for the Azure Stack app.
+    
+    ![Add new artifact for Azure Stack app](media/azure-stack-solution-geo-distributed/image15.png)
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image16.png)
 
-11. Add one more environment applying the **Azure App Service Deployment.**
+11. Add one more environment by applying the Azure App Service Deployment.
+    
+    ![Add environment to Azure App Service Deployment](media/azure-stack-solution-geo-distributedimage16.png)
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image17.png)
-
-12. Name the new environment **Azure Stack.**
-
-    ![Alt text](media/azure-stack-solution-geo-distributed/image18.png)
+12. Name the new environment Azure Stack.
+    
+    ![Name environment in Azure App Service Deployment](media/azure-stack-solution-geo-distributed/image17.png)
 
 13. Find the Azure Stack environment under **Task** tab.
+    
+    ![Azure Stack environment](media/azure-stack-solution-geo-distributed/image18.png)
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image19.png)
+14. Select the subscription for the Azure Stack endpoint.
+    
+    ![Select the subscription for the Azure Stack endpoint](media/azure-stack-solution-geo-distributedimage19.png)
 
-14. Select the **subscription** for the Azure Stack endpoint.
+15. Set the Azure Stack web app name as the App service name.
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image20.png)
+    ![Set Azure Stack web app name](media/azure-stack-solution-geo-distributed/image20.png)
 
-15. Set the Azure Stack web app name as the **App service name**.
+16. Select the Azure Stack agent.
+    
+    ![Select the Azure Stack agent](media/azure-stack-solution-geo-distributed/image21.png)
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image21.png)
+17. Under the Deploy Azure App Service section, select the valid **Package or Folder** for the environment. Select **OK** to folder location.
 
-16. Select the **Azure Stack agent**.
+    ![Select folder for Azure App Service Deployment](media/azure-stack-solution-geo-distributed/image22.png)
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image22.png)
+    ![Select folder for Azure App Service Deployment](media/azure-stack-solution-geo-distributed/image23.png)
 
-17. Under the Deploy Azure App Service section select the valid **Package or Folder** for the environment. Select OK to **folder location**.
-
-    ![Alt text](media/azure-stack-solution-geo-distributed/image23.png)
-
-    ![Alt text](media/azure-stack-solution-geo-distributed/image24.png)
-
-18. Under **Variable** tab add a variable named `VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS`, set its value as `true`, and scope to `Azure Stack`.
-
-    ![Alt text](media/azure-stack-solution-geo-distributed/image25.png)
+18. Under Variable tab add a variable named `VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS`, set its value as **true**, and scope to Azure Stack.
+    
+    ![Add variable to Azure App Deployment](media/azure-stack-solution-geo-distributed/image24.png)
 
 19. Select the **Continuous** deployment trigger icon in both artifacts and enable the **Continues** deployment trigger.
-
-    ![Alt text](media/azure-stack-solution-geo-distributed/image26.png)
+    
+    ![Select continuous deployment trigger](media/azure-stack-solution-geo-distributed/image25.png)
 
 20. Select the **Pre-deployment** conditions icon in the Azure Stack environment and set the trigger to **After release.**
+    
+    ![Select pre-deployment conditions](media/azure-stack-solution-geo-distributed/image26.png)
 
 21. Save all changes.
 
 > [!Note]  
->  Some settings for the tasks may have been automatically defined as [environment variables](https://docs.microsoft.com/vsts/build-release/concepts/definitions/release/variables?view=vsts#custom-variables) when you created a release definition from a template. These settings cannot be modified in the task settings; instead you must select the parent environment item to edit these settings.
+> Some settings for the tasks may have been automatically defined as [environment variables](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts&tabs=batch#custom-variables) when creating a release definition from a template. These settings can't be modified in the task settings; instead, the parent environment item must be selected to edit these settings.
 
 ## Part 2: Update web app options
 
