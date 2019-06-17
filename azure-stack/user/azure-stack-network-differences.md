@@ -5,7 +5,7 @@ services: azure-stack
 keywords: 
 author: mattbriggs
 manager: femila
-ms.date: 06/04/2019
+ms.date: 06/17/2019
 ms.topic: article
 ms.service: azure-stack
 ms.author: mabrigg
@@ -31,6 +31,7 @@ This article provides an overview of the unique considerations for Azure Stack n
 |  | DNS zones per subscription | 100 (default)<br>Can be increased on request. | 100 |
 |  | DNS record sets per zone | 5000 (default)<br>Can be increased on request. | 5000 |
 |  | Name servers for zone delegation | Azure provides four name servers for each user (tenant) zone that is created. | Azure Stack provides two name servers for each user (tenant) zone that is created. |
+| Azure Firewall | Network security service | Azure Firewall is a managed, cloud-based network security service that protects your Azure Virtual Network resources. | Not yet supported. |
 | Virtual Network | Virtual network peering | Connect two virtual networks in the same region through the Azure backbone network. | Not yet supported |
 |  | IPv6 addresses | You can assign an IPv6 address as part of the [Network Interface Configuration](https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface-addresses#ip-address-versions). | Only IPv4 is supported. |
 |  | DDoS Protection Plan | Supported | Not yet supported. |
