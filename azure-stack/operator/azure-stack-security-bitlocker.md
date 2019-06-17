@@ -3,10 +3,10 @@ title: Data at Rest Encryption in Azure Stack
 description: Learn how to Azure Stack protects your data with encryption at rest
 services: azure-stack
 author: PatAltimore
-manager: femila
+
 ms.service: azure-stack
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 06/17/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
@@ -41,7 +41,6 @@ Optional parameters for *Get-AzsRecoveryKeys* cmdlet:
 | Parameter | Description | Type | Required |
 |---------|---------|---------|---------|
 |*raw* | returns raw data of mapping between recovery key, computer name, and password id(s) of each encrypted volume  | switch | no (Designed for support scenarios)|
-
 
 ## Troubleshoot issues
 
