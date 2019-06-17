@@ -130,10 +130,10 @@ In Unix based systems, you can use the following command:
 The Azure_sdk rollup gem has the following three profiles:
 
 1. **V2019_03_01_Hybrid**
-  Profile built for Azure Stack. Use this profile for utilizing all the latest versions of services available in Azure Stack.
-2. **V2017_03_09**  
-  Profile built for Azure Stack. Use this profile for services to be most compatible with the Azure Stack.
-3. **Latest**  
+  Profile built for Azure Stack. Use this profile for utilizing all the latest versions of services available in Azure Stack stamp version 1904 or later.
+1. **V2017_03_09**  
+  Profile built for Azure Stack. Use this profile for services to be most compatible with the Azure Stack stamp version 1808 or earlier.
+1. **Latest**  
   Profile consists of latest versions of all services. Use the latest versions of all the services.
 
 For more information about Azure Stack and API profiles, see the [Summary of API profiles](azure-stack-version-profiles.md#summary-of-api-profiles).
