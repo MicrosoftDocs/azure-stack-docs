@@ -96,7 +96,7 @@ If you deployed Azure Stack using AD FS as the identity store, you can use Power
 * Assign service principal to a role.
 * Sign in using the service principal's identity.
 
-For details on how to create the service principal, see [Create service principal for AD FS](../operator/azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
+For details on how to create the service principal, see [Manage an AD FS service principal](../operator/azure-stack-create-service-principals.md#manage-an-ad-fs-service-principal).
 
 ## Assign the service principal to a role
 
