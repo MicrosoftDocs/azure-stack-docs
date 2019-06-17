@@ -15,13 +15,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: sethm
-<<<<<<< HEAD:azure-stack/operator/azure-stack-release-notes-security-updates-1906.md
-ms.reviewer: ''
-ms.lastreviewed: 06/14/2019
-=======
 ms.reviewer: hectorl
 ms.lastreviewed: 06/05/2019
->>>>>>> a39eaba046f7a9a308a413393d39047be2e8278e:azure-stack/operator/azure-stack-release-notes-security-updates-1905.md
 ---
 
 # Azure Stack security updates
