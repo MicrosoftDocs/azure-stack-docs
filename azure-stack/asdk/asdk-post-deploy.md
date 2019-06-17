@@ -145,28 +145,6 @@ The tests take a few minutes to complete. If the installation was successful, th
 
 If there was a failure, follow the troubleshooting steps to get help.
 
-## Reset the password expiration policy
-
-To make sure that the password for the development kit host doesn't expire before your evaluation period ends, follow these steps after you deploy the ASDK.
-
-### To change the password expiration policy from Powershell
-
-From an elevated Powershell console, run the command:
-
-```powershell
-Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurestack.local
-```
-
-### To change the password expiration policy manually
-
-1. On the development kit host, open **Group Policy Management** (GPMC.MMC) and navigate to **Group Policy Management** - **Forest: azurestack.local** - **Domains** - **azurestack.local**.
-2. Right-click **Default Domain Policy** and click **Edit**.
-3. In the Group Policy Management Editor, navigate to **Computer Configuration** - **Policies** - **Windows Settings** - **Security Settings** - **Account Policies** - **Password Policy**.
-4. In the right pane, double-click **Maximum password age**.
-5. In the **Maximum password age Properties** dialog box, change the **Password will expire in** value to **180**, and then click **OK**.
-
-![Group policy management console](media/asdk-post-deploy/gpmc.png)
-
 ## Enable multi-tenancy
 
 For deployments using Azure AD, you need to [enable multi-tenancy](../operator/azure-stack-enable-multitenancy.md#enable-multi-tenancy) for your ASDK installation.

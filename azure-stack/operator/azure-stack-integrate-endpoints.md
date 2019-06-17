@@ -30,7 +30,10 @@ Internal infrastructure VIPs aren't listed because they're not required for publ
 > [!Note]  
 > User VIPs are dynamic, defined by the users themselves with no control by the Azure Stack operator.
 
-> [!Note]
+> [!Note]  
+> IKEv2 VPN. IKEv2 VPN is a standards-based IPsec VPN solution that uses UDP port 500 and 4500 and IP protocol no. 50. Firewalls do not always open these ports, so there is a possibility of IKEv2 VPN not being able to traverse proxies and firewalls.
+
+> [!Note]  
 > As of the 1811 update, ports in the range of 12495-30015 are no longer required to be open due to the addition of the [Extension Host](azure-stack-extension-host-prepare.md).
 
 |Endpoint (VIP)|DNS host A record|Protocol|Ports|
@@ -84,8 +87,9 @@ Azure Stack supports only transparent proxy servers. In a deployment where a tra
 |AD FS|AD FS metadata endpoint provided for AD FS integration|TCP|443|Public VIP - /27|
 |     |     |     |     |     |
 
-> [!Note]  
-> Outbound URLs are load balanced using Azure traffic manager to provide the best possible connectivity based on geographical location. With load balanced URLs, Microsoft can update and change backend endpoints without impacting customers. Microsoft does not share the list of IP addresses for the load balanced URLs. You should use a device that supports filtering by URL rather than by IP.
+Outbound URLs are load balanced using Azure traffic manager to provide the best possible connectivity based on geographical location. With load balanced URLs, Microsoft can update and change backend endpoints without impacting customers. Microsoft does not share the list of IP addresses for the load balanced URLs. You should use a device that supports filtering by URL rather than by IP.
+
+Outbound DNS is required at all times, what varies is the source querying the external DNS and what sort of identity integration was chosen. If this is a connected scenario, during deployment the DVM which sits on the BMC network, needs that outbound access but after deployment the DNS service moves to an internal component that will send queries through a Public VIP. At that time, the outbound DNS access through BMC network can be removed but the Public VIP access to that DNS server must remain or else authentication will fail.
 
 ## Next steps
 

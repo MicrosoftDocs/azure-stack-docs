@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/08/2018
+ms.date: 06/11/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
@@ -24,7 +24,7 @@ ms.lastreviewed: 12/27/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can use the template validation tool to check whether your Azure Resource Manager [templates](azure-stack-arm-templates.md) are ready for deploying to Azure Stack. The template validation tool is available as a part of the Azure Stack tools. Download the Azure Stack tools by using the steps described in the [download tools from GitHub](../operator/azure-stack-powershell-download.md) article.
+You can use the template validation tool to check whether your Azure Resource Manager [templates](azure-stack-arm-templates.md) are ready to deploy to Azure Stack. The template validation tool is available as a part of the Azure Stack tools. Download the Azure Stack tools by using the steps described in [Download tools from GitHub](../operator/azure-stack-powershell-download.md).
 
 ## Overview
 
@@ -47,7 +47,7 @@ Before you use the template validator, run the **AzureRM.CloudCapabilities** Pow
     Import-Module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
     ```
 
-3. Use the `Get-CloudCapabilities` cmdlet to retrieve service versions and create a cloud capabilities JSON file. If you don't specify **-OutputPath**, the file AzureCloudCapabilities.Json is created in the current directory. Use your actual Azure location:
+3. Use the `Get-CloudCapabilities` cmdlet to retrieve service versions and create a cloud capabilities JSON file. If you don't specify `-OutputPath`, the file AzureCloudCapabilities.Json is created in the current directory. Use your actual Azure location:
 
     ```powershell
     Get-AzureRMCloudCapability -Location <your location> -Verbose
@@ -78,17 +78,17 @@ Template validation warnings or errors are displayed in the PowerShell console a
 
 ### Parameters
 
-The template validator supports the following parameters.
+The template validator cmdlet supports the following parameters.
 
 | Parameter | Description | Required |
 | ----- | -----| ----- |
-| TemplatePath | Specifies the path to recursively find Azure Resource Manager templates. | Yes |
-| TemplatePattern | Specifies the name of template files to match. | No |
-| CapabilitiesPath | Specifies the path to cloud capabilities JSON file. | Yes |
-| IncludeComputeCapabilities | Includes evaluation of IaaS resources, such as VM sizes and VM extensions. | No |
-| IncludeStorageCapabilities | Includes evaluation of storage resources, such as SKU types. | No |
-| Report | Specifies the name of the generated HTML report. | No |
-| Verbose | Logs errors and warnings to the console. | No|
+| `TemplatePath` | Specifies the path to recursively find Azure Resource Manager templates. | Yes |
+| `TemplatePattern` | Specifies the name of template files to match. | No |
+| `CapabilitiesPath` | Specifies the path to the cloud capabilities JSON file. | Yes |
+| `IncludeComputeCapabilities` | Includes evaluation of IaaS resources, such as VM sizes and VM extensions. | No |
+| `IncludeStorageCapabilities` | Includes evaluation of storage resources, such as SKU types. | No |
+| `Report` | Specifies the name of the generated HTML report. | No |
+| `Verbose` | Logs errors and warnings to the console. | No|
 
 ### Examples
 

@@ -171,7 +171,7 @@ The virtual network gateway in the Azure side of the hybrid network must allow p
 
 ### Integrate the Azure App Service application with the hybrid network
 
-1. To connect the application to the Azure VNet, follow the instructions in [Enabling VNet Integration](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#enabling-vnet-integration).
+1. To connect the application to the Azure VNet, follow the instructions in [Gateway required VNet integration](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#gateway-required-vnet-integration).
 
 2. Navigate to **Settings** for the App Service plan hosting the web application. In **Settings**, select **Networking**.
 
