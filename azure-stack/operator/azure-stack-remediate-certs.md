@@ -1,5 +1,5 @@
 ---
-title:    Remediate certificate issues for Azure Stack | Microsoft Docs
+title: Remediate certificate issues for Azure Stack | Microsoft Docs
 description: Use the Azure Stack Readiness Checker to review and remediate certificate issues.
 services: azure-stack
 documentationcenter: ''
