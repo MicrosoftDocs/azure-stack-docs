@@ -67,7 +67,7 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 
 - When multiple Azure Active Directories are onboarded (through [this process](azure-stack-enable-multitenancy.md)), it is possible to neglect rerunning the script when certain updates occur, or when changes to the AAD Service Principal authorization cause rights to be missing. This can cause various issues, from blocked access for certain features, to more discrete failures which are hard to trace back to the original issue. To prevent this, 1905 introduces a new feature that checks for these permissions and creates an alert when certain configuration issues are found. This validation runs every hour, and displays the remediation actions required to fix the issue. The alert closes once all the tenants are in a healthy state.
 
-- Improved reliability of infrastructure backup operations during service failover. 
+- Improved reliability of infrastructure backup operations during service failover.
 
 - A new version of the [Azure Stack Nagios plugin](azure-stack-integrate-monitor.md#integrate-with-nagios) is available that uses the [Azure Active Directory authentication libraries](/azure/active-directory/develop/active-directory-authentication-libraries) (ADAL) for authentication. The plugin now also supports Azure Active Directory (AAD) and Active Directory Federation Services (ADFS) deployments of Azure Stack. For more information, see the [Nagios plugin exchange](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details) site.
 
@@ -75,6 +75,22 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 
 - The [Node.js SDK](https://www.npmjs.com/search?q=2019-03-01-hybrid) now supports API profiles. Packages that support the **2019-03-01-Hybrid** profile are published.
 
+- The 1905 Azure Stack update adds two new infrastructure roles to improve platform reliability and supportability:
+
+  - **Infrastructure ring**: In the future, the infrastructure ring will host containerized versions of existing infrastructure roles – for example, xrp - that currently require their own designated infrastructure VMs. This will improve platform reliability and reduce the number of infrastructure VMs that Azure Stack requires. This subsequently reduces the overall resource consumption of Azure Stack's infrastructure roles in the future.
+  - **Support ring**: In the future, the support ring will be used to handle enhanced support scenarios for customers.  
+
+  In addition, we added an extra instance of the domain controller VM for improved availability of this role.
+
+  These changes will increase the resource consumption of Azure Stack infrastructure in the following ways:
+  
+    | Azure Stack SKU | Increase in Compute Consumption | Increase in Memory Consumption |
+    | -- | -- | -- |
+    |4 Nodes|22 vCPU|28 GB|
+    |8 Nodes|38 vCPU|44 GB|
+    |12 Nodes|54 vCPU|60 GB|
+    |16 Nodes|70 vCPU|76 GB|
+  
 - There is now an Azure Stack extension that works on Visual Studio Code. Using the **Azure Account** extension, developers can target Azure Stack by logging in and viewing subscriptions, as well as a number of other services. The Azure Account extension works on both AAD environments as well as ADFS environments and only requires a small change in the user settings of Visual Studio Code to input Azure Stack metadata values. For more information, [see the documentation here](../user/azure-stack-dev-start-vscode-azure.md).
 
 ### Changes

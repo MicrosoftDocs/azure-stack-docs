@@ -72,8 +72,6 @@ The Azure Stack 1904 update build type is **Express**. For more information abou
 <!-- this applies to bug 3725384 and bug #4225643 -->
 - Improved syslog message volume by filtering out unnecessary events and providing a configuration parameter to select desired severity level for forwarded messages. For more information about how to configure the severity level, see [Azure Stack datacenter integration - syslog forwarding](azure-stack-integrate-security.md).
 
-- The Azure Stack Infrastructure consumes an additional 12 GB + (4 GB * Number of Azure Stack hosts) from the 1904 update onwards. This means that in a 4 node stamp there will be an additional capacity consumption of 28 GB (12 GB + 4 GB * 4) reflected in the capacity screen of the Azure Stack administrator portal. Your update to the 1904 release should succeed even if the additional memory consumption puts your Azure Stack stamp over capacity. If your Azure Stack stamp is over memory usage AFTER the update is completed, you will see an alert reflecting this state, with remediation steps to de-allocate some VMs.
-
 <!--this applied to Bug 1473487 -->
 - Added a new capability to the **Get-AzureStackLog** cmdlet by incorporating an additional parameter, `-OutputSASUri`. You can now collect Azure Stack logs from your environment and store them in the specified Azure Storage blob container. For more information, see [Azure Stack diagnostics](azure-stack-diagnostics.md#examples).
 
