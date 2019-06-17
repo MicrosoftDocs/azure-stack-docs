@@ -48,9 +48,7 @@ Get-TLSPolicy
 
 Example output:
 
-```
-TLS_1.2
-```
+    TLS_1.2
 
 ## Set TLS policy
 
@@ -85,22 +83,20 @@ Set-TLSPolicy -Version TLS_1.2
 
 Example output:
 
-```
-VERBOSE: Successfully setting enforce TLS 1.2 to True
-VERBOSE: Invoking action plan to update GPOs
-VERBOSE: Create Client for execution of action plan
-VERBOSE: Start action plan
-<...>
-VERBOSE: Verifying TLS policy
-VERBOSE: Get GPO TLS protocols registry 'enabled' values
-VERBOSE: GPO TLS applied with the following preferences:
-VERBOSE:     TLS protocol SSL 2.0 enabled value: 0
-VERBOSE:     TLS protocol SSL 3.0 enabled value: 0
-VERBOSE:     TLS protocol TLS 1.0 enabled value: 0
-VERBOSE:     TLS protocol TLS 1.1 enabled value: 0
-VERBOSE:     TLS protocol TLS 1.2 enabled value: 1
-VERBOSE: TLS 1.2 is enforced
-```
+    VERBOSE: Successfully setting enforce TLS 1.2 to True
+    VERBOSE: Invoking action plan to update GPOs
+    VERBOSE: Create Client for execution of action plan
+    VERBOSE: Start action plan
+    <...>
+    VERBOSE: Verifying TLS policy
+    VERBOSE: Get GPO TLS protocols registry 'enabled' values
+    VERBOSE: GPO TLS applied with the following preferences:
+    VERBOSE:     TLS protocol SSL 2.0 enabled value: 0
+    VERBOSE:     TLS protocol SSL 3.0 enabled value: 0
+    VERBOSE:     TLS protocol TLS 1.0 enabled value: 0
+    VERBOSE:     TLS protocol TLS 1.1 enabled value: 0
+    VERBOSE:     TLS protocol TLS 1.2 enabled value: 1
+    VERBOSE: TLS 1.2 is enforced
 
 ### Allow all versions of TLS (1.2, 1.1 and 1.0) configuration example
 
@@ -112,22 +108,20 @@ Set-TLSPolicy -Version TLS_All
 
 Example output:
 
-```
-VERBOSE: Successfully setting enforce TLS 1.2 to False
-VERBOSE: Invoking action plan to update GPOs
-VERBOSE: Create Client for execution of action plan
-VERBOSE: Start action plan
-<...>
-VERBOSE: Verifying TLS policy
-VERBOSE: Get GPO TLS protocols registry 'enabled' values
-VERBOSE: GPO TLS applied with the following preferences:
-VERBOSE:     TLS protocol SSL 2.0 enabled value: 0
-VERBOSE:     TLS protocol SSL 3.0 enabled value: 0
-VERBOSE:     TLS protocol TLS 1.0 enabled value: 1
-VERBOSE:     TLS protocol TLS 1.1 enabled value: 1
-VERBOSE:     TLS protocol TLS 1.2 enabled value: 1
-VERBOSE: TLS 1.2 is not enforced
-```
+    VERBOSE: Successfully setting enforce TLS 1.2 to False
+    VERBOSE: Invoking action plan to update GPOs
+    VERBOSE: Create Client for execution of action plan
+    VERBOSE: Start action plan
+    <...>
+    VERBOSE: Verifying TLS policy
+    VERBOSE: Get GPO TLS protocols registry 'enabled' values
+    VERBOSE: GPO TLS applied with the following preferences:
+    VERBOSE:     TLS protocol SSL 2.0 enabled value: 0
+    VERBOSE:     TLS protocol SSL 3.0 enabled value: 0
+    VERBOSE:     TLS protocol TLS 1.0 enabled value: 1
+    VERBOSE:     TLS protocol TLS 1.1 enabled value: 1
+    VERBOSE:     TLS protocol TLS 1.2 enabled value: 1
+    VERBOSE: TLS 1.2 is not enforced
 
 ## Next steps
 
