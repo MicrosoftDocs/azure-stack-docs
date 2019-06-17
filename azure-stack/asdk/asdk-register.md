@@ -30,13 +30,13 @@ If you do not register your ASDK, you might see an **Activation Required** warni
 
 Before using these instructions to register the ASDK with Azure, ensure that you have installed the Azure Stack PowerShell and downloaded the Azure Stack tools as described in the [post-deployment configuration](asdk-post-deploy.md) article.
 
-In addition, the PowerShell language mode must be set to **FullLanguageMode** on the computer used to register the ASDK with Azure. To verify that the current language mode is set to full, open an elevated PowerShell window and run the following PowerShell commands:
+In addition, the PowerShell language mode must be set to **FullLanguage** on the computer used to register the ASDK with Azure. To verify that the current language mode is set to full, open an elevated PowerShell window and run the following PowerShell commands:
 
 ```powershell  
 $ExecutionContext.SessionState.LanguageMode
 ```
 
-Ensure the output returns **FullLanguageMode**. If any other language mode is returned, registration will need to be run on another computer or the language mode will need to be set to **FullLanguageMode** before continuing.
+Ensure the output returns **FullLanguage**. If any other language mode is returned, registration will need to be run on another computer or the language mode will need to be set to **FullLanguage** before continuing.
 
 The Azure AD account used for registration needs to have access to the Azure subscription and have permissions to create identity applications and service principals in the directory associated with that subscription. We recommend that you register Azure Stack with Azure using least-privilege administration by [creating a service account to use for registration](../operator/azure-stack-registration-role.md) rather than using global administrator credentials.
 
