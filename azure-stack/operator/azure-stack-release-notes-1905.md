@@ -131,7 +131,7 @@ Before applying the update, make sure to review the following information:
 
 ## Download the update
 
-You can download the Azure Stack 1905 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
+You can download the Azure Stack 1905 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload). When using the downloader tool, be sure to use the latest version and not a cached copy from your downloads directory.
 
 ## Hotfixes
 
