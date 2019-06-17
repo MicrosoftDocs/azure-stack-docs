@@ -38,14 +38,6 @@ Use the [privileged endpoint (PEP)](azure-stack-privileged-endpoint.md) to view 
 Get-TLSPolicy
 ```
 
-### Get TLS policy example
-
-This example gets your TLS policy.
-
-```powershell
-Get-TLSPolicy
-```
-
 Example output:
 
     TLS_1.2
