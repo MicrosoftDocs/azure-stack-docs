@@ -241,16 +241,16 @@ Azure DevOps and Azure DevOps Server provide a highly configurable and manageabl
 
 [Azure App Service](https://docs.microsoft.com/azure/app-service/overview) provides a highly scalable, self-patching web hosting service. 
 
-![Alt text](media/azure-stack-solution-geo-distributed/image27.png)
+![Azure App Service](media/azure-stack-solution-geo-distributed/image27.png)
 
 > [!div class="checklist"]
 > - Map an existing custom DNS name to Azure Web Apps
-> - Use a **CNAME recorder an **A record** to map a custom DNS name to App Service.
+> - Use a **CNAME record** and an **A record** to map a custom DNS name to App Service.
 
 ### Map an existing custom DNS name to Azure Web Apps
 
 > [!Note]  
->  Use a CNAME for all custom DNS names except a root domain (for example,northwind.com).
+>  Use a CNAME for all custom DNS names except a root domain (for example, northwind.com).
 
 To migrate a live site and its DNS domain name to App Service, see [Migrate an active DNS name to Azure App Service](https://docs.microsoft.com/azure/app-service/manage-custom-dns-migrate-domain).
 
@@ -264,7 +264,7 @@ To complete this tutorial:
 
 Update the DNS zone file for the domain. Azure AD will verify ownership of the custom domain name. Use [Azure DNS](https://docs.microsoft.com/azure/dns/dns-getstarted-portal) for Azure/Office 365/external DNS records within Azure, or add the DNS entry at [a different DNS registrar](https://support.office.com/article/Create-DNS-records-for-Office-365-when-you-manage-your-DNS-records-b0f3fdca-8a80-4e8e-9ef3-61e8a2a9ab23/).
 
--   Register a custom domain with a public Registrar.
+-   Register a custom domain with a public registrar.
 
 -   Sign in to the domain name registrar for the domain. (An approved admin may be required to make DNS updates.)
 
@@ -273,8 +273,7 @@ Update the DNS zone file for the domain. Azure AD will verify ownership of the c
 For example, to add DNS entries for northwindcloud.com and www.northwindcloud.com, configure DNS settings for the northwindcloud.com root domain.
 
 > [!Note]  
->  A domain name may be purchased using the [Azure portal](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain).  
-> To map a custom DNS name to a web app, the web app's [App Service plan](https://azure.microsoft.com/pricing/details/app-service/) must be a paid tier (**Shared**, **Basic**, **Standard**, or **Premium**).
+>  A domain name may be purchased using the [Azure portal](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain). To map a custom DNS name to a web app, the web app's [App Service plan](https://azure.microsoft.com/pricing/details/app-service/) must be a paid tier (**Shared**, **Basic**, **Standard**, or **Premium**).
 
 
 
@@ -325,36 +324,34 @@ After adding the CNAME, the DNS records page looks like the following example:
 
    a.  An **A** record to map to the app's IP address.
 
-   b.  A **TXT** record to map to the app's default hostname <app_name>.azurewebsites.net. App Service uses this record only at configuration time, to verify custom domain ownership. After verification, delete the TXT record.
+   b.  A **TXT** record to map to the app's default hostname <app_name>.azurewebsites.net. App Service uses this record only at configuration time to verify custom domain ownership. After verification, delete the TXT record.
 
 4. Complete this task in the domain registrar tab and revalidate until the **Add hostname** button is activated.
 
-5. Make sure that **Hostname record type is set to **CNAME (www.example.com or any subdomain)**.
+5. Make sure that **Hostname record type** is set to **CNAME** (www.example.com or any subdomain).
 
 6. Select **Add hostname**.
 
 7. Type the fully qualified domain name, such as `northwindcloud.com`.
 
-8. Select **Validate**.
+8. Select **Validate**. The **Add** is activated.
 
-9. The **Add** is activated.
+9. Make sure that **Hostname record type** is set to **A record** (example.com).
 
-10. Make sure that **Hostname record type is set to **A record (example.com)**.
-
-11. **Add hostname**.
+10. **Add hostname**.
 
     It might take some time for the new hostnames to be reflected in the app's **Custom domains** page. Try refreshing the browser to update the data.
   
-    ![Alt text](media/azure-stack-solution-geo-distributed/image31.png) 
+    ![Custom domains](media/azure-stack-solution-geo-distributed/image31.png) 
   
-    In the case of an error, a verification error notification will appear at the bottom of the page. ![Verification error](media/azure-stack-solution-geo-distributed/image32.png)
+    If there's an error, a verification error notification will appear at the bottom of the page. ![Verification error](media/azure-stack-solution-geo-distributed/image32.png)
 
 > [!Note]  
->  The above steps may be repeated to map a wildcard domain (\*.northwindcloud.com).. This allows the addition of any additional subdomains to this app service without having to create a separate CNAME record for each one. Follow the registrar instructions to configure this setting.
+>  The above steps may be repeated to map a wildcard domain (\*.northwindcloud.com). This allows the addition of any additional subdomains to this app service without having to create a separate CNAME record for each one. Follow the registrar instructions to configure this setting.
 
 #### Test in a browser
 
-Browse to the DNS name(s) configured earlier (for example, `northwindcloud.com`, www.northwindcloud.com.
+Browse to the DNS name(s) configured earlier (for example, `northwindcloud.com` or www.northwindcloud.com).
 
 ## Part 3: Bind a custom SSL cert
 
