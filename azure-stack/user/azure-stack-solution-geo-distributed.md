@@ -48,9 +48,9 @@ As is the case with scalability considerations, this solution doesn't directly a
 
 - Your organization has international branches requiring custom regional security and distribution policies.
 
-- Each of your organizations offices pulls employee, business, and facility data which requires reporting activity per local regulations and time zones.
+- Each of your organization's offices pulls employee, business, and facility data which requires reporting activity per local regulations and time zones.
 
-- High scale requirements can be met by horizontally scaling out apps with multiple app deployments within a single region, as well as across regions, to handle extreme load requirements.
+- High-scale requirements is met by horizontally scaling out apps with multiple app deployments within a single region and across regions to handle extreme load requirements.
 
 ### Planning the topology
 
@@ -60,11 +60,11 @@ Before building out a distributed app footprint, it helps to know the following 
 
 -   **Traffic Manager domain:** A domain name is chosen when creating an [Azure Traffic Manager profile](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-manage-profiles). This name is combined with the *trafficmanager.net* suffix to register a domain entry that's managed by Traffic Manager. For the sample app, the name chosen is *scalable-ase-demo*. As a result, the full domain name that's managed by Traffic Manager is *scalable-ase-demo.trafficmanager.net*.
 
--   **Strategy for scaling the app footprint:** Decide whether the app footprint will be distributed across multiple App Service Environments in a single region, multiple regions, or a mix of both approaches. The decision should be based on expectations of where customer traffic will originate, as well as how well the rest of an app's supporting back-end infrastructure can scale. For example, with a 100% stateless app, an app can be massively scaled using a combination of multiple App Service Environments per Azure region, multiplied by App Service Environments deployed across multiple Azure regions. With 15+ global Azure regions available to choose from, customers can truly build a world-wide hyper-scale app footprint. For the sample app used here, three App Service Environments were created in a single Azure region (South Central US).
+-   **Strategy for scaling the app footprint:** Decide whether the app footprint will be distributed across multiple App Service Environments in a single region, multiple regions, or a mix of both approaches. The decision should be based on expectations of where customer traffic will originate and how well the rest of an app's supporting back-end infrastructure can scale. For example, with a 100% stateless app, an app can be massively scaled using a combination of multiple App Service Environments per Azure region, multiplied by App Service Environments deployed across multiple Azure regions. With 15+ global Azure regions available to choose from, customers can truly build a world-wide hyper-scale app footprint. For the sample app used here, three App Service Environments were created in a single Azure region (South Central US).
 
--   **Naming convention for the App Service Environments:** Each App Service Environment requires a unique name. Beyond one or two App Service Environments, it is helpful to have a naming convention to help identify each App Service Environment. For the sample app used here, a simple naming convention was used. The names of the three App Service Environments are *fe1ase*, *fe2ase*, and *fe3ase*.
+-   **Naming convention for the App Service Environments:** Each App Service Environment requires a unique name. Beyond one or two App Service Environments, it's helpful to have a naming convention to help identify each App Service Environment. For the sample app used here, a simple naming convention was used. The names of the three App Service Environments are *fe1ase*, *fe2ase*, and *fe3ase*.
 
--   **Naming convention for the apps:** Since multiple instances of the app will be deployed, a name is needed for each instance of the deployed app. With App Service Environments, the same app name can be used across multiple environments. Since each App Service Environment has a unique domain suffix, developers can choose to reuse the exact same app name in each environment. For example, a developer could have apps named as follows: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*, etc. For the app used here, each app instance has a unique name. The app instance names used are *webfrontend1*, *webfrontend2*, and *webfrontend3*.
+-   **Naming convention for the apps:** Since multiple instances of the app will be deployed, a name is needed for each instance of the deployed app. With App Service Environments, the same app name can be used across multiple environments. Since each App Service Environment has a unique domain suffix, developers can choose to reuse the exact same app name in each environment. For example, a developer could have apps named as follows: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net*, and so on. For the app used here, each app instance has a unique name. The app instance names used are *webfrontend1*, *webfrontend2*, and *webfrontend3*.
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
@@ -129,9 +129,9 @@ Set up Hybrid Continuous Integration/Continuous Delivery (CI/CD) to deploy Web A
 
 ### Create the build definition
 
-1. **Log in to Azure Pipelines** to confirm ability to create build definitions.
+1. **Sign in to Azure Pipelines** to confirm ability to create build definitions.
 
-2. Add `-r win10-x64` code. This is necessary to trigger a self-contained deployment with .NET Core.
+2. Add `-r win10-x64` code. This addition is necessary to trigger a self-contained deployment with .NET Core.
 
     ![Add code to the build definition](media/azure-stack-solution-geo-distributed/image4.png)
 
@@ -406,11 +406,11 @@ To bind a custom SSL certificate to the web app, the [App Service plan](https://
 
     ![Scale-up menu](media/azure-stack-solution-geo-distributed/image34.png)
 
-1.  Ensure the web app is not in the **Free** or **Shared** tier. The web app's current tier is highlighted in a dark blue box.
+1.  Ensure the web app isn't in the **Free** or **Shared** tier. The web app's current tier is highlighted in a dark blue box.
 
     ![Check pricing tier](media/azure-stack-solution-geo-distributed/image35.png)
 
-Custom SSL isn't supported in the **Free** or **Shared** tier. To upscale, follow the steps in the next section, or **Choose your pricing tier** page and skip to [Upload and bind your SSL certificate](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl).
+Custom SSL isn't supported in the **Free** or **Shared** tier. To upscale, follow the steps in the next section or the **Choose your pricing tier** page and skip to [Upload and bind your SSL certificate](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl).
 
 #### Scale up your App Service plan
 
@@ -463,7 +463,7 @@ Merge multiple certificates in the chain.
 
 Export the merged SSL certificate with the private key generated by the certificate.
 
-A private key file is created via OpenSSL. To export the certificate to PFX, run the following command, replacing the placeholders *\<private-key-file>* and *\<merged-certificate-file>* with private key paths and merged certificate file:
+A private key file is created via OpenSSL. To export the certificate to PFX, run the following command and replace the placeholders *\<private-key-file>* and *\<merged-certificate-file>* with the private key path and the merged certificate file:
 
 ```powershell
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>
@@ -504,7 +504,7 @@ When App Service finishes uploading the certificate, it appears in the **SSL set
 
 -   **SNI-based SSL**: Multiple SNI-based SSL bindings may be added. This option allows multiple SSL certificates to secure multiple domains on the same IP address. Most modern browsers (including Internet Explorer, Chrome, Firefox, and Opera) support SNI (find more comprehensive browser support information at [Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)).
 
--   **IP-based SSL**: Only one IP-based SSL binding may be added. This option allows only one SSL certificate to secure a dedicated public IP address. To secure multiple domains, secure them all using the same SSL certificate. This is the traditional option for SSL binding.
+-   **IP-based SSL**: Only one IP-based SSL binding may be added. This option allows only one SSL certificate to secure a dedicated public IP address. To secure multiple domains, secure them all using the same SSL certificate. IP-based SSL is the traditional option for SSL binding.
 
 4. Select **Add Binding**.
 
@@ -571,7 +571,7 @@ The app allows [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 by
 
     4.  In **Resource Group**, create a new resource group to place this profile under.
 
-    5.  In **Resource group location**, select the location of the resource group. This setting refers to the location of the resource group and has no impact on the Traffic Manager profile that will be deployed globally.
+    5.  In **Resource group location**, select the location of the resource group. This setting refers to the location of the resource group and has no impact on the Traffic Manager profile deployed globally.
 
     6.  Select **Create**.
 
@@ -597,7 +597,7 @@ The app allows [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 by
 
 8. Under Geo-mapping, select a region/continent where the resource is located. For example, **Europe.**
 
-9. Under the Country/Region drop-down that appears, select the country that will apply to this endpoint. For example, **Germany**.
+9. Under the Country/Region drop-down that appears, select the country that applies to this endpoint. For example, **Germany**.
 
 10. Keep **Add as disabled** unchecked.
 
@@ -615,7 +615,7 @@ The app allows [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 by
 
 13. Under Geo-mapping, select a region/continent where the resource is located. For example, **North America/Central America/Caribbean.**
 
-14. Under the Country/Region drop-down that appears, leave this blank to select all of the above regional grouping.
+14. Under the Country/Region drop-down that appears, leave this spot blank to select all of the above regional grouping.
 
 15. Keep **Add as disabled** unchecked.
 
@@ -624,7 +624,7 @@ The app allows [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 by
     > [!Note]  
     >  Create at least one endpoint with a geographic scope of All (World) to serve as the default endpoint for the resource.
 
-1. When the addition of both endpoints is complete, they are displayed in **Traffic Manager profile** along with their monitoring status as **Online**.
+1. When the addition of both endpoints is complete, they're displayed in **Traffic Manager profile** along with their monitoring status as **Online**.
 
     ![Traffic Manager profile endpoint status](media/azure-stack-solution-geo-distributed/image46.png)
 
