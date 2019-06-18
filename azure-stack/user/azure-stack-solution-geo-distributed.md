@@ -496,27 +496,27 @@ When App Service finishes uploading the certificate, it appears in the **SSL set
 1.  In the **SSL bindings** section, select **Add binding**.
 
     > [!Note]  
-    >  If the certificate has been uploaded, but does not appear in domain name(s) in the **Hostname** dropdown, try refreshing the browser page.
+    >  If the certificate has been uploaded, but doesn't appear in domain name(s) in the **Hostname** dropdown, try refreshing the browser page.
 
 1.  In the **Add SSL Binding** page, use the drop downs to select the domain name to secure, and the certificate to use.
 
-2.  In **SSL Type**, select whether to use [**Server Name Indication (SNI)**](https://en.wikipedia.org/wiki/Server_Name_Indication)or IP-based SSL.
+2.  In **SSL Type**, select whether to use [**Server Name Indication (SNI)**](https://en.wikipedia.org/wiki/Server_Name_Indication) or IP-based SSL.
 
--   **SNI-based SSL**- Multiple SNI-based SSL bindings may be added. This option allows multiple SSL certificates to secure multiple domains on the same IP address. Most modern browsers (including Internet Explorer, Chrome, Firefox, and Opera) support SNI (find more comprehensive browser support information at [Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)).
+-   **SNI-based SSL**: Multiple SNI-based SSL bindings may be added. This option allows multiple SSL certificates to secure multiple domains on the same IP address. Most modern browsers (including Internet Explorer, Chrome, Firefox, and Opera) support SNI (find more comprehensive browser support information at [Server Name Indication](https://wikipedia.org/wiki/Server_Name_Indication)).
 
--   **IP-based SSL**- Only one IP-based SSL binding may be added. This option allows only one SSL certificate to secure a dedicated public IP address. To secure multiple domains, secure them all using the same SSL certificate. This is the traditional option for SSL binding.
+-   **IP-based SSL**: Only one IP-based SSL binding may be added. This option allows only one SSL certificate to secure a dedicated public IP address. To secure multiple domains, secure them all using the same SSL certificate. This is the traditional option for SSL binding.
 
-    1.  Select **Add Binding**.
+4. Select **Add Binding**.
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image40.png)
+    ![Add SSL binding](media/azure-stack-solution-geo-distributed/image40.png)
 
 When App Service finishes uploading the certificate, it appears in the **SSL bindings** sections.
 
-![Alt text](media/azure-stack-solution-geo-distributed/image41.png)
+![SSL bindings](media/azure-stack-solution-geo-distributed/image41.png)
 
 #### Remap the A record for IP SSL
 
-If IP-based SSL is not used in the web app, skip to [Test HTTPS for your custom domain](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl).
+If IP-based SSL isn't used in the web app, skip to [Test HTTPS for your custom domain](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl).
 
 By default, the web app uses a shared public IP address. When the certificate is bound with IP-based SSL, App Service creates a new and dedicated IP address for the web app.
 
@@ -528,14 +528,14 @@ The **Custom domain** page is updated with the new, dedicated IP address. Copy t
 
 In various browsers, browse to https://<your.custom.domain>to ensure the web app is served.
 
-![Alt text](media/azure-stack-solution-geo-distributed/image42.png)
+![browse to web app](media/azure-stack-solution-geo-distributed/image42.png)
 
 > [!Note]  
 > If certificate validation errors occur, a self-signed certificate may be the cause, or intermediate certificates may have been left off when exporting to the PFX file.
 
 #### Enforce HTTPS
 
-By default, anyone may access the web app using HTTP. all HTTP requests to the HTTPS port may be redirected.
+By default, anyone can access the web app using HTTP. All HTTP requests to the HTTPS port may be redirected.
 
 In the web app page, select **SL settings**. Then, in **HTTPS Only**, select **On**.
 
@@ -551,7 +551,7 @@ When the operation is complete, navigate to any of the HTTP URLs that point to t
 
 The app allows [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 by default, which is no longer considered secure by industry standards, such as [PCI DSS](https://wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard). To enforce higher TLS versions, follow these steps:
 
-1.  In web app page, in the left navigation, select **SSL settings**.
+1.  In the web app page, in the left navigation, select **SSL settings**.
 
 2.  In **TLS version**, select the minimum TLS version.
 
@@ -575,13 +575,13 @@ The app allows [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 by
 
     6.  Select **Create**.
 
-    7.  When the global deployment of the Traffic Manager profile is complete, it is listed in respective resource group as one of the resources.
+    7.  When the global deployment of the Traffic Manager profile is complete, it's listed in the respective resource group as one of the resources.
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image45.png)
+    ![Resource groups in create Traffic Manager profile](media/azure-stack-solution-geo-distributed/image45.png)
 
 ### Add Traffic Manager endpoints
 
-1. In the portals search bar, search for the **Traffic Manager profile **name created in the preceding section and select the traffic manager profile in the results that the displayed.
+1. In the portals search bar, search for the **Traffic Manager profile** name created in the preceding section and select the traffic manager profile in the displayed results.
 
 2. In **Traffic Manager profile**, in the **Settings** section, select **Endpoints**.
 
@@ -593,11 +593,11 @@ The app allows [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 by
 
 6. Provide a **Name** for this endpoint, ideally the name of the Azure Stack.
 
-7. For fully qualified domain name (**FQDN**), the use external URL for the Azure Stack Web App.
+7. For fully qualified domain name (**FQDN**), use the external URL for the Azure Stack Web App.
 
-8. Under Geo-mapping, select a region/continent where the resource is located, for example, **Europe.**
+8. Under Geo-mapping, select a region/continent where the resource is located. For example, **Europe.**
 
-9. Under the Country/Region drop-down that appears, select the country that will apply to this endpoint, for example, **Germany**.
+9. Under the Country/Region drop-down that appears, select the country that will apply to this endpoint. For example, **Germany**.
 
 10. Keep **Add as disabled** unchecked.
 
@@ -607,30 +607,30 @@ The app allows [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 by
 
     1.  For **Type**, select **Azure endpoint**.
 
-    2.  Provide a **Name** for this endpoint.
+    2.  Provide a **Name** for the endpoint.
 
     3.  For **Target resource type**, select **App Service**.
 
-    4.  For **Target resource**, select **Choose an app service** to show the listing of the Web Apps under the same subscription. In **Resource**, pick the App service use as the first endpoint.
+    4.  For **Target resource**, select **Choose an app service** to show the listing of the Web Apps under the same subscription. In **Resource**, pick the App service used as the first endpoint.
 
-13. Under Geo-mapping select a region/continent where the resource is located, for example, **North America/Central America/Caribbean.**
+13. Under Geo-mapping, select a region/continent where the resource is located. For example, **North America/Central America/Caribbean.**
 
 14. Under the Country/Region drop-down that appears, leave this blank to select all of the above regional grouping.
 
 15. Keep **Add as disabled** unchecked.
 
-16. Select **OK**
+16. Select **OK**.
 
     > [!Note]  
     >  Create at least one endpoint with a geographic scope of All (World) to serve as the default endpoint for the resource.
 
 1. When the addition of both endpoints is complete, they are displayed in **Traffic Manager profile** along with their monitoring status as **Online**.
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image46.png)
+    ![Traffic Manager profile endpoint status](media/azure-stack-solution-geo-distributed/image46.png)
 
 **Global Enterprise relies on Azure Geo-Distribution capabilities**
 
-Directing data traffic via Azure Traffic Manager and geography-specific endpoints enables global enterprises to adhere to regional regulations and keep data compliant and secure  crucial to the success of local business and across remote locations.
+Directing data traffic via Azure Traffic Manager and geography-specific endpoints enables global enterprises to adhere to regional regulations and keep data compliant and secure which is crucial to the success of local and remote business locations.
 
 ## Next steps
 
