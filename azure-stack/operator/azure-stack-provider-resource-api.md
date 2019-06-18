@@ -32,13 +32,13 @@ The request gets consumption details for the requested subscriptions and for the
 
 This usage API is a provider API, so the caller must be assigned an **Owner**, **Contributor**, or **Reader** role in the provider's subscription.
 
-| **Method** | **Request URI** |
+| Method | Request URI |
 | --- | --- |
 | GET |https://{armendpoint}/subscriptions/{subId}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={reportedStartTime}&reportedEndTime={reportedEndTime}&aggregationGranularity={granularity}&subscriberId={sub1.1}&api-version=2015-06-01-preview&continuationToken={token-value} |
 
 ### Arguments
 
-| **Argument** | **Description** |
+| Argument | Description |
 | --- | --- |
 | `armendpoint` |Azure Resource Manager endpoint of your Azure Stack environment. The Azure Stack convention is that the name of the Azure Resource Manager endpoint is in the format `https://adminmanagement.{domain-name}`. For example, for the development kit, if the domain name is *local.azurestack.external*, then the Resource Manager endpoint is `https://adminmanagement.local.azurestack.external`. |
 | `subId` |Subscription ID of the user who makes the call. |
@@ -84,12 +84,12 @@ meterID1",
 
 ### Response details
 
-| **Argument** | **Description** |
+| Argument | Description |
 | --- | --- |
 |`id` |Unique ID of the usage aggregate. |
 |`name` |Name of the usage aggregate. |
 |`type` |Resource definition. |
-|`subscriptionId |Subscription identifier of the Azure Stack user. |
+|`subscriptionId` |Subscription identifier of the Azure Stack user. |
 |`usageStartTime`|UTC start time of the usage bucket to which this usage aggregate belongs.|
 |`usageEndTime`|UTC end time of the usage bucket to which this usage aggregate belongs. |
 |`instanceData` |Key-value pairs of instance details (in a new format):<br> `resourceUri`: Fully qualified resource ID, which includes the resource groups and the instance name. <br> `location`: Region in which this service was run. <br> `tags`: Resource tags that are specified by the user. <br> `additionalInfo`: More details about the resource that was consumed; for example, the OS version or image type. |
