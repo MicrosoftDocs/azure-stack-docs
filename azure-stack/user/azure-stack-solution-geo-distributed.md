@@ -1,6 +1,6 @@
 ---
-title: Create a geo-distributed app solution with Azure and Azure Stack | Microsoft Docs
-description: Learn how to create a geo-distributed app solution with Azure and Azure Stack.
+title: Direct traffic with a geo-distributed app solution with Azure and Azure Stack | Microsoft Docs
+description: Learn how to create a geo-distributed app solution with Azure and Azure Stack that directs traffic to specific endpoints.
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -18,7 +18,7 @@ ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
 ---
 
-# Tutorial: Create a geo-distributed app solution with Azure and Azure Stack
+# Tutorial: Create a geo-distributed app solution to direct traffic with Azure and Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
