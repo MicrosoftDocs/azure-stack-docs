@@ -88,9 +88,9 @@ In order to use the Ruby Azure SDK with Azure Stack, you must supply the followi
 | Client ID | AZURE_CLIENT_ID | The service principal application ID saved when service principal was created on the previous section of this document.  |
 | Subscription ID | AZURE_SUBSCRIPTION_ID | The [subscription ID](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) is how you access offers in Azure Stack. |
 | Client Secret | AZURE_CLIENT_SECRET | The service principal application Secret saved when service principal was created. |
-| Resource Manager Endpoint | ARM_ENDPOINT | See [The Azure Stack resource manager endpoint](#the-azure-stack-resource-manager-endpoint).  |
+| Resource Manager Endpoint | ARM_ENDPOINT | See [The Azure Stack Resource Manager endpoint](#the-azure-stack-resource-manager-endpoint).  |
 
-### The Azure Stack resource manager endpoint
+### The Azure Stack Resource Manager endpoint
 
 The Microsoft Azure Resource Manager is a management framework that allows administrators to deploy, manage and monitor Azure resources. Azure Resource Manager can handle these tasks as a group, rather than individually, in a single operation.
 
@@ -240,11 +240,11 @@ To run the sample, ensure that you have installed Ruby. If you are using Visual 
 
    Set the following environment variables using the information you retrieved from the Service Principal you created.
 
-   - export AZURE_TENANT_ID={your tenant id}
-   - export AZURE_CLIENT_ID={your client id}
+   - export AZURE_TENANT_ID={your tenant ID}
+   - export AZURE_CLIENT_ID={your client ID}
    - export AZURE_CLIENT_SECRET={your client secret}
-   - export AZURE_SUBSCRIPTION_ID={your subscription id}
-   - export ARM_ENDPOINT={your AzureStack Resource manager url}
+   - export AZURE_SUBSCRIPTION_ID={your subscription ID}
+   - export ARM_ENDPOINT={your Azure Stack Resource Manager URL}
 
    > [!NOTE]  
    > On Windows, use set instead of export.
