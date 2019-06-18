@@ -102,8 +102,8 @@ meterID1",
 
 To generate the usage data, you should have resources that are running and actively using the system; for example, an active virtual machine, or a storage account containing some data. If you're not sure whether you have any resources running in the Azure Stack marketplace, deploy a virtual machine (VM), and verify the VM monitoring blade to make sure it's running. Use the following PowerShell cmdlets to view the usage data:
 
-1. [Install PowerShell for Azure Stack.](azure-stack-powershell-install.md)
-2. [Configure the Azure Stack user](../user/azure-stack-powershell-configure-user.md) or the [Azure Stack operator](azure-stack-powershell-configure-admin.md) PowerShell environment
+1. [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).
+2. [Configure the Azure Stack user](../user/azure-stack-powershell-configure-user.md) or the [Azure Stack operator](azure-stack-powershell-configure-admin.md) PowerShell environment.
 3. To retrieve the usage data, use the [Get-UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates) PowerShell cmdlet:
 
    ```powershell
@@ -118,13 +118,13 @@ You can collect usage information for deleted subscriptions by calling the  Micr
 
 | Method | Request URI |
 | --- | --- |
-| GET | https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version=2015-06-01-preview |
+| GET | `https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&api-version=2015-06-01-preview` |
 
 #### Return usage for deleted or active tenant
 
 | Method | Request URI |
 | --- | --- |
-| GET |https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={subscriber-id}&api-version=2015-06-01-preview |
+| GET |`https://{armendpoint}/subscriptions/{subId}/providersMicrosoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={start-time}&reportedEndTime={end-endtime}&aggregationGranularity=Hourly&subscriberId={subscriber-id}&api-version=2015-06-01-preview` |
 
 ## Next steps
 
