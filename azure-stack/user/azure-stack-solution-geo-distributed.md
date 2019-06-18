@@ -192,7 +192,7 @@ Azure DevOps and Azure DevOps Server provide a highly configurable and manageabl
 
 11. Add one more environment by applying the Azure App Service Deployment.
     
-    ![Add environment to Azure App Service Deployment](media/azure-stack-solution-geo-distributedimage16.png)
+    ![Add environment to Azure App Service Deployment](media/azure-stack-solution-geo-distributed/image16.png)
 
 12. Name the new environment Azure Stack.
     
@@ -204,7 +204,7 @@ Azure DevOps and Azure DevOps Server provide a highly configurable and manageabl
 
 14. Select the subscription for the Azure Stack endpoint.
     
-    ![Select the subscription for the Azure Stack endpoint](media/azure-stack-solution-geo-distributedimage19.png)
+    ![Select the subscription for the Azure Stack endpoint](media/azure-stack-solution-geo-distributed/image19.png)
 
 15. Set the Azure Stack web app name as the App service name.
 
