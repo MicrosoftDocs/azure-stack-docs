@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 06/18/2019
 ms.author: sethm
 ms.reviewer: ''
-ms.lastreviewed: 06/14/2019
+ms.lastreviewed: 06/18/2019
 ---
 
 # Azure Stack 1906 update
@@ -33,11 +33,11 @@ This article describes the contents of the 1906 update package. The update inclu
 
 ## Build reference
 
-The Azure Stack 1906 update build number is **1.1906.x.xx**.
+The Azure Stack 1906 update build number is **1.1906.0.21**.
 
 ### Update type
 
-The Azure Stack 1906 update build type is **Full**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article.
+The Azure Stack 1906 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article.
 
 ## What's in this update
 
@@ -57,14 +57,14 @@ The Azure Stack 1906 update build type is **Full**. For more information about u
 
 ### Security updates
 
-For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates-1905.md).
+For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates-1906.md).
 
 ## Update planning
 
 Before applying the update, make sure to review the following information:
 
 - [Known issues](azure-stack-release-notes-known-issues-1906.md)
-- [Security updates](azure-stack-release-notes-security-updates-1905.md)
+- [Security updates](azure-stack-release-notes-security-updates-1906.md)
 - [Checklist of activities before and after applying the update](azure-stack-release-notes-checklist.md)
 
 ## Download the update
