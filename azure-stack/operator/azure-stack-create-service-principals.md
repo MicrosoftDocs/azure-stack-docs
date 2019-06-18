@@ -132,7 +132,7 @@ Once you have a certificate, use the PowerShell script below to register your ap
 
    ```
    
-2. After the script finishes, it displays the application registration info, including the service principal's credentials. As demonstrated, the `ClientID` and `Thumbprint` is used to sign in under the service principal's identity. Keep your PowerShell console session open, as you use it with the `ApplicationIdentifier` value in the next section. 
+2. After the script finishes, it displays the application registration info, including the service principal's credentials. As demonstrated, the `ClientID` and `Thumbprint` are used to sign in under the service principal's identity. Upon successful sign in, the service principal identity will be used for subsequent authorization and access to resources managed by Azure Resource Manager. 
 
    For example:
 
@@ -145,6 +145,8 @@ Once you have a certificate, use the PowerShell script below to register your ap
    PSComputerName        : azs-ercs01
    RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
    ```
+
+Keep your PowerShell console session open, as you use it with the `ApplicationIdentifier` value in the next section.
 
 ### Update a service principal's certificate credential
 
@@ -162,10 +164,10 @@ Update the certificate credential using PowerShell, substituting your own values
 | \<YourCertificateLocation\> | The location of your X509 certificate in the local certificate store. | "Cert:\CurrentUser\My\AB5A8A3533CC7AA2025BF05120117E06DE407B34" |
 | \<AppIdentifier\> | The identifier assigned to the application registration | S-1-5-21-1512385356-3796245103-1243299919-1356 |
 
-1. Open an elevated Windows PowerShell session, and run the following cmdlets:
+1. Using your elevated Windows PowerShell session, run the following cmdlets:
 
      ```powershell
-     # Creating a PSSession to the PrivilegedEndpoint VM
+     # Create a PSSession to the PrivilegedEndpoint VM
      $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
      # Create a self-signed certificate for testing purposes. 
@@ -173,6 +175,7 @@ Update the certificate credential using PowerShell, substituting your own values
      # In production, use Get-Item and a managed certificate instead.
      # $Cert = Get-Item "<YourCertificateLocation>"
 
+     # Use the privileged endpoint to update the certificate thumbprint, used by the service principal associated with <AppIdentifier>
      $SpObject = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier "<AppIdentifier>" -ClientCertificates $using:NewCert}
      $Session | Remove-PSSession
 
@@ -205,8 +208,6 @@ Now create a client secret credential using PowerShell. Unlike a certificate cre
 | \<PepVM\> | The name of the privileged endpoint VM on your Azure Stack instance. | "AzS-ERCS01" |
 | \<YourAppName\> | A descriptive name for the new app registration | "My management tool" |
 
-
-
 1. Open an elevated Windows PowerShell session, and run the following cmdlets:
 
      ```powershell  
@@ -218,13 +219,31 @@ Now create a client secret credential using PowerShell. Unlike a certificate cre
 
      # Use the privileged endpoint to create the new app registration (and service principal object)
      $SpObject = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name "<YourAppName>" -GenerateClientSecret}
+     $AzureStackInfo = Invoke-Command -Session $Session -ScriptBlock {Get-AzureStackStampInformation}
      $Session | Remove-PSSession
 
-    # Output the service principal details
+     # Using the stamp info for your Azure Stack instance, populate the following variables:
+     # - AzureRM endpoint used for Azure Resource Manager operations 
+     # - Audience for acquiring an OAuth token used to access Graph API 
+     # - GUID of the directory tenant
+     $ArmEndpoint = $AzureStackInfo.TenantExternalEndpoints.TenantResourceManager
+     $GraphAudience = "https://graph." + $AzureStackInfo.ExternalDomainFQDN + "/"
+     $TenantID = $AzureStackInfo.AADTenantID
+
+     # Register and set an ARM environment that targets your Azure Stack instance
+     Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
+     Set-AzureRmEnvironment -Name "AzureStackUser" -GraphAudience $GraphAudience -EnableAdfsAuthentication:$true
+
+     # Sign in using the new service principal identity
+     $securePassword = $SpObject.ClientSecret | ConvertTo-SecureString -AsPlainText -Force
+     $credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $SpObject.ClientId, $securePassword
+     $SpSignin = Connect-AzureRmAccount -Environment "AzureStackUser" -ServicePrincipal -Credential $credential -TenantId $TenantID
+
+     # Output the service principal details
      $SpObject
      ```
 
-2. After the cmdlet runs, the application registration details are display. You use the ClientID and ClientSecret when authenticating with your service principal. TODO - keep session open, used in next section!
+2. After the script finishes, it displays the application registration info, including the service principal's credentials. As demonstrated, the `ClientID` and generated `ClientSecret` are used to sign in under the service principal's identity. Upon successful sign in, the service principal identity will be used for subsequent authorization and access to resources managed by Azure Resource Manager.
 
      ```shell  
      ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
@@ -236,6 +255,8 @@ Now create a client secret credential using PowerShell. Unlike a certificate cre
      RunspaceId            : 286daaa1-c9a6-4176-a1a8-03f543f90998
      ```
 
+Keep your PowerShell console session open, as you use it with the `ApplicationIdentifier` value in the next section.
+
 ### Update a service principal's client secret
 
 Update the client secret credential using PowerShell, using the **ResetClientSecret** parameter, which immediately changes the client secret. Substitute your own values for the following placeholders:
@@ -243,69 +264,75 @@ Update the client secret credential using PowerShell, using the **ResetClientSec
 | Placeholder | Description | Example |
 | ----------- | ----------- | ------- |
 | \<PepVM\> | The name of the privileged endpoint VM on your Azure Stack instance. | "AzS-ERCS01" |
-| \<YourAppName\> | A descriptive name for the new app registration | "My management tool" |
 | \<AppIdentifier\> | The identifier assigned to the application registration | S-1-5-21-1512385356-3796245103-1243299919-1356 |
 
-1. Open an elevated Windows PowerShell session, and run the following cmdlets:
+1. Using your elevated Windows PowerShell session, run the following cmdlets:
 
-     ```powershell  
-     # Creating a PSSession to the PrivilegedEndpoint VM
+     ```powershell
+     # Create a PSSession to the PrivilegedEndpoint VM
      $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
-     $UpdateServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier "<AppIdentifier>" -ResetClientSecret}
-
+     # Use the privileged endpoint to update the client secret, used by the service principal associated with <AppIdentifier>
+     $SpObject = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier "<AppIdentifier>" -ResetClientSecret}
      $Session | Remove-PSSession
+
+     # Output the updated service principal details
+     $SpObject
      ```
 
-2. After the script finishes, it displays the newly generated secret required for SPN authentication. Make sure you store the new client secret.
+2. After the script finishes, it displays the updated application registration info, including the newly generated client secret.
 
      ```shell  
-          ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2120
-          ClientId              :  
-          Thumbprint            : 
-          ApplicationName       : Azurestack-Yourapp-6967581b-497e-4f5a-87b5-0c8d01a9f146
-          ClientSecret          : MKUNzeL6PwmlhWdHB59c25WDDZlJ1A6IWzwgv_Kn
-          RunspaceId            : 6ed9f903-f1be-44e3-9fef-e7e0e3f48564
+     ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
+     ClientId              : 8e0ffd12-26c8-4178-a74b-f26bd28db601
+     Thumbprint            : 
+     ApplicationName       : Azurestack-YourApp-6967581b-497e-4f5a-87b5-0c8d01a9f146
+     ClientSecret          : MKUNzeL6PwmlhWdHB59c25WDDZlJ1A6IWzwgv_Kn
+     PSComputerName        : azs-ercs01
+     RunspaceId            : 6ed9f903-f1be-44e3-9fef-e7e0e3f48564
      ```
 
-### Remove a service principal for AD FS
+### Remove a service principal
 
-Remove the service principal using PowerShell, substituting your own values for the following placeholders:
+Now you'll see how to remove/delete an app registration from your directory, and its associated service principal object, using PowerShell. 
+
+Substitute your own values for the following placeholders:
 
 | Placeholder | Description | Example |
 | ----------- | ----------- | ------- |
 | \<PepVM\> | The name of the privileged endpoint VM on your Azure Stack instance. | "AzS-ERCS01" |
-
-
-
-|Parameter|Description|Example|
-|---------|---------|---------|
-| Parameter | Description | Example |
-| ApplicationIdentifier | Unique identifier | S-1-5-21-1634563105-1224503876-2692824315-2119 |
-
-> [!Note]  
-> To view a list of all existing service principals and their Application Identifier, the get-graphapplication command can be used.
-
+| \<AppIdentifier\> | The identifier assigned to the application registration | S-1-5-21-1512385356-3796245103-1243299919-1356 |
 
 ```powershell  
 # Sign in to PowerShell interactively, using credentials that have access to the VM running the Privileged Endpoint (typically <domain>\cloudadmin)
 $Creds = Get-Credential
 
-# Creating a PSSession to the PrivilegedEndpoint VM
+# Create a PSSession to the PrivilegedEndpoint VM
 $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
-$UpdateServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {Remove-GraphApplication -ApplicationIdentifier S-1-5-21-1634563105-1224503876-2692824315-2119}
+# OPTIONAL: Use the privileged endpoint to get a list of applications registered in AD FS
+$AppList = Invoke-Command -Session $Session -ScriptBlock {Get-GraphApplication}
 
-$Session | Remove-PSSession
+# Use the privileged endpoint to remove the application and associated service principal object for <AppIdentifier>
+Invoke-Command -Session $Session -ScriptBlock {Remove-GraphApplication -ApplicationIdentifier "<AppIdentifier>"}
+```
+
+2. There will be no output returned from the Remove-GraphApplication command in the PowerShell script, but you will see verbatim confirmation output to the console:
+
+```shell
+VERBOSE: Deleting graph application with identifier S-1-5-21-1634563105-1224503876-2692824315-2623.
+VERBOSE: Remove-GraphApplication : BEGIN on AZS-ADFS01 on ADFSGraphEndpoint
+VERBOSE: Application with identifier S-1-5-21-1634563105-1224503876-2692824315-2623 was deleted.
+VERBOSE: Remove-GraphApplication : END on AZS-ADFS01 under ADFSGraphEndpoint configuration
 ```
 
 ## Assign a role
 
-To access resources in your subscription, you must assign the application to a role. Decide which role represents the right permissions for the application. To learn about the available roles, see [RBAC: Built in Roles](/azure/role-based-access-control/built-in-roles).
+To access resources in your subscription using an application service principal, you must assign the service principal to a role for a specific resource. First decide which role represents the right permissions for the application. To learn about the available roles, see [RBAC: Built in Roles](/azure/role-based-access-control/built-in-roles).
 
-You can set the scope at the level of the subscription, resource group, or resource. Permissions are inherited to lower levels of scope. For example, adding an application to the Reader role for a resource group means it can read the resource group and any resources it contains.
+The type of resource you choose establishes the access scope for the service principal. You can set the access scope at the subscription, resource group, or resource level. Permissions are inherited to lower levels of scope. For example, adding an application to the Reader role for a resource group means it can read the resource group and any resources it contains.
 
-1. In the Azure Stack portal, navigate to the level of scope you wish to assign the application to. For example, to assign a role at the subscription scope, select **Subscriptions**. You could instead select a resource group or resource.
+1. In the Azure Stack portal, navigate to the resource you wish to give access to the service principal. For example, to assign the service principal to a role at the subscription scope, select **Subscriptions**. You could instead select a resource group, or a specific resource such as a virtual machine.
 
 2. Select the particular subscription (resource group or resource) to assign the application to.
 
