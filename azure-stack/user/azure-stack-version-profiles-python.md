@@ -29,7 +29,7 @@ The Python SDK supports API version profiles to target different cloud platforms
 - **latest**  
     This profile targets the most recent API versions for all service providers in the Azure Platform.
 - **2019-03-01-hybrid**  
-    This profile targets the latest API versions for all the resource providers in Azure Stack platform.
+    This profile targets the latest API versions for all the resource providers in Azure Stack platform for stamp versions 1904 or later.
 - **2018-03-01-hybrid**  
     This profile targets the most compatible API versions for all the resource providers in Azure Stack platform.
 - **2017-03-09-profile**  
