@@ -290,7 +290,7 @@ You can use the following GitHub samples as references for creating solutions wi
 
    In Windows, use **set** instead of **export**.
 
-5. Use the `getActiveDirectorySettings` function to retrieve the arm metadata endpoints.
+5. Use the `getActiveDirectorySettings` function to retrieve the Azure Resource Manager metadata endpoints.
 
     ```java
     // Get Azure Stack cloud endpoints
