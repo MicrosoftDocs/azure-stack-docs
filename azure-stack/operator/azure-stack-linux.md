@@ -45,6 +45,7 @@ The Azure Linux Agent (typically called `WALinuxAgent` or `walinuxagent`) is req
 |  1.1901.3.105   | 2.2.35 or newer |
 | 1.1902.2.73  | 2.2.35 or newer |
 | 1.1903.0.35  | 2.2.35 or newer |
+| Builds after 1903 | 2.2.35 or newer |
 | Not Supported | 2.2.21-2.2.34 |
 
 You can prepare your own Linux image using the following instructions:
