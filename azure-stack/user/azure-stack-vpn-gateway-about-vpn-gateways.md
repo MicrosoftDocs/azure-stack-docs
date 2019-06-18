@@ -101,12 +101,11 @@ Consider the following when you select the SKU:
 
 ## Gateway Availability
 
-High Availability scenarios can only be configured on the High Performance Gateway connection SKU. Unlike Azure which provides availability through both active/active and active/passive configurations, Azure Stack only supports the active/passive configuration. 
+High availability scenarios can only be configured on the **High Performance Gateway** connection SKU. Unlike Azure, which provides availability through both active/active and active/passive configurations, Azure Stack only supports the active/passive configuration. 
 
 ### Failover
 
-There are 3 multi-tenant Gateway infrastructure VMs in Azure Stack. Two of these VMs are in active mode and the third is in redundant mode. Active VMs allow the creation of VPN connections on them and the redundant VM will only accept VPN connections in the event of a failover. If an active Gateway VM becomes unavailable, the VPN connection will failover to the redundant VM after a small period (few seconds) of connection loss.
-
+There are 3 multi-tenant gateway infrastructure VMs in Azure Stack. Two of these VMs are in active mode, and the third is in redundant mode. Active VMs enable the creation of VPN connections on them, and the redundant VM only accepts VPN connections in the event of a failover. If an active gateway VM becomes unavailable, the VPN connection fails over to the redundant VM after a short period (a few seconds) of connection loss.
 
 ## Estimated aggregate throughput by SKU
 
