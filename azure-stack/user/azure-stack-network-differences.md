@@ -51,7 +51,7 @@ This article provides an overview of the unique considerations for Azure Stack n
 |  | BGP Settings | Azure supports configuration of BGP Peering Address and Peer Weight. | BGP Peering Address and Peer Weight are auto-configured in Azure Stack. There is no way for the user to configure these settings with their own values. |
 |  | Default Gateway Site | Azure supports configuration of a default site for forced tunneling. | Not yet supported. |
 |  | Gateway Resizing | Azure supports resizing the gateway after deployment. | Re-sizing not supported. |
-|  | Active/Active Configuration | Supported | Not yet supported. |
+|  | Availability Configuration | Active/Active | Active/Passive |
 |  | UsePolicyBasedTrafficSelectors | Azure supports using policy-based traffic selectors with route-based gateway connections. | Not yet supported. |
 | Load balancer | SKU | Basic and Standard Load Balancers are supported | Only the Basic Load Balancer is supported.  The SKU property is not supported. |
 |  | Zones | Availability Zones are Supported. | Not yet supported |
