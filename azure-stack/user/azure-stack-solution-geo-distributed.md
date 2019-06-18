@@ -77,10 +77,10 @@ Before building out a distributed app footprint, it helps to know the following 
 In this part, you'll create a web app.
 
 > [!div class="checklist"]
-> - Create web apps and publish
-> - Add Code to Azure Repos
+> - Create web apps and publish.
+> - Add Code to Azure Repos.
 > - Point the app build to multiple cloud targets.
-> - Manage and configure the CD process
+> - Manage and configure the CD process.
 
 ### Prerequisites
 
@@ -244,7 +244,7 @@ Azure DevOps and Azure DevOps Server provide a highly configurable and manageabl
 ![Azure App Service](media/azure-stack-solution-geo-distributed/image27.png)
 
 > [!div class="checklist"]
-> - Map an existing custom DNS name to Azure Web Apps
+> - Map an existing custom DNS name to Azure Web Apps.
 > - Use a **CNAME record** and an **A record** to map a custom DNS name to App Service.
 
 ### Map an existing custom DNS name to Azure Web Apps
@@ -316,29 +316,29 @@ After adding the CNAME, the DNS records page looks like the following example:
 
 5. Select the **+** icon next to **Add hostname**.
 
-1. Type the fully qualified domain name, such as `www.northwindcloud.com`.
+6. Type the fully qualified domain name, such as `www.northwindcloud.com`.
 
-2. Select **Validate**.
+7. Select **Validate**.
 
-3. If indicated, add additional records of other types (`A` or `TXT`) to the domain name registrars DNS records. Azure will provide the values and types of these records:
+8. If indicated, add additional records of other types (`A` or `TXT`) to the domain name registrars DNS records. Azure will provide the values and types of these records:
 
    a.  An **A** record to map to the app's IP address.
 
    b.  A **TXT** record to map to the app's default hostname <app_name>.azurewebsites.net. App Service uses this record only at configuration time to verify custom domain ownership. After verification, delete the TXT record.
 
-4. Complete this task in the domain registrar tab and revalidate until the **Add hostname** button is activated.
+9. Complete this task in the domain registrar tab and revalidate until the **Add hostname** button is activated.
 
-5. Make sure that **Hostname record type** is set to **CNAME** (www.example.com or any subdomain).
+10. Make sure that **Hostname record type** is set to **CNAME** (www.example.com or any subdomain).
 
-6. Select **Add hostname**.
+11. Select **Add hostname**.
 
-7. Type the fully qualified domain name, such as `northwindcloud.com`.
+12. Type the fully qualified domain name, such as `northwindcloud.com`.
 
-8. Select **Validate**. The **Add** is activated.
+13. Select **Validate**. The **Add** is activated.
 
-9. Make sure that **Hostname record type** is set to **A record** (example.com).
+14. Make sure that **Hostname record type** is set to **A record** (example.com).
 
-10. **Add hostname**.
+15. **Add hostname**.
 
     It might take some time for the new hostnames to be reflected in the app's **Custom domains** page. Try refreshing the browser to update the data.
   
@@ -355,38 +355,38 @@ Browse to the DNS name(s) configured earlier (for example, `northwindcloud.com` 
 
 ## Part 3: Bind a custom SSL cert
 
-In this part:
+In this part, we will:
 
 > [!div class="checklist"]
-> - Bind the custom SSL certificate to App Service
-> - Enforce HTTPS for the app
-> - Automate SSL certificate binding with scripts
+> - Bind the custom SSL certificate to App Service.
+> - Enforce HTTPS for the app.
+> - Automate SSL certificate binding with scripts.
 
 > [!Note]  
-> If needed, obtain a customer SSL certificate in the Azure portal and bind it to the web app. Follow the [App Service Certificates tutorial](https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site).
+> If needed, obtain a customer SSL certificate in the Azure portal and bind it to the web app. For more information, see the [App Service Certificates tutorial](https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site).
 
 ### Prerequisites
 
 To complete this tutorial:
 
--   [Create an App Service app](https://docs.microsoft.com/azure/app-service/)
--   [Map a custom DNS name to your web app](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain)
--   Acquire an SSL certificate from a trusted certificate authority and use the key to sign the request
+-   [Create an App Service app.](https://docs.microsoft.com/azure/app-service/)
+-   [Map a custom DNS name to your web app.](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain)
+-   Acquire an SSL certificate from a trusted certificate authority and use the key to sign the request.
 
 ### Requirements for your SSL certificate
 
 To use a certificate in App Service, the certificate must meet all the following requirements:
 
--   Signed by a trusted certificate authority
+-   Signed by a trusted certificate authority.
 
--   Exported as a password-protected PFX file
+-   Exported as a password-protected PFX file.
 
--   Contains private key at least 2048 bits long
+-   Contains private key at least 2048 bits long.
 
--   Contains all intermediate certificates in the certificate chain
+-   Contains all intermediate certificates in the certificate chain.
 
 > [!Note]  
->  **Elliptic Curve Cryptography (ECC) certificates** work with App Service but are not included in this guide. Consult a certificate authority for assistance in creating ECC certificates. 
+>  **Elliptic Curve Cryptography (ECC) certificates** work with App Service but aren't included in this guide. Consult a certificate authority for assistance in creating ECC certificates. 
 
 #### Prepare the web app
 
@@ -410,7 +410,7 @@ To bind a custom SSL certificate to the web app, the [App Service plan](https://
 
     ![Check pricing tier](media/azure-stack-solution-geo-distributed/image35.png)
 
-Custom SSL is not supported in the **Free** or **Shared** tier. To upscale, follow the steps in the next section, or **Choose your pricing tier** page and skip to [Upload and bind your SSL certificate](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl).
+Custom SSL isn't supported in the **Free** or **Shared** tier. To upscale, follow the steps in the next section, or **Choose your pricing tier** page and skip to [Upload and bind your SSL certificate](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl).
 
 #### Scale up your App Service plan
 
@@ -461,9 +461,9 @@ Merge multiple certificates in the chain.
 
 #### Export certificate to PFX
 
-Export merged SSL certificate with the private key generated by the certificate.
+Export the merged SSL certificate with the private key generated by the certificate.
 
-A private key file is created via OpenSSL. To export the certificate to PFX, run the following command, replacing the placeholders *\<private-key-file>* and *\<merged-certificate-file>* with private key paths and merged certificate file.
+A private key file is created via OpenSSL. To export the certificate to PFX, run the following command, replacing the placeholders *\<private-key-file>* and *\<merged-certificate-file>* with private key paths and merged certificate file:
 
 ```powershell
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>
@@ -481,7 +481,7 @@ When IIS or **Certreq.exe** are used to generate the certificate request, instal
 
 3. In **PFX Certificate File**, select PFX file.
 
-4. 1. In **Certificate password**, type the password created when exporting the PFX file.
+4. In **Certificate password**, type the password created when exporting the PFX file.
 
 5. Select **Upload**.
 
@@ -489,7 +489,7 @@ When IIS or **Certreq.exe** are used to generate the certificate request, instal
 
 When App Service finishes uploading the certificate, it appears in the **SSL settings** page.
 
-![Alt text](media/azure-stack-solution-geo-distributed/image39.png)
+![SSL Settings](media/azure-stack-solution-geo-distributed/image39.png)
 
 #### Bind your SSL certificate
 
