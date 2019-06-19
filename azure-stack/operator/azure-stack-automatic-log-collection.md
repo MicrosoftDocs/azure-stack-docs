@@ -63,6 +63,12 @@ You can collect diagnostic logs in two different ways:
 For on-demand collection, CSS might provide its own blob service SAS URL. 
 Click **Collect logs now** and paste that SAS URL.
 
+## View collected logs
+
+Logs that were previously collected appear on the **Log collection** page in Help and Support. The **Collection time** refers to when the log collection operation began. The **From date** is the start of the time period you want to collect logs for and the **To date** is the end of that time period.
+
+
+
 ## Limitations
 
 <!--- Need to confirm what Theebs wanted to cover here--->
