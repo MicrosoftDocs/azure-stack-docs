@@ -161,7 +161,8 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
 
   |   |   |   |    |
   | - | - | - | -  |
-  |ACS                   |CacheService                   |IBC                            |OEM|
+  |ACS                   |CA                             |HRP                            |OboService|
+  |ACSBlob               |CacheService                   |IBC                            |OEM|
   |ACSDownloadService    |Compute                        |InfraServiceController         |OnboardRP|
   |ACSFabric             |CPI                            |KeyVaultAdminResourceProvider  |PXE|
   |ACSFrontEnd           |CRP                            |KeyVaultControlPlane           |QueryServiceCoordinator|
@@ -179,7 +180,6 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
   |AzureMonitor          |Gateway                        |NC                             |WAS|
   |BareMetal             |HealthMonitoring               |NonPrivilegedAppGateway        |WASPUBLIC|
   |BRP                   |HintingServiceV2               |NRP                            |   |
-  |CA                    |HRP                            |OboService                     |   |
   |   |   |   |    |
 
 ### Additional considerations

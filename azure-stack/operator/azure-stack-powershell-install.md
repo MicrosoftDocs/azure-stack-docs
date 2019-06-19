@@ -24,7 +24,7 @@ ms.lastreviewed: 05/09/2019
 
 To work with your cloud, you must install Azure Stack compatible PowerShell modules. Compatibility is enabled through a feature called *API profiles*.
 
-API profiles provide a way to manage version differences between Azure and Azure Stack. An API version profile is a set of Azure Resource Manager PowerShell modules with specific API versions. Each cloud platform has a set of supported API version profiles. For example, Azure Stack supports a specific profile version such as **2018-03-01-hybrid**. When you install a profile, the Azure Resource Manager PowerShell modules that correspond to the specified profile are installed.
+API profiles provide a way to manage version differences between Azure and Azure Stack. An API version profile is a set of Azure Resource Manager PowerShell modules with specific API versions. Each cloud platform has a set of supported API version profiles. For example, Azure Stack supports a specific profile version such as **2019-03-01-hybrid**. When you install a profile, the Azure Resource Manager PowerShell modules that correspond to the specified profile are installed.
 
 You can install Azure Stack compatible PowerShell modules in Internet connected, partially connected, or disconnected scenarios. This article walks you through the detailed instructions for these scenarios.
 
@@ -82,13 +82,7 @@ Before installing the required version, make sure that you uninstall any previou
 
 ## 4. Connected: Install PowerShell for Azure Stack with Internet connectivity
 
-Use AzureRM version 2.4.0 for Azure Stack version 1901 or later. In addition, to the AzureRM modules, install the Azure Stack-specific PowerShell modules. The API version profile and Azure Stack PowerShell modules you require will depend on the version of Azure Stack your are running.
-
-Installation has three steps:
-
-1. Install Azure Stack PowerShell depending on your version of Azure Stack
-2. Enable additional storage features
-3. Confirm the installation of PowerShell
+The API version profile and Azure Stack PowerShell modules you require will depend on the version of Azure Stack you are running.
 
 ### Install Azure Stack PowerShell
 
@@ -119,37 +113,6 @@ Run the following PowerShell script to install these modules on your development
     > - The AzureRM module version 2.4.0 comes with a breaking change for the cmdlet Remove-AzureRmStorageAccount. This cmdlet expects -Force parameter to be specified for removing the storage account without confirmation.
     > - You don't need to install **AzureRM.BootStrapper** to install the modules for Azure Stack version 1901 or later.
     > - Don't install the 2018-03-01-hybrid profile in addition to using the above AzureRM modules on Azure Stack version 1901 or later.
-
-- Azure Stack version 1811, install the profile using **AzureRM.BootStrapper**, in addition to the versions indicated in the cmdlets:
-
-    ```powershell  
-    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
-    Install-Module -Name AzureRM.BootStrapper
-
-    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-    Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
-
-    Install-Module -Name AzureStack -RequiredVersion 1.6.0
-    ```
-
-### Enable additional storage features
-
-To make use of the additional storage features (mentioned in the connected section), download and install the following packages as well.
-
-```powershell
-# Install the Azure.Storage module version 4.5.0
-Install-Module -Name Azure.Storage -RequiredVersion 4.5.0 -Force -AllowClobber
-
-# Install the AzureRM.Storage module version 5.0.4
-Install-Module -Name AzureRM.Storage -RequiredVersion 5.0.4 -Force -AllowClobber
-
-# Remove incompatible storage module installed by AzureRM.Storage
-Uninstall-Module -Name Azure.Storage -RequiredVersion 4.6.1 -Force
-
-# Load the modules explicitly specifying the versions
-Import-Module -Name Azure.Storage -RequiredVersion 4.5.0
-Import-Module -Name AzureRM.Storage -RequiredVersion 5.0.4
-```
 
 ### Confirm the installation of PowerShell
 
@@ -202,43 +165,11 @@ Installation has four steps:
     > [!Note]  
     > The Azure Stack module version 1.7.1 is a breaking change. To migrate from AzureStack 1.6.0 please refer to the [migration guide](https://github.com/Azure/azure-powershell/tree/AzureRM/documentation/migration-guides/Stack).
 
-  - Azure Stack 1811 or earlier.
-
-    ```powershell
-    Import-Module -Name PowerShellGet -ErrorAction Stop
-    Import-Module -Name PackageManagement -ErrorAction Stop
-
-    $Path = "<Path that is used to save the packages>"
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.6.0
-    ```
-
-  - Azure Stack 1809 or earlier.
-
-    ```powershell
-    Import-Module -Name PowerShellGet -ErrorAction Stop
-    Import-Module -Name PackageManagement -ErrorAction Stop
-
-    $Path = "<Path that is used to save the packages>"
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.5.0
-    ```
-
     > [!NOTE]
     > On machines without an Internet connection, we recommend executing the following cmdlet for disabling the telemetry data collection. You may experience a performance degradation of the cmdlets without disabling the telemetry data collection. This is applicable only for the machines without internet connections
     > ```powershell
     > Disable-AzureRmDataCollection
     > ```
-
-### Enable additional storage features
-
-To make use of the additional storage features (mentioned in the connected section), download and install the following packages as well.
-
-```powershell
-$Path = "<Path that is used to save the packages>"
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Azure.Storage -Path $Path -Force -RequiredVersion 4.5.0
-Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM.Storage -Path $Path -Force -RequiredVersion 5.0.4
-```
 
 ### Add your packages to your workstation
 
