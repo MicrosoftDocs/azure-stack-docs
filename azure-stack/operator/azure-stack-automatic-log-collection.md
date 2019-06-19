@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 06/19/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 06/12/2019
+ms.lastreviewed: 06/19/2019
 
 ---
 # Microsoft Azure Stack automatic log collection
@@ -28,10 +28,10 @@ The service is resilient to Storage Spaces Direct and Software Defined Networkin
 
 ## Workflow
 
-Automatic log collection isn't enabled by default. Before you can enable it, you need to [configure an Azure storage account](azure-stack-storage-account.md) where the logs can be uploaded. 
+Automatic log collection isn't enabled by default. Before you can enable it, you need to [configure an Azure storage account](azure-stack-storage-account.md) where the logs can be uploaded. Here's the 
 
-Create an Azure Storage Container SAS Uri
-Enable automatic log collection using the SAS Uri
+Create an Azure Storage blob container SAS URL
+Enable automatic log collection
 Support Bridge Service triggers collection and uploads logs based on alerts
 
 ## How to collect Azure Stack logs
@@ -45,21 +45,23 @@ You can collect diagnostic logs in two different ways:
 
 <!--- any permissions, subscription requirements, or anything similar?--->
 
-## How to collect Azure Stack logs
+## Configure automatic log collection 
 
-### Administration portal
-
+1. Sign in to the Azure Stack administrator portal.
 1. Open **Help and support Overview**.
 2. Click **Enable automatic log collection**.
 
    ![Screenshot shows where to enable log collection in Help and support](media/azure-stack-automatic-log-collection/azure-stack-help-overview-enable-option.png)
 
 3. Set Automatic log collection to **Enabled**.
-4. Enter the shared access signature (SAS) URL of the storage account.
+4. Enter the shared access signature (SAS) URL of the storage account blob container.
 
    ![Screenshot shows blob SAS URL](media/azure-stack-automatic-log-collection/azure-stack-enable-automatic-log-collection.png)
 
-### PowerShell
+## Configure on-demand log collection 
+
+For on-demand collection, CSS might provide its own blob service SAS URL. 
+Click **Collect logs now** and paste that SAS URL.
 
 ## Limitations
 
