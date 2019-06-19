@@ -332,7 +332,7 @@ Access to Azure resources by users and applications is authorized through Role B
 
 The type of resource you choose also establishes the *access scope* for the service principal. You can set the access scope at the subscription, resource group, or resource level. Permissions are inherited to lower levels of scope. For example, adding an application to the "Reader" role for a resource group, means it can read the resource group and any resources it contains.
 
-1. Sign in to the Azure Stack portal. To add role assignments for a given resource, your user account must belong to a role that declares the `Microsoft.Authorization/roleAssignments/write` permission. For example, either the [Owner](built-in-roles.md#owner) or [User Access Administrator](built-in-roles.md#user-access-administrator) built-in roles.  
+1. Sign in to the Azure Stack portal. To add role assignments for a given resource, your user account must belong to a role that declares the `Microsoft.Authorization/roleAssignments/write` permission. For example, either the [Owner](/azure/role-based-access-control/built-in-roles.md#owner) or [User Access Administrator](/azure/role-based-access-control/built-in-roles.md#user-access-administrator) built-in roles.  
 
 2. In the Azure Stack portal, navigate to the resource you wish to allow the service principal to access. For example, to assign the service principal to a role at the subscription scope, select **Subscriptions** and a specific subscription. You could instead select a resource group, or a specific resource such as a virtual machine. 
 
@@ -346,11 +346,11 @@ The type of resource you choose also establishes the *access scope* for the serv
      - When you find the app, select it and it will show under **Selected members**.
      - Select **Save** to finish assigning the role. 
 
-     [![Assign role](./media/azure-stack-create-service-principal/assign-role.png)](assign-role.png#lightbox)
+     [ ![Assign role](media/azure-stack-create-service-principal/assign-role.png)](media/azure-stack-create-service-principal/assign-role.png#lightbox)
 
 5. When finished, the application will show in the list of principals assigned for the current scope, for the given role.
 
-     [![Assigned role](./media/azure-stack-create-service-principal/assigned-role.png)](assigned-role.png#lightbox)
+     [ ![Assigned role](media/azure-stack-create-service-principal/assigned-role.png)](media/azure-stack-create-service-principal/assigned-role.png#lightbox)
 
 Now that you've created a service principal and assigned a role, you can begin using this within your application to access Azure Stack resources.  
 
