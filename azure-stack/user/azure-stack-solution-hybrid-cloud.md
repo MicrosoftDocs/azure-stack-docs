@@ -371,12 +371,12 @@ When traffic decreases, the Azure web app can automatically reduce the number of
 
 ## Create a Traffic Manager profile and configure cross-cloud scaling
 
-You'll create a Traffic Manager profile in Azure and then configure endpoints to enable cross-cloud scaling.
+Create a Traffic Manager profile in Azure and then configure endpoints to enable cross-cloud scaling.
 
 ### Create Traffic Manager profile
 
-1. Select **Create a resource**
-2. Select **Networking**
+1. Select **Create a resource**.
+2. Select **Networking**.
 3. Select **Traffic Manager profile** and configure the following:
 
    - In **Name**, enter a name for your profile. This name **must** be unique in the trafficmanager.net zone and is used to create a new DNS name (for example, northwindstore.trafficmanager.net).
@@ -389,11 +389,11 @@ You'll create a Traffic Manager profile in Azure and then configure endpoints to
 
     ![Create Traffic Manager profile](media/azure-stack-solution-hybrid-cloud/image19.png)
 
-   When the global deployment of your Traffic Manager profile is complete, it is shown in the list of resources for the resource group you created it under.
+   When the global deployment of your Traffic Manager profile is complete, it's shown in the list of resources for the resource group you created it under.
 
 ### Add Traffic Manager endpoints
 
-1. Search for the Traffic Manager profile you created. (If you navigated to the resource group for the profile, select the profile.)
+1. Search for the Traffic Manager profile you created. If you navigated to the resource group for the profile, select the profile.
 
 2. In **Traffic Manager profile**, under **SETTINGS**, select **Endpoints**.
 
@@ -402,9 +402,9 @@ You'll create a Traffic Manager profile in Azure and then configure endpoints to
 4. In **Add endpoint**, use the following settings for Azure Stack:
 
    - For **Type**, select **External endpoint**.
-   - Enter a **Name** for this endpoint.
-   - For **Fully-qualified domain name (FQDN) or IP** enter the external URL for your Azure Stack web app.
-   - For **Weight**, keep the default, **1**. This weight results in all traffic going to this endpoint if it is healthy.
+   - Enter a **Name** for the endpoint.
+   - For **Fully-qualified domain name (FQDN) or IP**, enter the external URL for your Azure Stack web app.
+   - For **Weight**, keep the default, **1**. This weight results in all traffic going to this endpoint if it's healthy.
    - Leave **Add as disabled** unchecked.
 
 5. Select **OK** to save the Azure Stack endpoint.
@@ -416,11 +416,11 @@ You'll configure the Azure endpoint next.
 3. On **Add endpoint**, use the following settings for Azure:
 
    - For **Type**, select **Azure endpoint**.
-   - Enter a **Name** for this endpoint.
+   - Enter a **Name** for the endpoint.
    - For **Target resource type**, select **App Service**.
    - For **Target resource**, select **Choose an app service** to see a list of Web Apps in the same subscription.
    - In **Resource**, pick the App service that you want to add as the first endpoint.
-   - For **Weight**, select **2**. This results in all traffic going to this endpoint if the primary endpoint is unhealthy, or you have a rule/alert that re-directs traffic when triggered.
+   - For **Weight**, select **2**. This setting results in all traffic going to this endpoint if the primary endpoint is unhealthy, or if you have a rule/alert that re-directs traffic when triggered.
    - Leave **Add as disabled** unchecked.
 
 4. Select **OK** to save the Azure endpoint.
@@ -431,9 +431,9 @@ After both endpoints are configured, they're listed in **Traffic Manager profile
 
 ## Set up Application Insights monitoring and alerting
 
-Azure Application Insights lets you to monitor your application and send alerts based on conditions you configure. Some examples are: the application is unavailable, is experiencing failures, or is showing performance issues.
+Azure Application Insights lets you to monitor your app and send alerts based on conditions you configure. Some examples are: the app is unavailable, is experiencing failures, or is showing performance issues.
 
-You'll use Application Insights metrics to create alerts. When these alerts trigger, your Web Applications instance will automatically switch from Azure Stack to Azure to scale out, and then back to Azure stack to scale in.
+You'll use Application Insights metrics to create alerts. When these alerts trigger, your web app's instance will automatically switch from Azure Stack to Azure to scale out, and then back to Azure stack to scale in.
 
 ### Create an alert from metrics
 
