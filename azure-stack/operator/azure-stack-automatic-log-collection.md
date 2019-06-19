@@ -60,8 +60,8 @@ You can collect diagnostic logs in two different ways:
 
 ## Configure on-demand log collection 
 
-For on-demand collection, CSS might provide its own blob service SAS URL. 
-Click **Collect logs now** and paste that SAS URL.
+You can also collect logs for a specific time. For on-demand collection, CSS might provide its own blob service SAS URL. 
+Click **Collect logs now**, choose a time up to four hours, and paste that SAS URL.
 
 ## View collected logs
 
