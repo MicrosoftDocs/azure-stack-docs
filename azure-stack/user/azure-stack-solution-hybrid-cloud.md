@@ -57,7 +57,7 @@ Before you start this tutorial, make sure you meet the following requirements:
 
 - An Azure Stack Development Kit (ASDK) or a subscription on an Azure Stack Integrated System. To deploy an Azure Stack Development Kit, follow the instructions in [Deploy the ASDK using the installer](../asdk/asdk-install.md).
 - Your Azure Stack installation should have the following installed:
-  - The Azure App Service. Work with your Azure Stack Operator to deploy and configure the Azure App Service on your environment. This tutorial requires the  App Service have at least one (1) available dedicated worker role.
+  - The Azure App Service. Work with your Azure Stack Operator to deploy and configure the Azure App Service on your environment. This tutorial requires the App Service to have at least one (1) available dedicated worker role.
   - A Windows Server 2016 image.
   - A Windows Server 2016 with a Microsoft SQL Server image.
   - The appropriate plans and offers.
@@ -70,7 +70,7 @@ Before you start this tutorial, make sure you meet the following requirements:
 
 ## Deploy a hybrid-connected SQL Server database server
 
-1. Sign to the Azure Stack User portal.
+1. Sign to the Azure Stack user portal.
 
 2. On the **Dashboard**, select **Marketplace**.
 
@@ -80,31 +80,31 @@ Before you start this tutorial, make sure you meet the following requirements:
 
     ![Select a virtual machine image](media/azure-stack-solution-hybrid-cloud/image2.png)
 
-4. On **Free SQL Server License: SQL Server 2017 Developer on Windows Server** select **Create**.
+4. On **Free SQL Server License: SQL Server 2017 Developer on Windows Server**, select **Create**.
 
-5. On **Basics>Configure basic settings**, provide a **Name** for the virtual machine (VM), a **User name** for the SQL Server SA, and a **Password** for the SA.  From the **Subscription** drop-down list, select the subscription that you are deploying to. For **Resource group**, use **Choose existing** and put the VM in the same resource group as your Azure Stack web app.
+5. On **Basics > Configure basic settings**, provide a **Name** for the virtual machine (VM), a **User name** for the SQL Server SA, and a **Password** for the SA.  From the **Subscription** drop-down list, select the subscription that you're deploying to. For **Resource group**, use **Choose existing** and put the VM in the same resource group as your Azure Stack web app.
 
     ![Configure basic settings for VM](media/azure-stack-solution-hybrid-cloud/image3.png)
 
 6. Under **Size**, pick a size for your VM. For this tutorial, we recommend A2_Standard or a DS2_V2_Standard.
 
-7. Under **Settings>Configure optional features**, configure the following settings:
+7. Under **Settings > Configure optional features**, configure the following settings:
 
-   - **Storage account**. Create a new account if you need one.
-   - **Virtual network**
+   - **Storage account**: Create a new account if you need one.
+   - **Virtual network**:
 
      > [!Important]  
      > Make sure your SQL Server VM is deployed on the same  virtual network as the VPN gateways.
 
-   - **Public IP address**. You can use the default settings.
-   - **Network security group** (NSG). Create a new NSG.
-   - **Extensions and Monitoring**. Keep the default settings.
-   - **Diagnostics storage account**. Create a new account if you need one.
+   - **Public IP address**: Use the default settings.
+   - **Network security group**: (NSG). Create a new NSG.
+   - **Extensions and Monitoring**: Keep the default settings.
+   - **Diagnostics storage account**: Create a new account if you need one.
    - Select **OK** to save your configuration.
 
      ![Configure optional features](media/azure-stack-solution-hybrid-cloud/image4.png)
 
-1. Under **SQL Server settings**, configure the following settings:
+8. Under **SQL Server settings**, configure the following settings:
    - For **SQL connectivity**, select to **Public (Internet)**.
    - For **Port**, keep the default, **1433**.
    - For **SQL authentication**, select **Enable**.
@@ -120,7 +120,7 @@ Before you start this tutorial, make sure you meet the following requirements:
 
     ![Configuration summary](media/azure-stack-solution-hybrid-cloud/image6.png)
 
-10. It will take some time to create the new VM. You can view the STATUS of your VMs in **Virtual machines**.
+10. It takes some time to create the new VM. You can view the STATUS of your VMs in **Virtual machines**.
 
     ![Virtual machines](media/azure-stack-solution-hybrid-cloud/image7.png)
 
