@@ -28,7 +28,7 @@ By using a hybrid cloud solution, you can combine the compliance benefits of a p
 
 ## Overview and assumptions
 
-You can follow this tutorial to set up a workflow that lets developers deploy an identical web application to a public cloud and a private cloud. This application will be able to access a non-Internet routable network hosted on the private cloud. These web applications are monitored and when there's a spike in traffic, a program modifies the DNS records to redirect traffic to the public cloud. When traffic drops to the level before the spike, traffic is routed back to the private cloud.
+Follow this tutorial to set up a workflow that lets developers deploy an identical web app to a public cloud and a private cloud. This app will be able to access a non-internet routable network hosted on the private cloud. These web apps are monitored and when there's a spike in traffic, a program modifies the DNS records to redirect traffic to the public cloud. When traffic drops to the level before the spike, traffic is routed back to the private cloud.
 
 This tutorial covers the following tasks:
 
@@ -53,20 +53,20 @@ This tutorial also assumes that you have an Azure subscription. If you don't hav
 
 ## Prerequisites
 
-Before you start this tutorial, make sure you can meet the following requirements:
+Before you start this tutorial, make sure you meet the following requirements:
 
 - An Azure Stack Development Kit (ASDK) or a subscription on an Azure Stack Integrated System. To deploy an Azure Stack Development Kit, follow the instructions in [Deploy the ASDK using the installer](../asdk/asdk-install.md).
 - Your Azure Stack installation should have the following installed:
   - The Azure App Service. Work with your Azure Stack Operator to deploy and configure the Azure App Service on your environment. This tutorial requires the  App Service have at least one (1) available dedicated worker role.
-  - A Windows Server 2016 image
-  - A Windows Server 2016 with a Microsoft SQL Server image
-  - The appropriate plans and offers
-  - A domain name for your web application. If you don't have a domain name you can buy one from a domain provider such as GoDaddy, Bluehost, and InMotion.
+  - A Windows Server 2016 image.
+  - A Windows Server 2016 with a Microsoft SQL Server image.
+  - The appropriate plans and offers.
+  - A domain name for your web app. If you don't have a domain name, you can buy one from a domain provider such as GoDaddy, Bluehost, and InMotion.
 - An SSL certificate for your domain from a trusted certificate authority such as LetsEncrypt.
-- A web application that communicates with a SQL Server database, and supports Application Insights. You can download the [dotnetcore-sqldb-tutorial](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial) sample app from GitHub.
+- A web app that communicates with a SQL Server database and supports Application Insights. You can download the [dotnetcore-sqldb-tutorial](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial) sample app from GitHub.
 - A hybrid network between an Azure virtual network and Azure Stack virtual network. For detailed instructions, see [Configure hybrid cloud connectivity with Azure and Azure Stack](azure-stack-solution-hybrid-connectivity.md).
 
-- A hybrid continuous integration/continuous deployment (CI/CD) pipeline with a private build agent on Azure Stack. For detailed instructions, see [Configure hybrid cloud identity with Azure and Azure Stack applications](azure-stack-solution-hybrid-identity.md)
+- A hybrid continuous integration/continuous deployment (CI/CD) pipeline with a private build agent on Azure Stack. For detailed instructions, see [Configure hybrid cloud identity with Azure and Azure Stack applications](azure-stack-solution-hybrid-identity.md).
 
 ## Deploy a hybrid-connected SQL Server database server
 
