@@ -126,7 +126,7 @@ Before you start this tutorial, make sure you meet the following requirements:
 
 ## Create web apps in Azure and Azure Stack
 
-The Azure App Service simplifies running and managing a web application. Because Azure Stack is consistent with Azure,  the App Service can run in both environments. You'll use the App Service to host your application.
+The Azure App Service simplifies running and managing a web app. Because Azure Stack is consistent with Azure,  the App Service can run in both environments. You'll use the App Service to host your app.
 
 ### Create web apps
 
@@ -136,16 +136,16 @@ The Azure App Service simplifies running and managing a web application. Because
 
 ### Add Route for Azure Stack
 
-The App Service on Azure Stack must be routable from the public Internet to let users access your application. If your Azure Stack is accessible from the Internet, make a note of the public-facing IP address or URL for the Azure Stack web app.
+The App Service on Azure Stack must be routable from the public internet to let users access your application. If your Azure Stack is accessible from the internet, make a note of the public-facing IP address or URL for the Azure Stack web app.
 
 If you're using an ASDK, you can [configure a static NAT mapping](../operator/azure-stack-create-vpn-connection-one-node.md#configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal) to expose App Service outside the virtual environment.
 
 ### Connect a web app in Azure to a hybrid network
 
-To provide connectivity between the web front-end in Azure and the SQL Server database in Azure Stack, the web app be connected to the hybrid network between Azure and Azure Stack. To enable connectivity, you'll have to:
+To provide connectivity between the web front-end in Azure and the SQL Server database in Azure Stack, the web app must be connected to the hybrid network between Azure and Azure Stack. To enable connectivity, you'll have to:
 
-- Configure point-to-site connectivity
-- Configure the web app
+- Configure point-to-site connectivity.
+- Configure the web app.
 - Modify the local network gateway in Azure Stack.
 
 ### Configure the Azure virtual network for point-to-site connectivity
@@ -156,7 +156,7 @@ The virtual network gateway in the Azure side of the hybrid network must allow p
 
     ![Point-to-site option](media/azure-stack-solution-hybrid-cloud/image8.png)
 
-2. Select **Configure now** configure point-to-site.
+2. Select **Configure now** to configure point-to-site.
 
     ![Start point-to-site configuration](media/azure-stack-solution-hybrid-cloud/image9.png)
 
@@ -195,9 +195,11 @@ The local network gateway in the Azure Stack virtual network needs to be configu
 
     ![Gateway configuration option](media/azure-stack-solution-hybrid-cloud/image14.png)
 
-2. In **Address space**, enter the point-to-site address range for the virtual network gateway in Azure.l Select **Save** to validate and save this configuration.
+2. In **Address space**, enter the point-to-site address range for the virtual network gateway in Azure.
 
     ![Point-to-site address space](media/azure-stack-solution-hybrid-cloud/image15.png)
+
+3. Select **Save** to validate and save the configuration.
 
 ## Configure DNS for cross-cloud scaling
 
