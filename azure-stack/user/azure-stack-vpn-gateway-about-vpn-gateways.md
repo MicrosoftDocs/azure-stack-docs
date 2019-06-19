@@ -99,6 +99,14 @@ Consider the following when you select the SKU:
 * Border Gateway Protocol (BGP) is not supported on the Basic SKU.
 * ExpressRoute-VPN gateway coexisting configurations are not supported in Azure Stack.
 
+## Gateway Availability
+
+High availability scenarios can only be configured on the **High Performance Gateway** connection SKU. Unlike Azure, which provides availability through both active/active and active/passive configurations, Azure Stack only supports the active/passive configuration. 
+
+### Failover
+
+There are 3 multi-tenant gateway infrastructure VMs in Azure Stack. Two of these VMs are in active mode, and the third is in redundant mode. Active VMs enable the creation of VPN connections on them, and the redundant VM only accepts VPN connections in the event of a failover. If an active gateway VM becomes unavailable, the VPN connection fails over to the redundant VM after a short period (a few seconds) of connection loss.
+
 ## Estimated aggregate throughput by SKU
 
 The following table shows the gateway types and the estimated aggregate throughput by gateway SKU:
