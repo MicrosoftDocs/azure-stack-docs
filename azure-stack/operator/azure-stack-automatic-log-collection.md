@@ -24,6 +24,7 @@ ms.lastreviewed: 06/19/2019
 The Support Bridge Service resource provider in Azure Stack streamlines the process for troubleshooting problems by helping operators easily upload log files for analysis by Microsoft Customer Support Services (CSS). 
 Support Bridge enables automatic log collection and upload based on alerts. 
 The service is resilient to Storage Spaces Direct and Software Defined Networking (SDN) failures. 
+
 <!--- can we add how the resiliency helps here?--->
 
 ## Workflow
