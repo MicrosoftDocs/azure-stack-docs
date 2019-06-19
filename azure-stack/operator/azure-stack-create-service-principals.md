@@ -328,27 +328,29 @@ VERBOSE: Remove-GraphApplication : END on AZS-ADFS01 under ADFSGraphEndpoint con
 
 ## Assign a role
 
-To access resources in your subscription using an application service principal, you must assign the service principal to a role for a specific resource. First decide which role represents the right permissions for the application. To learn about the available roles, see [RBAC: Built in Roles](/azure/role-based-access-control/built-in-roles).
+Access to Azure resources by users and applications is authorized through Role Based Access Control (RBAC). To allow an application to access resources in your subscription using its service principal, you must *assign* the service principal to a *role* for a specific *resource*. First decide which role represents the right *permissions* for the application. To learn about the available roles, see [Built-in roles for Azure resources](/azure/role-based-access-control/built-in-roles).
 
-The type of resource you choose establishes the access scope for the service principal. You can set the access scope at the subscription, resource group, or resource level. Permissions are inherited to lower levels of scope. For example, adding an application to the Reader role for a resource group means it can read the resource group and any resources it contains.
+The type of resource you choose also establishes the *access scope* for the service principal. You can set the access scope at the subscription, resource group, or resource level. Permissions are inherited to lower levels of scope. For example, adding an application to the "Reader" role for a resource group, means it can read the resource group and any resources it contains.
 
-1. In the Azure Stack portal, navigate to the resource you wish to give access to the service principal. For example, to assign the service principal to a role at the subscription scope, select **Subscriptions**. You could instead select a resource group, or a specific resource such as a virtual machine.
+1. Sign in to the Azure Stack portal. To add role assignments for a given resource, your user account must belong to a role that declares the `Microsoft.Authorization/roleAssignments/write` permission. For example, either the [Owner](built-in-roles.md#owner) or [User Access Administrator](built-in-roles.md#user-access-administrator) built-in roles.  
 
-2. Select the particular subscription (resource group or resource) to assign the application to.
+2. In the Azure Stack portal, navigate to the resource you wish to allow the service principal to access. For example, to assign the service principal to a role at the subscription scope, select **Subscriptions** and a specific subscription. You could instead select a resource group, or a specific resource such as a virtual machine. 
 
-     ![Select subscription for assignment](./media/azure-stack-create-service-principal/image16.png)
+     ![Select subscription for assignment](./media/azure-stack-create-service-principal/select-subscription.png)
 
-3. Select **Access Control (IAM)**.
+3. Select the **Access Control (IAM)** page, which is universal across all resources that support RBAC.
 
-     ![Select access](./media/azure-stack-create-service-principal/image17.png)
+4. Select **+ Add**, then:
+     - Under **Role**, pick the role you wish to assign to the application.
+     - Under **Select** search for your application, using a full or partial Application Name. When you register an application in Azure Stack, it's created with a full name consisting of *Azurestack-/<YourAppName/>-/<ClientId/>*. For example, if you used an application name of *App2*, and it was assigned ClientId *2bbe67d8-3fdb-4b62-87cf-cc41dd4344ff*, the full name would be  *Azurestack-App2-2bbe67d8-3fdb-4b62-87cf-cc41dd4344ff*. You can search for either the exact string, or a portion, such as *Azurestack* or *Azurestack-App2*.
+     - When you find the app, select it and it will show under **Selected members**.
+     - Select **Save** to finish assigning the role. 
 
-4. Select **Add role assignment**.
+     [![Assign role](./media/azure-stack-create-service-principal/assign-role.png)](assign-role.png#lightbox)
 
-5. Select the role you wish to assign to the application.
+5. When finished, the application will show in the list of principals assigned for the current scope, for the given role.
 
-6. Search for your application, and select it.
-
-7. Select **OK** to finish assigning the role. You see your application in the list of users assigned to a role for that scope.
+     [![Assigned role](./media/azure-stack-create-service-principal/assigned-role.png)](assigned-role.png#lightbox)
 
 Now that you've created a service principal and assigned a role, you can begin using this within your application to access Azure Stack resources.  
 
