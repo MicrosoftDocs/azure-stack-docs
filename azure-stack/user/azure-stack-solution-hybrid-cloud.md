@@ -205,13 +205,13 @@ The local network gateway in the Azure Stack virtual network needs to be configu
 
 By properly configuring DNS for cross-cloud applications, users can access the global Azure and Azure Stack instances of your web app. The DNS configuration for this tutorial also lets Azure Traffic Manager route traffic when the load increases or decreases.
 
-This tutorial uses Azure DNS to manage the DNS. (App Service domains won't work.)
+This tutorial uses Azure DNS to manage the DNS because App Service domains won't work.
 
 ### Create subdomains
 
-Because Traffic Manager relies on DNS CNAMEs, a subdomain is needed to properly route traffic to endpoints. For more information about DNS records and domain mapping, see [map domains with Traffic Manager](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager-custom-domain-name)
+Because Traffic Manager relies on DNS CNAMEs, a subdomain is needed to properly route traffic to endpoints. For more information about DNS records and domain mapping, see [map domains with Traffic Manager](https://docs.microsoft.com/azure/app-service/web-sites-traffic-manager-custom-domain-name).
 
-For the Azure endpoint you'll create a subdomain that users can use to access your web app. For this tutorial, can use **app.northwind.com**, but you should customize this value based on your own domain.
+For the Azure endpoint, you'll create a subdomain that users can use to access your web app. For this tutorial, can use **app.northwind.com**, but you should customize this value based on your own domain.
 
 You'll also need to create a subdomain with an A record for the Azure Stack endpoint. You can use **azurestack.northwind.com**.
 
@@ -227,9 +227,9 @@ You'll also need to create a subdomain with an A record for the Azure Stack endp
 
 ## Configure SSL certificates for cross-cloud scaling
 
-You need to ensure that sensitive data collected by your web application is secure in transit to, and at rest on the SQL database.
+You need to ensure that sensitive data collected by your web app is secure in transit to and when stored on the SQL database.
 
-You'll configure your Azure and Azure Stack web applications to use SSL certificates for all incoming traffic.
+You'll configure your Azure and Azure Stack web apps to use SSL certificates for all incoming traffic.
 
 ### Add SSL to Azure and Azure Stack
 
@@ -237,7 +237,7 @@ To add SSL to Azure:
 
 1. Make sure that the SSL certificate you obtain is valid for the subdomain you created. (It's okay to use wildcard certificates.)
 
-2. In Azure, follow the instructions in the **Prepare your web app** and **Bind your SSL certificate** sections of the [Bind an existing custom SSL certificate to Azure Web Apps](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-ssl) articles. Select **SNI-based SSL** as the **SSL Type**.
+2. In Azure, follow the instructions in the **Prepare your web app** and **Bind your SSL certificate** sections of the [Bind an existing custom SSL certificate to Azure Web Apps](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-ssl) article. Select **SNI-based SSL** as the **SSL Type**.
 
 3. Redirect all traffic to the HTTPS port. Follow the instructions in the   **Enforce HTTPS** section of the [Bind an existing custom SSL certificate to Azure Web Apps](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-ssl) article.
 
@@ -245,9 +245,9 @@ To add SSL to Azure Stack:
 
 - Repeat steps 1-3 that you used for Azure.
 
-## Configure and deploy the web application
+## Configure and deploy the web app
 
-You'll configure the application code to report telemetry to the correct Application Insights instance, and configure the web applications with the right connection strings. To learn more about Application Insights, see [What is Application Insights?](https://docs.microsoft.com/azure/application-insights/app-insights-overview)
+You'll configure the app code to report telemetry to the correct Application Insights instance, and configure the web applications with the right connection strings. To learn more about Application Insights, see [What is Application Insights?](https://docs.microsoft.com/azure/application-insights/app-insights-overview)
 
 ### Add Application Insights
 
@@ -257,14 +257,14 @@ You'll configure the application code to report telemetry to the correct Applica
 
 ### Configure dynamic connection strings
 
-Each instance of the web application will use a different method to connect to the SQL database. The application in Azure uses the private IP address of the SQL Server virtual machine (VM), and the application in Azure Stack uses the public IP address of the SQL Server VM.
+Each instance of the web app will use a different method to connect to the SQL database. The app in Azure uses the private IP address of the SQL Server virtual machine (VM), and the app in Azure Stack uses the public IP address of the SQL Server VM.
 
 > [!Note]  
-> On an Azure Stack Integrated System, the public IP address should not be Internet-routable. On an Azure Stack Development Kit (ASDK), the public IP address isn't routable outside the ASDK.
+> On an Azure Stack Integrated System, the public IP address shouldn't be internet-routable. On an Azure Stack Development Kit (ASDK), the public IP address isn't routable outside the ASDK.
 
-You can use App Service environment variables to pass a different connection string to each instance of the application.
+You can use App Service environment variables to pass a different connection string to each instance of the app.
 
-1. Open the application in Visual Studio.
+1. Open the app in Visual Studio.
 
 2. Open Startup.cs and find the following code block:
 
@@ -273,7 +273,7 @@ You can use App Service environment variables to pass a different connection str
         options.UseSqlite("Data Source=localdatabase.db"));
     ```
 
-3. Replace the previous code block with the following code, which uses a connection string defined in the appsettings.json file:
+3. Replace the previous code block with the following code, which uses a connection string defined in the *appsettings.json* file:
 
     ```C#
     services.AddDbContext<MyDatabaseContext>(options =>
@@ -282,20 +282,20 @@ You can use App Service environment variables to pass a different connection str
      services.BuildServiceProvider().GetService<MyDatabaseContext>().Database.Migrate();
     ```
 
-### Configure App Service application settings
+### Configure App Service app settings
 
 1. Create connection strings for Azure and Azure Stack. The strings should be the same, except for the IP addresses that are used.
 
-2. In Azure and Azure Stack, add the appropriate connection string [as an application setting](https://docs.microsoft.com/azure/app-service/web-sites-configure) in the web application, using `SQLCONNSTR\_` as a prefix in the name.
+2. In Azure and Azure Stack, add the appropriate connection string [as an app setting](https://docs.microsoft.com/azure/app-service/web-sites-configure) in the web application, using `SQLCONNSTR\_` as a prefix in the name.
 
-3. **Save** the web app settings and restart the application.
+3. **Save** the web app settings and restart the app.
 
 ## Enable automatic scaling in global Azure
 
-When you create your web app in an App Service environment it starts with one instance. You can automatically scale out to add instances to provide more compute resources for your app. Similarly, you can automatically scale in and reduce the number of instances your app needs.
+When you create your web app in an App Service environment, it starts with one instance. You can automatically scale out to add instances to provide more compute resources for your app. Similarly, you can automatically scale in and reduce the number of instances your app needs.
 
 > [!Note]  
-> You need to have an App Service Plan to configure scale out and scale in. If you don't have a plan, create one before starting the next steps.
+> You need to have an App Service plan to configure scale out and scale in. If you don't have a plan, create one before starting the next steps.
 
 ### Enable automatic scale out
 
@@ -341,11 +341,11 @@ When you create your web app in an App Service environment it starts with one in
 6. In **Metric Source**, select **Current Resource.**
 
    > [!Note]  
-   > The current resource will contain your App Service plan's name/GUID, and the **Resource Type** and **Resource** drop-down lists will be grayed out.
+   > The current resource will contain your App Service plan's name/GUID, and the **Resource Type** and **Resource** drop-down lists will be unavailable.
 
 ### Enable automatic scale in
 
-When traffic decreases, the Azure web application can automatically reduce the number of active instances to reduce costs. This action is less aggressive than scale out in order to minimize the impact on application users.
+When traffic decreases, the Azure web app can automatically reduce the number of active instances to reduce costs. This action is less aggressive than scale out in order to minimize the impact on app users.
 
 1. Navigate to the **Default** scale out condition, select **+ Add a rule**. Use the following Criteria and Actions for the rule.
 
