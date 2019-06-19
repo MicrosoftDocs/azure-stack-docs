@@ -68,7 +68,6 @@ Click **Collect logs now** and paste that SAS URL.
 Logs that were previously collected appear on the **Log collection** page in Help and Support. The **Collection time** refers to when the log collection operation began. The **From date** is the start of the time period you want to collect logs for and the **To date** is the end of that time period.
 
 
-
 ## Limitations
 
 <!--- Need to confirm what Theebs wanted to cover here--->
