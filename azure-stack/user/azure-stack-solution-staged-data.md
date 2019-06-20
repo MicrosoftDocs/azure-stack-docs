@@ -3,7 +3,7 @@ title: Deploy a staged data analytics solution to Azure Stack | Microsoft Docs
 description: Learn how to deploy a staged data analytics solution to Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: bryanla
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -11,18 +11,16 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 06/04/201v9
-ms.author: bryanla
+ms.date: 06/20/2019
+ms.author: mabrigg
 ms.reviewer: anajod
-ms.lastreviewed: 06/04/2019
+ms.lastreviewed: 06/20/2019
 ---
 
 # Tutorial: Deploy a staged data analytics solution to Azure Stack
 
-This article will show you how to deploy a solution for collecting data
-that requires analysis at the point of collection so that quick
-decisions can be made. Often this data collection occurs with no
-Internet access. When connectivity is established, you may need to do a
+This article will show you how to deploy a solution for collecting data that requires analysis at the point of collection so that quick
+decisions can be made. Often this data collection occurs with no Internet access. When connectivity is established, you may need to do a
 resource-intensive analysis of the data to gain additional insight.
 
 In this tutorial, you'll create a sample environment to:
@@ -35,9 +33,15 @@ In this tutorial, you'll create a sample environment to:
 > - Create a queue triggered function.
 > - Test the queue triggered function.
 
+> [!Tip]  
+> ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
+> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment and enables the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
+> 
+> The whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid application design, minimizing challenges in production environments.
+
 ## Architecture
 
-![](media/azure-stack-solution-stageddata/image1.png)
+![staged data analytics](media/azure-stack-solution-stageddata/image1.png)
 
 ## Prerequisites
 

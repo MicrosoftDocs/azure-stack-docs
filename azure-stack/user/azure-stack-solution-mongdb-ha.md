@@ -1,9 +1,9 @@
 ---
-title: Deploy a highly-available MongoDB solution to Azure and Azure Stack | Microsoft Docs
-description: Learn how deploy a highly-available MongoDB solution to Azure and Azure Stack
+title: Deploy a highly available MongoDB solution to Azure and Azure Stack | Microsoft Docs
+description: Learn how to deploy a highly available MongoDB solution to Azure and Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: bryanla
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/04/2019
-ms.author: bryanla
+ms.date: 06/20/2019
+ms.author: mabrigg
 ms.reviewer: anajod
-ms.lastreviewed: 06/04/2019
+ms.lastreviewed: 06/20/2019
 ---
 
 # Tutorial: Deploy a highly available MongoDB solution to Azure and Azure Stack
@@ -30,17 +30,26 @@ In this tutorial, you'll create a sample environment to:
 > - Use Docker to minimize dependency issues with Azure API Profiles
 > - Deploy a basic highly available MongoDB cluster with a disaster recovery site
 
+
+> [!Tip]  
+> ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
+> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment and enables the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
+> 
+> The whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid application design, minimizing challenges in production environments.
+
+
+
 ## Architecture
 
-![](media/azure-stack-solution-mongdb-ha/image1.png)
+![highly available MongoDB in Azure Stack](media/azure-stack-solution-mongdb-ha/image1.png)
 
 ## Prerequisites
 
-  - Two (2) connected Azure Stack Integrated Systems (Azure Stack), this deployment does not work on Azure Stack Development Kits (ASDKs). To
-    learn more about Azure Stack, see [What is Azure Stack?](https://azure.microsoft.com/overview/azure-stack/).
+  - Two connected Azure Stack Integrated Systems (Azure Stack), this deployment does not work on Azure Stack Development Kits (ASDKs). To
+    learn more about Azure Stack, see [What is Azure Stack?](https://azure.microsoft.com/overview/azure-stack/)
       - A tenant subscription on each Azure Stack.    
-      - **Make a note of each subscription ID and the ARM endpoint for each Azure Stack.**
-  - An Azure Active Directory (AAD) service principal that has permissions to the tenant subscription on each Azure Stack. You may need to create two service principals if the Azure Stacks are deployed against different AAD tenants. To learn how to create a service principal for Azure Stack, see [Create service principals to give applications access to Azure Stack resources](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals).    
+      - **Make a note of each subscription ID and the Azure Resource Manager endpoint for each Azure Stack.**
+  - An Azure Active Directory (Azure AD) service principal that has permissions to the tenant subscription on each Azure Stack. You may need to create two service principals if the Azure Stacks are deployed against different Azure AD tenants. To learn how to create a service principal for Azure Stack, see [Create service principals to give applications access to Azure Stack resources](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals).    
       - **Make a note of each service principal's application ID, client secret, and tenant name (xxxxx.onmicrosoft.com).**
   - Ubuntu 16.04 syndicated to each Azure Stack's Marketplace. To learn more about marketplace syndication, see [Download marketplace items from Azure to Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item).
   - [Docker for Windows](https://docs.docker.com/docker-for-windows/) installed on your local machine.
@@ -59,7 +68,7 @@ docker pull intelligentedge/mongodb-hadr:1.0.0
 
 1.  Once the container image has been successfully pulled, start the image.\
 
-    ```powershell  
+    ```bash  
     docker run -it intelligentedge/mongodb-hadr:1.0.0 powershell
     ```
 
@@ -87,7 +96,7 @@ docker pull intelligentedge/mongodb-hadr:1.0.0
     -AzureStackSubscriptionId_DR "drSubscriptionId"
     ```
 
-4.  Type "Y" to allow the NuGet provider to be installed, which will kick off the API Profile "2018-03-01-hybrid" modules to be installed.
+4.  Type `Y` to allow the NuGet provider to be installed, which will kick off the API Profile "2018-03-01-hybrid" modules to be installed.
 
 5.  The HA resources will deploy first. Monitor the deployment and wait for it to complete. Once you have the message stating that the HA deployment is complete, you can check the HA Azure Stack's portal to see the resources deployed. 
 
@@ -97,7 +106,7 @@ docker pull intelligentedge/mongodb-hadr:1.0.0
 
 8.  Once DR resource deployment has completed, exit the container.
 
-  ```
+  ```powershell
   exit
   ```
 

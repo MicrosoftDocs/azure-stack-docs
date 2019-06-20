@@ -36,8 +36,6 @@
         href: azure-stack-solution-hybrid-identity.md
       - name: Configure hybrid cloud connectivity
         href: azure-stack-solution-hybrid-connectivity.md
-      - name: Create a staged data analytics solution
-        href: azure-stack-solution-staged-data-analytics.md
       - name: Create cross-cloud scaling solutions with Azure
         href: azure-stack-solution-cloud-burst.md
       - name: Create a geo-distributed app solution
@@ -45,7 +43,7 @@
       - name: Deploy a hybrid cloud solution
         href: azure-stack-solution-hybrid-cloud.md
       - name: Deploy staged data analytics
-        href: azure-stack-solution-stageddata.md
+        href: azure-stack-solution-staged-data.md
       - name: Deploy high-availability MongoDB
         href: azure-stack-solution-mongdb-ha.md
       - name: Deploy high-availability SQL 2016

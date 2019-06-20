@@ -3,7 +3,7 @@ title: Create a staged data analytics solution with Azure and Azure Stack | Micr
 description: Learn how to create a staged data analytics solution with Azure and Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: bryanla
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/15/2019
-ms.author: bryanla
+ms.date: 06/20/2019
+ms.author: mabrigg
 ms.reviewer: anajod
-ms.lastreviewed: 12/01/2018
+ms.lastreviewed: 06/20/2019
 ---
 
 # Tutorial: Create a staged data analytics solution with Azure and Azure Stack 

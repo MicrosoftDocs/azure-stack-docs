@@ -3,7 +3,7 @@ title: Deploy a SQL 2016 availability group to Azure and Azure Stack | Microsoft
 description: Learn how to deploy a SQL 2016 availability group to Azure and Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: bryanla
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -12,19 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/04/2019
-ms.author: bryanla
+ms.date: 06/20/2019
+ms.author: mabrigg
 ms.reviewer: anajod
-ms.lastreviewed: 06/04/2019
+ms.lastreviewed: 06/20/2019
 ---
 
 # Tutorial: Deploy a SQL 2016 availability group to Azure and Azure Stack
 
-This article will step you through an automated deployment of a basic highly available (HA) SQL Server 2016 Enterprise cluster with an
-asynchronous disaster recovery (DR) site across two Azure Stack environments. To learn more about SQL Server 2016 and high availability,
-see [Always On availability groups: a high-availability and disaster-recovery solution](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2016).
-
-This pattern and architecture was created through customer research by one of our summer interns, Suren Jamiyanaa.
+This article will step you through an automated deployment of a basic highly available (HA) SQL Server 2016 Enterprise cluster with an asynchronous disaster recovery (DR) site across two Azure Stack environments. To learn more about SQL Server 2016 and high availability, see [Always On availability groups: a high-availability and disaster-recovery solution](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2016).
 
 In this tutorial, you will build a sample environment to:
 
@@ -33,16 +29,22 @@ In this tutorial, you will build a sample environment to:
 > - Use Docker to minimize dependency issues with Azure API Profiles
 > - Deploy a basic highly available SQL Server 2016 Enterprise cluster with a disaster recovery site
 
+> [!Tip]  
+> ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
+> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment and enables the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
+> 
+> The whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid application design, minimizing challenges in production environments.
+
 ## Architecture 
 
 ![](media/azure-stack-solution-sql-ha/image1.png)
 
 ## Prerequisites
 
-  - Two (2) connected Azure Stack Integrated Systems (Azure Stack), this deployment does not work on Azure Stack Development Kits (ASDKs). To learn more about Azure Stack, see [What is Azure Stack?](https://azure.microsoft.com/overview/azure-stack/).
+  - Two connected Azure Stack Integrated Systems (Azure Stack), this deployment does not work on Azure Stack Development Kits (ASDKs). To learn more about Azure Stack, see [What is Azure Stack?](https://azure.microsoft.com/overview/azure-stack/).
   - A tenant subscription on each Azure Stack.    
       - **Make a note of each subscription ID and the Azure Resource Manager endpoint for each Azure Stack.**
-  - An Azure Active Directory (AAD) service principal that has permissions to the tenant subscription on each Azure Stack. You may need to create two service principals if the Azure Stacks are deployed against different AAD tenants. To learn how to create a service principal for Azure Stack, see [Create service principals to give applications access to Azure Stack resources](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals).
+  - An Azure Active Directory (Azure AD) service principal that has permissions to the tenant subscription on each Azure Stack. You may need to create two service principals if the Azure Stacks are deployed against different Azure AD tenants. To learn how to create a service principal for Azure Stack, see [Create service principals to give applications access to Azure Stack resources](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals).
       - **Make a note of each service principal's application ID, client secret, and tenant name (xxxxx.onmicrosoft.com).**
   - SQL Server 2016 Enterprise syndicated to each Azure Stack's Marketplace. To learn more about marketplace syndication, see [Download marketplace items from Azure to Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item).
     **Make sure that your organization has the appropriate SQL licenses.**
@@ -64,13 +66,13 @@ different versions of Azure PowerShell.
 
 1.  Once the container image has been successfully pulled, start the image.
 
-```
+```bash  
  docker run -it intelligentedge/sqlserver2016-hadr:1.0.0 powershell
 ```
 
 2.  Once the container has started, you will be given an elevated PowerShell terminal in the container. Change directories to get to the deployment script.
 
-  ```
+  ```powershell  
   cd .\SQLHADRDemo\
   ```
 
@@ -98,7 +100,7 @@ different versions of Azure PowerShell.
 
 6.  Once DR resource deployment has completed, exit the container.
 
-```
+```powershell
 exit
 ```
 
