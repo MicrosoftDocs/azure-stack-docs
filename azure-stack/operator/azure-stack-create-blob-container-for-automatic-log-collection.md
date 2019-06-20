@@ -44,6 +44,9 @@ To configure the blob container in Azure, you'll need the [storage blog contribu
 
    [!Screenshot showing the blob container properties](media/azure-stack-automatic-log-collection/create-blob-container.png)
 
+<!--- Why don't i see Replcation or Access geo default?--->
+
+
 1. Click **Review and Create**.   
 1. After the deployment succeeds, click **Go to resource**. You can also pin the storage account to the Dashboard for easy access. 
 1. Click **Storage Explorer (preview)**, right-click **Blob containers**, and click **Create new blob container**. 

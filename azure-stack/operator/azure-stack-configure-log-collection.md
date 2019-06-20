@@ -51,9 +51,9 @@ To collect Azure Stack logs automatically, you can configure an existing blob co
 ## Configure on-demand log collection 
 
 For on-demand collection, CSS might provide a blob service SAS URL. 
-Click **Collect logs now**, choose any 1-4 hour period over the previous week, and enter the SAS URL that CSS provided.
 
-![Screenshot of the SAS URL](media/azure-stack-automatic-log-collection/blob-sas-url.png)
+1. Open **Help and support Overview** and click **Collect logs now**. 
+1. Choose any 1-4 hour period over the previous week, and enter the SAS URL that CSS provided.
 
 <!--- Will CSS always provide the SAS URL for on demand?--->
 
