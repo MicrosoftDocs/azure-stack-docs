@@ -31,25 +31,29 @@ To configure the blob container in Azure, you'll need the [storage blog contribu
 ## Create a blob container in Azure
 
 1. Sign in to the Azure portal.
-2. Click **Storage accounts** > **Add**.
-3. Create a blob container with these properties:  
+1. Click **Storage accounts** > **Add**.
+1. Create a blob container with these properties:  
    - Subscription: Choose a subscription. 
    - Resource group: Choose a resource group or create a new one.
    - Storage account name: Specify a globally unique name. 
    - Location: Choose a location that is close to your Azure Stack deployment.
    - Performance: Standard
-   - Account kind: Blob storage
+   - Account kind: BlobStorage
    - Replication: Locally redundant storage (LRS) 
    - Access geo default: Hot
-4. After the deployment succeeds, click **Go to resource**. You can also pin the storage account to the Dashboard for easy access. 
-5. Click **Storage Explorer (preview)**, right-click **Blob containers**, and click **Create new blob container**. 
-6. Enter a name for the new container and click **OK**.
-7. Right-click the new container, click **Get Shared Access Signature**, and choose these properties:
+
+   [!Screenshot showing the blob container properties](media/azure-stack-automatic-log-collection/create-blob-container.png)
+
+1. Click **Review and Create**.   
+1. After the deployment succeeds, click **Go to resource**. You can also pin the storage account to the Dashboard for easy access. 
+1. Click **Storage Explorer (preview)**, right-click **Blob containers**, and click **Create new blob container**. 
+1. Enter a name for the new container and click **OK**.
+1. Right-click the new container, click **Get Shared Access Signature**, and choose these properties:
    - Start time: If you want to make sure time zone differences don't cause collection to begin later than you expect, you can move the start time back. 
    - Expiry time: Increase to at least one week for automatic log collection or longer to avoid related alerts about upcoming expiration.
    - Time zone: UTC
    - Permissions: Read, Write, and List
-8. Click **Create**.  
+1. Click **Create**.  
 
 The URL is constructed by using the storage account name, the blog container name, and an access token. 
 Copy the URL and then [configure automatic log collection](azure-stack-configure-log-collection.md).
