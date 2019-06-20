@@ -23,7 +23,7 @@ ms.lastreviewed: 06/18/2019
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 > [!Note]  
-> Kubernetes on Azure Stack is in preview. An Azure Stack disconnected scenario is not currently supported by the preview. Only use the marketplace item for development and test scenarios.
+> Kubernetes on Azure Stack is in preview. An Azure Stack disconnected scenario is not currently supported by the preview. Only use the marketplace item for development and test scenarios. The [AKS Engine](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md) can be used for production.
 
 This article reviews how to troubleshoot your Kubernetes cluster. To begin troubleshooting, review the elements required for the deployment. You might need to collect the deployment logs from Azure Stack or the Linux VMs that host Kubernetes. To retrieve logs from an administrative endpoint, contact your Azure Stack admin.
 

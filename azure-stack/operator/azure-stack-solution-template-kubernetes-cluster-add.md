@@ -24,7 +24,7 @@ ms.lastreviewed: 06/18/2019
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 > [!note]  
-> Kubernetes on Azure Stack is in preview. An Azure Stack disconnected scenario is not currently supported by the preview. Only use the marketplace item for development and test scenarios.
+> Kubernetes on Azure Stack is in preview. An Azure Stack disconnected scenario is not currently supported by the preview. Only use the marketplace item for development and test scenarios. The [AKS Engine](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md) can be used for production.
 
 You can offer Kubernetes as a Marketplace item to your users. Your users can, then, deploy Kubernetes in a single, coordinated operation.
 
