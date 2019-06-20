@@ -28,7 +28,7 @@ By using a hybrid cloud solution, you can combine the compliance benefits of a p
 
 ## Overview and assumptions
 
-Follow this tutorial to set up a workflow that lets developers deploy an identical web app to a public cloud and a private cloud. This app will be able to access a non-internet routable network hosted on the private cloud. These web apps are monitored and when there's a spike in traffic, a program modifies the DNS records to redirect traffic to the public cloud. When traffic drops to the level before the spike, traffic is routed back to the private cloud.
+Follow this tutorial to set up a workflow that lets developers deploy an identical web app to a public cloud and a private cloud. This app can access a non-internet routable network hosted on the private cloud. These web apps are monitored and when there's a spike in traffic, a program modifies the DNS records to redirect traffic to the public cloud. When traffic drops to the level before the spike, traffic is routed back to the private cloud.
 
 This tutorial covers the following tasks:
 
@@ -227,7 +227,7 @@ You'll also need to create a subdomain with an A record for the Azure Stack endp
 
 ## Configure SSL certificates for cross-cloud scaling
 
-You need to ensure that sensitive data collected by your web app is secure in transit to and when stored on the SQL database.
+It's important to ensure sensitive data collected by your web app is secure in transit to and when stored on the SQL database.
 
 You'll configure your Azure and Azure Stack web apps to use SSL certificates for all incoming traffic.
 
@@ -345,7 +345,7 @@ When you create your web app in an App Service environment, it starts with one i
 
 ### Enable automatic scale in
 
-When traffic decreases, the Azure web app can automatically reduce the number of active instances to reduce costs. This action is less aggressive than scale out in order to minimize the impact on app users.
+When traffic decreases, the Azure web app can automatically reduce the number of active instances to reduce costs. This action is less aggressive than scale out which minimizes the impact on app users.
 
 1. Navigate to the **Default** scale out condition, select **+ Add a rule**. Use the following Criteria and Actions for the rule.
 
@@ -377,13 +377,13 @@ Create a Traffic Manager profile in Azure and then configure endpoints to enable
 
 1. Select **Create a resource**.
 2. Select **Networking**.
-3. Select **Traffic Manager profile** and configure the following:
+3. Select **Traffic Manager profile** and configure the following settings:
 
    - In **Name**, enter a name for your profile. This name **must** be unique in the trafficmanager.net zone and is used to create a new DNS name (for example, northwindstore.trafficmanager.net).
    - For **Routing method**, select the **Weighted**.
    - For **Subscription**, select the subscription you want to create  this profile in.
    - In **Resource Group**, create a new resource group for this profile.
-   - In **Resource group location**, select the location of the resource group. This setting refers to the location of the resource group and has no impact on the Traffic Manager profile that will be deployed globally.
+   - In **Resource group location**, select the location of the resource group. This setting refers to the location of the resource group and has no impact on the Traffic Manager profile that is deployed globally.
 
 4. Select **Create**.
 
@@ -420,7 +420,7 @@ You'll configure the Azure endpoint next.
    - For **Target resource type**, select **App Service**.
    - For **Target resource**, select **Choose an app service** to see a list of Web Apps in the same subscription.
    - In **Resource**, pick the App service that you want to add as the first endpoint.
-   - For **Weight**, select **2**. This setting results in all traffic going to this endpoint if the primary endpoint is unhealthy, or if you have a rule/alert that re-directs traffic when triggered.
+   - For **Weight**, select **2**. This setting results in all traffic going to this endpoint if the primary endpoint is unhealthy, or if you have a rule/alert that redirects traffic when triggered.
    - Leave **Add as disabled** unchecked.
 
 4. Select **OK** to save the Azure endpoint.
@@ -431,9 +431,9 @@ After both endpoints are configured, they're listed in **Traffic Manager profile
 
 ## Set up Application Insights monitoring and alerting
 
-Azure Application Insights lets you to monitor your app and send alerts based on conditions you configure. Some examples are: the app is unavailable, is experiencing failures, or is showing performance issues.
+Azure Application Insights lets you monitor your app and send alerts based on conditions you configure. Some examples are: the app is unavailable, is experiencing failures, or is showing performance issues.
 
-You'll use Application Insights metrics to create alerts. When these alerts trigger, your web app's instance will automatically switch from Azure Stack to Azure to scale out, and then back to Azure stack to scale in.
+You'll use Application Insights metrics to create alerts. When these alerts trigger, your web app's instance will automatically switch from Azure Stack to Azure to scale out, and then back to Azure Stack to scale in.
 
 ### Create an alert from metrics
 
@@ -447,7 +447,7 @@ You'll use this view to create a scale out alert and a scale in alert.
 
 1. Under **CONFIGURE**, select **Alerts (classic)**.
 2. Select **Add metric alert (classic)**.
-3. In **Add rule**, configure the following:
+3. In **Add rule**, configure the following settings:
 
    - For **Name**, enter **Burst into Azure Cloud**.
    - A **Description** is optional.
@@ -468,7 +468,7 @@ You'll use this view to create a scale out alert and a scale in alert.
 
 1. Under **CONFIGURE**, select **Alerts (classic)**.
 2. Select **Add metric alert (classic)**.
-3. In **Add rule**, configure the following:
+3. In **Add rule**, configure the following settings:
 
    - For **Name**, enter **Scale back into Azure Stack**.
    - A **Description** is optional.
@@ -503,12 +503,12 @@ When your web site reaches the thresholds that you configure, you'll receive an 
 
 2. Select **Endpoints**.
 3. Select the **Azure endpoint**.
-4. Under **Status** , select **Enabled**, and then select **Save**.
+4. Under **Status**, select **Enabled**, and then select **Save**.
 
     ![Enable Azure endpoint](media/azure-stack-solution-hybrid-cloud/image23.png)
 
 5. On **Endpoints** for the Traffic Manager profile, select **External endpoint**.
-6. Under **Status** , select **Disabled**, and then select **Save**.
+6. Under **Status**, select **Disabled**, and then select **Save**.
 
     ![Disable Azure Stack endpoint](media/azure-stack-solution-hybrid-cloud/image24.png)
 
