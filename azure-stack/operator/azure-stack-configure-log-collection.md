@@ -27,7 +27,7 @@ Logs can be uploaded on demand or automatically based system health conditions.
 Automatic log collection uses a new Support Bridge Service resource provider in Azure Stack.  
 The service is resilient to Storage Spaces Direct and Software Defined Networking (SDN) failures. 
 
-This topic covers how to configure log collection and resolve any errors you might see.
+This topic covers how to configure log collection, see which logs have been collected, and resolve possible errors.
 
 <!--- RP info came from the video. What else should we say in the intro? Should we mention the new resource provider? can we add how the resiliency helps here?--->
 
