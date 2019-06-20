@@ -37,7 +37,7 @@ This tutorial covers the following tasks:
 > - Connect a web app in global Azure to a hybrid network.
 > - Configure DNS for cross-cloud scaling.
 > - Configure SSL certificates for cross-cloud scaling.
-> - Configure and deploy the web application.
+> - Configure and deploy the web app.
 > - Create a Traffic Manager profile and configure it for cross-cloud scaling.
 > - Set up Application Insights monitoring and alerting for increased traffic.
 > - Configure automatic traffic switching between global Azure and Azure Stack.
@@ -66,7 +66,7 @@ Before you start this tutorial, make sure you meet the following requirements:
 - A web app that communicates with a SQL Server database and supports Application Insights. You can download the [dotnetcore-sqldb-tutorial](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial) sample app from GitHub.
 - A hybrid network between an Azure virtual network and Azure Stack virtual network. For detailed instructions, see [Configure hybrid cloud connectivity with Azure and Azure Stack](azure-stack-solution-hybrid-connectivity.md).
 
-- A hybrid continuous integration/continuous deployment (CI/CD) pipeline with a private build agent on Azure Stack. For detailed instructions, see [Configure hybrid cloud identity with Azure and Azure Stack applications](azure-stack-solution-hybrid-identity.md).
+- A hybrid continuous integration/continuous deployment (CI/CD) pipeline with a private build agent on Azure Stack. For detailed instructions, see [Configure hybrid cloud identity with Azure and Azure Stack apps](azure-stack-solution-hybrid-identity.md).
 
 ## Deploy a hybrid-connected SQL Server database server
 
@@ -136,7 +136,7 @@ The Azure App Service simplifies running and managing a web app. Because Azure S
 
 ### Add Route for Azure Stack
 
-The App Service on Azure Stack must be routable from the public internet to let users access your application. If your Azure Stack is accessible from the internet, make a note of the public-facing IP address or URL for the Azure Stack web app.
+The App Service on Azure Stack must be routable from the public internet to let users access your app. If your Azure Stack is accessible from the internet, make a note of the public-facing IP address or URL for the Azure Stack web app.
 
 If you're using an ASDK, you can [configure a static NAT mapping](../operator/azure-stack-create-vpn-connection-one-node.md#configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal) to expose App Service outside the virtual environment.
 
@@ -169,11 +169,11 @@ The virtual network gateway in the Azure side of the hybrid network must allow p
 
    ![Point-to-site settings](media/azure-stack-solution-hybrid-cloud/image10.png)
 
-### Integrate the Azure App Service application with the hybrid network
+### Integrate the Azure App Service app with the hybrid network
 
-1. To connect the application to the Azure VNet, follow the instructions in [Gateway required VNet integration](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#gateway-required-vnet-integration).
+1. To connect the app to the Azure VNet, follow the instructions in [Gateway required VNet integration](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#gateway-required-vnet-integration).
 
-2. Navigate to **Settings** for the App Service plan hosting the web application. In **Settings**, select **Networking**.
+2. Navigate to **Settings** for the App Service plan hosting the web app. In **Settings**, select **Networking**.
 
     ![Configure Networking](media/azure-stack-solution-hybrid-cloud/image11.png)
 
@@ -203,7 +203,7 @@ The local network gateway in the Azure Stack virtual network needs to be configu
 
 ## Configure DNS for cross-cloud scaling
 
-By properly configuring DNS for cross-cloud applications, users can access the global Azure and Azure Stack instances of your web app. The DNS configuration for this tutorial also lets Azure Traffic Manager route traffic when the load increases or decreases.
+By properly configuring DNS for cross-cloud apps, users can access the global Azure and Azure Stack instances of your web app. The DNS configuration for this tutorial also lets Azure Traffic Manager route traffic when the load increases or decreases.
 
 This tutorial uses Azure DNS to manage the DNS because App Service domains won't work.
 
@@ -221,7 +221,7 @@ You'll also need to create a subdomain with an A record for the Azure Stack endp
 
 ### Configure custom domains in Azure Stack
 
-1. Add the **azurestack.northwind.com** hostname to the Azure Stack web app by [mapping an A record to Azure App Service](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain#map-an-a-record). Use the Internet-routable IP address for the App Service application.
+1. Add the **azurestack.northwind.com** hostname to the Azure Stack web app by [mapping an A record to Azure App Service](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain#map-an-a-record). Use the Internet-routable IP address for the App Service app.
 
 2. Add the **app.northwind.com** hostname to the Azure Stack web app by [mapping a CNAME to Azure App Service](https://docs.microsoft.com/Azure/app-service/app-service-web-tutorial-custom-domain#map-a-cname-record). Use the hostname you configured in the previous step (1) as the target for the CNAME.
 
@@ -247,11 +247,11 @@ To add SSL to Azure Stack:
 
 ## Configure and deploy the web app
 
-You'll configure the app code to report telemetry to the correct Application Insights instance, and configure the web applications with the right connection strings. To learn more about Application Insights, see [What is Application Insights?](https://docs.microsoft.com/azure/application-insights/app-insights-overview)
+You'll configure the app code to report telemetry to the correct Application Insights instance, and configure the web apps with the right connection strings. To learn more about Application Insights, see [What is Application Insights?](https://docs.microsoft.com/azure/application-insights/app-insights-overview)
 
 ### Add Application Insights
 
-1. Open your web application in Microsoft Visual Studio.
+1. Open your web app in Microsoft Visual Studio.
 
 2. [Add Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-client-side-telemetry-for-web-applications) to your project to transmit the telemetry that Application Insights uses to create alerts when web traffic increases or decreases.
 
@@ -286,7 +286,7 @@ You can use App Service environment variables to pass a different connection str
 
 1. Create connection strings for Azure and Azure Stack. The strings should be the same, except for the IP addresses that are used.
 
-2. In Azure and Azure Stack, add the appropriate connection string [as an app setting](https://docs.microsoft.com/azure/app-service/web-sites-configure) in the web application, using `SQLCONNSTR\_` as a prefix in the name.
+2. In Azure and Azure Stack, add the appropriate connection string [as an app setting](https://docs.microsoft.com/azure/app-service/web-sites-configure) in the web app, using `SQLCONNSTR\_` as a prefix in the name.
 
 3. **Save** the web app settings and restart the app.
 
@@ -451,8 +451,8 @@ You'll use this view to create a scale out alert and a scale in alert.
 
    - For **Name**, enter **Burst into Azure Cloud**.
    - A **Description** is optional.
-   - Under **Source**, **Alert on**, select **Metrics**.
-   - Under **Criteria**, select your Subscription, the Resource group for your Traffic Manager profile, and the name of Traffic Manager profile for Resource.
+   - Under **Source** > **Alert on**, select **Metrics**.
+   - Under **Criteria**, select your subscription, the resource group for your Traffic Manager profile, and the name of the Traffic Manager profile for the resource.
 
 4. For **Metric**, select **Request Rate**.
 5. For **Condition**, select **Greater than**.
@@ -472,8 +472,8 @@ You'll use this view to create a scale out alert and a scale in alert.
 
    - For **Name**, enter **Scale back into Azure Stack**.
    - A **Description** is optional.
-   - Under **Source**, **Alert on**, select **Metrics**.
-   - Under **Criteria**, select your Subscription, the Resource group for your Traffic Manager profile, and the name of Traffic Manager profile for Resource.
+   - Under **Source** > **Alert on**, select **Metrics**.
+   - Under **Criteria**, select your subscription, the resource group for your Traffic Manager profile, and the name of the Traffic Manager profile for the resource.
 
 4. For **Metric**, select **Request Rate**.
 5. For **Condition**, select **Less than**.
@@ -491,11 +491,11 @@ The following screen capture shows the alerts for scale out and scale in.
 
 ## Redirect traffic between Azure and Azure Stack
 
-You can configure manual or automatic switching of your Web app traffic switching between Azure and Azure Stack.
+You can configure manual or automatic switching of your web app traffic switching between Azure and Azure Stack.
 
 ### Configure manual switching between Azure and Azure Stack
 
-When your Web site reaches the thresholds that you configure, you'll receive an alert. Use the following steps to manually redirect traffic to Azure.
+When your web site reaches the thresholds that you configure, you'll receive an alert. Use the following steps to manually redirect traffic to Azure.
 
 1. In the Azure portal, select your Traffic Manager profile.
 
@@ -512,20 +512,20 @@ When your Web site reaches the thresholds that you configure, you'll receive an 
 
     ![Disable Azure Stack endpoint](media/azure-stack-solution-hybrid-cloud/image24.png)
 
-After the endpoints are configured, application traffic goes to your Azure scale-out web app instead of the Azure Stack web app.
+After the endpoints are configured, app traffic goes to your Azure scale-out web app instead of the Azure Stack web app.
 
  ![Endpoints changed](media/azure-stack-solution-hybrid-cloud/image25.png)
 
 To reverse the flow back to Azure Stack, use the previous steps to:
 
-- Enable the Azure Stack endpoint
-- Disable the Azure endpoint
+- Enable the Azure Stack endpoint.
+- Disable the Azure endpoint.
 
 ### Configure automatic switching between Azure and Azure Stack
 
-You can also use Application Insights monitoring if your application runs in a [serverless](https://azure.microsoft.com/overview/serverless-computing/) environment provided by Azure Functions.
+You can also use Application Insights monitoring if your app runs in a [serverless](https://azure.microsoft.com/overview/serverless-computing/) environment provided by Azure Functions.
 
-In this scenario, you can configure Application Insights to use a webhook that calls a Function app. This app automatically enables or disables an endpoint in response to an alert.
+In this scenario, you can configure Application Insights to use a webhook that calls a function app. This app automatically enables or disables an endpoint in response to an alert.
 
 Use the following steps as a guide to configure automatic traffic switching.
 
@@ -537,7 +537,7 @@ Use the following steps as a guide to configure automatic traffic switching.
    - Authenticate to your Azure subscription.
    - Use a parameter that toggles the Traffic Manager endpoints to direct traffic to Azure or Azure Stack.
 
-5. Save your code and add the Function app's URL with the appropriate parameters to the **Webhook** section of the Application Insights alert rule settings.
+5. Save your code and add the function app's URL with the appropriate parameters to the **Webhook** section of the Application Insights alert rule settings.
 6. Traffic is automatically redirected when an Application Insights alert fires.
 
 ## Next steps
