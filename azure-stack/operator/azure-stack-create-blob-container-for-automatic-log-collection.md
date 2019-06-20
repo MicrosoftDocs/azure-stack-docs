@@ -44,7 +44,7 @@ To configure the blob container in Azure, you'll need the [storage blog contribu
 4. After the deployment succeeds, click **Go to resource**. You can also pin the storage account to the Dashboard for easy access. 
 5. Click **Storage Explorer (preview)**, right-click **Blob containers**, and click **Create new blob container**. 
 6. Enter a name for the new container and click **OK**.
-7. Right-click the new container and click **Get Shared Access Signature**.
+7. Right-click the new container, click **Get Shared Access Signature**, and choose these properties:
    - Start time: If you want to make sure time zone differences don't cause collection to begin later than you expect, you can move the start time back. 
    - Expiry time: Increase to at least one week for automatic log collection or longer to avoid related alerts about upcoming expiration.
    - Time zone: UTC
