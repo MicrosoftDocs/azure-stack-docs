@@ -1,6 +1,6 @@
 ---
-title: Deploy a SQL 2016 availability group to Azure and Azure Stack | Microsoft Docs
-description: Learn how to deploy a SQL 2016 availability group to Azure and Azure Stack
+title: Deploy a SQL Server 2016 availability group to Azure and Azure Stack | Microsoft Docs
+description: Learn how to deploy a SQL Server 2016 availability group to Azure and Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,7 +18,7 @@ ms.reviewer: anajod
 ms.lastreviewed: 06/20/2019
 ---
 
-# Tutorial: Deploy a SQL 2016 availability group to Azure and Azure Stack
+# Tutorial: Deploy a SQL Server 2016 availability group to Azure and Azure Stack
 
 This article will step you through an automated deployment of a basic highly available (HA) SQL Server 2016 Enterprise cluster with an asynchronous disaster recovery (DR) site across two Azure Stack environments. To learn more about SQL Server 2016 and high availability, see [Always On availability groups: a high-availability and disaster-recovery solution](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2016).
 
@@ -35,11 +35,11 @@ In this tutorial, you will build a sample environment to:
 > 
 > The whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid application design, minimizing challenges in production environments.
 
-## Architecture 
+## Architecture for SQL Server 2016
 
-![SQL HA Azure Stack](media/azure-stack-solution-sql-ha/image1.png)
+![SQL Server 2016 SQL HA Azure Stack](media/azure-stack-solution-sql-ha/image1.png)
 
-## Prerequisites
+## Prerequisites for SQL Server 2016
 
   - Two connected Azure Stack Integrated Systems (Azure Stack), this deployment does not work on Azure Stack Development Kits (ASDKs). To learn more about Azure Stack, see [What is Azure Stack?](https://azure.microsoft.com/overview/azure-stack/).
   - A tenant subscription on each Azure Stack.    
@@ -66,33 +66,33 @@ different versions of Azure PowerShell.
 
 1.  Once the container image has been successfully pulled, start the image.
 
-```powershell  
- docker run -it intelligentedge/sqlserver2016-hadr:1.0.0 powershell
-```
+      ```powershell  
+      docker run -it intelligentedge/sqlserver2016-hadr:1.0.0 powershell
+      ```
 
 2.  Once the container has started, you will be given an elevated PowerShell terminal in the container. Change directories to get to the deployment script.
 
-  ```powershell  
-  cd .\SQLHADRDemo\
-  ```
+      ```powershell  
+      cd .\SQLHADRDemo\
+      ```
 
 3.  Run the deployment. Provide credentials and resource names where needed. HA refers to the Azure Stack where the HA cluster will be deployed, and DR to the Azure Stack where the DR cluster will be deployed.
 
-  ```powershell
-  > .\Deploy-AzureResourceGroup.ps1 `
-  -AzureStackApplicationId_HA "applicationIDforHAServicePrincipal" `
-  -AzureStackApplicationSercet_HA "clientSecretforHAServicePrincipal" `
-  -AADTenantName_HA "hatenantname.onmicrosoft.com" `
-  -AzureStackResourceGroup_HA "haresourcegroupname" `
-  -AzureStackArmEndpoint_HA "https://management.haazurestack.com" `
-  -AzureStackSubscriptionId_HA "haSubscriptionId" `
-  -AzureStackApplicationId_DR "applicationIDforDRServicePrincipal" `
-  -AzureStackApplicationSercet_DR "ClientSecretforDRServicePrincipal" `
-  -AADTenantName_DR "drtenantname.onmicrosoft.com" `
-  -AzureStackResourceGroup_DR "drresourcegroupname" `
-  -AzureStackArmEndpoint_DR "https://management.drazurestack.com" `
-  -AzureStackSubscriptionId_DR "drSubscriptionId"
-  ```
+      ```powershell
+      > .\Deploy-AzureResourceGroup.ps1 `
+      -AzureStackApplicationId_HA "applicationIDforHAServicePrincipal" `
+      -AzureStackApplicationSercet_HA "clientSecretforHAServicePrincipal" `
+      -AADTenantName_HA "hatenantname.onmicrosoft.com" `
+      -AzureStackResourceGroup_HA "haresourcegroupname" `
+      -AzureStackArmEndpoint_HA "https://management.haazurestack.com" `
+      -AzureStackSubscriptionId_HA "haSubscriptionId" `
+      -AzureStackApplicationId_DR "applicationIDforDRServicePrincipal" `
+      -AzureStackApplicationSercet_DR "ClientSecretforDRServicePrincipal" `
+      -AADTenantName_DR "drtenantname.onmicrosoft.com" `
+      -AzureStackResourceGroup_DR "drresourcegroupname" `
+      -AzureStackArmEndpoint_DR "https://management.drazurestack.com" `
+      -AzureStackSubscriptionId_DR "drSubscriptionId"
+      ```
 
 4.  Type `Y` to allow the NuGet provider to be installed, which will kick off the API Profile "2018-03-01-hybrid" modules to be installed.
 
@@ -100,15 +100,15 @@ different versions of Azure PowerShell.
 
 6.  Once DR resource deployment has completed, exit the container.
 
-```powershell
-exit
-```
+    ```powershell
+    exit
+    ```
 
 7.  Inspect the deployment by viewing the resources in each Azure Stack's portal. Connect to one of the SQL instances on the HA environment and inspecting the Availability Group through SQL Server Management Studio (SSMS).
 
-![SQL HA](media/azure-stack-solution-sql-ha/image2.png)
+![SQL Server 2016 SQL HA](media/azure-stack-solution-sql-ha/image2.png)
 
-# Next steps
+## Next steps
 
   - Use SQL Server Management Studio to manually fail over the cluster, see [Perform a Forced Manual Failover of an Always On Availability Group (SQL Server)](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/perform-a-forced-manual-failover-of-an-availability-group-sql-server?view=sql-server-2017)
   - Learn more about hybrid cloud applications, see [Hybrid Cloud Solutions.](https://aka.ms/azsdevtutorials)

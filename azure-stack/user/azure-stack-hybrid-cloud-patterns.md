@@ -36,8 +36,8 @@ Hybrid scenarios vary greatly with the resources that are available for developm
 - [Create cross-cloud scaling solutions with Azure](azure-stack-solution-cloud-burst.md)
 - [Create a geo-distributed app solution with Azure and Azure Stack](azure-stack-solution-geo-distributed.md)
 - [Deploy a hybrid cloud solution with Azure and Azure Stack](azure-stack-solution-hybrid-cloud.md)
-- [Deploy Mongo database end-to-end deployments in Azure and Azure Stack](azure-stack-solution-mongdb-ha.md)
-- [Deploy SQL Server in Azure and Azure Stack](azure-stack-solution-sql-ha.md)
+- [Deploy MongoDB in Azure and Azure Stack](azure-stack-solution-mongodb-ha.md)
+- [Deploy SQL Server 2016 in Azure and Azure Stack](azure-stack-solution-sql-ha.md)
 
 
 ## Next steps

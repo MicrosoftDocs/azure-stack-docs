@@ -39,11 +39,11 @@ In this tutorial, you'll create a sample environment to:
 
 
 
-## Architecture
+## Architecture for MongoDB with Azure Stack
 
 ![highly available MongoDB in Azure Stack](media/azure-stack-solution-mongdb-ha/image1.png)
 
-## Prerequisites
+## Prerequisites for MongoDB with Azure Stack
 
   - Two connected Azure Stack Integrated Systems (Azure Stack), this deployment does not work on Azure Stack Development Kits (ASDKs). To
     learn more about Azure Stack, see [What is Azure Stack?](https://azure.microsoft.com/overview/azure-stack/)
@@ -64,7 +64,7 @@ different versions of Azure PowerShell.
 docker pull intelligentedge/mongodb-hadr:1.0.0
 ```
 
-# Deploy the clusters
+## Deploy the clusters
 
 1.  Once the container image has been successfully pulled, start the image.\
 
@@ -110,7 +110,7 @@ docker pull intelligentedge/mongodb-hadr:1.0.0
   exit
   ```
 
-# Next steps
+## Next steps
 
   - If you enabled the jump box VM on the DR Azure Stack, you can connect via SSH and interact with the MongoDB cluster by installing the mongo CLI. To learn more about interacting with MongoDB, see [The mongo Shell](https://docs.mongodb.com/manual/mongo/).
 

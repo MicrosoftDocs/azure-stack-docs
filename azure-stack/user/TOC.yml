@@ -45,8 +45,8 @@
       - name: Deploy staged data analytics
         href: azure-stack-solution-staged-data.md
       - name: Deploy high-availability MongoDB
-        href: azure-stack-solution-mongdb-ha.md
-      - name: Deploy high-availability SQL 2016
+        href: azure-stack-solution-mongodb-ha.md
+      - name: Deploy high-availability SQL Server 2016
         href: azure-stack-solution-sql-ha.md
 - name: How-to guides
   items:

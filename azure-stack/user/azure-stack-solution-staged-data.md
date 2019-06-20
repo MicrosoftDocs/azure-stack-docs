@@ -39,11 +39,11 @@ In this tutorial, you'll create a sample environment to:
 > 
 > The whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid application design, minimizing challenges in production environments.
 
-## Architecture
+## Architecture for staged data analytics
 
 ![staged data analytics](media/azure-stack-solution-staged-data/image1.png)
 
-## Prerequisites
+## Prerequisites for staged data analytics
 
   - An Azure subscription.
   - An Azure Active Directory (AAD) service principal that has permissions to the tenant subscription on Azure and Azure Stack. You may need to create two service principals if the Azure Stack is using a different AAD tenant than your Azure subscription. To learn how to create a service principal for Azure Stack, go [Create service principals to give applications access to Azure Stack resources](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals).
@@ -61,34 +61,34 @@ Docker images for each deployment eliminate dependency issues between different 
  docker pull intelligentedge/stageddatasolution:1.0.0
 ```
 
-# Deploy the solution
+## Deploy the solution
 
 1.  Once the container image has been successfully pulled, start the image.
 
-    ```    
-    docker run -it intelligentedge/stageddatasolution:1.0.0 powershell
-    ```
+      ```powershell  
+      docker run -it intelligentedge/stageddatasolution:1.0.0 powershell
+      ```
 
 2.  Once the container has started, you will be given an elevated PowerShell terminal in the container. Change directories to get to the deployment script.
 
-    ```
-    cd .\SDDemo\
-    ```
+      ```powershell  
+      cd .\SDDemo\
+      ```
 
 3.  Run the deployment. Provide credentials and resource names where needed. HA refers to the Azure Stack where the HA cluster will be deployed, and DR to the Azure Stack where the DR cluster will be deployed.
 
-    ```powershell
-    .\DeploySolution-Azure-AzureStack.ps1 `
-    -AzureApplicationId "applicationIDforAzureServicePrincipal" `
-    -AzureApplicationSercet "clientSecretforServicePrincipal" `
-    -AzureTenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" `
-    -AzureStackAADTenantName "azurestacktenant.onmicrosoft.com" `
-    -AzureStackTenantARMEndpoint "https://management.haazurestack.com" `
-    -AzureStackApplicationId "applicationIDforStackServicePrincipal" `
-    -AzureStackApplicationSercet "ClientSecretforStackServicePrincipal" `
-    -AzureStackTenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" `
-    -ResourcePrefix "aPrefixForResources"
-    ```
+      ```powershell
+      .\DeploySolution-Azure-AzureStack.ps1 `
+      -AzureApplicationId "applicationIDforAzureServicePrincipal" `
+      -AzureApplicationSercet "clientSecretforServicePrincipal" `
+      -AzureTenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" `
+      -AzureStackAADTenantName "azurestacktenant.onmicrosoft.com" `
+      -AzureStackTenantARMEndpoint "https://management.haazurestack.com" `
+      -AzureStackApplicationId "applicationIDforStackServicePrincipal" `
+      -AzureStackApplicationSercet "ClientSecretforStackServicePrincipal" `
+      -AzureStackTenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" `
+      -ResourcePrefix "aPrefixForResources"
+      ```
 
 1.  If prompted; enter a region for the Azure deployment and Application Insights.
 
@@ -96,7 +96,7 @@ Docker images for each deployment eliminate dependency issues between different 
 
 3.  Once the resources have been deployed, test that the data will be generated for both Azure Stack and Azure.
 
-    ```    
+    ```powershell  
       .\TDAGenerator.exe
     ```
 
@@ -105,11 +105,11 @@ Docker images for each deployment eliminate dependency issues between different 
 
 ### Azure Web App
  
-![](media/azure-stack-solution-staged-data/image2.png)
+![staged data analytics solution](media/azure-stack-solution-staged-data/image2.png)
  
 ### Azure Stack Web App
  
-![](media/azure-stack-solution-staged-data/image3.png)
+![staged data analytics solution for Azure Stack](media/azure-stack-solution-staged-data/image3.png)
 
 ## Next steps
 
