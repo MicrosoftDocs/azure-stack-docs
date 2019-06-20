@@ -24,7 +24,11 @@ ms.lastreviewed: 06/18/2019
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 > [!Note]  
-> Kubernetes on Azure Stack is in preview. An Azure Stack disconnected scenario is not currently supported by the preview. Only use the marketplace item for development and test scenarios.
+> Kubernetes on Azure Stack is in preview. An Azure Stack disconnected scenario is not currently supported by the preview. Only use the marketplace item for development and test scenarios. The AKS Engine can be used for production.
+
+
+
+Could we say something along the lines that the marketplace item is meant for dev/test scenarios while the AKS Engine for production scenarios?
 
 You can follow the steps in this article to deploy and set up the resources for Kubernetes in a single, coordinated operation. The steps use an Azure Resource Manager solution template. You'll need to collect the required information about your Azure Stack installation, generate the template, and then deploy to your cloud. The Azure Stack template doesn't use the same managed AKS service offered in global Azure.
 
