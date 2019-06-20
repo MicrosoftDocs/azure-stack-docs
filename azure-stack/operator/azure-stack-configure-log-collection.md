@@ -21,57 +21,47 @@ ms.lastreviewed: 06/20/2019
 ---
 # Configure Azure Stack log collection
 
-You can streamline the process for troubleshooting problems by uploading log files for analysis by Microsoft Customer Support Services (CSS). 
+You can streamline the process for troubleshooting problems with Azure Stack by uploading log files for analysis by Microsoft Customer Support Services (CSS). 
+Logs can be uploaded on demand or automatically based system health conditions. 
 
-
-
-
-It uses a new Support Bridge Service resource provider in Azure Stack. 
-Support Bridge enables automatic log collection and upload based on alerts. 
+Automatic log collection uses a new Support Bridge Service resource provider in Azure Stack.  
 The service is resilient to Storage Spaces Direct and Software Defined Networking (SDN) failures. 
 
-<!--- What else should we say in the intro? Should we mention the new resource provider? can we add how the resiliency helps here?--->
+This topic covers how to configure log collection
 
-## Workflow
+<!--- RP info came from the video. What else should we say in the intro? Should we mention the new resource provider? can we add how the resiliency helps here?--->
 
-By default, automatic log collection isn't enabled. Before you can enable it, you need to [configure an Azure storage account](azure-stack-storage-account.md) where the logs can be uploaded. you can use Here are the complete steps:
+## Configure a blob container
 
-1. Create an Azure Storage blob container SAS URL
-1. Enable automatic log collection
-1. Support Bridge Service triggers collection and uploads logs based on alerts
-
-## How to collect Azure Stack logs
-
-You can collect diagnostic logs in two different ways:
-
-- Automatically based on system health conditions
-- On demand based on any 1-4 hour period over the previous week
-
-## Prerequisites
-
-<!--- any permissions, subscription requirements, or anything similar?--->
+To collect Azure Stack logs automatically, you can configure an existing blob container in Azure or [create a new one](azure-stack-create-blob-container-for-automatic-log-collection.md). 
 
 ## Configure automatic log collection 
 
 1. Sign in to the Azure Stack administrator portal.
 1. Open **Help and support Overview**.
-2. Click **Enable automatic log collection**.
+1. Click **Enable automatic log collection**.
 
    ![Screenshot shows where to enable log collection in Help and support](media/azure-stack-automatic-log-collection/azure-stack-help-overview-enable-option.png)
 
-3. Set Automatic log collection to **Enabled**.
-4. Enter the shared access signature (SAS) URL of the storage account blob container.
+1. Set Automatic log collection to **Enabled**.
+1. Enter the shared access signature (SAS) URL of the storage account blob container.
 
    ![Screenshot shows blob SAS URL](media/azure-stack-automatic-log-collection/azure-stack-enable-automatic-log-collection.png)
 
 ## Configure on-demand log collection 
 
-You can also collect logs for a specific time. For on-demand collection, CSS might provide its own blob service SAS URL. 
-Click **Collect logs now**, choose a time up to four hours, and paste that SAS URL.
+For on-demand collection, CSS might provide a blob service SAS URL. 
+Click **Collect logs now**, choose any 1-4 hour period over the previous week, and enter the SAS URL that CSS provided.
+
+![Screenshot of the SAS URL](media/azure-stack-automatic-log-collection/blob-sas-url.png)
+
+<!--- Will CSS always provide the SAS URL for on demand?--->
 
 ## View collected logs
 
-Logs that were previously collected appear on the **Log collection** page in Help and Support. The **Collection time** refers to when the log collection operation began. The **From date** is the start of the time period you want to collect logs for and the **To date** is the end of that time period.
+You can see logs that were previously collected on the **Log collection** page in Help and Support. 
+The **Collection time** refers to when the log collection operation began. 
+The **From date** is the start of the time period you want to collect logs for and the **To date** is the end of that time period.
 
 
 ## Limitations
