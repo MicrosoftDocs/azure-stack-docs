@@ -397,9 +397,10 @@
       href: azure-stack-backup-reference.md
   - name: Get support  
     items:
-    - name: Help and Support  
-      href: azure-stack-help-and-support-overview.md
+    - name: Help and support  
       items:
+      - name: Overview      
+        href: azure-stack-help-and-support-overview.md
       - name: Create a blob container
         href: azure-stack-create-blob-container-for-automatic-log-collection.md
       - name: Configure log collection
