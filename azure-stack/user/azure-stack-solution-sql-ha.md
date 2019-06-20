@@ -37,7 +37,7 @@ In this tutorial, you will build a sample environment to:
 
 ## Architecture 
 
-![](media/azure-stack-solution-sql-ha/image1.png)
+![SQL HA Azure Stack](media/azure-stack-solution-sql-ha/image1.png)
 
 ## Prerequisites
 
@@ -58,7 +58,7 @@ different versions of Azure PowerShell.
 1.  Make sure that Docker for Windows is using Windows containers.
 2.  Run the following in an elevated command prompt to get the Docker container with the deployment scripts.
 
-```
+```powershell  
  docker pull intelligentedge/sqlserver2016-hadr:1.0.0
 ```
 
@@ -66,7 +66,7 @@ different versions of Azure PowerShell.
 
 1.  Once the container image has been successfully pulled, start the image.
 
-```bash  
+```powershell  
  docker run -it intelligentedge/sqlserver2016-hadr:1.0.0 powershell
 ```
 
@@ -94,7 +94,7 @@ different versions of Azure PowerShell.
   -AzureStackSubscriptionId_DR "drSubscriptionId"
   ```
 
-4.  Type "Y" to allow the NuGet provider to be installed, which will kick off the API Profile "2018-03-01-hybrid" modules to be installed.
+4.  Type `Y` to allow the NuGet provider to be installed, which will kick off the API Profile "2018-03-01-hybrid" modules to be installed.
 
 5.  Wait for resource deployment to complete.
 
@@ -106,7 +106,7 @@ exit
 
 7.  Inspect the deployment by viewing the resources in each Azure Stack's portal. Connect to one of the SQL instances on the HA environment and inspecting the Availability Group through SQL Server Management Studio (SSMS).
 
-![](media/azure-stack-solution-sql-ha/image2.png)
+![SQL HA](media/azure-stack-solution-sql-ha/image2.png)
 
 # Next steps
 

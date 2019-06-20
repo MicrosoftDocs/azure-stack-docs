@@ -68,7 +68,7 @@ docker pull intelligentedge/mongodb-hadr:1.0.0
 
 1.  Once the container image has been successfully pulled, start the image.\
 
-    ```bash  
+    ```powershell  
     docker run -it intelligentedge/mongodb-hadr:1.0.0 powershell
     ```
 
