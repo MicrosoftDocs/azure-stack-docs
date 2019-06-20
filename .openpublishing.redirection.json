@@ -97,7 +97,7 @@
     },
     {
       "source_path": "azure-stack/user/azure-stack-solution-staged-data-analytics.md",
-      "redirect_url": "/azure-stack/user/ azure-stack-solution-staged-data.md",
+      "redirect_url": "/azure-stack/user/azure-stack-solution-staged-data",
       "redirect_document_id": false
     }
   ]

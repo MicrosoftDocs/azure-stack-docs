@@ -100,9 +100,9 @@ different versions of Azure PowerShell.
 
 6.  Once DR resource deployment has completed, exit the container.
 
-    ```powershell
-    exit
-    ```
+      ```powershell
+      exit
+      ```
 
 7.  Inspect the deployment by viewing the resources in each Azure Stack's portal. Connect to one of the SQL instances on the HA environment and inspecting the Availability Group through SQL Server Management Studio (SSMS).
 
