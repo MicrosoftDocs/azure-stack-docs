@@ -56,8 +56,6 @@
     href: azure-stack-use-portal.md
   - name: Connect with PowerShell
     href: azure-stack-powershell-configure-user.md
-  - name: Use the Azure Stack API
-    href: azure-stack-rest-api-use.md
   - name: Security & compliance
     items:
     - name: Use role-based access control
@@ -158,36 +156,36 @@
           href: azure-stack-solution-template-kubernetes-trouble.md
       - name: Deploy Cognitive Services
         href: azure-stack-solution-template-cognitive-services.md
-  - name: Build apps
+  - name: Use Azure Stack Resource Manager
     items:
-    - name: Develop for Azure Stack
-      href: azure-stack-developer.md
-    - name: Set up development environment
-      href:  azure-stack-dev-start.md
+    - name: Configure your client
       items:
-      - name: Azure Stack PowerShell overview
-        href: azure-stack-powershell-overview.md
-      - name: Install Azure Stack PowerShell
-        href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
-        maintainContext: true
-      - name: Connect with PowerShell
-        href: azure-stack-powershell-configure-user.md
-      - name: Download Azure Stack tools
-        href: /azure-stack/operator/azure-stack-powershell-download?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
-        maintainContext: true
-      - name: Use Docker to run PowerShell
-        href: azure-stack-powershell-user-docker.md
-      - name: Connect using Azure Account Extension
-        href: azure-stack-dev-start-vscode-azure.md
-      - name: Install Visual Studio
-        href: azure-stack-install-visual-studio.md
-      - name: Use an SSH public key
-        href: azure-stack-dev-start-howto-ssh-public-key.md
-      - name: Deploy a Linux VM for a web app
-        href: azure-stack-dev-start-howto-deploy-linux.md
-      - name: Using API version profiles
-        href: azure-stack-version-profiles.md
+      - name: Azure SDK clients
+        href: azure-stack-dev-start.md
+      - name: Azure Stack PowerShell client
         items:
+        - name: Azure Stack PowerShell overview
+          href: azure-stack-powershell-overview.md
+        - name: Install Azure Stack PowerShell
+          href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          maintainContext: true
+        - name: Connect with PowerShell
+          href: azure-stack-powershell-configure-user.md
+        - name: Download Azure Stack tools
+          href: /azure-stack/operator/azure-stack-powershell-download?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+          maintainContext: true
+        - name: Use Docker to run PowerShell
+          href: azure-stack-powershell-user-docker.md
+      - name: Visual Studio Code client
+        href: azure-stack-dev-start-vscode-azure.md
+      - name: Visual Studio client
+        href: azure-stack-install-visual-studio.md
+      - name: Secure Shell client
+        href: azure-stack-dev-start-howto-ssh-public-key.md
+      - name: Use API version profiles
+        items:
+        - name: Overview
+          href: azure-stack-version-profiles.md
         - name: .NET
           href: azure-stack-version-profiles-net.md
         - name: Java
@@ -201,22 +199,25 @@
         - name: Python
           href: azure-stack-version-profiles-python.md
         - name: Resource provider APIs supported by profiles
-          href: azure-stack-profiles-azure-resource-manager-versions.md
-    - name: Common deployments for Azure Stack
-      href: azure-stack-dev-start-deploy-app.md
+          href: azure-stack-profiles-azure-resource-manager-versions.md        
+    - name: Deploy a VM and web app
       items:
-      - name: Deploy .Net Core (C#) to a VM
+      - name: Deploy a C# web app to a Windows VM
         href: azure-stack-dev-start-howto-vm-dotnet.md
-      - name: Deploy Java to a VM
-        href: azure-stack-dev-start-howto-vm-java.md
-      - name: Deploy Go to a VM
-        href: azure-stack-dev-start-howto-vm-go.md
-      - name: Deploy Ruby to a VM
-        href: azure-stack-dev-start-howto-vm-ruby.md
-      - name: Deploy Python to a VM
-        href: azure-stack-dev-start-howto-vm-python.md
-      - name: Deploy NodeJS to a VM
-        href: azure-stack-dev-start-howto-vm-nodejs.md
+      - name: Deploy a web app to a Linux VM
+        items:
+        - name: Deploy a Linux VM for a web app
+          href: azure-stack-dev-start-howto-deploy-linux.md  
+        - name: Deploy a Java web app 
+          href: azure-stack-dev-start-howto-vm-java.md
+        - name: Deploy a Go web app 
+          href: azure-stack-dev-start-howto-vm-go.md
+        - name: Deploy a Ruby web app 
+          href: azure-stack-dev-start-howto-vm-ruby.md
+        - name: Deploy a Python web app 
+          href: azure-stack-dev-start-howto-vm-python.md
+        - name: Deploy a NodeJS web app 
+          href: azure-stack-dev-start-howto-vm-nodejs.md
     - name: Use the Azure Stack Policy module
       href: azure-stack-policy-module.md
     - name: Use templates
@@ -225,6 +226,8 @@
         href: azure-stack-arm-templates.md
       - name: Template considerations
         href: azure-stack-develop-templates.md
+      - name: Develop templates in Azure
+        href: azure-stack-developer.md  
       - name: Check templates
         href: azure-stack-validate-templates.md
       - name: Deploy with the portal
@@ -235,6 +238,8 @@
         href: azure-stack-deploy-template-command-line.md
       - name: Deploy with Visual Studio
         href: azure-stack-deploy-template-visual-studio.md
+    - name: Use REST to access resources
+      href: azure-stack-rest-api-use.md
   - name: Enable a Cloud Service Provider
     href: azure-stack-csp-enable-billing-usage-tracking.md
 - name: Reference

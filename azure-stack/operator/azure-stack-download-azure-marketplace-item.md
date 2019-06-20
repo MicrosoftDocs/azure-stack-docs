@@ -15,7 +15,7 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: sethm
-ms.reviewer: unknown
+ms.reviewer: ihcherie
 ms.lastreviewed: 12/10/2018
 ---
 
@@ -44,7 +44,7 @@ Your Azure Stack deployment must have internet connectivity, and be [registered 
   
 1. Sign in to the Azure Stack administrator portal.
 
-2.	Review the available storage space before downloading marketplace items. Later, when you select items for download, you can compare the download size to your available storage capacity. If capacity is limited, consider options for [managing available space](azure-stack-manage-storage-shares.md#manage-available-space). 
+2. Review the available storage space before downloading marketplace items. Later, when you select items for download, you can compare the download size to your available storage capacity. If capacity is limited, consider options for [managing available space](azure-stack-manage-storage-shares.md#manage-available-space). 
 
     To review available space, in **Region management** select the region you want to explore, and then go to **Resource Providers** > **Storage**:
 
@@ -88,7 +88,7 @@ There are two parts to this scenario:
 
 - The marketplace syndication tool is downloaded during the first procedure. 
 
-- You can install [AzCopy]((/azure/storage/common/storage-use-azcopy) for optimal download performance, but this is not required.
+- You can install [AzCopy](/azure/storage/common/storage-use-azcopy) for optimal download performance, but this is not required.
 
 ### Use the marketplace syndication tool to download marketplace items
 

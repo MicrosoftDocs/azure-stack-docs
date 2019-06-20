@@ -15,7 +15,13 @@
     - name: Checklist for applying updates
       href: azure-stack-release-notes-checklist.md
     - name: Security updates
-      href: azure-stack-release-notes-security-updates-1904.md
+      href: azure-stack-release-notes-security-updates-1905.md
+    - name: 1905 update
+      items:
+      - name: Release notes
+        href: azure-stack-release-notes-1905.md
+      - name: Known issues
+        href: azure-stack-release-notes-known-issues-1905.md
     - name: 1904 update
       items:
       - name: Release notes
@@ -26,8 +32,6 @@
       href: azure-stack-update-1903.md
     - name: 1902 update
       href: azure-stack-update-1902.md      
-    - name: 1901 update 
-      href: azure-stack-update-1901.md      
 - name: Quickstarts
   expanded: true
   items:
@@ -391,14 +395,18 @@
       href: azure-stack-backup-best-practices.md
     - name: Backup reference
       href: azure-stack-backup-reference.md
-  - name: Troubleshoot  
+  - name: Get support  
     items:
-    - name: Known issues
-      href: azure-stack-troubleshooting.md
-    - name: Diagnostics in Azure Stack
-      href: azure-stack-diagnostics.md
-    - name: Validation for Azure Stack
-      href: azure-stack-diagnostic-test.md  
+    - name: Help and Support  
+      href: azure-stack-help-and-support-overview.md
+    - name: Troubleshoot  
+      items:
+      - name: Known issues
+        href: azure-stack-troubleshooting.md
+      - name: Diagnostics in Azure Stack
+        href: azure-stack-diagnostics.md
+      - name: Validation for Azure Stack
+        href: azure-stack-diagnostic-test.md  
 - name: Reference
   items:
   - name: Azure Stack PowerShell
@@ -411,6 +419,8 @@
     href: /azure-stack/asdk/
 - name: Resources
   items:
+  - name: Training and certification
+    href: azure-stack-train-and-cert.md
   - name: Azure Stack roadmap
     href: https://azure.microsoft.com/roadmap/?tag=azure-stack
   - name: Azure Stack MSDN forum
@@ -421,5 +431,3 @@
     href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-stack
-  - name: Training and certification
-    href: azure-stack-train-and-cert.md

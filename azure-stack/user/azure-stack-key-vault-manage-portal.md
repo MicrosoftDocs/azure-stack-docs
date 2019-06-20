@@ -13,13 +13,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 06/11/2019
 ms.author: sethm
 ms.lastreviewed: 01/04/2019
 
 ---
 
-# Manage Key Vault in Azure Stack by using the portal
+# Manage Key Vault in Azure Stack using the portal
 
 You can manage Key Vault in Azure Stack by using the Azure Stack portal. This article describes how to create and manage a key vault in Azure Stack.
 
@@ -51,7 +51,7 @@ You must subscribe to an offer that includes the Azure Key Vault service.
 
 ## Manage keys and secrets
 
-After you create a vault, use the following procedure to create and manage keys and secrets within the vault.
+After you create a key vault, use the following procedure to create and manage keys and secrets within the vault.
 
 ### Create a key
 
@@ -81,7 +81,7 @@ After the key is successfully created, you can select it under **Keys** and view
 
 3. Under **Secrets**, select **Add**.
 
-4. Under **Create a secret**, from the list of **Upload options**, choose an option with which you want to create a secret. You can create a secret **Manually** if you enter a value for the secret or upload a **Certificate** from your local machine.
+4. Under **Create a secret**, from the list of **Upload options**, choose an option with which you want to create a secret. You can create a secret **Manually** if you enter a value for the secret, or upload a **Certificate** from your local machine.
 
 5. Enter a **Name** for the secret. The secret name can contain only alphanumeric characters and the hyphen (-) character.
 

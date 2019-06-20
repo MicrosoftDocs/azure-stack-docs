@@ -171,7 +171,7 @@ The virtual network gateway in the Azure side of the hybrid network must allow p
 
 ### Integrate the Azure App Service application with the hybrid network
 
-1. To connect the application to the Azure VNet, follow the instructions in [Enabling VNet Integration](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#enabling-vnet-integration).
+1. To connect the application to the Azure VNet, follow the instructions in [Gateway required VNet integration](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet#gateway-required-vnet-integration).
 
 2. Navigate to **Settings** for the App Service plan hosting the web application. In **Settings**, select **Networking**.
 
@@ -251,7 +251,7 @@ You'll configure the application code to report telemetry to the correct Applica
 
 1. Open your web application in Microsoft Visual Studio.
 
-2. [Add Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-core#add-application-insights-telemetry) to your project to transmit the telemetry that Application Insights uses to create alerts when web traffic increases or decreases.
+2. [Add Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core#enable-client-side-telemetry-for-web-applications) to your project to transmit the telemetry that Application Insights uses to create alerts when web traffic increases or decreases.
 
 ### Configure dynamic connection strings
 
