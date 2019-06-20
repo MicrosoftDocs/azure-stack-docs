@@ -22,16 +22,16 @@ ms.lastreviewed: 06/19/2019
 # Create a blob container to automatically collect Azure Stack logs 
 
 You can create a blob container in Azure to save Azure Stack log files that will be collected for analysis by Microsoft Customer Support Services (CSS). 
-You can use an existing blob container or complete the following steps to create a new one.
+You can configure an existing blob container or complete the following steps to create a new one.
 
 ## Permissions
 
 To configure the blob container in Azure, you'll need the [storage blog contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or be given [permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). 
 
-## Create a storage account in Azure
+## Create a blob container in Azure
 
 1. Sign in to the Azure portal.
-2. You can use an existing storage account or create a new one. To create a new one, click **Storage accounts** > **Add**.
+2. Click **Storage accounts** > **Add**.
 3. Create a blob container with these properties:  
    - Subscription: Choose a subscription. 
    - Resource group: Choose a resource group or create a new one.
@@ -41,7 +41,6 @@ To configure the blob container in Azure, you'll need the [storage blog contribu
    - Account kind: Blob storage
    - Replication: Locally redundant storage (LRS) 
    - Access geo default: Hot
-   {!}
 4. After the deployment succeeds, click **Go to resource**. You can also pin the storage account to the Dashboard for easy access. 
 5. Click **Storage Explorer (preview)**, right-click **Blob containers**, and click **Create new blob container**. 
 6. Enter a name for the new container and click **OK**.
