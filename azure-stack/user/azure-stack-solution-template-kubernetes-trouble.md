@@ -12,9 +12,9 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.author: mabrigg
-ms.date: 04/02/2019
+ms.date: 06/18/2019
 ms.reviewer: waltero
-ms.lastreviewed: 03/20/2019
+ms.lastreviewed: 06/18/2019
 
 ---
 
@@ -143,9 +143,9 @@ Follow these steps to collect and download the cluster logs:
 
     | Parameter           | Description                                                                                                      | Example                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -d, --vmd-host      | The public IP or the fully qualified domain name (FQDN) of the DVM. The VM name starts with `vmd-`. | IP: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
+    | -d, --vmd-host      | The public IP or the fully-qualified domain name (FQDN) of the DVM. The VM name starts with `vmd-`. | IP: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
     | -h, --help  | Print command usage. | |
-    | -i, --identity-file | The RSA private key file passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | C:\data\id_rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH)
+    | -i, --identity-file | Path to the RSA private key file passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | C:\data\id_rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH)
     | -m, --master-host   | The public IP or the fully qualified domain name (FQDN) of a Kubernetes master node. The VM name starts with `k8s-master-`. | IP: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
     | -u, --user          | The user name passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | azureuser (default value) |
 

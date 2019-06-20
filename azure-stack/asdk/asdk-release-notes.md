@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 06/14/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 06/04/2019
+ms.lastreviewed: 06/14/2019
 
 ---
 
@@ -35,15 +35,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 
 ### Fixed and known issues
 
-- Due to a service principal timeout when running the registration script, in order to [register the ASDK](asdk-register.md) successfully you must edit the **RegisterWithAzure.psm1** PowerShell script. Do the following:
-
-  1. On the ASDK host computer, open the file **C:\AzureStack-Tools-master\Registration\RegisterWithAzure.psm1** in an editor with elevated permissions.
-  2. On line 1249, add a `-TimeoutInSeconds 1800` parameter at the end. This is required due to a service principal timeout when running the registration script. Line 1249 should now appear as follows:
-
-     ```powershell
-      $servicePrincipal = Invoke-Command -Session $PSSession -ScriptBlock { New-AzureBridgeServicePrincipal -RefreshToken $using:RefreshToken -AzureEnvironment $using:AzureEnvironmentName -TenantId $using:TenantId -TimeoutInSeconds 1800 }
-      ```
-
+- Fixed an issue in which you had to edit the **RegisterWithAzure.psm1** PowerShell script in order to [register the ASDK](asdk-register.md) successfully.
 - For a list of other Azure Stack issues fixed in this release, see [this section](../operator/azure-stack-release-notes-1905.md#fixes) of the Azure Stack release notes.
 - For a list of known issues, see [this article](../operator/azure-stack-release-notes-known-issues-1905.md).
 - Note that [available Azure Stack hotfixes](../operator/azure-stack-release-notes-1905.md#hotfixes) are not applicable to the Azure Stack ASDK.
