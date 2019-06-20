@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Stack automatic log collection | Microsoft Docs
+title: Configure log collection | Microsoft Docs
 description: How to configure automatic log collection in Azure Stack Help + Support.
 services: azure-stack
 documentationcenter: ''
@@ -13,27 +13,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2019
+ms.date: 06/20/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 06/19/2019
+ms.lastreviewed: 06/20/2019
 
 ---
-# Microsoft Azure Stack automatic log collection
+# Configure Azure Stack log collection
 
-The Support Bridge Service resource provider in Azure Stack streamlines the process for troubleshooting problems by helping operators easily upload log files for analysis by Microsoft Customer Support Services (CSS). 
+You can streamline the process for troubleshooting problems by uploading log files for analysis by Microsoft Customer Support Services (CSS). 
+
+
+
+
+It uses a new Support Bridge Service resource provider in Azure Stack. 
 Support Bridge enables automatic log collection and upload based on alerts. 
 The service is resilient to Storage Spaces Direct and Software Defined Networking (SDN) failures. 
 
-<!--- can we add how the resiliency helps here?--->
+<!--- What else should we say in the intro? Should we mention the new resource provider? can we add how the resiliency helps here?--->
 
 ## Workflow
 
-Automatic log collection isn't enabled by default. Before you can enable it, you need to [configure an Azure storage account](azure-stack-storage-account.md) where the logs can be uploaded. Here's the 
+By default, automatic log collection isn't enabled. Before you can enable it, you need to [configure an Azure storage account](azure-stack-storage-account.md) where the logs can be uploaded. you can use Here are the complete steps:
 
-Create an Azure Storage blob container SAS URL
-Enable automatic log collection
-Support Bridge Service triggers collection and uploads logs based on alerts
+1. Create an Azure Storage blob container SAS URL
+1. Enable automatic log collection
+1. Support Bridge Service triggers collection and uploads logs based on alerts
 
 ## How to collect Azure Stack logs
 

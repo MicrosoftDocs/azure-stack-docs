@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Stack storage account for automatic log collection | Microsoft Docs
+title: Create a blob container to automatically collect Azure Stack logs | Microsoft Docs
 description: How to configure a storage account for automatic log collection in Azure Stack Help + Support.
 services: azure-stack
 documentationcenter: ''
@@ -19,7 +19,7 @@ ms.reviewer: prchint
 ms.lastreviewed: 06/19/2019
 
 ---
-# Microsoft Azure Stack storage account for automatic log collection
+# Create a blob container to automatically collect Azure Stack logs 
 
 You can create a [storage account in Azure](https://docs.microsoft.com/azure-stack/operator/azure-stack-manage-storage-accounts) to save Azure Stack log files that will be collected for analysis by Microsoft Customer Support Services (CSS). 
 You need to provide the shared access signature (SAS) URL for the storage account blob container. 
@@ -29,13 +29,13 @@ You can use an existing blob container or complete the following steps to create
 
 ## Prerequisites
 
-<!--- Do they need storage blog contrbutor role?  --->
+<!--- Do they need storage blog contributor role?  --->
 
 ## Create a storage account for automatic log collection
 
 1. Sign in to the Azure portal.
 2. You can use an existing storage account or create a new one. To create a new one, click **Storage accounts** > **Add**.
-3. Configure these properties:  
+3. Create a blob container with these properties:  
    - Subscription: Choose a subscription. 
    - Resource group: Choose a resource group or create a new one.
    - Storage account name: Specify a globally unique name. 

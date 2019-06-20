@@ -400,10 +400,10 @@
     - name: Help and Support  
       href: azure-stack-help-and-support-overview.md
       items:
-      - name: Create a storage account
-        href: azure-stack-storage-account.md
+      - name: Create a blob container
+        href: azure-stack-create-blob-container-for-automatic-log-collection.md
       - name: Configure log collection
-        href: azure-stack-automatic-log-collection.md
+        href: azure-stack-configure-log-collection.md
     - name: Troubleshoot  
       items:
       - name: Known issues
