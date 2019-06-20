@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 06/20/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 06/05/2019
+ms.lastreviewed: 06/20/2019
 ---
 
 # Azure Stack security updates
@@ -25,7 +25,7 @@ This article lists all the security updates in the last four updates of Azure St
 
 ## 1906 update
 
-The 1906 update installs the following security updates:
+This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack.
 
 ## 1905 update
 
