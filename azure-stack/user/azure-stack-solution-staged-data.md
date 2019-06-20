@@ -41,7 +41,7 @@ In this tutorial, you'll create a sample environment to:
 
 ## Architecture
 
-![staged data analytics](media/azure-stack-solution-stageddata/image1.png)
+![staged data analytics](media/azure-stack-solution-staged-data/image1.png)
 
 ## Prerequisites
 
@@ -105,11 +105,11 @@ Docker images for each deployment eliminate dependency issues between different 
 
 ### Azure Web App
  
-![](media/azure-stack-solution-stageddata/image2.png)
+![](media/azure-stack-solution-staged-data/image2.png)
  
 ### Azure Stack Web App
  
-![](media/azure-stack-solution-stageddata/image3.png)
+![](media/azure-stack-solution-staged-data/image3.png)
 
 ## Next steps
 
