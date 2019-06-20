@@ -26,7 +26,7 @@ You can configure an existing blob container or complete the following steps to 
 
 ## Permissions
 
-To configure the blob container in Azure, you'll need the [storage blog contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or be given [permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). 
+To configure the blob container in Azure, you'll need the [storage blog contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or be given [specific permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). 
 
 ## Create a blob container in Azure
 
