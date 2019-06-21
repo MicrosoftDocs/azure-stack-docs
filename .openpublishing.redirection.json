@@ -94,6 +94,11 @@
       "source_path": "azure-stack/operator/azure-stack-update-1712.md",
       "redirect_url": "/azure-stack/operator/azure-stack-release-notes-1905",
       "redirect_document_id": false
-    }    
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-solution-staged-data-analytics.md",
+      "redirect_url": "/azure-stack/user/azure-stack-solution-staged-data",
+      "redirect_document_id": false
+    }
   ]
 }
