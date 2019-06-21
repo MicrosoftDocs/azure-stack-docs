@@ -33,7 +33,7 @@ Next, if any Virtual Machine scale sets refer to a specific version, you should 
 
 ### What are the licensing options for Windows Server Marketplace images on Azure Stack?
 
-Microsoft offers two versions of Windows Server images through the Azure Stack marketplace:
+Microsoft offers two versions of Windows Server images through the Azure Stack marketplace. Only one version of this image can be used in an Azure Stack environment.  
 
 - **Pay as you use**: These images run the full price Windows meters.
    Who should use: Enterprise Agreement (EA) customers who use the *Consumption billing model*; CSPs who do not want to use SPLA licensing.
@@ -44,7 +44,9 @@ Azure Hybrid Use Benefit (AHUB) is not supported on Azure Stack. Customers who l
 
 ### What if I downloaded the wrong version to offer my tenants/users?
 
-Delete the incorrect version first through Marketplace Management. Wait for it to complete fully (look at the notifications for completion, not the **Marketplace Management** blade). Then download the correct version.
+Delete the incorrect version first through Marketplace Management. Wait for it to complete fully (look at the notifications for completion, not the **Marketplace Management** blade). Then download the correct version. 
+
+If you download both versions of the image, only the latest version will show up in the Marketplace gallery to the end customers.
 
 ### What if my user incorrectly checked the "I have a license" box in previous Windows builds, and they don't have a license?
 
