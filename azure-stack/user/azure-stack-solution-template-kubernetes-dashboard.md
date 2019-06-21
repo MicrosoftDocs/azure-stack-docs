@@ -22,7 +22,7 @@ ms.lastreviewed: 06/18/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit* 
 > [!Note]   
-> Kubernetes on Azure Stack is in preview. An Azure Stack disconnected scenario is not currently supported by the preview. Only use the marketplace item for development and test scenarios. The [AKS Engine](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md) can be used for production.
+> Kubernetes on Azure Stack is in preview. An Azure Stack disconnected scenario is not currently supported by the preview. Only use the marketplace item for development and test scenarios.
 
 Kubernetes includes a web dashboard that you can use for basic management operations. This dashboard lets you view basic health status and metrics for your applications, create and deploy services, and edit existing applications. This article shows you how to set up the Kubernetes dashboard on Azure Stack.
 
