@@ -84,7 +84,7 @@ When logging in programmatically, use the ID for your application and an authent
 
 6. When done, the value of the secret is displayed. Write down this value because you can't retrieve the key later. Store the key value where your application can retrieve it.
 
-![Key value warning for saved key.](./media/azure-stack-create-service-principals/image15.png)
+     ![Key value warning for saved key.](./media/azure-stack-create-service-principals/image15.png)
 
 The final step is [assigning your application a role](azure-stack-create-service-principals.md).
 
