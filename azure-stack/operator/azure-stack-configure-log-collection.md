@@ -13,13 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2019
+ms.date: 06/21/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 06/20/2019
+ms.lastreviewed: 06/21/2019
 
 ---
 # Configure Azure Stack log collection
+
+*Applies to: Azure Stack integrated systems*
 
 You can streamline the process for troubleshooting problems with Azure Stack by uploading log files for analysis by Microsoft Customer Support Services (CSS). 
 Logs can be uploaded on demand or automatically based system health conditions. 
