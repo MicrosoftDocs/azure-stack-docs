@@ -1,9 +1,9 @@
 ---
 title: Use an app identity to access resources
-description: Describes how to manage a service principal that can be used with the role-based access control in Azure Resource Manager to manage access to resources.
+description: Describes how to manage a service principal that can be used with role-based access control, for sign-in and access to resources.
 services: azure-resource-manager
 documentationcenter: na
-author: PatAltimore
+author: BryanLa
 manager: femila
 
 ms.service: azure-resource-manager
@@ -12,7 +12,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/20/2019
-ms.author: patricka
+ms.author: bryanla
 ms.lastreviewed: 06/20/2019
 
 ---
