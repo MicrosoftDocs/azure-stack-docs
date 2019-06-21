@@ -18,23 +18,23 @@ ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
 ---
 
-# Tutorial: configure hybrid cloud connectivity with Azure and Azure Stack
+# Tutorial: Configure hybrid cloud connectivity with Azure and Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 You can access resources with security in global Azure and Azure Stack using the hybrid connectivity pattern.
 
-In this tutorial, you will build a sample environment to:
+In this tutorial, you'll build a sample environment to:
 
 > [!div class="checklist"]
-> - Keep data on-premises to meet privacy or regulatory requirements, but have access to global Azure resources.
+> - Keep data on-premises to meet privacy or regulatory requirements, but keep access to global Azure resources.
 > - Maintain a legacy system while using cloud-scaled app deployment and resources in global Azure.
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment and enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
+> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that lets you build and deploy hybrid apps anywhere.  
 > 
-> The whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability and security) for designing, deploying and operating hybrid applications. The design considerations assist in optimizing hybrid application design, minimizing challenges in production environments.
+> The whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
 
 ## Prerequisites
@@ -43,11 +43,11 @@ A few components are required to build a hybrid connectivity deployment. Some of
 
 **Azure Stack**
 
-An Azure OEM/Hardware Partner can deploy a production Azure Stack, and all users can deploy an Azure Stack Development Kit (ASDK).
+An Azure OEM/hardware partner can deploy a production Azure Stack, and all users can deploy an Azure Stack Development Kit (ASDK).
 
 **Azure Stack components**
 
-An Azure Stack Operator must deploy the App Service, create plans and offers, create a tenant subscription, and add the Windows Server 2016 image. If you already have some of these components, make sure they meet the requirements before you start this tutorial.
+An Azure Stack operator must deploy the App Service, create plans and offers, create a tenant subscription, and add the Windows Server 2016 image. If you already have these components, make sure they meet the requirements before you start this tutorial.
 
 This tutorial assumes that you have some basic knowledge of Azure and Azure Stack. To learn more before starting the tutorial, read the following articles:
 
@@ -57,7 +57,7 @@ This tutorial assumes that you have some basic knowledge of Azure and Azure Stac
 ### Azure
 
  - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
- - Create a [Web App](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts) in Azure. Make note of the Web App URL, because you'll need it in the tutorial.
+ - Create a [web app](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts) in Azure. Make note of the web app URL, because you'll need it in the tutorial.
 
 ### Azure Stack
 
@@ -73,12 +73,12 @@ This tutorial assumes that you have some basic knowledge of Azure and Azure Stac
 
 Verify that you meet the following criteria before you  start configuring hybrid cloud connectivity:
 
- - You need an externally facing public IPv4 address for your VPN device. This IP address can't be located behind a NAT.
+ - You need an externally facing public IPv4 address for your VPN device. This IP address can't be located behind a NAT (Network Address Translation).
  - All resources are deployed in the same region/location.
 
 #### Tutorial example values
 
-The examples in this tutorial use the following values. You can use these values to create a test environment or refer to them for a better understanding of the examples. For more information about VPN Gateway settings in general, see [About VPN Gateway Settings](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings).
+The examples in this tutorial use the following values. You can use these values to create a test environment or refer to them for a better understanding of the examples. For more information about VPN gateway settings in general, see [About VPN Gateway Settings](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings).
 
 Connection specifications:
 
