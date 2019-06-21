@@ -227,7 +227,7 @@ Now you create another app registration, but this time specify a client secret c
      $GraphAudience = "https://graph." + $AzureStackInfo.ExternalDomainFQDN + "/"
      $TenantID = $AzureStackInfo.AADTenantID
 
-     # Register and set an ARM environment that targets your Azure Stack instance
+     # Register and set an AzureRM environment that targets your Azure Stack instance
      Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
      Set-AzureRmEnvironment -Name "AzureStackUser" -GraphAudience $GraphAudience -EnableAdfsAuthentication:$true
 
