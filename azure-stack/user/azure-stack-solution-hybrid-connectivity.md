@@ -82,13 +82,13 @@ The examples in this tutorial use the following values. You can use these values
 
 Connection specifications:
 
- - **VPN type**: Route-based
- - **Connection type**: Site-to-site (IPsec)
+ - **VPN type**: route-based
+ - **Connection type**: site-to-site (IPsec)
  - **Gateway type**: VPN
  - **Azure connection name**: Azure-Gateway-AzureStack-S2SGateway (the portal will auto-fill this value)
  - **Azure Stack connection name**: AzureStack-Gateway-Azure-S2SGateway (the portal will auto-fill this value)
- - **Shared key**: Any compatible with VPN hardware, with matching values on both sides of connection
- - **Subscription**: Any preferred subscription
+ - **Shared key**: any compatible with VPN hardware, with matching values on both sides of connection
+ - **Subscription**: any preferred subscription
  - **Resource group**: Test-Infra
 
 Network and subnet IP addresses:
@@ -108,7 +108,7 @@ Network and subnet IP addresses:
 
 ## Create a virtual network in global Azure and Azure Stack
 
-Use the following steps to create a virtual network by using the portal. You can use these [example values](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#values) if you're using this article as a tutorial. But, if you're using this article to configure a production environment, replace the example settings with  your own values.
+Use the following steps to create a virtual network by using the portal. You can use these [example values](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#values) if you're using this article as only a tutorial. If you're using this article to configure a production environment, replace the example settings with  your own values.
 
 > [!IMPORTANT]
 > You must ensure that there isn't an overlap of IP addresses in Azure or Azure Stack vNet address spaces.
@@ -116,7 +116,7 @@ Use the following steps to create a virtual network by using the portal. You can
 To create a vNet in Azure:
 
 1. Use your browser to connect to the [Azure portal](https://portal.azure.com/) and sign in with your Azure account.
-2. Select **Create a resource**. In the **Search the marketplace** field, enter `virtual network`'`. Find **Virtual network** in the results list, and then select **Virtual Network**.
+2. Select **Create a resource**. In the **Search the marketplace** field, enter 'virtual network'. Select **Virtual network** from the results.
 3. From the **Select a deployment model** list, select **Resource Manager**, and then select **Create**.
 4. On **Create virtual network**, configure the VNet settings. The required fields names are prefixed with a red asterisk.  When you enter a valid value, the asterisk changes to a green check mark.
 
@@ -194,12 +194,12 @@ The local network gateway typically refers to your on-premises location. You giv
 
 ## Configure your connection
 
-Site-to-Site connections to an on-premises network require a VPN device. The VPN device you configure is referred to as a Connection. To configure your Connection, you need:
+Site-to-site connections to an on-premises network require a VPN device. The VPN device you configure is referred to as a Connection. To configure your Connection, you need:
 
-- A shared key. This is the same shared key that you specify when creating your Site-to-Site VPN connection. In our examples, we use a basic shared key. We recommend that you generate a more complex key to use.
-- The Public IP address of your virtual network gateway. You can view the public IP address by using the Azure portal, PowerShell, or CLI. To find the Public IP address of your VPN gateway using the Azure portal, navigate to Virtual network gateways, then select the name of your gateway.
+- A shared key. This is the same shared key that you specify when creating your site-to-site VPN connection. In our examples, we use a basic shared key. We recommend that you generate a more complex key to use.
+- The public IP address of your virtual network gateway. You can view the public IP address by using the Azure portal, PowerShell, or CLI. To find the public IP address of your VPN gateway using the Azure portal, navigate to virtual network gateways, then select the name of your gateway.
 
-Use the following steps to create a Site-to-Site VPN connection between your virtual network gateway and your on-premises VPN device.
+Use the following steps to create a site-to-site VPN connection between your virtual network gateway and your on-premises VPN device.
 
 1. In the Azure portal, select **+Create a resource**.
 2. Search for **connections**.
@@ -207,12 +207,12 @@ Use the following steps to create a Site-to-Site VPN connection between your vir
 4. On **Connection**, select **Create**.
 5. On **Create Connection**, configure the following settings:
 
-    - **Connection type**: Select Site-to-site (IPSec).
+    - **Connection type**: Select site-to-site (IPSec).
     - **Resource Group**: Select your test resource group.
-    - **Virtual Network Gateway**: Select the Virtual Network gateway you created.
-    - **Local Network Gateway**: Select the Local Network Gateway you created.
+    - **Virtual Network Gateway**: Select the virtual network gateway you created.
+    - **Local Network Gateway**: Select the local network gateway you created.
     - **Connection Name**: This is automatically populated using the values from the two gateways.
-    - **Shared Key**: This value must match the value that you are using for your local on-premises VPN device. The tutorial example uses 'abc123', but you can (and should) use something more complex. The important thing is that this value MUST be the same value that you specify when configuring your VPN device.
+    - **Shared Key**: This value must match the value that you're using for your local on-premises VPN device. The tutorial example uses 'abc123', but you should use something more complex. The important thing is that this value MUST be the same value that you specify when configuring your VPN device.
     - The values for **Subscription**, **Resource Group**, and **Location** are fixed.
 
 6. Select **OK** to create your connection.
