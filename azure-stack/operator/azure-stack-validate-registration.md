@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/23/2019
+ms.date: 06/23/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
@@ -37,7 +37,7 @@ Download the latest version of **AzsReadinessChecker** from the [PowerShell Gall
 
 The following prerequisites are required:
 
-**The computer on which the tool runs:**
+### The computer on which the tool runs
 
 - Windows 10 or Windows Server 2016, with internet connectivity.
 - PowerShell 5.1 or later. To check your version, run the following PowerShell cmdlet and then review the **Major** and **Minor** versions:  
@@ -49,7 +49,7 @@ The following prerequisites are required:
 - [PowerShell configured for Azure Stack](azure-stack-powershell-install.md).
 - The latest version of [Microsoft Azure Stack Readiness Checker](https://aka.ms/AzsReadinessChecker).  
 
-**Azure Active Directory environment:**
+### Azure Active Directory environment
 
 - Identify the username and password for an account that is an owner for the Azure subscription you will use with Azure Stack.  
 - Identify the subscription ID for the Azure subscription you will use.
@@ -70,7 +70,7 @@ The following prerequisites are required:
    ```
 
    > [!NOTE]
-   > As a CSP, when using a Shared Services or IUR subscription, you must provide the credentials of a user from that respective AAD. Usually this will be similar to `subscriptionowner@iurcontoso.onmicrosoft.com`. That user must have the appropriate credentials, as described in the previous step.
+   > As a CSP, when using a shared services or IUR subscription, you must provide the credentials of a user from that respective AAD. Usually this will be similar to `subscriptionowner@iurcontoso.onmicrosoft.com`. That user must have the appropriate credentials, as described in the previous step.
 
 3. From the PowerShell prompt, run the following to set `$subscriptionID` as the Azure subscription to use. Replace `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` with your own subscription ID:
 
@@ -103,7 +103,7 @@ Each time validation runs, it logs results to **AzsReadinessChecker.log** and **
 
 These files can help you share validation status before you deploy Azure Stack or investigate validation problems. Both files persist the results of each subsequent validation check. The report provides your deployment team confirmation of the identity configuration. The log file can help your deployment or support team investigate validation issues.
 
-By default, both files are written to **C:\Users\<username>\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json**.  
+By default, both files are written to **C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json**.  
 
 - Use the **-OutputPath** ***&lt;path&gt;*** parameter at the end of the run command line to specify a different report location.
 - Use the **-CleanReport** parameter at the end of the run command to clear information about previous runs of the tool from **AzsReadinessCheckerReport.json**.
