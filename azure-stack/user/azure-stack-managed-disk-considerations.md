@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2019
+ms.date: 06/23/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 03/23/2019
@@ -26,17 +26,17 @@ This article summarizes the known differences between [Azure Stack managed disks
 
 Managed disks simplifies disk management for IaaS VMs by managing the [storage accounts](../operator/azure-stack-manage-storage-accounts.md) associated with the VM disks.
 
-> [!Note]  
-> Managed disks on Azure Stack is available from the 1808 update. It is enabled by default when creating virtual machines using the Azure Stack portal, starting with the 1811 update.
+> [!NOTE]  
+> Managed disks on Azure Stack is available starting with the 1808 update. Starting with the 1811 update, it is enabled by default when creating virtual machines using the Azure Stack portal.
   
 ## Cheat sheet: managed disk differences
 
 | Feature | Azure (global) | Azure Stack |
 | --- | --- | --- |
-|Encryption for Data at Rest |Azure Storage Service Encryption (SSE), Azure Disk Encryption (ADE)     |BitLocker 128-bit AES encryption      |
-|Image          | Support managed custom image |Supported|
-|Backup options |Support Azure Backup Service |Not yet supported |
-|Disaster recovery options |Support Azure Site Recovery |Not yet supported|
+|Encryption for data at rest |Azure Storage Service Encryption (SSE), Azure Disk Encryption (ADE)     |BitLocker 128-bit AES encryption      |
+|Image          | Managed custom image |Supported|
+|Backup options | Azure Backup service |Not yet supported |
+|Disaster recovery options | Azure Site Recovery |Not yet supported|
 |Disk types     |Premium SSD, Standard SSD, and Standard HDD |Premium SSD, Standard HDD |
 |Premium disks  |Fully supported |Can be provisioned, but no performance limit or guarantee  |
 |Premium disks IOPs  |Depends on disk size  |2300 IOPs per disk |
@@ -70,13 +70,13 @@ You can use the following script to convert a currently provisioned VM from unma
 ```powershell
 $SubscriptionId = "SubId"
 
-# The name of your resource group where your VM to be converted exists
+# The name of your resource group where your VM to be converted exists.
 $ResourceGroupName ="MyResourceGroup"
 
 # The name of the managed disk to be created.
 $DiskName = "mngddisk"
 
-# The size of the disks in GiB. It should be greater than the VHD file size.
+# The size of the disks in GB. It should be greater than the VHD file size.
 $DiskSize = "50"
 
 # The URI of the VHD file that will be used to create the managed disk.
@@ -88,7 +88,7 @@ $AccountType = "StandardLRS"
 
 # The Azure Stack location where the managed disk will be located.
 # The location should be the same as the location of the storage account in which VHD file is stored.
-# Configure the new managed VM point to the old unmanaged VM's configuration (network config, vm name, location).
+# Configure the new managed VM point to the old unmanaged VM configuration (network config, VM name, location).
 $Location = "local"
 $VirtualMachineName = "unmngdvm"
 $VirtualMachineSize = "Standard_D1"
@@ -96,36 +96,36 @@ $PIpName = "unmngdvm-ip"
 $VirtualNetworkName = "unmngdrg-vnet"
 $NicName = "unmngdvm"
 
-# Set the context to the subscription ID in which the managed disk will be created
+# Set the context to the subscription ID in which the managed disk will be created.
 Select-AzureRmSubscription -SubscriptionId $SubscriptionId
 
-# Delete old VM, but keep the OS disk
+# Delete old VM, but keep the OS disk.
 Remove-AzureRmVm -Name $VirtualMachineName -ResourceGroupName $ResourceGroupName
 
-# Create the managed disk configuration
+# Create the managed disk configuration.
 $DiskConfig = New-AzureRmDiskConfig -AccountType $AccountType -Location $Location -DiskSizeGB $DiskSize -SourceUri $VhdUri -CreateOption Import
 
-# Create managed disk
+# Create managed disk.
 New-AzureRmDisk -DiskName $DiskName -Disk $DiskConfig -ResourceGroupName $resourceGroupName
 $Disk = Get-AzureRmDisk -DiskName $DiskName -ResourceGroupName $ResourceGroupName
 $VirtualMachine = New-AzureRmVMConfig -VMName $VirtualMachineName -VMSize $VirtualMachineSize
 
 # Use the managed disk resource ID to attach it to the virtual machine.
-# Change the OS type to "-Windows" if the OS disk has Windows OS.
+# Change the OS type to "-Windows" if the OS disk has the Windows OS.
 $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -ManagedDiskId $Disk.Id -CreateOption Attach -Linux
 
-# Create a public IP for the VM
-$PublicIp = Get-AzureRmPublicIpAddress -Name $PIpName -ResourceGroupName $ResourceGroupName 
+# Create a public IP for the VM.
+$PublicIp = Get-AzureRmPublicIpAddress -Name $PIpName -ResourceGroupName $ResourceGroupName
 
-# Get the virtual network where the virtual machine will be hosted
+# Get the virtual network where the virtual machine will be hosted.
 $VNet = Get-AzureRmVirtualNetwork -Name $VirtualNetworkName -ResourceGroupName $ResourceGroupName
 
-# Create NIC in the first subnet of the virtual network
+# Create NIC in the first subnet of the virtual network.
 $Nic = Get-AzureRmNetworkInterface -Name $NicName -ResourceGroupName $ResourceGroupName
 
 $VirtualMachine = Add-AzureRmVMNetworkInterface -VM $VirtualMachine -Id $Nic.Id
 
-# Create the virtual machine with managed disk
+# Create the virtual machine with managed disk.
 New-AzureRmVM -VM $VirtualMachine -ResourceGroupName $ResourceGroupName -Location $Location
 ```
 
@@ -145,7 +145,7 @@ For Windows, follow the [Generalize the Windows VM using Sysprep](/azure/virtual
 
 ### Step 2: Create the managed image
 
-You can use the portal, PowerShell or CLI to create the managed image. Follow the steps in the Azure article [here](/azure/virtual-machines/windows/capture-image-resource).
+You can use the portal, PowerShell, or CLI to create the managed image. Follow the steps in [Create a managed image](/azure/virtual-machines/windows/capture-image-resource).
 
 ### Step 3: Choose the use case
 
@@ -153,13 +153,13 @@ You can use the portal, PowerShell or CLI to create the managed image. Follow th
 
 Make sure to generalize your VM correctly before performing this step. After generalization, you can no longer use this VM. Creating a VM from an image that has not been properly generalized will lead to a **VMProvisioningTimeout** error.
 
-Follow the instructions [here](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-vhd-in-a-storage-account) to create a managed image from a generalized VHD in a storage account. You can use this image going forward to create managed VMs.
+Follow the instructions in [Create an image from a VHD in a storage account](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-vhd-in-a-storage-account) to create a managed image from a generalized VHD in a storage account. You can use this image going forward to create managed VMs.
 
 #### Case 2: Create managed VM from managed image using Powershell
 
-After creating an image from an existing managed disk VM using the script [here](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-managed-disk-using-powershell), the following example script creates a similar Linux VM from an existing image object:
+After creating an image from an existing managed disk VM using the script in [Create an image from a managed disk using PowerShell](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-managed-disk-using-powershell), the following example script creates a similar Linux VM from an existing image object.
 
-Azure Stack PowerShell module 1.7.0 or later: follow the instructions [here](/azure/virtual-machines/windows/create-vm-generalized-managed).
+Azure Stack PowerShell module 1.7.0 or later: follow the instructions in [Create a VM from a managed image](/azure/virtual-machines/windows/create-vm-generalized-managed).
 
 Azure Stack PowerShell module 1.6.0 or earlier:
 
@@ -220,9 +220,9 @@ You can also use the portal to create a VM from a managed image. For more inform
 After applying the 1808 update or later, you must perform the following configuration before using managed disks:
 
 - If a subscription was created before the 1808 update, follow below steps to update the subscription. Otherwise, deploying VMs in this subscription might fail with an error message "Internal error in disk manager."
-   1. In the Tenant portal, go to **Subscriptions** and find the subscription. Click **Resource Providers**, then click **Microsoft.Compute**, and then click **Re-register**.
+   1. In the Azure Stack user portal, go to **Subscriptions** and find the subscription. Click **Resource Providers**, then click **Microsoft.Compute**, and then click **Re-register**.
    2. Under the same subscription, go to **Access Control (IAM)**, and verify that **Azure Stack - Managed Disk** is listed.
-- If you use a multi-tenant environment, ask your cloud operator (who may be in your own organization, or from the service provider) to reconfigure each of your guest directories following the steps in [this article](../operator/azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory). Otherwise, deploying VMs in a subscription associated with that guest directory might fail with an error message "Internal error in disk manager."
+- If you use a multi-tenant environment, ask your cloud operator (who may be in your own organization, or from the service provider) to reconfigure each of your guest directories following the steps in [this article](../operator/azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory). Otherwise, deploying VMs in a subscription associated with that guest directory might fail with an error message, **Internal error in disk manager**.
 
 ## Next steps
 
