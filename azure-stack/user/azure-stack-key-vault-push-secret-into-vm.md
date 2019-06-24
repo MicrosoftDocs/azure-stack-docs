@@ -19,11 +19,11 @@ ms.lastreviewed: 12/27/2018
 
 ---
 
-# Create a virtual machine and install a certificate retrieved from an Azure Stack key vault
+# Deploy a virtual machine with a securely stored certificate on Azure Stack 
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-This article describes how to create an Azure Stack virtual machine (VM) with a key vault certificate installed.
+This article describes how to deploy an Azure Stack virtual machine (VM) with a key vault certificate installed.
 
 ## Overview
 
