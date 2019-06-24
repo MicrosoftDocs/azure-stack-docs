@@ -111,7 +111,7 @@ In order to reach the deployment options and deployment credentials user experie
 
 - Azure Function Monitoring continually shows "Loading" in the portal
 
-When you attempt to monitor individual Functions, within an Azure Function application, in the tenant portal, you will see no invocation log, success count or error count.  To re-enable this functionality, go to your **Function App**, go to **Platform Features** and go to **Application settings**.  Add a new app setting - name **AzureWebJobsDashboard** and set the value to the same value as set in AzureWebJobsStorage.  Then go to the Monitor view on your function and you will see the monitoring information.
+When you attempt to monitor individual Functions, within an Azure Function application, in the tenant portal, you will see no invocation log, success count, or error count.  To re-enable this functionality, go to your **Function App**, go to **Platform Features**, and go to **Application settings**.  Add a new app setting - name **AzureWebJobsDashboard** and set the value to the same value as set in AzureWebJobsStorage.  Then go to the Monitor view on your function and you will see the monitoring information.
 
 ## Next steps
 
