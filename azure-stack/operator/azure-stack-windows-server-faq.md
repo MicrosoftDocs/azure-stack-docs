@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 06/22/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 11/12/2018
@@ -44,9 +44,9 @@ Azure Hybrid Use Benefit (AHUB) is not supported on Azure Stack. Customers who l
 
 ### What if I downloaded the wrong version to offer my tenants/users?
 
-Delete the incorrect version first through Marketplace Management. Wait for it to complete fully (look at the notifications for completion, not the **Marketplace Management** blade). Then download the correct version. 
+Delete the incorrect version first through marketplace management. Wait for it to complete (look at the notifications for completion, not the **Marketplace Management** blade). Then download the correct version.
 
-If you download both versions of the image, only the latest version will show up in the Marketplace gallery to the end customers.
+If you download both versions of the image, only the latest version is visible to end customers in the marketplace gallery.
 
 ### What if my user incorrectly checked the "I have a license" box in previous Windows builds, and they don't have a license?
 
