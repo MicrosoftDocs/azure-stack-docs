@@ -48,6 +48,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
+- Improvements to the reliability of the backup resource provider when the infrastructure backup service moves to another instance.
 
 ### Changes
 
