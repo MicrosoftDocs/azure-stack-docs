@@ -29,7 +29,7 @@ This article describes how to create an Azure Stack virtual machine (VM) with a 
 
 Certificates are used in many scenarios, such as authenticating to Active Directory, or encrypting web traffic. You can securely store certificates as secrets in an Azure Stack key vault. The benefits of using Azure Stack Key Vault are:
 
-* Certificates are not exposed in a script, command-line history, or template.
+* Certificates aren't exposed in a script, command-line history, or template.
 * The certificate management process is streamlined.
 * You have control of the keys that access certificates.
 
