@@ -29,7 +29,7 @@ You have two options for granting access to your apps in both global Azure and A
  * When Azure Stack has a continuous connection to the internet, you can use Azure Active Directory (Azure AD).
  * When Azure Stack is disconnected from the internet, you can use Azure Directory Federated Services (AD FS).
 
-You use service principals to grant access to your Azure Stack apps for the purpose of deployment or configuration using the Azure Resource Manager in Azure Stack.
+You use service principals to grant access to your Azure Stack apps for deployment or configuration using the Azure Resource Manager in Azure Stack.
 
 In this tutorial, you'll build a sample environment to:
 
@@ -48,12 +48,12 @@ You must have Azure Stack operator permissions for the steps in this tutorial.
 
 ## Create a service principal for Azure AD in the portal
 
-If you've deployed Azure Stack using Azure AD as the identity store, you can create service principals just like you do for Azure. The [create service principals](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad) article shows you how to perform the steps through the portal. Check to see that you
+If you've deployed Azure Stack using Azure AD as the identity store, you can create service principals just like you do for Azure. The [create service principals](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad) article shows you how to complete the steps through the portal. Check to see that you
 have the [required Azure AD permissions](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) before beginning.
 
 ## Create a service principal for AD FS using PowerShell
 
-If you've deployed Azure Stack with AD FS, you can use PowerShell to create a service principal, assign a role for access, and sign in from PowerShell using that identity. [Create service principal for AD FS](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs) shows you how to perform the required steps using PowerShell.
+If you've deployed Azure Stack with AD FS, you can use PowerShell to create a service principal, assign a role for access, and sign in from PowerShell using that identity. [Create service principal for AD FS](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs) shows you how to complete the required steps using PowerShell.
 
 ## Using the Azure Stack API
 
