@@ -65,6 +65,9 @@ Azure Stack managed disks supports the following API versions:
 
 ## Convert to managed disks
 
+> [!NOTE]  
+> The Azure PowerShell cmdlet "ConvertTo-AzureRmVMManagedDisk" cannot be used to convert unmanaged disk to managed disk in Azure Stack. This cmdlet doesn't support in Azure Stack yet.   
+
 You can use the following script to convert a currently provisioned VM from unmanaged to managed disks. Replace the placeholders with your own values:
 
 ```powershell
