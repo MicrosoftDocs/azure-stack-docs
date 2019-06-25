@@ -1,5 +1,5 @@
 ---
-title: Manage VM disks in Azure Stack | Microsoft Docs
+title: Create VM disk storage in Azure Stack | Microsoft Docs
 description: Create disks for virtual machines in Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -18,15 +18,15 @@ ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
 ---
 
-# Create virtual machine disk storage in Azure Stack
+# Create VM disk storage in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-This article describes how to create virtual machine disk storage by using the Azure Stack portal or by using PowerShell.
+This article describes how to create virtual machine (VM) disk storage by using the Azure Stack portal or by using PowerShell.
 
 ## Overview
 
-Beginning with version 1808, Azure Stack supports the use of managed disks and unmanaged disks in virtual machines, as both an operating system (OS) and a data disk. Before version 1808, only unmanaged disks are supported.
+Beginning with version 1808, Azure Stack supports the use of managed disks and unmanaged disks in VMs, as both an operating system (OS) and a data disk. Before version 1808, only unmanaged disks are supported.
 
 [Managed disks](/azure/virtual-machines/windows/managed-disks-overview) simplify disk management for Azure IaaS VMs by managing the storage accounts associated with the VM disks. You only have to specify the size of disk you need, and Azure Stack creates and manages the disk for you.
 
@@ -68,10 +68,10 @@ Each unmanaged disk you add should be put in a separate container.
 1. In the portal, select **All services**, then **Virtual machines**.
    ![Example: VM dashboard](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
-2. Select a virtual machine that has previously been created.
+2. Select a VM that has previously been created.
    ![Example: Select a VM in the dashboard](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-3. For the virtual machine, select **Disks**, then **Add data disk**.
+3. For the VM, select **Disks**, then **Add data disk**.
    ![Example: Attach a new disk to the vm](media/azure-stack-manage-vm-disks/Attach-disks.png)
 
 4. For the Data disk:
@@ -81,27 +81,27 @@ Each unmanaged disk you add should be put in a separate container.
 
 5. In the **Create managed disk** blade:
    * Enter the **Name** of the disk.
-   * Select an existing or create a new **Resource group**.
+   * Select an existing **Resource group** or create a new one.
    * Select the **Location**. By default, the location is set to the same container that holds the OS disk.
    * Select the **Account type**.
       ![Example: Attach a new disk to the vm](media/azure-stack-manage-vm-disks/create-manage-disk.png)
 
       **Premium SSD**  
-      Premium disks (SSD) are backed by solid-state drives and offer consistent, low-latency performance. They provide the best balance between price and performance, and are ideal for I/O-intensive applications and production workloads.
+      Premium disks (SSD) are backed by solid-state drives and offer consistent, low-latency performance. They provide the best balance between price and performance, and are ideal for I/O-intensive apps and production workloads.
 
       **Standard HDD**  
-      Standard disks (HDD) are backed by magnetic drives and are preferable for applications where data is accessed infrequently. Zone-redundant disks are backed by zone-redundant storage (ZRS) that replicates your data across multiple zones and are available even if a single zone is down.
+      Standard disks (HDD) are backed by magnetic drives and are preferable for apps where data is accessed infrequently. Zone-redundant disks are backed by zone-redundant storage (ZRS) that replicates your data across multiple zones and are available even if a single zone is down.
 
    * Select the **Source type**.
 
      Create a disk from a snapshot of another disk, a blob in a storage account, or create an empty disk.
 
-      **Snapshot**: Select a snapshot, if it is available. The snapshot must be in available in the VM's subscription and location.
+      **Snapshot**: Select a snapshot, if it's available. The snapshot must be in available in the VM's subscription and location.
 
       **Storage blob**:
-     * Add the URI of the Storage blob that contains the disk image.  
-     * Select **Browse** to open the Storage accounts blade. For instructions, see [Add a data disk from a storage account](#add-a-data-disk-from-a-storage-account).
-     * Select the OS type of the image, either **Windows**, **Linux**, or **None (data disk)**.
+     * Add the URI of the storage blob that contains the disk image.  
+     * Select **Browse** to open the storage accounts blade. For instructions, see [Add a data disk from a storage account](#add-a-data-disk-from-a-storage-account).
+     * Select the OS type of the image: **Windows**, **Linux**, or **None (data disk)**.
 
    * Select the **Size (GiB)**.
 
@@ -109,16 +109,16 @@ Each unmanaged disk you add should be put in a separate container.
 
    * Select **Create**. Azure Stack creates and validates the managed disk.
 
-6. After Azure Stack creates the disk and attaches it to the virtual machine, the new disk is listed in the virtual machine disk settings under **DATA DISKS**.
+6. After Azure Stack creates the disk and attaches it to the VM, the new disk is listed in the VM disk settings under **DATA DISKS**.
 
    ![Example: View disk](media/azure-stack-manage-vm-disks/view-data-disk.png)
 
 ### Add a data disk from a storage account
 
-For more information about working with Storage accounts in Azure Stack, see [Introduction to Azure Stack storage](azure-stack-storage-overview.md).
+For more information about working with storage accounts in Azure Stack, see [Introduction to Azure Stack storage](azure-stack-storage-overview.md).
 
 1. Select the **Storage account** to use.
-2. Select the **Container** where you want to put the data disk. From the **Containers** blade, you can create a new container if you want. You can then change the location for the new disk to its own container. When you use a separate container for each disk, you distribute the placement of the data disk that can improve performance.
+2. Select the **Container** where you want to put the data disk. From the **Containers** blade, you can create a new container if you want. You can then change the location for the new disk to its own container. When you use a separate container for each disk, you distribute the placement of the data disk which can improve performance.
 3. Choose **Select** to save the selection.
 
     ![Example: Select a container](media/azure-stack-manage-vm-disks/select-container.png)
@@ -130,14 +130,14 @@ For more information about working with Storage accounts in Azure Stack, see [In
     Plan to use a different container to hold the .vhd file than the container that holds the OS disk.
     ![Example: Upload a VHD file](media/azure-stack-manage-vm-disks/upload-vhd.png)
 
-2. After the .vhd file is uploaded, you are ready to attach the VHD to a VM. In the menu on the left, select  **Virtual machines**.  
+2. After the .vhd file is uploaded, you're ready to attach the VHD to a VM. In the menu on the left, select  **Virtual machines**.  
  ![Example: Select a VM in the dashboard](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
-3. Choose the virtual machine from the list.
+3. Choose the VM from the list.
 
     ![Example: Select a VM in the dashboard](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-4. On the page for the virtual machine, select **Disks**, then select  **Attach existing**.
+4. On the page for the VM, select **Disks**, then select  **Attach existing**.
 
     ![Example: Attach an existing disk](media/azure-stack-manage-vm-disks/attach-disks2.png)
 
@@ -153,7 +153,7 @@ For more information about working with Storage accounts in Azure Stack, see [In
 
     ![Example: Attach the VHD file](media/azure-stack-manage-vm-disks/attach-vhd.png)
 
-8. After Azure Stack creates the disk and attaches it to the virtual machine, the new disk is listed in the virtual machine's disk settings under **Data Disks**.
+8. After Azure Stack creates the disk and attaches it to the VM, the new disk is listed in the VM's disk settings under **Data Disks**.
 
     ![Example: Complete the disk attach](media/azure-stack-manage-vm-disks/complete-disk-attach.png)
 
@@ -161,13 +161,13 @@ For more information about working with Storage accounts in Azure Stack, see [In
 
 You can use PowerShell to provision a VM and add a new data disk, or attach a pre-existing **.vhd** file as a data disk.
 
-The **Add-AzureRmVMDataDisk** cmdlet adds a data disk to a virtual machine. You can add a data disk when you create a virtual machine, or you can add a data disk to an existing virtual machine. Specify the **VhdUri** parameter to distribute the disks to different containers.
+The **Add-AzureRmVMDataDisk** cmdlet adds a data disk to a VM. You can add a data disk when you create a VM, or you can add a data disk to an existing VM. Specify the **VhdUri** parameter to distribute the disks to different containers.
 
-### Add data disks to a new virtual machine
+### Add data disks to a new VM
 
 The following examples use PowerShell commands to create a VM with three data disks, each placed in a different container.
 
-The first command creates a virtual machine object, and then stores it in the `$VirtualMachine` variable. The command assigns a name and size to the virtual machine:
+The first command creates a VM object, and then stores it in the `$VirtualMachine` variable. The command assigns a name and size to the VM:
 
 ```powershell
 $VirtualMachine = New-AzureRmVMConfig -VMName "VirtualMachine" `
@@ -256,9 +256,9 @@ $VirtualMachine = Set-AzureRmVMOperatingSystem -VM $VirtualMachine -Windows -Com
 New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $VirtualMachine
 ```
 
-### Add data disks to an existing virtual machine
+### Add data disks to an existing VM
 
-The following examples use PowerShell commands to add three data disks to an existing VM. The first command gets the virtual machine named **VirtualMachine** by using the **Get-AzureRmVM** cmdlet. The command stores the virtual machine in the `$VirtualMachine` variable:
+The following examples use PowerShell commands to add three data disks to an existing VM. The first command gets the VM named **VirtualMachine** by using the **Get-AzureRmVM** cmdlet. The command stores the VM in the `$VirtualMachine` variable:
 
 ```powershell
 $VirtualMachine = Get-AzureRmVM -ResourceGroupName "myResourceGroup" `
@@ -279,7 +279,7 @@ $DataDiskVhdUri02 = "https://contoso.blob.local.azurestack.external/test2/data2.
 $DataDiskVhdUri03 = "https://contoso.blob.local.azurestack.external/test3/data3.vhd"
 ```
 
-The next three commands add the data disks to the virtual machine stored in the `$VirtualMachine` variable. Each command specifies the name, location, and additional properties of the disk. The URI of each disk is stored in `$DataDiskVhdUri01`, `$DataDiskVhdUri02`, and `$DataDiskVhdUri03`:
+The next three commands add the data disks to the VM stored in the `$VirtualMachine` variable. Each command specifies the name, location, and additional properties of the disk. The URI of each disk is stored in `$DataDiskVhdUri01`, `$DataDiskVhdUri02`, and `$DataDiskVhdUri03`:
 
 ```powershell
 Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk1" `
@@ -299,7 +299,7 @@ Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "disk3" `
                       -Caching ReadOnly -DiskSizeinGB 12 -CreateOption Empty
 ```
 
-The final command updates the state of the virtual machine stored in `$VirtualMachine` in `-ResourceGroupName`:
+The final command updates the state of the VM stored in `$VirtualMachine` in `-ResourceGroupName`:
 
 ```powershell
 Update-AzureRmVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
@@ -307,4 +307,4 @@ Update-AzureRmVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
 
 ## Next steps
 
-To learn more about Azure Stack virtual machines, see [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md).
+To learn more about Azure Stack VMs, see [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md).
