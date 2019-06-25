@@ -90,7 +90,7 @@ Each unmanaged disk you add should be put in a separate container.
       Premium disks (SSD) are backed by solid-state drives and offer consistent, low-latency performance. They provide the best balance between price and performance, and are ideal for I/O-intensive apps and production workloads.
 
       **Standard HDD**  
-      Standard disks (HDD) are backed by magnetic drives and are preferable for apps where data is accessed infrequently. Zone-redundant disks are backed by zone-redundant storage (ZRS) that replicates your data across multiple zones and are available even if a single zone is down.
+      Standard disks (HDD) are backed by magnetic drives and are preferable for apps where data is accessed infrequently. Zone-redundant disks are backed by zone-redundant storage (ZRS) that replicates your data across multiple zones, ensuring your data is available even if a single zone is down.
 
    * Select the **Source type**.
 
@@ -118,7 +118,7 @@ Each unmanaged disk you add should be put in a separate container.
 For more information about working with storage accounts in Azure Stack, see [Introduction to Azure Stack storage](azure-stack-storage-overview.md).
 
 1. Select the **Storage account** to use.
-2. Select the **Container** where you want to put the data disk. From the **Containers** blade, you can create a new container if you want. You can then change the location for the new disk to its own container. When you use a separate container for each disk, you distribute the placement of the data disk which can improve performance.
+2. Select the **Container** where you want to put the data disk. From the **Containers** blade, you can create a new container if you want. You can then change the location for the new disk to its own container. When you use a separate container for each disk, you distribute the placement of the data disk which improves performance.
 3. Choose **Select** to save the selection.
 
     ![Example: Select a container](media/azure-stack-manage-vm-disks/select-container.png)
