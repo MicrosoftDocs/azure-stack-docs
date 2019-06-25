@@ -1,6 +1,6 @@
 ---
-title: Create a blob container to automatically collect Azure Stack logs | Microsoft Docs
-description: How to configure a storage account for automatic log collection in Azure Stack Help + Support.
+title: Create a blob container SAS URL | Microsoft Docs
+description: How to create a blob account SAS URL for automatic log collection in Azure Stack Help + Support.
 services: azure-stack
 documentationcenter: ''
 author: justinha
