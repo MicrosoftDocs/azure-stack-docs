@@ -60,7 +60,7 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
 
     For example, the URL to retrieve the metadata for your Azure Resource Manager endpoint may look something like: `https://management.local.azurestack.external/metadata/endpoints?api-version=1.0`
 
-    Make a note of the return JSON. You will need the values for the `loginEndpoint` and `loginEndgraphEndpointpoint` property.
+    Make a note of the return JSON. You will need the values for the `loginEndpoint` and `audiences` property.
 
 7. Press **Ctrl+Shift+P,** and select **Preferences: Open User Settings (JSON)**.
 
@@ -72,7 +72,7 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
         | --- | --- |
         | `tenant-ID` | The value of your Azure Stack [tenant ID](../operator/azure-stack-identity-overview.md). |
         | `activeDirectoryEndpointUrl` | This is the URL from loginEndpoint property. |
-        | `audiences` | This is the URL from loginEndgraphEndpointpoint property.
+        | `activeDirectoryResourceId` | This is the URL from the audiences property.
         | `resourceManagerEndpointUrl` | This is the root URL for the Azure Resource Manager for Azure Stack. | 
 
     - JSON snippet:
@@ -81,15 +81,15 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
       "azure.tenant": "tenant-ID",
       "azure.ppe": {
           "activeDirectoryEndpointUrl": "Login endpoint",
-          "audiences": "graph audience",
-          "resourceManagerEndpointUrl": "Management Endpoint",
+          "activeDirectoryResourceId": "This is the URL from the audiences property.",
+          "resourceManagerEndpointUrl": "Aure Resource Management Endpoint",
       },
       "azure.cloud": "AzurePPE"
       ```
 
-8. Save the User Settings and use **Ctrl+Shift+P** once again. Select **Azure: Sign in to Azure Cloud**. The new option, **AzurePPE**, appears in the list of targets.
+9. Save the User Settings and use **Ctrl+Shift+P** once again. Select **Azure: Sign in to Azure Cloud**. The new option, **AzurePPE**, appears in the list of targets.
 
-9. Select **AzurePPE**. The authentication page loads in your browser. Sign in to your endpoint.
+10. Select **AzurePPE**. The authentication page loads in your browser. Sign in to your endpoint.
 
 11. To test that you have successfully logged into your Azure Stack subscription, use **Ctrl+Shift+ P** and select **Azure: Select Subscription** and see if the subscription you have is available.
 
