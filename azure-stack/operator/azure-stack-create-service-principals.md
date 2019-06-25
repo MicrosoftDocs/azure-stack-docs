@@ -332,7 +332,7 @@ The type of resource you choose also establishes the *access scope* for the serv
 1. Sign in to the appropriate portal, based on the directory you specified during Azure Stack installation (the Azure portal for Azure AD, or the Azure Stack user portal for AD FS, for example). In this example, we show a user signed in to the Azure Stack user portal.
 
    > [!NOTE]
-   > To add role assignments for a given resource, your user account must belong to a role that declares the `Microsoft.Authorization/roleAssignments/write` permission. For example, either the [Owner](azure/role-based-access-control/built-in-roles.md#owner) or [User Access Administrator](azure/role-based-access-control/built-in-roles.md#user-access-administrator) built-in roles.  
+   > To add role assignments for a given resource, your user account must belong to a role that declares the `Microsoft.Authorization/roleAssignments/write` permission. For example, either the [Owner](/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) built-in roles.  
 2. Navigate to the resource you wish to allow the service principal to access. In this example, assign the service principal to a role at the subscription scope, by selecting **Subscriptions**, then a specific subscription. You could instead select a resource group, or a specific resource such as a virtual machine. 
 
      ![Select subscription for assignment](./media/azure-stack-create-service-principal/select-subscription.png)
