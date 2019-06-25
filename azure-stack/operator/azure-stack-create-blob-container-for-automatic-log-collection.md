@@ -61,7 +61,7 @@ To configure the blob container in Azure, you'll need the [storage blog contribu
 1. Click **Create**.  
 
 The URL is constructed by using the storage account name, the blog container name, and an access token. 
-Copy the URL and then [configure automatic log collection](azure-stack-configure-log-collection.md).
+Copy the URL and enter it when you [configure automatic log collection](azure-stack-configure-log-collection.md).
 
 ## Next step
 
