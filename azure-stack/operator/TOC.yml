@@ -374,7 +374,7 @@
       items:
       - name: Usage data reporting
         href: azure-stack-usage-reporting.md
-      - name: Usage reporting infrastructure for Cloud Service Providers
+      - name: Usage reporting infrastructure
         href: azure-stack-csp-ref-infrastructure.md
       - name: Provider usage API
         href: azure-stack-provider-resource-api.md
@@ -382,6 +382,12 @@
         href: azure-stack-tenant-resource-usage-api.md
       - name: Usage FAQ
         href: azure-stack-usage-related-faq.md
+      - name: Troubleshooting usage issues
+        items:
+        - name: Usage connectivity errors
+          href: azure-stack-usage-issues.md
+        - name: Usage registration error codes
+          href: azure-stack-registration-errors.md        
   - name: Back up Azure Stack
     href: azure-stack-backup-infrastructure-backup.md
     items:
