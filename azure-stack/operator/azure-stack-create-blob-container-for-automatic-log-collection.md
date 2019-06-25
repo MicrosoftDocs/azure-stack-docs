@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/21/2019
+ms.date: 06/25/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 06/21/2019
+ms.lastreviewed: 06/25/2019
 
 ---
 # Create a blob container to automatically collect Azure Stack logs 
