@@ -59,6 +59,54 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 
 ## Networking
 
+### Service endpoints
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack. 
+- Occurrence: Common
+
+### Network interface
+
+- Applicable: This issue applies to all supported releases.
+- Cause: A new network interface cannot be added to a VM that is in a **running** state.
+- Remediation: Stop the virtual machine before adding/removing a network interface.
+- Occurrence: Common
+
+### Virtual Network Gateway
+
+#### Alerts
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Virtual Network Gateway** blade shows an option to use **Alerts**. This feature is currently not supported in Azure Stack. 
+- Occurrence: Common
+
+#### Active-Active
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, while creating, and in the resource menu of **Virtual Network Gateway**, you will see an option to enable **Active-Active** configuration. This feature is currently not supported in Azure Stack. 
+- Occurrence: Common
+
+#### VPN Troubleshooter
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Connections** blade shows a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack. 
+- Occurrence: Common
+
+#### Documentation
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The documentation links in the Overview page of Virtual Network gateway links to Azure-specific documentation instead of Azure Stack. Please use the following links for the Azure Stack documentation:
+
+Gateway SKUs: https://docs.microsoft.com/azure-stack/user/azure-stack-vpn-gateway-about-vpn-gateways#gateway-skus
+
+Highly Available Connections: https://docs.microsoft.com/azure-stack/user/azure-stack-vpn-gateway-about-vpn-gateways#gateway-availability
+
+Configure BGP on Azure Stack: https://docs.microsoft.com/azure-stack/user/azure-stack-vpn-gateway-settings#gateway-requirements
+
+ExpressRoute circuits: https://docs.microsoft.com/azure-stack/operator/azure-stack-connect-expressroute
+
+Specify custom IPsec / IKE policies: https://docs.microsoft.com/azure-stack/user/azure-stack-vpn-gateway-settings#ipsecike-parameters
+
 ### Load balancer
 
 #### Add backend pool
@@ -73,20 +121,6 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer**, the operation fails with the error message **Failed to update Load Balancer...**.
 - Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
-- Occurrence: Common
-
-#### Create load balancer
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Create Load Balancer** window shows an option to create a **Standard** load balancer SKU. This option is not supported in Azure Stack.
-- Remediation: Use the **Basic** load balancer options instead.
-- Occurrence: Common
-
-### Public IP address
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Create Public IP Address** window shows an option to create a **Standard** SKU. The **Standard** SKU is not supported in Azure Stack.
-- Remediation: Use the **Basic** SKU for public IP address.
 - Occurrence: Common
 
 ## Compute
