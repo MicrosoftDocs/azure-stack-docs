@@ -35,7 +35,7 @@ This topic covers how to configure log collection, see which logs have been coll
 
 ## Configure automatic log collection 
 
-Before you can collect Azure Stack logs automatically, you'll need to configure an existing blob container in Azure or [create a new one](azure-stack-create-blob-container-for-automatic-log-collection.md). Then follow these steps to add the SAS URL of the blob container to the log collection UI: 
+You'll need to provide the SAS URL for a blob container. You can use an existing blob container in Azure or [create a new one](azure-stack-create-blob-container-sas-url.md). Then follow these steps to add the SAS URL to the log collection UI: 
 
 1. Sign in to the Azure Stack administrator portal.
 1. Open **Help and support Overview**.
