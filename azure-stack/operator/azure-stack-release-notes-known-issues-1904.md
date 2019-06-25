@@ -35,13 +35,6 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 
 ## Portal
 
-### Administrative subscriptions
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
-- Remediation: These subscriptions will be suspended starting with 1906 and eventually deleted. If you have resources running on these two subscriptions, recreate them in user subscriptions prior to 1906.
-- Occurrence: Common
-
 ### Subscription resources
 
 - Applicable: This issue applies to all supported releases.
