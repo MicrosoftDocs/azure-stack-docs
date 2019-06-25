@@ -61,7 +61,7 @@ For on-demand collection, CSS might provide a blob service SAS URL.
 
 You can see logs that were previously collected on the **Log collection** page in Help and Support. 
 The **Collection time** refers to when the log collection operation began. 
-The **Logs From** is the start of the time period you want to collect logs for and the **Logs To** is the end of that time period.
+The **Logs From** is the start of the time period for which you want to collect logs and the **Logs To** is the end of the time period.
 
 ![Screenshot of Azure Stack log collection](media/azure-stack-automatic-log-collection/azure-stack-log-collection.png)
 
