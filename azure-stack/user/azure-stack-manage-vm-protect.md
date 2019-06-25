@@ -1,6 +1,6 @@
 ﻿---
 title: Protect VMs deployed on Azure Stack | Microsoft Docs
-description:  Guidelines on how to protect virtual machines deployed on Azure Stack.
+description: Guidelines on how to protect VMs deployed on Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -19,25 +19,25 @@ ms.reviewer: hectorl
 ms.lastreviewed: 3/19/2018
 ---
 
-# Protect virtual machines deployed on Azure Stack
+# Protect VMs deployed on Azure Stack
 
 Use this article as a guide to developing a plan for protecting virtual machines (VMs) that your users deploy on Azure Stack.
 
-To protect against data loss and unplanned downtime, you need to implement a backup-recovery or disaster-recovery plan for user applications and their data. This plan might be unique for each application but follows a framework established by your organization's comprehensive business continuity and disaster recovery (BC/DR) strategy. A good starting point is [Azure Stack: Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp).
+To protect against data loss and unplanned downtime, you need to implement a backup-recovery or disaster-recovery plan for user apps and their data. This plan might be unique for each app but follows a framework established by your organization's comprehensive business continuity and disaster recovery (BC/DR) strategy. A good starting point is [Azure Stack: Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp).
 
 ## Azure Stack infrastructure recovery
 
 Users are responsible for protecting their VMs separately from Azure Stack's infrastructure services.
 
-The recovery plan for Azure Stack infrastructure services **does not** include recovery of user VMs, storage accounts, or databases. As the application owner, you are responsible for implementing a recovery plan for your applications and data.
+The recovery plan for Azure Stack infrastructure services **does not** include recovery of user VMs, storage accounts, or databases. As the app owner, you're responsible for implementing a recovery plan for your apps and data.
 
 If the Azure Stack cloud is offline for an extended time or permanently unrecoverable, you need to have a recovery plan in place that:
 
-* Ensures minimal downtime
-* Keeps critical VMs, such as database servers, running
-* Enables applications to keep servicing user requests
+* Ensures minimal downtime.
+* Keeps critical VMs, such as database servers, running.
+* Enables apps to keep servicing user requests.
 
-The operator of the Azure Stack cloud is responsible for creating a recovery plan for the underlying Azure Stack infrastructure and services. To learn more, read the article [Recover from catastrophic data loss](../operator/azure-stack-backup-recover-data.md).
+The operator of the Azure Stack cloud is responsible for creating a recovery plan for the underlying Azure Stack infrastructure and services. To learn more, see [Recover from catastrophic data loss](../operator/azure-stack-backup-recover-data.md).
 
 ## Considerations for IaaS VMs
 The operating system installed in the IaaS VM will limit which products you can use to protect the data it contains. For Windows based IaaS VMs, you can use Microsoft and partner products to protect data. For Linux based IaaS VMs, the only option is to use partner products. Refer to [this datasheet for all the BC/DR partners with validated products for Azure Stack](https://aka.ms/azurestackbcdrpartners).
