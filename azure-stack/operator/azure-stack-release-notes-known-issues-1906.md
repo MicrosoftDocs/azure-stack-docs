@@ -65,16 +65,16 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 
 ## Networking
 
-### Service Endpoints
+### Service endpoints
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack. 
 - Occurrence: Common
 
-### Network Interface
+### Network interface
 
 - Applicable: This issue applies to all supported releases.
-- Cause: A new Network Interface cannot be added to a VM that is in a **running** state.
+- Cause: A new network interface cannot be added to a VM that is in a **running** state.
 - Remediation: Stop the virtual machine before adding/removing a network interface.
 - Occurrence: Common
 
@@ -95,23 +95,23 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 #### VPN Troubleshooter
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, in the **Connections** blade shows a feature "VPN Troubleshooter". This feature is currently not supported in Azure Stack. 
+- Cause: In the user portal, the **Connections** blade shows a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack. 
 - Occurrence: Common
 
 #### Documentation
 
 - Applicable: This issue applies to all supported releases.
-- Cause: The documenation showcased currently in the Overview page of Virtual Network gateway link to Azure Specific documentation instead of Azure Stack. Please use the following links for Azure Stack Documentation:
+- Cause: The documenation links in the Overview page of Virtual Network gateway links to Azure-specific documentation instead of Azure Stack. Please use the following links for the Azure Stack documentation:
 
-Gateway SKUs: https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-vpn-gateway-about-vpn-gateways#gateway-skus
+Gateway SKUs: https://docs.microsoft.com/azure-stack/user/azure-stack-vpn-gateway-about-vpn-gateways#gateway-skus
 
-Highly Available Connections: https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-vpn-gateway-about-vpn-gateways#gateway-availability
+Highly Available Connections: https://docs.microsoft.com/azure-stack/user/azure-stack-vpn-gateway-about-vpn-gateways#gateway-availability
 
-Configure BGP on Azure Stack: https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-vpn-gateway-settings#gateway-requirements
+Configure BGP on Azure Stack: https://docs.microsoft.com/azure-stack/user/azure-stack-vpn-gateway-settings#gateway-requirements
 
-ExpressRoute circuits: https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-connect-expressroute
+ExpressRoute circuits: https://docs.microsoft.com/azure-stack/operator/azure-stack-connect-expressroute
 
-Specify custom IPsec / IKE policies: https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-vpn-gateway-settings#ipsecike-parameters
+Specify custom IPsec / IKE policies: https://docs.microsoft.com/azure-stack/user/azure-stack-vpn-gateway-settings#ipsecike-parameters
 
 ### Load balancer
 
