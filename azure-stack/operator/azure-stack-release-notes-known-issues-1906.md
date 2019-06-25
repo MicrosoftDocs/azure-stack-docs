@@ -101,7 +101,7 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 #### Documentation
 
 - Applicable: This issue applies to all supported releases.
-- Cause: The documenation links in the Overview page of Virtual Network gateway links to Azure-specific documentation instead of Azure Stack. Please use the following links for the Azure Stack documentation:
+- Cause: The documentation links in the Overview page of Virtual Network gateway links to Azure-specific documentation instead of Azure Stack. Please use the following links for the Azure Stack documentation:
 
 Gateway SKUs: https://docs.microsoft.com/azure-stack/user/azure-stack-vpn-gateway-about-vpn-gateways#gateway-skus
 
