@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2019
+ms.date: 06/25/2019
 ms.author: sethm
-ms.reviewer: ''
-ms.lastreviewed: 06/20/2019
+ms.reviewer: hectorl
+ms.lastreviewed: 06/25/2019
 ---
 
 # Azure Stack 1906 update
@@ -48,6 +48,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
+
 - Improvements to the reliability of the backup resource provider when the infrastructure backup service moves to another instance.
 
 ### Changes
