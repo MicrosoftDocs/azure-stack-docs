@@ -98,9 +98,9 @@ Important considerations for backing up VMs on Azure Stack:
 
 ### Replication/manual failover
 
-An alternate approach to supporting high availability is to replicate your application VMs to another cloud and rely on a manual failover. The replication of the operating system, application binaries, and application data can be performed at the VM level or guest OS level. The failover is managed using additional software that is not part of the application.
+An alternate approach to supporting high availability is to replicate your app VMs to another cloud and rely on a manual failover. The replication of the operating system, app binaries, and app data can be done at the VM level or guest OS level. The failover is managed using additional software that is not part of the app.
 
-With this approach, the application is deployed in one cloud and its VM is replicated to the other cloud. If a failover is triggered, the secondary VMs need to be powered on in the second cloud. In some scenarios, the failover creates the VMs and attaches disks to them. This process can take a long time to complete, especially with a multi-tiered application that requires a specific start-up sequence. There may also be steps that must be run before the application is ready to start servicing requests.
+With this approach, the app is deployed in one cloud and its VM is replicated to the other cloud. If a failover is triggered, the secondary VMs need to be powered on in the second cloud. In some scenarios, the failover creates the VMs and attaches disks to them. This process can take a long time to complete, especially with a multi-tiered application that requires a specific start-up sequence. There may also be steps that must be run before the app is ready to start servicing requests.
 
 ![Replication-manual failover](media/azure-stack-manage-vm-backup/vm_backupdataflow_02.png)
 
@@ -110,11 +110,11 @@ With this approach, the application is deployed in one cloud and its VM is repli
  
 ### High availability/automatic failover
 
-For applications where your business can tolerate a few seconds or minutes of downtime and minimal data loss, you will need to consider a high-availability configuration. High-availability applications are designed to quickly and automatically recover from faults. For local hardware faults, Azure Stack infrastructure implements high availability in the physical network using two top of rack switches. For compute level faults, Azure Stack uses multiple nodes in a scale unit. At the VM level, you can use scale sets in combination with fault domains to ensure node failures do not take down your application.
+For apps where your business can tolerate a few seconds or minutes of downtime and minimal data loss, you need to consider a high-availability configuration. High-availability apps are designed to quickly and automatically recover from faults. For local hardware faults, Azure Stack infrastructure implements high availability in the physical network using two top of rack switches. For compute level faults, Azure Stack uses multiple nodes in a scale unit. At the VM level, you can use scale sets in combination with fault domains to ensure node failures don't take down your app.
 
-In combination with scale sets, your application will need to support high availability natively or support the use of clustering software. For example, Microsoft SQL Server supports high availability natively for databases using synchronous-commit mode. However, if you can only support asynchronous replication, then there will be some data loss. Applications can also be deployed into a failover cluster where the clustering software handles the automatic failover of the application.
+In combination with scale sets, your app will need to support high availability natively or support the use of clustering software. For example, Microsoft SQL Server supports high availability natively for databases using synchronous-commit mode. However, if you can only support asynchronous replication, then there will be some data loss. Apps can also be deployed into a failover cluster where the clustering software handles the automatic failover of the app.
 
-Using this approach, the application is only active in one cloud, but the software is deployed to multiple clouds. The other clouds are in stand-by mode ready to start the application when the failover is triggered.
+Using this approach, the app is only active in one cloud, but the software is deployed to multiple clouds. The other clouds are in stand-by mode ready to start the app when the failover is triggered.
 
  - RTO: Downtime measured in seconds
  - RPO: Minimal data loss
