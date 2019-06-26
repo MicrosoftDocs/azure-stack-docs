@@ -62,8 +62,9 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
-- Fixed an issue where resizing a managed disk VM fails with an "Internal Operation Error"
-- Fixed an issue where a failed user image creation puts the service that manages images is in a bad state;this would block deletion of the failed image and creation of new images. This is also fixed in the 1905 hotfix.
+- Fixed an issue where resizing a managed disk VM failed with an **Internal Operation Error**.
+- Fixed an issue where a failed user image creation puts the service that manages images is in a bad state; this blocks deletion of the failed image and creation of new images. This is also fixed in the [1905 hotfix](https://github.com/MicrosoftDocs/azure-stack-docs/pull/195).
+
 ### Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates-1906.md).
