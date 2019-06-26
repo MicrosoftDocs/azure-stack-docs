@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 06/26/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 06/25/2019
+ms.lastreviewed: 06/26/2019
 ---
 
 # Azure Stack 1906 update
@@ -45,15 +45,15 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 <!-- What's new, also net new experiences and features. -->
 
-- Visual Studio Code is now supported with Azure Stack deployment using ADFS.
+- Visual Studio Code is now supported with Azure Stack deployment using AD FS.
 
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
-- The Get-GraphApplication command in the priviledged endpoint does now display the thumbprint of the currently used certificate. This improves the ceritifiacte management for Service Principals when Azure Stack is deployed with ADFS.
+- The **Get-GraphApplication** command in the privileged endpoint now displays the thumbprint of the currently used certificate. This improves the certificate management for service principals when Azure Stack is deployed with AD FS.
 
-- New health monitoring rules have been added to validate the availability of AD Graph and ADFS including the ability to raise alerts.
+- New health monitoring rules have been added to validate the availability of AD Graph and AD FS, including the ability to raise alerts.
 
 - Improvements to the reliability of the backup resource provider when the infrastructure backup service moves to another instance.
 
