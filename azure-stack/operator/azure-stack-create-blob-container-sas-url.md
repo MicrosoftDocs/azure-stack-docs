@@ -13,22 +13,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 06/26/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 06/25/2019
+ms.lastreviewed: 06/26/2019
 
 ---
-# Create a blob container to automatically collect Azure Stack logs 
+# Create a blob container SAS URL 
 
 *Applies to: Azure Stack integrated systems*
 
-You can create a blob container in Azure to save Azure Stack log files that will be collected for analysis by Microsoft Customer Support Services (CSS). 
-You can configure an existing blob container or complete the following steps to create a new one.
+You'll need the shared access signature URL of a blob container in Azure to save Azure Stack log files that will be collected for analysis by Microsoft Customer Support Services (CSS). 
+You can use an existing blob container or complete the following steps to create a new one.
 
 ## Permissions
 
-To configure the blob container in Azure, you'll need the [storage blog contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or be given [specific permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). 
+To create a blob container in Azure, you need at least the [storage blog contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or the [specific permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). Global administrators also have the necessary permission. 
 
 ## Create a blob container in Azure
 
