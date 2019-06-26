@@ -26,9 +26,8 @@ ms.lastreviewed: 06/26/2019
 You'll need the shared access signature URL of a blob container in Azure to save Azure Stack log files that will be collected for analysis by Microsoft Customer Support Services (CSS). 
 You can use an existing blob container or complete the following steps to create a new one.
 
-## Permissions
-
-To create a blob container in Azure, you need at least the [storage blog contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or the [specific permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). Global administrators also have the necessary permission. 
+>[!NOTE]
+>To create a blob container in Azure, you need at least the [storage blog contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or the [specific permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). Global administrators also have the necessary permission. 
 
 ## Create a blob container in Azure
 
@@ -62,6 +61,12 @@ To create a blob container in Azure, you need at least the [storage blog contrib
 
 The URL is constructed by using the storage account name, the blog container name, and an access token. 
 Copy the URL and enter it when you [configure automatic log collection](azure-stack-configure-log-collection.md).
+
+## Manage the log collection storage account
+
+Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors such as data redundancy. Azure Stack log collection requires only the least costly blob storage option. 
+
+You can set the retention policy for Azure Stack logs between 1 and 365 days in the [storage account diagnostic settings](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#diagnostic-settings). 
 
 ## Next step
 
