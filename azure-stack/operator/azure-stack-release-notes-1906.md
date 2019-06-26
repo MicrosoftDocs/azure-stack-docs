@@ -44,9 +44,9 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 <!-- The current theme (if any) of this release. -->
 
 <!-- What's new, also net new experiences and features. -->
-- Added cmdlet in the PEP to enforce TLS 1.2 as the only TLS version negotiated on all the endpoints. For more information, please see the [documentation page](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-security-configuration).
-- Added internal secret rotation procedure to rotate internal TLS certificates of some internal infrastructure components during each update process. This is the first incremental step towards a fully autonomous internal secret rotation.
-- Added safeguard measure to prevent expiration of internal secrets by forcing internal secrets rotation in case a critical alert on expiring secrets is ignored. This is a safety measure that might result in unexpected downtime; it should not be relied on as a regular operating procedure. Secrets rotation should be planned during a maintenance window. For more information on how to rotate secrets in Azure Stack, please refer to the [secret rotation documentation](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-rotate-secrets).
+- Added a cmdlet in the PEP to enforce TLS 1.2 as the only TLS version negotiated on all the endpoints. For more information, see the [documentation page](azure-stack-security-configuration.md).
+- Added an internal secret rotation procedure to rotate internal TLS certificates of some internal infrastructure components during each update process. This is the first incremental step towards a fully autonomous internal secret rotation.
+- Added a safeguard measure to prevent expiration of internal secrets by forcing internal secrets rotation in case a critical alert on expiring secrets is ignored. This is a safety measure that might result in unexpected downtime; it should not be relied on as a regular operating procedure. Secrets rotation should be planned during a maintenance window. For more information on how to rotate secrets in Azure Stack, see the [secret rotation documentation](azure-stack-rotate-secrets.md).
 
 ### Improvements
 
