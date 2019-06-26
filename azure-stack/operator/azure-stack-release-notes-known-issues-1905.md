@@ -129,6 +129,14 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Remediation: Recreate the storage account with the same name you used previously.
 - Occurrence: Common
 
+### VM resize
+
+- Applicable: This issue applies to the 1905 release.
+- Cause: Unable to successfully resize a managed disk VM. Attempting to resize the VM generates an error with "code": "InternalOperationError",
+  "message": "An internal error occurred in the operation."
+- Remediation: We are working to remediate this in the next release. Currently, you must recreate the VM with the new VM size.
+- Occurrence: Common
+
 ### Virtual machine scale set
 
 #### CentOS
