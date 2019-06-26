@@ -54,7 +54,7 @@
     href: azure-stack-use-portal.md
   - name: Connect with PowerShell
     href: azure-stack-powershell-configure-user.md
-  - name: Security & compliance
+  - name: Security, compliance & identity
     items:
     - name: Use role-based access control
       href: azure-stack-manage-permissions.md
