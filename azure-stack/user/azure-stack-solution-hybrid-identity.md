@@ -48,12 +48,11 @@ You must have Azure Stack operator permissions for the steps in this tutorial.
 
 ## Create a service principal for Azure AD in the portal
 
-If you've deployed Azure Stack using Azure AD as the identity store, you can create service principals just like you do for Azure. The [create service principals](../operator/azure-stack-create-service-principals.md#manage-an-azure-ad-service-principal) article shows you how to perform the steps through the portal. Check to see that you
-have the [required Azure AD permissions](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) before beginning.
+If you deployed Azure Stack using Azure AD as the identity store, you can create service principals just like you do for Azure. [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md#manage-an-azure-ad-service-principal) shows you how to perform the steps through the portal. Be sure you have the [required Azure AD permissions](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) before beginning.
 
 ## Create a service principal for AD FS using PowerShell
 
-If you have deployed Azure Stack with AD FS, you can use PowerShell to create a service principal, assign a role for access, and sign in from PowerShell using that identity. [Create service principal for AD FS](../operator/azure-stack-create-service-principals.md#manage-an-ad-fs-service-principal) shows you how to perform the required steps using PowerShell.
+If you deployed Azure Stack with AD FS, you can use PowerShell to create a service principal, assign a role for access, and sign in from PowerShell using that identity. [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md#manage-an-ad-fs-service-principal) shows you how to perform the required steps using PowerShell.
 
 ## Using the Azure Stack API
 
