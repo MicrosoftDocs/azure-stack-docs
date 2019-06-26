@@ -54,17 +54,18 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - Improvements to the reliability of the backup resource provider when the infrastructure backup service moves to another instance.
 - Performance optimization of external secret rotation procedure to provide a uniform execution time to facilitate scheduling of maintenance window.
-- Test-AzureStack now reports on internal secrets that are about to expire (critical alerts).
+- The **Test-AzureStack** cmdlet now reports on internal secrets that are about to expire (critical alerts).
 
 ### Changes
+
 - Changed alert triggers for expiration of internal secrets:
--- Warning alerts will be now raised 90 days prior to the expiration of secrets.
--- Critical alerts will be now raised 30 days prior to the expiration of secrets.
+   - Warning alerts are now raised 90 days prior to the expiration of secrets.
+   - Critical alerts are now raised 30 days prior to the expiration of secrets.
 
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
-- Active alerts on expiring internal secrets get now automatically closed after successful execution of internal secret rotation.
+- Active alerts on expiring internal secrets are now automatically closed after successful execution of internal secret rotation.
 
 ### Security updates
 
