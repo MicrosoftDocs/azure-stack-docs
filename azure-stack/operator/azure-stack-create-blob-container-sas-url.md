@@ -57,7 +57,7 @@ You can use an existing blob container or complete the following steps to create
    - Expiry time: Increase to at least one week for automatic log collection or longer to avoid related alerts about upcoming expiration.
    - Time zone: UTC
    - Permissions: Read, Write, and List
-1. Click **Create**.  
+1. Click **Save**.  
 
 The URL is constructed by using the storage account name, the blog container name, and an access token. 
 Copy the URL and enter it when you [configure automatic log collection](azure-stack-configure-log-collection.md).
