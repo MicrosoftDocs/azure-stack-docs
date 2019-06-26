@@ -401,10 +401,12 @@
       items:
       - name: Overview      
         href: azure-stack-help-and-support-overview.md
-      - name: Create a blob container SAS URL
-        href: azure-stack-create-blob-container-sas-url.md
-      - name: Configure log collection
-        href: azure-stack-configure-log-collection.md
+      - name: Log collection
+        items:
+        - name: Create a blob container SAS URL
+          href: azure-stack-create-blob-container-sas-url.md
+        - name: Configure log collection
+          href: azure-stack-configure-log-collection.md
     - name: Troubleshoot  
       items:
       - name: Known issues
