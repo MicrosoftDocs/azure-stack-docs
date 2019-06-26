@@ -54,85 +54,57 @@ AzCopy is a command-line utility designed to copy data to and from Microsoft Azu
 
 ### Download and install AzCopy
 
-There are two versions of the AzCopy utility: AzCopy on Windows and AzCopy on Linux.
+* For the 1811 update, or newer versions, [download AzCopy](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
+* For previous versions (1802 to 1809 update), [download AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417).
 
- - **AzCopy on Windows**
-    - Download the supported version of AzCopy for Azure Stack. You can install and use AzCopy on Azure Stack the same way as Azure. For more information, see [AzCopy on Windows](/azure/storage/common/storage-use-azcopy).
-        - For the 1811 update, or newer versions, [download AzCopy 7.3.0](https://aka.ms/azcopyforazurestack20171109).
-        - For previous versions (1802 to 1809 update), [download AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417).
+### AcCopy 10.1 configuration and limits
 
- - **AzCopy on Linux**
+AzCopy 10.1 is now able to be configured to use older API versions. This enables (limited) support for Azure Stack.
+To configure API version for AzCopy to support Azure Stack, set the `AZCOPY_DEFAULT_SERVICE_API_VERSION` environment variable to `2017-11-09`.
 
-    - You can install and use AzCopy on Azure Stack the same way as Azure. For more information, see [AzCopy on Linux](/azure/storage/common/storage-use-azcopy-linux).
-    - For previous versions (1802 to 1809 updates), see the [installation steps for AzCopy 7.1 and earlier versions](/azure/storage/common/storage-use-azcopy-v10#use-the-previous-version-of-azcopy).
+| Operating system | Command  |
+|--------|-----------|
+| **Windows** | In a command prompt use: `set AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09`<br> In PowerShell use: `$env:AZCOPY_DEFAULT_SERVICE_API_VERSION="2017-11-09"`|
+| **Linux** | `export AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09` |
+| **MacOS** | `export AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09` |
+
+In AzCopy 10.1, the following features are supported for Azure Stack:
+
+| Feature | Supported actions |
+| --- | --- |
+|Manage container|Create a container<br>List containers
+|Manage job|Display jobs<br>Resume a job
+|Remove blob|Remove a single blob<br>Remove entire or partial virtual directory
+|Upload file|Upload a file<br>Upload a directory<br>Upload the contents of a directory
+|Download file|Download a file<br>Download a directory<br>Download the contents of a directory
+|Synchronize file|Synchronize a container to a local file system<br>Synchronize a local file system to a container
+
+   > [!NOTE]
+   > * Azure Stack doesn't support providing authorization credentials to AzCopy by using Azure Active Directory (AD). You must access storage objects on Azure Stack using a Shared Access Signature (SAS) token.
+   > * Azure Stack doesn't support asynchronous data transfer between two Azure Stack blob locations, and between Azure storage and Azure Stack. You can't use "azcopy cp" to move data from Azure Stack to Azure storage (or in a contrary way) directly with AzCopy 10.1.
 
 ### AzCopy command examples for data transfer
 
-The following examples follow typical scenarios for copying data to and from Azure Stack blobs. To learn more, see [AzCopy on Windows](/azure/storage/common/storage-use-azcopy) and [AzCopy on Linux](/azure/storage/common/storage-use-azcopy-linux).
+The following examples follow typical scenarios for copying data to and from Azure Stack blobs. To learn more, see [Get started with AzCopy](/azure/storage/common/storage-use-azcopy-v10).
 
 ### Download all blobs to a local disk
 
-**Windows**
-
-```shell
-AzCopy.exe /source:https://myaccount.blob.local.azurestack.external/mycontainer /dest:C:\myfolder /sourcekey:<key> /S
 ```
-
-**Linux**
-
-```bash
-azcopy \
-    --source https://myaccount.blob.local.azurestack.external/mycontainer \
-    --destination /mnt/myfiles \
-    --source-key <key> \
-    --recursive
+azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/directory]?[SAS]" "/path/to/dir" --recursive=true
 ```
 
 ### Upload single file to virtual directory
 
-**Windows**
-
-```shell
-AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.local.azurestack.external/mycontainer/vd /DestKey:key /Pattern:abc.txt
 ```
-
-**Linux**
-
-```bash
-azcopy \
-    --source /mnt/myfiles/abc.txt \
-    --destination https://myaccount.blob.local.azurestack.external/mycontainer/vd/abc.txt \
-    --dest-key <key>
-```
-
-### Move data between Azure and Azure Stack storage
-
-Asynchronous data transfer between Azure storage and Azure Stack is not supported. You need to specify the transfer with the **/SyncCopy** or **--sync-copy** option.
-
-**Windows**
-
-```shell
-Azcopy /Source:https://myaccount.blob.local.azurestack.external/mycontainer /Dest:https://myaccount2.blob.core.windows.net/mycontainer2 /SourceKey:AzSKey /DestKey:Azurekey /S /SyncCopy
-```
-
-**Linux**
-
-```bash
-azcopy \
-    --source https://myaccount1.blob.local.azurestack.external/myContainer/ \
-    --destination https://myaccount2.blob.core.windows.net/myContainer/ \
-    --source-key <key1> \
-    --dest-key <key2> \
-    --include "abc.txt" \
-    --sync-copy
+azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
 ### Azcopy known issues
 
  - Any AzCopy operation on a file store is not available because file storage is not yet available in Azure Stack.
- - Asynchronous data transfer between Azure storage and Azure Stack is not supported. You can specify the transfer with the **/SyncCopy** option to copy the data.
+ - If you want to transfer data between two Azure Stack blob locations, or between Azure Stack and Azure storage by using AzCopy 10.1, you need to download the data to a local location first, and then re-upload to target directory on Azure Stack or Azure storage. Or you can use AzCopy 7.1, and specify the transfer with the **/SyncCopy** option to copy the data.  
  - The Linux version of Azcopy only supports 1802 update or later versions. And it doesn't support Table service.
-
+ 
 ## Azure PowerShell
 
 Azure PowerShell is a module that provides cmdlets for managing services on both Azure and Azure Stack. It's a task-based, command-line shell and scripting language designed especially for system administration.
