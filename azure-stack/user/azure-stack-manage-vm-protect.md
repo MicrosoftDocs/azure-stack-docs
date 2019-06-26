@@ -70,11 +70,11 @@ Another metric is **Mean Time to Recover** (MTTR), which is the average time tha
 
 ### Backup-restore
 
-The most common protection scheme for VM-based applications is to use backup software. Backing up a VM typically includes the operating system, operating system configuration, application binaries, and application data. The backups are created by taking a snapshot of the volumes, disks, or the entire VM. With Azure Stack, you have the flexibility of backing up from within the context of the guest OS or from the Azure Stack storage and compute APIs. Azure Stack does not support taking backups at the hypervisor level.
+The most common protection scheme for VM-based apps is to use backup software. Backing up a VM typically includes the operating system, operating system configuration, app binaries, and app data. The backups are created by taking a snapshot of the volumes, disks, or the entire VM. With Azure Stack, you have the flexibility of backing up from within the context of the guest OS or from the Azure Stack storage and compute APIs. Azure Stack doesn't support taking backups at the hypervisor level.
  
 ![Backup-restor](media/azure-stack-manage-vm-backup/vm_backupdataflow_03.png)
 
-Recovering the application requires restoring one or more VMs to the same cloud or to a new cloud. You can target a cloud in your datacenter or the public cloud. The cloud you choose is completely within your control and is based on your data privacy and sovereignty requirements.
+Recovering the app requires restoring one or more VMs to the same cloud or to a new cloud. You can target a cloud in your datacenter or the public cloud. The cloud you choose is completely within your control and is based on your data privacy and sovereignty requirements.
  
  - RTO: Downtime measured in hours
  - RPO: Variable data loss (depending on backup frequency)
@@ -88,13 +88,13 @@ Important considerations for backing up VMs on Azure Stack:
 
  - **Categorization**
     - Consider a model where users opt in to VM backup.
-    - Define a recovery service level agreement (SLA) based on the priority of the applications or the impact to the business.
+    - Define a recovery service level agreement (SLA) based on the priority of the apps or the impact to the business.
  - **Scale**
     - Consider staggered backups when on-boarding a large number of new VMs (if backup is required).
     - Evaluate backup products that can efficiently capture and transmit backup data to minimize resource content on the solution.
     - Evaluate backup products that efficiently store backup data using incremental or differential backups to minimize the need for full backups across all VMs in the environment.
  - **Restore**
-    - Backup products can restore virtual disks, application data within an existing VM, or the entire VM resource and associated virtual disks. The restore scheme you need depends on how you plan to restore the application and it will impact your application time to recovery. For example, it may be easier to redeploy SQL server from a template and then restore the databases instead of restoring the entire VM or set of VMs.
+    - Backup products can restore virtual disks, app data within an existing VM, or the entire VM resource and associated virtual disks. The restore scheme you need depends on how you plan to restore the app and it will impact your app time to recovery. For example, it may be easier to redeploy SQL server from a template and then restore the databases instead of restoring the entire VM or set of VMs.
 
 ### Replication/manual failover
 
