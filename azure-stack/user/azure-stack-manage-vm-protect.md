@@ -57,16 +57,16 @@ Plan your backup-recovery and disaster-recovery strategy for each app to determi
 
 ## Application recovery objectives
 
-You will need to determine the amount of downtime and data loss your organization can tolerate for each application. By quantifying downtime and data loss you can create a recovery plan that minimizes the impact of a disaster on your organization. For each application, consider:
+You need to determine the amount of downtime and data loss your organization can tolerate for each app. By quantifying downtime and data loss, you can create a recovery plan that minimizes the impact of a disaster on your organization. For each app, consider:
 
  - **Recovery time objective (RTO)**  
-RTO is the maximum acceptable time that an application can be unavailable after an incident. For example, an RTO of 90 minutes means that you must be able to restore the application to a running state within 90 minutes from the start of a disaster. If you have a low RTO, you might keep a second deployment continually running on standby to protect against a regional outage.
+RTO is the maximum acceptable time that an app can be unavailable after an incident. For example, an RTO of 90 minutes means that you must be able to restore the app to a running state within 90 minutes from the start of a disaster. If you have a low RTO, you might keep a second deployment continually running on standby to protect against a regional outage.
  - **Recovery point objective (RPO)**  
-RPO is the maximum duration of data loss that is acceptable during a disaster. For example, if you store data in a single database, with no replication to other databases, and perform hourly backups, you could lose up to an hour of data.
+RPO is the maximum duration of data loss that is acceptable during a disaster. For example, if you store data in a single database with no replication to other databases, and perform hourly backups, you could lose up to an hour of data.
 
-RTO and RPO are business requirements. Conduct a risk assessment to  define the application's RTO and RPO.
+RTO and RPO are business requirements. Conduct a risk assessment to  define the app's RTO and RPO.
 
-Another metric is **Mean Time to Recover** (MTTR), which is the average time that it takes to restore the application after a failure. MTTR is an empirical value for a system. If MTTR exceeds the RTO, then a failure in the system will cause an unacceptable business disruption, because it won't be possible to restore the system within the defined RTO.
+Another metric is **Mean Time to Recover** (MTTR), which is the average time that it takes to restore the app after a failure. MTTR is an empirical value for a system. If MTTR exceeds the RTO, then a failure in the system will cause an unacceptable business disruption because it won't be possible to restore the system within the defined RTO.
 
 ### Backup-restore
 
