@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 06/26/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
@@ -58,7 +58,9 @@ For information about a specific update, including how to download it, see the r
 
 Occasionally, Microsoft provides hotfixes for Azure Stack that address a specific issue that is often preventative or time-sensitive.  Each hotfix is released with a corresponding Microsoft Knowledge Base article that details the issue, cause, and resolution.
 
-Hotfixes are downloaded and installed just like the regular full update packages for Azure Stack. However, unlike a full update, hotfixes can install in minutes. We recommend Azure Stack Operators set maintenance windows when installing hotfixes. Hotfixes update the version of your Azure Stack cloud so you can easily determine if the hotfix has been applied. A separate hotfix is provided for each version of Azure Stack that is still in support. Each fix for a specific iteration is cumulative and includes the previous updates for that same version. You can read more about the applicability of a specific hotfix in a fixes corresponding Knowledge Base article.  
+For more information and links to specific hotfixes, see the release notes links in the previous section.
+
+Hotfixes are downloaded and installed just like the regular full update packages for Azure Stack. However, unlike a full update, hotfixes can install in minutes. We recommend Azure Stack Operators set maintenance windows when installing hotfixes. Hotfixes update the version of your Azure Stack cloud so you can easily determine if the hotfix has been applied. A separate hotfix is provided for each version of Azure Stack that is still in support. Each fix for a specific iteration is cumulative and includes the previous updates for that same version. You can read more about the applicability of a specific hotfix in a corresponding Knowledge Base article.  
 
 ## Keep your system under support
 

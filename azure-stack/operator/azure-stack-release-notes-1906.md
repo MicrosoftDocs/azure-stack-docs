@@ -90,7 +90,7 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 The 1906 release of Azure Stack must be applied on the 1905 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- No hotfix available for 1905.
+- [Azure Stack hotfix 1.1905.3.48](https://support.microsoft.com/help/4510078)
 
 ### After successfully applying the 1906 update
 
