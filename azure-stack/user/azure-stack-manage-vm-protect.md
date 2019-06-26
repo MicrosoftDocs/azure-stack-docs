@@ -122,11 +122,11 @@ Using this approach, the app is only active in one cloud, but the software is de
 
 ### Fault tolerance
 
-Azure Stack physical redundancy and infrastructure service availability only protect against hardware level faults/failures such  a disk, power supply, network port, or node. However, if your application must always be available and can never lose any data, you will need to implement fault tolerance natively in your application or use additional software to enable fault tolerance.
+Azure Stack physical redundancy and infrastructure service availability only protect against hardware level faults/failures such  a disk, power supply, network port, or node. However, if your app must always be available and can never lose any data, you will need to implement fault tolerance natively in your app or use additional software to enable fault tolerance.
 
-First, you need to ensure the application VMs are deployed using scale sets to protect against node-level failures. To protect against the cloud going offline, the same application must already be deployed to a different cloud, so it can continue servicing requests without interruption. This model is typically referred to an active-active deployment.
+First, you need to ensure the app VMs are deployed using scale sets to protect against node-level failures. To protect against the cloud going offline, the same app must already be deployed to a different cloud, so it can continue servicing requests without interruption. This model is typically referred to an active-active deployment.
 
-Keep in mind that each Azure Stack cloud is independent of each other, so the clouds are always considered active from an infrastructure perspective. In this case, multiple active instances of the application are deployed to one or more active clouds.
+Keep in mind that each Azure Stack cloud is independent of each other, so the clouds are always considered active from an infrastructure perspective. In this case, multiple active instances of the app are deployed to one or more active clouds.
 
  - RTO: No downtime
  - RPO: No data loss
@@ -134,7 +134,7 @@ Keep in mind that each Azure Stack cloud is independent of each other, so the cl
 
 ### No recovery
 
-Some applications in your environment may not need protection against unplanned downtime or data loss. For example, VMs used for development and testing typically do not need to be recovered. It is your decision to do without protection for an application or a specific VM. Azure Stack does not offer backup or replication of VMs from the underlying infrastructure. Similar to Azure, you will need to opt-in to protection for each VM in each of your subscriptions.
+Some apps in your environment may not need protection against unplanned downtime or data loss. For example, VMs used for development and testing typically don't need to be recovered. It's your decision to do without protection for an app or a specific VM. Azure Stack doesn't offer backup or replication of VMs from the underlying infrastructure. Similar to Azure, you need to opt-in to protection for each VM in each of your subscriptions.
 
  - RTO: Unrecoverable
  - RPO: Complete data loss
@@ -145,13 +145,13 @@ Important considerations for your Azure Stack deployment:
 
 |     | Recommendation | Comments |
 |-------------------------------------------------------------------------------------------------|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Backup/restore VMs to an external backup target already deployed in your datacenter | Recommended | Take advantage of existing backup infrastructure and operational skills. Make sure to size the backup infrastructure so it is ready to protect the additional VM instances. Make sure backup infrastructure is not in close proximity to your source. You can restore VMs to the source Azure Stack, to a secondary Azure Stack instance, or Azure. |
-| Backup/restore VMs to an external backup target dedicated to Azure Stack | Recommended | You can purchase new backup infrastructure or provision dedicated backup infrastructure for Azure Stack. Make sure backup infrastructure is not in close proximity to your source. You can restore VMs to the source Azure Stack, to a secondary Azure Stack instance, or Azure. |
+| Backup/restore VMs to an external backup target already deployed in your datacenter | Recommended | Take advantage of existing backup infrastructure and operational skills. Make sure to size the backup infrastructure so it's ready to protect the additional VM instances. Make sure backup infrastructure isn't in close proximity to your source. You can restore VMs to the source Azure Stack, to a secondary Azure Stack instance, or Azure. |
+| Backup/restore VMs to an external backup target dedicated to Azure Stack | Recommended | You can purchase new backup infrastructure or provision dedicated backup infrastructure for Azure Stack. Make sure backup infrastructure isn't in close proximity to your source. You can restore VMs to the source Azure Stack, to a secondary Azure Stack instance, or Azure. |
 | Backup/restore VMs directly to global Azure or a trusted service provider | Recommended | As long as you can meet your data privacy and regulatory requirements, you can store your backups in global Azure or a trusted service provider. Ideally the service provider is also running Azure Stack so you get consistency in operational experience when you restore. |
-| Replicate/failover VMs to a separate Azure Stack instance | Recommended | In the failover case, you will need to have a second Azure Stack cloud fully operational so you can avoid extended application downtime. |
+| Replicate/failover VMs to a separate Azure Stack instance | Recommended | In the failover case, you need to have a second Azure Stack cloud fully operational so you can avoid extended app downtime. |
 | Replicate/failover VMs directly to Azure or a trusted service provider | Recommended | As long as you can meet your data privacy and regulatory requirements, you can replicate your data to global Azure or a trusted service provider. Ideally the service provider is also running Azure Stack so you get consistency in operational experience after failover. |
-| Deploy backup target on the same Azure Stack cloud with your application data | Not recommended | Avoid storing backups within the same Azure Stack cloud. Unplanned downtime of the cloud can keep you from your primary data and backup data. If you choose to deploy a backup target as a virtual appliance (for the purposes of optimization for backup and restore), you must ensure all data is continuously copied to an external backup location. |
-| Deploy physical backup appliance into the same rack where the Azure Stack solution is installed | Not supported | At this point in time, you cannot connect any other devices to the top of rack switches that are not part of the original solution. |
+| Deploy backup target on the same Azure Stack cloud with your app data | Not recommended | Avoid storing backups within the same Azure Stack cloud. Unplanned downtime of the cloud can keep you from your primary data and backup data. If you choose to deploy a backup target as a virtual appliance (for the purposes of optimization for backup and restore), you must ensure all data is continuously copied to an external backup location. |
+| Deploy physical backup appliance into the same rack where the Azure Stack solution is installed | Not supported | Currently, you can't connect any other devices to the top of rack switches that aren't part of the original solution. |
 
 ## Next steps
 
@@ -161,4 +161,4 @@ This article provided general guidelines for protecting user VMs deployed on Azu
  - [Azure Backup Server support for Azure Stack](https://docs.microsoft.com/azure/backup/ ) 
  - [Azure Site Recovery support for Azure Stack](https://docs.microsoft.com/azure/site-recovery/)  
 
-To learn more about the partner products that offer VM protection on Azure Stack, refer to "[Protecting applications and data on Azure Stack](https://azure.microsoft.com/blog/protecting-applications-and-data-on-azure-stack/)."
+To learn more about the partner products that offer VM protection on Azure Stack, refer to [Protecting applications and data on Azure Stack](https://azure.microsoft.com/blog/protecting-applications-and-data-on-azure-stack/).
