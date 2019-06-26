@@ -50,7 +50,7 @@ You'll need to provide the SAS URL for a blob container. You can use an existing
 
 ## Configure on-demand log collection 
 
-For on-demand collection, CSS might provide a blob service SAS URL. 
+For on-demand collection, CSS will provide the blob container SAS URL to use for uploading logs. 
 
 1. Open **Help and support Overview** and click **Collect logs now**. 
 1. Choose any 1-4 hour period over the previous week, and enter the SAS URL that CSS provided.
