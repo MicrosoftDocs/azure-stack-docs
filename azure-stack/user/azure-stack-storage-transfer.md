@@ -54,7 +54,7 @@ AzCopy is a command-line utility designed to copy data to and from Microsoft Azu
 
 ### Download and install AzCopy
 
-* For the 1811 update, or newer versions, [download AzCopy](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
+* For the 1811 update, or newer versions, [download AzCopy V10+](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
 * For previous versions (1802 to 1809 update), [download AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417).
 
 ### AcCopy 10.1 configuration and limits
@@ -72,7 +72,7 @@ In AzCopy 10.1, the following features are supported for Azure Stack:
 
 | Feature | Supported actions |
 | --- | --- |
-|Manage container|Create a container<br>List containers
+|Manage container|Create a container<br>List contents of containers
 |Manage job|Display jobs<br>Resume a job
 |Remove blob|Remove a single blob<br>Remove entire or partial virtual directory
 |Upload file|Upload a file<br>Upload a directory<br>Upload the contents of a directory
@@ -81,7 +81,7 @@ In AzCopy 10.1, the following features are supported for Azure Stack:
 
    > [!NOTE]
    > * Azure Stack doesn't support providing authorization credentials to AzCopy by using Azure Active Directory (AD). You must access storage objects on Azure Stack using a Shared Access Signature (SAS) token.
-   > * Azure Stack doesn't support asynchronous data transfer between two Azure Stack blob locations, and between Azure storage and Azure Stack. You can't use "azcopy cp" to move data from Azure Stack to Azure storage (or in a contrary way) directly with AzCopy 10.1.
+   > * Azure Stack doesn't support synchronous data transfer between two Azure Stack blob locations, and between Azure storage and Azure Stack. You can't use "azcopy cp" to move data from Azure Stack to Azure storage (or in a contrary way) directly with AzCopy 10.1.
 
 ### AzCopy command examples for data transfer
 
