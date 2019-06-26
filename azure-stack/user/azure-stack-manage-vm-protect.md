@@ -40,13 +40,13 @@ If the Azure Stack cloud is offline for an extended time or permanently unrecove
 The operator of the Azure Stack cloud is responsible for creating a recovery plan for the underlying Azure Stack infrastructure and services. To learn more, see [Recover from catastrophic data loss](../operator/azure-stack-backup-recover-data.md).
 
 ## Considerations for IaaS VMs
-The operating system installed in the IaaS VM will limit which products you can use to protect the data it contains. For Windows based IaaS VMs, you can use Microsoft and partner products to protect data. For Linux based IaaS VMs, the only option is to use partner products. Refer to [this datasheet for all the BC/DR partners with validated products for Azure Stack](https://aka.ms/azurestackbcdrpartners).
+The operating system installed in the IaaS VM limits which products you can use to protect the data it contains. For Windows based IaaS VMs, you can use Microsoft and partner products to protect data. For Linux based IaaS VMs, the only option is to use partner products. Refer to [this datasheet for all the BC/DR partners with validated products for Azure Stack](https://aka.ms/azurestackbcdrpartners).
 
 ## Source/target combinations
 
-Each Azure Stack cloud is deployed to one datacenter. A separate environment is required so you can recover your apps. The recovery environment can be another Azure Stack cloud in a different datacenter or the Azure public cloud. Your data sovereignty and data privacy requirements will determine the recovery environment for your app. As you enable protection for each app, you have the flexibility to choose a specific recovery option for each one. You can have apps in one subscription backing up data to another datacenter. In another subscription, you can replicate data to the Azure public cloud.
+Each Azure Stack cloud is deployed to one datacenter. A separate environment is required so you can recover your apps. The recovery environment can be another Azure Stack cloud in a different datacenter or the Azure public cloud. Your data sovereignty and data privacy requirements determine the recovery environment for your app. As you enable protection for each app, you have the flexibility to choose a specific recovery option for each one. You can have apps in one subscription backing up data to another datacenter. In another subscription, you can replicate data to the Azure public cloud.
 
-Plan your backup-recovery and disaster-recovery strategy for each app to determine the target for each app. A recovery plan will help your organization properly size the storage capacity required on-premises and project consumption in the public cloud.
+Plan your backup-recovery and disaster-recovery strategy for each app to determine the target for each app. A recovery plan helps your organization properly size the storage capacity required on-premises and project consumption in the public cloud.
 
 |  | Global Azure | Azure Stack deployed into CSP datacenter and operated by CSP | Azure Stack deployed into customer datacenter and operated by customer |
 |------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------|
@@ -55,14 +55,14 @@ Plan your backup-recovery and disaster-recovery strategy for each app to determi
 
 ![Source-target combinations](media/azure-stack-manage-vm-backup/vm_backupdataflow_01.png)
 
-## Application recovery objectives
+## App recovery objectives
 
-You need to determine the amount of downtime and data loss your organization can tolerate for each app. By quantifying downtime and data loss, you can create a recovery plan that minimizes the impact of a disaster on your organization. For each app, consider:
+Determine the amount of downtime and data loss your organization can tolerate for each app. By quantifying downtime and data loss, you can create a recovery plan that minimizes the impact of a disaster on your organization. For each app, consider:
 
  - **Recovery time objective (RTO)**  
 RTO is the maximum acceptable time that an app can be unavailable after an incident. For example, an RTO of 90 minutes means that you must be able to restore the app to a running state within 90 minutes from the start of a disaster. If you have a low RTO, you might keep a second deployment continually running on standby to protect against a regional outage.
  - **Recovery point objective (RPO)**  
-RPO is the maximum duration of data loss that is acceptable during a disaster. For example, if you store data in a single database with no replication to other databases, and perform hourly backups, you could lose up to an hour of data.
+RPO is the maximum duration of data loss that is acceptable during a disaster. For example, if you store data in a single database which is backed up hourly and has no replication to other databases, you could lose up to an hour of data.
 
 RTO and RPO are business requirements. Conduct a risk assessment to  define the app's RTO and RPO.
 
@@ -94,13 +94,13 @@ Important considerations for backing up VMs on Azure Stack:
     - Evaluate backup products that can efficiently capture and transmit backup data to minimize resource content on the solution.
     - Evaluate backup products that efficiently store backup data using incremental or differential backups to minimize the need for full backups across all VMs in the environment.
  - **Restore**
-    - Backup products can restore virtual disks, app data within an existing VM, or the entire VM resource and associated virtual disks. The restore scheme you need depends on how you plan to restore the app and it will impact your app time to recovery. For example, it may be easier to redeploy SQL server from a template and then restore the databases instead of restoring the entire VM or set of VMs.
+    - Backup products can restore virtual disks, app data within an existing VM, or the entire VM resource and associated virtual disks. The restore scheme you need depends on how you plan to restore the app. For example, it may be easier to redeploy SQL server from a template and then restore the databases instead of restoring the entire VM or set of VMs.
 
 ### Replication/manual failover
 
-An alternate approach to supporting high availability is to replicate your app VMs to another cloud and rely on a manual failover. The replication of the operating system, app binaries, and app data can be done at the VM level or guest OS level. The failover is managed using additional software that is not part of the app.
+An alternate approach to supporting high availability is to replicate your app VMs to another cloud and rely on a manual failover. The replication of the operating system, app binaries, and app data can be done at the VM level or guest OS level. The failover is managed using additional software that isn't part of the app.
 
-With this approach, the app is deployed in one cloud and its VM is replicated to the other cloud. If a failover is triggered, the secondary VMs need to be powered on in the second cloud. In some scenarios, the failover creates the VMs and attaches disks to them. This process can take a long time to complete, especially with a multi-tiered application that requires a specific start-up sequence. There may also be steps that must be run before the app is ready to start servicing requests.
+With this approach, the app is deployed in one cloud and its VM is replicated to the other cloud. If a failover is triggered, the secondary VMs need to be powered on in the second cloud. In some scenarios, the failover creates the VMs and attaches disks to them. This process can take a long time to complete, especially with a multi-tiered app that requires a specific start-up sequence. There may also be steps that must be run before the app is ready to start servicing requests.
 
 ![Replication-manual failover](media/azure-stack-manage-vm-backup/vm_backupdataflow_02.png)
 
@@ -122,9 +122,9 @@ Using this approach, the app is only active in one cloud, but the software is de
 
 ### Fault tolerance
 
-Azure Stack physical redundancy and infrastructure service availability only protect against hardware level faults/failures such  a disk, power supply, network port, or node. However, if your app must always be available and can never lose any data, you will need to implement fault tolerance natively in your app or use additional software to enable fault tolerance.
+Azure Stack physical redundancy and infrastructure service availability only protect against hardware level faults/failures such as disk, power supply, network port, or node. However, if your app must always be available and can never lose any data, you need to implement fault tolerance natively in your app or use additional software to enable fault tolerance.
 
-First, you need to ensure the app VMs are deployed using scale sets to protect against node-level failures. To protect against the cloud going offline, the same app must already be deployed to a different cloud, so it can continue servicing requests without interruption. This model is typically referred to an active-active deployment.
+First, you need to ensure the app VMs are deployed using scale sets to protect against node-level failures. To protect against the cloud going offline, the same app must already be deployed to a different cloud so it can continue servicing requests without interruption. This model is typically referred to an active-active deployment.
 
 Keep in mind that each Azure Stack cloud is independent of each other, so the clouds are always considered active from an infrastructure perspective. In this case, multiple active instances of the app are deployed to one or more active clouds.
 
@@ -157,8 +157,8 @@ Important considerations for your Azure Stack deployment:
 
 This article provided general guidelines for protecting user VMs deployed on Azure Stack. For information about using Azure services to protect user VMs, refer to:
 
- - [Use Azure Backup to back up files and applications on Azure Stack](https://docs.microsoft.com/azure/backup/backup-mabs-files-applications-azure-stack)
+ - [Use Azure Backup to back up files and apps on Azure Stack](https://docs.microsoft.com/azure/backup/backup-mabs-files-applications-azure-stack)
  - [Azure Backup Server support for Azure Stack](https://docs.microsoft.com/azure/backup/ ) 
  - [Azure Site Recovery support for Azure Stack](https://docs.microsoft.com/azure/site-recovery/)  
 
-To learn more about the partner products that offer VM protection on Azure Stack, refer to [Protecting applications and data on Azure Stack](https://azure.microsoft.com/blog/protecting-applications-and-data-on-azure-stack/).
+To learn more about the partner products that offer VM protection on Azure Stack, refer to [Protecting apps and data on Azure Stack](https://azure.microsoft.com/blog/protecting-applications-and-data-on-azure-stack/).
