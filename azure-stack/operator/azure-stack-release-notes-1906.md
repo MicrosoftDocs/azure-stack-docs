@@ -68,6 +68,14 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - A new parameter is available for the **Register-CustomAdfs** cmdlet in the privileged endpoint that enables skipping the certificate revocation list checking when configuring the federation trust for AD FS.
 
+#### Networking updates
+
+- Updated lease time set in DHCP responder to be consistent with Azure.
+
+- Improved retry rates to the resource provider in the scenario of failed deployment of resources.
+
+- Removed the **Standard** SKU option from both the load balancer and public IP, as that is currently not supported.
+
 ### Changes
 
 - Changed alert triggers for expiration of internal secrets:
@@ -84,15 +92,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - In the administrator and user portals, fixed the issue in marketplace in which the Docker extension was incorrectly returned from search but no further action could be taken, as it is not available in Azure Stack.
 
-#### Networking updates
-
-- Updated lease time set in DHCP responder to be consistent with Azure.
-
-- Improved retry rates to the resource provider in the scenario of failed deployment of resources.
-
-- Removed the **Standard** SKU option from both the load balancer and public IP, as that is currently not supported.
-
-#### Security updates
+## Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates-1906.md).
 
