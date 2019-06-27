@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 06/26/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 06/25/2019
+ms.lastreviewed: 06/26/2019
 ---
 
 # Azure Stack 1906 update
@@ -33,7 +33,7 @@ This article describes the contents of the 1906 update package. The update inclu
 
 ## Build reference
 
-The Azure Stack 1906 update build number is **1.1906.0.21**.
+The Azure Stack 1906 update build number is **1.1906.0.30**.
 
 ### Update type
 
@@ -49,9 +49,15 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 - Added an internal secret rotation procedure to rotate internal TLS certificates as required during a system update.
 - Added a safeguard to prevent expiration of internal secrets by forcing internal secrets rotation in case a critical alert on expiring secrets is ignored. This should not be relied on as a regular operating procedure. Secrets rotation should be planned during a maintenance window. Refer to [Azure Stack secret rotation](azure-stack-rotate-secrets.md) for more information.
 
+- Visual Studio Code is now supported with Azure Stack deployment using AD FS.
+
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
+
+- The **Get-GraphApplication** command in the privileged endpoint now displays the thumbprint of the currently used certificate. This improves the certificate management for service principals when Azure Stack is deployed with AD FS.
+
+- New health monitoring rules have been added to validate the availability of AD Graph and AD FS, including the ability to raise alerts.
 
 - Improvements to the reliability of the backup resource provider when the infrastructure backup service moves to another instance.
 - Performance optimization of external secret rotation procedure to provide a uniform execution time to facilitate scheduling of maintenance window.
@@ -67,6 +73,10 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 - Active alerts on expiring internal secrets are now automatically closed after successful execution of internal secret rotation.
+
+- Fixed an issue in which the update duration in the update history tab would trim the first digit if the update was running for more than 99 hours.
+
+- In the administrator and user portals, fixed the issue in marketplace in which the Docker extension was incorrectly returned from search but no further action could be taken, as it is not available in Azure Stack.
 
 ### Security updates
 
@@ -95,7 +105,7 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 The 1906 release of Azure Stack must be applied on the 1905 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- No hotfix available for 1905.
+- [Azure Stack hotfix 1.1905.3.48](https://support.microsoft.com/help/4510078)
 
 ### After successfully applying the 1906 update
 
