@@ -98,6 +98,13 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 - Remediation: Upload the blob using the SAS option.
 - Occurrence: Common
 
+### Template
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the template deployment UI does not populate parameters for the template names beginning with "_" (the underscore character).
+- Remediation: Remove the "_" (underscore character) from the template name.
+- Occurrence: Common
+
 ## Networking
 
 ### Load balancer
