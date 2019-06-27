@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/2/2019
+ms.date: 06/27/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/27/2019
@@ -72,8 +72,8 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 ### Template
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, template deployment UX does not populate parameters for the template names beginning with ‘_’ (underscore character).
-- Remediation: Remove the ‘_’ (underscore character) from the template name.
+- Cause: In the user portal, the template deployment UI does not populate parameters for the template names beginning with "_" (the underscore character).
+- Remediation: Remove the "_" (underscore character) from the template name.
 - Occurrence: Common
 
 ## Networking
@@ -170,10 +170,10 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack.
 
-#### Scale set instance view blade doesn't load
+#### Scale set instance view blade does not load
 
 - Applicable: This issue applies to the 1904, 1905, and 1906 releases.
-- Cause: The instance view blade of a virtual machine scale set located on the Azure Stack portal, in **Dashboard > Virtual machine scale sets > AnyScaleSet > Instances > AnyScaleSetInstance** fails to load, and displays a "crying cloud" image.
+- Cause: The instance view blade of a virtual machine scale set located on the Azure Stack portal, in **Dashboard > Virtual machine scale sets > AnyScaleSet > Instances > AnyScaleSetInstance** fails to load, and displays a "rainy cloud" image.
 - Remediation: There is currently no remediation and we are working on a fix. Until then, please use the CLI command `az vmss get-instance-view` to get the instance view of a scale set.
 
 ### Ubuntu SSH access
@@ -183,27 +183,26 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 - Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
 - Occurrence: Common
 
-### VM Scale set reset password doesn't work
+### Virtual machine scale set reset password does not work
 
 - Applicable: This issue applies to the 1906 release.
-- Cause: A new reset password blade appears in the VMSS but we do not support resetting password on a VMSS yet.
-- Remediation: We are working to hide this blade in a future release.
+- Cause: A new reset password blade appears in the scale set UI, but Azure Stack does not support resetting password on a scale set yet.
+- Remediation: None.
 - Occurrence: Common
 
-### Rainy cloud on VMSS diagnostics
+### Rainy cloud on scale set diagnostics
 
 - Applicable: This issue applies to the 1906 release.
-- Cause: The VMSS overview page shows an empty chart, clicking on the empty chart opens a rainy cloud blade. This is the chart for VMSS diagnostic information such as CPU percentage and is not a feature supported in the current Azure Stack build.
-- Remediation: We are working to hide this blade in a future release
-- Occurence: Common
+- Cause: The virtual machine scale set overview page shows an empty chart. Clicking on the empty chart opens a "rainy cloud" blade. This is the chart for scale set diagnostic information, such as CPU percentage, and is not a feature supported in the current Azure Stack build.
+- Remediation: None.
+- Occurrence: Common
 
-### Virtual machine diagnostic settings blade has a “sink” tab, which is asking for “Application Insight Account”
- 
+### Virtual machine diagnostic settings blade
+
 - Applicable: This issue applies to the 1906 release.
-- Cause: This is a result of a new UX blade we have adopted and is not a feature we support yet. 
-- Remediation: We are working to hide this blade in a future release.
-- Occurence: Common
-
+- Cause: The virtual machine diagnostic settings blade has a **Sink** tab, which asks for an **Application Insight Account**. This is the result of a new blade and is not yet supported in Azure Stack.
+- Remediation: None.
+- Occurrence: Common
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
