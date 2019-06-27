@@ -33,7 +33,7 @@ This article describes the contents of the 1906 update package. The update inclu
 
 ## Build reference
 
-The Azure Stack 1906 update build number is **1.1906.0.21**.
+The Azure Stack 1906 update build number is **1.1906.0.30**.
 
 ### Update type
 
@@ -44,6 +44,10 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 <!-- The current theme (if any) of this release. -->
 
 <!-- What's new, also net new experiences and features. -->
+- Added **Set-TLSPolicy** cmdlet in the privileged endpoint (PEP) to force TLS 1.2 on all the endpoints. Refer to [Azure Stack security controls](azure-stack-security-configuration.md) for more information. 
+- Added **Get-TLSPolicy** cmdlet in the privileged endpoint (PEP) to retrieve the applied TLS policy. Refer to [Azure Stack security controls](azure-stack-security-configuration.md) for more information.
+- Added an internal secret rotation procedure to rotate internal TLS certificates as required during a system update.
+- Added a safeguard to prevent expiration of internal secrets by forcing internal secrets rotation in case a critical alert on expiring secrets is ignored. This should not be relied on as a regular operating procedure. Secrets rotation should be planned during a maintenance window. Refer to [Azure Stack secret rotation](azure-stack-rotate-secrets.md) for more information.
 
 - Visual Studio Code is now supported with Azure Stack deployment using AD FS.
 
@@ -56,8 +60,16 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 - New health monitoring rules have been added to validate the availability of AD Graph and AD FS, including the ability to raise alerts.
 
 - Improvements to the reliability of the backup resource provider when the infrastructure backup service moves to another instance.
+- Performance optimization of external secret rotation procedure to provide a uniform execution time to facilitate scheduling of maintenance window.
+- The **Test-AzureStack** cmdlet now reports on internal secrets that are about to expire (critical alerts).
+
+- A new parameter for is available for the Register-CustomAdfs command in PEP that allows skipping the certificate revocation list checking when configuring the federation trust for ADFS.
 
 ### Changes
+
+- Changed alert triggers for expiration of internal secrets:
+   - Warning alerts are now raised 90 days prior to the expiration of secrets.
+   - Critical alerts are now raised 30 days prior to the expiration of secrets.
 
 ### Fixes
 
@@ -65,6 +77,8 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 - Fixed an issue where resizing a managed disk VM failed with an **Internal Operation Error**.
 
 - Fixed an issue where a failed user image creation puts the service that manages images is in a bad state; this blocks deletion of the failed image and creation of new images. This is also fixed in the 1905 hotfix.
+
+- Active alerts on expiring internal secrets are now automatically closed after successful execution of internal secret rotation.
 
 - Fixed an issue in which the update duration in the update history tab would trim the first digit if the update was running for more than 99 hours.
 

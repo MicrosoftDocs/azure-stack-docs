@@ -54,12 +54,12 @@
     href: azure-stack-use-portal.md
   - name: Connect with PowerShell
     href: azure-stack-powershell-configure-user.md
-  - name: Security & compliance
+  - name: Security, compliance & identity
     items:
     - name: Use role-based access control
       href: azure-stack-manage-permissions.md
-    - name: Use service principals
-      href: Azure-stack-create-service-principals.md
+    - name: Use an app identity to access resources
+      href: /azure-stack/operator/azure-stack-create-service-principals?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Use services
     items:
     - name: Compute
