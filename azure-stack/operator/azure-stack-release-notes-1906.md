@@ -98,7 +98,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - In the administrator and user portals, fixed the issue in marketplace in which the Docker extension was incorrectly returned from search but no further action could be taken, as it is not available in Azure Stack.
 
-- Fixed issue in template deployment UX that does not populate parameters if the template name begins with ‘_’ underscore.
+- Fixed an issue in template deployment UX that does not populate parameters if the template name begins with '_' underscore.
 
 ## Security updates
 
