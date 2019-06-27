@@ -96,6 +96,8 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - Fixed an issue in which the update duration in the update history tab would trim the first digit if the update was running for more than 99 hours.
 
+- Fixed an issue in the **Update** blade to include a **Resume** option for failed updates
+
 - In the administrator and user portals, fixed the issue in marketplace in which the Docker extension was incorrectly returned from search but no further action could be taken, as it is not available in Azure Stack.
 
 ## Security updates
