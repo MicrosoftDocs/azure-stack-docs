@@ -57,6 +57,8 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - Improvements to the reliability of the backup resource provider when the infrastructure backup service moves to another instance.
 
+- A new parameter for is available for the Register-CustomAdfs command in PEP that allows skipping the certificate revocation list checking when configuring the federation trust for ADFS.
+
 ### Changes
 
 ### Fixes
