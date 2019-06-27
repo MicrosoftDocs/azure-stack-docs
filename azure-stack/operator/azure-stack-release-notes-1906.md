@@ -66,7 +66,13 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - In the administrator and user portals, fixed the issue in marketplace in which the Docker extension was incorrectly returned from search but no further action could be taken, as it is not available in Azure Stack.
 
-### Security updates
+#### Networking updates
+
+- Updated lease time set in DHCP responder to be consistent with Azure.
+- Improved retry rates to resource provider in the scenario of failed deployment of resources.
+- Removed the **Standard** SKU option from both the Load Balancer and Public IP, as that is currently not supported. 
+
+#### Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates-1906.md).
 
