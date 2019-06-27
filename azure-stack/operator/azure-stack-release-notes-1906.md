@@ -68,6 +68,8 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 - Changed alert triggers for expiration of internal secrets:
    - Warning alerts are now raised 90 days prior to the expiration of secrets.
    - Critical alerts are now raised 30 days prior to the expiration of secrets.
+   
+- Creating a storage account experience is now consistent with Azure.
 
 ### Fixes
 
