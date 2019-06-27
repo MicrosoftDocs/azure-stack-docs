@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 06/2/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 06/25/2019
+ms.lastreviewed: 06/27/2019
 ---
 
 # Azure Stack 1906 known issues
@@ -29,7 +29,7 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 ## Update process
 
 - Applicable: This issue applies to all supported releases.
-- Cause: When attempting to install the 1905 Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing. The 1905 update package is larger than previous update packages which may make this issue more likely to occur.
+- Cause: When attempting to install the 1906 Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing. The 1906 update package is larger than previous update packages which may make this issue more likely to occur.
 - Remediation: Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and restarts the download. If the problem persists, we recommend manually uploading the update package by following the [Import and install updates section](azure-stack-apply-updates.md#import-and-install-updates).
 - Occurrence: Common
 
@@ -68,7 +68,7 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 ### Service endpoints
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack. 
+- Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack.
 - Occurrence: Common
 
 ### Network interface
@@ -83,35 +83,31 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 #### Alerts
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Virtual Network Gateway** blade shows an option to use **Alerts**. This feature is currently not supported in Azure Stack. 
+- Cause: In the user portal, the **Virtual Network Gateway** blade shows an option to use **Alerts**. This feature is currently not supported in Azure Stack.
 - Occurrence: Common
 
 #### Active-Active
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, while creating, and in the resource menu of **Virtual Network Gateway**, you will see an option to enable **Active-Active** configuration. This feature is currently not supported in Azure Stack. 
+- Cause: In the user portal, while creating, and in the resource menu of **Virtual Network Gateway**, you will see an option to enable **Active-Active** configuration. This feature is currently not supported in Azure Stack.
 - Occurrence: Common
 
-#### VPN Troubleshooter
+#### VPN troubleshooter
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Connections** blade shows a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack. 
+- Cause: In the user portal, the **Connections** blade shows a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack.
 - Occurrence: Common
 
 #### Documentation
 
 - Applicable: This issue applies to all supported releases.
-- Cause: The documentation links in the Overview page of Virtual Network gateway links to Azure-specific documentation instead of Azure Stack. Please use the following links for the Azure Stack documentation:
+- Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack. Please use the following links for the Azure Stack documentation:
 
-Gateway SKUs: https://docs.microsoft.com/azure-stack/user/azure-stack-vpn-gateway-about-vpn-gateways#gateway-skus
-
-Highly Available Connections: https://docs.microsoft.com/azure-stack/user/azure-stack-vpn-gateway-about-vpn-gateways#gateway-availability
-
-Configure BGP on Azure Stack: https://docs.microsoft.com/azure-stack/user/azure-stack-vpn-gateway-settings#gateway-requirements
-
-ExpressRoute circuits: https://docs.microsoft.com/azure-stack/operator/azure-stack-connect-expressroute
-
-Specify custom IPsec / IKE policies: https://docs.microsoft.com/azure-stack/user/azure-stack-vpn-gateway-settings#ipsecike-parameters
+  - [Gateway SKUs](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
+  - [Highly Available Connections](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
+  - [Configure BGP on Azure Stack](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
+  - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
+  - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
 ### Load balancer
 
@@ -135,8 +131,7 @@ Specify custom IPsec / IKE policies: https://docs.microsoft.com/azure-stack/user
 
 - Applicable: This issue applies to all supported releases.
 - Cause: When creating a new Windows virtual machine (VM), the following error may be displayed:
-**Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'**.
-The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
+**Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'**. The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
 - Remediation: Recreate the storage account with the same name you used previously.
 - Occurrence: Common
 
@@ -162,10 +157,10 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack.
 
-#### VMSS instance view blade doesn't load
+#### Scale set instance view blade doesn't load
 
 - Applicable: This issue applies to 1904 and 1905 release.
-- Cause: The instance view blade of a scaleset located at Azure Stack portal -> Dashboard -> Virtual machine scale sets -> AnyScaleSet - Instances -> AnyScaleSetInstance fails to load, and displays a crying cloud image.
+- Cause: The instance view blade of a virtual machine scale set located on the Azure Stack portal, in **Dashboard > Virtual machine scale sets > AnyScaleSet > Instances > AnyScaleSetInstance** fails to load, and displays a "crying cloud" image.
 - Remediation: There is currently no remediation and we are working on a fix. Until then, please use the CLI command `az vmss get-instance-view` to get the instance view of a scale set.
 
 ### Ubuntu SSH access
