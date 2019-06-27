@@ -165,7 +165,7 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 
 #### Scale set instance view blade doesn't load
 
-- Applicable: This issue applies to 1904, 1905, 1906 release.
+- Applicable: This issue applies to the 1904, 1905, and 1906 releases.
 - Cause: The instance view blade of a virtual machine scale set located on the Azure Stack portal, in **Dashboard > Virtual machine scale sets > AnyScaleSet > Instances > AnyScaleSetInstance** fails to load, and displays a "crying cloud" image.
 - Remediation: There is currently no remediation and we are working on a fix. Until then, please use the CLI command `az vmss get-instance-view` to get the instance view of a scale set.
 
