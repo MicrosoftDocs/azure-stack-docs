@@ -44,13 +44,6 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 
 ## Portal
 
-### Administrative subscriptions
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
-- Remediation: These subscriptions will be suspended starting with 1906 and eventually deleted. If you have resources running on these two subscriptions, recreate them in user subscriptions prior to 1906.
-- Occurrence: Common
-
 ### Subscription resources
 
 - Applicable: This issue applies to all supported releases.
@@ -127,6 +120,14 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 **Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'**.
 The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
 - Remediation: Recreate the storage account with the same name you used previously.
+- Occurrence: Common
+
+### VM resize
+
+- Applicable: This issue applies to the 1905 release.
+- Cause: Unable to successfully resize a managed disk VM. Attempting to resize the VM generates an error with "code": "InternalOperationError",
+  "message": "An internal error occurred in the operation."
+- Remediation: We are working to remediate this in the next release. Currently, you must recreate the VM with the new VM size.
 - Occurrence: Common
 
 ### Virtual machine scale set
