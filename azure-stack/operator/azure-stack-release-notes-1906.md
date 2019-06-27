@@ -44,7 +44,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 <!-- The current theme (if any) of this release. -->
 
 <!-- What's new, also net new experiences and features. -->
-- Added **Set-TLSPolicy** cmdlet in the privileged endpoint (PEP) to force TLS 1.2 on all the endpoints. Refer to [Azure Stack security controls](azure-stack-security-configuration.md) for more information.
+- Added **Set-TLSPolicy** cmdlet in the privileged endpoint (PEP) to force TLS 1.2 on all the endpoints. Refer to [Azure Stack security controls](azure-stack-security-configuration.md) for more information. 
 - Added **Get-TLSPolicy** cmdlet in the privileged endpoint (PEP) to retrieve the applied TLS policy. Refer to [Azure Stack security controls](azure-stack-security-configuration.md) for more information.
 - Added an internal secret rotation procedure to rotate internal TLS certificates as required during a system update.
 - Added a safeguard to prevent expiration of internal secrets by forcing internal secrets rotation in case a critical alert on expiring secrets is ignored. This should not be relied on as a regular operating procedure. Secrets rotation should be planned during a maintenance window. Refer to [Azure Stack secret rotation](azure-stack-rotate-secrets.md) for more information.
