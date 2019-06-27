@@ -165,7 +165,7 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 
 #### Scale set instance view blade doesn't load
 
-- Applicable: This issue applies to 1904 and 1905 release.
+- Applicable: This issue applies to 1904, 1905, 1906 release.
 - Cause: The instance view blade of a virtual machine scale set located on the Azure Stack portal, in **Dashboard > Virtual machine scale sets > AnyScaleSet > Instances > AnyScaleSetInstance** fails to load, and displays a "crying cloud" image.
 - Remediation: There is currently no remediation and we are working on a fix. Until then, please use the CLI command `az vmss get-instance-view` to get the instance view of a scale set.
 
@@ -175,6 +175,28 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 - Cause: An Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in.
 - Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
 - Occurrence: Common
+
+### VM Scale set reset password doesn't work
+
+- Applicable: This issue applies to the 1906 release.
+- Cause: A new reset password blade appears in the VMSS but we do not support resetting password on a VMSS yet.
+- Remediation: We are working to hide this blade in a future release.
+- Occurrence: Common
+
+### Rainy cloud on VMSS diagnostics
+
+- Applicable: This issue applies to the 1906 release.
+- Cause: The VMSS overview page shows an empty chart, clicking on the empty chart opens a rainy cloud blade. This is the chart for VMSS diagnostic information such as CPU percentage and is not a feature supported in the current Azure Stack build.
+- Remediation: We are working to hide this blade in a future release
+- Occurence: Common
+
+### Virtual machine diagnostic settings blade has a “sink” tab, which is asking for “Application Insight Account”
+ 
+- Applicable: This issue applies to the 1906 release.
+- Cause: This is a result of a new UX blade we have adopted and is not a feature we support yet. 
+- Remediation: We are working to hide this blade in a future release.
+- Occurence: Common
+
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
