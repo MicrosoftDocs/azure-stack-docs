@@ -23,10 +23,7 @@ ms.lastreviewed: 06/27/2019
 
 *Applies to: Azure Stack integrated systems*
 
-This article describes the contents of the 1906 update package. The update includes what's new improvements, and fixes for this release of Azure Stack. This article contains the following information:
-
-- [Description of what's new, improvements, fixes, and security updates](#whats-in-this-update)
-- [Update planning](#update-planning)
+This article describes the contents of the 1906 update package. The update includes what's new improvements, and fixes for this release of Azure Stack.
 
 > [!IMPORTANT]  
 > This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
@@ -51,7 +48,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - Added an internal secret rotation procedure to rotate internal TLS certificates as required during a system update.
 
-- Added a safeguard to prevent expiration of internal secrets by forcing internal secrets rotation in case a critical alert on expiring secrets is ignored. This should not be relied on as a regular operating procedure. Secrets rotation should be planned during a maintenance window. FOr more information, see [Azure Stack secret rotation](azure-stack-rotate-secrets.md).
+- Added a safeguard to prevent expiration of internal secrets by forcing internal secrets rotation in case a critical alert on expiring secrets is ignored. This should not be relied on as a regular operating procedure. Secrets rotation should be planned during a maintenance window. For more information, see [Azure Stack secret rotation](azure-stack-rotate-secrets.md).
 
 - Visual Studio Code is now supported with Azure Stack deployment using AD FS.
 
