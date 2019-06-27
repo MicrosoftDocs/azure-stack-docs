@@ -63,6 +63,8 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 - Performance optimization of external secret rotation procedure to provide a uniform execution time to facilitate scheduling of maintenance window.
 - The **Test-AzureStack** cmdlet now reports on internal secrets that are about to expire (critical alerts).
 
+- A new parameter for is available for the Register-CustomAdfs command in PEP that allows skipping the certificate revocation list checking when configuring the federation trust for ADFS.
+
 ### Changes
 
 - Changed alert triggers for expiration of internal secrets:
