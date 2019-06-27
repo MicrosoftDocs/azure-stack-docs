@@ -71,6 +71,8 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
    - Warning alerts are now raised 90 days prior to the expiration of secrets.
    - Critical alerts are now raised 30 days prior to the expiration of secrets.
 
+- Updated strings in infrastructure backup resource provider for consistent terminology.
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
