@@ -13,20 +13,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 06/27/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 06/26/2019
+ms.lastreviewed: 06/27/2019
 ---
 
 # Azure Stack 1906 update
 
 *Applies to: Azure Stack integrated systems*
 
-This article describes the contents of the 1906 update package. The update includes what's new improvements, and fixes for this release of Azure Stack. This article contains the following information:
-
-- [Description of what's new, improvements, fixes, and security updates](#whats-in-this-update)
-- [Update planning](#update-planning)
+This article describes the contents of the 1906 update package. The update includes what's new improvements, and fixes for this release of Azure Stack.
 
 > [!IMPORTANT]  
 > This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
@@ -44,10 +41,14 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 <!-- The current theme (if any) of this release. -->
 
 <!-- What's new, also net new experiences and features. -->
-- Added **Set-TLSPolicy** cmdlet in the privileged endpoint (PEP) to force TLS 1.2 on all the endpoints. Refer to [Azure Stack security controls](azure-stack-security-configuration.md) for more information. 
-- Added **Get-TLSPolicy** cmdlet in the privileged endpoint (PEP) to retrieve the applied TLS policy. Refer to [Azure Stack security controls](azure-stack-security-configuration.md) for more information.
+
+- Added a **Set-TLSPolicy** cmdlet in the privileged endpoint (PEP) to force TLS 1.2 on all the endpoints. For more information, see [Azure Stack security controls](azure-stack-security-configuration.md).
+
+- Added a **Get-TLSPolicy** cmdlet in the privileged endpoint (PEP) to retrieve the applied TLS policy. For more information, see [Azure Stack security controls](azure-stack-security-configuration.md).
+
 - Added an internal secret rotation procedure to rotate internal TLS certificates as required during a system update.
-- Added a safeguard to prevent expiration of internal secrets by forcing internal secrets rotation in case a critical alert on expiring secrets is ignored. This should not be relied on as a regular operating procedure. Secrets rotation should be planned during a maintenance window. Refer to [Azure Stack secret rotation](azure-stack-rotate-secrets.md) for more information.
+
+- Added a safeguard to prevent expiration of internal secrets by forcing internal secrets rotation in case a critical alert on expiring secrets is ignored. This should not be relied on as a regular operating procedure. Secrets rotation should be planned during a maintenance window. For more information, see [Azure Stack secret rotation](azure-stack-rotate-secrets.md).
 
 - Visual Studio Code is now supported with Azure Stack deployment using AD FS.
 
@@ -55,25 +56,28 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
-- The **Get-GraphApplication** command in the privileged endpoint now displays the thumbprint of the currently used certificate. This improves the certificate management for service principals when Azure Stack is deployed with AD FS.
+- The **Get-GraphApplication** cmdlet in the privileged endpoint now displays the thumbprint of the currently used certificate. This improves the certificate management for service principals when Azure Stack is deployed with AD FS.
 
 - New health monitoring rules have been added to validate the availability of AD Graph and AD FS, including the ability to raise alerts.
 
 - Improvements to the reliability of the backup resource provider when the infrastructure backup service moves to another instance.
+
 - Performance optimization of external secret rotation procedure to provide a uniform execution time to facilitate scheduling of maintenance window.
+
 - The **Test-AzureStack** cmdlet now reports on internal secrets that are about to expire (critical alerts).
 
-- A new parameter for is available for the Register-CustomAdfs command in PEP that allows skipping the certificate revocation list checking when configuring the federation trust for ADFS.
+- A new parameter is available for the **Register-CustomAdfs** cmdlet in the privileged endpoint that enables skipping the certificate revocation list checking when configuring the federation trust for AD FS.
 
 ### Changes
 
 - Changed alert triggers for expiration of internal secrets:
-   - Warning alerts are now raised 90 days prior to the expiration of secrets.
-   - Critical alerts are now raised 30 days prior to the expiration of secrets.
+  - Warning alerts are now raised 90 days prior to the expiration of secrets.
+  - Critical alerts are now raised 30 days prior to the expiration of secrets.
 
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
+
 - Fixed an issue where resizing a managed disk VM failed with an **Internal Operation Error**.
 
 - Fixed an issue where a failed user image creation puts the service that manages images is in a bad state; this blocks deletion of the failed image and creation of new images. This is also fixed in the 1905 hotfix.
@@ -84,7 +88,15 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - In the administrator and user portals, fixed the issue in marketplace in which the Docker extension was incorrectly returned from search but no further action could be taken, as it is not available in Azure Stack.
 
-### Security updates
+#### Networking updates
+
+- Updated lease time set in DHCP responder to be consistent with Azure.
+
+- Improved retry rates to the resource provider in the scenario of failed deployment of resources.
+
+- Removed the **Standard** SKU option from both the load balancer and public IP, as that is currently not supported.
+
+#### Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates-1906.md).
 
@@ -132,7 +144,7 @@ Customers with systems that can access the internet from the infrastructure netw
 
 ## Archived release notes
 
-You can see [older versions of Azure Stack release notes on the TechNet Gallery](http://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
+You can see [older versions of Azure Stack release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 
 ## Next steps
 
@@ -140,4 +152,3 @@ You can see [older versions of Azure Stack release notes on the TechNet Gallery]
 - For more information about how to apply updates with Azure Stack, see [Apply updates in Azure Stack](azure-stack-apply-updates.md).
 - To review the servicing policy for Azure Stack integrated systems, and what you must do to keep your system in a supported state, see [Azure Stack servicing policy](azure-stack-servicing-policy.md).  
 - To use the Privileged End Point (PEP) to monitor and resume updates, see [Monitor updates in Azure Stack using the privileged endpoint](azure-stack-monitor-update.md).  
-
