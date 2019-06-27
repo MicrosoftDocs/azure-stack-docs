@@ -345,7 +345,7 @@ When you create your web app in an App Service environment, it starts with one i
 
 ### Enable automatic scale in
 
-When traffic decreases, the Azure web app can automatically reduce the number of active instances to reduce costs. This action is less aggressive than scale out which minimizes the impact on app users.
+When traffic decreases, the Azure web app can automatically reduce the number of active instances to reduce costs. This action is less aggressive than scale out and minimizes the impact on app users.
 
 1. Navigate to the **Default** scale out condition, select **+ Add a rule**. Use the following Criteria and Actions for the rule.
 
