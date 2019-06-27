@@ -15,7 +15,13 @@
     - name: Checklist for applying updates
       href: azure-stack-release-notes-checklist.md
     - name: Security updates
-      href: azure-stack-release-notes-security-updates-1905.md
+      href: azure-stack-release-notes-security-updates-1906.md
+    - name: 1906 update
+      items:
+      - name: Release notes
+        href: azure-stack-release-notes-1906.md
+      - name: Known issues
+        href: azure-stack-release-notes-known-issues-1906.md
     - name: 1905 update
       items:
       - name: Release notes
@@ -30,8 +36,6 @@
         href: azure-stack-release-notes-known-issues-1904.md
     - name: 1903 update
       href: azure-stack-update-1903.md
-    - name: 1902 update
-      href: azure-stack-update-1902.md      
 - name: Quickstarts
   expanded: true
   items:
@@ -201,6 +205,8 @@
     items:
     - name: Security overview
       href: azure-stack-security-foundations.md
+    - name: Configure security
+      href: azure-stack-security-configuration.md
     - name: Identity
       items:
       - name: Identity overview
@@ -368,7 +374,7 @@
       items:
       - name: Usage data reporting
         href: azure-stack-usage-reporting.md
-      - name: Usage reporting infrastructure for Cloud Service Providers
+      - name: Usage reporting infrastructure
         href: azure-stack-csp-ref-infrastructure.md
       - name: Provider usage API
         href: azure-stack-provider-resource-api.md
@@ -376,6 +382,12 @@
         href: azure-stack-tenant-resource-usage-api.md
       - name: Usage FAQ
         href: azure-stack-usage-related-faq.md
+      - name: Troubleshooting usage issues
+        items:
+        - name: Usage connectivity errors
+          href: azure-stack-usage-issues.md
+        - name: Usage registration error codes
+          href: azure-stack-registration-errors.md        
   - name: Back up Azure Stack
     href: azure-stack-backup-infrastructure-backup.md
     items:
