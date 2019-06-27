@@ -103,7 +103,7 @@ Change the default account information and passwords as needed for your Azure St
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
 # Note that this might not be the most currently available version of Azure Stack PowerShell
-Install-Module -Name AzureRm.BootStrapper -Force
+Install-Module -Name AzureRm.BootStrapper -RequiredVersion 0.5.0 -Force
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
 Install-Module -Name AzureStack -RequiredVersion 1.6.0
 
