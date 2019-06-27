@@ -44,7 +44,7 @@ The operating system installed in the IaaS VM limits which products you can use 
 
 ## Source/target combinations
 
-Each Azure Stack cloud is deployed to one datacenter. A separate environment is required so you can recover your apps. The recovery environment can be another Azure Stack cloud in a different datacenter or the Azure public cloud. Your data sovereignty and data privacy requirements determine the recovery environment for your app. As you enable protection for each app, you have the flexibility to choose a specific recovery option for each one. You can have apps in one subscription backing up data to another datacenter. In another subscription, you can replicate data to the Azure public cloud.
+Each Azure Stack cloud is deployed to one datacenter. A separate environment is required to recover your apps. The recovery environment can be another Azure Stack cloud in a different datacenter or the Azure public cloud. Your data sovereignty and data privacy requirements determine the recovery environment for your app. As you enable protection for each app, you have the flexibility to choose a specific recovery option for each one. You can have apps in one subscription backing up data to another datacenter. In another subscription, you can replicate data to the Azure public cloud.
 
 Plan your backup-recovery and disaster-recovery strategy for each app to determine the target for each app. A recovery plan helps your organization properly size the storage capacity required on-premises and project consumption in the public cloud.
 
