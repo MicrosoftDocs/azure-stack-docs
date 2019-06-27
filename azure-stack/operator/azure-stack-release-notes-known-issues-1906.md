@@ -56,6 +56,12 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 - Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
 - Occurrence: Common
 
+### Storage account settings
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the storage account **Configuration** blade shows an option to change **security transfer type**. The feature is currently not supported in Azure Stack.
+- Occurrence: Common
+
 ### Upload blob
 
 - Applicable: This issue applies to all supported releases.
