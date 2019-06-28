@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2019
+ms.date: 06/28/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 06/17/2019
+ms.lastreviewed: 06/28/2019
 
 
 
@@ -42,7 +42,7 @@ The ASDK offers services using the following VMs hosted on the development kit h
 | **AzS-WAS01** | Azure Stack administrative portal and Azure Resource Manager services.|
 | **AzS-WASP01**| Azure Stack user (tenant) portal and Azure Resource Manager services.|
 | **AzS-XRP01** | Infrastructure management controller for Microsoft Azure Stack, including the Compute, Network, and Storage resource providers.|
-| **AzS-SRNG01** | Infrastructure role for reliability and availability during planned and unplanned maintenance. |
+| **AzS-SRNG01** | Support Ring VM hosting the log collection service for Azure Stack. |
 
 ## Next steps
 [Learn about basic ASDK administration tasks](asdk-admin-basics.md)
