@@ -23,6 +23,7 @@ ms.lastreviewed: 3/19/2018
 
 Use this article as a guide to developing a plan for protecting virtual machines (VMs) that your users deploy on Azure Stack.
 
+
 To protect against data loss and unplanned downtime, you need to implement a backup-recovery or disaster-recovery plan for user apps and their data. This plan might be unique for each app but follows a framework established by your organization's comprehensive business continuity and disaster recovery (BC/DR) strategy. A good starting point is [Azure Stack: Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp).
 
 ## Azure Stack infrastructure recovery
@@ -75,7 +76,7 @@ The most common protection scheme for VM-based apps is to use backup software. B
 ![Backup-restor](media/azure-stack-manage-vm-backup/vm_backupdataflow_03.png)
 
 Recovering the app requires restoring one or more VMs to the same cloud or to a new cloud. You can target a cloud in your datacenter or the public cloud. The cloud you choose is completely within your control and is based on your data privacy and sovereignty requirements.
- 
+
  - RTO: Downtime measured in hours
  - RPO: Variable data loss (depending on backup frequency)
  - Deployment topology: Active/passive
