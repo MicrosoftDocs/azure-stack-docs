@@ -35,6 +35,13 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 
 ## Portal
 
+### Administrative subscriptions
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
+- Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
+- Occurrence: Common
+
 ### Subscription resources
 
 - Applicable: This issue applies to all supported releases.
@@ -89,6 +96,13 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, when you try to upload a blob using the OAuth(preview) option, the task fails with an error message.
 - Remediation: Upload the blob using the SAS option.
+- Occurrence: Common
+
+### Template
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the template deployment UI does not populate parameters for the template names beginning with "_" (the underscore character).
+- Remediation: Remove the "_" (underscore character) from the template name.
 - Occurrence: Common
 
 ## Networking

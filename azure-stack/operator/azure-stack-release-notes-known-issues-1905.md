@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 06/14/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 06/05/2019
+ms.lastreviewed: 06/14/2019
 ---
 
 # Azure Stack 1905 known issues
@@ -77,6 +77,13 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, when you try to upload a blob using the **OAuth(preview)** option, the task fails with an error message.
 - Remediation: Upload the blob using the SAS option.
+- Occurrence: Common
+
+### Template
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the template deployment UI does not populate parameters for the template names beginning with "_" (the underscore character).
+- Remediation: Remove the "_" (underscore character) from the template name.
 - Occurrence: Common
 
 ## Networking
