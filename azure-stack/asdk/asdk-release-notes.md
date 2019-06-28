@@ -33,7 +33,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 
 ### Changes
 
-- Added an **AzS-SRNG01** support ring VM hosting the automatic, on-demand log collection service for Azure Stack. For more information, see [Virtual machine roles](asdk-architecture.md).
+- Added an **AzS-SRNG01** support ring VM hosting the log collection service for Azure Stack. For more information, see [Virtual machine roles](asdk-architecture.md).
 
 ### Fixed and known issues
 
