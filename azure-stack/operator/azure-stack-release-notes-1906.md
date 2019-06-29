@@ -68,6 +68,8 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - A new parameter is available for the **Register-CustomAdfs** cmdlet in the privileged endpoint that enables skipping the certificate revocation list checking when configuring the federation trust for AD FS.
 
+- In 1906 we've introduced greater visibility into update progress so you can be assured that updates are not pausing. This will result in an increase in the total number of update steps shown to Operators in the Update blade. You may also notice more update steps happening in parallel than in previous updates.
+
 #### Networking updates
 
 - Updated lease time set in DHCP responder to be consistent with Azure.
