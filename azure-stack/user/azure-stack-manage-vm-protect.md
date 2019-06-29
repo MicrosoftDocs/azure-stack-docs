@@ -111,7 +111,7 @@ With this approach, the app is deployed in one cloud and its VM is replicated to
  
 ### High availability/automatic failover
 
-For apps where your business can tolerate a few seconds or minutes of downtime and minimal data loss, you need to consider a high-availability configuration. High-availability apps are designed to quickly and automatically recover from faults. For local hardware faults, Azure Stack infrastructure implements high availability in the physical network using two top of rack switches. For compute level faults, Azure Stack uses multiple nodes in a scale unit. At the VM level, you can use scale sets in combination with fault domains to ensure node failures don't take down your app.
+For apps where your business can only tolerate a few seconds or minutes of downtime and minimal data loss, consider a high-availability configuration. High-availability apps are designed to quickly and automatically recover from faults. For local hardware faults, Azure Stack infrastructure implements high availability in the physical network using two top of rack switches. For compute level faults, Azure Stack uses multiple nodes in a scale unit. At the VM level, you can use scale sets in combination with fault domains to ensure node failures don't take down your app.
 
 In combination with scale sets, your app will need to support high availability natively or support the use of clustering software. For example, Microsoft SQL Server supports high availability natively for databases using synchronous-commit mode. However, if you can only support asynchronous replication, then there will be some data loss. Apps can also be deployed into a failover cluster where the clustering software handles the automatic failover of the app.
 
