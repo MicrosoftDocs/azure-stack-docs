@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2019
+ms.date: 06/28/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 06/14/2019
+ms.lastreviewed: 06/28/2019
 
 ---
 
@@ -30,6 +30,10 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 ### New features
 
 - For a list of new features in this release, see [this section](../operator/azure-stack-release-notes-1906.md#whats-in-this-update) of the Azure Stack release notes.
+
+### Changes
+
+- Added an **AzS-SRNG01** support ring VM hosting the log collection service for Azure Stack. For more information, see [Virtual machine roles](asdk-architecture.md).
 
 ### Fixed and known issues
 
