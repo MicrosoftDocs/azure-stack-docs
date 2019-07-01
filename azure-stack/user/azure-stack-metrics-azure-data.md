@@ -24,14 +24,14 @@ ms.lastreviewed: 12/01/2018
 
 This article provides an overview of the Azure Monitor service in Azure Stack. It discusses the operation of Azure Monitor and additional information on how to use Azure Monitor on Azure Stack. 
 
-For an introduction, overview, and how to get started with Azure Monitor, see the global Azure article [Get started with Azure Monitor on Azure Stack](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started).
+For an overview of Azure Monitor, see the global Azure article [Get started with Azure Monitor on Azure Stack](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started).
 
 ![Azure Stack Monitor blade](./media/azure-stack-metrics-azure-data/azs-monitor.png)
 
-Azure Monitor is the platform service that provides a single source for monitoring Azure resources. With Azure Monitor, you can visualize, query, route, archive, and otherwise take action on the metrics and logs coming from resources in Azure. You can work with this data by using the Azure Stack admin portal, Monitor PowerShell Cmdlets, Cross-Platform CLI, or Azure Monitor REST APIs. For the specific connectivity supported by Azure Stack, see [How to consume monitoring data from Azure Stack](azure-stack-metrics-monitor.md)
+Azure Monitor is a platform service that provides a single source for monitoring Azure resources. With Azure Monitor, you can visualize, query, route, archive, and otherwise take action on metrics and logs coming from resources in Azure. You can work with this data by using the Azure Stack admin portal, Monitor PowerShell Cmdlets, Cross-Platform CLI, or Azure Monitor REST APIs. For the specific connectivity supported by Azure Stack, see [How to consume monitoring data from Azure Stack](azure-stack-metrics-monitor.md).
 
 > [!Note]
-> Metrics and diagnostic logs are not available for the Azure Stack Development Kit.
+> Metrics and diagnostic logs aren't available for the Azure Stack Development Kit.
 
 ## Prerequisites for Azure Monitor on Azure Stack
 
