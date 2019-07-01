@@ -41,7 +41,7 @@ Register the **Microsoft.insights** resource provider on your subscription's off
 2. Select **Offers**.
 3. Select the offer associated with the subscription.
 4. Select **Resource providers** under **Settings.** 
-5. Find **Microsoft.Insights** in the list and verify that the status is **Registered.**.
+5. Find **Microsoft.Insights** in the list and verify that the status is **Registered**.
 
 ## Overview of Azure Monitor on Azure Stack
 
@@ -53,15 +53,15 @@ Like Azure Monitor on Azure, Azure Monitor on Azure Stack provides base-level in
 
 The **Microsoft.Compute** resource provider in Azure Stack includes:
  - Virtual Machines 
- - Virtual Machines scale sets
+ - Virtual Machine scale sets
 
-### Application - Diagnostics logs, Application logs, and Metrics
+### Application - diagnostics logs, app logs, and metrics
 
-Applications can run in the OS of a VM running with the **Microsoft.Compute** resource provider. These applications and VMs emit their own set of logs and metrics. Azure Monitor relies on the Azure diagnostics extension (Windows or Linux) to collect most application level metrics and logs. 
+Apps can run in the OS of a VM running with the **Microsoft.Compute** resource provider. These apps and VMs emit their own set of logs and metrics. Azure Monitor relies on the Azure diagnostics extension (Windows or Linux) to collect most app-level metrics and logs.
 
 The types of measures include:
  - Performance counters
- - Application logs
+ - App logs
  - Windows event logs
  - .NET event source
  - IIS logs
@@ -70,22 +70,22 @@ The types of measures include:
  - Customer error logs
 
 > [!Note]  
-> Linux Diagnostics extension on Azure Stack are not supported.
+> Linux Diagnostics Extension on Azure Stack is not supported.
 
 ### Host and Guest VM metrics
 
-The previously listed compute resources have a dedicated host VM and guest OS. The host VM and guest OS are the equivalent of root VM and guest VM in Hyper-V hypervisor. You can collect metrics for both the host VM and the guest OS. In addition, you can collect diagnostics logs for the guest OS. A list of collectible metrics for Host and Guest VM metrics on Azure Stack are available at [Supported metrics with Azure Monitor on Azure Stack](azure-stack-metrics-supported.md). 
+The previously listed compute resources have a dedicated host VM and guest OS. The host VM and guest OS are the equivalent of root VM and guest VM in Hyper-V hypervisor. You can collect metrics for both the host VM and the guest OS. You can also collect diagnostics logs for the guest OS. A list of collectible metrics for host and guest VM metrics on Azure Stack are available at [Supported metrics with Azure Monitor on Azure Stack](azure-stack-metrics-supported.md). 
 
 ### Activity log
 
-You can search the activity logs for information about your compute resources as seen by the Azure Stack infrastructure. The log contains information such as times when resources are created or destroyed. The activity logs on Azure Stack is consistent with Azure. For more information, see the description of [Activity log overview on Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). 
+You can search the activity logs for information about your compute resources as seen by the Azure Stack infrastructure. The log contains information such as times when resources are created or destroyed. The activity logs on Azure Stack are consistent with Azure. For more information, see the description of [Activity log overview on Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs). 
 
 
 ## Azure monitor sources: everything else
 
 ![Azure Monitor on Azure Stack sources - everything else](media//azure-stack-metrics-azure-data/azs-monitor-othersubset.png)
 
-### Resources - Metrics and Diagnostics logs
+### Resources - metrics and diagnostics logs
 
 Collectible metrics and diagnostics logs vary based on the resource type. A list of collectible metrics for each resource on Azure Stack is available at supported metrics. For more information, see [Supported metrics with Azure Monitor on Azure Stack](azure-stack-metrics-supported.md).
 
@@ -100,7 +100,7 @@ The activity log is the same for compute resources.
 Some monitoring data is already stored and available in Azure Monitor for a set amount of time. 
  - Metrics are stored for 90 days. 
  - Activity log entries are stored for 90 days. 
- - Diagnostics logs are not stored.
+ - Diagnostics logs aren't stored.
  - Archive the data to a storage account for longer retention.
 
 **Query**  
@@ -112,9 +112,9 @@ You can use the Azure Monitor REST API, cross-platform Command-Line Interface (C
 Visualizing your monitoring data in graphics and charts helps you find trends quicker than looking through the data itself. 
 
 A few visualization methods include:
- - Use the Azure Stack user and admin portal
- - Route data to Microsoft Power BI
- - Route the data to a third-party visualization tool using either live streaming or by having the tool read from an archive in Azure storage
+ - Use the Azure Stack user and admin portal.
+ - Route data to Microsoft Power BI.
+ - Route the data to a third-party visualization tool using either live streaming or by having the tool read from an archive in Azure storage.
 
 ## Methods of accessing Azure monitor on Azure Stack
 
@@ -128,4 +128,4 @@ In general, you can manipulate data tracking, routing, and retrieval using one o
 
 ## Next steps
 
-Learn more about the options of the monitoring data consumption on Azure Stack in the article [Consume monitoring data from Azure Stack](azure-stack-metrics-monitor.md).
+Learn more about monitoring data consumption on Azure Stack in the article [Consume monitoring data from Azure Stack](azure-stack-metrics-monitor.md).
