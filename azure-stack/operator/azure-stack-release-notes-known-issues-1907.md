@@ -29,7 +29,7 @@ This article lists known issues in the 1907 release of Azure Stack. The list is 
 ## Update process
 
 - Applicable: This issue applies to all supported releases.
-- Cause: When attempting to install the 1906 Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing. The 1906 update package is larger than previous update packages which may make this issue more likely to occur.
+- Cause: When attempting to install the 1906 Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing. The 1906 update package is larger than previous update packages, which may make this issue more likely to occur.
 - Remediation: Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and restarts the download. If the problem persists, we recommend manually uploading the update package by following the [Import and install updates section](azure-stack-apply-updates.md#import-and-install-updates).
 - Occurrence: Common
 
@@ -107,7 +107,7 @@ This article lists known issues in the 1907 release of Azure Stack. The list is 
 #### Documentation
 
 - Applicable: This issue applies to all supported releases.
-- Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack. Please use the following links for the Azure Stack documentation:
+- Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack. Use the following links for the Azure Stack documentation:
 
   - [Gateway SKUs](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
   - [Highly Available Connections](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
@@ -121,14 +121,14 @@ This article lists known issues in the 1907 release of Azure Stack. The list is 
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, if you attempt to add a **Backend Pool** to a **Load Balancer**, the operation fails with the error message **failed to update Load Balancer...**.
-- Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
+- Remediation: Use PowerShell, CLI, or a Resource Manager template to associate the backend pool with a load balancer resource.
 - Occurrence: Common
 
 #### Create inbound NAT
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer**, the operation fails with the error message **Failed to update Load Balancer...**.
-- Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
+- Remediation: Use PowerShell, CLI, or a Resource Manager template to associate the backend pool with a load balancer resource.
 - Occurrence: Common
 
 ## Compute
