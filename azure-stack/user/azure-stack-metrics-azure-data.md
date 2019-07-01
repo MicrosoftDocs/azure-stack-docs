@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor on Azure Stack | Microsoft Docs
-description: Learn about Azure Monitor on Azure Stack.
+title: Use Azure Monitor on Azure Stack | Microsoft Docs
+description: Learn how to use Azure Monitor on Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,7 +18,7 @@ ms.lastreviewed: 12/01/2018
 
 ---
 
-# Azure Monitor on Azure Stack
+# Use Azure Monitor on Azure Stack
 
 *Applies to: Azure Stack integrated systems*
 
