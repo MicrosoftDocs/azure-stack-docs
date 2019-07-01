@@ -6,10 +6,10 @@ author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: Howto
-ms.date: 05/31/2019
+ms.date: 06/25/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 05/31/2019
+ms.lastreviewed: 06/25/2019
 
 # keywords: Azure Stack Visual Studio Code
 # Intent: I am a developer using Visual Studio Code and I would like to connect to Azure Stack. or Linux Ubuntu who would like to deploy an app to Azure Stack.
@@ -33,9 +33,15 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
 
 ## Steps to connect to Azure Stack
 
-1. Open VS Code.
+1. Run the **Identity** script from Azure Stack Tools in GitHub.
 
-2. Select **Extensions** on the left-side corner.
+    - Before you run the script, you will need to have PowerShell installed and configured for your environment. For instructions see [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md).
+
+    - For the **Identity** script instructions and script, see [AzureStack-Tools/Identity](https://github.com/Azure/AzureStack-Tools/tree/master/Identity).
+
+2. Open VS Code.
+
+3. Select **Extensions** on the left-side corner.
 
 3. In the search box, enter `Azure Account`.
 
@@ -54,7 +60,7 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
 
     For example, the URL to retrieve the metadata for your Azure Resource Manager endpoint may look something like: `https://management.local.azurestack.external/metadata/endpoints?api-version=1.0`
 
-    Make a note of the return JSON. You will need the values for the `loginEndpoint` and `loginEndgraphEndpointpoint` property.
+    Make a note of the return JSON. You will need the values for the `loginEndpoint` and `audiences` property.
 
 7. Press **Ctrl+Shift+P,** and select **Preferences: Open User Settings (JSON)**.
 
@@ -66,7 +72,7 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
         | --- | --- |
         | `tenant-ID` | The value of your Azure Stack [tenant ID](../operator/azure-stack-identity-overview.md). |
         | `activeDirectoryEndpointUrl` | This is the URL from loginEndpoint property. |
-        | `activeDirectoryResourceId` | This is the URL from loginEndgraphEndpointpoint property.
+        | `activeDirectoryResourceId` | This is the URL from the audiences property.
         | `resourceManagerEndpointUrl` | This is the root URL for the Azure Resource Manager for Azure Stack. | 
 
     - JSON snippet:
@@ -75,15 +81,15 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
       "azure.tenant": "tenant-ID",
       "azure.ppe": {
           "activeDirectoryEndpointUrl": "Login endpoint",
-          "activeDirectoryResourceId": "graph audience",
-          "resourceManagerEndpointUrl": "Management Endpoint",
+          "activeDirectoryResourceId": "This is the URL from the audiences property.",
+          "resourceManagerEndpointUrl": "Aure Resource Management Endpoint",
       },
       "azure.cloud": "AzurePPE"
       ```
 
-8. Save the User Settings and use **Ctrl+Shift+P** once again. Select **Azure: Sign in to Azure Cloud**. The new option, **AzurePPE**, appears in the list of targets.
+9. Save the User Settings and use **Ctrl+Shift+P** once again. Select **Azure: Sign in to Azure Cloud**. The new option, **AzurePPE**, appears in the list of targets.
 
-9. Select **AzurePPE**. The authentication page loads in your browser. Sign in to your endpoint.
+10. Select **AzurePPE**. The authentication page loads in your browser. Sign in to your endpoint.
 
 11. To test that you have successfully logged into your Azure Stack subscription, use **Ctrl+Shift+ P** and select **Azure: Select Subscription** and see if the subscription you have is available.
 
