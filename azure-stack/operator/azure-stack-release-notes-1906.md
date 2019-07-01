@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2019
+ms.date: 07/01/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 06/28/2019
+ms.lastreviewed: 07/01/2019
 ---
 
 # Azure Stack 1906 update
@@ -34,7 +34,7 @@ The Azure Stack 1906 update build number is **1.1906.0.30**.
 
 ### Update type
 
-The Azure Stack 1906 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. The expected time it takes for the 1904 update to complete is approximately 10 hours. Exact update runtimes will typically depend on the capacity used on your system by tenant workloads, your system's network connectivity (if connected to the internet), and your system hardware configuration. Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack operators unless the update fails. This runtime approximation is specific to the 1904 update and should not be compared to other Azure Stack updates.
+The Azure Stack 1906 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. The expected time it takes for the 1906 update to complete is approximately 10 hours. Exact update runtimes will typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware configuration. Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack operators unless the update fails. This runtime approximation is specific to the 1906 update and should not be compared to other Azure Stack updates.
 
 ## What's in this update
 
@@ -68,7 +68,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - A new parameter is available for the **Register-CustomAdfs** cmdlet in the privileged endpoint that enables skipping the certificate revocation list checking when configuring the federation trust for AD FS.
 
-- In 1906 we've introduced greater visibility into update progress so you can be assured that updates are not pausing. This will result in an increase in the total number of update steps shown to Operators in the Update blade. You may also notice more update steps happening in parallel than in previous updates.
+- The 1906 release introduces greater visibility into update progress, so you can be assured that updates are not pausing. This results in an increase in the total number of update steps shown to operators in the **Update** blade. You might also notice more update steps happening in parallel than in previous updates.
 
 #### Networking updates
 
