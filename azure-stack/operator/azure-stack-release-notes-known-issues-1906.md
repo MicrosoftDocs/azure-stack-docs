@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2019
+ms.date: 06/28/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 06/27/2019
+ms.lastreviewed: 06/28/2019
 ---
 
 # Azure Stack 1906 known issues
@@ -207,4 +207,4 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 ## Next steps
 
 - [Review update activity checklist](azure-stack-release-notes-checklist.md)
-- [Review list of security updates](azure-stack-release-notes-security-updates-1905.md)
+- [Review list of security updates](azure-stack-release-notes-security-updates-1906.md)
