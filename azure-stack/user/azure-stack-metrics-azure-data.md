@@ -28,7 +28,7 @@ For an overview of Azure Monitor, see the global Azure article [Get started with
 
 ![Azure Stack Monitor blade](./media/azure-stack-metrics-azure-data/azs-monitor.png)
 
-Azure Monitor is a platform service that provides a single source for monitoring Azure resources. With Azure Monitor, you can visualize, query, route, archive, and otherwise take action on metrics and logs coming from resources in Azure. You can work with this data by using the Azure Stack admin portal, Monitor PowerShell Cmdlets, Cross-Platform CLI, or Azure Monitor REST APIs. For the specific connectivity supported by Azure Stack, see [How to consume monitoring data from Azure Stack](azure-stack-metrics-monitor.md).
+Azure Monitor is a platform service that provides a single source for monitoring Azure resources. Azure Monitor lets you visualize, query, route, archive, and take other actions on metrics and logs coming from resources in Azure. You can work with this data by using the Azure Stack admin portal, Monitor PowerShell Cmdlets, Cross-Platform CLI, or Azure Monitor REST APIs. For the specific connectivity supported by Azure Stack, see [How to consume monitoring data from Azure Stack](azure-stack-metrics-monitor.md).
 
 > [!Note]
 > Metrics and diagnostic logs aren't available for the Azure Stack Development Kit.
@@ -52,8 +52,8 @@ Like Azure Monitor on Azure, Azure Monitor on Azure Stack provides base-level in
 ![Azure Monitor on Azure Stack sources -compute subset](media//azure-stack-metrics-azure-data/azs-monitor-computersubset.png)
 
 The **Microsoft.Compute** resource provider in Azure Stack includes:
- - Virtual Machines 
- - Virtual Machine scale sets
+ - Virtual machines 
+ - Virtual machine scale sets
 
 ### Application - diagnostics logs, app logs, and metrics
 
@@ -74,7 +74,7 @@ The types of measures include:
 
 ### Host and Guest VM metrics
 
-The previously listed compute resources have a dedicated host VM and guest OS. The host VM and guest OS are the equivalent of root VM and guest VM in Hyper-V hypervisor. You can collect metrics for both the host VM and the guest OS. You can also collect diagnostics logs for the guest OS. A list of collectible metrics for host and guest VM metrics on Azure Stack are available at [Supported metrics with Azure Monitor on Azure Stack](azure-stack-metrics-supported.md). 
+The previously listed compute resources have a dedicated host VM and guest OS. The host VM and guest OS are the equivalent of root VM and guest VM in Hyper-V hypervisor. You can collect metrics for both the host VM and the guest OS. You can also collect diagnostics logs for the guest OS. A list of collectible metrics for host and guest VM metrics on Azure Stack is available at [Supported metrics with Azure Monitor on Azure Stack](azure-stack-metrics-supported.md). 
 
 ### Activity log
 
