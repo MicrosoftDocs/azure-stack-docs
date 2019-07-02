@@ -19,7 +19,7 @@ ms.reviewer: prchint
 ms.lastreviewed: 07/02/2019
 
 ---
-# Configure Azure Stack automatic log collection
+# Configure automatic Azure Stack log collection
 
 *Applies to: Azure Stack integrated systems*
 
@@ -41,6 +41,8 @@ Follow these steps to add the SAS URL to the log collection UI:
 
    ![Screenshot shows blob SAS URL](media/azure-stack-automatic-log-collection/azure-stack-enable-automatic-log-collection.png)
 
+<!--- change the first screenshot to show the buton rather than the banner--->
+
 ## View collected logs
 
 You can see logs that were previously collected on the **Log collection** page in Help and Support. 
@@ -54,14 +56,14 @@ The **From Date** is the start of the time period for which you want to collect 
 ## Alerts
 
 There are two types of alerts related to the SAS URL used for automatic log collection. 
-Each one can be resolved by increasing the expiry for the SAS URL. 
+Each alert can be resolved by generating a new SAS URL. 
 For more information, see [Create a blob container SAS URL](azure-stack-create-blob-container-sas-url.md).
 
 - Expiration date approaching
 
   ![Expiration date approaching](media/azure-stack-automatic-log-collection/alert-expiration-date.png)
 
-- SAS URL has expired. In this case
+- SAS URL has expired. 
   
   ![SAS URL expired](media/azure-stack-automatic-log-collection/alert-url-expired.png)
 

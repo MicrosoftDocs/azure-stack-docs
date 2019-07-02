@@ -63,9 +63,8 @@ You can set the retention policy for Azure Stack logs between 1 and 365 days in 
 
 <!--- add screenshot with Read, Write, and List. I did not have perms to do it--->
 
-The URL is constructed by using the storage account name, the blog container name, and an access token. 
-Copy the URL and enter it when you [configure automatic log collection](azure-stack-configure-automatic-log-collection.md).
-
+Copy the URL and enter it when you [configure automatic log collection](azure-stack-configure-automatic-log-collection.md). 
+For more information about SAS URLs, see [Using shared access signatures (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1). 
 
 ## Next step
 
