@@ -1,5 +1,5 @@
 ---
-title: Configure log collection | Microsoft Docs
+title: Configure automatic Azure Stack log collection | Microsoft Docs
 description: How to configure automatic log collection in Azure Stack Help + Support.
 services: azure-stack
 documentationcenter: ''
@@ -13,29 +13,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/25/2019
+ms.date: 07/02/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 06/25/2019
+ms.lastreviewed: 07/02/2019
 
 ---
-# Configure Azure Stack log collection
+# Configure Azure Stack automatic log collection
 
 *Applies to: Azure Stack integrated systems*
 
-You can streamline the process for troubleshooting problems with Azure Stack by uploading log files for analysis by Microsoft Customer Support Services (CSS). 
-Logs can be uploaded on demand or automatically based system health conditions. 
+You can streamline the process for troubleshooting problems with Azure Stack by configuring automatic log collection. automatically uploading log files. 
+If system health conditions need investigation, logs can be uploaded automatically for analysis by Microsoft Customer Support Services (CSS). 
 
-Automatic log collection uses a new Support Bridge Service resource provider in Azure Stack.  
-The service is resilient to Storage Spaces Direct and Software Defined Networking (SDN) failures. 
-
-This topic covers how to configure log collection, see which logs have been collected, and resolve possible errors.
-
-<!--- RP info came from the video. What else should we say in the intro? Should we mention the new resource provider? can we add how the resiliency helps here?--->
-
-## Configure automatic log collection 
-
-You'll need to provide the SAS URL for a blob container. You can use an existing blob container in Azure or [create a new one](azure-stack-create-blob-container-sas-url.md). Then follow these steps to add the SAS URL to the log collection UI: 
+You'll need to provide the SAS URL for a blob container where the logs can be uploaded. You can use an existing blob container in Azure or [create a new one](azure-stack-create-blob-container-sas-url.md). Then follow these steps to add the SAS URL to the log collection UI: 
 
 1. Sign in to the Azure Stack administrator portal.
 1. Open **Help and support Overview**.
@@ -47,15 +38,6 @@ You'll need to provide the SAS URL for a blob container. You can use an existing
 1. Enter the shared access signature (SAS) URL of the storage account blob container.
 
    ![Screenshot shows blob SAS URL](media/azure-stack-automatic-log-collection/azure-stack-enable-automatic-log-collection.png)
-
-## Configure on-demand log collection 
-
-For on-demand collection, CSS will provide the blob container SAS URL to use for uploading logs. 
-
-1. Open **Help and support Overview** and click **Collect logs now**. 
-1. Choose any 1-4 hour period over the previous week, and enter the SAS URL that CSS provided.
-
-![Screenshot of on-demand log collection](media/azure-stack-automatic-log-collection/collect-logs-now.png)
 
 ## View collected logs
 
