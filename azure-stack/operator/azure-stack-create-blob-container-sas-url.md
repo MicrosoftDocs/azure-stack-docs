@@ -30,16 +30,6 @@ You can use an existing blob container or complete the following steps to create
 >[!NOTE]
 >To create a blob container in Azure, you need at least the [storage blob contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or the [specific permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). Global administrators also have the necessary permission. 
 
-## Create a storage account for blobs
-
-Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors such as data redundancy. 
-Azure Stack log collection requires only the least costly blob storage option. 
-If you don't already have one, use the following steps to create a storage account for blobs:
-
-1. Sign in to the Azure portal.
-1. Click **Storage accounts** > **Add**.
-
-You can set the retention policy for Azure Stack logs between 1 and 365 days in the [storage account diagnostic settings](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#diagnostic-settings). 
 
 ## Create a blob container
  
@@ -75,4 +65,4 @@ For more information about SAS URLs, see [Using shared access signatures (SAS)](
 
 ## Next step
 
-[Configure automatic log collection](azure-stack-configure-automatic-log-collection.md)
+[Configure automatic Azure Stack log collection](azure-stack-configure-automatic-log-collection.md)
