@@ -24,9 +24,9 @@ ms.lastreviewed: 07/02/2019
 *Applies to: Azure Stack integrated systems*
 
 
-For on-demand collection, CSS will provide the blob container SAS URL to use for uploading logs. 
+As part of troubleshooting, Microsoft Customer Support Services (CSS) might provide a blob container SAS URL where you can upload Azure Stack logs for analyses. In this case, follow these steps to configure log collection:
 
 1. Open **Help and support Overview** and click **Collect logs now**. 
-1. Choose any 1-4 hour period over the previous week, and enter the SAS URL that CSS provided.
+1. Choose any 1-4 hour period from the past week, and enter the SAS URL that CSS provided.
 
    ![Screenshot of on-demand log collection](media/azure-stack-automatic-log-collection/collect-logs-now.png)
