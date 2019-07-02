@@ -24,6 +24,7 @@ ms.lastreviewed: 07/02/2019
 *Applies to: Azure Stack integrated systems*
 
 You'll need the shared access signature URL of a blob container in Azure to save Azure Stack log files that will be collected for analysis by Microsoft Customer Support Services (CSS). 
+The SAS URL is prerequisite for [configuring automatic log collection for Azure Stack](azure-stack-configure-automatic-log-collection.md).
 You can use an existing blob container or complete the following steps to create a new one.
 
 >[!NOTE]
