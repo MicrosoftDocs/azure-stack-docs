@@ -24,7 +24,7 @@ ms.lastreviewed: 07/02/2019
 *Applies to: Azure Stack integrated systems*
 
 Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors such as data redundancy. 
-Azure Stack log collection requires only the least costly blob storage option. 
-If you don't already have a storage account for blobs, sign in to the Azure portal, click **Storage accounts**  and then click **Add** to create one.
+Automatic Azure Stack log collection requires only the least costly blob storage option.  
+If don't have an existing storage account, you can sign in to the Azure portal, click **Storage accounts**, and then click **Add** to create a storage account for blobs.
 
-You can set the retention policy of the storage account between 1 and 365 days. For more information about setting the retion policy, see [storage account diagnostic settings](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#diagnostic-settings). 
+You can set the retention policy of the storage account between 1 and 365 days. For more information about setting the retention policy, see [storage account diagnostic settings](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#diagnostic-settings). 
