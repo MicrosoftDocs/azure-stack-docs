@@ -24,8 +24,8 @@ ms.lastreviewed: 07/02/2019
 *Applies to: Azure Stack integrated systems*
 
 You'll need the shared access signature (SAS) URL of a blob container in Azure to save Azure Stack log files that will be collected for analysis by Microsoft Customer Support Services (CSS). 
-The SAS URL is prerequisite for [configuring automatic log collection for Azure Stack](azure-stack-configure-automatic-log-collection.md).
-You can use an existing blob container or complete the following steps to create a new one.
+The SAS URL is a prerequisite for [configuring automatic log collection for Azure Stack](azure-stack-configure-automatic-log-collection.md).
+You can use a new or existing blob container.
 
 >[!NOTE]
 >To create a blob container in Azure, you need at least the [storage blob contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or the [specific permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). Global administrators also have the necessary permission. 
@@ -33,21 +33,22 @@ You can use an existing blob container or complete the following steps to create
 
 ## Create a blob container
  
-1. Create a blob container using any [blob storage account](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts). 
-1. Choose these settings:
+1. Sign in to the Azure portal and create a blob container with these settings:
    - **Subscription**: Choose your Azure subscription.
    - **Resource group**: Specify a resource group
    - **Storage account name**: Specify a unique storgae account name
    - **Location**: Choose a datacenter near your Azure Stack deployment
    - **Performance**: Standard
    - **Account kind** Choose any storage account type (for example: BlobStorage, StorageV2)
-1. Click **Review and Create**.  
-1. After the deployment succeeds, click **Go to resource**. You can also pin the storage account to the Dashboard for easy access. 
 
    ![Screenshot showing the blob container properties](media/azure-stack-automatic-log-collection/create-blob-container.png)
 
+1. Click **Create**.  
+1. After the deployment succeeds, click **Go to resource**. You can also pin the storage account to the Dashboard for easy access. 
 1. Click **Storage Explorer (preview)**, right-click **Blob containers**, and click **Create new blob container**. 
 1. Enter a name for the new container and click **OK**.
+
+For more information about types of storage accounts, see [Azure storage account overview](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
 ## Copy the SAS URL
 
