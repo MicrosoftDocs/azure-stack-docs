@@ -67,4 +67,4 @@ Copy the URL and enter it when you [configure automatic log collection](azure-st
 
 ## Next step
 
-[Configure Azure Stack log collection](azure-stack-configure-log-collection.md)
+[Configure automatic log collection](azure-stack-configure-automatic-log-collection.md)
