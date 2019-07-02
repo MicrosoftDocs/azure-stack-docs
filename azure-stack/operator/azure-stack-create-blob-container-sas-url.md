@@ -36,7 +36,7 @@ You can use a new or existing blob container.
 1. Sign in to the Azure portal and create a blob container with these settings:
    - **Subscription**: Choose your Azure subscription.
    - **Resource group**: Specify a resource group
-   - **Storage account name**: Specify a unique storgae account name
+   - **Storage account name**: Specify a unique storage account name
    - **Location**: Choose a datacenter near your Azure Stack deployment
    - **Performance**: Standard
    - **Account kind** Choose any storage account type (for example: BlobStorage, StorageV2)
