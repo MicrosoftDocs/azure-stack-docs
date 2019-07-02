@@ -23,8 +23,8 @@ ms.lastreviewed: 07/02/2019
 
 *Applies to: Azure Stack integrated systems*
 
-You can streamline the process for troubleshooting problems with Azure Stack by configuring automatic log collection. automatically uploading log files. 
-If system health conditions need investigation, logs can be uploaded automatically for analysis by Microsoft Customer Support Services (CSS). 
+You can streamline the process for troubleshooting problems with Azure Stack by configuring automatic log collection. 
+If system health conditions need to be investigated, the logs can be uploaded automatically for analysis by Microsoft Customer Support Services (CSS). 
 
 You'll need to provide the SAS URL for a blob container where the logs can be uploaded. You can use any blob container in Azure. If you need to create a new one, see [Create a blob container SAS URL](azure-stack-create-blob-container-sas-url.md). 
 
