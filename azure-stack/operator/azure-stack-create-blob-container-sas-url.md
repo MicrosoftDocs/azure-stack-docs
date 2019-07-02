@@ -39,9 +39,10 @@ If you don't already have one, use the following steps to create a storage accou
 1. Click **Review and Create**.  
 1. After the deployment succeeds, click **Go to resource**. You can also pin the storage account to the Dashboard for easy access. 
 
-   [!Screenshot showing the blob container properties](media/azure-stack-automatic-log-collection/create-blob-container.png)
+   ![Screenshot showing the blob container properties](media/azure-stack-automatic-log-collection/create-blob-container.png)
 
-Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors such as data redundancy. Azure Stack log collection requires only the least costly blob storage option. 
+Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors such as data redundancy. 
+Azure Stack log collection requires only the least costly blob storage option. 
 
 You can set the retention policy for Azure Stack logs between 1 and 365 days in the [storage account diagnostic settings](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#diagnostic-settings). 
 

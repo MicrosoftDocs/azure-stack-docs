@@ -29,4 +29,4 @@ For on-demand collection, CSS will provide the blob container SAS URL to use for
 1. Open **Help and support Overview** and click **Collect logs now**. 
 1. Choose any 1-4 hour period over the previous week, and enter the SAS URL that CSS provided.
 
-![Screenshot of on-demand log collection](media/azure-stack-automatic-log-collection/collect-logs-now.png)
+   ![Screenshot of on-demand log collection](media/azure-stack-automatic-log-collection/collect-logs-now.png)
