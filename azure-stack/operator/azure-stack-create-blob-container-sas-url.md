@@ -32,23 +32,30 @@ You can use an existing blob container or complete the following steps to create
 
 ## Create a storage account for blobs
 
+Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors such as data redundancy. 
+Azure Stack log collection requires only the least costly blob storage option. 
 If you don't already have one, use the following steps to create a storage account for blobs:
 
 1. Sign in to the Azure portal.
 1. Click **Storage accounts** > **Add**.
-1. Create a blob container using any [blog storage account](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts).
-1. Click **Review and Create**.  
-1. After the deployment succeeds, click **Go to resource**. You can also pin the storage account to the Dashboard for easy access. 
-
-   ![Screenshot showing the blob container properties](media/azure-stack-automatic-log-collection/create-blob-container.png)
-
-Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors such as data redundancy. 
-Azure Stack log collection requires only the least costly blob storage option. 
 
 You can set the retention policy for Azure Stack logs between 1 and 365 days in the [storage account diagnostic settings](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#diagnostic-settings). 
 
 ## Create a blob container
  
+1. Create a blob container using any [blob storage account](https://docs.microsoft.com/azure/storage/common/storage-account-overview#types-of-storage-accounts). 
+1. Choose these settings:
+   - **Subscription**: Choose your Azure subscription.
+   - **Resource group**: Specify a resource group
+   - **Storage account name**: Specify a unique storgae account name
+   - **Location**: Choose a datacenter near your Azure Stack deployment
+   - **Performance**: Standard
+   - **Account kind** Choose any storage account type (for example: BlobStorage, StorageV2)
+1. Click **Review and Create**.  
+1. After the deployment succeeds, click **Go to resource**. You can also pin the storage account to the Dashboard for easy access. 
+
+   ![Screenshot showing the blob container properties](media/azure-stack-automatic-log-collection/create-blob-container.png)
+
 1. Click **Storage Explorer (preview)**, right-click **Blob containers**, and click **Create new blob container**. 
 1. Enter a name for the new container and click **OK**.
 
