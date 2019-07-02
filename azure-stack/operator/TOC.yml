@@ -403,12 +403,16 @@
         href: azure-stack-help-and-support-overview.md
       - name: Log collection
         items:
-        - name: Create SAS URL
-          href: azure-stack-create-blob-container-sas-url.md
         - name: On-demand 
           href: azure-stack-configure-on-demand-log-collection.md
         - name: Automatic
-          href: azure-stack-configure-automatic-log-collection.md
+          items:
+          - name: Configure
+            href: azure-stack-configure-automatic-log-collection.md
+          - name: Create SAS URL
+            href: azure-stack-create-blob-container-sas-url.md
+          - name: Manage storage account
+            href: azure-stack-manage-storage-account.md  
     - name: Troubleshoot  
       items:
       - name: Known issues
