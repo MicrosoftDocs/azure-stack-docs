@@ -408,7 +408,7 @@
         - name: On-demand 
           href: azure-stack-configure-on-demand-log-collection.md
         - name: Automatic
-          href: azure-stack-configure-log-collection.md
+          href: azure-stack-configure-automatic-log-collection.md
     - name: Troubleshoot  
       items:
       - name: Known issues

@@ -26,7 +26,9 @@ ms.lastreviewed: 07/02/2019
 You can streamline the process for troubleshooting problems with Azure Stack by configuring automatic log collection. automatically uploading log files. 
 If system health conditions need investigation, logs can be uploaded automatically for analysis by Microsoft Customer Support Services (CSS). 
 
-You'll need to provide the SAS URL for a blob container where the logs can be uploaded. You can use an existing blob container in Azure or [create a new one](azure-stack-create-blob-container-sas-url.md). Then follow these steps to add the SAS URL to the log collection UI: 
+You'll need to provide the SAS URL for a blob container where the logs can be uploaded. You can use any blob container in Azure. If you need to create a new one, see [Create a blob container SAS URL](azure-stack-create-blob-container-sas-url.md). 
+
+Follow these steps to add the SAS URL to the log collection UI: 
 
 1. Sign in to the Azure Stack administrator portal.
 1. Open **Help and support Overview**.
@@ -43,19 +45,23 @@ You'll need to provide the SAS URL for a blob container where the logs can be up
 
 You can see logs that were previously collected on the **Log collection** page in Help and Support. 
 The **Collection time** refers to when the log collection operation began. 
-The **Logs From** is the start of the time period for which you want to collect logs and the **Logs To** is the end of the time period.
+The **From Date** is the start of the time period for which you want to collect logs and the **To Date** is the end of the time period.
 
 ![Screenshot of Azure Stack log collection](media/azure-stack-automatic-log-collection/azure-stack-log-collection.png)
 
+<!-- Replace screenshot as UI has changed to From date and to date--->
+
 ## Alerts
 
-There are two types of alerts: 
+There are two types of alerts related to the SAS URL used for automatic log collection. 
+Each one can be resolved by increasing the expiry for the SAS URL. 
+For more information, see [Create a blob container SAS URL](azure-stack-create-blob-container-sas-url.md).
 
 - Expiration date approaching
 
   ![Expiration date approaching](media/azure-stack-automatic-log-collection/alert-expiration-date.png)
 
-- SAS URL has expired
+- SAS URL has expired. In this case
   
   ![SAS URL expired](media/azure-stack-automatic-log-collection/alert-url-expired.png)
 
