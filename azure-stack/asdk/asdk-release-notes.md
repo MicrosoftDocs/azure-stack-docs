@@ -37,6 +37,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 
 ### Fixed and known issues
 
+- When creating virtual machine resources using some Marketplace images, you might not be able to complete the deployment. As a workaround, you can click on the **Download template and parameters** link in the **Summary** page and click on the **Deploy** button in the **Template** blade. 
 - For a list of Azure Stack issues fixed in this release, see [this section](../operator/azure-stack-release-notes-1906.md#fixes) of the Azure Stack release notes.
 - For a list of known issues, see [this article](../operator/azure-stack-release-notes-known-issues-1906.md).
 - Note that [available Azure Stack hotfixes](../operator/azure-stack-release-notes-1906.md#hotfixes) are not applicable to the Azure Stack ASDK.
