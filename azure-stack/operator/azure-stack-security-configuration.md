@@ -28,7 +28,7 @@ The Transport Layer Security (TLS) protocol is a widely adopted cryptographic pr
 Since TLS 1.0 and 1.1 are incrementally being deprecated or banned by organizations and compliance standards, beginning with the 1906 update, you can now configure the TLS policy in Azure Stack. You can enforce a TLS 1.2 only policy where any attempt of establishing a TLS session with a version lower than 1.2 is not permitted and rejected.
 
 > [!IMPORTANT]
-> Using a TLS 1.2 only policy is intended for production environments.
+> Microsoft recommends using TLS 1.2 only policy for Azure Stack production environments.
 
 ## Get TLS policy
 
