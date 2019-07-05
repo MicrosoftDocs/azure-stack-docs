@@ -168,6 +168,7 @@ To close the endpoint session:
 	Close-PrivilegedEndpoint -TranscriptsPathDestination "\\fileshareIP\SharedFolder" -Credential Get-Credential
 	```
 where
+
 | Parameter | Description | Type | Required |
 |---------|---------|---------|---------|
 | *TranscriptsPathDestination* | path to the external file share defined as "fileshareIP\sharefoldername" | String | yes|
