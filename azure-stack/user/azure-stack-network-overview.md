@@ -17,7 +17,7 @@ ms.lastreviewed: 01/14/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Azure Stack provides a variety of networking capabilities that can be used together or separately:
+Azure Stack provides different kinds of networking capabilities that can be used together or separately:
 
 - **Connectivity between Azure Stack resources**  
     Connect Azure resources together in a secure and private virtual network in the cloud.
