@@ -1,5 +1,5 @@
 ---
-title: Azure Stack networking Differences and considerations | Microsoft Docs
+title: Azure Stack networking differences | Microsoft Docs
 description: Learn about differences and considerations when working with networking in Azure Stack.
 services: azure-stack
 keywords: 
@@ -14,7 +14,7 @@ ms.lastreviewed: 06/04/2019
 
 ---
 
-# Considerations for Azure Stack networking
+# Differences and considerations for Azure Stack networking
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
