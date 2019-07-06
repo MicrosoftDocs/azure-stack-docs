@@ -50,12 +50,12 @@ This article provides an overview of the unique considerations for Azure Stack n
 |  | VPN Type | Azure supports both policy-based and route-based. | Azure Stack supports route-based only. |
 |  | BGP Settings | Azure supports configuration of BGP Peering Address and Peer Weight. | BGP Peering Address and Peer Weight are auto-configured in Azure Stack. There's no way for the user to configure these settings with their own values. |
 |  | Default Gateway Site | Azure supports configuration of a default site for forced tunneling. | Not yet supported. |
-|  | Gateway Resizing | Azure supports resizing the gateway after deployment. | Re-sizing not supported. |
+|  | Gateway Resizing | Azure supports resizing the gateway after deployment. | Resizing not supported. |
 |  | Availability Configuration | Active/Active | Active/Passive |
 |  | UsePolicyBasedTrafficSelectors | Azure supports using policy-based traffic selectors with route-based gateway connections. | Not yet supported. |
 | Load balancer | SKU | Basic and Standard Load Balancers are supported. | Only the Basic Load Balancer is supported.  The SKU property isn't supported. |
 |  | Zones | Availability Zones are Supported. | Not yet supported |
-|  | Inbound NAT Rules support for Service Endpoints | Azure supports specifying Service Endpoints for Inbound NAT rules. | Azure Stack does not yet support Service Endpoints, so these cannot be specified. |
+|  | Inbound NAT Rules support for Service Endpoints | Azure supports specifying Service Endpoints for Inbound NAT rules. | Azure Stack doesn't yet support Service Endpoints, so these can't be specified. |
 |  | Protocol | Azure Supports specifying GRE or ESP. | Protocol Class isn't supported in Azure Stack. |
 | Public IP Address | Public IP Address Version | Azure supports both IPv6 and IPv4. | Only IPv4 is supported. |
 | Network Interface | Get Effective Route Table | Supported | Not yet supported. |
