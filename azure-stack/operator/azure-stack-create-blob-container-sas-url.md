@@ -23,6 +23,8 @@ ms.lastreviewed: 07/08/2019
 
 *Applies to: Azure Stack integrated systems*
 
+What is a blob container SAS url, why do you need it. here are prereqs.... 
+
 ## Prerequisites
 
 You'll need the shared access signature (SAS) URL of a blob container in Azure to save Azure Stack log files that will be collected for analysis by Microsoft Customer Support Services (CSS). 

@@ -26,6 +26,20 @@ ms.lastreviewed: 07/08/2019
 You can streamline the process for troubleshooting problems with Azure Stack by configuring automatic log collection. 
 If system health conditions need to be investigated, the logs can be uploaded automatically for analysis by Microsoft Customer Support Services (CSS). 
 
+## How automatic log collection works
+
+### Queueing logs for collection
+
+
+Scanning for automatic log collection occurs within a sliding window. If there one or more alerts, a single log collection is queued for that window. 
+After a log collection, the next alert scanning is suppressed until 30 mins. 
+
+What happens if the customer renews the SAS? If that is a NOOP… then great. Make sure to mention that as a option in the alert remediation steps and in the documentation.
+You can renew SAS and will have to re-enter it log collection blade. 
+If customer rotates storage account keys then previously provided SAS will no longer work in log collection history they can see why upload failed.
+
+## Steps to configure automatic log collection
+
 You'll need to provide the SAS URL for a blob container where the logs can be uploaded. You can use any blob container in Azure. If you need to create a new SAS URL, see [Create a blob container SAS URL](azure-stack-create-blob-container-sas-url.md). 
 
 Follow these steps to add the SAS URL to the log collection UI: 
@@ -43,6 +57,8 @@ Follow these steps to add the SAS URL to the log collection UI:
 
 <!--- change the first screenshot to show the buton rather than the banner--->
 
+
+
 ## View collected logs
 
 You can see logs that were previously collected on the **Log collection** page in Help and Support. 
@@ -53,7 +69,11 @@ The **From Date** is the start of the time period for which you want to collect 
 
 <!-- Replace screenshot as UI has changed to From date and to date--->
 
-## Alerts
+## Disabling automatic log collection
+
+Automatic log collection can be disabled and re-enabled any time. The SAS URL configuration won't change. If automatic log collection is re-enabled, the previously entered SAS URL will undergo the same validation checks, and an expired SAS URL will be rejected. 
+
+## SAS URL alerts
 
 There are two types of alerts related to the SAS URL used for automatic log collection. 
 Each alert can be resolved by generating a new SAS URL. 
