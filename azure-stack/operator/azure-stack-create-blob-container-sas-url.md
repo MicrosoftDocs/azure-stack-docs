@@ -63,7 +63,7 @@ For more information about types of storage accounts, see [Azure storage account
    - Expiry time: Must be at least 7 days but you can increase the number of days to avoid related alerts about upcoming expiration.
    - Time zone: UTC
    - Permissions: Read, Write, and List
-1. Click **Save**.  
+1. Click **Create**.  
 
 <!--- add screenshot with Read, Write, and List. I did not have perms to do it--->
 
