@@ -53,9 +53,9 @@ Sign in to the Azure Stack portal. The address of the Azure Stack portal depends
    When your configurations are ready, select **OK** to continue.
 
 5. Under **Summary**, click **OK** to create the VM.
-    ![View summary and create virtual machine](media/azure-stack-quick-windows-portal/image05.png)
+    ![View summary and create VM](media/azure-stack-quick-windows-portal/image05.png)
 
-6. To see your new virtual machine, click **All resources**, search for the VM name, and then select it in the search results.
+6. To see your new VM, click **All resources**, search for the VM name, and then select it in the search results.
 
     ![See VM](media/azure-stack-quick-windows-portal/image06.png)
 
@@ -65,4 +65,4 @@ When you're finished using the VM, delete the VM and its resources. To do so, se
 
 ## Next steps
 
-In this quickstart, you deployed a basic Windows Server VM. To learn more about Azure Stack VMs, continue to [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md).
+In this quickstart, you deployed a basic Windows Server VM. To learn more about Azure Stack VMs, continue to [Considerations for VMs in Azure Stack](azure-stack-vm-considerations.md).
