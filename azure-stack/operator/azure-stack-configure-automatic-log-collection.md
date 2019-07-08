@@ -31,12 +31,9 @@ If system health conditions need to be investigated, the logs can be uploaded au
 ### Queueing logs for collection
 
 
-Scanning for automatic log collection occurs within a sliding window. If there one or more alerts, a single log collection is queued for that window. 
-After a log collection, the next alert scanning is suppressed until 30 mins. 
+Scanning for automatic log collection occurs within a sliding window. If there are one or more alerts, a single log collection is queued for that window. 
+After log collection, the next alert scanning is suppressed until 30 mins. 
 
-What happens if the customer renews the SAS? If that is a NOOP… then great. Make sure to mention that as a option in the alert remediation steps and in the documentation.
-You can renew SAS and will have to re-enter it log collection blade. 
-If customer rotates storage account keys then previously provided SAS will no longer work in log collection history they can see why upload failed.
 
 ## Steps to configure automatic log collection
 
@@ -87,3 +84,5 @@ For more information, see [Create a blob container SAS URL](azure-stack-create-b
   
   ![SAS URL expired](media/azure-stack-automatic-log-collection/alert-url-expired.png)
 
+  If you renew the SAS URL, you'll need to re-enter it in the automatic log collection settings. 
+  If you rotate storage account keys, the previously provided SAS URL will no longer work. The log collection history indicates why upload failed.
