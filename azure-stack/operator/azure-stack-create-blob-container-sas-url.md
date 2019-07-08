@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2019
+ms.date: 07/08/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/02/2019
+ms.lastreviewed: 07/08/2019
 
 ---
 # Create a blob container SAS URL 
