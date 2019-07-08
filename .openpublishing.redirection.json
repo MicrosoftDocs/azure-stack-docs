@@ -79,12 +79,13 @@
       "source_path": "azure-stack/operator/azure-stack-update-1902.md",
       "redirect_url": "/azure-stack/operator/azure-stack-release-notes-1907",
       "redirect_document_id": false
+    },
+    {    
+      "source_path": "azure-stack/operator/azure-stack-update-1903.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-1907",
+      "redirect_document_id": false
     },    
-    "source_path": "azure-stack/operator/azure-stack-update-1903.md",
-    "redirect_url": "/azure-stack/operator/azure-stack-release-notes-1907",
-    "redirect_document_id": false
-  },    
-  {
+    {
       "source_path": "azure-stack/operator/azure-stack-release-notes-security-updates-1904.md",
       "redirect_url": "/azure-stack/operator/azure-stack-release-notes-security-updates-1907",
       "redirect_document_id": false
