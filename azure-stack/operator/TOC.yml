@@ -404,7 +404,7 @@
       - name: Log collection
         items:
         - name: Log collection overview 
-          href: azure-stack-configure-log-collection-overview.md
+          href: azure-stack-log-collection-overview.md
         - name: Collect logs now 
           href: azure-stack-configure-on-demand-log-collection.md
         - name: Automatic log collection
