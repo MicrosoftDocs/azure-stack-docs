@@ -42,11 +42,7 @@ Managed disks simplify disk management for IaaS virtual machines (VMs) by managi
 |Premium disks IOPs  |Depends on disk size  |2300 IOPs per disk |
 |Premium disks throughput |Depends on disk size |145 MB/second per disk |
 |Disk size  |Azure Premium Disk: P4 (32 GiB) to P80 (32 TiB)<br>Azure Standard SSD Disk: E10 (128 GiB) to E80 (32 TiB)<br>Azure Standard HDD Disk: S4 (32 GiB) to S80 (32 TiB) |M4: 32 GiB<br>M6: 64 GiB<br>M10: 128 GiB<br>M15: 256 GiB<br>M20: 512 GiB<br>M30: 1024 GiB |
-<<<<<<< HEAD
 |Disks snapshot copy|Snapshot Azure-managed disks attached to a running VM supported|Not yet supported |
-=======
-|Disks snapshot copy|Snapshot Azure managed disks attached to a running VM supported|Snapshot Azure managed disks attached to a running VM is not yet supported |
->>>>>>> 668fe2e3e36f072aeadb01d4bc222c8658f6a922
 |Disks performance analytic |Aggregate metrics and per disk metrics supported |Not yet supported |
 |Migration      |Provide tool to migrate from existing unmanaged Azure Resource Manager VMs without the need to recreate the VM  |Not yet supported |
 
@@ -158,9 +154,9 @@ You can use the portal, PowerShell, or CLI to create the managed image. Follow t
 
 #### Case 1: Migrate unmanaged VMs to managed disks
 
-Make sure to generalize your VM correctly before performing this step. After generalization, you can no longer use this VM. Creating a VM from an image that hasn't been properly generalized will lead to a **VMProvisioningTimeout** error.
+Make sure to generalize your VM correctly before doing this step. After generalization, you can no longer use this VM. Creating a VM from an image that hasn't been properly generalized will lead to a **VMProvisioningTimeout** error.
 
-Follow the instructions in [Create an image from a VHD in a storage account](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-vhd-in-a-storage-account) to create a managed image from a generalized VHD in a storage account. You can use this image going forward to create managed VMs.
+Follow the instructions in [Create an image from a VHD in a storage account](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-vhd-in-a-storage-account) to create a managed image from a generalized VHD in a storage account. You can use this image in the future to create managed VMs.
 
 #### Case 2: Create managed VM from managed image using Powershell
 
