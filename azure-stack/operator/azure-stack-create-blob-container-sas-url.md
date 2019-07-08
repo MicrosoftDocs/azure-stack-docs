@@ -34,15 +34,18 @@ You can use a new or existing blob container.
 >To create a blob container in Azure, you need at least the [storage blob contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or the [specific permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). Global administrators also have the necessary permission. 
 
 
+For best practices about choosing parameters for the automatic log collection storage account, see [Manage a storage account for automatic Azure Stack log collection](azure-stack-manage-storage-account-for-automatic-log-collection.md).
+
+
 ### Create a blob storage account
  
 1. Sign in to the Azure portal and create a blob container with these settings:
    - **Subscription**: Choose your Azure subscription.
-   - **Resource group**: Specify a resource group
-   - **Storage account name**: Specify a unique storage account name
-   - **Location**: Choose a datacenter near your Azure Stack deployment
-   - **Performance**: Standard
-   - **Account kind** Choose any storage account type (for example: BlobStorage, StorageV2)
+   - **Resource group**: Specify a resource group.
+   - **Storage account name**: Specify a unique storage account name.
+   - **Location**: Choose a datacenter near your Azure Stack deployment.
+   - **Performance**: Choose Standard.
+   - **Account kind** Choose any blob storage account type (for example: BlobStorage, StorageV2). For more information about types of storage accounts, see [Azure storage account overview](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
    ![Screenshot showing the blob container properties](media/azure-stack-automatic-log-collection/create-blob-container.png)
 
@@ -53,8 +56,6 @@ You can use a new or existing blob container.
 1. After the deployment succeeds, click **Go to resource**. You can also pin the storage account to the Dashboard for easy access. 
 1. Click **Storage Explorer (preview)**, right-click **Blob containers**, and click **Create new blob container**. 
 1. Enter a name for the new container and click **OK**.
-
-For more information about types of storage accounts, see [Azure storage account overview](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
 ## Create a SAS URL
 

@@ -408,7 +408,7 @@
         - name: Automatic
           items:
           - name: Manage storage account
-            href: azure-stack-manage-storage-account.md  
+            href: azure-stack-manage-storage-account-for-automatic-log-collection.md  
           - name: Create SAS URL
             href: azure-stack-create-blob-container-sas-url.md
           - name: Configure automatic collection
