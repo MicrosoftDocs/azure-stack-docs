@@ -22,12 +22,12 @@ ms.lastreviewed: 03/23/2019
 
 # Azure Stack managed disks: differences and considerations
 
-This article summarizes the known differences between [Azure Stack managed disks](azure-stack-manage-vm-disks.md) and [managed disks for Azure](/azure/virtual-machines/windows/managed-disks-overview). To learn about high-level differences between Azure Stack and Azure, see the [Key considerations](azure-stack-considerations.md) article.
+This article summarizes the differences between [Azure Stack managed disks](azure-stack-manage-vm-disks.md) and [Azure managed disks](/azure/virtual-machines/windows/managed-disks-overview). To learn about high-level differences between Azure Stack and Azure, see the [Key considerations](azure-stack-considerations.md) article.
 
-Managed disks simplifies disk management for IaaS VMs by managing the [storage accounts](../operator/azure-stack-manage-storage-accounts.md) associated with the VM disks.
+Managed disks simplify disk management for IaaS virtual machines (VMs) by managing the [storage accounts](../operator/azure-stack-manage-storage-accounts.md) associated with the VM disks.
 
 > [!NOTE]  
-> Managed disks on Azure Stack is available starting with the 1808 update. Starting with the 1811 update, it is enabled by default when creating virtual machines using the Azure Stack portal.
+> Managed disks on Azure Stack are available starting with the 1808 update. Beginning with the 1811 update, it's enabled by default when creating VMs using the Azure Stack portal.
   
 ## Cheat sheet: managed disk differences
 
@@ -53,12 +53,12 @@ Managed disks simplifies disk management for IaaS VMs by managing the [storage a
 
 There are also differences with storage metrics:
 
-- With Azure Stack, the transaction data in storage metrics does not differentiate internal or external network bandwidth.
-- Azure Stack transaction data in storage metrics does not include virtual machine access to the mounted disks.
+- With Azure Stack, the transaction data in storage metrics doesn't differentiate internal or external network bandwidth.
+- Azure Stack transaction data in storage metrics doesn't include virtual machine access to the mounted disks.
 
 ## API versions
 
-Azure Stack managed disks supports the following API versions:
+Azure Stack managed disks support the following API versions:
 
 - 2017-03-30
 - 2017-12-01
@@ -66,7 +66,7 @@ Azure Stack managed disks supports the following API versions:
 ## Convert to managed disks
 
 > [!NOTE]  
-> The Azure PowerShell cmdlet **ConvertTo-AzureRmVMManagedDisk** cannot be used to convert an unmanaged disk to a managed disk in Azure Stack. Azure Stack does not yet support this cmdlet.
+> The Azure PowerShell cmdlet **ConvertTo-AzureRmVMManagedDisk** can't be used to convert an unmanaged disk to a managed disk in Azure Stack. Azure Stack doesn't currently support this cmdlet.
 
 You can use the following script to convert a currently provisioned VM from unmanaged to managed disks. Replace the placeholders with your own values:
 
