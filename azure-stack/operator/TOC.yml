@@ -403,9 +403,11 @@
         href: azure-stack-help-and-support-overview.md
       - name: Log collection
         items:
-        - name: On-demand 
+        - name: Log collection overview 
+          href: azure-stack-configure-log-collection-overview.md
+        - name: Collect logs now 
           href: azure-stack-configure-on-demand-log-collection.md
-        - name: Automatic
+        - name: Automatic log collection
           items:
           - name: Manage storage account
             href: azure-stack-manage-storage-account-for-automatic-log-collection.md  
