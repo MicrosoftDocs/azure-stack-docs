@@ -65,4 +65,4 @@ When you're finished using the VM, delete the VM and its resources. To do so, se
 
 ## Next steps
 
-In this quick start, you deployed a basic Windows Server VM. To learn more about Azure Stack VMs, continue to [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md).
+In this quickstart, you deployed a basic Windows Server VM. To learn more about Azure Stack VMs, continue to [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md).
