@@ -23,7 +23,10 @@ ms.lastreviewed: 07/02/2019
 
 *Applies to: Azure Stack integrated systems*
 
+## Prerequisites
+
 You'll need the shared access signature (SAS) URL of a blob container in Azure to save Azure Stack log files that will be collected for analysis by Microsoft Customer Support Services (CSS). 
+
 The SAS URL is a prerequisite for [configuring automatic log collection for Azure Stack](azure-stack-configure-automatic-log-collection.md).
 You can use a new or existing blob container.
 
@@ -31,7 +34,7 @@ You can use a new or existing blob container.
 >To create a blob container in Azure, you need at least the [storage blob contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or the [specific permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). Global administrators also have the necessary permission. 
 
 
-## Create a blob container
+### Create a blob storage account
  
 1. Sign in to the Azure portal and create a blob container with these settings:
    - **Subscription**: Choose your Azure subscription.
@@ -44,17 +47,20 @@ You can use a new or existing blob container.
    ![Screenshot showing the blob container properties](media/azure-stack-automatic-log-collection/create-blob-container.png)
 
 1. Click **Create**.  
+
+### Create a blob container 
+
 1. After the deployment succeeds, click **Go to resource**. You can also pin the storage account to the Dashboard for easy access. 
 1. Click **Storage Explorer (preview)**, right-click **Blob containers**, and click **Create new blob container**. 
 1. Enter a name for the new container and click **OK**.
 
 For more information about types of storage accounts, see [Azure storage account overview](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
-## Copy the SAS URL
+## Create a SAS URL
 
 1. Right-click the new container, click **Get Shared Access Signature**, and choose these properties:
    - Start time: You can optionally move the start time back. 
-   - Expiry time: Increase to two weeks or longer to avoid related alerts about upcoming expiration.
+   - Expiry time: Must be at least 7 days but you can increase the number of days to avoid related alerts about upcoming expiration.
    - Time zone: UTC
    - Permissions: Read, Write, and List
 1. Click **Save**.  
