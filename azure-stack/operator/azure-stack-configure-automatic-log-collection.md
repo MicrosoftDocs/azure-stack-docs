@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2019
+ms.date: 07/08/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/02/2019
+ms.lastreviewed: 07/08/2019
 
 ---
 # Configure automatic Azure Stack log collection
@@ -26,13 +26,13 @@ ms.lastreviewed: 07/02/2019
 You can streamline the process for troubleshooting problems with Azure Stack by configuring automatic log collection. 
 If system health conditions need to be investigated, the logs can be uploaded automatically for analysis by Microsoft Customer Support Services (CSS). 
 
-You'll need to provide the SAS URL for a blob container where the logs can be uploaded. You can use any blob container in Azure. If you need to create a new one, see [Create a blob container SAS URL](azure-stack-create-blob-container-sas-url.md). 
+You'll need to provide the SAS URL for a blob container where the logs can be uploaded. You can use any blob container in Azure. If you need to create a new SAS URL, see [Create a blob container SAS URL](azure-stack-create-blob-container-sas-url.md). 
 
 Follow these steps to add the SAS URL to the log collection UI: 
 
 1. Sign in to the Azure Stack administrator portal.
 1. Open **Help and support Overview**.
-1. Click **Enable automatic log collection**.
+1. Click **Automatic collection settings**.
 
    ![Screenshot shows where to enable log collection in Help and support](media/azure-stack-automatic-log-collection/azure-stack-help-overview-enable-option.png)
 
