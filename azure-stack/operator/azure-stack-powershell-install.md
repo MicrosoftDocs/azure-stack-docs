@@ -137,6 +137,7 @@ Installation has four steps:
 1. Install Azure Stack PowerShell to a connected machine
 2. Enable additional storage features
 3. Transport the PowerShell packages to your disconnected workstation
+4. Manually bootstrapping the NuGet provider on a machine that is not connected to the Internet.
 4. Confirm the installation of PowerShell
 
 ### Install Azure Stack PowerShell
@@ -178,7 +179,9 @@ Installation has four steps:
 
 2. Sign in to the disconnected workstation and copy the packages from the USB device to a location on the workstation.
 
-3. Now register this location as the default repository and install the AzureRM and AzureStack modules from this repository:
+3. Manually bootstrapping the NuGet provider on a machine that is not connected to the Internet. For instructions, see [Manually bootstrapping the NuGet provider on a machine that is not connected to the Internet](https://docs.microsoft.com/powershell/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet).
+
+4. Now register this location as the default repository and install the AzureRM and AzureStack modules from this repository:
 
    ```powershell
    # requires -Version 5
