@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2019
+ms.date: 07/08/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/02/2019
+ms.lastreviewed: 07/08/2019
 
 ---
 # Manage a storage account for automatic Azure Stack log collection 
@@ -28,3 +28,5 @@ Automatic Azure Stack log collection requires only the least costly blob storage
 If you don't have an existing storage account, you can sign in to the Azure portal, click **Storage accounts**, and then click **Add** to create a storage account for blobs.
 
 You can set the retention policy of the storage account between 1 and 365 days. For more information about setting the retention policy, see [storage account diagnostic settings](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#diagnostic-settings). 
+
+For follow up: what are best practices for expiration, why SAS tokens are not used, can I point multiple Azure Stack systems to the same storage account? Etc. etc. 
