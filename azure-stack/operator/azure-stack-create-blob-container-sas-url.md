@@ -31,7 +31,7 @@ This topic covers the prerequisites and the steps to create a SAS URL.
 
 ## Prerequisites
 
-Youll need a blob container in Azure to store the logs. You can use a new or existing blob container. The following sections cover how to create a new storage account and blob container. 
+You'll need a blob container in Azure to store the logs. You can use a new or existing blob container. The following sections cover how to create a new storage account and blob container. 
 
 >[!NOTE]
 >To create a blob container in Azure, you need at least the [storage blob contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or the [specific permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). Global administrators also have the necessary permission. 
