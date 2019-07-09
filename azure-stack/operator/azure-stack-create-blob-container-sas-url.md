@@ -25,12 +25,13 @@ ms.lastreviewed: 07/09/2019
 
 A shared access signature (SAS) lets you grant access to resources in your storage account without sharing your account keys. 
 You can save Azure Stack log files to a blob container in Azure, and then provide a SAS URL where Microsoft Customer Support Services (CSS) can collect the logs. 
-This topic covers how to create a storage account and blob container in Azure, and how to create a SAS URL to access the logs.  
+The SAS URL is a prerequisite for [automatic log collection](azure-stack-configure-automatic-log-collection.md).
+
+This topic covers the prerequisites and the steps to create a SAS URL.  
 
 ## Prerequisites
 
-The SAS URL is a prerequisite for [configuring automatic log collection for Azure Stack](azure-stack-configure-automatic-log-collection.md).
-You can use a new or existing blob container.
+Youll need a blob container in Azure to store the logs. You can use a new or existing blob container. The following sections cover how to create a new storage account and blob container. 
 
 >[!NOTE]
 >To create a blob container in Azure, you need at least the [storage blob contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or the [specific permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). Global administrators also have the necessary permission. 
