@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 07/09/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/08/2019
+ms.lastreviewed: 07/09/2019
 
 ---
 # Overview of Azure Stack log collection 
@@ -25,6 +25,7 @@ ms.lastreviewed: 07/08/2019
 
 Azure Stack provides two ways to collect logs for analysis by Microsoft Customer Support Services (CSS):
 
-- **Collect logs now**: You choose any 1-4 hour time period from the last week
-- **Automatic log collection**: Logs collection is triggered by specific alerts 
+- **Collect logs now**: You choose a 1-4 hour time period from the last week
+- **Automatic collection settings**: If enabled, log collection is triggered by specific health alerts 
 
+![Screenshot of Log Collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
