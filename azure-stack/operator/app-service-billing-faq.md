@@ -41,7 +41,7 @@ Worker tiers consist of two main types: shared and dedicated. Worker usage is bi
 
 ## Shared workers
 
-Shared workers are multitenant and host free and shared App Service plans and consumption-based Azure Functions for many tenants. Shared workers emit usage meters when marked as ready in the Azure App Service resource provider.
+Shared workers are multitenant and host free and shared App Service plans and consumption-based Azure functions for many tenants. Shared workers emit usage meters when marked as ready in the Azure App Service resource provider.
 
 ## Dedicated workers
 
@@ -78,7 +78,7 @@ As a cloud operator, you're free to apply your own pricing model to your custome
 
 As a cloud operator, you incur costs for offering free and shared SKUs because they're hosted in shared workers. To minimize that cost, you can choose to scale down the shared worker tier to a bare minimum. 
 
-For example, to offer free and shared App Service plan SKUs and to offer consumption-based functions, you need a minimum of one A1 instance available. Shared workers are multitenant, so they can host multiple customer apps, each individually isolated and protected by the App Service sandbox. By scaling the shared worker tier in this way, you can limit your outlay to the cost of 1vCPU per month.
+For example, to offer free and shared App Service plan SKUs and to offer consumption-based functions, you need a minimum of one A1 instance available. Shared workers are multitenant, so they can host multiple customer apps, each individually isolated and protected by the App Service sandbox. By scaling the shared worker tier in this way, you can limit your outlay to the cost of one vCPU per month.
 
 You can then choose to create a quota, for use in a plan, which only offers free and shared SKUs and limits the number of free and shared App Service plans your customer can create.
 
