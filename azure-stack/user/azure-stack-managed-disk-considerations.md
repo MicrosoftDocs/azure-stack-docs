@@ -1,5 +1,5 @@
 ---
-title: Differences and considerations for managed disks and managed images in Azure Stack | Microsoft Docs
+title: Azure Stack managed disks&#58; differences and considerations | Microsoft Docs
 description: Learn about differences and considerations when working with managed disks and managed images in Azure Stack.
 services: azure-stack
 documentationcenter: ''
