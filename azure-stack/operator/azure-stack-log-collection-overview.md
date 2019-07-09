@@ -34,3 +34,4 @@ You can choose either option on the Help and Support **Overview - Log Collection
 
 ![Screenshot of Log Collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
 
+For more information ab

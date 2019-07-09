@@ -78,8 +78,9 @@ For more information, see [Create a blob container SAS URL](azure-stack-create-b
   ![Expiration date approaching](media/azure-stack-automatic-log-collection/alert-expiration-date.png)
 
 - SAS URL has expired. 
-  
+  If you renew the SAS URL, you'll need to re-enter it in the automatic log collection settings. 
+  If you rotate storage account keys, the previously provided SAS URL will no longer work. Check the log collection history to see why upload failed.
+
   ![SAS URL expired](media/azure-stack-automatic-log-collection/alert-url-expired.png)
 
-  If you renew the SAS URL, you'll need to re-enter it in the automatic log collection settings. 
-  If you rotate storage account keys, the previously provided SAS URL will no longer work. The log collection history indicates why upload failed.
+  
