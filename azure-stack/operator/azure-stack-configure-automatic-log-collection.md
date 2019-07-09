@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 07/09/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/08/2019
+ms.lastreviewed: 07/09/2019
 
 ---
 # Configure automatic Azure Stack log collection
@@ -25,14 +25,6 @@ ms.lastreviewed: 07/08/2019
 
 You can streamline the process for troubleshooting problems with Azure Stack by configuring automatic log collection. 
 If system health conditions need to be investigated, the logs can be uploaded automatically for analysis by Microsoft Customer Support Services (CSS). 
-
-## How automatic log collection works
-
-### Queueing logs for collection
-
-
-Scanning for automatic log collection occurs within a sliding window. If there are one or more alerts, a single log collection is queued for that window. 
-After log collection, the next alert scanning is suppressed until 30 mins. 
 
 
 ## Steps to configure automatic log collection
@@ -55,7 +47,6 @@ Follow these steps to add the SAS URL to the log collection UI:
 <!--- change the first screenshot to show the buton rather than the banner--->
 
 
-
 ## View collected logs
 
 You can see logs that were previously collected on the **Log collection** page in Help and Support. 
@@ -66,9 +57,15 @@ The **From Date** is the start of the time period for which you want to collect 
 
 <!-- Replace screenshot as UI has changed to From date and to date--->
 
-## Disabling automatic log collection
 
-Automatic log collection can be disabled and re-enabled any time. The SAS URL configuration won't change. If automatic log collection is re-enabled, the previously entered SAS URL will undergo the same validation checks, and an expired SAS URL will be rejected. 
+## Disable automatic log collection
+
+Automatic log collection can be disabled and re-enabled anytime. The SAS URL configuration won't change. If automatic log collection is re-enabled, the previously entered SAS URL will undergo the same validation checks, and an expired SAS URL will be rejected. 
+
+## Log collection scanning
+
+Scanning for automatic log collection occurs within a sliding window. If there are one or more alerts, a single log collection is queued for that window. 
+After log collection, the next alert scanning is suppressed until 30 mins. 
 
 ## SAS URL alerts
 

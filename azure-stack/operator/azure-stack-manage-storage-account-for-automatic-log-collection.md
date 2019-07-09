@@ -1,6 +1,6 @@
 ---
 title: Manage a storage account for automatic Azure Stack log collection | Microsoft Docs
-description: How to manage the storage account for automatic log collection in Azure Stack Help + Support.
+description: How to manage the storage account for automatic log collection in Azure Stack Help + Support
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 07/09/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/08/2019
+ms.lastreviewed: 07/09/2019
 
 ---
 # Manage a storage account for automatic Azure Stack log collection 
