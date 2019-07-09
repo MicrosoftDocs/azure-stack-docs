@@ -1,5 +1,5 @@
 ---
-title: Tutorial&#58; Deploy apps to Azure and Azure Stack | Microsoft Docs
+title: "Tutorial: Deploy apps to Azure and Azure Stack"
 description: Learn how to deploy apps to Azure and Azure Stack with a hybrid CI/CD pipeline.
 services: azure-stack
 documentationcenter: ''
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/11/2019
+ms.date: 07/08/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
@@ -22,96 +22,101 @@ ms.lastreviewed: 11/07/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Learn how to deploy apps to Azure and Azure Stack using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.
+In this tutorial, you learn how to deploy apps to Azure and Azure Stack by using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.
 
-In this tutorial, you'll create a sample environment to:
+The tutorial walks you through creating a sample environment that:
 
 > [!div class="checklist"]
-> * Initiate a new build based on code commits to your Azure DevOps Services repository.
-> * Automatically deploy your app to global Azure for user acceptance testing.
-> * When your code passes testing, automatically deploy the app to Azure Stack.
+> - Initiates a new build based on code commits to your Azure Repos repository
+> - Automatically deploys your app to Azure for user acceptance testing
+> - Automatically deploys the app to Azure Stack when it passes testing
 
-## Benefits of the hybrid delivery build pipeline
+To learn more about CI and CD, see the following articles:
+
+* [What is Continuous Integration?](https://www.visualstudio.com/learn/what-is-continuous-integration/)
+* [What is Continuous Delivery?](https://www.visualstudio.com/learn/what-is-continuous-delivery/)
+
+## Hybrid CI/CD pipelines and Azure Stack
 
 Continuity, security, and reliability are key elements of app deployment. These elements are essential to your organization and critical to your development team. A hybrid CI/CD pipeline lets you consolidate your build pipes across your on-premises environment and the public cloud. A hybrid delivery model also lets you change deployment locations without changing your app.
 
 Other benefits of using the hybrid approach are:
 
-* You can maintain a consistent set of development tools across your on-premises Azure Stack environment and the Azure public cloud.  A common tool set makes it easier to implement CI/CD patterns and practices.
-* Apps and services deployed in Azure or Azure Stack are interchangeable and the same code can run in either location. You can take advantage of on-premises and public cloud features and capabilities.
+- You can maintain a consistent set of development tools across your on-premises Azure Stack environment and the Azure public cloud.  A common tool set makes it easier to implement CI/CD patterns and practices.
+- Apps and services deployed in Azure or Azure Stack are interchangeable, and the same code can run in either location. You can take advantage of on-premises and public cloud features and capabilities.
 
-To learn more about CI and CD:
+![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
+Microsoft Azure Stack is an extension of Azure that brings the agility and innovation of cloud computing to your on-premises environment. It is the only hybrid cloud that lets you build and deploy hybrid apps both on-premises and to the cloud. 
 
-* [What is Continuous Integration?](https://www.visualstudio.com/learn/what-is-continuous-integration/)
-* [What is Continuous Delivery?](https://www.visualstudio.com/learn/what-is-continuous-delivery/)
-
-> [!Tip]  
-> ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment. It is the only hybrid cloud that lets you build and deploy hybrid apps anywhere.  
-> 
-> The white paper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid application design which minimize challenges in production environments.
+The white paper [Design considerations for hybrid applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews designing, deploying, and operating hybrid apps according to pillars of software quality. The quality criteria include placement, scalability, availability, resiliency, manageability, and security. These design considerations assist in optimizing hybrid app design to minimize challenges in production environments.
 
 ## Prerequisites
 
-You need to have components in place to build a hybrid CI/CD pipeline. The following components will take time to prepare:
-
-* An Azure OEM/hardware partner can deploy a production Azure Stack. All users can deploy the Azure Stack Development Kit (ASDK).
-* An Azure Stack Operator must complete the following items: deploy the App Service, create plans and offers, create a tenant subscription, and add the Windows Server 2016 image.
-
->[!NOTE]
->If you already have some of these components deployed, make sure they meet the all the requirements before starting this tutorial.
-
 This tutorial assumes that you have some basic knowledge of Azure and Azure Stack. To learn more before starting the tutorial, read the following articles:
 
-* [Introduction to Azure](https://azure.microsoft.com/overview/what-is-azure/)
-* [Azure Stack Key Concepts](../operator/azure-stack-overview.md)
+- [Introduction to Azure](https://azure.microsoft.com/overview/what-is-azure/)
+- [Azure Stack overview](../operator/azure-stack-overview.md)
 
-### Azure requirements
+The components you need to build a hybrid CI/CD pipeline take time to prepare. If you already have any of the following components, make sure they meet all the requirements before starting this tutorial.
 
-* If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-* Create a [Web App](https://docs.microsoft.com/azure/app-service/overview) in Azure. Make note of the Web App URL, you need to use it in the tutorial.
+An Azure OEM/hardware partner can deploy a production Azure Stack. Any user can deploy the Azure Stack Development Kit (ASDK).
 
-### Azure Stack requirements
+Only an Azure Stack Operator can do the following tasks: 
+- Deploy Azure App Service
+- Create plans and offers
+- Create a tenant subscription
+- Add a Windows Server 2016 image
 
-* Use an Azure Stack integrated system or deploy the Azure Stack Development Kit (ASDK). To deploy the ASDK:
-  * The [Tutorial: Deploy the ASDK using the installer](../asdk/asdk-install.md) article gives detailed deployment instructions.
-  * Use the [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) PowerShell script to automate ASDK post-deployment steps.
+### Azure and Azure Stack prerequisites
 
-    > [!Note]
-    > The ASDK installation takes approximately seven hours to complete, so plan accordingly.
+- An Azure subscription. If you don't have one, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+- A Windows Server 2016 image with .NET 3.5 to use for the private build agent virtual machine (VM) on your Azure Stack.
+- An Azure Stack integrated system, or the Azure Stack Development Kit (ASDK) deployed. 
 
-  * Deploy [App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
-  * Create [Plan/Offers](../operator/azure-stack-plan-offer-quota-overview.md) in Azure Stack.
-  * Create a [tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) in Azure Stack.
-  * Create a Web App in the tenant subscription. Make note of the new Web App URL for later use.
-  * Deploy a Windows Server 2012 Virtual Machine in the tenant subscription. You'll use this server as your build server and to run Azure DevOps Services.
-* Provide a Windows Server 2016 image with .NET 3.5 for a virtual machine (VM). This VM will be built on your Azure Stack as a private build agent.
+> [!Note]
+> The ASDK installation takes approximately seven hours, so plan accordingly.
 
-### Developer tool requirements
+  To deploy the ASDK:
 
-* Create an [Azure DevOps Services workspace](https://docs.microsoft.com/azure/devops/repos/tfvc/create-work-workspaces). The sign-up process creates a project named **MyFirstProject**.
-* [Install Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/install-visual-studio) and [sign-in to Azure DevOps Services](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
-* Connect to your project and [clone it locally](https://www.visualstudio.com/docs/git/gitquickstart).
+  1. Follow the detailed deployment instructions in [Tutorial: Deploy the ASDK using the installer](../asdk/asdk-install.md).
+     
+  1. Use the [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) PowerShell script to automate ASDK post-deployment steps.
+     
+  1. Deploy [Azure App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
+     
+  1. Create a [plan and offer](../operator/azure-stack-plan-offer-quota-overview.md) in Azure Stack.
+     
+  1. Create a [tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) to the offer in Azure Stack.
+     
+  1. Create a [web app](/azure/app-service/overview) in the tenant subscription. Make note of the web app URL, which you need for the tutorial.
+     
+  1. Deploy a Windows Server 2016 VM with .NET 3.5 in the tenant subscription, to use as your build server and to run Azure Pipelines.
+  
+> [!Note]
+> Your Azure Stack environment needs the correct images syndicated to run Windows Server and SQL Server. It must also have App Service deployed.
 
-  > [!Note]
-  > Your Azure Stack environment needs the correct images syndicated to run Windows Server and SQL Server. It must also have App Service deployed.
+### Azure DevOps and Visual Studio prerequisites
 
-## Prepare the private Azure Pipelines agent for Azure DevOps Services integration
+1. Create an [Azure DevOps workspace](/azure/devops/repos/tfvc/create-work-workspaces). The sign-up process creates a project named **MyFirstProject**.
+   
+1. [Install Visual Studio 2019](/visualstudio/install/install-visual-studio) and [sign in to Azure DevOps](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
+   
+1. Connect to your project and [clone it locally](https://www.visualstudio.com/docs/git/gitquickstart).
 
-### Prerequisites
+## Prepare the private Azure Pipelines agent 
 
-Azure DevOps Services authenticates against Azure Resource Manager using a Service Principal. Azure DevOps Services must have the **Contributor** role to provision resources in an Azure Stack subscription.
+Azure DevOps authenticates against Azure Resource Manager using a Service Principal. Azure DevOps must have the **Contributor** role to provision resources in an Azure Stack subscription.
 
-The following steps describe what's required to configure authentication:
+To configure authentication, follow these steps:
 
 1. Create a Service Principal, or use an existing Service Principal.
-2. Create Authentication keys for the Service Principal.
-3. Validate the Azure Stack Subscription via Role-Based Access Control to allow the Service Principal Name (SPN) to be part of the Contributor's role.
-4. Create a new Service Definition in Azure DevOps Services using the Azure Stack endpoints and SPN information.
+2. Create an access key for the Service Principal.
+3. Validate the Azure Stack Subscription via Role-Based Access Control (RBAC), to let the Service Principal Name (SPN) be part of the Contributor's role.
+4. Create a new Service Definition in Azure DevOps Services, using the Azure Stack endpoints and SPN information.
 
 ### Create a Service Principal
 
-Refer to the [Service Principal Creation](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications) instructions to create a service principal. Choose **Web App/API** for the Application Type or [use the PowerShell script](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5) as explained in the article [Create an Azure Resource Manager service connection with an existing service principal
+Refer to the [Service Principal Creation](/azure/active-directory/develop/active-directory-integrating-applications) instructions to create a service principal. Choose **Web App/API** for the Application Type or [use the PowerShell script](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5) as explained in the article [Create an Azure Resource Manager service connection with an existing service principal
 ](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal).
 
  > [!Note]  
@@ -164,9 +169,9 @@ As part of the service endpoint configuration, Azure DevOps Services requires th
 
 ### Grant the service principal rights to deploy resources in the Azure Stack subscription
 
-To access resources in your subscription, you must assign the app to a role. Decide which role represents the best permissions for the app. To learn about the available roles, see [RBAC: Built in Roles](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+To access resources in your subscription, you must assign the app to a role. Decide which role represents the best permissions for the app. To learn about the available roles, see [RBAC: Built in Roles](/azure/role-based-access-control/built-in-roles).
 
-You can set the scope at the level of the subscription, resource group, or resource. Permissions are inherited to lower levels of scope. For example, adding an app to the Reader role for a resource group means it can read the resource group and any of its resources.
+You can set the scope at the subscription, resource group, or resource level. Permissions are inherited to lower levels of scope. For example, adding an app to the Reader role for a resource group means the app can read the resource group and any of its resources.
 
 1. Navigate to the level of scope you wish to assign the application to. For example, to assign a role at the subscription scope, select **Subscriptions**.
 
@@ -198,7 +203,7 @@ You can set the scope at the level of the subscription, resource group, or resou
 
 ### Azure DevOps Services Agent Pools
 
-Instead of managing each agent separately, you can organize agents into agent pools. An agent pool defines the sharing boundary for all agents in that pool. In Azure DevOps Services, agent pools are scoped to the Azure DevOps Services organization, which means that you can share an agent pool across projects. To learn more about agent pools, see [Create Agent Pools and Queues](https://docs.microsoft.com/azure/devops/pipelines/agents/pools-queues?view=vsts).
+Instead of managing each agent separately, you can organize agents into agent pools. An agent pool defines the sharing boundary for all agents in that pool. In Azure DevOps Services, agent pools are scoped to the Azure DevOps organization, which means that you can share an agent pool across projects. To learn more about agent pools, see [Create agent pools and queues](/azure/devops/pipelines/agents/pools-queues).
 
 ### Add a personal access token (PAT) for Azure Stack
 
@@ -242,7 +247,7 @@ Create a personal access token to access Azure DevOps Services.
 
     You can see the agent in Azure DevOps Services folder.
 
-## Endpoint creation permissions
+## Set endpoint creation permissions
 
 By creating endpoints, a Visual Studio Online (VSTO) build can deploy Azure Service apps to Azure Stack. Azure DevOps Services connects to the build agent, which connects to Azure Stack.
 
@@ -268,14 +273,15 @@ By creating endpoints, a Visual Studio Online (VSTO) build can deploy Azure Serv
 9. On the **Add users and groups** page, enter a user name and select that user from the list of users.
 10. Select **Save changes**.
 
-Now that the endpoint information exists, the Azure DevOps Services to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from Azure DevOps Services and then the agent conveys endpoint information for communication with Azure Stack.
+Now that the endpoint information exists, the Azure DevOps Services to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from Azure DevOps Services, and then the agent conveys endpoint information for communication with Azure Stack.
 
 ## Create an Azure Stack endpoint
 
+You can use the service principal to create an Azure Resource Manager service connection for Azure deployments. You can also create a service connection using a service principal with a certificate for authentication. You need this connection to deploy Azure Stack with Active Directory Federation Services (AD FS) as the identity provider. 
+
 ### Create an endpoint for Azure AD deployments
 
-You can follow the instructions in [Create an Azure Resource Manager service connection with an existing service principal
-](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) article to create a service connection with an existing service principal and use the following mapping:
+Follow the instructions in [Create an Azure Resource Manager service connection with an existing service principal](/devops/pipelines/library/connect-to-azure#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) to create a service connection using the existing service principal. Use the following mapping:
 
 | Name | Example | Description |
 | --- | --- | --- |
@@ -293,6 +299,10 @@ You can follow the instructions in [Create an Azure Resource Manager service con
 Now that the endpoint is created, the DevOps to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from DevOps and then the agent conveys endpoint information for communication with Azure Stack.
 
 ![Build agent Azure AD](media/azure-stack-solution-hybrid-pipeline/016_save_changes.png)
+
+
+> [!Note]
+> If your Azure Resource Manager endpoint is not exposed to the internet, the connection validation will fail. This is expected, and you can validate your connection by creating a release pipeline with a simple task. 
 
 ### Create an endpoint for AD FS
 
@@ -317,23 +327,21 @@ You can create a service connection using the following mapping:
 
 Now that the endpoint is created, the Azure DevOps to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from Azure DevOps and then the agent conveys endpoint information for communication with Azure Stack.
 
-> [!Note]
-> If your Azure Resource Manager endpoint is not exposed to the Internet, the connection validation will fail. This is expected and you can validate your connection by creating a release pipeline with a simple task. 
+## Develop your app and configure deployment
 
-## Develop your application build
+Using a hosted build agent in Azure DevOps is a convenient option for building and deploying web apps. Azure automatically performs agent maintenance and upgrades, which enables a continuous and uninterrupted development cycle.
 
-In this part of the tutorial you'll:
+Azure DevOps Services and Azure DevOps Server (formerly TFS) provide a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, quality assurance (QA), and production. The release process can include requiring approvals at specific stages of the application life cycle.
 
-* Add code to an Azure DevOps Services project.
-* Create self-contained web app deployment.
-* Configure the continuous deployment process
+In this part of the tutorial, you:
 
-> [!Note]
- > Your Azure Stack environment needs the correct images syndicated to run Windows Server and SQL Server. It must also have App Service deployed. Review the App Service documentation "Prerequisites" section for Azure Stack Operator Requirements.
+- Add code to an Azure DevOps project
+- Create a self-contained web app deployment
+- Configure the continuous deployment process
 
-Hybrid CI/CD can apply to both application code and infrastructure code. Use [Azure Resource Manager templates like web](https://azure.microsoft.com/resources/templates/) app code from Azure DevOps Services to deploy to both clouds.
+Hybrid CI/CD can apply to both app code and infrastructure code. Use [Azure Resource Manager templates](https://azure.microsoft.com/resources/templates/) like web app code from Azure DevOps Services to deploy to both clouds.
 
-### Add code to an Azure DevOps Services project
+### Add code to an Azure DevOps project
 
 1. Sign in to Azure DevOps Services with an organization that has project creation rights in Azure Stack. The next screen capture shows how to connect to the HybridCICD project.
 
@@ -355,7 +363,7 @@ Hybrid CI/CD can apply to both application code and infrastructure code. Use [Az
 
 ### Create the build pipeline
 
-1. Sign in to Azure DevOps Services with an organization that can create a build pipeline.
+1. Sign in to an Azure DevOps organization that can create a build pipeline.
 
 2. Navigate to the **Build Web Application** page for the project.
 
@@ -364,14 +372,6 @@ Hybrid CI/CD can apply to both application code and infrastructure code. Use [Az
     ![Add argument build pipeline](media/azure-stack-solution-hybrid-pipeline/020_publish_additions.png)
 
 4. Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that can run on Azure and Azure Stack.
-
-### Use an Azure-hosted build agent
-
-Using a hosted build agent in Azure DevOps Services is a convenient option for building and deploying web apps. Agent maintenance and upgrades are automatically performed by Microsoft Azure, which enables a continuous and uninterrupted development cycle.
-
-### Configure the continuous deployment (CD) process
-
-Azure DevOps Services and Team Foundation Server (TFS) provide a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, quality assurance (QA), and production. This process can include requiring approvals at specific stages of the application life cycle.
 
 ### Create release pipeline
 
