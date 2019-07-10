@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: powershell
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 07/09/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 04/24/2019
+ms.lastreviewed: 07/09/2019
 
 ---
 # Use Docker to run PowerShell in Azure Stack
@@ -29,7 +29,7 @@ In this article, you use Docker to create Windows-based containers on which to r
 1. In a command-line program, such as Powershell or Bash, enter:
 
     ```bash
-        Docker -version
+        Docker --version
     ```
 
 1. You need to run Docker by using Windows containers that require Windows 10. When you run Docker, switch to Windows containers.
