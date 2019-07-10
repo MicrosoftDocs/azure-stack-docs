@@ -220,7 +220,7 @@ You can also use the portal to create a VM from a managed image. For more inform
 
 ## Configuration
 
-After applying the 1808 update or later, you must make the following configuration before using managed disks:
+After applying the 1808 update or later, you must make the following configuration change before using managed disks:
 
 - If a subscription was created before the 1808 update, follow below steps to update the subscription. Otherwise, deploying VMs in this subscription might fail with an error message "Internal error in disk manager."
    1. In the Azure Stack user portal, go to **Subscriptions** and find the subscription. Click **Resource Providers**, then click **Microsoft.Compute**, and then click **Re-register**.
