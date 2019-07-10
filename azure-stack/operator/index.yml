@@ -74,7 +74,8 @@ sections:
 
               <p>See how different compute resource allocations fit across a selection of hardware offerings.</p>
 
-  - title: Offering Azure Stack services
+  - title: Offering Azfixed path
+  ure Stack services
 
     items:
 
@@ -88,7 +89,7 @@ sections:
 
       - html: <a href="/azure-stack/operator/azure-stack-sql-resource-provider">
 
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/logo_SQL.svg" alt="hybrid cloud app ci/cd">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logo/logo_SQL.svg" alt="hybrid cloud app ci/cd">
 
               <br><b>Offer SQL as PaaS</b></a>
 
@@ -96,7 +97,7 @@ sections:
 
       - html: <a href="/azure-stack/operator/azure-stack-mysql-resource-provider">
 
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/logo_mysql.svg" alt="hybrid cloud app identity">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logo/logo_mysql.svg" alt="hybrid cloud app identity">
 
               <br><b>Offer MySQL as PaaS</b></a>
 
