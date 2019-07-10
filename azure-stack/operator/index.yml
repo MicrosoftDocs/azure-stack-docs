@@ -52,7 +52,7 @@ sections:
 
       - html: <a href="/azure-stack/operator/azure-stack-manage-portals">
 
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_code-edit.svg" alt="">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_portal.svg" alt="">
 
               <br><b>Use the administration portal</b></a>
 
@@ -68,7 +68,7 @@ sections:
 
       - html: <a href="/azure-stack/operator/azure-stack-capacity-planning-overview">
 
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_cligeneric.svg" alt="">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_load-testing.svg" alt="">
 
               <br><b>Capacity planning</b></a>
 
@@ -88,7 +88,7 @@ sections:
 
       - html: <a href="/azure-stack/operator/azure-stack-sql-resource-provider">
 
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_workflow.svg" alt="hybrid cloud app ci/cd">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/logo_SQL.svg" alt="hybrid cloud app ci/cd">
 
               <br><b>Offer SQL as PaaS</b></a>
 
@@ -96,7 +96,7 @@ sections:
 
       - html: <a href="/azure-stack/operator/azure-stack-mysql-resource-provider">
 
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_identity-protection.svg" alt="hybrid cloud app identity">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/logo_mysql.svg" alt="hybrid cloud app identity">
 
               <br><b>Offer MySQL as PaaS</b></a>
 
@@ -104,7 +104,7 @@ sections:
 
       - html: <a href="/azure-stack/operator/azure-stack-app-service-overview">
 
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_multi-connect.svg" alt="hybrid cloud app scaling">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_web-apps.svg" alt="hybrid cloud app scaling">
 
               <br><b>Offer Azure App Service as PaaS</b></a>
 
@@ -124,7 +124,7 @@ sections:
 
       - html: <a href="/azure-stack/operator/azure-stack-registration">
 
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_package.svg" alt="">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_subscription.svg" alt="">
 
               <br><b>Register Azure Stack</b></a>
 
@@ -132,7 +132,7 @@ sections:
 
       - html: <a href="/azure-stack/operator/azure-stack-backup-infrastructure-backup">
 
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_package.svg" alt="">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_usb.svg" alt="">
 
               <br><b>Back up Azure Stack</b></a>
 
@@ -140,7 +140,7 @@ sections:
 
       - html: <a href="/azure-stack/operator/azure-stack-security-configuration">
 
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_web-color.svg" alt="">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_cloud-security.svg" alt="">
 
               <br><b>Configure Azure Stack security controls</b></a>
 
