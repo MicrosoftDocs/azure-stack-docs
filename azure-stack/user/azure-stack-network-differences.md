@@ -9,7 +9,7 @@ ms.date: 07/10/2019
 ms.topic: article
 ms.service: azure-stack
 ms.author: mabrigg
-ms.reviewer: scottnap
+ms.reviewer: wamota
 ms.lastreviewed: 07/10/2019
 
 ---
