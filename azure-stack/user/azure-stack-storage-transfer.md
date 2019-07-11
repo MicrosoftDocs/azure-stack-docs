@@ -50,17 +50,17 @@ Due to the storage services differences between Azure and Azure Stack, there mig
 
 ## AzCopy
 
-AzCopy is a command-line utility designed to copy data to and from Microsoft Azure blob and table storage using simple commands with optimal performance. You can copy data from one object to another within your storage account, or between storage accounts.
+AzCopy is a command-line utility designed to copy data to and from Microsoft Azure blob and table storage using simple commands with optimal performance. You can copy data from one object to another within or between your storage accounts.
 
 ### Download and install AzCopy
 
-* For the 1811 update, or newer versions, [download AzCopy V10+](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
+* For the 1811 update or newer versions, [download AzCopy V10+](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
 * For previous versions (1802 to 1809 update), [download AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417).
 
-### AcCopy 10.1 configuration and limits
+### AzCopy 10.1 configuration and limits
 
 AzCopy 10.1 is now able to be configured to use older API versions. This enables (limited) support for Azure Stack.
-To configure API version for AzCopy to support Azure Stack, set the `AZCOPY_DEFAULT_SERVICE_API_VERSION` environment variable to `2017-11-09`.
+To configure the API version for AzCopy to support Azure Stack, set the `AZCOPY_DEFAULT_SERVICE_API_VERSION` environment variable to `2017-11-09`.
 
 | Operating system | Command  |
 |--------|-----------|
@@ -81,7 +81,7 @@ In AzCopy 10.1, the following features are supported for Azure Stack:
 
    > [!NOTE]
    > * Azure Stack doesn't support providing authorization credentials to AzCopy by using Azure Active Directory (AD). You must access storage objects on Azure Stack using a Shared Access Signature (SAS) token.
-   > * Azure Stack doesn't support synchronous data transfer between two Azure Stack blob locations, and between Azure storage and Azure Stack. You can't use "azcopy cp" to move data from Azure Stack to Azure storage (or in a contrary way) directly with AzCopy 10.1.
+   > * Azure Stack doesn't support synchronous data transfer between two Azure Stack blob locations, and between Azure Storage and Azure Stack. You can't use "azcopy cp" to move data from Azure Stack to Azure Storage (or the other way around) directly with AzCopy 10.1.
 
 ### AzCopy command examples for data transfer
 
@@ -99,11 +99,11 @@ azcopy cp "https://[account].blob.core.windows.net/[container]/[path/to/director
 azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[container]/[path/to/blob]?[SAS]"
 ```
 
-### Azcopy known issues
+### AzCopy known issues
 
- - Any AzCopy operation on a file store is not available because file storage is not yet available in Azure Stack.
- - If you want to transfer data between two Azure Stack blob locations, or between Azure Stack and Azure storage by using AzCopy 10.1, you need to download the data to a local location first, and then re-upload to target directory on Azure Stack or Azure storage. Or you can use AzCopy 7.1, and specify the transfer with the **/SyncCopy** option to copy the data.  
- - The Linux version of Azcopy only supports 1802 update or later versions. And it doesn't support Table service.
+ - Any AzCopy operation on a file storage isn't available because file storage isn't yet available in Azure Stack.
+ - If you want to transfer data between two Azure Stack blob locations, or between Azure Stack and Azure Storage by using AzCopy 10.1, you need to download the data to a local location first, and then re-upload to the target directory on Azure Stack or Azure Storage. Or you can use AzCopy 7.1, and specify the transfer with the **/SyncCopy** option to copy the data.  
+ - The Linux version of AzCopy only supports the 1802 update or later versions and it doesn't support Table service.
  
 ## Azure PowerShell
 
