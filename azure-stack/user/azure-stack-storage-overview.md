@@ -1,6 +1,6 @@
 ---
-title: Introduction to Azure Stack Storage
-description: Learn about Azure Stack Storage.
+title: Introduction to Azure Stack Storage | Microsoft Docs
+description: Learn about Azure Stack Storage services.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -23,7 +23,7 @@ ms.lastreviewed: 01/14/2019
 
 ## Overview
 
-Azure Stack Storage is a set of cloud storage services that includes blobs, tables, and queues which are consistent with Azure Storage services.
+Azure Stack Storage is a set of cloud storage services consistent with the services provided by Azure Storage. These services includes blobs, tables, and queues.
 
 ## Azure Stack Storage services
 
@@ -84,7 +84,7 @@ A storage account can contain any number of tables, and a table can contain any 
 
 ### Queue storage
 
-In designing applications for scale, application components are often decoupled, so that they can scale independently. Queue storage provides a reliable messaging solution for asynchronous communication between application components, whether they're running in the cloud, on the desktop, on an on-premises server, or on a mobile device. Queue storage also supports managing asynchronous tasks and building process workflows.
+In designing apps for scale, app components are often decoupled, so that they can scale independently. Queue storage provides a reliable messaging solution for asynchronous communication between app components, whether they're running in the cloud, on the desktop, on an on-premises server, or on a mobile device. Queue storage also supports managing asynchronous tasks and building process workflows.
 
 A storage account can contain any number of queues and a queue can contain any number of messages (up to the capacity limit of the storage account). Individual messages may be up to 64 KB in size.
 
