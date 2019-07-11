@@ -23,7 +23,7 @@ ms.lastreviewed: 07/09/2019
 
 *Applies to: Azure Stack integrated systems*
 
-Azure Stack helps to simplify troubleshooting by providing an easy way to share diagnostic logs with Microsoft Customer Support Services (CSS). The logs can be stored in a blob container in Azure and access is restricted to only CSS. 
+Azure Stack helps simplify troubleshooting by providing an easy way to share diagnostic logs with Microsoft Customer Support Services (CSS). The logs can be stored in a blob container in Azure and access is restricted to only CSS. 
    
 There are two ways to collect logs:
 
@@ -35,4 +35,5 @@ You can choose either option on the Help and Support **Overview - Log Collection
 ![Screenshot of Log Collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
 
 For more information about collecting logs on demand, see [Collect Azure Stack logs now](azure-stack-configure-on-demand-log-collection.md).
+
 For more information about automatic log collection, see [Configure automatic Azure Stack log collection](azure-stack-configure-automatic-log-collection.md).
