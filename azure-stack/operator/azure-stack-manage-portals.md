@@ -3,7 +3,7 @@ title: Using the administration portal in Azure Stack | Microsoft Docs
 description: As an Azure Stack operator, learn how to use the administration portal.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: justinha
 manager: femila
 editor: ''
 
@@ -13,11 +13,11 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 02/25/2019
-ms.author: jeffgilb
+ms.date: 06/07/2019
+ms.author: justinha
 ms.custom: mvc
 ms.reviewer: efemmano
-ms.lastreviewed: 02/25/2019
+ms.lastreviewed: 06/07/2019
 
 ---
 # Quickstart: use the Azure Stack administration portal
@@ -83,7 +83,7 @@ To access the Azure Stack Operator documentation, use the Help and support icon 
 
 ### Quick access to help and support
 
-If you select the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then select **New support request**, one of the following results happens:
+If you click the Help icon (question mark) in the upper-right corner of the administrator portal, click **Help + support**, and then click **New support request** under **Support**, one of the following results happens:
 
 - If you're using an integrated system, this action opens a site where you can directly open a support ticket with Microsoft Customer Support Services (CSS). Refer to [Where to get support](azure-stack-manage-basics.md#where-to-get-support) to understand when you should go through Microsoft support or through your original equipment manufacturer (OEM) hardware vendor support.
 - If you're using the ASDK, this action opens the [Azure Stack forums site](https://social.msdn.microsoft.com/Forums/home?forum=AzureStack) directly. These forums are regularly monitored. Because the ASDK is an evaluation environment, there is no official support offered through Microsoft CSS.

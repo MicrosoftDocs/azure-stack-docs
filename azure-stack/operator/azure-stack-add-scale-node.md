@@ -3,7 +3,7 @@ title: Azure Stack add scale nodes | Microsoft Docs
 description: Add nodes to scale units in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,8 +13,8 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.date: 06/13/2019
+ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
 ---

@@ -3,7 +3,7 @@ title: Configure hybrid cloud connectivity with Azure and Azure Stack | Microsof
 description: Learn how to configure hybrid cloud connectivity with Azure and Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: bryanla
 manager: femila
 editor: ''
 
@@ -13,41 +13,41 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/14/2019
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
 ---
 
-# Tutorial: configure hybrid cloud connectivity with Azure and Azure Stack
+# Tutorial: Configure hybrid cloud connectivity with Azure and Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 You can access resources with security in global Azure and Azure Stack using the hybrid connectivity pattern.
 
-In this tutorial, you will build a sample environment to:
+In this tutorial, you'll build a sample environment to:
 
 > [!div class="checklist"]
-> - Keep data on-premises to meet privacy or regulatory requirements, but have access to global Azure resources.
+> - Keep data on-premises to meet privacy or regulatory requirements, but keep access to global Azure resources.
 > - Maintain a legacy system while using cloud-scaled app deployment and resources in global Azure.
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment and enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
+> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that lets you build and deploy hybrid apps anywhere.  
 > 
-> The whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability and security) for designing, deploying and operating hybrid applications. The design considerations assist in optimizing hybrid application design, minimizing challenges in production environments.
+> The whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
 
 ## Prerequisites
 
-A few components are required to build a hybrid connectivity deployment. Some of these components will take time to prepare, so you'll have to plan accordingly.
+A few components are required to build a hybrid connectivity deployment. Some of these components take time to prepare, so plan accordingly.
 
 **Azure Stack**
 
-An Azure OEM/Hardware Partner can deploy a production Azure Stack, and all users can deploy an Azure Stack Development Kit (ASDK).
+An Azure OEM/hardware partner can deploy a production Azure Stack, and all users can deploy an Azure Stack Development Kit (ASDK).
 
 **Azure Stack components**
 
-An Azure Stack Operator must deploy the App Service, create plans and offers, create a tenant subscription, and add the Windows Server 2016 image. If you already have some of these components, make sure they meet the requirements before you start this tutorial.
+An Azure Stack operator must deploy the App Service, create plans and offers, create a tenant subscription, and add the Windows Server 2016 image. If you already have these components, make sure they meet the requirements before you start this tutorial.
 
 This tutorial assumes that you have some basic knowledge of Azure and Azure Stack. To learn more before starting the tutorial, read the following articles:
 
@@ -57,7 +57,7 @@ This tutorial assumes that you have some basic knowledge of Azure and Azure Stac
 ### Azure
 
  - If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
- - Create a [Web App](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts) in Azure. Make note of the Web App URL, because you'll need it in the tutorial.
+ - Create a [web app](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts) in Azure. Make note of the web app URL, because you'll need it in the tutorial.
 
 ### Azure Stack
 
@@ -73,22 +73,22 @@ This tutorial assumes that you have some basic knowledge of Azure and Azure Stac
 
 Verify that you meet the following criteria before you  start configuring hybrid cloud connectivity:
 
- - You need an externally facing public IPv4 address for your VPN device. This IP address can't be located behind a NAT.
+ - You need an externally facing public IPv4 address for your VPN device. This IP address can't be located behind a NAT (Network Address Translation).
  - All resources are deployed in the same region/location.
 
 #### Tutorial example values
 
-The examples in this tutorial use the following values. You can use these values to create a test environment or refer to them for a better understanding of the examples. For more information about VPN Gateway settings in general, see [About VPN Gateway Settings](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings).
+The examples in this tutorial use the following values. You can use these values to create a test environment or refer to them for a better understanding of the examples. For more information about VPN gateway settings in general, see [About VPN Gateway Settings](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-gateway-settings).
 
 Connection specifications:
 
- - **VPN type**: Route-based
- - **Connection type**: Site-to-site (IPsec)
+ - **VPN type**: route-based
+ - **Connection type**: site-to-site (IPsec)
  - **Gateway type**: VPN
  - **Azure connection name**: Azure-Gateway-AzureStack-S2SGateway (the portal will auto-fill this value)
  - **Azure Stack connection name**: AzureStack-Gateway-Azure-S2SGateway (the portal will auto-fill this value)
- - **Shared key**: Any compatible with VPN hardware, with matching values on both sides of connection
- - **Subscription**: Any preferred subscription
+ - **Shared key**: any compatible with VPN hardware, with matching values on both sides of connection
+ - **Subscription**: any preferred subscription
  - **Resource group**: Test-Infra
 
 Network and subnet IP addresses:
@@ -108,7 +108,7 @@ Network and subnet IP addresses:
 
 ## Create a virtual network in global Azure and Azure Stack
 
-Use the following steps to create a virtual network by using the portal. You can use these [example values](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#values) if you're using this article as a tutorial. But, if you're using this article to configure a production environment, replace the example settings with  your own values.
+Use the following steps to create a virtual network by using the portal. You can use these [example values](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#values) if you're using this article as only a tutorial. If you're using this article to configure a production environment, replace the example settings with  your own values.
 
 > [!IMPORTANT]
 > You must ensure that there isn't an overlap of IP addresses in Azure or Azure Stack vNet address spaces.
@@ -116,7 +116,7 @@ Use the following steps to create a virtual network by using the portal. You can
 To create a vNet in Azure:
 
 1. Use your browser to connect to the [Azure portal](https://portal.azure.com/) and sign in with your Azure account.
-2. Select **Create a resource**. In the **Search the marketplace** field, enter `virtual network`'`. Find **Virtual network** in the results list, and then select **Virtual Network**.
+2. Select **Create a resource**. In the **Search the marketplace** field, enter 'virtual network'. Select **Virtual network** from the results.
 3. From the **Select a deployment model** list, select **Resource Manager**, and then select **Create**.
 4. On **Create virtual network**, configure the VNet settings. The required fields names are prefixed with a red asterisk.  When you enter a valid value, the asterisk changes to a green check mark.
 
@@ -150,7 +150,7 @@ Use the following steps to create a virtual network gateway in Azure.
 
    - **SKU**: basic
    - **Virtual Network**: Select the Virtual Network you created earlier. The gateway subnet you created is automatically selected.
-   - **First IP Configuration**:  This is the public IP of your Gateway.
+   - **First IP Configuration**:  The public IP of your Gateway.
      - Select **Create gateway IP configuration**, which takes you to the **Choose public IP address** page.
      - Select **+Create new** to open the **Create public IP address** page.
      - Enter a **Name** for your public IP address. Leave the SKU as **Basic**, and then select **OK** to save your changes.
@@ -179,13 +179,13 @@ The local network gateway typically refers to your on-premises location. You giv
   >If your on-premises network changes or you need to change the public IP address for the VPN device, you can easily update these values later.
 
 1. In the portal, select **+Create a resource**.
-2. In the search box, enter **Local network gateway**, then select **Enter** to search. This will return a list of results.
+2. In the search box, enter **Local network gateway**, then select **Enter** to search. A list of results will display.
 3. Select **Local network gateway**, then select **Create** to open the **Create local network gateway** page.
 4. On **Create local network gateway**, specify the values for your local network gateway, using our **Tutorial example values**. Include the following additional values.
 
-    - **IP address**: This is the public IP address of the VPN device that you want Azure or Azure Stack to connect to. Specify a valid public IP address that isn't behind a NAT so Azure can reach the address. If you don't have the IP address right now, you can use a value from the example as a placeholder, but you'll have to go back and replace the  placeholder with the public IP address of your VPN device. Azure can't connect to the device until you provide a valid address.
-    - **Address Space**: This is the address range for the network that this local network represents. You can add multiple address space ranges. Make sure that the ranges you specify don't overlap with ranges of other networks that you want to connect to. Azure will route the address range that you specify to the on-premises VPN device IP address. Use your own values if you want to connect to your on-premises site, not an example value.
-    - **Configure BGP settings**: Use only when configuring BGP. Otherwise, don't select this.
+    - **IP address**: The public IP address of the VPN device that you want Azure or Azure Stack to connect to. Specify a valid public IP address that isn't behind a NAT so Azure can reach the address. If you don't have the IP address right now, you can use a value from the example as a placeholder, but you'll have to go back and replace the  placeholder with the public IP address of your VPN device. Azure can't connect to the device until you provide a valid address.
+    - **Address Space**: The address range for the network that this local network represents. You can add multiple address space ranges. Make sure that the ranges you specify don't overlap with ranges of other networks that you want to connect to. Azure will route the address range that you specify to the on-premises VPN device IP address. Use your own values if you want to connect to your on-premises site, not an example value.
+    - **Configure BGP settings**: Use only when configuring BGP. Otherwise, don't select this option.
     - **Subscription**: Verify that the correct subscription is showing.
     - **Resource Group**: Select the resource group that you want to use. You can either create a new resource group, or select one that you've already created.
     - **Location**: Select the location that this object will be created in. You may want to select the same location that your VNet resides in, but you're not required to do so.
@@ -194,12 +194,12 @@ The local network gateway typically refers to your on-premises location. You giv
 
 ## Configure your connection
 
-Site-to-Site connections to an on-premises network require a VPN device. The VPN device you configure is referred to as a Connection. To configure your Connection, you need:
+Site-to-site connections to an on-premises network require a VPN device. The VPN device you configure is referred to as a Connection. To configure your Connection, you need:
 
-- A shared key. This is the same shared key that you specify when creating your Site-to-Site VPN connection. In our examples, we use a basic shared key. We recommend that you generate a more complex key to use.
-- The Public IP address of your virtual network gateway. You can view the public IP address by using the Azure portal, PowerShell, or CLI. To find the Public IP address of your VPN gateway using the Azure portal, navigate to Virtual network gateways, then select the name of your gateway.
+- A shared key. This key is the same shared key that you specify when creating your site-to-site VPN connection. In our examples, we use a basic shared key. We recommend that you generate a more complex key to use.
+- The public IP address of your virtual network gateway. You can view the public IP address by using the Azure portal, PowerShell, or CLI. To find the public IP address of your VPN gateway using the Azure portal, navigate to virtual network gateways, then select the name of your gateway.
 
-Use the following steps to create a Site-to-Site VPN connection between your virtual network gateway and your on-premises VPN device.
+Use the following steps to create a site-to-site VPN connection between your virtual network gateway and your on-premises VPN device.
 
 1. In the Azure portal, select **+Create a resource**.
 2. Search for **connections**.
@@ -207,12 +207,12 @@ Use the following steps to create a Site-to-Site VPN connection between your vir
 4. On **Connection**, select **Create**.
 5. On **Create Connection**, configure the following settings:
 
-    - **Connection type**: Select Site-to-site (IPSec).
+    - **Connection type**: Select site-to-site (IPSec).
     - **Resource Group**: Select your test resource group.
-    - **Virtual Network Gateway**: Select the Virtual Network gateway you created.
-    - **Local Network Gateway**: Select the Local Network Gateway you created.
-    - **Connection Name**: This is automatically populated using the values from the two gateways.
-    - **Shared Key**: This value must match the value that you are using for your local on-premises VPN device. The tutorial example uses 'abc123', but you can (and should) use something more complex. The important thing is that this value MUST be the same value that you specify when configuring your VPN device.
+    - **Virtual Network Gateway**: Select the virtual network gateway you created.
+    - **Local Network Gateway**: Select the local network gateway you created.
+    - **Connection Name**: This name is auto-populated using the values from the two gateways.
+    - **Shared Key**: This value must match the value that you're using for your local on-premises VPN device. The tutorial example uses 'abc123', but you should use something more complex. The important thing is that this value MUST be the same value that you specify when configuring your VPN device.
     - The values for **Subscription**, **Resource Group**, and **Location** are fixed.
 
 6. Select **OK** to create your connection.

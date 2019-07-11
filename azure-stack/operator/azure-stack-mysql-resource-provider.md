@@ -3,7 +3,7 @@ title: Use MySQL databases as PaaS on Azure Stack | Microsoft Docs
 description: Learn how you can deploy the MySQL Resource Provider and provide MySQL databases as a service on Azure Stack. 
 services: azure-stack
 documentationCenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.service: azure-stack 
@@ -11,9 +11,9 @@ ms.workload: na
 ms.tgt_pltfrm: na 
 ms.devlang: na 
 ms.topic: article 
-ms.date: 02/12/2019
-ms.author: jeffgilb
-ms.reviewer: quying
+ms.date: 06/13/2019
+ms.author: mabrigg
+ms.reviewer: xiaofmao
 ms.lastreviewed: 10/25/2018
 
 ---

@@ -3,7 +3,7 @@ title: Integrate external monitoring solution with Azure Stack | Microsoft Docs
 description: Learn how to integrate Azure Stack with an external monitoring solution in your datacenter.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 06/05/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
-ms.lastreviewed: 02/06/2019
+ms.lastreviewed: 06/05/2019
 
 ---
 # Integrate external monitoring solution with Azure Stack
@@ -65,28 +65,138 @@ The following diagram shows integration of Azure Stack with an existing System C
 
 ## Integrate with Nagios
 
+You can set up and configure the Nagios Plugin for Microsoft Azure Stack.
+
 A Nagios monitoring plugin was developed together with the partner Cloudbase solutions, which is available under the permissive free software license - MIT (Massachusetts Institute of Technology).
 
 The plugin is written in Python and leverages the health resource provider REST API. It offers basic functionality to retrieve and close alerts in Azure Stack. Like the System Center management pack, it enables you to add multiple Azure Stack deployments and to send notifications.
 
-The plugin works with Nagios Enterprise and Nagios Core. You can download it [here](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details). The download site also includes installation and configuration details.
+With Version 1.2 the Azure Stack – Nagios plugin leverages the Microsoft ADAL library and supports authentication using  Service Principal with a Secret or Certificate. Also, the configuration has been simplified using a single configuration file with new parameters. It now supports Azure Stack deployments using AAD & ADFS as the identity system.
 
-### Plugin parameters
+The plugin works with Nagios 4x and XI. You can download it [here](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details). The download site also includes installation and configuration details.
 
-Configure the plugin file "Azurestack_plugin.py" with the following parameters:
+### Requirements for Nagios
 
-| Parameter | Description | Example |
-|---------|---------|---------|
-| *arm_endpoint* | Azure Resource Manager (administrator) endpoint | https://adminmanagement.local.azurestack.external |
-| *api_endpoint* | Azure Resource Manager (administrator) endpoint  | https://adminmanagement.local.azurestack.external |
-| *Tenant_id* | Admin subscription ID | Retrieve via the administrator portal or PowerShell |
-| *User_name* | Operator subscription username | operator@myazuredirectory.onmicrosoft.com |
-| *User_password* | Operator subscription password | mypassword |
-| *Client_id* | Client | 0a7bdc5c-7b57-40be-9939-d4c5fc7cd417* |
-| *region* |  Azure Stack region name | local |
-|  |  |
+1.  Minimum Nagios Version is 4.x
 
-*The PowerShell GUID that's provided is universal. You can use it for each deployment.
+2.  Microsoft Azure Active Directory Python library. This can be installed using Python PIP.
+
+```bash  
+sudo pip install adal pyyaml six
+```
+
+### Install plugin
+
+This section describes how to install the Azure Stack plugin assuming a default installation of Nagios.
+
+The plugin package contains the following files:
+
+```
+  azurestack_plugin.py
+  azurestack_handler.sh
+  samples/etc/azurestack.cfg
+  samples/etc/azurestack_commands.cfg
+  samples/etc/azurestack_contacts.cfg
+  samples/etc/azurestack_hosts.cfg
+  samples/etc/azurestack_services.cfg
+```
+
+1.  Copy the plugin `azurestack_plugin.py` into the following directory `/usr/local/nagios/libexec`.
+
+2.  Copy the handler `azurestack_handler.sh` into the following directory `/usr/local/nagios/libexec/eventhandlers`.
+
+3.  Make the Plugin file is set to be executable
+
+    ```bash
+      sudo cp azurestack_plugin.py <PLUGINS_DIR>
+      sudo chmod +x <PLUGINS_DIR>/azurestack_plugin.py
+    ```
+
+### Configure plugin
+
+The following Parameters are available to be configured in the azurestack.cfg file. Parameters in bold need to be configured independent from the authentication model you choose.
+
+Detailed information how to create a SPN is documented [here](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals).
+
+| Parameter | Description | Authentication |
+| --- | --- | --- |
+| **External_domain_fqdn ** | External Domain FQDN |    |
+| **region: ** | Region Name |    |
+| **tenant_id: ** | Tenant ID\* |    |
+| client_id: | Client ID | SPN with secret |
+| client_secret: | Client Password | SPN with secret |
+| client_cert\*\*: | Path to Certificate | SPN with certificate |
+| client_cert_thumbprint\*\*: | Certificate Thumbprint | SPN with certificate |
+
+\*Tenant ID is not required for Azure Stack deployments with ADFS.
+
+\*\* Client secret and client cert are mutually exclusive.
+
+The other configuration files contain optional configuration settings as they can be configured in Nagios as well.
+
+> [!Note]  
+> Check the location destination in azurestack_hosts.cfg and azurestack_services.cfg.
+
+| Configuration | Description |
+| --- | --- |
+| azurestack_commands.cfg | Handler configuration no changes requirement |
+| azurestack_contacts.cfg | Notification Settings |
+| azurestack_hosts.cfg | Azure Stack Deployment Naming |
+| azurestack_services.cfg | Configuration of the Service |
+
+### Setup steps
+
+1.  Modify the configuration file
+
+2.  Copy the modified configuration files into the following folder `/usr/local/nagios/etc/objects`.
+
+### Update Nagios configuration
+
+The Nagios configuration needs to be updated to ensure the Azure Stack – Nagios Plugin is loaded.
+
+1.  Open the following file
+
+```bash  
+/usr/local/nagios/etc/nagios.cfg
+```
+
+1.  Add the following entry
+
+```bash  
+  #load the Azure Stack Plugin Configuration
+  cfg_file=/usr/local/Nagios/etc/objects/azurestack_contacts.cfg
+  cfg_file=/usr/local/Nagios/etc/objects/azurestack_commands.cfg
+  cfg_file=/usr/local/Nagios/etc/objects/azurestack_hosts.cfg
+  cfg_file=/usr/local/Nagios/etc/objects/azurestack_services.cfg
+```
+
+1.  Reload Nagios
+
+```bash  
+sudo service nagios reload
+```
+
+### Manually close active alerts
+
+Active alerts can be closed within Nagios using the custom notification functionality. The custom notification must be:
+
+```
+  /close-alert <ALERT_GUID>
+```
+
+An alert can also be closed using a terminal with the following command:
+
+```bash
+  /usr/local/nagios/libexec/azurestack_plugin.py --config-file /usr/local/nagios/etc/objects/azurestack.cfg --action Close --alert-id <ALERT_GUID>
+```
+
+### Troubleshooting
+
+Troubleshooting the plug-in can be done calling the plug-in manually in a terminal. Use the following method:
+
+```bash
+  /usr/local/nagios/libexec/azurestack_plugin.py --config-file /usr/local/nagios/etc/objects/azurestack.cfg --action Monitor
+```
 
 ## Use PowerShell to monitor health and alerts
 

@@ -3,7 +3,7 @@ title: Start and stop the Azure Stack Development Kit (ASDK) | Microsoft Docs
 description: Learn how to start and shut down the Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2019
-ms.author: jeffgilb
+ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
 

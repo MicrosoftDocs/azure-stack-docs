@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2019
+ms.date: 06/26/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
@@ -29,7 +29,7 @@ Microsoft will release both full monthly update packages as well as hotfix packa
 
 Monthly update packages are hosted in a secure Azure endpoint. You can download them manually using the [Azure Stack Updates downloader tool](https://aka.ms/azurestackupdatedownload). If your scale unit is connected, the update appears automatically in the Administrator portal as **Update available**. Full, monthly update packages are well documented at each release. For more information about each release, you can click any release from the [Update package release cadence](#update-package-release-cadence) section of this article.
 
-Hotfix update packages are hosted in the same secure Azure endpoint. You can download them manually using the embedded links in each of the respective hotfix KB articles; for example, [Azure Stack Hotfix 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). Similar to the full, monthly update packages, Azure Stack operators can download the .xml, .bin and .exe files and import them using the procedure in [Apply updates in Azure Stack](azure-stack-apply-updates.md). Azure Stack operators with connected scale units will see the hotfixes automatically appear in the Administrator portal with the message **Update available**.
+Hotfix update packages are hosted in the same secure Azure endpoint. You can download them using the embedded links in each of the respective hotfix KB articles; for example, [Azure Stack Hotfix 1.1809.12.114](https://support.microsoft.com/help/4481548/azure-stack-hotfix-1-1809-12-114). Similar to the full, monthly update packages, Azure Stack operators can download the .xml, .bin and .exe files and import them using the procedure in [Apply updates in Azure Stack](azure-stack-apply-updates.md). Azure Stack operators with connected scale units will see the hotfixes automatically appear in the Administrator portal with the message **Update available**.
 
 If your scale unit is not connected and you would like to be notified about each hotfix release, subscribe to the [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss) or [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom) feed noted in each release.  
 
@@ -49,22 +49,24 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
+- [Azure Stack 1906 update](azure-stack-release-notes-1906.md)
+- [Azure Stack 1905 update](azure-stack-release-notes-1905.md)
+- [Azure Stack 1904 update](azure-stack-release-notes-1904.md)
 - [Azure Stack 1903 update](azure-stack-update-1903.md)
-- [Azure Stack 1902 update](azure-stack-update-1902.md)
-- [Azure Stack 1901 update](azure-stack-update-1901.md)
-- [Azure Stack 1811 update](azure-stack-update-1811.md)
 
 ## Hotfixes
 
 Occasionally, Microsoft provides hotfixes for Azure Stack that address a specific issue that is often preventative or time-sensitive.  Each hotfix is released with a corresponding Microsoft Knowledge Base article that details the issue, cause, and resolution.
 
-Hotfixes are downloaded and installed just like the regular full update packages for Azure Stack. However, unlike a full update, hotfixes can install in minutes. We recommend Azure Stack Operators set maintenance windows when installing hotfixes. Hotfixes update the version of your Azure Stack cloud so you can easily determine if the hotfix has been applied. A separate hotfix is provided for each version of Azure Stack that is still in support. Each fix for a specific iteration is cumulative and includes the previous updates for that same version. You can read more about the applicability of a specific hotfix in a fixes corresponding Knowledge Base article.  
+For more information and links to specific hotfixes, see the release notes links in the previous section.
+
+Hotfixes are downloaded and installed just like the regular full update packages for Azure Stack. However, unlike a full update, hotfixes can install in minutes. We recommend Azure Stack operators set maintenance windows when installing hotfixes. Hotfixes update the version of your Azure Stack cloud so you can easily determine if the hotfix has been applied. A separate hotfix is provided for each version of Azure Stack that is still in support. Each fix for a specific iteration is cumulative, and includes the previous updates for that same version. You can read more about the applicability of a specific hotfix in the corresponding Knowledge Base article. See the release notes links in the previous section.  
 
 ## Keep your system under support
 
-To continue to receive support, you must keep your Azure Stack deployment current. The deferral policy for updates is: For your Azure Stack deployment to remain in support, it must run the most recently released update version or run either of the two preceding update versions. Hotfixes are not considered major update versions. If your Azure Stack cloud is behind by *more than two updates*, it's considered out of compliance and must update to at least the minimum supported version to receive support.
+To continue to receive support, you must keep your Azure Stack deployment current. The deferral policy for updates is: for your Azure Stack deployment to remain in support, it must run the most recently released update version or run either of the two preceding update versions. Hotfixes are not considered major update versions. If your Azure Stack cloud is behind by *more than two updates*, it's considered out of compliance and must update to at least the minimum supported version to receive support.
 
-For example, if the most recently available update version is 1805, and the previous two update packages were versions 1804 and 1803, both 1803 and 1804 remain in support. However, 1802 is out of support. The policy holds true when there is no release for a month or two. For example, if the current release is 1805 and there was no 1804 release, the previous two update packages of 1803 and 1802 remain in support.
+For example, if the most recently available update version is 1904, and the previous two update packages were versions 1903 and 1902, both 1902 and 1903 remain in support. However, 1901 is out of support. The policy holds true when there is no release for a month or two. For example, if the current release is 1807 and there was no 1806 release, the previous two update packages of 1805 and 1804 remain in support.
 
 Microsoft software update packages are non-cumulative and require the previous update package or hotfix as a prerequisite. If you decide to defer one or more updates, consider the overall runtime if you want to get  to the latest version.
 

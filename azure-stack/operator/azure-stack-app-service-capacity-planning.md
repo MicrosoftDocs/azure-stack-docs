@@ -3,7 +3,7 @@ title: Capacity planning for Azure App Service server roles in Azure Stack | Mic
 description: Capacity planning for Azure App Service server roles in Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: BryanLa
 manager: femila
 editor: ''
 

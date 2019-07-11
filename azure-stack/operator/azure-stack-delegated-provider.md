@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 05/07/2019
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 01/09/2019
+ms.lastreviewed: 05/07/2019
 
 ---
 # Delegate offers in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-As the Azure Stack operator, you often want to put other people in charge of signing up users and creating subscriptions. For example, if you're a service provider, you might want resellers to sign up customers and manage them on your behalf. Or, if you're part of a central IT group in an enterprise, you might want to delegate user signup to other IT staff.
+As an Azure Stack operator, you might want to put other people in charge of signing up users and creating subscriptions. For example, if you're a service provider, you might want resellers to sign up customers and manage them on your behalf. Or, if you're part of a central IT group in an enterprise, you might want to delegate user signup to other IT staff.
 
 Delegation makes it easier to reach and manage more users than you can do by yourself, as shown in the following figure:
 
@@ -30,9 +30,7 @@ Delegation makes it easier to reach and manage more users than you can do by you
 
 With delegation, the delegated provider manages an offer (delegated offer) and end customers obtain subscriptions under that offer without involvement from the system administrator.
 
-## Understand delegation roles and steps
-
-### Delegation roles
+## Delegation roles
 
 The following roles are part of delegation:
 
@@ -42,7 +40,7 @@ The following roles are part of delegation:
 
 * *Users* sign up for the offers and use them for managing their workloads, creating VMs, storing data, and so on.
 
-### Delegation steps
+## Delegation steps
 
 There are two basic steps to setting up delegation:
 
@@ -54,7 +52,7 @@ The following figure shows the steps for setting up delegation:
 
 ![Create the delegated provider and enable them to sign up users](media/azure-stack-delegated-provider/image2.png)
 
-#### Delegated provider requirements
+### Delegated provider requirements
 
 To act as a delegated provider, a user establishes a relationship with the main provider by creating a subscription. This subscription identifies the delegated provider as having the right to present the delegated offers on behalf of the main provider.
 

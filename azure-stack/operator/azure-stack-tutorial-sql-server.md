@@ -3,7 +3,7 @@ title: Make SQL databases available to your Azure Stack users | Microsoft Docs
 description: Tutorial to install the SQL Server resource provider and create offers that let Azure Stack users create SQL databases.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,8 +14,8 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/12/2019
-ms.author: jeffgilb
-ms.reviewer: quying
+ms.author: justinha
+ms.reviewer: xiaofmao
 ms.lastreviewed: 11/05/2018
 ms.custom: mvc
 

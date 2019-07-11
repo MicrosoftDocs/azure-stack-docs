@@ -3,7 +3,7 @@ title: App Service on Azure Stack update 3 release notes | Microsoft Docs
 description: Learn about what's in update three for App Service on Azure Stack, the known issues, and where to download the update.
 services: azure-stack
 documentationcenter: ''
-author: apwestgarth
+author: bryanla
 manager: stefsch
 editor: ''
 
@@ -15,7 +15,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: anwestg
-ms.reviewer: sethm
+ms.reviewer: anwestg
 ms.lastreviewed: 08/20/2018
 
 ---

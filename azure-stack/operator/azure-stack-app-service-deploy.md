@@ -3,7 +3,7 @@ title: 'Deploy App Services: Azure Stack | Microsoft Docs'
 description: Detailed guidance for deploying App Service in Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,7 +13,7 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 05/28/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
@@ -25,16 +25,16 @@ ms.lastreviewed: 01/11/2019
 
 Use the guidance in this article to deploy App Service in Azure Stack.
 
-> [!IMPORTANT]  
-> Apply the 1901 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.5.
+> [!IMPORTANT]
+> Apply the 1904 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.6.
 
 You can give your users the ability to create web and API applications. To let users create these applications, you need to:
 
- - Add the [App Service resource provider](azure-stack-app-service-overview.md) to your Azure Stack deployment using the steps described in this article.
- - After you install the App Service resource provider, you can include it in your offers and plans. Users can then subscribe to get the service and start creating applications.
+- Add the [App Service resource provider](azure-stack-app-service-overview.md) to your Azure Stack deployment using the steps described in this article.
+- After you install the App Service resource provider, you can include it in your offers and plans. Users can then subscribe to get the service and start creating applications.
 
-> [!IMPORTANT]  
-> Before you run the resource provider installer, make sure that you've followed the guidance in [Before you get started](azure-stack-app-service-before-you-get-started.md) and have read the [release notes](azure-stack-app-service-release-notes-update-five.md), which accompany the 1.5 release, to learn about new functionality, fixes, and any known issues which could affect your deployment.
+> [!IMPORTANT]
+> Before you run the resource provider installer, make sure that you've followed the guidance in [Before you get started](azure-stack-app-service-before-you-get-started.md) and have read the [release notes](azure-stack-app-service-release-notes-update-six.md), which accompany the 1.6 release, to learn about new functionality, fixes, and any known issues which could affect your deployment.
 
 ## Run the App Service resource provider installer
 
@@ -75,7 +75,7 @@ To deploy App Service resource provider, follow these steps:
 
    b. In **Azure Stack Subscriptions**, select the **Default Provider Subscription**.
 
-     > [!IMPORTANT]  
+     > [!IMPORTANT]
      > App Service **must** be deployed to the **Default Provider Subscription**.
 
    c. In the **Azure Stack Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if your deploying to the Azure Stack Development Kit.
@@ -95,7 +95,7 @@ To deploy App Service resource provider, follow these steps:
 
    ![App Service Installer][4]
 
-8. Enter the information for your file share and then select **Next**. The address of the file share must use the Fully Qualified Domain Name (FQDN), or the IP address of your File Server. For example, \\\appservicefileserver.local.cloudapp.azurestack.external\websites, or \\\10.0.0.1\websites.  If you are using a file server which is domain joined, you must provide the full username including domain, for example, myfileserverdomain\FileShareOwner.
+8. Enter the information for your file share and then select **Next**. The address of the file share must use the Fully Qualified Domain Name (FQDN), or the IP address of your File Server. For example, \\\appservicefileserver.local.cloudapp.azurestack.external\websites, or \\\10.0.0.1\websites.  If you are using a file server, which is domain joined, you must provide the full username including domain, for example, myfileserverdomain\FileShareOwner.
 
    >[!NOTE]
    >The installer tries to test connectivity to the file share before proceeding. But, if you're deploying to an existing virtual network, this connectivity test might fail. You're given a warning and a prompt to continue. If the file share information is correct, continue the deployment.
@@ -182,8 +182,20 @@ To deploy App Service resource provider, follow these steps:
 
 ## Post-deployment Steps
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > If you have provided the App Service RP with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
+
+If you're deploying to an existing virtual network and using an internal IP address to connect to your file server, you must add an outbound security rule. This rule enables SMB traffic between the worker subnet and the file server.  Go to the WorkersNsg, Network Security Group, in the Admin Portal and add an outbound security rule with the following properties:
+
+- Source: Any
+- Source port range: *
+- Destination: IP Addresses
+- Destination IP address range: Range of IPs for your file server
+- Destination port range: 445
+- Protocol: TCP
+- Action: Allow
+- Priority: 700
+- Name: Outbound_Allow_SMB445
 
 ## Validate the App Service on Azure Stack installation
 
@@ -192,18 +204,6 @@ To deploy App Service resource provider, follow these steps:
 2. In the overview, under status, check to see that the **Status** displays **All roles are ready**.
 
     ![App Service Management](media/azure-stack-app-service-deploy/image12.png)
-
-    If you're deploying to an existing virtual network and using an internal IP address to connect to your file server, you must add an outbound security rule. This rule enables SMB traffic between the worker subnet and the file server.  To do this, go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
-
-    - Source: Any
-    - Source port range: *
-    - Destination: IP Addresses
-    - Destination IP address range: Range of IPs for your file server
-    - Destination port range: 445
-    - Protocol: TCP
-    - Action: Allow
-    - Priority: 700
-    - Name: Outbound_Allow_SMB445
 
 ## Test drive App Service on Azure Stack
 
@@ -247,8 +247,8 @@ To create a test web app, follow these steps:
 
 You can also try out other [platform as a service (PaaS) services](azure-stack-offer-services-overview.md).
 
- - [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md)
- - [MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md)
+- [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md)
+- [MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md)
 
 <!--Links-->
 [Azure_Stack_App_Service_preview_installer]: https://go.microsoft.com/fwlink/?LinkID=717531

@@ -3,7 +3,7 @@ title: Offer highly available SQL databases in Azure Stack | Microsoft Docs
 description: Learn how to create a SQL Server resource provider host computer and highly available SQL AlwaysOn databases with Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,8 +14,8 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
-ms.author: jeffgilb
-ms.reviewer: quying
+ms.author: justinha
+ms.reviewer: xiaofmao
 ms.lastreviewed: 10/23/2018
 ---
 
@@ -39,7 +39,7 @@ Before starting the steps in this tutorial, ensure that the [SQL Server resource
 > [!IMPORTANT]
 > All of the following are required for the Azure Stack quickstart template to be used.
 
-- [Windows Server 2016 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WindowsServer) marketplace image.
+- [Windows Server 2016 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/MicrosoftWindowsServer.WindowsServer) marketplace image.
 - SQL Server 2016 SP1 or SP2 (Enterprise, Standard, or Developer) on Windows Server 2016 server image. This tutorial uses the [SQL Server 2016 SP2 Enterprise on Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoftsqlserver.sql2016sp2-ws2016) marketplace image.
 - [SQL Server IaaS Extension](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) version 1.2.30 or higher. The SQL IaaS Extension installs necessary components that are required by the Marketplace SQL Server items for all Windows versions. It enables SQL-specific settings to be configured on SQL virtual machines. If the extension is not installed in the local Marketplace, provisioning of SQL will fail.
 - [Custom script extension for Windows](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.CustomScriptExtension) version 1.9.1 or higher. Custom Script Extension is a tool that can be used to automatically launch post-deployment VM customization tasks.

@@ -4,20 +4,38 @@
   items:
   - name: What is Azure Stack?
     href: azure-stack-overview.md
+  - name: What is Azure Stack HCI?
+    href: azure-stack-hci-overview.md
   - name: Comparing the Azure ecosystem
     href: compare-azure-azure-stack.md
   - name: Release notes
     items:
-    - name: Recent updates
+    - name: Updates and servicing policy
       href: azure-stack-servicing-policy.md
+    - name: Checklist for applying updates
+      href: azure-stack-release-notes-checklist.md
+    - name: Security updates
+      href: azure-stack-release-notes-security-updates-1906.md
+    - name: 1906 update
+      items:
+      - name: Release notes
+        href: azure-stack-release-notes-1906.md
+      - name: Known issues
+        href: azure-stack-release-notes-known-issues-1906.md
+    - name: 1905 update
+      items:
+      - name: Release notes
+        href: azure-stack-release-notes-1905.md
+      - name: Known issues
+        href: azure-stack-release-notes-known-issues-1905.md
+    - name: 1904 update
+      items:
+      - name: Release notes
+        href: azure-stack-release-notes-1904.md
+      - name: Known issues
+        href: azure-stack-release-notes-known-issues-1904.md
     - name: 1903 update
       href: azure-stack-update-1903.md
-    - name: 1902 update
-      href: azure-stack-update-1902.md      
-    - name: 1901 update 
-      href: azure-stack-update-1901.md      
-    - name: 1811 update 
-      href: azure-stack-update-1811.md
 - name: Quickstarts
   expanded: true
   items:
@@ -38,14 +56,15 @@
 - name: Concepts
   items:
   - name: Capacity Planning
-    href: capacity-planning.md
     items:
-    - name: Compute capacity planning
-      href: capacity-planning-compute.md
-    - name: Storage capacity planning
-      href: capacity-planning-storage.md
+    - name: Overview
+      href: azure-stack-capacity-planning-overview.md
+    - name: Compute
+      href: azure-stack-capacity-planning-compute.md
+    - name: Storage
+      href: azure-stack-capacity-planning-storage.md
     - name: Azure Stack Capacity Planner
-      href: capacity-planning-spreadsheet.md
+      href: azure-stack-capacity-planner.md
   - name: Datacenter integration
     href: azure-stack-customer-journey.md
     items:
@@ -186,6 +205,8 @@
     items:
     - name: Security overview
       href: azure-stack-security-foundations.md
+    - name: Configure security
+      href: azure-stack-security-configuration.md
     - name: Identity
       items:
       - name: Identity overview
@@ -198,7 +219,7 @@
         href: azure-stack-add-new-user-aad.md
       - name: Add users for AD FS
         href: azure-stack-add-users-adfs.md
-      - name: Create service principals
+      - name: Use an app identity to access resources
         href: Azure-stack-create-service-principals.md
       - name: Enable multi-tenancy
         href: azure-stack-enable-multitenancy.md
@@ -285,6 +306,8 @@
     items:
     - name: App Service capacity planning
       href: azure-stack-app-service-capacity-planning.md
+    - name: App Service billing FAQ
+      href: app-service-billing-faq.md
     - name: Before you get started
       href: azure-stack-app-service-before-you-get-started.md
     - name: Deploy App Service
@@ -317,6 +340,8 @@
         href: azure-stack-app-service-release-notes-update-four.md
       - name: App Service on Azure Stack update 5 release notes
         href: azure-stack-app-service-release-notes-update-five.md
+      - name: App Service on Azure Stack update 6 release notes
+        href: azure-stack-app-service-release-notes-update-six.md
   - name: Create plans, offers, and quotas
     items:
     - name: Plan, offer, quota, and subscription overview
@@ -329,6 +354,8 @@
       href: azure-stack-create-offer.md
     - name: Subscribe to an offer
       href: azure-stack-subscribe-plan-provision-vm.md
+    - name: Delete offers
+      href: azure-stack-delete-offer.md
     - name: Delegate offers in Azure Stack
       href: azure-stack-delegated-provider.md
     - name: Quota types
@@ -347,7 +374,7 @@
       items:
       - name: Usage data reporting
         href: azure-stack-usage-reporting.md
-      - name: Usage reporting infrastructure for Cloud Service Providers
+      - name: Usage reporting infrastructure
         href: azure-stack-csp-ref-infrastructure.md
       - name: Provider usage API
         href: azure-stack-provider-resource-api.md
@@ -355,6 +382,12 @@
         href: azure-stack-tenant-resource-usage-api.md
       - name: Usage FAQ
         href: azure-stack-usage-related-faq.md
+      - name: Troubleshooting usage issues
+        items:
+        - name: Usage connectivity errors
+          href: azure-stack-usage-issues.md
+        - name: Usage registration error codes
+          href: azure-stack-registration-errors.md        
   - name: Back up Azure Stack
     href: azure-stack-backup-infrastructure-backup.md
     items:
@@ -374,14 +407,18 @@
       href: azure-stack-backup-best-practices.md
     - name: Backup reference
       href: azure-stack-backup-reference.md
-  - name: Troubleshoot
+  - name: Get support  
     items:
-    - name: Known issues
-      href: azure-stack-troubleshooting.md
-    - name: Diagnostics in Azure Stack
-      href: azure-stack-diagnostics.md
-    - name: Validation for Azure Stack
-      href: azure-stack-diagnostic-test.md
+    - name: Help and Support  
+      href: azure-stack-help-and-support-overview.md
+    - name: Troubleshoot  
+      items:
+      - name: Known issues
+        href: azure-stack-troubleshooting.md
+      - name: Diagnostics in Azure Stack
+        href: azure-stack-diagnostics.md
+      - name: Validation for Azure Stack
+        href: azure-stack-diagnostic-test.md  
 - name: Reference
   items:
   - name: Azure Stack PowerShell
@@ -389,11 +426,13 @@
 - name: Related
   items:
   - name: Azure Stack User documentation
-    href: /azure-stack/user/ 
+    href: /azure-stack/user/
   - name: ASDK documentation
-    href: /azure-stack/asdk/ 
+    href: /azure-stack/asdk/
 - name: Resources
   items:
+  - name: Training and certification
+    href: azure-stack-train-and-cert.md
   - name: Azure Stack roadmap
     href: https://azure.microsoft.com/roadmap/?tag=azure-stack
   - name: Azure Stack MSDN forum
@@ -404,5 +443,3 @@
     href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-stack
-  - name: Training and certification
-    href: azure-stack-train-and-cert.md

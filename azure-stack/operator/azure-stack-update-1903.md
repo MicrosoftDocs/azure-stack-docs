@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2019
+ms.date: 05/30/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/20/2019
@@ -28,9 +28,17 @@ This article describes the contents of the 1903 update package. The update inclu
 > [!IMPORTANT]
 > This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
 
+## Archived release notes
+
+You can see [older versions of Azure Stack release notes on the TechNet Gallery](http://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For further assistance, contact Microsoft Customer Support Services.
+
 ## Build reference
 
 The Azure Stack 1903 update build number is **1.1903.0.35**.
+
+### Update type
+
+The Azure Stack 1903 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. The expected time it takes for the 1903 update to complete is approximately 16 hours, but exact times can vary. This runtime approximation is specific to the 1903 update and should not be compared to other Azure Stack updates.
 
 > [!IMPORTANT]
 > The 1903 payload does not include an ASDK release.
@@ -52,8 +60,6 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 - **1903**: [KB 4500638 - Azure Stack hotfix 1.1903.2.39](https://support.microsoft.com/help/4500638)
 
 ## Improvements
-
-- The 1903 update payload contains an update to components of Azure Stack that do not include the underlying operating system which hosts Azure Stack. This enables certain updates to be scoped. As a result, the expected time it takes for the 1903 update to complete is less (approx. 16 hours, but exact times can vary). This decrease in runtime is specific to the 1903 update and subsequent updates may contain updates to the operating system, implying different runtimes. Future updates will provide similar guidance on the expected time the update takes to complete, depending on the payload included.
 
 - Fixed a bug in networking that prevented changes to the **idle timeout (minutes)** value of a **Public IP Address** from taking effect. Previously, changes to this value were ignored, so that regardless of any changes you made, the value would default to 4 minutes. This setting controls how many minutes to keep a TCP connection open without relying on clients to send keep-alive messages. Note this bug only affected instance level public IPs, not public IPs assigned to a load balancer.
 
@@ -93,6 +99,8 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 <!-- ## Common vulnerabilities and exposures -->
 
 ## Known issues with the update process
+
+- When attempting to install an Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing. Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and starts the download again.
 
 - When you run [Test-AzureStack](azure-stack-diagnostic-test.md), a warning message from the Baseboard Management Controller (BMC) is displayed. You can safely ignore this warning.
 
@@ -155,7 +163,7 @@ The following are post-installation known issues for this build version.
    The error occurs if you enable boot diagnostics on a VM but delete your boot diagnostics storage account. To work around this issue, recreate the storage account with the same name as you used previously.
 
 <!-- 2967447 - IS, ASDK, to be fixed in 1902 -->
-- The Virtual Machine Scale Set creation experience provides CentOS-based 7.2 as an option for deployment. Because that image is not available on Azure Stack, either select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
+- The Virtual Machine Scale Set creation experience provides CentOS-based 7.2 as an option for deployment. Because that image is not available on Azure Stack Marketplace, either select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
 
 <!-- TBD - IS ASDK -->
 - After applying the 1903 update, you might encounter the following issues when deploying VMs with Managed Disks:
@@ -179,6 +187,10 @@ The following are post-installation known issues for this build version.
       + CategoryInfo          : OpenError: (System.Manageme....RemoteRunspace:RemoteRunspace) [New-PSSession], PSRemotingTransportException
       + FullyQualifiedErrorId : AccessDenied,PSSessionOpenFailed
    ```
+
+- You cannot remove a scale set from the **Virtual Machine Scale Sets** blade. As a workaround, select the scale set that you want to remove, then click the **Delete** button from the **Overview** pane.
+
+- Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment. You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack.
 
 ### Networking
 
@@ -208,7 +220,8 @@ The following are post-installation known issues for this build version.
 ### App Service
 
 <!-- 2352906 - IS ASDK -->
-- You must register the storage resource provider before you create your first Azure Function in the subscription.
+- Tenants must register the storage resource provider before creating their first Azure Function in the subscription.
+- Some tenant portal user experiences are broken due to an incompatibility with the portal framework in 1903; principally, the UX for deployment slots, testing in production and site extensions. To work around this issue, use the [Azure App Service PowerShell module](/azure/app-service/deploy-staging-slots#automate-with-powershell) or the [Azure CLI](/cli/azure/webapp/deployment/slot?view=azure-cli-latest). The portal experience will be restored in the upcoming release of Azure App Service on Azure Stack 1.6 (Update 6).
 
 <!-- ### Usage -->
 

@@ -3,7 +3,7 @@ title: Network integration considerations for Azure Stack integrated systems | M
 description: Learn what you can do to plan for datacenter network integration with multi-node Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.date: 06/04/2019
+ms.author: mabrigg
 ms.reviewer: wamota
-ms.lastreviewed: 08/30/2018
+ms.lastreviewed: 06/04/2019
 ---
 
 # Network connectivity
@@ -26,7 +26,7 @@ This article provides Azure Stack network infrastructure information to help you
 > To resolve external DNS names from Azure Stack (for example, www\.bing.com), you need to provide DNS servers to forward DNS requests. For more information about Azure Stack DNS requirements, see [Azure Stack datacenter integration - DNS](azure-stack-integrate-dns.md).
 
 ## Physical network design
-The Azure Stack solution requires a resilient and highly available physical infrastructure to support its operation and services. Uplinks from ToR to Border switches are limited to SFP+ or SFP28 media and 1 GB, 10 GB, or 25 GB speeds. Check with your original equipment manufacturer (OEM) hardware vendor for availability. The following diagram presents our recommended design:
+The Azure Stack solution requires a resilient and highly available physical infrastructure to support its operation and services. Uplinks from ToR to Border switches are limited to SFP+ or SFP28 media and 1 GB, 10 GB, or 25-GB speeds. Check with your original equipment manufacturer (OEM) hardware vendor for availability. The following diagram presents our recommended design:
 
 ![Recommended Azure Stack network design](media/azure-stack-network/recommended-design.png)
 
@@ -80,6 +80,22 @@ You'll need to make Azure Stack services available to users from outside Azure S
 To make Azure Stack services (such as the portals, Azure Resource Manager, DNS, etc.) available to external networks, you must allow inbound traffic to these endpoints for specific URLs, ports, and protocols.
  
 In a deployment where a transparent proxy uplinks to a traditional proxy server, you must allow specific ports and URLs for both [inbound](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound) and [outbound](azure-stack-integrate-endpoints.md#ports-and-urls-outbound) communication. These include ports and URLs for identity, the marketplace, patch and update, registration, and usage data.
+
+### MAC Address Pool
+
+Azure Stack uses a static MAC address pool to automatically generate and assign MAC address to virtual machines.
+This MAC Address Pool is automatically generated during deployment and uses the following range:
+
+- StartMacAddress: 00-1D-D8-B7-00-00
+- EndMacAddress : 00-1D-D8-F4-FF-FF
+
+> [!Note]  
+> This MAC Address pool is the same across each Azure Stack system and is not configurable.
+
+Depending on how the virtual networks connect with existing corporate networks, you may expect duplicated MAC addresses of virtual machines.
+
+More information can be found about MAC Address pool utilization using the cmdlet [Get-AzsMacAddressPool](https://docs.microsoft.com/powershell/module/azs.fabric.admin/get-azsmacaddresspool) in the Azure Stack Administrator PowerShell Module.
+
 
 ## Next steps
 [Border connectivity](azure-stack-border-connectivity.md)

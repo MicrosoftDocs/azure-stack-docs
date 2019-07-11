@@ -3,7 +3,7 @@ title: SQL Hosting Servers on Azure Stack | Microsoft Docs
 description: How to add SQL instances for provisioning through the SQL Adapter Resource provider.
 services: azure-stack
 documentationCenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,8 +13,8 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/26/2019
-ms.author: jeffgilb
-ms.reviewer: quying
+ms.author: mabrigg
+ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
 
 ---
@@ -69,7 +69,7 @@ The following information provides additional security guidance:
 
 * All Azure Stack storage is encrypted using BitLocker, so any SQL instance on Azure Stack will use encrypted blob storage.
 * The SQL Resource Provider fully supports TLS 1.2. Ensure that any SQL Server that is managed through the SQL RP is configured for TLS 1.2 _only_ and the RP will default to that. All supported versions of SQL Server support TLS 1.2, see [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server).
-* Use SQL Server Configuration Manager to set the **ForceEncryption** option to ensure all communications to the SQL server are always encrypted. See [To configure the server to force encrypted connections](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#ConfigureServerConnections).
+* Use SQL Server Configuration Manager to set the **ForceEncryption** option to ensure all communications to the SQL server are always encrypted. See [To configure the server to force encrypted connections](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#to-configure-the-server-to-force-encrypted-connections).
 * Ensure any client application is also communicating over an encrypted connection.
 * The RP is configured to trust the certificates used by the SQL Server instances.
 

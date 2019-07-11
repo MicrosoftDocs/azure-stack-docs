@@ -3,7 +3,7 @@ title: Microsoft Azure Stack troubleshooting | Microsoft Docs
 description: Azure Stack Development Kit (ASDK) troubleshooting information.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
 

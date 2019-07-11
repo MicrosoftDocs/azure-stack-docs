@@ -2,15 +2,15 @@
 title: Diagnostics in Azure Stack
 description: How to collect log files for diagnostics in Azure Stack
 services: azure-stack
-author: jeffgilb
+author: justinha
 manager: femila
 services: azure-stack
 cloud: azure-stack
 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/16/2019
-ms.author: jeffgilb
+ms.date: 05/29/2019
+ms.author: justinha
 ms.reviewer: adshar
 ms.lastreviewed: 11/20/2018
 ---
@@ -80,29 +80,62 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
 
 #### Examples
 
-Collect all logs for all roles:
+* Collect all logs for all roles:
 
-```powershell
-Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred
-```
+  ```powershell
+  Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred
+  ```
 
-Collect logs from VirtualMachines and BareMetal roles:
+* Collect logs from VirtualMachines and BareMetal roles:
 
-```powershell
-Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal
-```
+  ```powershell
+  Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal
+  ```
 
-Collect logs from VirtualMachines and BareMetal roles, with date filtering for log files for the past 8 hours:
+* Collect logs from VirtualMachines and BareMetal roles, with date filtering for log files for the past 8 hours:
 
-```powershell
-Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
-```
+  ```powershell
+  Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
+  ```
 
-Collect logs from VirtualMachines and BareMetal roles, with date filtering for log files for the time period between 8 hours ago and 2 hours ago:
+* Collect logs from VirtualMachines and BareMetal roles, with date filtering for log files for the time period between 8 hours ago and 2 hours ago:
 
-```powershell
-Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
-```
+  ```powershell
+  Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
+  ```
+
+* Collect logs and store them in the specified Azure Storage blob container. The general syntax for this operation is as follows:
+
+  ```powershell
+  Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
+  ```
+
+  For example:
+
+  ```powershell
+  Get-AzureStackLog -OutputSasUri "https://<storageAccountName>.blob.core.windows.net/<ContainerName><SAS token>"
+  ```
+
+  > [!NOTE]
+  > This procedure is useful when you open a case with Microsoft Support and are asked to upload logs. Even if you do not have an SMB share accessible from the ERCS VM and your ERCS VM does not have internet access, you can create a blob storage account on your Azure Stack to transfer the logs, and then use your client to retrieve those logs and upload them to Microsoft.  
+
+  To generate the SAS token for the storage account, the following permissions are required:
+
+  * Access to the Blob Storage service
+  * Access to the container resource type
+
+  To generate a SAS Uri value to be used for the `-OutputSasUri` parameter, perform the following steps:
+
+  1. Create a Storage account, following the steps [in this article](/azure/storage/common/storage-quickstart-create-account).
+  2. Open an instance of the Azure Storage Explorer.
+  3. Connect to the storage account created in step 1.
+  4. Navigate to **Blob Containers** in **Storage Services**.
+  5. Select **Create a new container**.
+  6. Right-click the new container, then click **Get Shared Access Signature**.
+  7. Select a valid **Start Time** and **End Time**, depending on your requirements.
+  8. For the required permissions, select **Read**, **Write**, and **List**.
+  9. Select **Create**.
+  10. You will get a Shared Access Signature. Copy the URL portion, and provide it to the `-OutputSasUri` parameter.
 
 ### Parameter considerations for both ASDK and integrated systems
 
@@ -128,7 +161,8 @@ Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -Filter
 
   |   |   |   |    |
   | - | - | - | -  |
-  |ACS                   |CacheService                   |IBC                            |OEM|
+  |ACS                   |CA                             |HRP                            |OboService|
+  |ACSBlob               |CacheService                   |IBC                            |OEM|
   |ACSDownloadService    |Compute                        |InfraServiceController         |OnboardRP|
   |ACSFabric             |CPI                            |KeyVaultAdminResourceProvider  |PXE|
   |ACSFrontEnd           |CRP                            |KeyVaultControlPlane           |QueryServiceCoordinator|
@@ -146,7 +180,6 @@ Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -Filter
   |AzureMonitor          |Gateway                        |NC                             |WAS|
   |BareMetal             |HealthMonitoring               |NonPrivilegedAppGateway        |WASPUBLIC|
   |BRP                   |HintingServiceV2               |NRP                            |   |
-  |CA                    |HRP                            |OboService                     |   |
   |   |   |   |    |
 
 ### Additional considerations
@@ -164,6 +197,45 @@ Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -Filter
 
 > [!NOTE]
 > Size and age limits are enforced on the logs collected as it is essential to ensure efficient utilization of your storage space to ensure it doesn't get flooded with logs. However, when diagnosing a problem you sometimes need logs that might not exist anymore because of these limits. Thus, it is **highly recommended** that you offload your logs to an external storage space (a storage account in Azure, an additional on premises storage device, etc.) every 8 to 12 hours and keep them there for 1 - 3 months, depending on your requirements. Also, ensure this storage location is encrypted.
+
+### Invoke-AzureStackOnDemandLog
+
+You can use the **Invoke-AzureStackOnDemandLog** cmdlet to generate on-demand logs for certain roles (see the list at the end of this section). The logs generated by this cmdlet are not present by default in the log bundle you receive when you execute the **Get-AzureStackLog** cmdlet. Also, it is recommended that you collect these logs only when requested by the Microsoft support team.
+
+Currently, you can use the `-FilterByRole` parameter to filter log collection by the following roles:
+
+* OEM
+* NC
+* SLB
+* Gateway
+
+#### Example of collecting on-demand logs
+
+```powershell
+$ip = "<IP address of the PEP VM>" # You can also use the machine name instead of IP here.
+
+$pwd= ConvertTo-SecureString "<cloud admin password>" -AsPlainText -Force
+$cred = New-Object System.Management.Automation.PSCredential ("<domain name>\CloudAdmin", $pwd)
+
+$shareCred = Get-Credential
+
+$s = New-PSSession -ComputerName $ip -ConfigurationName PrivilegedEndpoint -Credential $cred
+
+$fromDate = (Get-Date).AddHours(-8)
+$toDate = (Get-Date).AddHours(-2)  #provide the time that includes the period for your issue
+
+Invoke-Command -Session $s
+{
+   Invoke-AzureStackOnDemandLog -Generate -FilterByRole "<on-demand role name>" #Provide the supported on-demand role name : OEM, NC, SLB , Gateway
+   Get-AzureStackLog -OutputSharePath "<external share address>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate
+
+}
+
+if($s)
+{
+   Remove-PSSession $s
+}
+```
 
 ## Next steps
 

@@ -3,7 +3,7 @@ title:    Validate Azure Identity for Azure Stack | Microsoft Docs
 description: Use the Azure Stack Readiness Checker to validate Azure identity.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: PatAltimore
 manager: femila
 editor: ''
 
@@ -13,8 +13,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/23/2019
-ms.author: sethm
+ms.date: 06/24/2019
+ms.author: patricka
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
 

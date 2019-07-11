@@ -5,7 +5,7 @@ metadata:
   title: Azure Stack Documentation - Tutorials, API Reference
   meta.description: azure-stack
   services: azure-stack
-  author:   
+  author: mattbriggs
   manager: femila
   layout: LandingPage
   ms.assetid: cbf798da-6f1a-7d4d-7707-5d5e02589e22

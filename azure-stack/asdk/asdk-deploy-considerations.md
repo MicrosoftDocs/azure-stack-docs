@@ -3,7 +3,7 @@ title: Azure Stack Development Kit deployment (ASDK) prerequisites | Microsoft D
 description: Review the environment and hardware requirements for Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: justinha
 manager: femila
 editor: ''
 
@@ -13,30 +13,33 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2018
-ms.author: jeffgilb
+ms.date: 05/13/2019
+ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 12/12/2018
+ms.lastreviewed: 05/13/2019
 
 
 ---
 
 # Azure Stack deployment planning considerations
+
 Before you deploy the Azure Stack Development Kit (ASDK), make sure your development kit host computer meets the requirements described in this article.
 
-
 ## Hardware
+
 | Component | Minimum | Recommended |
 | --- | --- | --- |
 | Disk drives: Operating System |1 operating system disk with minimum of 200 GB available for system partition (SSD or HDD) |1 OS disk with minimum of 200 GB available for system partition (SSD or HDD) |
 | Disk drives: General development kit data<sup>*</sup>  |4 disks. Each disk provides a minimum of 240 GB of capacity (SSD or HDD). All available disks are used. |4 disks. Each disk provides a minimum of 400 GB of capacity (SSD or HDD). All available disks are used. |
 | Compute: CPU |Dual-Socket: 16 Physical Cores (total) |Dual-Socket: 20 Physical Cores (total) |
-| Compute: Memory |192 GB RAM |256 GB RAM |
+| Compute: Memory |192-GB RAM |256-GB RAM |
 | Compute: BIOS |Hyper-V Enabled (with SLAT support) |Hyper-V Enabled (with SLAT support) |
 | Network: NIC |Windows Server 2012 R2 Certification. No specialized features required |Windows Server 2012 R2 Certification. No specialized features required |
 | HW logo certification |[Certified for Windows Server 2012 R2](https://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Certified for Windows Server 2016](https://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
 
 <sup>*</sup> You need more than this recommended capacity if you plan on adding many of the [marketplace items](../operator/azure-stack-create-and-publish-marketplace-item.md) from Azure.
+
+### Hardware notes
 
 **Data disk drive configuration:** All data drives must be of the same type (all SAS, all SATA, or all NVMe) and capacity. If SAS disk drives are used, the disk drives must be attached via a single path (no MPIO, multi-path support is provided).
 
@@ -62,6 +65,22 @@ Before you deploy the Azure Stack Development Kit (ASDK), make sure your develop
 
 Sample OEM configurations are available.
 
+### Storage resiliency for the ASDK
+
+As a single node system, the ASDK isn't designed for validating production redundancy of an Azure Stack integrated system. However, you can increase the level of the underlying storage redundancy of the ASDK through the optimal mix of HDD and SSD drives. You can deploy a two-way mirror configuration, similar to a RAID1, rather than a simple resiliency configuration, which is similar to a RAID0. Use enough capacity, type, and number of drives for the underlying Storage Spaces Direct configuration.
+
+To use a two-way mirror configuration for storage resiliency:
+
+- HDD capacity in the system of greater than two terabytes.
+- If you don't have SSDs in your ASDK, you will need at least eight HDDs for a two-way mirror configuration.
+- If you have SSDs in your ASDK, along with HDDs, you'll need at least five HDDs. However, six HHDs are recommended. For six HDDs, it would also be recommended to have at least corresponding three SSDs in the system so that you have one cache disk (SSD) serve two capacity drives (HDD).
+
+Example two-way mirror configuration:
+
+- Eight HDDs
+- Three SSD / six HDD
+- Four SSD / eight HDD
+
 ## Operating system
 |  | **Requirements** |
 | --- | --- |
@@ -79,7 +98,7 @@ If your environment is not connected to the internet, or you don't want to use A
 > If you deploy by using the AD FS option, you must redeploy Azure Stack to switch to Azure AD.
 
 ### Azure Active Directory accounts
-To deploy Azure Stack by using an Azure AD account, you must prepare an Azure AD account before you run the deployment PowerShell script. This account becomes the Global Admin for the Azure AD tenant. It's used to provision and delegate applications and service principals for all Azure Stack services that interact with Azure Active Directory and Graph API. It's also used as the owner of the default provider subscription (which you can later change). You can log in to your Azure Stack system's administrator portal by using this account.
+To deploy Azure Stack by using an Azure AD account, you must prepare an Azure AD account before you run the deployment PowerShell script. This account becomes the Global Admin for the Azure AD tenant. It's used to provision and delegate applications and service principals for all Azure Stack services that interact with Azure Active Directory and Graph API. It's also used as the owner of the default provider subscription (which you can later change). You can sign in to your Azure Stack system's administrator portal by using this account.
 
 1. Create an Azure AD account that is the directory administrator for at least one Azure AD. If you already have one, you can use that. Otherwise, you can create one for free at [https://azure.microsoft.com/free/](https://azure.microsoft.com/free/) (in China, visit <https://go.microsoft.com/fwlink/?LinkID=717821> instead). If you plan to later [register Azure Stack with Azure](asdk-register.md), you must also have a subscription in this newly created account.
    
@@ -88,12 +107,12 @@ To deploy Azure Stack by using an Azure AD account, you must prepare an Azure AD
    
    | **Azure Active Directory account** | **Supported?** |
    | --- | --- |
-   | Work or school account with valid Public Azure Subscription |Yes |
-   | Microsoft Account with valid Public Azure Subscription |Yes |
+   | Work or school account with valid global Azure Subscription |Yes |
+   | Microsoft Account with valid global Azure Subscription |Yes |
    | Work or school account with valid China Azure Subscription |Yes |
    | Work or school account with valid US Government Azure Subscription |Yes |
 
-After deployment, Azure Active Directory global administrator permission is not required. However, some operations may require the global administrator credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily re-instate the account's global administrator permissions or use a separate global administrator account that is an owner of the *default provider subscription*.
+After deployment, Azure Active Directory global administrator permission is not required. However, some operations may require the global administrator credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily reinstate the account's global administrator permissions or use a separate global administrator account that is an owner of the *default provider subscription*.
 
 ## Network
 ### Switch
@@ -124,4 +143,7 @@ Azure Stack requires access to the Internet, either directly or through a transp
 
 
 ## Next steps
-[Download the ASDK deployment package](asdk-download.md)
+
+- [Download the ASDK deployment package](asdk-download.md)
+- To learn more about Storage Spaces Direct, see [Storage Spaces Direct overview](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview).
+

@@ -3,7 +3,7 @@ title: Recover from catastrophic data loss in Azure Stack using the Infrastructu
 description: When a catastrophic failure causes Azure Stack to fail, your can restore your infrastructure data when reestablishing your Azure Stack deployment.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: justinha
 ms.reviewer: hectorl
 ms.lastreviewed: 11/05/2018
 

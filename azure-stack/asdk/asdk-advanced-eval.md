@@ -3,7 +3,7 @@ title: Advanced Azure Stack evaluation tasks | Microsoft Docs
 description: This article describes advanced Azure Stack evaluation tasks.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/16/2018
 

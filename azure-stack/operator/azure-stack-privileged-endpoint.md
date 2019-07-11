@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/25/2019
@@ -163,10 +163,17 @@ To import the PEP session on your local machine, do the following steps:
 To close the endpoint session:
 
 1. Create an external file share that is accessible by the PEP. In a development kit environment, you can just create a file share on the development kit host.
-2. Run the `Close-PrivilegedEndpoint` cmdlet. 
-3. You're prompted for a path on which to store the transcript log file. Specify the file share that you created earlier, in the format &#92;&#92;*servername*&#92;*sharename*. If you don't specify a path, the cmdlet fails and the session remains open. 
+2. Run the cmdlet 
+	```powershell
+	Close-PrivilegedEndpoint -TranscriptsPathDestination "\\fileshareIP\SharedFolder" -Credential Get-Credential
+	```
+where
 
-    ![Close-PrivilegedEndpoint cmdlet output that shows where you specify the transcript destination path](media/azure-stack-privileged-endpoint/closeendpoint.png)
+| Parameter | Description | Type | Required |
+|---------|---------|---------|---------|
+| *TranscriptsPathDestination* | path to the external file share defined as "fileshareIP\sharefoldername" | String | yes|
+| *Credential* | credentials to access the file share | SecureString | 	yes |
+
 
 After the transcript log files are successfully transferred to the file share, they're automatically deleted from the PEP. 
 

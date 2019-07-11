@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 05/16/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/30/2019
@@ -114,4 +114,3 @@ Learn how to [generate PKI certificates for Azure Stack deployment](azure-stack-
 
 ## Next steps
 [Identity integration](azure-stack-integrate-identity.md)
-

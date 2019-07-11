@@ -3,7 +3,7 @@ title: Infrastructure Backup Service best practices for Azure Stack | Microsoft 
 description: You can follow set of best practices when you deploy and manage Azure Stack in your datacenter to help mitigate data loss if there is a catastrophic failure.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
-ms.author: jeffgilb
+ms.author: justinha
 ms.reviewer: hectorl
 ms.lastreviewed: 02/08/2019
 

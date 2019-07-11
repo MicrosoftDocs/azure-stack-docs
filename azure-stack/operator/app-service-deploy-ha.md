@@ -3,7 +3,7 @@ title: Deploy Azure Stack App Service in a highly available configuration | Micr
 description: Learn how to deploy App Service in Azure Stack using a highly available configuration.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: BryanLa
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2019
-ms.author: jeffgilb
+ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/23/2019
 ---
@@ -230,8 +230,9 @@ To deploy App Service resource provider, follow these steps:
 
     ![Setup complete](media/app-service-deploy-ha/16.png)
 
-
 ## Next steps
+
+[Add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) if you have provided the App Service resource provider with a SQL Always On Instance. Synchronize the databases to prevent any loss of service in the event of a database failover.
 
 [Scale out App Service](azure-stack-app-service-add-worker-roles.md). You might need to add additional App Service infrastructure role workers to meet expected application demand in your environment. By default, App Service on Azure Stack supports free and shared worker tiers. To add other worker tiers, you need to add more worker roles.
 

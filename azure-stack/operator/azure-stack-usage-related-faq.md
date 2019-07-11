@@ -3,7 +3,7 @@ title: Usage API related FAQs | Microsoft Docs
 description: List of Azure Stack meters, comparison to Azure usage API, Usage Time and Reported Time, error codes.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 
@@ -12,8 +12,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
-ms.author: mabrigg
+ms.date: 05/31/2019
+ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
 
@@ -21,9 +21,10 @@ ms.lastreviewed: 02/26/2019
 
 # Frequently asked questions in Azure Stack usage API
 
-This article answers some frequently asked questions about the Azure Stack Usage API.
+This article answers some frequently asked questions about the Azure Stack usage API.
 
 ## What meter IDs can I see?
+
 Usage is reported for the following resource providers:
 
 ### Network
@@ -73,7 +74,7 @@ Usage is reported for the following resource providers:
 **Meter ID**: 1B8C1DEC-EE42-414B-AA36-6229CF199370  
 **Meter name**: TableDataTransOut  
 **Unit**: Egress in GB  
-**Notes**: Table service data egress in GB  
+**Notes**: Table service data egress in GB.
   
 **Meter ID**: 43DAF82B-4618-444A-B994-40C23F7CD438  
 **Meter name**: BlobTransactions  
@@ -105,7 +106,7 @@ Usage is reported for the following resource providers:
 **Unit**: Egress in GB  
 **Notes**: Queue service data egress in GB  
 
-### Compute 
+### Compute
   
 **Meter ID**: FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5  
 **Meter name**: Base VM Size Hours  
@@ -120,7 +121,7 @@ Usage is reported for the following resource providers:
 **Meter ID**: 6DAB500F-A4FD-49C4-956D-229BB9C8C793  
 **Meter name**: VM size hours  
 **Unit**: VM hours  
-**Notes**: Captures both Base and Windows VM. Does not adjust for cores.  
+**Notes**: Captures both base and Windows VM. Does not adjust for cores.  
   
 ### Managed Disks
 
@@ -388,30 +389,30 @@ Usage is reported for the following resource providers:
 **Unit**: GB  
 **Notes**: Total incoming request response bytes + total outgoing request bytes + total incoming FTP request response bytes + total incoming web deploy request response bytes.  
   
-
 ## How do the Azure Stack usage APIs compare to the [Azure usage API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) (currently in public preview)?
-* The Tenant Usage API is consistent with the Azure API, with one
+
+* The tenant usage API is consistent with the Azure API, with one
   exception: the *showDetails* flag currently is not supported in
   Azure Stack.
-* The Provider Usage API applies only to Azure Stack.
+* The provider usage API applies only to Azure Stack.
 * Currently, the [RateCard
-  API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-ratecard-api-preview)
+  API](/azure/billing/billing-usage-rate-card-overview#azure-resource-ratecard-api-preview)
   that is available in Azure is not available in Azure Stack.
 
 ## What is the difference between usage time and reported time?
+
 Usage data reports have two main time values:
 
 * **Reported Time**. The time when the usage event entered the usage
   system
 * **Usage Time**. The time when the Azure Stack resource was consumed
 
-You might see a discrepancy in values for Usage Time and Reported Time
-for a specific usage event. The delay can be as long as multiple hours
-in any environment.
+You might see a discrepancy in values for usage time and reported time for a specific usage event. The delay can be as long as several hours in any environment.
 
 Currently, you can query only by *Reported Time*.
 
 ## What do these usage API error codes mean?
+
 | **HTTP status code** | **Error code** | **Description** |
 | --- | --- | --- |
 | 400/Bad Request |*NoApiVersion* |The *api-version* query parameter is missing. |
@@ -426,9 +427,8 @@ Currently, you can query only by *Reported Time*.
 
 Running and stopped VMs generate usage data. Consistent with Azure, deallocation is needed to stop the emission of usage data. In the case in which the portal is unavailable, but the compute resource provider is still running, usage will be emitted.
 
-## Next Steps
-[Customer billing and chargeback in Azure Stack](azure-stack-billing-and-chargeback.md)
+## Next steps
 
-[Provider Resource Usage API](azure-stack-provider-resource-api.md)
-
-[Tenant Resource Usage API](azure-stack-tenant-resource-usage-api.md)
+* [Customer billing and chargeback in Azure Stack](azure-stack-billing-and-chargeback.md)
+* [Provider Resource Usage API](azure-stack-provider-resource-api.md)
+* [Tenant Resource Usage API](azure-stack-tenant-resource-usage-api.md)

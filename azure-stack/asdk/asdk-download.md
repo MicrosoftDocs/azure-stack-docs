@@ -3,7 +3,7 @@ title: Download and extract the Azure Stack Development Kit (ASDK) | Microsoft D
 description: Describes how to download and extract the Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: justinha
 manager: femila
 editor: ''
 
@@ -13,8 +13,8 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.date: 05/06/2019
+ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 08/10/2018
 
