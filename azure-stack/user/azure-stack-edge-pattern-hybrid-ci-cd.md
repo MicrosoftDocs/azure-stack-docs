@@ -44,7 +44,7 @@ Using a DevOps release pipeline helps you:
 
 -   Automatically deploy to a private cloud once your code has passed testing.
 
-## Issues and Considerations
+## Issues and considerations
 
 The DevOps Pattern is intended to ensure consistency across deployments regardless of the target environment. However, capabilities vary across cloud and on-premises environments. Consider the following:
 
