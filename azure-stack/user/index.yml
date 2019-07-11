@@ -78,15 +78,15 @@ sections:
       style: cards
       className: cardsA
       items:  
-      - html: <a href="/azure-stack/user/azure-stack-solution-template-kubernetes-deploy">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_event.svg" alt="">
-              <br><b>Quickstart - Create an Azure function</b></a>
+      - html: <a href="/azure-stack/user/azure-stack-solution-template-service-fabric-cluster">
+              <img height="48" width="48" src="/azure-stack/user/media/index/service-fabric-cluster.png" alt="">
+              <br><b>Deploy a Service Fabric cluster</b></a>
               <p>Create an HTTP triggered serverless function.</p>
       - html: <a href="/azure-stack/user/azure-stack-solution-template-kubernetes-deploy">
               <img height="48" width="48" src="/azure-stack/user/media/index/kubernetes.png" alt="">
-              <br><b>Quickstart - Deploy Wordpress to a Kuberentes Cluster</b></a>
+              <br><b>Deploy a Kubernetes Cluster</b></a>
               <p>Create a content management system in orchestrated containers.</p>
-      - html: <a href="/azure-stack/user/azure-stack-solution-template-kubernetes-deploy">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_method.svg" alt="">
-              <br><b>Quickstart - Deploy your container to Azure Stack</b></a>
+      - html: <a href="/azure-stack/userazure-stack-solution-template-cognitive-services">
+              <img height="48" width="48" src="/azure-stack/user/media/index/icon-cognitive-services.svg" alt="">
+              <br><b>Deploy Azure Cognitive Services</b></a>
               <p>Create a Docker container with your app and host it in Azure Stack.</p>
