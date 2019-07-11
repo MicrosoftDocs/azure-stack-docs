@@ -22,13 +22,13 @@ ms.lastreviewed: 12/03/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Microsoft Azure Stack provides a set of the storage services for disks, blobs, tables, queues, and account management functions. You can use a set of Azure storage tools if you want to manage or move data to or from Azure Stack storage. This article provides an  overview of the available tools.
+Azure Stack provides a set of storage services for disks, blobs, tables, queues, and account management functions. Use a set of Azure Storage tools if you want to manage or move data to or from Azure Stack Storage. This article provides an overview of the available tools.
 
 Your requirements determine which of the following tools works best for you:
 
 * [AzCopy](#azcopy)
 
-    A storage-specific, command-line utility that you can download to copy data from one object to another object within your storage account, or between storage accounts.
+    A storage-specific, command-line utility that you can download to copy data from one object to another object within or between your storage accounts.
 
 * [Azure PowerShell](#azure-powershell)
 
@@ -44,9 +44,9 @@ Your requirements determine which of the following tools works best for you:
 
 * [Blobfuse](#blobfuse)
 
-    A virtual file system driver for Azure Blob Storage, which allows you to access your existing block blob data in your Storage account through the Linux file system. 
+    A virtual file system driver for Azure Blob Storage, which allows you to access your existing block blob data in your storage account through the Linux file system.
 
-Due to the storage services differences between Azure and Azure Stack, there might be some specific requirements for each tool described in the following sections. For a comparison between Azure Stack storage and Azure storage, see [Azure Stack storage: Differences and considerations](azure-stack-acs-differences.md).
+Due to the storage services differences between Azure and Azure Stack, there might be some specific requirements for each tool described in the following sections. For a comparison between Azure Stack Storage and Azure Storage, see [Azure Stack Storage: Differences and considerations](azure-stack-acs-differences.md).
 
 ## AzCopy
 
