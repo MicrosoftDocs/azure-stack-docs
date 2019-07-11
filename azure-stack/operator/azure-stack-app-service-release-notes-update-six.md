@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/10/2019
+ms.date: 06/24/2019
 ms.author: anwestg
 ms.reviewer:
 
@@ -108,6 +108,10 @@ Tenants cannot yet make use of Deployment Center, which is a feature that was re
 - Deployment options (Classic) UX and Deployment credentials portal options not available
 
 In order to reach the deployment options and deployment credentials user experiences in the Azure Stack deployment, tenants should access the portal using this URL format - https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;/?websitesExtension_oldvsts=true - which, for the ASDK would be [https://portal.local.azurestack.external/?websitesExtension_oldvsts=true](https://portal.local.azurestack.external/?websitesExtension_oldvsts=true) , and then navigate to their applications normally.
+
+- Azure Function Monitoring continually shows "Loading" in the portal
+
+When you attempt to monitor individual Functions, in the tenant portal, you will see no invocation log, success count, or error count.  To re-enable this functionality, go to your **Function App**, go to **Platform Features**, and go to **Application settings**.  Add a new app setting - name **AzureWebJobsDashboard** and set the value to the same value as set in AzureWebJobsStorage.  Then go to the Monitor view on your function and you will see the monitoring information.
 
 ## Next steps
 

@@ -24,7 +24,7 @@ ms.lastreviewed: 06/18/2019
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 > [!note]  
-> Kubernetes on Azure Stack is in preview. Azure Stack disconnected scenario is not currently supported by the preview.
+> Kubernetes on Azure Stack is in preview. An Azure Stack disconnected scenario is not currently supported by the preview. Only use the marketplace item for development and test scenarios.
 
 You can offer Kubernetes as a Marketplace item to your users. Your users can, then, deploy Kubernetes in a single, coordinated operation.
 
@@ -60,7 +60,7 @@ Create a plan, an offer, and a subscription for the Kubernetes Marketplace item.
 
 ## Create a service principal and credentials in AD FS
 
-If you use Active Directory Federated Services (AD FS) for your identity management service, you will need to create a service principal for users deploying a Kubernetes cluster. Create service principal using a client secret. For instructions, see [Create a service principal using a client secret](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret).
+If you use Active Directory Federated Services (AD FS) for your identity management service, you will need to create a service principal for users deploying a Kubernetes cluster. Create service principal using a client secret. For instructions, see [Create a service principal using a client secret](azure-stack-create-service-principals.md#create-a-service-principal-that-uses-client-secret-credentials).
 
 ## Add an Ubuntu server image
 

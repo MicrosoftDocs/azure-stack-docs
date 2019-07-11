@@ -27,7 +27,7 @@
         href: azure-stack-subscribe-services.md
       - name: Create a VM from a template
         href: azure-stack-create-vm-template.md
-    - name: Hybrid cloud apps
+    - name: Hybrid cloud apps overview
       href: azure-stack-hybrid-cloud-patterns.md
       items:
       - name: Deploy apps to Azure and Azure Stack
@@ -36,26 +36,30 @@
         href: azure-stack-solution-hybrid-identity.md
       - name: Configure hybrid cloud connectivity
         href: azure-stack-solution-hybrid-connectivity.md
-      - name: Create a staged data analytics solution
-        href: azure-stack-solution-staged-data-analytics.md
       - name: Create cross-cloud scaling solutions with Azure
         href: azure-stack-solution-cloud-burst.md
       - name: Create a geo-distributed app solution
         href: azure-stack-solution-geo-distributed.md
       - name: Deploy a hybrid cloud solution
         href: azure-stack-solution-hybrid-cloud.md
+      - name: Deploy staged data analytics
+        href: azure-stack-solution-staged-data.md
+      - name: Deploy high-availability MongoDB
+        href: azure-stack-solution-mongodb-ha.md
+      - name: Deploy high-availability SQL Server 2016
+        href: azure-stack-solution-sql-ha.md
 - name: How-to guides
   items:
   - name: Use the Azure Stack Portal
     href: azure-stack-use-portal.md
   - name: Connect with PowerShell
     href: azure-stack-powershell-configure-user.md
-  - name: Security & compliance
+  - name: Security, compliance & identity
     items:
     - name: Use role-based access control
       href: azure-stack-manage-permissions.md
-    - name: Use service principals
-      href: Azure-stack-create-service-principals.md
+    - name: Use an app identity to access resources
+      href: /azure-stack/operator/azure-stack-create-service-principals?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
   - name: Use services
     items:
     - name: Compute

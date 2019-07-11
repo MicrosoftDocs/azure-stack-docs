@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2019
+ms.date: 06/28/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 06/14/2019
+ms.lastreviewed: 06/28/2019
 
 ---
 
@@ -24,6 +24,23 @@ ms.lastreviewed: 06/14/2019
 This article provides information about changes, fixes, and known issues in the Azure Stack Development Kit (ASDK). If you're not sure which version you're running, you can [use the portal to check](../operator/azure-stack-updates.md#determine-the-current-version).
 
 Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [RSS feed](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
+
+## Build 1.1906.0.30
+
+### New features
+
+- For a list of new features in this release, see [this section](../operator/azure-stack-release-notes-1906.md#whats-in-this-update) of the Azure Stack release notes.
+
+### Changes
+
+- Added an **AzS-SRNG01** support ring VM hosting the log collection service for Azure Stack. For more information, see [Virtual machine roles](asdk-architecture.md).
+
+### Fixed and known issues
+
+- When creating virtual machine resources using some Marketplace images, you might not be able to complete the deployment. As a workaround, you can click on the **Download template and parameters** link in the **Summary** page and click on the **Deploy** button in the **Template** blade. 
+- For a list of Azure Stack issues fixed in this release, see [this section](../operator/azure-stack-release-notes-1906.md#fixes) of the Azure Stack release notes.
+- For a list of known issues, see [this article](../operator/azure-stack-release-notes-known-issues-1906.md).
+- Note that [available Azure Stack hotfixes](../operator/azure-stack-release-notes-1906.md#hotfixes) are not applicable to the Azure Stack ASDK.
 
 ## Build 1.1905.0.40
 
@@ -68,23 +85,6 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 ## Build 1903
 
 The 1903 payload does not include an ASDK release.
-
-## Build 1.1902.0.69
-
-### New features
-
-- The 1902 build introduces a new user interface on the Azure Stack Administrator portal for creating plans, offers, quotas, and add-on plans. For more information, including screenshots, see [Create plans, offers, and quotas](../operator/azure-stack-create-plan.md).
-
-- For a list of other changes and improvements in this release, see [this section](../operator/azure-stack-update-1902.md#improvements) in the Azure Stack release notes.
-
-<!-- ### New features
-
-- For a list of new features in this release, see [this section](../operator/azure-stack-update-1902.md#new-features) of the Azure Stack release notes.
-
-### Fixed and known issues
-
-- For a list of issues fixed in this release, see [this section](../operator/azure-stack-update-1902.md#fixed-issues) of the Azure Stack release notes. For a list of known issues, see [this section](../operator/azure-stack-update-1902.md#known-issues-post-installation).
-- Note that [available Azure Stack hotfixes](../operator/azure-stack-update-1902.md#azure-stack-hotfixes) are not applicable to the Azure Stack ASDK. -->
 
 ### Known issues
 

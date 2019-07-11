@@ -14,7 +14,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: mabrigg
-ms.reviewer: quying
+ms.reviewer: xiaofmao
 ms.lastreviewed: 11/20/2018
 
 ---

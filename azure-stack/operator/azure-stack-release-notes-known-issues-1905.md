@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 06/14/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 06/05/2019
+ms.lastreviewed: 06/14/2019
 ---
 
 # Azure Stack 1905 known issues
@@ -43,13 +43,6 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 - Occurrence: Common
 
 ## Portal
-
-### Administrative subscriptions
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
-- Remediation: These subscriptions will be suspended starting with 1906 and eventually deleted. If you have resources running on these two subscriptions, recreate them in user subscriptions prior to 1906.
-- Occurrence: Common
 
 ### Subscription resources
 
@@ -84,6 +77,13 @@ This article lists known issues in the 1905 release of Azure Stack. The list is 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, when you try to upload a blob using the **OAuth(preview)** option, the task fails with an error message.
 - Remediation: Upload the blob using the SAS option.
+- Occurrence: Common
+
+### Template
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the template deployment UI does not populate parameters for the template names beginning with "_" (the underscore character).
+- Remediation: Remove the "_" (underscore character) from the template name.
 - Occurrence: Common
 
 ## Networking
@@ -129,6 +129,14 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Remediation: Recreate the storage account with the same name you used previously.
 - Occurrence: Common
 
+### VM resize
+
+- Applicable: This issue applies to the 1905 release.
+- Cause: Unable to successfully resize a managed disk VM. Attempting to resize the VM generates an error with "code": "InternalOperationError",
+  "message": "An internal error occurred in the operation."
+- Remediation: We are working to remediate this in the next release. Currently, you must recreate the VM with the new VM size.
+- Occurrence: Common
+
 ### Virtual machine scale set
 
 #### CentOS
@@ -151,10 +159,10 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack.
 
-#### VMSS instance view blade doesn't load
+#### Scale set instance view blade doesn't load
 
 - Applicable: This issue applies to 1904 and 1905 release.
-- Cause: The instance view blade of a scaleset located at Azure Stack portal -> Dashboard -> Virtual machine scale sets -> AnyScaleSet - Instances -> AnyScaleSetInstance fails to load, and displays a crying cloud image.
+- Cause: The instance view blade of a virtual machine scale set located at Azure Stack portal -> Dashboard -> Virtual machine scale sets -> AnyScaleSet - Instances -> AnyScaleSetInstance fails to load, and displays a crying cloud image.
 - Remediation: There is currently no remediation and we are working on a fix. Until then, please use the CLI command `az vmss get-instance-view` to get the instance view of a scale set.
 
 ### Ubuntu SSH access
