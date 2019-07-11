@@ -35,7 +35,7 @@ Azure Stack Storage provides the following three services:
 
 - **Table storage**
 
-    Table storage stores structured datasets. Table storage is a NoSQL key-attribute data store, which allows for rapid development and fast access to large quantities of data.
+    Table storage stores structured datasets. Table storage is a NoSQL key-attribute data store, which allows for rapid development and fast access to large amounts of data.
 
 - **Queue storage**
 
@@ -76,7 +76,7 @@ Blob storage offers three types of blobs:
 
 Modern apps often demand data stores with greater scalability and flexibility than previous generations of software required. Table storage offers highly available, massively scalable storage, so that your app can automatically scale to meet user demand. Table storage is Microsoft's NoSQL key/attribute store—it has a schemaless design, making it different from traditional relational databases. With a schemaless data store, it's easy to adapt your data as the needs of your app evolve. Table storage is easy to use, so developers can create apps quickly.
 
-Table storage is a key-attribute store, which means that every value in a table is stored with a typed property name. The property name can be used for filtering and specifying selection criteria. A collection of properties and their values comprise an entity. Since table storage is schemaless, two entities in the same table can contain different collections of properties, and those properties can be of different types.
+Table storage is a key-attribute store, which means that every value in a table is stored with a typed property name. The property name is used for filtering and specifying selection criteria. A collection of properties and their values comprise an entity. Since table storage is schemaless, two entities in the same table can contain different collections of properties, and those properties can be of different types.
 
 You can use table storage to store flexible datasets, such as user data for web apps, address books, device information, and any other type of metadata that your service requires. For today's internet-based apps, NoSQL databases like table storage offer a popular alternative to traditional relational databases.
 
