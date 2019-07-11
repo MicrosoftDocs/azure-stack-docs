@@ -26,7 +26,7 @@ As an Azure Stack operator, being able to determine the health and status of you
 
 ## Running the validation tool and accessing results
 
-As stated previously, the validation tool is run via the PEP. Each test returns a **PASS/FAIL** status in the PowerShell window. Additionally, a detailed HTML report is created which can later be accessed during [log collection](azure-stack-diagnostics.md). Here is an outline of the end-to-end validation testing process: 
+As stated previously, the validation tool is run via the PEP. Each test returns a **PASS/FAIL** status in the PowerShell window. Here is an outline of the end-to-end validation testing process: 
 
 1. Access the privileged endpoint (PEP). Run the following commands to establish a PEP session:
 
