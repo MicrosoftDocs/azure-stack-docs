@@ -1,5 +1,5 @@
 ---
-title: Intelligent Edge patterns with Azure Stack | Microsoft Docs
+title: Hybrid cloud patterns with Azure Stack | Microsoft Docs
 description: An overview of patterns for the hybrid cloud and Intelligent Edge with Azure Stack
 services: azure-stack
 documentationcenter: ''
@@ -18,7 +18,7 @@ ms.reviewer: anajod
 ms.lastreviewed: 06/11/2019
 ---
 
-# Intelligent Edge design patterns for Azure Stack
+# Hybrid cloud design patterns for Azure Stack
 
 Microsoft Azure is the only consistent hybrid cloud. It allows you to reuse your development investments and enables applications that can span global Azure, the sovereign Azure clouds, and Azure Stack, which is an extension of Azure in your datacenter. Applications that span clouds are also referred to as *hybrid applications*.
 
@@ -158,7 +158,7 @@ For the core discussion of this pillar, see [*Availability*](https://docs.micros
 
 **Track instances and availability.** Highly available application components can be available through load balancing and synchronous data replication. You must determine how many instances can be offline before the service is interrupted.
 
-**Implement self-healing.** In the event an issue causes an interruption to the application availability, a detection by a monitoring system could initiate self-healing activities to the application, such as draining the failed instance and redeploying it. Most likely this requires a central monitoring solution, integrated with a hybrid Continuous Integration and Continuous Delivery (CI/CD) pipeline. The application is integrated with a monitoring system to identify issues that could require redeployment of an application component. The monitoring system can also trigger hybrid CI/CD to redeploy the application component and potentially any other dependent components in the same or other locations.
+**Implement self-healing.** In the event an issue causes an interruption to the application availability, a detection by a monitoring system could initiate self-healing activities to the application, such as draining the failed instance and redeploying it. Most likely this requires a central monitoring solution, integrated with a hybrid Continuous Integration, and Continuous Delivery (CI/CD) pipeline. The application is integrated with a monitoring system to identify issues that could require redeployment of an application component. The monitoring system can also trigger hybrid CI/CD to redeploy the application component and potentially any other dependent components in the same or other locations.
 
 **Maintain service-level agreements (SLAs).** Availability is critical for any agreements to maintain connectivity to the services and applications that you have with your customers. Each location that your hybrid application relies on might have its own SLA. These different SLAs can affect the overall SLA of your hybrid application.
 
@@ -232,7 +232,7 @@ For the core discussion of this pillar, see [*Security*](https://docs.microsoft.
 
 ## Summary
 
-This whitepaper provides a checklist of items that are important to consider during the authoring and designing of your hybrid applications. Reviewing these pillars before you deploy your application prevents you from running into these questions in production outages and potentially requiring you to revisit your design.
+This article provides a checklist of items that are important to consider during the authoring and designing of your hybrid applications. Reviewing these pillars before you deploy your application prevents you from running into these questions in production outages and potentially requiring you to revisit your design.
 
 It can seem like a time-consuming task beforehand, but you easily get your return on investment if you design your application based on these pillars.
 
@@ -240,6 +240,6 @@ It can seem like a time-consuming task beforehand, but you easily get your retur
 
 For more information, see the following resources:
 
--   [*Hybrid cloud*](https://azure.microsoft.com/en-us/overview/hybrid-cloud/)
--   [*Hybrid cloud applications*](https://azure.microsoft.com/en-us/solutions/hybrid-cloud-app/)
--   [*Develop Azure Resource Manager templates for cloud consistency*](http://aka.ms/consistency)
+-   [Hybrid cloud](https://azure.microsoft.com/en-us/overview/hybrid-cloud/)
+-   [Hybrid cloud applications](https://azure.microsoft.com/en-us/solutions/hybrid-cloud-app/)
+-   [Develop Azure Resource Manager templates for cloud consistency](http://aka.ms/consistency)

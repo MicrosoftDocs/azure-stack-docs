@@ -233,9 +233,9 @@
     href: azure-stack-csp-enable-billing-usage-tracking.md
 - name: Concepts
   items:
-  - name: Edge patterns
+  - name: Hybrid cloud patterns
     items: 
-      - name: Intelligent Edge patterns overview
+      - name: Hybrid cloud patterns overview
         href: azure-stack-edge-pattern-overview.md
       - name: Cross Cloud Scaling
         href: azure-stack-edge-pattern-cross-cloud-scaling.md
