@@ -16,7 +16,7 @@ metadata:
   ms.date: 07/11/2019
   ms.author: mabrigg
 abstract:
-  description: Azure Stack is a hybrid cloud platform that lets you use Azure services from your company's or service provider's datacenter. As a developer, you can build apps on Azure Stack. You can then deploy them to Azure Stack, to Azure, or you can build truly hybrid apps that leverage the connectivity between an Azure Stack cloud and Azure. Learn how to create resources and deploy apps with our quickstarts and tutorials.<br/><br/>If you're an Azure Stack operator who manages the infrastructure and offers services, see our <a href="/azure/azure-stack/">operator documentation</a>.<br/><br/>If you are an Azure Stack operator interested in the Azure Stack Development Kit (ASDK), a single-node deployment of Azure Stack that you can download and use for free, see our <a href="../asdk">ASDK documentation</a>.
+  description: Azure Stack is a hybrid cloud platform that lets you use Azure services from your company's or service provider's datacenter. As a developer, you can build apps on Azure Stack. You can then deploy them to Azure Stack, to Azure, or you can build truly hybrid apps that leverage the connectivity between an Azure Stack cloud and Azure. Learn how to create resources and deploy apps with our quickstarts and tutorials.<br/><br/>If you're an Azure Stack operator who manages the infrastructure and offers services, see our <a href="../operator/">operator documentation</a>.<br/><br/>If you are an Azure Stack user interested in the Azure Stack Development Kit (ASDK), a single-node deployment of Azure Stack that you can download and use for free, see our <a href="../asdk">ASDK documentation</a>.
 sections:
   - title: Getting started with Azure Stack
     items:
@@ -62,8 +62,8 @@ sections:
       items:  
       - html: <a href="/azure-stack/user/azure-stack-create-vm-template">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_package.svg" alt="">
-              <br><b>Overview - Deploy a VM in IaaS</b></a>
-              <p>Can create a VM using Azure Resource Manager templates</p>
+              <br><b>Deploy a VM in IaaS with a template.</b></a>
+              <p>Create a VM using Azure Stack Resource Manager templates</p>
       - html: <a href="/azure-stack/user/azure-stack-quick-linux-portal">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_vmm-cloud.svg" alt="">
               <br><b>Quickstart - Create a VM</b></a>
@@ -81,12 +81,12 @@ sections:
       - html: <a href="/azure-stack/user/azure-stack-solution-template-service-fabric-cluster">
               <img height="48" width="48" src="/azure-stack/user/media/index/service-fabric-cluster.png" alt="">
               <br><b>Deploy a Service Fabric cluster</b></a>
-              <p>Create an HTTP triggered serverless function.</p>
+              <p>Deploy a secured Service Fabric cluster in Azure Stack.</p>
       - html: <a href="/azure-stack/user/azure-stack-solution-template-kubernetes-deploy">
               <img height="48" width="48" src="/azure-stack/user/media/index/kubernetes.png" alt="">
               <br><b>Deploy a Kubernetes Cluster</b></a>
-              <p>Create a content management system in orchestrated containers.</p>
+              <p>Deploy and set up the resources for Kubernetes in a single, coordinated operation.</p>
       - html: <a href="/azure-stack/user/azure-stack-solution-template-cognitive-services">
               <img height="48" width="48" src="/azure-stack/user/media/index/icon-cognitive-services.svg" alt="">
               <br><b>Deploy Azure Cognitive Services</b></a>
-              <p>Create a Docker container with your app and host it in Azure Stack.</p>
+              <p>Container support in Azure Cognitive Services allows you to use the same APIs that are available in Azure.</p>
