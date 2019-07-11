@@ -1,5 +1,5 @@
 ---
-title: Manage access to resources with Azure Stack role-based access control | Microsoft Docs
+title: Manage access to resources in Azure Stack with role-based access control | Microsoft Docs
 description: Learn how to manage role-based access control (RBAC) permissions in Azure Stack as an admin or a tenant.
 services: azure-stack
 documentationcenter: ''
@@ -20,7 +20,7 @@ ms.lastreviewed: 03/11/2019
 
 ---
 
-# Manage access to resources with Azure Stack role-based access control
+# Manage access to resources in Azure Stack with role-based access control
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
