@@ -22,7 +22,7 @@ ms.lastreviewed: 06/11/2019
 
 Code from a single location and deploy to multiple targets in development, test, and production environments that may be in your local datacenter, private clouds, or the public cloud.
 
-## Context and Problem
+## Context and problem
 
 Application deployment continuity, security, and reliability are essential to organizations and critical to development teams.
 
