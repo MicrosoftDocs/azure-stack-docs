@@ -1,6 +1,6 @@
 ---
-title: DevOps pattern for the Intelligent Edge with Azure Stack  | Microsoft Docs
-description: Learn about the DevOps pattern for the Intelligent Edge with Azure Stack.
+title: DevOps pattern for the intelligent edge with Azure Stack  | Microsoft Docs
+description: Learn about the DevOps pattern for the intelligent edge with Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/11/2019
+ms.date: 07/11/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 06/11/2019
@@ -38,12 +38,12 @@ In the diagram this is located outside of the public cloud, but it would need to
 **Domain Name System (DNS)**  
 The Domain Name System, or DNS, is responsible for translating (or resolving) a website or service name to its IP address.
 
-### Public Cloud
+### Public cloud
 
 **Cloud Endpoint**  
 Public IP addresses are used to route the incoming traffic through traffic manager to the public cloud application resources endpoint.  
 
-### Local Clouds
+### Local clouds
 
 **Local endpoint**  
 Public IP addresses are used to route the incoming traffic through traffic manager to the public cloud application resources endpoint.
@@ -79,3 +79,7 @@ The pattern ensures seamless management and familiar interface between environme
 Learn how to direct traffic to specific endpoints based on various metrics using the geo-distributed apps pattern. Creating a Traffic Manager profile with geographic-based routing and endpoint configuration ensures information is routed to endpoints based on regional requirements, corporate and international regulation, and your data needs.
 
 [Create a geo-distributed app solution with Azure and Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-geo-distributed)
+
+## Next steps
+
+Learn about [Hybrid cloud design patterns for Azure Stack](azure-stack-edge-pattern-hybrid-ci-cd.md)

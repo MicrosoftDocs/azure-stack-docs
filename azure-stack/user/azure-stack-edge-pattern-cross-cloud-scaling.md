@@ -1,6 +1,6 @@
 ---
-title: Cross-cloud scaling pattern for the Intelligent Edge with Azure Stack | Microsoft Docs
-description: Learn about the cross-cloud scaling pattern for the Intelligent Edge with Azure Stack
+title: Cross-cloud scaling pattern for the intelligent edge with Azure Stack | Microsoft Docs
+description: Learn about the cross-cloud scaling pattern for the intelligent edge with Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/11/2019
+ms.date: 07/11/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 06/11/2019
@@ -61,7 +61,7 @@ Use a custom domain name for routing requests glob.
 **Public IP Addresses**  
 Public IP addresses are used to route the incoming traffic through traffic manager to the public cloud application resources endpoint.  
 
-### Local Cloud
+### Local cloud
 
 **Hosted Build Server**  
 An environment for hosting your build pipeline.
@@ -115,3 +115,7 @@ This pattern isn't recommended when:
 Learn how to create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack hosted web app, to an Azure hosted web app with auto-scaling via traffic manager, ensuring flexible and scalable cloud utility when under load.
 
 [Create cross-cloud scaling solutions with Azure](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-cloud-burst)
+
+## Next steps
+
+Learn about [Hybrid cloud design patterns for Azure Stack](azure-stack-edge-pattern-hybrid-ci-cd.md)

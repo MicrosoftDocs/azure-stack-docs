@@ -1,6 +1,6 @@
 ---
 title: Hybrid cloud patterns with Azure Stack | Microsoft Docs
-description: An overview of patterns for the hybrid cloud and Intelligent Edge with Azure Stack
+description: An overview of patterns for the hybrid cloud and the intelligent edge with Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/11/2019
+ms.date: 07/11/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 06/11/2019
@@ -54,7 +54,7 @@ An application component is defined by many forms and scenarios. The most import
 
 The common application components to include in your inventory are listed in Table 1.
 
-### Table 1. Common application components
+### Table 1. Common app components
 
 
 | **Component** | **Hybrid application guidance** |
@@ -69,7 +69,7 @@ The common application components to include in your inventory are listed in Tab
 | Data ingestion | Data can be submitted to an application in many ways, ranging from user-submitted values in a web form to continuously high-volume data flow. |
 | Data processing | Your data processing tasks (such as reports, analytics, batch exports, and data transformation) can either be processed at the source or offloaded on a separate component using a copy of the data. |
 
-## Evaluate application components against the pillars
+## Evaluate app components to the pillars
 
 For each component, evaluate its characteristics for each pillar. As you evaluate each component with all of the pillars, questions you might not have considered may become known to you that affect the design of the hybrid application. Acting on these considerations could add value in optimizing your application. Table 2 provides a description of each pillar as it relates to hybrid applications.
 
@@ -102,7 +102,7 @@ Placement is the important task of positioning components so that they can best 
 
 **Verify required locations.** Make sure the application or any of its components are required to operate in, or require certification for, a specific cloud. This can include sovereignty requirements from your company or dictated by law. Also, determine if any on-premises operations are required for a particular location or locale.
 
-**Ascertain connectivity dependencies.** Required locations and other factors can dictate the connectivity dependencies among your components. As you place the components, determine the optimal connectivity and security for communication among them. Choices include [*VPN*,](https://docs.microsoft.com/en-us/azure/vpn-gateway/) [*ExpressRoute*,](https://docs.microsoft.com/en-us/azure/expressroute/) and [*Hybrid Connections*.](https://docs.microsoft.com/en-us/azure/app-service/app-service-hybrid-connections)
+**Ascertain connectivity dependencies.** Required locations and other factors can dictate the connectivity dependencies among your components. As you place the components, determine the optimal connectivity and security for communication among them. Choices include [*VPN*,](https://docs.microsoft.com/azure/vpn-gateway/) [*ExpressRoute*,](https://docs.microsoft.com/azure/expressroute/) and [*Hybrid Connections*.](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
 
 **Evaluate platform capabilities.** For each application component, see if the required resource provider for the application component is available on the cloud and if the bandwidth can accommodate the expected throughput and latency requirements.
 
@@ -112,7 +112,7 @@ Placement is the important task of positioning components so that they can best 
 
 **Plan for latency.** Inter-cloud operations can introduce physical distance between the application components. Ascertain the requirements to accommodate any latency.
 
-**Control traffic flows.** Handle peak usage and the appropriate and secured communications for personal identifiable information (PII) data when accessed by the front end in a public cloud.
+**Control traffic flows.** Handle peak usage and the appropriate and secured communications for personal identifiable information data when accessed by the front end in a public cloud.
 
 ## Scalability
 
@@ -172,7 +172,7 @@ For the core discussion of this pillar, see [*Resiliency*](https://docs.microsof
 
 **Uncover disaster-recovery dependencies.** Disaster recovery in one cloud might require changes to application components in another cloud. If one or multiple components from one cloud are failed over to another location, either within the same cloud or to another cloud, the dependent components need to be made aware of these changes. This also includes the connectivity dependencies. Resiliency requires a fully tested application recovery plan for each cloud.
 
-**Establish recovery flow.** An effective recovery flow design has evaluated application components for their ability to accommodate buffers, retries, retrying failed data transfer, and, if necessary, fall back to a different service or workflow. You must determine what back up mechanism to use, what its restore procedure involves, and how often it’s tested. You should also determine the frequency for both incremental and full backups.
+**Establish recovery flow.** An effective recovery flow design has evaluated application components for their ability to accommodate buffers, retries, retrying failed data transfer, and, if necessary, fall back to a different service or workflow. You must determine what back-up mechanism to use, what its restore procedure involves, and how often it’s tested. You should also determine the frequency for both incremental and full backups.
 
 **Test partial recoveries.** A partial recovery for part of the application can provide reassurance to users that all is not unavailable. This part of the plan should ensure that a partial restore doesn’t have any side effects, such as a backup and restore service that interacts with the application to gracefully shut it down before the backup is made.
 
@@ -190,7 +190,7 @@ For the core discussion of this pillar, see [*Resiliency*](https://docs.microsof
 
 The considerations for how you manage your hybrid applications are critical in designing your architecture. A well-managed hybrid application provides an infrastructure as code that enables the integration of consistent application code in a common development pipeline. By implementing consistent system-wide and individual testing of changes to the infrastructure, you can assure an integrated deployment if the changes pass the tests, allowing them to be merged into the source code.
 
-For the core discussion of this pillar, see [*Management and DevOps*](https://docs.microsoft.com/en-us/azure/architecture/guide/pillars#management-and-devops) in Pillars of software quality.
+For the core discussion of this pillar, see [*Management and DevOps*](https://docs.microsoft.com/azure/architecture/guide/pillars#management-and-devops) in Pillars of software quality.
 
 ### Manageability checklist
 
@@ -240,6 +240,6 @@ It can seem like a time-consuming task beforehand, but you easily get your retur
 
 For more information, see the following resources:
 
--   [Hybrid cloud](https://azure.microsoft.com/en-us/overview/hybrid-cloud/)
--   [Hybrid cloud applications](https://azure.microsoft.com/en-us/solutions/hybrid-cloud-app/)
+-   [Hybrid cloud](https://azure.microsoft.com/overview/hybrid-cloud/)
+-   [Hybrid cloud applications](https://azure.microsoft.com/solutions/hybrid-cloud-app/)
 -   [Develop Azure Resource Manager templates for cloud consistency](http://aka.ms/consistency)

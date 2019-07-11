@@ -1,6 +1,6 @@
 ---
-title: The DevOps pattern for the Intelligent Edge with Azure Stack | Microsoft Docs
-description: Learn about the DevOps pattern for the Intelligent Edge with Azure Stack 
+title: The DevOps pattern for the intelligent edge with Azure Stack | Microsoft Docs
+description: Learn about the DevOps pattern for the intelligent edge with Azure Stack 
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/11/2019
+ms.date: 07/11/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 06/11/2019
@@ -56,7 +56,7 @@ The DevOps Pattern is intended to ensure consistency across deployments regardle
 
 -   Are resource-specific properties available in all target clouds?
 
-For more information, see [Develop Azure Resource Manager templates for cloud consistency](https://docs.microsoft.com/en-us/azure/azure-resource-manager/templates-cloud-consistency).
+For more information, see [Develop Azure Resource Manager templates for cloud consistency](https://docs.microsoft.com/azure/azure-resource-manager/templates-cloud-consistency).
 
 In addition, consider the following points when deciding how to implement this pattern:
 
@@ -101,3 +101,7 @@ This pattern isn't recommended:
 Learn how to deploy an application to Azure and Azure Stack using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.
 
 [Deploy apps to Azure and Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-solution-pipeline)
+
+## Next steps
+
+Learn about [Hybrid cloud design patterns for Azure Stack](azure-stack-edge-pattern-hybrid-ci-cd.md)
