@@ -124,7 +124,7 @@ You can download the Azure Stack 1906 update package from [the Azure Stack downl
 
 ## Hotfixes
 
-Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1905 before updating Azure Stack to 1906, and after updating, install any [available hotfixes for 1906](#after-successfully-applying-the-1906-update).
+Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1905 before updating Azure Stack to 1906. After updating, install any [available hotfixes for 1906](#after-successfully-applying-the-1906-update).
 
 Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do not attempt to install hotfixes on the ASDK.
 
