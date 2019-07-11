@@ -75,7 +75,7 @@ Use a custom domain name for routing requests glob.
 **Public IP Addresses**  
 Public IP addresses are used to route the incoming traffic through traffic manager to the public cloud application resources endpoint. 
 
-## Issues and Considerations
+## Issues and considerations
 
 
 Consider the following points when deciding how to implement this pattern:
