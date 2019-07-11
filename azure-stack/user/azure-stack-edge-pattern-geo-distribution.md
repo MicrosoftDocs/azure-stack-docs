@@ -82,4 +82,4 @@ Learn how to direct traffic to specific endpoints based on various metrics using
 
 ## Next steps
 
-Learn about [Hybrid cloud design patterns for Azure Stack](azure-stack-edge-pattern-hybrid-ci-cd.md)
+Learn about [Hybrid cloud design patterns for Azure Stack](azure-stack-edge-pattern-overview.md)

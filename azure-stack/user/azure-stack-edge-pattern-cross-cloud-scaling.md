@@ -41,7 +41,7 @@ The cross-cloud scaling pattern extends an app located in a local cloud with pub
 
 The Cross-cloud Scaling Pattern consists of the following components.
 
-**Traffic Manager\
+**Traffic Manager**  
 **In the diagram this is located outside of the public cloud group, but it would need to able to coordinate traffic in both the local data center and the public cloud. The balancer delivers high availability for application by monitoring endpoints and providing failover redistribution when required.
 
 **Domain Name System (DNS)**  
@@ -118,4 +118,4 @@ Learn how to create a cross-cloud solution to provide a manually triggered proce
 
 ## Next steps
 
-Learn about [Hybrid cloud design patterns for Azure Stack](azure-stack-edge-pattern-hybrid-ci-cd.md)
+Learn about [Hybrid cloud design patterns for Azure Stack](azure-stack-edge-pattern-overview.md)

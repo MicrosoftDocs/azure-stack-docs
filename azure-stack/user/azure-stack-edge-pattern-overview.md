@@ -36,7 +36,7 @@ Essentially, these are questions you need to think about before creating a hybri
 
 -   Evaluate application components against the pillars.
 
-## Identify and evaluate the application components
+## Evaluate the application components
 
 Each component of an application has its own specific role within the larger application and should be reviewed with all design considerations. Each component’s requirements and features should map to these considerations to help determine the application architecture.
 
@@ -69,7 +69,7 @@ The common application components to include in your inventory are listed in Tab
 | Data ingestion | Data can be submitted to an application in many ways, ranging from user-submitted values in a web form to continuously high-volume data flow. |
 | Data processing | Your data processing tasks (such as reports, analytics, batch exports, and data transformation) can either be processed at the source or offloaded on a separate component using a copy of the data. |
 
-## Evaluate app components to the pillars
+## Assess app components for pillars
 
 For each component, evaluate its characteristics for each pillar. As you evaluate each component with all of the pillars, questions you might not have considered may become known to you that affect the design of the hybrid application. Acting on these considerations could add value in optimizing your application. Table 2 provides a description of each pillar as it relates to hybrid applications.
 

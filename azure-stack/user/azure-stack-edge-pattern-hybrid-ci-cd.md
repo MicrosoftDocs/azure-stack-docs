@@ -104,4 +104,4 @@ Learn how to deploy an application to Azure and Azure Stack using a hybrid conti
 
 ## Next steps
 
-Learn about [Hybrid cloud design patterns for Azure Stack](azure-stack-edge-pattern-hybrid-ci-cd.md)
+Learn about [Hybrid cloud design patterns for Azure Stack](azure-stack-edge-pattern-overview.md)

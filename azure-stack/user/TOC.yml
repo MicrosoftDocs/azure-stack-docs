@@ -248,7 +248,7 @@
         href: azure-stack-edge-pattern-overview.md
       - name: Cross Cloud Scaling
         href: azure-stack-edge-pattern-cross-cloud-scaling.md
-      - name: Hybrid CI/CD
+      - name: DevOps (Hybrid CI/CD)
         href: azure-stack-edge-pattern-hybrid-ci-cd.md
       - name: Geo-distributed application
         href: azure-stack-edge-pattern-geo-distribution.md
