@@ -86,7 +86,7 @@ sections:
               <img height="48" width="48" src="/azure-stack/user/media/index/kubernetes.png" alt="">
               <br><b>Deploy a Kubernetes Cluster</b></a>
               <p>Create a content management system in orchestrated containers.</p>
-      - html: <a href="/azure-stack/userazure-stack-solution-template-cognitive-services">
+      - html: <a href="/azure-stack/user/azure-stack-solution-template-cognitive-services">
               <img height="48" width="48" src="/azure-stack/user/media/index/icon-cognitive-services.svg" alt="">
               <br><b>Deploy Azure Cognitive Services</b></a>
               <p>Create a Docker container with your app and host it in Azure Stack.</p>
