@@ -111,16 +111,16 @@ Azure PowerShell is a module that provides cmdlets for managing services on both
 
 ### Install and Configure PowerShell for Azure Stack
 
-Azure Stack compatible Azure PowerShell modules are required to work with Azure Stack. For more information, see [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md) and [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md) to learn more.
+Azure Stack compatible Azure PowerShell modules are required to work with Azure Stack. For more information, see [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md) and [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md).
 
 ### PowerShell Sample script for Azure Stack 
 
-This sample assume you have successfully [Installed PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md). This script will help you complete the configuration and ask your Azure Stack tenant credentials to add your account to the local PowerShell environment. Then, the script will set the default Azure subscription, create a new storage account in Azure, create a new container in this new storage account, and upload an existing image file (blob) to that container. After the script lists all blobs in that container, it will create a new destination directory on your local computer and download the image file.
+This sample assumes you have successfully [Installed PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md). This script will help you complete the configuration and ask your Azure Stack tenant credentials to add your account to the local PowerShell environment. Then, the script will set the default Azure subscription, create a new storage account in Azure, create a new container in this new storage account, and upload an existing image file (blob) to that container. After the script lists all blobs in that container, it'll create a new destination directory on your local computer and download the image file.
 
 1. Install [Azure Stack-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
 2. Download the [tools required to work with Azure Stack](../operator/azure-stack-powershell-download.md).
-3. Open **Windows PowerShell ISE** and **Run as Administrator**, click **File** > **New** to create a new script file.
-4. Copy the script below and paste to the new script file.
+3. Open **Windows PowerShell ISE** and **Run as Administrator**, then click **File** > **New** to create a new script file.
+4. Copy the script below and paste it to the new script file.
 5. Update the script variables based on your configuration settings.
    > [!NOTE]
    > This script has to be run at the root directory for **AzureStack_Tools**.
@@ -192,7 +192,7 @@ $blobs | Get-AzureStorageBlobContent -Destination $DestinationFolder
 
 ### PowerShell known issues
 
-The current compatible Azure PowerShell module version for Azure Stack is 1.2.11 for the user operations. It's different from the latest version of Azure PowerShell. This difference impacts storage services operation:
+The current compatible Azure PowerShell module version for Azure Stack is 1.2.11 for the user operations. It's different from the latest version of Azure PowerShell. This difference impacts storage services operation in the follow way:
 
 The return value format of `Get-AzureRmStorageAccountKey` in version 1.2.11 has two properties: `Key1` and `Key2`, while the current Azure version returns an array containing all the account keys.
 
