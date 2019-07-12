@@ -216,7 +216,7 @@ The Azure CLI is Azure's command-line experience for managing Azure resources. Y
 
 Azure CLI is optimized for managing and administering Azure resources from the command line, and for building automation scripts that work against the Azure Resource Manager. It provides many of the same functions found in the Azure Stack portal, including rich data access.
 
-Azure Stack requires Azure CLI version 2.0 or later. For more information about installing and configuring Azure CLI with Azure Stack, see [Install and configure Azure Stack CLI](azure-stack-version-profiles-azurecli2.md). For more information about how to use the Azure CLI to perform several tasks working with resources in your Azure Stack storage account, see [Using the Azure CLI with Azure storage](/azure/storage/storage-azure-cli)
+Azure Stack requires Azure CLI version 2.0 or later. For more information about installing and configuring Azure CLI with Azure Stack, see [Install and configure Azure Stack CLI](azure-stack-version-profiles-azurecli2.md). For more information about how to use the Azure CLI to perform several tasks working with resources in your Azure Stack storage account, see [Using the Azure CLI with Azure storage](/azure/storage/storage-azure-cli).
 
 ### Azure CLI sample script for Azure Stack
 
@@ -227,7 +227,7 @@ Once you complete the CLI installation and configuration, you can try the follow
 * Lists all blobs in the container.
 * Downloads the file to a destination on your local computer that you specify.
 
-Before you run this script, make sure that you can successfully connect to, and sign in to the target Azure Stack.
+Before you run this script, make sure that you can successfully connect and sign in to the target Azure Stack.
 
 1. Open your favorite text editor, then copy and paste the preceding script into the editor.
 2. Update the script's variables to reflect your configuration settings.
@@ -268,12 +268,12 @@ az storage blob download --container-name $AZURESTACK_STORAGE_CONTAINER_NAME --a
 echo "Done"
 ```
 
-## Microsoft Azure storage explorer
+## Microsoft Azure Storage Explorer
 
-Microsoft Azure storage explorer is a standalone app from Microsoft. It allows you to easily work with both Azure storage and Azure Stack storage data on Windows, macOS and Linux computers. If you want an easy way to manage your Azure Stack storage data, then consider using Microsoft Azure storage explorer.
+Azure Storage Explorer is a standalone app from Microsoft. It allows you to easily work with both Azure Storage and Azure Stack Storage data on Windows, macOS, and Linux computers. If you want an easy way to manage your Azure Stack Storage data, then consider using Microsoft Azure Storage Explorer.
 
-* To learn more about configuring Azure storage explorer to work with Azure Stack, see [Connect storage explorer to an Azure Stack subscription](azure-stack-storage-connect-se.md).
-* To learn more about Microsoft Azure storage explorer, see [Get started with storage explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* To learn more about configuring Azure Storage Explorer to work with Azure Stack, see [Connect Storage Explorer to an Azure Stack subscription](azure-stack-storage-connect-se.md).
+* To learn more about Microsoft Azure Storage Explorer, see [Get started with storage explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 
 ## Blobfuse 
 
