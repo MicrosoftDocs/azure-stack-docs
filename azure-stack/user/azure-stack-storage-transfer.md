@@ -1,5 +1,5 @@
 ---
-title: Tools for Azure Stack storage | Microsoft Docs
+title: Use data transfer tools for Azure Stack Storage | Microsoft Docs
 description: Learn about Azure Stack storage data transfer tools
 services: azure-stack
 documentationcenter: ''
@@ -18,7 +18,7 @@ ms.lastreviewed: 12/03/2018
 
 
 ---
-# Use data transfer tools for Azure Stack storage
+# Use data transfer tools for Azure Stack Storage
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -277,15 +277,15 @@ Azure Storage Explorer is a standalone app from Microsoft. It allows you to easi
 
 ## Blobfuse 
 
-[Blobfuse](https://github.com/Azure/azure-storage-fuse) is a virtual file system driver for Azure Blob Storage, which allows you to access your existing block blob data in your Storage account through the Linux file system. Azure Blob Storage is an object storage service and therefore does not have a hierarchical namespace. Blobfuse provides this namespace using the virtual directory scheme with the use of forward-slash `/` as a delimiter. Blobfuse works on both Azure and Azure Stack. 
+[Blobfuse](https://github.com/Azure/azure-storage-fuse) is a virtual file system driver for Azure Blob Storage, which allows you to access your existing block blob data in your storage account through the Linux file system. Azure Blob Storage is an object storage service and therefore doesn't have a hierarchical namespace. Blobfuse provides this namespace using the virtual directory scheme with the use of forward-slash `/` as a delimiter. Blobfuse works on both Azure and Azure Stack. 
 
-To learn more about mounting Blob storage as a file system with Blobfuse on Linux, see [How to mount Blob storage as a file system with Blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux). 
+To learn more about mounting blob storage as a file system with Blobfuse on Linux, see [How to mount Blob storage as a file system with Blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux). 
 
-For Azure Stack, **blobEndpoint** needs to be specified besides accountName, accountKey/sasToken, containerName, while configuring your Storage account credentials in the step of preparing for mounting. 
+For Azure Stack, *blobEndpoint* needs to be specified while configuring your storage account credentials along with accountName, accountKey/sasToken, and containerName.
 
-In the Azure Stack development Kit, the blobEndpoint should be `myaccount.blob.local.azurestack.external`. In Azure Stack integrated system, contact your cloud administrator if you're not sure about your endpoint. 
+In the Azure Stack Development Kit (ASDK), the *blobEndpoint* should be `myaccount.blob.local.azurestack.external`. In Azure Stack integrated system, contact your cloud admin if you're not sure about your endpoint.
 
-Please be aware that accountKey and sasToken can only be configured one at a time. When storage account key is given, the credentials configuration file is in the following format: 
+Be aware that *accountKey* and *sasToken* can only be configured one at a time. When a storage account key is given, the credentials configuration file is in the following format:
 
 ```
 accountName myaccount 
@@ -294,7 +294,7 @@ containerName mycontainer
 blobEndpoint myaccount.blob.local.azurestack.external
 ```
 
-When shared access token is given, the credentials configuration file is in the following format:
+When a shared access token is given, the credentials configuration file is in the following format:
 
 ```  
 accountName myaccount 
