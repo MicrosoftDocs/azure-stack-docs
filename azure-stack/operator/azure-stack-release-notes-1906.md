@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 07/11/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 07/01/2019
+ms.lastreviewed: 07/11/2019
 ---
 
 # Azure Stack 1906 update
@@ -124,7 +124,7 @@ You can download the Azure Stack 1906 update package from [the Azure Stack downl
 
 ## Hotfixes
 
-Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1905 before updating Azure Stack to 1906.
+Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1905 before updating Azure Stack to 1906. After updating, install any [available hotfixes for 1906](#after-successfully-applying-the-1906-update).
 
 Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do not attempt to install hotfixes on the ASDK.
 
@@ -140,7 +140,7 @@ The 1906 release of Azure Stack must be applied on the 1905 release with the fol
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1906.2.37](https://support.microsoft.com/help/4511282)
+- [Azure Stack hotfix 1.1906.9.49](https://support.microsoft.com/help/4512794)
 
 ## Automatic update notifications
 
