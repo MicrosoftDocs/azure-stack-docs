@@ -48,6 +48,13 @@ Azure Stack doesn't over-commit memory. However, an over-commit of the number of
 Since placement algorithms don't look at the existing virtual to physical core over-provisioning ratio as a factor, each host could have a different ratio. 
 As Microsoft, we do not provide guidance on the physical-to-virtual core ratio because of the variation in workloads and service level requirements. 
 
+## Consideration for total number of VMs 
+
+There is a new consideration for accurately planning Azure Stack capacity. With the 1901 update (and every update going forward), there is now a limit on the total number of virtual machines that can be created. This limit is intended to be temporary to avoid solution instability. The source of the stability issue, at higher numbers of VMs, is being addressed but a specific timeline for remediation has not yet been determined. There is now a per server limit of 60 VMs with a total solution limit of 700. For example, an 8 server Azure Stack VM limit would be 480 (8 * 60). For a 12 to 16 server Azure Stack solution, the limit would be 700. This limit has been created keeping all the compute capacity considerations in mind, such as the resiliency reserve and the CPU virtual to physical ratio that an operator would like to maintain on the stamp. For more information, see the new release of the capacity planner. 
+
+In the event that the VM scale limit has been reached, the following error codes would be returned as a result: VMsPerScaleUnitLimitExceeded, VMsPerScaleUnitNodeLimitExceeded.
+
+
 ## Azure Stack memory 
 
 Azure Stack is designed to keep VMs running that have been successfully provisioned. 
