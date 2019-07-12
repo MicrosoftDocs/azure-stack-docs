@@ -69,6 +69,13 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 - Remediation: Upload the blob using the SAS option.
 - Occurrence: Common
 
+### Update
+
+- Applicable: This issue applies to the 1906 release.
+- Cause: In the operator portal, update status for the hotfix shows an incorrect state for the update. Initial state indicates that the update failed to install, even though it is still in progress.
+- Remediation: Refresh the portal and the state will update to "in progress."
+- Occurrence: Intermittent
+
 ## Networking
 
 ### Service endpoints
