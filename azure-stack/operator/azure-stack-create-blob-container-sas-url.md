@@ -49,9 +49,9 @@ For best practices about choosing parameters for the automatic log collection st
    - **Performance**: Choose Standard.
    - **Account kind** Choose any blob storage account type (for example: BlobStorage, StorageV2). For more information about types of storage accounts, see [Azure storage account overview](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
-   ![Screenshot showing the blob container properties](media/azure-stack-automatic-log-collection/create-blob-container.png)
+   ![Screenshot showing the blob container properties](media/azure-stack-automatic-log-collection/azure-stack-log-collection-create-storage-account.png)
 
-1. Click **Create**.  
+1. Click **Review + create**.  
 
 ### Create a blob container 
 
