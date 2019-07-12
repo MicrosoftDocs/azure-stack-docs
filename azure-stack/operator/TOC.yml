@@ -397,17 +397,17 @@
       href: azure-stack-backup-reference.md
   - name: Get support  
     items:
-    - name: Help and support  
+    - name: Help & Support portal 
       items:
       - name: Overview      
         href: azure-stack-help-and-support-overview.md
-      - name: Log collection
+      - name: Diagnostic log collection
         items:
-        - name: Log collection overview 
+        - name: Overview 
           href: azure-stack-log-collection-overview.md
-        - name: Collect logs now 
+        - name: On-demand collection 
           href: azure-stack-configure-on-demand-log-collection.md
-        - name: Automatic log collection
+        - name: Automatic collection
           items:
           - name: Manage storage account
             href: azure-stack-manage-storage-account-for-automatic-log-collection.md  

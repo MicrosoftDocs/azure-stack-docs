@@ -1,6 +1,6 @@
 ---
-title: Azure Stack log collection overview | Microsoft Docs
-description: Overview of log collection in Azure Stack Help + Support.
+title: Azure Stack diagnostic log collection overview | Microsoft Docs
+description: Overview of diagnostic log collection in Azure Stack Help + Support.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -19,7 +19,7 @@ ms.reviewer: prchint
 ms.lastreviewed: 07/09/2019
 
 ---
-# Overview of Azure Stack log collection 
+# Overview of Azure Stack diagnostic log collection 
 
 *Applies to: Azure Stack integrated systems*
 
@@ -34,6 +34,12 @@ You can choose either option on the Help and Support **Overview - Log Collection
 
 ![Screenshot of Log Collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
 
+## On-demand diagnostic log collection
+
 For more information about collecting logs on demand, see [Collect Azure Stack logs now](azure-stack-configure-on-demand-log-collection.md).
 
+
+## Automatic diagnostic log collection 
+
 For more information about automatic log collection, see [Configure automatic Azure Stack log collection](azure-stack-configure-automatic-log-collection.md).
+
