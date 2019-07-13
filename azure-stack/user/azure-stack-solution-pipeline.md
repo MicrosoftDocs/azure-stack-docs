@@ -22,62 +22,65 @@ ms.lastreviewed: 11/07/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-In this tutorial, you learn how to deploy apps to Azure and Azure Stack by using Azure Pipelines hybrid continuous integration/continuous delivery (CI/CD).
+In this tutorial, you learn how to deploy apps to Azure and Azure Stack by using Azure Pipelines hybrid continuous integration and continuous delivery (CI/CD).
 
-The tutorial walks you through creating a sample environment that:
+The tutorial walks you through creating a sample Azure Stack environment and Azure Pipeline that:
 
 > [!div class="checklist"]
 > - Initiates a new build based on code commits to your Azure Repos repository
-> - Automatically deploys your app to Azure for user acceptance testing
+> - Automatically deploys your app to Azure AD for user acceptance testing
 > - Automatically deploys the app to Azure Stack when it passes testing
 
-To learn more about CI and CD, see the following articles:
+To learn more about CI/CD, see the following articles:
 
 * [What is Continuous Integration?](https://www.visualstudio.com/learn/what-is-continuous-integration/)
 * [What is Continuous Delivery?](https://www.visualstudio.com/learn/what-is-continuous-delivery/)
 
-## Azure Stack and hybrid CI/CD pipelines 
+## Azure Stack and hybrid CI/CD pipelines overview
 
 ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-Microsoft Azure Stack is an extension of Azure that brings the agility and innovation of cloud computing to your on-premises environment. It's the only hybrid cloud that lets you build and deploy hybrid apps in on-premises and public cloud environments. 
+Microsoft Azure Stack is an extension of Azure that brings the agility and innovation of cloud computing to your on-premises environment. It's the only hybrid cloud that lets you build and deploy hybrid apps in both on-premises and public cloud environments. 
 
-A hybrid CI/CD pipeline lets you consolidate your build pipes across your on-premises environment and the public cloud. The hybrid delivery model also lets you change deployment locations without changing your app.
-
-Other benefits of using the hybrid approach are:
+App deployment continuity, security, and reliability are critical elements for your organization and development team. The Azure Pipelines hybrid CI/CD delivery model lets you consolidate your build pipelines across your on-premises environment and the public cloud, and change deployment locations without changing your app. Other benefits of using the hybrid approach are:
 
 - You can maintain a consistent set of development tools across your on-premises Azure Stack environment and the Azure public cloud.  A common tool set makes it easier to implement CI/CD patterns and practices.
 - Apps and services deployed in Azure or Azure Stack are interchangeable, and the same code can run in either location. You can take advantage of on-premises and public cloud features and capabilities.
 
-Continuity, security, and reliability are critical elements of app deployment that are essential to your organization and development team. The white paper [Design considerations for hybrid applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews designing, deploying, and operating hybrid apps according to software quality pillars. Quality criteria include placement, scalability, availability, resiliency, manageability, and security. These design considerations assist in optimizing hybrid app design, which minimizes challenges in production environments.
+The white paper [Design considerations for hybrid applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews designing, deploying, and operating hybrid apps for placement, scalability, availability, resiliency, manageability, and security. These design considerations assist in optimizing hybrid app design to minimize challenges in production environments.
 
 ## Prerequisites
 
-This tutorial assumes that you have some basic knowledge of Azure and Azure Stack. To learn more before starting the tutorial, read the following articles:
+- Basic knowledge of Azure and Azure Stack. To learn more before starting the tutorial, read the following articles:
+  
+  - [Introduction to Azure](https://azure.microsoft.com/overview/what-is-azure/)
+  - [Azure Stack overview](../operator/azure-stack-overview.md)
+  
+- An Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
+  
+- Visual Studio 2019 [installed](/visualstudio/install/install-visual-studio).
+   
+- An Azure Stack integrated system, or the Azure Stack Development Kit (ASDK) deployed and configured according to the following instructions. 
 
-- [Introduction to Azure](https://azure.microsoft.com/overview/what-is-azure/)
-- [Azure Stack overview](../operator/azure-stack-overview.md)
 
-The components you need to build a hybrid CI/CD pipeline take time to prepare. If you already have any of the following components, make sure they meet all the requirements before starting this tutorial.
+### Install and deploy the ASDK
 
-### Azure and Azure Stack prerequisites
+The Azure Stack Development Kit (ASDK) is a single-node deployment of Azure Stack that you can download and use for free. The ASDK lets you evaluate Azure Stack and use Azure APIs and tooling in a non-production environment.
 
-- An Azure subscription. If you don't have one, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-- A Windows Server 2016 image with .NET 3.5 to use for creating the private build agent virtual machine (VM) on your Azure Stack.
-- An Azure Stack integrated system, or the Azure Stack Development Kit (ASDK) deployed. 
+Any user with Azure AD or Active Directory Federation Services (AD FS) admin credentials can deploy the ASDK. An Azure OEM/hardware partner can deploy a production Azure Stack. 
+
+You must be an Azure Stack operator to do the following Azure Stack deployment tasks: 
+
+- Deploy Azure App Service
+- Create plans and offers
+- Create a tenant subscription
+- Apply a Windows Server 2016 image
+
+> [!Note]
+> The ASDK installation takes approximately seven hours, so plan accordingly.
   
-  Any user with AD FS or Azure AD admin credentials can deploy the Azure Stack Development Kit (ASDK). An Azure OEM/hardware partner can deploy a production Azure Stack. 
-  
-  You must be an Azure Stack operator to do the following deployment steps: 
-  
-  - Deploy Azure App Service
-  - Create plans and offers
-  - Create a tenant subscription
-  - Apply a Windows Server 2016 image
-  
-  > [!Note]
-  > The ASDK installation takes approximately seven hours, so plan accordingly.
-  
-  To deploy the ASDK:
+If you already have any of the following components, make sure they meet all the requirements before starting this tutorial.
+
+To deploy the ASDK:
   
   1. Follow the detailed deployment instructions in [Tutorial: Deploy the ASDK using the installer](../asdk/asdk-install.md).
      
@@ -87,41 +90,32 @@ The components you need to build a hybrid CI/CD pipeline take time to prepare. I
      
   1. Create a [plan and offer](../operator/azure-stack-plan-offer-quota-overview.md) in Azure Stack.
      
-  1. Create a [tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) to the offer in Azure Stack.
-     
-  1. Create a [web app](/azure/app-service/overview) in the tenant subscription. Make note of the web app URL to use later in the tutorial.
+  1. Create a [tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) to the offer in Azure Stack. 
      
   1. Deploy a Windows Server 2016 VM with .NET 3.5 in the tenant subscription, to use as your build server and to run Azure Pipelines.
   
   > [!Note]
-  > Your Azure Stack environment needs the correct images syndicated to run Windows Server and SQL Server. It must also have App Service deployed.
+  > Your Azure Stack environment needs the correct images to run Windows Server and SQL Server. It must also have Azure App Service deployed.
 
-### Azure DevOps and Visual Studio prerequisites
-
-1. Create an [Azure DevOps workspace](/azure/devops/repos/tfvc/create-work-workspaces). The sign-up process creates a project named **MyFirstProject**.
+1. [Sign in to Azure DevOps](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services), and create a new project.
    
-1. [Install Visual Studio 2019](/visualstudio/install/install-visual-studio) and [sign in to Azure DevOps](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services).
-   
-1. Connect to your project and [clone it locally](https://www.visualstudio.com/docs/git/gitquickstart).
-
 ## Create the Service Principal and assign a role in Azure AD 
 
-For Azure Pipelines to provision resources for your app, the app must have at least a **Contributor** role in the Azure Stack subscription. Azure DevOps authenticates against Azure Resource Manager using a Service Principal. 
-To configure authentication, follow these steps in the Azure portal:
+Azure Pipelines authenticates against Azure Resource Manager using a Service Principal. For Azure Pipelines to provision resources for your app, the app must have the **Contributor** role in the Azure Stack subscription. To configure authentication for your app:
 
 1. Create a Service Principal and access key. Or, use an existing Service Principal.
-1. Use Role-Based Access Control (RBAC) to validate the Azure Stack subscription and give the Service Principal Name (SPN) the **Contributor** role or above.
+1. Use Role-Based Access Control (RBAC) to validate the Azure Stack subscription and give the Service Principal Name (SPN) the **Contributor** role.
 
 ### Create a Service Principal and access key
 
-Use the instructions in [Service Principal creation](/azure/active-directory/develop/active-directory-integrating-applications) to create a service principal. Choose **Web App/API** for the Application Type. 
+Use the instructions in [create an Azure AD application and service principal](/azure/active-directory/develop/howto-create-service-principal-portal) to create a service principal. Under **Redirect URI**, select **Web** for the type of application you want to create, and enter the URI for your web app. 
 
 Save the Principal ID to use when creating endpoints. 
 
-Or, [use the PowerShell script](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5) as explained in the article [Create an Azure Resource Manager service connection with an existing service principal](https://docs.microsoft.com/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal).
+Or, [use the PowerShell script](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5) as explained in the article [Create an Azure Resource Manager service connection with an existing service principal](/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal).
 
  > [!Note]  
- > If you use the script to create an Azure Stack Azure Resource Manager endpoint, you need to pass the **-azureStackManagementURL** parameter and **-environmentName** parameter. For example:  
+ > If you use the PowerShell script to create an Azure Stack Azure Resource Manager endpoint, you need to pass the **-azureStackManagementURL** parameter and **-environmentName** parameter. For example:  
  > `-azureStackManagementURL https://management.local.azurestack.external -environmentName AzureStack`
 
 A Service Principal requires a key for authentication. Use the following steps to generate a key:
@@ -152,20 +146,6 @@ A Service Principal requires a key for authentication. Use the following steps t
    
    ![Key VALUE - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_06.png)
    
-As part of endpoint configuration, Azure Pipelines needs the **tenant ID** for the Azure AD your Azure Stack stamp is deployed to. To get the tenant ID:
-
-1. In the Azure portal, select **Azure Active Directory**.
-   
-   ![Azure Active Directory for tenant](media/azure-stack-solution-hybrid-pipeline/000_07.png)
-   
-1. Select **Properties** in the left navigation.
-   
-   ![View tenant properties - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_08.png)
-   
-1. Copy and save the **Directory ID** to use as your **tenant ID**.
-   
-   ![Directory ID - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_09.png)
-
 ### Grant the service principal rights to deploy resources
 
 Azure Role-Based Access Control (RBAC) provides fine-grained access management for Azure. By using RBAC, you can control the level of access that users need to do their jobs. For more information about RBAC, see [Manage access to Azure subscription resources](/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json).
@@ -204,9 +184,9 @@ By creating endpoints, an Azure Pipelines build can deploy Azure AD apps to Azur
 
 After setting endpoint creation permissions, you can create endpoints in either Azure AD or AD FS. 
 
-If you used Azure AD as the identity provider for Azure Stack, you can use the service principal to create an Azure Resource Manager service connection for Azure deployments. 
-
-You can also create a service connection using a service principal with a certificate for authentication. You need this connection to deploy Azure Stack with Active Directory Federation Services (AD FS) as the identity provider. 
+- If you used Azure AD as the identity provider for Azure Stack, you can use the service principal to create an Azure Resource Manager service connection for Azure deployments. 
+  
+- You can also create a service connection using a service principal with a certificate for authentication. You need this connection to deploy Azure Stack with Active Directory Federation Services (AD FS) as the identity provider. 
 
 ### Set endpoint creation permissions
 
@@ -277,29 +257,29 @@ Create the service connection using the following mapping:
 | Tenant ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | The tenant ID you retrieve following the instruction at [Get the tenant ID](azure-stack-solution-pipeline.md#get-the-tenant-id). |
 | Connection: | Not verified | Validate your connection settings to the service principal. |
 
-## Add a personal access token (PAT) for Azure Stack
+## Install the Azure Pipelines build agent on the Azure Stack build server
 
-To create a personal access token for Azure Pipelines:
+First, create a personal access token (PAT) to use for Azure Stack. Then, deploy the build agent to the Azure Stack host computer using the PAT, and configure the agent. 
    
-1. Sign in to your Azure DevOps organization and select your organization profile name.
+1. Sign in to Azure DevOps and select **My profile** in the upper right corner. 
    
-1. Select **Manage Security** to access the token creation page. 
+1. On your profile page, expand the dropdown next to your Azure Stack organization name, and select **Manage Security**. 
    
    ![Manage Security - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_18.png)
    
-1. Select **Add** to create a new personal access token.
+1. On the **Personal Access Tokens** page, select **New Token**.
    
    ![Add Personal access token - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_18a.png)
+   
+1. On the **Create a new personal access token** page, fill out the token information and select **Create**. 
    
    ![Create token - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_18b.png)
    
 1. Copy and save the token. It won't be shown again after you leave the web page.
    
    ![Personal access token - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_19.png)
-
-### Install the Azure Pipelines build agent on the Azure Stack build server
-
-1. Connect to your build server that you deployed on the Azure Stack host.
+   
+1. Connect to the build server VM you deployed on the Azure Stack host.
    
 1. Download and deploy the build agent as a service using your personal access token (PAT), and run it as the VM admin.
    
@@ -319,9 +299,9 @@ To create a personal access token for Azure Pipelines:
 
 Now that the endpoint is created and the Azure Pipelines build agent is installed on the build server, the Azure Pipelines to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from Azure Pipelines, and then the agent conveys endpoint information for communication with Azure Stack.
 
-‎‎Instead of managing each agent separately, you can organize agents into agent pools. An agent pool defines the sharing boundary for all agents in that pool. In Azure DevOps Services, agent pools are scoped to the Azure DevOps organization, which means that you can share an agent pool across projects. To learn more about agent pools, see [Create agent pools and queues](/azure/devops/pipelines/agents/pools-queues).
+‎‎Instead of managing each agent separately, you can organize agents into agent pools. An agent pool defines the sharing boundary for all agents in that pool. Aagent pools are scoped to the Azure DevOps organization, which means that you can share an agent pool across projects. To learn more about agent pools, see [Create agent pools and queues](/azure/devops/pipelines/agents/pools-queues).
 
-## Develop your app and configure deployment
+## Develop and release your app 
 
 Using a hosted build agent in Azure Pipelines is a convenient option for building and deploying web apps. Azure automatically performs agent maintenance and upgrades, which enables a continuous and uninterrupted development cycle.
 
@@ -329,21 +309,25 @@ Azure Pipelines provides a highly configurable and manageable pipeline for relea
 
 In this part of the tutorial, you:
 
-- Add code to an Azure DevOps project
+- Add code to your Azure DevOps project
 - Create a self-contained web app deployment
-- Configure the continuous deployment process
+- Configure the CI/CD process
 
 Hybrid CI/CD can apply to both app code and infrastructure code. Use [Azure Resource Manager templates](https://azure.microsoft.com/resources/templates/) like web app code from Azure DevOps Services to deploy to both clouds.
 
 ### Add code to an Azure DevOps project
 
-1. Sign in to Azure DevOps with an organization that has project creation rights in Azure Stack. The next screen capture shows how to connect to the HybridCICD project.
+1. In Visual Studio **Team Explorer**, select the **Connect** icon and sign in to your Azure DevOps organization. 
+   
+   ![Connect to a Project - Azure DevOps](media/azure-stack-solution-hybrid-pipeline/017_connect_to_project.png)
+   
+1. Select **Manage Connections** > **Connect to a project**. 
+   
+   ![Connect to a Project - Azure DevOps](media/azure-stack-solution-hybrid-pipeline/017_connect_to_project.png)
 
-    ![Connect to a Project - Azure DevOps](media/azure-stack-solution-hybrid-pipeline/017_connect_to_project.png)
-
-2. **Clone the repository** by creating and opening the default web app.
-
-    ![Clone repository - Azure DevOps](media/azure-stack-solution-hybrid-pipeline/018_link_arm.png)
+1. In the **Connect to a Project** dialog, select your web app project, set a local path, and then select **Clone** to clone the repository.
+   
+   ![Clone repository - Azure DevOps](media/azure-stack-solution-hybrid-pipeline/018_link_arm.png)
 
 ### Create self-contained web app deployment for App Services in both clouds
 
@@ -355,7 +339,7 @@ Hybrid CI/CD can apply to both app code and infrastructure code. Use [Azure Reso
 
 3. Confirm that the application code was checked into Azure DevOps Services.
 
-### Create the build pipeline
+### Create a build pipeline
 
 1. Sign in to an Azure DevOps organization that can create a build pipeline.
 
@@ -367,7 +351,7 @@ Hybrid CI/CD can apply to both app code and infrastructure code. Use [Azure Reso
 
 4. Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that can run on Azure and Azure Stack.
 
-### Create release pipeline
+### Create a release pipeline
 
 Creating a release pipeline is the final step in your app build process. This release pipeline is used to create a release and deploy a build.
 
@@ -463,7 +447,7 @@ Creating a release pipeline is the final step in your app build process. This re
 > [!Note]
 > Some settings for release tasks may have been automatically defined as [environment variables](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts#custom-variables) when you created a release pipeline from a template. These settings can't be modified in the task settings. However, you can edit these settings in the parent environment items.
 
-## Create a release
+## Release the app
 
 Now that you've completed the modifications to the release pipeline, it's time to start the deployment. To begin deployment, create a release from the release pipeline. A release may be created automatically; for example, when the continuous deployment trigger is set in the release pipeline. Setting this trigger means that modifying the source code will start a new build and then a new release. However, in this section you'll create a new release manually.
 
