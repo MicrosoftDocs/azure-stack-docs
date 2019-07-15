@@ -19,11 +19,11 @@ ms.reviewer: prchint
 ms.lastreviewed: 07/09/2019
 
 ---
-# Collect Azure Stack logs now
+# Collect Azure Stack logs now (on demand)
 
 *Applies to: Azure Stack integrated systems*
 
-As part of troubleshooting, Microsoft Customer Support Services (CSS) often needs to analyze diagnostic logs. In some cases, CSS might need you to collect the logs on demand and save them in a specific blob container. 
+As part of troubleshooting, Microsoft Customer Support Services (CSS) often needs to analyze diagnostic logs. In some cases, CSS might need you to collect the logs on demand and save them in a designated blob container. 
 If CSS provides a SAS URL for saving diagnostic logs, follow these steps to configure on-demand log collection:
 
 1. Open **Help and support Overview** and click **Collect logs now**. 
