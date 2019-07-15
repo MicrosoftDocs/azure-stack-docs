@@ -405,8 +405,10 @@
         items:
         - name: Overview 
           href: azure-stack-log-collection-overview.md
-        - name: On-demand collection 
+        - name: On-demand using the portal
           href: azure-stack-configure-on-demand-log-collection.md
+        - name: On-demand using PEP
+          href: azure-stack-diagnostics.md
         - name: Automatic collection
           items:
           - name: Manage storage account
