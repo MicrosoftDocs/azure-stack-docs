@@ -1,6 +1,6 @@
 ---
-title: Create and test a subscription with an offer in Azure Stack | Microsoft Docs
-description: Learn how to create a new subscription to Azure Stack services and test the offer by creating a test VM.
+title: Create a subscription with an offer in Azure Stack | Microsoft Docs
+description: Learn how to create a new subscription with an offer in Azure Stack and then test the offer with a test VM.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -20,7 +20,7 @@ ms.reviewer: efemmano
 ms.lastreviewed: 11/13/2018
 ---
 
-# Tutorial: Create and test a subscription with an offer
+# Tutorial: Create and test a subscription in Azure Stack
 
 This tutorial shows how to create a subscription containing an offer and then how to test it. For the test, you sign in to the Azure Stack user portal as a cloud admin, subscribe to the offer, and then create a virtual machine (VM).
 
@@ -81,12 +81,6 @@ While signed in to the user portal, test the offer by provisioning a (VM) using 
 > The VM deployment takes a few minutes to complete.
 
 ## Next steps
-
-What you learned in this tutorial:
-
-> [!div class="checklist"]
-> * Subscribe to an offer 
-> * Test the offer
 
 > [!div class="nextstepaction"]
 > [Create a VM from a community template](azure-stack-create-vm-template.md)
