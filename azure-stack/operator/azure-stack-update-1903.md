@@ -192,6 +192,8 @@ The following are post-installation known issues for this build version.
 
 - Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment. You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack.
 
+- Failed user image creation user image service in a bad state. New image creation will also fail once the service is in this state. Deletion of image will fail with the following error "Error: An internal disk management error occurred."
+
 ### Networking
 
 <!-- 3239127 - IS, ASDK -->
