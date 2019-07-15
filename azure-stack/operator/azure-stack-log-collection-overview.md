@@ -23,6 +23,10 @@ ms.lastreviewed: 07/09/2019
 
 *Applies to: Azure Stack integrated systems*
 
+add more general overview of diagnostics log, bandwidth consumption, average log size, if you are on a constrained line automatic log colleciton may use more bandwidth than collect logs now, add a decision tree.
+
+
+
 Azure Stack helps simplify troubleshooting by providing an easy way to share diagnostic logs with Microsoft Customer Support Services (CSS). The logs can be stored in a blob container in Azure and access is restricted to only CSS. 
    
 There are two ways to collect logs in **Help and Support**:
