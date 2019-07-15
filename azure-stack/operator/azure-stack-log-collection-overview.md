@@ -25,7 +25,7 @@ ms.lastreviewed: 07/09/2019
 
 add more general overview of diagnostics log, bandwidth consumption, average log size, if you are on a constrained line automatic log colleciton may use more bandwidth than collect logs now, add a decision tree.
 
-summary of diagnostic log collection, diagram, cmdlets, now we are adding log collection via Help and support portal. Ongoning investment. The portal is the new default method for collecting logs. Older methods like using PEP still work, but the portal method is preferable because it's simpler and faster for Azure Stack operators.
+summary of diagnostic log collection, diagram, cmdlets, now we are adding log collection via Help and support portal. Ongoning investment. The portal is the new default method for collecting logs. Older methods like [using PEP](azure-stack-diagnostics.md) still work, but the portal is simpler and faster for Azure Stack operators.
 
 
 Azure Stack helps simplify troubleshooting by providing an easy way to share diagnostic logs with Microsoft Customer Support Services (CSS). The logs can be stored in a blob container in Azure and access is restricted to only CSS. 
@@ -36,8 +36,6 @@ There are two ways to collect diagnostic logs in **Help and Support**:
 - **Automatic collection**: If enabled, log collection is triggered by specific health alerts 
 
 ![Screenshot of diagnostic log collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
-
-
 
 
 ## On-demand diagnostic log collection
