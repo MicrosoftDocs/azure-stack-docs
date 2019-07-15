@@ -1,6 +1,6 @@
 ---
 title: Use data transfer tools for Azure Stack Storage | Microsoft Docs
-description: Learn about Azure Stack storage data transfer tools
+description: Learn about Azure Stack Storage data transfer tools.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -22,7 +22,7 @@ ms.lastreviewed: 12/03/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Azure Stack provides a set of storage services for disks, blobs, tables, queues, and account management functions. Use a set of Azure Storage tools if you want to manage or move data to or from Azure Stack Storage. This article provides an overview of the available tools.
+Azure Stack provides a set of storage services for disks, blobs, tables, queues, and account management functions. Some Azure Storage tools are available if you want to manage or move data to or from Azure Stack Storage. This article provides an overview of the available tools.
 
 Your requirements determine which of the following tools works best for you:
 
