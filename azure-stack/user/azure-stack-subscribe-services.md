@@ -37,7 +37,7 @@ What you'll learn:
 
 ## Subscribe to an offer
 
-To subscribe to an offer as a user, sign in to the Azure Stack user portal to discover the services that've been offered by the Azure Stack operator.
+To subscribe to an offer as a user, sign in to the Azure Stack user portal to check the available services offered by the Azure Stack operator.
 
 1. Sign in to the user portal and select **Get a subscription**.
 
