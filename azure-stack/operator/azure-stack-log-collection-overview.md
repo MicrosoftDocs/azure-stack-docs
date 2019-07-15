@@ -51,3 +51,7 @@ For more information about automatic log collection, see [Configure automatic Az
 ## Decision Tree
 
 scenario descriptions for each option
+
+## See also
+
+link to topics about other types of logs and vice-versa
