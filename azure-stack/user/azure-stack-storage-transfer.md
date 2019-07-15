@@ -46,7 +46,7 @@ Your requirements determine which of the following tools works best for you:
 
     A virtual file system driver for Azure Blob Storage, which allows you to access your existing block blob data in your storage account through the Linux file system.
 
-Due to the storage services differences between Azure and Azure Stack, there might be some specific requirements for each tool described in the following sections. For a comparison between Azure Stack Storage and Azure Storage, see [Azure Stack Storage: Differences and considerations](azure-stack-acs-differences.md).
+Because of storage services differences between Azure and Azure Stack, there might be some specific requirements for each tool described in the following sections. For a comparison between Azure Stack Storage and Azure Storage, see [Azure Stack Storage: Differences and considerations](azure-stack-acs-differences.md).
 
 ## AzCopy
 
@@ -102,7 +102,7 @@ azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[containe
 ### AzCopy known issues
 
  - Any AzCopy operation on a file storage isn't available because file storage isn't yet available in Azure Stack.
- - If you want to transfer data between two Azure Stack blob locations, or between Azure Stack and Azure Storage by using AzCopy 10.1, you need to download the data to a local location first, and then re-upload to the target directory on Azure Stack or Azure Storage. Or you can use AzCopy 7.1, and specify the transfer with the **/SyncCopy** option to copy the data.  
+ - If you want to transfer data between two Azure Stack blob locations—or between Azure Stack and Azure Storage by using AzCopy 10.1—you need to download the data to a local location first, and then reupload to the target directory on Azure Stack or Azure Storage. Or you can use AzCopy 7.1, and specify the transfer with the **/SyncCopy** option to copy the data.  
  - The Linux version of AzCopy only supports the 1802 update or later versions and it doesn't support Table service.
  
 ## Azure PowerShell
@@ -115,7 +115,7 @@ Azure Stack compatible Azure PowerShell modules are required to work with Azure 
 
 ### PowerShell Sample script for Azure Stack 
 
-This sample assumes you have successfully [Installed PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md). This script will help you complete the configuration and ask your Azure Stack tenant credentials to add your account to the local PowerShell environment. Then, the script will set the default Azure subscription, create a new storage account in Azure, create a new container in this new storage account, and upload an existing image file (blob) to that container. After the script lists all blobs in that container, it'll create a new destination directory on your local computer and download the image file.
+This sample assumes you have successfully [Installed PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md). This script will help you complete the configuration and ask your Azure Stack tenant credentials to add your account to the local PowerShell environment. The script will then set the default Azure subscription, create a new storage account in Azure, create a new container in this new storage account, and upload an existing image file (blob) to that container. After the script lists all blobs in that container, it will create a new destination directory on your local computer and download the image file.
 
 1. Install [Azure Stack-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
 2. Download the [tools required to work with Azure Stack](../operator/azure-stack-powershell-download.md).
@@ -285,7 +285,7 @@ For Azure Stack, *blobEndpoint* needs to be specified while configuring your sto
 
 In the Azure Stack Development Kit (ASDK), the *blobEndpoint* should be `myaccount.blob.local.azurestack.external`. In Azure Stack integrated system, contact your cloud admin if you're not sure about your endpoint.
 
-Be aware that *accountKey* and *sasToken* can only be configured one at a time. When a storage account key is given, the credentials configuration file is in the following format:
+*accountKey* and *sasToken* can only be configured one at a time. When a storage account key is given, the credentials configuration file is in the following format:
 
 ```
 accountName myaccount 
