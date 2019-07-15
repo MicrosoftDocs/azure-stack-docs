@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2019
+ms.date: 07/15/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 07/11/2019
+ms.lastreviewed: 07/15/2019
 ---
 
 # Azure Stack 1906 update
@@ -140,7 +140,7 @@ The 1906 release of Azure Stack must be applied on the 1905 release with the fol
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1906.9.49](https://support.microsoft.com/help/4512794)
+- [Azure Stack hotfix 1.1906.11.52](https://support.microsoft.com/help/4513119)
 
 ## Automatic update notifications
 
