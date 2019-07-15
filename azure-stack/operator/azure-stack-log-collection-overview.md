@@ -29,12 +29,12 @@ add more general overview of diagnostics log, bandwidth consumption, average log
 
 Azure Stack helps simplify troubleshooting by providing an easy way to share diagnostic logs with Microsoft Customer Support Services (CSS). The logs can be stored in a blob container in Azure and access is restricted to only CSS. 
    
-There are two ways to collect logs in **Help and Support**:
+There are two ways to collect diagnostic logs in **Help and Support**:
 
 - **Collect logs now**: You choose a 1-4 hour time period from the last week
 - **Automatic collection**: If enabled, log collection is triggered by specific health alerts 
 
-![Screenshot of Log Collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
+![Screenshot of diagnostic log collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
 
 
 
@@ -48,10 +48,10 @@ For more information about collecting logs on demand, see [Collect Azure Stack l
 
 For more information about automatic log collection, see [Configure automatic Azure Stack log collection](azure-stack-configure-automatic-log-collection.md).
 
-## Decision Tree
+## Decision tree
 
 scenario descriptions for each option
 
 ## See also
 
-link to topics about other types of logs and vice-versa
+link to topics about other types of logs and vice-versa, audit logs, security logs, diagnostic logs, health logs.
