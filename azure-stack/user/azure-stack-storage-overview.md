@@ -23,7 +23,7 @@ ms.lastreviewed: 01/14/2019
 
 ## Overview
 
-Azure Stack Storage is a set of cloud storage services consistent with the services provided by Azure Storage. These services includes blobs, tables, and queues.
+Azure Stack Storage is a set of cloud storage services consistent with the services provided by Azure Storage. These services include blobs, tables, and queues.
 
 ## Azure Stack Storage services
 
@@ -62,7 +62,7 @@ Blob storage offers three types of blobs:
 
 - **Block blobs**
 
-    Block blobs are optimized for streaming and storing cloud objects and are a good choice for storing documents, media files, backups, and other similar files.
+    Block blobs are optimized for streaming and storing cloud objects. They're a good choice for storing documents, media files, backups, and other similar files.
 
 - **Append blobs**
 
