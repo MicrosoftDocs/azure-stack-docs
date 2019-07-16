@@ -215,8 +215,6 @@ After setting endpoint creation permissions, you can create endpoints for Azure 
    
 1. Under **Azure DevOps Services Groups**, select **Endpoint Administrators**.
    
-   ![NorthwindCloud Endpoint Administrators](media/azure-stack-solution-pipeline/013_endpoint_creators.png)
-   
 1. On the **Members** tab, select **Add**.
    
    ![Add a member](./media/azure-stack-solution-pipeline/endpoint-permissions.png)
@@ -316,7 +314,7 @@ Hybrid CI/CD can apply to both app code and infrastructure code. You can use [Az
 
 1. In Visual Studio **Solution Explorer**, open your *WebApplication.csproj* file and add `<RuntimeIdentifier>win10-x64</RuntimeIdentifier>`. For more information about this step, see [Self-contained deployment](/dotnet/core/deploying/#self-contained-deployments-scd).
    
-   ![Configure RuntimeIdentifier](media/azure-stack-solution-pipeline/runtimeidentifer.png)
+   ![Configure RuntimeIdentifier](media/azure-stack-solution-pipeline/runtimeidentifier.png)
    
 1. Save your work, and use **Team Explorer** to check the code into your project.
 
