@@ -1,5 +1,5 @@
 ---
-title: Tutorial&#58; Deploy apps to Azure and Azure Stack | Microsoft Docs
+title: Deploy apps to Azure and Azure Stack | Microsoft Docs
 description: Learn how to deploy apps to Azure and Azure Stack with a hybrid CI/CD pipeline.
 services: azure-stack
 documentationcenter: ''
@@ -11,20 +11,20 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: solution
 ms.date: 03/11/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
 ---
 
-# Tutorial: Deploy apps to Azure and Azure Stack
+# Deploy apps to Azure and Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 Learn how to deploy apps to Azure and Azure Stack using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.
 
-In this tutorial, you'll create a sample environment to:
+In this solution, you'll create a sample environment to:
 
 > [!div class="checklist"]
 > * Initiate a new build based on code commits to your Azure DevOps Services repository.
@@ -47,9 +47,9 @@ To learn more about CI and CD:
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment. It is the only hybrid cloud that lets you build and deploy hybrid apps anywhere.  
+> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
 > 
-> The white paper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid application design which minimize challenges in production environments.
+> The article [Design Considerations for Hybrid Applications](azure-stack-edge-pattern-overview.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
 ## Prerequisites
 
@@ -59,9 +59,9 @@ You need to have components in place to build a hybrid CI/CD pipeline. The follo
 * An Azure Stack Operator must complete the following items: deploy the App Service, create plans and offers, create a tenant subscription, and add the Windows Server 2016 image.
 
 >[!NOTE]
->If you already have some of these components deployed, make sure they meet the all the requirements before starting this tutorial.
+>If you already have some of these components deployed, make sure they meet the all the requirements before starting this  solution.
 
-This tutorial assumes that you have some basic knowledge of Azure and Azure Stack. To learn more before starting the tutorial, read the following articles:
+This  solution assumes that you have some basic knowledge of Azure and Azure Stack. To learn more before starting the  solution, read the following articles:
 
 * [Introduction to Azure](https://azure.microsoft.com/overview/what-is-azure/)
 * [Azure Stack Key Concepts](../operator/azure-stack-overview.md)
@@ -69,12 +69,12 @@ This tutorial assumes that you have some basic knowledge of Azure and Azure Stac
 ### Azure requirements
 
 * If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
-* Create a [Web App](https://docs.microsoft.com/azure/app-service/overview) in Azure. Make note of the Web App URL, you need to use it in the tutorial.
+* Create a [Web App](https://docs.microsoft.com/azure/app-service/overview) in Azure. Make note of the Web App URL, you need to use it in the  solution.
 
 ### Azure Stack requirements
 
 * Use an Azure Stack integrated system or deploy the Azure Stack Development Kit (ASDK). To deploy the ASDK:
-  * The [Tutorial: Deploy the ASDK using the installer](../asdk/asdk-install.md) article gives detailed deployment instructions.
+  * The [ solution: Deploy the ASDK using the installer](../asdk/asdk-install.md) article gives detailed deployment instructions.
   * Use the [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1 ) PowerShell script to automate ASDK post-deployment steps.
 
     > [!Note]
@@ -322,7 +322,7 @@ Now that the endpoint is created, the Azure DevOps to Azure Stack connection is 
 
 ## Develop your application build
 
-In this part of the tutorial you'll:
+In this part of the  solution you'll:
 
 * Add code to an Azure DevOps Services project.
 * Create self-contained web app deployment.

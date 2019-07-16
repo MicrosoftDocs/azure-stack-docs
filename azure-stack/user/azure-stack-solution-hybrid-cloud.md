@@ -11,18 +11,18 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: scenario
 ms.date: 01/25/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/25/2019
 ---
 
-# Tutorial: Deploy a hybrid cloud solution with Azure and Azure Stack
+# Deploy a hybrid cloud solution with Azure and Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-This tutorial shows you how to deploy a hybrid cloud solution that uses the Azure public cloud and the Azure Stack private cloud.
+This scenario shows you how to deploy a hybrid cloud solution that uses the Azure public cloud and the Azure Stack private cloud.
 
 By using a hybrid cloud solution, you can combine the compliance benefits of a private cloud with the scalability of the public cloud. Additionally, your developers can take advantage of the Microsoft developer ecosystem, and apply their skills to the cloud and on-premises environments.
 
@@ -42,6 +42,12 @@ This tutorial covers the following tasks:
 > - Set up Application Insights monitoring and alerting for increased traffic.
 > - Configure automatic traffic switching between global Azure and Azure Stack.
 
+> [!Tip]  
+> ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
+> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
+> 
+> The article [Design Considerations for Hybrid Applications](azure-stack-edge-pattern-overview.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
+
 ### Assumptions
 
 This tutorial assumes that you have a basic knowledge of global Azure and Azure Stack. If you want to learn more before starting the tutorial, review these articles:
@@ -53,7 +59,7 @@ This tutorial also assumes that you have an Azure subscription. If you don't hav
 
 ## Prerequisites
 
-Before you start this tutorial, make sure you meet the following requirements:
+Before you start this solution, make sure you meet the following requirements:
 
 - An Azure Stack Development Kit (ASDK) or a subscription on an Azure Stack Integrated System. To deploy an Azure Stack Development Kit, follow the instructions in [Deploy the ASDK using the installer](../asdk/asdk-install.md).
 - Your Azure Stack installation should have the following installed:
