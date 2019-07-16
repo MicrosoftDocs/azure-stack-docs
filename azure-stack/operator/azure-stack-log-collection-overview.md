@@ -61,13 +61,9 @@ For more information about automatic log collection, see [Configure automatic Az
 
 ## Bandwidth considerations
 
-general overview of diagnostics log, bandwidth consumption, average log size (4-8 MB), if you are on a constrained line, automatic log collection may use more bandwidth than collect logs now, add a decision tree.
-
-## Decision tree
+The average size of a diagnostic log is 4-8 MB. If you are on a constrained line, **Automatic log collection** may use more bandwidth than **Collect logs now**. You can use the following diagram to decide which way to collect diagnostic logs.
 
 ![Screenshot of diagnostic log collection options](media/azure-stack-automatic-log-collection/azure-stack-diagnostic-log-decision-tree.png)
-
-
 
 
 ## See also
