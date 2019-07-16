@@ -23,9 +23,9 @@ ms.lastreviewed: 07/09/2019
 
 *Applies to: Azure Stack integrated systems*
 
-add more general overview of diagnostics log, bandwidth consumption, average log size (4-8 MB), if you are on a constrained line automatic log colleciton may use more bandwidth than collect logs now, add a decision tree.
+Need to add general overview of diagnostics log, bandwidth consumption, average log size (4-8 MB), if you are on a constrained line, automatic log collection may use more bandwidth than collect logs now, add a decision tree.
 
-summary of diagnostic log collection, diagram, cmdlets, now we are adding log collection via Help and support portal. Ongoning investment. 
+Summarize of diagnostic log collection, diagram, cmdlets, now we are adding log collection via Help and support portal, and this is an ongoing investment to support operators. 
 
 Azure Stack helps simplify troubleshooting by providing an easy way to share diagnostic logs with Microsoft Customer Support Services (CSS). The logs can be stored in a blob container in Azure and access can be restricted to only CSS. 
    
@@ -36,7 +36,7 @@ There are two ways to collect diagnostic logs in **Help and Support**:
 
 ![Screenshot of diagnostic log collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
 
-If your policy allows sharing diagnostic logs with CSS, the portal is the easist way to collect them beginning with the 1907 release. You should only need to [use PEP](azure-stack-diagnostics.md) if the portal is unavailable.
+If your policy allows sharing diagnostic logs with CSS, the portal is the easiest way to collect them beginning with the 1907 release. You should only need to [use PEP](azure-stack-diagnostics.md) if the portal is unavailable.
 
 ## On-demand diagnostic log collection
 
@@ -56,7 +56,7 @@ For more information about automatic log collection, see [Configure automatic Az
 
 ![Screenshot of diagnostic log collection options](media/azure-stack-automatic-log-collection/azure-stack-diagnostic-log-decision-tree.png)
 
-To cover Can you share logs? Can you connect to a cloud? Are you on 1907? Is portal available? If policy does not allow sending logs, CSS can work with you directly
+Filippo mentioned can you share logs? Can you connect to a cloud? Are you on 1907? Is portal available? If policy does not allow sending logs, CSS can work with you directly. Can we show a simpler tree? I'll make it vertical. 
 
 ## See also
 
