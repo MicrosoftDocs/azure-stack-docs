@@ -29,7 +29,7 @@ If you don't have an existing storage account, you can sign in to the Azure port
 
 You can set the retention policy of the storage account between 1 and 365 days. For more information about setting the retention policy, see [storage account diagnostic settings](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#diagnostic-settings). 
 
-For follow up: what are best practices for expiration, why SAS tokens are not used, can I point multiple Azure Stack systems to the same storage account? Etc. etc. 
+<!---For follow up: what are best practices for expiration, why SAS tokens are not used, can I point multiple Azure Stack systems to the same storage account? Etc. etc. 
 
 need section on "setup log collection"
 
@@ -45,6 +45,6 @@ Multiple  log collection
 	Retention policy
 	 
 
-
+--->
 
 
