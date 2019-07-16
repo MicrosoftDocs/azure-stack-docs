@@ -53,6 +53,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
+- Fixed an issue where the Publisher, OFfer and SKU were treated as case sensitive in an ARM template and the image would not be fetched for deployment unless the parameters were the same case as the Publisher, Offer and Sku of that of the image.
 
 ## Security updates
 
