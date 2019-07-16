@@ -25,7 +25,7 @@ ms.lastreviewed: 07/16/2019
 
 Azure Stack is a large collection of components working together and interacting with each other. All these components generate their own unique logs. This can make diagnosing issues a challenging task, especially for errors coming from multiple, interacting Azure Stack components.
 
-Our diagnostics tools help make the log collection mechanism easy and efficient. For example, [the Log collection tool (Get-AzureStackLog)](azure-stack-diagnostics.md) lets use the privileged endpoint to collect logs from all the components in an Azure Stack environment, and [the Azure Stack validation tool (Test-AzureStack)](azure-stack-diagnostics-test.md) can run a series of tests on your system to identify failures. 
+Our diagnostics tools help make the log collection mechanism easy and efficient. For example, [the Log collection tool (Get-AzureStackLog)](azure-stack-diagnostics.md) lets use the privileged endpoint to collect logs from all the components in an Azure Stack environment, and [the Azure Stack validation tool (Test-AzureStack)](azure-stack-diagnostic-test.md) can run a series of tests on your system to identify failures. 
 
 Beginning with the 1907 release, Azure Stack has a new way to collect logs by using the **Diagnostic log collection** in Help and Support. 
 **Diagnostic log collection** is part of an ongoing investment to make it easier for Azure Stack operators to troubleshoot problems. 
