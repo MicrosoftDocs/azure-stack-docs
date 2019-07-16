@@ -91,7 +91,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
       $servicePrincipal = Invoke-Command -Session $PSSession -ScriptBlock { New-AzureBridgeServicePrincipal -RefreshToken $using:RefreshToken -AzureEnvironment $using:AzureEnvironmentName -TenantId $using:TenantId -TimeoutInSeconds 1800 }
       ```
 
-- Fixed the VPN connection issue identified [here, in release 1902](#known-issues).
+- Fixed the VPN connection issue identified in release 1902.
 
 - For a list of other Azure Stack issues fixed in this release, see [this section](../operator/azure-stack-release-notes-1904.md#fixes) of the Azure Stack release notes.
 - For a list of known issues, see [this article](../operator/azure-stack-release-notes-known-issues-1904.md).
