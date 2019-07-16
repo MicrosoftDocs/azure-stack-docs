@@ -41,12 +41,15 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 <!-- The current theme (if any) of this release. -->
 
 <!-- What's new, also net new experiences and features. -->
+- General availability release of the Azure Stack diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Customer Support Services (CSS). 
+- New UX experience in the Azure Stack Administration portal enables operators to setup the automatic upload of diagnostic logs to a Storage Blob when certain critical alerts are raised, or to perform the same operation on demand. Please refer to [Diagnostic log collection](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-log-collection-overview) for more information. 
 
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
 #### Networking updates
+- Added new outbound rule (HTTPS) to enable communication for Azure Stack diagnostic log collection service. For more information, please refer to [Azure Stack datacenter integration - Publish endpoints](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-integrate-endpoints#ports-and-urls-outbound).
 
 ### Changes
 
