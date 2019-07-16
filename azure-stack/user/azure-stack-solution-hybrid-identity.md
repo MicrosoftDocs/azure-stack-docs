@@ -11,14 +11,14 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: solution
 ms.date: 06/26/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 06/26/2019
 ---
 
-# Tutorial: Configure hybrid cloud identity for Azure and Azure Stack applications
+# Configure hybrid cloud identity for Azure and Azure Stack applications
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -31,19 +31,19 @@ You have two options for granting access to your apps in both global Azure and A
 
 You use service principals to grant access to your Azure Stack apps for deployment or configuration using the Azure Resource Manager in Azure Stack.
 
-In this tutorial, you'll build a sample environment to:
+In this solution, you'll build a sample environment to:
 
 > [!div class="checklist"]
 > - Establish a hybrid identity in global Azure and Azure Stack
 > - Retrieve a token to access the Azure Stack API.
 
-You must have Azure Stack operator permissions for the steps in this tutorial.
+You must have Azure Stack operator permissions for the steps in this solution.
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that lets you build and deploy hybrid apps anywhere.  
+> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
 > 
-> The whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid application design, minimizing challenges in production environments.
+> The article [Design Considerations for Hybrid Applications](azure-stack-edge-pattern-overview.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
 
 ## Create a service principal for Azure AD in the portal
@@ -56,7 +56,7 @@ If you deployed Azure Stack with AD FS, you can use PowerShell to create a servi
 
 ## Using the Azure Stack API
 
-The [Azure Stack API](azure-stack-rest-api-use.md) tutorial walks you through the process of retrieving a token to access the Azure Stack API.
+The [Azure Stack API](azure-stack-rest-api-use.md)  solution walks you through the process of retrieving a token to access the Azure Stack API.
 
 ## Connect to Azure Stack using Powershell
 
