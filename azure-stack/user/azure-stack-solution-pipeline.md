@@ -348,7 +348,7 @@ Hybrid CI/CD can apply to both app code and infrastructure code. Use [Azure Reso
    
 1. In the **Run pipeline** dialog, select **Save and run**. 
    
-   The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) publishes artifacts that can run on Azure and Azure Stack.
+   The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) publishes artifacts that can run on both Azure and Azure Stack.
 
 ### Create a release pipeline
 
@@ -364,7 +364,7 @@ Creating a release pipeline is the final step in your app build process. You use
    
    ![Add build artifact](media/azure-stack-solution-hybrid-pipeline/103.png)
    
-1. On the **Pipeline** tab, select **View stage tasks**.
+1. On the **Pipeline** tab, under **Stage 1**, select the hyperlink to **View stage tasks**.
    
    ![View stage tasks](media/azure-stack-solution-hybrid-pipeline/104.png)
    
@@ -378,7 +378,7 @@ Creating a release pipeline is the final step in your app build process. You use
    
    ![Select hosted agent](media/azure-stack-solution-hybrid-pipeline/107.png)
    
-1. On the left, select **Deploy Azure App Service**, and on the right, browse to a valid **Package or folder** for the environment.
+1. On the left, select **Deploy Azure App Service**, and on the right, browse to the **Package or folder** local for your Azure web app build.
    
    ![Select package or folder - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/108.png)
    
@@ -387,76 +387,64 @@ Creating a release pipeline is the final step in your app build process. You use
 1. Select **Save** at the upper right on the **New release pipeline** page.
    
    ![Save changes - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/110.png)
-
-12. On the **Pipeline** tab, select **Add artifact**, and select a different build from the  
-    ![Add new artifact - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/111.png)
-
-13. On the **Select a Template** page, add another environment. Pick **Azure App Service Deployment** and then select **Apply**.
-
-    ![Select template - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/112.png)
-
-14. Enter "Azure Stack" as the **Environment name**.
-
-    ![Environment name - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/113.png)
-
-15. On the **Tasks** tab, find and select Azure Stack.
-
-    ![Azure Stack environment - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/114.png)
-
-16. From the **Azure subscription** drop-down list, select  "AzureStack Traders-Vessel EP" for the Azure Stack endpoint.
-
-    ![Azure subscription drop-down - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/115.png)
-
-17. Enter the Azure Stack web app name as the **App service name**.
-
-    ![App service name - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/116.png)
-
-18. Under **Agent selection**, pick "AzureStack -bDouglas Fir" from the **Agent queue** drop-down list.
-
+   
+1. On the **Pipeline** tab, select **Add an artifact**. Select your project, and select the Azure Stack build from the **Source (build pipeline)** drop-down menu. Select **Add** 
+   
+1. On the **Pipeline** tab, under **Stages**, select **Add**.
+   
+1. In the new stage, select the hyperlink to **View stage tasks**. Enter *Azure Stack* as the stage name. 
+   
+   ![View stage tasks](media/azure-stack-solution-hybrid-pipeline/104.png)
+   
+1. Under **Parameters**, select your Azure Stack endpoint, and enter your Azure Stack web app name as the **App service name**.
+   
+1. Under **Run on agent**, select your Azure Stack build server agent from the **Agent pool** drop-down list.
+   
     ![Pick agent - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/117.png)
-
-19. For **Deploy Azure App Service**, select the valid **Package or folder** for the environment. On **Select File Or Folder**, select **OK** for the folder **Location**.
-
-    ![Pick package or folder - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/118.png)
-
-    ![Approve location - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/119.png)
-
-20. On the **Variables** tab, find the variable named **VSTS_ARM_REST_IGNORE_SSL_ERRORS**. Set the variable value to **true**, and set its scope to **Azure Stack**.
-
-    ![Configure variable - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/120.png)
-
-21. On the **Pipeline** tab, select the **Continuous deployment trigger** icon for the NorthwindCloud Traders-Web artifact and set the **Continuous deployment trigger** to **Enabled**.  Do the same thing for the "NorthwindCloud Traders-Vessel" artifact.
-
-    ![Set continuous deployment trigger - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/121.png)
-
-22. For the Azure Stack environment, select the **Pre-deployment conditions** icon set the trigger to **After release**.
-
-    ![Set pre-deployment conditions trigger - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/122.png)
-
-23. Save all your changes.
+   
+1. For **Deploy Azure App Service**, select the **Package or folder** for the Azure Stack build, and select **OK** in the **Select a file or folder** dialog.
+   
+1. On the **Variables** tab, find the variable named **VSTS_ARM_REST_IGNORE_SSL_ERRORS**. Set the variable value to **true**, and set its scope to **Azure Stack**.
+   
+   ![Configure variable - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/120.png)
+   
+1. On the **Pipeline** tab, select the **Continuous deployment trigger** icon for both artifacts and set them to **Enabled**.  
+   
+   ![Set continuous deployment trigger - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/121.png)
+   
+1. Select the **Pre-deployment conditions** icon on the Azure Stack stage, and set the trigger to **After release**.
+   
+   ![Set pre-deployment conditions trigger](media/azure-stack-solution-hybrid-pipeline/122.png)
+   
+1. Select **Save** at the upper right on the **New release pipeline** page to save the releasea pipeline.
+   
 
 > [!Note]
-> Some settings for release tasks may have been automatically defined as [environment variables](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts#custom-variables) when you created a release pipeline from a template. These settings can't be modified in the task settings. However, you can edit these settings in the parent environment items.
+> Some settings for release tasks may have been automatically defined as [custom variables](/azure/devops/pipelines/release/variables?view=vsts#custom-variables) when you created the release pipeline from the template. These settings can't be modified in the task settings, but you can edit them in the parent stage items.
 
 ## Release the app
 
-Now that you've completed the release pipeline, you can start the deployment. To begin deployment, create a release from the release pipeline. 
+Now that you've created the release pipeline, you can use it to create a release and deploy your app. 
 
-If the continuous deployment trigger is set in the release pipeline, modifying the source code will start a new build and then create a new release automatically. However, in this section you'll create a new release manually.
+Because the continuous deployment trigger is set in your release pipeline, modifying the source code starts a new build and creates a new release automatically. However, in this tutorial you'll create a new release manually.
 
-1. On the **Pipeline** tab, open the **Release** drop-down list and select **Create release**.
+To create a release:
 
-    ![Create a release - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/200.png)
-
-2. Enter a description for the release, check to see that the correct artifacts are selected, and then select **Create**. After a few moments, a banner appears indicating that the new release was created, and the release name is displayed as a link. Select the link to see the release summary page.
-
-    ![Release creation banner - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/201.png)
-
-3. The release summary page for shows details about the release. In the following screen capture for "Release-2", the **Environments** section shows the **Deployment status** for Azure as "IN PROGRESS", and the status for Azure Stack is "SUCCEEDED". When the deployment status for the Azure environment changes to "SUCCEEDED", a banner appears indicating that the release is ready for approval. When a deployment is pending or has failed, a blue **(i)** information icon is shown. Hover over the icon to see a pop-up that contains the reason for delay or failure.
+1. On the release pipeline page, select **Create release** at upper right. 
+   
+   ![Create a release ](media/azure-stack-solution-hybrid-pipeline/200.png)
+   
+1. On the **Create a new release** page, select the stage to change from automated to manual, check to see that the correct artifacts are selected, enter a description for the release, and then select **Create**. 
+   
+   A banner indicates that the new release is created. Select the release name link to see a summary page showing details about the release, such as deployment status.
+   
+1. To deploy a manually triggered build, select **Deploy** in the **Stage** section, and then select **Deploy**. 
+   
+   Select the hyperlink in the release stage to see more information about deployment status. 
 
     ![Release summary page - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/202.png)
 
-Other views, such as the list of releases, will also display an icon that indicates approval is pending. The pop-up for this icon shows the environment name and more details related to the deployment. It's easy for an administrator see the overall progress of releases and see which releases are waiting for approval.
+It's easy for an administrator see the overall progress of releases and see which releases are waiting for approval.
 
 ### Monitor and track deployments
 
