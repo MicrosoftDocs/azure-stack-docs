@@ -11,20 +11,20 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
+ms.topic: scenario
 ms.date: 01/14/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
 ---
 
-# Tutorial: Create a geo-distributed app solution to direct traffic with Azure and Azure Stack
+# Create a geo-distributed app solution to direct traffic with Azure and Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 Learn how to direct traffic to specific endpoints based on various metrics using the geo-distributed apps pattern. Creating a Traffic Manager profile with geographic-based routing and endpoint configuration ensures information is routed to endpoints based on regional requirements, corporate and international regulation, and your data needs.
 
-In this tutorial, you'll build a sample environment to:
+In this solution, you'll build a sample environment to:
 
 > [!div class="checklist"]
 > - Create a Geo-Distributed App.
@@ -38,7 +38,7 @@ With the geo-distributed pattern, your app spans regions. You can default to the
 
 #### Scalability considerations
 
-The solution you'll build with this tutorial isn't to accommodate scalability. However, if used in combination with other Azure and on-premises solutions, you can accommodate scalability requirements. For information on creating a hybrid solution with auto-scaling via traffic manager, see [Create cross-cloud scaling solutions with Azure](azure-stack-solution-cloud-burst.md).
+The solution you'll build with this article isn't to accommodate scalability. However, if used in combination with other Azure and on-premises solutions, you can accommodate scalability requirements. For information on creating a hybrid solution with auto-scaling via traffic manager, see [Create cross-cloud scaling solutions with Azure](azure-stack-solution-cloud-burst.md).
 
 #### Availability considerations
 
@@ -70,7 +70,7 @@ Before building out a distributed app footprint, it helps to know the following 
 > ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
 > Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
 > 
-> The whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid application design, minimizing challenges in production environments.
+> The article [Design Considerations for Hybrid Applications](azure-stack-edge-pattern-overview.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
 ## Part 1: Create a geo-distributed app
 
@@ -256,9 +256,9 @@ To migrate a live site and its DNS domain name to App Service, see [Migrate an a
 
 ### Prerequisites
 
-To complete this tutorial:
+To complete this  solution:
 
--   [Create an App Service app](https://docs.microsoft.com/azure/app-service/), or use an app created for another tutorial.
+-   [Create an App Service app](https://docs.microsoft.com/azure/app-service/), or use an app created for another  solution.
 
 -   Purchase a domain name and ensure access to the DNS registry for the domain provider.
 
@@ -367,7 +367,7 @@ In this part, we will:
 
 ### Prerequisites
 
-To complete this tutorial:
+To complete this  solution:
 
 -   [Create an App Service app.](https://docs.microsoft.com/azure/app-service/)
 -   [Map a custom DNS name to your web app.](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-domain)
