@@ -37,7 +37,7 @@ You'll need a blob container in Azure to store the logs. You can use a new or ex
 >To create a blob container in Azure, you need at least the [storage blob contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or the [specific permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). Global administrators also have the necessary permission. 
 
 
-For best practices about choosing parameters for the automatic log collection storage account, see [Manage a storage account for automatic Azure Stack log collection](azure-stack-manage-storage-account-for-automatic-log-collection.md).
+For best practices about choosing parameters for the automatic log collection storage account, see [Manage a storage account for automatic Azure Stack log collection](azure-stack-manage-storage-account-automatic-log-collection.md).
 
 ### Create a blob storage account
  

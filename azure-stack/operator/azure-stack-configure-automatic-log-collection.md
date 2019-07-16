@@ -29,7 +29,7 @@ If system health conditions need to be investigated, the logs can be uploaded au
 
 ## Steps to configure automatic log collection
 
-You'll need to provide the SAS URL for a blob container where the logs can be uploaded. You can use any blob container in Azure. If you need to create a new SAS URL, see [Create a blob container SAS URL](azure-stack-create-blob-container-sas-url.md). 
+You'll need to provide the SAS URL for a blob container where the logs can be uploaded. You can use any blob container in Azure. If you need to create a new SAS URL, see [Create a blob container SAS URL](azure-stack-create-blob-container-shared-access-signature-url.md). 
 
 Follow these steps to add the SAS URL to the log collection UI: 
 
@@ -71,7 +71,7 @@ After log collection, the next alert scanning is suppressed until 30 mins.
 
 There are two types of alerts related to the SAS URL used for automatic log collection. 
 Each alert can be resolved by generating a new SAS URL. 
-For more information, see [Create a blob container SAS URL](azure-stack-create-blob-container-sas-url.md).
+For more information, see [Create a blob container SAS URL](azure-stack-create-blob-container-shared-access-signature-url.md).
 
 - Expiration date approaching
 
