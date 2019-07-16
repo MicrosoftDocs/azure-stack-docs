@@ -26,6 +26,12 @@ Microsoft Azure is a consistent hybrid cloud. Azure allows you to reuse code dev
 
 Hybrid scenarios vary greatly with the resources that are available for development, and span considerations such as geography, security, Internet access, and other considerations. Although these scenarios can't address your specific requirements, they can provide some key guidelines and examples for you to explore implementing hybrid solutions.
 
+## Hybrid cloud patterns
+
+- [Cross-cloud scaling pattern](azure-stack-edge-pattern-cross-cloud-scaling.md)
+- [Geo-distributed pattern](azure-stack-edge-pattern-geo-distribution.md)
+- [DevOps pattern](azure-stack-edge-pattern-hybrid-ci-cd.md)
+
 ## Step-by-step tutorials
 
 - [Deploy apps across both Azure and Azure Stack](azure-stack-solution-pipeline.md)
@@ -42,5 +48,5 @@ Hybrid scenarios vary greatly with the resources that are available for developm
 
 ## Next steps
 
-- Read the whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) to review pillars of software quality for designing, deploying, and operating hybrid applications.
+- Read the about [Design Considerations for Hybrid Applications](azure-stack-edge-pattern-overview.md) to review pillars of software quality for designing, deploying, and operating hybrid applications.
 - [Set up a development environment on Azure Stack](azure-stack-dev-start.md) and [deploy your first app](azure-stack-dev-start-deploy-app.md) on Azure Stack.
