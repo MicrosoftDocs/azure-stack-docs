@@ -104,18 +104,18 @@ To deploy the ASDK:
 > [!Note]
 > Your Azure Stack environment needs the correct images to run Windows Server and SQL Server. It must also have App Service deployed.
 
-## Create the Service Principal and role in Azure AD 
+## Configure the service principal and role in Azure AD 
 
-In Azure Active Directory (Azure AD), Azure Pipelines authenticates against Azure Resource Manager using a Service Principal. To provision resources for Azure Pipelines, the Service Principal must have the **Contributor** role in the Azure subscription. 
+In Azure Active Directory (Azure AD), Azure Pipelines authenticates against Azure Resource Manager using a *service principal*. To provision resources for Azure Pipelines, the service principal must have the **Contributor** role in the Azure subscription. 
 
 In this section of the tutorial, you use the Azure portal to configure authentication for your app:
 
-1. Register your app to create a Service Principal.
-1. Use Role-Based Access Control (RBAC) to give the Service Principal Name (SPN) the **Contributor** role.
+1. Register your app to create a service principal.
+1. Use *role-based access control (RBAC)* to give the Service Principal Name (SPN) the **Contributor** role.
 1. Copy and save the Application ID and Tenant ID values you need to create endpoints for Azure Pipelines. 
 1. Create and save an application secret key value.
 
-You can also [use the PowerShell script](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5) to create a Service Principal and endpoints. The article [Create an Azure Resource Manager service connection with an existing service principal](/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) explains this process.
+You can also [use a PowerShell script](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5) to create a Service Principal and endpoints. The article [Create an Azure Resource Manager service connection with an existing service principal](/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) explains this process.
 
  > [!Note]  
  > If you use the PowerShell script to create an Azure Stack Azure Resource Manager endpoint, you need to pass the **-azureStackManagementURL** parameter and **-environmentName** parameter. For example:  
@@ -205,7 +205,7 @@ By creating endpoints, an Azure Pipelines build can deploy Azure AD apps to Azur
 
 After setting endpoint creation permissions, you can create endpoints for Azure AD or AD FS. 
 
-- If you deployed Azure Stack with Azure AD as the identity provider for Azure Stack, you can use the service principal key to create an Azure Resource Manager service connection for Azure deployments. 
+- If you deployed Azure Stack with Azure AD as the identity provider for Azure Stack, you can use the service principal secret key to create an Azure Resource Manager service connection for Azure deployments. 
   
 - If you used Active Directory Federation Services (AD FS) as the identity provider for Azure Stack, you must create the service connection using a certificate instead of a secret key for authentication. 
 
@@ -213,15 +213,15 @@ After setting endpoint creation permissions, you can create endpoints for Azure 
 
 1. In your web browser, open your Azure DevOps organization and project. Hover over the project name and select the **Settings** icon. 
    
-1. Under **Azure DevOps Services Groups**, select **Endpoint Administrators**.
+1. Select **Security**, and under **Azure DevOps Groups**, select **Endpoint Administrators**.
    
 1. On the **Members** tab, select **Add**.
    
-   ![Add a member](./media/azure-stack-solution-pipeline/endpoint-permissions.png)
-   
 1. In **Add users and groups**, select user names from the list, including yourself, and then select **Save changes**.
    
-1. In the **Azure DevOps Services Groups** list, select **Endpoint Creators**, and repeat the steps to add users to the **Endpoint Creators** group. 
+   ![Add a member](./media/azure-stack-solution-pipeline/endpoint-permissions.png)
+   
+1. In the **Azure DevOps Services Groups** list, select **Endpoint Creators**, and repeat the previous steps to add users to the **Endpoint Creators** group. 
 
 ### Create an endpoint for Azure AD or AD FS deployments
 
@@ -238,7 +238,7 @@ For an Azure AD endpoint, use the following values to fill out the form:
 | **Subscription ID** | 00000000-XXXX-4F2A-8FB2-64C63CD2FAE9 | Your subscription ID. |
 | **Subscription name** | name@contoso.com | Your user name from Azure Stack. |
 | **Service principal client ID** | 00000000-XXXX-4776-93FC-C63E6E021D59 | The **Application (client) ID** you saved previously. |
-| **Service principal key** | \<application secret value> | The secret key value you saved when you created the application secret.  |
+| **Service principal key** | \<application secret value> | The key value you saved when you created the application secret.  |
 | **Tenant ID** | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | The **Directory (tenant) ID** you saved previously.  |
 | **Connection: Not verified** | | Select **Verify connection** to validate your connection settings to the service principal. <br />**Note:** If your Azure Resource Manager endpoint isn't exposed to the internet, the connection validation will fail. This is expected, and you can validate your connection by creating a release pipeline with a simple task. |
 
@@ -272,7 +272,7 @@ In Azure DevOps, create a personal access token (PAT) to use for Azure Stack. Th
    
    ![PAT warning](media/azure-stack-solution-pipeline/patwarning.png)
    
-### Deploy and configure the build agent
+### Deploy and configure the agent on the build server
 
 1. Connect to the build server VM you deployed on the Azure Stack host.
    
@@ -280,13 +280,13 @@ In Azure DevOps, create a personal access token (PAT) to use for Azure Stack. Th
    
 1. From an admin command prompt, navigate to the folder for the extracted build agent, and run the *config.cmd* file. When the *config.cmd* finishes, the build agent folder is updated with additional files.
 
-Now that the endpoint is created and the Azure Pipelines build agent is installed on the build server, the Azure Pipelines to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from Azure Pipelines, and then the agent conveys endpoint information for communication with Azure Stack.
+Now that you created the endpoint and installed the Azure Pipelines build agent on the build server, the Azure Pipelines to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from Azure Pipelines, and then the agent conveys endpoint information for communication with Azure Stack.
 
 ‎‎Instead of managing each agent separately, you can organize agents into *agent pools*. An agent pool defines the sharing boundary for all agents in that pool. Agent pools are scoped to the Azure DevOps organization, which means that you can share an agent pool across projects. To learn more about agent pools, see [Create agent pools and queues](/azure/devops/pipelines/agents/pools-queues).
 
-## Build and release your app 
+## Create build and release pipelines 
 
-Using a hosted build agent in Azure Pipelines is a convenient option for building and deploying web apps. Azure automatically performs agent maintenance and upgrades, which enables a continuous and uninterrupted development cycle.
+Using a hosted build agent in Azure Pipelines is a convenient option for building and deploying web apps. Azure automatically performs agent maintenance and upgrades, which enable a continuous and uninterrupted development cycle.
 
 Azure Pipelines provides a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, quality assurance (QA), and production. The release process can include requiring approvals at specific stages of the application life cycle.
 
@@ -294,7 +294,7 @@ In this part of the tutorial, you:
 
 - Clone, connect, and add code to your Azure DevOps project in Visual Studio.
 - Create a self-contained web app deployment.
-- Configure the CI/CD build and release processes.
+- Configure the CI/CD build and release pipelines.
 
 Hybrid CI/CD can apply to both app code and infrastructure code. You can use [Azure Resource Manager hybrid templates](https://azure.microsoft.com/resources/templates/) to deploy your Azure web app code to on-premises and public clouds.
 
@@ -322,37 +322,37 @@ Hybrid CI/CD can apply to both app code and infrastructure code. You can use [Az
 
 1. In your web browser, open your Azure DevOps organization and project.
    
-1. Select **Pipelines** > **Builds** on the left, and then select **New pipeline**. 
+1. Select **Pipelines** > **Builds** in the left navigation, and then select **New pipeline**. 
    
 1. Under **Select a template**, select the **ASP.NET Core** template, and then select **Apply**. 
    
-1. On the configuration page, select **Publish** on the left.
+1. On the configuration page, select **Publish** in the left pane.
    
-1. On the right, under **Arguments**, add `-r win10-x64` to the configuration. 
-   
-1. Select **Save & queue** at the top.
+1. In the right pane, under **Arguments**, add `-r win10-x64` to the configuration. 
    
    ![Add build pipeline argument](media/azure-stack-solution-pipeline/buildargument.png)
    
+1. Select **Save & queue** at the top of the page.
+   
 1. In the **Run pipeline** dialog, select **Save and run**. 
    
-   The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) publishes artifacts that can run on both Azure and Azure Stack.
+The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) publishes artifacts that can run on both Azure and Azure Stack.
 
 ### Create a release pipeline
 
-Creating a release pipeline is the final step in your app build process. You use the following release pipeline to create a release and deploy the build.
+Creating a release pipeline is the final step in your hybrid CI/CD configuration process. You use the release pipeline to create a release and deploy your build.
 
-1. In your Azure DevOps project, Select **Pipelines** > **Releases** on the left, and then select **New pipeline**. 
+1. In your Azure DevOps project, select **Pipelines** > **Releases** in the left navigation, and then select **New pipeline**. 
    
 1. On the **Select a template** page, select **Azure App Service Deployment**, and then select **Apply**.
    
    ![Select the release template](media/azure-stack-solution-pipeline/releasetemplate.png)
    
-1. On the **Pipeline** tab, select **Add an artifact** on the left. On the right, select the web app build you just created from the **Source (build pipeline)** drop-down menu, and select **Add**.
+1. On the **Pipeline** tab, select **Add an artifact** in the left pane. In the right pane, select the web app build you just created from the **Source (build pipeline)** drop-down menu, and select **Add**.
    
    ![Add a build artifact](media/azure-stack-solution-pipeline/addartifact.png)
    
-1. On the **Pipeline** tab, under **Stage 1**, select the hyperlink to **View stage tasks**.
+1. On the **Pipeline** tab, under **Stages**, select the hyperlink in **Stage 1** to **View stage tasks**.
    
    ![View stage tasks](media/azure-stack-solution-pipeline/viewstagetasks.png)
    
@@ -360,13 +360,13 @@ Creating a release pipeline is the final step in your app build process. You use
    
 1. Under **Parameters**, select your subscription from the **Azure subscription** drop-down list, and enter your **App service name**.
    
-  ![Select subscription and enter App Service name](media/azure-stack-solution-pipeline/stage1.png)
+   ![Select subscription and enter App Service name](media/azure-stack-solution-pipeline/stage1.png)
    
-1. On the left, select **Run on agent**. On the right, select **Hosted VS2017** from the **Agent pool** drop-down list if it'a not already selected.
+1. In the left pane, select **Run on agent**. In the right pane, select **Hosted VS2017** from the **Agent pool** drop-down list if it'a not already selected.
    
    ![Select hosted agent](media/azure-stack-solution-pipeline/agentjob.png)
    
-1. On the left, select **Deploy Azure App Service**, and on the right, browse to the **Package or folder** local for your Azure web app build.
+1. In the left pane, select **Deploy Azure App Service**, and in the right pane, browse to the **Package or folder** for your Azure web app build.
    
    ![Select package or folder](media/azure-stack-solution-pipeline/packageorfolder.png)
    
@@ -376,7 +376,7 @@ Creating a release pipeline is the final step in your app build process. You use
    
    ![Save changes](media/azure-stack-solution-pipeline/save-devops-icon.png)
    
-1. On the **Pipeline** tab, select **Add an artifact**. Select your project, and select your Azure Stack build from the **Source (build pipeline)** drop-down menu. Select **Add** 
+1. On the **Pipeline** tab, select **Add an artifact**. Select your project, and select your Azure Stack build from the **Source (build pipeline)** drop-down menu. Select **Add**. 
    
 1. On the **Pipeline** tab, under **Stages**, select **Add**.
    
@@ -394,7 +394,7 @@ Creating a release pipeline is the final step in your app build process. You use
    
    ![Configure variable](media/azure-stack-solution-pipeline/setvariable.png)
    
-1. On the **Pipeline** tab, select the **Continuous deployment trigger** icon for each artifact and set them to **Enabled**.  
+1. On the **Pipeline** tab, select the **Continuous deployment trigger** icon for each artifact, and set it to **Enabled**.  
    
    ![Set continuous deployment trigger](media/azure-stack-solution-pipeline/contindeploymentenabled.png)
    
@@ -424,7 +424,7 @@ To create a release:
    1. Under **Artifacts**, make sure the correct artifacts are selected.
    1. Enter a **Release description**, and then select **Create**. 
    
-   A banner indicates that the new release is created. Select the release name link to see the release summary page showing details about the release, such as deployment status.
+   A banner indicates that the new release is created. Select the release name link to see a release summary page showing details about the release, such as deployment status.
    
 1. To deploy the manual release, select **Deploy** in the **Stage** section, and then select **Deploy** in the stage popup. 
    
@@ -432,11 +432,11 @@ To create a release:
    
    ![Release summary page](media/azure-stack-solution-pipeline/releasesummary.png)
 
-It's easy for an administrator see the overall progress of releases and see which releases are waiting for approval.
+It's easy for an administrator track the overall progress of releases and see which releases are waiting for approval.
 
 ![Release summary page showing pending approval](media/azure-stack-solution-pipeline/releasepending.png)
 
-### Monitor and track deployments
+### Monitor and track releases
 
 You can monitor and track all your deployments. 
 
@@ -444,9 +444,11 @@ You can monitor and track all your deployments.
    
 1. On the release summary page, hover over or select any stage, and then select **Logs**. 
    
-   In the release log, the left pane shows the status of each operation for each stage. During a deployment, the right pane shows the live log from the agent. After the deployment finishes, the entire log file is displayed in the right pane. 
+   In the release log, the left pane shows the status of each operation for each stage. During a deployment, the right pane shows the live log from the agent. After the deployment finishes, the entire log file appears in the right pane. 
    
-1. Select any step in the left pane to see the log file for a single step, such as **Pre-deployment approvals**. To view the approvals, select **View approval** in the right pane to see who approved or rejected the release, and other details. Seeing logs for the individual steps makes it easier to trace and debug parts of the overall deployment. You can also **Download all logs** as a *.zip* file.
+1. Select any step in the left pane to see the log file for a single step, such as **Pre-deployment approvals**. To view the approvals, select **View approval** in the right pane to see who approved or rejected the release, and other details. 
+   
+   Seeing logs for the individual steps makes it easier to trace and debug parts of the overall deployment. You can also **Download all logs** as a *.zip* file.
    
    ![Release log](media/azure-stack-solution-pipeline/releaselog.png)
 
