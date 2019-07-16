@@ -1,5 +1,5 @@
 ---
-title: Build solutions hybrid cloud design patterns for Azure Stack | Microsoft Docs
+title: Hybrid cloud design patterns for Azure Stack | Microsoft Docs
 description: An overview of patterns for the hybrid cloud and the intelligent edge with Azure Stack
 services: azure-stack
 documentationcenter: ''
@@ -18,7 +18,7 @@ ms.reviewer: anajod
 ms.lastreviewed: 06/11/2019
 ---
 
-# Build solutions hybrid cloud design patterns for Azure Stack
+# Hybrid cloud design patterns for Azure Stack
 
 Microsoft Azure is the only consistent hybrid cloud. It allows you to reuse your development investments and enables applications that can span global Azure, the sovereign Azure clouds, and Azure Stack, which is an extension of Azure in your datacenter. Applications that span clouds are also referred to as *hybrid applications*.
 

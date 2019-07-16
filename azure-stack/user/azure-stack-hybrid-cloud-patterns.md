@@ -1,5 +1,5 @@
 ---
-title: Create hybrid cloud apps with Azure and Azure Stack | Microsoft Docs
+title: Build solutions hybrid cloud design patterns for Azure Stack | Microsoft Docs
 description: Learn how to create hybrid cloud apps with Azure and Azure Stack
 services: azure-stack
 documentationcenter: ''
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 06/20/2019
+ms.date: 07/16/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 06/20/2019
 ---
 
-# Create hybrid cloud apps with Azure and Azure Stack
+#  Build solutions hybrid cloud design patterns for Azure Stack
 
 Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility of cloud computing to your on-premises environment and to the edge by enabling a hybrid cloud. You can build hybrid cloud apps in Azure and deploy them to your connected or disconnected datacenter located anywhere.
 
