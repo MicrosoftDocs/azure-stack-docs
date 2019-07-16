@@ -1,6 +1,6 @@
 ---
-title: Create a blob container SAS URL | Microsoft Docs
-description: How to create a blob account SAS URL for automatic log collection in Azure Stack Help + Support.
+title: Create an Azure blob container SAS URL | Microsoft Docs
+description: How to create an Azure blob account SAS URL for automatic log collection in Azure Stack Help + Support.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -19,7 +19,7 @@ ms.reviewer: prchint
 ms.lastreviewed: 07/09/2019
 
 ---
-# Create a blob container SAS URL 
+# Create an Azure blob container SAS URL 
 
 *Applies to: Azure Stack integrated systems*
 
@@ -73,6 +73,6 @@ For best practices about choosing parameters for the automatic log collection st
 Copy the URL and enter it when you [configure automatic log collection](azure-stack-configure-automatic-log-collection.md). 
 For more information about SAS URLs, see [Using shared access signatures (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1). 
 
-## Next step
+## Next steps
 
 [Configure automatic Azure Stack log collection](azure-stack-configure-automatic-log-collection.md)
