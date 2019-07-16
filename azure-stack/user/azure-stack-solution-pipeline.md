@@ -39,7 +39,7 @@ To learn more about CI/CD, see the following articles:
 ## Azure Stack and hybrid CI/CD pipelines overview
 
 ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-Microsoft Azure Stack is an extension of Azure that brings the agility and innovation of cloud computing to your on-premises environment. It's the only hybrid cloud that lets you build and deploy hybrid apps in both on-premises and public cloud environments. 
+Microsoft Azure Stack is an extension of Azure that brings the agility and innovation of cloud computing to your on-premises environment. It's the only hybrid cloud that lets you build and deploy hybrid apps in both on-premises and public cloud environments. You can build an app on Azure Stack and then deploy it to Azure Stack, to Azure, or to your Azure hybrid cloud. 
 
 App deployment continuity, security, and reliability are critical elements for your organization and development team. The Azure Pipelines hybrid CI/CD delivery model lets you consolidate your build pipelines across your on-premises environment and the public cloud, and change deployment locations without changing your app. Other benefits of using the hybrid approach are:
 
@@ -58,17 +58,18 @@ The white paper [Design considerations for hybrid applications](https://aka.ms/h
 - An Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
   
 - Visual Studio 2019 [installed](/visualstudio/install/install-visual-studio).
+  
+- An Azure DevOps organization containing a [project](/azure/devops/organizations/projects/create-project) or [workspace](/azure/devops/repos/tfvc/create-work-workspaces). In the project or workspace, use an [Azure Resource Manager template](https://azure.microsoft.com/resources/templates/) to create a web app you can deploy both on-premises and to the public cloud. Make a note of the app URI to use later in the tutorial. 
    
 - An Azure Stack integrated system, or the Azure Stack Development Kit (ASDK) deployed and configured according to the following instructions. 
-
+  
+  If you already have any of the prerequisites, make sure they meet all the requirements before starting this tutorial.
 
 ### Install and deploy the ASDK
 
 The Azure Stack Development Kit (ASDK) is a single-node deployment of Azure Stack that you can download and use for free. The ASDK lets you evaluate Azure Stack and use Azure APIs and tooling in a non-production environment.
 
-Any user with Azure AD or Active Directory Federation Services (AD FS) admin credentials can deploy the ASDK. An Azure OEM/hardware partner can deploy a production Azure Stack. 
-
-You must be an Azure Stack operator to do the following Azure Stack deployment tasks: 
+Any user with Azure AD or Active Directory Federation Services (AD FS) admin credentials can deploy the ASDK. An Azure OEM/hardware partner can deploy a production Azure Stack. You must be an Azure Stack operator to do the following Azure Stack deployment tasks: 
 
 - Deploy Azure App Service
 - Create plans and offers
@@ -78,8 +79,6 @@ You must be an Azure Stack operator to do the following Azure Stack deployment t
 > [!Note]
 > The ASDK installation takes approximately seven hours, so plan accordingly.
   
-If you already have any of the following components, make sure they meet all the requirements before starting this tutorial.
-
 To deploy the ASDK:
   
   1. Follow the detailed deployment instructions in [Tutorial: Deploy the ASDK using the installer](../asdk/asdk-install.md).
@@ -92,175 +91,168 @@ To deploy the ASDK:
      
   1. Create a [tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) to the offer in Azure Stack. 
      
-  1. Deploy a Windows Server 2016 VM with .NET 3.5 in the tenant subscription, to use as your build server and to run Azure Pipelines.
+  1. Deploy a Windows Server 2016 VM with .NET 3.5 in the tenant subscription, to use as the build server that runs Azure Pipelines.
   
   > [!Note]
   > Your Azure Stack environment needs the correct images to run Windows Server and SQL Server. It must also have Azure App Service deployed.
 
 1. [Sign in to Azure DevOps](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services), and create a new project.
    
-## Create the Service Principal and assign a role in Azure AD 
+## Create the Service Principal and role in Azure AD 
 
-Azure Pipelines authenticates against Azure Resource Manager using a Service Principal. For Azure Pipelines to provision resources for your app, the app must have the **Contributor** role in the Azure Stack subscription. To configure authentication for your app:
+In Azure Active Directory (Azure AD), Azure Pipelines authenticates against Azure Resource Manager using a Service Principal. To provision resources for Azure Pipelines, the Service Principal must have the **Contributor** role in the Azure Stack subscription. 
 
-1. Create a Service Principal and access key. Or, use an existing Service Principal.
-1. Use Role-Based Access Control (RBAC) to validate the Azure Stack subscription and give the Service Principal Name (SPN) the **Contributor** role.
+In this section of the tutorial, you use the Azure portal to configure authentication for your app:
 
-### Create a Service Principal and access key
+1. Register your app to create a Service Principal.
+1. Use Role-Based Access Control (RBAC) to give the Service Principal Name (SPN) the **Contributor** role.
+1. Copy and save the Application ID and Tenant ID values you need to create endpoints for Azure Pipelines. 
+1. Create and save an application secret key value.
 
-Use the instructions in [create an Azure AD application and service principal](/azure/active-directory/develop/howto-create-service-principal-portal) to create a service principal. Under **Redirect URI**, select **Web** for the type of application you want to create, and enter the URI for your web app. 
-
-Save the Principal ID to use when creating endpoints. 
-
-Or, [use the PowerShell script](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5) as explained in the article [Create an Azure Resource Manager service connection with an existing service principal](/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal).
+You can also [use the PowerShell script](https://github.com/Microsoft/vsts-rm-extensions/blob/master/TaskModules/powershell/Azure/SPNCreation.ps1#L5) to create a Service Principal and endpoints. The article [Create an Azure Resource Manager service connection with an existing service principal](/vsts/pipelines/library/connect-to-azure?view=vsts#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) explains this process.
 
  > [!Note]  
  > If you use the PowerShell script to create an Azure Stack Azure Resource Manager endpoint, you need to pass the **-azureStackManagementURL** parameter and **-environmentName** parameter. For example:  
  > `-azureStackManagementURL https://management.local.azurestack.external -environmentName AzureStack`
 
-A Service Principal requires a key for authentication. Use the following steps to generate a key:
+### Register your app in Azure AD to create the service principal
 
-1. In the Azure portal, select **Azure Active Directory**.
+1. In the [Azure portal](https://portal.azure.com), select **Azure Active Directory**, and then select **App registrations** in the left navigation.
    
-   ![Azure Active Directory for tenant](media/azure-stack-solution-hybrid-pipeline/000_07.png)
+1. Select **New registration**.
    
-1. Select **App registrations** in the left navigation, and then select your app.
-   
-   ![Select the application - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_01.png)
-   
-1. Copy and save the **Application ID** to use when creating endpoints. 
-   
-   ![Application ID - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_02.png)
-   
-1. To generate an authentication key, select **Settings**, and then select **Keys**.
-   
-   ![Edit app settings - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_03.png)
-   
-   ![Configure key settings - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_04.png)
-   
-1. Provide a description and set the duration of the key, and then select **Save**.
-   
-   ![Key description and duration - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_05.png)
-   
-   After you save the key, copy and save the key **VALUE**. You can't get this value later. You need the **key value** with the **application ID** to sign in as the app. Store the key value where your app can retrieve it.
-   
-   ![Key VALUE - Azure Active Directory](media/azure-stack-solution-hybrid-pipeline/000_06.png)
-   
-### Grant the service principal rights to deploy resources
+1. On the **Register an application** page
+   1. Enter your web app's name.
+   1. Select a supported account type. 
+   1. Under **Redirect URI**, select **Web** for the type of application you want to create, and enter your web app's URI. 
+   1. Select **Register**.
+      
+      ![Register your application](./media/howto-create-service-principal-portal/create-app.png)
 
-Azure Role-Based Access Control (RBAC) provides fine-grained access management for Azure. By using RBAC, you can control the level of access that users need to do their jobs. For more information about RBAC, see [Manage access to Azure subscription resources](/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json).
+### Assign the app to a role
 
-To access resources in your subscription, you must assign your app to a role. Decide which role represents the best permissions for the app. To learn about the available roles, see [RBAC: Built-in roles](/azure/role-based-access-control/built-in-roles).
+You must assign your application to a role for it to access resources in your subscription. Azure Role-Based Access Control (RBAC) lets you control the level of access that users need to do their jobs. For more information about RBAC, see [Manage access to Azure subscription resources](/azure/role-based-access-control/role-assignments-portal?toc=%252fazure%252factive-directory%252ftoc.json). To learn about the available roles, see [RBAC: Built-in roles](/azure/role-based-access-control/built-in-roles).
+
+Azure Pipelines must have the **Contributor** role to be able to provision resources in an Azure Stack subscription. 
 
 You can set the role scope at the subscription, resource group, or resource level. Permissions are inherited to lower levels of scope. For example, adding an app to the **Reader** role for a resource group means the app can read the resource group and any of its resources.
 
-1. Navigate to the scope you want to assign the app to. For example, to assign a role at the subscription scope, select **Subscriptions**.
-   
-   ![Select Subscriptions - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_10.png)
-   
-1. In **Subscription**, select Visual Studio Enterprise.
-   
-   ![Visual Studio Enterprise - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_11.png)
-   
-1. In Visual Studio Enterprise, select **Access Control (IAM)**.
-   
-1. Select **Add role assignment**.
-   
-   ![Add role assignment - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_13.png)
-   
-1. In **Add permissions**, select the role you that you want to assign to the app. In this example, it's the **Owner** role.
-   
-   ![Owner role permissions - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_14.png)
-   
-1. Azure Active Directory apps aren't shown in the available options by default. Search for your app in the **Select** field, and then select the app.
-   
-   ![App search result - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_16.png)
-   
-1. Select **Save** to finish assigning the role. You can see your app in the list of users assigned to the role for that scope.
+To assign your application to the **Contributor** role:
 
-## Create Azure Stack endpoints in Azure Pipelines
+1. In the Azure portal, navigate to the level of scope you want. For example, to assign a role at the subscription scope, select **All services** and **Subscriptions**.
+   
+   ![Assign a role at the subscription scope](./media/howto-create-service-principal-portal/select-subscription.png)
+   
+1. Select the subscription to assign the application to.
+   
+   ![Select subscription for assignment](./media/howto-create-service-principal-portal/select-one-subscription.png)
+   
+1. In the left navigation, select **Access control (IAM)**.
+   
+1. Select **Add a role assignment**.
+   
+1. In the **Add role assignment** dialog, select the **Contributor** role. By default, Azure AD applications aren't displayed in the available options. To find your application, search for the name and select it.
+   
+   ![Select the role and the application](./media/howto-create-service-principal-portal/select-role.png)
+   
+1. Select **Save** to finish assigning the role. You see your application in the list of users assigned to a role for that scope.
+
+Your service principal is set up. The next section shows how to get values that Azure Pipelines needs to sign in programmatically.
+
+### Get values for signing in
+
+When creating endpoints for Azure Pipelines, you need to enter the tenant ID and the application ID. To get those values:
+
+1. In the Azure portal, select **Azure Active Directory**.
+   
+1. In the left navigation, select **App registrations**, and then select your application.
+   
+1. Copy and save the **Directory (tenant) ID** to use for creating endpoints.
+   
+   ![Copy the directory (tenant ID) and store it in your app code](./media/howto-create-service-principal-portal/copy-tenant-id.png)
+   
+1. Copy and save the **Application (client) ID** to use for creating endpoints. 
+   
+   ![Copy the application (client) ID](./media/howto-create-service-principal-portal/copy-app-id.png)
+
+### Create a new application secret
+
+When creating endpoints for Azure Pipelines, you need to enter an authentication key. You can [use a certificate](/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets) or an application secret. To create a new application secret:
+
+1. In the Azure portal, select **Azure Active Directory**.
+   
+1. In the left navigation, select **App registrations**, and then select your application.
+   
+1. In the left navigation, select **Certificates & secrets**.
+   
+1. Under **Client secrets**, select **New client secret**.
+   
+1. In **Add a client secret**, type a description, select an expiration, and select **Add**.
+   
+1. Copy the **VALUE** of the new secret. You provide the key value with the application ID to sign in as the application. It's important to save this value now, because it won't be displayed again after you leave this page.
+   
+   ![Copy the secret value because you can't retrieve it later](./media/howto-create-service-principal-portal/copy-secret.png)
+
+## Create endpoints
 
 By creating endpoints, an Azure Pipelines build can deploy Azure AD apps to Azure Stack. Azure Pipelines connects to the build agent, which connects to Azure Stack.
 
 After setting endpoint creation permissions, you can create endpoints in either Azure AD or AD FS. 
 
-- If you used Azure AD as the identity provider for Azure Stack, you can use the service principal to create an Azure Resource Manager service connection for Azure deployments. 
+- If you used Azure AD as the identity provider for Azure Stack, use the service principal key to create an Azure Resource Manager service connection for Azure deployments. 
   
-- You can also create a service connection using a service principal with a certificate for authentication. You need this connection to deploy Azure Stack with Active Directory Federation Services (AD FS) as the identity provider. 
+- If you deployed Azure Stack with Active Directory Federation Services (AD FS) as the identity provider, create the service connection using a certificate instead of a secret key for authentication. 
 
 ### Set endpoint creation permissions
 
-![NorthwindCloud sample app in VSTO](media/azure-stack-solution-hybrid-pipeline/012_securityendpoints.png)
+1. In your web browser, open your Azure DevOps organization and project. Hover over the project name and select the **Settings** icon. 
+   
+   ![NorthwindCloud app settings in Azure DevOps](media/azure-stack-solution-hybrid-pipeline/012_securityendpoints.png)
+   
+1. Under **Azure DevOps Services Groups**, select **Endpoint Creators**.
+   
+   ![NorthwindCloud Endpoint Creators](media/azure-stack-solution-hybrid-pipeline/013_endpoint_creators.png)
+   
+1. On the **Members** tab, select **Add**.
+   
+   ![Add a member](media/azure-stack-solution-hybrid-pipeline/014_members_tab.png)
+   
+1. In **Add users and groups**, select your user name from the list, and then select **Save changes**.
+   
+1. In the **Azure DevOps Services Groups** list, select **Endpoint Administrators**, and repeat the steps to add yourself to the **Endpoint Administrators** group. 
 
-1. Sign in to VSTO and navigate to the app settings page.
-2. In **Settings**, select **Security**.
-3. In **Azure DevOps Services Groups**, select **Endpoint Creators**.
+### Create an endpoint for Azure AD or AD FS deployments
 
-    ![NorthwindCloud Endpoint Creators](media/azure-stack-solution-hybrid-pipeline/013_endpoint_creators.png)
-
-4. On the **Members** tab, select **Add**.
-
-    ![Add a member](media/azure-stack-solution-hybrid-pipeline/014_members_tab.png)
-
-5. On the **Add users and groups** page, enter a user name and select that user from the list of users.
-6. Select **Save changes**.
-7. In the **Azure DevOps Services Groups** list, select **Endpoint Administrators**.
-
-    ![NorthwindCloud Endpoint Administrators](media/azure-stack-solution-hybrid-pipeline/015_save_endpoint.png)
-
-8. On the **Members** tab, select **Add**.
-9. On the **Add users and groups** page, enter a user name and select that user from the list of users.
-10. Select **Save changes**.
-
-Now that the endpoint information exists, the Azure Pipelines to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from Azure Pipelines, and then the agent conveys endpoint information for communication with Azure Stack.
-
-### Create an endpoint for Azure AD deployments
-
-Follow the instructions in [Create an Azure Resource Manager service connection with an existing service principal](/devops/pipelines/library/connect-to-azure#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) to create a service connection using the existing service principal. Use the following mapping:
+Follow the instructions in [Create an Azure Resource Manager service connection with an existing service principal](/devops/pipelines/library/connect-to-azure#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) to create the service connection endpoint. Use the following values to fill out the form:
 
 | Name | Example | Description |
 | --- | --- | --- |
-| Connection name | Azure Stack Azure AD | The name of the connection. |
-| Environment | AzureStack | The name of your environment. |
-| Environment URL | `https://management.local.azurestack.external` | Your management endpoint. |
-| Scope level | Subscription | The scope of the connection. |
-| Subscription ID | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | User subscription ID from Azure Stack |
-| Subscription name | name@contoso.com | User subscription name from Azure Stack. |
-| Service Principal client ID | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | The principal ID from [this](azure-stack-solution-pipeline.md#create-a-service-principal) section in this article. |
-| Service Principal key | THESCRETGOESHERE= | The key from the same article (or the password if you used the script). |
-| Tenant ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | The tenant ID you retrieve following the instruction at [Get the tenant ID](azure-stack-solution-pipeline.md#get-the-tenant-id).  |
-| Connection: | Not verified | Validate your connection settings to the service principal. |
-
-![Build agent Azure AD](media/azure-stack-solution-hybrid-pipeline/016_save_changes.png)
+| **Connection name** | Azure Stack Azure AD, or Azure Stack AD FS | The name you give the connection. |
+| **Environment** | AzureStack | The name of your environment. |
+| **Environment URL** | `https://management.local.azurestack.external` | Your management endpoint. |
+| **Scope level** | Subscription | The scope of the connection. |
+| **Subscription ID** | 00000000-XXXX-4F2A-8FB2-64C63CD2FAE9 | Your subscription ID. |
+| **Subscription name** | name@contoso.com | Your user name from Azure Stack. |
+| **Service principal client ID** | 00000000-XXXX-4776-93FC-C63E6E021D59 | The **Application (client) ID** you saved previously. |
+| **Service principal key** | \<application key value> | The secret key value you saved when you created the application secret.  |
+| **Tenant ID** | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | The **Directory (tenant) ID** you saved previously.  |
+| **Connection: Not verified** | | Select **Verify connection** to validate your connection settings to the service principal. |
 
 > [!Note]
 > If your Azure Resource Manager endpoint isn't exposed to the internet, the connection validation will fail. This is expected, and you can validate your connection by creating a release pipeline with a simple task. 
 
-### Create an endpoint for AD FS
+![Build agent Azure AD](media/azure-stack-solution-hybrid-pipeline/016_save_changes.png)
 
-You can also create a service connection using a service principal with a certificate for authentication. You need this connection if you deployed Azure Stack with AD FS as the identity provider. 
+You can also create a service connection using a service principal with a certificate for authentication. You need to use a certificate if you deployed Azure Stack with AD FS as the identity provider. 
 
-![Build agent AD FS](media/azure-stack-solution-hybrid-pipeline/image06.png)
+Use the same procedure and values as for creating an Azure AD endpoint, except select **Certificate** instead of **Service principal key**. In the **Certificate** field, paste the contents of the *.pem* certificate file. Include both the certificate and​ private key sections​. To convert a *.pfx* to a *.pem* certificate file, run `openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>`.
 
-Create the service connection using the following mapping:
+## Install the build agent on the build server
 
-| Name | Example | Description |
-| --- | --- | --- |
-| Connection name | Azure Stack ADFS | The name of the connection. |
-| Environment | AzureStack | The name of your environment. |
-| Environment URL | `https://management.local.azurestack.external` | Your management endpoint. |
-| Scope level | Subscription | The scope of the connection. |
-| Subscription ID | 65710926-XXXX-4F2A-8FB2-64C63CD2FAE9 | User subscription ID from Azure Stack |
-| Subscription name | name@contoso.com | User subscription name from Azure Stack. |
-| Service Principal client ID | FF74AACF-XXXX-4776-93FC-C63E6E021D59 | The client ID from the Service Principal you created for AD FS. |
-| Certificate | `<certificate>` |  Convert the certificate file from PFX to PEM. Paste certificate PEM file content into this field. <br> Converting PFX to PEM:<br>`openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>` |
-| Tenant ID | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | The tenant ID you retrieve following the instruction at [Get the tenant ID](azure-stack-solution-pipeline.md#get-the-tenant-id). |
-| Connection: | Not verified | Validate your connection settings to the service principal. |
-
-## Install the Azure Pipelines build agent on the Azure Stack build server
-
-First, create a personal access token (PAT) to use for Azure Stack. Then, deploy the build agent to the Azure Stack host computer using the PAT, and configure the agent. 
+In Azure DevOps, create a personal access token (PAT) to use for Azure Stack. Then use the PAT to deploy the build agent to the Azure Stack build computer, and configure the agent. 
    
+### Create a personal access token
+
 1. Sign in to Azure DevOps and select **My profile** in the upper right corner. 
    
 1. On your profile page, expand the dropdown next to your Azure Stack organization name, and select **Manage Security**. 
@@ -279,29 +271,30 @@ First, create a personal access token (PAT) to use for Azure Stack. Then, deploy
    
    ![Personal access token - Azure Stack](media/azure-stack-solution-hybrid-pipeline/000_19.png)
    
+### Deploy and configure the build agent
+
 1. Connect to the build server VM you deployed on the Azure Stack host.
    
-1. Download and deploy the build agent as a service using your personal access token (PAT), and run it as the VM admin.
+1. Download and deploy the build agent as a service using your PAT, and run it as the VM admin.
    
    ![Download build agent](media/azure-stack-solution-hybrid-pipeline/010_downloadagent.png)
    
-1. Navigate to the folder for the extracted build agent. Run the *config.cmd* file from an elevated command prompt.
+1. From an admin command prompt, navigate to the folder for the extracted build agent, and run the *config.cmd* file 
    
    ![Extracted build agent](media/azure-stack-solution-hybrid-pipeline/000_20.png)
    
    ![Register build agent](media/azure-stack-solution-hybrid-pipeline/000_21.png)
    
-1. When the *config.cmd* finishes, the build agent folder is updated with additional files. The folder with the extracted contents should look like the following example:
+1. When the *config.cmd* finishes, the build agent folder is updated with additional files and should look like the following example:
    
    ![Build agent folder update](media/azure-stack-solution-hybrid-pipeline/009_token_file.png)
    
-   You can see the agent in Azure DevOps Services folder.
 
 Now that the endpoint is created and the Azure Pipelines build agent is installed on the build server, the Azure Pipelines to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from Azure Pipelines, and then the agent conveys endpoint information for communication with Azure Stack.
 
 ‎‎Instead of managing each agent separately, you can organize agents into agent pools. An agent pool defines the sharing boundary for all agents in that pool. Aagent pools are scoped to the Azure DevOps organization, which means that you can share an agent pool across projects. To learn more about agent pools, see [Create agent pools and queues](/azure/devops/pipelines/agents/pools-queues).
 
-## Develop and release your app 
+## Build and release your app 
 
 Using a hosted build agent in Azure Pipelines is a convenient option for building and deploying web apps. Azure automatically performs agent maintenance and upgrades, which enables a continuous and uninterrupted development cycle.
 
@@ -309,13 +302,13 @@ Azure Pipelines provides a highly configurable and manageable pipeline for relea
 
 In this part of the tutorial, you:
 
-- Add code to your Azure DevOps project
+- Connect and add code to your Azure DevOps project in Visual Studio
 - Create a self-contained web app deployment
-- Configure the CI/CD process
+- Configure the CI/CD build and release processes
 
-Hybrid CI/CD can apply to both app code and infrastructure code. Use [Azure Resource Manager templates](https://azure.microsoft.com/resources/templates/) like web app code from Azure DevOps Services to deploy to both clouds.
+Hybrid CI/CD can apply to both app code and infrastructure code. Use [Azure Resource Manager templates](https://azure.microsoft.com/resources/templates/) to deploy your Azure web app code to on-premises and public clouds.
 
-### Add code to an Azure DevOps project
+### Clone your project
 
 1. In Visual Studio **Team Explorer**, select the **Connect** icon and sign in to your Azure DevOps organization. 
    
@@ -325,79 +318,77 @@ Hybrid CI/CD can apply to both app code and infrastructure code. Use [Azure Reso
    
    ![Connect to a Project - Azure DevOps](media/azure-stack-solution-hybrid-pipeline/017_connect_to_project.png)
 
-1. In the **Connect to a Project** dialog, select your web app project, set a local path, and then select **Clone** to clone the repository.
+1. In the **Connect to a Project** dialog, select your web app project, set a local path, and then select **Clone** to clone the repository locally.
    
    ![Clone repository - Azure DevOps](media/azure-stack-solution-hybrid-pipeline/018_link_arm.png)
 
-### Create self-contained web app deployment for App Services in both clouds
+### Create a self-contained web app deployment for App Services in both clouds
 
-1. Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and then add `win10-x64.` For more information, see [Self-contained deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.
+1. In your *WebApplication.csproj* file, select or add `Runtimeidentifier` and then add `win10-x64.` For more information about this step, see [Self-contained deployment](/dotnet/core/deploying/#self-contained-deployments-scd).
+   
+   ![Configure Runtimeidentifier](media/azure-stack-solution-hybrid-pipeline/019_runtimeidentifer.png)
+   
+1. Use Visual Studio **Team Explorer** to check the code into your project.
 
-    ![Configure Runtimeidentifier](media/azure-stack-solution-hybrid-pipeline/019_runtimeidentifer.png)
+### Create a build pipeline and run a build
 
-2. Use Team Explorer to check the code into Azure DevOps Services.
-
-3. Confirm that the application code was checked into Azure DevOps Services.
-
-### Create a build pipeline
-
-1. Sign in to an Azure DevOps organization that can create a build pipeline.
-
-2. Navigate to the **Build Web Application** page for the project.
-
-3. In **Arguments**, add **-r win10-x64** code. This step is required to trigger a self-contained deployment with .NET Core.
-
-    ![Add argument build pipeline](media/azure-stack-solution-hybrid-pipeline/020_publish_additions.png)
-
-4. Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that can run on Azure and Azure Stack.
+1. In your web browser, open your Azure DevOps organization and project.
+   
+1. Select **Pipelines** > **Build** on the left, and then select **New pipeline**. 
+   
+1. Under **Select a template**, select the **ASP.NET Core** template, and then select **Apply**. 
+   
+1. On the configuration page, select **Publish** on the left.
+   
+1. On the right, under **Arguments**, add `-r win10-x64` to the configuration. 
+   
+1. Select **Save & queue** at the top.
+   
+   ![Add argument build pipeline](media/azure-stack-solution-hybrid-pipeline/020_publish_additions.png)
+   
+1. In the **Run pipeline** dialog, select **Save and run**. 
+   
+   The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) publishes artifacts that can run on Azure and Azure Stack.
 
 ### Create a release pipeline
 
-Creating a release pipeline is the final step in your app build process. This release pipeline is used to create a release and deploy a build.
+Creating a release pipeline is the final step in your app build process. You use the following release pipeline to create a release and deploy the build.
 
-1. Sign in to Azure DevOps Services and navigate to **Azure Pipelines** for your project.
-2. On the **Releases** tab, select **\[ + ]**  and then pick **Create release definition**.
+1. In your Azure DevOps project, Select **Pipelines** > **Release** on the left, and then select **New pipeline**. 
+   
+1. On the **Select a template** page, select **Azure App Service Deployment**, and then select **Apply**.
+   
+   ![Apply template](media/azure-stack-solution-hybrid-pipeline/102.png)
+   
+1. On the **Pipeline** tab, select **Add an artifact** on the left. On the right, select the web app build you just created from the **Source (build pipeline)** drop-down menu, and select **Add**.
+   
+   ![Add build artifact](media/azure-stack-solution-hybrid-pipeline/103.png)
+   
+1. On the **Pipeline** tab, select **View stage tasks**.
+   
+   ![View stage tasks](media/azure-stack-solution-hybrid-pipeline/104.png)
+   
+1. On the **Tasks** tab, enter *Azure* as the **Stage name**. 
+   
+1. Under **Parameters**, select your subscription from the **Azure subscription** drop-down list, and enter your **App service name**.
+   
+  ![App service name - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/106.png)
+   
+1. On the left, select **Run on agent**. On the right, select **Hosted VS2017** from the **Agent pool** drop-down list if it'a not already selected.
+   
+   ![Select hosted agent](media/azure-stack-solution-hybrid-pipeline/107.png)
+   
+1. On the left, select **Deploy Azure App Service**, and on the right, browse to a valid **Package or folder** for the environment.
+   
+   ![Select package or folder - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/108.png)
+   
+1. On the **Select a file or folder** dialog, select **OK**.
+   
+1. Select **Save** at the upper right on the **New release pipeline** page.
+   
+   ![Save changes - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/110.png)
 
-   ![Create release pipeline - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/021a_releasedef.png)
-
-3. On the **Select a Template** page, choose **Azure App Service Deployment**, and then select **Apply**.
-
-    ![Apply template - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/102.png)
-
-4. On the **Add artifact** page, from the **Source (Build definition)** pull-down menu, select the Azure Cloud build app.
-
-    ![Add artifact - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/103.png)
-
-5. On the **Pipeline** tab, select the **1 Phase**, **1 Task** link to **View environment tasks**.
-
-    ![Pipeline view tasks - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/104.png)
-
-6. On the **Tasks** tab, enter Azure as the **Environment name** and select the AzureCloud Traders-Web EP from the **Azure subscription** drop-down list.
-
-    ![Set environment variables - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/105.png)
-
-7. Enter the **Azure app service name**, which is "northwindtraders" in the next screen capture.
-
-    ![App service name - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/106.png)
-
-8. For the Agent phase, select **Hosted VS2017** from the **Agent queue** drop-down list.
-
-    ![Hosted agent - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/107.png)
-
-9. In **Deploy Azure App Service**, select the valid **Package or folder** for the environment.
-
-    ![Select package or folder - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/108.png)
-
-10. On the **Select File or Folder** page, select **OK** for the folder location.
-
-    ![Select file or folder - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/109.png)
-
-11. Save all changes and go back to **Pipeline**.
-
-    ![Save changes - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/110.png)
-
-12. On the **Pipeline** tab, select **Add artifact**, and choose the **NorthwindCloud Traders-Vessel** from the **Source (Build Definition)** drop-down list.
-
+12. On the **Pipeline** tab, select **Add artifact**, and select a different build from the  
     ![Add new artifact - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/111.png)
 
 13. On the **Select a Template** page, add another environment. Pick **Azure App Service Deployment** and then select **Apply**.
@@ -449,7 +440,9 @@ Creating a release pipeline is the final step in your app build process. This re
 
 ## Release the app
 
-Now that you've completed the modifications to the release pipeline, it's time to start the deployment. To begin deployment, create a release from the release pipeline. A release may be created automatically; for example, when the continuous deployment trigger is set in the release pipeline. Setting this trigger means that modifying the source code will start a new build and then a new release. However, in this section you'll create a new release manually.
+Now that you've completed the release pipeline, you can start the deployment. To begin deployment, create a release from the release pipeline. 
+
+If the continuous deployment trigger is set in the release pipeline, modifying the source code will start a new build and then create a new release automatically. However, in this section you'll create a new release manually.
 
 1. On the **Pipeline** tab, open the **Release** drop-down list and select **Create release**.
 
