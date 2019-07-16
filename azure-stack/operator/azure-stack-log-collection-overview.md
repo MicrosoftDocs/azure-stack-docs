@@ -68,7 +68,7 @@ The average size of a diagnostic log is 4-8 MB. If you are on a constrained line
 
 ## See also
 
-[Azure logging and auditing](https://docs.microsoft.com/en-us/azure/security/azure-log-audit)
+[Azure logging and auditing](https://docs.microsoft.com/azure/security/azure-log-audit)
 
 [Azure Stack log and customer data handling](https://docs.microsoft.com/azure-stack/operator/azure-stack-data-collection)
 
