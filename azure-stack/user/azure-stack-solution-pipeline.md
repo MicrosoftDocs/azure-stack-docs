@@ -59,11 +59,13 @@ The white paper [Design considerations for hybrid applications](https://aka.ms/h
   
 - Visual Studio 2019 [installed](/visualstudio/install/install-visual-studio).
   
-- An Azure DevOps organization containing a [project](/azure/devops/organizations/projects/create-project) or [workspace](/azure/devops/repos/tfvc/create-work-workspaces). In the project or workspace, use an [Azure Resource Manager template](https://azure.microsoft.com/resources/templates/) to create a web app you can deploy both on-premises and to the public cloud. Make a note of the app URI to use later in the tutorial. 
+- An Azure DevOps organization and [project](/azure/devops/organizations/projects/create-project) or [workspace](/azure/devops/repos/tfvc/create-work-workspaces). 
    
 - An Azure Stack integrated system, or the Azure Stack Development Kit (ASDK) deployed and configured according to the following instructions. 
   
-  If you already have any of the prerequisites, make sure they meet all the requirements before starting this tutorial.
+- A web app created in Azure, and another web app created in the Azure Stack tenant subscription. You can use an [Azure Resource Manager template](https://azure.microsoft.com/resources/templates/) to create a web app you can deploy both on-premises and to the public cloud. Make a note of the app URIs to use later in the tutorial. 
+
+If you already have any of the prerequisites, make sure they meet all the requirements before starting this tutorial.
 
 ### Install and deploy the ASDK
 
@@ -197,11 +199,11 @@ When creating endpoints for Azure Pipelines, you need to enter an authentication
 
 By creating endpoints, an Azure Pipelines build can deploy Azure AD apps to Azure Stack. Azure Pipelines connects to the build agent, which connects to Azure Stack.
 
-After setting endpoint creation permissions, you can create endpoints in either Azure AD or AD FS. 
+After setting endpoint creation permissions, you can create endpoints in Azure AD or AD FS. 
 
-- If you used Azure AD as the identity provider for Azure Stack, use the service principal key to create an Azure Resource Manager service connection for Azure deployments. 
+- If you used Azure AD as the identity provider for Azure Stack, you can use the service principal key to create an Azure Resource Manager service connection for Azure deployments. 
   
-- If you deployed Azure Stack with Active Directory Federation Services (AD FS) as the identity provider, create the service connection using a certificate instead of a secret key for authentication. 
+- If you deployed Azure Stack with Active Directory Federation Services (AD FS) as the identity provider, you must create the service connection using a certificate instead of a secret key for authentication. 
 
 ### Set endpoint creation permissions
 
@@ -334,7 +336,7 @@ Hybrid CI/CD can apply to both app code and infrastructure code. Use [Azure Reso
 
 1. In your web browser, open your Azure DevOps organization and project.
    
-1. Select **Pipelines** > **Build** on the left, and then select **New pipeline**. 
+1. Select **Pipelines** > **Builds** on the left, and then select **New pipeline**. 
    
 1. Under **Select a template**, select the **ASP.NET Core** template, and then select **Apply**. 
    
@@ -354,7 +356,7 @@ Hybrid CI/CD can apply to both app code and infrastructure code. Use [Azure Reso
 
 Creating a release pipeline is the final step in your app build process. You use the following release pipeline to create a release and deploy the build.
 
-1. In your Azure DevOps project, Select **Pipelines** > **Release** on the left, and then select **New pipeline**. 
+1. In your Azure DevOps project, Select **Pipelines** > **Releases** on the left, and then select **New pipeline**. 
    
 1. On the **Select a template** page, select **Azure App Service Deployment**, and then select **Apply**.
    
@@ -438,32 +440,28 @@ To create a release:
    
    A banner indicates that the new release is created. Select the release name link to see a summary page showing details about the release, such as deployment status.
    
-1. To deploy a manually triggered build, select **Deploy** in the **Stage** section, and then select **Deploy**. 
+1. To deploy the manually triggered build, select **Deploy** in the **Stage** section, and then select **Deploy** in the stage dialog. 
    
-   Select the hyperlink in the release stage to see more information about deployment status. 
-
-    ![Release summary page - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/202.png)
+   Select the hyperlinks in the release stages to see more information about deployment status. 
+   
+   ![Release summary page - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/202.png)
 
 It's easy for an administrator see the overall progress of releases and see which releases are waiting for approval.
 
 ### Monitor and track deployments
 
-This section shows how you can monitor and track all your deployments. The release for deploying the two Azure App Services websites provides a good example.
+This section shows how you can monitor and track all your deployments. 
 
-1. On the "Release-2" summary page, select **Logs**. During a deployment, this page shows the live log from the agent. The left pane shows the status of each operation in the deployment for each environment.
+1. In your Azure DevOps project, Select **Pipelines** > **Releases** on the left, and then select a release. 
+   
+1. On the release summary page, hover over or select any stage, and then select **Logs**. 
+   
+   The left pane shows the status of each operation for each stage. During a deployment, the right pane shows the live log from the agent. After the deployment finishes, the entire log file is displayed in the right pane. 
+   
+   Select any step in the left pane to see the log file for a single step, such as **Pre-deployment approvals**. For approvals, select **View approval** in the right pane to see who approved or rejected the deployment and other details. The ability to see individual logs makes it easier to trace and debug parts of the overall deployment. You can also **Download all logs** as a *.zip* file.
 
-    Select the person icon in the **Action** column for a Pre-deployment or Post-deployment approval to see who approved (or rejected) the deployment, and the message they provided.
-
-2. After the deployment finishes, the entire log file is displayed in the right pane. Select any **Step** in the left pane to see the log file for a single step, such as "Initialize Job". The ability to see individual logs makes it easier to trace and debug  parts of the overall deployment. You can also **Save** the log file for a step, or **Download all logs as zip**.
-
-    ![Release logs - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/203.png)
-
-3. Open the **Summary** tab to see general information about the release. This view shows details about the build, the environments it was deployed to, deployment status, and other information about the release.
-
-4. Select an environment link (**Azure** or **Azure Stack**) to see information about existing and pending deployments to a specific environment. You can use these views as a quick way to verify that the same build was deployed to both environments.
-
-5. Open the **deployed production app** in your browser. For example, for the Azure App Services website, open the URL `https://[your-app-name].azurewebsites.net`.
+Open the deployed production app in your browser. For example, for the Azure App Services website, open the URL `https://<your-app-name>.azurewebsites.net`.
 
 ## Next steps
 
-* To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns).
+To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](/azure/architecture/patterns).
