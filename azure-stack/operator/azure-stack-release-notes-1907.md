@@ -50,7 +50,8 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
 #### Networking updates
-- Added new outbound rule (HTTPS) to enable communication for Azure Stack diagnostic log collection service. For more information, please refer to [Azure Stack datacenter integration - Publish endpoints](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-integrate-endpoints#ports-and-urls-outbound).
+
+- Added a new outbound rule (HTTPS) to enable communication for Azure Stack diagnostic log collection service. For more information, see [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
 
 ### Changes
 
