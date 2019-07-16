@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2019
+ms.date: 07/16/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/09/2019
+ms.lastreviewed: 07/16/2019
 
 ---
 # Overview of Azure Stack diagnostic log collection 
