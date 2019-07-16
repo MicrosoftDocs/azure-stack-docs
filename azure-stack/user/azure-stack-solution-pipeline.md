@@ -1,5 +1,5 @@
 ---
-title: "Tutorial: Deploy apps to Azure and Azure Stack"
+title: Deploy apps to Azure and Azure Stack
 description: Learn how to deploy apps to Azure and Azure Stack with a hybrid CI/CD pipeline.
 services: azure-stack
 documentationcenter: ''
@@ -11,29 +11,29 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: tutorial
 ms.date: 07/16/2019
+ms.topic: solution
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
 ---
 
-# Tutorial: Deploy apps to Azure and Azure Stack
+# Deploy apps to Azure and Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-In this tutorial, you learn how to deploy apps to Azure and Azure Stack by using Azure Pipelines hybrid continuous integration and continuous delivery (CI/CD).
+This solution shows you how to deploy apps to Azure and Azure Stack by using Azure Pipelines hybrid continuous integration and continuous delivery (CI/CD).
 
-After you set up Azure Stack, Azure DevOps, and web apps according to the [Prerequisites](#prerequisites), you can follow the tutorial steps to:
+After you set up Azure Stack, Azure DevOps, and web apps according to the [Prerequisites](#prerequisites), you can:
 
 > [!div class="checklist"]
 > - Register your web app and set up Azure Pipelines access in Azure Active Directory (Azure AD). 
 > - Create Azure Pipelines endpoints for Azure AD and Active Directory Federation Services (AD FS). 
 > - Install the Azure Pipelines build agent on the Azure Stack build server. 
-> - Configure self-contained app deployment to the Azure and Azure Stack clouds.
-> - Create and run a build pipeline to run automatic builds based on code commits to your project.
+> - Configure self-contained app deployment to Azure and Azure Stack.
+> - Create a build pipeline that runs automatic builds based on code commits to your project.
 > - Create a release pipeline that automatically deploys your builds to both Azure AD and Azure Stack. 
-> - Manually create and run a release, and view the release logs. 
+> - Manually create and deploy releases, and view release summaries and logs. 
 
 To learn more about CI/CD, see the following articles:
 
@@ -50,18 +50,18 @@ App deployment continuity, security, and reliability are critical elements for y
 - Apps and services deployed in Azure or Azure Stack are interchangeable, and the same code can run in either location. You can take advantage of on-premises and public cloud features and capabilities.
 
 ![hybrid-pillars.png](./media/azure-stack-solution-pipeline/hybrid-pillars.png)  
-The white paper [Design considerations for hybrid applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews software quality pillars for designing, deploying, and operating hybrid applications. The quality criteria include placement, scalability, availability, resiliency, manageability, and security. These design considerations assist in optimizing hybrid application design, which minimizes challenges in production environments.
+The article [Hybrid cloud design patterns for Azure Stack](azure-stack-edge-pattern-overview.md) reviews software quality pillars for designing, deploying, and operating hybrid applications. The quality criteria include placement, scalability, availability, resiliency, manageability, and security. These design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
 ## Prerequisites
 
-- Basic knowledge of Azure and Azure Stack. To learn more before starting the tutorial, read the following articles:
+- Basic knowledge of Azure and Azure Stack. To learn more before deploying this solution, read the following articles:
   
   - [Introduction to Azure](https://azure.microsoft.com/overview/what-is-azure/)
   - [Azure Stack overview](../operator/azure-stack-overview.md)
   
 - An Azure subscription. If you don't have one, [create a free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin.
   
-- A web app created in Azure. Use an [Azure Resource Manager template](https://azure.microsoft.com/resources/templates/) to create a web app you can deploy both on-premises and to the public cloud. Make a note of the app URI to use later in the tutorial. 
+- A web app created in Azure. Use an [Azure Resource Manager template](https://azure.microsoft.com/resources/templates/) to create a web app you can deploy both on-premises and to the public cloud. Make a note of the app URI to use later. 
   
 - Visual Studio 2019 [installed](/visualstudio/install/install-visual-studio).
   
@@ -69,7 +69,7 @@ The white paper [Design considerations for hybrid applications](https://aka.ms/h
    
 - An Azure Stack integrated system, or the Azure Stack Development Kit (ASDK) deployed and configured according to the following instructions. 
   
-If you already have any of the prerequisites, make sure they meet all the requirements before starting this tutorial.
+If you already have any of the prerequisites, make sure they meet all the requirements before deploying this solution.
 
 ### Install and deploy the ASDK
 
@@ -87,7 +87,7 @@ Any user with Azure AD or Active Directory Federation Services (AD FS) admin cre
   
 To deploy the ASDK:
 
-1. Follow the detailed deployment instructions in [Tutorial: Deploy the ASDK using the installer](../asdk/asdk-install.md).
+1. Follow the detailed deployment instructions in [Deploy the ASDK using the installer](../asdk/asdk-install.md).
    
 1. Use the [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) PowerShell script to automate ASDK post-deployment steps.
    
@@ -108,7 +108,7 @@ To deploy the ASDK:
 
 In Azure Active Directory (Azure AD), Azure Pipelines authenticates against Azure Resource Manager using a *service principal*. To provision resources for Azure Pipelines, the service principal must have the **Contributor** role in the Azure subscription. 
 
-In this section of the tutorial, you use the Azure portal to configure authentication for your app:
+You can use the Azure portal to configure authentication for your app. 
 
 1. Register your app to create a service principal.
 1. Use *role-based access control (RBAC)* to give the Service Principal Name (SPN) the **Contributor** role.
@@ -290,7 +290,7 @@ Using a hosted build agent in Azure Pipelines is a convenient option for buildin
 
 Azure Pipelines provides a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, quality assurance (QA), and production. The release process can include requiring approvals at specific stages of the application life cycle.
 
-In this part of the tutorial, you:
+In this part of the solution, you:
 
 - Clone, connect, and add code to your Azure DevOps project in Visual Studio.
 - Create a self-contained web app deployment.
@@ -405,13 +405,180 @@ Creating a release pipeline is the final step in your hybrid CI/CD configuration
 1. Select **Save** at the upper right on the **New release pipeline** page to save the release pipeline.
 
 > [!Note]
+<<<<<<< HEAD
 > Some settings for release tasks may have been automatically defined as [custom variables](/azure/devops/pipelines/release/variables?view=vsts#custom-variables) when you created the release pipeline from the template. These settings can't be modified in the task settings, but you can edit them in the parent stage items.
+=======
+> If your Azure Resource Manager endpoint is not exposed to the Internet, the connection validation will fail. This is expected and you can validate your connection by creating a release pipeline with a simple task. 
+
+## Develop your application build
+
+In this part of the  solution you'll:
+
+* Add code to an Azure DevOps Services project.
+* Create self-contained web app deployment.
+* Configure the continuous deployment process
+
+> [!Note]
+ > Your Azure Stack environment needs the correct images syndicated to run Windows Server and SQL Server. It must also have App Service deployed. Review the App Service documentation "Prerequisites" section for Azure Stack Operator Requirements.
+
+Hybrid CI/CD can apply to both application code and infrastructure code. Use [Azure Resource Manager templates like web](https://azure.microsoft.com/resources/templates/) app code from Azure DevOps Services to deploy to both clouds.
+
+### Add code to an Azure DevOps Services project
+
+1. Sign in to Azure DevOps Services with an organization that has project creation rights in Azure Stack. The next screen capture shows how to connect to the HybridCICD project.
+
+    ![Connect to a Project - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/017_connect_to_project.png)
+
+2. **Clone the repository** by creating and opening the default web app.
+
+    ![Clone repository - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/018_link_arm.png)
+
+### Create self-contained web app deployment for App Services in both clouds
+
+1. Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and then add `win10-x64.` For more information, see [Self-contained deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.
+
+    ![Configure Runtimeidentifier](media/azure-stack-solution-hybrid-pipeline/019_runtimeidentifer.png)
+
+2. Use Team Explorer to check the code into Azure DevOps Services.
+
+3. Confirm that the application code was checked into Azure DevOps Services.
+
+### Create the build pipeline
+
+1. Sign in to Azure DevOps Services with an organization that can create a build pipeline.
+
+2. Navigate to the **Build Web Application** page for the project.
+
+3. In **Arguments**, add **-r win10-x64** code. This step is required to trigger a self-contained deployment with .NET Core.
+
+    ![Add argument build pipeline](media/azure-stack-solution-hybrid-pipeline/020_publish_additions.png)
+
+4. Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that can run on Azure and Azure Stack.
+
+### Use an Azure-hosted build agent
+
+Using a hosted build agent in Azure DevOps Services is a convenient option for building and deploying web apps. Agent maintenance and upgrades are automatically performed by Microsoft Azure, which enables a continuous and uninterrupted development cycle.
+
+### Configure the continuous deployment (CD) process
+
+Azure DevOps Services and Team Foundation Server (TFS) provide a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, quality assurance (QA), and production. This process can include requiring approvals at specific stages of the application life cycle.
+
+### Create release pipeline
+
+Creating a release pipeline is the final step in your app build process. This release pipeline is used to create a release and deploy a build.
+
+1. Sign in to Azure DevOps Services and navigate to **Azure Pipelines** for your project.
+2. On the **Releases** tab, select **\[ + ]**  and then pick **Create release definition**.
+
+   ![Create release pipeline - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/021a_releasedef.png)
+
+3. On the **Select a Template** page, choose **Azure App Service Deployment**, and then select **Apply**.
+
+    ![Apply template - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/102.png)
+
+4. On the **Add artifact** page, from the **Source (Build definition)** pull-down menu, select the Azure Cloud build app.
+
+    ![Add artifact - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/103.png)
+
+5. On the **Pipeline** tab, select the **1 Phase**, **1 Task** link to **View environment tasks**.
+
+    ![Pipeline view tasks - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/104.png)
+
+6. On the **Tasks** tab, enter Azure as the **Environment name** and select the AzureCloud Traders-Web EP from the **Azure subscription** drop-down list.
+
+    ![Set environment variables - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/105.png)
+
+7. Enter the **Azure app service name**, which is "northwindtraders" in the next screen capture.
+
+    ![App service name - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/106.png)
+
+8. For the Agent phase, select **Hosted VS2017** from the **Agent queue** drop-down list.
+
+    ![Hosted agent - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/107.png)
+
+9. In **Deploy Azure App Service**, select the valid **Package or folder** for the environment.
+
+    ![Select package or folder - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/108.png)
+
+10. On the **Select File or Folder** page, select **OK** for the folder location.
+
+    ![Select file or folder - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/109.png)
+
+11. Save all changes and go back to **Pipeline**.
+
+    ![Save changes - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/110.png)
+
+12. On the **Pipeline** tab, select **Add artifact**, and choose the **NorthwindCloud Traders-Vessel** from the **Source (Build Definition)** drop-down list.
+
+    ![Add new artifact - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/111.png)
+
+13. On the **Select a Template** page, add another environment. Pick **Azure App Service Deployment** and then select **Apply**.
+
+    ![Select template - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/112.png)
+
+14. Enter "Azure Stack" as the **Environment name**.
+
+    ![Environment name - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/113.png)
+
+15. On the **Tasks** tab, find and select Azure Stack.
+
+    ![Azure Stack environment - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/114.png)
+
+16. From the **Azure subscription** drop-down list, select  "AzureStack Traders-Vessel EP" for the Azure Stack endpoint.
+
+    ![Azure subscription drop-down - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/115.png)
+
+17. Enter the Azure Stack web app name as the **App service name**.
+
+    ![App service name - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/116.png)
+
+18. Under **Agent selection**, pick "AzureStack -bDouglas Fir" from the **Agent queue** drop-down list.
+
+    ![Pick agent - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/117.png)
+
+19. For **Deploy Azure App Service**, select the valid **Package or folder** for the environment. On **Select File Or Folder**, select **OK** for the folder **Location**.
+
+    ![Pick package or folder - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/118.png)
+
+    ![Approve location - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/119.png)
+
+20. On the **Variables** tab, find the variable named **VSTS_ARM_REST_IGNORE_SSL_ERRORS**. Set the variable value to **true**, and set its scope to **Azure Stack**.
+
+    ![Configure variable - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/120.png)
+
+21. On the **Pipeline** tab, select the **Continuous deployment trigger** icon for the NorthwindCloud Traders-Web artifact and set the **Continuous deployment trigger** to **Enabled**.  Do the same thing for the "NorthwindCloud Traders-Vessel" artifact.
+
+    ![Set continuous deployment trigger - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/121.png)
+
+22. For the Azure Stack environment, select the **Pre-deployment conditions** icon set the trigger to **After release**.
+
+    ![Set pre-deployment conditions trigger - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/122.png)
+
+23. Save all your changes.
+
+> [!Note]
+> Some settings for release tasks may have been automatically defined as [environment variables](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts#custom-variables) when you created a release pipeline from a template. These settings can't be modified in the task settings. However, you can edit these settings in the parent environment items.
+
+## Create a release
+
+Now that you've completed the modifications to the release pipeline, it's time to start the deployment. To begin deployment, create a release from the release pipeline. A release may be created automatically; for example, when the continuous deployment trigger is set in the release pipeline. Setting this trigger means that modifying the source code will start a new build and then a new release. However, in this section you'll create a new release manually.
+
+1. On the **Pipeline** tab, open the **Release** drop-down list and select **Create release**.
+
+    ![Create a release - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/200.png)
+
+2. Enter a description for the release, check to see that the correct artifacts are selected, and then select **Create**. After a few moments, a banner appears indicating that the new release was created, and the release name is displayed as a link. Select the link to see the release summary page.
+
+    ![Release creation banner - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/201.png)
+
+3. The release summary page for shows details about the release. In the following screen capture for "Release-2", the **Environments** section shows the **Deployment status** for Azure as "IN PROGRESS", and the status for Azure Stack is "SUCCEEDED". When the deployment status for the Azure environment changes to "SUCCEEDED", a banner appears indicating that the release is ready for approval. When a deployment is pending or has failed, a blue **(i)** information icon is shown. Hover over the icon to see a pop-up that contains the reason for delay or failure.
+>>>>>>> 0d09aa73ae67cd55c79f5632cc701a3929816a2b
 
 ## Release the app
 
 Now that you've created the release pipeline, you can use it to create a release and deploy your app. 
 
-Because the continuous deployment trigger is set in your release pipeline, modifying the source code starts a new build and creates a new release automatically. However, in this tutorial you'll create and run a new release manually.
+Because the continuous deployment trigger is set in your release pipeline, modifying the source code starts a new build and creates a new release automatically. However, you'll create and run this new release manually.
 
 To create a release:
 

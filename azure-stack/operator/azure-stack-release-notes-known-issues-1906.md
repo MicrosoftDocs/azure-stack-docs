@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2019
+ms.date: 07/12/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/28/2019
@@ -68,6 +68,13 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 - Cause: In the user portal, when you try to upload a blob using the **OAuth(preview)** option, the task fails with an error message.
 - Remediation: Upload the blob using the SAS option.
 - Occurrence: Common
+
+### Update
+
+- Applicable: This issue applies to the 1906 release.
+- Cause: In the operator portal, update status for the hotfix shows an incorrect state for the update. Initial state indicates that the update failed to install, even though it is still in progress.
+- Remediation: Refresh the portal and the state will update to "in progress."
+- Occurrence: Intermittent
 
 ## Networking
 
