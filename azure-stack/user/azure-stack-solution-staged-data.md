@@ -17,13 +17,13 @@ ms.reviewer: anajod
 ms.lastreviewed: 06/20/2019
 ---
 
-# Tutorial: Deploy a staged data analytics solution to Azure Stack
+# Deploy a staged data analytics solution to Azure Stack
 
 This article will show you how to deploy a solution for collecting data that requires analysis at the point of collection so that quick
 decisions can be made. Often this data collection occurs with no Internet access. When connectivity is established, you may need to do a
 resource-intensive analysis of the data to gain additional insight.
 
-In this tutorial, you'll create a sample environment to:
+In this solution, you'll create a sample environment to:
 
 > [!div class="checklist"]
 > - Create the raw data storage blob.
@@ -35,9 +35,9 @@ In this tutorial, you'll create a sample environment to:
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
-> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment and enables the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
+> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
 > 
-> The whitepaper [Design Considerations for Hybrid Applications](https://aka.ms/hybrid-cloud-applications-pillars) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid application design, minimizing challenges in production environments.
+> The article [Design Considerations for Hybrid Applications](azure-stack-edge-pattern-overview.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
 ## Architecture for staged data analytics
 
