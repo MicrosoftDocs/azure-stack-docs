@@ -5,12 +5,12 @@ services: azure-stack
 keywords: 
 author: mattbriggs
 manager: femila
-ms.date: 06/17/2019
+ms.date: 07/10/2019
 ms.topic: article
 ms.service: azure-stack
 ms.author: mabrigg
-ms.reviewer: scottnap
-ms.lastreviewed: 06/04/2019
+ms.reviewer: wamota
+ms.lastreviewed: 07/10/2019
 
 ---
 
@@ -53,7 +53,7 @@ This article provides an overview of the unique considerations for Azure Stack n
 |  | Gateway Resizing | Azure supports resizing the gateway after deployment. | Resizing not supported. |
 |  | Availability Configuration | Active/Active | Active/Passive |
 |  | UsePolicyBasedTrafficSelectors | Azure supports using policy-based traffic selectors with route-based gateway connections. | Not yet supported. |
-| Load balancer | SKU | Basic and Standard Load Balancers are supported. | Only the Basic Load Balancer is supported.  The SKU property isn't supported. |
+| Load balancer | SKU | Basic and Standard Load Balancers are supported | Only the Basic Load Balancer is supported.<br>The SKU property is not supported.<br>The Basic SKU load balancer /path/ cannot have more than 5 front-end IP configurations.  |
 |  | Zones | Availability Zones are Supported. | Not yet supported |
 |  | Inbound NAT Rules support for Service Endpoints | Azure supports specifying Service Endpoints for Inbound NAT rules. | Azure Stack doesn't yet support Service Endpoints, so these can't be specified. |
 |  | Protocol | Azure Supports specifying GRE or ESP. | Protocol Class isn't supported in Azure Stack. |
