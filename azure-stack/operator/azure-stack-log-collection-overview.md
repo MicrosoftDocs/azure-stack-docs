@@ -44,8 +44,6 @@ To do: describe scenarios from spec from Theebs
 
 For more information about collecting logs on demand, see [Collect Azure Stack logs now](azure-stack-configure-on-demand-log-collection.md).
 
-
-
 ## Automatic diagnostic log collection 
 
 To do: describe scenarios from spec from Theebs
