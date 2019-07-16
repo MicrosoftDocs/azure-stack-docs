@@ -212,6 +212,11 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Cause: The instance view blade of a scale set located on the Azure Stack portal, in **Dashboard** > **Virtual machine scale sets** > **AnyScaleSet - Instances** > **AnyScaleSetInstance** fails to load.
 - Remediation: There is currently no remediation and we are working on a fix. Until then, please use the CLI cmdlet `az vmss get-instance-view` to get the instance view of a virtual machine scale set.
 
+### User image service
+- Applicable: This issue applies to all supported releases.
+- Cause: Failed user image creation will put the user image service into a bad state. User image creation and deletion operations will start to fail. User image deletion may fail with error: "Error: An internal disk management error occurred."
+- Remediation: No mitigation. Open a support ticket with Microsoft.
+
 ## Storage
 
 - Applicable: This issue applies to all supported releases.
