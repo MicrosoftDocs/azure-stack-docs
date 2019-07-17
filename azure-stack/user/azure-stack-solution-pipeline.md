@@ -151,8 +151,6 @@ To assign your application to the **Contributor** role:
    
 1. Select the subscription to assign the application to.
    
-   ![Select subscription for assignment](./media/azure-stack-solution-pipeline/select-one-subscription.png)
-   
 1. In the left navigation, select **Access control (IAM)**.
    
 1. Select **Add a role assignment**.
@@ -161,7 +159,7 @@ To assign your application to the **Contributor** role:
    
    ![Select the role and the application](./media/azure-stack-solution-pipeline/select-role.png)
    
-1. Select **Save** to finish assigning the role. You see your application in the list of users assigned to a role for that scope.
+1. Select **Save** to finish assigning the role. You can see your application in the list of users assigned to a role for that scope.
 
 Your service principal is set up. The next section shows how to get the values that Azure Pipelines needs to sign in programmatically.
 
@@ -225,7 +223,7 @@ After setting endpoint creation permissions, you can create endpoints for Azure 
 
 ### Create an endpoint for Azure AD or AD FS deployments
 
-Follow the instructions in [Create an Azure Resource Manager service connection with an existing service principal](/devops/pipelines/library/connect-to-azure#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) to create the service connection endpoint. 
+Follow the instructions in [Create an Azure Resource Manager service connection with an existing service principal](/azure/devops/pipelines/library/connect-to-azure#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) to create the service connection endpoint. 
 
 For an Azure AD endpoint, use the following values to fill out the form:
 
@@ -235,11 +233,11 @@ For an Azure AD endpoint, use the following values to fill out the form:
 | **Environment** | AzureStack | The name of your environment. |
 | **Environment URL** | `https://management.local.azurestack.external` | Your management endpoint. |
 | **Scope level** | Subscription | The scope of the connection. |
-| **Subscription ID** | 00000000-XXXX-4F2A-8FB2-64C63CD2FAE9 | Your subscription ID. |
-| **Subscription name** | name@contoso.com | Your user name from Azure Stack. |
-| **Service principal client ID** | 00000000-XXXX-4776-93FC-C63E6E021D59 | The **Application (client) ID** you saved previously. |
-| **Service principal key** | \<application secret value> | The key value you saved when you created the application secret.  |
-| **Tenant ID** | D073C21E-XXXX-4AD0-B77E-8364FCA78A94 | The **Directory (tenant) ID** you saved previously.  |
+| **Subscription ID** | 00000000-XXXX-XXXX-XXXX-000000000000 | Your subscription ID. |
+| **Subscription name** | admin@northwind.com | Your user name from Azure Stack. |
+| **Service principal client ID** | 000000000-XXXX-XXXX-XXXX-000000000000 | The **Application (client) ID** you saved previously. |
+| **Service principal key** | aA1!bB2@cC3#dD4$xX0=xX0=xX0=xX0= | The key value you saved when you created the application secret.  |
+| **Tenant ID** | 00000000-XXXX-XXXX-XXXX-000000000000 | The **Directory (tenant) ID** you saved previously.  |
 | **Connection: Not verified** | | Select **Verify connection** to validate your connection settings to the service principal. <br />**Note:** If your Azure Resource Manager endpoint isn't exposed to the internet, the connection validation will fail. This is expected, and you can validate your connection by creating a release pipeline with a simple task. |
 
 ![Create Azure AD endpoint](./media/azure-stack-solution-pipeline/endpointform.png)
@@ -405,184 +403,17 @@ Creating a release pipeline is the final step in your hybrid CI/CD configuration
 1. Select **Save** at the upper right on the **New release pipeline** page to save the release pipeline.
 
 > [!Note]
-<<<<<<< HEAD
 > Some settings for release tasks may have been automatically defined as [custom variables](/azure/devops/pipelines/release/variables?view=vsts#custom-variables) when you created the release pipeline from the template. These settings can't be modified in the task settings, but you can edit them in the parent stage items.
-=======
-> If your Azure Resource Manager endpoint is not exposed to the Internet, the connection validation will fail. This is expected and you can validate your connection by creating a release pipeline with a simple task. 
-
-## Develop your application build
-
-In this part of the  solution you'll:
-
-* Add code to an Azure DevOps Services project.
-* Create self-contained web app deployment.
-* Configure the continuous deployment process
-
-> [!Note]
- > Your Azure Stack environment needs the correct images syndicated to run Windows Server and SQL Server. It must also have App Service deployed. Review the App Service documentation "Prerequisites" section for Azure Stack Operator Requirements.
-
-Hybrid CI/CD can apply to both application code and infrastructure code. Use [Azure Resource Manager templates like web](https://azure.microsoft.com/resources/templates/) app code from Azure DevOps Services to deploy to both clouds.
-
-### Add code to an Azure DevOps Services project
-
-1. Sign in to Azure DevOps Services with an organization that has project creation rights in Azure Stack. The next screen capture shows how to connect to the HybridCICD project.
-
-    ![Connect to a Project - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/017_connect_to_project.png)
-
-2. **Clone the repository** by creating and opening the default web app.
-
-    ![Clone repository - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/018_link_arm.png)
-
-### Create self-contained web app deployment for App Services in both clouds
-
-1. Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and then add `win10-x64.` For more information, see [Self-contained deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.
-
-    ![Configure Runtimeidentifier](media/azure-stack-solution-hybrid-pipeline/019_runtimeidentifer.png)
-
-2. Use Team Explorer to check the code into Azure DevOps Services.
-
-3. Confirm that the application code was checked into Azure DevOps Services.
-
-### Create the build pipeline
-
-1. Sign in to Azure DevOps Services with an organization that can create a build pipeline.
-
-2. Navigate to the **Build Web Application** page for the project.
-
-3. In **Arguments**, add **-r win10-x64** code. This step is required to trigger a self-contained deployment with .NET Core.
-
-    ![Add argument build pipeline](media/azure-stack-solution-hybrid-pipeline/020_publish_additions.png)
-
-4. Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that can run on Azure and Azure Stack.
-
-### Use an Azure-hosted build agent
-
-Using a hosted build agent in Azure DevOps Services is a convenient option for building and deploying web apps. Agent maintenance and upgrades are automatically performed by Microsoft Azure, which enables a continuous and uninterrupted development cycle.
-
-### Configure the continuous deployment (CD) process
-
-Azure DevOps Services and Team Foundation Server (TFS) provide a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, quality assurance (QA), and production. This process can include requiring approvals at specific stages of the application life cycle.
-
-### Create release pipeline
-
-Creating a release pipeline is the final step in your app build process. This release pipeline is used to create a release and deploy a build.
-
-1. Sign in to Azure DevOps Services and navigate to **Azure Pipelines** for your project.
-2. On the **Releases** tab, select **\[ + ]**  and then pick **Create release definition**.
-
-   ![Create release pipeline - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/021a_releasedef.png)
-
-3. On the **Select a Template** page, choose **Azure App Service Deployment**, and then select **Apply**.
-
-    ![Apply template - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/102.png)
-
-4. On the **Add artifact** page, from the **Source (Build definition)** pull-down menu, select the Azure Cloud build app.
-
-    ![Add artifact - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/103.png)
-
-5. On the **Pipeline** tab, select the **1 Phase**, **1 Task** link to **View environment tasks**.
-
-    ![Pipeline view tasks - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/104.png)
-
-6. On the **Tasks** tab, enter Azure as the **Environment name** and select the AzureCloud Traders-Web EP from the **Azure subscription** drop-down list.
-
-    ![Set environment variables - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/105.png)
-
-7. Enter the **Azure app service name**, which is "northwindtraders" in the next screen capture.
-
-    ![App service name - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/106.png)
-
-8. For the Agent phase, select **Hosted VS2017** from the **Agent queue** drop-down list.
-
-    ![Hosted agent - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/107.png)
-
-9. In **Deploy Azure App Service**, select the valid **Package or folder** for the environment.
-
-    ![Select package or folder - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/108.png)
-
-10. On the **Select File or Folder** page, select **OK** for the folder location.
-
-    ![Select file or folder - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/109.png)
-
-11. Save all changes and go back to **Pipeline**.
-
-    ![Save changes - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/110.png)
-
-12. On the **Pipeline** tab, select **Add artifact**, and choose the **NorthwindCloud Traders-Vessel** from the **Source (Build Definition)** drop-down list.
-
-    ![Add new artifact - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/111.png)
-
-13. On the **Select a Template** page, add another environment. Pick **Azure App Service Deployment** and then select **Apply**.
-
-    ![Select template - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/112.png)
-
-14. Enter "Azure Stack" as the **Environment name**.
-
-    ![Environment name - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/113.png)
-
-15. On the **Tasks** tab, find and select Azure Stack.
-
-    ![Azure Stack environment - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/114.png)
-
-16. From the **Azure subscription** drop-down list, select  "AzureStack Traders-Vessel EP" for the Azure Stack endpoint.
-
-    ![Azure subscription drop-down - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/115.png)
-
-17. Enter the Azure Stack web app name as the **App service name**.
-
-    ![App service name - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/116.png)
-
-18. Under **Agent selection**, pick "AzureStack -bDouglas Fir" from the **Agent queue** drop-down list.
-
-    ![Pick agent - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/117.png)
-
-19. For **Deploy Azure App Service**, select the valid **Package or folder** for the environment. On **Select File Or Folder**, select **OK** for the folder **Location**.
-
-    ![Pick package or folder - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/118.png)
-
-    ![Approve location - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/119.png)
-
-20. On the **Variables** tab, find the variable named **VSTS_ARM_REST_IGNORE_SSL_ERRORS**. Set the variable value to **true**, and set its scope to **Azure Stack**.
-
-    ![Configure variable - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/120.png)
-
-21. On the **Pipeline** tab, select the **Continuous deployment trigger** icon for the NorthwindCloud Traders-Web artifact and set the **Continuous deployment trigger** to **Enabled**.  Do the same thing for the "NorthwindCloud Traders-Vessel" artifact.
-
-    ![Set continuous deployment trigger - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/121.png)
-
-22. For the Azure Stack environment, select the **Pre-deployment conditions** icon set the trigger to **After release**.
-
-    ![Set pre-deployment conditions trigger - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/122.png)
-
-23. Save all your changes.
-
-> [!Note]
-> Some settings for release tasks may have been automatically defined as [environment variables](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts#custom-variables) when you created a release pipeline from a template. These settings can't be modified in the task settings. However, you can edit these settings in the parent environment items.
-
-## Create a release
-
-Now that you've completed the modifications to the release pipeline, it's time to start the deployment. To begin deployment, create a release from the release pipeline. A release may be created automatically; for example, when the continuous deployment trigger is set in the release pipeline. Setting this trigger means that modifying the source code will start a new build and then a new release. However, in this section you'll create a new release manually.
-
-1. On the **Pipeline** tab, open the **Release** drop-down list and select **Create release**.
-
-    ![Create a release - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/200.png)
-
-2. Enter a description for the release, check to see that the correct artifacts are selected, and then select **Create**. After a few moments, a banner appears indicating that the new release was created, and the release name is displayed as a link. Select the link to see the release summary page.
-
-    ![Release creation banner - Azure DevOps Services](media/azure-stack-solution-hybrid-pipeline/201.png)
-
-3. The release summary page for shows details about the release. In the following screen capture for "Release-2", the **Environments** section shows the **Deployment status** for Azure as "IN PROGRESS", and the status for Azure Stack is "SUCCEEDED". When the deployment status for the Azure environment changes to "SUCCEEDED", a banner appears indicating that the release is ready for approval. When a deployment is pending or has failed, a blue **(i)** information icon is shown. Hover over the icon to see a pop-up that contains the reason for delay or failure.
->>>>>>> 0d09aa73ae67cd55c79f5632cc701a3929816a2b
 
 ## Release the app
 
-Now that you've created the release pipeline, you can use it to create a release and deploy your app. 
+Now that you created the release pipeline, you can use it to create a release and deploy your app. 
 
 Because the continuous deployment trigger is set in your release pipeline, modifying the source code starts a new build and creates a new release automatically. However, you'll create and run this new release manually.
 
 To create a release:
 
-1. On the release pipeline page, select **Create release** at upper right. 
+1. On your new release pipeline page, select **Create release** at upper right. 
    
    ![Create a release ](media/azure-stack-solution-pipeline/createreleaseicon.png)
    
