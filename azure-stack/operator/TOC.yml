@@ -411,7 +411,7 @@
           href: azure-stack-diagnostics.md
         - name: Automatic collection
           items:
-          - name: Manage storage account
+          - name: Best practices
             href: azure-stack-best-practices-automatic-log-collection.md  
           - name: Create SAS URL
             href: azure-stack-create-blob-container-shared-access-signature-url.md
