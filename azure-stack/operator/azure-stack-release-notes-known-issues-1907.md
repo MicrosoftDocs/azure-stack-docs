@@ -86,6 +86,13 @@ This article lists known issues in the 1907 release of Azure Stack. The list is 
 
 ### Virtual Network Gateway
 
+#### Local network gateway deletion
+
+- Applicable: This issue applies to the 1906 release.
+- Cause: In the user portal, deleting the Local Network Gateway displays the following error message: "Cannot delete a Local Network Gateway with an active connection," even though there is no active connection. 
+- Mitigation: The fix for this issue will be released in 1907. A workaround for this issue is to create a new Local Network Gateway  with the same IP address, address space and configuration details with a different name. The old LNG can be deleted once the environment has been updated to 1907. 
+- Occurrence: Common
+
 #### Alerts
 
 - Applicable: This issue applies to all supported releases.
