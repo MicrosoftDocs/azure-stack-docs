@@ -41,7 +41,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 <!-- The current theme (if any) of this release. -->
 
 <!-- What's new, also net new experiences and features. -->
-- General availability release of the Azure Stack diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Customer Support Services (CSS). The Azure Stack diagnostic log collection service comes with a new user experience in the Azure Stack administrator portal enables operators to set up the automatic upload of diagnostic logs to a storage blob when certain critical alerts are raised, or to perform the same operation on demand. For more information, see [Diagnostic log collection](https://docs.microsoft.com/azure-stack/operator/azure-stack-log-collection-overview). 
+- General availability release of the Azure Stack diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Customer Support Services (CSS). The Azure Stack diagnostic log collection service provides a new user experience in the Azure Stack administrator portal that enables operators to set up the automatic upload of diagnostic logs to a storage blob when certain critical alerts are raised, or to perform the same operation on demand. For more information, see [Diagnostic log collection](azure-stack-log-collection-overview.md).
 
 ### Improvements
 
@@ -58,7 +58,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
-- Fixed an issue in which the publisher, offer, and SKU were treated as case sensitive in a resource manager template: the image was not fetched for deployment unless the parameters were the same case as the publisher, offer, and SKU of that of the image.
+- Fixed an issue in which the publisher, offer, and SKU were treated as case sensitive in a Resource Manager template: the image was not fetched for deployment unless the image parameters were the same case as that of the publisher, offer, and SKU.
 
 ## Security updates
 
