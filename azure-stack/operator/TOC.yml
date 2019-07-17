@@ -239,6 +239,8 @@
     items:
     - name: Marketplace overview
       href: azure-stack-marketplace.md
+    - name: Marketplace changes
+      href: azure-stack-marketplace-changes.md
     - name: Download marketplace items
       href: azure-stack-download-azure-marketplace-item.md
     - name: Azure Marketplace items for Azure Stack
