@@ -21,9 +21,24 @@ ms.lastreviewed: 06/10/2019
 ---
 # Microsoft Azure Stack help and support
 
-Beginning with the 1905 release, **Help + support** improvements in the Azure Stack portal make it easier for operators to check their support options, get expert help, and learn more about Azure Stack. 
+**Help + support** in the Azure Stack portal helps operators collect diagnostic logs, check their support options, get expert help, and learn more about Azure Stack. 
 
-## Documentation, billing, and support
+## Diagnostic log collection
+
+Beginning with the 1907 release, operators can use **Help + support**  to collect diagnostic logs for troubleshooting. There are two ways to collect logs:
+
+- **Collect logs now**: You choose a 1-4 hour time period from the last week
+- **Automatic collection**: If enabled, log collection is triggered by specific health alerts 
+
+![Screenshot of diagnostic log collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
+
+Integrated systems can save the diagnostic logs to an Azure Storage container. For more information, see [Azure Stack diagnostic log collection overview](azure-stack-log-collection-overview.md)
+
+## Help resources 
+
+Operators can also use **Help + support** to learn more about Azure Stack, check their support options, and get expert help. 
+
+### Things to try first
 
 At the top of **Help + support** are links to things you might try first, like read up about a new concept, understand how billing works, or see which support options are available. 
 
@@ -35,7 +50,7 @@ At the top of **Help + support** are links to things you might try first, like r
 
 - **Support options**. Azure Stack operators can choose from a range of [Azure support options](https://aka.ms/azstacksupport) that can fit the needs of any enterprise. 
 
-## Get expert help 
+### Get expert help 
 
 For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
 
@@ -59,8 +74,7 @@ You can also reach out to the MSDN Forums to discuss an issue, or take online tr
 
 ![Get expert help](media/azure-stack-help-and-support/get-support-cards.png)
 
-
-## Get up to speed with Azure Stack
+### Get up to speed with Azure Stack
 
 This set of tutorials is customized depending on whether you're running the ASDK or integrated systems so you can quickly get up to speed with your environment. 
 
