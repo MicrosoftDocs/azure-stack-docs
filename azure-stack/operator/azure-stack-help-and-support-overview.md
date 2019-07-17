@@ -25,7 +25,7 @@ ms.lastreviewed: 07/17/2019
 
 ## Diagnostic log collection
 
-Beginning with the 1907 release, operators can use **Help + support**  to collect diagnostic logs for troubleshooting. There are two ways to collect logs:
+Beginning with the 1907 release, operators can use **Help + support** to collect diagnostic logs for troubleshooting. There are two ways to collect logs:
 
 - **Collect logs now**: You choose a 1-4 hour time period from the last week
 - **Automatic collection**: If enabled, log collection is triggered by specific health alerts 
