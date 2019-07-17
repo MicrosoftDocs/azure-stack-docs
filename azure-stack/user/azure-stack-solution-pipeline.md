@@ -249,6 +249,8 @@ To create an AD FS endpoint, use the preceding procedure and values, except sele
 
 ## Install the build agent on the build server
 
+Using a hosted build agent in Azure Pipelines is a convenient option for building and deploying web apps. Azure automatically performs agent maintenance and upgrades, which enable a continuous and uninterrupted development cycle.
+
 In Azure DevOps, create a personal access token (PAT) to use for Azure Stack. Then use the PAT to deploy and configure the build agent on the Azure Stack build VM. 
    
 ### Create a personal access token
@@ -284,8 +286,6 @@ Now that you created the endpoint and installed the Azure Pipelines build agent 
 ‎‎Instead of managing each agent separately, you can organize agents into *agent pools*. An agent pool defines the sharing boundary for all agents in that pool. Agent pools are scoped to the Azure DevOps organization, which means that you can share an agent pool across projects. To learn more about agent pools, see [Create agent pools and queues](/azure/devops/pipelines/agents/pools-queues).
 
 ## Create build and release pipelines 
-
-Using a hosted build agent in Azure Pipelines is a convenient option for building and deploying web apps. Azure automatically performs agent maintenance and upgrades, which enable a continuous and uninterrupted development cycle.
 
 Azure Pipelines provides a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, quality assurance (QA), and production. The release process can include requiring approvals at specific stages of the application life cycle.
 
@@ -361,7 +361,7 @@ Creating a release pipeline is the final step in your hybrid CI/CD configuration
    
    ![Select subscription and enter App Service name](media/azure-stack-solution-pipeline/stage1.png)
    
-1. In the left pane, select **Run on agent**. In the right pane, select **Hosted VS2017** from the **Agent pool** drop-down list if it'a not already selected.
+1. In the left pane, select **Run on agent**. In the right pane, select **Hosted VS2017** from the **Agent pool** drop-down list if it's not already selected.
    
    ![Select hosted agent](media/azure-stack-solution-pipeline/agentjob.png)
    
@@ -387,7 +387,7 @@ Creating a release pipeline is the final step in your hybrid CI/CD configuration
    
 1. Under **Run on agent**, select your Azure Stack build server agent from the **Agent pool** drop-down list.
    
-1. For **Deploy Azure App Service**, select the **Package or folder** for the Azure Stack build, and select **OK** in the **Select a file or folder** dialog.
+1. For **Deploy Azure App Service**, select the **Package or folder** for the Azure Stack build, and then select **OK** in the **Select a file or folder** dialog.
    
 1. On the **Variables** tab, find the variable named **VSTS_ARM_REST_IGNORE_SSL_ERRORS**. Set the variable value to **true**, and set its scope to **Azure Stack**.
    
@@ -425,11 +425,11 @@ To create a release:
    
    A banner indicates that the new release is created. Select the release name link to see a release summary page showing details about the release, such as deployment status.
    
-1. To deploy the manual release, select **Deploy** in the **Stage** section, and then select **Deploy** in the stage popup. 
+1. To deploy the manual release, select the stage in the left pane, select **Deploy**, and then select **Deploy** in the stage dialog. 
    
-   Select the hyperlinks in the release stages to see more information about deployment status. 
-   
-   ![Release summary page](media/azure-stack-solution-pipeline/releasesummary.png)
+You can select the hyperlinks in the release stages to see more information about deployment status. 
+
+![Release summary page](media/azure-stack-solution-pipeline/releasesummary.png)
 
 It's easy for an administrator to track the overall progress of releases, and see which releases are waiting for approval.
 
@@ -445,11 +445,13 @@ You can monitor and track all your deployments.
    
    In the release log, the left pane shows the status of each operation for each stage. During a deployment, the right pane shows the live log from the agent. After the deployment finishes, the entire log file appears in the right pane. 
    
-1. Select any step in the left pane to see the log file for a single step, such as **Pre-deployment approvals**. To view the approvals, select **View approval** in the right pane to see who approved or rejected the release, and other details. 
+1. Select any step in the left pane to see the log file for a single step, such as **Pre-deployment approvals**. 
    
-   Seeing logs for the individual steps makes it easier to trace and debug parts of the overall deployment. You can also **Download all logs** as a *.zip* file.
+1. To view approvals, select **View approval** in the right pane to see who approved or rejected the release, and other details. 
    
-   ![Release log](media/azure-stack-solution-pipeline/releaselog.png)
+Seeing logs for the individual steps makes it easier to trace and debug parts of the overall deployment. You can also **Download all logs** as a *.zip* file.
+   
+![Release log](media/azure-stack-solution-pipeline/releaselog.png)
 
 Open the deployed production app in your browser. For example, for the Azure App Services website, open the URL `https://<your-app-name>.azurewebsites.net`.
 
