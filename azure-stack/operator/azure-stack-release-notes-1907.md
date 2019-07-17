@@ -62,6 +62,9 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 - Fixed an issue in which the publisher, offer, and SKU were treated as case sensitive in a Resource Manager template: the image was not fetched for deployment unless the image parameters were the same case as that of the publisher, offer, and SKU.
 
+<!-- https://icm.ad.msft.net/imp/v3/incidents/details/129536438/home -->
+- Fixed an issue with backups failing with a **PartialSucceeded** error message, due to timeouts during backup of storage service metadata.  
+
 ## Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates-1907.md).
