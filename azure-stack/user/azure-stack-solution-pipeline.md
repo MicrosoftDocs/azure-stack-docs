@@ -67,7 +67,9 @@ App deployment continuity, security, and reliability are critical elements for y
 - Visual Studio 2019 [installed](/visualstudio/install/install-visual-studio).
   
 - Admin access to an [Azure DevOps](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services) organization that can create pipelines, and a DevOps [project](/azure/devops/organizations/projects/create-project) or [workspace](/azure/devops/repos/tfvc/create-work-workspaces). 
-   
+  
+- A Windows Server 2016 image with .NET 3.5 for the private build agent virtual machine (VM) Azure Pipelines builds on your Azure Stack.
+  
 - An Azure Stack integrated system, or the Azure Stack Development Kit (ASDK) deployed and configured according to the following instructions. 
   
 If you already have any of the prerequisites, make sure they meet all the requirements before deploying this solution.
@@ -105,7 +107,7 @@ To deploy the ASDK:
 > [!Note]
 > Your Azure Stack environment needs the correct images to run Windows Server and SQL Server. It must also have App Service deployed.
 
-## Configure the service principal and role in Azure AD 
+## Configure the service principal and role 
 
 In Azure Active Directory (Azure AD), Azure Pipelines authenticates against Azure Resource Manager using a *service principal*. To provision resources for Azure Pipelines, the service principal must have the **Contributor** role in the Azure subscription. 
 
@@ -122,7 +124,7 @@ You can also [use a PowerShell script](https://github.com/Microsoft/vsts-rm-exte
  > If you use the PowerShell script to create an Azure Stack Azure Resource Manager endpoint, you need to pass the **-azureStackManagementURL** parameter and **-environmentName** parameter. For example:  
  > `-azureStackManagementURL https://management.local.azurestack.external -environmentName AzureStack`
 
-### Register your app in Azure AD to create the service principal
+### Register your app in Azure AD 
 
 1. In the [Azure portal](https://portal.azure.com), select **Azure Active Directory**, and then select **App registrations** in the left navigation.
    
@@ -247,11 +249,11 @@ You can also create a service connection with a certificate instead of a secret 
 
 To create an AD FS endpoint, use the preceding procedure and values, except select **Certificate** instead of **Service principal key**. In the **Certificate** field, paste the contents of the *.pem* certificate file. Include both the certificate and​ private key sections​. To convert a *.pfx* to a *.pem* certificate file, run `openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>`.
 
-## Install the build agent on the build server
+## Install and configure the build agent 
 
 Using a hosted build agent in Azure Pipelines is a convenient option for building and deploying web apps. Azure automatically performs agent maintenance and upgrades, which enable a continuous and uninterrupted development cycle.
 
-In Azure DevOps, create a personal access token (PAT) to use for Azure Stack. Then use the PAT to deploy and configure the build agent on the Azure Stack build VM. 
+In Azure DevOps, create a personal access token (PAT) to use for Azure Stack. Then use the PAT to deploy and configure the build agent on the Azure Stack build server VM. 
    
 ### Create a personal access token
 
@@ -273,13 +275,17 @@ In Azure DevOps, create a personal access token (PAT) to use for Azure Stack. Th
    
    ![PAT warning](media/azure-stack-solution-pipeline/patwarning.png)
    
-### Deploy and configure the agent on the build server
+### Install and configure the agent on the build server
 
 1. Connect to the build server VM you deployed on the Azure Stack host.
    
-1. Download and deploy the build agent as a service using your PAT, and run it as the VM admin.
+1. Download the build agent image. 
    
-1. From an admin command prompt, navigate to the folder for the extracted build agent, and run the *config.cmd* file. When the *config.cmd* finishes, the build agent folder is updated with additional files.
+1. In an administrator command prompt, deploy the agent as a service using your PAT, and run it.
+   
+1. Navigate to the folder for the extracted build agent, and run the *config.cmd* file. The *config.cmd* updates the build agent folder with additional files.
+   
+   ![Install and configure the build agent](media/azure-stack-solution-pipeline/buildagent.png)
 
 Now that you created the endpoint and installed the Azure Pipelines build agent on the build server, the Azure Pipelines to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from Azure Pipelines, and then the agent conveys endpoint information for communication with Azure Stack.
 
@@ -427,6 +433,8 @@ To create a release:
    
 1. To deploy the manual release, select the stage in the left pane, select **Deploy**, and then select **Deploy** in the stage dialog. 
    
+1. Open the deployed production app in your browser. For example, for the Azure App Services website, open the URL `https://<your-app-name>.azurewebsites.net`.
+
 You can select the hyperlinks in the release stages to see more information about deployment status. 
 
 ![Release summary page](media/azure-stack-solution-pipeline/releasesummary.png)
@@ -452,8 +460,6 @@ You can monitor and track all your deployments.
 Seeing logs for the individual steps makes it easier to trace and debug parts of the overall deployment. You can also **Download all logs** as a *.zip* file.
    
 ![Release log](media/azure-stack-solution-pipeline/releaselog.png)
-
-Open the deployed production app in your browser. For example, for the Azure App Services website, open the URL `https://<your-app-name>.azurewebsites.net`.
 
 ## Next steps
 
