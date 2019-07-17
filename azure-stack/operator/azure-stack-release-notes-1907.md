@@ -57,6 +57,8 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 ### Changes
 
+- Infrastructure backup service will delete partially uploaded backups if the external storage location runs out of capacity. 
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
