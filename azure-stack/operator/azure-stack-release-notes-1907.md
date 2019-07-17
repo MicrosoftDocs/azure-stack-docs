@@ -41,6 +41,9 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 <!-- The current theme (if any) of this release. -->
 
 <!-- What's new, also net new experiences and features. -->
+- General availability release of the Azure Stack diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Customer Support Services (CSS). 
+
+- New user experience in the Azure Stack administrator portal enables operators to set up the automatic upload of diagnostic logs to a storage blob when certain critical alerts are raised, or to perform the same operation on demand. For more information, see [Diagnostic log collection](https://docs.microsoft.com/azure-stack/operator/azure-stack-log-collection-overview). 
 
 ### Improvements
 
@@ -49,6 +52,8 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 - Improved error handling for disconnected Marketplace tool. If download fails or partially succeeds when using Export-AzSOfflineMarketplaceItem, a detailed error message will be displayed with more details about the error and mitigation steps, if any.
 
 #### Networking updates
+
+- Added a new outbound rule (HTTPS) to enable communication for Azure Stack diagnostic log collection service. For more information, see [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
 
 ### Changes
 
