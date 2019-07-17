@@ -42,15 +42,16 @@ To learn more about CI/CD, see the following articles:
 
 ## Azure Stack and hybrid CI/CD
 
-Microsoft Azure Stack is an extension of Azure that brings the agility and innovation of cloud computing to your on-premises environment. It's the only hybrid cloud that lets you build and deploy hybrid apps both in on-premises and public cloud environments. You can build an app on Azure Stack and then deploy it to Azure Stack, to Azure, or to your Azure hybrid cloud. 
+Microsoft Azure Stack is an extension of Azure that brings the agility and innovation of cloud computing to your on-premises environment. It's the only hybrid cloud that lets you build and deploy hybrid apps in on-premises as well as public cloud environments. You can build an app on Azure Stack and then deploy it to Azure Stack, to Azure, or to your Azure hybrid cloud. 
 
 App deployment continuity, security, and reliability are critical elements for your organization and development team. The Azure Pipelines hybrid CI/CD delivery model lets you consolidate your build pipelines across your on-premises environment and the public cloud, and change deployment locations without changing your app. Other benefits of using the hybrid approach are:
 
 - You can maintain a consistent set of development tools across your on-premises Azure Stack environment and the Azure public cloud.  A common tool set makes it easier to implement CI/CD patterns and practices.
 - Apps and services deployed in Azure or Azure Stack are interchangeable, and the same code can run in either location. You can take advantage of on-premises and public cloud features and capabilities.
 
-![hybrid-pillars.png](./media/azure-stack-solution-pipeline/hybrid-pillars.png)  
-The article [Hybrid cloud design patterns for Azure Stack](azure-stack-edge-pattern-overview.md) reviews software quality pillars for designing, deploying, and operating hybrid applications. The quality criteria include placement, scalability, availability, resiliency, manageability, and security. These design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
+> [!TIP]
+> ![hybrid-pillars.png](./media/azure-stack-solution-pipeline/hybrid-pillars.png)  
+> The article [Hybrid cloud design patterns for Azure Stack](azure-stack-edge-pattern-overview.md) reviews software quality pillars for designing, deploying, and operating hybrid applications. The quality criteria include placement, scalability, availability, resiliency, manageability, and security. These design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
 ## Prerequisites
 
@@ -65,7 +66,7 @@ The article [Hybrid cloud design patterns for Azure Stack](azure-stack-edge-patt
   
 - Visual Studio 2019 [installed](/visualstudio/install/install-visual-studio).
   
-- An [Azure DevOps](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services) organization and [project](/azure/devops/organizations/projects/create-project) or [workspace](/azure/devops/repos/tfvc/create-work-workspaces). 
+- Admin access to an [Azure DevOps](https://www.visualstudio.com/docs/setup-admin/team-services/connect-to-visual-studio-team-services) organization that can create pipelines, and a DevOps [project](/azure/devops/organizations/projects/create-project) or [workspace](/azure/devops/repos/tfvc/create-work-workspaces). 
    
 - An Azure Stack integrated system, or the Azure Stack Development Kit (ASDK) deployed and configured according to the following instructions. 
   
@@ -73,7 +74,7 @@ If you already have any of the prerequisites, make sure they meet all the requir
 
 ### Install and deploy the ASDK
 
-The Azure Stack Development Kit (ASDK) is a single-node deployment of Azure Stack that you can download and use for free. The ASDK lets you evaluate Azure Stack and use Azure APIs and tooling in a non-production environment.
+The Azure Stack Development Kit (ASDK) is a single-node deployment of Azure Stack you can download and use for free. The ASDK lets you evaluate Azure Stack and use Azure APIs and tooling in a non-production environment.
 
 Any user with Azure AD or Active Directory Federation Services (AD FS) admin credentials can deploy the ASDK. An Azure OEM/hardware partner can deploy a production Azure Stack. You must be an Azure Stack operator to do the following Azure Stack deployment tasks: 
 
@@ -193,7 +194,7 @@ When creating endpoints for Azure Pipelines, you need to enter an authentication
    
 1. In **Add a client secret**, type a description, select an expiration, and select **Add**.
    
-1. Copy the **VALUE** of the new secret. You provide the key value to sign in as the application. It's important to save this value now, because it won't be displayed again after you leave this page.
+1. Copy the **VALUE** of the new secret. You need to provide the key value to sign in as the app. It's important to save this value now, because it won't be displayed again after you leave this page.
    
    ![Copy the secret value because you can't retrieve it later](./media/azure-stack-solution-pipeline/copy-secret.png)
 
@@ -205,7 +206,7 @@ After setting endpoint creation permissions, you can create endpoints for Azure 
 
 - If you deployed Azure Stack with Azure AD as the identity provider for Azure Stack, you can use the service principal secret key to create an Azure Resource Manager service connection for Azure deployments. 
   
-- If you used Active Directory Federation Services (AD FS) as the identity provider for Azure Stack, you must create the service connection using a certificate instead of a secret key for authentication. 
+- If you used Active Directory Federation Services (AD FS) as the identity provider for Azure Stack, you must create the service connection using a certificate rather than a secret key for authentication. 
 
 ### Set endpoint creation permissions
 
@@ -219,7 +220,7 @@ After setting endpoint creation permissions, you can create endpoints for Azure 
    
    ![Add a member](./media/azure-stack-solution-pipeline/endpoint-permissions.png)
    
-1. In the **Azure DevOps Services Groups** list, select **Endpoint Creators**, and repeat the previous steps to add users to the **Endpoint Creators** group. 
+1. In the **Azure DevOps Groups** list, select **Endpoint Creators**, and repeat the previous steps to add users to the **Endpoint Creators** group. 
 
 ### Create an endpoint for Azure AD or AD FS deployments
 
@@ -242,13 +243,13 @@ For an Azure AD endpoint, use the following values to fill out the form:
 
 ![Create Azure AD endpoint](./media/azure-stack-solution-pipeline/endpointform.png)
 
-You can also create a service connection using a service principal with a certificate instead of a secret key for authentication. You need to use a certificate if you deployed Azure Stack with AD FS as the identity provider. 
+You can also create a service connection with a certificate instead of a secret key for authentication. You need to use a certificate if you deployed Azure Stack with AD FS as the identity provider. 
 
-To create an AD FS endpoint, use the same procedure and values as for creating an Azure AD endpoint, except select **Certificate** instead of **Service principal key**. In the **Certificate** field, paste the contents of the *.pem* certificate file. Include both the certificate and​ private key sections​. To convert a *.pfx* to a *.pem* certificate file, run `openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>`.
+To create an AD FS endpoint, use the preceding procedure and values, except select **Certificate** instead of **Service principal key**. In the **Certificate** field, paste the contents of the *.pem* certificate file. Include both the certificate and​ private key sections​. To convert a *.pfx* to a *.pem* certificate file, run `openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>`.
 
 ## Install the build agent on the build server
 
-In Azure DevOps, create a personal access token (PAT) to use for Azure Stack. Then use the PAT to deploy the build agent to the Azure Stack build computer, and configure the agent. 
+In Azure DevOps, create a personal access token (PAT) to use for Azure Stack. Then use the PAT to deploy and configure the build agent on the Azure Stack build VM. 
    
 ### Create a personal access token
 
@@ -430,7 +431,7 @@ To create a release:
    
    ![Release summary page](media/azure-stack-solution-pipeline/releasesummary.png)
 
-It's easy for an administrator track the overall progress of releases and see which releases are waiting for approval.
+It's easy for an administrator to track the overall progress of releases, and see which releases are waiting for approval.
 
 ![Release summary page showing pending approval](media/azure-stack-solution-pipeline/releasepending.png)
 
