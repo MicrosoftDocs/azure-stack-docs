@@ -413,8 +413,26 @@
       href: azure-stack-backup-reference.md
   - name: Get support  
     items:
-    - name: Help and Support  
-      href: azure-stack-help-and-support-overview.md
+    - name: Help & Support portal 
+      items:
+      - name: Overview      
+        href: azure-stack-help-and-support-overview.md
+      - name: Diagnostic log collection
+        items:
+        - name: Overview 
+          href: azure-stack-log-collection-overview.md
+        - name: On-demand using the portal
+          href: azure-stack-configure-on-demand-log-collection.md
+        - name: On-demand using PEP
+          href: azure-stack-diagnostics.md
+        - name: Automatic collection
+          items:
+          - name: Manage storage account
+            href: azure-stack-manage-storage-account-automatic-log-collection.md  
+          - name: Create SAS URL
+            href: azure-stack-create-blob-container-shared-access-signature-url.md
+          - name: Configure automatic collection
+            href: azure-stack-configure-automatic-log-collection.md
     - name: Troubleshoot  
       items:
       - name: Known issues
