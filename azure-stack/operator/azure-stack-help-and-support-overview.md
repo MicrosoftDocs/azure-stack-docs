@@ -32,7 +32,7 @@ Beginning with the 1907 release, operators can use **Help + support**  to collec
 
 ![Screenshot of diagnostic log collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
 
-Integrated systems can save the diagnostic logs to an Azure Storage container. For more information, see [Azure Stack diagnostic log collection overview](azure-stack-log-collection-overview.md)
+Integrated systems can share the diagnostic logs with Microsoft Customer Support Service (CSS). As an evaluation environment, the Azure Stack Development Kit (ASDK) is not supported by CSS. For more information, see [Azure Stack diagnostic log collection overview](azure-stack-log-collection-overview.md).
 
 ## Help resources 
 
@@ -62,7 +62,7 @@ For anything else, contact Microsoft CSS.
 
 ![Get expert help for integrated systems](media/azure-stack-help-and-support/get-support-integrated.png)
 
-For the Azure Stack Development Kit (ASDK), you can ask support-related questions in the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
+For the ASDK, you can ask support-related questions in the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
 
 You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open **Help + Support Overview**, which has a link to the forum. 
 MSDN forums are regularly monitored.  
@@ -100,4 +100,5 @@ You can click **Help** (question mark) in the upper-right corner of the administ
 Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
 
 ## Next steps
+
 - Learn about the [Troubleshooting Azure Stack](azure-stack-troubleshooting.md)
