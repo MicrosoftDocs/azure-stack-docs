@@ -135,6 +135,9 @@ For more information, see [Enable-AzsScaleUnitNode](https://docs.microsoft.com/p
 
 ## Repair
 
+> [!CAUTION]  
+> Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, performance decrease, security threads or prevent Azure Stack automation to deploy the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure applied firmware is matching the OEM Version displayed in the [Azure Stack administrator portal](azure-stack-updates.md).
+
 The **repair** action repairs a node. Use it only for either of the following scenarios:
  - Full node replacement (with or without new data disks)
  - After hardware component failure and replacement (if advised in the field replaceable unit (FRU) documentation).
