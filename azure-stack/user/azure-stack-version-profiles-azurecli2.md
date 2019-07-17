@@ -11,7 +11,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 07/16/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/08/2019
@@ -25,7 +25,7 @@ You can follow the steps in this article to set up the Azure Command-Line Interf
 
 ## Prepare for Azure CLI
 
-You will need the CA root certificate for Azure Stack to use Azure CLI on your development machine. You use the certificate to manage resources through the CLI.
+If you are using the Azure Stack Development Kit, you will need the CA root certificate for Azure Stack to use Azure CLI on your development machine. You use the certificate to manage resources through the CLI.
 
  - **The Azure Stack CA root certificate** is required if you are using the CLI from a workstation outside the ASDK.  
 
@@ -98,7 +98,7 @@ Sign in to your development workstation and install CLI. Azure Stack requires ve
 
     ![Azure CLI on Azure Stack Python location](media/azure-stack-version-profiles-azurecli2/cli-python-location.png)
 
-2. Make note of the CLI's Python location. If you are running the ASDK, you will need to this location to add your certificate.
+2. Make a note of the CLI's Python location. If you are running the ASDK, you will need to use this location to add your certificate.
 
 
 ## Windows (Azure AD)
