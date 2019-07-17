@@ -46,6 +46,8 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
+- Improved error handling for disconnected Marketplace tool. If download fails or partially succeeds when using Export-AzSOfflineMarketplaceItem, a detailed error message will be displayed with more details about the error and mitigation steps, if any.
+
 #### Networking updates
 
 ### Changes
