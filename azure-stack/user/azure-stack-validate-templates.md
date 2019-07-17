@@ -20,7 +20,7 @@ ms.lastreviewed: 12/27/2018
 
 ---
 
-# Use the template validation tool for Azure Stack Azure Stac
+# Use the template validation tool for Azure Stack Azure Stack
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 Use the template validation tool to check whether your Azure Resource Manager [templates](azure-stack-arm-templates.md) are ready to deploy to Azure Stack. The template validation tool is available as a part of Azure Stack tools. Download the Azure Stack tools by using the steps described in [Download tools from GitHub](../operator/azure-stack-powershell-download.md).
@@ -39,7 +39,7 @@ Before you use the template validator, run the **AzureRM.CloudCapabilities** Pow
 >[!NOTE]
 > If you update your integrated system, or add any new services or virtual extensions, you should run this module again.
 
-1. Make sure you have connectivity to Azure Stack. These steps can be performed from the Azure Stack Development Kit (ASDK) host, or you can use a [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) to connect from your workstation.
+1. Make sure you have connectivity to Azure Stack. These steps can be done from the Azure Stack Development Kit (ASDK) host, or you can use a [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) to connect from your workstation.
 2. Import the **AzureRM.CloudCapabilities** PowerShell module:
 
     ```powershell
