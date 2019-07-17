@@ -58,6 +58,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 ### Changes
 
 - Infrastructure backup service will delete partially uploaded backups if the external storage location runs out of capacity. 
+- Infrastructure backups no longer include a backup of domain services data. This only applies to systems using Azure Active Directory as its identity provider.   
 
 ### Fixes
 
