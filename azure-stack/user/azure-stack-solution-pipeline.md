@@ -208,7 +208,7 @@ After setting endpoint creation permissions, you can create endpoints for Azure 
 
 ### Set endpoint creation permissions
 
-1. In your web browser, open your Azure DevOps organization and project. Hover over the project name and select the **Settings** icon. 
+1. In your Azure DevOps organization and project, select **Project settings**. 
    
 1. Select **Security**, and under **Azure DevOps Groups**, select **Endpoint Administrators**.
    
