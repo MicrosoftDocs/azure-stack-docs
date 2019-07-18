@@ -52,7 +52,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
-- Azure Stack exposes two commands through the privileged endpoint for starting and stopping Azure Stack: **Start-AzureStack** and **Stop-AzureStack**. **Start-AzureStack** automatically runs as part of powering on an environment. **Stop-AzureStack** is the recommended way to cleanly shut down an environment. Previously, the startup process took about 40-45 minutes on a physical 4-node, and **Stop-AzureStack** about 30 minutes. In an effort to improve startup and shutdown processes, we have optimized our action plan such that the **Start-AzureStack** workflow time has been reduced to 20.5 minutes (52% reduced time on average) and **Stop-AzureStack** to 20 minutes (30% reduced time). 
+- Improvements to **Start-AzureStack** and **Stop-AzureStack** operator actions. The time to start Azure Stack has been reduced to 20.5 minutes (52% reduction on average). The time to shutdown Azure Stack has been reduced to 20 minutes (30% reduction on average). 
 
 - Improved error handling for the disconnected Marketplace tool. If a download fails or partially succeeds when using **Export-AzSOfflineMarketplaceItem**, a detailed error message is displayed with more details about the error and mitigation steps, if any.
 
