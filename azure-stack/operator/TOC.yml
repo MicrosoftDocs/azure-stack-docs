@@ -423,16 +423,16 @@
         items:
         - name: Overview 
           href: azure-stack-diagnostic-log-collection-overview.md
-        - name: On-demand using the portal
-          href: azure-stack-configure-on-demand-log-collection.md
-        - name: On-demand using PEP
-          href: azure-stack-diagnostics.md
         - name: Automatic collection
           items:
           - name: Best practices
             href: azure-stack-best-practices-automatic-log-collection.md  
           - name: Configure automatic collection
             href: azure-stack-configure-automatic-log-collection.md
+        - name: On-demand collection
+          href: azure-stack-configure-on-demand-log-collection.md
+        - name: On-demand using PEP
+          href: azure-stack-diagnostics.md
     - name: Validation for Azure Stack  
       href: azure-stack-diagnostic-test.md
     - name: Known issues
