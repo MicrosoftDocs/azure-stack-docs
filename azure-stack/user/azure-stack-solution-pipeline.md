@@ -174,13 +174,9 @@ When creating endpoints for Azure Pipelines, you need to enter the tenant ID and
    
 1. In the left navigation, select **App registrations**, and then select your application.
    
-1. Copy and save the **Directory (tenant) ID** to use for creating endpoints.
+1. Copy and save the **Directory (tenant) ID** and the **Application (client) ID** to use for creating endpoints.
    
-   ![Copy the directory (tenant ID) and store it in your app code](./media/azure-stack-solution-pipeline/copy-tenant-id.png)
-   
-1. Copy and save the **Application (client) ID** to use for creating endpoints. 
-   
-   ![Copy the application (client) ID](./media/azure-stack-solution-pipeline/copy-app-id.png)
+   ![Copy the directory (tenant ID) and application (client) ID](./media/azure-stack-solution-pipeline/copy-app-id.png)
 
 ### Create a new application secret
 
@@ -414,11 +410,11 @@ Creating a release pipeline is the final step in your hybrid CI/CD configuration
 
 ## Release the app
 
-Now that you created the release pipeline, you can use it to create a release and deploy your app. 
+Now that you have a release pipeline, you can use it to create a release and deploy your app. 
 
 Because the continuous deployment trigger is set in your release pipeline, modifying the source code starts a new build and creates a new release automatically. However, you'll create and run this new release manually.
 
-To create a release:
+To create and deploy a release:
 
 1. On your new release pipeline page, select **Create release** at upper right. 
    
@@ -429,13 +425,15 @@ To create a release:
    1. Under **Artifacts**, make sure the correct artifacts are selected.
    1. Enter a **Release description**, and then select **Create**. 
    
-   A banner indicates that the new release is created. Select the release name link to see a release summary page showing details about the release, such as deployment status.
+   A banner indicates that the new release is created. You can select the release name link to see a release summary page showing details about the release, such as deployment status.
    
-1. To deploy the manual release, select the stage in the left pane, select **Deploy**, and then select **Deploy** in the stage dialog. 
+1. To deploy the manual release, select the **Azure** stage, select **Deploy**, and then select **Deploy** in the stage dialog. 
    
-1. Open the deployed production app in your browser. For example, for the Azure App Services website, open the URL `https://<your-app-name>.azurewebsites.net`.
+1. When the deployment completes successfully, open the deployed app in your browser. For example, for the Azure App Services website, open the URL `https://<your-app-name>.azurewebsites.net`.
 
-You can select the hyperlinks in the release stages to see more information about deployment status. 
+### Monitor and track releases
+
+You can select the hyperlinked status in a release stage to see more information about the deployment. 
 
 ![Release summary page](media/azure-stack-solution-pipeline/releasesummary.png)
 
@@ -443,17 +441,15 @@ It's easy for an administrator to track the overall progress of releases, and se
 
 ![Release summary page showing pending approval](media/azure-stack-solution-pipeline/releasepending.png)
 
-### Monitor and track releases
-
-You can monitor and track all your deployments. 
+You can see the release logs from all your deployments: 
 
 1. In your Azure DevOps project, Select **Pipelines** > **Releases** on the left, and then select a release. 
    
-1. On the release summary page, hover over or select any stage, and then select **Logs**. 
+1. On the release summary page, hover over or select a stage, and then select **Logs**. 
    
    In the release log, the left pane shows the status of each operation for each stage. During a deployment, the right pane shows the live log from the agent. After the deployment finishes, the entire log file appears in the right pane. 
    
-1. Select any step in the left pane to see the log file for a single step, such as **Pre-deployment approvals**. 
+1. Select any step in the left pane to see the log file for that step, such as **Pre-deployment approvals**. 
    
 1. To view approvals, select **View approval** in the right pane to see who approved or rejected the release, and other details. 
    
