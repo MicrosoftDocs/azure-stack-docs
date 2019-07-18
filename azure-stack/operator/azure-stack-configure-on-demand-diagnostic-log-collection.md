@@ -1,6 +1,6 @@
 ---
-title: Collect Azure Stack logs now | Microsoft Docs
-description: How to configure on-demand log collection in Azure Stack Help + Support.
+title: Collect Azure Stack diagnostic logs now | Microsoft Docs
+description: How to configure on-demand diagnostic log collection in Azure Stack Help + Support.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2019
+ms.date: 07/18/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/09/2019
+ms.lastreviewed: 07/18/2019
 
 ---
-# Collect Azure Stack logs now (on demand)
+# Collect Azure Stack diagnostic logs now (on demand)
 
 *Applies to: Azure Stack integrated systems*
 

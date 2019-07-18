@@ -19,7 +19,7 @@ ms.reviewer: prchint
 ms.lastreviewed: 07/18/2019
 
 ---
-# Configure automatic Azure Stack log collection
+# Configure automatic Azure Stack diagnostic log collection
 
 *Applies to: Azure Stack integrated systems*
 
@@ -28,7 +28,7 @@ If system health conditions need to be investigated, the logs can be uploaded au
 
 ## Create an Azure blob container SAS URL 
 
-Before you can configure automatic log collection, you'll need to get a shared access signature (SAS). A SAS lets you grant access to resources in your storage account without sharing your account keys. 
+Before you can configure automatic log collection, you'll need to get a shared access signature (SAS) for a blob container. A SAS lets you grant access to resources in your storage account without sharing your account keys. 
 You can save Azure Stack log files to a blob container in Azure, and then provide the SAS URL where CSS can collect the logs. 
 
 ### Prerequisites
@@ -37,7 +37,7 @@ You can use a new or existing blob container in Azure.
 To create a blob container in Azure, you need at least the [storage blob contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or the [specific permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). 
 Global administrators also have the necessary permission. 
 
-For best practices about choosing parameters for the automatic log collection storage account, see [Best practices for automatic Azure Stack log collection](azure-stack-best-practices-automatic-log-collection.md).
+For best practices about choosing parameters for the automatic log collection storage account, see [Best practices for automatic Azure Stack log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md).
 
 ### Create a blob storage account
  
@@ -70,13 +70,11 @@ For best practices about choosing parameters for the automatic log collection st
 
 <!--- add screenshot with Read, Write, and List. I did not have perms to do it--->
 
-Copy the URL and enter it when you [configure automatic log collection](azure-stack-configure-automatic-log-collection.md). 
+Copy the URL and enter it when you [configure automatic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md). 
 For more information about SAS URLs, see [Using shared access signatures (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1). 
 
 
 ## Steps to configure automatic log collection
-
-You'll need to provide the SAS URL for a blob container where the logs can be uploaded. You can use any blob container in Azure. If you need to create a new SAS URL, see [Create a blob container SAS URL](azure-stack-create-blob-container-shared-access-signature-url.md). 
 
 Follow these steps to add the SAS URL to the log collection UI: 
 

@@ -39,16 +39,7 @@ If you don't have an existing storage account, you can sign in to the Azure port
 ### Collecting logs from multiple Azure Stack systems
 
 
-As a best practice, only save diagnostic logs from the same Azure Stack stamp within a single storage account. 
-
-
-
-Save diagnostic logs from a different stamp to another storage account.
-
-
-
-
-
+As a best practice, only save diagnostic logs from the same Azure Stack stamp within a single storage account. Save diagnostic logs from a different stamp to another storage account.
 
 
 ### Retention policy
@@ -61,7 +52,7 @@ You can set the retention policy of the storage account between 1 and 365 days. 
 ## Bandwidth consumption
 
 
-If you are on a restricted...
+The average size of a diagnostic log is 4-8 MB. If you are on a constrained line, **Automatic log collection** may use more bandwidth than **Collect logs now**. You can use the following diagram to decide which way to collect diagnostic logs.
 
 <!---For follow up: what are best practices for expiration, why SAS tokens are not used (place in SAS URL topic), can I point multiple Azure Stack systems to the same storage account? Etc. etc. 
 

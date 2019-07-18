@@ -426,11 +426,11 @@
         - name: Automatic collection
           items:
           - name: Best practices
-            href: azure-stack-best-practices-automatic-log-collection.md  
+            href: azure-stack-best-practices-automatic-diagnostic-log-collection.md  
           - name: Configure automatic collection
-            href: azure-stack-configure-automatic-log-collection.md
+            href: azure-stack-configure-automatic-diagnostic-log-collection.md
         - name: On-demand collection
-          href: azure-stack-configure-on-demand-log-collection.md
+          href: azure-stack-configure-on-demand-diagnostic-log-collection.md
     - name: Validation for Azure Stack  
       href: azure-stack-diagnostic-test.md
     - name: Known issues
