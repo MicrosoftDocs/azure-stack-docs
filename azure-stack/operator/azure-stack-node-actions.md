@@ -147,7 +147,6 @@ For more information, see [Enable-AzsScaleUnitNode](https://docs.microsoft.com/p
 |  |  | [https://support.ts.fujitsu.com/IndexMySupport.asp](https://support.ts.fujitsu.com/IndexMySupport.asp) |
 | HPE | All | [http://www.hpe.com/info/MASupdates](http://www.hpe.com/info/MASupdates) |
 | Lenovo |  | [https://datacentersupport.lenovo.com/us/en/solutions/ht505122](https://datacentersupport.lenovo.com/us/en/solutions/ht505122) |
-| Wortmann | All |  |
 
 The **repair** action repairs a node. Use it only for either of the following scenarios:
  - Full node replacement (with or without new data disks)

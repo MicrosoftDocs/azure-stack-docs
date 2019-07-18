@@ -37,7 +37,6 @@ This article describes the general process to replace a physical computer (also 
 |  |  | [https://support.ts.fujitsu.com/IndexMySupport.asp](https://support.ts.fujitsu.com/IndexMySupport.asp) |
 | HPE | All | [http://www.hpe.com/info/MASupdates](http://www.hpe.com/info/MASupdates) |
 | Lenovo |  | [https://datacentersupport.lenovo.com/us/en/solutions/ht505122](https://datacentersupport.lenovo.com/us/en/solutions/ht505122) |
-| Wortmann | All |  |
 
 The following flow diagram shows the general FRU process to replace an entire scale unit node.
 
