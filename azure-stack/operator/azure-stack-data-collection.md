@@ -24,7 +24,7 @@ ms.lastreviewed: 06/10/2019
 
 To the extent Microsoft is a processor or subprocessor of personal data in connection with Azure Stack, Microsoft makes to all customers, effective May 25, 2018, the commitments in (a) in the "Processing of Personal Data; GDPR" provision of the "Data Protection Terms" section of the [Online Services Terms](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) and (b) in the European Union General Data Protection Regulation Terms in Attachment 4 of the [Online Services Terms](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31). 
 
-As Azure Stack resides in customer datacenters, Microsoft is the Data Controller solely of the data that is shared with Microsoft through [Diagnostics](azure-stack-diagnostics.md), [Telemetry](azure-stack-telemetry.md), and [Billing](azure-stack-usage-reporting.md).  
+As Azure Stack resides in customer datacenters, Microsoft is the Data Controller solely of the data that is shared with Microsoft through [Diagnostics](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep), [Telemetry](azure-stack-telemetry.md), and [Billing](azure-stack-usage-reporting.md).  
 
 ## Data access controls 
 Microsoft employees, who are assigned to investigate a specific support case, will be granted read-only access to the encrypted data. Microsoft employees also have access to tools used to delete the data if needed. All access to the customer data is audited and logged.  
@@ -44,7 +44,7 @@ For the automated data deletion action (90 days after case close), we do not pro
 For the on-demand data deletion action, Microsoft support engineer has access to the tool where they can initiate the data deletion on demand and they can provide confirmation on the phone with the customer when it's done.
 
 ## Diagnostic data
-As part of the support process, Azure Stack Operators can [share diagnostic logs](azure-stack-diagnostics.md) with Azure Stack support and engineering teams to facilitate troubleshooting.
+As part of the support process, Azure Stack Operators can [share diagnostic logs](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) with Azure Stack support and engineering teams to facilitate troubleshooting.
 
 Microsoft provides a tool and script for customers to collect and upload requested diagnostic log files. Once collected, the log files are transferred over an HTTPS protected encrypted connection to Microsoft. Because HTTPS provides the encryption over the wire, there is no password needed for the encryption in transit. After they are received, logs are encrypted and stored until they are automatically deleted 90 days after the support case is closed.
 
