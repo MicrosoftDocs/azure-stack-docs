@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/01/2019
+ms.date: 07/26/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 07/01/2019
+ms.lastreviewed: 07/26/2019
 ---
 
 # Azure Stack 1907 known issues
