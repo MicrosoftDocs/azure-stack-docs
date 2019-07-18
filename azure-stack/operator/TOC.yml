@@ -422,11 +422,17 @@
       - name: Diagnostic log collection
         items:
         - name: Overview 
-          href: azure-stack-diagnostic-log-collection-overview.md
+          href: azure-stack-log-collection-overview.md
+        - name: On-demand using the portal
+          href: azure-stack-configure-on-demand-log-collection.md
+        - name: On-demand using PEP
+          href: azure-stack-diagnostics.md
         - name: Automatic collection
           items:
-          - name: Best practices
-            href: azure-stack-best-practices-automatic-log-collection.md  
+          - name: Manage storage account
+            href: azure-stack-manage-storage-account-automatic-log-collection.md  
+          - name: Create SAS URL
+            href: azure-stack-create-blob-container-shared-access-signature-url.md
           - name: Configure automatic collection
             href: azure-stack-configure-automatic-log-collection.md
         - name: On-demand collection

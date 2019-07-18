@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2019
+ms.date: 07/26/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 07/18/2019
+ms.lastreviewed: 07/26/2019
 ---
 
 # Azure Stack 1907 update
@@ -34,20 +34,25 @@ The Azure Stack 1907 update build number is **1.1907.x.xx**.
 
 ### Update type
 
-The Azure Stack 1907 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. The expected time it takes for the 1907 update to complete is approximately 10 hours. Exact update runtimes will typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware configuration. Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack operators unless the update fails. This runtime approximation is specific to the 1907 update and should not be compared to other Azure Stack updates.
+The Azure Stack 1907 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. The expected time it takes for the 1907 update to complete is approximately 10 hours. 
+ - Exact update runtimes will typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware configuration. 
+ - Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack operators unless the update fails. 
+ - This runtime approximation is specific to the 1907 update and should not be compared to other Azure Stack updates.
 
 ## What's in this update
 
 <!-- The current theme (if any) of this release. -->
 
 <!-- What's new, also net new experiences and features. -->
-- General availability release of the Azure Stack diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Customer Support Services (CSS). The Azure Stack diagnostic log collection service provides a new user experience in the Azure Stack administrator portal that enables operators to set up the automatic upload of diagnostic logs to a storage blob when certain critical alerts are raised, or to perform the same operation on demand. For more information, see [Diagnostic log collection](azure-stack-log-collection-overview.md).
+- General availability release of the Azure Stack diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Customer Support Services (CSS). The Azure Stack diagnostic log collection service provides a new user experience in the Azure Stack administrator portal that enables operators to set up the automatic upload of diagnostic logs to a storage blob when certain critical alerts are raised, or to perform the same operation on demand. For more information, see the [Diagnostic log collection](azure-stack-log-collection-overview.md) article.
 
 - Added an internal secret rotation procedure to rotate internal SQL TLS certificates as required during a system update.
 
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
+
+- Azure Stack exposes two commands through the privileged endpoint for starting and stopping Azure Stack: **Start-AzureStack** and **Stop-AzureStack**. **Start-AzureStack** automatically runs as part of powering on an environment. **Stop-AzureStack** is the recommended way to cleanly shut down an environment. Previously, the startup process took about 40-45 minutes on a physical 4-node, and **Stop-AzureStack** about 30 minutes. In an effort to improve startup and shutdown processes, we have optimized our action plan such that the **Start-AzureStack** workflow time has been reduced to 20.5 minutes (52% reduced time on average) and **Stop-AzureStack** to 20 minutes (30% reduced time). 
 
 - Improved error handling for the disconnected Marketplace tool. If a download fails or partially succeeds when using **Export-AzSOfflineMarketplaceItem**, a detailed error message is displayed with more details about the error and mitigation steps, if any.
 
