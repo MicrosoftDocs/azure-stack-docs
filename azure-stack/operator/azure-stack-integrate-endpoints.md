@@ -85,6 +85,7 @@ Azure Stack supports only transparent proxy servers. In a deployment where a tra
 |LDAP GC|Active Directory Forest provided for Graph integration|TCP|3268|Public VIP - /27|
 |LDAP GC SSL|Active Directory Forest provided for Graph integration|TCP|3269|Public VIP - /27|
 |AD FS|AD FS metadata endpoint provided for AD FS integration|TCP|443|Public VIP - /27|
+|Diagnostic Log collection service|Azure Storage provided Blob SAS URL|HTTPS|443|Public VIP - /27|
 |     |     |     |     |     |
 
 Outbound URLs are load balanced using Azure traffic manager to provide the best possible connectivity based on geographical location. With load balanced URLs, Microsoft can update and change backend endpoints without impacting customers. Microsoft does not share the list of IP addresses for the load balanced URLs. You should use a device that supports filtering by URL rather than by IP.
