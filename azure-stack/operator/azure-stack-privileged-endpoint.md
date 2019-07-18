@@ -26,7 +26,7 @@ As an Azure Stack operator, you should use the administrator portal, PowerShell,
 
 You can use the PEP to perform tasks such as the following:
 
-- To perform low-level tasks, such as [collecting diagnostic logs](azure-stack-diagnostics.md#log-collection-tool).
+- To perform low-level tasks, such as [collecting diagnostic logs](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep#log-collection-tool).
 - To perform many post-deployment datacenter integration tasks for integrated systems, such as adding Domain Name System (DNS) forwarders after deployment, setting up Microsoft Graph integration, Active Directory Federation Services (AD FS) integration, certificate rotation, etc.
 - To work with Support to obtain temporary, high-level access for in-depth troubleshooting of an integrated system.
 
@@ -183,4 +183,4 @@ After the transcript log files are successfully transferred to the file share, t
 
 ## Next steps
 
-[Azure Stack diagnostic tools](azure-stack-diagnostics.md)
+[Azure Stack diagnostic tools](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep)
