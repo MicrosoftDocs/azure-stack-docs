@@ -51,6 +51,10 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Improved error handling for the disconnected Marketplace tool. If a download fails or partially succeeds when using **Export-AzSOfflineMarketplaceItem**, a detailed error message is displayed with more details about the error and mitigation steps, if any.
 
+<!-- https://icm.ad.msft.net/imp/v3/incidents/details/127669774/home -->
+- Improved virtual disk health check before shutting down a node to avoid unexpected virtual disk detaching.    
+
+
 #### Networking updates
 
 - Added a new outbound rule (HTTPS) to enable communication for Azure Stack diagnostic log collection service. For more information, see [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
