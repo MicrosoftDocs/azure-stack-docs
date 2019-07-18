@@ -51,9 +51,10 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Improved error handling for the disconnected Marketplace tool. If a download fails or partially succeeds when using **Export-AzSOfflineMarketplaceItem**, a detailed error message is displayed with more details about the error and mitigation steps, if any.
 
+- Improved the performance of managed disk creation from a large page blob/snapshot. Previously, it may trigger timeout when creating disk with large size.  
+
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/127669774/home -->
 - Improved virtual disk health check before shutting down a node to avoid unexpected virtual disk detaching.    
-
 
 #### Networking updates
 
