@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 07/18/2019
 ms.author: mabrigg
-ms.reviewer: ppacent
-ms.lastreviewed: 01/22/2019
+ms.reviewer: thoroet
+ms.lastreviewed: 07/18/2019
 
 ---
 
@@ -140,13 +140,13 @@ For more information, see [Enable-AzsScaleUnitNode](https://docs.microsoft.com/p
 
 | Hardware Partner | Region | URL |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Cisco | All | https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb<br><br>https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html |
-| Dell EMC | All | https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G<br><br>https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G |
-| Fujitsu | JAPAN | https://eservice.fujitsu.com/supportdesk-web/ |
-|  | EMEA | https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del |
-|  |  | https://support.ts.fujitsu.com/IndexMySupport.asp |
-| HPE | All | http://www.hpe.com/info/MASupdates |
-| Lenovo |  | https://datacentersupport.lenovo.com/us/en/solutions/ht505122 |
+| Cisco | All | [https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb)<br><br>[https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html) |
+| Dell EMC | All | [https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
+| Fujitsu | JAPAN | [https://eservice.fujitsu.com/supportdesk-web/](https://eservice.fujitsu.com/supportdesk-web/) |
+|  | EMEA | [https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del](https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del) |
+|  |  | [https://support.ts.fujitsu.com/IndexMySupport.asp](https://support.ts.fujitsu.com/IndexMySupport.asp) |
+| HPE | All | [http://www.hpe.com/info/MASupdates](http://www.hpe.com/info/MASupdates) |
+| Lenovo |  | [https://datacentersupport.lenovo.com/us/en/solutions/ht505122](https://datacentersupport.lenovo.com/us/en/solutions/ht505122) |
 | Wortmann | All |  |
 
 The **repair** action repairs a node. Use it only for either of the following scenarios:
