@@ -35,8 +35,8 @@ You can set the retention policy of the storage account between 1 and 365 days. 
 
 ### Collecting logs from multiple Azure Stack systems
 
-As a best practice, only save diagnostic logs from the same Azure Stack stamp within a storage account. 
-Save diagnostic logs from another stamp to a separate storage account.
+As a best practice, only save diagnostic logs from the same Azure Stack stamp within a single storage account. 
+Save diagnostic logs from a different stamp to another storage account.
 
 ### Retention policy
 
