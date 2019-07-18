@@ -34,7 +34,10 @@ The Azure Stack 1907 update build number is **1.1907.x.xx**.
 
 ### Update type
 
-The Azure Stack 1907 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. The expected time it takes for the 1907 update to complete is approximately 10 hours. Exact update runtimes will typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware configuration. Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack operators unless the update fails. This runtime approximation is specific to the 1907 update and should not be compared to other Azure Stack updates.
+The Azure Stack 1907 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. The expected time it takes for the 1907 update to complete is approximately 10 hours. 
+ - Exact update runtimes will typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware configuration. 
+ - Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack operators unless the update fails. 
+ - This runtime approximation is specific to the 1907 update and should not be compared to other Azure Stack updates.
 
 ## What's in this update
 
