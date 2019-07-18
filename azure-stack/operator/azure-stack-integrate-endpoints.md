@@ -6,10 +6,10 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 05/02/2019
+ms.date: 07/18/2019
 ms.author: mabrigg
 ms.reviewer: wamota
-ms.lastreviewed: 02/06/2019
+ms.lastreviewed: 07/18/2019
 ---
 
 # Azure Stack datacenter integration - Publish endpoints
@@ -71,11 +71,11 @@ Azure Stack supports only transparent proxy servers. In a deployment where a tra
 
 |Purpose|Destination URL|Protocol|Ports|Source Network|
 |---------|---------|---------|---------|---------|
-|Identity|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https:\//secure.aadcdn.microsoftonline-p.com<br>office.com|HTTP<br>HTTPS|80<br>443|Public VIP - /27<br>Public infrastructure Network|
+|Identity|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https:\//secure.aadcdn.microsoftonline-p.com<br>www.office.com|HTTP<br>HTTPS|80<br>443|Public VIP - /27<br>Public infrastructure Network|
 |Marketplace syndication|https:\//management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|Public VIP - /27|
 |Patch & Update|https://&#42;.azureedge.net<br>https:\//aka.ms/azurestackautomaticupdate|HTTPS|443|Public VIP - /27|
 |Registration|https:\//management.azure.com|HTTPS|443|Public VIP - /27|
-|Usage|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net |HTTPS|443|Public VIP - /27|
+|Usage|https://*.trafficmanager.net |HTTPS|443|Public VIP - /27|
 |Windows Defender|\*.wdcp.microsoft.com<br>\*.wdcpalt.microsoft.com<br>\*.wd.microsoft.com<br>\*.update.microsoft.com<br>\*.download.microsoft.com<br>https:\//www.microsoft.com/pkiops/crl<br>https:\//www.microsoft.com/pkiops/certs<br>https:\//crl.microsoft.com/pki/crl/products<br>https:\//www.microsoft.com/pki/certs<br>https:\//secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Public VIP - /27<br>Public infrastructure Network|
 |NTP|(IP of NTP server provided for deployment)|UDP|123|Public VIP - /27|
 |DNS|(IP of DNS server provided for deployment)|TCP<br>UDP|53|Public VIP - /27|
