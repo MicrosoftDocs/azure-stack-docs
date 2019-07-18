@@ -72,6 +72,9 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/129536438/home -->
 - Fixed an issue with backups failing with a **PartialSucceeded** error message, due to timeouts during backup of storage service metadata.  
 
+<!-- https://icm.ad.msft.net/imp/v3/incidents/details/127772311/home -->
+- Fixed an issue that update failure due to dll file locked by WMI Provider Host. 
+
 ## Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates-1907.md).
