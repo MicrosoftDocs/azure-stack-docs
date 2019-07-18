@@ -39,7 +39,7 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
-- Remediation: These subscriptions will be suspended starting with 1906 and eventually deleted. If you have resources running on these two subscriptions, recreate them in user subscriptions prior to 1906.
+- Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
 - Occurrence: Common
 
 ### Subscription resources
@@ -98,6 +98,13 @@ This article lists known issues in the 1904 release of Azure Stack. The list is 
 - Remediation: Upload the blob using the SAS option.
 - Occurrence: Common
 
+### Template
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the template deployment UI does not populate parameters for the template names beginning with "_" (the underscore character).
+- Remediation: Remove the "_" (underscore character) from the template name.
+- Occurrence: Common
+
 ## Networking
 
 ### Load balancer
@@ -146,7 +153,7 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 #### CentOS
 
 - Applicable: This issue applies to all supported releases.
-- Cause: The virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack.
+- Cause: The virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack Marketplace which will cause deployment failures calling out that the image is not found.
 - Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
 - Occurrence: Common
 
@@ -204,6 +211,11 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 - Applicable: This issue applies to the 1904 and 1905 releases.
 - Cause: The instance view blade of a scale set located on the Azure Stack portal, in **Dashboard** > **Virtual machine scale sets** > **AnyScaleSet - Instances** > **AnyScaleSetInstance** fails to load.
 - Remediation: There is currently no remediation and we are working on a fix. Until then, please use the CLI cmdlet `az vmss get-instance-view` to get the instance view of a virtual machine scale set.
+
+### User image service
+- Applicable: This issue applies to all supported releases.
+- Cause: Failed user image creation will put the user image service into a bad state. User image creation and deletion operations will start to fail. User image deletion may fail with error: "Error: An internal disk management error occurred."
+- Remediation: No mitigation. Open a support ticket with Microsoft.
 
 ## Storage
 

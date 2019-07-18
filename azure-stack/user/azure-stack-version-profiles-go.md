@@ -29,7 +29,7 @@ A profile is a combination of different resource types with different versions f
 - Stability for your application by locking to specific API versions.
 - Compatibility for your application with Azure Stack and regional Azure datacenters.
 
-In the Go SDK, profiles are available under the profiles path, with their version in the **YYYY-MM-DD** format. Right now, the latest Azure Stack API profile version is **2019-03-01**. To import a given service from a profile, import its corresponding module from the profile. For example, to import **Compute** service from **2019-03-01** profile, use the following code:
+In the Go SDK, profiles are available under the profiles path, with their version in the **YYYY-MM-DD** format. Right now, the latest Azure Stack API profile version is **2019-03-01** for stamp versions 1904 or later. To import a given service from a profile, import its corresponding module from the profile. For example, to import **Compute** service from **2019-03-01** profile, use the following code:
 
 ```go
 import "github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/compute/mgmt/compute"
@@ -83,7 +83,7 @@ To run a sample of Go code on Azure Stack, follow these steps:
 
 3. If not available, create a subscription and save the subscription ID to be used later. For information about creating a subscription, see [Create subscriptions to offers in Azure Stack](../operator/azure-stack-subscribe-plan-provision-vm.md).
 
-4. Create a service principal with **Subscription** scope and **Owner** role. Save the service principal ID and secret. For information about creating a service principal for Azure Stack, see [Create service principal](azure-stack-create-service-principals.md). Your Azure Stack environment is now set up.
+4. Create a service principal that uses a client secret, with **Subscription** scope and **Owner** role. Save the service principal ID and secret. For information about creating a service principal for Azure Stack, see [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md). Your Azure Stack environment is now set up.
 
 5. Import a service module from the Go SDK profile in your code. The current version of Azure Stack profile is **2019-03-01**. For example, to import network module from **2019-03-01** profile type, use the following code:
 
@@ -129,7 +129,7 @@ To get the **Authorizer** property from Azure Active Directory using the Go SDK,
 
 The Authorizer must be set as the authorizer for the resource client. There are different ways to get authorizer tokens on Azure Stack by using client credentials:
 
-1. If a service principal with owner role on the subscription is available, skip this step. Otherwise create a [service principal](azure-stack-create-service-principals.md) and assign it an "owner" role [scoped to your subscription](azure-stack-create-service-principals.md#assign-the-service-principal-to-a-role). Save the service principal application ID and secret.
+1. If a service principal with owner role on the subscription is available, skip this step. Otherwise see [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md) for instructions on creating a service principal that uses a client secret, and assigning it an "owner" role scoped to your subscription. Be sure to capture the service principal application ID and secret.
 
 2. Import the **adal** package from Go-AutoRest in your code.
 

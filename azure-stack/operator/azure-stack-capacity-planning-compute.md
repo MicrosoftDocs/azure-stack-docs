@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2019
+ms.date: 07/16/2019
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 06/13/2019
@@ -41,12 +41,27 @@ When the host comes back online, VMs will be rebalanced to maintain high availab
 
 Virtual machine scale sets use availability sets on the back end and make sure each virtual machine scale set instance is placed in a different fault domain. 
 This means they use separate Azure Stack infrastructure nodes. 
-For example, in a 4 node Azure Stack system, there may be a situation where a virtual machine scale set of 3 instances will fail at creation due to the lack of the 4-node capacity to place 3 virtual machine scale set instances on 3 separate Azure Stack nodes. 
+For example, in a four node Azure Stack system, there may be a situation where a virtual machine scale set of three instances will fail at creation due to the lack of the 4-node capacity to place three virtual machine scale set instances on three separate Azure Stack nodes. 
 In addition, Azure Stack nodes can be filled up at varying levels prior to trying placement. 
 
 Azure Stack doesn't over-commit memory. However, an over-commit of the number of physical cores is allowed. 
+
 Since placement algorithms don't look at the existing virtual to physical core over-provisioning ratio as a factor, each host could have a different ratio. 
-As Microsoft, we do not provide guidance on the physical-to-virtual core ratio because of the variation in workloads and service level requirements. 
+As Microsoft, we don't provide guidance on the physical-to-virtual core ratio because of the variation in workloads and service level requirements. 
+
+## Consideration for total number of VMs 
+
+There is a new consideration for accurately planning Azure Stack capacity. With the 1901 update (and every update going forward), there is now a limit on the total number of virtual machines that can be created. This limit is intended to be temporary to avoid solution instability. The source of the stability issue, at higher numbers of VMs, is being addressed but a specific timeline for remediation has not yet been determined. There is now a per server limit of 60 VMs with a total solution limit of 700. For example, an 8 server Azure Stack VM limit would be 480 (8 * 60). For a 12 to 16 server Azure Stack solution, the limit would be 700. This limit has been created keeping all the compute capacity considerations in mind, such as the resiliency reserve and the CPU virtual to physical ratio that an operator would like to maintain on the stamp. For more information, see the new release of the capacity planner. 
+
+In the event that the VM scale limit has been reached, the following error codes would be returned as a result: VMsPerScaleUnitLimitExceeded, VMsPerScaleUnitNodeLimitExceeded.
+
+## Considerations for deallocation
+
+When a VM is in the _deallocated_ state, memory resources aren't being used. This allows others VMs to be placed in the system. 
+
+If the deallocated VM is then started again, the memory usage or allocation is treated like a new VM placed into the system, and available memory is consumed. 
+
+If there is no available memory, then the VM will not start.
 
 ## Azure Stack memory 
 
@@ -103,15 +118,15 @@ Changing the largest VM on the Azure Stack fabric will result in an increase in 
 
 **A**: The capacity blade refreshes every 15 minutes, so please take that into consideration.
 
-**Q**: The number of deployed VMs on my Azure Stack has not changed, but my capacity is fluctuating. Why?
+**Q**: The number of deployed VMs on my Azure Stack hasn't changed, but my capacity is fluctuating. Why?
 
-**A**: The available memory for VM placement has multiple dependencies, one of which is the host OS reserve. This value is dependent on the memory used by the different Hyper-V processes running on the host which is not a constant value.
+**A**: The available memory for VM placement has multiple dependencies, one of which is the host OS reserve. This value is dependent on the memory used by the different Hyper-V processes running on the host, which isn't a constant value.
 
 **Q**: What state do Tenant VMs have to be in to consume memory?
 
 v: In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs that are in "Creating", "Failed" or VMs shut down from within the g
 
-**Q**: I have a 4 host Azure Stack. My tenant has 3 VMs that consume 56 GB RAM (D5_v2) each. One of the VMs is resized to 112 GB RAM (D14_v2), and available memory reporting on dashboard resulted in a spike of 168 GB usage on the capacity blade. Subsequent resizing of the other two D5_v2 VMs to D14_v2, resulted in only 56GB of RAM increase each. Why is this so?
+**Q**: I have a four host Azure Stack. My tenant has 3 VMs that consume 56 GB RAM (D5_v2) each. One of the VMs is resized to 112 GB RAM (D14_v2), and available memory reporting on dashboard resulted in a spike of 168 GB usage on the capacity blade. Subsequent resizing of the other two D5_v2 VMs to D14_v2, resulted in only 56GB of RAM increase each. Why is this so?
 
 **A**: The available memory is a function of the resiliency reserve maintained by Azure Stack. The Resiliency reserve is a function of the largest VM size on the Azure Stack stamp. At first, the largest VM on the stamp was 56 GB memory. When the VM was resized, the largest VM on the stamp became 112 GB memory which not only increased the memory used by that tenant VM but also  increased the Resiliency reserve. This resulted in an increase of 56 GB (56 GB to 112 GB tenant VM memory increase) + 112 GB resiliency reserve memory increase. When subsequent VMs were resized, the largest VM size remained as the 112 GB VM and therefore there was no resultant resiliency reserve increase. The increase in memory consumption was only the tenant VM memory increase (56 GB). 
 
