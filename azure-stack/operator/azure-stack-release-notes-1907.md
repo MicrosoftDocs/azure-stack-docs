@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2019
+ms.date: 07/18/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 07/17/2019
+ms.lastreviewed: 07/18/2019
 ---
 
 # Azure Stack 1907 update
@@ -51,10 +51,10 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Improved error handling for the disconnected Marketplace tool. If a download fails or partially succeeds when using **Export-AzSOfflineMarketplaceItem**, a detailed error message is displayed with more details about the error and mitigation steps, if any.
 
-- Improved the performance of managed disk creation from a large page blob/snapshot. Previously, it may trigger timeout when creating disk with large size.  
+- Improved the performance of managed disk creation from a large page blob/snapshot. Previously, it triggered a timeout when creating a large disk.  
 
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/127669774/home -->
-- Improved virtual disk health check before shutting down a node to avoid unexpected virtual disk detaching.    
+- Improved virtual disk health check before shutting down a node to avoid unexpected virtual disk detaching.
 
 #### Networking updates
 
@@ -62,8 +62,9 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 ### Changes
 
-- Infrastructure backup service will delete partially uploaded backups if the external storage location runs out of capacity. 
-- Infrastructure backups no longer include a backup of domain services data. This only applies to systems using Azure Active Directory as its identity provider.   
+- The infrastructure backup service will delete partially uploaded backups if the external storage location runs out of capacity.
+
+- Infrastructure backups no longer include a backup of domain services data. This only applies to systems using Azure Active Directory as their identity provider.
 
 ### Fixes
 
@@ -74,7 +75,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 - Fixed an issue with backups failing with a **PartialSucceeded** error message, due to timeouts during backup of storage service metadata.  
 
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/127772311/home -->
-- Fixed an issue that update failure due to dll file locked by WMI Provider Host. 
+- Fixed an issue in which the update fails due to a DLL file locked by the WMI provider host.
 
 ## Security updates
 
