@@ -1,6 +1,6 @@
 ---
-title: Best practices for automatic Azure Stack diagnostic log collection | Microsoft Docs
-description: Best practices for automatic diagnostic log collection in Azure Stack Help + Support
+title: Manage a storage account for automatic Azure Stack log collection | Microsoft Docs
+description: How to manage the storage account for automatic log collection in Azure Stack Help + Support
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -19,13 +19,9 @@ ms.reviewer: prchint
 ms.lastreviewed: 07/09/2019
 
 ---
-# Best practices for automatic Azure Stack diagnostic log collection 
+# Manage a storage account for automatic Azure Stack log collection 
 
 *Applies to: Azure Stack integrated systems*
-
-This topic covers best practices for managing automatic diagnostic log collection for Azure Stack. 
-
-## Best practices for managing the storage account 
 
 Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors such as data redundancy. 
 Automatic Azure Stack log collection requires only the least costly blob storage option.  
@@ -33,23 +29,7 @@ If you don't have an existing storage account, you can sign in to the Azure port
 
 You can set the retention policy of the storage account between 1 and 365 days. For more information about setting the retention policy, see [storage account diagnostic settings](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#diagnostic-settings). 
 
-### Collecting logs from multiple Azure Stack systems
-
-As a best practice, only save diagnostic logs from the same Azure Stack stamp within a single storage account. 
-Save diagnostic logs from a different stamp to another storage account.
-
-### Retention policy
-
-
-
-## Bandwidth consumption
-
-If you are on a restricted... 
-
-
-
-
-<!---For follow up: what are best practices for expiration, why SAS tokens are not used (place in SAS URL topic), can I point multiple Azure Stack systems to the same storage account? Etc. etc. 
+<!---For follow up: what are best practices for expiration, why SAS tokens are not used, can I point multiple Azure Stack systems to the same storage account? Etc. etc. 
 
 need section on "setup log collection"
 
