@@ -422,7 +422,7 @@
       - name: Diagnostic log collection
         items:
         - name: Overview 
-          href: azure-stack-log-collection-overview.md
+          href: azure-stack-diagnostic-log-collection-overview.md
         - name: Automatic collection
           items:
           - name: Best practices
