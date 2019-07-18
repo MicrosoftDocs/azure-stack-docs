@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 07/18/2019
 ms.author: justinha
 ms.reviewer: hectorl
-ms.lastreviewed: 11/05/2018
+ms.lastreviewed: 07/18/2019
 
 ---
 # Recover from catastrophic data loss
@@ -60,7 +60,7 @@ Azure Stack supports a type of deployment called cloud recovery mode. This mode 
 
  - Deployment inputs
  - Internal identity service data (ADFS deployments )
- - Federated identify configuration (ADFS deployments)
+ - Federated identity configuration (ADFS deployments)
  - Root certificates used by internal certificate authority
  - Azure Resource Manager configuration user data, such as subscriptions, plans, offers, and quotas for storage, network, and compute resources
  - KeyVault secrets and vaults
