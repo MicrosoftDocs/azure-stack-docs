@@ -431,8 +431,6 @@
           items:
           - name: Best practices
             href: azure-stack-best-practices-automatic-log-collection.md  
-          - name: Create SAS URL
-            href: azure-stack-create-blob-container-shared-access-signature-url.md
           - name: Configure automatic collection
             href: azure-stack-configure-automatic-log-collection.md
     - name: Troubleshoot  
