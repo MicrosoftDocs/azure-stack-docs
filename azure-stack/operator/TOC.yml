@@ -433,14 +433,10 @@
             href: azure-stack-best-practices-automatic-log-collection.md  
           - name: Configure automatic collection
             href: azure-stack-configure-automatic-log-collection.md
-    - name: Troubleshoot  
-      items:
-      - name: Known issues
-        href: azure-stack-troubleshooting.md
-      - name: Diagnostics in Azure Stack
-        href: azure-stack-diagnostics.md
-      - name: Validation for Azure Stack
-        href: azure-stack-diagnostic-test.md  
+    - name: Validation for Azure Stack  
+      href: azure-stack-diagnostic-test.md
+    - name: Known issues
+      href: azure-stack-troubleshooting.md
 - name: Reference
   items:
   - name: Azure Stack PowerShell
