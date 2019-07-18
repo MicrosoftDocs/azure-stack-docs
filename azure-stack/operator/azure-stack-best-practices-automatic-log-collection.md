@@ -33,14 +33,20 @@ If you don't have an existing storage account, you can sign in to the Azure port
 
 You can set the retention policy of the storage account between 1 and 365 days. For more information about setting the retention policy, see [storage account diagnostic settings](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#diagnostic-settings). 
 
-## Collecting logs from multiple Azure Stack systems
+### Collecting logs from multiple Azure Stack systems
 
 As a best practice, only save diagnostic logs from the same Azure Stack stamp within a storage account. 
-If you need to collect diagnostic logs from another stamp, save them to a separate storage account.
+Save diagnostic logs from another stamp to a separate storage account.
+
+### Retention policy
+
+
 
 ## Bandwidth consumption
 
-If you are on a restricted 
+If you are on a restricted... 
+
+
 
 
 <!---For follow up: what are best practices for expiration, why SAS tokens are not used (place in SAS URL topic), can I point multiple Azure Stack systems to the same storage account? Etc. etc. 
