@@ -52,7 +52,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
-- Improvements to **Start-AzureStack** and **Stop-AzureStack** operator actions. The time to start Azure Stack has been reduced to 20.5 minutes (52% reduction on average). The time to shutdown Azure Stack has been reduced to 20 minutes (30% reduction on average). 
+- Improvements to **Start-AzureStack** and **Stop-AzureStack** operator actions. The time to start Azure Stack has been reduced to 20.5 minutes (52% reduction on average). The time to shut down Azure Stack has been reduced to 20 minutes (30% reduction on average). 
 
 - Improved error handling for the disconnected Marketplace tool. If a download fails or partially succeeds when using **Export-AzSOfflineMarketplaceItem**, a detailed error message is displayed with more details about the error and mitigation steps, if any.
 
