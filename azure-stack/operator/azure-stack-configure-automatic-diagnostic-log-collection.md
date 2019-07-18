@@ -115,8 +115,7 @@ After log collection, the next alert scanning is suppressed until 30 mins.
 ## SAS URL alerts
 
 There are two types of alerts related to the SAS URL used for automatic log collection. 
-Each alert can be resolved by generating a new SAS URL. 
-For more information, see [Create a blob container SAS URL](azure-stack-create-blob-container-shared-access-signature-url.md).
+Each alert can be resolved by [generating a new SAS URL](#create-an-azure-blob-container-sas-url). 
 
 - Expiration date approaching
 

@@ -25,7 +25,7 @@ ms.lastreviewed: 07/16/2019
 
 Azure Stack is a large collection of components working together and interacting with each other. All these components generate their own unique logs. This can make diagnosing issues a challenging task, especially for errors coming from multiple, interacting Azure Stack components.
 
-Our diagnostics tools help make log collection easy and efficient. For example, operators can use [the privileged endpoint (PEP)](azure-stack-configure-on-demand-log-collection.md#using-pep) to collect logs from all the components in an Azure Stack environment, and [the Azure Stack validation tool (Test-AzureStack)](azure-stack-diagnostic-test.md) can run a series of tests on your system to identify failures. 
+Our diagnostics tools help make log collection easy and efficient. For example, operators can use [the privileged endpoint (PEP)](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) to collect logs from all the components in an Azure Stack environment, and [the Azure Stack validation tool (Test-AzureStack)](azure-stack-diagnostic-test.md) can run a series of tests on your system to identify failures. 
 
 Beginning with the 1907 release, Azure Stack adds a simpler way to collect logs by using the **Diagnostic log collection** in Help and Support. 
 **Diagnostic log collection** is part of an ongoing investment to make it easier for Azure Stack operators to troubleshoot problems. 
@@ -42,7 +42,7 @@ The logs can be stored in a blob container in Azure and access can be restricted
 **Diagnostic log collection** has a simple user interface and doesn't require any PowerShell experience. 
 Logs are reliably collected even when some of the infrastructure services are down.
 If your policy allows sharing diagnostic logs with CSS, **Diagnostic log collection** is the easiest collection method beginning with the 1907 release. 
-You should only need to [use PEP](azure-stack-configure-on-demand-log-collection.md#using-pep) if **Diagnostic log collection** in Help and Support is unavailable.
+You should only need to [use PEP](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) if **Diagnostic log collection** in Help and Support is unavailable.
 
 ## Automatic diagnostic log collection 
 
