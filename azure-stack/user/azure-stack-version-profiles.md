@@ -68,7 +68,7 @@ API profiles work with tools that use Azure Resource Manager, such as PowerShell
 
 For example, if you use PowerShell to create a storage account using the **Microsoft.Storage** resource provider, which supports **api-version** 2016-03-30 and a VM using the **Microsoft.Compute** resource provider with **api-version** 2015-12-01, you must look up which PowerShell module supports 2016-03-30 for Storage, and which module supports 2015-02-01 for Compute, and then install them. Instead, you can use a profile. Use the cmdlet `Install-Profile <profilename>`, and PowerShell loads the right version of the modules.
 
-Similarly, when using the Python SDK to build a Python-based app, you can specify the profile. The SDK loads the right modules for the resource providers that you have specified in your script.
+Similarly, when using the Python SDK to build a Python-based app, you can specify the profile. The SDK loads the right modules for the resource providers that you've specified in your script.
 
 As a developer, you can focus on writing your solution. Instead of researching which API versions, resource provider, and cloud work together, you can use a profile and know that your code works across all clouds that support that profile.
 
