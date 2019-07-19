@@ -150,9 +150,9 @@ To import the PEP session on your local machine, do the following steps:
      - **Password**: Enter the same password that was provided during installation for the AzureStackAdmin domain administrator account.
 
 3. Import the PEP session into your local machine
-	```powershell 
+	 ```powershell 
     	Import-PSSession $session
-    ```
+   ```
 4. Now, you can use tab-completion and do scripting as usual on your local PowerShell session with all the functions and cmdlets of the PEP, without decreasing the security posture of Azure Stack. Enjoy!
 
 
@@ -163,16 +163,16 @@ To import the PEP session on your local machine, do the following steps:
 To close the endpoint session:
 
 1. Create an external file share that is accessible by the PEP. In a development kit environment, you can just create a file share on the development kit host.
-2. Run the cmdlet 
-	```powershell
-	Close-PrivilegedEndpoint -TranscriptsPathDestination "\\fileshareIP\SharedFolder" -Credential Get-Credential
-	```
-where
+2. Run the following cmdlet: 
+	 ```powershell
+	 Close-PrivilegedEndpoint -TranscriptsPathDestination "\\fileshareIP\SharedFolder" -Credential Get-Credential
+	 ```
+   which uses thne parameters in the following table.
 
-| Parameter | Description | Type | Required |
-|---------|---------|---------|---------|
-| *TranscriptsPathDestination* | path to the external file share defined as "fileshareIP\sharefoldername" | String | yes|
-| *Credential* | credentials to access the file share | SecureString | 	yes |
+   | Parameter | Description | Type | Required |
+   |---------|---------|---------|---------|
+   | *TranscriptsPathDestination* | path to the external file share defined as "fileshareIP\sharefoldername" | String | yes|
+   | *Credential* | credentials to access the file share | SecureString | 	yes |
 
 
 After the transcript log files are successfully transferred to the file share, they're automatically deleted from the PEP. 
