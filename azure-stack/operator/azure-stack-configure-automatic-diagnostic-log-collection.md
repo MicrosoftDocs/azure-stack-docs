@@ -41,7 +41,9 @@ For best practices about choosing parameters for the automatic log collection st
 
 ### Create a blob storage account
  
-1. Sign in to the Azure portal and create a blob container with these settings:
+1. Sign in to the [Azure portal](https://portal.azure.com).
+1. Click **Storage accounts** > **Add**. 
+1. Create a blob container with these settings:
    - **Subscription**: Choose your Azure subscription.
    - **Resource group**: Specify a resource group.
    - **Storage account name**: Specify a unique storage account name.
@@ -61,7 +63,7 @@ For best practices about choosing parameters for the automatic log collection st
 
 ## Create a SAS URL
 
-1. Right-click the new container, click **Get Shared Access Signature**, and choose these properties:
+1. Right-click the container, click **Get Shared Access Signature**, and choose these properties:
    - Start time: You can optionally move the start time back. 
    - Expiry time: Must be at least 7 days but you can increase the number of days to avoid related alerts about upcoming expiration.
    - Time zone: UTC
