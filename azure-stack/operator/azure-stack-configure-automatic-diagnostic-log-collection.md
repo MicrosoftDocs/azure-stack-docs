@@ -82,7 +82,7 @@ Follow these steps to add the SAS URL to the log collection UI:
 1. Open **Help and support Overview**.
 1. Click **Automatic collection settings**.
 
-   ![Screenshot shows where to enable log collection in Help and support](media/azure-stack-automatic-log-collection/azure-stack-help-overview-enable-option.png)
+   ![Screenshot shows where to enable log collection in Help and support](media/azure-stack-automatic-log-collection/azure-stack-automatic-log-collection.png)
 
 1. Set Automatic log collection to **Enabled**.
 1. Enter the shared access signature (SAS) URL of the storage account blob container.
@@ -111,20 +111,3 @@ Automatic log collection can be disabled and re-enabled anytime. The SAS URL con
 
 Scanning for automatic log collection occurs within a sliding window. If there are one or more alerts, a single log collection is queued for that window. 
 After log collection, the next alert scanning is suppressed until 30 mins. 
-
-## SAS URL alerts
-
-There are two types of alerts related to the SAS URL used for automatic log collection. 
-Each alert can be resolved by [generating a new SAS URL](#create-an-azure-blob-container-sas-url). 
-
-- Expiration date approaching
-
-  ![Expiration date approaching](media/azure-stack-automatic-log-collection/alert-expiration-date.png)
-
-- SAS URL has expired. 
-  If you renew the SAS URL, you'll need to re-enter it in the automatic log collection settings. 
-  If you rotate storage account keys, the previously provided SAS URL will no longer work. Check the log collection history to see why upload failed.
-
-  ![SAS URL expired](media/azure-stack-automatic-log-collection/alert-url-expired.png)
-
-  
