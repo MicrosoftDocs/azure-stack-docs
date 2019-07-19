@@ -167,7 +167,7 @@ To close the endpoint session:
 	 ```powershell
 	 Close-PrivilegedEndpoint -TranscriptsPathDestination "\\fileshareIP\SharedFolder" -Credential Get-Credential
 	 ```
-   which uses thne parameters in the following table.
+   which uses the parameters in the following table.
 
    | Parameter | Description | Type | Required |
    |---------|---------|---------|---------|
