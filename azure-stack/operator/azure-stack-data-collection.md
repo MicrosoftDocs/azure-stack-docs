@@ -30,10 +30,10 @@ As Azure Stack resides in customer datacenters, Microsoft is the Data Controller
 Microsoft employees, who are assigned to investigate a specific support case, will be granted read-only access to the encrypted data. Microsoft employees also have access to tools used to delete the data if needed. All access to the customer data is audited and logged.  
 
 Data access controls:
-1.	Data is only retained for a maximum of 90 days after case close.
-2.	The customer always has the choice to have the data removed at any time in that 90-day period.
-3.	Microsoft employees are given access to the data on a case-by-case basis and only as needed to help resolve the support issue. 
-4.	In the event where Microsoft must share customer data with OEM partners, customer consent is mandatory.  
+- Data is only retained for a maximum of 90 days after case close.
+- The customer always has the choice to have the data removed at any time in that 90-day period.
+- Microsoft employees are given access to the data on a case-by-case basis and only as needed to help resolve the support issue. 
+- In the event where Microsoft must share customer data with OEM partners, customer consent is mandatory.  
 
 ### What Data Subject Requests (DSR) controls do customers have?
 As mentioned earlier, Microsoft supports on-demand data deletion per customer request. Customers can request that our support engineer delete all their logs for a given case at any time of the customer's choosing, before the data is permanently erased.  
