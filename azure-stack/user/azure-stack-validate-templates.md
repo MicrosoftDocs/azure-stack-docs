@@ -1,5 +1,5 @@
 ---
-title: Use the template validation tool for Azure Stack | Microsoft Docs
+title: Use the template validation tool in Azure Stack | Microsoft Docs
 description: Check templates for deployment to Azure Stack with a template validation tool.
 services: azure-stack
 documentationcenter: ''
@@ -20,7 +20,7 @@ ms.lastreviewed: 12/27/2018
 
 ---
 
-# Use the template validation tool for Azure Stack
+# Use the template validation tool in Azure Stack
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 Use the template validation tool to check whether your Azure Resource Manager [templates](azure-stack-arm-templates.md) are ready to deploy to Azure Stack. The template validation tool is available as a part of Azure Stack tools. Download the Azure Stack tools by using the steps described in [Download tools from GitHub](../operator/azure-stack-powershell-download.md).

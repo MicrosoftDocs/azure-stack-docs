@@ -1,5 +1,5 @@
 ---
-title: Use data transfer tools for Azure Stack Storage | Microsoft Docs
+title: Use data transfer tools in Azure Stack Storage | Microsoft Docs
 description: Learn about Azure Stack Storage data transfer tools.
 services: azure-stack
 documentationcenter: ''
@@ -18,7 +18,7 @@ ms.lastreviewed: 12/03/2018
 
 
 ---
-# Use data transfer tools for Azure Stack Storage
+# Use data transfer tools in Azure Stack Storage
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 

@@ -1,6 +1,6 @@
 ---
-title: Understanding iDNS in Azure Stack | Microsoft Docs
-description: Understanding iDNS features and capabilities in Azure Stack.
+title: Use iDNS in Azure Stack | Microsoft Docs
+description: Learn how to use iDNS features and capabilities in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,11 +18,11 @@ ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
 
 ---
-# Understanding iDNS in Azure Stack
+# Use iDNS in Azure Stack 
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-iDNS is an Azure Stack networking feature that enables you to resolve external DNS names (for example, https:\//www.bing.com). It also allows you to register internal virtual network names. By doing so, you can resolve virtual machines (VMs) on the same virtual network by name rather than IP address. This approach removes the need to provide custom DNS server entries. For more information about DNS, see the [Azure DNS Overview](https://docs.microsoft.com/azure/dns/dns-overview).
+iDNS is an Azure Stack networking feature that enables you to resolve external DNS names (for example, https:\//www.bing.com.) It also allows you to register internal virtual network names. By doing so, you can resolve virtual machines (VMs) on the same virtual network by name rather than IP address. This approach removes the need to provide custom DNS server entries. For more information about DNS, see the [Azure DNS Overview](https://docs.microsoft.com/azure/dns/dns-overview).
 
 ## What does iDNS do?
 
@@ -30,7 +30,7 @@ With iDNS in Azure Stack, you get the following capabilities, without having to 
 
 - Shared DNS name resolution services for tenant workloads.
 - Authoritative DNS service for name resolution and DNS registration within the tenant virtual network.
-- Recursive DNS service for resolution of internet names from tenant VMs. Tenants no longer need to specify custom DNS entries to resolve internet names (for example, www.bing.com).
+- Recursive DNS service for resolution of internet names from tenant VMs. Tenants no longer need to specify custom DNS entries to resolve internet names (for example, www.bing.com.)
 
 You can still bring your own DNS and use custom DNS servers. However, by using iDNS, you can resolve internet DNS names and connect to other VMs in the same virtual network without needing to create custom DNS entries.
 
@@ -47,8 +47,8 @@ As the previous image shows, Azure will create an "A" record in DNS for the DNS 
 Azure Stack only supports iDNS for internal name
 registration, so it can't do the following things:
 
-- Create a DNS record under an existing hosted DNS zone (for example, local.azurestack.external).
-- Create a DNS zone (such as Contoso.com).
+- Create a DNS record under an existing hosted DNS zone (for example, local.azurestack.external.)
+- Create a DNS zone (such as Contoso.com.)
 - Create a record under your own custom DNS zone.
 - Support the purchase of domain names.
 
