@@ -52,6 +52,8 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
+- The Azure Stack update blade now displays a "Last Step Completed" time for active updates. This can be seen by going to the update blade and clicking on a running update. "Last Step Completed" is then available in the "Update run details" section.
+
 - Improvements to **Start-AzureStack** and **Stop-AzureStack** operator actions. The time to start Azure Stack has been reduced by 50% on average. The time to shut down Azure Stack has been reduced by 30% on average. The average startup and shutdown times remain the same as the number of nodes increases in a scale-unit. 
 
 - Improved error handling for the disconnected Marketplace tool. If a download fails or partially succeeds when using **Export-AzSOfflineMarketplaceItem**, a detailed error message is displayed with more details about the error and mitigation steps, if any.
