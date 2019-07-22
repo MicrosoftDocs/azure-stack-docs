@@ -1,6 +1,6 @@
 ---
 title: Configure VPN gateway settings for Azure Stack | Microsoft Docs
-description: Learn about and configure settings for VPN gateways for Azure Stack.
+description: Learn about and configure VPN gateways settings for Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -145,7 +145,7 @@ Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.
 
 ### Local network gateways
 
-When creating a VPN gateway configuration in Azure, the local network gateway often represents your on-premises location. In Azure Stack, it represents any remote VPN device that sits outside Azure Stack. This could be a VPN device in your datacenter (or a remote datacenter), or a VPN gateway in Azure.
+When creating a VPN gateway configuration in Azure, the local network gateway often represents your on-premises location. In Azure Stack, it represents any remote VPN device that sits outside Azure Stack. This device could be a VPN device in your datacenter (or a remote datacenter), or a VPN gateway in Azure.
 
 You give the local network gateway a name, the public IP address of the VPN device, and specify the address prefixes that are on the on-premises location. Azure looks at the destination address prefixes for network traffic, consults the configuration that you've specified for your local network gateway, and routes packets accordingly.
 
