@@ -122,22 +122,6 @@ This article lists known issues in the 1907 release of Azure Stack. The list is 
   - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
   - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
-### Load balancer
-
-#### Add backend pool
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, if you attempt to add a **Backend Pool** to a **Load Balancer**, the operation fails with the error message **failed to update Load Balancer...**.
-- Remediation: Use PowerShell, CLI, or a Resource Manager template to associate the backend pool with a load balancer resource.
-- Occurrence: Common
-
-#### Create inbound NAT
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer**, the operation fails with the error message **Failed to update Load Balancer...**.
-- Remediation: Use PowerShell, CLI, or a Resource Manager template to associate the backend pool with a load balancer resource.
-- Occurrence: Common
-
 ## Compute
 
 ### VM boot diagnostics
