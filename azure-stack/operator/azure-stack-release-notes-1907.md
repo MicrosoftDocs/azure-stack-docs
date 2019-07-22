@@ -89,6 +89,8 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Fixed an issue that could cause updates to fail due to the management plane becoming unhealthy due to a bad configuration. This issue was originally fixed in [KB4512794](https://support.microsoft.com/help/4512794/) and can be fixed on 1906 systems by [applying the latest 1906 hotfix](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-release-notes-1906#after-successfully-applying-the-1906-update).
 
+- Fixed an issue that prevented users from completing deployment of 3rd party images from the marketplace. The fix was orginally inclued in [KB4511259](https://support.microsoft.com/en-us/help/4511259/azure-stack-hotfix-1-1906-1-35) and can be fixed on 1906 systems by [applying the latest hotfix](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-release-notes-1906#after-successfully-applying-the-1906-update)
+
 ## Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates-1907.md).
