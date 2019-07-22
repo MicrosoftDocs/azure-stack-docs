@@ -85,7 +85,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/127772311/home -->
 - Fixed an issue in which the update fails due to a DLL file locked by the WMI provider host.
 
--	Fixed an issue in the update service that prevented available updates from displaying in the update tile or resource provider. This fix was originally included in [KB4511282](https://support.microsoft.com/en-us/help/4511282/azure-stack-hotfix-1-1906-2-37) and can be fixed on 1906 systems by [applying the latest 1906 hotfix](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-release-notes-1906#after-successfully-applying-the-1906-update).
+-	Fixed an issue in the update service that prevented available updates from displaying in the update tile or resource provider. This fix was originally included in [KB4511282](https://support.microsoft.com/help/4511282/) and can be fixed on 1906 systems by [applying the latest 1906 hotfix](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-release-notes-1906#after-successfully-applying-the-1906-update).
 
 
 ## Security updates
