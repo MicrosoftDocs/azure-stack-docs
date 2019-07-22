@@ -55,7 +55,7 @@ For information about individual resources and settings for a VPN gateway, see [
 
 ### Deployment tools
 
-You can create and configure resources using one configuration tool, such as the Azure portal. Later you might switch to another tool such as PowerShell to configure additional resources or modify existing resources when applicable. Currently, you cannot configure every resource and resource setting in the Azure portal. The instructions in the articles for each connection topology specify when a specific configuration tool is needed.
+You can create and configure resources using one configuration tool, such as the Azure portal. Later you might switch to another tool such as PowerShell to configure additional resources or modify existing resources when applicable. Currently, you can't configure every resource and resource setting in the Azure portal. The instructions in the articles for each connection topology specify when a specific configuration tool is needed.
 
 ## Connection topology diagrams
 
@@ -91,13 +91,13 @@ When you create a virtual network gateway for Azure Stack, you specify the gatew
 
 When you select a higher gateway SKU, such as Standard over Basic, or High Performance over Standard or Basic, more CPUs and network bandwidth are allocated to the gateway. As a result, the gateway can support higher network throughput to the virtual network.
 
-Azure Stack does not support the Ultra Performance gateway SKU, which is used exclusively with Express Route.
+Azure Stack doesn't support the Ultra Performance gateway SKU, which is used exclusively with Express Route.
 
 Consider the following when you select the SKU:
 
-* Azure Stack does not support policy-based gateways.
-* Border Gateway Protocol (BGP) is not supported on the Basic SKU.
-* ExpressRoute-VPN gateway coexisting configurations are not supported in Azure Stack.
+* Azure Stack doesn't support policy-based gateways.
+* Border Gateway Protocol (BGP) isn't supported on the Basic SKU.
+* ExpressRoute-VPN gateway coexisting configurations aren't supported in Azure Stack.
 
 ## Gateway Availability
 
@@ -119,12 +119,12 @@ The following table shows the gateway types and the estimated aggregate throughp
 
 **Table notes:**
 
-*Note (1)* - VPN throughput is not a guaranteed throughput for cross-premises connections across the Internet. It is the maximum possible throughput measurement.  
+*Note (1)* - VPN throughput isn't a guaranteed throughput for cross-premises connections across the internet. It's the maximum possible throughput measurement.  
 *Note (2)* - Max tunnels is the total per Azure Stack deployment for all subscriptions.  
-*Note (3)* - BGP routing is not supported for the Basic SKU.
+*Note (3)* - BGP routing isn't supported for the Basic SKU.
 
 >[!NOTE]
->Only one site-to-site VPN connection can be created between two Azure Stack deployments. This is due to a limitation in the platform that only allows a single VPN connection to the same IP address. Because Azure Stack leverages the multi-tenant gateway, which uses a single public IP for all VPN gateways in the Azure Stack system, there can be only one VPN connection between two Azure Stack systems. This limitation also applies to connecting more than one site-to-site VPN connection to any VPN gateway that uses a single IP address. Azure Stack does not allow more than one local network gateway resource to be created using the same IP address.
+>Only one site-to-site VPN connection can be created between two Azure Stack deployments. This is due to a limitation in the platform that only allows a single VPN connection to the same IP address. Because Azure Stack leverages the multi-tenant gateway, which uses a single public IP for all VPN gateways in the Azure Stack system, there can be only one VPN connection between two Azure Stack systems. This limitation also applies to connecting more than one site-to-site VPN connection to any VPN gateway that uses a single IP address. Azure Stack doesn't allow more than one local network gateway resource to be created using the same IP address.
 
 ## Next steps
 
