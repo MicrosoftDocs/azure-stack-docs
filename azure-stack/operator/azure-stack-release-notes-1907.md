@@ -66,6 +66,8 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/127669774/home -->
 - Improved virtual disk health check before shutting down a node to avoid unexpected virtual disk detaching.
 
+- Improved storage of internal logs for administrator operations. This will result in improved performance when using the administrator portal and performing administrator operations by minimizing the memory and storage consumption of internal log processes. As part of this improvement, update logs older than 6 months will no longer be available in the system. If you require logs for these updates, be sure to [Download Full Logs](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-apply-updates) older than 6 months from the update blade before performing the 1907 update.
+
 ### Changes
 
 - Added a new outbound rule (HTTPS) to enable communication for Azure Stack diagnostic log collection service. For more information, see [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
