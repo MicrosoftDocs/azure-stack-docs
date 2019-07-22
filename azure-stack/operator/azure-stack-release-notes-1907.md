@@ -76,6 +76,8 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Infrastructure backups no longer include a backup of domain services data. This only applies to systems using Azure Active Directory as their identity provider.
 
+- We will now validate that an image being ingested into the Compute -> VM images blade is of type page blob.
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
@@ -93,7 +95,12 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Fixed an issue that prevented users from completing deployment of 3rd party images from the marketplace. This issue was found in 1906 and fixed with hotfix [KB4511259](https://support.microsoft.com/help/4511259/).
 
+- Fixed an issue that could cause VM creation from managed images to fail due to our user image manager service crashing. This issue was found in 1906 and fixed with [KB4512794](https://support.microsoft.com/help/4512794/)
+
+- Fixed an issue where VM CRUD operations could fail due to the appgateway cache not getting refreshed as expected. This issue was found in 1906 and fixed with [KB4513119](https://support.microsoft.com/en-us/help/4513119/)
+
 -	Fixed an issue in the Health resource provider which impacted the availability of the region and alert blades in the administrator portal. This issue was found in 1906 and fixed with [KB4512794](https://support.microsoft.com/help/4512794).
+
 
 ## Security updates
 
