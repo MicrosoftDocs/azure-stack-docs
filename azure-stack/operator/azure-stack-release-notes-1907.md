@@ -93,6 +93,8 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Fixed an issue that prevented users from completing deployment of 3rd party images from the marketplace. This issue was found in 1906 and fixed with hotfix [KB4511259](https://support.microsoft.com/help/4511259/).
 
+-	Fixed an issue in the Health resource provider which impacted the availability of the region and alert blades in the administrator portal. This issue was found in 1906 and fixed with [KB4512794](https://support.microsoft.com/help/4512794).
+
 ## Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates-1907.md).
