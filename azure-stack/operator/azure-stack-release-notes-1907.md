@@ -95,9 +95,9 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Fixed an issue that prevented users from completing deployment of 3rd party images from the marketplace. This issue was found in 1906 and fixed with hotfix [KB4511259](https://support.microsoft.com/help/4511259/).
 
-- Fixed an issue that could cause VM creation from managed images to fail due to our user image manager service crashing. This was originally fixed in [KB4512794](https://support.microsoft.com/help/4512794/) and can be fixed on 1906 systems by [applying the latest 1906 hotfix](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-release-notes-1906#after-successfully-applying-the-1906-update). 
+- Fixed an issue that could cause VM creation from managed images to fail due to our user image manager service crashing. This issue was found in 1906 and fixed with [KB4512794](https://support.microsoft.com/help/4512794/)
 
-- Fixed an issue where VM CRUD operations could fail due to the appgateway cache not getting refreshed as expected. This was originally fixed in [KB4513119](https://support.microsoft.com/en-us/help/4513119/azure-stack-hotfix-1-1906-11-52) and can be fixed on 1906 systems by [applying the latest 1906 hotfix](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-release-notes-1906#after-successfully-applying-the-1906-update). 
+- Fixed an issue where VM CRUD operations could fail due to the appgateway cache not getting refreshed as expected. This issue was found in 1906 and fixed with [KB4513119](https://support.microsoft.com/en-us/help/4513119/azure-stack-hotfix-1-1906-11-52)
 
 -	Fixed an issue in the Health resource provider which impacted the availability of the region and alert blades in the administrator portal. This issue was found in 1906 and fixed with [KB4512794](https://support.microsoft.com/help/4512794).
 
