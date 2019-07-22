@@ -66,7 +66,8 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/127669774/home -->
 - Improved virtual disk health check before shutting down a node to avoid unexpected virtual disk detaching.
 
-- Improved storage of internal logs for administrator operations. This will result in improved performance when using the administrator portal and performing administrator operations by minimizing the memory and storage consumption of internal log processes. As part of this improvement, update logs older than 6 months will no longer be available in the system. If you require logs for these updates, be sure to [Download Full Logs](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-apply-updates) older than 6 months from the update blade before performing the 1907 update.
+- Improved storage of internal logs for administrator operations. This will result in improved performance and reliability during administrator operations by minimizing the memory and storage consumption of internal log processes. Customers may also notice improved page load times of the update blade in the administrator portal. As part of this improvement, update logs older than 6 months will no longer be available in the system. If you require logs for these updates, be sure to [Download Full Logs](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-apply-updates) older than 6 months from the update blade before performing the 1907 update.
+
 
 ### Changes
 
@@ -75,6 +76,8 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 - The infrastructure backup service will delete partially uploaded backups if the external storage location runs out of capacity.
 
 - Infrastructure backups no longer include a backup of domain services data. This only applies to systems using Azure Active Directory as their identity provider.
+
+- We will now validate that an image being ingested into the Compute -> VM images blade is of type page blob.
 
 ### Fixes
 
@@ -92,6 +95,13 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 - Fixed an issue that could cause updates to fail due to the management plane becoming unhealthy due to a bad configuration. This issue was originally fixed in [KB4512794](https://support.microsoft.com/help/4512794/) and can be fixed on 1906 systems by [applying the latest 1906 hotfix](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-release-notes-1906#after-successfully-applying-the-1906-update).
 
 - Fixed an issue that prevented users from completing deployment of 3rd party images from the marketplace. This issue was found in 1906 and fixed with hotfix [KB4511259](https://support.microsoft.com/en-us/help/4511259/azure-stack-hotfix-1-1906-1-35).
+
+- Fixed an issue that could cause VM creation from managed images to fail due to our user image manager service crashing. This issue was found in 1906 and fixed with [KB4512794](https://support.microsoft.com/help/4512794/)
+
+- Fixed an issue where VM CRUD operations could fail due to the appgateway cache not getting refreshed as expected. This issue was found in 1906 and fixed with [KB4513119](https://support.microsoft.com/en-us/help/4513119/)
+
+-	Fixed an issue in the Health resource provider which impacted the availability of the region and alert blades in the administrator portal. This issue was found in 1906 and fixed with [KB4512794](https://support.microsoft.com/help/4512794).
+
 
 ## Security updates
 
