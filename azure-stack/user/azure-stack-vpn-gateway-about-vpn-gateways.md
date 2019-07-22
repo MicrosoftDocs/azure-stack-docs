@@ -1,6 +1,6 @@
 ---
-title: About VPN gateway for Azure Stack | Microsoft Docs
-description: Learn about and configure VPN gateways you use with Azure Stack.
+title: Create VPN gateways for Azure Stack | Microsoft Docs
+description: Create and configure VPN gateways for Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -18,7 +18,7 @@ ms.author: sethm
 ms.lastreviewed: 05/21/2019
 ---
 
-# About VPN gateway for Azure Stack
+# Create VPN gateways for Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -28,7 +28,7 @@ A VPN gateway is a type of virtual network gateway that sends encrypted traffic 
 
 When you create a virtual network gateway, you specify the gateway type that you want to create. Azure Stack supports one type of virtual network gateway: the **Vpn** type.
 
-Each virtual network can have two virtual network gateways, but only one of each type. Depending on the settings that you choose, you can create multiple connections to a single VPN gateway. An example is a multi-site connection configuration.
+Each virtual network can have two virtual network gateways, but only one of each type. Depending on the settings that you choose, you can create multiple connections to a single VPN gateway. An example of this kind of setup is a multi-site connection configuration.
 
 Before you create and configure VPN gateways for Azure Stack, review the [considerations for Azure Stack networking](azure-stack-network-differences.md) to learn how configurations for Azure Stack differ from Azure.
 
