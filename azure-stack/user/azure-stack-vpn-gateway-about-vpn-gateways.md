@@ -71,7 +71,7 @@ The diagrams and descriptions in the following sections can help you select a co
 
 ### Site-to-site
 
-A *site-to-site* (S2S) VPN gateway connection is a connection over IPsec/IKE (IKEv2) VPN tunnel. This type of connection requires a VPN device that is located on-premises and is assigned a public IP address. This device cannot be located behind a NAT. S2S connections can be used for cross-premises and hybrid configurations.
+A *site-to-site* (S2S) VPN gateway connection is a connection over IPsec/IKE (IKEv2) VPN tunnel. This type of connection requires a VPN device that is located on-premises and is assigned a public IP address. This device can't be located behind a NAT. S2S connections can be used for cross-premises and hybrid configurations.
 
 ![Site-to-site VPN connection configuration example](media/azure-stack-vpn-gateway-about-vpn-gateways/vpngateway-site-to-site-connection-diagram.png)
 
@@ -105,7 +105,7 @@ High availability scenarios can only be configured on the **High Performance Gat
 
 ### Failover
 
-There are 3 multi-tenant gateway infrastructure VMs in Azure Stack. Two of these VMs are in active mode, and the third is in redundant mode. Active VMs enable the creation of VPN connections on them, and the redundant VM only accepts VPN connections in the event of a failover. If an active gateway VM becomes unavailable, the VPN connection fails over to the redundant VM after a short period (a few seconds) of connection loss.
+There are three multi-tenant gateway infrastructure VMs in Azure Stack. Two of these VMs are in active mode, and the third is in redundant mode. Active VMs enable the creation of VPN connections on them, and the redundant VM only accepts VPN connections if a failover happens. If an active gateway VM becomes unavailable, the VPN connection fails over to the redundant VM after a short period (a few seconds) of connection loss.
 
 ## Estimated aggregate throughput by SKU
 
