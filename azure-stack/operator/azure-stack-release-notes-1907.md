@@ -97,7 +97,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Fixed an issue that could cause VM creation from managed images to fail due to our user image manager service crashing. This issue was found in 1906 and fixed with [KB4512794](https://support.microsoft.com/help/4512794/)
 
-- Fixed an issue where VM CRUD operations could fail due to the appgateway cache not getting refreshed as expected. This issue was found in 1906 and fixed with [KB4513119](https://support.microsoft.com/en-us/help/4513119/azure-stack-hotfix-1-1906-11-52)
+- Fixed an issue where VM CRUD operations could fail due to the appgateway cache not getting refreshed as expected. This issue was found in 1906 and fixed with [KB4513119](https://support.microsoft.com/en-us/help/4513119/)
 
 -	Fixed an issue in the Health resource provider which impacted the availability of the region and alert blades in the administrator portal. This issue was found in 1906 and fixed with [KB4512794](https://support.microsoft.com/help/4512794).
 
