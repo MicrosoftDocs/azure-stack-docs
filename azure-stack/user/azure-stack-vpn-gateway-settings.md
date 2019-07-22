@@ -22,7 +22,7 @@ ms.lastreviewed: 12/27/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-A VPN gateway is a type of virtual network gateway that sends encrypted traffic between your virtual network in Azure Stack and a remote VPN gateway. The remote VPN gateway can be in Azure, a device in your datacenter, or a device on another site. If there is network connectivity between the two endpoints, you can establish a secure Site-to-Site (S2S) VPN connection between the two networks.
+A VPN gateway is a type of virtual network gateway that sends encrypted traffic between your virtual network in Azure Stack and a remote VPN gateway. The remote VPN gateway can be in Azure, a device in your datacenter, or a device on another site. If there's network connectivity between the two endpoints, you can establish a secure Site-to-Site (S2S) VPN connection between the two networks.
 
 A VPN gateway connection relies on the configuration of multiple resources, each of which contains configurable settings. This article describes the resources and settings that relate to a VPN gateway for a virtual network that you create in the Resource Manager deployment model. You can find descriptions and topology diagrams for each connection solution in [About VPN Gateway for Azure Stack](azure-stack-vpn-gateway-about-vpn-gateways.md).
 
@@ -30,7 +30,7 @@ A VPN gateway connection relies on the configuration of multiple resources, each
 
 ### Gateway types
 
-Each Azure Stack virtual network supports a single virtual network gateway, which must be of the type **Vpn**.  This support differs from Azure, which supports additional types.
+Each Azure Stack virtual network supports a single virtual network gateway, which must be of the type **Vpn**.  This support is different from Azure, which supports additional types.
 
 When you create a virtual network gateway, you must make sure that the gateway type is correct for your configuration. A VPN gateway requires the `-GatewayType Vpn` flag; for example:
 
@@ -54,9 +54,9 @@ Azure Stack offers the VPN gateway SKUs shown in the following table.
 
 ### Resizing gateway SKUs
 
-Azure Stack does not support a resize of SKUs between the supported legacy SKUs.
+Azure Stack doesn't support a resize of SKUs between the supported legacy SKUs.
 
-Similarly, Azure Stack does not support a resize from a supported legacy SKU (**Basic**, **Standard**, and **HighPerformance**) to a newer SKU supported by Azure (**VpnGw1**, **VpnGw2**, and **VpnGw3**).
+Similarly, Azure Stack doesn't support a resize from a supported legacy SKU (**Basic**, **Standard**, and **HighPerformance**) to a newer SKU supported by Azure (**VpnGw1**, **VpnGw2**, and **VpnGw3**).
 
 ### Configure the gateway SKU
 
@@ -93,16 +93,16 @@ In the Resource Manager deployment model, each configuration requires a specific
 When you create the virtual network gateway for a VPN gateway configuration, you must specify a VPN type. The VPN type that you choose depends on the connection topology that you want to create. A VPN type can also depend on the hardware that you're using. S2S configurations require a VPN device. Some VPN devices only support a certain VPN type.
 
 > [!IMPORTANT]  
-> Currently, Azure Stack only supports the Route Based VPN type. If your device only supports Policy Based VPNs, then connections to those devices from Azure Stack aren't supported.  
+> Currently, Azure Stack only supports the route-based VPN type. If your device only supports policy-based VPNs, then connections to those devices from Azure Stack aren't supported.  
 >
-> In addition, Azure Stack does not support using Policy Based Traffic Selectors for Route Based Gateways at this time, because custom IPSec/IKE policy configurations are not supported.
+> In addition, Azure Stack doesn't support using policy-based traffic selectors for route-based gateways at this time, because custom IPSec/IKE policy configurations are not supported.
 
 * **PolicyBased**: Policy-based VPNs encrypt and direct packets through IPsec tunnels based on the IPsec policies that are configured with the combinations of address prefixes between your on-premises network and the Azure Stack VNet. The policy, or traffic selector, is usually an access list in the VPN device configuration.
 
   >[!NOTE]
   >**PolicyBased** is supported in Azure, but not in Azure Stack.
 
-* **RouteBased**: RouteBased VPNs use routes that are configured in the IP forwarding or routing table to direct packets to their corresponding tunnel interfaces. The tunnel interfaces then encrypt or decrypt the packets in and out of the tunnels. The policy, or traffic selector, for **RouteBased** VPNs are configured as any-to-any (or use wild cards). By default, they cannot be changed. The value for a **RouteBased** VPN type is **RouteBased**.
+* **RouteBased**: Route-based VPNs use routes that are configured in the IP forwarding or routing table to direct packets to their corresponding tunnel interfaces. The tunnel interfaces then encrypt or decrypt the packets in and out of the tunnels. The policy, or traffic selector, for **RouteBased** VPNs are configured as any-to-any (or use wild cards). By default, they can't be changed. The value for a **RouteBased** VPN type is **RouteBased**.
 
 The following PowerShell example specifies the `-VpnType` as **RouteBased**. When you create a gateway, you must make sure that the `-VpnType` is correct for your configuration.
 
