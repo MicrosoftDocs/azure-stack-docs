@@ -92,8 +92,6 @@ Follow these steps to add the SAS URL to the log collection UI:
    ![Screenshot shows blob SAS URL](media/azure-stack-automatic-log-collection/azure-stack-enable-automatic-log-collection.png)
 
 
-
-
 ## View collected logs
 
 You can see logs that were previously collected on the **Log collection** page in Help and Support. 
@@ -103,24 +101,11 @@ The **From Date** is the start of the time period for which you want to collect 
 ![Screenshot of Azure Stack log collection](media/azure-stack-automatic-log-collection/azure-stack-log-collection.png)
 
 
-## Disable automatic log collection
+## Disabling collection
 
 Automatic log collection can be disabled and re-enabled anytime. The SAS URL configuration won't change. If automatic log collection is re-enabled, the previously entered SAS URL will undergo the same validation checks, and an expired SAS URL will be rejected. 
 
-## Log collection scanning
-
-Scanning for automatic log collection occurs within a sliding window. If there are one or more alerts, a single log collection is queued for that window. 
-After log collection, the next alert scanning is suppressed until around 30 mins. 
-
-## Running on demand and automatic collection at the same time
-
-When automatic log collection is enabled and diagmostic logs are being collected: 
-- If an operator creates an on-demand diagnostic log using **Help and Support**, the on-demand log collection begins after automatc log collection is complete. 
-- If an operator creates an on-demand diagnostic log using PEP, the on-demand log collection begins while automatic log collection is still in progress. 
-
-Running on-demand diagnostic log using PEP in parallel with automatic log collection should not cause conflicts. But as a best practice, you should run them separately because they collect data from the same set of endpoints. 
 
 <!--- what alerts trigger collection--->
 
-## Managing costs
 
