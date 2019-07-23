@@ -109,7 +109,7 @@ The following procedure shows how to import and install update packages in the a
 9. When done, you can review the notifications (bell icon in the top-right corner of the portal). The notifications should indicate that the upload has completed.
 10. Navigate back to the Update tile on the dashboard. The tile should indicate that an update is available. Click the tile to review the newly added update package.
 11. To install the update, select the package that's marked as **Ready** and either right-click the package and select **Update now**, or click the **Update now** action near the top.
-12. When you click the installing update package, you can view the status in the **Update run details** area. From here, you can also click **Download full logs** to download the log files. Logs from update runs are available for 6 months after the attempt ended. 
+12. When you click the installing update package, you can view the status in the **Update run details** area. From here, you can also click **Download summary** to download the log files. Logs from update runs are available for 6 months after the attempt ended. 
 13. When the update completes, the Update tile shows the updated Azure Stack version.
 
 You can manually delete updates from the storage account after they have been installed on Azure Stack. Azure Stack periodically checks for older update packages and removes them from storage. It may take Azure Stack two weeks to remove the old packages.
