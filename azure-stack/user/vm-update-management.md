@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date:07/23/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: rtiberiu
 ms.lastreviewed: 03/20/2019
@@ -133,7 +133,3 @@ If you have a large number of Azure Stack VMs, you can use [this Azure Resource 
  
 ## Next steps
 [Optimize SQL Server VM performance](azure-stack-sql-server-vm-considerations.md)
-
-
-
-
