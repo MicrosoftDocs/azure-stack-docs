@@ -28,17 +28,16 @@ ms.lastreviewed: 07/18/2019
 This topic covers best practices for managing automatic diagnostic log collection for Azure Stack. 
 
 
-## Best practices for managing the storage account 
 
 
 
-### Collecting logs from multiple Azure Stack systems
+## Collecting logs from multiple Azure Stack systems
 
 
 As a best practice, only save diagnostic logs from the same Azure Stack stamp within a single storage account. Save diagnostic logs from a different stamp to another storage account.
 
 
-### Retention policy
+## Retention policy
 
 You can set the retention policy of the storage account between 1 and 365 days. For more information about setting the retention policy, see [storage account diagnostic settings](https://docs.microsoft.com/azure/azure-monitor/platform/archive-diagnostic-logs#diagnostic-settings). 
 
