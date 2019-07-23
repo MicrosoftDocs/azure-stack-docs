@@ -11,7 +11,7 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/16/2019
+ms.date: 07/23/2019
 ms.topic: solution
 ms.author: bryanla
 ms.reviewer: anajod
@@ -72,38 +72,37 @@ App deployment continuity, security, and reliability are critical elements for y
   
 - An Azure Stack integrated system, or the Azure Stack Development Kit (ASDK) deployed and configured according to the following instructions. 
   
-### Install and deploy the ASDK
-
-The Azure Stack Development Kit (ASDK) is a single-node deployment of Azure Stack you can download and use for free. The ASDK lets you evaluate Azure Stack and use Azure APIs and tooling in a non-production environment.
-
-Any user with Azure AD or Active Directory Federation Services (AD FS) admin credentials can deploy the ASDK. An Azure OEM/hardware partner can deploy a production Azure Stack. You must be an Azure Stack operator to do the following Azure Stack configuration tasks: 
-
-- Deploy Azure App Service
-- Create plans and offers
-- Create a tenant subscription
-- Apply a Windows Server 2016 image
-
-> [!Note]
-> The ASDK installation takes approximately seven hours, so plan accordingly.
   
-To deploy and configure the ASDK:
-
-1. Follow the detailed deployment instructions in [Deploy the ASDK using the installer](../asdk/asdk-install.md).
-   
-1. Use the [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) PowerShell script to automate ASDK post-deployment steps.
-   
-1. Deploy [Azure App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
-   
-1. Create a [plan and offer](../operator/azure-stack-plan-offer-quota-overview.md) in Azure Stack.
-   
-1. Create a [tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) to the offer in Azure Stack. 
-   
-1. Create a web app in the tenant subscription. Make note of the new web app URL for later use.
-   
-1. Deploy a Windows Server 2016 VM with .NET 3.5 in the tenant subscription, to be the build server that runs Azure Pipelines.
-
-> [!Note]
-> Your Azure Stack environment needs the correct images to run Windows Server and SQL Server. It must also have App Service deployed.
+  The Azure Stack Development Kit (ASDK) is a single-node deployment of Azure Stack you can download and use for free. The ASDK lets you evaluate Azure Stack and use Azure APIs and tooling in a non-production environment.
+  
+  Any user with Azure AD or Active Directory Federation Services (AD FS) admin credentials can deploy the ASDK. An Azure OEM/hardware partner can deploy a production Azure Stack. You must be an Azure Stack operator to do the following Azure Stack configuration tasks: 
+  
+  - Deploy Azure App Service
+  - Create plans and offers
+  - Create a tenant subscription
+  - Apply a Windows Server 2016 image
+  
+  > [!Note]
+  > The ASDK installation takes approximately seven hours, so plan accordingly.
+    
+  To deploy and configure the ASDK:
+  
+  1. Follow the detailed deployment instructions in [Deploy the ASDK using the installer](../asdk/asdk-install.md).
+     
+  1. Use the [ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) PowerShell script to automate ASDK post-deployment steps.
+     
+  1. Deploy [Azure App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
+     
+  1. Create a [plan and offer](../operator/azure-stack-plan-offer-quota-overview.md) in Azure Stack.
+     
+  1. Create a [tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) to the offer in Azure Stack. 
+     
+  1. Create a web app in the tenant subscription. Make note of the new web app URL for later use.
+     
+  1. Deploy a Windows Server 2016 VM with .NET 3.5 in the tenant subscription, to be the build server that runs Azure Pipelines.
+  
+  > [!Note]
+  > Your Azure Stack environment needs the correct images to run Windows Server and SQL Server. It must also have App Service deployed.
 
 ## Register your web app and give it access to resources 
 
@@ -226,22 +225,37 @@ After setting endpoint creation permissions, you can create endpoints for Azure 
 
 Follow the instructions in [Create an Azure Resource Manager service connection with an existing service principal](/azure/devops/pipelines/library/connect-to-azure#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) to create the service connection endpoint.  
 
-Use the following values to fill out the form. To create an AD FS endpoint, select **Certificate** instead of **Service principal key**, and paste the contents of the *.pem* certificate file in the **Certificate** field,
+In the **Add an Azure Resource Manager service connection** form, be sure to select the link to **use the full version of the service connection dialog**. 
 
-| Name | Example | Description |
-| --- | --- | --- |
-| **Connection name** | Azure Stack Azure AD, or Azure Stack AD FS | The name you give the connection. |
-| **Environment** | AzureStack | The name of your environment. |
-| **Environment URL** | `https://management.local.azurestack.external` | Your management endpoint. |
-| **Scope level** | Subscription | The scope of the connection. |
-| **Subscription ID** | 00000000-XXXX-XXXX-XXXX-000000000000 | Your subscription ID. |
-| **Subscription name** | admin@northwind.com | Your user name from Azure Stack. |
-| **Service principal client ID** | 000000000-XXXX-XXXX-XXXX-000000000000 | The **Application (client) ID** you saved previously. |
-| **Certificate** <br />or<br />**Service principal key**| [value]<br />or<br />aA1!bB2@cC3#dD4$xX0=xX0=xX0=xX0= | The contents of the *.pem* certificate file. Include both the certificate and​ private key sections​. <br />**Note:** To convert a *.pfx* to a *.pem* certificate file, run `openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>`.<br />or<br />The value you saved when you created the application secret.  |
-| **Tenant ID** | 00000000-XXXX-XXXX-XXXX-000000000000 | The **Directory (tenant) ID** you saved previously.  |
-| **Connection: Not verified** | | Select **Verify connection** to validate your connection settings to the service principal. <br />**Note:** If your Azure Resource Manager endpoint isn't exposed to the internet, the connection validation will fail. This is expected, and you can validate your connection by creating a release pipeline with a simple task. |
+Use the following values to fill out the form: 
 
-![Create Azure AD endpoint](./media/azure-stack-solution-pipeline/endpointform.png)
+- **Connection name**: Enter a user-friendly name to use when referring to this service connection.
+  
+- **Environment**: Select the environment name, such as **Azure Cloud**.
+  
+- **Scope level**: Select the scope level you need, such as **Subscription**. 
+  
+- **Subscription ID**: Enter your Subscription ID.
+  
+- **Subscription name**: Enter your user name from Azure Stack.
+  
+- **Service principal client ID**: Enter the **Application (client) ID** you saved previously. 
+  
+- **Service principal key** or **Certificate**: Select one or the other option. To create an AD FS endpoint, you must use a Certificate for authentication. 
+  - For **Service principal key**, enter the client secret value you saved earlier.
+  - If you choose **Certificate**, enter the contents of both the certificate and private key sections of the *.pem* certificate file. 
+  
+  > [!NOTE]
+  > To convert a *.pfx* to a *.pem* certificate file, run `openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>`.
+  
+- **Tenant ID**; Enter the **Directory (tenant) ID** you saved previously.
+  
+- **Connection: Not verified**: Select **Verify connection** to validate your connection settings to the service principal.
+  
+  > [!NOTE]
+  > If your Azure Resource Manager endpoint isn't exposed to the internet, the connection validation will fail. This is expected, and you can validate your connection by creating a release pipeline with a simple task. |
+
+![Create Azure AD endpoint](./media/azure-stack-solution-pipeline/endpointform2.png)
 
 ## Install and configure the build agent 
 
