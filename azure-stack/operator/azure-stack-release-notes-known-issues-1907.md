@@ -42,13 +42,6 @@ This article lists known issues in the 1907 release of Azure Stack. The list is 
 - Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
 - Occurrence: Common
 
-### Subscription resources
-
-- Applicable: This issue applies to all supported releases.
-- Cause: Deleting user subscriptions results in orphaned resources.
-- Remediation: First delete user resources or the entire resource group, and then delete the user subscriptions.
-- Occurrence: Common
-
 ### Subscription permissions
 
 - Applicable: This issue applies to all supported releases.
