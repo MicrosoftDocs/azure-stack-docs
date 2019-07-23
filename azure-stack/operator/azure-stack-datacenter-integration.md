@@ -13,16 +13,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2018
 ---
  
 # Datacenter integration considerations for Azure Stack integrated systems
+
 If you're interested in an Azure Stack integrated system, you should understand the major planning considerations around deployment and how the system fits into your datacenter. This article provides a high-level overview of these considerations to help you make important infrastructure decisions for your Azure Stack multi-node system. An understanding of these considerations helps when working with your OEM hardware vendor as they deploy Azure Stack to your datacenter.  
 
-> [!NOTE]
+> [!NOTE]  
 > Azure Stack multi-node systems can only be purchased from authorized hardware vendors. 
 
 To deploy Azure Stack, you need to provide planning information to your solution provider before deployment starts to help the process go quickly and smoothly. The information required ranges across networking, security, and identity information with many important decisions that may require knowledge from many different areas and decision makers. Therefore, you might have to pull in people from multiple teams in your organization to ensure that you have all required information ready before deployment begins. It can help to talk to your hardware vendor while collecting this information, as they might have advice helpful to making your decisions.

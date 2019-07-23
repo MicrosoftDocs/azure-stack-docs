@@ -290,7 +290,8 @@ For guidance about developing Java apps in Azure, see [Build and deploy Java app
 
     ```HTTP  
        http://yourmachine.local.cloudapp.azurestack.external:8080/sample
-
+    ```
+    
 ## Next steps
 
 - Learn more about how to [develop for Azure Stack](azure-stack-dev-start.md).
