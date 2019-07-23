@@ -52,7 +52,13 @@ You can set the retention policy of the storage account between 1 and 365 days. 
 ## Bandwidth consumption
 
 
-The average size of a diagnostic log is 4-8 MB. If you are on a constrained line, **Automatic log collection** may use more bandwidth than **Collect logs now**. You can use the following diagram to decide which way to collect diagnostic logs.
+If you are on a constrained line, **Automatic log collection** may use more bandwidth than **Collect logs now**. 
+When automatic diagnostic log collection is enabled, the average size of ongoing diagnostic logs is 4-8 MB. 
+After a critical alert occurs, the full diagnostic log size can average nearly 5 GB. 
+
+
+To do: We should explain the difference between ongoing logs and critical alert logs. That is separate from automatic and on-demand log collection. 
+
 
 <!---For follow up: what are best practices for expiration, why SAS tokens are not used (place in SAS URL topic), can I point multiple Azure Stack systems to the same storage account? Etc. etc. 
 
