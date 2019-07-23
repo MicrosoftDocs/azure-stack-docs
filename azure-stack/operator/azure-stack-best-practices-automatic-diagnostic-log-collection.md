@@ -27,14 +27,10 @@ ms.lastreviewed: 07/18/2019
 
 This topic covers best practices for managing automatic diagnostic log collection for Azure Stack. 
 
-
-
-
-
 ## Collecting logs from multiple Azure Stack systems
 
 
-Set up one conatiner for every Azure Stack stamp you want to collect logs from. For more information about how to configure the blob container, see [](azure-stack-configure-automatic-diagnostic-log-collection.md). As a best practice, only save diagnostic logs from the same Azure Stack stamp within a single blob container. 
+Set up one container for every Azure Stack stamp you want to collect logs from. For more information about how to configure the blob container, see [Configure automatic Azure Stack diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md). As a best practice, only save diagnostic logs from the same Azure Stack stamp within a single blob container. 
 
 
 ## Retention policy
@@ -61,8 +57,9 @@ When automatic diagnostic log collection is enabled, the service monitors for cr
 After a critical alert occurs and persists for around 30 minutes, the service collects and uploads appropriate logs. This log collection size is around 2 GB on average. 
 Alert monitoring, log collection, and upload are transparent to the user. 
 
-In a healthy system, logs will not be collected at all. In a worst case, automatic log collection can run at most ten times in a day. On average in an unhealthy system, it may run two or three times in a day, but typicaly just once. 
-
+In a healthy system, logs will not be collected at all. 
+In an unhealthy system, log collection may run two or three times in a day, but typically just once. 
+At most, it could potentially run up to ten times in a day in a worst-case scenario.  
 
 ## Managing costs
 
