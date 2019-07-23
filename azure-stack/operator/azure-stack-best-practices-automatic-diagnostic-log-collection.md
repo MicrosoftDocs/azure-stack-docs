@@ -56,9 +56,13 @@ If you are on a constrained line, **Automatic log collection** may use more band
 When automatic diagnostic log collection is enabled, the average size of ongoing diagnostic logs is 4-8 MB. 
 After a critical alert occurs, the full diagnostic log size can average nearly 5 GB. 
 
-<!--- on a T1, how long will it take to upload for ex--->
 
 Since you can't control when automatic log collection occurs, take caution when enabling automatic log collection if you are using a low-bandwidth, high-latency link. In this case, only use on-demand log collection so you control when collection happens. 
+
+
+<!--- What to say n a more robust lin? Get from Faraz, on a T1 for ex, how long will it take to upload?--->
+
+<!--- how often could automatic upload over a day--->
 
 
 <!--To do: We should explain the difference between ongoing logs and critical alert logs. That is separate from automatic and on-demand log collection. --->
