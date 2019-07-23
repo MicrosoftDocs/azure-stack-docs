@@ -252,7 +252,7 @@ Use the following values to fill out the form:
     > [!NOTE]
     > To convert a *.pfx* to a *.pem* certificate file, run `openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>`.
   
-- **Tenant ID**; Enter the **Directory (tenant) ID** you saved previously.
+- **Tenant ID**: Enter the **Directory (tenant) ID** you saved previously.
   
 - **Connection: Not verified**: Select **Verify connection** to validate your connection settings to the service principal.
   
