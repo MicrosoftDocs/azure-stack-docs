@@ -21,18 +21,7 @@ ms.lastreviewed: 07/17/2019
 ---
 # Microsoft Azure Stack help and support
 
-**Help + support** in the Azure Stack portal helps operators collect diagnostic logs, check their support options, get expert help, and learn more about Azure Stack. 
-
-## Diagnostic log collection
-
-Beginning with the 1907 release, operators can use **Help + support** to collect diagnostic logs for troubleshooting. There are two ways to collect logs:
-
-- **Collect logs now**: You choose a 1-4 hour time period from the last week
-- **Automatic collection**: If enabled, log collection is triggered by specific health alerts 
-
-![Screenshot of diagnostic log collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
-
-Integrated systems can share the diagnostic logs with Microsoft Customer Support Service (CSS). As an evaluation environment, the Azure Stack Development Kit (ASDK) is not supported by CSS. For more information, see [Azure Stack diagnostic log collection overview](azure-stack-diagnostic-log-collection-overview.md).
+**Help + support** in the Azure Stack portal has resources to help operators learn more about Azure Stack, check their support options, and get expert help. Beginning with the 1907 release, operators can also use Help + support to collect diagnostic logs for troubleshooting.  
 
 ## Help resources 
 
@@ -79,6 +68,19 @@ You can also reach out to the MSDN Forums to discuss an issue, or take online tr
 This set of tutorials is customized depending on whether you're running the ASDK or integrated systems so you can quickly get up to speed with your environment. 
 
 ![Get support tutorials](media/azure-stack-help-and-support/get-support-tutorials.png)
+
+## Diagnostic log collection
+
+Beginning with the 1907 release, there are two new ways to collect logs in **Help and Support**:
+
+- **Collect logs now**: You choose a 1-4 hour sliding window from the last seven days
+- **Automatic collection**: If enabled, log collection is triggered by specific health alerts 
+
+![Screenshot of diagnostic log collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
+
+Integrated systems can share the diagnostic logs with Microsoft Customer Support Service (CSS). As an evaluation environment, the Azure Stack Development Kit (ASDK) is not supported by CSS. For more information, see [Azure Stack diagnostic log collection overview](azure-stack-diagnostic-log-collection-overview.md).
+
+operators can use Help + support to collect diagnostic logs for troubleshooting
 
 ## Help and support for earlier releases Azure Stack (pre-1905)
 

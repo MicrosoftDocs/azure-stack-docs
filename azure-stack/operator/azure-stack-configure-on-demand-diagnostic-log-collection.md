@@ -32,7 +32,7 @@ CSS might need you to collect the logs on demand and save them in a designated b
 If CSS provides a SAS URL for saving diagnostic logs, follow these steps to configure on-demand log collection:
 
 1. Open **Help and Support Overview** and click **Collect logs now**. 
-1. Choose any 1-4 hour period from the past week, and enter the SAS URL that CSS provided.
+1. Choose any 1-4 hour sliding window from the last seven days, and enter the SAS URL that CSS provided.
 
    ![Screenshot of on-demand log collection](media/azure-stack-automatic-log-collection/collect-logs-now.png)
 
