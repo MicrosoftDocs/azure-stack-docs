@@ -121,7 +121,7 @@ connection, see [Create a site-to-site VPN connection](/azure/vpn-gateway/vpn-ga
 
 ### Prerequisites
 
-Before you begin, ensure that you have the following prerequisites:
+Before you begin, make sure you have the following prerequisites:
 
 - An Azure subscription. If you don't already have an Azure subscription, you can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), or sign up for a [free account](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -171,8 +171,8 @@ New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 
 #### 3. Create the virtual network, VPN gateway, and local network gateway
 
-The following example creates the virtual network, **TestVNet1**, with three
-subnets, and the VPN gateway. When substituting values, it's important
+The following example creates the virtual network, **TestVNet1**, along with three
+subnets and the VPN gateway. When substituting values, it's important
 that you always name your gateway subnet specifically **GatewaySubnet**. If
 you name it something else, your gateway creation fails.
 
@@ -229,7 +229,7 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupNam
 ```
 
 > [!IMPORTANT]
-> Once an IPsec/IKE policy is specified on a connection, the Azure VPN gateway will only send or accept the IPsec/IKE proposal with specified cryptographic algorithms and key strengths on that particular connection. Make sure your on-premises VPN device for the connection uses or accepts the exact policy combination, otherwise the site-to-site VPN tunnel will not be established.
+> Once an IPsec/IKE policy is specified on a connection, the Azure VPN gateway will only send or accept the IPsec/IKE proposal with specified cryptographic algorithms and key strengths on that particular connection. Make sure your on-premises VPN device for the connection uses or accepts the exact policy combination, otherwise the site-to-site VPN tunnel won't be established.
 
 ## Part 4 - Update IPsec/IKE policy for a connection
 
