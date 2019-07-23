@@ -37,7 +37,7 @@ You can use a new or existing blob container in Azure.
 To create a blob container in Azure, you need at least the [storage blob contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or the [specific permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). 
 Global administrators also have the necessary permission. 
 
-For best practices about choosing parameters for the automatic log collection storage account, see [Best practices for automatic Azure Stack log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md).
+For best practices about choosing parameters for the automatic log collection storage account, see [Best practices for automatic Azure Stack log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md). For more information about types of storage accounts, see [Azure storage account overview](https://docs.microsoft.com/azure/storage/common/storage-account-overview)
 
 ### Create a blob storage account
  
@@ -47,9 +47,11 @@ For best practices about choosing parameters for the automatic log collection st
    - **Subscription**: Choose your Azure subscription.
    - **Resource group**: Specify a resource group.
    - **Storage account name**: Specify a unique storage account name.
-   - **Location**: Choose a datacenter near your Azure Stack deployment.
+   - **Location**: Choose a datacenter in accordance with your company policy.
    - **Performance**: Choose Standard.
-   - **Account kind** Choose any blob storage account type (for example: BlobStorage, StorageV2). For more information about types of storage accounts, see [Azure storage account overview](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
+   - **Account kind** Choose StorageV2. 
+   - **Replication**: Choose Locally-redundant storage (LRS)
+   = **Access-tier**: Choose Cold
 
    ![Screenshot showing the blob container properties](media/azure-stack-automatic-log-collection/azure-stack-log-collection-create-storage-account.png)
 
