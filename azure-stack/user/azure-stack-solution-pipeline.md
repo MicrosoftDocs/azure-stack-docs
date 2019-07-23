@@ -72,13 +72,11 @@ App deployment continuity, security, and reliability are critical elements for y
   
 - An Azure Stack integrated system, or the Azure Stack Development Kit (ASDK) deployed and configured according to the following instructions. 
   
-If you already have any of the prerequisites, make sure they meet all the requirements before deploying this solution.
-
 ### Install and deploy the ASDK
 
 The Azure Stack Development Kit (ASDK) is a single-node deployment of Azure Stack you can download and use for free. The ASDK lets you evaluate Azure Stack and use Azure APIs and tooling in a non-production environment.
 
-Any user with Azure AD or Active Directory Federation Services (AD FS) admin credentials can deploy the ASDK. An Azure OEM/hardware partner can deploy a production Azure Stack. You must be an Azure Stack operator to do the following Azure Stack deployment tasks: 
+Any user with Azure AD or Active Directory Federation Services (AD FS) admin credentials can deploy the ASDK. An Azure OEM/hardware partner can deploy a production Azure Stack. You must be an Azure Stack operator to do the following Azure Stack configuration tasks: 
 
 - Deploy Azure App Service
 - Create plans and offers
@@ -88,7 +86,7 @@ Any user with Azure AD or Active Directory Federation Services (AD FS) admin cre
 > [!Note]
 > The ASDK installation takes approximately seven hours, so plan accordingly.
   
-To deploy the ASDK:
+To deploy and configure the ASDK:
 
 1. Follow the detailed deployment instructions in [Deploy the ASDK using the installer](../asdk/asdk-install.md).
    
@@ -107,7 +105,7 @@ To deploy the ASDK:
 > [!Note]
 > Your Azure Stack environment needs the correct images to run Windows Server and SQL Server. It must also have App Service deployed.
 
-## Configure the service principal and role 
+## Register your web app and give it access to resources 
 
 In Azure Active Directory (Azure AD), Azure Pipelines authenticates against Azure Resource Manager using a *service principal*. To provision resources for Azure Pipelines, the service principal must have the **Contributor** role in the Azure subscription. 
 
@@ -180,7 +178,11 @@ When creating endpoints for Azure Pipelines, you need to enter the tenant ID and
 
 ### Create a new application secret
 
-When creating endpoints for Azure Pipelines, you need to enter an authentication key. You can [use a certificate](/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets) or an application secret. To create a new application secret:
+When creating endpoints for Azure Pipelines, the app needs to authenticate. It can [use a certificate](/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets) or an application secret. If you deployed Azure Stack with AD FS as the identity provider, you must use a certificate.
+
+Follow the steps in [Certificates and secrets](/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets) to create and upload a new certificate. 
+
+Or, to create a new application secret:
 
 1. In the Azure portal, select **Azure Active Directory**.
    
@@ -192,7 +194,7 @@ When creating endpoints for Azure Pipelines, you need to enter an authentication
    
 1. In **Add a client secret**, type a description, select an expiration, and select **Add**.
    
-1. Copy the **VALUE** of the new secret. You need to provide the key value to sign in as the app. It's important to save this value now, because it won't be displayed again after you leave this page.
+1. Copy the **VALUE** of the new secret. You need to provide the value to sign in as the app. It's important to save this value now, because it won't be displayed again after you leave this page.
    
    ![Copy the secret value because you can't retrieve it later](./media/azure-stack-solution-pipeline/copy-secret.png)
 
@@ -202,9 +204,9 @@ By creating endpoints, an Azure Pipelines build can deploy Azure AD apps to Azur
 
 After setting endpoint creation permissions, you can create endpoints for Azure AD or AD FS. 
 
-- If you deployed Azure Stack with Azure AD as the identity provider for Azure Stack, you can use the service principal secret key to create an Azure Resource Manager service connection for Azure deployments. 
+- If you deployed Azure Stack with Azure AD as the identity provider, you can use a certificate or application secret to create an Azure Resource Manager service connection for Azure deployments. 
   
-- If you used Active Directory Federation Services (AD FS) as the identity provider for Azure Stack, you must create the service connection using a certificate rather than a secret key for authentication. 
+- If you used Active Directory Federation Services (AD FS) as the identity provider for Azure Stack, you must create the service connection using a certificate rather than a client secret for authentication. 
 
 ### Set endpoint creation permissions
 
@@ -222,9 +224,9 @@ After setting endpoint creation permissions, you can create endpoints for Azure 
 
 ### Create an endpoint for Azure AD or AD FS deployments
 
-Follow the instructions in [Create an Azure Resource Manager service connection with an existing service principal](/azure/devops/pipelines/library/connect-to-azure#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) to create the service connection endpoint. 
+Follow the instructions in [Create an Azure Resource Manager service connection with an existing service principal](/azure/devops/pipelines/library/connect-to-azure#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) to create the service connection endpoint.  
 
-For an Azure AD endpoint, use the following values to fill out the form:
+Use the following values to fill out the form. To create an AD FS endpoint, select **Certificate** instead of **Service principal key**, and paste the contents of the *.pem* certificate file in the **Certificate** field,
 
 | Name | Example | Description |
 | --- | --- | --- |
@@ -235,15 +237,11 @@ For an Azure AD endpoint, use the following values to fill out the form:
 | **Subscription ID** | 00000000-XXXX-XXXX-XXXX-000000000000 | Your subscription ID. |
 | **Subscription name** | admin@northwind.com | Your user name from Azure Stack. |
 | **Service principal client ID** | 000000000-XXXX-XXXX-XXXX-000000000000 | The **Application (client) ID** you saved previously. |
-| **Service principal key** | aA1!bB2@cC3#dD4$xX0=xX0=xX0=xX0= | The key value you saved when you created the application secret.  |
+| **Certificate** <br />or<br />**Service principal key**| [value]<br />or<br />aA1!bB2@cC3#dD4$xX0=xX0=xX0=xX0= | The contents of the *.pem* certificate file. Include both the certificate and​ private key sections​. <br />**Note:** To convert a *.pfx* to a *.pem* certificate file, run `openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>`.<br />or<br />The value you saved when you created the application secret.  |
 | **Tenant ID** | 00000000-XXXX-XXXX-XXXX-000000000000 | The **Directory (tenant) ID** you saved previously.  |
 | **Connection: Not verified** | | Select **Verify connection** to validate your connection settings to the service principal. <br />**Note:** If your Azure Resource Manager endpoint isn't exposed to the internet, the connection validation will fail. This is expected, and you can validate your connection by creating a release pipeline with a simple task. |
 
 ![Create Azure AD endpoint](./media/azure-stack-solution-pipeline/endpointform.png)
-
-You can also create a service connection with a certificate instead of a secret key for authentication. You need to use a certificate if you deployed Azure Stack with AD FS as the identity provider. 
-
-To create an AD FS endpoint, use the preceding procedure and values, except select **Certificate** instead of **Service principal key**. In the **Certificate** field, paste the contents of the *.pem* certificate file. Include both the certificate and​ private key sections​. To convert a *.pfx* to a *.pem* certificate file, run `openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>`.
 
 ## Install and configure the build agent 
 
