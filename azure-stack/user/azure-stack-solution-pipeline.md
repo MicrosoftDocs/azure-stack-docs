@@ -225,15 +225,15 @@ After setting endpoint creation permissions, you can create endpoints for Azure 
 
 Follow the instructions in [Create an Azure Resource Manager service connection with an existing service principal](/azure/devops/pipelines/library/connect-to-azure#create-an-azure-resource-manager-service-connection-with-an-existing-service-principal) to create the service connection endpoint.  
 
-In the **Add an Azure Resource Manager service connection** form, be sure to select the link to **use the full version of the service connection dialog**. 
-
 Use the following values to fill out the form: 
 
 - **Connection name**: Enter a user-friendly name to use when referring to this service connection.
   
-- **Environment**: Select the environment name.
+- **Environment**: Select the environment name, such as **AzureCloud** or **AzureStack**. If you don't see AzureStack in the dropdown, see [Connect to Azure Stack](/azure/devops/pipelines/library/connect-to-azure?view=azure-devops#connect-to-azure-stack).
   
-- **Scope level**: Select the scope level you need. 
+- **Environment URL**: If you didn't select **AzureCloud**, enter your environment URL, such as *https:\//management.local.azurestack.external*.
+  
+- **Scope level**: Select the scope level you need, such as **Subscription**. 
   
 - **Subscription ID**: Enter your Subscription ID.
   
@@ -257,9 +257,7 @@ Use the following values to fill out the form:
 - **Connection: Not verified**: Select **Verify connection** to validate your connection settings to the service principal.
   
   > [!NOTE]
-  > If your Azure Resource Manager endpoint isn't exposed to the internet, the connection validation will fail. This is expected, and you can validate your connection by creating a release pipeline with a simple task. |
-
-![Create Azure AD endpoint](./media/azure-stack-solution-pipeline/endpointform2.png)
+  > If your Azure Resource Manager endpoint isn't exposed to the internet, the connection validation will fail. This is expected, and you can validate your connection by creating a release pipeline with a simple task.
 
 ## Install and configure the build agent 
 
