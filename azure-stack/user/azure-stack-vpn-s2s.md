@@ -74,26 +74,26 @@ The following table lists the supported cryptographic algorithms and key strengt
 | IPsec Integrity                                      | GCMASE256, GCMAES192, GCMAES128, SHA256, SHA1, MD5                       |
 | PFS Group                                            | PFS24, ECP384, ECP256, PFS2048, PFS2, PFS1, None                         |
 | QM SA Lifetime                                       | (Optional: default values are used if not specified)<br />                         Seconds (integer; min. 300/default 27000 seconds)<br />                         KBytes (integer; min. 1024/default 102400000 KBytes) |
-| Traffic Selector                                     | Policy Based Traffic Selectors are not supported in Azure Stack.         |
+| Traffic Selector                                     | Policy-based Traffic Selectors aren't supported in Azure Stack.         |
 
 - Your on-premises VPN device configuration must match or contain the following algorithms and parameters that you specify on the Azure IPsec/IKE policy:
 
-  - IKE encryption algorithm (Main Mode / Phase 1)
-  - IKE integrity algorithm (Main Mode / Phase 1)
-  - DH Group (Main Mode / Phase 1)
-  - IPsec encryption algorithm (Quick Mode / Phase 2)
-  - IPsec integrity algorithm (Quick Mode / Phase 2)
-  - PFS Group (Quick Mode / Phase 2)
-  - The SA lifetimes are local specifications only, do not need to match.
+  - IKE encryption algorithm (Main Mode / Phase 1).
+  - IKE integrity algorithm (Main Mode / Phase 1).
+  - DH Group (Main Mode / Phase 1).
+  - IPsec encryption algorithm (Quick Mode / Phase 2).
+  - IPsec integrity algorithm (Quick Mode / Phase 2).
+  - PFS Group (Quick Mode / Phase 2).
+  - The SA lifetimes are local specifications only,  they don't need to match.
 
-- If GCMAES is used as for IPsec Encryption algorithm, you must select the same GCMAES algorithm and key length for IPsec integrity; for example, using GCMAES128 for both.
+- If GCMAES is used as for IPsec Encryption algorithm, you must select the same GCMAES algorithm and key length for IPsec integrity. For example: using GCMAES128 for both.
 
 - In the preceding table:
 
-  - IKEv2 corresponds to Main Mode or Phase 1
-  - IPsec corresponds to Quick Mode or Phase 2
-  - DH Group specifies the Diffie-Hellmen Group used in Main Mode or Phase 1
-  - PFS Group specified the Diffie-Hellmen Group used in Quick Mode or Phase 2
+  - IKEv2 corresponds to Main Mode or Phase 1.
+  - IPsec corresponds to Quick Mode or Phase 2.
+  - DH Group specifies the Diffie-Hellmen Group used in Main Mode or Phase 1.
+  - PFS Group specifies the Diffie-Hellmen Group used in Quick Mode or Phase 2.
 
 - IKEv2 Main Mode SA lifetime is fixed at 28,800 seconds on the Azure Stack VPN gateways.
 
