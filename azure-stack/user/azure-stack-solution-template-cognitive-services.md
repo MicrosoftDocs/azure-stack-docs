@@ -141,7 +141,7 @@ Details about the key fields:
 | ImageLocation | Indicates the location of the specific cognitive service container image in ACR. For example, the face service: `aicpppe.azurecr.io/microsoft/cognitive-services-face` |
 | BillingURL |The Endpoint URL noted in the step [Create Azure Resource](#create-azure-resources) |
 | ApiKey | The subscription key noted in the step [Create Azure Resource](#create-azure-resources) |
-| SecretName | The secret name you created in the step [Create a Kubernetes secret(#create-a-kubernetes-secret) |
+| SecretName | The secret name you created in the step [Create a Kubernetes secret](#create-a-kubernetes-secret) |
 
 ## Deploy the cognitive service
 
