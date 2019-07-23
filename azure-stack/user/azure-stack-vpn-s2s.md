@@ -235,12 +235,12 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupNam
 
 The previous section showed how to manage IPsec/IKE policy for an existing site-to-site connection. The following section walks through the following operations on a connection:
 
-1. Show the IPsec/IKE policy of a connection
-2. Add or update the IPsec/IKE policy to a connection
-3. Remove the IPsec/IKE policy from a connection
+1. Show the IPsec/IKE policy of a connection.
+2. Add or update the IPsec/IKE policy to a connection.
+3. Remove the IPsec/IKE policy from a connection.
 
 > [!NOTE]
-> IPsec/IKE policy is supported on *Standard* and *HighPerformance* route-based VPN gateways only. It does not work on the *Basic* gateway SKU.
+> IPsec/IKE policy is supported on *Standard* and *HighPerformance* route-based VPN gateways only. It doesn't work on the *Basic* gateway SKU.
 
 ### 1. Show the IPsec/IKE policy of a connection
 
@@ -266,7 +266,7 @@ DhGroup : DHGroup14
 PfsGroup : None
 ```
 
-If there is no IPsec/IKE policy configured, the command `$connection6.policy` gets an empty return. It does not mean that IPsec/IKE is not configured on the connection; it means there is no custom IPsec/IKE policy. The actual connection uses the default policy negotiated between your on-premises VPN device and the Azure VPN gateway.
+If there's no IPsec/IKE policy configured, the command `$connection6.policy` gets an empty return. It doesn't mean that IPsec/IKE isn't configured on the connection; it means there's no custom IPsec/IKE policy. The actual connection uses the default policy negotiated between your on-premises VPN device and the Azure VPN gateway.
 
 ### 2. Add or update an IPsec/IKE policy for a connection
 
