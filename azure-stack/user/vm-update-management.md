@@ -133,7 +133,3 @@ If you have a large number of Azure Stack VMs, you can use [this Azure Resource 
  
 ## Next steps
 [Optimize SQL Server VM performance](azure-stack-sql-server-vm-considerations.md)
-
-
-
-
