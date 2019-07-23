@@ -231,9 +231,9 @@ Use the following values to fill out the form:
 
 - **Connection name**: Enter a user-friendly name to use when referring to this service connection.
   
-- **Environment**: Select the environment name, such as **Azure Cloud**.
+- **Environment**: Select the environment name.
   
-- **Scope level**: Select the scope level you need, such as **Subscription**. 
+- **Scope level**: Select the scope level you need. 
   
 - **Subscription ID**: Enter your Subscription ID.
   
@@ -241,12 +241,16 @@ Use the following values to fill out the form:
   
 - **Service principal client ID**: Enter the **Application (client) ID** you saved previously. 
   
-- **Service principal key** or **Certificate**: Select one or the other option. To create an AD FS endpoint, you must use a Certificate for authentication. 
-  - For **Service principal key**, enter the client secret value you saved earlier.
-  - If you choose **Certificate**, enter the contents of both the certificate and private key sections of the *.pem* certificate file. 
+- **Service principal key** or **Certificate**: Select one or the other option. 
   
   > [!NOTE]
-  > To convert a *.pfx* to a *.pem* certificate file, run `openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>`.
+  > To create an AD FS endpoint, you must use a Certificate for authentication. 
+  
+  - For **Service principal key**, enter the client secret value you saved earlier.
+  - If you choose **Certificate**, enter the contents of both the certificate and private key sections of the *.pem* certificate file. 
+    
+    > [!NOTE]
+    > To convert a *.pfx* to a *.pem* certificate file, run `openssl pkcs12 -in file.pfx -out file.pem -nodes -password pass:<password_here>`.
   
 - **Tenant ID**; Enter the **Directory (tenant) ID** you saved previously.
   
