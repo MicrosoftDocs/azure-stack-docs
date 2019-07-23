@@ -22,7 +22,7 @@ ms.lastreviewed: 05/07/2019
 This article walks through the steps to configure an IPsec/IKE policy for site-to-site (S2S) VPN connections in Azure Stack.
 
 >[!NOTE]
-> You must be running Azure Stack build **1809** or later in order to use this feature.  If you are currently running a build prior to 1809, please update your Azure Stack system to the latest build before attempting to use this feature or follow the steps in this article.
+> You must be running Azure Stack build **1809** or later to use this feature.  If you're currently running a build prior to 1809, update your Azure Stack system to the latest build before proceeding with the steps in this article.
 
 ## IPsec and IKE policy parameters for VPN gateways
 
@@ -38,9 +38,9 @@ Note the following important considerations when using these policies:
 
 - You can only specify **one** policy combination for a given connection.
 
-- You must specify all algorithms and parameters for both IKE (Main Mode) and IPsec (Quick Mode). Partial policy specification is not allowed.
+- You must specify all algorithms and parameters for both IKE (Main Mode) and IPsec (Quick Mode). Partial policy specification isn't allowed.
 
-- Consult with your VPN device vendor specifications to ensure the policy is supported on your on-premises VPN devices. Site-to-site connections cannot be established if the policies are incompatible.
+- Consult with your VPN device vendor specifications to ensure the policy is supported on your on-premises VPN devices. Site-to-site connections can't be established if the policies are incompatible.
 
 ## Part 1 - Workflow to create and set IPsec/IKE policy
 
