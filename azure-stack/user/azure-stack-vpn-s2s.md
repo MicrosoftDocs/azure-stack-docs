@@ -1,6 +1,6 @@
 ---
-title: Configure Azure Stack site-to-site VPN connections | Microsoft Docs
-description: Learn about IPsec/IKE policy for site-to-site VPN or VNet-to-VNet connections in Azure Stack
+title: Configure IPsec/IKE site-to-site VPN connections | Microsoft Docs
+description: Learn about and configure IPsec/IKE policy for site-to-site VPN or VNet-to-VNet connections in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -26,7 +26,7 @@ This article walks through the steps to configure an IPsec/IKE policy for site-t
 
 ## IPsec and IKE policy parameters for VPN gateways
 
-The IPsec and IKE protocol standard supports a wide range of cryptographic algorithms in various combinations. To see which parameters are supported in Azure Stack, see [IPsec/IKE parameters](azure-stack-vpn-gateway-settings.md#ipsecike-parameters), which can help satisfy your compliance or security requirements.
+The IPsec and IKE protocol standard supports a wide range of cryptographic algorithms in various combinations. To see which parameters are supported in Azure Stack so you can satisfy your compliance or security requirements, see [IPsec/IKE parameters](azure-stack-vpn-gateway-settings.md#ipsecike-parameters).
 
 This article provides instructions on how to create and configure an IPsec/IKE policy and apply to a new or existing connection.
 
@@ -125,7 +125,7 @@ Before you begin, make sure you have the following prerequisites:
 
 - An Azure subscription. If you don't already have an Azure subscription, you can activate your [MSDN subscriber benefits](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), or sign up for a [free account](https://azure.microsoft.com/pricing/free-trial/).
 
-- The Azure Resource Manager PowerShell cmdlets. See [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md) for more information about installing the PowerShell cmdlets.
+- The Azure Resource Manager PowerShell cmdlets. For more info on installing the PowerShell cmdlets, see [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md).
 
 ### Step 1 - Create the virtual network, VPN gateway, and local network gateway
 
@@ -219,7 +219,7 @@ If you use GCMAES for IPsec, you must use the same GCMAES algorithm and key leng
 
 #### 2. Create the site-to-site VPN connection with the IPsec/IKE policy
 
-Create an site-to-site VPN connection and apply the IPsec/IKE policy you created previously.
+Create a site-to-site VPN connection and apply the IPsec/IKE policy you created previously.
 
 ```powershell
 $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1
