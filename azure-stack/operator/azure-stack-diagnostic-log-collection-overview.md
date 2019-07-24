@@ -63,7 +63,7 @@ For more information about collecting logs on demand, see [Collect Azure Stack d
 
 The average size of diagnostic log collection varies based on whether log collection is on-demand or automatic. 
 The average size for automatic log collection is around 2 GB. 
-The average size for on-demand log collection dependes on how many hours are being collected. 
+The average size for on-demand log collection depends on how many hours are being collected. 
 
 The following table can help environments with limited or metered connections to Azure consider the impact of enabling automatic log collection.
 
