@@ -80,7 +80,7 @@ Beginning with the 1907 release, there are two new ways to collect logs in **Hel
 
 Integrated systems can share the diagnostic logs with Microsoft Customer Support Service (CSS). As an evaluation environment, the Azure Stack Development Kit (ASDK) is not supported by CSS. For more information, see [Azure Stack diagnostic log collection overview](azure-stack-diagnostic-log-collection-overview.md).
 
-operators can use Help + support to collect diagnostic logs for troubleshooting
+
 
 ## Help and support for earlier releases Azure Stack (pre-1905)
 
