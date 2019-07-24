@@ -35,7 +35,7 @@ The logs can be stored in a blob container in Azure and access can be restricted
 **Diagnostic log collection** can collect diagnostic logs in two different ways:
 
 - **Automatic collection**: If enabled, log collection is triggered by specific health alerts 
-- **Collect logs now**: You choose a 1-4 hour time period from the last week
+- **Collect logs now**: You choose a 1-4 hour sliding window from the last seven days
 
 ![Screenshot of diagnostic log collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
 
