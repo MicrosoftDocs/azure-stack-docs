@@ -34,7 +34,7 @@ Set up one container for every Azure Stack stamp you want to collect logs from. 
 
 ## Retention policy
 
-You should use StorageV2 [lifecycle management](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) to manage the log retention policy. We suggest that logs be retained for 30 days. 
+ Create an Azure Blob storage [lifecycle management policy](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) to manage the log retention policy. We suggest retaining diagnostic logs for 30 days. 
 
 
 ## SAS token expiration

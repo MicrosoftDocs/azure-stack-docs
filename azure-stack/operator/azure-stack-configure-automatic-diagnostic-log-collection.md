@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2019
+ms.date: 07/24/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/18/2019
+ms.lastreviewed: 07/24/2019
 
 ---
 # Configure automatic Azure Stack diagnostic log collection
@@ -49,7 +49,7 @@ For best practices about choosing parameters for the automatic log collection st
    - **Storage account name**: Specify a unique storage account name.
    - **Location**: Choose a datacenter in accordance with your company policy.
    - **Performance**: Choose Standard.
-   - **Account kind** Choose StorageV2. 
+   - **Account kind** Choose StorageV2 (general purpose v2). 
    - **Replication**: Choose Locally-redundant storage (LRS)
    = **Access-tier**: Choose Cold
 
@@ -107,7 +107,5 @@ The **From Date** is the start of the time period for which you want to collect 
 
 Automatic log collection can be disabled and re-enabled anytime. The SAS URL configuration won't change. If automatic log collection is re-enabled, the previously entered SAS URL will undergo the same validation checks, and an expired SAS URL will be rejected. 
 
-
-<!--- what alerts trigger collection--->
 
 

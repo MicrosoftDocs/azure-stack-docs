@@ -73,8 +73,8 @@ This set of tutorials is customized depending on whether you're running the ASDK
 
 Beginning with the 1907 release, there are two new ways to collect logs in **Help and Support**:
 
-- **Collect logs now**: You choose a 1-4 hour sliding window from the last seven days
 - **Automatic collection**: If enabled, log collection is triggered by specific health alerts 
+- **Collect logs now**: You choose a 1-4 hour sliding window from the last seven days
 
 ![Screenshot of diagnostic log collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
 
