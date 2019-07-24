@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2019
+ms.date: 07/24/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/17/2019
+ms.lastreviewed: 07/24/2019
 
 ---
 # Microsoft Azure Stack help and support
@@ -71,7 +71,7 @@ This set of tutorials is customized depending on whether you're running the ASDK
 
 ## Diagnostic log collection
 
-Beginning with the 1907 release, there are two new ways to collect logs in **Help and Support**:
+Beginning with the 1907 release, there are two new ways to collect logs in **Help and support**:
 
 - **Automatic collection**: If enabled, log collection is triggered by specific health alerts 
 - **Collect logs now**: You choose a 1-4 hour sliding window from the last seven days
