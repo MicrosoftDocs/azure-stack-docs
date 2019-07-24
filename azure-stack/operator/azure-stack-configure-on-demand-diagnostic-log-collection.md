@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2019
+ms.date: 07/24/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/18/2019
+ms.lastreviewed: 07/24/2019
 
 ---
 # Collect Azure Stack diagnostic logs now (on demand)
@@ -32,13 +32,12 @@ CSS might need you to collect the logs on demand and save them in a designated b
 If CSS provides a SAS URL for saving diagnostic logs, follow these steps to configure on-demand log collection:
 
 1. Open **Help and Support Overview** and click **Collect logs now**. 
-1. Choose any 1-4 hour sliding window from the last seven days, and enter the SAS URL that CSS provided.
+1. Choose a 1-4 hour sliding window from the last seven days, and enter the SAS URL that CSS provided.
 
    ![Screenshot of on-demand log collection](media/azure-stack-automatic-log-collection/collect-logs-now.png)
 
-
 >[!NOTE]
->If automatic diagnostic log collection enabled, **Help and Support** shows when log collection is in progress. If you click **Collect logs now** to collect logs from a specfic time while automatic log collection is in progress, on-demand collection begins after automatic log collection is complete. 
+>If automatic diagnostic log collection is enabled, **Help and Support** shows when log collection is in progress. If you click **Collect logs now** to collect logs from a specfic time while automatic log collection is in progress, on-demand collection begins after automatic log collection is complete. 
 
 ## Using PEP
 

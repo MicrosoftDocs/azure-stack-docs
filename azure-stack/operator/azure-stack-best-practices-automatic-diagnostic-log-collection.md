@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2019
+ms.date: 07/24/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/18/2019
+ms.lastreviewed: 07/24/2019
 
 ---
 # Best practices for automatic Azure Stack log collection 
@@ -34,7 +34,7 @@ Set up one container for every Azure Stack stamp you want to collect logs from. 
 
 ## Retention policy
 
- Create an Azure Blob storage [lifecycle management policy](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) to manage the log retention policy. We suggest retaining diagnostic logs for 30 days. 
+Create an Azure Blob storage [lifecycle management rule](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) to manage the log retention policy. We suggest retaining diagnostic logs for 30 days. To create a lifecycle managment rule in Azure storage, sign in to the Azure portal, click **Storage accounts**, click the blob container, and under **Blob service**, click **Lifecycle Management**.
 
 
 ## SAS token expiration
@@ -65,6 +65,6 @@ At most, it could potentially run up to ten times in a day in a worst-case scena
 Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors such as data redundancy. 
 If you don't have an existing storage account, you can sign in to the Azure portal, click **Storage accounts**, and follow the steps to [create an Azure blob container SAS URL](azure-stack-configure-automatic-diagnostic-log-collection.md).
 
-As a best practice, you should use StorageV2 [lifecycle management](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) to reduce ongoing storage costs. For more information about how to set up the storage account, see [Configure automatic Azure Stack diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md).
+As a best practice, create an Azure Blob storage [lifecycle management policy](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) to reduce ongoing storage costs. For more information about how to set up the storage account, see [Configure automatic Azure Stack diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md).
 
 
