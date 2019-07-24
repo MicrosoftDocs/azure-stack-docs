@@ -51,7 +51,7 @@ For best practices about choosing parameters for the automatic log collection st
    - **Performance**: Choose Standard.
    - **Account kind** Choose StorageV2 (general purpose v2). 
    - **Replication**: Choose Locally-redundant storage (LRS)
-   - **Access-tier**: Choose Cold
+   - **Access tier**: Choose Cool
 
    ![Screenshot showing the blob container properties](media/azure-stack-automatic-log-collection/azure-stack-log-collection-create-storage-account.png)
 
