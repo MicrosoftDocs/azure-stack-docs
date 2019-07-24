@@ -98,6 +98,9 @@ Follow these steps to add the SAS URL to the log collection UI:
 
    ![Screenshot shows blob SAS URL](media/azure-stack-automatic-log-collection/azure-stack-enable-automatic-log-collection.png)
 
+>[!NOTE]
+>Automatic log collection can be disabled and re-enabled anytime. The SAS URL configuration won't change. If automatic log collection is re-enabled, the previously entered SAS URL will undergo the same validation checks, and an expired SAS URL will be rejected. 
+
 
 ## View log collection
 
@@ -109,9 +112,7 @@ The **From Date** is the start of the time period for which you want to collect 
 
 If diagnostic log collection fails multiple times, call Microsoft CSS for help. 
 
-## Disabling collection
 
-Automatic log collection can be disabled and re-enabled anytime. The SAS URL configuration won't change. If automatic log collection is re-enabled, the previously entered SAS URL will undergo the same validation checks, and an expired SAS URL will be rejected. 
 
 
 

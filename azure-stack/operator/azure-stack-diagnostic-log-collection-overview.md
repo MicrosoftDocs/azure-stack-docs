@@ -23,12 +23,12 @@ ms.lastreviewed: 07/24/2019
 
 *Applies to: Azure Stack integrated systems*
 
-Azure Stack is a large collection of components working together and interacting with each other. All these components generate their own unique logs. This can make diagnosing issues a challenging task, especially for errors coming from multiple, interacting Azure Stack components. In order to address this callenge, we have designed a diagnostic log collection experience. 
+Azure Stack is a large collection of components working together and interacting with each other. All these components generate their own unique logs. This can make diagnosing issues a challenging task, especially for errors coming from multiple, interacting Azure Stack components. In order to address this challenge, we have designed a diagnostic log collection experience. 
 
-Prior to 1907, the diagnostic experience included using [the Azure Stack validation tool (Test-AzureStack)](azure-stack-diagnostic-test.md) to check system health and using [the privileged endpoint (PEP)](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) to collect necessary logs. 
+Prior to 1907, the diagnostic experience included using [Test-AzureStack](azure-stack-diagnostic-test.md) to validate system health and using [the privileged endpoint (PEP)](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) to collect logs for troubleshooting. 
 
-Beginning with the 1907 release, Azure Stack adds a simpler experience using the **Diagnostic log collection** in the **Help and Support** page. 
-**Diagnostic log collection** is part of an ongoing investment to improve Azure Stack operator's experience with troubleshooting problems. 
+Beginning with the 1907 release, the **Help and Support** page adds a simpler the experience using **Diagnostic log collection**. 
+**Diagnostic log collection** is part of an ongoing investment to improve Azure Stack operator's experience with the troubleshooting process. 
 With these improvements, operators can quickly collect and share diagnostic logs with Microsoft Customer Support Services (CSS). 
 The logs can be stored in a blob container in Azure, where access can be customized as needed.    
    
@@ -39,8 +39,8 @@ The logs can be stored in a blob container in Azure, where access can be customi
 
 ![Screenshot of diagnostic log collection options](media/azure-stack-automatic-log-collection/azure-stack-log-collection-overview.png)
 
-**Diagnostic log collection** has a simple user interface and doesn't require PowerShell. 
-Logs are reliably collected even when some of the infrastructure services are down.
+**Diagnostic log collection** has an easy user interface and doesn't require PowerShell. 
+Logs get collected reliably even if infrastructure services are down.
 If your policy allows sharing diagnostic logs with CSS, **Diagnostic log collection** is the recommended collection method beginning with the 1907 release. 
 You should only use [the PEP](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) to collect logs if **Diagnostic log collection** in Help and Support is unavailable.
 
@@ -61,17 +61,16 @@ For more information about collecting logs on demand, see [Collect Azure Stack d
 
 ## Bandwidth considerations
 
-The average size of diagnostic log collection varies based on whether log collection is on-demand or automatic. 
-The average size for automatic log collection is around 2 GB. 
-The average size for on-demand log collection dependes on how many hours are being collected. 
+The average size of diagnostic log collection varies based on whether it runs on-demand or automatic. 
+The average size for automatic log collection is around 2 GB, whereas on-demand log collection size depends on how many hours are being collected. 
 
-The following table can help environments with limited or metered connections to Azure consider the impact of enabling automatic log collection.
+The following table lists considerations for environments with limited or metered connections to Azure.
 
 | Network connection | Impact |
 |--------------------|--------|
 | Low-bandwidth/high-latency connection | Log upload will take an extended amount of time to complete | 
-| Shared connection | The upload may also impact other applications/users sharing the network connection. |
-| Metered connection | There may be an additional charge from your ISP for the additional network usage. |
+| Shared connection | The upload may also impact other applications/users sharing the network connection |
+| Metered connection | There may be an additional charge from your ISP for the additional network usage |
 
 For more information, see [Best practices for automatic Azure Stack log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md).
 
