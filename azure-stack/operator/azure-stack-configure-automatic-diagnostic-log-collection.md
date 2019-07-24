@@ -55,24 +55,29 @@ For best practices about choosing parameters for the automatic log collection st
 
    ![Screenshot showing the blob container properties](media/azure-stack-automatic-log-collection/azure-stack-log-collection-create-storage-account.png)
 
-1. Click **Review + create**.  
+1. Click **Review + create** and then click **Create**.  
 
 ### Create a blob container 
 
 1. After the deployment succeeds, click **Go to resource**. You can also pin the storage account to the Dashboard for easy access. 
-1. Click **Storage Explorer (preview)**, right-click **Blob containers**, and click **Create new blob container**. 
+1. Click **Storage Explorer (preview)**, right-click **Blob containers**, and click **Create blob container**. 
 1. Enter a name for the new container and click **OK**.
 
 ## Create a SAS URL
 
-1. Right-click the container, click **Get Shared Access Signature**, and choose these properties:
+1. Right-click the container, click **Get Shared Access Signature**. 
+   
+   ![Screenshot showing how to get the shared access signature of a blob container](media/azure-stack-automatic-log-collection/get-sas.png)
+
+1. Choose these properties:
    - Start time: You can optionally move the start time back 
    - Expiry time: Two years
    - Time zone: UTC
    - Permissions: Read, Write, and List
-1. Click **Create**.  
 
-<!--- add screenshot with Read, Write, and List. I did not have perms to do it--->
+   ![Screenshot showing shared access signature properties](media/azure-stack-automatic-log-collection/sas-properties.png) 
+
+1. Click **Create**.  
 
 Copy the URL and enter it when you [configure automatic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md). 
 For more information about SAS URLs, see [Using shared access signatures (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1). 
