@@ -46,19 +46,25 @@ Set the SAS URL expiry to two years. If you ever renew your storage account keys
 
 The average size of diagnostic log collection varies based on whether log collection is on-demand or automatic. 
 
-For on-demand log collection, the size of the logs collection depends on how many hours are being collected. You can choose any 1-4 sliding window from the last seven days. 
-
->[!CAUTION]
->Don't enable automatic log collection if you are using a low-bandwidth, high-latency link. In this case, only use on-demand log collection. 
+For on-demand log collection, the size of the logs collection depends on how many hours are being collected. You can choose any 1-4 hour sliding window from the last seven days. 
 
 When automatic diagnostic log collection is enabled, the service monitors for critical alerts. 
-After a critical alert occurs and persists for around 30 minutes, the service collects and uploads appropriate logs. 
+After a critical alert gets raised and persists for around 30 minutes, the service collects and uploads appropriate logs. 
 This log collection size is around 2 GB on average. 
 Alert monitoring, log collection, and upload are transparent to the user. 
 
 In a healthy system, logs will not be collected at all. 
 In an unhealthy system, log collection may run two or three times in a day, but typically only once. 
 At most, it could potentially run up to ten times in a day in a worst-case scenario.  
+
+The following table can help environments with limited or metered connections to Azure consider the impact of enabling automatic log collection.
+
+| Network connection | Impact |
+|--------------------|--------|
+| Low-bandwidth/high-latency connection | Log upload will take an extended amount of time to complete | 
+| Shared connection | The upload may also impact other applications/users sharing the network connection. |
+| Metered connection | There may be an additional charge from your ISP for the additional network usage. |
+
 
 ## Managing costs
 
