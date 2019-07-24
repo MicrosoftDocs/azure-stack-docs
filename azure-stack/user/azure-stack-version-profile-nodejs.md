@@ -24,7 +24,7 @@ ms.lastreviewed: 07/25/2019
 
 ## Node.js and API version profiles
 
-You can use Node.js SDK to help build and manage the infrastructure for your apps. The API profiles in the Node.js SDK assist with your hybrid cloud solutions by letting you switch between global Azure resources and Azure Stack resources. You can code once and then target both global Azure and Azure Stack.
+You can use Node.js SDK to help build and manage the infrastructure for your apps. The API profiles in the Node.js SDK assist with your hybrid cloud solutions by letting you switch between global Azure resources and Azure Stack resources. You can code once and then target both global Azure and Azure Stack. This article will use Visual Studio Code as the development tool. Visual Studio Code can debug node.js SDK and allows you to run the app and push the app to your Azure Stack instance. You can debug from Visual Studio Code or through a terminal window running the command `node index.js`.
 
 The Node.js SDK provides Azure Stack Resource Manager tools. Resource providers in the SDK include compute, networking, storage, app services, and KeyVault. There are 10 resource provider client libraries that you can install in your node.js application. You can also download specify which resource provider you will use for the **2018-03-01-hybrid** or **2019-03-01-profile** in order to optimize the memory for your application. Each module consists of a resource provider, the respective API version, and the API profile. 
 
@@ -218,7 +218,11 @@ function main() {
 
 ## Samples using API Profiles
 
-You can use the following samples as a reference for creating solutions with Node.js and Azure Stack API profiles. You can get the sample from GitHub in the following repository: [Storage-node-resource-provider-getting-started](https://github.com/sijuman/storage-node-resource-provider-getting-started)
+You can use the following samples as a reference for creating solutions with Node.js and Azure Stack API profiles. You can get the samples from GitHub in the following repositories:
+
+- [Storage node resource provider getting started](https://github.com/sijuman/storage-node-resource-provider-getting-started)
+- [Compute node manage](https://github.com/sijuman/compute-node-manage-vm)
+- [Resource-manager node resources and groups](https://github.com/sijuman/resource-manager-node-resources-and-groups)
 
 ### Sample Create Storage Account Project 
 
