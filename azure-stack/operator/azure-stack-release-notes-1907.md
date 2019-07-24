@@ -30,7 +30,7 @@ This article describes the contents of the 1907 update package. The update inclu
 
 ## Build reference
 
-The Azure Stack 1907 update build number is **1.1907.x.xx**.
+The Azure Stack 1907 update build number is **1.1907.0.20**.
 
 ### Update type
 
