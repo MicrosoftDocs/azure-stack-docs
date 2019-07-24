@@ -23,7 +23,7 @@ ms.lastreviewed: 07/24/2019
 
 *Applies to: Azure Stack integrated systems*
 
-Azure Stack is a large collection of components working together and interacting with each other. All these components generate their own unique logs. This can make diagnosing issues a challenging task, especially for errors coming from multiple, interacting Azure Stack components.
+Azure Stack is a large collection of components working together and interacting with each other. All these components generate their own unique logs. This can make diagnosing issues a challenging task, especially for errors coming from multiple, interacting Azure Stack components. In order to address this callenge, we have designed a diagnostic log collection experience. 
 
 Our diagnostics tools help make log collection easy and efficient. For example, operators can use [the privileged endpoint (PEP)](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) to collect logs from all the components in an Azure Stack environment, and [the Azure Stack validation tool (Test-AzureStack)](azure-stack-diagnostic-test.md) can run a series of tests on your system to identify failures. 
 
