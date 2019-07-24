@@ -28,7 +28,7 @@ Beginning with the 1907 release, Azure Stack operators can upload on-demand diag
 
 ## Using Help and Support
 
-To toubleshoot a problem, CSS might request an Azure Stack operator to collect diagnostic logs on demand for a specific time window from the previous week. In that case, CSS will provide the operator with a SAS URL for uploading the collection. 
+To troubleshoot a problem, CSS might request an Azure Stack operator to collect diagnostic logs on demand for a specific time window from the previous week. In that case, CSS will provide the operator with a SAS URL for uploading the collection. 
 Use the following steps to configure on-demand log collection using the SAS URL from CSS:
 
 1. Open **Help and Support Overview** and click **Collect logs now**. 
