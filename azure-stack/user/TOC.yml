@@ -98,7 +98,7 @@
         - name: Python
           href: azure-stack-version-profiles-python.md
         - name: Node.js
-          href: azure-stack-version-profiles-nodejs.md
+          href: azure-stack-version-profile-nodejs.md
         - name: Resource provider APIs supported by profiles
           href: azure-stack-profiles-azure-resource-manager-versions.md
   - name: Use resource providers
