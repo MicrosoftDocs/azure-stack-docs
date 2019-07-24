@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2019
+ms.date: 07/24/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/18/2019
+ms.lastreviewed: 07/24/2019
 
 ---
 # Best practices for automatic Azure Stack log collection 
@@ -34,7 +34,7 @@ Set up one container for every Azure Stack stamp you want to collect logs from. 
 
 ## Retention policy
 
- Create an Azure Blob storage [lifecycle management policy](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) to manage the log retention policy. We suggest retaining diagnostic logs for 30 days. 
+Create an Azure Blob storage [lifecycle management policy](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) to manage the log retention policy. We suggest retaining diagnostic logs for 30 days. 
 
 
 ## SAS token expiration

@@ -66,8 +66,8 @@ For best practices about choosing parameters for the automatic log collection st
 ## Create a SAS URL
 
 1. Right-click the container, click **Get Shared Access Signature**, and choose these properties:
-   - Start time: You can optionally move the start time back. 
-   - Expiry time: Must be at least 7 days but you can increase the number of days to avoid related alerts about upcoming expiration.
+   - Start time: You can optionally move the start time back 
+   - Expiry time: Two years
    - Time zone: UTC
    - Permissions: Read, Write, and List
 1. Click **Create**.  
