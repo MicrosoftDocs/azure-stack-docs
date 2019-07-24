@@ -110,7 +110,7 @@ The **From Date** is the start of the time period for which you want to collect 
 
 <!---view log collection status from Azure Stacck, we have now... the other is view collected logs within the Azure storage account,m so they can make sure logs got uploiaded--->
 
-If diagnostic log collection fails, verify the SAS URL is valid. call Microsoft CSS for help. 
+If diagnostic log collection fails, verify the SAS URL is valid. If failure persists, or in the case of multiple failures, call Microsoft CSS for help. 
 
 
 
