@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/16/2019
+ms.date: 07/24/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/16/2019
+ms.lastreviewed: 07/24/2019
 
 ---
 # Overview of Azure Stack diagnostic log collection 
@@ -61,9 +61,14 @@ For more information about collecting logs on demand, see [Collect Azure Stack l
 
 ## Bandwidth considerations
 
-The average size of a diagnostic log is 4-8 MB. If you are on a constrained line, **Automatic log collection** may use more bandwidth than **Collect logs now**. You can use the following diagram to decide which way to collect diagnostic logs.
+The average size of diagnostic log collection varies based on whether log collection is on-demand or automatic. 
+Automatic log collection size is around 2 GB on average. 
+For on-demand log collection, the size of the logs collection depends on how many hours are being collected. 
 
-![Screenshot of diagnostic log collection options](media/azure-stack-automatic-log-collection/azure-stack-diagnostic-log-decision-tree.png)
+>[!CAUTION]
+>Don't enable automatic log collection if you are using a low-bandwidth, high-latency link. In this case, only use on-demand log collection. 
+
+For more information, see [Best practices for automatic Azure Stack log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md).
 
 ## See also
 
