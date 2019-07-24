@@ -20,31 +20,31 @@ ms.lastreviewed: 03/20/2019
 ---
 
 # Azure Stack VM update and management
-You can use the following Azure Automation solution features to manage Windows and Linux VMs that are deployed using Azure Stack:
+Use the following Azure Automation solution features to manage Windows and Linux virtual machines (VMs) that are deployed using Azure Stack:
 
-- **[Update Management](https://docs.microsoft.com/azure/automation/automation-update-management)**. With the Update Management solution, you can quickly assess the status of available updates on all agent computers and manage the process of installing required updates for these Windows and Linux VMs.
+- **[Update Management](https://docs.microsoft.com/azure/automation/automation-update-management)**: With the Update Management solution, you can quickly assess the status of available updates on all agent computers and manage the process of installing required updates for Windows and Linux VMs.
 
-- **[Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking)**. Changes to installed software, Windows services, Windows registry and files, and Linux daemons on the monitored servers are sent to the Azure Monitor service in the cloud for processing. Logic is applied to the received data and the cloud service records the data. By using the information on the Change Tracking dashboard, you can easily see the changes that were made in your server infrastructure.
+- **[Change Tracking](https://docs.microsoft.com/azure/automation/automation-change-tracking)**: Changes to installed software, Windows services, Windows registry and files, and Linux daemons on the monitored servers are sent to the Azure Monitor service in the cloud for processing. Logic is applied to the received data and the cloud service records the data. By using the information on the Change Tracking dashboard, you can easily see the changes that were made to your server infrastructure.
 
-- **[Inventory](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**. The Inventory tracking for an Azure Stack virtual machine provides a browser-based user interface for setting up and configuring inventory collection.
+- **[Inventory](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**. The Inventory tracking for an Azure Stack VM provides a browser-based user interface for setting up and configuring inventory collection.
 
-- **[Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)**. Azure Monitor for VMs monitors your Azure and Azure Stack virtual machines (VM) and virtual machine scale sets at scale. It analyzes the performance and health of your Windows and Linux VMs, and monitors their processes and dependencies on other resources and external processes. 
+- **[Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)**: Azure Monitor for VMs monitors your Azure and Azure Stack VMs and VM scale sets at scale. It analyzes the performance and health of your Windows and Linux VMs and also monitors their processes and dependencies on other resources and external processes.
 
 > [!IMPORTANT]
-> These solutions are the same as the ones used to manage Azure VMs. Both Azure and Azure Stack VMs are managed in the same way, from the same interface, using the same tools. The Azure Stack VMs are also priced the same as Azure VMs when using the Update Management, Change Tracking, Inventory, and Azure Monitor Virtual Machines solutions with Azure Stack.
+> These solutions are the same as the ones used to manage Azure VMs. Both Azure and Azure Stack VMs are managed in the same way, from the same interface, using the same tools. The Azure Stack VMs are also priced the same as Azure VMs when using the Update Management, Change Tracking, Inventory, and Azure Monitor for VMs solutions with Azure Stack.
 
 ## Prerequisites
 Several prerequisites must be met before using these features to update and manage Azure Stack VMs. These include steps that must be taken in the Azure portal as well as the Azure Stack administration portal.
 
 ### In the Azure portal
-To use the Azure Monitor for VMs, Inventory, Change Tracking, and Update Management Azure automation features for Azure Stack VMs, you first need to enable these solutions in Azure.
+To use the Azure Monitor for VMs, Inventory, Change Tracking, and Update Management Azure Automation features for Azure Stack VMs, you first need to enable these solutions in Azure.
 
 > [!TIP]
-> If you already have these features enabled for Azure VMs, you can use your pre-existing LogAnalytics Workspace credentials. If you already have a LogAnalytics WorkspaceID and Primary Key that you want to use, skip ahead to [the next section](./vm-update-management.md#in-the-azure-stack-administration-portal). Otherwise, continue in this section to create a new LogAnalytics Workspace and automation account.
+> If you've already enabled these features for Azure VMs, you can use your pre-existing LogAnalytics Workspace credentials. If you already have a LogAnalytics WorkspaceID and Primary Key that you want to use, skip ahead to [the next section](./vm-update-management.md#in-the-azure-stack-administration-portal). Otherwise, continue in this section to create a new LogAnalytics Workspace and automation account.
 
-The first step in enabling these solutions is to [create a LogAnalytics Workspace](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace) in your Azure subscription. A Log Analytics workspace is a unique Azure Monitor logs environment with its own data repository, data sources, and solutions. After you have created a workspace, note the WorkspaceID and Key. To view this information, go to the workspace blade, click on **Advanced settings**, and review the **Workspace ID** and **Primary Key** values. 
+The first step in enabling these solutions is to [create a LogAnalytics Workspace](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace) in your Azure subscription. A Log Analytics workspace is a unique Azure Monitor logs environment with its own data repository, data sources, and solutions. After you've created a workspace, note the WorkspaceID and Key. To view this information, go to the workspace blade, click on **Advanced settings**, and review the **Workspace ID** and **Primary Key** values. 
 
-Next, you must [create an Automation Account](https://docs.microsoft.com/azure/automation/automation-create-standalone-account). An Automation Account is a container for your Azure Automation resources. It provides a way to separate your environments or further organize your Automation workflows and resources. Once the automation account is created, you need to enable the Inventory, Change tracking, and Update management features. To do this, follow these steps to enable each feature:
+Next, you must [create an Automation account](https://docs.microsoft.com/azure/automation/automation-create-standalone-account). An Automation account is a container for your Azure Automation resources. It provides a way to separate your environments or further organize your Automation workflows and resources. Once the Automation account is created, you need to enable the Inventory, Change Tracking, and Update Management features. To enable each feature, follow these steps:
 
 1. In the Azure portal, go to the Automation Account that you want to use.
 
@@ -56,7 +56,7 @@ Next, you must [create an Automation Account](https://docs.microsoft.com/azure/a
 
 5. Repeat steps 2-4 to enable all three solutions. 
 
-   [![](media/vm-update-management/1-sm.PNG "Enable automation account features")](media/vm-update-management/1-lg.PNG#lightbox)
+   [![](media/vm-update-management/1-sm.PNG "Enable Azure Automation account features")](media/vm-update-management/1-lg.PNG#lightbox)
 
 ### Enable Azure Monitor for VMs
 
