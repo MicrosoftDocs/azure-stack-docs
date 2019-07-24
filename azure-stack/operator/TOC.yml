@@ -425,10 +425,10 @@
           href: azure-stack-diagnostic-log-collection-overview.md
         - name: Automatic collection
           items:
-          - name: Best practices
-            href: azure-stack-best-practices-automatic-diagnostic-log-collection.md  
           - name: Configure automatic collection
             href: azure-stack-configure-automatic-diagnostic-log-collection.md
+          - name: Best practices
+            href: azure-stack-best-practices-automatic-diagnostic-log-collection.md  
         - name: On-demand collection
           href: azure-stack-configure-on-demand-diagnostic-log-collection.md
     - name: Validation for Azure Stack  

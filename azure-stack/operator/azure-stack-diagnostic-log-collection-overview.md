@@ -46,7 +46,7 @@ You should only need to [use PEP](azure-stack-configure-on-demand-diagnostic-log
 
 ## Automatic diagnostic log collection 
 
-Automatic diagnostic log collection proactively collects diagnostic logs from Azure Stack on a recurring interval to optimize log usage and reduce collection impact on the Azure Stack stamp.
+Automatic diagnostic log collection proactively uploads diagnostic logs from Azure Stack to a storage blob in Azure when certain critical alerts are raised, significantly reducing the time required to share diagnostic logs with CSS.
 
 For more information about automatic log collection, see [Configure automatic Azure Stack diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md).
 
@@ -57,7 +57,7 @@ CSS will provide shared access signature (SAS) URL to a CSS-owned storage blob.
 An Azure Stack operator can click **Collect logs now** to enter the SAS URL. 
 Diagnostic logs get uploaded directly to the CSS blob without needing an intermediate share. 
 
-For more information about collecting logs on demand, see [Collect Azure Stack logs now](azure-stack-configure-on-demand-diagnostic-log-collection.md).
+For more information about collecting logs on demand, see [Collect Azure Stack diagnostic logs now](azure-stack-configure-on-demand-diagnostic-log-collection.md).
 
 ## Bandwidth considerations
 
