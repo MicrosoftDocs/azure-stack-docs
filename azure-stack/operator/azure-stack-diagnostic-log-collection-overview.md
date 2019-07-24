@@ -41,7 +41,7 @@ The logs can be stored in a blob container in Azure and access can be restricted
 
 **Diagnostic log collection** has a simple user interface and doesn't require any PowerShell experience. 
 Logs are reliably collected even when some of the infrastructure services are down.
-If your policy allows sharing diagnostic logs with CSS, **Diagnostic log collection** is the easiest collection method beginning with the 1907 release. 
+If your policy allows sharing diagnostic logs with CSS, **Diagnostic log collection** is the recommended collection method beginning with the 1907 release. 
 You should only need to [use PEP](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) if **Diagnostic log collection** in Help and Support is unavailable.
 
 ## Automatic diagnostic log collection 
@@ -52,9 +52,9 @@ For more information about automatic log collection, see [Configure automatic Az
 
 ## On-demand diagnostic log collection
 
-With on-demand collection, diagnostic logs are collected when an Azure Stack operator requests them. 
+With on-demand collection, diagnostic logs are uploaded from Azure Stack to a storage blob in Azure when an Azure Stack operator manually triggers the collection.
 CSS will provide shared access signature (SAS) URL to a CSS-owned storage blob. 
-An Azure Stack operator enters the SAS URL by using **Collect logs now**. 
+An Azure Stack operator can click **Collect logs now** to enter the SAS URL. 
 Diagnostic logs get uploaded directly to the CSS blob without needing an intermediate share. 
 
 For more information about collecting logs on demand, see [Collect Azure Stack logs now](azure-stack-configure-on-demand-diagnostic-log-collection.md).

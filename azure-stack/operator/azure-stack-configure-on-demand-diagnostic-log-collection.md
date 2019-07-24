@@ -24,7 +24,7 @@ ms.lastreviewed: 07/24/2019
 *Applies to: Azure Stack integrated systems*
 
 As part of troubleshooting, Microsoft Customer Support Services (CSS) may need to analyze diagnostic logs. 
-Beginning with the 1907 release, Azure Stack operators can collect logs on demand by using **Help and Support** in the admin portal or by running the log collection tool (Get-AzureStackLog) using the privileged endpoint (PEP). This topic covers both ways for collecting diagnostic logs on demand.
+Beginning with the 1907 release, Azure Stack operators can upload on-demand diagnostic logs to a blob container in Azure by using **Help and Support**. As an alternative if the portal is unavailble, operators  by running the log collection tool (Get-AzureStackLog) using the privileged endpoint (PEP). This topic covers both ways for collecting diagnostic logs on demand.
 
 ## Using Help and Support
 
