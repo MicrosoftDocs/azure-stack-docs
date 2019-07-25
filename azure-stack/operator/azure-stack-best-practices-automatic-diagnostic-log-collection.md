@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2019
+ms.date: 07/25/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/24/2019
+ms.lastreviewed: 07/25/2019
 
 ---
 # Best practices for automatic Azure Stack log collection 
@@ -51,7 +51,10 @@ For on-demand log collection, the size of the logs collection depends on how man
 When automatic diagnostic log collection is enabled, the service monitors for critical alerts. 
 After a critical alert gets raised and persists for around 30 minutes, the service collects and uploads appropriate logs. 
 This log collection size is around 2 GB on average. 
+In the case of a patch and update failure, only if a critical alert is raised and persists for around 30 minutes will the automatic log collection feature kick off. We recommend that you follow [guidance on monitoring the patch and update](azure-stack-updates.md).
 Alert monitoring, log collection, and upload are transparent to the user. 
+
+
 
 In a healthy system, logs will not be collected at all. 
 In an unhealthy system, log collection may run two or three times in a day, but typically only once. 
