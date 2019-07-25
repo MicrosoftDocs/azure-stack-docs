@@ -73,7 +73,7 @@ The Azure Stack 1904 update build type is **Express**. For more information abou
 - Improved syslog message volume by filtering out unnecessary events and providing a configuration parameter to select desired severity level for forwarded messages. For more information about how to configure the severity level, see [Azure Stack datacenter integration - syslog forwarding](azure-stack-integrate-security.md).
 
 <!--this applied to Bug 1473487 -->
-- Added a new capability to the **Get-AzureStackLog** cmdlet by incorporating an additional parameter, `-OutputSASUri`. You can now collect Azure Stack logs from your environment and store them in the specified Azure Storage blob container. For more information, see [Azure Stack diagnostics](azure-stack-diagnostics.md#examples).
+- Added a new capability to the **Get-AzureStackLog** cmdlet by incorporating an additional parameter, `-OutputSASUri`. You can now collect Azure Stack logs from your environment and store them in the specified Azure Storage blob container. For more information, see [Azure Stack diagnostics](azure-stack-configure-on-demand-diagnostic-log-collection.md#examples).
 
 - Added a new memory check in the **Test-AzureStack** `UpdateReadiness` group, which checks to see if you have enough memory available on the stack for the update to complete successfully.
 
@@ -90,7 +90,7 @@ The Azure Stack 1904 update build type is **Express**. For more information abou
 - Improvements to idempotency of infrastructure backup action plan.
 
 <!--Bug/Task 3139609 -->
-- Improvements to Azure Stack log collection. These improvements reduce the time it takes to retrieve the set of logs. Also, the [Get-AzureStackLog](azure-stack-diagnostics.md#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system) cmdlet no longer generates default logs for the OEM role. You must execute the [Invoke-AzureStackOnDemandLog](azure-stack-diagnostics.md#invoke-azurestackondemandlog) cmdlet, specifying the role to retrieve the OEM logs. For more information , see [Azure Stack diagnostics](azure-stack-diagnostics.md#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system).
+- Improvements to Azure Stack log collection. These improvements reduce the time it takes to retrieve the set of logs. Also, the [Get-AzureStackLog](azure-stack-configure-on-demand-diagnostic-log-collection.md#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system) cmdlet no longer generates default logs for the OEM role. You must execute the [Invoke-AzureStackOnDemandLog](azure-stack-configure-on-demand-diagnostic-log-collection.md#invoke-azurestackondemandlog) cmdlet, specifying the role to retrieve the OEM logs. For more information , see [Azure Stack diagnostics](azure-stack-configure-on-demand-diagnostic-log-collection.md#run-get-azurestacklog-on-an-azure-stack-development-kit-asdk-system).
 
 - Azure Stack now monitors the federation data URL provided for datacenter integration with ADFS. This improves reliability during secret rotation of the customer ADFS instance or farm.
 
