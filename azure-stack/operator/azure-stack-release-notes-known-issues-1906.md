@@ -58,7 +58,7 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 
 ### Subscriptions Properties blade
 - Applicable: This issue applies to all supported releases.
-- Cause: In the administrator portal, the Properties blade for Subscriptions does not load correctly
+- Cause: In the administrator portal, the **Properties** blade for Subscriptions does not load correctly
 - Remediation: You can view these subscriptions properties in the Essentials pane of the Subscriptions Overview blade
 - Occurrence: Common
 
