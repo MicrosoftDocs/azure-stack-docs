@@ -1,6 +1,6 @@
 ---
-title: VM update and management with Azure Stack | Microsoft Docs
-description: Learn how to use the Azure Monitor for VMs, Update Management, Change Tracking, and Inventory solutions in Azure Automation to manage Windows and Linux VMs that are deployed in Azure Stack. 
+title: VM update and management automation in Azure Stack | Microsoft Docs
+description: Learn how to use the Azure Monitor for VMs, Update Management, Change Tracking, and Inventory solutions in Azure Automation to manage Windows and Linux VMs deployed in Azure Stack. 
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -19,7 +19,7 @@ ms.reviewer: rtiberiu
 ms.lastreviewed: 03/20/2019
 ---
 
-# Azure Stack VM update and management
+# VM update and management automation in Azure Stack
 Use the following Azure Automation solution features to manage Windows and Linux virtual machines (VMs) that are deployed using Azure Stack:
 
 - **[Update Management](https://docs.microsoft.com/azure/automation/automation-update-management)**: With the Update Management solution, you can quickly assess the status of available updates on all agent computers and manage the process of installing required updates for Windows and Linux VMs.
@@ -28,7 +28,7 @@ Use the following Azure Automation solution features to manage Windows and Linux
 
 - **[Inventory](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**. The Inventory tracking for an Azure Stack VM provides a browser-based user interface for setting up and configuring inventory collection.
 
-- **[Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)**: Azure Monitor for VMs monitors your Azure and Azure Stack VMs and VM scale sets at scale. It analyzes the performance and health of your Windows and Linux VMs and also monitors their processes and dependencies on other resources and external processes.
+- **[Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)**: Azure Monitor for VMs monitors your Azure and Azure Stack VMs and virtual machine scale sets at scale. It analyzes the performance and health of your Windows and Linux VMs and also monitors their processes and dependencies on other resources and external processes.
 
 > [!IMPORTANT]
 > These solutions are the same as the ones used to manage Azure VMs. Both Azure and Azure Stack VMs are managed in the same way, from the same interface, using the same tools. The Azure Stack VMs are also priced the same as Azure VMs when using the Update Management, Change Tracking, Inventory, and Azure Monitor for VMs solutions with Azure Stack.
@@ -60,7 +60,7 @@ Next, you must [create an Automation account](https://docs.microsoft.com/azure/a
 
 ### Enable Azure Monitor for VMs
 
-Azure Monitor for VMs monitors your Azure VMs and VM scale sets at scale. It analyzes the performance and health of your Windows and Linux VMs and also monitors their processes and dependencies on other resources and external processes.
+Azure Monitor for VMs monitors your Azure VMs and virtual machine scale sets at scale. It analyzes the performance and health of your Windows and Linux VMs and also monitors their processes and dependencies on other resources and external processes.
 
 As a solution, Azure Monitor for VMs includes support for monitoring performance and app dependencies for VMs that are hosted on-premises or in another cloud provider. Three key features deliver in-depth insight:
 
