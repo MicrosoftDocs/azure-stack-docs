@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2019
+ms.date: 07/18/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 10/15/2018
+ms.lastreviewed: 07/18/2019
 
 
 ---
@@ -61,7 +61,7 @@ Regardless of how the ASDK was shut down, you should use the following steps to 
    ```
 6. Review the output to ensure that Azure Stack services have restarted successfully.
 
-To learn more about the recommended procedures to properly shut down and restart Azure Stack services, see [Start and stop Azure Stack](../operator/azure-stack-start-and-stop.md). 
+To learn more about the recommended procedures to properly shut down and restart Azure Stack services, see [Start and stop Azure Stack](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep). 
 
 ## Troubleshoot startup and shutdown 
 Perform these steps if Azure Stack services don't successfully start within two hours after you power on your ASDK host computer:
@@ -88,4 +88,4 @@ Perform these steps if Azure Stack services don't successfully start within two 
 If running **Start-AzureStack** results in a failure, visit the [Azure Stack support forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack) to get ASDK troubleshooting support. 
 
 ## Next steps 
-Learn more about Azure Stack diagnostic tool and issue logging, see [Azure Stack diagnostic tools](../operator/azure-stack-diagnostics.md).
+Learn more about Azure Stack diagnostic tool and issue logging, see [Azure Stack diagnostic tools](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep).
