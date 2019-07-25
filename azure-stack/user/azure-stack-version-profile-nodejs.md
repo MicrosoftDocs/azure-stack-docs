@@ -32,7 +32,7 @@ An API profile is a combination of resource providers and API versions. You can 
 
   -   To make use of the latest versions of all the services, use the **latest** profile of the packages.
 
-  -   To use the services compatible with Azure Stack, use the **@azure/arm-resources-profile-hybrid-2019-03-01** or **@azure/arm-storage-profile-2019-03-01-hybrid**
+  -   To use the services compatible with Azure Stack, use the **\@azure/arm-resources-profile-hybrid-2019-03-01** or **\@azure/arm-storage-profile-2019-03-01-hybrid**
 
   -   Each client library has their own package, which can be found in the [npm registry](https://www.npmjs.com/package/@azure/arm-storage-profile-2019-03-01-hybrid).
 
@@ -247,7 +247,7 @@ You can use the following samples as a reference for creating solutions with Nod
     export TENANT_ID=<your tenant id>
     export CLIENT_ID=<your client id>
     export APPLICATION_SECRET=<your client secret>
-    export AZURE_SUBSCRIPTION\_ID=<your subscription id>
+    export AZURE_SUBSCRIPTION_ID=<your subscription id>
     export ARM_ENDPOINT=<your Azure Stack Resource manager URL>
     ```
 
