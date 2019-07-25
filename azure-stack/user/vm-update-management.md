@@ -81,12 +81,12 @@ To enable the Azure Monitor for VMs Map solution and gain insights into the netw
 
    ![Azure Monitor Dependency Agent](media/vm-update-management/2-dependency.PNG) 
 
-## Enable Update Management for Azure Stack virtual machines
+## Enable Update Management for Azure Stack VMs
 Follow these steps to enable update management for Azure Stack VMs.
 
-1. Log into the Azure Stack user portal.
+1. Sign in to the Azure Stack user portal.
 
-2. In the Azure Stack user-portal, go to the Extensions blade of the virtual machines for which you want to enable these solutions, click **+ Add**, select the **Azure Update and Configuration Management** extension, and click **Create**:
+2. In the Azure Stack user-portal, go to the Extensions blade of the VMs for which you want to enable these solutions, click **+ Add**, select the **Azure Update and Configuration Management** extension, and then click **Create**:
 
    [![](media/vm-update-management/3-sm.PNG "VM extension blade")](media/vm-update-management/3-lg.PNG#lightbox)
 
@@ -96,16 +96,16 @@ Follow these steps to enable update management for Azure Stack VMs.
 
 4. As described in the [automation update management documentation](https://docs.microsoft.com/azure/automation/automation-update-management), you need to enable the Update Management solution for each VM that you want to manage. To enable the solution for all VMs reporting to the workspace, select **Update management**, click **Manage machines**, and then select the **Enable on all available and future machines** option.
 
-   [![](media/vm-update-management/5-sm.PNG "Providing the WorkspaceID and Key")](media/vm-update-management/5-lg.PNG#lightbox) 
+   [![](media/vm-update-management/5-sm.PNG "Enable Update Management solution on all machines")](media/vm-update-management/5-lg.PNG#lightbox) 
 
    > [!TIP]
    > Repeat this step to enable each solution for the Azure Stack VMs that report to the workspace. 
   
 After the Azure Update and Configuration Management extension is enabled, a scan is performed twice per day for each managed VM. The API is called every 15 minutes to query for the last update time to determine whether the status has changed. If the status has changed, a compliance scan is initiated.
 
-After the VMs are scanned, they will appear in the Azure Automation account in the Update Management solution: 
+After the VMs are scanned, they'll appear in the Azure Automation account in the Update Management solution: 
 
-   [![](media/vm-update-management/6-sm.PNG "Providing the WorkspaceID and Key")](media/vm-update-management/6-lg.PNG#lightbox) 
+   [![](media/vm-update-management/6-sm.PNG "Azure Automation account in Update Management")](media/vm-update-management/6-lg.PNG#lightbox) 
 
 > [!IMPORTANT]
 > It can take between 30 minutes and 6 hours for the dashboard to display updated data from managed computers.
