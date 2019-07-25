@@ -51,7 +51,7 @@ For on-demand log collection, the size of the logs collection depends on how man
 When automatic diagnostic log collection is enabled, the service monitors for critical alerts. 
 After a critical alert gets raised and persists for around 30 minutes, the service collects and uploads appropriate logs. 
 This log collection size is around 2 GB on average. 
-In the case of a patch and update failure, only if a critical alert is raised and persists for around 30 minutes will the automatic log collection feature kick off. We recommend that you follow [guidance on monitoring the patch and update](azure-stack-updates.md).
+In the case of a patch and update failure, automatic log collection will start only if a critical alert is raised and persists for around 30 minutes. We recommend that you follow [guidance on monitoring the patch and update](azure-stack-updates.md).
 Alert monitoring, log collection, and upload are transparent to the user. 
 
 
