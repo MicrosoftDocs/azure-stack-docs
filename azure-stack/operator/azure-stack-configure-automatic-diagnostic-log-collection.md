@@ -119,6 +119,13 @@ Operators can also check the storage account for automatically collected logs. F
 ![Screenshot shows log collections](media/azure-stack-automatic-log-collection/check-storage-account.png)
 
 
+## See also
+
+[Azure Stack log and customer data handling](https://docs.microsoft.com/azure-stack/operator/azure-stack-data-collection)
+
+[Using shared access signatures (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
+
+[Best practices for automatic Azure Stack log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md)
 
 
 
