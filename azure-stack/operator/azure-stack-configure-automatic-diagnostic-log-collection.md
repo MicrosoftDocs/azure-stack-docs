@@ -112,7 +112,7 @@ The history of logs collected from Azure Stack appears on the **Log collection**
 
 ![Screenshot shows log collections](media/azure-stack-automatic-log-collection/azure-stack-log-collection.png)
 
-If diagnostic log collection fails, verify the SAS URL is valid. If failure persists, or in the case of multiple failures, call Microsoft CSS for help. 
+If diagnostic log collection fails, verify the SAS URL is valid. If failure persists or you see multiple failures, call Microsoft CSS for help. 
 
 Operators can also check the storage account for automatically collected logs. For example, this screenshot shows log collections by using the Storage Explorer preview from the Azure portal:
 
