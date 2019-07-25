@@ -15,7 +15,13 @@
     - name: Checklist for applying updates
       href: azure-stack-release-notes-checklist.md
     - name: Security updates
-      href: azure-stack-release-notes-security-updates-1906.md
+      href: azure-stack-release-notes-security-updates-1907.md
+    - name: 1907 update
+      items:
+      - name: Release notes
+        href: azure-stack-release-notes-1907.md
+      - name: Known issues
+        href: azure-stack-release-notes-known-issues-1907.md
     - name: 1906 update
       items:
       - name: Release notes
@@ -34,8 +40,6 @@
         href: azure-stack-release-notes-1904.md
       - name: Known issues
         href: azure-stack-release-notes-known-issues-1904.md
-    - name: 1903 update
-      href: azure-stack-update-1903.md
 - name: Quickstarts
   expanded: true
   items:
@@ -235,6 +239,8 @@
     items:
     - name: Marketplace overview
       href: azure-stack-marketplace.md
+    - name: Marketplace changes
+      href: azure-stack-marketplace-changes.md
     - name: Download marketplace items
       href: azure-stack-download-azure-marketplace-item.md
     - name: Azure Marketplace items for Azure Stack
@@ -409,16 +415,26 @@
       href: azure-stack-backup-reference.md
   - name: Get support  
     items:
-    - name: Help and Support  
-      href: azure-stack-help-and-support-overview.md
-    - name: Troubleshoot  
+    - name: Help & Support portal 
       items:
-      - name: Known issues
-        href: azure-stack-troubleshooting.md
-      - name: Diagnostics in Azure Stack
-        href: azure-stack-diagnostics.md
-      - name: Validation for Azure Stack
-        href: azure-stack-diagnostic-test.md  
+      - name: Overview      
+        href: azure-stack-help-and-support-overview.md
+      - name: Diagnostic log collection
+        items:
+        - name: Overview 
+          href: azure-stack-diagnostic-log-collection-overview.md
+        - name: Automatic collection
+          items:
+          - name: Configure automatic collection
+            href: azure-stack-configure-automatic-diagnostic-log-collection.md
+          - name: Best practices
+            href: azure-stack-best-practices-automatic-diagnostic-log-collection.md  
+        - name: On-demand collection
+          href: azure-stack-configure-on-demand-diagnostic-log-collection.md
+    - name: Validation for Azure Stack  
+      href: azure-stack-diagnostic-test.md
+    - name: Known issues
+      href: azure-stack-troubleshooting.md
 - name: Reference
   items:
   - name: Azure Stack PowerShell
