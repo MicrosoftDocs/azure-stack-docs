@@ -70,7 +70,7 @@ As a solution, Azure Monitor for VMs includes support for monitoring performance
 
 3. Dependency map that displays the interconnected components with the VM from various resource groups and subscriptions.
 
-After the Log Analytics Workspace is created, you need to enable performance counters in the workspace for collection on Linux and Windows VMs, as well as install and enable the ServiceMap and InfrastructureInsights solution in your workspace. The process is described in the [Deploy Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-onboard#how-to-enable-azure-monitor-for-vms-preview) guide.
+After the Log Analytics Workspace is created, enable the performance counters in the workspace for collection on Linux and Windows VMs. Then, install and enable the ServiceMap and InfrastructureInsights solution in your workspace. The process is described in the [Deploy Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-onboard#how-to-enable-azure-monitor-for-vms-preview) guide.
 
 ### In the Azure Stack admin portal
 After enabling the Azure Automation solutions in the Azure portal, you next need to sign in to the Azure Stack admin portal as a cloud admin and download the **Azure Monitor, Update and Configuration Management** and the **Azure Monitor, Update and Configuration Management for Linux** extension in the Azure Stack marketplace.
@@ -90,11 +90,11 @@ Follow these steps to enable update management for Azure Stack VMs.
 
    [![](media/vm-update-management/3-sm.PNG "VM extension blade")](media/vm-update-management/3-lg.PNG#lightbox)
 
-3. Provide the previously created WorkspaceID and Primary Key to link the agent with the LogAnalytics workspace and click **OK** to deploy the extension.
+3. Provide the previously created WorkspaceID and Primary Key to link the agent with the LogAnalytics workspace. Then click **OK** to deploy the extension.
 
    [![](media/vm-update-management/4-sm.PNG "Providing the WorkspaceID and Key")](media/vm-update-management/4-lg.PNG#lightbox) 
 
-4. As described in the [automation update management documentation](https://docs.microsoft.com/azure/automation/automation-update-management), you need to enable the Update Management solution for each VM that you want to manage. To enable the solution for all VMs reporting to the workspace, select **Update management**, click **Manage machines**, and then select the **Enable on all available and future machines** option.
+4. As described in the [Update Management documentation](https://docs.microsoft.com/azure/automation/automation-update-management), you need to enable the Update Management solution for each VM that you want to manage. To enable the solution for all VMs reporting to the workspace, select **Update management**, click **Manage machines**, and then select the **Enable on all available and future machines** option.
 
    [![](media/vm-update-management/5-sm.PNG "Enable Update Management solution on all machines")](media/vm-update-management/5-lg.PNG#lightbox) 
 
@@ -118,12 +118,12 @@ Once the VM has the **Azure Monitor, Update and Configuration Management**, and 
 > [!TIP]
 > The **Azure Monitor Dependency Agent** extension doesn't require any parameters. The Azure Monitor for VMs Map Dependency agent doesn't transmit any data itself, and it doesn't require any changes to firewalls or ports. The Map data is always transmitted by the Log Analytics agent to the Azure Monitor service, either directly or through the [OMS Gateway](https://docs.microsoft.com/azure/azure-monitor/platform/gateway) if your IT security policies don't allow computers on the network to connect to the internet.
 
-Azure Monitor for VMs includes a set of performance charts that target several key performance indicators (KPIs) to help you determine how well a VM is doing. The charts show resource use over a period of time so you can identify bottlenecks, anomalies, or switch to a perspective listing each machine to view resource use based on the metric selected. While there are many elements to consider when dealing with performance, Azure Monitor for VMs monitors key operating system performance indicators related to processor, memory, network adapter, and disk use. Performance complements the health monitoring feature and helps expose issues that indicate a possible system component failure, support tuning and optimization to achieve efficiency, and support capacity planning.
+Azure Monitor for VMs includes a set of performance charts that target several key performance indicators (KPIs) to help you determine how well a VM is performing. The charts show resource use over a period of time so you can identify bottlenecks and anomalies. You can also switch to a perspective listing each machine to view resource use based on the metric selected. While there are many elements to consider when dealing with performance, Azure Monitor for VMs monitors key operating system performance indicators related to processor, memory, network adapter, and disk use. Performance charts complement the health monitoring feature and help expose issues that indicate a possible system component failure. Azure Monitor for VMs also supports capacity planning and tuning and optimization to achieve efficiency.
 
    ![Azure Monitor VMs Performance tab](https://docs.microsoft.com/azure/azure-monitor/insights/media/vminsights-performance/vminsights-performance-aggview-01.png)
 
-Viewing the discovered app components on Windows and Linux VMs running in Azure Stack can be observed in two ways with Azure Monitor for VMs, from a VM directly or across groups of VMs from Azure Monitor.
-The [Using Azure Monitor for VMs (preview) Map to understand app components](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-maps) article will help you understand the experience between the two perspectives and how to use the Map feature.
+Viewing the discovered app components on Windows and Linux VMs running in Azure Stack can be observed in two ways with Azure Monitor for VMs. The first is from a VM directly and the second is across groups of VMs from Azure Monitor.
+The [Using Azure Monitor for VMs Map to understand app components](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-maps) article will help you understand the experience between the two perspectives and how to use the Map feature.
 
    ![Azure Monitor VMs Map tab](https://docs.microsoft.com/azure/azure-monitor/insights/media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
