@@ -78,5 +78,5 @@ As a best practice, create an Azure Blob storage [lifecycle management policy](h
 
 ## See also
 
-[Configure automatic Azure Stack log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md.md)
+[Configure automatic Azure Stack log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md)
 
