@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2019
+ms.date: 07/25/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/24/2019
+ms.lastreviewed: 07/25/2019
 
 ---
 # Configure automatic Azure Stack diagnostic log collection
@@ -104,13 +104,21 @@ Follow these steps to add the SAS URL to the log collection UI:
 
 ## View log collection
 
-You can see logs that were previously collected on the **Log collection** page in Help and Support. 
-The **Collection time** refers to when the log collection operation began. 
-The **From Date** is the start of the time period for which you want to collect logs and the **To Date** is the end of the time period.
+The history of logs collected from Azure Stack appears on the **Log collection** page in Help and Support, with the following dates and times:
 
-<!---view log collection status from Azure Stacck, we have now... the other is view collected logs within the Azure storage account,m so they can make sure logs got uploiaded--->
+- **Collection time**: When the log collection operation began 
+- **From Date**: Start of the time period for which you want to collect
+- **To Date**: End of the time period
+
+![Screenshot shows log collections](media/azure-stack-automatic-log-collection/azure-stack-log-collection.png)
 
 If diagnostic log collection fails, verify the SAS URL is valid. If failure persists, or in the case of multiple failures, call Microsoft CSS for help. 
+
+Operators can also check the storage account for automatically collected logs. For example, this screenshot shows log collections by using the Storage Explorer preview from the Azure portal:
+
+![Screenshot shows log collections](media/azure-stack-automatic-log-collection/check-storage-account.png)
+
+
 
 
 
