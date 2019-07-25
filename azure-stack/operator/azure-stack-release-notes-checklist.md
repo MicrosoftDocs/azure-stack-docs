@@ -55,6 +55,7 @@ This article contains a checklist of update-related activities for Azure Stack o
 |-----------------------|----------------------------------------------------------------------------------|
 | Apply latest hotfixes | Apply the latest hotfixes applicable to updated version.                          |
 | Retrieve encryption keys | Retrieve the data at rest encryption keys and securely store them outside of your Azure Stack deployment. Follow the [instructions on how to retrieve the keys](azure-stack-security-bitlocker.md). |
+| Re-enable multi-tenancy | In case of a Multi tenanted Azure Stack, [please make sure you configure all guest directory tenants](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-enable-multitenancy#configure-guest-directory) after a successful update |
 
 ## Next steps
 
