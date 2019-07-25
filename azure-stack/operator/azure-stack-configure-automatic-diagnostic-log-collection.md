@@ -23,7 +23,7 @@ ms.lastreviewed: 07/24/2019
 
 *Applies to: Azure Stack integrated systems*
 
-You can streamline the process for troubleshooting problems with Azure Stack by configuring automatic diagnostic log collection. 
+We recommend configuring the automatic diagnostic log collection feature to streamline your log collection and customer support experience. 
 If system health conditions need to be investigated, the logs can be uploaded automatically for analysis by Microsoft Customer Support Services (CSS). 
 
 ## Create an Azure blob container SAS URL 
@@ -98,19 +98,21 @@ Follow these steps to add the SAS URL to the log collection UI:
 
    ![Screenshot shows blob SAS URL](media/azure-stack-automatic-log-collection/azure-stack-enable-automatic-log-collection.png)
 
+>[!NOTE]
+>Automatic log collection can be disabled and re-enabled anytime. The SAS URL configuration won't change. If automatic log collection is re-enabled, the previously entered SAS URL will undergo the same validation checks, and an expired SAS URL will be rejected. 
 
-## View collected logs
+
+## View log collection
 
 You can see logs that were previously collected on the **Log collection** page in Help and Support. 
 The **Collection time** refers to when the log collection operation began. 
 The **From Date** is the start of the time period for which you want to collect logs and the **To Date** is the end of the time period.
 
-![Screenshot of Azure Stack log collection](media/azure-stack-automatic-log-collection/azure-stack-log-collection.png)
+<!---view log collection status from Azure Stacck, we have now... the other is view collected logs within the Azure storage account,m so they can make sure logs got uploiaded--->
+
+If diagnostic log collection fails, verify the SAS URL is valid. If failure persists, or in the case of multiple failures, call Microsoft CSS for help. 
 
 
-## Disabling collection
-
-Automatic log collection can be disabled and re-enabled anytime. The SAS URL configuration won't change. If automatic log collection is re-enabled, the previously entered SAS URL will undergo the same validation checks, and an expired SAS URL will be rejected. 
 
 
 
