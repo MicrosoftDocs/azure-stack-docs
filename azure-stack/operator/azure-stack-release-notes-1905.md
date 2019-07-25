@@ -91,7 +91,7 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
     |12 Nodes|54 vCPU|60 GB|
     |16 Nodes|70 vCPU|76 GB|
   
-- There is now an Azure Stack extension that works on Visual Studio Code. Using the **Azure Account** extension, developers can target Azure Stack by logging in and viewing subscriptions, as well as a number of other services. The Azure Account extension works on both AAD environments as well as ADFS environments and only requires a small change in the user settings of Visual Studio Code to input Azure Stack metadata values. For more information, [see the documentation here](../user/azure-stack-dev-start-vscode-azure.md).
+- There is now an Azure Stack extension that works on Visual Studio Code. Using the **Azure Account** extension, developers can target Azure Stack by logging in and viewing subscriptions, as well as a number of other services. The Azure Account extension works on both AAD environments as well as ADFS environments and only requires a small change in the user settings of Visual Studio Code to input Azure Stack metadata values. Visual Studio Code application requires a service principal to be given permission in order to run on this environment. To do so, please import the identity script from the following link as well as run the the cmdlets that are specified on this documentation. This requires and Update to the Home Directory and Registration of the Guest Tenant Directory for each directory. For more information, [see the documentation here](../user/azure-stack-dev-start-vscode-azure.md).
 
 ### Changes
 
