@@ -30,7 +30,7 @@ With iDNS in Azure Stack, you get the following capabilities, without having to 
 
 - Shared DNS name resolution services for tenant workloads.
 - Authoritative DNS service for name resolution and DNS registration within the tenant virtual network.
-- Recursive DNS service for resolution of internet names from tenant VMs. Tenants no longer need to specify custom DNS entries to resolve internet names (for example, www.bing.com.)
+- Recursive DNS service for resolution of internet names from tenant VMs. Tenants no longer need to specify custom DNS entries to resolve internet names (for example, www\.bing.com.)
 
 You can still bring your own DNS and use custom DNS servers. However, by using iDNS, you can resolve internet DNS names and connect to other VMs in the same virtual network without needing to create custom DNS entries.
 
