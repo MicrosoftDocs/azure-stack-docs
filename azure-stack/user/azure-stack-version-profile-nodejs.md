@@ -24,7 +24,11 @@ ms.lastreviewed: 07/25/2019
 
 ## Node.js and API version profiles
 
-You can use Node.js SDK to help build and manage the infrastructure for your apps. The API profiles in the Node.js SDK assist with your hybrid cloud solutions by letting you switch between global Azure resources and Azure Stack resources. You can code once and then target both global Azure and Azure Stack. This article will use Visual Studio Code as the development tool. Visual Studio Code can debug node.js SDK and allows you to run the app and push the app to your Azure Stack instance. You can debug from Visual Studio Code or through a terminal window running the command `node index.js`.
+You can use Node.js SDK to help build and manage the infrastructure for your apps. API profiles in the Node.js SDK help with your hybrid cloud solutions by letting you switch between global Azure resources and Azure Stack resources. You can code once and then target both global Azure and Azure Stack. 
+
+In this article you can use [Visual Studio Code](https://code.visualstudio.com/) as your development tool. Visual Studio Code can debug the Node.js SDK and allows you to run the app and push the app to your Azure Stack instance. You can debug from Visual Studio Code or through a terminal window running the command `node <nodefile.js>`.
+
+## The Node.JS SDK
 
 The Node.js SDK provides Azure Stack Resource Manager tools. Resource providers in the SDK include compute, networking, storage, app services, and KeyVault. There are 10 resource provider client libraries that you can install in your node.js application. You can also download specify which resource provider you will use for the **2018-03-01-hybrid** or **2019-03-01-profile** in order to optimize the memory for your application. Each module consists of a resource provider, the respective API version, and the API profile. 
 
@@ -34,83 +38,79 @@ An API profile is a combination of resource providers and API versions. You can 
 
   -   To use the services compatible with Azure Stack, use the **\@azure/arm-resources-profile-hybrid-2019-03-01** or **\@azure/arm-storage-profile-2019-03-01-hybrid**
 
-  -   Each client library has their own package, which can be found in the [npm registry](https://www.npmjs.com/package/@azure/arm-storage-profile-2019-03-01-hybrid).
+### Packages in npm
 
-  -   Checks that the **ResourceProvider** portion of the package changes to the correct provider.
+Each resource provider has its own package. You can get the package from the [npm registry](https://www.npmjs.com/package/@azure/arm-storage-profile-2019-03-01-hybrid).
 
-      -   [App Service](https://www.npmjs.com/package/@azure/arm-appservice-profile-2019-03-01-hybrid): @azure/arm-appservice-profile-2019-03-01-hybrid
+You can find the following packages:
 
-      -   [ARM Subscriptions:](https://www.npmjs.com/package/@azure/arm-subscriptions-profile-hybrid-2019-03-01) @azure/arm-subscriptions-profile-hybrid-2019-03-01
+| Resource provider | Package |
+| --- | --- |
+| [App Service](https://www.npmjs.com/package/@azure/arm-appservice-profile-2019-03-01-hybrid) | @azure/arm-appservice-profile-2019-03-01-hybrid |
+| [ARM Subscriptions](https://www.npmjs.com/package/@azure/arm-subscriptions-profile-hybrid-2019-03-01) | @azure/arm-subscriptions-profile-hybrid-2019-03-01  |
+| [ARM Policy](https://www.npmjs.com/package/@azure/arm-policy-profile-hybrid-2019-03-01) | @azure/arm-policy-profile-hybrid-2019-03-01
+| [ARM DNS](https://www.npmjs.com/package/@azure/arm-dns-profile-2019-03-01-hybrid) | @azure/arm-dns-profile-2019-03-01-hybrid  |
+| [Authorization](https://www.npmjs.com/package/@azure/arm-authorization-profile-2019-03-01-hybrid) | @azure/arm-authorization-profile-2019-03-01-hybrid  |
+| [Compute](https://www.npmjs.com/package/@azure/arm-compute-profile-2019-03-01-hybrid) | @azure/arm-compute-profile-2019-03-01-hybrid |
+| [Storage](https://www.npmjs.com/package/@azure/arm-storage-profile-2019-03-01-hybrid) | @azure/arm-storage-profile-2019-03-01-hybrid |
+| [Network](https://www.npmjs.com/package/@azure/arm-network-profile-2019-03-01-hybrid) | @azure/arm-network-profile-2019-03-01-hybrid |
+| [Resources](https://www.npmjs.com/package/@azure/arm-resources-profile-hybrid-2019-03-01) | @azure/arm-resources-profile-hybrid-2019-03-01 |
+ | [Keyvault](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid) | @azure/arm-keyvault-profile-2019-03-01-hybrid |
 
-      -   [ARM Policy:](https://www.npmjs.com/package/@azure/arm-policy-profile-hybrid-2019-03-01) @azure/arm-policy-profile-hybrid-2019-03-01
+To use the latest API-version of a service, use the **Latest** profile of the specific client library. For example, if you would like to use the latest-API version of resources service alone, use the `azure-arm-resource` profile of the **Resource Management Client Library.** package.
 
-      -   [ARM DNS](https://www.npmjs.com/package/@azure/arm-dns-profile-2019-03-01-hybrid): @azure/arm-dns-profile-2019-03-01-hybrid
+Use the specific API versions defined inside the package for the specific API-versions of a resource provider.
 
-      -   [Authorization](https://www.npmjs.com/package/@azure/arm-authorization-profile-2019-03-01-hybrid): @azure/arm-authorization-profile-2019-03-01-hybrid
-
-      -   [Compute:](https://www.npmjs.com/package/@azure/arm-compute-profile-2019-03-01-hybrid) @azure/arm-compute-profile-2019-03-01-hybrid
-
-      -   [Storage:](https://www.npmjs.com/package/@azure/arm-storage-profile-2019-03-01-hybrid) @azure/arm-storage-profile-2019-03-01-hybrid
-
-      -   [Network:](https://www.npmjs.com/package/@azure/arm-network-profile-2019-03-01-hybrid) @azure/arm-network-profile-2019-03-01-hybrid
-
-      -   Resources: @azure/arm-resources-profile-hybrid-2019-03-01
-
-      -   [Keyvault:](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid) @azure/arm-keyvault-profile-2019-03-01-hybrid
-
--   To use the latest API-version of a service, use the **Latest** profile of the specific client library. For example, if you would like to use the latest-API version of resources service alone, use the `azure-arm-resource` profile of the **Resource Management Client Library.** package.
-
--   To use specific API-versions for a resource type in a specific resource provider, use the specific API versions defined inside the package.
-
-> [!Note]  
-> You can combine all of the options in the same application.
+  > [!Note]  
+  > You can combine all of the options in the same application.
 
 ## Install the Azure Node.js SDK
 
-1.  Follow the official instructions to install Git. For instructions, see [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
+1. Install Git. For instructions, see [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-2.  To install the correct client packages, see [how to install client libraries](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid).
+2. Install or upgrade to the current version of [Node.js](https://nodejs.org/en/download/). Node.js also includes the [npm](https://www.npmjs.com/) JavaScript package manager.
 
-3.  The packages that need to be installed depends on the profile version you would like to use. The package name for the profile versions are: `@azure/arm-resourceprovider-profile-2019-03-01-hybrid`
+3. Innstall or upgrade [Visual Studio Code](https://code.visualstudio.com/) and install the [Node.js extension](https://code.visualstudio.com/docs/Node.js/Node.js-debugging) for Visual Studio Code.
 
-4.  To install the correct client library for Visual Studio Code, download using npm install on command prompt for each package.
+2.  Install the client packages for the Azure Stack Resource Manger. For more inforamtion, see [how to install client libraries](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid).
 
-5.  If not available, create a subscription and save the Subscription ID to be used later. For instructions to create a subscription, see [Create subscriptions to offers in Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm).
+3.  The packages that need to be installed depends on the profile version you would like to use. You can find a list of resource providers in the [Packages in npm](packages-in-npm) section.
 
-6.  Create a service principal and save the Client ID and the Client Secret. For instructions on how to create a service principal for Azure Stack, see [Provide applications access to Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
+4. Install the resource provider client library using npm. From the command line, run: `npm install <package-name>`. For example, you can run `npm install @azure/arm-authorization-profile-2019-03-01-hybrid` to install the authorization resource provider library.
 
-    > [!Note]  
-    > The Client ID is also known as the Application ID when creating a service principal.
+5.  Create a subscription and make a note of the Subscription ID when you use the SDK. For instructions, see [Create subscriptions to offers in Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm).
 
-7.  Make sure your service principal has contributor/owner role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
+6.  Create a service principal and save the client ID and the client secret. The client ID is also known as the application ID when creating a service principal. For instructions, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md).
 
-8.  Install the [Node.js extension](https://code.visualstudio.com/docs/Node.js/Node.js-debugging) for Visual Studio Code.
+7.  Make sure your service principal has contributor/owner role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals/md).
 
-## Node.js Prerequisites 
+### Node.js prerequisites 
 
 To use the Node.js Azure SDK with Azure Stack, you must supply the following values, and then set values with environment variables. To set the environmental variables, see the instructions following the table for your operating system.
 
 | Value | Environment variables | Description |
 | --- | --- | --- |
-| Tenant ID | TENANT\_ID | The value of your Azure Stack [*tenant ID*](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview). |
+| Tenant ID | TENANT\_ID | The value of your Azure Stack [tenant ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview). |
 | Client ID | CLIENT\_ID | The service principal application ID saved when service principal was created on the previous section of this document.  |
-| Subscription ID | AZURE\_SUBSCRIPTION\_ID   The [*subscription ID*](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) is how you access offers in Azure Stack.  |
+| Subscription ID | AZURE\_SUBSCRIPTION\_ID   The [subscription ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) is how you access offers in Azure Stack.  |
 | Client Secret | APPLICATION\_SECRET | The service principal application Secret saved when service principal was created. |
-| Resource Manager Endpoint | ARM\_ENDPOINT | See [*the Azure Stack Resource Manager endpoint*](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-ruby#the-azure-stack-resource-manager-endpoint). |
- 
-To find the Tenant ID for your Azure Stack, follow the instructions found here. To set your environment variables, do the following:
+| Resource Manager Endpoint | ARM\_ENDPOINT | See [the Azure Stack Resource Manager endpoint](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-ruby#the-azure-stack-resource-manager-endpoint). |
 
-**Microsoft Windows**
+#### Set your environmental variables for Node.js
 
-To set the environment variables, in a Windows command prompt, use the following format:
+To set your environment variables, do the following:
 
-`Set Tenant_ID=<Your_Tenant_ID>`
+  - **Microsoft Windows**  
 
-**macOS, Linux, and Unix-based systems**
+    To set the environment variables, in a Windows command prompt, use the following format:
+      
+      `set Tenant_ID=<Your_Tenant_ID>`
 
-In Unix based systems, you can use the following command:
+  - **macOS, Linux, and Unix-based systems**  
 
-`Export Azure_Tenant_ID=<Your_Tenant_ID>`
+    To set the environment variables, from a bash prompt, use the following format:
+
+    `export Azure_Tenant_ID=<Your_Tenant_ID>`
 
 **The Azure Stack Resource Manager endpoint**
 
@@ -144,7 +144,7 @@ Sample JSON file:
 }
 ```
 
-## Existing API Profiles
+### Existing API Profiles
 
 1.  **@azure/arm-resourceprovider-profile-2019-03-01-hybrid**
 
@@ -156,7 +156,7 @@ Sample JSON file:
 
 For more information about Azure Stack and API profiles, see a [Summary of API profiles](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles#summary-of-api-profiles).
 
-## Azure Node.js SDK API Profile usage
+### Azure Node.js SDK API Profile usage
 
 The following lines should be used to instantiate a profile client. This parameter is only required for Azure Stack or other private clouds. Global Azure already has these settings by default with @azure-arm-resource or @azure-arm-storage.
 
@@ -168,16 +168,11 @@ var StorageManagementClient = require('@azure/arm-storage-profile-2019-03-01-hyb
 The following code is needed to authenticate the service principal on Azure Stack. It creates a token by the tenant ID and the authentication base, which is specific to Azure Stack.
 
 ```Node.js  
-var clientId = process.env\['AZURE\_CLIENT\_ID'\];
-
-var tenantId = process.env\['AZURE\_TENANT\_ID'\]; //"adfs"
-
-var secret = process.env\['AZURE\_CLIENT\_SECRET'\];
-
-var subscriptionId = process.env\['AZURE\_SUBSCRIPTION\_ID'\];
-
-var base\_url = process.env\['ARM\_ENDPOINT'\];
-
+var clientId = process.env['AZURE_CLIENT_ID'];
+var tenantId = process.env['AZURE_TENANT_ID']; //"adfs"
+var secret = process.env['AZURE_CLIENT_SECRET'];
+var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
+var base_url = process.env['ARM_ENDPOINT'];
 var resourceClient, storageClient;
 ```
 
@@ -187,8 +182,8 @@ The below code snippet uses the Azure Resource Manager endpoint that you specify
 
 ```Node.js  
 var map = {};
-
-const fetchUrl = base\_url + 'metadata/endpoints?api-version=1.0'```
+const fetchUrl = base_url + 'metadata/endpoints?api-version=1.0'
+```
 
 ## Define Azure Stack environment setting functions
 
@@ -216,7 +211,7 @@ function main() {
     Environment.Environment.add(map);
 ```
 
-## Samples using API Profiles
+## Samples using API profiles
 
 You can use the following samples as a reference for creating solutions with Node.js and Azure Stack API profiles. You can get the samples from GitHub in the following repositories:
 
@@ -224,7 +219,7 @@ You can use the following samples as a reference for creating solutions with Nod
 - [Compute node manage](https://github.com/sijuman/compute-node-manage-vm)
 - [Resource-manager node resources and groups](https://github.com/sijuman/resource-manager-node-resources-and-groups)
 
-### Sample Create Storage Account Project 
+### Sample create storage account 
 
 1.  Clone the repository.
 
@@ -238,7 +233,7 @@ You can use the following samples as a reference for creating solutions with Nod
     - Tenant ID
     - Client ID
     - Client secret
-    - Subscription ID
+    - Azure Subscription ID
     - Azure Stack Resource Manager endpoint
 
 4.  Set the following environment variables using the information you retrieved from the service principal you created using the command prompt:
@@ -260,14 +255,14 @@ You can use the following samples as a reference for creating solutions with Nod
 
 7.  Set the login credentials that will allow you to authenticate to Azure Stack. This portion of the code is included in this sample on the index.js file.
 
-        ```Node.js  
-        var clientId = process.env['CLIENT_ID'];
-        var tenantId = process.env['TENANT_ID']; //"adfs"
-        var secret = process.env['APPLICATION_SECRET'];
-        var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
-        var base_url = process.env['ARM_ENDPOINT'];
-        var resourceClient, storageClient;
-        ```
+    ```Node.js  
+    var clientId = process.env['CLIENT_ID'];
+    var tenantId = process.env['TENANT_ID']; //"adfs"
+    var secret = process.env['APPLICATION_SECRET'];
+    var subscriptionId = process.env['AZURE_SUBSCRIPTION_ID'];
+    var base_url = process.env['ARM_ENDPOINT'];
+    var resourceClient, storageClient;
+    ```
 
 8.  Checks that you have set the right client libraries, using a combination of the client libraries stipulated above. In this sample we have used the following below:
 
@@ -309,7 +304,8 @@ function createResourceGroup(callback) {
   var groupParameters = { location: location, tags: { sampletag: 'sampleValue' } };
   console.log('\nCreating resource group: ' + resourceGroupName);
   return resourceClient.resourceGroups.createOrUpdate(resourceGroupName, groupParameters, callback);
-}```
+}
+```
 
 ### Create a new storage account
 
@@ -319,26 +315,17 @@ In this case, the storage account name is randomly generated to assure uniquenes
 
 ```Node.js  
 var createParameters = {
-
-location: location,
-
-sku: {
-
-name: accType,
-
-},
-
-kind: 'Storage',
-
-tags: {
-
-tag1: 'val1',
-
-tag2: 'val2'
-
-}
-
+    location: location,
+    sku: {
+        name: accType,
+    },
+    kind: 'Storage',
+    tags: {
+        tag1: 'val1',
+        tag2: 'val2'
+    }
 };
+
 
 console.log('\\n--&gt;Creating storage account: ' + storageAccountName + ' with parameters:\\n' + util.inspect(createParameters));
 
@@ -356,7 +343,7 @@ return storageClient.storageAccounts.list(callback);
 
 It also lists storage accounts in the resource group:
 
-console.log('\\n--&gt;Listing storage accounts in the resourceGroup : ' + resourceGroupName);
+    console.log('\\n--&gt;Listing storage accounts in the resourceGroup : ' + resourceGroupName);
 
 return storageClient.storageAccounts.listByResourceGroup(resourceGroupName, callback);
 ```
@@ -368,13 +355,16 @@ The sample lists storage account keys for the newly created storage account and 
 ```Node.js  
 console.log('\\n--&gt;Listing storage account keys for account: ' + storageAccountName);
 
-return storageClient.storageAccounts.listKeys(resourceGroupName, storageAccountName, callback);```
+return storageClient.storageAccounts.listKeys(resourceGroupName, storageAccountName, callback);
+```
 
 It also regenerates the account access keys:
 
+```Node.js  
 console.log('\\n--&gt;Regenerating storage account keys for account: ' + storageAccountName);
 
 return storageClient.storageAccounts.regenerateKey(resourceGroupName, storageAccountName, 'key1', callback);
+```
 
 ### Get storage account properties
 
@@ -401,13 +391,13 @@ return storageClient.storageAccounts.checkNameAvailability(storageAccountName, c
 Running cleanup.js deletes the storage account that the sample created:
 
 ```Node.js  
-
 console.log('\\nDeleting storage account : ' + storageAccountName);
-
 return storageClient.storageAccounts.deleteMethod(resourceGroupName, storageAccountName, callback);
+```
 
 It also deletes the resource group that the sample created:
 
+```Node.js  
 console.log('\\nDeleting resource group: ' + resourceGroupName);
 
 return resourceClient.resourceGroups.deleteMethod(resourceGroupName, callback);
