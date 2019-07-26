@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2019
+ms.date: 07/25/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/24/2019
+ms.lastreviewed: 07/25/2019
 
 ---
 # Best practices for automatic Azure Stack log collection 
@@ -51,7 +51,10 @@ For on-demand log collection, the size of the logs collection depends on how man
 When automatic diagnostic log collection is enabled, the service monitors for critical alerts. 
 After a critical alert gets raised and persists for around 30 minutes, the service collects and uploads appropriate logs. 
 This log collection size is around 2 GB on average. 
+In the case of a patch and update failure, automatic log collection will start only if a critical alert is raised and persists for around 30 minutes. We recommend that you follow [guidance on monitoring the patch and update](azure-stack-updates.md).
 Alert monitoring, log collection, and upload are transparent to the user. 
+
+
 
 In a healthy system, logs will not be collected at all. 
 In an unhealthy system, log collection may run two or three times in a day, but typically only once. 
@@ -62,8 +65,8 @@ The following table can help environments with limited or metered connections to
 | Network connection | Impact |
 |--------------------|--------|
 | Low-bandwidth/high-latency connection | Log upload will take an extended amount of time to complete | 
-| Shared connection | The upload may also impact other applications/users sharing the network connection. |
-| Metered connection | There may be an additional charge from your ISP for the additional network usage. |
+| Shared connection | The upload may also impact other applications/users sharing the network connection |
+| Metered connection | There may be an additional charge from your ISP for the additional network usage |
 
 
 ## Managing costs
@@ -71,6 +74,9 @@ The following table can help environments with limited or metered connections to
 Azure [blob storage charges](https://azure.microsoft.com/pricing/details/storage/blobs/) depend on how much data is saved each month and other factors such as data redundancy. 
 If you don't have an existing storage account, you can sign in to the Azure portal, click **Storage accounts**, and follow the steps to [create an Azure blob container SAS URL](azure-stack-configure-automatic-diagnostic-log-collection.md).
 
-As a best practice, create an Azure Blob storage [lifecycle management policy](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) to minimize ongoing storage costs. For more information about how to set up the storage account, see [Configure automatic Azure Stack diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md).
+As a best practice, create an Azure Blob storage [lifecycle management policy](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts) to minimize ongoing storage costs. For more information about how to set up the storage account, see [Configure automatic Azure Stack diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md)
 
+## See also
+
+[Configure automatic Azure Stack log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md)
 

@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2019
+ms.date: 07/25/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/24/2019
+ms.lastreviewed: 07/25/2019
 
 ---
 # Collect Azure Stack diagnostic logs now (on demand)
@@ -45,7 +45,7 @@ Use the following steps to configure on-demand log collection using the SAS URL 
 
 <!--how do you look up the PEP IP address. You look up the azurestackstampinfo.json--->
 
-Azure Stack diagnostics tools help make log collection easy and efficient. The following diagram shows how log collection tools work:
+Azure Stack diagnostics tools help make log collection easy and efficient. The following diagram shows how the diagnostics tools work:
 
 ![Azure Stack diagnostic tools](media/azure-stack-diagnostics/get-azslogs.png)
 
@@ -53,9 +53,9 @@ Azure Stack diagnostics tools help make log collection easy and efficient. The f
 
 The Trace Collector is enabled by default and runs continuously in the background to collect all Event Tracing for Windows (ETW) logs from Azure Stack component services. ETW logs are stored in a common local share with a five day age limit. Once this limit is reached, the oldest files are deleted as new ones are created. The default maximum size allowed for each file  is 200 MB. A size check occurs every 2 minutes, and if the current file is >= 200 MB, it is saved and a new file is generated. There is also an 8 GB limit on the total file size generated per event session.
 
-### Log collection tool
+### Get-AzureStackLog
 
-The PowerShell cmdlet **Get-AzureStackLog** can be used to collect logs from all the components in an Azure Stack environment. It saves them in zip files in a user-defined location. If the Azure Stack technical support team needs your logs to help troubleshoot an issue, they may ask you to run this tool.
+The PowerShell cmdlet Get-AzureStackLog can be used to collect logs from all the components in an Azure Stack environment. It saves them in zip files in a user-defined location. If the Azure Stack technical support team needs your logs to help troubleshoot an issue, they may ask you to run Get-AzureStackLog.
 
 > [!CAUTION]
 > These log files may contain personally identifiable information (PII). Take this into account before you publicly post any log files.
@@ -69,11 +69,11 @@ The following are some example log types that are collected:
 * **Storage diagnostic logs**
 * **ETW logs**
 
-These files are collected and saved in a share by Trace Collector. The  **Get-AzureStackLog** PowerShell cmdlet can then be used to collect them when necessary.
+These files are collected and saved in a share by Trace Collector. Get-AzureStackLog can then be used to collect them when necessary.
 
 #### To run Get-AzureStackLog on Azure Stack integrated systems
 
-To run the log collection tool on an integrated system, you need to have access to the Privileged End Point (PEP). Here is an example script you can run using the PEP to collect logs on an integrated system:
+To run Get-AzureStackLog on an integrated system, you need to have access to the Privileged End Point (PEP). Here is an example script you can run using the PEP to collect logs on an integrated system:
 
 ```powershell
 $ipAddress = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
