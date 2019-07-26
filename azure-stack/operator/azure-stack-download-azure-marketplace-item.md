@@ -50,7 +50,7 @@ Your Azure Stack deployment must have internet connectivity, and be [registered 
 
     ![Review storage space](media/azure-stack-download-azure-marketplace-item/storage.png)
 
-3. Open the Azure Stack Marketplace and connect to Azure. To do so, select **Marketplace items**, and then select **Add from Azure**:
+3. Open the Azure Stack Marketplace and connect to Azure. To do so, select the **Marketplace management** service, select **Marketplace items**, and then select **Add from Azure**:
 
     ![Add from Azure](media/azure-stack-download-azure-marketplace-item/marketplace.png)
 
