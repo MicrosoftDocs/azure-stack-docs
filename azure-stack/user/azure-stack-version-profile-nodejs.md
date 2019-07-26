@@ -74,7 +74,7 @@ Use the specific API versions defined inside the package for the specific API-ve
 
 2.  Install the client packages for the Azure Stack Resource Manger. For more inforamtion, see [how to install client libraries](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid).
 
-3.  The packages that need to be installed depends on the profile version you would like to use. You can find a list of resource providers in the [Packages in npm](packages-in-npm) section.
+3.  The packages that need to be installed depends on the profile version you would like to use. You can find a list of resource providers in the [Packages in npm](#packages-in-npm) section.
 
 4. Install the resource provider client library using npm. From the command line, run: `npm install <package-name>`. For example, you can run `npm install @azure/arm-authorization-profile-2019-03-01-hybrid` to install the authorization resource provider library.
 
@@ -82,7 +82,7 @@ Use the specific API versions defined inside the package for the specific API-ve
 
 6.  Create a service principal and save the client ID and the client secret. The client ID is also known as the application ID when creating a service principal. For instructions, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md).
 
-7.  Make sure your service principal has contributor/owner role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals/md).
+7.  Make sure your service principal has contributor/owner role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md).
 
 ### Node.js prerequisites 
 
