@@ -57,6 +57,7 @@ The following table lists the VMs that are supported on Azure Stack along with t
 | ----------------| ------------- | ------------------------ |
 |General purpose  |Basic A        |[A0 - A4](azure-stack-vm-sizes.md#basic-a)                   |
 |General purpose  |Standard A     |[A0 - A7](azure-stack-vm-sizes.md#standard-a)              |
+|General purpose  |Av2-series     |[A1_v2 - A8m_v2](azure-stack-vm-sizes.md#av2-series)     |
 |General purpose  |D-series       |[D1 - D4](azure-stack-vm-sizes.md#d-series)              |
 |General purpose  |Dv2-series     |[D1_v2 - D5_v2](azure-stack-vm-sizes.md#ds-series)        |
 |General purpose  |DS-series      |[DS1 - DS4](azure-stack-vm-sizes.md#dv2-series)            |
