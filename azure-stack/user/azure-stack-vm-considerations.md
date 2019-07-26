@@ -38,7 +38,7 @@ Azure Stack virtual machines (VMs) provide on-demand, scalable computing resourc
 | Virtual machine disk performance | Depends on disk type and size. | Depends on VM size of the VM, which the disks are attached to. For more info, refer to the [VM sizes supported in Azure Stack](azure-stack-vm-sizes.md) article.
 | API versions | Azure always has the latest API versions for all the VM features. | Azure Stack supports specific Azure services and specific API versions for these services. To view the list of supported API versions, refer to the [API versions](#api-versions) section of this article. |
 | Azure Instance Metadata Service | The Azure Instance Metadata Service provides info about running VM instances that can be used to manage and set up your VM.  | The Azure Instance Metadata Service isn't supported on Azure Stack. |
-| Virtual machine availability sets|Multiple fault domains (2 or 3 per region).<br>Multiple update domains.|Multiple fault domains (2 or 3 per region).<br>Single update domain, with live migration to protect workloads during update.|
+| Virtual machine availability sets|Multiple fault domains (2 or 3 per region).<br>Multiple update domains.|Multiple fault domains (2 or 3 per region).<br>Single update domain, with live migration to protect workloads during update. 20 update domains supported for template compatibility|
 | Virtual machine scale sets|Autoscale is supported.|Autoscale isn't supported.<br><br>Add more instances to a scale set using the portal, Resource Manager templates, or PowerShell. |
 | Cloud Witness | Select the endpoints from the storage account properties available in Azure Stack. | [Cloud Witness](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness) is a type of Failover Cluster quorum witness that uses Microsoft Azure to provide a vote on cluster quorum.<br>The endpoints in global Azure compared to Azure Stack may look like:<br>For global Azure:<br>`https://mywitness.blob.core.windows.net/`<br>For Azure Stack:<br>`https://mywitness.blob.<region>.<FQDN>/`|
 | Virtual machine diagnostics | Linux VM diagnostics are supported. | Linux VM diagnostics aren't supported in Azure Stack. When you deploy a Linux VM with VM diagnostics enabled, the deployment fails. The deployment also fails if you enable the Linux VM basic metrics through diagnostic settings. |
@@ -53,18 +53,22 @@ Azure Stack imposes resource limits to avoid over consumption of resources (serv
 
 The following table lists the VMs that are supported on Azure Stack along with their configuration:
 
-| Type           | Size          | Range of supported sizes |
-| ---------------| ------------- | ------------------------ |
-|General purpose |Basic A        |[A0 - A4](azure-stack-vm-sizes.md#basic-a)                   |
-|General purpose |Standard A     |[A0 - A7](azure-stack-vm-sizes.md#standard-a)              |
-|General purpose |D-series       |[D1 - D4](azure-stack-vm-sizes.md#d-series)              |
-|General purpose |Dv2-series     |[D1_v2 - D5_v2](azure-stack-vm-sizes.md#ds-series)        |
-|General purpose |DS-series      |[DS1 - DS4](azure-stack-vm-sizes.md#dv2-series)            |
-|General purpose |DSv2-series    |[DS1_v2 - DS5_v2](azure-stack-vm-sizes.md#dsv2-series)      |
-|Memory optimized|D-series       |[D11 - D14](azure-stack-vm-sizes.md#mo-d)            |
-|Memory optimized|DS-series      |[DS11 - DS14](azure-stack-vm-sizes.md#mo-ds)|
-|Memory optimized|Dv2-series     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
-|Memory optimized|DSv2-series -  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
+| Type            | Size          | Range of supported sizes |
+| ----------------| ------------- | ------------------------ |
+|General purpose  |Basic A        |[A0 - A4](azure-stack-vm-sizes.md#basic-a)                   |
+|General purpose  |Standard A     |[A0 - A7](azure-stack-vm-sizes.md#standard-a)              |
+|General purpose  |Av2-series     |[A1_v2 - A8m_v2](azure-stack-vm-sizes.md#av2-series)     |
+|General purpose  |D-series       |[D1 - D4](azure-stack-vm-sizes.md#d-series)              |
+|General purpose  |Dv2-series     |[D1_v2 - D5_v2](azure-stack-vm-sizes.md#ds-series)        |
+|General purpose  |DS-series      |[DS1 - DS4](azure-stack-vm-sizes.md#dv2-series)            |
+|General purpose  |DSv2-series    |[DS1_v2 - DS5_v2](azure-stack-vm-sizes.md#dsv2-series)      |
+|Memory optimized |D-series       |[D11 - D14](azure-stack-vm-sizes.md#mo-d)            |
+|Memory optimized |DS-series      |[DS11 - DS14](azure-stack-vm-sizes.md#mo-ds)|
+|Memory optimized |Dv2-series     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
+|Memory optimized |DSv2-series    |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
+|Compute optimized|F-series       |[F1 - F16](azure-stack-vm-sizes.md#f-series)    |
+|Compute optimized|Fs-series      |[F1s - F16s](azure-stack-vm-sizes.md#fs-series)    |
+|Compute optimized|Fsv2-series    |[F2s_v2 - F64s_v2](azure-stack-vm-sizes.md#fsv2-series)    |
 
 VM sizes and their associated resource quantities are consistent between Azure Stack and Azure. This consistency includes the amount of memory, the number of cores, and the number/size of data disks that can be created. However, performance of VMs with the same size depends on the underlying characteristics of a particular Azure Stack environment.
 
