@@ -70,7 +70,7 @@ Use the specific API versions defined inside the package for the specific API-ve
 
 2. Install or upgrade to the current version of [Node.js](https://nodejs.org/en/download/). Node.js also includes the [npm](https://www.npmjs.com/) JavaScript package manager.
 
-3. Innstall or upgrade [Visual Studio Code](https://code.visualstudio.com/) and install the [Node.js extension](https://code.visualstudio.com/docs/Node.js/Node.js-debugging) for Visual Studio Code.
+3. Install or upgrade [Visual Studio Code](https://code.visualstudio.com/) and install the [Node.js extension](https://code.visualstudio.com/docs/Node.js/nodejs-debugging) for Visual Studio Code.
 
 2.  Install the client packages for the Azure Stack Resource Manger. For more inforamtion, see [how to install client libraries](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid).
 
@@ -146,11 +146,11 @@ Sample JSON file:
 
 ### Existing API Profiles
 
-1.  **@azure/arm-resourceprovider-profile-2019-03-01-hybrid**
+1.  **\@azure/arm-resourceprovider-profile-2019-03-01-hybrid**
 
     Latest Profile built for Azure Stack. Use this profile for services to be most compatible with Azure Stack as long as you are on 1808 stamp or further.
 
-2.  **@azure-arm-resource**
+2.  **\@azure-arm-resource**
 
     Profile consists of latest versions of all services. Use the latest versions of all the services in Azure.
 
@@ -163,7 +163,8 @@ The following lines should be used to instantiate a profile client. This paramet
 ```Node.js  
 var ResourceManagementClient = require('@azure/arm-resources-profile-hybrid-2019-03-01').ResourceManagementClient;
 
-var StorageManagementClient = require('@azure/arm-storage-profile-2019-03-01-hybrid').StorageManagementClient;````
+var StorageManagementClient = require('@azure/arm-storage-profile-2019-03-01-hybrid').StorageManagementClient;
+````
 
 The following code is needed to authenticate the service principal on Azure Stack. It creates a token by the tenant ID and the authentication base, which is specific to Azure Stack.
 
@@ -275,7 +276,7 @@ You can use the following samples as a reference for creating solutions with Nod
 
     This can be done by opening command prompt, redirecting it to the root folder of the repository, and running `npm install @azure/arm-keyvault-profile-2019-03-01-hybrid` for each resource provider used.
 
-10.  On the command prompt, run the command "npm install" to install all node.js modules.
+10.  On the command prompt, run the command `npm install` to install all node.js modules.
 
 11.  Run the sample.
 
