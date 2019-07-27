@@ -24,7 +24,7 @@ ms.lastreviewed: 05/21/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-As you develop your app, it is important to ensure template portability between Azure and Azure Stack. This article provides considerations for developing [Azure Resource Manager templates](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), so you can prototype your app and test deployment in Azure without access to an Azure Stack environment.
+As you develop your app, it's important to have template portability between Azure and Azure Stack. This article provides considerations for developing [Azure Resource Manager templates](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf). With these templates, you can prototype your app and test deployment in Azure without access to an Azure Stack environment.
 
 ## Resource provider availability
 
