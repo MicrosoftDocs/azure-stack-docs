@@ -11,7 +11,7 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: scenario
+ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: bryanla
 ms.reviewer: anajod

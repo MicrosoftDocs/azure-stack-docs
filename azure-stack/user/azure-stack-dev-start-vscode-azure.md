@@ -5,7 +5,7 @@ services: azure-stack
 author: mattbriggs
 
 ms.service: azure-stack
-ms.topic: Howto
+ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
