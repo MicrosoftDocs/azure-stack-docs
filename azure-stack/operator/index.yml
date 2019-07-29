@@ -124,7 +124,7 @@ sections:
 
       - html: <a href="/azure-stack/operator/azure-stack-updates">
 
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_upgraden.svg" alt="">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_upgrade.svg" alt="">
 
               <br><b>Update Azure Stack</b></a>
 
