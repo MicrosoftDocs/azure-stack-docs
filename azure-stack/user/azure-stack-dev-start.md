@@ -6,10 +6,10 @@ services: azure-stack
 author: mattbriggs 
 ms.service: azure-stack 
 ms.topic: overview 
-ms.date: 04/25/2019
+ms.date: 07/30/2019
 ms.author: mabrigg 
 ms.reviewer: sijuman 
-ms.lastreviewed: 04/24/2019
+ms.lastreviewed: 07/30/2019
 
 # keywords: Develop apps on Azure Stack 
 # Intent: I am a developer using Windows 10 or Linux Ubuntu who would like to develop an app for Azure Stack using the SDKs. 
@@ -60,6 +60,7 @@ Azure Stack uses an Azure Stack version of Azure Resource Manager. To help you w
 - [Go](azure-stack-version-profiles-go.md)
 - [Ruby](azure-stack-version-profiles-ruby.md)
 - [Python](azure-stack-version-profiles-python.md)
+- [Node.js](azure-stack-version-profile-nodejs.md)
 
 ## Before you start 
 
