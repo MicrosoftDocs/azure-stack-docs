@@ -122,13 +122,13 @@ sections:
 
       items:  
 
-      - html: <a href="/azure-stack/operator/azure-stack-registration">
+      - html: <a href="/azure-stack/operator/azure-stack-updates">
 
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_subscription.svg" alt="">
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_upgraden.svg" alt="">
 
-              <br><b>Register Azure Stack</b></a>
+              <br><b>Update Azure Stack</b></a>
 
-              <p>Register so you can download marketplace items from Azure and set up commerce data reporting back to Microsoft.</p>
+              <p>Microsoft bundles a single package each month to keep Azure Stack integrated systems up-to-date. </p>
 
       - html: <a href="/azure-stack/operator/azure-stack-backup-infrastructure-backup">
 
