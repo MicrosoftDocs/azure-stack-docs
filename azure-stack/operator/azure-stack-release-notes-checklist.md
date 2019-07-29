@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2019
+ms.date: 07/25/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 06/05/2019
+ms.lastreviewed: 07/25/2019
 
 ---
 
@@ -26,15 +26,17 @@ This article contains a checklist of update-related activities for Azure Stack o
 
 ## Prepare for Azure Stack update
 
-| Activity              | Details                                                                          |
-|-----------------------|----------------------------------------------------------------------------------|
-| Review known issues   | [List of known issues](azure-stack-release-notes-known-issues-1905.md).                |
-| Review security updates | [List of security updates](azure-stack-release-notes-security-updates-1905.md).      |
-| Run Test-AzureStack   | Run `Test-AzureStack -Group UpdateReadiness` to identify operational issues.      |
-| Resolve issues        | Resolve any operational issues identified by **Test-AzureStack**.                |
-| Apply latest hotfixes | Apply the latest hotfixes that apply to the currently installed release.         |
-| Run capacity planner tool | Make sure to use the latest version of the [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) tool to perform your workload planning and sizing. The latest version contains bug fixes and provides new features that are released with each Azure Stack update. |
-| Update available       | In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. Disconnected customers can download and import the new 1905 package using the  [process described here](azure-stack-apply-updates.md).               |
+| Activity                     | Details                                                   |
+|------------------------------|-----------------------------------------------------------|
+| Review known issues     | [List of known issues](azure-stack-release-notes-known-issues-1906.md).                |
+| Review security updates | [List of security updates](azure-stack-release-notes-security-updates-1906.md).      |
+| Apply latest OEM package | Contact your OEM to ensure your system meets the minimum OEM Package requirements for the Azure Stack version your system is being updated to. |
+| Run Test-AzureStack     | Run `Test-AzureStack -Group UpdateReadiness` to identify operational issues.      |
+| Resolve issues          | Resolve any operational issues identified by **Test-AzureStack**.                |
+| Apply latest hotfixes   | Apply the latest hotfixes that apply to the currently installed release.         |
+| Run capacity planner tool   | Make sure to use the latest version of the [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) tool to perform your workload planning and sizing. The latest version contains bug fixes and provides new features that are released with each Azure Stack update. |
+| Update available        | In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. Disconnected customers can download and import the new 1906 package using the  [process described here](azure-stack-apply-updates.md). |
+
 
 ## During Azure Stack update
 
@@ -53,8 +55,9 @@ This article contains a checklist of update-related activities for Azure Stack o
 |-----------------------|----------------------------------------------------------------------------------|
 | Apply latest hotfixes | Apply the latest hotfixes applicable to updated version.                          |
 | Retrieve encryption keys | Retrieve the data at rest encryption keys and securely store them outside of your Azure Stack deployment. Follow the [instructions on how to retrieve the keys](azure-stack-security-bitlocker.md). |
+| Re-enable multi-tenancy | In case of a multi-tenanted Azure Stack, [make sure you configure all guest directory tenants](https://docs.microsoft.com/azure-stack/operator/azure-stack-enable-multitenancy#configure-guest-directory) after a successful update. |
 
 ## Next steps
 
-- [Review list of known issues](azure-stack-release-notes-known-issues-1905.md)
-- [Review list of security updates](azure-stack-release-notes-security-updates-1905.md)
+- [Review list of known issues](azure-stack-release-notes-known-issues-1907.md)
+- [Review list of security updates](azure-stack-release-notes-security-updates-1907.md)

@@ -12,9 +12,9 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.author: mabrigg
-ms.date: 04/02/2019
+ms.date: 06/18/2019
 ms.reviewer: waltero
-ms.lastreviewed: 03/20/2019
+ms.lastreviewed: 06/18/2019
 
 ---
 
@@ -23,7 +23,7 @@ ms.lastreviewed: 03/20/2019
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 > [!Note]  
-> Kubernetes on Azure Stack is in preview. Azure Stack disconnected scenario is not currently supported by the preview.
+> Kubernetes on Azure Stack is in preview. An Azure Stack disconnected scenario is not currently supported by the preview. Only use the marketplace item for development and test scenarios.
 
 This article reviews how to troubleshoot your Kubernetes cluster. To begin troubleshooting, review the elements required for the deployment. You might need to collect the deployment logs from Azure Stack or the Linux VMs that host Kubernetes. To retrieve logs from an administrative endpoint, contact your Azure Stack admin.
 
@@ -91,7 +91,7 @@ You can collect and review deployment logs on the VMs that support your Kubernet
 4.  If the VM is **OK**, then evaluate the DVM. If the DVM has an error message:
 
     - The public key might be invalid. Review the key that you created.  
-    - Contact your Azure Stack administrator to retrieve the logs for Azure Stack by using the privileged endpoints. For more information, see [Azure Stack diagnostics tools](../operator/azure-stack-diagnostics.md).
+    - Contact your Azure Stack administrator to retrieve the logs for Azure Stack by using the privileged endpoints. For more information, see [Azure Stack diagnostics tools](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep).
 5. If you have a question about your deployment, you can post it or see if someone has already answered the question in the [Azure Stack forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
 
 ## Review deployment status
@@ -143,9 +143,9 @@ Follow these steps to collect and download the cluster logs:
 
     | Parameter           | Description                                                                                                      | Example                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -d, --vmd-host      | The public IP or the fully qualified domain name (FQDN) of the DVM. The VM name starts with `vmd-`. | IP: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
+    | -d, --vmd-host      | The public IP or the fully-qualified domain name (FQDN) of the DVM. The VM name starts with `vmd-`. | IP: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
     | -h, --help  | Print command usage. | |
-    | -i, --identity-file | The RSA private key file passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | C:\data\id_rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH)
+    | -i, --identity-file | Path to the RSA private key file passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | C:\data\id_rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH)
     | -m, --master-host   | The public IP or the fully qualified domain name (FQDN) of a Kubernetes master node. The VM name starts with `k8s-master-`. | IP: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
     | -u, --user          | The user name passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | azureuser (default value) |
 

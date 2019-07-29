@@ -50,6 +50,8 @@ The Azure Stack 1905 update build type is **Full**. As a result, the 1905 update
 - Windows Server 2019 is now supported and available to syndicate through the Azure Stack Marketplace.
 With this update, Windows Server 2019 can now be successfully activated on a 2016 host.
 
+- A new [Azure Account Visual Studio Code extension](../user/azure-stack-dev-start-vscode-azure.md) allows developers to target Azure Stack by logging in and viewing subscriptions, as well as a number of other services. The Azure Account extension works on both Azure Active Directory (Azure AD) and AD FS environments, and only requires a small change in Visual Studio Code user settings. Visual Studio Code requires a service principal to be given permission in order to run on this environment. To do so, import the identity script and run the cmdlets specified in [Multi-tenancy in Azure Stack](../operator/azure-stack-enable-multitenancy.md). This requires an update to the home directory, and registration of the Guest tenant directory for each directory. An alert is displayed after updating to 1905 or later, to update the home directory tenant for which the Visual Studio Code service principal is included. 
+
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
@@ -61,15 +63,15 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
   - microsoft.dsc-arm-2.77.0.0
   - microsoft.vmaccessforlinux-1.5.2
 
-  Please download these versions of the extensions immediately, so that new deployments of the extension do not fail when TLS 1.2 is enforced in a future release. Always set **autoupdateminorversion=true** so that minor version updates to extensions (for example, 1.8 to 1.9) are automatically performed.
+  Please download these versions of the extensions immediately, so that new deployments of the extension do not fail when TLS 1.2 is enforced in a future release. Always set **autoUpgradeMinorVersion=true** so that minor version updates to extensions (for example, 1.8 to 1.9) are automatically performed.
 
 - A new **Help and Support Overview** in the Azure Stack portal makes it easier for operators to check their support options, get expert help, and learn more about Azure Stack. On integrated systems, creating a support request will preselect Azure Stack service. We highly recommend that customers use this experience to submit tickets rather than using the global Azure portal. For more information, see [Azure Stack Help and Support](azure-stack-help-and-support-overview.md).
 
-- When multiple Azure Active Directories are onboarded (through [this process](azure-stack-enable-multitenancy.md)), it is possible to neglect rerunning the script when certain updates occur, or when changes to the AAD Service Principal authorization cause rights to be missing. This can cause various issues, from blocked access for certain features, to more discrete failures which are hard to trace back to the original issue. To prevent this, 1905 introduces a new feature that checks for these permissions and creates an alert when certain configuration issues are found. This validation runs every hour, and displays the remediation actions required to fix the issue. The alert closes once all the tenants are in a healthy state.
+- When multiple Azure Active Directories are onboarded (through [this process](azure-stack-enable-multitenancy.md)), it is possible to neglect rerunning the script when certain updates occur, or when changes to the Azure AD Service Principal authorization cause rights to be missing. This can cause various issues, from blocked access for certain features, to more discrete failures which are hard to trace back to the original issue. To prevent this, 1905 introduces a new feature that checks for these permissions and creates an alert when certain configuration issues are found. This validation runs every hour, and displays the remediation actions required to fix the issue. The alert closes once all the tenants are in a healthy state.
 
 - Improved reliability of infrastructure backup operations during service failover.
 
-- A new version of the [Azure Stack Nagios plugin](azure-stack-integrate-monitor.md#integrate-with-nagios) is available that uses the [Azure Active Directory authentication libraries](/azure/active-directory/develop/active-directory-authentication-libraries) (ADAL) for authentication. The plugin now also supports Azure Active Directory (AAD) and Active Directory Federation Services (ADFS) deployments of Azure Stack. For more information, see the [Nagios plugin exchange](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details) site.
+- A new version of the [Azure Stack Nagios plugin](azure-stack-integrate-monitor.md#integrate-with-nagios) is available that uses the [Azure Active Directory authentication libraries](/azure/active-directory/develop/active-directory-authentication-libraries) (ADAL) for authentication. The plugin now also supports Azure AD and Active Directory Federation Services (AD FS) deployments of Azure Stack. For more information, see the [Nagios plugin exchange](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details) site.
 
 - A new hybrid profile **2019-03-01-Hybrid** was released that supports all the latest features in Azure Stack. Both Azure PowerShell and Azure CLI support the **2019-03-01-Hybrid** profile. The .NET, Ruby, Node.js, Go, and Python SDKs have published packages that support the **2019-03-01-Hybrid** profile. The respective documentation and some samples have been updated to reflect the changes.
 
@@ -91,8 +93,6 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
     |12 Nodes|54 vCPU|60 GB|
     |16 Nodes|70 vCPU|76 GB|
   
-- There is now an Azure Stack extension that works on Visual Studio Code. Using the **Azure Account** extension, developers can target Azure Stack by logging in and viewing subscriptions, as well as a number of other services. The Azure Account extension works on both AAD environments as well as ADFS environments and only requires a small change in the user settings of Visual Studio Code to input Azure Stack metadata values. For more information, [see the documentation here](../user/azure-stack-dev-start-vscode-azure.md).
-
 ### Changes
 
 - To increase reliability and availability during planned and unplanned maintenance scenarios, Azure Stack adds an additional infrastructure role instance for domain services.
@@ -151,7 +151,7 @@ The 1905 release of Azure Stack must be applied on the 1904 release with the fol
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- No hotfix available for 1905.
+- [Azure Stack hotfix 1.1905.3.48](https://support.microsoft.com/help/4510078)
 
 ## Automatic update notifications
 

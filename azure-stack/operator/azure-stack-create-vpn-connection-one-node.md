@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/02/2019
+ms.date: 07/16/2019
 ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 09/12/2018
@@ -72,7 +72,7 @@ The following table summarizes the network configuration for both ASDK environme
 ### Get the IP address of the external adapter of the NAT VM
 
 1. Sign in to the Azure Stack physical machine for POC1.
-2. Edit the following PowerShell code to replace your administrator password, and then run the code on the POC host:
+2. Edit the following PowerShell code to add your administrator password, and then run the code on the POC host:
 
    ```powershell
    cd \AzureStack-Tools-master\connect
@@ -93,7 +93,7 @@ The following table summarizes the network configuration for both ASDK environme
 
 Now you can create the POC1 network resources that you need to set up your gateways. The following instructions describe how to create the resources by using the Azure Stack user portal. You can also use PowerShell code to create the resources.
 
-![Workflow that is used to create resources](media/azure-stack-create-vpn-connection-one-node-tp2/image2.png)
+![Workflow to create resources](media/azure-stack-create-vpn-connection-one-node-tp2/image2.png)
 
 ### Sign in as a tenant
 
@@ -171,7 +171,7 @@ A way to think about this more generically is that the local network gateway res
 
 ### Create a VM
 
-To validate the data that travels through the VPN connection, you need the virtual machines to send and receive data in each Azure Stack Development Kit. Create a virtual machine in POC1 now, and then in your virtual network, put it on your VM subnet.
+To validate the data that travels through the VPN connection, you need the virtual machines to send and receive data in each Azure Stack Development Kit. Create a virtual machine in POC1 now, and then in your virtual network, put it on your VM subnet:
 
 1. In the Azure portal, select **+ Create a resource**.
 2. Go to **Marketplace**, and then select **Compute**.
@@ -273,8 +273,6 @@ To configure the VPN connection, you must create a static NAT map route that map
 
 > [!NOTE]
 > This configuration is required for Azure Stack Development Kit environments only.
->
->
 
 ### Configure the NAT
 
@@ -332,8 +330,7 @@ To configure the VPN connection, you must create a static NAT map route that map
 
 ## Test the connection
 
-Now that the site-to-site connection is established, you should
-validate that you can get traffic flowing through it. To validate, sign in to one of the virtual machines that you created in either ASDK environment. Then, ping the virtual machine that you created in the other environment.
+Now that the site-to-site connection is established, you should validate that you can get traffic flowing through it. To validate, sign in to one of the virtual machines that you created in either ASDK environment. Then, ping the virtual machine that you created in the other environment.
 
 To ensure that you send the traffic through the site-to-site connection, ensure that you ping the Direct IP (DIP) address of the virtual machine on the remote subnet, not the VIP. To do so, find the DIP address on the other end of the connection. Save the address for later use.
 

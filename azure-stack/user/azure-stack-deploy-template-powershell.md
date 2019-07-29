@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 07/17/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2019
@@ -35,7 +35,7 @@ This example uses **AzureRM** PowerShell cmdlets and a template stored on GitHub
 
 1. Browse the [AzureStackGitHub repo](https://aka.ms/AzureStackGitHub) and find the **101-simple-windows-vm** template. Save the template to this location: `C:\templates\azuredeploy-101-simple-windows-vm.json`.
 2. Open an elevated PowerShell command prompt.
-3. Replace `username` and `password` in the following script with your username and password, and then run the script:
+3. Replace `username` and `password` in the following script with your username and password, then run the script:
 
     ```powershell
     # Set deployment variables
