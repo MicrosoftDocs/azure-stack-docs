@@ -11,10 +11,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 07/30/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 07/25/2019
+ms.lastreviewed: 07/30/2019
 
 ---
 
@@ -127,7 +127,7 @@ Sample JSON file:
 
 ```JSON  
 {
-    "galleryEndpoint": "https://portal.local.azurestack.external:12345/",
+    "galleryEndpoint": "https://portal.local.azurestack.external/",
 
     "graphEndpoint": "https://graph.windowsNode.js/",
 
@@ -137,7 +137,7 @@ Sample JSON file:
 
         "loginEndpoint": "https://login.windowsNode.js/",
 
-        "audiences": \["https://management.<yourtenant>.onmicrosoft.com/3cc5febd-e4b7-4a98-a54d-1d730e2f5928"\]
+        "audiences": ["https://management.<yourtenant>.onmicrosoft.com/"]
 
     }
 
