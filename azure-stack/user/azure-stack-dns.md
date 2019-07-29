@@ -1,6 +1,6 @@
 ---
 title: DNS in Azure Stack | Microsoft Docs
-description: Using DNS in Azure Stack
+description: Learn about DNS in Azure Stack and how to create and manage DNS zones.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -17,7 +17,7 @@ ms.author: sethm
 ms.lastreviewed: 01/05/2019
 
 ---
-# Using DNS in Azure Stack
+# Use DNS in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -57,9 +57,9 @@ The Azure Stack DNS infrastructure is more compact than Azure. The size and loca
 
 DNS in Azure Stack is similar to DNS in Azure, but there are a few important exceptions:
 
-* **Does not support AAAA records**: Azure Stack doesn't support AAAA records because Azure Stack doesn't support IPv6 addresses. This is a key difference between DNS in Azure and Azure Stack.
+* **Doesn't support AAAA records**: Azure Stack doesn't support AAAA records because Azure Stack doesn't support IPv6 addresses. This is a key difference between DNS in Azure and Azure Stack.
 
-* **Is not multi-tenant**: The DNS Service in Azure Stack isn't multi-tenant. Each tenant can't create the same DNS zone. Only the first subscription that attempts to create the zone succeeds, and subsequent requests fail. This is another key difference between Azure and Azure Stack DNS.
+* **Isn't multi-tenant**: The DNS Service in Azure Stack isn't multi-tenant. Each tenant can't create the same DNS zone. Only the first subscription that attempts to create the zone succeeds, and later requests fail. This is another key difference between Azure and Azure Stack DNS.
 
 * **Tags, metadata, and Etags**: There are minor differences in how Azure Stack handles tags, metadata, Etags, and limits.
 
@@ -71,15 +71,15 @@ Azure Stack DNS supports using Azure Resource Manager tags on DNS zone resources
 
 ### Metadata
 
-As an alternative to record set tags, Azure Stack DNS supports annotating record sets using *metadata*. Similar to tags, metadata enables you to associate name-value pairs with each record set. For example, this can be useful to record the purpose of each record set. Unlike tags, you can't use metadata to provide a filtered view of your Azure bill, and metadata can't be specified in an Azure Resource Manager policy.
+As an alternative to record set tags, Azure Stack DNS supports annotating record sets using *metadata*. Similar to tags, metadata enables you to associate name-value pairs with each record set. For example, metadata is useful to record the purpose of each record set. Unlike tags, you can't use metadata to provide a filtered view of your Azure bill, and metadata can't be specified in an Azure Resource Manager policy.
 
 ### Etags
 
 Suppose two people or two processes try to modify a DNS record at the same time. Which one wins? And does the winner know that they've overwritten changes created by someone else?
 
-Azure Stack DNS uses *Etags* to safely handle concurrent changes to the same resource. Etags are different from Azure Resource Manager *Tags*. Each DNS resource (zone or record set) has an Etag associated with it. When a resource is retrieved, its Etag is also retrieved. When updating a resource, you can choose to pass back the Etag so Azure Stack DNS can verify that the Etag on the server matches. Since each update to a resource results in the Etag being regenerated, an Etag mismatch indicates a concurrent change has occurred. Etags can also be used when creating a new resource to ensure that the resource doesn't already exist.
+Azure Stack DNS uses *Etags* to safely handle concurrent changes to the same resource. Etags are different from Azure Resource Manager *Tags*. Each DNS resource (zone or record set) has an Etag associated with it. When a resource is retrieved, its Etag is also retrieved. When you update a resource, you can choose to pass back the Etag so Azure Stack DNS can verify the Etag on the server matches. Since each update to a resource results in the Etag being regenerated, an Etag mismatch indicates a concurrent change has occurred. Etags can also be used when you create a new resource to ensure the resource doesn't already exist.
 
-By default, Azure Stack DNS PowerShell cmdlets use Etags to block concurrent changes to zones and record sets. You can use the optional `-Overwrite` switch to suppress Etag checks, which causes any concurrent changes that have occurred to be overwritten.
+By default, Azure Stack DNS PowerShell cmdlets use Etags to block concurrent changes to zones and record sets. You can use the optional `-Overwrite` switch to suppress Etag checks. With no Etag checks, any concurrent changes that have occurred are overwritten.
 
 At the level of the Azure Stack DNS REST API, Etags are specified using HTTP headers. Their behavior is described in the following table:
 
@@ -88,7 +88,7 @@ At the level of the Azure Stack DNS REST API, Etags are specified using HTTP hea
 | None   | PUT always succeeds (no Etag checks).|
 | If-match| PUT only succeeds if resource exists and Etag matches.|
 | If-match *| PUT only succeeds if resource exists.|
-| If-none-match *| PUT only succeeds if resource does not exist.|
+| If-none-match *| PUT only succeeds if resource doesn't exist.|
 
 ### Limits
 
