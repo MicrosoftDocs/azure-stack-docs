@@ -59,7 +59,7 @@ DNS in Azure Stack is similar to DNS in Azure, but there are a few important exc
 
 * **Doesn't support AAAA records**: Azure Stack doesn't support AAAA records because Azure Stack doesn't support IPv6 addresses. This is a key difference between DNS in Azure and Azure Stack.
 
-* **Isn't multi-tenant**: The DNS Service in Azure Stack isn't multi-tenant. Each tenant can't create the same DNS zone. Only the first subscription that attempts to create the zone succeeds, and later requests fail. This is another key difference between Azure and Azure Stack DNS.
+* **Isn't multi-tenant**: The DNS Service in Azure Stack isn't multi-tenant. Tenants can't create the same DNS zone. Only the first subscription that attempts to create the zone succeeds, and later requests fail. This is another key difference between Azure and Azure Stack DNS.
 
 * **Tags, metadata, and Etags**: There are minor differences in how Azure Stack handles tags, metadata, Etags, and limits.
 
