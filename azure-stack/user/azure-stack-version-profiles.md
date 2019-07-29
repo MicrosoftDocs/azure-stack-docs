@@ -11,10 +11,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 07/24/2019
 ms.author: sethm
 ms.reviewer: sijuman
-ms.lastreviewed: 05/16/2019
+ms.lastreviewed: 07/24/2019
 
 ---
 
@@ -88,6 +88,8 @@ In the Go SDK, a profile is a combination of different resource types with diffe
 The Ruby SDK for the Azure Stack Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include compute, virtual networks, and storage with the Ruby language. For information, see [Use API version profiles with Ruby](azure-stack-version-profiles-ruby.md).
 - **Python**  
 The Python SDK supports API version profiles to target different cloud platforms such as Azure Stack and global Azure. Use API profiles to create solutions for a hybrid cloud. For information, see [Use API version profiles with Python](azure-stack-version-profiles-python.md).
+- **Node.js**  
+The Node.js SDK for the Azure Stack Resource Manager provides tools to help you build and manage your infrastructure. For more information, see [Use API version Profiles with Node.js](azure-stack-version-profile-nodejs.md).
 
 ## Next steps
 
