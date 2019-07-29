@@ -75,6 +75,7 @@ These low impact tests work on an infrastructure level and provide you with info
 | Azure Stack Infrastructure Capacity                  | AzsInfraCapacity                  |
 | Azure Stack Infrastructure Performance               | AzsInfraPerformance               |
 | Azure Stack Infrastructure Role Summary              | AzsInfraRoleSummary               |
+| Azure Stack Network Infra                            | AzsNetworkInfra                   |
 | Azure Stack Portal and API Summary                   | AzsPortalAPISummary               |
 | Azure Stack Scale Unit VM Events                     | AzsScaleUnitEvents                |
 | Azure Stack Scale Unit VM Resources                  | AzsScaleUnitResources             |
@@ -223,6 +224,16 @@ To test new credentials with the configured backup share, run:
   Enter-PSSession -ComputerName "<ERCS VM-name/IP address>" -ConfigurationName PrivilegedEndpoint -Credential $localcred 
   Test-AzureStack -Include AzsBackupShareAccessibility -BackupShareCredential "<PSCredential for backup share>"
   ```
+
+### Run validation tool to test network infrastructure 
+
+This test will check the connectivity of the network infrastructure bypassing the Azure Stack software defined network (SDN), it will demonstrate connectivity from a Public VIP to the configured DNS forwarders, NTP servers and authentication endpoints, this includes connectivity to Azure when using Azure AD as identity provider or the federated server when using ADFS as identity provider. 
+
+Include the debug parameter to get a detailed output of the command:
+
+```powershell 
+Test-AzureStack -Include AzsNetworkInfra -Debug
+```
 
 
 
