@@ -95,6 +95,7 @@ The compliance documentation can be found on the [Microsoft Service Trust Portal
 
 ## Next steps
 
+- [Configure Azure Stack security controls](azure-stack-security-configuration.md)
 - [Learn how to rotate your secrets in Azure Stack](azure-stack-rotate-secrets.md)
 - [PCI-DSS and the CSA-CCM documents for Azure Stack](https://servicetrust.microsoft.com/ViewPage/TrustDocuments)
 - [DoD and NIST documents for Azure Stack](https://servicetrust.microsoft.com/ViewPage/Blueprint)

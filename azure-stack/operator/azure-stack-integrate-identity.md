@@ -127,6 +127,7 @@ The following information is required as input for the automation parameters:
 |---------|---------|---------|---------|
 |CustomAdfsName|ADFS Provider Name|Name of the claims provider.<br>It appears that way on the AD FS landing page.|Contoso|
 |CustomAD<br>FSFederationMetadataEndpointUri|ADFS Metadata URI|Federation metadata link| https:\//ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
+|SigningCertificateRevocationCheck|NA|Optional Parameter to skip CRL checking|None|
 
 
 ### Trigger automation to configure claims provider trust in Azure Stack

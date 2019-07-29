@@ -80,22 +80,37 @@ The requirements include:
 |-----|---------|
 | SMB | 3.x     |
 
+#### SMB encryption
+
+**1907 and beyond**
+
+Infrastructure backup service supports transferring backup data to an external storage location with SMB Encryption enabled on the server side. If the server does not support SMB Encryption or does not have the feature enabled, infrastructure backup service will fall back to unencrypted data transfer. Backup data placed on the external storage location is always encrypted at rest and is not dependent on SMB Encryption. 
+
 #### Storage location sizing 
 
-Infrastructure Backup Controller will back up data on demand. The recommendation is to back up at last two times a day and keep at most seven days of backups. 
+The recommendation is to back up at last two times a day and keep at most seven days of backups. This is the default behavior when you enable infrastructure backups on Azure Stack. 
 
-**1811 and beyond**
+**1907 and beyond**
+
+***System connected to Azure AD identity provider***
+
+| Environment Scale | Projected size of backup | Total amount of space required |
+|-------------------|--------------------------|--------------------------------|
+| 4-16 nodes/ASDK   | 1 GB                     | 20 GB                          |
+
+***System connected to corporate AD identity provider via ADFS***
 
 | Environment Scale | Projected size of backup | Total amount of space required |
 |-------------------|--------------------------|--------------------------------|
 | 4-16 nodes        | 20 GB                    | 280 GB                        |
 | ASDK              | 10 GB                    | 140 GB                        |
 
-**Pre-1811**
+**Pre-1907**
 
 | Environment Scale | Projected size of backup | Total amount of space required |
 |-------------------|--------------------------|--------------------------------|
-| 4-16 nodes, ASDK  | 10 GB                     | 140 GB                        |
+| 4-16 nodes        | 20 GB                    | 280 GB                        |
+| ASDK              | 10 GB                    | 140 GB                        |
 
 ### Network requirements
 
