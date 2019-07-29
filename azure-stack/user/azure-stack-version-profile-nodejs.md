@@ -28,7 +28,7 @@ You can use Node.js SDK to help build and manage the infrastructure for your app
 
 In this article you can use [Visual Studio Code](https://code.visualstudio.com/) as your development tool. Visual Studio Code can debug the Node.js SDK and allows you to run the app and push the app to your Azure Stack instance. You can debug from Visual Studio Code or through a terminal window running the command `node <nodefile.js>`.
 
-## The Node.JS SDK
+## The Node.js SDK
 
 The Node.js SDK provides Azure Stack Resource Manager tools. Resource providers in the SDK include compute, networking, storage, app services, and KeyVault. There are 10 resource provider client libraries that you can install in your node.js application. You can also download specify which resource provider you will use for the **2018-03-01-hybrid** or **2019-03-01-profile** in order to optimize the memory for your application. Each module consists of a resource provider, the respective API version, and the API profile. 
 
@@ -64,7 +64,7 @@ Use the specific API versions defined inside the package for the specific API-ve
   > [!Note]  
   > You can combine all of the options in the same application.
 
-## Install the Azure Node.js SDK
+## Install the Node.js SDK
 
 1. Install Git. For instructions, see [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
@@ -186,7 +186,7 @@ var map = {};
 const fetchUrl = base_url + 'metadata/endpoints?api-version=1.0'
 ```
 
-## Define Azure Stack environment setting functions
+## Environment settings
 
 To authenticate the service principal to the Azure Stack environment, please use the following code: Using this code and setting your environment variables in the command prompt automatically generates this mapping for the developer.
 
