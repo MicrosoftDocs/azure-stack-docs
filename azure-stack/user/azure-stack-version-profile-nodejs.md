@@ -26,7 +26,7 @@ ms.lastreviewed: 07/30/2019
 
 You can use Node.js SDK to help build and manage the infrastructure for your apps. API profiles in the Node.js SDK help with your hybrid cloud solutions by letting you switch between global Azure resources and Azure Stack resources. You can code once and then target both global Azure and Azure Stack. 
 
-In this article you can use [Visual Studio Code](https://code.visualstudio.com/) as your development tool. Visual Studio Code can debug the Node.js SDK and allows you to run the app and push the app to your Azure Stack instance. You can debug from Visual Studio Code or through a terminal window running the command `node <nodefile.js>`.
+In this article, you can use [Visual Studio Code](https://code.visualstudio.com/) as your development tool. Visual Studio Code can debug the Node.js SDK and allows you to run the app and push the app to your Azure Stack instance. You can debug from Visual Studio Code or through a terminal window running the command `node <nodefile.js>`.
 
 ## The Node.js SDK
 
@@ -47,9 +47,9 @@ You can find the following packages:
 | Resource provider | Package |
 | --- | --- |
 | [App Service](https://www.npmjs.com/package/@azure/arm-appservice-profile-2019-03-01-hybrid) | @azure/arm-appservice-profile-2019-03-01-hybrid |
-| [ARM Subscriptions](https://www.npmjs.com/package/@azure/arm-subscriptions-profile-hybrid-2019-03-01) | @azure/arm-subscriptions-profile-hybrid-2019-03-01  |
-| [ARM Policy](https://www.npmjs.com/package/@azure/arm-policy-profile-hybrid-2019-03-01) | @azure/arm-policy-profile-hybrid-2019-03-01
-| [ARM DNS](https://www.npmjs.com/package/@azure/arm-dns-profile-2019-03-01-hybrid) | @azure/arm-dns-profile-2019-03-01-hybrid  |
+| [Azure Resource Manager Subscriptions](https://www.npmjs.com/package/@azure/arm-subscriptions-profile-hybrid-2019-03-01) | @azure/arm-subscriptions-profile-hybrid-2019-03-01  |
+| [Azure Resource Manager Policy](https://www.npmjs.com/package/@azure/arm-policy-profile-hybrid-2019-03-01) | @azure/arm-policy-profile-hybrid-2019-03-01
+| [Azure Resource Manager DNS](https://www.npmjs.com/package/@azure/arm-dns-profile-2019-03-01-hybrid) | @azure/arm-dns-profile-2019-03-01-hybrid  |
 | [Authorization](https://www.npmjs.com/package/@azure/arm-authorization-profile-2019-03-01-hybrid) | @azure/arm-authorization-profile-2019-03-01-hybrid  |
 | [Compute](https://www.npmjs.com/package/@azure/arm-compute-profile-2019-03-01-hybrid) | @azure/arm-compute-profile-2019-03-01-hybrid |
 | [Storage](https://www.npmjs.com/package/@azure/arm-storage-profile-2019-03-01-hybrid) | @azure/arm-storage-profile-2019-03-01-hybrid |
@@ -72,7 +72,7 @@ Use the specific API versions defined inside the package for the specific API-ve
 
 3. Install or upgrade [Visual Studio Code](https://code.visualstudio.com/) and install the [Node.js extension](https://code.visualstudio.com/docs/Node.js/nodejs-debugging) for Visual Studio Code.
 
-2.  Install the client packages for the Azure Stack Resource Manger. For more inforamtion, see [how to install client libraries](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid).
+2.  Install the client packages for the Azure Stack Resource Manger. For more information, see [how to install client libraries](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid).
 
 3.  The packages that need to be installed depends on the profile version you would like to use. You can find a list of resource providers in the [Packages in npm](#packages-in-npm) section.
 
@@ -98,7 +98,7 @@ To use the Node.js Azure SDK with Azure Stack, you must supply the following val
 
 #### Set your environmental variables for Node.js
 
-To set your environment variables, do the following:
+To set your environment variables:
 
   - **Microsoft Windows**  
 
@@ -144,13 +144,13 @@ Sample JSON file:
 }
 ```
 
-### Existing API Profiles
+### Existing API profiles
 
-1.  **\@azure/arm-resourceprovider-profile-2019-03-01-hybrid**
+-  **\@azure/arm-resourceprovider-profile-2019-03-01-hybrid**
 
     Latest Profile built for Azure Stack. Use this profile for services to be most compatible with Azure Stack as long as you are on 1808 stamp or further.
 
-2.  **\@azure-arm-resource**
+-  **\@azure-arm-resource**
 
     Profile consists of latest versions of all services. Use the latest versions of all the services in Azure.
 
@@ -188,7 +188,7 @@ const fetchUrl = base_url + 'metadata/endpoints?api-version=1.0'
 
 ## Environment settings
 
-To authenticate the service principal to the Azure Stack environment, please use the following code: Using this code and setting your environment variables in the command prompt automatically generates this mapping for the developer.
+To authenticate the service principal to the Azure Stack environment, use the following code: Using this code and setting your environment variables in the command prompt automatically generates this mapping for the developer.
 
 ```Node.js  
 function main() {
@@ -242,7 +242,7 @@ You can use the following samples as a reference for creating solutions with Nod
     ```bash  
     export TENANT_ID=<your tenant id>
     export CLIENT_ID=<your client id>
-    export APPLICATION_SECRET=<your client secret>
+    export APPLICATION_SECRET=<your client secret>K
     export AZURE_SUBSCRIPTION_ID=<your subscription id>
     export ARM_ENDPOINT=<your Azure Stack Resource manager URL>
     ```
@@ -254,7 +254,7 @@ You can use the following samples as a reference for creating solutions with Nod
 
 6.  Set the location variable to your Azure Stack location. For example, `LOCAL = "local"`.
 
-7.  Set the login credentials that will allow you to authenticate to Azure Stack. This portion of the code is included in this sample on the index.js file.
+7.  Set the credentials that will allow you to authenticate to Azure Stack. This portion of the code is included in this sample on the index.js file.
 
     ```Node.js  
     var clientId = process.env['CLIENT_ID'];
@@ -290,7 +290,7 @@ You can use the following samples as a reference for creating solutions with Nod
         Node cleanup.js <resourceGroupName> <storageAccountName>
         ```
 
-13.  The sample has successfully been completed. For more information on the sample, please see below.
+13.  The sample has successfully been completed. For more information on the sample, see below.
 
 ### What does index.js do?
 
