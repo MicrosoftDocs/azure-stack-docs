@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Ethereum blockchain solution template
-description: Tutorial using a custom solution templates to deploy and configure a consortium Ethereum blockchain network on Azure Stack
+title: Deploy an Ethereum blockchain network on Azure Stack | Microsoft Docs
+description: Tutorial using a custom solution templates to deploy and configure a consortium Ethereum blockchain network on Azure Stack.
 services: azure-stack
 keywords: 
 author: PatAltimore
