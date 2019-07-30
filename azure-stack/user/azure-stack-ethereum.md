@@ -164,7 +164,7 @@ As shown in the picture, member's nodes status is **Not running**. This status i
 
 This template creates a connection from the leader to a remote member. 
 
-1. Download the [connect member and leader template from GitHub](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/Connection/mainTemplate.json)
+1. Download the [connect member and leader template from GitHub](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/Connection/mainTemplate.json).
 2. In the Azure Stack tenant portal, select **+ Create a resource > Template deployment** to deploy from a custom template.
 3. Select **Edit template** to edit the new custom template.
 4. In the editing pane on the right, copy and paste the leader template JSON you downloaded previously.
@@ -178,7 +178,7 @@ This template creates a connection from the leader to a remote member.
 
     Parameter Name | Description | Allowed Values | Sample value
     ---------------|-------------|----------------|-------------
-    MEMBERNAMEPREFIX | Leader's name prefix. This value can be found on leader's deployment output.  | Alphanumeric characters with length 1 to 6 | |
+    MEMBERNAMEPREFIX | Leader's name prefix. This value can be found on leader's deployment output.  | Alphanumeric characters with length 1 to 6. | |
     MEMBERROUTETABLENAME | Name of the leader's route table. This value can be found on leader's deployment output. |  | 
     REMOTEMEMBERVNETADDRESSSPACE | Address space of the member. This value can be found on member's deployment output. | |
     CONNECTIONSHAREDKEY | A pre-established secret between the members of the consortium network that are establishing a connection.  | |
@@ -200,7 +200,7 @@ This template creates a connection from the leader to a remote member.
 
 8. Select **Create**.
 
-After deployment is complete, it takes few minutes for leader and member to start communication. To verify the deployment, refresh member's admin site. Status of the member's nodes should be running. 
+After deployment is complete, it takes few minutes for leader and member to start communication. To verify the deployment, refresh member's admin site. Status of the member's nodes should be running.
 
 ![Verify the deployment](./media/azure-stack-ethereum/ethererum-node-status-3.png)
 
