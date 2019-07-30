@@ -227,7 +227,7 @@ To test new credentials with the configured backup share, run:
 
 ### Run validation tool to test network infrastructure 
 
-This test will check the connectivity of the network infrastructure bypassing the Azure Stack software defined network (SDN), it will demonstrate connectivity from a Public VIP to the configured DNS forwarders, NTP servers and authentication endpoints, this includes connectivity to Azure when using Azure AD as identity provider or the federated server when using ADFS as identity provider. 
+This test checks the connectivity of the network infrastructure bypassing the Azure Stack software defined network (SDN). It demonstrates connectivity from a Public VIP to the configured DNS forwarders, NTP servers, and authentication endpoints. This includes connectivity to Azure when using Azure AD as identity provider or the federated server when using ADFS as identity provider. 
 
 Include the debug parameter to get a detailed output of the command:
 
