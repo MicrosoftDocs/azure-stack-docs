@@ -44,11 +44,11 @@ For more info on blockchain scenarios, see [Ethereum proof-of-authority consorti
 
 ## Deployment architecture
 
-This solution template can deploy single or multi-member Ethereum consortium network. The virtual network is connected in a chain topology using Network Virtual Appliance and connection resources. 
+This solution template can deploy a single or multi-member Ethereum consortium network. The virtual network is connected in a chain topology using Network Virtual Appliance and connection resources.
 
 ## Deployment use cases
 
-The template can deploy Ethereum consortium for leader and member join in a variety of ways, here are the ones we have tested:
+The template can deploy Ethereum consortium for leader and member in a variety of ways. Here are the ones we've tested:
 
 - On a multi-node Azure Stack, with Azure AD or AD FS, deploy lead and member using the same subscription or with different subscriptions.
 - On a single-node Azure Stack (with Azure AD), deploy lead and member using the same subscription.
@@ -57,7 +57,7 @@ The template can deploy Ethereum consortium for leader and member join in a vari
 
 The consortium leader template configures the first member's footprint in the network. 
 
-1. Download the [leader template from GitHub](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/ConsortiumLeader/mainTemplate.json)
+1. Download the [leader template from GitHub](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/ConsortiumLeader/mainTemplate.json).
 2. In the Azure Stack tenant portal, select **+ Create a resource > Template deployment** to deploy from a custom template.
 3. Select **Edit template** to edit the new custom template.
 4. In the editing pane on the right, copy and paste the leader template JSON you previously downloaded.
@@ -71,15 +71,15 @@ The consortium leader template configures the first member's footprint in the ne
 
     Parameter Name | Description | Allowed Values | Sample value
     ---------------|-------------|----------------|-------------
-    NAMEPREFIX | String used as a base for naming the deployed resources. | Alphanumeric characters with length 1 to 6 | eth
-    AUTHTYPE | The method to authenticate to the virtual machine. | Password or SSH public key | Password
-    ADMINUSERNAME | Administrator username of each deployed VM | 1 - 64 characters | gethadmin
-    ADMINPASSWORD (Authentication type = Password)| The password for the administrator account for each of the virtual machines deployed. The password must contain 3 of the following requirements: 1 upper case character, 1 lower case character, 1 number, and 1 special character. <br />While all VMs initially have the same password, you can change the password after provisioning.|12 - 72 characters|
+    NAMEPREFIX | String used as a base for naming the deployed resources. | Alphanumeric characters with length 1 to 6. | eth
+    AUTHTYPE | The method to authenticate to the VM. | Password or SSH public key. | Password
+    ADMINUSERNAME | Admin username of each deployed VM. | 1 - 64 characters. | gethadmin
+    ADMINPASSWORD (Authentication type = Password)| The password for the admin account for each of the VMs deployed. The password must contain 3 of the following requirements: 1 upper case character, 1 lower case character, 1 number, and 1 special character. <br />While all VMs initially have the same password, you can change the password after provisioning.|12 - 72 characters. |
     ADMINSSHKEY (Authentication type = sshPublicKey) | The secure shell key used for remote login. | |
     GENESISBLOCK | JSON string representing custom genesis block.  Specifying a value for this parameter is optional. | |
-    ETHEREUMACCOUNTPSSWD | The admin password used to secure Ethereum account. | |
+    ETHEREUMACCOUNTPSSWD | The admin password used to secure the Ethereum account. | |
     ETHEREUMACCOUNTPASSPHRASE | The passphrase used to generate private key associated with the Ethereum account. | |
-    ETHEREUMNETWORKID | The network ID of the consortium. | Use any value between 5 and 999,999,999 | 72
+    ETHEREUMNETWORKID | The network ID of the consortium. | Use any value between 5 and 999,999,999. | 72
     CONSORTIUMMEMBERID | The ID associated with each member of the consortium network.   | This ID should be unique in the network. | 0
     NUMMININGNODES | Number of mining nodes. | Between 2 and 15. | 2
     MNNODEVMSIZE | VM size of the mining nodes. | | Standard_A1
@@ -96,7 +96,7 @@ The consortium leader template configures the first member's footprint in the ne
 
     Parameter Name | Description | Allowed Values | Sample value
     ---------------|-------------|----------------|-------------
-    Subscription | The subscription to which to deploy the consortium network | | Consumption Subscription
+    Subscription | The subscription to which to deploy the consortium network. | | Consumption Subscription
     Resource Group | The resource group to which to deploy the consortium network. | | EthereumResources
     Location | The Azure region for resource group. | | local
 
@@ -104,9 +104,9 @@ The consortium leader template configures the first member's footprint in the ne
 
 Deployment can take 20 minutes or longer to complete.
 
-After deployment completes, you can review the deployment summary for **Microsoft. Template** in the deployment section of the resource group. The summary contains output values that can be used to join consortium members.
+After deployment completes, review the deployment summary for **Microsoft.Template** in the deployment section of the resource group. The summary contains output values used to join consortium members.
 
-To verify leader's deployment, browse leader's admin site. You can find admin site address in the output section of **Microsoft.Template** deployment.  
+To verify leader's deployment, browse leader's admin site. Admin site address are found in the output section of the **Microsoft.Template** deployment.  
 
 ![Leader deployment summary](./media/azure-stack-ethereum/ethereum-node-status.png)
 
