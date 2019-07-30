@@ -1,6 +1,6 @@
 ---
 title: Develop templates for Azure Stack | Microsoft Docs
-description: Learn Azure Stack template best practices
+description: Learn how to develop Azure Resource Manager templates for app portability between Azure and Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -20,15 +20,15 @@ ms.lastreviewed: 05/21/2019
 
 ---
 
-# Azure Resource Manager template considerations
+# Develop templates for Azure Stack with Azure Resource Manager
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-As you develop your application, it is important to ensure template portability between Azure and Azure Stack. This article provides considerations for developing [Azure Resource Manager templates](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), so you can prototype your application and test deployment in Azure without access to an Azure Stack environment.
+As you develop your app, it's important to have template portability between Azure and Azure Stack. This article provides considerations for developing [Azure Resource Manager templates](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf). With these templates, you can prototype your app and test deployment in Azure without access to an Azure Stack environment.
 
 ## Resource provider availability
 
-The template that you plan to deploy must only use Microsoft Azure services that are already available or in preview in Azure Stack.
+The template you plan to deploy must only use Microsoft Azure services that are already available or in preview in Azure Stack.
 
 ## Public namespaces
 
@@ -60,7 +60,7 @@ Azure Resource Manager [functions](/azure/azure-resource-manager/resource-group-
 * Referencing values from other resources.
 * Iterating on resources to deploy multiple instances.
 
-These functions are not available in Azure Stack:
+These functions aren't available in Azure Stack:
 
 * Skip
 * Take
