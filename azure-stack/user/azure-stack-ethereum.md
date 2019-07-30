@@ -18,12 +18,18 @@ ms.lastreviewed: 06/03/2019
 
 The Ethereum solution template is designed to make it easier and quicker to deploy and configure a multi-member consortium Ethereum blockchain network with minimal Azure and Ethereum knowledge.
 
-With a handful of user inputs and a single-click deployment through the Azure Stack tenant portal, each member can provision their network footprint. Each member's network footprint consists of a set of load-balanced transaction nodes with which an application or user can interact to submit transactions, a set of mining nodes to record transactions, and a Network Virtual Appliance (NVA). A subsequent connection step connects the NVAs to create a fully configured multi-member blockchain network.
+With a handful of user inputs and a single-click deployment through the Azure Stack tenant portal, each member can provision their network footprint. Each member's network footprint consists of three things:
+
+1. A set of load-balanced transaction nodes with which an app or user can interact to submit transactions.
+2. A set of mining nodes to record transactions.
+3. A Network Virtual Appliance (NVA).
+
+A subsequent connection step connects the NVAs to create a fully configured multi-member blockchain network.
 
 To set up:
 
-- Choose a deployment architecture
-- Deploy a standalone, consortium leader, or consortium member network
+- Choose a deployment architecture.
+- Deploy a standalone, consortium leader, or consortium member network.
 
 ## Prerequisites
 
@@ -34,11 +40,11 @@ Download the latest items [from the Marketplace](../operator/azure-stack-downloa
 - Custom Script for Linux 2.0
 - Custom Script Extension for Windows
 
-For more information about blockchain scenarios, see [Ethereum proof-of-authority consortium solution template](/azure/blockchain/templates/ethereum-poa-deployment).
+For more info on blockchain scenarios, see [Ethereum proof-of-authority consortium solution template](/azure/blockchain/templates/ethereum-poa-deployment).
 
 ## Deployment architecture
 
-This solution template can deploy single or multi member Ethereum consortium network. The virtual network is connected in a chain topology using Network Virtual Appliance and connection resources. 
+This solution template can deploy single or multi-member Ethereum consortium network. The virtual network is connected in a chain topology using Network Virtual Appliance and connection resources. 
 
 ## Deployment use cases
 
