@@ -112,7 +112,7 @@ To verify leader's deployment, browse leader's admin site. Admin site address ar
 
 ### Joining consortium member deployment
 
-1. Download the [consortium member template from GitHub](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/JoiningMember/mainTemplate.json)
+1. Download the [consortium member template from GitHub](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/JoiningMember/mainTemplate.json).
 2. In the Azure Stack tenant portal, select **+ Create a resource > Template deployment** to deploy from a custom template.
 3. Select **Edit template** to edit the new custom template.
 4. In the editing pane on the right, copy and paste the leader template JSON you downloaded previously.
@@ -121,10 +121,10 @@ To verify leader's deployment, browse leader's admin site. Admin site address ar
 
     Parameter Name | Description | Allowed Values | Sample value
     ---------------|-------------|----------------|-------------
-    NAMEPREFIX | String used as a base for naming the deployed resources. | Alphanumeric characters with length 1 to 6 | eth
-    AUTHTYPE | The method to authenticate to the virtual machine. | Password or SSH public key | Password
-    ADMINUSERNAME | Administrator username of each deployed VM | 1 - 64 characters | gethadmin
-    ADMINPASSWORD (Authentication type = Password)| The password for the administrator account for each of the virtual machines deployed. The password must contain 3 of the following requirements: 1 upper case character, 1 lower case character, 1 number, and 1 special character. <br />While all VMs initially have the same password, you can change the password after provisioning.|12 - 72 characters|
+    NAMEPREFIX | String used as a base for naming the deployed resources. | Alphanumeric characters with length 1 to 6. | eth
+    AUTHTYPE | The method to authenticate to the VM | Password or SSH public key. | Password
+    ADMINUSERNAME | Admin username of each deployed VM | 1 - 64 characters. | gethadmin
+    ADMINPASSWORD (Authentication type = Password)| The password for the admin account for each of the VMs deployed. The password must contain 3 of the following requirements: 1 upper case character, 1 lower case character, 1 number, and 1 special character. <br />While all VMs initially have the same password, you can change the password after provisioning.|12 - 72 characters. |
     ADMINSSHKEY (Authentication type = sshPublicKey) | The secure shell key used for remote login. | |
     CONSORTIUMMEMBERID | The ID associated with each member of the consortium network.   | This ID should be unique in the network. | 0
     NUMMININGNODES | Number of mining nodes. | Between 2 and 15. | 2
@@ -144,7 +144,7 @@ To verify leader's deployment, browse leader's admin site. Admin site address ar
 
     Parameter Name | Description | Allowed Values | Sample value
     ---------------|-------------|----------------|-------------
-    Subscription | The subscription to which to deploy the consortium network | | Consumption Subscription
+    Subscription | The subscription to which to deploy the consortium network. | | Consumption Subscription
     Resource Group | The resource group to which to deploy the consortium network. | | MemberResources
     Location | The Azure region for resource group. | | local
 
@@ -152,13 +152,13 @@ To verify leader's deployment, browse leader's admin site. Admin site address ar
 
 Deployment can take 20 minutes or longer to complete.
 
-After deployment completes, you can review the deployment summary for **Microsoft.Template** in the deployment section of the resource group. The summary contains output values that can be used to connect consortium members.
+After deployment completes, review the deployment summary for **Microsoft.Template** in the deployment section of the resource group. The summary contains output values used to connect consortium members.
 
-To verify member's deployment, browse member's admin site. You can find admin site address in the output section of Microsoft.Template deployment.
+To verify member's deployment, browse member's admin site. You can find the admin site address in the output section of the **Microsoft.Template** deployment.
 
 ![Member deployment summary](./media/azure-stack-ethereum/ethereum-node-status-2.png)
 
-As shown in the picture, member's nodes status is **Not running**. This status is because the connection between member and leader is not established. The connection between member and leader is a two-way connection. When you deploy member, template automatically creates the connection from member to the leader. To create the connection from leader to member, go to the next step.
+As shown in the picture, member's nodes status is **Not running**. This status is because the connection between member and leader isn't established. The connection between member and leader is a two-way connection. When you deploy member, template automatically creates the connection from member to the leader. To create the connection from leader to member, go to the next step.
 
 ### Connect member and leader
 
