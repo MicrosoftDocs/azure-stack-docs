@@ -1,6 +1,6 @@
 ---
-title: About VPN gateway for Azure Stack | Microsoft Docs
-description: Learn about and configure VPN gateways you use with Azure Stack.
+title: Create VPN gateways for Azure Stack | Microsoft Docs
+description: Create and configure VPN gateways for Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -18,7 +18,7 @@ ms.author: sethm
 ms.lastreviewed: 05/21/2019
 ---
 
-# About VPN gateway for Azure Stack
+# Create VPN gateways for Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -28,7 +28,7 @@ A VPN gateway is a type of virtual network gateway that sends encrypted traffic 
 
 When you create a virtual network gateway, you specify the gateway type that you want to create. Azure Stack supports one type of virtual network gateway: the **Vpn** type.
 
-Each virtual network can have two virtual network gateways, but only one of each type. Depending on the settings that you choose, you can create multiple connections to a single VPN gateway. An example is a multi-site connection configuration.
+Each virtual network can have two virtual network gateways, but only one of each type. Depending on the settings that you choose, you can create multiple connections to a single VPN gateway. An example of this kind of setup is a multi-site connection configuration.
 
 Before you create and configure VPN gateways for Azure Stack, review the [considerations for Azure Stack networking](azure-stack-network-differences.md) to learn how configurations for Azure Stack differ from Azure.
 
@@ -55,7 +55,7 @@ For information about individual resources and settings for a VPN gateway, see [
 
 ### Deployment tools
 
-You can create and configure resources using one configuration tool, such as the Azure portal. Later you might switch to another tool such as PowerShell to configure additional resources or modify existing resources when applicable. Currently, you cannot configure every resource and resource setting in the Azure portal. The instructions in the articles for each connection topology specify when a specific configuration tool is needed.
+You can create and configure resources using one configuration tool, such as the Azure portal. Later you might switch to another tool such as PowerShell to configure additional resources or modify existing resources when applicable. Currently, you can't configure every resource and resource setting in the Azure portal. The instructions in the articles for each connection topology specify when a specific configuration tool is needed.
 
 ## Connection topology diagrams
 
@@ -71,7 +71,7 @@ The diagrams and descriptions in the following sections can help you select a co
 
 ### Site-to-site
 
-A *site-to-site* (S2S) VPN gateway connection is a connection over IPsec/IKE (IKEv2) VPN tunnel. This type of connection requires a VPN device that is located on-premises and is assigned a public IP address. This device cannot be located behind a NAT. S2S connections can be used for cross-premises and hybrid configurations.
+A *site-to-site* (S2S) VPN gateway connection is a connection over IPsec/IKE (IKEv2) VPN tunnel. This type of connection requires a VPN device that is located on-premises and is assigned a public IP address. This device can't be located behind a NAT. S2S connections can be used for cross-premises and hybrid configurations.
 
 ![Site-to-site VPN connection configuration example](media/azure-stack-vpn-gateway-about-vpn-gateways/vpngateway-site-to-site-connection-diagram.png)
 
@@ -91,13 +91,13 @@ When you create a virtual network gateway for Azure Stack, you specify the gatew
 
 When you select a higher gateway SKU, such as Standard over Basic, or High Performance over Standard or Basic, more CPUs and network bandwidth are allocated to the gateway. As a result, the gateway can support higher network throughput to the virtual network.
 
-Azure Stack does not support the Ultra Performance gateway SKU, which is used exclusively with Express Route.
+Azure Stack doesn't support the Ultra Performance gateway SKU, which is used exclusively with Express Route.
 
 Consider the following when you select the SKU:
 
-* Azure Stack does not support policy-based gateways.
-* Border Gateway Protocol (BGP) is not supported on the Basic SKU.
-* ExpressRoute-VPN gateway coexisting configurations are not supported in Azure Stack.
+* Azure Stack doesn't support policy-based gateways.
+* Border Gateway Protocol (BGP) isn't supported on the Basic SKU.
+* ExpressRoute-VPN gateway coexisting configurations aren't supported in Azure Stack.
 
 ## Gateway Availability
 
@@ -105,7 +105,7 @@ High availability scenarios can only be configured on the **High Performance Gat
 
 ### Failover
 
-There are 3 multi-tenant gateway infrastructure VMs in Azure Stack. Two of these VMs are in active mode, and the third is in redundant mode. Active VMs enable the creation of VPN connections on them, and the redundant VM only accepts VPN connections in the event of a failover. If an active gateway VM becomes unavailable, the VPN connection fails over to the redundant VM after a short period (a few seconds) of connection loss.
+There are three multi-tenant gateway infrastructure VMs in Azure Stack. Two of these VMs are in active mode, and the third is in redundant mode. Active VMs enable the creation of VPN connections on them, and the redundant VM only accepts VPN connections if a failover happens. If an active gateway VM becomes unavailable, the VPN connection fails over to the redundant VM after a short period (a few seconds) of connection loss.
 
 ## Estimated aggregate throughput by SKU
 
@@ -119,12 +119,12 @@ The following table shows the gateway types and the estimated aggregate throughp
 
 **Table notes:**
 
-*Note (1)* - VPN throughput is not a guaranteed throughput for cross-premises connections across the Internet. It is the maximum possible throughput measurement.  
+*Note (1)* - VPN throughput isn't a guaranteed throughput for cross-premises connections across the internet. It's the maximum possible throughput measurement.  
 *Note (2)* - Max tunnels is the total per Azure Stack deployment for all subscriptions.  
-*Note (3)* - BGP routing is not supported for the Basic SKU.
+*Note (3)* - BGP routing isn't supported for the Basic SKU.
 
 >[!NOTE]
->Only one site-to-site VPN connection can be created between two Azure Stack deployments. This is due to a limitation in the platform that only allows a single VPN connection to the same IP address. Because Azure Stack leverages the multi-tenant gateway, which uses a single public IP for all VPN gateways in the Azure Stack system, there can be only one VPN connection between two Azure Stack systems. This limitation also applies to connecting more than one site-to-site VPN connection to any VPN gateway that uses a single IP address. Azure Stack does not allow more than one local network gateway resource to be created using the same IP address.
+>Only one site-to-site VPN connection can be created between two Azure Stack deployments. This is due to a limitation in the platform that only allows a single VPN connection to the same IP address. Because Azure Stack leverages the multi-tenant gateway, which uses a single public IP for all VPN gateways in the Azure Stack system, there can be only one VPN connection between two Azure Stack systems. This limitation also applies to connecting more than one site-to-site VPN connection to any VPN gateway that uses a single IP address. Azure Stack doesn't allow more than one local network gateway resource to be created using the same IP address.
 
 ## Next steps
 
