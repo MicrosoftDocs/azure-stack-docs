@@ -59,8 +59,8 @@ If there is a disaster that renders the hardware unusable, redeployment is only 
 Azure Stack supports a type of deployment called cloud recovery mode. This mode is used only if you choose to recover Azure Stack after a disaster or product bug rendered the solution unrecoverable. This deployment mode does not recover any of the user data stored in the solution. The scope of this deployment mode is limited to restoring the following data:
 
  - Deployment inputs
- - Internal identity systems
- - Federated identify configuration (disconnected deployments)
+ - Internal identity service data (ADFS deployments )
+ - Federated identify configuration (ADFS deployments)
  - Root certificates used by internal certificate authority
  - Azure Resource Manager configuration user data, such as subscriptions, plans, offers, and quotas for storage, network, and compute resources
  - KeyVault secrets and vaults

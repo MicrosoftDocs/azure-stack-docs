@@ -50,7 +50,7 @@ Your Azure Stack deployment must have internet connectivity, and be [registered 
 
     ![Review storage space](media/azure-stack-download-azure-marketplace-item/storage.png)
 
-3. Open the Azure Stack Marketplace and connect to Azure. To do so, select **Marketplace items**, and then select **Add from Azure**:
+3. Open the Azure Stack Marketplace and connect to Azure. To do so, select the **Marketplace management** service, select **Marketplace items**, and then select **Add from Azure**:
 
     ![Add from Azure](media/azure-stack-download-azure-marketplace-item/marketplace.png)
 
@@ -173,7 +173,7 @@ There are two parts to this scenario:
    The `-AzsCredential` parameter is optional. It is used to renew the access token, if it has expired. If the `-AzsCredential` parameter is not specified and the token expires, you receive a prompt to enter the operator credentials.
 
     > [!Note]  
-    > AD FS only supports interactive authentication with user identities. If a credential object is required you must use a service principal (SPN). For more information on setting up a service principal with Azure Stack and AD FS as your identity management service, see [Manage service principal for AD FS](azure-stack-create-service-principals.md#manage-service-principal-for-ad-fs).
+    > AD FS only supports interactive authentication with user identities. If a credential object is required you must use a service principal (SPN). For more information on setting up a service principal with Azure Stack and AD FS as your identity management service, see [Manage an AD FS service principal](azure-stack-create-service-principals.md#manage-an-ad-fs-service-principal).
 
 4. After the script successfully completes, the item should be available in the Azure Stack Marketplace.
 

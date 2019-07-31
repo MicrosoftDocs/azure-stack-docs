@@ -2,6 +2,8 @@
   href: index.yml
 - name: Overview
   items:
+  - name: Build solutions with Azure Stack
+    href: azure-stack-hybrid-cloud-patterns.md
   - name: Key considerations
     href: azure-stack-considerations.md
 - name: Quickstarts
@@ -21,117 +23,168 @@
     href: azure-stack-quick-create-vm-linux-cli.md
 - name: Tutorials
   items:
-    - name: Common tasks
-      items:
-      - name: Subscribe to an offer
-        href: azure-stack-subscribe-services.md
-      - name: Create a VM from a template
-        href: azure-stack-create-vm-template.md
-    - name: Hybrid cloud apps
-      href: azure-stack-hybrid-cloud-patterns.md
-      items:
-      - name: Deploy apps to Azure and Azure Stack
-        href: azure-stack-solution-pipeline.md
-      - name: Configure hybrid cloud identity
-        href: azure-stack-solution-hybrid-identity.md
-      - name: Configure hybrid cloud connectivity
-        href: azure-stack-solution-hybrid-connectivity.md
-      - name: Create a staged data analytics solution
-        href: azure-stack-solution-staged-data-analytics.md
-      - name: Create cross-cloud scaling solutions with Azure
-        href: azure-stack-solution-cloud-burst.md
-      - name: Create a geo-distributed app solution
-        href: azure-stack-solution-geo-distributed.md
-      - name: Deploy a hybrid cloud solution
-        href: azure-stack-solution-hybrid-cloud.md
+    - name: Create a VM from a template
+      href: azure-stack-create-vm-template.md
 - name: How-to guides
   items:
-  - name: Use the Azure Stack Portal
-    href: azure-stack-use-portal.md
-  - name: Connect with PowerShell
-    href: azure-stack-powershell-configure-user.md
-  - name: Security & compliance
+  - name: Get started building solutions for the hybrid cloud
     items:
-    - name: Use role-based access control
-      href: azure-stack-manage-permissions.md
-    - name: Use service principals
-      href: Azure-stack-create-service-principals.md
-  - name: Use services
-    items:
-    - name: Compute
-      items:
-      - name: Overview
-        href: azure-stack-compute-overview.md
-      - name: VM considerations
-        href: azure-stack-vm-considerations.md
-      - name: VM sizes
-        href: azure-stack-vm-sizes.md
-      - name: Manage VM disks
-        href: azure-stack-manage-vm-disks.md
-      - name: Managed disks considerations
-        href: azure-stack-managed-disk-considerations.md
-      - name: Protect VMs
-        href: azure-stack-manage-vm-protect.md
-      - name: VM update and management
-        href: vm-update-management.md
-      - name: SQL Server VM considerations
-        href: azure-stack-sql-server-vm-considerations.md
-    - name: Storage
-      items:
-      - name: Overview
-        href: azure-stack-storage-overview.md
-      - name: Storage considerations
-        href: azure-stack-acs-differences.md
-      - name: Storage development tools
-        href: azure-stack-storage-dev.md
-      - name: Data transfer tools
-        href: azure-stack-storage-transfer.md
-      - name: Connect Storage Explorer
-        href: azure-stack-storage-connect-se.md
-    - name: Network
-      items:
-      - name: Overview
-        href: azure-stack-network-overview.md
-      - name: Networking considerations
-        href: azure-stack-network-differences.md
-      - name: VPN gateways
+      - name: Subscribe to an offer
+        href: azure-stack-subscribe-services.md
+      - name: Enable a Cloud Service Provider
+        href: azure-stack-csp-enable-billing-usage-tracking.md
+      - name: Use the Azure Stack Portal
+        href: azure-stack-use-portal.md
+      - name: Configure your client
+        items:  
+        - name: Set up a development environment
+          href: azure-stack-dev-start.md
+        - name: Use PowerShell with Azure Stack
+          items: 
+          - name: Azure Stack PowerShell overview
+            href: azure-stack-powershell-overview.md
+          - name: Install Azure Stack PowerShell
+            href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            maintainContext: true
+          - name: Connect with PowerShell
+            href: azure-stack-powershell-configure-user.md
+          - name: Download Azure Stack tools
+            href: /azure-stack/operator/azure-stack-powershell-download?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+            maintainContext: true
+          - name: Use Docker to run PowerShell
+            href: azure-stack-powershell-user-docker.md
+          - name: Use the Azure Stack Policy module
+            href: azure-stack-policy-module.md
+        - name: Use Azure CLI with Azure Stack
+          href: azure-stack-version-profiles-azurecli2.md
+        - name: Use Visual Studio Code
+          href: azure-stack-dev-start-vscode-azure.md
+        - name: Use Visual Studio
+          href: azure-stack-install-visual-studio.md
+        - name: Use a Secure Shell
+          href: azure-stack-dev-start-howto-ssh-public-key.md
+        - name: Use a REST client with the API
+          href: azure-stack-rest-api-use.md
+      - name: Use Azure Stack Resource Manager templates
         items:
-        - name: Connect using VPN
-          href: azure-stack-connect-vpn.md
-        - name: About VPN gateway
-          href: azure-stack-vpn-gateway-about-vpn-gateways.md
-        - name: Configure IPSec/IKE connection policies
-          href: azure-stack-vpn-s2s.md
-        - name: VPN gateway settings
-          href: azure-stack-vpn-gateway-settings.md
-      - name: iDNS for Azure Stack
-        href: azure-stack-understanding-dns.md
-      - name: DNS in Azure Stack
-        href: azure-stack-dns.md
-    - name: Key Vault
+        - name: Template overview
+          href: azure-stack-arm-templates.md
+        - name: Template considerations
+          href: azure-stack-develop-templates.md
+        - name: Develop templates in Azure
+          href: azure-stack-developer.md  
+        - name: Check templates
+          href: azure-stack-validate-templates.md
+        - name: Deploy with the portal
+          href: azure-stack-deploy-template-portal.md
+        - name: Deploy with PowerShell
+          href: azure-stack-deploy-template-powershell.md
+        - name: Deploy with CLI
+          href: azure-stack-deploy-template-command-line.md
+        - name: Deploy with Visual Studio
+          href: azure-stack-deploy-template-visual-studio.md
+      - name: Use API version profiles
+        items:
+        - name: Overview
+          href: azure-stack-version-profiles.md
+        - name: .NET
+          href: azure-stack-version-profiles-net.md
+        - name: Java
+          href: azure-stack-version-profiles-java.md
+        - name: Go
+          href: azure-stack-version-profiles-go.md
+        - name: Ruby
+          href: azure-stack-version-profiles-ruby.md
+        - name: Python
+          href: azure-stack-version-profiles-python.md
+        - name: NodeJS
+          href: azure-stack-version-profile-nodejs.md
+        - name: Resource provider APIs supported by profiles
+          href: azure-stack-profiles-azure-resource-manager-versions.md
+  - name: Use resource providers
+    items:
+    - name: Security, compliance, and identity
       items:
-      - name: Overview
-        href: azure-stack-key-vault-intro.md
-      - name: Manage with the Portal
-        href: azure-stack-key-vault-manage-portal.md
-      - name: Manage with PowerShell
-        href: azure-stack-key-vault-manage-powershell.md
-      - name: Create a VM with a secret
-        href: azure-stack-key-vault-deploy-vm-with-secret.md
-      - name: Create a VM with a certificate
-        href: azure-stack-key-vault-push-secret-into-vm.md
-      - name: Store credentials in Key Vault
-        href: azure-stack-key-vault-store-credentials.md
-      - name: KeyVault sample app
-        href: azure-stack-key-vault-sample-app.md
-    - name: Azure Monitor
-      href: azure-stack-metrics-azure-data.md
-      items: 
-      - name: Supported metrics
-        href: azure-stack-metrics-supported.md
-      - name: Consume Azure monitoring data
-        href: azure-stack-metrics-monitor.md
-    - name: Solution templates
+      - name: Use role-based access control
+        href: azure-stack-manage-permissions.md
+      - name: Use an app identity to access resources
+        href: /azure-stack/operator/azure-stack-create-service-principals?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
+    - name: Use services
+      items:
+      - name: Compute
+        items:
+        - name: Overview
+          href: azure-stack-compute-overview.md
+        - name: VM considerations
+          href: azure-stack-vm-considerations.md
+        - name: VM sizes
+          href: azure-stack-vm-sizes.md
+        - name: Manage VM disks
+          href: azure-stack-manage-vm-disks.md
+        - name: Managed disks considerations
+          href: azure-stack-managed-disk-considerations.md
+        - name: Protect VMs
+          href: azure-stack-manage-vm-protect.md
+        - name: VM update and management
+          href: vm-update-management.md
+        - name: SQL Server VM considerations
+          href: azure-stack-sql-server-vm-considerations.md
+      - name: Storage
+        items:
+        - name: Overview
+          href: azure-stack-storage-overview.md
+        - name: Storage considerations
+          href: azure-stack-acs-differences.md
+        - name: Storage development tools
+          href: azure-stack-storage-dev.md
+        - name: Data transfer tools
+          href: azure-stack-storage-transfer.md
+        - name: Connect Storage Explorer
+          href: azure-stack-storage-connect-se.md
+      - name: Network
+        items:
+        - name: Overview
+          href: azure-stack-network-overview.md
+        - name: Networking considerations
+          href: azure-stack-network-differences.md
+        - name: VPN gateways
+          items:
+          - name: Connect using VPN
+            href: azure-stack-connect-vpn.md
+          - name: About VPN gateway
+            href: azure-stack-vpn-gateway-about-vpn-gateways.md
+          - name: Configure IPSec/IKE connection policies
+            href: azure-stack-vpn-s2s.md
+          - name: VPN gateway settings
+            href: azure-stack-vpn-gateway-settings.md
+        - name: iDNS for Azure Stack
+          href: azure-stack-understanding-dns.md
+        - name: DNS in Azure Stack
+          href: azure-stack-dns.md
+      - name: Key Vault
+        items:
+        - name: Overview
+          href: azure-stack-key-vault-intro.md
+        - name: Manage with the Portal
+          href: azure-stack-key-vault-manage-portal.md
+        - name: Manage with PowerShell
+          href: azure-stack-key-vault-manage-powershell.md
+        - name: Create a VM with a secret
+          href: azure-stack-key-vault-deploy-vm-with-secret.md
+        - name: Create a VM with a certificate
+          href: azure-stack-key-vault-push-secret-into-vm.md
+        - name: Store credentials in Key Vault
+          href: azure-stack-key-vault-store-credentials.md
+        - name: KeyVault sample app
+          href: azure-stack-key-vault-sample-app.md
+      - name: Azure Monitor
+        href: azure-stack-metrics-azure-data.md
+        items: 
+        - name: Supported metrics
+          href: azure-stack-metrics-supported.md
+        - name: Consume Azure monitoring data
+          href: azure-stack-metrics-monitor.md
+    - name: Use solution templates
       items:
       - name: Deploy Ethereum
         href: azure-stack-ethereum.md
@@ -150,92 +203,56 @@
           href: azure-stack-solution-template-kubernetes-trouble.md
       - name: Deploy Cognitive Services
         href: azure-stack-solution-template-cognitive-services.md
-  - name: Use Azure Stack Resource Manager
+  - name: Deploy apps
+    items: 
+    - name: Deploy a C# web app to a Windows VM
+      href: azure-stack-dev-start-howto-vm-dotnet.md
+    - name: Deploy a web app to a Linux VM
+      items:
+      - name: Deploy a Linux VM for a web app
+        href: azure-stack-dev-start-howto-deploy-linux.md  
+      - name: Deploy a Java web app 
+        href: azure-stack-dev-start-howto-vm-java.md
+      - name: Deploy a Go web app 
+        href: azure-stack-dev-start-howto-vm-go.md
+      - name: Deploy a Ruby web app 
+        href: azure-stack-dev-start-howto-vm-ruby.md
+      - name: Deploy a Python web app 
+        href: azure-stack-dev-start-howto-vm-python.md
+      - name: Deploy a NodeJS web app 
+        href: azure-stack-dev-start-howto-vm-nodejs.md
+  - name: Deploy hybrid cloud patterns
     items:
-    - name: Configure your client
-      items:
-      - name: Azure SDK clients
-        href: azure-stack-dev-start.md
-      - name: Azure Stack PowerShell client
-        items:
-        - name: Azure Stack PowerShell overview
-          href: azure-stack-powershell-overview.md
-        - name: Install Azure Stack PowerShell
-          href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
-          maintainContext: true
-        - name: Connect with PowerShell
-          href: azure-stack-powershell-configure-user.md
-        - name: Download Azure Stack tools
-          href: /azure-stack/operator/azure-stack-powershell-download?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
-          maintainContext: true
-        - name: Use Docker to run PowerShell
-          href: azure-stack-powershell-user-docker.md
-      - name: Visual Studio Code client
-        href: azure-stack-dev-start-vscode-azure.md
-      - name: Visual Studio client
-        href: azure-stack-install-visual-studio.md
-      - name: Secure Shell client
-        href: azure-stack-dev-start-howto-ssh-public-key.md
-      - name: Use API version profiles
-        items:
-        - name: Overview
-          href: azure-stack-version-profiles.md
-        - name: .NET
-          href: azure-stack-version-profiles-net.md
-        - name: Java
-          href: azure-stack-version-profiles-java.md
-        - name: Azure CLI
-          href: azure-stack-version-profiles-azurecli2.md
-        - name: Go
-          href: azure-stack-version-profiles-go.md
-        - name: Ruby
-          href: azure-stack-version-profiles-ruby.md
-        - name: Python
-          href: azure-stack-version-profiles-python.md
-        - name: Resource provider APIs supported by profiles
-          href: azure-stack-profiles-azure-resource-manager-versions.md        
-    - name: Deploy a VM and web app
-      items:
-      - name: Deploy a C# web app to a Windows VM
-        href: azure-stack-dev-start-howto-vm-dotnet.md
-      - name: Deploy a web app to a Linux VM
-        items:
-        - name: Deploy a Linux VM for a web app
-          href: azure-stack-dev-start-howto-deploy-linux.md  
-        - name: Deploy a Java web app 
-          href: azure-stack-dev-start-howto-vm-java.md
-        - name: Deploy a Go web app 
-          href: azure-stack-dev-start-howto-vm-go.md
-        - name: Deploy a Ruby web app 
-          href: azure-stack-dev-start-howto-vm-ruby.md
-        - name: Deploy a Python web app 
-          href: azure-stack-dev-start-howto-vm-python.md
-        - name: Deploy a NodeJS web app 
-          href: azure-stack-dev-start-howto-vm-nodejs.md
-    - name: Use the Azure Stack Policy module
-      href: azure-stack-policy-module.md
-    - name: Use templates
-      items:
-      - name: Template overview
-        href: azure-stack-arm-templates.md
-      - name: Template considerations
-        href: azure-stack-develop-templates.md
-      - name: Develop templates in Azure
-        href: azure-stack-developer.md  
-      - name: Check templates
-        href: azure-stack-validate-templates.md
-      - name: Deploy with the portal
-        href: azure-stack-deploy-template-portal.md
-      - name: Deploy with PowerShell
-        href: azure-stack-deploy-template-powershell.md
-      - name: Deploy with CLI
-        href: azure-stack-deploy-template-command-line.md
-      - name: Deploy with Visual Studio
-        href: azure-stack-deploy-template-visual-studio.md
-    - name: Use REST to access resources
-      href: azure-stack-rest-api-use.md
-  - name: Enable a Cloud Service Provider
-    href: azure-stack-csp-enable-billing-usage-tracking.md
+    - name: Deploy apps to Azure and Azure Stack
+      href: azure-stack-solution-pipeline.md
+    - name: Configure hybrid cloud identity
+      href: azure-stack-solution-hybrid-identity.md
+    - name: Configure hybrid cloud connectivity
+      href: azure-stack-solution-hybrid-connectivity.md
+    - name: Create cross-cloud scaling solutions with Azure
+      href: azure-stack-solution-cloud-burst.md
+    - name: Create a geo-distributed app solution
+      href: azure-stack-solution-geo-distributed.md
+    - name: Deploy a hybrid cloud solution
+      href: azure-stack-solution-hybrid-cloud.md
+    - name: Deploy staged data analytics
+      href: azure-stack-solution-staged-data.md
+    - name: Deploy high-availability MongoDB
+      href: azure-stack-solution-mongodb-ha.md
+    - name: Deploy high-availability SQL Server 2016
+      href: azure-stack-solution-sql-ha.md
+- name: Concepts
+  items:
+  - name: Hybrid cloud patterns
+    items: 
+      - name: Hybrid cloud patterns overview
+        href: azure-stack-edge-pattern-overview.md
+      - name: Cross Cloud Scaling
+        href: azure-stack-edge-pattern-cross-cloud-scaling.md
+      - name: DevOps (Hybrid CI/CD)
+        href: azure-stack-edge-pattern-hybrid-ci-cd.md
+      - name: Geo-distributed application
+        href: azure-stack-edge-pattern-geo-distribution.md
 - name: Reference
   items:
   - name: Azure Stack PowerShell
