@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 07/31/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 10/10/2018
+ms.lastreviewed: 07/31/2019
 
 
 ---
@@ -44,43 +44,18 @@ You can install the latest Azure Stack PowerShell module with or without Interne
 
 - **With an internet connection** from the ASDK host computer. Run the following PowerShell script to install these modules on your development kit installation:
 
-  - For 1904 builds or later:
 
-    ```powershell  
-      Get-Module -Name Azs.* -ListAvailable | Uninstall-Module -Force -Verbose
-      Get-Module -Name Azure* -ListAvailable | Uninstall-Module -Force -Verbose
+  ```powershell  
+  Get-Module -Name Azs.* -ListAvailable | Uninstall-Module -Force -Verbose
+  Get-Module -Name Azure* -ListAvailable | Uninstall-Module -Force -Verbose
 
-      # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
-      Install-Module -Name AzureRM.BootStrapper
+  # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
+  Install-Module -Name AzureRM.BootStrapper
 
-      # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-      Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
-      Install-Module -Name AzureStack -RequiredVersion 1.7.2
-    ```
-
-  - Azure Stack version 1903 or earlier, only install the two modules below:
-
-    ```powershell
-    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-    Install-Module -Name AzureRM -RequiredVersion 2.4.0
-    Install-Module -Name AzureStack -RequiredVersion 1.7.1
-    ```
-
-    > [!Note]  
-    > The Azure Stack module version 1.7.1 is a breaking change. To migrate from Azure Stack 1.6.0 please refer to the [migration guide](https://aka.ms/azspshmigration171).
-
-  - Azure Stack 1811:
-
-    ``` PowerShell
-    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet.
-    Install-Module -Name AzureRM.BootStrapper
-
-    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
-    Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
-
-    # Install Azure Stack Module Version 1.6.0.
-    Install-Module -Name AzureStack -RequiredVersion 1.6.0
-    ```
+  # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
+  Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
+  Install-Module -Name AzureStack -RequiredVersion 1.7.2
+  ```
 
   If the installation is successful, the AzureRM and AzureStack modules are displayed in the output.
 
