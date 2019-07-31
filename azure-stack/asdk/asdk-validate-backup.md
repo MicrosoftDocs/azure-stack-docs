@@ -9,10 +9,10 @@ cloud: azure-stack
 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 07/31/2019
 ms.author: justinha
 ms.reviewer: hectorl
-ms.lastreviewed: 02/15/2019
+ms.lastreviewed: 07/31/2019
 ---
 
 # Use the ASDK to validate an Azure Stack backup
@@ -55,7 +55,7 @@ Before starting a cloud recovery deployment of the ASDK, ensure that you have th
 |Backup ID to restore|The backup ID, in the alphanumeric form of "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", that identifies the backup to be restored during cloud recovery.|
 |Time server IP|A valid time server IP, such as 132.163.97.2, is required for Azure Stack deployment.|
 |External certificate password|The password for the external certificate used by Azure Stack. The CA backup contains external certificates that need to be restored with this password.|
-|Backup encryption key|Required if you have upgraded to Azure Stack version 1901 or later and backup settings is still configured in with an encryption key. Encryption key is deprecated starting in 1901. The installer will support encryption key in backwards compatibility mode for at least 3 releases. Once you update backup settings to use a certificate, refer to the next table for required information.|
+|Backup encryption key|Required if backup settings are configured in with an encryption key, which is deprecated. The installer will support encryption key in backwards compatibility mode for at least 3 releases. Once you update backup settings to use a certificate, refer to the next table for required information.|
 
 |     |     | 
 
@@ -70,7 +70,7 @@ Before starting a cloud recovery deployment of the ASDK, ensure that you have th
 |Time server IP|A valid time server IP, such as 132.163.97.2, is required for Azure Stack deployment.|
 |External certificate password|The password for the external certificate used by Azure Stack. The CA backup contains external certificates that need to be restored with this password.|
 |Decryption certification password|Optional. Required only if the backup is encrypted using a certificate. The password is for the self-signed certificate's (.pfx) that contains the private key necessary to decrypt backup data.|
-|Backup encryption key|Optional. Required if you have upgraded to Azure Stack version 1901 or later and backup settings is still configured in with an encryption key. The installer will support encryption key in backwards compatibility mode for at least 3 releases. Once you update backup settings to use a certificate, you must provide the password for the decryption certificate.|
+|Backup encryption key|Optional. Required if backup settings are still configured with an encryption key. The installer will support encryption key in backwards compatibility mode for at least 3 releases. Once you update backup settings to use a certificate, you must provide the password for the decryption certificate.|
 |     |     | 
 
 ## Prepare the host computer 
