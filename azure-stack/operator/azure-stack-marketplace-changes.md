@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2019
+ms.date: 07/31/2019
 ms.author: sethm
 ms.reviewer: ihcherie
-ms.lastreviewed: 07/17/2019
+ms.lastreviewed: 07/31/2019
 
 ---
 
@@ -40,7 +40,10 @@ This article describes Marketplace changes that have occurred over the last 3 mo
 
 ## Updated Marketplace items
 
-- List of updates here, possibly with date of update.
+- 07/30/2019: SQL Server 2016 SP1 (Express, Developer, Standard and Enterprise editions) 13.2.20190410
+- 07/30/2019: SQL Server 2016 SP2 (Express, Developer, Standard and Enterprise editions) 13.2.20190410
+- 07/30/2019: SQL Server 2017 (Express, Developer, Standard and Enterprise editions) 14.0.20190410
+- 07/30/2019: SQLIaaSExtension 1.3.20180
 
 ## Next steps
 
