@@ -24,7 +24,7 @@ With a handful of user inputs and a single-click deployment through the Azure St
 2. A set of mining nodes to record transactions.
 3. A Network Virtual Appliance (NVA).
 
-A subsequent connection step connects the NVAs to create a fully configured multi-member blockchain network.
+A later connection step connects the NVAs to create a fully configured multi-member blockchain network.
 
 To set up:
 
@@ -87,7 +87,7 @@ The consortium leader template configures the first member's footprint in the ne
     NUMTXNODES | Number of transaction nodes. | Between 1 and 5. | 1
     TXNODEVMSIZE | VM size of the transaction nodes. | | Standard_A1
     TXSTORAGEACCOUNTTYPE | Storage performance of the transaction nodes. | | Standard_LRS
-    BASEURL | Base URL to get the depending templates from. | Use the default value unless you want to customize the deployment templates. | 
+    BASEURL | Base URL to get the deployment templates from. | Use the default value unless you want to customize the deployment templates. | 
 
 7. Select **OK**.
 8. In **Custom deployment**, specify **Subscription**, **Resource group**, and  **Resource group location**.
@@ -106,7 +106,7 @@ Deployment can take 20 minutes or longer to complete.
 
 After deployment completes, review the deployment summary for **Microsoft.Template** in the deployment section of the resource group. The summary contains output values used to join consortium members.
 
-To verify leader's deployment, browse leader's admin site. Admin site address are found in the output section of the **Microsoft.Template** deployment.  
+To verify leader's deployment, go to the leader's admin site. The admin site address is found in the output section of the **Microsoft.Template** deployment.  
 
 ![Leader deployment summary](./media/azure-stack-ethereum/ethereum-node-status.png)
 
