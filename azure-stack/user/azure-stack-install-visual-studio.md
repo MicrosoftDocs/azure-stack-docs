@@ -1,6 +1,6 @@
 ---
 title: Install Visual Studio and connect to Azure Stack | Microsoft Docs
-description: Learn the steps required to install Visual Studio and connect to Azure Stack
+description: Learn how to install Visual Studio and connect to Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
