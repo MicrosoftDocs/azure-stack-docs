@@ -149,7 +149,7 @@ This article lists known issues in the 1907 release of Azure Stack. The list is 
 
 ### Virtual machine scale set reset password does not work
 
-- Applicable: This issue applies to the 1906 and 1907 releases.  
+- Applicable: This issue applies to the 1906 and 1907 releases.
 - Cause: A new reset password blade appears in the scale set UI, but Azure Stack does not support resetting password on a scale set yet.
 - Remediation: None.
 - Occurrence: Common
@@ -163,7 +163,7 @@ This article lists known issues in the 1907 release of Azure Stack. The list is 
 
 ### Virtual machine diagnostic settings blade
 
-- Applicable: This issue applies to the 1906 and 1907 releases.  
+- Applicable: This issue applies to the 1906 and 1907 releases.    
 - Cause: The virtual machine diagnostic settings blade has a **Sink** tab, which asks for an **Application Insight Account**. This is the result of a new blade and is not yet supported in Azure Stack.
 - Remediation: None.
 - Occurrence: Common
