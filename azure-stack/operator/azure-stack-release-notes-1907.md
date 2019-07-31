@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 07/31/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 07/25/2019
+ms.lastreviewed: 07/31/2019
 ---
 
 # Azure Stack 1907 update
@@ -34,10 +34,11 @@ The Azure Stack 1907 update build number is **1.1907.0.20**.
 
 ### Update type
 
-The Azure Stack 1907 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. Based on internal testing, the expected time it takes for the 1907 update to complete is approximately 13 hours. 
- - Exact update runtimes will typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware configuration. 
- - Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack operators unless the update fails. 
- - This runtime approximation is specific to the 1907 update and should not be compared to other Azure Stack updates.
+The Azure Stack 1907 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. Based on internal testing, the expected time it takes for the 1907 update to complete is approximately 13 hours.
+
+- Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware configuration.
+- Runtimes lasting longer than expected are not uncommon and do not require action by Azure Stack operators unless the update fails.
+- This runtime approximation is specific to the 1907 update and should not be compared to other Azure Stack updates.
 
 ## What's in this update
 
@@ -47,7 +48,9 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 <!-- What's new, also net new experiences and features. -->
 
-- General availability release of the Azure Stack diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Customer Support Services (CSS). The Azure Stack diagnostic log collection service provides a new user experience in the Azure Stack administrator portal that enables operators to set up the automatic upload of diagnostic logs to a storage blob when certain critical alerts are raised, or to perform the same operation on demand. For more information, see the [Diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md) article.
+- General availability release of the Azure Stack diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Customer Support Services (CSS). This diagnostic log collection service provides a new user experience in the Azure Stack administrator portal that enables operators to set up the automatic upload of diagnostic logs to a storage blob when certain critical alerts are raised, or to perform the same operation on demand. For more information, see the [Diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md) article.
+
+- General availability release of the Azure Stack network infrastructure validation as a part of the Azure Stack validation tool **Test-AzureStack**. Azure Stack network infrastructure will be a part of **Test-AzureStack**, to identify if a failure occurs on the network infrastructure of Azure Stack. The test checks connectivity of the network infrastructure by bypassing the Azure Stack software-defined network. It demonstrates connectivity from a public VIP to the configured DNS forwarders, NTP servers, and identity endpoints. In addition, it checks for connectivity to Azure when using Azure AD as the identity provider, or the federated server when using ADFS. For more information, see the [Azure Stack validation tool](azure-stack-diagnostic-test.md) article.
 
 - Added an internal secret rotation procedure to rotate internal SQL TLS certificates as required during a system update.
 
@@ -55,9 +58,9 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
-- The Azure Stack update blade now displays a "Last Step Completed" time for active updates. This can be seen by going to the update blade and clicking on a running update. "Last Step Completed" is then available in the "Update run details" section.
+- The Azure Stack update blade now displays a **Last Step Completed** time for active updates. This can be seen by going to the update blade and clicking on a running update. **Last Step Completed** is then available in the **Update run details** section.
 
-- Improvements to **Start-AzureStack** and **Stop-AzureStack** operator actions. The time to start Azure Stack has been reduced by 50% on average. The time to shut down Azure Stack has been reduced by 30% on average. The average startup and shutdown times remain the same as the number of nodes increases in a scale-unit. 
+- Improvements to **Start-AzureStack** and **Stop-AzureStack** operator actions. The time to start Azure Stack has been reduced by an average of 50%. The time to shut down Azure Stack has been reduced by an average of 30%. The average startup and shutdown times remain the same as the number of nodes increases in a scale-unit.
 
 - Improved error handling for the disconnected Marketplace tool. If a download fails or partially succeeds when using **Export-AzSOfflineMarketplaceItem**, a detailed error message is displayed with more details about the error and mitigation steps, if any.
 
@@ -66,17 +69,17 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/127669774/home -->
 - Improved virtual disk health check before shutting down a node to avoid unexpected virtual disk detaching.
 
-- Improved storage of internal logs for administrator operations. This will result in improved performance and reliability during administrator operations by minimizing the memory and storage consumption of internal log processes. Customers may also notice improved page load times of the update blade in the administrator portal. As part of this improvement, update logs older than 6 months will no longer be available in the system. If you require logs for these updates, be sure to [Download summary](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-apply-updates) for all update runs older than 6 months before performing the 1907 update.
+- Improved storage of internal logs for administrator operations. This results in improved performance and reliability during administrator operations by minimizing the memory and storage consumption of internal log processes. You might also notice improved page load times of the update blade in the administrator portal. As part of this improvement, update logs older than 6 months will no longer be available in the system. If you require logs for these updates, be sure to [Download the summary](azure-stack-apply-updates.md) for all update runs older than 6 months before performing the 1907 update.
 
 ### Changes
 
 - Added a new outbound rule (HTTPS) to enable communication for Azure Stack diagnostic log collection service. For more information, see [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
 
-- The infrastructure backup service will delete partially uploaded backups if the external storage location runs out of capacity.
+- The infrastructure backup service now deletes partially uploaded backups if the external storage location runs out of capacity.
 
-- Infrastructure backups no longer include a backup of domain services data. This only applies to systems using Azure Active Directory as their identity provider.
+- Infrastructure backups no longer include a backup of domain services data. This only applies to systems using Azure Active Directory as the identity provider.
 
-- We will now validate that an image being ingested into the Compute -> VM images blade is of type page blob.
+- We now validate that an image being ingested into the **Compute -> VM images** blade is of type page blob.
 
 ### Fixes
 
@@ -86,23 +89,24 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/129536438/home -->
 - Fixed an issue with backups failing with a **PartialSucceeded** error message, due to timeouts during backup of storage service metadata.  
 
-- Fixed the issue in which deleting user subscriptions resulted in orphaned resources.
+- Fixed an issue in which deleting user subscriptions resulted in orphaned resources.
+
+- Fixed an issue in which the description field was not saved when creating an offer.
 
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/127772311/home -->
 - Fixed an issue in which the update fails due to a DLL file locked by the WMI provider host.
 
--	Fixed an issue in the update service that prevented available updates from displaying in the update tile or resource provider. This issue was found in 1906 and fixed in hotfix [KB4511282](https://support.microsoft.com/help/4511282/).
+- Fixed an issue in the update service that prevented available updates from displaying in the update tile or resource provider. This issue was found in 1906 and fixed in hotfix [KB4511282](https://support.microsoft.com/help/4511282/).
 
 - Fixed an issue that could cause updates to fail due to the management plane becoming unhealthy due to a bad configuration. This issue was found in 1906 and fixed in hotfix [KB4512794](https://support.microsoft.com/help/4512794/).
 
-- Fixed an issue that prevented users from completing deployment of 3rd party images from the marketplace. This issue was found in 1906 and fixed with hotfix [KB4511259](https://support.microsoft.com/help/4511259/).
+- Fixed an issue that prevented users from completing deployment of 3rd party images from the marketplace. This issue was found in 1906 and fixed in hotfix [KB4511259](https://support.microsoft.com/help/4511259/).
 
-- Fixed an issue that could cause VM creation from managed images to fail due to our user image manager service crashing. This issue was found in 1906 and fixed with [KB4512794](https://support.microsoft.com/help/4512794/)
+- Fixed an issue that could cause VM creation from managed images to fail due to our user image manager service crashing. This issue was found in 1906 and fixed in hotfix [KB4512794](https://support.microsoft.com/help/4512794/)
 
-- Fixed an issue where VM CRUD operations could fail due to the appgateway cache not getting refreshed as expected. This issue was found in 1906 and fixed with [KB4513119](https://support.microsoft.com/en-us/help/4513119/)
+- Fixed an issue in which VM CRUD operations could fail due to the app gateway cache not being refreshed as expected. This issue was found in 1906 and fixed in hotfix [KB4513119](https://support.microsoft.com/en-us/help/4513119/)
 
--	Fixed an issue in the Health resource provider which impacted the availability of the region and alert blades in the administrator portal. This issue was found in 1906 and fixed with [KB4512794](https://support.microsoft.com/help/4512794).
-
+- Fixed an issue in the health resource provider which impacted the availability of the region and alert blades in the administrator portal. This issue was found in 1906 and fixed in hotfix [KB4512794](https://support.microsoft.com/help/4512794).
 
 ## Security updates
 
@@ -142,7 +146,7 @@ After the installation of this update, install any applicable hotfixes. For more
 
 ## Automatic update notifications
 
-Customers with systems that can access the internet from the infrastructure network will see the **Update available** message in the operator portal. Systems without internet access can download and import the .zip file with the corresponding .xml.
+Systems that can access the internet from the infrastructure network will see the **Update available** message in the operator portal. Systems without internet access can download and import the .zip file with the corresponding .xml.
 
 > [!TIP]  
 > Subscribe to the following *RSS* or *Atom* feeds to keep up with Azure Stack hotfixes:
