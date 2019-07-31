@@ -47,8 +47,7 @@ The following tables list the metrics available with Azure Monitor's metric pipe
 ## Microsoft.Storage/storageAccounts/blobServices
 
 | Metric | Metric Display Name | Unit | Aggregation Type | Description | Dimensions |
-|----------------------|------------------------|--------------|------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------|
+|--------|---------------------|------|------------------|-------------|------------|
 | BlobCapacity | Blob Capacity | Bytes | Total | The amount of storage used by the storage account's Blob service in bytes. | BlobType |
 | BlobCount | Blob Count | Count | Total | The number of blobs in the storage account's Blob service. | BlobType |
 | ContainerCount | Blob Container Count | Count | Average | The number of containers in the storage account's Blob service. | No Dimensions |
