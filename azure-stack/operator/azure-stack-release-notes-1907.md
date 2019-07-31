@@ -50,6 +50,8 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - General availability release of the Azure Stack diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Customer Support Services (CSS). The Azure Stack diagnostic log collection service provides a new user experience in the Azure Stack administrator portal that enables operators to set up the automatic upload of diagnostic logs to a storage blob when certain critical alerts are raised, or to perform the same operation on demand. For more information, see the [Diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md) article.
 
+- General availability release of the Azure Stack Network Infra validation as a part of Test-AzureStack. Azure Stack Network Infra will be a part of the Azure Stack validation tool (Test-AzureStack) to identify if a failure occurs on the network infrastructure of Azure Stack or not. The test will check connectivity of the network infrastructure by bypassing the Azure Stack software defined network. It will demonstrate connectivity from a Public VIP to the configured DNS forwarders, NTP servers and identity endpoints. In addition, it will check for connectivity to Azure when using Azure AD as the identity provider or the federated server when using ADFS. For more information, see the [Diagnostic log collection](azure-stack-diagnostic-test.md) article.
+
 - Added an internal secret rotation procedure to rotate internal SQL TLS certificates as required during a system update.
 
 ### Improvements
