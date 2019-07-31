@@ -109,7 +109,7 @@ You can install the latest Azure Stack PowerShell module with or without Interne
 
 To ensure that your ASDK deployment was successful, you can use the Test-AzureStack cmdlet by following these steps:
 
-1. Log in as AzureStack\AzureStackAdmin on the ASDK host computer.
+1. Sign in as AzureStack\AzureStackAdmin on the ASDK host computer.
 2. Open PowerShell as an administrator (not PowerShell ISE).
 3. Run: `Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint`
 4. Run: `Test-AzureStack`
