@@ -59,7 +59,7 @@ To install via Composer: (take the blob as an example).
 3. Run: `php composer.phar install`.
 ::: moniker-end
 
-::: moniker range=">=azs-1902 <=1809"
+::: moniker range=">=azs-1802 <=1809"
 ### Previous versions (1802 to 1809 update)
 
 | Client library | Azure Stack supported version | Link | Endpoint specification |
