@@ -156,14 +156,14 @@ The Azure Stack 1904 update build type is **Express**. For more information abou
 
 ### Security updates
 
-This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack. For information, see [Azure Stack security updates.](azure-stack-release-notes-security-updates-1904.md)
+This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack. For information, see [Azure Stack security updates.](azure-stack-release-notes-security-updates.md)
 
 ## Update planning
 
 Before applying the update, make sure to review the following information:
 
 - [Known issues](azure-stack-release-notes-known-issues-1904.md)
-- [Security updates](azure-stack-release-notes-security-updates-1904.md)
+- [Security updates](azure-stack-release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](azure-stack-release-notes-checklist.md)
 
 > [!NOTE]
