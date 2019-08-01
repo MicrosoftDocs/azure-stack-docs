@@ -17,6 +17,7 @@ ms.date: 07/15/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 07/15/2019
+monikerRange: 'azs-1906'
 ---
 
 # Azure Stack 1906 update
