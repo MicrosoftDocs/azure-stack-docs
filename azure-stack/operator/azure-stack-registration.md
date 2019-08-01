@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 08/01/2019
 ms.author: mabrigg
 ms.reviewer: avishwan
 ms.lastreviewed: 03/04/2019
@@ -339,17 +339,13 @@ You can use the **Region management** tile to verify that the Azure Stack regist
     - **Registration subscription ID**: The Azure subscription ID registered and associated to Azure Stack
     - **Registration resource group**: The Azure resource group in the associated subscription containing the Azure Stack resources.
 
-4. You can use the Azure portal to view the Azure Stack app registrations, and veryify that the registration succeeded. Sign in to the [Azure portal](https://portal.azure.com) using an account associated to the subscription you used to register Azure Stack. Select **All resources**, enable the **Show hidden types** checkbox, and select the registration name.
-5. Navigate to **Azure Active Directory > App registrations > View all applications**.
-
-    ![App registrations](media/azure-stack-registration/app-registrations.png)
-
-    Azure Stack app registrations are prefixed with **Azure Stack**.
+4. You can use the Azure portal to view Azure Stack registrations, and then verify that the registration succeeded. Sign in to the [Azure portal](https://portal.azure.com) using an account associated to the subscription you used to register Azure Stack. Select **All resources**, enable the **Show hidden types** checkbox, and select the registration name.
+5. If the registration did not succeed, you can follow the steps [in this article](azure-stack-usage-issues.md#resolve-connectivity-issues) to resolve the issue.  
 
 Alternatively, you can verify if your registration was successful by using the Marketplace management feature. If you see a list of marketplace items in the Marketplace Management blade, your registration was successful. However, in disconnected environments, you will not be able to see marketplace items in Marketplace management.
 
 > [!NOTE]
-> After registration is complete, the active warning for not registering will no longer appear. In Azure Stack release 1904 or earlier, in disconnected scenarios, you will see a message in Marketplace management asking you to register and activate your Azure Stack, even if you have registered successfully. This message does not appear in release 1905 and later.
+> After registration is complete, the active warning for not registering will no longer appear. In Azure Stack releases earlier than 1904, in disconnected scenarios, you will see a message in Marketplace management asking you to register and activate your Azure Stack, even if you have registered successfully. This message does not appear in release 1904 and later.
 
 ## Renew or change registration
 
@@ -452,7 +448,8 @@ For Azure Stack environments that use a capacity billing model, turn off usage r
 
 Moving a registration resource between resource groups under the same subscription **is** supported for all environments. However, moving a registration resource between subscriptions is only supported for CSPs when both subscriptions resolve to the same Partner ID. For more information about moving resources to a new resource group, see [Move resources to new resource group or subscription](/azure/azure-resource-manager/resource-group-move-resources).
 
-To prevent accidental deletion of registration resources on the portal, the registration script automatically adds a lock to the resource. You must remove this lock before deleting it.
+> [!IMPORTANT]
+> To prevent accidental deletion of registration resources on the portal, the registration script automatically adds a lock to the resource. You must remove this lock before moving or deleting it. It is recommended that you add a lock to your registration resource to prevent accidental deletion.
 
 ## Registration reference
 
