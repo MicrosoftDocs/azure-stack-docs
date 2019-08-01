@@ -156,31 +156,12 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 
 ### Virtual machine scale set
 
-#### CentOS
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack.
-- Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
-- Occurrence: Common
-
-#### Remove scale set
-
-- Applicable: This issue applies to all supported releases.
-- Cause: You cannot remove a scale set from the **Virtual machine scale sets** blade.
-- Remediation: Select the scale set that you want to remove, then click the **Delete** button from the **Overview** pane.
-- Occurrence: Common
 
 #### Create failures during patch and update on 4-node Azure Stack environments
 
 - Applicable: This issue applies to all supported releases.
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack.
-
-#### Scale set instance view blade does not load
-
-- Applicable: This issue applies to the 1904, 1905, and 1906 releases.
-- Cause: The instance view blade of a virtual machine scale set located on the Azure Stack portal, in **Dashboard > Virtual machine scale sets > AnyScaleSet > Instances > AnyScaleSetInstance** fails to load, and displays a "rainy cloud" image.
-- Remediation: There is currently no remediation and we are working on a fix. Until then, please use the CLI command `az vmss get-instance-view` to get the instance view of a scale set.
 
 ### Ubuntu SSH access
 
