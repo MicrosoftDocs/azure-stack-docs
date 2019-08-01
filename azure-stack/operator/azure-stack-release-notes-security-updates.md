@@ -1,6 +1,6 @@
 ---
-title: Azure Stack release notes - security updates for 1907 | Microsoft Docs
-description: Learn about the 1907 security updates for Azure Stack.
+title: Azure Stack release notes - security updates for 1908 | Microsoft Docs
+description: Learn about the 1908 security updates for Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/08/2019
@@ -132,13 +132,7 @@ Because of the cumulative nature of Windows updates, this update contains also t
 For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base articles [4499177](https://support.microsoft.com/en-us/help/4499177).
 ::: moniker-end
 
-::: moniker range="<=azs-1904"
-## 1904 update and older
-
-This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack.
-::: moniker-end
-
 ## Next steps
 
 - [Review update activity checklist](azure-stack-release-notes-checklist.md)
-- [Review list of known issues](azure-stack-release-notes-known-issues-1907.md)
+- [Review list of known issues](azure-stack-release-notes-known-issues-1908.md)

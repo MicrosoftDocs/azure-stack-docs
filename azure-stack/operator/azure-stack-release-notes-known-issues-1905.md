@@ -183,4 +183,4 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 ## Next steps
 
 - [Review update activity checklist](azure-stack-release-notes-checklist.md)
-- [Review list of security updates](azure-stack-release-notes-security-updates-1905.md)
+- [Review list of security updates](azure-stack-release-notes-security-updates.md)

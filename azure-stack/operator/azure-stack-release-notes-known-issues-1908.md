@@ -1,5 +1,5 @@
 ---
-title: Azure Stack 1907 known issues | Microsoft Docs
+title: Azure Stack 1908 known issues | Microsoft Docs
 description: Learn about known issues in Azure Stack 1907.
 services: azure-stack
 documentationcenter: ''
@@ -13,16 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 07/25/2019
-monikerRange: 'azs-1907'
+ms.lastreviewed: 08/01/2019
 ---
 
-# Azure Stack 1907 known issues
+# Azure Stack 1908 known issues
 
-This article lists known issues in the 1907 release of Azure Stack. The list is updated as new issues are identified.
+This article lists known issues in the 1908 release of Azure Stack. The list is updated as new issues are identified.
 
 > [!IMPORTANT]  
 > Review this section before applying the update.

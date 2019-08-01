@@ -202,4 +202,4 @@ This article lists known issues in the 1906 release of Azure Stack. The list is 
 ## Next steps
 
 - [Review update activity checklist](azure-stack-release-notes-checklist.md)
-- [Review list of security updates](azure-stack-release-notes-security-updates-1906.md)
+- [Review list of security updates](azure-stack-release-notes-security-updates.md)
