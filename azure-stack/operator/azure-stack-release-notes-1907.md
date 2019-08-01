@@ -16,7 +16,7 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 07/31/2019
+ms.lastreviewed: 08/01/2019
 ---
 
 # Azure Stack 1907 update
