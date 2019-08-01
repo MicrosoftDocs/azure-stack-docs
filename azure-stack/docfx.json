@@ -2,6 +2,7 @@
   "build": {
     "content": [
       {
+        "group": "all",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -20,6 +21,7 @@
     ],
     "resource": [
       {
+        "group": "all",
         "files": [
           "**/*.png",
           "**/*.jpg",
@@ -51,6 +53,12 @@
     "fileMetadata": {},
     "template": [],
     "dest": "AzureStack",
-    "markdownEngineName": "markdig"
+    "markdownEngineName": "markdig",
+    "groups": {
+      "all": {
+        "dest": "all",
+        "moniker_range": ">=azs-1802"
+      }
+    }
   }
 }

@@ -17,6 +17,7 @@ ms.date: 07/12/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/28/2019
+monikerRange: 'azs-1906'
 ---
 
 # Azure Stack 1906 known issues

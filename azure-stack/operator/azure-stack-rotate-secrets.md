@@ -16,7 +16,7 @@ ms.date: 07/15/2019
 ms.reviewer: ppacent
 ms.author: mabrigg
 ms.lastreviewed: 07/15/2019
-
+monikerRange: '>=azs-1803'
 ---
 
 # Rotate secrets in Azure Stack

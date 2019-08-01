@@ -23,14 +23,19 @@ ms.lastreviewed: 06/08/2019
 
 This article lists all the security updates in the last four updates of Azure Stack. This information is provided for reference purposes only.
 
+::: moniker range="azs-1907"
 ## 1907 update
 
 This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack.
+::: moniker-end
 
+::: moniker range="azs-1906"
 ## 1906 update
 
 This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack.
+::: moniker-end
 
+::: moniker range="azs-1905"
 ## 1905 update
 
 The 1905 update installs the following security updates:
@@ -125,6 +130,7 @@ The 1905 update installs the following security updates:
 
 Because of the cumulative nature of Windows updates, this update contains also the previous months' security payloads. The list of CVEs above reflects the security payload of March, April, and May 2019.
 For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base articles [4499177](https://support.microsoft.com/en-us/help/4499177).
+::: moniker-end
 
 ## Next steps
 
