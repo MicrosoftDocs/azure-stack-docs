@@ -1,6 +1,6 @@
 ---
-title: Manage Key Vault in Azure Stack by using PowerShell | Microsoft Docs
-description: Learn how to manage Key Vault in Azure Stack by using PowerShell
+title: Manage Key Vault in Azure Stack using PowerShell | Microsoft Docs
+description: Learn how to manage Key Vault in Azure Stack by using PowerShell.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -23,11 +23,11 @@ ms.lastreviewed: 05/09/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can manage Key Vault in Azure Stack using PowerShell. Learn how to use Key Vault PowerShell cmdlets to:
+This article describes how to create and manage a key vault in Azure Stack using Powershell. You'll learn how to use Key Vault PowerShell cmdlets to:
 
 * Create a key vault.
 * Store and manage cryptographic keys and secrets.
-* Authorize users or applications to invoke operations in the vault.
+* Authorize users or apps to invoke operations in the vault.
 
 >[!NOTE]
 >The Key Vault PowerShell cmdlets described in this article are provided in the Azure PowerShell SDK.
@@ -58,9 +58,9 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault
 
 If the registration is successful, the following output is returned:
 
-![Register](media/azure-stack-key-vault-manage-powershell/image2.png)
+![Key vault registration successful](media/azure-stack-key-vault-manage-powershell/image2.png)
 
-When you invoke the key vault commands, you might receive an error, such as "The subscription is not registered to use namespace 'Microsoft.KeyVault'." If you get an error, confirm that you have enabled the Key Vault resource provider by following the previous instructions.
+When you invoke the key vault commands, you might receive an error, such as "The subscription is not registered to use namespace 'Microsoft.KeyVault'." If you get an error, confirm that you've enabled the Key Vault resource provider by following the previous instructions.
 
 ## Create a key vault
 
