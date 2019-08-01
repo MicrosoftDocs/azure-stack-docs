@@ -141,4 +141,4 @@ This update of Azure Stack does not include security updates to the underlying o
 ## Next steps
 
 - [Review update activity checklist](azure-stack-release-notes-checklist.md)
-- [Review list of known issues](azure-stack-release-notes-known-issues-1906.md)
+- [Review list of known issues](azure-stack-release-notes-known-issues-1907.md)
