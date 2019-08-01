@@ -31,13 +31,13 @@ The information in this article describes registering Azure Stack integrated sys
 
 ## Prerequisites
 
-You need the following in place before you register:
+You need the following prerequisites in place before you register:
 
- - Verify your credentials
- - Set the PowerShell language mode
- - Install PowerShell for Azure Stack
- - Download the Azure Stack tools
- - Determine your registration scenario
+- Verify your credentials
+- Set the PowerShell language mode
+- Install PowerShell for Azure Stack
+- Download the Azure Stack tools
+- Determine your registration scenario
 
 ### Verify your credentials
 
@@ -89,17 +89,18 @@ To ensure you are using the latest version, you should delete any existing versi
 
 Your Azure Stack deployment may be *connected* or *disconnected*.
 
- - **Connected**  
+- **Connected**  
  Connected means you have deployed Azure Stack so that it can connect to the Internet and to Azure. You either have Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS) for your identity store. With a connected deployment, you can choose from two billing models: pay-as-you-use or capacity-based.
-    - [Register a connected Azure Stack with Azure using the **pay-as-you-use** billing model](#register-connected-with-pay-as-you-go-billing)
-    - [Register a connected Azure Stack with Azure using the **capacity** billing model](#register-connected-with-capacity-billing)
+  - [Register a connected Azure Stack with Azure using the **pay-as-you-use** billing model](#register-connected-with-pay-as-you-go-billing)
+  - [Register a connected Azure Stack with Azure using the **capacity** billing model](#register-connected-with-capacity-billing)
 
- - **Disconnected**  
+- **Disconnected**  
  With the disconnected from Azure deployment option, you can deploy and use Azure Stack without a connection to the Internet. However, with a disconnected deployment, you are limited to an AD FS identity store and the capacity-based billing model.
-    - [Register a disconnected Azure Stack using the **capacity** billing model
+  - [Register a disconnected Azure Stack using the **capacity** billing model
 ](#register-disconnected-with-capacity-billing)
 
 ### Determine a unique registration name to use 
+
 When you register Azure Stack with Azure, you must provide a unique registration name. An easy way to associate your Azure Stack subscription with an Azure registration is to use your Azure Stack **Cloud ID**. 
 
 > [!NOTE]
