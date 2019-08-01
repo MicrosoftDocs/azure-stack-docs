@@ -17,6 +17,7 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 08/01/2019
+monikerRange: 'azs-1908'
 ---
 
 # Azure Stack 1908 update
