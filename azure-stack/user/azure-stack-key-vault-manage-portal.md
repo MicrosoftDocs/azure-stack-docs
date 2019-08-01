@@ -47,7 +47,7 @@ You must subscribe to an offer that includes the Azure Key Vault service.
 
 8. Optionally, choose an **Advanced access policy** to enable access to features. For example: virtual machines (VMs) for deployment, Resource Manager for template deployment, and access to Azure Disk Encryption for volume encryption.
 
-9. After you configure the settings, select **OK**, and then select **Create**. This starts the key vault deployment.
+9. After you configure the settings, select **OK**, and then select **Create**. This step starts the key vault deployment.
 
 ## Manage keys and secrets
 
