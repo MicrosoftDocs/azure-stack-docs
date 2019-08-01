@@ -38,7 +38,7 @@ Key Vault in Azure Stack helps safeguard cryptographic keys and secrets that clo
 
 Key Vault streamlines the key management process and enables you to maintain control of keys that access and encrypt your data. Developers can create keys for development and testing in minutes, and then seamlessly migrate them to production keys. Security admins can grant (and revoke) permissions to keys as needed.
 
-Anybody with an Azure Stack subscription can create and use key vaults. Although Key Vault benefits developers and security admins, the operator who manages other Azure Stack services for an organization can implement and manage it. For example, the Azure Stack operator can sign in with an Azure Stack subscription and create a vault for the organization in which to store keys. Then, they can:
+Anybody with an Azure Stack subscription can create and use key vaults. Although Key Vault benefits developers and security admins, the operator who manages other Azure Stack services for an organization can implement and manage it. For example, the Azure Stack operator can sign in with an Azure Stack subscription and create a vault for the organization in which to store keys. Once that's done, they can:
 
 * Create or import a key or secret.
 * Revoke or delete a key or secret.
