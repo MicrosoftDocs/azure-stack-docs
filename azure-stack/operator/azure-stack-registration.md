@@ -340,8 +340,8 @@ You can use the **Region management** tile to verify that the Azure Stack regist
     - **Registration subscription ID**: The Azure subscription ID registered and associated to Azure Stack
     - **Registration resource group**: The Azure resource group in the associated subscription containing the Azure Stack resources.
 
-4. You can use the Azure portal to view Azure Stack registrations, and then verify that the registration succeeded. Sign in to the [Azure portal](https://portal.azure.com) using an account associated to the subscription you used to register Azure Stack. Select **All resources**, enable the **Show hidden types** checkbox, and select the registration name.
-5. If the registration did not succeed, you can follow the steps [in this article](azure-stack-usage-issues.md#resolve-connectivity-issues) to resolve the issue.  
+4. You can use the Azure portal to view Azure Stack registration resource, and then verify that the registration succeeded. Sign in to the [Azure portal](https://portal.azure.com) using an account associated to the subscription you used to register Azure Stack. Select **All resources**, enable the **Show hidden types** checkbox, and select the registration name.
+5. If the registration did not succeed, you need to re-register by following the steps stated [here](#change-the-subscription-you-use) to resolve the issue.  
 
 Alternatively, you can verify if your registration was successful by using the Marketplace management feature. If you see a list of marketplace items in the Marketplace Management blade, your registration was successful. However, in disconnected environments, you will not be able to see marketplace items in Marketplace management.
 
