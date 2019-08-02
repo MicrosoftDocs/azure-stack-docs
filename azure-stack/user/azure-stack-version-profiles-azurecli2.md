@@ -29,13 +29,13 @@ If you're using the ASDK, you need the CA root certificate for Azure Stack to us
 
  - **The Azure Stack CA root certificate** is required if you're using the CLI from a workstation outside the ASDK.  
 
- - **The virtual machine aliases endpoint** provides an alias, like "UbuntuLTS" or "Win2012Datacenter," that references an image publisher, offer, SKU, and version as a single parameter when deploying VMs.  
+ - **The virtual machine aliases endpoint** provides an alias, like "UbuntuLTS" or "Win2012Datacenter." This alias references an image publisher, offer, SKU, and version as a single parameter when deploying VMs.  
 
 The following sections describe how to get these values.
 
 ### Export the Azure Stack CA root certificate
 
-If you're using an integrated system, you don't need to export the CA root certificate. You need to export the CA root certificate on an ASDK.
+If you're using an integrated system, you don't need to export the CA root certificate. Otherwise, export the CA root certificate on an ASDK.
 
 To export the ASDK root certificate in PEM format:
 
@@ -88,7 +88,7 @@ You can set up a publicly accessible endpoint that hosts a VM alias file. The VM
 
 Sign in to your development workstation and install CLI. Azure Stack requires version 2.0 or later of Azure CLI. The latest version of the API Profiles requires a current version of the CLI. You install the CLI by using the steps described in the [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) article. 
 
-1. To verify whether the installation was successful, open a terminal or command prompt window, and run the following command:
+1. To verify whether the installation was successful, open a terminal or command prompt window and run the following command:
 
     ```shell
     az --version
@@ -107,13 +107,13 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
 ### Trust the Azure Stack CA root certificate
 
-If you're using the ASDK, you need to trust the CA root certificate on your remote machine. You don't need to do this with the integrated systems.
+If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step is not not needed with the integrated systems.
 
 To trust the Azure Stack CA root certificate, append it to the existing Python certificate store for the Python version installed with the Azure CLI. You may be running your own instance of Python. Azure CLI includes its own version of Python.
 
 1. Find the certificate store location on your machine.  You can find the location by running the command  `az --version`.
 
-2. Navigate to the folder that contains your the CLI Python app. You want to run this version of python. If you have set up Python in your system PATH, running Python will execute your own version of Python. Instead, you want to run the version used by CLI and add your certificate to that version. For example, your CLI Python may be at: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\`.
+2. Navigate to the folder that contains your CLI Python app. You want to run this version of python. If you've set up Python in your system PATH, running Python will execute your own version of Python. Instead, you want to run the version used by CLI and add your certificate to that version. For example, your CLI Python may be at: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\`.
 
     Use the following commands:
 
@@ -173,11 +173,11 @@ To trust the Azure Stack CA root certificate, append it to the existing Python c
     | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you're operator, specify `AzureStackAdmin`. |
     | Resource Manager endpoint | https://management.local.azurestack.external | The **ResourceManagerUrl** in the ASDK is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` If you have a question about the integrated system endpoint, contact your cloud operator. |
     | Storage endpoint | local.azurestack.external | `local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
-    | Keyvault suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an  integrated system, you will want to use an endpoint for your system.  |
-    | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document which contains VM image aliases. For more info, see [Set up the virtual machine aliases endpoint](#set-up-the-virtual-machine-aliases-endpoint). |
+    | Keyvault suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
+    | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document which contains VM image aliases. For more info, see [Set up the VM aliases endpoint](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
-    az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
+    az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>
     ```
 
 1. Set the active environment by using the following commands.
@@ -234,15 +234,15 @@ This section walks you through setting up CLI if you're using Active Directory F
 
 ### Trust the Azure Stack CA root certificate
 
-If you're using the ASDK, you need to trust the CA root certificate on your remote machine. You don't need to do this with the integrated systems.
+If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step is not not needed with the integrated systems.
 
-1. Find the certificate location on your machine. The location may vary depending on where you have installed Python. Open a cmd prompt or an elevated PowerShell prompt, and type the following command:
+1. Find the certificate location on your machine. The location may vary depending on where you've installed Python. Open a cmd prompt or an elevated PowerShell prompt, and type the following command:
 
     ```powershell  
       python -c "import certifi; print(certifi.where())"
     ```
 
-    Make a note of the certificate location. For example, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Your particular path depends on your OS and the version of Python that you have installed.
+    Make a note of the certificate location. For example, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Your particular path depends on your OS and the version of Python that you've installed.
 
 2. Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
 
@@ -294,10 +294,10 @@ If you're using the ASDK, you need to trust the CA root certificate on your remo
     | Resource Manager endpoint | https://management.local.azurestack.external | The **ResourceManagerUrl** in the ASDK is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` If you have a question about the integrated system endpoint, contact your cloud operator. |
     | Storage endpoint | local.azurestack.external | `local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
     | Keyvault suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an  integrated system, use an endpoint for your system.  |
-    | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document which contains VM image aliases. For more info, see [Set up the virtual machine aliases endpoint](#set-up-the-virtual-machine-aliases-endpoint). |
+    | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document which contains VM image aliases. For more info, see [Set up the VM aliases endpoint](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
-    az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
+    az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>
     ```
 
 1. Set the active environment by using the following commands.
@@ -322,7 +322,7 @@ If you're using the ASDK, you need to trust the CA root certificate on your remo
      You can either specify the username and password directly within the `az login` command, or authenticate by using a browser. You must do the latter if your account has multi-factor authentication enabled:
 
      ```azurecli
-     az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>   --profile "2019-03-01-hybrid"
+     az cloud register  -n <environmentname>   --endpoint-resource-manager "https://management.local.azurestack.external"  --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>   --profile "2019-03-01-hybrid"
      ```
 
      > [!NOTE]
@@ -365,17 +365,17 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
 ### Trust the Azure Stack CA root certificate
 
-If you're using the ASDK, you need to trust the CA root certificate on your remote machine. You don't need to do this with the integrated systems.
+If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step is not not needed with the integrated systems.
 
 Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
 
-1. Find the certificate location on your machine. The location may vary depending on where you have installed Python. You need to have pip and the certifi module installed. Use the following Python command from the bash prompt:
+1. Find the certificate location on your machine. The location may vary depending on where you've installed Python. You need to have pip and the certifi module installed. Use the following Python command from the bash prompt:
 
     ```bash  
     python3 -c "import certifi; print(certifi.where())"
     ```
 
-    Make a note of the certificate location. For example, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Your specific path depends on your operating system and the version of Python that you have installed.
+    Make a note of the certificate location. For example, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Your specific path depends on your operating system and the version of Python that you've installed.
 
 2. Run the following bash command with the path to your certificate.
 
@@ -410,10 +410,10 @@ Use the following steps to connect to Azure Stack:
     | Resource Manager endpoint | https://management.local.azurestack.external | The **ResourceManagerUrl** in the ASDK is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` If you have a question about the integrated system endpoint, contact your cloud operator. |
     | Storage endpoint | local.azurestack.external | `local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
     | Keyvault suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
-    | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document which contains VM image aliases. For more info, see [Set up the virtual machine aliases endpoint](#set-up-the-virtual-machine-aliases-endpoint). |
+    | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document which contains VM image aliases. For more info, see [Set up the VM aliases endpoint](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
-    az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
+    az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>
     ```
 
 3. Set the active environment. 
@@ -476,17 +476,17 @@ This section walks you through setting up CLI if you're using Active Directory F
 
 ### Trust the Azure Stack CA root certificate
 
-If you're using the ASDK, you need to trust the CA root certificate on your remote machine. You don't need to do this with the integrated systems.
+If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step is not not needed with the integrated systems.
 
 Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
 
-1. Find the certificate location on your machine. The location may vary depending on where you have installed Python. You need to have pip and the certifi module installed. Use the following Python command from the bash prompt:
+1. Find the certificate location on your machine. The location may vary depending on where you've installed Python. You need to have pip and the certifi module installed. Use the following Python command from the bash prompt:
 
     ```bash  
     python3 -c "import certifi; print(certifi.where())"
     ```
 
-    Make a note of the certificate location. For example, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Your specific path depends on your operating system and the version of Python that you have installed.
+    Make a note of the certificate location. For example, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Your specific path depends on your operating system and the version of Python that you've installed.
 
 2. Run the following bash command with the path to your certificate.
 
@@ -521,10 +521,10 @@ Use the following steps to connect to Azure Stack:
     | Resource Manager endpoint | https://management.local.azurestack.external | The **ResourceManagerUrl** in the ASDK is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` If you have a question about the integrated system endpoint, contact your cloud operator. |
     | Storage endpoint | local.azurestack.external | `local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
     | Keyvault suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
-    | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document which contains VM image aliases. For more info, see [Set up the virtual machine aliases endpoint](#set-up-the-virtual-machine-aliases-endpoint). |
+    | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document which contains VM image aliases. For more info, see [Set up the VM aliases endpoint](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
-    az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
+    az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains VM image aliases>
     ```
 
 3. Set the active environment. 
