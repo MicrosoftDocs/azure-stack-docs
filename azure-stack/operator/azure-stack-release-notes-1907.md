@@ -93,6 +93,8 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Fixed an issue in which the description field was not saved when creating an offer.
 
+- Fixed an issue in which a user with **Read only** permissions was able to create, edit, and delete resources. Now the user is only able to create resources when the **Contributor** permission is assigned. 
+
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/127772311/home -->
 - Fixed an issue in which the update fails due to a DLL file locked by the WMI provider host.
 
