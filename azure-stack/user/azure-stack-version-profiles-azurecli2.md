@@ -1,6 +1,6 @@
 ---
 title: Connect to Azure Stack with CLI | Microsoft Docs
-description: Learn how to use the cross-platform command-line interface (CLI) to manage and deploy resources on Azure Stack
+description: Learn how to use the cross-platform command-line interface (CLI) to manage and deploy resources on Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -21,13 +21,13 @@ ms.lastreviewed: 05/08/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can follow the steps in this article to set up the Azure Command-Line Interface (CLI) to manage Azure Stack Development Kit (ASDK) resources from Linux, Mac, and Windows client platforms.
+Follow the steps in this article to set up the Azure Command-Line Interface (CLI) to manage Azure Stack Development Kit (ASDK) resources from Linux, Mac, and Windows client platforms.
 
 ## Prepare for Azure CLI
 
-If you are using the Azure Stack Development Kit, you will need the CA root certificate for Azure Stack to use Azure CLI on your development machine. You use the certificate to manage resources through the CLI.
+If you're using the ASDK, you need the CA root certificate for Azure Stack to use Azure CLI on your development machine. You use the certificate to manage resources through the CLI.
 
- - **The Azure Stack CA root certificate** is required if you are using the CLI from a workstation outside the ASDK.  
+ - **The Azure Stack CA root certificate** is required if you're using the CLI from a workstation outside the ASDK.  
 
  - **The virtual machine aliases endpoint** provides an alias, like "UbuntuLTS" or "Win2012Datacenter," that references an image publisher, offer, SKU, and version as a single parameter when deploying VMs.  
 
@@ -35,22 +35,22 @@ The following sections describe how to get these values.
 
 ### Export the Azure Stack CA root certificate
 
-If you are using an integrated system, you don't need to export the CA root certificate. You will need to export the CA root certificate on an ASDK.
+If you're using an integrated system, you don't need to export the CA root certificate. You need to export the CA root certificate on an ASDK.
 
 To export the ASDK root certificate in PEM format:
 
 1. Get the name of your Azure Stack Root Cert:
-    - Sign into the Azure Stack Tenant or Admin portal.
-    - Click on "Secure" near the address bar.
-    - On the pop-up window, Click "Valid".
-    - On the Certificate Window, click "Certification Path" tab. 
+    - Sign in to the Azure Stack Tenant or Admin portal.
+    - Click on **Secure** near the address bar.
+    - On the pop-up window, Click **Valid**.
+    - On the Certificate Window, click **Certification Path** tab.
     - Note down the name of your Azure Stack Root Cert.
 
     ![Azure Stack Root Certificate](media/azure-stack-version-profiles-azurecli2/root-cert-name.png)
 
 2. [Create a Windows VM on Azure Stack](azure-stack-quick-windows-portal.md).
 
-3. Sign in to the machine, open an elevated PowerShell prompt, and then run the following script:
+3. Sign in to the VM, open an elevated PowerShell prompt, and then run the following script:
 
     ```powershell  
       $label = "<the name of your azure stack root cert from Step 1>"
