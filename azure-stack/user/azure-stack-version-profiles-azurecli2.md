@@ -166,7 +166,7 @@ To trust the Azure Stack CA root certificate, append it to the existing Python c
     set ADAL_PYTHON_SSL_NO_VERIFY=1
     ```
 
-2. Register your environment. Use the following parameters when running `az cloud register`.
+2. Register your environment. Use the following parameters when running `az cloud register`:
 
     | Value | Example | Description |
     | --- | --- | --- |
@@ -286,7 +286,7 @@ If you're using the ASDK, you need to trust the CA root certificate on your remo
     set ADAL_PYTHON_SSL_NO_VERIFY=1
     ```
 
-2. Register your environment. Use the following parameters when running `az cloud register`.
+2. Register your environment. Use the following parameters when running `az cloud register`:
 
     | Value | Example | Description |
     | --- | --- | --- |
@@ -361,21 +361,21 @@ If the resource group is created successfully, the previous command outputs the 
 
 ## Linux (Azure AD)
 
-This section will walk you through setting up CLI if you are using Azure AD as your identity management service, and are using CLI on a Linux machine.
+This section walks you through setting up CLI if you're using Azure AD as your identity management service, and are using CLI on a Linux machine.
 
 ### Trust the Azure Stack CA root certificate
 
-If you are using the ASDK, you will need to trust the CA root certificate on your remote machine. You will not need to do this with the integrated systems.
+If you're using the ASDK, you need to trust the CA root certificate on your remote machine. You don't need to do this with the integrated systems.
 
 Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
 
-1. Find the certificate location on your machine. The location may vary depending on where you have installed Python. You will need to have pip and the certifi module installed. You can use the following Python command from the bash prompt:
+1. Find the certificate location on your machine. The location may vary depending on where you have installed Python. You need to have pip and the certifi module installed. Use the following Python command from the bash prompt:
 
     ```bash  
     python3 -c "import certifi; print(certifi.where())"
     ```
 
-    Make a note of the certificate location; for example, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Your specific path depends on your operating system and the version of Python that you have installed.
+    Make a note of the certificate location. For example, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Your specific path depends on your operating system and the version of Python that you have installed.
 
 2. Run the following bash command with the path to your certificate.
 
@@ -395,22 +395,22 @@ Trust the Azure Stack CA root certificate by appending it to the existing Python
 
 Use the following steps to connect to Azure Stack:
 
-1. Register your Azure Stack environment by running the `az cloud register` command. In some scenarios, direct outbound internet connectivity is routed through a proxy or firewall, which enforces SSL interception. In these cases, the `az cloud register` command can fail with an error such as "Unable to get endpoints from the cloud." To work around this error, you can set the following environment variables:
+1. Register your Azure Stack environment by running the `az cloud register` command. In some scenarios, direct outbound internet connectivity is routed through a proxy or firewall, which enforces SSL interception. In these cases, the `az cloud register` command can fail with an error such as "Unable to get endpoints from the cloud." To work around this error, set the following environment variables:
 
    ```shell
    export AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1
    export ADAL_PYTHON_SSL_NO_VERIFY=1
    ```
 
-2. Register your environment. Use the following parameters when running `az cloud register`.
+2. Register your environment. Use the following parameters when running `az cloud register`:
 
     | Value | Example | Description |
     | --- | --- | --- |
-    | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you are operator, specify `AzureStackAdmin`. |
-    | Resource Manager endpoint | https://management.local.azurestack.external | The **ResourceManagerUrl** in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` If you have a question about the integrated system endpoint, contact your cloud operator. |
-    | Storage endpoint | local.azurestack.external | `local.azurestack.external` is for the ASDK. For an integrated system, you will want to use an endpoint for your system.  |
-    | Keyvault suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an  integrated system, you will want to use an endpoint for your system.  |
-    | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document which contains virtual machine image aliases. For more information, see [### Set up the virtual machine aliases endpoint](#set-up-the-virtual-machine-aliases-endpoint). |
+    | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you're operator, specify `AzureStackAdmin`. |
+    | Resource Manager endpoint | https://management.local.azurestack.external | The **ResourceManagerUrl** in the ASDK is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` If you have a question about the integrated system endpoint, contact your cloud operator. |
+    | Storage endpoint | local.azurestack.external | `local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
+    | Keyvault suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
+    | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document which contains VM image aliases. For more info, see [### Set up the virtual machine aliases endpoint](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
@@ -429,7 +429,7 @@ Use the following steps to connect to Azure Stack:
    ```
 
     >[!NOTE]  
-    >If you are running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You will need to be using a recent version of the Azure CLI.
+    >If you're running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
 
 5. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
@@ -460,7 +460,7 @@ Use the following steps to connect to Azure Stack:
 
 ### Test the connectivity
 
-With everything set up, use CLI to create resources within Azure Stack. For example, you can create a resource group for an application and add a virtual machine. Use the following command to create a resource group named "MyResourceGroup":
+With everything set up, use CLI to create resources within Azure Stack. For example, you can create a resource group for an app and add a VM. Use the following command to create a resource group named "MyResourceGroup":
 
 ```azurecli
     az group create -n MyResourceGroup -l local
