@@ -159,7 +159,7 @@ To trust the Azure Stack CA root certificate, append it to the existing Python c
 
 1. Register your Azure Stack environment by running the `az cloud register` command.
 
-    In some scenarios, direct outbound internet connectivity is routed through a proxy or firewall, which enforces SSL interception. In these cases, the `az cloud register` command can fail with an error such as "Unable to get endpoints from the cloud." To work around this error, you can set the following environment variables:
+    In some scenarios, direct outbound internet connectivity is routed through a proxy or firewall, which enforces SSL interception. In these cases, the `az cloud register` command can fail with an error such as "Unable to get endpoints from the cloud." To work around this error, set the following environment variables:
 
     ```shell  
     set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
@@ -170,11 +170,11 @@ To trust the Azure Stack CA root certificate, append it to the existing Python c
 
     | Value | Example | Description |
     | --- | --- | --- |
-    | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you are operator, specify `AzureStackAdmin`. |
-    | Resource Manager endpoint | https://management.local.azurestack.external | The **ResourceManagerUrl** in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` If you have a question about the integrated system endpoint, contact your cloud operator. |
-    | Storage endpoint | local.azurestack.external | `local.azurestack.external` is for the ASDK. For an integrated system, you will want to use an endpoint for your system.  |
+    | Environment name | AzureStackUser | Use `AzureStackUser`  for the user environment. If you're operator, specify `AzureStackAdmin`. |
+    | Resource Manager endpoint | https://management.local.azurestack.external | The **ResourceManagerUrl** in the ASDK is: `https://management.local.azurestack.external/` The **ResourceManagerUrl** in integrated systems is: `https://management.<region>.<fqdn>/` To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` If you have a question about the integrated system endpoint, contact your cloud operator. |
+    | Storage endpoint | local.azurestack.external | `local.azurestack.external` is for the ASDK. For an integrated system, use an endpoint for your system.  |
     | Keyvault suffix | .vault.local.azurestack.external | `.vault.local.azurestack.external` is for the ASDK. For an  integrated system, you will want to use an endpoint for your system.  |
-    | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document which contains virtual machine image aliases. For more information, see [### Set up the virtual machine aliases endpoint](#set-up-the-virtual-machine-aliases-endpoint). |
+    | VM image alias doc endpoint- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | URI of the document which contains VM image aliases. For more info, see [### Set up the virtual machine aliases endpoint](#set-up-the-virtual-machine-aliases-endpoint). |
 
     ```azurecli  
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
@@ -193,9 +193,9 @@ To trust the Azure Stack CA root certificate, append it to the existing Python c
    ```
 
     >[!NOTE]  
-    >If you are running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You will need to be using a recent version of the Azure CLI.
+    >If you're running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
  
-1. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
+1. Sign in to your Azure Stack environment by using the `az login` command. Sign in to the Azure Stack environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
    - Sign in as a *user*: 
 
@@ -206,7 +206,7 @@ To trust the Azure Stack CA root certificate, append it to the existing Python c
      ```
 
      > [!NOTE]
-     > If your user account has multi-factor authentication enabled, you can use the `az login` command without providing the `-u` parameter. Running this command gives you a URL and a code that you must use to authenticate.
+     > If your user account has multi-factor authentication enabled, use the `az login` command without providing the `-u` parameter. Running this command gives you a URL and a code that you must use to authenticate.
 
    - Sign in as a *service principal*: 
     
