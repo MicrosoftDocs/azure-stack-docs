@@ -74,7 +74,7 @@ To export the ASDK root certificate in PEM format:
 
 ### Set up the virtual machine aliases endpoint
 
-You can set up a publicly accessible endpoint that hosts a virtual machine alias file. The virtual machine alias file is a JSON file that provides a common name for an image. You will use the name when you deploy a VM as an Azure CLI parameter.
+You can set up a publicly accessible endpoint that hosts a VM alias file. The VM alias file is a JSON file that provides a common name for an image. You use the name when you deploy a VM as an Azure CLI parameter.
 
 1. If you publish a custom image, make note of the publisher, offer, SKU, and version information that you specified during publishing. If it's an image from the marketplace, you can view the information by using the ```Get-AzureVMImage``` cmdlet.  
 
@@ -86,7 +86,7 @@ You can set up a publicly accessible endpoint that hosts a virtual machine alias
 
 ### Install or upgrade CLI
 
-Sign in to your development workstation and install CLI. Azure Stack requires version 2.0 or later of Azure CLI. The latest version of the API Profiles requires a current version of the CLI.  You can install the CLI by using the steps described in the [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) article. 
+Sign in to your development workstation and install CLI. Azure Stack requires version 2.0 or later of Azure CLI. The latest version of the API Profiles requires a current version of the CLI. You install the CLI by using the steps described in the [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) article. 
 
 1. To verify whether the installation was successful, open a terminal or command prompt window, and run the following command:
 
@@ -98,12 +98,12 @@ Sign in to your development workstation and install CLI. Azure Stack requires ve
 
     ![Azure CLI on Azure Stack Python location](media/azure-stack-version-profiles-azurecli2/cli-python-location.png)
 
-2. Make a note of the CLI's Python location. If you are running the ASDK, you will need to use this location to add your certificate.
+2. Make a note of the CLI's Python location. If you're running the ASDK, you need to use this location to add your certificate.
 
 
 ## Windows (Azure AD)
 
-This section will walk you through setting up CLI if you are using Azure AD as your identity management service, and are using CLI on a Windows machine.
+This section walks you through setting up CLI if you're using Azure AD as your identity management service, and are using CLI on a Windows machine.
 
 ### Trust the Azure Stack CA root certificate
 
