@@ -1,5 +1,5 @@
 ---
-title: Connect to Azure Stack with CLI | Microsoft Docs
+title: Manage Azure Stack with Azure CLI | Microsoft Docs
 description: Learn how to use the cross-platform command-line interface (CLI) to manage and deploy resources on Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -17,7 +17,7 @@ ms.reviewer: sijuman
 ms.lastreviewed: 05/08/2019
 
 ---
-# Use API version profiles with Azure CLI in Azure Stack
+# Manage and deploy resources to Azure Stack with Azure CLI
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -35,7 +35,7 @@ The following sections describe how to get these values.
 
 ### Export the Azure Stack CA root certificate
 
-If you're using an integrated system, you don't need to export the CA root certificate. Otherwise, export the CA root certificate on an ASDK.
+If you're using an integrated system, you don't need to export the CA root certificate. If you're using ASDK, export the CA root certificate on an ASDK.
 
 To export the ASDK root certificate in PEM format:
 
