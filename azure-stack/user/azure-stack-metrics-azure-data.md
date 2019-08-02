@@ -126,7 +126,7 @@ You can work with data tracking, routing, and retrieval using one of the followi
  - [REST API](https://docs.microsoft.com/rest/api/monitor)
  - [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
 
-> [Important]  
+> [!Important]  
 > If you encounter a **resource not found** error when viewing the performance graph of a VM, make sure you've registered Microsoft.insights on the subscription associated with the VM.
 
 ## Next steps
