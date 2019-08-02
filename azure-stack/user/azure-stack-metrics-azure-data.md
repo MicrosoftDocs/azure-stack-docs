@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 08/02/2019
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
 
@@ -118,13 +118,16 @@ A few visualization methods include:
 
 ## Methods of accessing Azure monitor on Azure Stack
 
-In general, you can manipulate data tracking, routing, and retrieval using one of the following methods. Not all methods are available for all actions or data types.
+You can work with data tracking, routing, and retrieval using one of the following methods. Not all methods are available for all actions or data types. 
 
  - [Azure Stack Portal](azure-stack-use-portal.md)
  - [PowerShell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-powershell-samples)
  - [Cross-platform Command Line Interface(CLI)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-cli-samples)
  - [REST API](https://docs.microsoft.com/rest/api/monitor)
  - [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
+
+> [Important]  
+> If you encounter a **resource not found** error when viewing the performance graph of a VM, make sure you've registered Microsoft.insights on the subscription associated with the VM.
 
 ## Next steps
 
