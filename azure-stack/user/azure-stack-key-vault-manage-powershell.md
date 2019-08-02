@@ -50,7 +50,7 @@ If your subscription is enabled for vault operations, the output shows **Registr
 
 ![Key vault registration state in Powershell](media/azure-stack-key-vault-manage-powershell/image1.png)
 
-If vault operations are not enabled, issue the following command to register the Key Vault service in your subscription:
+If vault operations aren't enabled, issue the following command to register the Key Vault service in your subscription:
 
 ```powershell
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault
@@ -60,7 +60,7 @@ If the registration is successful, the following output is returned:
 
 ![Key vault registration in Powershell successful](media/azure-stack-key-vault-manage-powershell/image2.png)
 
-When you invoke the key vault commands, you might receive an error, such as "The subscription is not registered to use namespace 'Microsoft.KeyVault'." If you get an error, confirm that you've enabled the Key Vault resource provider by following the previous instructions.
+When you invoke the key vault commands, you might receive an error, such as "The subscription is not registered to use namespace 'Microsoft.KeyVault'." If you get an error, confirm you've enabled the Key Vault resource provider by following the previous instructions.
 
 ## Create a key vault
 
@@ -86,7 +86,7 @@ The output of this command shows the properties of the key vault that you create
 
 ### Active Directory Federation Services (AD FS) deployment
 
-In an AD FS deployment, you might get this warning: "Access policy is not set. No user or application has access permission to use this vault." To resolve this issue, set an access policy for the vault by using the [Set-AzureRmKeyVaultAccessPolicy](#authorize-an-application-to-use-a-key-or-secret) command:
+In an AD FS deployment, you might get this warning: "Access policy is not set. No user or application has access permission to use this vault." To resolve this issue, set an access policy for the vault by using the [Set-AzureRmKeyVaultAccessPolicy](#authorize-an-app-to-use-a-key-or-secret) command:
 
 ```powershell
 # Obtain the security identifier(SID) of the active directory user
