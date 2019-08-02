@@ -107,13 +107,13 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
 ### Trust the Azure Stack CA root certificate
 
-If you are using the ASDK, you will need to trust the CA root certificate on your remote machine. You will not need to do this with the integrated systems.
+If you're using the ASDK, you need to trust the CA root certificate on your remote machine. You don't need to do this with the integrated systems.
 
 To trust the Azure Stack CA root certificate, append it to the existing Python certificate store for the Python version installed with the Azure CLI. You may be running your own instance of Python. Azure CLI includes its own version of Python.
 
 1. Find the certificate store location on your machine.  You can find the location by running the command  `az --version`.
 
-2. Navigate to the folder that contains your the CLI Python application. You will want to run this version of python. If you have set up Python in your system PATH, running Python will execute your own version of Python. Instead, you will want to run the version used by CLI and add your certificate to that version. For example, your CLI Python may be at: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\`.
+2. Navigate to the folder that contains your the CLI Python app. You want to run this version of python. If you have set up Python in your system PATH, running Python will execute your own version of Python. Instead, you want to run the version used by CLI and add your certificate to that version. For example, your CLI Python may be at: `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\`.
 
     Use the following commands:
 
@@ -122,7 +122,7 @@ To trust the Azure Stack CA root certificate, append it to the existing Python c
     .\python -c "import certifi; print(certifi.where())"
     ```
 
-    Make a note of the certificate location. For example, `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem`. Your particular path will depend on your OS and your CLI installation.
+    Make a note of the certificate location. For example, `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem`. Your particular path depends on your OS and your CLI installation.
 
 2. Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
 
