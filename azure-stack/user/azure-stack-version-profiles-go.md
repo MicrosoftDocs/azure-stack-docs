@@ -129,7 +129,7 @@ To get the **Authorizer** property from Azure Active Directory using the Go SDK,
 
 The Authorizer must be set as the authorizer for the resource client. There are different ways to get authorizer tokens on Azure Stack by using client credentials:
 
-1. If a service principal with owner role on the subscription is available, skip this step. Otherwise see [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md) for instructions on creating a service principal that uses a client secret, and assigning it an "owner" role scoped to your subscription. Be sure to capture the service principal application ID and secret.
+1. If a service principal with owner role on the subscription is available, skip this step. Otherwise, see [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md) for instructions on creating a service principal that uses a client secret, and assigning it an "owner" role scoped to your subscription. Be sure to capture the service principal application ID and secret.
 
 2. Import the **adal** package from Go-AutoRest in your code.
 
@@ -172,7 +172,7 @@ The Authorizer must be set as the authorizer for the resource client. There are 
    ```
 
     Set `<activeDirectoryResourceID>` to one of the values in the "audience" list from the **ResourceManagerUrl** metadata retrieved in the previous section of this article.
-    Set `<clientID>` to the service principal application ID saved when service principal was created in the previous section of this article.
+    Set `<clientID>` to the service principal application ID saved when the service principal was created in the previous section of this article.
     Set `<clientSecret>` to the service principal application secret saved when the service principal was created in the previous section of this article.
 
 ## Example
@@ -212,7 +212,7 @@ This example shows a sample of Go code that creates a virtual network on Azure S
    )
    ```
 
-3. Now that you have defined your environment variables, add a method to create an authentication token by using the **adal** package. For more information about authentication, see the previous section.
+3. Now that you have defined your environment variables, add a method to create an authentication token by using the **adal** package. For more info on authentication, see the previous section.
 
    ```go
    //CreateToken creates a service principal token
@@ -297,9 +297,9 @@ This example shows a sample of Go code that creates a virtual network on Azure S
    }
    ```
 Some of the code samples available for Azure Stack using Go SDK are:
-- [Create Virtual machine](https://github.com/Azure-Samples/Hybrid-Compute-Go-Create-VM).
-- [Storage Dataplane](https://github.com/Azure-Samples/Hybrid-Storage-Go-Dataplane).
-- [Use Managed Disks](https://github.com/Azure-Samples/Hybrid-Compute-Go-ManagedDisks), (Sample that uses 2019-03-01 profile which targets the latest API versions supported by Azure Stack)
+- [Create Virtual machine](https://github.com/Azure-Samples/Hybrid-Compute-Go-Create-VM)
+- [Storage Dataplane](https://github.com/Azure-Samples/Hybrid-Storage-Go-Dataplane)
+- [Use Managed Disks](https://github.com/Azure-Samples/Hybrid-Compute-Go-ManagedDisks) (sample that uses 2019-03-01 profile which targets the latest API versions supported by Azure Stack)
 ## Next steps
 
 - [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md)
