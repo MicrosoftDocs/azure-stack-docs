@@ -16,7 +16,7 @@ ms.topic: article
 ms.date: 08/05/2019
 ms.author: sethm
 ms.reviewer: ihcherie
-ms.lastreviewed: 07/12/2019
+ms.lastreviewed: 08/05/2019
 
 ---
 # Azure Marketplace items available for Azure Stack
