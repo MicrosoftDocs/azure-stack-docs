@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 08/02/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 07/25/2019
+ms.lastreviewed: 08/02/2019
 ---
 
 # Azure Stack 1907 update
@@ -48,9 +48,9 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 <!-- What's new, also net new experiences and features. -->
 
-- General availability release of the Azure Stack diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Customer Support Services (CSS). The Azure Stack diagnostic log collection service provides a new user experience in the Azure Stack administrator portal that enables operators to set up the automatic upload of diagnostic logs to a storage blob when certain critical alerts are raised, or to perform the same operation on demand. For more information, see the [Diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md) article.
+- General availability release of the Azure Stack diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Customer Support Services (CSS). This diagnostic log collection service provides a new user experience in the Azure Stack administrator portal that enables operators to set up the automatic upload of diagnostic logs to a storage blob when certain critical alerts are raised, or to perform the same operation on demand. For more information, see the [Diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md) article.
 
-- General availability release of the Azure Stack Network Infra validation as a part of Test-AzureStack. Azure Stack Network Infra will be a part of the Azure Stack validation tool (Test-AzureStack) to identify if a failure occurs on the network infrastructure of Azure Stack or not. The test will check connectivity of the network infrastructure by bypassing the Azure Stack software defined network. It will demonstrate connectivity from a Public VIP to the configured DNS forwarders, NTP servers and identity endpoints. In addition, it will check for connectivity to Azure when using Azure AD as the identity provider or the federated server when using ADFS. For more information, see the [Diagnostic log collection](azure-stack-diagnostic-test.md) article.
+- General availability release of the Azure Stack network infrastructure validation as a part of the Azure Stack validation tool **Test-AzureStack**. Azure Stack network infrastructure will be a part of **Test-AzureStack**, to identify if a failure occurs on the network infrastructure of Azure Stack. The test checks connectivity of the network infrastructure by bypassing the Azure Stack software-defined network. It demonstrates connectivity from a public VIP to the configured DNS forwarders, NTP servers, and identity endpoints. In addition, it checks for connectivity to Azure when using Azure AD as the identity provider, or the federated server when using ADFS. For more information, see the [Azure Stack validation tool](azure-stack-diagnostic-test.md) article.
 
 - Added an internal secret rotation procedure to rotate internal SQL TLS certificates as required during a system update.
 
@@ -92,6 +92,8 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 - Fixed an issue in which deleting user subscriptions resulted in orphaned resources.
 
 - Fixed an issue in which the description field was not saved when creating an offer.
+
+- Fixed an issue in which a user with **Read only** permissions was able to create, edit, and delete resources. Now the user is only able to create resources when the **Contributor** permission is assigned. 
 
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/127772311/home -->
 - Fixed an issue in which the update fails due to a DLL file locked by the WMI provider host.
@@ -142,7 +144,7 @@ The 1907 release of Azure Stack must be applied on the 1906 release with the fol
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- No hotfix available for 1907.
+- [Azure Stack hotfix 1.1907.8.37](https://support.microsoft.com/help/4515650)
 
 ## Automatic update notifications
 
