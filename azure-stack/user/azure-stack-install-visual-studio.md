@@ -80,7 +80,7 @@ Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-st
 
     Cloud Explorer queries the available subscriptions. You can select an available subscription to manage.
 
-    ![Selection subscriptions to manage in Cloud Explorer](./media/azure-stack-install-visual-studio/image8.png)
+    ![Select subscriptions to manage in Cloud Explorer](./media/azure-stack-install-visual-studio/image8.png)
 
 8. Browse your existing resources, resource groups, or deploy templates.
 

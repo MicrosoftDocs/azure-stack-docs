@@ -35,7 +35,7 @@ The following sections describe how to get these values.
 
 ### Export the Azure Stack CA root certificate
 
-If you're using an integrated system, you don't need to export the CA root certificate. If you're using ASDK, export the CA root certificate on an ASDK.
+If you're using an integrated system, you don't need to export the CA root certificate. If you're using the ASDK, export the CA root certificate on an ASDK.
 
 To export the ASDK root certificate in PEM format:
 
@@ -107,7 +107,7 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
 ### Trust the Azure Stack CA root certificate
 
-If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step is not not needed with the integrated systems.
+If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step isn't needed with the integrated systems.
 
 To trust the Azure Stack CA root certificate, append it to the existing Python certificate store for the Python version installed with the Azure CLI. You may be running your own instance of Python. Azure CLI includes its own version of Python.
 
@@ -234,7 +234,7 @@ This section walks you through setting up CLI if you're using Active Directory F
 
 ### Trust the Azure Stack CA root certificate
 
-If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step is not not needed with the integrated systems.
+If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step isn't needed with the integrated systems.
 
 1. Find the certificate location on your machine. The location may vary depending on where you've installed Python. Open a cmd prompt or an elevated PowerShell prompt, and type the following command:
 
@@ -365,7 +365,7 @@ This section walks you through setting up CLI if you're using Azure AD as your i
 
 ### Trust the Azure Stack CA root certificate
 
-If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step is not not needed with the integrated systems.
+If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step isn't needed with the integrated systems.
 
 Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
 
@@ -476,7 +476,7 @@ This section walks you through setting up CLI if you're using Active Directory F
 
 ### Trust the Azure Stack CA root certificate
 
-If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step is not not needed with the integrated systems.
+If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step isn't needed with the integrated systems.
 
 Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
 

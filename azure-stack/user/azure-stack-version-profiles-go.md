@@ -299,7 +299,7 @@ This example shows a sample of Go code that creates a virtual network on Azure S
 Some of the code samples available for Azure Stack using Go SDK are:
 - [Create Virtual machine](https://github.com/Azure-Samples/Hybrid-Compute-Go-Create-VM)
 - [Storage Dataplane](https://github.com/Azure-Samples/Hybrid-Storage-Go-Dataplane)
-- [Use Managed Disks](https://github.com/Azure-Samples/Hybrid-Compute-Go-ManagedDisks) (sample that uses 2019-03-01 profile which targets the latest API versions supported by Azure Stack)
+- [Use Managed Disks](https://github.com/Azure-Samples/Hybrid-Compute-Go-ManagedDisks) (a sample that uses 2019-03-01 profile which targets the latest API versions supported by Azure Stack)
 ## Next steps
 
 - [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md)
