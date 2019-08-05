@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 08/05/2019
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 07/31/2019
@@ -44,6 +44,17 @@ This article describes Marketplace changes that have occurred over the last 3 mo
 - 07/30/2019: SQL Server 2016 SP2 (Express, Developer, Standard and Enterprise editions) 13.2.20190410
 - 07/30/2019: SQL Server 2017 (Express, Developer, Standard and Enterprise editions) 14.0.20190410
 - 07/30/2019: SQLIaaSExtension 1.3.20180
+- 08/05/2019: Drupal
+- 08/05/2019: etcd
+- 08/05/2019: Grafana
+- 08/05/2019: Neo4j
+- 08/05/2019: Parse Server
+- 08/05/2019: WordPress Multisite
+- 08/05/2019: ZooKeeper
+- 08/05/2019: TensorFlow Serving
+- 08/05/2019: NATS
+- 08/05/2019: Review Board
+- 08/05/2019: Composr
 
 ## Next steps
 
