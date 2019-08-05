@@ -1,6 +1,6 @@
 ---
-title: Using API version profiles with GO in Azure Stack | Microsoft Docs
-description: Learn about using API version profiles with GO in Azure Stack.
+title: Use API version profiles with GO in Azure Stack | Microsoft Docs
+description: Learn how to use API version profiles with GO in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -125,7 +125,7 @@ For a complete example of creating a virtual network on Azure Stack by using the
 
 ## Authentication
 
-To get the **Authorizer** property from Azure Active Directory using the Go SDK, install the **Go-AutoRest** modules. These modules should have been already installed with the "Go SDK" installation; if not, install the [authentication package from GitHub](https://github.com/Azure/go-autorest/tree/master/autorest/adal).
+To get the **Authorizer** property from Azure Active Directory using the Go SDK, install the **Go-AutoRest** modules. These modules should have been already installed with the "Go SDK" installation. If they aren't, install the [authentication package from GitHub](https://github.com/Azure/go-autorest/tree/master/autorest/adal).
 
 The Authorizer must be set as the authorizer for the resource client. There are different ways to get authorizer tokens on Azure Stack by using client credentials:
 
@@ -212,7 +212,7 @@ This example shows a sample of Go code that creates a virtual network on Azure S
    )
    ```
 
-3. Now that you have defined your environment variables, add a method to create an authentication token by using the **adal** package. For more info on authentication, see the previous section.
+3. Now that you've defined your environment variables, add a method to create an authentication token by using the **adal** package. For more info on authentication, see the previous section.
 
    ```go
    //CreateToken creates a service principal token
