@@ -26,10 +26,10 @@ ms.lastreviewed: 05/26/2019
 
 A profile is a combination of different resource types with different versions from different services. Using a profile helps you mix and match between different resource types. Profiles can provide the following benefits:
 
-- Stability for your application by locking to specific API versions.
-- Compatibility for your application with Azure Stack and regional Azure datacenters.
+- Stability for your app by locking to specific API versions.
+- Compatibility for your app with Azure Stack and regional Azure datacenters.
 
-In the Go SDK, profiles are available under the profiles path, with their version in the **YYYY-MM-DD** format. Right now, the latest Azure Stack API profile version is **2019-03-01** for stamp versions 1904 or later. To import a given service from a profile, import its corresponding module from the profile. For example, to import **Compute** service from **2019-03-01** profile, use the following code:
+In the Go SDK, profiles are available under the profiles path, with their version in the **YYYY-MM-DD** format. The latest Azure Stack API profile version is **2019-03-01** for stamp versions 1904 or later. To import a given service from a profile, import its corresponding module from the profile. For example, to import **Compute** service from **2019-03-01** profile, use the following code:
 
 ```go
 import "github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/compute/mgmt/compute"
@@ -61,7 +61,7 @@ The Go SDK depends on the Azure **Go-AutoRest** modules to send REST requests to
 To run a sample of Go code on Azure Stack, follow these steps:
 
 1. Install Azure SDK for Go and its dependencies. For instructions, see the previous section, [Install Azure SDK for Go](#install-azure-sdk-for-go).
-2. Get the metadata information from the Resource Manager endpoint. The endpoint returns a JSON file with the information required to run your Go code.
+2. Get the metadata info from the Resource Manager endpoint. The endpoint returns a JSON file with the info required to run your Go code.
 
    > [!NOTE]  
    > The **ResourceManagerUrl** in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/`  
@@ -81,9 +81,9 @@ To run a sample of Go code on Azure Stack, follow these steps:
    }
    ```
 
-3. If not available, create a subscription and save the subscription ID to be used later. For information about creating a subscription, see [Create subscriptions to offers in Azure Stack](../operator/azure-stack-subscribe-plan-provision-vm.md).
+3. If not available, create a subscription and save the subscription ID to be used later. For info on creating a subscription, see [Create subscriptions to offers in Azure Stack](../operator/azure-stack-subscribe-plan-provision-vm.md).
 
-4. Create a service principal that uses a client secret, with **Subscription** scope and **Owner** role. Save the service principal ID and secret. For information about creating a service principal for Azure Stack, see [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md). Your Azure Stack environment is now set up.
+4. Create a service principal that uses a client secret, with **Subscription** scope and **Owner** role. Save the service principal ID and secret. For info on creating a service principal for Azure Stack, see [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md). <br>Your Azure Stack environment is now set up.
 
 5. Import a service module from the Go SDK profile in your code. The current version of Azure Stack profile is **2019-03-01**. For example, to import network module from **2019-03-01** profile type, use the following code:
 
@@ -92,7 +92,7 @@ To run a sample of Go code on Azure Stack, follow these steps:
     import "github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/network/mgmt/network"
    ```
 
-6. In your function, create and authenticate a client with a **New** client function call. To create a virtual network client, you can use the following code:  
+6. In your function, create and authenticate a client with a **New** client function call. To create a virtual network client, use the following code:  
 
    ```go
    package main
