@@ -1,6 +1,6 @@
 ---
-title: View public IP address consumption in Azure Stack | Microsoft Docs
-description: Administrators can view the consumption of public IP addresses in a region
+title: Manage network resouces in Azure Stack | Microsoft Docs
+description: Administrators can manage network resources, including the MAC address pool and the consumption of public IP addresses in a region
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,22 +18,22 @@ ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
 
 ---
-# Manage Network Resources
+# Manage network resources
 
-## MAC Address Pool
+## MAC address pool
 
 Azure Stack uses a static MAC address pool to automatically generate and assign MAC address to virtual machines.
-This MAC Address Pool is automatically generated during deployment and uses the following range:
+This MAC address pool is automatically generated during deployment and uses the following range:
 
 - StartMacAddress: 00-1D-D8-B7-00-00
 - EndMacAddress : 00-1D-D8-F4-FF-FF
 
 > [!Note]  
-> This MAC Address pool is the same across each Azure Stack system and is not configurable.
+> This MAC address pool is the same across each Azure Stack system and is not configurable.
 
 Depending on how the virtual networks connect with existing corporate networks, you may expect duplicated MAC addresses of virtual machines.
 
-More information can be found about MAC Address pool utilization using the cmdlet [Get-AzsMacAddressPool](https://docs.microsoft.com/powershell/module/azs.fabric.admin/get-azsmacaddresspool) in the Azure Stack Administrator PowerShell Module.
+More information can be found about MAC address pool utilization using the cmdlet [Get-AzsMacAddressPool](https://docs.microsoft.com/powershell/module/azs.fabric.admin/get-azsmacaddresspool) in the Azure Stack Administrator PowerShell Module.
 
 ## View public IP address consumption in Azure Stack
 
