@@ -1,6 +1,6 @@
 ---
-title: Using API version profiles with Java in Azure Stack | Microsoft Docs
-description: Learn about using API version profiles with Java in Azure Stack.
+title: Use API version profiles with Java in Azure Stack | Microsoft Docs
+description: Learn how to use API version profiles with Java in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -24,7 +24,7 @@ ms.lastreviewed: 05/16/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-The Java SDK for the Azure Stack Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include compute, networking, storage, app services, and [KeyVault](/azure/key-vault/key-vault-whatis). The Java SDK incorporates API profiles by including dependencies in the Pom.xml file that loads the correct modules in the .java file. However, you can add multiple profiles as dependencies, such as the **2019-03-01-hybrid**, or **latest**, as the Azure profile. Using these dependencies loads the correct module so that when you create your resource type, you are able to select which API version from those profiles you want to use. This enables you to use the latest versions in Azure, while developing against the most current API versions for Azure Stack. Using the Java SDK enables a true hybrid cloud developer experience. API profiles in the Java SDK enable hybrid cloud development by helping you switch between global Azure resources and resources in Azure Stack.
+The Java SDK for the Azure Stack Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include compute, networking, storage, app services, and [Key Vault](/azure/key-vault/key-vault-whatis). The Java SDK incorporates API profiles by including dependencies in the *Pom.xml* file that loads the correct modules in the *.java* file. However, you can add multiple profiles as dependencies, such as the **2019-03-01-hybrid**, or **latest**, as the Azure profile. Using these dependencies loads the correct module so that when you create your resource type, you are able to select which API version from those profiles you want to use. This enables you to use the latest versions in Azure, while developing against the most current API versions for Azure Stack. Using the Java SDK enables a true hybrid cloud developer experience. API profiles in the Java SDK enable hybrid cloud development by helping you switch between global Azure resources and resources in Azure Stack.
 
 ## Java and API version profiles
 
