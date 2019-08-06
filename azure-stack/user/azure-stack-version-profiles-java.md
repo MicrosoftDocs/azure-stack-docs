@@ -24,7 +24,7 @@ ms.lastreviewed: 05/16/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-The Java SDK for the Azure Stack Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include compute, networking, storage, app services, and [Key Vault](/azure/key-vault/key-vault-whatis). The Java SDK incorporates API profiles by including dependencies in the *Pom.xml* file that loads the correct modules in the *.java* file. However, you can add multiple profiles as dependencies, such as the **2019-03-01-hybrid**, or **latest**, as the Azure profile. Using these dependencies loads the correct module so that when you create your resource type, you are able to select which API version from those profiles you want to use. This enables you to use the latest versions in Azure, while developing against the most current API versions for Azure Stack. Using the Java SDK enables a true hybrid cloud developer experience. API profiles in the Java SDK enable hybrid cloud development by helping you switch between global Azure resources and resources in Azure Stack.
+The Java SDK for the Azure Stack Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Networking, Storage, Spp Services, and [Key Vault](/azure/key-vault/key-vault-whatis). The Java SDK incorporates API profiles by including dependencies in the *Pom.xml* file that loads the correct modules in the *.java* file. However, you can add multiple profiles as dependencies, such as the **2019-03-01-hybrid**, or **latest**, as the Azure profile. Using these dependencies loads the correct module so that when you create your resource type, you are able to select which API version from those profiles you want to use. This enables you to use the latest versions in Azure, while developing against the most current API versions for Azure Stack. Using the Java SDK enables a true hybrid cloud developer experience. API profiles in the Java SDK enable hybrid cloud development by helping you switch between global Azure resources and resources in Azure Stack.
 
 ## Java and API version profiles
 
@@ -161,13 +161,13 @@ Sample JSON file:
 
 ## Existing API Profiles
 
-- **com.microsoft.azure.profile\_2019\_03\_01\_hybrid**: Latest profile built for Azure Stack. Use this profile for services to be most compatible with Azure Stack as long as you are on 1904 stamp or further.
+- **com.microsoft.azure.profile\_2019\_03\_01\_hybrid**: Latest profile built for Azure Stack. Use this profile for services to be most compatible with Azure Stack as long as you're on 1904 stamp or further.
 
 - **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**: Profile built for Azure Stack. Use this profile for services to be  compatible with Azure Stack with stamp versions 1808 or later.
 
 - **com.microsoft.azure**: Profile consisting of the latest versions of all services. Use the latest versions of all the services.
 
-For more information about Azure Stack and API profiles, see the [Summary
+For more info on Azure Stack and API profiles, see the [Summary
 of API profiles](../user/azure-stack-version-profiles.md#summary-of-api-profiles).
 
 ## Azure Java SDK API profile usage
@@ -182,7 +182,7 @@ Azure azureStack = Azure.configure()
                     .authenticate(credentials, credentials.defaultSubscriptionID());
 ```
 
-This enables you to use the API profile dependencies to deploy your application successfully to Azure Stack.
+This code enables you to use the API profile dependencies to deploy your app successfully to Azure Stack.
 
 ## Define Azure Stack environment setting functions
 
@@ -206,7 +206,7 @@ AzureEnvironment AZURE_STACK = new AzureEnvironment(new HashMap<String, String>(
             });
 ```
 
-The `getActiveDirectorySettings` call in the above code retrieves the endpoints from the metadata endpoints. It states the environment variables from the call that is made:
+The `getActiveDirectorySettings` call in the above code retrieves the endpoints from the metadata endpoints. It states the environment variables from the call that's made:
 
 ```java
 public static HashMap<String, String> getActiveDirectorySettings(String armEndpoint) {
@@ -254,13 +254,13 @@ public static HashMap<String, String> getActiveDirectorySettings(String armEndpo
 
 ## Samples using API profiles
 
-You can use the following GitHub samples as references for creating solutions with .NET and Azure Stack API profiles:
+Use the following GitHub samples as references for creating solutions with .NET and Azure Stack API profiles:
 
 - [Manage Resource Groups](https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group)
 
 - [Manage Storage Accounts](https://github.com/Azure-Samples/hybrid-storage-java-manage-storage-accounts)
 
-- [Manage a Virtual Machine](https://github.com/Azure-Samples/hybrid-compute-java-manage-vm) (Updated with 2019-03-01-hybrid profile).
+- [Manage a Virtual Machine](https://github.com/Azure-Samples/hybrid-compute-java-manage-vm) (updated with 2019-03-01-hybrid profile).
 
 ### Sample Unit Test Project
 
@@ -272,21 +272,21 @@ You can use the following GitHub samples as references for creating solutions wi
 
 3. Retrieve the following required environment variable values:
 
-   - AZURE_TENANT_ID
-   - AZURE_CLIENT_ID
-   - AZURE_CLIENT_SECRET
-   - AZURE_SUBSCRIPTION_ID
-   - ARM_ENDPOINT
-   - RESOURCE_LOCATION
+   - `AZURE_TENANT_ID`
+   - `AZURE_CLIENT_ID`
+   - `AZURE_CLIENT_SECRET`
+   - `AZURE_SUBSCRIPTION_ID`
+   - `ARM_ENDPOINT`
+   - `RESOURCE_LOCATION`
 
-4. Set the following environment variables using the information you retrieved from the service principal you created using the command prompt:
+4. Set the following environment variables using the info retrieved from the service principal you created using the command prompt:
 
-   - export AZURE_TENANT_ID={your tenant ID}
-   - export AZURE_CLIENT_ID={your client ID}
-   - export AZURE_CLIENT_SECRET={your client secret}
-   - export AZURE_SUBSCRIPTION_ID={your subscription ID}
-   - export ARM_ENDPOINT={your Azure Stack Resource Manager URL}
-   - export RESOURCE_LOCATION={location of Azure Stack}
+   - `export AZURE_TENANT_ID={your tenant ID}`
+   - `export AZURE_CLIENT_ID={your client ID}`
+   - `export AZURE_CLIENT_SECRET={your client secret}`
+   - `export AZURE_SUBSCRIPTION_ID={your subscription ID}`
+   - `export ARM_ENDPOINT={your Azure Stack Resource Manager URL}`
+   - `export RESOURCE_LOCATION={location of Azure Stack}`
 
    In Windows, use **set** instead of **export**.
 
@@ -297,7 +297,7 @@ You can use the following GitHub samples as references for creating solutions wi
     final HashMap<String, String> settings = getActiveDirectorySettings(armEndpoint);
     ```
 
-6. In the Pom.xml file, add the following dependency to use the **2019-03-01-hybrid** profile for Azure Stack. This dependency installs the modules associated with this profile for the Compute, Networking, Storage, KeyVault and App Services resource providers:
+6. In the *Pom.xml* file, add the following dependency to use the **2019-03-01-hybrid** profile for Azure Stack. This dependency installs the modules associated with this profile for the Compute, Networking, Storage, Key Vault and App Services resource providers:
 
    ```xml
    <dependency>
