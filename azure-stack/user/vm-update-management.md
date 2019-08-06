@@ -127,6 +127,7 @@ The [Using Azure Monitor for VMs Map to understand app components](https://docs.
 
    ![Azure Monitor VMs Map tab](https://docs.microsoft.com/azure/azure-monitor/insights/media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
+In case [Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) is not showing you any performance data, you have to enable the collection of performance data for Windows and Linux in your [LogAnalytics Workspace](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters) Advanced Settings.
 
 ## Enable Update Management using a Resource Manager template
 If you have a large number of Azure Stack VMs, you can use [this Azure Resource Manager template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) to more easily deploy the solution on VMs. The template deploys the Microsoft Monitoring Agent extension to an existing Azure Stack VM and adds it to an existing Azure LogAnalytics workspace.
