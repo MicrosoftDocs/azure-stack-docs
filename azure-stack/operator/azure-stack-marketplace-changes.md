@@ -12,24 +12,46 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2019
+ms.date: 08/05/2019
 ms.author: sethm
 ms.reviewer: ihcherie
-ms.lastreviewed: 07/17/2019
+ms.lastreviewed: 07/31/2019
 
 ---
 
 # Azure Stack Marketplace changes
 
-This article describes recent additions, updates, changes, and removals of [Azure Stack Marketplace items](azure-stack-marketplace-azure-items.md). The information in this section is updated frequently, so check back often for changes.
+This article describes recent additions, updates, changes, and removals of [Azure Stack Marketplace items](azure-stack-marketplace-azure-items.md) over approximately the last 3 months. The information in this section is updated frequently, so check back often for changes.
 
-This article describes Marketplace changes that have occurred over the last 3 months, approximately. The [Azure Stack Marketplace items](azure-stack-marketplace-azure-items.md) article always contains the most current list of available Azure Stack Marketplace items.
+The [Azure Stack Marketplace items](azure-stack-marketplace-azure-items.md) article always contains the most current list of available Azure Stack Marketplace items.
 
 ## New Marketplace items
 
-- Veeam® Backup & Replication™: Helps businesses achieve comprehensive data protection for ALL workloads — virtual, physical and cloud-based workloads. With a single console, achieve fast, flexible and reliable backup, recovery and replication of all applications and data. Added 6/14/2019.
+- 1/25/2019: A10 vThunder: L4-L7 Application Delivery Controller, Global Server Load Balancing (GSLB), SSL Insight
 
-- A10 vThunder: L4-L7 Application Delivery Controller, Global Server Load Balancing (GSLB), SSL Insight. Added 1/25/2019.
+- 6/14/2019: Veeam® Backup & Replication™
+
+- 08/05/2019: Drupal
+
+- 08/05/2019: etcd
+
+- 08/05/2019: Grafana
+
+- 08/05/2019: Neo4j
+
+- 08/05/2019: Parse Server
+
+- 08/05/2019: WordPress Multisite
+
+- 08/05/2019: ZooKeeper
+
+- 08/05/2019: TensorFlow Serving
+
+- 08/05/2019: NATS
+
+- 08/05/2019: Review Board
+
+- 08/05/2019: Composr
 
 ## Deprecated Marketplace items
 
@@ -40,7 +62,10 @@ This article describes Marketplace changes that have occurred over the last 3 mo
 
 ## Updated Marketplace items
 
-- List of updates here, possibly with date of update.
+- 07/30/2019: SQL Server 2016 SP1 (Express, Developer, Standard and Enterprise editions) 13.2.20190410
+- 07/30/2019: SQL Server 2016 SP2 (Express, Developer, Standard and Enterprise editions) 13.2.20190410
+- 07/30/2019: SQL Server 2017 (Express, Developer, Standard and Enterprise editions) 14.0.20190410
+- 07/30/2019: SQLIaaSExtension 1.3.20180
 
 ## Next steps
 

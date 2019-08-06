@@ -106,6 +106,10 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - Fixed an issue in template deployment UI that does not populate parameters if the template name begins with '_' underscore.
 
+- Fixed an issue where the virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack. We now provide Centos 7.5 as our option for deployment
+
+- You can now remove a scale set from the **Virtual machine scale sets** blade.
+
 ## Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates-1906.md).

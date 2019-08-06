@@ -29,7 +29,7 @@ This article lists known issues in the 1907 release of Azure Stack. The list is 
 ## Update process
 
 - Applicable: This issue applies to all supported releases.
-- Cause: When attempting to install the 1906 Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing. The 1906 update package is larger than previous update packages, which may make this issue more likely to occur.
+- Cause: When attempting to install the 1907 Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing.
 - Remediation: Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and restarts the download. If the problem persists, we recommend manually uploading the update package by following the [Import and install updates section](azure-stack-apply-updates.md#import-and-install-updates).
 - Occurrence: Common
 
@@ -43,11 +43,11 @@ This article lists known issues in the 1907 release of Azure Stack. The list is 
 - Occurrence: Common
 
 ### Subscriptions Properties blade
-- Applicable: This issue applies to all supported releases.
-- Cause: In the administrator portal, the Properties blade for Subscriptions does not load correctly
-- Remediation: You can view these subscriptions properties in the Essentials pane of the Subscriptions Overview blade
-- Occurrence: Common
 
+- Applicable: This issue applies to all supported releases.
+- Cause: In the administrator portal, the **Properties** blade for subscriptions does not load correctly
+- Remediation: You can view these subscription properties in the **Essentials** pane of the **Subscriptions Overview** blade.
+- Occurrence: Common
 
 ### Subscription permissions
 
@@ -85,13 +85,6 @@ This article lists known issues in the 1907 release of Azure Stack. The list is 
 - Occurrence: Common
 
 ### Virtual Network Gateway
-
-#### Local network gateway deletion
-
-- Applicable: This issue applies to the 1906 release.
-- Cause: In the user portal, deleting the Local Network Gateway displays the following error message: "Cannot delete a Local Network Gateway with an active connection," even though there is no active connection. 
-- Mitigation: The fix for this issue will be released in 1907. A workaround for this issue is to create a new Local Network Gateway  with the same IP address, address space and configuration details with a different name. The old LNG can be deleted once the environment has been updated to 1907. 
-- Occurrence: Common
 
 #### Alerts
 
@@ -149,21 +142,21 @@ This article lists known issues in the 1907 release of Azure Stack. The list is 
 
 ### Virtual machine scale set reset password does not work
 
-- Applicable: This issue applies to the 1906,1907 release.
+- Applicable: This issue applies to the 1906 and 1907 releases.
 - Cause: A new reset password blade appears in the scale set UI, but Azure Stack does not support resetting password on a scale set yet.
 - Remediation: None.
 - Occurrence: Common
 
 ### Rainy cloud on scale set diagnostics
 
-- Applicable: This issue applies to the 1906, 1907 release.
+- Applicable: This issue applies to the 1906 and 1907 releases.
 - Cause: The virtual machine scale set overview page shows an empty chart. Clicking on the empty chart opens a "rainy cloud" blade. This is the chart for scale set diagnostic information, such as CPU percentage, and is not a feature supported in the current Azure Stack build.
 - Remediation: None.
 - Occurrence: Common
 
 ### Virtual machine diagnostic settings blade
 
-- Applicable: This issue applies to the 1906,1907 release.
+- Applicable: This issue applies to the 1906 and 1907 releases.    
 - Cause: The virtual machine diagnostic settings blade has a **Sink** tab, which asks for an **Application Insight Account**. This is the result of a new blade and is not yet supported in Azure Stack.
 - Remediation: None.
 - Occurrence: Common
