@@ -28,7 +28,7 @@ The Java SDK for the Azure Stack Resource Manager provides tools to help you bui
 
 ## Java and API version profiles
 
-An API profile is a combination of resource providers and API versions. You can use an API profile to get the latest, most stable version of each resource type in a resource provider package.
+An API profile is a combination of resource providers and API versions. Use an API profile to get the latest, most stable version of each resource type in a resource provider package.
 
 - To use the latest versions of all the services, use the **latest** profile as the dependency.
 
@@ -37,7 +37,7 @@ An API profile is a combination of resource providers and API versions. You can 
   - To use the latest supported services available in Azure Stack, use the
     **com.microsoft.azure.profile\_2019\_03\_01\_hybrid** profile.
 
-    - This is to be specified in the Pom.xml file as a dependency, which loads modules automatically if you choose the right class from the dropdown list as you would with .NET.
+    - This is to be specified in the *Pom.xml* file as a dependency, which loads modules automatically if you choose the right class from the dropdown list as you would with .NET.
 
   - Dependencies appear as follows:
 
@@ -51,7 +51,7 @@ An API profile is a combination of resource providers and API versions. You can 
 
   - To use specific API versions for a resource type in a specific resource provider, use the specific API versions defined through Intellisense.
 
-Note that you can combine all of the options in the same application.
+Note that you can combine all of the options in the same app.
 
 ## Install the Azure Java SDK
 
@@ -59,9 +59,9 @@ Use the following steps to install the Java SDK:
 
 1. Follow the official instructions to install Git. For instructions, see [Getting Started - Installing Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-2. Follow the instructions to install the [Java SDK](https://zulu.org/download/) and [Maven](https://maven.apache.org/). The correct version is version 8 of the Java Developer Kit. The correct Apache Maven is version 3.0 or above. The JAVA_HOME environment variable must be set to the install location of the Java Development Kit to complete the quickstart. For more information, see [Create your first function with Java and Maven](/azure/azure-functions/functions-create-first-java-maven).
+2. Follow the instructions to install the [Java SDK](https://zulu.org/download/) and [Maven](https://maven.apache.org/). The correct version is version 8 of the Java Developer Kit. The correct Apache Maven is version 3.0 or above. The `JAVA_HOME` environment variable must be set to the install location of the Java Development Kit to complete the quickstart. For more info, see [Create your first function with Java and Maven](/azure/azure-functions/functions-create-first-java-maven).
 
-3. To install the correct dependency packages, open the Pom.xml file in your Java application. Add a dependency, as shown in the following code:
+3. To install the correct dependency packages, open the *Pom.xml* file in your Java app. Add a dependency, as shown in the following code:
 
    ```xml  
    <dependency>
@@ -89,12 +89,12 @@ To use the Azure Java SDK with Azure Stack, you must supply the following values
 
 | Value                     | Environment variables | Description                                                                                                                                                                                                          |
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Tenant ID                 | AZURE_TENANT_ID            | The value of your Azure Stack [tenant ID](../operator/azure-stack-identity-overview.md).                                                          |
-| Client ID                 | AZURE_CLIENT_ID             | The service principal application ID saved when the service principal was created in the previous section.                                                                                              |
-| Subscription ID           | AZURE_SUBSCRIPTION_ID      | The [subscription ID](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) is how you access offers in Azure Stack.                |
-| Client Secret             | AZURE_CLIENT_SECRET        | The service principal application secret saved when the service principal was created.                                                                                                                                   |
-| Resource Manager Endpoint | ARM_ENDPOINT              | See [the Azure Stack Resource Manager endpoint](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
-| Location                  | RESOURCE_LOCATION    | **Local** for Azure Stack.                                                                                                                                                                                                |
+| Tenant ID                 | `AZURE_TENANT_ID`            | The value of your Azure Stack [tenant ID](../operator/azure-stack-identity-overview.md).                                                          |
+| Client ID                 | `AZURE_CLIENT_ID`             | The service principal application ID saved when the service principal was created in the previous section.                                                                                              |
+| Subscription ID           | `AZURE_SUBSCRIPTION_ID`      | The [subscription ID](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) is how you access offers in Azure Stack.                |
+| Client Secret             | `AZURE_CLIENT_SECRET`        | The service principal application secret saved when the service principal was created.                                                                                                                                   |
+| Resource Manager Endpoint | `ARM_ENDPOINT`              | See [the Azure Stack Resource Manager endpoint](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
+| Location                  | `RESOURCE_LOCATION`    | **Local** for Azure Stack.                                                                                                                                                                                                |
 
 To find the tenant ID for your Azure Stack, see the instructions [here](../operator/azure-stack-csp-ref-operations.md). To set your environment variables, do the following:
 
@@ -116,13 +116,13 @@ Export AZURE_TENANT_ID=<Your_Tenant_ID>
 
 ### Trust the Azure Stack CA root certificate
 
-If you are using the ASDK, you must trust the CA root certificate on your remote machine. You will not need to do this with the integrated systems.
+If you're using the Azure Stack Development Kit (ASDK), you must trust the CA root certificate on your remote machine. You don't need to do this with the integrated systems.
 
 #### Windows
 
 1. Export the Azure Stack self-signed certificate to your desktop.
 
-1. In a command prompt, change directory to %JAVA_HOME%\bin.
+1. In a command prompt, change directory to `%JAVA_HOME%\bin`.
 
 1. Run the following command:
 
@@ -132,13 +132,13 @@ If you are using the ASDK, you must trust the CA root certificate on your remote
 
 ### The Azure Stack Resource Manager endpoint
 
-The Microsoft Azure Resource Manager is a management framework that allows administrators to deploy, manage, and monitor Azure resources. Azure Resource Manager can handle these tasks as a group, rather than individually, in a single operation.
+The Microsoft Azure Resource Manager is a management framework that allows admins to deploy, manage, and monitor Azure resources. Azure Resource Manager can handle these tasks as a group, rather than individually, in a single operation.
 
-You can get the metadata information from the Resource Manager endpoint. The endpoint returns a JSON file with the information required to run your code.
+You can get the metadata info from the Resource Manager endpoint. The endpoint returns a JSON file with the info required to run your code.
 
 Note the following considerations:
 
-- The **ResourceManagerUrl** in the Azure Stack Development Kit (ASDK) is: https://management.local.azurestack.external/.
+- The **ResourceManagerUrl** in the ASDK is: `https://management.local.azurestack.external/`.
 
 - The **ResourceManagerUrl** in integrated systems is: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`.
 
