@@ -125,17 +125,17 @@ Sample JSON file:
 
 ## Existing API Profiles
 
-1.  **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**: Latest Profile built for Azure Stack. Use this profile for services to be most compatible with Azure Stack as long as you are on 1904 stamp or later.
+1.  **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**: Latest Profile built for Azure Stack. Use this profile for services to be most compatible with Azure Stack as long as you're on 1904 stamp or later.
 
 2.  **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**: Use this profile for services to be compatible with Azure Stack for stamp versions 1808 or later.
 
 3.  **Latest**: Profile consisting of the latest versions of all services. Use the latest versions of all the services. This profile is part of the **Microsoft.Azure.Management** NuGet package.
 
-For more information about Azure Stack and API profiles, see a [Summary of API profiles][].
+For more info on Azure Stack and API profiles, see a [Summary of API profiles][].
 
-## Azure .NET SDK API Profile usage
+## Azure .NET SDK API profile usage
 
-The following code should be used to instantiate a resource management client. Similar code can be used to instantiate other resource provider (Such as compute, network, and storage) clients. 
+The following code should be used to instantiate a resource management client. Similar code can be used to instantiate other resource provider (Such as Compute, Network, and Storage) Clients.
 
 ```csharp
 var client = new ResourceManagementClient(armEndpoint, credentials)
@@ -150,7 +150,7 @@ The `credentials` parameter in the above code is required to instantiate a clien
 var azureStackSettings = getActiveDirectoryServiceSettings(armEndpoint);
 var credentials = ApplicationTokenProvider.LoginSilentAsync(tenantId, servicePrincipalId, servicePrincipalSecret, azureStackSettings).GetAwaiter().GetResult();
 ```
-The `getActiveDirectoryServiceSettings` call in the code retrieves Azure Stack endpoints from the metadata endpoint. It states the environment variables from the call that is made: 
+The `getActiveDirectoryServiceSettings` call in the code retrieves Azure Stack endpoints from the metadata endpoint. It states the environment variables from the call that's made:
 
 ```csharp
 public static ActiveDirectoryServiceSettings getActiveDirectoryServiceSettings(string armEndpoint)
@@ -185,7 +185,7 @@ public static ActiveDirectoryServiceSettings getActiveDirectoryServiceSettings(s
 }
 ```
 
-This will enable you to use the API Profile NuGet packages to deploy your application successfully to Azure Stack.
+This enables you to use the API profile NuGet packages to deploy your app successfully to Azure Stack.
 
 ## Samples using API Profiles
 
@@ -196,7 +196,7 @@ The following samples can be used as a reference for creating solutions with .NE
 
 ## Next steps
 
-For more information about API profiles, see:
+For more info on API profiles, see:
 
 - [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md)
 - [Resource provider API versions supported by profiles](azure-stack-profiles-azure-resource-manager-versions.md)
