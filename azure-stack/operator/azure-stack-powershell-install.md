@@ -23,7 +23,7 @@ ms.lastreviewed: 07/09/2019
 
 Azure PowerShell provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure Stack resources.
 
-To work with your cloud, you must install Azure Stack compatible PowerShell modules. Azure Stack uses the **AzureRM** module rather than the newer **AzureAZ** module used in global Azure. In addition, you need to use *API profiles* to specify the compatible endpoints for the Azure Stack resource providers.
+To work with your cloud, you must install Azure Stack compatible PowerShell modules. Azure Stack uses the **AzureRM** module rather than the newer **AzureAZ** module used in global Azure. You also need to use *API profiles* to specify the compatible endpoints for the Azure Stack resource providers.
 
 API profiles provide a way to manage version differences between Azure and Azure Stack. An API version profile is a set of Azure Resource Manager PowerShell modules with specific API versions. Each cloud platform has a set of supported API version profiles. For example, Azure Stack supports a specific profile version such as **2019-03-01-hybrid**. When you install a profile, the Azure Resource Manager PowerShell modules that correspond to the specified profile are installed.
 
@@ -42,7 +42,7 @@ To check your version, run **$PSVersionTable.PSVersion** and compare the **Major
 - **Run Powershell in an elevated command prompt**.
 
 - **PowerShell Gallery access** <br>
-  You need access to the [PowerShell Gallery](https://www.powershellgallery.com). The gallery is the central repository for PowerShell content. The **PowerShellGet** module contains cmdlets for discovering, installing, updating, and publishing PowerShell artifacts such as modules, DSC resources, role capabilities, and scripts from the PowerShell Gallery and other private repositories. If you're using PowerShell in a disconnected scenario, you must retrieve resources from a machine with a connection to the internet and store them in a location accessible to your disconnected machine.
+  You need access to the [PowerShell Gallery](https://www.powershellgallery.com). The gallery is the central repository for PowerShell content. The **PowerShellGet** module contains cmdlets for discovering, installing, updating, and publishing PowerShell artifacts. Examples of these artifacts are modules, DSC resources, role capabilities, and scripts from the PowerShell Gallery and other private repositories. If you're using PowerShell in a disconnected scenario, you must retrieve resources from a machine with a connection to the internet and store them in a location accessible to your disconnected machine.
 
 ## 2. Validate the PowerShell Gallery accessibility
 
@@ -128,7 +128,7 @@ If the installation is successful, the AzureRM and AzureStack modules are displa
 
 ## 5. Disconnected: Install PowerShell without an internet connection
 
-In a disconnected scenario, you first download the PowerShell modules to a machine that has internet connectivity, and then transfer them to the Azure Stack Development Kit (ASDK) for installation.
+In a disconnected scenario, you first download the PowerShell modules to a machine that has internet connectivity. Then, you transfer them to the Azure Stack Development Kit (ASDK) for installation.
 
 Sign in to a computer with internet connectivity and use the following scripts to download the Azure Resource Manager and Azure Stack packages, depending on your version of Azure Stack.
 
