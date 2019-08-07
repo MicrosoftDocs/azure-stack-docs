@@ -1,6 +1,6 @@
 ---
-title: Using API version profiles with .NET SDK in Azure Stack | Microsoft Docs
-description: Learn about using API version profiles with .NET in Azure Stack.
+title: Use API version profiles with .NET in Azure Stack | Microsoft Docs
+description: Learn how to use API version profiles with .NET SDK in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -24,11 +24,11 @@ ms.lastreviewed: 05/16/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-The .NET SDK for the Azure Stack Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include compute, networking, storage, app services, and [KeyVault](/azure/key-vault/key-vault-whatis). The .NET SDK includes 14 NuGet packages. These packages must be downloaded to your project solution each time that incorporates the profile information. However, you can specifically download which resource provider you will use for the 2019-03-01-hybrid or 2018-03-01-hybrid in order to optimize the memory for your application. Each package consists of a resource provider, the respective API version, and the API profile to which it belongs. API profiles in the .NET SDK enable hybrid cloud development by helping you switch between global Azure resources and resources on Azure Stack.
+The .NET SDK for the Azure Stack Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Networking, Storage, App Services, and [Key Vault](/azure/key-vault/key-vault-whatis). The .NET SDK includes 14 NuGet packages. You must download these packages to your solution every time you compile your project. However, you can specifically download which resource provider you'll use for the 2019-03-01-hybrid or 2018-03-01-hybrid in order to optimize the memory for your app. Each package consists of a resource provider, the respective API version, and the API profile to which it belongs. API profiles in the .NET SDK enable hybrid cloud development by helping you switch between global Azure resources and resources on Azure Stack.
 
 ## .NET and API version profiles
 
-An API profile is a combination of resource providers and API versions. You can use an API profile to get the latest, most stable version of each resource type in a resource provider package.
+An API profile is a combination of resource providers and API versions. Use an API profile to get the latest, most stable version of each resource type in a resource provider package.
 
 -   To make use of the latest versions of all the services, use the **latest** profile of the packages. This profile is part of the **Microsoft.Azure.Management** NuGet package.
 
@@ -38,7 +38,7 @@ An API profile is a combination of resource providers and API versions. You can 
     
     Ensure that the **ResourceProvider** portion of the above NuGet package is changed to the correct provider.
 
--   To use the latest API-version of a service, use the **Latest** profile of the specific NuGet package. For example, if you want to use the **latest-API** version of the compute service alone, use the **latest** profile of the **compute** package. The **latest** profile is part of the **Microsoft.Azure.Management** NuGet package.
+-   To use the latest API-version of a service, use the **Latest** profile of the specific NuGet package. For example, if you want to use the **latest-API** version of the Compute service alone, use the **latest** profile of the **compute** package. The **latest** profile is part of the **Microsoft.Azure.Management** NuGet package.
 
 -   To use specific API-versions for a resource type in a specific resource provider, use the specific API versions defined inside the package.
 
