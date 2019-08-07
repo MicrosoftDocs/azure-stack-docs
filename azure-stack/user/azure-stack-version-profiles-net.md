@@ -66,7 +66,7 @@ You can combine all of the options in the same application.
 
 ## Prerequisites
 
-To use the .NET Azure SDK with Azure Stack, you must supply the following values, and then set values with environment variables. To set the environmental variables, see the instructions following the table for your operating system.
+To use the .NET Azure SDK with Azure Stack, you must supply the following values, and then set values with environment variables. To set the environmental variables, see the instructions following the table for your specific operating system.
 
 | Value                     | Environment variables   | Description                                                                                                             |
 |---------------------------|-------------------------|-------------------------------------------------------------------------------------------------------------------------|
@@ -185,11 +185,11 @@ public static ActiveDirectoryServiceSettings getActiveDirectoryServiceSettings(s
 }
 ```
 
-This enables you to use the API profile NuGet packages to deploy your app successfully to Azure Stack.
+These steps enable you to use the API profile NuGet packages to deploy your app successfully to Azure Stack.
 
 ## Samples using API Profiles
 
-The following samples can be used as a reference for creating solutions with .NET and Azure Stack API profiles.
+Use the following samples as a reference for creating solutions with .NET and Azure Stack API profiles.
 - [Manage Resource Groups](https://github.com/Azure-Samples/hybrid-resources-dotnet-manage-resource-group)
 - [Manage Storage Accounts](https://github.com/Azure-Samples/hybird-storage-dotnet-manage-storage-accounts)
 - [Manage a Virtual Machine](https://github.com/Azure-Samples/hybrid-compute-dotnet-manage-vm) (This sample uses the 2019-03-01-hybrid profile supported by Azure Stack)
