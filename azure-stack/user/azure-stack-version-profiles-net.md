@@ -70,12 +70,12 @@ To use the .NET Azure SDK with Azure Stack, you must supply the following values
 
 | Value                     | Environment variables   | Description                                                                                                             |
 |---------------------------|-------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| Tenant ID                 | AZURE_TENANT_ID       | The value of your Azure Stack [*tenant ID*][].                                                                          |
-| Client ID                 | AZURE_CLIENT_ID       | The service principal application ID saved when the service principal was created in the previous section of this article. |
-| Subscription ID           | AZURE_SUBSCRIPTION_ID | The [*subscription ID*][] is how you access offers in Azure Stack.                                                      |
-| Client Secret             | AZURE_CLIENT_SECRET   | The service principal application secret saved when the service principal was created.                                      |
-| Resource Manager Endpoint | ARM_ENDPOINT           | See [*the Azure Stack Resource Manager endpoint*][].                                                                    |
-| Location                  | RESOURCE_LOCATION     | Location for Azure Stack.
+| Tenant ID                 | `AZURE_TENANT_ID `      | The value of your Azure Stack [*tenant ID*][].                                                                          |
+| Client ID                 | `AZURE_CLIENT_ID `      | The service principal app ID saved when the service principal was created in the previous section of this article. |
+| Subscription ID           | `AZURE_SUBSCRIPTION_ID` | The [*subscription ID*][] is how you access offers in Azure Stack.                                                      |
+| Client Secret             | `AZURE_CLIENT_SECRET`   | The service principal app secret saved when the service principal was created.                                      |
+| Resource Manager Endpoint | `ARM_ENDPOINT`          | See [*the Azure Stack Resource Manager endpoint*][].                                                                    |
+| Location                  | `RESOURCE_LOCATION`     | Location for Azure Stack.
 
 To find the Tenant ID for your Azure Stack, follow the instructions found [here](../operator/azure-stack-csp-ref-operations.md). To set your environment variables, do the following steps:
 
@@ -89,7 +89,7 @@ Set Azure_Tenant_ID=Your_Tenant_ID
 
 ### MacOS, Linux, and Unix-based systems
 
-In Unix based systems, you can use the following command:
+In Unix based systems, use the following command:
 
 ```shell
 Export Azure_Tenant_ID=Your_Tenant_ID
@@ -97,9 +97,9 @@ Export Azure_Tenant_ID=Your_Tenant_ID
 
 ### The Azure Stack Resource Manager endpoint
 
-The Microsoft Azure Resource Manager is a management framework that allows administrators to deploy, manage, and monitor Azure resources. Azure Resource Manager can handle these tasks as a group, rather than individually, in a single operation.
+The Microsoft Azure Resource Manager is a management framework that allows admins to deploy, manage, and monitor Azure resources. Azure Resource Manager can handle these tasks as a group, rather than individually, in a single operation.
 
-You can get the metadata information from the Resource Manager endpoint. The endpoint returns a JSON file with the information required to run your code.
+You can get the metadata info from the Resource Manager endpoint. The endpoint returns a JSON file with the info required to run your code.
 
 Note the following considerations:
 
