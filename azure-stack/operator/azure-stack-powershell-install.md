@@ -49,7 +49,7 @@ To check your version, run **$PSVersionTable.PSVersion** and compare the **Major
 Validate if PSGallery is registered as a repository.
 
 > [!Note]  
-> This step requires Internet access.
+> This step requires internet access.
 
 Open an elevated PowerShell prompt, and run the following cmdlets:
 
@@ -126,19 +126,19 @@ Get-Module -Name "Azs*" -ListAvailable
 
 If the installation is successful, the AzureRM and AzureStack modules are displayed in the output.
 
-## 5. Disconnected: Install PowerShell without an Internet connection
+## 5. Disconnected: Install PowerShell without an internet connection
 
-In a disconnected scenario, you must first download the PowerShell modules to a machine that has Internet connectivity, and then transfer them to the Azure Stack Development Kit for installation.
+In a disconnected scenario, you first download the PowerShell modules to a machine that has internet connectivity, and then transfer them to the Azure Stack Development Kit (ASDK) for installation.
 
-Sign in to a computer with Internet connectivity and use the following scripts to download the Azure Resource Manager and Azure Stack packages, depending on your version of Azure Stack.
+Sign in to a computer with internet connectivity and use the following scripts to download the Azure Resource Manager and Azure Stack packages, depending on your version of Azure Stack.
 
 Installation has four steps:
 
-1. Install Azure Stack PowerShell to a connected machine
-2. Enable additional storage features
-3. Transport the PowerShell packages to your disconnected workstation
+1. Install Azure Stack PowerShell to a connected machine.
+2. Enable additional storage features.
+3. Transport the PowerShell packages to your disconnected workstation.
 4. Manually bootstrap the NuGet provider on your disconnected workstation.
-4. Confirm the installation of PowerShell
+5. Confirm the installation of PowerShell.
 
 ### Install Azure Stack PowerShell
 
@@ -168,7 +168,7 @@ Installation has four steps:
     > The Azure Stack module version 1.7.1 is a breaking change. To migrate from AzureStack 1.6.0 please refer to the [migration guide](https://github.com/Azure/azure-powershell/tree/AzureRM/documentation/migration-guides/Stack).
 
     > [!NOTE]
-    > On machines without an Internet connection, we recommend executing the following cmdlet for disabling the telemetry data collection. You may experience a performance degradation of the cmdlets without disabling the telemetry data collection. This is applicable only for the machines without internet connections
+    > On machines without an internet connection, we recommend executing the following cmdlet for disabling the telemetry data collection. You may experience a performance degradation of the cmdlets without disabling the telemetry data collection. This is applicable only for the machines without internet connections
     > ```powershell
     > Disable-AzureRmDataCollection
     > ```
@@ -179,9 +179,9 @@ Installation has four steps:
 
 2. Sign in to the disconnected workstation and copy the packages from the USB device to a location on the workstation.
 
-3. Manually bootstrap the NuGet provider on your disconnected workstation. For instructions, see [Manually bootstrapping the NuGet provider on a machine that is not connected to the Internet](https://docs.microsoft.com/powershell/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet).
+3. Manually bootstrap the NuGet provider on your disconnected workstation. For instructions, see [Manually bootstrapping the NuGet provider on a machine that isn't connected to the internet](https://docs.microsoft.com/powershell/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet).
 
-4. Now register this location as the default repository and install the AzureRM and AzureStack modules from this repository:
+4. Register this location as the default repository and install the AzureRM and AzureStack modules from this repository:
 
    ```powershell
    # requires -Version 5
@@ -210,7 +210,7 @@ Get-Module -Name "Azs*" -ListAvailable
 
 ## 6. Configure PowerShell to use a proxy server
 
-In scenarios that require a proxy server to access the Internet, you must first configure PowerShell to use an existing proxy server:
+In scenarios that require a proxy server to access the internet, you first configure PowerShell to use an existing proxy server:
 
 1. Open an elevated PowerShell prompt.
 2. Run the following commands:
