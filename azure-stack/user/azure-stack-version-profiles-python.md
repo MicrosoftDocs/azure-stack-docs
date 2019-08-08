@@ -1,6 +1,6 @@
 ---
-title: Using API version profiles with Python in Azure Stack | Microsoft Docs
-description: Learn about using API version profiles with Python in Azure Stack.
+title: Use API version profiles with Python in Azure Stack | Microsoft Docs
+description: Learn how to use API version profiles with Python in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -24,7 +24,7 @@ ms.lastreviewed: 05/16/2019
 
 ## Python and API version profiles
 
-The Python SDK supports API version profiles to target different cloud platforms such as Azure Stack and global Azure. You can use API profiles in creating solutions for a hybrid cloud. The Python SDK supports the following API profiles:
+The Python SDK supports API version profiles to target different cloud platforms such as Azure Stack and global Azure. Use API profiles in creating solutions for a hybrid cloud. The Python SDK supports the following API profiles:
 
 - **latest**  
     This profile targets the most recent API versions for all service providers in the Azure Platform.
@@ -35,7 +35,7 @@ The Python SDK supports API version profiles to target different cloud platforms
 - **2017-03-09-profile**  
     This profile targets the most compatible API versions of the resource providers supported by Azure Stack.
 
-   For more information about API profiles and Azure Stack, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md).
+   For more info on API profiles and Azure Stack, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md).
 
 ## Install the Azure Python SDK
 
@@ -43,7 +43,7 @@ The Python SDK supports API version profiles to target different cloud platforms
 2. For instructions on how install the Python SDK, see [Azure for Python developers](/python/azure/python-sdk-azure-install?view=azure-python).
 3. If not available, create a subscription and save the subscription ID to use later. For instructions on creating a subscription, see [Create subscriptions to offers in Azure Stack](../operator/azure-stack-subscribe-plan-provision-vm.md).
 4. Create a service principal and save its ID and secret. For instructions on how to create a service principal for Azure Stack, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md).
-5. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign role to service principal, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md).
+5. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign a role to your service principal, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md).
 
 ## Prerequisites
 
