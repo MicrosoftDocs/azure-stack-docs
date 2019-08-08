@@ -47,30 +47,30 @@ The Python SDK supports API version profiles to target different cloud platforms
 
 ## Prerequisites
 
-In order to use the Python Azure SDK with Azure Stack, you must supply the following values, and then set values with environment variables. See the instructions after the table for your operating system on setting the environment variables.
+In order to use the Python Azure SDK with Azure Stack, you must supply the following values, and then set values with environment variables. To set the environmental variables, see the instructions following the table for your specific operating system.
 
 | Value | Environment variables | Description |
 |---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
 | Tenant ID | AZURE_TENANT_ID | The value of your Azure Stack [tenant ID](../operator/azure-stack-identity-overview.md). |
-| Client ID | AZURE_CLIENT_ID | The service principal application ID saved when service principal was created in the previous section of this article. |
+| Client ID | AZURE_CLIENT_ID | The service principal app ID saved when service principal was created in the previous section of this article. |
 | Subscription ID | AZURE_SUBSCRIPTION_ID | The [subscription ID](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) is how you access offers in Azure Stack. |
-| Client Secret | AZURE_CLIENT_SECRET | The service principal application secret saved when the service principal was created. |
+| Client Secret | AZURE_CLIENT_SECRET | The service principal app secret saved when the service principal was created. |
 | Resource Manager Endpoint | ARM_ENDPOINT | See the [Azure Stack Resource Manager endpoint](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint). |
 | Resource Location | AZURE_RESOURCE_LOCATION | The resource location of your Azure Stack Environment.
 
 ### Trust the Azure Stack CA root certificate
 
-If you are using the ASDK, you will need to trust the CA root certificate on your remote machine. You will not need to do this with the integrated systems.
+If you're using the ASDK, you need to trust the CA root certificate on your remote machine. You don't need to trust the CA root certificate with the integrated systems.
 
 #### Windows
 
-1. Find the python certificate store location on your machine. The location may vary depending on where you have installed Python. Open a cmd prompt or an elevated PowerShell prompt, and type the following command:
+1. Find the python certificate store location on your machine. The location may vary depending on where you installed Python. Open a cmd prompt or an elevated PowerShell prompt, and type the following command:
 
     ```PowerShell  
       python -c "import certifi; print(certifi.where())"
     ```
 
-    Make a note of the certificate store location. For example, *~/lib/python3.5/site-packages/certifi/cacert.pem*. Your particular path will depend on your OS and the version of Python that you have installed.
+    Make a note of the certificate store location. For example, *~/lib/python3.5/site-packages/certifi/cacert.pem*. Your particular path depends on your OS and the version of Python that you have installed.
 
 2. Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
 
@@ -105,7 +105,7 @@ If you are using the ASDK, you will need to trust the CA root certificate on you
     ```
 
 > [!NOTE]  
-> If you are using virtualenv for developing with Python SDK as mentioned below, you will need to add the above cert to your virtual environment's cert store as well. The path might look similar to: "..\mytestenv\Lib\site-packages\certifi\cacert.pem"
+> If you're using virtualenv for developing with Python SDK as mentioned below, you need to add the above cert to your virtual environment's cert store. The path might look similar to: "..\mytestenv\Lib\site-packages\certifi\cacert.pem"
 
 
 
@@ -113,32 +113,32 @@ If you are using the ASDK, you will need to trust the CA root certificate on you
 
 Some of the code samples available for Azure Stack using Python SDK are:
 
-- [Manage Resources and Resource Groups](https://azure.microsoft.com/resources/samples/hybrid-resourcemanager-python-manage-resources/).
-- [Manage Storage Account](https://azure.microsoft.com/resources/samples/hybrid-storage-python-manage-storage-account/).
-- [Manage Virtual Machines](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/). (Sample that uses 2019-03-01-hybrid which targets the latest API versions supported by Azure Stack)
+- [Manage Resources and Resource Groups](https://azure.microsoft.com/resources/samples/hybrid-resourcemanager-python-manage-resources/)
+- [Manage Storage Account](https://azure.microsoft.com/resources/samples/hybrid-storage-python-manage-storage-account/)
+- [Manage Virtual Machines](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/) (This sample uses 2019-03-01-hybrid which targets the latest API versions supported by Azure Stack)
 
 ## Python manage virtual machine sample
 
-You can use the following code sample to perform common management tasks for virtual machines in your Azure Stack. The code sample shows you to:
+Use the following code sample to perform common management tasks for virtual machines (VMs) in your Azure Stack. The code sample shows you to:
 
-- Create virtual machines:
-  - Create a Linux virtual machine
-  - Create a Windows virtual machine
-- Update a virtual machine:
+- Create VMs:
+  - Create a Linux VM
+  - Create a Windows VM
+- Update a VM:
   - Expand a drive
-  - Tag a virtual machine
+  - Tag a VM
   - Attach data disks
   - Detach data disks
-- Operate a virtual machine:
-  - Start a virtual machine
-  - Stop a virtual machine
-  - Restart a virtual machine
-- List virtual machines
-- Delete a virtual machine
+- Operate a VM:
+  - Start a VM
+  - Stop a VM
+  - Restart a VM
+- List VMs
+- Delete a VM
 
 To review the code that performs these operations, see the **run_example()** function in the Python script **example.py** in the GitHub repo [Hybrid-Compute-Python-Manage-VM](https://github.com/Azure-Samples/Hybrid-Compute-Python-Manage-VM).
 
-Each operation is clearly labeled with a comment and a print function. The examples are not necessarily in the order shown in this list.
+Each operation is clearly labeled with a comment and a print function. The examples aren't necessarily in the order shown in this list.
 
 ## Run the Python sample
 
