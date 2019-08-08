@@ -1,6 +1,6 @@
 ---
-title: Using API version profiles with Ruby in Azure Stack | Microsoft Docs
-description: Learn about using API version profiles with Ruby in Azure Stack.
+title: Use API version profiles with Ruby in Azure Stack | Microsoft Docs
+description: Learn how to use API version profiles with Ruby in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -26,17 +26,17 @@ ms.lastreviewed: 05/16/2019
 
 ## Ruby and API version profiles
 
-The Ruby SDK for the Azure Stack Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include compute, virtual networks, and storage with the Ruby language. API profiles in the Ruby SDK enable hybrid cloud development by helping you switch between global Azure resources and resources on Azure Stack.
+The Ruby SDK for the Azure Stack Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Virtual Networks, and Storage with the Ruby language. API profiles in the Ruby SDK enable hybrid cloud development by helping you switch between global Azure resources and resources on Azure Stack.
 
 An API profile is a combination of resource providers and service versions. You can use an API profile to combine different resource types.
 
 - To use the latest versions of all the services, use the **Latest** profile of the Azure SDK rollup gem.
 - To use the services compatible with the Azure Stack, use the **V2019_03_01_Hybrid** or **V2018_03_01** profile of the Azure SDK rollup gem.
-- To use the latest **api-version** of a service, use the **Latest** profile of the specific gem. For example, if you would like to use the latest **api-version** of compute service alone, use the **Latest** profile of the **Compute** gem.
+- To use the latest **api-version** of a service, use the **Latest** profile of the specific gem. For example, to use the latest **api-version** of compute service alone, use the **Latest** profile of the **Compute** gem.
 - To use a specific **api-version** for a service, use the specific API versions defined inside the gem.
 
 > [!NOTE]
-> You can combine all of the options in the same application.
+> You can combine all of the options in the same app.
 
 ## Install the Azure Ruby SDK
 
@@ -48,7 +48,7 @@ An API profile is a combination of resource providers and service versions. You 
     `Gem install bundler`
 - If not available, create a subscription and save the subscription ID to be used later. Instructions to create a subscription are [here](../operator/azure-stack-subscribe-plan-provision-vm.md).
 - Create a service principal and save its ID and secret. Instructions to create a service principal for Azure Stack are [here](../operator/azure-stack-create-service-principals.md).
-- Make sure your service principal has contributor/owner role on your subscription. Instructions on how to assign role to service principal are [here](../operator/azure-stack-create-service-principals.md).
+- Make sure your service principal has the contributor/owner role assigned on your subscription. Instructions on how to assign role to service principal are [here](../operator/azure-stack-create-service-principals.md).
 
 ## Install the Rubygem packages
 
