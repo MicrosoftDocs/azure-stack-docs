@@ -142,9 +142,9 @@ Each operation is clearly labeled with a comment and a print function. The examp
 
 ## Run the Python sample
 
-1. If you have not already, [install Python](https://www.python.org/downloads/). This sample (and the SDK) is compatible with Python 2.7, 3.4, 3.5 and 3.6.
+1. [Install Python](https://www.python.org/downloads/) if not already installed. This sample (and the SDK) is compatible with Python 2.7, 3.4, 3.5, and 3.6.
 
-2. General recommendation for Python development is to use a Virtual Environment. For more information, see the [Python documentation](https://docs.python.org/3/tutorial/venv.html).
+2. General recommendation for Python development is to use a Virtual Environment. For more info, see the [Python documentation](https://docs.python.org/3/tutorial/venv.html).
 
 3. Install and initialize the virtual environment with the "venv" module on Python 3 (you must install [virtualenv](https://pypi.python.org/pypi/virtualenv) for Python 2.7):
 
@@ -196,4 +196,5 @@ Each operation is clearly labeled with a comment and a print function. The examp
 - [Azure Python Development Center](https://azure.microsoft.com/develop/python/)
 - [Azure Virtual Machines documentation](https://azure.microsoft.com/services/virtual-machines/)
 - [Learning Path for Virtual Machines](/learn/paths/deploy-a-website-with-azure-virtual-machines/)
-- If you don't have a Microsoft Azure subscription, you can get a FREE trial account [here](https://go.microsoft.com/fwlink/?LinkId=330212).
+
+If you don't have a Microsoft Azure subscription, you can get a FREE trial account [here](https://go.microsoft.com/fwlink/?LinkId=330212).
