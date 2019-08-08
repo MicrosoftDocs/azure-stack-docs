@@ -73,7 +73,7 @@ If Azure Stack is in a disconnected mode and without internet connectivity, you 
 The marketplace syndication tool can also be used in a connected scenario. 
 
 There are two parts to this scenario:
-- **Part 1:** Download from Azure Marketplace. On the computer with internet access you configure PowerShell, download the syndication tool, and then download items form the Azure Marketplace.  
+- **Part 1:** Download from Azure Marketplace. On the computer with internet access you configure PowerShell, download the syndication tool, and then download items from the Azure Marketplace.  
 - **Part 2:** Upload and publish to the Azure Stack Marketplace. You move the files you downloaded to your Azure Stack environment, import them to Azure Stack, and then publish them to the Azure Stack Marketplace.  
 
 
