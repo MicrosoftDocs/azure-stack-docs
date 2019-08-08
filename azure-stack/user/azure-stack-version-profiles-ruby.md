@@ -70,7 +70,7 @@ The Azure Resource Manager Ruby SDK is in preview and will likely have breaking 
 
 ## Use the azure_sdk gem
 
-The gem, **azure_sdk**, is a rollup of all the supported gems in the Ruby SDK. This gem consists of a **Latest** profile, which supports the latest version of all services. It includes versioned profiles **V2017_03_09** and **V2019_03_01_Hybrid**, which are built for Azure Stack.
+The **azure_sdk** gem is a rollup of all the supported gems in the Ruby SDK. This gem consists of a **Latest** profile, which supports the latest version of all services. It includes versioned profiles **V2017_03_09** and **V2019_03_01_Hybrid**, which are built for Azure Stack.
 
 You can install the azure_sdk rollup gem with the following command:  
 
@@ -80,21 +80,21 @@ gem install 'azure_sdk'
 
 ## Prerequisites
 
-In order to use the Ruby Azure SDK with Azure Stack, you must supply the following values, and then set the values with environment variables. See the instructions after the table for your operating system on setting the environmental variables.
+To use the Ruby Azure SDK with Azure Stack, you must supply the following values, and then set the values with environment variables. To set the environmental variables, see the instructions following the table for your specific operating system.
 
 | Value | Environment variables | Description |
 | --- | --- | --- |
-| Tenant ID | AZURE_TENANT_ID | The value of your Azure Stack [tenant ID](../operator/azure-stack-identity-overview.md). |
-| Client ID | AZURE_CLIENT_ID | The service principal application ID saved when service principal was created on the previous section of this document.  |
-| Subscription ID | AZURE_SUBSCRIPTION_ID | The [subscription ID](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) is how you access offers in Azure Stack. |
-| Client Secret | AZURE_CLIENT_SECRET | The service principal application Secret saved when service principal was created. |
-| Resource Manager Endpoint | ARM_ENDPOINT | See [The Azure Stack Resource Manager endpoint](#the-azure-stack-resource-manager-endpoint).  |
+| Tenant ID | `AZURE_TENANT_ID` | The value of your Azure Stack [tenant ID](../operator/azure-stack-identity-overview.md). |
+| Client ID | `AZURE_CLIENT_ID` | The service principal app ID saved when service principal was created on the previous section of this document.  |
+| Subscription ID | `AZURE_SUBSCRIPTION_ID` | The [subscription ID](../operator/azure-stack-plan-offer-quota-overview.md#subscriptions) is how you access offers in Azure Stack. |
+| Client Secret | `AZURE_CLIENT_SECRET` | The service principal app Secret saved when service principal was created. |
+| Resource Manager Endpoint | `ARM_ENDPOINT` | See [The Azure Stack Resource Manager endpoint](#the-azure-stack-resource-manager-endpoint).  |
 
 ### The Azure Stack Resource Manager endpoint
 
-The Microsoft Azure Resource Manager is a management framework that allows administrators to deploy, manage and monitor Azure resources. Azure Resource Manager can handle these tasks as a group, rather than individually, in a single operation.
+The Microsoft Azure Resource Manager is a management framework that allows admins to deploy, manage, and monitor Azure resources. Azure Resource Manager can handle these tasks as a group, rather than individually, in a single operation.
 
-You can get the metadata information from the Resource Manager endpoint. The endpoint returns a JSON file with the information required to run your code.
+You can get the metadata info from the Resource Manager endpoint. The endpoint returns a JSON file with the info required to run your code.
 
  > [!NOTE]  
  > The **ResourceManagerUrl** in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/`
@@ -118,29 +118,29 @@ You can get the metadata information from the Resource Manager endpoint. The end
 ### Set environmental variables
 
 **Microsoft Windows**  
-To set the environment variables, in a Windows command prompt, use the following format:  
+To set the environment variables, use the following format in a Windows command prompt:  
 `set AZURE_TENANT_ID=<YOUR_TENANT_ID>`
 
-**macOS, Linux, and Unix-based systems**
-In Unix based systems, you can use the following command:  
+**macOS, Linux, and Unix-based systems** <br>
+In Unix based systems, use the following command:  
 `export AZURE_TENANT_ID=<YOUR_TENANT_ID>`
 
 ## Existing API profiles
 
 The Azure_sdk rollup gem has the following three profiles:
 
-1. **V2019_03_01_Hybrid**
+1. **V2019_03_01_Hybrid** <br>
   Profile built for Azure Stack. Use this profile for utilizing all the latest versions of services available in Azure Stack stamp version 1904 or later.
 1. **V2017_03_09**  
   Profile built for Azure Stack. Use this profile for services to be most compatible with the Azure Stack stamp version 1808 or earlier.
 1. **Latest**  
   Profile consists of latest versions of all services. Use the latest versions of all the services.
 
-For more information about Azure Stack and API profiles, see the [Summary of API profiles](azure-stack-version-profiles.md#summary-of-api-profiles).
+For more info on Azure Stack and API profiles, see the [Summary of API profiles](azure-stack-version-profiles.md#summary-of-api-profiles).
 
 ## Azure Ruby SDK API profile usage
 
-You can use the following code to instantiate a profile client. This parameter is only required for Azure Stack or other private clouds. Global Azure already has these settings by default.
+Use the following code to instantiate a profile client. This parameter is only required for Azure Stack or other private clouds. Global Azure already has these settings by default.
 
 ```Ruby  
 active_directory_settings = get_active_directory_settings(ENV['ARM_ENDPOINT'])
@@ -163,7 +163,7 @@ options = {
 client = Azure::Resources::Profiles::V2019_03_01_Hybrid::Mgmt::Client.new(options)
 ```
 
-The profile client can be used to access individual resource providers, such as compute, storage, and network:
+The profile client can be used to access individual resource providers, such as Compute, Storage, and Network:
 
 ```Ruby  
 # To access the operations associated with Compute
