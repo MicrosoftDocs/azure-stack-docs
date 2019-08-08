@@ -40,14 +40,14 @@ The Python SDK supports API version profiles to target different cloud platforms
 ## Install the Azure Python SDK
 
 1. Install Git from [the official site](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
-2. For instructions on how install the Python SDK, see [Azure for Python developers](/python/azure/python-sdk-azure-install?view=azure-python).
+2. For instructions on how to install the Python SDK, see [Azure for Python developers](/python/azure/python-sdk-azure-install?view=azure-python).
 3. If not available, create a subscription and save the subscription ID to use later. For instructions on creating a subscription, see [Create subscriptions to offers in Azure Stack](../operator/azure-stack-subscribe-plan-provision-vm.md).
 4. Create a service principal and save its ID and secret. For instructions on how to create a service principal for Azure Stack, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md).
 5. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign a role to your service principal, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md).
 
 ## Prerequisites
 
-In order to use the Python Azure SDK with Azure Stack, you must supply the following values, and then set values with environment variables. To set the environmental variables, see the instructions following the table for your specific operating system.
+To use the Python Azure SDK with Azure Stack, you must supply the following values and then set values with environment variables. To set the environmental variables, see the instructions following the table for your specific operating system.
 
 | Value | Environment variables | Description |
 |---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
@@ -182,7 +182,7 @@ Each operation is clearly labeled with a comment and a print function. The examp
     export AZURE_RESOURCE_LOCATION={your AzureStack Resource location}
     ```
 
-8. In order to run this sample, Ubuntu 16.04-LTS and WindowsServer 2012-R2-DataCenter images must be present in the Azure Stack marketplace. These can be either [downloaded from Azure](../operator/azure-stack-download-azure-marketplace-item.md), or added to the [Platform Image Repository](../operator/azure-stack-add-vm-image.md).
+8. To run this sample, Ubuntu 16.04-LTS and WindowsServer 2012-R2-DataCenter images must be present in the Azure Stack marketplace. These images can be either [downloaded from Azure](../operator/azure-stack-download-azure-marketplace-item.md), or added to the [Platform Image Repository](../operator/azure-stack-add-vm-image.md).
 
 9. Run the sample:
 
