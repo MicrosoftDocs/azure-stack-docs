@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/05/2019
+ms.date: 08/09/2019
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 07/31/2019
@@ -52,6 +52,8 @@ The [Azure Stack Marketplace items](azure-stack-marketplace-azure-items.md) arti
 - 08/05/2019: Review Board
 
 - 08/05/2019: Composr
+
+- 08/09/2019: Oracle Linux
 
 ## Deprecated Marketplace items
 
