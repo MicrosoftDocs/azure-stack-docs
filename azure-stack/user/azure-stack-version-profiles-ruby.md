@@ -50,9 +50,9 @@ An API profile is a combination of resource providers and service versions. You 
 - Create a service principal and save its ID and secret. Instructions to create a service principal for Azure Stack are [here](../operator/azure-stack-create-service-principals.md).
 - Make sure your service principal has the contributor/owner role assigned on your subscription. Instructions on how to assign role to service principal are [here](../operator/azure-stack-create-service-principals.md).
 
-## Install the Rubygem packages
+## Install the Rubyem packages
 
-You can install the Azure Rubygem packages directly.
+You can install the Azure RubyGem packages directly.
 
 ```Ruby  
 gem install azure_mgmt_compute
