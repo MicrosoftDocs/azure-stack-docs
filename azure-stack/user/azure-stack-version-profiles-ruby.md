@@ -201,18 +201,18 @@ end
 
 ## Samples using API profiles
 
-You can use the following samples found on GitHub as references for creating solutions with Ruby and Azure Stack API profiles:
+Use the following samples found on GitHub as references for creating solutions with Ruby and Azure Stack API profiles:
 
-- [Manage Azure resources and resource groups with Ruby](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Resources-And-Groups)
+- [Manage Azure resources and resource groups with Ruby](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Resources-And-Groups).
 - [Manage virtual machines using Ruby](https://github.com/Azure-Samples/Hybrid-Compute-Ruby-Manage-VM) (Sample that uses 2019-03-01-hybrid profile to target the latest API versions supported by Azure Stack).
-- [Deploy an SSH Enabled VM with a Template in Ruby](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Template-Deployment)
+- [Deploy an SSH Enabled VM with a Template in Ruby](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Template-Deployment).
 
 ### Sample Resource Manager and groups
 
-To run the sample, ensure that you have installed Ruby. If you are using Visual Studio Code, download the Ruby SDK extension as well.
+To run the sample, ensure that you've installed Ruby. If you're using Visual Studio Code, download the Ruby SDK extension as well.
 
 > [!NOTE]  
-> You can get the repository for the sample at "[Manage Azure resources and resource groups with Ruby](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Resources-And-Groups)".
+> Get the repository for the sample at "[Manage Azure resources and resource groups with Ruby](https://github.com/Azure-Samples/Hybrid-Resource-Manager-Ruby-Resources-And-Groups)".
 
 1. Clone the repository:
 
@@ -240,18 +240,18 @@ To run the sample, ensure that you have installed Ruby. If you are using Visual 
 
    Set the following environment variables using the information you retrieved from the Service Principal you created.
 
-   - export AZURE_TENANT_ID={your tenant ID}
-   - export AZURE_CLIENT_ID={your client ID}
-   - export AZURE_CLIENT_SECRET={your client secret}
-   - export AZURE_SUBSCRIPTION_ID={your subscription ID}
-   - export ARM_ENDPOINT={your Azure Stack Resource Manager URL}
+   - `export AZURE_TENANT_ID={your tenant ID}`
+   - `export AZURE_CLIENT_ID={your client ID}`
+   - `export AZURE_CLIENT_SECRET={your client secret}`
+   - `export AZURE_SUBSCRIPTION_ID={your subscription ID}`
+   - `export ARM_ENDPOINT={your Azure Stack Resource Manager URL}`
 
    > [!NOTE]  
    > On Windows, use set instead of export.
 
 4. Ensure the location variable is set to your Azure Stack location; for example, `LOCAL="local"`.
 
-5. Add the following line of code if you using Azure Stack or other private clouds to target the right active directory endpoints:
+5. Add the following line of code if you're using Azure Stack or other private clouds to target the right active directory endpoints:
 
    ```Ruby  
    active_directory_settings = get_active_directory_settings(ENV['ARM_ENDPOINT'])
