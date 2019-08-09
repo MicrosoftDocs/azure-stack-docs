@@ -1,6 +1,6 @@
 ---
 title: Back up App Service on Azure Stack | Microsoft Docs
-description: Learn how to back uo App Services on Azure Stack.
+description: Learn how to back up App Services on Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: bryanla
