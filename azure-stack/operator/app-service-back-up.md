@@ -29,13 +29,13 @@ This document provides instructions on how to back up App Service on Azure Stack
 > App Service on Azure Stack isn't backed up as part of [Azure Stack infrastructure backup](azure-stack-backup-infrastructure-backup.md). As an Azure Stack Operator, you must take steps to ensure App Service can be successfully recovered if necessary.
 
 Azure App Service on Azure Stack has four main components to consider when planning for disaster recovery:
-1. The resource provider infrastructure; server roles, worker tiers, etc. 
+1. The resource provider infrastructure; server roles, worker tiers, and so on. 
 2. The App Service secrets.
 3. The App Service SQL Server hosting and metering databases.
 4. The App Service user workload content stored in the App Service file share.
 
 ## Back up App Service secrets
-When recovering App Service from backup, you need to provide the App Service keys used by the initial deployment. This information should be saved as soon as App Service is successfully deployed and stored in a safe location. The resource provider infrastructure configuration will be recreated from backup during recovery using App Service recovery PowerShell cmdlets.
+When recovering App Service from backup, you need to provide the App Service keys used by the initial deployment. This information should be saved as soon as App Service is successfully deployed and stored in a safe location. The resource provider infrastructure configuration is recreated from backup during recovery using App Service recovery PowerShell cmdlets.
 
 Use the administration portal to back up app service secrets by following these steps: 
 
@@ -73,7 +73,7 @@ To manually back up these databases while logged into the SQL Server, use the fo
 After all databases have been successfully backed up, copy the .bak files to a safe location along with the App Service secrets info.
 
 ## Back up the App Service file share
-App Service stores tenant app info in the file share. This must be backed up on a regular basis along with the App Service databases so that as little data as possible is lost if a restore is required. 
+App Service stores tenant app info in the file share. This file share must be backed up on a regular basis along with the App Service databases so that as little data as possible is lost if a restore is required.
 
 To back up the App Service file share content, use Azure Backup Server or another method to regularly copy the file share content to the location you've saved all previous recovery info.
 
