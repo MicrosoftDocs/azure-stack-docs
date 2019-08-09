@@ -21,7 +21,7 @@ ms.lastreviewed: 03/23/2019
 
 # Deploy App Service in a highly available configuration
 
-This article shows how to use Azure Stack marketplace items to deploy App Service for Azure Stack in a highly available configuration. In addition to available marketplace items, this solution also uses the [appservice-fileshare-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Quickstart template. This template automates the creation of a highly available infrastructure for hosting the App Service resource provider. App Service is then installed on this highly available VM infrastructure. 
+This article shows you how to use Azure Stack marketplace items to deploy App Service for Azure Stack in a highly available configuration. In addition to available marketplace items, this solution also uses the [appservice-fileshare-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Quickstart template. This template automates the creation of a highly available infrastructure for hosting the App Service resource provider. App Service is then installed on this highly available VM infrastructure. 
 
 ## Deploy the highly available App Service infrastructure VMs
 The [appservice-fileshare-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Quickstart template simplifies the deployment of App Service in a highly available configuration. It should be deployed in the Default Provider Subscription. 
