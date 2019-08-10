@@ -78,7 +78,7 @@ Use the steps in this section to create a custom deployment using the **appservi
 
 
 ### Record template outputs
-After the template deployment completes successfully, record the template deployment outputs. You will need to provide this information when running the App Service installer. 
+After the template deployment completes successfully, record the template deployment outputs. You need this info when running the App Service installer.
 
 Ensure you record each of these output values:
 - FileSharePath
@@ -91,13 +91,13 @@ Follow these steps to discover the template output values:
 
 1. [!INCLUDE [azs-admin-portal](../includes/azs-admin-portal.md)]
 
-2. In the administration portal, select **Resource groups** and then the name of the resource group you created for the custom deployment (**app-service-ha** in this example). 
+2. In the admin portal, select **Resource groups** and then the name of the resource group you created for the custom deployment (**app-service-ha** in this example). 
 
 3. Click **Deployments** and select **Microsoft.Template**.
 
     ![Microsoft.Template deployment](media/app-service-deploy-ha/6.png)
 
-4. After selecting the **Microsoft.Template** deployment, select **Outputs** and record the template parameter output. This information will be required when deploying App Service.
+4. After selecting the **Microsoft.Template** deployment, select **Outputs** and record the template parameter output. This info is required when deploying App Service.
 
     ![Parameter output](media/app-service-deploy-ha/7.png)
 
