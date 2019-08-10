@@ -105,7 +105,7 @@ Follow these steps to discover the template output values:
 ## Deploy App Service in a highly available configuration
 Follow the steps in this section to deploy App Service for Azure Stack in a highly available configuration based on the [appservice-fileshare-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Quickstart template. 
 
-After you install the App Service resource provider, you can include it in your offers and plans. Users can then subscribe to get the service and start creating applications.
+After you install the App Service resource provider, you can include it in your offers and plans. Users can then subscribe to get the service and start creating apps.
 
 > [!IMPORTANT]
 > Before you run the resource provider installer, make sure that you've read the release notes, which accompany each App Service release, to learn about new functionality, fixes, and any known issues which could affect your deployment.
@@ -114,15 +114,15 @@ After you install the App Service resource provider, you can include it in your 
 Before you can run the App Service installer, several steps are required as described in the [Before you get started with App Service on Azure Stack article](azure-stack-app-service-before-you-get-started.md):
 
 > [!TIP]
-> Not all steps described in the before you get started article are required because the template deployment configures the infrastructure VMs for you. 
+> Not all steps described in the [Before you get started with App Service article](azure-stack-app-service-before-you-get-started.md) are required because the template deployment configures the infrastructure VMs for you.
 
 - [Download the App Service installer and helper scripts](azure-stack-app-service-before-you-get-started.md#download-the-installer-and-helper-scripts).
 - [Download the latest custom script extension to the Azure Stack marketplace](azure-stack-app-service-before-you-get-started.md#syndicate-the-custom-script-extension-from-the-marketplace).
 - [Generate required certificates](azure-stack-app-service-before-you-get-started.md#get-certificates).
 - Create the ID Application based on the identify provider you've chosen for Azure Stack. An ID Application can be made for either [Azure AD](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-application) or [Active Directory Federation Services](azure-stack-app-service-before-you-get-started.md#create-an-active-directory-federation-services-application) and record the application ID.
-- Ensure that you have added the Windows Server 2016 Datacenter image to the Azure Stack marketplace. This is required for App Service installation.
+- Ensure that you have added the Windows Server 2016 Datacenter image to the Azure Stack marketplace. This image is required for App Service installation.
 
-### Deploy App Service in highly available configuration
+### Steps for for App Service deployment
 Installing the App Service resource provider takes at least an hour. The length of time needed depends on how many role instances you deploy. During the deployment, the installer runs the following tasks:
 
 - Create a blob container in the specified Azure Stack storage account.
@@ -130,43 +130,43 @@ Installing the App Service resource provider takes at least an hour. The length 
 - Register the App Service resource provider.
 - Register the App Service gallery items.
 
-To deploy App Service resource provider, follow these steps:
+To deploy the App Service resource provider, follow these steps:
 
-1. Run the previously downloaded App Service installer (**appservice.exe**) as an administrator from a computer that can access the Azure Stack Admin Azure Resource Management Endpoint.
+1. Run the previously downloaded App Service installer (**appservice.exe**) as an admin from a computer that can access the Azure Stack Admin Azure Resource Management Endpoint.
 
 2. Select **Deploy App Service or upgrade to the latest version**.
 
-    ![Deploy or upgrade](media/app-service-deploy-ha/01.png)
+    ![Deploy or upgrade App Service](media/app-service-deploy-ha/01.png)
 
 3. Accept Microsoft licensing terms and click **Next**.
 
-    ![Microsoft licensing terms](media/app-service-deploy-ha/02.png)
+    ![Microsoft licensing terms on App Service](media/app-service-deploy-ha/02.png)
 
 4. Accept non-Microsoft licensing terms and click **Next**.
 
-    ![Non-Microsoft licensing terms](media/app-service-deploy-ha/03.png)
+    ![Non-Microsoft licensing terms on App Service](media/app-service-deploy-ha/03.png)
 
 5. Provide the App Service cloud endpoint configuration for your Azure Stack environment.
 
-    ![App Service cloud endpoint configuration](media/app-service-deploy-ha/04.png)
+    ![App Service cloud endpoint configuration on App Service](media/app-service-deploy-ha/04.png)
 
 6. **Connect** to the Azure Stack subscription to be used for the installation and choose the location. 
 
-    ![Connect to the Azure Stack subscription](media/app-service-deploy-ha/05.png)
+    ![Connect to the Azure Stack subscription on App Service](media/app-service-deploy-ha/05.png)
 
 7. Select **Use existing VNet and Subnets** and the **Resource Group Name** for the resource group used to deploy the highly available template.<br><br>Next, select the virtual network created as part of the template deployment and then select the appropriate role subnets from the drop-down list options. 
 
-    ![Vnet selection](media/app-service-deploy-ha/06.png)
+    ![Vnet selection on App Service on App Service](media/app-service-deploy-ha/06.png)
 
-8. Provide the previously recorded template outputs information for the file share path and file share owner parameters. When finished, click **Next**.
+8. Provide the previously recorded template outputs info for the file share path and file share owner parameters. When finished, click **Next**.
 
-    ![File share output information](media/app-service-deploy-ha/07.png)
+    ![File share output information on App Service](media/app-service-deploy-ha/07.png)
 
-9. Because the machine being used to install App Service is not located on the same VNet as the file server being used to host the App Service file share, you will not be able to resolve the name. **This is expected behavior**.<br><br>Verify that the information entered for the file share UNC path and accounts information is correct and press **Yes** on the alert dialog to continue App Service installation.
+9. Because the machine being used to install App Service isn't located on the same VNet as the file server being used to host the App Service file share, you won't be able to resolve the name. **This is expected behavior**.<br><br>Verify that the info entered for the file share UNC path and accounts info is correct and press **Yes** on the alert dialog to continue App Service installation.
 
-    ![Expected error dialog](media/app-service-deploy-ha/08.png)
+    ![Expected error dialog on App Service](media/app-service-deploy-ha/08.png)
 
-    If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the administration portal and add an outbound security rule with the following properties:
+    If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the admin portal and add an outbound security rule with the following properties:
     - Source: Any
     - Source port range: *
     - Destination: IP Addresses
@@ -181,24 +181,24 @@ To deploy App Service resource provider, follow these steps:
     - Identity application certificate (in the format of **sso.appservice.local.azurestack.external.pfx**)
     - Azure Resource Manager root certificate (**AzureStackCertificationAuthority.cer**)
 
-    ![ID application certificate and root certificate](media/app-service-deploy-ha/008.png)
+    ![ID application certificate and root certificate on App Service](media/app-service-deploy-ha/008.png)
 
-10. Next, provide the remaining required information for the following certificates and click **Next**:
+11. Next, provide the remaining required information for the following certificates and click **Next**:
     - Default Azure Stack SSL certificate (in the format of **_.appservice.local.azurestack.external.pfx**)
     - API SSL certificate (in the format of **api.appservice.local.azurestack.external.pfx**)
     - Publisher certificate (in the form of **ftp.appservice.local.azurestack.external.pfx**) 
 
-    ![Additional configuration certificates](media/app-service-deploy-ha/09.png)
+    ![Additional configuration certificates on App Service](media/app-service-deploy-ha/09.png)
 
-11. Provide the SQL Server connection information using the SQL Server connection information from the high availability template deployment outputs:
+12. Provide the SQL Server connection info using the SQL Server connection info from the high availability template deployment outputs:
 
-    ![SQL Server connection information](media/app-service-deploy-ha/10.png)
+    ![SQL Server connection information on App Service](media/app-service-deploy-ha/10.png)
 
-12. Because the machine being used to install App Service is not located on the same VNet as the SQL server being used to host the App Service databases, you will not be able to resolve the name.  **This is expected behavior**.<br><br>Verify that the information entered for the SQL Server name and accounts information is correct and press **Yes** to continue App Service installation. Click **Next**.
+13. Because the machine being used to install App Service isn't located on the same VNet as the SQL server being used to host the App Service databases, you won't be able to resolve the name.  **This is expected behavior**.<br><br>Verify that the info entered for the SQL Server name and accounts info is correct and press **Yes** to continue App Service installation. Click **Next**.
 
-    ![SQL Server connection information](media/app-service-deploy-ha/11.png)
+    ![SQL Server connection information on App Service](media/app-service-deploy-ha/11.png)
 
-13. Accept the default role configuration values or change to the recommended values and click **Next**.<br><br>We recommend that the default values for the App Service infrastructure role instances be changed as follows for highly available configurations:
+14. Accept the default role configuration values or change to the recommended values and click **Next**.<br><br>We recommend that the default values for the App Service infrastructure role instances be changed as follows for highly available configurations:
 
     |Role|Default|Highly available recommendation|
     |-----|-----|-----|
@@ -209,33 +209,33 @@ To deploy App Service resource provider, follow these steps:
     |Shared Worker Role|1|10|
     |     |     |     |
 
-    ![Infrastructure role instance values](media/app-service-deploy-ha/12.png)
+    ![Infrastructure role instance values on App Service](media/app-service-deploy-ha/12.png)
 
     > [!NOTE]
     > Changing from the default values to those recommended in this tutoral increases the hardware requirements for installing App Service. A total of 26 cores and 46,592 MB of RAM is needed to support the recommended 21 VMs instead of the default 18 cores and 32,256 MB of RAM for 15 VMs.
 
-14. Select the platform image to use for installing the App Service infrastructure VMs and click **Next**:
+15. Select the platform image to use for installing the App Service infrastructure VMs and click **Next**:
 
-    ![Platform image selection](media/app-service-deploy-ha/13.png)
+    ![Platform image selection on App Service](media/app-service-deploy-ha/13.png)
 
-15. Provide App Service infrastructure role credential information to be used and click **Next**:
+16. Provide App Service infrastructure role credential info to be used and click **Next**:
 
-    ![Infrastructure role credentials](media/app-service-deploy-ha/14.png)
+    ![Infrastructure role credentials on App Service](media/app-service-deploy-ha/14.png)
 
-16. Review the information to be used to deploy App Service and click **Next** to begin deployment. 
+17. Review the info to be used to deploy App Service and click **Next** to begin deployment.
 
-    ![Review installation summary](media/app-service-deploy-ha/15.png)
+    ![Review installation summary on App Service](media/app-service-deploy-ha/15.png)
 
-17. Review the App Service deployment progress. This can take over an hour depending on your specific deployment configuration and hardware. After the installer successfully finishes, select **Exit**.
+18. Review the App Service deployment progress. This can take over an hour depending on your specific deployment configuration and hardware. After the installer successfully finishes, select **Exit**.
 
-    ![Setup complete](media/app-service-deploy-ha/16.png)
+    ![Setup complete for App Service](media/app-service-deploy-ha/16.png)
 
 ## Next steps
 
-[Add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) if you have provided the App Service resource provider with a SQL Always On Instance. Synchronize the databases to prevent any loss of service in the event of a database failover.
+[Add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) if you've provided the App Service resource provider with a SQL Always On Instance. Synchronize the databases to prevent any loss of service in the event of a database failover.
 
-[Scale out App Service](azure-stack-app-service-add-worker-roles.md). You might need to add additional App Service infrastructure role workers to meet expected application demand in your environment. By default, App Service on Azure Stack supports free and shared worker tiers. To add other worker tiers, you need to add more worker roles.
+[Scale out App Service](azure-stack-app-service-add-worker-roles.md). You might need to add additional App Service infrastructure role workers to meet expected app demand in your environment. By default, App Service on Azure Stack supports free and shared worker tiers. To add other worker tiers, you need to add more worker roles.
 
 [Configure deployment sources](azure-stack-app-service-configure-deployment-sources.md). Additional configuration is required to support on-demand deployment from multiple source control providers like GitHub, BitBucket, OneDrive, and DropBox.
 
-[Back up App Service](app-service-back-up.md). After successfully deploying, and configuring App Service, you should ensure all components necessary for disaster recovery are backed up to prevent data loss and avoid unnecessary service downtime during recovery operations.
+[Back up App Service](app-service-back-up.md). After successfully deploying and configuring App Service, you should ensure all components necessary for disaster recovery are backed up to prevent data loss and to avoid unnecessary service downtime during recovery operations.
