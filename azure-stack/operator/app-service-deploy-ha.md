@@ -61,18 +61,18 @@ Use the steps in this section to create a custom deployment using the **appservi
 
    ![Select the appservice-fileshare-sqlserver-ha QuickStart template](media/app-service-deploy-ha/2.png)
 
-4. On the **Custom deployment** blade, select **Edit parameters** and scroll down to review the default template values. Modify these values as necessary to provide all required parameter information and then click **OK**.<br><br> At a minimum, provide complex passwords for the ADMINPASSWORD, FILESHAREOWNERPASSWORD, FILESHAREUSERPASSWORD, SQLSERVERSERVICEACCOUNTPASSWORD, and SQLLOGINPASSWORD parameters.
+4. On the **Custom deployment** blade, select **Edit parameters** and scroll down to review the default template values. Modify these values as necessary to provide all required parameter info and then click **OK**.<br><br> At a minimum, provide complex passwords for the `ADMINPASSWORD`, `FILESHAREOWNERPASSWORD`, `FILESHAREUSERPASSWORD`, `SQLSERVERSERVICEACCOUNTPASSWORD`, and `SQLLOGINPASSWORD` parameters.
     
    ![Edit custom deployment parameters](media/app-service-deploy-ha/3.png)
 
-5. On the **Custom deployment** blade, ensure **Default Provider Subscription** is selected as the subscription to use and then create a new resource group, or select an existing resource group, for the custom deployment.<br><br> Next, select the resource group location (**local** for ASDK installations) and then click **Create**. The custom deployment settings will be validated before template deployment starts.
+5. On the **Custom deployment** blade, ensure **Default Provider Subscription** is selected as the subscription to use and then create a new resource group, or select an existing resource group, for the custom deployment.<br><br> Next, select the resource group location (**local** for ASDK installations) and then click **Create**. The custom deployment settings are validated before template deployment starts.
 
     ![Create custom deployment](media/app-service-deploy-ha/4.png)
 
-6. In the administration portal, select **Resource groups** and then the name of the resource group you created for the custom deployment (**app-service-ha** in this example). View the status of the deployment to ensure all deployments have completed successfully.
+6. In the admin portal, select **Resource groups** and then the name of the resource group you created for the custom deployment (**app-service-ha** in this example). View the status of the deployment to ensure all deployments have completed successfully.
 
    > [!NOTE]
-   > The template deployment will take about an hour to complete.
+   > The template deployment takes about an hour to complete.
 
    [![](media/app-service-deploy-ha/5-sm.png "Review template deployment status")](media/app-service-deploy-ha/5-lg.png#lightbox)
 
