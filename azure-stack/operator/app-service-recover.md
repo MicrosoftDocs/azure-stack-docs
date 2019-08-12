@@ -1,6 +1,6 @@
 ---
 title: Recover App Service on Azure Stack | Microsoft Docs
-description: Detailed guidance for Azure Stack App Service disaster recovery
+description: Learn about disaster recovery for App Service on Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: bryanla
