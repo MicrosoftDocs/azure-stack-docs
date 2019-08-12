@@ -62,7 +62,7 @@ net use $source /delete
 In addition to copying the file share contents, you must also reset permissions on the file share itself. To reset permissions, open an admin command prompt on the file server computer and run the **ReACL.cmd** file. The **ReACL.cmd** file is located in the App Service installation files in the **BCDR** directory.
 
 ## Restore App Service roles and services
-After the App Service databases and file share content have been restored, you next need to use PowerShell to restore the App Service roles and services. These steps will restore App Service secrets and service configurations.  
+After the App Service databases and file share content are restored, you next need to use PowerShell to restore the App Service roles and services. These steps will restore App Service secrets and service configurations.  
 
 1. Log into the App Service controller **CN0-VM** VM as **roleadmin** using the password you provided during App Service installation. 
     > [!TIP]
@@ -101,7 +101,7 @@ After the App Service databases and file share content have been restored, you n
 > It's highly recommended to close this PowerShell session when the command completes.
 
 ## Restore Function Apps 
-App Service for Azure Stack doesn't support restoring tenant user apps or data other than file share content. Therefore, these must be backed up and recovered outside of App Service backup and restore operations. If Azure Stack storage was used for Function Apps storage, the following steps should be taken to recover lost data:
+App Service for Azure Stack doesn't support restoring tenant user apps or data other than file share content. All other data must be backed up and recovered outside of App Service backup and restore operations. If Azure Stack storage was used for Function Apps storage, the following steps should be taken to recover lost data:
 
 1. Create a new storage account to be used by the Function App. This storage can be Azure Stack storage, Azure storage, or any compatible storage.
 2. Retrieve the connection string for the storage.
