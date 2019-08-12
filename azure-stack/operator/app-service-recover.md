@@ -66,8 +66,8 @@ After the App Service databases and file share content have been restored, you n
 
 1. Log into the App Service controller **CN0-VM** VM as **roleadmin** using the password you provided during App Service installation. 
     > [!TIP]
-    > You'll need to modify the VM's network security group to allow RDP connections. 
-2. Copy the **SystemSecrets.JSON** file locally to the controller VM. You will need to provide the path to this file as the `$pathToExportedSecretFile` parameter in the next step. 
+    > You need to modify the VM's network security group to allow RDP connections. 
+2. Copy the **SystemSecrets.JSON** file locally to the controller VM. You need to provide the path to this file as the `$pathToExportedSecretFile` parameter in the next step.
 3. Use the following commands in an elevated PowerShell console window to restore App Service roles and services:
 
     ```powershell
@@ -98,14 +98,14 @@ After the App Service databases and file share content have been restored, you n
     ```
 
 > [!TIP]
-> It is highly recommended to close this PowerShell session when the command completes.
+> It's highly recommended to close this PowerShell session when the command completes.
 
 ## Restore Function Apps 
-App Service for Azure Stack does not support restoring tenant user apps or data other than file share content. Therefore, these must be backed up and recovered outside of App Service backup and restore operations. If Azure Stack storage was used for Function Apps storage, the following steps should be taken to recover lost data:
+App Service for Azure Stack doesn't support restoring tenant user apps or data other than file share content. Therefore, these must be backed up and recovered outside of App Service backup and restore operations. If Azure Stack storage was used for Function Apps storage, the following steps should be taken to recover lost data:
 
 1. Create a new storage account to be used by the Function App. This storage can be Azure Stack storage, Azure storage, or any compatible storage.
 2. Retrieve the connection string for the storage.
-3. Open the function portal, browse to the function app.
+3. Open the function portal and browse to the function app.
 4. Browse to the **Platform features** tab and click **Application Settings**.
 5. Change **AzureWebJobsDashboard** and **AzureWebJobsStorage** to the new connection string and click **Save**.
 6. Switch to **Overview**.
