@@ -1,5 +1,5 @@
 ---
-title: Recover App Service on Azure Stack | Microsoft Docs
+title: App Service recovery on Azure Stack | Microsoft Docs
 description: Learn about disaster recovery for App Service on Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -19,16 +19,16 @@ ms.reviewer: anwestg
 ms.lastreviewed: 03/21/2019
 
 ---
-# Recovery of App Service on Azure Stack
+# App Service recovery on Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*  
 
-This document provides instructions about actions to take for App Service disaster recovery.
+This topic provides instructions on what actions to take for App Service disaster recovery.
 
 The following actions must be taken to recover App Service on Azure Stack from backup:
-1.	Restore the App Service databases
-2.	Restore the file server share content
-3.	Restore App Service roles and services
+1. Restore the App Service databases.
+2. Restore the file server share content.
+3. Restore App Service roles and services.
 
 If Azure Stack storage was used for Function Apps storage, then you must also take steps to restore Function Apps.
 
@@ -37,8 +37,8 @@ The App Service SQL Server databases should be restored on a production ready SQ
 
 After [preparing the SQL Server instance](azure-stack-app-service-before-you-get-started.md#prepare-the-sql-server-instance) to host the App Service databases, use these steps to restore databases from backup:
 
-1. Sign in to the SQL Server that will host the recovered App Service databases with administrator permissions.
-2. Use the following commands to restore the App Service databases from a command prompt running with administrator permissions:
+1. Sign in to the SQL Server that will host the recovered App Service databases with admin permissions.
+2. Use the following commands to restore the App Service databases from a command prompt running with admin permissions:
     ```dos
     sqlcmd -U <SQL admin login> -P <SQL admin password> -Q "RESTORE DATABASE appservice_hosting FROM DISK='<full path to backup>' WITH REPLACE"
     sqlcmd -U <SQL admin login> -P <SQL admin password> -Q "RESTORE DATABASE appservice_metering FROM DISK='<full path to backup>' WITH REPLACE"
@@ -46,7 +46,7 @@ After [preparing the SQL Server instance](azure-stack-app-service-before-you-get
 3. Verify that both App Service databases have been successfully restored and exit SQL Server Management Studio.
 
 > [!NOTE]
-> To recover from a failover cluster instance failure, [these instructions](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/recover-from-failover-cluster-instance-failure?view=sql-server-2017). 
+> To recover from a failover cluster instance failure, see [Recover from Failover Cluster Instance Failure](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/recover-from-failover-cluster-instance-failure?view=sql-server-2017). 
 
 ## Restore the App Service file share content
 After [preparing the file server](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server) to host the App Service file share, you need to restore the tenant file share content from backup. You can use whatever method you have available to copy the files into the newly created App Service file share location. Running this example on the file server will use PowerShell and robocopy to connect to a remote share and copy the files to the share:
@@ -59,7 +59,7 @@ robocopy /E $source $destination
 net use $source /delete
 ```
 
-In addition to copying the file share contents, you must also reset permissions on the file share itself. To do this, open an administrative command prompt on the file server computer and run the **ReACL.cmd** file. The **ReACL.cmd** file is located in the App Service installation files in the **BCDR** directory.
+In addition to copying the file share contents, you must also reset permissions on the file share itself. To reset permissions, open an admin command prompt on the file server computer and run the **ReACL.cmd** file. The **ReACL.cmd** file is located in the App Service installation files in the **BCDR** directory.
 
 ## Restore App Service roles and services
 After the App Service databases and file share content have been restored, you next need to use PowerShell to restore the App Service roles and services. These steps will restore App Service secrets and service configurations.  
