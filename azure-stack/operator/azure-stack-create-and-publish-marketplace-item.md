@@ -81,7 +81,7 @@ ms.lastreviewed: 05/07/2019
     ```
 
     > [!NOTE]
-    > The full path to the output package must exist. For example, if the output path is C:\MarketPlaceItem\yourpackage.azpkg, the folder **C:\MarketPlaceItem** must exist.
+    > The full path to the manifest.json file, as well as the output package, must exist. For example, if the output path is C:\MarketPlaceItem\yourpackage.azpkg, the folder **C:\MarketPlaceItem** must exist.
     >
     >
 
