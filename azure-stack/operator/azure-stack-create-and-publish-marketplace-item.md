@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 08/12/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
@@ -77,7 +77,7 @@ ms.lastreviewed: 05/07/2019
 12. To package the folders into an .azpkg file, open a command prompt and run the following command:
 
     ```shell
-    AzureGalleryPackager.exe package -m <path to manifest.json> -o <output location for the package>
+    AzureGalleryPackager.exe package -m <absolute path to manifest.json> -o <output location for the package>
     ```
 
     > [!NOTE]
@@ -154,7 +154,7 @@ The Marketplace uses the following icons:
 | Large |115 px |115 px |Always required |
 | Medium |90 px |90 px |Always required |
 | Small |40 px |40 px |Always required |
-| Screenshot |533 px |32 px |Optional |
+| Screenshot |533 px |324 px |Always required |
 
 ### Categories
 
