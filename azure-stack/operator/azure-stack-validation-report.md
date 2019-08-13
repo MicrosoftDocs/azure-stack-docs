@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 08/13/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/23/2018
@@ -32,7 +32,7 @@ When the tool runs, it logs results to **AzsReadinessCheckerReport.json**. The t
 
 Both files persist the results of subsequent validation checks when run on the same computer. For example, the tool can be run to validate certificates, run again to validate Azure identity, and then a third time to validate registration. The results of all three validations are available in the resulting .json report.  
 
-By default, both files are written to **C:\Users\<username>\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json**.  
+By default, both files are written to **C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json**.  
 
 - Use the `-OutputPath <path>` parameter at the end of the command line to specify a different report location.
 - Use the `-CleanReport` parameter at the end of the command line to clear information about previous runs of the tool from **AzsReadinessCheckerReport.json**.
@@ -43,7 +43,7 @@ To view the report in PowerShell, supply the path to the report as a value for `
 
 For example, to view the report from a PowerShell prompt that is open to the location where the report is located, run the following command:
 
-```shell
+```powershell
 Read-AzsReadinessReport -ReportPath .\AzsReadinessReport.json
 ```
 
