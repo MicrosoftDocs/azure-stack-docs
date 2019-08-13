@@ -51,7 +51,7 @@ Your users want to use services. From their perspective, your main role is to ma
 
 In addition to providing services, you must take care of all the regular duties of an Azure Stack Operator to keep the ASDK up and running. These duties include the following things:
 - Add user accounts for either Azure AD or AD FS deployments.
-- Assign role-based access control (RBAC) roles (this isn't restricted to just administrators).
+- Assign role-based access control (RBAC) roles (this isn't restricted to just admins).
 - Monitor infrastructure health.
 - Manage network and storage resources.
 - Replace failed development kit host computer hardware.
