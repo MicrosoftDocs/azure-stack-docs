@@ -37,7 +37,7 @@ The ASDK offers services using the following VMs hosted on the development kit h
 | **AzS-ERCS01** | Emergency Recovery Console VM. |
 | **AzS-GWY01** | Edge gateway services such as VPN site-to-site connections for tenant networks.|
 | **AzS-NC01** | Network Controller, which manages Azure Stack network services.  |
-| **AzS-SLB01** | Load balancing multiplexer services in Azure Stack for both tenants and Azure Stack infrastructure services.  |
+| **AzS-SLB01** | Load-balancing multiplexer services in Azure Stack for both tenants and Azure Stack infrastructure services.  |
 | **AzS-SQL01** | Internal data store for Azure Stack infrastructure roles.  |
 | **AzS-WAS01** | Azure Stack admin portal and Azure Resource Manager services.|
 | **AzS-WASP01**| Azure Stack user (tenant) portal and Azure Resource Manager services.|
