@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Development Kit architecture | Microsoft Docs
+title: ASDK architecture | Microsoft Docs
 description: Learn about the Azure Stack Development Kit (ASDK) architecture.
 services: azure-stack
 documentationcenter: ''
@@ -21,7 +21,7 @@ ms.lastreviewed: 06/28/2019
 
 
 ---
-# Azure Stack Development Kit architecture
+# ASDK architecture
 The Azure Stack Development Kit (ASDK) is a single-node deployment of Azure Stack running on a single host computer. Edge routing components are installed on the host computer to provide NAT and VPN capabilities for Azure Stack. Azure Stack infrastructure roles run in the Hyper-V layer of the physical host computer.
 
 
