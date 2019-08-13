@@ -24,7 +24,7 @@ ms.lastreviewed: 10/25/2018
 
 To manage resources, you must first connect to the Azure Stack Development Kit (ASDK). In this article, we describe the steps that you take to connect to the ASDK by using the following connection options:
 
-* [Remote Desktop Connection (RDP)](#connect-with-rdp): When you connect by using Remote Desktop Connection, a single user can quickly connect to the development kit.
+* [Remote Desktop Connection (RDP)](#connect-with-rdp): When you connect by using Remote Desktop Connection, a single user can quickly connect to the ASDK.
 * [Virtual Private Network (VPN)](#connect-with-vpn): When you connect by using a VPN, multiple users can concurrently connect to the Azure Stack portals from clients outside the Azure Stack infrastructure. A VPN connection requires some setup.
 
 <a name="connect-with-rdp"></a>
@@ -35,9 +35,9 @@ A single concurrent user can manage resources in the Azure Stack admin portal or
 > [!TIP]
 > This option also enables you to use RDP again while signed into the ASDK host computer to sign in to virtual machines (VMs) created on the ASDK host computer.
 
-1. Open Remote Desktop Connection (mstc.exe) and connect to the development kit host computer IP address using an account authorized to sign in remotely to the ASDK host computer. By default, **AzureStack\AzureStackAdmin** has permissions to remote in to the ASDK host computer.  
+1. Open Remote Desktop Connection (mstc.exe) and connect to the ASDK host computer IP address. Make sure you use an account authorized to sign in remotely to the ASDK host computer. By default, **AzureStack\AzureStackAdmin** has permissions to remote in to the ASDK host computer.  
 
-2. On the development kit host computer, open Server Manager (ServerManager.exe). Select **Local Server**, turn off **IE Enhanced Security Configuration**, and close Server Manager.
+2. On the ASDK host computer, open Server Manager (ServerManager.exe). Select **Local Server**, turn off **IE Enhanced Security Configuration**, and close Server Manager.
 
 3. Sign in to the admin portal as **AzureStack\CloudAdmin** or use other Azure Stack Operator credentials. The ASDK admin portal address is [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external).
 
@@ -78,7 +78,7 @@ Set-ExecutionPolicy RemoteSigned
 # Import the Connect module.
 Import-Module .\Connect\AzureStack.Connect.psm1
 
-# Add the development kit host computer's IP address as the ASDK certificate authority (CA) to the list of trusted hosts. Make sure you update the IP address and password values for your environment.
+# Add the ASDK host computer's IP address as the ASDK certificate authority (CA) to the list of trusted hosts. Make sure you update the IP address and password values for your environment.
 
 $hostIP = "<Azure Stack host IP address>"
 
