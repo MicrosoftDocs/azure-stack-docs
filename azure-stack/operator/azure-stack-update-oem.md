@@ -33,7 +33,7 @@ Starting with Azure Stack update 1905 these OEM package updates are uploaded int
 
 Ask your original equipment manufacturer (OEM) about their specific notification process to ensure OEM package update notifications reach your organization.
 
-Some hardware vendors may require a * hardware vendor VM* that handles the internal firmware update process. For more information, see [Configure hardware vendor VM](#configure-hardware-vendor-VM)
+Some hardware vendors may require a * hardware vendor VM* that handles the internal firmware update process. For more information, see [Configure hardware vendor VM](#configure-hardware-vendor-vm)
 
 ## OEM contact information 
 
