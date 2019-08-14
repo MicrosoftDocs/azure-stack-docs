@@ -1,6 +1,6 @@
 ---
-title: Deploy Azure Stack - PowerShell | Microsoft Docs
-description: In this article, you install the ASDK from the command line using PowerShell.
+title: Deploy ASDK from the command line using Powershell | Microsoft Docs
+description: Learn how to install the ASDK from the command line using PowerShell.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -22,15 +22,17 @@ ms.lastreviewed: 02/08/2019
 
 ---
 
-# Deploy the ASDK from the command line
-The ASDK is a testing and development environment that you can deploy to evaluate and demonstrate Azure Stack features and services. To get it up and running, you need to prepare the environment hardware and run some scripts (this will take several hours). After that, you can sign in to the admin and user portals to start using Azure Stack.
+# Deploy ASDK from the command line using Powershell
 
-## Prerequisites 
-Prepare the development kit host computer. Plan your hardware, software, and network. The computer that hosts the development kit (the development kit host) must meet hardware, software, and network requirements. You must also choose between using Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS). Be sure to comply with these prerequisites before starting your deployment so that the installation process runs smoothly. 
+The Azure Stack Development Kit (ASDK) is a testing and development environment that you can deploy to evaluate and demonstrate Azure Stack features and services. To get it up and running, you need to prepare the environment hardware and run some scripts (this will take several hours). After that, you can sign in to the admin and user portals to start using Azure Stack.
 
-Before you deploy the ASDK, make sure your planned development kit host computer's hardware, operating system, account, and network configurations meet the minimum requirements for installing the ASDK.
+## Prerequisites
 
-**[Review the ASDK deployment planning considerations](asdk-deploy-considerations.md)**
+Prepare the ASDK host computer. Plan your hardware, software, and network. The computer that hosts the ASDK must meet hardware, software, and network requirements. You must also choose between using Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS). Be sure to comply with these prerequisites before starting your deployment so that the installation process runs smoothly. 
+
+Before you deploy the ASDK, make sure your planned ASDK host computer's hardware, operating system, account, and network configurations meet the minimum requirements for installing the ASDK.
+
+**[Review the ASDK deployment requirements and considerations](asdk-deploy-considerations.md)**.
 
 > [!TIP]
 > You can use the [Azure Stack deployment requirements check tool](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) after installing the operating system to confirm that your hardware meets all requirements.
@@ -42,27 +44,27 @@ You can download the deployment package to the development kit host or to anothe
 
 **[Download and extract the Azure Stack Development Kit (ASDK)](asdk-download.md)**
 
-## Prepare the development kit host computer
-Before you can install the ASDK on the host computer, the environment must be prepared and the system configured to boot from VHD. After this step, the development kit host will boot to the Cloudbuilder.vhdx (a virtual hard drive that includes a bootable operating system and the Azure Stack installation files).
+## Prepare the ASDK host computer
+Before you can install the ASDK on the host computer, the environment must be prepared and the system configured to boot from VHD. After this step, the ASDK host will boot to the Cloudbuilder.vhdx (a virtual hard drive that includes a bootable operating system and the Azure Stack installation files).
 
 Use PowerShell to configure the ASDK host computer to boot from CloudBuilder.vhdx. These commands configure your ASDK host computer to boot from the downloaded and extracted Azure Stack virtual harddisk (CloudBuilder.vhdx). After completing these steps, restart the ASDK host computer.
 
 To configure the ASDK host computer to boot from CloudBuilder.vhdx:
 
-  1. Launch a command prompt as administrator.
-  2. Run `bcdedit /copy {current} /d "Azure Stack"`
-  3. Copy (CTRL+C) the CLSID value returned, including the required {}'s. This value is referred to as {CLSID} and will need to be pasted in (CTRL+V or right-click) in the remaining steps.
-  4. Run `bcdedit /set {CLSID} device vhd=[C:]\CloudBuilder.vhdx` 
-  5. Run `bcdedit /set {CLSID} osdevice vhd=[C:]\CloudBuilder.vhdx` 
-  6. Run `bcdedit /set {CLSID} detecthal on` 
-  7. Run `bcdedit /default {CLSID}`
-  8. To verify boot settings, run `bcdedit`. 
-  9. Ensure that the CloudBuilder.vhdx file has been moved to the root of the C:\ drive (C:\CloudBuilder.vhdx) and restart the development kit host computer. When the ASDK host computer is restarted, it should boot from the CloudBuilder.vhdx virtual machine hard drive to begin ASDK deployment. 
+  1. Launch a command prompt as admin.
+  2. Run `bcdedit /copy {current} /d "Azure Stack"`.
+  3. Copy (CTRL+C) the CLSID value returned, including the required curly brackets (`{}`). This value is referred to as `{CLSID}` and needs to be pasted in (CTRL+V or right-click) in the remaining steps.
+  4. Run `bcdedit /set {CLSID} device vhd=[C:]\CloudBuilder.vhdx`.
+  5. Run `bcdedit /set {CLSID} osdevice vhd=[C:]\CloudBuilder.vhdx`.
+  6. Run `bcdedit /set {CLSID} detecthal on`.
+  7. Run `bcdedit /default {CLSID}`.
+  8. To verify boot settings, run `bcdedit`.
+  9. Ensure that the CloudBuilder.vhdx file has been moved to the root of the C:\ drive (`C:\CloudBuilder.vhdx`) and restart the ASDK host computer. When the ASDK host computer is restarted, it should boot from the CloudBuilder.vhdx virtual machine (VM) hard drive to begin ASDK deployment.
 
 > [!IMPORTANT]
-> Ensure that you have direct physical or KVM access to the development kit host computer before restarting it. When the VM first starts, it prompts you to complete Windows Server Setup. Provide the same administrator credentials you used to log into the development kit host computer. 
+> Ensure that you have direct physical or KVM access to the ASDK host computer before restarting it. When the VM first starts, it prompts you to complete Windows Server Setup. Provide the same admin credentials you used to log into the ASDK host computer.
 
-### Prepare the development kit host using PowerShell 
+### Prepare the ASDK host using PowerShell 
 After the development kit host computer successfully boots into the CloudBuilder.vhdx image, sign in with the same local administrator credentials you used to log into the development kit host computer (and that you provided as part of finalizing Windows Server Setup when the host computer booted from VHD). 
 
 > [!NOTE]
