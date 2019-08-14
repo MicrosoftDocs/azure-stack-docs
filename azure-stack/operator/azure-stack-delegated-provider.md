@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 08/12/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
@@ -22,13 +22,13 @@ ms.lastreviewed: 05/07/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-As an Azure Stack operator, you might want to put other people in charge of signing up users and creating subscriptions. For example, if you're a service provider, you might want resellers to sign up customers and manage them on your behalf. Or, if you're part of a central IT group in an enterprise, you might want to delegate user signup to other IT staff.
+As an Azure Stack operator, you might want to put other people in charge of signing up users and creating subscriptions. For example, if you're a service provider, you might want resellers to sign up customers and manage them on your behalf. Or, if you're part of a central IT group in an enterprise, you might want to delegate user sign-up to other IT staff.
 
-Delegation makes it easier to reach and manage more users than you can do by yourself, as shown in the following figure:
+Delegation makes it easier to reach and manage more users than you can by yourself, as shown in the following figure:
 
 ![Levels of delegation](media/azure-stack-delegated-provider/image1.png)
 
-With delegation, the delegated provider manages an offer (delegated offer) and end customers obtain subscriptions under that offer without involvement from the system administrator.
+With delegation, the delegated provider manages an offer (called a *delegated offer*), and end customers obtain subscriptions under that offer without involvement from the system administrator.
 
 ## Delegation roles
 
@@ -60,7 +60,7 @@ After this relationship is established, the Azure Stack operator can delegate an
 
 ## Delegation walkthrough
 
-The following sections provide a hands-on walkthrough for setting up a delegated provider, delegating an offer, and verifying that users can sign up for the delegated offer.
+The following sections provide a walkthrough for setting up a delegated provider, delegating an offer, and verifying that users can sign up for the delegated offer.
 
 ### Set up roles
 
@@ -154,7 +154,7 @@ If needed, a subscription can be moved between new or existing delegated provide
 This is useful when:
 
 * You onboard a new team member that will take on the delegated provider role and you want to assign to this team member user subscriptions that were previously created in the default provider subscription.
-* You have multiple delegated providers subscriptions in the same directory tenant (Azure Active Directory) and need to move user subscriptions between them. This scenario could be a case where a team member moves between teams and their subscription needs to be allocated to the new team.
+* You have multiple delegated providers subscriptions in the same directory tenant (Azure Active Directory) and need to move user subscriptions between them. This scenario could occur when a team member moves between teams and their subscription must be allocated to the new team.
 
 ## Next steps
 
