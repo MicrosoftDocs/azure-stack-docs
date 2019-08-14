@@ -116,12 +116,12 @@ After deployment, Azure AD global admin permission isn't required. However, some
 
 ## Network
 ### Switch
-One available port on a switch for the development kit machine.  
+One available port on a switch for the ASDK  machine.  
 
-The development kit machine supports connecting to a switch access port or trunk port. No specialized features are required on the switch. If you are using a trunk port or if you need to configure a VLAN ID, you have to provide the VLAN ID as a deployment parameter.
+The ASDK machine supports connecting to a switch access port or trunk port. No specialized features are required on the switch. If you're using a trunk port or if you need to configure a VLAN ID, you have to provide the VLAN ID as a deployment parameter.
 
 ### Subnet
-Do not connect the development kit machine to the following subnets:
+Don't connect the ASDK machine to the following subnets:
 
 * 192.168.200.0/24
 * 192.168.100.0/27
@@ -130,20 +130,20 @@ Do not connect the development kit machine to the following subnets:
 * 192.168.103.0/25
 * 192.168.104.0/25
 
-These subnets are reserved for the internal networks within the development kit environment.
+These subnets are reserved for the internal networks within the ASDK environment.
 
 ### IPv4/IPv6
-Only IPv4 is supported. You cannot create IPv6 networks.
+Only IPv4 is supported. You can't create IPv6 networks.
 
 ### DHCP
-Make sure there is a DHCP server available on the network that the NIC connects to. If DHCP is not available, you must prepare an additional static IPv4 network besides the one used by host. You must provide that IP address and gateway as a deployment parameter.
+Make sure there's a DHCP server available on the network that the NIC connects to. If DHCP isn't available, you must prepare an additional static IPv4 network besides the one used by host. You must provide that IP address and gateway as a deployment parameter.
 
 ### Internet access
-Azure Stack requires access to the Internet, either directly or through a transparent proxy. Azure Stack does not support the configuration of a web proxy to enable Internet access. Both the host IP and the new IP assigned to the AzS-BGPNAT01 (by DHCP or static IP) must be able to access Internet. Ports 80 and 443 are used under the graph.windows.net and login.microsoftonline.com domains.
+Azure Stack requires access to the internet, either directly or through a transparent proxy. Azure Stack doesn't support the configuration of a web proxy to enable internet access. Both the host IP and the new IP assigned to the AzS-BGPNAT01 (by DHCP or static IP) must be able to access the internet. Ports 80 and 443 are used under the graph.windows.net and login.microsoftonline.com domains.
 
 
 ## Next steps
 
-- [Download the ASDK deployment package](asdk-download.md)
+- [Download the ASDK deployment package](asdk-download.md).
 - To learn more about Storage Spaces Direct, see [Storage Spaces Direct overview](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview).
 
