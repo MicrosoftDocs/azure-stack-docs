@@ -96,7 +96,7 @@ A few minutes into ASDK installation you'll be prompted for Azure AD credentials
 After deployment, Azure Active Directory global admin permission isn't required. However, some operations may require the global admin credential. Examples of such operations include a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily reinstate the account's global administrator permissions or use a separate global admin account that's an owner of the *default provider subscription*.
 
 ### Deploy Azure Stack using AD FS 
-To deploy the development kit **using AD FS as the identity provider**, run the following PowerShell commands (you just need to add the -UseADFS parameter): 
+To deploy the ASDK  **using AD FS as the identity provider**, run the following PowerShell commands (you just need to add the -UseADFS parameter):
 
   ```powershell
   cd C:\CloudDeployment\Setup     
@@ -104,12 +104,12 @@ To deploy the development kit **using AD FS as the identity provider**, run the 
   .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -UseADFS
   ```
 
-In AD FS deployments, the default stamp Directory Service is used as the identity provider. The default account to sign in with is azurestackadmin@azurestack.local, and the password will be set to what you provided as part of the PowerShell setup commands.
+In AD FS deployments, the default stamp Directory Service is used as the identity provider. The default account to sign in with is azurestackadmin@azurestack.local, and the password is set to what you provided as part of the PowerShell setup commands.
 
 The deployment process can take a few hours, during which time the system automatically reboots once. When the deployment succeeds, the PowerShell console displays: **COMPLETE: Action ‘Deployment'**. If the deployment fails, you can try running the script again using the -rerun parameter. Or, you can [redeploy ASDK](asdk-redeploy.md) from scratch.
 
 > [!IMPORTANT]
-> If you want to monitor the deployment progress after the ASDK host reboots, you must sign in as AzureStack\AzureStackAdmin. If you sign in as a local administrator after the host computer is restarted (and joined to the azurestack.local domain), you won't see the deployment progress. Do not rerun deployment, instead sign in as AzureStack\AzureStackAdmin with the same password as the local administrator to validate that the setup is running.
+> If you want to monitor the deployment progress after the ASDK host reboots, you must sign in as AzureStack\AzureStackAdmin. If you sign in as a local admin after the host computer is restarted (and joined to the azurestack.local domain), you won't see the deployment progress. Don't rerun deployment, instead sign in as AzureStack\AzureStackAdmin with the same password as the local admin to validate that the setup is running.
 
 
 #### Azure AD deployment script examples
@@ -131,7 +131,7 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>" #Exampl
 .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -InfraAzureDirectoryTenantName "<Azure AD directory in the form of domainname.onmicrosoft.com or an Azure AD verified custom domain name>" -TimeServer 52.168.138.145 #Example time server IP address.
 ```
 
-If your environment does not have DHCP enabled, then you must include the following additional parameters to one of the options above (example usage provided): 
+If your environment doesn't have DHCP enabled, then you must include the following additional parameters to one of the options above (example usage provided): 
 
 ```powershell
 .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -TimeServer 10.222.112.26
@@ -141,19 +141,19 @@ If your environment does not have DHCP enabled, then you must include the follow
 
 |Parameter|Required/Optional|Description|
 |-----|-----|-----|
-|AdminPassword|Required|Sets the local administrator account and all other user accounts on all the virtual machines created as part of development kit deployment. This password must match the current local administrator password on the host.|
-|InfraAzureDirectoryTenantName|Required|Sets the tenant directory. Use this parameter to specify a specific directory where the AAD account has permissions to manage multiple directories. Full Name of an AAD Directory Tenant in the format of .onmicrosoft.com or an Azure AD verified custom domain name.|
-|TimeServer|Required|Use this parameter to specify a specific time server. This parameter must be provided as a valid time server IP address. Server names are not supported.|
+|AdminPassword|Required|Sets the local admin account and all other user accounts on all the VMs created as part of ASDK deployment. This password must match the current local admin password on the host.|
+|InfraAzureDirectoryTenantName|Required|Sets the tenant directory. Use this parameter to specify a specific directory where the AAD account has permissions to manage multiple directories. Full name of an AAD tenant in the format of .onmicrosoft.com or an Azure AD verified custom domain name.|
+|TimeServer|Required|Use this parameter to specify a specific time server. This parameter must be provided as a valid time server IP address. Server names aren't supported.|
 |InfraAzureDirectoryTenantAdminCredential|Optional|Sets the Azure Active Directory user name and password. These Azure credentials must be an Org ID.|
 |InfraAzureEnvironment|Optional|Select the Azure Environment with which you want to register this Azure Stack deployment. Options include global Azure, Azure - China, Azure - US Government.|
 |DNSForwarder|Optional|A DNS server is created as part of the Azure Stack deployment. To allow computers inside the solution to resolve names outside of the stamp, provide your existing infrastructure DNS server. The in-stamp DNS server forwards unknown name resolution requests to this server.|
-|Rerun|Optional|Use this flag to rerun deployment. All previous input is used. Reentering data previously provided is not supported because several unique values are generated and used for deployment.|
+|Rerun|Optional|Use this flag to rerun deployment. All previous input is used. Reentering data previously provided isn't supported because several unique values are generated and used for deployment.|
 
 
 ## Perform post-deployment configurations
 After installing the ASDK, there are a few recommended post-installation checks and configuration changes that should be made. You can validate your installation was installed successfully using the test-AzureStack cmdlet, and install Azure Stack PowerShell and GitHub tools. 
 
-You should also reset the password expiration policy to make sure that the password for the development kit host doesn't expire before your evaluation period ends.
+You should also reset the password expiration policy to make sure that the password for the ASDK host doesn't expire before your evaluation period ends.
 
 > [!NOTE]
 > Optionally, you can also configure [Azure Stack telemetry settings](asdk-telemetry.md#enable-or-disable-telemetry-after-deployment) *after* installing the ASDK.
@@ -166,7 +166,7 @@ You must register Azure Stack with Azure so that you can [download Azure marketp
 **[Register Azure Stack with Azure](asdk-register.md)**
 
 ## Next steps
-Congratulations! After completing these steps, you'll have a development kit environment with both [administrator](https://adminportal.local.azurestack.external) and [user](https://portal.local.azurestack.external) portals. 
+Congratulations! After completing these steps, you'll have an ASDK environment with both [admin](https://adminportal.local.azurestack.external) and [user](https://portal.local.azurestack.external) portals. 
 
 [Post ASDK installation configuration tasks](asdk-post-deploy.md)
 
