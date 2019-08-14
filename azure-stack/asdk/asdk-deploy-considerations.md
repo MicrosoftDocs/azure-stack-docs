@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Development Kit deployment (ASDK) prerequisites | Microsoft Docs
-description: Review the environment and hardware requirements for Azure Stack Development Kit (ASDK).
+title: ASDK requirements and considerations | Microsoft Docs
+description: Learn about the hardware, software, and environment requirements for Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -21,21 +21,21 @@ ms.lastreviewed: 05/13/2019
 
 ---
 
-# Azure Stack deployment planning considerations
+# ASDK requirements and considerations
 
-Before you deploy the Azure Stack Development Kit (ASDK), make sure your development kit host computer meets the requirements described in this article.
+Before you deploy the Azure Stack Development Kit (ASDK), make sure your ASDK host computer meets the requirements described in this article.
 
 ## Hardware
 
 | Component | Minimum | Recommended |
 | --- | --- | --- |
-| Disk drives: Operating System |1 operating system disk with minimum of 200 GB available for system partition (SSD or HDD) |1 OS disk with minimum of 200 GB available for system partition (SSD or HDD) |
+| Disk drives: Operating System |1 operating system disk with minimum of 200 GB available for system partition (SSD or HDD). |1 OS disk with minimum of 200 GB available for system partition (SSD or HDD). |
 | Disk drives: General development kit data<sup>*</sup>  |4 disks. Each disk provides a minimum of 240 GB of capacity (SSD or HDD). All available disks are used. |4 disks. Each disk provides a minimum of 400 GB of capacity (SSD or HDD). All available disks are used. |
-| Compute: CPU |Dual-Socket: 16 Physical Cores (total) |Dual-Socket: 20 Physical Cores (total) |
-| Compute: Memory |192-GB RAM |256-GB RAM |
-| Compute: BIOS |Hyper-V Enabled (with SLAT support) |Hyper-V Enabled (with SLAT support) |
-| Network: NIC |Windows Server 2012 R2 Certification. No specialized features required |Windows Server 2012 R2 Certification. No specialized features required |
-| HW logo certification |[Certified for Windows Server 2012 R2](https://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Certified for Windows Server 2016](https://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
+| Compute: CPU |Dual-Socket: 16 Physical Cores (total). |Dual-Socket: 20 Physical Cores (total). |
+| Compute: Memory |192-GB RAM. |256-GB RAM. |
+| Compute: BIOS |Hyper-V Enabled (with SLAT support). |Hyper-V Enabled (with SLAT support). |
+| Network: NIC |Windows Server 2012 R2 Certification. No specialized features required. | Windows Server 2012 R2 Certification. No specialized features required. |
+| HW logo certification |[Certified for Windows Server 2012 R2](https://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0). |[Certified for Windows Server 2016](https://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0). |
 
 <sup>*</sup> You need more than this recommended capacity if you plan on adding many of the [marketplace items](../operator/azure-stack-create-and-publish-marketplace-item.md) from Azure.
 
@@ -45,9 +45,9 @@ Before you deploy the Azure Stack Development Kit (ASDK), make sure your develop
 
 **HBA configuration options**
 
-* (Preferred) Simple HBA
-* RAID HBA - Adapter must be configured in "pass through" mode
-* RAID HBA - Disks should be configured as Single-Disk, RAID-0
+* (Preferred) Simple HBA.
+* RAID HBA - Adapter must be configured in "pass through" mode.
+* RAID HBA - Disks should be configured as Single-Disk, RAID-0.
 
 **Supported bus and media type combinations**
 
@@ -59,9 +59,9 @@ Before you deploy the Azure Stack Development Kit (ASDK), make sure your develop
 * SAS SSD + SAS HDD
 * NVMe
 
-<sup>*</sup> RAID controllers without pass-through capability can't recognize the media type. Such controllers mark both HDD and SSD as Unspecified. In that case, the SSD is used as persistent storage instead of caching devices. Therefore, you can deploy the development kit on those SSDs.
+<sup>*</sup> RAID controllers without pass-through capability can't recognize the media type. Such controllers mark both HDD and SSD as Unspecified. In that case, the SSD is used as persistent storage instead of caching devices. Therefore, you can deploy the ASDK on those SSDs.
 
-**Example HBAs**: LSI 9207-8i, LSI-9300-8i, or LSI-9265-8i in pass-through mode
+**Example HBAs**: LSI 9207-8i, LSI-9300-8i, or LSI-9265-8i in pass-through mode.
 
 Sample OEM configurations are available.
 
