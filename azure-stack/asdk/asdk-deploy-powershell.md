@@ -65,25 +65,25 @@ To configure the ASDK host computer to boot from CloudBuilder.vhdx:
 > Ensure that you have direct physical or KVM access to the ASDK host computer before restarting it. When the VM first starts, it prompts you to complete Windows Server Setup. Provide the same admin credentials you used to log into the ASDK host computer.
 
 ### Prepare the ASDK host using PowerShell 
-After the development kit host computer successfully boots into the CloudBuilder.vhdx image, sign in with the same local administrator credentials you used to log into the development kit host computer (and that you provided as part of finalizing Windows Server Setup when the host computer booted from VHD). 
+After the ASDK host computer successfully boots into the CloudBuilder.vhdx image, sign in with the same local admin credentials you used to log into the ASDK host computer (and that you provided as part of finalizing Windows Server Setup when the host computer booted from VHD).
 
 > [!NOTE]
 > Optionally, you can also configure [Azure Stack telemetry settings](asdk-telemetry.md#set-telemetry-level-in-the-windows-registry) *before* installing the ASDK.
 
-Open an elevated PowerShell console and run the commands in this section to deploy the ASDK on the development kit host.
+Open an elevated PowerShell console and run the commands in this section to deploy the ASDK on the ASDK host.
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > ASDK installation supports exactly one network interface card (NIC) for networking. If you have multiple NICs, make sure that only one is enabled (and all others are disabled) before running the deployment script.
 
-You can deploy Azure Stack with Azure AD or Windows Server AD FS as the identity provider. Azure Stack, resource providers, and other applications work the same way with both.
+You can deploy Azure Stack with Azure AD or Windows Server AD FS as the identity provider. Azure Stack, resource providers, and other apps work the same way with both.
 
 > [!TIP]
-> If you don't supply any setup parameters (see InstallAzureStackPOC.ps1 optional parameters and examples below), you are prompted for the required parameters.
+> If you don't supply any setup parameters (see InstallAzureStackPOC.ps1 optional parameters and examples below), you're prompted for the required parameters.
 
 ### Deploy Azure Stack using Azure AD 
 To deploy Azure Stack **using Azure AD as the identity provider**, you must have internet connectivity either directly or through a transparent proxy. 
 
-Run the following PowerShell commands to deploy the development kit using Azure AD:
+Run the following PowerShell commands to deploy the ASDK using Azure AD:
 
   ```powershell
   cd C:\CloudDeployment\Setup     
@@ -91,9 +91,9 @@ Run the following PowerShell commands to deploy the development kit using Azure 
   .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password
   ```
 
-A few minutes into ASDK installation you will be prompted for Azure AD credentials. You must provide global administrator credentials for your Azure AD tenant. 
+A few minutes into ASDK installation you'll be prompted for Azure AD credentials. You must provide global admin credentials for your Azure AD tenant.
 
-After deployment, Azure Active Directory global administrator permission is not required. However, some operations may require the global administrator credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily reinstate the account's global administrator permissions or use a separate global administrator account that is an owner of the *default provider subscription*.
+After deployment, Azure Active Directory global admin permission isn't required. However, some operations may require the global admin credential. Examples of such operations include a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily reinstate the account's global administrator permissions or use a separate global admin account that's an owner of the *default provider subscription*.
 
 ### Deploy Azure Stack using AD FS 
 To deploy the development kit **using AD FS as the identity provider**, run the following PowerShell commands (you just need to add the -UseADFS parameter): 
