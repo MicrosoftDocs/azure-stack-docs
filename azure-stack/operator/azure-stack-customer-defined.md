@@ -33,7 +33,7 @@ However, there are some values that can be added, removed, or changed on the con
 
 ## Password update
 
-The operator may update the password for any user on the network switches at any time. There isn't a requirement to change any information on the Azure Stack system, or to use the steps for [Update Secrets](azure-stack-rotate-secrets.md).
+The operator may update the password for any user on the network switches at any time. There isn't a requirement to change any information on the Azure Stack system, or to use the steps for [Rotate secrets in Azure Stack](azure-stack-rotate-secrets.md).
 
 ## Syslog server
 
@@ -53,4 +53,4 @@ The operator can change some access control list (ACL)s to allow access to netwo
 
 ## Next steps
 
-[DNS integration](azure-stack-integrate-dns.md)
+[Azure Stack datacenter integration - DNS](azure-stack-integrate-dns.md)
