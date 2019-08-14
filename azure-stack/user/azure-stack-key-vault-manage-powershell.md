@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/09/2019
+ms.date: 08/13/2019
 ms.author: sethm
 ms.lastreviewed: 05/09/2019
 
@@ -23,7 +23,7 @@ ms.lastreviewed: 05/09/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-This article describes how to create and manage a key vault in Azure Stack using Powershell. You'll learn how to use Key Vault PowerShell cmdlets to:
+This article describes how to create and manage a key vault in Azure Stack using PowerShell. You'll learn how to use Key Vault PowerShell cmdlets to:
 
 * Create a key vault.
 * Store and manage cryptographic keys and secrets.
@@ -40,7 +40,7 @@ This article describes how to create and manage a key vault in Azure Stack using
 
 ## Enable your tenant subscription for Key Vault operations
 
-Before you can issue any operations against a key vault, you must ensure that your tenant subscription is enabled for vault operations. To verify that vault operations are enabled, run the following command:
+Before you can issue any operations against a key vault, you must ensure that your tenant subscription is enabled for vault operations. To verify that key vault operations are enabled, run the following command:
 
 ```powershell  
 Get-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault | ft -Autosize
@@ -72,7 +72,7 @@ New-AzureRmResourceGroup -Name "VaultRG" -Location local -verbose -Force
 
 ![New resource group generated in Powershell](media/azure-stack-key-vault-manage-powershell/image3.png)
 
-Now, use the **New-AzureRMKeyVault** command to create a key vault in the resource group that you created earlier. This command reads three mandatory parameters: resource group name, key vault name, and geographic location.
+Now, use the **New-AzureRMKeyVault** cmdlet to create a key vault in the resource group that you created earlier. This command reads three mandatory parameters: resource group name, key vault name, and geographic location.
 
 Run the following command to create a key vault:
 
@@ -151,7 +151,7 @@ After you create the keys and secrets, you can authorize external apps to use th
 
 Use the **Set-AzureRmKeyVaultAccessPolicy** command to authorize an app to access a key or secret in the key vault.
 
-In the following example, the vault name is *ContosoKeyVault* and the app you want to authorize has a client ID of *8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed*. To authorize the app, run the following command. You can also specify the **PermissionsToKeys** parameter to set permissions for a user, an app, or a security group.
+In the following example, the vault name is **ContosoKeyVault** and the app you want to authorize has a client ID of **8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed**. To authorize the app, run the following command. You can also specify the **PermissionsToKeys** parameter to set permissions for a user, an app, or a security group.
 
 ```powershell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign

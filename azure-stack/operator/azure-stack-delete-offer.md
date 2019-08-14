@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2019
+ms.date: 08/13/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 04/25/2019
@@ -39,15 +39,15 @@ You can delete subscriptions from this list, or you can use PowerShell to write 
 
 ## Delete an offer
 
-To delete an offer, in the Administrator portal, go to **All services**, then **Offers**. Select the offer you want to delete, then select **Delete**.
+To delete an offer, in the administrator portal, go to **All services**, then **Offers**. Select the offer you want to delete, then select **Delete**.
 
 ![delsub1](media/azure-stack-delete-offer/delsub1.png)
 
-You can only delete an offer when there are no subscriptions using it. If subscriptions exist based on the offer, the **Delete** option is greyed out. In this case, see the [Delete a subscription](#delete-a-subscription) section.
+You can only delete an offer when there are no subscriptions using it. If subscriptions exist based on the offer, the **Delete** option is not available. In this case, see the [Delete a subscription](#delete-a-subscription) section.
 
 ## Delete a plan
 
-To delete a plan, in the Administrator portal go to **All services**, then **Plans**. Select the plan you want to delete, then select **Delete**.
+To delete a plan, in the administrator portal go to **All services**, then **Plans**. Select the plan you want to delete, then select **Delete**.
 
 ![delsub2](media/azure-stack-delete-offer/delsub2.png)
 
@@ -59,7 +59,7 @@ Also, a plan cannot be removed from a subscription if it is the only source of a
 
 ## Edit and delete a quota
 
-You can view and edit existing quotas using the Administrator portal: select **Region Management**, then select the relevant resource provider, and click on **Quotas**. You can also delete quotas for certain resource providers.
+You can view and edit existing quotas using the administrator portal: select **Region Management**, then select the relevant resource provider, and click on **Quotas**. You can also delete quotas for certain resource providers.
 
 ![delsub3](media/azure-stack-delete-offer/delsub3.png)
 
