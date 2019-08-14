@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2019
+ms.date: 08/14/2019
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.lastreviewed: 06/06/2018
+ms.lastreviewed: 06/06/2019
 ---
 
 # Guest operating systems supported on Azure Stack
@@ -63,6 +63,7 @@ Linux distributions listed as available in the marketplace include the necessary
 | Container Linux |  64-bit | CoreOS | Stable |
 | Debian 8 "Jessie" | 64-bit | credativ |  Yes |
 | Debian 9 "Stretch" | 64-bit | credativ | Yes |
+| Oracle Linux | 64-bit | Oracle | Yes |
 | Red Hat Enterprise Linux 7.1 (and later) | 64-bit | Red Hat | Bring your own image |
 | SLES 11SP4 | 64-bit | SUSE | Yes |
 | SLES 12SP3 | 64-bit | SUSE | Yes |
