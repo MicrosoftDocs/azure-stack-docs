@@ -27,13 +27,13 @@ You can apply original equipment manufacturer (OEM) updates to your Azure Stack 
 
 ## Overview of OEM updates
 
-In addition to Microsoft Azure Stack updates, many OEM also release regular updates for your Azure Stack hardware, such as driver and firmware updates. These are referred to as **OEM Package Updates**. To understand whether your OEM releases OEM Package Updates, check your [OEM's Azure Stack documentation](#oem-contact-information).
+In addition to Microsoft Azure Stack updates, many OEMs also release regular updates for your Azure Stack hardware, such as driver and firmware updates. These are referred to as **OEM Package Updates**. To understand whether your OEM releases OEM Package Updates, check your [OEM's Azure Stack documentation](#oem-contact-information).
 
-Starting with Azure Stack update 1905 these OEM package updates are uploaded into the **updateadminaccount** storage account and applied via the Azure Stack Administrator portal. For more information, see Applying OEM Updates (link to subsection)
+Starting with Azure Stack update 1905 these OEM package updates are uploaded into the **updateadminaccount** storage account and applied via the Azure Stack Administrator portal. For more information, see [Applying OEM Updates](#apply-oem-updates).
 
 Ask your original equipment manufacturer (OEM) about their specific notification process to ensure OEM package update notifications reach your organization.
 
-Some hardware vendors may require a * hardware vendor VM* that handles the internal firmware update process. For more information, see [Configure hardware vendor VM](#configure-hardware-vendor-vm)
+Some hardware vendors may require a *hardware vendor VM* that handles the internal firmware update process. For more information, see [Configure hardware vendor VM](#configure-hardware-vendor-vm)
 
 ## OEM contact information 
 
@@ -55,14 +55,14 @@ This section contains OEM contact information and links to OEM Azure Stack refer
 Apply the OEM packages with the following steps:
 
 1. Contact your OEM about the best method to download your OEM package.
-2. Prepare your OEM package with the steps outlined in [Download update packages for integrated systems](azure-stack-servicing-policy.md#download-update-packages-for-integrated-systems)
+2. Prepare your OEM package with the steps outlined in [Download update packages for integrated systems](azure-stack-servicing-policy.md#download-update-packages-for-integrated-systems).
 3. Apply the updates with the steps outlined in [Apply updates in Azure Stack](azure-stack-apply-updates.md).
 
 ## Configure hardware vendor VM
 
 Some hardware vendors may require a VM to help with the OEM update process. Your hardware vendor will be responsible for creating these VMs. Once the VMs are created, you can configure them with the **Set-OEMExternalVM** cmdlet from the privileged endpoint.
 
-For more information about the privileged endpoint on Azure Stack, see [Using the privileged endpoint in Azure Stack](azure-stack-privileged-endpoint.md)
+For more information about the privileged endpoint on Azure Stack, see [Using the privileged endpoint in Azure Stack](azure-stack-privileged-endpoint.md).
 
 1.  Access the privileged endpoint.
 
