@@ -24,11 +24,11 @@ ms.lastreviewed: 02/08/2019
 
 # Deploy ASDK from the command line using Powershell
 
-The Azure Stack Development Kit (ASDK) is a testing and development environment that you can deploy to evaluate and demonstrate Azure Stack features and services. To get it up and running, you need to prepare the environment hardware and run some scripts (this will take several hours). After that, you can sign in to the admin and user portals to start using Azure Stack.
+The Azure Stack Development Kit (ASDK) is a testing and development environment that you can deploy to evaluate and demonstrate Azure Stack features and services. To get it up and running, you need to prepare the environment hardware and run some scripts. The scripts take several hours to run. After that, you can sign in to the admin and user portals to start using Azure Stack.
 
 ## Prerequisites
 
-Prepare the ASDK host computer. Plan your hardware, software, and network. The computer that hosts the ASDK must meet hardware, software, and network requirements. You must also choose between using Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS). Be sure to comply with these prerequisites before starting your deployment so that the installation process runs smoothly. 
+Prepare the ASDK host computer. Plan your hardware, software, and network. The computer that hosts the ASDK must meet hardware, software, and network requirements. Choose between using Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS). Be sure to follow these prerequisites before starting your deployment so that the installation process runs smoothly.
 
 Before you deploy the ASDK, make sure your planned ASDK host computer's hardware, operating system, account, and network configurations meet the minimum requirements for installing the ASDK.
 
@@ -38,9 +38,9 @@ Before you deploy the ASDK, make sure your planned ASDK host computer's hardware
 > You can use the [Azure Stack deployment requirements check tool](https://gallery.technet.microsoft.com/Deployment-Checker-for-50e0f51b) after installing the operating system to confirm that your hardware meets all requirements.
 
 ## Download and extract the deployment package
-After ensuring that your development kit host computer meets the basic requirements for installing the ASDK, the next step is to download and extract the ASDK deployment package. The deployment package includes the Cloudbuilder.vhdx file, which is a virtual hard drive that includes a bootable operating system and the Azure Stack installation files.
+After ensuring that your ASDK host computer meets the basic requirements for installing the ASDK, the next step is to download and extract the ASDK deployment package. The deployment package includes the Cloudbuilder.vhdx file, which is a virtual hard drive that includes a bootable operating system and the Azure Stack installation files.
 
-You can download the deployment package to the development kit host or to another computer. The extracted deployment files take up 60 GB of free disk space, so using another computer can help reduce the hardware requirements for the development kit host.
+You can download the deployment package to the ASDK host or to another computer. The extracted deployment files take up 60 GB of free disk space, so using another computer can help reduce the hardware requirements for the ASDK host.
 
 **[Download and extract the Azure Stack Development Kit (ASDK)](asdk-download.md)**
 
@@ -65,7 +65,7 @@ To configure the ASDK host computer to boot from CloudBuilder.vhdx:
 > Ensure that you have direct physical or KVM access to the ASDK host computer before restarting it. When the VM first starts, it prompts you to complete Windows Server Setup. Provide the same admin credentials you used to log into the ASDK host computer.
 
 ### Prepare the ASDK host using PowerShell 
-After the ASDK host computer successfully boots into the CloudBuilder.vhdx image, sign in with the same local admin credentials you used to log into the ASDK host computer (and that you provided as part of finalizing Windows Server Setup when the host computer booted from VHD).
+After the ASDK host computer successfully boots into the CloudBuilder.vhdx image, sign in with the same local admin credentials you used to log into the ASDK host computer. These are also the same credentials you provided as part of completing the Windows Server Setup when the host computer booted from VHD.
 
 > [!NOTE]
 > Optionally, you can also configure [Azure Stack telemetry settings](asdk-telemetry.md#set-telemetry-level-in-the-windows-registry) *before* installing the ASDK.
@@ -91,9 +91,9 @@ Run the following PowerShell commands to deploy the ASDK using Azure AD:
   .\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password
   ```
 
-A few minutes into ASDK installation you'll be prompted for Azure AD credentials. You must provide global admin credentials for your Azure AD tenant.
+A few minutes into ASDK installation you'll be prompted for Azure AD credentials. Provide the global admin credentials for your Azure AD tenant.
 
-After deployment, Azure Active Directory global admin permission isn't required. However, some operations may require the global admin credential. Examples of such operations include a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily reinstate the account's global administrator permissions or use a separate global admin account that's an owner of the *default provider subscription*.
+After deployment, Azure Active Directory global admin permission isn't required. However, some operations may require the global admin credential. Examples of such operations include a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily reinstate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
 
 ### Deploy Azure Stack using AD FS 
 To deploy the ASDK  **using AD FS as the identity provider**, run the following PowerShell commands (you just need to add the -UseADFS parameter):
@@ -106,7 +106,7 @@ To deploy the ASDK  **using AD FS as the identity provider**, run the following 
 
 In AD FS deployments, the default stamp Directory Service is used as the identity provider. The default account to sign in with is azurestackadmin@azurestack.local, and the password is set to what you provided as part of the PowerShell setup commands.
 
-The deployment process can take a few hours, during which time the system automatically reboots once. When the deployment succeeds, the PowerShell console displays: **COMPLETE: Action ‘Deployment'**. If the deployment fails, you can try running the script again using the -rerun parameter. Or, you can [redeploy ASDK](asdk-redeploy.md) from scratch.
+The deployment process can take a few hours, during which time the system automatically reboots once. When the deployment succeeds, the PowerShell console displays: **COMPLETE: Action ‘Deployment'**. If the deployment fails, try running the script again using the -rerun parameter. Or, you can [redeploy ASDK](asdk-redeploy.md) from scratch.
 
 > [!IMPORTANT]
 > If you want to monitor the deployment progress after the ASDK host reboots, you must sign in as AzureStack\AzureStackAdmin. If you sign in as a local admin after the host computer is restarted (and joined to the azurestack.local domain), you won't see the deployment progress. Don't rerun deployment, instead sign in as AzureStack\AzureStackAdmin with the same password as the local admin to validate that the setup is running.
@@ -151,9 +151,9 @@ If your environment doesn't have DHCP enabled, then you must include the followi
 
 
 ## Perform post-deployment configurations
-After installing the ASDK, there are a few recommended post-installation checks and configuration changes that should be made. You can validate your installation was installed successfully using the test-AzureStack cmdlet, and install Azure Stack PowerShell and GitHub tools. 
+After installing the ASDK, there are a few recommended post-installation checks and configuration changes that should be made. Validate your installation was installed successfully by using the test-AzureStack cmdlet, then install Azure Stack PowerShell and GitHub tools.
 
-You should also reset the password expiration policy to make sure that the password for the ASDK host doesn't expire before your evaluation period ends.
+We recommend you reset the password expiration policy to make sure that the password for the ASDK host doesn't expire before your evaluation period ends.
 
 > [!NOTE]
 > Optionally, you can also configure [Azure Stack telemetry settings](asdk-telemetry.md#enable-or-disable-telemetry-after-deployment) *after* installing the ASDK.
