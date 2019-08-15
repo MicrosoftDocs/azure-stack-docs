@@ -12,9 +12,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2019
+ms.date: 08/15/2019
 ms.author: mabrigg
-ms.lastreviewed: 08/14/2019
+ms.lastreviewed: 08/15/2019
 ms.reviewer: ppacent 
 
 ---
@@ -29,7 +29,7 @@ You can apply original equipment manufacturer (OEM) updates to your Azure Stack 
 
 In addition to Microsoft Azure Stack updates, many OEMs also release regular updates for your Azure Stack hardware, such as driver and firmware updates. These are referred to as **OEM Package Updates**. To understand whether your OEM releases OEM Package Updates, check your [OEM's Azure Stack documentation](#oem-contact-information).
 
-Starting with Azure Stack update 1905 these OEM package updates are uploaded into the **updateadminaccount** storage account and applied via the Azure Stack Administrator portal. For more information, see [Applying OEM Updates](#apply-oem-updates).
+These OEM package updates are uploaded into the **updateadminaccount** storage account and applied via the Azure Stack Administrator portal. For more information, see [Applying OEM Updates](#apply-oem-updates).
 
 Ask your original equipment manufacturer (OEM) about their specific notification process to ensure OEM package update notifications reach your organization.
 
@@ -54,13 +54,15 @@ This section contains OEM contact information and links to OEM Azure Stack refer
 
 Apply the OEM packages with the following steps:
 
-1. Contact your OEM about the best method to download your OEM package.
+1. You will need to contact your OEM to:
+      - Determine the current version of your OEM package.  
+      - Find the best method to download your OEM package.  
 2. Prepare your OEM package with the steps outlined in [Download update packages for integrated systems](azure-stack-servicing-policy.md#download-update-packages-for-integrated-systems).
 3. Apply the updates with the steps outlined in [Apply updates in Azure Stack](azure-stack-apply-updates.md).
 
 ## Configure hardware vendor VM
 
-Some hardware vendors may require a VM to help with the OEM update process. Your hardware vendor will be responsible for creating these VMs. Once the VMs are created, you can configure them with the **Set-OEMExternalVM** cmdlet from the privileged endpoint.
+Some hardware vendors may require a VM to help with the OEM update process. Your hardware vendor will be responsible for creating these VMs, and documenting if you need to `ProxyVM` or `HardwareManager` for **-VMType** when running the **Set-OEMExternalVM** cmdlet. Once the VMs are created, configure them with the **Set-OEMExternalVM** from the privileged endpoint.
 
 For more information about the privileged endpoint on Azure Stack, see [Using the privileged endpoint in Azure Stack](azure-stack-privileged-endpoint.md).
 
@@ -75,12 +77,12 @@ For more information about the privileged endpoint on Azure Stack, see [Using th
 2. Configure the hardware vendor VM using the **Set-OEMExternalVM** cmdlet. The cmdlet validates the IP address and credentials for **-VMType** `ProxyVM`. For **-VMType** `HardwareManager` the cmdlet won't validate the input.
 
     ```powershell  
-    $VMCred = Get-Credential
     
     Invoke-Command -Session $session
         { 
     Set-OEMExternalVM -VMType <Either "ProxyVM" or "HardwareManager">
-        -IPAddress <IP Address of hardware vendor VM> -credential $using:VMCred
+        -IPAddress <IP Address of hardware vendor VM>
+        }
     ```
 
 ## Next steps
