@@ -35,7 +35,7 @@ The Azure Stack 1908 update build number is **1.1908.x.xx**.
 
 ### Update type
 
-The Azure Stack 1908 update build type is **Full**. As a result, the 1908 update has a longer runtime than express updates like 1904 and 1906. Exact runtimes for full updates typically depend on the number of nodes that your Azure Stack instance contains, the capacity used on your system by tenant workloads, your system's network connectivity (if connected to the internet), and your system hardware configuration. The 1908 update has had the following expected runtimes in our internal testing: 4 nodes - 35 hours, 8 nodes - 45 hours, 12 nodes - 55 hours, 16 nodes - 70 hours. 1906 runtimes lasting longer than these expected values are not uncommon and do not require action by Azure Stack operators unless the update fails. 
+The Azure Stack 1908 update build type is **Full**. As a result, the 1908 update has a longer runtime than express updates like 1904 and 1906. Exact runtimes for full updates typically depend on the number of nodes that your Azure Stack instance contains, the capacity used on your system by tenant workloads, your system's network connectivity (if connected to the internet), and your system hardware configuration. The 1908 update has had the following expected runtimes in our internal testing: 4 nodes - 35 hours, 8 nodes - 45 hours, 12 nodes - 55 hours, 16 nodes - 70 hours. 1906 runtimes lasting longer than these expected values are not uncommon and do not require action by Azure Stack operators unless the update fails.
 
 For more information about update build types, see [Manage updates in Azure Stack](azure-stack-updates.md).
 
