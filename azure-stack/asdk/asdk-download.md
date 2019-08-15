@@ -27,7 +27,7 @@ After ensuring that your development kit host computer meets the basic requireme
 ## Download the ASDK
 1. Before you start the download, make sure that your computer meets the following prerequisites:
 
-   - Your computer must have at least 60 GB of free disk space available on four separate, identical logical hard drives in addition to the operating system disk.
+   - Your computer must have at least 60 GB of free disk space available on four separate and identical logical hard drives in addition to the operating system disk.
    - [.NET Framework 4.6 (or a later version)](https://dotnet.microsoft.com/download/dotnet-framework-runtime/net46) must be installed.
 
 2. [Go to the Get Started page](https://azure.microsoft.com/overview/azure-stack/try/?v=try) where you can download the ASDK, provide your details, and then click **Submit**.
