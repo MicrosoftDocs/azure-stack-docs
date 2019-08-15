@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 08/15/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 07/25/2019
+ms.lastreviewed: 08/15/2019
 
 ---
 
@@ -59,5 +59,5 @@ This article contains a checklist of update-related activities for Azure Stack o
 
 ## Next steps
 
-- [Review list of known issues](azure-stack-release-notes-known-issues-1907.md)
+- [Review list of known issues](azure-stack-release-notes-known-issues-1908.md)
 - [Review list of security updates](azure-stack-release-notes-security-updates.md)
