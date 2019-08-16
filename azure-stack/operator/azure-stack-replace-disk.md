@@ -73,7 +73,7 @@ $StorageSubSystem=Get-AzsStorageSubSystem -ScaleUnit $scaleunit.Name
 Get-AzsDrive -StorageSubSystem $StorageSubSystem.Name -ScaleUnit $scaleunit.name | Sort-Object StorageNode,MediaType,PhysicalLocation | Format-Table Storagenode, Healthstatus, PhysicalLocation, Model, MediaType,  CapacityGB, CanPool, CannotPoolReason
 ```
 
-![Replaced physical disks in Azure Stack](media/azure-stack-replace-disk/get-azure-stack-volumes-health.png)
+![Replaced physical disks in Azure Stack](media/azure-stack-replace-disk/check-replaced-physical-disks-azure-stack.png)
 
 ## Check the status of virtual disk repair using the privileged endpoint
  
