@@ -13,11 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 08/16/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 08/02/2019
-monikerRange: 'azs-1907'
+ms.lastreviewed: 08/16/2019
 ---
 
 # Azure Stack 1907 update
@@ -147,7 +146,7 @@ The 1907 release of Azure Stack must be applied on the 1906 release with the fol
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1907.8.37](https://support.microsoft.com/help/4515650)
+- [Azure Stack hotfix 1.1907.12.44](https://support.microsoft.com/help/4517473)
 
 ## Automatic update notifications
 
