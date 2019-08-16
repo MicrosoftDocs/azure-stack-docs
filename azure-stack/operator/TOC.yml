@@ -10,10 +10,6 @@
     href: compare-azure-azure-stack.md
   - name: Release notes
     items:
-    - name: Updates and servicing policy
-      href: azure-stack-servicing-policy.md
-    - name: Checklist for applying updates
-      href: azure-stack-release-notes-checklist.md
     - name: Security updates
       href: azure-stack-release-notes-security-updates-1907.md
     - name: 1907 update
@@ -171,12 +167,22 @@
       items:
       - name: Manage updates overview
         href: azure-stack-updates.md
+      - name: Updates and servicing policy
+        href: azure-stack-servicing-policy.md
+      - name: Checklist for applying updates
+        href: azure-stack-release-notes-checklist.md
+      - name: Plan for update
+        href: azure-stack-update-plan.md
+      - name: Prepare the update package
+        href: azure-stack-update-prepare-package.md
       - name: Apply updates
-        href: azure-stack-apply-updates.md
-      - name: Apply OEM updates
-        href: azure-stack-update-oem.md
+        items:
+        - name: Apply updates
+          href: azure-stack-apply-updates.md
+        - name: Apply OEM updates
+          href: azure-stack-update-oem.md
       - name: Monitor update status
-        href: azure-stack-monitor-update.md
+        href: azure-stack-update-monitor.md
     - name: Monitor health and alerts
       href: azure-stack-monitor-health.md
     - name: Manage network resources
