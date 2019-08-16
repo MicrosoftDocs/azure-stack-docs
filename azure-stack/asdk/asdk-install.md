@@ -1,6 +1,6 @@
 ---
-title: Install the Azure Stack Development Kit (ASDK) | Microsoft Docs
-description: Describes how to install the Azure Stack Development Kit (ASDK).
+title: Install the ASDK | Microsoft Docs
+description: Learn how to install the Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -21,8 +21,8 @@ ms.lastreviewed: 02/08/2019
 
 ---
 
-# Install the Azure Stack Development Kit (ASDK)
-After [preparing the ASDK host computer](asdk-prepare-host.md), the ASDK can be deployed into the CloudBuilder.vhdx image using the following steps in this article.
+# Install the ASDK
+After [preparing the ASDK host computer](asdk-prepare-host.md), the Azure Stack Development Kit (ASDK) can be deployed into the CloudBuilder.vhdx image using the following steps in this article.
 
 ## Install the ASDK
 The steps in this article show you how to deploy the ASDK using a graphical user interface (GUI) provided by downloading and running the **asdk-installer.ps1** PowerShell script.
