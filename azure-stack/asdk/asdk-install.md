@@ -73,7 +73,7 @@ The steps in this article show you how to deploy the ASDK using a graphical user
     > [!TIP]
     > Here you can also copy the PowerShell setup commands that'll be used to install the ASDK. This is helpful if you ever need to [redeploy the ASDK on the host computer using PowerShell](asdk-deploy-powershell.md).
 
-8. If you're performing an Azure AD deployment, you'll be prompted to enter your Azure AD global admin account credentials a few minutes after setup starts.
+8. If you're doing an Azure AD deployment, you'll be prompted to enter your Azure AD global admin account credentials a few minutes after setup starts.
 
 9. The deployment process will take a few hours, during which time the host computer will automatically reboot once. If you want to monitor the deployment progress, sign in as azurestack\AzureStackAdmin after the ASDK host restarts. When the deployment succeeds, the PowerShell console displays: **COMPLETE: Action 'Deployment'**. 
     > [!IMPORTANT]
