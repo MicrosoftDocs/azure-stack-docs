@@ -38,7 +38,7 @@ Ensure the output returns **FullLanguage**. If any other language mode is return
 
 The Azure AD account used for registration needs to have access to the Azure subscription and have permissions to create identity apps and service principals in the directory associated with that subscription. We recommend that you register Azure Stack with Azure by [creating a service account to use for registration](../operator/azure-stack-registration-role.md) rather than using global admin credentials.
 
-## Register Azure Stack with Azure
+## Register the ASDK
 
 Follow these steps to register the ASDK with Azure.
 
