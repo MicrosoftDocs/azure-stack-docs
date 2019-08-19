@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack Development Kit release notes | Microsoft Docs
-description: Improvements, fixes, and known issues for Azure Stack Development Kit.
+title: ASDK Release Notes | Microsoft Docs
+description: Improvements, fixes, and known issues for Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -21,7 +21,7 @@ ms.lastreviewed: 07/25/2019
 
 # ASDK release notes
 
-This article provides information about changes, fixes, and known issues in the Azure Stack Development Kit (ASDK). If you're not sure which version you're running, you can [use the portal to check](../operator/azure-stack-updates.md#determine-the-current-version).
+This article provides info on changes, fixes, and known issues in the Azure Stack Development Kit (ASDK). If you're not sure which version you're running, you can [use the portal to check](../operator/azure-stack-updates.md#determine-the-current-version).
 
 Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [RSS feed](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
 
@@ -35,7 +35,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 
 ### Fixed and known issues
 
-- When creating virtual machine resources using some Marketplace images, you might not be able to complete the deployment. As a workaround, you can click on the **Download template and parameters** link in the **Summary** page and click on the **Deploy** button in the **Template** blade.
+- When creating VM resources using some Marketplace images, you might not be able to complete the deployment. As a workaround, you can click on the **Download template and parameters** link in the **Summary** page and click on the **Deploy** button in the **Template** blade.
 - For a list of Azure Stack issues fixed in this release, see [this section](../operator/azure-stack-release-notes-1907.md#fixes) of the Azure Stack release notes.
 - For a list of known issues, see [this article](../operator/azure-stack-release-notes-known-issues-1907.md).
 - Note that [available Azure Stack hotfixes](../operator/azure-stack-release-notes-1907.md#hotfixes) are not applicable to the Azure Stack ASDK.
@@ -48,11 +48,11 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 
 ### Changes
 
-- Added an **AzS-SRNG01** support ring VM hosting the log collection service for Azure Stack. For more information, see [Virtual machine roles](asdk-architecture.md).
+- Added an **AzS-SRNG01** support ring VM hosting the log collection service for Azure Stack. For more info, see [Virtual machine roles](asdk-architecture.md).
 
 ### Fixed and known issues
 
-- When creating virtual machine resources using some Marketplace images, you might not be able to complete the deployment. As a workaround, you can click on the **Download template and parameters** link in the **Summary** page and click on the **Deploy** button in the **Template** blade.
+- When creating VM resources using some Marketplace images, you might not be able to complete the deployment. As a workaround, you can click on the **Download template and parameters** link in the **Summary** page and click on the **Deploy** button in the **Template** blade.
 - For a list of Azure Stack issues fixed in this release, see [this section](../operator/azure-stack-release-notes-1906.md#fixes) of the Azure Stack release notes.
 - For a list of known issues, see [this article](../operator/azure-stack-release-notes-known-issues-1906.md).
 - Note that [available Azure Stack hotfixes](../operator/azure-stack-release-notes-1906.md#hotfixes) are not applicable to the Azure Stack ASDK.
@@ -95,5 +95,5 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 
 - For a list of other Azure Stack issues fixed in this release, see [this section](../operator/azure-stack-release-notes-1904.md#fixes) of the Azure Stack release notes.
 - For a list of known issues, see [this article](../operator/azure-stack-release-notes-known-issues-1904.md).
-- Note that [available Azure Stack hotfixes](../operator/azure-stack-release-notes-1904.md#hotfixes) are not applicable to the Azure Stack ASDK.
+- Note that [available Azure Stack hotfixes](../operator/azure-stack-release-notes-1904.md#hotfixes) aren't applicable to the Azure Stack ASDK.
 
