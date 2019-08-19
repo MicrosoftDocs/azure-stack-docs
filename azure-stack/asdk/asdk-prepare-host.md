@@ -1,6 +1,6 @@
 ---
-title: Prepare the Azure Stack Development Kit (ASDK) host computer | Microsoft Docs
-description: Describes how to prepare the Azure Stack Development Kit (ASDK) host computer for ASDK installation.
+title: Prepare the ASDK host computer | Microsoft Docs
+description: Learn how to prepare the Azure Stack Development Kit (ASDK) host computer for ASDK installation.
 services: azure-stack
 documentationcenter: ''
 author: justinha
