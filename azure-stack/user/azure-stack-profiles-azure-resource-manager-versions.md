@@ -38,7 +38,7 @@ For an explanation of API profiles and version release cadence for Azure Stack, 
 |-----------------------------------------------|-----------------------------------------------------|
 | Microsoft.Compute | 2017-12-01 |
 | Microsoft.Network | 2017-10-01<br>VPN Gateway will be 2017-10-01 |
-| Microsoft.Storage (Data Plane) | 2017-10-01 |
+| Microsoft.Storage (Data Plane) | 2017-11-09 |
 | Microsoft.Storage (Control Plane) | 2017-10-01 |
 | Microsoft.Web | 2018-02-01 |
 | Microsoft.KeyVault | 2016-10-01 (Not changing) |
