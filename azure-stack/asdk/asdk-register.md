@@ -1,6 +1,6 @@
 ---
 title: Register the ASDK with Azure | Microsoft Docs
-description: Describes how to register Azure Stack with Azure to enable marketplace syndication and usage reporting.
+description: Learn how to register Azure Stack with Azure to enable marketplace syndication and usage reporting.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -16,19 +16,17 @@ ms.date: 06/14/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 06/14/2019
-
-
 ---
 
-# Azure Stack registration
+# Register the ASDK with Azure
 
 You can register your Azure Stack Development Kit (ASDK) installation with Azure to download marketplace items from Azure and to set up commerce data reporting back to Microsoft. Registration is required to support full Azure Stack functionality, including marketplace syndication. Registration is required to enable you to test important Azure Stack functionality like marketplace syndication and usage reporting. After you register Azure Stack, usage is reported to Azure commerce. You can see it under the subscription you used for registration. However, ASDK users aren't charged for any usage they report.
 
-If you do not register your ASDK, you might see an **Activation Required** warning alert that advises you to register your Azure Stack Development Kit. This behavior is expected.
+If you don't register your ASDK, you might see an **Activation Required** warning alert that advises you to register your ASDK. This behavior is expected.
 
 ## Prerequisites
 
-Before using these instructions to register the ASDK with Azure, ensure that you have installed the Azure Stack PowerShell and downloaded the Azure Stack tools as described in the [post-deployment configuration](asdk-post-deploy.md) article.
+Before using these instructions to register the ASDK with Azure, ensure that you've installed the Azure Stack PowerShell and downloaded the Azure Stack tools as described in the [post-deployment configuration](asdk-post-deploy.md) article.
 
 In addition, the PowerShell language mode must be set to **FullLanguage** on the computer used to register the ASDK with Azure. To verify that the current language mode is set to full, open an elevated PowerShell window and run the following PowerShell commands:
 
@@ -38,7 +36,7 @@ $ExecutionContext.SessionState.LanguageMode
 
 Ensure the output returns **FullLanguage**. If any other language mode is returned, registration will need to be run on another computer or the language mode will need to be set to **FullLanguage** before continuing.
 
-The Azure AD account used for registration needs to have access to the Azure subscription and have permissions to create identity applications and service principals in the directory associated with that subscription. We recommend that you register Azure Stack with Azure using least-privilege administration by [creating a service account to use for registration](../operator/azure-stack-registration-role.md) rather than using global administrator credentials.
+The Azure AD account used for registration needs to have access to the Azure subscription and have permissions to create identity apps and service principals in the directory associated with that subscription. We recommend that you register Azure Stack with Azure by [creating a service account to use for registration](../operator/azure-stack-registration-role.md) rather than using global admin credentials.
 
 ## Register Azure Stack with Azure
 
