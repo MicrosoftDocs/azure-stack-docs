@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/05/2019
+ms.date: 08/20/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 08/05/2019
+ms.lastreviewed: 08/20/2019
 ---
 
 # Prepare the ASDK host computer
