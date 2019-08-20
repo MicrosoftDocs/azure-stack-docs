@@ -33,7 +33,7 @@ You can specify the cluster in a document file using the JSON format called the 
 
 This section looks at creating an API model for your cluster.
 
-1.  Start by using an Azure Stack [example](https://github.com/Azure/aks-engine/tree/master/examples/azure-stack) API Model file and make a local copy for your deployment. From the machine you installed AKS Engine, run:
+1.  Start by using an Azure Stack [example](https://github.com/Azure/aks-engine/tree/master/examples/azure-stack) API Model file and make a local copy for your deployment. From the machine, you installed AKS Engine, run:
 
     ```bash
     curl -o kubernetes-azurestack.json https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json
@@ -42,7 +42,7 @@ This section looks at creating an API model for your cluster.
     > [!Note]  
     > If you are disconnected you can download the file and manually copy it to the disconnected machine where you plan to edit it. You can copy the file to your Linux machine using tools such as [PuTTY or WinSCP](https://www.suse.com/documentation/opensuse103/opensuse103_startup/data/sec_filetrans_winssh.html).
 
-2.  To open the `kubernetes-azurestack.json` in an editor you can use nano:
+2.  To open the  in an editor, you can use nano:
 
     ```bash
     nano ./kubernetes-azurestack.json
@@ -51,7 +51,7 @@ This section looks at creating an API model for your cluster.
     > [!Note]  
     > If you don't have nano installed, you can install nano on Ubuntu: `sudo apt-get install nano`.
 
-3.  In the kubernetes-azurestack.json file find `orchestratorRelease`. Select one of the supported Kubernetes versions. For example, 1.11, 1.12, 1.13, 1.14. The versions are often updates. Specify the version as x.xx rather than x.xx.x. For a list of current versions, see [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). You can find out the supported version by running the following AKS Engine command:
+3.  In the kubernetes-azurestack.json file, find `orchestratorRelease`. Select one of the supported Kubernetes versions. For example, 1.11, 1.12, 1.13, 1.14. The versions are often updates. Specify the version as x.xx rather than x.xx.x. For a list of current versions, see [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). You can find out the supported version by running the following AKS Engine command:
 
     ```bash
     aks-engine get-versions
@@ -64,7 +64,7 @@ This section looks at creating an API model for your cluster.
     | Field | Description |
     | --- | --- |
     | dnsPrefix | Enter a unique string that will serve to identify the hostname of VMs. For example, a name based on the resource group name. |
-    | count |  Enter the number of masters you want for your deployment. The minimum for an HA deployment is 3, but 1 is allow for non-HA deployments. |
+    | count |  Enter the number of masters you want for your deployment. The minimum for an HA deployment is 3, but 1 is allowed for non-HA deployments. |
     | vmSize |  Enter [a size supported by Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example "Standard\_D2\_v2" |
 
     If you are planning a disconnected deployment, find `"distro": "ubuntu"`. Change `ubuntu` to `aks`. The distro field only supports these two values.
@@ -90,8 +90,8 @@ This section looks at creating an API model for your cluster.
 
     | Field | Description |
     | --- | --- |
-    | clientId | enter the Service Principal app id. |
-    | secret | corresponding secret. |
+    | clientId | Enter the service principal GUID. |
+    | secret | Enter the service principal secret. |
 
     > [!Note]  
     >  If they are not provided in the API model, you can specify them as part of the parameters in the AKS Engine command line.
@@ -127,11 +127,11 @@ After you have collected all the required values in your API model, you can crea
     --subscription-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
     ```
 
-3.  If for some reason the execution fails after the output directory has been created, you can correct the issue and re-run the command. If you are rerunning the deployment and had used the same output directory before, the AKS Engine will return an error saying that the directory already exists, you can overwrite the existing directory by using the parameter: `--force-overwrite`.
+3.  If for some reason the execution fails after the output directory has been created, you can correct the issue and rerun the command. If you are rerunning the deployment and had used the same output directory before, the AKS Engine will return an error saying that the directory already exists, you can overwrite the existing directory by using the parameter: `--force-overwrite`.
 
 4.  Notice the `–azure-env` parameter, you need to specify it when scaling a cluster in Azure Stack.
 
-5.  Save the AKS Engine cluster configuration. In the output directory locate the file `apimodel.json` and save it to a secure location. This file will be used as input in all of your other AKS Engine operations.
+5.  Save the AKS Engine cluster configuration. In the output directory, locate the file `apimodel.json` and save it to a secure location. This file will be used as input in all of your other AKS Engine operations.
 
     > [!Note]  
     > The generated `apimodel.json` file in the output directory will contain the SPN credentials and SSH public key you use in the input API model. It also has all the other metadata needed by the AKS Engine to perform all other operations. If you lose it, the AKS Engine will not be able configure the cluster
@@ -147,7 +147,7 @@ Deploy mysql using Helm to check your cluster.
 
 2. From a machine with access to your Azure Stack instance, connect via SSH into the new master node using a client such as PuTTY or MobaXterm. 
 
-3. For the SSH username you use "azureuser" and the private key file of the key pair you provided for the deployment of the cluster.
+3. For the SSH username, you use "azureuser" and the private key file of the key pair you provided for the deployment of the cluster.
 
 4.  Run the following commands:
 

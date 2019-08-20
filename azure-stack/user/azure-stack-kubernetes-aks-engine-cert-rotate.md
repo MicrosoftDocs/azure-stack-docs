@@ -23,19 +23,19 @@ ms.lastreviewed: 08/22/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can rotate your Kubernetes cluster certificates with the AKS Engine rotate-certs command. This article contains the instruction on rotating TLS CA and certificates for your AKS Engine cluster.
+You can rotate your Kubernetes cluster certificates with the AKS Engine rotate-certs command. This article has the steps for rotating TLS CA and certificates for your AKS Engine cluster.
 
-## Prerequesites for certificate rotation
+## Prerequisites for certificate rotation
 
 - The **etcd** members must be in a healthy state before rotating the CA and certs. The command `etcdctl cluster-health` will show the health of all of the peers and the cluster.
-- Your cluster definition file (`apimodel.json`) file reflects the current cluster configuration and contains a working ssh private key that has root access to your cluster's nodes. The cluster definition file is stored when the AKS Engine creates your cluster. The storage location is set to be at the default location at `_output/`. This is a child directory from the working parent directory.
+- Your cluster definition file (`apimodel.json`) file reflects the current cluster configuration and has a working ssh private key that has root access to your cluster's nodes. The cluster definition file is stored when the AKS Engine creates your cluster. The storage location is set to be at the default location at `_output/`. This is a child directory from the working parent directory.
 
 ## Preparation for certificate rotation
 
-Before performing any of these instructions on a live cluster
+Before doing any of these instructions on a live cluster
 
 1. Back up your cluster state.
-2. Migrate critical workloads to another cluster.
+2. Migrate critical apps to another cluster.
 
 > [!Caution]  
 > Rotating certificates can break component connectivity and leave the cluster in an unrecoverable state.
@@ -73,9 +73,9 @@ When you run rotate-certs, the AKS Engine:
 
 ## Verification of your cluster
 
-After the above steps, you can verify the success of the CA and certs rotation:
+After the above steps, you can check the success of the CA and certs rotation:
 
-- The old  `kubeconfig`  should  **NOT**  be able to contact the API server, however the new `kubeconfig` should be able to talk to it.
+- The old  `kubeconfig`  should  **not**  be able to contact the API server, but the new `kubeconfig` should be able to talk to it.
 - All nodes are expected to be `Ready`, all pods are expected to be  `Running`.
 - Try to fetch the logs of  `kube-apiserver`,  `kube-scheduler`  and  `kube-controller-namager`. They should all be running correctly without printing errors, for example, `kubectl logs kube-apiserver-k8s-master-58431286-0 -n kube-system`.
 
@@ -86,11 +86,11 @@ The certificate rotation tool hasn't been tested with the following cluster conf
 - Private clusters
 - Clusters using keyvault references in certificate profile
 - Clusters using Cosmos **etcd**
-- Clusters with already expired certificates an an unhealthy **etcd**
+- Clusters with already expired certificates an unhealthy **etcd**
 
-The rotation involves rebooting the nodes. ALL VMs in the resource group will restart as part of running the `rotate-certs` command. If the resource group contains any VMs that are not part of the cluster, they will be restarted as well.
+The rotation involves rebooting the nodes. ALL VMs in the resource group will restart as part of running the `rotate-certs` command. If the resource group has any VMs that anre't part of the cluster, they will be restarted as well.
 
-The tool isn't currently idempotent. This means that if the rotation fails halfway though or is interrupted, you will most likely not be able to re-run the operation without manual intervention. There is a risk that your cluster will become unrecoverable. Before your rotate your certiicates follow the steps in [Preparation for certificate rotation](#preparation-for-certificate-rotation).
+The tool isn't currently idempotent. This means that if the rotation fails halfway though or is interrupted, you will most likely not be able to rerun the operation without manual intervention. There is a risk that your cluster will become unrecoverable. Before your rotate your certificates follow the steps in [Preparation for certificate rotation](#preparation-for-certificate-rotation).
 
 ## Next steps
 

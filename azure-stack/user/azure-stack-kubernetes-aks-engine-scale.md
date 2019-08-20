@@ -23,7 +23,7 @@ ms.lastreviewed: 08/22/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can scale your cluster with the AKS Engine using the **scale** command. The **scale** command re-uses your cluster configuration file (`apimodel.json`) inside the output directory as input for a new Azure Resource Manger template deployment. The engine executes the scaling operation against the specified agent pool. When the scaling operation is done, the engine updates the cluster definition in that same `apimodel.json` file to reflect the new node count in order to reflect the updated, current cluster configuration.
+You can scale your cluster with the AKS Engine using the **scale** command. The **scale** command reuses your cluster configuration file (`apimodel.json`) inside the output directory as input for a new Azure Resource Manger template deployment. The engine executes the scaling operation against the specified agent pool. When the scaling operation is done, the engine updates the cluster definition in that same `apimodel.json` file to reflect the new node count in order to reflect the updated, current cluster configuration.
 
 ## Scale a cluster
 
@@ -31,14 +31,14 @@ The `aks-engine scale` command can increase or decrease the number of nodes in a
 
 ### Values for the cluster
 
-The following parmaters are used by the scale command to find your cluster definition file and update your cluster.
+The following parameters are used by the scale command to find your cluster definition file and update your cluster.
 
-| Paramater | Example | Description |
+| Parameter | Example | Description |
 | --- | --- | --- | 
-| azure-env | AzureStackCloud | For Azure Stack the environmetn names needs to be set to `AzureStackCloud`. | 
-| location | local | This is the region for your Azure Stack instance. For a ASDK the region is set to `local`.  | 
+| azure-env | AzureStackCloud | For Azure Stack the environment names needs to be set to `AzureStackCloud`. | 
+| location | local | This is the region for your Azure Stack instance. For a ASDK, the region is set to `local`.  | 
 | resource-group | kube-rg | The name of the resource group that contains your cluster. | 
-| subscription-id |  | The GUID of the subscription that contains the resoruces used by your cluster. Make sure you have enough quota on your subscription to scale. | 
+| subscription-id |  | The GUID of the subscription that contains the resources used by your cluster. Make sure you have enough quota on your subscription to scale. | 
 | client-id |  | The client ID of the service principal used in creating your cluster from the AKS Engine. | 
 | client-secret |  | The service principal secret used when creating your cluster. | 
 | api-model | kube-rg/apimodel.json | The path to your cluster definition file (apimodel.json). This may be at:  _output/\<dnsPrefix>/apimodel.json | 

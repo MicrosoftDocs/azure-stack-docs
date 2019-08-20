@@ -27,12 +27,12 @@ You can use a Linux machine in your Azure Stack to host the AKS Engine in order 
 
 ## Prepare the client VM
 
-The AKS Engine is a command line tool used to deploy and manage your Kubernetes cluster. You can run the engine on a machine in your Azure Stack. From this machine you will deploy the IaaS resources needed to run your cluster. You can then use the machine running the engine to perform management tasks on your cluster. 
+The AKS Engine is a command-line tool used to deploy and manage your Kubernetes cluster. You can run the engine on a machine in your Azure Stack. From this machine, you will deploy the IaaS resources needed to run your cluster. You can then use the machine running the engine to perform management tasks on your cluster. 
 
 When choosing your client machine, consider:
 
 1. If the client machine should be recoverable in case of a disaster.
-2. If you need your cluster management machine to be highly-available.
+2. If you need your cluster management machine to be highly available.
 3. How you will connect to the client machine and how the machine will interact with your cluster.
 
 ## Install in a connected environment
@@ -59,7 +59,7 @@ You can install the client VM to manager your Kubernetes cluster on an Azure Sta
 
 3. Create a Linux VM in your Azure Stack. For instructions, see [Quickstart: Create a Linux server VM by using the Azure Stack portal](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-linux-portal).
 
-3.  From the Azure Stack storage account blob URL where you uploaded the archive file (*.tar.gz), download the file to your management VM. Extract the archive to the directory `/usr/local/bin`.
+3.  From the Azure Stack storage account blob URL were you uploaded the archive file (*.tar.gz), download the file to your management VM. Extract the archive to the directory `/usr/local/bin`.
 
 4. Connect to your VM.
 
@@ -88,7 +88,7 @@ If you are unable to verify that you have installed the AKS Engine on your clien
 
 You will need to add a certificate when running the client VM for the AKS engine on the ASDK.
 
-When you are using an ASDK your ARM endpoint is using a self-signed certificate, you need to explicitly add this certificate to the machine’s trusted certificate store. You can find the ASDK root cert in any VM you deploy in the ASDK. For example, in an Ubuntu VM you will find it in this directory `/var/lib/waagent/Certificates.pem`. 
+When you are using an ASDK your Azure Resource Manager endpoint is using a self-signed certificate, you need to explicitly add this certificate to the machine’s trusted certificate store. You can find the ASDK root cert in any VM you deploy in the ASDK. For example, in an Ubuntu VM you will find it in this directory `/var/lib/waagent/Certificates.pem`. 
 
 Copy the certificate file with the following command:
 
