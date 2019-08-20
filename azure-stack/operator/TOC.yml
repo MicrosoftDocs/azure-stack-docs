@@ -86,6 +86,8 @@
         href: azure-stack-network.md
       - name: Border connectivity
         href: azure-stack-border-connectivity.md
+      - name: Switch configuration
+        href: azure-stack-customer-defined.md
       - name: DNS integration
         href: azure-stack-integrate-dns.md
       - name: Firewall integration
@@ -171,6 +173,8 @@
         href: azure-stack-updates.md
       - name: Apply updates
         href: azure-stack-apply-updates.md
+      - name: Apply OEM updates
+        href: azure-stack-update-oem.md
       - name: Monitor update status
         href: azure-stack-monitor-update.md
     - name: Monitor health and alerts

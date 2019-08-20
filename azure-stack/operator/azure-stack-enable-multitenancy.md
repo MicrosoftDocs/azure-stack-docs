@@ -67,11 +67,15 @@ $ResourceGroupName = "system.local"
 ## Replace the value below with the region location of the resource group. 
 $location = "local"
 
+# Subscription Name
+$SubscriptionName = "Default Provider Subscription"
+
 Register-AzSGuestDirectoryTenant -AdminResourceManagerEndpoint $adminARMEndpoint `
  -DirectoryTenantName $azureStackDirectoryTenant `
  -GuestDirectoryTenantName $guestDirectoryTenantToBeOnboarded `
  -Location $location `
- -ResourceGroupName $ResourceGroupName
+ -ResourceGroupName $ResourceGroupName `
+ -SubscriptionName $SubscriptionName
 ```
 
 ### Configure guest directory

@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 08/20/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
@@ -51,7 +51,7 @@ ms.lastreviewed: 05/07/2019
    >
    >
 
-8. In the **Manifest.json** file, change **name** to the name of your Marketplace item. Also change **publisher** to your name or company.
+8. In the **Manifest.json** file, change **name** to the name of your Marketplace item. Also change **publisher** to your name or company. Before publishing the image, update the manifest.json file and update this line: "name": "xxx". Be sure to use a different name for each image version.
 9. Under **artifacts**, change **name** and **path** to the correct information for the Azure Resource Manager template that you included:
 
    ```json
@@ -77,11 +77,11 @@ ms.lastreviewed: 05/07/2019
 12. To package the folders into an .azpkg file, open a command prompt and run the following command:
 
     ```shell
-    AzureGalleryPackager.exe package -m <path to manifest.json> -o <output location for the package>
+    AzureGalleryPackager.exe package -m <absolute path to manifest.json> -o <output location for the package>
     ```
 
     > [!NOTE]
-    > The full path to the output package must exist. For example, if the output path is C:\MarketPlaceItem\yourpackage.azpkg, the folder **C:\MarketPlaceItem** must exist.
+    > The full path to the manifest.json file, as well as the output package, must exist. For example, if the output path is C:\MarketPlaceItem\yourpackage.azpkg, the folder **C:\MarketPlaceItem** must exist.
     >
     >
 
@@ -154,7 +154,7 @@ The Marketplace uses the following icons:
 | Large |115 px |115 px |Always required |
 | Medium |90 px |90 px |Always required |
 | Small |40 px |40 px |Always required |
-| Screenshot |533 px |32 px |Optional |
+| Screenshot |533 px |324 px |Always required |
 
 ### Categories
 
