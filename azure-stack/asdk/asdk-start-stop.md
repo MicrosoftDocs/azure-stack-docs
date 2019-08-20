@@ -61,7 +61,7 @@ Regardless of how the ASDK was shut down, you should use the following steps to 
    ```
 6. Review the output to ensure that Azure Stack services have restarted successfully.
 
-To learn more about the recommended procedures to properly shut down and restart Azure Stack services, see [Start and stop Azure Stack](../operator/azure-stack-start-and-stop).
+To learn more about the recommended procedures to properly shut down and restart Azure Stack services, see [Start and stop Azure Stack](../operator/azure-stack-start-and-stop.md).
 
 ## Troubleshoot startup and shutdown 
 Perform these steps if Azure Stack services don't successfully start within two hours after you power on your ASDK host computer:
