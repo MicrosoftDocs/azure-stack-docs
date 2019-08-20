@@ -50,11 +50,11 @@ If you download both versions of the image, only the latest version is visible t
 
 ### What if my user incorrectly checked the "I have a license" box in previous Windows builds, and they don't have a license?
 
-See [Convert Windows Server VMs with benefit back to pay-as-you-go](/azure/virtual-machines/windows/hybrid-use-benefit-licensing#powershell-1).
+See [Convert Windows Server BYOL VMs to pay-as-you-go](/azure/virtual-machines/windows/hybrid-use-benefit-licensing#powershell-1).
 
 ### What if I have an older image and my user forgot to check the "I have a license" box, or we use our own images and we do have Enterprise Agreement entitlement?
 
-See [Convert an existing VM using Azure Hybrid Benefit for Windows Server](/azure/virtual-machines/windows/hybrid-use-benefit-licensing#convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server). Note that the Azure Hybrid Benefit does not apply to Azure Stack, but the effect of this setting does apply.
+See [Convert an existing Windows Server VM to BYOL](/azure/virtual-machines/windows/hybrid-use-benefit-licensing#convert-an-existing-vm-using-azure-hybrid-benefit-for-windows-server). Note that the Azure Hybrid Benefit does not apply to Azure Stack, but the effect of this setting does apply.
 
 ### What about other VMs that use Windows Server, such as SQL or Machine Learning Server?
 

@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2019
+ms.date: 08/16/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 08/02/2019
+ms.lastreviewed: 08/16/2019
 ---
 
 # Azure Stack 1907 update
@@ -72,6 +72,8 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 - Improved storage of internal logs for administrator operations. This results in improved performance and reliability during administrator operations by minimizing the memory and storage consumption of internal log processes. You might also notice improved page load times of the update blade in the administrator portal. As part of this improvement, update logs older than 6 months will no longer be available in the system. If you require logs for these updates, be sure to [Download the summary](azure-stack-apply-updates.md) for all update runs older than 6 months before performing the 1907 update.
 
 ### Changes
+
+- Azure Stack version 1907 contains a warning alert that instructs operators to be sure to update their system's OEM package to version 2.1 or later **before** updating to version 1908. Hardware providers will be releasing OEM package 2.1 at the same time as Azure Stack version 1908. OEM package 2.1 or later will be a prerequisite for Azure Stack version 1908. For more information about how to download OEM package 2.1 or later, contact your system's hardware provider.
 
 - Added a new outbound rule (HTTPS) to enable communication for Azure Stack diagnostic log collection service. For more information, see [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
 
@@ -144,7 +146,7 @@ The 1907 release of Azure Stack must be applied on the 1906 release with the fol
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1907.8.37](https://support.microsoft.com/help/4515650)
+- [Azure Stack hotfix 1.1907.12.44](https://support.microsoft.com/help/4517473)
 
 ## Automatic update notifications
 

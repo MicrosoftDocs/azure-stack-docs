@@ -298,7 +298,7 @@ The following screenshot is an example of a DNS records page:
 
 2. Add a CNAME record to map a subdomain to the app's default hostname.
 
-   For the www.northwindcloud.com domain example, add a CNAME record that maps the name to <app\_name>.azurewebsites.net.
+   For the www\.northwindcloud.com domain example, add a CNAME record that maps the name to <app\_name>.azurewebsites.net.
 
 After adding the CNAME, the DNS records page looks like the following example:
 

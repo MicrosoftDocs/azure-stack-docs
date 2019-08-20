@@ -39,7 +39,7 @@ Use the following steps to configure on-demand log collection using the SAS URL 
    ![Screenshot of on-demand log collection](media/azure-stack-automatic-log-collection/collect-logs-now.png)
 
 >[!NOTE]
->If automatic diagnostic log collection is enabled, **Help and Support** shows when log collection is in progress. If you click **Collect logs now** to collect logs from a specfic time while automatic log collection is in progress, on-demand collection begins after automatic log collection is complete. 
+>If automatic diagnostic log collection is enabled, **Help and Support** shows when log collection is in progress. If you click **Collect logs now** to collect logs from a specific time while automatic log collection is in progress, on-demand collection begins after automatic log collection is complete. 
 
 ## Using PEP
 

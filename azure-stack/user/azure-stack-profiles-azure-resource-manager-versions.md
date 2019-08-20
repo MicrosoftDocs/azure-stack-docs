@@ -11,7 +11,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2019
+ms.date: 08/12/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/08/2019
@@ -29,7 +29,7 @@ The API profile uses three naming conventions:
 
 For an explanation of API profiles and version release cadence for Azure Stack, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md).
 
-> [!Note]
+> [!NOTE]
 > The **latest** API profile contains the latest version of the resource provider API, and is not listed in this article.
 
 ## Overview of the 2019-03-01-hybrid profile
@@ -38,7 +38,7 @@ For an explanation of API profiles and version release cadence for Azure Stack, 
 |-----------------------------------------------|-----------------------------------------------------|
 | Microsoft.Compute | 2017-12-01 |
 | Microsoft.Network | 2017-10-01<br>VPN Gateway will be 2017-10-01 |
-| Microsoft.Storage (Data Plane) | 2017-10-01 |
+| Microsoft.Storage (Data Plane) | 2017-11-09 |
 | Microsoft.Storage (Control Plane) | 2017-10-01 |
 | Microsoft.Web | 2018-02-01 |
 | Microsoft.KeyVault | 2016-10-01 (Not changing) |
@@ -195,5 +195,5 @@ The Storage Resource Provider (SRP) lets you manage your storage account and key
 
 ## Next steps
 
-* [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md)
-* [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md)  
+- [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md)
+- [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md)  

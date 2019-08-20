@@ -73,28 +73,7 @@ This /26 network is the subnet that contains the routable point-to-point IP /30 
 ### Switch management network
 This /29 (6 host IPs) network is dedicated to connecting the management ports of the switches. It allows out-of-band access for deployment, management, and troubleshooting. It is calculated from the switch infrastructure network mentioned above.
 
-## Publish Azure Stack services
-You'll need to make Azure Stack services available to users from outside Azure Stack. Azure Stack sets up various endpoints for its infrastructure roles. These endpoints are assigned VIPs from the public IP address pool. A DNS entry is created for each endpoint in the external DNS zone, which was specified at deployment time. For example, the user portal is assigned the DNS host entry of portal.*&lt;region>.&lt;fqdn>*.
 
-### Ports and URLs
-To make Azure Stack services (such as the portals, Azure Resource Manager, DNS, etc.) available to external networks, you must allow inbound traffic to these endpoints for specific URLs, ports, and protocols.
- 
-In a deployment where a transparent proxy uplinks to a traditional proxy server, you must allow specific ports and URLs for both [inbound](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound) and [outbound](azure-stack-integrate-endpoints.md#ports-and-urls-outbound) communication. These include ports and URLs for identity, the marketplace, patch and update, registration, and usage data.
-
-### MAC Address Pool
-
-Azure Stack uses a static MAC address pool to automatically generate and assign MAC address to virtual machines.
-This MAC Address Pool is automatically generated during deployment and uses the following range:
-
-- StartMacAddress: 00-1D-D8-B7-00-00
-- EndMacAddress : 00-1D-D8-F4-FF-FF
-
-> [!Note]  
-> This MAC Address pool is the same across each Azure Stack system and is not configurable.
-
-Depending on how the virtual networks connect with existing corporate networks, you may expect duplicated MAC addresses of virtual machines.
-
-More information can be found about MAC Address pool utilization using the cmdlet [Get-AzsMacAddressPool](https://docs.microsoft.com/powershell/module/azs.fabric.admin/get-azsmacaddresspool) in the Azure Stack Administrator PowerShell Module.
 
 
 ## Next steps

@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 08/12/2019
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 05/07/2019
@@ -25,7 +25,7 @@ ms.lastreviewed: 05/07/2019
 
 The Azure Stack Marketplace is a collection of services, applications, and resources customized for Azure Stack. Resources include networks, virtual machines, storage, and more. Use the Marketplace to create new resources and deploy new applications; or browse and choose the items you want to use. To use a Marketplace item, users must subscribe to an offer that grants them access to the item.
 
-As an Azure Stack operator, you decide which items to add (publish) to the Marketplace. You can publish items such as databases, App Services, and so on. Publishing makes them visible to all your users. You can publish custom items that you create, or you can publish items from a growing [list of Azure Marketplace items](azure-stack-marketplace-azure-items.md). When you publish an item to the Marketplace, users can see it within five minutes.
+As an Azure Stack operator, you decide which items to add (publish) to the Marketplace. You can publish items such as databases, App Services, and more. Publishing makes items visible to all your users. You can publish custom items that you create, or you can publish items from a growing [list of Azure Marketplace items](azure-stack-marketplace-azure-items.md). When you publish an item to the Marketplace, users can see it within five minutes.
 
 > [!CAUTION]  
 > All gallery item artifacts, including images and JSON files, are accessible without authentication after making them available in the Azure Stack Marketplace. For more considerations when publishing custom marketplace items, see [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md).
@@ -36,7 +36,7 @@ To open the Marketplace, in the administrator portal select **+ Create a resourc
 
 ## Marketplace items
 
-An Azure Stack Marketplace item is a service, application, or resource that your users can download and use. All Azure Stack Marketplace items are visible to all your users, including administrative items such as plans and offers. These items do not require a subscription to view, but are non-functional to users.
+An Azure Stack Marketplace item is a service, application, or resource that your users can download and use. All Azure Stack Marketplace items are visible to all your users, including administrative items such as plans and offers. These administrative items do not require a subscription to view, but are non-functional to users.
 
 Every Marketplace item has:
 
