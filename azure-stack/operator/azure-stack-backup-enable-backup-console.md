@@ -13,10 +13,10 @@ ms.workload: naS
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 08/21/2019
 ms.author: justinha
 ms.reviewer: hectorl
-ms.lastreviewed: 03/14/2019
+ms.lastreviewed: 08/21/2019
 
 ---
 # Enable backup for Azure Stack from the administration portal
@@ -49,7 +49,7 @@ Administrators and users are responsible for backing up and restoring IaaS and P
     > [!Note]  
     > If you want to archive backups older than the retention period, make sure to backup the files before the scheduler deletes the backups. If you reduce the backup retention period (e.g. from 7 days to 5 days), the scheduler will delete all backups older than the new retention period. Make sure you are ok with the backups getting deleted before you update this value. 
 
-9. In Encryption Settings provide a certificate in the Certificate .cer file box. Backup files are encrypted using this public key in the certificate. You should provide a certificate that only contains the public key portion when you configure backup settings. Once you set this certificate for the first time or rotate the certificate in the future, you can only view the thumbprint of the certificate. You cannot download or view the uploaded certificate file. To create the certificate file, run the following PowerShell command to create a self-signed certificate with the public and private keys and export a certificate with only the public key portion.
+9. In Encryption Settings provide a certificate in the Certificate .cer file box. Backup files are encrypted using this public key in the certificate. You should provide a certificate that only contains the public key portion when you configure backup settings. Once you set this certificate for the first time or rotate the certificate in the future, you can only view the thumbprint of the certificate. You cannot download or view the uploaded certificate file. To create the certificate file, run the following PowerShell command to create a self-signed certificate with the public and private keys and export a certificate with only the public key portion. You can put the cert anywhere that can be accessed from admin portal.
 
 	```powershell
 
