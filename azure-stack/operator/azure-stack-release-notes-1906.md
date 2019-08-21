@@ -145,7 +145,7 @@ The 1906 release of Azure Stack must be applied on the 1905 release with the fol
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1906.11.52](https://support.microsoft.com/help/4513119)
+- [Azure Stack hotfix 1.1906.12.54](https://support.microsoft.com/help/4518365)
 
 ## Automatic update notifications
 
