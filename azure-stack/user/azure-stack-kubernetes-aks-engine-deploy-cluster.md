@@ -173,5 +173,5 @@ Verify your cluster by deploying mysql with Helm to check your cluster.
 
 ## Next steps
 
-
-- Read about the [The AKS Engine on Azure Stack](azure-stack-kubernetes-aks-engine-overview.md)
+> [!div class="nextstepaction"]
+> [Troubleshoot the AKS Engine on Azure Stack](azure-stack-kubernetes-aks-engine-troubleshoot.md)

@@ -100,4 +100,5 @@ sudo update-ca-certificates
 
 ## Next steps
 
-- Read about the [The AKS Engine on Azure Stack](azure-stack-kubernetes-aks-engine-overview.md)
+> [!div class="nextstepaction"]
+> [Deploy a Kubernetes cluster with the AKS engine on Azure Stack](azure-stack-kubernetes-aks-engine-deploy-cluster.md)

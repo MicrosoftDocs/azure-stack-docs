@@ -95,3 +95,5 @@ The tool isn't currently idempotent. This means that if the rotation fails halfw
 ## Next steps
 
 - Read about the [The AKS Engine on Azure Stack](azure-stack-kubernetes-aks-engine-overview.md)
+- [Upgrade a Kubernetes cluster on Azure Stack](azure-stack-kubernetes-aks-engine-upgrade.md)
+- [Scale a Kubernetes cluster on Azure Stack](azure-stack-kubernetes-aks-engine-scale.md)

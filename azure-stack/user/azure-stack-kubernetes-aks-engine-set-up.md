@@ -65,4 +65,6 @@ You can also install the CLI with the following command:
 
 ## Next steps
 
-- Read about the [The AKS Engine on Azure Stack](azure-stack-kubernetes-aks-engine-overview.md)
+> [!div class="nextstepaction"]
+> [Deploy the AKS Engine on Windows in Azure Stack](azure-stack-kubernetes-aks-engine-deploy-windows.md)
+> [Deploy the AKS Engine on Linux in Azure Stack](azure-stack-kubernetes-aks-engine-deploy-linux.md)
