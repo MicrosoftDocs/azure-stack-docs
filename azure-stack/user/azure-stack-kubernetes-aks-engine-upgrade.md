@@ -25,7 +25,7 @@ ms.lastreviewed: 08/22/2019
 
 ## Upgrade a cluster
 
-The AKS Engine allows you to upgrade the cluster that was originally deployed using the tool. You can maintaining the clusters using the AKS Engine. Your maintenance tasks are similar to any IaaS system. You should be aware of the availability of new updates and use the AKS Engine to apply them. 
+The AKS Engine allows you to upgrade the cluster that was originally deployed using the tool. You can maintain the clusters using the AKS Engine. Your maintenance tasks are similar to any IaaS system. You should be aware of the availability of new updates and use the AKS Engine to apply them. 
 
 Microsoft doesn't manage your cluster.
 

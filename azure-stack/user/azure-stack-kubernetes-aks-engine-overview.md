@@ -23,11 +23,11 @@ ms.lastreviewed: 08/22/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can use the AKS Engine command-line tool to deploy and manage a Kubernetes cluster on Azure and Azure Stack. By using the engine, you can deploy your cluster in both connected and disconnected environments. This article provides an overview of the AKS Engine, supported scenarios for using the engine with Azure Stack, and an introduction to operations such as upgrade, scale, and rotate secrets for your Kubernetes cluster.
+You can use the AKS Engine command-line tool to deploy and manage a Kubernetes cluster on Azure and Azure Stack. Use the engine to deploy a cluster in both connected and disconnected environments. This article provides an overview of the AKS Engine, supported scenarios for using the engine with Azure Stack, and an introduction to operations such as upgrade, scale, and rotate secrets.
 
 ## Overview of the AKS Engine
 
-The [AKS Engine](https://github.com/Azure/aks-engine) provides a command-line tool to bootstrap Kubernetes clusters on Azure and Azure Stack. By using the Azure Resource Manager, the AKS Engine helps you create, remove, and maintain clusters running on VMs, virtual networks, and other infrastructure-as-a-service ((IaaS) resources in Azure Stack. The AKS Engine is also provides a library used by AKS for performing management tasks to manage your service.
+The [AKS Engine](https://github.com/Azure/aks-engine) provides a command-line tool to bootstrap Kubernetes clusters on Azure and Azure Stack. By using the Azure Resource Manager, the AKS Engine helps you create, remove, and maintain clusters running on VMs, virtual networks, and other infrastructure-as-a-service (IaaS) resources in Azure Stack. The AKS Engine is also provides a library used by AKS for performing management tasks to manage your service.
 
 You can run the AKS Engine from the command line on your client VM and run common Kubernetes cluster management actions.
 

@@ -93,7 +93,7 @@ You can access information from information created by the AKS engine. The AKS E
 
 In addition to the AKS Engine logs, the Kubernetes components generate status, issues, and error messages. You can collect these logs using the` getkuberneteslogs.sh` script.
 
-1. Download the script into your client VM, the machine that has access to your Kubernetes cluster, and likely the same machine you sued to deploy your cluster with the AKS engine.
+1. Download the script into your client VM, the machine that has access to your Kubernetes cluster, and likely the same machine you used to deploy your cluster with the AKS engine.
 
     Run the following commands:
 

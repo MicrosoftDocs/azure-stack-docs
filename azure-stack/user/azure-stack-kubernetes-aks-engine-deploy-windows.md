@@ -53,7 +53,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 ## Install in a disconnected environment
 
-You can install the client VM to manager your Kubernetes cluster on an Azure Stack disconnected from the Internet.
+You can install the client VM to manage your Kubernetes cluster on an Azure Stack disconnected from the Internet.
 
 1.  From a machine with access to the Internet, go to GitHub [Azure/aks-engine](https://github.com/Azure/aks-engine/releases/latest). Download an archive (*.tar.gz) for a Windows machine, for example, `aks-engine-v0.38.8-windows-amd64.tar.gz`.
 
@@ -61,7 +61,7 @@ You can install the client VM to manager your Kubernetes cluster on an Azure Sta
 
 3. Create a Widows VM in your Azure Stack. For instructions, see [Quickstart: Create a Windows server VM by using the Azure Stack portal](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-windows-portal)
 
-4.  From the Azure Stack storage account blob URL were you uploaded the archive file (*.tar.gz), download the file to your management VM. Extract the archive to the directory `/usr/local/bin`.
+4.  From the Azure Stack storage account blob URL where you uploaded the archive file (*.tar.gz), download the file to your management VM. Extract the archive to the directory `/usr/local/bin`.
 
 5. Connect to your VM.
 
@@ -91,7 +91,7 @@ If you are unable to verify that you have installed the AKS Engine on your clien
 
 You will need to add a certificate when running the client VM for the AKS engine on the ASDK.
 
-When you are using an ASDK your Azure Resource Manager endpoint is using a self-signed certificate, you need to explicitly add this certificate to the machine’s trusted certificate store. You can find the ASDK root cert in any VM you deploy in the ASDK. For example, in an Ubuntu VM you will find it in this directory `/var/lib/waagent/Certificates.pem`. 
+When you are using an ASDK your Azure Resource Manager endpoint is using a self-signed certificate, you need explicitly to add this certificate to the machine’s trusted certificate store. You can find the ASDK root certificate in any VM you deploy in the ASDK. For example, in an Ubuntu VM you will find it in this directory `/var/lib/waagent/Certificates.pem`. 
 
 Copy the certificate file with the following command:
 

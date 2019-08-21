@@ -35,8 +35,8 @@ The following parameters are used by the scale command to find your cluster defi
 
 | Parameter | Example | Description |
 | --- | --- | --- | 
-| azure-env | AzureStackCloud | For Azure Stack the environment names needs to be set to `AzureStackCloud`. | 
-| location | local | This is the region for your Azure Stack instance. For a ASDK, the region is set to `local`.  | 
+| azure-env | AzureStackCloud | When using Azure Stack, the environment names needs to be set to `AzureStackCloud`. | 
+| location | local | This is the region for your Azure Stack instance. For an ASDK, the region is set to `local`.  | 
 | resource-group | kube-rg | The name of the resource group that contains your cluster. | 
 | subscription-id |  | The GUID of the subscription that contains the resources used by your cluster. Make sure you have enough quota on your subscription to scale. | 
 | client-id |  | The client ID of the service principal used in creating your cluster from the AKS Engine. | 

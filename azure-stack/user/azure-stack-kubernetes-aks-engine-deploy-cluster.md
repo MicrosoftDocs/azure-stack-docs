@@ -23,11 +23,11 @@ ms.lastreviewed: 08/22/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can deploy a Kubernetes cluster on Azure Stack from a client VM running the AKS Engine. In this article, we look at writing a cluster definition, deploying a cluster, and then verifying your Kubernetes cluster.
+You can deploy a Kubernetes cluster on Azure Stack from a client VM running the AKS Engine. In this article, we look at writing a cluster specification, deploying a cluster with the `apimodel.json` file, and verify your cluster by deploying mysql with Helm.
 
 ## Define a cluster specification
 
-You can specify the cluster in a document file using the JSON format called the [API model](https://github.com/Azure/aks-engine/blob/master/docs/topics/architecture.md#architecture-diagram). The AKS Engine uses the API model to create your cluster. 
+You can specify a cluster specification in a document file using the JSON format called the [API model](https://github.com/Azure/aks-engine/blob/master/docs/topics/architecture.md#architecture-diagram). The AKS Engine uses a cluster specification in the API model to create your cluster. 
 
 ### Update the API model
 
@@ -40,7 +40,7 @@ This section looks at creating an API model for your cluster.
     ```
 
     > [!Note]  
-    > If you are disconnected you can download the file and manually copy it to the disconnected machine where you plan to edit it. You can copy the file to your Linux machine using tools such as [PuTTY or WinSCP](https://www.suse.com/documentation/opensuse103/opensuse103_startup/data/sec_filetrans_winssh.html).
+    > If you are disconnected, you can download the file and manually copy it to the disconnected machine where you plan to edit it. You can copy the file to your Linux machine using tools such as [PuTTY or WinSCP](https://www.suse.com/documentation/opensuse103/opensuse103_startup/data/sec_filetrans_winssh.html).
 
 2.  To open the  in an editor, you can use nano:
 
@@ -127,7 +127,7 @@ After you have collected all the required values in your API model, you can crea
     --subscription-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
     ```
 
-3.  If for some reason the execution fails after the output directory has been created, you can correct the issue and rerun the command. If you are rerunning the deployment and had used the same output directory before, the AKS Engine will return an error saying that the directory already exists, you can overwrite the existing directory by using the parameter: `--force-overwrite`.
+3.  If for some reason the execution fails after the output directory has been created, you can correct the issue and rerun the command. If you are rerunning the deployment and had used the same output directory before, the AKS Engine will return an error saying that the directory already exists. You can overwrite the existing directory by using the parameter: `--force-overwrite`.
 
 4.  Notice the `–azure-env` parameter, you need to specify it when scaling a cluster in Azure Stack.
 
@@ -136,12 +136,9 @@ After you have collected all the required values in your API model, you can crea
     > [!Note]  
     > The generated `apimodel.json` file in the output directory will contain the SPN credentials and SSH public key you use in the input API model. It also has all the other metadata needed by the AKS Engine to perform all other operations. If you lose it, the AKS Engine will not be able configure the cluster
 
-
-
 ## Verify your cluster
 
-
-Deploy mysql using Helm to check your cluster.
+Verify your cluster by deploying mysql with Helm to check your cluster.
 
 1. Get the public IP address of one of your master nodes using the Azure Stack portal.
 

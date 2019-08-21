@@ -23,16 +23,16 @@ ms.lastreviewed: 08/22/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can rotate your Kubernetes cluster certificates with the AKS Engine rotate-certs command. This article has the steps for rotating TLS CA and certificates for your AKS Engine cluster.
-
-## Prerequisites for certificate rotation
-
-- The **etcd** members must be in a healthy state before rotating the CA and certs. The command `etcdctl cluster-health` will show the health of all of the peers and the cluster.
-- Your cluster definition file (`apimodel.json`) file reflects the current cluster configuration and has a working ssh private key that has root access to your cluster's nodes. The cluster definition file is stored when the AKS Engine creates your cluster. The storage location is set to be at the default location at `_output/`. This is a child directory from the working parent directory.
+You can rotate your Kubernetes cluster certificates with the AKS Engine rotate-certs command. This article has the steps for rotating TLS CA and certificates for your AKS Engine cluster. Before you start, make sure your cluster definition file matches your configuration, you have a back up of your state, and you can migrate critical apps to another cluster. Then, rotate the certificates. After your rotation, your cluster should be run without displaying errors. Make sure all of the nodes are ready, and all pods are running. Finally, the article looks at some known limitations, such as scenarios the tool hasn't been tested with and not being idempotent.
 
 ## Preparation for certificate rotation
 
-Before doing any of these instructions on a live cluster
+Check that your environment meets the following:
+
+- The **etcd** members must be in a healthy state before rotating the CA and certs. The command `etcdctl cluster-health` will show the health of all the peers and the cluster.
+- Your cluster definition file (`apimodel.json`) reflects the current cluster configuration. The file has a working SSH private key that has root access to your cluster's nodes. The AKS Engine stores the file when it creates your cluster. The storage location is set to be at the default location at `_output/`. This is a child directory from the working parent directory.
+
+Before running the steps in these instructions on a live cluster:
 
 1. Back up your cluster state.
 2. Migrate critical apps to another cluster.
@@ -51,7 +51,7 @@ aks-engine rotate-certs --azure-env AzureStackCloud
 > [!WARNING]  
 > Rotating certificates will cause cluster downtime.
 
-The following example assumes the default `output/` directory with the resource group name being the same as the cluster's DNS prefix. This command with parameters would look like:
+The following example assumes the default `output/` directory uses the same name as the cluster's DNS prefix. This command with parameters would look like:
 
 ```bash
 CLUSTER="<CLUSTER_DNS_PREFIX>" && bin/aks-engine rotate-certs --api-model _output/${CLUSTER}/apimodel.json \
@@ -66,7 +66,7 @@ When you run rotate-certs, the AKS Engine:
 1. Generates new certificates.
 2. Rotates **apiserver** certificates.
 3. Rotates the **kubelet** certificates.
-4. Rotates **etcd** CA and certificates and restart **etcd** in all of the master nodes.
+4. Rotates **etcd** CA and certificates and restart **etcd** in all the master nodes.
 5. Updates the **kubeconfig**.
 6. Reboots all the VMs in the resource group.
 7. Restarts all the pods to make sure they refresh their service account.
@@ -75,9 +75,9 @@ When you run rotate-certs, the AKS Engine:
 
 After the above steps, you can check the success of the CA and certs rotation:
 
-- The old  `kubeconfig`  should  **not**  be able to contact the API server, but the new `kubeconfig` should be able to talk to it.
+- The old  `kubeconfig`  should  **not**  be able to contact the API server. But, the new `kubeconfig` should be able to talk to contact the API server.
 - All nodes are expected to be `Ready`, all pods are expected to be  `Running`.
-- Try to fetch the logs of  `kube-apiserver`,  `kube-scheduler`  and  `kube-controller-namager`. They should all be running correctly without printing errors, for example, `kubectl logs kube-apiserver-k8s-master-58431286-0 -n kube-system`.
+- Try to fetch the logs of  `kube-apiserver`,  `kube-scheduler`  and  `kube-controller-namager`. They should all be run without displaying errors, for example, `kubectl logs kube-apiserver-k8s-master-58431286-0 -n kube-system`.
 
 ## Known Limitations
 
@@ -88,9 +88,9 @@ The certificate rotation tool hasn't been tested with the following cluster conf
 - Clusters using Cosmos **etcd**
 - Clusters with already expired certificates an unhealthy **etcd**
 
-The rotation involves rebooting the nodes. ALL VMs in the resource group will restart as part of running the `rotate-certs` command. If the resource group has any VMs that anre't part of the cluster, they will be restarted as well.
+The rotation involves rebooting the nodes. ALL VMs in the resource group will restart as part of running the `rotate-certs` command. If the resource group has any VMs that aren’t part of the cluster, they will be restarted as well.
 
-The tool isn't currently idempotent. This means that if the rotation fails halfway though or is interrupted, you will most likely not be able to rerun the operation without manual intervention. There is a risk that your cluster will become unrecoverable. Before your rotate your certificates follow the steps in [Preparation for certificate rotation](#preparation-for-certificate-rotation).
+The tool isn't currently idempotent. This means that if the rotation fails halfway though, or is interrupted, you won’t be able to rerun the operation without manual intervention. There is a risk that your cluster will become unrecoverable. Before your rotate your certificates follow the steps in [Preparation for certificate rotation](#preparation-for-certificate-rotation).
 
 ## Next steps
 
