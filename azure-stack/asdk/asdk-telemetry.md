@@ -40,21 +40,21 @@ The ETW service routes send telemetry data back to protected cloud storage. The 
 
 Microsoft believes in and practices information minimization. We strive to gather only the info that we need, and we store it for only as long as it's needed to provide a service or for analysis. Much of the info on how the Azure Stack system and Azure services are functioning is deleted within six months. Summarized or aggregated data are kept for a longer period.
 
-We understand that the privacy and security of our customers' info is important. We have taken a thoughtful and comprehensive approach to customer privacy and the protection of customer data with Azure Stack. IT admins have controls to customize features and privacy settings at any time. Our commitment to transparency and trust is clear:
-- We are open with customers about the types of data we gather.
+We understand that the privacy and security of our customers' info is important. We've taken a thoughtful and comprehensive approach to customer privacy and the protection of customer data with Azure Stack. IT admins have controls to customize features and privacy settings at any time. Our commitment to transparency and trust is clear:
+- We're open with customers about the types of data we gather.
 - We put enterprise customers in control—they can customize their own privacy settings.
 - We put customer privacy and security first.
-- We are transparent about how telemetry gets used.
+- We're transparent about how telemetry gets used.
 - We use telemetry to improve customer experiences.
 
-Microsoft doesn't intend to gather sensitive info, such as credit card numbers, usernames and passwords, email addresses, or other similarly sensitive info. If we determine that sensitive info has been inadvertently received, we delete it.
+Microsoft doesn't intend to gather sensitive info, such as credit card numbers, usernames and passwords, email addresses. If we determine that sensitive info has been inadvertently received, we delete it.
 
 ## Examples of how Microsoft uses the telemetry data
 Telemetry plays an important role in helping us quickly identify and fix critical reliability issues in our customers' deployments and configurations. Insights into the telemetry data that we gather help us quickly identify issues with services or hardware configurations. Microsoft's ability to get this data from customers and drive improvements into the ecosystem helps raise the bar for the quality of our integrated Azure Stack solutions.
 
 Telemetry also helps Microsoft to better understand how customers deploy components, use features, and use services to achieve their business goals. Getting insights from that data helps prioritize engineering investments in areas that can directly impact our customers' experiences and workloads.
 
-Some examples include customer usage of containers, storage, and networking configurations that are associated with Azure Stack roles. We also use the insights to drive improvements and intelligence into some of our management and monitoring solutions. This helps customers diagnose quality issues and save money by making fewer support calls to Microsoft.
+Some examples include customer usage of containers, storage, and networking configurations that are associated with Azure Stack roles. We also use the insights to drive improvements and intelligence into some of our management and monitoring solutions. This improvement helps customers diagnose quality issues and save money by making fewer support calls to Microsoft.
 
 ## Manage telemetry collection
 We don't recommend that you turn off telemetry in your organization as telemetry provides data that drives improved product functionality and stability. We do recognize however, that in some scenarios this may be necessary.
@@ -62,7 +62,7 @@ We don't recommend that you turn off telemetry in your organization as telemetry
 In these instances, you can configure the telemetry level sent to Microsoft by using registry settings predeployment or using the Telemetry Endpoints postdeployment.
 
 ### Set telemetry level in the Windows registry
-The Windows Registry Editor is used to manually set the telemetry level on the physical host computer prior to deploying Azure Stack. If a management policy already exists, such as Group Policy, it overrides this registry setting.
+The Windows Registry Editor is used to manually set the telemetry level on the physical host computer before deploying Azure Stack. If a management policy already exists, such as Group Policy, it overrides this registry setting.
 
 Before deploying Azure Stack on the ASDK host, boot into the CloudBuilder.vhdx and run the following script in an elevated PowerShell window:
 
@@ -89,7 +89,7 @@ The telemetry levels are cumulative and categorized into four levels (0-3):
   - Processor and memory attributes, such as the number of cores and memory size.
   - Storage attributes, such as the number of drives, type, and size.
 - **Telemetry Functionality**, including percent of uploaded events, dropped events, and the last upload time.
-- **Quality-related information** that helps Microsoft develop a basic understanding of how Azure Stack is performing. An example is the count of critical alerts on a particular hardware configuration.
+- **Quality-related info** that helps Microsoft develop a basic understanding of how Azure Stack is performing. An example is the count of critical alerts on a particular hardware configuration.
 - **Compatibility data**, which helps provide an understanding about which resource providers are installed on a system and VM and identifies potential compatibility problems.
 
 **2 (Enhanced)**: Additional insights, including how the operating system and other Azure Stack services are used, how they perform, advanced reliability data, and data from both the Basic and Security levels.
