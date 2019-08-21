@@ -54,17 +54,17 @@ Telemetry plays an important role in helping us quickly identify and fix critica
 
 Telemetry also helps Microsoft to better understand how customers deploy components, use features, and use services to achieve their business goals. Getting insights from that data helps prioritize engineering investments in areas that can directly impact our customers' experiences and workloads.
 
-Some examples include customer usage of containers, storage, and networking configurations that are associated with Azure Stack roles. We also use the insights to drive improvements and intelligence into some of our management and monitoring solutions. This helps customers to diagnose quality issues and save money by making fewer support calls to Microsoft.
+Some examples include customer usage of containers, storage, and networking configurations that are associated with Azure Stack roles. We also use the insights to drive improvements and intelligence into some of our management and monitoring solutions. This helps customers diagnose quality issues and save money by making fewer support calls to Microsoft.
 
 ## Manage telemetry collection
-We do not recommend that you turn off telemetry in your organization as telemetry provides data that drives improved product functionality and stability. We do recognize however, that in some scenarios this may be necessary.
+We don't recommend that you turn off telemetry in your organization as telemetry provides data that drives improved product functionality and stability. We do recognize however, that in some scenarios this may be necessary.
 
-In these instances, you can configure the telemetry level sent to Microsoft by using registry settings pre- deployment or using the Telemetry Endpoints post deployment.
+In these instances, you can configure the telemetry level sent to Microsoft by using registry settings predeployment or using the Telemetry Endpoints postdeployment.
 
 ### Set telemetry level in the Windows registry
 The Windows Registry Editor is used to manually set the telemetry level on the physical host computer prior to deploying Azure Stack. If a management policy already exists, such as Group Policy, it overrides this registry setting.
 
-Before deploying Azure Stack on the development kit host, boot into the CloudBuilder.vhdx and run the following script in an elevated PowerShell window:
+Before deploying Azure Stack on the ASDK host, boot into the CloudBuilder.vhdx and run the following script in an elevated PowerShell window:
 
 ```powershell
 ### Get current AllowTelemetry value on DVM Host
@@ -79,27 +79,27 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 
 The telemetry levels are cumulative and categorized into four levels (0-3):
 
-**0 (Security)**. Security data only. Information that's required to help keep the operating system secure, including data about the Connected User Experience and Telemetry component settings and Windows Defender. No Azure Stack specific telemetry is emitted at this level.
+**0 (Security)**: Security data only. Info that's required to help keep the operating system secure, including data about the Connected User Experience and Telemetry component settings and Windows Defender. No Azure Stack specific telemetry is emitted at this level.
 
-**1 (Basic)**. Security data, and Basic Health and Quality data. Basic device information, including: quality-related data, app compatibility, app usage data, and data from the Security level. Setting your telemetry level to Basic enables Azure Stack telemetry. The data gathered at this level includes:
+**1 (Basic)**: Security data, and basic health and quality data. Basic device info, including: quality-related data, app compatibility, app usage data, and data from the Security level. Setting your telemetry level to Basic enables Azure Stack telemetry. The data gathered at this level includes:
 
-- **Basic device information** that helps provide an understanding about the types and configurations of native and virtualized Windows Server 2016 instances in the ecosystem, including:
-  - Machine attributes, such as the OEM, model,
-  - Networking attributes, such as the number and speed of network adapters,
-  - Processor and memory attributes, such as the number of cores, memory size,
+- **Basic device info** that helps provide an understanding about the types and configurations of native and virtualized Windows Server 2016 instances in the ecosystem, including:
+  - Machine attributes, such as the OEM and model.
+  - Networking attributes, such as the number and speed of network adapters.
+  - Processor and memory attributes, such as the number of cores and memory size.
   - Storage attributes, such as the number of drives, type, and size.
 - **Telemetry Functionality**, including percent of uploaded events, dropped events, and the last upload time.
 - **Quality-related information** that helps Microsoft develop a basic understanding of how Azure Stack is performing. An example is the count of critical alerts on a particular hardware configuration.
-- **Compatibility data**, which helps provide an understanding about which Resource Providers are installed on a system and virtual machine and identifies potential compatibility problems.
+- **Compatibility data**, which helps provide an understanding about which resource providers are installed on a system and VM and identifies potential compatibility problems.
 
-**2 (Enhanced)**. Additional insights, including: how the operating system, and other Azure Stack services are used, how they perform, advanced reliability data, and data from both the Basic and Security levels.
+**2 (Enhanced)**: Additional insights, including how the operating system and other Azure Stack services are used, how they perform, advanced reliability data, and data from both the Basic and Security levels.
 
-**3 (Full)**. All data necessary to identify and help to fix problems, plus data from the **Security**, **Basic**, and **Enhanced** levels.
+**3 (Full)**: All data necessary to identify and help to fix problems, plus data from the Security, Basic, and Enhanced levels.
 
 > [!NOTE]
 > The default telemetry level value is 2 (enhanced).
 
-Turning off Windows and Azure Stack telemetry disables SQL telemetry. For additional information about the implications of the Windows Server telemetry settings, reference the [Windows Telemetry Whitepaper](https://aka.ms/winservtelemetry).
+Turning off Windows and Azure Stack telemetry disables SQL telemetry. For additional info on the implications of the Windows Server telemetry settings, reference the [Windows Telemetry Whitepaper](https://aka.ms/winservtelemetry).
 
 > [!IMPORTANT]
 > These telemetry levels only apply to Microsoft Azure Stack components. Non-Microsoft software components and services that are running in the Hardware Lifecycle Host from Azure Stack hardware partners may communicate with their cloud services outside of these telemetry levels. You should work with your Azure Stack hardware solution provider to understand their telemetry policy, and how you can opt in or opt out.
