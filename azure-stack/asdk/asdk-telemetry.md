@@ -1,6 +1,6 @@
 ---
 title: Azure Stack telemetry | Microsoft Docs
-description: Describes how to configure Azure Stack telemetry settings using PowerShell.
+description: Learn how to configure Azure Stack telemetry settings using PowerShell.
 services: azure-stack
 documentationcenter: ''
 author: justinha
