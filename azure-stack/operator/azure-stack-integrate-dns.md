@@ -27,7 +27,7 @@ You are required to provide some important information related to DNS when you d
 |Region|The geographic location of your Azure Stack deployment.|`east`|
 |External Domain Name|The name of the zone you want to use for your Azure Stack deployment.|`cloud.fabrikam.com`|
 |Internal Domain Name|The name of the internal zone that is used for infrastructure services in Azure Stack.  It is Directory Service-integrated and private (not reachable from outside the Azure Stack deployment).|`azurestack.local`|
-|DNS Forwarder|DNS servers that are used to forward DNS queries, DNS zones and records that are hosted outside Azure Stack, either on the corporate intranet or public internet. If you replace a DNS forwarder, the IP address needs to be updated. |`10.57.175.34`<br>`8.8.8.8`|
+|DNS Forwarders|DNS servers that are used to forward DNS queries, DNS zones and records that are hosted outside Azure Stack, either on the corporate intranet or public internet. If you replace a DNS forwarder, the IP address needs to be updated. |`10.57.175.34`<br>`8.8.8.8`|
 |Naming Prefix (Optional)|The naming prefix you want your Azure Stack infrastructure role instance machine names to have.  If not provided, the default is `azs`.|`azs`|
 
 The fully qualified domain name (FQDN) of your Azure Stack deployment and endpoints is the combination of the Region parameter and the External Domain Name parameter. Using the values from the examples in the previous table, the FQDN for this Azure Stack deployment would be the following name:
