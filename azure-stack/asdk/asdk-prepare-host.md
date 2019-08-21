@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/21/2019
+ms.date: 08/20/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 10/22/2018
+ms.lastreviewed: 08/20/2019
 ---
 
 # Prepare the ASDK host computer
@@ -63,6 +63,10 @@ Before you can install the ASDK on the host computer, the ASDK host computer env
     - **Static IP configuration**: Sets your deployment to use a static IP address. Otherwise, when the installer reboots into the cloudbuilder.vhdx, the network interfaces are configured with DHCP. If you choose to use a static IP configuration, additional options are displayed where you must also:
       - Select a network adapter. Make sure you can connect to the adapter before you click **Next**.
       - Make sure that the displayed **IP address**, **Gateway**, and **DNS** values are correct and then click **Next**.
+
+   >[!TIP]
+        >To find a time server IP address, visit [ntppool.org](https://www.ntppool.org/) or ping time.windows.com.
+
 7. Click **Next** to start the preparation process.
 8. When the preparation indicates **Completed**, click **Next**.
 
