@@ -75,7 +75,7 @@ Azure Stack includes both authoritative and recursive DNS servers. The recursive
 
 ## Resolving external DNS names from Azure Stack
 
-To resolve DNS names for endpoints outside Azure Stack (for example: www\.bing.com), you need to provide DNS servers that Azure Stack can use to forward DNS requests for which Azure Stack is not authoritative. For deployment, DNS servers that Azure Stack forwards requests to are required in the Deployment Worksheet (in the DNS Forwarder field). Provide at least two servers in this field for fault tolerance. Without these values, Azure Stack deployment fails. If DNS forwarders get replaced, update the IP addresses accordingly. 
+To resolve DNS names for endpoints outside Azure Stack (for example: www\.bing.com), you need to provide DNS servers that Azure Stack can use to forward DNS requests for which Azure Stack is not authoritative. For deployment, DNS servers that Azure Stack forwards requests to are required in the Deployment Worksheet (in the DNS Forwarder field). Provide at least two servers in this field for fault tolerance. Without these values, Azure Stack deployment fails. If DNS forwarders get replaced, update the IP addresses. 
 
 ### Configure conditional DNS forwarding
 
