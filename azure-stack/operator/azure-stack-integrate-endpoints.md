@@ -7,7 +7,7 @@ manager: femila
 ms.service: azure-stack
 ms.topic: article
 ms.date: 08/21/2019
-ms.author: mabrigg
+ms.author: justinha
 ms.reviewer: wamota
 ms.lastreviewed: 08/21/2019
 ---
