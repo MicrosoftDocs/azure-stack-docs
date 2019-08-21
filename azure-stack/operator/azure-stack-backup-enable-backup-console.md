@@ -13,10 +13,10 @@ ms.workload: naS
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 08/21/2019
 ms.author: justinha
 ms.reviewer: hectorl
-ms.lastreviewed: 03/14/2019
+ms.lastreviewed: 08/21/2019
 
 ---
 # Enable backup for Azure Stack from the administration portal
@@ -49,7 +49,7 @@ Administrators and users are responsible for backing up and restoring IaaS and P
     > [!Note]  
     > If you want to archive backups older than the retention period, make sure to backup the files before the scheduler deletes the backups. If you reduce the backup retention period (e.g. from 7 days to 5 days), the scheduler will delete all backups older than the new retention period. Make sure you are ok with the backups getting deleted before you update this value. 
 
-9. In Encryption Settings provide a certificate in the Certificate .cer file box. Backup files are encrypted using this public key in the certificate. You should provide a certificate that only contains the public key portion when you configure backup settings. Once you set this certificate for the first time or rotate the certificate in the future, you can only view the thumbprint of the certificate. You cannot download or view the uploaded certificate file. To create the certificate file, run the following PowerShell command to create a self-signed certificate with the public and private keys and export a certificate with only the public key portion.
+9. In Encryption Settings provide a certificate in the Certificate .cer file box. Backup files are encrypted using this public key in the certificate. You should provide a certificate that only contains the public key portion when you configure backup settings. Once you set this certificate for the first time or rotate the certificate in the future, you can only view the thumbprint of the certificate. You cannot download or view the uploaded certificate file. To create the certificate file, run the following PowerShell command to create a self-signed certificate with the public and private keys and export a certificate with only the public key portion. You can put the cert anywhere that can be accessed from admin portal.
 
 	```powershell
 
@@ -114,7 +114,7 @@ New backups will start to use the public key in the new certificate. There is no
 ![Azure Stack - view certificate thumbprint](media/azure-stack-backup/encryption-settings-thumbprint.png)
 
 ### Backwards compatibility mode
-If you configured backup before updating to 1901, the settings are carried over with no change in behavior. In this case, encryption key is supported for backwards compatibility. You have the option updating the encryption key or switching to use a certificate. You will have at least three releases to continue updating the encryption key. Use this time to transition to a certificate. To create a new encryption key use the [New-AzsEncryptionKeyBase64 cmdlet](https://docs.microsoft.com/powershell/module/azs.backup.admin/new-azsencryptionkeybase64).
+If you configured backup before updating to 1901, the settings are carried over with no change in behavior. In this case, the encryption key is supported for backwards compatibility. You can update the encryption key or switch to use a certificate. You will have at least three releases to continue updating the encryption key. Use this time to transition to a certificate. To create a new encryption key, use [New-AzsEncryptionKeyBase64](https://docs.microsoft.com/powershell/module/azs.backup.admin/new-azsencryptionkeybase64).
 
 ![Azure Stack - using encryption key in backward compatibility mode](media/azure-stack-backup/encryption-settings-backcompat-encryption-key.png)
 
