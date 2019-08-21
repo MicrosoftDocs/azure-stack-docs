@@ -29,16 +29,13 @@ In a deployment where a transparent proxy uplinks to a traditional proxy server 
 
 A set of infrastructure VIPs is required for publishing Azure Stack endpoints to external networks. The *Endpoint (VIP)* table shows each endpoint, the required port, and protocol. Refer to the specific resource provider deployment documentation for endpoints that require additional resource providers, such as the SQL resource provider.
 
-Internal infrastructure VIPs aren't listed because they're not required for publishing Azure Stack.
+Internal infrastructure VIPs aren't listed because they're not required for publishing Azure Stack. 
+User VIPs are dynamic, defined by the users themselves with no control by the Azure Stack operator.
 
 > [!Note]  
-> User VIPs are dynamic, defined by the users themselves with no control by the Azure Stack operator.
+> IKEv2 VPN is a standards-based IPsec VPN solution that uses UDP port 500 and 4500 and TCP port 50. Firewalls do not always open these ports, so an IKEv2 VPN might not be able to traverse proxies and firewalls.
 
-> [!Note]  
-> IKEv2 VPN. IKEv2 VPN is a standards-based IPsec VPN solution that uses UDP port 500 and 4500 and IP protocol no. 50. Firewalls do not always open these ports, so there is a possibility of IKEv2 VPN not being able to traverse proxies and firewalls.
-
-> [!Note]  
-> As of the 1811 update, ports in the range of 12495-30015 are no longer required to be open due to the addition of the [Extension Host](azure-stack-extension-host-prepare.md).
+With the addition of the [Extension Host](azure-stack-extension-host-prepare.md), ports in the range of 12495-30015 are not required.
 
 |Endpoint (VIP)|DNS host A record|Protocol|Ports|
 |---------|---------|---------|---------|
