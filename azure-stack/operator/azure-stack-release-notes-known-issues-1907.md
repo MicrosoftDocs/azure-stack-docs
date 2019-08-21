@@ -105,6 +105,12 @@ This article lists known issues in the 1907 release of Azure Stack. The list is 
 - Cause: In the user portal, the **Connections** blade shows a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack.
 - Occurrence: Common
 
+### Network Connection Type
+
+- Applicable: This issue applies to any 1906 or 1907 environment. 
+- Cause: In the user portal, the **AddConnection** blade shows an option to use **VNet-to-VNet**. This feature is currently not supported in Azure Stack. 
+- Occurrence: Common 
+
 #### Documentation
 
 - Applicable: This issue applies to all supported releases.
