@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2019
+ms.date: 08/2/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 08/21/2019
+ms.lastreviewed: 08/22/2019
 monikerRange: 'azs-1908'
 ---
 
@@ -57,7 +57,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Changes
 
-- Hardware providers will be releasing OEM package 2.1 at the same time as Azure Stack version 1908. The OEM package 2.1 or later is a prerequisite for Azure Stack version 1908. For more information about how to download OEM package 2.1 or later, contact your system's hardware provider, and see the [OEM updates](azure-stack-update-oem.md#oem-contact-information) article.  
+- Hardware providers will be releasing OEM extension package 2.1 or later at the same time as Azure Stack version 1908. The OEM extension package 2.1 or later is a prerequisite for Azure Stack version 1908. For more information about how to download OEM extension package 2.1 or later, contact your system's hardware provider, and see the [OEM updates](azure-stack-update-oem.md#oem-contact-information) article.  
 
 ### Fixes
 
