@@ -21,7 +21,7 @@ ms.lastreviewed: 07/18/2019
 
 ---
 
-# Start or stop the ASDK
+# Start and stop the ASDK
 It's not recommended to simply restart the ASDK host computer. Instead, you should follow the procedures in this article to properly shut down and restart ASDK services.
 
 ## Stop Azure Stack 

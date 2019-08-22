@@ -59,7 +59,7 @@ Some examples include customer usage of containers, storage, and networking conf
 ## Manage telemetry collection
 We don't recommend that you turn off telemetry in your organization as telemetry provides data that drives improved product functionality and stability. We do recognize however, that in some scenarios this may be necessary.
 
-In these instances, you can configure the telemetry level sent to Microsoft by using registry settings predeployment or using the Telemetry Endpoints postdeployment.
+In these instances, you can configure the telemetry level sent to Microsoft by using registry settings predeployment or using the Telemetry Endpoints post deployment.
 
 ### Set telemetry level in the Windows registry
 The Windows Registry Editor is used to manually set the telemetry level on the physical host computer before deploying Azure Stack. If a management policy already exists, such as Group Policy, it overrides this registry setting.

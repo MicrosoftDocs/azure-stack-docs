@@ -1,5 +1,5 @@
 ---
-title: Post-deployment configurations for the ASDK | Microsoft Docs
+title: Post deployment configurations for the ASDK | Microsoft Docs
 description: Learn about the recommended configuration changes to make after installing the Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
@@ -21,9 +21,9 @@ ms.lastreviewed: 07/31/2019
 
 ---
 
-# Post-deployment configurations for ASDK
+# Post deployment configurations for ASDK
 
-After you [install the Azure Stack Development Kit (ASDK)](asdk-install.md), you should make a few recommended post-deployment configuration changes while signed in as AzureStack\AzureStackAdmin on the ASDK host computer.
+After you [install the Azure Stack Development Kit (ASDK)](asdk-install.md), you should make a few recommended post deployment configuration changes while signed in as AzureStack\AzureStackAdmin on the ASDK host computer.
 
 ## Install Azure Stack PowerShell
 
