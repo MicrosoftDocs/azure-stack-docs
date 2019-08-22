@@ -1,6 +1,6 @@
 ---
-title: Apply an original equipment manufacturer (OEM) update to Azure Stack | Microsoft Docs
-description: Learn to apply an original equipment manufacturer (OEM) update to Azure Stack.
+title: Monitor updates in Azure Stack using Powershell | Microsoft Docs
+description: Learn to monitor updates in Azure Stack using Powershell
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -27,30 +27,30 @@ You can use the Azure Stack administrative endpoints through a set of update Pow
 
 You can use the following PowerShell cmdlets to manage your updates:
 
-  **Cmdlet**                                                                                                                                     **Description**
-  ---------------------------------------------------------------------------------------------------------------------------------------------- ------------------------------------------------------
-  [*Get-AzsUpdate*](https://docs.microsoft.com/en-us/powershell/module/azs.update.admin/Get-AzsUpdate?view=azurestackps-1.7.2)                   Get the list of available updates.
-  [*Get-AzsUpdateLocation*](https://docs.microsoft.com/en-us/powershell/module/azs.update.admin/Get-AzsUpdateLocation?view=azurestackps-1.7.2)   Get the list of update locations.
-  [*Get-AzsUpdateRun*](https://docs.microsoft.com/en-us/powershell/module/azs.update.admin/Get-AzsUpdateRun?view=azurestackps-1.7.2)             Get the list of update runs.
-  [*Install-AzsUpdate*](https://docs.microsoft.com/en-us/powershell/module/azs.update.admin/Install-AzsUpdate?view=azurestackps-1.7.2)           Apply a specific update at an update location.
-  [*Resume-AzsUpdateRun*](https://docs.microsoft.com/en-us/powershell/module/azs.update.admin/Resume-AzsUpdateRun?view=azurestackps-1.7.2)       Resumes a previously started update run that failed.
+| Cmdlet | Description |
+|------------------------------------------------------|-------------|
+| Get-AzsUpdate | Get the list of available updates. |
+| Get-AzsUpdateLocation | Get the list of update locations. |
+| Get-AzsUpdateRun | Get the list of update runs.  |
+| Install-AzsUpdate | Apply a specific update at an update location. |
+| Resume-AzsUpdateRun | Resumes a previously started update run that failed. |
 
-**Get a list of update runs:**
+## Get a list of update runs
 
 To get the list of update runs command:
 
-PowerShell
-
+```powershell
 Get-AzsUpdateRun -UpdateName Microsoft1.0.180302.1
+```
 
-**Resume a failed update operation**
+## Resume a failed update operation
 
-If the update fails, you can resume the update run where it left off.
+If the update fails, you can resume the update run where it left off by running the following command:
 
-PowerShell
-
+```powershell
 Get-AzsUpdateRun -Name 5173e9f4-3040-494f-b7a7-738a6331d55c -UpdateName Microsoft1.0.180305.1 | Resume-AzsUpdateRun
+```
 
-# Next steps
+## Next steps
 
--   [*Managing updates in Azure Stack*](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-updates)
+-   [Managing updates in Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates)
