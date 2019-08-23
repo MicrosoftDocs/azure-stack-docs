@@ -74,7 +74,7 @@ You can view the current version of Azure Stack in the **Updates** blade. To ope
 
 1.  Open the administrator portal.
 
-2.  Select **Dashboard**. Select **Update.
+2.  Select **Dashboard**. Select **Update**.
 
 3.  Select **Update history**.
 
