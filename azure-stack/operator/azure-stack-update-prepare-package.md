@@ -39,17 +39,18 @@ The update package for Azure Stack updates and hotfixes is available through the
 
 Review the package contents. An update package typically consists of the following files:
 
--   A self-extracting &lt;PackageName&gt;.zip file. This file contains the payload for the update.A Metadata.xml file. This file contains essential information about the update, for example, the publisher, name, prerequisite, size, and support path URL.
+-   **A self-extracting \<PackageName>.zip file**. This file contains the payload for the update.
+- **A Metadata.xml file**. This file contains essential information about the update, for example, the publisher, name, prerequisite, size, and support path URL.
 
 ## Azure Stack Software updates
 
 Azure Stack software updates are hosted at a secure Azure endpoint. Azure Stack operators with connected instances will see the Azure Stack updates automatically appear in the Administration portal with the message **Update available**. Azure Stack updates are automatically downloaded on internet-connected systems when the update is applied. For internet disconnected systems or systems with weak internet connectivity, update packages can be downloaded using the [Azure Stack Updates downloader tool](https://aka.ms/azurestackupdatedownload). Azure Stack software update packages may contain updates to Azure Stack services as well as updates to the operating system of your Azure Stack’s scale units.
 
-### Azure Stack hotfixes. 
+### Azure Stack hotfixes 
 
 Hotfix update packages are hosted in the same secure Azure endpoint. Azure Stack operators with connected instances will see the hotfixes automatically appear in the Administration portal with the message **Update available**. Azure Stack hotfixes are automatically downloaded on internet-connected systems when the update is applied. You can download them using the embedded links in each of the respective hotfix KB articles; for example, [Azure Stack hotfix 1.1906.11.52](https://support.microsoft.com/help/4515650). You can find hotfixes in the release notes corresponding to your Azure Stack version.OEM hardware vendor-provided updates
 
-Your OEM vendor will also release updates, such as driver and firmware updates. While these updates are delivered as separate packages by vendor, some are imported, installed, and managed the same way as update packages from Microsoft. You can find a list of vendor contact links at "[Apply Azure Stack original equipment manufacturer (OEM) updates](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-oem#oem-contact-information)".
+Your OEM vendor will also release updates, such as driver and firmware updates. While these updates are delivered as separate packages by vendor, some are imported, installed, and managed the same way as update packages from Microsoft. You can find a list of vendor contact links at [Apply Azure Stack original equipment manufacturer (OEM) updates](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-oem#oem-contact-information).
 
 ## Import and install updates
 

@@ -23,17 +23,17 @@ ms.reviewer: ppacent
 
 *Applies to: Azure Stack integrated systems*
 
-You can use the Azure Stack administrative endpoints through a set of update PowerShell cmdlets to monitor and manage your updates. For instructions on getting set up with PowerShell on Azure Stack, see "Install PowerShell for Azure Stack".
+You can use the Azure Stack administrative endpoints through a set of update PowerShell cmdlets to monitor and manage your updates. For instructions on getting set up with PowerShell on Azure Stack, see [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).
 
-You can use the following PowerShell cmdlets to manage your updates:
+You can use the following PowerShell cmdlet to manage your updates:
 
 | Cmdlet | Description |
 |------------------------------------------------------|-------------|
-| Get-AzsUpdate | Get the list of available updates. |
-| Get-AzsUpdateLocation | Get the list of update locations. |
-| Get-AzsUpdateRun | Get the list of update runs.  |
-| Install-AzsUpdate | Apply a specific update at an update location. |
-| Resume-AzsUpdateRun | Resumes a previously started update run that failed. |
+| [Get-AzsUpdate](https://docs.microsoft.com/powershell/module/azs.update.admin/Get-AzsUpdate?view=azurestackps-1.7.2) | Get the list of available updates. |
+| [Get-AzsUpdateLocation](https://docs.microsoft.com/powershell/module/azs.update.admin/Get-AzsUpdateLocation?view=azurestackps-1.7.2)| Get the list of update locations. |
+| [Get-AzsUpdateRun](https://docs.microsoft.com/powershell/module/azs.update.admin/Get-AzsUpdateRun?view=azurestackps-1.7.2) | Get the list of update runs.  |
+| [Install-AzsUpdate](https://docs.microsoft.com/powershell/module/azs.update.admin/Install-AzsUpdate?view=azurestackps-1.7.2) | Apply a specific update at an update location. |
+| [Resume-AzsUpdateRun](https://docs.microsoft.com/powershell/module/azs.update.admin/Resume-AzsUpdateRun?view=azurestackps-1.7.2) | Resumes a previously started update run that failed. |
 
 ## Get a list of update runs
 

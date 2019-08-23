@@ -28,14 +28,11 @@ You can apply the update using the **Update** blade in the Azure Stack. This art
 You can manage updates from the administrator portal. You can use the **Updates** in the dashboard to:
 
 -   View important information, such as the current version.
-
 -   Install updates and monitor progress.
-
 -   Review update history for previously installed updates.
-
 -   View the cloud's current OEM package version.
 
-**Determine the current version**
+## Determine the current version
 
 You can view the current version of Azure Stack in the **Updates** blade. To open:
 
@@ -43,55 +40,39 @@ You can view the current version of Azure Stack in the **Updates** blade. To ope
 
 2.  Select **Dashboard**. In the **Updates** blade, the current version is listed.
 
-![Updates tile on default dashboard](./media/azure-stack-update-apply/image1.png)
+    ![Updates tile on default dashboard](./media/azure-stack-update-apply/image1.png)
 
-For example, in this image the version is 1.1903.0.35.
+    For example, in this image the version is 1.1903.0.35.
 
-**Install updates and monitor progress**
+## Install updates and monitor progress
 
 1.  Open the Azure Stack administrator portal.
 
 2.  Select **Dashboard**. Select **Update**.
 
-3.  Select **Update now**.
+3.  3.	Select the available update that you wish to apply. If you do not have an update marked as **Available**, you will need to [Prepare the Update Package](zure-stack-update-prepare-package.md)
+
+4.  Select **Update now**. .
 
     ![Azure Stack update run details](./media/azure-stack-update-apply/image2.png)
 
-1.  You can view high-level status as the update process iterates through various subsystems in Azure Stack. Example subsystems include physical hosts, Service Fabric, infrastructure virtual machines, and services that provide both the administrator and user portals. Throughout the update process, the update resource provider reports additional details about the update, such as the number of steps that have succeeded, and the number in progress.
+5.  You can view high-level status as the update process iterates through various subsystems in Azure Stack. Example subsystems include physical hosts, Service Fabric, infrastructure virtual machines, and services that provide both the administrator and user portals. Throughout the update process, the update resource provider reports additional details about the update, such as the number of steps that have succeeded, and the number in progress.
 
-2.  Select the **Download full logs** from the update run details blade to download full logs.
+6.  Select the **Download full logs** from the update run details blade to download full logs.
 
-If you run into an issue while monitoring the update, you can use the [*privileged endpoint*](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-privileged-endpoint) to monitor the progress of an Azure Stack update run, and to resume a failed update run from the last successful step should the Azure Stack portal become unavailable. For instructions, see "Monitor updates in Azure Stack using the privileged endpoint"
+    If you run into an issue while monitoring the update, you can use the [privileged endpoint](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint) to monitor the progress of an Azure Stack update run, and to resume a failed update run from the last successful step should the Azure Stack portal become unavailable. For instructions, see[Monitor updates in Azure Stack using PowerShell](azure-stack-update-monitor.md).
 
-> ![Azure Stack update run details](./media/azure-stack-update-apply/image3.png){width="6.5in" height="3.470833333333333in"}
+    ![Azure Stack update run details](./media/azure-stack-update-apply/image3.png)
 
-1.  Once completed, the update resource provider provides a **Succeeded** confirmation to show that the update process has been completed and how long it took. From there, you can view information about all updates, available updates, or installed updates using the filter.
+7.  Once completed, the update resource provider provides a **Succeeded** confirmation to show that the update process has been completed and how long it took. From there, you can view information about all updates, available updates, or installed updates using the filter.
 
-> ![](./media/azure-stack-update-apply/image4.png)
->
-> If the update fails, the **Update** blade reports **Needs attention**. Use the **Download full logs** option to get a high-level status of where the update failed. The Azure Stack log collection helps facilitate diagnostics and troubleshooting.
+    ![azure-stack-update-apply](./media/azure-stack-update-apply/image4.png)
 
-**Update Azure Stack**
+    If the update fails, the **Update** blade reports **Needs attention**. Use the **Download full logs** option to get a high-level status of where the update failed. The Azure Stack log collection helps with diagnostics and troubleshooting.
 
-**Select and apply an update package**
+## Review update history
 
-1.  Open the Administration portal.
-
-2.  Select **Dashboard**. Select the **Update** blade.
-
-    ![Azure Stack update available](./media/azure-stack-update-apply/image5.png)
-
-1.  Find the current version of your Azure Stack. You can update to the next full version. For example if you running Azure Stack 1811, the next released version is 1901.
-
-    ![Azure Stack update apply](./media/azure-stack-update-apply/image6.png)
-
-1.  Select the next available version in the Updates list. You can select **View** in the release notes column to open the release notes topic for the version if would like to review the version changes.
-
-2.  Select update now. The update will start.
-
-**Review update history**
-
-1.  Open the Administration portal.
+1.  Open the administrator portal.
 
 2.  Select **Dashboard**. Select **Update** .
 
@@ -101,6 +82,5 @@ If you run into an issue while monitoring the update, you can use the [*privileg
 
 # Next steps
 
--   [*Manage updates in Azure Stack overview*](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-updates)
-
--   [*Azure Stack servicing policy*](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-servicing-policy)
+-   [Manage updates in Azure Stack overview](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-updates)  
+-   [Azure Stack servicing policy](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-servicing-policy)  
