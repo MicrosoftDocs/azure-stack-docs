@@ -62,7 +62,7 @@ Apply the OEM packages with the following steps:
 
 ## Configure hardware vendor VM
 
-Some hardware vendors may require a VM to help with the OEM update process. Your hardware vendor will be responsible for creating these VMs, and documenting if you need to `ProxyVM` or `HardwareManager` for **-VMType** when running the **Set-OEMExternalVM** cmdlet. Once the VMs are created, configure them with the **Set-OEMExternalVM** from the privileged endpoint.
+Some hardware vendors may require a VM to help with the OEM update process. Your hardware vendor will be responsible for creating these VMs and documenting if you require `ProxyVM` or `HardwareManager` for **-VMType** when running the **Set-OEMExternalVM** cmdlet as well as which credential should be used for **-Credential**. Once the VMs are created, configure them with the **Set-OEMExternalVM** from the privileged endpoint.
 
 For more information about the privileged endpoint on Azure Stack, see [Using the privileged endpoint in Azure Stack](azure-stack-privileged-endpoint.md).
 
@@ -74,14 +74,14 @@ For more information about the privileged endpoint on Azure Stack, see [Using th
     -ConfigurationName PrivilegedEndpoint -Credential $cred
     ```
 
-2. Configure the hardware vendor VM using the **Set-OEMExternalVM** cmdlet. The cmdlet validates the IP address and credentials for **-VMType** `ProxyVM`. For **-VMType** `HardwareManager` the cmdlet won't validate the input.
+2. Configure the hardware vendor VM using the **Set-OEMExternalVM** cmdlet. The cmdlet validates the IP address and credentials for **-VMType** `ProxyVM`. For **-VMType** `HardwareManager` the cmdlet won't validate the input. The **-Credential** parameter provided to **Set-OEMExternalVM** is one that will be clearly documented by the hardware vendor documentation.  It is NOT the CloudAdmin credential used with the privileged endpoint, or any other existing Azure Stack credential.
 
     ```powershell  
-    
+    $VmCred = Get-Credential
     Invoke-Command -Session $session
         { 
     Set-OEMExternalVM -VMType <Either "ProxyVM" or "HardwareManager">
-        -IPAddress <IP Address of hardware vendor VM>
+        -IPAddress <IP Address of hardware vendor VM> -Credential $using:VmCred
         }
     ```
 
