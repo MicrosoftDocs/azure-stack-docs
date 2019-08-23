@@ -16,10 +16,10 @@ ms.lastreviewed: 07/31/2019
 ---
 
 # Use the ASDK to validate an Azure Stack backup
-After deploying Azure Stack and provisioning user resources such as offers, plans, quotas, and subscriptions, you should [enable Azure Stack infrastructure backup](../operator/azure-stack-backup-enable-backup-console.md). Scheduling and running regular infrastructure backups will ensure that infrastructure management data is not lost if there is a catastrophic hardware or service failure.
+After deploying Azure Stack and provisioning user resources such as offers, plans, quotas, and subscriptions, you should [enable Azure Stack infrastructure backup](../operator/azure-stack-backup-enable-backup-console.md). Scheduling and running regular infrastructure backups will ensure that infrastructure management data isn't lost if there's a catastrophic hardware or service failure.
 
 > [!TIP]
-> We recommended that you [run an on-demand backup](../operator/azure-stack-backup-back-up-azure-stack.md) before beginning this procedure to ensure you have a copy of the latest infrastructure data available. Make sure to capture the backup ID after the backup successfully completes. This ID will be required during cloud recovery. 
+> We recommended that you [run an on-demand backup](../operator/azure-stack-backup-back-up-azure-stack.md) before beginning this procedure to ensure you have a copy of the latest infrastructure data available. Make sure to capture the backup ID after the backup successfully completes. This ID is required during cloud recovery.
 
 Azure Stack infrastructure backups contain important data about your cloud that can be restored during redeployment of Azure Stack. You can use the ASDK to validate these backups without impacting your production cloud. 
 
@@ -43,7 +43,7 @@ The following scenario **is not** supported when validating backups on the ASDK:
 Infrastructure backups from your integrated systems deployment can be validated by performing a cloud recovery deployment of the ASDK. In this type of deployment, specific service data is restored from backup after the ASDK is installed on the host computer.
 
 ### <a name="prereqs"></a>Cloud recovery prerequisites
-Before starting a cloud recovery deployment of the ASDK, ensure that you have the following information:
+Before starting a cloud recovery deployment of the ASDK, ensure that you have the following info:
 
 **UI installer requirements**
 
@@ -51,11 +51,11 @@ Before starting a cloud recovery deployment of the ASDK, ensure that you have th
 
 |Prerequisite|Description|
 |-----|-----|
-|Backup share path|The UNC file share path of the latest Azure Stack backup that will be used to recover Azure Stack infrastructure information. This local share will be created during the cloud recovery deployment process.|
+|Backup share path|The UNC file share path of the latest Azure Stack backup that will be used to recover Azure Stack infrastructure info. This local share will be created during the cloud recovery deployment process.|
 |Backup ID to restore|The backup ID, in the alphanumeric form of "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", that identifies the backup to be restored during cloud recovery.|
 |Time server IP|A valid time server IP, such as 132.163.97.2, is required for Azure Stack deployment.|
 |External certificate password|The password for the external certificate used by Azure Stack. The CA backup contains external certificates that need to be restored with this password.|
-|Backup encryption key|Required if backup settings are configured in with an encryption key, which is deprecated. The installer will support encryption key in backwards compatibility mode for at least 3 releases. Once you update backup settings to use a certificate, refer to the next table for required information.|
+|Backup encryption key|Required if backup settings are configured in with an encryption key, which is deprecated. The installer will support encryption key in backwards compatibility mode for at least 3 releases. Once you update backup settings to use a certificate, refer to the next table for required info.|
 
 |     |     | 
 
@@ -65,7 +65,7 @@ Before starting a cloud recovery deployment of the ASDK, ensure that you have th
 
 |Prerequisite|Description|
 |-----|-----|
-|Backup share path|The UNC file share path of the latest Azure Stack backup that will be used to recover Azure Stack infrastructure information. This local share will be created during the cloud recovery deployment process.|
+|Backup share path|The UNC file share path of the latest Azure Stack backup that will be used to recover Azure Stack infrastructure info. This local share will be created during the cloud recovery deployment process.|
 |Backup ID to restore|The backup ID, in the alphanumeric form of "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", that identifies the backup to be restored during cloud recovery.|
 |Time server IP|A valid time server IP, such as 132.163.97.2, is required for Azure Stack deployment.|
 |External certificate password|The password for the external certificate used by Azure Stack. The CA backup contains external certificates that need to be restored with this password.|
