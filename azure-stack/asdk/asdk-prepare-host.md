@@ -64,8 +64,8 @@ Before you can install the ASDK on the host computer, the ASDK host computer env
       - Select a network adapter. Make sure you can connect to the adapter before you click **Next**.
       - Make sure that the displayed **IP address**, **Gateway**, and **DNS** values are correct and then click **Next**.
 
-   >[!TIP]
-        >To find a time server IP address, visit [ntppool.org](https://www.ntppool.org/) or ping time.windows.com.
+   > [!TIP]
+   > To find a time server IP address, visit [ntppool.org](https://www.ntppool.org/) or ping time.windows.com.
 
 7. Click **Next** to start the preparation process.
 8. When the preparation indicates **Completed**, click **Next**.
