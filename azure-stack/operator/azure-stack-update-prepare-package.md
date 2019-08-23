@@ -25,7 +25,7 @@ ms.reviewer: ppacent
 
 This article provides an overview of preparing Azure Stack update packages so that they can be used to update your Azure Stack environment. This process is done automatically for Azure Stack software updates and hotfixes on internet-connected systems. For all OEM package updates and Azure Stack software updates and hotfixes on internet-disconnected systems and systems with weak or intermittent internet-connectivty, update packages are prepared by downloading the Azure Stack update package or OEM update package and importing the package to storage so that it can be accessed by the Azure Stack update provider. The table displays when the steps in this article should be performed:
 
-| Update Type | Internet Connection | Action |
+| Update Type | Internet connection | Action |
 | --- | --- | --- |
 | Azure Stack Software Updates | Connected | Update is automatically downloaded and prepared when the update is applied. |
 | Azure Stack Hotfixes | Connected | Update is automatically downloaded and prepared when the update is applied. |
@@ -42,7 +42,7 @@ Review the package contents. An update package typically consists of the followi
 -   **A self-extracting \<PackageName>.zip file**. This file contains the payload for the update.
 - **A Metadata.xml file**. This file contains essential information about the update, for example, the publisher, name, prerequisite, size, and support path URL.
 
-## Azure Stack Software updates
+## Azure Stack software updates
 
 Azure Stack software updates are hosted at a secure Azure endpoint. Azure Stack operators with connected instances will see the Azure Stack updates automatically appear in the Administration portal with the message **Update available**. Azure Stack updates are automatically downloaded on internet-connected systems when the update is applied. For internet disconnected systems or systems with weak internet connectivity, update packages can be downloaded using the [Azure Stack Updates downloader tool](https://aka.ms/azurestackupdatedownload). Azure Stack software update packages may contain updates to Azure Stack services as well as updates to the operating system of your Azure Stack’s scale units.
 
