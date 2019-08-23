@@ -27,11 +27,11 @@ This article provides common troubleshooting information for the Azure Stack Dev
 > [!IMPORTANT]
 > Because the ASDK is an evaluation environment, there's no official support offered through Microsoft Customer Support Services (CSS).
 
-The recommendations for troubleshooting issues that are described in this section are derived from several sources and may or may not resolve your particular issue. Code examples are provided "as is" and expected results can't be guaranteed. This section is subject to frequent edits and updates as improvements to the product are implemented.
+The recommendations for troubleshooting issues described in this section are derived from several sources and may or may not resolve your particular issue. Code examples are provided "as is" and expected results can't be guaranteed. This section is subject to frequent edits and updates as improvements to the product are implemented.
 
 ## Deployment
 ### Deployment failure
-If you experience a failure during installation, you can restart the deployment from the failed step by using the -rerun option of the deployment script as in the following example:
+If you experience a failure during installation, you can restart the deployment from the failed step by using the -rerun option of the deployment script. For example:
 
   ```powershell
   cd C:\CloudDeployment\Setup
@@ -55,13 +55,13 @@ You might also notice that tenant VMs don't automatically start after a reboot o
 3.  Select **Roles**.
 4.  Tenant VMs appear in a *saved* state. Once all Infrastructure VMs are running, right-click the tenant VMs and select **Start** to resume the VM.
 
-### I have deleted some VMs, but still see the VHD files on disk. Is this behavior expected?
+### I've deleted some VMs, but still see the VHD files on disk. Is this behavior expected?
 Yes, this is expected behavior. It's designed this way because:
 
 * When you delete a VM, VHDs aren't deleted. Disks are separate resources in the resource group.
 * When a storage account gets deleted, the deletion is visible immediately through Azure Resource Manager, but the disks it may contain are still kept in storage until garbage collection runs.
 
-If you see "orphan" VHDs, it's important to know if they are part of the folder for a storage account that was deleted. If the storage account wasn't deleted, it's normal that they're still there.
+If you see "orphan" VHDs, it's important to know if they're part of the folder for a storage account that was deleted. If the storage account wasn't deleted, it's normal that they're still there.
 
 You can read more about configuring the retention threshold and on-demand reclamation in [manage storage accounts](../operator/azure-stack-manage-storage-accounts.md).
 
