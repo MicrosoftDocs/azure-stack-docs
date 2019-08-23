@@ -50,7 +50,7 @@ If you download both versions of the image, only the latest version is visible t
 
 ### What if my user incorrectly checked the "I have a license" box in previous Windows builds, and they don't have a license?
 
-You can change the license model attribute to switch from "bring your own license" to the pay as you go model by running the following script:
+You can change the license model attribute to switch from bring your own license (BYOL) to the pay-as-you-go model by running the following script:
 
 ```powershell
 vm= Get-Azurermvm -ResourceGroup "<your RG>" -Name "<your VM>"
@@ -58,7 +58,7 @@ $vm.LicenseType = "Windows_Server"
 Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
 ```
 
-You can check the license type of your VM by running the following commands. If the license model says **Windows_Server**, you will be charged for the Windows license as per the pay as you go model:
+You can check the license type of your VM by running the following commands. If the license model says **Windows_Server**, you will be charged for the Windows license as per the pay-as-you-go-model:
 
 ```powershell
 $vm | ft Name, VmId,LicenseType,ProvisioningState
@@ -66,7 +66,7 @@ $vm | ft Name, VmId,LicenseType,ProvisioningState
 
 ### What if I have an older image and my user forgot to check the "I have a license" box, or we use our own images and we do have Enterprise Agreement entitlement?
 
-You can change the license model attribute to "bring your own license" by running the following commands:
+You can change the license model attribute to the bring your own license model, by running the following commands:
 
 ```powershell
 $vm= Get-Azurermvm -ResourceGroup "<your RG>" -Name "<your VM>"
