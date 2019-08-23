@@ -78,7 +78,7 @@ Once you know you have an update, apply update with the following steps.
 
 1. **Plan for the update**.
 
-    Prepare your Azure Stack to make the update process go as smoothly as possible so that there is a minimal impact on your users. Notifying your users of any possible service outage and then follow the steps to prepare your instance for the update. For more steps to plan for the update, see [Plan for an Azure Stack update](\azure-stack-update-plan.md).
+    Prepare your Azure Stack to make the update process go as smoothly as possible so that there is a minimal impact on your users. Notifying your users of any possible service outage and then follow the steps to prepare your instance for the update. For more steps to plan for the update, see [Plan for an Azure Stack update](azure-stack-update-plan.md).
 
 2. **Upload and prepare the update package**.
 
@@ -86,7 +86,7 @@ Once you know you have an update, apply update with the following steps.
 
     For internet-disconnected Azure Stack environments and environments with weak or intermittent internet-connectivity, update packages are imported into Azure Stack storage via the Azure Stack administrator portal. For more steps to upload and prepare the update package, see [Upload and prepare an Azure Stack update package](azure-stack-update-prepare-package.md).
 
-    All OEM update packages are manually imported into your environment, regardless of your Azure Stack system’s internet connectivity. For more steps to import and prepare the update package, see [Upload and prepare an Azure Stack update package]((azure-stack-update-prepare-package.md)).
+    All OEM update packages are manually imported into your environment, regardless of your Azure Stack system’s internet connectivity. For more steps to import and prepare the update package, see [Upload and prepare an Azure Stack update package](azure-stack-update-prepare-package.md)).
 
 3. **Apply the update**.
 

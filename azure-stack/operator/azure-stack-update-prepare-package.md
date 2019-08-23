@@ -61,27 +61,27 @@ The following procedure shows how to import and install update packages in the a
 
 1.  In the administration portal, select **All services**. Then, under the **DATA + STORAGE** category, select **Storage accounts**. (Or, in the filter box, start typing **storage accounts**, and select it.)
 
-    ![](media\azure-stack-update-prepare-package/image1.png) 
+    ![Azure Stack update](./media/azure-stack-update-prepare-package/image1.png) 
 
 1.  In the filter box, type **update**, and select the **updateadminaccount** storage account.
 
 2.  In the storage account details, under **Services**, select **Blobs**.
 
-    ![Azure Stack update - blob](media\azure-stack-update-prepare-package/image2.png)
+    ![Azure Stack update - blob](./media/azure-stack-update-prepare-package/image2.png)
 
 1.  Under **Blob service**, select **+ Container** to create a container. Enter a name (for example *update-1811*) and then select **OK**.
 
-    ![Azure Stack update - container](media\azure-stack-update-prepare-package/image3.png)
+    ![Azure Stack update - container](./media/azure-stack-update-prepare-package/image3.png)
 
 1.  After the container is created, click the container name, and then click **Upload** to upload the package files to the container.
 
-    ![Azure Stack update - upload](media\azure-stack-update-prepare-package/image4.png)
+    ![Azure Stack update - upload](./media/azure-stack-update-prepare-package/image4.png)
 
 1.  Under **Upload blob**, click the folder icon, browse to the update package's .zip file and then click **Open** in the file explorer window.
 
 2.  Under **Upload blob**, click **Upload**.
 
-    ![Azure Stack update - upload blob](media\azure-stack-update-prepare-package/image5.png)
+    ![Azure Stack update - upload blob](./media/azure-stack-update-prepare-package/image5.png)
 
 1.  Repeat steps 6 and 7 for the Metadata.xml file and any additional .zip files in the update package. Do not import the Supplemental Notice.txt file if included.
 

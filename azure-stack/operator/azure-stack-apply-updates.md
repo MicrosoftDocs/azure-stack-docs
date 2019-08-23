@@ -50,7 +50,7 @@ You can view the current version of Azure Stack in the **Updates** blade. To ope
 
 2.  Select **Dashboard**. Select **Update**.
 
-3.  3.	Select the available update that you wish to apply. If you do not have an update marked as **Available**, you will need to [Prepare the Update Package](zure-stack-update-prepare-package.md)
+3.  Select the available update that you wish to apply. If you do not have an update marked as **Available**, you will need to [Prepare the Update Package](azure-stack-update-prepare-package.md)
 
 4.  Select **Update now**. .
 
