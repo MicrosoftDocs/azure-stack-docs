@@ -12,9 +12,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2019
+ms.date: 08/23/2019
 ms.author: mabrigg
-ms.lastreviewed: 08/15/2019
+ms.lastreviewed: 08/23/2019
 ms.reviewer: ppacent 
 
 ---
@@ -74,7 +74,7 @@ You can view the current version of Azure Stack in the **Updates** blade. To ope
 
 1.  Open the administrator portal.
 
-2.  Select **Dashboard**. Select **Update** .
+2.  Select **Dashboard**. Select **Update.
 
 3.  Select **Update history**.
 
@@ -82,5 +82,5 @@ You can view the current version of Azure Stack in the **Updates** blade. To ope
 
 # Next steps
 
--   [Manage updates in Azure Stack overview](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-updates)  
--   [Azure Stack servicing policy](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-servicing-policy)  
+-   [Manage updates in Azure Stack overview](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates)  
+-   [Azure Stack servicing policy](https://docs.microsoft.com/azure-stack/operator/azure-stack-servicing-policy)  
