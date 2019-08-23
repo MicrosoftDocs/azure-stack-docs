@@ -57,7 +57,7 @@ Apply the OEM packages with the following steps:
 1. You will need to contact your OEM to:
       - Determine the current version of your OEM package.  
       - Find the best method to download your OEM package.  
-2. Prepare your OEM package with the steps outlined in [Download update packages for integrated systems](azure-stack-servicing-policy.md#download-update-packages-for-integrated-systems).
+2. Prepare your OEM package with the steps outlined in [Download update packages for integrated systems](azure-stack-servicing-policy.md).
 3. Apply the updates with the steps outlined in [Apply updates in Azure Stack](azure-stack-apply-updates.md).
 
 ## Configure hardware vendor VM
