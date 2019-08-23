@@ -1,22 +1,21 @@
 ---
-title: Azure Stack servicing policy | Microsoft Docs
-description: Learn about the Azure Stack servicing policy, and how to keep an integrated system in a supported state.
+title: Apply an original equipment manufacturer (OEM) update to Azure Stack | Microsoft Docs
+description: Learn to apply an original equipment manufacturer (OEM) update to Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 editor: ''
 
-ms.assetid: caac3d2f-11cc-4ff2-82d6-52b58fee4c39
 ms.service: azure-stack
 ms.workload: na
-pms.tgt_pltfrm: na
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2019
-ms.author: sethm
-ms.reviewer: harik
-ms.lastreviewed: 01/11/2019
+ms.date: 08/15/2019
+ms.author: mabrigg
+ms.lastreviewed: 08/15/2019
+ms.reviewer: ppacent 
 
 ---
 
@@ -27,6 +26,8 @@ ms.lastreviewed: 01/11/2019
 This article describes the servicing policy for Azure Stack integrated systems, what you must do to keep your system in a supported state, and how to get support.
 
 ## Keep your system under support
+
+To continue to receive support, you must keep the updates on your Azure Stack current.
 
 For your Azure Stack instance to remain in a supported state, the instance must run the most recently released update version or run either of the two preceding update versions.
 
@@ -40,6 +41,6 @@ Microsoft software update packages are non-cumulative and require the previous u
 
 Azure Stack follows the same support process as Azure. Enterprise customers can follow the process described in [How to create an Azure support request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). If you are a customer of a Cloud Service Provider (CSP), contact your CSP for support. For more information, see the [Azure Support FAQs](https://azure.microsoft.com/support/faq/).
 
-## Next steps
+# Next steps
 
-- [Manage updates in Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates)
+[Manage updates in Azure Stack](azure-stack-updates.md)
