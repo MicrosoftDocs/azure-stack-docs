@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure Stack troubleshooting | Microsoft Docs
-description: Azure Stack Development Kit (ASDK) troubleshooting information.
+title: Troubleshoot the ASDK | Microsoft Docs
+description: Learn how to troubleshoot Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -21,7 +21,7 @@ ms.lastreviewed: 10/15/2018
 
 
 ---
-# Microsoft Azure Stack Development Kit (ASDK) troubleshooting
+# Troubleshoot the ASDK
 This article provides common troubleshooting information for the ASDK. If you are experiencing an issue that is not documented, make sure to check the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) for further assistance and information.  
 
 > [!IMPORTANT]
