@@ -43,7 +43,7 @@ You can view the current version of Azure Stack in the **Updates** blade. To ope
 
 2.  Select **Dashboard**. In the **Updates** blade, the current version is listed.
 
-![Updates tile on default dashboard](media\azure-stack-update-apply/media/image1.png)
+![Updates tile on default dashboard](media\azure-stack-update-apply/image1.png)
 
 For example, in this image the version is 1.1903.0.35.
 
@@ -55,7 +55,7 @@ For example, in this image the version is 1.1903.0.35.
 
 3.  Select **Update now**.
 
-    ![Azure Stack update run details](media\azure-stack-update-apply/media/image2.png)
+    ![Azure Stack update run details](media\azure-stack-update-apply/image2.png)
 
 1.  You can view high-level status as the update process iterates through various subsystems in Azure Stack. Example subsystems include physical hosts, Service Fabric, infrastructure virtual machines, and services that provide both the administrator and user portals. Throughout the update process, the update resource provider reports additional details about the update, such as the number of steps that have succeeded, and the number in progress.
 
@@ -63,11 +63,11 @@ For example, in this image the version is 1.1903.0.35.
 
 If you run into an issue while monitoring the update, you can use the [*privileged endpoint*](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-privileged-endpoint) to monitor the progress of an Azure Stack update run, and to resume a failed update run from the last successful step should the Azure Stack portal become unavailable. For instructions, see "Monitor updates in Azure Stack using the privileged endpoint"
 
-> ![Azure Stack update run details](media\azure-stack-update-apply/media/image3.png){width="6.5in" height="3.470833333333333in"}
+> ![Azure Stack update run details](media\azure-stack-update-apply/image3.png){width="6.5in" height="3.470833333333333in"}
 
 1.  Once completed, the update resource provider provides a **Succeeded** confirmation to show that the update process has been completed and how long it took. From there, you can view information about all updates, available updates, or installed updates using the filter.
 
-> ![](media\azure-stack-update-apply/media/image4.png)
+> ![](media\azure-stack-update-apply/image4.png)
 >
 > If the update fails, the **Update** blade reports **Needs attention**. Use the **Download full logs** option to get a high-level status of where the update failed. The Azure Stack log collection helps facilitate diagnostics and troubleshooting.
 
@@ -79,11 +79,11 @@ If you run into an issue while monitoring the update, you can use the [*privileg
 
 2.  Select **Dashboard**. Select the **Update** blade.
 
-    ![Azure Stack update available](media\azure-stack-update-apply/media/image5.png)
+    ![Azure Stack update available](media\azure-stack-update-apply/image5.png)
 
 1.  Find the current version of your Azure Stack. You can update to the next full version. For example if you running Azure Stack 1811, the next released version is 1901.
 
-    ![Azure Stack update apply](media\azure-stack-update-apply/media/image6.png)
+    ![Azure Stack update apply](media\azure-stack-update-apply/image6.png)
 
 1.  Select the next available version in the Updates list. You can select **View** in the release notes column to open the release notes topic for the version if would like to review the version changes.
 
@@ -97,7 +97,7 @@ If you run into an issue while monitoring the update, you can use the [*privileg
 
 3.  Select **Update history**.
 
-![Azure Stack update history](media\azure-stack-update-apply/media/image7.png)
+![Azure Stack update history](media\azure-stack-update-apply/image7.png)
 
 # Next steps
 
