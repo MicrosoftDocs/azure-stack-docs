@@ -1,6 +1,6 @@
 ---
-title: An introduction to the Azure Stack Development Kit (ASDK) | Microsoft Docs
-description: Describes what the ASDK is and common use cases for evaluating Microsoft Azure Stack.
+title: What is the Azure Stack Development Kit (ASDK)? | Microsoft Docs
+description: Learn about the Azure Stack Development Kit (ASDK) and how it is used to evaluate Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: justinha

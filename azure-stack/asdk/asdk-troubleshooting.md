@@ -18,8 +18,6 @@ ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
 
-
-
 ---
 # Troubleshoot the ASDK
 This article provides common troubleshooting information for the Azure Stack Development Kit (ASDK). If you're experiencing an issue that isn't documented, make sure to check the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) for info and assistance.  
