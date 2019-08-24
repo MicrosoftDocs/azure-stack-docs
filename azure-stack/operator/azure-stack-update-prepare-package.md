@@ -25,10 +25,10 @@ ms.reviewer: ppacent
 
 This article provides an overview of preparing Azure Stack update packages so that they can be used to update your Azure Stack environment. This process consists of:
 
-- [Downloading the update package](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#Download-the-update-package)
-- [Importing the update package into your Azure Stack environment via the Azure Stack Administrator Portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#Import-and-install-updates)
+- [Downloading the update package](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#download-the-update-package)
+- [Importing the update package into your Azure Stack environment via the Azure Stack Administrator Portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#import-and-install-updates)
 
-This process is done automatically for Azure Stack software updates and hotfixes on systems with internet-connectivty to the secure **Azure Stack automatic update endpoint** at which all Azure Stack updates are hosted: https://www.aka.ms/azurestackautomaticupdate. For more information about setting up connectivity to the **Azure Stack automatic update endpoint**, see [Azure Stack Firewall Integration](https://docs.microsoft.com/azure-stack/operator/azure-stack-integrate-endpoints#ports-and-urls-outbound)
+This process is done automatically for Azure Stack software updates and hotfixes on systems with internet-connectivty to the [Azure Stack automatic update endpoints](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages)
 
 For all OEM package updates and Azure Stack software updates and hotfixes on systems without connectivty to the **Azure Stack automatic update endpoint**, update packages are prepared by downloading the Azure Stack update package or OEM update package and importing the package to storage so that it can be accessed by the Azure Stack update provider. The table displays when the steps in this article should be performed:
 
@@ -48,6 +48,9 @@ Review the package contents. An update package typically consists of the followi
 
 -   **A self-extracting \<PackageName>.zip file**. This file contains the payload for the update.
 - **A Metadata.xml file**. This file contains essential information about the update, for example, the publisher, name, prerequisite, size, and support path URL.
+
+### Automatic download and preparation for update packages
+Azure Stack software updates and hotfixes are prepared automatically for systems with connectivity to the **Azure Stack automatic update endpoints**: https://*.azureedge.net and https://aka.ms/azurestackautomaticupdate. For more information about setting up connectivity to the **Azure Stack automatic update endpoints**, see the **Patch and Update** endpoints outlined in [Azure Stack Firewall Integration](https://docs.microsoft.com/azure-stack/operator/azure-stack-integrate-endpoints#ports-and-urls-outbound)
 
 ### Azure Stack software updates
 
