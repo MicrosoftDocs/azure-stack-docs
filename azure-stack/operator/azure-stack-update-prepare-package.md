@@ -25,8 +25,8 @@ ms.reviewer: ppacent
 
 This article provides an overview of preparing Azure Stack update packages so that they can be used to update your Azure Stack environment. This process consists of:
 
-- [Downloading the update package](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#Download-the-update-package)
-- [Importing the update package into your Azure Stack environment via the Azure Stack Administrator Portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#Import-and-install-updates)
+- [Downloading the update package](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#download-the-update-package)
+- [Importing the update package into your Azure Stack environment via the Azure Stack Administrator Portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#import-and-install-updates)
 
 This process is done automatically for Azure Stack software updates and hotfixes on systems with internet-connectivty to the secure **Azure Stack automatic update endpoint** at which all Azure Stack updates are hosted: https://www.aka.ms/azurestackautomaticupdate. For more information about setting up connectivity to the **Azure Stack automatic update endpoint**, see [Azure Stack Firewall Integration](https://docs.microsoft.com/azure-stack/operator/azure-stack-integrate-endpoints#ports-and-urls-outbound)
 
