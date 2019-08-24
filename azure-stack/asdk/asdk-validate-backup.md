@@ -16,7 +16,7 @@ ms.lastreviewed: 07/31/2019
 ---
 
 # Use the ASDK to validate an Azure Stack backup
-After deploying Azure Stack and provisioning user resources such as offers, plans, quotas, and subscriptions, you should [enable Azure Stack infrastructure backup](../operator/azure-stack-backup-enable-backup-console.md). Scheduling and running regular infrastructure backups will ensure that infrastructure management data isn't lost if there's a catastrophic hardware or service failure.
+After deploying Azure Stack and provisioning user resources (such as offers, plans, quotas, and subscriptions), you should [enable Azure Stack infrastructure backup](../operator/azure-stack-backup-enable-backup-console.md). Scheduling and running regular infrastructure backups will ensure infrastructure management data isn't lost if there's a catastrophic hardware or service failure.
 
 > [!TIP]
 > We recommended that you [run an on-demand backup](../operator/azure-stack-backup-back-up-azure-stack.md) before beginning this procedure to ensure you have a copy of the latest infrastructure data available. Make sure to capture the backup ID after the backup successfully completes. This ID is required during cloud recovery.
@@ -106,7 +106,7 @@ The steps in this section show you how to deploy the ASDK using a graphical user
 > [!IMPORTANT]
 > The current installer UI only supports encryption key.
 
-1. After the host computer successfully boots into the CloudBuilder.vhdx image, sign in using the admin credentials specified when you [prepared the ASDK host computer](asdk-prepare-host.md) for ASDK installation. This should be the same as the ASDK host local admin credentials.
+1. After the host computer successfully boots into the CloudBuilder.vhdx image, sign in using the admin credentials specified when you [prepared the ASDK host computer](asdk-prepare-host.md) for ASDK installation. These credentials should be the same as the ASDK host local admin credentials.
 2. Open an elevated PowerShell console and run the **&lt;drive letter>\AzureStack_Installer\asdk-installer.ps1** PowerShell script. The script might now be on a different drive than C:\ in the CloudBuilder.vhdx image. Click **Recover**.
 
     ![ASDK installer script](media/asdk-validate-backup/1.PNG) 
@@ -140,7 +140,7 @@ The steps in this section show you how to deploy the ASDK using a graphical user
 
 Modify the following PowerShell commands for your environment and run them to deploy the ASDK in cloud recovery mode:
 
-**Use the InstallAzureStackPOC.ps1 script to initiate cloud recovery with encryption key.**
+**Use the InstallAzureStackPOC.ps1 script to start cloud recovery with encryption key.**
 
 ```powershell
 cd C:\CloudDeployment\Setup     
@@ -157,7 +157,7 @@ $key = Read-Host -AsSecureString -Prompt "Your backup encryption key"
  -TimeServer "<Valid time server IP>" -ExternalCertPassword $certPass
 ```
 
-**Use the InstallAzureStackPOC.ps1 script to initiate cloud recovery with decryption certificate.**
+**Use the InstallAzureStackPOC.ps1 script to start cloud recovery with decryption certificate.**
 
 ```powershell
 cd C:\CloudDeployment\Setup     
