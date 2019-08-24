@@ -58,7 +58,7 @@ Azure Stack software updates are hosted at a secure Azure endpoint. Azure Stack 
 Hotfix update packages are hosted in the same secure Azure endpoint. Azure Stack operators with connected instances will see the hotfixes automatically appear in the Administration portal with the message **Update available**. Azure Stack hotfixes are automatically downloaded on internet-connected systems when the update is applied. You can download them using the embedded links in each of the respective hotfix KB articles; for example, [Azure Stack hotfix 1.1906.11.52](https://support.microsoft.com/help/4515650). You can find hotfixes in the release notes corresponding to your Azure Stack version.OEM hardware vendor-provided updates
 
 ### OEM package updates
-Your OEM vendor will also release updates, such as driver and firmware updates. While these updates are delivered as separate packages by vendor, some are imported, installed, and managed the same way as update packages from Microsoft. You can find a list of vendor contact links at [Apply Azure Stack original equipment manufacturer (OEM) updates](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-oem#oem-contact-information).
+Your OEM vendor will also release updates, such as driver and firmware updates. While these updates are delivered as separate packages by vendor, they are still imported, installed, and managed the same way as update packages from Microsoft. You can find a list of vendor contact links at [Apply Azure Stack original equipment manufacturer (OEM) updates](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-oem#oem-contact-information).
 
 ## Import and install updates
 
