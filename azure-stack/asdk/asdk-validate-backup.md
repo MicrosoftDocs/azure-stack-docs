@@ -74,7 +74,7 @@ Before starting a cloud recovery deployment of the ASDK, ensure that you have th
 |     |     | 
 
 ## Prepare the host computer 
-As in a normal ASDK deployment, the ASDK host system environment must be prepared for installation. When the development kit host computer has been prepared, it will boot from the CloudBuilder.vhdx virtual machine hard drive to begin ASDK deployment.
+As in a normal ASDK deployment, the ASDK host system environment must be prepared for installation. When the ASDK host computer has been prepared, it will boot from the CloudBuilder.vhdx VM hard drive to begin ASDK deployment.
 
 On the ASDK host computer, download a new cloudbuilder.vhdx corresponding to the same version of Azure Stack that was backed up, and follow the instructions for [preparing the ASDK host computer](asdk-prepare-host.md).
 
@@ -101,39 +101,39 @@ Finally, copy the decryption certificate (.pfx) to the certificate directory: `C
 The steps in this section show you how to deploy the ASDK using a graphical user interface (GUI) provided by downloading and running the **asdk-installer.ps1** PowerShell script.
 
 > [!NOTE]
-> The installer user interface for the Azure Stack Development Kit is an open-sourced script based on WCF and PowerShell.
+> The installer user interface for the ASDK is an open-sourced script based on WCF and PowerShell.
 
 > [!IMPORTANT]
 > The current installer UI only supports encryption key.
 
-1. After the host computer successfully boots into the CloudBuilder.vhdx image, sign in using the administrator credentials specified when you [prepared the development kit host computer](asdk-prepare-host.md) for ASDK installation. This should be the same as the development kit host local administrator credentials.
+1. After the host computer successfully boots into the CloudBuilder.vhdx image, sign in using the admin credentials specified when you [prepared the ASDK host computer](asdk-prepare-host.md) for ASDK installation. This should be the same as the ASDK host local admin credentials.
 2. Open an elevated PowerShell console and run the **&lt;drive letter>\AzureStack_Installer\asdk-installer.ps1** PowerShell script. The script might now be on a different drive than C:\ in the CloudBuilder.vhdx image. Click **Recover**.
 
     ![ASDK installer script](media/asdk-validate-backup/1.PNG) 
 
-3. Enter your Azure AD directory information (optional) and the local administrator password for the ASDK host computer on the identity provider and credentials page. Click **Next**.
+3. Enter your Azure AD directory info (optional) and the local admin password for the ASDK host computer on the identity provider and credentials page. Click **Next**.
 
-    ![Identity and credentials page](media/asdk-validate-backup/2.PNG) 
+    ![ASDK Identity and credentials page](media/asdk-validate-backup/2.PNG) 
 
 4. Select the network adapter to be used by the ASDK host computer and click **Next**. All other network interfaces will be disabled during ASDK installation. 
 
-    ![Network adapter interface](media/asdk-validate-backup/3.PNG) 
+    ![ASDK Network adapter interface](media/asdk-validate-backup/3.PNG) 
 
 5. On the Network Configuration page, provide valid time server and DNS forwarder IP addresses. Click **Next**.
 
-    ![Network configuration page](media/asdk-validate-backup/4.PNG) 
+    ![ASDK Network configuration page](media/asdk-validate-backup/4.PNG) 
 
 6. When network interface card properties have been verified, click **Next**. 
 
-    ![Network card settings verification](media/asdk-validate-backup/5.PNG) 
+    ![ASDK Network card settings verification](media/asdk-validate-backup/5.PNG) 
 
-7. Provide the required information described earlier in [prerequisites section](#prereqs) on the Backup Settings page and the username and password to be used to access the share. Click **Next**: 
+7. Provide the required info described earlier in [prerequisites section](#prereqs) on the Backup Settings page and the username and password to be used to access the share. Click **Next**: 
 
-   ![Backup settings page](media/asdk-validate-backup/6.PNG) 
+   ![ASDK Backup settings page](media/asdk-validate-backup/6.PNG) 
 
 8. Review the deployment script to be used for deploying the ASDK on the Summary page. Click **Deploy** to begin deployment. 
 
-    ![Summary page](media/asdk-validate-backup/7.PNG) 
+    ![ASDK Summary page](media/asdk-validate-backup/7.PNG) 
 
 
 ### Use PowerShell to deploy the ASDK in recovery mode
@@ -181,8 +181,8 @@ After logging in as the Azure Stack operator, [install Azure Stack PowerShell](a
 
 **Recovery mode with certificate file**
 
-> [!NOTE] 
-> Azure Stack deployment does not persist the decryption certificate for security reasons. You will need to provide the decryption certificate and associated password again.
+> [!NOTE]
+> Azure Stack deployment doesn't persist the decryption certificate for security reasons. You'll need to provide the decryption certificate and associated password again.
 
 ```powershell
 $decryptioncertpassword = Read-Host -AsSecureString -Prompt "Password for the decryption certificate"
