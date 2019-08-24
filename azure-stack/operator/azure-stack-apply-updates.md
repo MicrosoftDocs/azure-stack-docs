@@ -60,7 +60,7 @@ You can view the current version of Azure Stack in the **Updates** blade. To ope
 
 6.  Select the **Download summary** from the Update run details blade to download full logs.
 
-    If you run into an issue while monitoring the update, you can use the [privileged endpoint](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint) to monitor the progress of an Azure Stack update run, and to resume a failed update run from the last successful step should the Azure Stack portal become unavailable. For instructions, see[Monitor updates in Azure Stack using PowerShell](azure-stack-update-monitor.md).
+    If you run into an issue while monitoring the update, you can use the [privileged endpoint](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint) to monitor the progress of an Azure Stack update run, and to resume a failed update run from the last successful step should the Azure Stack portal become unavailable. For instructions, see [Monitor updates in Azure Stack using PowerShell](azure-stack-update-monitor.md).
 
     ![Azure Stack update run details](./media/azure-stack-update-apply/image3.png)
 
