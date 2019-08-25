@@ -78,9 +78,9 @@ You can view the current version of Azure Stack in the **Updates** blade. To ope
 
 3.  Select **Update history**.
 
-![Azure Stack update history](./media/azure-stack-update-apply/image7.png)
+    ![Azure Stack update history](./media/azure-stack-update-apply/image7.png)
 
-# Next steps
+## Next steps
 
 -   [Manage updates in Azure Stack overview](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates)  
 -   [Azure Stack servicing policy](https://docs.microsoft.com/azure-stack/operator/azure-stack-servicing-policy)  
