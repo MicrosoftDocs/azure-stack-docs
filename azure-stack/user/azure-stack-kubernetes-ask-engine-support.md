@@ -25,7 +25,7 @@ ms.lastreviewed: 08/22/2019
 
 This article provides details about technical support policies and limitations for AKS Engine on Azure Stack. The article also details Kubernetes Marketplace item, third-party open-source components, and security or patch management. 
 
-## Unmanaged Self-managed Kubernetes clusters on Azure Stack with AKS Engine
+## Self-managed Kubernetes clusters on Azure Stack with AKS Engine
 
 Infrastructure as a service (IaaS) cloud components, such as compute or networking components, give users access to low-level controls and customization options. AKS Engine allows the user to laydown Kubernetes clusters utilizing these IaaS components transparently, users can access and affect all aspects of their deployments.
 
@@ -52,14 +52,48 @@ Microsoft does not provide technical support for the following:
 
 -  Using the AKS Engine on Azure.
 -  Azure Stack Kubernetes Marketplace item.
--  Using the following AKS Engine cluster definition options and addons <TODO: Add links to both sections>
+-  Using the following AKS Engine cluster definition options and addons.
+    -  Not supported addons:
+            -  AAD Pod Identity
+            -  ACI Connector
+            -  Blobfuse Flex Volume
+            -  Cluster Autoscaler
+            -  Container Monitoring
+            -  KeyVault Flex Volume
+            -  NVIDIA Device Plugin
+            -  Rescheduler
+            -  SMB Flex Volume
+        
+    -  Not supported cluster definition options:
+            -  Under KubernetesConfig:
+            -  cloudControllerManagerConfig
+            -  enableDataEncryptionAtRest
+            -  enableEncryptionWithExternalKms
+            -  enablePodSecurityPolicy
+            -  etcdEncryptionKey
+            -  useInstanceMetadata
+            -  useManagedIdentity
+            -  azureCNIURLLinux
+            -  azureCNIURLWindows
+
+    -  Under masterProfile:
+            -  availabilityZones
+
+    -  Under agentPoolProfiles:
+            -  availabilityZones
+            -  singlePlacementGroup
+            -  scaleSetPriority
+            -  scaleSetEvictionPolicy
+            -  acceleratedNetworkingEnabled
+            -  acceleratedNetworkingEnabledWindows
+
 -  Kubernetes configuration changes persisted outside the Kubernetes configuration store etcd. For example, static pods running in nodes of the cluster.
 -  Questions about how to use Kubernetes. For example, Microsoft Support doesn't provide advice on how to create custom ingress controllers, use application workloads, or apply third-party or open-source software packages or tools.
 -  Third-party open-source projects that aren't provided as part of the Kubernetes cluster deployed by AKS Engine. These projects might include Kubeadm, Kubespray, Native, Istio, Helm, Envoy, or others.
--  Using the AKS Engine in use-case scenarios outside the ones specified in the User Guide <TODO: add link>
+-  Using the AKS Engine in use-case scenarios outside the ones specified in [Supported scenarios with the AKS Engine](azure-stack-kubernetes-aks-engine-overview.md#supported-scenarios-with-the-aks-engine).
 -  Third-party software. This software can include security scanning tools and networking devices or software.
 -  Issues about multicloud or multivendor build-outs. For example, Microsoft doesn't support issues related to running a federated multipublic cloud vendor solution.
--  Network customizations other than those listed in the AKS Engine documents: <TODO: list the features not supported>
+-  Network customizations other than those listed in the [AKS Engine supported areas](#aks-engine-supported-areas) section.
 
 ##  Security issues and patching
 

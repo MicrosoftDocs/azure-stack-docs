@@ -66,8 +66,7 @@ This section looks at creating an API model for your cluster.
     | dnsPrefix | Enter a unique string that will serve to identify the hostname of VMs. For example, a name based on the resource group name. |
     | count |  Enter the number of masters you want for your deployment. The minimum for an HA deployment is 3, but 1 is allowed for non-HA deployments. |
     | vmSize |  Enter [a size supported by Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example "Standard\_D2\_v2" |
-
-    If you are planning a disconnected deployment, find `"distro": "ubuntu"`. Change `ubuntu` to `aks`. The distro field only supports these two values.
+    | distro | Enter `aks-ubuntu-16.04`. |
 
 6.  In the array `agentPoolProfiles` update:
 
@@ -75,9 +74,7 @@ This section looks at creating an API model for your cluster.
     | --- | --- |
     | count | Enter the number of agents you want for your deployment |
     | vmSize | Enter [a size supported by Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example "Standard\_D2\_v2" |
-
-    If you are planning a disconnected deployment, find `"distro": "ubuntu"`. Change `ubuntu` to `aks`.
-
+    | distro | Enter `aks-ubuntu-16.04`. |
 
 7.  In the array `linuxProfile` update:
 
@@ -86,18 +83,21 @@ This section looks at creating an API model for your cluster.
     | adminUsername | Enter the VM admin user name |
     | ssh | Enter the public key that will be used for SSH authentication with VMs |
 
-6.  Add the Service Principal credentials in the array `servicePrincipalProfile` To add the credentials in the API model, find the following fields:
+6. Specify the Service Principal credentials in the AKS Engine command line. 
 
     | Field | Description |
     | --- | --- |
     | clientId | Enter the service principal GUID. |
     | secret | Enter the service principal secret. |
 
-    > [!Note]  
-    >  If they are not provided in the API model, you can specify them as part of the parameters in the AKS Engine command line.
+    Open a command prompt, and use the following command:
+
+    ```bash  
+    AKS Engine -clientId <cleint-ID> - secret <secret>
+    ```
 
     > [!Note]  
-    > The secrets information provided in step 7 and (optionally) 8 will be stored in the output file "apimodel.json" generated in the output directory. This information will be unencrypted, we recommend it be kept encrypted in a secured place.
+    > The secrets information provided in step 7 and (optionally) 8 will be stored in the output file "apimodel.json" generated in the output directory. This information will be unencrypted, we recommend it be kept encrypted in a secured place. The service principal credentials passed through the command line parameters are also stored in the output file.
 
 ### More information about the API model
 
@@ -110,7 +110,18 @@ After you have collected all the required values in your API model, you can crea
 
 1.  Before running AKS Engine, check that your subscription has enough space in the quota. You may also want to wait until any Azure Stack system update has completed.
 
-2.  Review the available parameters for AKS Engine on Azure Stack [CLI flags](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cli-flags). 
+2.  Review the available parameters for AKS Engine on Azure Stack [CLI flags](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cli-flags).
+
+    | Parameter | Example | Description |
+    | --- | --- | --- |
+    | azure-env | AzureStackCloud | To indicate to AKS Engine that your target platform is Azure Stack use `AzureStackCloud`. |
+    | location | local | The region name for your Azure Stack. For the ASDK the region is set to `local`. |
+    | resource-group | kube-rg | Enter the name of a new resource group or select an existing resource group. The resource name needs to be alphanumeric and lowercase. |
+    | api-model | ./kubernetes-azurestack.json | Path to the cluster configuration file, or API model. |
+    | output-directory | kube-rg | Enter the name of the directory to your contain your the output file `apimodel.json`. |
+    | client-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal GUID. The Client ID identified as the Application ID when your Azure Stack administrator created the service principal. |
+    | client-secret | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal secret. This is the client secret you set up when creating your service. |
+    | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter your Subscription ID. For more information see [Subscribe to an offer](https://docs.microsoft.com/azure-stack/user/azure-stack-subscribe-services#subscribe-to-an-offer) |
 
     Here is an example to follow:
 
@@ -120,7 +131,6 @@ After you have collected all the required values in your API model, you can crea
     --location <for asdk is local>\\
     --resource-group kube-rg \\
     --api-model ./kubernetes-azurestack.json \\
-    --resource-group kube-rg \\
     --output-directory kube-rg \\
     --client-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \\
     --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \\

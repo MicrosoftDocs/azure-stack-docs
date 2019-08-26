@@ -208,7 +208,7 @@
           items:
           - name: AKS Engine on Azure Stack
             href: azure-stack-kubernetes-aks-engine-overview.md
-          - name: Support statement
+          - name: Support policy
             href: azure-stack-kubernetes-ask-engine-support.md 
           - name: Set up AKS Engine
             href: azure-stack-kubernetes-aks-engine-set-up.md

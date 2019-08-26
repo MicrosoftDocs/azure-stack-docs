@@ -1,5 +1,5 @@
 ---
-title: Deploy the AKS Engine on Linux in Azure Stack | Microsoft Docs
+title: Install the AKS Engine on Linux in Azure Stack | Microsoft Docs
 description: Learn how to use a Linux machine in your Azure Stack to host the AKS Engine in order to deploy and manage a Kubernetes cluster.
 services: azure-stack
 documentationcenter: ''
@@ -19,7 +19,7 @@ ms.lastreviewed: 08/22/2019
 
 ---
 
-# Deploy the AKS Engine on Linux in Azure Stack
+# Intall the AKS Engine on Linux in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -32,7 +32,7 @@ The AKS Engine is a command-line tool used to deploy and manage your Kubernetes 
 When choosing your client machine, consider:
 
 1. If the client machine should be recoverable in case of a disaster.
-2. If you need your cluster management machine to be highly available.
+2. If you need your client machine to be highly available.
 3. How you will connect to the client machine and how the machine will interact with your cluster.
 
 ## Install in a connected environment
@@ -48,6 +48,9 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
     hmod 700 get-akse.sh
     ./get-akse.sh
 ```
+
+> [!Note]  
+> If you this method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment), or [Try GoFish](azure-stack-kubernetes-aks-engine-troubleshoot.md#try-gofish), an alternate package manager.
 
 ## Install in a disconnected environment
 
@@ -66,7 +69,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 5.  Run the following command:
 
 ```bash  
-    curl -o aks-engine-v0.xx.x-linux-amd64.tar.gz <httpurl/aks-engine-v0.xx.x-linux-amd64.tar.gz>
+curl -o aks-engine-v0.xx.x-linux-amd64.tar.gz <httpurl/aks-engine-v0.xx.x-linux-amd64.tar.gz>
      tar xvzf aks-engine-v0.xx.x-linux-amd64.tar.gz -C /usr/local/bin
 ```
 

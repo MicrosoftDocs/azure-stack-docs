@@ -19,7 +19,7 @@ ms.lastreviewed: 08/22/2019
 
 ---
 
-# Deploy the AKS Engine on Windows in Azure Stack
+# Install the AKS Engine on Windows in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -32,7 +32,7 @@ The AKS Engine is a command-line tool used to deploy and manage your Kubernetes 
 When choosing your client machine, consider:
 
 1. If the client machine should be recoverable in case of a disaster.
-2. If you need your cluster management machine to be highly available.
+2. If you need your client machine to be highly available.
 3. How you will connect to the client machine and how the machine will interact with your cluster.
 
 ## Install in a connected environment
@@ -51,6 +51,9 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
         choco install aks-engine
     ```
 
+> [!Note]  
+> If you this method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment), or [Try GoFish](azure-stack-kubernetes-aks-engine-troubleshoot.md#try-gofish), an alternate package manager.
+
 ## Install in a disconnected environment
 
 You can install the client VM to manage your Kubernetes cluster on an Azure Stack disconnected from the Internet.
@@ -61,7 +64,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 3. Create a Widows VM in your Azure Stack. For instructions, see [Quickstart: Create a Windows server VM by using the Azure Stack portal](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-windows-portal)
 
-4.  From the Azure Stack storage account blob URL where you uploaded the archive file (*.tar.gz), download the file to your management VM. Extract the archive to the directory `/usr/local/bin`.
+4.  From the Azure Stack storage account blob URL where you uploaded the archive file (*.tar.gz), download the file to your management VM. Extract the archive to a directory that you have access to from your command prompt.
 
 5. Connect to your VM.
 
@@ -89,17 +92,12 @@ If you are unable to verify that you have installed the AKS Engine on your clien
 
 ## ASDK installation
 
-You will need to add a certificate when running the client VM for the AKS engine on the ASDK.
+You will need to add a certificate when running the client VM for the AKS engine on the ASDK on a machine outside of the ASDK. If you're using a Windows VM within the ASDK environment itself, the machine already trusts the ASDK certificate. If your client machine is outside of the ASDK, you need to extract the certificate from the ASDK, and add it to the your Windows machine.
 
-When you are using an ASDK your Azure Resource Manager endpoint is using a self-signed certificate, you need explicitly to add this certificate to the machine’s trusted certificate store. You can find the ASDK root certificate in any VM you deploy in the ASDK. For example, in an Ubuntu VM you will find it in this directory `/var/lib/waagent/Certificates.pem`. 
+When you are using an ASDK your Azure Resource Manager endpoint is using a self-signed certificate, you need explicitly to add this certificate to the machine’s trusted certificate store. You can find the ASDK root certificate in any VM you deploy in the ASDK.
 
-Copy the certificate file with the following command:
-
-```bash
-sudo cp /var/lib/waagent/Certificates.pem /usr/local/share/ca-certificates/azurestackca.crt
-
-sudo update-ca-certificates
-```
+1. Export the CA root certificate. For instructions, see [Export the Azure Stack CA root certificate](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-azurecli2#export-the-azure-stack-ca-root-certificate)
+2. Trust the Azure Stack CA root certificate. For instructions, see [Trust the Azure Stack CA root certificate](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-azurecli2#trust-the-azure-stack-ca-root-certificate).
 
 ## Next steps
 
