@@ -28,9 +28,9 @@ This article provides an overview of preparing Azure Stack update packages so th
 - [Downloading the update package](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#download-the-update-package)
 - [Importing the update package into your Azure Stack environment via the Azure Stack Administrator Portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#import-and-install-updates)
 
-This process is done automatically for Azure Stack software updates and hotfixes on systems with internet-connectivty to the [Azure Stack automatic update endpoints](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages)
+This process is done automatically for Azure Stack software updates and hotfixes on systems with internet-connectivty to the [Azure Stack automatic update endpoints](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages).
 
-For all OEM package updates and Azure Stack software updates and hotfixes on systems without connectivty to the [Azure Stack automatic update endpoints](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages), update packages are prepared by downloading the Azure Stack update package or OEM update package and importing the package to storage so that it can be accessed by the Azure Stack update provider. The table displays when the steps in this article should be performed:
+The table below displays when update packages require manual preparation and when they are prepared automatically:
 
 | Update Type | Azure Stack Environment's Connectivity to the [Azure Stack automatic update endpoints](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages) | Action Required |
 | --- | --- | --- |
