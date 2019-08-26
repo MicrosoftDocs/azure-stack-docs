@@ -19,7 +19,7 @@ ms.lastreviewed: 08/22/2019
 
 ---
 
-# Intall the AKS Engine on Linux in Azure Stack
+# Install the AKS Engine on Linux in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
