@@ -83,22 +83,6 @@ This section looks at creating an API model for your cluster.
     | adminUsername | Enter the VM admin user name |
     | ssh | Enter the public key that will be used for SSH authentication with VMs |
 
-6. Specify the Service Principal credentials in the AKS Engine command line. 
-
-    | Field | Description |
-    | --- | --- |
-    | clientId | Enter the service principal GUID. |
-    | secret | Enter the service principal secret. |
-
-    Open a command prompt, and use the following command:
-
-    ```bash  
-    AKS Engine -clientId <cleint-ID> - secret <secret>
-    ```
-
-    > [!Note]  
-    > The secrets information provided in step 7 and (optionally) 8 will be stored in the output file "apimodel.json" generated in the output directory. This information will be unencrypted, we recommend it be kept encrypted in a secured place. The service principal credentials passed through the command line parameters are also stored in the output file.
-
 ### More information about the API model
 
 - For a complete reference of all the available options in the API model, refer to the [Cluster definitions](https://github.com/Azure/aks-engine/blob/master/docs/topics/clusterdefinitions.md).  
@@ -137,14 +121,15 @@ After you have collected all the required values in your API model, you can crea
     --subscription-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
     ```
 
-3.  If for some reason the execution fails after the output directory has been created, you can correct the issue and rerun the command. If you are rerunning the deployment and had used the same output directory before, the AKS Engine will return an error saying that the directory already exists. You can overwrite the existing directory by using the parameter: `--force-overwrite`.
+3.  If for some reason the execution fails after the output directory has been created, you can correct the issue and rerun the command. If you are rerunning the deployment and had used the same output directory before, the AKS Engine will return an error saying that the directory already exists. You can overwrite the existing directory by using the flag: `--force-overwrite`.
 
-4.  Notice the `–azure-env` parameter, you need to specify it when scaling a cluster in Azure Stack.
+4.  Save the AKS Engine cluster configuration in a secure, encrypted location.
 
-5.  Save the AKS Engine cluster configuration. In the output directory, locate the file `apimodel.json` and save it to a secure location. This file will be used as input in all of your other AKS Engine operations.
+    Locate the file `apimodel.json`. Save it to a secure location. This file will be used as input in all of your other AKS Engine operations.
 
-    > [!Note]  
-    > The generated `apimodel.json` file in the output directory will contain the SPN credentials and SSH public key you use in the input API model. It also has all the other metadata needed by the AKS Engine to perform all other operations. If you lose it, the AKS Engine will not be able configure the cluster
+    The generated `apimodel.json` contains the service principal, secret, and SSH public key you use in the input API model. It also has all the other metadata needed by the AKS Engine to perform all other operations. If you lose it, the AKS Engine won't be able configure the cluster.
+
+    The secrets are **unencrypted**. Keep the file in an encrypted, secure place. 
 
 ## Verify your cluster
 
