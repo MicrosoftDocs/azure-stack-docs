@@ -24,7 +24,7 @@ ms.lastreviewed: 02/08/2019
 # What is the ASDK?
 [Microsoft Azure Stack integrated systems](../operator/azure-stack-overview.md) range in size from 4-16 nodes, and are jointly supported by a hardware partner and Microsoft. Use Azure Stack integrated systems to enable new scenarios for your production workloads. If you're an Azure Stack operator who manages the integrated systems infrastructure and offers services, see our [operator documentation](/azure-stack/operator).
 
-The Azure Stack Development Kit (ASDK) is a single-node deployment of Azure Stack that you can download and use **for free**. All ASDK components are installed in virtual machines (VMs) running on a single host server computer that must meet or exceed the [minimum hardware requirements](asdk-deploy-considerations.md#hardware). The ASDK is meant to provide an environment in which you can evaluate Azure Stack and develop modern apps using APIs and tooling consistent with Azure in a *non-production* environment. 
+The Azure Stack Development Kit (ASDK) is a single-node deployment of Azure Stack that you can download and use **for free**. All ASDK components are installed in virtual machines (VMs) running on a single host computer that must meet or exceed the [minimum hardware requirements](asdk-deploy-considerations.md#hardware). The ASDK is meant to provide an environment in which you can evaluate Azure Stack and develop modern apps using APIs and tooling consistent with Azure in a *non-production* environment. 
 
 > [!IMPORTANT]
 > The ASDK isn't intended to be used or supported in a production environment.
@@ -33,7 +33,7 @@ Because all of the ASDK components are deployed to a single host computer, there
 
 The ASDK is designed to provide an Azure-consistent hybrid cloud experience for:
 - **Administrators** (Azure Stack Operators): The ASDK is a great resource to evaluate and learn about the available Azure Stack services.
-- **Developers**: The ASDK can be used to develop hybrid or modern applications on-premises (dev/test environments). This offers repeatability of development experience prior to, or alongside, Azure Stack production deployments. 
+- **Developers**: The ASDK can be used to develop hybrid or modern apps on-premises (dev/test environments). This flexibility offers repeatability of development experience before, or alongside, Azure Stack production deployments.
 
 Watch this short video to learn more about the ASDK:
 
