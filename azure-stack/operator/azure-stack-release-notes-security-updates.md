@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2019
+ms.date: 08/27/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/08/2019
@@ -22,6 +22,12 @@ ms.lastreviewed: 06/08/2019
 # Azure Stack security updates
 
 This article lists all the security updates in the last four updates of Azure Stack. This information is provided for reference purposes only.
+
+::: moniker range="azs-1908"
+## 1908 update
+
+This update of Azure Stack does not include security updates to the underlying operating system which hosts Azure Stack.
+::: moniker-end
 
 ::: moniker range="azs-1907"
 ## 1907 update
