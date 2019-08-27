@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2019
+ms.date: 08/27/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 08/26/2019
+ms.lastreviewed: 08/27/2019
 
 ---
 
@@ -26,7 +26,7 @@ This article provides info on changes, fixes, and known issues in the Azure Stac
 Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [RSS feed](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
 
 ::: moniker range="azs-1908"
-## Build 1.1908.x.xx
+## Build 1.1908.0.20
 
 ### New features
 
