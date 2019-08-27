@@ -29,7 +29,7 @@ You can scale your cluster with the AKS Engine using the **scale** command. The 
 
 The `aks-engine scale` command can increase or decrease the number of nodes in an existing agent pool in an `aks-engine` Kubernetes cluster. Nodes will always be added or removed from the end of the agent pool. Nodes will be cordoned and drained before deletion.
 
-### Values for the cluster
+### Values for the scale command
 
 The following parameters are used by the scale command to find your cluster definition file and update your cluster.
 
@@ -42,9 +42,9 @@ The following parameters are used by the scale command to find your cluster defi
 | client-id |  | The client ID of the service principal used in creating your cluster from the AKS Engine. | 
 | client-secret |  | The service principal secret used when creating your cluster. | 
 | api-model | kube-rg/apimodel.json | The path to your cluster definition file (apimodel.json). This may be at:  _output/\<dnsPrefix>/apimodel.json | 
-| -new-node-count | 9 | desired node count | 
-| -node-pool | agentpool1  | name of agent pool | 
-| -master-FQDN |  | Master FQDN | 
+| -new-node-count | 9 | Desired node count. | 
+| -node-pool | agentpool1  | Name of agent pool. This is only needed if there multiple agentpools | 
+| -master-FQDN |  | Master FQDN. Needed when scaling down. | 
 
 You must specify the **–azure-env** parameter when scaling a cluster in Azure Stack. For more information about parameters and their values used in the **scale** command for the AKS Engine, see [Scale - parameters](https://github.com/Azure/aks-engine/blob/master/docs/topics/scale.md#parameters).
 
