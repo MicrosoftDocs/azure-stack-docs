@@ -1,6 +1,6 @@
 ---
 title: Add a new Azure Stack tenant account in Azure Active Directory | Microsoft Docs
-description: Learn how to create a tenant user account in the ASDK so you can explore the tenant portal.
+description: Learn how to create a tenant account in the ASDK so you can explore the tenant portal.
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
@@ -21,7 +21,7 @@ ms.lastreviewed: 09/17/2018
 
 # Add a new Azure Stack tenant account in Azure Active Directory
 
-After [deploying the Azure Stack Development Kit (ASDK)](../asdk/asdk-install.md), you need a tenant user account so you can explore the tenant portal and test your offers and plans. You can create a tenant account by [using the Azure portal](#create-an-azure-stack-tenant-account-using-the-azure-portal) or by using PowerShell.
+After [deploying the Azure Stack Development Kit (ASDK)](../asdk/asdk-install.md), you need a tenant user account so you can explore the tenant portal and test your offers and plans. You can create a tenant account in Azure Active Directory (AAD) by [using the Azure portal](#create-an-azure-stack-tenant-account-using-the-azure-portal) or by using PowerShell.
 
 ## Create an Azure Stack tenant account using the Azure portal
 
@@ -39,7 +39,7 @@ You must have an Azure subscription to use the Azure portal.
 
    - **Name (required)**: The first and last name of the new user. For example, Mary Parker.
    - **User name (required)**: The user name of the new user. For example, mary@contoso.com.
-       The domain part of the user name must use either the initial default domain name, <_yourdomainname_>.onmicrosoft.com, or a custom domain name, such as contoso.com. For more info on how to create a custom domain name, see [How to add a custom domain name to Azure Active Directory](/azure/active-directory/fundamentals/add-custom-domain).
+       The domain part of the user name must use either the initial default domain name, <_yourdomainname_>.onmicrosoft.com, or a custom domain name, such as contoso.com. For more info on how to create a custom domain name, see [How to add a custom domain name to AAD](/azure/active-directory/fundamentals/add-custom-domain).
    - **Profile**: Optionally, you can add more info about the user. You can also add user info at a later time. For more info on adding user info, see [How to add or change user profile information](/azure/active-directory/fundamentals/active-directory-users-profile-azure-portal).
    - **Directory role**:  choose **User**.
 
@@ -54,14 +54,14 @@ You must have an Azure subscription to use the Azure portal.
 
 ## Create an Azure Stack user account using PowerShell
 
-If you don't have an Azure subscription, you can't use the Azure portal to add a tenant user account. In this case, you can use the Azure Active Directory Module for Windows PowerShell instead.
+If you don't have an Azure subscription, you can't use the Azure portal to add a tenant user account. In this case, you can use the AAD Module for Windows PowerShell instead.
 
 > [!NOTE]
 > If you're using Microsoft Account to deploy the ASDK, you can't use Azure AD PowerShell to create a tenant account.
 
 1. Install the **64-bit** version of the [Microsoft Online Services Sign-in Assistant for IT Professionals RTW](https://go.microsoft.com/fwlink/p/?LinkId=286152).
 
-2. Install the Microsoft Azure Active Directory Module for Windows PowerShell with these steps:
+2. Install the Microsoft AAD Module for Windows PowerShell with these steps:
 
     - Open an elevated Windows PowerShell command prompt (run Windows PowerShell as admin).
     - Run the **Install-Module MSOnline** command.
