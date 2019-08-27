@@ -83,6 +83,8 @@
           href: azure-stack-deploy-template-command-line.md
         - name: Deploy with Visual Studio
           href: azure-stack-deploy-template-visual-studio.md
+        - name: Use a deployment schema
+          href: azure-stack-arm-deployment-schema.md
       - name: Use API version profiles
         items:
         - name: Overview
