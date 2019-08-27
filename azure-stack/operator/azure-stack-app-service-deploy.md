@@ -13,7 +13,7 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 08/28/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
@@ -26,7 +26,7 @@ ms.lastreviewed: 01/11/2019
 Use the guidance in this article to deploy App Service in Azure Stack.
 
 > [!IMPORTANT]
-> Apply the 1904 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.6.
+> Apply the 1907 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.7.
 
 You can give your users the ability to create web and API applications. To let users create these applications, you need to:
 
@@ -34,7 +34,7 @@ You can give your users the ability to create web and API applications. To let u
 - After you install the App Service resource provider, you can include it in your offers and plans. Users can then subscribe to get the service and start creating applications.
 
 > [!IMPORTANT]
-> Before you run the resource provider installer, make sure that you've followed the guidance in [Before you get started](azure-stack-app-service-before-you-get-started.md) and have read the [release notes](azure-stack-app-service-release-notes-update-six.md), which accompany the 1.6 release, to learn about new functionality, fixes, and any known issues which could affect your deployment.
+> Before you run the resource provider installer, make sure that you've followed the guidance in [Before you get started](azure-stack-app-service-before-you-get-started.md) and have read the [release notes](azure-stack-app-service-release-notes-update-seven.md), which accompany the 1.7 release, to learn about new functionality, fixes, and any known issues which could affect your deployment.
 
 ## Run the App Service resource provider installer
 
@@ -128,7 +128,7 @@ To deploy App Service resource provider, follow these steps:
 
     ![App Service Installer][10]
 
-11. Enter the SQL Server details for the server instance used to host the App Service resource provider databases and then select **Next**. The installer validates the SQL connection properties.<br><br>The App Service installer tries to test connectivity to the SQL Server before proceeding. If you're deploying to an existing virtual network, this connectivity test might fail. You're given a warning and a prompt to continue. If the SQL Server information is correct, continue the deployment.
+11. Enter the SQL Server details for the server instance used to host the App Service resource provider database and then select **Next**. The installer validates the SQL connection properties.<br><br>The App Service installer tries to test connectivity to the SQL Server before proceeding. If you're deploying to an existing virtual network, this connectivity test might fail. You're given a warning and a prompt to continue. If the SQL Server information is correct, continue the deployment.
 
     ![App Service Installer][11]
 
@@ -245,15 +245,10 @@ To create a test web app, follow these steps:
 
 ## Next steps
 
-You can also try out other [platform as a service (PaaS) services](azure-stack-offer-services-overview.md).
+Prepare for additional administrator operations for App Service on Azure Stack
 
-- [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md)
-- [MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md)
-
-<!--Links-->
-[Azure_Stack_App_Service_preview_installer]: https://go.microsoft.com/fwlink/?LinkID=717531
-[App_Service_Deployment]: https://go.microsoft.com/fwlink/?LinkId=723982
-[AppServiceHelperScripts]: https://go.microsoft.com/fwlink/?LinkId=733525
+- [Capacity Planning](azure-stack-app-service-capacity-planning.md)
+- [Configure Deployment Sources](azure-stack-app-service-configure-deployment-sources.md)
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-deploy/app-service-installer.png

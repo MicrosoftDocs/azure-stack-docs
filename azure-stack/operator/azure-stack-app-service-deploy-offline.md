@@ -13,7 +13,7 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 08/28/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
@@ -24,7 +24,7 @@ ms.lastreviewed: 01/11/2019
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Apply the 1904 update to your Azure Stack integrated system or deploy the latest Azure Stack development kit before deploying Azure App Service 1.6.
+> Apply the 1907 update to your Azure Stack integrated system or deploy the latest Azure Stack development kit before deploying Azure App Service 1.7.
 
 By following the instructions in this article, you can install the [App Service resource provider](azure-stack-app-service-overview.md) to an Azure Stack environment that is:
 
@@ -32,7 +32,7 @@ By following the instructions in this article, you can install the [App Service 
 - secured by Active Directory Federation Services (AD FS).
 
 > [!IMPORTANT]
-> Before you run the resource provider installer, make sure that you've followed the guidance in [Before you get started](azure-stack-app-service-before-you-get-started.md) and have read the [release notes](azure-stack-app-service-release-notes-update-six.md) which accompany the 6 release learn about new functionality, fixes, and any known issues that could affect your deployment.
+> Before you run the resource provider installer, make sure that you've followed the guidance in [Before you get started](azure-stack-app-service-before-you-get-started.md) and have read the [release notes](azure-stack-app-service-release-notes-update-seven.md) which accompany the 1.7 release learn about new functionality, fixes, and any known issues that could affect your deployment.
 
 To add the App Service resource provider to your offline Azure Stack deployment, you must complete these top-level tasks:
 
@@ -254,15 +254,10 @@ After you deploy and register the App Service resource provider, test it to make
 
 ## Next steps
 
-You can also try out other [platform as a service (PaaS) services](azure-stack-offer-services-overview.md).
+Prepare for additional administrator operations for App Service on Azure Stack
 
-- [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md)
-- [MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md)
-
-<!--Links-->
-[Azure_Stack_App_Service_preview_installer]: https://go.microsoft.com/fwlink/?LinkID=717531
-[App_Service_Deployment]: https://go.microsoft.com/fwlink/?LinkId=723982
-[AppServiceHelperScripts]: https://go.microsoft.com/fwlink/?LinkId=733525
+- [Capacity Planning](azure-stack-app-service-capacity-planning.md)
+- [Configure Deployment Sources](azure-stack-app-service-configure-deployment-sources.md)
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-deploy-offline/app-service-exe-advanced-create-package.png
