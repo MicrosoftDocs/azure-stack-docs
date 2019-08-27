@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: 
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 08/27/2019
 ms.author: mabrigg
 ms.lastreviewed: 03/11/2019
 ms.reviewer: jiahan
@@ -83,7 +83,7 @@ Volumes in Storage Spaces Direct provide resiliency to protect against hardware 
 
 ![Azure Stack storage infrastructure](media/azure-stack-storage-infrastructure-overview/image5.png)
 
-Mirroring provides fault tolerance by keeping multiple copies of all data. How that data is striped and placed is non-trivial (see this blog to learn more), but it is absolutely true to say that any data stored using mirroring is written, in its entirety, multiple times. Each copy is written to different physical hardware (different drives in different servers) that are assumed to fail independently. Three-way mirroring can safely tolerate at least two hardware problems (drive or server) at a time. For example, if you're rebooting one server when suddenly another drive or server fails, all data remains safe and continuously accessible.
+Mirroring provides fault tolerance by keeping multiple copies of all data. How that data is striped and placed is non-trivial, but it is absolutely true to say that any data stored using mirroring is written, in its entirety, multiple times. Each copy is written to different physical hardware (different drives in different servers) that are assumed to fail independently. Three-way mirroring can safely tolerate at least two hardware problems (drive or server) at a time. For example, if you're rebooting one server when suddenly another drive or server fails, all data remains safe and continuously accessible.
 
 ## Volume states
 
