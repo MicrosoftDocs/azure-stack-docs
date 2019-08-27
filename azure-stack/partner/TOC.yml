@@ -1,10 +1,7 @@
 - name: Azure Stack Partner Documentation
   href: index.yml
-- name: Overview
-  href: index.yml
   expanded: true
 - name: Provisioning validation as a service
-  href: index.yml
   expanded: true
   items:
   - name: Setting up your environment
@@ -18,19 +15,19 @@
   - name: Best practices
     href: azure-stack-vaas-best-practice.md
 - name: Package creation
-  href: index.yml
   expanded: true
   items:
-  - name: Overview (New)
-  - name:Creating a new package
+  - name: Overview (new)
+    href: index.yml
+  - name: Creating a new package
     href: azure-stack-vaas-create-oem-package.md
-  - name: Troubleshooting package creation new
+  - name: Troubleshooting package creation (new)
+    href: index.yml
 - name: Validation workflows
-  href: index.yml
   expanded: true
   items:
   - name: Overview
-    href: azure-stack-vaas-overview
+    href: azure-stack-vaas-overview.md
   - name: Workflow common parameters
     href: azure-stack-vaas-parameters.md
   - name: Monitor and manage tests
@@ -46,7 +43,6 @@
   - name: Troubleshooting validation
     href: azure-stack-vaas-troubleshoot.md
 - name: Resources
-  href: index.yml
   expanded: true
   items:
   - name: Release notes
