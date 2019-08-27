@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 08/27/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 08/22/2019
+ms.lastreviewed: 08/27/2019
 monikerRange: 'azs-1908'
 ---
 
@@ -53,7 +53,7 @@ This article lists known issues in the 1908 release of Azure Stack. The list is 
 ### Subscriptions Lock blade
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the administrator portal, the **lock** blade for user subscriptions has two butons that say subscription
+- Cause: In the administrator portal, the **Lock** blade for user subscriptions has two butons that say **subscription**.
 - Occurrence: Common
 
 ### Subscription permissions
