@@ -27,7 +27,7 @@ You can use a Linux machine in your Azure Stack to host the AKS Engine in order 
 
 ## Prepare the client VM
 
-The AKS Engine is a command-line tool used to deploy and manage your Kubernetes cluster. You can run the engine on a machine in your Azure Stack. From this machine, you will deploy the IaaS resources needed to run your cluster. You can then use the machine running the engine to perform management tasks on your cluster. 
+The AKS Engine is a command-line tool used to deploy and manage your Kubernetes cluster. You can run the engine on a machine in your Azure Stack. From this machine, you will execute the AKS Engine to deploy the IaaS resources and software needed to run your cluster. You can then use the machine running the engine to perform management tasks on your cluster.
 
 When choosing your client machine, consider:
 
@@ -50,7 +50,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 ```
 
 > [!Note]  
-> If you this method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment), or [Try GoFish](azure-stack-kubernetes-aks-engine-troubleshoot.md#try-gofish), an alternate package manager.
+> If you method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment), or [Try GoFish](azure-stack-kubernetes-aks-engine-troubleshoot.md#try-gofish), an alternate package manager.
 
 ## Install in a disconnected environment
 

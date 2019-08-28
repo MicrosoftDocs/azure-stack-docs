@@ -92,9 +92,7 @@ This section looks at creating an API model for your cluster.
 
 After you have collected all the required values in your API model, you can create your cluster.
 
-1.  Before running AKS Engine, check that your subscription has enough space in the quota. You may also want to wait until any Azure Stack system update has completed.
-
-2.  Review the available parameters for AKS Engine on Azure Stack [CLI flags](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cli-flags).
+1.  Review the available parameters for AKS Engine on Azure Stack [CLI flags](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cli-flags).
 
     | Parameter | Example | Description |
     | --- | --- | --- |
@@ -102,7 +100,7 @@ After you have collected all the required values in your API model, you can crea
     | location | local | The region name for your Azure Stack. For the ASDK the region is set to `local`. |
     | resource-group | kube-rg | Enter the name of a new resource group or select an existing resource group. The resource name needs to be alphanumeric and lowercase. |
     | api-model | ./kubernetes-azurestack.json | Path to the cluster configuration file, or API model. |
-    | output-directory | kube-rg | Enter the name of the directory to your contain your the output file `apimodel.json`. |
+    | output-directory | kube-rg | Enter the name of the directory to contain the output file `apimodel.json` as well as other generated files. |
     | client-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal GUID. The Client ID identified as the Application ID when your Azure Stack administrator created the service principal. |
     | client-secret | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal secret. This is the client secret you set up when creating your service. |
     | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter your Subscription ID. For more information see [Subscribe to an offer](https://docs.microsoft.com/azure-stack/user/azure-stack-subscribe-services#subscribe-to-an-offer) |
@@ -121,9 +119,9 @@ After you have collected all the required values in your API model, you can crea
     --subscription-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
     ```
 
-3.  If for some reason the execution fails after the output directory has been created, you can correct the issue and rerun the command. If you are rerunning the deployment and had used the same output directory before, the AKS Engine will return an error saying that the directory already exists. You can overwrite the existing directory by using the flag: `--force-overwrite`.
+2.  If for some reason the execution fails after the output directory has been created, you can correct the issue and rerun the command. If you are rerunning the deployment and had used the same output directory before, the AKS Engine will return an error saying that the directory already exists. You can overwrite the existing directory by using the flag: `--force-overwrite`.
 
-4.  Save the AKS Engine cluster configuration in a secure, encrypted location.
+3.  Save the AKS Engine cluster configuration in a secure, encrypted location.
 
     Locate the file `apimodel.json`. Save it to a secure location. This file will be used as input in all of your other AKS Engine operations.
 

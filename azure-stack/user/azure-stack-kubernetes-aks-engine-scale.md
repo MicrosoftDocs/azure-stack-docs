@@ -23,7 +23,7 @@ ms.lastreviewed: 08/30/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can scale your cluster with the AKS Engine using the **scale** command. The **scale** command reuses your cluster configuration file (`apimodel.json`) inside the output directory as input for a new Azure Resource Manger template deployment. The engine executes the scaling operation against the specified agent pool. When the scaling operation is done, the engine updates the cluster definition in that same `apimodel.json` file to reflect the new node count in order to reflect the updated, current cluster configuration.
+You can scale your cluster with the AKS Engine using the **scale** command. The ((scale)) command reuses your cluster configuration file (`apimodel.json`) inside the output directory as input for a new Azure Resource Manager deployment. The engine executes the scaling operation against the specified agent pool. When the scaling operation is done, the engine updates the cluster definition in that same `apimodel.json` file to reflect the new node count in order to reflect the updated, current cluster configuration.
 
 ## Scale a cluster
 
