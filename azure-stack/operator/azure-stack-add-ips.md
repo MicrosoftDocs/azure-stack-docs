@@ -22,7 +22,7 @@ ms.lastreviewed: 02/28/2019
 # Add public IP addresses
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*  
 
-In this article, we refer to external addresses as public IP addresses. In the context of Azure Stack, a public IP address is an IP address that's accessible from outside of Azure Stack. Whether that external network is public internet routable or is on an intranet and uses private address space doesn't really matter for the purposes of this article—the steps are the same.
+In this article, we refer to external addresses as public IP addresses. In the context of Azure Stack, a public IP address is an IP address that's accessible from outside of Azure Stack. Whether that external network is public internet routable or is on an intranet and uses private address space doesn't matter for the purposes of this article—the steps are the same.
 
 ## Add a public IP address pool
 You can add public IP addresses to your Azure Stack system at any time after the initial deployment of the Azure Stack system. Check out how to [View public IP address consumption](azure-stack-viewing-public-ip-address-consumption.md) to see what the current usage and public IP address availability is on your Azure Stack.

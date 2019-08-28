@@ -71,7 +71,7 @@ If you don't have an Azure subscription, you can't use the Azure portal to add a
 3. Run the following cmdlets:
 
     ```powershell
-    # Provide the AAD credential you use to deploy the ASDK
+    # Provide the AAD credential you use to deploy the ASDK.
 
             $msolcred = get-credential
 
