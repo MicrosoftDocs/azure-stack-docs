@@ -43,7 +43,6 @@ The following parameters are used by the scale command to find your cluster defi
 | client-secret |  | The service principal secret used when creating your cluster. | 
 | api-model | kube-rg/apimodel.json | The path to your cluster definition file (apimodel.json). This may be at:  _output/\<dnsPrefix>/apimodel.json | 
 | -new-node-count | 9 | Desired node count. | 
-| -node-pool | agentpool1  | Name of agent pool. This is only needed if there multiple agentpools | 
 | -master-FQDN |  | Master FQDN. Needed when scaling down. | 
 
 You must specify the **–azure-env** parameter when scaling a cluster in Azure Stack. For more information about parameters and their values used in the **scale** command for the AKS Engine, see [Scale - parameters](https://github.com/Azure/aks-engine/blob/master/docs/topics/scale.md#parameters).
@@ -62,7 +61,6 @@ aks-engine scale \
     --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
     --api-model <path to your apomodel.json file>
     --new-node-count <desired node count> \
-    --node-pool <name of agent pool> 
     --master-FQDN <master FQDN> \
 ```
 
