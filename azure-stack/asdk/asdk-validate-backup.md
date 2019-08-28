@@ -1,6 +1,6 @@
 ---
-title: Validate an Azure Stack backup using the ASDK | Microsoft Docs
-description: How to validate an Azure Stack integrated systems backup using the ASDK.
+title: Use the ASDK to validate an Azure Stack backup | Microsoft Docs
+description: Learn how to use the ASDK to validate an Azure Stack integrated systems backup.
 services: azure-stack
 author: justinha
 manager: femila
@@ -16,10 +16,10 @@ ms.lastreviewed: 07/31/2019
 ---
 
 # Use the ASDK to validate an Azure Stack backup
-After deploying Azure Stack and provisioning user resources such as offers, plans, quotas, and subscriptions, you should [enable Azure Stack infrastructure backup](../operator/azure-stack-backup-enable-backup-console.md). Scheduling and running regular infrastructure backups will ensure that infrastructure management data is not lost if there is a catastrophic hardware or service failure.
+After deploying Azure Stack and provisioning user resources (such as offers, plans, quotas, and subscriptions), you should [enable Azure Stack infrastructure backup](../operator/azure-stack-backup-enable-backup-console.md). Scheduling and running regular infrastructure backups will ensure infrastructure management data isn't lost if there's a catastrophic hardware or service failure.
 
 > [!TIP]
-> We recommended that you [run an on-demand backup](../operator/azure-stack-backup-back-up-azure-stack.md) before beginning this procedure to ensure you have a copy of the latest infrastructure data available. Make sure to capture the backup ID after the backup successfully completes. This ID will be required during cloud recovery. 
+> We recommended that you [run an on-demand backup](../operator/azure-stack-backup-back-up-azure-stack.md) before beginning this procedure to ensure you have a copy of the latest infrastructure data available. Make sure to capture the backup ID after the backup successfully completes. This ID is required during cloud recovery.
 
 Azure Stack infrastructure backups contain important data about your cloud that can be restored during redeployment of Azure Stack. You can use the ASDK to validate these backups without impacting your production cloud. 
 
@@ -43,7 +43,7 @@ The following scenario **is not** supported when validating backups on the ASDK:
 Infrastructure backups from your integrated systems deployment can be validated by performing a cloud recovery deployment of the ASDK. In this type of deployment, specific service data is restored from backup after the ASDK is installed on the host computer.
 
 ### <a name="prereqs"></a>Cloud recovery prerequisites
-Before starting a cloud recovery deployment of the ASDK, ensure that you have the following information:
+Before starting a cloud recovery deployment of the ASDK, ensure that you have the following info:
 
 **UI installer requirements**
 
@@ -51,11 +51,11 @@ Before starting a cloud recovery deployment of the ASDK, ensure that you have th
 
 |Prerequisite|Description|
 |-----|-----|
-|Backup share path|The UNC file share path of the latest Azure Stack backup that will be used to recover Azure Stack infrastructure information. This local share will be created during the cloud recovery deployment process.|
+|Backup share path|The UNC file share path of the latest Azure Stack backup that will be used to recover Azure Stack infrastructure info. This local share will be created during the cloud recovery deployment process.|
 |Backup ID to restore|The backup ID, in the alphanumeric form of "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", that identifies the backup to be restored during cloud recovery.|
 |Time server IP|A valid time server IP, such as 132.163.97.2, is required for Azure Stack deployment.|
 |External certificate password|The password for the external certificate used by Azure Stack. The CA backup contains external certificates that need to be restored with this password.|
-|Backup encryption key|Required if backup settings are configured in with an encryption key, which is deprecated. The installer will support encryption key in backwards compatibility mode for at least 3 releases. Once you update backup settings to use a certificate, refer to the next table for required information.|
+|Backup encryption key|Required if backup settings are configured in with an encryption key, which is deprecated. The installer will support encryption key in backwards compatibility mode for at least 3 releases. Once you update backup settings to use a certificate, refer to the next table for required info.|
 
 |     |     | 
 
@@ -65,7 +65,7 @@ Before starting a cloud recovery deployment of the ASDK, ensure that you have th
 
 |Prerequisite|Description|
 |-----|-----|
-|Backup share path|The UNC file share path of the latest Azure Stack backup that will be used to recover Azure Stack infrastructure information. This local share will be created during the cloud recovery deployment process.|
+|Backup share path|The UNC file share path of the latest Azure Stack backup that will be used to recover Azure Stack infrastructure info. This local share will be created during the cloud recovery deployment process.|
 |Backup ID to restore|The backup ID, in the alphanumeric form of "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", that identifies the backup to be restored during cloud recovery.|
 |Time server IP|A valid time server IP, such as 132.163.97.2, is required for Azure Stack deployment.|
 |External certificate password|The password for the external certificate used by Azure Stack. The CA backup contains external certificates that need to be restored with this password.|
@@ -74,7 +74,7 @@ Before starting a cloud recovery deployment of the ASDK, ensure that you have th
 |     |     | 
 
 ## Prepare the host computer 
-As in a normal ASDK deployment, the ASDK host system environment must be prepared for installation. When the development kit host computer has been prepared, it will boot from the CloudBuilder.vhdx virtual machine hard drive to begin ASDK deployment.
+As in a normal ASDK deployment, the ASDK host system environment must be prepared for installation. When the ASDK host computer has been prepared, it will boot from the CloudBuilder.vhdx VM hard drive to begin ASDK deployment.
 
 On the ASDK host computer, download a new cloudbuilder.vhdx corresponding to the same version of Azure Stack that was backed up, and follow the instructions for [preparing the ASDK host computer](asdk-prepare-host.md).
 
@@ -101,46 +101,46 @@ Finally, copy the decryption certificate (.pfx) to the certificate directory: `C
 The steps in this section show you how to deploy the ASDK using a graphical user interface (GUI) provided by downloading and running the **asdk-installer.ps1** PowerShell script.
 
 > [!NOTE]
-> The installer user interface for the Azure Stack Development Kit is an open-sourced script based on WCF and PowerShell.
+> The installer user interface for the ASDK is an open-sourced script based on WCF and PowerShell.
 
 > [!IMPORTANT]
 > The current installer UI only supports encryption key.
 
-1. After the host computer successfully boots into the CloudBuilder.vhdx image, sign in using the administrator credentials specified when you [prepared the development kit host computer](asdk-prepare-host.md) for ASDK installation. This should be the same as the development kit host local administrator credentials.
+1. After the host computer successfully boots into the CloudBuilder.vhdx image, sign in using the admin credentials specified when you [prepared the ASDK host computer](asdk-prepare-host.md) for ASDK installation. These credentials should be the same as the ASDK host local admin credentials.
 2. Open an elevated PowerShell console and run the **&lt;drive letter>\AzureStack_Installer\asdk-installer.ps1** PowerShell script. The script might now be on a different drive than C:\ in the CloudBuilder.vhdx image. Click **Recover**.
 
     ![ASDK installer script](media/asdk-validate-backup/1.PNG) 
 
-3. Enter your Azure AD directory information (optional) and the local administrator password for the ASDK host computer on the identity provider and credentials page. Click **Next**.
+3. Enter your Azure AD directory info (optional) and the local admin password for the ASDK host computer on the identity provider and credentials page. Click **Next**.
 
-    ![Identity and credentials page](media/asdk-validate-backup/2.PNG) 
+    ![ASDK Identity and credentials page](media/asdk-validate-backup/2.PNG) 
 
 4. Select the network adapter to be used by the ASDK host computer and click **Next**. All other network interfaces will be disabled during ASDK installation. 
 
-    ![Network adapter interface](media/asdk-validate-backup/3.PNG) 
+    ![ASDK Network adapter interface](media/asdk-validate-backup/3.PNG) 
 
 5. On the Network Configuration page, provide valid time server and DNS forwarder IP addresses. Click **Next**.
 
-    ![Network configuration page](media/asdk-validate-backup/4.PNG) 
+    ![ASDK Network configuration page](media/asdk-validate-backup/4.PNG) 
 
 6. When network interface card properties have been verified, click **Next**. 
 
-    ![Network card settings verification](media/asdk-validate-backup/5.PNG) 
+    ![ASDK Network card settings verification](media/asdk-validate-backup/5.PNG) 
 
-7. Provide the required information described earlier in [prerequisites section](#prereqs) on the Backup Settings page and the username and password to be used to access the share. Click **Next**: 
+7. Provide the required info described earlier in [prerequisites section](#prereqs) on the Backup Settings page and the username and password to be used to access the share. Click **Next**: 
 
-   ![Backup settings page](media/asdk-validate-backup/6.PNG) 
+   ![ASDK Backup settings page](media/asdk-validate-backup/6.PNG) 
 
 8. Review the deployment script to be used for deploying the ASDK on the Summary page. Click **Deploy** to begin deployment. 
 
-    ![Summary page](media/asdk-validate-backup/7.PNG) 
+    ![ASDK Summary page](media/asdk-validate-backup/7.PNG) 
 
 
 ### Use PowerShell to deploy the ASDK in recovery mode
 
 Modify the following PowerShell commands for your environment and run them to deploy the ASDK in cloud recovery mode:
 
-**Use the InstallAzureStackPOC.ps1 script to initiate cloud recovery with encryption key.**
+**Use the InstallAzureStackPOC.ps1 script to start cloud recovery with encryption key.**
 
 ```powershell
 cd C:\CloudDeployment\Setup     
@@ -157,7 +157,7 @@ $key = Read-Host -AsSecureString -Prompt "Your backup encryption key"
  -TimeServer "<Valid time server IP>" -ExternalCertPassword $certPass
 ```
 
-**Use the InstallAzureStackPOC.ps1 script to initiate cloud recovery with decryption certificate.**
+**Use the InstallAzureStackPOC.ps1 script to start cloud recovery with decryption certificate.**
 
 ```powershell
 cd C:\CloudDeployment\Setup     
@@ -181,8 +181,8 @@ After logging in as the Azure Stack operator, [install Azure Stack PowerShell](a
 
 **Recovery mode with certificate file**
 
-> [!NOTE] 
-> Azure Stack deployment does not persist the decryption certificate for security reasons. You will need to provide the decryption certificate and associated password again.
+> [!NOTE]
+> Azure Stack deployment doesn't persist the decryption certificate for security reasons. You'll need to provide the decryption certificate and associated password again.
 
 ```powershell
 $decryptioncertpassword = Read-Host -AsSecureString -Prompt "Password for the decryption certificate"
