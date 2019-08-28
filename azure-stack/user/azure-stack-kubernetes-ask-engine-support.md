@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 08/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 08/22/2019
+ms.lastreviewed: 08/30/2019
 
 ---
 
@@ -53,39 +53,37 @@ Microsoft does not provide technical support for the following:
 -  Using the AKS Engine on Azure.
 -  Azure Stack Kubernetes Marketplace item.
 -  Using the following AKS Engine cluster definition options and addons.
-    -  Not supported addons:
-            -  AAD Pod Identity
-            -  ACI Connector
-            -  Blobfuse Flex Volume
-            -  Cluster Autoscaler
-            -  Container Monitoring
-            -  KeyVault Flex Volume
-            -  NVIDIA Device Plugin
-            -  Rescheduler
-            -  SMB Flex Volume
+    -  Not supported addons:  
+            -  AAD Pod Identity  
+            -  ACI Connector  
+            -  Blobfuse Flex Volume  
+            -  Cluster Autoscaler  
+            -  Container Monitoring  
+            -  KeyVault Flex Volume  
+            -  NVIDIA Device Plugin  
+            -  Rescheduler  
+            -  SMB Flex Volume  
         
-    -  Not supported cluster definition options:
-            -  Under KubernetesConfig:
-            -  cloudControllerManagerConfig
-            -  enableDataEncryptionAtRest
-            -  enableEncryptionWithExternalKms
-            -  enablePodSecurityPolicy
-            -  etcdEncryptionKey
-            -  useInstanceMetadata
-            -  useManagedIdentity
-            -  azureCNIURLLinux
-            -  azureCNIURLWindows
-
-    -  Under masterProfile:
-            -  availabilityZones
-
-    -  Under agentPoolProfiles:
-            -  availabilityZones
-            -  singlePlacementGroup
-            -  scaleSetPriority
-            -  scaleSetEvictionPolicy
-            -  acceleratedNetworkingEnabled
-            -  acceleratedNetworkingEnabledWindows
+    -  Not supported cluster definition options:  
+            -  Under KubernetesConfig:  
+                    -  cloudControllerManagerConfig  
+                    -  enableDataEncryptionAtRest  
+                    -  enableEncryptionWithExternalKms  
+                    -  enablePodSecurityPolicy  
+                    -  etcdEncryptionKey  
+                    -  useInstanceMetadata  
+                    -  useManagedIdentity  
+                    -  azureCNIURLLinux  
+                    -  azureCNIURLWindows  
+            -  Under masterProfile:  
+                    -  availabilityZones  
+            -  Under agentPoolProfiles:  
+                    -  availabilityZones  
+                    -  singlePlacementGroup  
+                    -  scaleSetPriority  
+                    -  scaleSetEvictionPolicy  
+                    -  acceleratedNetworkingEnabled  
+                    -  acceleratedNetworkingEnabledWindows
 
 -  Kubernetes configuration changes persisted outside the Kubernetes configuration store etcd. For example, static pods running in nodes of the cluster.
 -  Questions about how to use Kubernetes. For example, Microsoft Support doesn't provide advice on how to create custom ingress controllers, use application workloads, or apply third-party or open-source software packages or tools.

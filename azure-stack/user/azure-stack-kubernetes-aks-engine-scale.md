@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 08/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 08/22/2019
+ms.lastreviewed: 08/30/2019
 
 ---
 

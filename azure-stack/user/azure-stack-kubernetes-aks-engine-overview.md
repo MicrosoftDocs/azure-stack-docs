@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 08/22/2019
+ms.date: 08/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 08/22/2019
+ms.lastreviewed: 08/30/2019
 
 ---
 
@@ -23,11 +23,11 @@ ms.lastreviewed: 08/22/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can use the AKS Engine command-line tool to deploy and manage a Kubernetes cluster on Azure and Azure Stack. Use the engine to deploy a cluster in both connected and disconnected environments. This article provides an overview of the AKS Engine, supported scenarios for using the engine with Azure Stack, and an introduction to operations such as upgrade, scale, and rotate secrets. You can then deploy a Kubernetes cluster with the AKS Engine.
+You can use the AKS Engine command-line tool to deploy and manage a Kubernetes cluster on Azure and Azure Stack. Use the AKS Engine to create, upgrade, and scale Azure Resource Manager native clusters. You can use the engine to deploy a cluster in both connected and disconnected environments. This article provides an overview of the AKS Engine, supported scenarios for using the engine with Azure Stack, and an introduction to operations such as upgrade, scale, and rotate secrets. You can then deploy a Kubernetes cluster with the AKS Engine.
 
 ## Overview of the AKS Engine
 
-The [AKS Engine](https://github.com/Azure/aks-engine) provides a command-line tool to bootstrap Kubernetes clusters on Azure and Azure Stack. By using the Azure Resource Manager, the AKS Engine helps you create, remove, and maintain clusters running on VMs, virtual networks, and other infrastructure-as-a-service (IaaS) resources in Azure Stack.
+The [AKS Engine](https://github.com/Azure/aks-engine) provides a command-line tool to bootstrap Kubernetes clusters on Azure and Azure Stack. By using the Azure Resource Manager, the AKS Engine helps you create and maintain clusters running on VMs, virtual networks, and other infrastructure-as-a-service (IaaS) resources in Azure Stack.
 
 ## AKS Engine on Azure Stack considerations
 
