@@ -49,7 +49,7 @@ Create a container in your storage account for package blobs. This container can
 
 ### Upload package to storage account
 
-1. Prepare the package you want to validate. This is a `.zip` file whose contents must match the structure described in [Create an OEM package](azure-stack-vaas-create-oem-package.md).
+1. [Create an OEM package](azure-stack-vaas-create-oem-package.md) with a VaaS format. **This is different from generating an OEM package with the the partner toolkit.**
 
     > [!NOTE]
     > Please ensure that the `.zip` contents are placed at the root of the `.zip` file. There should be no sub-folders in the package.

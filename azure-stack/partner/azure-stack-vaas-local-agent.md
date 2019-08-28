@@ -63,16 +63,22 @@ Check that your machine meets the following criteria:
     Set-Location VaaSOnPremAgent\lib\net46
     ```
 
-3. Run the following command to install the local agent dependencies:
+3. Run the following command to install the local agent dependencies and copy the public image repository (PIR) images (OS VHD) to your Azure Stack environment:
 
     ```powershell
+    $AadTenantId = "<aadTenantId>"
+    $Region = "<stamp region>"
+    $externalFqdn = "<external FQDN>"
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
     Import-Module .\VaaSPreReqs.psm1 -Force
     Install-VaaSPrerequisites -AadTenantId $AadTenantId `
                               -ServiceAdminCreds $ServiceAdminCreds `
                               -ArmEndpoint https://adminmanagement.$ExternalFqdn `
                               -Region $Region
+                              # For slow connectivity add -LocalPackagePath <localPackagePath>
     ```
+
+    If you're experiencing slow network speed when downloading these images, download them separately to a local share and specify the parameter `-LocalPackagePath *FileShareOrLocalPath*`. You can find more guidance on your PIR download in the section [Handle slow network connectivity](azure-stack-vaas-troubleshoot.md#handle-slow-network-connectivity) of [Troubleshoot Validation as a Service](azure-stack-vaas-troubleshoot.md).
 
     **Parameters**
 
@@ -83,13 +89,9 @@ Check that your machine meets the following criteria:
     | AadTenantId | Azure AD tenant ID for the Azure account registered with Validation as a Service. |
     | ExternalFqdn | You can get the fully qualified domain name from the configuration file. For instruction, see [Workflow common parameters in Azure Stack Validation as a Service](azure-stack-vaas-parameters.md). |
     | Region | The region of your Azure AD tenant. |
-
-The command downloads a public image repository (PIR) image (OS VHD) and copy from an Azure blob storage to your Azure Stack storage.
+    | LocalPackagePath | The local path to the PIR images |
 
 ![Download prerequisites](media/installingprereqs.png)
-
-> [!Note]
-> If you're experiencing slow network speed when downloading these images, download them separately to a local share and specify the parameter **-LocalPackagePath** *FileShareOrLocalPath*. You can find more guidance on your PIR download in the section [Handle slow network connectivity](azure-stack-vaas-troubleshoot.md#handle-slow-network-connectivity) of [Troubleshoot Validation as a Service](azure-stack-vaas-troubleshoot.md).
 
 ## Checks before starting the tests
 
