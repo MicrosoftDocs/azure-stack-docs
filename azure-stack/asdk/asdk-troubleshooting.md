@@ -59,7 +59,7 @@ Yes, this is expected behavior. It's designed this way because:
 * When you delete a VM, VHDs aren't deleted. Disks are separate resources in the resource group.
 * When a storage account gets deleted, the deletion is visible immediately through Azure Resource Manager, but the disks it may contain are still kept in storage until garbage collection runs.
 
-If you see "orphan" VHDs, it's important to know if they're part of the folder for a storage account that was deleted. If the storage account wasn't deleted, it's normal that they're still there.
+If you see "orphan" VHDs, it's important to know if they're part of the folder for a storage account that was deleted. If the storage account wasn't deleted, it's normal that the VHDs remain.
 
 You can read more about configuring the retention threshold and on-demand reclamation in [manage storage accounts](../operator/azure-stack-manage-storage-accounts.md).
 
