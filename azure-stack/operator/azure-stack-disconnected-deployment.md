@@ -48,7 +48,7 @@ Azure Stack was designed to work best when connected to Azure, so it's important
 |App Services|Impaired - WebApps may require Internet access for updated content.|
 |Command Line Interface (CLI)|Impaired - CLI has reduced functionality in terms of authentication and provisioning of Service principals.|
 |Visual Studio - Cloud discovery|Impaired - Cloud Discovery will either discover different clouds or will not work at all.|
-|Visual Studio - AD FS|Impaired - Only Visual Studio Enterprise supports AD FS.
+|Visual Studio - AD FS|Impaired - Only Visual Studio Enterprise and Visual Studio Code support AD FS authentication.
 Telemetry|Unavailable - Telemetry data for Azure Stack as well as any third-party gallery packages that depend on telemetry data.|
 |Certificates|Unavailable - Internet connectivity is required for Certificate Revocation List (CRL) and Online Certificate Status Protocol (OSCP) services in the context of HTTPS.|
 |Key-Vault|Impaired - A common use case for Key Vault is to have an application read secrets at runtime. For this the application needs a service principal in the directory. In Azure Active Directory, regular users (non-admins) are by default allowed to add service principals. In AD (using ADFS) they are not. This places a hurdle in the end-to-end experience because one must always go through a directory admin to add any application.| 
