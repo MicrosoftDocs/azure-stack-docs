@@ -52,15 +52,15 @@ You can view the current version of Azure Stack in the **Updates** blade. To ope
 
 3.  Select the available update that you wish to apply. If you do not have an update marked as **Available**, you will need to [Prepare the Update Package](azure-stack-update-prepare-package.md)
 
-4.  Select **Update now**. .
+4.  Select **Update now**.
 
     ![Azure Stack update run details](./media/azure-stack-update-apply/image2.png)
 
 5.  You can view high-level status as the update process iterates through various subsystems in Azure Stack. Example subsystems include physical hosts, Service Fabric, infrastructure virtual machines, and services that provide both the administrator and user portals. Throughout the update process, the update resource provider reports additional details about the update, such as the number of steps that have succeeded, and the number in progress.
 
-6.  Select the **Download full logs** from the update run details blade to download full logs.
+6.  Select the **Download summary** from the Update run details blade to download full logs.
 
-    If you run into an issue while monitoring the update, you can use the [privileged endpoint](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint) to monitor the progress of an Azure Stack update run, and to resume a failed update run from the last successful step should the Azure Stack portal become unavailable. For instructions, see[Monitor updates in Azure Stack using PowerShell](azure-stack-update-monitor.md).
+    If you run into an issue while monitoring the update, you can use the [privileged endpoint](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint) to monitor the progress of an Azure Stack update run, and to resume a failed update run from the last successful step should the Azure Stack portal become unavailable. For instructions, see [Monitor updates in Azure Stack using PowerShell](azure-stack-update-monitor.md).
 
     ![Azure Stack update run details](./media/azure-stack-update-apply/image3.png)
 
@@ -78,9 +78,9 @@ You can view the current version of Azure Stack in the **Updates** blade. To ope
 
 3.  Select **Update history**.
 
-![Azure Stack update history](./media/azure-stack-update-apply/image7.png)
+    ![Azure Stack update history](./media/azure-stack-update-apply/image7.png)
 
-# Next steps
+## Next steps
 
 -   [Manage updates in Azure Stack overview](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates)  
 -   [Azure Stack servicing policy](https://docs.microsoft.com/azure-stack/operator/azure-stack-servicing-policy)  
