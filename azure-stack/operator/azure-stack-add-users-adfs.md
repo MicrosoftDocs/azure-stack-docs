@@ -25,13 +25,13 @@ You can use the **Active Directory Users and Computers** snap-in to add addition
 > [!TIP]
 > This example uses the default azurestack.local ASDK active directory. 
 
-1. SIgn in to a computer with an account providing access to the Windows Administrative Tools and open a new Microsoft Management Console (MMC).
+1. Sign in to a computer with an account that provides access to the Windows Administrative Tools and open a new Microsoft Management Console (MMC).
 2. Select **File > Add or remove snap-in**.
 3. Select **Active Directory Users and Computers** > **AzureStack.local** > **Users**.
 4. Select **Action** > **New** > **User**.
 5. In New Object - User, provide user details. Select **Next**.
 6. Provide and confirm a password.
-7. Select **Next** to finalize the values. Select **Finish** to create the user.
+7. Select **Next** to complete the values. Select **Finish** to create the user.
 
 
 ## Next steps
