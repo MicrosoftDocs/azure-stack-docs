@@ -1,6 +1,6 @@
 ---
 title: Add a VM image to Azure Stack | Microsoft Docs
-description: Add a VM image or remove an image to your organization's custom Windows or Linux VM image for tenants to use.
+description: Learn how to add or remove a VM image to Azure Stack for tenants to use.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,7 +18,7 @@ ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
 
 ---
-# Add a VM image to offer in Azure Stack
+# Add a VM image to Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
