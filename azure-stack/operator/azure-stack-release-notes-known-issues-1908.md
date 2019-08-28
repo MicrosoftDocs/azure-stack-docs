@@ -50,6 +50,12 @@ This article lists known issues in the 1908 release of Azure Stack. The list is 
 - Remediation: You can view these subscription properties in the **Essentials** pane of the **Subscriptions Overview** blade.
 - Occurrence: Common
 
+### Subscriptions Lock blade
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the administrator portal, the **Lock** blade for user subscriptions has two butons that say **subscription**.
+- Occurrence: Common
+
 ### Subscription permissions
 
 - Applicable: This issue applies to all supported releases.
