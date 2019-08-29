@@ -64,7 +64,7 @@ You can view the current version of Azure Stack in the **Updates** blade. To ope
 
     ![Azure Stack update run details](./media/azure-stack-update-apply/image3.png)
 
-7. Once completed, the update resource provider provides a **Succeeded** confirmation to show that the update process has been completed and how long it took. From there, you can view info on all updates, available updates, or installed updates using the filter.
+7. Once completed, the update resource provider provides a **Succeeded** confirmation to show that the update process has finished and how long it took. From there, you can view info on all updates, available updates, or installed updates using the filter.
 
     ![azure-stack-update-apply](./media/azure-stack-update-apply/image4.png)
 
