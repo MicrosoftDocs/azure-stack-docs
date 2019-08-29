@@ -301,7 +301,7 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 For the Azure App Service on Azure Stack hosting and metering databases, you must prepare a SQL Server instance to hold the App Service databases.
 
-For Azure Stack Development Kit deployments, you can use SQL Server Express 2014 SP2 or later.  SQL Server must be configured to support Mixed Mode authentication, App Service on Azure Stack DOES NOT support Windows Authentication.
+For Azure Stack Development Kit deployments, you can use SQL Server Express 2014 SP2 or later.  SQL Server must be configured to support **Mixed Mode** authentication, App Service on Azure Stack **DOES NOT** support Windows Authentication.
 
 For production and high-availability purposes, you should use a full version of SQL Server 2014 SP2 or later, enable mixed-mode authentication, and deploy in a [highly available configuration](https://docs.microsoft.com/sql/sql-server/failover-clusters/high-availability-solutions-sql-server).
 
