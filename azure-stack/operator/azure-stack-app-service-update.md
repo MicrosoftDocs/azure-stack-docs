@@ -100,5 +100,5 @@ To upgrade your deployment of App Service on Azure Stack, follow these steps:
 
 Prepare for additional administrator operations for App Service on Azure Stack
 
-- [Plan for additional capacity](azure-stack-app-service-capacity-planning.md)
-- [Add additional capacity)](azure-stack-app-service-add-worker-roles.md)
+* [Plan for additional capacity](azure-stack-app-service-capacity-planning.md)
+* [Add additional capacity](azure-stack-app-service-add-worker-roles.md)
