@@ -55,8 +55,6 @@ The internet access required by the DVM during deployment is outbound only, no i
 
 Network configurations on Azure Stack switches contain access control lists (ACLs) that restrict traffic between certain network sources and destinations. The DVM is the only component with unrestricted access; even the HLH is very restricted. You can ask your OEM about customization options to ease management and access from your networks. Because of these ACLs, it is important to avoid changing the DNS and NTP server addresses at deployment time. If you do so, you will need to reconfigure all of the switches for the solution.
 
-After deployment is completed, the provided DNS and NTP server addresses will continue to be used by the system's components directly. For example, if you check DNS requests after deployment is completed, the source will change from the DVM IP to an address from the External Network range.
-
 After deployment is completed, the provided DNS and NTP server addresses will continue to be used by the system's components through the SDN using the External network. For example, if you check DNS requests after deployment is completed, the source will change from the DVM IP to a Public VIP.
 
 ## Next steps
