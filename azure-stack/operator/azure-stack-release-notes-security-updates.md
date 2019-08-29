@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2019
+ms.date: 08/29/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 06/08/2019
+ms.lastreviewed: 06/29/2019
 ---
 
 # Azure Stack security updates
@@ -180,21 +180,21 @@ This article lists all the security updates in the last four updates of Azure St
 - [CVE-2019-1065](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1065)
 - [CVE-2019-1069](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1069)
 
-Because of the cumulative nature of Windows updates, this update also contains the security payloads for the previous months. The list of CVEs above reflects the security payload of June, July, and August 2019.
-For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base articles [4511553](https://support.microsoft.com/en-us/help/4511553).
+Because of the cumulative nature of Windows updates, this update also contains the security payloads for the previous months. This list of CVEs reflects the security payload of June, July, and August 2019.
+For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base articles [4511553](https://support.microsoft.com/help/4511553).
 
 ::: moniker-end
 
 ::: moniker range="azs-1907"
 ## 1907 update
 
-This update of Azure Stack doesn't include security updates to the underlying operating system that hosts Azure Stack.
+This update of Azure Stack does not include security updates to the underlying operating system that hosts Azure Stack.
 ::: moniker-end
 
 ::: moniker range="azs-1906"
 ## 1906 update
 
-This update of Azure Stack doesn't include security updates to the underlying operating system that hosts Azure Stack.
+This update of Azure Stack does not include security updates to the underlying operating system that hosts Azure Stack.
 ::: moniker-end
 
 ::: moniker range="azs-1905"
@@ -290,8 +290,8 @@ The 1905 update installs the following security updates:
 - [CVE-2019-0797](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0797)
 - [CVE-2019-0821](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0821)
 
-Because of the cumulative nature of Windows updates, this update also contains the security payloads for the previous months. The list of CVEs above reflects the security payload of March, April, and May 2019.
-For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base articles [4499177](https://support.microsoft.com/en-us/help/4499177).
+Because of the cumulative nature of Windows updates, this update also contains the security payloads for the previous months. This list of CVEs reflects the security payload of March, April, and May 2019.
+For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base articles [4499177](https://support.microsoft.com/help/4499177).
 ::: moniker-end
 
 ## Next steps
