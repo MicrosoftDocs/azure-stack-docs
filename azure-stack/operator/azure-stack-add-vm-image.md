@@ -31,12 +31,12 @@ In Azure Stack, you can add a virtual machine (VM) image to the marketplace to m
 
 Images must be able to be referenced by a blob storage URI. Prepare a Windows or Linux operating system image in VHD format (not VHDX), and then upload the image to a storage account in Azure or Azure Stack. If your image is already uploaded to the blob storage in Azure or Azure Stack, you can skip step 1.
 
-1. [Upload a Windows VM image to Azure for Resource Manager deployments](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/) or, for a Linux image, follow the instructions described in [Deploy Linux virtual machines on Azure Stack](azure-stack-linux.md). Before you upload the image, it's important to consider the following factors:
+1. [Upload a Windows VM image to Azure for Resource Manager deployments](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/) or, for a Linux image, follow the instructions described in [Deploy Linux VMs on Azure Stack](azure-stack-linux.md). Before you upload the image, it's important to consider the following factors:
 
    - Azure Stack only supports generation one (1) VM in the fixed disk VHD format. The fixed-format structures the logical disk linearly within the file, so that disk offset X is stored at blob offset X. A small footer at the end of the blob describes the properties of the VHD. To confirm if your disk is fixed, use the [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) PowerShell command.  
 
      > [!IMPORTANT]  
-     >  Azure Stack does not support dynamic disk VHDs. Resizing a dynamic disk that is attached to a VM will leave the VM in a failed state. To mitigate this issue, delete the VM without deleting the VM's disk, a VHD blob in a storage account. The, convert the VHD from a dynamic disk to a fixed disk and re-create the virtual machine.
+     >  Azure Stack doesn't support dynamic disk VHDs. Resizing a dynamic disk that's attached to a VM will leave the VM in a failed state. To mitigate this issue, delete the VM without deleting the VM's disk, a VHD blob in a storage account. Then, convert the VHD from a dynamic disk to a fixed disk and re-create the VM.
 
    - It's more efficient to upload an image to Azure Stack blob storage than to Azure blob storage because it takes less time to push the image to the Azure Stack image repository.
 
