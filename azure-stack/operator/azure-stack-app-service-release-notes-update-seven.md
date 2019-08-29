@@ -76,7 +76,7 @@ Azure App Service on Azure Stack Update 7 includes the following improvements an
   - As of this release Users can configure Access Restrictions for their Web/Api/Functions applications according to the documentation published - [Azure App Service Access Restrictions](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions), **NOTE**: Azure App Service on Azure Stack does not support Service Endpoints.
 
 - **Deployment Options (Classic) Functionality Restored**:
-  - Users can once again use the Deployment Options (Classic) to configure deployment of their apps from GitHub, Bitbucket, Dropbox, OneDrive, Local and External Repositories, and to set the Deployment Credentials for their applications.  The new deployment center experience which is available in Azure will be enabled in a future update.
+  - Users can once again use the Deployment Options (Classic) to configure deployment of their apps from GitHub, Bitbucket, Dropbox, OneDrive, Local and External Repositories, and to set the Deployment Credentials for their applications.  The new deployment center experience that is available in Azure will be enabled in a future update.
 
 - **Azure Function Monitoring** configured correctly.
 
@@ -84,12 +84,12 @@ Azure App Service on Azure Stack Update 7 includes the following improvements an
   Based on customer feedback we have changed the way in which Windows Update is configured on App Service roles from Update 7:
   - Three modes:
     - **Disabled** - Windows Update service disabled, Windows will be updated with the KB that is shipped with Azure App Service on Azure Stack releases;
-    - **Automatic** - Windows Update service enabled and Windows Update till determine how and when to update;
+    - **Automatic** - Windows Update service enabled and Windows Update will determine how and when to update;
     - **Managed** - Windows Update service is disabled, Azure App Service will perform a Windows Update cycle during OnStart of the individual role.
 
   **New** Deployments - Windows Update service is disabled by default.
 
-  **Existing** Deployments - If you have modified the setting on the Controller, the value will now change from **False** to **Disabled** and previous value of **true** will become **Automatic**
+  **Existing** Deployments - If you have modified the setting on the Controller, the value will now change from **False** to **Disabled** and a previous value of **true** will become **Automatic**
 
 ### Post-deployment Steps
 
