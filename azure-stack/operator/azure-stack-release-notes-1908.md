@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2019
+ms.date: 08/30/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 08/27/2019
+ms.lastreviewed: 08/30/2019
 monikerRange: 'azs-1908'
 ---
 
@@ -29,13 +29,17 @@ This article describes the contents of the 1908 update package. The update inclu
 > [!IMPORTANT]  
 > This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
 
+## Previous release notes
+
+Starting with the 1908 release, previous versions of release notes are no longer visible in the table of contents on the left. To access older versions of the release notes, select another article (for example, the [Azure Stack overview](azure-stack-overview.md)), then select 1905, 1906, 1907, or 1908 from the version selector at the top of the table of contents on the left. For earlier versions of release notes, see the [Archived release notes](#archived-release-notes) section.
+
 ## Build reference
 
 The Azure Stack 1908 update build number is **1.1908.0.20**.
 
 ### Update type
 
-For 1908, the underlying operating system on which Azure Stack runs has been updated to Windows Server 2019. This enables core fundamental enhancements as well as the ability to bring additional capabilities to Azure Stack in the near future.
+For 1908, the underlying operating system on which Azure Stack runs has been updated to Windows Server 2019. This enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack in the near future.
 
 The Azure Stack 1908 update build type is **Full**. As a result, the 1908 update has a longer runtime than express updates like 1904 and 1906. Exact runtimes for full updates typically depend on the number of nodes that your Azure Stack instance contains, the capacity used on your system by tenant workloads, your system's network connectivity (if connected to the internet), and your system hardware configuration. The 1908 update has had the following expected runtimes in our internal testing: 4 nodes - 35 hours, 8 nodes - 45 hours, 12 nodes - 55 hours, 16 nodes - 70 hours. 1906 runtimes lasting longer than these expected values are not uncommon and do not require action by Azure Stack operators unless the update fails.
 
@@ -45,7 +49,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Runtimes lasting longer than expected are not uncommon and do not require action by Azure Stack operators unless the update fails.
 - This runtime approximation is specific to the 1908 update and should not be compared to other Azure Stack updates.
 
-## What's in this update
+<!-- ## What's in this update -->
 
 <!-- The current theme (if any) of this release. -->
 
@@ -53,7 +57,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- What's new, also net new experiences and features. -->
 
-### Improvements
+- For 1908, note that the underlying operating system on which Azure Stack runs has been updated to Windows Server 2019. This enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack in the near future.
+
+<!-- ### Improvements -->
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
