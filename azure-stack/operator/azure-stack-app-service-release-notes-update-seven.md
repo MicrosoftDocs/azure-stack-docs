@@ -30,7 +30,7 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 ## Build reference
 
-The App Service on Azure Stack Update 7 build number is **84.0.2.8**
+The App Service on Azure Stack Update 7 build number is **84.0.2.10**
 
 ### Prerequisites
 
@@ -47,7 +47,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 1.7:
 
 - Back up the Tenant App content file share
 
-- Syndicate the **Custom Script Extension** version **1.9.1** from the Marketplace
+- Syndicate the **Custom Script Extension** version **1.9.3** from the Marketplace
 
 ### New features and fixes
 
@@ -61,7 +61,7 @@ Azure App Service on Azure Stack Update 7 includes the following improvements an
 
 - **Updates to the following application frameworks and tools**:
   - ASP.NET Core 2.2.46
-  - Zulu OpenJDK 8.38.0.13
+  - Zul OpenJDK 8.38.0.13
   - Tomcat 7.0.94
   - Tomcat 8.5.42
   - Tomcat 9.0.21
@@ -79,6 +79,17 @@ Azure App Service on Azure Stack Update 7 includes the following improvements an
   - Users can once again use the Deployment Options (Classic) to configure deployment of their apps from GitHub, Bitbucket, Dropbox, OneDrive, Local and External Repositories, and to set the Deployment Credentials for their applications.  The new deployment center experience which is available in Azure will be enabled in a future update.
 
 - **Azure Function Monitoring** configured correctly.
+
+- **Windows Update Behavior**:
+  Based on customer feedback we have changed the way in which Windows Update is configured on App Service roles from Update 7:
+  - Three modes:
+    - **Disabled** - Windows Update service disabled, Windows will be updated with the KB that is shipped with Azure App Service on Azure Stack releases;
+    - **Automatic** - Windows Update service enabled and Windows Update till determine how and when to update;
+    - **Managed** - Windows Update service is disabled, Azure App Service will perform a Windows Update cycle during OnStart of the individual role.
+
+  **New** Deployments - Windows Update service is disabled by default.
+
+  **Existing** Deployments - If you have modified the setting on the Controller, the value will now change from **False** to **Disabled** and previous value of **true** will become **Automatic**
 
 ### Post-deployment Steps
 
