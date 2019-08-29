@@ -91,7 +91,7 @@ Azure App Service on Azure Stack Update 7 includes the following improvements an
 
   **Existing** Deployments - If you have modified the setting on the Controller, the value will now change from **False** to **Disabled** and a previous value of **true** will become **Automatic**
 
-### Post-deployment Steps
+### Post-deployment steps
 
 > [!IMPORTANT]
 > If you have provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
