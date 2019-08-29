@@ -70,7 +70,7 @@ Azure App Service on Azure Stack Update 7 includes the following improvements an
   - Updated Kudu to 82.10503.3890
 
 - **Updates to underlying operating system of all roles**:
-  - [2019-08 Cumulative Update for Windows Server 2016 for x64-based Systems (KB4512495)](https://support.microsoft.com/en-us/help/4512495)
+  - [2019-08 Cumulative Update for Windows Server 2016 for x64-based Systems (KB4512495)](https://support.microsoft.com/help/4512495)
 
 - **Access Restrictions now enabled in User Portal**:
   - As of this release Users can configure Access Restrictions for their Web/Api/Functions applications according to the documentation published - [Azure App Service Access Restrictions](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions), **NOTE**: Azure App Service on Azure Stack does not support Service Endpoints.
