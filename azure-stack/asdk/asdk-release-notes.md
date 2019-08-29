@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2019
+ms.date: 08/30/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 08/27/2019
+ms.lastreviewed: 08/30/2019
 
 ---
 
@@ -30,7 +30,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 
 ### New features
 
-- For a list of new features in this release, see [this section](../operator/azure-stack-release-notes-1908.md#whats-in-this-update) of the Azure Stack release notes.
+- For a list of new features in this release, see [this section](../operator/azure-stack-release-notes-1908.md#whats-new) of the Azure Stack release notes.
 
 <!-- ### Changes -->
 
