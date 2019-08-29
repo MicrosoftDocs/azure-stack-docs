@@ -38,7 +38,7 @@ Azure Stack solution providers may provision additional management VMs. Confirm 
 Before deployment starts, there are some minimum requirements that can be validated by your OEM to ensure deployment completes successfully:
 
 -   [Certificates](azure-stack-pki-certs.md)
--   [Azure Subscription](https://azure.microsoft.com/free/?b=17.06)
+-   [Azure subscription](https://azure.microsoft.com/free/?b=17.06)
 -   Internet access
 -   DNS
 -   NTP
