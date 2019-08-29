@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2019
+ms.date: 08/29/2019
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 11/12/2018
+ms.lastreviewed: 08/29/2019
 
 ---
 
@@ -58,7 +58,7 @@ $vm.LicenseType = "None"
 Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
 ```
 
-You can check the license type of your VM by running the following commands. If the license model says **Windows_Server**, you will be charged for the BYOL price else you will be charged for Windows meter per PAYG model:
+You can check the license type of your VM by running the following commands. If the license model says **Windows_Server**, you will be charged for the BYOL price, otherwise you will be charged for the Windows meter per the PAYG model:
 
 ```powershell
 $vm | ft Name, VmId,LicenseType,ProvisioningState
