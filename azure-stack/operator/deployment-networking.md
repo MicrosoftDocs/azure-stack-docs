@@ -20,7 +20,7 @@ ms.lastreviewed: 08/29/2019
 ---
 
 # About deployment network traffic
-Understanding how network traffic flows during Azure Stack deployment is vital to ensuring a successful deployment. This article walks you through expected network traffic during the deployment process to provide an understanding of what to expect.
+Understanding network traffic during Azure Stack deployment will help make the deployment successful. This article walks you through the network traffic flow during the deployment process so you know what to expect.
 
 This illustration shows all the components and connections involved in the deployment process:
 
