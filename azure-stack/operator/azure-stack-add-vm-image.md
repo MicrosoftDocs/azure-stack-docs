@@ -1,6 +1,6 @@
 ---
 title: Add a VM image to Azure Stack | Microsoft Docs
-description: Learn how to add or remove a VM image to Azure Stack for tenants to use.
+description: Learn how to add or remove a VM image to Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -22,7 +22,7 @@ ms.lastreviewed: 06/08/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-In Azure Stack, you can add a virtual machine (VM) image to the marketplace to make  available to your users. You can add VM images by using Azure Resource Manager templates for Azure Stack. You can also add VM images to the Azure Marketplace UI as a Marketplace item. Use either an image from the global Azure Marketplace or your own custom VM image. You can add VM image using the Administration portal or Windows PowerShell.
+In Azure Stack, you can add a virtual machine (VM) image to the marketplace to make  available to your users. Images are added by using Azure Resource Manager templates for Azure Stack. You can also add VM images to the Azure Marketplace UI as a Marketplace item using the admin portal or Windows PowerShell. Use either an image from the global Azure Marketplace or your own custom VM image.
 
 ## Add a VM image through the portal
 
