@@ -76,7 +76,7 @@ Azure App Service on Azure Stack Update 7 includes the following improvements an
   - As of this release Users can configure Access Restrictions for their Web/Api/Functions applications according to the documentation published - [Azure App Service Access Restrictions](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions), **NOTE**: Azure App Service on Azure Stack does not support Service Endpoints.
 
 - **Deployment Options (Classic) Functionality Restored**:
-  - Users can once again use the Deployment Options (Classic) to configure deployment of their apps from GitHub, Bitbucket, Dropbox, OneDrive, Local and External Repositories, and to set the Deployment Credentials for their applications.  The new deployment center experience that is available in Azure will be enabled in a future update.
+  - Users can once again use the Deployment Options (Classic) to configure deployment of their apps from GitHub, Bitbucket, Dropbox, OneDrive, Local and External Repositories, and to set the Deployment Credentials for their applications.
 
 - **Azure Function Monitoring** configured correctly.
 

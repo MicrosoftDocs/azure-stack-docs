@@ -203,7 +203,7 @@ If you're deploying to an existing virtual network and using an internal IP addr
 
 2. In the overview, under status, check to see that the **Status** displays **All roles are ready**.
 
-    ![App Service Management](media/azure-stack-app-service-deploy/image12.png)
+    ![App Service Administration](media/azure-stack-app-service-deploy/image12.png)
 
 ## Test drive App Service on Azure Stack
 
