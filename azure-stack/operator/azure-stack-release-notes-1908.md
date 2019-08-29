@@ -58,10 +58,13 @@ For more information about update build types, see [Manage updates in Azure Stac
 <!-- What's new, also net new experiences and features. -->
 
 - For 1908, note that the underlying operating system on which Azure Stack runs has been updated to Windows Server 2019. This enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack in the near future.
+- All components of Azure Stack infrastructure now operate in FIPS 140-2 mode.
 
-<!-- ### Improvements -->
+
+### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
+- Improvements to data at rest encryption of Azure Stack to persist secrets into the hardware Trusted Platform Module (TPM) of the physical nodes.
 
 ### Changes
 
