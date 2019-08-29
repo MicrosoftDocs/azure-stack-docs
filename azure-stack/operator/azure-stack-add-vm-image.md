@@ -45,7 +45,7 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
    - Make a note of the blob storage URI where you upload the image. The blob storage URI has the following format:
      *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*.vhd.
 
-   - To make the blob anonymously accessible, go to the storage account blob container where the VM image VHD was uploaded. Select **Blob**, and then select **Access policy**. Optionally, you can generate a shared access signature for the container, and include it as part of the blob URI. This step makes sure the blob is available to be used for adding this as an image. If the blob is not anonymously accessible, the VM image will be created to in a failed state.
+   - To make the blob anonymously accessible, go to the storage account blob container where the VM image VHD was uploaded. Select **Blob**, and then select **Access policy**. Optionally, you can generate a shared access signature for the container, and include it as part of the blob URI. This step makes sure the blob is available to be used for adding this as an image. If the blob isn't anonymously accessible, the VM image will be created to in a failed state.
 
      ![Go to storage account blobs](./media/azure-stack-add-vm-image/image1.png)
 
@@ -53,17 +53,17 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
 
 2. Sign in to Azure Stack as operator. In the menu, select **All services** > **Images** under **Compute** > **Add**.
 
-3. Under **Create image**, enter the Name, Subscription, Resource Group, Location, OS disk, OS type, storage blob URI, Account type, and Host caching. Then, select **Create** to begin creating the VM Image.
+3. Under **Create image**, enter the Name, Subscription, Resource Group, Location, OS disk, OS type, storage blob URI, Account type, and Host caching. Then, select **Create** to begin creating the VM image.
 
    ![Begin to create the image](./media/azure-stack-add-vm-image/image4.png)
 
    When the image is successfully created, the VM image status changes to **Succeeded**.
 
-4. To make the virtual machine image more readily available for user consumption in the UI, it's a good idea to [create a Marketplace item](azure-stack-create-and-publish-marketplace-item.md).
+4. To make the VM image more readily available for user consumption in the UI, it's a good idea to [create a Marketplace item](azure-stack-create-and-publish-marketplace-item.md).
 
 ## Remove a VM image through the portal
 
-1. Open the administration portal at [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external).
+1. Open the admin portal at [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external).
 
 2. Select **Marketplace management**, and then select the VM you would like to delete.
 
