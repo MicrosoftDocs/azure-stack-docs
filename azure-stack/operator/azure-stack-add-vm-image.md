@@ -72,7 +72,7 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
 ## Add a VM image to the Marketplace by using PowerShell
 
 > [!Note]  
-> When you add an image it will only be available for Azure Resource Manger based templates and PowerShell deployments. To make an image available to a your users as a marketplace item, publish the marketplace item using the steps in the article, [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md)
+> When you add an image it'll only be available for Azure Resource Manager-based templates and PowerShell deployments. To make an image available to your users as a marketplace item, publish the marketplace item using the steps in this article: [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md)
 
 1. [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).  
 
@@ -92,16 +92,16 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
    The **Add-AzsPlatformimage** cmdlet specifies values used by the Azure Resource Manager templates to reference the VM image. The values include:
    - **publisher**  
      For example: `Canonical`  
-     The publisher name segment of the VM image that users use when they deploy the image. An example is **Microsoft**. Do not include a space or other special characters in this field.  
+     The publisher name segment of the VM image that users use when they deploy the image. An example is **Microsoft**. Don't include a space or other special characters in this field.  
    - **offer**  
      For example: `UbuntuServer`  
-     The offer name segment of the VM image that users use when they deploy the VM image. An example is **WindowsServer**. Do not include a space or other special characters in this field.  
+     The offer name segment of the VM image that users use when they deploy the VM image. An example is **WindowsServer**. Don't include a space or other special characters in this field.  
    - **sku**  
      For example: `14.04.3-LTS`  
-     The SKU name segment of the VM Image that users use when they deploy the VM image. An example is **Datacenter2016**. Do not include a space or other special characters in this field.  
+     The SKU name segment of the VM Image that users use when they deploy the VM image. An example is **Datacenter2016**. Don't include a space or other special characters in this field.  
    - **version**  
      For example: `1.0.0`  
-     The version of the VM Image that users use when they deploy the VM image. This version is in the format *\#.\#.\#*. An example is **1.0.0**. Do not include a space or other special characters in this field.  
+     The version of the VM Image that users use when they deploy the VM image. This version is in the format *\#.\#.\#*. An example is **1.0.0**. Don't include a space or other special characters in this field.  
    - **osType**  
      For example: `Linux`  
      The osType of the image must be either **Windows** or **Linux**.  
@@ -109,7 +109,7 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
      For example: `https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
      You can specify a blob storage URI for an `osDisk`.  
 
-     For more information, see the PowerShell reference for the [Add-AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) cmdlet and the [New-DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject) cmdlet.
+     For more info, see the PowerShell reference for the [Add-AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) cmdlet and the [New-DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject) cmdlet.
 
 ## Add a custom VM image to the Marketplace by using PowerShell
  
@@ -130,7 +130,7 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
       -TenantId $TenantID
    ```
 
-2. If using **Active Directory Federation Services**, use the following cmdlet:
+2. If using **Active Directory Federation Services (AD FS)**, use the following cmdlet:
 
    ```powershell
    # For Azure Stack Development Kit, this value is set to https://adminmanagement.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
@@ -170,11 +170,11 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
     Add-AzsPlatformimage -publisher "<publisher>" -offer "<offer>" -sku "<sku>" -version "<#.#.#>" -OSType "<ostype>" -OSUri "<osuri>"
    ```
 
-    For more information about the Add-AzsPlatformimage cmdlet and New-DataDiskObject cmdlet, see the Microsoft PowerShell [Azure Stack Operator module documentation](https://docs.microsoft.com/powershell/module/).
+    For more info about the Add-AzsPlatformimage cmdlet and New-DataDiskObject cmdlet, see the Microsoft PowerShell [Azure Stack Operator module documentation](https://docs.microsoft.com/powershell/module/).
 
 ## Remove a VM image by using PowerShell
 
-When you no longer need the virtual machine image that you uploaded, you can delete it from the Marketplace by using the following cmdlet:
+When you no longer need the VM image that you uploaded, you can delete it from the Marketplace by using the following cmdlet:
 
 1. [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).
 
@@ -192,18 +192,18 @@ When you no longer need the virtual machine image that you uploaded, you can del
    The **Remove-AzsPlatformImage** cmdlet specifies values used by the Azure Resource Manager templates to reference the VM image. The values include:
    - **publisher**  
      For example: `Canonical`  
-     The publisher name segment of the VM image that users use when they deploy the image. An example is **Microsoft**. Do not include a space or other special characters in this field.  
+     The publisher name segment of the VM image that users use when they deploy the image. An example is **Microsoft**. Don't include a space or other special characters in this field.  
    - **offer**  
      For example: `UbuntuServer`  
-     The offer name segment of the VM image that users use when they deploy the VM image. An example is **WindowsServer**. Do not include a space or other special characters in this field.  
+     The offer name segment of the VM image that users use when they deploy the VM image. An example is **WindowsServer**. Don't include a space or other special characters in this field.  
    - **sku**  
      For example: `14.04.3-LTS`  
-     The SKU name segment of the VM Image that users use when they deploy the VM image. An example is **Datacenter2016**. Do not include a space or other special characters in this field.  
+     The SKU name segment of the VM Image that users use when they deploy the VM image. An example is **Datacenter2016**. Don't include a space or other special characters in this field.  
    - **version**  
      For example: `1.0.0`  
-     The version of the VM Image that users use when they deploy the VM image. This version is in the format *\#.\#.\#*. An example is **1.0.0**. Do not include a space or other special characters in this field.  
+     The version of the VM Image that users use when they deploy the VM image. This version is in the format *\#.\#.\#*. An example is **1.0.0**. Don't include a space or other special characters in this field.  
     
-     For more information about the Remove-AzsPlatformImage cmdlet, see the Microsoft PowerShell [Azure Stack Operator module documentation](https://docs.microsoft.com/powershell/module/).
+     For more info about the Remove-AzsPlatformImage cmdlet, see the Microsoft PowerShell [Azure Stack Operator module documentation](https://docs.microsoft.com/powershell/module/).
 
 ## Next steps
 
