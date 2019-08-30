@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 08/29/2019
 ms.author: sethm
 ms.reviewer: efemmano
-ms.lastreviewed: 10/12/2018
+ms.lastreviewed: 08/29/2019
 
 ---
 # Plan, offer, quota, and subscription overview
@@ -81,7 +81,7 @@ Each combination of a user with an offer is a unique subscription. A user can ha
 
 ### Default provider subscription
 
-The default provider subscription is automatically created when you deploy the Azure Stack Development Kit. This subscription can be used to manage Azure Stack, deploy additional resource providers, and create plans and offers for users. For security and licensing reasons, it should not be used to run customer workloads and applications.
+The default provider subscription is automatically created when you deploy the Azure Stack Development Kit. This subscription can be used to manage Azure Stack, deploy additional resource providers, and create plans and offers for users. For security and licensing reasons, it should not be used to run customer workloads and applications. The quota of the default provider subscription can't be changed.
 
 ## Next steps
 
