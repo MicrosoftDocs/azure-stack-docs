@@ -153,7 +153,7 @@ As a best practice, when working with any of the necessary [Azure Stack PKI cert
 ## Virtual network
 
 > [!NOTE]
-> The pre-creation of a custom virtual network is optional as the Azure App Service on Azure Stack can create the required virtual network but will then need to communicate with SQL and File Server via Public IP Addresses.
+> The precreation of a custom virtual network is optional as the Azure App Service on Azure Stack can create the required virtual network but will then need to communicate with SQL and File Server via public IP addresses.
 
 Azure App Service on Azure Stack lets you deploy the resource provider to an existing virtual network or lets you create a virtual network as part of the deployment. Using an existing virtual network enables the use of internal IPs to connect to the file server and SQL server required by Azure App Service on Azure Stack. The virtual network must be configured with the following address range and subnets before installing Azure App Service on Azure Stack:
 
@@ -169,12 +169,12 @@ Subnets
 
 ## Licensing concerns for required file server and SQL Server
 
-Azure App Service on Azure Stack requires a File Server and SQL Server to operate.  You are free to use pre-existing resources located outside of your Azure Stack deployment or deploy resources within their Azure Stack Default Provider Subscription.
+Azure App Service on Azure Stack requires a file server and SQL Server to operate.  You're free to use pre-existing resources located outside of your Azure Stack deployment or deploy resources within their Azure Stack Default Provider Subscription.
 
 If you choose to deploy the resources within your Azure Stack Default Provider Subscription, the licenses for those resources (Windows Server Licenses and SQL Server Licenses) are included in the cost of Azure App Service on Azure Stack subject to the following constraints:
 
 - the infrastructure is deployed into the **Default Provider Subscription**;
-- the infrastructure is exclusively used by the Azure App Service on Azure Stack resource provider.  No other workloads, administrative (other resource providers, for example SQL-RP) or tenant (for example tenant applications, which require a database), are permitted to make use of this infrastructure.
+- the infrastructure is exclusively used by the Azure App Service on Azure Stack resource provider.  No other workloads, administrative (other resource providers, for example: SQL-RP) or tenant (for example: tenant apps, which require a database), are permitted to make use of this infrastructure.
 
 ## Prepare the file server
 
@@ -182,16 +182,16 @@ Azure App Service requires the use of a file server. For production deployments,
 
 ### Quickstart template for File Server for deployments of Azure App Service on ASDK.
 
-For Azure Stack Development Kit deployments only, you can use the [example Azure Resource Manager deployment template](https://aka.ms/appsvconmasdkfstemplate) to deploy a configured single-node file server. The single-node file server will be in a workgroup.
+For ASDK deployments only, you can use the [example Azure Resource Manager deployment template](https://aka.ms/appsvconmasdkfstemplate) to deploy a configured single-node file server. The single-node file server will be in a workgroup.
 
-### Quickstart template for Highly Available File Server and SQL Server
+### Quickstart template for Highly Available file server and SQL Server
 
-A [reference architecture quickstart template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) is now available, which will deploy File Server, SQL Server, supporting Active Directory infrastructure in a Virtual Network configured to support a highly available deployment of Azure App Service on Azure Stack.
+A [reference architecture quickstart template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) is now available, which will deploy a file Server, SQL Server, supporting Active Directory infrastructure in a virtual network configured to support a highly available deployment of Azure App Service on Azure Stack.
 
-### Steps to deploy a Custom File Server
+### Steps to deploy a custom file server
 
 >[!IMPORTANT]
-> If you choose to deploy App Service in an existing Virtual Network, the File Server should be deployed into a separate Subnet from App Service.
+> If you choose to deploy App Service in an existing virtual network, the file server should be deployed into a separate Subnet from App Service.
 
 >[!NOTE]
 > If you have chosen to deploy a file server using either of the Quickstart templates mentioned above, you can skip this section as the file servers are configured as part of the template deployment.
@@ -251,7 +251,7 @@ When you use the Azure Resource Manager template, the users are already created.
 
 #### Provision the content share
 
-The content share contains tenant website content. The procedure to provision the content share on a single file server is the same for both Active Directory and Workgroup environments. But it's different for a failover cluster in Active Directory.
+The content share contains tenant website content. The procedure to provision the content share on a single file server is the same for both Active Directory and workgroup environments. But it's different for a failover cluster in Active Directory.
 
 #### Provision the content share on a single file server (Active Directory or workgroup)
 
@@ -297,15 +297,15 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 ## Prepare the SQL Server instance
 
 >[!NOTE]
-> If you have chosen to deploy the Quickstart template for Highly Available File Server and SQL Server you can skip this section as the template deploys and configures SQL Server in a HA configuration.
+> If you've chosen to deploy the Quickstart template for Highly Available File Server and SQL Server, you can skip this section as the template deploys and configures SQL Server in a HA configuration.
 
 For the Azure App Service on Azure Stack hosting and metering databases, you must prepare a SQL Server instance to hold the App Service databases.
 
-For Azure Stack Development Kit deployments, you can use SQL Server Express 2014 SP2 or later.  SQL Server must be configured to support **Mixed Mode** authentication, App Service on Azure Stack **DOES NOT** support Windows Authentication.
+For ASDK deployments, you can use SQL Server Express 2014 SP2 or later. SQL Server must be configured to support **Mixed Mode** authentication because App Service on Azure Stack **DOES NOT** support Windows Authentication.
 
 For production and high-availability purposes, you should use a full version of SQL Server 2014 SP2 or later, enable mixed-mode authentication, and deploy in a [highly available configuration](https://docs.microsoft.com/sql/sql-server/failover-clusters/high-availability-solutions-sql-server).
 
-The SQL Server instance for Azure App Service on Azure Stack must be accessible from all App Service roles. You can deploy SQL Server within the Default Provider Subscription in Azure Stack. Or you can make use of the existing infrastructure within your organization (as long as there is connectivity to Azure Stack). If you're using an Azure Marketplace image, remember to configure the firewall accordingly.
+The SQL Server instance for Azure App Service on Azure Stack must be accessible from all App Service roles. You can deploy SQL Server within the Default Provider Subscription in Azure Stack. Or you can make use of the existing infrastructure within your organization (as long as there's connectivity to Azure Stack). If you're using an Azure Marketplace image, remember to configure the firewall accordingly.
 
 > [!NOTE]
 > A number of SQL IaaS virtual machine images are available through the Marketplace Management feature. Make sure you always download the latest version of the SQL IaaS Extension before you deploy a VM using a Marketplace item. The SQL images are the same as the SQL VMs that are available in Azure. For SQL VMs created from these images, the IaaS extension and corresponding portal enhancements provide features such as automatic patching and backup capabilities.
