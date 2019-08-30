@@ -157,7 +157,7 @@ As a best practice, when working with any of the necessary [Azure Stack PKI cert
 
 Azure App Service on Azure Stack lets you deploy the resource provider to an existing virtual network or lets you create a virtual network as part of the deployment. Using an existing virtual network enables the use of internal IPs to connect to the file server and SQL server required by Azure App Service on Azure Stack. The virtual network must be configured with the following address range and subnets before installing Azure App Service on Azure Stack:
 
-Virtual Network - /16
+Virtual network - /16
 
 Subnets
 
@@ -322,10 +322,10 @@ GO
 ```
 
 >[!IMPORTANT]
-> If you choose to deploy App Service in an existing Virtual Network the SQL Server should be deployed into a separate Subnet from App Service and the File Server.
+> If you choose to deploy App Service in an existing virtual network the SQL Server should be deployed into a separate Subnet from App Service and the File Server.
 >
 
-## Create an Azure Active Directory application
+## Create an Azure Active Directory app
 
 Configure an Azure AD service principal to support the following operations:
 
@@ -334,7 +334,7 @@ Configure an Azure AD service principal to support the following operations:
 
 These steps apply to Azure AD-secured Azure Stack environments only.
 
-Administrators must configure SSO to:
+Admins must configure SSO to:
 
 - Enable the advanced developer tools within App Service (Kudu).
 - Enable the use of the Azure Functions portal experience.
@@ -347,7 +347,7 @@ Follow these steps:
 4. Run the **Create-AADIdentityApp.ps1** script. When you're prompted, enter the Azure AD tenant ID that you're using for your Azure Stack deployment. For example, enter **myazurestack.onmicrosoft.com**.
 5. In the **Credential** window, enter your Azure AD service admin account and password. Select **OK**.
 6. Enter the certificate file path and certificate password for the [certificate created earlier](azure-stack-app-service-before-you-get-started.md). The certificate created for this step by default is **sso.appservice.local.azurestack.external.pfx**.
-7. The script creates a new application in the tenant Azure AD instance. Make note of the application ID that's returned in the PowerShell output. You need this information during installation.
+7. The script creates a new app in the tenant Azure AD instance. Make note of the application ID that's returned in the PowerShell output. You need this information during installation.
 8. Open a new browser window, and sign in to the [Azure portal](https://portal.azure.com) as the Azure Active Directory service admin.
 9. Open the Azure AD resource provider.
 10. Select **App Registrations**.
@@ -370,14 +370,14 @@ Follow these steps:
 | CertificatePassword | Required | Null | Password that helps protect the certificate private key. |
 | Environment | Optional | AzureCloud | The name of the supported Cloud Environment in which the target Azure Active Directory Graph Service is available.  Allowed values: 'AzureCloud', 'AzureChinaCloud', 'AzureUSGovernment', 'AzureGermanCloud'.|
 
-## Create an Active Directory Federation Services application
+## Create an Active Directory Federation Services app
 
 For Azure Stack environments secured by AD FS, you must configure an AD FS service principal to support the following operations:
 
 - Virtual machine scale set integration on worker tiers.
 - SSO for the Azure Functions portal and advanced developer tools.
 
-Administrators must configure SSO to:
+Admins must configure SSO to:
 
 - Configure a service principal for virtual machine scale set integration on worker tiers.
 - Enable the advanced developer tools within App Service (Kudu).
