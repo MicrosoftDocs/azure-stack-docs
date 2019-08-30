@@ -12,7 +12,7 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2019
+ms.date: 08/29/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 05/28/2019
@@ -23,12 +23,12 @@ ms.lastreviewed: 05/28/2019
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Apply the 1904 update to your Azure Stack integrated system or deploy the latest Azure Stack development kit before deploying Azure App Service 1.6.
+> Apply the 1904 update to your Azure Stack integrated system or deploy the latest Azure Stack development kit before deploying Azure App Service 1.7.
 
 By following the instructions in this article, you can upgrade the [App Service resource provider](azure-stack-app-service-overview.md) deployed in an Azure Stack environment that is connected to the Internet.
 
 > [!IMPORTANT]
-> Prior to running the upgrade, make sure that you have already completed the [deployment of the Azure App Service on Azure Stack Resource Provider](azure-stack-app-service-deploy.md) and that you have read the [release notes](azure-stack-app-service-release-notes-update-six.md) which accompany the 1.6 release learn about new functionality, fixes, and any known issues that could affect your deployment.
+> Prior to running the upgrade, make sure that you have already completed the [deployment of the Azure App Service on Azure Stack Resource Provider](azure-stack-app-service-deploy.md) and that you have read the [release notes](azure-stack-app-service-release-notes-update-seven.md) which accompany the 1.7 release learn about new functionality, fixes, and any known issues that could affect your deployment.
 
 ## Run the App Service resource provider installer
 
@@ -48,9 +48,9 @@ During this process, the upgrade will:
 
 To upgrade your deployment of App Service on Azure Stack, follow these steps:
 
-1. Download the [App Service Installer](https://aka.ms/appsvcupdate6installer)
+1. Download the [App Service Installer](https://aka.ms/appsvcupdate7installer).
 
-2. Run appservice.exe as an administrator
+2. Run appservice.exe as an administrator.
 
     ![App Service Installer][1]
 
@@ -98,7 +98,7 @@ To upgrade your deployment of App Service on Azure Stack, follow these steps:
 
 ## Next steps
 
-You can also try out other [platform as a service (PaaS) services](azure-stack-offer-services-overview.md).
+Prepare for additional administrator operations for App Service on Azure Stack
 
-* [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md)
-* [MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md)
+* [Plan for additional capacity](azure-stack-app-service-capacity-planning.md)
+* [Add additional capacity](azure-stack-app-service-add-worker-roles.md)
