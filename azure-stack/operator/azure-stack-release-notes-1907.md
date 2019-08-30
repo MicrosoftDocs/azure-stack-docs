@@ -73,7 +73,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 ### Changes
 
-- Azure Stack version 1907 contains a warning alert that instructs operators to be sure to update their system's OEM package to version 2.1 or later **before** updating to version 1908. Hardware providers will be releasing OEM package 2.1 at the same time as Azure Stack version 1908. OEM package 2.1 or later will be a prerequisite for Azure Stack version 1908. For more information about how to download OEM package 2.1 or later, contact your system's hardware provider.
+- Azure Stack version 1907 contains a warning alert that instructs operators to be sure to update their system's OEM package to version 2.1 or later **before** updating to version 1908. For more information about how to apply Azure Stack OEM updates, see [Apply an Azure Stack original equipment manufacturer update](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-update-oem).
 
 - Added a new outbound rule (HTTPS) to enable communication for Azure Stack diagnostic log collection service. For more information, see [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
 
