@@ -1,6 +1,6 @@
 ---
-title: Before you deploy App Service on Azure Stack | Microsoft Docs
-description: Steps to complete before you deploy App Service on Azure Stack
+title: Prerequisites for deploying App Service on Azure Stack | Microsoft Docs
+description: Learn the prerequisite steps to complete before you deploy App Service on Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: BryanLa
@@ -20,7 +20,7 @@ ms.lastreviewed: 03/11/2019
 
 ---
 
-# Before you get started with App Service on Azure Stack
+# Prerequisites for deploying App Service on Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -46,17 +46,17 @@ Before you deploy Azure App Service on Azure Stack, you must complete the prereq
 
 ## Syndicate the Custom Script Extension from the Marketplace
 
-Azure App Service on Azure Stack requires Custom Script Extension v1.9.1.  The extension must be [syndicated from the Marketplace](azure-stack-download-azure-marketplace-item.md) before starting the deployment or upgrade of Azure App Service on Azure Stack
+Azure App Service on Azure Stack requires Custom Script Extension v1.9.1.  The extension must be [syndicated from the Marketplace](azure-stack-download-azure-marketplace-item.md) before starting the deployment or upgrade of Azure App Service on Azure Stack.
 
 ## Get certificates
 
 ### Azure Resource Manager root certificate for Azure Stack
 
-Open an elevated PowerShell session on a computer that can reach the privileged endpoint on the Azure Stack Integrated System or Azure Stack Development Kit Host.
+Open an elevated PowerShell session on a computer that can reach the privileged endpoint on the Azure Stack Integrated System or ASDK Host.
 
 Run the *Get-AzureStackRootCert.ps1* script from the folder where you extracted the helper scripts. The script creates a root certificate in the same folder as the script that App Service needs for creating certificates.
 
-When you run the following PowerShell command, you'll have to provide the privileged endpoint and the credentials for the AzureStack\CloudAdmin.
+When you run the following PowerShell command, you have to provide the privileged endpoint and the credentials for the AzureStack\CloudAdmin.
 
 ```powershell
     Get-AzureStackRootCert.ps1
@@ -82,10 +82,10 @@ The *Create-AppServiceCerts.ps1* script works with the Azure Stack certificate a
 
 To create the certificates, follow these steps:
 
-1. Sign in to the Azure Stack Development Kit host using the AzureStack\AzureStackAdmin account.
+1. Sign in to the ASDK host using the AzureStack\AzureStackAdmin account.
 2. Open an elevated PowerShell session.
 3. Run the *Create-AppServiceCerts.ps1* script from the folder where you extracted the helper scripts. This script creates four certificates in the same folder as the script that App Service needs for creating certificates.
-4. Enter a password to secure the .pfx files, and make a note of it. You'll have to enter it in the App Service on Azure Stack installer.
+4. Enter a password to secure the .pfx files, and make a note of it. You have to enter it in the App Service on Azure Stack installer.
 
 #### Create-AppServiceCerts.ps1 script parameters
 
@@ -105,7 +105,7 @@ To run the resource provider in production, you must provide the following certi
 
 #### Default domain certificate
 
-The default domain certificate is placed on the Front End role. User applications for wildcard or default domain request to Azure App Service use this certificate. The certificate is also used for source control operations (Kudu).
+The default domain certificate is placed on the Front End role. User apps for wildcard or default domain request to Azure App Service use this certificate. The certificate is also used for source control operations (Kudu).
 
 The certificate must be in .pfx format and should be a three-subject wildcard certificate. This requirement allows one certificate to cover both the default domain and the SCM endpoint for source control operations.
 
@@ -125,7 +125,7 @@ The API certificate is placed on the Management role. The resource provider uses
 
 #### Publishing certificate
 
-The certificate for the Publisher role secures the FTPS traffic for application owners when they upload content. The certificate for publishing must contain a subject that matches the FTPS DNS entry.
+The certificate for the Publisher role secures the FTPS traffic for app owners when they upload content. The certificate for publishing must contain a subject that matches the FTPS DNS entry.
 
 | Format | Example |
 | --- | --- |
@@ -133,7 +133,7 @@ The certificate for the Publisher role secures the FTPS traffic for application 
 
 #### Identity certificate
 
-The certificate for the identity application enables:
+The certificate for the identity app enables:
 
 - Integration between the Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS) directory, Azure Stack, and App Service to support integration with the compute resource provider.
 - Single sign-on scenarios for advanced developer tools within Azure App Service on Azure Stack.
@@ -146,9 +146,9 @@ The certificate for identity must contain a subject that matches the following f
 
 ### Validate certificates
 
-Before deploying the app service resource provider, you should [validate the certificates to be used](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation) by using the Azure Stack Readiness Checker tool available from the [PowerShell Gallery](https://aka.ms/AzsReadinessChecker). The Azure Stack Readiness Checker Tool validates that the generated PKI certificates are suitable for app services deployment.
+Before deploying the App Service resource provider, you should [validate the certificates to be used](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation) by using the Azure Stack Readiness Checker tool available from the [PowerShell Gallery](https://aka.ms/AzsReadinessChecker). The Azure Stack Readiness Checker Tool validates that the generated PKI certificates are suitable for App Service deployment.
 
-As a best practice, when working with any of the necessary [Azure Stack PKI certificates](azure-stack-pki-certs.md), you should plan to leave enough time to test and reissue certificates if necessary.
+As a best practice, when working with any of the necessary [Azure Stack PKI certificates](azure-stack-pki-certs.md), you should plan enough time to test and reissue certificates if necessary.
 
 ## Virtual network
 
