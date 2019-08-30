@@ -17,6 +17,7 @@ ms.date: 06/14/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/14/2019
+monikerRange: 'azs-1905'
 ---
 
 # Azure Stack 1905 known issues
@@ -182,4 +183,4 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 ## Next steps
 
 - [Review update activity checklist](azure-stack-release-notes-checklist.md)
-- [Review list of security updates](azure-stack-release-notes-security-updates-1905.md)
+- [Review list of security updates](azure-stack-release-notes-security-updates.md)
