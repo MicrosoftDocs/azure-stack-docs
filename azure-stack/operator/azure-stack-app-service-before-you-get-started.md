@@ -46,7 +46,7 @@ Before you deploy Azure App Service on Azure Stack, you must complete the prereq
 
 ## Syndicate the Custom Script Extension from the Marketplace
 
-Azure App Service on Azure Stack requires Custom Script Extension v1.9.1.  The extension must be [syndicated from the Marketplace](azure-stack-download-azure-marketplace-item.md) before starting the deployment or upgrade of Azure App Service on Azure Stack.
+Azure App Service on Azure Stack requires Custom Script Extension v1.9.1.  The extension must be [syndicated from the Marketplace](azure-stack-download-azure-marketplace-item.md) before you start the deployment or upgrade of Azure App Service on Azure Stack.
 
 ## Get certificates
 
@@ -105,7 +105,7 @@ To run the resource provider in production, you must provide the following certi
 
 #### Default domain certificate
 
-The default domain certificate is placed on the Front End role. User apps for wildcard or default domain request to Azure App Service use this certificate. The certificate is also used for source control operations (Kudu).
+The default domain certificate is placed on the front-end role. User apps for wildcard or default domain request to Azure App Service use this certificate. The certificate is also used for source control operations (Kudu).
 
 The certificate must be in .pfx format and should be a three-subject wildcard certificate. This requirement allows one certificate to cover both the default domain and the SCM endpoint for source control operations.
 
@@ -155,7 +155,7 @@ As a best practice, when working with any of the necessary [Azure Stack PKI cert
 > [!NOTE]
 > The precreation of a custom virtual network is optional as the Azure App Service on Azure Stack can create the required virtual network but will then need to communicate with SQL and File Server via public IP addresses.
 
-Azure App Service on Azure Stack lets you deploy the resource provider to an existing virtual network or lets you create a virtual network as part of the deployment. Using an existing virtual network enables the use of internal IPs to connect to the file server and SQL server required by Azure App Service on Azure Stack. The virtual network must be configured with the following address range and subnets before installing Azure App Service on Azure Stack:
+Azure App Service on Azure Stack lets you deploy the resource provider to an existing virtual network or lets you create a virtual network as part of the deployment. Using an existing virtual network enables the use of internal IPs to connect to the file server and SQL Server required by Azure App Service on Azure Stack. The virtual network must be configured with the following address range and subnets before installing Azure App Service on Azure Stack:
 
 Virtual network - /16
 
@@ -186,7 +186,7 @@ For ASDK deployments only, you can use the [example Azure Resource Manager deplo
 
 ### Quickstart template for Highly Available file server and SQL Server
 
-A [reference architecture quickstart template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) is now available, which will deploy a file Server, SQL Server, supporting Active Directory infrastructure in a virtual network configured to support a highly available deployment of Azure App Service on Azure Stack.
+A [reference architecture quickstart template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) is now available which will deploy a file Server and SQL Server. This template supports Active Directory infrastructure in a virtual network configured to support a highly available deployment of Azure App Service on Azure Stack.
 
 ### Steps to deploy a custom file server
 
