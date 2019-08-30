@@ -17,6 +17,7 @@ ms.date: 06/14/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 06/14/2019
+monikerRange: 'azs-1905'
 ---
 
 # Azure Stack 1905 update
@@ -119,14 +120,14 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 
 ### Security updates
 
-For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates-1905.md).
+For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates.md).
 
 ## Update planning
 
 Before applying the update, make sure to review the following information:
 
 - [Known issues](azure-stack-release-notes-known-issues-1905.md)
-- [Security updates](azure-stack-release-notes-security-updates-1905.md)
+- [Security updates](azure-stack-release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](azure-stack-release-notes-checklist.md)
 
 ## Download the update

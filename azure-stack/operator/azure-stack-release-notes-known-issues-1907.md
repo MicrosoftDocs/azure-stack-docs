@@ -17,6 +17,7 @@ ms.date: 07/25/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 07/25/2019
+monikerRange: 'azs-1907'
 ---
 
 # Azure Stack 1907 known issues
@@ -177,4 +178,4 @@ This article lists known issues in the 1907 release of Azure Stack. The list is 
 ## Next steps
 
 - [Review update activity checklist](azure-stack-release-notes-checklist.md)
-- [Review list of security updates](azure-stack-release-notes-security-updates-1907.md)
+- [Review list of security updates](azure-stack-release-notes-security-updates.md)

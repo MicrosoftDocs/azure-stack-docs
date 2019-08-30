@@ -54,8 +54,13 @@ AzCopy is a command-line utility designed to copy data to and from Microsoft Azu
 
 ### Download and install AzCopy
 
+::: moniker range=">=azs-1811"
 * For the 1811 update or newer versions, [download AzCopy V10+](/azure/storage/common/storage-use-azcopy-v10#download-azcopy).
+::: moniker-end
+
+::: moniker range="<azs-1811"
 * For previous versions (1802 to 1809 update), [download AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417).
+::: moniker-end
 
 ### AzCopy 10.1 configuration and limits
 
