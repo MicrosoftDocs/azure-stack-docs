@@ -1,5 +1,5 @@
 ---
-title: Capacity planning for Azure App Service server roles in Azure Stack | Microsoft Docs
+title: Capacity planning for App Service server roles in Azure Stack | Microsoft Docs
 description: Capacity planning for Azure App Service server roles in Azure Stack
 services: azure-stack
 documentationcenter: ''
@@ -19,7 +19,7 @@ ms.reviewer: anwestg
 ms.lastreviewed: 03/13/2019
 
 ---
-# Capacity planning for Azure App Service server roles in Azure Stack
+# Capacity planning for App Service server roles in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -78,16 +78,16 @@ To provide Azure Functions to users in the consumption plan model, you must depl
 When deciding on the number of shared web worker roles to use, review these considerations:
 
 - **Memory**: Memory is the most critical resource for a web worker role. Insufficient memory impacts web site performance when virtual memory is swapped from disk. Each server requires about 1.2 GB of RAM for the operating system. RAM above this threshold can be used to run web sites.
-- **Percentage of active web sites**: Typically, about 5 percent of applications in an Azure App Service on Azure Stack deployment are active. However, the percentage of applications that are active at any given moment can be higher or lower. With an active application rate of 5 percent, the maximum number of applications to place in an Azure App Service on Azure Stack deployment should be less than 20 times the number of active web sites (5 x 20 = 100).
-- **Average memory footprint**: The average memory footprint for applications observed in production environments is about 70 MB. Using this footprint, the memory allocated across all web worker role computers or VMs can be calculated as follows:
+- **Percentage of active web sites**: Typically, about 5 percent of apps in an Azure App Service on Azure Stack deployment are active. However, the percentage of apps that are active at any given moment can be higher or lower. With an active app rate of 5 percent, the maximum number of apps to place in an Azure App Service on Azure Stack deployment should be less than 20 times the number of active web sites (5 x 20 = 100).
+- **Average memory footprint**: The average memory footprint for apps observed in production environments is about 70 MB. Using this footprint, the memory allocated across all web worker role computers or VMs can be calculated as follows:
 
    `Number of provisioned applications * 70 MB * 5% - (number of web worker roles * 1044 MB)`
 
-   For example, if there are 5,000 applications on environment that is running 10 web worker roles, each web worker role VM should have 7060-MB RAM:
+   For example, if there are 5,000 apps on an environment running 10 web worker roles, each web worker role VM should have 7060-MB RAM:
 
    `5,000 * 70 * 0.05 - (10 * 1044) = 7060 (= about 7 GB)`
 
-   For information about adding more worker instances, see [Adding more worker roles](azure-stack-app-service-add-worker-roles.md).
+   For info on adding more worker instances, see [Adding more worker roles](azure-stack-app-service-add-worker-roles.md).
 
 ### Additional considerations for dedicated workers during upgrade and maintenance
 
