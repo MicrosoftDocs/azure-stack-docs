@@ -54,7 +54,7 @@ The front-end routes requests to web workers depending on web worker availabilit
 
 **Recommended minimum**: Two instances of A3 Standard
 
-The Azure App Service management role is responsible for the App Service Azure Resource Manager and API endpoints, portal extensions (admin, tenant, Functions portal), and the data service. The management server role typically requires only about 4-GB RAM in a production environment. However, it may experience high CPU levels when many management tasks (such as web site creation) are performed. For high availability, you should have more than one server assigned to this role, and at least two cores per server.
+The Azure App classic deployment model role is responsible for the App Service Azure Resource Manager and API endpoints, portal extensions (admin, tenant, Functions portal), and the data service. The management server role typically requires only about 4-GB RAM in a production environment. However, it may experience high CPU levels when many management tasks (such as web site creation) are performed. For high availability, you should have more than one server assigned to this role, and at least two cores per server.
 
 ## Publisher role
 
@@ -66,7 +66,7 @@ If many users are publishing simultaneously, the publisher role may experience h
 
 **Recommended minimum**: Two instances of A1 Standard
 
-For high availability, you should have at least four web worker roles, two for shared web site mode and two for each dedicated worker tier you plan to offer. The shared and dedicated compute modes provide different levels of service to tenants. You might need more web workers if many of your customers are:
+For high availability, you should have at least four web worker roles: two for shared web site mode and two for each dedicated worker tier you plan to offer. The shared and dedicated compute modes provide different levels of service to tenants. You might need more web workers if many of your customers are:
 
 - Using dedicated compute mode worker tiers (which are resource-intensive).
 - Running in shared compute mode.
@@ -79,7 +79,7 @@ When deciding on the number of shared web worker roles to use, review these cons
 
 - **Memory**: Memory is the most critical resource for a web worker role. Insufficient memory impacts web site performance when virtual memory is swapped from disk. Each server requires about 1.2 GB of RAM for the operating system. RAM above this threshold can be used to run web sites.
 - **Percentage of active web sites**: Typically, about 5 percent of apps in an Azure App Service on Azure Stack deployment are active. However, the percentage of apps that are active at any given moment can be higher or lower. With an active app rate of 5 percent, the maximum number of apps to place in an Azure App Service on Azure Stack deployment should be less than 20 times the number of active web sites (5 x 20 = 100).
-- **Average memory footprint**: The average memory footprint for apps observed in production environments is about 70 MB. Using this footprint, the memory allocated across all web worker role computers or VMs can be calculated as follows:
+- **Average memory footprint**: The average memory footprint for apps observed in production environments is about 70 MB. Using this footprint, the memory allocated across all web worker role computers or VMs is calculated as follows:
 
    `Number of provisioned applications * 70 MB * 5% - (number of web worker roles * 1044 MB)`
 
@@ -91,7 +91,9 @@ When deciding on the number of shared web worker roles to use, review these cons
 
 ### Additional considerations for dedicated workers during upgrade and maintenance
 
-During upgrade and maintenance of workers, Azure App Service on Azure Stack will perform maintenance on 20% of each worker tier at any one time.  Therefore, cloud admins must always maintain a 20% pool of unallocated workers per worker tier to ensure their tenants do not experience any loss of service during upgrade and maintenance.  For example, if you have 10 workers in a worker tier you should ensure that 2 are unallocated to allow upgrade and maintenance. If the full 10 workers become allocated you should scale the worker tier up to maintain a pool of unallocated workers. During upgrade and maintenance, Azure App Service will move workloads to unallocated workers to ensure the workloads will continue to operate. However, if there are no unallocated workers available during upgrade then there is potential for tenant workload downtime. With regards to shared workers, customers don't need to provision additional workers as the service will allocate tenant apps within available workers automatically. For high availability there is a minimum requirement of two workers in this tier.
+During upgrade and maintenance of workers, Azure App Service on Azure Stack will perform maintenance on 20% of each worker tier at any one time.  Therefore, cloud admins must always maintain a 20% pool of unallocated workers per worker tier to ensure their tenants don't experience any loss of service during upgrade and maintenance.  For example, if you have 10 workers in a worker tier you should ensure that 2 are unallocated to allow upgrade and maintenance. If the full 10 workers become allocated, you should scale the worker tier up to maintain a pool of unallocated workers. 
+
+During upgrade and maintenance, Azure App Service will move workloads to unallocated workers to ensure the workloads will continue to operate. However, if there are no unallocated workers available during upgrade then there's potential for tenant workload downtime. With regards to shared workers, customers don't need to provision additional workers as the service will allocate tenant apps within available workers automatically. For high availability, there's a minimum requirement of two workers in this tier.
 
 Cloud admins can monitor their worker tier allocation in the App Service admin area in the Azure Stack admin portal. Navigate to App Service and then select Worker Tiers in the left-hand pane. The Worker Tiers table shows worker tier name, size, image used, number of available workers (unallocated), total number of workers in each tier and the overall state of the worker tier.
 
