@@ -101,12 +101,14 @@ Azure Stack releases hotfixes on a regular basis. Be sure to install the latest 
 
 Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do not attempt to install hotfixes on the ASDK.
 
-### Before applying the 1908 update
+### Prerequisites: Before applying the 1908 update
 
 The 1908 release of Azure Stack must be applied on the 1907 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
 - [Azure Stack hotfix 1.1907.12.44](https://support.microsoft.com/help/4517473)
+
+The Azure Stack 1908 Update requires **Azure Stack OEM version 2.1 or later** from your system's hardware provider. OEM updates include driver and firmware updates to your Azure Stack system's hardware. To learn more about applying OEM updates, see [Apply Azure Stack original equipment manufacturer updates](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-oem)
 
 ### After successfully applying the 1908 update
 
