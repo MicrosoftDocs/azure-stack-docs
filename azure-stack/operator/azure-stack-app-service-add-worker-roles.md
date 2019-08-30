@@ -95,7 +95,7 @@ Azure App Service on Azure Stack deploys all roles using Virtual Machine Scale S
 
 ## Result
 
-After they're fully deployed and ready, the workers become available for users to deploy their workload onto them. The following shows an example of the multiple pricing tiers available by default. If there are no available workers for a particular worker tier, the option to choose the corresponding pricing tier is unavailable.
+After they're fully deployed and ready, the workers become available for users to deploy their workload onto them. The following screenshot shows an example of the multiple pricing tiers available by default. If there are no available workers for a particular worker tier, the option to choose the corresponding pricing tier is unavailable.
 
 ![Pricing tiers for new App Service plan in Azure Stack admin portal](media/azure-stack-app-service-add-worker-roles/image04.png)
 
