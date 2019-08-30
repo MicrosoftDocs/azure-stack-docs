@@ -13,14 +13,31 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2019
+ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
 
 ---
 
-# Azure Stack servicing policy
+- **OEM hardware vendor-provided updates**. Azure Stack hardware partners are responsible for the end-to-end servicing lifecycle (including guidance) for the hardware-related firmware and driver update packages. In addition, Azure Stack hardware partners own and maintain guidance for all software and hardware on the hardware lifecycle host. The OEM hardware vendor hosts these update packages on their own download site.
+
+## Update package release cadence
+
+Microsoft expects to release software update packages on a monthly cadence. However, it's possible to have multiple, or no update releases in a month. OEM hardware vendors release their updates on an as-needed basis.
+
+Find documentation on how to plan for and manage updates, and how to determine your current version in [Manage updates overview](azure-stack-updates.md).
+
+For information about a specific update, including how to download it, see the release notes for that update:
+
+- [Azure Stack 1908 update](azure-stack-release-notes-1908.md)
+- [Azure Stack 1907 update](azure-stack-release-notes-1907.md)
+- [Azure Stack 1906 update](azure-stack-release-notes-1906.md)
+- [Azure Stack 1905 update](azure-stack-release-notes-1905.md)
+
+## Hotfixes
+
+Occasionally, Microsoft provides hotfixes for Azure Stack that address a specific issue that is often preventative or time-sensitive.  Each hotfix is released with a corresponding Microsoft Knowledge Base article that details the issue, cause, and resolution.
 
 *Applies to: Azure Stack integrated systems*
 
