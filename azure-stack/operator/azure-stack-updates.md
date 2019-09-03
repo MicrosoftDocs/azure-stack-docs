@@ -3,7 +3,7 @@ title: Manage updates in Azure Stack | Microsoft Docs
 description: Learn to manage updates in Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 
@@ -12,9 +12,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2019
-ms.author: mabrigg
-ms.lastreviewed: 08/23/2019
+ms.date: 09/03/2019
+ms.author: justinha
+ms.lastreviewed: 09/03/2019
 ms.reviewer: ppacent 
 
 ---
@@ -23,7 +23,7 @@ ms.reviewer: ppacent
 
 *Applies to: Azure Stack integrated systems*
 
-You need to keep Azure Stack up to date by applying Azure Stack full and express updates, hotfixes, and original equipment manufacturer (OEM) package updates. Keep Azure Stack current with the latest updates applies the latest security patches, product updates, and driver, and firmware updates to your system. This article provides an overview of the different update packages, the cadence for these release packages, where to find out about current releases, and the overall update process.
+Full and express updates, hotfixes, and driver and firmware updates from the original equipment manufacturer (OEM) keep Azure Stack up-to-date. This article explains the different updates, when to expect their release, and where to find more about the current release.
 
 > [!Note]  
 > You cannot apply Azure Stack update packages to the Azure Stack Development Kit (ASDK). The update packages are designed for integrated systems. For information, see [Redeploy the ASDK](https://docs.microsoft.com/azure-stack/asdk/asdk-redeploy).
@@ -72,7 +72,7 @@ Notice of updates varies on a couple of factors, such as your connection to the 
 
 ## Update processes
 
-Once you know you have an update, apply update with the following steps.
+Once you know you have an update, apply it by using the following steps.
 
 ![Azure Stack update process](./media/azure-stack-updates/azure-stack-update-process.png)
 
@@ -86,11 +86,11 @@ Once you know you have an update, apply update with the following steps.
 
     For internet-disconnected Azure Stack environments and environments with weak or intermittent internet-connectivity, update packages are imported into Azure Stack storage via the Azure Stack administrator portal. For more steps to upload and prepare the update package, see [Upload and prepare an Azure Stack update package](azure-stack-update-prepare-package.md).
 
-    All OEM update packages are manually imported into your environment, regardless of your Azure Stack system’s internet connectivity. For more steps to import and prepare the update package, see [Upload and prepare an Azure Stack update package](azure-stack-update-prepare-package.md)).
+    All OEM update packages are manually imported into your environment, regardless of your Azure Stack system’s internet connectivity. For more steps to import and prepare the update package, see [Upload and prepare an Azure Stack update package](azure-stack-update-prepare-package.md).
 
 3. **Apply the update**.
 
-    Apply the update using the **Update** blade in the Azure Stack. During the update, monitor the update progress, and if necessary, troubleshoot the update process. For more steps to plan for the update, see [Apply an Azure Stack update](azure-stack-apply-updates.md).
+    Apply the update using the **Update** blade in Azure Stack. During the update, monitor the update progress, and troubleshoot. For more information, see [Apply an Azure Stack update](azure-stack-apply-updates.md).
 
 ## The update resource provider
 
