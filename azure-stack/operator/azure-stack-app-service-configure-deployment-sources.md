@@ -118,17 +118,17 @@ You must have a Microsoft Account linked to a OneDrive account to complete this 
 1. Browse to https://www.dropbox.com/developers/apps and sign in using your DropBox account credentials.
 2. Click **Create app**.
 
-    ![Dropbox applications][14]
+    ![Dropbox apps][14]
 
 3. Select **DropBox API**.
 4. Set the access level to **App Folder**.
-5. Enter a **Name** for your application.
+5. Enter a **Name** for your app.
 ![Dropbox application registration][15]
-6. Click **Create App**. You are presented with a page listing the settings for the app, including **App key** and **App secret**.
+6. Click **Create App**. You're presented with a page listing the settings for the app, including **App key** and **App secret**.
 7. Make sure that the **App folder name** is set to **App Service on Azure Stack**.
-8. Set the **OAuth 2 Redirect URI** and then click **Add**. In a default Azure Stack deployment, the Redirect URI is in the form https://portal.local.azurestack.external/TokenAuthorize. If you are running under a different domain, substitute your domain for azurestack.local.
+8. Set the **OAuth 2 Redirect URI** and then click **Add**. In a default Azure Stack deployment, the Redirect URI is in the form https://portal.local.azurestack.external/TokenAuthorize. If you're running under a different domain, substitute your domain for azurestack.local.
 ![Dropbox application configuration][16]
-9.  In a new browser tab or window, sign in to the Azure Stack admin portal (https://adminportal.local.azurestack.external) as the service administrator.
+9.  In a new browser tab or window, sign in to the Azure Stack admin portal (https://adminportal.local.azurestack.external) as the service admin.
 10.  Browse to **Resource Providers** and select the **App Service Resource Provider Admin**.
 11. Click **Source control configuration**.
 12. Copy and paste the **Application Key** into the **Client ID** input box and **App secret** into the **Client Secret** input box for DropBox.
