@@ -23,7 +23,7 @@ ms.reviewer: ppacent
 
 *Applies to: Azure Stack integrated systems*
 
-Full and express updates, hotfixes, and driver and firmware updates from the original equipment manufacturer (OEM) keep Azure Stack up-to-date. This article explains the different updates, when to expect their release, and where to find more about the current release.
+Full and express updates, hotfixes, as well as driver and firmware updates from the original equipment manufacturer (OEM) all help keep Azure Stack up-to-date. This article explains the different types of updates, when to expect their release, and where to find more about the current release.
 
 > [!Note]  
 > You cannot apply Azure Stack update packages to the Azure Stack Development Kit (ASDK). The update packages are designed for integrated systems. For information, see [Redeploy the ASDK](https://docs.microsoft.com/azure-stack/asdk/asdk-redeploy).
