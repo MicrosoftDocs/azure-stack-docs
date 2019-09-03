@@ -1,6 +1,6 @@
 ---
-title: Azure Stack release notes - security updates for 1908 | Microsoft Docs
-description: Learn about the 1908 security updates for Azure Stack.
+title: Azure Stack release notes - security updates for 1909 | Microsoft Docs
+description: Learn about the 1909 security updates for Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/03/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 08/30/2019
+ms.lastreviewed: 09/03/2019
 ---
 
 # Azure Stack security updates
