@@ -1,6 +1,6 @@
 ---
 title: Configure deployment sources for App Services on Azure Stack | Microsoft Docs
-description: How a service administrator can configure deployment sources (Git, GitHub, BitBucket, DropBox, and OneDrive) for App Services on Azure Stack
+description: Learn how to configure deployment sources (Git, GitHub, BitBucket, DropBox, and OneDrive) for App Services on Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -20,11 +20,11 @@ ms.lastreviewed: 10/15/2018
 
 ---
 
-# Configure deployment sources
+# Configure deployment sources for App Services on Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-App Service on Azure Stack supports on-demand deployment from multiple source control providers. This feature lets application developers deploy direct from their source control repositories. If users want to configure App Service to connect to their repositories, a cloud operator must first configure the integration between App Service on Azure Stack and the source control provider.  
+App Service on Azure Stack supports on-demand deployment from multiple source control providers. This feature lets app developers deploy direct from their source control repositories. If users want to configure App Service to connect to their repositories, a cloud operator must first configure the integration between App Service on Azure Stack and the source control provider.  
 
 In addition to local Git, the following source control providers are supported:
 
@@ -35,7 +35,7 @@ In addition to local Git, the following source control providers are supported:
 
 ## View deployment sources in App Service administration
 
-1. Sign in to the Azure Stack Admin Portal (https://adminportal.local.azurestack.external) as the service administrator.
+1. Sign in to the Azure Stack admin portal (https://adminportal.local.azurestack.external) as the service admin.
 2. Browse to **All Services** and select the **App Service**.
     ![App Service Resource Provider Admin][1]
 3. Click **Source control configuration**. You can see the list of all configured deployment sources.
@@ -47,14 +47,14 @@ You must have a GitHub account to complete this task. You might want to use an a
 
 1. Sign in to GitHub, browse to https://www.github.com/settings/developers, and then click **Register a new application**.
     ![GitHub - Register a new application][3]
-2. Enter an **Application name**; for example, **App Service on Azure Stack**.
+2. Enter an **Application name**. For example, **App Service on Azure Stack**.
 3. Enter the **Homepage URL**. The Homepage URL must be the Azure Stack portal address. For example, https://portal.local.azurestack.external.
 4. Enter an **Application Description**.
-5. Enter the **Authorization callback URL**. In a default Azure Stack deployment, the URL is in the form https://portal.local.azurestack.external/TokenAuthorize. If you are running under a different domain, substitute your domain name for local.azurestack.external.
-6. Click **Register application**. A page is displayed listing the **Client ID** and **Client Secret** for the application.
+5. Enter the **Authorization callback URL**. In a default Azure Stack deployment, the URL is in the form https://portal.local.azurestack.external/TokenAuthorize. If you're running under a different domain, substitute your domain name for local.azurestack.external.
+6. Click **Register application**. A page is displayed listing the **Client ID** and **Client Secret** for the app.
     ![GitHub - Completed application registration][5]
-7.  In a new browser tab or window, sign in to the Azure Stack admin portal (https://adminportal.local.azurestack.external) as the service administrator.
-8.  Browse to **Resource Providers**, and select the **App Service Resource Provider Admin**.
+7. In a new browser tab or window, sign in to the Azure Stack admin portal (https://adminportal.local.azurestack.external) as the service admin.
+8. Browse to **Resource Providers**, and select the **App Service Resource Provider Admin**.
 9. Click **Source control configuration**.
 10. Copy and paste the **Client ID** and **Client Secret** into the corresponding input boxes for GitHub.
 11. Click **Save**.
