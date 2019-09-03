@@ -3,7 +3,7 @@ title: Apply an original equipment manufacturer (OEM) update to Azure Stack | Mi
 description: Learn to apply an original equipment manufacturer (OEM) update to Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 
@@ -12,9 +12,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2019
-ms.author: mabrigg
-ms.lastreviewed: 08/23/2019
+ms.date: 09/03/2019
+ms.author: justinha
+ms.lastreviewed: 09/03/2019
 ms.reviewer: ppacent 
 
 ---
@@ -48,9 +48,9 @@ You can view the current version of Azure Stack in the **Updates** blade. To ope
 
 1.  Open the Azure Stack administrator portal.
 
-2.  Select **Dashboard**. Select **Update**.
+2.  Select **Dashboard** > **Update**.
 
-3.  Select the available update that you wish to apply. If you do not have an update marked as **Available**, you will need to [Prepare the Update Package](azure-stack-update-prepare-package.md)
+3.  Select the available update that you wish to apply. If you do not have an update marked as **Available**, you will need to [prepare the update package](azure-stack-update-prepare-package.md).
 
 4.  Select **Update now**.
 
