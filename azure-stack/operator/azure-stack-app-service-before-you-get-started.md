@@ -180,13 +180,13 @@ If you choose to deploy the resources within your Azure Stack Default Provider S
 
 Azure App Service requires the use of a file server. For production deployments, the file server must be configured to be highly available and capable of handling failures.
 
-### Quickstart template for File Server for deployments of Azure App Service on ASDK.
+### Quickstart template for file server for deployments of Azure App Service on ASDK.
 
 For ASDK deployments only, you can use the [example Azure Resource Manager deployment template](https://aka.ms/appsvconmasdkfstemplate) to deploy a configured single-node file server. The single-node file server will be in a workgroup.
 
 ### Quickstart template for Highly Available file server and SQL Server
 
-A [reference architecture quickstart template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) is now available which will deploy a file Server and SQL Server. This template supports Active Directory infrastructure in a virtual network configured to support a highly available deployment of Azure App Service on Azure Stack.
+A [reference architecture quickstart template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/appservice-fileserver-sqlserver-ha) is now available which will deploy a file server and SQL Server. This template supports Active Directory infrastructure in a virtual network configured to support a highly available deployment of Azure App Service on Azure Stack.
 
 ### Steps to deploy a custom file server
 
