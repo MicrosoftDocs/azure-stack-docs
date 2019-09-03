@@ -17,7 +17,7 @@ ms.date: 09/03/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 09/03/2019
-monikerRange: 'azs-1909'
+monikerRange: 'azs-1908'
 ---
 
 # Azure Stack 1909 known issues
