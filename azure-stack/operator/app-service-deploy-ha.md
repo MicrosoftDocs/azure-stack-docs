@@ -59,7 +59,7 @@ Use the steps in this section to create a custom deployment using the **appservi
 
 3. On the **Custom deployment** blade, select **Edit template** > **Quickstart template** and then use the drop-down list of available custom templates to select the **appservice-fileshare-sqlserver-ha** template. Click **OK**, and then **Save**.
 
-   ![Select the appservice-fileshare-sqlserver-ha QuickStart template](media/app-service-deploy-ha/2.png)
+   ![Select the appservice-fileshare-sqlserver-ha quickstart template](media/app-service-deploy-ha/2.png)
 
 4. On the **Custom deployment** blade, select **Edit parameters** and scroll down to review the default template values. Modify these values as necessary to provide all required parameter info and then click **OK**.<br><br> At a minimum, provide complex passwords for the `ADMINPASSWORD`, `FILESHAREOWNERPASSWORD`, `FILESHAREUSERPASSWORD`, `SQLSERVERSERVICEACCOUNTPASSWORD`, and `SQLLOGINPASSWORD` parameters.
     
