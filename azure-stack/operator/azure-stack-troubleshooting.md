@@ -28,7 +28,7 @@ This document provides troubleshooting information for Azure Stack.
 
 These sections include links to docs that cover common questions sent to Microsoft Customer Support Services (CSS).
 
-### Buying Azure Stack considerations
+### Purchase considerations
 
 * [How to buy](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)
 * [Azure Stack Overview](azure-stack-overview.md)
@@ -37,16 +37,16 @@ These sections include links to docs that cover common questions sent to Microso
 
 For help with the [Azure Stack Development Kit](../asdk/asdk-what-is.md), reach out to the experts on the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). The ASDK is offered as an evaluation environment without support through CSS. Support cases opened for ASDK are referred to the MSDN Forum.
 
-### Validate, Diagnose and Update Cadence
+### Updates and diagnostics
 
 * [How to use diagnostics tools in Azure Stack](azure-stack-diagnostics.md)
-* [How to Validate Azure Stack system state](azure-stack-diagnostic-test.md)
-* [Update Package Release cadence](azure-stack-servicing-policy.md#update-package-release-cadence)
+* [How to validate Azure Stack system state](azure-stack-diagnostic-test.md)
+* [Update package release cadence](azure-stack-servicing-policy.md#update-package-release-cadence)
 
-### Supported Operating System and VM Sizes
+### Supported operating systems and sizes for guest VMs
 
-* [Guest Operating System supported on Azure Stack](azure-stack-supported-os.md)
-* [VM Sizes supported in Azure Stack](../user/azure-stack-vm-sizes.md)
+* [Guest operating systems supported on Azure Stack](azure-stack-supported-os.md)
+* [VM sizes supported in Azure Stack](../user/azure-stack-vm-sizes.md)
 
 ### Azure Marketplace
 
@@ -75,10 +75,10 @@ A user in Azure Stack can be a reader, owner, or contributor for each instance o
 If the built-in roles for Azure resources don't meet the specific needs of your organization, you can create your own custom roles. For this tutorial, you create a custom role named Reader Support Tickets using Azure PowerShell.
 
 * [Tutorial: Create a custom role for Azure resources using Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/tutorial-custom-role-powershell)
-* [Manage usage and billing as a CSP](azure-stack-add-manage-billing-as-a-csp#create-a-csp-or-apss-subscription.md)
 
 ### Manage usage and billing as a CSP
 
+* [Manage usage and billing as a CSP](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)
 * [Create a CSP or APSS Subscription](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)
 
 Choose the type of shared services account that you use for Azure Stack. The types of subscriptions that can be used for registration of a multi-tenant Azure Stack are:
