@@ -34,7 +34,7 @@ Removing portal user settings should only be done after the user subscription ha
 - [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).
 - [Download the latest Azure Stack tools](azure-stack-powershell-download.md) from GitHub.
 - The user account must still exist in the directory.
-- Azure Stack admin credentials to access the admin resource manager endpoint.
+- Azure Stack admin credentials to access the admin Resource Manager endpoint.
 
 > [!NOTE]
 > If you attempt to delete portal user information from a user that was invited from a guest directory, (multi-tenancy), you must have read permission in that directory. For more information, see the [CSP scenario later in this article](#clear-portal-user-data-in-guest-directory).
@@ -45,7 +45,7 @@ This scenario assumes that either the default provider subscription and the user
 
 Make sure to [download the latest version of the Azure Stack tools](azure-stack-powershell-download.md) from GitHub before you proceed.
 
-For this procedure, use a computer that can communicate with the admin resource manager endpoint of Azure Stack.
+For this procedure, use a computer that can communicate with the admin Resource Manager endpoint of Azure Stack.
 
 1. Open an elevated Windows PowerShell session (run as administrator), navigate to the root folder in the **AzureStack-Tools-master** directory, and import the required PowerShell module:
 
