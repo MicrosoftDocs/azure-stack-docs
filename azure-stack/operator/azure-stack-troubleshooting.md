@@ -31,7 +31,7 @@ These sections include links to docs that cover common questions sent to Microso
 ### Purchase considerations
 
 * [How to buy](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)
-* [Azure Stack Overview](azure-stack-overview.md)
+* [Azure Stack overview](azure-stack-overview.md)
 
 ### Azure Stack Development Kit (ASDK)
 
