@@ -60,7 +60,7 @@ You can combine all of the options in the same application.
 
 5.  If not available, create a subscription and save the subscription ID to be used later. For instructions to create a subscription, see [Create subscriptions to offers in Azure Stack][].
 
-6.  Create a service principal and save the Client ID and the Client Secret. For instructions on how to create a service principal for Azure Stack, see [Provide apps access to Azure Stack][]. The Client ID is also known as the Application ID when creating a service principal.
+6.  Create a service principal and save the Client ID and the Client Secret. For instructions on how to create a service principal for Azure Stack, see  [Provide applications access to Azure Stack][]. The Client ID is also known as the Application ID when creating a service principal.
 
 7.  Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack][].
 

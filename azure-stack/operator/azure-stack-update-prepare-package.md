@@ -3,7 +3,7 @@ title: Prepare an Azure Stack update package | Microsoft Docs
 description: Learn to prepare an Azure Stack update package.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 
@@ -12,9 +12,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2019
-ms.author: mabrigg
-ms.lastreviewed: 08/15/2019
+ms.date: 09/03/2019
+ms.author: justinha
+ms.lastreviewed: 09/03/2019
 ms.reviewer: ppacent 
 
 ---
@@ -25,14 +25,14 @@ ms.reviewer: ppacent
 
 This article provides an overview of preparing Azure Stack update packages so that they can be used to update your Azure Stack environment. This process consists of:
 
-- [Downloading the update package](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#download-the-update-package)
-- [Importing the update package into your Azure Stack environment via the Azure Stack Administrator Portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#import-and-install-updates)
+- [Downloading the update package](#download-the-update-package)
+- [Importing the update package into your Azure Stack environment via the Azure Stack Administrator Portal](#import-and-install-updates)
 
-This process is done automatically for Azure Stack software updates and hotfixes on systems with internet-connectivty to the [Azure Stack automatic update endpoints](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages).
+On systems that can connect to the automatic update endpoints, Azure Stack software updates and hotfixes are automatically downloaded and prepared. On systems without connectivity and for any update from the OEM, the update package must be prepared as explained in this topic.  
 
-The table below displays when update packages require manual preparation and when they are prepared automatically:
+The following table shows when update packages require manual preparation and when they are prepared automatically.
 
-| Update Type | Azure Stack Environment's Connectivity to the [Azure Stack automatic update endpoints](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages) | Action Required |
+| Update Type | Connectivity | Action Required |
 | --- | --- | --- |
 | Azure Stack Software Updates | Connected | Update is automatically downloaded and prepared when the update is applied. |
 | Azure Stack Hotfixes | Connected | Update is automatically downloaded and prepared when the update is applied. |
@@ -43,6 +43,9 @@ The table below displays when update packages require manual preparation and whe
 
 ## Download the update package
 The update package for Azure Stack updates and hotfixes is available through the update blade for connected systems. You will need to download the package and move the package to a location that is accessible to your Azure Stack instance if you are updating an OEM package, or if you are supporting a disconnected system. You may also need to download and then upload the package to an accessible location if your are running a system with an intermittent connection.
+
+>[!NOTE]
+>The update package itself and its contents (such as binaries, PowerShell scripts, and so on) are signed with Microsoft-owned certificates. Tampering with the package will make the signature invalid.​
 
 Review the package contents. An update package typically consists of the following files:
 
