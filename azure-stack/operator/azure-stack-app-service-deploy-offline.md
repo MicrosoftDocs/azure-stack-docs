@@ -67,7 +67,7 @@ To deploy App Service in a disconnected environment, you must first create an of
 
 3. Browse to the location of the offline installation package you previously created, and then click **Next**.
 
-    ![Specifiy offline installation package path im App Service Installer](media/azure-stack-app-service-deploy-offline/image04.png)
+    ![Specify offline installation package path im App Service Installer](media/azure-stack-app-service-deploy-offline/image04.png)
 
 4. Review and accept the Microsoft Software License Terms, and then click **Next**.
 
@@ -91,7 +91,7 @@ To deploy App Service in a disconnected environment, you must first create an of
 
       ![Azure Stack subscriptions and locations in App Service Installer][4]
 
-8. You now have the option to deploy into an existing virtual network as configured through the steps [here](azure-stack-app-service-before-you-get-started.md#virtual-network), or allow the App Service installer to create a virtual network and associated subnets.
+8. You can deploy into an existing virtual network as configured through the steps [here](azure-stack-app-service-before-you-get-started.md#virtual-network), or allow the App Service installer to create a virtual network and associated subnets.
    1. Select **Create VNet with default settings**, accept the defaults, and then click **Next**, or;
    2. Select **Use existing VNet and Subnets**.
        1. Select the **Resource Group** that contains your virtual network;
@@ -148,7 +148,7 @@ To deploy App Service in a disconnected environment, you must first create an of
 
     ![Enter SQL Server info in App Service Installer][12]
 
-13. Review the role instance and SKU options. The defaults are populated with the minimum number of instances and the minimum SKU for each role in an ASDK deployment. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, click **Next**.
+13. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in an ASDK deployment. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, click **Next**.
 
      > [!NOTE]
      > For production deployments, follow the guidance in [Capacity planning for Azure App Service server roles in Azure Stack](azure-stack-app-service-capacity-planning.md).
