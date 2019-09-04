@@ -1,6 +1,6 @@
 ---
 title: Azure Stack 1908 known issues | Microsoft Docs
-description: Learn about known issues in Azure Stack 1907.
+description: Learn about known issues in Azure Stack 1908.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -15,7 +15,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: sethm
-ms.reviewer: hectorl
+ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
 monikerRange: 'azs-1908'
 ---
