@@ -79,7 +79,7 @@ If the built-in roles for Azure resources don't meet the specific needs of your 
 ### Manage usage and billing as a CSP
 
 * [Manage usage and billing as a CSP](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)
-* [Create a CSP or APSS Subscription](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)
+* [Create a CSP or APSS subscription](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription)
 
 Choose the type of shared services account that you use for Azure Stack. The types of subscriptions that can be used for registration of a multi-tenant Azure Stack are:
 
