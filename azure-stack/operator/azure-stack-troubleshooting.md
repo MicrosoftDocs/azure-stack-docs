@@ -52,19 +52,19 @@ For help with the [Azure Stack Development Kit](../asdk/asdk-what-is.md), reach 
 
 * [Azure Marketplace items available for Azure Stack](azure-stack-marketplace-azure-items.md)
 
-### Manage Capacity
+### Manage capacity
 
 #### Memory
 
 To increase the total available memory capacity for Azure Stack, you can add additional memory. In Azure Stack, your physical server is also referred to as a scale unit node. All scale unit nodes that are members of a single scale unit must have [the same amount of memory](azure-stack-manage-storage-physical-memory-capacity.md).
 
-#### Retention Period
+#### Retention period
 
 The retention period setting allows a cloud operator to specify a time period in days (between 0 and 9999 days) during which any deleted account can potentially be recovered. The default retention period is set to 0 days. Setting the value to "0" means that any deleted account is immediately out of retention and marked for periodic garbage collection.
 
 * [Set the retention period](azure-stack-manage-storage-accounts.md#set-the-retention-period)
 
-### Security, compliance & Identity  
+### Security, compliance, and identity  
 
 #### Manage RBAC
 
