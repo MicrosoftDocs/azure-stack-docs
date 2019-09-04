@@ -17,7 +17,7 @@ ms.date: 09/04/2019
 ms.author: sethm
 ms.reviewer: troettinger
 ms.lastreviewed: 09/04/2019
-
+monikerRange: 'azs-1908'
 ---
 
 # Clear portal user data from Azure Stack
