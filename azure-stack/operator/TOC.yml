@@ -143,6 +143,8 @@
     items:
     - name: Administration basics
       href: azure-stack-manage-basics.md
+    - name: Clear user data from portal
+      href: azure-stack-portal-gdpr.md 
     - name: Configure telemetry collection
       href: azure-stack-telemetry.md
     - name: Register Azure Stack
