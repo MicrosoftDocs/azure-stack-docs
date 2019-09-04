@@ -1,6 +1,6 @@
 ---
 title: Deploy App Service in an offline environment in Azure Stack | Microsoft Docs
-description: Learn how to deploy App Service in a disconnected Azure Stack environment secured by AD FS.
+description: Learn how to deploy App Service in an offline Azure Stack environment secured by AD FS.
 services: azure-stack
 documentationcenter: ''
 author: BryanLa
@@ -43,7 +43,7 @@ To add the App Service resource provider to your offline Azure Stack deployment,
 
 ## Create an offline installation package
 
-To deploy App Service in a disconnected environment, you must first create an offline installation package on a machine that's connected to the internet.
+To deploy App Service in an offline environment, you must first create an offline installation package on a machine that's connected to the internet.
 
 1. Run the AppService.exe installer on a machine that's connected to the internet.
 
