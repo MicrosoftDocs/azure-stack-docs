@@ -59,7 +59,7 @@ Use the steps in this section to create a custom deployment using the **appservi
 
 3. On the **Custom deployment** blade, select **Edit template** > **Quickstart template** and then use the drop-down list of available custom templates to select the **appservice-fileshare-sqlserver-ha** template. Click **OK**, and then **Save**.
 
-   ![Select the appservice-fileshare-sqlserver-ha QuickStart template](media/app-service-deploy-ha/2.png)
+   ![Select the appservice-fileshare-sqlserver-ha quickstart template](media/app-service-deploy-ha/2.png)
 
 4. On the **Custom deployment** blade, select **Edit parameters** and scroll down to review the default template values. Modify these values as necessary to provide all required parameter info and then click **OK**.<br><br> At a minimum, provide complex passwords for the `ADMINPASSWORD`, `FILESHAREOWNERPASSWORD`, `FILESHAREUSERPASSWORD`, `SQLSERVERSERVICEACCOUNTPASSWORD`, and `SQLLOGINPASSWORD` parameters.
     
@@ -119,7 +119,7 @@ Before you can run the App Service installer, several steps are required as desc
 - [Download the App Service installer and helper scripts](azure-stack-app-service-before-you-get-started.md#download-the-installer-and-helper-scripts).
 - [Download the latest custom script extension to the Azure Stack marketplace](azure-stack-app-service-before-you-get-started.md#syndicate-the-custom-script-extension-from-the-marketplace).
 - [Generate required certificates](azure-stack-app-service-before-you-get-started.md#get-certificates).
-- Create the ID Application based on the identify provider you've chosen for Azure Stack. An ID Application can be made for either [Azure AD](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-application) or [Active Directory Federation Services](azure-stack-app-service-before-you-get-started.md#create-an-active-directory-federation-services-application) and record the application ID.
+- Create the ID Application based on the identify provider you've chosen for Azure Stack. An ID Application can be made for either [Azure AD](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-app) or [Active Directory Federation Services](azure-stack-app-service-before-you-get-started.md#create-an-active-directory-federation-services-app) and record the application ID.
 - Ensure that you've added the Windows Server 2016 Datacenter image to the Azure Stack marketplace. This image is required for App Service installation.
 
 ### Steps for App Service deployment
