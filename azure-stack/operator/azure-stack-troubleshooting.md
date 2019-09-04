@@ -21,7 +21,7 @@ ms.lastreviewed: 09/04/2019
 ---
 # Microsoft Azure Stack troubleshooting
 
-This document provides information for Azure Stack. 
+This document provides troubleshooting information for Azure Stack. 
 
 
 ## Frequently asked questions
