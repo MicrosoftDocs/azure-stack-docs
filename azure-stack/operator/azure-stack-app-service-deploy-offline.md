@@ -1,6 +1,6 @@
 ---
-title: 'Deploy App Service in an offline environment in Azure Stack | Microsoft Docs'
-description: Detailed guidance on how to deploy App Service in a disconnected Azure Stack environment secured by AD FS.
+title: Deploy App Service in an offline environment in Azure Stack | Microsoft Docs
+description: Learn how to deploy App Service in a disconnected Azure Stack environment secured by AD FS.
 services: azure-stack
 documentationcenter: ''
 author: BryanLa
@@ -19,12 +19,12 @@ ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
 
 ---
-# Add an App Service resource provider to a disconnected Azure Stack environment secured by AD FS
+# Deploy App Service in an offline environment in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Apply the 1907 update to your Azure Stack integrated system or deploy the latest Azure Stack development kit before deploying Azure App Service 1.7.
+> Apply the 1907 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before deploying Azure App Service 1.7.
 
 By following the instructions in this article, you can install the [App Service resource provider](azure-stack-app-service-overview.md) to an Azure Stack environment that is:
 
