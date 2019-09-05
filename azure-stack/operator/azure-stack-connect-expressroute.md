@@ -218,7 +218,7 @@ If you are using Tenant 2 as an example, remember to change the IP addresses to 
 
 The Azure Stack Development Kit is self-contained and isolated from the network where the physical host is deployed. The VIP network that the gateways are connected to is not external; it is hidden behind a router performing Network Address Translation (NAT).
 
-The router is ASDK Host running the Routing and Remote Access Services (RRAS) role. You must configure NAT on the ASDK Host to enable the site-to-site VPN connection to connect on both ends.
+The router is ASDK host running the Routing and Remote Access Services (RRAS) role. You must configure NAT on the ASDK Host to enable the site-to-site VPN connection to connect on both ends.
 
 #### Configure the NAT
 
