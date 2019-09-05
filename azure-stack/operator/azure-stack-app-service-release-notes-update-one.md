@@ -1,6 +1,6 @@
 ---
-title: App Service on Azure Stack update 1 release notes | Microsoft Docs
-description: Learn about what's in update one for App Service on Azure Stack, the known issues, and where to download the update.
+title: App Service on Azure Stack Update 1 release notes | Microsoft Docs
+description: Learn about improvements, fixes, and known issues in Update 1 for App Service on Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -19,44 +19,40 @@ ms.reviewer: anwestg
 ms.lastreviewed: 03/20/2018
 
 ---
-# App Service on Azure Stack update 1 release notes
+# App Service on Azure Stack Update 1 release notes
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-These release notes describe the improvements and fixes in Azure App Service on Azure Stack Update 1 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
+These release notes describe improvements, fixes, and known issues in Azure App Service on Azure Stack Update 1. Known issues are divided into three sections: issues directly related to deployment, issues with the update process, and issues with the build (post-installation).
 
 > [!IMPORTANT]
-> Apply the 1802 update to your Azure Stack integrated system or deploy the latest Azure Stack development kit before deploying Azure App Service.
->
->
+> Apply the 1802 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before deploying Azure App Service.
 
 ## Build reference
 
-The App Service on Azure Stack Update 1 build number is **69.0.13698.9**
+The App Service on Azure Stack Update 1 build number is **69.0.13698.9**.
 
 ### Prerequisites
 
 > [!IMPORTANT]
-> New deployments of Azure App Service on Azure Stack now require a [three-subject wildcard certificate](azure-stack-app-service-before-you-get-started.md#get-certificates) due to improvements in the way in which SSO for Kudu is now handled in Azure App Service. The new subject is **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>**
->
->
+> New deployments of Azure App Service on Azure Stack now require a [three-subject wildcard certificate](azure-stack-app-service-before-you-get-started.md#get-certificates) due to improvements in the way in which SSO for Kudu is handled in Azure App Service. The new subject is **\*.sso.appservice.\<region\>.\<domainname\>.\<extension\>**
 
-Refer to the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
+Refer to the [Prerequisites for deploying App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
 ### New features and fixes
 
 Azure App Service on Azure Stack Update 1 includes the following improvements and fixes:
 
-- **High Availability of Azure App Service** - The Azure Stack 1802 update enabled workloads to be deployed across fault domains. Therefore App Service infrastructure is able to be fault tolerant as it will be deployed across fault domains. By default all new deployments of Azure App Service has this capability however for deployments completed prior to Azure Stack 1802 update being applied refer to the [App Service Fault Domain documentation](azure-stack-app-service-before-you-get-started.md )
+- **High Availability of Azure App Service** - The Azure Stack 1802 update enabled workloads to be deployed across fault domains, allowing App Service infrastructure to be fault tolerant as it's deployed across fault domains. By default, all new deployments of Azure App Service have this capability. However, for deployments completed prior to Azure Stack 1802 update being applied, refer to the [App Service Fault Domain documentation](azure-stack-app-service-before-you-get-started.md).
 
-- **Deploy in existing virtual network** - Customers can now deploy App Service on Azure Stack within an existing virtual network. Deploying in an existing virtual network enables customers to connect to the SQL Server and File Server, required for Azure App Service, over private ports. During deployment, customers can select to deploy in an existing virtual network, however [must create subnets for use by App Service](azure-stack-app-service-before-you-get-started.md#virtual-network) prior to deployment.
+- **Deploy in existing virtual network** - Customers can now deploy App Service on Azure Stack within an existing virtual network. Deploying in an existing virtual network enables customers to connect to the SQL Server and file server, required for Azure App Service, over private ports. During deployment, customers can select to deploy in an existing virtual network, however they [must create subnets for use by App Service](azure-stack-app-service-before-you-get-started.md#virtual-network) prior to deployment.
 
-- Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Portal SDK version.
+- Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack portal SDK version.
 
 - Updates **Azure Functions runtime** to **v1.0.11388**.
 
 - **Updates to the following application frameworks and tools**:
-    - Added **.NET Core 2.0** support
+    - Added **.NET Core 2.0** support.
     - Added **Node.JS** versions:
         - 6.11.2
         - 6.11.5
@@ -76,40 +72,40 @@ Azure App Service on Azure Stack Update 1 includes the following improvements an
         - 5.3.0
         - 5.4.2
         - 5.5.1
-    - Added **PHP** Updates:
+    - Added **PHP** updates:
         - 5.6.32
         - 7.0.26 (x86 and x64)
         - 7.1.12 (x86 and x64)
     - Updated **Git for Windows** to v 2.14.1
     - Updated **Mercurial** to v4.5.0
 
-  - Added support for **HTTPS Only** feature within Custom Domain feature in the App Service Tenant Portal. 
+  - Added support for **HTTPS Only** feature within Custom Domain feature in the App Service Tenant Portal.
 
-  - Added validation of storage connection in the custom storage picker for Azure Functions 
+  - Added validation of storage connection in the custom storage picker for Azure Functions.
 
 #### Fixes
 
-- When creating an offline deployment package, customers will no longer receive an access denied error message when opening the folder from the App Service installer
+- When creating an offline deployment package, customers will no longer receive an access denied error message when opening the folder from the App Service installer.
 
-- Resolved issues when working in the Custom Domains feature in the App Service Tenant Portal.
+- Resolved issues when working in the custom domains feature in the App Service tenant portal.
 
-- Prevent customers using reserved administrator names during setup
+- Prevent customers from using reserved admin names during setup.
 
-- Enabled App Service deployment with **domain joined** file server
+- Enabled App Service deployment with **domain joined** file server.
 
-- Improved retrieval of Azure Stack root certificate in script and now validate the root cert in the App Service installer.
+- Improved retrieval of Azure Stack root certificate in script and added ability to validate the root cert in the App Service installer.
 
 - Fixed incorrect status being returned to Azure Resource Manager when a subscription is deleted that contained resources in the Microsoft.Web namespace.
 
 ### Known issues with the deployment process
 
-- Certificate validation errors
+- Certificate validation errors.
 
-Some customers have experienced issues when providing certificates to the App Service installer when deploying on an integrated system, due to overly restrictive validation in the installer. The App Service installer has been re-released, customers should [download the updated installer](https://aka.ms/appsvconmasinstaller). If you continue to experience issues validating certificates with the updated installer, contact support.
+Some customers have experienced issues when providing certificates to the App Service installer when deploying on an integrated system due to overly restrictive validation in the installer. The App Service installer has been re-released and customers should [download the updated installer](https://aka.ms/appsvconmasinstaller). If you continue to experience issues validating certificates with the updated installer, contact support.
 
 - Problem retrieving Azure Stack root certificate from integrated system.
 
-An error in the Get-AzureStackRootCert.ps1 caused customers to fail to retrieve the Azure Stack root certificate when executing the script on a machine that does not have the root certificate installed. The script has also now been re-released, resolving this issue, and request customers [download the updated helper scripts](https://aka.ms/appsvconmashelpers). If you continue to experience issues retrieving the root certificate with the updated script, contact support.
+An error in the Get-AzureStackRootCert.ps1 caused customers to fail to retrieve the Azure Stack root certificate when executing the script on a machine that doesn't have the root certificate installed. The script has also now been re-released which resolvess the issue. [Download the updated helper scripts here](https://aka.ms/appsvconmashelpers). If you continue to experience issues retrieving the root certificate with the updated script, contact support.
 
 ### Known issues with the update process
 
@@ -117,7 +113,7 @@ An error in the Get-AzureStackRootCert.ps1 caused customers to fail to retrieve 
 
 ### Known issues (post-installation)
 
-- Slot Swap does not function
+- Slot swap doesn't function.
 
 Site slot swap is broken in this release. To restore functionality, complete these steps:
 
@@ -146,8 +142,8 @@ Site slot swap is broken in this release. To restore functionality, complete the
       Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
 
-2. Browse to the **CN0-VM** under Virtual Machines in the Azure Stack Administrator portal and **click Connect** to open a remote desktop session with the controller instance. Use the credentials specified during the deployment of App Service.
-3. Start **PowerShell as an Administrator** and execute the following script
+2. Browse to the **CN0-VM** under Virtual Machines in the Azure Stack admin portal and **click Connect** to open a remote desktop session with the controller instance. Use the credentials specified during the deployment of App Service.
+3. Start **PowerShell as an Administrator** and execute the following script:
 
     ```powershell
         Import-Module appservice
@@ -199,11 +195,11 @@ Site slot swap is broken in this release. To restore functionality, complete the
 
 6. Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network.
 
-If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. To do this, go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
+If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule which enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the admin portal and add an outbound security rule with the following properties:
 
 - Source: Any
 - Source port range: *
-- Destination: IP Addresses
+- Destination: IP addresses
 - Destination IP address range: Range of IPs for your file server
 - Destination port range: 445
 - Protocol: TCP
@@ -211,11 +207,11 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 - Priority: 700
 - Name: Outbound_Allow_SMB445
 
-### Known issues for Cloud Admins operating Azure App Service on Azure Stack
+### Known issues for cloud admins operating Azure App Service on Azure Stack
 
 Refer to the documentation in the [Azure Stack 1802 Release Notes](azure-stack-update-1903.md)
 
 ## Next steps
 
 - For an overview of Azure App Service, see [Azure App Service on Azure Stack overview](azure-stack-app-service-overview.md).
-- For more information about how to prepare to deploy App Service on Azure Stack, see [Before you get started with App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md).
+- For more information about how to prepare to deploy App Service on Azure Stack, see [Prerequisites for deploying App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md).
