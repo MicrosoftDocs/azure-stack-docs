@@ -22,7 +22,7 @@ ms.lastreviewed: 01/25/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-As an Azure Stack operator, you should use the administrator portal, PowerShell, or Azure Resource Manager APIs for most day-to-day management tasks. However, for some less common operations, you need to use the *privileged endpoint* (PEP). The PEP is a pre-configured remote PowerShell console that provides you with just enough capabilities to help you perform a required task. The endpoint uses [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/jea/overview) to expose only a restricted set of cmdlets. To access the PEP and invoke the restricted set of cmdlets, a low-privileged account is used. No administrator accounts are required. For additional security, scripting is not allowed.
+As an Azure Stack operator, you should use the administrator portal, PowerShell, or Azure Resource Manager APIs for most day-to-day management tasks. However, for some less common operations, you need to use the *privileged endpoint* (PEP). The PEP is a pre-configured remote PowerShell console that provides you with just enough capabilities to help you perform a required task. The endpoint uses [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) to expose only a restricted set of cmdlets. To access the PEP and invoke the restricted set of cmdlets, a low-privileged account is used. No administrator accounts are required. For additional security, scripting is not allowed.
 
 You can use the PEP to perform tasks such as the following:
 
@@ -105,7 +105,7 @@ Before you begin this procedure for an integrated system, make sure you can acce
 
 ## Tips for using the privileged endpoint 
 
-As mentioned above, the PEP is a [PowerShell JEA](https://docs.microsoft.com/powershell/jea/overview) endpoint. While providing a strong security layer, a JEA endpoint reduces some of the basic PowerShell capabilities, such as scripting or tab completion. If you try any type of script operation, the operation fails with the error **ScriptsNotAllowed**. This is expected behavior.
+As mentioned above, the PEP is a [PowerShell JEA](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) endpoint. While providing a strong security layer, a JEA endpoint reduces some of the basic PowerShell capabilities, such as scripting or tab completion. If you try any type of script operation, the operation fails with the error **ScriptsNotAllowed**. This is expected behavior.
 
 So, for instance, to get the list of parameters for a given cmdlet, you run the following command:
 
