@@ -1,6 +1,6 @@
 ---
 title: Clear portal user data on demand from Azure Stack. | Microsoft Docs
-description: As an Azure Stack operator, learn how to clear portal user data on demand in order to meet General Data Protection Regulation (GDPR) compliancy requirements.
+description: As an Azure Stack operator, learn how to clear portal user data when requested by Azure Stack users.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
-ms.date: 09/04/2019
+ms.date: 09/05/2019
 ms.author: sethm
 ms.reviewer: troettinger
-ms.lastreviewed: 09/04/2019
+ms.lastreviewed: 09/05/2019
 monikerRange: 'azs-1908'
 ---
 
 # Clear portal user data from Azure Stack
 
-Azure Stack operators can clear portal user data on demand in order to meet General Data Protection Regulation (GDPR) compliancy requirements. This article describes how to clear the portal user data.
+Azure Stack operators can clear portal user data on demand, when Azure Stack users request it. This article describes how to clear the portal user data.
 
 Removing portal user settings should only be done after the user subscription has been deleted.
 
