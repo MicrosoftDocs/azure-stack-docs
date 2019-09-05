@@ -20,7 +20,7 @@ ms.lastreviewed: 01/11/2019
 
 # SQL resource provider maintenance operations
 
-The SQL resource provider runs on a locked down virtual machine. To enable maintenance operations, you need to update the virtual machine's security. To do this using the principal of Least Privilege, you can use [PowerShell Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/jea/overview) endpoint *DBAdapterMaintenance*. The resource provider installation package includes a script for this operation.
+The SQL resource provider runs on a locked down virtual machine. To enable maintenance operations, you need to update the virtual machine's security. To do this using the principal of Least Privilege, you can use [PowerShell Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) endpoint *DBAdapterMaintenance*. The resource provider installation package includes a script for this operation.
 
 ## Patching and updating
 

@@ -64,7 +64,7 @@ Notice of updates varies on a couple of factors, such as your connection to the 
 
     An update alert for Microsoft software updates and hotfixes will appear in the Update blade for Azure Stack instances that are connected to the internet.
 
-    If your instance is not connected and you would like to be notified about each hotfix release, subscribe to the [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/32d322a8-acae-202d-e9a9-7371dccf381b/rss) or [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/32d322a8-acae-202d-e9a9-7371dccf381b/atom) feed.
+    If your instance is not connected and you would like to be notified about each hotfix release, subscribe to the [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss) or [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom) feed.
 
 - **OEM hardware vendor-provided updates**
 
