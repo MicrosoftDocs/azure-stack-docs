@@ -102,7 +102,7 @@ Azure App Service on Azure Stack Update 4 includes the following improvements an
 For customers wishing to migrate to a contained database for existing Azure App Service on Azure Stack deployments, execute these steps after the Azure App Service on Azure Stack 1.4 update has completed:
 
 > [!IMPORTANT]
-> The migration procedure takes approximately 5-10 minutes.  The procedure involves killing the existing database login sessions. Plan for downtime to migrate and validate Azure App Service on Azure Stack post migration. If you completed these steps after updating to Azure App Service on Azure Stack 1.3 then these steps aren't required.
+> The migration procedure takes approximately 5-10 minutes. The procedure involves killing the existing database login sessions. Plan for downtime to migrate and validate Azure App Service on Azure Stack post migration. If you completed these steps after updating to Azure App Service on Azure Stack 1.3 then these steps aren't required.
 
 1. Add [AppService databases (appservice_hosting and appservice_metering) to an Availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database).
 
