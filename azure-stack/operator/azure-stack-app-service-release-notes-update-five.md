@@ -19,7 +19,7 @@ ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
 
 ---
-# App Service on Azure Stack Ipdate 5 release notes
+# App Service on Azure Stack Update 5 release notes
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -181,9 +181,9 @@ For customers wishing to migrate to contained database for existing Azure App Se
 
 ### Known issues (post-installation)
 
-- Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network,  as called out in the Azure App Service on Azure Stack deployment documentation.
+- Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network. This issue is called out in the Azure App Service on Azure Stack deployment documentation.
 
-If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the admin portal and add an outbound security rule with the following properties:
+If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule which enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the admin portal and add an outbound security rule with the following properties:
  * Source: Any
  * Source port range: *
  * Destination: IP addresses
