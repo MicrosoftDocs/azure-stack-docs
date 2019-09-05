@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 09/04/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/25/2019
+ms.lastreviewed: 09/04/2019
 
 ---
 # Overview of Azure Stack diagnostic log collection 
@@ -27,7 +27,7 @@ Azure Stack is a large collection of components working together and interacting
 
 Prior to 1907, the diagnostic experience included using [Test-AzureStack](azure-stack-diagnostic-test.md) to validate system health and using [the privileged endpoint (PEP)](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) to collect logs for troubleshooting. 
 
-Beginning with the 1907 release, the **Help and Support** page adds a simpler the experience using **Diagnostic log collection**. 
+Beginning with the 1907 release, the **Help and Support** page adds a simpler experience using **Diagnostic log collection**. 
 **Diagnostic log collection** is part of an ongoing investment to improve Azure Stack operator's experience with the troubleshooting process. 
 With these improvements, operators can quickly collect and share diagnostic logs with Microsoft Customer Support Services (CSS). 
 The logs can be stored in a blob container in Azure, where access can be customized as needed.    
