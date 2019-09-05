@@ -13,11 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/03/2019
+ms.date: 09/05/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 09/03/2019
-monikerRange: 'azs-1908'
+ms.lastreviewed: 09/05/2019
+monikerRange: 'azs-1909'
 ---
 
 # Azure Stack 1909 known issues
