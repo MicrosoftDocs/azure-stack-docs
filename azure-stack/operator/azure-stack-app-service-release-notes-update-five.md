@@ -28,7 +28,6 @@ These release notes describe improvements, fixes, and known issues in Azure App 
 > [!IMPORTANT]
 > Apply the 1901 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before deploying Azure App Service 1.5.
 
-
 ## Build reference
 
 The App Service on Azure Stack Update 5 build number is **80.0.2.15**.
@@ -74,15 +73,14 @@ Azure App Service on Azure Stack Update 5 includes the following improvements an
 ### Post-deployment Steps
 
 > [!IMPORTANT]  
-> If you've provided the App Service resource provider with a SQL Always On Instance you *must** [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
+> If you've provided the App Service resource provider with a SQL Always On Instance you *must* [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
 ### Post-update steps
 
-For customers wishing to migrate to contained database for existing Azure App Service on Azure Stack deployments, execute these steps after the Azure App Service on Azure Stack 1.5 update has completed:
+For customers wishing to migrate to a contained database for existing Azure App Service on Azure Stack deployments, execute these steps after the Azure App Service on Azure Stack 1.5 update has completed:
 
 > [!IMPORTANT]
-> The migration procedure takes approximately 5-10 minutes.  The procedure involves killing the existing database login sessions.  Plan for downtime to migrate and validate Azure App Service on Azure Stack post migration.  If you completed these steps after updating to Azure App Service on Azure Stack 1.3 then these steps aren't required.
->
+> The migration procedure takes approximately 5-10 minutes. The procedure involves killing the existing database login sessions. Plan for downtime to migrate and validate Azure App Service on Azure Stack post migration. If you completed these steps after updating to Azure App Service on Azure Stack 1.3 then these steps aren't required.
 
 1. Add [AppService databases (appservice_hosting and appservice_metering) to an Availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database).
 
@@ -184,6 +182,7 @@ For customers wishing to migrate to contained database for existing Azure App Se
 - Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network. This issue is called out in the Azure App Service on Azure Stack deployment documentation.
 
 If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule which enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the admin portal and add an outbound security rule with the following properties:
+
  * Source: Any
  * Source port range: *
  * Destination: IP addresses
@@ -196,7 +195,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 
 ### Known issues for cloud admins operating Azure App Service on Azure Stack
 
-Refer to the documentation in the [Azure Stack 1809 Release Notes](azure-stack-update-1903.md).
+Refer to the documentation in the [Azure Stack 1809 release notes](azure-stack-update-1903.md).
 
 ## Next steps
 
