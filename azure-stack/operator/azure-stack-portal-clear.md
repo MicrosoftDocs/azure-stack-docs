@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
-ms.date: 09/05/2019
+ms.date: 09/06/2019
 ms.author: sethm
 ms.reviewer: troettinger
-ms.lastreviewed: 09/05/2019
-monikerRange: 'azs-1908'
+ms.lastreviewed: 09/06/2019
+monikerRange: 'azs-1802'
 ---
 
 # Clear portal user data from Azure Stack
@@ -50,7 +50,7 @@ For this procedure, use a computer that can communicate with the admin Resource 
 1. Open an elevated Windows PowerShell session (run as administrator), navigate to the root folder in the **AzureStack-Tools-master** directory, and import the required PowerShell module:
 
    ```powershell
-   Import-Module .\DatacenterIntegration\Portal\PortalUserDataGdprUtilities.psm1
+   Import-Module .\DatacenterIntegration\Portal\PortalUserDataUtilities.psm1
    ```
 
 2. Run the following commands. Make sure to substitute the placeholders with values that match your environment.
@@ -91,7 +91,7 @@ The user must query the object ID and provide it to the Azure Stack operator. Th
 1. Open an elevated Windows PowerShell session (run as administrator), navigate to the root folder in the **AzureStack-Tools-master** directory, and then import the necessary PowerShell module.
 
    ```powershell
-   Import-Module .\DatacenterIntegration\Portal\PortalUserDataGdprUtilities.psm1
+   Import-Module .\DatacenterIntegration\Portal\PortalUserDataUtilities.psm1
    ```
 
 2. Run the following commands. Make sure to substitute the placeholders with values that match your environment.
@@ -121,7 +121,7 @@ After receiving the user object ID as an Azure Stack operator, run the following
 1. Open an elevated Windows PowerShell session (run as administrator), navigate to the root folder in the **AzureStack-Tools-master** directory, and then import the necessary PowerShell module.
 
    ```powershell
-   Import-Module .\\DatacenterIntegration\\Portal\\PortalUserDataGdprUtilities.psm1 |
+   Import-Module .\DatacenterIntegration\Portal\PortalUserDataUtilities.psm1
    ```
 
 2. Run the following commands, making sure you adjust the parameter to match your environment:
