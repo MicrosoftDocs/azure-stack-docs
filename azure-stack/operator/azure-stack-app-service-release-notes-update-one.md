@@ -105,7 +105,7 @@ Some customers have experienced issues when providing certificates to the App Se
 
 - Problem retrieving Azure Stack root certificate from integrated system.
 
-An error in the Get-AzureStackRootCert.ps1 caused customers to fail to retrieve the Azure Stack root certificate when executing the script on a machine that doesn't have the root certificate installed. The script has also now been re-released which resolvess the issue. [Download the updated helper scripts here](https://aka.ms/appsvconmashelpers). If you continue to experience issues retrieving the root certificate with the updated script, contact support.
+An error in the Get-AzureStackRootCert.ps1 caused customers to fail to retrieve the Azure Stack root certificate when executing the script on a machine that doesn't have the root certificate installed. The script has also now been re-released which resolves the issue. [Download the updated helper scripts here](https://aka.ms/appsvconmashelpers). If you continue to experience issues retrieving the root certificate with the updated script, contact support.
 
 ### Known issues with the update process
 
