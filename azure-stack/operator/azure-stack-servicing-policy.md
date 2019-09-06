@@ -20,8 +20,6 @@ ms.lastreviewed: 01/11/2019
 
 ---
 
-- **OEM hardware vendor-provided updates**. Azure Stack hardware partners are responsible for the end-to-end servicing lifecycle (including guidance) for the hardware-related firmware and driver update packages. In addition, Azure Stack hardware partners own and maintain guidance for all software and hardware on the hardware lifecycle host. The OEM hardware vendor hosts these update packages on their own download site.
-
 ## Update package release cadence
 
 Microsoft expects to release software update packages on a monthly cadence. However, it's possible to have multiple, or no update releases in a month. OEM hardware vendors release their updates on an as-needed basis.
