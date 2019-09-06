@@ -117,7 +117,7 @@ Before you can run the App Service installer, several steps are required as desc
 > Not all steps described in the [Before you get started with App Service article](azure-stack-app-service-before-you-get-started.md) are required because the template deployment configures the infrastructure VMs for you.
 
 - [Download the App Service installer and helper scripts](azure-stack-app-service-before-you-get-started.md#download-the-installer-and-helper-scripts).
-- [Download the latest custom script extension to the Azure Stack marketplace](azure-stack-app-service-before-you-get-started.md#syndicate-the-custom-script-extension-from-the-marketplace).
+- [Download items from the Azure Stack marketplace](azure-stack-app-service-before-you-get-started.md#download-items-from-the-azure-marketplace).
 - [Generate required certificates](azure-stack-app-service-before-you-get-started.md#get-certificates).
 - Create the ID Application based on the identify provider you've chosen for Azure Stack. An ID Application can be made for either [Azure AD](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-app) or [Active Directory Federation Services](azure-stack-app-service-before-you-get-started.md#create-an-active-directory-federation-services-app) and record the application ID.
 - Ensure that you've added the Windows Server 2016 Datacenter image to the Azure Stack marketplace. This image is required for App Service installation.
