@@ -63,6 +63,13 @@ Occasionally, Microsoft provides hotfixes for Azure Stack that address a specifi
 
 Hotfixes are downloaded and installed just like the regular full update packages for Azure Stack. However, unlike a full update, hotfixes can install in minutes. We recommend Azure Stack operators set maintenance windows when installing hotfixes. Hotfixes update the version of your Azure Stack cloud so you can easily determine if the hotfix has been applied. A separate hotfix is provided for each version of Azure Stack that is still in support. Each fix for a specific iteration is cumulative, and includes the previous updates for that same version. You can read more about the applicability of a specific hotfix in the corresponding Knowledge Base article. See the release notes links in the previous section.
 
+For information about currently available hotfixes, see the release notes for that update:
+
+- [Azure Stack 1908 hotfix](azure-stack-release-notes-1908.md#hotfixes)
+- [Azure Stack 1907 hotfix](azure-stack-release-notes-1907.md#hotfixes)
+- [Azure Stack 1906 hotfix](azure-stack-release-notes-1906.md#hotfixes)
+- [Azure Stack 1905 hotfix](azure-stack-release-notes-1905.md#hotfixes)
+
 ## Keep your system under support
 
 For your Azure Stack instance to remain in a supported state, the instance must run the most recently released update version or run either of the two preceding update versions.
