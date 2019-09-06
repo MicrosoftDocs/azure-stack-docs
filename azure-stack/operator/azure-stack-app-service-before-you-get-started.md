@@ -44,9 +44,12 @@ Before you deploy Azure App Service on Azure Stack, you must complete the prereq
    - Modules folder
      - GraphAPI.psm1
 
-## Syndicate the Custom Script Extension from the Marketplace
+## Download items from the Azure Marketplace
 
-Azure App Service on Azure Stack requires Custom Script Extension v1.9.1.  The extension must be [syndicated from the Marketplace](azure-stack-download-azure-marketplace-item.md) before you start the deployment or upgrade of Azure App Service on Azure Stack.
+Azure App Service on Azure Stack requires items to be [downloaded from the Azure Marketplace](azure-stack-download-azure-marketplace-item.md), making them available in the Azure Stack Marketplace. These items must be downloaded before you start the deployment or upgrade of Azure App Service on Azure Stack:
+
+1. The latest version of Windows Server 2016 Datacenter virtual machine image.
+2. Custom Script Extension v1.9.1 or greater. This is a virtual machine extension.
 
 ## Get certificates
 
