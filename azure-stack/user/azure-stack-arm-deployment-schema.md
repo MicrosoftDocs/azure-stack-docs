@@ -25,62 +25,59 @@ ms.lastreviewed: 08/27/2019
 
 You can use the deployment schema to coordinate resource providers, types, and API versions supported by Azure Stack. You can specify the API profile in the schema. In addition, the schema supports [IntelliSense](https://code.visualstudio.com/docs/editor/intellisense) in Visual Studio Code to autocomplete your type and API versions when creating an Azure Resource Manager templates.
 
-This article describes the structural change of adopting a new schema of an Azure Resource Manager template. The template consists of JSON and expressions that you can use to construct values for your deployment. To learn more about the different sections of a template, please see: [Understand the structure and syntax of Azure Resource Manager templates](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates). For more information on API Hybrid Profiles, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md) 
-
-## Prerequisites 
-
--   Familiarity with [Azure Resource Manager templates](https://docs.microsoft.com/azure/azure-resource-manager/) 
--   [Visual Studio Code](https://code.visualstudio.com/)
--   [Access to an Azure Stack environment](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)
--   [Azure Stack ARM Quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates)
-    [Git](https://git-scm.com/) installed on your machine.
--   Familiarity with using [Git and GitHub in Visual Studio Code](https://code.visualstudio.com/Docs/editor/versioncontrol).
--   Resource Manager Tools extension. 
+This article describes how to work with the deployment schema in authoring an Azure Resource Manager template. The template consists of JSON and expressions that you can use to construct values to deploy resources to Azure Stack.
 
 ## Install resource manager tools extension
 
-To install, use these steps:
+You will need to have Visual Studio Code installed along with the Azure Resource Manager Tools extension.
 
-1. Open Visual Studio Code. 
+To install the extension:
+
+1. Open [Visual Studio Code](https://code.visualstudio.com/). 
 2. Press **CTRL+SHIFT+X** to open the Extensions pane 
 3. Search for **Azure Resource Manager Tools**, and then select**Install**. 
 4. Select**Reload**to finish the extension installation. 
 
 ## Change the deployment schema
 
+In this section you will download the GitHub repository [Azure Stack ARM Quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates) that contains templates you can use to deploy resources to Azure Stack.
+
 1.  Open Visual Studio Code. 
-1.  Open a bash prompt and navigate to a working directory on your machine.
-1.  Clone the Azure Stack Quick Start repository.
+2.  Open a bash prompt and navigate to a working directory on your machine.
+3.  Clone the [Azure Stack ARM Quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates) repository.
+
     ```bash  
     git clone https://github.com/Azure/AzureStack-QuickStart-Templates.git
     cd cd AzureStack-QuickStart-Templates
     ```
-1.  From Visual Studio Code, select **File > Open.** Select a file in the repository, such as `\101-vm-linux-create\azuredeploy.json`. Review the structure of the ARM template portion with the deployment schema that needs to be changed.
 
-    ```JSON
-      { 
-      
-        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json\#", 
-        "contentVersion": "1.0.0.0", 
-        "apiProfile": "2018-03-01-hybrid", 
-        "parameters": { }, 
-        "variables": { 
-          "networkSecurityGroupName": "myNSG"
-        }, 
+4.  From Visual Studio Code, select **File > Open.** Select a file in the repository, such as `\101-vm-linux-create\azuredeploy.json`. Review the structure of the ARM template portion with the deployment schema that needs to be changed.
+
+    ```JSON  
+     {
+      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json\#", 
+      "contentVersion": "1.0.0.0", 
+      "apiProfile": "2018-03-01-hybrid", 
+      "parameters": { }, 
+      "variables": { 
+        "networkSecurityGroupName": "myNSG"
+     },
     ```
 
-5.  The schema line will need to be changed to:  
+5.  Change the schema line in the template to:  
     ```JSON  
     "id": "https://raw.githubusercontent.com/t-anba/azure-resource-manager-schemas/t-anba-AzsDeploymentTemplate-final/schemas/2019-04-01/deploymentTemplate.json#", 
     "$schema": "http://json-schema.org/draft-04/schema#", 
     ```
-6.  Once this is complete, specify either the `2018-03-01-hybrid` profile or `2019-03-01-hybrid` profile. This is providing the user IntelliSense for the resource types that are supported by each profile.  
 
-     [!Note] 
-     Specifying a profile is not mandatory. When creating a resource, IntelliSense will still be provided, however two api-versions will be listed that are supported by Azure Stack. You can always override the IntelliSense by providing their own api-version, but this may not be supported by Azure Stack. 
-1.  You can now add a resource such as a network security group or virtual machine and see auto-complete features be provided for resource providers, parameters, resource types, and API version.  
+6.  You can use either the `2018-03-01-hybrid` profile or `2019-03-01-hybrid` profile. IntelliSense uses the moniker to look up the resource types that are supported by each profile.  
 
-## Using the azure resource manager tools extension
+    > [!Note]  
+    > Specifying a profile is not mandatory. When creating a resource, IntelliSense will still be provided, however two api-versions will be listed that are supported by Azure Stack. You can always override the IntelliSense by providing their own api-version, but this may not be supported by Azure Stack. 
+
+7.  You can now add a resource such as a network security group or virtual machine and see auto-complete features be provided for resource providers, parameters, resource types, and API version.  
+
+## Using the Azure Resource Manager Tools extension
 
 In Visual Studio Code, you can install the Azure Resource Manager extension to provide language support for Azure Resource Manager deployment templates and template language expressions. It features ARM Template Outline view, colorization for template language expressions, peek, errors, and warnings. This extension can be used with the Azure Stack deployment schema, however, additional steps are needed until the private build fix below is pushed to the tool. To use the schema with the ARM tools extension, please follow the below steps.  
 
@@ -97,7 +94,7 @@ In Visual Studio Code, you can install the Azure Resource Manager extension to p
 
 ## Creating the deployment schema 
 
-To generate/ regenerate a resource provider schema you must: 
+To generate or regenerate a resource provider schema: 
 
 1.  Fork [https://github.com/Azure/azure-resource-manager-schemas](https://github.com/Azure/azure-resource-manager-schemas)  
 2.  Create your own branch (git checkout -b &lt;branchName&gt;)  
@@ -293,4 +290,6 @@ You must specify the ref value as the value for definition, the type value, and 
 
 ## Next steps
 
-- Azure Stack Resource Manager
+- To learn more about the different sections of a template, please see: [Understand the structure and syntax of Azure Resource Manager templates](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates).  
+- For more information on API Hybrid Profiles, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md)  
+- Familiarity with [Azure Resource Manager templates](https://docs.microsoft.com/azure/azure-resource-manager/) 
