@@ -25,7 +25,7 @@ ms.lastreviewed: 05/28/2019
 > [!IMPORTANT]
 > Apply the 1904 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before deploying Azure App Service 1.7.
 
-In this article, we show you how to upgrade the [App Service resource provider](azure-stack-app-service-overview.md) deployed in an Azure Stack environment that's connected to the Internet.
+In this article, we show you how to upgrade the [App Service resource provider](azure-stack-app-service-overview.md) deployed in an internet-connected Azure Stack environment.
 
 > [!IMPORTANT]
 > Prior to running the upgrade, make sure that you've already completed the [deployment of the Azure App Service on Azure Stack](azure-stack-app-service-deploy.md). You should also read the [release notes](azure-stack-app-service-release-notes-update-seven.md) which accompany the 1.7 release so you can learn about new functionality, fixes, and any known issues that could affect your deployment.
@@ -69,7 +69,7 @@ To upgrade your deployment of App Service on Azure Stack, follow these steps:
         * If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, *cloudadmin\@azurestack.local*. Enter your password, and click **Sign In**.
    2. In the **Azure Stack Subscriptions** box, select the **Default Provider Subscription**.
    3. In the **Azure Stack Locations** box, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
-   4. If an existing App Service deployment is detected, then the resource group and storage account is populated and unavailable.
+   4. If an existing App Service deployment is detected, then the resource group and storage account are populated and unavailable.
    5. Click **Next** to review the upgrade summary.
 
       ![App Service Installation Detected][3]
