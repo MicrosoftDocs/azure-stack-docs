@@ -38,7 +38,7 @@ Refer to the [Prerequisites for deploying App Service on Azure Stack](azure-stac
 
 Before you begin the upgrade of Azure App Service on Azure Stack to 1.4:
 
-- Ensure all roles are ready in the Azure App Service administration in the Azure Stack admin portal
+- Ensure all roles are ready in the Azure App Service administration in the Azure Stack admin portal.
 
 - Back up the App Service and master databases:
   - AppService_Hosting;
