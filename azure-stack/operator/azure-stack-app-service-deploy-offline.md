@@ -78,26 +78,27 @@ To deploy App Service in an offline environment, you must first create an offlin
     ![Configure Azure App Service cloud in App Service Installer][3]
 
 7. On the next page:
-   1. Click the **Connect** button next to the **Azure Stack Subscriptions** box.
+
+   - Click the **Connect** button next to the **Azure Stack Subscriptions** box.
       - Provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and click **Sign In**.
-   2. In the **Azure Stack Subscriptions** box, select the **Default Provider Subscription**.
+   - In the **Azure Stack Subscriptions** box, select the **Default Provider Subscription**.
 
       > [!NOTE]
       > App Service can only be deployed into the **Default Provider Subscription**.
       >
 
-   3. In the **Azure Stack Locations** box, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
-   4. Click **Next**.
+   - In the **Azure Stack Locations** box, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
+   - Click **Next**.
 
       ![Azure Stack subscriptions and locations in App Service Installer][4]
 
 8. You can deploy into an existing virtual network as configured through the steps [here](azure-stack-app-service-before-you-get-started.md#virtual-network), or allow the App Service installer to create a virtual network and associated subnets.
-   1. Select **Create VNet with default settings**, accept the defaults, and then click **Next**, or;
-   2. Select **Use existing VNet and Subnets**.
-       1. Select the **Resource Group** that contains your virtual network;
-       2. Choose the correct **Virtual Network** name you wish to deploy into;
-       3. Select the correct **Subnet** values for each of the required role subnets;
-       4. Click **Next**
+   - Select **Create VNet with default settings**, accept the defaults, and then click **Next**, or;
+   - Select **Use existing VNet and Subnets**.
+       - Select the **Resource Group** that contains your virtual network;
+       - Choose the correct **Virtual Network** name you wish to deploy into;
+       - Select the correct **Subnet** values for each of the required role subnets;
+       - Click **Next**
 
       ![Virtual network and subnet info in App Service Installer][5]
 
@@ -109,11 +110,11 @@ To deploy App Service in an offline environment, you must first create an offlin
    ![File share info in App Service Installer][8]
 
 10. On the next page:
-    1. In the **Identity Application ID** box, enter the GUID for the app you're using for identity (from Azure AD).
-    2. In the **Identity Application certificate file** box, enter (or browse to) the location of the certificate file.
-    3. In the **Identity Application certificate password** box, enter the password for the certificate. This password is the one that you made note of when you used the script to create the certificates.
-    4. In the **Azure Resource Manager root certificate file** box, enter (or browse to) the location of the certificate file.
-    5. Click **Next**.
+    - In the **Identity Application ID** box, enter the GUID for the app you're using for identity (from Azure AD).
+    - In the **Identity Application certificate file** box, enter (or browse to) the location of the certificate file.
+    - In the **Identity Application certificate password** box, enter the password for the certificate. This password is the one that you made note of when you used the script to create the certificates.
+    - In the **Azure Resource Manager root certificate file** box, enter (or browse to) the location of the certificate file.
+    - Click **Next**.
 
     ![Enter app ID and certificate info in App Service Installer][10]
 
@@ -171,22 +172,22 @@ To deploy App Service in an offline environment, you must first create an offlin
 14. In the **Select Platform Image** box, choose your deployment Windows Server 2016 virtual machine (VM) image from the images available in the compute resource provider for the App Service cloud. Select **Next**.
 
 15. On the next page:
-     1. Enter the Worker Role VM admin user name and password.
-     2. Enter the Other Roles VM admin  user name and password.
-     3. Click **Next**.
+     - Enter the Worker Role VM admin user name and password.
+     - Enter the Other Roles VM admin  user name and password.
+     - Click **Next**.
 
     ![Enter role VM admins in App Service Installer][16]
 
 16. On the summary page:
-    1. Verify the selections you made. To make changes, use the **Previous** buttons to visit previous pages.
-    2. If the configurations are correct, select the check box.
-    3. To start the deployment, click **Next**.
+    - Verify the selections you made. To make changes, use the **Previous** buttons to visit previous pages.
+    - If the configurations are correct, select the check box.
+    - To start the deployment, click **Next**.
 
     ![Summary of selections made in App Service Installer][17]
 
 17. On the next page:
-    1. Track the installation progress. App Service on Azure Stack takes about 60 minutes to deploy based on the default selections.
-    2. After the installer successfully finishes, click **Exit**.
+    - Track the installation progress. App Service on Azure Stack takes about 60 minutes to deploy based on the default selections.
+    - After the installer successfully finishes, click **Exit**.
 
     ![Track installation process in App Service Installer][18]
 
