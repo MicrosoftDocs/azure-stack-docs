@@ -56,7 +56,7 @@ Apply the OEM packages with the following steps:
 1. You will need to contact your OEM to:
       - Determine the current version of your OEM package.  
       - Find the best method to download your OEM package.  
-2. Before applying an OEM package update, you should always apply the latest Azure Stack hotfix available on your system's current Azure Stack version. For more information about hotfixes see [Azure Stack update package types](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates?view=azs-1908#update-package-types).
+2. Before applying an OEM package update, you should always apply the latest Azure Stack hotfix available on your system's current Azure Stack version. For more information about hotfixes see [Azure Stack Hotfixes](https://docs.microsoft.com/azure-stack/operator/azure-stack-servicing-policy).
 3. Prepare your OEM package with the steps outlined in [Download update packages for integrated systems](azure-stack-servicing-policy.md).
 4. Apply the updates with the steps outlined in [Apply updates in Azure Stack](azure-stack-apply-updates.md).
 
