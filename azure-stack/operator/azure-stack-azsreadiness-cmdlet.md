@@ -194,7 +194,7 @@ $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
 Start-AzsReadinessChecker -CertificatePath .\Certificates\ -PfxPassword $password -DeploymentDataJSONPath .\deploymentdata.json
 ```
 
-In this deployment and support example, the PFX password is required for security, and `Start-AzsReadinessChecker` checks the relative folder **Certificates** for certificates valid for a deployment where identity, region and external FQDN are read from the deployment data JSON file generated for deployment.
+In this deployment and support example, the PFX password is required for security, and `Start-AzsReadinessChecker` checks the relative folder **Certificates** for certificates valid for a deployment where identity, region, and external FQDN are read from the deployment data JSON file generated for deployment.
 
 ### Example: validate PaaS certificates
 
