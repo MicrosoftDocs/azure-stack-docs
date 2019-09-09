@@ -25,7 +25,7 @@ ms.lastreviewed: 02/08/2019
 
 Follow these best practices when you deploy and manage Azure Stack to help mitigate data loss if there's a catastrophic failure.
 
-You should review the best practices regularly to verify that your installation is still in compliance when changes are made to the operation flow. If you encounter any issues while implementing these best practices, contact Microsoft Support for help.
+Review the best practices regularly to verify that your installation is still in compliance when changes are made to the operation flow. If you come across any issues while implementing these best practices, contact Microsoft Support for help.
 
 ## Configuration best practices
 
@@ -78,7 +78,7 @@ Region: nyc
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc
     \\fileserver01.contoso.com\AzSBackups\contoso.com\nyc\MASBackup
 
-MASBackup folder is where Azure Stack stores its backup data. You shouldn't use this folder to store your own data. OEMs shouldn't use this folder to store any backup data either.
+MASBackup folder is where Azure Stack stores its backup data. Don't use this folder to store your own data. OEMs shouldn't use this folder to store any backup data either.
 
 OEMs are encouraged to store backup data for their components under the region folder. Each network switch, hardware lifecycle host (HLH), and so on, may be stored in its own subfolder. For example:
 
