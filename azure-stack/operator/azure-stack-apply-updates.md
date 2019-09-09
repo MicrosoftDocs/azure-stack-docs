@@ -1,6 +1,6 @@
 ---
-title: Install OEM updates in Azure Stack | Microsoft Docs
-description: Learn how to install OEM updates in Azure Stack.
+title: Install Azure Stack Updates | Microsoft Docs
+description: Learn how to install Azure Stack Updates.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -19,11 +19,11 @@ ms.reviewer: ppacent
 
 ---
 
-# Install OEM updates in Azure Stack
+# Install Azure Stack Updates
 
 *Applies to: Azure Stack integrated systems*
 
-You can install original equipment manufacturer (OEM) updates using the **Update** blade in the Azure Stack. This article walks you through the steps to update, monitor, and troubleshoot the update process. Use the Update blade to view update info, install updates, monitor update progress, review update history, and view the current OEM package version.
+You can install update packages using the **Update** blade in the Azure Stack. This article walks you through the steps to update, monitor, and troubleshoot the update process. Use the Update blade to view update info, install updates, monitor update progress, review update history, and view the current Azure Stack and OEM package version.
 
 You can manage updates from the admin portal and use the **Updates** section of the dashboard to:
 
