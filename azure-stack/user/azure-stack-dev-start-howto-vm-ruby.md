@@ -101,4 +101,4 @@ This article uses Ruby and a Ruby on Rails web framework.
 
 - Learn more about how to [develop for Azure Stack](azure-stack-dev-start.md).
 - Learn about [common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
-- To learn the Ruby programming language and find additional resources for Python, see [Ruby-lang.org](https://www.ruby-lang.org).
+- To learn the Ruby programming language and find additional resources for Ruby, see [Ruby-lang.org](https://www.ruby-lang.org).
