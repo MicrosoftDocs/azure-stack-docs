@@ -163,7 +163,7 @@ Start-AzsReadinessChecker
 
 ## Description
 
-The **Start-AzsReadinessChecker** cmdlet validates certificates, Azure accounts, Azure subscriptions, and Azure Active Directories. Run validation before deploying Azure Stack, or before Azure Stack servicing actions such as secret rotation. The cmdlet can also be used to generate certificate signing requests for infrastructure certificates, and optionally, PaaS certificates. Finally, the cmdlet can repackage PFX certificates to remediate common packaging issues.
+The **Start-AzsReadinessChecker** cmdlet validates certificates, Azure accounts, Azure subscriptions, and Azure Active Directories (AAD). Run validation before deploying Azure Stack, or before Azure Stack servicing actions such as secret rotation. The cmdlet can also be used to generate certificate signing requests for infrastructure certificates, and optionally, PaaS certificates. Finally, the cmdlet can repackage PFX certificates to remediate common packaging issues.
 
 ## Examples
 
@@ -234,7 +234,7 @@ $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service
 Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment "<environment name>" -AzureDirectoryTenantName azurestack.contoso.com
 ```
 
-In this example, the service administrator account credentials are required for security, and `Start-AzsReadinessChecker` checks that the Azure account and Azure Active Directory are valid for an AAD deployment with a tenant directory name of **azurestack.contoso.com**.
+In this example, the service admin account credentials are required for security, and `Start-AzsReadinessChecker` checks that the Azure account and AAD are valid for an AAD deployment with a tenant directory name of **azurestack.contoso.com**.
 
 ### Example: validate Azure identity with deployment data (deployment support)
 
@@ -243,7 +243,7 @@ $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service
 Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -DeploymentDataJSONPath .\contoso-deploymentdata.json
 ```
 
-In this example, the service administrator account credentials are required for security, and `Start-AzsReadinessChecker` checks that the Azure account and Azure Active Directory are valid for an AAD deployment, where **AzureCloud** and **TenantName** are read from the deployment data JSON file generated for the deployment.
+In this example, the service admin account credentials are required for security, and `Start-AzsReadinessChecker` checks that the Azure account and AAD are valid for an AAD deployment, where **AzureCloud** and **TenantName** are read from the deployment data JSON file generated for the deployment.
 
 ### Example: validate Azure registration
 
@@ -273,7 +273,7 @@ $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
 Start-AzsReadinessChecker -PfxPassword $password -PfxPath .\certificates\ssl.pfx -ExportPFXPath .\certificates\ssl_new.pfx
 ```
 
-In this example, the PFX password is required for security. The Ssl.pfx file is imported into the local machine certificate store, re-exported with the same password, and saved as Ssl_new.pfx. This procedure is used when certificate validation flagged that a private key does not have the **Local Machine** attribute set, the certificate chain is broken, irrelevant certificates are present in the PFX, or the certificate chain is in the wrong order.
+In this example, the PFX password is required for security. The Ssl.pfx file is imported into the local machine certificate store, re-exported with the same password, and saved as Ssl_new.pfx. This procedure is used when certificate validation flags that a private key doesn't have the **Local Machine** attribute set, the certificate chain is broken, irrelevant certificates are present in the PFX, or the certificate chain is in the wrong order.
 
 ### Example: view validation report (deployment and support)
 
@@ -432,7 +432,7 @@ Specifies the destination path for certificate request files. Directory must alr
 
 ### -AADServiceAdministrator
 
-Specifies the Azure Active Directory service administrator to be used for Azure Stack deployment.
+Specifies the AAD service admin to be used for Azure Stack deployment.
 
 |  |  |
 |----------------------------|---------|
@@ -444,7 +444,7 @@ Specifies the Azure Active Directory service administrator to be used for Azure 
 
 ### -AADDirectoryTenantName
 
-Specifies the Azure Active Directory name to be used for Azure Stack deployment.
+Specifies the AAD name to be used for Azure Stack deployment.
 
 |  |  |
 |----------------------------|---------|
@@ -509,13 +509,13 @@ Specifies the path for readiness report, defaults to current directory and defau
 
 Specifies the path under which only the certificate required certificate folders are present.
 
-Required folders for Azure Stack deployment with Azure Active Directory identity system are:
+Required folders for Azure Stack deployment with AAD identity system are:
 
-ACSBlob, ACSQueue, ACSTable, Admin Portal, ARM Admin, ARM Public, KeyVault, KeyVaultInternal, Public Portal
+- ACSBlob, ACSQueue, ACSTable, Admin Portal, ARM Admin, ARM Public, KeyVault, KeyVaultInternal, Public Portal
 
-Required folder for Azure Stack deployment with Active Directory Federation Services identity system are:
+Required folders for Azure Stack deployment with Active Directory Federation Services identity system are:
 
-ACSBlob, ACSQueue, ACSTable, ADFS, Admin Portal, ARM Admin, ARM Public, Graph, KeyVault, KeyVaultInternal, Public Portal
+- ACSBlob, ACSQueue, ACSTable, ADFS, Admin Portal, ARM Admin, ARM Public, Graph, KeyVault, KeyVaultInternal, Public Portal
 
 |  |  |
 |----------------------------|---------|
@@ -577,7 +577,7 @@ Removes previous execution and validation history and writes validations to a ne
 
 ### -OutputPath
 
-Specifies a custom path to save readiness JSON report and verbose log file. If the path does not already exist, the command attempts to create the directory.
+Specifies a custom path to save readiness JSON report and verbose log file. If the path doesn't already exist, the command attempts to create the directory.
 
 |  |  |
 |----------------------------|------------------|
@@ -602,7 +602,7 @@ Prompts for confirmation before running the cmdlet.
 
 ### -WhatIf
 
-Shows what would happen if the cmdlet runs. The cmdlet is not run.
+Shows what would happen if the cmdlet runs. The cmdlet isn't run.
 
 |  |  |
 |----------------------------|------------------|
