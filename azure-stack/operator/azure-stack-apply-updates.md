@@ -3,7 +3,7 @@ title: Install Azure Stack Updates | Microsoft Docs
 description: Learn how to install Azure Stack Updates.
 services: azure-stack
 documentationcenter: ''
-author: justinha
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -12,9 +12,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/03/2019
-ms.author: justinha
-ms.lastreviewed: 09/03/2019
+ms.date: 09/10/2019
+ms.author: mabriggs
+ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent 
 
 ---
@@ -36,7 +36,7 @@ You can manage updates from the admin portal and use the **Updates** section of 
 
 You can view the current version of Azure Stack in the **Updates** blade. To open:
 
-1.  Open the Azure Stack admin portal.
+1.  Open the Azure Stack administrator portal.
 
 2.  Select **Dashboard**. In the **Updates** blade, the current version is listed.
 
