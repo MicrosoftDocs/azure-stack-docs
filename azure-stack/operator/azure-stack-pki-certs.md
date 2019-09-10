@@ -27,6 +27,9 @@ Azure Stack has a public infrastructure network using externally accessible publ
 - The process of obtaining certificates matching those specifications
 - How to prepare, validate, and use those certificates during deployment
 
+> [!NOTE]
+> Azure Stack by default also uses certificates issued from an internal Active Directory-integrated certificate authority (CA) for authentication between the nodes. To validate the certificate, all Azure Stack infrastructure machines trust the root certificate of the internal CA by means of adding that certificate to their local certificate store. There is no pinning or whitelisting of certificates in Azure Stack. The SAN of each server certificate is validated against the FQDN of the target. The entire chain of trust is also validated, along with the certificate expiration date (standard TLS server authentication without certificate pinning).
+
 ## Certificate requirements
 The following list describes the certificate requirements that are needed to deploy Azure Stack: 
 - Certificates must be issued from either an internal Certificate Authority or a Public Certificate Authority. If a public certificate authority is used, it must be included in the base operating system image as part of the Microsoft Trusted Root Authority Program. You can find the full list here: https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca 
@@ -49,7 +52,7 @@ The following list describes the certificate requirements that are needed to dep
 > Self Signed certificates are not supported.
 
 > [!NOTE]  
-> The presence of Intermediary Certificate Authorities in a certificate's chain-of-trusts IS supported. 
+> The presence of Intermediary Certificate Authorities in a certificate's chain-of-trusts *is* supported. 
 
 ## Mandatory certificates
 The table in this section describes the Azure Stack public endpoint PKI certificates that are required for both Azure AD and AD FS Azure Stack deployments. Certificate requirements are grouped by area, as well as the namespaces used and the certificates that are required for each namespace. The table also describes the folder in which your solution provider copies the different certificates per public endpoint. 
