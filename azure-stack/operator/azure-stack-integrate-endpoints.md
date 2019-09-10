@@ -6,10 +6,10 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/09/2019
 ms.author: justinha
 ms.reviewer: wamota
-ms.lastreviewed: 08/30/2019
+ms.lastreviewed: 09/09/2019
 ---
 
 # Azure Stack datacenter integration - Publish Azure Stack Services
@@ -68,7 +68,7 @@ With the addition of the [Extension Host](azure-stack-extension-host-prepare.md)
 Azure Stack supports only transparent proxy servers. In a deployment with a transparent proxy uplink to a traditional proxy server, you must allow the ports and URLs in the following table for outbound communication.
 
 > [!Note]  
-> Azure Stack does not support using ExpressRoute to reach the Azure services listed in the following table.
+> Azure Stack does not support using ExpressRoute to reach the Azure services listed in the following table because ExpressRoute may not be able to route traffic to all of the endpoints.
 
 |Purpose|Destination URL|Protocol|Ports|Source Network|
 |---------|---------|---------|---------|---------|
@@ -91,7 +91,7 @@ Azure Stack supports only transparent proxy servers. In a deployment with a tran
 
 Outbound URLs are load balanced using Azure traffic manager to provide the best possible connectivity based on geographical location. With load balanced URLs, Microsoft can update and change backend endpoints without impacting customers. Microsoft does not share the list of IP addresses for the load balanced URLs. You should use a device that supports filtering by URL rather than by IP.
 
-Outbound DNS is required at all times, what varies is the source querying the external DNS and what sort of identity integration was chosen. If this is a connected scenario, during deployment the DVM which sits on the BMC network, needs that outbound access but after deployment the DNS service moves to an internal component that will send queries through a Public VIP. At that time, the outbound DNS access through BMC network can be removed but the Public VIP access to that DNS server must remain or else authentication will fail.
+Outbound DNS is required at all times; what varies is the source querying the external DNS and what sort of identity integration was chosen. During deployment for a connected scenario, the DVM that sits on the BMC network needs outbound access. But after deployment, the DNS service moves to an internal component that will send queries through a Public VIP. At that time, the outbound DNS access through the BMC network can be removed, but the Public VIP access to that DNS server must remain or else authentication will fail.
 
 ## Next steps
 
