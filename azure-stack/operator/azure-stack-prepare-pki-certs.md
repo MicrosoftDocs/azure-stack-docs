@@ -3,7 +3,7 @@ title: Prepare Azure Stack Public Key Infrastructure certificates for Azure Stac
 description: Describes how to prepare the Azure Stack PKI certificates for Azure Stack integrated systems.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 
@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
-ms.author: mabrigg
+ms.date: 09/10/2019
+ms.author: justinha
 ms.reviewer: ppacent
-ms.lastreviewed: 01/30/2019
+ms.lastreviewed: 09/10/2019
 ---
 
 # Prepare Azure Stack PKI certificates for use in deployment or rotation
@@ -25,9 +25,6 @@ The certificate files [obtained from your CA of choice](azure-stack-get-pki-cert
 ## Prepare certificates for deployment
 
 Use the following steps to prepare and validate the Azure Stack PKI certificates that will be used for deploying a new Azure Stack environment or for rotating secrets in an existing Azure Stack environment. 
-
-4.When we import Certificate for Azure Stack (e.g. Portal) where is the private key of certificate stored and how is the private key protected?
-The certificates are stored as PKCS12 files (PFX) on clustered storage.
 
 
 ### Import the certificate
