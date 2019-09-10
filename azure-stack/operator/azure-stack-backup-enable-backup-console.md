@@ -122,7 +122,7 @@ New backups will start to use the public key in the new certificate. There's no 
 ### Backwards compatibility mode
 If you configured backup before updating to 1901, the settings are carried over with no change in behavior. In this case, the encryption key is supported for backwards compatibility. You can update the encryption key or switch to use a certificate. You have at least three releases to continue updating the encryption key. Use this time to transition to a certificate. To create a new encryption key, use [New-AzsEncryptionKeyBase64](https://docs.microsoft.com/powershell/module/azs.backup.admin/new-azsencryptionkeybase64).
 
-![Azure Stack - using encryption key in backward compatibility mode](media/azure-stack-backup/encryption-settings-backcompat-encryption-key.png)
+![Azure Stack - use encryption key in backward compatibility mode](media/azure-stack-backup/encryption-settings-backcompat-encryption-key.png)
 
 > [!Note]  
 > Updating from encryption key to certificate is a one-way operation. After making this change, you can't switch back to encryption key. All existing backups will remain encrypted with the previous encryption key.
