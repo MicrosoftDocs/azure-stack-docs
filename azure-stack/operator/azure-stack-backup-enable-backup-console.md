@@ -1,6 +1,6 @@
 ---
 title: Enable backup for Azure Stack from the admin portal | Microsoft Docs
-description: Learn how to enable the Infrastructure Backup Service through the admin portal so that Azure Stack can be restored if there's a failure.
+description: Learn how to enable the Infrastructure Backup Service from the admin portal so that Azure Stack can be restored if there's a failure.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -21,7 +21,7 @@ ms.lastreviewed: 08/21/2019
 ---
 # Enable backup for Azure Stack from the admin portal
 
-You have to enable the Infrastructure Backup Service through the admin portal so that Azure Stack can generate infrastructure backups. The hardware partner can use these backups to restore your environment using cloud recovery in the event of [a catastrophic failure](./azure-stack-backup-recover-data.md). The purpose of cloud recovery is to ensure that your operators and users can log back into the portal after recovery is complete. Users will have their subscriptions restored, including:
+You can enable the Infrastructure Backup Service from the admin portal so that Azure Stack can generate infrastructure backups. The hardware partner can use these backups to restore your environment using cloud recovery in the event of [a catastrophic failure](./azure-stack-backup-recover-data.md). The purpose of cloud recovery is to ensure that your operators and users can log back into the portal after recovery is complete. Users will have their subscriptions restored, including:
 
 - Role-based access permissions and roles.
 - Original plans and offers.
