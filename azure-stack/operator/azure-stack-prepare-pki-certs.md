@@ -24,7 +24,11 @@ The certificate files [obtained from your CA of choice](azure-stack-get-pki-cert
 
 ## Prepare certificates for deployment
 
-Use these steps to prepare and validate the Azure Stack PKI certificates that will be used for deploying a new Azure Stack environment or for rotating secrets in an existing Azure Stack environment: 
+Use the following steps to prepare and validate the Azure Stack PKI certificates that will be used for deploying a new Azure Stack environment or for rotating secrets in an existing Azure Stack environment. 
+
+4.When we import Certificate for Azure Stack (e.g. Portal) where is the private key of certificate stored and how is the private key protected?
+The certificates are stored as PKCS12 files (PFX) on clustered storage.
+
 
 ### Import the certificate
 
@@ -47,6 +51,9 @@ Use these steps to prepare and validate the Azure Stack PKI certificates that wi
    ![Mark key as exportable](./media/prepare-pki-certs/2.png)
 
 1. Click Finish to complete the import.
+
+> [!NOTE]
+> After you import a certificate for Azure Stack, the private key of the certificate is stored as a PKCS 12 file (.pfx) on clustered storage.
 
 ### Export the certificate
 
