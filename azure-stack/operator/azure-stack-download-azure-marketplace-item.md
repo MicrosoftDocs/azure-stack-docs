@@ -54,21 +54,21 @@ Your Azure Stack deployment must have internet connectivity, and be [registered 
 
     ![Add from Azure](media/azure-stack-download-azure-marketplace-item/marketplace.png)
 
-    The portal displays the list of items available for download from the Azure Marketplace. You can filter products by name, publisher and/or type of product. Each line item also shows the currently available version. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple**. You can click on each item to view its description and additional information, including its download size:
+4. The portal displays the list of items available for download from the Azure Marketplace. You can filter products by name, publisher and/or type of product. Each line item also shows the currently available version. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple**. You can click on each item to view its description and additional information, including its download size:
 
     [![List of marketplace items](media/azure-stack-download-azure-marketplace-item/add-from-azure1sm.png "List of marketplace items")](media/azure-stack-download-azure-marketplace-item/add-from-azure1.png#lightbox)
 
-    If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown:
+5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown:
 
     [![Select version](media/azure-stack-download-azure-marketplace-item/add-from-azure3sm.png "Select version")](media/azure-stack-download-azure-marketplace-item/add-from-azure3.png#lightbox)
-    
-4. Select the item you want, and then select **Download**. Download times vary.
+
+6. Select the item you want, and then select **Download**. Download times vary.
 
     ![Download message](media/azure-stack-download-azure-marketplace-item/image04.png)
 
     After the download completes, you can deploy the new marketplace item as either an Azure Stack operator or user.
 
-5. To deploy the downloaded item, select **+ Create a resource**, and then search among the categories for the new marketplace item. Next select the item to begin the deployment process. The process varies for different marketplace items.
+7. To deploy the downloaded item, select **+ Create a resource**, and then search among the categories for the new marketplace item. Next select the item to begin the deployment process. The process varies for different marketplace items.
 
 ## Disconnected or a partially connected scenario
 
