@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/05/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
@@ -59,7 +59,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - For 1908, note that the underlying operating system on which Azure Stack runs has been updated to Windows Server 2019. This enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack in the near future.
 - All components of Azure Stack infrastructure now operate in FIPS 140-2 mode.
-
+- Azure Stack operators can now remove portal user data. For more information, see [Clear portal user data from Azure Stack](azure-stack-portal-clear.md).
 
 ### Improvements
 
