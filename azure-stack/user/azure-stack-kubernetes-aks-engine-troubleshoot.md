@@ -119,7 +119,7 @@ Requirements:
     ```bash  
     mkdir -p $HOME/kuberneteslogs
     cd $HOME/kuberneteslogs
-    curl -O https://raw.githubusercontent.com/msazurestackworkloads/azurestack-gallery/release-diagnosis-v0.1.0/diagnosis/diagnosis.tar.gz
+    cwget https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.0/diagnosis.tar.gz
     tar xvzf diagnosis.tar.gz -C ./
     ```
 
