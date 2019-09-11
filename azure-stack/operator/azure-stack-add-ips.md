@@ -38,7 +38,7 @@ At a high level, the process of adding a new public IP address block to Azure St
 The first thing you'll need to do is to obtain the address block you want to add to Azure Stack. Depending on where you obtain your address block from, consider what the lead time is and manage this against the rate at which you're consuming public IP addresses in Azure Stack.
 
 > [!IMPORTANT]
-> Azure Stack will accept any address block that you provide if it's a valid address block and doesn't overlap with an existing address range in Azure Stack. Please make sure you obtain a valid address block that's routable and non-overlapping with the external network to which Azure Stack is connected. Once you add the range to Azure Stack, you can't remove it.
+> Azure Stack will accept any address block that you provide if it's a valid address block and doesn't overlap with an existing address range in Azure Stack. Please make sure you obtain a valid address block that's routable and non-overlapping with the external network to which Azure Stack is connected. After you add the range to Azure Stack, you can't remove it.
 
 ## Add the IP address range to Azure Stack
 
@@ -51,7 +51,7 @@ The first thing you'll need to do is to obtain the address block you want to add
 7. Provide a name for the IP pool. The name you choose helps you easily identify the IP pool. It's a good practice to make the name the same as the address range, but that isn't required.
 8. Enter the address block you want to add in CIDR notation. For example: 192.168.203.0/24
 9. When you provide a valid CIDR range in the Address range (CIDR block) field the Start IP address, End IP address and Available IP addresses fields will automatically populate. They're read-only and automatically generated so you can't change these fields without modifying the value in the Address range field.
-10. After reviewing the info on the blade and confirming everything looks correct, Click **Ok** to commit the change and add the address range to Azure Stack.
+10. After you review the info on the blade and confirm that everything looks correct, select **Ok** to commit the change and add the address range to Azure Stack.
 
 
 ## Next steps 
