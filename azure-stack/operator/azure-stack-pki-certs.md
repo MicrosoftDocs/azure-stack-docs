@@ -3,7 +3,7 @@ title: Azure Stack Public Key Infrastructure certificate requirements for Azure 
 description: Describes the Azure Stack PKI certificate deployment requirements for Azure Stack integrated systems.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 
@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
-ms.author: mabrigg
+ms.date: 09/10/2019
+ms.author: justinha
 ms.reviewer: ppacent
-ms.lastreviewed: 01/30/2019
+ms.lastreviewed: 09/10/2019
 ---
 
 # Azure Stack public key infrastructure certificate requirements
@@ -27,8 +27,8 @@ Azure Stack has a public infrastructure network using externally accessible publ
 - The process of obtaining certificates matching those specifications
 - How to prepare, validate, and use those certificates during deployment
 
-> [!Note]  
-> During deployment you must copy certificates to the deployment folder that matches the identity provider you are deploying against (Azure AD or AD FS). If you use a single certificate for all endpoints, you must copy that certificate file into each deployment folder as outlined in the tables below. The folder structure is pre-built in the deployment virtual machine and can be found at: C:\CloudDeployment\Setup\Certificates. 
+> [!NOTE]
+> Azure Stack by default also uses certificates issued from an internal Active Directory-integrated certificate authority (CA) for authentication between the nodes. To validate the certificate, all Azure Stack infrastructure machines trust the root certificate of the internal CA by means of adding that certificate to their local certificate store. There is no pinning or whitelisting of certificates in Azure Stack. The SAN of each server certificate is validated against the FQDN of the target. The entire chain of trust is also validated, along with the certificate expiration date (standard TLS server authentication without certificate pinning).
 
 ## Certificate requirements
 The following list describes the certificate requirements that are needed to deploy Azure Stack: 
@@ -52,7 +52,7 @@ The following list describes the certificate requirements that are needed to dep
 > Self Signed certificates are not supported.
 
 > [!NOTE]  
-> The presence of Intermediary Certificate Authorities in a certificate's chain-of-trusts IS supported. 
+> The presence of Intermediary Certificate Authorities in a certificate's chain-of-trusts *is* supported. 
 
 ## Mandatory certificates
 The table in this section describes the Azure Stack public endpoint PKI certificates that are required for both Azure AD and AD FS Azure Stack deployments. Certificate requirements are grouped by area, as well as the namespaces used and the certificates that are required for each namespace. The table also describes the folder in which your solution provider copies the different certificates per public endpoint. 
@@ -61,8 +61,11 @@ Certificates with the appropriate DNS names for each Azure Stack public infrastr
 
 For your deployment, the [region] and [externalfqdn] values must match the region and external domain names that you chose for your Azure Stack system. As an example, if the region name was *Redmond* and the external domain name was *contoso.com*, the DNS names would have the format *&lt;prefix>.redmond.contoso.com*. The *&lt;prefix>* values are predesignated by Microsoft to describe the endpoint secured by the certificate. In addition, the *&lt;prefix>* values of the external infrastructure endpoints depend on the Azure Stack service that uses the specific endpoint. 
 
-> [!note]  
-> For the production environments, we recommend individual certificates are generated for each endpoint and copied into the corresponding directory. For development environments, certificates can be provided as a single wild card certificate covering all namespaces in the Subject and Subject Alternative Name (SAN) fields copied into all directories. A single certificate covering all endpoints and services is an insecure posture hence development-only. Remember, both options require you to use wildcard certificates for endpoints such as **acs** and Key Vault where they are required. 
+For the production environments, we recommend individual certificates are generated for each endpoint and copied into the corresponding directory. For development environments, certificates can be provided as a single wild card certificate covering all namespaces in the Subject and Subject Alternative Name (SAN) fields copied into all directories. A single certificate covering all endpoints and services is an insecure posture hence development-only. Remember, both options require you to use wildcard certificates for endpoints such as **acs** and Key Vault where they are required. 
+
+> [!Note]  
+> During deployment you must copy certificates to the deployment folder that matches the identity provider you are deploying against (Azure AD or AD FS). If you use a single certificate for all endpoints, you must copy that certificate file into each deployment folder as outlined in the following tables. The folder structure is pre-built in the deployment virtual machine and can be found at: C:\CloudDeployment\Setup\Certificates. 
+
 
 | Deployment folder | Required certificate subject and subject alternative names (SAN) | Scope (per region) | SubDomain namespace |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|

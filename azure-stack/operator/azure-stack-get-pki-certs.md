@@ -3,7 +3,7 @@ title: Generate Azure Stack Public Key Infrastructure certificates for Azure Sta
 description: Describes the Azure Stack PKI certificate deployment process for Azure Stack integrated systems.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 
 ms.service: azure-stack
@@ -11,10 +11,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
-ms.author: mabrigg
+ms.date: 09/10/2019
+ms.author: justinha
 ms.reviewer: ppacent
-ms.lastreviewed: 01/25/2019
+ms.lastreviewed: 09/10/2019
 ---
 
 # Azure Stack certificates signing request generation
@@ -35,10 +35,10 @@ Your system should meet the following prerequisites before generating the CSR(s)
   - Region name
   - External fully qualified domain name (FQDN)
   - Subject
-- Windows 10 or Windows Server 2016
+- Windows 10 or Windows Server 2016 or later
 
   > [!NOTE]  
-  > When you receive your certificates back from your certificate authority the steps in [Prepare Azure Stack PKI certificates](azure-stack-prepare-pki-certs.md) will need to be completed on the same system!
+  > When you receive your certificates back from your certificate authority, the steps in [Prepare Azure Stack PKI certificates](azure-stack-prepare-pki-certs.md) will need to be completed on the same system!
 
 ## Generate certificate signing request(s)
 
