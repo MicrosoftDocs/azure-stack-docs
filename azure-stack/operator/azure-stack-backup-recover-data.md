@@ -1,6 +1,6 @@
 ---
 title: Recover from catastrophic data loss in Azure Stack | Microsoft Docs
-description: Learn how to recover and restore your infrastructure data in Azure Stack after atastrophic data loss.
+description: Learn how to recover and restore your infrastructure data in Azure Stack after catastrophic data loss.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -23,11 +23,11 @@ ms.lastreviewed: 11/05/2018
 
 *Applies to: Azure Stack integrated systems.*
 
-Azure Stack runs Azure services in your datacenter and can run on environments as small as four nodes installed in a single rack. In contrast, Azure runs in more than 40 regions in multiple datacenters and multiple zones in each region. User resources can span multiple servers, racks, datacenters, and regions. With Azure Stack, you currently  only have the choice to deploy your entire cloud to a single rack. This exposes your cloud to the risk of catastrophic events at your datacenter or failures due to major product bugs. When a disaster strikes, the Azure Stack instance goes offline. All of the data is potentially unrecoverable.
+Azure Stack runs Azure services in your datacenter and can run on environments as small as four nodes installed in a single rack. In contrast, Azure runs in more than 40 regions in multiple datacenters and multiple zones in each region. User resources can span multiple servers, racks, datacenters, and regions. With Azure Stack, you currently only have the choice to deploy your entire cloud to a single rack. This limitation exposes your cloud to the risk of catastrophic events at your datacenter or failures due to major product bugs. When a disaster strikes, the Azure Stack instance goes offline. All of the data is potentially unrecoverable.
 
 Depending on the root cause of the data loss, you may need to repair a single infrastructure service or restore the entire Azure Stack instance. You may even need to restore to different hardware in the same location or in a different location.
 
-This scenario addresses recovering your entire installation in the event of a failure and the redeployment of the private cloud.
+This scenario addresses recovering your entire installation if there's a failure and the redeployment of the private cloud.
 
 | Scenario                                                           | Data Loss                            | Considerations                                                             |
 |--------------------------------------------------------------------|--------------------------------------|----------------------------------------------------------------------------|
@@ -62,7 +62,7 @@ Azure Stack supports a type of deployment called cloud recovery mode. This mode 
  - Internal identity service data (ADFS deployments).
  - Federated identify configuration (ADFS deployments).
  - Root certificates used by internal certificate authority.
- - Azure Resource Manager configuration user data, such as subscriptions, plans, offers, and quotas for storage, network, and compute resources.
+ - Azure Resource Manager configuration user data, such as subscriptions, plans, offers, storage quotas, network quotas, and compute resources.
  - Key Vault secrets and vaults.
  - RBAC policy assignments and role assignments =.
 
