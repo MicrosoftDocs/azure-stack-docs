@@ -77,7 +77,7 @@ For more information, see the [Troubleshooting](https://github.com/Azure/aks-eng
 
 ## Collect AKS Engine logs
 
-You can access information from information created by the AKS engine. The AKS Engine reports status, issues, and errors as the application runs.  You can either pipe the output to a text file or copy it directly from the command-line console.
+You can access review information created by the AKS engine. The AKS Engine reports status,  and errors as the application runs. You can either pipe the output to a text file or copy it directly from the command-line console.
 
 1.  Gather standard output and error from information displayed in the AKS Engine command-line tool.
 
@@ -91,34 +91,61 @@ You can access information from information created by the AKS engine. The AKS E
 
 ## Collect Kubernetes logs
 
-In addition to the AKS Engine logs, the Kubernetes components generate status, issues, and error messages. You can collect these logs using the` getkuberneteslogs.sh` script.
+In addition to the AKS Engine logs, the Kubernetes components generate status  and error messages. You can collect these logs using the Bash script, [getkuberneteslogs.sh](https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.0/diagnosis.zip).
 
-1. Download the script into your client VM, the machine that has access to your Kubernetes cluster, and likely the same machine you used to deploy your cluster with the AKS engine.
+This script automates the process of gathering the following logs: 
+
+ - Microsoft Azure Linux Agent (waagent) logs
+ - Custom Script Extension logs
+ - Running kube-system container metadata
+ - Running kube-system container logs
+ - Kubelet service status and journal
+ - Etcd service status and journal
+ - Gallery item's DVM logs
+ - kube-system Snapshot
+
+Without this script you would need to connect to each node in the cluster locate and download the logs manually. In addition, the script can, optionally, upload the collected logs to an storage account that you can use to share the logs with others.
+
+Requirements:
+
+ - A Linux VM, Git Bash or Bash on Windows.
+ - Azure CLI installed in the machine from where the script will be run.
+ - Service Principal identity signed into an Azure CLI session to Azure Stack. Since the script has the capability of discovering and creating ARM resources to do its work, it requires the Azure CLI and a Service Principal identity.
+ - User account (subscription) where the Kubernetes cluster is is already selected in the environment. 
+1. Download the latest release of the script tar file into your client VM, a machine that has access to your Kubernetes cluster or the same machine you used to deploy your cluster with the AKS engine.
 
     Run the following commands:
 
-    ```bash
+    ```bash  
     mkdir -p $HOME/kuberneteslogs
     cd $HOME/kuberneteslogs
-    curl -O https://raw.githubusercontent.com/msazurestackworkloads/azurestack-gallery/master/diagnosis/getkuberneteslogs.sh
-    chmod 744 getkuberneteslogs.sh
-
+    curl -O https://raw.githubusercontent.com/msazurestackworkloads/azurestack-gallery/release-diagnosis-v0.1.0/diagnosis/diagnosis.tar.gz
+    tar xvzf diagnosis.tar.gz -C ./
     ```
 
-2.  Look for the information required by the script. The script will use the following parameters:
+2. Look for the parameters required by the getkuberneteslogs.sh script. The script will use the following parameters:
 
-    | Parameter | Description | Example  |
-    | --- | --- | ---  |
-    | -h, --help | Print command usage. |
-    | -i, --identity-file | Path to the RSA private key file passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | C:\data\id_rsa.pem (Putty)~/.ssh/id_rsa (SSH)  |
-    | -m, --master-host | The public IP or the fully qualified domain name (FQDN) of a Kubernetes master node. The VM name starts with k8s-master-. | IP: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external |
-    | -u,--user | The user name passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | azureuser (default value)  |
+| Parameter | Description | Required | Example |
+| --- | --- | --- | --- |
+| -h, --help | Print command usage. | no | 
+-u,--user | The administrator username for the cluster VMs | yes | azureuser (default value) |
+| -i, --identity-file | RSA private key tied to the public key used to create the Kubernetes cluster (sometimes named 'id_rsa')  | yes | ./rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH) |
+|   -g, --resource-group    | Kubernetes cluster resource group | yes | k8sresourcegroup |
+|   -n, --user-namespace               | Collect logs from containers in the specified namespaces (kube-system logs are always collected) | no |   monitoring |
+|       --api-model                    | Persists apimodel.json file in an Azure Stack Storage account. Upload apimodel.json file to storage account happens when --upload-logs parameter is also provided. | no | ./apimodel.json |
+| --all-namespaces               | Collect logs from containers in all namespaces. It overrides --user-namespace | no | |
+| --upload-logs                  | Persists retrieved logs in an Azure Stack storage account. Logs can be found in KubernetesLogs resource group | no | |
+--disable-host-key-checking    | Sets SSH's StrictHostKeyChecking option to "no" while the script executes. Only use in a safe environment. | no | |
 
-3.  Run the following commands with your information:
+3. Run any of the following example commands with your information:
 
-    ```bash
-    ./getkuberneteslogs.sh --identity-file "C:\id_rsa.pem" --user azureuser -- master-host 192.168.102.37
-    ```
+```bash
+./getkuberneteslogs.sh -u azureuser -i private.key.1.pem -g k8s-rg
+./getkuberneteslogs.sh -u azureuser -i ~/.ssh/id_rsa -g k8s-rg --disable-host-key-checking
+./getkuberneteslogs.sh -u azureuser -i ~/.ssh/id_rsa -g k8s-rg -n default -n monitoring
+./getkuberneteslogs.sh -u azureuser -i ~/.ssh/id_rsa -g k8s-rg --upload-logs --api-model clusterDefinition.json
+./getkuberneteslogs.sh -u azureuser -i ~/.ssh/id_rsa -g k8s-rg --upload-logs
+```
 
 ## Review custom script extension error codes
 

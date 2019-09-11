@@ -23,7 +23,7 @@ ms.lastreviewed: 08/30/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can use the AKS Engine command-line tool to deploy and manage a Kubernetes cluster on Azure and Azure Stack. Use the AKS Engine to create, upgrade, and scale Azure Resource Manager native clusters. You can use the engine to deploy a cluster in both connected and disconnected environments. This article provides an overview of the AKS Engine, supported scenarios for using the engine with Azure Stack, and an introduction to operations such as upgrade, scale, and rotate secrets. You can then deploy a Kubernetes cluster with the AKS Engine.
+You can use the AKS Engine command-line tool to deploy and manage a Kubernetes cluster on Azure and Azure Stack. Use the AKS Engine to create, upgrade, and scale Azure Resource Manager native clusters. You can use the engine to deploy a cluster in both connected and disconnected environments. This article provides an overview of the AKS Engine, supported scenarios for using the engine with Azure Stack, and an introduction to operations such as deploy, upgrade, and scale.
 
 ## Overview of the AKS Engine
 
@@ -33,7 +33,7 @@ The [AKS Engine](https://github.com/Azure/aks-engine) provides a command-line to
 
 Before you use the AKS Engine on Azure Stack, it's important to understand the differences between Azure Stack and Azure. This section identifies different features and key considerations when using Azure Stack with the AKS Engine to manage your Kubernetes cluster.
 
-For more information on the specifics of AKS Engine on Azure Stack and its differences with respect to Azure see [AKS Engine on Azure Stack](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md).
+For more information on the specifics of the AKS Engine on Azure Stack and its differences with respect to Azure see [AKS Engine on Azure Stack](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md).
 
 ## Supported scenarios with the AKS Engine
 
@@ -51,9 +51,9 @@ For more information on the AKS Engine and Azure Stack, see [Support policies fo
 To deploy a Kubernetes cluster with the AKS Engine on Azure Stack:
 
 1. [Set up the prerequisites for the AKS Engine](azure-stack-kubernetes-aks-engine-set-up.md)
-2. Intall the AKS Engine to a machine with access to your Azure Stack environment.
-     - [Intall the AKS Engine on Windows in Azure Stack](azure-stack-kubernetes-aks-engine-deploy-windows.md)
-     - [Intall the AKS Engine on Linux in Azure Stack](azure-stack-kubernetes-aks-engine-deploy-linux.md)
+2. Install the AKS Engine to a machine with access to your Azure Stack environment.
+     - [Install the AKS Engine on Windows in Azure Stack](azure-stack-kubernetes-aks-engine-deploy-windows.md)
+     - [Install the AKS Engine on Linux in Azure Stack](azure-stack-kubernetes-aks-engine-deploy-linux.md)
 3. [Deploy a Kubernetes cluster with the AKS engine on Azure Stack](azure-stack-kubernetes-aks-engine-deploy-cluster.md)
 
 ## Next steps

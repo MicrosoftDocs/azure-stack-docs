@@ -222,8 +222,6 @@
             href: azure-stack-kubernetes-aks-engine-scale.md
           - name: Upgrade a cluster
             href: azure-stack-kubernetes-aks-engine-upgrade.md
-          - name: Rotate certificates on a cluster
-            href: azure-stack-kubernetes-aks-engine-cert-rotate.md
           - name: Troubleshoot AKS Engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
       - name: Deploy Cognitive Services

@@ -90,7 +90,15 @@ This section looks at creating an API model for your cluster.
 
 ## Deploy a Kubernetes cluster
 
-After you have collected all the required values in your API model, you can create your cluster.
+After you have collected all the required values in your API model, you can create your cluster. At this point you should:
+
+Ask your administrator to:
+
+- Verify the health of the system, suggest running `Test-AzureStack` and your OEM vendor's hardware monitoring tool.
+- Verify the system capacity including resources such as memory, storage, and public IPs.
+- Provide details of the quota associated with your subscription so that you can verify that there is still enough space for the number of VMs you plan to use.
+
+Proceed to deploy a cluster:
 
 1.  Review the available parameters for AKS Engine on Azure Stack [CLI flags](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cli-flags).
 
@@ -144,9 +152,16 @@ Verify your cluster by deploying mysql with Helm to check your cluster.
     ```bash
     sudo snap install helm –classic
     helm repo update
-    helm init --history-max 200 --upgrade
     helm install stable/mysql
     ```
+
+5. If after trying to run `install stable/mysql` you get an error such as `Error: incompatible versions client[v2.XX.X] server[v2.YY.Y]`. Run the following commands:
+
+```bash 
+helm init --force-upgrade
+and retry:
+helm install stable/mysql
+```
 
 5.  To clean up the test, find the name used for the mysql deployment. In the following example, the name is `wintering-rodent`. Then delete it. 
 

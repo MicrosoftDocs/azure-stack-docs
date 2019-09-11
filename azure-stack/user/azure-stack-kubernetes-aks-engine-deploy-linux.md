@@ -32,8 +32,7 @@ The AKS Engine is a command-line tool used to deploy and manage your Kubernetes 
 When choosing your client machine, consider:
 
 1. If the client machine should be recoverable in case of a disaster.
-2. If you need your client machine to be highly available.
-3. How you will connect to the client machine and how the machine will interact with your cluster.
+2. How you will connect to the client machine and how the machine will interact with your cluster.
 
 ## Install in a connected environment
 
@@ -41,12 +40,13 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 1. Create a Linux VM in your Azure Stack. For instructions, see [Quickstart: Create a Linux server VM by using the Azure Stack portal](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-linux-portal).
 2. Connect to your VM.
-3. Run the following command:
+3. Find the version of AKS Engine in the [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) table. The AKS Base Engine must be available in your Azure Stack Marketplace. When running the command, you will specify the version, for example, `--version v0.39.0`. If you don't specify the version, the command will install the latest version which may not be able in your marketplace.
+4. Run the following command:
 
 ```bash  
     curl -o get-akse.sh https://raw.githubusercontent.com/Azure/aks-engine/master/scripts/get-akse.sh
-    hmod 700 get-akse.sh
-    ./get-akse.sh
+    chmod 700 get-akse.sh
+    ./get-akse.sh --version v0.XX.X
 ```
 
 > [!Note]  
@@ -70,7 +70,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 ```bash  
 curl -o aks-engine-v0.xx.x-linux-amd64.tar.gz <httpurl/aks-engine-v0.xx.x-linux-amd64.tar.gz>
-     tar xvzf aks-engine-v0.xx.x-linux-amd64.tar.gz -C /usr/local/bin
+tar xvzf aks-engine-v0.xx.x-linux-amd64.tar.gz -C /usr/local/bin
 ```
 
 ## Verify the installation
