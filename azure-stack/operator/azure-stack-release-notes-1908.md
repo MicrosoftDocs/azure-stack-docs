@@ -31,7 +31,7 @@ This article describes the contents of the 1908 update package. The update inclu
 
 ## Previous release notes
 
-Starting with the 1908 release, previous versions of release notes are no longer visible in the table of contents on the left. To access older versions of the release notes, select another article (for example, the [Azure Stack overview](azure-stack-overview.md)), then select 1905, 1906, 1907, or 1908 from the version selector at the top of the table of contents on the left. For earlier versions of release notes, see the [Archived release notes](#archived-release-notes) section.
+Starting with the 1908 release, previous versions of release notes are no longer visible in the table of contents on the left. To access older versions of the release notes, select a different article (for example, the [Azure Stack overview](azure-stack-overview.md)), then select 1905, 1906, 1907, or 1908 from the version selector at the top of the table of contents on the left. For earlier versions of release notes, see the [Archived release notes](#archived-release-notes) section.
 
 ## Build reference
 
