@@ -38,7 +38,7 @@ Infrastructure Backup Service includes the following components:
  - **Infrastructure Backup Controller**  
  The Infrastructure Backup Controller is instantiated with and resides in every Azure Stack Cloud.
  - **Backup Resource Provider**  
- The Backup Resource Provider (Backup RP) is composed of the user interface and application program interfaces (API)s exposing basic backup functionality for Azure Stack infrastructure.
+ The Backup Resource Provider (Backup RP) is composed of the user interface and APIs exposing basic backup functionality for Azure Stack infrastructure.
 
 #### Infrastructure Backup Controller
 
@@ -46,7 +46,7 @@ The Infrastructure Backup Controller is a Service Fabric service that gets insta
 
 ### Backup Resource Provider
 
-The Backup Resource Provider presents user interface in the Azure Stack portal for basic configuration and listing of backup resources. Operators can perform the following operations in the user interface:
+The Backup Resource Provider presents a user interface in the Azure Stack portal for basic configuration and listing of backup resources. Operators can do the following actions in the user interface:
 
  - Enable backup for the first time by providing external storage location, credentials, and encryption key.
  - View completed created backup resources and status resources under creation.
@@ -84,9 +84,9 @@ The requirements include:
 
 **1907 and beyond**
 
-Infrastructure Backup Service supports transferring backup data to an external storage location with SMB encryption enabled on the server side. If the server does not support SMB Encryption or doesn't have the feature enabled, Infrastructure Backup Service will fall back to unencrypted data transfer. Backup data placed on the external storage location is always encrypted at rest and isn't dependent on SMB encryption.
+Infrastructure Backup Service supports transferring backup data to an external storage location with SMB encryption enabled on the server side. If the server doesn't support SMB Encryption or doesn't have the feature enabled, Infrastructure Backup Service will fall back to unencrypted data transfer. Backup data placed on the external storage location is always encrypted at rest and isn't dependent on SMB encryption.
 
-#### Storage location sizing 
+#### Storage location sizing
 
 We recommend you back up at last two times a day and keep at most seven days of backups. This is the default behavior when you enable infrastructure backups on Azure Stack.
 
@@ -140,9 +140,9 @@ The certificate with the public key (.CER) isn't managed by internal secret rota
 The certificate used during cloud recovery with the private key (.PFX) is not persisted by Azure Stack for security reasons. This file will need to be provided explicitly during cloud recovery.  
 
 **Backwards compatibility mode**
-Starting in 1901, encryption key support is deprecated and will be removed in a future release. If you updated from 1811 with backup already enabled using an encryption key, Azure Stack will continue to use the encryption key. Backwards compatibility mode will be supported for at least 3 releases. After that time, a certificate will be required.
+Starting in 1901, encryption key support is deprecated and will be removed in a future release. If you updated from 1811 with backup already enabled using an encryption key, Azure Stack will continue to use the encryption key. Backwards compatibility mode will be supported for at least three releases. After that time, a certificate will be required.
 
- * Updating from encryption key to certificate is a one way operation.  
+ * Updating from encryption key to certificate is a one-way operation.  
  * All existing backups will remain encrypted using the encryption key. New backups will use the certificate. 
 
 ## Infrastructure Backup Limits
