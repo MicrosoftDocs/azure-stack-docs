@@ -3,7 +3,7 @@ title: Using the privileged endpoint in Azure Stack | Microsoft Docs
 description: Shows how to use the privileged endpoint (PEP) in Azure Stack (for an Azure Stack operator).
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 
@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
-ms.author: mabrigg
+ms.date: 09/03/2019
+ms.author: justinha
 ms.reviewer: fiseraci
-ms.lastreviewed: 01/25/2019
+ms.lastreviewed: 09/03/2019
 
 ---
 # Using the privileged endpoint in Azure Stack
@@ -43,7 +43,7 @@ Before you begin this procedure for an integrated system, make sure you can acce
 
 
 > [!NOTE]
-> For security reasons, we require that you connect to the PEP only from a hardened virtual machine running on top of the hardware lifecycle host, or from a dedicated, secure computer, such as a [Privileged Access Workstation](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations). The original configuration of the hardware lifecycle host must not be modified from its original configuration, including installing new software, nor it should be used to connect to the PEP.
+> For security reasons, we require that you connect to the PEP only from a hardened virtual machine running on top of the hardware lifecycle host, or from a dedicated, secure computer, such as a [Privileged Access Workstation](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations). The original configuration of the hardware lifecycle host must not be modified from its original configuration, including installing new software, nor should it be used to connect to the PEP.
 
 1. Establish the trust.
 
@@ -64,6 +64,10 @@ Before you begin this procedure for an integrated system, make sure you can acce
          -ConfigurationName PrivilegedEndpoint -Credential $cred
      ```
      The `ComputerName` parameter can be either the IP address or the DNS name of one of the virtual machines that hosts the PEP. 
+
+     >[!NOTE]
+     >Azure Stack does not make a remote call when validating the PEP credential. It relies on a locally-stored RSA public key to do that.​
+     
    - If you're running the ASDK:
      
      ```powershell
@@ -78,7 +82,7 @@ Before you begin this procedure for an integrated system, make sure you can acce
      - **Password**: Enter the same password that was provided during installation for the AzureStackAdmin domain administrator account.
 
      > [!NOTE]
-     > If you are unable to connect to the ERCS endpoint, try steps one and two again with the IP address of an ERCS VM to which you haven't already tried to connect.
+     > If you are unable to connect to the ERCS endpoint, retry steps one and two with another ERCS VM IP address.
 
 3. After you connect, the prompt will change to **[*IP address or ERCS VM name*]: PS>** or to **[azs-ercs01]: PS>**, depending on the environment. From here, run `Get-Command` to view the list of available cmdlets.
 
