@@ -25,6 +25,11 @@ ms.lastreviewed: 09/14/2019
 
 You can use the AKS Engine command-line tool to deploy and manage a Kubernetes cluster on Azure and Azure Stack. Use the AKS Engine to create, upgrade, and scale Azure Resource Manager native clusters. You can use the engine to deploy a cluster in both connected and disconnected environments. This article provides an overview of the AKS Engine, supported scenarios for using the engine with Azure Stack, and an introduction to operations such as deploy, upgrade, and scale.
 
+> [!IMPORTANT]
+> The AKS Engine is currently in public preview.
+> This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
+> For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 ## Overview of the AKS Engine
 
 The [AKS Engine](https://github.com/Azure/aks-engine) provides a command-line tool to bootstrap Kubernetes clusters on Azure and Azure Stack. By using the Azure Resource Manager, the AKS Engine helps you create and maintain clusters running on VMs, virtual networks, and other infrastructure-as-a-service (IaaS) resources in Azure Stack.

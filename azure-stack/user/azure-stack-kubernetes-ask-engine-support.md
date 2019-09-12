@@ -25,6 +25,11 @@ ms.lastreviewed: 09/14/2019
 
 This article provides details about technical support policies and limitations for AKS Engine on Azure Stack. The article also details Kubernetes Marketplace item, third-party open-source components, and security or patch management. 
 
+> [!IMPORTANT]
+> The AKS Engine is currently in public preview.
+> This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
+> For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 ## Self-managed Kubernetes clusters on Azure Stack with AKS Engine
 
 Infrastructure as a service (IaaS) cloud components, such as compute or networking components, give users access to low-level controls and customization options. AKS Engine allows the user to laydown Kubernetes clusters utilizing these IaaS components transparently, users can access and affect all aspects of their deployments.

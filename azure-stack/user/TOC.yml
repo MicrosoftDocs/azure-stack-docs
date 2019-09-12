@@ -192,18 +192,6 @@
         href: azure-stack-solution-template-service-fabric-cluster.md
       - name: Deploy a Kubernetes cluster
         items:
-        - name: Marketplace item
-          items: 
-          - name: Deploy a Kubernetes cluster
-            href: azure-stack-solution-template-kubernetes-deploy.md
-          - name: Deploy Kubernetes using Azure AD
-            href: azure-stack-solution-template-kubernetes-azuread.md
-          - name: Deploy Kubernetes using AD FS
-            href: azure-stack-solution-template-kubernetes-adfs.md
-          - name: Enable the Kubernetes dashboard
-            href: azure-stack-solution-template-kubernetes-dashboard.md
-          - name: Troubleshoot Kubernetes cluster
-            href: azure-stack-solution-template-kubernetes-trouble.md
         - name: AKS Engine
           items:
           - name: AKS Engine on Azure Stack
@@ -224,6 +212,18 @@
             href: azure-stack-kubernetes-aks-engine-upgrade.md
           - name: Troubleshoot AKS Engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
+        - name: Marketplace item
+          items: 
+          - name: Deploy a Kubernetes cluster
+            href: azure-stack-solution-template-kubernetes-deploy.md
+          - name: Deploy Kubernetes using Azure AD
+            href: azure-stack-solution-template-kubernetes-azuread.md
+          - name: Deploy Kubernetes using AD FS
+            href: azure-stack-solution-template-kubernetes-adfs.md
+          - name: Enable the Kubernetes dashboard
+            href: azure-stack-solution-template-kubernetes-dashboard.md
+          - name: Troubleshoot Kubernetes cluster
+            href: azure-stack-solution-template-kubernetes-trouble.md
       - name: Deploy Cognitive Services
         href: azure-stack-solution-template-cognitive-services.md
   - name: Deploy apps
