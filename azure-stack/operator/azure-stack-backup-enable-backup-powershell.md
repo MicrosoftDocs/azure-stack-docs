@@ -145,6 +145,6 @@ Refer to [Install Azure Stack PowerShell](azure-stack-powershell-install.md) for
 
 ## Next steps
 
-Learn to run a backup, see [Back up Azure Stack].(azure-stack-backup-back-up-azure-stack.md)
+Learn to run a backup, see [Back up Azure Stack](azure-stack-backup-back-up-azure-stack.md).
 
 Learn to verify that your backup ran, see [Confirm backup completed in administration portal](azure-stack-backup-back-up-azure-stack.md).
