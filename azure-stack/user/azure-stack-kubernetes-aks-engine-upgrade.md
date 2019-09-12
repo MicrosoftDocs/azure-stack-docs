@@ -125,4 +125,3 @@ For instructions, see [Force upgrade](https://github.com/Azure/aks-engine/blob/m
 
 - Read about the [The AKS Engine on Azure Stack](azure-stack-kubernetes-aks-engine-overview.md)
 - [Scale a Kubernetes cluster on Azure Stack](azure-stack-kubernetes-aks-engine-scale.md)
-- [Rotate certificates for a Kubernetes cluster on Azure Stack](azure-stack-kubernetes-aks-engine-cert-rotate.md)

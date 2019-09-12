@@ -42,7 +42,7 @@ The following scenarios are supported by the Azure Stack support team:
 1.  AKS Engine deploys all cluster artifacts as described by the [following template](https://github.com/Azure/aks-engine/tree/master/examples/azure-stack).
 2.  AKS Engine deploys the cluster on an existing VNET. For more information, see [Using a custom virtual network with AKS Engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/custom-vnet.md).
 3.  AKS Engine deploys VMs and executes associated extensions. For more information, see [Extensions](https://github.com/Azure/aks-engine/blob/master/docs/topics/extensions.md).
-4.  [Upgrade](azure-stack-kubernetes-aks-engine-upgrade.md), [scale](azure-stack-kubernetes-aks-engine-scale.md), and [rotate certificates](azure-stack-kubernetes-aks-engine-cert-rotate.md) operations.
+4.  [Upgrade](azure-stack-kubernetes-aks-engine-upgrade.md) and [scale](azure-stack-kubernetes-aks-engine-scale.md) operations.
 
 For more information on the AKS Engine and Azure Stack, see [Support policies for AKS Engine on Azure Stack](azure-stack-kubernetes-ask-engine-support.md).
 

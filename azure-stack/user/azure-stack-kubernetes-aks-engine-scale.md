@@ -68,4 +68,3 @@ aks-engine scale \
 
 - Read about the [The AKS Engine on Azure Stack](azure-stack-kubernetes-aks-engine-overview.md)
 - [Upgrade a Kubernetes cluster on Azure Stack](azure-stack-kubernetes-aks-engine-upgrade.md)
-- [Rotate certificates for a Kubernetes cluster on Azure Stack](azure-stack-kubernetes-aks-engine-cert-rotate.md)
