@@ -125,28 +125,39 @@ PowerShell](azure-stack-key-vault-manage-powershell.md).
 
    ![Select Service Fabric Cluster](./media/azure-stack-solution-template-service-fabric-cluster/image2.png)
 
-1. For each page, like *Basics*, fill out the deployment form. Use defaults if you're not sure of a value. Select **OK** to advance to the next page:
+2. For each page, like *Basics*, fill out the deployment form. Use defaults if you're not sure of a value.
+
+    For deployments to a disconnected Azure Stack or to deploy another version of Service Fabric, download the Service Fabric deployment package and its corresponding runtime package and host it on an Azure Stack blob. Provide these values to the **Service Fabric deployment package URL** and **Service Fabric runtime package URL** fields.
+    > [!NOTE]  
+    > There are compatibility issues between the latest release of Service Fabric and its corresponding SDK. Until that issue is addressed, please provide the following parameters to the deployment package URL and runtime package URL. Your deployments will fail otherwise.
+    > - Service Fabric deployment package URL: <https://download.microsoft.com/download/8/3/6/836E3E99-A300-4714-8278-96BC3E8B5528/6.5.641.9590/Microsoft.Azure.ServiceFabric.WindowsServer.6.5.641.9590.zip>
+    > - Service Fabric runtime package URL: <https://download.microsoft.com/download/B/0/B/B0BCCAC5-65AA-4BE3-AB13-D5FF5890F4B5/6.5.641.9590/MicrosoftAzureServiceFabric.6.5.641.9590.cab>
+    >
+    > For disconnected deployments, download these packages from the specified location and host it locally on an Azure Stack Blob.
 
    ![Basics](media/azure-stack-solution-template-service-fabric-cluster/image3.png)
 
-1. On the *Network Settings* page, you can specify specific ports to open for your applications:
+    
+3. On the *Network Settings* page, you can specify specific ports to open for your applications:
 
    ![Network Settings](media/azure-stack-solution-template-service-fabric-cluster/image4.png)
 
-1. On the *Security* page, add the values that you got from [creating the Azure Key Vault](#add-a-secret-to-key-vault) and Uploading the Secret.
+4. On the *Security* page, add the values that you got from [creating the Azure Key Vault](#add-a-secret-to-key-vault) and Uploading the Secret.
 
    For the *Admin Client Certificate Thumbprint*, enter the thumbprint of the *Admin Client certificate*. (See the [prerequisites](#prerequisites).)
    
    - Source Key Vault:  Specify entire `keyVault id` string from the script results. 
    - Cluster Certificate URL: Specify the entire URL from the `Secret Id` from the script results. 
    - Cluster Certificate thumbprint: Specify the *Cluster Certificate Thumbprint* from the script results.
+   - Server Certificate URL: If you wish to use a separate certificate from the Cluster certificate, upload the certificate to a keyvault and provide the full url to the secret. 
+   - Server Certificate thumbprint: Specify the thumbprint for the Server Certificate
    - Admin Client Certificate Thumbprints: Specify the *Admin Client Certificate Thumbprint* created in the prerequisites. 
 
    ![Script output](media/azure-stack-solution-template-service-fabric-cluster/image5.png)
 
    ![Security](media/azure-stack-solution-template-service-fabric-cluster/image6.png)
 
-1. Complete the wizard, and then select **Create** to deploy the Service Fabric Cluster.
+5. Complete the wizard, and then select **Create** to deploy the Service Fabric Cluster.
 
 
 
