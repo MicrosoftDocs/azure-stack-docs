@@ -25,6 +25,7 @@ ms.lastreviewed: 06/11/2019
 
 [Azure Stack plans](azure-stack-overview.md) are groupings of one or more services and their quotas. As a provider, you can create plans to offer to your users. In turn, your users subscribe to your offers to use the plans, services, and quotas they include. This example shows you how to create a plan that includes the compute, network, and storage resource providers. This plan gives subscribers the ability to provision virtual machines.
 
+::: moniker range=">=azs-1902"
 ## Create a plan (1902 and later)
 
 1. Sign in to the [Azure Stack administrator portal](https://adminportal.local.azurestack.external).
@@ -66,7 +67,9 @@ ms.lastreviewed: 06/11/2019
 10. When you are ready, select **Create** to create the plan.
 
 11. To see the new plan, on the left-hand side click **All services**, select **Plans**, and then search for the plan and select its name. If your list of resources is long, use **Search** to locate your plan by name.
+::: moniker-end
 
+::: moniker range="<=azs-1901"
 ## Create a plan (1901 and earlier)
 
 1. Sign in to the [Azure Stack administrator portal](https://adminportal.local.azurestack.external).
@@ -110,6 +113,7 @@ ms.lastreviewed: 06/11/2019
 10. To see your new plan, select **All resources**, then search for the plan and select its name. If your list of resources is long, use **Search** to locate your plan by name.
 
     ![Review the plan](media/azure-stack-create-plan/plan-overview1901.png)
+::: moniker-end
 
 ## Next steps
 
