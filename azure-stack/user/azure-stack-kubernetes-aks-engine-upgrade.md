@@ -41,7 +41,7 @@ When upgrading a production cluster, consider:
 -   Are you using a reliable machine for the client machine to run the AKS Engine and from which you are performing upgrade operations?
 -   Make sure that you have a backup cluster and that it is operational.
 -   If possible, run the command from a VM within the Azure Stack environment to decrease the network hops and potential connectivity failures.
--   Make sure that your subscription will have enough quota through the entire process. The process allocates new VMs during the process.
+-   Make sure that your subscription has enough space for the entire process. The process allocates new VMs during the process.
 -   No system updates or scheduled tasks are planned.
 -   Setup a staged upgrade on a cluster that is configured exactly as the production cluster and test the upgrade there before doing so in your production cluster
 

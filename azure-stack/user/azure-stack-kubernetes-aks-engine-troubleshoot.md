@@ -25,7 +25,7 @@ ms.lastreviewed: 09/14/2019
 
 You may encounter an issue when deploying or working with the AKS Engine on Azure Stack. This article looks at the steps to troubleshoot your deployment of the AKS Engine, collect information about your AKS Engine, collect Kubernetes logs, review custom script extension error codes, and instructions on opening a GitHub issue for the AKS Engine.
 
-## Troubleshoot AKS engine install
+## Troubleshoot the AKS Engine install
 
 ### Try GoFish
 
@@ -109,8 +109,8 @@ Without this script you would need to connect to each node in the cluster locate
 Requirements:
 
  - A Linux VM, Git Bash or Bash on Windows.
- - Azure CLI installed in the machine from where the script will be run.
- - Service Principal identity signed into an Azure CLI session to Azure Stack. Since the script has the capability of discovering and creating ARM resources to do its work, it requires the Azure CLI and a Service Principal identity.
+ - [Azure CLI](azure-stack-version-profiles-azurecli2.md) installed in the machine from where the script will be run.
+ - Service principal identity signed into an Azure CLI session to Azure Stack. Since the script has the capability of discovering and creating ARM resources to do its work, it requires the Azure CLI and a service principal identity.
  - User account (subscription) where the Kubernetes cluster is is already selected in the environment. 
 1. Download the latest release of the script tar file into your client VM, a machine that has access to your Kubernetes cluster or the same machine you used to deploy your cluster with the AKS engine.
 

@@ -23,7 +23,7 @@ ms.lastreviewed: 09/14/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can deploy a Kubernetes cluster on Azure Stack from a client VM running the AKS Engine. In this article, we look at writing a cluster specification, deploying a cluster with the `apimodel.json` file, and verify your cluster by deploying mysql with Helm.
+You can deploy a Kubernetes cluster on Azure Stack from a client VM running the AKS Engine. In this article, we look at writing a cluster specification, deploying a cluster with the `apimodel.json` file, and checking your cluster by deploying MySQL with Helm.
 
 ## Define a cluster specification
 
@@ -65,23 +65,23 @@ This section looks at creating an API model for your cluster.
     | --- | --- |
     | dnsPrefix | Enter a unique string that will serve to identify the hostname of VMs. For example, a name based on the resource group name. |
     | count |  Enter the number of masters you want for your deployment. The minimum for an HA deployment is 3, but 1 is allowed for non-HA deployments. |
-    | vmSize |  Enter [a size supported by Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example "Standard\_D2\_v2" |
+    | vmSize |  Enter [a size supported by Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example `Standard_D2_v2`. |
     | distro | Enter `aks-ubuntu-16.04`. |
 
 6.  In the array `agentPoolProfiles` update:
 
     | Field | Description |
     | --- | --- |
-    | count | Enter the number of agents you want for your deployment |
-    | vmSize | Enter [a size supported by Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example "Standard\_D2\_v2" |
+    | count | Enter the number of agents you want for your deployment. |
+    | vmSize | Enter [a size supported by Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example `Standard_D2_v2`. |
     | distro | Enter `aks-ubuntu-16.04`. |
 
 7.  In the array `linuxProfile` update:
 
     | Field | Description |
     | --- | --- |
-    | adminUsername | Enter the VM admin user name |
-    | ssh | Enter the public key that will be used for SSH authentication with VMs |
+    | adminUsername | Enter the VM admin user name. |
+    | ssh | Enter the public key that will be used for SSH authentication with VMs. |
 
 ### More information about the API model
 
@@ -92,7 +92,7 @@ This section looks at creating an API model for your cluster.
 
 After you have collected all the required values in your API model, you can create your cluster. At this point you should:
 
-Ask your administrator to:
+Ask your Azure Stack operator to:
 
 - Verify the health of the system, suggest running `Test-AzureStack` and your OEM vendor's hardware monitoring tool.
 - Verify the system capacity including resources such as memory, storage, and public IPs.
@@ -113,7 +113,7 @@ Proceed to deploy a cluster:
     | client-secret | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal secret. This is the client secret you set up when creating your service. |
     | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter your Subscription ID. For more information see [Subscribe to an offer](https://docs.microsoft.com/azure-stack/user/azure-stack-subscribe-services#subscribe-to-an-offer) |
 
-    Here is an example to follow:
+    Here is an example:
 
     ```bash  
     aks-engine deploy \\
@@ -157,13 +157,13 @@ Verify your cluster by deploying mysql with Helm to check your cluster.
 
 5. If after trying to run `install stable/mysql` you get an error such as `Error: incompatible versions client[v2.XX.X] server[v2.YY.Y]`. Run the following commands:
 
-```bash 
-helm init --force-upgrade
-and retry:
-helm install stable/mysql
-```
+    ```bash 
+    helm init --force-upgrade
+    and retry:
+    helm install stable/mysql
+    ```
 
-5.  To clean up the test, find the name used for the mysql deployment. In the following example, the name is `wintering-rodent`. Then delete it. 
+6.  To clean up the test, find the name used for the mysql deployment. In the following example, the name is `wintering-rodent`. Then delete it. 
 
     Run the following commands:
 

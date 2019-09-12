@@ -40,7 +40,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 1. Create a Linux VM in your Azure Stack. For instructions, see [Quickstart: Create a Linux server VM by using the Azure Stack portal](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-linux-portal).
 2. Connect to your VM.
-3. Find the version of AKS Engine in the [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) table. The AKS Base Engine must be available in your Azure Stack Marketplace. When running the command, you will specify the version, for example, `--version v0.39.0`. If you don't specify the version, the command will install the latest version which may not be able in your marketplace.
+3. Find the version of AKS Engine in the [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) table. The AKS Base Engine must be available in your Azure Stack Marketplace. When running the command, you will specify the version, for example, `--version v0.39.0`. If you don't specify the version, the command will install the latest version, which may not be available in your marketplace.
 4. Run the following command:
 
 ```bash  
