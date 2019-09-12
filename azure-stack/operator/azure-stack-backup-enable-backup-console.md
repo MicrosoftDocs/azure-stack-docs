@@ -1,6 +1,6 @@
 ---
-title: Enable backup for Azure Stack from the admin portal | Microsoft Docs
-description: Learn how to enable the Infrastructure Backup Service from the admin portal so that Azure Stack can be restored if there's a failure.
+title: Enable backup for Azure Stack from the administrator portal | Microsoft Docs
+description: Learn how to enable the Infrastructure Backup Service from the administrator portal so that Azure Stack can be restored if there's a failure.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -19,9 +19,9 @@ ms.reviewer: hectorl
 ms.lastreviewed: 08/21/2019
 
 ---
-# Enable backup for Azure Stack from the admin portal
+# Enable backup for Azure Stack from the administrator portal
 
-You can enable the Infrastructure Backup Service from the admin portal so that Azure Stack can generate infrastructure backups. The hardware partner can use these backups to restore your environment using cloud recovery in the event of [a catastrophic failure](./azure-stack-backup-recover-data.md). The purpose of cloud recovery is to ensure that your operators and users can log back into the portal after recovery is complete. Users will have their subscriptions restored, including:
+You can enable the Infrastructure Backup Service from the administrator portal so that Azure Stack can generate infrastructure backups. The hardware partner can use these backups to restore your environment using cloud recovery in the event of [a catastrophic failure](./azure-stack-backup-recover-data.md). The purpose of cloud recovery is to ensure that your operators and users can log back into the portal after recovery is complete. Users will have their subscriptions restored, including:
 
 - Role-based access permissions and roles.
 - Original plans and offers.
@@ -39,7 +39,7 @@ Admins and users are responsible for backing up and restoring IaaS and PaaS reso
 
 ## Enable or reconfigure backup
 
-1. Open the [Azure Stack admin portal](azure-stack-manage-portals.md).
+1. Open the [Azure Stack administrator portal](azure-stack-manage-portals.md).
 2. Select **All services**, and then under the **ADMINISTRATION** category select **Infrastructure backup**. Choose **Configuration** in the **Infrastructure backup** blade.
 3. Type the path to the **Backup storage location**. Use a Universal Naming Convention (UNC) string for the path to a file share hosted on a separate device. A UNC string specifies the location of resources such as shared files or devices. For the service, you can use an IP address. To ensure availability of the backup data after a disaster, the  device should be in a separate location.
 
@@ -133,4 +133,4 @@ If you configured backup before updating to 1901, the settings are carried over 
 
 Learn to run a backup. See [Back up Azure Stack](azure-stack-backup-back-up-azure-stack.md).
 
-Learn to verify that your backup ran. See [Confirm backup completed in admin portal](azure-stack-backup-back-up-azure-stack.md).
+Learn to verify that your backup ran. See [Confirm backup completed in administrator portal](azure-stack-backup-back-up-azure-stack.md).

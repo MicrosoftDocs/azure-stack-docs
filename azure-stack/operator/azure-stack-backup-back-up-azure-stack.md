@@ -23,7 +23,7 @@ ms.lastreviewed: 09/05/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-This article shows you how to do an on-demand backup on Azure Stack. For instructions on configuring the PowerShell environment, see [Install PowerShell for Azure Stack](azure-stack-powershell-install.md). To sign in to Azure Stack, see [Using the admin portal in Azure Stack](azure-stack-manage-portals.md).
+This article shows you how to do an on-demand backup on Azure Stack. For instructions on configuring the PowerShell environment, see [Install PowerShell for Azure Stack](azure-stack-powershell-install.md). To sign in to Azure Stack, see [Using the administrator portal in Azure Stack](azure-stack-manage-portals.md).
 
 ## Start Azure Stack backup
 
@@ -107,10 +107,10 @@ The result should look like the following output:
     Tags              : {}
 ```
 
-### Confirm backup has completed in the admin portal
-Use the Azure Stack admin portal to verify that backup has completed successfully by following these steps:
+### Confirm backup has completed in the administrator portal
+Use the Azure Stack administrator portal to verify that backup has completed successfully by following these steps:
 
-1. Open the [Azure Stack admin portal](azure-stack-manage-portals.md).
+1. Open the [Azure Stack administrator portal](azure-stack-manage-portals.md).
 2. Select **All services**, and then under the **ADMINISTRATION** category select > **Infrastructure backup**. Choose **Configuration** in the **Infrastructure backup** blade.
 3. Find the **Name** and **Date Completed** of the backup in **Available backups** list.
 4. Verify the **State** is **Succeeded**.
