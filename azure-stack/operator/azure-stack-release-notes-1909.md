@@ -59,9 +59,11 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Improvements
 
-- When downloading marketplace items from Azure to Azure Stack, there is a new user interface that is available that enables you to specify a version of the item, when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md).
+<!-- Changes and product improvements with tangible customer-facing value. -->
 
 ### Changes
+
+- When downloading marketplace items from Azure to Azure Stack, there is a new user interface that is available that enables you to specify a version of the item, when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md).
 
 ### Fixes
 
