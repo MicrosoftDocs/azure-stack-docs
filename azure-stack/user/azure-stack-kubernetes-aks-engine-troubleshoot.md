@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/14/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 08/30/2019
+ms.lastreviewed: 09/14/2019
 
 ---
 
@@ -119,23 +119,23 @@ Requirements:
     ```bash  
     mkdir -p $HOME/kuberneteslogs
     cd $HOME/kuberneteslogs
-    cwget https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.0/diagnosis.tar.gz
+    wget https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.0/diagnosis.tar.gz
     tar xvzf diagnosis.tar.gz -C ./
     ```
 
-2. Look for the parameters required by the getkuberneteslogs.sh script. The script will use the following parameters:
+2. Look for the parameters required by the `getkuberneteslogs.sh` script. The script will use the following parameters:
 
-| Parameter | Description | Required | Example |
-| --- | --- | --- | --- |
-| -h, --help | Print command usage. | no | 
--u,--user | The administrator username for the cluster VMs | yes | azureuser (default value) |
-| -i, --identity-file | RSA private key tied to the public key used to create the Kubernetes cluster (sometimes named 'id_rsa')  | yes | ./rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH) |
-|   -g, --resource-group    | Kubernetes cluster resource group | yes | k8sresourcegroup |
-|   -n, --user-namespace               | Collect logs from containers in the specified namespaces (kube-system logs are always collected) | no |   monitoring |
-|       --api-model                    | Persists apimodel.json file in an Azure Stack Storage account. Upload apimodel.json file to storage account happens when --upload-logs parameter is also provided. | no | ./apimodel.json |
-| --all-namespaces               | Collect logs from containers in all namespaces. It overrides --user-namespace | no | |
-| --upload-logs                  | Persists retrieved logs in an Azure Stack storage account. Logs can be found in KubernetesLogs resource group | no | |
---disable-host-key-checking    | Sets SSH's StrictHostKeyChecking option to "no" while the script executes. Only use in a safe environment. | no | |
+    | Parameter | Description | Required | Example |
+    | --- | --- | --- | --- |
+    | -h, --help | Print command usage. | no | 
+    -u,--user | The administrator username for the cluster VMs | yes | azureuser<br>(default value) |
+    | -i, --identity-file | RSA private key tied to the public key used to create the Kubernetes cluster (sometimes named 'id_rsa')  | yes | `./rsa.pem` (Putty)<br>`~/.ssh/id_rsa` (SSH) |
+    |   -g, --resource-group    | Kubernetes cluster resource group | yes | k8sresourcegroup |
+    |   -n, --user-namespace               | Collect logs from containers in the specified namespaces (kube-system logs are always collected) | no |   monitoring |
+    |       --api-model                    | Persists apimodel.json file in an Azure Stack Storage account. Upload apimodel.json file to storage account happens when --upload-logs parameter is also provided. | no | `./apimodel.json` |
+    | --all-namespaces               | Collect logs from containers in all namespaces. It overrides --user-namespace | no | |
+    | --upload-logs                  | Persists retrieved logs in an Azure Stack storage account. Logs can be found in KubernetesLogs resource group | no | |
+    --disable-host-key-checking    | Sets SSH's StrictHostKeyChecking option to "no" while the script executes. Only use in a safe environment. | no | |
 
 3. Run any of the following example commands with your information:
 
