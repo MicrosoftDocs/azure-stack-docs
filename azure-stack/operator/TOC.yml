@@ -11,7 +11,13 @@
   - name: Release notes
     items:
     - name: Security updates
-      href: azure-stack-release-notes-security-updates-1907.md
+      href: azure-stack-release-notes-security-updates.md
+    - name: 1908 update
+      items:
+      - name: Release notes
+        href: azure-stack-release-notes-1908.md
+      - name: Known issues
+        href: azure-stack-release-notes-known-issues-1908.md
     - name: 1907 update
       items:
       - name: Release notes
@@ -30,12 +36,6 @@
         href: azure-stack-release-notes-1905.md
       - name: Known issues
         href: azure-stack-release-notes-known-issues-1905.md
-    - name: 1904 update
-      items:
-      - name: Release notes
-        href: azure-stack-release-notes-1904.md
-      - name: Known issues
-        href: azure-stack-release-notes-known-issues-1904.md
 - name: Quickstarts
   expanded: true
   items:
@@ -143,6 +143,8 @@
     items:
     - name: Administration basics
       href: azure-stack-manage-basics.md
+    - name: Clear user data from portal
+      href: azure-stack-portal-clear.md 
     - name: Configure telemetry collection
       href: azure-stack-telemetry.md
     - name: Register Azure Stack
@@ -358,6 +360,8 @@
         href: azure-stack-app-service-release-notes-update-five.md
       - name: App Service on Azure Stack update 6 release notes
         href: azure-stack-app-service-release-notes-update-six.md
+      - name: App Service on Azure Stack update 7 release notes
+        href: azure-stack-app-service-release-notes-update-seven.md
   - name: Create plans, offers, and quotas
     items:
     - name: Plan, offer, quota, and subscription overview
@@ -443,7 +447,7 @@
           href: azure-stack-configure-on-demand-diagnostic-log-collection.md
     - name: Validation for Azure Stack  
       href: azure-stack-diagnostic-test.md
-    - name: Known issues
+    - name: Troubleshooting
       href: azure-stack-troubleshooting.md
 - name: Reference
   items:

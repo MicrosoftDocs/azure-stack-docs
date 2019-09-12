@@ -12,9 +12,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2019
+ms.date: 09/10/2019
 ms.author: mabrigg
-ms.lastreviewed: 08/15/2019
+ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent 
 
 ---
@@ -25,14 +25,14 @@ ms.reviewer: ppacent
 
 This article provides an overview of preparing Azure Stack update packages so that they can be used to update your Azure Stack environment. This process consists of:
 
-- [Downloading the update package](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#download-the-update-package)
-- [Importing the update package into your Azure Stack environment via the Azure Stack Administrator Portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#import-and-install-updates)
+- [Downloading the update package](#download-the-update-package)
+- [Importing the update package into your Azure Stack environment via the Azure Stack Administrator Portal](#import-and-install-updates)
 
-This process is done automatically for Azure Stack software updates and hotfixes on systems with internet-connectivty to the [Azure Stack automatic update endpoints](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages).
+On systems that can connect to the automatic update endpoints, Azure Stack software updates and hotfixes are automatically downloaded and prepared. On systems without connectivity and for any update from the OEM, the update package must be prepared as explained in this topic.  
 
-The table below displays when update packages require manual preparation and when they are prepared automatically:
+The following table shows when update packages require manual preparation and when they are prepared automatically.
 
-| Update Type | Azure Stack Environment's Connectivity to the [Azure Stack automatic update endpoints](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages) | Action Required |
+| Update Type | Connectivity | Action Required |
 | --- | --- | --- |
 | Azure Stack Software Updates | Connected | Update is automatically downloaded and prepared when the update is applied. |
 | Azure Stack Hotfixes | Connected | Update is automatically downloaded and prepared when the update is applied. |
@@ -56,9 +56,13 @@ Azure Stack software updates and hotfixes are prepared automatically for systems
 
 Azure Stack updates for [full and express updates](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates#update-package-types) are hosted at a secure Azure endpoint. Azure Stack operators with connected instances will see the [Azure Stack updates automatically appear in the Administration portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages). For internet disconnected systems or systems with weak internet connectivity, update packages can be downloaded using the [Azure Stack Updates downloader tool](https://aka.ms/azurestackupdatedownload). Azure Stack software update packages may contain updates to Azure Stack services as well as updates to the operating system of your Azure Stack’s scale units.
 
+>[!NOTE]
+>The update package itself and its contents (such as binaries, PowerShell scripts, and so on) are signed with Microsoft-owned certificates. Tampering with the package will make the signature invalid.​
+
+
 ### Where to download Azure Stack hotfix packages
 
-Package for [Azure Stack hotfixes](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates#update-package-types) are hosted in the same secure Azure endpoint as for Azure Stack updates. Azure Stack operators with connected instances will see the [Azure Stack updates automatically appear in the Administration portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages). You can download them using the embedded links in each of the respective hotfix KB articles; for example, [Azure Stack hotfix 1.1906.11.52](https://support.microsoft.com/help/4515650). You can find hotfixes in the release notes corresponding to your Azure Stack version.OEM hardware vendor-provided updates
+Package for [Azure Stack hotfixes](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates#update-package-types) are hosted in the same secure Azure endpoint as for Azure Stack updates. Azure Stack operators with connected instances will see the [Azure Stack updates automatically appear in the Administration portal](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages). You can download them using the embedded links in each of the respective hotfix KB articles, such as [Azure Stack hotfix 1.1906.11.52](https://support.microsoft.com/help/4515650). You can find hotfixes in the release notes corresponding to your Azure Stack version.
 
 ### Where to download OEM update packages
 Your OEM vendor will also release updates, such as driver and firmware updates. While these updates are delivered as separate [OEM package updates](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates#update-package-types) by your hardware vendor, they are still imported, installed, and managed the same way as update packages from Microsoft. You can find a list of vendor contact links at [Apply Azure Stack original equipment manufacturer (OEM) updates](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-oem#oem-contact-information).

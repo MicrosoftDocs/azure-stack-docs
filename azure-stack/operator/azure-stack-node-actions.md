@@ -166,7 +166,7 @@ To run the repair action, open an elevated PowerShell prompt, and run the follow
 
 ## Shutdown
 
-The **shutdown** action fist moves all active workloads to the remaining nodes in the same scale unit. Then the action gracefully shuts down the scale unit node.
+The **shutdown** action first moves all active workloads to the remaining nodes in the same scale unit. Then the action gracefully shuts down the scale unit node.
 
 After you start a node that was shutdown, you need to run the [resume](#resume) action. Earlier workloads that were running on the node do not fail back.
 

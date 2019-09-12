@@ -13,10 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2019
+ms.date: 09/05/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 08/16/2019
+ms.lastreviewed: 08/30/2019
+monikerRange: 'azs-1907'
 ---
 
 # Azure Stack 1907 update
@@ -73,7 +74,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 ### Changes
 
-- Azure Stack version 1907 contains a warning alert that instructs operators to be sure to update their system's OEM package to version 2.1 or later **before** updating to version 1908. Hardware providers will be releasing OEM package 2.1 at the same time as Azure Stack version 1908. OEM package 2.1 or later will be a prerequisite for Azure Stack version 1908. For more information about how to download OEM package 2.1 or later, contact your system's hardware provider.
+- Azure Stack version 1907 contains a warning alert that instructs operators to be sure to update their system's OEM package to version 2.1 or later before updating to version 1908. For more information about how to apply Azure Stack OEM updates, see [Apply an Azure Stack original equipment manufacturer update](azure-stack-update-oem.md).
 
 - Added a new outbound rule (HTTPS) to enable communication for Azure Stack diagnostic log collection service. For more information, see [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md#ports-and-urls-outbound).
 
@@ -114,14 +115,14 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 ## Security updates
 
-For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates-1907.md).
+For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates.md).
 
 ## Update planning
 
 Before applying the update, make sure to review the following information:
 
 - [Known issues](azure-stack-release-notes-known-issues-1907.md)
-- [Security updates](azure-stack-release-notes-security-updates-1907.md)
+- [Security updates](azure-stack-release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](azure-stack-release-notes-checklist.md)
 
 ## Download the update
@@ -139,14 +140,14 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 The 1907 release of Azure Stack must be applied on the 1906 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1906.12.54](https://support.microsoft.com/help/4518365)
+- [Azure Stack hotfix 1.1906.13.56](https://support.microsoft.com/help/4520375)
 
 ### After successfully applying the 1907 update
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1907.12.44](https://support.microsoft.com/help/4517473)
+- [Azure Stack hotfix 1.1907.15.50](https://support.microsoft.com/help/4520315)
 
 ## Automatic update notifications
 

@@ -13,10 +13,11 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2019
+ms.date: 09/05/2019
 ms.author: sethm
 ms.reviewer: hectorl
 ms.lastreviewed: 07/15/2019
+monikerRange: 'azs-1906'
 ---
 
 # Azure Stack 1906 update
@@ -112,14 +113,14 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 ## Security updates
 
-For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates-1906.md).
+For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates.md).
 
 ## Update planning
 
 Before applying the update, make sure to review the following information:
 
 - [Known issues](azure-stack-release-notes-known-issues-1906.md)
-- [Security updates](azure-stack-release-notes-security-updates-1906.md)
+- [Security updates](azure-stack-release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](azure-stack-release-notes-checklist.md)
 
 ## Download the update
@@ -144,7 +145,7 @@ The 1906 release of Azure Stack must be applied on the 1905 release with the fol
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1906.12.54](https://support.microsoft.com/help/4518365)
+- [Azure Stack hotfix 1.1906.13.56](https://support.microsoft.com/help/4520375)
 
 ## Automatic update notifications
 
