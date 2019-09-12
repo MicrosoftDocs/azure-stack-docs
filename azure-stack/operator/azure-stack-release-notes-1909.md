@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 09/12/2019
 ms.author: sethm
-ms.reviewer: hectorl
-ms.lastreviewed: 09/05/2019
+ms.reviewer: prchint
+ms.lastreviewed: 09/12/2019
 monikerRange: 'azs-1909'
 ---
 
@@ -59,7 +59,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Improvements
 
-<!-- Changes and product improvements with tangible customer-facing value. -->
+- When downloading marketplace items from Azure to Azure Stack, there is a new user interface that is available that enables you to specify a version of the item, when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md).
 
 ### Changes
 
