@@ -50,7 +50,7 @@ The Azure billing portal shows usage data for the chargeable resources. In addit
 
 ## Usage reporting for multi-tenant Cloud Service Providers
 
-A multi-user Cloud Service Provider (CSP) who has many customers using Azure Stack may want to report each customer usage separately, so that the provider can charge usage to different Azure subscriptions.
+A multi-user Cloud Service Provider (CSP) using Azure Stack might want to report each customer usage separately, so that the provider can charge usage to different Azure subscriptions.
 
 Each customer has their identity represented by a different Azure Active Directory (Azure AD) tenant. Azure Stack supports assigning one CSP subscription to each Azure AD tenant. You can add tenants and their subscriptions to the base Azure Stack registration. The base registration is done for all Azure Stack instances. If a subscription isn't registered for a user, the user can still use Azure Stack, and their usage will be sent to the subscription used for the base registration.
 
