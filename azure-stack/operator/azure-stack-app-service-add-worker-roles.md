@@ -71,23 +71,23 @@ Azure App Service on Azure Stack deploys all roles using Virtual Machine Scale S
 
 3. Monitor the status of the new role instances in the App Service administration. To check the status of an individual role instance, click the role type in the list.
 
-## Add additional workers using the admin portal
+## Add additional workers using the administrator portal
 
-1. Sign in to the Azure Stack admin portal as the service admin.
+1. Sign in to the Azure Stack administrator portal as the service admin.
 
 2. Browse to **App Services**.
 
-    ![App Service in Azure Stack admin portal](media/azure-stack-app-service-add-worker-roles/image01.png)
+    ![App Service in Azure Stack administrator portal](media/azure-stack-app-service-add-worker-roles/image01.png)
 
 3. Click **Roles**. Here you see the breakdown of all App Service roles deployed.
 
 4. Right click on the row of the type you want to scale and then click **ScaleSet**.
 
-    ![ScaleSet App Service roles in Azure Stack admin portal](media/azure-stack-app-service-add-worker-roles/image02.png)
+    ![ScaleSet App Service roles in Azure Stack administrator portal](media/azure-stack-app-service-add-worker-roles/image02.png)
 
 5. Click **Scaling**, select the number of instances you want to scale to, and then click **Save**.
 
-    ![Set instances to scale to in App Service Roles in Azure Stack admin portal](media/azure-stack-app-service-add-worker-roles/image03.png)
+    ![Set instances to scale to in App Service Roles in Azure Stack administrator portal](media/azure-stack-app-service-add-worker-roles/image03.png)
 
 6. App Service on Azure Stack will now add the additional VMs, configure them, install all the required software, and mark them as ready when this process is complete. This process can take approximately 80 minutes.
 
@@ -97,7 +97,7 @@ Azure App Service on Azure Stack deploys all roles using Virtual Machine Scale S
 
 After they're fully deployed and ready, the workers become available for users to deploy their workload onto them. The following screenshot shows an example of the multiple pricing tiers available by default. If there are no available workers for a particular worker tier, the option to choose the corresponding pricing tier is unavailable.
 
-![Pricing tiers for new App Service plan in Azure Stack admin portal](media/azure-stack-app-service-add-worker-roles/image04.png)
+![Pricing tiers for new App Service plan in Azure Stack administrator portal](media/azure-stack-app-service-add-worker-roles/image04.png)
 
 >[!NOTE]
 > To scale out Management, Front End, or Publisher roles, follow the same steps selecting the appropriate role type. Controllers aren't deployed as Scale Sets and therefore two should be deployed at installation time for all production deployments.

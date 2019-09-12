@@ -42,8 +42,8 @@ The first thing you'll need to do is to obtain the address block you want to add
 
 ## Add the IP address range to Azure Stack
 
-1. In a browser, go to your admin portal dashboard. For this example, we'll use https://adminportal.local.azurestack.external.
-2. Sign in to the Azure Stack admin portal as a cloud operator.
+1. In a browser, go to your administrator portal dashboard. For this example, we'll use https://adminportal.local.azurestack.external.
+2. Sign in to the Azure Stack administrator portal as a cloud operator.
 3. On the default dashboard, find the Region management list and select the region you want to manage. For this example, we use local.
 4. Find the Resource providers tile and click on the network resource provider.
 5. Click on the Public IP pools usage tile.

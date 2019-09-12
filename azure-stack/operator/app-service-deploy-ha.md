@@ -69,7 +69,7 @@ Use the steps in this section to create a custom deployment using the **appservi
 
     ![Create custom deployment](media/app-service-deploy-ha/4.png)
 
-6. In the admin portal, select **Resource groups** and then the name of the resource group you created for the custom deployment (**app-service-ha** in this example). View the status of the deployment to ensure all deployments have completed successfully.
+6. In the administrator portal, select **Resource groups** and then the name of the resource group you created for the custom deployment (**app-service-ha** in this example). View the status of the deployment to ensure all deployments have completed successfully.
 
    > [!NOTE]
    > The template deployment takes about an hour to complete.
@@ -91,7 +91,7 @@ Follow these steps to discover the template output values:
 
 1. [!INCLUDE [azs-admin-portal](../includes/azs-admin-portal.md)]
 
-2. In the admin portal, select **Resource groups** and then the name of the resource group you created for the custom deployment (**app-service-ha** in this example). 
+2. In the administrator portal, select **Resource groups** and then the name of the resource group you created for the custom deployment (**app-service-ha** in this example). 
 
 3. Click **Deployments** and select **Microsoft.Template**.
 
@@ -166,7 +166,7 @@ To deploy the App Service resource provider, follow these steps:
 
     ![Expected error dialog on App Service](media/app-service-deploy-ha/08.png)
 
-    If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule. This rule enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the admin portal and add an outbound security rule with the following properties:
+    If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule. This rule enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the administrator portal and add an outbound security rule with the following properties:
     - Source: Any
     - Source port range: *
     - Destination: IP Addresses
