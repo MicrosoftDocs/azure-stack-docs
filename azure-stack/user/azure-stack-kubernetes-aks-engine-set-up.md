@@ -1,5 +1,5 @@
 ---
-title: Set up the prerequisites for the AKS Engine | Microsoft Docs
+title: Set up the prerequisites for the AKS Engine on Azure Stack | Microsoft Docs
 description: Establish the requirements for running the ASK Engine on your Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -19,7 +19,7 @@ ms.lastreviewed: 09/14/2019
 
 ---
 
-# Set up the prerequisites for the AKS Engine
+# Set up the prerequisites for the AKS Engine on Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
