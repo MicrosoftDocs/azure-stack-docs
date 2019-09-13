@@ -23,8 +23,12 @@ ms.lastreviewed: 08/21/2019
 
 All of the host names for VMs on Virtual Networks are stored as DNS Resource Records under the same zone, however under their own unique compartment defined as a GUID that correlates to the VNET ID in the SDN infrastructure that the VM was deployed against. 
 Tenant VM Fully Qualified Domain Names (FQDNs) consist of the computer name and the DNS suffix string for the Virtual Network, in GUID format.
+
+<!--- what does compartment mean? Add a screenshot? can we clarify what we mean by host name and computer name. the description doesn't match the example in the table.--->
  
 Following is a simple lab to demonstrate how this works. We've created 3 VMs on one VNet and another VM on a separate VNet:
+
+<!--- Is DNS Label the right term? If so, we should define it. The column lists FQDNs, afaik. Where does the domain suffix come from? --->
  
 |VM    |vNet    |Private IP   |Public IP    | DNS Label                         -      |
 |------|--------|-------------|-------------|------------------------------------------|
