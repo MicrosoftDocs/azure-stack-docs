@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 09/13/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
@@ -22,9 +22,9 @@ ms.lastreviewed: 06/08/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-In Azure Stack, you can add a virtual machine (VM) image to the marketplace to make  available to your users. Images are added by using Azure Resource Manager templates for Azure Stack. You can also add VM images to the Azure Marketplace UI as a Marketplace item using the administrator portal or Windows PowerShell. Use either an image from the global Azure Marketplace or your own custom VM image.
+In Azure Stack, you can add a virtual machine (VM) image to the marketplace to make available to your users. Images are added by using Azure Resource Manager templates for Azure Stack. You can also add VM images to the Azure Marketplace UI as a Marketplace item using the admin portal or Windows PowerShell. Use either an image from the global Azure Marketplace or your own custom VM image.
 
-## Add a VM image through the portal
+## Add a VM image using the portal
 
 > [!NOTE]  
 > With this method, you must create the Marketplace item separately.
@@ -61,7 +61,7 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
 
 4. To make the VM image more readily available for user consumption in the UI, it's a good idea to [create a Marketplace item](azure-stack-create-and-publish-marketplace-item.md).
 
-## Remove a VM image through the portal
+## Remove a VM image using the portal
 
 1. Open the administrator portal at [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external).
 
@@ -69,7 +69,7 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
 
 3. Click **Delete**.
 
-## Add a VM image to the Marketplace by using PowerShell
+## Add a VM image to the Marketplace using PowerShell
 
 > [!Note]  
 > When you add an image it'll only be available for Azure Resource Manager-based templates and PowerShell deployments. To make an image available to your users as a marketplace item, publish the marketplace item using the steps in this article: [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md)
@@ -111,8 +111,43 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
 
      For more info, see the PowerShell reference for the [Add-AzsPlatformimage](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage) cmdlet and the [New-DataDiskObject](https://docs.microsoft.com/powershell/module/Azs.Compute.Admin/New-DataDiskObject) cmdlet.
 
-## Add a custom VM image to the Marketplace by using PowerShell
- 
+## Add a custom VM image to the Marketplace using the portal
+
+This section describes how to upload a custom VM image to the Azure Stack Marketplace. If you are using a generalized VHD from Azure and you are running in an Azure Stack disconnected scenario, make sure you have a machine that can connect to the Azure portal.
+
+### Windows
+
+1. Create a custom generalized VHD. If the VHD is from outside Azure, follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed) to correctly sysprep your VHD and make it generalized.
+
+   If the VHD is from Azure, you must have a machine that has connectivity to Azure. The procedure cannot be performed in a disconnected environment. If you are bringing the VHD from Azure, then before transferring the VHD to Azure Stack, Sysprep it using the procedure in [Generalize the source VM by using Sysprep](/azure/virtual-machines/windows/upload-generalized-managed#generalize-the-source-vm-by-using-sysprep).
+
+   ### Linux
+
+   - If the VHD is from outside Azure, follow the appropriate instructions:
+      - [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+      - [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+      - [Red Hat Enterprise Linux](/azure/azure-stack/azure-stack-redhat-create-upload-vhd)
+      - [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+      - [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+   If the VHD is from Azure, you must have a machine that has connectivity to Azure. The procedure cannot be performed in a disconnected environment. To bring an image from Azure to Azure Stack, run these commands:
+
+   ```bash
+   # sudo waagent -force -deprovision
+   # export HISTSIZE=0
+   # logout
+   ```
+
+2. Shut down the VM and download the VHD. If you are bringing your VHD from Azure, you can do this using Disk export, as shown in [Download a Windows VHD from Azure](/azure/virtual-machines/windows/download-vhd).
+
+3. Upload this VHD to an Azure Stack Storage account on the Azure Stack admin portal, as described in [Add a VM image to Azure Stack](/azure/azure-stack/azure-stack-add-vm-image).
+
+4. In the portal, go to **All services -> Compute -> VM images**.
+
+5. Note the **Publisher**, **Offer**, **SKU**, and **Version** values for later. You will need them when you edit the ARM template and Manifest.json in your custom .azpkg.
+
+## Add a custom VM image to the Marketplace using PowerShell
+
 1. [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).
 
    ```powershell
@@ -172,7 +207,7 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
 
     For more info about the Add-AzsPlatformimage cmdlet and New-DataDiskObject cmdlet, see the Microsoft PowerShell [Azure Stack Operator module documentation](https://docs.microsoft.com/powershell/module/).
 
-## Remove a VM image by using PowerShell
+## Remove a VM image using PowerShell
 
 When you no longer need the VM image that you uploaded, you can delete it from the Marketplace by using the following cmdlet:
 
