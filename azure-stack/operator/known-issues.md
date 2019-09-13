@@ -662,7 +662,7 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 <!-- ### Marketplace -->
 ::: moniker-end
 
-::: moniker range=">=azs-1802 <=1904"
+::: moniker range=">=azs-1802 <=azs-1904"
 ## Archived known issues for releases 1802 through 1904
 ::: moniker-end
 
