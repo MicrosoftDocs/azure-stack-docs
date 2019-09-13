@@ -33,13 +33,13 @@ There are a few account considerations you should be aware of when managing Azur
 |Account|Azure AD|AD FS|
 |-----|-----|-----|
 |Local Admin (.\Administrator)|ASDK host admin|ASDK host admin|
-|AzureStack\AzureStackAdmin|ASDK host admin<br><br>Can be used to sign in to the Azure Stack admin portal<br><br>Access to view and administer Service Fabric rings|ASDK host admin<br><br>No access to the Azure Stack admin portal<br><br>Access to view and administer Service Fabric rings<br><br>No longer owner of the Default Provider Subscription (DPS)|
+|AzureStack\AzureStackAdmin|ASDK host admin<br><br>Can be used to sign in to the Azure Stack administrator portal<br><br>Access to view and administer Service Fabric rings|ASDK host admin<br><br>No access to the Azure Stack administrator portal<br><br>Access to view and administer Service Fabric rings<br><br>No longer owner of the Default Provider Subscription (DPS)|
 |AzureStack\CloudAdmin|Can access and run permitted commands within the Privileged Endpoint|Can access and run permitted commands within the Privileged Endpoint<br><br>Can't sign in to the ASDK host<br><br>Owner of the Default Provider Subscription (DPS)|
 |Azure AD Global Administrator|Used during installation<br><br>Owner of the Default Provider Subscription (DPS)|Not applicable|
 |
 
 ## What tools do I use to manage?
-You can use the [Azure Stack Admin Portal](https://adminportal.local.azurestack.external) or PowerShell to manage Azure Stack. The easiest way to learn the basic concepts is through the portal. If you want to use PowerShell, you need to install [PowerShell for Azure Stack](asdk-post-deploy.md#install-azure-stack-powershell) and [download the Azure Stack tools from GitHub](asdk-post-deploy.md#download-the-azure-stack-tools).
+You can use the [Azure Stack administrator portal](https://adminportal.local.azurestack.external) or PowerShell to manage Azure Stack. The easiest way to learn the basic concepts is through the portal. If you want to use PowerShell, you need to install [PowerShell for Azure Stack](asdk-post-deploy.md#install-azure-stack-powershell) and [download the Azure Stack tools from GitHub](asdk-post-deploy.md#download-the-azure-stack-tools).
 
 Azure Stack uses Azure Resource Manager as its underlying deployment, management, and organization mechanism. If you're going to manage Azure Stack and help support users, you should learn about Azure Resource Manager. You can learn more by reading the [Getting Started with Azure Resource Manager whitepaper](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf).
 
@@ -47,7 +47,7 @@ Azure Stack uses Azure Resource Manager as its underlying deployment, management
 Your users want to use services. From their perspective, your main role is to make these services available to them. Using the ASDK, you can learn which services to offer, and how to make those services available by [creating plans, offers, and quotas](../operator/azure-stack-tutorial-tenant-vm.md). You'll also need to add items to the marketplace, such as virtual machine (VM) images. The easiest way is to [download marketplace items](../operator/azure-stack-create-and-publish-marketplace-item.md) from Azure to Azure Stack.
 
 > [!NOTE]
-> If you want to test your plans, offers, and services, you should use the [user portal](https://portal.local.azurestack.external); not the [admin portal](https://adminportal.local.azurestack.external).
+> If you want to test your plans, offers, and services, you should use the [user portal](https://portal.local.azurestack.external); not the [administrator portal](https://adminportal.local.azurestack.external).
 
 In addition to providing services, you must take care of all the regular duties of an Azure Stack Operator to keep the ASDK up and running. These duties include the following things:
 - Add user accounts for either Azure AD or AD FS deployments.
@@ -59,7 +59,7 @@ In addition to providing services, you must take care of all the regular duties 
 ## Where to get support
 For the ASDK, you can ask support-related questions in the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
 
-You can also access the forums by clicking **Help** (question mark) in the upper-right corner of the admin portal. Then click **Help + support** to open Help + Support **Overview**, which has a link to the forum. MSDN forums are regularly monitored.  
+You can also access the forums by clicking **Help** (question mark) in the upper-right corner of the administrator portal. Then click **Help + support** to open Help + Support **Overview**, which has a link to the forum. MSDN forums are regularly monitored.  
 
 > [!IMPORTANT]
 > Because the ASDK is an evaluation environment, there's no official support offered through Microsoft Customer Support Services (CSS).

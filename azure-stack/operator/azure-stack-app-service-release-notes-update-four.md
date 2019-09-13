@@ -38,7 +38,7 @@ Refer to the [Prerequisites for deploying App Service on Azure Stack](azure-stac
 
 Before you begin the upgrade of Azure App Service on Azure Stack to 1.4:
 
-- Ensure all roles are ready in the Azure App Service administration in the Azure Stack admin portal.
+- Ensure all roles are ready in the Azure App Service administration in the Azure Stack administrator portal.
 
 - Back up the App Service and master databases:
   - AppService_Hosting;
@@ -88,7 +88,7 @@ Azure App Service on Azure Stack Update 4 includes the following improvements an
 
 - Restored functionality in the cross-origin resource sharing settings in the App Service tenant portal.
 
-- Error message is now displayed in App Service admin portal when the resource provider control plane can't connect to the configured SQL Server instance.
+- Error message is now displayed in App Service administrator portal when the resource provider control plane can't connect to the configured SQL Server instance.
 
 - Ensure endpoint is specified in custom storage connection string when specified in new Function app.
 
@@ -203,7 +203,7 @@ For customers wishing to migrate to a contained database for existing Azure App 
 
 - Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network. This issue is called out in the Azure App Service on Azure Stack deployment documentation.
 
-If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule which enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the admin portal and add an outbound security rule with the following properties:
+If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule which enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the administrator portal and add an outbound security rule with the following properties:
 
  * Source: Any
  * Source port range: *

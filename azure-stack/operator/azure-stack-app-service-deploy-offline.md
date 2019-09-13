@@ -198,7 +198,7 @@ To deploy App Service in an offline environment, you must first create an offlin
 > [!IMPORTANT]
 > If you've provided the App Service RP with a SQL Always On Instance you *must* [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
-If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. In the admin portal, go to the WorkersNsg Network Security Group and add an outbound security rule with the following properties:
+If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. In the administrator portal, go to the WorkersNsg Network Security Group and add an outbound security rule with the following properties:
 
 - Source: Any
 - Source port range: *
@@ -212,7 +212,7 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 
 ## Validate the App Service on Azure Stack installation
 
-1. In the Azure Stack admin portal, go to **Administration - App Service**.
+1. In the Azure Stack administrator portal, go to **Administration - App Service**.
 
 2. In the overview, under status, check to see that the **Status** displays **All roles are ready**.
 
@@ -225,7 +225,7 @@ After you deploy and register the App Service resource provider, test it to make
 > [!NOTE]
 > You need to create an offer that has the Microsoft.Web namespace within the plan. Then you need to have a tenant subscription that subscribes to this offer. For more info, see [Create offer](azure-stack-create-offer.md) and [Create plan](azure-stack-create-plan.md).
 >
-> You *must* have a tenant subscription to create apps that use App Service on Azure Stack. The only capabilities that a service admin can complete within the admin portal are related to the resource provider administration of App Service. These capabilities include adding capacity, configuring deployment sources, and adding Worker tiers and SKUs.
+> You *must* have a tenant subscription to create apps that use App Service on Azure Stack. The only capabilities that a service admin can complete within the administrator portal are related to the resource provider administration of App Service. These capabilities include adding capacity, configuring deployment sources, and adding Worker tiers and SKUs.
 >
 > As of the third technical preview, to create web, API, and Azure Functions apps, you must use the tenant portal and have a tenant subscription.
 
