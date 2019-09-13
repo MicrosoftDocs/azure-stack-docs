@@ -22,7 +22,7 @@ ms.lastreviewed: 06/08/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-In Azure Stack, you can add a virtual machine (VM) image to the marketplace to make  available to your users. Images are added by using Azure Resource Manager templates for Azure Stack. You can also add VM images to the Azure Marketplace UI as a Marketplace item using the admin portal or Windows PowerShell. Use either an image from the global Azure Marketplace or your own custom VM image.
+In Azure Stack, you can add a virtual machine (VM) image to the marketplace to make  available to your users. Images are added by using Azure Resource Manager templates for Azure Stack. You can also add VM images to the Azure Marketplace UI as a Marketplace item using the administrator portal or Windows PowerShell. Use either an image from the global Azure Marketplace or your own custom VM image.
 
 ## Add a VM image through the portal
 
@@ -63,7 +63,7 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
 
 ## Remove a VM image through the portal
 
-1. Open the admin portal at [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external).
+1. Open the administrator portal at [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external).
 
 2. Select **Marketplace management**, and then select the VM you would like to delete.
 

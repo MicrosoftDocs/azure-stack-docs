@@ -98,7 +98,7 @@ If your environment isn't connected to the internet, or you don't want to use Az
 > If you deploy by using the AD FS option, you must redeploy Azure Stack to switch to Azure AD.
 
 ### Azure Active Directory accounts
-To deploy Azure Stack by using an Azure AD account, you must prepare an Azure AD account before you run the deployment PowerShell script. This account becomes the Global Admin for the Azure AD tenant. It's used to provision and delegate apps and service principals for all Azure Stack services that interact with Azure AD and Graph API. It's also used as the owner of the default provider subscription (which you can later change). You can sign in to your Azure Stack system's admin portal by using this account.
+To deploy Azure Stack by using an Azure AD account, you must prepare an Azure AD account before you run the deployment PowerShell script. This account becomes the Global Admin for the Azure AD tenant. It's used to provision and delegate apps and service principals for all Azure Stack services that interact with Azure AD and Graph API. It's also used as the owner of the default provider subscription (which you can later change). You can sign in to your Azure Stack system's administrator portal by using this account.
 
 1. Create an Azure AD account that is the directory admin for at least one Azure AD. If you already have one, you can use that. Otherwise, you can create one for free at [https://azure.microsoft.com/free/](https://azure.microsoft.com/free/) (in China, visit <https://go.microsoft.com/fwlink/?LinkID=717821> instead). If you plan to later [register Azure Stack with Azure](asdk-register.md), you must also have a subscription in this newly created account.
    
