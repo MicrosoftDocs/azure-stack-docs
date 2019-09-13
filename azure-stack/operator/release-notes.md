@@ -480,7 +480,46 @@ After the installation of this update, install any applicable hotfixes. For more
 - [Azure Stack hotfix 1.1905.3.48](https://support.microsoft.com/help/4510078)
 ::: moniker-end
 
-## Archived release notes and known issues
+::: moniker range=">=azs-1802 <=1904"
+## Archived release notes for releases 1802 through 1904
+::: moniker-end
+
+::: moniker range="azs-1904"
+## 1904 archived release notes
+::: moniker-end
+::: moniker range="azs-1903"
+## 1903 archived release notes
+::: moniker-end
+::: moniker range="azs-1902"
+## 1902 archived release notes
+::: moniker-end
+::: moniker range="azs-1901"
+## 1901 archived release notes
+::: moniker-end
+::: moniker range="azs-1811"
+## 1811 archived release notes
+::: moniker-end
+::: moniker range="azs-1809"
+## 1809 archived release notes
+::: moniker-end
+::: moniker range="azs-1808"
+## 1808 archived release notes
+::: moniker-end
+::: moniker range="azs-1807"
+## 1807 archived release notes
+::: moniker-end
+::: moniker range="azs-1805"
+## 1805 archived release notes
+::: moniker-end
+::: moniker range="azs-1804"
+## 1804 archived release notes
+::: moniker-end
+::: moniker range="azs-1803"
+## 1803 archived release notes
+::: moniker-end
+::: moniker range="azs-1802"
+## 1802 archived release notes
+::: moniker-end
 
 You can see [older versions of Azure Stack release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 

@@ -662,7 +662,46 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 <!-- ### Marketplace -->
 ::: moniker-end
 
-## Archived release notes and known issues
+::: moniker range=">=azs-1802 <=1904"
+## Archived known issues for releases 1802 through 1904
+::: moniker-end
+
+::: moniker range="azs-1904"
+## 1904 archived known issues
+::: moniker-end
+::: moniker range="azs-1903"
+## 1903 archived known issues
+::: moniker-end
+::: moniker range="azs-1902"
+## 1902 archived known issues
+::: moniker-end
+::: moniker range="azs-1901"
+## 1901 archived known issues
+::: moniker-end
+::: moniker range="azs-1811"
+## 1811 archived known issues
+::: moniker-end
+::: moniker range="azs-1809"
+## 1809 archived known issues
+::: moniker-end
+::: moniker range="azs-1808"
+## 1808 archived known issues
+::: moniker-end
+::: moniker range="azs-1807"
+## 1807 archived known issues
+::: moniker-end
+::: moniker range="azs-1805"
+## 1805 archived known issues
+::: moniker-end
+::: moniker range="azs-1804"
+## 1804 archived known issues
+::: moniker-end
+::: moniker range="azs-1803"
+## 1803 archived known issues
+::: moniker-end
+::: moniker range="azs-1802"
+## 1802 archived known issues
+::: moniker-end
 
 You can see [older versions of Azure Stack release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 
