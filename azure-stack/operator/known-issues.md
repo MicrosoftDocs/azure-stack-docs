@@ -662,6 +662,10 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 <!-- ### Marketplace -->
 ::: moniker-end
 
+## Archived release notes and known issues
+
+You can see [older versions of Azure Stack release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
+
 ## Next steps
 
 - [Review update activity checklist](azure-stack-release-notes-checklist.md)
