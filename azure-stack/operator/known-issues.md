@@ -27,7 +27,7 @@ This article lists known issues in releases of Azure Stack. The list is updated 
 > Review this section before applying the update.
 
 ::: moniker range="azs-1908"
-## Update process
+## 1908 update process
 
 - Applicable: This issue applies to all supported releases.
 - Cause: When attempting to install the Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing.
@@ -184,7 +184,7 @@ This article lists known issues in releases of Azure Stack. The list is updated 
 ::: moniker-end
 
 ::: moniker range="azs-1907"
-## Update process
+## 1907 update process
 
 - Applicable: This issue applies to all supported releases.
 - Cause: When attempting to install the 1907 Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing.
@@ -334,7 +334,7 @@ This article lists known issues in releases of Azure Stack. The list is updated 
 ::: moniker-end
 
 ::: moniker range="azs-1906"
-## Update process
+## 1906 update process
 
 - Applicable: This issue applies to all supported releases.
 - Cause: When attempting to install the 1906 Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing. 
@@ -508,7 +508,7 @@ This article lists known issues in releases of Azure Stack. The list is updated 
 ::: moniker-end
 
 ::: moniker range="azs-1905"
-## Update process
+## 1905 update process
 
 ### Host node update prerequisite failure
 

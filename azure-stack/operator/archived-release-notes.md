@@ -19,7 +19,7 @@ ms.reviewer: sethm
 ms.lastreviewed: 09/13/2019
 ---
 
-# Azure Stack 1908 update
+# Azure Stack archived release notes
 
 *Applies to: Azure Stack integrated systems*
 
@@ -28,7 +28,7 @@ This article provides access to the release notes and known issues, for archived
 > [!IMPORTANT]  
 > These releases apply only to Azure Stack integrated systems. Do not apply them to the Azure Stack Development Kit.
 
-Starting with the 1908 release, previous versions of release notes are no longer visible in the table of contents on the left. You can see [older versions of Azure Stack release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
+You can see [older versions of Azure Stack release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 
 ## Next steps
 

@@ -29,7 +29,7 @@ This article describes the contents of Azure Stack update packages. The update i
 > This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
 
 ::: moniker range="azs-1908"
-## Build reference
+## 1908 build reference
 
 The Azure Stack 1908 update build number is **1.1908.0.20**.
 
@@ -115,7 +115,7 @@ After the installation of this update, install any applicable hotfixes. For more
 ::: moniker-end
 
 ::: moniker range="azs-1907"
-## Build reference
+## 1907 build reference
 
 The Azure Stack 1907 update build number is **1.1907.0.20**.
 
@@ -237,7 +237,7 @@ After the installation of this update, install any applicable hotfixes. For more
 ::: moniker-end
 
 ::: moniker range="azs-1906"
-## Build reference
+## 1906 build reference
 
 The Azure Stack 1906 update build number is **1.1906.0.30**.
 
@@ -357,7 +357,7 @@ After the installation of this update, install any applicable hotfixes. For more
 ::: moniker-end
 
 ::: moniker range="azs-1905"
-## Build reference
+## 1905 build reference
 
 The Azure Stack 1905 update build number is **1.1905.0.40**.
 
