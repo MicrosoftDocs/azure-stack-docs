@@ -25,7 +25,7 @@ ms.reviewer: ppacent
 
 You can install update packages using the **Update** blade in the Azure Stack. This article walks you through the steps to update, monitor, and troubleshoot the update process. Use the Update blade to view update info, install updates, monitor update progress, review update history, and view the current Azure Stack and OEM package version.
 
-You can manage updates from the admin portal and use the **Updates** section of the dashboard to:
+You can manage updates from the administrator portal and use the **Updates** section of the dashboard to:
 
 - View important info, such as the current version.
 - Install updates and monitor progress.
@@ -46,7 +46,7 @@ You can view the current version of Azure Stack in the **Updates** blade. To ope
 
 ## Install updates and monitor progress
 
-1. Open the Azure Stack admin portal.
+1. Open the Azure Stack administrator portal.
 
 2. Select **Dashboard**. Select **Update**.
 
@@ -72,7 +72,7 @@ You can view the current version of Azure Stack in the **Updates** blade. To ope
 
 ## Review update history
 
-1. Open the admin portal.
+1. Open the administrator portal.
 
 2. Select **Dashboard**. Select **Update**.
 

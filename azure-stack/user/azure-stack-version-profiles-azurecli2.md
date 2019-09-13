@@ -40,7 +40,7 @@ If you're using an integrated system, you don't need to export the CA root certi
 To export the ASDK root certificate in PEM format:
 
 1. Get the name of your Azure Stack Root Cert:
-    - Sign in to the Azure Stack Tenant or Admin portal.
+    - Sign in to the Azure Stack User or Administrator portal.
     - Click on **Secure** near the address bar.
     - On the pop-up window, Click **Valid**.
     - On the Certificate Window, click **Certification Path** tab.

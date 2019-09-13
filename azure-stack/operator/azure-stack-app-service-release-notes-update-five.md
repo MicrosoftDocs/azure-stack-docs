@@ -38,7 +38,7 @@ Refer to the [Prerequisites for deploying App Service on Azure Stack](azure-stac
 
 Before you begin the upgrade of Azure App Service on Azure Stack to 1.5:
 
-- Ensure all roles are ready in the Azure App Service administration in the Azure Stack admin portal.
+- Ensure all roles are ready in the Azure App Service administration in the Azure Stack administrator portal.
 
 - Back up the App Service and master databases:
   - AppService_Hosting;
@@ -181,7 +181,7 @@ For customers wishing to migrate to a contained database for existing Azure App 
 
 - Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network. This issue is called out in the Azure App Service on Azure Stack deployment documentation.
 
-If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule which enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the admin portal and add an outbound security rule with the following properties:
+If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule which enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the administrator portal and add an outbound security rule with the following properties:
 
  * Source: Any
  * Source port range: *
