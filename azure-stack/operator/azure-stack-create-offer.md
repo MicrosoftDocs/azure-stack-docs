@@ -22,6 +22,7 @@ ms.lastreviewed: 06/11/2019
 
 [Offers](azure-stack-overview.md) are groups of one or more plans that providers present to users, which those users can buy or subscribe to. This article describes how to create an offer that includes the [plan that you created](azure-stack-create-plan.md). This offer gives subscribers the ability to set up virtual machines (VMs).
 
+::: moniker range=">=azs-1902"
 ## Create an offer (1902 and later)
 
 1. Sign in to the [Azure Stack administrator portal](https://adminportal.local.azurestack.external) and select **+ Create a resource**, then **Offers + Plans**, and then **Offer**.
@@ -66,7 +67,9 @@ There are two ways to change the state of an offer:
 2. Select **Offer settings**. Choose the state you want to use (for example, **Public**), then select **Save**.
 
    ![Select Accessibility state](media/azure-stack-create-offer/offer-settings.png)
+::: moniker-end
 
+::: moniker range="<=azs-1901"
 ## Create an offer (1901 and earlier)
 
 1. Sign in to the [Azure Stack administrator portal](https://adminportal.local.azurestack.external) and select **+ Create a resource**, then **Tenant Offers + Plans**, and then **Offer**.
@@ -100,6 +103,7 @@ There are two ways to change the state of an offer:
 
 > [!NOTE]
 > You can also use PowerShell to create default offers, plans, and quotas. For more information, see [Azure Stack PowerShell Module 1.4.0](/powershell/azure/azure-stack/overview?view=azurestackps-1.4.0).
+::: moniker-end
 
 ## Next steps
 

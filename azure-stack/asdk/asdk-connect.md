@@ -30,7 +30,7 @@ To manage resources, you must first connect to the Azure Stack Development Kit (
 <a name="connect-with-rdp"></a>
 ## Connect to Azure Stack using RDP
 
-A single concurrent user can manage resources in the Azure Stack admin portal or the user portal through Remote Desktop Connection directly from the ASDK host computer.
+A single concurrent user can manage resources in the Azure Stack administrator portal or the user portal through Remote Desktop Connection directly from the ASDK host computer.
 
 > [!TIP]
 > This option also enables you to use RDP again while signed into the ASDK host computer to sign in to virtual machines (VMs) created on the ASDK host computer.
@@ -39,7 +39,7 @@ A single concurrent user can manage resources in the Azure Stack admin portal or
 
 2. On the ASDK host computer, open Server Manager (ServerManager.exe). Select **Local Server**, turn off **IE Enhanced Security Configuration**, and close Server Manager.
 
-3. Sign in to the admin portal as **AzureStack\CloudAdmin** or use other Azure Stack Operator credentials. The ASDK admin portal address is [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external).
+3. Sign in to the administrator portal as **AzureStack\CloudAdmin** or use other Azure Stack Operator credentials. The ASDK administrator portal address is [https://adminportal.local.azurestack.external](https://adminportal.local.azurestack.external).
 
 4. Sign in to the user portal as **AzureStack\CloudAdmin** or use other Azure Stack user credentials. The ASDK user portal address is [https://portal.local.azurestack.external](https://portal.local.azurestack.external).
 
@@ -124,7 +124,7 @@ The first time you connect, you'll be prompted to install the Azure Stack root c
 
 ### Test VPN connectivity
 
-To test the portal connection, open a browser, and then go to either the user portal (https://portal.local.azurestack.external/) or the admin portal (https://adminportal.local.azurestack.external/). 
+To test the portal connection, open a browser, and then go to either the user portal (https://portal.local.azurestack.external/) or the administrator portal (https://adminportal.local.azurestack.external/).
 
 Sign in with the appropriate subscription credentials to create and manage resources.  
 
