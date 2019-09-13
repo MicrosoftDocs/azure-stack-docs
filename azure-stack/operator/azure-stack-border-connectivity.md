@@ -20,7 +20,7 @@ ms.lastreviewed: 08/30/2018
 ---
 
 # Border connectivity 
-Network integration planning is an important prerequisite for successful Azure Stack integrated systems deployment, operation, and management. Border connectivity planning begins by choosing whether or not to use dynamic routing with border gateway protocol (BGP). This requires assigning a 16-bit BGP autonomous system number (public or private) or using static routing, where a static default route is assigned to the border devices.
+Network integration planning is an important prerequisite for successful Azure Stack integrated systems deployment, operation, and management. Border connectivity planning begins by choosing if you want use dynamic routing with border gateway protocol (BGP). This requires assigning a 16-bit BGP autonomous system number (public or private) or using static routing, where a static default route is assigned to the border devices.
 
 > [!IMPORTANT]
 > The top of rack (TOR) switches require Layer 3 uplinks with Point-to-Point IPs (/30 networks) configured on the physical interfaces. Layer 2 uplinks with TOR switches supporting Azure Stack operations isn't supported.
@@ -37,9 +37,9 @@ To ensure that user traffic immediately and transparently recovers from failure,
 ![BGP routing](media/azure-stack-border-connectivity/bgp-routing.png)
 
 ## Static routing
-Static routing requires additional configuration to the border devices. It requires more manual intervention and management as well as thorough analysis before any change. Issues caused by a configuration error may take more time to rollback depending on the changes made. It's not the recommended routing method, but it's supported.
+Static routing requires additional configuration to the border devices. It requires more manual intervention and management as well as thorough analysis before any change. Issues caused by a configuration error may take more time to rollback depending on the changes made. We don't recommended this routing method, but it's supported.
 
-To integrate Azure Stack into your networking environment using static routing, all four physical links between the border and the TOR device must be connected and high availability can't be guaranteed because of how static routing works.
+To integrate Azure Stack into your networking environment using static routing, all four physical links between the border and the TOR device must be connected. High availability can't be guaranteed because of how static routing works.
 
 The border device must be configured with static routes pointing to the TOR devices P2Ps for traffic destined to the *External* network or Public VIPs and the *Infrastructure* network. It will require static routes to the *BMC* and the *External* networks for the deployment. Operators can choose to leave static routes in the border to access management resources that reside on the *BMC* network. Adding static routes to *switch infrastructure* and *switch management* networks is optional.
 
