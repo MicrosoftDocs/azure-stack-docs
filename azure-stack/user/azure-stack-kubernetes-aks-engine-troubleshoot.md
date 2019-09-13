@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot the AKS Engine on Azure Stack | Microsoft Docs
-description: Description
+description: This topic contains troubleshooting steps for the AKS Engine on Azure Stack. 
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -144,13 +144,13 @@ Requirements:
 
 3. Run any of the following example commands with your information:
 
-```bash
-./getkuberneteslogs.sh -u azureuser -i private.key.1.pem -g k8s-rg
-./getkuberneteslogs.sh -u azureuser -i ~/.ssh/id_rsa -g k8s-rg --disable-host-key-checking
-./getkuberneteslogs.sh -u azureuser -i ~/.ssh/id_rsa -g k8s-rg -n default -n monitoring
-./getkuberneteslogs.sh -u azureuser -i ~/.ssh/id_rsa -g k8s-rg --upload-logs --api-model clusterDefinition.json
-./getkuberneteslogs.sh -u azureuser -i ~/.ssh/id_rsa -g k8s-rg --upload-logs
-```
+    ```bash
+    ./getkuberneteslogs.sh -u azureuser -i private.key.1.pem -g k8s-rg
+    ./getkuberneteslogs.sh -u azureuser -i ~/.ssh/id_rsa -g k8s-rg --disable-host-key-checking
+    ./getkuberneteslogs.sh -u azureuser -i ~/.ssh/id_rsa -g k8s-rg -n default -n monitoring
+    ./getkuberneteslogs.sh -u azureuser -i ~/.ssh/id_rsa -g k8s-rg --upload-logs --api-model clusterDefinition.json
+    ./getkuberneteslogs.sh -u azureuser -i ~/.ssh/id_rsa -g k8s-rg --upload-logs
+    ```
 
 ## Review custom script extension error codes
 

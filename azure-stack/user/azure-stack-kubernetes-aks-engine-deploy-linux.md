@@ -43,14 +43,14 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 3. Find the version of AKS Engine in the [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) table. The AKS Base Engine must be available in your Azure Stack Marketplace. When running the command, you will specify the version, for example, `--version v0.39.0`. If you don't specify the version, the command will install the latest version, which may not be available in your marketplace.
 4. Run the following command:
 
-```bash  
-    curl -o get-akse.sh https://raw.githubusercontent.com/Azure/aks-engine/master/scripts/get-akse.sh
-    chmod 700 get-akse.sh
-    ./get-akse.sh --version v0.XX.X
-```
+    ```bash  
+        curl -o get-akse.sh https://raw.githubusercontent.com/Azure/aks-engine/master/scripts/get-akse.sh
+        chmod 700 get-akse.sh
+        ./get-akse.sh --version v0.XX.X
+    ```
 
-> [!Note]  
-> If you method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment), or [Try GoFish](azure-stack-kubernetes-aks-engine-troubleshoot.md#try-gofish), an alternate package manager.
+    > [!Note]  
+    > If you method for installation fails, you can try the steps in the [disconnected environment](#install-in-a-disconnected-environment), or [Try GoFish](azure-stack-kubernetes-aks-engine-troubleshoot.md#try-gofish), an alternate package manager.
 
 ## Install in a disconnected environment
 
@@ -68,10 +68,10 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 5.  Run the following command:
 
-```bash  
-curl -o aks-engine-v0.xx.x-linux-amd64.tar.gz <httpurl/aks-engine-v0.xx.x-linux-amd64.tar.gz>
-tar xvzf aks-engine-v0.xx.x-linux-amd64.tar.gz -C /usr/local/bin
-```
+    ```bash  
+    curl -o aks-engine-v0.xx.x-linux-amd64.tar.gz <httpurl/aks-engine-v0.xx.x-linux-amd64.tar.gz>
+    tar xvzf aks-engine-v0.xx.x-linux-amd64.tar.gz -C /usr/local/bin
+    ```
 
 ## Verify the installation
 

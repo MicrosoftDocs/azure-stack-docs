@@ -1,6 +1,6 @@
 ---
 title: Support policies for AKS Engine on Azure Stack  | Microsoft Docs
-description: Description
+description: This topic contains the support policies for AKS Engine on Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
