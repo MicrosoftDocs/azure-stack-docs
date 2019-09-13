@@ -77,7 +77,7 @@ Azure App Service on Azure Stack Update 2 includes the following improvements an
 
 - Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network.
 
-If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule which enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the admin portal and add an outbound security rule with the following properties:
+If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule which enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the administrator portal and add an outbound security rule with the following properties:
 
 * Source: Any
 * Source port range: *

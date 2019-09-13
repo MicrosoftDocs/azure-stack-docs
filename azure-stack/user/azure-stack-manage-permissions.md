@@ -3,7 +3,7 @@ title: Manage access to resources in Azure Stack with role-based access control 
 description: Learn how to manage role-based access control (RBAC) permissions as an admin or a tenant in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: PatAltimore
+author: bryanla
 manager: femila
 editor: ''
 
@@ -13,8 +13,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2019
-ms.author: patricka
+ms.date: 09/13/2019
+ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
 
@@ -24,11 +24,14 @@ ms.lastreviewed: 03/11/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Azure Stack supports role-based access control (RBAC), the same [security model for access management](https://docs.microsoft.com/azure/role-based-access-control/overview) that Microsoft Azure uses. You can use RBAC to manage user, group, or app access to subscriptions, resources, and services.
+Azure Stack supports role-based access control (RBAC), the same [security model for access management](/azure/role-based-access-control/overview) that Microsoft Azure uses. You can use RBAC to manage user, group, or app access to subscriptions, resources, and services.
 
 ## Basics of access management
 
-Role-based access control provides fine-grained access control that you can use to secure your environment. You give users the exact permissions they need by assigning an RBAC role at a certain scope. The scope of the role assignment can be a subscription, a resource group, or a single resource. Read the [Role-Based Access Control in the Azure portal](https://docs.microsoft.com/azure/role-based-access-control/overview) article to get more detailed information about access management.
+Role-based access control (RBAC) provides fine-grained access control that you can use to secure your environment. You give users the exact permissions they need by assigning an RBAC role at a certain scope. The scope of the role assignment can be a subscription, a resource group, or a single resource. For more detailed information about access management, see the [Role-Based Access Control in the Azure portal](/azure/role-based-access-control/overview) article.
+
+> [!NOTE]
+> When Azure Stack is deployed using Active Directory Federation Services as the identity provider, only Universal Groups are supported for RBAC scenarios.
 
 ### Built-in roles
 
@@ -58,7 +61,7 @@ You can assign more than one role to a user and each role can be associated with
 * You assign TestUser-A the **Reader** role to Subscription-1.
 * You assign TestUser-A the **Owner** role to TestVM-1.
 
-The Azure [role assignments](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) article provides detailed information about viewing, assigning, and deleting roles.
+The Azure [role assignments](/azure/role-based-access-control/role-assignments-portal) article provides detailed information about viewing, assigning, and deleting roles.
 
 ## Set access permissions for a user
 

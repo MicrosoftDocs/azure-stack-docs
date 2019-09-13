@@ -49,16 +49,16 @@ The following steps are a high-level overview of how to add a node. Don't follow
 2. Enable physical switch ports and adjust access control lists (ACLs) if applicable.
 3. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per your OEM-provided documentation.
 4. Apply the current firmware baseline to all components by using the tools that are provided by the hardware manufacturer that run on the HLH.
-5. Run the add node operation in the Azure Stack admin portal.
+5. Run the add node operation in the Azure Stack administrator portal.
 6. Validate that the add node operation succeeds. To do so, check the [**Status** of the Scale Unit](#monitor-add-node-operations). 
 
 ## Add the node
 
-You can use the admin portal or PowerShell to add new nodes. The add node operation first adds the new scale unit node as available compute capacity and then automatically extends the storage capacity. The capacity expands automatically because Azure Stack is a hyperconverged system where *compute* and *storage* scale together.
+You can use the administrator portal or PowerShell to add new nodes. The add node operation first adds the new scale unit node as available compute capacity and then automatically extends the storage capacity. The capacity expands automatically because Azure Stack is a hyperconverged system where *compute* and *storage* scale together.
 
-### Use the admin portal
+### Use the administrator portal
 
-1. Sign in to the Azure Stack admin portal as an Azure Stack operator.
+1. Sign in to the Azure Stack administrator portal as an Azure Stack operator.
 2. Navigate to **+ Create a resource** > **Capacity** > **Scale Unit Node**.
    ![Scale unit node](media/azure-stack-add-scale-node/select-node1.png)
 3. On the **Add node** pane, select the *Region*, and then select the *Scale unit* that you want to add the node to. Also specify the *BMC IP ADDRESS* for the scale unit node you're adding. You can only add one node at a time.
@@ -83,10 +83,10 @@ Before using either of the following sample PowerShell scripts, replace the valu
   ```  
 
 ## Monitor add node operations 
-Use the admin portal or PowerShell to get the status of the add node operation. Add node operations can take several hours to days to complete.
+Use the administrator portal or PowerShell to get the status of the add node operation. Add node operations can take several hours to days to complete.
 
-### Use the admin portal 
-To monitor the addition of a new node, review the scale unit or scale unit node objects in the admin portal. To do so, go to **Region management** > **Scale units**. Next, select the scale unit or scale unit node you want to review. 
+### Use the administrator portal 
+To monitor the addition of a new node, review the scale unit or scale unit node objects in the administrator portal. To do so, go to **Region management** > **Scale units**. Next, select the scale unit or scale unit node you want to review. 
 
 ### Use PowerShell
 The status for scale unit and scale unit nodes can be retrieved using PowerShell as follows:

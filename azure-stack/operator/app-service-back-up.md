@@ -39,17 +39,17 @@ When recovering App Service from backup, you need to provide the App Service key
 
 Use the administration portal to back up app service secrets by following these steps: 
 
-1. Sign in to the Azure Stack admin portal as the service admin.
+1. Sign in to the Azure Stack administrator portal as the service admin.
 
 2. Browse to **App Service** -> **Secrets**. 
 
 3. Select **Download Secrets**.
 
-   ![Download secrets in Azure Stack admin portal](./media/app-service-back-up/download-secrets.png)
+   ![Download secrets in Azure Stack administrator portal](./media/app-service-back-up/download-secrets.png)
 
 4. When secrets are ready for downloading, click **Save** and store the App Service secrets (**SystemSecrets.JSON**) file in a safe location. 
 
-   ![Save secrets in Azure Stack admin portal](./media/app-service-back-up/save-secrets.png)
+   ![Save secrets in Azure Stack administrator portal](./media/app-service-back-up/save-secrets.png)
 
 > [!NOTE]
 > Repeat these steps every time the App Service secrets are rotated.
