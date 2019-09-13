@@ -95,7 +95,7 @@ During upgrade and maintenance of workers, Azure App Service on Azure Stack will
 
 During upgrade and maintenance, Azure App Service will move workloads to unallocated workers to ensure the workloads will continue to operate. However, if there are no unallocated workers available during upgrade then there's potential for tenant workload downtime. With regards to shared workers, customers don't need to provision additional workers as the service will allocate tenant apps within available workers automatically. For high availability, there's a minimum requirement of two workers in this tier.
 
-Cloud admins can monitor their worker tier allocation in the App Service admin area in the Azure Stack admin portal. Navigate to App Service and then select Worker Tiers in the left-hand pane. The Worker Tiers table shows worker tier name, size, image used, number of available workers (unallocated), total number of workers in each tier and the overall state of the worker tier.
+Cloud admins can monitor their worker tier allocation in the App Service admin area in the Azure Stack administrator portal. Navigate to App Service and then select Worker Tiers in the left-hand pane. The Worker Tiers table shows worker tier name, size, image used, number of available workers (unallocated), total number of workers in each tier and the overall state of the worker tier.
 
 ![App Service Administration - Worker Tiers][1]
 

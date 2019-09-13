@@ -142,7 +142,7 @@ Site slot swap is broken in this release. To restore functionality, complete the
       Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
     ```
 
-2. Browse to the **CN0-VM** under Virtual Machines in the Azure Stack admin portal and **click Connect** to open a remote desktop session with the controller instance. Use the credentials specified during the deployment of App Service.
+2. Browse to the **CN0-VM** under Virtual Machines in the Azure Stack administrator portal and **click Connect** to open a remote desktop session with the controller instance. Use the credentials specified during the deployment of App Service.
 3. Start **PowerShell as an Administrator** and execute the following script:
 
     ```powershell
@@ -195,7 +195,7 @@ Site slot swap is broken in this release. To restore functionality, complete the
 
 6. Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network.
 
-If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule which enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the admin portal and add an outbound security rule with the following properties:
+If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule which enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the administrator portal and add an outbound security rule with the following properties:
 
 - Source: Any
 - Source port range: *
