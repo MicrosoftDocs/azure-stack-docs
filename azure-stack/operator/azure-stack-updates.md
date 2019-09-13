@@ -1,6 +1,6 @@
 ---
-title: Manage updates in Azure Stack overview | Microsoft Docs
-description: Learn about update management for Azure Stack integrated systems.
+title: Manage updates in Azure Stack | Microsoft Docs
+description: Learn to manage updates in Azure Stack
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,26 +12,85 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 09/10/2019
 ms.author: mabrigg
-ms.lastreviewed: 04/04/2019
-ms.reviewer: justini
+ms.lastreviewed: 09/10/2019
+ms.reviewer: ppacent 
 
 ---
+
 # Manage updates in Azure Stack overview
 
 *Applies to: Azure Stack integrated systems*
 
-Microsoft update packages for Azure Stack integrated systems typically release each month. Ask your original equipment manufacturer (OEM) about their specific notification process to ensure update notifications reach your organization. You can also check in this documentation library under **Overview** > **Release notes** for information about releases that are in active support.
+Full and express updates, hotfixes, as well as driver and firmware updates from the original equipment manufacturer (OEM) all help keep Azure Stack up-to-date. This article explains the different types of updates, when to expect their release, and where to find more about the current release.
 
-Each release of Microsoft software updates is bundled as a single update package. As an Azure Stack operator you can import, install, and monitor the installation progress of update packages from the Azure Stack administration portal.
+> [!Note]  
+> You cannot apply Azure Stack update packages to the Azure Stack Development Kit (ASDK). The update packages are designed for integrated systems. For information, see [Redeploy the ASDK](https://docs.microsoft.com/azure-stack/asdk/asdk-redeploy).
 
-Your OEM vendor will also release updates, such as driver and firmware updates. While these updates are delivered as separate packages by vendor, some are imported, installed, and managed the same way as update packages from Microsoft.
+## Update package types
 
-To keep your system under support, you must keep Azure Stack updated to a specific version level. Make sure that you review the [Azure Stack servicing policy](azure-stack-servicing-policy.md).
+There are three types of update packages for integrated systems:
 
-> [!NOTE]
-> You cannot apply Azure Stack update packages to the Azure Stack Development Kit (ASDK). The update packages are designed for integrated systems. For information, see [Redeploy the ASDK](../asdk/asdk-redeploy.md).
+-   **Azure Stack software updates**. Microsoft is responsible for the end-to-end servicing lifecycle for the Microsoft software update packages. These packages can include the latest Windows Server security updates, non-security updates, and Azure Stack feature updates. You download theses update packages directly from Microsoft.
+
+    Each update package has a corresponding type, **Full** or **Express**. 
+ 
+    **Full** update packages update the physical host operating systems in the scale unit and require a larger maintenance window. 
+
+    **Express** update packages are scoped and do not update the underlying physical host operating systems.
+
+-   **Azure Stack hotfixes**. Microsoft provides hotfixes for Azure Stack that address a specific issue that is often preventative or time-sensitive. Each hotfix is released with a corresponding Microsoft Knowledge Base article that details the issue, cause, and resolution. You download and install hotfixes just like the regular full update packages for Azure Stack. Hotfixes are cumulative and can install in minutes.
+
+-   **OEM hardware-vendor-provided updates**. Azure Stack hardware partners are responsible for the end-to-end servicing lifecycle (including guidance) for the hardware-related firmware and driver update packages. In addition, Azure Stack hardware partners own and maintain guidance for all software and hardware on the hardware lifecycle host. The OEM hardware vendor hosts these update packages on their own download site.
+
+## When to update
+
+The three type of updates are released with the following cadence:
+
+-   **Azure Stack software updates**. Microsoft typically releases software update packages each month.
+
+-   **Azure Stack hotfixes**. Hotfixes are time-sensitive releases that can be released at any time.
+
+-   **OEM hardware vendor-provided updates**. OEM hardware vendors release their updates on an as-needed basis.
+
+To continue to receive support, you must keep your Azure Stack environment on a supported Azure Stack software version. For more information, see [Azure Stack Servicing Policy](azure-stack-update-servicing-policy.md).
+
+## Where to get notice of an update
+
+Notice of updates varies on a couple of factors, such as your connection to the Internet and the type of update.
+
+- **Microsoft software updates and hotfixes** 
+
+    An update alert for Microsoft software updates and hotfixes will appear in the Update blade for Azure Stack instances that are connected to the internet.
+
+    If your instance is not connected and you would like to be notified about each hotfix release, subscribe to the [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss) or [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom) feed.
+
+- **OEM hardware vendor-provided updates**
+
+    OEM updates will depend on your manufacturer. You will need to establish a communication channel with your OEM so that you aware when you have updates from your OEM that need to be applied. For more information about the OEMs and the OEM update process, see [Apply Azure Stack original equipment manufacturer (OEM) updates](azure-stack-update-oem.md).
+
+## Update processes
+
+Once you know you have an update, apply it by using the following steps.
+
+![Azure Stack update process](./media/azure-stack-updates/azure-stack-update-process.png)
+
+1. **Plan for the update**.
+
+    Prepare your Azure Stack to make the update process go as smoothly as possible so that there is a minimal impact on your users. Notifying your users of any possible service outage and then follow the steps to prepare your instance for the update. For more steps to plan for the update, see [Plan for an Azure Stack update](azure-stack-update-plan.md).
+
+2. **Upload and prepare the update package**.
+
+    For internet-connected Azure Stack environments, Azure Stack software updates and hotfixes are automatically imported into the system and prepared for update.
+
+    For internet-disconnected Azure Stack environments and environments with weak or intermittent internet-connectivity, update packages are imported into Azure Stack storage via the Azure Stack administrator portal. For more steps to upload and prepare the update package, see [Upload and prepare an Azure Stack update package](azure-stack-update-prepare-package.md).
+
+    All OEM update packages are manually imported into your environment, regardless of your Azure Stack system’s internet connectivity. For more steps to import and prepare the update package, see [Upload and prepare an Azure Stack update package](azure-stack-update-prepare-package.md).
+
+3. **Apply the update**.
+
+    Apply the update using the **Update** blade in Azure Stack. During the update, monitor the update progress, and troubleshoot. For more information, see [Apply an Azure Stack update](azure-stack-apply-updates.md).
 
 ## The update resource provider
 
@@ -39,59 +98,8 @@ Azure Stack includes an update resource provider that handles the application of
 
 As updates install, you can view high-level status as the update process targets the various subsystems in Azure Stack (for example, physical hosts, and infrastructure virtual machines).
 
-## Plan for updates
-
-We strongly recommend that you notify users of any maintenance operations, and that you schedule normal maintenance windows during non-business hours if possible. Maintenance operations can affect both tenant workloads and portal operations.
-
-When planning for your maintenance window, it's important to review the specific type of update package released from Microsoft as called out in the respective release note. Aside from the occasional Hotfix, each update package will have a corresponding type, **Full** or **Express**. Full update packages update the physical host operating systems in the scale unit and require a larger maintenance window. Express update packages are scoped, and do not update the underlying physical host operating systems.
-
-Before you start installation of this update, run [Test-AzureStack](azure-stack-diagnostic-test.md) with the following parameters to validate the status of your Azure Stack and resolve any operational issues found, including all warnings and failures. Also review active alerts, and resolve any that require action.  
-
-```powershell
-Test-AzureStack -Group UpdateReadiness
-```
-
-## Using the Update tile to manage updates
-
-You manage updates from the administrator portal. As an Azure Stack operator you can use the **Update** tile in the dashboard to:
-
-- View important information, such as the current version.
-- Install updates and monitor progress.
-- Review update history for previously installed updates.
-- View the cloud's current OEM package version.
-
-## Determine the current version
-
-You can view the current version of Azure Stack in the **Update** tile. To open the tile:
-
-1. Open the Azure Stack administrator portal.
-2. Select **Dashboard**. In the **Update** tile, the current version is listed.
-
-    ![Updates tile on default dashboard](./media/azure-stack-updates/image1.png)
-
-    For example, in this image the version is 1.1903.0.35.
-
-## Install updates and monitor progress
-
-1. Open the Azure Stack administrator portal.
-2. Select **Dashboard**. Select the **Update** tile.
-3. Select **Update now**.
-
-    ![Azure Stack update run details](media/azure-stack-updates/azure-stack-update-button.png)
-
-4. You can view high-level status as the update process iterates through various subsystems in Azure Stack. Example subsystems include physical hosts, Service Fabric, infrastructure virtual machines, and services that provide both the administrator and user portals. Throughout the update process, the update resource provider reports additional details about the update, such as the number of steps that have succeeded, as well as the number in progress.
-
-5. Select the **Download full logs** from the update run details blade to download full logs.
-
-    ![Azure Stack update run details](media/azure-stack-updates/update-run-details.png)
-
-6. Once completed, the update resource provider provides a **Succeeded** confirmation to indicate that the update process has been completed and how long it took. From there, you can view information about all updates, available updates, or installed updates using the filter.
-
-    ![Azure Stack update run details success](media/azure-stack-updates/update-success.png)
-
-   If the update fails, the **Update** tile reports **Needs attention**. Use the **Download full logs** option to get a high-level status of where the update failed. The Azure Stack log collection helps facilitate diagnostics and troubleshooting.
-
 ## Next steps
 
-- [Azure Stack servicing policy](azure-stack-servicing-policy.md) 
-- [Region management in Azure Stack](azure-stack-region-management.md)
+- To begin the update process, follow the steps in see [Plan for an Azure Stack update](azure-stack-update-plan.md).
+- To learn what versions of Azure Stack are in support, see [Azure Stack Servicing Policy](azure-stack-servicing-policy.md).  
+- To learn more about the current and recent updates, see the [Azure Stack release notes](azure-stack-release-notes-security-updates-1907.md).

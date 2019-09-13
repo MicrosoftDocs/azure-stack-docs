@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2019
+ms.date: 09/07/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 06/07/2019
@@ -55,7 +55,7 @@ By default, you, as the CSP, won't have access to the end customer's Azure Stack
 Update your registration with the new customer subscription. Azure reports the customer usage using the customer identity from Partner Center. This step ensures that each customer's usage is reported under that customer's individual CSP subscription. This makes tracking user usage and billing easier.
 
 > [!NOTE]  
-> To perform this step, you must have [registered Azure Stack](azure-stack-registration.md).
+> To perform this step, you must first [register Azure Stack](azure-stack-registration.md).
 
 1. Open Windows PowerShell with an elevated prompt, and run:  
     `Add-AzureRmAccount`

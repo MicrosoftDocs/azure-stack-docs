@@ -59,7 +59,7 @@ Use the steps in this section to create a custom deployment using the **appservi
 
 3. On the **Custom deployment** blade, select **Edit template** > **Quickstart template** and then use the drop-down list of available custom templates to select the **appservice-fileshare-sqlserver-ha** template. Click **OK**, and then **Save**.
 
-   ![Select the appservice-fileshare-sqlserver-ha QuickStart template](media/app-service-deploy-ha/2.png)
+   ![Select the appservice-fileshare-sqlserver-ha quickstart template](media/app-service-deploy-ha/2.png)
 
 4. On the **Custom deployment** blade, select **Edit parameters** and scroll down to review the default template values. Modify these values as necessary to provide all required parameter info and then click **OK**.<br><br> At a minimum, provide complex passwords for the `ADMINPASSWORD`, `FILESHAREOWNERPASSWORD`, `FILESHAREUSERPASSWORD`, `SQLSERVERSERVICEACCOUNTPASSWORD`, and `SQLLOGINPASSWORD` parameters.
     
@@ -69,7 +69,7 @@ Use the steps in this section to create a custom deployment using the **appservi
 
     ![Create custom deployment](media/app-service-deploy-ha/4.png)
 
-6. In the admin portal, select **Resource groups** and then the name of the resource group you created for the custom deployment (**app-service-ha** in this example). View the status of the deployment to ensure all deployments have completed successfully.
+6. In the administrator portal, select **Resource groups** and then the name of the resource group you created for the custom deployment (**app-service-ha** in this example). View the status of the deployment to ensure all deployments have completed successfully.
 
    > [!NOTE]
    > The template deployment takes about an hour to complete.
@@ -91,7 +91,7 @@ Follow these steps to discover the template output values:
 
 1. [!INCLUDE [azs-admin-portal](../includes/azs-admin-portal.md)]
 
-2. In the admin portal, select **Resource groups** and then the name of the resource group you created for the custom deployment (**app-service-ha** in this example). 
+2. In the administrator portal, select **Resource groups** and then the name of the resource group you created for the custom deployment (**app-service-ha** in this example). 
 
 3. Click **Deployments** and select **Microsoft.Template**.
 
@@ -117,9 +117,9 @@ Before you can run the App Service installer, several steps are required as desc
 > Not all steps described in the [Before you get started with App Service article](azure-stack-app-service-before-you-get-started.md) are required because the template deployment configures the infrastructure VMs for you.
 
 - [Download the App Service installer and helper scripts](azure-stack-app-service-before-you-get-started.md#download-the-installer-and-helper-scripts).
-- [Download the latest custom script extension to the Azure Stack marketplace](azure-stack-app-service-before-you-get-started.md#syndicate-the-custom-script-extension-from-the-marketplace).
+- [Download items from the Azure Stack marketplace](azure-stack-app-service-before-you-get-started.md#download-items-from-the-azure-marketplace).
 - [Generate required certificates](azure-stack-app-service-before-you-get-started.md#get-certificates).
-- Create the ID Application based on the identify provider you've chosen for Azure Stack. An ID Application can be made for either [Azure AD](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-application) or [Active Directory Federation Services](azure-stack-app-service-before-you-get-started.md#create-an-active-directory-federation-services-application) and record the application ID.
+- Create the ID Application based on the identify provider you've chosen for Azure Stack. An ID Application can be made for either [Azure AD](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-app) or [Active Directory Federation Services](azure-stack-app-service-before-you-get-started.md#create-an-active-directory-federation-services-app) and record the application ID.
 - Ensure that you've added the Windows Server 2016 Datacenter image to the Azure Stack marketplace. This image is required for App Service installation.
 
 ### Steps for App Service deployment
@@ -166,7 +166,7 @@ To deploy the App Service resource provider, follow these steps:
 
     ![Expected error dialog on App Service](media/app-service-deploy-ha/08.png)
 
-    If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule. This rule enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the admin portal and add an outbound security rule with the following properties:
+    If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule. This rule enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the administrator portal and add an outbound security rule with the following properties:
     - Source: Any
     - Source port range: *
     - Destination: IP Addresses
