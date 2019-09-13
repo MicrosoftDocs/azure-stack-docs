@@ -1,6 +1,6 @@
 ---
 title: Change the billing owner for an Azure Stack user subscription | Microsoft Docs
-description: Learn how to change the billing owner for an Azure Stack user subscriptions.
+description: Learn how to change the billing owner for an Azure Stack user subscription.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
