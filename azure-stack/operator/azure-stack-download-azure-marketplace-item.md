@@ -85,7 +85,7 @@ There are two parts to this scenario:
 
 - A disconnected Azure Stack environment with the following prerequisites:
   - Your Azure Stack deployment must be [registered with Azure](azure-stack-registration.md).
-  - The computer that has internet connectivity must have **Azure Stack PowerShell Module version 1.2.11** or higher. If not already present, [install Azure Stack specific PowerShell modules](azure-stack-powershell-install.md).
+  - The computer that has internet connectivity must have **Azure Stack PowerShell Module version 1.2.11** or higher. If not already present, [install Azure Stack-specific PowerShell modules](azure-stack-powershell-install.md).
   - To enable import of a downloaded marketplace item, the [PowerShell environment for the Azure Stack operator](azure-stack-powershell-configure-admin.md) must be configured.
   - Clone the [Azure Stack tools](https://github.com/Azure/AzureStack-Tools) GitHub repo.
 
@@ -97,7 +97,7 @@ There are two parts to this scenario:
 
 Once you have registered, you can disregard the following message that appears on the Marketplace management blade, as this is not relevant for the disconnected use case:
 
-![Not registered message](media/azure-stack-download-azure-marketplace-item/toolsmsg.png)
+[![Not registered message](media/azure-stack-download-azure-marketplace-item/toolsmsgsm.png "Not registered message")](media/azure-stack-download-azure-marketplace-item/toolsmsg.png#lightbox)
 
 ### Use the marketplace syndication tool to download marketplace items
 

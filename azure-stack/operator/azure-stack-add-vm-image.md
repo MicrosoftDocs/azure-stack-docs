@@ -36,9 +36,9 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
    - Azure Stack only supports generation one (1) VM in the fixed disk VHD format. The fixed-format structures the logical disk linearly within the file, so that disk offset X is stored at blob offset X. A small footer at the end of the blob describes the properties of the VHD. To confirm if your disk is fixed, use the [Get-VHD](https://docs.microsoft.com/powershell/module/hyper-v/get-vhd?view=win10-ps) PowerShell command.  
 
      > [!IMPORTANT]  
-     >  Azure Stack doesn't support dynamic disk VHDs. Resizing a dynamic disk that's attached to a VM will leave the VM in a failed state. To mitigate this issue, delete the VM without deleting the VM's disk, a VHD blob in a storage account. Then, convert the VHD from a dynamic disk to a fixed disk and re-create the VM.
+     > Azure Stack doesn't support dynamic disk VHDs. Resizing a dynamic disk that's attached to a VM will leave the VM in a failed state. To mitigate this issue, delete the VM without deleting the VM's disk, a VHD blob in a storage account. Then, convert the VHD from a dynamic disk to a fixed disk and re-create the VM.
 
-   - It's more efficient to upload an image to Azure Stack blob storage than to Azure blob storage because it takes less time to push the image to the Azure Stack image repository.
+   - It is more efficient to upload an image to Azure Stack blob storage than to Azure blob storage because it takes less time to push the image to the Azure Stack image repository.
 
    - When you upload the [Windows VM image](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/), make sure to switch the **Login to Azure** step with the [Configure the Azure Stack operator's PowerShell environment](azure-stack-powershell-configure-admin.md) step.  
 
@@ -117,26 +117,29 @@ This section describes how to upload a custom VM image to the Azure Stack Market
 
 ### Windows
 
-1. Create a custom generalized VHD. If the VHD is from outside Azure, follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed) to correctly sysprep your VHD and make it generalized.
+Create a custom generalized VHD. If the VHD is from outside Azure, follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed) to correctly sysprep your VHD and make it generalized.
 
-   If the VHD is from Azure, you must have a machine that has connectivity to Azure. The procedure cannot be performed in a disconnected environment. If you are bringing the VHD from Azure, then before transferring the VHD to Azure Stack, Sysprep it using the procedure in [Generalize the source VM by using Sysprep](/azure/virtual-machines/windows/upload-generalized-managed#generalize-the-source-vm-by-using-sysprep).
+If the VHD is from Azure, you must have a machine that has connectivity to Azure. The procedure cannot be performed in a disconnected environment. Also, if you are bringing the VHD from Azure, then before transferring the VHD to Azure Stack, Sysprep it using the procedure in [Generalize the source VM by using Sysprep](/azure/virtual-machines/windows/upload-generalized-managed#generalize-the-source-vm-by-using-sysprep).
 
 ### Linux
 
-- If the VHD is from outside Azure, follow the appropriate instructions:
-   - [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-   - [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-   - [Red Hat Enterprise Linux](/azure/azure-stack/azure-stack-redhat-create-upload-vhd)
-   - [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-   - [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+If the VHD is from outside Azure, follow the appropriate instructions:
 
-   If the VHD is from Azure, you must have a machine that has connectivity to Azure. The procedure cannot be performed in a disconnected environment. To bring an image from Azure to Azure Stack, run these commands:
+- [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Red Hat Enterprise Linux](/azure/azure-stack/azure-stack-redhat-create-upload-vhd)
+- [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-   ```bash
-   # sudo waagent -force -deprovision
-   # export HISTSIZE=0
-   # logout
-   ```
+If the VHD is from Azure, follow these instructions:
+
+1. You must have a machine that has connectivity to Azure. The procedure cannot be performed in a disconnected environment. To bring an image from Azure to Azure Stack, run these commands:
+
+  ```bash
+  # sudo waagent -force -deprovision
+  # export HISTSIZE=0
+  # logout
+  ```
 
 2. Shut down the VM and download the VHD. If you are bringing your VHD from Azure, you can do this using Disk export, as shown in [Download a Windows VHD from Azure](/azure/virtual-machines/windows/download-vhd).
 
