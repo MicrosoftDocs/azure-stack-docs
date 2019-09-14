@@ -123,14 +123,14 @@ Once you have registered, you can disregard the following message that appears o
    invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/master.zip `
    -OutFile master.zip
 
-    # Expand the downloaded files.
-    expand-archive master.zip `
-    -DestinationPath `
-    -Force
+   # Expand the downloaded files.
+   expand-archive master.zip `
+   -DestinationPath `
+   -Force
 
-    # Change to the tools directory.
-    cd .\AzureStack-Tools-master
-    ```
+   # Change to the tools directory.
+   cd .\AzureStack-Tools-master
+   ```
 
 5. Import the syndication module and then launch the tool by running the following commands. Replace `Destination folder path` with a location to store the files you download from the Azure Marketplace.
 
@@ -148,7 +148,7 @@ Once you have registered, you can disregard the following message that appears o
 
 7. If you have not installed the Azure Storage tools, you will get the following pop-up. In order to install these tools, make sure you download [AzCopy](/azure/storage/common/storage-use-azcopy#download-and-install-azcopy-on-windows):
 
-   ![Missing storage tools](media/azure-stack-download-azure-marketplace-item/psexample3.png)
+   [![Missing storage tools](media/azure-stack-download-azure-marketplace-item/psexample3sm.png "Missing storage tools message")](media/azure-stack-download-azure-marketplace-item/psexample3.png#lightbox)
 
 8. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images. You reference the *version* when you import the item in the next procedure.
 
@@ -165,8 +165,6 @@ Once you have registered, you can disregard the following message that appears o
     ```
 
     Before retrying, remove the product folder in which the download failed. For example, if the download script fails when downloading to `D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1`, remove the `D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1` folder, then rerun the cmdlet.
-
-For a disconnected scenario, the only time you need connectivity is to get the list of products from Azure with their details, and then download everything locally. Once this is done, the rest of the process is secure and does not require internet connectivity. The process creates a catalog of items you've previously downloaded for you to use in your disconnected environment.
 
 ### Import the download and publish to Azure Stack Marketplace using PowerShell (1811 and higher)
 
