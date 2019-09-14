@@ -54,21 +54,17 @@ Your Azure Stack deployment must have internet connectivity, and be [registered 
 
     ![Add from Azure](media/azure-stack-download-azure-marketplace-item/marketplace.png)
 
-4. The portal displays the list of items available for download from the Azure Marketplace. You can filter products by name, publisher and/or type of product. Each line item also shows the currently available version. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple**. You can click on each item to view its description and additional information, including its download size:
+4. The portal displays the list of items available for download from the Azure Marketplace. You can filter products by name, publisher and/or type of product. You can also click on each item to view its description and additional information, including its download size:
 
-    [![List of marketplace items](media/azure-stack-download-azure-marketplace-item/add-from-azure1sm.png "List of marketplace items")](media/azure-stack-download-azure-marketplace-item/add-from-azure1.png#lightbox)
+    ![Marketplace list](media/azure-stack-download-azure-marketplace-item/image03.PNG)
 
-5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown:
-
-    [![Select version](media/azure-stack-download-azure-marketplace-item/add-from-azure3sm.png "Select version")](media/azure-stack-download-azure-marketplace-item/add-from-azure3.png#lightbox)
-
-6. Select the item you want, and then select **Download**. Download times vary.
+5. Select the item you want, and then select **Download**. Download times vary.
 
     ![Download message](media/azure-stack-download-azure-marketplace-item/image04.png)
 
     After the download completes, you can deploy the new marketplace item as either an Azure Stack operator or user.
 
-7. To deploy the downloaded item, select **+ Create a resource**, and then search among the categories for the new marketplace item. Next select the item to begin the deployment process. The process varies for different marketplace items.
+6. To deploy the downloaded item, select **+ Create a resource**, and then search among the categories for the new marketplace item. Next select the item to begin the deployment process. The process varies for different marketplace items.
 
 ## Disconnected or a partially connected scenario
 
@@ -110,16 +106,16 @@ Once you have registered, you can disregard the following message that appears o
 
 1. On a computer with an Internet connection, open a PowerShell console as an administrator.
 
-3. Add the Azure account that you have used to register Azure Stack. To add the account, in PowerShell run `Add-AzureRmAccount` without any parameters. You are prompted to enter your Azure account credentials and you might have to use 2-factor authentication, depending on your account's configuration.
+2. Add the Azure account that you have used to register Azure Stack. To add the account, in PowerShell run `Add-AzureRmAccount` without any parameters. You are prompted to enter your Azure account credentials and you might have to use 2-factor authentication, depending on your account's configuration.
 
-4. If you have multiple subscriptions, run the following command to select the one you have used for registration:  
+3. If you have multiple subscriptions, run the following command to select the one you have used for registration:  
 
    ```powershell  
    Get-AzureRmSubscription -SubscriptionID 'Your Azure Subscription GUID' | Select-AzureRmSubscription
    $AzureContext = Get-AzureRmContext
    ```
 
-5. Download the latest version of the marketplace syndication tool by using the following script:  
+4. Download the latest version of the marketplace syndication tool by using the following script:  
 
    ```powershell
    # Download the tools archive.
@@ -136,7 +132,7 @@ Once you have registered, you can disregard the following message that appears o
     cd .\AzureStack-Tools-master
     ```
 
-6. Import the syndication module and then launch the tool by running the following commands. Replace `Destination folder path` with a location to store the files you download from the Azure Marketplace.
+5. Import the syndication module and then launch the tool by running the following commands. Replace `Destination folder path` with a location to store the files you download from the Azure Marketplace.
 
    ```powershell  
    Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
@@ -146,27 +142,23 @@ Once you have registered, you can disregard the following message that appears o
 
    Note that `Export-AzSOfflineMarketplaceItem` has an additional `-cloud` flag that specifies the cloud environment. By default, it is **azurecloud**.
 
-7. When the tool runs, you should see a screen similar to the following image, with the list of available Azure marketplace items; in other words, any items that are available to you for syndication from the Azure Marketplace:
+6. When the tool runs, you should see a screen similar to the following image, with the list of available Azure marketplace items:
 
-   [![Azure Marketplace items popup](media/azure-stack-download-azure-marketplace-item/tool1sm.png "Azure Marketplace items")](media/azure-stack-download-azure-marketplace-item/tool1.png#lightbox)
+   [![Azure Marketplace items popup](media/azure-stack-download-azure-marketplace-item/image05.png "Azure Marketplace items")](media/azure-stack-download-azure-marketplace-item/image05.png#lightbox)
 
-7. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple versions**. If the version of an item is shown as **Multiple versions**, you can select that item and then choose a specific version from the resulting version selector window:
-
-   [![Version selector](media/azure-stack-download-azure-marketplace-item/tool2sm.png "Select version")](media/azure-stack-download-azure-marketplace-item/tool2.png#lightbox)
-
-8. If you have not installed the Azure Storage tools, you will get the following pop-up. In order to install these tools, make sure you download [AzCopy](/azure/storage/common/storage-use-azcopy#download-and-install-azcopy-on-windows):
+7. If you have not installed the Azure Storage tools, you will get the following pop-up. In order to install these tools, make sure you download [AzCopy](/azure/storage/common/storage-use-azcopy#download-and-install-azcopy-on-windows):
 
    ![Missing storage tools](media/azure-stack-download-azure-marketplace-item/psexample3.png)
 
-9. Select the item that you want to download and make a note of the **version**. You can hold the **Ctrl** key to select multiple images. You reference the *version* when you import the item in the next procedure.
+8. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images. You reference the *version* when you import the item in the next procedure.
 
    You can also filter the list of images by using the **Add criteria** option.
 
-10. Select **OK**, and then review and accept the legal terms.
+9. Select **OK**, and then review and accept the legal terms.
 
-11. The time that the download takes depends on the size of the item. After the download completes, the item is available in the folder that you specified in the script. The download includes a VHD file (for virtual machines) or a .zip file (for virtual machine extensions). It might also include a gallery package in the *.azpkg* format, which is simply a .zip file.
+10. The time that the download takes depends on the size of the item. After the download completes, the item is available in the folder that you specified in the script. The download includes a VHD file (for virtual machines) or a .zip file (for virtual machine extensions). It might also include a gallery package in the *.azpkg* format, which is simply a .zip file.
 
-12. If the download fails, you can try again by re-running the following PowerShell cmdlet:
+11. If the download fails, you can try again by re-running the following PowerShell cmdlet:
 
     ```powershell
     Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes"
