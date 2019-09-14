@@ -58,6 +58,7 @@ This article provides an overview of the unique considerations for Azure Stack n
 |  | Inbound NAT Rules support for Service Endpoints | Azure supports specifying Service Endpoints for Inbound NAT rules. | Azure Stack doesn't yet support Service Endpoints, so these can't be specified. |
 |  | Protocol | Azure Supports specifying GRE or ESP. | Protocol Class isn't supported in Azure Stack. |
 | Public IP Address | Public IP Address Version | Azure supports both IPv6 and IPv4. | Only IPv4 is supported. |
+| | SKU | Azure supports Basic and Standard. | Only Basic is supported. |
 | Network Interface | Get Effective Route Table | Supported | Not yet supported. |
 |  | Get Effective ACLs | Supported | Not yet supported. |
 |  | Enable Accelerated Networking | Supported | Not yet supported. |
