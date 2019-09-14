@@ -135,11 +135,11 @@ If the VHD is from Azure, follow these instructions:
 
 1. You must have a machine that has connectivity to Azure. The procedure cannot be performed in a disconnected environment. To bring an image from Azure to Azure Stack, run these commands:
 
-  ```bash
-  # sudo waagent -force -deprovision
-  # export HISTSIZE=0
-  # logout
-  ```
+   ```bash
+   # sudo waagent -force -deprovision
+   # export HISTSIZE=0
+   # logout
+   ```
 
 2. Shut down the VM and download the VHD. If you are bringing your VHD from Azure, you can do this using Disk export, as shown in [Download a Windows VHD from Azure](/azure/virtual-machines/windows/download-vhd).
 
