@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 09/14/2019
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 12/10/2018
@@ -121,12 +121,12 @@ Once you have registered, you can disregard the following message that appears o
    # Download the tools archive.
    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
    invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/master.zip `
-   -OutFile master.zip
+     -OutFile master.zip
 
    # Expand the downloaded files.
    expand-archive master.zip `
-   -DestinationPath `
-   -Force
+     -DestinationPath `
+     -Force
 
    # Change to the tools directory.
    cd .\AzureStack-Tools-master
