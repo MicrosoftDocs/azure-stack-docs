@@ -121,14 +121,14 @@ This section describes how to upload a custom VM image to the Azure Stack Market
 
    If the VHD is from Azure, you must have a machine that has connectivity to Azure. The procedure cannot be performed in a disconnected environment. If you are bringing the VHD from Azure, then before transferring the VHD to Azure Stack, Sysprep it using the procedure in [Generalize the source VM by using Sysprep](/azure/virtual-machines/windows/upload-generalized-managed#generalize-the-source-vm-by-using-sysprep).
 
-   ### Linux
+### Linux
 
-   - If the VHD is from outside Azure, follow the appropriate instructions:
-      - [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-      - [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-      - [Red Hat Enterprise Linux](/azure/azure-stack/azure-stack-redhat-create-upload-vhd)
-      - [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-      - [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+- If the VHD is from outside Azure, follow the appropriate instructions:
+   - [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+   - [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+   - [Red Hat Enterprise Linux](/azure/azure-stack/azure-stack-redhat-create-upload-vhd)
+   - [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+   - [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
    If the VHD is from Azure, you must have a machine that has connectivity to Azure. The procedure cannot be performed in a disconnected environment. To bring an image from Azure to Azure Stack, run these commands:
 
