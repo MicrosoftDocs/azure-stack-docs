@@ -141,7 +141,7 @@ If the VHD is from Azure, follow these instructions:
    # logout
    ```
 
-2. Shut down the VM and download the VHD. If you are bringing your VHD from Azure, you can do this using Disk export, as shown in [Download a Windows VHD from Azure](/azure/virtual-machines/windows/download-vhd).
+2. Shut down the VM and download the VHD. If you are bringing your VHD from Azure, you can do this using disk export, as shown in [Download a Windows VHD from Azure](/azure/virtual-machines/windows/download-vhd).
 
 3. Upload this VHD to an Azure Stack Storage account on the Azure Stack admin portal, as described in [Add a VM image to Azure Stack](/azure/azure-stack/azure-stack-add-vm-image).
 
