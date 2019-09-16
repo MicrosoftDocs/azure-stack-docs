@@ -90,7 +90,7 @@ After you create a virtual machine scale set, users can update images in the sca
 
    * When the image version on Azure Stack Marketplace is the same as the image in the scale set, delete the image that's in use in the scale set, and then download the new image. During the time between the removal of the original image and the download of the new image, you can't scale up.
 
-   This process is required to re-syndicate images that make use of the sparse file format, introduced with version 1803.
+   This process is required to resyndicate images that make use of the sparse file format, introduced with version 1803.
 
 2. Virtual machine scale set deployment template **does not specify latest** for **version** and specifies a version number instead:  
 
