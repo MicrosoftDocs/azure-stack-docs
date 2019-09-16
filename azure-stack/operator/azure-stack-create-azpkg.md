@@ -159,7 +159,7 @@ To import the gallery package into Azure Stack, the first step is to remotely co
 
     ![Add gallery item](media/azure-stack-create-azpkg/pkg5.png)
 
-    The `GalleryItemURI` value can be found in the Azure Stack admin portal. Select **Storage account -> Blob Properties -> URL**, with the extension .azpkg.
+    You can get the `GalleryItemURI` value from the Azure Stack admin portal. Select **Storage account -> Blob Properties -> URL**, with the extension .azpkg.
 
 After completing your gallery package and uploading it using **Add-AzsGalleryItem**, your custom VM should now appear on the Marketplace.
 
