@@ -30,7 +30,7 @@ Following is a simple lab to demonstrate how this works. We've created 3 VMs on 
 
 <!--- Is DNS Label the right term? If so, we should define it. The column lists FQDNs, afaik. Where does the domain suffix come from? --->
  
-|VM    |vNet    |Private IP   |Public IP    | DNS Label                         -      |
+|VM    |vNet    |Private IP   |Public IP    | DNS Label                                |
 |------|--------|-------------|-------------|------------------------------------------|
 |VM-A1 |VNetA   | 10.0.0.5    |172.31.12.68 |VM-A1-Label.lnv1.cloudapp.azscss.external |
 |VM-A2 |VNetA   | 10.0.0.6    |172.31.12.76 |VM-A2-Label.lnv1.cloudapp.azscss.external |
@@ -45,10 +45,13 @@ Following is a simple lab to demonstrate how this works. We've created 3 VMs on 
  
  
 You can do some name resolution tests to better understand how iDNS works:
- 
+
+<!--- why Linux?--->
+
 From VM-A1 (Linux VM):
 Looking up VM-A2. You can see that the DNS suffix for VNetA is added and the name is resolved to the Private IP:
  
+```console
 carlos@VM-A1:~$ nslookup VM-A2
 Server:         127.0.0.53
 Address:        127.0.0.53#53
@@ -56,17 +59,21 @@ Address:        127.0.0.53#53
 Non-authoritative answer:
 Name:   VM-A2.e71e1db5-0a38-460d-8539-705457a4cf75.internal.lnv1.azurestack.local
 Address: 10.0.0.6
+```
  
 Looking up VM-A2-Label without providing the FQDN fails, as expected:
- 
+
+```console 
 carlos@VM-A1:~$ nslookup VM-A2-Label
 Server:         127.0.0.53
 Address:        127.0.0.53#53
  
 ** server can't find VM-A2-Label: SERVFAIL
- 
-If I provide the FQDN for the DNS label, the name is resolved to the Public IP:
- 
+```
+
+If you provide the FQDN for the DNS label, the name is resolved to the Public IP:
+
+```console
 carlos@VM-A1:~$ nslookup VM-A2-Label.lnv1.cloudapp.azscss.external
 Server:         127.0.0.53
 Address:        127.0.0.53#53
@@ -74,25 +81,31 @@ Address:        127.0.0.53#53
 Non-authoritative answer:
 Name:   VM-A2-Label.lnv1.cloudapp.azscss.external
 Address: 172.31.12.76
+```
  
 Trying to resolve VM-B1 (which is from a different VNet) fails as this record does not exist on this zone.
- 
+
+```console
 carlos@caalcobi-vm4:~$ nslookup VM-B1
 Server:         127.0.0.53
 Address:        127.0.0.53#53
  
 ** server can't find VM-B1: SERVFAIL
- 
+```
+
 Using the FQDN for VM-B1 doesn’t help as this record is from a different zone.
- 
+
+```console 
 carlos@VM-A1:~$ nslookup VM-B1.e8a6e386-bc7a-43e1-a640-61591b5c76dd.internal.lnv1.azurestack.local
 Server:         127.0.0.53
 Address:        127.0.0.53#53
  
 ** server can't find VM-B1.e8a6e386-bc7a-43e1-a640-61591b5c76dd.internal.lnv1.azurestack.local: SERVFAIL
+```
  
-If I use the FQDN for the DNS label, then it resolves successfully:
- 
+If you use the FQDN for the DNS label, then it resolves successfully:
+
+``` 
 carlos@VM-A1:~$ nslookup VM-B1-Label.lnv1.cloudapp.azscss.external
 Server:         127.0.0.53
 Address:        127.0.0.53#53
@@ -100,6 +113,7 @@ Address:        127.0.0.53#53
 Non-authoritative answer:
 Name:   VM-B1-Label.lnv1.cloudapp.azscss.external
 Address: 172.31.12.57
+```
  
 From VM-A3 (Windows VM). Notice the difference between authoritative and non-authoritative answers:
 Internal records:
