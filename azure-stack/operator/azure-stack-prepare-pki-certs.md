@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 09/16/2019
 ms.author: justinha
 ms.reviewer: ppacent
-ms.lastreviewed: 09/10/2019
+ms.lastreviewed: 09/16/2019
 ---
 
 # Prepare Azure Stack PKI certificates for use in deployment or rotation
@@ -50,7 +50,7 @@ Use the following steps to prepare and validate the Azure Stack PKI certificates
 1. Click Finish to complete the import.
 
 > [!NOTE]
-> After you import a certificate for Azure Stack, the private key of the certificate is stored as a PKCS 12 file (.pfx) on clustered storage.
+> After you import a certificate for Azure Stack, the private key of the certificate is stored as a PKCS 12 file (PFX) on clustered storage.
 
 ### Export the certificate
 
@@ -88,7 +88,7 @@ Open Certificate Manager MMC console and connect to the Local Machine certificat
 
 1. Select **Next**.
 
-1. Choose a file name and location for the pfx file to export. Select **Next**.
+1. Choose a file name and location for the PFX file to export. Select **Next**.
 
 1. Select **Finish**.
 
