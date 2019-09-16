@@ -3,7 +3,7 @@ title: Use iDNS in Azure Stack | Microsoft Docs
 description: Learn how to use iDNS features and capabilities in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: Justinha
 manager: femila
 editor: ''
 
@@ -12,8 +12,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/13/2019
-ms.author: mabrigg
+ms.date: 09/16/2019
+ms.author: Justinha
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
 
