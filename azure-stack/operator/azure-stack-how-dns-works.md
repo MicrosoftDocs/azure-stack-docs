@@ -115,8 +115,11 @@ Name:   VM-B1-Label.lnv1.cloudapp.azscss.external
 Address: 172.31.12.57
 ```
  
-From VM-A3 (Windows VM). Notice the difference between authoritative and non-authoritative answers:
+From VM-A3 (Windows VM). Notice the difference between authoritative and non-authoritative answers.
+
 Internal records:
+
+```console
 C:\Users\carlos>nslookup
 Default Server:  UnKnown
 Address:  168.63.129.16
@@ -127,7 +130,11 @@ Address:  168.63.129.16
  
 Name:    VM-A2.e71e1db5-0a38-460d-8539-705457ª4cf75.internal.lnv1.azurestack.local
 Address:  10.0.0.6
+```
+
 External records:
+
+```console
 > VM-A2-Label.lnv1.cloudapp.azscss.external
 Server:  UnKnown
 Address:  168.63.129.16
@@ -135,22 +142,16 @@ Address:  168.63.129.16
 Non-authoritative answer:
 Name:    VM-A2-Label.lnv1.cloudapp.azscss.external
 Address:  172.31.12.76
- 
+``` 
  
 In short, you can see from the above that:
  
 *   Each VNet has its own zone, containing A records for all private IP addresses, consisting of VM name and the DNS suffix of the VNet (which is its GUID).
-    *   <vmname>.<vnetGUID>.internal.<region>.<stackinternalFQDN>
+    *   \<vmname>.\<vnetGUID\>.internal.\<region>.\<stackinternalFQDN>
     *   This is done automatically
 *   If you use Public IP addresses, you can also create DNS labels for them. These are resolved like any other external address.
  
  
-•         iDNS servers are the authoritative servers for their internal DNS zones, and also act as a resolver for public names when tenant VMs attempt to connect to external resources.
-o    How does this work? During Stack deployment we had given LBG’s DNS server for Azure Stack . I assume if there a request for query say for google.com, then I would expect Azure Stack DNS to forward the request to LBG DNS given during deployment and take its help to resolve. Is this correct?
-That is correct. That is exactly how it works.
- 
- 
-Assuming that we use iDNs configured by updating VNET to use Azure Provided DNS. Post this we can configure DNS server label for the Public IP, I assume this creates an A record in Azure Stack DNS & if we ping the name it would reach the Public IP and not private IP.
-Now , a VM in Azure Stack using iDNS will resolve to the Public IP of another VM in the same Azure Stack and thus would connect to the other VM through Public IP. If this is the case then the traffic is flowing outside Azure Stack when it could have simply reached over to the private Ip address of the other VM.
+- iDNS servers are the authoritative servers for their internal DNS zones, and also act as a resolver for public names when tenant VMs attempt to connect to external resources. If there is a query for an external resource, then iDNS servers forward the request to authritative DNS servers to resolve.
  
 As you can see from the lab results, you have control over what IP is used. If you use the VM name, you will get the private IP address and if you use the DNS label you get the public IP address.
