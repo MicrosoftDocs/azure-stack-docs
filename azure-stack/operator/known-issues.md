@@ -662,6 +662,12 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 <!-- ### Marketplace -->
 ::: moniker-end
 
+::: moniker range=">azs-1904"
+## Archived known issues
+
+Use the version selector in the upper left of the page, to select an archived version and instructions for accessing archived release notes.
+::: moniker-end
+
 ::: moniker range="azs-1904"
 ## 1904 archived known issues
 ::: moniker-end
