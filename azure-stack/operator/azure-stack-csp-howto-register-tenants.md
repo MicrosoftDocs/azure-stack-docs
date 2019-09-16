@@ -52,10 +52,7 @@ By default, you, as the CSP, won't have access to the end customer's Azure Stack
 
 ### Update the registration with the end customer subscription
 
-Update your registration with the new customer subscription. Azure reports the customer usage using the customer identity from Partner Center. This step ensures that each customer's usage is reported under that customer's individual CSP subscription. This makes tracking user usage and billing easier.
-
-> [!NOTE]  
-> To perform this step, you must first [register Azure Stack](azure-stack-registration.md).
+Update your registration with the new customer subscription. Azure reports the customer usage using the customer identity from Partner Center. This step ensures that each customer's usage is reported under that customer's individual CSP subscription. This makes tracking usage and billing easier. To perform this step, you must first [register Azure Stack](azure-stack-registration.md).
 
 1. Open Windows PowerShell with an elevated prompt, and run:  
     `Add-AzureRmAccount`
@@ -65,6 +62,12 @@ Update your registration with the new customer subscription. Azure reports the c
    ```powershell
    New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties <PSObject>
    ```
+
+In some cases, you first might need to remove credentials and sign-in contexts (subscription and tenant information) for an account before adding a tenant to Azure Stack. If needed, you can run the following cmdlet and then sign in again and run `Add-AzureRmAccount`: 
+
+```powershell
+Remove-AzureRmAccount-Scope Process
+``` 
 
 ### New-AzureRmResource PowerShell parameters
 
