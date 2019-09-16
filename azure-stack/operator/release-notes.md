@@ -480,10 +480,6 @@ After the installation of this update, install any applicable hotfixes. For more
 - [Azure Stack hotfix 1.1905.3.48](https://support.microsoft.com/help/4510078)
 ::: moniker-end
 
-::: moniker range=">=azs-1802 <=azs-1904"
-## Archived release notes for releases 1802 through 1904
-::: moniker-end
-
 ::: moniker range="azs-1904"
 ## 1904 archived release notes
 ::: moniker-end
