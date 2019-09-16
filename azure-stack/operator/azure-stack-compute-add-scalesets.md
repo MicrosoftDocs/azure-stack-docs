@@ -26,9 +26,9 @@ This article guides you through the process of making scale sets available in Az
 Virtual machine scale sets on Azure Stack are similar to virtual machine scale sets on Azure. For more information, see the following videos:
 
 * [Mark Russinovich talks Azure scale sets](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)
-* [Virtual Machine scale sets with Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
+* [Virtual machine scale sets with Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
-On Azure Stack, virtual machine scale sets don't support auto-scale. You can add more instances to a scale set using Resource Manager templates, CLI, or PowerShell.
+On Azure Stack, virtual machine scale sets don't support autoscale. You can add more instances to a scale set using Resource Manager templates, CLI, or PowerShell.
 
 ## Prerequisites
 
@@ -38,7 +38,7 @@ On Azure Stack, virtual machine scale sets don't support auto-scale. You can add
 ## Use the Azure Stack portal
 
 >[!IMPORTANT]  
-> The information in this section applies when you use  Azure Stack version 1808 or later. If your version is 1807 or earlier, see [Add the Virtual Machine Scale Set (Prior to 1808)](#add-the-virtual-machine-scale-set-prior-to-version-1808).
+> The information in this section applies when you use  Azure Stack version 1808 or later. If your version is 1807 or earlier, see [Add the virtual machine scale set (Prior to 1808)](#add-the-virtual-machine-scale-set-prior-to-version-1808).
 
 1. Sign in to the Azure Stack portal. Then, go to **All services**, then **Virtual machine scale sets**, and then under **COMPUTE**, select **Virtual machine scale sets**.
    ![Select virtual machine scale sets](media/azure-stack-compute-add-scalesets/all-services.png)
@@ -63,7 +63,7 @@ On Azure Stack, virtual machine scale sets don't support auto-scale. You can add
 
 2. Add and download the virtual machine scale set marketplace item.
 
-    ![Virtual Machine Scale Set Marketplace item](media/azure-stack-compute-add-scalesets/image02.png)
+    ![Virtual machine scale set Marketplace item](media/azure-stack-compute-add-scalesets/image02.png)
 
 ## Update images in a virtual machine scale set
 
@@ -88,7 +88,7 @@ After you create a virtual machine scale set, users can update images in the sca
 
    * When the image on Azure Stack Marketplace is a newer version than the image in the scale set, download the new image that replaces the older image. After the image is replaced, a user can proceed to scale up.
 
-   * When the image version on Azure Stack Marketplace is the same as the image in the scale set, delete the image that is in use in the scale set, and then download the new image. During the time between the removal of the original image and the download of the new image, you can't scale up.
+   * When the image version on Azure Stack Marketplace is the same as the image in the scale set, delete the image that's in use in the scale set, and then download the new image. During the time between the removal of the original image and the download of the new image, you can't scale up.
 
    This process is required to re-syndicate images that make use of the sparse file format, introduced with version 1803.
 
