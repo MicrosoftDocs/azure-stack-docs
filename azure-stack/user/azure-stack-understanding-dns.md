@@ -185,7 +185,7 @@ In short, you can see from the above that:
 *   If you use Public IP addresses, you can also create DNS labels for them. These are resolved like any other external address.
  
  
-- iDNS servers are the authoritative servers for their internal DNS zones, and also act as a resolver for public names when tenant VMs attempt to connect to external resources. If there is a query for an external resource, then iDNS servers forward the request to authritative DNS servers to resolve.
+- iDNS servers are the authoritative servers for their internal DNS zones, and also act as a resolver for public names when tenant VMs attempt to connect to external resources. If there is a query for an external resource, then iDNS servers forward the request to authoritative DNS servers to resolve.
  
 As you can see from the lab results, you have control over what IP is used. If you use the VM name, you will get the private IP address and if you use the DNS label you get the public IP address.
 
