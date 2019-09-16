@@ -1,5 +1,5 @@
 ---
-title: Connect Azure Stack to Azure using ExpressRoute
+title: Connect Azure Stack to Azure using ExpressRoute | Microsoft Docs
 description: Learn how to connect virtual networks in Azure Stack to virtual networks in Azure using ExpressRoute.
 services: azure-stack
 documentationcenter: ''
@@ -22,7 +22,7 @@ ms.lastreviewed: 10/22/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-This article describes how to connect an Azure Stack virtual network to an Azure virtual network by using a [Microsoft Azure ExpressRoute](/azure/expressroute/) direct connection.
+This article describes how to connect an Azure Stack virtual network to an Azure virtual network using a [Microsoft Azure ExpressRoute](/azure/expressroute/) direct connection.
 
 You can use this article as a tutorial and use the examples to set up the same test environment. Or, you can use the article as a walkthrough that guides you through setting up your own ExpressRoute environment.
 
@@ -48,7 +48,7 @@ To connect Azure Stack and Azure using ExpressRoute, you must meet the following
 * An Azure subscription to create an ExpressRoute circuit and VNets in Azure.
 * A router that must:
   * Support site-to-site VPN connections between its LAN interface and Azure Stack multi-tenant gateway.
-  * Support creating multiple VRFs (Virtual Routing and Forwarding) if there's more than one tenant in your Azure Stack deployment.
+  * Support creating multiple VRFs (Virtual Routing and Forwarding) if there's more than one user in your Azure Stack deployment.
 * A router that has:
   * A WAN port connected to the ExpressRoute circuit.
   * A LAN port connected to the Azure Stack multi-tenant gateway.
@@ -59,17 +59,17 @@ The following figure shows the Azure Stack and Azure environments after you fini
 
 ![ExpressRoute network](media/azure-stack-connect-expressroute/Conceptual.png)
 
-The following figure shows how multiple tenants connect from the Azure Stack infrastructure through the ExpressRoute router to Azure at the Microsoft edge:
+The following figure shows how multiple users connect from the Azure Stack infrastructure through the ExpressRoute router to Azure at the Microsoft edge:
 
-![Multi-tenant connections with ExpressRoute](media/azure-stack-connect-expressroute/Architecture.png)
+![Multi-user connections with ExpressRoute](media/azure-stack-connect-expressroute/Architecture.png)
 
-The example in this article uses the same multi-tenant architecture shown in this diagram to connect Azure Stack to Azure using ExpressRoute private peering. The connection is done using a site-to-site VPN connection from the virtual network gateway in Azure Stack to an ExpressRoute router.
+The example in this article uses the same multi-user architecture shown in this diagram to connect Azure Stack to Azure using ExpressRoute private peering. The connection is done using a site-to-site VPN connection from the virtual network gateway in Azure Stack to an ExpressRoute router.
 
-The steps in this article show you how to create an end-to-end connection between two VNets from two different tenants in Azure Stack to corresponding VNets in Azure. Setting up two tenants is optional; you can also use these steps for a single tenant.
+The steps in this article show you how to create an end-to-end connection between two VNets from two different users in Azure Stack to corresponding VNets in Azure. Setting up two users is optional; you can also use these steps for a single tenant.
 
 ## Configure Azure Stack
 
-To set up the Azure Stack environment for the first tenant, use the following steps as a guide. If you're setting up more than one tenant, repeat these steps:
+To set up the Azure Stack environment for the first user, use the following steps as a guide. If you're setting up more than one user, repeat these steps:
 
 >[!NOTE]
 >These steps show how to create resources using the Azure Stack portal, but you can also use PowerShell.
@@ -85,7 +85,7 @@ Before you start configuring Azure Stack, you need:
 
 ### Create network resources in Azure Stack
 
-Use the following procedures to create the required network resources in Azure Stack for a tenant.
+Use the following procedures to create the required network resources in Azure Stack for a user.
 
 #### Create the virtual network and VM subnet
 
