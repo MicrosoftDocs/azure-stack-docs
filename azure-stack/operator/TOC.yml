@@ -12,6 +12,12 @@
     items:
     - name: Security updates
       href: azure-stack-release-notes-security-updates.md
+    - name: 1909 update
+      items:
+      - name: Release notes
+        href: azure-stack-release-notes-1909.md
+      - name: Known issues
+        href: azure-stack-release-notes-known-issues-1909.md
     - name: 1908 update
       items:
       - name: Release notes
@@ -30,12 +36,6 @@
         href: azure-stack-release-notes-1906.md
       - name: Known issues
         href: azure-stack-release-notes-known-issues-1906.md
-    - name: 1905 update
-      items:
-      - name: Release notes
-        href: azure-stack-release-notes-1905.md
-      - name: Known issues
-        href: azure-stack-release-notes-known-issues-1905.md
 - name: Quickstarts
   expanded: true
   items:
