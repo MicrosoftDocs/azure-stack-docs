@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 09/17/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/08/2019
@@ -24,43 +24,42 @@ ms.lastreviewed: 01/08/2019
 *Applies to: Azure Stack integrated systems*
 
 This article contains details about registration operations. You can use these operations to:
+
 - Manage tenant registrations
 - Manage tenant usage tracking
 
-You can find details about how to add, list, or remove tenant mappings. You can use PowerShell or the Billing API endpoints to manage your use tracking. You can find details about how to add, list, or remove tenant mappings. You can use PowerShell or the Billing API endpoints to manage your use tracking.
-
 ## Add tenant to registration
 
-You use the operation when you want to add a new tenant to your registration. Tenant usage is reported under an Azure subscription connected with their Azure Active Directory (Azure AD) tenant.
+You can use this operation when you want to add a new tenant to your registration. Tenant usage is reported under an Azure subscription connected with the Azure Active Directory (Azure AD) tenant.
 
-You can also use the operation if you want to change the subscription associated with a tenant. Call PUT/New-AzureRMResource  to overwrite the previous mapping.
+You can also use this operation to change the subscription associated with a tenant. Call PUT or **New-AzureRMResource** to overwrite the previous mapping.
 
-You can associate a single Azure subscription with a tenant. If you try to add a second subscription to an existing tenant, the first subscription is over-written.
+You can associate a single Azure subscription with a tenant. If you try to add a second subscription to an existing tenant, the first subscription is overwritten.
 
 ### Use API profiles
 
-The registration cmdlets require that you specify an API profile when running PowerShell. API profiles represent a set of Azure resource providers and their API versions. They help you use the right version of the API when interacting with multiple Azure clouds. For instance, you work with multiple clouds when working with global Azure and Azure Stack. Profiles specify a name that matches their release date. You will need to use the **2017-09-03** profile.
+The following registration cmdlets require that you specify an API profile when running PowerShell. API profiles represent a set of Azure resource providers and their API versions. They help you use the right version of the API when interacting with multiple Azure clouds. For example, if you work with multiple clouds when working with global Azure and Azure Stack, API profiles specify a name that matches their release date. You use the **2017-09-03** profile.
 
-For more information about Azure Stack and API Profiles, see [Manage API version profiles in Azure Stack](../user/azure-stack-version-profiles.md).
+For more information about Azure Stack and API profiles, see [Manage API version profiles in Azure Stack](../user/azure-stack-version-profiles.md).
 
 ### Parameters
 
 | Parameter                  | Description |
 |---                         | --- |
 | registrationSubscriptionID | The Azure subscription that was used for the initial registration. |
-| customerSubscriptionID     | The  Azure subscription (not Azure Stack) belonging to the customer to be registered. Must be created in the Cloud Service Provider (CSP) offer through Partner Center. If a customer has more than one tenant, created a subscription for the tenant to log into Azure Stack. |
+| customerSubscriptionID     | The  Azure subscription (not Azure Stack) belonging to the customer to be registered. Must be created in the Cloud Service Provider (CSP) offer through the Partner Center. If a customer has more than one tenant, create a subscription for the tenant to log into Azure Stack. |
 | resourceGroup              | The resource group in Azure in which your registration is stored. |
-| registrationName           | The name of the registration of your Azure Stack. It is an object stored in Azure. The name is usually in the form azurestack-CloudID, where CloudID is the Cloud ID of your Azure Stack deployment. |
+| registrationName           | The name of the registration of your Azure Stack. It is an object stored in Azure. The name is usually in the form **azurestack-CloudID**, where **CloudID** is the cloud ID of your Azure Stack deployment. |
 
-> [!Note]  
-> Tenants need to be registered with each Azure Stack they use. If a tenant uses more than one Azure Stack, you need to update the initial registrations of each deployment with the tenant subscription.
+> [!NOTE]  
+> Tenants need to be registered with each Azure Stack deployment that they use. If a tenant uses more than one Azure Stack, update the initial registrations of each deployment with the tenant subscription.
 
 ### PowerShell
 
-Use the New-AzureRmResource cmdlet to add a tenant. [Connect to Azure Stack](azure-stack-powershell-configure-admin.md), and then from an elevated prompt use the following cmdlet:
+Use the **New-AzureRmResource** cmdlet to add a tenant. [Connect to Azure Stack](azure-stack-powershell-configure-admin.md), and then from an elevated prompt use the following cmdlet:
 
 ```powershell
-  New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
+New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
 ```
 
 ### API call
@@ -75,7 +74,7 @@ Use the New-AzureRmResource cmdlet to add a tenant. [Connect to Azure Stack](azu
 
 Get a list of all tenants that have been added to a registration.
 
- > [!Note]  
+ > [!NOTE]  
  > If no tenants have been registered, you won't receive a response.
 
 ### Parameters
@@ -84,17 +83,17 @@ Get a list of all tenants that have been added to a registration.
 |---                         | ---                  |
 | registrationSubscriptionId | The Azure subscription that was used for the initial registration.   |
 | resourceGroup              | The resource group in Azure in which your registration is stored.    |
-| registrationName           | The name of the registration of your Azure Stack. It is an object stored in Azure. The name is usually in the form of **azurestack**-***CloudID***, where ***CloudID*** is the Cloud ID of your Azure Stack deployment.   |
+| registrationName           | The name of the registration of your Azure Stack deployment. It is an object stored in Azure. The name is usually in the form of **azurestack-CloudID**, where **CloudID** is the cloud ID of your Azure Stack deployment.   |
 
 ### PowerShell
 
-Use the Get-AzureRmResource cmdlet to list all registered tenants. [Connect to Azure Stack](azure-stack-powershell-configure-admin.md), and then from an elevated prompt use the following cmdlet:
+Use the **Get-AzureRmResource** cmdlet to list all registered tenants. [Connect to Azure Stack](azure-stack-powershell-configure-admin.md), and then from an elevated prompt run the following cmdlet:
 
 ```powershell
-  Get-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
+Get-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
 ```
 
-### API Call
+### API call
 
 You can get a list of all tenant mappings using the GET operation.
 
@@ -103,9 +102,9 @@ You can get a list of all tenant mappings using the GET operation.
 /providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions?  
 api-version=2017-06-01 HTTP/1.1`  
 **Response**: 200  
-**Response Body**: 
+**Response Body**:
 
-```JSON  
+```json
 {
     "value": [{
             "id": " subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{ cspSubscriptionId 1}",
@@ -139,13 +138,13 @@ You can remove a tenant that has been added to a registration. If that tenant is
 
 ### PowerShell
 
-Use the Remove-AzureRmResource cmdlet to remove a tenant. [Connect to Azure Stack](azure-stack-powershell-configure-admin.md), and then from an elevated prompt use the following cmdlet:
+Use the **Remove-AzureRmResource** cmdlet to remove a tenant. [Connect to Azure Stack](azure-stack-powershell-configure-admin.md), and then from an elevated prompt run the following cmdlet:
 
 ```powershell
-  Remove-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
+Remove-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
 ```
 
-### API Call
+### API call
 
 You can remove tenant mappings using the DELETE operation.
 
@@ -158,4 +157,4 @@ You can remove tenant mappings using the DELETE operation.
 
 ## Next steps
 
- - To learn more about how to retrieve resource usage information from Azure Stack, see [Usage and billing in Azure Stack](azure-stack-billing-and-chargeback.md).
+- [How to retrieve resource usage information from Azure Stack](azure-stack-billing-and-chargeback.md)
