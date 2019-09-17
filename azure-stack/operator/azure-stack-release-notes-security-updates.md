@@ -23,7 +23,7 @@ ms.lastreviewed: 09/17/2019
 
 This article lists all the security updates in the last four updates of Azure Stack. This information is provided for reference purposes only.
 
-::: moniker range="azs-1909"
+::: moniker range="azs-1910"
 ## 1910 update
 
 This update of Azure Stack does not include security updates to the underlying operating system that hosts Azure Stack.
