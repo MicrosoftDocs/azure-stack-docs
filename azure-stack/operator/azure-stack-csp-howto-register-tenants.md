@@ -55,10 +55,13 @@ By default, you, as the CSP, won't have access to the end customer's Azure Stack
 Update your registration with the new customer subscription. Azure reports the customer usage using the customer identity from Partner Center. This step ensures that each customer's usage is reported under that customer's individual CSP subscription. This makes tracking usage and billing easier. To perform this step, you must first [register Azure Stack](azure-stack-registration.md).
 
 1. Open Windows PowerShell with an elevated prompt, and run:  
-    `Add-AzureRmAccount`
 
-    >[!Note]
-    >Note: If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using Add-AzureRmAccount: `Remove-AzureRmAccount-Scope Process`
+   ```powershell
+   Add-AzureRmAccount
+   ```
+
+   >[!Note]
+   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using Add-AzureRmAccount: `Remove-AzureRmAccount-Scope Process`
 
 2. Type your Azure credentials.
 3. In the PowerShell session, run:
