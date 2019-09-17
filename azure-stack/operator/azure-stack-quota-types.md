@@ -56,12 +56,12 @@ ms.lastreviewed: 12/07/2018
 
 | **Item** | **Default value** | **Description** |
 | --- | --- | --- |
-| Maximum public IPs |50 |The maximum number of public IP addresses that a subscription can create in this location. |
 | Maximum virtual networks |50 |The maximum number of virtual networks that a subscription can create in this location. |
 | Maximum virtual network gateways |1 |The maximum number of virtual network gateways (VPN gateways) that a subscription can create in this location. |
 | Maximum network connections |2 |The maximum number of network connections (point-to-point or site-to-site) that a subscription can create across all virtual network gateways in this location. |
-| Maximum load balancers |50 |The maximum number of load balancers that a subscription can create in this location. |
+| Maximum public IPs |50 |The maximum number of public IP addresses that a subscription can create in this location. |
 | Maximum NICs |100 |The maximum number of network interfaces that a subscription can create in this location. |
+| Maximum load balancers |50 |The maximum number of load balancers that a subscription can create in this location. |
 | Maximum network security groups |50 |The maximum number of network security groups that a subscription can create in this location. |
 
 ## View an existing quota

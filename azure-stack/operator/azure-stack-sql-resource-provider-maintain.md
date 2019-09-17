@@ -221,8 +221,8 @@ $sourcePath = "User:\{0}" -f $logs
 $destinationPackage = Join-Path -Path (Convert-Path '.') -ChildPath $logs
 Copy-Item -FromSession $session -Path $sourcePath -Destination $destinationPackage
 
-# Cleanup the logs.
-$cleanup = Invoke-Command -Session $session -ScriptBlock {Remove- AzsDBAdapterLog }
+# Clean up the logs.
+$cleanup = Invoke-Command -Session $session -ScriptBlock {Remove-AzsDBAdapterLog}
 # Close the session.
 $session | Remove-PSSession
 ```
