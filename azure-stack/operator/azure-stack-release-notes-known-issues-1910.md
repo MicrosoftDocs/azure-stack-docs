@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 1909 known issues | Microsoft Docs
-description: Learn about known issues in Azure Stack 1909.
+title: Azure Stack 1910 known issues | Microsoft Docs
+description: Learn about known issues in Azure Stack 1910.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,16 +13,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 09/17/2019
 ms.author: sethm
 ms.reviewer: hectorl
-ms.lastreviewed: 09/05/2019
-monikerRange: 'azs-1909'
+ms.lastreviewed: 09/17/2019
+monikerRange: 'azs-1910'
 ---
 
-# Azure Stack 1909 known issues
+# Azure Stack 1910 known issues
 
-This article lists known issues in the 1909 release of Azure Stack. The list is updated as new issues are identified.
+This article lists known issues in the 1910 release of Azure Stack. The list is updated as new issues are identified.
 
 > [!IMPORTANT]  
 > Review this section before applying the update.
