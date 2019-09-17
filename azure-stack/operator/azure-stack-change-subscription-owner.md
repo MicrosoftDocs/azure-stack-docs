@@ -64,7 +64,7 @@ $Subscription.Owner = $OwnerUpn
 Set-AzsUserSubscription -InputObject $subscription
 ```
 
-[!include[Remove Account](remove-account.md)]
+[!include[Remove Account](../../includes/remove-account.md)]
 
 ## Next steps
 

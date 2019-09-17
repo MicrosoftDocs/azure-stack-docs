@@ -97,7 +97,7 @@ There are two parts to this scenario:
 
 2. Add the Azure account that you have used to register Azure Stack. To add the account, in PowerShell run `Add-AzureRmAccount` without any parameters. You are prompted to enter your Azure account credentials and you might have to use 2-factor authentication, depending on your account's configuration.
 
-   [!include[Remove Account](remove-account.md)]
+   [!include[Remove Account](../../includes/remove-account.md)]
 
 3. If you have multiple subscriptions, run the following command to select the one you have used for registration:  
 
