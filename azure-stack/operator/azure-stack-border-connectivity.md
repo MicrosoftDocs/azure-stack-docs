@@ -1,6 +1,6 @@
 ---
 title: Border connectivity and network integration for Azure Stack integrated systems | Microsoft Docs
-description: Learn how to plan for datacenter border network connectivity with multi-node Azure Stack.
+description: Learn how to plan for datacenter border network connectivity in Azure Stack integrated systems.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -37,7 +37,7 @@ To ensure that user traffic immediately and transparently recovers from failure,
 ![BGP routing](media/azure-stack-border-connectivity/bgp-routing.png)
 
 ## Static routing
-Static routing requires additional configuration to the border devices. It requires more manual intervention and management as well as thorough analysis before any change. Issues caused by a configuration error may take more time to rollback depending on the changes made. We don't recommend this routing method, but it's supported.
+Static routing requires additional configuration to the border devices. It requires more manual intervention and management as well as thorough analysis before any change. Issues caused by a configuration error may take more time to rollback depending on the changes made. This routing method isn't recommended, but it's supported.
 
 To integrate Azure Stack into your networking environment using static routing, all four physical links between the border and the TOR device must be connected. High availability can't be guaranteed because of how static routing works.
 
