@@ -134,6 +134,9 @@ Connected environments can access the internet and Azure. For these environments
    |-----|-----|
    | EnvironmentName | The Azure cloud subscription environment name. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure Subscription, **AzureChinaCloud**.  |
 
+   >[!Note]
+   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using Add-AzureRmAccount: `Remove-AzureRmAccount-Scope Process`
+
 3. If you have multiple subscriptions, run the following command to select the one you want to use:  
 
    ```powershell  
