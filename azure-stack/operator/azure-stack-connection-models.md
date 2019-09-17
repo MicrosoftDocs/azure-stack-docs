@@ -20,12 +20,12 @@ ms.lastreviewed: 02/21/2019
 
 ---
 # Azure Stack integrated systems connection models
-If you're interested in purchasing an Azure Stack integrated system, you'll need to understand [several datacenter integration considerations](azure-stack-datacenter-integration.md) for Azure Stack deployment to determine how the system will fit into your datacenter. In addition, you need to decide how you'll integrate Azure Stack into your hybrid cloud environment. This article provides an overview of these major decisions including Azure connection models, identity store options, and billing model options.
+If you're interested in purchasing an Azure Stack integrated system, you need to understand [several datacenter integration considerations](azure-stack-datacenter-integration.md) for Azure Stack deployment to determine how the system will fit into your datacenter. In addition, you need to decide how you'll integrate Azure Stack into your hybrid cloud environment. This article provides an overview of these major decisions including Azure connection models, identity store options, and billing model options.
 
-If you decide to purchase an integrated system, your original equipment manufacturer (OEM) hardware vendor will help guide you through much of the planning process in more detail, and they will also perform the actual deployment.
+If you decide to purchase an integrated system, your original equipment manufacturer (OEM) hardware vendor will help guide you through the planning process in more detail. The OEM hardware vendor also performs the actual deployment.
 
 ## Choose an Azure Stack deployment connection model
-You can choose to deploy Azure Stack either connected to the internet (and to Azure) or disconnected. To get the most benefit from Azure Stack, including hybrid scenarios between Azure Stack and Azure, you should deploy connected to Azure. This choice defines which options are available for your identity store (Azure Active Directory or Active Directory Federation Services) and billing model (pay as you use-based billing or capacity-based billing) as summarized in the following diagram and table:
+You can choose to deploy Azure Stack either connected to the internet (and to Azure) or disconnected. Deploy connected to Azure to get the most benefit from Azure Stack, including hybrid scenarios between Azure Stack and Azure. This choice defines which options are available for your identity store (Azure Active Directory or Active Directory Federation Services) and billing model (pay as you use-based billing or capacity-based billing) as summarized in the following diagram and table:
 
 ![Azure Stack deployment and billing scenarios](media/azure-stack-connection-models/azure-stack-scenarios.png)
   
