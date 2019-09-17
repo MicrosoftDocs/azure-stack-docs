@@ -1,6 +1,6 @@
 ---
 title: What is Azure Stack? | Microsoft Docs
-description: Learn how Azure Stack lets you to run Azure services in your datacenter.  
+description: Learn how Azure Stack lets you run Azure services in your datacenter.  
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/29/2019
+ms.date: 09/16/2019
 ms.author: justinha
 ms.reviewer: unknown
 ms.custom: 
@@ -26,7 +26,7 @@ Azure Stack is an extension of Azure that provides a way to run applications in 
 
 ## Why use Azure Stack?
 
-Azure provides a rich platform for developers to build modern applications. However, some cloud-based applications face obstacles such as latency, intermittent connectivity, and regulations. Azure and Azure Stack unlock new hybrid cloud use cases for both customer-facing and internal line of business applications:
+Azure provides a rich platform for developers to build modern applications. However, some cloud-based applications face obstacles such as latency, intermittent connectivity, and regulations. Azure and Azure Stack unlock new hybrid cloud use cases for both customer-facing and internal line-of-business applications:
 
 - **Edge and disconnected solutions**. Address latency and connectivity requirements by processing data locally in Azure Stack and then aggregating it in Azure for further analytics, with common application logic across both. You can even deploy Azure Stack disconnected from the internet without connectivity to Azure. Think of factory floors, cruise ships, and mine shafts as examples.
 
@@ -118,14 +118,14 @@ While the infrastructure of Azure Stack is already resilient to failures, the un
 
 - **Fault domains**. VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack nodes). If there is a hardware failure, VMs from the failed fault domain will be restarted in other fault domains, but kept in separate fault domains from the other VMs in the same availability set if possible. When the hardware comes back online, VMs will be rebalanced to maintain high availability. 
  
-- **Update domains**. Update domains are another Azure concept that provides high availability in availability sets. An update domain is a logical group of underlying hardware that can undergo maintenance at the same time. VMs located in the same update domain will be restarted together during planned maintenance. As tenants create VMs within an availability set, the Azure platform automatically distributes VMs across these update domains. In Azure Stack, VMs are live migrated across the other online hosts in the cluster before their underlying host is updated. Since there is no tenant downtime during a host update, the update domain feature on Azure Stack only exists for template compatibility with Azure. 
+- **Update domains**. Update domains are another Azure concept that provides high availability in availability sets. An update domain is a logical group of underlying hardware that can undergo maintenance at the same time. VMs located in the same update domain will be restarted together during planned maintenance. As tenants create VMs within an availability set, the Azure platform automatically distributes VMs across these update domains. In Azure Stack, VMs are live migrated across the other online hosts in the cluster before their underlying host is updated. Since there is no tenant downtime during a host update, the update domain feature on Azure Stack only exists for template compatibility with Azure. VMs in an availability set will show **0** as their update domain number on the portal. 
 
-## Role Based Access Control
-You can use Role Based Access Control (RBAC) to grant system access to authorized users, groups, and services by assigning them roles at a subscription, resource group, or individual resource level. Each role defines the access level a user, group, or service has over Microsoft Azure Stack resources.
+## Role-based access control
+You can use role-based access control (RBAC) to grant system access to authorized users, groups, and services by assigning them roles at a subscription, resource group, or individual resource level. Each role defines the access level a user, group, or service has over Microsoft Azure Stack resources.
 
 Azure Stack RBAC has three basic roles that apply to all resource types: Owner, Contributor, and Reader. Owner has full access to all resources including the right to delegate access to others. Contributor can create and manage all types of Azure resources but can't grant access to others. Reader can only view existing resources. The rest of the RBAC roles allow management of specific Azure resources. For instance, the Virtual Machine Contributor role allows creation and management of virtual machines but does not allow management of the virtual network or the subnet that the virtual machine connects to.
 
-> See [Manage Role-Based Access Control](azure-stack-manage-permissions.md) for more information. 
+> See [Manage role-based access control](azure-stack-manage-permissions.md) for more information. 
 
 ## Reporting usage data
 Azure Stack collects and aggregates usage data across all resource providers, and transmits it to Azure for processing by Azure commerce. The usage data collected on Azure Stack can be viewed via a REST API. There is an Azure-consistent Tenant API as well as Provider and Delegated Provider APIs to get usage data across all tenant subscriptions. This data can be used to integrate with an external tool or service for billing or chargeback. Once usage has been processed by Azure commerce, it can be viewed in the Azure billing portal.
