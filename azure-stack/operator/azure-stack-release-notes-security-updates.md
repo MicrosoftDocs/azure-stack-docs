@@ -188,7 +188,6 @@ This update of Azure Stack does not include security updates to the underlying o
 
 Because of the cumulative nature of Windows updates, this update also contains the security payloads for the previous months. This list of CVEs reflects the security payload of June, July, and August 2019.
 For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base articles [4511553](https://support.microsoft.com/help/4511553).
-
 ::: moniker-end
 
 ::: moniker range="azs-1907"
