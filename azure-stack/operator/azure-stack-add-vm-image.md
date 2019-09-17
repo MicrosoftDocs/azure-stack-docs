@@ -3,7 +3,7 @@ title: Add a VM image to Azure Stack | Microsoft Docs
 description: Learn how to add or remove a VM image to Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: Justinha
 manager: femila
 editor: ''
 
@@ -12,8 +12,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 07/23/2019
-ms.author: mabrigg
+ms.date: 09/17/2019
+ms.author: Justinha
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
 
@@ -22,7 +22,7 @@ ms.lastreviewed: 06/08/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-In Azure Stack, you can add a virtual machine (VM) image to the marketplace to make  available to your users. Images are added by using Azure Resource Manager templates for Azure Stack. You can also add VM images to the Azure Marketplace UI as a Marketplace item using the administrator portal or Windows PowerShell. Use either an image from the global Azure Marketplace or your own custom VM image.
+In Azure Stack, you can add a virtual machine (VM) image to the marketplace and make it available to your users. Images are added by using Azure Resource Manager templates for Azure Stack. You can also add VM images to the Azure Marketplace UI as a Marketplace item using the administrator portal or Windows PowerShell. Use either an image from the global Azure Marketplace or your own custom VM image.
 
 ## Add a VM image through the portal
 
@@ -152,10 +152,13 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
 5. Prepare a Windows or Linux operating system image in VHD format (not VHDX), upload the image to your storage account, and get the URI where the VM image can be retrieved by PowerShell.  
 
    ```powershell
-    Add-AzureRmAccount `
-      -EnvironmentName "AzureStackAdmin" `
-      -TenantId $TenantID
+   Add-AzureRmAccount 
+   -EnvironmentName "AzureStackAdmin" 
+   -TenantId $TenantID
    ```
+  
+   >[!Note]
+   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using Add-AzureRmAccount: `Remove-AzureRmAccount-Scope Process`
 
 6. (Optionally) You can upload an array of data disks as part of the VM image. Create your data disks using the New-DataDiskObject cmdlet. Open PowerShell from an elevated prompt, and run:
 
