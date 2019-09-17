@@ -1,9 +1,9 @@
 ---
 title: Include for Remove-AzureRmAccount | Microsoft Docs
-description: The cloud operator can download marketplace items from Azure to my Azure Stack deployment.
+description: An include file that explains how to run Remove-AzureRmAccount.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,9 +14,9 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2019
-ms.author: sethm
-ms.reviewer: ihcherie
-ms.lastreviewed: 12/10/2018
+ms.author: justinha
+ms.reviewer: avishwan
+ms.lastreviewed: 09/17/2019
 ---
 
 >[!Note]
