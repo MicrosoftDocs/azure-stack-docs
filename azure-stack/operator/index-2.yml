@@ -1,0 +1,83 @@
+### YamlMime:Landing
+
+title: Azure Stack Operator Documentation # < 60 chars
+summary: Microsoft Azure Stack is a hybrid cloud platform that lets you provide Azure services from your datacenter. Learn how to manage Azure Stack. # < 160 chars
+
+metadata:
+  title: Azure Stack Documentation - Tutorials, API Reference # Required; page title displayed in search results. Include the brand. < 60 chars.
+  description: Learn how to manage the Azure Stack integrated systems infrastructure and how to offer services with our quickstarts and tutorials. # Required; article description that is displayed in search results. < 160 chars.
+  services: azure-stack
+  ms.service: azure-stack #Required; service per approved list. service slug assigned to your service by ACOM.
+  ms.topic: landing-page # Required
+  author: justinha #Required; your GitHub user alias, with correct capitalization.
+  ms.author: justinha #Required; microsoft alias of author; optional team alias.
+  ms.date: 09/17/2019 #Required; mm/dd/yyyy format.
+
+# linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+  # Card (optional)
+  - title: About Azure Stack
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What is Azure Stack?
+            url: azure-stack-overview.md
+          - text: What is Azure Stack HCI?
+            url: azure-stack-hci-overview.md
+      - linkListType: release notes
+        links:
+          - text: Security updates
+            url: azure-stack-release-notes-security-updates.md
+          - text: Release notes
+            url: azure-stack-release-notes-1908.md
+
+  # Card (optional)
+  - title: Get started
+    linkLists:
+      - linkListType: Quickstarts
+        links:
+          - text: Use the administration portal for day-to-day management and operations of Azure Stack
+            url: azure-stack-manage-portals.md
+          - text: Easily manage your Azure Stack resources from PowerShell
+            url: azure-stack-powershell-install.md
+      - linkListType: Concepts
+        links:
+          - text: Capacity planning is the starting point for Azure Stack planning and configuration decisions
+            url: azure-stack-capacity-planning-overview.md
+          - text: Learn the deployment experience end-to-end, from purchasing an integrated system through to a successful on-site deployment by a solution provider
+            url: azure-stack-customer-journey.md
+
+  # Card
+  - title: Offering Azure Stack services
+    linkLists:
+      - linkListType: Tutorials
+        links:
+          - text: linktext1
+            url: file1.md
+          - text: linktext2
+            url: file2.md
+      - linkListType: Concepts
+        links:
+          - text: linktext1
+            url: file1.md
+          - text: linktext2
+            url: file2.md
+
+  # Card
+  - title: Managing Azure Stack
+    linkLists:
+      - linkListType: How-to guides
+        links:
+          - text: linktext1
+            url: file1.md
+          - text: linktext2
+            url: file2.md
+      - linkListType: Concepts
+        links:
+          - text: linktext1
+            url: file1.md
+          - text: linktext2
+            url: file2.md
