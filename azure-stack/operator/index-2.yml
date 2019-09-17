@@ -55,10 +55,12 @@ landingContent:
     linkLists:
       - linkListType: Tutorials
         links:
-          - text: linktext1
-            url: file1.md
-          - text: linktext2
-            url: file2.md
+          - text: Use the SQL Server resource provider to offer SQL databases as a service of Azure Stack
+            url: azure-stack-sql-resource-provider.md
+          - text: Use the MySQL resource provider to offer MySQL databases as a service of Azure Stack
+            url: azure-stack-mysql-resource-provider.md
+          - text: Help users create web applications and APIs for any platform or device
+            url: azure-stack-app-service-overview.md
       - linkListType: Concepts
         links:
           - text: linktext1
