@@ -675,7 +675,7 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 ::: moniker range=">=azs-1905"
 ## Archive
 
-Use the version selector in the upper left of the page, to access archived known issues.
+To access archived known issues for an older version, use the version picker in the upper left of the page, and select the version of interest. 
 
 ## Next steps
 

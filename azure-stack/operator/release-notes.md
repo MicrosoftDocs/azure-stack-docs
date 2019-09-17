@@ -502,7 +502,7 @@ Systems that can access the internet from the infrastructure network will see th
 
 ## Archive
 
-Use the version selector in the upper left of the page, to access archived release notes.
+To access archived release notes for an older version, use the version picker in the upper left of the page, and select the version of interest. 
 
 ## Next steps
 
