@@ -200,7 +200,6 @@ This update of Azure Stack does not include security updates to the underlying o
 ## 1906 update
 
 This update of Azure Stack does not include security updates to the underlying operating system that hosts Azure Stack.
-::: moniker-end
 
 Because of the cumulative nature of Windows updates, this update also contains the security payloads for the previous months. This list of CVEs reflects the security payload of March, April, and May 2019.
 For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base articles [4499177](https://support.microsoft.com/help/4499177).
