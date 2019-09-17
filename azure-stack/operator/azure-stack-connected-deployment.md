@@ -1,6 +1,6 @@
 ---
 title: Azure-connected deployment decisions for Azure Stack integrated systems | Microsoft Docs
-description: Determine deployment planning decisions for Azure-connected deployments of multi-node Azure Stack, including billing and identity.
+description: Determine deployment planning decisions for Azure-connected deployments of Azure Stack integrated systems, including billing and identity.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -27,9 +27,9 @@ Deploying Azure Stack connected to Azure means that you can have either Azure Ac
 ## Choose an identity store
 With a connected deployment, you can choose between Azure AD or AD FS for your identity store. A disconnected deployment, with no internet connectivity, can only use AD FS.
 
-Your identity store choice has no bearing on user virtual machines (VMs). User VMs may choose which identity store they want to the connect to depending on how they'll be configured: Azure AD, Windows Server Active Directory domain-joined, workgroup, and so on. This is unrelated to the Azure Stack identity provider decision.
+Your identity store choice has no bearing on tenant virtual machines (VMs). Tenant VMs may choose which identity store they want to the connect to depending on how they'll be configured: Azure AD, Windows Server Active Directory domain-joined, workgroup, and so on. This is unrelated to the Azure Stack identity provider decision.
 
-For example, if you deploy IaaS user VMs on top of Azure Stack, and want them to join a Corporate Active Directory Domain and use accounts from there, you still can. You aren't required to use the Azure AD identity store you select here for those accounts.
+For example, if you deploy IaaS tenant VMs on top of Azure Stack, and want them to join a Corporate Active Directory Domain and use accounts from there, you still can. You aren't required to use the Azure AD identity store you select here for those accounts.
 
 ### Azure AD identity store
 Using Azure AD for your identity store requires two Azure AD accounts: a global admin account and a billing account. These accounts can be the same accounts, or different accounts. While using the same user account might be simpler and useful if you have a limited number of Azure accounts, your business needs might suggest using two accounts:
@@ -57,8 +57,8 @@ If you're going to use a CSP subscription, review the table below to identify wh
 
 |Scenario|Domain and subscription options|
 |-----|-----|
-|You're a **Direct CSP Partner** or an **Indirect CSP Provider**, and you'll operate the Azure Stack|Use a CSL (Common Service Layer) subscription.<br>     or<br>Create an Azure AD user with a descriptive name in Partner Center. For example, &lt;your organization>CSPAdmin with an Azure CSP subscription associated with it.|
-|You're an **Indirect CSP Reseller**, and you'll operate the Azure Stack|Ask your indirect CSP Provider to create an Azure AD user for your organization with an Azure CSP subscription associated with it using Partner Center.|
+|You're a **Direct CSP Partner** or an **Indirect CSP Provider**, and you'll operate the Azure Stack|Use a CSL (Common Service Layer) subscription.<br>     or<br>Create an Azure AD tenant with a descriptive name in Partner Center. For example, &lt;your organization>CSPAdmin with an Azure CSP subscription associated with it.|
+|You're an **Indirect CSP Reseller**, and you'll operate the Azure Stack|Ask your indirect CSP Provider to create an Azure AD tenant for your organization with an Azure CSP subscription associated with it using Partner Center.|
 
 ### Capacity-based billing
 If you decide to use the capacity billing model, you must purchase an Azure Stack Capacity Plan SKU based on the capacity of your system. You need to know the number of physical cores in your Azure Stack to purchase the correct quantity.
