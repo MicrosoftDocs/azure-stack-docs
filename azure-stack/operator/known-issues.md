@@ -673,7 +673,8 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 ::: moniker-end
 
 ::: moniker range=">=azs-1905"
-## Archived known issues
+## Archive
+
 Use the version selector in the upper left of the page, to access archived known issues.
 
 ## Next steps
@@ -723,5 +724,5 @@ Use the version selector in the upper left of the page, to access archived known
 ::: moniker-end
 
 ::: moniker range="<azs-1905"
-You can find [older versions of Azure Stack known issues on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
+You can access [older versions of Azure Stack known issues on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
