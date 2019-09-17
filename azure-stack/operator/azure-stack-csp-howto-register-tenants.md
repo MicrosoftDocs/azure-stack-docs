@@ -67,12 +67,6 @@ Update your registration with the new customer subscription. Azure reports the c
    New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties <PSObject>
    ```
 
-In some cases, you first might need to remove credentials and sign-in contexts (subscription and tenant information) for an account before adding a tenant to Azure Stack. If needed, you can run the following cmdlet and then sign in again and run `Add-AzureRmAccount`: 
-
-```powershell
-Remove-AzureRmAccount-Scope Process
-``` 
-
 ### New-AzureRmResource PowerShell parameters
 
 The following section describes the parameters for the **New-AzureRmResource** cmdlet:
