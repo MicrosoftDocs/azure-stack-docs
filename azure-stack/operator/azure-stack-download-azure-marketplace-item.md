@@ -3,7 +3,7 @@ title: Download marketplace items from Azure | Microsoft Docs
 description: The cloud operator can download marketplace items from Azure to my Azure Stack deployment.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2019
-ms.author: sethm
+ms.author: justinha
 ms.reviewer: ihcherie
 ms.lastreviewed: 12/10/2018
 ---
