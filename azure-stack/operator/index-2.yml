@@ -55,31 +55,39 @@ landingContent:
     linkLists:
       - linkListType: Tutorials
         links:
+          - text: Create an offer for a virtual machine, add an image, and sign in as a user to test the offer
+            url: azure-stack-tutorial-tenant-vm.md
+          - text: Deploy the SQL Server resource provider, create an offer, and test it
+            url: azure-stack-tutorial-sql-server.md
+          - text: Create a MySQL Server cluster, an Azure Stack MySQL Hosting Server, and a highly available MySQL database
+            url: azure-stack-tutorial-mysql.md
+          - text: Deploy the App Service resource provider, create an offer, and test it
+            url: azure-stack-tutorial-app-service.md
+      - linkListType: Concepts
+         links:
           - text: Use the SQL Server resource provider to offer SQL databases as a service of Azure Stack
             url: azure-stack-sql-resource-provider.md
           - text: Use the MySQL resource provider to offer MySQL databases as a service of Azure Stack
             url: azure-stack-mysql-resource-provider.md
           - text: Help users create web applications and APIs for any platform or device
             url: azure-stack-app-service-overview.md
-      - linkListType: Concepts
-        links:
-          - text: linktext1
-            url: file1.md
-          - text: linktext2
-            url: file2.md
 
   # Card
   - title: Managing Azure Stack
     linkLists:
       - linkListType: How-to guides
         links:
-          - text: linktext1
-            url: file1.md
-          - text: linktext2
-            url: file2.md
+          - text: Telemetry provides valuable insights into enterprise deployments and helps shape future versions of Azure Stack
+            url: azure-stack-telemetry.md
+          - text: Monitor health and alerts for an Azure Stack region
+            url: azure-stack-monitor-health.md
+          - text: Install updates and monitor progress
+            url: azure-stack-apply-updates.md
       - linkListType: Concepts
         links:
-          - text: linktext1
-            url: file1.md
-          - text: linktext2
-            url: file2.md
+          - text: Microsoft bundles a single package each month to keep Azure Stack integrated systems up-to-date
+            url: azure-stack-updates.md
+          - text: Back up and restore configuration and service data using the Infrastructure Backup Service
+            url: azure-stack-backup-infrastructure-backup.md
+          - text: Azure Stack is designed to defend against modern threats and meet compliance standards
+            url: azure-stack-security-configuration.md            
