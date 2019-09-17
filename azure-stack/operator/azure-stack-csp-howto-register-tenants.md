@@ -56,6 +56,10 @@ Update your registration with the new customer subscription. Azure reports the c
 
 1. Open Windows PowerShell with an elevated prompt, and run:  
     `Add-AzureRmAccount`
+
+    >[!Note]
+    >Note: If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using Add-AzureRmAccount: `Remove-AzureRmAccount-Scope Process`
+
 2. Type your Azure credentials.
 3. In the PowerShell session, run:
 
