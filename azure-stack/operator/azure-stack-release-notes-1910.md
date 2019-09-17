@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 1909 release notes | Microsoft Docs
-description: Learn about the 1909 update for Azure Stack integrated systems, including what's new, known issues, and where to download the update.
+title: Azure Stack 1910 release notes | Microsoft Docs
+description: Learn about the 1910 update for Azure Stack integrated systems, including what's new, known issues, and where to download the update.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,41 +13,41 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 09/17/2019
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 09/12/2019
+ms.lastreviewed: 09/17/2019
 monikerRange: 'azs-1909'
 ---
 
-# Azure Stack 1909 update
+# Azure Stack 1910 update
 
 *Applies to: Azure Stack integrated systems*
 
-This article describes the contents of the 1909 update package. The update includes what's new improvements, and fixes for this release of Azure Stack.
+This article describes the contents of the 1910 update package. The update includes what's new improvements, and fixes for this release of Azure Stack.
 
 > [!IMPORTANT]  
 > This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
 
 ## Previous release notes
 
-Starting with the 1908 release, previous versions of release notes are no longer visible in the table of contents on the left. To access older versions of the release notes, select another article (for example, the [Azure Stack overview](azure-stack-overview.md)), then select 1906, 1907, 1908, or 1909 from the version selector at the top of the table of contents on the left. For earlier versions of release notes, see the [Archived release notes](#archived-release-notes) section.
+Starting with the 1908 release, previous versions of release notes are no longer visible in the table of contents on the left. To access older versions of the release notes, select another article (for example, the [Azure Stack overview](azure-stack-overview.md)), then select 1906, 1907, 1908, or 1910 from the version selector at the top of the table of contents on the left. For earlier versions of release notes, see the [Archived release notes](#archived-release-notes) section.
 
 ## Build reference
 
-The Azure Stack 1909 update build number is **1.1909.x.xx**.
+The Azure Stack 1910 update build number is **1.1910.x.xx**.
 
 ### Update type
 
 Starting with 1908, the underlying operating system on which Azure Stack runs was updated to Windows Server 2019. This enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack in the near future.
 
-The Azure Stack 1909 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. The expected time it takes for the 1909 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack environment. Exact update runtimes will typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack operators unless the update fails. This runtime approximation is specific to the 1906 update and should not be compared to other Azure Stack updates.
+The Azure Stack 1910 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. The expected time it takes for the 1910 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack environment. Exact update runtimes will typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack operators unless the update fails. This runtime approximation is specific to the 1906 update and should not be compared to other Azure Stack updates.
 
 For more information about update build types, see [Manage updates in Azure Stack](azure-stack-updates.md).
 
 - Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware configuration.
 - Runtimes lasting longer than expected are not uncommon and do not require action by Azure Stack operators unless the update fails.
-- This runtime approximation is specific to the 1909 update and should not be compared to other Azure Stack updates.
+- This runtime approximation is specific to the 1910 update and should not be compared to other Azure Stack updates.
 
 <!-- ## What's in this update -->
 
@@ -63,7 +63,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Changes
 
-- When downloading marketplace items from Azure to Azure Stack, there is a new user interface that is available that enables you to specify a version of the item, when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md).
+- When downloading marketplace items from Azure to Azure Stack, there is a new user interface that enables you to specify a version of the item, when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md).
 
 ### Fixes
 
@@ -77,33 +77,33 @@ For information about security updates in this update of Azure Stack, see [Azure
 
 Before applying the update, make sure to review the following information:
 
-- [Known issues](azure-stack-release-notes-known-issues-1909.md)
+- [Known issues](azure-stack-release-notes-known-issues-1910.md)
 - [Security updates](azure-stack-release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](azure-stack-release-notes-checklist.md)
 
 ## Download the update
 
-You can download the Azure Stack 1909 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
+You can download the Azure Stack 1910 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
 
 ## Hotfixes
 
-Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1908 before updating Azure Stack to 1909.
+Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1908 before updating Azure Stack to 1910.
 
 Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do not attempt to install hotfixes on the ASDK.
 
-### Prerequisites: Before applying the 1909 update
+### Prerequisites: Before applying the 1910 update
 
-The 1909 release of Azure Stack must be applied on the 1908 release with the following hotfixes:
+The 1910 release of Azure Stack must be applied on the 1908 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
 - No hotfix available for 1908.
 
-### After successfully applying the 1909 update
+### After successfully applying the 1910 update
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- No hotfix available for 1909.
+- No hotfix available for 1910.
 
 ## Automatic update notifications
 
