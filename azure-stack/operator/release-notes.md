@@ -481,7 +481,7 @@ After the installation of this update, install any applicable hotfixes. For more
 ::: moniker-end
 
 ::: moniker range=">azs-1904"
-## Archived release notes
+## How to access archived release notes
 
 Use the version selector in the upper left of the page, to select an archived version and instructions for accessing archived release notes.
 ::: moniker-end
@@ -523,7 +523,9 @@ Use the version selector in the upper left of the page, to select an archived ve
 ## 1802 archived release notes
 ::: moniker-end
 
+::: moniker range="<azs-1905"
 You can see [older versions of Azure Stack release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
+::: moniker-end
 
 ## Automatic update notifications
 
