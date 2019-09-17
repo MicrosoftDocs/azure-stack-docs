@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 09/17/2019
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
@@ -50,7 +50,7 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
-- [Azure Stack 1909 update](azure-stack-release-notes-1909.md)
+- [Azure Stack 1910 update](azure-stack-release-notes-1910.md)
 - [Azure Stack 1908 update](azure-stack-release-notes-1908.md)
 - [Azure Stack 1907 update](azure-stack-release-notes-1907.md)
 - [Azure Stack 1906 update](azure-stack-release-notes-1906.md)
@@ -65,7 +65,7 @@ Hotfixes are downloaded and installed just like the regular full update packages
 
 For information about currently available hotfixes, see the release notes for that update:
 
-- [Azure Stack 1909 hotfix](azure-stack-release-notes-1909.md#hotfixes)
+- [Azure Stack 1910 hotfix](azure-stack-release-notes-1910.md#hotfixes)
 - [Azure Stack 1908 hotfix](azure-stack-release-notes-1908.md#hotfixes)
 - [Azure Stack 1907 hotfix](azure-stack-release-notes-1907.md#hotfixes)
 - [Azure Stack 1906 hotfix](azure-stack-release-notes-1906.md#hotfixes)
