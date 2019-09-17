@@ -48,7 +48,7 @@ To connect Azure Stack and Azure using ExpressRoute, you must meet the following
 * An Azure subscription to create an ExpressRoute circuit and VNets in Azure.
 * A router that must:
   * Support site-to-site VPN connections between its LAN interface and Azure Stack multi-tenant gateway.
-  * Support creating multiple VRFs (Virtual Routing and Forwarding) if there's more than one user in your Azure Stack deployment.
+  * Support creating multiple VRFs (Virtual Routing and Forwarding) if there's more than one tenant in your Azure Stack deployment.
 * A router that has:
   * A WAN port connected to the ExpressRoute circuit.
   * A LAN port connected to the Azure Stack multi-tenant gateway.
@@ -59,17 +59,17 @@ The following figure shows the Azure Stack and Azure environments after you fini
 
 ![ExpressRoute network](media/azure-stack-connect-expressroute/Conceptual.png)
 
-The following figure shows how multiple users connect from the Azure Stack infrastructure through the ExpressRoute router to Azure at the Microsoft edge:
+The following figure shows how multiple tenants connect from the Azure Stack infrastructure through the ExpressRoute router to Azure at the Microsoft Edge:
 
-![Multi-user connections with ExpressRoute](media/azure-stack-connect-expressroute/Architecture.png)
+![Multi-tenant connections with ExpressRoute](media/azure-stack-connect-expressroute/Architecture.png)
 
-The example in this article uses the same multi-user architecture shown in this diagram to connect Azure Stack to Azure using ExpressRoute private peering. The connection is done using a site-to-site VPN connection from the virtual network gateway in Azure Stack to an ExpressRoute router.
+The example in this article uses the same multi-tenant architecture shown in this diagram to connect Azure Stack to Azure using ExpressRoute private peering. The connection is done using a site-to-site VPN connection from the virtual network gateway in Azure Stack to an ExpressRoute router.
 
-The steps in this article show you how to create an end-to-end connection between two VNets from two different users in Azure Stack to corresponding VNets in Azure. Setting up two users is optional; you can also use these steps for a single tenant.
+The steps in this article show you how to create an end-to-end connection between two VNets from two different tenants in Azure Stack to corresponding VNets in Azure. Setting up two tenants is optional; you can also use these steps for a single tenant.
 
 ## Configure Azure Stack
 
-To set up the Azure Stack environment for the first user, use the following steps as a guide. If you're setting up more than one user, repeat these steps:
+To set up the Azure Stack environment for the first tenant, use the following steps as a guide. If you're setting up more than one tenant, repeat these steps:
 
 >[!NOTE]
 >These steps show how to create resources using the Azure Stack portal, but you can also use PowerShell.
@@ -85,7 +85,7 @@ Before you start configuring Azure Stack, you need:
 
 ### Create network resources in Azure Stack
 
-Use the following procedures to create the required network resources in Azure Stack for a user.
+Use the following procedures to create the required network resources in Azure Stack for a tenant.
 
 #### Create the virtual network and VM subnet
 
@@ -139,7 +139,7 @@ Use the following procedures to create the required network resources in Azure S
 
 The local network gateway resource identifies the remote gateway at the other end of the VPN connection. For this example, the remote end of the connection is the LAN sub-interface of the ExpressRoute router. For Tenant 1 in the previous diagram, the remote address is 10.60.3.255.
 
-1. Sign in to the Azure Stack user portal with your user account and select **+ Create a resource**.
+1. Sign in to the Azure Stack user portal and select **+ Create a resource**.
 1. Under **Azure Marketplace**, select **Networking**.
 1. Select **local network gateway** from the list of resources.
 1. In the **Name** field, type **ER-Router-GW**.
@@ -200,7 +200,7 @@ To test data traffic over the VPN connection, you need VMs to send and receive d
 
 1. Under **Summary**, review the VM configuration and then click **OK**.
 
-To add more users, repeat the steps you followed in these sections:
+To add more tenants, repeat the steps you followed in these sections:
 
 * [Create the virtual network and VM subnet](#create-the-virtual-network-and-vm-subnet)
 * [Create the gateway subnet](#create-the-gateway-subnet)
@@ -271,7 +271,7 @@ The router is the ASDK host running the Routing and Remote Access Services (RRAS
 
 ## Configure Azure
 
-After you finish configuring Azure Stack, you can deploy the Azure resources. The following figure shows an example of a user virtual network in Azure. You can use any name and addressing scheme for your VNet in Azure. However, the address range of the VNets in Azure and Azure Stack must be unique and must not overlap:
+After you finish configuring Azure Stack, you can deploy the Azure resources. The following figure shows an example of a tenant virtual network in Azure. You can use any name and addressing scheme for your VNet in Azure. However, the address range of the VNets in Azure and Azure Stack must be unique and must not overlap:
 
 ![Azure VNets](media/azure-stack-connect-expressroute/AzureArchitecture.png)
 
@@ -328,17 +328,17 @@ Peer the hub and spoke VNets using the steps in [Create a virtual network peerin
 
 Deploy your workload VMs into the spoke VNet.
 
-Repeat these steps for any additional user VNets you want to connect in Azure through their respective ExpressRoute circuits.
+Repeat these steps for any additional tenant VNets you want to connect in Azure through their respective ExpressRoute circuits.
 
 ## Configure the router
 
-You can use the following ExpressRoute router configuration diagram as a guide for configuring your ExpressRoute Router. This figure shows two users (Tenant 1 and Tenant 2) with their respective ExpressRoute circuits. Each user is linked to their own VRF (Virtual Routing and Forwarding) in the LAN and WAN side of the ExpressRoute router. This configuration ensures end-to-end isolation between the two users. Take note of the IP addresses used in the router interfaces as you follow the configuration example.
+You can use the following ExpressRoute router configuration diagram as a guide for configuring your ExpressRoute Router. This figure shows two tenants (Tenant 1 and Tenant 2) with their respective ExpressRoute circuits. Each tenant is linked to their own VRF (Virtual Routing and Forwarding) in the LAN and WAN side of the ExpressRoute router. This configuration ensures end-to-end isolation between the two tenants. Take note of the IP addresses used in the router interfaces as you follow the configuration example.
 
 ![ExpressRoute router configuration](media/azure-stack-connect-expressroute/EndToEnd.png)
 
 You can use any router that supports IKEv2 VPN and BGP to terminate the site-to-site VPN connection from Azure Stack. The same router is used to connect to Azure using an ExpressRoute circuit.
 
-The following Cisco ASR 1000 Series Aggregation Services Router configuration example supports the network infrastructure shown in the *ExpressRoute router configuration* diagram.
+The following Cisco Site Recovery 1000 Series Aggregation Services Router configuration example supports the network infrastructure shown in the *ExpressRoute router configuration* diagram.
 
 ```shell
 ip vrf Tenant 1
@@ -582,7 +582,7 @@ New-NetFirewallRule `
 
 ### Ping the Azure Stack VM
 
-1. Sign in to the Azure Stack user portal using a user account.
+1. Sign in to the Azure Stack user portal.
 
 1. Find the VM that you created and select it.
 
@@ -592,11 +592,11 @@ New-NetFirewallRule `
 
 1. Ping the IPv4 address from the VM in the Azure VNet.
 
-   In the example environment, the IPv4 address is from the 10.1.1.x/24 subnet. In your environment, the address might be different, but it should be in the subnet you created for the user VNet subnet.
+   In the example environment, the IPv4 address is from the 10.1.1.x/24 subnet. In your environment, the address might be different, but it should be in the subnet you created for the tenant VNet subnet.
 
 ### View data transfer statistics
 
-If you want to know how much traffic is passing through your connection, you can find this information on the Azure Stack user portal. This is also a good way to find out whether or not your ping test data went through the VPN and ExpressRoute connections:
+If you want to know how much traffic is passing through your connection, you can find this information on the Azure Stack user portal. Viewing data transfer statistics is also a good way to find out whether or not your ping test data went through the VPN and ExpressRoute connections:
 
 1. Sign in to the Azure Stack user portal and select **All resources**.
 1. Navigate to the resource group for your VPN Gateway and select the **Connection** object type.
