@@ -17,7 +17,7 @@ ms.date: 09/17/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 09/17/2019
-monikerRange: 'azs-1909'
+monikerRange: 'azs-1910'
 ---
 
 # Azure Stack 1910 update
