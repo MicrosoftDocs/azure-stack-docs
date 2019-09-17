@@ -16,8 +16,6 @@
       href: release-notes.md
     - name: Known issues
       href: known-issues.md
-    - name: Archived releases
-      href: archived-release-notes.md
 - name: Quickstarts
   expanded: true
   items:
