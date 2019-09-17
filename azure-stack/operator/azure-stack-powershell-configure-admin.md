@@ -3,7 +3,7 @@ title: Connect to Azure Stack with PowerShell as an operator | Microsoft Docs
 description: Learn how to connect to Azure Stack with PowerShell as an operator
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 
@@ -12,8 +12,8 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 07/23/2019
-ms.author: mabrigg
+ms.date: 09/17/2019
+ms.author: justinha
 ms.reviewer: thoroet
 ms.lastreviewed: 01/24/2019
 ---
@@ -34,6 +34,8 @@ Run the following prerequisites either from the [development kit](../asdk/asdk-c
 ## Connect with Azure AD
 
 Configure the Azure Stack operator environment with PowerShell. Run one of the following scripts: Replace the Azure Active Directory (Azure AD) tenantName and Azure Resource Manager endpoint values with your own environment configuration. 
+
+[!include[Remove Account](remove-account.md)]
 
 ```powershell  
     # Register an Azure Resource Manager environment that targets your Azure Stack instance. Get your Azure Resource Manager endpoint value from your service provider.
