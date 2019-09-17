@@ -31,13 +31,13 @@ You can also get usage data and export it to your own billing or chargeback syst
 
 Each resource provider in Azure Stack posts usage data per resource usage. The usage service periodically (hourly and daily) aggregates usage data and stores it in the usage database. Azure Stack operators and users can access the stored usage data through the Azure Stack resource usage APIs.
 
-If you've [registered your Azure Stack instance with Azure](azure-stack-registration.md), Azure Stack is configured to send the usage data to Azure Commerce. After the data is uploaded to Azure, you can access it through the billing portal or by using Azure resource usage APIs. For more info on what usage data is reported to Azure, see [Usage data reporting](azure-stack-usage-reporting.md).  
+If you've [registered your Azure Stack instance with Azure](azure-stack-registration.md), Azure Stack is configured to send the usage data to Azure Commerce. After the data is uploaded to Azure, you can access it through the billing portal or by using Azure resource usage APIs. For more information about what usage data is reported to Azure, see [Usage data reporting](azure-stack-usage-reporting.md).  
 
 The following image shows the key components in the usage pipeline:
 
 ![Usage pipeline](media/azure-stack-billing-and-chargeback/usagepipeline.png)
 
-## What usage info can I find, and how?
+## What usage information can I find, and how?
 
 Azure Stack resource providers (such as Compute, Storage, and Network) generate usage data at hourly intervals for each subscription. The usage data contains information about the resource used, such as resource name, subscription used, and quantity used. To learn about the meters' ID resources, see the [Usage API FAQ](azure-stack-usage-related-faq.md).
 
@@ -50,9 +50,9 @@ The Azure billing portal shows usage data for the chargeable resources. In addit
 
 ## Usage reporting for multi-tenant Cloud Service Providers
 
-A multi-user Cloud Service Provider (CSP) using Azure Stack might want to report each customer usage separately, so that the provider can charge usage to different Azure subscriptions.
+A multi-tenant Cloud Solution Provider (CSP) using Azure Stack might want to report each customer usage separately, so that the provider can charge usage to different Azure subscriptions.
 
-Each customer has their identity represented by a different Azure Active Directory (Azure AD) tenant. Azure Stack supports assigning one CSP subscription to each Azure AD tenant. You can add tenants and their subscriptions to the base Azure Stack registration. The base registration is done for all Azure Stack instances. If a subscription isn't registered for a user, the user can still use Azure Stack, and their usage will be sent to the subscription used for the base registration.
+Each customer has their identity represented by a different Azure Active Directory (Azure AD) tenant. Azure Stack supports assigning one CSP subscription to each Azure AD tenant. You can add tenants and their subscriptions to the base Azure Stack registration. The base registration is done for all Azure Stack instances. If a subscription isn't registered for a tenant, the user can still use Azure Stack, and their usage will be sent to the subscription used for the base registration.
 
 ## Next steps
 
