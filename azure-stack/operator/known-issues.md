@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2019
+ms.date: 09/17/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 09/13/2019
@@ -21,10 +21,20 @@ ms.lastreviewed: 09/13/2019
 
 # Azure Stack known issues
 
-This article lists known issues in releases of Azure Stack. The list is updated as new issues are identified.
+This article lists known issues in releases of Azure Stack. The list is updated as new issues are identified. **To access known issues for a different version, use the version picker in the upper left.**
 
+::: moniker range=">=azs-1905"
 > [!IMPORTANT]  
 > Review this section before applying the update.
+::: moniker-end
+::: moniker range="<azs-1905"
+> [!IMPORTANT]  
+> If your Azure Stack instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support). 
+::: moniker-end
+
+<!---------------------------------------------------------->
+<!------------------- SUPPORTED VERSIONS ------------------->
+<!---------------------------------------------------------->
 
 ::: moniker range="azs-1908"
 ## 1908 update process
@@ -662,12 +672,19 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 <!-- ### Marketplace -->
 ::: moniker-end
 
-::: moniker range=">azs-1904"
-## How to access archived known issues
+::: moniker range=">=azs-1905"
+## Archived known issues
+Use the version selector in the upper left of the page, to access archived known issues.
 
-Use the version selector in the upper left of the page, to select an archived version and instructions for accessing archived release notes.
+## Next steps
+
+- [Review update activity checklist](azure-stack-release-notes-checklist.md)
+- [Review list of security updates](azure-stack-release-notes-security-updates.md)
 ::: moniker-end
 
+<!------------------------------------------------------------>
+<!------------------- UNSUPPORTED VERSIONS ------------------->
+<!------------------------------------------------------------>
 ::: moniker range="azs-1904"
 ## 1904 archived known issues
 ::: moniker-end
@@ -706,10 +723,5 @@ Use the version selector in the upper left of the page, to select an archived ve
 ::: moniker-end
 
 ::: moniker range="<azs-1905"
-You can see [older versions of Azure Stack release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
+You can find [older versions of Azure Stack known issues on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
-
-## Next steps
-
-- [Review update activity checklist](azure-stack-release-notes-checklist.md)
-- [Review list of security updates](azure-stack-release-notes-security-updates.md)

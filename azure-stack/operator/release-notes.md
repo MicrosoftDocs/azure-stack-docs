@@ -1,6 +1,6 @@
 ---
 title: Azure Stack release notes | Microsoft Docs
-description: Learn about the updates for Azure Stack integrated systems, including what's new, known issues, and where to download the update.
+description: Learn about the updates for Azure Stack integrated systems, including what's new, and where to download the update.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 09/17/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
@@ -23,11 +23,20 @@ ms.lastreviewed: 08/30/2019
 
 *Applies to: Azure Stack integrated systems*
 
-This article describes the contents of Azure Stack update packages. The update includes what's new improvements, and fixes for this release of Azure Stack.
+This article describes the contents of Azure Stack update packages. The update includes what's new improvements, and fixes for this release of Azure Stack. **To access release notes for a different version, use the version picker in the upper left.**
 
+::: moniker range=">=azs-1905"
 > [!IMPORTANT]  
 > This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
+::: moniker-end
+::: moniker range="<azs-1905"
+> [!IMPORTANT]  
+> If your Azure Stack instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support). 
+::: moniker-end
 
+<!---------------------------------------------------------->
+<!------------------- SUPPORTED VERSIONS ------------------->
+<!---------------------------------------------------------->
 ::: moniker range="azs-1908"
 ## 1908 build reference
 
@@ -480,12 +489,31 @@ After the installation of this update, install any applicable hotfixes. For more
 - [Azure Stack hotfix 1.1905.3.48](https://support.microsoft.com/help/4510078)
 ::: moniker-end
 
-::: moniker range=">azs-1904"
-## How to access archived release notes
+::: moniker range=">=azs-1905"
+## Automatic update notifications
 
-Use the version selector in the upper left of the page, to select an archived version and instructions for accessing archived release notes.
+Systems that can access the internet from the infrastructure network will see the **Update available** message in the operator portal. Systems without internet access can download and import the .zip file with the corresponding .xml.
+
+> [!TIP]  
+> Subscribe to the following *RSS* or *Atom* feeds to keep up with Azure Stack hotfixes:
+>
+> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
+> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
+
+## Archived release notes
+Use the version selector in the upper left of the page, to access archived release notes.
+
+## Next steps
+
+- For an overview of the update management in Azure Stack, see [Manage updates in Azure Stack overview](azure-stack-updates.md).  
+- For more information about how to apply updates with Azure Stack, see [Apply updates in Azure Stack](azure-stack-apply-updates.md).
+- To review the servicing policy for Azure Stack integrated systems, and what you must do to keep your system in a supported state, see [Azure Stack servicing policy](azure-stack-servicing-policy.md).  
+- To use the Privileged End Point (PEP) to monitor and resume updates, see [Monitor updates in Azure Stack using the privileged endpoint](azure-stack-monitor-update.md).
 ::: moniker-end
 
+<!------------------------------------------------------------>
+<!------------------- UNSUPPORTED VERSIONS ------------------->
+<!------------------------------------------------------------>
 ::: moniker range="azs-1904"
 ## 1904 archived release notes
 ::: moniker-end
@@ -524,22 +552,7 @@ Use the version selector in the upper left of the page, to select an archived ve
 ::: moniker-end
 
 ::: moniker range="<azs-1905"
-You can see [older versions of Azure Stack release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived release notes are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
+You can find [older versions of Azure Stack release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
 
-## Automatic update notifications
 
-Systems that can access the internet from the infrastructure network will see the **Update available** message in the operator portal. Systems without internet access can download and import the .zip file with the corresponding .xml.
-
-> [!TIP]  
-> Subscribe to the following *RSS* or *Atom* feeds to keep up with Azure Stack hotfixes:
->
-> - [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss)
-> - [Atom](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom)
-
-## Next steps
-
-- For an overview of the update management in Azure Stack, see [Manage updates in Azure Stack overview](azure-stack-updates.md).  
-- For more information about how to apply updates with Azure Stack, see [Apply updates in Azure Stack](azure-stack-apply-updates.md).
-- To review the servicing policy for Azure Stack integrated systems, and what you must do to keep your system in a supported state, see [Azure Stack servicing policy](azure-stack-servicing-policy.md).  
-- To use the Privileged End Point (PEP) to monitor and resume updates, see [Monitor updates in Azure Stack using the privileged endpoint](azure-stack-monitor-update.md).
