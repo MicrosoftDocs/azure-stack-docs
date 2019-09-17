@@ -125,7 +125,7 @@ You can use role-based access control (RBAC) to grant system access to authorize
 
 Azure Stack RBAC has three basic roles that apply to all resource types: Owner, Contributor, and Reader. Owner has full access to all resources including the right to delegate access to others. Contributor can create and manage all types of Azure resources but can't grant access to others. Reader can only view existing resources. The rest of the RBAC roles allow management of specific Azure resources. For instance, the Virtual Machine Contributor role allows creation and management of virtual machines but does not allow management of the virtual network or the subnet that the virtual machine connects to.
 
-> See [Manage Role-Based Access Control](azure-stack-manage-permissions.md) for more information. 
+> See [Manage role-based access control](azure-stack-manage-permissions.md) for more information. 
 
 ## Reporting usage data
 Azure Stack collects and aggregates usage data across all resource providers, and transmits it to Azure for processing by Azure commerce. The usage data collected on Azure Stack can be viewed via a REST API. There is an Azure-consistent Tenant API as well as Provider and Delegated Provider APIs to get usage data across all tenant subscriptions. This data can be used to integrate with an external tool or service for billing or chargeback. Once usage has been processed by Azure commerce, it can be viewed in the Azure billing portal.
