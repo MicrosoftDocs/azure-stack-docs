@@ -1,18 +1,18 @@
 ---
-title: Create a custom .azpkg
-description: Learn how to create a custom .azpkg.
+title: Create a custom Azure Gallery Package (.azpkg) on Azure Stack | Microsoft Docs
+description: Learn how to create a custom .azpkg on Azure Stack.
 author: sethmanheim
 manager: femila
 
 ms.author: sethm
-ms.date: 9/16/2019
+ms.date: 9/17/2019
 ms.topic: conceptual
 ms.service: azure-stack
 ms.reviewer: kivenkat
-ms.lastreviewed: 9/16/2019
+ms.lastreviewed: 9/17/2019
 ---
 
-# Create a custom Azure Stack Marketplace package
+# Create a custom Azure Gallery Package on Azure Stack
 
 Every item published to the Azure Stack Marketplace uses the Azure Gallery Package (.azpkg) format. The *Azure Gallery Packager* tool enables you to create a custom package that you can deploy to the Azure Stack marketplace, which can then be downloaded by users. The deployment process uses an Azure Resource Manager template.
 
@@ -20,9 +20,9 @@ Every item published to the Azure Stack Marketplace uses the Azure Gallery Packa
 
 There are different types of gallery items on the Azure Stack Marketplace:
 
-- Single Virtual Machine (single VM).
-- Multiple Virtual Machines (multi-VM), also called *Solution templates*.
-- Virtual Machine extensions.
+- [Single Virtual Machine (single VM)](/azure/marketplace/marketplace-virtual-machines).
+- [Multiple Virtual Machines (multi-VM), also called *Solution templates*](/azure/marketplace/marketplace-solution-templates).
+- [Virtual Machine extensions](/azure/virtual-machines/extensions/overview).
 
 This article uses single VMs of type Windows or Linux as an example.
 
@@ -147,11 +147,7 @@ To import the gallery package into Azure Stack, the first step is to remotely co
     https://sample.blob.core.windows.net/gallerypackages/*offer.publisher.version*.azpkg –Verbose
     ```
 
-3. Verify that you have a valid Storage account that is available to store your item. The `name` parameter is the name of your gallery package, without the extension .azpkg. For the path, provide the path to the .azpkg file:
-
-    [![Storage verification](media/azure-stack-create-azpkg/pkg4sm.png "Verify storage")](media/azure-stack-create-azpkg/pkg4.png#lightbox)
-
-4. Alternatively, you can just run the following cmdlet, which prompts you for the Gallery package URI:
+3. Verify that you have a valid Storage account that is available to store your item. You can run the following cmdlet, which prompts you for the Gallery package URI:
 
     ```powershell
     Add-AzsGalleryItem
