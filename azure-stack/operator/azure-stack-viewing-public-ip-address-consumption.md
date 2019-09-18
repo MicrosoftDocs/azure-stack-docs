@@ -1,5 +1,5 @@
 ---
-title: Manage network resouces in Azure Stack | Microsoft Docs
+title: Manage network resources in Azure Stack | Microsoft Docs
 description: Administrators can manage network resources, including the MAC address pool and the consumption of public IP addresses in a region
 services: azure-stack
 documentationcenter: ''
@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 09/17/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.lastreviewed: 01/14/2019
+ms.lastreviewed: 09/17/2019
 
 ---
 # Manage network resources
@@ -61,7 +61,7 @@ in the region:
 1. In the Azure Stack administrator portal, select **All services**. Then, under the **ADMINISTRATION** category select **Network**.
 1. The **Network** pane displays the **Public IP pools usage** tile in the **Overview** section.
 
-![Network Resource Provider pane](media/azure-stack-viewing-public-ip-address-consumption/image01.png)
+    ![Network Resource Provider pane](media/azure-stack-viewing-public-ip-address-consumption/ip-address-consumption-01.png)
 
 The **Used** number represents the number of assigned public IP addresses from public IP address pools. The **Free** number represents the number of public IP addresses from public IP address pools that have not been assigned and are still available. The **% Used** number represents the number of used or assigned addresses as a percentage of the total number of public IP addresses in public IP address pools in that location.
 
@@ -69,7 +69,7 @@ The **Used** number represents the number of assigned public IP addresses from p
 
 Select **Public IP addresses** under **Tenant Resources**. Review the list of public IP addresses explicitly created by tenant subscriptions in a specific region.
 
-![Tenant public IP addresses](media/azure-stack-viewing-public-ip-address-consumption/image02.png)
+![Tenant public IP addresses](media/azure-stack-viewing-public-ip-address-consumption/ip-address-consumption-02.png)
 
 You might notice that some public IP addresses that have been dynamically allocated appear in the list. However, an address hasn't been associated with them yet. The address resource has been created in the Network Resource Provider, but not yet in the Network Controller.
 
