@@ -52,7 +52,7 @@ Azure Stack operators will also need to do these things as needed from day-to-da
 > * Analyze details of failed requests using query language
 > * Create a new work item to correct the faulty code
 
-From Brian:
+## List from Brian
 
 1.	Prioritizing and resolving tickets for the service desk 
 1.	Tenant User requests (Adding users to selfhost, creating subscriptions, etc As requests come in.
