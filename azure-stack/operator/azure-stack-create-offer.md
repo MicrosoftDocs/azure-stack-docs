@@ -29,7 +29,7 @@ ms.lastreviewed: 06/11/2019
 
    ![Create an offer in Azure Stack](media/azure-stack-create-offer/offers.png)
 
-2. A tabbed user interface appears that enables you to define the offer name, and add existing or create new base plans and add-on plans. Most importantly, you can review the details of the offer you create before you decide to create it.
+2. A tabbed user interface appears that enables you to define the offer name. You can also add existing or create new base plans and add-on plans. Most importantly, you can review the details of the offer you create before you decide to create it.
 
    In the **Basics** tab, enter a **Display Name** and a **Resource Name**, and then under **Resource Group**, select **Create new** or **Use existing**. The display name is the friendly name for the offer. This friendly name is the only information about the offer that users see when they subscribe to an offer in the user portal. Use an intuitive name that helps users understand what comes with the offer. Only the admin can see the resource name. It's the name that admins use to work with the offer as an Azure Resource Manager resource. In this tab, you can also choose to make this offer public or keep it private. The default setting is private. You can [change the public or private state of the offer](#change-the-state-of-an-offer) at any time.
 
