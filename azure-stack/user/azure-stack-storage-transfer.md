@@ -109,6 +109,7 @@ azcopy cp "/path/to/file.txt" "https://[account].blob.core.windows.net/[containe
  - Any AzCopy operation on a file storage isn't available because file storage isn't yet available in Azure Stack.
  - If you want to transfer data between two Azure Stack blob locations—or between Azure Stack and Azure Storage by using AzCopy 10.1—you need to download the data to a local location first, and then reupload to the target directory on Azure Stack or Azure Storage. Or you can use AzCopy 7.1, and specify the transfer with the **/SyncCopy** option to copy the data.  
  - The Linux version of AzCopy only supports the 1802 update or later versions and it doesn't support Table service.
+ - If you want to copy data to and from your Azure Table storage service, then [install AzCopy version 7.3.0](https://aka.ms/azcopyforazurestack20171109)
  
 ## Azure PowerShell
 

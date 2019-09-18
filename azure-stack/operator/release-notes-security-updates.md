@@ -182,7 +182,6 @@ This article lists all the security updates in the last four updates of Azure St
 
 Because of the cumulative nature of Windows updates, this update also contains the security payloads for the previous months. This list of CVEs reflects the security payload of June, July, and August 2019.
 For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base articles [4511553](https://support.microsoft.com/help/4511553).
-
 ::: moniker-end
 
 ::: moniker range="azs-1907"
@@ -296,5 +295,5 @@ For more information about these vulnerabilities, click on the preceding links, 
 
 ## Next steps
 
-- [Review update activity checklist](azure-stack-release-notes-checklist.md)
-- [Review list of known issues](azure-stack-release-notes-known-issues-1908.md)
+- [Review update activity checklist](release-notes-checklist.md)
+- [Review list of known issues](known-issues.md)
