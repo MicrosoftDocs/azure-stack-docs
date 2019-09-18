@@ -143,6 +143,8 @@
     items:
     - name: Administration basics
       href: azure-stack-manage-basics.md
+    - name: Opertaions checklist
+      href: azure-stack-operations-checklist.md  
     - name: Clear user data from portal
       href: azure-stack-portal-clear.md 
     - name: Configure telemetry collection
