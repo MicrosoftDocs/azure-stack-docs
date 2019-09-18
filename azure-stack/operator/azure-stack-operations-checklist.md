@@ -22,19 +22,20 @@ ms.lastreviewed: 09/19/2019
 
 ## Azure Stack operations checklist
 
-## Routine daily and weekly operations
+This topic covers common tasks that Azure tack operators need to perform and how odten to perform them. 
 
+## Routine daily and weekly operations
 
 Azure Stack operators need to do the following things routinely:
 
 > [!div class="checklist"]
-> * Monitor SCOM and [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) twice daily
-> * Identify exceptions for different components of your application
+> * Monitor and remediate SCOM and [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) errors twice daily
+> * Identify exceptions 
 > * View details of an exception
+> * Run [Test-AzureStack](azure-stack-diagnostic-test.md)
 > * Download a snapshot of the exception to Visual Studio for debugging
-> * Analyze details of failed requests using query language
-> * Create a new work item to correct the faulty code
-
+> * Analyze details of failed requests 
+> * Create new work items
 
 
 ## Day-to-day operations
@@ -44,12 +45,14 @@ Azure Stack operators will also need to do these things as needed from day-to-da
 > [!div class="checklist"]
 > * Add pilot users to test ring (SelfHosting)
 > * Create subscriptions
+> * Patch & updates (Software and FRU updates)
 > * Identify exceptions for different components of your application
 > * View details of an exception
 > * Download a snapshot of the exception to Visual Studio for debugging
 > * Analyze details of failed requests using query language
 > * Create a new work item to correct the faulty code
 
+From Brian:
 
 1.	Prioritizing and resolving tickets for the service desk 
 1.	Tenant User requests (Adding users to selfhost, creating subscriptions, etc As requests come in.
