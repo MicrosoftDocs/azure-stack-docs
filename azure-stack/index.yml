@@ -35,15 +35,42 @@ highlightedContent:
 # conceptualContent section (optional)
 conceptualContent:
 # itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
-  title: Operator 1
-  summary: Documentation set for operator tasks.
+  title: Documentation sets
+  summary: 
   items:
-    - title: Operator 2
+    - title: Operator
       links:
+        - url: /operator/release-notes.md
+          itemType: overview
+          text: Release notes
+        - url: /operator/security-updates.md
+          itemType: overview
+          text: Security updates
         - url: /operator/azure-stack-manage-portals.md
           itemType: quickstart
-          text: Use the administration portal
+          text: Use the administration portal          
       # footerLink (optional)
       footerLink:
         url: /operator
         text: See more
+    - title: User
+      links:
+        - url: /user/azure-stack-quick-windows-portal.md
+          itemType: quickstart
+          text: Create a Windows Server VM
+      # footerLink (optional)
+      footerLink:
+        url: /user
+        text: See more
+    - title: Azure Stack Development Kit (ASDK)
+      links:
+        - url: /asdk/asdk-what-is
+          itemType: overview
+          text: What is the ASDK?
+        - url: /asdk/asdk-release-notes
+          itemType: overview
+          text: ASDK release notes        
+      # footerLink (optional)
+      footerLink:
+        url: /asdk
+        text: See more                
