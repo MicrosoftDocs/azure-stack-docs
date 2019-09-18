@@ -42,7 +42,7 @@ This article describes the contents of Azure Stack update packages. The update i
 
 The Azure Stack 1908 update build number is **1.1908.0.20**.
 
-### Update type
+### <a name="update-type-1908"></a>Update type
 
 For 1908, the underlying operating system on which Azure Stack runs has been updated to Windows Server 2019. This enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack in the near future.
 
@@ -58,7 +58,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- The current theme (if any) of this release. -->
 
-### What's new
+### <a name="whats-new-1908"></a>What's new
 
 <!-- What's new, also net new experiences and features. -->
 
@@ -66,16 +66,16 @@ For more information about update build types, see [Manage updates in Azure Stac
 - All components of Azure Stack infrastructure now operate in FIPS 140-2 mode.
 - Azure Stack operators can now remove portal user data. For more information, see [Clear portal user data from Azure Stack](azure-stack-portal-clear.md).
 
-### Improvements
+### <a name="improvements-1908"></a>Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 - Improvements to data at rest encryption of Azure Stack to persist secrets into the hardware Trusted Platform Module (TPM) of the physical nodes.
 
-### Changes
+### <a name="changes-1908"></a>Changes
 
 - Hardware providers will be releasing OEM extension package 2.1 or later at the same time as Azure Stack version 1908. The OEM extension package 2.1 or later is a prerequisite for Azure Stack version 1908. For more information about how to download OEM extension package 2.1 or later, contact your system's hardware provider, and see the [OEM updates](azure-stack-update-oem.md#oem-contact-information) article.  
 
-### Fixes
+### <a name="fixes-1908"></a>Fixes
 
 - Fixed an issue with compatibility with future Azure Stack OEM updates and an issue with VM deployment useing customer user images. This issue was found in 1907 and fixed in hotfix [KB4517473](https://support.microsoft.com/en-us/help/4517473/azure-stack-hotfix-1-1907-12-44)  
 - Fixed an issue with OEM Firmware update and corrected misdiagnosis in Test-AzureStack for Fabric Ring Health. This issue was found in 1907 and fixed in hotfix [KB4515310](https://support.microsoft.com/en-us/help/4515310/azure-stack-hotfix-1-1907-7-35)
@@ -84,11 +84,11 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
-## Security updates
+## <a name="security-updates-1908"></a>Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates.md).
 
-## Update planning
+## <a name="update-planning-1908"></a>Update planning
 
 Before applying the update, make sure to review the following information:
 
@@ -96,11 +96,11 @@ Before applying the update, make sure to review the following information:
 - [Security updates](azure-stack-release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](azure-stack-release-notes-checklist.md)
 
-## Download the update
+## <a name="download-the-update-1908"></a>Download the update
 
 You can download the Azure Stack 1908 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
 
-## Hotfixes
+## <a name="hotfixes-1908"></a>Hotfixes
 
 Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1907 before updating Azure Stack to 1908.
 

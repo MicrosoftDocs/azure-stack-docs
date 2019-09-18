@@ -36,7 +36,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 
 ### Fixed and known issues
 
-<!-- - For a list of Azure Stack issues fixed in this release, see [this section](../operator/azure-stack-release-notes-1908.md#fixes) of the Azure Stack release notes. -->
+<!-- - For a list of Azure Stack issues fixed in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1908#fixes) of the Azure Stack release notes. -->
 - For a list of known issues, see [this article](/azure-stack/operator/known-issues?view=azs-1908).
 - Note that available Azure Stack hotfixes are not applicable to the ASDK.
 ::: moniker-end
