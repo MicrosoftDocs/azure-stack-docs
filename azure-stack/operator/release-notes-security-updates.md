@@ -295,5 +295,5 @@ For more information about these vulnerabilities, click on the preceding links, 
 
 ## Next steps
 
-- [Review update activity checklist](azure-stack-release-notes-checklist.md)
-- [Review list of known issues](azure-stack-release-notes-known-issues-1908.md)
+- [Review update activity checklist](release-notes-checklist.md)
+- [Review list of known issues](known-issues.md)
