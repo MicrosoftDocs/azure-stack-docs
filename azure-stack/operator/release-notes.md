@@ -128,7 +128,7 @@ After the installation of this update, install any applicable hotfixes. For more
 
 The Azure Stack 1907 update build number is **1.1907.0.20**.
 
-### <a name="update-type-1907">Update type
+### <a name="update-type-1907"></a>Update type
 
 The Azure Stack 1907 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. Based on internal testing, the expected time it takes for the 1907 update to complete is approximately 13 hours.
 
@@ -140,7 +140,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 <!-- The current theme (if any) of this release. -->
 
-### <a name="whats-new-1907">What's new
+### <a name="whats-new-1907"></a>What's new
 
 <!-- What's new, also net new experiences and features. -->
 
@@ -150,7 +150,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Added an internal secret rotation procedure to rotate internal SQL TLS certificates as required during a system update.
 
-### <a name="improvements-1907">Improvements
+### <a name="improvements-1907"></a>Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
@@ -167,7 +167,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Improved storage of internal logs for administrator operations. This results in improved performance and reliability during administrator operations by minimizing the memory and storage consumption of internal log processes. You might also notice improved page load times of the update blade in the administrator portal. As part of this improvement, update logs older than 6 months will no longer be available in the system. If you require logs for these updates, be sure to [Download the summary](azure-stack-apply-updates.md) for all update runs older than 6 months before performing the 1907 update.
 
-### <a name="changes-1907">Changes
+### <a name="changes-1907"></a>Changes
 
 - Azure Stack version 1907 contains a warning alert that instructs operators to be sure to update their system's OEM package to version 2.1 or later before updating to version 1908. For more information about how to apply Azure Stack OEM updates, see [Apply an Azure Stack original equipment manufacturer update](azure-stack-update-oem.md).
 
@@ -179,7 +179,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - We now validate that an image being ingested into the **Compute -> VM images** blade is of type page blob.
 
-### <a name="fixes-1907">Fixes
+### <a name="fixes-1907"></a>Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 - Fixed an issue in which the publisher, offer, and SKU were treated as case sensitive in a Resource Manager template: the image was not fetched for deployment unless the image parameters were the same case as that of the publisher, offer, and SKU.
@@ -208,11 +208,11 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Fixed an issue in the health resource provider which impacted the availability of the region and alert blades in the administrator portal. This issue was found in 1906 and fixed in hotfix [KB4512794](https://support.microsoft.com/help/4512794).
 
-## <a name="security-updates-1907">Security updates
+## <a name="security-updates-1907"></a>Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates.md).
 
-## <a name="update-planning-1907">Update planning
+## <a name="update-planning-1907"></a>Update planning
 
 Before applying the update, make sure to review the following information:
 
@@ -220,11 +220,11 @@ Before applying the update, make sure to review the following information:
 - [Security updates](azure-stack-release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](azure-stack-release-notes-checklist.md)
 
-## <a name="download-the-update-1907">Download the update
+## <a name="download-the-update-1907"></a>Download the update
 
 You can download the Azure Stack 1907 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
 
-## <a name="hotfixes-1907">Hotfixes
+## <a name="hotfixes-1907"></a>Hotfixes
 
 Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1906 before updating Azure Stack to 1907.
 
@@ -250,11 +250,11 @@ After the installation of this update, install any applicable hotfixes. For more
 
 The Azure Stack 1906 update build number is **1.1906.0.30**.
 
-### <a name="update-type-1906">Update type
+### <a name="update-type-1906"></a>Update type
 
 The Azure Stack 1906 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. The expected time it takes for the 1906 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack environment. Exact update runtimes will typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack operators unless the update fails. This runtime approximation is specific to the 1906 update and should not be compared to other Azure Stack updates.
 
-## <a name="whats-in-this-update-1906">What's in this update
+## <a name="whats-in-this-update-1906"></a>What's in this update
 
 <!-- The current theme (if any) of this release. -->
 
@@ -270,7 +270,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - Visual Studio Code is now supported with Azure Stack deployment using AD FS.
 
-### <a name="improvements-1906">Improvements
+### <a name="improvements-1906"></a>Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
@@ -288,7 +288,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - The 1906 release introduces greater visibility into update progress, so you can be assured that updates are not pausing. This results in an increase in the total number of update steps shown to operators in the **Update** blade. You might also notice more update steps happening in parallel than in previous updates.
 
-#### <a name="networking-updates-1906">Networking updates
+#### <a name="networking-updates-1906"></a>Networking updates
 
 - Updated lease time set in DHCP responder to be consistent with Azure.
 
@@ -296,7 +296,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - Removed the **Standard** SKU option from both the load balancer and public IP, as that is currently not supported.
 
-### <a name="changes-1906">Changes
+### <a name="changes-1906"></a>Changes
 
 - Creating a storage account experience is now consistent with Azure.
 
@@ -306,7 +306,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - Updated strings in infrastructure backup resource provider for consistent terminology.
 
-### <a name="fixes-1906">Fixes
+### <a name="fixes-1906"></a>Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
@@ -328,11 +328,11 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - You can now remove a scale set from the **Virtual machine scale sets** blade.
 
-## <a name="security-updates-1906">Security updates
+## <a name="security-updates-1906"></a>Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates.md).
 
-## <a name="update-planning-1906">Update planning
+## <a name="update-planning-1906"></a>Update planning
 
 Before applying the update, make sure to review the following information:
 
@@ -340,11 +340,11 @@ Before applying the update, make sure to review the following information:
 - [Security updates](azure-stack-release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](azure-stack-release-notes-checklist.md)
 
-## <a name="download-the-update-1906">Download the update
+## <a name="download-the-update-1906"></a>Download the update
 
 You can download the Azure Stack 1906 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
 
-## <a name="hotfixes-1906">Hotfixes
+## <a name="hotfixes-1906"></a>Hotfixes
 
 Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1905 before updating Azure Stack to 1906. After updating, install any [available hotfixes for 1906](#after-successfully-applying-the-1906-update).
 
@@ -370,7 +370,7 @@ After the installation of this update, install any applicable hotfixes. For more
 
 The Azure Stack 1905 update build number is **1.1905.0.40**.
 
-### <a name="update-type-1905">Update type
+### <a name="update-type-1905"></a>Update type
 
 The Azure Stack 1905 update build type is **Full**. As a result, the 1905 update has a longer runtime than express updates like 1903 and 1904. Exact runtimes for full updates typically depend on the number of nodes that your Azure Stack instance contains, the capacity used on your system by tenant workloads, your system's network connectivity (if connected to the internet), and your system hardware configuration. The 1905 update has had the following expected runtimes in our internal testing: 4 nodes - 35 hours, 8 nodes - 45 hours, 12 nodes - 55 hours, 16 nodes - 70 hours. 1905 runtimes lasting longer than these expected values are not uncommon and do not require action by Azure Stack operators unless the update fails. For more information about update build types, see [Manage updates in Azure Stack](azure-stack-updates.md).
 
