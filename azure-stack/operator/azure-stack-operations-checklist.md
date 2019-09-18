@@ -28,7 +28,7 @@ ms.lastreviewed: 09/19/2019
 Azure Stack operators need to do the following things routinely:
 
 > [!div class="checklist"]
-> * Modify your project to enable exception tracking
+> * Monitor SCOM and [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) twice daily
 > * Identify exceptions for different components of your application
 > * View details of an exception
 > * Download a snapshot of the exception to Visual Studio for debugging
@@ -42,7 +42,8 @@ Azure Stack operators need to do the following things routinely:
 Azure Stack operators will also need to do these things as needed from day-to-day:
 
 > [!div class="checklist"]
-> * Modify your project to enable exception tracking
+> * Add pilot users to test ring (SelfHosting)
+> * Create subscriptions
 > * Identify exceptions for different components of your application
 > * View details of an exception
 > * Download a snapshot of the exception to Visual Studio for debugging
@@ -50,3 +51,8 @@ Azure Stack operators will also need to do these things as needed from day-to-da
 > * Create a new work item to correct the faulty code
 
 
+1.	Prioritizing and resolving tickets for the service desk 
+1.	Tenant User requests (Adding users to selfhost, creating subscriptions, etc As requests come in.
+2.	Patch & updates (Software and FRU updates) - If Needed
+3.	Monitoring & Remediation (SCOM & OMS, twice a day
+4.	Run Test AzureStack once a day. 
