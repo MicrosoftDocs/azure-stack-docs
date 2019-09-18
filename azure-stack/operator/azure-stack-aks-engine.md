@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 09/18/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 06/18/2019
+ms.lastreviewed: 09/18/2019
 
 ---
 
@@ -25,7 +25,7 @@ ms.lastreviewed: 06/18/2019
 
 You can offer the Azure Kubernetes Services (AKS) Engine as a Marketplace item to your users. Your users can deploy a Kubernetes cluster in a single, coordinated operation.
 
-The AKS Engine uses a built image, the AKS Base Image. Any AKS Engine version is dependent on a specific image version that you can make available in your Azure Stack. You can find a table listing the AKS Engine versions and corresponding supported Kubernetes versions at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions).
+The [AKS Engine](https://github.com/Azure/aks-engine) uses a built image, the AKS Base Image. Any AKS Engine version is dependent on a specific image version that you can make available in your Azure Stack. You can find a table listing the AKS Engine versions and corresponding supported Kubernetes versions at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions).
 
 The following article walks you through the items you need to add your Azure Stack to make the AKS Engine available to your users in both connected and disconnected scenarios. The AKS Engine depends on a custom script, and the AKS Base Image offered in the marketplace.
 
@@ -37,6 +37,8 @@ The following article walks you through the items you need to add your Azure Sta
 ## Create a plan, an offer, and a subscription
 
 Create a plan, an offer, and a subscription for the Kubernetes Marketplace item. You can also use an existing plan and offer.
+
+Users will often want to deploy clusters of up to six VMs, made of three masters and three worker nodes. You will want to make sure you have enough space in the quota.
 
 1. Sign in to the [Administration portal.](https://adminportal.local.azurestack.external)
 
