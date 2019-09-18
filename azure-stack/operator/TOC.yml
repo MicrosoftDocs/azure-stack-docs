@@ -11,7 +11,7 @@
   - name: Release notes
     items:
     - name: Security updates
-      href: azure-stack-release-notes-security-updates.md
+      href: release-notes-security-updates.md
     - name: Release notes
       href: release-notes.md
     - name: Known issues
@@ -152,7 +152,7 @@
       - name: Updates and servicing policy
         href: azure-stack-servicing-policy.md
       - name: Checklist for applying updates
-        href: azure-stack-release-notes-checklist.md
+        href: release-notes-checklist.md
       - name: Plan for update
         href: azure-stack-update-plan.md
       - name: Prepare the update package

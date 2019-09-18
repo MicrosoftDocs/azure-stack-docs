@@ -36,6 +36,21 @@
       "redirect_document_id": true
     },
     {
+      "source_path": "azure-stack/operator/azure-stack-update-1710.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1711.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1712.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/operator/azure-stack-update-1802.md",
       "redirect_url": "/azure-stack/operator/release-notes",
       "redirect_document_id": false
@@ -142,39 +157,34 @@
     },            
     {
       "source_path": "azure-stack/operator/azure-stack-release-notes-security-updates-1904.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-security-updates",
+      "redirect_url": "/azure-stack/operator/release-notes-security-updates",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/operator/azure-stack-release-notes-security-updates-1905.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-security-updates",
+      "redirect_url": "/azure-stack/operator/release-notes-security-updates",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/operator/azure-stack-release-notes-security-updates-1906.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-security-updates",
+      "redirect_url": "/azure-stack/operator/release-notes-security-updates",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/operator/azure-stack-release-notes-security-updates-1907.md",
-      "redirect_url": "/azure-stack/operator/azure-stack-release-notes-security-updates",
+      "redirect_url": "/azure-stack/operator/release-notes-security-updates",
       "redirect_document_id": false
     },
     {
-      "source_path": "azure-stack/operator/azure-stack-update-1710.md",
-      "redirect_url": "/azure-stack/operator/release-notes",
+      "source_path": "azure-stack/operator/azure-stack-release-notes-security-updates.md",
+      "redirect_url": "/azure-stack/operator/release-notes-security-updates",
       "redirect_document_id": false
-    },
+    },    
     {
-      "source_path": "azure-stack/operator/azure-stack-update-1711.md",
-      "redirect_url": "/azure-stack/operator/release-notes",
+      "source_path": "azure-stack/operator/azure-stack-release-notes-checklist.md",
+      "redirect_url": "/azure-stack/operator/release-notes-checklist",
       "redirect_document_id": false
-    },
-    {
-      "source_path": "azure-stack/operator/azure-stack-update-1712.md",
-      "redirect_url": "/azure-stack/operator/release-notes",
-      "redirect_document_id": false
-    },
+    },        
     {
       "source_path": "azure-stack/user/azure-stack-solution-staged-data-analytics.md",
       "redirect_url": "/azure-stack/user/azure-stack-solution-staged-data",

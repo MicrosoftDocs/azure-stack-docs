@@ -679,8 +679,8 @@ To access archived known issues for an older version, use the version picker in 
 
 ## Next steps
 
-- [Review update activity checklist](azure-stack-release-notes-checklist.md)
-- [Review list of security updates](azure-stack-release-notes-security-updates.md)
+- [Review update activity checklist](release-notes-checklist.md)
+- [Review list of security updates](release-notes-security-updates.md)
 ::: moniker-end
 
 <!------------------------------------------------------------>

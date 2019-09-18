@@ -50,10 +50,10 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
-- [Azure Stack 1908 update](azure-stack-release-notes-1908.md)
-- [Azure Stack 1907 update](azure-stack-release-notes-1907.md)
-- [Azure Stack 1906 update](azure-stack-release-notes-1906.md)
-- [Azure Stack 1905 update](azure-stack-release-notes-1905.md)
+- [Azure Stack 1908 update](/azure-stack/operator/release-notes?view=azs-1908)
+- [Azure Stack 1907 update](/azure-stack/operator/release-notes?view=azs-1907)
+- [Azure Stack 1906 update](/azure-stack/operator/release-notes?view=azs-1906)
+- [Azure Stack 1905 update](/azure-stack/operator/release-notes?view=azs-1905)
 
 ## Hotfixes
 

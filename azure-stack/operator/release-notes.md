@@ -86,15 +86,15 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ## <a name="security-updates-1908"></a>Security updates
 
-For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates.md).
+For information about security updates in this update of Azure Stack, see [Azure Stack security updates](release-notes-security-updates.md).
 
 ## <a name="update-planning-1908"></a>Update planning
 
 Before applying the update, make sure to review the following information:
 
 - [Known issues](known-issues.md)
-- [Security updates](azure-stack-release-notes-security-updates.md)
-- [Checklist of activities before and after applying the update](azure-stack-release-notes-checklist.md)
+- [Security updates](release-notes-security-updates.md)
+- [Checklist of activities before and after applying the update](release-notes-checklist.md)
 
 ## <a name="download-the-update-1908"></a>Download the update
 
@@ -210,15 +210,15 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 ## <a name="security-updates-1907"></a>Security updates
 
-For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates.md).
+For information about security updates in this update of Azure Stack, see [Azure Stack security updates](release-notes-security-updates.md).
 
 ## <a name="update-planning-1907"></a>Update planning
 
 Before applying the update, make sure to review the following information:
 
 - [Known issues](known-issues.md)
-- [Security updates](azure-stack-release-notes-security-updates.md)
-- [Checklist of activities before and after applying the update](azure-stack-release-notes-checklist.md)
+- [Security updates](release-notes-security-updates.md)
+- [Checklist of activities before and after applying the update](release-notes-checklist.md)
 
 ## <a name="download-the-update-1907"></a>Download the update
 
@@ -330,15 +330,15 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 ## <a name="security-updates-1906"></a>Security updates
 
-For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates.md).
+For information about security updates in this update of Azure Stack, see [Azure Stack security updates](release-notes-security-updates.md).
 
 ## <a name="update-planning-1906"></a>Update planning
 
 Before applying the update, make sure to review the following information:
 
 - [Known issues](known-issues.md)
-- [Security updates](azure-stack-release-notes-security-updates.md)
-- [Checklist of activities before and after applying the update](azure-stack-release-notes-checklist.md)
+- [Security updates](release-notes-security-updates.md)
+- [Checklist of activities before and after applying the update](release-notes-checklist.md)
 
 ## <a name="download-the-update-1906"></a>Download the update
 
@@ -454,15 +454,15 @@ With this update, Windows Server 2019 can now be successfully activated on a 201
 
 ### <a name="security-updates-1905"></a>Security updates
 
-For information about security updates in this update of Azure Stack, see [Azure Stack security updates](azure-stack-release-notes-security-updates.md).
+For information about security updates in this update of Azure Stack, see [Azure Stack security updates](release-notes-security-updates.md).
 
 ## <a name="update-planning-1905"></a>Update planning
 
 Before applying the update, make sure to review the following information:
 
 - [Known issues](known-issues.md)
-- [Security updates](azure-stack-release-notes-security-updates.md)
-- [Checklist of activities before and after applying the update](azure-stack-release-notes-checklist.md)
+- [Security updates](release-notes-security-updates.md)
+- [Checklist of activities before and after applying the update](release-notes-checklist.md)
 
 ## <a name="download-the-update-1905"></a>Download the update
 
