@@ -102,4 +102,4 @@ As updates install, you can view high-level status as the update process targets
 
 - To begin the update process, follow the steps in see [Plan for an Azure Stack update](azure-stack-update-plan.md).
 - To learn what versions of Azure Stack are in support, see [Azure Stack Servicing Policy](azure-stack-servicing-policy.md).  
-- To learn more about the current and recent updates, see the [Azure Stack release notes](azure-stack-release-notes-security-updates-1907.md).
+- To learn more about the current and recent updates, see the [Azure Stack release notes](release-notes.md).
