@@ -3,7 +3,7 @@ title: Connect to Azure Stack with PowerShell as an operator | Microsoft Docs
 description: Learn how to connect to Azure Stack with PowerShell as an operator
 services: azure-stack
 documentationcenter: ''
-author: justinha
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 09/17/2019
-ms.author: justinha
+ms.date: 09/19/2019
+ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 01/24/2019
+ms.lastreviewed: 09/19/2019
 ---
 
 # Connect to Azure Stack with PowerShell as an operator
