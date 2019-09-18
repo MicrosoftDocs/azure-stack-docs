@@ -33,9 +33,9 @@ You should notify users of any maintenance operations, and that you schedule nor
 
 You can prepare to the update by making sure you have applied all the hotfixes, security patches, and OEM updates, validated the health of your Azure Stack instance, checked the available capacity, and reviewed the update package.
 
-1. Review known issues. For instructions, see [Azure Stack Known Issues](https://docs.microsoft.com/azure-stack/operator/azure-stack-release-notes-known-issues-1907).
+1. Review known issues. For instructions, see [Azure Stack Known Issues](https://docs.microsoft.com/azure-stack/operator/release-notes.md).
 
-2. Review security updates. For a list of updates, see [Azure Stack security updates](https://docs.microsoft.com/azure-stack/operator/azure-stack-release-notes-security-updates-1907).
+2. Review security updates. For a list of updates, see [Azure Stack security updates](https://docs.microsoft.com/azure-stack/operator/release-notes-security-updates.md).
 
 3. Before you start installation of this update, run [Test-AzureStack](https://docs.microsoft.com/azure-stack/operator/azure-stack-diagnostic-test) to validate the status of your Azure Stack and resolve any operational issues found, including all warnings and failures. Also review active alerts and resolve any that require action.
 
