@@ -53,7 +53,7 @@ The following information is required as inputs for the automation parameters:
 
 |Parameter|Deployment Worksheet Parameter|Description|Example|
 |---------|---------|---------|---------|
-|`CustomADGlobalCatalog`|ADFS Forest FQDN|FQDN of the target Active Directory forest<br>that you want to integrate with|Contoso.com|
+|`CustomADGlobalCatalog`|AD FS Forest FQDN|FQDN of the target Active Directory forest<br>that you want to integrate with|Contoso.com|
 |`CustomADAdminCredentials`| |A user with LDAP Read permission|YOURDOMAIN\graphservice|
 
 ### Configure Active Directory Sites
@@ -125,8 +125,8 @@ The following information is required as input for the automation parameters:
 
 |Parameter|Deployment Worksheet Parameter|Description|Example|
 |---------|---------|---------|---------|
-|CustomAdfsName|ADFS Provider Name|Name of the claims provider.<br>It appears that way on the AD FS landing page.|Contoso|
-|CustomAD<br>FSFederationMetadataEndpointUri|ADFS Metadata URI|Federation metadata link| https:\//ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
+|CustomAdfsName|AD FS Provider Name|Name of the claims provider.<br>It appears that way on the AD FS landing page.|Contoso|
+|CustomAD<br>FSFederationMetadataEndpointUri|AD FS Metadata URI|Federation metadata link| https:\//ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml |
 |SigningCertificateRevocationCheck|NA|Optional Parameter to skip CRL checking|None|
 
 
