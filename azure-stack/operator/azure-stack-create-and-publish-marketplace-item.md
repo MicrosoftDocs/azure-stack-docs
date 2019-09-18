@@ -1,6 +1,6 @@
 ---
 title: Create and publish a Marketplace item in Azure Stack | Microsoft Docs
-description: Create and publish a Marketplace item in Azure Stack.
+description: Learn how to create and publish a Marketplace item in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
