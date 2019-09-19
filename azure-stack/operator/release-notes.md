@@ -19,11 +19,11 @@ ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
 ---
 
-# Azure Stack updates
+# Azure Stack updates: release notes
 
 *Applies to: Azure Stack integrated systems*
 
-This article describes the contents of Azure Stack update packages. The update includes what's new improvements, and fixes for this release of Azure Stack. **To access release notes for a different version, use the version picker in the upper left.**
+This article describes the contents of Azure Stack update packages. The update includes what's new improvements, and fixes for this release of Azure Stack. **To access release notes for a different version, use the version selector dropdown above the table of contents on the left.**
 
 ::: moniker range=">=azs-1905"
 > [!IMPORTANT]  
@@ -502,7 +502,7 @@ Systems that can access the internet from the infrastructure network will see th
 
 ## Archive
 
-To access archived release notes for an older version, use the version picker in the upper left of the page, and select the version of interest. 
+To access archived release notes for an older version, use the version selector dropdown above the table of contents on the left, and select the version you want to see.
 
 ## Next steps
 

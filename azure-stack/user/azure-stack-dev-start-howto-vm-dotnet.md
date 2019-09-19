@@ -110,7 +110,7 @@ Create a publish target to your VM in Azure Stack.
     ![Deploy an ASP.NET web app to Azure Stack publish](media/azure-stack-dev-start-howto-vm-dotnet/deploy-app-to-azure-stack.png)
 
 1. In the **Publish** window, select **New Profile**.
-1. Select **IIS**, **FTP**, and so on.
+1. Select **IIS, FTP, etc**.
 1. Select **Publish**.
 1. For **Publish method**, select **Web Deploy**.
 1. For **Server** enter the DNS name that you defined earlier, such as *w21902.local.cloudapp.azurestack.external*.
