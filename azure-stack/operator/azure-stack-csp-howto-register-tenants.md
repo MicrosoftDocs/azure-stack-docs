@@ -48,7 +48,7 @@ After you have created a record of your customer in Partner Center, you can sell
 
 ### Create a guest user in the end customer directory
 
-By default, you, as the CSP, won't have access to the end customer's Azure Stack subscription. However, if your customer wants you to manage their resources, they can then add your account as owner/contributor to their Azure Stack subscription. In order to do that, they will need to add your account as guest user to their AAD tenant. It's advised that you use a different account from your Azure CSP account to manage your customer's Azure Stack subscription to ensure you don't lose access to customer's Azure subscription.
+By default, you, as the CSP, won't have access to the end customer's Azure Stack subscription. However, if your customer wants you to manage their resources, they can then add your account as owner/contributor to their Azure Stack subscription. In order to do that, they will need to add your account as guest user to their Azure AD tenant. It's advised that you use a different account from your Azure CSP account to manage your customer's Azure Stack subscription to ensure you don't lose access to customer's Azure subscription.
 
 ### Update the registration with the end customer subscription
 

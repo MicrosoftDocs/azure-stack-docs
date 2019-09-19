@@ -142,7 +142,7 @@ If your environment doesn't have DHCP enabled, then you must include the followi
 |Parameter|Required/Optional|Description|
 |-----|-----|-----|
 |AdminPassword|Required|Sets the local admin account and all other user accounts on all the VMs created as part of ASDK deployment. This password must match the current local admin password on the host.|
-|InfraAzureDirectoryTenantName|Required|Sets the tenant directory. Use this parameter to specify a specific directory where the AAD account has permissions to manage multiple directories. Full name of an AAD tenant in the format of .onmicrosoft.com or an Azure AD verified custom domain name.|
+|InfraAzureDirectoryTenantName|Required|Sets the tenant directory. Use this parameter to specify a specific directory where the Azure AD account has permissions to manage multiple directories. Full name of an Azure AD tenant in the format of .onmicrosoft.com or an Azure AD verified custom domain name.|
 |TimeServer|Required|Use this parameter to specify a specific time server. This parameter must be provided as a valid time server IP address. Server names aren't supported.|
 |InfraAzureDirectoryTenantAdminCredential|Optional|Sets the Azure Active Directory user name and password. These Azure credentials must be an Org ID.|
 |InfraAzureEnvironment|Optional|Select the Azure Environment with which you want to register this Azure Stack deployment. Options include global Azure, Azure - China, Azure - US Government.|

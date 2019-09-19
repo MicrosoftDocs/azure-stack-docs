@@ -1,6 +1,6 @@
 ---
-title: Use an app identity to access resources
-description: Describes how to manage a service principal that can be used with role-based access control, for sign-in and access to resources.
+title: Use an app identity to access resources | Microsoft Docs
+description: Learn how to manage a service principal that can be used with role-based access control for sign-in and access to resources.
 services: azure-stack
 documentationcenter: na
 author: BryanLa
@@ -20,16 +20,16 @@ ms.lastreviewed: 06/20/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit (ASDK)*
 
-An application that needs to deploy or configure resources through Azure Resource Manager, must be represented by a service principal. Just as a user is represented by a user principal, a service principal is a type of security principal that represents an application. The service principal provides an identity for your application, allowing you to delegate only the necessary permissions to that service principal.  
+An application that needs to deploy or configure resources through Azure Resource Manager must be represented by a service principal. Just as a user is represented by a user principal, a service principal is a type of security principal that represents an app. The service principal provides an identity for your app, allowing you to delegate only the necessary permissions to that service principal.  
 
-As an example, you may have a configuration management application that uses Azure Resource Manager to inventory Azure resources. In this scenario, you can create a service principal, grant the reader role to that service principal, and limit the configuration management application to read-only access. 
+As an example, you may have a configuration management app that uses Azure Resource Manager to inventory Azure resources. In this scenario, you can create a service principal, grant the reader role to that service principal, and limit the configuration management app to read-only access.
 
 ## Overview
 
-Similar to a user principal, a service principal must present credentials during authentication, which consist of two elements:
+Similar to a user principal, a service principal must present credentials during authentication. This authentication consist of two elements:
 
-- An **Application ID**, sometimes referred to as a Client ID. This is a GUID that uniquely identifies the application's registration in your Active Directory tenant.
-- A **secret** associated with the application ID. You can either generate a client secret string (similar to a password), or specify an X509 certificate (which uses its public key). 
+- An **Application ID**, sometimes referred to as a Client ID. This is a GUID that uniquely identifies the app's registration in your Active Directory tenant.
+- A **secret** associated with the application ID. You can either generate a client secret string (similar to a password), or specify an X509 certificate (which uses its public key).
 
 Running an app under the identity of a service principal is preferable to running it under a user principal because:
 
