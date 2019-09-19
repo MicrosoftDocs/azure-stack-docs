@@ -26,7 +26,7 @@ As an example, you may have a configuration management app that uses Azure Resou
 
 ## Overview
 
-Similar to a user principal, a service principal must present credentials during authentication. This authentication consist of two elements:
+Like a user principal, a service principal must present credentials during authentication. This authentication consists of two elements:
 
 - An **Application ID**, sometimes referred to as a Client ID. This is a GUID that uniquely identifies the app's registration in your Active Directory tenant.
 - A **secret** associated with the application ID. You can either generate a client secret string (similar to a password), or specify an X509 certificate (which uses its public key).
@@ -50,19 +50,19 @@ If you deployed Azure Stack with Azure AD as your identity management service, y
 
 ### Create a service principal that uses a client secret credential
 
-In this section, you register your app using the Azure portal, which creates the service principal object in your Azure AD tenant. In this example, the service principal will be created with a client secret credential, but the portal also supports X509 certificate-based credentials.
+In this section, you register your app using the Azure portal, which creates the service principal object in your Azure AD tenant. In this example, the service principal is created with a client secret credential, but the portal also supports X509 certificate-based credentials.
 
 1. Sign in to the [Azure portal](https://portal.azure.com) using your Azure account.
 2. Select **Azure Active Directory** > **App registrations** > **New registration**.
 3. Provide a **name** for the app.
 4. Select the appropriate **Supported account types**.
 5. Under **Redirect URI**, select **Web**  as the app type, and (optionally) specify a redirect URI if your app requires it.
-6. After setting the values, select **Register**. The app registration is created and the **Overview** page is presented.
+6. After setting the values, select **Register**. The app registration is created and the **Overview** page displays.
 7. Copy the **Application ID** for use in your app code. This value is also referred to as the Client ID.
 8. To generate a client secret, select the **Certificates & secrets** page. Select **New client secret**.
 9. Provide a **description** for the secret, and an **expires** duration.
 10. When done, select **Add**.
-11. The value of the secret is displayed. Copy and save this value in another location, because you can't retrieve it later. You provide the secret with the Application ID in your client app during service principal sign-in.
+11. The value of the secret displays. Copy and save this value in another location, because you can't retrieve it later. You provide the secret with the Application ID in your client app during service principal sign-in.
 
     ![Saved key in client secrets](./media/azure-stack-create-service-principal/create-service-principal-in-azure-stack-secret.png)
 
@@ -132,7 +132,7 @@ Once you have a certificate, use the PowerShell script below to register your ap
 
    ```
    
-2. After the script finishes, it displays the app registration info, including the service principal's credentials. As demonstrated, the `ClientID` and `Thumbprint` are used to sign in under the service principal's identity. Upon successful sign in, the service principal identity will be used for subsequent authorization and access to resources managed by Azure Resource Manager.
+2. After the script finishes, it displays the app registration info, including the service principal's credentials. As demonstrated, the `ClientID` and `Thumbprint` are used to sign in under the service principal's identity. Upon successful sign-in, the service principal identity will be used for subsequent authorization and access to resources managed by Azure Resource Manager.
 
    ```shell
    ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
@@ -198,7 +198,7 @@ Update the certificate credential using PowerShell, substituting your own values
 > [!IMPORTANT]
 > Using a client secret is less secure than using an X509 certificate credential. Not only is the authentication mechanism less secure, but it also typically requires embedding the secret in the client app source code. As such, for production apps, you're strongly encouraged to use a certificate credential.
 
-Now you create another app registration, but this time specify a client secret credential. Unlike a certificate credential, the directory has the ability to generate a client secret credential. So instead of specifying the client secret, you use the `-GenerateClientSecret` switch to request that it be generated. Substitute your own values for the following placeholders:
+Now you create another app registration, but this time specify a client secret credential. Unlike a certificate credential, the directory has the ability to generate a client secret credential. Instead of specifying the client secret, you use the `-GenerateClientSecret` switch to request that it be generated. Substitute your own values for the following placeholders:
 
 | Placeholder | Description | Example |
 | ----------- | ----------- | ------- |
@@ -333,24 +333,24 @@ The type of resource you choose also establishes the *access scope* for the serv
 
    > [!NOTE]
    > To add role assignments for a given resource, your user account must belong to a role that declares the `Microsoft.Authorization/roleAssignments/write` permission. For example, either the [Owner](/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) built-in roles.  
-2. Navigate to the resource you wish to allow the service principal to access. In this example, assign the service principal to a role at the subscription scope, by selecting **Subscriptions**, then a specific subscription. You could instead select a resource group, or a specific resource such as a virtual machine. 
+2. Navigate to the resource you wish to allow the service principal to access. In this example, assign the service principal to a role at the subscription scope, by selecting **Subscriptions**, then a specific subscription. You could instead select a resource group, or a specific resource like a virtual machine.
 
      ![Select subscription for assignment](./media/azure-stack-create-service-principal/select-subscription.png)
 
 3. Select the **Access Control (IAM)** page, which is universal across all resources that support RBAC.
 4. Select **+ Add**
 5. Under **Role**, pick the role you wish to assign to the app.
-6. Under **Select**, search for your app using a full or partial Application Name. During registration, the Application Name is generated as *Azurestack-\<YourAppName\>-\<ClientId\>*. For example, if you used an application name of *App2*, and ClientId *2bbe67d8-3fdb-4b62-87cf-cc41dd4344ff* was assigned during creation, the full name would be  *Azurestack-App2-2bbe67d8-3fdb-4b62-87cf-cc41dd4344ff*. You can search for either the exact string, or a portion, such as *Azurestack* or *Azurestack-App2*.
+6. Under **Select**, search for your app using a full or partial Application Name. During registration, the Application Name is generated as *Azurestack-\<YourAppName\>-\<ClientId\>*. For example, if you used an application name of *App2*, and ClientId *2bbe67d8-3fdb-4b62-87cf-cc41dd4344ff* was assigned during creation, the full name would be  *Azurestack-App2-2bbe67d8-3fdb-4b62-87cf-cc41dd4344ff*. You can search for either the exact string, or a portion, like *Azurestack* or *Azurestack-App2*.
 7. Once you find the app, select it and it will show under **Selected members**.
 8. Select **Save** to finish assigning the role.
 
-     [ ![Assign role](media/azure-stack-create-service-principal/assign-role.png)](media/azure-stack-create-service-principal/assign-role.png#lightbox)
+     [![Assign role](media/azure-stack-create-service-principal/assign-role.png)](media/azure-stack-create-service-principal/assign-role.png#lightbox)
 
 9. When finished, the app will show in the list of principals assigned for the current scope, for the given role.
 
-     [ ![Assigned role](media/azure-stack-create-service-principal/assigned-role.png)](media/azure-stack-create-service-principal/assigned-role.png#lightbox)
+     [![Assigned role](media/azure-stack-create-service-principal/assigned-role.png)](media/azure-stack-create-service-principal/assigned-role.png#lightbox)
 
-Now that you've created a service principal and assigned a role, you can begin using this within your app to access Azure Stack resources.  
+Now that you've created a service principal and assigned a role, you can begin using this service principal within your app to access Azure Stack resources.  
 
 ## Next steps
 
