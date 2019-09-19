@@ -61,7 +61,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 2.  Create a storage account in your Azure Stack instance to upload the archive file (*.tar.gz) with the AKS Engine binary. For instructions on using the Azure Storage Explorer, see [Azure Storage Explorer with Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-connect-se).
 
-3. Create a Widows VM in your Azure Stack. For instructions, see [Quickstart: Create a Windows server VM by using the Azure Stack portal](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-windows-portal)
+3. Create a Windows VM in your Azure Stack. For instructions, see [Quickstart: Create a Windows server VM by using the Azure Stack portal](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-windows-portal)
 
 4.  From the Azure Stack storage account blob URL where you uploaded the archive file (*.tar.gz), download the file to your management VM. Extract the archive to a directory that you have access to from your command prompt.
 
