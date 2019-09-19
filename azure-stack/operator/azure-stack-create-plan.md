@@ -23,7 +23,7 @@ ms.lastreviewed: 06/11/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-[Azure Stack plans](azure-stack-overview.md) are groupings of one or more services and their quotas. As a provider, you can create plans to offer to your users. In turn, your users subscribe to your offers to use the plans, services, and quotas they include. This example shows you how to create a plan that includes the compute, network, and storage resource providers. This plan gives subscribers the ability to provision virtual machines.
+[Azure Stack plans](azure-stack-overview.md) are groupings of one or more services and their quotas. As a provider, you can create plans to offer to your users. In turn your users subscribe to your offers to use the plans, services, and quotas they include. This example shows you how to create a plan that includes the compute, network, and storage resource providers. This plan gives subscribers the ability to provision virtual machines.
 
 ::: moniker range=">=azs-1902"
 ## Create a plan (1902 and later)
