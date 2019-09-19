@@ -240,7 +240,7 @@ Now you create another app registration, but this time specify a client secret c
      $SpObject
      ```
 
-2. After the script finishes, it displays the app registration info, including the service principal's credentials. As demonstrated, the `ClientID` and generated `ClientSecret` are used to sign in under the service principal's identity. Upon successful sign in, the service principal identity will be used for subsequent authorization and access to resources managed by Azure Resource Manager.
+2. After the script finishes, it displays the app registration info, including the service principal's credentials. As demonstrated, the `ClientID` and generated `ClientSecret` are used to sign in under the service principal's identity. Upon successful sign-in, the service principal identity will be used for subsequent authorization and access to resources managed by Azure Resource Manager.
 
      ```shell  
      ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
