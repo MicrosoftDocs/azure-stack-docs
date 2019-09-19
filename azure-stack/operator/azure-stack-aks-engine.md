@@ -1,5 +1,5 @@
 ---
-title: Add Azure Kubernetes Services (AKS) Engine to the Azure Stack Marketplace | Microsoft Docs
+title: Add the Azure Kubernetes Services (AKS) Engine to the Azure Stack Marketplace | Microsoft Docs
 description: Learn how to add AKS Engine to the Azure Stack Marketplace.
 services: azure-stack
 documentationcenter: ''
@@ -19,15 +19,13 @@ ms.lastreviewed: 09/18/2019
 
 ---
 
-# Add Azure Kubernetes Services (AKS) Engine to the Azure Stack Marketplace
+# Add the Azure Kubernetes Services (AKS) Engine to the Azure Stack Marketplace
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can offer the Azure Kubernetes Services (AKS) Engine as a Marketplace item to your users. Your users can then deploy a Kubernetes cluster in a single, coordinated operation.
+You can offer the Azure Kubernetes Services (AKS) Engine as a marketplace item to your users. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS Engine available to your users in both connected and disconnected environments. The AKS Engine depends a service principle and in offered in the marketplace, a custom script and the AKS Base Image.
 
 The [AKS Engine](https://github.com/Azure/aks-engine) uses a built image, the AKS Base Image. Any AKS Engine version depends on a specific image version that you can make available in your Azure Stack. Check the table listing the AKS Engine versions and corresponding Kubernetes version at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions).
-
-This article walks you through the steps you need to make the AKS Engine available to your users in both connected and disconnected environments. The AKS Engine depends on a custom script, and the AKS Base Image offered in the marketplace.
 
 > [!IMPORTANT]
 > The AKS Engine is currently in public preview.
@@ -38,7 +36,7 @@ This article walks you through the steps you need to make the AKS Engine availab
 
 Create a plan, an offer, and a subscription for the Kubernetes Marketplace item. You can also use an existing plan and offer.
 
-Users will often want to deploy clusters of up to six virtual machines, made of three masters and three worker nodes. You will want to make sure you have enough space in the quota.
+Users will often want to deploy clusters of up to six virtual machines, made of three masters and three worker nodes. You will want to make sure they have enough space in their quota.
 
 1. Sign in to the [Administration portal.](https://adminportal.local.azurestack.external)
 
@@ -66,11 +64,11 @@ Users will often want to deploy clusters of up to six virtual machines, made of 
 
 ## Create a service principal and credentials in AD FS
 
-If you use Active Directory Federated Services (AD FS) for your identity management service, you will need to create a service principal for users deploying a Kubernetes cluster. Create service principal using a client secret. For instructions, see [Create a service principal using a client secret](azure-stack-create-service-principals.md#create-a-service-principal-that-uses-client-secret-credentials).
+If you use Active Directory Federated Services (AD FS) for your identity management service, you will need to create a service principal for users deploying a Kubernetes cluster. Create a service principal using a client secret. For instructions, see [Create a service principal using a client secret](azure-stack-create-service-principals.md#create-a-service-principal-that-uses-client-secret-credentials).
 
 ## Add the AKS Base Image
 
-You can add the AKS Base Image to the marketplace by getting the item from Azure. However, if your Azure Stack is disconnected, use these instructions to [Download marketplace items from Azure](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-1908#disconnected-or-a-partially-connected-scenario) to add the item.
+You can add the AKS Base Image to the marketplace by getting the item from Azure. However, if your Azure Stack is disconnected, use these instructions [Download marketplace items from Azure](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-1908#disconnected-or-a-partially-connected-scenario) to add the item.
 
 Add the following item to the marketplace:
 
@@ -94,7 +92,7 @@ Add the following item to the marketplace:
 
 ## Add a custom script for Linux
 
-You can add the custom script to the marketplace but getting the item from Azure. However, if you your Azure Stack is disconnected, use the instructions to [Download marketplace items from Azure](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-1908#disconnected-or-a-partially-connected-scenario) to add the item.
+You can add the custom script to the marketplace by getting the item from Azure. However, if your Azure Stack is disconnected, use the instructions [Download marketplace items from Azure](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-1908#disconnected-or-a-partially-connected-scenario) to add the item.
 
 1. Open the [Administration portal](https://adminportal.local.azurestack.external).
 
@@ -110,7 +108,7 @@ You can add the custom script to the marketplace but getting the item from Azure
    - **Publisher**: Microsoft Corp
 
      > [!Note]  
-     > More than one version of Custom Script for Linux may be listed. You will need to add the last version of the item.
+     > More than one version of the Custom Script for Linux may be listed. You will need to add the last version of the item.
 
 1. Select **Download.**
 
