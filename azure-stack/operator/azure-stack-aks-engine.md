@@ -23,7 +23,7 @@ ms.lastreviewed: 09/18/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can enable your users to set up the Azure Kubernetes Services (AKS) Engine by adding the items describes in this article to your Azure Stack. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS Engine available to your users in both connected and disconnected environments. The AKS Engine depends a service principle and in offered in the marketplace, a custom script and the AKS Base Image.
+You can enable your users to set up the Azure Kubernetes Services (AKS) Engine by adding the items describes in this article to your Azure Stack. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS Engine available to your users in both connected and disconnected environments. The AKS Engine depends a service principle, and offered in the marketplace, a custom script and the AKS Base Image.
 
 The [AKS Engine](https://github.com/Azure/aks-engine) uses a built image, the AKS Base Image. Any AKS Engine version depends on a specific image version that you can make available in your Azure Stack. Check the table listing the AKS Engine versions and corresponding Kubernetes version at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions).
 
@@ -32,11 +32,9 @@ The [AKS Engine](https://github.com/Azure/aks-engine) uses a built image, the AK
 > This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## Check your user service offering
+## Check your user's service offering
 
-Your users will need your users to already have a plan, offer, and subscription to Azure Stack.
-
-Users will often want to deploy clusters of up to six virtual machines, made of three masters and three worker nodes. You will want to make sure they have enough space in their quota.
+Your users will need a plan, offer, and subscription to Azure Stack with enough space. Users will often want to deploy clusters of up to six virtual machines, made of three masters and three worker nodes. You will want to make sure they have a large enough quota.
 
 If you need more information about planning and setting up a service offering, see [Overview of offering services in Azure Stack](azure-stack-offer-services-overview.md)
 
