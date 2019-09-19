@@ -19,11 +19,11 @@ ms.reviewer: prchint
 ms.lastreviewed: 09/19/2019
 ---
 
-# Azure Stack updates
+# Azure Stack updates: release notes
 
 *Applies to: Azure Stack integrated systems*
 
-This article describes the contents of Azure Stack update packages. The update includes what's new improvements, and fixes for this release of Azure Stack. **To access release notes for a different version, use the version picker in the upper left.**
+This article describes the contents of Azure Stack update packages. The update includes what's new improvements, and fixes for this release of Azure Stack. **To access release notes for a different version, use the version selector dropdown above the table of contents on the left.**
 
 ::: moniker range=">=azs-1906"
 > [!IMPORTANT]  
@@ -42,7 +42,7 @@ This article describes the contents of Azure Stack update packages. The update i
 
 The Azure Stack 1910 update build number is **1.1910.x.xx**.
 
-### <a name="update-type-1910"></a>Update type
+### Update type
 
 Starting with 1908, the underlying operating system on which Azure Stack runs was updated to Windows Server 2019. This enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack in the near future.
 
@@ -58,27 +58,27 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- The current theme (if any) of this release. -->
 
-### <a name="whats-new-1910"></a>What's new
+### What's new
 
 <!-- What's new, also net new experiences and features. -->
 
-### <a name="improvements-1910"></a>Improvements
+### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
-### <a name="changes-1910"></a>Changes
+### Changes
 
 - When downloading marketplace items from Azure to Azure Stack, there is a new user interface that enables you to specify a version of the item, when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md).  
 
-### <a name="fixes-1910"></a>Fixes
+### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
-## <a name="security-updates-1910"></a>Security updates
+## Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](release-notes-security-updates.md).
 
-## <a name="update-planning-1910"></a>Update planning
+## Update planning
 
 Before applying the update, make sure to review the following information:
 
@@ -86,11 +86,11 @@ Before applying the update, make sure to review the following information:
 - [Security updates](release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](release-notes-checklist.md)
 
-## <a name="download-the-update-1910"></a>Download the update
+## Download the update
 
 You can download the Azure Stack 1910 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
 
-## <a name="hotfixes-1910"></a>Hotfixes
+## Hotfixes
 
 Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1908 before updating Azure Stack to 1910.
 
@@ -116,7 +116,7 @@ After the installation of this update, install any applicable hotfixes. For more
 
 The Azure Stack 1908 update build number is **1.1908.0.20**.
 
-### <a name="update-type-1908"></a>Update type
+### Update type
 
 For 1908, the underlying operating system on which Azure Stack runs has been updated to Windows Server 2019. This enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack in the near future.
 
@@ -132,7 +132,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- The current theme (if any) of this release. -->
 
-### <a name="whats-new-1908"></a>What's new
+### What's new
 
 <!-- What's new, also net new experiences and features. -->
 
@@ -140,16 +140,16 @@ For more information about update build types, see [Manage updates in Azure Stac
 - All components of Azure Stack infrastructure now operate in FIPS 140-2 mode.
 - Azure Stack operators can now remove portal user data. For more information, see [Clear portal user data from Azure Stack](azure-stack-portal-clear.md).
 
-### <a name="improvements-1908"></a>Improvements
+### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 - Improvements to data at rest encryption of Azure Stack to persist secrets into the hardware Trusted Platform Module (TPM) of the physical nodes.
 
-### <a name="changes-1908"></a>Changes
+### Changes
 
 - Hardware providers will be releasing OEM extension package 2.1 or later at the same time as Azure Stack version 1908. The OEM extension package 2.1 or later is a prerequisite for Azure Stack version 1908. For more information about how to download OEM extension package 2.1 or later, contact your system's hardware provider, and see the [OEM updates](azure-stack-update-oem.md#oem-contact-information) article.  
 
-### <a name="fixes-1908"></a>Fixes
+### Fixes
 
 - Fixed an issue with compatibility with future Azure Stack OEM updates and an issue with VM deployment useing customer user images. This issue was found in 1907 and fixed in hotfix [KB4517473](https://support.microsoft.com/en-us/help/4517473/azure-stack-hotfix-1-1907-12-44)  
 - Fixed an issue with OEM Firmware update and corrected misdiagnosis in Test-AzureStack for Fabric Ring Health. This issue was found in 1907 and fixed in hotfix [KB4515310](https://support.microsoft.com/en-us/help/4515310/azure-stack-hotfix-1-1907-7-35)
@@ -158,11 +158,11 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
-## <a name="security-updates-1908"></a>Security updates
+## Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](release-notes-security-updates.md).
 
-## <a name="update-planning-1908"></a>Update planning
+## Update planning
 
 Before applying the update, make sure to review the following information:
 
@@ -170,11 +170,11 @@ Before applying the update, make sure to review the following information:
 - [Security updates](release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](release-notes-checklist.md)
 
-## <a name="download-the-update-1908"></a>Download the update
+## Download the update
 
 You can download the Azure Stack 1908 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
 
-## <a name="hotfixes-1908"></a>Hotfixes
+## Hotfixes
 
 Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1907 before updating Azure Stack to 1908.
 
@@ -202,7 +202,7 @@ After the installation of this update, install any applicable hotfixes. For more
 
 The Azure Stack 1907 update build number is **1.1907.0.20**.
 
-### <a name="update-type-1907"></a>Update type
+### Update type
 
 The Azure Stack 1907 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. Based on internal testing, the expected time it takes for the 1907 update to complete is approximately 13 hours.
 
@@ -210,11 +210,11 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 - Runtimes lasting longer than expected are not uncommon and do not require action by Azure Stack operators unless the update fails.
 - This runtime approximation is specific to the 1907 update and should not be compared to other Azure Stack updates.
 
-## <a name="whats-in-this-update-1907"></a>What's in this update
+## What's in this update
 
 <!-- The current theme (if any) of this release. -->
 
-### <a name="whats-new-1907"></a>What's new
+### What's new
 
 <!-- What's new, also net new experiences and features. -->
 
@@ -224,7 +224,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Added an internal secret rotation procedure to rotate internal SQL TLS certificates as required during a system update.
 
-### <a name="improvements-1907"></a>Improvements
+### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
@@ -241,7 +241,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Improved storage of internal logs for administrator operations. This results in improved performance and reliability during administrator operations by minimizing the memory and storage consumption of internal log processes. You might also notice improved page load times of the update blade in the administrator portal. As part of this improvement, update logs older than 6 months will no longer be available in the system. If you require logs for these updates, be sure to [Download the summary](azure-stack-apply-updates.md) for all update runs older than 6 months before performing the 1907 update.
 
-### <a name="changes-1907"></a>Changes
+### Changes
 
 - Azure Stack version 1907 contains a warning alert that instructs operators to be sure to update their system's OEM package to version 2.1 or later before updating to version 1908. For more information about how to apply Azure Stack OEM updates, see [Apply an Azure Stack original equipment manufacturer update](azure-stack-update-oem.md).
 
@@ -253,7 +253,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - We now validate that an image being ingested into the **Compute -> VM images** blade is of type page blob.
 
-### <a name="fixes-1907"></a>Fixes
+### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 - Fixed an issue in which the publisher, offer, and SKU were treated as case sensitive in a Resource Manager template: the image was not fetched for deployment unless the image parameters were the same case as that of the publisher, offer, and SKU.
@@ -282,11 +282,11 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Fixed an issue in the health resource provider which impacted the availability of the region and alert blades in the administrator portal. This issue was found in 1906 and fixed in hotfix [KB4512794](https://support.microsoft.com/help/4512794).
 
-## <a name="security-updates-1907"></a>Security updates
+## Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](release-notes-security-updates.md).
 
-## <a name="update-planning-1907"></a>Update planning
+## Update planning
 
 Before applying the update, make sure to review the following information:
 
@@ -294,11 +294,11 @@ Before applying the update, make sure to review the following information:
 - [Security updates](release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](release-notes-checklist.md)
 
-## <a name="download-the-update-1907"></a>Download the update
+## Download the update
 
 You can download the Azure Stack 1907 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
 
-## <a name="hotfixes-1907"></a>Hotfixes
+## Hotfixes
 
 Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1906 before updating Azure Stack to 1907.
 
@@ -324,11 +324,11 @@ After the installation of this update, install any applicable hotfixes. For more
 
 The Azure Stack 1906 update build number is **1.1906.0.30**.
 
-### <a name="update-type-1906"></a>Update type
+### Update type
 
 The Azure Stack 1906 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. The expected time it takes for the 1906 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack environment. Exact update runtimes will typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack operators unless the update fails. This runtime approximation is specific to the 1906 update and should not be compared to other Azure Stack updates.
 
-## <a name="whats-in-this-update-1906"></a>What's in this update
+## What's in this update
 
 <!-- The current theme (if any) of this release. -->
 
@@ -344,7 +344,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - Visual Studio Code is now supported with Azure Stack deployment using AD FS.
 
-### <a name="improvements-1906"></a>Improvements
+### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
@@ -362,7 +362,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - The 1906 release introduces greater visibility into update progress, so you can be assured that updates are not pausing. This results in an increase in the total number of update steps shown to operators in the **Update** blade. You might also notice more update steps happening in parallel than in previous updates.
 
-#### <a name="networking-updates-1906"></a>Networking updates
+#### Networking updates
 
 - Updated lease time set in DHCP responder to be consistent with Azure.
 
@@ -370,7 +370,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - Removed the **Standard** SKU option from both the load balancer and public IP, as that is currently not supported.
 
-### <a name="changes-1906"></a>Changes
+### Changes
 
 - Creating a storage account experience is now consistent with Azure.
 
@@ -380,7 +380,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - Updated strings in infrastructure backup resource provider for consistent terminology.
 
-### <a name="fixes-1906"></a>Fixes
+### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
@@ -402,11 +402,11 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - You can now remove a scale set from the **Virtual machine scale sets** blade.
 
-## <a name="security-updates-1906"></a>Security updates
+## Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](release-notes-security-updates.md).
 
-## <a name="update-planning-1906"></a>Update planning
+## Update planning
 
 Before applying the update, make sure to review the following information:
 
@@ -414,11 +414,11 @@ Before applying the update, make sure to review the following information:
 - [Security updates](release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](release-notes-checklist.md)
 
-## <a name="download-the-update-1906"></a>Download the update
+## Download the update
 
 You can download the Azure Stack 1906 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
 
-## <a name="hotfixes-1906"></a>Hotfixes
+## Hotfixes
 
 Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1905 before updating Azure Stack to 1906. After updating, install any [available hotfixes for 1906](#after-successfully-applying-the-1906-update).
 
@@ -452,7 +452,7 @@ Systems that can access the internet from the infrastructure network will see th
 
 ## Archive
 
-To access archived release notes for an older version, use the version picker in the upper left of the page, and select the version of interest. 
+To access archived release notes for an older version, use the version selector dropdown above the table of contents, and select the version you want to see.
 
 ## Next steps
 
