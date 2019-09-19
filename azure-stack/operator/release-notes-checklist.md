@@ -30,8 +30,8 @@ Review this checklist in order to prepare for an Azure Stack update. This articl
 
 | Activity                     | Details                                                   |
 |------------------------------|-----------------------------------------------------------|
-| Review known issues     | [List of known issues](azure-stack-release-notes-known-issues-1908.md).                |
-| Review security updates | [List of security updates](azure-stack-release-notes-security-updates.md).      |
+| Review known issues     | [List of known issues](known-issues.md).                |
+| Review security updates | [List of security updates](release-notes-security-updates.md).      |
 | Apply latest OEM package | Contact your OEM to ensure your system meets the minimum OEM Package requirements for the Azure Stack version your system is being updated to. |
 | Run Test-AzureStack | Run `Test-AzureStack -Group UpdateReadiness` to identify operational issues. |
 | Resolve issues | Resolve any operational issues identified by `Test-AzureStack`. |
@@ -63,5 +63,5 @@ Review this checklist in order to prepare for an Azure Stack update. This articl
 
 ## Next steps
 
-- [Review list of known issues](azure-stack-release-notes-known-issues-1908.md)
-- [Review list of security updates](azure-stack-release-notes-security-updates.md)
+- [Review list of known issues](known-issues.md)
+- [Review list of security updates](release-notes-security-updates.md)
