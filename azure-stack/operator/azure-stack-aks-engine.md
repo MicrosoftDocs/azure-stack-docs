@@ -23,7 +23,7 @@ ms.lastreviewed: 09/18/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can offer the Azure Kubernetes Services (AKS) Engine as a marketplace item to your users. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS Engine available to your users in both connected and disconnected environments. The AKS Engine depends a service principle and in offered in the marketplace, a custom script and the AKS Base Image.
+You can enable your users to set up the Azure Kubernetes Services (AKS) Engine by adding the items describes in this article to your Azure Stack. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS Engine available to your users in both connected and disconnected environments. The AKS Engine depends a service principle and in offered in the marketplace, a custom script and the AKS Base Image.
 
 The [AKS Engine](https://github.com/Azure/aks-engine) uses a built image, the AKS Base Image. Any AKS Engine version depends on a specific image version that you can make available in your Azure Stack. Check the table listing the AKS Engine versions and corresponding Kubernetes version at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions).
 
@@ -32,43 +32,29 @@ The [AKS Engine](https://github.com/Azure/aks-engine) uses a built image, the AK
 > This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## Create a plan, an offer, and a subscription
+## Check your user service offering
 
-Create a plan, an offer, and a subscription for the Kubernetes Marketplace item. You can also use an existing plan and offer.
+Your users will need your users to already have a plan, offer, and subscription to Azure Stack.
 
 Users will often want to deploy clusters of up to six virtual machines, made of three masters and three worker nodes. You will want to make sure they have enough space in their quota.
 
-1. Sign in to the [Administration portal.](https://adminportal.local.azurestack.external)
+If you need more information about planning and setting up a service offering, see [Overview of offering services in Azure Stack](azure-stack-offer-services-overview.md)
 
-1. Create a plan as the base plan. For instructions, see [Create a plan in Azure Stack](azure-stack-create-plan.md).
+## Create a service principal and credentials
 
-1. Create an offer. For instructions, see [Create an offer in Azure Stack](azure-stack-create-offer.md).
+The Kubernetes cluster will need service principal (SPN) and role-based permissions in Azure Stack.
 
-1. Select **Offers**, and find the offer you created.
+### Create an SPN in Azure AD
 
-1. Select **Overview** in the Offer blade.
+If you use Azure Active Directory (Azure AD) for your identity management service, you will need to create a service principal for users deploying a Kubernetes cluster. Create a service principal using a client secret. For instructions, see [Create a service principal that uses a client secret credential](azure-stack-create-service-principals.md#create-a-service-principal-that-uses-a-client-secret-credential).
 
-1. Select **Change state**. Select **Public**.
-
-1. Select **+ Create a resource** > **Offers and Plans** > **Subscription** to create a subscription.
-
-    a. Enter a **Display Name**.
-
-    b. Enter a **User**. Use the account associated with your tenant.
-
-    c. **Provider Description**
-
-    d. Set the **Directory tenant** to tenant for your Azure Stack. 
-
-    e. Select **Offer**. Select the name of the offer that you created. Make note of the Subscription ID.
-
-## Create a service principal and credentials in AD FS
+### Create an SPN in AD FS
 
 If you use Active Directory Federated Services (AD FS) for your identity management service, you will need to create a service principal for users deploying a Kubernetes cluster. Create a service principal using a client secret. For instructions, see [Create a service principal using a client secret](azure-stack-create-service-principals.md#create-a-service-principal-that-uses-client-secret-credentials).
 
 ## Add the AKS Base Image
 
-You can add the AKS Base Image to the marketplace by getting the item from Azure. However, if your Azure Stack is disconnected, use these instructions [Download marketplace items from Azure](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-1908#disconnected-or-a-partially-connected-scenario) to add the item.
+You can add the AKS Base Image to the marketplace by getting the item from Azure. However, if your Azure Stack is disconnected, use these instructions [Download marketplace items from Azure](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-1908#disconnected-or-a-partially-connected-scenario) to add the item. Add the item specified in step five.
 
 Add the following item to the marketplace:
 
@@ -92,7 +78,7 @@ Add the following item to the marketplace:
 
 ## Add a custom script for Linux
 
-You can add the custom script to the marketplace by getting the item from Azure. However, if your Azure Stack is disconnected, use the instructions [Download marketplace items from Azure](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-1908#disconnected-or-a-partially-connected-scenario) to add the item.
+You can add the custom script to the marketplace by getting the item from Azure. However, if your Azure Stack is disconnected, use the instructions [Download marketplace items from Azure](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-1908#disconnected-or-a-partially-connected-scenario) to add the item.  Add the item specified in step five.
 
 1. Open the [Administration portal](https://adminportal.local.azurestack.external).
 
