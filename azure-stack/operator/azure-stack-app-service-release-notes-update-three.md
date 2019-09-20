@@ -46,7 +46,7 @@ Azure App Service on Azure Stack Update 3 includes the following improvements an
 
 - Support for use of SQL Server Always On for Azure App Service resource provider databases.
 
-- Added new environment parameter to the Create-AADIdentityApp helper script to assist targeting different AAD regions.
+- Added new environment parameter to the Create-AADIdentityApp helper script to assist targeting different Azure AD regions.
 
 - Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack portal SDK version.
 

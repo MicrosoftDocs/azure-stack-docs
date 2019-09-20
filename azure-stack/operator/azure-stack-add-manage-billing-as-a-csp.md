@@ -1,6 +1,6 @@
 ---
-title: Manage usage and billing for Azure Stack as a Cloud Service Provider | Microsoft Docs
-description: Learn how to register Azure Stack as a Cloud Provider (CSP) and add customers for billing.
+title: Manage usage and billing for Azure Stack as a Cloud Solution Provider | Microsoft Docs
+description: Learn how to register Azure Stack as a Cloud Solution Provider (CSP) and add customers for billing.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -19,7 +19,7 @@ ms.lastreviewed: 10/15/2018
 
 ---
 
-# Manage usage and billing for Azure Stack as a Cloud Service Provider
+# Manage usage and billing for Azure Stack as a Cloud Solution Provider
 
 *Applies to: Azure Stack integrated systems*
 
@@ -29,7 +29,7 @@ As a CSP, you work with diverse customers using your Azure Stack. Each customer 
 
 The following figure shows the required steps to choose your shared services account, and to register the Azure account with the Azure Stack account. Once registered, you can onboard your end customers:
 
-[![Process for enabling usage and management as a Cloud Service Provider](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png "Process for enabling usage and management as a Cloud Service Provider")](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png#lightbox)
+[![Process for enabling usage and management as a Cloud Solution Provider](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png "Process for enabling usage and management as a Cloud Solution Provider")](media/azure-stack-add-manage-billing-as-a-csp/process-add-useage-as-a-csp.png#lightbox)
 
 ## Create a CSP or APSS subscription
 
@@ -37,7 +37,7 @@ The following figure shows the required steps to choose your shared services acc
 
 Choose the type of shared services account that you use for Azure Stack. The types of subscriptions that can be used for registration of a multi-tenant Azure Stack are:
 
-- Cloud Service Provider
+- Cloud Solution Provider
 - Partner Shared Services subscription
 
 #### Azure Partner Shared Services
