@@ -263,28 +263,28 @@ network:
 8. On the **Settings** blade, you can accept the defaults. Ensure that the **VNET-02** virtual network is selected, and verify that the subnet is set to **10.0.20.0/24**. Select **OK**.
 9. Review the settings on the **Summary** blade, and then select **OK**.
 
-## Configure the NAT virtual machine on each Azure Stack Development Kit for gateway traversal
+## Configure the NAT VM on each ASDK for gateway traversal
 
-Because the ASDK is self-contained and isolated from the network on which the physical host is deployed, the *external* VIP network that the gateways are connected to is not actually external. Instead, the VIP network is hidden behind a router that performs network address translation.
+Because the ASDK is self-contained and isolated from the network on which the physical host is deployed, the *external* VIP network that the gateways are connected to isn't actually external. Instead, the VIP network is hidden behind a router that performs network address translation.
 
-The router is a Windows Server virtual machine, called **AzS-bgpnat01**, that runs the Routing and Remote Access Services (RRAS) role in the ASDK infrastructure. You must configure NAT on the AzS-bgpnat01 virtual machine to allow the site-to-site VPN connection to connect on both ends.
+The router is a Windows Server VM, called **AzS-bgpnat01**, that runs the Routing and Remote Access Services (RRAS) role in the ASDK infrastructure. You must configure NAT on the AzS-bgpnat01 VM to allow the site-to-site VPN connection to connect on both ends.
 
-To configure the VPN connection, you must create a static NAT map route that maps the external interface on the BGPNAT virtual machine to the VIP of the edge gateway pool. A static NAT map route is required for each port in a VPN connection.
+To configure the VPN connection, you must create a static NAT map route that maps the external interface on the BGPNAT VM to the VIP of the edge gateway pool. A static NAT map route is required for each port in a VPN connection.
 
 > [!NOTE]
-> This configuration is required for Azure Stack Development Kit environments only.
+> This configuration is required for ASDK environments only.
 
 ### Configure the NAT
 
 > [!IMPORTANT]
 > You must complete this procedure for both ASDK environments.
 
-1. Determine the **Internal IP address** to use in the following PowerShell script. Open the virtual network gateway (GW1 and GW2), and then on the **Overview** blade, save the value for the **Public IP address** for later use.
+1. Determine the **Internal IP address** to use in the following PowerShell script. Open the virtual network gateway (GW1 and GW2). On the **Overview** blade, save the value for the **Public IP address** for later use.
 
    ![Internal IP address](media/azure-stack-create-vpn-connection-one-node-tp2/InternalIP.PNG)
 
 2. Sign in to the Azure Stack physical machine for POC1.
-3. Copy and edit the following PowerShell script. To configure the NAT on each Azure Stack Development Kit, run the script in an elevated Windows PowerShell ISE. In the script, add values to the `External BGPNAT address` and `Internal IP address` placeholders:
+3. Copy and edit the following PowerShell script. To configure the NAT on each ASDK, run the script in an elevated Windows PowerShell ISE. In the script, add values to the `External BGPNAT address` and `Internal IP address` placeholders:
 
    ```powershell
    # Designate the external NAT address for the ports that use the IKE authentication.
@@ -330,9 +330,9 @@ To configure the VPN connection, you must create a static NAT map route that map
 
 ## Test the connection
 
-Now that the site-to-site connection is established, you should validate that you can get traffic flowing through it. To validate, sign in to one of the virtual machines that you created in either ASDK environment. Then, ping the virtual machine that you created in the other environment.
+Now that the site-to-site connection is established, you should validate that you can get traffic flowing through it. To validate, sign in to one of the VMs that you created in either ASDK environment. Then, ping the VM that you created in the other environment.
 
-To ensure that you send the traffic through the site-to-site connection, ensure that you ping the Direct IP (DIP) address of the virtual machine on the remote subnet, not the VIP. To do so, find the DIP address on the other end of the connection. Save the address for later use.
+To ensure that you send the traffic through the site-to-site connection, ensure that you ping the Direct IP (DIP) address of the VM on the remote subnet, not the VIP. To do so, find the DIP address on the other end of the connection. Save the address for later use.
 
 ### Sign in to the tenant VM in POC1
 
@@ -343,11 +343,11 @@ To ensure that you send the traffic through the site-to-site connection, ensure 
 
      ![Connect button](media/azure-stack-create-vpn-connection-one-node-tp2/image17.png)
 
-5. Sign in with the account that you configured when you created the virtual machine.
+5. Sign in with the account that you configured when you created the VM.
 6. Open an elevated **Windows PowerShell** window.
 7. Enter **ipconfig /all**.
-8. In the output, find the **IPv4 Address**, and then save the address for later use. This is the address that you will ping from POC2. In the example environment, the address is **10.0.10.4**, but in your environment it might be different. It should fall within the **10.0.10.0/24** subnet that you created previously.
-9. To create a firewall rule that allows the virtual machine to respond to pings, run the following PowerShell command:
+8. In the output, find the **IPv4 Address**, and then save the address for later use. This is the address that you'll ping from POC2. In the example environment, the address is **10.0.10.4**, but in your environment it might be different. It should fall within the **10.0.10.0/24** subnet that you created previously.
+9. To create a firewall rule that allows the VM to respond to pings, run the following PowerShell command:
 
    ```powershell
    New-NetFirewallRule `
@@ -359,13 +359,13 @@ To ensure that you send the traffic through the site-to-site connection, ensure 
 
 1. Sign in to the Azure Stack physical machine for POC2, and then use a tenant account to sign in to the user portal.
 2. In the left navigation bar, click **Compute**.
-3. From the list of virtual machines, find **VM02** that you created previously, and then select it.
-4. On the blade for the virtual machine, click **Connect**.
-5. Sign in with the account that you configured when you created the virtual machine.
+3. From the list of VMs, find **VM02** that you created previously, and then select it.
+4. On the blade for the VM, click **Connect**.
+5. Sign in with the account that you configured when you created the VM.
 6. Open an elevated **Windows PowerShell** window.
 7. Enter **ipconfig /all**.
 8. An IPv4 address is displayed that falls within **10.0.20.0/24**. In the example environment, the address is **10.0.20.4**, but your address might be different.
-9. To create a firewall rule that allows the virtual machine to respond to pings, run the following PowerShell command:
+9. To create a firewall rule that allows the VM to respond to pings, run the following PowerShell command:
 
    ```powershell
    New-NetFirewallRule `
@@ -373,16 +373,16 @@ To ensure that you send the traffic through the site-to-site connection, ensure 
     -Protocol ICMPv4
    ```
 
-10. From the virtual machine on POC2, ping the virtual machine on POC1, through the tunnel. To do this, you ping the DIP that you recorded from VM01. In the example environment, this is **10.0.10.4**, but be sure to ping the address you noted in your lab. You should see a result that looks like the following example:
+10. From the VM on POC2, ping the VM on POC1, through the tunnel. To do this, you ping the DIP that you recorded from VM01. In the example environment, this is **10.0.10.4**, but be sure to ping the address you noted in your lab. You should see a result that looks like the following example:
 
     ![Successful ping](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
-11. A reply from the remote virtual machine indicates a successful test. You can close the virtual machine window. To test your connection, you can try other kinds of data transfers, such as a file copy.
+11. A reply from the remote VM indicates a successful test. You can close the VM window. To test your connection, you can try other kinds of data transfers, such as a file copy.
 
 ### Viewing data transfer statistics through the gateway connection
 
 If you want to know how much data passes through your site-to-site connection, this information is available on the **Connection** blade. This test is also another way to verify that the ping you just sent actually went through the VPN connection.
 
-1. While you're signed in to the tenant virtual machine in POC2, use your tenant account to sign in to the user portal.
+1. While you're signed in to the tenant VM in POC2, use your tenant account to sign in to the user portal.
 2. Go to **All resources**, and then select the **POC2-POC1** connection. **Connections** appears.
 3. In the **Connection** window, the statistics for **Data in** and **Data out** appear. In the following screenshot, the large numbers are attributed to additional file transfer. You should see some nonzero values there.
 
