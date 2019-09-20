@@ -42,7 +42,7 @@ The steps in this article show you how to deploy the ASDK using a graphical user
   
     If you choose an Azure subscription identity provider, you need an internet connection, the full name of an Azure AD directory tenant in the form of *domainname*.onmicrosoft.com, or an Azure AD verified custom domain name. You also need global admin credentials for the specified directory.
 
-    After deployment, Azure Active Directory (AAD) global admin permission isn't required. However, some operations may require the global admin credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily reinstate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
+    After deployment, Azure Active Directory (Azure AD) global admin permission isn't required. However, some operations may require the global admin credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily reinstate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
 
     When using AD FS as the identity provider, the default stamp directory service is used. The default account to sign in with is azurestackadmin@azurestack.local, and the password to use is the one you provided as part of setup.
 
