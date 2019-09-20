@@ -23,7 +23,9 @@ ms.lastreviewed: 09/19/2019
 
 *Applies to: Azure Stack integrated systems*
 
-This article describes the contents of Azure Stack update packages. The update includes what's new improvements, and fixes for this release of Azure Stack. **To access release notes for a different version, use the version selector dropdown above the table of contents on the left.**
+This article describes the contents of Azure Stack update packages. The update includes what's new improvements, and fixes for this release of Azure Stack.
+
+To access release notes for a different version, use the version selector dropdown above the table of contents on the left.
 
 ::: moniker range=">=azs-1906"
 > [!IMPORTANT]  

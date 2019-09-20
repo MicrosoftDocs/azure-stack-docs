@@ -21,7 +21,9 @@ ms.lastreviewed: 09/19/2019
 
 # Azure Stack known issues
 
-This article lists known issues in releases of Azure Stack. The list is updated as new issues are identified. **To access known issues for a different version, use the version selector dropdown above the table of contents on the left.**
+This article lists known issues in releases of Azure Stack. The list is updated as new issues are identified.
+
+To access known issues for a different version, use the version selector dropdown above the table of contents on the left.
 
 ::: moniker range=">=azs-1906"
 > [!IMPORTANT]  
