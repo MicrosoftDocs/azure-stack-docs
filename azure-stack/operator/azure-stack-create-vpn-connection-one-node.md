@@ -141,9 +141,9 @@ A service administrator can sign in as a tenant to test the plans, offers, and s
 
 The implementation of a *local network gateway* in this Azure Stack evaluation deployment is a bit different than in an actual Azure deployment.
 
-In an Azure deployment, a local network gateway represents an on-premises (at the tenant) physical device, that you use to connect to a virtual network gateway in Azure. In this Azure Stack evaluation deployment, both ends of the connection are virtual network gateways.
+In an Azure deployment, a local network gateway represents an on-premises (at the tenant) physical device that you use to connect to a virtual network gateway in Azure. In this Azure Stack evaluation deployment, both ends of the connection are virtual network gateways.
 
-A way to think about this more generically is that the local network gateway resource always indicates the remote gateway at the other end of the connection. Because of the way the Azure Stack Development Kit was designed, you must provide the IP address of the external network adapter on the network address translation (NAT) VM of the other ASDK as the public IP address of the local network gateway. You then create NAT mappings on the NAT VM to make sure that both ends are connected properly.
+A way to think about this more generically is that the local network gateway resource always indicates the remote gateway at the other end of the connection. Because of the way the ASDK was designed, you must provide the IP address of the external network adapter on the network address translation (NAT) VM of the other ASDK as the public IP address of the local network gateway. You then create NAT mappings on the NAT VM to make sure that both ends are connected properly.
 
 ### Create the local network gateway resource
 
@@ -169,17 +169,17 @@ A way to think about this more generically is that the local network gateway res
 9. In **Shared key (PSK)**, enter **12345**, and then select **OK**.
 10. On the **Summary** blade, select **OK**.
 
-### Create a VM
+### Create a virtual machine
 
-To validate the data that travels through the VPN connection, you need the virtual machines to send and receive data in each Azure Stack Development Kit. Create a virtual machine in POC1 now, and then in your virtual network, put it on your VM subnet:
+To validate the data that travels through the VPN connection, you need the VMs to send and receive data in each ASDK. Create a VM in POC1 now, and then in your virtual network, put it on your VM subnet:
 
 1. In the Azure portal, select **+ Create a resource**.
 2. Go to **Marketplace**, and then select **Compute**.
-3. In the list of virtual machine images, select the **Windows Server 2016 Datacenter Eval** image.
+3. In the list of VM images, select the **Windows Server 2016 Datacenter Eval** image.
 4. On the **Basics** blade, in **Name**, enter **VM01**.
 5. Enter a valid username and password. You use this account to sign in to the VM after it's created.
 6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-7. On the **Size** blade, for this instance, select a virtual machine size, and then select **Select**.
+7. On the **Size** blade, for this instance, select a VM size, and then select **Select**.
 8. On the **Settings** blade, accept the defaults. Ensure that the **VNET-01** virtual network is selected. Verify that the subnet is set to **10.0.10.0/24**. Then select **OK**.
 9. On the **Summary** blade, review the settings, and then select **OK**.
 
@@ -222,7 +222,7 @@ A service administrator can sign in as a tenant to test the plans, offers, and s
 5. To choose a virtual network, select **Virtual network**. Then select **VNET-02** from the list.
 6. Select **Public IP address**. When the **Choose public IP address** blade opens, select **Create new**.
 7. In **Name**, enter **GW2-PiP**, and then select **OK**.
-8. By default, for **VPN type**, **Route-based** is selected. Keep the **Route-based** VPN type.
+8. By default, **Route-based** is selected for **VPN type**. Keep the **Route-based** VPN type.
 9. Verify that **Subscription** and **Location** are correct. You can pin the resource to the dashboard. Select **Create**.
 
 ### Create local network gateway resource
@@ -231,7 +231,7 @@ A service administrator can sign in as a tenant to test the plans, offers, and s
 2. Go to **Marketplace**, and then select **Networking**.
 3. From the list of resources, select **Local network gateway**.
 4. In **Name**, enter **POC1-GW**.
-5. In **IP address**, enter the External BGPNAT address for POC1 that is listed previously in the network configuration table.
+5. In **IP address**, enter the External BGPNAT address for POC1 that's listed previously in the network configuration table.
 6. In **Address Space**, from POC1, enter the **10.0.10.0/23** address space of **VNET-01**.
 7. Verify that your **Subscription**, **Resource Group**, and **Location** are correct, and then select **Create**.
 
@@ -250,16 +250,16 @@ A service administrator can sign in as a tenant to test the plans, offers, and s
 
 ## Create a virtual machine
 
-Now create a virtual machine in POC2, and put it on your VM subnet in your virtual
+Now create a VM in POC2, and put it on your VM subnet in your virtual
 network:
 
 1. In the Azure portal, select **+ Create a resource**.
 2. Go to **Marketplace**, and then select **Compute**.
-3. In the list of virtual machine images, select the **Windows Server 2016 Datacenter Eval** image.
+3. In the list of VM images, select the **Windows Server 2016 Datacenter Eval** image.
 4. On the **Basics** blade, for **Name**, enter **VM02**.
-5. Enter a valid username and password. You use this account to sign in to the virtual machine after it's created.
+5. Enter a valid username and password. You use this account to sign in to the VM after it's created.
 6. Provide a **Subscription**, **Resource Group**, and **Location**, and then select **OK**.
-7. On the **Size** blade, select a virtual machine size for this instance, and then select **Select**.
+7. On the **Size** blade, select a VM size for this instance, and then select **Select**.
 8. On the **Settings** blade, you can accept the defaults. Ensure that the **VNET-02** virtual network is selected, and verify that the subnet is set to **10.0.20.0/24**. Select **OK**.
 9. Review the settings on the **Summary** blade, and then select **OK**.
 
