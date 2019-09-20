@@ -143,7 +143,7 @@ The implementation of a *local network gateway* in this Azure Stack evaluation d
 
 In an Azure deployment, a local network gateway represents an on-premises (at the tenant) physical device that you use to connect to a virtual network gateway in Azure. In this Azure Stack evaluation deployment, both ends of the connection are virtual network gateways.
 
-A way to think about this more generically is that the local network gateway resource always indicates the remote gateway at the other end of the connection. Because of the way the ASDK was designed, you must provide the IP address of the external network adapter on the network address translation (NAT) VM of the other ASDK as the public IP address of the local network gateway. You then create NAT mappings on the NAT VM to make sure that both ends are connected properly.
+A way to think about this more generically is that the local network gateway resource always indicates the remote gateway at the other end of the connection. Because of the way the ASDK is designed, you must provide the IP address of the external network adapter on the network address translation (NAT) VM of the other ASDK as the public IP address of the local network gateway. You then create NAT mappings on the NAT VM to make sure that both ends are connected properly.
 
 ### Create the local network gateway resource
 
@@ -373,7 +373,7 @@ To ensure that you send the traffic through the site-to-site connection, ensure 
     -Protocol ICMPv4
    ```
 
-10. From the VM on POC2, ping the VM on POC1, through the tunnel. To do this, you ping the DIP that you recorded from VM01. In the example environment, this is **10.0.10.4**, but be sure to ping the address you noted in your lab. You should see a result that looks like the following example:
+10. From the VM on POC2, ping the VM on POC1 through the tunnel. To do this, you ping the DIP that you recorded from VM01. In the example environment, this is **10.0.10.4**, but be sure to ping the address you noted in your lab. You should see a result that looks like the following example:
 
     ![Successful ping](media/azure-stack-create-vpn-connection-one-node-tp2/image19b.png)
 11. A reply from the remote VM indicates a successful test. You can close the VM window. To test your connection, you can try other kinds of data transfers, such as a file copy.
