@@ -163,7 +163,7 @@ Start-AzsReadinessChecker
 
 ## Description
 
-The **Start-AzsReadinessChecker** cmdlet validates certificates, Azure accounts, Azure subscriptions, and Azure Active Directories (AAD). Run validation before deploying Azure Stack, or before Azure Stack servicing actions such as secret rotation. The cmdlet can also be used to generate certificate signing requests for infrastructure certificates, and optionally, PaaS certificates. Finally, the cmdlet can repackage PFX certificates to remediate common packaging issues.
+The **Start-AzsReadinessChecker** cmdlet validates certificates, Azure accounts, Azure subscriptions, and Azure Active Directories (Azure AD). Run validation before deploying Azure Stack, or before Azure Stack servicing actions such as secret rotation. The cmdlet can also be used to generate certificate signing requests for infrastructure certificates, and optionally, PaaS certificates. Finally, the cmdlet can repackage PFX certificates to remediate common packaging issues.
 
 ## Examples
 
@@ -185,7 +185,7 @@ $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
 Start-AzsReadinessChecker -CertificatePath .\Certificates\ -PfxPassword $password -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
 ```
 
-In this example, the PFX password is required for security, and `Start-AzsReadinessChecker` checks the relative folder **Certificates** for certificates valid for an AAD deployment with a region name of **east** and an external FQDN of **azurestack.contoso.com**.
+In this example, the PFX password is required for security, and `Start-AzsReadinessChecker` checks the relative folder **Certificates** for certificates valid for an Azure AD deployment with a region name of **east** and an external FQDN of **azurestack.contoso.com**.
 
 ### Example: validate certificates with deployment data (deployment and support)
 
@@ -234,7 +234,7 @@ $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service
 Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment "<environment name>" -AzureDirectoryTenantName azurestack.contoso.com
 ```
 
-In this example, the service admin account credentials are required for security, and `Start-AzsReadinessChecker` checks that the Azure account and AAD are valid for an AAD deployment with a tenant directory name of **azurestack.contoso.com**.
+In this example, the service admin account credentials are required for security, and `Start-AzsReadinessChecker` checks that the Azure account and Azure AD are valid for an Azure AD deployment with a tenant directory name of **azurestack.contoso.com**.
 
 ### Example: validate Azure identity with deployment data (deployment support)
 
@@ -243,7 +243,7 @@ $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service
 Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -DeploymentDataJSONPath .\contoso-deploymentdata.json
 ```
 
-In this example, the service admin account credentials are required for security, and `Start-AzsReadinessChecker` checks that the Azure account and AAD are valid for an AAD deployment, where **AzureCloud** and **TenantName** are read from the deployment data JSON file generated for the deployment.
+In this example, the service admin account credentials are required for security, and `Start-AzsReadinessChecker` checks that the Azure account and Azure AD are valid for an Azure AD deployment, where **AzureCloud** and **TenantName** are read from the deployment data JSON file generated for the deployment.
 
 ### Example: validate Azure registration
 
@@ -432,7 +432,7 @@ Specifies the destination path for certificate request files. Directory must alr
 
 ### -AADServiceAdministrator
 
-Specifies the AAD service admin to be used for Azure Stack deployment.
+Specifies the Azure AD service admin to be used for Azure Stack deployment.
 
 |  |  |
 |----------------------------|---------|
@@ -444,7 +444,7 @@ Specifies the AAD service admin to be used for Azure Stack deployment.
 
 ### -AADDirectoryTenantName
 
-Specifies the AAD name to be used for Azure Stack deployment.
+Specifies the Azure AD name to be used for Azure Stack deployment.
 
 |  |  |
 |----------------------------|---------|
@@ -509,7 +509,7 @@ Specifies the path for readiness report, defaults to current directory and defau
 
 Specifies the path under which only the certificate required certificate folders are present.
 
-Required folders for Azure Stack deployment with AAD identity system are:
+Required folders for Azure Stack deployment with Azure AD identity system are:
 
 - ACSBlob, ACSQueue, ACSTable, Admin Portal, ARM Admin, ARM Public, KeyVault, KeyVaultInternal, Public Portal
 
