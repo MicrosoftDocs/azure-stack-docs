@@ -38,7 +38,7 @@ The following figure shows what the connection configuration should look like wh
 To complete the connection configuration, ensure that you have the following items before you begin:
 
 * Two servers and other prerequisites that meet the ASDK hardware requirements, as described in [Quickstart: Evaluate the Azure Stack Development Kit](../asdk/asdk-download.md).
-* The [Azure Stack Development Kit](https://azure.microsoft.com/overview/azure-stack/try/) deployment package.
+* The [ASDK](https://azure.microsoft.com/overview/azure-stack/try/) deployment package.
 
 ## Deploy the Azure Stack Development Kit environments
 
@@ -49,11 +49,11 @@ To complete the connection configuration, you must deploy two ASDK environments.
 
 ## Prepare an offer on POC1 and POC2
 
-On both POC1 and POC2, prepare an offer so that a user can subscribe to the offer and deploy the virtual machines. For information on how to create an offer, see [Make virtual machines available to your Azure Stack users](azure-stack-tutorial-tenant-vm.md).
+On both POC1 and POC2, prepare an offer so that a user can subscribe to the offer and deploy the virtual machines (VMs). For information on how to create an offer, see [Make VMs available to your Azure Stack users](azure-stack-tutorial-tenant-vm.md).
 
 ## Review and complete the network configuration table
 
-The following table summarizes the network configuration for both ASDK environments. Use the procedure that appears after the table to add the External BGPNAT address that is specific for your network.
+The following table summarizes the network configuration for both ASDK environments. Use the procedure that appears after the table to add the External BGPNAT address that's specific for your network.
 
 ### Network configuration table
 
@@ -72,7 +72,7 @@ The following table summarizes the network configuration for both ASDK environme
 ### Get the IP address of the external adapter of the NAT VM
 
 1. Sign in to the Azure Stack physical machine for POC1.
-2. Edit the following PowerShell code to add your administrator password, and then run the code on the POC host:
+2. Edit the following PowerShell code to add your admin password, and then run the code on the POC host:
 
    ```powershell
    cd \AzureStack-Tools-master\connect
