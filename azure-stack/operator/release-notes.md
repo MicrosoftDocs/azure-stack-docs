@@ -452,7 +452,7 @@ Systems that can access the internet from the infrastructure network will see th
 
 ## Archive
 
-To access archived release notes for an older version, use the version selector dropdown above the table of contents, and select the version you want to see.
+To access archived release notes for an older version, use the version selector dropdown above the table of contents on the left, and select the version you want to see.
 
 ## Next steps
 
