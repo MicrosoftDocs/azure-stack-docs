@@ -27,6 +27,8 @@ You can install the AKS Engine on a VM in your environment, or any client machin
 
 If you have your prerequisites, you can begin to [define your cluster](azure-stack-kubernetes-aks-engine-deploy-cluster.md).
 
+If you are the cloud operator for Azure Stack and would like to offer the AKS Engine, follow the instructions at [Add the AKS Engine to the Azure Stack Marketplace](../operator/azure-stack-aks-engine.md).
+
 ## Prerequisites for the AKS Engine
 
 To use the AKS Engine you need to have the following resources available. Keep in mind that the AKS Engine is meant to be used by tenants of Azure Stack to deploy Kubernetes clusters into their tenant subscription. The only part where involvement of the Azure Stack operator may be required is for downloading marketplace items and the creation of a service principal identity. You can find details in the following table.
