@@ -148,7 +148,7 @@ If you're using an ASDK, you can [configure a static NAT mapping](../operator/az
 
 ### Connect a web app in Azure to a hybrid network
 
-To provide connectivity between the web front-end in Azure and the SQL Server database in Azure Stack, the web app must be connected to the hybrid network between Azure and Azure Stack. To enable connectivity, you'll have to:
+To provide connectivity between the web front end in Azure and the SQL Server database in Azure Stack, the web app must be connected to the hybrid network between Azure and Azure Stack. To enable connectivity, you'll have to:
 
 - Configure point-to-site connectivity.
 - Configure the web app.
