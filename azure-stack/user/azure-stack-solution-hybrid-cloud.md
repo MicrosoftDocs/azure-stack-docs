@@ -144,7 +144,7 @@ The Azure App Service simplifies running and managing a web app. Because Azure S
 
 The App Service on Azure Stack must be routable from the public internet to let users access your app. If your Azure Stack is accessible from the internet, make a note of the public-facing IP address or URL for the Azure Stack web app.
 
-If you're using an ASDK, you can [configure a static NAT mapping](../operator/azure-stack-create-vpn-connection-one-node.md#configure-the-nat-vm-on-each-azure-stack-development-kit-for-gateway-traversal) to expose App Service outside the virtual environment.
+If you're using an ASDK, you can [configure a static NAT mapping](../operator/azure-stack-create-vpn-connection-one-node.md#configure-the-nat-vm-on-each-asdk-for-gateway-traversal) to expose App Service outside the virtual environment.
 
 ### Connect a web app in Azure to a hybrid network
 
