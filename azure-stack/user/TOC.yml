@@ -198,7 +198,7 @@
             href: azure-stack-kubernetes-aks-engine-overview.md
           - name: Support policy
             href: azure-stack-kubernetes-ask-engine-support.md 
-          - name: Set up AKS Engine
+          - name: Set up prerequisites
             href: azure-stack-kubernetes-aks-engine-set-up.md
           - name: Create Linux client
             href: azure-stack-kubernetes-aks-engine-deploy-linux.md

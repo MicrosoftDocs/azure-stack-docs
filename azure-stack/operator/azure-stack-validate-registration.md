@@ -70,7 +70,7 @@ The following prerequisites are required:
    ```
 
    > [!NOTE]
-   > As a CSP, when using a shared services or IUR subscription, you must provide the credentials of a user from that respective AAD. Usually this will be similar to `subscriptionowner@iurcontoso.onmicrosoft.com`. That user must have the appropriate credentials, as described in the previous step.
+   > As a CSP, when using a shared services or IUR subscription, you must provide the credentials of a user from that respective Azure AD. Usually this will be similar to `subscriptionowner@iurcontoso.onmicrosoft.com`. That user must have the appropriate credentials, as described in the previous step.
 
 3. From the PowerShell prompt, run the following to set `$subscriptionID` as the Azure subscription to use. Replace `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` with your own subscription ID:
 
