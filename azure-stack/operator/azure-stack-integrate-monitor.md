@@ -71,7 +71,7 @@ A Nagios monitoring plugin was developed together with the partner Cloudbase sol
 
 The plugin is written in Python and leverages the health resource provider REST API. It offers basic functionality to retrieve and close alerts in Azure Stack. Like the System Center management pack, it enables you to add multiple Azure Stack deployments and to send notifications.
 
-With Version 1.2 the Azure Stack – Nagios plugin leverages the Microsoft ADAL library and supports authentication using  Service Principal with a Secret or Certificate. Also, the configuration has been simplified using a single configuration file with new parameters. It now supports Azure Stack deployments using AAD & ADFS as the identity system.
+With Version 1.2 the Azure Stack – Nagios plugin leverages the Microsoft ADAL library and supports authentication using  Service Principal with a Secret or Certificate. Also, the configuration has been simplified using a single configuration file with new parameters. It now supports Azure Stack deployments using Azure AD & AD FS as the identity system.
 
 The plugin works with Nagios 4x and XI. You can download it [here](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details). The download site also includes installation and configuration details.
 

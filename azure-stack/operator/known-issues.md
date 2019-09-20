@@ -21,7 +21,9 @@ ms.lastreviewed: 09/13/2019
 
 # Azure Stack known issues
 
-This article lists known issues in releases of Azure Stack. The list is updated as new issues are identified. **To access known issues for a different version, use the version picker in the upper left.**
+This article lists known issues in releases of Azure Stack. The list is updated as new issues are identified.
+
+To access known issues for a different version, use the version selector dropdown above the table of contents on the left.
 
 ::: moniker range=">=azs-1905"
 > [!IMPORTANT]  
@@ -675,7 +677,7 @@ The error occurs if you enable boot diagnostics on a VM, but delete your boot di
 ::: moniker range=">=azs-1905"
 ## Archive
 
-To access archived known issues for an older version, use the version picker in the upper left of the page, and select the version of interest. 
+To access archived known issues for an older version, use the version selector dropdown above the table of contents on the left, and select the version you want to see.
 
 ## Next steps
 
