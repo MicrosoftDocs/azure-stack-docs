@@ -3,7 +3,7 @@ title: Prepare Azure Stack Public Key Infrastructure certificates for Azure Stac
 description: Describes how to prepare the Azure Stack PKI certificates for Azure Stack integrated systems.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: justinha
 manager: femila
 editor: ''
 
@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
-ms.author: mabrigg
+ms.date: 09/16/2019
+ms.author: justinha
 ms.reviewer: ppacent
-ms.lastreviewed: 01/30/2019
+ms.lastreviewed: 09/16/2019
 ---
 
 # Prepare Azure Stack PKI certificates for use in deployment or rotation
@@ -24,7 +24,8 @@ The certificate files [obtained from your CA of choice](azure-stack-get-pki-cert
 
 ## Prepare certificates for deployment
 
-Use these steps to prepare and validate the Azure Stack PKI certificates that will be used for deploying a new Azure Stack environment or for rotating secrets in an existing Azure Stack environment: 
+Use the following steps to prepare and validate the Azure Stack PKI certificates that will be used for deploying a new Azure Stack environment or for rotating secrets in an existing Azure Stack environment. 
+
 
 ### Import the certificate
 
@@ -47,6 +48,9 @@ Use these steps to prepare and validate the Azure Stack PKI certificates that wi
    ![Mark key as exportable](./media/prepare-pki-certs/2.png)
 
 1. Click Finish to complete the import.
+
+> [!NOTE]
+> After you import a certificate for Azure Stack, the private key of the certificate is stored as a PKCS 12 file (PFX) on clustered storage.
 
 ### Export the certificate
 
@@ -84,7 +88,7 @@ Open Certificate Manager MMC console and connect to the Local Machine certificat
 
 1. Select **Next**.
 
-1. Choose a file name and location for the pfx file to export. Select **Next**.
+1. Choose a file name and location for the PFX file to export. Select **Next**.
 
 1. Select **Finish**.
 

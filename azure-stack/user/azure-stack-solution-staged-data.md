@@ -46,7 +46,7 @@ In this solution, you'll create a sample environment to:
 ## Prerequisites for staged data analytics
 
   - An Azure subscription.
-  - An Azure Active Directory (AAD) service principal that has permissions to the tenant subscription on Azure and Azure Stack. You may need to create two service principals if the Azure Stack is using a different AAD tenant than your Azure subscription. To learn how to create a service principal for Azure Stack, go [Create service principals to give applications access to Azure Stack resources](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals).
+  - An Azure Active Directory (Azure AD) service principal that has permissions to the tenant subscription on Azure and Azure Stack. You may need to create two service principals if the Azure Stack is using a different AAD tenant than your Azure subscription. To learn how to create a service principal for Azure Stack, go [Create service principals to give applications access to Azure Stack resources](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals).
       - **Make a note of each service principal's application ID, client secret, Azure AD Tenant ID, and tenant name (xxxxx.onmicrosoft.com).**
   - You will need to provide a collection of data for data analysis. Sample data is provided.
   - [Docker for Windows](https://docs.docker.com/docker-for-windows/) installed on your local machine.

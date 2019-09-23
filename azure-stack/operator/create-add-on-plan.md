@@ -35,6 +35,7 @@ When you add an add-on plan to an existing offer subscription, the additional re
 
 Add-on plans are created by modifying an existing offer.
 
+::: moniker range=">=azs-1902"
 ## Create an add-on plan (1902 and later)
 
 1. Sign in to the Azure Stack administrator portal as a cloud administrator.
@@ -54,7 +55,9 @@ Add-on plans are created by modifying an existing offer.
 6. Review the list of add-on plans included with the offer to verify that the new add-on plan is listed.
 
     [![Create add-on plan](media/create-add-on-plan/add-on4.png "Create add-on plan")](media/create-add-on-plan/add-on4lg.png#lightbox)
+::: moniker-end
 
+::: moniker range="<=azs-1901"
 ## Create an add-on plan (1901 and earlier)
 
 1. Sign in to the Azure Stack administrator portal as a cloud administrator.
@@ -74,6 +77,7 @@ Add-on plans are created by modifying an existing offer.
 6. Review the list of add-on plans included with the offer to verify that the new add-on plan is listed.
 
     ![Create add-on plan](media/create-add-on-plan/4.PNG)
+::: moniker-end
 
 ## Next steps
 

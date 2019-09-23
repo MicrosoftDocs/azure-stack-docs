@@ -16,7 +16,7 @@ ms.date: 07/15/2019
 ms.reviewer: ppacent
 ms.author: mabrigg
 ms.lastreviewed: 07/15/2019
-
+monikerRange: '>=azs-1803'
 ---
 
 # Rotate secrets in Azure Stack
@@ -143,7 +143,7 @@ To rotate external secrets:
 
 1. Within the newly created **\Certificates\\\<IdentityProvider>** directory created in the Pre-steps, place the new set of replacement external certificates in the directory structure according to the format outlined in the Mandatory Certificates section of the [Azure Stack PKI certificate requirements](azure-stack-pki-certs.md#mandatory-certificates).
 
-    Example of folder structure for the AAD Identity Provider:
+    Example of folder structure for the Azure AD Identity Provider:
     ```powershell
         <ShareName>
         │   │

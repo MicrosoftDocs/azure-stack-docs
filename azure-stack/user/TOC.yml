@@ -186,23 +186,46 @@
           href: azure-stack-metrics-supported.md
         - name: Consume Azure monitoring data
           href: azure-stack-metrics-monitor.md
-    - name: Use solution templates
+    - name: Deploy add-on services
       items:
       - name: Deploy Ethereum
         href: azure-stack-ethereum.md
       - name: Deploy a Service Fabric cluster
         href: azure-stack-solution-template-service-fabric-cluster.md
       - name: Deploy a Kubernetes cluster
-        href: azure-stack-solution-template-kubernetes-deploy.md
         items:
-        - name: Deploy Kubernetes using Azure AD
-          href: azure-stack-solution-template-kubernetes-azuread.md
-        - name: Deploy Kubernetes using AD FS
-          href: azure-stack-solution-template-kubernetes-adfs.md
-        - name: Enable the Kubernetes dashboard
-          href: azure-stack-solution-template-kubernetes-dashboard.md
-        - name: Troubleshoot Kubernetes cluster
-          href: azure-stack-solution-template-kubernetes-trouble.md
+        - name: AKS Engine
+          items:
+          - name: AKS Engine on Azure Stack
+            href: azure-stack-kubernetes-aks-engine-overview.md
+          - name: Support policy
+            href: azure-stack-kubernetes-ask-engine-support.md 
+          - name: Set up prerequisites
+            href: azure-stack-kubernetes-aks-engine-set-up.md
+          - name: Create Linux client
+            href: azure-stack-kubernetes-aks-engine-deploy-linux.md
+          - name: Create Windows client
+            href: azure-stack-kubernetes-aks-engine-deploy-windows.md
+          - name: Deploy a cluster
+            href: azure-stack-kubernetes-aks-engine-deploy-cluster.md
+          - name: Scale a cluster
+            href: azure-stack-kubernetes-aks-engine-scale.md
+          - name: Upgrade a cluster
+            href: azure-stack-kubernetes-aks-engine-upgrade.md
+          - name: Troubleshoot AKS Engine
+            href: azure-stack-kubernetes-aks-engine-troubleshoot.md
+        - name: Marketplace item
+          items: 
+          - name: Deploy a Kubernetes cluster
+            href: azure-stack-solution-template-kubernetes-deploy.md
+          - name: Deploy Kubernetes using Azure AD
+            href: azure-stack-solution-template-kubernetes-azuread.md
+          - name: Deploy Kubernetes using AD FS
+            href: azure-stack-solution-template-kubernetes-adfs.md
+          - name: Enable the Kubernetes dashboard
+            href: azure-stack-solution-template-kubernetes-dashboard.md
+          - name: Troubleshoot Kubernetes cluster
+            href: azure-stack-solution-template-kubernetes-trouble.md
       - name: Deploy Cognitive Services
         href: azure-stack-solution-template-cognitive-services.md
   - name: Deploy apps
