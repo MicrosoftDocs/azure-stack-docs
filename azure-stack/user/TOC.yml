@@ -275,7 +275,7 @@
       - name: DevOps (Hybrid CI/CD)
         href: azure-stack-edge-pattern-hybrid-ci-cd.md
       - name: Footfall detection
-        href: hybrid-pattern-ai-footfall-detection.md
+        href: hybrid-solution-retail-footfall-detection.md
       - name: Geo-distributed application
         href: azure-stack-edge-pattern-geo-distribution.md
 - name: Reference
