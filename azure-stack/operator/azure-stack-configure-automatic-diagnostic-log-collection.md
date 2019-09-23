@@ -119,7 +119,7 @@ Operators can also check the storage account for automatically collected logs. F
 
 ## Automatic diagnostic log collection alerts 
 
-The following table lists specific alerts that trigger automatic diagnostic log collection. 
+If enabled, automatic diagnostic log collection occurs only when necessary. Only the following alerts trigger collection. 
 
 |Alert Title  |	FaultIdType|	
 |-------------|------------|
