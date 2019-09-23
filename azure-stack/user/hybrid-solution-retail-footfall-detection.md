@@ -88,7 +88,7 @@ This solution captures customer images, making security a paramount consideratio
 
 ## Example
 
-See the [custom AI vision repository - TBD](https://github.com/Microsoft/vision-ai-developer-kit), for an example that deploys and shows the solution in action, using the Custom Vision AI Dev Kit.
+See the [Vision AI Developer Kit repository - TBD](https://github.com/Microsoft/vision-ai-developer-kit), for an example that deploys and shows the solution in action, using the Custom Vision AI Dev Kit.
 
 ## Next steps
 
