@@ -1,6 +1,6 @@
 ---
 title: Azure Stack datacenter integration walkthrough | Microsoft Docs
-description: Learn what to expect for a successful on-site deployment of Azure Stack in your datacenter.
+description: Learn what to expect for a successful on-site deployment of Azure Stack in your datacenter, from planning to post-deployment.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -19,9 +19,9 @@ ms.reviewer: asganesh
 ms.lastreviewed: 12/10/2018
 ---
  
-# Azure Stack datacenter integration
+# Azure Stack datacenter integration walkthrough
 
-This article describes the end-to-end Azure Stack customer experience from purchasing an integrated system through to a successful on-site deployment by a solution provider. Use this information to ease your journey and to help set expectations for you, an Azure Stack customer.
+This article describes the end-to-end Azure Stack customer experience from purchasing an integrated system through to a successful on-site deployment by a solution provider. Use this information to ease your journey and to help set expectations for you as an Azure Stack customer.
 
 As an Azure Stack customer, you should anticipate the following phases:
 
@@ -51,31 +51,31 @@ To ensure that the hardware solution will best fit your needs, the [Azure Stack 
 The spreadsheet is *not* intended to be used as a substitute for your own investigation and analysis of hardware solutions that best suit your needs. When planning for an Azure Stack deployment, you should also review the [general datacenter integration considerations](azure-stack-datacenter-integration.md) for Azure Stack integrated systems.
 
 ## Order process phase
-At this stage, many of your questions with regards to feasibility would have been answered. Now that you are ready to commit to purchasing Azure Stack, and after signing all the required contracts and purchase orders, you will be asked to provide the integration requirements data to your solution provider.
+At this stage, many of your questions with regards to feasibility would've been answered. Now that you're ready to commit to purchasing Azure Stack, and after signing all the required contracts and purchase orders, you'll be asked to provide the integration requirements data to your solution provider.
 
 ## Pre-deployment phase
-During this phase, you will need to decide how you want to integrate Azure Stack into your datacenter. To ease this process, Microsoft, in collaboration with the solution providers, put together a requirements template to help you gather the necessary information to plan for an integrated system deployment within your environment.
+During this phase, you'll need to decide how you want to integrate Azure Stack into your datacenter. To ease this process, Microsoft, in collaboration with the solution providers, put together a requirements template to help you gather the necessary information to plan for an integrated system deployment within your environment.
 
-The [general datacenter integration considerations](azure-stack-datacenter-integration.md) article provides information that helps you complete the template, known as the Deployment Worksheet. 
+The [general datacenter integration considerations](azure-stack-datacenter-integration.md) article provides information that helps you complete the template, known as the Deployment Worksheet.
 
 > [!IMPORTANT]
-> During this stage it is important that all pre-requisite information is investigated and decided on prior to ordering the solution. Be aware that this step is time consuming and requires coordination and data gathering from multiple disciplines within your organization. Incorrect or incomplete information can result in a longer deployment. 
+> During this stage it's important that all prerequisite information is investigated and decided on prior to ordering the solution. Be aware that this step is time consuming and requires coordination and data gathering from multiple disciplines within your organization. Incorrect or incomplete information can result in a longer deployment. 
 
-In the pre-deployment phase you will need to decide on the following:
+In the pre-deployment phase you'll need to decide on the following:
 
 - **Azure Stack connection model and identity provider**. You can choose to deploy Azure Stack either [connected to the internet (and to Azure) or disconnected](azure-stack-connection-models.md). To get the most benefit from Azure Stack, including hybrid scenarios, you'd want to deploy connected to Azure. Choosing Active Directory Federation Services (AD FS) or Azure Active Directory (Azure AD) is a one-time decision that you must make at deployment time. **You can't change this later without redeploying the entire system**.
 
-- **Licensing model**. The licensing model options for you to choose from depend on the kind of deployment you will have. Your identity provider choice has no bearing on tenant virtual machines or the identity system and accounts they use.
+- **Licensing model**. The licensing model options for you to choose from depend on the kind of deployment you'll have. Your identity provider choice has no bearing on tenant virtual machines or the identity system and accounts they use.
     - Customers that are in a [disconnected deployment](azure-stack-disconnected-deployment.md) have only one option: capacity-based billing.
 
-    - Customers that are in a [connected deployment](azure-stack-connected-deployment.md) can choose between capacity-based billing and pay-as-you-use. Capacity-based billing will require an Enterprise Agreement (EA) Azure Subscription for registration. This is needed for registration, which provides for the availability of items in the Marketplace through an Azure Subscription.
+    - Customers that are in a [connected deployment](azure-stack-connected-deployment.md) can choose between capacity-based billing and pay-as-you-use. Capacity-based billing requires an Enterprise Agreement (EA) Azure Subscription for registration. This is needed for registration, which provides for the availability of items in Azure Marketplace through an Azure Subscription.
 
 - **Network integration**. [Network integration](azure-stack-network.md) is crucial for deployment, operation, and management of Azure Stack systems. There are several considerations that go into ensuring the Azure Stack solution is resilient and has a highly available physical infrastructure to support its operations.
 
-- **Firewall integration**. It is recommended that you [use a firewall](azure-stack-firewall.md) to help secure Azure Stack. Firewalls can help prevent DDOS attacks, intrusion detection, and content inspection. However, it should be noted that it can become a throughput bottleneck for Azure storage services.
+- **Firewall integration**. It's recommended that you [use a firewall](azure-stack-firewall.md) to help secure Azure Stack. Firewalls can help prevent DDOS attacks, intrusion detection, and content inspection. However, it should be noted that it can become a throughput bottleneck for Azure storage services.
 
 
-- **Certificate requirements**. It is critical that all [required certificates](azure-stack-pki-certs.md) are available *prior* to an onsite engineer arriving at your datacenter for deployment.
+- **Certificate requirements**. It's critical that all [required certificates](azure-stack-pki-certs.md) are available *prior* to an onsite engineer arriving at your datacenter for deployment.
 
 Once all the pre-requisite information is gathered through the deployment worksheet, the solution provider will kick off the factory process based on the data collected to ensure a successful integration of Azure Stack into your datacenter.
 
