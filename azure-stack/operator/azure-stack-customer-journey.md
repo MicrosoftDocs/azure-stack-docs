@@ -80,9 +80,9 @@ In the pre-deployment phase you'll need to decide on the following:
 Once all the pre-requisite information is gathered through the deployment worksheet, the solution provider will kick off the factory process based on the data collected to ensure a successful integration of Azure Stack into your datacenter.
 
 ## Hardware delivery phase
-Your solution provider will work with you on scheduling when the solution will arrive to your facility. Once received and put in place, you will need to schedule time with the solution provider to have an engineer come onsite to perform the Azure Stack deployment.
+Your solution provider will work with you on scheduling when the solution will arrive to your facility. Once received and put in place, you'll need to schedule time with the solution provider to have an engineer come onsite to perform the Azure Stack deployment.
 
-It is **crucial** that all pre-requisite data is locked and available *before the onsite engineer arrives to deploy the solution*.
+It's **crucial** that all prerequisite data is locked and available *before the onsite engineer arrives to deploy the solution*.
 
 -   All certificates must be purchased and ready.
 
@@ -94,14 +94,14 @@ It is **crucial** that all pre-requisite data is locked and available *before th
 > If any of this information has changed, make sure to communicate the change with the solution provider before you schedule the actual deployment.
 
 ## Onsite deployment phase
-To deploy Azure Stack, an onsite engineer from your hardware solution provider will need to be present to kick off the deployment. To ensure a successful deployment, ensure that all information provided through the deployment worksheet has not changed. 
+To deploy Azure Stack, an onsite engineer from your hardware solution provider will need to be present to kick off the deployment. To ensure a successful deployment, ensure that all information provided through the deployment worksheet hasn't changed.
 
 The following is what you should expect from the onsite engineer during the deployment experience:
 
 - Check all the cabling and border connectivity to ensure the solution is properly put together and meets your requirements.
 - Configure the solution HLH (Hardware Lifecycle Host), if present.
-- Check to make sure all BMC, BIOS, and Network settings are correct.
-- Make sure the firmware of all components is at the latest approved version by the solution.
+- Check to make sure all BMC, BIOS, and network settings are correct.
+- Make sure firmware for all components is at the latest approved version by the solution.
 - Start the deployment.
 
 > [!NOTE]
@@ -112,19 +112,19 @@ Several steps must be performed by the partner before the solution is handed off
 
 Actions that should be taken by the OEM Partner are:
 
-- [Run test-azurestack](azure-stack-diagnostic-test.md)
+- [Run test-azurestack](azure-stack-diagnostic-test.md).
 
-- [Registration with Azure](azure-stack-registration.md)
+- [Registration with Azure](azure-stack-registration.md).
 
-- [Marketplace Syndication](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items)
+- [Marketplace Syndication](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items).
 
-- Backup Switch Configuration and HLH Configuration files
+- Backup Switch Configuration and HLH Configuration files.
 
-- Remove DVM
+- Remove DVM.
 
-- Prepare a customer summary for deployment
+- Prepare a customer summary for deployment.
 
-- [Check updates to make sure the solution software is updated to the latest version](./azure-stack-updates.md)
+- [Check updates to make sure the solution software is updated to the latest version](./azure-stack-updates.md).
 
 There are several steps that are required or optional depending on the installation type.
 
@@ -137,14 +137,14 @@ There are several steps that are required or optional depending on the installat
 
   -   [System Center Operations Manager Integration](azure-stack-integrate-monitor.md) also supports fleet management capabilities.
 
-  -   [Nagios Integration](azure-stack-integrate-monitor.md#integrate-with-nagios)
+  -   [Nagios Integration](azure-stack-integrate-monitor.md#integrate-with-nagios).
 
 ## Overall timeline
 
-![](./media/azure-stack-datacenter-integration-walkthrough/image1.png)
+![Overall timeline for Azure Stack on-site deployment](./media/azure-stack-datacenter-integration-walkthrough/image1.png)
 
 ## Support
-Azure Stack enables an Azure-consistent, integrated support experience that covers the full system lifecycle. To fully support Azure Stack integrated systems, customers need two support contracts; one with Microsoft (or their Cloud Solution Provider) for Azure services support and one with the hardware provider for system support. The integrated support experience provides coordinated escalation and resolution, so that customers get a consistent support experience no matter whom they call first. For customers who already have Premier, Azure -Standard / ProDirect or Partner support with Microsoft, Azure Stack software support is included.
+Azure Stack enables an Azure-consistent, integrated support experience that covers the full system lifecycle. To fully support Azure Stack integrated systems, customers need two support contracts: one with Microsoft (or their Cloud Solution Provider) for Azure services support and one with the hardware provider for system support. The integrated support experience provides coordinated escalation and resolution so that customers get a consistent support experience no matter whom they call first. For customers who already have Premier, Azure -Standard / ProDirect or Partner support with Microsoft, Azure Stack software support is included.
 
 The integrated support experience makes use of a Case Exchange mechanism for bi-directional transfer of support cases and case updates between Microsoft and the hardware partner. Microsoft Azure Stack will follow the [Modern Lifecycle policy](https://support.microsoft.com/help/30881).
 
