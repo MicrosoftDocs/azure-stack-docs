@@ -75,16 +75,20 @@
           href: azure-stack-developer.md  
         - name: Check templates
           href: azure-stack-validate-templates.md
-        - name: Deploy with the portal
-          href: azure-stack-deploy-template-portal.md
-        - name: Deploy with PowerShell
-          href: azure-stack-deploy-template-powershell.md
-        - name: Deploy with CLI
-          href: azure-stack-deploy-template-command-line.md
-        - name: Deploy with Visual Studio
-          href: azure-stack-deploy-template-visual-studio.md
-        - name: Use a deployment schema
-          href: azure-stack-arm-deployment-schema.md
+          name: Deploy templates
+          items:
+          - name: Deploy with the portal
+            href: azure-stack-deploy-template-portal.md
+          - name: Deploy with PowerShell
+            href: azure-stack-deploy-template-powershell.md
+          - name: Deploy with CLI
+            href: azure-stack-deploy-template-command-line.md
+          - name: Deploy with Visual Studio Code
+            href: azure-stack-arm-deploy-template-vscode.md
+          - name: Deploy with Visual Studio
+            href: azure-stack-deploy-template-visual-studio.md
+          - name: Use a deployment schema
+            href: azure-stack-arm-deployment-schema.md
       - name: Use API version profiles
         items:
         - name: Overview

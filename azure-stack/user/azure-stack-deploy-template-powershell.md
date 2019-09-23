@@ -64,6 +64,10 @@ This example uses **AzureRM** PowerShell cmdlets and a template stored on GitHub
 
 4. Open the Azure Stack portal, select **Browse**, and then select  **Virtual machines** to find your new virtual machine (**myDeployment001**).
 
+## Cancel a running template deployment
+
+To cancel a running template deployment, use the `Stop-AzureRmResourceGroupDeployment` PowerShell cmdlet.
+
 ## Next steps
 
 - [Deploy a template with Visual Studio](azure-stack-deploy-template-visual-studio.md)
