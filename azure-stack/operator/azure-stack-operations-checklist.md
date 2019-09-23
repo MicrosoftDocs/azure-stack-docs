@@ -49,8 +49,13 @@ Azure Stack operators will also need to do these things as needed from day-to-da
 > * Update [quotas](azure-stack-quota-types.md)
 > * Publish [marketplace samples](azure-stack-create-and-publish-marketplace-item.md)
 > * Apply [marketplace updates](azure-stack-marketplace-changes.md)
-> * Add pilot users to test ring (SelfHosting)
-> * Patch & updates (Software and FRU updates)
+> * Configure [telemetry](azure-stack-telemetry.md)
+> * Review [region management](azure-stack-region-management.md)
+> * Shut down or [restart Azure Stack services](azure-stack-start-and-stop.md). 
+> * Replacing a [scale unit node](azure-stack-replace-node.md)
+> * Replace a [physical disk](azure-stack-replace-disk.md)
+> * Update add-on resource providers such as [SQL](azure-stack-sql-resource-provider-update.md), [MySQL](/azure-stack-mysql-resource-provider-update.md), and the [App Service](azure-stack-app-service-update.md)
+
 
 ## List from Brian
 
@@ -73,12 +78,7 @@ Add as needed to heading and list Create plans, offers quotas, updating from mar
 
 Ask Jeff, Brian, is this everything you do, how can we make it more useful? Theebs has another user.
 
-Config telemtry,
-Regional management
-starting and stopping, in case you want to move it for example. 
-Replacing hardware
-Add a node
-Monitor add-on RPS, like SQL, MySQL, Appsvc, 
+
 
 
 
