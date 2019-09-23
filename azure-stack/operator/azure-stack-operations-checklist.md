@@ -48,7 +48,7 @@ Azure Stack operators will also need to do these things as needed from day-to-da
 > * Create [subscriptions](azure-stack-subscribe-plan-provision-vm.md)
 > * Update [quotas](azure-stack-quota-types.md)
 > * Publish [marketplace samples](azure-stack-create-and-publish-marketplace-item.md)
-> * Apply [marketplace updates](azure-stack-marketplace-changes)
+> * Apply [marketplace updates](azure-stack-marketplace-changes.md)
 > * Add pilot users to test ring (SelfHosting)
 > * Patch & updates (Software and FRU updates)
 
