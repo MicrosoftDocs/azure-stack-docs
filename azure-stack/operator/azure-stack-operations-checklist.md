@@ -20,22 +20,19 @@ ms.lastreviewed: 09/19/2019
 
 ---
 
-## Azure Stack operations checklist
+## Azure Stack operations checklists
 
-This topic covers common tasks that Azure tack operators need to perform and how often to perform them. 
+We put together some operations checklists so Azure Stack operators be successful. You can add specific operations that need to be done for your environment. They're meant to help someone onboarding as an operator know what to do daily, weekly, and monthly. 
 
 ## Routine daily and weekly operations
 
 Azure Stack operators need to do the following things routinely:
 
 > [!div class="checklist"]
-> * Monitor and remediate SCOM and [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) errors twice daily
+> * Monitor and remediate [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) and Systen Center Operations Monitor errors twice daily
 > * Identify exceptions 
 > * View details of an exception
 > * Run [Test-AzureStack](azure-stack-diagnostic-test.md)
-> * Download a snapshot of the exception to Visual Studio for debugging
-> * Analyze details of failed requests 
-> * Create new work items
 > * Collect logs each month using log collection <!--- Diagnostic logs? Why collect them, what should they look for?--->
 > * Update firmware every two months
 > * Back up infrastructure services <!--- how often? Which services? which backup types? For ex, DC needs system state backup?--->
@@ -54,11 +51,6 @@ Azure Stack operators will also need to do these things as needed from day-to-da
 > * Apply [marketplace updates](azure-stack-marketplace-changes)
 > * Add pilot users to test ring (SelfHosting)
 > * Patch & updates (Software and FRU updates)
-> * Identify exceptions for different components of your application
-> * View details of an exception
-> * Download a snapshot of the exception to Visual Studio for debugging
-> * Analyze details of failed requests using query language
-> * Create a new work item to correct the faulty code
 
 ## List from Brian
 
