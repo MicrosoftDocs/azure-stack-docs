@@ -1,6 +1,6 @@
 ---
 title: Azure Stack operations checklist | Microsoft Docs
-description: Learn common tasks that Azure Stack operators should perform and how often to do them.
+description: Learn common tasks that Azure Stack operators need to do and how often to do them.
 services: azure-stack
 documentationcenter: ''
 author: justinha
