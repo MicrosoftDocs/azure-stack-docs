@@ -44,12 +44,12 @@ For best practices about choosing parameters for the automatic log collection st
 1. Sign in to the [Azure portal](https://portal.azure.com).
 1. Click **Storage accounts** > **Add**. 
 1. Create a blob container with these settings:
-   - **Subscription**: Choose your Azure subscription.
-   - **Resource group**: Specify a resource group.
-   - **Storage account name**: Specify a unique storage account name.
-   - **Location**: Choose a datacenter in accordance with your company policy.
-   - **Performance**: Choose Standard.
-   - **Account kind** Choose StorageV2 (general purpose v2). 
+   - **Subscription**: Choose your Azure subscription
+   - **Resource group**: Specify a resource group
+   - **Storage account name**: Specify a unique storage account name
+   - **Location**: Choose a datacenter in accordance with your company policy
+   - **Performance**: Choose Standard
+   - **Account kind** Choose StorageV2 (general purpose v2) 
    - **Replication**: Choose Locally-redundant storage (LRS)
    - **Access tier**: Choose Cool
 
