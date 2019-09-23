@@ -166,7 +166,7 @@
       - name: Monitor update status
         href: azure-stack-update-monitor.md
       - name: Troubleshoot updates
-        href: azure-stack-update-troubleshoot.md
+        href: azure-stack-updates-troubleshoot.md
     - name: Monitor health and alerts
       href: azure-stack-monitor-health.md
     - name: Manage network resources
