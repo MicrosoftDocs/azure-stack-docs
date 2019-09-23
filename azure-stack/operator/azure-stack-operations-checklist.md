@@ -31,7 +31,6 @@ Azure Stack operators need to do the following things routinely:
 > [!div class="checklist"]
 > * Monitor and remediate [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) and [Systen Center Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) errors twice daily
 > * Run [Test-AzureStack](azure-stack-diagnostic-test.md) once daily
-> * Perform [infrastructure service backups](azure-stack-backup-infrastructure-backup.md) weekly 
 > * Report [Azure Stack usage](azure-stack-usage-reporting.md) weekly 
 > * Run [diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md) monthly 
 > * Update [OEM firmware](azure-stack-update-oem.md) every two months or as notified by the OEM
