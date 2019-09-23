@@ -56,7 +56,7 @@ Azure Stack operators will also need to do these things as needed from day-to-da
 > * Replace a [scale unit node](azure-stack-replace-node.md)
 > * Replace a [physical disk](azure-stack-replace-disk.md)
 > * Replace a [hardware component](azure-stack-replace-component.md)
-> * Update add-on resource providers such as [SQL](azure-stack-sql-resource-provider-update.md), [MySQL](/azure-stack-mysql-resource-provider-update.md), and the [App Service](azure-stack-app-service-update.md)
+> * Update add-on resource providers such as [SQL](azure-stack-sql-resource-provider-update.md), [MySQL](azure-stack-mysql-resource-provider-update.md), and the [App Service](azure-stack-app-service-update.md)
 
 
 <!---Ask Jeff, Brian, is this everything you do, how can we make it more useful? Theebs has another user.
