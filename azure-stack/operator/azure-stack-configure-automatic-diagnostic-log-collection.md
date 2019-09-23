@@ -121,31 +121,31 @@ Operators can also check the storage account for automatically collected logs. F
 
 The following table lists the different types of alerts that can trigger automatic diagnostic log collection. 
 
-|Alert Title  |	FaultIdType|	Severity |
-|-------------|------------|-------------|
-|Unable to connect to the remote service |	UsageBridge.NetworkError|	Warning |
-|Update failed |	Urp.UpdateFailure	|            |
-|Storage Resource Provider infrastructure/dependencies not available |	StorageResourceProviderDependencyUnavailable	 |      |
-|Node not connected to controller|	ServerHostNotConnectedToController	 |      |
-|Route publication failure |	SlbMuxRoutePublicationFailure |	Critical |
-|Storage Resource Provider internal data store unavailable |	StorageResourceProvider. DataStoreConnectionFail	 |        |
-|Storage device failure	| Microsoft.Health.FaultType.VirtualDisks.Detached	 |       |
-|Health controller cannot access storage account | Microsoft.Health.FaultType.StorageError |	Critical |
-|Connectivity to a physical disk has been lost |	Microsoft.Health.FaultType.PhysicalDisk.LostCommunication	 |     |
-|The blob service isnt running on a node |	StorageService.The.blob.service.is.not.running.on.a.node-Critical |	Critical   |
-|Infrastructure role unhealthy |	Microsoft.Health.FaultType.GenericExceptionFault |        |	 
-|Table service errors |	StorageService.Table.service.errors-Critical |               | 
-|A file share is over 80% utilized |	Microsoft.Health.FaultType.FileShare.Capacity.Warning.Infra |        |	 
-|Scale unit node is offline	| FRP.Heartbeat.PhysicalNode |	Critical |
-|Infrastructure role instance unavailable |	FRP.Heartbeat.InfraVM	|     | 
-|Infrastructure role instance unavailable  |	FRP.Heartbeat.NonHaVm     |        |	 
-|The infrastructure role, Directory Management, has reported time synchronization errors |	DirectoryServiceTimeSynchronizationError |	    |
-|Pending external certificate expiration |	CertificateExpiration.ExternalCert.Warning |	Warning |
-|Pending external certificate expiration |	CertificateExpiration.ExternalCert.Critical |	Critical  |
-|Unable to provision virtual machines for specific class and size due to low memory capacity |	AzureStack.ComputeController.VmCreationFailure.LowMemory |	Critical | 
-|Node inaccessible for virtual machine placement |	AzureStack.ComputeController.HostUnresponsive |	Critical |
-|Backup failed  | AzureStack.BackupController.BackupFailedGeneralFault |	Critical |
-|The scheduled backup was skipped due to a conflict with failed operations	| AzureStack.BackupController.BackupSkippedWithFailedOperationFault |	  |
+|Alert Title  |	FaultIdType|	
+|-------------|------------|
+|Unable to connect to the remote service |	UsageBridge.NetworkError|
+|Update failed |	Urp.UpdateFailure	|          
+|Storage Resource Provider infrastructure/dependencies not available |	StorageResourceProviderDependencyUnavailable	 |     
+|Node not connected to controller|	ServerHostNotConnectedToController	 |     
+|Route publication failure |	SlbMuxRoutePublicationFailure |	
+|Storage Resource Provider internal data store unavailable |	StorageResourceProvider. DataStoreConnectionFail	 |       
+|Storage device failure	| Microsoft.Health.FaultType.VirtualDisks.Detached	 |      
+|Health controller cannot access storage account | Microsoft.Health.FaultType.StorageError |	
+|Connectivity to a physical disk has been lost |	Microsoft.Health.FaultType.PhysicalDisk.LostCommunication	 |    
+|The blob service isnt running on a node |	StorageService.The.blob.service.is.not.running.on.a.node-Critical |	
+|Infrastructure role unhealthy |	Microsoft.Health.FaultType.GenericExceptionFault |        
+|Table service errors |	StorageService.Table.service.errors-Critical |              
+|A file share is over 80% utilized |	Microsoft.Health.FaultType.FileShare.Capacity.Warning.Infra |       
+|Scale unit node is offline	| FRP.Heartbeat.PhysicalNode |	
+|Infrastructure role instance unavailable |	FRP.Heartbeat.InfraVM	|    
+|Infrastructure role instance unavailable  |	FRP.Heartbeat.NonHaVm     |        
+|The infrastructure role, Directory Management, has reported time synchronization errors |	DirectoryServiceTimeSynchronizationError |	   
+|Pending external certificate expiration |	CertificateExpiration.ExternalCert.Warning |
+|Pending external certificate expiration |	CertificateExpiration.ExternalCert.Critical |
+|Unable to provision virtual machines for specific class and size due to low memory capacity |	AzureStack.ComputeController.VmCreationFailure.LowMemory |
+|Node inaccessible for virtual machine placement |	AzureStack.ComputeController.HostUnresponsive |	
+|Backup failed  | AzureStack.BackupController.BackupFailedGeneralFault |	
+|The scheduled backup was skipped due to a conflict with failed operations	| AzureStack.BackupController.BackupSkippedWithFailedOperationFault |	
 
 
 ## See also
