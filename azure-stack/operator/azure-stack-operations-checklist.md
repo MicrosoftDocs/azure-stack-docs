@@ -22,7 +22,7 @@ ms.lastreviewed: 09/19/2019
 
 ## Azure Stack operations checklist
 
-This topic covers common tasks that Azure tack operators need to perform and how odten to perform them. 
+This topic covers common tasks that Azure tack operators need to perform and how often to perform them. 
 
 ## Routine daily and weekly operations
 
