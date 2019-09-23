@@ -29,14 +29,14 @@ As an Azure Stack customer, you should anticipate the following phases:
 |-----|-----|-----|-----|-----|-----|-----|
 |**Microsoft**|Engage with partner to provide presales support.|Prepare software licensing and contracts as needed.|Provide required tooling to collect datacenter integration requirements and documentation to customer.|Provide the latest baseline builds and tool chain updates on a monthly cadence.|N/A|Microsoft support engineers assist with any deployment issues.|
 |**Partner**|Recommend solution options based on customer requirements.<br><br>Propose proof of concept (POC) if necessary.<br><br>Establish business relationship.<br><br>Decide on level of support.|Prepare necessary contracts with the customer.<br><br>Create customer purchase order.<br><br>Decide on delivery timeline.<br><br>Connect customer with Microsoft if necessary.|Provide customer with necessary training to ensure understanding of all deployment prerequisites and datacenter integration options.<br><br>Assist the customer with validation of collected data to ensure completeness and accuracy.|Apply the last validated baseline build.<br><br>Apply the required Microsoft deployment toolkit.|Ship hardware to customer site.|Deployment handled by an onsite engineer.<br><br>Rack and stack.<br><br>Hardware lifecycle host (HLH) deployment.<br><br>Azure Stack deployment.<br><br>Hand off to customer.|
-|**Customer**|Describe intended use cases and specify requirements.|Determine the billing model to use, review and approve contracts.|Complete the [Deployment Worksheet](azure-stack-deployment-worksheet.md), and ensure all deployment prerequisites are met and ready for deployment.|N/A|Prepare datacenter by ensuring all required power and cooling, border connectivity, and other required datacenter integration requirement are in place.|Be available during deployment to provide subscription credentials and support if there are questions on the provided data.|
+|**Customer**|Describe intended use cases and specify requirements.|Determine the billing model to use, review, and approve contracts.|Complete the [Deployment Worksheet](azure-stack-deployment-worksheet.md), and ensure all deployment prerequisites are met and ready for deployment.|N/A|Prepare datacenter by ensuring all required power and cooling, border connectivity, and other required datacenter integration requirement are in place.|Be available during deployment to provide subscription credentials and support if there are questions on the provided data.|
 | | | | | | | |
 
 
 ## Planning phase
 The planning phase is when Microsoft, or the Azure Stack solution partner, will work with you to evaluate and understand your needs to determine if Azure Stack is the right solution for you:
 
-They will help you decide on the following:
+They'll help you decide on the following:
 
 -   Is Azure Stack the right solution for your organization?
 
@@ -46,36 +46,36 @@ They will help you decide on the following:
 
 -   What are the power and cooling requirements?
 
-To ensure that the hardware solution will best fit your needs, the [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) can be used to assist in pre-purchase planning to determine the appropriate capacity and configuration for your Azure Stack hardware solution.
+To ensure that the hardware solution will best fit your needs, the [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) is used to assist in pre-purchase planning to determine the appropriate capacity and configuration for your Azure Stack hardware solution.
 
 The spreadsheet is *not* intended to be used as a substitute for your own investigation and analysis of hardware solutions that best suit your needs. When planning for an Azure Stack deployment, you should also review the [general datacenter integration considerations](azure-stack-datacenter-integration.md) for Azure Stack integrated systems.
 
 ## Order process phase
-At this stage, many of your questions with regards to feasibility would've been answered. Now that you're ready to commit to purchasing Azure Stack, and after signing all the required contracts and purchase orders, you'll be asked to provide the integration requirements data to your solution provider.
+At this stage, many of your questions with regards to feasibility would have been answered. Now that you're ready to commit to purchasing Azure Stack, and after signing all the required contracts and purchase orders, you'll be asked to provide the integration requirements data to your solution provider.
 
 ## Pre-deployment phase
-During this phase, you'll need to decide how you want to integrate Azure Stack into your datacenter. To ease this process, Microsoft, in collaboration with the solution providers, put together a requirements template to help you gather the necessary information to plan for an integrated system deployment within your environment.
+During this phase, you'll need to decide how you want to integrate Azure Stack into your datacenter. To ease this process, Microsoft put together a requirements template to help you gather the necessary information to plan for an integrated system deployment within your environment. This requirements template was made in collaboration with the solution providers.
 
 The [general datacenter integration considerations](azure-stack-datacenter-integration.md) article provides information that helps you complete the template, known as the Deployment Worksheet.
 
 > [!IMPORTANT]
-> During this stage it's important that all prerequisite information is investigated and decided on prior to ordering the solution. Be aware that this step is time consuming and requires coordination and data gathering from multiple disciplines within your organization. Incorrect or incomplete information can result in a longer deployment. 
+> During this stage it's important that all prerequisite information is investigated and decided on before ordering the solution. Be aware that this step is time consuming and requires coordination and data gathering from multiple disciplines within your organization. Incorrect or incomplete information can result in a longer deployment. 
 
 In the pre-deployment phase you'll need to decide on the following:
 
-- **Azure Stack connection model and identity provider**. You can choose to deploy Azure Stack either [connected to the internet (and to Azure) or disconnected](azure-stack-connection-models.md). To get the most benefit from Azure Stack, including hybrid scenarios, you'd want to deploy connected to Azure. Choosing Active Directory Federation Services (AD FS) or Azure Active Directory (Azure AD) is a one-time decision that you must make at deployment time. **You can't change this later without redeploying the entire system**.
+- **Azure Stack connection model and identity provider**. You can choose to deploy Azure Stack either [connected to the internet (and to Azure) or disconnected](azure-stack-connection-models.md). To get the most benefit from Azure Stack, including hybrid scenarios, you'd want to deploy connected to Azure. Choosing Active Directory Federation Services (AD FS) or Azure Active Directory (Azure AD) is a one-time decision that you must make at deployment time. **You can't change your identity provider later without redeploying the entire system**.
 
 - **Licensing model**. The licensing model options for you to choose from depend on the kind of deployment you'll have. Your identity provider choice has no bearing on tenant virtual machines or the identity system and accounts they use.
     - Customers that are in a [disconnected deployment](azure-stack-disconnected-deployment.md) have only one option: capacity-based billing.
 
-    - Customers that are in a [connected deployment](azure-stack-connected-deployment.md) can choose between capacity-based billing and pay-as-you-use. Capacity-based billing requires an Enterprise Agreement (EA) Azure Subscription for registration. This is needed for registration, which provides for the availability of items in Azure Marketplace through an Azure Subscription.
+    - Customers that are in a [connected deployment](azure-stack-connected-deployment.md) can choose between capacity-based billing and pay-as-you-use. Capacity-based billing requires an Enterprise Agreement (EA) Azure Subscription for registration. This is necessary for registration, which provides for the availability of items in Azure Marketplace through an Azure Subscription.
 
 - **Network integration**. [Network integration](azure-stack-network.md) is crucial for deployment, operation, and management of Azure Stack systems. There are several considerations that go into ensuring the Azure Stack solution is resilient and has a highly available physical infrastructure to support its operations.
 
 - **Firewall integration**. It's recommended that you [use a firewall](azure-stack-firewall.md) to help secure Azure Stack. Firewalls can help prevent DDOS attacks, intrusion detection, and content inspection. However, it should be noted that it can become a throughput bottleneck for Azure storage services.
 
 
-- **Certificate requirements**. It's critical that all [required certificates](azure-stack-pki-certs.md) are available *prior* to an onsite engineer arriving at your datacenter for deployment.
+- **Certificate requirements**. It's critical that all [required certificates](azure-stack-pki-certs.md) are available *before* an onsite engineer arrives at your datacenter for deployment.
 
 Once all the pre-requisite information is gathered through the deployment worksheet, the solution provider will kick off the factory process based on the data collected to ensure a successful integration of Azure Stack into your datacenter.
 
@@ -96,7 +96,7 @@ It's **crucial** that all prerequisite data is locked and available *before the 
 ## Onsite deployment phase
 To deploy Azure Stack, an onsite engineer from your hardware solution provider will need to be present to kick off the deployment. To ensure a successful deployment, ensure that all information provided through the deployment worksheet hasn't changed.
 
-The following is what you should expect from the onsite engineer during the deployment experience:
+The following checks are what you should expect from the onsite engineer during the deployment experience:
 
 - Check all the cabling and border connectivity to ensure the solution is properly put together and meets your requirements.
 - Configure the solution HLH (Hardware Lifecycle Host), if present.
