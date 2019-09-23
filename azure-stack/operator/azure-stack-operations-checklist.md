@@ -47,14 +47,16 @@ Azure Stack operators will also need to do these things as needed from day-to-da
 > * Create [subscriptions](azure-stack-subscribe-plan-provision-vm.md)
 > * Update [quotas](azure-stack-quota-types.md)
 > * Publish [marketplace samples](azure-stack-create-and-publish-marketplace-item.md)
+> * Add a [custom virtual machine image](azure-stack-add-vm-image.md)
+> * Offer [virtual machine scale sets](azure-stack-compute-add-scalesets.md) 
 > * Apply [marketplace updates](azure-stack-marketplace-changes.md)
 > * Configure [telemetry](azure-stack-telemetry.md)
 > * Review [region management](azure-stack-region-management.md)
 > * Shut down or [restart Azure Stack services](azure-stack-start-and-stop.md) 
 > * Replace a [scale unit node](azure-stack-replace-node.md)
 > * Replace a [physical disk](azure-stack-replace-disk.md)
+> * Replace a [hardware component](azure-stack-replace-component.md)
 > * Update add-on resource providers such as [SQL](azure-stack-sql-resource-provider-update.md), [MySQL](/azure-stack-mysql-resource-provider-update.md), and the [App Service](azure-stack-app-service-update.md)
-
 
 
 <!---Ask Jeff, Brian, is this everything you do, how can we make it more useful? Theebs has another user.
