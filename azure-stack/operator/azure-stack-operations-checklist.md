@@ -32,7 +32,7 @@ Azure Stack operators need to do the following things routinely: <!---get intro 
 > * Monitor and remediate [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) and [Systen Center Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) errors twice daily
 > * Run [Test-AzureStack](azure-stack-diagnostic-test.md) once daily
 > * Perform [infrastructure service backups](azure-stack-backup-infrastructure-backup.md) weekly <!--- how often?--->
-look at usage and billing reports, look at these APIs 
+> * Report [Azure Stack usage](azure-stack-usage-reporting.md) weekly <!--- how often--->
 > * Run [diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md) monthly <!--- Diagnostic logs? Why collect them, what should they look for?--->
 > * Update [OEM firmware](azure-stack-update-oem) every two months or as notified by the OEM<!---how often?--->
 > * Prepare [Azure Stack updates](release-notes-checklist.md) monthly
@@ -51,21 +51,13 @@ Azure Stack operators will also need to do these things as needed from day-to-da
 > * Configure [telemetry](azure-stack-telemetry.md)
 > * Review [region management](azure-stack-region-management.md)
 > * Shut down or [restart Azure Stack services](azure-stack-start-and-stop.md) 
-> * Replacing a [scale unit node](azure-stack-replace-node.md)
+> * Replace a [scale unit node](azure-stack-replace-node.md)
 > * Replace a [physical disk](azure-stack-replace-disk.md)
 > * Update add-on resource providers such as [SQL](azure-stack-sql-resource-provider-update.md), [MySQL](/azure-stack-mysql-resource-provider-update.md), and the [App Service](azure-stack-app-service-update.md)
 
-## List from Brian
-
-1.	Prioritizing and resolving tickets for the service desk 
-1.	Tenant User requests (Adding users to selfhost, creating subscriptions, etc As requests come in.
-2.	Patch & updates (Software and FRU updates) - If Needed
-3.	Monitoring & Remediation (SCOM & OMS, twice a day
-4.	Run Test AzureStack once a day. 
 
 
 <!---Ask Jeff, Brian, is this everything you do, how can we make it more useful? Theebs has another user.
-
 
 To be successful, do these things
 
