@@ -83,7 +83,7 @@ Get a list of all tenants that have been added to a registration.
 |---                         | ---                  |
 | registrationSubscriptionId | The Azure subscription that was used for the initial registration.   |
 | resourceGroup              | The resource group in Azure in which your registration is stored.    |
-| registrationName           | The name of the registration of your Azure Stack deployment. It is an object stored in Azure. The name is usually in the form of **azurestack-CloudID**, where **CloudID** is the cloud ID of your Azure Stack deployment.   |
+| registrationName           | The name of the registration of your Azure Stack deployment. It's an object stored in Azure. The name is usually in the form of **azurestack-CloudID**, where **CloudID** is the cloud ID of your Azure Stack deployment.   |
 
 ### PowerShell
 
