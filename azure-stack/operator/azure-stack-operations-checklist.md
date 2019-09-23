@@ -26,20 +26,20 @@ We put together some operations checklists so Azure Stack operators be successfu
 
 ## Routine daily, weekly, and monthly operations
 
-Azure Stack operators need to do the following things routinely: <!---get intro from Theebs?--->
+Azure Stack operators need to do the following things routinely: 
 
 > [!div class="checklist"]
 > * Monitor and remediate [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) and [Systen Center Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) errors twice daily
 > * Run [Test-AzureStack](azure-stack-diagnostic-test.md) once daily
-> * Perform [infrastructure service backups](azure-stack-backup-infrastructure-backup.md) weekly <!--- how often?--->
-> * Report [Azure Stack usage](azure-stack-usage-reporting.md) weekly <!--- how often--->
-> * Run [diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md) monthly <!--- Diagnostic logs? Why collect them, what should they look for?--->
-> * Update [OEM firmware](azure-stack-update-oem.md) every two months or as notified by the OEM<!---how often?--->
+> * Perform [infrastructure service backups](azure-stack-backup-infrastructure-backup.md) weekly 
+> * Report [Azure Stack usage](azure-stack-usage-reporting.md) weekly 
+> * Run [diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md) monthly 
+> * Update [OEM firmware](azure-stack-update-oem.md) every two months or as notified by the OEM
 > * Prepare [Azure Stack updates](release-notes-checklist.md) monthly
 
 ## Day-to-day operations as needed
 
-Azure Stack operators will also need to do these things as needed from day-to-day: <!---Theebs?>
+Azure Stack operators will also need to do these things as needed from day-to-day: 
 
 > [!div class="checklist"]
 > * Create [plans](azure-stack-create-plan.md)
