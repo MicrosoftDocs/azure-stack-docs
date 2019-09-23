@@ -48,16 +48,14 @@ Here's a summary of how the solution works:
 
 This solution uses the following components:
 
-| Location | Component | Description |
+| Layer | Component | Description |
 |----------|-----------|-------------|
-| In-store hardware | [Custom Vision AI Dev Kit](https://github.com/Microsoft/vision-ai-developer-kit) | Provides in-store filtering using a local ML model that only captures images of people for analysis. Securely provisioned and updated through IoT Hub.|
-|  |  |
+| In-store hardware | [Custom Vision AI Dev Kit](https://github.com/Microsoft/vision-ai-developer-kit) | Provides in-store filtering using a local ML model that only captures images of people for analysis. Securely provisioned and updated through IoT Hub.<br><br>|
 | Azure Stack | [App Service](../operator/azure-stack-app-service-overview.md) | The App Service resource provider (RP) provides the base for the components at the edge, including hosting and management features for web apps/APIs and Functions. |
 | | Azure Kubernetes Service [(AKS) Engine](https://github.com/Azure/aks-engine) cluster | The AKS RP with AKS-Engine cluster deployed into Azure Stack, provides a scalable, resilient engine to run the Face API container. |
 | | Azure Cognitive Services [Face API containers](/azure/cognitive-services/face/face-how-to-install-containers)| The Azure Cognitive Services RP with Face API containers provides demographic, emotion, and unique visitor detection on Contoso's private network. |
 | | Blob Storage | Images captured from the AI Dev Kit are uploaded to Azure Stack's blob storage. |
-| | Azure Functions | An Azure Function running on Azure Stack receives input from blob storage, and manages the interactions with the Face API. It emits anonymized data to an Event Hub located in Azure. |
-|  |  |
+| | Azure Functions | An Azure Function running on Azure Stack receives input from blob storage, and manages the interactions with the Face API. It emits anonymized data to an Event Hub located in Azure.<br><br>|
 | Azure |  |  |
 |  | [Azure Event Hubs](/azure/event-hubs/) | Azure Event Hubs provides a scalable platform for ingesting anonymized data that integrates neatly with Azure Stream Analytics. |
 |  | [Azure Stream Analytics](/azure/stream-analytics/) | An Azure Stream Analytics job aggregates the anonymized data and groups it into 15 second windows for visualization. |
@@ -65,26 +63,26 @@ This solution uses the following components:
 
 ** In-store Hardware **
 
-Custom Vision AI Dev Kit  - Provides in-store filtering using a local ML model that only captures images of people for analysis. Securely provisioned and updated through IoT Hub.
+**Custom Vision AI Dev Kit** - Provides in-store filtering using a local ML model that only captures images of people for analysis. Securely provisioned and updated through IoT Hub.
 
 ** Azure Stack **
 
-Azure Stack with App Service – Azure Stack with App Service provides the base for the components at the edge.
+**Azure Stack with App Service** – Azure Stack with App Service provides the base for the components at the edge.
 
-Azure Kubernetes Engine Cluster – The AKS Engine cluster deployed into Azure Stack provides a scalable, resilient engine to run the Face API container.
+**Azure Kubernetes Engine Cluster** – The AKS Engine cluster deployed into Azure Stack provides a scalable, resilient engine to run the Face API container.
 
-Azure Cognitive Service Face API Container – The Face API container provides demographic, emotion, and unique visitor detection on Contoso's private network.
+**Azure Cognitive Service Face API Container** – The Face API container provides demographic, emotion, and unique visitor detection on Contoso's private network.
 
-Azure Stack Blob Storage – Images captures from the AI Dev Kit are uploaded to Azure Stack's blob storage.
+**Azure Stack Blob Storage** – Images captures from the AI Dev Kit are uploaded to Azure Stack's blob storage.
 
-Azure Functions on Azure Stack – An Azure Function running on Azure Stack receives input from blob storage and manages the interactions with the Face API. It emits anonymized data to an Event Hub located in Azure.
+**Azure Functions on Azure Stack** – An Azure Function running on Azure Stack receives input from blob storage and manages the interactions with the Face API. It emits anonymized data to an Event Hub located in Azure.
 
 ** Azure **
-Azure Event Hub – Azure Event Hubs provide a scalable platform for anonymized data that integrates neatly with Azure Stream Analytics.
+**Azure Event Hub** – Azure Event Hubs provide a scalable platform for anonymized data that integrates neatly with Azure Stream Analytics.
 
-Azure Stream Analytics Job – Azure Stream Analytics aggregates the anonymized data and groups it into 15 second windows for visualization. 
+**Azure Stream Analytics Job** – Azure Stream Analytics aggregates the anonymized data and groups it into 15 second windows for visualization. 
 
-Microsoft PowerBI – PowerBI provides an easy-to-use dashboard interface for viewing the output from Azure Stream Analytics.
+**Microsoft PowerBI** – PowerBI provides an easy-to-use dashboard interface for viewing the output from Azure Stream Analytics.
 
 ## Issues and considerations
 
@@ -115,4 +113,3 @@ See the [custom AI vision repository - TBD](https://github.com/Microsoft/vision-
 To learn more about related patterns used by this solution, see the [Tiered Data for Analytics - TBD](), and [Edge Inference - TBD]() patterns. 
 
 To learn more about using custom vision, see the [Custom Vision AI Dev Kit - TBD](https://aka.ms/visionaidevkit). 
-
