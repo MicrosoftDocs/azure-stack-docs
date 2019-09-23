@@ -32,7 +32,7 @@ Contoso would like to find an unobtrusive, privacy-friendly way to determine the
 
 This retail analytics solution uses a tiered approach to inferencing at the edge. By using the Custom Vision AI Dev Kit, only images with human faces are sent for analysis to a private Azure Stack that runs Azure Cognitive Services. Anonymized, aggregated data is sent to Azure for aggregation across all stores and visualization in Power BI. Combining the edge and public cloud allows Contoso to take advantage of modern AI technology. While at the same time, remain in compliance with their corporate policies and respect their customers' privacy.
 
-![Footfall detection pattern](media/hybrid-pattern-ai-footfall-detection/solution-architecture.png)
+[![Footfall detection pattern](media/hybrid-pattern-ai-footfall-detection/solution-architecture.png)](media/hybrid-pattern-ai-footfall-detection/solution-architecture.png)
 
 Here's a summary of how the solution works: 
 
