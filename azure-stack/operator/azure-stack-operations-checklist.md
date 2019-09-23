@@ -29,10 +29,9 @@ We put together some operations checklists so Azure Stack operators be successfu
 Azure Stack operators need to do the following things routinely: 
 
 > [!div class="checklist"]
-> * Monitor and remediate [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) and [Systen Center Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) errors twice daily
+> * Monitor and remediate errors in [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) and [Systen Center Operations Manager](https://docs.microsoft.com/system-center/scom/welcome) twice daily
 > * Run [Test-AzureStack](azure-stack-diagnostic-test.md) once daily
 > * Report [Azure Stack usage](azure-stack-usage-reporting.md) weekly 
-> * Run [diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md) monthly 
 > * Update [OEM firmware](azure-stack-update-oem.md) every two months or as notified by the OEM
 > * Prepare [Azure Stack updates](release-notes-checklist.md) monthly
 
@@ -56,6 +55,8 @@ Azure Stack operators will also need to do these things as needed from day-to-da
 > * Replace a [physical disk](azure-stack-replace-disk.md)
 > * Replace a [hardware component](azure-stack-replace-component.md)
 > * Update add-on resource providers such as [SQL](azure-stack-sql-resource-provider-update.md), [MySQL](azure-stack-mysql-resource-provider-update.md), and the [App Service](azure-stack-app-service-update.md)
+> * Run [diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md)  
+
 
 
 <!---Ask Jeff, Brian, is this everything you do, how can we make it more useful? Theebs has another user.
