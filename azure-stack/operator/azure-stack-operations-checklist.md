@@ -32,11 +32,10 @@ Azure Stack operators need to do the following things routinely:
 > * Monitor and remediate [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) and Systen Center Operations Monitor errors twice daily
 > * Identify exceptions 
 > * View details of an exception
-> * Run [Test-AzureStack](azure-stack-diagnostic-test.md)
-> * Collect logs each month using log collection <!--- Diagnostic logs? Why collect them, what should they look for?--->
-> * Update firmware every two months
-> * Back up infrastructure services <!--- how often? Which services? which backup types? For ex, DC needs system state backup?--->
-
+> * Run [Test-AzureStack](azure-stack-diagnostic-test.md) once daily
+> * Run [diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md) monthly <!--- Diagnostic logs? Why collect them, what should they look for?--->
+> * Perform [infrastructure service backups](azure-stack-backup-infrastructure-backup.md) weekly <!--- how often?--->
+> * Update [OEM firmware](azure-stack-update-oem) every two months <!---how often?>
 
 ## Day-to-day operations as needed
 
