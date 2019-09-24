@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2019
+ms.date: 09/23/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 09/04/2019
+ms.lastreviewed: 09/23/2019
 
 ---
 # Overview of Azure Stack diagnostic log collection 
@@ -32,7 +32,7 @@ Beginning with the 1907 release, the **Help and Support** page adds a simpler ex
 With these improvements, operators can quickly collect and share diagnostic logs with Microsoft Customer Support Services (CSS). 
 The logs can be stored in a blob container in Azure, where access can be customized as needed.    
    
-**Diagnostic log collection** can collect diagnostic logs in two different ways:
+**Diagnostic log collection** works in two different ways:
 
 - **Automatic collection**: If enabled (recommended), log collection is automatically triggered by specific health alerts and stored in your Azure storage account
 - **Collect logs now**: This is an on-demand option where you can choose to collect logs from a 1-4 hour sliding window from the last seven days
@@ -46,7 +46,7 @@ You should only use [the PEP](azure-stack-configure-on-demand-diagnostic-log-col
 
 ## Automatic diagnostic log collection 
 
-Automatic diagnostic log collection proactively uploads diagnostic logs from Azure Stack to a storage blob in Azure when certain critical alerts are raised, significantly reducing the time required to share diagnostic logs with CSS.
+When a [specific health alert](azure-stack-configure-automatic-diagnostic-log-collection.md#automatic-diagnostic-log-collection-alerts) is active, automatic diagnostic log collection starts and proactively uploads diagnostic logs from Azure Stack to a storage blob in Azure, significantly reducing the time required to share diagnostic logs with CSS. Diagnostic logs are only collected when an alert is raised.  
 
 For more information about automatic log collection, see [Configure automatic Azure Stack diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md).
 
