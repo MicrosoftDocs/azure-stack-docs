@@ -124,7 +124,7 @@ For each value:
 
   **username**
 
-  For example, the Azure Stack AAD account:
+  For example, the Azure Stack Azure AD account:
 
   ```
   azurestackadmin@fabrikam.onmicrosoft.com
@@ -132,7 +132,7 @@ For each value:
 
   **password**
 
-  The Azure Stack AAD admin password.
+  The Azure Stack Azure AD admin password.
 
 ### Example
 

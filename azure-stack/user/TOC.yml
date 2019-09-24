@@ -198,7 +198,7 @@
             href: azure-stack-kubernetes-aks-engine-overview.md
           - name: Support policy
             href: azure-stack-kubernetes-ask-engine-support.md 
-          - name: Set up AKS Engine
+          - name: Set up prerequisites
             href: azure-stack-kubernetes-aks-engine-set-up.md
           - name: Create Linux client
             href: azure-stack-kubernetes-aks-engine-deploy-linux.md
@@ -274,6 +274,8 @@
         href: azure-stack-edge-pattern-cross-cloud-scaling.md
       - name: DevOps (Hybrid CI/CD)
         href: azure-stack-edge-pattern-hybrid-ci-cd.md
+      - name: Footfall detection
+        href: hybrid-solution-retail-footfall-detection.md
       - name: Geo-distributed application
         href: azure-stack-edge-pattern-geo-distribution.md
 - name: Reference
