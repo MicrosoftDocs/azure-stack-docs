@@ -34,7 +34,7 @@ The following figure shows the steps that a CSP needs to follow to enable a new 
 
 ## Add an end customer
 
-Before you add an end customer, you must enable multi-tenant billing on your registration. In order to enable multi-tenant billing, send the registration subscription ID, resource group name, and registration name to **azstcsp@microsoft.com**. It usually takes 24-48 hours to enable multi-tenancy.
+Before you add an end customer, you must enable multi-tenant billing on your registration. In order to enable multi-tenant billing, send the registration subscription ID, resource group name, and registration name to azstcsp@microsoft.com. It usually takes 24-48 hours to enable multi-tenancy.
 
 Perform the following steps to add an end customer, as pictured in the following figure:
 
