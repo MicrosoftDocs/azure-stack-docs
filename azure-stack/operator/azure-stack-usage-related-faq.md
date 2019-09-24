@@ -431,7 +431,7 @@ Running and stopped VMs generate usage data. Consistent with Azure, deallocation
 
 The easiest way to extract usage data from local usage APIs on an Azure Stack is by using the [usage summary script on GitHub](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/Usagesummary.ps1). The script requires the start and end dates as input parameters.
 
-Alternatively, you can use the REST APIs, as explained in the [Provider resource usage API](azure-stack-provider-resource-api.md) and [Tenant resource usage API](azure-stack-tenant-resource-usage-api.md) sections.
+Alternatively, you can use the REST APIs, as explained in the [Provider resource usage API](azure-stack-provider-resource-api.md) and [Tenant resource usage API](azure-stack-tenant-resource-usage-api.md) articles.
 
 ## How can I associate usage extracted from Azure usage APIs to a specific Azure Stack user subscription?
 
