@@ -1,6 +1,6 @@
 ---
-title: General datacenter integration considerations for Azure Stack integrated systems | Microsoft Docs
-description: Learn what you can do to plan now and prepare for datacenter integration with multi-node Azure Stack.
+title: Datacenter integration planning considerations for Azure Stack integrated systems | Microsoft Docs
+description: Learn what you can do to plan now and prepare for datacenter integration with Azure Stack integrated systems.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -19,19 +19,19 @@ ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2018
 ---
  
-# Datacenter integration considerations for Azure Stack integrated systems
+# Datacenter integration planning considerations for Azure Stack integrated systems
 
-If you're interested in an Azure Stack integrated system, you should understand the major planning considerations around deployment and how the system fits into your datacenter. This article provides a high-level overview of these considerations to help you make important infrastructure decisions for your Azure Stack multi-node system. An understanding of these considerations helps when working with your OEM hardware vendor as they deploy Azure Stack to your datacenter.  
+If you're interested in an Azure Stack integrated system, you should understand the major planning considerations around deployment and how the system fits into your datacenter. This article provides a high-level overview of these considerations to help you make important infrastructure decisions for your Azure Stack integrated systems. An understanding of these considerations helps when working with your OEM hardware vendor because they deploy Azure Stack to your datacenter.  
 
 > [!NOTE]  
-> Azure Stack multi-node systems can only be purchased from authorized hardware vendors. 
+> Azure Stack integrated systems can only be purchased from authorized hardware vendors.
 
-To deploy Azure Stack, you need to provide planning information to your solution provider before deployment starts to help the process go quickly and smoothly. The information required ranges across networking, security, and identity information with many important decisions that may require knowledge from many different areas and decision makers. Therefore, you might have to pull in people from multiple teams in your organization to ensure that you have all required information ready before deployment begins. It can help to talk to your hardware vendor while collecting this information, as they might have advice helpful to making your decisions.
+To deploy Azure Stack, you need to provide planning information to your solution provider before deployment starts to help the process go quickly and smoothly. The information required ranges across networking, security, and identity information with many important decisions that may require knowledge from many different areas and decision makers. You might have to pull in people from multiple teams in your organization to ensure that you have all required information ready before deployment begins. It can help to talk to your hardware vendor while collecting this information because they might have advice helpful to making your decisions.
 
-While researching and collecting the required information, you might need to make some pre-deployment configuration changes to your network environment. This could include reserving IP address spaces for the Azure Stack solution, configuring your routers, switches and firewalls to prepare for the connectivity to the new Azure Stack solution switches. Make sure to have the subject area expert lined up to help you with your planning.
+While researching and collecting the required information, you might need to make some pre-deployment configuration changes to your network environment. This could include reserving IP address spaces for the Azure Stack solution as well as configuring your routers, switches, and firewalls to prepare for the connectivity to the new Azure Stack solution switches. Make sure to have the subject area expert lined up to help you with your planning.
 
 ## Capacity planning considerations
-When evaluating an Azure Stack Solution for acquisition, hardware configuration choices must be made which have a direct impact on the overall capacity of their Azure Stack solution. These include the classic choices of CPU, memory density, storage configuration, and overall solution scale (e.g. number of servers). Unlike a traditional virtualization solution, the simple arithmetic of these components to determine usable capacity does not apply. The first reason is that Azure Stack is architected to host the infrastructure or management components within the solution itself. The second reason is that some of the solution's capacity is reserved in support of resiliency; the updating of the solution's software in a way that minimizes disruption of tenant workloads. 
+When evaluating an Azure Stack Solution for acquisition, hardware configuration choices must be made which have a direct impact on the overall capacity of the Azure Stack solution. These include the classic choices of CPU, memory density, storage configuration, and overall solution scale (e.g. number of servers). Unlike a traditional virtualization solution, the simple arithmetic of these components to determine usable capacity does not apply. The first reason is that Azure Stack is architected to host the infrastructure or management components within the solution itself. The second reason is that some of the solution's capacity is reserved in support of resiliency; the updating of the solution's software in a way that minimizes disruption of tenant workloads. 
 
 The [Azure Stack capacity planner spreadsheet](https://aka.ms/azstackcapacityplanner) helps you make informed decisions with respect to planning capacity in two ways: either the by selecting a hardware offering and attempting to fit a combination of resources or by defining the workload that Azure Stack is intended to run to view the available hardware SKUs that can support it. Finally, the spreadsheet is intended as a guide to help in making decisions related to Azure Stack planning and configuration. 
 
