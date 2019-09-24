@@ -50,7 +50,7 @@ This solution uses the following components:
 
 | Layer | Component | Description |
 |----------|-----------|-------------|
-| In-store hardware | [Custom Vision AI Dev Kit](https://github.com/Microsoft/vision-ai-developer-kit) | Provides in-store filtering using a local ML model that only captures images of people for analysis. Securely provisioned and updated through IoT Hub.<br><br>|
+| In-store hardware | [Custom Vision AI Dev Kit](https://azure.github.io/Vision-AI-DevKit-Pages/) | Provides in-store filtering using a local ML model that only captures images of people for analysis. Securely provisioned and updated through IoT Hub.<br><br>|
 | Azure Stack | [App Service](../operator/azure-stack-app-service-overview.md) | The App Service resource provider (RP) provides a base for edge components. Including hosting and management features for web apps/APIs and Functions. |
 | | Azure Kubernetes Service [(AKS) Engine](https://github.com/Azure/aks-engine) cluster | The AKS RP with AKS-Engine cluster deployed into Azure Stack, provides a scalable, resilient engine to run the Face API container. |
 | | Azure Cognitive Services [Face API containers](/azure/cognitive-services/face/face-how-to-install-containers)| The Azure Cognitive Services RP with Face API containers provides demographic, emotion, and unique visitor detection on Contoso's private network. |
