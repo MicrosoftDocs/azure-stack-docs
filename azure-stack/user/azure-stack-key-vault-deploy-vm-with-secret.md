@@ -92,14 +92,14 @@ Update the `azuredeploy.parameters.json` file with the KeyVault URI, secretName,
        "adminUsername":  {
          "value":  "demouser"
           },
-         "adminPassword":  {
-           "reference":  {
-              "keyVault":  {
-                "id":  "/subscriptions/xxxxxx/resourceGroups/RgKvPwd/providers/Microsoft.KeyVault/vaults/KvPwd"
-                },
-              "secretName":  "MySecret"
-           }
-         },
+       "adminPassword":  {
+         "reference":  {
+            "keyVault":  {
+              "id":  "/subscriptions/xxxxxx/resourceGroups/RgKvPwd/providers/Microsoft.KeyVault/vaults/KvPwd"
+              },
+            "secretName":  "MySecret"
+         }
+       },
        "dnsLabelPrefix":  {
           "value":  "mydns123456"
         },
