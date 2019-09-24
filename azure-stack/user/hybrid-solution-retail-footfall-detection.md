@@ -86,12 +86,8 @@ This solution can span many devices and locations, which could get unwieldy. [Az
 
 This solution captures customer images, making security a paramount consideration. Make sure all storage accounts are secured with the proper access policies, and that keys are rotated regularly. Ensure storage accounts and Event Hubs have retention policies that meet corporate and government privacy regulations. Also make sure to tier access levels so every person that requires access to the system, only has access to the data they need for their role.
 
-## Example
-
-See the [Vision AI Developer Kit repository - TBD](https://github.com/Microsoft/vision-ai-developer-kit), for an example that deploys and shows the solution in action, using the Custom Vision AI Dev Kit.
-
 ## Next steps
 
-To learn more about related patterns used by this solution, see the [Tiered Data for Analytics - TBD](), and [Edge Inference - TBD]() patterns. 
+To learn more about related patterns used by this solution, see the [Tiered Data pattern](azure-stack-solution-staged-data.md), and [Edge Inference - TBD]() patterns. 
 
-To learn more about using custom vision, see the [Custom Vision AI Dev Kit - TBD](https://aka.ms/visionaidevkit). 
+To learn more about using custom vision, see the [Custom Vision AI Dev Kit](https://azure.github.io/Vision-AI-DevKit-Pages/). 
