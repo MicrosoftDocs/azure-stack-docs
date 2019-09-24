@@ -88,6 +88,6 @@ This solution captures customer images, making security a paramount consideratio
 
 ## Next steps
 
-To learn more about related patterns used by this solution, see the [Tiered Data pattern](azure-stack-solution-staged-data.md), and [Edge Inference - TBD]() patterns. 
+To learn more about related patterns used by this solution, see the [Tiered Data pattern](azure-stack-solution-staged-data.md). 
 
 To learn more about using custom vision, see the [Custom Vision AI Dev Kit](https://azure.github.io/Vision-AI-DevKit-Pages/). 
