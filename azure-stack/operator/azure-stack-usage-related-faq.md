@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 09/24/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
@@ -426,6 +426,16 @@ Currently, you can query only by *Reported Time*.
 ## What is the policy for charging for VMs?
 
 Running and stopped VMs generate usage data. Consistent with Azure, deallocation is needed to stop the emission of usage data. In the case in which the portal is unavailable, but the compute resource provider is still running, usage will be emitted.
+
+## How do I extract usage data from the Azure Stack usage APIs?
+
+The easiest way to extract usage data from local usage APIs on an Azure Stack is by using the [usage summary script on GitHub](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/Usagesummary.ps1). The script requires the start and end dates as input parameters.
+
+Alternatively, you can use the REST APIs, as explained in the [Provider resource usage API](azure-stack-provider-resource-api.md) and [Tenant resource usage API](azure-stack-tenant-resource-usage-api.md) sections.
+
+## How can I associate usage extracted from Azure usage APIs to a specific Azure Stack user subscription?
+
+The usage records include a property bag called **additionalinfo**, which includes the Azure Stack subscription ID. This is the user subscription emitting the corresponding usage record.
 
 ## Next steps
 
