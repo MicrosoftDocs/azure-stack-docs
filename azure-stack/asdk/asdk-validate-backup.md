@@ -56,7 +56,6 @@ Before starting a cloud recovery deployment of the ASDK, ensure that you have th
 |Time server IP|A valid time server IP, such as 132.163.97.2, is required for Azure Stack deployment.|
 |External certificate password|The password for the external certificate used by Azure Stack. The CA backup contains external certificates that need to be restored with this password.|
 |Backup encryption key|Required if backup settings are configured in with an encryption key, which is deprecated. The installer will support encryption key in backwards compatibility mode for at least 3 releases. Once you update backup settings to use a certificate, refer to the next table for required info.|
-
 |     |     | 
 
 **PowerShell installer requirements**
@@ -86,9 +85,9 @@ $azsbackupshare = New-Item -Path $shares.FullName -Name "AzSBackups" -ItemType "
 New-SmbShare -Path $azsbackupshare.FullName -FullAccess ($env:computername + "\Administrator")  -Name "AzSBackups"
 ```
 
-Next, copy your latest Azure Stack backup files to the newly created share. The folder structure within the share should be: `\\<ComputerName>\AzSBackups\MASBackup\<BackupID>\`.
+Next, copy your latest Azure Stack backup files to the newly created share. Make sure to copy the parent folder of `<BackupID>` folder, which is the timestamp of when the backup was taken. The folder structure within the share should be: `\\<ComputerName>\AzSBackups\MASBackup\<TimeStamp>\<BackupID>\`. 
 
-Finally, copy the decryption certificate (.pfx) to the certificate directory: `C:\CloudDeployment\Setup\Certificates\` and rename the file to `BackupDecryptionCert.pfx`.
+Finally, copy the decryption certificate (.pfx) to the certificate directory: `C:\CloudDeployment\Setup\BackupDecryptionCert\` and rename the file to `BackupDecryptionCert.pfx`.
 
 ## Deploy the ASDK in cloud recovery mode
 
