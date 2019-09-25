@@ -170,7 +170,7 @@ Note the following requirements:
 
 ## Backup and disaster recovery
 
-Planning for backup and disaster recovery involves planning for both the underlying Azure Stack infrastructure that hosts IaaS virtual machines and PaaS services, and for tenant applications and data. You must plan for these separately.
+Planning for backup and disaster recovery involves planning for both the underlying Azure Stack infrastructure that hosts IaaS VMs and PaaS services, and for tenant apps and data. You must plan for these separately.
 
 ### Protect infrastructure components
 
@@ -181,13 +181,13 @@ You can [back up Azure Stack](azure-stack-backup-back-up-azure-stack.md) infrast
 
 If catastrophic data loss occurs, you can use the infrastructure backup to reseed deployment data such as deployment inputs and identifiers, service accounts, CA root certificate, federated resources (in disconnected deployments), plans, offers, subscriptions, quotas, RBAC policy and role assignments, and Key Vault secrets.
  
-### Protect tenant applications on IaaS virtual machines
+### Protect tenant apps on IaaS VMs
 
-Azure Stack does not back up tenant applications and data. You must plan for backup and disaster recovery protection to a target external to Azure Stack. Tenant protection is a tenant-driven activity. For IaaS virtual machines, tenants can use in-guest technologies to protect file folders, application data, and system state. However, as an enterprise or service provider, you may want to offer a backup and recovery solution in the same datacenter or externally in a cloud.
+Azure Stack doesn't back up tenant apps and data. You must plan for backup and disaster recovery protection to a target external to Azure Stack. Tenant protection is a tenant-driven activity. For IaaS VMs, tenants can use in-guest technologies to protect file folders, app data, and system state. However, as an enterprise or service provider, you may want to offer a backup and recovery solution in the same datacenter or externally in a cloud.
 
-To back up Linux or Windows IaaS virtual machines, you must use backup products with access to the guest operating system to protect file, folder, operating system state, and application data. You can use Azure Backup, System Center Data Center Protection Manager, or supported third-party products.
+To back up Linux or Windows IaaS VMs, you must use backup products with access to the guest operating system to protect file, folder, operating system state, and app data. You can use Azure Backup, System Center Data Center Protection Manager, or supported third-party products.
 
-To replicate data to a secondary location and orchestrate application failover if a disaster occurs, you can use Azure Site Recovery, or supported third-party products. Also, applications that support native replication, like Microsoft SQL Server, can replicate data to another location where the application is running.
+To replicate data to a secondary location and orchestrate application failover if a disaster occurs, you can use Azure Site Recovery, or supported third-party products. Also, apps that support native replication, like Microsoft SQL Server, can replicate data to another location where the app is running.
 
 ## Learn more
 
