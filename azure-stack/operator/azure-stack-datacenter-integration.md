@@ -110,22 +110,24 @@ You must specify an IP for the time synchronization server. Although most of the
 ## Connect Azure Stack to Azure
 
 For hybrid cloud scenarios, you'll need to plan how you want to connect Azure Stack to Azure. There are two supported methods to connect virtual networks in Azure Stack to virtual networks in Azure: 
-- **Site-to-site**. A virtual private network (VPN) connection over IPsec (IKE v1 and IKE v2). This type of connection requires a VPN device or Routing and Remote Access Service (RRAS). For more information about VPN gateways in Azure, see [About VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). The communication over this tunnel is encrypted and is secure. However, bandwidth is limited by the maximum throughput of the tunnel (100-200 Mbps).
-- **Outbound NAT**. By default, all virtual machines in Azure Stack will have connectivity to external networks via outbound NAT. Each virtual network that is created in Azure Stack gets a public IP address assigned to it. Whether the virtual machine is directly assigned a public IP address, or is behind a load balancer with a public IP address, it will have outbound access via outbound NAT using the VIP of the virtual network. This works only for communication that is initiated by the virtual machine and destined for external networks (either internet or intranet). It can't be used to communicate with the virtual machine from outside.
+
+- **Site-to-site**: A virtual private network (VPN) connection over IPsec (IKE v1 and IKE v2). This type of connection requires a VPN device or Routing and Remote Access Service (RRAS). For more information about VPN gateways in Azure, see [About VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). The communication over this tunnel is encrypted and secure. However, bandwidth is limited by the maximum throughput of the tunnel (100-200 Mbps).
+
+- **Outbound NAT**: By default, all VMs in Azure Stack will have connectivity to external networks via outbound NAT. Each virtual network that's created in Azure Stack gets a public IP address assigned to it. Whether the VM is directly assigned a public IP address, or is behind a load balancer with a public IP address, it'll have outbound access via outbound NAT using the VIP of the virtual network. This works only for communication that's initiated by the VM and destined for external networks (either internet or intranet). It can't be used to communicate with the VM from outside.
 
 ### Hybrid connectivity options
 
-For hybrid connectivity, it's important to consider what kind of deployment you want to offer and where it will be deployed. You'll need to consider whether you need to isolate network traffic per tenant, and whether you'll have an intranet or internet deployment.
+For hybrid connectivity, it's important to consider what kind of deployment you want to offer and where it'll be deployed. You'll need to consider whether you need to isolate network traffic per tenant, and whether you'll have an intranet or internet deployment.
 
-- **Single-tenant Azure Stack**. An Azure Stack deployment that looks, at least from a networking perspective, as if it's one tenant. There can be many tenant subscriptions, but like any intranet service, all traffic travels over the same networks. Network traffic from one subscription travels over the same network connection as another subscription and doesn't need to be isolated via an encrypted tunnel.
+- **Single-tenant Azure Stack**: An Azure Stack deployment that looks, at least from a networking perspective, as if it's one tenant. There can be many tenant subscriptions, but like any intranet service, all traffic travels over the same networks. Network traffic from one subscription travels over the same network connection as another subscription and doesn't need to be isolated via an encrypted tunnel.
 
-- **Multi-tenant Azure Stack**. An Azure Stack deployment where each tenant subscription's traffic that's bound for networks that are external to Azure Stack must be isolated from other tenants' network traffic.
+- **Multi-tenant Azure Stack**: An Azure Stack deployment where each tenant subscription's traffic that's bound for networks that are external to Azure Stack must be isolated from other tenants' network traffic.
  
-- **Intranet deployment**. An Azure Stack deployment that sits on a corporate intranet, typically on private IP address space and behind one or more firewalls. The public IP addresses are not truly public, as they can't be routed directly over the public internet.
+- **Intranet deployment**: An Azure Stack deployment that sits on a corporate intranet, typically on private IP address space and behind one or more firewalls. The public IP addresses aren't truly public because they can't be routed directly over the public internet.
 
-- **Internet deployment**. An Azure Stack deployment that's connected to the public internet and uses internet-routable public IP addresses for the public VIP range. The deployment can still sit behind a firewall, but the public VIP range is directly reachable from the public internet and Azure.
+- **Internet deployment**: An Azure Stack deployment that's connected to the public internet and uses internet-routable public IP addresses for the public VIP range. The deployment can still sit behind a firewall, but the public VIP range is directly reachable from the public internet and Azure.
  
-The following table summarizes the hybrid connectivity scenarios, with the pros, cons, and use cases.
+The following table summarizes the hybrid connectivity scenarios with the pros, cons, and use cases.
 
 | Scenario | Connectivity Method | Pros | Cons | Good For |
 | -- | -- | --| -- | --|
