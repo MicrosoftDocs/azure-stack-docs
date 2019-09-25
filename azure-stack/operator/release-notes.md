@@ -44,6 +44,8 @@ Before applying the update, make sure to review the following information:
 - [Security updates](release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](release-notes-checklist.md)
 
+For help troubleshooting updates and the update process, see Troubleshoot patch and update issues for Azure Stack.
+
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
