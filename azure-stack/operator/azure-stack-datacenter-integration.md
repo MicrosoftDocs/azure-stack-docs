@@ -47,16 +47,16 @@ When a higher level of access is needed for troubleshooting issues that aren't r
 ## Identity considerations
 
 ### Choose identity provider
-You'll need to consider which identity provider you want to use for Azure Stack deployment, either Azure AD or AD FS. You can't switch identity providers after deployment without full system redeployment. If you do not own the Azure AD account and are using an account provided to you by your Cloud Service Provider, and if you decide to switch provider and use a different Azure AD account, at this point you will have to contact your solution provider to redeploy the solution for you at your cost.
+You'll need to consider which identity provider you want to use for Azure Stack deployment, either Azure AD or AD FS. You can't switch identity providers after deployment without full system redeployment. If you don't own the Azure AD account and are using an account provided to you by your Cloud Solution Provider, and if you decide to switch provider and use a different Azure AD account, you'll have to contact your solution provider to redeploy the solution for you at your cost.
 
-Your identity provider choice has no bearing on tenant virtual machines, the identity system, and accounts they use, whether they can join an Active Directory domain, etc. This is separate.
+Your identity provider choice has no bearing on tenant virtual machines (VMs), the identity system, accounts they use, whether they can join an Active Directory domain, and so on. These things are separate.
 
 You can learn more about choosing an identity provider in the [Azure Stack integrated systems connection models article](./azure-stack-connection-models.md).
 
 ### AD FS and Graph integration
 If you choose to deploy Azure Stack using AD FS as the identity provider, you must integrate the AD FS instance on Azure Stack with an existing AD FS instance through a federation trust. This allows identities in an existing Active Directory forest to authenticate with resources in Azure Stack.
 
-You can also integrate the Graph service in Azure Stack with the existing Active Directory. This enables you to manage Role-Based Access Control (RBAC) in Azure Stack. When access to a resource is delegated, the Graph component looks up the user account in the existing Active Directory forest using the LDAP protocol.
+You can also integrate the Graph service in Azure Stack with the existing Active Directory. This integration lets you manage Role-Based Access Control (RBAC) in Azure Stack. When access to a resource is delegated, the Graph component looks up the user account in the existing Active Directory forest using the LDAP protocol.
 
 The following diagram shows integrated AD FS and Graph traffic flow.
 ![Diagram showing AD FS and Graph traffic flow](media/azure-stack-datacenter-integration/ADFSIntegration.PNG)
