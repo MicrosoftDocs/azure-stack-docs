@@ -26,7 +26,7 @@ ms.reviewer: ppacent
 
 *Applies to: Azure Stack integrated systems*
 
-You can use the guidance in this article to resolve issues you're having with update on that Azure Stack.
+You can use the guidance in this article to resolve issues you're having when updating Azure Stack.
 
 ## PreparationFailed
 
