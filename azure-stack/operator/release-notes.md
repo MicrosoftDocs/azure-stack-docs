@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 09/25/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
@@ -35,6 +35,16 @@ To access release notes for a different version, use the version selector dropdo
 > [!IMPORTANT]  
 > If your Azure Stack instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support). 
 ::: moniker-end
+
+## Update planning
+
+Before applying the update, make sure to review the following information:
+
+- [Known issues](known-issues.md)
+- [Security updates](release-notes-security-updates.md)
+- [Checklist of activities before and after applying the update](release-notes-checklist.md)
+
+For help with troubleshooting updates and the update process, see [Troubleshoot patch and update issues for Azure Stack](azure-stack-updates-troubleshoot.md).
 
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
@@ -89,14 +99,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 ## <a name="security-updates-1908"></a>Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](release-notes-security-updates.md).
-
-## <a name="update-planning-1908"></a>Update planning
-
-Before applying the update, make sure to review the following information:
-
-- [Known issues](known-issues.md)
-- [Security updates](release-notes-security-updates.md)
-- [Checklist of activities before and after applying the update](release-notes-checklist.md)
 
 ## <a name="download-the-update-1908"></a>Download the update
 
