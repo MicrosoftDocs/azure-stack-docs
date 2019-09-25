@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 09/25/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 09/17/2019
@@ -30,9 +30,11 @@ CSPs often offer services to multiple end customers (tenants) on their Azure Sta
 The following figure shows the steps that a CSP needs to follow to enable a new end customer to use Azure Stack, and to set up usage tracking for the customer. By adding the end customer, you're also able to manage resources in Azure Stack. You have two options for managing their resources:
 
 - You can maintain the end customer and provide credentials for the local Azure Stack subscription to the end customer.  
-- The end customer can work with their subscription locally and add the CSP as a guest with owner permissions.  
+- The end customer can work with their subscription locally and add the CSP as a guest with owner permissions.
 
 ## Add an end customer
+
+Before you add an end customer, you must enable multi-tenant billing on your registration. In order to enable multi-tenant billing, send the registration subscription ID, resource group name, and registration name to `azstcsp@microsoft.com`. It usually takes 1-2 business days to enable multi-tenancy.
 
 Perform the following steps to add an end customer, as pictured in the following figure:
 
