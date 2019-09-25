@@ -55,6 +55,8 @@ The [Azure Stack Marketplace items](azure-stack-marketplace-azure-items.md) arti
 
 - 08/09/2019: Oracle Linux
 
+
+
 ## Deprecated Marketplace items
 
 - Codiad
@@ -64,10 +66,11 @@ The [Azure Stack Marketplace items](azure-stack-marketplace-azure-items.md) arti
 
 ## Updated Marketplace items
 
-- 07/30/2019: SQL Server 2016 SP1 (Express, Developer, Standard and Enterprise editions) 13.2.20190410
-- 07/30/2019: SQL Server 2016 SP2 (Express, Developer, Standard and Enterprise editions) 13.2.20190410
-- 07/30/2019: SQL Server 2017 (Express, Developer, Standard and Enterprise editions) 14.0.20190410
-- 07/30/2019: SQLIaaSExtension 1.3.20180
+- 07/30/2019: SQL Server 2016 SP1 (Express, Developer, Standard and Enterprise editions) - version 13.2.20190410
+- 07/30/2019: SQL Server 2016 SP2 (Express, Developer, Standard and Enterprise editions) - version 13.2.20190410
+- 07/30/2019: SQL Server 2017 (Express, Developer, Standard and Enterprise editions) - version 14.0.20190410
+- 07/30/2019: SQLIaaSExtension - version 1.3.20180
+- 09/25/2019: Debian 8 - version 8.0.20190806
 
 ## Next steps
 
