@@ -40,9 +40,9 @@ The spreadsheet isn't intended to serve as a substitute for your own investigati
 ## Management considerations
 Azure Stack is a sealed system, where the infrastructure is locked down both from a permissions and network perspective. Network access control lists (ACLs) are applied to block all unauthorized incoming traffic and all unnecessary communications between infrastructure components. This makes it difficult for unauthorized users to access the system.
 
-For daily management and operations, there is no unrestricted administrator access to the infrastructure. Azure Stack operators must manage the system through the administrator portal or through Azure Resource Manager (via PowerShell or the REST API). There is no access to the system by other management tools such as Hyper-V Manager or Failover Cluster Manager. To help protect the system, third-party software (for example, agents) can't be installed inside the components of the Azure Stack infrastructure. Interoperability with external management and security software occurs via PowerShell or the REST API.
+For daily management and operations, there's no unrestricted admin access to the infrastructure. Azure Stack operators must manage the system through the administrator portal or through Azure Resource Manager (via PowerShell or the REST API). There's no access to the system by other management tools like Hyper-V Manager or Failover Cluster Manager. To help protect the system, third-party software (for example, agents) can't be installed inside the components of the Azure Stack infrastructure. Interoperability with external management and security software occurs via PowerShell or the REST API.
 
-When a higher level of access is needed for troubleshooting issues that aren't resolved through alert mediation steps, you must work with Microsoft Support. Through support, there is a method to provide temporary full administrator access to the system to perform more advanced operations. 
+When a higher level of access is needed for troubleshooting issues that aren't resolved through alert mediation steps, you must work with Microsoft Support. Through support, there's a method to provide temporary full admin access to the system to do more advanced operations.
 
 ## Identity considerations
 
