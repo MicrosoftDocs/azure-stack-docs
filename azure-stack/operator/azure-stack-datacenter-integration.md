@@ -28,7 +28,7 @@ If you're interested in an Azure Stack integrated system, you should understand 
 
 To deploy Azure Stack, you need to provide planning information to your solution provider before deployment starts to help the process go quickly and smoothly. The information required ranges across networking, security, and identity information with many important decisions that may require knowledge from many different areas and decision makers. You might have to pull in people from multiple teams in your organization to ensure that you have all required information ready before deployment begins. It can help to talk to your hardware vendor while collecting this information because they might have advice helpful to making your decisions.
 
-While researching and collecting the required information, you might need to make some pre-deployment configuration changes to your network environment. This could include reserving IP address spaces for the Azure Stack solution as well as configuring your routers, switches, and firewalls to prepare for the connectivity to the new Azure Stack solution switches. Make sure to have the subject area expert lined up to help you with your planning.
+While researching and collecting the required information, you might need to make some pre-deployment configuration changes to your network environment. These changes could include reserving IP address spaces for the Azure Stack solution as well as configuring your routers, switches, and firewalls to prepare for the connectivity to the new Azure Stack solution switches. Make sure to have the subject area expert lined up to help you with your planning.
 
 ## Capacity planning considerations
 When evaluating an Azure Stack Solution for acquisition, hardware configuration choices must be made which have a direct impact on the overall capacity of the Azure Stack solution. These include the classic choices of CPU, memory density, storage configuration, and overall solution scale (e.g. number of servers). Unlike a traditional virtualization solution, the simple arithmetic of these components to determine usable capacity doesn't apply. The first reason is that Azure Stack is architected to host the infrastructure or management components within the solution itself. The second reason is that some of the solution's capacity is reserved in support of resiliency by updating the solution's software in a way that minimizes disruption of tenant workloads.
@@ -38,7 +38,7 @@ The [Azure Stack capacity planner spreadsheet](https://aka.ms/azstackcapacitypla
 The spreadsheet isn't intended to serve as a substitute for your own investigation and analysis. Microsoft makes no representations or warranties, express or implied, with respect to the information provided within the spreadsheet.
 
 ## Management considerations
-Azure Stack is a sealed system, where the infrastructure is locked down both from a permissions and network perspective. Network access control lists (ACLs) are applied to block all unauthorized incoming traffic and all unnecessary communications between infrastructure components. This makes it difficult for unauthorized users to access the system.
+Azure Stack is a sealed system, where the infrastructure is locked down both from a permissions and network perspective. Network access control lists (ACLs) are applied to block all unauthorized incoming traffic and all unnecessary communications between infrastructure components. This system makes it difficult for unauthorized users to access the system.
 
 For daily management and operations, there's no unrestricted admin access to the infrastructure. Azure Stack operators must manage the system through the administrator portal or through Azure Resource Manager (via PowerShell or the REST API). There's no access to the system by other management tools like Hyper-V Manager or Failover Cluster Manager. To help protect the system, third-party software (for example, agents) can't be installed inside the components of the Azure Stack infrastructure. Interoperability with external management and security software occurs via PowerShell or the REST API.
 
@@ -54,7 +54,7 @@ Your identity provider choice has no bearing on tenant virtual machines (VMs), t
 You can learn more about choosing an identity provider in the [Azure Stack integrated systems connection models article](./azure-stack-connection-models.md).
 
 ### AD FS and Graph integration
-If you choose to deploy Azure Stack using AD FS as the identity provider, you must integrate the AD FS instance on Azure Stack with an existing AD FS instance through a federation trust. This allows identities in an existing Active Directory forest to authenticate with resources in Azure Stack.
+If you choose to deploy Azure Stack using AD FS as the identity provider, you must integrate the AD FS instance on Azure Stack with an existing AD FS instance through a federation trust. This integration allows identities in an existing Active Directory forest to authenticate with resources in Azure Stack.
 
 You can also integrate the Graph service in Azure Stack with the existing Active Directory. This integration lets you manage Role-Based Access Control (RBAC) in Azure Stack. When access to a resource is delegated, the Graph component looks up the user account in the existing Active Directory forest using the LDAP protocol.
 
@@ -103,9 +103,9 @@ For more information about what PKI certificates are required to deploy Azure St
 
 
 ## Time synchronization
-You must choose a specific time server which is used to synchronize Azure Stack. Time synchronization is critical to Azure Stack and its infrastructure roles because it's used to generate Kerberos tickets which are used to authenticate internal services with each other.
+You must choose a specific time server which is used to synchronize Azure Stack. Time synchronization is critical to Azure Stack and its infrastructure roles because it's used to generate Kerberos tickets, which are used to authenticate internal services with each other.
 
-You must specify an IP for the time synchronization server. Although most of the components in the infrastructure can resolve an URL, some only support IP addresses. If you're using the disconnected deployment option, you must specify a time server on your corporate network that you're sure you can reach from the infrastructure network in Azure Stack.
+You must specify an IP for the time synchronization server. Although most of the components in the infrastructure can resolve a URL, some only support IP addresses. If you're using the disconnected deployment option, you must specify a time server on your corporate network that you're sure you can reach from the infrastructure network in Azure Stack.
 
 ## Connect Azure Stack to Azure
 
@@ -113,11 +113,11 @@ For hybrid cloud scenarios, you'll need to plan how you want to connect Azure St
 
 - **Site-to-site**: A virtual private network (VPN) connection over IPsec (IKE v1 and IKE v2). This type of connection requires a VPN device or Routing and Remote Access Service (RRAS). For more information about VPN gateways in Azure, see [About VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). The communication over this tunnel is encrypted and secure. However, bandwidth is limited by the maximum throughput of the tunnel (100-200 Mbps).
 
-- **Outbound NAT**: By default, all VMs in Azure Stack will have connectivity to external networks via outbound NAT. Each virtual network that's created in Azure Stack gets a public IP address assigned to it. Whether the VM is directly assigned a public IP address, or is behind a load balancer with a public IP address, it'll have outbound access via outbound NAT using the VIP of the virtual network. This works only for communication that's initiated by the VM and destined for external networks (either internet or intranet). It can't be used to communicate with the VM from outside.
+- **Outbound NAT**: By default, all VMs in Azure Stack will have connectivity to external networks via outbound NAT. Each virtual network that's created in Azure Stack gets a public IP address assigned to it. Whether the VM is directly assigned a public IP address, or is behind a load balancer with a public IP address, it will have outbound access via outbound NAT using the VIP of the virtual network. This works only for communication that's initiated by the VM and destined for external networks (either internet or intranet). It can't be used to communicate with the VM from outside.
 
 ### Hybrid connectivity options
 
-For hybrid connectivity, it's important to consider what kind of deployment you want to offer and where it'll be deployed. You'll need to consider whether you need to isolate network traffic per tenant, and whether you'll have an intranet or internet deployment.
+For hybrid connectivity, it's important to consider what kind of deployment you want to offer and where it will be deployed. You'll need to consider whether you need to isolate network traffic per tenant, and whether you'll have an intranet or internet deployment.
 
 - **Single-tenant Azure Stack**: An Azure Stack deployment that looks, at least from a networking perspective, as if it's one tenant. There can be many tenant subscriptions, but like any intranet service, all traffic travels over the same networks. Network traffic from one subscription travels over the same network connection as another subscription and doesn't need to be isolated via an encrypted tunnel.
 
@@ -150,7 +150,7 @@ The following diagram shows ExpressRoute for a multi-tenant scenario.
 ![Diagram showing multi-tenant ExpressRoute scenario](media/azure-stack-datacenter-integration/ExpressRouteMultiTenant.PNG)
 
 ## External monitoring
-To get a single view of all alerts from your Azure Stack deployment and devices, and to integrate alerts into existing IT service management workflows for ticketing, you can [integrate Azure Stack with external datacenter monitoring solutions](azure-stack-integrate-monitor.md).
+To get a single view of all alerts from your Azure Stack deployment and devices, and to integrate alerts into existing IT Service Management workflows for ticketing, you can [integrate Azure Stack with external datacenter monitoring solutions](azure-stack-integrate-monitor.md).
 
 Included with the Azure Stack solution, the hardware lifecycle host is a computer outside Azure Stack that runs OEM vendor-provided management tools for hardware. You can use these tools or other solutions that directly integrate with existing monitoring solutions in your datacenter.
 
@@ -170,14 +170,14 @@ Note the following requirements:
 
 ## Backup and disaster recovery
 
-Planning for backup and disaster recovery involves planning for both the underlying Azure Stack infrastructure that hosts IaaS VMs and PaaS services, and for tenant apps and data. You must plan for these separately.
+Planning for backup and disaster recovery involves planning for both the underlying Azure Stack infrastructure that hosts IaaS VMs and PaaS services, and for tenant apps and data. You must plan for these things separately.
 
 ### Protect infrastructure components
 
 You can [back up Azure Stack](azure-stack-backup-back-up-azure-stack.md) infrastructure components to an SMB share that you specify:
 
 - You'll need an external SMB file share on an existing Windows-based file server or a third-party device.
-- You should use this same share for the backup of network switches and the hardware lifecycle host. Your OEM hardware vendor will help provide guidance for backup and restore of these components as these are external to Azure Stack. You're responsible for running the backup workflows based on the OEM vendor's recommendation.
+- Use this same share for the backup of network switches and the hardware lifecycle host. Your OEM hardware vendor will help provide guidance for backup and restore of these components as these are external to Azure Stack. You're responsible for running the backup workflows based on the OEM vendor's recommendation.
 
 If catastrophic data loss occurs, you can use the infrastructure backup to reseed deployment data such as deployment inputs and identifiers, service accounts, CA root certificate, federated resources (in disconnected deployments), plans, offers, subscriptions, quotas, RBAC policy and role assignments, and Key Vault secrets.
  
