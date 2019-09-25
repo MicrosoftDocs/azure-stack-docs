@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 09/25/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
 
 ---
 
-# Frequently asked questions in Azure Stack usage API
+# Frequently asked questions about Azure Stack usage
 
 This article answers some frequently asked questions about the Azure Stack usage API.
 
