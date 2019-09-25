@@ -21,7 +21,7 @@ ms.lastreviewed: 02/26/2019
 
 # Frequently asked questions about Azure Stack usage
 
-This article answers some frequently asked questions about the Azure Stack usage API.
+This article answers some frequently asked questions about Azure Stack usage and the Azure Stack usage API.
 
 ## What meter IDs can I see?
 
