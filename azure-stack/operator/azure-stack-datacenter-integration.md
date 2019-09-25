@@ -83,29 +83,29 @@ The following table summarizes these domain naming decisions.
 
 | Name | Description | 
 | -------- | ------------- | 
-|Region name | The name of your first Azure Stack region. This name is used as part of the FQDN for the public virtual IP addresses (VIPs) that Azure Stack manages. Typically, the region name would be a physical location identifier such as a datacenter location.<br><br>The region name must consist of only letters and numbers between 0-9. No special characters like "-" or "#", etc. are allowed.| 
+|Region name | The name of your first Azure Stack region. This name is used as part of the FQDN for the public virtual IP addresses (VIPs) that Azure Stack manages. Typically, the region name would be a physical location identifier such as a datacenter location.<br><br>The region name must consist of only letters and numbers between 0-9. No special characters (like `-`, `#`, and so on) are allowed.| 
 | External domain name | The name of the Domain Name System (DNS) zone for endpoints with external-facing VIPs. Used in the FQDN for these public VIPs. | 
-| Private (internal) domain name | The name of the domain (and internal DNS zone) created on Azure Stack for infrastructure management. 
+| Private (internal) domain name | The name of the domain (and internal DNS zone) created on Azure Stack for infrastructure management.
 | | |
 
 ## Certificate requirements
 
 For deployment, you'll need to provide Secure Sockets Layer (SSL) certificates for public-facing endpoints. At a high level, certificates have the following requirements:
 
-- You can use a single wildcard certificate or you can use a set of dedicated certificates, and use wildcards only for endpoints such as storage and Key Vault.
+- You can use a single wildcard certificate or you can use a set of dedicated certificates, and use wildcards only for endpoints like storage and Key Vault.
 - Certificates can be issued by a public trusted certificate authority (CA) or a customer-managed CA.
 
-For more information  about what PKI certificates are required to deploy Azure Stack, and how to obtain them, see, [Azure Stack Public Key Infrastructure certificate requirements](azure-stack-pki-certs.md).  
+For more information about what PKI certificates are required to deploy Azure Stack, and how to obtain them, see, [Azure Stack Public Key Infrastructure certificate requirements](azure-stack-pki-certs.md).  
 
 
 > [!IMPORTANT]
-> The provided PKI certificate information should be used as general guidance. Before you acquire any PKI certificates for Azure Stack, work with your OEM hardware partner. They will provide more detailed certificate guidance and requirements.
+> The provided PKI certificate information should be used as general guidance. Before you acquire any PKI certificates for Azure Stack, work with your OEM hardware partner. They'll provide more detailed certificate guidance and requirements.
 
 
 ## Time synchronization
-You must choose a specific time server with is used to synchronize Azure Stack.  Time synchronization is critical to Azure Stack and its infrastructure roles, as it is used to generate Kerberos tickets which are used to authenticate internal services with each other.
+You must choose a specific time server which is used to synchronize Azure Stack. Time synchronization is critical to Azure Stack and its infrastructure roles because it's used to generate Kerberos tickets which are used to authenticate internal services with each other.
 
-You must specify an IP for the time synchronization server, although most of the components in the infrastructure can resolve an URL, some can only support IP addresses. If you're using the disconnected deployment option, you must specify a time server on your corporate network that you are sure can be reached from the infrastructure network in Azure Stack.
+You must specify an IP for the time synchronization server. Although most of the components in the infrastructure can resolve an URL, some only support IP addresses. If you're using the disconnected deployment option, you must specify a time server on your corporate network that you're sure you can reach from the infrastructure network in Azure Stack.
 
 ## Connect Azure Stack to Azure
 
