@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 09/14/2019
+ms.date: 09/25/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/14/2019
+ms.lastreviewed: 09/25/2019
 
 ---
 
@@ -84,7 +84,7 @@ When upgrading a production cluster, consider:
     | api-model | ./kubernetes-azurestack.json | Path to the cluster configuration file, or API model. |
     | client-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal GUID. The Client ID identified as the Application ID when your Azure Stack administrator created the service principal. |
     | client-secret | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal secret. This is the client secret you set up when creating your service. |
-
+    | identity-system | adfs | Optional. Specify your identity management solution if you are using Active Directory Federated Services (AD FS). |
 
 4. With your values in place, run the following command:
 
@@ -97,7 +97,8 @@ When upgrading a production cluster, consider:
     --api-model kube-rg/apimodel.json \
     --upgrade-version 1.13.5 \
     --client-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
-    --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    --identity-system adfs # required if using AD FS
     ```
 
 5.  If for any reason the upgrade operation encounters a failure, you can re-run the upgrade command after addressing the issue. The AKS Engine will resume the operation where it failed the previous time.

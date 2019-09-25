@@ -117,16 +117,16 @@ Proceed to deploy a cluster:
     Here is an example:
 
     ```bash  
-    aks-engine deploy \\
-    --azure-env AzureStackCloud
-    --location <for asdk is local>\\
-    --resource-group kube-rg \\
-    --api-model ./kubernetes-azurestack.json \\
-    --output-directory kube-rg \\
-    --client-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \\
-    --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \\
-    --subscription-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \\
-    --identity-system adfs \ # required if using AD FS
+    aks-engine deploy \
+    --azure-env AzureStackCloud \
+    --location <for asdk is local> \
+    --resource-group kube-rg \
+    --api-model ./kubernetes-azurestack.json \
+    --output-directory kube-rg \
+    --client-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    --subscription-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    --identity-system adfs # required if using AD FS
     ```
 
 2.  If for some reason the execution fails after the output directory has been created, you can correct the issue and rerun the command. If you are rerunning the deployment and had used the same output directory before, the AKS Engine will return an error saying that the directory already exists. You can overwrite the existing directory by using the flag: `--force-overwrite`.
