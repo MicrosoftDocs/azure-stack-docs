@@ -112,8 +112,8 @@ If this command fails, verify the TOR switch and any other network devices are c
 A Windows Server image and gallery item must be added before deploying VMs in Azure Stack.
 
 
-### I have deleted some virtual machines, but still see the VHD files on disk. Is this behavior expected?
-Yes, this behavior is by design:
+### I have deleted some virtual machines, but still see the VHD files on disk
+This behavior is by design:
 
 * When you delete a VM, VHDs are not deleted. Disks are separate resources in the resource group.
 * When a storage account gets deleted, the deletion is visible immediately through Azure Resource Manager, but the disks it may contain are still kept in storage until garbage collection runs.
