@@ -51,8 +51,8 @@ You might also notice that tenant VMs don't automatically start after a reboot o
 3.  Select **Roles**.
 4.  Tenant VMs appear in a *saved* state. Once all Infrastructure VMs are running, right-click the tenant VMs and select **Start** to resume the VM.
 
-### I've deleted some VMs, but still see the VHD files on disk. Is this behavior expected?
-Yes, this is expected behavior. It's designed this way because:
+### I've deleted some VMs, but still see the VHD files on disk 
+This behavior is by design:
 
 * When you delete a VM, VHDs aren't deleted. Disks are separate resources in the resource group.
 * When a storage account gets deleted, the deletion is visible immediately through Azure Resource Manager, but the disks it may contain are still kept in storage until garbage collection runs.
