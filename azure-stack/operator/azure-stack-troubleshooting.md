@@ -56,7 +56,7 @@ To increase the total available memory capacity for Azure Stack, you can add add
 
 #### Retention period
 
-The retention period setting allows a cloud operator to specify a time period in days (between 0 and 9999 days) during which any deleted account can potentially be recovered. The default retention period is set to 0 days. Setting the value to "0" means that any deleted account is immediately out of retention and marked for periodic garbage collection.
+The retention period setting allows a cloud operator to specify a time period in days (between 0 and 9999 days) during which any deleted account can potentially be recovered. The default retention period is set to **0** days. Setting the value to **0** means that any deleted account is immediately out of retention and marked for periodic garbage collection.
 
 * [Set the retention period](azure-stack-manage-storage-accounts.md#set-the-retention-period)
 
@@ -97,9 +97,9 @@ An error occurred while trying to test identity provider endpoints: System.Net.W
 ```
 If this error occurs, check to be sure all minimum networking requirements have been met by reviewing the [deployment network traffic documentation](deployment-networking.md). A network checker tool is also available for partners as part of the Partner Toolkit.
 
-Deployment failures with the above exception are typically due to problems connecting to resources on the Internet.
+Other deployment failures are typically due to problems connecting to resources on the Internet.
 
-To verify this is your issue, you can perform the following steps:
+To verify connectivity to resources on the Internet, you can perform the following steps:
 
 1. Open Powershell
 2. Enter-PSSession to the WAS01 or any of the ERCs VMs
@@ -111,15 +111,6 @@ If this command fails, verify the TOR switch and any other network devices are c
 ### Default image and gallery item
 A Windows Server image and gallery item must be added before deploying VMs in Azure Stack.
 
-### After restarting my Azure Stack host, some VMs may not automatically start.
-After rebooting your host, you may notice Azure Stack services are not immediately available.  This is because Azure Stack [infrastructure VMs](../asdk/asdk-architecture.md#virtual-machine-roles) and resource providers take some time to check consistency, but will eventually start automatically.
-
-You may also notice that tenant VMs don't automatically start after a reboot of the Azure Stack development kit host. This is a known issue, and just requires a few manual steps to bring them online:
-
-1.  On the Azure Stack development kit host, start **Failover Cluster Manager** from the Start Menu.
-2.  Select the cluster **S-Cluster.azurestack.local**.
-3.  Select **Roles**.
-4.  Tenant VMs appear in a *saved* state. Once all Infrastructure VMs are running, right-click the tenant VMs and select **Start** to resume them.
 
 ### I have deleted some virtual machines, but still see the VHD files on disk. Is this behavior expected?
 Yes, this is expected behavior. It was designed this way because:

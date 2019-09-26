@@ -41,10 +41,10 @@ This behavior is probably just the result of the default behavior of a PowerShel
 ### Default image and gallery item
 A Windows Server image and gallery item must be added before deploying VMs in Azure Stack.
 
-### After restarting my Azure Stack host, some VMs don't automatically start.
+### After restarting my Azure Stack host, some VMs don't automatically start
 After rebooting your host, you may notice Azure Stack services aren't immediately available. This is because Azure Stack [infrastructure VMs](asdk-architecture.md#virtual-machine-roles) and RPs take some time to check consistency, but will eventually start automatically.
 
-You might also notice that tenant VMs don't automatically start after a reboot of the ASDK host. This is a known issue, and just requires a few manual steps to bring them online:
+You might also notice that tenant VMs don't automatically start after a reboot of the ASDK host. You can bring them online with a few manual steps:
 
 1.  On the ASDK host, start **Failover Cluster Manager** from the Start Menu.
 2.  Select the cluster **S-Cluster.azurestack.local**.
