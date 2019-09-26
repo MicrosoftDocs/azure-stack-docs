@@ -39,12 +39,12 @@ Data access controls:
 - In the event where Microsoft must share customer data with OEM partners, customer consent is mandatory.  
 
 ### What Data Subject Requests (DSR) controls do customers have?
-Microsoft supports on-demand data deletion per customer request. Customers can request that one of our support engineers delete all their logs for a given case at any time of the customer's choosing, before the data is permanently erased.  
+Microsoft supports on-demand data deletion per customer request. Customers can request that one of our support engineers delete all their logs for a given case at any time, before the data is permanently erased.  
 
 ### Does Microsoft notify customers when the data is deleted?
 For the automated data deletion action (90 days after case close), we don't proactively contact customers and notify them about the deletion.
 
-For the on-demand data deletion action, Microsoft support engineers have access to the tool that lets them initiate data deletion on demand. They can provide confirmation on the phone with the customer when it's done.
+For the on-demand data deletion action, Microsoft support engineers have access to the tool that lets them delete data on demand. They can provide confirmation on the phone with the customer when it's done.
 
 ## Diagnostic data
 As part of the support process, Azure Stack Operators can [share diagnostic logs](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) with Azure Stack support and engineering teams to help with troubleshooting.
@@ -54,7 +54,7 @@ Microsoft provides a tool and script for customers to collect and upload request
 ## Telemetry data
 [Azure Stack telemetry](azure-stack-telemetry.md) automatically uploads system data to Microsoft via the Connected User Experience. Azure Stack Operators have controls to customize telemetry features and privacy settings at any time.
 
-Microsoft doesn't intend to gather sensitive data, such as credit card numbers, usernames and passwords, email addresses, or similar sensitive information. If we determine that sensitive information has been inadvertently received, we delete it. 
+Microsoft doesn't intend to gather sensitive data, such as credit card numbers, usernames and passwords, email addresses, and so on. If we determine that sensitive information has been inadvertently received, we delete it.
 
 ## Billing data
 [Azure Stack Billing](azure-stack-usage-reporting.md) leverages global Azure's Billing and Usage pipeline and is therefore in alignment with Microsoft compliance guidelines.
