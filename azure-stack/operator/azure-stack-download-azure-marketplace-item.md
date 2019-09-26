@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/14/2019
+ms.date: 09/26/2019
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 12/10/2018
@@ -150,7 +150,7 @@ Once you have registered, you can disregard the following message that appears o
 
 7. If you have not installed the Azure Storage tools, you will get the following pop-up. In order to install these tools, make sure you download [AzCopy](/azure/storage/common/storage-use-azcopy#download-and-install-azcopy-on-windows):
 
-   [![Missing storage tools](media/azure-stack-download-azure-marketplace-item/psexample3sm.png "Missing storage tools message")](media/azure-stack-download-azure-marketplace-item/psexample3.png#lightbox)
+   ![Storage tools](media/azure-stack-download-azure-marketplace-item/vmnew1.png)
 
 8. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images. You reference the *version* when you import the item in the next procedure.
 
