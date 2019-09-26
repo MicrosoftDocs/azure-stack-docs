@@ -21,7 +21,7 @@ ms.lastreviewed: 09/04/2019
 ---
 # Microsoft Azure Stack troubleshooting
 
-This document provides troubleshooting information for Azure Stack. 
+This document provides troubleshooting information for Azure Stack integrated environments. For help with the Azure Stack Development Kit, see [ASDK Troubleshooting](../asdk/asdk-troubleshooting.md) or get help from experts on the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
 
 
 ## Frequently asked questions
@@ -32,10 +32,6 @@ These sections include links to docs that cover common questions sent to Microso
 
 * [How to buy](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)
 * [Azure Stack overview](azure-stack-overview.md)
-
-### Azure Stack Development Kit (ASDK)
-
-For help with the [Azure Stack Development Kit](../asdk/asdk-what-is.md), reach out to the experts on the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). The ASDK is offered as an evaluation environment without support through CSS. Support cases opened for ASDK are referred to the MSDN Forum.
 
 ### Updates and diagnostics
 
@@ -90,9 +86,6 @@ Choose the type of shared services account that you use for Azure Stack. The typ
 ## Troubleshoot deployment 
 ### General deployment failure
 If you experience a failure during installation, you can restart the deployment from the failed step by using the -rerun option of the deployment script.  
-
-### At the end of ASDK deployment, the PowerShell session is still open and doesn't show any output.
-This behavior is probably just the result of the default behavior of a PowerShell command window, when it has been selected. The development kit deployment has succeeded but the script was paused when selecting the window. You can verify setup has completed by looking for the word "select" in the titlebar of the command window. Press the ESC key to unselect it, and the completion message should be shown after it.
 
 ### Deployment fails due to lack of external access
 When deployment fails at stages where external access is required, an exception like the following example will be returned:

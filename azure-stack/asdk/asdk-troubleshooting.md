@@ -13,19 +13,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 09/26/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
 
 ---
 # Troubleshoot the ASDK
-This article provides common troubleshooting info for the Azure Stack Development Kit (ASDK). If you're experiencing an issue that isn't documented, make sure to check the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) for assistance.  
+This article provides common troubleshooting info for the Azure Stack Development Kit (ASDK). For help with Azure stack integrated systems, see [Microsoft Azure Stack troubleshooting](../operator/azure-stack-troubleshooting.md). 
 
-> [!IMPORTANT]
-> Because the ASDK is an evaluation environment, there's no official support offered through Microsoft Customer Support Services (CSS).
+Because the ASDK is an evaluation environment, Microsoft Customer Support Services (CSS) does not provide support. If you're experiencing an issue that isn't documented, you can get help from experts on the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
 
-The recommendations for troubleshooting issues described in this section are derived from several sources and may or may not resolve your particular issue. Code examples are provided "as is" and expected results can't be guaranteed. This section is subject to frequent edits and updates as improvements to the product are implemented.
 
 ## Deployment
 ### Deployment failure
