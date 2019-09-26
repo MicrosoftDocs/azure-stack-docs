@@ -113,17 +113,21 @@ Images must be able to be referenced by a blob storage URI. Prepare a Windows or
 
 ## Add a custom VM image to the Marketplace using the portal
 
-This section describes how to upload a custom VM image to the Azure Stack Marketplace. If you are using a generalized VHD from Azure and you are running in an Azure Stack disconnected scenario, make sure you have a machine that can connect to the Azure portal.
+This section describes how to upload a custom VM image to the Azure Stack Marketplace. You must use a generalized VHD for this procedure. Follow the instructions in this section to create a generalized Windows or Linux VHD.
+
+If the VHD is in Azure, you can use a tool such as [Azcopy](/azure/storage/common/storage-use-azcopy) to directly transfer the VHD between an Azure and your Azure Stack storage account if you are running on a connected Azure Stack.
+
+On a disconnected Azure Stack, if your VHD is in Azure, you will need to download the VHD to a machine that has connectivity to both Azure and Azure Stack. Then you copy the VHD to this machine from Azure before you transfer the VHD to Azure Stack using any of the common [storage data transfer tools](../user/azure-stack-storage-transfer.md) that can be used across Azure and Azure Stack.
 
 ### Windows
 
 Create a custom generalized VHD. If the VHD is from outside Azure, follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed) to correctly sysprep your VHD and make it generalized.
 
-If the VHD is from Azure, you must have a machine that has connectivity to Azure. The procedure cannot be performed in a disconnected environment. Also, if you are bringing the VHD from Azure, then before transferring the VHD to Azure Stack, Sysprep it using the procedure in [Generalize the source VM by using Sysprep](/azure/virtual-machines/windows/upload-generalized-managed#generalize-the-source-vm-by-using-sysprep).
+If the VHD is from Azure, follow the instructions in [Generalize the source VM by using Sysprep](/azure/virtual-machines/windows/upload-generalized-managed#generalize-the-source-vm-by-using-sysprep) before porting it to Azure Stack.
 
 ### Linux
 
-If the VHD is from outside Azure, follow the appropriate instructions:
+If the VHD is from outside Azure, follow the appropriate instructions to generalize the VHD:
 
 - [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -131,9 +135,9 @@ If the VHD is from outside Azure, follow the appropriate instructions:
 - [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-If the VHD is from Azure, follow these instructions:
+If the VHD is from Azure, follow these instructions to generalize the VHD:
 
-1. You must have a machine that has connectivity to Azure. The procedure cannot be performed in a disconnected environment. To bring an image from Azure to Azure Stack, run these commands:
+1. Stop the **waagent** service:
 
    ```bash
    # sudo waagent -force -deprovision
@@ -143,11 +147,15 @@ If the VHD is from Azure, follow these instructions:
 
 2. Shut down the VM and download the VHD. If you are bringing your VHD from Azure, you can do this using disk export, as shown in [Download a Windows VHD from Azure](/azure/virtual-machines/windows/download-vhd).
 
-3. Upload this VHD to an Azure Stack Storage account on the Azure Stack admin portal, as described in [Add a VM image to Azure Stack](/azure/azure-stack/azure-stack-add-vm-image).
+### Common steps for both Windows and Linux
 
-4. In the portal, go to **All services -> Compute -> VM images**.
+1. Upload the VHD to an Azure Stack Storage account on the Azure Stack admin portal, as described in [Add a VM image to Azure Stack](/azure/azure-stack/azure-stack-add-vm-image), using any of the [storage data transfer tools](../user/azure-stack-storage-transfer.md).
 
-5. Note the **Publisher**, **Offer**, **SKU**, and **Version** values for later. You will need them when you edit the ARM template and Manifest.json in your custom .azpkg.
+2. In the portal, go to **All services -> Compute -> VM images**.
+
+3. Note the **Publisher**, **Offer**, **SKU**, and **Version** values for later. You will need them when you edit the ARM template and Manifest.json in your custom .azpkg.
+
+   ![Upload](media/azure-stack-add-vm-image/upload.png)
 
 ## Add a custom VM image to the Marketplace using PowerShell
 

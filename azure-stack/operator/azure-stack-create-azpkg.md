@@ -28,9 +28,9 @@ This article uses single VMs of type Windows or Linux as an example.
 
 ## Create a package
 
-1. Download the [Azure Gallery Packager tool](https://www.aka.ms/azurestackmarketplaceitem) and a sample gallery package before starting the azpkg creation process. Extract the .zip file and rename the folder SimpleVMTemplate with the name of the item that you will show on your Azure Stack Portal. 
+1. Download the [Azure Gallery Packager tool](https://www.aka.ms/azurestackmarketplaceitem) and a sample gallery package before starting the azpkg creation process. Extract the .zip file and rename the folder **SimpleVMTemplate** with the name of the item that you will show on your Azure Stack Portal. 
 
-2. Create an Azure Resource Manager template or use our custom templates for Windows/Linux. These templates are provided later in this article. You can either use the template and change the text fields, or you can download a pre-configured template from GitHub. For more information about Azure Resource Manager templates, see [Azure Resource Manager templates](/azure/azure-resource-manager/resource-group-authoring-templates).
+2. Create an Azure Resource Manager template or use our custom templates for Windows/Linux. These custom templates are provided in the packager tool .zip file you downloaded in step 1. You can either use the template and change the text fields, or you can download a pre-configured template from GitHub. For more information about Azure Resource Manager templates, see [Azure Resource Manager templates](/azure/azure-resource-manager/resource-group-authoring-templates).
 
 3. Replace the following highlighted values in the Manifest.json template with the value that you provided when [uploading your custom image](azure-stack-add-vm-image.md#add-a-custom-vm-image-to-the-marketplace-using-the-portal). The following template example uses a custom Ubuntu VHD:
 
