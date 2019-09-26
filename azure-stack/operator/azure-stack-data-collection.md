@@ -33,13 +33,13 @@ As Azure Stack resides in customer datacenters, Microsoft is the Data Controller
 Microsoft employees, who are assigned to investigate a specific support case, will be granted read-only access to the encrypted data. Microsoft employees also have access to tools used to delete the data if needed. All access to the customer data is audited and logged.  
 
 Data access controls:
-- Data is only retained for a maximum of 90 days after case close.
+- Data is only kept for a maximum of 90 days after case close.
 - The customer always has the choice to have the data removed at any time in that 90-day period.
 - Microsoft employees are given access to the data on a case-by-case basis and only as needed to help resolve the support issue.
 - In the event where Microsoft must share customer data with OEM partners, customer consent is mandatory.  
 
 ### What Data Subject Requests (DSR) controls do customers have?
-As mentioned earlier, Microsoft supports on-demand data deletion per customer request. Customers can request that our support engineer delete all their logs for a given case at any time of the customer's choosing, before the data is permanently erased.  
+Microsoft supports on-demand data deletion per customer request. Customers can request that one of our support engineers delete all their logs for a given case at any time of the customer's choosing, before the data is permanently erased.  
 
 ### Does Microsoft notify customers when the data is deleted?
 For the automated data deletion action (90 days after case close), we don't proactively contact customers and notify them about the deletion.
@@ -47,7 +47,7 @@ For the automated data deletion action (90 days after case close), we don't proa
 For the on-demand data deletion action, Microsoft support engineers have access to the tool that lets them initiate data deletion on demand. They can provide confirmation on the phone with the customer when it's done.
 
 ## Diagnostic data
-As part of the support process, Azure Stack Operators can [share diagnostic logs](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) with Azure Stack support and engineering teams to facilitate troubleshooting.
+As part of the support process, Azure Stack Operators can [share diagnostic logs](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep) with Azure Stack support and engineering teams to help with troubleshooting.
 
 Microsoft provides a tool and script for customers to collect and upload requested diagnostic log files. Once collected, the log files are transferred over an HTTPS protected encrypted connection to Microsoft. Because HTTPS provides the encryption over the wire, there's no password needed for the encryption in transit. After they're received, logs are encrypted and stored until they're automatically deleted 90 days after the support case is closed.
 
@@ -59,7 +59,7 @@ Microsoft doesn't intend to gather sensitive data, such as credit card numbers, 
 ## Billing data
 [Azure Stack Billing](azure-stack-usage-reporting.md) leverages global Azure's Billing and Usage pipeline and is therefore in alignment with Microsoft compliance guidelines.
 
-Azure Stack Operators can configure Azure Stack to forward usage information to Azure for billing. This is required for Azure Stack integrated systems customers who choose the pay-as-you-use billing model. Usage reporting is controlled independently from telemetry and isn't required for integrated systems customers who choose the capacity model or for Azure Stack Development Kit users. For these scenarios, usage reporting can be turned off using [the registration script](azure-stack-usage-reporting.md).
+Azure Stack Operators can configure Azure Stack to forward usage information to Azure for billing. This configuration is required for Azure Stack integrated systems customers who choose the pay-as-you-use billing model. Usage reporting is controlled independently from telemetry and isn't required for integrated systems customers who choose the capacity model or for Azure Stack Development Kit users. For these scenarios, usage reporting can be turned off using [the registration script](azure-stack-usage-reporting.md).
 
 
 ## Next steps 
