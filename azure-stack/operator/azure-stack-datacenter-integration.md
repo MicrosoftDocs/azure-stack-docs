@@ -26,14 +26,14 @@ If you're interested in an Azure Stack integrated system, you should understand 
 > [!NOTE]  
 > Azure Stack integrated systems can only be purchased from authorized hardware vendors.
 
-To deploy Azure Stack, you need to provide planning information to your solution provider before deployment starts to help the process go quickly and smoothly. The information required ranges across networking, security, and identity information with many important decisions that may require knowledge from many different areas and decision makers. You might have to pull in people from multiple teams in your organization to ensure that you have all required information ready before deployment begins. It can help to talk to your hardware vendor while collecting this information because they might have advice helpful to making your decisions.
+To deploy Azure Stack, you need to provide planning information to your solution provider before deployment starts to help the process go quickly and smoothly. The information required ranges across networking, security, and identity information with many important decisions that may require knowledge from many different areas and decision makers. You'll need people from multiple teams in your organization to ensure that you have all required information ready before deployment. It can help to talk to your hardware vendor while collecting this information because they might have helpful advice.
 
 While researching and collecting the required information, you might need to make some pre-deployment configuration changes to your network environment. These changes could include reserving IP address spaces for the Azure Stack solution as well as configuring your routers, switches, and firewalls to prepare for the connectivity to the new Azure Stack solution switches. Make sure to have the subject area expert lined up to help you with your planning.
 
 ## Capacity planning considerations
-When evaluating an Azure Stack Solution for acquisition, hardware configuration choices must be made which have a direct impact on the overall capacity of the Azure Stack solution. These include the classic choices of CPU, memory density, storage configuration, and overall solution scale (e.g. number of servers). Unlike a traditional virtualization solution, the simple arithmetic of these components to determine usable capacity doesn't apply. The first reason is that Azure Stack is architected to host the infrastructure or management components within the solution itself. The second reason is that some of the solution's capacity is reserved in support of resiliency by updating the solution's software in a way that minimizes disruption of tenant workloads.
+When you evaluate an Azure Stack solution for acquisition, you make hardware configuration choices which have a direct impact on the overall capacity of the Azure Stack solution. These include the classic choices of CPU, memory density, storage configuration, and overall solution scale (for example, number of servers). Unlike a traditional virtualization solution, the simple arithmetic of these components to determine usable capacity doesn't apply. The first reason is that Azure Stack is architected to host the infrastructure or management components within the solution itself. The second reason is that some of the solution's capacity is reserved in support of resiliency by updating the solution's software in a way that minimizes disruption of tenant workloads.
 
-The [Azure Stack capacity planner spreadsheet](https://aka.ms/azstackcapacityplanner) helps you make informed decisions with respect to planning capacity in two ways: either by selecting a hardware offering and attempting to fit a combination of resources or by defining the workload that Azure Stack is intended to run to view the available hardware SKUs that can support it. Finally, the spreadsheet is intended as a guide to help in making decisions related to Azure Stack planning and configuration.
+The [Azure Stack capacity planner spreadsheet](https://aka.ms/azstackcapacityplanner) helps you make informed decisions for planning capacity in two ways. The first is by selecting a hardware offering and attempting to fit a combination of resources. The second is by defining the workload that Azure Stack is intended to run to view the available hardware SKUs that can support it. Finally, the spreadsheet is intended as a guide to help in making decisions related to Azure Stack planning and configuration.
 
 The spreadsheet isn't intended to serve as a substitute for your own investigation and analysis. Microsoft makes no representations or warranties, express or implied, with respect to the information provided within the spreadsheet.
 
@@ -42,14 +42,14 @@ Azure Stack is a sealed system, where the infrastructure is locked down both fro
 
 For daily management and operations, there's no unrestricted admin access to the infrastructure. Azure Stack operators must manage the system through the administrator portal or through Azure Resource Manager (via PowerShell or the REST API). There's no access to the system by other management tools like Hyper-V Manager or Failover Cluster Manager. To help protect the system, third-party software (for example, agents) can't be installed inside the components of the Azure Stack infrastructure. Interoperability with external management and security software occurs via PowerShell or the REST API.
 
-When a higher level of access is needed for troubleshooting issues that aren't resolved through alert mediation steps, you must work with Microsoft Support. Through support, there's a method to provide temporary full admin access to the system to do more advanced operations.
+Contact Microsoft Support when you need a higher level of access for troubleshooting issues that aren't resolved through alert mediation steps. Through support, there's a method to provide temporary full admin access to the system for more advanced operations.
 
 ## Identity considerations
 
 ### Choose identity provider
 You'll need to consider which identity provider you want to use for Azure Stack deployment, either Azure AD or AD FS. You can't switch identity providers after deployment without full system redeployment. If you don't own the Azure AD account and are using an account provided to you by your Cloud Solution Provider, and if you decide to switch provider and use a different Azure AD account, you'll have to contact your solution provider to redeploy the solution for you at your cost.
 
-Your identity provider choice has no bearing on tenant virtual machines (VMs), the identity system, accounts they use, whether they can join an Active Directory domain, and so on. These things are separate.
+Your identity provider choice has no bearing on tenant virtual machines (VMs), the identity system, accounts they use, or whether they can join an Active Directory domain, and so on. These things are separate.
 
 You can learn more about choosing an identity provider in the [Azure Stack integrated systems connection models article](./azure-stack-connection-models.md).
 
@@ -62,7 +62,7 @@ The following diagram shows integrated AD FS and Graph traffic flow.
 ![Diagram showing AD FS and Graph traffic flow](media/azure-stack-datacenter-integration/ADFSIntegration.PNG)
 
 ## Licensing model
-You must decide which licensing model you want to use. The available options depend on whether or not you deploy Azure Stack connected to the internet:
+You must decide which licensing model you want to use. The available options depend on if you deploy Azure Stack connected to the internet:
 - For a [connected deployment](azure-stack-connected-deployment.md), you can choose either pay-as-you-use or capacity-based licensing. Pay-as-you-use requires a connection to Azure to report usage, which is then billed through Azure commerce. 
 - Only capacity-based licensing is supported if you [deploy disconnected](azure-stack-disconnected-deployment.md) from the internet. 
 
@@ -92,7 +92,7 @@ The following table summarizes these domain naming decisions.
 
 For deployment, you'll need to provide Secure Sockets Layer (SSL) certificates for public-facing endpoints. At a high level, certificates have the following requirements:
 
-- You can use a single wildcard certificate or you can use a set of dedicated certificates, and use wildcards only for endpoints like storage and Key Vault.
+- You can use a single wildcard certificate or you can use a set of dedicated certificates, and then use wildcards only for endpoints like storage and Key Vault.
 - Certificates can be issued by a public trusted certificate authority (CA) or a customer-managed CA.
 
 For more information about what PKI certificates are required to deploy Azure Stack, and how to obtain them, see, [Azure Stack Public Key Infrastructure certificate requirements](azure-stack-pki-certs.md).  
@@ -103,17 +103,17 @@ For more information about what PKI certificates are required to deploy Azure St
 
 
 ## Time synchronization
-You must choose a specific time server which is used to synchronize Azure Stack. Time synchronization is critical to Azure Stack and its infrastructure roles because it's used to generate Kerberos tickets, which are used to authenticate internal services with each other.
+You must choose a specific time server which is used to synchronize Azure Stack. Time synchronization is critical to Azure Stack and its infrastructure roles because it's used to generate Kerberos tickets. Kerberos tickets are used to authenticate internal services with each other.
 
 You must specify an IP for the time synchronization server. Although most of the components in the infrastructure can resolve a URL, some only support IP addresses. If you're using the disconnected deployment option, you must specify a time server on your corporate network that you're sure you can reach from the infrastructure network in Azure Stack.
 
 ## Connect Azure Stack to Azure
 
-For hybrid cloud scenarios, you'll need to plan how you want to connect Azure Stack to Azure. There are two supported methods to connect virtual networks in Azure Stack to virtual networks in Azure: 
+For hybrid cloud scenarios, you'll need to plan how you want to connect Azure Stack to Azure. There are two supported methods to connect virtual networks in Azure Stack to virtual networks in Azure:
 
 - **Site-to-site**: A virtual private network (VPN) connection over IPsec (IKE v1 and IKE v2). This type of connection requires a VPN device or Routing and Remote Access Service (RRAS). For more information about VPN gateways in Azure, see [About VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). The communication over this tunnel is encrypted and secure. However, bandwidth is limited by the maximum throughput of the tunnel (100-200 Mbps).
 
-- **Outbound NAT**: By default, all VMs in Azure Stack will have connectivity to external networks via outbound NAT. Each virtual network that's created in Azure Stack gets a public IP address assigned to it. Whether the VM is directly assigned a public IP address, or is behind a load balancer with a public IP address, it will have outbound access via outbound NAT using the VIP of the virtual network. This works only for communication that's initiated by the VM and destined for external networks (either internet or intranet). It can't be used to communicate with the VM from outside.
+- **Outbound NAT**: By default, all VMs in Azure Stack will have connectivity to external networks via outbound NAT. Each virtual network that's created in Azure Stack gets a public IP address assigned to it. Whether the VM is directly assigned a public IP address or is behind a load balancer with a public IP address, it will have outbound access via outbound NAT using the VIP of the virtual network. This method only works for communication that's initiated by the VM and destined for external networks (either internet or intranet). It can't be used to communicate with the VM from outside.
 
 ### Hybrid connectivity options
 
@@ -170,24 +170,32 @@ Note the following requirements:
 
 ## Backup and disaster recovery
 
-Planning for backup and disaster recovery involves planning for both the underlying Azure Stack infrastructure that hosts IaaS VMs and PaaS services, and for tenant apps and data. You must plan for these things separately.
+Planning for backup and disaster recovery involves planning for both the underlying Azure Stack infrastructure that hosts IaaS VMs and PaaS services, and for tenant apps and data. Plan for these things separately.
 
 ### Protect infrastructure components
 
 You can [back up Azure Stack](azure-stack-backup-back-up-azure-stack.md) infrastructure components to an SMB share that you specify:
 
 - You'll need an external SMB file share on an existing Windows-based file server or a third-party device.
-- Use this same share for the backup of network switches and the hardware lifecycle host. Your OEM hardware vendor will help provide guidance for backup and restore of these components as these are external to Azure Stack. You're responsible for running the backup workflows based on the OEM vendor's recommendation.
+- Use this same share for the backup of network switches and the hardware lifecycle host. Your OEM hardware vendor will help provide guidance for backup and restore of these components because these are external to Azure Stack. You're responsible for running the backup workflows based on the OEM vendor's recommendation.
 
-If catastrophic data loss occurs, you can use the infrastructure backup to reseed deployment data such as deployment inputs and identifiers, service accounts, CA root certificate, federated resources (in disconnected deployments), plans, offers, subscriptions, quotas, RBAC policy and role assignments, and Key Vault secrets.
- 
+If catastrophic data loss occurs, you can use the infrastructure backup to reseed deployment data such as: 
+
+- Deployment inputs and identifiers
+- Service accounts
+- CA root certificate
+- fFederated resources (in disconnected deployments)
+- Plans, offers, subscriptions, and quotas
+- RBAC policy and role assignments
+- Key Vault secrets
+
 ### Protect tenant apps on IaaS VMs
 
 Azure Stack doesn't back up tenant apps and data. You must plan for backup and disaster recovery protection to a target external to Azure Stack. Tenant protection is a tenant-driven activity. For IaaS VMs, tenants can use in-guest technologies to protect file folders, app data, and system state. However, as an enterprise or service provider, you may want to offer a backup and recovery solution in the same datacenter or externally in a cloud.
 
 To back up Linux or Windows IaaS VMs, you must use backup products with access to the guest operating system to protect file, folder, operating system state, and app data. You can use Azure Backup, System Center Data Center Protection Manager, or supported third-party products.
 
-To replicate data to a secondary location and orchestrate application failover if a disaster occurs, you can use Azure Site Recovery, or supported third-party products. Also, apps that support native replication, like Microsoft SQL Server, can replicate data to another location where the app is running.
+To replicate data to a secondary location and orchestrate application failover if a disaster occurs, you can use Azure Site Recovery or supported third-party products. Also, apps that support native replication, like Microsoft SQL Server, can replicate data to another location where the app is running.
 
 ## Learn more
 
