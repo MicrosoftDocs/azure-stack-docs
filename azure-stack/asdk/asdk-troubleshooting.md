@@ -20,7 +20,7 @@ ms.lastreviewed: 10/15/2018
 
 ---
 # Troubleshoot the ASDK
-This article provides common troubleshooting info for the Azure Stack Development Kit (ASDK). For help with Azure stack integrated systems, see [Microsoft Azure Stack troubleshooting](../operator/azure-stack-troubleshooting.md). 
+This article provides common troubleshooting info for the Azure Stack Development Kit (ASDK). For help with Azure Stack integrated systems, see [Microsoft Azure Stack troubleshooting](../operator/azure-stack-troubleshooting.md). 
 
 Because the ASDK is an evaluation environment, Microsoft Customer Support Services (CSS) does not provide support. If you're experiencing an issue that isn't documented, you can get help from experts on the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
 
