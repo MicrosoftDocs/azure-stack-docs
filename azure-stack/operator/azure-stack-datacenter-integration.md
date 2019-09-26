@@ -1,6 +1,6 @@
 ---
 title: Datacenter integration planning considerations for Azure Stack integrated systems | Microsoft Docs
-description: Learn what you can do to plan now and prepare for datacenter integration with Azure Stack integrated systems.
+description: Learn how to plan and prepare for datacenter integration with Azure Stack integrated systems.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -21,7 +21,7 @@ ms.lastreviewed: 09/12/2018
  
 # Datacenter integration planning considerations for Azure Stack integrated systems
 
-If you're interested in an Azure Stack integrated system, you should understand the major planning considerations around deployment and how the system fits into your datacenter. This article provides a high-level overview of these considerations to help you make important infrastructure decisions for your Azure Stack integrated systems. An understanding of these considerations helps when working with your OEM hardware vendor because they deploy Azure Stack to your datacenter.  
+If you're interested in an Azure Stack integrated system, you should understand the major planning considerations around deployment and how the system fits into your datacenter. This article provides a high-level overview of these considerations to help you make important infrastructure decisions for your Azure Stack integrated systems. An understanding of these considerations helps when working with your OEM hardware vendor while they deploy Azure Stack to your datacenter.  
 
 > [!NOTE]  
 > Azure Stack integrated systems can only be purchased from authorized hardware vendors.

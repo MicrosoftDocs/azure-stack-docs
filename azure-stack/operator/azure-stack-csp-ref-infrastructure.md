@@ -21,7 +21,7 @@ ms.lastreviewed: 05/09/2019
 
 # Usage reporting infrastructure for Cloud Solution Providers
 
-Azure Stack includes the infrastructure needed to track usage as it occurs and forwards it to Azure. In Azure, Azure Commerce processes the usage data and charges usage to the appropriate Azure subscriptions. This process happens in the same way that usage tracking is monitored in the global Azure cloud.
+Azure Stack includes the infrastructure needed to track usage as it occurs and forwards it to Azure. In Azure, Azure Commerce processes the usage data and charges usage to the appropriate Azure subscriptions. This process works in the same way as usage tracking in the global Azure cloud.
 
 Certain concepts are consistent between global Azure and Azure Stack. Azure Stack has local subscriptions, which fulfill a similar role to an Azure subscription. Local subscriptions are only valid locally. Local subscriptions are mapped to Azure subscriptions when usage is forwarded to Azure.
 
