@@ -3,7 +3,7 @@ title: Create an offer in Azure Stack | Microsoft Docs
 description: Learn how to create an offer for your users in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: bryanla
 manager: femila
 editor: ''
 
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/11/2019
-ms.author: sethm
+ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 06/11/2019
 

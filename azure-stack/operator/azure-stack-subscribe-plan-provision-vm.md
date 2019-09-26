@@ -3,7 +3,7 @@ title: Subscribe to an offer in Azure Stack | Microsoft Docs
 description: Create subscriptions for offers in Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: bryanla
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2019
-ms.author: sethm
+ms.author: bryanla
 ms.lastreviewed: 05/10/2019
 
 ---
