@@ -3,7 +3,7 @@ title: Azure Stack plan, offer, quota, and subscription overview | Microsoft Doc
 description: As a cloud operator, I want to understand Azure Stack plans, offers, quotas, and subscriptions.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: bryanla
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/29/2019
-ms.author: sethm
+ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 08/29/2019
 
