@@ -148,7 +148,7 @@ Once you have registered, you can disregard the following message that appears o
 
    [![Azure Marketplace items popup](media/azure-stack-download-azure-marketplace-item/image05.png "Azure Marketplace items")](media/azure-stack-download-azure-marketplace-item/image05.png#lightbox)
 
-7. If you have not installed the Azure Storage tools, you will get the following pop-up. In order to install these tools, make sure you download [AzCopy](/azure/storage/common/storage-use-azcopy#download-and-install-azcopy-on-windows):
+7. If you have not installed the Azure Storage tools, you will get the following message. In order to install these tools, make sure you download [AzCopy](/azure/storage/common/storage-use-azcopy#download-and-install-azcopy-on-windows):
 
    ![Storage tools](media/azure-stack-download-azure-marketplace-item/vmnew1.png)
 

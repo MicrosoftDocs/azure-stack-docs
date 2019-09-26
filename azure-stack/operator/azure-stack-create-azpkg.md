@@ -5,7 +5,7 @@ author: sethmanheim
 manager: femila
 
 ms.author: sethm
-ms.date: 9/17/2019
+ms.date: 9/26/2019
 ms.topic: conceptual
 ms.service: azure-stack
 ms.reviewer: kivenkat
