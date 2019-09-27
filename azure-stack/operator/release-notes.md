@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/27/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
@@ -52,7 +52,7 @@ For help with troubleshooting updates and the update process, see [Troubleshoot 
 ::: moniker range="azs-1908"
 ## 1908 build reference
 
-The Azure Stack 1908 update build number is **1.1908.0.20**.
+The Azure Stack 1908 update build number is **1.1908.4.33**.
 
 ### <a name="update-type-1908"></a>Update type
 
@@ -115,7 +115,7 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 The 1908 release of Azure Stack must be applied on the 1907 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1907.12.44](https://support.microsoft.com/help/4517473)
+- [Azure Stack hotfix 1.1907.17.54](https://support.microsoft.com/help/4523826)
 
 The Azure Stack 1908 Update requires **Azure Stack OEM version 2.1 or later** from your system's hardware provider. OEM updates include driver and firmware updates to your Azure Stack system hardware. For more information about applying OEM updates, see [Apply Azure Stack original equipment manufacturer updates](azure-stack-update-oem.md)
 
@@ -246,7 +246,7 @@ The 1907 release of Azure Stack must be applied on the 1906 release with the fol
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1907.15.50](https://support.microsoft.com/help/4520315)
+- [Azure Stack hotfix 1.1907.17.54](https://support.microsoft.com/help/4523826)
 ::: moniker-end
 
 ::: moniker range="azs-1906"
