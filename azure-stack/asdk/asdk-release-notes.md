@@ -39,7 +39,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 ::: moniker-end
 
 ::: moniker range="azs-1908"
-## Build 1.1908.4.33
+## Build 1.1908.0.20
 
 ### New features
 
