@@ -1,6 +1,6 @@
 ---
 title: Register tenants for usage tracking in Azure Stack | Microsoft Docs
-description: Details about operations used to manage  tenant registrations and how tenant usage is tracked in Azure Stack.
+description: Learn how to register tenants and how tenant usage is tracked in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -19,7 +19,7 @@ ms.lastreviewed: 01/08/2019
 
 ---
 
-# Manage tenant registration in Azure Stack
+# Register tenants for usage tracking in Azure Stack
 
 *Applies to: Azure Stack integrated systems*
 
@@ -47,9 +47,9 @@ For more information about Azure Stack and API profiles, see [Manage API version
 | Parameter                  | Description |
 |---                         | --- |
 | registrationSubscriptionID | The Azure subscription that was used for the initial registration. |
-| customerSubscriptionID     | The  Azure subscription (not Azure Stack) belonging to the customer to be registered. Must be created in the Cloud Service Provider (CSP) offer through the Partner Center. If a customer has more than one tenant, create a subscription for the tenant to log into Azure Stack. |
+| customerSubscriptionID     | The  Azure subscription (not Azure Stack) belonging to the customer to be registered. Must be created in the Cloud Solution Provider (CSP) offer through the Partner Center. If a customer has more than one tenant, create a subscription for the tenant to sign in to Azure Stack. |
 | resourceGroup              | The resource group in Azure in which your registration is stored. |
-| registrationName           | The name of the registration of your Azure Stack. It is an object stored in Azure. The name is usually in the form **azurestack-CloudID**, where **CloudID** is the cloud ID of your Azure Stack deployment. |
+| registrationName           | The name of the registration of your Azure Stack. It's an object stored in Azure. The name is usually in the form **azurestack-CloudID**, where **CloudID** is the cloud ID of your Azure Stack deployment. |
 
 > [!NOTE]  
 > Tenants need to be registered with each Azure Stack deployment that they use. If a tenant uses more than one Azure Stack, update the initial registrations of each deployment with the tenant subscription.
@@ -83,7 +83,7 @@ Get a list of all tenants that have been added to a registration.
 |---                         | ---                  |
 | registrationSubscriptionId | The Azure subscription that was used for the initial registration.   |
 | resourceGroup              | The resource group in Azure in which your registration is stored.    |
-| registrationName           | The name of the registration of your Azure Stack deployment. It is an object stored in Azure. The name is usually in the form of **azurestack-CloudID**, where **CloudID** is the cloud ID of your Azure Stack deployment.   |
+| registrationName           | The name of the registration of your Azure Stack deployment. It's an object stored in Azure. The name is usually in the form of **azurestack-CloudID**, where **CloudID** is the cloud ID of your Azure Stack deployment.   |
 
 ### PowerShell
 
