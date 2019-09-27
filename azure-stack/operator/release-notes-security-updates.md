@@ -228,6 +228,7 @@ This article lists all the security updates in the last four updates of Azure St
 
 Because of the cumulative nature of Windows updates, this update also contains the security payloads for the previous months. This list of CVEs reflects the security payload of June, July, August and September 2019.
 For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base articles [4516077](https://support.microsoft.com/help/4516077).
+
 ::: moniker-end
 
 ## Next steps
