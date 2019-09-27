@@ -1,6 +1,6 @@
 ---
-title: Collect Azure Stack diagnostic logs now | Microsoft Docs
-description: How to configure on-demand diagnostic log collection in Azure Stack Help + Support.
+title: Collect Azure Stack diagnostic logs on demand | Microsoft Docs
+description: Learn how to collect diagnostic logs on demand in Azure Stack using Help and Support or privileged endpoint (PEP).
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -19,12 +19,11 @@ ms.reviewer: prchint
 ms.lastreviewed: 07/31/2019
 
 ---
-# Collect Azure Stack diagnostic logs now (on demand)
+# Collect Azure Stack diagnostic logs on demand
 
 *Applies to: Azure Stack integrated systems*
 
-As part of troubleshooting, Microsoft Customer Support Services (CSS) may need to analyze diagnostic logs. 
-Beginning with the 1907 release, Azure Stack operators can upload on-demand diagnostic logs to a blob container in Azure by using **Help and Support**. As an alternative if the portal is unavailable, operators can collect logs using Get-AzureStackLog through the privileged endpoint (PEP). This topic covers both ways for collecting diagnostic logs on demand.
+As part of troubleshooting, Microsoft Customer Support Services (CSS) may need to analyze diagnostic logs. Beginning with the 1907 release, Azure Stack operators can upload on-demand diagnostic logs to a blob container in Azure by using **Help and Support**. As an alternative if the portal is unavailable, operators can collect logs using Get-AzureStackLog through the privileged endpoint (PEP). This topic covers both ways of collecting diagnostic logs on demand.
 
 ## Using Help and Support
 
