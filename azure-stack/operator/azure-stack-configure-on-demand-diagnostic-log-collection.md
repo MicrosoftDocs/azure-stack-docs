@@ -206,7 +206,7 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
   |BRP                   |HintingServiceV2               |NRP                            |UsageBridge               |         |
   |   |   |   |    |     | 
 
-### Additional considerations on log collection
+### Additional considerations on diagnostic logs
 
 * The command takes some time to run based on which role(s) the logs are collecting. Contributing factors also include the time duration specified for log collection, and the numbers of nodes in the Azure Stack environment.
 * As log collection runs, check the new folder created in the **OutputSharePath** parameter specified in the command.
@@ -233,7 +233,7 @@ Currently, you can use the `-FilterByRole` parameter to filter log collection by
 * SLB
 * Gateway
 
-#### Example of collecting on-demand logs
+#### Example of collecting on-demand diagnostic logs
 
 ```powershell
 $ipAddress = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
