@@ -52,7 +52,7 @@ This section describes the usage error codes.
 | Unauthorized               | The Azure bridge is not able to push data to the usage service in Azure, because the Azure service is not able to authenticate the Azure Stack bridge. | Check if the registration resource has been modified, and if so, re-register Azure Stack. <br><br> Sometimes, a time sync issue between Azure Stack and Azure AD can cause this failure. In this case, ensure the times on the XRP VMs on Azure Stack are in sync with Azure AD. |
 |                            |                                                                                                                                                   |                                                                                                                                                                                                                                                                                                    |
 
-Additionally, you may be required to provide the log files for the Azure Bridge, WAS, and WASPublic components by following [these steps](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep).
+Additionally, you may be required to provide the log files for the Azure Bridge, WAS, and WASPublic components by following [these steps](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs).
 
 ## Next steps
 

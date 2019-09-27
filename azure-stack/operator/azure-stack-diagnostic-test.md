@@ -239,6 +239,6 @@ Test-AzureStack -Include AzsNetworkInfra -Debug
 
 ## Next steps
 
-To learn more about Azure Stack diagnostics tools and issue logging, see [Azure Stack diagnostics tools](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep).
+To learn more about Azure Stack diagnostics tools and issue logging, see [Azure Stack diagnostics tools](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs).
 
 To learn more about troubleshooting, see [Microsoft Azure Stack troubleshooting](azure-stack-troubleshooting.md).
