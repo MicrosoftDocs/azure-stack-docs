@@ -1,6 +1,6 @@
 ---
 title: Delegating offers in Azure Stack | Microsoft Docs
-description: Learn how to put other people in charge of creating offers and signing up users for you.
+description: Learn how to delegate tasks like creating offers and signing up users.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -26,7 +26,7 @@ As an Azure Stack operator, you might want to put other people in charge of sign
 
 Delegation makes it easier to reach and manage more users than you can by yourself, as shown in the following figure:
 
-![Levels of delegation](media/azure-stack-delegated-provider/image1.png)
+![Levels of delegation in Azure Stack](media/azure-stack-delegated-provider/image1.png)
 
 With delegation, the delegated provider manages an offer (called a *delegated offer*), and end customers obtain subscriptions under that offer without involvement from the system administrator.
 
@@ -50,7 +50,7 @@ There are two basic steps to setting up delegation:
 
 The following figure shows the steps for setting up delegation:
 
-![Create the delegated provider and enable them to sign up users](media/azure-stack-delegated-provider/image2.png)
+![Steps for creating the delegated provider and enabling them to sign up users in Azure Stack](media/azure-stack-delegated-provider/image2.png)
 
 ### Delegated provider requirements
 
