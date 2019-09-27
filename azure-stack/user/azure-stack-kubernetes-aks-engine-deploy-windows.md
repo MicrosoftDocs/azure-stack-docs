@@ -43,11 +43,11 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 3. [Install Chocolatey using the PowerShell instructions.](https://chocolatey.org/install#install-with-powershellexe). 
 
     According to the Chocolaty website: Chocolatey is a package manager for Windows, like apt-get or yum but for Windows. It was designed to be a decentralized framework for quickly installing applications and tools that you need. It is built on the NuGet infrastructure currently using PowerShell as its focus for delivering packages from the distros to your door, err, computer.
-4. Find the version of AKS Engine in the [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) table. The AKS Base Engine must be available in your Azure Stack Marketplace. When running the command, you must specify the version `--version v0.41.1`. If you don't specify the version, the command will install the latest version, which may need an VHD image that is not available in your marketplace.
+4. Find the version of AKS Engine in the [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) table. The AKS Base Engine must be available in your Azure Stack Marketplace. When running the command, you must specify the version `--version v0.40.1`. If you don't specify the version, the command will install the latest version, which may need an VHD image that is not available in your marketplace.
 5. Run the following command from an elevated prompt and include the version number:
 
     ```PowerShell  
-        choco install aks-engine --version v0.41.1 -y
+        choco install aks-engine --version v0.40.1 -y
     ```
 
 > [!Note]  
