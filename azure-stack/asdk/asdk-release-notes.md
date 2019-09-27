@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2019
+ms.date: 09/27/2019
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 09/19/2019
@@ -39,7 +39,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 ::: moniker-end
 
 ::: moniker range="azs-1908"
-## Build 1.1908.0.20
+## Build 1.1908.4.33
 
 ### New features
 
