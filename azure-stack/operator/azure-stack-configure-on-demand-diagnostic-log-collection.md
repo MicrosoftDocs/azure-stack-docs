@@ -25,7 +25,7 @@ ms.lastreviewed: 07/31/2019
 
 As part of troubleshooting, Microsoft Customer Support Services (CSS) may need to analyze diagnostic logs. Beginning with the 1907 release, Azure Stack operators can upload on-demand diagnostic logs to a blob container in Azure by using **Help and Support**. As an alternative if the portal is unavailable, operators can collect logs using Get-AzureStackLog through the privileged endpoint (PEP). This topic covers both ways of collecting diagnostic logs on demand.
 
-## Using Help and Support
+## Use Help and Support to collect diagnostic logs
 
 To troubleshoot a problem, CSS might request an Azure Stack operator to collect diagnostic logs on demand for a specific time window from the previous week. In that case, CSS will provide the operator with a SAS URL for uploading the collection. 
 Use the following steps to configure on-demand log collection using the SAS URL from CSS:
@@ -40,7 +40,7 @@ Use the following steps to configure on-demand log collection using the SAS URL 
 >[!NOTE]
 >If automatic diagnostic log collection is enabled, **Help and Support** shows when log collection is in progress. If you click **Collect logs now** to collect logs from a specific time while automatic log collection is in progress, on-demand collection begins after automatic log collection is complete. 
 
-## Using PEP
+## Using PEP to collect diagnostic logs
 
 <!--how do you look up the PEP IP address. You look up the azurestackstampinfo.json--->
 
@@ -206,7 +206,7 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
   |BRP                   |HintingServiceV2               |NRP                            |UsageBridge               |         |
   |   |   |   |    |     | 
 
-### Additional considerations
+### Additional considerations on log collection
 
 * The command takes some time to run based on which role(s) the logs are collecting. Contributing factors also include the time duration specified for log collection, and the numbers of nodes in the Azure Stack environment.
 * As log collection runs, check the new folder created in the **OutputSharePath** parameter specified in the command.
