@@ -50,7 +50,7 @@ Azure Stack diagnostics tools help make log collection easy and efficient. The f
 
 ### Trace Collector
 
-The Trace Collector is enabled by default and runs continuously in the background to collect all Event Tracing for Windows (ETW) logs from Azure Stack component services. ETW logs are stored in a common local share with a five day age limit. Once this limit is reached, the oldest files are deleted as new ones are created. The default maximum size allowed for each file  is 200 MB. A size check occurs every 2 minutes, and if the current file is >= 200 MB, it's saved and a new file is generated. There's also an 8 GB limit on the total file size generated per event session.
+The Trace Collector is enabled by default and runs continuously in the background to collect all Event Tracing for Windows (ETW) logs from Azure Stack component services. ETW logs are stored in a common local share with a five-day age limit. Once this limit is reached, the oldest files are deleted as new ones are created. The default maximum size allowed for each file  is 200 MB. A size check happens every 2 minutes, and if the current file is >= 200 MB, it's saved and a new file generates. There's also an 8 GB limit on the total file size generated per event session.
 
 ### Get-AzureStackLog
 
@@ -210,7 +210,7 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
 
 * The command takes some time to run based on which role(s) the logs are collecting. Contributing factors also include the time duration specified for log collection, and the numbers of nodes in the Azure Stack environment.
 * As log collection runs, check the new folder created in the **OutputSharePath** parameter specified in the command.
-* Each role has its logs inside individual zip files. Depending on the size of the collected logs, a role may have its logs split into multiple zip files. For such a role, if you want to have all the log files unzipped into a single folder, use a tool that can unzip in bulk. Select all the zipped files for the role and select **extract here**. This unzips all the log files for that role in a single merged folder.
+* Each role has its logs inside individual zip files. Depending on the size of the collected logs, a role may have its logs split into multiple zip files. For such a role, if you want to have all the log files unzipped into a single folder, use a tool that can unzip in bulk. Select all the zipped files for the role and select **extract here**. All the log files for that role will be unzipped into a single merged folder.
 * A file called **Get-AzureStackLog_Output.log** is also created in the folder that contains the zipped log files. This file is a log of the command output, which can be used for troubleshooting problems during log collection. Sometimes the log file includes `PS>TerminatingError` entries which can be safely ignored, unless expected log files are missing after log collection runs.
 * To investigate a specific failure, logs may be needed from more than one component.
 
