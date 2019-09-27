@@ -3,7 +3,7 @@ title: In this article, you learn how to update Azure Stack offers and plans | M
 description: This article describes how to view and modify existing Azure Stack offers and plans. 
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: bryanla
 manager: femila
 editor: ''
 
@@ -15,7 +15,7 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 06/11/2019
-ms.author: sethm
+ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 06/11/2019
 ---

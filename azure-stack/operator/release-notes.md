@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/27/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
@@ -52,7 +52,7 @@ For help with troubleshooting updates and the update process, see [Troubleshoot 
 ::: moniker range="azs-1908"
 ## 1908 build reference
 
-The Azure Stack 1908 update build number is **1.1908.0.20**.
+The Azure Stack 1908 update build number is **1.1908.4.33**.
 
 ### <a name="update-type-1908"></a>Update type
 
