@@ -28,8 +28,8 @@ ms.lastreviewed: 01/11/2019
 
 By following the instructions in this article, you can deploy the [App Service resource provider](azure-stack-app-service-overview.md) to an Azure Stack environment that is:
 
-- Not connected to the internet
-- Secured by Active Directory Federation Services (AD FS)
+- Not connected to the internet.
+- Secured by Active Directory Federation Services (AD FS).
 
 > [!IMPORTANT]
 > Before you run the resource provider installer, make sure you've completed the steps in [Prerequisites for deploying App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md). You should also read the [release notes](azure-stack-app-service-release-notes-update-seven.md) that accompany the 1.7 release to learn about new functionality, fixes, and any known issues that could affect your deployment.
@@ -136,7 +136,7 @@ To deploy App Service in an offline environment, first create an offline install
     > [!NOTE]
     > The installer tries to test connectivity to the computer running SQL Server  before proceeding. However, if you chose to deploy into an existing virtual network, the installer might not be able to connect to the computer running SQL Server and displays a warning asking whether you want to continue. Verify the SQL Server info and continue if it's correct.
     >
-    > From Azure App Service on Azure Stack 1.3 onwards, the installer checks that the computer running SQL Server has database containment enabled at the SQL Server level. If it doesn't, you're prompted with the following exception:
+    > From Azure App Service on Azure Stack 1.3 onward, the installer checks that the computer running SQL Server has database containment enabled at the SQL Server level. If it doesn't, you're prompted with the following exception:
     > ```sql
     >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
     >    ***********************************************************
@@ -246,7 +246,7 @@ After you deploy and register the App Service resource provider, test it to make
 
 ## Deploy a WordPress, DNN, or Django website (optional)
 
-1. In the Azure Stack tenant portal, select **+**, go to the Azure Marketplace, deploy a Django website, and wait for successful completion. The Django web platform uses a file system-based database. It doesn't require any additional resource providers, such as SQL or MySQL.
+1. In the Azure Stack tenant portal, select **+**, go to Azure Marketplace, deploy a Django website, and wait for successful completion. The Django web platform uses a file system-based database. It doesn't require any additional resource providers, such as SQL or MySQL.
 
 1. If you also deployed a MySQL resource provider, you can deploy a WordPress website from Azure Marketplace. When you're prompted for database parameters, enter the user name as *User1\@Server1*, with the user name and server name of your choice.
 
