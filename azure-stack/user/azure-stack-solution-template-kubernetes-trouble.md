@@ -143,7 +143,7 @@ Follow these steps to collect and download the cluster logs:
 
     | Parameter           | Description                                                                                                      | Example                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -d, --vmd-host      | The public IP or the fully-qualified domain name (FQDN) of the DVM. The VM name starts with `vmd-`. | IP: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
+    | -d, --vmd-host      | The public IP or the fully qualified domain name (FQDN) of the DVM. The VM name starts with `vmd-`. | IP: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
     | -h, --help  | Print command usage. | |
     | -i, --identity-file | Path to the RSA private key file passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | C:\data\id_rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH)
     | -m, --master-host   | The public IP or the fully qualified domain name (FQDN) of a Kubernetes master node. The VM name starts with `k8s-master-`. | IP: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |
