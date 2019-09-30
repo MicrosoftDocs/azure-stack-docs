@@ -109,9 +109,12 @@ Other deployment failures are typically due to problems connecting to resources 
 
 To verify connectivity to resources on the Internet, you can perform the following steps:
 
-1. Open Powershell
-2. Enter-PSSession to the WAS01 or any of the ERCs VMs
-3. Run the commandlet: Test-NetConnection login.windows.net -port 443
+1. Open PowerShell.
+2. Enter-PSSession to the WAS01 or any of the ERCs VMs.
+3. Run the following cmdlet: 
+   ```powershell
+   Test-NetConnection login.windows.net -port 443
+   ```
 
 If this command fails, verify the TOR switch and any other network devices are configured to [allow network traffic](azure-stack-network.md).
 
@@ -133,4 +136,9 @@ You can read more about configuring the retention threshold and on-demand reclam
 ## Troubleshoot storage
 ### Storage reclamation
 It may take up to 14 hours for reclaimed capacity to show up in the portal. Space reclamation depends on various factors including usage percentage of internal container files in block blob store. Therefore, depending on how much data is deleted, there is no guarantee on the amount of space that could be reclaimed when garbage collector runs.
+
+## Troubleshooting App Service
+### Create-AADIdentityApp.ps1 script fails
+
+If the Create-AADIdentityApp.ps1 script that is required for App Service fails, be sure to include the required -AzureStackAdminCredential parameter when running the script. For more information, see [Prerequisites for deploying App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-application).
 
