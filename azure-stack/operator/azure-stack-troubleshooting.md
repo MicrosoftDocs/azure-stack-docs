@@ -13,16 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 09/30/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 09/26/2019
+ms.lastreviewed: 09/30/2019
 
 ---
 # Microsoft Azure Stack troubleshooting
 
 This document provides troubleshooting information for Azure Stack integrated environments. For help with the Azure Stack Development Kit, see [ASDK Troubleshooting](../asdk/asdk-troubleshooting.md) or get help from experts on the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
-
 
 ## Frequently asked questions
 
@@ -87,6 +86,15 @@ Choose the type of shared services account that you use for Azure Stack. The typ
 ### General deployment failure
 If you experience a failure during installation, you can restart the deployment from the failed step by using the -rerun option of the deployment script.  
 
+### Template validation error parameter osProfile is not allowed
+
+If you get an error message during template validation that the parameter 'osProfile' is not allowed, make sure you are using the correct versions of the APIs for these components:
+
+- [Compute](https://docs.microsoft.com/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftcompute)
+- [Network](https://docs.microsoft.com/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftnetwork)
+
+To copy a VHD from Azure to Azure Stack, use [AzCopy 7.3.0](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#download-and-install-azcopy). Work with your vendor to resolve issues with the image itself. For more information about the WALinuxAgent requirements for Azure Stack, see [Azure LinuX Agent](azure-stack-linux.md#azure-linux-agent).
+
 ### Deployment fails due to lack of external access
 When deployment fails at stages where external access is required, an exception like the following example will be returned:
 
@@ -95,7 +103,7 @@ An error occurred while trying to test identity provider endpoints: System.Net.W
    at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.GetResponse(WebRequest request)
    at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.ProcessRecord()at, <No file>: line 48 - 8/12/2018 2:40:08 AM
 ```
-If this error occurs, check to be sure all minimum networking requirements have been met by reviewing the [deployment network traffic documentation](deployment-networking.md). A network checker tool is also available for partners as part of the Partner Toolkit.
+If this error occurs, make sure all minimum networking requirements have been met by reviewing the [deployment network traffic documentation](deployment-networking.md). A network checker tool is also available for partners as part of the Partner Toolkit.
 
 Other deployment failures are typically due to problems connecting to resources on the Internet.
 
