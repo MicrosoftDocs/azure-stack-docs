@@ -53,7 +53,7 @@ As stated above, the validation tool is run via the PEP. Each test returns a **P
 
 ## Tests available
 
-The validation tool lets you run a series of system-level tests and basic cloud scenarios that provide you insight to the current state and help you fix issues in your system.
+The validation tool lets you run a series of system-level tests and basic cloud scenarios that provide you with insight to the current state, allowing you to fix issues in your system.
 
 ### Cloud infrastructure tests
 
@@ -90,7 +90,7 @@ These low impact tests work on an infrastructure level and provide you with info
 
 ### Cloud scenario tests
 
-In addition to the infrastructure tests above, you also have the ability to run cloud scenario tests to check functionality across infrastructure components. Cloud admin credentials are required to run these tests as they involve resource deployment.
+In addition to the infrastructure tests above, you can also run cloud scenario tests to check functionality across infrastructure components. Cloud admin credentials are required to run these tests because they involve resource deployment.
 
 > [!NOTE]
 > Currently you can't run cloud scenario tests using Active Directory Federated Services (AD FS) credentials.
