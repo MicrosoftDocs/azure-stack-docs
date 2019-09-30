@@ -36,7 +36,7 @@ The examples in this article use single VMs of type Windows or Linux.
 
 ## Create a Marketplace item
 
-This section describes how to create an Azure Stack Marketplace item package (azpkg).
+Using the VM example, before creating the VM marketplace item, upload the custom VM image to the Azure Stack portal, following the instructions in [Add a VM image to Azure Stack](azure-stack-add-vm-image.md#add-a-custom-vm-image-to-the-marketplace-using-the-portal). Then, follow the instructions in this article to package the image (create an .azpkg) and upload it to the Azure Stack Marketplace.
 
 1. Download the [Azure Gallery Packager tool](https://www.aka.ms/azurestackmarketplaceitem) and the sample Azure Stack gallery package. Extract the .zip file and rename the folder **SimpleVMTemplate** with the name of the item that you will show on your Azure Stack portal.
 
