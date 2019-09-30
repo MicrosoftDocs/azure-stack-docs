@@ -23,7 +23,6 @@ ms.lastreviewed: 09/30/2019
 
 This document provides troubleshooting information for Azure Stack integrated environments. For help with the Azure Stack Development Kit, see [ASDK Troubleshooting](../asdk/asdk-troubleshooting.md) or get help from experts on the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
 
-
 ## Frequently asked questions
 
 These sections include links to docs that cover common questions sent to Microsoft Customer Support Services (CSS).
