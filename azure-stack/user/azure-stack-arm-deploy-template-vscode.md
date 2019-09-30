@@ -11,10 +11,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2019
+ms.date: 09/30/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 09/27/2019
+ms.lastreviewed: 09/30/2019
 
 ---
 
@@ -28,10 +28,10 @@ In this article, you will deploy a Windows virtual machine.
 
 ### Azure Stack Resource Manager
 
-To understand the concepts associated with deploying and managing your Azure solutions in Azure Stack, see Develop templates for Azure Stack with Azure Resource Manager.
+To understand the concepts associated with deploying and managing your Azure solutions in Azure Stack, see [Use Azure Resource Manager templates in Azure Stack](azure-stack-arm-templates.md).
 
 ### API Profiles
-To understand the concepts associated with coordinating resource providers on Azure Stack see API profiles and deployment schemes.
+To understand the concepts associated with coordinating resource providers on Azure Stack see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md).
 
 ### The deployment schema
 
@@ -79,8 +79,8 @@ The template in this article called `101-vm-windows-create`. The template define
 
     ![Azure Stack Resource Manager Deployment Schema](./media/azure-stack-arm-deploy-template-vscode/azure-stack-arm-vscode-schema.png)
 
-1. When you ready, you can deploy your template using PowerShell. Follow the instructions at [Deploy with PowerShell](azure-stack-deploy-template-powershell.md). Specify the location of the template in the script.
-1. After you have deployed you are the Windows VM, navigate to the Azure Stack portal, and find the resource group. If you want to clear the result of this exercise from your Azure Stack, delete the resource group.
+10. When you ready, you can deploy your template using PowerShell. Follow the instructions at [Deploy with PowerShell](azure-stack-deploy-template-powershell.md). Specify the location of the template in the script.
+11. After you have deployed your Windows VM, navigate to the Azure Stack portal, and find the resource group. If you want to clear the result of this exercise from your Azure Stack, delete the resource group.
 
 ## Next steps
 
