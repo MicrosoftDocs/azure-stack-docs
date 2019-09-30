@@ -77,7 +77,7 @@ The template in this article called `101-vm-windows-create`. The template define
     ```
 9. Place your cursor between the empty quotes, and press CTRL+SPACEBAR. You can choose from the valid API profiles in the deployment schema for Azure Stack. You can perform this operation with each of the resource providers in the template.
 
-    ![Azure Stack Resource Manager Deployment Schema](./media/azure-stack-arm-deploy-template-vscode/azure-stack-arm-vscode-schema.png)
+    ![Azure Stack Resource Manager Deployment Schema](./media/azure-stack-resource-manager-deploy-template-vscode/azure-stack-resource-manager-vscode-schema.png)
 
 10. When you ready, you can deploy your template using PowerShell. Follow the instructions at [Deploy with PowerShell](azure-stack-deploy-template-powershell.md). Specify the location of the template in the script.
 11. After you have deployed your Windows VM, navigate to the Azure Stack portal, and find the resource group. If you want to clear the result of this exercise from your Azure Stack, delete the resource group.

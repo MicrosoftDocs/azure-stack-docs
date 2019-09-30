@@ -84,7 +84,7 @@
           - name: Deploy with CLI
             href: azure-stack-deploy-template-command-line.md
           - name: Deploy with Visual Studio Code
-            href: azure-stack-arm-deploy-template-vscode.md
+            href: azure-stack-resource-manager-deploy-template-vscode.md
           - name: Deploy with Visual Studio
             href: azure-stack-deploy-template-visual-studio.md
       - name: Use API version profiles
