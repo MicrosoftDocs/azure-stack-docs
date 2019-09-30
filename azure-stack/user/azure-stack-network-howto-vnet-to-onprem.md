@@ -11,15 +11,13 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 09/30/2019
 
-# keywords:  X
-# Intent: As an Azure Stack Operator, I want < what? > so that < why? >
+# keywords:  VPN gateway Azure Stack
+# Intent: As an Azure Stack user, I want create a VPN gateway and connection between Azure Stack and my network so that I can share resources between the two networks.
 ---
 
-# Setup VPN for Azure Stack using Fortigate NVA
+# Setup VPN gateway for Azure Stack using Fortigate NVA
 
-This article describes how to create a VPN connection to your Azure Stack. A VPN gateway is a type of virtual network gateway that sends encrypted traffic between your virtual network in Azure Stack and a remote VPN gateway.
-
-The procedure below deploys one VNET with a Fortigate NVA within a Resource Group. It also details the changes required to configure an IPSec VPN on the Fortigate NVA. 
+This article describes how to create a VPN connection to your Azure Stack. A VPN gateway is a type of virtual network gateway that sends encrypted traffic between your virtual network in Azure Stack and a remote VPN gateway. The procedure below deploys one VNET with a Fortigate NVA within a resource group. It also details the changes required to configure an IPSec VPN on the Fortigate NVA.
 
 ## Prerequisites
 

@@ -11,17 +11,15 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 09/30/2019
 
-# keywords:  X
-# Intent: As an Azure Stack user, I want < what? > so that < why? >
+# keywords: VNET to VNET connection Azure Stack
+# Intent: As an Azure Stack user, I want connect two VNETs so that they can share resources.
 ---
 
 # How to establish a VNET to VNET connection with Fortinet Fortigate NVA
 
 In this article, you will connect a VNET in one Azure Stack to a VNET in another Azure Stack using Fortinet Fortigate NVA.
 
-This article addresses the current Azure Stack limitation, which allows tenants to only set up one VPN connection across two environments. Users will learn how to set up a custom gateway on a Linux virtual machine that will allow multiple VPN connections across different Azure Stack.
-
-The procedure in this article deploys two VNETs with a Fortigate NVA in each VNET – one deployment per Azure Stack environment. It also details the changes required to configure an IPSec VPN between the two VNETs. The steps in this section should be repeated twice – once for each VNET/Azure Stack environment. 
+This article addresses the current Azure Stack limitation, which allows tenants to only set up one VPN connection across two environments. Users will learn how to set up a custom gateway on a Linux virtual machine that will allow multiple VPN connections across different Azure Stack. The procedure in this article deploys two VNETs with a Fortigate NVA in each VNET: one deployment per Azure Stack environment. It also details the changes required to configure an IPSec VPN between the two VNETs. The steps in this section should be repeated twice – once for each VNET/Azure Stack environment. 
 
 ## Prerequisites
 

@@ -11,15 +11,13 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 09/30/2019
 
-# keywords:  X
+# keywords:  VNET Peering Azure Stack
 # Intent: As an Azure Stack Operator, I want < what? > so that < why? >
 ---
 
 # How to connect two VNETs through peering
 
-This article describes how to create a connection between two virtual networks in the same environment. When you configure the connections, you learn how VPN gateways in Azure Stack work.
-
-Connect two VNETs within the same Azure Stack environment using Fortinet Fortigate. This procedure deploys two VNETs with a Fortigate NVA in each VNET each within a separate resource group. It also details the changes required to configure an IPSec VPN between the two VNETs. The steps in this section should be repeated twice: once for each VNET deployment. 
+This article describes how to create a connection between two virtual networks in the same environment. When you configure the connections, you learn how VPN gateways in Azure Stack work. Connect two VNETs within the same Azure Stack environment using Fortinet Fortigate. This procedure deploys two VNETs with a Fortigate NVA in each VNET each within a separate resource group. It also details the changes required to configure an IPSec VPN between the two VNETs. The steps in this section should be repeated twice: once for each VNET deployment. 
 
 ## Prerequisites
 
