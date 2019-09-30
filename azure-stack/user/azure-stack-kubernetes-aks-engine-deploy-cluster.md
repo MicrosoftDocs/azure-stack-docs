@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 09/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/25/2019
+ms.lastreviewed: 09/27/2019
 
 ---
 
@@ -57,9 +57,23 @@ This section looks at creating an API model for your cluster.
     aks-engine get-versions
     ```
 
-4.  Find `portalURL` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`.
+4.  Find `customCloudProfile` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`. 
 
-5.  In the array `masterProfile`, set the following fields:
+5. Add `"identitySystem":"adfs"` if you're using AD FS. For example,
+
+    ```JSON  
+        "customCloudProfile": {
+            "portalURL": "https://portal.local.azurestack.external",
+            "identitySystem": "adfs"
+        },
+    ```
+
+    > [!Note]  
+    > If you're using Azure AD for your identity system, you don't need add the **identitySystem** field.
+
+6. Find `portalURL` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`.
+
+7.  In the array `masterProfile`, set the following fields:
 
     | Field | Description |
     | --- | --- |
@@ -68,7 +82,7 @@ This section looks at creating an API model for your cluster.
     | vmSize |  Enter [a size supported by Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example `Standard_D2_v2`. |
     | distro | Enter `aks-ubuntu-16.04`. |
 
-6.  In the array `agentPoolProfiles` update:
+8.  In the array `agentPoolProfiles` update:
 
     | Field | Description |
     | --- | --- |
@@ -76,7 +90,7 @@ This section looks at creating an API model for your cluster.
     | vmSize | Enter [a size supported by Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example `Standard_D2_v2`. |
     | distro | Enter `aks-ubuntu-16.04`. |
 
-7.  In the array `linuxProfile` update:
+9.  In the array `linuxProfile` update:
 
     | Field | Description |
     | --- | --- |
