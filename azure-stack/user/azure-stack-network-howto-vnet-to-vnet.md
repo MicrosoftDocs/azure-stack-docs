@@ -37,9 +37,9 @@ Connect two VNETs within the same Azure Stack environment using Fortinet Fortiga
 
 The following table summarizes the parameters that are used in these deployments for reference:
 
-### Deployment one
+### Deployment one: Forti1
 
-| FortiGate Instance Name | forti1 |
+| FortiGate Instance Name | Forti1 |
 |-----------------------------------|---------------------------|
 | BYOL License/Version | 6.0.3 |
 | FortiGate administrative username | fortiadmin |
@@ -54,7 +54,7 @@ The following table summarizes the parameters that are used in these deployments
 | Public IP address name | forti1-publicip1 |
 | Public IP address type | Static |
 
-### Deployment two
+### Deployment two: Forti2
 
 | FortiGate Instance Name | Forti2 |
 |-----------------------------------|---------------------------|
@@ -71,73 +71,75 @@ The following table summarizes the parameters that are used in these deployments
 | Public IP address name | Forti2-publicip1 |
 | Public IP address type | Static |
 
-> [!Note] * Choose a different set of address spaces and subnet prefixes if the above overlap in any way with the on-premises network environment including the VIP Pool of either Azure Stack. Also ensure that the address ranges do not overlap with one another.
+> [!Note]
+> * Choose a different set of address spaces and subnet prefixes if the above overlap in any way with the on-premises network environment including the VIP Pool of either Azure Stack. Also ensure that the address ranges do not overlap with one another.
 
-## Deploy the FortiGate NGFW Marketplace items
+## Deploy the FortiGate NGFW
 
 1.  Open the Azure Stack user portal.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image5.png)
 
-1.  Select **Create a resource** and search for `fortigate`.
+2.  Select **Create a resource** and search for `fortigate`.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image6.png)
 
-2.  Select the **FortiGate NGFW** and select **Create**.
+3.  Select the **FortiGate NGFW** and select **Create**.
 
-3.  Complete the **Basics** using the parameters from the [Deployment parameters](#deployment-parameters) table.
+4.  Complete the **Basics** using the parameters from the [Deployment parameters](#deployment-parameters) table.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image7.png)
 
-1.  Select **OK**.
+5.  Select **OK**.
 
-2.  Provide the Virtual network, Subnets, and VM Size details using the [Deployment parameters](#deployment-parameters) table.
+6.  Provide the Virtual network, Subnets, and VM Size details using the [Deployment parameters](#deployment-parameters) table.
 
-       > [!Warning] If the on-premises network overlaps with the IP range `172.16.0.0/16`, you must select and configure a different network range and subnets. If you wish to use different names and ranges than the ones in the [Deployment parameters](#deployment-parameters) table, use parameters that will **not** conflict with the on-premises network. Take care when setting the VNET IP range and subnet ranges within the VNET. You do not want the range to overlap with the IP ranges that exist in your on-premises network.
+    > [!Warning] 
+    > If the on-premises network overlaps with the IP range `172.16.0.0/16`, you must select and configure a different network range and subnets. If you wish to use different names and ranges than the ones in the [Deployment parameters](#deployment-parameters) table, use parameters that will **not** conflict with the on-premises network. Take care when setting the VNET IP range and subnet ranges within the VNET. You do not want the range to overlap with the IP ranges that exist in your on-premises network.
 
-3.  Select **OK**.
+7.  Select **OK**.
 
-4.  Configure the Public IP for the Fortgate NVA:
+8.  Configure the Public IP for the Fortgate NVA:
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image8.png)
 
-5.  Select **OK**. And then select **OK**.
+9.  Select **OK**. And then select **OK**.
 
-6.  Select **Create**.
+10.  Select **Create**.
 
     The deployment will take about 10 minutes.
 
-## Configure appropriate Routes (UDRs) for each VNET
+## Configure routes (UDRs) for each VNET
 
-Perform these steps for both deployments (forti1-rg1 and forti2-rg1)
+Perform these steps for both deployments, forti1-rg1 and forti2-rg1.
 
-1.   Open the Azure Stack user portal.
+1. Open the Azure Stack user portal.
 
-2.    Select Resource groups. Type `forti1-rg1` in the filter and double-click the forti1-rg1 resource group.
+2. Select Resource groups. Type `forti1-rg1` in the filter and double-click the forti1-rg1 resource group.
 
-    ![](./media/azure-stack-network-howto-vnet-to-onprem/image9.png)
+    ![resource group](./media/azure-stack-network-howto-vnet-to-onprem/image9.png)
 
-2.  Select the 'forti1-forti1-InsideSubnet-routes-xxxx' resource.
+2. Select the **forti1-forti1-InsideSubnet-routes-xxxx** resource.
 
-3.  Select **Routes** under **Settings**.
+3. Select **Routes** under **Settings**.
 
-    ![](./media/azure-stack-network-howto-vnet-to-onprem/image10.png)
+    ![Routes](./media/azure-stack-network-howto-vnet-to-onprem/image10.png)
 
-4.  Delete the **to-Internet** Route.
+4. Delete the **to-Internet** Route.
 
-    ![](./media/azure-stack-network-howto-vnet-to-onprem/image11.png)
+    ![to-Internet](./media/azure-stack-network-howto-vnet-to-onprem/image11.png)
 
-5.  Select *Yes*.
+5. Select *Yes*.
 
-6.  Select **Add** to add a new route.
+6. Select **Add** to add a new route.
 
-7.  Name the route `to-onprem`.
+7. Name the route `to-onprem`.
 
-8.  Enter the IP network range that defines the network range of the on-premises network to which the VPN will connect.
+8. Enter the IP network range that defines the network range of the on-premises network to which the VPN will connect.
 
-9.  Select **Virtual appliance** for **Next hop type*' and `172.16.1.4`. Use your IP range if you are using a different IP range.
+9. Select **Virtual appliance** for **Next hop type*' and `172.16.1.4`. Use your IP range if you are using a different IP range.
 
-    ![](./media/azure-stack-network-howto-vnet-to-onprem/image12.png)
+    ![Next hop type](./media/azure-stack-network-howto-vnet-to-onprem/image12.png)
 
 10. Select **Save**.
 

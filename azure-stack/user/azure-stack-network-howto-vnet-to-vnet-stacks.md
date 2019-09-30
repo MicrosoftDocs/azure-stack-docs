@@ -27,7 +27,8 @@ The procedure in this article deploys two VNETs with a Fortigate NVA in each VNE
 
 -  Access to an Azure Stack integrated systems with available capacity to deploy the required compute, network, and resource requirements needed for this solution. 
 
-    > [!Note] These instructions will **not** work with an Azure Stack Development Kit (ASDK) because of the network limitions in the ASDK. For more information, see [ASDK requirements and considerations](https://docs.microsoft.com/azure-stack/asdk/asdk-deploy-considerations).
+    > [!Note]  
+    > These instructions will **not** work with an Azure Stack Development Kit (ASDK) because of the network limitions in the ASDK. For more information, see [ASDK requirements and considerations](https://docs.microsoft.com/azure-stack/asdk/asdk-deploy-considerations).
 
 -  A network virtual appliance (NVA) solution downloaded and published to the Azure Stack Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the [Fortinet Fortigate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/fortinet.fortinet-fortigate-singlevm).
 
@@ -37,14 +38,13 @@ The procedure in this article deploys two VNETs with a Fortigate NVA in each VNE
 
     For more information on how to deploy the FortiGate solution in an active-passive (HA) set up, see the details in the Forinet Document Library article [HA for FortiGate-VM on Azure](https://docs2.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/983245/ha-for-fortigate-vm-on-azure).
 
-
 ## Deployment parameters
 
 The following table summarizes the parameters that are used in these deployments for reference:
 
-### Deployment one: forti1 route table
+### Deployment one: Forti1
 
-| FortiGate Instance Name | forti1 |
+| FortiGate Instance Name | Forti1 |
 |-----------------------------------|---------------------------|
 | BYOL License/Version | 6.0.3 |
 | FortiGate administrative username | fortiadmin |
@@ -59,7 +59,7 @@ The following table summarizes the parameters that are used in these deployments
 | Public IP address name | forti1-publicip1 |
 | Public IP address type | Static |
 
-### Deployment two: forti2 route table
+### Deployment two: Forti2
 
 | FortiGate Instance Name | Forti2 |
 |-----------------------------------|---------------------------|
@@ -76,75 +76,78 @@ The following table summarizes the parameters that are used in these deployments
 | Public IP address name | Forti2-publicip1 |
 | Public IP address type | Static |
 
-> [!Note] * Choose a different set of address spaces and subnet prefixes if the above overlap in any way with the on-premises network environment including the VIP Pool of either Azure Stack. Also ensure that the address ranges do not overlap with one another.**
+> [!Note]
+> * Choose a different set of address spaces and subnet prefixes if the above overlap in any way with the on-premises network environment including the VIP Pool of either Azure Stack. Also ensure that the address ranges do not overlap with one another.**
 
 ## Deploy the FortiGate NGFW Marketplace Items
 
 Repeat these steps for both Azure Stack environments. 
 
-1.  Open the Azure Stack user portal. Be sure to use credentials that have at least Contributor rights to a subscription.
+1. Open the Azure Stack user portal. Be sure to use credentials that have at least Contributor rights to a subscription.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image5.png)
 
-1.  Select **Create a resource** and search for `fortigate`.
+1. Select **Create a resource** and search for `fortigate`.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image6.png)
 
-2.  Select the **FortiGate NGFW** and select the **Create.
+2. Select the **FortiGate NGFW** and select the **Create.
 
-3.  Complete **Basics** using the parameters from the [Deployment parameters](#deployment-parameters) table.
+3. Complete **Basics** using the parameters from the [Deployment parameters](#deployment-parameters) table.
 
 Your form should look like the following:
 
 ![](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image7.png)
 
-1.  Select OK.
+1. Select *OK*.
 
-2.  Provide the Virtual network, Subnets, and VM Size details for Step 2 of the form using the parameters in the table above. **If you wish to use different names and ranges as stated above, that is OK, but it is recommended you use parameters that will NOT conflict with the other VNET and Fortigate resources in the other Azure Stack environment.** This is especially true when setting the VNET IP Range and Subnet ranges within the VNET. That is, you want to take care that they will not overlap with the IP ranges that you select (or will select) for the other VNET you will create.
+2. Provide the Virtual network, Subnets, and VM Size details from the [Deployment parameters](#deployment-parameters).
 
-3.  Select OK to move to Step 3.
+    If you wish to use different names and ranges, take care not to  use parameters that will conflict with the other VNET and Fortigate resources in the other Azure Stack environment. This is especially true when setting the VNET IP range and subnet ranges within the VNET. Check that they don't overlap with the IP ranges for the other VNET you create.
 
-4.  Configure the Public IP that will be used for the Fortigate NVA:
+3. Select *OK*.
+
+4. Configure the Public IP that will be used for the Fortigate NVA:
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image8.png)
 
-5.  Select OK and then Select OK again on Step 4.
+5. Select *OK* and then Select *OK*.
 
-6.  On Step 5 select Create.
+6. Select **Create**.
 
-The deployment will take about 10 minutes. You can now repeat the above steps to create the other Fortigate NVA and VNET deployment in the other Azure Stack environment. **Once both deployments succeed, proceed to the next section.**
+The deployment will take about 10 minutes. You can now repeat the above steps to create the other Fortigate NVA and VNET deployment in the other Azure Stack environment.
 
 ## Configure appropriate Routes (UDRs) for each VNET
 
-Perform these steps for both deployments (forti1-rg1 and forti2-rg1)
+Perform these steps for both deployments, forti1-rg1 and forti2-rg1.
 
-1.  Navigate to the forti1-rg1 Resource Group in the Azure Stack portal.
+1. Navigate to the forti1-rg1 Resource Group in the Azure Stack portal.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image9.png)
 
-2.  Select on the 'forti1-forti1-InsideSubnet-routes-xxxx' resource.
+2. Select on the 'forti1-forti1-InsideSubnet-routes-xxxx' resource.
 
-3.  Select **Routes** under **Settings**.
+3. Select **Routes** under **Settings**.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image10.png)
 
-4.  Delete the **to-Internet** Route.
+4. Delete the **to-Internet** Route.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image11.png)
 
-5.  Select **Yes**.
+5. Select **Yes**.
 
-6.  Select *Add*.
+6. Select *Add*.
 
-7.  Name the Route `to-forti1` or `to-forti2`. Use your IP range if you are using a different IP range.
+7. Name the Route `to-forti1` or `to-forti2`. Use your IP range if you are using a different IP range.
 
-8.  Enter:
+8. Enter:
     - forti1: `172.17.0.0/16`  
     - forti2: `172.16.0.0/16`  
 
     Use your IP range if you are using a different IP range.
 
-9.  Select **Virtual appliance** for the **Next hop type**.
+9. Select **Virtual appliance** for the **Next hop type**.
     - forti1: `172.16.1.4`  
     - forti2: `172.17.0.4`  
 

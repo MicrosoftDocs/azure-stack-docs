@@ -25,7 +25,8 @@ The procedure below deploys one VNET with a Fortigate NVA within a Resource Grou
 
 -  Access to an Azure Stack integrated systems with available capacity to deploy the required compute, network, and resource requirements needed for this solution. 
 
-    > [!Note] These instructions will **not** work with an Azure Stack Development Kit (ASDK) because of the network limitions in the ASDK. For more information, see [ASDK requirements and considerations](https://docs.microsoft.com/azure-stack/asdk/asdk-deploy-considerations).
+    > [!Note] 
+    > These instructions will **not** work with an Azure Stack Development Kit (ASDK) because of the network limitions in the ASDK. For more information, see [ASDK requirements and considerations](https://docs.microsoft.com/azure-stack/asdk/asdk-deploy-considerations).
 
 -  Access to a VPN device in the on-premises network that hosts the Azure Stack integrated system. The device needs to create an IPSec tunnel, which meets the parameters described in the [Deployment parameters](#deployment-parameters).
 
@@ -59,69 +60,71 @@ The following table summarizes the parameters that are used in these deployments
 | Public IP address name | forti1-publicip1 |
 | Public IP address type | Static |
 
-> [!Note] * Choose a different address space and subnet prefixes if `172.16.0.0/16` overlaps with the on-premises network or the Azure Stack VIP pool.
+> [!Note]
+> * Choose a different address space and subnet prefixes if `172.16.0.0/16` overlaps with the on-premises network or the Azure Stack VIP pool.
 
 ## Deploy the FortiGate NGFW Marketplace items
 
-1.  Open the Azure Stack user portal.
+1. Open the Azure Stack user portal.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image5.png)
 
-1.  Select **Create a resource** and search for `fortigate`.
+1. Select **Create a resource** and search for `fortigate`.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image6.png)
 
-2.  Select the **FortiGate NGFW** and select **Create**.
+2. Select the **FortiGate NGFW** and select **Create**.
 
-3.  Complete **Basics** using the parameters from the [Deployment parameters](#deployment-parameters) table.
+3. Complete **Basics** using the parameters from the [Deployment parameters](#deployment-parameters) table.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image7.png)
 
-1.  Select **OK**.
+1. Select **OK**.
 
-2.  Provide the Virtual network, Subnets, and VM Size details using the [Deployment parameters](#deployment-parameters) table.
+2. Provide the Virtual network, Subnets, and VM Size details using the [Deployment parameters](#deployment-parameters) table.
 
-       > [!Warning] If the on-premises network overlaps with the IP range `172.16.0.0/16`, you must select and configure a different network range and subnets. If you wish to use different names and ranges than the ones in the [Deployment parameters](#deployment-parameters) table, use parameters that will **not** conflict with the on-premises network. Take care when setting the VNET IP range and subnet ranges within the VNET. You do not want the range to overlap with the IP ranges that exist in your on-premises network.
+    > [!Warning] 
+    > If the on-premises network overlaps with the IP range `172.16.0.0/16`, you must select and configure a different network range and subnets. If you wish to use different names and ranges than the ones in the [Deployment parameters](#deployment-parameters) table, use parameters that will **not** conflict with the on-premises network. Take care when setting the VNET IP range and subnet ranges within the VNET. You do not want the range to overlap with the IP ranges that exist in your on-premises network.
 
-3.  Select **OK**.
+3. Select **OK**.
 
-4.  Configure the Public IP for the Fortgate NVA:
+4. Configure the Public IP for the Fortgate NVA:
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image8.png)
 
-5.  Select **OK**. And then select **OK**.
+5. Select **OK**. And then select **OK**.
 
-6.  Select **Create**.
+6. Select **Create**.
 
     The deployment will take about 10 minutes.
 
 ## Configure appropriate Routes (UDR) for the VNET
 
-1.   Open the Azure Stack user portal.
+1. Open the Azure Stack user portal.
 
-2.    Select Resource groups. Type `forti1-rg1` in the filter and double-click the forti1-rg1 resource group.
+2. Select Resource groups. Type `forti1-rg1` in the filter and double-click the forti1-rg1 resource group.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image9.png)
 
-2.  Select the 'forti1-forti1-InsideSubnet-routes-xxxx' resource.
+2. Select the 'forti1-forti1-InsideSubnet-routes-xxxx' resource.
 
-3.  Select **Routes** under **Settings**.
+3. Select **Routes** under **Settings**.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image10.png)
 
-4.  Delete the **to-Internet** Route.
+4. Delete the **to-Internet** Route.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image11.png)
 
-5.  Select *Yes*.
+5. Select *Yes*.
 
-6.  Select **Add** to add a new route.
+6. Select **Add** to add a new route.
 
-7.  Name the route `to-onprem`.
+7. Name the route `to-onprem`.
 
-8.  Enter the IP network range that defines the network range of the on-premises network to which the VPN will connect.
+8. Enter the IP network range that defines the network range of the on-premises network to which the VPN will connect.
 
-9.  Select **Virtual appliance** for **Next hop type*' and `172.16.1.4`. Use your IP range if you are using a different IP range.
+9. Select **Virtual appliance** for **Next hop type*' and `172.16.1.4`. Use your IP range if you are using a different IP range.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image12.png)
 
@@ -133,31 +136,31 @@ To activate each Fortigate NVA will require a valid license file from Fortinet. 
 
 Once you have activated the NVAs, create an IPSec VPN tunnel on the NVA.
 
-1.  Open the Azure Stack user portal.
+1. Open the Azure Stack user portal.
 
-2.  Select Resource groups. Type `forti1` in the filter and double-click the forti1 resource group.
+2. Select Resource groups. Type `forti1` in the filter and double-click the forti1 resource group.
 
 3. Double-click the **forti1** virtual machine in the list of resource types in the resource group blade.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image13.png)
 
-4.  Copy the assigned IP address, open a browser and paste the IP address into the address bar. The site may trigger a warning that the security certificate is not trusted. Continue anyway.
+4. Copy the assigned IP address, open a browser and paste the IP address into the address bar. The site may trigger a warning that the security certificate is not trusted. Continue anyway.
 
-5.  Enter the fortigate administrative user name and password you provided during the deployment.
+5. Enter the fortigate administrative user name and password you provided during the deployment.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image14.png)
 
-6.  Select **System** > **Firmware**.
+6. Select **System** > **Firmware**.
 
-7.  Select the box showing the latest firmware, for example, `FortiOS v6.2.0 build0866`.
+7. Select the box showing the latest firmware, for example, `FortiOS v6.2.0 build0866`.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image15.png)
 
-8.  Select **Backup config and upgrade** and Continue when prompted.
+8. Select **Backup config and upgrade** and Continue when prompted.
 
-9.  The NVA updates its firmware to the latest build and reboots. The process takes about five minutes. Log back into the Fortigate web console.
+9. The NVA updates its firmware to the latest build and reboots. The process takes about five minutes. Log back into the Fortigate web console.
 
-10.  Click **VPN** > **IPSec Wizard**.
+10. Click **VPN** > **IPSec Wizard**.
 
 11. Enter a name for the VPN, for example, `conn1` in the **VPN Creation Wizard**.
 
@@ -209,7 +212,7 @@ The on-premises VPN device must be configured to create the IPSec VPN tunnel. Th
 
 | Parameter | Value |
 |------------------------------------|---------------------------------------------------------------------------------------------|
-| Remote Gateway IP | Public IP address assigned to forti1 – see Step 1 in the ‘Active Fortigate…’ section above. |
+| Remote Gateway IP | Public IP address assigned to forti1 – see [Activate the Fortigate](#activate-the-fortigate-nva-and-configure-an-ip-sec-vpn-connection-on-each-nva). |
 | Remote IP Network | 172.16.0.0/16 (if using the range above for the VNET). |
 | Auth. Method = Preshared key (PSK) | From Step 16. |
 | IKE Version | 1 |
@@ -223,11 +226,11 @@ Once the on-premises VPN device is appropriately configured, the VPN tunnel can 
 
 To do this from the Fortigate NVA, do the following:
 
-1.  On the forti1 Fortigate web console, navigate to Monitor > IPsec Monitor.
+1. On the forti1 Fortigate web console, navigate to Monitor > IPsec Monitor.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image20.png)
 
-2.  Highlight **conn1** and select the **Bring Up** > **All Phase 2 Selectors**.
+2. Highlight **conn1** and select the **Bring Up** > **All Phase 2 Selectors**.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image21.png)
 
