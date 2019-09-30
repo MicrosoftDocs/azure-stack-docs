@@ -163,10 +163,8 @@ This section describes how to create an Azure Stack Marketplace item package (az
 
 10. Choose the icons and text for your Marketplace item. Add icons to the **Icons** folder, and add text to the **resources** file in the **Strings** folder. Use the **small**, **medium**, **large**, and **wide** naming convention for icons. See the [Marketplace item UI reference](#reference-marketplace-item-ui) for a detailed description of these sizes.
 
-   > [!NOTE]
-   > All four icon sizes (small, medium, large, wide) are required for building the Marketplace item correctly.
-   >
-   >
+    > [!NOTE]
+    > All four icon sizes (small, medium, large, wide) are required for building the Marketplace item correctly.
 
 11. For any further edits to Manifest.json, refer to [Reference: Marketplace item manifest.json](#reference-marketplace-item-manifestjson).
 
