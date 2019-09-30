@@ -21,7 +21,7 @@ ms.lastreviewed: 06/27/2019
 
 # Usage connectivity errors
 
-Azure Stack usage data is sent to Azure by the [*Azure Bridge* component](azure-stack-usage-reporting.md) in Azure Stack. If the bridge within Azure Stack is unable to connect to the Azure usage service, you will see the following error:
+Azure Stack usage data is sent to Azure by the [*Azure Bridge* component](azure-stack-usage-reporting.md) in Azure Stack. If the bridge within Azure Stack is unable to connect to the Azure usage service, you'll see the following error:
 
 ![usage bridge error](media/azure-stack-usage-issues/usageerror2.png)
 
@@ -35,7 +35,7 @@ To mitigate the issue, try the following steps:
 
 - Verify that network configuration allows the Azure Bridge to connect to the remote service.
 
-- Go to the [**Region Management** > **Properties**](azure-stack-registration.md#verify-azure-stack-registration) blade to find the Azure subscription ID used for the registration, resource group, and name of the registration resource. Verify that the registration resource exists under the correct Azure subscription ID in Azure portal. To do so, go to **All resources** created under the Azure subscription ID, and check the **Show hidden types** box. If you cannot find the registration resource, follow the steps in [Renew or change registration](azure-stack-registration.md#renew-or-change-registration) to re-register your Azure Stack.
+- Go to the [**Region Management** > **Properties**](azure-stack-registration.md#verify-azure-stack-registration) blade to find the Azure subscription ID used for the registration, resource group, and name of the registration resource. Verify that the registration resource exists under the correct Azure subscription ID in Azure portal. To do so, go to **All resources** created under the Azure subscription ID, and check the **Show hidden types** box. If you can't find the registration resource, follow the steps in [Renew or change registration](azure-stack-registration.md#renew-or-change-registration) to re-register your Azure Stack.
 
   ![Portal](media/azure-stack-usage-issues/stackres.png)
 
@@ -48,8 +48,8 @@ This section describes the usage error codes.
 | NetworkError               | Azure Stack bridge is unable to send request to usage service endpoint in Azure.                                                            | Check if a proxy is blocking or intercepting access to the usage service endpoint.                                                                                                                                                                                                             |
 | RequestTimedOut            | Request was sent from the Azure Bridge but the usage service in Azure failed to respond within the timeout period.                             | Check if a proxy is blocking or intercepting access to the usage service endpoint.                                                                                                                                                                                                                        |
 | LoginError                 | Unable to authenticate with Microsoft Azure Active Directory.                                                                                                             | Ensure the Azure AD login endpoint is accessible from all XRP VMs in Azure Stack.                                                                                                                                                                                                                     |
-| CertificateValidationError | The Azure bridge is not able to send the request because it is not able to authenticate with the Azure service.                                    | Check if there is a proxy intercepting HTTPS traffic between the Azure Stack XRP machine and the usage gateway endpoint.                                                                                                                                                                                      |
-| Unauthorized               | The Azure bridge is not able to push data to the usage service in Azure, because the Azure service is not able to authenticate the Azure Stack bridge. | Check if the registration resource has been modified, and if so, re-register Azure Stack. <br><br> Sometimes, a time sync issue between Azure Stack and Azure AD can cause this failure. In this case, ensure the times on the XRP VMs on Azure Stack are in sync with Azure AD. |
+| CertificateValidationError | The Azure bridge isn't able to send the request because it isn't able to authenticate with the Azure service.                                    | Check if there's a proxy intercepting HTTPS traffic between the Azure Stack XRP machine and the usage gateway endpoint.                                                                                                                                                                                      |
+| Unauthorized               | The Azure bridge isn't able to push data to the usage service in Azure, because the Azure service isn't able to authenticate the Azure Stack bridge. | Check if the registration resource has been modified, and if so, re-register Azure Stack. <br><br> Sometimes, a time sync issue between Azure Stack and Azure AD can cause this failure. In this case, ensure the times on the XRP VMs on Azure Stack are in sync with Azure AD. |
 |                            |                                                                                                                                                   |                                                                                                                                                                                                                                                                                                    |
 
 Additionally, you may be required to provide the log files for the Azure Bridge, WAS, and WASPublic components by following [these steps](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs).
@@ -57,5 +57,5 @@ Additionally, you may be required to provide the log files for the Azure Bridge,
 ## Next steps
 
 - Learn more about [reporting Azure Stack usage data to Azure](azure-stack-usage-reporting.md).
-- To review error messages if they are triggered in your registration process, see [Tenant registration error messages](azure-stack-registration-errors.md).
+- To review error messages if they're triggered in your registration process, see [Tenant registration error messages](azure-stack-registration-errors.md).
 - Learn more about the [Usage reporting infrastructure for Cloud Service Providers](azure-stack-csp-ref-infrastructure.md).
