@@ -140,5 +140,5 @@ It may take up to 14 hours for reclaimed capacity to show up in the portal. Spac
 ## Troubleshooting App Service
 ### Create-AADIdentityApp.ps1 script fails
 
-If the Create-AADIdentityApp.ps1 script that is required for App Service fails, be sure to include the required -AzureStackAdminCredential parameter when running the script. For more information, see [Prerequisites for deploying App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-application).
+If the Create-AADIdentityApp.ps1 script that is required for App Service fails, be sure to include the required -AzureStackAdminCredential parameter when running the script. For more information, see [Prerequisites for deploying App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-app).
 
