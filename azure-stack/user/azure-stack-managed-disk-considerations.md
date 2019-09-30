@@ -156,7 +156,7 @@ You can use the portal, PowerShell, or CLI to create the managed image. Follow t
 
 Make sure to generalize your VM correctly before doing this step. After generalization, you can no longer use this VM. Creating a VM from an image that hasn't been properly generalized will lead to a **VMProvisioningTimeout** error.
 
-Follow the instructions in [Create an image from a VHD in a storage account](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-vhd-in-a-storage-account) to create a managed image from a generalized VHD in a storage account. You can use this image in the future to create managed VMs.
+Follow the instructions in [Create an image from a VM that uses a storage account](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-vm-that-uses-a-storage-account) to create a managed image from a generalized VHD in a storage account. You can use this image in the future to create managed VMs.
 
 #### Case 2: Create managed VM from managed image using Powershell
 
