@@ -97,15 +97,15 @@ Your form should look like the following:
 
 ![](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image7.png)
 
-1. Select *OK*.
+1. Select **OK**.
 
-2. Provide the Virtual network, Subnets, and VM Size details from the [Deployment parameters](#deployment-parameters).
+2. Provide the virtual network, subnets, and VM size details from the [Deployment parameters](#deployment-parameters).
 
     If you wish to use different names and ranges, take care not to  use parameters that will conflict with the other VNET and Fortigate resources in the other Azure Stack environment. This is especially true when setting the VNET IP range and subnet ranges within the VNET. Check that they don't overlap with the IP ranges for the other VNET you create.
 
 3. Select *OK*.
 
-4. Configure the Public IP that will be used for the Fortigate NVA:
+4. Configure the public IP that will be used for the Fortigate NVA:
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image8.png)
 
@@ -205,7 +205,8 @@ Following the below steps for both the forti1 NVA and forti2 NVA:
 
 16. Select **Pre-shared Key** and enter (and record) a pre-shared key. 
 
-    > [!Note]  You will need this key to configure the connection on the on-premises VPN device, that is, they must match *exactly*.
+    > [!Note]  
+    > You will need this key to configure the connection on the on-premises VPN device, that is, they must match *exactly*.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image17.png)
 

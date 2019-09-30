@@ -105,7 +105,7 @@ The following table summarizes the parameters that are used in these deployments
 
 10.  Select **Create**.
 
-    The deployment will take about 10 minutes.
+The deployment will take about 10 minutes.
 
 ## Configure routes (UDRs) for each VNET
 
@@ -187,7 +187,8 @@ Following the below steps for both the forti1 NVA and forti2 NVA:
 
 16. Select **Pre-shared Key** and enter (and record) a pre-shared key. 
 
-    > [!Note]  You will need this key to configure the connection on the on-premises VPN device, that is, they must match *exactly*.
+    > [!Note]  
+    > You will need this key to configure the connection on the on-premises VPN device, that is, they must match *exactly*.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image17.png)
 

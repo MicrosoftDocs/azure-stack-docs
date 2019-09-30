@@ -30,7 +30,8 @@ This article describes how to create a VPN connection to your Azure Stack. A VPN
 
 -  A network virtual appliance (NVA) solution available in your Azure Stack Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the [Fortinet Fortigate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/fortinet.fortinet-fortigate-singlevm).
 
-    > ![Note]  If you do not have the **Fortinet Fortigate-VM For Azure BYOL** and **FortiGate NGFW - Single VM Deployment (BYOL)** available in your Azure Stack Marketplace, contact your cloud operator.
+    > ![Note]  
+    > If you do not have the **Fortinet Fortigate-VM For Azure BYOL** and **FortiGate NGFW - Single VM Deployment (BYOL)** available in your Azure Stack Marketplace, contact your cloud operator.
 
 -  At least one available Fortigate license file to activate the Fortigate NVA. Information on how to acquire these licenses, see the Forinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
 
@@ -174,7 +175,8 @@ Once you have activated the NVAs, create an IPSec VPN tunnel on the NVA.
 
 16. Select **Pre-shared Key** and enter (and record) a pre-shared key. 
 
-    > [!Note]  You will need this key to configure the connection on the on-premises VPN device, that is, they must match *exactly*.
+    > [!Note]  
+    > You will need this key to configure the connection on the on-premises VPN device, that is, they must match *exactly*.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image17.png)
 
