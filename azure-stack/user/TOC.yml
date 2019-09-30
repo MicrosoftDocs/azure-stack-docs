@@ -226,6 +226,14 @@
             href: azure-stack-solution-template-kubernetes-trouble.md
       - name: Deploy Cognitive Services
         href: azure-stack-solution-template-cognitive-services.md
+  - name: Deploy network solutions
+    items:
+    - name: Setup VPN
+      href: azure-stack-network-howto-vnet-to-onprem.md
+    - name: VNET to VNET connection
+      href: azure-stack-network-howto-vnet-to-vnet-stacks.md
+    - name: VNET peering
+      href: azure-stack-network-howto-vnet-to-vnet.md
   - name: Deploy apps
     items: 
     - name: Deploy a C# web app to a Windows VM
