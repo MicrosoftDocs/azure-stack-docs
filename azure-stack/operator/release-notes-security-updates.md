@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 09/27/2019
 ms.author: sethm
-ms.reviewer: hectorl
-ms.lastreviewed: 08/30/2019
+ms.reviewer: fiseraci
+ms.lastreviewed: 09/27/2019
 ---
 
 # Azure Stack security updates
@@ -26,6 +26,49 @@ This article lists all the security updates in the last four updates of Azure St
 ::: moniker range="azs-1908"
 ## 1908 update
 
+- [CVE-2019-1214](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1214)
+- [CVE-2019-1215](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1215)
+- [CVE-2019-1219](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1219)
+- [CVE-2019-1232](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1232)
+- [CVE-2019-1235](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1235)
+- [CVE-2019-1240](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1240)
+- [CVE-2019-1241](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1241)
+- [CVE-2019-1242](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1242)
+- [CVE-2019-1243](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1243)
+- [CVE-2019-1244](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1244)
+- [CVE-2019-1245](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1245)
+- [CVE-2019-1246](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1246)
+- [CVE-2019-1247](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1247)
+- [CVE-2019-1248](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1248)
+- [CVE-2019-1249](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1249)
+- [CVE-2019-1250](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1250)
+- [CVE-2019-1251](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1251)
+- [CVE-2019-1252](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1252)
+- [CVE-2019-1253](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1253)
+- [CVE-2019-1254](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1254)
+- [CVE-2019-1256](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1256)
+- [CVE-2019-1267](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1267)
+- [CVE-2019-1268](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1268)
+- [CVE-2019-1269](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1269)
+- [CVE-2019-1270](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1270)
+- [CVE-2019-1271](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1271)
+- [CVE-2019-1272](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1272)
+- [CVE-2019-1273](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1273)
+- [CVE-2019-1274](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1274)
+- [CVE-2019-1277](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1277)
+- [CVE-2019-1278](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1278)
+- [CVE-2019-1280](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1280)
+- [CVE-2019-1282](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1282)
+- [CVE-2019-1285](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1285)
+- [CVE-2019-1286](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1286)
+- [CVE-2019-1287](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1287)
+- [CVE-2019-1289](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1289)
+- [CVE-2019-1290](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1290)
+- [CVE-2019-1291](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1291)
+- [CVE-2019-1292](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1292)
+- [CVE-2019-1293](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1293)
+- [CVE-2019-1294](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1294)
+- [CVE-2019-1303](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1303)
 - [CVE-2019-0714](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0714)
 - [CVE-2019-0715](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0715)
 - [CVE-2019-0716](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-0716)
@@ -180,8 +223,8 @@ This article lists all the security updates in the last four updates of Azure St
 - [CVE-2019-1065](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1065)
 - [CVE-2019-1069](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2019-1069)
 
-Because of the cumulative nature of Windows updates, this update also contains the security payloads for the previous months. This list of CVEs reflects the security payload of June, July, and August 2019.
-For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base articles [4511553](https://support.microsoft.com/help/4511553).
+Because of the cumulative nature of Windows updates, this update also contains the security payloads for the previous months. This list of CVEs reflects the security payload of June, July, August and September 2019.
+For more information about these vulnerabilities, click on the preceding links, or see Microsoft Knowledge Base articles [4516077](https://support.microsoft.com/help/4516077).
 ::: moniker-end
 
 ::: moniker range="azs-1907"

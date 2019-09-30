@@ -64,7 +64,7 @@ Azure Stack supports a type of deployment called cloud recovery mode. This mode 
  - Root certificates used by internal certificate authority.
  - Azure Resource Manager configuration user data, such as subscriptions, plans, offers, storage quotas, network quotas, and compute resources.
  - Key Vault secrets and vaults.
- - RBAC policy assignments and role assignments =.
+ - RBAC policy assignments and role assignments.
 
 None of the user Infrastructure as a Service (IaaS) or Platform as a Service (PaaS) resources are recovered during deployment. These losses include IaaS VMs, storage accounts, blobs, tables, network configuration, and so on. The purpose of cloud recovery is to ensure your operators and users can sign back in to the portal after deployment is complete. Users signing back in won't see any of their resources. Users have their subscriptions restored and along with that the original plans, offers, and policies defined by the admin. Users signing back in to the system operate under the same constraints imposed by the original solution before the disaster. After cloud recovery completes, the operator can manually restore value-add and third-party RPs and associated data.
 
