@@ -72,7 +72,7 @@ The following table summarizes the parameters that are used in these deployments
 | Public IP address type | Static |
 
 > [!Note]
-> * Choose a different set of address spaces and subnet prefixes if the above overlap in any way with the on-premises network environment including the VIP Pool of either Azure Stack. Also ensure that the address ranges do not overlap with one another.
+> \* Choose a different set of address spaces and subnet prefixes if the above overlap in any way with the on-premises network environment including the VIP Pool of either Azure Stack. Also ensure that the address ranges do not overlap with one another.
 
 ## Deploy the FortiGate NGFW
 
@@ -241,11 +241,11 @@ Once the above has been completed for BOTH forti NVAs, do the following:
 
 You should now be able to route in between each VNET via the Fortigate NVAs. To validate the connection, create an Azure Stack VM in each VNET's InsideSubnet. Creating an Azure Stack VM can be done via the portal, CLI, or Powershell. When creating the VMs, ensure the following:
 
--   The Azure Stack VMs are placed on the 'InsideSubnet' of each VNET.
+-   The Azure Stack VMs are placed on the **InsideSubnet** of each VNET.
 
--   You do NOT apply any NSG's to the VM upon creation (That is, remove the NSG that gets added by default if creating the VM from the portal.
+-   You do NOT apply any NSGs to the VM upon creation (That is, remove the NSG that gets added by default if creating the VM from the portal.
 
--   Ensure that the VM OS's firewall rules allow the communication you are going to use to test connectivity. For testing purposes, it is recommended to disable the FW completely within the OS if at all possible.
+-   Ensure that the VMS firewall rules allow the communication you are going to use to test connectivity. For testing purposes, it is recommended to disable the FW completely within the OS if at all possible.
 
 ## Next steps
 

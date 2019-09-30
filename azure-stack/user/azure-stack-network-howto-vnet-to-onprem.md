@@ -61,7 +61,7 @@ The following table summarizes the parameters that are used in these deployments
 | Public IP address type | Static |
 
 > [!Note]
-> * Choose a different address space and subnet prefixes if `172.16.0.0/16` overlaps with the on-premises network or the Azure Stack VIP pool.
+> \* Choose a different address space and subnet prefixes if `172.16.0.0/16` overlaps with the on-premises network or the Azure Stack VIP pool.
 
 ## Deploy the FortiGate NGFW Marketplace items
 
