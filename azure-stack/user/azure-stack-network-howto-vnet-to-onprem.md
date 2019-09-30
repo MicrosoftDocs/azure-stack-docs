@@ -129,7 +129,9 @@ The following table summarizes the parameters that are used in these deployments
 
 10. Select **Save**.
 
-## Activate the Fortigate NVA and configure an IPSec VPN connection on each NVA
+## Activate the Fortigate NVA
+
+Activate the Fortigate NVA and configure an IPSec VPN connection on each NVA.
 
 To activate each Fortigate NVA will require a valid license file from Fortinet. The NVAs will **not** function until you have activated each NVA. For more information how to get a license file and steps to activate the NVA, see the Forinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
 
@@ -212,9 +214,9 @@ The on-premises VPN device must be configured to create the IPSec VPN tunnel. Th
 
 | Parameter | Value |
 |------------------------------------|---------------------------------------------------------------------------------------------|
-| Remote Gateway IP | Public IP address assigned to forti1 – see [Activate the Fortigate](#activate-the-fortigate-nva-and-configure-an-ip-sec-vpn-connection-on-each-nva). |
+| Remote Gateway IP | Public IP address assigned to forti1 – see [Activate the Fortigate NVA](#activate-the-fortigate-nva). |
 | Remote IP Network | 172.16.0.0/16 (if using the range above for the VNET). |
-| Auth. Method = Preshared key (PSK) | From Step 16. |
+| Auth. Method = Preshared key (PSK) | From Step 16. |nva
 | IKE Version | 1 |
 | IKE Mode | Main (ID protection) |
 | Phase 1 Proposal Algorithms | AES128-SHA256, AES256-SHA256, AES128-SHA1, AES256-SHA1 |
