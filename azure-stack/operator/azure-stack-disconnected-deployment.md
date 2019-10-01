@@ -1,6 +1,6 @@
 ---
 title: Azure disconnected deployment decisions for Azure Stack integrated systems | Microsoft Docs
-description: Learn about the planning decisions to consider for deploying Azure Stack integrated systems disconnected from Azure.
+description: Learn about Azure disconnected deployment of Azure Stack integrated systems and the planning decisions to consider.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
