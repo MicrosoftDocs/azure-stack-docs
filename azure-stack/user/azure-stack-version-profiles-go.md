@@ -60,7 +60,7 @@ The Go SDK depends on the Azure **Go-AutoRest** modules to send REST requests to
 
 To run a sample of Go code on Azure Stack, follow these steps:
 
-1. Install the Azure SDK for Go and its dependencies. For instructions, see the previous section, [Install Azure SDK for Go](#install-azure-sdk-for-go).
+1. Install the Azure SDK for Go and its dependencies. For instructions, see the previous section, [Install Azure SDK for Go](#install-the-azure-sdk-for-go).
 2. Get the metadata info from the Resource Manager endpoint. The endpoint returns a JSON file with the info required to run your Go code.
 
    > [!NOTE]  
