@@ -46,7 +46,7 @@ There are three types of update packages for integrated systems:
 
 ## When to update
 
-The three type of updates are released with the following cadence:
+The three types of updates are released with the following cadence:
 
 -   **Azure Stack software updates**. Microsoft typically releases software update packages each month.
 
