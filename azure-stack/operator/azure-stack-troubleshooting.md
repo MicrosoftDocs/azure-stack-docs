@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 10/01/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 09/30/2019
+ms.lastreviewed: 10/01/2019
 
 ---
 # Microsoft Azure Stack troubleshooting
@@ -136,6 +136,18 @@ You can read more about configuring the retention threshold and on-demand reclam
 ## Troubleshoot storage
 ### Storage reclamation
 It may take up to 14 hours for reclaimed capacity to show up in the portal. Space reclamation depends on various factors including usage percentage of internal container files in block blob store. Therefore, depending on how much data is deleted, there is no guarantee on the amount of space that could be reclaimed when garbage collector runs.
+
+### Azure Storage Explorer not working with Azure Stack 
+ 
+Cause:
+The Base-64 encoded root certificate was not imported into Azure Storage Explorer as mentioned in the documentation:
+https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-storage-connect-se#prepare-for-connecting-to-azure-stack
+ 
+ 
+In your case you are using an Integrated System, but you are not using a publicly signed certificates as you are in a disconnected scenario. For disconnected scenarios it’s recommended to use an Internal/Enterprise CA. This is what your deployment is using, so you must export the root certificate in a Base-64 format and then import it in Azure Storage Explorer as documented.
+ 
+Resolution:
+Import the base-64 encoded root certificate in Azure Storage Explorer and make sure that you remove the trailing slash (‘/’) from the ARM endpoint.
 
 ## Troubleshooting App Service
 ### Create-AADIdentityApp.ps1 script fails
