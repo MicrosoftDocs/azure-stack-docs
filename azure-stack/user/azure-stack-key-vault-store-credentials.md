@@ -22,7 +22,7 @@ ms.lastreviewed: 01/16/2019
 
 Developing apps on Azure Stack typically requires creating a service principal and using those credentials to authenticate before deploying. However, sometimes you lose the stored credentials for the service principal. This article describes how to create a service principal and store the values in Azure Key Vault for later retrieval.
 
-For more information about Key Vault, see [this article](azure-stack-key-vault-intro.md).
+For more information about Key Vault, see [Introduction to Key Vault in Azure Stack](azure-stack-key-vault-intro.md).
 
 ## Prerequisites
 
