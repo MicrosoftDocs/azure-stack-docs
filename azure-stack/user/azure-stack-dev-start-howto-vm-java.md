@@ -6,7 +6,7 @@ author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: overview
-ms.date:10/02/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
