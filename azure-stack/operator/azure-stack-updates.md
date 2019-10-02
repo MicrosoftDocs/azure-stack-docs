@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 10/01/2019
 ms.author: mabrigg
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent 
@@ -46,7 +46,7 @@ There are three types of update packages for integrated systems:
 
 ## When to update
 
-The three type of updates are released with the following cadence:
+The three types of updates are released with the following cadence:
 
 -   **Azure Stack software updates**. Microsoft typically releases software update packages each month.
 
@@ -62,7 +62,7 @@ Notice of updates varies on a couple of factors, such as your connection to the 
 
 - **Microsoft software updates and hotfixes** 
 
-    An update alert for Microsoft software updates and hotfixes will appear in the Update blade for Azure Stack instances that are connected to the internet.
+    An update alert for Microsoft software updates and hotfixes will appear in the Update blade for Azure Stack instances that are connected to the internet. If the Update blade is not displayed, restart the infrastructure management controller VM.
 
     If your instance is not connected and you would like to be notified about each hotfix release, subscribe to the [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss) or [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom) feed.
 
