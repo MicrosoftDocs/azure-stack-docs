@@ -1,5 +1,5 @@
 ---
-title: Using databases provided by the MySQL Adapter RP on AzureStack | Microsoft Docs
+title: Using databases provided by the MySQL Adapter RP on Azure Stack | Microsoft Docs
 description: How to create and manage MySQL databases provisioned using the MySQL Adapter Resource Provider
 services: azure-stack
 documentationCenter: ''
