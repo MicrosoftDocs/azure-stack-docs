@@ -26,19 +26,19 @@ You can configure Azure Stack to support users from multiple Azure Active Direct
 
 - You're the service administrator of contoso.onmicrosoft.com, where Azure Stack is installed.
 - Mary is the directory administrator of fabrikam.onmicrosoft.com, where guest users are located.
-- Mary's company receives IaaS and PaaS services from your company, and needs to allow users from the guest directory (fabrikam.onmicrosoft.com) to sign in and use Azure Stack resources in contoso.onmicrosoft.com.
+- Mary's company receives IaaS and PaaS services from your company and needs to allow users from the guest directory (fabrikam.onmicrosoft.com) to sign in and use Azure Stack resources in contoso.onmicrosoft.com.
 
-This guide provides the steps required, in the context of this scenario, to configure multi-tenancy in Azure Stack. In this scenario, you and Mary must complete steps to enable users from Fabrikam to sign in and consume services from the Azure Stack deployment in Contoso.  
+This guide provides the steps required, in the context of this scenario, to configure multi-tenancy in Azure Stack. In this scenario, you and Mary must complete steps to enable users from Fabrikam to sign in and consume services from the Azure Stack deployment in Contoso.
 
 ## Enable multi-tenancy
 
 There are a few prerequisites to account for before you configure multi-tenancy in Azure Stack:
   
- - You and Mary must coordinate administrative steps across both the directory Azure Stack is installed in (Contoso), and the guest directory (Fabrikam).  
+ - You and Mary must coordinate administrative steps across both the directory Azure Stack is installed in (Contoso), and the guest directory (Fabrikam).
  - Make sure you've [installed](azure-stack-powershell-install.md) and [configured](azure-stack-powershell-configure-admin.md) PowerShell for Azure Stack.
  - [Download the Azure Stack Tools](azure-stack-powershell-download.md), and import the Connect and Identity modules:
 
-    ```powershell  
+    ```powershell
     Import-Module .\Connect\AzureStack.Connect.psm1
     Import-Module .\Identity\AzureStack.Identity.psm1
     ```
@@ -108,9 +108,9 @@ Register-AzSWithMyDirectoryTenant `
 
 ### Direct users to sign in
 
-Now that you and Mary have completed the steps to onboard Mary's directory, Mary can direct Fabrikam users to sign in.  Fabrikam users (that is, users with the fabrikam.onmicrosoft.com suffix) sign in by visiting https\://portal.local.azurestack.external.  
+Now that you and Mary have completed the steps to onboard Mary's directory, Mary can direct Fabrikam users to sign in. Fabrikam users (users with the fabrikam.onmicrosoft.com suffix) sign in by visiting https\://portal.local.azurestack.external.
 
-Mary will direct any [foreign principals](/azure/role-based-access-control/rbac-and-directory-admin-roles) in the Fabrikam directory (that is, users in the Fabrikam directory without the suffix of fabrikam.onmicrosoft.com) to sign in using https\://portal.local.azurestack.external/fabrikam.onmicrosoft.com.  If they don't use this URL, they're sent to their default directory (Fabrikam) and receive an error that says their admin hasn't consented.
+Mary will direct any [foreign principals](/azure/role-based-access-control/rbac-and-directory-admin-roles) in the Fabrikam directory (users in the Fabrikam directory without the suffix of fabrikam.onmicrosoft.com) to sign in using https\://portal.local.azurestack.external/fabrikam.onmicrosoft.com. If they don't use this URL, they're sent to their default directory (Fabrikam) and receive an error that says their admin hasn't consented.
 
 ## Disable multi-tenancy
 
@@ -133,7 +133,7 @@ If you no longer want multiple tenants in Azure Stack, you can disable multi-ten
 
 2. As the service admin of Azure Stack (you in this scenario), run *Unregister-AzSGuestDirectoryTenant*.
 
-    ``` PowerShell  
+    ``` PowerShell
     ## The following Azure Resource Manager endpoint is for the ASDK. If you're in a multinode environment, contact your operator or service provider to get the endpoint.
     $adminARMEndpoint = "https://adminmanagement.local.azurestack.external"
     
