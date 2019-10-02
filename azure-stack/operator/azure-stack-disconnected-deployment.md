@@ -41,7 +41,7 @@ Azure Stack was designed to work best when connected to Azure, so it's important
 |-----|-----|
 |VM deployment with DSC extension to configure VM post deployment|Impaired - DSC extension looks to the internet for the latest WMF.|
 |VM deployment with Docker Extension to run Docker commands|Impaired - Docker will check the internet for the latest version and this check will fail.|
-|Documentation links in the Azure Stack Portal|Unavailable - Links like Give Feedback, Help, and Quickstar that use an internet URL won't work.|
+|Documentation links in the Azure Stack Portal|Unavailable - Links like Give Feedback, Help, and Quickstart that use an internet URL won't work.|
 |Alert remediation/mitigation that references an online remediation guide|Unavailable - Any alert remediation links that use an internet URL won't work.|
 |Marketplace - The ability to select and add Gallery packages directly from Azure Marketplace|Impaired - When you deploy Azure Stack in a disconnected mode, you can't download marketplace items by using the Azure Stack portal. However, you can use the [marketplace syndication tool](azure-stack-download-azure-marketplace-item.md) to download the marketplace items to a machine that has internet connectivity and then transfer them to your Azure Stack environment.|
 |Using Azure AD federation accounts to manage an Azure Stack deployment|Unavailable - This feature requires connectivity to Azure. AD FS with a local Active Directory instance must be used instead.|
