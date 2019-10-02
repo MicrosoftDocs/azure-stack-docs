@@ -87,4 +87,4 @@ Perform the following steps if the infrastructure and tenant services don't succ
 
 ## Next steps 
 
-Learn more about [Azure Stack diagnostic tools](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep)
+Learn more about [Azure Stack diagnostic tools](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs)
