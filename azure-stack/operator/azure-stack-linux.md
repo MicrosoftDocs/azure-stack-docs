@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2019
+ms.date: 10/01/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/16/2018
@@ -36,7 +36,7 @@ Wherever possible, download the images available through Marketplace Management.
 
 ### Azure Linux Agent
 
-The Azure Linux Agent (typically called `WALinuxAgent` or `walinuxagent`) is required, and not all versions of the agent work on Azure Stack. Versions between 2.2.20 and 2.2.35 are not supported on Azure Stack. To use the latest agent versions above 2.2.35, apply the 1901 hotfix/1902 hotfix, or update your Azure Stack to the 1903 release (or above). Note that [cloud-init](https://cloud-init.io/) is not supported on Azure Stack at this time.
+The Azure Linux Agent (typically called **WALinuxAgent** or **walinuxagent**) is required, and not all versions of the agent work on Azure Stack. Versions between 2.2.20 and 2.2.35 are not supported on Azure Stack. To use the latest agent versions above 2.2.35, apply the 1901 hotfix/1902 hotfix, or update your Azure Stack to the 1903 release (or above). Note that [cloud-init](https://cloud-init.io/) is not supported on Azure Stack at this time.
 
 | Azure Stack build | Azure Linux Agent build |
 | ------------- | ------------- |

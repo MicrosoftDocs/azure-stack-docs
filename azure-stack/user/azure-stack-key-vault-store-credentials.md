@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2019
+ms.date: 10/01/2019
 ms.author: sethm
 ms.lastreviewed: 01/16/2019
 
@@ -22,12 +22,12 @@ ms.lastreviewed: 01/16/2019
 
 Developing apps on Azure Stack typically requires creating a service principal and using those credentials to authenticate before deploying. However, sometimes you lose the stored credentials for the service principal. This article describes how to create a service principal and store the values in Azure Key Vault for later retrieval.
 
-For more information about Key Vault, see [this article](azure-stack-key-vault-intro.md).
+For more information about Key Vault, see [Introduction to Key Vault in Azure Stack](azure-stack-key-vault-intro.md).
 
 ## Prerequisites
 
 - A subscription to an offer that includes the Azure Key Vault service.
-- PowerShell is configured for use with Azure Stack.
+- PowerShell installed and configured for use with Azure Stack.
 
 ## Key Vault in Azure Stack
 
@@ -41,15 +41,15 @@ To create a key vault, follow these steps:
 
    ![Create key vault](media/azure-stack-key-vault-store-credentials/create-key-vault.png)
 
-3. In the **Create Key Vault** pane, assign a **Name** for your vault. Vault names can contain only alphanumeric characters and the hyphen (-) character. They shouldn't start with a number.
+3. In the **Create Key Vault** pane, assign a **Name** for your vault. Vault names can contain only alphanumeric characters and the hyphen (-) character. They should not start with a number.
 
 4. Choose a subscription from the list of available subscriptions.
 
-5. Select an existing resource group or create a new one.
+5. Select an existing resource group, or create a new one.
 
 6. Select the pricing tier.
 
-7. Choose one of the existing access policies or create a new one. An access policy enables you to grant permissions for a user, application, or a security group to perform operations with this vault.
+7. Choose one of the existing access policies, or create a new one. An access policy enables you to grant permissions for a user, application, or a security group to perform operations with this vault.
 
 8. Optionally, choose an advanced access policy to enable access to features.
 
@@ -83,7 +83,7 @@ To create a key vault, follow these steps:
 
 3. In the **Create a secret** pane, select **Manual** from the list of options. If you've created the service principal using certificates, select the certificates from the drop-down list, and then upload the file.
 
-4. Enter **the Application ID** copied from the service principal as the name for your key. The key name can contain only alphanumeric characters and the hyphen (-) character.
+4. Enter the **Application ID** copied from the service principal as the name for your key. The key name can contain only alphanumeric characters and the hyphen (-) character.
 
 5. Paste the value of your key from the service principal into the **Value** tab.
 
@@ -93,7 +93,7 @@ To create a key vault, follow these steps:
 
 8. Select **Create** to start the deployment.
 
-After the secret is successfully created, the service principal information is stored there. You can select it at any time under **Secrets** and view or modify its properties. The properties section contains the secret identifier, which is a Uniform Resource Identifier (URI) that external apps use to access this secret.
+After the secret is successfully created, the service principal information is stored there. You can select it at any time under **Secrets**, and view or modify its properties. The **Properties** section contains the secret identifier, which is a Uniform Resource Identifier (URI) that external apps use to access this secret.
 
 ## Next steps
 
