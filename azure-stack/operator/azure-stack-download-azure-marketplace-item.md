@@ -1,6 +1,6 @@
 ---
 title: Download marketplace items from Azure | Microsoft Docs
-description: The cloud operator can download marketplace items from Azure to my Azure Stack deployment.
+description: Learn how to download marketplace items from Azure to my Azure Stack deployment.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -23,14 +23,14 @@ ms.lastreviewed: 12/10/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-As a cloud operator, you can download items from the Azure Marketplace and make them available in Azure Stack. The items you can choose are from a curated list of Azure Marketplace items that are pre-tested and supported to work with Azure Stack. Additional items are frequently added to this list, so continue to check back for new content.
+As a cloud operator, you can download items from Azure Marketplace and make them available in Azure Stack. The items you can choose are from a curated list of Azure Marketplace items that are pre-tested and supported to work with Azure Stack. Additional items are frequently added to this list, so continue to check back for new content.
 
-There are two scenarios for connecting to the Azure Marketplace:
+There are two scenarios for connecting to Azure Marketplace:
 
 - **A connected scenario** - requires your Azure Stack environment to be connected to the internet. You use the Azure Stack portal to locate and download items.
-- **A disconnected or partially connected scenario** - requires you to access the Internet using the Marketplace syndication tool to download Marketplace items. Then, you transfer your downloads to your disconnected Azure Stack installation. This scenario uses PowerShell.
+- **A disconnected or partially connected scenario** - requires you to access the internet using the Marketplace syndication tool to download Marketplace items. Then, you transfer your downloads to your disconnected Azure Stack installation. This scenario uses PowerShell.
 
-See [Azure Marketplace items for Azure Stack](azure-stack-marketplace-azure-items.md) for a complete list of the marketplace items you can download. See the [Azure Stack Marketplace changes](azure-stack-marketplace-changes.md) article for a list of recent additions, deletions, and updates to the Azure Stack Marketplace.
+See [Azure Marketplace items for Azure Stack](azure-stack-marketplace-azure-items.md) for a complete list of the marketplace items you can download. See the [Azure Stack Marketplace changes](azure-stack-marketplace-changes.md) article for a list of recent additions, deletions, and updates to Azure Stack Marketplace.
 
 ## Connected scenario
 
@@ -38,7 +38,7 @@ If Azure Stack connects to the internet, you can use the administrator portal to
 
 ### Prerequisites
 
-Your Azure Stack deployment must have internet connectivity, and be [registered with Azure](azure-stack-registration.md).
+Your Azure Stack deployment must have internet connectivity and be [registered with Azure](azure-stack-registration.md).
 
 ### Use the portal to download marketplace items
   
@@ -46,25 +46,25 @@ Your Azure Stack deployment must have internet connectivity, and be [registered 
 
 2. Review the available storage space before downloading marketplace items. Later, when you select items for download, you can compare the download size to your available storage capacity. If capacity is limited, consider options for [managing available space](azure-stack-manage-storage-shares.md#manage-available-space).
 
-    To review available space, in **Region management** select the region you want to explore, and then go to **Resource Providers** > **Storage**:
+    To review available space: in **Region management**, select the region you want to explore and then go to **Resource Providers** > **Storage**:
 
-    ![Review storage space](media/azure-stack-download-azure-marketplace-item/storage.png)
+    ![Review storage space in Azure Stack adminstrator portal](media/azure-stack-download-azure-marketplace-item/storage.png)
 
-3. Open the Azure Stack Marketplace and connect to Azure. To do so, select the **Marketplace management** service, select **Marketplace items**, and then select **Add from Azure**:
+3. Open Azure Stack Marketplace and connect to Azure. To do so, select the **Marketplace management** service, select **Marketplace items**, and then select **Add from Azure**:
 
-    ![Add from Azure](media/azure-stack-download-azure-marketplace-item/marketplace.png)
+    ![Add marketplace items from Azure](media/azure-stack-download-azure-marketplace-item/marketplace.png)
 
-    The portal displays the list of items available for download from the Azure Marketplace. You can filter products by name, publisher and/or type of product. You can also click on each item to view its description and additional information, including its download size:
+    The portal displays the list of items available for download from Azure Marketplace. You can filter products by name, publisher, and/or type of product. You can also select each item to view its description and additional information, including its download size:
 
-    ![Marketplace list](media/azure-stack-download-azure-marketplace-item/image03.PNG)
+    ![Azure Marketplace items list ](media/azure-stack-download-azure-marketplace-item/image03.PNG)
 
 4. Select the item you want, and then select **Download**. Download times vary.
 
-    ![Download message](media/azure-stack-download-azure-marketplace-item/image04.png)
+    ![Downloading Azure Marketplace item](media/azure-stack-download-azure-marketplace-item/image04.png)
 
-    After the download completes, you can deploy the new marketplace item as either an Azure Stack operator or user.
+    After the download completes, you can deploy the new marketplace item as either an Azure Stack operator or a user.
 
-5. To deploy the downloaded item, select **+ Create a resource**, and then search among the categories for the new marketplace item. Next select the item to begin the deployment process. The process varies for different marketplace items.
+5. To deploy the downloaded item, select **+ Create a resource**, and then search among the categories for the new marketplace item. Next, select the item to begin the deployment process. The process varies for different marketplace items.
 
 ## Disconnected or a partially connected scenario
 
