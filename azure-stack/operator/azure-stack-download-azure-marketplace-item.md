@@ -48,7 +48,7 @@ Your Azure Stack deployment must have internet connectivity and be [registered w
 
     To review available space: in **Region management**, select the region you want to explore and then go to **Resource Providers** > **Storage**:
 
-    ![Review storage space in Azure Stack adminstrator portal](media/azure-stack-download-azure-marketplace-item/storage.png)
+    ![Review storage space in Azure Stack administrator portal](media/azure-stack-download-azure-marketplace-item/storage.png)
 
 3. Open Azure Stack Marketplace and connect to Azure. To do so, select the **Marketplace management** service, select **Marketplace items**, and then select **Add from Azure**:
 
@@ -68,7 +68,7 @@ Your Azure Stack deployment must have internet connectivity and be [registered w
 
 ## Disconnected or a partially connected scenario
 
-If Azure Stack is in a disconnected mode and without internet connectivity, you use PowerShell and the *marketplace syndication tool* to download the marketplace items to a machine with internet connectivity. You then transfer the items to your Azure Stack environment. In a disconnected environment, you can't download marketplace items by using the Azure Stack portal.
+If Azure Stack is in a disconnected mode, you use PowerShell and the *marketplace syndication tool* to download the marketplace items to a machine with internet connectivity. You then transfer the items to your Azure Stack environment. In a disconnected environment, you can't download marketplace items by using the Azure Stack portal.
 
 The marketplace syndication tool can also be used in a connected scenario.
 
@@ -89,13 +89,13 @@ There are two parts to this scenario:
 
 - The marketplace syndication tool is downloaded during the first procedure.
 
-- You can install [AzCopy](/azure/storage/common/storage-use-azcopy) for optimal download performance, but this isn't required.
+- You can install [AzCopy](/azure/storage/common/storage-use-azcopy) for optimal download performance, but it's not required.
 
 ### Use the marketplace syndication tool to download marketplace items
 
 1. On a computer with an internet connection, open a PowerShell console as an administrator.
 
-2. Add the Azure account that you've used to register Azure Stack. To add the account, in PowerShell run `Add-AzureRmAccount` without any parameters. You're prompted to enter your Azure account credentials and you might have to use 2-factor authentication, depending on your account's configuration.
+2. Add the Azure account that you've used to register Azure Stack. To add the account, in PowerShell run `Add-AzureRmAccount` without any parameters. You're prompted to enter your Azure account credentials and you might have to use two-factor authentication, depending on your account's configuration.
 
    [!include[Remove Account](../../includes/remove-account.md)]
 
@@ -132,7 +132,7 @@ There are two parts to this scenario:
    Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes"
    ```
 
-   Note that `Export-AzSOfflineMarketplaceItem` has an additional `-cloud` flag that specifies the cloud environment. By default, it is **azurecloud**.
+   Note that `Export-AzSOfflineMarketplaceItem` has an additional `-cloud` flag that specifies the cloud environment. By default, it's **azurecloud**.
 
 6. When the tool runs, you should see a screen similar to the following image, with the list of available marketplace items:
 
@@ -146,7 +146,7 @@ There are two parts to this scenario:
 
 9. The download time depends on the size of the item. After the download completes, the item is available in the folder that you specified in the script. The download includes a VHD file (for virtual machines) or a .zip file (for virtual machine extensions). It might also include a gallery package in the *.azpkg* format, which is simply a .zip file.
 
-10. If the download fails, you can try again by re-running the following PowerShell cmdlet:
+10. If the download fails, you can try again by rerunning the following PowerShell cmdlet:
 
     ```powershell
     Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes"
@@ -171,7 +171,7 @@ There are two parts to this scenario:
    Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -AzsCredential $credential
    ```
 
-   The `-origin` parameter specifies the top level folder that contains all the downloaded products; for example, `"D:\downloadfolder"`.
+   The `-origin` parameter specifies the top-level folder that contains all the downloaded products; for example, `"D:\downloadfolder"`.
 
    The `-AzsCredential` parameter is optional. It's used to renew the access token, if it has expired. If the `-AzsCredential` parameter isn't specified and the token expires, you receive a prompt to enter the operator credentials.
 
