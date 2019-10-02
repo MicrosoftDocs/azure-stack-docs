@@ -1,6 +1,6 @@
 ---
 title: Prepare for extension host in Azure Stack | Microsoft Docs
-description: Learn how to prepare for extension host in Azure Stack which is automatically enabled through an Azure Stack update package after version 1808.
+description: Learn how to prepare for extension host in Azure Stack, which is automatically enabled through an Azure Stack update package after version 1808.
 services: azure-stack
 keywords: 
 author: mattbriggs
@@ -23,12 +23,12 @@ The extension host implements two new domain namespaces to guarantee unique host
 
 The table shows the new namespaces and the associated certificates:
 
-| Deployment Folder | Required certificate subject and subject alternative names (SAN) | Scope (per region) | SubDomain namespace |
+| Deployment Folder | Required certificate subject and subject alternative names (SAN) | Scope (per region) | Subdomain namespace |
 |-----------------------|------------------------------------------------------------------|-----------------------|------------------------------|
 | Admin extension host | *.adminhosting.\<region>.\<fqdn> (Wildcard SSL Certificates) | Admin extension host | adminhosting.\<region>.\<fqdn> |
 | Public extension host | *.hosting.\<region>.\<fqdn> (Wildcard SSL Certificates) | Public extension host | hosting.\<region>.\<fqdn> |
 
-The detailed certificate requirements can be found in the [Azure Stack public key infrastructure certificate requirements](azure-stack-pki-certs.md) article.
+For detailed certificate requirements, see [Azure Stack public key infrastructure certificate requirements](azure-stack-pki-certs.md).
 
 ## Create certificate signing request
 
