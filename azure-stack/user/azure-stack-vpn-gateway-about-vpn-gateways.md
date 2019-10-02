@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/21/2019
+ms.date: 10/01/2019
 ms.author: sethm
 ms.lastreviewed: 05/21/2019
 ---
@@ -22,7 +22,7 @@ ms.lastreviewed: 05/21/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Before you can send network traffic between your Azure virtual network and your on-premises site, you must create a virtual network gateway for your virtual network.
+Before you can send network traffic between your Azure virtual network and your on-premises site, you must create a virtual network (VPN) gateway for your virtual network.
 
 A VPN gateway is a type of virtual network gateway that sends encrypted traffic across a public connection. You can use VPN gateways to send traffic securely between a virtual network in Azure Stack and a virtual network in Azure. You can also send traffic securely between a virtual network and another network that is connected to a VPN device.
 
@@ -38,7 +38,7 @@ Before you create and configure VPN gateways for Azure Stack, review the [consid
 > For example:
 >
 > * In Azure, the basic VPN gateway SKU can accommodate approximately 100 Mbps of aggregate throughput. If you create two connections to that VPN gateway, and one connection is using 50 Mbps of bandwidth, then 50 Mbps is available to the other connection.
-> * In Azure Stack, **each connection** to the basic VPN gateway SKU gets allocated 100 Mbps of throughput.
+> * In Azure Stack, each connection to the basic VPN gateway SKU is allocated 100 Mbps of throughput.
 
 ## Configuring a VPN gateway
 
@@ -71,7 +71,7 @@ The diagrams and descriptions in the following sections can help you select a co
 
 ### Site-to-site
 
-A *site-to-site* (S2S) VPN gateway connection is a connection over IPsec/IKE (IKEv2) VPN tunnel. This type of connection requires a VPN device that is located on-premises and is assigned a public IP address. This device can't be located behind a NAT. S2S connections can be used for cross-premises and hybrid configurations.
+A *site-to-site* (S2S) VPN gateway connection is a connection over IPsec/IKE (IKEv2) VPN tunnel. This type of connection requires a VPN device that is located on-premises and is assigned a public IP address. This device cannot be located behind a NAT. S2S connections can be used for cross-premises and hybrid configurations.
 
 ![Site-to-site VPN connection configuration example](media/azure-stack-vpn-gateway-about-vpn-gateways/vpngateway-site-to-site-connection-diagram.png)
 
@@ -91,17 +91,17 @@ When you create a virtual network gateway for Azure Stack, you specify the gatew
 
 When you select a higher gateway SKU, such as Standard over Basic, or High Performance over Standard or Basic, more CPUs and network bandwidth are allocated to the gateway. As a result, the gateway can support higher network throughput to the virtual network.
 
-Azure Stack doesn't support the Ultra Performance gateway SKU, which is used exclusively with Express Route.
+Azure Stack does not support the Ultra Performance gateway SKU, which is used exclusively with Express Route.
 
 Consider the following when you select the SKU:
 
-* Azure Stack doesn't support policy-based gateways.
-* Border Gateway Protocol (BGP) isn't supported on the Basic SKU.
-* ExpressRoute-VPN gateway coexisting configurations aren't supported in Azure Stack.
+* Azure Stack does not support policy-based gateways.
+* Border Gateway Protocol (BGP) is not supported on the Basic SKU.
+* ExpressRoute-VPN gateway coexisting configurations are not supported in Azure Stack.
 
-## Gateway Availability
+## Gateway availability
 
-High availability scenarios can only be configured on the **High Performance Gateway** connection SKU. Unlike Azure, which provides availability through both active/active and active/passive configurations, Azure Stack only supports the active/passive configuration. 
+High availability scenarios can only be configured on the **High Performance Gateway** connection SKU. Unlike Azure, which provides availability through both active/active and active/passive configurations, Azure Stack only supports the active/passive configuration.
 
 ### Failover
 
@@ -111,20 +111,20 @@ There are three multi-tenant gateway infrastructure VMs in Azure Stack. Two of t
 
 The following table shows the gateway types and the estimated aggregate throughput by gateway SKU:
 
-|| VPN Gateway throughput *(1)* | VPN Gateway max IPsec tunnels *(2)* |
+|| VPN Gateway throughput (1) | VPN Gateway max IPsec tunnels (2) |
 |-------|-------|-------|
-|**Basic SKU** ***(3)*** | 100 Mbps | 20 |
+|**Basic SKU** **(3)** | 100 Mbps | 20 |
 |**Standard SKU** | 100 Mbps | 20 |
 |**High Performance SKU** | 200 Mbps | 10 |
 
-**Table notes:**
+### Table notes
 
-*Note (1)* - VPN throughput isn't a guaranteed throughput for cross-premises connections across the internet. It's the maximum possible throughput measurement.  
-*Note (2)* - Max tunnels is the total per Azure Stack deployment for all subscriptions.  
-*Note (3)* - BGP routing isn't supported for the Basic SKU.
+**(1)** - VPN throughput is not a guaranteed throughput for cross-premises connections across the internet. It is the maximum possible throughput measurement.  
+**(2)** - Max tunnels is the total per Azure Stack deployment for all subscriptions.  
+**(3)** - BGP routing is not supported for the Basic SKU.
 
 >[!NOTE]
->Only one site-to-site VPN connection can be created between two Azure Stack deployments. This is due to a limitation in the platform that only allows a single VPN connection to the same IP address. Because Azure Stack leverages the multi-tenant gateway, which uses a single public IP for all VPN gateways in the Azure Stack system, there can be only one VPN connection between two Azure Stack systems. This limitation also applies to connecting more than one site-to-site VPN connection to any VPN gateway that uses a single IP address. Azure Stack doesn't allow more than one local network gateway resource to be created using the same IP address.
+>Only one site-to-site VPN connection can be created between two Azure Stack deployments. This is due to a limitation in the platform that only allows a single VPN connection to the same IP address. Because Azure Stack leverages the multi-tenant gateway, which uses a single public IP for all VPN gateways in the Azure Stack system, there can be only one VPN connection between two Azure Stack systems. This limitation also applies to connecting more than one site-to-site VPN connection to any VPN gateway that uses a single IP address. Azure Stack does not allow more than one local network gateway resource to be created using the same IP address.
 
 ## Next steps
 

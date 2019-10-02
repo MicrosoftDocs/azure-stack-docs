@@ -27,6 +27,26 @@ The [Azure Stack Marketplace items](azure-stack-marketplace-azure-items.md) arti
 
 ## New Marketplace items
 
+- 06/27/2019:	SIOS Datakeeper Cluster Edition
+
+- 06/27/2019:	Veeam Backup & Replication
+
+- 06/27/2019: Windows Server 2019 Datacenter Server Core With Containers Pay-as-you-use
+
+- 06/27/2019: Windows Server 2019 Datacenter Server Core With Containers BYOL
+
+- 06/27/2019:	Windows Server 2019 Datacenter Pay-as-you-use
+
+- 06/27/2019:	Windows Server 2019 Datacenter BYOL
+
+- 06/27/2019: Windows Server 2019 Datacenter Server Core Pay-as-you-use
+
+- 06/27/2019: Windows Server 2019 Datacenter Server Core BYOL
+
+- 06/27/2019:	Windows Server 2019 Datacenter With Containers Pay-as-you-use
+
+- 06/27/2019:	Windows Server 2019 Datacenter With Containers BYOL
+
 - 08/05/2019: Bitnami Drupal
 
 - 08/05/2019: Bitnami etcd
@@ -56,15 +76,26 @@ The [Azure Stack Marketplace items](azure-stack-marketplace-azure-items.md) arti
 
 ## Deprecated Marketplace items
 
-- Codiad
-- X2Engine Sales CRM
-- SugarCRM
-- Node.js High-Availability Cluster
+- Bitnami Codiad
+- Bitnami X2Engine Sales CRM
+- Bitnami SugarCRM
+- Bitnami Node.js High-Availability Cluster
 - A10 vThunder: L4-L7 Application Delivery Controller, Global Server Load Balancing (GSLB), SSL Insight
 - JsonADDomain Extension
 
 ## Updated Marketplace items
 
+- 07/11/2019:	Thales CipherTrust Cloud Key Manager - version 1.0.7
+- 07/16/2019:	Windows Server 2016 Datacenter Server Core BYOL - version 2016.127.20190522
+- 07/16/2019:	Windows Server 2016 Datacenter Server Core Pay-as-you-use - version 2016.127.20190522
+- 07/16/2019:	Windows Server 2016 Datacenter With Containers BYOL - version 2016.127.20190522
+- 07/16/2019:	Windows Server 2016 Datacenter With Containers Pay-as-you-use - version 2016.127.20190522
+- 07/16/2019:	Windows Server 2016 Datacenter BYOL - version 2016.127.20190522
+- 07/16/2019:	Windows Server 2016 Datacenter Pay-as-you-use - version 2016.127.20190522
+- 07/16/2019:	Windows Server 2008 R2 BYOL - version 2.127.20190522
+- 07/16/2019:	Windows Server 2008 R2 Pay-as-you-use - version 2.127.20190522
+- 07/16/2019:	Windows Server 2012 R2 Datacenter BYOL - version 4.127.20190522
+- 07/16/2019:	Windows Server 2012 R2 Datacenter Pay-as-you-use - version 4.127.20190522
 - 07/30/2019: SQL Server 2016 SP1 (Express, Developer, Standard and Enterprise editions) - version 13.2.20190410
 - 07/30/2019: SQL Server 2016 SP2 (Express, Developer, Standard and Enterprise editions) - version 13.2.20190410
 - 07/30/2019: SQL Server 2017 (Express, Developer, Standard and Enterprise editions) - version 14.0.20190410
