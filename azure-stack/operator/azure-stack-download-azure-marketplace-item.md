@@ -68,14 +68,14 @@ Your Azure Stack deployment must have internet connectivity and be [registered w
 
 ## Disconnected or a partially connected scenario
 
-If Azure Stack is in a disconnected mode and without internet connectivity, you use PowerShell and the *marketplace syndication tool* to download the marketplace items to a machine with internet connectivity. You then transfer the items to your Azure Stack environment. In a disconnected environment, you cannot download marketplace items by using the Azure Stack portal.
+If Azure Stack is in a disconnected mode and without internet connectivity, you use PowerShell and the *marketplace syndication tool* to download the marketplace items to a machine with internet connectivity. You then transfer the items to your Azure Stack environment. In a disconnected environment, you can't download marketplace items by using the Azure Stack portal.
 
 The marketplace syndication tool can also be used in a connected scenario.
 
 There are two parts to this scenario:
 
-- **Part 1:** Download from Azure Marketplace. On the computer with internet access you configure PowerShell, download the syndication tool, and then download items from the Azure Marketplace.  
-- **Part 2:** Upload and publish to the Azure Stack Marketplace. You move the files you downloaded to your Azure Stack environment, import them to Azure Stack, and then publish them to the Azure Stack Marketplace.  
+- **Part 1:** Download from Azure Marketplace. On the computer with internet access you configure PowerShell, download the syndication tool, and then download items from Azure Marketplace.  
+- **Part 2:** Upload and publish to Azure Stack Marketplace. You move the files you downloaded to your Azure Stack environment, import them to Azure Stack, and then publish them to Azure Stack Marketplace.  
 
 ### Prerequisites
 
@@ -85,21 +85,21 @@ There are two parts to this scenario:
 
 - To enable import of a downloaded marketplace item, the [PowerShell environment for the Azure Stack operator](azure-stack-powershell-configure-admin.md) must be configured.  
 
-- You must have a [storage account](azure-stack-manage-storage-accounts.md) in Azure Stack that has a publicly accessible container (which is a storage blob). You use the container as temporary storage for the marketplace items gallery files. If you are not familiar with storage accounts and containers, see [Work with blobs - Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal) in the Azure documentation.
+- You must have a [storage account](azure-stack-manage-storage-accounts.md) in Azure Stack that has a publicly accessible container (which is a storage blob). You use the container as temporary storage for the marketplace items gallery files. If you're not familiar with storage accounts and containers, see [Work with blobs - Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal) in the Azure documentation.
 
 - The marketplace syndication tool is downloaded during the first procedure.
 
-- You can install [AzCopy](/azure/storage/common/storage-use-azcopy) for optimal download performance, but this is not required.
+- You can install [AzCopy](/azure/storage/common/storage-use-azcopy) for optimal download performance, but this isn't required.
 
 ### Use the marketplace syndication tool to download marketplace items
 
-1. On a computer with an Internet connection, open a PowerShell console as an administrator.
+1. On a computer with an internet connection, open a PowerShell console as an administrator.
 
-2. Add the Azure account that you have used to register Azure Stack. To add the account, in PowerShell run `Add-AzureRmAccount` without any parameters. You are prompted to enter your Azure account credentials and you might have to use 2-factor authentication, depending on your account's configuration.
+2. Add the Azure account that you've used to register Azure Stack. To add the account, in PowerShell run `Add-AzureRmAccount` without any parameters. You're prompted to enter your Azure account credentials and you might have to use 2-factor authentication, depending on your account's configuration.
 
    [!include[Remove Account](../../includes/remove-account.md)]
 
-3. If you have multiple subscriptions, run the following command to select the one you have used for registration:  
+3. If you have multiple subscriptions, run the following command to select the one you've used for registration:  
 
    ```powershell  
    Get-AzureRmSubscription -SubscriptionID 'Your Azure Subscription GUID' | Select-AzureRmSubscription
@@ -124,7 +124,7 @@ There are two parts to this scenario:
 
    ```
 
-5. Import the syndication module and then launch the tool by running the following commands. Replace `Destination folder path` with a location to store the files you download from the Azure Marketplace.
+5. Import the syndication module and then launch the tool by running the following commands. Replace `Destination folder path` with a location to store the files you download from Azure Marketplace.
 
    ```powershell  
    Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
@@ -144,7 +144,7 @@ There are two parts to this scenario:
 
 8. Select **OK**, and then review and accept the legal terms.
 
-9. The time that the download takes depends on the size of the item. After the download completes, the item is available in the folder that you specified in the script. The download includes a VHD file (for virtual machines) or a .zip file (for virtual machine extensions). It might also include a gallery package in the *.azpkg* format, which is simply a .zip file.
+9. The download time depends on the size of the item. After the download completes, the item is available in the folder that you specified in the script. The download includes a VHD file (for virtual machines) or a .zip file (for virtual machine extensions). It might also include a gallery package in the *.azpkg* format, which is simply a .zip file.
 
 10. If the download fails, you can try again by re-running the following PowerShell cmdlet:
 
