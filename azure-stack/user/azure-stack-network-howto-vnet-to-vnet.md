@@ -12,12 +12,12 @@ ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
 
 # keywords:  VNET Peering Azure Stack
-# Intent: As an Azure Stack Operator, I want < what? > so that < why? >
+# Intent: As an Azure Stack Operator, I want connect two Azure Stacks with VNET peering so that uses can interact with resources as if it were a continuous network.
 ---
 
 # How to connect two VNETs through peering
 
-This article describes how to create a connection between two virtual networks in the same environment. When you configure the connections, you learn how VPN gateways in Azure Stack work. Connect two VNETs within the same Azure Stack environment using Fortinet Fortigate. This procedure deploys two VNETs with a Fortigate NVA in each VNET each within a separate resource group. It also details the changes required to configure an IPSec VPN between the two VNETs. The steps in this section should be repeated twice: once for each VNET deployment. 
+This article describes how to create a connection between two virtual networks in the same environment. When you configure the connections, you learn how VPN gateways in Azure Stack work. Connect two VNETs within the same Azure Stack environment using Fortinet Fortigate. This procedure deploys two VNETs with a Fortigate NVA, a network virtual appliance, in each VNET each within a separate resource group. It also details the changes required to configure an IPSec VPN between the two VNETs. Repeat the steps in this article should for each VNET deployment.
 
 ## Prerequisites
 
@@ -151,7 +151,7 @@ Once the NVAs have been activated, follow these steps to create an IPSec VPN bet
 
 Following the below steps for both the forti1 NVA and forti2 NVA:
 
-1.  Get the assigned Public IP address by navigating to the fortiX VM Overview page:
+1.  Get the assigned Public IP address by navigating to the fortiX VM overview page:
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image13.png)
 
@@ -167,7 +167,7 @@ Following the below steps for both the forti1 NVA and forti2 NVA:
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image15.png)
 
-7.  Select **Backup config and upgrade** and Continue when prompted.
+7.  Select **Backup config and upgrade** > **Continue**.
 
 8.  The NVA updates its firmware to the latest build and reboots. The process takes about five minutes. Log back into the Fortigate web console.
 
@@ -232,13 +232,13 @@ Once the above has been completed for BOTH forti NVAs, do the following:
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image20.png)
 
-2.  Highlight `conn1` and select the **Bring Up** > **All Phase 2 Selectors.
+2.  Highlight `conn1` and select the **Bring Up** > **All Phase 2 Selectors**.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image21.png)
 
 ## Test and validate connectivity
 
-You should now be able to route in between each VNET via the Fortigate NVAs. To validate the connection, create an Azure Stack VM in each VNET's InsideSubnet. Creating an Azure Stack VM can be done via the portal, CLI, or Powershell. When creating the VMs, ensure the following:
+You should now be able to route in between each VNET via the Fortigate NVAs. To validate the connection, create an Azure Stack VM in each VNET's InsideSubnet. Creating an Azure Stack VM can be done via the portal, CLI, or PowerShell. When creating the VMs, ensure the following:
 
 -   The Azure Stack VMs are placed on the **InsideSubnet** of each VNET.
 
@@ -248,4 +248,5 @@ You should now be able to route in between each VNET via the Fortigate NVAs. To 
 
 ## Next steps
 
-[Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)
+[Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)  
+[Offer a network solution in Azure Stack with Fortinet Fortigate](../operator/azure-stack-network-solutions-enable.md)  
