@@ -31,7 +31,7 @@
     items:
       - name: Subscribe to an offer
         href: azure-stack-subscribe-services.md
-      - name: Enable a Cloud Service Provider
+      - name: Enable a Cloud Solution Provider
         href: azure-stack-csp-enable-billing-usage-tracking.md
       - name: Use the Azure Stack Portal
         href: azure-stack-use-portal.md
