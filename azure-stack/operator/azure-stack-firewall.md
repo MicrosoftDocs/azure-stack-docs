@@ -1,6 +1,6 @@
 ---
-title: Azure Stack firewall planning for Azure Stack integrated systems | Microsoft Docs
-description: Learn about the Azure Stack firewall considerations for Azure Stack integrated systems.
+title: Azure Stack firewall integration for Azure Stack integrated systems | Microsoft Docs
+description: Learn about Azure Stack firewall integration for Azure Stack integrated systems.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
