@@ -6,10 +6,10 @@ author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 09/30/2019
+ms.date: 10/03/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 09/30/2019
+ms.lastreviewed: 10/03/2019
 
 # keywords:  VPN gateway Azure Stack
 # Intent: As an Azure Stack user, I want create a VPN gateway and connection between Azure Stack and my network so that I can share resources between the two networks.

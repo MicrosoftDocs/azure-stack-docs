@@ -6,10 +6,10 @@ author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 09/30/2019
+ms.date: 10/03/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 09/30/2019
+ms.lastreviewed: 10/03/2019
 
 # keywords:  VNET Peering Azure Stack
 # Intent: As an Azure Stack Operator, I want < what? > so that < why? >

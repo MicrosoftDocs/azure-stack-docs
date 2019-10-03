@@ -6,10 +6,10 @@ author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 09/30/2019
+ms.date: 10/03/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 09/30/2019
+ms.lastreviewed: 10/03/2019
 
 # keywords: VNET to VNET connection Azure Stack
 # Intent: As an Azure Stack user, I want connect two VNETs so that they can share resources.
