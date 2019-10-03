@@ -214,7 +214,7 @@ The on-premises VPN device must be configured to create the IPSec VPN tunnel. Th
 
 | Parameter | Value |
 | --- | --- |
-| Remote Gateway IP | Public IP address assigned to forti1 – see [Activate the FortiGate NVA](#activate-the-FortiGate-nva). |
+| Remote Gateway IP | Public IP address assigned to forti1 – see [Activate the FortiGate NVA](#activate-the-fortigate-nva). |
 | Remote IP Network | 172.16.0.0/16 (if using the IP range in these instructions for the VNET). |
 | Auth. Method = Preshared key (PSK) | From Step 16.
 | IKE Version | 1 |
