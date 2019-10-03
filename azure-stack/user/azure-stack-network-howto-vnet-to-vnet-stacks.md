@@ -103,13 +103,13 @@ Repeat these steps for both Azure Stack environments.
 
     If you wish to use different names and ranges, take care not to  use parameters that will conflict with the other VNET and Fortigate resources in the other Azure Stack environment. This is especially true when setting the VNET IP range and subnet ranges within the VNET. Check that they don't overlap with the IP ranges for the other VNET you create.
 
-6. Select *OK*.
+6. Select **OK**.
 
 7. Configure the public IP that will be used for the Fortigate NVA:
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet-stacks/image8.png)
 
-8. Select *OK* and then Select *OK*.
+8. Select **OK** and then Select **OK**.
 
 9. Select **Create**.
 
