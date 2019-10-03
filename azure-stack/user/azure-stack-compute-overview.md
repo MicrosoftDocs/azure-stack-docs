@@ -7,7 +7,7 @@ manager: femila
 
 ms.service: azure-stack
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 10/02/2019
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/05/2019
@@ -19,7 +19,7 @@ ms.lastreviewed: 01/05/2019
 
 Azure Stack offers virtual machines (VMs) as a type of on-demand and scalable computing resource. You can choose a VM when you need more control over the computing environment. This article provides details before you create your first VM.
 
-An Azure Stack VM gives you the flexibility of virtualization without the need to manage clusters or individual machines. However, you still need to maintain the VM by doing tasks such as configuring, patching, and installing the software that runs on it.
+An Azure Stack VM gives you the flexibility of virtualization without the need to manage clusters or individual machines. However, you still need to maintain the VM by doing tasks such as configuring, patching/updating, and installing the software that runs on it.
 
 You can use Azure Stack VMs in several ways. For example:
 
@@ -27,7 +27,7 @@ You can use Azure Stack VMs in several ways. For example:
 
 - **Applications in the cloud**: Because demand for your application can fluctuate, it might make economic sense to run it on a VM in Azure Stack. You pay for extra VMs when you need them and shut them down when you don't.
 
-- **Extended datacenter**: VMs in an Azure Stack virtual network can be connected to your organization's network or to Azure.
+- **Extended datacenter**: VMs in an Azure Stack virtual network can be connected to your organization's network, or to Azure.
 
 The VMs that your application uses can scale up, or scale out, to whatever is required to meet your needs.
 
