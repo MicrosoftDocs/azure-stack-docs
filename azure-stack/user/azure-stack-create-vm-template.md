@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/04/2019
+ms.date: 10/03/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/13/2018
@@ -33,9 +33,9 @@ In this tutorial, you learn how to:
 
 ## Azure Stack quickstart templates
 
-Azure Stack quickstart templates are stored in the GitHub [global Azure Stack quickstart templates repo](https://github.com/Azure/AzureStack-QuickStart-Templates). This repo (repository) contains Azure Resource Manager deployment templates that have been tested with the Microsoft Azure Stack Development Kit (ASDK). You can use them to make it easier for you to evaluate Azure Stack and use the ASDK environment.
+Azure Stack quickstart templates are stored in the GitHub [global Azure Stack quickstart templates repository](https://github.com/Azure/AzureStack-QuickStart-Templates). This repo contains Azure Resource Manager deployment templates that have been tested with the Microsoft Azure Stack Development Kit (ASDK). You can use them to make it easier for you to evaluate Azure Stack and use the ASDK environment.
 
-Over time, many GitHub users have contributed to the repo, resulting in a collection of more than 400 deployment templates. This repo is a great starting point to better understanding how you can deploy various kinds of environments to Azure Stack.
+Over time, many GitHub users have contributed to the repo, resulting in a collection of more than 400 deployment templates. This repo is a good starting point for understanding how you can deploy various kinds of environments to Azure Stack.
 
 >[!IMPORTANT]
 > Some of these templates are created by members of the community and not by Microsoft. Each template is licensed under a license agreement by its owner, not Microsoft. Microsoft is not responsible for these templates and does not screen for security, compatibility, or performance. Community templates are not supported under any Microsoft support program or service, and are made available "AS IS," without warranty of any kind.
