@@ -19,7 +19,7 @@ ms.lastreviewed: 10/03/2019
 
 In this article, you'll connect a VNET in one Azure Stack to a VNET in another Azure Stack using Fortinet Fortigate NVA, a network virtual appliance.
 
-This article addresses the current Azure Stack limitation, which allows tenants to only set up one VPN connection across two environments. Users will learn how to set up a custom gateway on a Linux virtual machine that will allow multiple VPN connections across different Azure Stack. The procedure in this article deploys two VNETs with a Fortigate NVA in each VNET: one deployment per Azure Stack environment. It also details the changes required to configure an IPSec VPN between the two VNETs. The steps in this article should be repeated for each VNET in each Azure Stack. 
+This article addresses the current Azure Stack limitation, which lets tenants to only set up one VPN connection across two environments. Users will learn how to set up a custom gateway on a Linux virtual machine that will allow multiple VPN connections across different Azure Stack. The procedure in this article deploys two VNETs with a Fortigate NVA in each VNET: one deployment per Azure Stack environment. It also details the changes required to set up an IPSec VPN between the two VNETs. The steps in this article should be repeated for each VNET in each Azure Stack. 
 
 ## Prerequisites
 
@@ -30,7 +30,7 @@ This article addresses the current Azure Stack limitation, which allows tenants 
 
 -  A network virtual appliance (NVA) solution downloaded and published to the Azure Stack Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the [Fortinet Fortigate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/fortinet.fortinet-fortigate-singlevm).
 
--  At least two available Fortigate license files to activate the Fortigate NVA. Information on how to acquire these licenses, see the Forinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
+-  At least two available Fortigate license files to activate the Fortigate NVA. Information on how to get these licenses, see the Forinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
 
     This procedure uses the [Single FortiGate-VM deployment](ttps://docs2.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/632940/single-fortigate-vm-deployment). You can find steps on how to connect the FortiGate NVA to the Azure Stack VNET to in your on-premises network.
 
@@ -159,7 +159,7 @@ Repeat the steps for each **InsideSubnet** route for each resource group.
 
 ## Activate the Fortigate NVAs and Configure an IPSec VPN connection on each NVA
 
-To activate each Fortigate NVA will require a valid license file from Fortinet. The NVAs will **not** function until you have activated each NVA. For more information how to get a license file and steps to activate the NVA, see the Forinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
+ You will require a valid license file from Fortinet to activate each Fortigate NVA. The NVAs will **not** function until you have activated each NVA. For more information how to get a license file and steps to activate the NVA, see the Forinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
 
 Two license files will need to be acquired – one for each NVA.
 
@@ -173,7 +173,7 @@ Following the below steps for both the forti1 NVA and forti2 NVA:
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image13.png)
 
-2.  Copy the assigned IP address, open a browser and paste the address into the address bar. Your browser may warn you that the security certificate is not trusted. Continue anyway.
+2.  Copy the assigned IP address, open a browser, and paste the address into the address bar. Your browser may warn you that the security certificate is not trusted. Continue anyway.
 
 4.  Enter the fortigate administrative user name and password you provided during the deployment.
 
@@ -206,7 +206,7 @@ Following the below steps for both the forti1 NVA and forti2 NVA:
 16. Select **Pre-shared Key** and enter (and record) a pre-shared key. 
 
     > [!Note]  
-    > You will need this key to configure the connection on the on-premises VPN device, that is, they must match *exactly*.
+    > You will need this key to set up the connection on the on-premises VPN device, that is, they must match *exactly*.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image17.png)
 
@@ -245,7 +245,7 @@ Repeat the steps for the other NVA.
 
 ## Bring Up All Phase 2 Selectors 
 
-Once the above has been completed for BOTH forti NVAs, do the following:
+Once the above has been completed for **both** NVAs:
 
 1.  On the forti2 Fortigate web console, select to **Monitor** > **IPsec Monitor**. 
 
@@ -258,13 +258,13 @@ Once the above has been completed for BOTH forti NVAs, do the following:
 
 ## Test and validate connectivity
 
-You should now be able to route in between each VNET via the Fortigate NVAs. To validate the connection, create an Azure Stack VM in each VNET's InsideSubnet. Creating an Azure Stack VM can be done via the portal, CLI, or PowerShell. When creating the VMs, ensure the following:
+You should now be able to route in between each VNET via the Fortigate NVAs. To validate the connection, create an Azure Stack VM in each VNET's InsideSubnet. Creating an Azure Stack VM can be done via the portal, CLI, or PowerShell. When creating the VMs:
 
 -   The Azure Stack VMs are placed on the **InsideSubnet** of each VNET.
 
 -   You do **not** apply any NSGs to the VM upon creation (That is, remove the NSG that gets added by default if creating the VM from the portal.
 
--   Ensure that the VM firewall rules allow the communication you are going to use to test connectivity. For testing purposes, it is recommended to disable the FW completely within the OS if at all possible.
+-   Ensure that the VM firewall rules allow the communication you are going to use to test connectivity. For testing purposes, it is recommended to disable the firewall completely within the OS if at all possible.
 
 ## Next steps
 

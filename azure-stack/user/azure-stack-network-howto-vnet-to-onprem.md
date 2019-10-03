@@ -17,7 +17,7 @@ ms.lastreviewed: 10/03/2019
 
 # Setup VPN gateway for Azure Stack using Fortigate NVA
 
-This article describes how to create a VPN connection to your Azure Stack. A VPN gateway is a type of virtual network gateway that sends encrypted traffic between your virtual network in Azure Stack and a remote VPN gateway. The procedure below deploys one VNET with a Fortigate NVA, a network virtual appliance, within a resource group. It also provides steps to configure an IPSec VPN on the Fortigate NVA.
+This article describes how to create a VPN connection to your Azure Stack. A VPN gateway is a type of virtual network gateway that sends encrypted traffic between your virtual network in Azure Stack and a remote VPN gateway. The procedure below deploys one VNET with a Fortigate NVA, a network virtual appliance, within a resource group. It also provides steps to set up an IPSec VPN on the Fortigate NVA.
 
 ## Prerequisites
 
@@ -33,7 +33,7 @@ This article describes how to create a VPN connection to your Azure Stack. A VPN
     > [!Note]  
     > If you do not have the **Fortinet Fortigate-VM For Azure BYOL** and **FortiGate NGFW - Single VM Deployment (BYOL)** available in your Azure Stack Marketplace, contact your cloud operator.
 
--  At least one available Fortigate license file to activate the Fortigate NVA. Information on how to acquire these licenses, see the Forinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
+-  To activate the Fortigate NVA you will need at least one available Fortigate license file. Information on how to acquire these licenses, see the Forinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
 
     This procedure uses the [Single FortiGate-VM deployment](ttps://docs2.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/632940/single-fortigate-vm-deployment). You can find steps on how to connect the FortiGate NVA to the Azure Stack VNET to in your on-premises network.
 
@@ -83,7 +83,7 @@ The following table summarizes the parameters that are used in these deployments
 2. Provide the Virtual network, Subnets, and VM Size details using the [Deployment parameters](#deployment-parameters) table.
 
     > [!Warning] 
-    > If the on-premises network overlaps with the IP range `172.16.0.0/16`, you must select and configure a different network range and subnets. If you wish to use different names and ranges than the ones in the [Deployment parameters](#deployment-parameters) table, use parameters that will **not** conflict with the on-premises network. Take care when setting the VNET IP range and subnet ranges within the VNET. You do not want the range to overlap with the IP ranges that exist in your on-premises network.
+    > If the on-premises network overlaps with the IP range `172.16.0.0/16`, you must select and set up a different network range and subnets. If you wish to use different names and ranges than the ones in the [Deployment parameters](#deployment-parameters) table, use parameters that will **not** conflict with the on-premises network. Take care when setting the VNET IP range and subnet ranges within the VNET. You do not want the range to overlap with the IP ranges that exist in your on-premises network.
 
 3. Select **OK**.
 
@@ -131,7 +131,7 @@ The following table summarizes the parameters that are used in these deployments
 
 ## Activate the Fortigate NVA
 
-Activate the Fortigate NVA and configure an IPSec VPN connection on each NVA.
+Activate the Fortigate NVA and set up an IPSec VPN connection on each NVA.
 
 To activate each Fortigate NVA will require a valid license file from Fortinet. The NVAs will **not** function until you have activated each NVA. For more information how to get a license file and steps to activate the NVA, see the Forinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
 
@@ -139,7 +139,7 @@ Once you've activated the NVAs, create an IPSec VPN tunnel on the NVA.
 
 1. Open the Azure Stack user portal.
 
-2. Select Resource groups. Type `forti1` in the filter and double-click the forti1 resource group.
+2. Select Resource groups. Enter `forti1` in the filter and double-click the forti1 resource group.
 
 3. Double-click the **forti1** virtual machine in the list of resource types in the resource group blade.
 
@@ -178,7 +178,7 @@ Once you've activated the NVAs, create an IPSec VPN tunnel on the NVA.
 16. Select **Pre-shared Key** and enter (and record) a pre-shared key. 
 
     > [!Note]  
-    > You will need this key to configure the connection on the on-premises VPN device, that is, they must match *exactly*.
+    > You will need this key to set up the connection on the on-premises VPN device, that is, they must match *exactly*.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image17.png)
 
@@ -210,7 +210,7 @@ Once you've activated the NVAs, create an IPSec VPN tunnel on the NVA.
 
 ## Configure the on-premises VPN
 
-The on-premises VPN device must be configured to create the IPSec VPN tunnel. The following table provides the parameters you will need to configure the on-premises VPN device. For information on how to configure the on-premises VPN device, refer tp the documentation for your device.
+The on-premises VPN device must be configured to create the IPSec VPN tunnel. The following table provides the parameters you will need to set up the on-premises VPN device. For information on how to configure the on-premises VPN device, refer tp the documentation for your device.
 
 | Parameter | Value |
 | --- | --- |
@@ -228,7 +228,7 @@ Once the on-premises VPN device is appropriately configured, the VPN tunnel can 
 
 From the Fortigate NVA:
 
-1. On the forti1 Fortigate web console, navigate to **Monitor** > **IPsec Monitor**.
+1. On the forti1 Fortigate web console, go to **Monitor** > **IPsec Monitor**.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image20.png)
 
