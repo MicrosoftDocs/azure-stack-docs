@@ -6,10 +6,10 @@ author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: overview
-ms.date: 04/24/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 04/24/2019
+ms.lastreviewed: 10/02/2019
 
 # keywords: Deploy a web app to Azure Stack
 # Intent: I am a developer who would like to deploy an app to Azure Stack. I may be using the portal, PowerShell, or the Azure CLI to do this task.

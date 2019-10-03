@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
@@ -87,4 +87,4 @@ Perform the following steps if the infrastructure and tenant services don't succ
 
 ## Next steps 
 
-Learn more about [Azure Stack diagnostic tools](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep)
+Learn more about [Azure Stack diagnostic tools](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs)
