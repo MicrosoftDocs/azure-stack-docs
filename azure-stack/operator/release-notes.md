@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2019
+ms.date: 10/03/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 08/30/2019
@@ -239,7 +239,7 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 The 1907 release of Azure Stack must be applied on the 1906 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1906.13.56](https://support.microsoft.com/help/4520375)
+- [Azure Stack hotfix 1.1906.15.60](https://support.microsoft.com/help/4524559)
 
 ### After successfully applying the 1907 update
 
@@ -366,7 +366,7 @@ The 1906 release of Azure Stack must be applied on the 1905 release with the fol
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1906.13.56](https://support.microsoft.com/help/4520375)
+- [Azure Stack hotfix 1.1906.15.60](https://support.microsoft.com/help/4524559)
 ::: moniker-end
 
 ::: moniker range="azs-1905"
