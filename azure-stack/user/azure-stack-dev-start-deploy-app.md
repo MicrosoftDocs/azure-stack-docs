@@ -6,10 +6,10 @@ author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: overview
-ms.date: 04/24/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 04/24/2019
+ms.lastreviewed: 10/02/2019
 
 # keywords:  Deploy an app to Azure Stack
 # Intent: I am a developer using Windows 10 or Linux Ubuntu who would like to deploy an app to Azure Stack.
