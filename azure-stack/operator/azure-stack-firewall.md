@@ -42,7 +42,7 @@ Some of the downsides of using NAT for Public VIP are:
 It's currently recommended to disable SSL decryption on all Azure Stack traffic. If it's supported in future updates, guidance will be provided about how to enable SSL decryption for Azure Stack.
 
 ## Edge firewall scenario
-In an edge deployment, Azure Stack is deployed directly behind the edge router or the firewall. In these scenarios, it's supported for the firewall to be above the border (Scenario 1) where it supports both active-active and active-passive firewall configurations or acting as the border device (Scenario 2) where it only supports active-active firewall configuration relying on Equal Cost Multi Path (ECMP) with either BGP or static routing for failover.
+In an edge deployment, Azure Stack is deployed directly behind the edge router or the firewall. In these scenarios, it's supported for the firewall to be above the border (Scenario 1) where it supports both active-active and active-passive firewall configurations or acting as the border device (Scenario 2) where it only supports active-active firewall configuration relying on equal-cost multi-path (ECMP) with either BGP or static routing for failover.
 
 Public routable IP addresses are specified for the public VIP pool from the external network at deployment time. In an edge scenario, it's not recommended to use public routable IPs on any other network for security purposes. This scenario enables a user to experience the full self-controlled cloud experience as in a public cloud like Azure.  
 
@@ -52,7 +52,7 @@ Public routable IP addresses are specified for the public VIP pool from the exte
 In an enterprise intranet or perimeter deployment, Azure Stack is deployed on a multi-zoned firewall or in between the edge firewall and the internal, corporate network firewall. Its traffic is then distributed between the secure, perimeter network (or DMZ), and unsecure zones as described below:
 
 - **Secure zone**: This is the internal network that uses internal or corporate routable IP addresses. The secure network can be divided, have internet outbound access through NAT on the Firewall, and is usually accessible from anywhere inside your datacenter via the internal network. All Azure Stack networks should reside in the secure zone except for the external network's public VIP pool.
-- **Perimeter zone**. The perimeter network is where external or internet facing apps like Web servers are typically deployed. It's usually monitored by a firewall to avoid attacks like DDoS and intrusion (hacking) while still allowing specified inbound traffic from the internet. Only the external network public VIP pool of Azure Stack should reside in the DMZ zone.
+- **Perimeter zone**. The perimeter network is where external or internet-facing apps like Web servers are typically deployed. It's usually monitored by a firewall to avoid attacks like DDoS and intrusion (hacking) while still allowing specified inbound traffic from the internet. Only the external network public VIP pool of Azure Stack should reside in the DMZ zone.
 - **Unsecure zone**. This is the external network, the internet. It **is not** recommended to deploy Azure Stack in the unsecure zone.
 
 ![Azure Stack perimeter network example](./media/azure-stack-firewall/perimeter-network-scenario.png)
