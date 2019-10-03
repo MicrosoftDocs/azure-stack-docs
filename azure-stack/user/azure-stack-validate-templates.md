@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2019
+ms.date: 10/03/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
@@ -21,16 +21,17 @@ ms.lastreviewed: 12/27/2018
 ---
 
 # Use the template validation tool in Azure Stack
+
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Use the template validation tool to check whether your Azure Resource Manager [templates](azure-stack-arm-templates.md) are ready to deploy to Azure Stack. The template validation tool is available as a part of Azure Stack tools. Download the Azure Stack tools by using the steps described in [Download tools from GitHub](../operator/azure-stack-powershell-download.md).
+Use the template validation tool to check whether your Azure Resource Manager [templates](azure-stack-arm-templates.md) are ready to deploy to Azure Stack. The template validation tool is available as a part of the Azure Stack tools GitHub repo. Download the Azure Stack tools by using the steps described in [Download tools from GitHub](../operator/azure-stack-powershell-download.md).
 
 ## Overview
 
 To validate a template, you must first build a cloud capabilities file, and then run the validation tool. Use the following PowerShell modules from Azure Stack tools:
 
-- In the **CloudCapabilities** folder: `AzureRM.CloudCapabilities.psm1` creates a cloud capabilities JSON file representing the services and versions in an Azure Stack cloud.
-- In the **TemplateValidator** folder: `AzureRM.TemplateValidator.psm1` uses a cloud capabilities JSON file to test templates for deployment in Azure Stack.
+- In the **CloudCapabilities** folder: **AzureRM.CloudCapabilities.psm1** creates a cloud capabilities JSON file representing the services and versions in an Azure Stack cloud.
+- In the **TemplateValidator** folder: **AzureRM.TemplateValidator.psm1** uses a cloud capabilities JSON file to test templates for deployment in Azure Stack.
 
 ## Build the cloud capabilities file
 
@@ -46,7 +47,7 @@ Before you use the template validator, run the **AzureRM.CloudCapabilities** Pow
     Import-Module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
     ```
 
-3. Use the `Get-CloudCapabilities` cmdlet to retrieve service versions and create a cloud capabilities JSON file. If you don't specify `-OutputPath`, the file AzureCloudCapabilities.Json is created in the current directory. Use your actual Azure location:
+3. Use the **Get-CloudCapabilities** cmdlet to retrieve service versions and create a cloud capabilities JSON file. If you do not specify `-OutputPath`, the file **AzureCloudCapabilities.json** is created in the current directory. Use your actual Azure location:
 
     ```powershell
     Get-AzureRMCloudCapability -Location <your location> -Verbose
@@ -54,7 +55,7 @@ Before you use the template validator, run the **AzureRM.CloudCapabilities** Pow
 
 ## Validate templates
 
-Use these steps to validate templates by using the **AzureRM.TemplateValidator** PowerShell module. You can use your own templates, or validate the [Azure Stack Quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates).
+Use these steps to validate templates by using the **AzureRM.TemplateValidator** PowerShell module. You can use your own templates, or use the [Azure Stack Quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates).
 
 1. Import the **AzureRM.TemplateValidator.psm1** PowerShell module:
 
@@ -91,7 +92,7 @@ The template validator cmdlet supports the following parameters.
 
 ### Examples
 
-This example validates all of the [Azure Stack Quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates) downloaded to local storage. The example also validates virtual machine (VM) sizes and extensions against Azure Stack Development Kit capabilities:
+This example validates all of the [Azure Stack Quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates) downloaded to local storage. The example also validates virtual machine (VM) sizes and extensions against ASDK capabilities:
 
 ```powershell
 test-AzureRMTemplate -TemplatePath C:\AzureStack-Quickstart-Templates `
