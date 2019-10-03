@@ -17,19 +17,19 @@ ms.lastreviewed: 10/03/2019
 
 # How to connect two VNETs through peering
 
-This article describes how to create a connection between two virtual networks in the same environment. When you set up the connections, you learn how VPN gateways in Azure Stack work. Connect two VNETs within the same Azure Stack environment using Fortinet Fortigate. This procedure deploys two VNETs with a Fortigate NVA, a network virtual appliance, in each VNET each within a separate resource group. It also details the changes required to set up an IPSec VPN between the two VNETs. Repeat the steps in this article for each VNET deployment.
+This article describes how to create a connection between two virtual networks in the same environment. When you set up the connections, you learn how VPN gateways in Azure Stack work. Connect two VNETs within the same Azure Stack environment using Fortinet FortiGate. This procedure deploys two VNETs with a FortiGate NVA, a network virtual appliance, in each VNET each within a separate resource group. It also details the changes required to set up an IPSec VPN between the two VNETs. Repeat the steps in this article for each VNET deployment.
 
 ## Prerequisites
 
 -   Access to an Azure Stack integrated system or ASDK with available capacity to deploy the required compute, network, and resource requirements needed for this solution.
 
--  A network virtual appliance (NVA) solution downloaded and published to the Azure Stack Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the [Fortinet Fortigate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/fortinet.fortinet-fortigate-singlevm).
+-  A network virtual appliance (NVA) solution downloaded and published to the Azure Stack Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the [Fortinet FortiGate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/fortinet.fortinet-FortiGate-singlevm).
 
--  At least two available Fortigate license files to activate the Fortigate NVA. Information on how to get these licenses, see the Forinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
+-  At least two available FortiGate license files to activate the FortiGate NVA. Information on how to get these licenses, see the Fortinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
 
-    This procedure uses the [Single FortiGate-VM deployment](ttps://docs2.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/632940/single-fortigate-vm-deployment). You can find steps on how to connect the FortiGate NVA to the Azure Stack VNET to in your on-premises network.
+    This procedure uses the [Single FortiGate-VM deployment](ttps://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/632940/single-FortiGate-vm-deployment). You can find steps on how to connect the FortiGate NVA to the Azure Stack VNET to in your on-premises network.
 
-    For more information on how to deploy the FortiGate solution in an active-passive (HA) set up, see the details in the Forinet Document Library article [HA for FortiGate-VM on Azure](https://docs2.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/983245/ha-for-fortigate-vm-on-azure).
+    For more information on how to deploy the FortiGate solution in an active-passive (HA) set up, see the details in the Fortinet Document Library article [HA for FortiGate-VM on Azure](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/983245/ha-for-FortiGate-vm-on-azure).
 
 ## Deployment parameters
 
@@ -48,7 +48,7 @@ The following table summarizes the parameters that are used in these deployments
 | Public VNET address prefix | 172.16.0.0/24* |
 | Inside VNET subnet name | forti1-InsideSubnet |
 | Inside VNET subnet prefix | 172.16.1.0/24* |
-| VM Size of Fortigate NVA | Standard F2s_v2 |
+| VM Size of FortiGate NVA | Standard F2s_v2 |
 | Public IP address name | forti1-publicip1 |
 | Public IP address type | Static |
 
@@ -65,7 +65,7 @@ The following table summarizes the parameters that are used in these deployments
 | Public VNET address prefix | 172.17.0.0/24* |
 | Inside VNET subnet name | Forti2-InsideSubnet |
 | Inside VNET subnet prefix | 172.17.1.0/24* |
-| VM Size of Fortigate NVA | Standard F2s_v2 |
+| VM Size of FortiGate NVA | Standard F2s_v2 |
 | Public IP address name | Forti2-publicip1 |
 | Public IP address type | Static |
 
@@ -78,7 +78,7 @@ The following table summarizes the parameters that are used in these deployments
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image5.png)
 
-2.  Select **Create a resource** and search for `fortigate`.
+2.  Select **Create a resource** and search for `FortiGate`.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image6.png)
 
@@ -135,13 +135,13 @@ Perform these steps for both deployments, forti1-rg1 and forti2-rg1.
 
 8. Enter the IP network range that defines the network range of the on-premises network to which the VPN will connect.
 
-9. Select **Virtual appliance** for **Next hop type*' and `172.16.1.4`. Use your IP range if you are using a different IP range.
+9. Select **Virtual appliance** for **Next hop type** and `172.16.1.4`. Use your IP range if you are using a different IP range.
 
     ![Next hop type](./media/azure-stack-network-howto-vnet-to-onprem/image12.png)
 
 10. Select **Save**.
 
-You will need a valid license file from Fortinet to activate each Fortigate NVA. The NVAs will **not** function until you have activated each NVA. For more information how to get a license file and steps to activate the NVA, see the Forinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/fortigate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
+You will need a valid license file from Fortinet to activate each FortiGate NVA. The NVAs will **not** function until you have activated each NVA. For more information how to get a license file and steps to activate the NVA, see the Fortinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
 
 Two license files will need to be acquired – one for each NVA.
 
@@ -157,7 +157,7 @@ Following the below steps for both the forti1 NVA and forti2 NVA:
 
 2.  Copy the assigned IP address, open a browser, and paste the address into the address bar. Your browser may warn you that the security certificate is not trusted. Continue anyway.
 
-4.  Enter the fortigate administrative user name and password you provided during the deployment.
+4.  Enter the FortiGate administrative user name and password you provided during the deployment.
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image14.png)
 
@@ -169,7 +169,7 @@ Following the below steps for both the forti1 NVA and forti2 NVA:
 
 7.  Select **Backup config and upgrade** > **Continue**.
 
-8.  The NVA updates its firmware to the latest build and reboots. The process takes about five minutes. Log back into the Fortigate web console.
+8.  The NVA updates its firmware to the latest build and reboots. The process takes about five minutes. Log back into the FortiGate web console.
 
 10.  Click **VPN** > **IPSec Wizard**.
 
@@ -228,7 +228,7 @@ Repeat the steps for the other NVA.
 
 Once the above has been completed for *both* NVAs:
 
-1.  On the forti2 Fortigate web console, select to **Monitor** > **IPsec Monitor**. 
+1.  On the forti2 FortiGate web console, select to **Monitor** > **IPsec Monitor**. 
 
     ![](./media/azure-stack-network-howto-vnet-to-vnet/image20.png)
 
@@ -238,7 +238,7 @@ Once the above has been completed for *both* NVAs:
 
 ## Test and validate connectivity
 
-You should now be able to route in between each VNET via the Fortigate NVAs. To validate the connection, create an Azure Stack VM in each VNET's InsideSubnet. Creating an Azure Stack VM can be done via the portal, CLI, or PowerShell. When creating the VMs:
+You should now be able to route in between each VNET via the FortiGate NVAs. To validate the connection, create an Azure Stack VM in each VNET's InsideSubnet. Creating an Azure Stack VM can be done via the portal, CLI, or PowerShell. When creating the VMs:
 
 -   The Azure Stack VMs are placed on the **InsideSubnet** of each VNET.
 
@@ -249,4 +249,4 @@ You should now be able to route in between each VNET via the Fortigate NVAs. To 
 ## Next steps
 
 [Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)  
-[Offer a network solution in Azure Stack with Fortinet Fortigate](../operator/azure-stack-network-solutions-enable.md)  
+[Offer a network solution in Azure Stack with Fortinet FortiGate](../operator/azure-stack-network-solutions-enable.md)  
