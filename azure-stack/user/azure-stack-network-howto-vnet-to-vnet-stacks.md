@@ -1,6 +1,6 @@
 ---
-title: How to establish a VNET to VNET connection with Fortinet FortiGate NVA | Microsoft Docs
-description: Learn how to establish a VNET to VNET connection with Fortinet FortiGate NVA
+title: How to establish a VNET to VNET connection in Azure Stack with Fortinet FortiGate NVA | Microsoft Docs
+description: Learn how to establish a VNET to VNET connection in Azure Stack with Fortinet FortiGate NVA
 services: azure-stack
 author: mattbriggs
 
@@ -15,7 +15,7 @@ ms.lastreviewed: 10/03/2019
 # Intent: As an Azure Stack user, I want connect two VNETs so that they can share resources.
 ---
 
-# How to establish a VNET to VNET connection with Fortinet FortiGate NVA
+# How to establish a VNET to VNET connection in Azure Stack with Fortinet FortiGate NVA
 
 In this article, you'll connect a VNET in one Azure Stack to a VNET in another Azure Stack using Fortinet FortiGate NVA, a network virtual appliance.
 
@@ -28,7 +28,7 @@ This article addresses the current Azure Stack limitation, which lets tenants to
     > [!Note]  
     > These instructions will **not** work with an Azure Stack Development Kit (ASDK) because of the network limitations in the ASDK. For more information, see [ASDK requirements and considerations](https://docs.microsoft.com/azure-stack/asdk/asdk-deploy-considerations).
 
--  A network virtual appliance (NVA) solution downloaded and published to the Azure Stack Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the [Fortinet FortiGate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/fortinet.fortinet-FortiGate-singlevm).
+-  A network virtual appliance (NVA) solution downloaded and published to the Azure Stack Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the [Fortinet FortiGate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-FortiGate-singlevm).
 
 -  At least two available FortiGate license files to activate the FortiGate NVA. Information on how to get these licenses, see the Fortinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
 

@@ -19,7 +19,7 @@ ms.lastreviewed: 09/30/2019
 
 You can add FortiGate Next-Generation Firewall to your Azure Stack Marketplace. FortiGate enables your users to create network solutions such as virtual private network (VPN) to Azure Stack and VNET peering. A network virtual appliance (NVA) controls the flow of network traffic from a perimeter network to other networks or subnets. 
 
-For more information about FortiGate in the Azure Marketplace, see [Fortinet FortiGate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/fortinet.fortinet-FortiGate-singlevm).
+For more information about FortiGate in the Azure Marketplace, see [Fortinet FortiGate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-FortiGate-singlevm).
 
 ## Download the Required Azure Stack Marketplace items
 
