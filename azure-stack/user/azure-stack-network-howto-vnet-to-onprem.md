@@ -87,7 +87,7 @@ The following table summarizes the parameters that are used in these deployments
 
 3. Select **OK**.
 
-4. Configure the Public IP for the Fortgate NVA:
+4. Configure the Public IP for the Fortigate NVA:
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image8.png)
 
