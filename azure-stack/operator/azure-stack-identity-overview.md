@@ -46,7 +46,7 @@ A directory is a container that holds information about *users*, *applications*,
 
 A directory tenant is an *organization*, such as Microsoft or your own company.
 
-- Azure AD supports multiple tenants, and it can support multiple organizations, each in its own directory. If you use Azure AD and have multiple tenants, you can grant applications and users from one tenant access to other tenants of that same directory.
+- Azure AD supports multiple tenants, and it can support multiple organizations, each in its own directory. If you use Azure AD and have multiple tenants, you can grant apps and users from one tenant access to other tenants of that same directory.
 - AD FS supports only a single tenant and, therefore, only a single organization.
 
 ### Users and groups
@@ -57,7 +57,7 @@ How you create and manage users and groups depends on the identity solution you 
 
 In Azure Stack, user accounts:
 
-- Are created in the *username\@domain* format. Although AD FS maps user accounts to an Active Directory instance, AD FS does not support the use of the *\\\<domain>\\\<alias>* format.
+- Are created in the *username\@domain* format. Although AD FS maps user accounts to an Active Directory instance, AD FS doesn't support the use of the *\\\<domain>\\\<alias>* format.
 - Can be set up to use multi-factor authentication.
 - Are restricted to the directory where they first register, which is their organization's directory.
 - Can be imported from your on-premises directories. For more information, see  [Integrate your on-premises directories with Azure Active Directory](/azure/active-directory/connect/active-directory-aadconnect).
@@ -68,53 +68,53 @@ When you sign in to your organization's tenant portal, you use the *https:\//por
 
 Guest users are user accounts from other directory tenants that have been granted access to resources in your directory. To support guest users, you use Azure AD and enable support for multi-tenancy. When support is enabled, you can invite guest users to access resources in your directory tenant, which in turn enables their collaboration with outside organizations.
 
-To invite guest users, cloud operators and users can use [Azure AD B2B collaboration](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Invited users get access to documents, resources, and applications from your directory, and you maintain control over your own resources and data. 
+To invite guest users, cloud operators and users can use [Azure AD B2B collaboration](/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b). Invited users get access to documents, resources, and apps from your directory, and you maintain control over your own resources and data.
 
 As a guest user, you can sign in to another organization's directory tenant. To do so, you append that organization's directory name to the portal URL. For example, if you belong to the Contoso organization and want to sign in to the Fabrikam directory, you use https:\//portal.local.azurestack.external/fabrikam.onmicrosoft.com.
 
-### Applications
+### Apps
 
-You can register applications to Azure AD or AD FS, and then offer the applications to users in your organization.
+You can register apps to Azure AD or AD FS, and then offer the apps to users in your organization.
 
-Applications include:
+Apps include:
 
-- **Web application**: Examples include the Azure portal and Azure Resource Manager. They support Web API calls.
+- **Web apps**: Examples include the Azure portal and Azure Resource Manager. They support Web API calls.
 - **Native client**: Examples include Azure PowerShell, Visual Studio, and Azure CLI.
 
-Applications can support two types of tenancy:
+Apps can support two types of tenancy:
 
-- **Single-tenant**: Supports users and services only from the same directory where the application is registered.
+- **Single-tenant**: Supports users and services only from the same directory where the app is registered.
 
   > [!NOTE]
-  > Because AD FS supports only a single directory, applications you create in an AD FS topology are, by design, single-tenant applications.
+  > Because AD FS supports only a single directory, apps you create in an AD FS topology are, by design, single-tenant apps.
 
-- **Multi-tenant**: Supports use by users and services from both the directory where the application is registered and additional tenant directories. With multi-tenant applications, users of another tenant directory (another Azure AD tenant) can sign in to your application. 
+- **Multi-tenant**: Supports use by users and services from both the directory where the app is registered and additional tenant directories. With multi-tenant apps, users of another tenant directory (another Azure AD tenant) can sign in to your app.
 
   For more information about multi-tenancy, see [Enable multi-tenancy](azure-stack-enable-multitenancy.md).
 
   For more information about developing a multi-tenant app, see [Multi-tenant apps](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
 
-When you register an application, you create two objects:
+When you register an app, you create two objects:
 
-- **Application object**: The global representation of the application across all tenants. This relationship is one-to-one with the software application and exists only in the directory where the application is first registered.
+- **Application object**: The global representation of the app across all tenants. This relationship is one-to-one with the software app and exists only in the directory where the app is first registered.
 
-- **Service principal object**: A credential that is created for an application in the directory where the application is first registered. A service principal is also created in the directory of each additional tenant where that application is used. This relationship can be one-to-many with the software application.
+- **Service principal object**: A credential that's created for an app in the directory where the app is first registered. A service principal is also created in the directory of each additional tenant where that app is used. This relationship can be one-to-many with the software app.
 
-To learn more about application and service principal objects, see [Application and service principal objects in Azure Active Directory](/azure/active-directory/develop/active-directory-application-objects).
+To learn more about app and service principal objects, see [Application and service principal objects in Azure Active Directory](/azure/active-directory/develop/active-directory-application-objects).
 
 ### Service principals
 
-A service principal is a set of *credentials* for an application or service that grant access to resources in Azure Stack. The use of a service principal separates the application permissions from the permissions of the user of the application.
+A service principal is a set of *credentials* for an app or service that grant access to resources in Azure Stack. The use of a service principal separates the app permissions from the permissions of the user of the app.
 
-A service principal is created in each tenant where the application is used. The service principal establishes an identity for sign-in and access to resources (such as users) that are secured by that tenant.
+A service principal is created in each tenant where the app is used. The service principal establishes an identity for sign-in and access to resources (such as users) that are secured by that tenant.
 
-- A single-tenant application has only one service principal, in the directory where it is first created. This service principal is created and consents to being used during registration of the application.
-- A multi-tenant web application or API has a service principal that's created in each tenant where a user from that tenant consents to the use of the application.
+- A single-tenant app has only one service principal which is in the directory where it's first created. This service principal is created and consents to being used during registration of the app.
+- A multi-tenant web app or API has a service principal that's created in each tenant where a user from that tenant consents to the use of the app.
 
-Credentials for service principals can be either a key that's generated through the Azure portal or a certificate. The use of a certificate is suited for automation because certificates are considered more secure than keys. 
+Credentials for service principals can be either a key that's generated through the Azure portal or a certificate. The use of a certificate is suited for automation because certificates are considered more secure than keys.
 
 > [!NOTE]
-> When you use AD FS with Azure Stack, only the administrator can create service principals. With AD FS, service principals require certificates and are created through the privileged endpoint (PEP). For more information, see [Provide applications access to Azure Stack](azure-stack-create-service-principals.md).
+> When you use AD FS with Azure Stack, only the administrator can create service principals. With AD FS, service principals require certificates and are created through the privileged endpoint (PEP). For more information, see [Use an app identity to access resources](azure-stack-create-service-principals.md).
 
 To learn about service principals for Azure Stack, see [Create service principals](azure-stack-create-service-principals.md).
 
