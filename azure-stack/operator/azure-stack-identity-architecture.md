@@ -23,7 +23,8 @@ ms.lastreviewed: 05/09/2019
 
 When choosing an identity provider to use with Azure Stack, you should understand the important differences between the options of Azure Active Directory (Azure AD) and Active Directory Federation Services (AD FS).
 
-## Capabilities and limitations 
+## Capabilities and limitations
+
 The identity provider that you choose can limit your options, including support for multi-tenancy.
 
 |Capability or scenario        |Azure AD  |AD FS  |
@@ -40,9 +41,11 @@ The identity provider that you choose can limit your options, including support 
 |Applications can use identity provider for sign-in |Yes |Yes (requires apps to federate with on-premises AD FS instances) |
 
 ## Topologies
-The following sections discuss the various identity topologies that you can use.
 
-### Azure AD: single-tenant topology 
+The following sections discuss the different identity topologies that you can use.
+
+### Azure AD: single-tenant topology
+
 By default, when you install Azure Stack and use Azure AD, Azure Stack uses a single-tenant topology.
 
 A single-tenant topology is useful when:
@@ -59,6 +62,7 @@ This topology features the following characteristics:
 - To enable a user from another directory to access this Azure Stack environment, you must [invite the user as a guest](azure-stack-identity-overview.md#guest-users) to the tenant directory.
 
 ### Azure AD: multi-tenant topology
+
 Cloud operators can configure Azure Stack to allow access to apps by tenants from one or more organizations. Users access apps through the Azure Stack user portal. In this configuration, the administrator portal (used by the cloud operator) is limited to users from a single directory.
 
 A multi-tenant topology is useful when:
@@ -73,7 +77,8 @@ This topology features the following characteristics:
 - Users from one organization should be unable to grant access to resources to users who are outside their organization.
 - Identities for administrators (cloud operators) can be in a separate directory tenant from the identities for users. This separation provides account isolation at the identity provider level.
  
-### AD FS  
+### AD FS
+
 The AD FS topology is required when either of the following conditions is true:
 
 - Azure Stack doesn't connect to the internet.
@@ -95,5 +100,6 @@ This topology features the following characteristics:
   - Service principals and registrations for apps are managed in the built-in Active Directory instance.
 
 ## Next steps
+
 - [Identity overview](azure-stack-identity-overview.md)
 - [Datacenter integration - identity](azure-stack-integrate-identity.md)
