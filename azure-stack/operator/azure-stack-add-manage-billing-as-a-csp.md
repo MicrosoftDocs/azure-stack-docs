@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/20/2019
+ms.date: 10/02/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/15/2018
@@ -23,7 +23,7 @@ ms.lastreviewed: 10/15/2018
 
 *Applies to: Azure Stack integrated systems*
 
-This article describes how to register Azure Stack as a Cloud Service Provider (CSP) and how to add customers.
+This article describes how to register Azure Stack as a Cloud Solution Provider (CSP) and how to add customers.
 
 As a CSP, you work with diverse customers using your Azure Stack. Each customer has a CSP subscription in Azure. You must direct usage from your Azure Stack to each user subscription.
 
@@ -44,7 +44,7 @@ Choose the type of shared services account that you use for Azure Stack. The typ
 
 Azure Partner Shared Services (APSS) subscriptions are the preferred choice for registration when a direct CSP or a CSP distributor operates Azure Stack.
 
-APSS subscriptions are associated with a shared-services tenant. When you register Azure Stack, you provide credentials for an account that's an owner of the subscription. The account you use to register Azure Stack can be different from the admin account that you use for deployment. Furthermore, the two accounts don't need to belong to the same domain; you can deploy using the tenant that you already use. For example, you can use `ContosoCSP.onmicrosoft.com`, then register using a different tenant; for example, `IURContosoCSP.onmicrosoft.com`. You must remember to sign in using `ContosoCSP.onmicrosoft.com` when you perform daily Azure Stack administration. You sign in to Azure using `IURContosoCSP.onmicrosoft.com` when you need to perform registration operations.
+APSS subscriptions are associated with a shared-services tenant. When you register Azure Stack, you provide credentials for an account that's an owner of the subscription. The account you use to register Azure Stack can be different from the admin account that you use for deployment. Furthermore, the two accounts do not need to belong to the same domain; you can deploy using the tenant that you already use. For example, you can use `ContosoCSP.onmicrosoft.com`, then register using a different tenant; for example, `IURContosoCSP.onmicrosoft.com`. You must remember to sign in using `ContosoCSP.onmicrosoft.com` when you perform daily Azure Stack administration. You sign in to Azure using `IURContosoCSP.onmicrosoft.com` when you need to perform registration operations.
 
 For a description of APSS subscriptions and how to create them, see [Add Azure Partner Shared Services](/partner-center/shared-services).
 
@@ -58,7 +58,7 @@ Use the APSS subscription created using the info in the preceding section to reg
 
 ## Add end customer
 
-To configure Azure Stack so that when a new tenant uses resources, their usage is reported to their CSP subscription, see [Add tenant for usage and billing to Azure Stack](azure-stack-csp-howto-register-tenants.md).
+To configure Azure Stack so that a new tenant's resource usage is reported to their CSP subscription, see [Add tenant for usage and billing to Azure Stack](azure-stack-csp-howto-register-tenants.md).
 
 ## Charge the right subscriptions
 
@@ -69,13 +69,13 @@ Using registration, Azure Stack can:
 - Forward Azure Stack usage data to Azure Commerce and bill an Azure subscription.
 - Report each customer's usage on a different subscription with a multi-tenant Azure Stack deployment. Multi-tenancy enables Azure Stack to support different organizations on the same Azure Stack instance.
 
-For each Azure Stack, there's one default subscription and many tenant subscriptions. The default subscription is an Azure subscription that's charged if there's no tenant-specific subscription. It must be the first subscription to be registered. For multi-tenant usage reporting to work, the subscription must be a CSP or APSS subscription.
+For each Azure Stack, there is one default subscription and many tenant subscriptions. The default subscription is an Azure subscription that is charged if there's no tenant-specific subscription. It must be the first subscription to be registered. For multi-tenant usage reporting to work, the subscription must be a CSP or APSS subscription.
 
-Then, the registration is updated with an Azure subscription for each tenant that uses Azure Stack. Tenant subscriptions must be of the CSP type, and must roll up to the partner who owns the default subscription. You cant register someone else's customers.
+Then, the registration is updated with an Azure subscription for each tenant that uses Azure Stack. Tenant subscriptions must be of the CSP type, and must roll up to the partner who owns the default subscription. You cannot register someone else's customers.
 
-When Azure Stack forwards usage info to global Azure, a service in Azure consults the registration and maps each tenant's usage to the appropriate tenant subscription. If a tenant hasn't been registered, that usage goes to the default subscription for the Azure Stack instance from which it originated.
+When Azure Stack forwards usage info to global Azure, a service in Azure consults the registration and maps each tenant's usage to the appropriate tenant subscription. If a tenant has not been registered, that usage goes to the default subscription for the Azure Stack instance from which it originated.
 
-Since tenant subscriptions are CSP subscriptions, their bill is sent to the CSP partner, and usage info isn't visible to the end customer.
+Because tenant subscriptions are CSP subscriptions, their bill is sent to the CSP partner, and usage info is not visible to the end customer.
 
 ## Next steps
 
