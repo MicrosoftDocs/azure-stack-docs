@@ -120,7 +120,7 @@ To learn about service principals for Azure Stack, see [Create service principal
 
 ### Services
 
-Services in Azure Stack that interact with the identity provider are registered as applications with the identity provider. Like applications, registration enables a service to authenticate with the identity system.
+Services in Azure Stack that interact with the identity provider are registered as apps with the identity provider. Like apps, registration enables a service to authenticate with the identity system.
 
 All Azure services use [OpenID Connect](/azure/active-directory/develop/active-directory-protocols-openid-connect-code) protocols and [JSON Web Tokens](/azure/active-directory/develop/active-directory-token-and-claims) to establish their identity. Because Azure AD and AD FS use protocols consistently, you can use [Azure Active Directory Authentication Library](/azure/active-directory/develop/active-directory-authentication-libraries) (ADAL) to authenticate on-premises or to Azure (in a connected scenario). With ADAL, you can also use tools such as Azure PowerShell and Azure CLI for cross-cloud and on-premises resource management.
 
@@ -128,21 +128,21 @@ All Azure services use [OpenID Connect](/azure/active-directory/develop/active-d
 
 Identities for Azure Stack include user accounts, groups, and service principals.
 
-When you install Azure Stack, several built-in applications and services automatically register with your identity provider in the directory tenant. Some services that register are used for administration. Other services are available for users. The default registrations give core services identities that can interact both with each other and with identities that you add later.
+When you install Azure Stack, several built-in apps and services automatically register with your identity provider in the directory tenant. Some services that register are used for administration. Other services are available for users. The default registrations give core services identities that can interact both with each other and with identities that you add later.
 
-If you set up Azure AD with multi-tenancy, some applications propagate to the new directories.
+If you set up Azure AD with multi-tenancy, some apps propagate to the new directories.
 
 ## Authentication and authorization
 
-### Authentication by applications and users
+### Authentication by apps and users
 
 ![Identity between layers of Azure Stack](media/azure-stack-identity-overview/identity-layers.png)
 
-For applications and users, the architecture of Azure Stack is described by four layers. Interactions between each of these layers can use different types of authentication.
+For apps and users, the architecture of Azure Stack is described by four layers. Interactions between each of these layers can use different types of authentication.
 
 |Layer    |Authentication between layers  |
 |---------|---------|
-|Tools and clients, such as the Admin portal     | To access or modify a resource in Azure Stack, tools and clients use a [JSON Web Token](/azure/active-directory/develop/active-directory-token-and-claims) to place a call to Azure Resource Manager. <br>Azure Resource Manager validates the JSON Web Token and peeks at the *claims* in the issued token to estimate the level of authorization that user or service principal has in Azure Stack. |
+|Tools and clients, such as the administrator portal     | To access or modify a resource in Azure Stack, tools and clients use a [JSON Web Token](/azure/active-directory/develop/active-directory-token-and-claims) to place a call to Azure Resource Manager. <br>Azure Resource Manager validates the JSON Web Token and peeks at the *claims* in the issued token to estimate the level of authorization that user or service principal has in Azure Stack. |
 |Azure Resource Manager and its core services     |Azure Resource Manager communicates with resource providers to transfer communication from users. <br> Transfers use *direct imperative* calls or *declarative* calls via [Azure Resource Manager templates](/azure-stack/user/azure-stack-arm-templates).|
 |Resource providers     |Calls passed to resource providers are secured with certificate-based authentication. <br>Azure Resource Manager and the resource provider then stay in communication through an API. For every call that's received from Azure Resource Manager, the resource provider validates the call with that certificate.|
 |Infrastructure and business logic     |Resource providers communicate with business logic and infrastructure by using an authentication mode of their choice. The default resource providers that ship with Azure Stack use Windows Authentication to secure this communication.|
@@ -154,22 +154,22 @@ For applications and users, the architecture of Azure Stack is described by four
 To authenticate with the identity provider and receive a JSON Web Token, you must have the following information:
 
 1. **URL for the identity system (Authority)**: The URL at which your identity provider can be reached. For example, *https:\//login.windows.net*.
-2. **App ID URI for Azure Resource Manager**: The unique identifier for Azure Resource Manager that is registered with your identity provider. It is also unique to each Azure Stack installation.
+2. **App ID URI for Azure Resource Manager**: The unique identifier for Azure Resource Manager that's registered with your identity provider. It's also unique to each Azure Stack installation.
 3. **Credentials**: The credential you use to authenticate with the identity provider.
 4. **URL for Azure Resource Manager**: The URL is the location of the Azure Resource Manager service. For example, *https:\//management.azure.com* or *https:\//management.local.azurestack.external*.
 
-When a principal (a client, application, or user) makes an authentication request to access a resource, the request must include:
+When a principal (a client, apps, or user) makes an authentication request to access a resource, the request must include:
 
 - The principal's credentials.
 - The app ID URI of the resource that the principal wants to access.
 
-The credentials are validated by the identity provider. The identity provider also validates that the app ID URI is for a registered application, and that the principal has the correct privileges to obtain a token for that resource. If the request is valid, a JSON Web Token is granted.
+The credentials are validated by the identity provider. The identity provider also validates that the app ID URI is for a registered apps, and that the principal has the correct privileges to obtain a token for that resource. If the request is valid, a JSON Web Token is granted.
 
 The token must then pass in the header of a request to Azure Resource Manager. Azure Resource Manager does the following, in no specific order:
 
 - Validates the *issuer* (iss) claim to confirm that the token is from the correct identity provider.
 - Validates the *audience* (aud) claim to confirm that the token was issued to Azure Resource Manager.
-- Validates that the JSON Web Token is signed with a certificate that is configured through OpenID is known to Azure Resource Manager.
+- Validates that the JSON Web Token is signed with a certificate that's configured through OpenID and is known to Azure Resource Manager.
 - Review the *issued at* (iat) and *expiration* (exp) claims to confirm that the token is active and can be accepted.
 
 When all validations are complete, Azure Resource Manager uses the *objected* (oid) and the *groups* claims to make a list of resources that the principal can access.
@@ -177,12 +177,11 @@ When all validations are complete, Azure Resource Manager uses the *objected* (o
 ![Diagram of the token exchange protocol](media/azure-stack-identity-overview/token-exchange.png)
 
 > [!NOTE]
-> After deployment, Azure Active Directory global administrator permission is not required. However, some operations may require the global administrator credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily re-instate the account's global administrator permissions or use a separate global administrator account that is an owner of the *default provider subscription*.
+> After deployment, Azure Active Directory global administrator permission isn't required. However, some operations may require the global admin credentials (for example, a resource provider installer script or a new feature requiring a permission to be granted). You can either temporarily re-instate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
 
 ### Use Role-Based Access Control
 
-Role-Based Access Control (RBAC) in Azure Stack is consistent with the implementation in Microsoft Azure. You can manage access to resources by assigning the appropriate RBAC role to users, groups, and applications.
-For information about how to use RBAC with Azure Stack, see the following articles:
+Role-Based Access Control (RBAC) in Azure Stack is consistent with the implementation in Microsoft Azure. You can manage access to resources by assigning the appropriate RBAC role to users, groups, and apps. For information about how to use RBAC with Azure Stack, see the following articles:
 
 - [Get started with Role-Based Access Control in the Azure portal](/azure/role-based-access-control/overview).
 - [Use Role-Based Access Control to manage access to your Azure subscription resources](/azure/role-based-access-control/role-assignments-portal).
