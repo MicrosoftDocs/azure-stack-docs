@@ -1,6 +1,6 @@
 ---
-title: Overview of identity for Azure Stack | Microsoft Docs
-description: Learn about the identity systems you can use with Azure Stack.
+title: Overview of identity providers for Azure Stack | Microsoft Docs
+description: Learn about the identity providers you can use with Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
@@ -20,7 +20,7 @@ ms.lastreviewed: 01/14/2019
 
 ---
 
-# Overview of identity for Azure Stack
+# Overview of identity providers for Azure Stack
 
 Azure Stack requires Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS), backed by Active Directory as an identity provider. The choice of a provider is a one-time decision that you make when you first deploy Azure Stack. The concepts and authorization details in this article can help you choose between identity providers.
 
@@ -34,7 +34,7 @@ For more information about your options, which depend on your Azure Stack enviro
 - Azure Stack deployment kit: [Identity considerations](azure-stack-datacenter-integration.md#identity-considerations).
 - Azure Stack integrated systems: [Deployment planning decisions for Azure Stack integrated systems](azure-stack-connection-models.md).
 
-## Common concepts for identity
+## Common concepts for identity providers
 
 The next sections discuss common concepts about identity providers and their use in Azure Stack.
 
@@ -62,7 +62,7 @@ In Azure Stack, user accounts:
 - Are restricted to the directory where they first register, which is their organization's directory.
 - Can be imported from your on-premises directories. For more information, see  [Integrate your on-premises directories with Azure Active Directory](/azure/active-directory/connect/active-directory-aadconnect).
 
-When you sign in to your organization's tenant portal, you use the *https:\//portal.local.azurestack.external* URL. When signing into the Azure Stack portal from domains other than the one used to register Azure Stack, the domain name used to register Azure Stack must be appended to the portal url. For example, if Azure Stack has been registered with fabrikam.onmicrosoft.com and the user account logging in is admin@contoso.com, the url to use to log into the user portal would be: https:\//portal.local.azurestack.external/fabrikam.onmicrosoft.com.
+When you sign in to your organization's tenant portal, you use the *https:\//portal.local.azurestack.external* URL. When signing into the Azure Stack portal from domains other than the one used to register Azure Stack, the domain name used to register Azure Stack must be appended to the portal url. For example, if Azure Stack has been registered with fabrikam.onmicrosoft.com and the user account logging in is admin@contoso.com, the URL to use to log into the user portal would be: https:\//portal.local.azurestack.external/fabrikam.onmicrosoft.com.
 
 ### Guest users
 
@@ -108,7 +108,7 @@ A service principal is a set of *credentials* for an app or service that grant a
 
 A service principal is created in each tenant where the app is used. The service principal establishes an identity for sign-in and access to resources (such as users) that are secured by that tenant.
 
-- A single-tenant app has only one service principal which is in the directory where it's first created. This service principal is created and consents to being used during registration of the app.
+- A single-tenant app has only one service principal, which is in the directory where it's first created. This service principal is created and consents to being used during registration of the app.
 - A multi-tenant web app or API has a service principal that's created in each tenant where a user from that tenant consents to the use of the app.
 
 Credentials for service principals can be either a key that's generated through the Azure portal or a certificate. The use of a certificate is suited for automation because certificates are considered more secure than keys.
@@ -163,13 +163,13 @@ When a principal (a client, apps, or user) makes an authentication request to ac
 - The principal's credentials.
 - The app ID URI of the resource that the principal wants to access.
 
-The credentials are validated by the identity provider. The identity provider also validates that the app ID URI is for a registered apps, and that the principal has the correct privileges to obtain a token for that resource. If the request is valid, a JSON Web Token is granted.
+The credentials are validated by the identity provider. The identity provider also validates that the app ID URI is for a registered app, and that the principal has the correct privileges to obtain a token for that resource. If the request is valid, a JSON Web Token is granted.
 
 The token must then pass in the header of a request to Azure Resource Manager. Azure Resource Manager does the following, in no specific order:
 
 - Validates the *issuer* (iss) claim to confirm that the token is from the correct identity provider.
 - Validates the *audience* (aud) claim to confirm that the token was issued to Azure Resource Manager.
-- Validates that the JSON Web Token is signed with a certificate that's configured through OpenID and is known to Azure Resource Manager.
+- Validates that the JSON Web Token is signed with a certificate that's configured through OpenID and known to Azure Resource Manager.
 - Review the *issued at* (iat) and *expiration* (exp) claims to confirm that the token is active and can be accepted.
 
 When all validations are complete, Azure Resource Manager uses the *objected* (oid) and the *groups* claims to make a list of resources that the principal can access.
