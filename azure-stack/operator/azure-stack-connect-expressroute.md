@@ -11,7 +11,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/22/2019
+ms.date: 10/03/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2018
@@ -48,7 +48,7 @@ To connect Azure Stack and Azure using ExpressRoute, you must meet the following
 * An Azure subscription to create an ExpressRoute circuit and VNets in Azure.
 * A router that must:
   * Support site-to-site VPN connections between its LAN interface and Azure Stack multi-tenant gateway.
-  * Support creating multiple VRFs (Virtual Routing and Forwarding) if there's more than one tenant in your Azure Stack deployment.
+  * Support creating multiple VRFs (Virtual Routing and Forwarding) if there is more than one tenant in your Azure Stack deployment.
 * A router that has:
   * A WAN port connected to the ExpressRoute circuit.
   * A LAN port connected to the Azure Stack multi-tenant gateway.
@@ -59,7 +59,7 @@ The following figure shows the Azure Stack and Azure environments after you fini
 
 ![ExpressRoute network](media/azure-stack-connect-expressroute/Conceptual.png)
 
-The following figure shows how multiple tenants connect from the Azure Stack infrastructure through the ExpressRoute router to Azure at the Microsoft Edge:
+The following figure shows how multiple tenants connect from the Azure Stack infrastructure through the ExpressRoute router to Azure at the Microsoft edge:
 
 ![Multi-tenant connections with ExpressRoute](media/azure-stack-connect-expressroute/Architecture.png)
 
@@ -150,7 +150,7 @@ The local network gateway resource identifies the remote gateway at the other en
    * 10.100.0.0/16 is the spoke VNet in Azure.
 
    > [!IMPORTANT]
-   > This example assumes that you're using static routes for the site-to-site VPN connection between the Azure Stack gateway and the ExpressRoute router.
+   > This example assumes that you are using static routes for the site-to-site VPN connection between the Azure Stack gateway and the ExpressRoute router.
 
 1. Verify that your **Subscription**, **Resource Group**, and **Location** are correct. Then select **Create**.
 
@@ -185,7 +185,7 @@ To test data traffic over the VPN connection, you need VMs to send and receive d
 1. In the list of VM images, select the **Windows Server 2016 Datacenter Eval** image.
 
    >[!NOTE]
-   >If the image used for this article isn't available, ask your Azure Stack operator to provide a different Windows Server image.
+   >If the image used for this article is not available, ask your Azure Stack operator to provide a different Windows Server image.
 
 1. In **Create virtual machine**, select **Basics**, then type **VM01** as the **Name**.
 1. Enter a valid user name and password. You'll use this account to sign in to the VM after it has been created.
@@ -216,7 +216,7 @@ If you're using Tenant 2 as an example, remember to change the IP addresses to a
 > [!IMPORTANT]
 > This section is for ASDK deployments only. The NAT is not needed for multi-node deployments.
 
-The ASDK is self-contained and isolated from the network where the physical host is deployed. The VIP network that the gateways are connected to isn't external; it's hidden behind a router performing Network Address Translation (NAT).
+The ASDK is self-contained and isolated from the network where the physical host is deployed. The VIP network that the gateways are connected to is not external; it is hidden behind a router performing Network Address Translation (NAT).
 
 The router is the ASDK host running the Routing and Remote Access Services (RRAS) role. You must configure NAT on the ASDK host to enable the site-to-site VPN connection to connect on both ends.
 
@@ -567,11 +567,11 @@ Perform the following ping tests:
 * Sign in to one of the VMs you created in Azure Stack and ping the VM you created in the Azure VNet.
 
 >[!NOTE]
->To make sure you're sending traffic over the site-to-site and ExpressRoute connections, you must ping the dedicated IP (DIP) address of the VM at both ends and not the VIP address of the VM.
+>To make sure you are sending traffic over the site-to-site and ExpressRoute connections, you must ping the dedicated IP (DIP) address of the VM at both ends and not the VIP address of the VM.
 
 ### Allow ICMP in through the firewall
 
-By default, Windows Server 2016 doesn't allow incoming ICMP packets through the firewall. For every VM that you use for ping tests, you must allow incoming ICMP packets. To create a firewall rule for ICMP, run the following cmdlet in an elevated PowerShell window:
+By default, Windows Server 2016 does not allow incoming ICMP packets through the firewall. For every VM that you use for ping tests, you must allow incoming ICMP packets. To create a firewall rule for ICMP, run the following cmdlet in an elevated PowerShell window:
 
 ```powershell
 # Create ICMP firewall rule.
