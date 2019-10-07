@@ -27,9 +27,9 @@ You can use the Azure command-line interface (CLI) to deploy Azure Resource Mana
 ## Deploy template
 
 1. Browse the [AzureStack-QuickStart-Templates repo](https://aka.ms/AzureStackGitHub) and find the *101-create-storage-account** template. Save the template (`azuredeploy.json`) and parameter files `(azuredeploy.parameters.json`) to a location on your local drive such `C:\templates\`
-2. Navigate to the folder into which the  files were downloaded. 
+2. Navigate to the folder into which you downloaded the files. 
 3. [Install and connect](azure-stack-version-profiles-azurecli2.md) to Azure Stack with Azure CLI.
-4. Update the region and location in the following command. Use local for the location parameter if you are using the ASDK. To deploy the template:
+4. Update the region and location in the following command. Use `local` for the location parameter if you are using the ASDK. To deploy the template:
     ```azurecli
     az group create --name testDeploy --location local
     az group deployment create --resource-group testDeploy --template-file ./azuredeploy.json --parameters ./azuredeploy.parameters.json
