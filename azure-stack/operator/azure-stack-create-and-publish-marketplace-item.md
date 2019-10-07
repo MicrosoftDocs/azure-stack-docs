@@ -1,6 +1,6 @@
 ---
 title: Create and publish a Marketplace item in Azure Stack | Microsoft Docs
-description: Create and publish a Marketplace item in Azure Stack.
+description: Learn how to create and publish an Azure Stack Marketplace item.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -18,7 +18,7 @@ ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
 
 ---
-# Create and publish a Marketplace item
+# Create and publish a Marketplace item in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -42,7 +42,7 @@ ms.lastreviewed: 05/07/2019
     > Never hard code any secrets such as product keys, password, or any customer identifiable information in the Azure Resource Manager template. Template JSON files are accessible without the need for authentication once published in the gallery. Store all secrets in [Key Vault](/azure/azure-resource-manager/resource-manager-keyvault-parameter) and call them from within the template.
 
 4. To ensure that the resource can be deployed successfully, test the template with the Microsoft Azure Stack APIs.
-5. If your template relies on a virtual machine image, follow the instructions to [add a virtual machine image to Azure Stack](azure-stack-add-vm-image.md).
+5. If your template relies on a virtual machine (VM) image, follow the instructions to [add a VM image to Azure Stack](azure-stack-add-vm-image.md).
 6. Save your Azure Resource Manager template in the **/Contoso.TodoList/DeploymentTemplates/** folder.
 7. Choose the icons and text for your Marketplace item. Add icons to the **Icons** folder, and add text to the **resources** file in the **Strings** folder. Use the **small**, **medium**, **large**, and **wide** naming convention for icons. See the [Marketplace item UI reference](#reference-marketplace-item-ui) for a detailed description of these sizes.
 
@@ -87,9 +87,9 @@ ms.lastreviewed: 05/07/2019
 
 ## Publish a Marketplace item
 
-1. Use PowerShell or Azure Storage Explorer to upload your Marketplace item (.azpkg) to Azure Blob storage. You can upload to local Azure Stack storage or upload to Azure Storage; which is a temporary location for the package. Make sure that the blob is publicly accessible.
-2. On the client virtual machine in the Microsoft Azure Stack environment, make sure that your PowerShell session is set up with your service administrator credentials. You can find instructions on how to authenticate PowerShell in Azure Stack in [Deploy a template with PowerShell](../user/azure-stack-deploy-template-powershell.md).
-3. When you use [PowerShell 1.3.0](azure-stack-powershell-install.md) or later, you can use the **Add-AzsGalleryItem** PowerShell cmdlet to publish the Marketplace item to Azure Stack. Prior to using PowerShell 1.3.0, use the cmdlet **Add-AzureRMGalleryitem** in place of **Add-AzsGalleryItem**. For example, when you use PowerShell 1.3.0 or later:
+1. Use PowerShell or Azure Storage Explorer to upload your Marketplace item (.azpkg) to Azure Blob storage. You can upload to local Azure Stack storage or upload to Azure Storage, which is a temporary location for the package. Make sure that the blob is publicly accessible.
+2. On the client VM in the Microsoft Azure Stack environment, make sure that your PowerShell session is set up with your service admin credentials. You can find instructions on how to authenticate PowerShell in Azure Stack in [Deploy a template with PowerShell](../user/azure-stack-deploy-template-powershell.md).
+3. When you use [PowerShell 1.3.0](azure-stack-powershell-install.md) or later, you can use the **Add-AzsGalleryItem** PowerShell cmdlet to publish the Marketplace item to Azure Stack. For earlier versions, use the cmdlet **Add-AzureRMGalleryitem** in place of **Add-AzsGalleryItem**. For example, when you use PowerShell 1.3.0 or later:
 
    ```powershell
    Add-AzsGalleryItem -GalleryItemUri `
@@ -137,8 +137,8 @@ ms.lastreviewed: 05/07/2019
 
 | Name | Required | Type | Constraints | Description |
 | --- | --- | --- | --- | --- |
-| DisplayName |X |String |Recommendation of 80 characters |The portal might not display your item name correctly if it is longer than 80 characters. |
-| PublisherDisplayName |X |String |Recommendation of 30 characters |The portal might not display your publisher name correctly if it is longer than 30 characters. |
+| DisplayName |X |String |Recommendation of 80 characters |The portal might not display your item name correctly if it's longer than 80 characters. |
+| PublisherDisplayName |X |String |Recommendation of 30 characters |The portal might not display your publisher name correctly if it's longer than 30 characters. |
 | PublisherLegalName |X |String |Maximum of 256 characters | |
 | Summary |X |String |60 to 100 characters | |
 | LongSummary |X |String |140 to 256 characters |Not yet applicable in Azure Stack. |
@@ -158,7 +158,7 @@ The Marketplace uses the following icons:
 
 ### Categories
 
-Each Marketplace item should be tagged with a category that identifies where the item appears on the portal UI. You can choose one of the existing categories in Azure Stack (**Compute**, **Data + Storage**, etc.), or choose a new one.
+Each Marketplace item should be tagged with a category that identifies where the item appears on the portal UI. You can choose one of the existing categories in Azure Stack (**Compute**, **Data + Storage**, and so on) or choose a new one.
 
 ### Links
 
@@ -190,11 +190,11 @@ Icons and text for Marketplace items as seen in the Azure Stack portal are as fo
 
 ### Create blade
 
-![Create blade](media/azure-stack-create-and-publish-marketplace-item/image1.png)
+![Create blade—Azure Stack Marketplace items](media/azure-stack-create-and-publish-marketplace-item/image1.png)
 
 ### Marketplace item details blade
 
-![Marketplace item details blade](media/azure-stack-create-and-publish-marketplace-item/image3.png)
+![Azure Stack Marketplace item details blade](media/azure-stack-create-and-publish-marketplace-item/image3.png)
 
 ## Next steps
 

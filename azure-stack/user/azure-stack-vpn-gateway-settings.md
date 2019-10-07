@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/11/2019
+ms.date: 10/03/2019
 ms.author: sethm
 ms.lastreviewed: 12/27/2018
 ---
@@ -22,7 +22,7 @@ ms.lastreviewed: 12/27/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-A VPN gateway is a type of virtual network gateway that sends encrypted traffic between your virtual network in Azure Stack and a remote VPN gateway. The remote VPN gateway can be in Azure, a device in your datacenter, or a device on another site. If there's network connectivity between the two endpoints, you can establish a secure Site-to-Site (S2S) VPN connection between the two networks.
+A VPN gateway is a type of virtual network gateway that sends encrypted traffic between your virtual network in Azure Stack and a remote VPN gateway. The remote VPN gateway can be in Azure, a device in your datacenter, or a device on another site. If there is network connectivity between the two endpoints, you can establish a secure Site-to-Site (S2S) VPN connection between the two networks.
 
 A VPN gateway connection relies on the configuration of multiple resources, each of which contains configurable settings. This article describes the resources and settings that relate to a VPN gateway for a virtual network that you create in the Resource Manager deployment model. You can find descriptions and topology diagrams for each connection solution in [About VPN Gateway for Azure Stack](azure-stack-vpn-gateway-about-vpn-gateways.md).
 
@@ -44,7 +44,7 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 When you create a virtual network gateway, you must specify the gateway SKU that you want to use. Select the SKUs that satisfy your requirements based on the types of workloads, throughputs, features, and SLAs.
 
-Azure Stack offers the VPN gateway SKUs shown in the following table.
+Azure Stack offers the VPN gateway SKUs shown in the following table:
 
 | | VPN gateway throughput |VPN gateway maximum IPsec tunnels |
 |-------|-------|-------|
@@ -54,9 +54,9 @@ Azure Stack offers the VPN gateway SKUs shown in the following table.
 
 ### Resizing gateway SKUs
 
-Azure Stack doesn't support a resize of SKUs between the supported legacy SKUs.
+Azure Stack does not support a resize of SKUs between the supported legacy SKUs.
 
-Similarly, Azure Stack doesn't support a resize from a supported legacy SKU (**Basic**, **Standard**, and **HighPerformance**) to a newer SKU supported by Azure (**VpnGw1**, **VpnGw2**, and **VpnGw3**).
+Similarly, Azure Stack does not support a resize from a supported legacy SKU (**Basic**, **Standard**, and **HighPerformance**) to a newer SKU supported by Azure (**VpnGw1**, **VpnGw2**, and **VpnGw3**).
 
 ### Configure the gateway SKU
 
@@ -66,7 +66,7 @@ If you use the Azure Stack portal to create a Resource Manager virtual network g
 
 #### PowerShell
 
-The following PowerShell example specifies the `-GatewaySku` as **Standard**:
+The following PowerShell example specifies the `-GatewaySku` parameter as **Standard**:
 
 ```powershell
 New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
@@ -91,16 +91,16 @@ New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName t
 When you create the virtual network gateway for a VPN gateway configuration, you must specify a VPN type. The VPN type that you choose depends on the connection topology that you want to create. A VPN type can also depend on the hardware that you're using. S2S configurations require a VPN device. Some VPN devices only support a certain VPN type.
 
 > [!IMPORTANT]  
-> Currently, Azure Stack only supports the route-based VPN type. If your device only supports policy-based VPNs, then connections to those devices from Azure Stack aren't supported.  
+> Currently, Azure Stack only supports the route-based VPN type. If your device only supports policy-based VPNs, then connections to those devices from Azure Stack are not supported.  
 >
-> In addition, Azure Stack doesn't support using policy-based traffic selectors for route-based gateways at this time, because custom IPSec/IKE policy configurations are not supported.
+> In addition, Azure Stack does not support using policy-based traffic selectors for route-based gateways at this time, because custom IPSec/IKE policy configurations are not supported.
 
 * **PolicyBased**: Policy-based VPNs encrypt and direct packets through IPsec tunnels based on the IPsec policies that are configured with the combinations of address prefixes between your on-premises network and the Azure Stack VNet. The policy, or traffic selector, is usually an access list in the VPN device configuration.
 
   >[!NOTE]
   >**PolicyBased** is supported in Azure, but not in Azure Stack.
 
-* **RouteBased**: Route-based VPNs use routes that are configured in the IP forwarding or routing table to direct packets to their corresponding tunnel interfaces. The tunnel interfaces then encrypt or decrypt the packets in and out of the tunnels. The policy, or traffic selector, for **RouteBased** VPNs are configured as any-to-any (or use wild cards). By default, they can't be changed. The value for a **RouteBased** VPN type is **RouteBased**.
+* **RouteBased**: Route-based VPNs use routes that are configured in the IP forwarding or routing table to direct packets to their corresponding tunnel interfaces. The tunnel interfaces then encrypt or decrypt the packets in and out of the tunnels. The policy, or traffic selector, for **RouteBased** VPNs are configured as any-to-any (or use wild cards). By default, they cannot be changed. The value for a **RouteBased** VPN type is **RouteBased**.
 
 The following PowerShell example specifies the `-VpnType` as **RouteBased**. When you create a gateway, you must make sure that the `-VpnType` is correct for your configuration.
 
@@ -130,7 +130,7 @@ Before you create a VPN gateway, you must create a gateway subnet. The gateway s
 
 When you create the gateway subnet, you specify the number of IP addresses that the subnet contains. The IP addresses in the gateway subnet are allocated to the gateway VMs and gateway services. Some configurations require more IP addresses than others. Look at the instructions for the configuration that you want to create and verify that the gateway subnet you want to create meets those requirements.
 
-Additionally, you should make sure your gateway subnet has enough IP addresses to handle additional future configurations. Although you can create a gateway subnet as small as /29, we recommend you create a gateway subnet of /28 or larger (/28, /27, /26, and so on.) That way, if you add functionality in the future, you don't have to tear down your gateway, then delete and recreate the gateway subnet to allow for more IP addresses.
+Additionally, you should make sure your gateway subnet has enough IP addresses to handle additional future configurations. Although you can create a gateway subnet as small as /29, we recommend you create a gateway subnet of /28 or larger (/28, /27, /26, and so on.) That way, if you add functionality in the future, you do not have to tear down your gateway, then delete and recreate the gateway subnet to allow for more IP addresses.
 
 The following Resource Manager PowerShell example shows a gateway subnet named **GatewaySubnet**. You can see the CIDR notation specifies a /27, which allows for enough IP addresses for most configurations that currently exist.
 
@@ -147,7 +147,7 @@ When creating a VPN gateway configuration in Azure, the local network gateway of
 
 You give the local network gateway a name, the public IP address of the VPN device, and specify the address prefixes that are on the on-premises location. Azure looks at the destination address prefixes for network traffic, consults the configuration that you've specified for your local network gateway, and routes packets accordingly.
 
-The next PowerShell example creates a new local network gateway:
+This PowerShell example creates a new local network gateway:
 
 ```powershell
 New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
@@ -158,9 +158,9 @@ Sometimes you need to modify the local network gateway settings; for example, wh
 
 ## IPsec/IKE parameters
 
-When you set up a VPN connection in Azure Stack, you must configure the connection at both ends. If you're configuring a VPN connection between Azure Stack and a hardware device such as a switch or router that's acting as a VPN gateway, that device might ask you for additional settings.
+When you set up a VPN connection in Azure Stack, you must configure the connection at both ends. If you're configuring a VPN connection between Azure Stack and a hardware device such as a switch or router that is acting as a VPN gateway, that device might ask you for additional settings.
 
-Unlike Azure, which supports multiple offers as both an initiator and a responder, Azure Stack supports only one offer by default.  If you need to use different IPSec/IKE settings to work with your VPN device, there are more settings available to you to configure your connection manually.  For more info, see [Configure IPsec/IKE policy for site-to-site VPN connections](azure-stack-vpn-s2s.md).
+Unlike Azure, which supports multiple offers as both an initiator and a responder, Azure Stack supports only one offer by default. If you need to use different IPSec/IKE settings to work with your VPN device, there are more settings available to you to configure your connection manually. For more information, see [Configure IPsec/IKE policy for site-to-site VPN connections](azure-stack-vpn-s2s.md).
 
 ### IKE Phase 1 (Main Mode) parameters
 
@@ -181,10 +181,10 @@ Unlike Azure, which supports multiple offers as both an initiator and a responde
 |Encryption & Hashing Algorithms (Authentication) | GCMAES256|
 |SA Lifetime (Time)  | 27,000 seconds  |
 |SA Lifetime (Kilobytes) | 33,553,408     |
-|Perfect Forward Secrecy (PFS) |None (see Note 1) |
+|Perfect Forward Secrecy (PFS) |None (see **Note 1**) |
 |Dead Peer Detection | Supported|  
 
-* *Note 1:*  Before version 1807, Azure Stack used a value of PFS2048 for the Perfect Forward Secrecy (PFS).
+**Note 1:** Before version 1807, Azure Stack used a value of PFS2048 for the Perfect Forward Secrecy (PFS).
 
 ## Next steps
 

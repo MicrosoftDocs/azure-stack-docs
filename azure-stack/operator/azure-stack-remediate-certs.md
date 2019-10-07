@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/04/2019
+ms.date: 10/03/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/19/2018
@@ -22,7 +22,7 @@ ms.lastreviewed: 11/19/2018
 
 # Remediate common issues for Azure Stack PKI certificates
 
-The information in this article can help you understand and resolve common issues for Azure Stack PKI certificates. You can discover issues when you use the Azure Stack readiness checker tool to [validate Azure Stack PKI certificates](azure-stack-validate-pki-certs.md). The tool checks to ensure that certificates meet the PKI requirements of an Azure Stack deployment and Azure Stack secret rotation, and logs the results in a [report.json file](azure-stack-validation-report.md).  
+The information in this article can help you understand and resolve common issues with Azure Stack PKI certificates. You can discover issues when you use the Azure Stack readiness checker tool to [validate Azure Stack PKI certificates](azure-stack-validate-pki-certs.md). The tool checks to ensure that certificates meet the PKI requirements of an Azure Stack deployment and Azure Stack secret rotation, and logs the results to a [report.json file](azure-stack-validation-report.md).  
 
 ## PFX Encryption
 
@@ -90,14 +90,14 @@ The information in this article can help you understand and resolve common issue
 
 ## Fix common packaging issues
 
-The **AzsReadinessChecker** tool contains a helper cmdlet called `Repair-AzsPfxCertificate`, which can import and then export a PFX file to fix common packaging issues, including:
+The **AzsReadinessChecker** tool contains a helper cmdlet called **Repair-AzsPfxCertificate**, which can import and then export a PFX file to fix common packaging issues, including:
 
 - **PFX encryption** is not TripleDES-SHA1.
 - **Private key** is missing local machine attribute.
 - **Certificate chain** is incomplete or wrong. The local machine must contain the certificate chain if the PFX package does not.
 - **Other certificates**
 
-`Repair-AzsPfxCertificate` cannot help if you need to generate a new CSR and reissue a certificate.
+**Repair-AzsPfxCertificate** cannot help if you need to generate a new CSR and reissue a certificate.
 
 ### Prerequisites
 
@@ -127,7 +127,7 @@ The following prerequisites must be in place on the computer on which the tool r
    $password = Read-Host -Prompt PFXpassword -AsSecureString
    ```
 
-3. From the PowerShell prompt, run the following to export a new PFX file:
+3. From the PowerShell prompt, run the following command to export a new PFX file:
 
    - For `-PfxPath`, specify the path to the PFX file you are working with. In the following example, the path is `.\certificates\ssl.pfx`.
    - For `-ExportPFXPath`, specify the location and name of the PFX file for export. In the following example, the path is `.\certificates\ssl_new.pfx`:

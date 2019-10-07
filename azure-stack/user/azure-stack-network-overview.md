@@ -7,7 +7,7 @@ manager: femila
 
 ms.service: azure-stack
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019

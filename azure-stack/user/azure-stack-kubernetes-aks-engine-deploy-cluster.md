@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 09/14/2019
+ms.date: 09/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/14/2019
+ms.lastreviewed: 09/27/2019
 
 ---
 
@@ -57,9 +57,23 @@ This section looks at creating an API model for your cluster.
     aks-engine get-versions
     ```
 
-4.  Find `portalURL` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`.
+4.  Find `customCloudProfile` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`. 
 
-5.  In the array `masterProfile`, set the following fields:
+5. Add `"identitySystem":"adfs"` if you're using AD FS. For example,
+
+    ```JSON  
+        "customCloudProfile": {
+            "portalURL": "https://portal.local.azurestack.external",
+            "identitySystem": "adfs"
+        },
+    ```
+
+    > [!Note]  
+    > If you're using Azure AD for your identity system, you don't need add the **identitySystem** field.
+
+6. Find `portalURL` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`.
+
+7.  In the array `masterProfile`, set the following fields:
 
     | Field | Description |
     | --- | --- |
@@ -68,7 +82,7 @@ This section looks at creating an API model for your cluster.
     | vmSize |  Enter [a size supported by Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example `Standard_D2_v2`. |
     | distro | Enter `aks-ubuntu-16.04`. |
 
-6.  In the array `agentPoolProfiles` update:
+8.  In the array `agentPoolProfiles` update:
 
     | Field | Description |
     | --- | --- |
@@ -76,7 +90,7 @@ This section looks at creating an API model for your cluster.
     | vmSize | Enter [a size supported by Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example `Standard_D2_v2`. |
     | distro | Enter `aks-ubuntu-16.04`. |
 
-7.  In the array `linuxProfile` update:
+9.  In the array `linuxProfile` update:
 
     | Field | Description |
     | --- | --- |
@@ -105,6 +119,7 @@ Proceed to deploy a cluster:
     | Parameter | Example | Description |
     | --- | --- | --- |
     | azure-env | AzureStackCloud | To indicate to AKS Engine that your target platform is Azure Stack use `AzureStackCloud`. |
+    | identity-system | adfs | Optional. Specify your identity management solution if you are using Active Directory Federated Services (AD FS). |
     | location | local | The region name for your Azure Stack. For the ASDK the region is set to `local`. |
     | resource-group | kube-rg | Enter the name of a new resource group or select an existing resource group. The resource name needs to be alphanumeric and lowercase. |
     | api-model | ./kubernetes-azurestack.json | Path to the cluster configuration file, or API model. |
@@ -116,15 +131,16 @@ Proceed to deploy a cluster:
     Here is an example:
 
     ```bash  
-    aks-engine deploy \\
-    --azure-env AzureStackCloud
-    --location <for asdk is local>\\
-    --resource-group kube-rg \\
-    --api-model ./kubernetes-azurestack.json \\
-    --output-directory kube-rg \\
-    --client-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \\
-    --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \\
-    --subscription-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    aks-engine deploy \
+    --azure-env AzureStackCloud \
+    --location <for asdk is local> \
+    --resource-group kube-rg \
+    --api-model ./kubernetes-azurestack.json \
+    --output-directory kube-rg \
+    --client-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    --subscription-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+    --identity-system adfs # required if using AD FS
     ```
 
 2.  If for some reason the execution fails after the output directory has been created, you can correct the issue and rerun the command. If you are rerunning the deployment and had used the same output directory before, the AKS Engine will return an error saying that the directory already exists. You can overwrite the existing directory by using the flag: `--force-overwrite`.

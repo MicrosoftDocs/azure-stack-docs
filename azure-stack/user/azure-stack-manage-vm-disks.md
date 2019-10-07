@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 10/02/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
@@ -46,7 +46,7 @@ The following table summarizes how to add disks by using the portal, and by usin
 
 | Method | Options
 |-|-|
-|User portal|- Add new data disks to an existing VM. New disks are created by Azure Stack. </br> </br>- Add an existing disk (.vhd) file to a  previously created VM. To do so, you must prepare the .vhd and then upload the file to Azure Stack. |
+|User portal|- Add new data disks to an existing VM. New disks are created by Azure Stack. </br> </br> - Add an existing disk (.vhd) file to a  previously created VM. To do so, you must prepare the .vhd and then upload the file to Azure Stack. |
 |[PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | - Create a new VM with an OS disk, and at the same time add one or more data disks to that VM. |
 
 ## Use the portal to add disks to a VM
@@ -105,7 +105,7 @@ Each unmanaged disk you add should be put in a separate container.
 
    * Select the **Size (GiB)**.
 
-     Standard disk costs increase based on the size of the disk. Premium disk costs and performance  increase based on the size of the disk. For more information, see [Managed Disks pricing](https://go.microsoft.com/fwlink/?linkid=843142).
+     Standard disk costs increase based on the size of the disk. Premium disk costs and performance increase based on the size of the disk. For more information, see [Managed Disks pricing](https://go.microsoft.com/fwlink/?linkid=843142).
 
    * Select **Create**. Azure Stack creates and validates the managed disk.
 
@@ -125,7 +125,7 @@ For more information about working with storage accounts in Azure Stack, see [In
 
 ## Attach an existing data disk to a VM
 
-1. [Prepare a .vhd file](https://docs.microsoft.com/azure/virtual-machines/windows/classic/createupload-vhd) for use as data disk for a VM. Upload that .vhd file to a storage account that you use with the VM to which you want to attach the .vhd file.
+1. [Prepare a .vhd file](/azure/virtual-machines/windows/classic/createupload-vhd) for use as data disk for a VM. Upload that .vhd file to a storage account that you use with the VM to which you want to attach the .vhd file.
 
     Plan to use a different container to hold the .vhd file than the container that holds the OS disk.
     ![Example: Upload a VHD file](media/azure-stack-manage-vm-disks/upload-vhd.png)
@@ -159,7 +159,7 @@ For more information about working with storage accounts in Azure Stack, see [In
 
 ## Use PowerShell to add multiple unmanaged disks to a VM
 
-You can use PowerShell to provision a VM and add a new data disk, or attach a pre-existing **.vhd** file as a data disk.
+You can use PowerShell to provision a VM and add a new data disk, or attach a pre-existing .vhd file as a data disk.
 
 The **Add-AzureRmVMDataDisk** cmdlet adds a data disk to a VM. You can add a data disk when you create a VM, or you can add a data disk to an existing VM. Specify the **VhdUri** parameter to distribute the disks to different containers.
 
@@ -211,10 +211,10 @@ $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk3' `
 Use the following PowerShell commands to add the OS disk and network configuration to the VM, and then start the new VM:
 
 ```powershell
-#set variables
+# Set variables
 $rgName = "myResourceGroup"
 $location = "local"
-#Set OS Disk
+# Set OS Disk
 $osDiskUri = "https://contoso.blob.local.azurestack.external/vhds/osDisk.vhd"
 $osDiskName = "osDisk"
 

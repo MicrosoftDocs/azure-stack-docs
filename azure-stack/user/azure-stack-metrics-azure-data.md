@@ -38,8 +38,8 @@ Azure Monitor is a platform service that provides a single source for monitoring
 Register the **Microsoft.insights** resource provider on your subscription's offer resource providers settings. You can verify that the resource provider is available in your offer associated with your subscription:
 
 1. Open the Azure Stack user portal .
-2. Select **Offers**.
-3. Select the offer associated with the subscription.
+2. Select **Subscriptions**.
+3. Select the subscription you want to register.
 4. Select **Resource providers** under **Settings.** 
 5. Find **Microsoft.Insights** in the list and verify that the status is **Registered**.
 

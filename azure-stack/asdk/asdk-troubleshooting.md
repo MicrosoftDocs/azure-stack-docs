@@ -13,19 +13,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 09/26/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
 
 ---
 # Troubleshoot the ASDK
-This article provides common troubleshooting info for the Azure Stack Development Kit (ASDK). If you're experiencing an issue that isn't documented, make sure to check the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) for assistance.  
+This article provides common troubleshooting info for the Azure Stack Development Kit (ASDK). For help with Azure Stack integrated systems, see [Microsoft Azure Stack troubleshooting](../operator/azure-stack-troubleshooting.md). 
 
-> [!IMPORTANT]
-> Because the ASDK is an evaluation environment, there's no official support offered through Microsoft Customer Support Services (CSS).
+Because the ASDK is an evaluation environment, Microsoft Customer Support Services (CSS) does not provide support. If you're experiencing an issue that isn't documented, you can get help from experts on the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
 
-The recommendations for troubleshooting issues described in this section are derived from several sources and may or may not resolve your particular issue. Code examples are provided "as is" and expected results can't be guaranteed. This section is subject to frequent edits and updates as improvements to the product are implemented.
 
 ## Deployment
 ### Deployment failure
@@ -43,18 +41,18 @@ This behavior is probably just the result of the default behavior of a PowerShel
 ### Default image and gallery item
 A Windows Server image and gallery item must be added before deploying VMs in Azure Stack.
 
-### After restarting my Azure Stack host, some VMs don't automatically start.
+### After restarting my Azure Stack host, some VMs don't automatically start
 After rebooting your host, you may notice Azure Stack services aren't immediately available. This is because Azure Stack [infrastructure VMs](asdk-architecture.md#virtual-machine-roles) and RPs take some time to check consistency, but will eventually start automatically.
 
-You might also notice that tenant VMs don't automatically start after a reboot of the ASDK host. This is a known issue, and just requires a few manual steps to bring them online:
+You might also notice that tenant VMs don't automatically start after a reboot of the ASDK host. You can bring them online with a few manual steps:
 
 1.  On the ASDK host, start **Failover Cluster Manager** from the Start Menu.
 2.  Select the cluster **S-Cluster.azurestack.local**.
 3.  Select **Roles**.
 4.  Tenant VMs appear in a *saved* state. Once all Infrastructure VMs are running, right-click the tenant VMs and select **Start** to resume the VM.
 
-### I've deleted some VMs, but still see the VHD files on disk. Is this behavior expected?
-Yes, this is expected behavior. It's designed this way because:
+### I've deleted some VMs, but still see the VHD files on disk 
+This behavior is by design:
 
 * When you delete a VM, VHDs aren't deleted. Disks are separate resources in the resource group.
 * When a storage account gets deleted, the deletion is visible immediately through Azure Resource Manager, but the disks it may contain are still kept in storage until garbage collection runs.

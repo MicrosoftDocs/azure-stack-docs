@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/13/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/14/2019
@@ -92,14 +92,14 @@ Update the `azuredeploy.parameters.json` file with the KeyVault URI, secretName,
        "adminUsername":  {
          "value":  "demouser"
           },
-         "adminPassword":  {
-           "reference":  {
-              "keyVault":  {
-                "id":  "/subscriptions/xxxxxx/resourceGroups/RgKvPwd/providers/Microsoft.KeyVault/vaults/KvPwd"
-                },
-              "secretName":  "MySecret"
-           }
-         },
+       "adminPassword":  {
+         "reference":  {
+            "keyVault":  {
+              "id":  "/subscriptions/xxxxxx/resourceGroups/RgKvPwd/providers/Microsoft.KeyVault/vaults/KvPwd"
+              },
+            "secretName":  "MySecret"
+         }
+       },
        "dnsLabelPrefix":  {
           "value":  "mydns123456"
         },

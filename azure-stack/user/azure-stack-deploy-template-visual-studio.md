@@ -14,9 +14,9 @@ ms.workload: azure-vs
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/21/2019
+ms.date: 10/01/2019
 ms.author: sethm
-ms.reviewer: unknown
+ms.reviewer: sijuman
 ms.lastreviewed: 05/21/2019
 
 ---
@@ -25,7 +25,7 @@ ms.lastreviewed: 05/21/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Visual Studio can be used to deploy Azure Resource Manager templates to Azure Stack.
+You can use Visual Studio to deploy Azure Resource Manager templates to Azure Stack.
 
 ## To deploy a template
 
