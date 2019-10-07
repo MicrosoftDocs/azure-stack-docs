@@ -78,7 +78,7 @@ If the built-in roles for Azure resources don't meet the specific needs of your 
 
 Choose the type of shared services account that you use for Azure Stack. The types of subscriptions that can be used for registration of a multi-tenant Azure Stack are:
 
-* Cloud Service Provider
+* Cloud Solution Provider
 * Partner Shared Services subscription
 
 
