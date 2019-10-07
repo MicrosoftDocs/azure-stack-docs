@@ -92,7 +92,7 @@ For Azure Stack multi-node, Enterprise Agreement (EA) and CSP subscriptions are 
 
 ## Does usage data reporting work in sovereign clouds?
 
-In the Azure Stack Development Kit, usage data reporting requires subscriptions that are created in the global Azure system. Subscriptions created in one of the sovereign clouds (the Azure Government, Azure Germany, and Azure China clouds) cannot be registered with Azure, so they do not support usage data reporting.
+In the Azure Stack Development Kit, usage data reporting requires subscriptions that are created in the global Azure system. Subscriptions created in one of the sovereign clouds (the Azure Government, Azure Germany, and Azure China 21Vianet clouds) cannot be registered with Azure, so they do not support usage data reporting.
 
 ## Why doesn't the usage reported in Azure Stack match the report generated from Azure Account Center?
 
@@ -103,4 +103,4 @@ There is always a delay between the usage data reported by the Azure Stack usage
 - [Provider usage API](azure-stack-provider-resource-api.md)  
 - [Tenant usage API](azure-stack-tenant-resource-usage-api.md)
 - [Usage FAQ](azure-stack-usage-related-faq.md)
-- [Manage usage and billing as a Cloud Service Provider](azure-stack-add-manage-billing-as-a-csp.md)
+- [Manage usage and billing as a Cloud Solution Provider](azure-stack-add-manage-billing-as-a-csp.md)
