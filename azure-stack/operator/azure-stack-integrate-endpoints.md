@@ -1,6 +1,6 @@
 ---
-title: Azure Stack datacenter integration - Publish endpoints | Microsoft Docs
-description: Learn how to publish Azure Stack endpoints in your datacenter
+title: Datacenter integration&#58; Publish Azure Stack services | Microsoft Docs
+description: Learn how to publish Azure Stack services in your datacenter.
 services: azure-stack
 author: mattbriggs
 manager: femila
@@ -12,30 +12,29 @@ ms.reviewer: wamota
 ms.lastreviewed: 09/09/2019
 ---
 
-# Azure Stack datacenter integration - Publish Azure Stack Services
+# Datacenter integration - Publish Azure Stack services
 
-Azure Stack sets up virtual IP addresses (VIPs) for its infrastructure roles. These VIPs are allocated from the public IP address pool. Each VIP is secured with an access control list (ACL) in the software-defined network layer. ACLs are also used across the physical switches (TORs and BMC) to further harden the solution. A DNS entry is created for each endpoint in the external DNS zone that specified at deployment time. For example, the user portal is assigned the DNS host entry of portal.*&lt;region>.&lt;fqdn>*.
+Azure Stack sets up virtual IP addresses (VIPs) for its infrastructure roles. These VIPs are allocated from the public IP address pool. Each VIP is secured with an access control list (ACL) in the software-defined network layer. ACLs are also used across the physical switches (TORs and BMC) to further harden the solution. A DNS entry is created for each endpoint in the external DNS zone that's specified at deployment time. For example, the user portal is assigned the DNS host entry of portal.*&lt;region>.&lt;fqdn>*.
 
 The following architectural diagram shows the different network layers and ACLs:
 
-![Structural picture](media/azure-stack-integrate-endpoints/Integrate-Endpoints-01.png)
+![Diagram showing different network layers and ACLs](media/azure-stack-integrate-endpoints/Integrate-Endpoints-01.png)
 
 ### Ports and URLs
-To make Azure Stack services (such as the portals, Azure Resource Manager, DNS, etc.) available to external networks, you must allow inbound traffic to these endpoints for specific URLs, ports, and protocols.
+To make Azure Stack services (like the portals, Azure Resource Manager, DNS, and so on) available to external networks, you must allow inbound traffic to these endpoints for specific URLs, ports, and protocols.
  
 In a deployment where a transparent proxy uplinks to a traditional proxy server or a firewall is protecting the solution, you must allow specific ports and URLs for both [inbound](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound) and [outbound](azure-stack-integrate-endpoints.md#ports-and-urls-outbound) communication. These include ports and URLs for identity, the marketplace, patch and update, registration, and usage data.
 
 ## Ports and protocols (inbound)
 
-A set of infrastructure VIPs is required for publishing Azure Stack endpoints to external networks. The *Endpoint (VIP)* table shows each endpoint, the required port, and protocol. Refer to the specific resource provider deployment documentation for endpoints that require additional resource providers, such as the SQL resource provider.
+A set of infrastructure VIPs is required for publishing Azure Stack endpoints to external networks. The *Endpoint (VIP)* table shows each endpoint, the required port, and protocol. Refer to the specific resource provider deployment documentation for endpoints that require additional resource providers, like the SQL resource provider.
 
-Internal infrastructure VIPs aren't listed because they're not required for publishing Azure Stack. 
-User VIPs are dynamic, defined by the users themselves with no control by the Azure Stack operator.
+Internal infrastructure VIPs aren't listed because they're not required for publishing Azure Stack. User VIPs are dynamic and defined by the users themselves, with no control by the Azure Stack operator.
 
 > [!Note]  
-> IKEv2 VPN is a standards-based IPsec VPN solution that uses UDP port 500 and 4500 and TCP port 50. Firewalls do not always open these ports, so an IKEv2 VPN might not be able to traverse proxies and firewalls.
+> IKEv2 VPN is a standards-based IPsec VPN solution that uses UDP port 500 and 4500 and TCP port 50. Firewalls don't always open these ports, so an IKEv2 VPN might not be able to traverse proxies and firewalls.
 
-With the addition of the [Extension Host](azure-stack-extension-host-prepare.md), ports in the range of 12495-30015 are not required.
+With the addition of the [Extension Host](azure-stack-extension-host-prepare.md), ports in the range of 12495-30015 aren't required.
 
 |Endpoint (VIP)|DNS host A record|Protocol|Ports|
 |---------|---------|---------|---------|
@@ -68,7 +67,7 @@ With the addition of the [Extension Host](azure-stack-extension-host-prepare.md)
 Azure Stack supports only transparent proxy servers. In a deployment with a transparent proxy uplink to a traditional proxy server, you must allow the ports and URLs in the following table for outbound communication.
 
 > [!Note]  
-> Azure Stack does not support using ExpressRoute to reach the Azure services listed in the following table because ExpressRoute may not be able to route traffic to all of the endpoints.
+> Azure Stack doesn't support using ExpressRoute to reach the Azure services listed in the following table because ExpressRoute may not be able to route traffic to all of the endpoints.
 
 |Purpose|Destination URL|Protocol|Ports|Source Network|
 |---------|---------|---------|---------|---------|
@@ -89,7 +88,7 @@ Azure Stack supports only transparent proxy servers. In a deployment with a tran
 |Diagnostic Log collection service|Azure Storage provided Blob SAS URL|HTTPS|443|Public VIP - /27|
 |     |     |     |     |     |
 
-Outbound URLs are load balanced using Azure traffic manager to provide the best possible connectivity based on geographical location. With load balanced URLs, Microsoft can update and change backend endpoints without impacting customers. Microsoft does not share the list of IP addresses for the load balanced URLs. You should use a device that supports filtering by URL rather than by IP.
+Outbound URLs are load balanced using Azure traffic manager to provide the best possible connectivity based on geographic location. With load balanced URLs, Microsoft can update and change backend endpoints without affecting customers. Microsoft doesn't share the list of IP addresses for the load balanced URLs. You should use a device that supports filtering by URL rather than by IP.
 
 Outbound DNS is required at all times; what varies is the source querying the external DNS and what sort of identity integration was chosen. During deployment for a connected scenario, the DVM that sits on the BMC network needs outbound access. But after deployment, the DNS service moves to an internal component that will send queries through a Public VIP. At that time, the outbound DNS access through the BMC network can be removed, but the Public VIP access to that DNS server must remain or else authentication will fail.
 
