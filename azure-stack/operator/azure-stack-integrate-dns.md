@@ -1,5 +1,5 @@
 ---
-title: Azure Stack datacenter integration - DNS | Microsoft Docs
+title: Azure Stack datacenter DNS integration | Microsoft Docs
 description: Learn how to integrate Azure Stack DNS with your datacenter DNS.
 services: azure-stack
 author: mattbriggs
@@ -13,7 +13,7 @@ ms.lastreviewed: 08/21/2019
 keywords:
 ---
 
-# Azure Stack datacenter integration - DNS
+# Azure Stack datacenter DNS integration
 
 To be able to access Azure Stack endpoints such as **portal**, **adminportal**, **management**, and **adminmanagement** from outside Azure Stack, you need to integrate the Azure Stack DNS services with the DNS servers that host the DNS zones you want to use in Azure Stack.
 
