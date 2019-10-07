@@ -50,7 +50,7 @@ To be able to resolve DNS names for Azure Stack endpoints and instances from out
 
 ### DNS name labels
 
-Azure Stack supports adding a DNS name label to a public IP address to allow name resolution for public IP addresses. This can be a convenient way for users to reach apps and services hosted in Azure Stack by name. The DNS name label uses a slightly different namespace than the infrastructure endpoints. Following the previous example namespace, the namespace for DNS name labels appears as follows:
+Azure Stack supports adding a DNS name label to a public IP address to allow name resolution for public IP addresses. DNS labels are a convenient way for users to reach apps and services hosted in Azure Stack by name. The DNS name label uses a slightly different namespace than the infrastructure endpoints. Following the previous example namespace, the namespace for DNS name labels appears as follows:
 
 `*.east.cloudapp.cloud.fabrikam.com`
 
