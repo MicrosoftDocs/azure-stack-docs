@@ -37,7 +37,7 @@ Azure Stack operators need to do the following things routinely:
 
 ## Day-to-day operations as needed
 
-Azure Stack operators will also need to do these things as needed from day-to-day: 
+From day-to-day, Azure Stack operators will also need to complete these operations: 
 
 > [!div class="checklist"]
 > * Create [plans](azure-stack-create-plan.md)
