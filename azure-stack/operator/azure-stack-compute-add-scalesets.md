@@ -8,7 +8,7 @@ editor: ''
 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 10/04/2019
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/22/2018
@@ -19,7 +19,7 @@ ms.lastreviewed: 10/22/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
   
-Virtual machine scale sets are an Azure Stack compute resource. You can use them to deploy and manage a set of identical virtual machines (VMs). With all VMs configured in the same way, scale sets don't require pre-provisioning of VMs. It's easier to build large-scale services that target big compute, big data, and containerized workloads.
+Virtual machine scale sets are an Azure Stack compute resource. You can use them to deploy and manage a set of identical virtual machines (VMs). With all VMs configured in the same way, scale sets do not require pre-provisioning of VMs. It is easier to build large-scale services that target big compute, big data, and containerized workloads.
 
 This article guides you through the process of making scale sets available in Azure Stack Marketplace. After you complete this procedure, your users can add virtual machine scale sets to their subscriptions.
 
@@ -28,7 +28,7 @@ Virtual machine scale sets on Azure Stack are similar to virtual machine scale s
 * [Mark Russinovich talks Azure scale sets](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)
 * [Virtual machine scale sets with Guy Bowerman](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
-On Azure Stack, virtual machine scale sets don't support autoscale. You can add more instances to a scale set using Resource Manager templates, CLI, or PowerShell.
+On Azure Stack, virtual machine scale sets do not support autoscale. You can add more instances to a scale set using Resource Manager templates, CLI, or PowerShell.
 
 ## Prerequisites
 
@@ -38,7 +38,7 @@ On Azure Stack, virtual machine scale sets don't support autoscale. You can add 
 ## Use the Azure Stack portal
 
 >[!IMPORTANT]  
-> The information in this section applies when you use  Azure Stack version 1808 or later. If your version is 1807 or earlier, see [Add the virtual machine scale set (Prior to 1808)](#add-the-virtual-machine-scale-set-prior-to-version-1808).
+> The information in this section applies when you use Azure Stack version 1808 or later. If your version is 1807 or earlier, see [Add the virtual machine scale set (Prior to 1808)](#add-the-virtual-machine-scale-set-prior-to-version-1808).
 
 1. Sign in to the Azure Stack portal. Then, go to **All services**, then **Virtual machine scale sets**, and then under **COMPUTE**, select **Virtual machine scale sets**.
    ![Select virtual machine scale sets](media/azure-stack-compute-add-scalesets/all-services.png)
