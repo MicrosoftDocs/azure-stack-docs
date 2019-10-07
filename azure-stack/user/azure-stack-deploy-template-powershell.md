@@ -3,7 +3,7 @@ title: Deploy a template using PowerShell in Azure Stack | Microsoft Docs
 description: Deploy a template using PowerShell in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -12,8 +12,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2019
-ms.author: sethm
+ms.date: 10/07/2019
+ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 09/23/2019
 

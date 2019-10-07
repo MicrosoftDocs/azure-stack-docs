@@ -3,7 +3,7 @@ title: Deploy a template with the command line in Azure Stack | Microsoft Docs
 description: Learn how to use the Azure cross-platform command-line interface (CLI) to deploy templates to Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -12,8 +12,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: CLI
 ms.topic: article
-ms.date: 08/13/2019
-ms.author: sethm
+ms.date: 10/07/2019
+ms.author: mabrigg
 ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019
 
@@ -34,7 +34,7 @@ You can use the Azure command-line interface (CLI) to deploy Azure Resource Mana
 Navigate to the folder into which these files were downloaded and run the following command to deploy the template:
 
 ```azurecli
-az group create "cliRG" "local" -f azuredeploy.json -d "testDeploy" -e azuredeploy.parameters.json
+az group deployment create -n "testDeploy" -g "cliRG" --template-file azuredeploy.json --parameters @azuredeploy.parameters.json
 ```
 
 This command deploys the template to the resource group **cliRG** in the Azure Stack POC default location.
