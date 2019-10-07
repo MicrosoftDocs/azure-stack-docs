@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 10/07/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 09/23/2019
+ms.lastreviewed: 10/07/2019
 
 ---
 
-## Azure Stack operations checklists
+# Azure Stack operator's checklist
 
 We put together some operations checklists so Azure Stack operators be successful. You can add specific operations that need to be done for your environment. They're meant to help someone onboarding as an operator know what to do daily, weekly, and monthly. 
 
