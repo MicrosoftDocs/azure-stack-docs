@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 10/09/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/25/2019
+ms.lastreviewed: 10/09/2019
 
 ---
 
@@ -69,7 +69,7 @@ Add the following item to the marketplace:
     In the list, select:
     - **Publisher**: Azure Kubernetes Service
     - **Offer**: aks
-    - **Version**: AKS Base Image 16.04-LTS Image Distro, September 2019 (or version that maps to AKS Engine)
+    - **Version**: AKS Base Image 16.04-LTS Image Distro, September 2019 (2019.09.19 or version that maps to AKS Engine)
 
 1. Select **Download.**
 
