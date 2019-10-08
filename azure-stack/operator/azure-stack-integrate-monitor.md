@@ -26,7 +26,7 @@ For external monitoring of the Azure Stack infrastructure, you need to monitor t
 - Physical computers can make health and alert information available via the baseboard management controllers (BMCs).
 - Physical network devices can make health and alert information available via the SNMP protocol.
 
-Each Azure Stack solution ships with a hardware lifecycle host. This host runs the original equipment manufacturer (OEM) hardware vendor's monitoring software for the physical servers and network devices. Please check with your OEM provider if their monitoring solutions can integrate with existing monitoring solutions in your datacenter.
+Each Azure Stack solution ships with a hardware lifecycle host. This host runs the original equipment manufacturer (OEM) hardware vendor's monitoring software for the physical servers and network devices. Check with your OEM provider if their monitoring solutions can integrate with existing monitoring solutions in your datacenter.
 
 > [!IMPORTANT]
 > The external monitoring solution you use must be agentless. You can't install third-party agents inside Azure Stack components.
@@ -73,7 +73,7 @@ The plugin is written in Python and leverages the health resource provider REST 
 
 With Version 1.2 the Azure Stack – Nagios plugin leverages the Microsoft ADAL library and supports authentication using  Service Principal with a secret or certificate. Also, the configuration has been simplified using a single configuration file with new parameters. It now supports Azure Stack deployments using Azure AD and AD FS as the identity system.
 
-The plugin works with Nagios 4x and XI. To download the plugin, see [Monitoring AzureStack Alerts](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details). The download site also includes installation and configuration details.
+The plugin works with Nagios 4x and XI. To download the plugin, see [Monitoring Azure Stack Alerts](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details). The download site also includes installation and configuration details.
 
 ### Requirements for Nagios
 
@@ -116,7 +116,7 @@ samples/etc/azurestack_services.cfg
 
 The following parameters are available to be configured in the azurestack.cfg file. Parameters in bold need to be configured independently from the authentication model you choose.
 
-For more information on how to create a SPN, see [Use an app identity to access resources](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals).
+For more information on how to create an SPN, see [Use an app identity to access resources](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals).
 
 | Parameter | Description | Authentication |
 | --- | --- | --- |
