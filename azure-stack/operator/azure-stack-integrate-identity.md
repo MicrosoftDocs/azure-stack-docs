@@ -24,7 +24,7 @@ You can deploy Azure Stack using Azure Active Directory (Azure AD) or Active Dir
 
 Deploying with AD FS allows identities in an existing Active Directory forest to authenticate with resources in Azure Stack. This existing Active Directory forest requires a deployment of AD FS to allow the creation of an AD FS federation trust.
 
-Authentication is one part of identity. To manage Role Based Access Control (RBAC) in Azure Stack, the Graph component must be configured. When access to a resource is delegated, the Graph component looks up the user account in the existing Active Directory forest using the LDAP protocol.
+Authentication is one part of identity. To manage role-based access control (RBAC) in Azure Stack, the Graph component must be configured. When access to a resource is delegated, the Graph component looks up the user account in the existing Active Directory forest using the LDAP protocol.
 
 ![Azure Stack AD FS architecture](media/azure-stack-integrate-identity/Azure-Stack-ADFS-architecture.png)
 
@@ -62,14 +62,14 @@ For Active Directory deployments having multiple sites, configure the closest Ac
 
 Add the Azure Stack [Public VIP network](azure-stack-network.md#public-vip-network) subnet to the Active Directory Site closest to Azure Stack. For example, let's say your Active Directory has two sites: Seattle and Redmond. If Azure Stack is deployed at the Seattle site, you would add the Azure Stack Public VIP network subnet to the Active Directory site for Seattle.
 
-For more information on  Active Directory Sites see [Designing the site topology](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology).
+For more information on Active Directory Sites, see [Designing the site topology](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology).
 
 > [!Note]  
 > If your Active Directory consist of a single site, you can skip this step. If you have a catch-all subnet configured, validate that the Azure Stack Public VIP network subnet isn't part of it.
 
 ### Create user account in the existing Active Directory (optional)
 
-Optionally, you can create an account for the Graph service in the existing Active Directory. Perform this step if you don't already have an account that you want to use.
+Optionally, you can create an account for the Graph service in the existing Active Directory. Do this step if you don't already have an account that you want to use.
 
 1. In the existing Active Directory, create the following user account (recommendation):
    - **Username**: graphservice
@@ -99,7 +99,7 @@ For this procedure, use a computer in your datacenter network that can communica
    > [!IMPORTANT]
    > Wait for the credentials pop-up (Get-Credential isn't supported in the privileged endpoint) and enter the Graph Service Account credentials.
 
-3. The **Register-DirectoryService** cmdlet has optional parameters that you can use in certain scenarios where the existing Active Directory validation fails. When this cmdlet is executed, it validates that the provided domain is the root domain, a global catalog server can be reached, and the provided account grants read access.
+3. The **Register-DirectoryService** cmdlet has optional parameters that you can use in certain scenarios where the existing Active Directory validation fails. When this cmdlet is executed, it validates that the provided domain is the root domain, a global catalog server can be reached, and that the provided account is granted read access.
 
    |Parameter|Description|
    |---------|---------|
@@ -170,7 +170,7 @@ The following information is required as input for the automation parameters:
 
 ### Create federation metadata file
 
-For the following procedure, you must use a computer that has network connectivity to the existing AD FS deployment, which becomes the account STS. Also, the necessary certificates must be installed.
+For the following procedure, you must use a computer that has network connectivity to the existing AD FS deployment, which becomes the account STS. The necessary certificates must also be installed.
 
 1. Open an elevated Windows PowerShell session, and run the following command using the parameters appropriate for your environment:
 
