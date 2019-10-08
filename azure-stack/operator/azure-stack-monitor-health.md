@@ -65,7 +65,7 @@ By selecting the top part of the **Alerts** tile, you navigate to the list of al
 The **Alerts** blade supports the ability to filter both on status (Active or Closed) and severity (Critical or Warning). The default view displays all active alerts. All closed alerts are removed from the system after seven days.
 
 >[!Note]
->If an alert remains active but hasn't been updated in over a day, you can run [Test-AzureStack](operator/azure-stack-diagnostic-test.md) and close the alert if no problems are reported.
+>If an alert remains active but hasn't been updated in over a day, you can run [Test-AzureStack](azure-stack-diagnostic-test.md) and close the alert if no problems are reported.
 
 ![Filter pane to filter by critical or warning status](media/azure-stack-monitor-health/alert-view.png)
 
