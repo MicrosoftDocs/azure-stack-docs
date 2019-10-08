@@ -38,7 +38,7 @@ Before you add an end customer, you must enable multi-tenant billing on your reg
 
 Perform the following steps to add an end customer, as pictured in the following figure:
 
-![Set up Cloud Service Provider for usage tracking and to manage the end customer account](media/azure-stack-csp-enable-billing-usage-tracking/process-csp-enable-billing.png)
+![Set up Cloud Solution Provider for usage tracking and to manage the end customer account](media/azure-stack-csp-enable-billing-usage-tracking/process-csp-enable-billing.png)
 
 ### Create a new customer in Partner Center
 
@@ -99,4 +99,4 @@ Once you've added the new customer to Azure Stack, or the end customer tenant ha
 
 - To review error messages if they're triggered in your registration process, see [Tenant registration error messages](azure-stack-registration-errors.md).
 - To learn more about how to retrieve resource usage information from Azure Stack, see [Usage and billing in Azure Stack](azure-stack-billing-and-chargeback.md).
-- To review how an end customer may add you, the CSP, as the manager for their Azure Stack tenant, see [Enable a Cloud Service Provider to manage your Azure Stack subscription](../user/azure-stack-csp-enable-billing-usage-tracking.md).
+- To review how an end customer may add you, the CSP, as the manager for their Azure Stack tenant, see [Enable a Cloud Solution Provider to manage your Azure Stack subscription](../user/azure-stack-csp-enable-billing-usage-tracking.md).
