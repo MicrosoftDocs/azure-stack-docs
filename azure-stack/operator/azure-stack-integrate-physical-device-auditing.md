@@ -15,8 +15,7 @@ keywords:
 
 # Integrate physical device auditing with your Azure Stack datacenter
 
-All physical devices in Azure Stack, like the baseboard management controllers (BMCs) and network switches, emit audit logs. You can integrate the audit logs into your overall auditing solution. Since the devices vary across the different Azure Stack OEM hardware vendors, contact your vendor for the documentation on auditing integration.
-The sections below provide some general information for physical device auditing in Azure Stack.  
+All physical devices in Azure Stack, like the baseboard management controllers (BMCs) and network switches, emit audit logs. You can integrate the audit logs into your overall auditing solution. Since the devices vary across the different Azure Stack OEM hardware vendors, contact your vendor for the documentation on auditing integration. The sections below provide some general information for physical device auditing in Azure Stack.  
 
 ## Physical device access auditing
 
@@ -24,8 +23,7 @@ All physical devices in Azure Stack support the use of TACACS or RADIUS. Support
 
 Azure Stack solutions don't ship with either RADIUS or TACACS built-in. However, the solutions have been validated to support the use of existing RADIUS or TACACS solutions available in the market.
 
-For RADIUS only, MSCHAPv2 was validated. This represents the most secure implementation using RADIUS.
-Consult with your OEM hardware vendor to enable TACAS or RADIUS in the devices included with your Azure Stack solution.
+For RADIUS only, MSCHAPv2 was validated. This represents the most secure implementation using RADIUS. Consult with your OEM hardware vendor to enable TACAS or RADIUS in the devices included with your Azure Stack solution.
 
 ## Syslog forwarding for network devices
 
