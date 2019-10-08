@@ -1,5 +1,5 @@
 ---
-title: Azure Stack datacenter integration&#58; AD FS identity
+title: Integrate AD FS identity with your Azure Stack datacenter | Microsoft Docs
 description: Learn how to integrate Azure Stack AD FS identity provider with your datacenter AD FS.
 services: azure-stack
 author: PatAltimore
@@ -13,7 +13,7 @@ ms.lastreviewed: 05/10/2019
 
 ---
 
-# Azure Stack datacenter integration: AD FS identity
+# Integrate AD FS identity with your Azure Stack datacenter
 
 You can deploy Azure Stack using Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS) as the identity provider. You must make the choice before you deploy Azure Stack. In a connected scenario, you can choose Azure AD or AD FS. For a disconnected scenario, only AD FS is supported. This article shows how to integrate Azure Stack AD FS with your datacenter AD FS.
 

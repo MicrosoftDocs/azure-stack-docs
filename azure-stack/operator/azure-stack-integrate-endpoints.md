@@ -1,5 +1,5 @@
 ---
-title: Datacenter integration&#58; Publish Azure Stack services | Microsoft Docs
+title: Publish Azure Stack services in your datacenter | Microsoft Docs
 description: Learn how to publish Azure Stack services in your datacenter.
 services: azure-stack
 author: mattbriggs
@@ -12,7 +12,7 @@ ms.reviewer: wamota
 ms.lastreviewed: 09/09/2019
 ---
 
-# Datacenter integration: Publish Azure Stack services
+# Publish Azure Stack services in your datacenter 
 
 Azure Stack sets up virtual IP addresses (VIPs) for its infrastructure roles. These VIPs are allocated from the public IP address pool. Each VIP is secured with an access control list (ACL) in the software-defined network layer. ACLs are also used across the physical switches (TORs and BMC) to further harden the solution. A DNS entry is created for each endpoint in the external DNS zone that's specified at deployment time. For example, the user portal is assigned the DNS host entry of portal.*&lt;region>.&lt;fqdn>*.
 
