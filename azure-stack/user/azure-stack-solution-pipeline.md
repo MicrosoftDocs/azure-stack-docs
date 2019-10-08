@@ -11,7 +11,7 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 07/23/2019
+ms.date: 10/07/2019
 ms.topic: conceptual
 ms.author: bryanla
 ms.reviewer: anajod
@@ -337,21 +337,31 @@ Hybrid CI/CD can apply to both app code and infrastructure code. You can use [Az
 
 1. In your web browser, open your Azure DevOps organization and project.
    
-1. Select **Pipelines** > **Builds** in the left navigation, and then select **New pipeline**. 
+1. Select **Pipelines** in the left navigation, and then select **New pipeline**. 
+
+1. If necessary, select your code repository, and under **Configure your pipeline**, select **Starter pipeline**. You then see the starter *azure-pipelines.yml* file. 
    
-1. Under **Select a template**, select the **ASP.NET Core** template, and then select **Apply**. 
+1. On the **Review your pipeline YAML** page, select **Show assistant**.
    
-1. On the configuration page, select **Publish** in the left pane.
+   ![Show assistant](media/azure-stack-solution-pipeline/show-assistant.png)
    
-1. In the right pane, under **Arguments**, add `-r win10-x64` to the configuration. 
+1. Under **Tasks**, select **.NET Core**. 
+   
+1. In the **.NET Core** configuration pane, under **Command**, drop down and select **publish**.
+   
+1. Under **Arguments**, enter *-r win10-x64*. 
+
+1. Make sure **Publish Web Projects**, **Zip Published Projects**, and **Add project name to publish path** are selected.
    
    ![Add build pipeline argument](media/azure-stack-solution-pipeline/buildargument.png)
    
-1. Select **Save & queue** at the top of the page.
+1. Select **Add**. The `DotNetCoreCLI@2` task is added to the pipeline.
    
-1. In the **Run pipeline** dialog, select **Save and run**. 
+   ![DotNetCoreCLI task](media/azure-stack-solution-pipeline/dotnetcoreclitask.png)
    
-The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) publishes artifacts that can run on both Azure and Azure Stack.
+1. Select **Save and run**, add a commit message and optional description, and select **Save and run** again. 
+   
+The [self-contained deployment build](/dotnet/core/deploying/#self-contained-deployments-scd) publishes artifacts that can run on both Azure and Azure Stack.
 
 ### Create a release pipeline
 
@@ -377,25 +387,25 @@ Creating a release pipeline is the final step in your hybrid CI/CD configuration
    
    ![Select subscription and enter App Service name](media/azure-stack-solution-pipeline/stage1.png)
    
-1. In the left pane, select **Run on agent**. In the right pane, select **Hosted VS2017** from the **Agent pool** drop-down list if it's not already selected.
+1. In the left pane, select **Run on agent**. In the right pane, select **Azure Pipelines** from the **Agent pool** drop-down list, and then select **vs2017-win2016** from the **Agent Specification** drop-down list.
    
    ![Select hosted agent](media/azure-stack-solution-pipeline/agentjob.png)
    
-1. In the left pane, select **Deploy Azure App Service**, and in the right pane, browse to the **Package or folder** for your Azure web app build.
+1. In the left pane, select **Deploy Azure App Service**. In the right pane, scroll down and select the ellipsis **...** next to **Package or folder**.
+   
+1. In the **Select a file or folder** dialog, browse to the location of your Azure web app build, and then select **OK**.
    
    ![Select package or folder](media/azure-stack-solution-pipeline/packageorfolder.png)
    
-1. On the **Select a file or folder** dialog, select **OK**.
+1. On the **New release pipeline** page, select **Save** at upper right 
    
-1. Select **Save** at the upper right on the **New release pipeline** page.
+1. On the **Pipeline** tab, select **Add an artifact**. Select your project, and then select your Azure Stack build from the **Source (build pipeline)** drop-down menu. Select **Add**. 
    
-   ![Save changes](media/azure-stack-solution-pipeline/save-devops-icon.png)
+1. Under **Stages**, hover over the **Azure** stage until the **+** appears, and then select **Add**.
    
-1. On the **Pipeline** tab, select **Add an artifact**. Select your project, and select your Azure Stack build from the **Source (build pipeline)** drop-down menu. Select **Add**. 
+1. Under **Template**, select **Empty job**. 
    
-1. On the **Pipeline** tab, under **Stages**, select **Add**.
-   
-1. In the new stage, select the hyperlink to **View stage tasks**. Enter *Azure Stack* as the stage name. 
+1. In the **Stage** dialog, enter *Azure Stack* as the stage name. 
    
    ![View new stage](media/azure-stack-solution-pipeline/newstage.png)
    
@@ -426,7 +436,7 @@ Creating a release pipeline is the final step in your hybrid CI/CD configuration
 
 Now that you have a release pipeline, you can use it to create a release and deploy your app. 
 
-Because the continuous deployment trigger is set in your release pipeline, modifying the source code starts a new build and creates a new release automatically. However, you'll create and run this new release manually.
+Because the continuous deployment trigger is set in your release pipeline, modifying the source code starts a new build and creates a new release automatically. However, this time you'll create and run a new release manually.
 
 To create and deploy a release:
 
