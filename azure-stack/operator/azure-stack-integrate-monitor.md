@@ -67,7 +67,7 @@ The following diagram shows integration of Azure Stack with an existing System C
 
 You can set up and configure the Nagios Plugin for Microsoft Azure Stack.
 
-A Nagios monitoring plugin was developed together with the partner Cloudbase solutions, which is available under the permissive free software license - MIT (Massachusetts Institute of Technology).
+A Nagios monitoring plugin was developed together with partner Cloudbase Solutions, which is available under the permissive free software license - MIT (Massachusetts Institute of Technology).
 
 The plugin is written in Python and leverages the health resource provider REST API. It offers basic functionality to retrieve and close alerts in Azure Stack. Like the System Center management pack, it enables you to add multiple Azure Stack deployments and to send notifications.
 
