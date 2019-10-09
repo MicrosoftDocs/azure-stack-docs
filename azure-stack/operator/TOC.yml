@@ -48,13 +48,15 @@
   - name: Datacenter integration
     href: azure-stack-customer-journey.md
     items:
-    - name: General Azure Stack integration considerations
+    - name: Walkthrough
+      href: azure-stack-customer-journey.md
+    - name: General considerations
       href: azure-stack-datacenter-integration.md
-    - name: Azure Stack deployment connection models
+    - name: Connection models
       href: azure-stack-connection-models.md
-    - name: Connected deployment considerations
+    - name: Connected deployment
       href: azure-stack-connected-deployment.md
-    - name: Disconnected deployment considerations
+    - name: Disconnected deployment
       href: azure-stack-disconnected-deployment.md
     - name: Datacenter network integration
       items:
