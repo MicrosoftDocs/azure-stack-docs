@@ -81,6 +81,16 @@ Choose the type of shared services account that you use for Azure Stack. The typ
 * Cloud Solution Provider
 * Partner Shared Services subscription
 
+## Get Scale Unit metrics
+
+
+You can use PowerShell to get stamp utilization information without help from CSS. To obtain stamp utilization: 
+
+1. Create a PEP session
+2. Run test-azurestack
+3. Exit PEP session
+4. Run get-azurestacklog -filterbyrole seedring using an invoke-command call. For more information, see [Azure Stack Diagnostics](azure-stack-diagnostics.md#to-run-get-azurestacklog-on-azure-stack-integrated-systems).
+5. Extract the seedring .zip, and you can obtain the validation report from the ERCS folder you ran the test-azurestack from
 
 ## Troubleshoot deployment 
 ### General deployment failure
