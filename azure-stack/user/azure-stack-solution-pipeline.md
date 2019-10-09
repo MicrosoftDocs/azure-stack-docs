@@ -337,28 +337,52 @@ Hybrid CI/CD can apply to both app code and infrastructure code. You can use [Az
 
 1. In your web browser, open your Azure DevOps organization and project.
    
-1. Select **Pipelines** in the left navigation, and then select **New pipeline**. 
+1. Select **Pipelines** > **Builds** in the left navigation, and then select **New pipeline**. 
 
 1. Select your code repository. Azure Pipelines analyzes your project and opens the default ASP.NET Core *azure-pipelines.yml* file. 
    
-1. On the **Review your pipeline YAML** page, select **Show assistant**.
+   ![ASP.NET Core azure-pipelines.yml file](media/azure-stack-solution-pipeline/buildargument.png)
    
-   ![Show assistant](media/azure-stack-solution-pipeline/show-assistant.png)
+1. In the *azure-pipelines.yml* file:
    
-1. Under **Tasks**, select **.NET Core**. 
+   - Under `pool`, change the `vmImage` from `ubuntu-latest` to `vs2017-win2016`.
+     
+   - Under `steps`, add the [DotNetCoreCLI](/devops/pipelines/tasks/build/dotnet-core-cli) task, command, and arguments: 
+     
+     ```yaml
+     - task: DotNetCoreCLI@2
+       inputs:
+         command: 'publish'
+         publishWebProjects: true
+         arguments: '-r win10-x64'
+     ```
+   Your *azure-pipelines.yml* file should now have the following code: 
    
-1. In the **.NET Core** configuration pane, under **Command**, drop down and select **publish**.
+   ```yaml
+   # ASP.NET Core
+   # Build and test ASP.NET Core projects targeting .NET Core.
+   # Add steps that run tests, create a NuGet package, deploy, and more:
+   # https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
    
-1. Under **Arguments**, enter *-r win10-x64*. 
+   trigger:
+   - master
+   
+   pool:
+     vmImage: 'vs2017-win2016'
+   
+   variables:
+     buildConfiguration: 'Release'
 
-1. Make sure **Publish Web Projects**, **Zip Published Projects**, and **Add project name to publish path** are selected.
+   steps:
+   - script: dotnet build --configuration $(buildConfiguration)
+     displayName: 'dotnet build $(buildConfiguration)'
    
-   ![Add build pipeline argument](media/azure-stack-solution-pipeline/buildargument.png)
-   
-1. Select **Add**. The `DotNetCoreCLI@2` task is added to the pipeline.
-   
-   ![DotNetCoreCLI task](media/azure-stack-solution-pipeline/dotnetcoreclitask.png)
-   
+   - task: DotNetCoreCLI@2
+     inputs:
+       command: 'publish'
+       publishWebProjects: true
+       arguments: '-r win10-x64'
+   ```
 1. Select **Save and run**, add a commit message and optional description, and select **Save and run** again. 
    
 The [self-contained deployment build](/dotnet/core/deploying/#self-contained-deployments-scd) publishes artifacts that can run on both Azure and Azure Stack.
