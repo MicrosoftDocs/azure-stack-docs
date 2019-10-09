@@ -3,7 +3,7 @@ title: Make web, and API apps available to your Azure Stack users | Microsoft Do
 description: Tutorial to install the App Service resource provider and create offers that give your Azure Stack users the ability to create web, and API apps.
 services: azure-stack
 documentationcenter: ''
-author: justinha
+author: BryanLa
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/11/2019
-ms.author: justinha
+ms.author: bryanla
 ms.reviewer: 
 ms.custom: mvc
 ms.reviewer: anwestg
