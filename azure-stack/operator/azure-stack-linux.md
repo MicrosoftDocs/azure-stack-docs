@@ -1,6 +1,6 @@
 ---
-title: Add Linux images to Azure Stack | Microsoft Docs
-description: Learn how to add Linux images to Azure Stack.
+title: Add Linux images to Azure Stack Marketplace | Microsoft Docs
+description: Learn how to add Linux images to Azure Stack Marketplace.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -18,7 +18,7 @@ ms.reviewer: unknown
 ms.lastreviewed: 11/16/2018
 
 ---
-# Add Linux images to Azure Stack
+# Add Linux images to Azure Stack Marketplace
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -56,7 +56,7 @@ You can prepare your own Linux image using the following instructions:
 * [SLES & openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## Add your image to the marketplace
+## Add your image to Marketplace
 
 Follow [Add the image to the Marketplace](azure-stack-add-vm-image.md). Make sure that the `OSType` parameter is set to `Linux`.
 
