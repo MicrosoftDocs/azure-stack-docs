@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2019
+ms.date: 10/08/2019
 ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 07/25/2019
@@ -119,7 +119,9 @@ Operators can also check the storage account for automatically collected logs. F
 
 ## Automatic diagnostic log collection alerts 
 
-If enabled, automatic diagnostic log collection occurs only when necessary. Only the following alerts trigger collection. 
+If enabled, automatic diagnostic log collection occurs only when necessary. Only the alerts in the following table trigger collection. 
+
+For example, **Update failed** is an alert that triggers automatic diagnostic log collection. If automatic collection is enabled, diagnostic logs will be proactively captured during an update failure to help CSS troubleshoot the problem. The diagnostic logs are only collected when the alert for **Update failed** is raised. 
 
 |Alert Title  |	FaultIdType|	
 |-------------|------------|
