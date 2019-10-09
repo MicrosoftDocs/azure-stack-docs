@@ -15,12 +15,12 @@ keywords:
 
 # Integrate Azure Stack with monitoring solutions using syslog forwarding
 
-This article shows you how to use syslog to integrate Azure Stack infrastructure with external security solution(s) already deployed in your datacenter. For example, a security information event management (SIEM) system. The syslog channel exposes audits, alerts, and security logs from all the components of the Azure Stack infrastructure. Use syslog forwarding to integrate with security monitoring solutions and/or to retrieve all audits, alerts, and security logs to store them for retention.
+This article shows you how to use syslog to integrate Azure Stack infrastructure with external security solution(s) already deployed in your datacenter. For example, a security information event management (SIEM) system. The syslog channel exposes audits, alerts, and security logs from all the components of the Azure Stack infrastructure. Use syslog forwarding to integrate with security monitoring solutions and to retrieve all audits, alerts, and security logs to store them for retention.
 
 Starting with the 1809 update, Azure Stack has an integrated syslog client that, once configured, emits syslog messages with the payload in Common Event Format (CEF).
 
 The following diagram describes the integration of Azure Stack with an external SIEM. There are two integration patterns that need to be considered: the first one (the one in blue) is the Azure Stack infrastructure that encompasses the infrastructure virtual machines and the Hyper-V nodes. All the audits, security logs, and alerts from those components are centrally collected and exposed via syslog with CEF payload. This integration pattern is described in this document page.
-The second integration pattern is the one depicted in orange and covers the baseboard management controllers (BMCs), the hardware lifecycle host (HLH), the virtual machines and/or virtual appliances that run the hardware partner monitoring and management software, and the top of rack (TOR) switches. Since these components are hardware-partner specific, contact your hardware partner for documentation on how to integrate them with an external SIEM.
+The second integration pattern is the one depicted in orange and covers the baseboard management controllers (BMCs), the hardware lifecycle host (HLH), the virtual machines and virtual appliances that run the hardware partner monitoring and management software, and the top of rack (TOR) switches. Since these components are hardware-partner specific, contact your hardware partner for documentation on how to integrate them with an external SIEM.
 
 ![Syslog forwarding diagram](media/azure-stack-integrate-security/syslog-forwarding.png)
 
@@ -76,7 +76,7 @@ Parameters for *Set-SyslogClient* cmdlet:
 | *OutputSeverity* | Level of output logging. Values are **Default** or **Verbose**. Default includes severity levels: warning, critical, or error. Verbose includes all severity levels: verbose, informational, warning, critical, or error.  | String |
 ### Configuring syslog forwarding with TCP, mutual authentication, and TLS 1.2 encryption
 
-In this configuration, the syslog client in Azure Stack forwards the messages to the syslog server over TCP, with TLS 1.2 encryption. During the initial handshake, the client verifies that the server provides a valid, trusted certificate; similarly, the client also provides a certificate to the server as proof of its identity. This configuration is the most secure as it provides a full validation of the identity of both the client and the server and it sends messages over an encrypted channel.
+In this configuration, the syslog client in Azure Stack forwards the messages to the syslog server over TCP, with TLS 1.2 encryption. During the initial handshake, the client verifies that the server provides a valid, trusted certificate. The client also provides a certificate to the server as proof of its identity. This configuration is the most secure as it provides a full validation of the identity of both the client and the server and it sends messages over an encrypted channel.
 
 > [!IMPORTANT]
 > Microsoft strongly recommends to use this configuration for production environments. 
@@ -133,7 +133,7 @@ TCP using authentication and encryption is the default configuration and represe
 Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -ServerPort <Port number on which the syslog server is listening on>
 ```
 
-In case you want to test the integration of your syslog server with the Azure Stack client by using a self-signed and/or untrusted certificate, you can use these flags to skip the server validation performed by the client during the initial handshake.
+In case you want to test the integration of your syslog server with the Azure Stack client by using a self-signed or untrusted certificate, you can use these flags to skip the server validation done by the client during the initial handshake.
 
 ```powershell
  #Skip validation of the Common Name value in the server certificate. Use this flag if you provide an IP address for your syslog server
