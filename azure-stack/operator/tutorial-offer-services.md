@@ -61,7 +61,6 @@ Add-on services are supported by resource providers that are installed after Azu
 | Microsoft.MySqlAdapter | MySQL Hosting Server, MySQL Database | 
 | Microsoft.SqlAdapter | SQL Server Hosting Server, SQL Server Database |
 
-<!--::: moniker range=">=azs-1902" -->
 ## Create an offer
 
 During the offer creation process, you create both an offer and a plan. The plan is used as the offer's base plan. During plan creation, you specify the services made available in the plan, and their respective quotas.
@@ -115,9 +114,7 @@ During the offer creation process, you create both an offer and a plan. The plan
 1. Notice the banner, showing your offer is still private, preventing it from user consumption. Change it to public, by selecting **Change State**, and then chose **Public**.
 
     ![Public state](media/tutorial-offer-services/11-offer-change-state.png)
-<!--::: moniker-end-->
 
-<!--::: moniker range="<=azs-1901"-->
 ## Create an offer (1901 and earlier)
 
 During the offer creation process, you create both an offer and a plan. The plan is used as the offer's base plan. During plan creation, you specify the services made available in the plan, and their respective quotas.
@@ -174,7 +171,6 @@ During the offer creation process, you create both an offer and a plan. The plan
 1. Select **Change State**, and then chose **Public**.
 
     ![Public state](media/tutorial-offer-services/image09.png)
-<!--::: moniker-end-->
  
 ## Next steps
 
