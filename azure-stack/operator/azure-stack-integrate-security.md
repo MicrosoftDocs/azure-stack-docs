@@ -1,6 +1,6 @@
 ---
-title: Azure Stack syslog forwarding
-description: Learn how to integrate Azure Stack with monitoring solutions by using syslog forwarding
+title: Integrate Azure Stack with monitoring solutions using syslog forwarding | Microsoft Docs
+description: Learn how to integrate Azure Stack with monitoring solutions using syslog forwarding.
 services: azure-stack
 author: PatAltimore
 manager: femila
@@ -13,7 +13,7 @@ ms.lastreviewed: 04/23/2019
 keywords:
 ---
 
-# Azure Stack datacenter integration - syslog forwarding
+# Integrate Azure Stack with monitoring solutions using syslog forwarding
 
 This article shows you how to use syslog to integrate Azure Stack infrastructure with external security solution(s) already deployed in your datacenter. For example, a security information event management (SIEM) system. The syslog channel exposes audits, alerts, and security logs from all the components of the Azure Stack infrastructure. Use syslog forwarding to integrate with security monitoring solutions and/or to retrieve all audits, alerts, and security logs to store them for retention.
 
