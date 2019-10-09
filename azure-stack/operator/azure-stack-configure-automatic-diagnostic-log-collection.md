@@ -16,7 +16,7 @@ ms.topic: article
 ms.date: 10/08/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/25/2019
+ms.lastreviewed: 10/08/2019
 
 ---
 # Configure automatic Azure Stack diagnostic log collection
