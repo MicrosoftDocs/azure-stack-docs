@@ -339,7 +339,7 @@ Hybrid CI/CD can apply to both app code and infrastructure code. You can use [Az
    
 1. Select **Pipelines** in the left navigation, and then select **New pipeline**. 
 
-1. If necessary, select your code repository, and under **Configure your pipeline**, select **Starter pipeline**. You then see the starter *azure-pipelines.yml* file. 
+1. Select your code repository. Azure Pipelines analyzes your project and opens the default ASP.NET Core *azure-pipelines.yml* file. 
    
 1. On the **Review your pipeline YAML** page, select **Show assistant**.
    
