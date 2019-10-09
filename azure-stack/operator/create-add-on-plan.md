@@ -14,7 +14,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
-ms.date: 06/11/2019
+ms.date: 10/05/2019
 ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 06/11/2019
@@ -22,7 +22,7 @@ ms.lastreviewed: 06/11/2019
 
 # Azure Stack add-on plans
 
-As an Azure Stack operator, you create add-on plans to modify a [base plan](azure-stack-create-plan.md) when you want to offer additional services or extend *computer*, *storage*, or *network* quotas beyond the base plan initial offer. Add-on plans modify the base plan and are optional extensions that users can choose to subscribe to.
+As an Azure Stack operator, you create add-on plans to modify a [base plan](azure-stack-create-plan.md) when you want to offer additional services or extend *computer*, *storage*, or *network* quotas beyond the base plan initial offer. Add-on plans modify the base plan and are optional extensions that users can choose to enable in their subscription.
 
 There are times when combining everything in a single plan is optimal. Other times you might want to have a base plan and then offer the additional services by using add-on plans. For instance, you could decide to offer IaaS services as part of a base plan, with all PaaS services treated as add-on plans.
 
@@ -31,9 +31,7 @@ Another reason to use add-on plans is to help monitor resource usage. To do so, 
 > [!NOTE]
 > When you do not want to use an add-on plan to extend a quota, you can also choose to [edit the original configuration of the quota](azure-stack-quota-types.md#edit-a-quota).
 
-When you add an add-on plan to an existing offer subscription, the additional resources can take up to an hour to appear.
-
-Add-on plans are created by modifying an existing offer.
+Add-on plans are [created the same way](azure-stack-create-plan.md) as a base plan. The difference between the two is determined when the plan is added to an offer. It's designated as either a base plan or add-on plan. When you add an add-on plan to an existing offer, the additional resources can take up to an hour to appear in the subscription.
 
 ::: moniker range=">=azs-1902"
 ## Create an add-on plan (1902 and later)

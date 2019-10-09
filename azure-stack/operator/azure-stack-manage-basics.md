@@ -83,7 +83,7 @@ Azure Stack uses Azure Resource Manager as its underlying deployment, management
 
 ## Your typical responsibilities
 
-Your users want to use services. From their perspective, your main role is to make these services available to them. Decide which services to offer, and make those services available by creating plans, offers, and quotas. For more information, see [Overview of offering services in Azure Stack](azure-stack-offer-services-overview.md). 
+Your users want to use services. From their perspective, your main role is to make these services available to them. Decide which services to offer, and make those services available by creating plans, offers, and quotas. For more information, see [Overview of offering services in Azure Stack](service-plan-offer-subscription-overview.md). 
 
 You'll also need to add items to [the marketplace](azure-stack-marketplace.md), like as virtual machine images. The easiest way is to [download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md).
 

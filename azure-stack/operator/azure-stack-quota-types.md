@@ -23,7 +23,7 @@ ms.lastreviewed: 12/07/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-[Quotas](azure-stack-plan-offer-quota-overview.md#plans) define the limits of resources that a user subscription can provision or consume. For example, a quota might allow a user to create up to five VMs. Each resource can have its own types of quotas.
+[Quotas](service-plan-offer-subscription-overview.md#plans) define the limits of resources that a user subscription can provision or consume. For example, a quota might allow a user to create up to five VMs. Each resource can have its own types of quotas.
 
 > [!IMPORTANT]
 > It can take up to two hours for new quotas to be available in the user portal or before a changed quota is enforced.
@@ -113,5 +113,5 @@ The new values for the quota apply globally to all plans that use the modified q
 
 ## Next steps
 
-- [Learn more about plans, offers, and quotas.](azure-stack-plan-offer-quota-overview.md)
+- [Learn more about services, plans, offers, and quotas.](service-plan-offer-subscription-overview.md)
 - [Create quotas while creating a plan.](azure-stack-create-plan.md)
