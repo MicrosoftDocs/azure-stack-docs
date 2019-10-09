@@ -347,7 +347,7 @@ Hybrid CI/CD can apply to both app code and infrastructure code. You can use [Az
    
    - Under `pool`, change the `vmImage` from `ubuntu-latest` to `vs2017-win2016`.
      
-   - Under `steps`, add the [DotNetCoreCLI](/devops/pipelines/tasks/build/dotnet-core-cli) task, command, and arguments: 
+   - Under `steps`, add the [DotNetCoreCLI](/azure/devops/pipelines/tasks/build/dotnet-core-cli) task, command, and arguments: 
      
      ```yaml
      - task: DotNetCoreCLI@2
