@@ -95,7 +95,7 @@ From the user portal, you provision a virtual machine using the new subscription
 ::: moniker-end
 
 ::: moniker range="<=azs-1901"
-## Deploy a virtual machine resource
+## Deploy a virtual machine resource (1901 and earlier)
 
 From the user portal, you provision a virtual machine using the new subscription.
 
