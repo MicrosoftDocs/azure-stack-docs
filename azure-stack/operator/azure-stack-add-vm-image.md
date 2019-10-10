@@ -58,7 +58,7 @@ If the VHD is from Azure, follow these instructions to generalize the VHD:
 
 Before you upload the image, it's important to consider the following:
 
-- Azure Stack only supports generating 1 VM in the fixed disk VHD format. The fixed-format structures the logical disk linearly within the file, so that disk offset *X* is stored at blob offset *X*. A small footer at the end of the blob describes the properties of the VHD. To confirm if your disk is fixed, use the **Get-VHD** PowerShell cmdlet.
+- Azure Stack only supports generating one (1) VM in the fixed disk VHD format. The fixed-format structures the logical disk linearly within the file, so that disk offset *X* is stored at blob offset *X*. A small footer at the end of the blob describes the properties of the VHD. To confirm if your disk is fixed, use the **Get-VHD** PowerShell cmdlet.
 
 - Azure Stack does not support dynamic disk VHDs. Resizing a dynamic disk that's attached to a VM will leave the VM in a failed state. To mitigate this issue, delete the VM without deleting the VM's disk, a VHD blob in a storage account. Then, convert the VHD from a dynamic disk to a fixed disk and re-create the VM.
 
@@ -125,19 +125,19 @@ Before you upload the image, it's important to consider the following:
    The **Add-AzsPlatformimage** cmdlet specifies values used by the Azure Resource Manager templates to reference the VM image. The values include:
    - **publisher**  
      For example: `Canonical`  
-     The publisher name segment of the VM image that users use when they deploy the image. Don't include a space or other special characters in this field.  
+     The **publisher** name segment of the VM image that users use when they deploy the image. Don't include a space or other special characters in this field.  
    - **offer**  
      For example: `UbuntuServer`  
-     The offer name segment of the VM image that users use when they deploy the VM image. Don't include a space or other special characters in this field.  
+     The **offer** name segment of the VM image that users use when they deploy the VM image. Don't include a space or other special characters in this field.  
    - **sku**  
      For example: `14.04.3-LTS`  
-     The SKU name segment of the VM Image that users use when they deploy the VM image. Don't include a space or other special characters in this field.  
+     The **SKU** name segment of the VM Image that users use when they deploy the VM image. Don't include a space or other special characters in this field.  
    - **version**  
      For example: `1.0.0`  
      The version of the VM Image that users use when they deploy the VM image. This version is in the format *\#.\#.\#*. Don't include a space or other special characters in this field.  
    - **osType**  
      For example: `Linux`  
-     The osType of the image must be either **Windows** or **Linux**.  
+     The **osType** of the image must be either **Windows** or **Linux**.  
    - **OSUri**  
      For example: `https://storageaccount.blob.core.windows.net/vhds/Ubuntu1404.vhd`  
      You can specify a blob storage URI for an `osDisk`.  
@@ -165,13 +165,13 @@ When you no longer need the VM image that you uploaded, you can delete it from t
    The **Remove-AzsPlatformImage** cmdlet specifies values used by the Azure Resource Manager templates to reference the VM image. The values include:
    - **publisher**  
      For example: `Canonical`  
-     The publisher name segment of the VM image that users use when they deploy the image. Don't include a space or other special characters in this field.  
+     The **publisher** name segment of the VM image that users use when they deploy the image. Don't include a space or other special characters in this field.  
    - **offer**  
      For example: `UbuntuServer`  
-     The offer name segment of the VM image that users use when they deploy the VM image. Don't include a space or other special characters in this field.  
+     The **offer** name segment of the VM image that users use when they deploy the VM image. Don't include a space or other special characters in this field.  
    - **sku**  
      For example: `14.04.3-LTS`  
-     The SKU name segment of the VM Image that users use when they deploy the VM image. Don't include a space or other special characters in this field.  
+     The **SKU** name segment of the VM Image that users use when they deploy the VM image. Don't include a space or other special characters in this field.  
    - **version**  
      For example: `1.0.0`  
      The version of the VM Image that users use when they deploy the VM image. This version is in the format *\#.\#.\#*. Don't include a space or other special characters in this field.  

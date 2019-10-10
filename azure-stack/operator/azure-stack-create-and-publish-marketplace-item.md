@@ -30,7 +30,10 @@ The examples in this article show how to create a single VM Marketplace offer, o
 
 ## Create a Marketplace item
 
-Using the VM example, before creating the VM marketplace item, upload the custom VM image to the Azure Stack portal, following the instructions in [Add a VM image to Azure Stack](azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal). Then, follow the instructions in this article to package the image (create an .azpkg) and upload it to the Azure Stack Marketplace.
+> [!IMPORTANT]
+> Before creating the VM marketplace item, upload the custom VM image to the Azure Stack portal, following the instructions in [Add a VM image to Azure Stack](azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal). Then, follow the instructions in this article to package the image (create an .azpkg) and upload it to the Azure Stack Marketplace.
+
+To create a custom marketplace item, do the following:
 
 1. Download the [Azure Gallery Packager tool](https://www.aka.ms/azurestackmarketplaceitem) and the sample Azure Stack gallery package. This download includes custom VM templates. Extract the .zip file and rename the folder **SimpleVMTemplate** with the name of the item that you will show on your Azure Stack portal.
 
