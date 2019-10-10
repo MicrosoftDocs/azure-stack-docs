@@ -24,7 +24,7 @@ ms.lastreviewed: 06/07/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-There are two portals in Azure Stack: the administrator portal and the user portal (sometimes referred to as the *tenant* portal.) As an Azure Stack operator, you use the administrator portal for day-to-day management and operations of Azure Stack.
+There are two portals in Azure Stack: the administrator portal and the user portal. As an Azure Stack operator, you use the administrator portal for day-to-day management and operations of Azure Stack.
 
 ## Access the administrator portal
 
