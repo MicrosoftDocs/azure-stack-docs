@@ -19,7 +19,7 @@ ms.lastreviewed: 05/29/2019
 ---
 # Azure Stack administration basics
 
-If you're new to Azure Stack administration, there are several things you need to know. This article provides an overview of your role as an Azure Stack operator, and what you need to tell your users so you can help them become productive.
+If you're new to Azure Stack administration, there are several things you need to know. This article provides an overview of your role as an Azure Stack operator, and what you need to tell your users to help them become productive.
 
 ## Understand the builds
 
@@ -90,10 +90,10 @@ You'll also need to add items to [Azure Stack Marketplace](azure-stack-marketpla
 > [!NOTE]
 > If you want to test your plans, offers, and services, you can use the [user portal](azure-stack-manage-portals.md); not the administrator portal.
 
-In addition to providing services, you must do the regular duties of an operator to keep Azure Stack up and running. These duties include the following:
+In addition to providing services, you must do the regular duties of an operator to keep Azure Stack up and running. These duties include the following tasks:
 
 - Add user accounts (for [Azure AD](azure-stack-add-new-user-aad.md) deployment or for [AD FS](azure-stack-add-users-adfs.md) deployment).
-- [Assign role-based access control (RBAC) roles](azure-stack-manage-permissions.md) (This isn't restricted to admins.)
+- [Assign role-based access control (RBAC) roles](azure-stack-manage-permissions.md) (This task isn't restricted to admins.)
 - [Monitor infrastructure health](azure-stack-monitor-health.md).
 - Manage [network](azure-stack-viewing-public-ip-address-consumption.md) and [storage](azure-stack-manage-storage-accounts.md) resources.
 - Replace bad hardware. For example, [replace a failed disk](azure-stack-replace-disk.md).
