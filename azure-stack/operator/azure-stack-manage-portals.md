@@ -24,7 +24,7 @@ ms.lastreviewed: 06/07/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-There are two portals in Azure Stack: the adminstrator portal and the user portal (sometimes referred to as the *tenant* portal.) As an Azure Stack operator, you use the administrator portal for day-to-day management and operations of Azure Stack.
+There are two portals in Azure Stack: the administrator portal and the user portal (sometimes referred to as the *tenant* portal.) As an Azure Stack operator, you use the administrator portal for day-to-day management and operations of Azure Stack.
 
 ## Access the administrator portal
 
@@ -60,11 +60,11 @@ Although an operator can create resources such as virtual machines (VMs), virtua
 
 ## Understand subscription behavior
 
-There are three subscriptions created by default in the administrator portal: consumption, default provider, and metering. As an pperator, you'll mostly use the *Default Provider Subscription*. You can't add any other subscriptions and use them in the administrator portal.
+There are three subscriptions created by default in the administrator portal: consumption, default provider, and metering. As an operator, you'll mostly use the *Default Provider Subscription*. You can't add any other subscriptions and use them in the administrator portal.
 
 Other subscriptions are created by users in the user portal based on the plans and offers you create for them. However, the user portal doesn't provide access to any of the administrative or operational capabilities of the administrator portal.
 
-The administrator and user portals are backed by separate instances of Azure Resource Manager. Because of this Azure Resource Manager separation, subscriptions don't cross portals. For example, if you, as an Azure Stack pperator, sign in to the user portal, you can't access the *Default Provider Subscription*. Although you don't have access to any administrative functions, you can create subscriptions for yourself from available public offers. As long as you're signed in to the user portal, you're considered a tenant user.
+The administrator and user portals are backed by separate instances of Azure Resource Manager. Because of this Azure Resource Manager separation, subscriptions don't cross portals. For example, if you, as an Azure Stack operator, sign in to the user portal, you can't access the *Default Provider Subscription*. Although you don't have access to any administrative functions, you can create subscriptions for yourself from available public offers. As long as you're signed in to the user portal, you're considered a tenant user.
 
   >[!NOTE]
   >In an ASDK environment, if a user belongs to the same tenant directory as the Azure Stack operator, they're not blocked from signing in to the administrator portal. However, they can't access any of the administrative functions or add subscriptions to access offers that are available to them in the user portal.
@@ -73,7 +73,7 @@ The administrator and user portals are backed by separate instances of Azure Res
 
 ### Customize the dashboard
 
-The dashboard contains a set of default tiles. You can select **Edit dashboard** to modify the default dashboard, or select **New dashboard** to add a custom dashboard. You can easily add tiles to a dashboard. For example, you can select **+ Create a resource**, right-click **Offers + Plans**, and then select **Pin to dashboard**.
+The dashboard contains a set of default tiles. You can select **Edit dashboard** to modify the default dashboard, or select **New dashboard** to add a custom dashboard. You can also add tiles to a dashboard. For example, select **+ Create a resource**, right-click **Offers + Plans**, and then select **Pin to dashboard**.
 
 Sometimes, you might see a blank dashboard in the portal. To recover the dashboard, click **Edit Dashboard**, and then right-click and select **Reset to default state**.
 
