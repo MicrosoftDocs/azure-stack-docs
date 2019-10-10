@@ -12,21 +12,26 @@ ms.lastreviewed: 10/06/2019
 
 # Tutorial: Test a service offering
 
-In the previous tutorial, you created an offer for users. This tutorial shows you how to test that offer, by using it to create a subscription, then deploy a resource. 
+In the previous tutorial, you created an offer for users. This tutorial shows you how to test that offer, by using it to create a subscription. You then create and deploy resources to the foundational services entitled by the subscription.
 
 In this tutorial, you learn how to:
 
 > [!div class="checklist"]
 > * Create a subscription
-> * Deploy resources entitled by the subscription
-
+::: moniker range=">=azs-1902"
+> * Deploy a storage account resource
+> * Deploy a virtual machine resource
+::: moniker-end
+::: moniker range="<=azs-1901"
+> * Deploy a virtual machine resource
+::: moniker-end
 ## Prerequisites
 
 Before starting this tutorial, you must complete the following prerequisites:
 
 - Complete the [Offer a service to users](tutorial-offer-services.md) tutorial. In it, you learn how to create the offer used by this tutorial.
 
-- The offer you subscribe to in this tutorial enables deployment of a virtual machine (VM) resource. Before a VM can be deployed, you must make a VM image available in Azure Stack Marketplace, by downloading it from Azure Marketplace. See [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md) for instructions. 
+- The offer you subscribe to in this tutorial enables deployment of a virtual machine (VM) resource. If you'd like to test VM deployment, you must first make a VM image available in Azure Stack Marketplace, by downloading it from Azure Marketplace. See [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md) for instructions. 
 
 ## Subscribe to the offer
 
@@ -39,7 +44,7 @@ Before starting this tutorial, you must complete the following prerequisites:
 
    ![Get a subscription](media/tutorial-test-offer/1-get-subscription.png)
 
-1. In **Get a Subscription**, enter a name for your subscription in the **Display Name** field. Select **Offer**, and then choose one of the offers in the **Choose an offer** list. Select **Create**.
+1. In **Get a Subscription**, enter a name for your subscription in the **Display Name** field. Select **Offer**, and then choose the offer you created in the previous tutorial, from the **Choose an offer** list. Select **Create**.
 
    ![Create an offer](media/tutorial-test-offer/2-create-offer.png)
 
@@ -132,9 +137,9 @@ In this tutorial you learned how to:
 
 > [!div class="checklist"]
 > * Create a subscription
-> * Deploy resources entitled by the subscription
+> * Deploy resources 
 
-Learn more about deploying resource providers for add-on services. They'll allow you to offer even more services in your plans, and your subscribers to deploy new resources from Azure Stack Marketplace:
+Next, learn about deploying resource providers for add-on services. They allow you to offer even more services to users in your plans:
 
 - [Offer SQL on Azure Stack](azure-stack-sql-resource-provider.md)
 - [Offer MySQL on Azure Stack](azure-stack-mysql-resource-provider.md)
