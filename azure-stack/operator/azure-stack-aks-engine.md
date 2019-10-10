@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 10/09/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/25/2019
+ms.lastreviewed: 10/09/2019
 
 ---
 
@@ -67,10 +67,9 @@ Add the following item to the marketplace:
 1. Select the image version that matches the version of the AKS Engine. You can find listing of AKS Base Image to AKS Engine version at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). 
 
     In the list, select:
-    - **Publisher**: microsoft-aks
+    - **Publisher**: Azure Kubernetes Service
     - **Offer**: aks
-    - **Version**: 2019.07.30 (or version that maps to AKS Engine)
-    - **SKU**: aks-ubuntu-1604-201907
+    - **Version**: AKS Base Image 16.04-LTS Image Distro, September 2019 (2019.09.19 or version that maps to AKS Engine)
 
 1. Select **Download.**
 
