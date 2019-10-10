@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2019
-ms.author: mabriggs
+ms.author: mabrigg
 ms.lastreviewed: 09/10/2019
 ms.reviewer: ppacent 
 
