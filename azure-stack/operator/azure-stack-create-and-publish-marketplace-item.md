@@ -12,42 +12,44 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 10/10/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
 
 ---
-# Create and publish a Marketplace item in Azure Stack
+# Create and publish a custom Azure Stack Marketplace item
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Every item published to the Azure Stack Marketplace uses the Azure Gallery Package (.azpkg) format. The *Azure Gallery Packager* tool enables you to create a custom package that you can deploy to the Azure Stack marketplace, which can then be downloaded by users. The deployment process uses an Azure Resource Manager template.
+Every item published to the Azure Stack Marketplace uses the Azure Gallery Package (.azpkg) format. The *Azure Gallery Packager* tool enables you to create a custom Azure Gallery package that you can upload to the Azure Stack Marketplace, which can then be downloaded by users. The deployment process uses an Azure Resource Manager template.
 
 ## Marketplace items
 
-There are different types of gallery items on the Azure Stack Marketplace:
-
-- [Single Virtual Machine (single VM)](/azure/marketplace/marketplace-virtual-machines).
-- [Multiple Virtual Machines (multi-VM), also called *Solution templates*](/azure/marketplace/marketplace-solution-templates).
-- [Virtual Machine extensions](/azure/virtual-machines/extensions/overview).
-
-The examples in this article use single VMs of type Windows or Linux.
+The examples in this article show how to create a single VM Marketplace offer, of type Windows or Linux.
 
 ## Create a Marketplace item
 
 Using the VM example, before creating the VM marketplace item, upload the custom VM image to the Azure Stack portal, following the instructions in [Add a VM image to Azure Stack](azure-stack-add-vm-image.md#add-a-custom-vm-image-to-the-marketplace-using-the-portal). Then, follow the instructions in this article to package the image (create an .azpkg) and upload it to the Azure Stack Marketplace.
 
-1. Download the [Azure Gallery Packager tool](https://www.aka.ms/azurestackmarketplaceitem) and the sample Azure Stack gallery package. Extract the .zip file and rename the folder **SimpleVMTemplate** with the name of the item that you will show on your Azure Stack portal.
+1. Download the [Azure Gallery Packager tool](https://www.aka.ms/azurestackmarketplaceitem) and the sample Azure Stack gallery package. This download includes custom VM templates. Extract the .zip file and rename the folder **SimpleVMTemplate** with the name of the item that you will show on your Azure Stack portal.
 
-2. Create an Azure Resource Manager template or use our custom templates for Windows/Linux. These custom templates are provided in the packager tool .zip file you downloaded in step 1. You can either use the template and change the text fields, or you can download a pre-configured template from GitHub. For more information about Azure Resource Manager templates, see [Azure Resource Manager templates](/azure/azure-resource-manager/resource-group-authoring-templates).
+2. Create an Azure Resource Manager template or use our sample templates for Windows/Linux. These sample templates are provided in the packager tool .zip file you downloaded in step 1. You can either use the template and change the text fields, or you can download a pre-configured template from GitHub. For more information about Azure Resource Manager templates, see [Azure Resource Manager templates](/azure/azure-resource-manager/resource-group-authoring-templates).
 
-3. Replace the following highlighted values (those with numbers) in the Manifest.json template with the value that you provided when [uploading your custom image](azure-stack-add-vm-image.md#add-a-custom-vm-image-to-the-marketplace-using-the-portal).
+3. The Gallery package should contain the following structure:
+
+   :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/gallerypkg1.png" alt-text="Gallery package":::
+
+   The deployment templates file structure appears as follows:
+
+   :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/gallerypkg2.png" alt-text="Gallery package":::
+
+4. Replace the following highlighted values (those with numbers) in the Manifest.json template with the value that you provided when [uploading your custom image](azure-stack-add-vm-image.md#add-a-custom-vm-image-to-the-marketplace-using-the-portal).
 
    > [!NOTE]  
    > Never hard code any secrets such as product keys, password, or any customer identifiable information in the Azure Resource Manager template. Template JSON files are accessible without the need for authentication once published in the gallery. Store all secrets in [Key Vault](/azure/azure-resource-manager/resource-manager-keyvault-parameter) and call them from within the template.
 
-   The following template example uses a custom Ubuntu VHD:
+   The following template is a sample of the Manifest.json file:
 
     ```json
     {
@@ -119,12 +121,12 @@ Using the VM example, before creating the VM marketplace item, upload the custom
     - (9) – The names of the categories in which this template is displayed.
     - (10) – The path and name for each icon.
 
-4. For all fields referring to **ms-resource**, you must change the appropriate values inside the **strings/resources.resjson** file:
+5. For all fields referring to **ms-resource**, you must change the appropriate values inside the **strings/resources.json** file:
 
     ```json
     {
-    "displayName": "Test.TestUbuntu.1.0.0",
-    "publisherDisplayName": "TestUbuntu",
+    "displayName": "<OfferName.PublisherName.Version>",
+    "publisherDisplayName": "<Publisher name>",
     "summary": "Create a simple VM",
     "longSummary": "Create a simple VM and use it",
     "description": "<p>This is just a sample of the type of description you could create for your gallery item!</p><p>This is a second paragraph.</p>",
@@ -135,47 +137,27 @@ Using the VM example, before creating the VM marketplace item, upload the custom
     ![Package display](media/azure-stack-create-and-publish-marketplace-item/pkg1.png)
     ![Package display](media/azure-stack-create-and-publish-marketplace-item/pkg2.png)
 
-5. Under **artifacts**, change **name** and **path** to the correct information for the Azure Resource Manager template that you included:
+6. To ensure that the resource can be deployed successfully, test the template with the [Azure Stack APIs](../user/azure-stack-profiles-azure-resource-manager-versions.md).
 
-   ```json
-   "artifacts": [
-      {
-          "name": "Your template name",
-          "type": "Template",
-          "path": "DeploymentTemplates\\your path",
-          "isDefault": true
-      }
-   ```
+7. If your template relies on a virtual machine (VM) image, follow the instructions to [add a VM image to Azure Stack](azure-stack-add-vm-image.md).
 
-6. Replace **My Marketplace Items** with a list of the categories where your Marketplace item should appear:
+8. Save your Azure Resource Manager template in the **/Contoso.TodoList/DeploymentTemplates/** folder.
 
-    ```json
-    "categories":[
-    "My Marketplace Items"
-    ],
-    ```
-
-7. To ensure that the resource can be deployed successfully, test the template with the Microsoft Azure Stack APIs.
-
-8. If your template relies on a virtual machine (VM) image, follow the instructions to [add a VM image to Azure Stack](azure-stack-add-vm-image.md).
-
-9. Save your Azure Resource Manager template in the **/Contoso.TodoList/DeploymentTemplates/** folder.
-
-10. Choose the icons and text for your Marketplace item. Add icons to the **Icons** folder, and add text to the **resources** file in the **Strings** folder. Use the **small**, **medium**, **large**, and **wide** naming convention for icons. See the [Marketplace item UI reference](#reference-marketplace-item-ui) for a detailed description of these sizes.
+9. Choose the icons and text for your Marketplace item. Add icons to the **Icons** folder, and add text to the **resources** file in the **Strings** folder. Use the **small**, **medium**, **large**, and **wide** naming convention for icons. See the [Marketplace item UI reference](#reference-marketplace-item-ui) for a detailed description of these sizes.
 
     > [!NOTE]
     > All four icon sizes (small, medium, large, wide) are required for building the Marketplace item correctly.
 
-11. For any further edits to Manifest.json, refer to [Reference: Marketplace item manifest.json](#reference-marketplace-item-manifestjson).
+10. For any further edits to Manifest.json, see [Reference: Marketplace item manifest.json](#reference-marketplace-item-manifestjson).
 
-12. When you finish modifying your files, convert it to an azpkg. You perform the conversion using the **AzureGalleryPackager.exe** tool and the sample gallery package you downloaded previously. Run the following command:
+11. When you finish modifying your files, convert it to an .azpkg file. You perform the conversion using the **AzureGalleryPackager.exe** tool and the sample gallery package you downloaded previously. Run the following command:
 
     ```shell
-    .\AzureGalleryPackager.exe package –m c:\<path to your file>\<name of your azpkg file without the extension>\manifest.json –o c:\Temp
+    .\AzureGalleryPackager.exe package –m c:\<path>\<gallery package name>\manifest.json –o c:\Temp
     ```
 
     > [!NOTE]
-    > The output path can be any path you choose, and does not have to be under the C: drive. However, the full path to both the manifest.json file, and the output package, must exist. For example, if the output path is **C:\MarketPlaceItem\yourpackage.azpkg**, the folder **C:\MarketPlaceItem** must exist.
+    > The output path can be any path you choose, and does not have to be under the C: drive. However, the full path to both the manifest.json file, and the output package, must exist. For example, if the output path is `C:\<path>\galleryPackageName.azpkg`, the folder `C:\<path>` must exist.
     >
     >
 
@@ -200,30 +182,23 @@ Using the VM example, before creating the VM marketplace item, upload the custom
     https://sample.blob.core.windows.net/gallerypackages/*offer.publisher.version*.azpkg –Verbose
     ```
 
-5. Verify that you have a valid Storage account that is available to store your item. You can run the following cmdlet, which prompts you for the Gallery package URI:
+5. Verify that you have a valid Storage account that is available to store your item. You can get the `GalleryItemURI` value from the Azure Stack administrator portal. Select **Storage account -> Blob Properties -> URL**, with the extension .azpkg. The storage account is only for temporary use, in order to publish to the marketplace.
 
-    ```powershell
-    Add-AzsGalleryItem
-    ```
-
-    ![Add gallery item](media/azure-stack-create-and-publish-marketplace-item/pkg5.png)
-
-    You can get the `GalleryItemURI` value from the Azure Stack admin portal. Select **Storage account -> Blob Properties -> URL**, with the extension .azpkg.
-
-   After completing your gallery package and uploading it using **Add-AzsGalleryItem**, your custom VM should now appear on the Marketplace.
+   After completing your gallery package and uploading it using **Add-AzsGalleryItem**, your custom VM should now appear on the Marketplace as well as in the **Create a resource** view. Note that the custom gallery package is not visible in **Marketplace Management**.
 
    [![Custom marketplace item uploaded](media/azure-stack-create-and-publish-marketplace-item/pkg6sm.png "Custom marketplace item uploaded")](media/azure-stack-create-and-publish-marketplace-item/pkg6.png#lightbox)
+
+6. Once your item has been successfully published to the marketplace, you can delete the content from the storage account.
 
    > [!CAUTION]  
    > All default gallery artifacts and your custom gallery artifacts are now accessible without authentication under the following URLs:  
    `https://adminportal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`
    `https://portal.[Region].[external FQDN]:30015/artifact/20161101/[Template Name]/DeploymentTemplates/Template.json`
-   `https://systemgallery.blob.[Region].[external FQDN]/dev20161101-microsoft-windowsazure-gallery/[Template Name]/UiDefinition.json`
 
 6. You can remove a Marketplace item by using the **Remove-AzureRMGalleryItem** cmdlet. For example:
 
    ```powershell
-   Remove-AzsGalleryItem -Name Microsoft.SimpleTemplate.1.0.0  -Verbose
+   Remove-AzsGalleryItem -Name <Gallery package name> -Verbose
    ```
 
    > [!NOTE]
