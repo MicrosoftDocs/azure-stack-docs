@@ -18,13 +18,8 @@ In this tutorial, you learn how to:
 
 > [!div class="checklist"]
 > * Create a subscription
-::: moniker range=">=azs-1902"
-> * Deploy a storage account resource
-> * Deploy a virtual machine resource
-::: moniker-end
-::: moniker range="<=azs-1901"
-> * Deploy a virtual machine resource
-::: moniker-end
+> * Create and deploy resources
+
 ## Prerequisites
 
 Before starting this tutorial, you must complete the following prerequisites:
@@ -137,7 +132,7 @@ In this tutorial you learned how to:
 
 > [!div class="checklist"]
 > * Create a subscription
-> * Deploy resources 
+> * Create and deploy resources 
 
 Next, learn about deploying resource providers for add-on services. They allow you to offer even more services to users in your plans:
 
