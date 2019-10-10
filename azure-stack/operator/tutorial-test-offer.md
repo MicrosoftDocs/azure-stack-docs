@@ -39,7 +39,7 @@ Before starting this tutorial, you must complete the following prerequisites:
 
    ![Get a subscription](media/tutorial-test-offer/1-get-subscription.png)
 
-1. In **Get a Subscription**, enter a name for your subscription in the **Display Name** field. Select **Offer**, and then choose the offer you created in the previous tutorial, from the **Choose an offer** list. Select **Create**.
+1. In **Get a Subscription**, enter a name for your new subscription in the **Display Name** field. Select **Offer**, and then choose the offer you created in the previous tutorial, from the **Choose an offer** list. Select **Create**.
 
    ![Create an offer](media/tutorial-test-offer/2-create-offer.png)
 
@@ -60,7 +60,7 @@ From the user portal, you provision a storage account using the new subscription
 1. In **Create storage account**, provide the following information:
   
    - Enter a **Name**
-   - Select a **Subscription**
+   - Select your new **Subscription**
    - Select a **Resource group** (or create a one.) 
    - Select **Create** to create the storage account.
 
@@ -79,7 +79,7 @@ From the user portal, you provision a virtual machine using the new subscription
    - Enter a **User name** for the administrator account.
    - For Linux VMs, select "Password" for **Authentication type**.
    - Enter a **Password** and the same for **Confirm password**, for the administrator account.
-   - Select a **Subscription**.
+   - Select your new **Subscription**.
    - Select a **Resource group** (or create a one). 
    - Select **OK** to validate this information and continue.
 
@@ -108,7 +108,7 @@ From the user portal, you provision a virtual machine using the new subscription
    - Enter a **Name**
    - Enter a **User name**
    - Enter a **Password**
-   - Choose a **Subscription**
+   - Choose your new **Subscription**
    - Create a **Resource group** (or select an existing one.) 
    - Select **OK** to save this information.
 
