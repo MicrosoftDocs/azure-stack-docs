@@ -32,7 +32,7 @@ An offer consists of one or more plans. A plan entitles access to one or more se
 
 A resource provider supports creation, deployment, and management of its resources as services. A common example is the Microsoft.Compute resource provider, which offers the ability to create and deploy virtual machines (VMs). See [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) for an overview of the Azure resource management model.
 
-In Azure Stack, there are two general categories of resource providers: ones that offer foundational services, and ones that offer add-on services.
+In Azure Stack, there are two general categories of resource providers: ones that deploy resources as foundational services, and ones that deploy as add-on services.
 
 ### Foundational services
 
@@ -43,10 +43,10 @@ Foundational services are supported by the following resource providers, which a
 
 | Resource Provider | Example resources |
 | ----------------- | ------------------|
-| Microsoft.Compute | Virtual machines, Disks, Virtual machine scale sets |
-| Microsoft.KeyVault | Key Vaults, Secrets |
-| Microsoft.Network | Virtual networks, Public IP addresses, Load balancers |
-| Microsoft.Storage | Storage accounts, Blobs, Queues, Tables |
+| Microsoft.Compute | Virtual machines, disks, virtual machine scale sets |
+| Microsoft.KeyVault | Key Vaults, secrets |
+| Microsoft.Network | Virtual networks, public IP addresses, load balancers |
+| Microsoft.Storage | Storage accounts, blobs, queues, tables |
 
 ### Add-on services
 
@@ -57,9 +57,9 @@ Add-on services are supported by resource providers that are installed after Azu
 
 | Resource Provider | Example resources |
 | ----------------- | ------------------------- |
-| Microsoft.Web | App Service Functions Apps, Web Apps, API Apps | 
-| Microsoft.MySqlAdapter | MySQL Hosting Server, MySQL Database | 
-| Microsoft.SqlAdapter | SQL Server Hosting Server, SQL Server Database |
+| Microsoft.Web | App Service function apps, web apps, API apps | 
+| Microsoft.MySqlAdapter | MySQL hosting server, MySQL database | 
+| Microsoft.SqlAdapter | SQL Server hosting server, SQL Server database |
 
 ::: moniker range=">=azs-1902"
 ## Create an offer
