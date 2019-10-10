@@ -196,4 +196,5 @@ Once you have registered, you can disregard the following message that appears o
 
 ## Next steps
 
-[Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md)
+- [Add a custom virtual machine image](azure-stack-add-vm-image.md)
+- [Create and publish a custom Marketplace item](azure-stack-create-and-publish-marketplace-item.md)

@@ -125,16 +125,16 @@ Before you upload the image, it's important to consider the following:
    The **Add-AzsPlatformimage** cmdlet specifies values used by the Azure Resource Manager templates to reference the VM image. The values include:
    - **publisher**  
      For example: `Canonical`  
-     The publisher name segment of the VM image that users use when they deploy the image. An example is **Microsoft**. Don't include a space or other special characters in this field.  
+     The publisher name segment of the VM image that users use when they deploy the image. Don't include a space or other special characters in this field.  
    - **offer**  
      For example: `UbuntuServer`  
-     The offer name segment of the VM image that users use when they deploy the VM image. An example is **WindowsServer**. Don't include a space or other special characters in this field.  
+     The offer name segment of the VM image that users use when they deploy the VM image. Don't include a space or other special characters in this field.  
    - **sku**  
      For example: `14.04.3-LTS`  
-     The SKU name segment of the VM Image that users use when they deploy the VM image. An example is **Datacenter2016**. Don't include a space or other special characters in this field.  
+     The SKU name segment of the VM Image that users use when they deploy the VM image. Don't include a space or other special characters in this field.  
    - **version**  
      For example: `1.0.0`  
-     The version of the VM Image that users use when they deploy the VM image. This version is in the format *\#.\#.\#*. An example is **1.0.0**. Don't include a space or other special characters in this field.  
+     The version of the VM Image that users use when they deploy the VM image. This version is in the format *\#.\#.\#*. Don't include a space or other special characters in this field.  
    - **osType**  
      For example: `Linux`  
      The osType of the image must be either **Windows** or **Linux**.  
@@ -165,19 +165,20 @@ When you no longer need the VM image that you uploaded, you can delete it from t
    The **Remove-AzsPlatformImage** cmdlet specifies values used by the Azure Resource Manager templates to reference the VM image. The values include:
    - **publisher**  
      For example: `Canonical`  
-     The publisher name segment of the VM image that users use when they deploy the image. An example is **Microsoft**. Don't include a space or other special characters in this field.  
+     The publisher name segment of the VM image that users use when they deploy the image. Don't include a space or other special characters in this field.  
    - **offer**  
      For example: `UbuntuServer`  
-     The offer name segment of the VM image that users use when they deploy the VM image. An example is **WindowsServer**. Don't include a space or other special characters in this field.  
+     The offer name segment of the VM image that users use when they deploy the VM image. Don't include a space or other special characters in this field.  
    - **sku**  
      For example: `14.04.3-LTS`  
-     The SKU name segment of the VM Image that users use when they deploy the VM image. An example is **Datacenter2016**. Don't include a space or other special characters in this field.  
+     The SKU name segment of the VM Image that users use when they deploy the VM image. Don't include a space or other special characters in this field.  
    - **version**  
      For example: `1.0.0`  
-     The version of the VM Image that users use when they deploy the VM image. This version is in the format *\#.\#.\#*. An example is **1.0.0**. Don't include a space or other special characters in this field.  
+     The version of the VM Image that users use when they deploy the VM image. This version is in the format *\#.\#.\#*. Don't include a space or other special characters in this field.  
 
      For more info about the **Remove-AzsPlatformImage** cmdlet, see the Microsoft PowerShell [Azure Stack Operator module documentation](/powershell/module/).
 
 ## Next steps
 
-[Provision a virtual machine](../user/azure-stack-create-vm-template.md)
+- [Create and publish a custom Azure Stack Marketplace item](azure-stack-create-and-publish-marketplace-item.md)
+- [Provision a virtual machine](../user/azure-stack-create-vm-template.md)
