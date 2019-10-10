@@ -64,7 +64,7 @@ in.
 ![Find Azure Stack storage accounts](media/azure-stack-manage-storage-accounts/image6.png)
 
 ## Look at account details
-Once you have located the accounts you're interested in viewing, you
+Once you've located the accounts you're interested in viewing, you
 can select the particular account to view certain details. A new pane
 opens with the account details. These details include the kind of account,
 creation time, location, and so on.
@@ -142,7 +142,7 @@ You can reclaim capacity using either the portal or PowerShell.
 
     ![Successfully reclaimed space](media/azure-stack-manage-storage-accounts/image12.png)
 
-5. Refresh the Storage accounts page. The deleted accounts are no longer shown in the list because they have been purged.
+5. Refresh the Storage accounts page. The deleted accounts are no longer shown in the list because they've been purged.
 
 You can also use PowerShell to explicitly override the retention period and immediately reclaim capacity.
 
