@@ -20,6 +20,8 @@ ms.lastreviewed: 10/10/2019
 
 # Configure the time server for Azure Stack
 
+*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*  
+
 You can use the privileged endpoint (PEP) to update the time server in Azure Stack. Use a host name that resolves to two or more NTP server IP addresses.
 
 Azure Stack uses the Network Time Protocol (NTP) to connect to time servers on the Internet. NTP servers provide accurate system time. Time is used across Azure Stack's physical network switches, hardware lifecycle host, infrastructure service, and virtual machines. If the clock isn't synchronized, Azure Stack may experience issues with the network. Log files, documents, and other files may be created with incorrect timestamps.
