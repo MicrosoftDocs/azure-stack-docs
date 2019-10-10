@@ -53,7 +53,7 @@ In this solution, you'll build a sample environment to:
 
 -   Deploy [App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
 
--   [Create Plan/Offers](../operator/azure-stack-plan-offer-quota-overview.md) within the Azure Stack environment.
+-   [Create Plan/Offers](../operator/service-plan-offer-subscription-overview.md) within the Azure Stack environment.
 
 -   [Create tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) within the Azure Stack environment.
 
