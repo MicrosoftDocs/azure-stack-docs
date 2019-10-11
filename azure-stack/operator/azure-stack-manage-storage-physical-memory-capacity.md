@@ -1,6 +1,6 @@
 ---
 title: Manage physical memory capacity in Azure Stack | Microsoft Docs
-description: Learn how to monitor and manage physical memory and storage capacity in Azure Stack.
+description: Learn how to monitor and manage physical memory and capacity in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
