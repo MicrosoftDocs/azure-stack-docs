@@ -53,7 +53,7 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 1.7:
 
 Azure App Service on Azure Stack Update 7 includes the following improvements and fixes:
 
-- Resolution for [CVE-2019-1372](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1372) Remote Code Execution Vulnerability
+- Resolution for [CVE-2019-1372](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1372) Remote Code Execution Vulnerability
 
 - Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Portal SDK version.
 
