@@ -41,7 +41,7 @@ Before starting this tutorial, you must complete the following prerequisites:
 
 1. In **Get a Subscription**, enter a name for your new subscription in the **Display Name** field. Select **Offer**, and then choose the offer you created in the previous tutorial, from the **Choose an offer** list. Select **Create**.
 
-   ![Create an offer](media/tutorial-test-offer/2-create-offer.png)
+   ![Create an offer](media/tutorial-test-offer/2-create-subscription.png)
 
 1. To view the subscription, select **All services**, and then under the **GENERAL** category select **Subscriptions**. Select your new subscription to view the offer it's associated with, and its properties.
 
@@ -51,7 +51,7 @@ Before starting this tutorial, you must complete the following prerequisites:
 ::: moniker range=">=azs-1902"
 ## Deploy a storage account resource
 
-From the user portal, you provision a storage account using the new subscription.
+From the user portal, you provision a storage account using the subscription you created in the previous section.
 
 1. Sign in to the user portal with a user account.
 
@@ -68,11 +68,11 @@ From the user portal, you provision a storage account using the new subscription
 
 ## Deploy a virtual machine resource
 
-From the user portal, you provision a virtual machine using the new subscription.
+From the user portal, you provision a virtual machine using the subscription you created in the previous section.
 
 1. Sign in to the user portal with a user account.
 
-1. Select **+Create a resource** > **Compute** > **\<image-name\>** (where `image-name` is the name of the virtual machine you downloaded in prerequisites, such as **Windows Server 2016 Datacenter- Pay-as-you-use**).
+1. Select **+Create a resource** > **Compute** > **\<image-name\>**, where "image-name" is the name of the virtual machine you downloaded in prerequisites.
 1. In **Create virtual machine** / **Basics**, provide the following information:
   
    - Enter a **Name** for the VM.
