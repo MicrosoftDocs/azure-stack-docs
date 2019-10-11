@@ -41,7 +41,7 @@ Before starting this tutorial, you must complete the following prerequisites:
 
 1. In **Get a Subscription**, enter a name for your new subscription in the **Display Name** field. Select **Offer**, and then choose the offer you created in the previous tutorial, from the **Choose an offer** list. Select **Create**.
 
-   ![Create an offer](media/tutorial-test-offer/2-create-offer.png)
+   ![Create an offer](media/tutorial-test-offer/2-create-subscription.png)
 
 1. To view the subscription, select **All services**, and then under the **GENERAL** category select **Subscriptions**. Select your new subscription to view the offer it's associated with, and its properties.
 
