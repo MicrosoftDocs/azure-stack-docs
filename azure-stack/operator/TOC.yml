@@ -66,6 +66,8 @@
         href: azure-stack-customer-defined.md
       - name: DNS integration
         href: azure-stack-integrate-dns.md
+      - name: Configure time server
+        href: azure-stack-configure-time.md
       - name: Firewall integration
         href: azure-stack-firewall.md
         items:
