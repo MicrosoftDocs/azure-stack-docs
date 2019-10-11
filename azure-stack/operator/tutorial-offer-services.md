@@ -95,7 +95,7 @@ During the offer creation process, you create both an offer and a plan. The plan
 
    ![Create compute quota](media/tutorial-offer-services/6-create-new-plan-quotas.png)
 
-1. Select the **Review + create"** tab. You should see a green "Validation passed" banner at the top, indicating the new base plan is ready to be created. Select **Create**. You'll see a notification once the plan has been created.
+1. Select the **Review + create** tab. You should see a green "Validation passed" banner at the top, indicating the new base plan is ready to be created. Select **Create**. You'll see a notification once the plan has been created.
 
    ![Create new plan](media/tutorial-offer-services/7-create-new-plan-review-create.png)
 
