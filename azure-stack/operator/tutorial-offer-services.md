@@ -95,11 +95,11 @@ During the offer creation process, you create both an offer and a plan. The plan
 
    ![Create compute quota](media/tutorial-offer-services/6-create-new-plan-quotas.png)
 
-1. Select the **Review + create** tab. You should see a green "Validation passed" banner at the top, indicating the new base plan is ready to be created. Select **Create**. You'll see a notification once the plan has been created.
+1. Select the **Review + create** tab. You should see a green "Validation passed" banner at the top, indicating the new base plan is ready to be created. Select **Create**. You should also see a notification indicating that the plan has been created.
 
    ![Create new plan](media/tutorial-offer-services/7-create-new-plan-review-create.png)
 
-1. After returning to **Base plans** tab of the **Create a new offer** page, you notice that the plan has been created. Be sure the new plan is selected for inclusion in the offer as the base plan, then select **Review + create**.
+1. After returning to the **Base plans** tab of the **Create a new offer** page, you notice that the plan has been created. Be sure the new plan is selected for inclusion in the offer as the base plan, then select **Review + create**.
 
    ![Add base plan](media/tutorial-offer-services/8-create-new-offer-base-plans-done.png)
 
@@ -107,12 +107,12 @@ During the offer creation process, you create both an offer and a plan. The plan
 
    ![Create new offer](media/tutorial-offer-services/9-create-new-offer-review-create.png)
 
-1. The "Your deployment is underway" page shows initially, followed by "Your deployment is complete" once the offer is deployed. Click on the name of the offer, under the **Resource** column.ks
+1. The "Your deployment is underway" page shows initially, followed by "Your deployment is complete" once the offer is deployed. Click on the name of the offer, under the **Resource** column.
 
    ![Offer deployment complete](media/tutorial-offer-services/10-offer-deployment-complete.png)
 
 
-1. Notice the banner, showing your offer is still private, preventing it from user consumption. Change it to public, by selecting **Change State**, and then chose **Public**.
+1. Notice the banner, showing your offer is still private, which prevents users from subscribing to it. Change it to public, by selecting **Change State**, and then chose **Public**.
 
     ![Public state](media/tutorial-offer-services/11-offer-change-state.png)
 ::: moniker-end
