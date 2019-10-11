@@ -2,7 +2,7 @@
 author: mattbriggs
 ms.service: azure-stack 
 ms.topic: include
-ms.date: 06/13/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
 ---
 
