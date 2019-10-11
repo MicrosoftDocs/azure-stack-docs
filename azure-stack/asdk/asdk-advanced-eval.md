@@ -43,4 +43,4 @@ Deploy the App Service resource provider to [make web and API apps available to 
 
 ## Next steps
 
-[Learn more about offering services with Azure Stack integrated systems](../operator/azure-stack-offer-services-overview.md)
+[Learn more about offering services with Azure Stack integrated systems](../operator/service-plan-offer-subscription-overview.md)
