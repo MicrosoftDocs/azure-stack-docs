@@ -58,8 +58,8 @@ To create a custom marketplace item, do the following:
     {
        "$schema": "https://gallery.azure.com/schemas/2015-10-01/manifest.json#",
        "name": "Test", (1)
-       "publisher": "TestUbuntu", (2)
-       "version": "1.0.0", (3)
+       "publisher": "<Publisher name>", (2)
+       "version": "<Version number>", (3)
        "displayName": "ms-resource:displayName", (4)
        "publisherDisplayName": "ms-resource:publisherDisplayName", (5)
        "publisherLegalName": "ms-resource:publisherDisplayName", (6)
@@ -75,15 +75,15 @@ To create a custom marketplace item, do the following:
         ],
        "artifacts": [
           {
-             "name": "LinuxTemplate",
+             "name": "<Template name>",
              "type": "Template",
-             "path": "DeploymentTemplates\\LinuxTemplate.json", (8)
+             "path": "DeploymentTemplates\\<Template name>.json", (8)
              "isDefault": true
           }
        ],
        "categories":[ (9)
           "Custom",
-          "My Marketplace Items"
+          "<Template name>"
           ],
        "images": [{
           "context": "ibiza",
@@ -182,7 +182,7 @@ To create a custom marketplace item, do the following:
 
     ```powershell
     Add-AzsGalleryItem -GalleryItemUri `
-    https://sample.blob.core.windows.net/gallerypackages/*offer.publisher.version*.azpkg –Verbose
+    https://sample.blob.core.windows.net/<temporary blob name>/<offerName.publisherName.version>.azpkg –Verbose
     ```
 
 5. Verify that you have a valid Storage account that is available to store your item. You can get the `GalleryItemURI` value from the Azure Stack administrator portal. Select **Storage account -> Blob Properties -> URL**, with the extension .azpkg. The storage account is only for temporary use, in order to publish to the marketplace.
