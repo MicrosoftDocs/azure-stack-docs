@@ -53,7 +53,7 @@ In this solution, you'll build a sample environment to:
 
 -   Deploy [App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
 
--   [Create Plan/Offers](../operator/azure-stack-plan-offer-quota-overview.md) within the Azure Stack environment.
+-   [Create Plan/Offers](../operator/service-plan-offer-subscription-overview.md) within the Azure Stack environment.
 
 -   [Create tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) within the Azure Stack environment.
 
@@ -63,7 +63,7 @@ In this solution, you'll build a sample environment to:
 
 -   Windows Server 2016 VM with .NET 3.5 is required. This VM will be built in the tenant subscription on Azure Stack as the private build agent.
 
--   [Windows Server 2016 with SQL 2017 VM Image](../operator/azure-stack-add-vm-image.md#add-a-vm-image-through-the-portal) is available in the Azure Stack Marketplace. If this image isn't available, work with an Azure Stack Operator to ensure it's added to the environment.
+-   [Windows Server 2016 with SQL 2017 VM Image](../operator/azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal) is available in the Azure Stack Marketplace. If this image isn't available, work with an Azure Stack Operator to ensure it's added to the environment.
 
 ## Issues and considerations
 

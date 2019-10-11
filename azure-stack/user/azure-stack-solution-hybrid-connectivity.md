@@ -66,7 +66,7 @@ This  solution assumes that you have some basic knowledge of Azure and Azure Sta
    >Deploying the ASDK can take up to 7 hours, so plan accordingly.
 
  - Deploy [App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
- - [Create plans and offers](../operator/azure-stack-plan-offer-quota-overview.md) in the Azure Stack environment.
+ - [Create plans and offers](../operator/service-plan-offer-subscription-overview.md) in the Azure Stack environment.
  - [Create tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) within the Azure Stack environment.
 
 ### Before you begin
