@@ -1,6 +1,6 @@
 ---
-title: Prepare for extension host for Azure Stack | Microsoft Docs
-description: Learn to prepare for extension host, automatically enabled with a future Azure Stack update package.
+title: Prepare for extension host in Azure Stack | Microsoft Docs
+description: Learn how to prepare for extension host in Azure Stack, which is automatically enabled through an Azure Stack update package after version 1808.
 services: azure-stack
 keywords: 
 author: mattbriggs
@@ -13,26 +13,26 @@ manager: femila
 ms.lastreviewed: 03/07/2019
 ---
 
-# Prepare for extension host for Azure Stack
+# Prepare for extension host in Azure Stack
 
-The Extension host secures Azure Stack by reducing the number of required TCP/IP ports. This article looks at preparing Azure Stack for the extension host that is automatically enabled through an Azure Stack update package after the 1808 update. This article applies to Azure Stack updates 1808, 1809, and 1811.
+The extension host secures Azure Stack by reducing the number of required TCP/IP ports. This article looks at preparing Azure Stack for the extension host that is automatically enabled through an Azure Stack update package after the 1808 update. This article applies to Azure Stack updates 1808, 1809, and 1811.
 
 ## Certificate requirements
 
-The extension host implements two new domains namespaces to guarantee unique host entries for each portal extension. The new domain namespaces require two additional wild-card certificates to ensure secure communication.
+The extension host implements two new domain namespaces to guarantee unique host entries for each portal extension. The new domain namespaces require two additional wildcard certificates to ensure secure communication.
 
 The table shows the new namespaces and the associated certificates:
 
-| Deployment Folder | Required certificate subject and subject alternative names (SAN) | Scope (per region) | SubDomain namespace |
+| Deployment Folder | Required certificate subject and subject alternative names (SAN) | Scope (per region) | Subdomain namespace |
 |-----------------------|------------------------------------------------------------------|-----------------------|------------------------------|
 | Admin extension host | *.adminhosting.\<region>.\<fqdn> (Wildcard SSL Certificates) | Admin extension host | adminhosting.\<region>.\<fqdn> |
 | Public extension host | *.hosting.\<region>.\<fqdn> (Wildcard SSL Certificates) | Public extension host | hosting.\<region>.\<fqdn> |
 
-The detailed certificate requirements can be found in the [Azure Stack public key infrastructure certificate requirements](azure-stack-pki-certs.md) article.
+For detailed certificate requirements, see [Azure Stack public key infrastructure certificate requirements](azure-stack-pki-certs.md).
 
 ## Create certificate signing request
 
-The Azure Stack Readiness Checker Tool provides the ability to create a certificate signing request for the two new, required SSL certificates. Follow the steps in the article [Azure Stack certificates signing request generation](azure-stack-get-pki-certs.md).
+The Azure Stack Readiness Checker tool lets you create a certificate signing request for the two new and required SSL certificates. Follow the steps in the article [Azure Stack certificates signing request generation](azure-stack-get-pki-certs.md).
 
 > [!Note]  
 > You may skip this step depending on how you requested your SSL certificates.
@@ -40,7 +40,7 @@ The Azure Stack Readiness Checker Tool provides the ability to create a certific
 ## Validate new certificates
 
 1. Open PowerShell with elevated permission on the hardware lifecycle host or the Azure Stack management workstation.
-2. Run the following cmdlet to install the Azure Stack Readiness Checker tool.
+2. Run the following cmdlet to install the Azure Stack Readiness Checker tool:
 
     ```powershell  
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker
@@ -61,7 +61,7 @@ The Azure Stack Readiness Checker Tool provides the ability to create a certific
     > [!Note]  
     > If you deploy with Azure Active Directory Federated Services (AD FS) the following directories must be added to **$directories** in the script: `ADFS`, `Graph`.
 
-4. Place the existing certificates, which you are currently using in Azure Stack, in appropriate directories. For example, put the **Admin ARM** certificate in the `Arm Admin` folder. And then put the newly created hosting certificates in the `Admin extension host` and `Public extension host` directories.
+4. Place the existing certificates, which you're currently using in Azure Stack, in appropriate directories. For example, put the **Admin ARM** certificate in the `Arm Admin` folder. And then put the newly created hosting certificates in the `Admin extension host` and `Public extension host` directories.
 5. Run the following cmdlet to start the certificate check:
 
     ```powershell  
@@ -70,7 +70,7 @@ The Azure Stack Readiness Checker Tool provides the ability to create a certific
     Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
     ```
 
-6. Check the output and all certificates pass all tests.
+6. Check the output and if all certificates pass all tests.
 
 
 ## Import extension host certificates
@@ -78,8 +78,8 @@ The Azure Stack Readiness Checker Tool provides the ability to create a certific
 Use a computer that can connect to the Azure Stack privileged endpoint for the next steps. Make sure you have access to the new certificate files from that computer.
 
 1. Use a computer that can connect to the Azure Stack privileged endpoint for the next steps. Make sure you access to the new certificate files from that computer.
-2. Open PowerShell ISE to execute the next script blocks
-3. Import the certificate for the Admin hosting endpoint.
+2. Open PowerShell ISE to execute the next script blocks.
+3. Import the certificate for the admin hosting endpoint.
 
     ```powershell  
 
@@ -119,7 +119,7 @@ Use a computer that can connect to the Azure Stack privileged endpoint for the n
 ### Update DNS configuration
 
 > [!Note]  
-> This step is not required if you used DNS Zone delegation for DNS Integration.
+> This step isn't required if you used DNS Zone delegation for DNS Integration.
 If individual host A records have been configured to publish Azure Stack endpoints, you need to create two additional host A records:
 
 | IP | Hostname | Type |
@@ -127,11 +127,11 @@ If individual host A records have been configured to publish Azure Stack endpoin
 | \<IP> | *.Adminhosting.\<Region>.\<FQDN> | A |
 | \<IP> | *.Hosting.\<Region>.\<FQDN> | A |
 
-Allocated IPs can be retrieved using privileged endpoint by running the cmdlet **Get-AzureStackStampInformation**.
+Allocated IPs can be retrieved using the privileged endpoint by running the cmdlet **Get-AzureStackStampInformation**.
 
 ### Ports and protocols
 
-The article, [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md), covers the ports and protocols that require inbound communication to publish Azure Stack before the extension host rollout.
+The article [Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md) covers the ports and protocols that require inbound communication to publish Azure Stack before the extension host rollout.
 
 ### Publish new endpoints
 
@@ -143,7 +143,7 @@ winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
 $PEPCreds = Get-Credential
 $PEPSession = New-PSSession -ComputerName <IpOfERCSMachine> -Credential $PEPCreds -ConfigurationName "PrivilegedEndpoint"
 
-# Obtain DNS Servers and Extension Host information from Azure Stack Stamp Information and find the IPs for the Host Extension Endpoints
+# Obtain DNS Servers and extension host information from Azure Stack Stamp Information and find the IPs for the Host Extension Endpoints
 $StampInformation = Invoke-Command $PEPSession {Get-AzureStackStampInformation} | Select-Object -Property ExternalDNSIPAddress01, ExternalDNSIPAddress02, @{n="TenantHosting";e={($_.TenantExternalEndpoints.TenantHosting) -replace "https://*.","testdnsentry"-replace "/"}},  @{n="AdminHosting";e={($_.AdminExternalEndpoints.AdminHosting)-replace "https://*.","testdnsentry"-replace "/"}},@{n="TenantHostingDNS";e={($_.TenantExternalEndpoints.TenantHosting) -replace "https://",""-replace "/"}},  @{n="AdminHostingDNS";e={($_.AdminExternalEndpoints.AdminHosting)-replace "https://",""-replace "/"}}
 If (Resolve-DnsName -Server $StampInformation.ExternalDNSIPAddress01 -Name $StampInformation.TenantHosting -ErrorAction SilentlyContinue) {
     Write-Host "Can access AZS DNS" -ForegroundColor Green
@@ -187,12 +187,12 @@ The Record to be added in the DNS zone: Type A, Name: *.hosting.\<region>.\<fqdn
 ### Update existing publishing Rules (Post enablement of extension host)
 
 > [!Note]  
-> The 1808 Azure Stack Update Package does **not** enable extension host yet. It allows to prepare for extension host by importing the required certificates. Do not close any ports before extension host is automatically enabled through an Azure Stack Update package after the 1808 update.
+> The 1808 Azure Stack Update Package does **not** enable extension host yet. It lets you prepare for extension host by importing the required certificates. Don't close any ports before extension host is automatically enabled through an Azure Stack update package after the 1808 update.
 
 The following existing endpoint ports must be closed in your existing firewall rules.
 
 > [!Note]  
-> It is recommended to close those ports after successful validation.
+> It's recommended to close those ports after successful validation.
 
 | Endpoint (VIP) | Protocol | Ports |
 |----------------------------------------|----------|-------------------------------------------------------------------------------------------------------------------------------------|
@@ -204,4 +204,4 @@ The following existing endpoint ports must be closed in your existing firewall r
 ## Next steps
 
 - Learn about [Firewall integration](azure-stack-firewall.md).
-- Learn about [Azure Stack certificates signing request generation](azure-stack-get-pki-certs.md)
+- Learn about [Azure Stack certificates signing request generation](azure-stack-get-pki-certs.md).

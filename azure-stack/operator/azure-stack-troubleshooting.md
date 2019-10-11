@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 10/08/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 09/30/2019
+ms.lastreviewed: 10/08/2019
 
 ---
 # Microsoft Azure Stack troubleshooting
@@ -78,9 +78,20 @@ If the built-in roles for Azure resources don't meet the specific needs of your 
 
 Choose the type of shared services account that you use for Azure Stack. The types of subscriptions that can be used for registration of a multi-tenant Azure Stack are:
 
-* Cloud Service Provider
+* Cloud Solution Provider
 * Partner Shared Services subscription
 
+## Get scale unit metrics
+
+You can use PowerShell to get stamp utilization information without help from CSS. To obtain stamp utilization: 
+
+1. Create a PEP session
+2. Run test-azurestack
+3. Exit PEP session
+4. Run get-azurestacklog -filterbyrole seedring using an invoke-command call
+5. Extract the seedring .zip, and you can obtain the validation report from the ERCS folder where you ran test-azurestack
+
+For more information, see [Azure Stack Diagnostics](azure-stack-configure-on-demand-diagnostic-log-collection.md#to-run-get-azurestacklog-on-azure-stack-integrated-systems).
 
 ## Troubleshoot deployment 
 ### General deployment failure
