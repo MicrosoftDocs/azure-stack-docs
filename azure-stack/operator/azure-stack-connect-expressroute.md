@@ -338,7 +338,7 @@ You can use the following ExpressRoute router configuration diagram as a guide f
 
 You can use any router that supports IKEv2 VPN and BGP to terminate the site-to-site VPN connection from Azure Stack. The same router is used to connect to Azure using an ExpressRoute circuit.
 
-The following Cisco Site Recovery 1000 Series Aggregation Services Router configuration example supports the network infrastructure shown in the *ExpressRoute router configuration* diagram.
+The following Cisco ASR 1000 Series Aggregation Services Router configuration example supports the network infrastructure shown in the *ExpressRoute router configuration* diagram.
 
 ```shell
 ip vrf Tenant 1
