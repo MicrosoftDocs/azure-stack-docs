@@ -2,8 +2,6 @@
   href: index.yml
 - name: Overview
   items:
-  - name: Build solutions with Azure Stack
-    href: azure-stack-hybrid-cloud-patterns.md
   - name: Key considerations
     href: azure-stack-considerations.md
 - name: Quickstarts
@@ -248,26 +246,6 @@
         href: azure-stack-dev-start-howto-vm-python.md
       - name: Deploy a NodeJS web app 
         href: azure-stack-dev-start-howto-vm-nodejs.md
-  - name: Deploy hybrid cloud patterns
-    items:
-    - name: Deploy apps to Azure and Azure Stack
-      href: azure-stack-solution-pipeline.md
-    - name: Configure hybrid cloud identity
-      href: azure-stack-solution-hybrid-identity.md
-    - name: Configure hybrid cloud connectivity
-      href: azure-stack-solution-hybrid-connectivity.md
-    - name: Create cross-cloud scaling solutions with Azure
-      href: azure-stack-solution-cloud-burst.md
-    - name: Create a geo-distributed app solution
-      href: azure-stack-solution-geo-distributed.md
-    - name: Deploy a hybrid cloud solution
-      href: azure-stack-solution-hybrid-cloud.md
-    - name: Deploy staged data analytics
-      href: azure-stack-solution-staged-data.md
-    - name: Deploy high-availability MongoDB
-      href: azure-stack-solution-mongodb-ha.md
-    - name: Deploy high-availability SQL Server 2016
-      href: azure-stack-solution-sql-ha.md
   - name: Deploy foundational patterns
     items:
     - name: Setup VPN to on-prem
@@ -276,20 +254,6 @@
       href: azure-stack-network-howto-vnet-to-vnet-stacks.md
     - name: VNET peering
       href: azure-stack-network-howto-vnet-to-vnet.md
-- name: Concepts
-  items:
-  - name: Hybrid cloud patterns
-    items: 
-      - name: Hybrid cloud patterns overview
-        href: azure-stack-edge-pattern-overview.md
-      - name: Cross Cloud Scaling
-        href: azure-stack-edge-pattern-cross-cloud-scaling.md
-      - name: DevOps (Hybrid CI/CD)
-        href: azure-stack-edge-pattern-hybrid-ci-cd.md
-      - name: Footfall detection
-        href: hybrid-solution-retail-footfall-detection.md
-      - name: Geo-distributed application
-        href: azure-stack-edge-pattern-geo-distribution.md
 - name: Reference
   items:
   - name: Azure Stack PowerShell

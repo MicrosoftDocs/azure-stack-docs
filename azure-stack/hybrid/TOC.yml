@@ -1,0 +1,74 @@
+- name: Azure Stack Hybrid Documentation
+  href: index.yml
+- name: Overview
+  items:
+  - name: Build hybrid solutions with Azure Stack
+    href: azure-stack-hybrid-cloud-patterns.md
+- name: Quickstarts
+- name: Tutorials
+- name: How-to guides
+  items:
+  - name: Deploy hybrid cloud patterns
+    items:
+    - name: Deploy apps to Azure and Azure Stack
+      href: azure-stack-solution-pipeline.md
+    - name: Configure hybrid cloud identity
+      href: azure-stack-solution-hybrid-identity.md
+    - name: Configure hybrid cloud connectivity
+      href: azure-stack-solution-hybrid-connectivity.md
+    - name: Create cross-cloud scaling solutions with Azure
+      href: azure-stack-solution-cloud-burst.md
+    - name: Create a geo-distributed app solution
+      href: azure-stack-solution-geo-distributed.md
+    - name: Deploy a hybrid cloud solution
+      href: azure-stack-solution-hybrid-cloud.md
+    - name: Deploy staged data analytics
+      href: azure-stack-solution-staged-data.md
+    - name: Deploy high-availability MongoDB
+      href: azure-stack-solution-mongodb-ha.md
+    - name: Deploy high-availability SQL Server 2016
+      href: azure-stack-solution-sql-ha.md
+- name: Concepts
+  items:
+  - name: Hybrid cloud patterns
+    items: 
+      - name: Hybrid cloud patterns overview
+        href: azure-stack-edge-pattern-overview.md
+      - name: Cross Cloud Scaling
+        href: azure-stack-edge-pattern-cross-cloud-scaling.md
+      - name: DevOps (Hybrid CI/CD)
+        href: azure-stack-edge-pattern-hybrid-ci-cd.md
+      - name: Footfall detection
+        href: hybrid-solution-retail-footfall-detection.md
+      - name: Geo-distributed application
+        href: azure-stack-edge-pattern-geo-distribution.md
+- name: Reference
+  items:
+  - name: Azure Stack PowerShell
+    href: /powershell/azure/azure-stack/overview?view=azurestackps-1.3.0
+  - name: Azure Stack REST API Browser
+    href: /rest/api/
+  - name: Azure Stack CLI
+    href: /cli/azure/reference-index?view=azure-cli-2017-03-09-profile
+- name: Related
+  items:
+  - name: Azure Stack User Documentation
+    href: /azure-stack/user/
+  - name: Azure Stack Operator Documentation
+    href: /azure-stack/operator/
+  - name: ASDK Documentation
+    href: /azure-stack/asdk/
+- name: Resources
+  items:
+  - name: Azure Stack roadmap
+    href: https://azure.microsoft.com/roadmap/?tag=azure-stack
+  - name: Azure Stack MSDN forum
+    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack
+  - name: Azure Stack Documentation feedback
+    href: https://feedback.azure.com/forums/344565-azure-stack?category_id=160275
+  - name: Pricing information
+    href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/
+  - name: Stack Overflow
+    href: https://stackoverflow.com/questions/tagged/azure-stack
+  - name: Training and certification
+    href: /azure-stack/operator/azure-stack-train-and-cert
