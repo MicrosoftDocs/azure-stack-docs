@@ -48,6 +48,5 @@ The following steps provide a high-level overview of the process to add memory.
 
 ## Next steps
 
- - To learn how to manage storage accounts in Azure Stack to find, recover,
-and reclaim storage capacity based on business needs, see [Manage storage accounts in Azure Stack](azure-stack-manage-storage-accounts.md).
- - To learn how the Azure Stack cloud operator monitors and manages the storage capacity of their Azure Stack deployment, see [Manage storage capacity for Azure Stack](azure-stack-manage-storage-shares.md).
+ - To learn how to manage storage accounts in Azure Stack, see [Manage storage accounts in Azure Stack](azure-stack-manage-storage-accounts.md).
+ - To learn how to monitor and manage the storage capacity of your Azure Stack deployment, see [Manage storage capacity for Azure Stack](azure-stack-manage-storage-shares.md).
