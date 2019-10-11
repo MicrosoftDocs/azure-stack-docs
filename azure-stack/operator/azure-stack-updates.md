@@ -68,7 +68,7 @@ Notice of updates varies on a couple of factors, such as your connection to the 
 
 - **OEM hardware vendor-provided updates**
 
-    OEM updates will depend on your manufacturer. You will need to establish a communication channel with your OEM so that you aware when you have updates from your OEM that need to be applied. For more information about the OEMs and the OEM update process, see [Apply Azure Stack original equipment manufacturer (OEM) updates](azure-stack-update-oem.md).
+    OEM updates will depend on your manufacturer. You will need to establish a communication channel with your OEM so that you can be aware of updates from your OEM that need to be applied. For more information about the OEMs and the OEM update process, see [Apply Azure Stack original equipment manufacturer (OEM) updates](azure-stack-update-oem.md).
 
 ## Update processes
 
