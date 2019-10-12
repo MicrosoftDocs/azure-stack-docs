@@ -50,7 +50,7 @@ The *storage service* partitions the available storage into separate and equal v
 
 Because the storage service shares are for the exclusive use of storage services, you must not directly modify, add, or remove any files on the shares. Only storage services should work on the files stored in these volumes.
 
-Shares on volumes hold tenant data. Tenant data includes page blobs, block blobs, append blobs, tables, queues, databases, and related metadata stores. Because the storage objects (blobs, etc.) are individually contained within a single share, the maximum size of each object can't exceed the size of a share. The maximum size of new objects depends on the capacity that remains in a share as unused space when that new object is created.
+Shares on volumes hold tenant data. Tenant data includes page blobs, block blobs, append blobs, tables, queues, databases, and related metadata stores. Because the storage objects (blobs, and so on) are individually contained within a single share, the maximum size of each object can't exceed the size of a share. The maximum size of new objects depends on the capacity that remains in a share as unused space when that new object is created.
 
 When a share is low on free space and actions to [reclaim](#reclaim-capacity) space aren't successful or available, the Azure Stack cloud operator can migrate the blob containers from one share to another.
 
@@ -94,7 +94,7 @@ As a cloud operator, you can use the administrator portal to view the storage ca
 1. Sign in to the [administrator portal](https://adminportal.local.azurestack.external).
 2. Select **All services** > **Storage** > **File shares** to open the file share list where you can view the usage information.
 
-    ![Example: Storage file shares in azure Stack administrator portal](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+    ![Example: Storage file shares in Azure Stack administrator portal](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
    - **TOTAL** is the total space in bytes that are available on the share. This space is used for data and metadata that's maintained by the storage services.
    - **USED** is the amount of data in bytes that's used by the all the extents from the files that store the tenant data and associated metadata.
@@ -132,9 +132,9 @@ For more information, see [Reclaim capacity](azure-stack-manage-storage-accounts
 ### Migrate a container between volumes
 *This option applies only to Azure Stack integrated systems.*
 
-Due to tenant usage patterns, some tenant shares use more space than others. The result can be a share that runs low on space before other shares that are relatively unused.
+Because of tenant usage patterns, some tenant shares use more space than others. The result can be a share that runs low on space before other shares that are relatively unused.
 
-You can try to free up space on an overused share by manually migrating some blob containers to a different share. You can migrate several smaller containers to a single share that has capacity to hold them all. You can use migration to move *free* containers. Free containers are containers that don't contain a disk for a VM.
+You can free up space on an overused share by manually migrating some blob containers to a different share. You can migrate several smaller containers to a single share that has capacity to hold them all. Use migration to move *free* containers. Free containers are containers that don't contain a disk for a VM.
 
 Migration consolidates all of a container's blobs on the new share.
 
