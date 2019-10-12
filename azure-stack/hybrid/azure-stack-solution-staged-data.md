@@ -2,7 +2,6 @@
 title: Deploy a staged data analytics solution to Azure Stack | Microsoft Docs
 description: Learn how to deploy a staged data analytics solution to Azure Stack
 author: BryanLa
-
 ms.service: azure-stack
 ms.topic: article
 ms.date: 10/31/2019

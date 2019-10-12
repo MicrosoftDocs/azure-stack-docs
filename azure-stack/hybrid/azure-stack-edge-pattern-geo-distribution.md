@@ -2,7 +2,6 @@
 title: DevOps pattern for the intelligent edge with Azure Stack  | Microsoft Docs
 description: Learn about the DevOps pattern for the intelligent edge with Azure Stack.
 author: BryanLa
-
 ms.service: azure-stack
 ms.topic: article
 ms.date: 10/31/2019

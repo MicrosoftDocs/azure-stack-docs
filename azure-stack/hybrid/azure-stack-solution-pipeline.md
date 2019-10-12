@@ -2,7 +2,6 @@
 title: Deploy apps to Azure and Azure Stack
 description: Learn how to deploy apps to Azure and Azure Stack with a hybrid CI/CD pipeline.
 author: BryanLa
-
 ms.service: azure-stack
 ms.topic: article
 ms.date: 10/31/2019
@@ -86,7 +85,7 @@ App deployment continuity, security, and reliability are critical elements for y
      
   1. Deploy [Azure App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
      
-  1. Create a [plan and offer](../operator/azure-stack-plan-offer-quota-overview.md) in Azure Stack.
+  1. Create a [plan and offer](../operator/service-plan-offer-subscription-overview.md) in Azure Stack.
      
   1. Create a [tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) to the offer in Azure Stack. 
      

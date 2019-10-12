@@ -1,8 +1,7 @@
 ---
-title: Build solutions hybrid cloud design patterns for Azure Stack
+title: Build solutions hybrid cloud design patterns for Azure Stack | Microsoft Docs
 description: Learn how to create hybrid cloud apps with Azure and Azure Stack
 author: BryanLa
-
 ms.service: azure-stack
 ms.topic: overview
 ms.date: 10/31/2019
