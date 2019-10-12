@@ -4,20 +4,40 @@
   items:
   - name: Build hybrid solutions with Azure Stack
     href: azure-stack-hybrid-cloud-patterns.md
-- name: Quickstarts
-- name: Tutorials
-- name: How-to guides
+- name: Patterns
   items:
-  - name: Deploy hybrid cloud patterns
+  - name: ===== New
+  - name: Pattern concepts
+    href: azure-stack-edge-pattern-overview.md
+  - name: Cross cloud scaling
+  - name: DevOps (Hybrid CI/CD)
+  - name: Footfall detection
+  - name: Geo-distribution application
+- name: Solutions
+  items:
+  - name: Solution overviews
+    items: 
+      - name: ===== Was Concepts/Hybrid cloud patterns
+      - name: Cross cloud scaling
+        href: azure-stack-edge-pattern-cross-cloud-scaling.md
+      - name: DevOps (Hybrid CI/CD)
+        href: azure-stack-edge-pattern-hybrid-ci-cd.md
+      - name: Footfall detection
+        href: hybrid-solution-retail-footfall-detection.md
+      - name: Geo-distributed application
+        href: azure-stack-edge-pattern-geo-distribution.md
+  - name: Solution deployment guides
     items:
-    - name: Deploy apps to Azure and Azure Stack
+    - name: ===== Was How-To/Deploy hybrid cloud patterns
+    - name: Cross cloud scaling 
+      href: azure-stack-solution-cloud-burst.md
+    - name: DevOps (Hybrid CI/CD) 
       href: azure-stack-solution-pipeline.md
+    - name: =====
     - name: Configure hybrid cloud identity
       href: azure-stack-solution-hybrid-identity.md
     - name: Configure hybrid cloud connectivity
       href: azure-stack-solution-hybrid-connectivity.md
-    - name: Create cross-cloud scaling solutions with Azure
-      href: azure-stack-solution-cloud-burst.md
     - name: Create a geo-distributed app solution
       href: azure-stack-solution-geo-distributed.md
     - name: Deploy a hybrid cloud solution
@@ -28,20 +48,6 @@
       href: azure-stack-solution-mongodb-ha.md
     - name: Deploy high-availability SQL Server 2016
       href: azure-stack-solution-sql-ha.md
-- name: Concepts
-  items:
-  - name: Hybrid cloud patterns
-    items: 
-      - name: Hybrid cloud patterns overview
-        href: azure-stack-edge-pattern-overview.md
-      - name: Cross Cloud Scaling
-        href: azure-stack-edge-pattern-cross-cloud-scaling.md
-      - name: DevOps (Hybrid CI/CD)
-        href: azure-stack-edge-pattern-hybrid-ci-cd.md
-      - name: Footfall detection
-        href: hybrid-solution-retail-footfall-detection.md
-      - name: Geo-distributed application
-        href: azure-stack-edge-pattern-geo-distribution.md
 - name: Reference
   items:
   - name: Azure Stack PowerShell

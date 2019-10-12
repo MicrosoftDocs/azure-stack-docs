@@ -1,21 +1,14 @@
 ---
 title: Configure hybrid cloud connectivity with Azure and Azure Stack | Microsoft Docs
 description: Learn how to configure hybrid cloud connectivity with Azure and Azure Stack.
-services: azure-stack
-documentationcenter: ''
-author: bryanla
-manager: femila
-editor: ''
+author: BryanLa
 
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 01/14/2019
+ms.topic: article
+ms.date: 10/31/2019
 ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 01/14/2019
+ms.lastreviewed: 10/31/2019
 ---
 
 # Configure hybrid cloud connectivity with Azure and Azure Stack

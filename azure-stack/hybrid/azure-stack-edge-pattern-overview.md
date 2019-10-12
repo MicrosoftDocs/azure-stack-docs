@@ -1,21 +1,14 @@
 ---
 title: Hybrid cloud design patterns for Azure Stack | Microsoft Docs
 description: An overview of patterns for the hybrid cloud and the intelligent edge with Azure Stack
-services: azure-stack
-documentationcenter: ''
-author: mattbriggs
-manager: femila
-editor: ''
+author: BryanLa
 
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.date: 07/17/2019
-ms.author: mabrigg
+ms.topic: article
+ms.date: 10/31/2019
+ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 06/11/2019
+ms.lastreviewed: 10/31/2019
 ---
 
 # Hybrid cloud design patterns for Azure Stack

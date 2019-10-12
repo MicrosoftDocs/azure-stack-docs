@@ -1,21 +1,14 @@
 ---
 title: Deploy apps to Azure and Azure Stack
 description: Learn how to deploy apps to Azure and Azure Stack with a hybrid CI/CD pipeline.
-services: azure-stack
-documentationcenter: ''
-author: bryanla
-manager: femila
-editor: ''
+author: BryanLa
 
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.date: 07/23/2019
-ms.topic: conceptual
+ms.topic: article
+ms.date: 10/31/2019
 ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 11/07/2018
+ms.lastreviewed: 10/31/2019
 ---
 
 # Deploy apps to Azure and Azure Stack

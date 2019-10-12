@@ -1,21 +1,14 @@
 ---
 title: Deploy a hybrid cloud with Azure and Azure Stack | Microsoft Docs
 description: Learn how to deploy a hybrid cloud with Azure and Azure Stack.
-services: azure-stack
-documentationcenter: ''
-author: bryanla
-manager: femila
-editor: ''
+author: BryanLa
 
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 01/25/2019
+ms.topic: article
+ms.date: 10/31/2019
 ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 01/25/2019
+ms.lastreviewed: 10/31/2019
 ---
 
 # Deploy a hybrid cloud solution with Azure and Azure Stack

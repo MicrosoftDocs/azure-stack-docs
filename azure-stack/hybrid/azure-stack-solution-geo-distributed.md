@@ -1,21 +1,14 @@
 ---
 title: Direct traffic with a geo-distributed app solution with Azure and Azure Stack | Microsoft Docs
 description: Learn how to create a geo-distributed app solution with Azure and Azure Stack that directs traffic to specific endpoints.
-services: azure-stack
-documentationcenter: ''
-author: bryanla
-manager: femila
-editor: ''
+author: BryanLa
 
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 01/14/2019
+ms.topic: article
+ms.date: 10/31/2019
 ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 01/14/2019
+ms.lastreviewed: 10/31/2019
 ---
 
 # Create a geo-distributed app solution to direct traffic with Azure and Azure Stack

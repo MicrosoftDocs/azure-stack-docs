@@ -1,21 +1,14 @@
 ---
 title: Hybrid solution for implementing an AI-based footfall detection pattern using Azure and Azure Stack
 description: Learn how to use Azure and Azure Stack services, to implement an AI-based footfall detection pattern for analyzing retail store traffic.
-services: azure-stack
-documentationcenter: ''
 author: BryanLa
-manager: femila
-editor: ''
 
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: conceptual
-ms.date: 10/01/2019
+ms.topic: article
+ms.date: 10/31/2019
 ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 09/23/2019
+ms.lastreviewed: 10/31/2019
 ---
 
 # Footfall detection solution
