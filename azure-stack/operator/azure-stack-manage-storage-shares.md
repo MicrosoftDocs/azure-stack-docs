@@ -130,22 +130,22 @@ You can reclaim the capacity used by tenant accounts that have been deleted. Thi
 For more information, see [Reclaim capacity](azure-stack-manage-storage-accounts.md#reclaim) in Manage storage resources.
 
 ### Migrate a container between volumes
-*This option applies only to multi-node deployments.*
+*This option applies only to Azure Stack integrated systems.*
 
 Due to tenant usage patterns, some tenant shares use more space than others. The result can be a share that runs low on space before other shares that are relatively unused.
 
-You can try to free up space on an overused share by manually migrating some blob containers to a different share. You can migrate several smaller containers to a single share that has capacity to hold them all. You can use migration to move *free* containers. Free containers are containers that do not contain a disk for a VM.   
+You can try to free up space on an overused share by manually migrating some blob containers to a different share. You can migrate several smaller containers to a single share that has capacity to hold them all. You can use migration to move *free* containers. Free containers are containers that don't contain a disk for a VM.
 
-Migration consolidates all a containers blob on the new share.
+Migration consolidates all of a container's blobs on the new share.
 
 - If a container has entered overflow mode and has placed blobs on additional volumes, the new share must have sufficient capacity to hold all of the blobs for the container you migrate. This includes the blobs that are located on additional shares.
 
-- The PowerShell cmdlet *Get-AzsStorageContainer* identifies only the space in use on the initial volume for a container. The cmdlet does not identify space that is used by blobs put on additional volumes. Therefore, the full size of a container might not be evident. It is possible that consolidation of a container on a new share can send that new share into an overflow condition where it places data onto additional shares. As a result, you might need to rebalance shares again.
+- The PowerShell cmdlet *Get-AzsStorageContainer* identifies only the space in use on the initial volume for a container. The cmdlet doesn't identify space that's used by blobs put on additional volumes. Therefore, the full size of a container might not be evident. It's possible that consolidation of a container on a new share can send that new share into an overflow condition where it places data onto additional shares. As a result, you might need to rebalance shares again.
 
-- If you lack permissions to a resource group and cannot use PowerShell to query the additional volumes for overflow data, work with the owner of those resource groups and containers to understand the total size of data to migrate before migrating that data.  
+- If you lack permissions to a resource group and can't use PowerShell to query the additional volumes for overflow data, work with the owner of those resource groups and containers to understand the total size of data to migrate before migrating that data.  
 
 > [!IMPORTANT]
-> Migration of blobs for a container is an offline operation that requires the use of PowerShell. Until migration completes, all blobs for the container you are migrating remain offline and cannot be used. You should also avoid upgrading Azure Stack until all ongoing migration completes.
+> Migration of blobs for a container is an offline operation that requires the use of PowerShell. Until migration completes, all blobs for the container you are migrating remain offline and can't be used. You should also avoid upgrading Azure Stack until all ongoing migration completes.
 
 #### To migrate containers using PowerShell
 1. Confirm that you have [Azure PowerShell installed and configured](https://azure.microsoft.com/documentation/articles/powershell-install-configure/). For more information, see [Using Azure PowerShell with Azure Resource Manager](https://go.microsoft.com/fwlink/?LinkId=394767).
@@ -212,9 +212,9 @@ Migration consolidates all a containers blob on the new share.
     ![Example: Canceled status](media/azure-stack-manage-storage-shares/cancelled.png)
 
 ### Move VM disks
-*This option applies only to multi-node deployments.*
+*This option applies only to Azure Stack integrated systems.*
 
-The most extreme method to manage space involves the move of virtual machine disks. Because moving an attached container (one that contains a VM disk) is complex, contact Microsoft Support to accomplish this action.
+The most extreme method to manage space involves the move of VM disks. Because moving an attached container (one that contains a VM disk) is complex, contact Microsoft Support to accomplish this action.
 
 ## Next Steps
-Learn more about [offering virtual machines to users](azure-stack-tutorial-tenant-vm.md).
+Learn more about [offering VMs to users](azure-stack-tutorial-tenant-vm.md).
