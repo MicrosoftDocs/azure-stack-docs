@@ -82,7 +82,7 @@ For this procedure, use a computer that can communicate with the admin Resource 
 
 ## Clear portal user data in guest directory
 
-In this scenario, the Azure Stack operator has no access to the guest directory in which the user resides. This is a common scenario when you are a cloud service provider (CSP).
+In this scenario, the Azure Stack operator has no access to the guest directory in which the user resides. This is a common scenario when you are a Cloud Solution Provider (CSP).
 
 For an Azure Stack operator to remove the portal user data, at a minimum the user object ID is required.
 

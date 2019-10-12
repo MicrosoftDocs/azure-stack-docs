@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
@@ -151,4 +151,4 @@ To remove the Kubernetes item:
 
 [Deploy a Kubernetes to Azure Stack](../user/azure-stack-solution-template-kubernetes-deploy.md)
 
-[Overview of offering services in Azure Stack](azure-stack-offer-services-overview.md)
+[Overview of offering services in Azure Stack](service-plan-offer-subscription-overview.md)

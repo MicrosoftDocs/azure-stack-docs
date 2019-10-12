@@ -58,4 +58,4 @@ Additionally, you may be required to provide the log files for the Azure Bridge,
 
 - Learn more about [reporting Azure Stack usage data to Azure](azure-stack-usage-reporting.md).
 - To review error messages if they are triggered in your registration process, see [Tenant registration error messages](azure-stack-registration-errors.md).
-- Learn more about the [Usage reporting infrastructure for Cloud Service Providers](azure-stack-csp-ref-infrastructure.md).
+- Learn more about the [Usage reporting infrastructure for Cloud Solution Providers](azure-stack-csp-ref-infrastructure.md).

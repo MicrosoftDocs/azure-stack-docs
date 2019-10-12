@@ -81,7 +81,7 @@ To set up the Azure Stack environment for the first tenant, use the following st
 Before you start configuring Azure Stack, you need:
 
 * An Azure Stack integrated system deployment or an Azure Stack Development Kit (ASDK) deployment. For information about deploying the ASDK, see the [Azure Stack Development Kit deployment quickstart](../asdk/asdk-download.md).
-* An offer in Azure Stack that your users can subscribe to. For more information, see [plans, offers, and subscriptions](azure-stack-plan-offer-quota-overview.md).
+* An offer in Azure Stack that your users can subscribe to. For more information, see [Service, plan, offer, subscription overview](service-plan-offer-subscription-overview.md).
 
 ### Create network resources in Azure Stack
 
@@ -338,7 +338,7 @@ You can use the following ExpressRoute router configuration diagram as a guide f
 
 You can use any router that supports IKEv2 VPN and BGP to terminate the site-to-site VPN connection from Azure Stack. The same router is used to connect to Azure using an ExpressRoute circuit.
 
-The following Cisco Site Recovery 1000 Series Aggregation Services Router configuration example supports the network infrastructure shown in the *ExpressRoute router configuration* diagram.
+The following Cisco ASR 1000 Series Aggregation Services Router configuration example supports the network infrastructure shown in the *ExpressRoute router configuration* diagram.
 
 ```shell
 ip vrf Tenant 1

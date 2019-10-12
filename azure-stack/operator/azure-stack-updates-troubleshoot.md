@@ -32,9 +32,9 @@ You can use the guidance in this article to resolve issues you're having when up
 
 **Applicable**: This issue applies to all supported releases.
 
-**Cause**: When attempting to install the Azure Stack update, the status for the update might fail and change state to `PreparationFailed`. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing.
+**Cause**: When attempting to install the Azure Stack update, the status for the update might fail and change state to `PreparationFailed`. For internet-connected systems this is usually indicative of the update package being unable to download properly due to a weak internet connection. 
 
-**Remediation**: Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update** now again (not **Resume**). The URP then cleans up the files from the previous attempt, and restarts the download. If the problem persists, we recommend manually uploading the update package by following the [Install updates](azure-stack-apply-updates.md?#install-updates-and-monitor-progress) section.
+**Remediation**: You can work around this issue by clicking **Install now** again. If the problem persists, we recommend manually uploading the update package by following the [Install updates](azure-stack-apply-updates.md?#install-updates-and-monitor-progress) section.
 
 **Occurrence**: Common
 

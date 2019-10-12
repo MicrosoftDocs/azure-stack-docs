@@ -13,19 +13,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2019
+ms.date: 10/08/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 07/31/2019
+ms.lastreviewed: 10/08/2019
 
 ---
 # Collect Azure Stack diagnostic logs on demand
 
 *Applies to: Azure Stack integrated systems*
 
-As part of troubleshooting, Microsoft Customer Support Services (CSS) may need to analyze diagnostic logs. Beginning with the 1907 release, Azure Stack operators can upload on-demand diagnostic logs to a blob container in Azure by using **Help and Support**. As an alternative if the portal is unavailable, operators can collect logs using Get-AzureStackLog through the privileged endpoint (PEP). This topic covers both ways of collecting diagnostic logs on demand.
+As part of troubleshooting, Microsoft Customer Support Services (CSS) may need to analyze diagnostic logs. Beginning with the 1907 release, Azure Stack operators can upload on-demand diagnostic logs to a blob container in Azure by using **Help and Support**. If the portal is unavailable, operators can collect logs using Get-AzureStackLog through the privileged endpoint (PEP). This topic covers both ways of collecting diagnostic logs on demand.
 
-## Use Help and Support to collect diagnostic logs
+>[!Note]
+>As an alternative to collecting logs on demand, you can streamline the troubleshooting process by enabling [automatic diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md). If system health conditions need to be investigated, the logs are uploaded automatically for analysis by CSS. 
+
+## Use Help and Support to collect diagnostic logs on demand
 
 To troubleshoot a problem, CSS might request an Azure Stack operator to collect diagnostic logs on demand for a specific time window from the previous week. In that case, CSS will provide the operator with a SAS URL for uploading the collection. 
 Use the following steps to configure on-demand log collection using the SAS URL from CSS:

@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: powershell
 ms.topic: article
-ms.date: 07/09/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 07/09/2019
