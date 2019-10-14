@@ -339,11 +339,19 @@ Hybrid CI/CD can apply to both app code and infrastructure code. You can use [Az
    
 1. Select **Pipelines** > **Builds** in the left navigation, and then select **New pipeline**. 
 
-1. Select your code repository. Azure Pipelines analyzes your project and opens the default ASP.NET Core *azure-pipelines.yml* file. 
+1. Select your code repository. Azure Pipelines analyzes and identifies your project as ASP.NET Core, and opens the default ASP.NET Core *azure-pipelines.yml* build template. 
    
    ![ASP.NET Core azure-pipelines.yml file](media/azure-stack-solution-pipeline/buildargument.png)
    
-1. In the *azure-pipelines.yml* file:
+1. You can edit the pipeline code directly, or select **Show assistant** to open a **Tasks** pane that helps you add tasks and steps. 
+   
+   If you select **Show assistant**, select **.NET Core** in the **Tasks** pane. In the **.NET Core** form:
+   - Under **Command**, drop down and select **publish**. 
+   - Under **Arguments**, enter *-r win10-x64*.
+   - Make sure **Publish Web Projects** is selected.
+   - Select **Add**.
+   
+   Instead of using the assistant, you can edit and add the following code to the *azure-pipelines.yml* file:
    
    - Under `pool`, change the `vmImage` from `ubuntu-latest` to `vs2017-win2016`.
      
@@ -393,7 +401,7 @@ Creating a release pipeline is the final step in your hybrid CI/CD configuration
 
 1. In your Azure DevOps project, select **Pipelines** > **Releases** in the left navigation, and then select **New pipeline**. 
    
-1. On the **Select a template** page, select **Azure App Service Deployment**, and then select **Apply**.
+1. On the **Select a template** page, select **Azure App Service deployment**, and then select **Apply**.
    
    ![Select the release template](media/azure-stack-solution-pipeline/releasetemplate.png)
    
@@ -417,11 +425,11 @@ Creating a release pipeline is the final step in your hybrid CI/CD configuration
    
 1. In the left pane, select **Deploy Azure App Service**. In the right pane, scroll down and select the ellipsis **...** next to **Package or folder**.
    
-1. In the **Select a file or folder** dialog, browse to the location of your Azure web app build, and then select **OK**.
-   
    ![Select package or folder](media/azure-stack-solution-pipeline/packageorfolder.png)
    
-1. On the **New release pipeline** page, select **Save** at upper right 
+1. In the **Select a file or folder** dialog, browse to the location of your Azure web app build, and then select **OK**.
+   
+1. On the **New release pipeline** page, select **Save** at upper right. 
    
 1. On the **Pipeline** tab, select **Add an artifact**. Select your project, and then select your Azure Stack build from the **Source (build pipeline)** drop-down menu. Select **Add**. 
    
