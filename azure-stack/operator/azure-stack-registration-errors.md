@@ -38,6 +38,6 @@ If you are a CSP, the following error messages can occur when [adding tenants](a
 
 ## Next steps
 
-- Learn more about the [Usage reporting infrastructure for Cloud Service Providers](azure-stack-csp-ref-infrastructure.md).
+- Learn more about the [Usage reporting infrastructure for Cloud Solution Providers](azure-stack-csp-ref-infrastructure.md).
 - To learn more about the CSP program, see [Cloud Solutions](https://partner.microsoft.com/solutions/microsoft-cloud-solutions).
 - To learn more about how to retrieve resource usage information from Azure Stack, see [Usage and billing in Azure Stack](azure-stack-billing-and-chargeback.md).

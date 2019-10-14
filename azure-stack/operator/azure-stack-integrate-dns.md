@@ -1,6 +1,6 @@
 ---
-title: Azure Stack datacenter integration - DNS
-description: Learn how to integrate Azure Stack DNS with your datacenter DNS
+title: Azure Stack datacenter DNS integration | Microsoft Docs
+description: Learn how to integrate Azure Stack DNS with your datacenter DNS.
 services: azure-stack
 author: mattbriggs
 manager: femila
@@ -13,21 +13,21 @@ ms.lastreviewed: 08/21/2019
 keywords:
 ---
 
-# Azure Stack datacenter integration - DNS
+# Azure Stack datacenter DNS integration
 
 To be able to access Azure Stack endpoints such as **portal**, **adminportal**, **management**, and **adminmanagement** from outside Azure Stack, you need to integrate the Azure Stack DNS services with the DNS servers that host the DNS zones you want to use in Azure Stack.
 
 ## Azure Stack DNS namespace
 
-You are required to provide some important information related to DNS when you deploy Azure Stack.
+You're required to provide some important information related to DNS when you deploy Azure Stack.
 
 
 |Field  |Description  |Example|
 |---------|---------|---------|
 |Region|The geographic location of your Azure Stack deployment.|`east`|
 |External Domain Name|The name of the zone you want to use for your Azure Stack deployment.|`cloud.fabrikam.com`|
-|Internal Domain Name|The name of the internal zone that is used for infrastructure services in Azure Stack.  It is Directory Service-integrated and private (not reachable from outside the Azure Stack deployment).|`azurestack.local`|
-|DNS Forwarders|DNS servers that are used to forward DNS queries, DNS zones and records that are hosted outside Azure Stack, either on the corporate intranet or public internet. If you replace a DNS forwarder, the IP address needs to be updated. |`10.57.175.34`<br>`8.8.8.8`|
+|Internal Domain Name|The name of the internal zone that's used for infrastructure services in Azure Stack. It's Directory Service-integrated and private (not reachable from outside the Azure Stack deployment).|`azurestack.local`|
+|DNS Forwarders|DNS servers that are used to forward DNS queries, DNS zones, and records that are hosted outside Azure Stack, either on the corporate intranet or public internet. If you replace a DNS forwarder, the IP address needs to be updated. |`10.57.175.34`<br>`8.8.8.8`|
 |Naming Prefix (Optional)|The naming prefix you want your Azure Stack infrastructure role instance machine names to have.  If not provided, the default is `azs`.|`azs`|
 
 The fully qualified domain name (FQDN) of your Azure Stack deployment and endpoints is the combination of the Region parameter and the External Domain Name parameter. Using the values from the examples in the previous table, the FQDN for this Azure Stack deployment would be the following name:
@@ -50,7 +50,7 @@ To be able to resolve DNS names for Azure Stack endpoints and instances from out
 
 ### DNS name labels
 
-Azure Stack supports adding a DNS name label to a public IP address to allow name resolution for public IP addresses. This can be a convenient way for users to reach applications and services hosted in Azure Stack by name. The DNS name label uses a slightly different namespace than the infrastructure endpoints. Following the previous example namespace, the namespace for DNS name labels appears as follows:
+Azure Stack supports adding a DNS name label to a public IP address to allow name resolution for public IP addresses. DNS labels are a convenient way for users to reach apps and services hosted in Azure Stack by name. The DNS name label uses a slightly different namespace than the infrastructure endpoints. Following the previous example namespace, the namespace for DNS name labels appears as follows:
 
 `*.east.cloudapp.cloud.fabrikam.com`
 
@@ -67,15 +67,15 @@ For more information about how the DNS Name label works, see [Using DNS in Azure
 There are two types of DNS servers:
 
 - An authoritative DNS server hosts DNS zones. It answers DNS queries for records in those zones only.
-- A recursive DNS server does not host DNS zones. It answers all DNS queries by calling authoritative DNS servers to gather the data it needs.
+- A recursive DNS server doesn't host DNS zones. It answers all DNS queries by calling authoritative DNS servers to gather the data it needs.
 
-Azure Stack includes both authoritative and recursive DNS servers. The recursive servers are used to resolve names of everything except for the internal private zone and the external public DNS zone for that Azure Stack deployment. 
+Azure Stack includes both authoritative and recursive DNS servers. The recursive servers are used to resolve names of everything except for the internal private zone and the external public DNS zone for that Azure Stack deployment.
 
 ![Azure Stack DNS architecture](media/azure-stack-integrate-dns/Integrate-DNS-01.png)
 
 ## Resolving external DNS names from Azure Stack
 
-To resolve DNS names for endpoints outside Azure Stack (for example: www\.bing.com), you need to provide DNS servers that Azure Stack can use to forward DNS requests for which Azure Stack is not authoritative. For deployment, DNS servers that Azure Stack forwards requests to are required in the Deployment Worksheet (in the DNS Forwarder field). Provide at least two servers in this field for fault tolerance. Without these values, Azure Stack deployment fails. If DNS forwarders get replaced, update the IP addresses. 
+To resolve DNS names for endpoints outside Azure Stack (for example: www\.bing.com), you need to provide DNS servers that Azure Stack can use to forward DNS requests for which Azure Stack isn't authoritative. For deployment, DNS servers that Azure Stack forwards requests to are required in the Deployment Worksheet (in the DNS Forwarder field). Provide at least two servers in this field for fault tolerance. Without these values, Azure Stack deployment fails. If DNS forwarders get replaced, update the IP addresses.
 
 ### Configure conditional DNS forwarding
 
@@ -134,7 +134,7 @@ The simplest and most secure way to integrate Azure Stack with your DNS infrastr
 
 If you're not familiar with how to do conditional forwarding with DNS, see the following TechNet article: [Assign a Conditional Forwarder for a Domain Name](https://technet.microsoft.com/library/cc794735), or the documentation specific to your DNS solution.
 
-In scenarios where you specified your external Azure Stack DNS Zone to look like a child domain of your corporate domain name, conditional forwarding cannot be used. DNS delegation must be configured.
+In scenarios where you specified your external Azure Stack DNS Zone to look like a child domain of your corporate domain name, conditional forwarding can't be used. DNS delegation must be configured.
 
 Example:
 
