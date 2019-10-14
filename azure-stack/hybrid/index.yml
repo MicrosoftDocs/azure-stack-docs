@@ -13,9 +13,9 @@ metadata:
   ms.date: 10/31/2019
   ms.author: bryanla
 abstract:
-  description: Azure Stack enables the development of hybrid applications, built on the suite of intelligent cloud and intelligent edge services. Learn how to create resources and deploy apps with our quickstarts and tutorials.<br/><br/>If you're an Azure Stack operator who manages the infrastructure and offers services, see our <a href="../operator/">operator documentation</a>.<br/><br/>If you are an Azure Stack user interested in the Azure Stack Development Kit (ASDK), a single-node deployment of Azure Stack that you can download and use for free, see our <a href="../asdk">ASDK documentation</a>.
+  description: Azure and Azure Stack enable development of hybrid applications, built on a suite of intelligent cloud and intelligent edge services. Learn how to leverage hybrid patterns and solutions for use in your own app development.<br/><br/>If you're an Azure Stack operator who manages the infrastructure and offers services, see the <a href="../operator/">operator documentation</a>.<br/><br/>See the <a href="../user/">user documentation</a> for guidance on using and deploying resources to Azure Stack. See the <a href="../asdk">Azure Stack Development Kit (ASDK)</a> documentation to learn how to deploy and use a single-node evaluation version of Azure Stack for free.
 sections:
-  - title: Learn more about hybrid application development.
+  - title: Learn about hybrid application development.
     items:
     - type: list
       style: cards
@@ -33,7 +33,7 @@ sections:
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_code-edit.svg" alt="">
               <br><b>Build hybrid solutions with Azure Stack</b></a>
               <p>Learn how to create hybrid cloud apps with Azure and Azure Stack</p>
-  - title: Hybrid pattern concepts
+  - title: Hybrid patterns
     items:
     - type: list
       style: cards
