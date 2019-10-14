@@ -351,7 +351,7 @@ Hybrid CI/CD can apply to both app code and infrastructure code. You can use [Az
    - Make sure **Publish Web Projects** is selected.
    - Select **Add**.
    
-   Instead of using the assistant, you can edit and add the following code to the *azure-pipelines.yml* file:
+   Instead of using the assistant, you can edit and add the following code directly to the *azure-pipelines.yml* file:
    
    - Under `pool`, change the `vmImage` from `ubuntu-latest` to `vs2017-win2016`.
      
