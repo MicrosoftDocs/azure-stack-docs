@@ -75,4 +75,4 @@ SQL then puts the database into the Restoring state on the other replicas and do
 
 ## Next steps
 
-[Maintain the SQL Server resource provider](azure-stack-sql-resource-provider-maintain.md)
+Learn how to [offer highly available SQL databases](azure-stack-tutorial-sql.md)

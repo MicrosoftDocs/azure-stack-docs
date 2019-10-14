@@ -1,6 +1,6 @@
 ---
-title: Add Linux images to Azure Stack
-description: Learn how to add Linux images to Azure Stack.
+title: Add Linux images to Azure Stack Marketplace | Microsoft Docs
+description: Learn how to add Linux images to Azure Stack Marketplace.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -18,15 +18,15 @@ ms.reviewer: unknown
 ms.lastreviewed: 11/16/2018
 
 ---
-# Add Linux images to Azure Stack
+# Add Linux images to Azure Stack Marketplace
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can deploy Linux virtual machines (VMs) on Azure Stack by adding a Linux-based image into the Azure Stack Marketplace. The easiest way to add a Linux image to Azure Stack is through Marketplace Management. These images have been prepared and tested for compatibility with Azure Stack.
+You can deploy Linux virtual machines (VMs) on Azure Stack by adding a Linux-based image into Azure Stack Marketplace. The easiest way to add a Linux image to Azure Stack is through Marketplace Management. These images have been prepared and tested for compatibility with Azure Stack.
 
 ## Marketplace Management
 
-To download Linux images from the Azure Marketplace, use the procedures in the [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md) article. Select the Linux images that you want to offer users on your Azure Stack.
+To download Linux images from Azure Marketplace, see [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md). Select the Linux images that you want to offer users on your Azure Stack.
 
 There are frequent updates to these images, so check Marketplace Management often to keep up-to-date.
 
@@ -36,7 +36,7 @@ Wherever possible, download the images available through Marketplace Management.
 
 ### Azure Linux Agent
 
-The Azure Linux Agent (typically called **WALinuxAgent** or **walinuxagent**) is required, and not all versions of the agent work on Azure Stack. Versions between 2.2.20 and 2.2.35 are not supported on Azure Stack. To use the latest agent versions above 2.2.35, apply the 1901 hotfix/1902 hotfix, or update your Azure Stack to the 1903 release (or above). Note that [cloud-init](https://cloud-init.io/) is not supported on Azure Stack at this time.
+The Azure Linux Agent (typically called **WALinuxAgent** or **walinuxagent**) is required, and not all versions of the agent work on Azure Stack. Versions between 2.2.20 and 2.2.35 aren't supported on Azure Stack. To use the latest agent versions above 2.2.35, apply the 1901 hotfix/1902 hotfix, or update your Azure Stack to the 1903 release (or above). Note that [cloud-init](https://cloud-init.io/) isn't supported on Azure Stack at this time.
 
 | Azure Stack build | Azure Linux Agent build |
 | ------------- | ------------- |
@@ -46,7 +46,7 @@ The Azure Linux Agent (typically called **WALinuxAgent** or **walinuxagent**) is
 | 1.1902.2.73  | 2.2.35 or newer |
 | 1.1903.0.35  | 2.2.35 or newer |
 | Builds after 1903 | 2.2.35 or newer |
-| Not Supported | 2.2.21-2.2.34 |
+| Not supported | 2.2.21-2.2.34 |
 
 You can prepare your own Linux image using the following instructions:
 
@@ -56,11 +56,11 @@ You can prepare your own Linux image using the following instructions:
 * [SLES & openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## Add your image to the marketplace
+## Add your image to Marketplace
 
 Follow [Add the image to the Marketplace](azure-stack-add-vm-image.md). Make sure that the `OSType` parameter is set to `Linux`.
 
-After you've added the image to the Marketplace, a Marketplace item is created and users can deploy a Linux virtual machine.
+After you've added the image to the Marketplace, a Marketplace item is created and users can deploy a Linux VM.
 
 ## Next steps
 
