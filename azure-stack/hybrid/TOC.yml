@@ -6,15 +6,15 @@
     href: azure-stack-hybrid-cloud-patterns.md
   - name: Design guide
     href: azure-stack-edge-pattern-overview.md
-- name: Patterns (NEW/TBD)
+- name: Patterns (NEW)
   items:
   - name: Cross cloud scaling
   - name: DevOps (Hybrid CI/CD)
   - name: Footfall detection
   - name: Geo-distribution application
-- name: Solutions
+- name: Solutions (EXISTING)
   items:
-  - name: Solution overviews (CONCEPTS/HYBRID)
+  - name: Overviews (CONCEPTS/HYBRID)
     items: 
       - name: Cross cloud scaling
         href: azure-stack-edge-pattern-cross-cloud-scaling.md
@@ -24,19 +24,20 @@
         href: hybrid-solution-retail-footfall-detection.md
       - name: Geo-distributed application
         href: azure-stack-edge-pattern-geo-distribution.md
-  - name: Solution deployment guides (HOWTO/HYBRID)
+  - name: Deployment guides & samples (HOWTO/HYBRID)
     items:
     - name: Cross cloud scaling 
       href: azure-stack-solution-cloud-burst.md
     - name: DevOps (Hybrid CI/CD) 
       href: azure-stack-solution-pipeline.md
+    - name: Footfall detection (TBD)
+    - name: Geo-distributed application
+      href: azure-stack-solution-geo-distributed.md    
     - name: -----
     - name: Configure hybrid cloud identity
       href: azure-stack-solution-hybrid-identity.md
     - name: Configure hybrid cloud connectivity
       href: azure-stack-solution-hybrid-connectivity.md
-    - name: Create a geo-distributed app solution
-      href: azure-stack-solution-geo-distributed.md
     - name: Deploy a hybrid cloud solution
       href: azure-stack-solution-hybrid-cloud.md
     - name: Deploy staged data analytics
