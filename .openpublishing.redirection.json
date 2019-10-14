@@ -6,6 +6,12 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/operator/azure-stack-operations-checklist.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-manage-basics",
+
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/operator/azure-stack-offer-services-overview.md",
       "redirect_url": "/azure-stack/operator/service-plan-offer-subscription-overview",
       "redirect_document_id": false
