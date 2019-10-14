@@ -36,7 +36,7 @@ The [AKS Engine](https://github.com/Azure/aks-engine) uses a built image, the AK
 
 Your users will need a plan, offer, and subscription to Azure Stack with enough space. Users will often want to deploy clusters of up to six virtual machines, made of three masters and three worker nodes. You will want to make sure they have a large enough quota.
 
-If you need more information about planning and setting up a service offering, see [Overview of offering services in Azure Stack](azure-stack-offer-services-overview.md)
+If you need more information about planning and setting up a service offering, see [Overview of offering services in Azure Stack](service-plan-offer-subscription-overview.md)
 
 ## Create a service principal and credentials
 
@@ -99,4 +99,4 @@ You can add the custom script to the marketplace by getting the item from Azure.
 
 [What is the AKS Engine on Azure Stack?](../user/azure-stack-kubernetes-aks-engine-overview.md)
 
-[Overview of offering services in Azure Stack](azure-stack-offer-services-overview.md)
+[Overview of offering services in Azure Stack](service-plan-offer-subscription-overview.md)
