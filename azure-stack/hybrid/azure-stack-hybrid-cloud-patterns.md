@@ -29,7 +29,7 @@ Hybrid scenarios vary greatly with the resources that are available for developm
 - [Deploy apps across both Azure and Azure Stack](azure-stack-solution-pipeline.md)
 - [Deploy apps to Azure Stack and Azure](azure-stack-solution-hybrid-identity.md)
 - [Configure hybrid cloud identity with Azure and Azure Stack apps](azure-stack-solution-hybrid-connectivity.md)
-- [Configure hybrid cloud connectivity with Azure and Azure Stack](azure-stack-solution-staged-data-analytics.md)
+- [Configure hybrid cloud connectivity with Azure and Azure Stack](azure-stack-solution-staged-data.md)
 - [Create a staged data analytics solution with Azure and Azure Stack](azure-stack-solution-staged-data.md)
 - [Create cross-cloud scaling solutions with Azure](azure-stack-solution-cloud-burst.md)
 - [Create a geo-distributed app solution with Azure and Azure Stack](azure-stack-solution-geo-distributed.md)
@@ -41,4 +41,4 @@ Hybrid scenarios vary greatly with the resources that are available for developm
 ## Next steps
 
 - Read the about [Design Considerations for Hybrid Applications](azure-stack-edge-pattern-overview.md) to review pillars of software quality for designing, deploying, and operating hybrid applications.
-- [Set up a development environment on Azure Stack](azure-stack-dev-start.md) and [deploy your first app](azure-stack-dev-start-deploy-app.md) on Azure Stack.
+- [Set up a development environment on Azure Stack](../user/azure-stack-dev-start.md) and [deploy your first app](../user/azure-stack-dev-start-deploy-app.md) on Azure Stack.

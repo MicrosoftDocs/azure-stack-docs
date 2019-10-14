@@ -48,7 +48,7 @@ If you deployed Azure Stack with AD FS, you can use PowerShell to create a servi
 
 ## Using the Azure Stack API
 
-The [Azure Stack API](azure-stack-rest-api-use.md)  solution walks you through the process of retrieving a token to access the Azure Stack API.
+The [Azure Stack API](../user/azure-stack-rest-api-use.md)  solution walks you through the process of retrieving a token to access the Azure Stack API.
 
 ## Connect to Azure Stack using Powershell
 
@@ -65,7 +65,7 @@ To connect to Azure Stack using code, use the Azure Resource Manager endpoints A
 [GitHub](https://github.com/shriramnat/HybridARMApplication).
 
 >[!Note]
->Unless the Azure SDK for your language of choice supports Azure API Profiles, the SDK may not work with Azure Stack. To learn more about Azure API Profiles, see the [manage API version profiles](azure-stack-version-profiles.md) article.
+>Unless the Azure SDK for your language of choice supports Azure API Profiles, the SDK may not work with Azure Stack. To learn more about Azure API Profiles, see the [manage API version profiles](../user/azure-stack-version-profiles.md) article.
 
 ## Next steps
 
