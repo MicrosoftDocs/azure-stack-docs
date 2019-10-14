@@ -97,9 +97,7 @@ Get-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/reso
 You can get a list of all tenant mappings using the GET operation.
 
 **Operation**: GET  
-**RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
-/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions?  
-api-version=2017-06-01 HTTP/1.1`  
+**RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions?api-version=2017-06-01 HTTP/1.1`  
 **Response**: 200  
 **Response Body**:
 
@@ -148,9 +146,7 @@ Remove-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/r
 You can remove tenant mappings using the DELETE operation.
 
 **Operation**: DELETE  
-**RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
-/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/  
-{customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
+**RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}?api-version=2017-06-01 HTTP/1.1`  
 **Response**: 204 No Content  
 **Response Body**: Empty
 
