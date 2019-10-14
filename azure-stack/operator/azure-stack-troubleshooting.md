@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2019
+ms.date: 10/09/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 10/08/2019
+ms.lastreviewed: 10/09/2019
 
 ---
 # Microsoft Azure Stack troubleshooting
@@ -81,7 +81,7 @@ Choose the type of shared services account that you use for Azure Stack. The typ
 * Cloud Solution Provider
 * Partner Shared Services subscription
 
-## Get scale unit metrics
+### Get scale unit metrics
 
 You can use PowerShell to get stamp utilization information without help from CSS. To obtain stamp utilization: 
 
