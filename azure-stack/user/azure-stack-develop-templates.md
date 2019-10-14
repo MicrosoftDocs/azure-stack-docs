@@ -3,7 +3,7 @@ title: Develop templates for Azure Stack | Microsoft Docs
 description: Learn how to develop Azure Resource Manager templates for app portability between Azure and Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
-ms.author: sethm
+ms.author: mabrigg
 ms.reviewer: unknown
 ms.lastreviewed: 05/21/2019
 
