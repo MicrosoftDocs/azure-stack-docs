@@ -88,7 +88,7 @@ You can manage Azure Stack with the administration portal, user portal, or [Powe
 
 As an Azure Stack Operator, you can deliver a wide variety of services and applications, such as [virtual machines](azure-stack-tutorial-tenant-vm.md), [web applications](azure-stack-app-service-overview.md), highly available [SQL Server](azure-stack-tutorial-sql.md), and [MySQL Server](azure-stack-tutorial-mysql.md) databases. You can also use [Azure Stack quickstart Azure Resource Manager templates](https://github.com/Azure/AzureStack-QuickStart-Templates) to deploy SharePoint, Exchange, and more. 
 
-Using the administration portal, you can [configure Azure Stack to deliver services](azure-stack-plan-offer-quota-overview.md) to tenants using plans, quotas, offers, and subscriptions. Tenant users can subscribe to multiple offers. Offers can have one or more plans, and plans can have one or more services. Operators also manage capacity and respond to alerts. 
+Using the administration portal, you can [configure Azure Stack to deliver services](service-plan-offer-subscription-overview.md) to tenants using plans, quotas, offers, and subscriptions. Tenant users can subscribe to multiple offers. Offers can have one or more plans, and plans can have one or more services. Operators also manage capacity and respond to alerts. 
 
 When Azure Stack is configured, an **Azure Stack User** (also referred to as a tenant) consumes services that the Operator offers. Users can provision, monitor, and manage services that they have subscribed to, such as web apps, storage, and virtual machines.
 

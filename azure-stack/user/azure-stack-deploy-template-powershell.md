@@ -3,7 +3,7 @@ title: Deploy a template using PowerShell in Azure Stack | Microsoft Docs
 description: Deploy a template using PowerShell in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -12,8 +12,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/23/2019
-ms.author: sethm
+ms.date: 10/07/2019
+ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 09/23/2019
 
@@ -32,7 +32,7 @@ This example uses **AzureRM** PowerShell cmdlets and a template stored on GitHub
 >[!NOTE]
 > Before you try this example, make sure that you've [configured PowerShell](azure-stack-powershell-configure-user.md) for an Azure Stack user.
 
-1. Browse the [AzureStackGitHub repo](https://aka.ms/AzureStackGitHub) and find the **101-simple-windows-vm** template. Save the template to this location: `C:\templates\azuredeploy-101-simple-windows-vm.json`.
+1. Browse the [AzureStack-QuickStart-Templates repo](https://aka.ms/AzureStackGitHub) and find the **101-simple-windows-vm** template. Save the template to this location: `C:\templates\azuredeploy-101-simple-windows-vm.json`.
 2. Open an elevated PowerShell command prompt.
 3. Replace `username` and `password` in the following script with your user name and password, then run the script:
 

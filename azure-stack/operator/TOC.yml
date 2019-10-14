@@ -23,16 +23,10 @@
     href: azure-stack-manage-portals.md
 - name: Tutorials
   items:
-  - name: Offer Virtual Machines
-    href: azure-stack-tutorial-tenant-vm.md
-  - name: Offer SQL databases
-    href: azure-stack-tutorial-sql-server.md
-  - name: Offer highly available SQL databases
-    href: azure-stack-tutorial-sql.md
-  - name: Offer highly available MySQL databases
-    href: azure-stack-tutorial-mysql.md
-  - name: Offer Web Apps
-    href: azure-stack-tutorial-app-service.md
+  - name: Offer a service to users
+    href: tutorial-offer-services.md
+  - name: Test a service offering
+    href: tutorial-test-offer.md
 - name: Concepts
   items:
   - name: Capacity Planning
@@ -264,18 +258,39 @@
     - name: Create a site-to-site VPN connection
       href: azure-stack-create-vpn-connection-one-node.md
   - name: Offer services
-    href: azure-stack-offer-services-overview.md
+    items:
+    - name: Service, plan, offer, subscription overview
+      href: service-plan-offer-subscription-overview.md
+    - name: Create a plan
+      href: azure-stack-create-plan.md
+    - name: Create an offer
+      href: azure-stack-create-offer.md
+    - name: Create an add-on plan
+      href: create-add-on-plan.md      
+    - name: Subscribe to an offer
+      href: azure-stack-subscribe-plan-provision-vm.md
+    - name: Delete offers
+      href: azure-stack-delete-offer.md
+    - name: Delegate offers in Azure Stack
+      href: azure-stack-delegated-provider.md
+    - name: Quota types
+      href: azure-stack-quota-types.md
   - name: Offer network solutions
     href: azure-stack-network-solutions-enable.md
   - name: Offer SQL as PaaS
-    href: azure-stack-sql-resource-provider.md
     items:
-      - name: Deploy the SQL Server resource provider
-        href: azure-stack-sql-resource-provider-deploy.md
-      - name: Add SQL hosting servers
-        href: azure-stack-sql-resource-provider-hosting-servers.md
-      - name: Create SQL databases
-        href: azure-stack-sql-resource-provider-databases.md
+      - name: Offer SQL databases on Azure Stack
+        items:
+        - name: Overview
+          href: azure-stack-sql-resource-provider.md
+        - name: Deploy the SQL Server resource provider
+          href: azure-stack-sql-resource-provider-deploy.md
+        - name: Add SQL hosting servers
+          href: azure-stack-sql-resource-provider-hosting-servers.md
+        - name: Create SQL databases
+          href: azure-stack-sql-resource-provider-databases.md
+      - name: Offer highly available SQL databases
+        href: azure-stack-tutorial-sql.md
       - name: Update the SQL Server resource provider
         href: azure-stack-sql-resource-provider-update.md   
       - name: Maintain the SQL Server resource provider
@@ -289,14 +304,19 @@
         - name: SQL resource provider 1.1.33.0 release notes
           href: azure-stack-sql-resource-provider-11330.md   
   - name: Offer MySQL as PaaS
-    href: azure-stack-mysql-resource-provider.md
     items:
-    - name: Deploy the MySQL Server resource provider
-      href: azure-stack-mysql-resource-provider-deploy.md
-    - name: Add MySQL hosting servers
-      href: azure-stack-mysql-resource-provider-hosting-servers.md
-    - name: Create MySQL Databases
-      href: azure-stack-mysql-resource-provider-databases.md
+    - name: Offer MySQL databases on Azure Stack
+      items:
+      - name: Overview 
+        href: azure-stack-mysql-resource-provider.md
+      - name: Deploy the MySQL Server resource provider
+        href: azure-stack-mysql-resource-provider-deploy.md
+      - name: Add MySQL hosting servers
+        href: azure-stack-mysql-resource-provider-hosting-servers.md
+      - name: Create MySQL Databases
+        href: azure-stack-mysql-resource-provider-databases.md
+    - name: Offer highly available MySQL databases
+      href: azure-stack-tutorial-mysql.md
     - name: Update the MySQL Server resource provider
       href: azure-stack-mysql-resource-provider-update.md
     - name: Maintain MySQL Server resource provider
@@ -352,24 +372,6 @@
         href: azure-stack-app-service-release-notes-update-six.md
       - name: App Service on Azure Stack update 7 release notes
         href: azure-stack-app-service-release-notes-update-seven.md
-  - name: Create plans, offers, and quotas
-    items:
-    - name: Plan, offer, quota, and subscription overview
-      href: azure-stack-plan-offer-quota-overview.md
-    - name: Create a plan
-      href: azure-stack-create-plan.md
-    - name: Create an add-on plan
-      href: create-add-on-plan.md
-    - name: Create an offer
-      href: azure-stack-create-offer.md
-    - name: Subscribe to an offer
-      href: azure-stack-subscribe-plan-provision-vm.md
-    - name: Delete offers
-      href: azure-stack-delete-offer.md
-    - name: Delegate offers in Azure Stack
-      href: azure-stack-delegated-provider.md
-    - name: Quota types
-      href: azure-stack-quota-types.md
   - name: Usage and billing
     href: azure-stack-billing-and-chargeback.md
     items:

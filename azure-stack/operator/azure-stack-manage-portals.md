@@ -45,11 +45,11 @@ The default time zone for all Azure Stack deployments is set to Coordinated Univ
 
 In the administrator portal, you can do things like:
 
-* [Register Azure Stack with Azure](azure-stack-registration.md).
-* [Populate the marketplace](azure-stack-download-azure-marketplace-item.md).
-* [Create plans, offers, and subscriptions for users](azure-stack-plan-offer-quota-overview.md).
-* [Monitor health and alerts](azure-stack-monitor-health.md).
-* [Manage Azure Stack updates](azure-stack-updates.md).
+* [Register Azure Stack with Azure](azure-stack-registration.md)
+* [Populate the marketplace](azure-stack-download-azure-marketplace-item.md)
+* [Create plans, offers, and subscriptions for users](service-plan-offer-subscription-overview.md)
+* [Monitor health and alerts](azure-stack-monitor-health.md)
+* [Manage Azure Stack updates](azure-stack-updates.md)
 
 The **Quickstart tutorial** tile provides links to online documentation for the most common tasks.
 
