@@ -323,6 +323,21 @@
           href: azure-stack-app-service-release-notes-update-six.md
         - name: App Service on Azure Stack update 7 release notes
           href: azure-stack-app-service-release-notes-update-seven.md
+    - name: Event Hubs on Azure Stack
+      items:
+      - name: Overview
+      - name: Before you get started
+      - name: Install, update, and remove
+      - name: Life cycle management
+        items:
+        - name: How to collect logs
+          href: azure-stack-diagnostic-log-collection-overview.md
+          maintainContext: true
+      - name: Administration
+        items:
+        -name: Service limits, quotas, and clusters
+      - name: Service updates
+        href: https://azure.microsoft.com/updates/?product=azure-stack
     - name: MySQL on Azure Stack
       items:
       - name: Overview 
