@@ -364,7 +364,7 @@ This command rotates all of the infrastructure secrets exposed to Azure Stack in
 
 ## Update the baseboard management controller (BMC) credential
 
-The baseboard management controller (BMC) monitors the physical state of your servers. Your original equipment manufacturer (OEM) hardware vendor provides instructions to update the user account name and password of the BMC. 
+The baseboard management controller (BMC) monitors the physical state of your servers. Refer to your original equipment manufacturer (OEM) hardware vendor for instructions to update the user account name and password of the BMC. 
 
 >[!NOTE]
 > Your OEM may provide additional management applications. Updating the user name or password for other management applications has no affect on the BMC user name or password.   
