@@ -12,7 +12,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.author: mabrigg
-ms.date: 06/18/2019
+ms.date: 10/10/2019
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
 
@@ -91,7 +91,7 @@ You can collect and review deployment logs on the VMs that support your Kubernet
 4.  If the VM is **OK**, then evaluate the DVM. If the DVM has an error message:
 
     - The public key might be invalid. Review the key that you created.  
-    - Contact your Azure Stack administrator to retrieve the logs for Azure Stack by using the privileged endpoints. For more information, see [Azure Stack diagnostics tools](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep).
+    - Contact your Azure Stack administrator to retrieve the logs for Azure Stack by using the privileged endpoints. For more information, see [Azure Stack diagnostics tools](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs).
 5. If you have a question about your deployment, you can post it or see if someone has already answered the question in the [Azure Stack forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
 
 ## Review deployment status
@@ -143,7 +143,7 @@ Follow these steps to collect and download the cluster logs:
 
     | Parameter           | Description                                                                                                      | Example                                                                       |
     |---------------------|------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------|
-    | -d, --vmd-host      | The public IP or the fully-qualified domain name (FQDN) of the DVM. The VM name starts with `vmd-`. | IP: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
+    | -d, --vmd-host      | The public IP or the fully qualified domain name (FQDN) of the DVM. The VM name starts with `vmd-`. | IP: 192.168.102.38<br>DNS: vmd-myk8s.local.cloudapp.azurestack.external |
     | -h, --help  | Print command usage. | |
     | -i, --identity-file | Path to the RSA private key file passed to the marketplace item when creating the Kubernetes cluster. Needed to remote in to the Kubernetes nodes. | C:\data\id_rsa.pem (Putty)<br>~/.ssh/id_rsa (SSH)
     | -m, --master-host   | The public IP or the fully qualified domain name (FQDN) of a Kubernetes master node. The VM name starts with `k8s-master-`. | IP: 192.168.102.37<br>FQDN: k8s-12345.local.cloudapp.azurestack.external      |

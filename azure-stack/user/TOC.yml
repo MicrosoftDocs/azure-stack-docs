@@ -31,7 +31,7 @@
     items:
       - name: Subscribe to an offer
         href: azure-stack-subscribe-services.md
-      - name: Enable a Cloud Service Provider
+      - name: Enable a Cloud Solution Provider
         href: azure-stack-csp-enable-billing-usage-tracking.md
       - name: Use the Azure Stack Portal
         href: azure-stack-use-portal.md
@@ -75,14 +75,18 @@
           href: azure-stack-developer.md  
         - name: Check templates
           href: azure-stack-validate-templates.md
-        - name: Deploy with the portal
-          href: azure-stack-deploy-template-portal.md
-        - name: Deploy with PowerShell
-          href: azure-stack-deploy-template-powershell.md
-        - name: Deploy with CLI
-          href: azure-stack-deploy-template-command-line.md
-        - name: Deploy with Visual Studio
-          href: azure-stack-deploy-template-visual-studio.md
+          name: Deploy templates
+          items:
+          - name: Deploy with the portal
+            href: azure-stack-deploy-template-portal.md
+          - name: Deploy with PowerShell
+            href: azure-stack-deploy-template-powershell.md
+          - name: Deploy with CLI
+            href: azure-stack-deploy-template-command-line.md
+          - name: Deploy with Visual Studio Code
+            href: azure-stack-resource-manager-deploy-template-vscode.md
+          - name: Deploy with Visual Studio
+            href: azure-stack-deploy-template-visual-studio.md
       - name: Use API version profiles
         items:
         - name: Overview
@@ -264,6 +268,14 @@
       href: azure-stack-solution-mongodb-ha.md
     - name: Deploy high-availability SQL Server 2016
       href: azure-stack-solution-sql-ha.md
+  - name: Deploy foundational patterns
+    items:
+    - name: Setup VPN to on-prem
+      href: azure-stack-network-howto-vnet-to-onprem.md
+    - name: VNET to VNET connection
+      href: azure-stack-network-howto-vnet-to-vnet-stacks.md
+    - name: VNET peering
+      href: azure-stack-network-howto-vnet-to-vnet.md
 - name: Concepts
   items:
   - name: Hybrid cloud patterns

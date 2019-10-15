@@ -1,6 +1,6 @@
 ---
 title: Azure Stack administration basics | Microsoft Docs
-description: Learn what you need to know to administer Azure Stack.
+description: Learn the basics of Azure Stack administration.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -19,7 +19,7 @@ ms.lastreviewed: 05/29/2019
 ---
 # Azure Stack administration basics
 
-If you're new to Azure Stack administration, there are several things you need to know. This article provides an overview of your role as an Azure Stack operator, and what you need to tell your users so you can help them become productive.
+If you're new to Azure Stack administration, there are several things you need to know. This article provides an overview of your role as an Azure Stack operator, and what you need to tell your users to help them become productive.
 
 ## Understand the builds
 
@@ -29,9 +29,9 @@ If you're using an Azure Stack integrated system, update packages distribute upd
  
 ### Development kit
 
-If you're using the Azure Stack Development Kit (ASDK), review [What is Azure Stack?](../asdk/asdk-what-is.md) to learn the purpose of the ASDK, and its limitations. You can use the ASDK as a *sandbox*, where you can evaluate Azure Stack, and develop and test your apps in a non-production environment. For deployment information, see [Azure Stack Development Kit deployment](../asdk/asdk-install.md).
+If you're using the Azure Stack Development Kit (ASDK), review [What is Azure Stack?](../asdk/asdk-what-is.md) to learn the purpose and limitations of the ASDK. You can use the ASDK as a *sandbox*, where you can evaluate Azure Stack and develop and test your apps in a non-production environment. For deployment information, see [Azure Stack Development Kit deployment](../asdk/asdk-install.md).
 
-Like Azure, we innovate rapidly. We'll regularly release new builds. If you're running the ASDK and you want to move to the latest build, you must [redeploy Azure Stack](../asdk/asdk-redeploy.md). You cannot apply update packages. This process takes time, but the benefit is that you can try out the latest features. The ASDK documentation on our website reflects the latest release build.
+Like Azure, we innovate rapidly. We'll regularly release new builds. If you're running the ASDK and you want to move to the latest build, you must [redeploy Azure Stack](../asdk/asdk-redeploy.md). You can't apply update packages. This process takes time, but the benefit is that you can try out the latest features. The ASDK documentation on our website reflects the latest release build.
 
 ## Learn about available services
 
@@ -69,10 +69,10 @@ There are a few account considerations to be aware of when managing Azure Stack.
 
 |Account|Azure AD|AD FS|
 |-----|-----|-----|
-|Local Administrator (.\Administrator)|ASDK host administrator|ASDK host administrator|
-|AzureStack\AzureStackAdmin|ASDK host administrator<br><br>Can be used to sign in to the Azure Stack administration portal<br><br>Access to view and administer Service Fabric rings|ASDK host administrator<br><br>No access to the Azure Stack administration portal<br><br>Access to view and administer Service Fabric rings<br><br>No longer owner of the Default Provider Subscription (DPS)|
-|AzureStack\CloudAdmin|Can access and run permitted commands within the Privileged Endpoint|Can access and run permitted commands within the Privileged Endpoint<br><br>Can't sign in to the ASDK host<br><br>Owner of the Default Provider Subscription (DPS)|
-|Azure AD Global Administrator|Used during installation<br><br>Owner of the Default Provider Subscription (DPS)|Not applicable|
+|Local Administrator (.\Administrator)|ASDK host administrator.|ASDK host administrator.|
+|AzureStack\AzureStackAdmin|ASDK host administrator.<br><br>Can be used to sign in to the Azure Stack administrator portal.<br><br>Access to view and administer Service Fabric rings.|ASDK host administrator.<br><br>No access to the Azure Stack administrator portal.<br><br>Access to view and administer Service Fabric rings.<br><br>No longer owner of the Default Provider Subscription (DPS).|
+|AzureStack\CloudAdmin|Can access and run permitted commands within the privileged endpoint.|Can access and run permitted commands within the privileged endpoint.<br><br>Can't sign in to the ASDK host.<br><br>Owner of the Default Provider Subscription (DPS).|
+|Azure AD Global Administrator|Used during installation.<br><br>Owner of the Default Provider Subscription (DPS).|Not applicable.|
 |
 
 ## What tools do I use to manage?
@@ -83,24 +83,24 @@ Azure Stack uses Azure Resource Manager as its underlying deployment, management
 
 ## Your typical responsibilities
 
-Your users want to use services. From their perspective, your main role is to make these services available to them. Decide which services to offer, and make those services available by creating plans, offers, and quotas. For more information, see [Overview of offering services in Azure Stack](azure-stack-offer-services-overview.md). 
+Your users want to use services. From their perspective, your main role is to make these services available to them. Decide which services to offer, and make those services available by creating plans, offers, and quotas. For more information, see [Overview of offering services in Azure Stack](service-plan-offer-subscription-overview.md). 
 
-You'll also need to add items to [the marketplace](azure-stack-marketplace.md), like as virtual machine images. The easiest way is to [download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md).
+You'll also need to add items to [Azure Stack Marketplace](azure-stack-marketplace.md). The easiest way is to [download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md).
 
 > [!NOTE]
 > If you want to test your plans, offers, and services, you can use the [user portal](azure-stack-manage-portals.md); not the administrator portal.
 
-In addition to providing services, you must do the regular duties of an operator to keep Azure Stack up and running. These duties include the following:
+In addition to providing services, you must do the regular duties of an operator to keep Azure Stack up and running. These duties include the following tasks:
 
-- Add user accounts (for [Azure Active Directory](azure-stack-add-new-user-aad.md) deployment or for [Active Directory Federation Services](azure-stack-add-users-adfs.md) deployment)
-- [Assign role-based access control (RBAC) roles](azure-stack-manage-permissions.md) (This is not restricted to admins.)
-- [Monitor infrastructure health](azure-stack-monitor-health.md)
-- Manage [network](azure-stack-viewing-public-ip-address-consumption.md) and [storage](azure-stack-manage-storage-accounts.md) resources
-- Replace bad hardware, for example [Replace a failed disk](azure-stack-replace-disk.md).
+- Add user accounts (for [Azure AD](azure-stack-add-new-user-aad.md) deployment or for [AD FS](azure-stack-add-users-adfs.md) deployment).
+- [Assign role-based access control (RBAC) roles](azure-stack-manage-permissions.md) (This task isn't restricted to admins.)
+- [Monitor infrastructure health](azure-stack-monitor-health.md).
+- Manage [network](azure-stack-viewing-public-ip-address-consumption.md) and [storage](azure-stack-manage-storage-accounts.md) resources.
+- Replace bad hardware. For example, [replace a failed disk](azure-stack-replace-disk.md).
 
 ## What to tell your users
 
-You'll need to let your users know how to work with services in Azure Stack, how to connect to the environment, and how to subscribe to offers. Besides any custom documentation that you may want to provide your users, you can direct users to the Azure Stack Users Documentation site.
+You'll need to let your users know how to work with services in Azure Stack, how to connect to the environment, and how to subscribe to offers. Besides any custom documentation that you may want to provide your users, you can direct users to [Azure Stack User Documentation](https://docs.microsoft.com/en-us/azure-stack/user/).
 
 **Understand how to work with services in Azure Stack**
 
@@ -114,11 +114,11 @@ The information in these articles summarizes the differences between a service i
 
 **Connect to Azure Stack as a user**
 
-In an ASDK environment, if a user doesn't use Remote Desktop to connect to the ASDK host, they can configure a virtual private network (VPN) connection to connect to Azure Stack. See [Connect to Azure Stack](../asdk/asdk-connect.md). 
+In an ASDK environment, if a user doesn't use Remote Desktop to connect to the ASDK host, they can configure a virtual private network (VPN) connection to connect to Azure Stack. See [Connect to Azure Stack](../asdk/asdk-connect.md).
 
 Your users will want to know how to [access the user portal](../user/azure-stack-use-portal.md) or how to connect through PowerShell. In an integrated systems environment, the user portal address varies per deployment. You'll need to provide your users with the correct URL.
 
-If using PowerShell, users may have to register resource providers before they can use services. (A resource provider manages a service. For example, the networking resource provider manages resources like virtual networks, network interfaces, and load balancers.) They must [install](azure-stack-powershell-install.md) PowerShell, [download](azure-stack-powershell-download.md) additional modules, and [configure](../user/azure-stack-powershell-configure-user.md) PowerShell (which includes resource provider registration).
+If using PowerShell, users may have to register resource providers before they can use services. A resource provider manages a service. For example, the networking resource provider manages resources like virtual networks, network interfaces, and load balancers. They must [install](azure-stack-powershell-install.md) PowerShell, [download](azure-stack-powershell-download.md) additional modules, and [configure](../user/azure-stack-powershell-configure-user.md) PowerShell (which includes resource provider registration).
 
 **Subscribe to an offer**
 
@@ -131,18 +131,17 @@ Before a user can use services, they must [subscribe to an offer](azure-stack-su
 
 ### Integrated systems
 
-For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
+For an integrated system, there's a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
 
-If there is a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). If you select the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then select **Help + support** and then select **New support request** under the **Support** section. Open a support request.
+If there's a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). To open a support request, select the Help and support icon (question mark) in the upper-right corner of the administrator portal, select **Help + support**, and then select **New support request** under the **Support** section.
 
-If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, like software running on the hardware lifecycle host, contact your OEM hardware vendor first.
+If there's an issue with deployment, patch and update, hardware (including field replaceable units), or any hardware-branded software, like software running on the hardware lifecycle host, contact your OEM hardware vendor first.
 
-If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, such as software running on the hardware lifecycle host, contact your OEM hardware vendor first. 
 For anything else, contact Microsoft CSS.
 
 ### Azure Stack Development Kit (ASDK)
 
-For the ASDK, you can ask support-related questions in the [Microsoft forums](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). If you select the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then select **Help + support** and then select **MSDN Forums** under the **Support** section.  The forum site opens. These forums are regularly monitored. Because the ASDK is an evaluation environment, there is no official support offered through Microsoft CSS.
+For the ASDK, you can ask support-related questions in the [Microsoft forums](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). To get to the forums, select the Help and support icon (question mark) in the upper-right corner of the administrator portal, then select **Help + support**, and then select **MSDN Forums** under the **Support** section. These forums are regularly monitored. Because the ASDK is an evaluation environment, there's no official support offered through Microsoft CSS.
 
 ## Next steps
 

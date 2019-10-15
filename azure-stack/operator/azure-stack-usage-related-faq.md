@@ -325,7 +325,7 @@ Usage is reported for the following resource providers:
 **Meter ID**: 190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  
 **Meter name**: App Service  
 **Unit**: Virtual core hours  
-**Notes**: Number of virtual cores used to run app service. Note: Microsoft uses this meter to charge the App Service on Azure Stack. Cloud Service Providers can use the other App Service meters (below) to calculate usage for their tenants.  
+**Notes**: Number of virtual cores used to run app service. Note: Microsoft uses this meter to charge the App Service on Azure Stack. Cloud Solution Providers can use the other App Service meters (below) to calculate usage for their tenants.  
   
 **Meter ID**: 67CC4AFC-0691-48E1-A4B8-D744D1FEDBDE  
 **Meter name**: Functions Requests  

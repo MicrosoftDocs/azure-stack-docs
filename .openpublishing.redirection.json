@@ -1,6 +1,37 @@
 {
   "redirections": [
     {
+      "source_path": "azure-stack/operator/azure-stack-plan-offer-quota-overview.md",
+      "redirect_url": "/azure-stack/operator/service-plan-offer-subscription-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-operations-checklist.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-manage-basics",
+
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-offer-services-overview.md",
+      "redirect_url": "/azure-stack/operator/service-plan-offer-subscription-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-tutorial-tenant-vm.md",
+      "redirect_url": "/azure-stack/operator/tutorial-offer-services",
+      "redirect_document_id": false
+    },  
+    {
+      "source_path": "azure-stack/operator/azure-stack-tutorial-sql-server.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-sql-resource-provider",
+      "redirect_document_id": false
+    },   
+    {
+      "source_path": "azure-stack/operator/azure-stack-tutorial-app-service.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-app-service-overview",
+      "redirect_document_id": false
+    },             
+    {
       "source_path": "azure-stack/operator/capacity-planning.md",
       "redirect_url": "/azure-stack/operator/azure-stack-capacity-planning-overview",
       "redirect_document_id": false

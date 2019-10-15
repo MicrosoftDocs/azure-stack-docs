@@ -92,7 +92,7 @@ To use the Node.js Azure SDK with Azure Stack, you must supply the following val
 | --- | --- | --- |
 | Tenant ID | TENANT\_ID | The value of your Azure Stack [tenant ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview). |
 | Client ID | CLIENT\_ID | The service principal application ID saved when service principal was created on the previous section of this document.  |
-| Subscription ID | AZURE\_SUBSCRIPTION\_ID   The [subscription ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) is how you access offers in Azure Stack.  |
+| Subscription ID | AZURE\_SUBSCRIPTION\_ID   The [subscription ID](https://docs.microsoft.com/azure/azure-stack/service-plan-offer-subscription-overview#subscriptions) is how you access offers in Azure Stack.  |
 | Client Secret | APPLICATION\_SECRET | The service principal application Secret saved when service principal was created. |
 | Resource Manager Endpoint | ARM\_ENDPOINT | See [the Azure Stack Resource Manager endpoint](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-ruby#the-azure-stack-resource-manager-endpoint). |
 

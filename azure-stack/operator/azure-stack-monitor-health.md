@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
+ms.date: 10/2/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/18/2019
 
@@ -63,6 +63,9 @@ The list of active alerts for each Azure Stack region is available directly from
 By selecting the top part of the **Alerts** tile, you navigate to the list of all active alerts for the region. If you select either the **Critical** or **Warning** line item within the tile, you navigate to a filtered list of alerts (Critical or Warning). 
 
 The **Alerts** blade supports the ability to filter both on status (Active or Closed) and severity (Critical or Warning). The default view displays all active alerts. All closed alerts are removed from the system after seven days.
+
+>[!Note]
+>If an alert remains active but hasn't been updated in over a day, you can run [Test-AzureStack](azure-stack-diagnostic-test.md) and close the alert if no problems are reported.
 
 ![Filter pane to filter by critical or warning status](media/azure-stack-monitor-health/alert-view.png)
 
