@@ -28,13 +28,13 @@ Secrets help you maintain secure communication between the Azure Stack infrastru
 ## Overview to rotate secrets
 
 1. Prepare the certificates, which will be used to do the secret rotation.
-2. Review the Azure Stack [public key infrastructure certificate requirements](https://docs.microsoft.comazure-stack/operator/azure-stack-pki-certs).
+2. Review the Azure Stack [public key infrastructure certificate requirements](https://docs.microsoft.com/azure-stack/operator/azure-stack-pki-certs).
 3. [Use the privileged endpoint](azure-stack-privileged-endpoint.md) and run **Test-azurestack**  to confirm that everything is fine.  
 4. You can find out more information about the [pre-steps for secret rotation](#pre-steps-for-secret-rotation).
-5. [Validate Azure Stack PKI certificates](https://docs.microsoft.comazure-stack/operator/azure-stack-validate-pki-certs). Make sure there are no special characters in password such as, `*` or `)`.
-6. Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Remediate common issues for Azure Stack PKI certificates](https://docs.microsoft.comazure-stack/operator/azure-stack-remediate-certs#pfx-encryption).
+5. [Validate Azure Stack PKI certificates](https://docs.microsoft.com/azure-stack/operator/azure-stack-validate-pki-certs). Make sure there are no special characters in password such as, `*` or `)`.
+6. Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Remediate common issues for Azure Stack PKI certificates](https://docs.microsoft.com/azure-stack/operator/azure-stack-remediate-certs#pfx-encryption).
 7. Prepare the folder structure.  You can find an example in the 
-    [Rotating external secrets](https://docs.microsoft.comazure-stack/operator/azure-stack-rotate-secrets#rotating-external-secrets) section.
+    [Rotating external secrets](https://docs.microsoft.com/azure-stack/operator/azure-stack-rotate-secrets#rotating-external-secrets) section.
 8. [Start the secret rotation](#use-powershell-to-rotate-secrets).
 
 ## Rotate secrets
