@@ -250,6 +250,7 @@ Table of events for the privileged endpoint:
 |SetCloudAdminUserPassword |1008|SetCloudAdminUserPasswordEvent|5|
 |GetCloudAdminPasswordRecoveryToken |1009|GetCloudAdminPasswordRecoveryTokenEvent|10|
 |ResetCloudAdminPassword |1010|ResetCloudAdminPasswordEvent|10|
+|PrivilegedEndpointSessionTimedOut |1017|PrivilegedEndpointSessionTimedOutEvent|5|
 
 PEP Severity table:
 
