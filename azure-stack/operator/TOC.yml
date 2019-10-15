@@ -277,57 +277,9 @@
       href: azure-stack-quota-types.md
   - name: Offer network solutions
     href: azure-stack-network-solutions-enable.md
-  - name: Manage resource providers for add-on services
+  - name: Manage add-on service resource providers
     items:
-    - name: SQL
-      items:
-      - name: Overview
-        href: azure-stack-sql-resource-provider.md
-      - name: Deploy the SQL Server resource provider
-        href: azure-stack-sql-resource-provider-deploy.md
-      - name: Add SQL hosting servers
-        href: azure-stack-sql-resource-provider-hosting-servers.md
-      - name: Create SQL databases
-        href: azure-stack-sql-resource-provider-databases.md
-      - name: Deploy highly available SQL databases
-        href: azure-stack-tutorial-sql.md
-      - name: Update the SQL Server resource provider
-        href: azure-stack-sql-resource-provider-update.md   
-      - name: Maintain the SQL Server resource provider
-        href: azure-stack-sql-resource-provider-maintain.md                  
-      - name: Remove the SQL Server resource provider
-        href: azure-stack-sql-resource-provider-remove.md 
-      - name: SQL resource provider release notes
-        items:
-        - name: SQL resource provider 1.1.30.0 release notes
-          href: azure-stack-sql-resource-provider-11300.md 
-        - name: SQL resource provider 1.1.33.0 release notes
-          href: azure-stack-sql-resource-provider-11330.md   
-    - name: MySQL
-      items:
-      - name: Overview 
-        href: azure-stack-mysql-resource-provider.md
-      - name: Deploy the MySQL Server resource provider
-        href: azure-stack-mysql-resource-provider-deploy.md
-      - name: Add MySQL hosting servers
-        href: azure-stack-mysql-resource-provider-hosting-servers.md
-      - name: Create MySQL Databases
-        href: azure-stack-mysql-resource-provider-databases.md
-      - name: Deploy highly available MySQL databases
-        href: azure-stack-tutorial-mysql.md
-      - name: Update the MySQL Server resource provider
-        href: azure-stack-mysql-resource-provider-update.md
-      - name: Maintain MySQL Server resource provider
-        href: azure-stack-mysql-resource-provider-maintain.md
-      - name: Remove the MySQL Server resource provider
-        href: azure-stack-mysql-resource-provider-remove.md
-      - name: MySQL resource provider release notes
-        items:
-        - name: MySQL resource provider 1.1.30.0 release notes
-          href: azure-stack-mysql-resource-provider-11300.md
-        - name: MySQL resource provider 1.1.33.0 release notes
-          href: azure-stack-mysql-resource-provider-11330.md
-    - name: App Service
+    - name: App Service on Azure Stack
       items:
       - name: Overview
         href: azure-stack-app-service-overview.md
@@ -371,6 +323,54 @@
           href: azure-stack-app-service-release-notes-update-six.md
         - name: App Service on Azure Stack update 7 release notes
           href: azure-stack-app-service-release-notes-update-seven.md
+    - name: MySQL on Azure Stack
+      items:
+      - name: Overview 
+        href: azure-stack-mysql-resource-provider.md
+      - name: Deploy the MySQL Server resource provider
+        href: azure-stack-mysql-resource-provider-deploy.md
+      - name: Add MySQL hosting servers
+        href: azure-stack-mysql-resource-provider-hosting-servers.md
+      - name: Create MySQL Databases
+        href: azure-stack-mysql-resource-provider-databases.md
+      - name: Deploy highly available MySQL databases
+        href: azure-stack-tutorial-mysql.md
+      - name: Update the MySQL Server resource provider
+        href: azure-stack-mysql-resource-provider-update.md
+      - name: Maintain MySQL Server resource provider
+        href: azure-stack-mysql-resource-provider-maintain.md
+      - name: Remove the MySQL Server resource provider
+        href: azure-stack-mysql-resource-provider-remove.md
+      - name: MySQL resource provider release notes
+        items:
+        - name: MySQL resource provider 1.1.30.0 release notes
+          href: azure-stack-mysql-resource-provider-11300.md
+        - name: MySQL resource provider 1.1.33.0 release notes
+          href: azure-stack-mysql-resource-provider-11330.md
+    - name: SQL on Azure Stack
+      items:
+      - name: Overview
+        href: azure-stack-sql-resource-provider.md
+      - name: Deploy the SQL Server resource provider
+        href: azure-stack-sql-resource-provider-deploy.md
+      - name: Add SQL hosting servers
+        href: azure-stack-sql-resource-provider-hosting-servers.md
+      - name: Create SQL databases
+        href: azure-stack-sql-resource-provider-databases.md
+      - name: Deploy highly available SQL databases
+        href: azure-stack-tutorial-sql.md
+      - name: Update the SQL Server resource provider
+        href: azure-stack-sql-resource-provider-update.md   
+      - name: Maintain the SQL Server resource provider
+        href: azure-stack-sql-resource-provider-maintain.md                  
+      - name: Remove the SQL Server resource provider
+        href: azure-stack-sql-resource-provider-remove.md 
+      - name: SQL resource provider release notes
+        items:
+        - name: SQL resource provider 1.1.30.0 release notes
+          href: azure-stack-sql-resource-provider-11300.md 
+        - name: SQL resource provider 1.1.33.0 release notes
+          href: azure-stack-sql-resource-provider-11330.md   
   - name: Usage and billing
     href: azure-stack-billing-and-chargeback.md
     items:
