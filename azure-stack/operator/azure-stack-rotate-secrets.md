@@ -27,7 +27,7 @@ Secrets help you maintain secure communication between the Azure Stack infrastru
 
 ## Overview to rotate secrets
 
-1. Prepare the certificates, which will be used to do the secret rotation.
+1. Prepare the certificates, which will be used for secret rotation.
 2. Review the Azure Stack [public key infrastructure certificate requirements](https://docs.microsoft.com/azure-stack/operator/azure-stack-pki-certs).
 3. [Use the privileged endpoint](azure-stack-privileged-endpoint.md) and run **Test-azurestack**  to confirm that everything is fine.  
 4. You can find out more information about the [pre-steps for secret rotation](#pre-steps-for-secret-rotation).
