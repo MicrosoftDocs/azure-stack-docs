@@ -328,6 +328,7 @@
         - name: MySQL resource provider 1.1.33.0 release notes
           href: azure-stack-mysql-resource-provider-11330.md
     - name: App Service
+      items:
       - name: Overview
         href: azure-stack-app-service-overview.md
       - name: App Service capacity planning
