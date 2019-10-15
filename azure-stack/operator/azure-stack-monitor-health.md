@@ -21,7 +21,7 @@ ms.lastreviewed: 01/18/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Azure Stack includes infrastructure monitoring capabilities that help you view health and alerts for an Azure Stack region. The **Region management** tile, pinned by default in the administrator portal for the Default Provider Subscription, lists all the deployed regions of Azure Stack. The tile shows the number of active critical and warning alerts for each region. The tile is your entry point into the health and alert functionality of Azure Stack.
+Azure Stack includes infrastructure monitoring capabilities that help you view health and alerts for an Azure Stack region. The **Region management** tile lists all the deployed regions of Azure Stack. It's pinned by default in the administrator portal for the Default Provider Subscription. The tile shows the number of active critical and warning alerts for each region. The tile is your entry point into the health and alert functionality of Azure Stack.
 
 ![The Region Management tile in Azure Stack administrator portal](media/azure-stack-monitor-health/image1.png)
 
@@ -37,7 +37,7 @@ Azure Stack raises alerts with only two severities: **warning** and **critical**
   An operator can address the warning alert in a scheduled manner. The alert typically doesn't impact user workloads.
 
 - **Critical**  
-  An operator should address the critical alert with urgency. These are issues that currently impact or will soon impact Azure Stack users.
+  An operator should address the critical alert with urgency. These alerts indicate issues that currently impact or will soon impact Azure Stack users.
 
 
 ## View and manage component health state
@@ -60,7 +60,7 @@ The list of active alerts for each Azure Stack region is available directly from
 
 ![Alerts tile that shows a warning in Azure Stack administrator portal](media/azure-stack-monitor-health/image3.png)
 
-By selecting the top part of the **Alerts** tile, you navigate to the list of all active alerts for the region. If you select either the **Critical** or **Warning** line item within the tile, you navigate to a filtered list of alerts (Critical or Warning).
+ To view a list of all active alerts for the region, select the top part of the **Alerts** tile. To view a filtered list of alerts (Critical or Warning), select either the **Critical** or **Warning** line item within the tile.
 
 The **Alerts** blade supports the ability to filter both on status (Active or Closed) and severity (Critical or Warning). The default view displays all active alerts. All closed alerts are removed from the system after seven days.
 
@@ -87,7 +87,7 @@ The **Repair** action will report successful completion or failure to complete t
 
 ![The Repair action completes successfully](media/azure-stack-monitor-health/repair-completed.png)
 
-After the infrastructure role instance is back online, this alert automatically closes. Many, but not every alert, automatically close when the underlying issue is resolved. Alerts that provide a Repair action button will close automatically if Azure Stack resolves the issue. For all other alerts, select **Close Alert** after you perform remediation steps. If the issue persists, Azure Stack generates a new alert. If you resolve the issue, the alert remains closed and requires no more steps.
+After the infrastructure role instance is back online, this alert automatically closes. Many, but not every alert, automatically close when the underlying issue is resolved. Alerts that provide a Repair action button will close automatically if Azure Stack resolves the issue. For all other alerts, select **Close Alert** after you do the remediation steps. If the issue persists, Azure Stack generates a new alert. If you resolve the issue, the alert remains closed and requires no more steps.
 
 ## Next steps
 
