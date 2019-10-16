@@ -1,6 +1,6 @@
 ﻿---
 title: Azure Stack MySQL resource provider 1.1.30.0 release notes | Microsoft Docs
-description: View the release notes to see what's new in the latest Azure Stack MySQL resource provider update.
+description: View the release notes to see what's new in the Azure Stack MySQL resource provider 1.1.30.0 update.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs

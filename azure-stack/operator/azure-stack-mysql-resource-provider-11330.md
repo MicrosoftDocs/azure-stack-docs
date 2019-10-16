@@ -1,6 +1,6 @@
 ﻿---
-title: Azure Stack MySQL resource provider 1.1.30.0 release notes | Microsoft Docs
-description: Learn about what's in the latest Azure Stack MySQL resource provider update, including any known issues, and where to download it.
+title: Azure Stack MySQL resource provider 1.1.33.0 release notes | Microsoft Docs
+description: View the release notes to see what's new in the Azure Stack MySQL resource provider 1.1.33.0 update.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -40,16 +40,17 @@ Download the MySQL resource provider binary and then run the self-extractor to e
 This version of the Azure Stack MySQL resource provider includes the following improvements and fixes:
 
 ### Fixes
-- **MySQL resource provider portal extension might choose the wrong subscription**. The MySQL resource provider uses Azure Resource Manager calls to determine the first service admin subscription to use, which might not be the *Default Provider Subscription*. If that happens, the MySQL resource provider does not work normally. 
 
-- **MySQL hosting server does not list hosted databases.** User-created databases might not be listed when viewing tenant resources for MySQL hosting servers.
+- **MySQL resource provider portal extension might choose the wrong subscription**. The MySQL resource provider uses Azure Resource Manager calls to determine the first service admin subscription to use, which might not be the *Default Provider Subscription*. If that happens, the MySQL resource provider doesn't work normally.
 
-- **Previous MySQL resource provider (1.1.30.0) deployment could fail if TLS 1.2 is not enabled**. Updated the MySQL resource provider 1.1.33.0 to enable TLS 1.2 when deploying the resource provider, updating the resource provider, or rotating secrets. 
+- **MySQL hosting server doesn't list hosted databases.** User-created databases might not be listed when viewing tenant resources for MySQL hosting servers.
 
-- **MySQL resource provider secret rotation fails**. Fixed issue resulting in the following error code when rotating secrets:
+- **Previous MySQL resource provider (1.1.30.0) deployment could fail if TLS 1.2 isn't enabled**. Updated the MySQL resource provider 1.1.33.0 to enable TLS 1.2 when deploying the resource provider, updating the resource provider, or rotating secrets.
+
+- **MySQL resource provider secret rotation fails**. Fixed an issue resulting in the following error code when rotating secrets:
 `New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
 
-## Known issues 
+## Known issues
 
 - **MySQL SKUs can take up to an hour to be visible in the portal**. It can take up to an hour for newly created SKUs to be visible for use when creating new MySQL databases. 
 
