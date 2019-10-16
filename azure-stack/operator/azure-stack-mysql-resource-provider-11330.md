@@ -56,7 +56,7 @@ This version of the Azure Stack MySQL resource provider includes the following i
 
     **Workaround**: None.
 
-- **Reused MySQL logins**. Attempting to create a new MySQL login with the same username as an existing login under the same subscription will result in reusing the same login and the existing password. 
+- **Reused MySQL logins**. Attempting to create a new MySQL login with the same username as an existing login under the same subscription will result in reusing the same login and the existing password.
 
     **Workaround**: Use different usernames when creating new logins under the same subscription or create logins with the same username under different subscriptions.
 
