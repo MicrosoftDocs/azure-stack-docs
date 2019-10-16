@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2019
+ms.date: 10/01/2019
 ms.author: sethm
 ms.reviewer: ihcherie
-ms.lastreviewed: 07/31/2019
+ms.lastreviewed: 10/01/2019
 
 ---
 
