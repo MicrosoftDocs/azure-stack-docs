@@ -21,7 +21,7 @@ ms.lastreviewed: 11/05/2018
 
 *Applies to: Azure Stack integrated systems*
 
-You can use the [privileged endpoint](azure-stack-privileged-endpoint.md) to monitor the progress of an Azure Stack update run, and to resume a failed update run from the last successful step should the Azure Stack portal become unavailable. Using the Azure Stack portal is the recommended method to manage updates in Azure Stack.
+You can use the [privileged endpoint](azure-stack-privileged-endpoint.md) to monitor the progress of an Azure Stack update run. You can also use the privileged endpoint to resume a failed update run from the last successful step should the Azure Stack portal become unavailable. Using the Azure Stack portal is the recommended method to manage updates in Azure Stack.
 
 The following new PowerShell cmdlets for update management are included in the 1710 update for Azure Stack integrated systems.
 
@@ -34,7 +34,7 @@ The following new PowerShell cmdlets for update management are included in the 1
 ## Verify the cmdlets are available
 Because the cmdlets are new in the 1710 update package for Azure Stack, the 1710 update process needs to get to a certain point before the monitoring capability is available. Typically, the cmdlets are available if the status in the administrator portal indicates that the 1710 update is at the **Restart Storage Hosts** step. Specifically, the cmdlet update occurs during **Step: Running step 2.6 - Update PrivilegedEndpoint whitelist**.
 
-You can also determine whether the cmdlets are available  programmatically by querying the command list from the privileged endpoint. To do this, run the following commands from the hardware lifecycle host or from a Privileged Access Workstation. Also, make sure the privileged endpoint is a trusted host. For more information, see step 1 of [Access the privileged endpoint](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint).
+You can also determine whether the cmdlets are available programmatically by querying the command list from the privileged endpoint. To do this query, run the following commands from the hardware lifecycle host or from a Privileged Access Workstation. Also, make sure the privileged endpoint is a trusted host. For more information, see step 1 of [Access the privileged endpoint](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint).
 
 1. Create a PowerShell session on any of the ERCS virtual machines (VMs) in your Azure Stack environment (*Prefix*-ERCS01, *Prefix*-ERCS02, or *Prefix*-ERCS03). Replace *Prefix* with the VM prefix string that's specific to your environment.
 
@@ -92,7 +92,7 @@ $pepSession = New-PSSession -ComputerName <Prefix>-ercs01 -Credential $cred -Con
 ```
  When prompted for credentials, use the &lt;*Azure Stack domain*&gt;\cloudadmin account, or an account that's a member of the CloudAdmins group. For the CloudAdmin account, enter the same password that was provided during installation for the AzureStackAdmin domain administrator account.
 
-### Get high-level status of the current update run 
+### Get high-level status of the current update run
 
 To get a high-level status of the current update run, run the following commands:
 
