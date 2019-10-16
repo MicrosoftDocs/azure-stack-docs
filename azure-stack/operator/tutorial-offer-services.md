@@ -5,9 +5,9 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: tutorial
-ms.date: 10/03/2019
+ms.date: 10/16/2019
 ms.reviewer: shriramnat
-ms.lastreviewed: 10/06/2019
+ms.lastreviewed: 10/16/2019
 ---
 
 # Tutorial: Offer a service to users
@@ -24,7 +24,7 @@ In this tutorial, you learn how to:
 
 ## Overview
 
-An offer consists of one or more plans. A plan entitles access to one or more services, by specifying the corresponding resource provider and a quota. Plans can be added to an offer as the base plan, or extend the offer as an add-on plan. To learn more, see the [Service, plan, offer, subscription overview](service-plan-offer-subscription-overview.md).
+An offer consists of one or more plans. A plan entitles access to one or more services, by specifying each service's corresponding resource provider and a quota. Plans can be added to an offer as the base plan, or extend the offer as an add-on plan. To learn more, see the [Service, plan, offer, subscription overview](service-plan-offer-subscription-overview.md).
 
 ![Subscriptions, offers, and plans](media/azure-stack-key-features/image4.png)
 
