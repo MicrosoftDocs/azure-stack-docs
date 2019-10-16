@@ -54,6 +54,8 @@ If the VHD is from Azure, follow these instructions to generalize the VHD:
 
 2. Shut down the VM and download the VHD. If you are bringing your VHD from Azure, you can do this using disk export, as shown in [Download a Windows VHD from Azure](/azure/virtual-machines/windows/download-vhd).
 
+Keep in mind the Azure Linux Agent versions that work with Azure Stack[here](/azure-stack/operator/azure-stack-linux?azure-linux-agent.json). Make sure that the sysprepped image has an Azure Linux agent version that is compatible with Azure Stack.
+
 ### Common steps for both Windows and Linux
 
 Before you upload the image, it's important to consider the following:
