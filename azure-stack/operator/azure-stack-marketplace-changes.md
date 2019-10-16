@@ -81,7 +81,7 @@ The [Azure Stack Marketplace items](azure-stack-marketplace-azure-items.md) arti
 - Bitnami SugarCRM
 - Bitnami Node.js High-Availability Cluster
 - A10 vThunder: L4-L7 Application Delivery Controller, Global Server Load Balancing (GSLB), SSL Insight
-- JsonADDomain Extension
+
 
 ## Updated Marketplace items
 
@@ -107,6 +107,7 @@ The [Azure Stack Marketplace items](azure-stack-marketplace-azure-items.md) arti
 - 09/12/2019: Service Fabric - version 1.0.3
 - 09/24/2019: F5-Networks Big-IP Virtual Edition - version 14.1.200000
 - 09/25/2019: Debian 8 - version 8.0.20190806
+- 10/1/2019:  Microsoft JsonADDomain Extension - version 1.3.4
 
 
 ## Next steps

@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 10/01/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 09/23/2019
@@ -88,6 +88,6 @@ This solution captures customer images, making security a paramount consideratio
 
 ## Next steps
 
-To learn more about related patterns used by this solution, see the [Tiered Data pattern](azure-stack-solution-staged-data.md). 
-
-To learn more about using custom vision, see the [Custom Vision AI Dev Kit](https://azure.github.io/Vision-AI-DevKit-Pages/). 
+- To learn more about related patterns used by this solution, see the [Tiered Data pattern](azure-stack-solution-staged-data.md). 
+- To learn more about using custom vision, see the [Custom Vision AI Dev Kit](https://azure.github.io/Vision-AI-DevKit-Pages/). 
+- Download and deploy a [sample implementation of the footfall solution](https://github.com/Azure-Samples/azure-intelligent-edge-patterns/tree/master/footfall-analysis). You learn how to generate insights from real world actions, using Azure, Azure Stack, and the Custom Vision AI Dev Kit.   

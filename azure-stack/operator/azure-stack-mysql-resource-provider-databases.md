@@ -1,5 +1,5 @@
 ---
-title: Using databases provided by the MySQL Adapter RP on AzureStack | Microsoft Docs
+title: Using databases provided by the MySQL Adapter RP on Azure Stack | Microsoft Docs
 description: How to create and manage MySQL databases provisioned using the MySQL Adapter Resource Provider
 services: azure-stack
 documentationCenter: ''
@@ -11,7 +11,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
@@ -62,4 +62,4 @@ You can modify the password by changing it on the MySQL server instance.
 
 ## Next steps
 
-[Update the MySQL resource provider](azure-stack-mysql-resource-provider-update.md)
+Learn how to [offer highly available MySQL databases](azure-stack-tutorial-mysql.md)

@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 10/09/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/25/2019
+ms.lastreviewed: 10/09/2019
 
 ---
 
@@ -36,7 +36,7 @@ The [AKS Engine](https://github.com/Azure/aks-engine) uses a built image, the AK
 
 Your users will need a plan, offer, and subscription to Azure Stack with enough space. Users will often want to deploy clusters of up to six virtual machines, made of three masters and three worker nodes. You will want to make sure they have a large enough quota.
 
-If you need more information about planning and setting up a service offering, see [Overview of offering services in Azure Stack](azure-stack-offer-services-overview.md)
+If you need more information about planning and setting up a service offering, see [Overview of offering services in Azure Stack](service-plan-offer-subscription-overview.md)
 
 ## Create a service principal and credentials
 
@@ -67,10 +67,9 @@ Add the following item to the marketplace:
 1. Select the image version that matches the version of the AKS Engine. You can find listing of AKS Base Image to AKS Engine version at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). 
 
     In the list, select:
-    - **Publisher**: microsoft-aks
+    - **Publisher**: Azure Kubernetes Service
     - **Offer**: aks
-    - **Version**: 2019.07.30 (or version that maps to AKS Engine)
-    - **SKU**: aks-ubuntu-1604-201907
+    - **Version**: AKS Base Image 16.04-LTS Image Distro, September 2019 (2019.09.19 or version that maps to AKS Engine)
 
 1. Select **Download.**
 
@@ -100,4 +99,4 @@ You can add the custom script to the marketplace by getting the item from Azure.
 
 [What is the AKS Engine on Azure Stack?](../user/azure-stack-kubernetes-aks-engine-overview.md)
 
-[Overview of offering services in Azure Stack](azure-stack-offer-services-overview.md)
+[Overview of offering services in Azure Stack](service-plan-offer-subscription-overview.md)

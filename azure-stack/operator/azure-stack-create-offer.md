@@ -39,7 +39,7 @@ ms.lastreviewed: 06/11/2019
 
    ![Select plan to include in your Azure Stack offer](media/azure-stack-create-offer/select-plan.png)
 
-4. At this point you can create an add-on plan to modify the base plan, but this is optional. We'll create an add-on plan in the next article, [Azure Stack add-on plans](create-add-on-plan.md).
+4. At this point you can create an add-on plan to modify the base plan, but this is optional. You have the opportunity to create an add-on plan in the next article, [Azure Stack add-on plans](create-add-on-plan.md).
 
 5. Select the **Review + create** tab. Review the offer summary to ensure that all values are correct. The interface enables you to expand the quotas in the chosen plans one at a time to view the details of each quota in a plan. You can also go back to make any necessary edits.
 
@@ -107,5 +107,5 @@ There are two ways to change the state of an offer:
 
 ## Next steps
 
-- [Create subscriptions](azure-stack-subscribe-plan-provision-vm.md)
-- [Provision a virtual machine](../user/azure-stack-create-vm-template.md)
+- To learn how to modify an offer and provide your users with an add-on plan, continue with [Create an add-on plan](create-add-on-plan.md) (optional)
+- Otherwise, jump to [Subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md)
