@@ -209,7 +209,7 @@ Learn more about API profiles:
   [Create subscriptions to offers in Azure Stack]: ../operator/azure-stack-subscribe-plan-provision-vm.md
   [Provide applications access to Azure Stack]: ../operator/azure-stack-create-service-principals.md
   [*tenant ID*]: ../operator/azure-stack-identity-overview.md
-  [*subscription ID*]: ../operator/azure-stack-plan-offer-quota-overview.md#subscriptions
+  [*subscription ID*]: ../operator/service-plan-offer-subscription-overview.md#subscriptions
   [*the Azure Stack Resource Manager endpoint*]: ../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint
   [Summary of API profiles]: ../user/azure-stack-version-profiles.md#summary-of-api-profiles
   [Test Project to Virtual Machine, vNet, resource groups, and storage account]: https://github.com/seyadava/azure-sdk-for-net-samples/tree/master/TestProject
