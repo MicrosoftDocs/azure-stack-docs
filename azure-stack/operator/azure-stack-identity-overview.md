@@ -172,7 +172,7 @@ The token must then pass in the header of a request to Azure Resource Manager. A
 - Validates that the JSON Web Token is signed with a certificate that's configured through OpenID and known to Azure Resource Manager.
 - Review the *issued at* (iat) and *expiration* (exp) claims to confirm that the token is active and can be accepted.
 
-When all validations are complete, Azure Resource Manager uses the *objected* (oid) and the *groups* claims to make a list of resources that the principal can access.
+When all validations are complete, Azure Resource Manager uses the *object id* (oid) and the *groups* claims to make a list of resources that the principal can access.
 
 ![Diagram of the token exchange protocol](media/azure-stack-identity-overview/token-exchange.png)
 
