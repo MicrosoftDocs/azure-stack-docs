@@ -92,7 +92,10 @@ If provisioning an extension on a VM deployment takes too long, let the provisio
 
 VM features in Azure Stack support the following API versions:
 
-![VM resource types](media/azure-stack-vm-considerations/vm-resoource-types.png)
+"2017-12-01",
+"2017-03-30",
+"2016-03-30",
+"2015-06-15"
 
 You can use the following PowerShell script to get the API versions for the VM features that are available in your Azure Stack environment:
 
