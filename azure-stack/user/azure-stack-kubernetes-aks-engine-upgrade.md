@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 10/16/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/25/2019
+ms.lastreviewed: 10/16/2019
 
 ---
 
@@ -26,6 +26,8 @@ ms.lastreviewed: 09/25/2019
 ## Upgrade a cluster
 
 The AKS Engine allows you to upgrade the cluster that was originally deployed using the tool. You can maintain the clusters using the AKS Engine. Your maintenance tasks are similar to any IaaS system. You should be aware of the availability of new updates and use the AKS Engine to apply them.
+
+The upgrade command updates the Kubernetes version and the base OS image to the version you indicate with the **upgrade-version** parameter. Every time that you run the upgrade command, for every node of the cluster, the AKS Engine creates a new VM using the AKS Base Image associated to the version of **aks-engine** used. This means that the `aks-engine upgrade` command can be used to maintain the currency of every master and agent node in your cluster. 
 
 Microsoft doesn't manage your cluster.
 
@@ -45,7 +47,10 @@ When upgrading a production cluster, consider:
 -   No system updates or scheduled tasks are planned.
 -   Setup a staged upgrade on a cluster that is configured exactly as the production cluster and test the upgrade there before doing so in your production cluster
 
-## Steps to upgrade
+## Steps to upgrade to a newer Kubernetes version
+
+> [!Note]  
+> The AKS base image will also be upgrade if you are using a newer version of the aks-engine and the image is available in the marketplace.
 
 1. Follow the instructions in the article, [Upgrading Kubernetes Clusters](https://github.com/Azure/aks-engine/blob/master/docs/topics/upgrade.md). 
 2. You need to first determine the versions you can target for the upgrade. This version depends on the version you currently have and then use that version value to perform the upgrade.
@@ -80,7 +85,7 @@ When upgrading a production cluster, consider:
     | azure-env | AzureStackCloud | To indicate to AKS Engine that your target platform is Azure Stack use `AzureStackCloud`. |
     | location | local | The region name for your Azure Stack. For the ASDK the region is set to `local`. |
     | resource-group | kube-rg | Enter the name of a new resource group or select an existing resource group. The resource name needs to be alphanumeric and lowercase. |
-    | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter your Subscription ID. For more information see [Subscribe to an offer](https://docs.microsoft.com/azure-stack/user/azure-stack-subscribe-services#subscribe-to-an-offer) |
+    | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter your Subscription ID. For more information, see [Subscribe to an offer](https://docs.microsoft.com/azure-stack/user/azure-stack-subscribe-services#subscribe-to-an-offer) |
     | api-model | ./kubernetes-azurestack.json | Path to the cluster configuration file, or API model. |
     | client-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal GUID. The Client ID identified as the Application ID when your Azure Stack administrator created the service principal. |
     | client-secret | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal secret. This is the client secret you set up when creating your service. |
@@ -103,22 +108,30 @@ When upgrading a production cluster, consider:
 
 5.  If for any reason the upgrade operation encounters a failure, you can re-run the upgrade command after addressing the issue. The AKS Engine will resume the operation where it failed the previous time.
 
+## Steps to only upgrade the OS image
+
+1. Review [the supported-kubernetes-versions table](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) and determine if you have the version of aks-engine and AKS base Image that you plan for your upgrade. To view the version of aks-engine run: `aks-engine version`.
+2. Upgrade your AKS Engine accordingly, in the machine where you have installed aks-engine run: `./get-akse.sh --version vx.xx.x` replacing **x.xx.x** with your targeted version.
+3. Ask your Azure Stack operator to add the version of the AKS Base Image you need in the Azure Stack Marketplace that you plan to use.
+4. Run the `aks-engine upgrade` command using the same version of Kubernetes that you are already using, but add the `--force-overwrite flag`. You can see an example in [Forcing an upgrade](#forcing-an-upgrade).
+
+
 ## Forcing an upgrade
 
 There may be conditions where you may want to force an upgrade of your cluster. For example, on day one you deploy a cluster in a disconnected environment using the latest Kubernetes version. The following day Ubuntu releases a patch to a vulnerability for which Microsoft generates a new **AKS Base Image**. You can apply the new image by forcing an upgrade using the same Kubernetes version you already deployed.
 
-    ```bash  
-    aks-engine upgrade \
-    --azure-env AzureStackCloud   
-    --location <for an ASDK is local> \
-    --resource-group kube-rg \
-    --subscription-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
-    --api-model kube-rg/apimodel.json \
-    --upgrade-version 1.13.5 \
-    --client-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
-    --client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-    --force
-    ```
+```bash  
+aks-engine upgrade \
+--azure-env AzureStackCloud   
+--location <for an ASDK is local> \
+--resource-group kube-rg \
+--subscription-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+--api-model kube-rg/apimodel.json \
+--upgrade-version 1.13.5 \
+--client-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+--client-secret xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
+--force-overwrite
+```
 
 For instructions, see [Force upgrade](https://github.com/Azure/aks-engine/blob/master/docs/topics/upgrade.md#force-upgrade).
 
