@@ -82,6 +82,14 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - When downloading marketplace items from Azure to Azure Stack, there is a new user interface that enables you to specify a version of the item, when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md).  
 
+
+1911 Pre-Requisite:
+- When attempting to install the 1911 Azure Stack update, the update will fail if you have not completed the remediation listed below. Please referance the [Datacenter Network Integration](https://docs.microsoft.com/azure-stack/operator/azure-stack-network#private-network) documentation to understand how this new private space will be consumed. 
+
+- Remediation: Follow the instructions to [open a PEP Session](https://docs.microsoft.com/azure-stack/operator/azure-stack-     privileged-endpoint#access-the-privileged-endpoint). Prepare a [private internal IP range](https://docs.microsoft.com/azure-stack/operator/azure-stack-network#logical-networks) of size /20 and run the following in the PEP session using the following format: **Set-AzsInternalNetwork -UserSubnet 100.87.0.0/20**. If the operation is performed successfully, you will recieve a message of **Azs Internal Network range added to the config**. An alert will be present in the admin portal until the above remediation steps have been completed. 
+
+
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
