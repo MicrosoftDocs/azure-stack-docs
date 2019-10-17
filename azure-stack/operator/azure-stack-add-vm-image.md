@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: conceptual
-ms.date: 10/10/2019
+ms.date: 10/16/2019
 ms.author: Justinha
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
@@ -53,6 +53,8 @@ If the VHD is from Azure, follow these instructions to generalize the VHD:
    ```
 
 2. Shut down the VM and download the VHD. If you are bringing your VHD from Azure, you can do this using disk export, as shown in [Download a Windows VHD from Azure](/azure/virtual-machines/windows/download-vhd).
+
+Keep in mind the Azure Linux Agent versions that work with Azure Stack [as documented here](azure-stack-linux.md#azure-linux-agent). Make sure that the sysprepped image has an Azure Linux agent version that is compatible with Azure Stack.
 
 ### Common steps for both Windows and Linux
 
