@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 10/17/2019
 ms.author: mabrigg
 ms.lastreviewed: 08/23/2019
 ms.reviewer: ppacent 
@@ -52,6 +52,8 @@ You can prepare to the update by making sure you have applied all the hotfixes, 
 6. Ensure your OEM package is compatible with the Azure Stack version you are updating to. If your OEM package is not compatible with the Azure Stack version you are updating to, you will need to perform an OEM package update before running an Azure Stack update. For instructions, see "Apply Azure Stack original equipment manufacturer (OEM) updates." Repeat steps 3 and 4 after applying the OEM package update.
 
 7. Run the capacity planner tool. For an overview and instructions on using the tool, see [Overview of Azure Stack capacity planning](https://docs.microsoft.com/azure-stack/operator/azure-stack-capacity-planning-overview).
+
+8. Optionally, you can [enable automatic diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md) to proactively collect logs for customer support analysis if you see an alert such as **Update failed**. 
 
 8. Review the update package. When planning for your maintenance window, it's important to review the specific type of update package released from Microsoft as called out in the release notes.
 
