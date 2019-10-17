@@ -37,4 +37,4 @@ In the following how-to articles, you set up a virtual machine (VM) in Azure Sta
 ## Next steps
 
 - Set up a [development environment in Azure Stack](azure-stack-dev-start.md).
-- Set up a [continuous integration/continuous delivery (CI/CD) pipeline in Azure Stack](azure-stack-solution-pipeline.md).
+- Set up a [continuous integration/continuous delivery (CI/CD) pipeline in Azure Stack](../hybrid/solution-deployment-guide-cicd-pipeline.md).

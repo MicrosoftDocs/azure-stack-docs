@@ -2,50 +2,50 @@
   href: index.yml
 - name: Overview
   items:
-  - name: Build hybrid solutions with Azure Stack
-    href: azure-stack-hybrid-cloud-patterns.md
-  - name: Design guide
-    href: azure-stack-edge-pattern-overview.md
-- name: Patterns (NEW)
+  - name: Hybrid patterns & solution examples
+    href: overview-patterns-solution-examples.md
+  - name: Hybrid app design considerations
+    href: overview-app-design-considerations.md
+- name: Patterns
   items:
   - name: Cross cloud scaling
   - name: DevOps (Hybrid CI/CD)
   - name: Footfall detection
   - name: Geo-distribution application
-- name: Solutions (EXISTING)
+- name: Solution examples
   items:
-  - name: Overviews (CONCEPTS/HYBRID)
+  - name: Overviews
     items: 
       - name: Cross cloud scaling
-        href: azure-stack-edge-pattern-cross-cloud-scaling.md
+        href: solution-overview-cross-cloud-scaling.md
       - name: DevOps (Hybrid CI/CD)
-        href: azure-stack-edge-pattern-hybrid-ci-cd.md
+        href: solution-overview-cicd-pipeline.md
       - name: Footfall detection
-        href: hybrid-solution-retail-footfall-detection.md
+        href: solution-overview-retail-footfall-detection.md
       - name: Geo-distributed application
-        href: azure-stack-edge-pattern-geo-distribution.md
-  - name: Deployment guides & samples (HOWTO/HYBRID)
+        href: solution-overview-geo-distributed.md
+  - name: Deployment guides
     items:
     - name: Cross cloud scaling 
-      href: azure-stack-solution-cloud-burst.md
+      href: solution-deployment-guide-cross-cloud-scaling.md
     - name: DevOps (Hybrid CI/CD) 
-      href: azure-stack-solution-pipeline.md
-    - name: Footfall detection (TBD)
+      href: solution-deployment-guide-cicd-pipeline.md
+    - name: Footfall detection
     - name: Geo-distributed application
-      href: azure-stack-solution-geo-distributed.md    
+      href: solution-deployment-guide-geo-distributed.md    
     - name: -----
     - name: Configure hybrid cloud identity
-      href: azure-stack-solution-hybrid-identity.md
+      href: solution-deployment-guide-identity.md
     - name: Configure hybrid cloud connectivity
-      href: azure-stack-solution-hybrid-connectivity.md
+      href: solution-deployment-guide-connectivity.md
     - name: Deploy a hybrid cloud solution
-      href: azure-stack-solution-hybrid-cloud.md
-    - name: Deploy staged data analytics
-      href: azure-stack-solution-staged-data.md
+      href: solution-deployment-guide-hybrid.md
+    - name: Deploy tiered data solution
+      href: solution-deployment-guide-tiered-data.md
     - name: Deploy high-availability MongoDB
-      href: azure-stack-solution-mongodb-ha.md
+      href: solution-deployment-guide-mongodb-ha.md
     - name: Deploy high-availability SQL Server 2016
-      href: azure-stack-solution-sql-ha.md
+      href: solution-deployment-guide-sql-ha.md
 - name: Reference
   items:
   - name: Azure Stack PowerShell

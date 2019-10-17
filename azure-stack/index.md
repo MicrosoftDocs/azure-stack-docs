@@ -221,30 +221,6 @@ ms.topic: hub-page
         </div>
     </li>    
     <li></li>
-    <li></li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardImageOuter">
-                        <div class="cardImage">
-                            <img src="media/index/i_tasks.svg" alt="">
-                        </div>
-                    </div>
-                    <div class="cardText">
-                        <h3>User - hybrid cloud patterns</h3>
-                        <p><a href="/azure-stack/user/azure-stack-solution-pipeline">Deploy apps to Azure and Azure Stack</a></p>
-                        <p><a href="/azure-stack/user/azure-stack-solution-hybrid-identity">Configure hybrid cloud identity</a></p>
-                        <p><a href="/azure-stack/user/azure-stack-solution-hybrid-connectivity">Configure hybrid cloud connectivity</a></p>
-                        <p><a href="/azure-stack/user/azure-stack-solution-staged-data-analytics">Create a staged data analytics solution</a></p>
-                        <p><a href="/azure-stack/user/azure-stack-solution-cloud-burst">Create cross-cloud scaling solutions with Azure</a></p>
-                        <p><a href="/azure-stack/user/azure-stack-solution-geo-distributed">Create a geo-distributed app solution</a></p>
-                        <p><a href="/azure-stack/user/azure-stack-solution-hybrid-cloud">Deploy a hybrid cloud solution</a></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>        
 </ul>
 
 <h2>Reference</h2>

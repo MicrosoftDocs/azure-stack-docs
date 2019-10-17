@@ -21,15 +21,15 @@ sections:
       style: cards
       className: cardsA
       items:  
-      - html: <a href="/azure-stack/hybrid/azure-stack-hybrid-cloud-patterns">
+      - html: <a href="/azure-stack/hybrid/overview-patterns-solution-examples">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_code-edit.svg" alt="">
               <br><b>Build hybrid solutions with Azure Stack</b></a>
               <p>Learn how to create hybrid cloud apps with Azure and Azure Stack</p>
-      - html: <a href="/azure-stack/hybrid/azure-stack-hybrid-cloud-patterns">
+      - html: <a href="/azure-stack/hybrid/overview-patterns-solution-examples">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_code-edit.svg" alt="">
               <br><b>Build hybrid solutions with Azure Stack</b></a>
               <p>Learn how to create hybrid cloud apps with Azure and Azure Stack</p>
-      - html: <a href="/azure-stack/hybrid/azure-stack-hybrid-cloud-patterns">
+      - html: <a href="/azure-stack/hybrid/overview-patterns-solution-examples">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_code-edit.svg" alt="">
               <br><b>Build hybrid solutions with Azure Stack</b></a>
               <p>Learn how to create hybrid cloud apps with Azure and Azure Stack</p>
@@ -39,15 +39,15 @@ sections:
       style: cards
       className: cardsA
       items:  
-      - html: <a href="/azure-stack/user/azure-stack-solution-pipeline">
+      - html: <a href="/azure-stack/hybrid/solution-deployment-guide-cicd-pipeline">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_workflow.svg" alt="hybrid cloud app ci/cd">
               <br><b>Hybrid app continuous integration and delivery</b></a>
               <p>Deploy hybrid apps to Azure and Azure Stack using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.</p>
-      - html: <a href="/azure-stack/user/azure-stack-solution-hybrid-identity">
+      - html: <a href="/azure-stack/hybrid/solution-deployment-guide-identity">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_identity-protection.svg" alt="hybrid cloud app identity">
               <br><b>Configure hybrid cloud identity</b></a>
               <p>Configure a hybrid cloud identity for your Azure and Azure Stack applications.</p>
-      - html: <a href="/azure-stack/user/azure-stack-solution-cloud-burst">
+      - html: <a href="/azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_multi-connect.svg" alt="hybrid cloud app scaling">
               <br><b>Cross-cloud scaling solutions</b></a>
               <p>Create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack hosted web app, to an Azure hosted web app.</p>
@@ -57,33 +57,33 @@ sections:
       style: cards
       className: cardsA
       items:  
-      - html: <a href="/azure-stack/user/azure-stack-create-vm-template">
+      - html: <a href="/azure-stack/hybrid/solution-overview-retail-footfall-detection">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_package.svg" alt="">
-              <br><b>Deploy a VM in IaaS with a template.</b></a>
-              <p>Create a VM using Azure Stack Resource Manager templates</p>
-      - html: <a href="/azure-stack/user/azure-stack-quick-linux-portal">
+              <br><b>Retail footfall detection</b></a>
+              <p>Learn how to use Azure and Azure Stack services, to implement an AI-based footfall detection pattern for analyzing retail store traffic.</p>
+      - html: <a href="/azure-stack/hybrid/solution-overview-retail-footfall-detection">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_vmm-cloud.svg" alt="">
-              <br><b>Quickstart - Create a VM</b></a>
-              <p>Create a VM to host your app.</p>
-      - html: <a href="/azure-stack/user/azure-stack-dev-start-deploy-app">
+              <br><b>Retail footfall detection</b></a>
+              <p>Learn how to use Azure and Azure Stack services, to implement an AI-based footfall detection pattern for analyzing retail store traffic.</p>
+      - html: <a href="/azure-stack/hybrid/solution-overview-retail-footfall-detection">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_web-color.svg" alt="">
-              <br><b>Host Apps written in your code.</b></a>
-              <p>Set up a VM in Azure Stack and the deploying your app using C#, Java, Python, Go, Ruby, or NodeJS.</p>
+              <br><b>Retail footfall detection</b></a>
+              <p>Learn how to use Azure and Azure Stack services, to implement an AI-based footfall detection pattern for analyzing retail store traffic.</p>
   - title: Hybrid solution deployment guides
     items:
     - type: list
       style: cards
       className: cardsA
       items:  
-      - html: <a href="/azure-stack/user/azure-stack-create-vm-template">
+      - html: <a href="/azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_package.svg" alt="">
-              <br><b>Deploy a VM in IaaS with a template.</b></a>
-              <p>Create a VM using Azure Stack Resource Manager templates</p>
-      - html: <a href="/azure-stack/user/azure-stack-quick-linux-portal">
+              <br><b>Deploy cross-cloud scaling</b></a>
+              <p>Deploy a cross-cloud solution that scales from an Azure Stack hosted web app to an Azure hosted web app.</p>
+      - html: <a href="/azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_vmm-cloud.svg" alt="">
-              <br><b>Quickstart - Create a VM</b></a>
-              <p>Create a VM to host your app.</p>
-      - html: <a href="/azure-stack/user/azure-stack-dev-start-deploy-app">
+              <br><b>Deploy cross-cloud scaling</b></a>
+              <p>Deploy a cross-cloud solution that scales from an Azure Stack hosted web app to an Azure hosted web app..</p>
+      - html: <a href="/azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_web-color.svg" alt="">
-              <br><b>Host Apps written in your code.</b></a>
-              <p>Set up a VM in Azure Stack and the deploying your app using C#, Java, Python, Go, Ruby, or NodeJS.</p>
+              <br><b>Deploy cross-cloud scaling</b></a>
+              <p>Deploy a cross-cloud solution that scales from an Azure Stack hosted web app to an Azure hosted web app.</p>
