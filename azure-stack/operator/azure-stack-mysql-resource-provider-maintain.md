@@ -1,6 +1,6 @@
 ---
-title: Maintaining the MySQL resource provider on Azure Stack | Microsoft Docs
-description: Learn how you can maintain the MySQL resource provider service on Azure Stack.
+title: MySQL resource provider maintenance operations on Azure Stack | Microsoft Docs
+description: Learn how to maintain the MySQL resource provider service on Azure Stack.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -18,20 +18,20 @@ ms.lastreviewed: 01/11/2019
 
 ---
 
-# MySQL resource provider maintenance operations
+# MySQL resource provider maintenance operations on Azure Stack
 
-The MySQL resource provider runs on a locked down virtual machine. To enable maintenance operations, you need to update the virtual machine's security. To do this using the principle of Least Privilege, you can use PowerShell Just Enough Administration (JEA) endpoint DBAdapterMaintenance. The resource provider installation package includes a script for this operation.
+The MySQL resource provider runs on a locked down virtual machine (VM). To enable maintenance operations, you need to update the VM's security. To do this using the principle of least privilege (POLP), you can use PowerShell Just Enough Administration (JEA) endpoint DBAdapterMaintenance. The resource provider installation package includes a script for this operation.
 
-## Update the virtual machine operating system
+## Update the VM operating system
 
-Because the resource provider runs on a *user* virtual machine, you need to apply the required patches and updates when they're released. You can use the Windows update packages that are provided as part of the patch-and-update cycle to apply updates to the VM.
+Because the resource provider runs on a *user* VM, you need to apply the required patches and updates when they're released. You can use the Windows update packages that are provided as part of the patch-and-update cycle to apply updates to the VM.
 
-Update the provider virtual machine using one of the following methods:
+Update the provider VM using one of the following methods:
 
 - Install the latest resource provider package using a currently patched Windows Server 2016 Core image.
-- Install a Windows Update package during the installation of, or update to the resource provider.
+- Install a Windows Update package during the installation or update of the resource provider.
 
-## Update the virtual machine Windows Defender definitions
+## Update the VM Windows Defender definitions
 
 To update the Defender definitions, follow these steps:
 
@@ -41,7 +41,7 @@ To update the Defender definitions, follow these steps:
 
     Alternatively, use [this direct link](https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64) to download/run the fpam-fe.exe file.
 
-2. Open a PowerShell session to the MySQL resource provider adapter virtual machine's maintenance endpoint.
+2. Open a PowerShell session to the MySQL resource provider adapter VM's maintenance endpoint.
 
 3. Copy the definitions update file to the resource provider adapter VM using the maintenance endpoint session.
 
@@ -72,7 +72,7 @@ Invoke-WebRequest -Uri 'https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64'
 $session = New-PSSession -ComputerName $databaseRPMachine `
     -Credential $vmLocalAdminCreds -ConfigurationName DBAdapterMaintenance
 
-# Copy the defender update file to the adapter virtual machine.
+# Copy the defender update file to the adapter VM.
 Copy-Item -ToSession $session -Path $localPathToDefenderUpdate `
      -Destination "User:\"
 
@@ -91,7 +91,7 @@ $session | Remove-PSSession
 
 *These instructions only apply to Azure Stack Integrated Systems.*
 
-When using the SQL and MySQL resource providers with Azure Stack integrated systems, the Azure Stack operator is responsible for rotating the following resource provider infrastructure secrets to ensure that they do not expire:
+When using the SQL and MySQL resource providers with Azure Stack integrated systems, the Azure Stack operator is responsible for rotating the following resource provider infrastructure secrets to ensure that they don't expire:
 
 - External SSL Certificate [provided during deployment](azure-stack-pki-certs.md).
 - The resource provider VM local administrator account password provided during deployment.
@@ -99,7 +99,7 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
 
 ### PowerShell examples for rotating secrets
 
-**Change all the secrets at the same time.**
+**Change all the secrets at the same time:**
 
 ```powershell
 .\SecretRotationMySQLProvider.ps1 `
@@ -113,7 +113,7 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
 
 ```
 
-**Change the diagnostic user password.**
+**Change the diagnostic user password:**
 
 ```powershell
 .\SecretRotationMySQLProvider.ps1 `
@@ -124,7 +124,7 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
 
 ```
 
-**Change the VM local administrator account password.**
+**Change the VM local admin account password:**
 
 ```powershell
 .\SecretRotationMySQLProvider.ps1 `
@@ -135,7 +135,7 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
 
 ```
 
-**Change the SSL certificate password.**
+**Change the SSL certificate password:**
 
 ```powershell
 .\SecretRotationMySQLProvider.ps1 `
@@ -151,12 +151,12 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
 
 |Parameter|Description|
 |-----|-----|
-|AzCredential|Azure Stack Service Admin account credential.|
+|AzCredential|Azure Stack service admin account credential.|
 |CloudAdminCredential|Azure Stack cloud admin domain account credential.|
 |PrivilegedEndpoint|Privileged Endpoint to access Get-AzureStackStampInformation.|
 |DiagnosticsUserPassword|Diagnostics user account password.|
-|VMLocalCredential|The local administrator account on the MySQLAdapter VM.|
-|DefaultSSLCertificatePassword|Default SSL Certificate (*pfx) Password.|
+|VMLocalCredential|The local admin account on the MySQLAdapter VM.|
+|DefaultSSLCertificatePassword|Default SSL Certificate (*pfx) password.|
 |DependencyFilesLocalPath|Dependency files local path.|
 |     |     |
 
@@ -170,7 +170,7 @@ Use the Get-AzsDBAdapterLogs cmdlet to collect all the resource provider logs, i
 
 ## Collect diagnostic logs
 
-To collect logs from the locked down virtual machine, you can use the PowerShell Just Enough Administration (JEA) endpoint DBAdapterDiagnostics. This endpoint provides the following commands:
+To collect logs from the locked down VM, use the PowerShell Just Enough Administration (JEA) endpoint DBAdapterDiagnostics. This endpoint provides the following commands:
 
 - **Get-AzsDBAdapterLog**. This command creates a zip package of the resource provider diagnostics logs and saves the file on the session's user drive. You can run this command without any parameters and the last four hours of logs are collected.
 
@@ -181,16 +181,16 @@ To collect logs from the locked down virtual machine, you can use the PowerShell
 When a resource provider is installed or updated, the dbadapterdiag user account is created. You'll use this account to collect diagnostic logs.
 
 >[!NOTE]
->The dbadapterdiag account password is the same as the password used for the local administrator on the virtual machine that's created during a provider deployment or update.
+>The dbadapterdiag account password is the same as the password used for the local admin on the VM that's created during a provider deployment or update.
 
-To use the _DBAdapterDiagnostics_ commands, create a remote PowerShell session to the resource provider virtual machine and run the **Get-AzsDBAdapterLog** command.
+To use the _DBAdapterDiagnostics_ commands, create a remote PowerShell session to the resource provider VM and run the **Get-AzsDBAdapterLog** command.
 
 You set the time span for log collection by using the **FromDate** and **ToDate** parameters. If you don't specify one or both of these parameters, the following defaults are used:
 
 * FromDate is four hours before the current time.
 * ToDate is the current time.
 
-**PowerShell script example for collecting logs.**
+**PowerShell script example for collecting logs:**
 
 The following script shows how to collect diagnostic logs from the resource provider VM.
 
