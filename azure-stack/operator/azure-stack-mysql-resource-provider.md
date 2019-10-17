@@ -1,6 +1,6 @@
 ---
 title: Use MySQL databases as PaaS on Azure Stack | Microsoft Docs 
-description: Learn how you can deploy the MySQL Resource Provider and provide MySQL databases as a service on Azure Stack. 
+description: Learn how to deploy the MySQL Resource Provider and provide MySQL databases as a service on Azure Stack. 
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -36,7 +36,7 @@ The resource provider has the following components:
 * **Servers that host MySQL Server**, which provide capacity for databases that are called hosting servers. You can create MySQL instances yourself, or provide access to external MySQL instances. The [Azure Stack Quickstart Gallery](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/mysql-standalone-server-windows) has an example template that you can use to:
 
   * Create a MySQL server for you.
-  * Download and deploy a MySQL Server from the Azure Marketplace.
+  * Download and deploy a MySQL Server from Azure Marketplace.
 
 > [!NOTE]
 > Hosting servers that are installed on Azure Stack integrated systems must be created from a tenant subscription. They can't be created from the default provider subscription. They must be created from the tenant portal or from a PowerShell session with an appropriate sign-in. All hosting servers are billable VMs and must have licenses. The service administrator can be the owner of the tenant subscription.
