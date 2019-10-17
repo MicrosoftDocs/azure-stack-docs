@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2019
+ms.date: 10/17/2019
 ms.author: sethm
 ms.reviewer: ihcherie
-ms.lastreviewed: 08/09/2019
+ms.lastreviewed: 10/17/2019
 
 ---
 # Azure Marketplace items available for Azure Stack
@@ -253,7 +253,8 @@ Microsoft Azure Stack supports the following Azure Marketplace VMs and solution 
 | ![PT Application Firewall](media/azure-stack-marketplace-azure-items/pt.png) | [PT Application Firewall](https://azuremarketplace.microsoft.com/marketplace/apps/ptsecurity.ptaf) | PT Application Firewall detects known & unknown vulnerabilities and prevents attacks on web apps. **Download both PT Marketplace items.** | Positive Technologies |
 | ![Puppet Enterprise](media/azure-stack-marketplace-azure-items/puppet.png) | [Puppet Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/puppet.puppet-enterprise-2017-2) | Puppet Enterprise lets you automate the entire lifecycle of your Azure Stack infrastructure. **Download both Puppet Marketplace items.** | Puppet |
 | ![Quest Rapid Recovery](media/azure-stack-marketplace-azure-items/quest.png) | [Quest Rapid Recovery Core](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Rapid Recovery advanced data protection unifies backup, replication, and recovery in one easy-to-use software solution. | Quest Software |
-| ![SUSE Manager 3.1 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.1 Proxy (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.suse-manager-proxy-byos?tab=Overview) | Best-in-class open-source infrastructure management. | SUSE |
+| ![SIOS DataKeeper Cluster Edition](media/azure-stack-marketplace-azure-items/sioslogo.png) | [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) | SIOS DataKeeper provides high availability (HA) and disaster recovery (DR) in Azure Stack. Simply add SIOS DataKeeper software as an ingredient to your Windows Server Failover Clustering (WSFC) environment in an Azure Stack deployment to eliminate the need for shared storage. | SIOS Technology Corp. |
+| ![SUSE Manager 3.1 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.1 Proxy (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.suse-manager-proxy-byos) | Best-in-class open-source infrastructure management. | SUSE |
 | ![CipherTrust Cloud Key Manager](media/azure-stack-marketplace-azure-items/cckm.png) | [CipherTrust Cloud Key Manager](https://azuremarketplace.microsoft.com/marketplace/apps/thales-vormetric.ciphertrust-ckm) | Leveraging Microsoft Azure and other cloud provider Bring Your Own Key (BYOK) APIs, the CipherTrust Cloud Key Manager reduces key management complexity and operational costs by giving you multicloud lifecycle control of encryption keys with centralized management and visibility. | Thales eSecurity |
 | ![Veeam Backup & Replication](media/azure-stack-marketplace-azure-items/veeam.png) | [Veeam Backup & Replication](https://azuremarketplace.microsoft.com/marketplace/apps/veeam.veeam-backup-replication?tab=Overview) | Veeam® Backup & Replication™ helps businesses achieve comprehensive data protection for all workloads — virtual, physical, and cloud-based. With a single console, you can achieve fast, flexible, and reliable backup, recovery, and replication of all apps and data. | Veeam Software |
 | ![ZeroDown Software BCaaS](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown Software Business Continuity as a Service](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.bcaasforazure) | ZeroDown® Software technology provides businesses with continuous access to their company data via their Business Continuity as a Service (BCaaS)™ architecture, protecting apps, and transactions, if network interruptions occur that would normally cripple the enterprise. | ZeroDown Software |
