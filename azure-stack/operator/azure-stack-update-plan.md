@@ -53,7 +53,7 @@ You can prepare to the update by making sure you have applied all the hotfixes, 
 
 7. Run the capacity planner tool. For an overview and instructions on using the tool, see [Overview of Azure Stack capacity planning](https://docs.microsoft.com/azure-stack/operator/azure-stack-capacity-planning-overview).
 
-8. Optionally, you can [enable automatic diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md) to proactively collect logs for customer support analysis if the update fails with an alert such as **Update failed**. 
+8. Optionally, you can [enable automatic diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md) to proactively collect logs for customer support analysis if you see an alert such as **Update failed**. 
 
 8. Review the update package. When planning for your maintenance window, it's important to review the specific type of update package released from Microsoft as called out in the release notes.
 
