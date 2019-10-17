@@ -33,7 +33,7 @@ Make sure you have the credentials for an account with system admin privileges. 
 
 1. Sign in to the Azure Stack administrator portal as a service admin.
 2. Select **All services**.
-3. Under the  **ADMINISTRATIVE RESOURCES** category select **MySQL Hosting Servers** > **+Add**. This opens the **Add a MySQL Hosting Server** dialog, shown in the following screen capture.
+3. Under the  **ADMINISTRATIVE RESOURCES** category, select **MySQL Hosting Servers** > **+Add**. The **Add a MySQL Hosting Server** dialog will open, shown in the following screen capture.
 
    ![Configure a MySQL hosting server](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
 
@@ -73,7 +73,7 @@ The following information applies to the RP and MySQL hosting servers:
 
 ## Increase backend database capacity
 
-You can increase backend database capacity by deploying more MySQL servers in the Azure Stack portal. Add these servers to a new or existing SKU. If you add a server to an existing SKU, make sure that the server characteristics are the same as the other servers in the SKU.
+You can increase backend database capacity by deploying more MySQL servers in the Azure Stack portal. Add these servers to a new or existing SKU. If you add a server to an existing SKU, make sure the server characteristics are the same as the other servers in the SKU.
 
 ## SKU notes
 Use a SKU name that describes the capabilities of the servers in the SKU, such as capacity and performance. The name serves as an aid to help users deploy their databases to the appropriate SKU. For example, you can use SKU names to differentiate service offerings by the following characteristics:
