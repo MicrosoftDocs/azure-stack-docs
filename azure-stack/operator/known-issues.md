@@ -41,19 +41,11 @@ To access known issues for a different version, use the version selector dropdow
 ::: moniker range="azs-1910"
 ## 1910 update process
 
-### Update issue
-
 - Applicable: This issue applies to all supported releases.
 - Cause: When attempting to install the 1907 Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing.
 - Remediation: Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and restarts the download. If the problem persists, we recommend manually uploading the update package by following the [Install updates section](azure-stack-apply-updates.md#install-updates-and-monitor-progress).
 - Occurrence: Common
 
-### 1911 prerequisite
-
-- Applicable: This issue only applies to 1910. 
-- Cause: When attempting to install the 1911 Azure Stack update, please ensure tha you input the required /20 private internal IP range, or the update will fail. Check the remediation below for instructions on how to enter this range. Please reference the [Datacenter Network Integration](azure-stack-network.md#private-network) article to understand how this new private space will be consumed.
-- Remediation: Follow the instructions to [open a PEP Session](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Prepare a [private internal IP range](azure-stack-network.md#logical-networks) of size /20 and run the following in the PEP session using the following format: `Set-AzsInternalNetwork -UserSubnet 100.87.0.0/20`. If the operation is performed successfully, you will receive the message **Azs Internal Network range added to the config**. 
-- Occurrence: Once. An alert will be present in the admin portal until the above remediation steps have been completed.
 
 ## Portal
 
