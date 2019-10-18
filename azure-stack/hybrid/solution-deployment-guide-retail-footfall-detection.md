@@ -162,7 +162,7 @@ manually authorize it to communicate with PowerBI.
 
 4.  Select Renew Authorization and log in to your PowerBI account.
     
-    ![](./media/image2.png)
+    ![renew authorization prompt](./media/solution-deployment-guide-retail-footfall-detection/image2.png)
 
 5.  Save the output settings.
 
