@@ -27,7 +27,6 @@
     - name: Footfall detection
     - name: Geo-distributed application
       href: solution-deployment-guide-geo-distributed.md    
-    - name: -----
     - name: Configure hybrid cloud identity
       href: solution-deployment-guide-identity.md
     - name: Configure hybrid cloud connectivity
