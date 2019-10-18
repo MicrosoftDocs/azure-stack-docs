@@ -1,5 +1,5 @@
 ---
-title: Remove the MySQL resource provider on Azure Stack | Microsoft Docs
+title: Remove the MySQL resource provider in Azure Stack | Microsoft Docs
 description: Learn how to remove the MySQL resource provider from your Azure Stack deployment.
 services: azure-stack
 documentationCenter: ''
@@ -18,7 +18,7 @@ ms.lastreviewed: 11/20/2018
 
 ---
 
-# Remove the MySQL resource provider on Azure Stack
+# Remove the MySQL resource provider in Azure Stack
 
 Before you remove the MySQL resource provider, you must remove all the provider dependencies. You'll also need a copy of the deployment package that was used to install the resource provider.
 
