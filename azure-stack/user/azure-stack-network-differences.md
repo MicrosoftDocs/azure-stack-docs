@@ -72,6 +72,23 @@ This article provides an overview of the unique considerations for Azure Stack n
 | Traffic Manager | Route incoming traffic for optimal application performance and reliability. | Supported | Not yet supported. |
 | Express Route | Set up a fast, private connection to Microsoft cloud services from your on-premises infrastructure or colocation facility. | Supported | Support for connecting Azure Stack to an Express Route circuit. |
 
+## API versions 
+
+Azure Stack Networking supports the following API versions: 
+
+- 2018-11-01
+- 2018-10-01
+- 2018-08-01
+- 2018-07-01
+- 2018-06-01
+- 2018-05-01
+- 2018-04-01
+- 2018-03-01
+- 2018-02-01
+- 2018-01-01
+- 2017-11-01
+- 2017-10-01
+
 ## Next steps
 
 [DNS in Azure Stack](azure-stack-dns.md)
