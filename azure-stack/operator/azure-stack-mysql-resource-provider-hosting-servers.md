@@ -1,5 +1,5 @@
 ---
-title: Add MySQL hosting servers on Azure Stack | Microsoft Docs
+title: Add MySQL hosting servers in Azure Stack | Microsoft Docs
 description: Learn how to add MySQL hosting servers for provisioning through the MySQL Adapter Resource Provider.
 services: azure-stack
 documentationCenter: ''
@@ -18,7 +18,7 @@ ms.lastreviewed: 02/28/2019
 
 ---
 
-# Add MySQL hosting servers on Azure Stack
+# Add MySQL hosting servers in Azure Stack
 
 You can host a MySQL hosting server instance on a virtual machine (VM) in [Azure Stack](azure-stack-overview.md), or on a VM outside your Azure Stack environment, as long as the MySQL resource provider can connect to the instance.
 

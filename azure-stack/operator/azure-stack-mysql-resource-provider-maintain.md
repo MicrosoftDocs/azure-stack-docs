@@ -1,6 +1,6 @@
 ---
-title: MySQL resource provider maintenance operations on Azure Stack | Microsoft Docs
-description: Learn how to maintain the MySQL resource provider service on Azure Stack.
+title: MySQL resource provider maintenance operations in Azure Stack | Microsoft Docs
+description: Learn how to maintain the MySQL resource provider service in Azure Stack.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -18,7 +18,7 @@ ms.lastreviewed: 01/11/2019
 
 ---
 
-# MySQL resource provider maintenance operations on Azure Stack
+# MySQL resource provider maintenance operations in Azure Stack
 
 The MySQL resource provider runs on a locked down virtual machine (VM). To enable maintenance operations, you need to update the VM's security. To do this using the principle of least privilege (POLP), you can use PowerShell Just Enough Administration (JEA) endpoint DBAdapterMaintenance. The resource provider installation package includes a script for this operation.
 

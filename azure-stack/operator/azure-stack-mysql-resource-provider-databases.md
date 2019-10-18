@@ -1,6 +1,6 @@
 ---
-title: Create MySQL databases | Microsoft Docs
-description: Learn how to create and manage MySQL databases provisioned using the MySQL Adapter Resource Provider.
+title: Create MySQL databases in Azure Stack | Microsoft Docs
+description: Learn how to create and manage MySQL databases provisioned using the MySQL Adapter Resource Provider in Azure Stack.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -18,7 +18,7 @@ ms.lastreviewed: 10/16/2018
 
 ---
 
-# Create MySQL databases
+# Create MySQL databases in Azure Stack
 An Azure Stack user that's subscribed to an offer that includes the MySQL database service can create and manage self-service MySQL databases in the user portal.
 
 ## Create a MySQL database
