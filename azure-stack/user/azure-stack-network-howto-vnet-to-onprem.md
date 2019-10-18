@@ -220,7 +220,7 @@ The on-premises VPN device must be configured to create the IPSec VPN tunnel. Th
 | IKE Version | 1 |
 | IKE Mode | Main (ID protection) |
 | Phase 1 Proposal Algorithms | AES128-SHA256, AES256-SHA256, AES128-SHA1, AES256-SHA1 |
-| Diffe-Hellman Groups | 14, 5 |
+| Diffie-Hellman Groups | 14, 5 |
 
 ## Create the VPN tunnel
 
