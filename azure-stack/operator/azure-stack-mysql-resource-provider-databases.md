@@ -62,4 +62,4 @@ You can modify the password by changing it on the MySQL server instance.
 
 ## Next steps
 
-Learn how to [offer highly available MySQL databases](azure-stack-tutorial-mysql.md)
+Learn how to [offer highly available MySQL databases](azure-stack-tutorial-mysql.md).
