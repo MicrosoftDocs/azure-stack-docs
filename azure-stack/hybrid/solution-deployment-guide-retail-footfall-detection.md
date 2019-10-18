@@ -40,7 +40,7 @@ Before getting started with this deployment guide, make sure you:
 - Create two service principals in your directory:
   - One configured for use with Azure resources, with access at the Azure subscription scope. 
   - One configured for use with Azure Stack resources, with access at the Azure Stack subscription scope. 
-  - To learn more about creating service principals and authorizing access, see [Use an app identity to access resources](../operator/azure-stack-create-service-principals). If you prefer to use Azure CLI, see [Create an Azure service principal with Azure CLI](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
+  - To learn more about creating service principals and authorizing access, see [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md). If you prefer to use Azure CLI, see [Create an Azure service principal with Azure CLI](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
 - Deploy Azure Cognitive Services in Azure, or Azure Stack.
   - First, [learn more about Cognitive Services](https://azure.microsoft.com/services/cognitive-services/).
   - Then visit [Deploy Azure Cognitive Services to Azure Stack](../user/azure-stack-solution-template-cognitive-services.md) to deploy Cognitive Services on Azure Stack. You’ll need to sign up for a private preview.
@@ -59,7 +59,6 @@ Before getting started with this deployment guide, make sure you:
 
 First you use the Porter CLI to generate a credential set, then deploy the cloud application. Porter will generate a set of credentials that will automate deployment of the application. Before starting, you need the following:
 
-  - The 
   - Azure Service Principal ID
   - Azure Service Principal Key
   - Azure Service Principal Tenant DNS
@@ -109,7 +108,7 @@ porter install footfall-cloud –tag intelligentedge/footfall-cloud-deployment:0
 1. Set up the Custom Vision AI Dev Kit as [shown here](https://azure.github.io/Vision-AI-DevKit-Pages/docs/quick_start/), using the connection string returned from the previous step.
 1. Once setup has completed, deploy the camera application.
 
-# Deploy the Camera Application
+## Deploy the Camera Application
 
 Use the Porter CLI to generate a credential set, then deploy the camera application.
 
@@ -173,7 +172,7 @@ manually authorize it to communicate with PowerBI.
 7.  Select **Now** for job output start time and select **Start**. You
     can view the job status in the notification bar.
 
-# Create a PowerBI Dashboard
+## Create a PowerBI Dashboard
 
 1.  Once the job succeeds, navigate to [Power
     BI](https://powerbi.com/) and sign in with your work or school
@@ -193,13 +192,13 @@ manually authorize it to communicate with PowerBI.
 
 4.  You can add more fields and cards as desired.
 
-# Test Your Solution
+## Test Your Solution
 
 1.  Observe how the data in the cards you created in PowerBI changes as
     different people walk in front of the camera. Inferences may take up
     to 20 seconds to appear once recorded.
 
-# Remove Your Solution
+## Remove Your Solution
 
 If you’d like to remove your solution, run the following commands using
 Porter, using the same parameter files that you created for deployment.
