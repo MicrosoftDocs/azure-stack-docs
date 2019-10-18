@@ -1,5 +1,5 @@
 ---
-title: Hybrid application design considerations for Azure and Azure Stack
+title: Hybrid application design considerations when building on Azure and Azure Stack
 description: Considerations when building a hybrid application for the intelligent cloud and intelligent edge.
 author: BryanLa
 ms.service: azure-stack
@@ -10,7 +10,7 @@ ms.reviewer: anajod
 ms.lastreviewed: 10/31/2019
 ---
 
-# Hybrid application design considerations for Azure and Azure Stack
+# Hybrid application design considerations 
 
 Microsoft Azure is the only consistent hybrid cloud. It allows you to reuse your development investments and enables applications that can span global Azure, the sovereign Azure clouds, and Azure Stack, which is an extension of Azure in your datacenter. Applications that span clouds are also referred to as *hybrid applications*.
 

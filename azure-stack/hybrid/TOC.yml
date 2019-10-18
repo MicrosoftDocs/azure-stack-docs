@@ -4,31 +4,25 @@
   items:
   - name: Hybrid patterns & solution examples
     href: overview-patterns-solution-examples.md
-  - name: Hybrid app design considerations
-    href: overview-app-design-considerations.md
 - name: Patterns
   items:
-  - name: Cross cloud scaling
-  - name: DevOps (Hybrid CI/CD)
-  - name: Footfall detection
-  - name: Geo-distribution application
+      - name: Cross cloud scaling
+        href: solution-overview-cross-cloud-scaling.md
+      - name: DevOps hybrid CI/CD
+        href: solution-overview-cicd-pipeline.md
+      - name: Geo-distributed application
+        href: solution-overview-geo-distributed.md
 - name: Solution examples
   items:
   - name: Overviews
     items: 
-      - name: Cross cloud scaling
-        href: solution-overview-cross-cloud-scaling.md
-      - name: DevOps (Hybrid CI/CD)
-        href: solution-overview-cicd-pipeline.md
-      - name: Footfall detection
-        href: solution-overview-retail-footfall-detection.md
-      - name: Geo-distributed application
-        href: solution-overview-geo-distributed.md
+    - name: Footfall detection (retail)
+      href: solution-overview-retail-footfall-detection.md
   - name: Deployment guides
     items:
     - name: Cross cloud scaling 
       href: solution-deployment-guide-cross-cloud-scaling.md
-    - name: DevOps (Hybrid CI/CD) 
+    - name: DevOps hybrid CI/CD 
       href: solution-deployment-guide-cicd-pipeline.md
     - name: Footfall detection
     - name: Geo-distributed application
@@ -46,6 +40,10 @@
       href: solution-deployment-guide-mongodb-ha.md
     - name: Deploy high-availability SQL Server 2016
       href: solution-deployment-guide-sql-ha.md
+- name: Concepts
+  items:
+  - name: Hybrid app design considerations
+    href: overview-app-design-considerations.md
 - name: Reference
   items:
   - name: Azure Stack PowerShell

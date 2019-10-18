@@ -33,7 +33,7 @@ In this solution, you'll create a sample environment to:
 
 ## Architecture for MongoDB with Azure Stack
 
-![highly available MongoDB in Azure Stack](media/azure-stack-solution-mongdb-ha/image1.png)
+![highly available MongoDB in Azure Stack](media/solution-deployment-guide-mongodb-ha/image1.png)
 
 ## Prerequisites for MongoDB with Azure Stack
 
