@@ -24,7 +24,8 @@
       href: solution-deployment-guide-cross-cloud-scaling.md
     - name: DevOps hybrid CI/CD 
       href: solution-deployment-guide-cicd-pipeline.md
-    - name: Footfall detection
+    - name: Footfall detection (retail)
+      href: solution-deployment-guide-retail-footfall-detection.md
     - name: Geo-distributed application
       href: solution-deployment-guide-geo-distributed.md    
     - name: Configure hybrid cloud identity
