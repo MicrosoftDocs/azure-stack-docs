@@ -276,6 +276,8 @@
       href: azure-stack-network-howto-vnet-to-vnet-stacks.md
     - name: VNET peering
       href: azure-stack-network-howto-vnet-to-vnet.md
+    - name: Back up storage accounts 
+      href: azure-stack-network-howto-backup-storage.md
 - name: Concepts
   items:
   - name: Hybrid cloud patterns
