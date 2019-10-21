@@ -33,8 +33,8 @@ Before getting started with this deployment guide, make sure you:
 
 - Review the [Footfall detection solution overview](solution-overview-retail-footfall-detection.md) 
 - Obtain user access to an Azure Stack Development Kit (ASDK) or Azure Stack Integrated System instance, with:
-  - The [Azure App Service on Azure Stack resource provider](../operator/azure-stack-app-service-overview.md) installed. You will need operator access to your Azure Stack instance, or work with your administrator to install.
-  - A subscription to an offer that provides App Service and Storage quota. You will need operator access to create an offer.
+  - The [Azure App Service on Azure Stack resource provider](../operator/azure-stack-app-service-overview.md) installed. You need operator access to your Azure Stack instance, or work with your administrator to install.
+  - A subscription to an offer that provides App Service and Storage quota. You need operator access to create an offer.
 - Obtain access to an Azure subscription
   - If you don't have an Azure subscription, sign up for a [free trial account](https://azure.microsoft.com/free/) before you begin.
 - Create two service principals in your directory:
@@ -43,13 +43,14 @@ Before getting started with this deployment guide, make sure you:
   - To learn more about creating service principals and authorizing access, see [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md). If you prefer to use Azure CLI, see [Create an Azure service principal with Azure CLI](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
 - Deploy Azure Cognitive Services in Azure, or Azure Stack.
   - First, [learn more about Cognitive Services](https://azure.microsoft.com/services/cognitive-services/).
-  - Then visit [Deploy Azure Cognitive Services to Azure Stack](../user/azure-stack-solution-template-cognitive-services.md) to deploy Cognitive Services on Azure Stack. You’ll need to sign up for a private preview.
+  - Then visit [Deploy Azure Cognitive Services to Azure Stack](../user/azure-stack-solution-template-cognitive-services.md) to deploy Cognitive Services on Azure Stack. You need to sign up for preview access.
 - Clone or download an unconfigured Azure Custom Vision AI Dev Kit. For details, see the [Vision AI DevKit](https://azure.github.io/Vision-AI-DevKit-Pages/).
 - Sign up for a Power BI account.
+- An Azure Cognitive Services Face API subscription key and endpoint URL. You can get both the [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api) free trial. Or, follow the instructions in [Create a Cognitive Services account](/azure/cognitive-services/cognitive-services-apis-create-account).
 - Install the following development resources:
   - [Azure CLI 2.0](../user/azure-stack-version-profiles-azurecli2.md)
   - [Docker CE](https://hub.docker.com/search/?type=edition&offering=community)
-  - [Porter](https://porter.sh/)
+  - [Porter](https://porter.sh/). You use Porter to deploy cloud applications, using CNAB bundle manifests that are provided for you.
   - [Visual Studio Code](https://code.visualstudio.com/)
   - [Azure IoT Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   - [Python extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
@@ -57,25 +58,25 @@ Before getting started with this deployment guide, make sure you:
 
 ## Deploy the hybrid cloud application
 
-First you use the Porter CLI to generate a credential set, then deploy the cloud application. Porter will generate a set of credentials that will automate deployment of the application. 
-
-1. Before starting, verify that you have the following items:
-
-    - The service principal for accessing Azure resources, including the service principal ID, key, and tenant DNS.
-    - The subscription ID for your Azure subscription.
-    - The service principal for accessing Azure Stack resources, including the service principal ID, key, and tenant DNS.
-    - The subscription ID for your Azure Stack subscription.
-    - Face API Endpoint
-    - Face API Key
+First you use the Porter CLI to generate a credential set, then deploy the cloud application.  
 
 1. Clone or download the solution sample code from https://github.com/azure-samples/azure-intelligent-edge-patterns. 
+
+1. Porter will generate a set of credentials that will automate deployment of the application. Before running the credential generation command, be sure to have the following available:
+
+    - A service principal for accessing Azure resources, including the service principal ID, key, and tenant DNS.
+    - The subscription ID for your Azure subscription.
+    - A service principal for accessing Azure Stack resources, including the service principal ID, key, and tenant DNS.
+    - The subscription ID for your Azure Stack subscription.
+    - Your Azure Cognitive Services Face API key and resource endpoint URL.
+
 1. Run the Porter credential generation process and follow the prompts:
 
    ```porter
    porter creds generate --tag intelligentedge/footfall-cloud-deployment:0.1.0
    ```
 
-1. Porter also requires a set of unsecure parameters to run. Create a text file and enter the following name/value pairs. Ask your Azure Stack administrator if you need assistance with any of the required values.
+1. Porter also requires a set of parameters to run. Create a parameter text file and enter the following name/value pairs. Ask your Azure Stack administrator if you need assistance with any of the required values.
 
    > [!NOTE] 
    > The `resource suffix` value is used to ensure that your deployment’s resources have unique names across Azure. It must be a unique string of letters and numbers, no longer than 8 characters.
@@ -92,35 +93,38 @@ First you use the Porter CLI to generate a credential set, then deploy the cloud
     ```
    Save the text file and make a note of its path.
 
-1. You’re now ready to deploy the hybrid cloud application using Porter. Run the deployment command and watch as resources are deployed to Azure and Azure Stack:
+1. You’re now ready to deploy the hybrid cloud application using Porter. Run the install command and watch as resources are deployed to Azure and Azure Stack:
 
-    ```
+    ```porter
     porter install footfall-cloud –tag intelligentedge/footfall-cloud-deployment:0.1.0 –creds footfall-cloud-deployment –param-file "path-to-cloud-parameters-file.txt"
     ```
 
-1. Once deployment is complete, make note of the camera’s connection string, image storage account connection string, and the resource group names.
+1. Once deployment is complete, make note of the following:
+- The camera’s connection string.
+- The image storage account connection string.
+- The resource group names.
 
 ## Prepare the Custom Vision AI Dev Kit
 
-Set up the Custom Vision AI Dev Kit as shown in the [Vision AI DevKit quick start](https://azure.github.io/Vision-AI-DevKit-Pages/docs/quick_start/). You also set up and test your camera, using the connection string provided in the previous step.
+Next, set up the Custom Vision AI Dev Kit as shown in the [Vision AI DevKit quickstart](https://azure.github.io/Vision-AI-DevKit-Pages/docs/quick_start/). You also set up and test your camera, using the connection string provided in the previous step.
 
 ## Deploy the camera application
 
 Use the Porter CLI to generate a credential set, then deploy the camera application.
 
-1. Porter will generate a set of credentials that will automate deployment of the application. You need:
+1. Porter will generate a set of credentials that will automate deployment of the application. Before running the credential generation command, be sure to have the following available:
     
-    - The service principal for accessing Azure resources, including the service principal ID, key, and tenant DNS.
+    - A service principal for accessing Azure resources, including the service principal ID, key, and tenant DNS.
     - The subscription ID for your Azure subscription.
     - The image storage account connection string provided when you deployed the cloud application.
 
-1. Run the credential generation process and follow the prompts:
+1. Run the Porter credential generation process and follow the prompts:
 
-    ```
+    ```porter
     porter creds generate --tag intelligentedge/footfall-camera-deployment:0.1.0
     ```
 
-1. Porter also requires a set of insecure parameters to run. Create a text file and enter the following text. Ask your Azure Stack administrator if you don’t know some of the required values.
+1. Porter also requires a set of parameters to run. Create a parameter text file and enter the following text. Ask your Azure Stack administrator if you don’t know some of the required values.
 
     > [!NOTE]
     > The `deployment suffix` value is used to ensure that your deployment’s resources have unique names across Azure. It must be a unique string of letters and numbers, no longer than 8 characters.
@@ -132,13 +136,13 @@ Use the Porter CLI to generate a credential set, then deploy the camera applicat
 
     Save the text file and make a note of its path.
 
-4. You’re now ready to deploy the camera application using Porter. Run the deployment command and watch as the IoT Edge deployment is created.
+4. You’re now ready to deploy the camera application using Porter. Run the install command and watch as the IoT Edge deployment is created.
 
-    ```
+    ```porter
     porter install footfall-camera –tag intelligentedge/footfall-camera-deployment:0.1.0 –creds footfall-camera-deployment –param-file "path-to-camera-parameters-file.txt"
     ```
 
-5. Verify that the camera’s deployment is complete by viewing the camera feed at [https://camera-ip:3000/](https://camera-ip:3000/). This may take up to ten minutes.
+5. Verify that the camera’s deployment is complete by viewing the camera feed at [https://camera-ip:3000/](https://camera-ip:3000/). This step may take up to 10 minutes.
 
 ## Configure Azure Stream Analytics
 
@@ -150,7 +154,7 @@ Now that data is flowing to Azure Stream Analytics from the camera, we need to m
 
 3.  Select the **traffic-output** output sink.
 
-4.  Select Renew Authorization and log in to your Power BI account.
+4.  Select **Renew authorization** and sign in to your Power BI account.
     
     ![renew authorization prompt](./media/solution-deployment-guide-retail-footfall-detection/image2.png)
 
@@ -172,13 +176,13 @@ Now that data is flowing to Azure Stream Analytics from the camera, we need to m
 
 ## Test Your Solution
 
-Observe how the data in the cards you created in Power BI changes as different people walk in front of the camera. Inferences may take up to 20 seconds to appear once recorded.
+Observe how the data in the cards you created in Power BI changes, as different people walk in front of the camera. Inferences may take up to 20 seconds to appear once recorded.
 
 ## Remove Your Solution
 
 If you’d like to remove your solution, run the following commands using Porter, using the same parameter files that you created for deployment: 
 
-```
+```porter
 porter uninstall footfall-cloud –tag intelligentedge/footfall-cloud-deployment:0.1.0 –creds footfall-cloud-deployment –param-file "path-to-cloud-parameters-file.txt"
 
 porter uninstall footfall-camera –tag intelligentedge/footfall-camera-deployment:0.1.0 –creds footfall-camera-deployment –param-file "path-to-camera-parameters-file.txt"
