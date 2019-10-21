@@ -76,8 +76,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Added the **Set-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to configure the manual update for Windows Defender definitions in Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
 - Added the **Get-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to retrieve the configuration of the manual update for Windows Defender definitions in Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
-- Added the **Set-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to change the forwarder settings of the DNS servers in Azure Stack. For more information on DNS configuration, see [Azure Stack datacenter DNS integration](https://docs.microsoft.com/azure-stack/operator/azure-stack-integrate-dns).
-- Added the **Get-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to retrieve the forwarder settings of the DNS servers in Azure Stack. For more information on DNS configuration, see [Azure Stack datacenter DNS integration](https://docs.microsoft.com/azure-stack/operator/azure-stack-integrate-dns).
+- Added the **Set-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to change the forwarder settings of the DNS servers in Azure Stack. For more information on DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
+- Added the **Get-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to retrieve the forwarder settings of the DNS servers in Azure Stack. For more information on DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
 
 ### Improvements
 
