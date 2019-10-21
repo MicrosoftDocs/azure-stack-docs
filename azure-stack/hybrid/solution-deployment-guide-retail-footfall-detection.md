@@ -49,7 +49,7 @@ Before getting started with this deployment guide, make sure you:
 - Install the following development resources:
   - [Azure CLI 2.0](../user/azure-stack-version-profiles-azurecli2.md)
   - [Docker CE](https://hub.docker.com/search/?type=edition&offering=community)
-  - [Porter](https://porter.sh/).
+  - [Porter](https://porter.sh/)
   - [Visual Studio Code](https://code.visualstudio.com/)
   - [Azure IoT Tools for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)
   - [Python extension for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
@@ -61,23 +61,23 @@ First you use the Porter CLI to generate a credential set, then deploy the cloud
 
 1. Before starting, verify that you have the following items:
 
-  - The service principal for accessing Azure resources, including the service principal ID, key, and tenant DNS.
-  - The subscription ID for your Azure subscription.
-  - The service principal for accessing Azure Stack resources, including the service principal ID, key, and tenant DNS.
-  - The subscription ID for your Azure Stack subscription.
-  - Face API Endpoint
-  - Face API Key
+    - The service principal for accessing Azure resources, including the service principal ID, key, and tenant DNS.
+    - The subscription ID for your Azure subscription.
+    - The service principal for accessing Azure Stack resources, including the service principal ID, key, and tenant DNS.
+    - The subscription ID for your Azure Stack subscription.
+    - Face API Endpoint
+    - Face API Key
 
 1. Clone or download the solution sample code from https://github.com/azure-samples/azure-intelligent-edge-patterns. 
 1. Run the Porter credential generation process and follow the prompts:
 
-   ```
+   ```porter
    porter creds generate --tag intelligentedge/footfall-cloud-deployment:0.1.0
    ```
 
 1. Porter also requires a set of unsecure parameters to run. Create a text file and enter the following name/value pairs. Ask your Azure Stack administrator if you need assistance with any of the required values.
 
-   >[!NOTE] 
+   > [!NOTE] 
    > The `resource suffix` value is used to ensure that your deployment’s resources have unique names across Azure. It must be a unique string of letters and numbers, no longer than 8 characters.
 
     ```
@@ -110,9 +110,9 @@ Use the Porter CLI to generate a credential set, then deploy the camera applicat
 
 1. Porter will generate a set of credentials that will automate deployment of the application. You need:
     
-  - The service principal for accessing Azure resources, including the service principal ID, key, and tenant DNS.
-  - The subscription ID for your Azure subscription.
-  - The image storage account connection string provided when you deployed the cloud application.
+    - The service principal for accessing Azure resources, including the service principal ID, key, and tenant DNS.
+    - The subscription ID for your Azure subscription.
+    - The image storage account connection string provided when you deployed the cloud application.
 
 1. Run the credential generation process and follow the prompts:
 
@@ -122,7 +122,8 @@ Use the Porter CLI to generate a credential set, then deploy the camera applicat
 
 1. Porter also requires a set of insecure parameters to run. Create a text file and enter the following text. Ask your Azure Stack administrator if you don’t know some of the required values.
 
-    >[!NOTE] The `deployment suffix` value is used to ensure that your deployment’s resources have unique names across Azure. It must be a unique string of letters and numbers, no longer than 8 characters.
+    > [!NOTE]
+    > The `deployment suffix` value is used to ensure that your deployment’s resources have unique names across Azure. It must be a unique string of letters and numbers, no longer than 8 characters.
 
     ```
     iot_hub_name="Name of the IoT Hub deployed"
