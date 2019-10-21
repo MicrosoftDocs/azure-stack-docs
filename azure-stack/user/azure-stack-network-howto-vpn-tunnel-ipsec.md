@@ -55,3 +55,5 @@ This template provides default values for VNet naming and IP addressing.  It req
 ## Next steps
 
 [Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)  
+[How to set up a multiple site-to-site VPN tunnel](azure-stack-network-howto-vpn-tunnel.md)  
+[How to create a VPN Tunnel using GRE](azure-stack\user\azure-stack-network-howto-vpn-tunnel-gre.md)

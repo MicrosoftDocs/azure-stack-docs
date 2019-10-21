@@ -56,3 +56,4 @@ This template provides default values for VNet naming and IP addressing. It requ
 ## Next steps
 
 [Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)  
+[How to set up a multiple site-to-site VPN tunnel](azure-stack-network-howto-vpn-tunnel.md)

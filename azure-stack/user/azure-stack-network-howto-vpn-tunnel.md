@@ -207,3 +207,5 @@ The process is the almost identical. However when you deploy the tunnel template
 ## Next steps
 
 [Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)  
+[How to create a VPN Tunnel using GRE](azure-stack\user\azure-stack-network-howto-vpn-tunnel-gre.md)  
+[How to create a VPN Tunnel using IPSEC](azure-stack-network-howto-vpn-tunnel-ipsec.md)
