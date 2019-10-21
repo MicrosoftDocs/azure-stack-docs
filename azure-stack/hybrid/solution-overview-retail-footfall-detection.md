@@ -80,8 +80,9 @@ This solution captures customer images, making security a paramount consideratio
 
 ## Next steps
 
-Continue with the [Footfall detection deployment guide](solution-deployment-guide-cicd-pipeline.md), which provides step-by-step instructions for deploying and testing the related sample app.
+To learn more about topics introduced in this article:
+- See the [Tiered Data pattern](solution-deployment-guide-tiered-data.md) to learn more about patterns used by this solution.
+- See the [Custom Vision AI Dev Kit](https://azure.github.io/Vision-AI-DevKit-Pages/) to learn more about using custom vision. 
 
-- To learn more about patterns used by this solution, see the [Tiered Data pattern](solution-deployment-guide-tiered-data.md). 
-- To learn more about using custom vision, see the [Custom Vision AI Dev Kit](https://azure.github.io/Vision-AI-DevKit-Pages/). 
-- Download and deploy the [sample implementation of the footfall solution](https://github.com/Azure-Samples/azure-intelligent-edge-patterns/tree/master/footfall-analysis) used in the deployment guide. Y   
+
+When you're ready to test the example solution, continue with the [Footfall detection deployment guide](solution-deployment-guide-retail-footfall-detection.md), which provides step-by-step instructions for deploying and testing the related sample app.
