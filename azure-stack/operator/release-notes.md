@@ -74,13 +74,13 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- What's new, also net new experiences and features. -->
 
-- The Admin Portal does now show the privileged endpoint IP Addresses in the region properties menu for easier discovery. In addition it does show the current configured time server and DNS forwarders.
+- The admin portal now shows the privileged endpoint IP addresses in the region properties menu for easier discovery. In addition it shows the current configured time server and DNS forwarders.
 
-- Azure Stack's health & monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration for more information see [Link to new article]
+- Azure Stack's health and monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration. For more information, see [Link to new article].
 
 - A new version of Azure Stack Admin PowerShell modules is available. For more information, see
 
-- You can now update the DNS forwarder that you specified at deplpoyment time of Azure Stack using the privileged endpoint. This does not require opening a support case. For more information, see [Link to new article]
+- You can now update the DNS forwarder that you specified at Azure Stack deplpoyment time using the privileged endpoint. This does not require opening a support case. For more information, see [Link to new article].
 
 ### Improvements
 
