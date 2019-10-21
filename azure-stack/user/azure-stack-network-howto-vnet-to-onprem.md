@@ -17,6 +17,8 @@ ms.lastreviewed: 10/03/2019
 
 # Setup VPN gateway for Azure Stack using FortiGate NVA
 
+*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+
 This article describes how to create a VPN connection to your Azure Stack. A VPN gateway is a type of virtual network gateway that sends encrypted traffic between your virtual network in Azure Stack and a remote VPN gateway. The procedure below deploys one VNET with a FortiGate NVA, a network virtual appliance, within a resource group. It also provides steps to set up an IPSec VPN on the FortiGate NVA.
 
 ## Prerequisites
