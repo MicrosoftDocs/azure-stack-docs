@@ -15,7 +15,7 @@ ms.reviewer: efemmano
 ms.lastreviewed: 10/01/2019
 
 ---
-# Service, plan, offer, subscription overview
+# Azure Stack services, plans, offers, subscriptions overview
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
