@@ -74,9 +74,17 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- What's new, also net new experiences and features. -->
 
+- The Admin Portal does now show the privileged endpoint IP Addresses in the region properties menu for easier discovery. In addition it does show the current configured time server and DNS forwarders.
+
+- Azure Stack's health & monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration for more information see [Link to new article]
+
+- A new version of Azure Stack Admin PowerShell modules is available. For more information, see
+
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
+
+- The privileged endpoint command "Set-BmcCredential" does now update the credential in the Baseboard Management Controller.
 
 ### Changes
 
