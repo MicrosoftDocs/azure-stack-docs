@@ -17,6 +17,8 @@ ms.lastreviewed: 10/19/2019
 
 # Back up your storage accounts on Azure Stack
 
+*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+
 This article looks at protection and recovery of storage accounts within an Azure Storage accounts on Azure Stack.
 
 ## Elements of this solution
@@ -35,7 +37,7 @@ Data can be replicated between storage accounts on separate Azure Stack scale un
 
 AzCopy is an excellent tool that can be utilized to copy data from local filesystems, Azure Cloud Storage, Azure Stack Storage, and s3. Currently, AzCopy cannot copy data between two Azure Stack Storage Accounts. Copying objects from a source Azure Stack Storage account to a target Azure Stack Storage account requires an intermediary local filesystem.
 
-For more information see the AzCopy in the [Use data transfer tools in Azure Stack Storage](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer?view=azs-1908#azcopy) article.
+For more information, see the AzCopy in the [Use data transfer tools in Azure Stack Storage](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer?view=azs-1908#azcopy) article.
 
 ### Azure Stack (source)
 
@@ -45,7 +47,7 @@ You will need to the Source Storage Account URL and SAS Token. For instruction o
 
 ### Azure Stack (target)
 
-This is the target that will store the account data you would like to back up. The target Azure Stack instance must be in a different location from your target Azure Stack. And the source will need to be be able to connect to the target.
+This is the target that will store the account data you would like to back up. The target Azure Stack instance must be in a different location from your target Azure Stack. And the source will need to be able to connect to the target.
 
 You will need to the Source Storage Account URL and SAS Token. For instruction on working with a storage account, see []().
 
@@ -79,7 +81,7 @@ set AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09 PowerShell use: $env:AZCOPY_DE
 
 Linux export AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09
 
-For a Ubuntu server:
+For an Ubuntu server:
 
 export AZCOPY_DEFAULT_SERVICE_API_VERSION=2017-11-09
 
@@ -116,3 +118,5 @@ Application connection strings can be modified after a disaster is declared to a
 Please note that if SAS is used by the application rather than AAD or AD FS, the above method will not work and application connection strings will need to be updated with the target storage account URL and the SAS key(s) generated for the target storage account.
 
 ## Next steps
+
+[Get started with Azure Stack storage development tools](azure-stack-storage-dev.md)
