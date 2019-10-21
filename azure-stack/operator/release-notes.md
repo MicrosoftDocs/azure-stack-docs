@@ -82,27 +82,39 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - You can now update the DNS forwarder that you specified at Azure Stack deplpoyment time using the privileged endpoint. This does not require opening a support case. For more information, see [Link to new article].
 
+- Added the **Set-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to configure the manual update for Windows Defender definitions in Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
+
+- Added the **Get-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to retrieve the configuration of the manual update for Windows Defender definitions in Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
+
+- Added the **Set-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to change the forwarder settings of the DNS servers in Azure Stack. For more information on DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
+
+- Added the **Get-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to retrieve the forwarder settings of the DNS servers in Azure Stack. For more information on DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
+
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
 - The privileged endpoint command **Set-BmcCredential** now updates the credential in the Baseboard Management Controller.
 
+- Added auditing rule to report when an external device (for example, a USB key) is mounted to a node of the Azure Stack infrastructure. The audit log is emitted via syslog and will be displayed as **Microsoft-Windows-Security-Auditing: 6416|Plug and Play Events**. For more information about how to configure the syslog client, see [Syslog forwarding](azure-stack-integrate-security.md).
+
+- Azure Stack is moving to 4096 bit RSA keys for the internal certificates. Running internal secret rotation will replace old 2048 bit certificates with 4096 bit long certificates. For more information about secret rotation in Azure Stack, see [Rotate secrets in Azure Stack](azure-stack-rotate-secrets.md).
+
+- Upgrades to the complexity of cryptographic algorithms and key strength for several internal components to comply with the Committee on National Security Systems - Policy 15 (CNSSP-15) which provides best practices for the Use of Public Standards for Secure Information Sharing. Among the improvements, there are AES256 for Kerberos authentication and SHA384 for VPN encryption. For more information on CNSSP-15, please refer to [Committee on National Security Systems, Policies page](http://www.cnss.gov/CNSS/issuances/Policies.cfm).
+
 ### Changes
 
 - When downloading marketplace items from Azure to Azure Stack, there is a new user interface that enables you to specify a version of the item, when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md).  
 
+- 1911 prerequisite: When the Azure Stack 1911 update is released and you attempt to install it, the update will fail if you have not completed the remediation described as follows. Please see the [Datacenter Network Integration](azure-stack-network.md#private-network) article to understand how this new private space will be consumed.
 
-1911 Pre-Requisite:
-- When attempting to install the 1911 Azure Stack update, the update will fail if you have not completed the remediation listed below. Please referance the [Datacenter Network Integration](https://docs.microsoft.com/azure-stack/operator/azure-stack-network#private-network) documentation to understand how this new private space will be consumed. 
-
-- Remediation: Follow the instructions to [open a PEP Session](https://docs.microsoft.com/azure-stack/operator/azure-stack-privileged-endpoint#access-the-privileged-endpoint). Prepare a [private internal IP range](https://docs.microsoft.com/azure-stack/operator/azure-stack-network#logical-networks) of size /20 and run the following in the PEP session using the following format: **Set-AzsInternalNetwork -UserSubnet 100.87.0.0/20**. If the operation is performed successfully, you will recieve a message of **Azs Internal Network range added to the config**. An alert will be present in the admin portal until the above remediation steps have been completed. 
-
-
+   To remediate, follow the instructions to [open a PEP Session](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Prepare a [private internal IP range](azure-stack-network.md#logical-networks) of size /20 and run the following cmdlet in the PEP session using the following format: `Set-AzsInternalNetwork -UserSubnet 100.87.0.0/20`. If the operation is performed successfully, you will receive the message **Azs Internal Network range added to the config**. An alert will be present in the admin portal until the above remediation steps have been completed.
 
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
+
+- Fixed an issue that prevented enforcing TLS 1.2 policy on environments deployed prior to the Azure Stack 1904 release.
 
 ## Security updates
 
