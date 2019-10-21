@@ -19,7 +19,7 @@ ms.reviewer: wamota
 ms.lastreviewed: 06/04/2019
 ---
 
-# Network connectivity planning for Azure Stack
+# Network integration planning for Azure Stack
 This article provides Azure Stack network infrastructure information to help you decide how to best integrate Azure Stack into your existing networking environment. 
 
 > [!NOTE]
