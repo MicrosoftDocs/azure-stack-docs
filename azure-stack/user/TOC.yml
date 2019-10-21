@@ -276,6 +276,14 @@
       href: azure-stack-network-howto-vnet-to-vnet-stacks.md
     - name: VNET peering
       href: azure-stack-network-howto-vnet-to-vnet.md
+    - name:  
+      items:
+        - name:  Set site-to-site VPNs
+          href:  azure-stack-network-howto-vpn-tunnel.md
+        - name:  Create VPN (GRE)
+          href:  azure-stack-network-howto-vpn-tunnel-gre.md
+        - name:  Create VPN (IPSEC)
+          href:  azure-stack-network-howto-vpn-tunnel-gre.md
 - name: Concepts
   items:
   - name: Hybrid cloud patterns
