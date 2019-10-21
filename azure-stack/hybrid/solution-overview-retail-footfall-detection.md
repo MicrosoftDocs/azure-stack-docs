@@ -16,7 +16,7 @@ This article provides an overview for implementing an AI-based footfall detectio
 
 ## Context and problem
 
-Contoso Stores would like to gain insights on how customers are receiving their current products, in relation to store layout. They're unable to place staff in every single section, and it's inefficient to have a team of analysts review an entire store's camera footage. In addition, none of their stores have enough bandwidth to stream video from all their cameras to the cloud for analysis. 
+Contoso Stores would like to gain insights on how customers are receiving their current products, in relation to store layout. They're unable to place staff in every section, and it's inefficient to have a team of analysts review an entire store's camera footage. In addition, none of their stores have enough bandwidth to stream video from all their cameras to the cloud for analysis. 
 
 Contoso would like to find an unobtrusive, privacy-friendly way to determine their customers' demographics, loyalty, and reactions to store displays and products.
 
@@ -80,9 +80,8 @@ This solution captures customer images, making security a paramount consideratio
 
 ## Next steps
 
-To learn more about topics introduced in this article:
+To learn more about the topics introduced in this article:
 - See the [Tiered Data pattern](solution-deployment-guide-tiered-data.md) to learn more about patterns used by this solution.
 - See the [Custom Vision AI Dev Kit](https://azure.github.io/Vision-AI-DevKit-Pages/) to learn more about using custom vision. 
 
-
-When you're ready to test the example solution, continue with the [Footfall detection deployment guide](solution-deployment-guide-retail-footfall-detection.md), which provides step-by-step instructions for deploying and testing the related sample app.
+When you're ready to test the solution example, continue with the [Footfall detection deployment guide](solution-deployment-guide-retail-footfall-detection.md), which provides step-by-step instructions for deploying and testing its components.

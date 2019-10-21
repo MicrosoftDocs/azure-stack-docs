@@ -43,7 +43,7 @@ Before getting started with this deployment guide, make sure you:
   - To learn more about creating service principals and authorizing access, see [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md). If you prefer to use Azure CLI, see [Create an Azure service principal with Azure CLI](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
 - Deploy Azure Cognitive Services in Azure, or Azure Stack.
   - First, [learn more about Cognitive Services](https://azure.microsoft.com/services/cognitive-services/).
-  - Then visit [Deploy Azure Cognitive Services to Azure Stack](../user/azure-stack-solution-template-cognitive-services.md) to deploy Cognitive Services on Azure Stack. You need to sign up for preview access.
+  - Then visit [Deploy Azure Cognitive Services to Azure Stack](../user/azure-stack-solution-template-cognitive-services.md) to deploy Cognitive Services on Azure Stack. You first need to sign up for access to the preview.
 - Clone or download an unconfigured Azure Custom Vision AI Dev Kit. For details, see the [Vision AI DevKit](https://azure.github.io/Vision-AI-DevKit-Pages/).
 - Sign up for a Power BI account.
 - An Azure Cognitive Services Face API subscription key and endpoint URL. You can get both the [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api) free trial. Or, follow the instructions in [Create a Cognitive Services account](/azure/cognitive-services/cognitive-services-apis-create-account).
@@ -99,10 +99,10 @@ First you use the Porter CLI to generate a credential set, then deploy the cloud
     porter install footfall-cloud –tag intelligentedge/footfall-cloud-deployment:0.1.0 –creds footfall-cloud-deployment –param-file "path-to-cloud-parameters-file.txt"
     ```
 
-1. Once deployment is complete, make note of the following:
-- The camera’s connection string.
-- The image storage account connection string.
-- The resource group names.
+1. Once deployment is complete, make note of the following values:
+    - The camera’s connection string.
+    - The image storage account connection string.
+    - The resource group names.
 
 ## Prepare the Custom Vision AI Dev Kit
 
@@ -142,7 +142,7 @@ Use the Porter CLI to generate a credential set, then deploy the camera applicat
     porter install footfall-camera –tag intelligentedge/footfall-camera-deployment:0.1.0 –creds footfall-camera-deployment –param-file "path-to-camera-parameters-file.txt"
     ```
 
-5. Verify that the camera’s deployment is complete by viewing the camera feed at [https://camera-ip:3000/](https://camera-ip:3000/). This step may take up to 10 minutes.
+5. Verify that the camera’s deployment is complete by viewing the camera feed at `https://<camera-ip>:3000/`, where `<camara-ip>` is the camera IP address. This step may take up to 10 minutes.
 
 ## Configure Azure Stream Analytics
 
@@ -172,7 +172,7 @@ Now that data is flowing to Azure Stream Analytics from the camera, we need to m
 
 3.  At the top of the window, select **Add tile**. Then select **Custom Streaming Data** and **Next**. Choose the **footfall-dataset** under **Your Datasets**. Select **Card** from the **Visualization type** dropdown, and add **age** to **Fields**. Select **Next** to enter a name for the tile, and then select **Apply** to create the tile.
 
-4.  You can add more fields and cards as desired.
+4.  You can add additional fields and cards as desired.
 
 ## Test Your Solution
 
@@ -189,5 +189,5 @@ porter uninstall footfall-camera –tag intelligentedge/footfall-camera-deployme
 ```
 ## Next steps
 
-- Learn more about hybrid cloud applications, see [Hybrid Cloud Solutions.](https://aka.ms/azsdevtutorials)
+- Learn more about [hybrid cloud app design considerations](overview-app-design-considerations.md)
 - Review and propose improvements to [the code for this sample on GitHub](https://github.com/Azure-Samples/azure-intelligent-edge-patterns/tree/master/footfall-analysis).
