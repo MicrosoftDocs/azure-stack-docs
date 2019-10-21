@@ -4,6 +4,7 @@ description: Learn how to create a VPN Tunnel using IPSEC.
 services: azure-stack
 author: mattbriggs
 
+ms.service: azure-stack
 ms.topic: how-to
 ms.date: 09/19/2019
 ms.author: mabrigg
@@ -56,4 +57,4 @@ This template provides default values for VNet naming and IP addressing.  It req
 
 [Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)  
 [How to set up a multiple site-to-site VPN tunnel](azure-stack-network-howto-vpn-tunnel.md)  
-[How to create a VPN Tunnel using GRE](azure-stack\user\azure-stack-network-howto-vpn-tunnel-gre.md)
+[How to create a VPN Tunnel using GRE](azure-stack-network-howto-vpn-tunnel-gre.md)
