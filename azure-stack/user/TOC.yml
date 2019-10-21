@@ -283,7 +283,7 @@
         - name:  Create VPN (GRE)
           href:  azure-stack-network-howto-vpn-tunnel-gre.md
         - name:  Create VPN (IPSEC)
-          href:  azure-stack-network-howto-vpn-tunnel-gre.md
+          href:  azure-stack-network-howto-vpn-tunnel-ipsec.md
 - name: Concepts
   items:
   - name: Hybrid cloud patterns
