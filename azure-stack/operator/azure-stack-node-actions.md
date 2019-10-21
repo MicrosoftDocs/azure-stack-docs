@@ -77,7 +77,7 @@ You need to install Azure Stack PowerShell modules. These cmdlets are in the **A
 
 ## Stop
 
-The **Stop** action turns off the node. It's the same as presssing the power button. It doesn't send a shutdown signal to the operating system. For planned stop operations, always try the shutdown operation first. 
+The **Stop** action turns off the node. It's the same as pressing the power button. It doesn't send a shutdown signal to the operating system. For planned stop operations, always try the shutdown operation first.
 
 This action is typically used when a node is in a hung state and no longer responds to requests.
 
@@ -138,7 +138,7 @@ For more information, see [Enable-AzsScaleUnitNode](https://docs.microsoft.com/p
 
 > [!CAUTION]  
 > Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, a decrease in performance, security threads, or failure when Azure Stack automation deploys the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure the applied firmware is matching the OEM Version displayed in the [Azure Stack administrator portal](azure-stack-updates.md).<br><br>
-For more information and links to partner documentation, refer to [Replace a hardware component](azure-stack-replace-component.md).
+For more information and links to partner documentation, see [Replace a hardware component](azure-stack-replace-component.md).
 
 | Hardware Partner | Region | URL |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -169,7 +169,7 @@ To run the repair action, open an elevated PowerShell prompt, and run the follow
 
 The **shutdown** action first moves all active workloads to the remaining nodes in the same scale unit. Then the action gracefully shuts down the scale unit node.
 
-After you start a node that was shutdown, you need to run the [resume](#resume) action. Earlier workloads that were running on the node don't fail back.
+After you start a node that was shut down, you need to run the [resume](#resume) action. Earlier workloads that were running on the node don't fail back.
 
 If the shutdown operation fails, attempt the [drain](#drain) operation followed by the shutdown operation.
 
