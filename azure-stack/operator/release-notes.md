@@ -74,17 +74,32 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- What's new, also net new experiences and features. -->
 
+- The admin portal now shows the privileged endpoint IP addresses in the region properties menu for easier discovery. In addition it shows the current configured time server and DNS forwarders.
+
+- Azure Stack's health and monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration. For more information, see [Link to new article].
+
+- A new version of Azure Stack Admin PowerShell modules is available. For more information, see
+
+- You can now update the DNS forwarder that you specified at Azure Stack deplpoyment time using the privileged endpoint. This does not require opening a support case. For more information, see [Link to new article].
+
 - Added the **Set-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to configure the manual update for Windows Defender definitions in Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
+
 - Added the **Get-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to retrieve the configuration of the manual update for Windows Defender definitions in Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
+
 - Added the **Set-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to change the forwarder settings of the DNS servers in Azure Stack. For more information on DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
+
 - Added the **Get-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to retrieve the forwarder settings of the DNS servers in Azure Stack. For more information on DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
 
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
+- The privileged endpoint command **Set-BmcCredential** now updates the credential in the Baseboard Management Controller.
+
 - Added auditing rule to report when an external device (for example, a USB key) is mounted to a node of the Azure Stack infrastructure. The audit log is emitted via syslog and will be displayed as **Microsoft-Windows-Security-Auditing: 6416|Plug and Play Events**. For more information about how to configure the syslog client, see [Syslog forwarding](azure-stack-integrate-security.md).
+
 - Azure Stack is moving to 4096 bit RSA keys for the internal certificates. Running internal secret rotation will replace old 2048 bit certificates with 4096 bit long certificates. For more information about secret rotation in Azure Stack, see [Rotate secrets in Azure Stack](azure-stack-rotate-secrets.md).
+
 - Upgrades to the complexity of cryptographic algorithms and key strength for several internal components to comply with the Committee on National Security Systems - Policy 15 (CNSSP-15) which provides best practices for the Use of Public Standards for Secure Information Sharing. Among the improvements, there are AES256 for Kerberos authentication and SHA384 for VPN encryption. For more information on CNSSP-15, please refer to [Committee on National Security Systems, Policies page](http://www.cnss.gov/CNSS/issuances/Policies.cfm).
 
 ### Changes
