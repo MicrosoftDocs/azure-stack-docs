@@ -276,7 +276,7 @@
       href: azure-stack-network-howto-vnet-to-vnet-stacks.md
     - name: VNET peering
       href: azure-stack-network-howto-vnet-to-vnet.md
-    - name:  
+    - name:  VPN tunnels
       items:
         - name:  Set site-to-site VPNs
           href:  azure-stack-network-howto-vpn-tunnel.md
