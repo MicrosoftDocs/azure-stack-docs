@@ -1,6 +1,6 @@
 ---
 title: Scale unit node actions in Azure Stack | Microsoft Docs
-description: Learn how to view node status, and use the power on, power off, disable, and resume node actions on Azure Stack integrated systems.
+description: Learn about scale unit node actions, including power on, power off, disable, resume, and how to view node status in Azure Stack integrated systems.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
