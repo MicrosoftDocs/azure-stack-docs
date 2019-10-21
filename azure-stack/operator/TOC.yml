@@ -7,7 +7,7 @@
   - name: What is Azure Stack HCI?
     href: azure-stack-hci-overview.md
   - name: Comparing the Azure ecosystem
-    href: compare-azure-azure-stack.md
+    href: compare-azure-azure-stack.mddns
   - name: Release notes
     items:
     - name: Security updates
@@ -62,6 +62,8 @@
         href: azure-stack-customer-defined.md
       - name: DNS integration
         href: azure-stack-integrate-dns.md
+      - name: Configure DNS forwarder
+        href: azure-stack-configure-dns.md
       - name: Configure time server
         href: azure-stack-configure-time.md
       - name: Firewall integration
@@ -167,6 +169,8 @@
         href: azure-stack-updates-troubleshoot.md
     - name: Monitor health and alerts
       href: azure-stack-monitor-health.md
+    - name: Monitor hardware components
+      href: azure-stack-hardware-monitoring.md
     - name: Manage network resources
       href: azure-stack-viewing-public-ip-address-consumption.md
     - name: Change user subscription owner
