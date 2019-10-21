@@ -80,6 +80,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - A new version of Azure Stack Admin PowerShell modules is available. For more information, see
 
+- You can now update the DNS forwarder that you specified at deplpoyment time of Azure Stack using the privileged endpoint. This does not require opening a support case. For more information, see [Link to new article]
+
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
