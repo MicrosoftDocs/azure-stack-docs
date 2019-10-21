@@ -23,7 +23,7 @@ ms.lastreviewed: 10/01/2019
 
 ## Overview
 
-As an Azure Stack operator, you configure and deliver services by using offers, plans, and subscriptions. Offers contain one or more plans, and each plan includes one or more services, each configured with quotas. By creating plans and combining them into different offers, users can subscribe to your offers and deploy resources. This allows you to manage:
+As an Azure Stack operator, you configure and deliver services by using offers, plans, and subscriptions. Offers contain one or more plans, and each plan includes one or more services, each configured with quotas. By creating plans and combining them into different offers, users can subscribe to your offers and deploy resources. This structure allows you to manage:
 
 - Which services and resources your users can access.
 - The amount of resources that users can consume.
@@ -79,11 +79,11 @@ When creating an offer, the service administrator can include a base plan. These
 
 ### Add-on plans
 
-Add-on plans are optional plans you add to an offer. Add-on plans are not included by default in the subscription. Add-on plans are additional plans (with quotas) available in an offer that a subscriber can add to their subscriptions. For example, you can offer a base plan with limited resources for a trial, and an add-on plan with more substantial resources to customers who decide to adopt the service.
+Add-on plans are optional plans you add to an offer. Add-on plans aren't included by default in the subscription. Add-on plans are additional plans (with quotas) available in an offer that a subscriber can add to their subscriptions. For example, you can offer a base plan with limited resources for a trial, and an add-on plan with more substantial resources to customers who decide to adopt the service.
 
 ## Offers
 
-Offers are groups of one or more plans that you create so that users can subscribe to them. For example, Offer Alpha can contain Plan A, which provides a set of compute services and Plan B, which provides a set of storage and network services.
+Offers are groups of one or more plans that you create so that users can subscribe to them. For example: Offer Alpha can contain Plan A, which provides a set of compute services, and Plan B, which provides a set of storage and network services.
 
 When you [create an offer](azure-stack-create-offer.md), you must include at least one base plan, but you can also create add-on plans that users can add to their subscription.
 
