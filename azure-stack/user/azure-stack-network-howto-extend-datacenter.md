@@ -1,5 +1,5 @@
 ---
-title: How to extend the datacenter on Azure Stack | Microsoft Docs
+title: How to extend the data center on Azure Stack | Microsoft Docs
 description: Learn how to extend the datacenter on Azure Stack.
 services: azure-stack
 author: mattbriggs
@@ -15,19 +15,21 @@ ms.lastreviewed: 10/19/2019
 # Intent: As an Azure Stack Operator, I want < what? > so that < why? >
 ---
 
-# How to extend the datacenter on Azure Stack
+# How to extend the data center on Azure Stack
+
+*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 This article provides Azure Stack storage infrastructure information to help you decide how to integrate Azure Stack into your existing networking environment. After providing a general discussion of extending your data center, the article presents two different scenarios. You can connect to a Windows file storage server. You can also connect to a Windows iSCI server.
 
-## Overview of Extending Storage to Azure Stack
+## Overview of extending storage to Azure Stack
 
-Data is growing at an exponential rate. While the costs of spinning and flash storage are low, many organizations look to take advantage of cloud economics for their storage usage. Azure offers a number of options to enable organizations of all sizes to benefit from storing their important files and folders in the cloud, in addition, connecting this storage back to on-premises resources to ensure seamless access to the data when required.
+Data is growing at an exponential rate. While the costs of spinning and flash storage are low, organizations look to take advantage of cloud economics for their storage usage. Azure helps organizations of all sizes to store their important files and folders in the cloud, in addition, connecting this storage back to on-premises resources to get data when required.
 
-There are, however, scenarios where having your data located in the public cloud isn’t enough. Perhaps you have a compute-intensive virtualized database workload, extremely sensitive to latencies, and the round-trip time to the public cloud could affect performance of the database workload. Perhaps there is data on premises, held on a file server, NAS or iSCSI storage array, which needs to be accessed by on-premises workloads, and needs to reside on-premises to meet regulatory or compliance goals. These are just two of the scenarios where having data reside on-premises, remains important for many organizations.
+There are scenarios where having your data located in the public cloud isn’t enough. Perhaps you have a compute-intensive virtualized database workload, sensitive to latencies, and the round-trip time to the public cloud could affect performance of the database workload. Perhaps there is data on premises, held on a file server, NAS, or iSCSI storage array, which needs to be accessed by on-premises workloads, and needs to reside on-premises to meet regulatory or compliance goals. These are just two of the scenarios where having data reside on-premises, remains important for many organizations.
 
-So, why not just host that data in storage accounts on Azure Stack, or inside virtualized file servers, running on the Azure Stack system? Well, unlike in Azure, Azure Stack storage is finite. The capacity you have available for your usage depends entirely on the per-node capacity you chose to purchase, in addition to the number of nodes you have. And because Azure Stack is a Hyper-Converged solution, should you wish to grow your storage capacity to meet usage demands, you also need to grow your compute footprint through the addition of nodes. This can be potentially cost prohibitive, especially if the need to extra capacity is for cold, archival storage that could be added for very low cost outside of the Azure Stack system.
+So, why not just host that data in storage accounts on Azure Stack, or inside virtualized file servers, running on the Azure Stack system? Well, unlike in Azure, Azure Stack storage is finite. The capacity you have available for your usage depends entirely on the per-node capacity you chose to purchase, in addition to the number of nodes you have. And because Azure Stack is a Hyper-Converged solution, should you wish to grow your storage capacity to meet usage demands, you also need to grow your compute footprint through the addition of nodes. This can be potentially cost prohibitive, especially if the need to extra capacity is for cold, archival storage that could be added for low cost outside of the Azure Stack system.
 
-Which brings us to the scenario that we will cover below. How can we connect Azure Stack systems, specifically virtualized workloads running on the Azure Stack, simply and efficiently, to storage systems outside of the Azure Stack, accessible via the network.
+Which brings us to the scenario that we will cover below. How can we connect Azure Stack systems, virtualized workloads running on the Azure Stack, simply and efficiently, to storage systems outside of the Azure Stack, accessible via the network.
 
 In this document, we’ll explore two similar architectures, and illustrate how you would go about integrating your external storage, with workloads inside the Azure Stack system.
 
@@ -39,25 +41,25 @@ The graphic depicts a simple scenario, where a single virtual machine, running a
 
 In the graphic, you’ll see that the VM on the Azure Stack system has been deployed with multiple NICs. From both a redundancy, but also a storage best practice, it’s important to have multiple paths between target and destination. Where things become more complex, are where VMs in Azure Stack have both public and private IPs, just like in Azure. If the external storage needed to reach the VM, it can only do so via the public IP, as the Private IPs are primarily used within the Azure Stack systems, within vNets and the subnets. The external storage would not be able to communicate with the private IP space of the VM, unless it passes through a Site to Site VPN, to punch into the vNet itself. So, for this example, we’ll focus on communication via the public IP space. One thing to notice with the public IP space in the graphic, is that there are 2 different public IP pool subnets. By default, Azure Stack requires just one pool for public IP address purposes, but something to consider, for redundant routing, may be to add a second. However, at this time, it is not possible to select an IP address from a specific pool, so you may indeed end up with VMs with public IPs from the same pool across multiple virtual network cards.
 
-For the purposes of this discussion, we will assume that the routing between the border devices and the external storage is taken care of, and traffic can traverse the network appropriately. For this example, it doesn’t matter if the backbone is 1GbE, 10GbE, 25 GbE or even faster, however this would be important to consider as you plan for your integration, to address the performance needs of any applications accessing this external storage.
+For the purposes of this discussion, we will assume that the routing between the border devices and the external storage is taken care of, and traffic can traverse the network appropriately. For this example, it doesn’t matter if the backbone is 1 GbE, 10 GbE, 25 GbE or even faster, however this would be important to consider as you plan for your integration, to address the performance needs of any applications accessing this external storage.
 
-## Connect to a Windows Server File Server Storage
+## Connect to a Windows Server file server storage
 
 In this scenario, we will deploy and configure a Windows Server 2019 virtual machine on Azure Stack and prepare it to connect to an external file server, which will also be running Windows Server 2019. Where appropriate we will enable key features such as SMB Multichannel, to optimize performance and connectivity between the VM and external storage.
 
 ### Deploy the Windows Server 2019 VM on Azure Stack
 
-1.  From your **Azure Stack administration portal**, assuming this system has been correctly registered and is connected to the marketplace, Select on **Marketplace Management,** then, assuming you don’t already have a Windows Server 2019 image, Select on **Add from Azure** and then search for **Windows Server 2019**, adding the **Windows Server 2019 Datacenter** image.
+1.  From your **Azure Stack administrator portal**, assuming this system has been correctly registered and is connected to the marketplace, Select on **Marketplace Management,** then, assuming you don’t already have a Windows Server 2019 image, Select on **Add from Azure** and then search for **Windows Server 2019**, adding the **Windows Server 2019 Datacenter** image.
 
     ![](./media/azure-stack-network-howto-extend-datacenter/image2.png)
 
     Downloading a Windows Server 2019 image may take some time.
 
-2.  Once you have a Windows Server 2019 image in your Azure Stack environment, **log into the user portal**.
+2.  Once you have a Windows Server 2019 image in your Azure Stack environment, **log into the Azure Stack user portal**.
 
-3.  Once logged into the user portal, ensure you have a [subscription to an offer](https://docs.microsoft.com/azure-stack/operator/azure-stack-subscribe-plan-provision-vm?view=azs-1908), that allows you to provision IaaS resources (Compute, Storage and Network).
+3.  Once logged into the Azure Stack user portal, ensure you have a [subscription to an offer](https://docs.microsoft.com/azure-stack/operator/azure-stack-subscribe-plan-provision-vm?view=azs-1908), that allows you to provision IaaS resources (Compute, Storage, and Network).
 
-4.  Once you have a subscription available, back on the **dashboard** in the user portal, select **Create a resource**, select **Compute** and then select the **Windows Server 2019 Datacenter gallery item**.
+4.  Once you have a subscription available, back on the **dashboard** in the Azure Stack user portal, select **Create a resource**, select **Compute** and then select the **Windows Server 2019 Datacenter gallery item**.
 
 5.  On the **Basics** blade, complete the information as follows:
 
@@ -73,7 +75,7 @@ In this scenario, we will deploy and configure a Windows Server 2019 virtual mac
 
     f.  Then Select **OK**
 
-6.  On the **Choose a size** blade, select a **Standard_F8s_v2** and Select **Select**
+6.  On the **Choose a size** blade, select a **Standard_F8s_v2** and Select**
 
 7.  On the **Settings** blade, Select on the **Virtual network** and in the **Create virtual network** blade, adjust the address space to be **10.10.10.0/23** and update the Subnet address range to be **10.10.10.0/24** then Select **OK**
 
@@ -134,9 +136,9 @@ In this scenario, we will deploy and configure a Windows Server 2019 virtual mac
 
 25. Once successfully saved, return to the VM001 overview blade, and Select **Start** to start your configured Windows Server 2019 VM.
 
-### Configure the Windows Server 2019 File Server Storage
+### Configure the Windows Server 2019 file server storage
 
-For the purpose of this first scenario, I’ll be validating a configuration where the Windows Server 2019 File Server is a virtual machine running on Hyper-V. This virtual machine will be configured with 8 virtual processors, a single VHDX file, and most importantly, 2 virtual network adapters. In an ideal scenario, these network adapters will have different routable subnets, but in this test, they will have network adapters on the same subnet.
+For the purpose of this first scenario, I’ll be validating a configuration where the Windows Server 2019 File Server is a virtual machine running on Hyper-V. This virtual machine will be configured with eight virtual processors, a single VHDX file, and most importantly, two virtual network adapters. In an ideal scenario, these network adapters will have different routable subnets, but in this test, they will have network adapters on the same subnet.
 
 ![](./media/azure-stack-network-howto-extend-datacenter/image5.png)
 
@@ -168,9 +170,9 @@ Once updated and rebooted, you can now configure this server as a File Server.
 
 You have now created your file share on your file server.
 
-### Testing File Storage Performance & Connectivity
+### Testing file storage performance and connectivity
 
-To validate communication and run some rudimentary tests, firstly, log back into the **user portal** on your **Azure Stack** system and navigate to the **overview** blade for **VM001**
+To validate communication and run some rudimentary tests, firstly, log back into the Azure Stack user portal on your **Azure Stack** system and navigate to the **overview** blade for **VM001**
 
 1)  Select **Connect** to establish an RDP connection into VM001
 
@@ -186,7 +188,7 @@ To validate communication and run some rudimentary tests, firstly, log back into
 
 6)  Save the file, and close Notepad
 
-7)  Open **CMD** and ping the name of the File Server that you entered in the hosts file This should return the IP address of one of the network adapters on the File Server, so manually test the communication to the other adapter, by pinging the IP address manually.
+7)  Open **CMD** and ping the name of the File Server that you entered in the hosts file. This should return the IP address of one of the network adapters on the File Server, so manually test the communication to the other adapter, by pinging the IP address manually.
 
 8)  
 
@@ -201,9 +203,9 @@ In this scenario, we will deploy and configure a Windows Server 2019 virtual mac
 
 If you haven’t already deployed the Windows Server 2019 VM on Azure Stack, please follow the steps above, 1-25 and return here once completed.
 
-### Configure the Windows Server 2019 iSCSI Target
+### Configure the Windows Server 2019 iSCSI target
 
-For the purpose of this second scenario, I’ll be validating a configuration where the Windows Server 2019 iSCSI Target is a virtual machine running on Hyper-V. This virtual machine will be configured with 8 virtual processors, a single VHDX file, and most importantly, 2 virtual network adapters. In an ideal scenario, these network adapters will have different routable subnets, but in this test, they will have network adapters on the same subnet.
+For the purpose of this second scenario, I’ll be validating a configuration where the Windows Server 2019 iSCSI Target is a virtual machine running on Hyper-V. This virtual machine will be configured with eight virtual processors, a single VHDX file, and most importantly, two virtual network adapters. In an ideal scenario, these network adapters will have different routable subnets, but in this test, they will have network adapters on the same subnet.
 
 ![](./media/azure-stack-network-howto-extend-datacenter/image5.png)
 
@@ -214,3 +216,5 @@ I’d encourage you to update your File Server with the latest cumulative update
 Once updated and rebooted, you can now configure this server as an iSCSI Target Server.
 
 ## Next Steps
+
+[Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)  
