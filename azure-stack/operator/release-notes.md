@@ -86,7 +86,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
-- The privileged endpoint command "Set-BmcCredential" does now update the credential in the Baseboard Management Controller.
+- The privileged endpoint command **Set-BmcCredential** now updates the credential in the Baseboard Management Controller.
 
 ### Changes
 
