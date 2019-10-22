@@ -41,9 +41,12 @@ The following table shows the logical networks and associated IPv4 subnet ranges
 | Public VIP | Azure Stack uses a total of 31 addresses from this network. Eight public IP addresses are used for a small set of Azure Stack services, and the rest are used by tenant virtual machines. If you plan to use App Service and the SQL resource providers, 7 more addresses are used. The remaining 15 IPs are reserved for future Azure services. | /26 (62 hosts) - /22 (1022 hosts)<br><br>Recommended = /24 (254 hosts) | 
 | Switch infrastructure | Point-to-point IP addresses for routing purposes, dedicated switch management interfaces, and loopback addresses assigned to the switch. | /26 | 
 | Infrastructure | Used for Azure Stack internal components to communicate. | /24 |
-| Private | Used for the storage network and private VIPs. | /24 | 
+| Private | Used for the storage network and private VIPs. Starting on 1910, the system will request an additional /20 of Private IP space for future expansion of internal components. | /24 and /20 | 
 | BMC | Used to communicate with the BMCs on the physical hosts. | /26 | 
 | | | |
+
+> [!NOTE]
+> Starting on 1910, after deployment of update, and alert on the portal will remind the operator to run the new PEP cmdlet "Set-AzsInternalNetwork" to add a new Private IP space for future expansions of internal components. Please review the [1910 Release Notes](release-notes.md) for instructions on running the cmdlet. For guidance on selecting the /20 Private IP space, please check the Private Network section on this page.
 
 ## Network infrastructure
 The network infrastructure for Azure Stack consists of several logical networks that are configured on the switches. The following diagram shows these logical networks, and how they integrate with the top-of-rack (TOR), baseboard management controller (BMC), and border (customer network) switches.
@@ -56,10 +59,12 @@ This network is dedicated to connecting all the baseboard management controllers
 The HLH also hosts the Deployment VM (DVM). The DVM is used during Azure Stack deployment and is removed when deployment completes. The DVM requires internet access in connected deployment scenarios to test, validate, and access multiple components. These components can be inside and outside of your corporate network; for example, NTP, DNS, and Azure. For more information about connectivity requirements, see the [NAT section in Azure Stack firewall integration](azure-stack-firewall.md#network-address-translation). 
 
 ### Private network
-This /24 (254 host IPs) network is private to the Azure Stack region (does not expand beyond the border switch devices of the Azure Stack region) and is divided into two subnets:
+This /24 (254 host IPs) network is private to the Azure Stack region (does not route beyond the border switch devices of the Azure Stack system) and is divided into two subnets:
 
 - **Storage network**. A /25 (126 host IPs) network used to support the use of Spaces Direct and Server Message Block (SMB) storage traffic and virtual machine live migration. 
 - **Internal virtual IP network**. A /25 network dedicated to internal-only VIPs for the software load balancer.
+
+Starting on 1910, the Azure Stack system will require an additional /20 (4096 IPs) of Private IP space. This network will be private to the Azure Stack region (does not route beyond the border switch devices of the Azure Stack system) and can be reused on multiple Azure Stack systems within your datacenter. This network will be reserved for future expansions of our internal components. This additional network will be entered into a system running 1910 through the "Set-AzsInternalNetwork" PEP cmdlet, for guidance on this cmdlet please review the [1910 Release Notes](release-notes.md).
 
 ### Azure Stack infrastructure network
 This /24 network is dedicated to internal Azure Stack components so that they can communicate and exchange data among themselves. This subnet requires routable IP addresses, but is kept private to the solution by using Access Control Lists (ACLs). It isn't expected to be routed beyond the border switches except for a small range equivalent in size to a /27 network utilized by some of these services when they require access to external resources and/or the internet. 
