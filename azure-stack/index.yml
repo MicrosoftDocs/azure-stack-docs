@@ -34,7 +34,7 @@ productDirectory:
       - url: /azure-stack/operator/azure-stack-overview
         text: What is Azure Stack Hub?
       - url: /azure-stack/operator/azure-stack-servicing-policy
-      - text: Azure Stack Hub servicing policy
+        text: Azure Stack Hub servicing policy
   - title: Azure Stack Edge
     imageSrc: media/index/azure-stack-edge.svg
     links:
