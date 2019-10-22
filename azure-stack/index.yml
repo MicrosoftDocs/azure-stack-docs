@@ -41,14 +41,13 @@ productDirectory:
       - url: /azure/databox-online/data-box-edge-overview
         text: What is Azure Stack Edge?
   - title: Azure Stack HCI
-    imageSrc: media/index/azure-stack-hub.svg
+    imageSrc: media/index/vm-images.svg
     links:
       - url: /azure-stack/operator/azure-stack-hci-overview
         text: Azure Stack HCI overview
 
 # conceptualContent section (optional)
 conceptualContent:
-# itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
   title: Azure Stack Hub
   #summary: 
   items:
@@ -97,6 +96,63 @@ conceptualContent:
       footerLink:
         url: /asdk
         text: See more    
+  title: Azure Stack Edge
+  #summary: 
+  items:
+    - title: Overview
+      links:
+        - url: /azure/databox-online/data-box-edge-overview
+          itemType: overview
+          text: What is Azure Stack Edge?
+      # footerLink (optional)
+      footerLink:
+        url: /azure/databox-online/
+        text: See more          
+    - title: Concepts and tutorials
+      links:
+        - url: /azure/databox-online/data-box-edge-system-requirements
+          itemType: concept
+          text: Review system requirements       
+        - url: /azure/databox-online/data-box-edge-limits
+          itemType: concept
+          text: Understand limits
+        - url: /azure/databox-online/data-box-edge-deploy-prep
+          itemType: tutorial
+          text: Prepare to deploy 
+        - url: /azure/databox-online/data-box-edge-deploy-install
+          itemType: tutorial
+          text: Install                            
+      # footerLink (optional)
+      footerLink:
+        url: /azure/databox-online/
+        text: See more   
+    - title: Develop
+      links:
+        - url: /azure/databox-online/data-box-edge-create-iot-edge-module
+          itemType: how-to-guide
+          text: Develop an IoT Edge module (C#)  
+        - url: /samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
+          itemType: how-to-guide
+          text: IoT Edge module samples (C#)                  
+      # footerLink (optional)
+      footerLink:
+        url: /azure/databox-online/
+        text: See more   
+  title: Azure Stack HCI
+  #summary: 
+  items:
+    - title: Overview
+      links:
+        - url: /azure-stack/operator/azure-stack-hci-overview
+          itemType: overview
+          text: Azure Stack HCI overview
+        - url: https://azure.microsoft.com/en-us/overview/azure-stack/hci/
+          itemType: overview
+          text: Azure Stack HCI solutions overview
+        - url: https://www.microsoft.com/en-us/cloud-platform/azure-stack-hci-catalog
+          itemType: reference
+          text: Azure Stack HCI catalog         
+
 additionalContent:
   sections:
     - title: Reference
