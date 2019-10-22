@@ -1,0 +1,113 @@
+### YamlMime:Hub
+title: Azure Stack Documentation 
+summary: Azure Stack is a family of products and solutions that extend Azure to your datacenter or the edge, including Azure Stack Hub, Azure Stack HCI, and Azure Stack Edge.
+brand: azure
+
+metadata:
+  title: Azure Stack Documentation 
+  description: Azure Stack is a family of products and solutions that extend Azure to your datacenter or the edge, including Azure Stack Hub, Azure Stack HCI, and Azure Stack Edge..
+  ms.service: azure-stack
+  ms.topic: hub-page
+  author: BryanLa
+  ms.author: bryanla
+  ms.date: 11/04/2019
+
+# highlightedContent section (optional)
+# Maximum of 8 items
+highlightedContent:
+# itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
+  items:
+    # Card
+    - title: Annoucement blog post?
+      itemType: overview
+      url: https://azure.microsoft.com/en-us/blog/tag/azure-stack/
+    - title: Azure vs. Azure Stack Hub vs. Azure Stack HCI
+      itemType: overview
+      url: /azure-stack/operator/compare-azure-azure-stack
+
+# productDirectory section (optional)
+productDirectory:
+  items:
+  - title: Azure Stack Hub 
+    imageSrc: media/index/azure-stack-hub.svg
+    links:
+      - url: /azure-stack/operator/azure-stack-overview
+        text: What is Azure Stack Hub?
+      - url: /azure-stack/operator/azure-stack-servicing-policy
+      - text: Azure Stack Hub servicing policy
+  - title: Azure Stack Edge
+    imageSrc: media/index/azure-stack-edge.svg
+    links:
+      - url: /azure/databox-online/data-box-edge-overview
+        text: What is Azure Stack Edge?
+  - title: Azure Stack HCI
+    imageSrc: media/index/azure-stack-hub.svg
+    links:
+      - url: /azure-stack/operator/azure-stack-hci-overview
+        text: Azure Stack HCI overview
+
+# conceptualContent section (optional)
+conceptualContent:
+# itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
+  title: Azure Stack Hub
+  #summary: 
+  items:
+    - title: Operator
+      links:
+        - url: /azure-stack/operator/azure-stack-create-service-principals
+          itemType: how-to-guide
+          text: Use an app identity to access resources
+        - url: /azure-stack/operator/release-notes
+          itemType: overview
+          text: Release notes
+        - url: /azure-stack/operator/azure-stack-hci-overview
+          itemType: overview
+          text: Azure Stack HCI overview  
+      # footerLink (optional)
+      footerLink:
+        url: /operator
+        text: See more
+    - title: User
+      links:
+        - url: /user/azure-stack-vm-sizes.md
+          itemType: how-to-guide
+          text: Supported VM sizes
+        - url: /user/azure-stack-considerations.md
+          itemType: overview
+          text: Key considerations for building apps
+        - url: /user/azure-stack-key-vault-manage-portal.md
+          itemType: how-to-guide
+          text: Create and manage a Key Vault                    
+      # footerLink (optional)
+      footerLink:
+        url: /user
+        text: See more
+    - title: Azure Stack Development Kit (ASDK)
+      links:
+        - url: /azure-stack/asdk/asdk-deploy-considerations
+          itemType: concept
+          text: ASDK requirements and considerations
+        - url: /azure-stack/asdk/asdk-download
+          itemType: how-to-guide
+          text: Download and extract the ASDK 
+        - url: /azure-stack/asdk/asdk-prepare-host
+          itemType: how-to-guide
+          text: Prepare the ASDK host computer                  
+      # footerLink (optional)
+      footerLink:
+        url: /asdk
+        text: See more    
+additionalContent:
+  sections:
+    - title: Reference
+      items:
+      - title: Azure Stack Hub PowerShell
+        summary: Install and use the Azure Stack Hub PowerShell module.
+        url: /powershell/azure/azure-stack/overview
+      - title: Azure CLI
+        summary: Find resource management commands in the CLI reference.
+        url: /cli/azure/?view=azure-cli-latest
+      - title: Azure Stack Hub Admin REST APIs
+        summary: Explore the Admin REST APIs.
+        url: /rest/api/azure-stack/
+           
