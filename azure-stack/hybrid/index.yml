@@ -1,10 +1,10 @@
 ### YamlMime:Landing
 
-title: Patterns for building hybrid solutions on Azure and Azure Stack
+title: Azure hybrid patterns and solutions documentation
 summary: Learn how to leverage hybrid patterns and solution examples in your app development. Azure and Azure Stack enable development of hybrid applications, built on a suite of intelligent cloud and intelligent edge services. 
 
 metadata:
-  title: Patterns for building hybrid solutions on Azure and Azure Stack
+  title: Azure hybrid patterns and solutions documentation
   description: Learn how to leverage hybrid patterns and solution examples in your app development. Azure and Azure Stack enable development of hybrid applications, built on a suite of intelligent cloud and intelligent edge services. 
   ms.service: azure-stack 
   ms.topic: landing-page 
@@ -30,7 +30,7 @@ landingContent:
             url: overview-app-design-considerations.md
 
   # Card
-  - title: Hybrid patterns
+  - title: Explore hybrid patterns
     linkLists:
       - linkListType: architecture
         links:
@@ -42,7 +42,7 @@ landingContent:
             url: solution-overview-geo-distributed.md
 
   # Card
-  - title: Hybrid solution overviews
+  - title: Explore hybrid solutions
     linkLists:
       - linkListType: overview
         links:
@@ -50,7 +50,7 @@ landingContent:
             url: solution-overview-retail-footfall-detection.md
 
   # Card
-  - title: Hybrid solution deployment guides
+  - title: Deploy hybrid solutions
     linkLists:
       - linkListType: tutorial
         links:
@@ -64,7 +64,7 @@ landingContent:
             url: solution-deployment-guide-geo-distributed.md
 
   # Card
-  - title: Footfall detection (retail)
+  - title: Deploy a retail footfall detection solution
     linkLists:
       - linkListType: architecture
         links:
@@ -72,9 +72,9 @@ landingContent:
             url: solution-overview-cross-cloud-scaling.md
       - linkListType: overview
         links:
-          - text: Footfall detection (retail)
+          - text: Solution
             url: solution-overview-retail-footfall-detection.md
       - linkListType: tutorial
         links:
-          - text: Footfall detection (retail)
+          - text: Solution deployment guide
             url: solution-deployment-guide-retail-footfall-detection.md
