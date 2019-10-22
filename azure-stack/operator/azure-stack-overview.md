@@ -45,7 +45,7 @@ Azure Stack enables these usage scenarios by providing:
 - Azure services delivery from on-premises using hybrid cloud computing power. Adopt common operational practices across Azure and Azure Stack to deploy and operate Azure IaaS (infrastructure as a service) and PaaS (platform as a service) services using the same administrative experiences and tools as Azure. Microsoft delivers continuous Azure innovation to Azure Stack, including new Azure services, updates to existing services, and additional Azure Marketplace apps
 
 ## Azure Stack architecture
-Azure Stack integrated systems are comprised in racks of 4-16 servers built by trusted hardware partners and delivered straight to your datacenter. After delivery, a solution provider will work with you to deploy the integrated system and ensure the Azure Stack solution meets your business requirements. You need to prepare your datacenter by ensuring all required power and cooling, border connectivity, and other required datacenter integration requirements are in place.
+Azure Stack integrated systems are comprised in racks of 4-16 servers built by trusted hardware partners and delivered straight to your datacenter. After delivery, a solution provider will work with you to deploy the integrated system and ensure the Azure Stack solution meets your business requirements. Prepare your datacenter by ensuring all required power and cooling, border connectivity, and other required datacenter integration requirements are in place.
 
 > For more information about the Azure Stack datacenter integration experience, see [Azure Stack datacenter integration](azure-stack-customer-journey.md).
 
@@ -116,8 +116,8 @@ To achieve high availability of a multi-VM production system in Azure, VMs are p
 
 While the infrastructure of Azure Stack is already resilient to failures, the underlying technology (failover clustering) still incurs some downtime for VMs on an impacted physical server if there's a hardware failure. Azure Stack supports having an availability set with a maximum of three fault domains to be consistent with Azure.
 
-- **Fault domains**: VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack nodes). If there's a hardware failure, VMs from the failed fault domain will be restarted in other fault domains, but kept in separate fault domains from the other VMs in the same availability set if possible. When the hardware comes back online, VMs will be rebalanced to maintain high availability.
- 
+- **Fault domains**: VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack nodes). If there's a hardware failure, VMs from the failed fault domain will be restarted in other fault domains. They'll be kept in separate fault domains from the other VMs but in the same availability set if possible. When the hardware comes back online, VMs will be rebalanced to maintain high availability.
+
 - **Update domains**: Update domains are another Azure concept that provides high availability in availability sets. An update domain is a logical group of underlying hardware that can undergo maintenance at the same time. VMs located in the same update domain will be restarted together during planned maintenance. As tenants create VMs within an availability set, the Azure platform automatically distributes VMs across these update domains. In Azure Stack, VMs are live migrated across the other online hosts in the cluster before their underlying host is updated. Since there's no tenant downtime during a host update, the update domain feature on Azure Stack only exists for template compatibility with Azure. VMs in an availability set will show **0** as their update domain number on the portal.
 
 ## Role-based access control
