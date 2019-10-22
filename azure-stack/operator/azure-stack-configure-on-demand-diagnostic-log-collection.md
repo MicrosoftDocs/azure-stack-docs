@@ -143,6 +143,18 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
   Get-AzureStackLog -OutputPath C:\KubernetesLogs -InputSasUri "https://diagnostics.blob.redmond.ext-n26r1102.masd.stbtest.microsoft.com/kuberneteslogs?sv=2017-04-17=sco&sp=rl&se=2019-09-30T02:06:54Z&st=2019-08-22T18:06:54Z&spr=https&sig=EtmCy8Got4Ro8ZNCSKLuf4tgBcC%2BOYSDwNdfa8czhlE%3D" -FromDate "8/22/2019 06:00:00" -ToDate "8/22/2019 08:00:00" 
   ```
 
+* Collect logs and store them in the specified Azure Storage blob container. The general syntax for this operation is as follows:
+
+  ```powershell
+  Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
+  ```
+
+  For example:
+
+  ```powershell
+  Get-AzureStackLog -OutputSasUri "https://<storageAccountName>.blob.core.windows.net/<ContainerName><SAS token>"
+  ```
+
   > [!NOTE]
   > This procedure is useful for uploading logs. Even if you don't have an SMB share accessible or internet access, you can create a blob storage account on your Azure Stack to transfer the logs, and then use your client to retrieve those logs.  
 
