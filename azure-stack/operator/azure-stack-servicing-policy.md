@@ -65,10 +65,10 @@ Hotfixes are downloaded and installed just like the regular full update packages
 
 For information about currently available hotfixes, see the release notes for that update:
 
-- [Azure Stack 1910 hotfix](/azure-stack/operator/release-notes?view=azs-1910#hotfixes-1910)
-- [Azure Stack 1908 hotfix](/azure-stack/operator/release-notes?view=azs-1908#hotfixes-1908)
-- [Azure Stack 1907 hotfix](/azure-stack/operator/release-notes?view=azs-1907#hotfixes-1907)
-- [Azure Stack 1906 hotfix](/azure-stack/operator/release-notes?view=azs-1906#hotfixes-1906)
+- [Azure Stack 1910 hotfix](/azure-stack/operator/release-notes?view=azs-1910#hotfixes)
+- [Azure Stack 1908 hotfix](/azure-stack/operator/release-notes?view=azs-1908#hotfixes)
+- [Azure Stack 1907 hotfix](/azure-stack/operator/release-notes?view=azs-1907#hotfixes)
+- [Azure Stack 1906 hotfix](/azure-stack/operator/release-notes?view=azs-1906#hotfixes)
 
 ## Keep your system under support
 
