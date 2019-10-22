@@ -1,6 +1,6 @@
 ---
-title: What is Azure Stack? | Microsoft Docs
-description: Learn how Azure Stack lets you run Azure services in your datacenter.  
+title: Azure Stack overview | Microsoft Docs
+description: An overview of what Azure Stack is and how it lets you run Azure services in your datacenter.  
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -21,7 +21,6 @@ ms.lastreviewed: 05/14/2019
 
 ---
 # Azure Stack overview
-
 Azure Stack is an extension of Azure that provides a way to run apps in an on-premises environment and deliver Azure services in your datacenter. With a consistent cloud platform, organizations can confidently make technology decisions based on business requirements, rather than business decisions based on technology limitations.
 
 ## Why use Azure Stack?
