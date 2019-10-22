@@ -48,7 +48,7 @@ The following list describes the certificate requirements that are needed to dep
 - The passwords to all certificate pfx files must be the same at the time of deployment.
 - Password to the certificate pfx has to be a complex password. Make note of this password because you'll use it as a deployment parameter. The password must meet the following password complexity requirements:
     - A minimum length of eight characters.
-    - At least three of the following: uppercase letter, lowercase letter, numbers from 0-9, special characters, alphabetical character that's not uppercase or lowercase.
+    - At least three of the following characters: uppercase letter, lowercase letter, numbers from 0-9, special characters, alphabetical character that's not uppercase or lowercase.
 - Ensure that the subject names and subject alternative names in the subject alternative name extension (x509v3_config) match. The subject alternative name field lets you specify additional host names (websites, IP addresses, common names) to be protected by a single SSL certificate.
 
 > [!NOTE]  
@@ -84,7 +84,7 @@ For the production environments, we recommend individual certificates are genera
 | Admin Extension Host | *.adminhosting.\<region>.\<fqdn> (Wildcard SSL Certificates) | Admin Extension Host | adminhosting.\<region>.\<fqdn> |
 | Public Extension Host | *.hosting.\<region>.\<fqdn> (Wildcard SSL Certificates) | Public Extension Host | hosting.\<region>.\<fqdn> |
 
-If you deploy Azure Stack using the Azure AD deployment mode, you only need to request the certificates listed in previous table. However, if you deploy Azure Stack using the AD FS deployment mode, you must also request the certificates described in the following table:
+If you deploy Azure Stack using the Azure AD deployment mode, you only need to request the certificates listed in previous table. But if you deploy Azure Stack using the AD FS deployment mode, you must also request the certificates described in the following table:
 
 |Deployment folder|Required certificate subject and subject alternative names (SAN)|Scope (per region)|Subdomain namespace|
 |-----|-----|-----|-----|
