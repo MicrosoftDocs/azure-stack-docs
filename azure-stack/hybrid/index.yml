@@ -1,5 +1,8 @@
 ### YamlMime:Landing
 
+title: Patterns for building hybrid solutions on Azure and Azure Stack
+summary: Learn how to leverage hybrid patterns and solution examples in your app development. Azure and Azure Stack enable development of hybrid applications, built on a suite of intelligent cloud and intelligent edge services. 
+
 metadata:
   title: Patterns for building hybrid solutions on Azure and Azure Stack
   description: Learn how to leverage hybrid patterns and solution examples in your app development. Azure and Azure Stack enable development of hybrid applications, built on a suite of intelligent cloud and intelligent edge services. 
@@ -59,3 +62,19 @@ landingContent:
             url: solution-deployment-guide-footfall-detection.md
           - text: Geo-distributed app
             url: solution-deployment-guide-geo-distributed.md
+
+  # Card
+  - title: Footfall detection (retail)
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Pattern
+            url: solution-overview-cross-cloud-scaling.md
+      - linkListType: overview
+        links:
+          - text: Footfall detection (retail)
+            url: solution-overview-footfall-detection.md
+      - linkListType: tutorial
+        links:
+          - text: Footfall detection (retail)
+            url: solution-deployment-guide-footfall-detection.md
