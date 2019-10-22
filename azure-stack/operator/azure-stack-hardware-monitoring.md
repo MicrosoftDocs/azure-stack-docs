@@ -34,7 +34,7 @@ The health and monitoring system of Azure Stack already monitors the status of t
 
 ## SNMP listener scenario
 
-An SNMP v3 listener is running on all three ERCS instances on TCP port 162. The baseboard management controller (BMC) must be configured to send SNMP traps to the Azure Stack listener. You can get the three PEP IPs via the admin portal by opening the region properties view.
+An SNMP v3 listener is running on all three ERCS instances on TCP port 162. The baseboard management controller (BMC) must be configured to send SNMP traps to the Azure Stack listener. You can get the three PEP IPs from the admin portal by opening the region properties view.
 
 Sending traps to the listener requires authentication and must use the same credential as accessing base BMC itself.
 
