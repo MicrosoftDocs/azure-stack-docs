@@ -151,7 +151,29 @@ conceptualContent:
           text: Azure Stack HCI solutions overview
         - url: https://www.microsoft.com/en-us/cloud-platform/azure-stack-hci-catalog
           itemType: reference
-          text: Azure Stack HCI catalog         
+          text: Azure Stack HCI catalog     
+    - title: TBD
+      links:    
+        - url: /azure-stack/operator/azure-stack-hci-overview
+          itemType: overview
+          text: TBD
+        - url: https://azure.microsoft.com/en-us/overview/azure-stack/hci/
+          itemType: overview
+          text: TBD
+        - url: https://www.microsoft.com/en-us/cloud-platform/azure-stack-hci-catalog
+          itemType: reference
+          text: TBD 
+    - title: TBD
+      links:    
+        - url: /azure-stack/operator/azure-stack-hci-overview
+          itemType: overview
+          text: TBD
+        - url: https://azure.microsoft.com/en-us/overview/azure-stack/hci/
+          itemType: overview
+          text: TBD
+        - url: https://www.microsoft.com/en-us/cloud-platform/azure-stack-hci-catalog
+          itemType: reference
+          text: TBD 
 
 additionalContent:
   sections:
