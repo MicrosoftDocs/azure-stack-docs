@@ -94,8 +94,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
-- The privileged endpoint command **Set-BmcCredential** now updates the credential in the Baseboard Management Controller.
-
 - Added auditing rule to report when an external device (for example, a USB key) is mounted to a node of the Azure Stack infrastructure. The audit log is emitted via syslog and will be displayed as **Microsoft-Windows-Security-Auditing: 6416|Plug and Play Events**. For more information about how to configure the syslog client, see [Syslog forwarding](azure-stack-integrate-security.md).
 
 - Azure Stack is moving to 4096 bit RSA keys for the internal certificates. Running internal secret rotation will replace old 2048 bit certificates with 4096 bit long certificates. For more information about secret rotation in Azure Stack, see [Rotate secrets in Azure Stack](azure-stack-rotate-secrets.md).
