@@ -41,12 +41,14 @@ The following list describes the certificate requirements that are needed to dep
 - The certificate's PFX Encryption should be 3DES. 
 - The certificate signature algorithm shouldn't be SHA1. 
 - The certificate format must be PFX, as both the public and private keys are required for Azure Stack installation. The private key must have the local machine key attribute set.
-- The PFX encryption must be 3DES (this is default when exporting from a Windows 10 client or Windows Server 2016 certificate store).
+- The PFX encryption must be 3DES (this encryption is default when exporting from a Windows 10 client or Windows Server 2016 certificate store).
 - The certificate pfx files must have a value "Digital Signature" and "KeyEncipherment" in its "Key Usage" field.
 - The certificate pfx files must have the values "Server Authentication (1.3.6.1.5.5.7.3.1)" and "Client Authentication (1.3.6.1.5.5.7.3.2)" in the "Enhanced Key Usage" field.
 - The certificate's "Issued to:" field must not be the same as its "Issued by:" field.
 - The passwords to all certificate pfx files must be the same at the time of deployment.
-- Password to the certificate pfx has to be a complex password. Create a password that meets the following password complexity requirements. A minimum length of eight characters. The password contains at least three of the following: uppercase letter, lowercase letter, numbers from 0-9, special characters, alphabetical character that's neither uppercase nor lowercase. Make note of this password. You'll use it as a deployment parameter.
+- Password to the certificate pfx has to be a complex password. Make note of this password because you'll use it as a deployment parameter. The password must meet the following password complexity requirements:
+    - A minimum length of eight characters.
+    - At least three of the following: uppercase letter, lowercase letter, numbers from 0-9, special characters, alphabetical character that's not uppercase or lowercase.
 - Ensure that the subject names and subject alternative names in the subject alternative name extension (x509v3_config) match. The subject alternative name field lets you specify additional host names (websites, IP addresses, common names) to be protected by a single SSL certificate.
 
 > [!NOTE]  
@@ -62,13 +64,13 @@ Certificates with the appropriate DNS names for each Azure Stack public infrastr
 
 For your deployment, the [region] and [externalfqdn] values must match the region and external domain names that you chose for your Azure Stack system. As an example, if the region name was *Redmond* and the external domain name was *contoso.com*, the DNS names would have the format *&lt;prefix>.redmond.contoso.com*. The *&lt;prefix>* values are predesignated by Microsoft to describe the endpoint secured by the certificate. In addition, the *&lt;prefix>* values of the external infrastructure endpoints depend on the Azure Stack service that uses the specific endpoint. 
 
-For the production environments, we recommend individual certificates are generated for each endpoint and copied into the corresponding directory. For development environments, certificates can be provided as a single wild card certificate covering all namespaces in the Subject and Subject Alternative Name (SAN) fields copied into all directories. A single certificate covering all endpoints and services is an insecure posture hence development-only. Remember, both options require you to use wildcard certificates for endpoints such as **acs** and Key Vault where they're required.
+For the production environments, we recommend individual certificates are generated for each endpoint and copied into the corresponding directory. For development environments, certificates can be provided as a single wild card certificate covering all namespaces in the Subject and Subject Alternative Name (SAN) fields copied into all directories. A single certificate covering all endpoints and services is an insecure posture and hence development-only. Remember, both options require you to use wildcard certificates for endpoints such as **acs** and Key Vault where they're required.
 
 > [!Note]  
 > During deployment, you must copy certificates to the deployment folder that matches the identity provider you're deploying against (Azure AD or AD FS). If you use a single certificate for all endpoints, you must copy that certificate file into each deployment folder as outlined in the following tables. The folder structure is pre-built in the deployment virtual machine and can be found at: C:\CloudDeployment\Setup\Certificates.
 
 
-| Deployment folder | Required certificate subject and subject alternative names (SAN) | Scope (per region) | SubDomain namespace |
+| Deployment folder | Required certificate subject and subject alternative names (SAN) | Scope (per region) | Subdomain namespace |
 |-------------------------------|------------------------------------------------------------------|----------------------------------|-----------------------------|
 | Public Portal | portal.&lt;region>.&lt;fqdn> | Portals | &lt;region>.&lt;fqdn> |
 | Admin Portal | adminportal.&lt;region>.&lt;fqdn> | Portals | &lt;region>.&lt;fqdn> |
@@ -84,7 +86,7 @@ For the production environments, we recommend individual certificates are genera
 
 If you deploy Azure Stack using the Azure AD deployment mode, you only need to request the certificates listed in previous table. However, if you deploy Azure Stack using the AD FS deployment mode, you must also request the certificates described in the following table:
 
-|Deployment folder|Required certificate subject and subject alternative names (SAN)|Scope (per region)|SubDomain namespace|
+|Deployment folder|Required certificate subject and subject alternative names (SAN)|Scope (per region)|Subdomain namespace|
 |-----|-----|-----|-----|
 |ADFS|adfs.*&lt;region>.&lt;fqdn>*<br>(SSL Certificate)|ADFS|*&lt;region>.&lt;fqdn>*|
 |Graph|graph.*&lt;region>.&lt;fqdn>*<br>(SSL Certificate)|Graph|*&lt;region>.&lt;fqdn>*|
@@ -101,7 +103,7 @@ If you're planning to deploy the additional Azure Stack PaaS services (SQL, MySQ
 
 The following table describes the endpoints and certificates required for the SQL and MySQL adapters and for App Service. You don't need to copy these certificates to the Azure Stack deployment folder. Instead, you provide these certificates when you install the additional resource providers. 
 
-|Scope (per region)|Certificate|Required certificate subject and Subject Alternative Names (SANs)|SubDomain namespace|
+|Scope (per region)|Certificate|Required certificate subject and Subject Alternative Names (SANs)|Subdomain namespace|
 |-----|-----|-----|-----|
 |SQL, MySQL|SQL and MySQL|&#42;.dbadapter.*&lt;region>.&lt;fqdn>*<br>(Wildcard SSL Certificate)|dbadapter.*&lt;region>.&lt;fqdn>*|
 |App Service|Web Traffic Default SSL Cert|&#42;.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*<br>&#42;.sso.appservice.*&lt;region>.&lt;fqdn>*<br>(Multi Domain Wildcard SSL Certificate<sup>1</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
