@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/08/2019
+ms.date: 10/22/2019
 ms.author: justinha
 ms.reviewer: shisab
 ms.lastreviewed: 10/08/2019
@@ -131,16 +131,16 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
   Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
 
-* Collect logs and store them in the specified Azure Storage blob container. The general syntax for this operation is as follows:
+* Collect logs from tenant deployments running self-managed Azure Kubernetes Services (AKS) on Azure Stack. AKS logs should be stored in a tenant storage account in a format that will enable the collection time range to be applied to them as well. 
 
   ```powershell
-  Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
+  Get-AzureStackLog -OutputPath <<Kubernetes Log Location>> -InputSasUri "<<SasURI>>" -FromDate "<<beginning of the time range>>" -ToDate "<<end of the time range>>" 
   ```
 
   For example:
 
   ```powershell
-  Get-AzureStackLog -OutputSasUri "https://<storageAccountName>.blob.core.windows.net/<ContainerName><SAS token>"
+  Get-AzureStackLog -OutputPath C:\KubernetesLogs -InputSasUri "https://diagnostics.blob.redmond.ext-n26r1102.masd.stbtest.microsoft.com/kuberneteslogs?sv=2017-04-17=sco&sp=rl&se=2019-09-30T02:06:54Z&st=2019-08-22T18:06:54Z&spr=https&sig=EtmCy8Got4Ro8ZNCSKLuf4tgBcC%2BOYSDwNdfa8czhlE%3D" -FromDate "8/22/2019 06:00:00" -ToDate "8/22/2019 08:00:00" 
   ```
 
   > [!NOTE]
