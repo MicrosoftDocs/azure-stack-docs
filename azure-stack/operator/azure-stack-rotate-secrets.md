@@ -12,11 +12,11 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2019
+ms.date: 09/30/2019
 ms.reviewer: ppacent
 ms.author: mabrigg
 ms.lastreviewed: 09/30/2019
-monikerRange: '>=azs-1803'
+monikerRange: '>=azs-1802'
 ---
 
 # Rotate secrets in Azure Stack
