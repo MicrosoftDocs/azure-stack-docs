@@ -47,7 +47,7 @@ landingContent:
       - linkListType: overview
         links:
           - text: Footfall detection (retail)
-            url: solution-overview-footfall-detection.md
+            url: solution-overview-retail-footfall-detection.md
 
   # Card
   - title: Hybrid solution deployment guides
@@ -57,9 +57,9 @@ landingContent:
           - text: Cross-cloud scaling
             url: solution-deployment-guide-cross-cloud-scaling.md
           - text: DevOps hybrid CI/CD
-            url: solution-deployment-guide-devops-cicd-pipeline.md
+            url: solution-deployment-guide-cicd-pipeline.md
           - text: Footfall detection (retail)
-            url: solution-deployment-guide-footfall-detection.md
+            url: solution-deployment-guide-retail-footfall-detection.md
           - text: Geo-distributed app
             url: solution-deployment-guide-geo-distributed.md
 
@@ -73,8 +73,8 @@ landingContent:
       - linkListType: overview
         links:
           - text: Footfall detection (retail)
-            url: solution-overview-footfall-detection.md
+            url: solution-overview-retail-footfall-detection.md
       - linkListType: tutorial
         links:
           - text: Footfall detection (retail)
-            url: solution-deployment-guide-footfall-detection.md
+            url: solution-deployment-guide-retail-footfall-detection.md
