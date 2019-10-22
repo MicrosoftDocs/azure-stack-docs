@@ -2,7 +2,7 @@
   href: index.yml
 - name: Overview
   items:
-  - name: Hybrid patterns & solution examples
+  - name: Hybrid patterns and solution examples
     href: overview-patterns-solution-examples.md
 - name: Patterns
   items:
@@ -12,7 +12,7 @@
         href: solution-overview-cicd-pipeline.md
       - name: Geo-distributed application
         href: solution-overview-geo-distributed.md
-- name: Solution examples
+- name: Solutions
   items:
   - name: Overviews
     items: 
@@ -20,7 +20,7 @@
       href: solution-overview-retail-footfall-detection.md
   - name: Deployment guides
     items:
-    - name: Cross cloud scaling 
+    - name: Cross-cloud scaling 
       href: solution-deployment-guide-cross-cloud-scaling.md
     - name: DevOps hybrid CI/CD 
       href: solution-deployment-guide-cicd-pipeline.md

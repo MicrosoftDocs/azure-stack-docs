@@ -1,89 +1,61 @@
-### YamlMime:YamlDocument
-documentType: LandingData
-title: Azure Stack Hybrid Documentation
+### YamlMime:Landing
+
 metadata:
-  title: Azure Stack Documentation - Tutorials, API Reference
-  meta.description: azure-stack
-  services: azure-stack
+  title: Patterns for building hybrid solutions on Azure and Azure Stack
+  description: Learn how to leverage hybrid patterns and solution examples in your app development. Azure and Azure Stack enable development of hybrid applications, built on a suite of intelligent cloud and intelligent edge services. 
+  ms.service: azure-stack 
+  ms.topic: landing-page 
   author: BryanLa
-  manager: femila
-  layout: LandingPage
-  ms.service: azure-stack
-  ms.topic: landing-page
-  ms.date: 10/31/2019
   ms.author: bryanla
-abstract:
-  description: Azure and Azure Stack enable development of hybrid applications, built on a suite of intelligent cloud and intelligent edge services. Learn how to leverage hybrid patterns and solutions for use in your own app development.<br/><br/>If you're an Azure Stack operator who manages the infrastructure and offers services, see the <a href="../operator/">operator documentation</a>.<br/><br/>See the <a href="../user/">user documentation</a> for guidance on using and deploying resources to Azure Stack. See the <a href="../asdk">Azure Stack Development Kit (ASDK)</a> documentation to learn how to deploy and use a single-node evaluation version of Azure Stack for free.
-sections:
-  - title: Learn about hybrid application development.
-    items:
-    - type: list
-      style: cards
-      className: cardsA
-      items:  
-      - html: <a href="/azure-stack/hybrid/overview-patterns-solution-examples">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_code-edit.svg" alt="">
-              <br><b>Build hybrid solutions with Azure Stack</b></a>
-              <p>Learn how to create hybrid cloud apps with Azure and Azure Stack</p>
-      - html: <a href="/azure-stack/hybrid/overview-patterns-solution-examples">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_code-edit.svg" alt="">
-              <br><b>Build hybrid solutions with Azure Stack</b></a>
-              <p>Learn how to create hybrid cloud apps with Azure and Azure Stack</p>
-      - html: <a href="/azure-stack/hybrid/overview-patterns-solution-examples">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_code-edit.svg" alt="">
-              <br><b>Build hybrid solutions with Azure Stack</b></a>
-              <p>Learn how to create hybrid cloud apps with Azure and Azure Stack</p>
+  ms.date: 10/31/2019
+
+# linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+  # Card (optional)
+  - title: About hybrid patterns and solutions
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What are hybrid patterns and solution examples?
+            url: overview-patterns-solution-examples.md
+      - linkListType: concept
+        links:
+          - text: Hybrid app design considerations
+            url: overview-app-design-considerations.md
+
+  # Card
   - title: Hybrid patterns
-    items:
-    - type: list
-      style: cards
-      className: cardsA
-      items:  
-      - html: <a href="/azure-stack/hybrid/solution-deployment-guide-cicd-pipeline">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_workflow.svg" alt="hybrid cloud app ci/cd">
-              <br><b>Hybrid app continuous integration and delivery</b></a>
-              <p>Deploy hybrid apps to Azure and Azure Stack using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.</p>
-      - html: <a href="/azure-stack/hybrid/solution-deployment-guide-identity">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_identity-protection.svg" alt="hybrid cloud app identity">
-              <br><b>Configure hybrid cloud identity</b></a>
-              <p>Configure a hybrid cloud identity for your Azure and Azure Stack applications.</p>
-      - html: <a href="/azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_multi-connect.svg" alt="hybrid cloud app scaling">
-              <br><b>Cross-cloud scaling solutions</b></a>
-              <p>Create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack hosted web app, to an Azure hosted web app.</p>
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Cross-cloud scaling
+            url: solution-overview-cross-cloud-scaling.md
+          - text: DevOps hybrid CI/CD
+            url: solution-overview-cicd-pipeline.md
+          - text: Geo-distributed app
+            url: solution-overview-geo-distributed.md
+
+  # Card
   - title: Hybrid solution overviews
-    items:
-    - type: list
-      style: cards
-      className: cardsA
-      items:  
-      - html: <a href="/azure-stack/hybrid/solution-overview-retail-footfall-detection">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_package.svg" alt="">
-              <br><b>Retail footfall detection</b></a>
-              <p>Learn how to use Azure and Azure Stack services, to implement an AI-based footfall detection pattern for analyzing retail store traffic.</p>
-      - html: <a href="/azure-stack/hybrid/solution-overview-retail-footfall-detection">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_vmm-cloud.svg" alt="">
-              <br><b>Retail footfall detection</b></a>
-              <p>Learn how to use Azure and Azure Stack services, to implement an AI-based footfall detection pattern for analyzing retail store traffic.</p>
-      - html: <a href="/azure-stack/hybrid/solution-overview-retail-footfall-detection">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_web-color.svg" alt="">
-              <br><b>Retail footfall detection</b></a>
-              <p>Learn how to use Azure and Azure Stack services, to implement an AI-based footfall detection pattern for analyzing retail store traffic.</p>
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: Footfall detection (retail)
+            url: solution-overview-footfall-detection.md
+
+  # Card
   - title: Hybrid solution deployment guides
-    items:
-    - type: list
-      style: cards
-      className: cardsA
-      items:  
-      - html: <a href="/azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_package.svg" alt="">
-              <br><b>Deploy cross-cloud scaling</b></a>
-              <p>Deploy a cross-cloud solution that scales from an Azure Stack hosted web app to an Azure hosted web app.</p>
-      - html: <a href="/azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_vmm-cloud.svg" alt="">
-              <br><b>Deploy cross-cloud scaling</b></a>
-              <p>Deploy a cross-cloud solution that scales from an Azure Stack hosted web app to an Azure hosted web app..</p>
-      - html: <a href="/azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_web-color.svg" alt="">
-              <br><b>Deploy cross-cloud scaling</b></a>
-              <p>Deploy a cross-cloud solution that scales from an Azure Stack hosted web app to an Azure hosted web app.</p>
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: Cross-cloud scaling
+            url: solution-deployment-guide-cross-cloud-scaling.md
+          - text: DevOps hybrid CI/CD
+            url: solution-deployment-guide-devops-cicd-pipeline.md
+          - text: Footfall detection (retail)
+            url: solution-deployment-guide-footfall-detection.md
+          - text: Geo-distributed app
+            url: solution-deployment-guide-geo-distributed.md
