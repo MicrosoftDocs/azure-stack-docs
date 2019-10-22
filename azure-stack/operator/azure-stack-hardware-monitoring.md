@@ -11,10 +11,10 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 10/22/2019
 ms.author: sethm
 ms.reviewer: thoroet
-ms.lastreviewed: 10/21/2019
+ms.lastreviewed: 10/22/2019
 
 ---
 
@@ -30,7 +30,7 @@ The health and monitoring system of Azure Stack already monitors the status of t
 - Boot drives
 
 > [!NOTE]
-> Prior to enabling this feature, you must validate with your hardware partner that they are ready.
+> Prior to enabling this feature, you must validate with your hardware partner that they are ready. Your hardware partner will also provide the detailed steps for enabling this feature in the BMC.
 
 ## SNMP listener scenario
 
@@ -38,7 +38,7 @@ An SNMP v3 listener is running on all three ERCS instances on TCP port 162. The 
 
 Sending traps to the listener requires authentication and must use the same credential as accessing base BMC itself.
 
-When an SNMP trap is received on any of the three ERCS instances on TCP port 162, T\the OID is matched internally and an alert is raised. The Azure Stack health and monitoring system only accepts OIDs defined by the hardware partner. If an OID is unknown to Azure Stack, it will not match it to an alert.
+When an SNMP trap is received on any of the three ERCS instances on TCP port 162, the OID is matched internally and an alert is raised. The Azure Stack health and monitoring system only accepts OIDs defined by the hardware partner. If an OID is unknown to Azure Stack, it will not match it to an alert.
 
 Once a faulty component is replaced, an event is sent from the BMC to the SNMP listener that indicates the state change, and the alert will close automatically in Azure Stack.
 
