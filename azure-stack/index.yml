@@ -88,7 +88,7 @@ additionalContent:
         # Card
         - title: Concepts and tutorials
           links:
-          - url: /azure/databox-online/data-box-edge-system-requirements
+          - url: /azure/databox-online/data-box-edge-system-requirements?bc=/azure-stack/breadcrumb/toc.json
             text: Review system requirements       
           - url: /azure/databox-online/data-box-edge-limits
             text: Understand limits
