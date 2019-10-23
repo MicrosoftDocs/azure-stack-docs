@@ -96,6 +96,9 @@ conceptualContent:
       footerLink:
         url: /asdk
         text: See more    
+
+# conceptualContent section (optional)
+conceptualContent:
   title: Azure Stack Edge
   #summary: 
   items:
@@ -138,6 +141,9 @@ conceptualContent:
       footerLink:
         url: /azure/databox-online/
         text: See more   
+
+# conceptualContent section (optional)
+conceptualContent:
   title: Azure Stack HCI
   #summary: 
   items:
