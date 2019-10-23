@@ -39,7 +39,7 @@ productDirectory:
       - url: /azure/databox-online/data-box-edge-overview
         text: What is Azure Stack Edge?
   - title: Azure Stack HCI
-    imageSrc: media/index/vm-images.svg
+    imageSrc: media/index/azure-stack-hci.svg
     links:
       - url: /azure-stack/operator/azure-stack-hci-overview
         text: Azure Stack HCI overview
@@ -83,25 +83,25 @@ additionalContent:
         # Card
         - title: Overview
           links:
-          - url: /azure/databox-online/data-box-edge-overview?branch=master
+          - url: /azure/databox-online/data-box-edge-overview
             text: What is Azure Stack Edge?
         # Card
         - title: Concepts and tutorials
           links:
-          - url: /azure/databox-online/data-box-edge-system-requirements?branch=master
+          - url: /azure/databox-online/data-box-edge-system-requirements
             text: Review system requirements       
-          - url: /azure/databox-online/data-box-edge-limits?branch=master
+          - url: /azure/databox-online/data-box-edge-limits
             text: Understand limits
-          - url: /azure/databox-online/data-box-edge-deploy-prep?branch=master
+          - url: /azure/databox-online/data-box-edge-deploy-prep
             text: Prepare to deploy 
-          - url: /azure/databox-online/data-box-edge-deploy-install?branch=master
+          - url: /azure/databox-online/data-box-edge-deploy-install
             text: Install    
         # Card
         - title: Develop
           links:
-          - url: /azure/databox-online/data-box-edge-create-iot-edge-module?branch=master
+          - url: /azure/databox-online/data-box-edge-create-iot-edge-module
             text: Develop an IoT Edge module (C#)  
-          - url: /samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules?branch=master
+          - url: /samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules
             text: IoT Edge module samples (C#)  
     - title: Azure Stack HCI
       items:
