@@ -132,6 +132,5 @@ additionalContent:
             text: Software defined networking
           - url: /windows-server/failover-clustering/failover-clustering-overview
             text: Failover clustering              
-  # footer (optional)
-  footer: "footertext [linktext](https://docs.microsoft.com/)"
+
            
