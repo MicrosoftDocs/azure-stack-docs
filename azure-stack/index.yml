@@ -171,15 +171,7 @@ additionalContent:
               url: https://docs.microsoft.com/
             - text: test2
               url: https://docs.microsoft.com/
-
-  # footer (optional)
-  footer: "footertext [linktext](https://docs.microsoft.com/)"
-
-
-
-additionalContent:
-  sections:
-    - title: References
+    - title: Reference
       items:
       - title: Azure Stack Hub PowerShell
         summary: Install and use the Azure Stack Hub PowerShell module.
@@ -190,4 +182,6 @@ additionalContent:
       - title: Azure Stack Hub Admin REST APIs
         summary: Explore the Admin REST APIs.
         url: /rest/api/azure-stack/
+  # footer (optional)
+  footer: "footertext [linktext](https://docs.microsoft.com/)"
            
