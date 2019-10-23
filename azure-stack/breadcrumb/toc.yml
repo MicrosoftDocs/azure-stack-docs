@@ -31,7 +31,7 @@
       topicHref: /azure-stack/user/index
     - name: Edge
       tocHref: /azure/databox-online/
-      topicHref: /azure/databox-online/
+      topicHref: 
       items:
       - name: What is Azure Stack Edge?
         tocHref: /azure/databox-online/data-box-edge-overview
