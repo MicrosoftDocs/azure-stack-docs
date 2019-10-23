@@ -171,17 +171,6 @@ additionalContent:
               url: https://docs.microsoft.com/
             - text: test2
               url: https://docs.microsoft.com/
-    - title: Reference
-      items:
-      - title: Azure Stack Hub PowerShell
-        summary: Install and use the Azure Stack Hub PowerShell module.
-        url: /powershell/azure/azure-stack/overview
-      - title: Azure CLI
-        summary: Find resource management commands in the CLI reference.
-        url: /cli/azure/?view=azure-cli-latest
-      - title: Azure Stack Hub Admin REST APIs
-        summary: Explore the Admin REST APIs.
-        url: /rest/api/azure-stack/
   # footer (optional)
   footer: "footertext [linktext](https://docs.microsoft.com/)"
            
