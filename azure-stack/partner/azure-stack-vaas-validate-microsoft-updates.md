@@ -41,9 +41,9 @@ Before you exercise the monthly update process in VaaS, you should be familiar w
 
 The following tests should be executed in the following order for monthly software validation:
 
-1. Monthly Azure Stack Update Verification
-2. OEM Extension Package Verification
-3. Cloud Simulation Engine
+- Step 1 - Monthly AzureStack Update Verification
+- Step 2 - OEM Extension Package Verification
+- Step 3 - OEM - Cloud Simulation Engine
 
 ## Validating software updates
 

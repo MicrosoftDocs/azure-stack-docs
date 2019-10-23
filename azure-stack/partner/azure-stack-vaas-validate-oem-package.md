@@ -171,9 +171,9 @@ Use this option if it is acceptable to allow unauthenticated clients access to i
 
 The following tests are required for OEM package validation:
 
-- Monthly AzureStack Update Verification
-- OEM Extension Package Verification
-- Cloud Simulation Engine
+- Step 1 - Monthly AzureStack Update Verification
+- Step 2 - OEM Extension Package Verification
+- Step 3 - OEM - Cloud Simulation Engine
 
 ## Run Package Validation tests
 
