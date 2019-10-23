@@ -46,7 +46,7 @@ The following parameters are used by the scale command to find your cluster defi
 | -master-FQDN |  | Master FQDN. Needed when scaling down. |
 | identity-system | adfs | Optional. Specify your identity management solution if you are using Active Directory Federated Services (AD FS). |
 
-You must specify the **–azure-env** parameter when scaling a cluster in Azure Stack. For more information about parameters and their values used in the **scale** command for the AKS Engine, see [Scale - parameters](https://github.com/Azure/aks-engine/blob/master/docs/topics/scale.md#parameters).
+You must specify the **--azure-env** parameter when scaling a cluster in Azure Stack. For more information about parameters and their values used in the **scale** command for the AKS Engine, see [Scale - parameters](https://github.com/Azure/aks-engine/blob/master/docs/topics/scale.md#parameters).
 
 ### Command to scale your cluster
 
