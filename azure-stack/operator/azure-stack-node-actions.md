@@ -23,7 +23,7 @@ ms.lastreviewed: 07/18/2019
 
 *Applies to: Azure Stack integrated systems*
 
-This article describes how to view the status of a scale unit. You can view the unit's nodes. You can run node actions such as power on, power off, shut down, drain, resume, and repair. Typically, you use these node actions during field replacement of parts, or to help recover a node.
+This article describes how to view the status of a scale unit. You can view the unit's nodes. You can run node actions like power on, power off, shut down, drain, resume, and repair. Typically, you use these node actions during field replacement of parts, or to help recover a node.
 
 > [!Important]  
 > All node actions described in this article should target one node at a time.
@@ -64,7 +64,7 @@ To view the status of a scale unit:
 
 ## Scale unit node actions
 
-When you view information about a scale unit node, you can also perform node actions such as:
+When you view information about a scale unit node, you can also perform node actions like:
 
  - Start and stop (depending on current power status).
  - Disable and resume (depending on operations status).
@@ -109,7 +109,7 @@ For more information, see [Start-AzsScaleUnitNode](https://docs.microsoft.com/po
 
 The **drain** action moves all active workloads to the remaining nodes in that particular scale unit.
 
-This action is typically used during field replacement of parts, such as the replacement of an entire node.
+This action is typically used during field replacement of parts, like the replacement of an entire node.
 
 > [!Important]
 > Make sure you use a drain operation on a node during a planned maintenance window, where users have been notified. Under some conditions, active workloads can experience interruptions.
@@ -137,7 +137,7 @@ For more information, see [Enable-AzsScaleUnitNode](https://docs.microsoft.com/p
 ## Repair
 
 > [!CAUTION]  
-> Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, a decrease in performance, security threads, or failure when Azure Stack automation deploys the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure the applied firmware is matching the OEM Version displayed in the [Azure Stack administrator portal](azure-stack-updates.md).<br><br>
+> Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, a decrease in performance, security threads, or failure when Azure Stack automation deploys the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure the applied firmware matches the OEM Version displayed in the [Azure Stack administrator portal](azure-stack-updates.md).<br><br>
 For more information and links to partner documentation, see [Replace a hardware component](azure-stack-replace-component.md).
 
 | Hardware Partner | Region | URL |
@@ -151,8 +151,9 @@ For more information and links to partner documentation, see [Replace a hardware
 | Lenovo | All | [ThinkAgile SXM Best Recipes](https://datacentersupport.lenovo.com/us/en/solutions/ht505122) |
 
 The **repair** action repairs a node. Use it only for either of the following scenarios:
- - Full node replacement (with or without new data disks).
- - After hardware component failure and replacement (if advised in the field replaceable unit [FRU] documentation).
+
+- Full node replacement (with or without new data disks).
+- After hardware component failure and replacement (if advised in the field replaceable unit [FRU] documentation).
 
 > [!Important]  
 > See your OEM hardware vendor's FRU documentation for exact steps when you need to replace a node or individual hardware components. The FRU documentation will specify whether you need to run the repair action after replacing a hardware component.
@@ -179,8 +180,6 @@ To run the shutdown action, open an elevated PowerShell prompt, and run the foll
   Stop-AzsScaleUnitNode -Location <RegionName> -Name <NodeName> -Shutdown
   ```
 
-
-
 ## Next steps
 
-To learn more about the Azure Stack Fabric administrator module, see [Azs.Fabric.Admin](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0).
+[Learn about the AzureStack Fabric operator module](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0).

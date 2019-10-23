@@ -23,7 +23,7 @@ ms.lastreviewed: 10/01/2019
 
 ## Overview
 
-As an Azure Stack operator, you configure and deliver services by using offers, plans, and subscriptions. Offers contain one or more plans, and each plan includes one or more services, each configured with quotas. By creating plans and combining them into different offers, users can subscribe to your offers and deploy resources. This structure allows you to manage:
+As an Azure Stack operator, you configure and deliver services by using offers, plans, and subscriptions. Offers contain one or more plans, and each plan includes one or more services, each configured with quotas. By creating plans and combining them into different offers, users can subscribe to your offers and deploy resources. This structure lets you to manage:
 
 - Which services and resources your users can access.
 - The amount of resources that users can consume.

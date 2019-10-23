@@ -23,7 +23,7 @@ ms.lastreviewed: 09/18/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-**AzureStack-Tools** is a [GitHub repository](https://github.com/Azure/AzureStack-Tools) that hosts PowerShell modules for managing and deploying resources to Azure Stack. If you're planning to establish VPN connectivity, you can download these PowerShell modules to the Azure Stack Development Kit (ASDK), or to a Windows-based external client. To obtain these tools, clone the GitHub repository or download the **AzureStack-Tools** folder by running the following script:
+**AzureStack-Tools** is a [GitHub repository](https://github.com/Azure/AzureStack-Tools) that hosts PowerShell modules for managing and deploying resources to Azure Stack. If you're planning to establish VPN connectivity, you can download these PowerShell modules to the Azure Stack Development Kit (ASDK), or to a Windows-based external client. To get these tools, clone the GitHub repository or download the **AzureStack-Tools** folder by running the following script:
 
 ```powershell
 # Change directory to the root directory.
@@ -47,7 +47,7 @@ cd AzureStack-Tools-master
 
 ## Functionality provided by the modules
 
-The **AzureStack-Tools** repository contains PowerShell modules that support the following functionalities for Azure Stack:  
+The **AzureStack-Tools** repository has PowerShell modules that support the following functionalities for Azure Stack:  
 
 | Functionality | Description | Who can use this module? |
 | --- | --- | --- |
@@ -58,9 +58,8 @@ The **AzureStack-Tools** repository contains PowerShell modules that support the
 | [Connecting to Azure Stack](azure-stack-powershell-install.md) | Use this module to configure VPN connectivity to Azure Stack. | Cloud operators and users |
 | [Template validator](../user/azure-stack-validate-templates.md) | Use this module to verify if an existing or a new template can be deployed to Azure Stack. | Cloud operators and users|
 
-
 ## Next steps
 
-- [Get started with PowerShell on Azure Stack](../user/azure-stack-powershell-overview.md)
-- [Configure the Azure Stack user's PowerShell environment](../user/azure-stack-powershell-configure-user.md)   
-- [Connect to Azure Stack Development Kit over a VPN](../asdk/asdk-connect.md)  
+- [Get started with PowerShell on Azure Stack](../user/azure-stack-powershell-overview.md).
+- [Configure the Azure Stack user's PowerShell environment](../user/azure-stack-powershell-configure-user.md).
+- [Connect to Azure Stack Development Kit over a VPN](../asdk/asdk-connect.md).

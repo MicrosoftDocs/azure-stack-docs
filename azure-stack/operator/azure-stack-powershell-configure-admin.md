@@ -22,14 +22,14 @@ ms.lastreviewed: 09/18/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can configure Azure Stack to use PowerShell to manage resources such as creating offers, plans, quotas, and alerts. This topic helps you configure the operator environment.
+You can configure Azure Stack to use PowerShell to manage resources like creating offers, plans, quotas, and alerts. This topic helps you configure the operator environment.
 
 ## Prerequisites
 
 Run the following prerequisites either from the [Azure Stack Development Kit (ASDK)](../asdk/asdk-connect.md#connect-with-rdp) or from a Windows-based external client if you're [connected to the ASDK through VPN](../asdk/asdk-connect.md#connect-with-vpn).
 
- - Install [Azure Stack-compatible Azure PowerShell modules](azure-stack-powershell-install.md).  
- - Download the [tools required to work with Azure Stack](azure-stack-powershell-download.md).  
+- Install [Azure Stack-compatible Azure PowerShell modules](azure-stack-powershell-install.md).  
+- Download the [tools required to work with Azure Stack](azure-stack-powershell-download.md).  
 
 ## Connect with Azure AD
 
@@ -80,6 +80,6 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 ## Next steps
 
-- [Develop templates for Azure Stack](../user/azure-stack-develop-templates.md)
-- [Deploy templates with PowerShell](../user/azure-stack-deploy-template-powershell.md)
-  - [Azure Stack Module Reference](https://docs.microsoft.com/powershell/azure/azure-stack/overview)  
+- [Develop templates for Azure Stack](../user/azure-stack-develop-templates.md).
+- [Deploy templates with PowerShell](../user/azure-stack-deploy-template-powershell.md).
+  - [Azure Stack Module Reference](https://docs.microsoft.com/powershell/azure/azure-stack/overview).
