@@ -29,9 +29,9 @@
     - name: Hub User
       tocHref: /azure-stack/user/
       topicHref: /azure-stack/user/index
-    - name: Edge&nbsp;&nbsp/&nbsp;&nbspWhat is Azure Stack Edge?
+    - name: Edge   /   What is Azure Stack Edge?
       tocHref: /azure/databox-online/data-box-edge-overview
       topicHref: /azure/databox-online/data-box-edge-overview
-    - name: Edge&nbsp;&nbsp/&nbsp;&nbspAzure Stack Edge system requirements
+    - name: "Edge  /  Azure Stack Edge system requirements"
       tocHref: /azure/databox-online/data-box-edge-system-requirements
       topicHref: /azure/databox-online/data-box-edge-system-requirements
