@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2019
+ms.date: 10/23/2019
 ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 06/04/2019
@@ -46,7 +46,7 @@ The following table shows the logical networks and associated IPv4 subnet ranges
 | | | |
 
 > [!NOTE]
-> Starting on 1910, after deployment of update, and alert on the portal will remind the operator to run the new PEP cmdlet "Set-AzsInternalNetwork" to add a new Private IP space for future expansions of internal components. Please review the [1910 Release Notes](release-notes.md) for instructions on running the cmdlet. For guidance on selecting the /20 Private IP space, please check the Private Network section on this page.
+> Starting with 1910, after deployment of the update, an alert on the portal will remind the operator to run the new PEP cmdlet **Set-AzsInternalNetwork** to add a new private IP space for future expansions of internal components. Please see the [1910 release notes](release-notes.md) for instructions on running the cmdlet. For guidance on selecting the /20 private IP space, please see the [Private network](#private-network) section in this article.
 
 ## Network infrastructure
 The network infrastructure for Azure Stack consists of several logical networks that are configured on the switches. The following diagram shows these logical networks, and how they integrate with the top-of-rack (TOR), baseboard management controller (BMC), and border (customer network) switches.
@@ -64,7 +64,7 @@ This /24 (254 host IPs) network is private to the Azure Stack region (does not r
 - **Storage network**. A /25 (126 host IPs) network used to support the use of Spaces Direct and Server Message Block (SMB) storage traffic and virtual machine live migration. 
 - **Internal virtual IP network**. A /25 network dedicated to internal-only VIPs for the software load balancer.
 
-Starting on 1910, the Azure Stack system will require an additional /20 (4096 IPs) of Private IP space. This network will be private to the Azure Stack region (does not route beyond the border switch devices of the Azure Stack system) and can be reused on multiple Azure Stack systems within your datacenter. This network will be reserved for future expansions of our internal components. This additional network will be entered into a system running 1910 through the "Set-AzsInternalNetwork" PEP cmdlet, for guidance on this cmdlet please review the [1910 Release Notes](release-notes.md).
+Starting with 1910, the Azure Stack system will require an additional /20 (4096 IPs) of private IP space. This network will be private to the Azure Stack region (does not route beyond the border switch devices of the Azure Stack system) and can be reused on multiple Azure Stack systems within your datacenter. This network will be reserved for future expansions of our internal components. This additional network will be entered into a system running 1910 through the **Set-AzsInternalNetwork** PEP cmdlet. For guidance on this cmdlet please see the [1910 release notes](release-notes.md).
 
 ### Azure Stack infrastructure network
 This /24 network is dedicated to internal Azure Stack components so that they can communicate and exchange data among themselves. This subnet requires routable IP addresses, but is kept private to the solution by using Access Control Lists (ACLs). It isn't expected to be routed beyond the border switches except for a small range equivalent in size to a /27 network utilized by some of these services when they require access to external resources and/or the internet. 
