@@ -29,4 +29,6 @@
     - name: Hub User
       tocHref: /azure-stack/user/
       topicHref: /azure-stack/user/index
-
+    - name: Edge
+      tocHref: /azure/databox-online/
+      topicHref: /azure/databox-online/data-box-edge-overview
