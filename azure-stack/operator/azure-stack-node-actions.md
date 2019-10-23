@@ -182,4 +182,4 @@ To run the shutdown action, open an elevated PowerShell prompt, and run the foll
 
 ## Next steps
 
-[Learn about the AzureStack Fabric operator module](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0).
+[Learn about the Azure Stack Fabric operator module](https://docs.microsoft.com/powershell/module/azs.fabric.admin/?view=azurestackps-1.6.0).
