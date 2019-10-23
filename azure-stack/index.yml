@@ -83,7 +83,7 @@ additionalContent:
         # Card
         - title: Overview
           links:
-          - url: /azure/databox-online/data-box-edge-overview
+          - url: /azure/databox-online/data-box-edge-overview?bc=/azure-stack/breadcrumb/toc.json
             text: What is Azure Stack Edge?
         # Card
         - title: Concepts and tutorials
@@ -118,18 +118,18 @@ additionalContent:
         - title: Manage
           links:
           - url: /windows-server/manage/windows-admin-center/understand/windows-admin-center
-            text: Windows admin center
+            text: Windows Admin Center
           - url: /windows-server/manage/windows-admin-center/azure/
-            text: Azure hybrid services
+            text: Azure Hybrid Services
         # Card
         - title: Foundational technologies
           links:
           - url: /windows-server/virtualization/hyper-v/hyper-v-on-windows-server
             text: Hyper-V
           - url: /windows-server/storage/storage-spaces/storage-spaces-direct-overview
-            text: Storage spaces direct
+            text: Storage Spaces Direct
           - url: /windows-server/networking/sdn/
-            text: Software defined networking
+            text: Software Defined Networking
           - url: /windows-server/failover-clustering/failover-clustering-overview
             text: Failover clustering              
 
