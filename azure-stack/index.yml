@@ -90,16 +90,16 @@ additionalContent:
           links:
           - url: /azure/databox-online/data-box-edge-system-requirements?bc=/azure-stack/breadcrumb/toc.json
             text: Review system requirements       
-          - url: /azure/databox-online/data-box-edge-limits
+          - url: /azure/databox-online/data-box-edge-limits?bc=/azure-stack/breadcrumb/toc.json
             text: Understand limits
-          - url: /azure/databox-online/data-box-edge-deploy-prep
+          - url: /azure/databox-online/data-box-edge-deploy-prep?bc=/azure-stack/breadcrumb/toc.json
             text: Prepare to deploy 
-          - url: /azure/databox-online/data-box-edge-deploy-install
+          - url: /azure/databox-online/data-box-edge-deploy-install?bc=/azure-stack/breadcrumb/toc.json
             text: Install    
         # Card
         - title: Develop
           links:
-          - url: /azure/databox-online/data-box-edge-create-iot-edge-module
+          - url: /azure/databox-online/data-box-edge-create-iot-edge-module?bc=/azure-stack/breadcrumb/toc.json
             text: Develop an IoT Edge module (C#)  
           - url: /samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules
             text: IoT Edge module samples (C#)  
