@@ -83,25 +83,25 @@ additionalContent:
         # Card
         - title: Overview
           links:
-          - url: /azure/databox-online/data-box-edge-overview
+          - url: /azure/databox-online/data-box-edge-overview?branch=master
             text: What is Azure Stack Edge?
         # Card
         - title: Concepts and tutorials
           links:
-          - url: /azure/databox-online/data-box-edge-system-requirements
+          - url: /azure/databox-online/data-box-edge-system-requirements?branch=master
             text: Review system requirements       
-          - url: /azure/databox-online/data-box-edge-limits
+          - url: /azure/databox-online/data-box-edge-limits?branch=master
             text: Understand limits
-          - url: /azure/databox-online/data-box-edge-deploy-prep
+          - url: /azure/databox-online/data-box-edge-deploy-prep?branch=master
             text: Prepare to deploy 
-          - url: /azure/databox-online/data-box-edge-deploy-install
+          - url: /azure/databox-online/data-box-edge-deploy-install?branch=master
             text: Install    
         # Card
         - title: Develop
           links:
-          - url: /azure/databox-online/data-box-edge-create-iot-edge-module
+          - url: /azure/databox-online/data-box-edge-create-iot-edge-module?branch=master
             text: Develop an IoT Edge module (C#)  
-          - url: /samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules/
+          - url: /samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules?branch=master
             text: IoT Edge module samples (C#)  
     - title: Azure Stack HCI
       items:
