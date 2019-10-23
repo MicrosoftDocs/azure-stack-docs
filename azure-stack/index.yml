@@ -63,12 +63,13 @@ additionalContent:
         # Card
         - title: User
           links:
-          - url: /user/azure-stack-vm-sizes.md
+          - url: /azure-stack/user/azure-stack-vm-sizes
             text: Supported VM sizes
-          - url: /user/azure-stack-considerations.md
+          - url: /azure-stack/user/azure-stack-considerations
             text: Key considerations for building apps
-          - url: /user/azure-stack-key-vault-manage-portal.md
-            text: Create and manage a Key Vault         # Card
+          - url: /azure-stack/user/azure-stack-key-vault-manage-portal
+            text: Create and manage a Key Vault         
+        # Card
         - title: Azure Stack Development Kit (ASDK)
           links:
           - url: /azure-stack/asdk/asdk-deploy-considerations
