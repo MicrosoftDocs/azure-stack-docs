@@ -30,5 +30,12 @@
       tocHref: /azure-stack/user/
       topicHref: /azure-stack/user/index
     - name: Edge
-      tocHref: /azure/databox-online/data-box-edge-overview
-      topicHref: /azure/databox-online/data-box-edge-overview
+      tocHref: /azure/databox-online/
+      topicHref: /azure/databox-online/
+      items:
+      - name: What is Azure Stack Edge?
+        tocHref: /azure/databox-online/data-box-edge-overview
+        topicHref: /azure/databox-online/data-box-edge-overview
+      - name: Azure Stack Edge system requirements
+        tocHref: /azure/databox-online/data-box-edge-system-requirements
+        topicHref: /azure/databox-online/data-box-edge-system-requirements
