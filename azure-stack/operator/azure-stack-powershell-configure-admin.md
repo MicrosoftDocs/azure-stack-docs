@@ -33,7 +33,7 @@ Run the following prerequisites either from the [Azure Stack Development Kit (AS
 
 ## Connect with Azure AD
 
-To configure the Azure Stack operator environment with PowerShell, run one of the the scripts below. Replace the Azure Active Directory (Azure AD) tenantName and Azure Resource Manager endpoint values with your own environment configuration.
+To configure the Azure Stack operator environment with PowerShell, run one of the scripts below. Replace the Azure Active Directory (Azure AD) tenantName and Azure Resource Manager endpoint values with your own environment configuration.
 
 [!include[Remove Account](../../includes/remove-account.md)]
 
