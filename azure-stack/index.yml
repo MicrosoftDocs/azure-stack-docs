@@ -115,23 +115,23 @@ additionalContent:
           - url: https://www.microsoft.com/en-us/cloud-platform/azure-stack-hci-catalog
             text: Azure Stack HCI catalog  
         # Card
-        - title: TBD
+        - title: Manage
           links:
-          - url: /azure-stack/operator/azure-stack-hci-overview
-            text: Azure Stack HCI overview
-          - url: https://azure.microsoft.com/en-us/overview/azure-stack/hci/
-            text: Azure Stack HCI solutions overview
-          - url: https://www.microsoft.com/en-us/cloud-platform/azure-stack-hci-catalog
-            text: Azure Stack HCI catalog  
+          - url: /windows-server/manage/windows-admin-center/understand/windows-admin-center
+            text: Windows admin center
+          - url: /windows-server/manage/windows-admin-center/azure/
+            text: Azure hybrid services
         # Card
-        - title: TBD
+        - title: Foundational technologies
           links:
-          - url: /azure-stack/operator/azure-stack-hci-overview
-            text: Azure Stack HCI overview
-          - url: https://azure.microsoft.com/en-us/overview/azure-stack/hci/
-            text: Azure Stack HCI solutions overview
-          - url: https://www.microsoft.com/en-us/cloud-platform/azure-stack-hci-catalog
-            text: Azure Stack HCI catalog  
+          - url: /windows-server/virtualization/hyper-v/hyper-v-on-windows-server
+            text: Hyper-V
+          - url: /windows-server/storage/storage-spaces/storage-spaces-direct-overview
+            text: Storage spaces direct
+          - url: /windows-server/networking/sdn/
+            text: Software defined networking
+          - url: /windows-server/failover-clustering/failover-clustering-overview
+            text: Failover clustering              
   # footer (optional)
   footer: "footertext [linktext](https://docs.microsoft.com/)"
            

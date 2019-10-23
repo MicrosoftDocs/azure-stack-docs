@@ -29,6 +29,9 @@
     - name: Hub User
       tocHref: /azure-stack/user/
       topicHref: /azure-stack/user/index
+    - name: HCI
+      tocHref: /azure-stack/operator/azure-stack-hci-overview
+      topicHref: /azure-stack/operator/azure-stack-hci-overview  
     - name: Edge
-      tocHref: /azure/databox-online/
+      tocHref: /azure/databox-online/data-box-edge-overview
       topicHref: /azure/databox-online/data-box-edge-overview
