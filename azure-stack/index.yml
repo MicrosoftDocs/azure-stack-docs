@@ -33,8 +33,6 @@ productDirectory:
     links:
       - url: /azure-stack/operator/azure-stack-overview
         text: What is Azure Stack Hub?
-      - url: /azure-stack/operator/azure-stack-servicing-policy
-        text: Azure Stack Hub servicing policy
   - title: Azure Stack Edge
     imageSrc: media/index/azure-stack-edge.svg
     links:
@@ -60,8 +58,8 @@ additionalContent:
             text: Use an app identity to access resources
           - url: /azure-stack/operator/release-notes
             text: Release notes
-          - url: /azure-stack/operator/azure-stack-hci-overview
-            text: Azure Stack HCI overview  
+          - url: /azure-stack/operator/azure-stack-servicing-policy
+            text: Azure Stack Hub servicing policy
         # Card
         - title: User
           links:
