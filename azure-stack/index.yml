@@ -97,6 +97,86 @@ conceptualContent:
         url: /asdk
         text: See more    
 
+# additionalContent section (optional)
+# Card with links style
+additionalContent:
+  # Supports up to 3 sections
+  sections:
+    - title: Azure Stack Hub
+      items:
+        # Card
+        - title: Operator
+          links:
+            - text: test1
+              url: https://docs.microsoft.com/
+            - text: test2
+              url: https://docs.microsoft.com/
+        # Card
+        - title: User
+          links:
+            - text: test1
+              url: https://docs.microsoft.com/
+            - text: test2
+              url: https://docs.microsoft.com/
+        # Card
+        - title: Azure Stack Development Kit (ASDK)
+          links:
+            - text: test1
+              url: https://docs.microsoft.com/
+            - text: test2
+              url: https://docs.microsoft.com/
+    - title: Azure Stack Edge
+      items:
+        # Card
+        - title: Overview
+          links:
+            - text: test1
+              url: https://docs.microsoft.com/
+            - text: test2
+              url: https://docs.microsoft.com/
+        # Card
+        - title: Concepts and tutorials
+          links:
+            - text: test1
+              url: https://docs.microsoft.com/
+            - text: test2
+              url: https://docs.microsoft.com/
+        # Card
+        - title: Develop
+          links:
+            - text: test1
+              url: https://docs.microsoft.com/
+            - text: test2
+              url: https://docs.microsoft.com/
+    - title: Azure Stack HCI
+      items:
+        # Card
+        - title: Overview
+          links:
+            - text: test1
+              url: https://docs.microsoft.com/
+            - text: test2
+              url: https://docs.microsoft.com/
+        # Card
+        - title: TBD
+          links:
+            - text: test1
+              url: https://docs.microsoft.com/
+            - text: test2
+              url: https://docs.microsoft.com/
+        # Card
+        - title: TBD
+          links:
+            - text: test1
+              url: https://docs.microsoft.com/
+            - text: test2
+              url: https://docs.microsoft.com/
+
+  # footer (optional)
+  footer: "footertext [linktext](https://docs.microsoft.com/)"
+
+
+
 additionalContent:
   sections:
     - title: Reference
