@@ -9,6 +9,9 @@
     - name: Hub ASDK
       tocHref: /azure-stack/asdk/
       topicHref: /azure-stack/asdk/index
+    - name: HCI
+      tocHref: /azure-stack/operator/azure-stack-hci-overview/
+      topicHref: /azure-stack/operator/azure-stack-hci-overview/
     - name: Hub Operator
       tocHref: /azure-stack/operator/
       topicHref: /azure-stack/operator/index
