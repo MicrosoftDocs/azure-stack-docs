@@ -179,7 +179,7 @@ additionalContent:
 
 additionalContent:
   sections:
-    - title: Reference
+    - title: References
       items:
       - title: Azure Stack Hub PowerShell
         summary: Install and use the Azure Stack Hub PowerShell module.
