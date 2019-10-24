@@ -167,7 +167,7 @@ Use this option if it is acceptable to allow unauthenticated clients access to i
 
 ## Required tests
 
-The following tests are required for OEM package validation:
+The following tests are required to be run, in the order specified, for OEM package validation:
 
 - Step 1 - Monthly AzureStack Update Verification
 - Step 2 - OEM Extension Package Verification
@@ -186,17 +186,17 @@ The following tests are required for OEM package validation:
 2. For package validation you will run the **required tests**, in the order listed.
 
     > [!CAUTION]
-    > VaaS will run the tests in the order they were scheduled. It is very important to schedule the tests in the order specified.
+    > VaaS will run the tests in the order they were scheduled. It is required to schedule the tests in the order specified.
 
 3. Select the agent that will run the test. For information about adding local test execution agents, see [Deploy the local agent](azure-stack-vaas-local-agent.md).
 
-3. To schedule the test run, select **Schedule** from the context menu to open a prompt for scheduling the test instance.
+4. To schedule the test run, select **Schedule** from the context menu to open a prompt for scheduling the test instance.
 
-4. Review the test parameters and then select **Submit** to schedule the test.
+5. Review the test parameters and then select **Submit** to schedule the test.
 
-5. You do not need to wait for the test to complete before scheduling the next test. Schedule all **required** tests in the order specified above.
+6. You do not need to wait for the test to complete before scheduling the next test. Schedule all **required** tests in the order specified above.
 
-5. Review the results for the **required** tests.
+7. Review the results for the **required** tests.
 
 To submit a package signing request, send [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) the Solution name and Package Validation name associated with this run.
 
