@@ -4,7 +4,7 @@
   href: index.yml
   expanded: true
   items:
-  - name: Validation as a Service for Azure Stack
+  - name: Validation as a Service for Azure Stack Hub
     href: azure-stack-vaas-overview.md
   - name: Release notes
     href: azure-stack-vaas-release-notes.md

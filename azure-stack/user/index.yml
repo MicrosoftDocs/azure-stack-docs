@@ -16,9 +16,9 @@ metadata:
   ms.date: 07/11/2019
   ms.author: mabrigg
 abstract:
-  description: Azure Stack Hub is a hybrid cloud platform that lets you use Azure services from your company's or service provider's datacenter. As a developer, you can build apps on Azure Stack. You can then deploy them to Azure Stack, to Azure, or you can build truly hybrid apps that leverage the connectivity between an Azure Stack Hub cloud and Azure. Learn how to create resources and deploy apps with our quickstarts and tutorials.<br/><br/>If you're an Azure Stack Hub operator who manages the infrastructure and offers services, see our <a href="../operator/">operator documentation</a>.<br/><br/>If you are an Azure Stack Hub user interested in the Azure Stack Hub Development Kit (ASDK), a single-node deployment of Azure Stack Hub that you can download and use for free, see our <a href="../asdk">ASDK documentation</a>.
+  description: Azure Stack Hub is a hybrid cloud platform that lets you use Azure services from your company's or service provider's datacenter. As a developer, you can build apps on Azure Stack Hub. You can then deploy them to Azure Stack Hub, to Azure, or you can build truly hybrid apps that leverage the connectivity between an Azure Stack Hub cloud and Azure. Learn how to create resources and deploy apps with our quickstarts and tutorials.<br/><br/>If you're an Azure Stack Hub operator who manages the infrastructure and offers services, see our <a href="../operator/">operator documentation</a>.<br/><br/>If you are an Azure Stack Hub user interested in the Azure Stack Hub Development Kit (ASDK), a single-node deployment of Azure Stack Hub that you can download and use for free, see our <a href="../asdk">ASDK documentation</a>.
 sections:
-  - title: Getting started with Azure Stack
+  - title: Getting started with Azure Stack Hub
     items:
     - type: list
       style: cards
@@ -26,7 +26,7 @@ sections:
       items:  
       - html: <a href="/azure-stack/user/azure-stack-dev-start">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_code-edit.svg" alt="">
-              <br><b>Develop solutions with Azure Stack</b></a>
+              <br><b>Develop solutions with Azure Stack Hub</b></a>
               <p>Develop applications for Azure Stack Hub using a Windows 10, Linux, or macOS workstation.</p>
       - html: <a href="https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json">
               <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
@@ -54,7 +54,7 @@ sections:
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_multi-connect.svg" alt="hybrid cloud app scaling">
               <br><b>Cross-cloud scaling solutions</b></a>
               <p>Create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack Hub hosted web app, to an Azure hosted web app.</p>
-  - title: Infrastructure-as-a-Service (IaaS) on Azure Stack
+  - title: Infrastructure-as-a-Service (IaaS) on Azure Stack Hub
     items:
     - type: list
       style: cards
@@ -72,7 +72,7 @@ sections:
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_web-color.svg" alt="">
               <br><b>Host Apps written in your code.</b></a>
               <p>Set up a VM in Azure Stack Hub and the deploying your app using C#, Java, Python, Go, Ruby, or NodeJS.</p>
-  - title: Platform-as-a-Service (PaaS) on Azure Stack
+  - title: Platform-as-a-Service (PaaS) on Azure Stack Hub
     items:
     - type: list
       style: cards
@@ -81,7 +81,7 @@ sections:
       - html: <a href="/azure-stack/user/azure-stack-solution-template-service-fabric-cluster">
               <img height="48" width="48" src="/azure-stack/user/media/index/service-fabric-cluster.png" alt="">
               <br><b>Deploy a Service Fabric cluster</b></a>
-              <p>Deploy a secured Service Fabric cluster in Azure Stack.</p>
+              <p>Deploy a secured Service Fabric cluster in Azure Stack Hub.</p>
       - html: <a href="/azure-stack/user/azure-stack-solution-template-kubernetes-deploy">
               <img height="48" width="48" src="/azure-stack/user/media/index/kubernetes.png" alt="">
               <br><b>Deploy a Kubernetes Cluster</b></a>
