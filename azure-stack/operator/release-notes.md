@@ -124,7 +124,7 @@ The Azure Stack 1908 Update requires **Azure Stack OEM version 2.1 or later** fr
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1908.TBD.TBD](https://support.microsoft.com/help/4528074)
+- [Azure Stack hotfix 1.1908.8.41](https://support.microsoft.com/help/4528074)
 ::: moniker-end
 
 ::: moniker range="azs-1907"
