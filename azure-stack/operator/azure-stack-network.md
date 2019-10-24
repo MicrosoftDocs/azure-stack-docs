@@ -68,8 +68,7 @@ This /24 (254 host IPs) network is private to the Azure Stack region (doesn't ex
 - **Internal virtual IP network**: A /25 network dedicated to internal-only VIPs for the software load balancer.
 
 ### Azure Stack infrastructure network
-
-This /24 network is dedicated to internal Azure Stack components so that they can communicate and exchange data among themselves. This subnet requires routable IP addresses, but is kept private to the solution by using Access Control Lists (ACLs). It isn't expected to be routed beyond the border switches except for a small range equivalent in size to a /27 network utilized by some of these services when they require access to external resources and/or the internet.
+This /24 network is dedicated to internal Azure Stack components so that they can communicate and exchange data among themselves. This subnet can be routable externally of the Azure Stack solution to your datacenter, we do not recommend using Public or Internet routable IP addresses on this subnet. This network is advertised to the Border but most of its IPs are protected by Access Control Lists (ACLs). The IPs allowed for access are within a small range equivalent in size to a /27 network and host services like the [privileged end point (PEP)](azure-stack-privileged-endpoint.md) and [Azure Stack Backup](azure-stack-backup-reference.md).
 
 ### Public VIP network
 
