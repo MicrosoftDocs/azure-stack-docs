@@ -1,10 +1,10 @@
 ### YamlMime:Hub
-title: Azure Stack Documentation 
+title: Azure Stack documentation 
 summary: Azure Stack is a family of products and solutions that extend Azure to your datacenter or the edge, including Azure Stack Hub, Azure Stack HCI, and Azure Stack Edge.
 brand: azure
 
 metadata:
-  title: Azure Stack Documentation 
+  title: Azure Stack documentation 
   description: Azure Stack is a family of products and solutions that extend Azure to your datacenter or the edge, including Azure Stack Hub, Azure Stack HCI, and Azure Stack Edge..
   ms.service: azure-stack
   ms.topic: hub-page
@@ -18,7 +18,7 @@ highlightedContent:
 # itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
   items:
     # Card
-    - title: Announcement blog post?
+    - title: Announcement blog post [TBD]
       itemType: overview
       url: https://azure.microsoft.com/en-us/blog/tag/azure-stack/
     - title: Azure vs. Azure Stack Hub vs. Azure Stack HCI
@@ -81,12 +81,7 @@ additionalContent:
     - title: Azure Stack Edge
       items:
         # Card
-        - title: Overview
-          links:
-          - url: /azure/databox-online/data-box-edge-overview?bc=/azure-stack/breadcrumb/toc.json
-            text: What is Azure Stack Edge?
-        # Card
-        - title: Concepts and tutorials
+        - title: Deploy
           links:
           - url: /azure/databox-online/data-box-edge-system-requirements?bc=/azure-stack/breadcrumb/toc.json
             text: Review system requirements       
@@ -106,10 +101,8 @@ additionalContent:
     - title: Azure Stack HCI
       items:
         # Card
-        - title: Overview
+        - title: Solutions
           links:
-          - url: /azure-stack/operator/azure-stack-hci-overview
-            text: Azure Stack HCI overview
           - url: https://azure.microsoft.com/en-us/overview/azure-stack/hci/
             text: Azure Stack HCI solutions overview
           - url: https://www.microsoft.com/en-us/cloud-platform/azure-stack-hci-catalog
