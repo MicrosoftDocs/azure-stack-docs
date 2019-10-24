@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 10/24/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
@@ -127,8 +127,13 @@ For more information about working with storage accounts in Azure Stack, see [In
 
 1. [Prepare a .vhd file](/azure/virtual-machines/windows/classic/createupload-vhd) for use as data disk for a VM. Upload that .vhd file to a storage account that you use with the VM to which you want to attach the .vhd file.
 
-    Plan to use a different container to hold the .vhd file than the container that holds the OS disk.
+    - Plan to use a different container to hold the .vhd file than the container that holds the OS disk.  
+    - Before uploading any VHD to Azure, you should follow [Prepare a Windows VHD or VHDX to upload to Azure](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+    - Review [Plan for the migration to Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/on-prem-to-azure#plan-for-the-migration-to-managed-disks) before starting your migration to [Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
+    
     ![Example: Upload a VHD file](media/azure-stack-manage-vm-disks/upload-vhd.png)
+
+
 
 2. After the .vhd file is uploaded, you're ready to attach the VHD to a VM. In the menu on the left, select  **Virtual machines**.  
  ![Example: Select a VM in the dashboard](media/azure-stack-manage-vm-disks/vm-dashboard.png)
