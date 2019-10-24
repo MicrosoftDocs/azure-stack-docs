@@ -23,6 +23,8 @@ This article looks at protection and recovery of storage accounts within an Azur
 
 ## Elements of the solution
 
+This section looks at the overall structure of the solution and major parts.
+
 ![Azure Stack Storage Backup](./media/azure-stack-network-howto-backup-storage/azure-stack-storage-backup.png)
 
 ### Application Layer
@@ -109,16 +111,12 @@ Once you have set up your Windows Server, you will need to install [Azure Stack 
 
     - For a Windows server:
 
-    Windows Task Scheduler.
-    
-    ```Powershell
-    Write the procedure to st this for Windows.
-    ```
+    For information on using the Windows Task schedule, see [Task Scheduler for developers](https://docs.microsoft.com/windows/win32/taskschd/task-scheduler-start-page)
     
 
 ## Use your storage account in a disaster
 
-Each Azure Stack Storage account possesses a unique DNS name derived from the name of the Azure Stack region itself, for example – "https://krsource.blob.east.asicdc.com/". Applications writing to and reading from this DNS Name will need to accommodate the storage account DNS name change when the target account, for example – "https://**krtarget**.blob.**west**.asicdc.com/" needs to be used during a disaster.
+Each Azure Stack Storage account possesses a unique DNS name derived from the name of the Azure Stack region itself, for example, `https://krsource.blob.east.asicdc.com/`. Applications writing to and reading from this DNS Name will need to accommodate the storage account DNS name change when the target account, for example, `https://krtarget.blob.west.asicdc.com/` needs to be used during a disaster.
 
 Application connection strings can be modified after a disaster is declared to account for the relocation of the objects or, if a CNAME record is used in front of a load balancer front-ending the source and target storage accounts, the load balancer can be configured with a manual failover algorithm that will allow the administrator to declare the target
 
