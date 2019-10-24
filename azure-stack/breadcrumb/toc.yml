@@ -9,9 +9,6 @@
     - name: Hub ASDK
       tocHref: /azure-stack/asdk/
       topicHref: /azure-stack/asdk/index
-    - name: HCI
-      tocHref: /azure-stack/operator/azure-stack-hci-overview/
-      topicHref: /azure-stack/operator/azure-stack-hci-overview/
     - name: Hub Operator
       tocHref: /azure-stack/operator/
       topicHref: /azure-stack/operator/index
@@ -32,47 +29,3 @@
     - name: Hub User
       tocHref: /azure-stack/user/
       topicHref: /azure-stack/user/index
-    - name: Edge
-      tocHref: /azure/databox-online/
-      topicHref: /azure/databox-online/
-      items:      
-      - name: What is Azure Stack Edge?
-        tocHref: /azure/databox-online/data-box-edge-overview
-        topicHref: /azure/databox-online/data-box-edge-overview
-      - name: System requirements
-        tocHref: /azure/databox-online/data-box-edge-system-requirements
-        topicHref: /azure/databox-online/data-box-edge-system-requirements
-      - name: Limits
-        tocHref: /azure/databox-online/data-box-edge-limits
-        topicHref: /azure/databox-online/data-box-edge-limits        
-      - name: Prepare to deploy
-        tocHref: /azure/databox-online/data-box-edge-deploy-prep
-        topicHref: /azure/databox-online/data-box-edge-deploy-prep 
-      - name: Install
-        tocHref: /azure/databox-online/data-box-edge-deploy-install
-        topicHref: /azure/databox-online/data-box-edge-deploy-install 
-      - name: Develop an IoT Edge module
-        tocHref: /azure/databox-online/data-box-edge-create-iot-edge-module
-        topicHref: /azure/databox-online/data-box-edge-create-iot-edge-module 
-    - name: HCI
-      tocHref: /windows-server/
-      topicHref: /windows-server/
-      items:      
-      - name: Windows Admin Center
-        tocHref: /windows-server/manage/windows-admin-center/understand/windows-admin-center
-        topicHref: /windows-server/manage/windows-admin-center/understand/windows-admin-center 
-      - name: Azure Hybrid Services
-        tocHref: /windows-server/manage/windows-admin-center/azure/
-        topicHref: /windows-server/manage/windows-admin-center/azure/         
-      - name: Hyper-V
-        tocHref: /windows-server/virtualization/hyper-v/hyper-v-on-windows-server
-        topicHref: /windows-server/virtualization/hyper-v/hyper-v-on-windows-server 
-      - name: Storage Spaces Direct
-        tocHref: /windows-server/storage/storage-spaces/storage-spaces-direct-overview
-        topicHref: /windows-server/storage/storage-spaces/storage-spaces-direct-overview
-      - name: Software Defined Networking
-        tocHref: /windows-server/networking/sdn/
-        topicHref: /windows-server/networking/sdn/
-      - name: Failover clustering
-        tocHref: /windows-server/failover-clustering/failover-clustering-overview
-        topicHref: /windows-server/failover-clustering/failover-clustering-overview
