@@ -27,7 +27,7 @@ You're required to provide some important information related to DNS when you de
 |Region|The geographic location of your Azure Stack deployment.|`east`|
 |External Domain Name|The name of the zone you want to use for your Azure Stack deployment.|`cloud.fabrikam.com`|
 |Internal Domain Name|The name of the internal zone that's used for infrastructure services in Azure Stack. It's Directory Service-integrated and private (not reachable from outside the Azure Stack deployment).|`azurestack.local`|
-|DNS Forwarders|DNS servers that are used to forward DNS queries, DNS zones, and records that are hosted outside Azure Stack, either on the corporate intranet or public internet. If you replace a DNS forwarder, the IP address needs to be updated. |`10.57.175.34`<br>`8.8.8.8`|
+|DNS Forwarders|DNS servers that are used to forward DNS queries, DNS zones, and records that are hosted outside Azure Stack, either on the corporate intranet or public internet. You can edit the DNS Forwarder value with the [**Set-AzSDnsForwarder** cmdlet](#editing-dns-forwarder-ips) after deployment. 
 |Naming Prefix (Optional)|The naming prefix you want your Azure Stack infrastructure role instance machine names to have.  If not provided, the default is `azs`.|`azs`|
 
 The fully qualified domain name (FQDN) of your Azure Stack deployment and endpoints is the combination of the Region parameter and the External Domain Name parameter. Using the values from the examples in the previous table, the FQDN for this Azure Stack deployment would be the following name:
@@ -75,7 +75,9 @@ Azure Stack includes both authoritative and recursive DNS servers. The recursive
 
 ## Resolving external DNS names from Azure Stack
 
-To resolve DNS names for endpoints outside Azure Stack (for example: www\.bing.com), you need to provide DNS servers that Azure Stack can use to forward DNS requests for which Azure Stack isn't authoritative. For deployment, DNS servers that Azure Stack forwards requests to are required in the Deployment Worksheet (in the DNS Forwarder field). Provide at least two servers in this field for fault tolerance. Without these values, Azure Stack deployment fails. If DNS forwarders get replaced, update the IP addresses.
+To resolve DNS names for endpoints outside Azure Stack (for example: www\.bing.com), you need to provide DNS servers that Azure Stack can use to forward DNS requests for which Azure Stack isn't authoritative. For deployment, DNS servers that Azure Stack forwards requests to are required in the Deployment Worksheet (in the DNS Forwarder field). Provide at least two servers in this field for fault tolerance. Without these values, Azure Stack deployment fails. You can edit the DNS Forwarder values with the [**Set-AzSDnsForwarder** cmdlet](#editing-dns-forwarder-ips) after deployment. 
+
+
 
 ### Configure conditional DNS forwarding
 
@@ -140,6 +142,10 @@ Example:
 
 - Corporate DNS Domain Name: `contoso.com`
 - Azure Stack External DNS Domain Name: `azurestack.contoso.com`
+
+## Editing DNS Forwarder IPs
+
+DNS Forwarder IPs are set during deployment of Azure Stack. However, if the Forwarder IPs need to be updated for any reason, you can edit the values by connecting to the privileged endpoint and running the `Get-AzSDnsForwarder` and `Set-AzSDnsForwarder [[-IPAddress] <IPAddress[]>]` PowerShell cmdlets. For more information, see [privileged endpoint](azure-stack-privileged-endpoint.md).
 
 ## Delegating the external DNS zone to Azure Stack
 
