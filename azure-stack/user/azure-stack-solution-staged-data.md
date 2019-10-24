@@ -11,7 +11,7 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/10/2019
+ms.date: 10/24/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 06/20/2019
@@ -80,12 +80,12 @@ Docker images for each deployment eliminate dependency issues between different 
       ```powershell
       .\DeploySolution-Azure-AzureStack.ps1 `
       -AzureApplicationId "applicationIDforAzureServicePrincipal" `
-      -AzureApplicationSercet "clientSecretforServicePrincipal" `
+      -AzureApplicationSecret "clientSecretforServicePrincipal" `
       -AzureTenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" `
       -AzureStackAADTenantName "azurestacktenant.onmicrosoft.com" `
       -AzureStackTenantARMEndpoint "https://management.haazurestack.com" `
       -AzureStackApplicationId "applicationIDforStackServicePrincipal" `
-      -AzureStackApplicationSercet "ClientSecretforStackServicePrincipal" `
+      -AzureStackApplicationSecret "ClientSecretforStackServicePrincipal" `
       -AzureStackTenantId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" `
       -ResourcePrefix "aPrefixForResources"
       ```
