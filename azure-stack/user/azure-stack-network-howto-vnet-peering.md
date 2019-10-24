@@ -19,9 +19,11 @@ ms.lastreviewed: 10/03/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-YOu can connect two Azure Stack VNets to one another within the same Azure Stack environment.  It is currently not possible to interconnect Azure Stack VNets to one another using the built-in Virtual Network Gateway:  https://docs.microsoft.com/azure-stack/user/azure-stack-network-differences.  Support for this is coming soon but for now one must use NVA appliances to create a VPN tunnel between two Azure Stack VNets.  In this template, two Windows Server 2016 VMs are deployed with RRAS installed.  The two RRAS servers are configured to implement a S2SVPN IKEv2 tunnel between two VNETs.  The appropriate NSG and UDR rules are created to allow routing between the subnets on each VNET designated as **internal**.  
+You can connect two Azure Stack VNets to one another within the same Azure Stack environment.  It is currently not possible to interconnect Azure Stack VNets to one another using the built-in Virtual Network Gateway:  https://docs.microsoft.com/azure-stack/user/azure-stack-network-differences.  Support for this is coming soon but for now one must use NVA appliances to create a VPN tunnel between two Azure Stack VNets.  In this template, two Windows Server 2016 VMs are deployed with RRAS installed.  The two RRAS servers are configured to implement a S2SVPN IKEv2 tunnel between two VNETs.  The appropriate NSG and UDR rules are created to allow routing between the subnets on each VNET designated as **internal**.  
 
-This deployment pattern is the foundation that will allow VPN Tunnels to be created not only within an Azure Stack instance but also between Azure Stack Instances and to other resources such as on-premises networks with the use of the Windows RRAS S2S VPN Tunnels.
+This deployment pattern is the foundation that will allow VPN Tunnels to be created not only within an Azure Stack instance but also between Azure Stack Instances and to other resources such as on-premises networks with the use of the Windows RRAS S2S VPN Tunnels. 
+
+You can find the templates in the **lucidqdreams** fork of Azure Intelligent Edge Patterns GitHub repository. The template is in the **S2SVPNTunnel** folder.
 
 ![alt text](./media/azure-stack-network-howto-vnet-peering/overview.png)
 
