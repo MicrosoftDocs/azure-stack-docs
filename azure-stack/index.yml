@@ -110,20 +110,20 @@ additionalContent:
         # Card
         - title: Manage
           links:
-          - url: /windows-server/manage/windows-admin-center/understand/windows-admin-center
+          - url: /windows-server/manage/windows-admin-center/understand/windows-admin-center?bc=/azure-stack/breadcrumb/toc.json
             text: Windows Admin Center
-          - url: /windows-server/manage/windows-admin-center/azure/
+          - url: /windows-server/manage/windows-admin-center/azure?bc=/azure-stack/breadcrumb/toc.json
             text: Azure Hybrid Services
         # Card
         - title: Foundational technologies
           links:
           - url: /windows-server/virtualization/hyper-v/hyper-v-on-windows-server
             text: Hyper-V
-          - url: /windows-server/storage/storage-spaces/storage-spaces-direct-overview
+          - url: /windows-server/storage/storage-spaces/storage-spaces-direct-overview?bc=/azure-stack/breadcrumb/toc.json
             text: Storage Spaces Direct
-          - url: /windows-server/networking/sdn/
+          - url: /windows-server/networking/sdn?bc=/azure-stack/breadcrumb/toc.json
             text: Software Defined Networking
-          - url: /windows-server/failover-clustering/failover-clustering-overview
+          - url: /windows-server/failover-clustering/failover-clustering-overview?bc=/azure-stack/breadcrumb/toc.json
             text: Failover clustering              
 
            
