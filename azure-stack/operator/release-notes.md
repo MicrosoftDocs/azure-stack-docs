@@ -141,7 +141,7 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 The 1910 release of Azure Stack must be applied on the 1908 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- No hotfix available for 1908.
+- [Azure Stack hotfix 1.1908.8.41](https://support.microsoft.com/help/4528074)
 
 ### After successfully applying the 1910 update
 
