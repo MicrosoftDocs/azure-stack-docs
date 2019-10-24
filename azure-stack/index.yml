@@ -83,18 +83,18 @@ additionalContent:
         # Card
         - title: Deploy
           links:
-          - url: /azure/databox-online/data-box-edge-system-requirements?bc=/azure-stack/breadcrumb/toc.json
+          - url: /azure/databox-online/data-box-edge-system-requirements
             text: Review system requirements       
-          - url: /azure/databox-online/data-box-edge-limits?bc=/azure-stack/breadcrumb/toc.json
+          - url: /azure/databox-online/data-box-edge-limits
             text: Understand limits
-          - url: /azure/databox-online/data-box-edge-deploy-prep?bc=/azure-stack/breadcrumb/toc.json
+          - url: /azure/databox-online/data-box-edge-deploy-prep
             text: Prepare to deploy 
-          - url: /azure/databox-online/data-box-edge-deploy-install?bc=/azure-stack/breadcrumb/toc.json
+          - url: /azure/databox-online/data-box-edge-deploy-install
             text: Install    
         # Card
         - title: Develop
           links:
-          - url: /azure/databox-online/data-box-edge-create-iot-edge-module?bc=/azure-stack/breadcrumb/toc.json
+          - url: /azure/databox-online/data-box-edge-create-iot-edge-module
             text: Develop an IoT Edge module (C#)  
           - url: /samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules
             text: IoT Edge module samples (C#)  
@@ -110,20 +110,20 @@ additionalContent:
         # Card
         - title: Manage
           links:
-          - url: /windows-server/manage/windows-admin-center/understand/windows-admin-center?bc=/azure-stack/breadcrumb/toc.json
+          - url: /windows-server/manage/windows-admin-center/understand/windows-admin-center
             text: Windows Admin Center
-          - url: /windows-server/manage/windows-admin-center/azure?bc=/azure-stack/breadcrumb/toc.json
+          - url: /windows-server/manage/windows-admin-center/azure
             text: Azure Hybrid Services
         # Card
         - title: Foundational technologies
           links:
           - url: /windows-server/virtualization/hyper-v/hyper-v-on-windows-server
             text: Hyper-V
-          - url: /windows-server/storage/storage-spaces/storage-spaces-direct-overview?bc=/azure-stack/breadcrumb/toc.json
+          - url: /windows-server/storage/storage-spaces/storage-spaces-direct-overview
             text: Storage Spaces Direct
-          - url: /windows-server/networking/sdn?bc=/azure-stack/breadcrumb/toc.json
+          - url: /windows-server/networking/sdn
             text: Software Defined Networking
-          - url: /windows-server/failover-clustering/failover-clustering-overview?bc=/azure-stack/breadcrumb/toc.json
+          - url: /windows-server/failover-clustering/failover-clustering-overview
             text: Failover clustering              
 
            
