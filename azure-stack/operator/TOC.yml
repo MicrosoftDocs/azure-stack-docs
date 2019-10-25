@@ -326,7 +326,7 @@
     - name: Event Hubs on Azure Stack
       items:
       - name: Overview
-      - name: Before you get started
+      - name: Prerequisites
         href: event-hubs-rp-prerequisites.md
       - name: Install the resource provider
         href: event-hubs-rp-install.md
@@ -335,8 +335,7 @@
       - name: Life cycle management
         items:
         - name: How to collect logs
-          href: azure-stack-diagnostic-log-collection-overview.md
-          maintainContext: true
+          href: azure-stack-diagnostic-log-collection-overview.md?toc=TOC.json&bc=breadcrumb/toc.json
       - name: Administration
         items:
         -name: Service limits, quotas, and clusters

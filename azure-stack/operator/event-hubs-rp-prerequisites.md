@@ -15,7 +15,7 @@ ms.lastreviewed: 10/31/2019
 The following prerequisites must be completed, before you can install Event Hubs on Azure Stack. **Several days or weeks of lead time may be required**, to complete all steps.
 
 > [!IMPORTANT]
-> **Private Preview Only**. Azure Stack 1910 build version or higher is required by Event Hubs. Please note that Azure Stack builds are incremental. For example, if you have [version 1907](release-notes?view=azs-1907#1907-build-reference) installed, you must first upgrade to [1908](release-notes?view=azs-1908#1908-build-reference), and then to 1910, in order to participate in the private preview. That is, you cannot skip builds in-between.
+> **Private Preview Only**. Azure Stack 1910 build version or higher is required by Event Hubs. Please note that Azure Stack builds are incremental. For example, if you have [version 1907](/azure-stack/operator/release-notes?view=azs-1907#1907-build-reference) installed, you must first upgrade to [1908](/azure-stack/operator/release-notes?view=azs-1908#1908-build-reference), and then to 1910, in order to participate in the private preview. That is, you cannot skip builds in-between.
 
 
 1. [Register your Azure Stack instance with Azure](azure-stack-registration.md), if you haven't done so. This step is required as you'll be connecting to and downloading items to marketplace from Azure.
