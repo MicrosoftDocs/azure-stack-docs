@@ -284,6 +284,8 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - We now validate that an image being ingested into the **Compute -> VM images** blade is of type page blob.
 
+- The privileged endpoint command **Set-BmcCredential** now updates the credential in the Baseboard Management Controller.
+
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
