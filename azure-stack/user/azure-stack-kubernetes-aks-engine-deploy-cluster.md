@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 09/27/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/27/2019
+ms.lastreviewed: 10/10/2019
 
 ---
 
@@ -166,20 +166,15 @@ Verify your cluster by deploying mysql with Helm to check your cluster.
 4.  Run the following commands:
 
     ```bash
-    sudo snap install helm –classic
+    sudo snap install helm --classic
+    kubectl -n kube-system create serviceaccount tiller
+    kubectl create clusterrolebinding tiller --clusterrole cluster-admin --serviceaccount=kube-system:tiller
+    helm init --service-account=tiller
     helm repo update
     helm install stable/mysql
     ```
 
-5. If after trying to run `install stable/mysql` you get an error such as `Error: incompatible versions client[v2.XX.X] server[v2.YY.Y]`. Run the following commands:
-
-    ```bash 
-    helm init --force-upgrade
-    and retry:
-    helm install stable/mysql
-    ```
-
-6.  To clean up the test, find the name used for the mysql deployment. In the following example, the name is `wintering-rodent`. Then delete it. 
+5.  To clean up the test, find the name used for the mysql deployment. In the following example, the name is `wintering-rodent`. Then delete it. 
 
     Run the following commands:
 

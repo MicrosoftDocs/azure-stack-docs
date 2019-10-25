@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2019
+ms.date: 10/15/2019
 ms.reviewer: ppacent
 ms.author: mabrigg
-ms.lastreviewed: 07/15/2019
+ms.lastreviewed: 09/30/2019
 monikerRange: '>=azs-1803'
 ---
 
@@ -23,28 +23,44 @@ monikerRange: '>=azs-1803'
 
 *These instructions apply only to Azure Stack Integrated Systems Version 1803 and Later. Do not attempt secret rotation on pre-1802 Azure Stack Versions*
 
+Secrets help you maintain secure communication between the Azure Stack infrastructure resources and services.
+
+## Overview to rotate secrets
+
+1. Prepare the certificates, which will be used for secret rotation.
+2. Review the Azure Stack [public key infrastructure certificate requirements](https://docs.microsoft.com/azure-stack/operator/azure-stack-pki-certs).
+3. [Use the privileged endpoint](azure-stack-privileged-endpoint.md) and run **Test-azurestack**  to confirm that everything is fine.  
+4. You can find out more information about the [pre-steps for secret rotation](#pre-steps-for-secret-rotation).
+5. [Validate Azure Stack PKI certificates](https://docs.microsoft.com/azure-stack/operator/azure-stack-validate-pki-certs). Make sure there are no special characters in password such as, `*` or `)`.
+6. Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Remediate common issues for Azure Stack PKI certificates](https://docs.microsoft.com/azure-stack/operator/azure-stack-remediate-certs#pfx-encryption).
+7. Prepare the folder structure.  You can find an example in the 
+    [Rotating external secrets](https://docs.microsoft.com/azure-stack/operator/azure-stack-rotate-secrets#rotating-external-secrets) section.
+8. [Start the secret rotation](#use-powershell-to-rotate-secrets).
+
+## Rotate secrets
+
 Azure Stack uses various secrets to maintain secure communication between the Azure Stack infrastructure resources and services.
 
 - **Internal secrets**
 
-All the certificates, passwords, secure strings, and keys used by the Azure Stack infrastructure without intervention of the Azure Stack Operator.
+    All the certificates, passwords, secure strings, and keys used by the Azure Stack infrastructure without intervention of the Azure Stack Operator.
 
 - **External secrets**
 
-Infrastructure service certificates for external-facing services that are provided by the Azure Stack Operator. External secrets include the certificates for the following services:
+    Infrastructure service certificates for external-facing services that are provided by the Azure Stack Operator. External secrets include the certificates for the following services:
 
-- Administrator Portal
-- Public Portal
-- Administrator Azure Resource Manager
-- Global Azure Resource Manager
-- Administrator KeyVault
-- KeyVault
-- Admin Extension Host
-- ACS (including blob, table, and queue storage)
-- ADFS *
-- Graph *
-
-\* Only applicable if the environment's identity provider is Active Directory Federated Services (AD FS).
+    - Administrator Portal
+    - Public Portal
+    - Administrator Azure Resource Manager
+    - Global Azure Resource Manager
+    - Administrator KeyVault
+    - KeyVault
+    - Admin Extension Host
+    - ACS (including blob, table, and queue storage)
+    - ADFS *
+    - Graph *
+    
+    \* Only applicable if the environment's identity provider is Active Directory Federated Services (AD FS).
 
 > [!Note]
 > All other secure keys and strings, including BMC and switch passwords, user and administrator account passwords are still manually updated by the administrator.
@@ -54,7 +70,7 @@ Infrastructure service certificates for external-facing services that are provid
 
 In order to maintain the integrity of the Azure Stack infrastructure, operators need the ability to periodically rotate their infrastructure's secrets at frequencies that are consistent with their organization's security requirements.
 
-### Rotating Secrets with External Certificates from a new Certificate Authority
+### Rotating Secrets with external certificates from a new Certificate Authority
 
 Azure Stack supports secret rotation with external certificates from a new Certificate Authority (CA) in the following contexts:
 
@@ -213,7 +229,7 @@ To rotate external secrets:
 
 6. After successful completion of secret rotation, remove your certificates from the share created in the pre-step and store them in their secure backup location.
 
-## Walkthrough of secret rotation
+## Use PowerShell to rotate secrets
 
 The following PowerShell example demonstrates the cmdlets and parameters to run in order to rotate your secrets.
 
@@ -364,13 +380,12 @@ This command rotates all of the infrastructure secrets exposed to Azure Stack in
 
 ## Update the baseboard management controller (BMC) credential
 
-The baseboard management controller (BMC) monitors the physical state of your servers. The specifications and instructions on updating the user account name and password of the BMC vary based on your original equipment manufacturer (OEM) hardware vendor. You should update your passwords for Azure Stack components on a regular basis.
+The baseboard management controller (BMC) monitors the physical state of your servers. Refer to your original equipment manufacturer (OEM) hardware vendor for instructions to update the user account name and password of the BMC. 
+
+>[!NOTE]
+> Your OEM may provide additional management applications. Updating the user name or password for other management applications has no affect on the BMC user name or password.   
 
 1. Update the BMC on the Azure Stack physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
-
-    > [!Note]  
-    > First update the BMC credentials on the base board management controller of the physical server; otherwise the Azure Stack command will fail during validation.
-
 2. Open a privileged endpoint in Azure Stack sessions. For instructions, see [Using the privileged endpoint in Azure Stack](azure-stack-privileged-endpoint.md).
 3. After your PowerShell prompt has changed to **[IP address or ERCS VM name]: PS>** or to **[azs-ercs01]: PS>**, depending on the environment, run `Set-BmcCredential` by running `Invoke-Command`. Pass your privileged endpoint session variable as a parameter. For example:
 
