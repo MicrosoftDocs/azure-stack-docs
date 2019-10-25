@@ -328,13 +328,13 @@
       - name: Overview
       - name: Prerequisites
         href: event-hubs-rp-prerequisites.md
-      - name: Install the resource provider
+      - name: Install
         href: event-hubs-rp-install.md
-      - name: Remove the resource provider
+      - name: Remove
         href: event-hubs-rp-remove.md        
       - name: Life cycle management
         items:
-        - name: How to collect logs
+        - name: Collect logs
           href: azure-stack-diagnostic-log-collection-overview.md?toc=TOC.json&bc=breadcrumb/toc.json
       - name: Administration
         items:
