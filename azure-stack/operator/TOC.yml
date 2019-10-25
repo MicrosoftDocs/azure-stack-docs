@@ -327,7 +327,11 @@
       items:
       - name: Overview
       - name: Before you get started
-      - name: Install, update, and remove
+        href: event-hubs-rp-prerequisites.md
+      - name: Install the resource provider
+        href: event-hubs-rp-install.md
+      - name: Remove the resource provider
+        href: event-hubs-rp-remove.md        
       - name: Life cycle management
         items:
         - name: How to collect logs
