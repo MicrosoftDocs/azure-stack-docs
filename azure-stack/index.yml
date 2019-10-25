@@ -124,6 +124,6 @@ additionalContent:
           - url: /windows-server/networking/sdn
             text: Software Defined Networking
           - url: /windows-server/failover-clustering/failover-clustering-overview
-            text: Failover clustering              
+            text: Failover Clustering              
 
            
