@@ -80,8 +80,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - A new version of Azure Stack Admin PowerShell modules is available. For more information, see
 
-- You can now update the DNS forwarder that you specified at Azure Stack deplpoyment time using the privileged endpoint. This does not require opening a support case. For more information, see [Link to new article].
-
 - Added the **Set-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to configure the manual update for Windows Defender definitions in Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
 
 - Added the **Get-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to retrieve the configuration of the manual update for Windows Defender definitions in Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
