@@ -80,13 +80,13 @@ This option is necessary when any of the following is true:
 ### Prepare secrets 
 
 1. Under Prepare secrets step click on Add certificate.
-   ![Marketplace management event hubs - prepare secrets](media/event-hubs-rp-install/6-marketplace-management-install-prereqs-secrets.png)
+   ![Marketplace management event hubs - prepare secrets](media/event-hubs-rp-install/6-marketplace-management-install-prepace-secrets.png)
 
 2. Click on the browse button on the Add a certificate blade.
 3. Select the .pfx certificate file you procured based on Procure SSL Certificate for Azure Stack integrated systems (multi-node). Please see Prerequisites for more information. 
 
 4. Input the password you provided to create a secure string for Event Hubs SSL Certificate and click Add.
-   ![Marketplace management event hubs - add certificate](media/event-hubs-rp-install/7-marketplace-management-install-prereqs-secrets-add-cert.png)
+   ![Marketplace management event hubs - add certificate](media/event-hubs-rp-install/7-marketplace-management-install-prepare-secrets-add-cert.png)
 
 ### Install resource provider
 
@@ -117,7 +117,7 @@ You now need to register the Event Hubs resource provider so that you can use se
 8. After a few seconds click on Refresh. You should now see the resource provider with a status of Registered. 
 
 9. Repeat the steps above with the other resource provider, if needed. You should now see Microsoft.EventHub and Microsoft.EventHub.Admin with a status of Registered.
-   ![Resource providers registered](media/event-hubs-rp-install/13-default-subscription-registered.png)
+   ![Resource providers registered](media/event-hubs-rp-install/13-default-subscription-rps-registered.png)
 
 10. Navigate to All services.
 11. Search for Event Hubs. You should now see Event Hubs. That is your entry point to Event Hubs Admin page. 
