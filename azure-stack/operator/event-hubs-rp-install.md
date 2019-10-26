@@ -21,7 +21,7 @@ Before you can install Event Hubs on Azure Stack, you must download the resource
 - Download Event Hubs under a connected scenario.
 - Download Event Hubs under a disconnected or partially connected scenario.
 
-### Download Event - connected scenario
+### Download Event Hubs - connected scenario
 
 > [!NOTE]
 > The download process can take 30 minutes to 2 hours, depending on the network latency and existing packages on your Azure Stack instance. 
@@ -36,7 +36,7 @@ Follow these instructions if your Azure Stack has Internet connectivity:
 7. On the "Event Hubs" download page, select the Event Hubs version you wish to install, then select **Download** at the bottom of the page. 
    [![Marketplace management packages](media/event-hubs-rp-install/1-marketplace-management-download.png)](media/event-hubs-rp-install/1-marketplace-management-download.png#lightbox)
 
-You'll notice that additional software packages are downloaded along with Event Hubs, including:
+Notice that additional software packages are downloaded along with Event Hubs, including:
 
 - Microsoft Azure Stack Add-On RP Windows Server INTERNAL ONLY
 - PowerShell Desired State Configuration
@@ -45,13 +45,13 @@ Once the download process is complete, skip to the [Install Prerequisites sectio
 
 ### Download Event Hubs - disconnected or partially connected scenario
 
-This option is necessary when any of the following conditions are true:
+This process is necessary when any of the following conditions are true:
 
 - You don't have an Internet connection.
 - Your connection isn't reliable.
 - Your requirements prevent you from directly using Azure Stack to download packages.
 
-This is a two step process. First you download the packages to your local machine, then you import them into your Azure Stack instance.
+First you download the packages to your local machine, then you import them into your Azure Stack instance.
 
 1. If you haven't already, follow the instructions in [Download Marketplace items - Disconnected or partially connected scenarios](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario). Here you download the Marketplace Syndication tool, which allows you to download the Event Hubs packages.
 2. Run the Marketplace Syndication tool (`Export-AzSOfflineMarketplaceItem` PowerShell cmdlet). 
@@ -70,7 +70,7 @@ This is a two step process. First you download the packages to your local machin
 
 ### Install prerequisites
 
-1. Next you'll be transferred to the install page. Select **Install Prerequisites** to begin the installation process.
+1. Next you're transferred to the install page. Select **Install Prerequisites** to begin the installation process.
    ![Marketplace management event hubs - prerequisites](media/event-hubs-rp-install/4-marketplace-management-install-prereqs-start.png)
  
 2. Wait until the installation of prerequisites succeeds, then verify that it completed successfully. You should see a green checkmark next to **Install prerequisites** before proceeding to the next step.
@@ -79,7 +79,7 @@ This is a two step process. First you download the packages to your local machin
 
 ### Prepare secrets 
 
-1. Under the **2. Prepare secrets** step, select **Add certificate** and the **Add a certificate** panel will appear.
+1. Under the **2. Prepare secrets** step, select **Add certificate**, and the **Add a certificate** panel will appear.
    ![Marketplace management event hubs - prepare secrets](media/event-hubs-rp-install/6-marketplace-management-install-prepare-secrets.png)
 
 2. Select the browse button on **Add a certificate**, just to the right of the certificate filename field.
@@ -93,10 +93,10 @@ This is a two step process. First you download the packages to your local machin
 1. When the installation of the certificate succeeds, you should see a green checkmark next to **Prepare secrets** before proceeding to the next step. Now select the **Install** button next to **3 Install resource provider**.
    ![Marketplace management event hubs - start install](media/event-hubs-rp-install/8-marketplace-management-install-start.png)
  
-2. Next you will see the following page, which indicates that Event Hubs resource provider is being installed.
+2. Next you'll see the following page, which indicates that Event Hubs resource provider is being installed.
    [![Marketplace management event hubs - installing](media/event-hubs-rp-install/9-marketplace-management-install-inprogress.png)](media/event-hubs-rp-install/9-marketplace-management-install-inprogress.png#lightbox)
  
-3. Wait for the installation complete notification. This process usually takes 1 or more hours, depending on your Azure Stack type. 
+3. Wait for the installation complete notification. This process usually takes one or more hours, depending on your Azure Stack type. 
    [![Marketplace management event hubs - install complete](media/event-hubs-rp-install/10-marketplace-management-install-complete.png)](media/event-hubs-rp-install/10-marketplace-management-install-complete.png#lightbox)
 
 4. Verify that the installation of Event Hubs has succeeded, by returning to the **Marketplace Management**, **Resource Providers** page. The status of Event Hubs should show "Installed".
@@ -104,7 +104,7 @@ This is a two step process. First you download the packages to your local machin
 
 ## Register Event Hubs
 
-Now you need to register the Event Hubs resource provider. This allows you use the Event Hubs administration page, to manage the service.
+Now you need to register the Event Hubs resource provider. Registration allows you to use the Event Hubs administration page, to manage the service.
 
 1. In the administrator portal, select **All services** in the top left.
 2. Select **Subscriptions**. You're presented with a list of subscriptions. 
@@ -116,7 +116,7 @@ Now you need to register the Event Hubs resource provider. This allows you use t
 6. Look at the **Status** column of the "Microsoft.EventHub" and "Microsoft.EventHub.Admin" resource provider rows.
 7. If any of them have a status of "Unregistered", select each provider, then select **Register**. 
    ![Unregistered resource providers](media/event-hubs-rp-install/12-default-subscription-rps-unregistered.png)
-8. After a few seconds select Refresh. You should now see the resource provider with a status of Registered. 
+8. After a few seconds, select **Refresh**. You should now see the resource provider with a status of Registered. 
 9. You should now see Microsoft.EventHub and Microsoft.EventHub.Admin, with a status of "Registered".
    ![Registered resource providers](media/event-hubs-rp-install/13-default-subscription-rps-registered.png)
 
