@@ -34,7 +34,7 @@ Follow these instructions if your Azure Stack has Internet connectivity:
 5. Search for "Event Hubs" using the search bar.
 6. Select the "Event Hubs" row on the search results. 
 7. On the "Event Hubs" download page, select the Event Hubs version you wish to install, then select **Download** at the bottom of the page. 
-   ![Marketplace management packages](media/event-hubs-rp-install/1-marketplace-management-download.png)
+   [![Marketplace management packages](media/event-hubs-rp-install/1-marketplace-management-download.png)](media/event-hubs-rp-install/1-marketplace-management-download.png#lightbox)
 
 You'll notice that additional software packages are downloaded along with Event Hubs, including:
 
