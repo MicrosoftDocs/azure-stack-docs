@@ -63,7 +63,11 @@ Once you have set up your Windows Server, you will need to install [Azure Stack 
 
 1. Retrieve the Blob Endpoint for the source and target storage accounts.
 
+    ![Azure Stack Storage Backup](./media/azure-stack-network-howto-backup-storage/back-up-step1.png)
+
 2. Create and record SAS Tokens for the source and target storage accounts.
+
+    ![Azure Stack Storage Backup](./media/azure-stack-network-howto-backup-storage/back-up-step2.png)
 
 3. Install [AzCopy](https://github.com/Azure/azure-storage-azcopy) on the intermediary server and set the API Version to account for Azure Stack Storage Accounts.
 
