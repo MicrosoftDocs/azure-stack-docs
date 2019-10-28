@@ -20,40 +20,16 @@ Hybrid scenarios vary greatly with the resources that are available for developm
 
 ## Design patterns
 
-Design patterns cull generalized and repeatable design guidance, from real world customer scenarios and experiences. A pattern is abstract, and can be applicable to several scenarios and industries. 
+Design patterns cull generalized and repeatable design guidance, from real world customer scenarios and experiences. A pattern is abstract, allowing it to be applicable to different types of scenarios, or vertical industries. Each pattern documents the problem, an associated solution architecture, including an optional solution example. 
 
-- [Cross-cloud scaling pattern](pattern-cross-cloud-scaling.md)
-- [Geo-distributed pattern](pattern-geo-distributed.md)
-- [DevOps hybrid CI/CD pattern](pattern-cicd-pipeline.md)
+There are two types of patterns:
+
+- Base pattern: illustrates a single general-purpose pattern.
+- Aggregate pattern: illustrates the application of multiple patterns, to solve a scenario or industry-specific problem.
 
 ## Solution examples
 
-Solution examples provide implementation guidance, which demonstrates a solution based on one or more patterns. The table of contents (TOC) provides content to assist in learning about and deploying each solution example:
-
-- An overview of the solution example.
-- A step-by-step deployment guide. The guide may also refer to a companion code sample, stored in the GitHub [solutions sample repo](https://github.com/Azure-Samples/azure-intelligent-edge-patterns). 
-
-There are two types of solution examples:
-
-- Single-pattern: demonstrates the implementation of a general-purpose solution based on a single pattern.
-- Multi-pattern: demonstrate the implementation of an industry-specific solution, based on multiple patterns.
-
-### Single-pattern
-
-- [Deploy apps across both Azure and Azure Stack](solution-deployment-guide-cicd-pipeline.md)
-- [Deploy apps to Azure Stack and Azure](solution-deployment-guide-hybrid.md)
-- [Configure hybrid cloud identity with Azure and Azure Stack apps](solution-deployment-guide-identity.md)
-- [Configure hybrid cloud connectivity with Azure and Azure Stack](solution-deployment-guide-connectivity.md)
-- [Create a tiered data solution with Azure and Azure Stack](solution-deployment-guide-tiered-data.md)
-- [Create cross-cloud scaling solutions with Azure](solution-deployment-guide-cross-cloud-scaling.md)
-- [Create a geo-distributed app solution with Azure and Azure Stack](solution-deployment-guide-geo-distributed.md)
-- [Deploy a hybrid cloud solution with Azure and Azure Stack](solution-deployment-guide-hybrid.md)
-- [Deploy MongoDB in Azure and Azure Stack](solution-deployment-guide-mongodb-ha.md)
-- [Deploy SQL Server 2016 in Azure and Azure Stack](solution-deployment-guide-sql-ha.md)
-
-### Multi-pattern
-
-- [Footfall detection solution for analyzing visitor traffic in retail stores](pattern-retail-footfall-detection.md)
+Solution examples provide implementation guidance, which demonstrates a solution based on one or more patterns. Step-by-step deployment guides assist in deploying each solution example. The guide may also refer to a companion code sample, stored in the GitHub [solutions sample repo](https://github.com/Azure-Samples/azure-intelligent-edge-patterns). 
 
 ## Next steps
 
