@@ -12,14 +12,13 @@ ms.reviewer: sijuman
 ms.lastreviewed: 10/19/2019
 
 # keywords:  X
-# Intent: As an Azure Stack Operator, I want < what? > so that < why? >
 ---
 
 # How to extend the data center on Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-This article provides Azure Stack storage infrastructure information to help you decide how to integrate Azure Stack into your existing networking environment. After providing a general discussion of extending your data center, the article presents two different scenarios. You can connect to a Windows file storage server. You can also connect to a Windows iSCSI server.
+This article provides Azure Stack storage infrastructure information to help you decide how to integrate Azure Stack into your existing networking environment. Storage space on Azure Stack is limited. You can integrate storage with storage outside of your Azure Stack and into your local data center. After providing a general discussion of extending your data center, the article presents two different scenarios. You can connect to a Windows file storage server. You can also connect to a Windows iSCSI server.
 
 ## Overview of extending storage to Azure Stack
 
@@ -45,7 +44,7 @@ In this scenario, deploy and configure a Windows Server 2019 virtual machine on 
 
 2.  Once you have a Windows Server 2019 image in your Azure Stack environment, sign in to the Azure Stack user portal**.
 
-3.  Once logged into the Azure Stack user portal, ensure you have a [subscription to an offer](https://docs.microsoft.com/azure-stack/operator/azure-stack-subscribe-plan-provision-vm?view=azs-1908), that lets you to provision IaaS resources (Compute, Storage, and Network).
+3.  Once logged into the Azure Stack user portal, ensure you have a [subscription to an offer](https://docs.microsoft.com/azure-stack/operator/azure-stack-subscribe-plan-provision-vm?view=azs-1908), that lets you provision IaaS resources (Compute, Storage, and Network).
 
 4.  Once you have a subscription available, back on the **dashboard** in the Azure Stack user portal, select **Create a resource**, select **Compute** and then select the **Windows Server 2019 Datacenter gallery item**.
 
