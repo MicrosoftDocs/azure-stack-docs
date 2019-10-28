@@ -35,7 +35,7 @@ landingContent:
       - linkListType: architecture
         links:
           - text: Cross-cloud scaling
-            url: pattern-cloud-scaling.md
+            url: pattern-cross-cloud-scaling.md
           - text: DevOps hybrid CI/CD
             url: pattern-cicd-pipeline.md
           - text: Geo-distributed app
