@@ -12,34 +12,39 @@
         href: solution-overview-cicd-pipeline.md
       - name: Geo-distributed application
         href: solution-overview-geo-distributed.md
+      - name: Hybrid identity (TBD)
+      - name: Hybrid relay (TBD)
+      - name: Live video at the edge (TBD/Better as a solution?)      
+      - name: ML training at the edge (TBD)
+      - name: Tiered data (TBD)      
 - name: Solutions
   items:
-  - name: Overviews
-    items: 
-    - name: Footfall detection (retail)
-      href: solution-overview-retail-footfall-detection.md
-  - name: Deployment guides
-    items:
-    - name: Cross-cloud scaling 
-      href: solution-deployment-guide-cross-cloud-scaling.md
-    - name: DevOps hybrid CI/CD 
-      href: solution-deployment-guide-cicd-pipeline.md
-    - name: Footfall detection (retail)
-      href: solution-deployment-guide-retail-footfall-detection.md
-    - name: Geo-distributed application
-      href: solution-deployment-guide-geo-distributed.md    
-    - name: Configure hybrid cloud identity
-      href: solution-deployment-guide-identity.md
-    - name: Configure hybrid cloud connectivity
-      href: solution-deployment-guide-connectivity.md
-    - name: Deploy a hybrid cloud solution
-      href: solution-deployment-guide-hybrid.md
-    - name: Deploy tiered data solution
-      href: solution-deployment-guide-tiered-data.md
-    - name: Deploy high-availability MongoDB
-      href: solution-deployment-guide-mongodb-ha.md
-    - name: Deploy high-availability SQL Server 2016
-      href: solution-deployment-guide-sql-ha.md
+  - name: Deploy at hybrid cloud app (TBD/Better as a pattern?)
+  - name: Footfall detection (retail)
+    href: solution-overview-retail-footfall-detection.md
+  - name: Out-of-stock detection at the edge (TBD/retail)
+- name: Deployment guides
+  items:
+  - name: Cross-cloud scaling 
+    href: solution-deployment-guide-cross-cloud-scaling.md
+  - name: DevOps hybrid CI/CD 
+    href: solution-deployment-guide-cicd-pipeline.md
+  - name: Footfall detection (retail)
+    href: solution-deployment-guide-retail-footfall-detection.md
+  - name: Geo-distributed application
+    href: solution-deployment-guide-geo-distributed.md    
+  - name: Configure hybrid cloud identity
+    href: solution-deployment-guide-identity.md
+  - name: Configure hybrid cloud connectivity
+    href: solution-deployment-guide-connectivity.md
+  - name: Deploy a hybrid cloud solution
+    href: solution-deployment-guide-hybrid.md
+  - name: Deploy tiered data solution
+    href: solution-deployment-guide-tiered-data.md
+  - name: Deploy high-availability MongoDB
+    href: solution-deployment-guide-mongodb-ha.md
+  - name: Deploy high-availability SQL Server 2016
+    href: solution-deployment-guide-sql-ha.md
 - name: Concepts
   items:
   - name: Hybrid app design considerations
