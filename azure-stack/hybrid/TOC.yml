@@ -10,16 +10,16 @@
         href: solution-overview-cross-cloud-scaling.md
       - name: DevOps hybrid CI/CD
         href: solution-overview-cicd-pipeline.md
-      - name: Geo-distributed application
+      - name: Geo-distributed app
         href: solution-overview-geo-distributed.md
       - name: Hybrid identity (TBD)
       - name: Hybrid relay (TBD)
-      - name: Live video at the edge (TBD/Better as a solution?)      
+      - name: Live video at the edge (TBD/Better as solution?)      
       - name: ML training at the edge (TBD)
       - name: Tiered data (TBD)      
 - name: Solutions
   items:
-  - name: Deploy at hybrid cloud app (TBD/Better as a pattern?)
+  - name: Deploy hybrid cloud app (TBD/Better as pattern?)
   - name: Footfall detection (retail)
     href: solution-overview-retail-footfall-detection.md
   - name: Out-of-stock detection at the edge (TBD/retail)
