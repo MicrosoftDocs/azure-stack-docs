@@ -22,9 +22,9 @@ Hybrid scenarios vary greatly with the resources that are available for developm
 
 Design patterns cull generalized and repeatable design guidance, from real world customer scenarios and experiences. A pattern is abstract, and can be applicable to several scenarios and industries. 
 
-- [Cross-cloud scaling pattern](solution-overview-cross-cloud-scaling.md)
-- [Geo-distributed pattern](solution-overview-geo-distributed.md)
-- [DevOps hybrid CI/CD pattern](solution-overview-cicd-pipeline.md)
+- [Cross-cloud scaling pattern](pattern-cross-cloud-scaling.md)
+- [Geo-distributed pattern](pattern-geo-distributed.md)
+- [DevOps hybrid CI/CD pattern](pattern-cicd-pipeline.md)
 
 ## Solution examples
 
@@ -53,7 +53,7 @@ There are two types of solution examples:
 
 ### Multi-pattern
 
-- [Footfall detection solution for analyzing visitor traffic in retail stores](solution-overview-retail-footfall-detection.md)
+- [Footfall detection solution for analyzing visitor traffic in retail stores](pattern-retail-footfall-detection.md)
 
 ## Next steps
 

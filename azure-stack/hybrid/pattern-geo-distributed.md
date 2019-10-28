@@ -22,7 +22,7 @@ Organizations with wide-reaching geographies strive to securely and accurately d
 
 The Azure Stack geographic traffic routing pattern, or Geo-Distributed Apps, allows traffic to be directed to specific endpoints based on various metrics. Creating a Traffic Manager with geographic-based routing and endpoint configuration routes traffic to endpoints based on regional requirements, corporate and international regulation, and data needs.
 
-![Geo-distributed pattern](media/solution-overview-geo-distributed/geo-distribution.png)
+![Geo-distributed pattern](media/pattern-geo-distributed/geo-distribution.png)
 
 **Traffic Manager**  
 In the diagram this is located outside of the public cloud, but it would need to able to coordinate traffic in both the local data center and the public cloud. The balancer routes traffic to geographical locations.

@@ -31,7 +31,7 @@ In this solution, you learn how to:
 
 Before getting started with this deployment guide, make sure you:
 
-- Review the [Footfall detection solution overview](solution-overview-retail-footfall-detection.md) 
+- Review the [Footfall detection solution overview](pattern-retail-footfall-detection.md) 
 - Obtain user access to an Azure Stack Development Kit (ASDK) or Azure Stack Integrated System instance, with:
   - The [Azure App Service on Azure Stack resource provider](../operator/azure-stack-app-service-overview.md) installed. You need operator access to your Azure Stack instance, or work with your administrator to install.
   - A subscription to an offer that provides App Service and Storage quota. You need operator access to create an offer.

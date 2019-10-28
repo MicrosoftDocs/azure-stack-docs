@@ -24,7 +24,7 @@ Apps often require refactored code to run in each target environment. This means
 
 The DevOps Pattern enables you to build, test, and deploy an app that runs on multiple clouds. This pattern unites the practice of continuous integration and continuous delivery. With continuous integration, code is built and tested every time a team member commits a change to version control. Continuous delivery automates each step from a build to a production environment. Together, these processes create a release process that supports deployment across diverse environments. With this pattern, you can draft your code and then deploy the same code to a premise environment, different private clouds, and the public clouds. Differences in environment require a change to a configuration file rather than changes to the code.
 
-![DevOps pattern](media/solution-overview-cicd-pipeline/hybrid-ci-cd.png)
+![DevOps pattern](media/pattern-cicd-pipeline/hybrid-ci-cd.png)
 
 With a consistent set of development tools across on-premises, private cloud, and public cloud environments, you can implement a practice of continuous integration and continuous delivery. Apps and services deployed using the DevOps Pattern are interchangeable and can run in any of these locations, taking advantage of on-premises and public cloud features and capabilities.
 

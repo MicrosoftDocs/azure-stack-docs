@@ -35,11 +35,11 @@ landingContent:
       - linkListType: architecture
         links:
           - text: Cross-cloud scaling
-            url: solution-overview-cross-cloud-scaling.md
+            url: pattern-cloud-scaling.md
           - text: DevOps hybrid CI/CD
-            url: solution-overview-cicd-pipeline.md
+            url: pattern-cicd-pipeline.md
           - text: Geo-distributed app
-            url: solution-overview-geo-distributed.md
+            url: pattern-geo-distributed.md
 
   # Card
   - title: Explore hybrid solutions
@@ -47,7 +47,7 @@ landingContent:
       - linkListType: overview
         links:
           - text: Footfall detection (retail)
-            url: solution-overview-retail-footfall-detection.md
+            url: pattern-retail-footfall-detection.md
 
   # Card
   - title: Deploy hybrid solutions
@@ -69,11 +69,7 @@ landingContent:
       - linkListType: architecture
         links:
           - text: Pattern
-            url: solution-overview-cross-cloud-scaling.md
-      - linkListType: overview
-        links:
-          - text: Solution
-            url: solution-overview-retail-footfall-detection.md
+            url: pattern-cross-cloud-scaling.md
       - linkListType: tutorial
         links:
           - text: Solution deployment guide

@@ -26,7 +26,7 @@ You may not be able to run your application in the public cloud. However, it may
 
 The cross-cloud scaling pattern extends an app located in a local cloud with public cloud resources. The pattern is triggered by an increase or decrease in demand, and respectively adds or removes resources in the cloud. These resources provide redundancy, rapid availability, and geo-compliant routing.
 
-![Cross-cloud scaling pattern](media/solution-overview-cross-cloud-scaling/cross-cloud-scaling.png)
+![Cross-cloud scaling pattern](media/pattern-cross-cloud-scaling/cross-cloud-scaling.png)
 
 > Note:  
 > This pattern applies only to stateless apps.
