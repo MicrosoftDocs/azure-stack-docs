@@ -23,6 +23,10 @@ This article shows you how to use an Azure Stack Resource Manager template to de
 
 You can find the templates in the **lucidqdreams** fork of [Azure Intelligent Edge Patterns](https://github.com/lucidqdreams/azure-intelligent-edge-patterns) GitHub repository. The template is in the **rras-vnet-vpntunnel** folder. 
 
+## Scenarios
+
+![](./media/azure-stack-network-howto-vpn-tunnel/scenarios.png)
+
 ## Create multiple VPN tunnels
 
 ![](./media/azure-stack-network-howto-vpn-tunnel/image1.png)
@@ -200,7 +204,7 @@ For reference refer to the on-premises machine network configuration.
 
 ### Deploying a GRE tunnel
 
-For this template, this walkthrough has used the IKE template. However, you can also deploy a GRE tunnel. This tunnel offers greater throughput.
+For this template, this walkthrough has used the [IKE template](azure-stack-network-howto-vpn-tunnel-ipsec.md). However, you can also deploy a [GRE tunnel](azure-stack-network-howto-vpn-tunnel-gre.md). This tunnel offers greater throughput.
 
 The process is the almost identical. However when you deploy the tunnel template onto the existing infrastructure, you need to use the outputs from the other system for the first three inputs. You will need to know the **LOCALTUNNELGATEWAY** for the resource group you are deploying into rather than the resource group you are trying to connect to.
 
