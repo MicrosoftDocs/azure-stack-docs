@@ -1,0 +1,129 @@
+### YamlMime:Hub
+title: Azure Stack documentation 
+summary: Azure Stack is a family of products and solutions that extend Azure to your datacenter or the edge, including Azure Stack Hub, Azure Stack HCI, and Azure Stack Edge.
+brand: azure
+
+metadata:
+  title: Azure Stack documentation 
+  description: Azure Stack is a family of products and solutions that extend Azure to your datacenter or the edge, including Azure Stack Hub, Azure Stack HCI, and Azure Stack Edge..
+  ms.service: azure-stack
+  ms.topic: hub-page
+  author: BryanLa
+  ms.author: bryanla
+  ms.date: 11/04/2019
+
+# highlightedContent section (optional)
+# Maximum of 8 items
+highlightedContent:
+# itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
+  items:
+    # Card
+    - title: Announcement blog post [TBD]
+      itemType: overview
+      url: https://azure.microsoft.com/en-us/blog/tag/azure-stack/
+    - title: Azure vs. Azure Stack Hub vs. Azure Stack HCI
+      itemType: overview
+      url: /azure-stack/operator/compare-azure-azure-stack
+
+# productDirectory section (optional)
+productDirectory:
+  items:
+  - title: Azure Stack Hub 
+    imageSrc: media/index/azure-stack-hub.svg
+    links:
+      - url: /azure-stack/operator/azure-stack-overview
+        text: What is Azure Stack Hub?
+  - title: Azure Stack Edge
+    imageSrc: media/index/azure-stack-edge.svg
+    links:
+      - url: /azure/databox-online/data-box-edge-overview
+        text: What is Azure Stack Edge?
+  - title: Azure Stack HCI
+    imageSrc: media/index/azure-stack-hci.svg
+    links:
+      - url: /azure-stack/operator/azure-stack-hci-overview
+        text: Azure Stack HCI overview
+
+# additionalContent section (optional)
+# Card with links style
+additionalContent:
+  # Supports up to 3 sections
+  sections:
+    - title: Azure Stack Hub
+      items:
+        # Card
+        - title: Operator
+          links:
+          - url: /azure-stack/operator/azure-stack-create-service-principals
+            text: Use an app identity to access resources
+          - url: /azure-stack/operator/release-notes
+            text: Release notes
+          - url: /azure-stack/operator/azure-stack-servicing-policy
+            text: Azure Stack Hub servicing policy
+        # Card
+        - title: User
+          links:
+          - url: /azure-stack/user/azure-stack-vm-sizes
+            text: Supported VM sizes
+          - url: /azure-stack/user/azure-stack-considerations
+            text: Key considerations for building apps
+          - url: /azure-stack/user/azure-stack-key-vault-manage-portal
+            text: Create and manage a Key Vault         
+        # Card
+        - title: Azure Stack Development Kit (ASDK)
+          links:
+          - url: /azure-stack/asdk/asdk-deploy-considerations
+            text: ASDK requirements and considerations
+          - url: /azure-stack/asdk/asdk-download
+            text: Download and extract the ASDK 
+          - url: /azure-stack/asdk/asdk-prepare-host
+            text: Prepare the ASDK host computer   
+    - title: Azure Stack Edge
+      items:
+        # Card
+        - title: Deploy
+          links:
+          - url: /azure/databox-online/data-box-edge-system-requirements
+            text: Review system requirements       
+          - url: /azure/databox-online/data-box-edge-limits
+            text: Understand limits
+          - url: /azure/databox-online/data-box-edge-deploy-prep
+            text: Prepare to deploy 
+          - url: /azure/databox-online/data-box-edge-deploy-install
+            text: Install    
+        # Card
+        - title: Develop
+          links:
+          - url: /azure/databox-online/data-box-edge-create-iot-edge-module
+            text: Develop an IoT Edge module (C#)  
+          - url: /samples/azure-samples/data-box-edge-csharp-modules/data-box-edge-csharp-modules
+            text: IoT Edge module samples (C#)  
+    - title: Azure Stack HCI
+      items:
+        # Card
+        - title: Solutions
+          links:
+          - url: https://azure.microsoft.com/en-us/overview/azure-stack/hci/
+            text: Azure Stack HCI solutions overview
+          - url: https://www.microsoft.com/en-us/cloud-platform/azure-stack-hci-catalog
+            text: Azure Stack HCI catalog  
+        # Card
+        - title: Manage
+          links:
+          - url: /windows-server/manage/windows-admin-center/understand/windows-admin-center
+            text: Windows Admin Center
+          - url: /windows-server/manage/windows-admin-center/azure
+            text: Azure Hybrid Services
+        # Card
+        - title: Foundational technologies
+          links:
+          - url: /windows-server/virtualization/hyper-v/hyper-v-on-windows-server
+            text: Hyper-V
+          - url: /windows-server/storage/storage-spaces/storage-spaces-direct-overview
+            text: Storage Spaces Direct
+          - url: /windows-server/networking/sdn
+            text: Software Defined Networking
+          - url: /windows-server/failover-clustering/failover-clustering-overview
+            text: Failover Clustering              
+
+           
