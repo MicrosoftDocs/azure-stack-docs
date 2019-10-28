@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 10/25/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
@@ -153,10 +153,10 @@ To create a custom marketplace item, do the following:
 
 10. For any further edits to Manifest.json, see [Reference: Marketplace item manifest.json](#reference-marketplace-item-manifestjson).
 
-11. When you finish modifying your files, convert it to an .azpkg file. You perform the conversion using the **AzureGalleryPackager.exe** tool and the sample gallery package you downloaded previously. Run the following command:
+11. When you finish modifying your files, convert it to an .azpkg file. You perform the conversion using the **AzureGallery.exe** tool and the sample gallery package you downloaded previously. Run the following command:
 
     ```shell
-    .\AzureGalleryPackager.exe package –m c:\<path>\<gallery package name>\manifest.json –o c:\Temp
+    .\AzureGallery.exe package –m c:\<path>\<gallery package name>\manifest.json –o c:\Temp
     ```
 
     > [!NOTE]
