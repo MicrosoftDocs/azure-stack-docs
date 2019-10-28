@@ -21,7 +21,7 @@ ms.lastreviewed: 09/19/2019
 
 This article shows you how to use an Azure Stack Resource Manager template to deploy the solution. The solution creates multiple resource groups with associated virtual networks and how to connect these systems.
 
-You can find the templates in the **lucidqdreams** fork of [Azure Intelligent Edge Patterns](https://github.com/lucidqdreams/azure-intelligent-edge-patterns) GitHub repository. The template is in the **rras-vnet-vpntunnel** folder. 
+You can find the templates in the [Azure Intelligent Edge Patterns](https://github.com/Azure-Samples/azure-intelligent-edge-patterns) GitHub repository. The template is in the **rras-gre-vnet-vnet** folder. 
 
 ## Scenarios
 

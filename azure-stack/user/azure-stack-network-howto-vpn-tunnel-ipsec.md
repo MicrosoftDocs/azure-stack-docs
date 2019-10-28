@@ -23,7 +23,7 @@ You can use the Azure Stack Resource Manager template in this solution to connec
 
 This solution is the foundation that will allow VPN Tunnels to be created not only within an Azure Stack instance but also between Azure Stack Instances and to other resources such as on-premises networks with the use of the Windows RRAS S2S VPN Tunnels.
 
-You can find the templates in the **lucidqdreams** fork of [Azure Intelligent Edge Patterns](https://github.com/lucidqdreams/azure-intelligent-edge-patterns) GitHub repository. The template is in the **rras-ike-vnet-vnet** folder. 
+You can find the templates in the [Azure Intelligent Edge Patterns](https://github.com/Azure-Samples/azure-intelligent-edge-patterns) GitHub repository. The template is in the **rras-gre-vnet-vnet** folder. 
 
 ![alt text](./media/azure-stack-network-howto-vpn-tunnel-ipsec/overview.png)
 
