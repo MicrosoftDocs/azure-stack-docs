@@ -276,6 +276,8 @@
       href: azure-stack-network-howto-vnet-to-vnet-stacks.md
     - name: VNET peering
       href: azure-stack-network-howto-vnet-to-vnet.md
+    - name: Extend the datacenter
+      href: azure-stack-network-howto-extend-datacenter.md
 - name: Concepts
   items:
   - name: Hybrid cloud patterns
