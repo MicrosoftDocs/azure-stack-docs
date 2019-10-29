@@ -18,7 +18,9 @@
         - name: Hybrid relay
           href: pattern-hybrid-relay.md
         - name: Live video at the edge (TBD/Better as aggregate?)      
-        - name: ML training at the edge (TBD)
+          href: pattern-live-video-at-edge.md
+        - name: Training ML models at the edge
+          href: pattern-train-ml-model-at-edge.md
         - name: Tiered data (TBD)      
   - name: Aggregate
     items:

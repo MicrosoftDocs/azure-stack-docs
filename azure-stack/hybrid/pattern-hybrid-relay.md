@@ -1,13 +1,13 @@
 ---
 title: Pattern for implementing a hybrid relay solution using Azure and Azure Stack Hub.
-description: Learn how to use Azure and Azure Stack services, to connect to edge resources or devices protected by firewalls.
+description: Learn how to use Azure and Azure Stack Hub services, to connect to edge resources or devices protected by firewalls.
 author: BryanLa
 ms.service: azure-stack
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 10/31/2019
+ms.lastreviewed: 11/05/2019
 ---
 
 # Hybrid relay pattern
@@ -16,19 +16,19 @@ Learn how to connect to resources or devices at the edge, that are protected by 
 
 ## Context and problem
 
-Edge devices are often behind a corporate firewall or NAT device, leaving them unable to communicate with the public cloud, or edge devices on other corporate networks. However, it may be necessary to expose certain ports and functionality to users in the public cloud in a secure manner. 
+Edge devices are often behind a corporate firewall or NAT device. Although they're secure, they may be unable to communicate with the public cloud, or edge devices on other corporate networks. It may be necessary to expose certain ports and functionality to users in the public cloud in a secure manner. 
 
-## Solution
+## Solution architecture
 
-The hybrid relay pattern uses Azure Service Bus Relays to establish a WebSockets-based tunnel between two endpoints that cannot directly communicate. Devices outside the on-premises environment that wish to connect to an on-premises endpoint will instead connect to an endpoint in  public cloud that redirects the traffic on predefined routes over a secure channel. An endpoint inside the on-premises environment receives the traffic and routes it to the correct destination. 
+The hybrid relay pattern uses Azure Service Bus Relays to establish a WebSockets tunnel, between two endpoints that can't directly communicate. Devices that aren't on-premises, but need to connect to an on-premises endpoint,  will connect to an endpoint in the public cloud. This endpoint will redirect the traffic, on predefined routes over a secure channel. An endpoint inside the on-premises environment receives the traffic, and routes it to the correct destination. 
 
 ![hybrid relay solution architecture](media/pattern-hybrid-relay/solution-architecture.png)
 
 Here's how the solution works: 
 
-1. A device connects to the VM in Azure, on a predefined port.
-2. Traffic is forwarded to the Service Bus relay.
-3. The VM on Azure Stack, which has already established a long-lived connection to the Service Bus Relay receives the traffic and forwards it on to the destination.
+1. A device connects to the Virtual Machine (VM) in Azure, on a predefined port.
+2. Traffic is forwarded to the Service Bus relay in Azure.
+3. The VM on Azure Stack Hub, which has already established a long-lived connection to the Service Bus Relay receives the traffic and forwards it on to the destination.
 4. The on-premises service or endpoint processes the request. 
 
 ## Components
@@ -37,12 +37,12 @@ This solution uses the following components:
 
 | Layer | Component | Description |
 |----------|-----------|-------------|
-| Azure Stack Hub | [b]() | c. |
-| | b | c |
-| | b | c |
-| | b | c.<br><br>|
 | Azure |  |  |
-|  | b | c |
+| | Azure VM | An Azure VM provides a publicly accessible endpoint for the on-premises resource. |
+| | Azure Stream Analytics Job | An [Azure Service Bus Relay](/azure/service-bus-relay/) provides the infrastructure for maintaining the tunnel and connection between the Azure VM and Azure Stack Hub VM.|
+| Azure Stack Hub |    |             |
+| | Compute | An Azure Stack Hub VM provides the server-side of the Hybrid Relay tunnel. |
+| | Storage | The AKS Engine cluster deployed into Azure Stack Hub provides a scalable, resilient engine to run the Face API container.|
 
 ## Issues and considerations
 
@@ -50,21 +50,24 @@ Consider the following points when deciding how to implement this solution:
 
 ### Scalability 
 
-To enable this solution to scale across multiple cameras and locations, you'll need to make sure that all of the components can handle the increased load. You may need to take actions such as:
-
+This pattern only allows for 1:1 port mappings on the client and server. For example, if port 80 is tunneled for one service on the Azure endpoint, it can't be used for another service. Port mappings should be planned accordingly. The Service Bus relay and VMs should be appropriately scaled to handle traffic.
 
 ### Availability
 
-Since this solution is tiered, it's important to think about how to deal with networking or power failures. Depending on business needs, it might be appropriate to 
+These tunnels and connections aren't redundant. To ensure high-availability, you may want to implement error checking code. Another option is to have a pool of Service Bus relay-connected VMs behind a load balancer.
 
 ### Manageability
 
+This solution can span many devices and locations, which could get unwieldy. Azure’s IoT services can automatically bring new locations and devices online and keep them up-to-date.
+
 ### Security
+
+This solution captures customer images and personal data, making security paramount. Make sure all storage accounts are secured with the proper access policies and that keys are rotated regularly. Ensure the storage accounts and Event Hubs have retention policies, that meet corporate and government privacy regulations. Also make sure to tier access levels, so users only have access to the data they need for their role.
 
 ## Next steps
 
 To learn more about the topics introduced in this article:
-- See 
-- See 
+- This pattern uses Azure Service Bus Relays. For more information, see the [Azure Service Bus Relay documentation](/azure/service-bus-relay/).
+- This pattern uses the Azure Stack family of products, including Azure Stack Hub. To learn more, refer to the [Azure Stack documentation](/azure-stack)
 
-When you're ready to test the solution example, continue with the [Hybrid relay deployment guide](), which provides step-by-step instructions for deploying and testing its components.
+When you're ready to test the solution example, continue with the [Hybrid relay deployment guide - TBD](), which provides step-by-step instructions for deploying and testing its components.

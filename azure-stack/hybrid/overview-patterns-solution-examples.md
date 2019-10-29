@@ -29,7 +29,7 @@ There are two types of patterns:
 
 ## Solution examples
 
-Solution examples provide implementation guidance, demonstrating a solution for a given pattern. Step-by-step deployment guides assist in deploying each solution example. The guide may also refer to a companion code sample, stored in the GitHub [solutions sample repo](https://github.com/Azure-Samples/azure-intelligent-edge-patterns). 
+Solution examples provide implementation guidance, demonstrating an solution implementation for a given pattern. Step-by-step deployment guides assist in deploying each solution example. The guide may also refer to a companion code sample, stored in the GitHub [solutions sample repo](https://github.com/Azure-Samples/azure-intelligent-edge-patterns). 
 
 ## Next steps
 
