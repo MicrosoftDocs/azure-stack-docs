@@ -276,13 +276,8 @@
       href: azure-stack-network-howto-vnet-to-vnet-stacks.md
     - name: VNET peering
       href: azure-stack-network-howto-vnet-to-vnet.md
-<<<<<<< HEAD
     - name: Back up storage accounts 
       href: azure-stack-network-howto-backup-storage.md
-=======
-    - name: Connect to iSCSI storage
-      href: azure-stack-network-howto-iscsi-storage.md
->>>>>>> 01e5a6facd7a11b23d0d4ea943a1ab43bb8b4c07
 - name: Concepts
   items:
   - name: Hybrid cloud patterns
