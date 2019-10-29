@@ -76,11 +76,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - The admin portal now shows the privileged endpoint IP addresses in the region properties menu for easier discovery. In addition it shows the current configured time server and DNS forwarders.
 
-- Azure Stack's health and monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration. For more information, see [Link to new article].
+- Azure Stack's health and monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration. <!-- For more information, see [Link to new article]. -->
 
-- A new version of Azure Stack Admin PowerShell modules is available. For more information, see
-
-- You can now update the DNS forwarder that you specified at Azure Stack deplpoyment time using the privileged endpoint. This does not require opening a support case. For more information, see [Link to new article].
+- You can now update the DNS forwarder that you specified at Azure Stack deployment time using the privileged endpoint. This does not require opening a support case. <!-- For more information, see [Link to new article]. -->
 
 - Added the **Set-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to configure the manual update for Windows Defender definitions in Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
 
@@ -191,7 +189,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Fixes
 
-- Fixed an issue with compatibility with future Azure Stack OEM updates and an issue with VM deployment useing customer user images. This issue was found in 1907 and fixed in hotfix [KB4517473](https://support.microsoft.com/en-us/help/4517473/azure-stack-hotfix-1-1907-12-44)  
+- Fixed an issue with compatibility with future Azure Stack OEM updates and an issue with VM deployment using customer user images. This issue was found in 1907 and fixed in hotfix [KB4517473](https://support.microsoft.com/en-us/help/4517473/azure-stack-hotfix-1-1907-12-44)  
 - Fixed an issue with OEM Firmware update and corrected misdiagnosis in Test-AzureStack for Fabric Ring Health. This issue was found in 1907 and fixed in hotfix [KB4515310](https://support.microsoft.com/en-us/help/4515310/azure-stack-hotfix-1-1907-7-35)
 - Fixed an issue with OEM Firmware update process. This issue was found in 1907 and fixed in hotfix [KB4515650](https://support.microsoft.com/en-us/help/4515650/azure-stack-hotfix-1-1907-8-37)
 
