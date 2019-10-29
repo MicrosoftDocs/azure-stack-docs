@@ -1,6 +1,6 @@
 ---
-title: Azure Stack release notes - security updates for 1908 | Microsoft Docs
-description: Learn about the 1908 security updates for Azure Stack.
+title: Azure Stack release notes - security updates for 1910 | Microsoft Docs
+description: Learn about the 1909 security updates for Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,15 +13,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2019
+ms.date: 10/29/2019
 ms.author: sethm
 ms.reviewer: fiseraci
-ms.lastreviewed: 09/27/2019
+ms.lastreviewed: 10/29/2019
 ---
 
 # Azure Stack security updates
 
 This article lists all the security updates in the last four updates of Azure Stack. This information is provided for reference purposes only.
+
+::: moniker range="azs-1910"
+## 1910 update
+
+This update of Azure Stack does not include security updates to the underlying operating system that hosts Azure Stack. This update contains a security update for a component of Azure Stack infrastructure.
+
+- [CVE-2019-1234](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1234)
+
+::: moniker-end
 
 ::: moniker range="azs-1908"
 ## 1908 update
