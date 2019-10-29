@@ -275,11 +275,9 @@
     - name: VNET to VNET connection
       href: azure-stack-network-howto-vnet-to-vnet-stacks.md
     - name: VNET peering
-      items: 
-        - name: VNET peering with FortiGate
-          href: azure-stack-network-howto-vnet-to-vnet.md
-        - name: VNET peering with a VM
-          href: azure-stack-network-howto-vnet-peering.md
+      href: azure-stack-network-howto-vnet-to-vnet.md
+    - name: Connect to iSCSI storage
+      href: azure-stack-network-howto-iscsi-storage.md
 - name: Concepts
   items:
   - name: Hybrid cloud patterns
