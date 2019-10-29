@@ -1,5 +1,5 @@
 ---
-title: Create a Linux server VM by using Azure Stack | Microsoft Docs
+title: Create a Linux VM by using Azure Stack | Microsoft Docs
 description: Create a Linux server VM by using Azure Stack.
 services: azure-stack
 cloud: azure-stack
