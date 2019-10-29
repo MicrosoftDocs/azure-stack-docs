@@ -16,6 +16,7 @@
           href: pattern-geo-distributed.md
         - name: Hybrid identity (TBD)
         - name: Hybrid relay
+          href: pattern-hybrid-relay.md
         - name: Live video at the edge (TBD/Better as aggregate?)      
         - name: ML training at the edge (TBD)
         - name: Tiered data (TBD)      

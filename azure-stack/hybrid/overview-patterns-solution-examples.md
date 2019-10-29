@@ -20,16 +20,16 @@ Hybrid scenarios vary greatly with the resources that are available for developm
 
 ## Design patterns
 
-Design patterns cull generalized and repeatable design guidance, from real world customer scenarios and experiences. A pattern is abstract, allowing it to be applicable to different types of scenarios, or vertical industries. Each pattern documents the problem, an associated solution architecture, including an optional solution example. 
+Design patterns cull generalized and repeatable design guidance, from real world customer scenarios and experiences. A pattern is abstract, allowing it to be applicable to different types of scenarios, or vertical industries. Each pattern documents the problem, an associated solution architecture, and an optional solution example. 
 
 There are two types of patterns:
 
-- Base pattern: illustrates a single general-purpose pattern.
-- Aggregate pattern: illustrates the application of multiple patterns, to solve a scenario or industry-specific problem.
+- Base pattern: provides design guidance for a single general-purpose scenario.
+- Aggregate pattern: provides design guidance where the application of multiple patterns is used, to solve a scenario or industry-specific problem.
 
 ## Solution examples
 
-Solution examples provide implementation guidance, which demonstrates a solution based on one or more patterns. Step-by-step deployment guides assist in deploying each solution example. The guide may also refer to a companion code sample, stored in the GitHub [solutions sample repo](https://github.com/Azure-Samples/azure-intelligent-edge-patterns). 
+Solution examples provide implementation guidance, demonstrating a solution for a given pattern. Step-by-step deployment guides assist in deploying each solution example. The guide may also refer to a companion code sample, stored in the GitHub [solutions sample repo](https://github.com/Azure-Samples/azure-intelligent-edge-patterns). 
 
 ## Next steps
 
