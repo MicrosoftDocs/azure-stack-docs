@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 09/18/2019
+ms.date: 09/19/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 09/18/2019
+ms.lastreviewed: 09/19/2019
 ---
 # Install PowerShell for Azure Stack
 
