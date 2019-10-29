@@ -276,6 +276,7 @@
       href: azure-stack-network-howto-vnet-to-vnet-stacks.md
     - name: VNET peering
       href: azure-stack-network-howto-vnet-to-vnet.md
+<<<<<<< HEAD
     - name:  VPN tunnels
       items:
         - name:  Set site-to-site VPNs
@@ -284,6 +285,10 @@
           href:  azure-stack-network-howto-vpn-tunnel-gre.md
         - name:  Create VPN (IPSEC)
           href:  azure-stack-network-howto-vpn-tunnel-ipsec.md
+=======
+    - name: Extend the datacenter
+      href: azure-stack-network-howto-extend-datacenter.md
+>>>>>>> 008edc7e15ae7a013beb1efce30f54a39cd7853a
 - name: Concepts
   items:
   - name: Hybrid cloud patterns
