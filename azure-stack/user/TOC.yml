@@ -278,12 +278,12 @@
       href: azure-stack-network-howto-vnet-to-vnet.md
     - name:  VPN tunnels
       items:
-        - name:  Set site-to-site VPNs
-          href:  network-howto-vpn-tunnel.md
-        - name:  Create VPN (GRE)
-          href:  network-howto-vpn-tunnel-gre.md
-        - name:  Create VPN (IPSEC)
-          href:  network-howto-vpn-tunnel-ipsec.md
+        - name: Set site-to-site VPNs
+          href: network-howto-vpn-tunnel.md
+        - name: Create VPN (GRE)
+          href: network-howto-vpn-tunnel-gre.md
+        - name: Create VPN (IPSEC)
+          href: network-howto-vpn-tunnel-ipsec.md
 - name: Concepts
   items:
   - name: Hybrid cloud patterns
