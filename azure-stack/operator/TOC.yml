@@ -4,20 +4,18 @@
   items:
   - name: What is Azure Stack?
     href: azure-stack-overview.md
+  - name: What is Azure Stack HCI?
+    href: azure-stack-hci-overview.md
   - name: Comparing the Azure ecosystem
     href: compare-azure-azure-stack.md
   - name: Release notes
     items:
-    - name: Recent updates
-      href: azure-stack-servicing-policy.md
-    - name: 1903 update
-      href: azure-stack-update-1903.md
-    - name: 1902 update
-      href: azure-stack-update-1902.md      
-    - name: 1901 update 
-      href: azure-stack-update-1901.md      
-    - name: 1811 update 
-      href: azure-stack-update-1811.md
+    - name: Security updates
+      href: release-notes-security-updates.md
+    - name: Release notes
+      href: release-notes.md
+    - name: Known issues
+      href: known-issues.md
 - name: Quickstarts
   expanded: true
   items:
@@ -25,37 +23,34 @@
     href: azure-stack-manage-portals.md
 - name: Tutorials
   items:
-  - name: Offer Virtual Machines
-    href: azure-stack-tutorial-tenant-vm.md
-  - name: Offer SQL databases
-    href: azure-stack-tutorial-sql-server.md
-  - name: Offer highly available SQL databases
-    href: azure-stack-tutorial-sql.md
-  - name: Offer highly available MySQL databases
-    href: azure-stack-tutorial-mysql.md
-  - name: Offer Web Apps
-    href: azure-stack-tutorial-app-service.md
+  - name: Offer a service to users
+    href: tutorial-offer-services.md
+  - name: Test a service offering
+    href: tutorial-test-offer.md
 - name: Concepts
   items:
   - name: Capacity Planning
-    href: capacity-planning.md
     items:
-    - name: Compute capacity planning
-      href: capacity-planning-compute.md
-    - name: Storage capacity planning
-      href: capacity-planning-storage.md
+    - name: Overview
+      href: azure-stack-capacity-planning-overview.md
+    - name: Compute
+      href: azure-stack-capacity-planning-compute.md
+    - name: Storage
+      href: azure-stack-capacity-planning-storage.md
     - name: Azure Stack Capacity Planner
-      href: capacity-planning-spreadsheet.md
+      href: azure-stack-capacity-planner.md
   - name: Datacenter integration
     href: azure-stack-customer-journey.md
     items:
-    - name: General Azure Stack integration considerations
+    - name: Walkthrough
+      href: azure-stack-customer-journey.md
+    - name: General considerations
       href: azure-stack-datacenter-integration.md
-    - name: Azure Stack deployment connection models
+    - name: Connection models
       href: azure-stack-connection-models.md
-    - name: Connected deployment considerations
+    - name: Connected deployment
       href: azure-stack-connected-deployment.md
-    - name: Disconnected deployment considerations
+    - name: Disconnected deployment
       href: azure-stack-disconnected-deployment.md
     - name: Datacenter network integration
       items:
@@ -63,8 +58,12 @@
         href: azure-stack-network.md
       - name: Border connectivity
         href: azure-stack-border-connectivity.md
+      - name: Switch configuration
+        href: azure-stack-customer-defined.md
       - name: DNS integration
         href: azure-stack-integrate-dns.md
+      - name: Configure time server
+        href: azure-stack-configure-time.md
       - name: Firewall integration
         href: azure-stack-firewall.md
         items:
@@ -72,6 +71,8 @@
           href: azure-stack-integrate-endpoints.md
         - name: Extension host
           href: azure-stack-extension-host-prepare.md
+    - name: Deployment worksheet
+      href: azure-stack-deployment-worksheet.md
     - name: Identity integration
       items:    
       - name: Choose an identity provider
@@ -120,6 +121,8 @@
     items:
     - name: Administration basics
       href: azure-stack-manage-basics.md
+    - name: Clear user data from portal
+      href: azure-stack-portal-clear.md 
     - name: Configure telemetry collection
       href: azure-stack-telemetry.md
     - name: Register Azure Stack
@@ -144,10 +147,24 @@
       items:
       - name: Manage updates overview
         href: azure-stack-updates.md
+      - name: Updates and servicing policy
+        href: azure-stack-servicing-policy.md
+      - name: Checklist for applying updates
+        href: release-notes-checklist.md
+      - name: Plan for update
+        href: azure-stack-update-plan.md
+      - name: Prepare the update package
+        href: azure-stack-update-prepare-package.md
       - name: Apply updates
-        href: azure-stack-apply-updates.md
+        items:
+        - name: Apply updates
+          href: azure-stack-apply-updates.md
+        - name: Apply OEM updates
+          href: azure-stack-update-oem.md
       - name: Monitor update status
-        href: azure-stack-monitor-update.md
+        href: azure-stack-update-monitor.md
+      - name: Troubleshoot updates
+        href: azure-stack-updates-troubleshoot.md
     - name: Monitor health and alerts
       href: azure-stack-monitor-health.md
     - name: Manage network resources
@@ -184,6 +201,8 @@
     items:
     - name: Security overview
       href: azure-stack-security-foundations.md
+    - name: Configure security
+      href: azure-stack-security-configuration.md
     - name: Identity
       items:
       - name: Identity overview
@@ -196,7 +215,7 @@
         href: azure-stack-add-new-user-aad.md
       - name: Add users for AD FS
         href: azure-stack-add-users-adfs.md
-      - name: Create service principals
+      - name: Use an app identity to access resources
         href: Azure-stack-create-service-principals.md
       - name: Enable multi-tenancy
         href: azure-stack-enable-multitenancy.md
@@ -212,16 +231,18 @@
     items:
     - name: Marketplace overview
       href: azure-stack-marketplace.md
-    - name: Download marketplace items
-      href: azure-stack-download-azure-marketplace-item.md
+    - name: Marketplace changes
+      href: azure-stack-marketplace-changes.md
     - name: Azure Marketplace items for Azure Stack
       href: azure-stack-marketplace-azure-items.md
+    - name: Download marketplace items
+      href: azure-stack-download-azure-marketplace-item.md
+    - name: Add a custom virtual machine image
+      href: azure-stack-add-vm-image.md
     - name: Create and publish a marketplace item
       href: azure-stack-create-and-publish-marketplace-item.md
     - name: Supported guest operating systems for Azure Stack
       href: azure-stack-supported-os.md
-    - name: Add a custom virtual machine image
-      href: azure-stack-add-vm-image.md
     - name: Offer a virtual machine scale set
       href: azure-stack-compute-add-scalesets.md
     - name: Windows Server in Marketplace FAQ
@@ -230,21 +251,114 @@
       href: azure-stack-linux.md
     - name: Add a Red Hat virtual machine
       href: azure-stack-redhat-create-upload-vhd.md
-    - name: Offer a Kubernetes Cluster
+    - name: Offer the AKS Engine
+      href: azure-stack-aks-engine.md
+    - name: Offer Kubernetes marketplace item
       href: azure-stack-solution-template-kubernetes-cluster-add.md
     - name: Create a site-to-site VPN connection
       href: azure-stack-create-vpn-connection-one-node.md
   - name: Offer services
-    href: azure-stack-offer-services-overview.md
-  - name: Offer SQL as PaaS
-    href: azure-stack-sql-resource-provider.md
     items:
+    - name: Service, plan, offer, subscription overview
+      href: service-plan-offer-subscription-overview.md
+    - name: Create a plan
+      href: azure-stack-create-plan.md
+    - name: Create an offer
+      href: azure-stack-create-offer.md
+    - name: Create an add-on plan
+      href: create-add-on-plan.md      
+    - name: Subscribe to an offer
+      href: azure-stack-subscribe-plan-provision-vm.md
+    - name: Delete offers
+      href: azure-stack-delete-offer.md
+    - name: Delegate offers in Azure Stack
+      href: azure-stack-delegated-provider.md
+    - name: Quota types
+      href: azure-stack-quota-types.md
+  - name: Offer network solutions
+    href: azure-stack-network-solutions-enable.md
+  - name: Manage add-on service resource providers
+    items:
+    - name: App Service on Azure Stack
+      items:
+      - name: Overview
+        href: azure-stack-app-service-overview.md
+      - name: App Service capacity planning
+        href: azure-stack-app-service-capacity-planning.md
+      - name: Before you get started
+        href: azure-stack-app-service-before-you-get-started.md
+      - name: Deploy App Service
+        href: azure-stack-app-service-deploy.md
+      - name: Deploy App Service for high availability
+        href: app-service-deploy-ha.md
+      - name: Deploy App Service offline
+        href: azure-stack-app-service-deploy-offline.md
+      - name: Update App Service
+        href: azure-stack-app-service-update.md
+      - name: Update App Service Offline
+        href: azure-stack-app-service-update-offline.md
+      - name: Add App Service infrastructure roles
+        href: azure-stack-app-service-add-worker-roles.md
+      - name: Configure deployment sources
+        href: azure-stack-app-service-configure-deployment-sources.md
+      - name: Back up App Service
+        href: app-service-back-up.md
+      - name: Recover App Service
+        href: app-service-recover.md
+      - name: App Service billing FAQ
+        href: app-service-billing-faq.md
+      - name: App Service on Azure Stack release notes
+        items:
+        - name: App Service on Azure Stack update 1 release notes
+          href: azure-stack-app-service-release-notes-update-one.md
+        - name: App Service on Azure Stack update 2 release notes
+          href: azure-stack-app-service-release-notes-update-two.md
+        - name: App Service on Azure Stack update 3 release notes
+          href: azure-stack-app-service-release-notes-update-three.md
+        - name: App Service on Azure Stack update 4 release notes
+          href: azure-stack-app-service-release-notes-update-four.md
+        - name: App Service on Azure Stack update 5 release notes
+          href: azure-stack-app-service-release-notes-update-five.md
+        - name: App Service on Azure Stack update 6 release notes
+          href: azure-stack-app-service-release-notes-update-six.md
+        - name: App Service on Azure Stack update 7 release notes
+          href: azure-stack-app-service-release-notes-update-seven.md
+    - name: MySQL on Azure Stack
+      items:
+      - name: Overview 
+        href: azure-stack-mysql-resource-provider.md
+      - name: Deploy the MySQL Server resource provider
+        href: azure-stack-mysql-resource-provider-deploy.md
+      - name: Add MySQL hosting servers
+        href: azure-stack-mysql-resource-provider-hosting-servers.md
+      - name: Create MySQL Databases
+        href: azure-stack-mysql-resource-provider-databases.md
+      - name: Deploy highly available MySQL databases
+        href: azure-stack-tutorial-mysql.md
+      - name: Update the MySQL Server resource provider
+        href: azure-stack-mysql-resource-provider-update.md
+      - name: Maintain MySQL Server resource provider
+        href: azure-stack-mysql-resource-provider-maintain.md
+      - name: Remove the MySQL Server resource provider
+        href: azure-stack-mysql-resource-provider-remove.md
+      - name: MySQL resource provider release notes
+        items:
+        - name: MySQL resource provider 1.1.30.0 release notes
+          href: azure-stack-mysql-resource-provider-11300.md
+        - name: MySQL resource provider 1.1.33.0 release notes
+          href: azure-stack-mysql-resource-provider-11330.md
+    - name: SQL on Azure Stack
+      items:
+      - name: Overview
+        href: azure-stack-sql-resource-provider.md
       - name: Deploy the SQL Server resource provider
         href: azure-stack-sql-resource-provider-deploy.md
       - name: Add SQL hosting servers
         href: azure-stack-sql-resource-provider-hosting-servers.md
       - name: Create SQL databases
         href: azure-stack-sql-resource-provider-databases.md
+      - name: Deploy highly available SQL databases
+        href: azure-stack-tutorial-sql.md
       - name: Update the SQL Server resource provider
         href: azure-stack-sql-resource-provider-update.md   
       - name: Maintain the SQL Server resource provider
@@ -257,80 +371,6 @@
           href: azure-stack-sql-resource-provider-11300.md 
         - name: SQL resource provider 1.1.33.0 release notes
           href: azure-stack-sql-resource-provider-11330.md   
-  - name: Offer MySQL as PaaS
-    href: azure-stack-mysql-resource-provider.md
-    items:
-    - name: Deploy the MySQL Server resource provider
-      href: azure-stack-mysql-resource-provider-deploy.md
-    - name: Add MySQL hosting servers
-      href: azure-stack-mysql-resource-provider-hosting-servers.md
-    - name: Create MySQL Databases
-      href: azure-stack-mysql-resource-provider-databases.md
-    - name: Update the MySQL Server resource provider
-      href: azure-stack-mysql-resource-provider-update.md
-    - name: Maintain MySQL Server resource provider
-      href: azure-stack-mysql-resource-provider-maintain.md
-    - name: Remove the MySQL Server resource provider
-      href: azure-stack-mysql-resource-provider-remove.md
-    - name: MySQL resource provider release notes
-      items:
-      - name: MySQL resource provider 1.1.30.0 release notes
-        href: azure-stack-mysql-resource-provider-11300.md
-      - name: MySQL resource provider 1.1.33.0 release notes
-        href: azure-stack-mysql-resource-provider-11330.md
-  - name: Offer App Service as PaaS
-    href: azure-stack-app-service-overview.md
-    items:
-    - name: App Service capacity planning
-      href: azure-stack-app-service-capacity-planning.md
-    - name: Before you get started
-      href: azure-stack-app-service-before-you-get-started.md
-    - name: Deploy App Service
-      href: azure-stack-app-service-deploy.md
-    - name: Deploy App Service for high availability
-      href: app-service-deploy-ha.md
-    - name: Deploy App Service offline
-      href: azure-stack-app-service-deploy-offline.md
-    - name: Update App Service
-      href: azure-stack-app-service-update.md
-    - name: Update App Service Offline
-      href: azure-stack-app-service-update-offline.md
-    - name: Add App Service infrastructure roles
-      href: azure-stack-app-service-add-worker-roles.md
-    - name: Configure deployment sources
-      href: azure-stack-app-service-configure-deployment-sources.md
-    - name: Back up App Service
-      href: app-service-back-up.md
-    - name: Recover App Service
-      href: app-service-recover.md
-    - name: App Service on Azure Stack release notes
-      items:
-      - name: App Service on Azure Stack update 1 release notes
-        href: azure-stack-app-service-release-notes-update-one.md
-      - name: App Service on Azure Stack update 2 release notes
-        href: azure-stack-app-service-release-notes-update-two.md
-      - name: App Service on Azure Stack update 3 release notes
-        href: azure-stack-app-service-release-notes-update-three.md
-      - name: App Service on Azure Stack update 4 release notes
-        href: azure-stack-app-service-release-notes-update-four.md
-      - name: App Service on Azure Stack update 5 release notes
-        href: azure-stack-app-service-release-notes-update-five.md
-  - name: Create plans, offers, and quotas
-    items:
-    - name: Plan, offer, quota, and subscription overview
-      href: azure-stack-plan-offer-quota-overview.md
-    - name: Create a plan
-      href: azure-stack-create-plan.md
-    - name: Create an add-on plan
-      href: create-add-on-plan.md
-    - name: Create an offer
-      href: azure-stack-create-offer.md
-    - name: Subscribe to an offer
-      href: azure-stack-subscribe-plan-provision-vm.md
-    - name: Delegate offers in Azure Stack
-      href: azure-stack-delegated-provider.md
-    - name: Quota types
-      href: azure-stack-quota-types.md
   - name: Usage and billing
     href: azure-stack-billing-and-chargeback.md
     items:
@@ -345,7 +385,7 @@
       items:
       - name: Usage data reporting
         href: azure-stack-usage-reporting.md
-      - name: Usage reporting infrastructure for Cloud Service Providers
+      - name: Usage reporting infrastructure
         href: azure-stack-csp-ref-infrastructure.md
       - name: Provider usage API
         href: azure-stack-provider-resource-api.md
@@ -353,6 +393,12 @@
         href: azure-stack-tenant-resource-usage-api.md
       - name: Usage FAQ
         href: azure-stack-usage-related-faq.md
+      - name: Troubleshooting usage issues
+        items:
+        - name: Usage connectivity errors
+          href: azure-stack-usage-issues.md
+        - name: Usage registration error codes
+          href: azure-stack-registration-errors.md        
   - name: Back up Azure Stack
     href: azure-stack-backup-infrastructure-backup.md
     items:
@@ -372,14 +418,28 @@
       href: azure-stack-backup-best-practices.md
     - name: Backup reference
       href: azure-stack-backup-reference.md
-  - name: Troubleshoot
+  - name: Get support  
     items:
-    - name: Known issues
-      href: azure-stack-troubleshooting.md
-    - name: Diagnostics in Azure Stack
-      href: azure-stack-diagnostics.md
-    - name: Validation for Azure Stack
+    - name: Help & Support portal 
+      items:
+      - name: Overview      
+        href: azure-stack-help-and-support-overview.md
+      - name: Diagnostic log collection
+        items:
+        - name: Overview 
+          href: azure-stack-diagnostic-log-collection-overview.md
+        - name: Automatic collection
+          items:
+          - name: Configure automatic collection
+            href: azure-stack-configure-automatic-diagnostic-log-collection.md
+          - name: Best practices
+            href: azure-stack-best-practices-automatic-diagnostic-log-collection.md  
+        - name: On-demand collection
+          href: azure-stack-configure-on-demand-diagnostic-log-collection.md
+    - name: Validation for Azure Stack  
       href: azure-stack-diagnostic-test.md
+    - name: Troubleshooting
+      href: azure-stack-troubleshooting.md
 - name: Reference
   items:
   - name: Azure Stack PowerShell
@@ -387,11 +447,13 @@
 - name: Related
   items:
   - name: Azure Stack User documentation
-    href: /azure-stack/user/ 
+    href: /azure-stack/user/
   - name: ASDK documentation
-    href: /azure-stack/asdk/ 
+    href: /azure-stack/asdk/
 - name: Resources
   items:
+  - name: Training and certification
+    href: azure-stack-train-and-cert.md
   - name: Azure Stack roadmap
     href: https://azure.microsoft.com/roadmap/?tag=azure-stack
   - name: Azure Stack MSDN forum
@@ -402,5 +464,3 @@
     href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-stack
-  - name: Training and certification
-    href: azure-stack-train-and-cert.md

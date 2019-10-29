@@ -1,20 +1,20 @@
 ---
 title: Connect to Azure Stack | Microsoft Docs
-description: Learn how to connect Azure Stack
+description: Learn how to connect Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
 
-ms.assetid: 3cebbfa6-819a-41e3-9f1b-14ca0a2aaba3
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
+ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
 
 ---
@@ -26,21 +26,21 @@ To manage resources, you must connect to the Azure Stack Development Kit. This a
 * Virtual Private Network (VPN): lets multiple concurrent users connect from clients outside of the Azure Stack infrastructure (requires configuration).
 
 ## Connect to Azure Stack with Remote Desktop
-With a Remote Desktop connection, a single concurrent user can work with the portal to manage resources.
+With a Remote Desktop Connection, a single concurrent user can work with the portal to manage resources.
 
 1. Open a Remote Desktop Connection and connect to the development kit. Enter **AzureStack\AzureStackAdmin** as the username, and the administrative password that you provided during Azure Stack setup.  
 
 2. From the development kit computer, open Server Manager, click **Local Server**, turn off Internet Explorer Enhanced Security, and then close Server Manager.
 
-3. To open the  portal, navigate to (https://portal.local.azurestack.external/) and sign in using user credentials.
+3. To open the portal, go to (https://portal.local.azurestack.external/) and sign in using user credentials.
 
 
 ## Connect to Azure Stack with VPN
 
-You can establish a split tunnel Virtual Private Network (VPN) connection to an Azure Stack Development Kit. Through the VPN connection, you can access the administrator portal, user portal, and locally installed tools such as Visual Studio and PowerShell to manage Azure Stack resources. VPN connectivity is supported in both Azure Active Directory(AAD) and Active Directory Federation Services(AD FS) based deployments. VPN connections enable multiple clients to connect to Azure Stack at the same time. 
+You can establish a split tunnel VPN connection to an Azure Stack Development Kit. Through the VPN connection you can access the administrator portal, user portal, and locally installed tools such as Visual Studio and PowerShell to manage Azure Stack resources. VPN connectivity is supported in both Azure Active Directory (Azure AD) and Active Directory Federation Services (AD FS)-based deployments. VPN connections let multiple clients connect to Azure Stack at the same time. 
 
 > [!NOTE] 
-> This VPN connection does not provide connectivity to Azure Stack infrastructure VMs. 
+> This VPN connection doesn't provide connectivity to Azure Stack infrastructure VMs. 
 
 ### Prerequisites
 
@@ -60,7 +60,7 @@ Set-ExecutionPolicy RemoteSigned
 # Import the Connect module
 Import-Module .\Connect\AzureStack.Connect.psm1 
 
-# Add the development kit computer’s host IP address & certificate authority (CA) to the list of trusted hosts. Make sure to update the IP address and password values for your environment. 
+# Add the development kit computer's host IP address & certificate authority (CA) to the list of trusted hosts. Make sure to update the IP address and password values for your environment. 
 
 $hostIP = "<Azure Stack host IP address>"
 
@@ -80,7 +80,7 @@ Add-AzsVpnConnection `
 
 ```
 
-If the set-up succeeds, you should see **azurestack** in your list of VPN connections.
+If the setup succeeds, you'll see `azurestack` in your list of VPN connections.
 
 ![Network connections](media/azure-stack-connect-azure-stack/image3.png)  
 
@@ -95,13 +95,13 @@ Connect to the Azure Stack instance by using either of the following two methods
     -Password $Password
   ```
 
-  When prompted, trust the Azure Stack host and install the certificate from **AzureStackCertificateAuthority** onto your local computer’s certificate store. (the prompt might appear behind the PowerShell session window). 
+  When prompted, trust the Azure Stack host and install the certificate from **AzureStackCertificateAuthority** onto your local computer's certificate store. The prompt might appear behind the PowerShell session window. 
 
-* Open your local computer’s **Network Settings** > **VPN** > click **azurestack** > **connect**. At the sign-in prompt, enter the username (AzureStack\AzureStackAdmin) and the password.
+* On your local computer, go to **Network Settings** > **VPN** > select `azurestack` > **connect**. At the sign-in prompt, enter the username (AzureStack\AzureStackAdmin) and the password.
 
 ### Test the VPN connectivity
 
-To test the portal connection, open an Internet browser and navigate to the user portal (https://portal.local.azurestack.external/), sign in and create resources.  
+To test the portal connection, open a browser and go to the user portal (https://portal.local.azurestack.external/), sign in, and then create resources.  
 
 ## Next steps
 

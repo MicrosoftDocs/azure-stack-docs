@@ -7,7 +7,7 @@ manager: femila
 
 ms.service: azure-stack
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
@@ -17,18 +17,18 @@ ms.lastreviewed: 01/14/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Azure Stack provides a variety of networking capabilities that can be used together or separately:
+Azure Stack provides different kinds of networking capabilities that can be used together or separately:
 
 - **Connectivity between Azure Stack resources**  
-    Connect Azure resources together in a secure, private virtual network in the cloud.
+    Connect Azure resources together in a secure and private virtual network in the cloud.
 - **Internet connectivity**  
-    Communicate to and from Azure Stack resources over the Internet.
+    Communicate to and from Azure Stack resources over the internet.
 - **On-premises connectivity**  
-    Connect an on-premises network to Azure Stack resources through a virtual private network (VPN) over the Internet, or through a dedicated connection to Azure Stack.
+    Connect an on-premises network to Azure Stack resources through a virtual private network (VPN) over the internet, or through a dedicated connection to Azure Stack.
 - **Load balancing and traffic direction**  
     Load balance traffic to servers in the same location and direct traffic to servers in different locations.
 - **Security**  
-    Filter network traffic between network subnets or individual virtual machines (VM).
+    Filter network traffic between network subnets or individual VMs.
 - **Routing**  
     Use default routing or fully control routing between your Azure Stack and on-premises resources.
 - **Manageability**  

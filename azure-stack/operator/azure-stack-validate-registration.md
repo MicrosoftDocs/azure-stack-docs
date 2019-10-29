@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/23/2019
+ms.date: 10/03/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
@@ -22,9 +22,9 @@ ms.lastreviewed: 03/23/2019
 
 # Validate Azure registration
 
-Use the Azure Stack Readiness Checker tool (**AzsReadinessChecker**) to validate that your Azure subscription is ready to use with Azure Stack. Validate registration before you begin an Azure Stack deployment. The readiness checker validates that:
+Use the Azure Stack Readiness Checker tool (**AzsReadinessChecker**) to validate that your Azure subscription is ready to use with Azure Stack before you begin an Azure Stack deployment. The readiness checker validates that:
 
-- The Azure subscription you use is a supported type. Subscriptions must be a Cloud Service Provider (CSP) or Enterprise Agreement (EA).
+- The Azure subscription you use is a supported type. Subscriptions must be a Cloud Solution Provider (CSP) or Enterprise Agreement (EA).
 - The account you use to register your subscription with Azure can sign in to Azure and is a subscription owner.
 
 For more information about Azure Stack registration, see [Register Azure Stack with Azure](azure-stack-registration.md).
@@ -37,7 +37,7 @@ Download the latest version of **AzsReadinessChecker** from the [PowerShell Gall
 
 The following prerequisites are required:
 
-**The computer on which the tool runs:**
+### The computer on which the tool runs
 
 - Windows 10 or Windows Server 2016, with internet connectivity.
 - PowerShell 5.1 or later. To check your version, run the following PowerShell cmdlet and then review the **Major** and **Minor** versions:  
@@ -47,15 +47,15 @@ The following prerequisites are required:
   ```
 
 - [PowerShell configured for Azure Stack](azure-stack-powershell-install.md).
-- The latest version of [Microsoft Azure Stack Readiness Checker](https://aka.ms/AzsReadinessChecker).  
+- The latest version of the [Microsoft Azure Stack Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.  
 
-**Azure Active Directory environment:**
+### Azure Active Directory environment
 
 - Identify the username and password for an account that is an owner for the Azure subscription you will use with Azure Stack.  
 - Identify the subscription ID for the Azure subscription you will use.
 - Identify the **AzureEnvironment** you will use. Supported values for the environment name parameter are **AzureCloud**, **AzureChinaCloud**, or **AzureUSGovernment**, depending on which Azure subscription you are using.
 
-## Steps to validate Azure registration
+## Steps to validate the Azure registration
 
 1. On a computer that meets the prerequisites, open an elevated PowerShell prompt, and then run the following command to install **AzsReadinessChecker**:
 
@@ -70,7 +70,7 @@ The following prerequisites are required:
    ```
 
    > [!NOTE]
-   > As a CSP, when using a Shared Services or IUR subscription, you must provide the credentials of a user from that respective AAD. Usually this will be similar to `subscriptionowner@iurcontoso.onmicrosoft.com`. That user must have the appropriate credentials, as described in the previous step.
+   > As a CSP, when using a shared services or IUR subscription, you must provide the credentials of a user from that respective Azure AD. Usually this will be similar to `subscriptionowner@iurcontoso.onmicrosoft.com`. That user must have the appropriate credentials, as described in the previous step.
 
 3. From the PowerShell prompt, run the following to set `$subscriptionID` as the Azure subscription to use. Replace `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` with your own subscription ID:
 
@@ -83,9 +83,9 @@ The following prerequisites are required:
    - Specify the value for `AzureEnvironment` as **AzureCloud**, **AzureGermanCloud**, or **AzureChinaCloud**.  
    - Provide your Azure Active Directory administrator and your Azure Active Directory tenant name.
 
-   ```powershell
-   Invoke-AzsRegistrationValidation -RegistrationAccount $registrationCredential -AzureEnvironment AzureCloud -RegistrationSubscriptionID $subscriptionID
-   ```
+      ```powershell
+      Invoke-AzsRegistrationValidation -RegistrationAccount $registrationCredential -AzureEnvironment AzureCloud -RegistrationSubscriptionID $subscriptionID
+      ```
 
 5. After the tool runs, review the output. Confirm the status is correct for both sign-in and the registration requirements. Successful validation output appears similar to the following example:
 
@@ -103,10 +103,10 @@ Each time validation runs, it logs results to **AzsReadinessChecker.log** and **
 
 These files can help you share validation status before you deploy Azure Stack or investigate validation problems. Both files persist the results of each subsequent validation check. The report provides your deployment team confirmation of the identity configuration. The log file can help your deployment or support team investigate validation issues.
 
-By default, both files are written to **C:\Users\<username>\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json**.  
+By default, both files are written to **C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json**.  
 
-- Use the **-OutputPath** ***&lt;path&gt;*** parameter at the end of the run command line to specify a different report location.
-- Use the **-CleanReport** parameter at the end of the run command to clear information about previous runs of the tool from **AzsReadinessCheckerReport.json**.
+- Use the `-OutputPath <path>` parameter at the end of the run command line to specify a different report location.
+- Use the `-CleanReport` parameter at the end of the run command to clear information about previous runs of the tool from **AzsReadinessCheckerReport.json**.
 
 For more information, see [Azure Stack validation report](azure-stack-validation-report.md).
 
@@ -114,7 +114,7 @@ For more information, see [Azure Stack validation report](azure-stack-validation
 
 If a validation check fails, details about the failure display in the PowerShell window. The tool also logs information to the **AzsReadinessChecker.log** file.
 
-The following examples provide guidance on common validation failures:
+The following examples provide more information about common validation failures.
 
 ### User must be an owner of the subscription
 

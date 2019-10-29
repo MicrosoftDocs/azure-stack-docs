@@ -3,7 +3,7 @@ title: Using databases provided by the SQL Adapter Resource provider on Azure St
 description: How to create and manage SQL databases provisioned by using the SQL Adapter Resource provider
 services: azure-stack
 documentationCenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -12,9 +12,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
-ms.author: jeffgilb
-ms.reviewer: quying
+ms.date: 10/02/2019
+ms.author: mabrigg
+ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
 ---
 
@@ -75,4 +75,4 @@ SQL then puts the database into the Restoring state on the other replicas and do
 
 ## Next steps
 
-[Maintain the SQL Server resource provider](azure-stack-sql-resource-provider-maintain.md)
+Learn how to [offer highly available SQL databases](azure-stack-tutorial-sql.md)

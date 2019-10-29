@@ -3,7 +3,7 @@ title: In this article, you learn how to update Azure Stack offers and plans | M
 description: This article describes how to view and modify existing Azure Stack offers and plans. 
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: bryanla
 manager: femila
 editor: ''
 
@@ -14,15 +14,15 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc
-ms.date: 03/07/2019
-ms.author: sethm
+ms.date: 10/05/2019
+ms.author: bryanla
 ms.reviewer: efemmano
-ms.lastreviewed: 03/07/2019
+ms.lastreviewed: 06/11/2019
 ---
 
 # Azure Stack add-on plans
 
-As an Azure Stack operator, you create add-on plans to modify a [base plan](azure-stack-create-plan.md) when you want to offer additional services or extend *computer*, *storage*, or *network* quotas beyond the base plan initial offer. Add-on plans modify the base plan and are optional extensions that users can choose to subscribe to.
+As an Azure Stack operator, you create add-on plans to modify a [base plan](azure-stack-create-plan.md) when you want to offer additional services or extend *computer*, *storage*, or *network* quotas beyond the base plan initial offer. Add-on plans modify the base plan and are optional extensions that users can choose to enable in their subscription.
 
 There are times when combining everything in a single plan is optimal. Other times you might want to have a base plan and then offer the additional services by using add-on plans. For instance, you could decide to offer IaaS services as part of a base plan, with all PaaS services treated as add-on plans.
 
@@ -31,10 +31,9 @@ Another reason to use add-on plans is to help monitor resource usage. To do so, 
 > [!NOTE]
 > When you do not want to use an add-on plan to extend a quota, you can also choose to [edit the original configuration of the quota](azure-stack-quota-types.md#edit-a-quota).
 
-When you add an add-on plan to an existing offer subscription, the additional resources can take up to an hour to appear.
+Add-on plans are [created the same way](azure-stack-create-plan.md) as a base plan. The difference between the two is determined when the plan is added to an offer. It's designated as either a base plan or add-on plan. When you add an add-on plan to an existing offer, the additional resources can take up to an hour to appear in the subscription.
 
-Add-on plans are created by modifying an existing offer.
-
+::: moniker range=">=azs-1902"
 ## Create an add-on plan (1902 and later)
 
 1. Sign in to the Azure Stack administrator portal as a cloud administrator.
@@ -43,7 +42,7 @@ Add-on plans are created by modifying an existing offer.
 
    ![Create add-on plan](media/create-add-on-plan/add-on1.png)
 
-4. Scroll to the bottom of the offer properties and select **Add-on plans**. Click **Add**.
+4. At the bottom of the offer properties, select **Add-on plans**. Click **Add**.
 
     ![Create add-on plan](media/create-add-on-plan/add-on2.png)
 
@@ -54,7 +53,9 @@ Add-on plans are created by modifying an existing offer.
 6. Review the list of add-on plans included with the offer to verify that the new add-on plan is listed.
 
     [![Create add-on plan](media/create-add-on-plan/add-on4.png "Create add-on plan")](media/create-add-on-plan/add-on4lg.png#lightbox)
+::: moniker-end
 
+::: moniker range="<=azs-1901"
 ## Create an add-on plan (1901 and earlier)
 
 1. Sign in to the Azure Stack administrator portal as a cloud administrator.
@@ -74,6 +75,7 @@ Add-on plans are created by modifying an existing offer.
 6. Review the list of add-on plans included with the offer to verify that the new add-on plan is listed.
 
     ![Create add-on plan](media/create-add-on-plan/4.PNG)
+::: moniker-end
 
 ## Next steps
 

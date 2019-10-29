@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 10/2/2019
 ms.author: mabrigg
 ms.reviwer: xiaofmao
 ms.lastreviewed: 01/30/2019
@@ -31,10 +31,10 @@ This article summarizes the known Azure Stack Storage differences from Azure Sto
 | Feature | Azure (global) | Azure Stack |
 | --- | --- | --- |
 |File storage|Cloud-based SMB file shares supported|Not yet supported
-|Azure storage service encryption for data at Rest|256-bit AES encryption. Support encryption using customer-managed keys in Key Vault.|BitLocker 128-bit AES encryption. Encryption using customer-managed keys isn’t supported.
+|Azure storage service encryption for data at Rest|256-bit AES encryption. Support encryption using customer-managed keys in Key Vault.|BitLocker 128-bit AES encryption. Encryption using customer-managed keys isn't supported.
 |Storage account type|General-purpose V1, V2, and Blob storage accounts|General-purpose V1 only.
 |Replication options|Locally redundant storage, geo-redundant storage, read-access geo-redundant storage, and zone-redundant storage|Locally redundant storage.
-|Premium storage|Fully supported|Can be provisioned, but no performance limit or guarantee.
+|Premium storage|Provide high performance and low latency storage. Only support page blobs in premium storage accounts.|Can be provisioned, but no performance limit or guarantee. Would not block using block blobs, append blobs, tables and queues in premium storage accounts.
 |Managed disks|Premium and standard supported|Supported when you use version 1808 or later.
 |Blob name|1,024 characters (2,048 bytes)|880 characters (1,760 bytes)
 |Block blob max size|4.75 TB (100 MB X 50,000 blocks)|4.75 TB (100 MB x 50,000 blocks) for the 1802 update or newer version. 50,000 X 4 MB (approximately 195 GB) for previous versions.
@@ -46,7 +46,7 @@ This article summarizes the known Azure Stack Storage differences from Azure Sto
 |Page blob max size|8 TB|1 TB
 |Page blob page size|512 bytes|4 KB
 |Table partition key and row key size|1,024 characters (2,048 bytes)|400 characters (800 bytes)
-|Blob snapshot|The max number of snapshots of one blob isn’t limited.|The max number of snapshots of one blob is 1,000.
+|Blob snapshot|The max number of snapshots of one blob isn't limited.|The max number of snapshots of one blob is 1,000.
 |Azure AD Authentication for storage|In preview|Not yet supported.
 |Immutable Blobs|General available|Not yet supported.
 |Firewall and virtual network rules for storage|General available|Not yet supported.|

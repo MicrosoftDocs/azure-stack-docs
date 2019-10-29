@@ -1,9 +1,9 @@
 ---
-title: Deploy templates using the portal in Azure Stack | Microsoft Docs
-description: Learn how to use the Azure Stack portal to deploy templates.
+title: Deploy a template using the portal in Azure Stack | Microsoft Docs
+description: Learn how to use the Azure Stack portal to deploy a template.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2019
-ms.author: sethm
-ms.reviewer: unknown
-ms.lastreviewed: 01/05/2019
+ms.date: 10/07/2019
+ms.author: mabrigg
+ms.reviewer: sijuman
+ms.lastreviewed: 05/07/2019
 
 ---
 
-# Deploy templates using the Azure Stack portal
+# Deploy a template using the portal in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -29,12 +29,32 @@ You can use the portal to deploy Azure Resource Manager templates to Azure Stack
 ## To deploy a template
 
 1. Sign in to the portal, select **+ Create a resource**, and then select **Custom**.
-2. Select **Template deployment**.
-3. Select **Edit template**, and then paste your JSON template code into the code window. Select **Save**.
-4. Select **Edit parameters**, provide values for the parameters that are shown, and then select **OK**.
-5. Select **Subscription**. Choose the subscription you want to use, and then select **OK**.
-6. Select **Resource group**. Choose an existing resource group or create a new one, and then select **OK**.
-7. Select **Create**. A new tile on the dashboard tracks the progress of your template deployment.
+
+   ![Create a resource in Azure Stack portal](media/azure-stack-deploy-template-portal/template-deploy1.png)
+
+1. Select **Template deployment**.
+
+   ![Deploy template in Azure Stack portal](media/azure-stack-deploy-template-portal/template-deploy2.png)
+
+1. Select **Edit template**, and then paste your JSON template code into the code window. Select **Save**.
+
+   ![Edit template in Azure Stack portal](media/azure-stack-deploy-template-portal/template-deploy3.png)
+
+1. Select **Edit parameters**, provide values for the parameters that are shown, and then select **OK**.
+
+   ![Edit parameters in Azure Stack portal](media/azure-stack-deploy-template-portal/template-deploy4.png)
+
+1. Select **Subscription**. Choose the subscription you want to use, and then select **OK**.
+
+   ![Select subscription in Azure Stack portal](media/azure-stack-deploy-template-portal/template-deploy5.png)
+
+1. Select **Resource group**. Choose an existing resource group or create a new one, and then select **OK**.
+
+   ![Select resource group in Azure Stack portal](media/azure-stack-deploy-template-portal/template-deploy6.png)
+
+1. Select **Create**. A new tile on the dashboard tracks the progress of your template deployment.
+
+   ![Create template in Azure Stack portal](media/azure-stack-deploy-template-portal/template-deploy7.png)
 
 ## Next steps
 

@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 06/10/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.lastreviewed: 01/14/2019
+ms.lastreviewed: 06/10/2019
 
 ---
 # Azure Stack infrastructure security posture
@@ -95,6 +95,7 @@ The compliance documentation can be found on the [Microsoft Service Trust Portal
 
 ## Next steps
 
+- [Configure Azure Stack security controls](azure-stack-security-configuration.md)
 - [Learn how to rotate your secrets in Azure Stack](azure-stack-rotate-secrets.md)
 - [PCI-DSS and the CSA-CCM documents for Azure Stack](https://servicetrust.microsoft.com/ViewPage/TrustDocuments)
 - [DoD and NIST documents for Azure Stack](https://servicetrust.microsoft.com/ViewPage/Blueprint)

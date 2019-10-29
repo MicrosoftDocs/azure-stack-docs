@@ -1,6 +1,6 @@
 ---
 title: Create a Windows virtual machine on Azure Stack using Azure CLI | Microsoft Docs
-description: Learn how to create a Windows VM on Azure Stack using Azure CLI
+description: Create a Windows virtual machine on Azure Stack using Azure CLI
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/14/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 01/14/2019
 ---
 
-# Quickstart: create a Windows Server virtual machine by using Azure CLI in Azure Stack
+# Quickstart: Create a Windows Server virtual machine using Azure CLI in Azure Stack
 
 ‎*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -41,7 +41,7 @@ A resource group is a logical container where you can deploy and manage Azure St
 > [!NOTE]
 >  Values are assigned for all the variables in the code examples. However, you can assign new values if you want to.
 
-The following example creates a resource group named myResourceGroup in the local location.
+The following example creates a resource group named myResourceGroup in the local location:
 
 ```cli
 az group create --name myResourceGroup --location local
@@ -49,7 +49,7 @@ az group create --name myResourceGroup --location local
 
 ## Create a virtual machine
 
-Create a virtual machine (VM) by using the [az vm create](/cli/azure/vm#az-vm-create) command. The following example creates a VM named myVM. This example uses Demouser for an administrative user name and Demouser@123 as the user password. Change these values to something that is appropriate for your environment.
+Create a virtual machine (VM) by using the [az vm create](/cli/azure/vm#az-vm-create) command. The following example creates a VM named myVM. This example uses Demouser for an admin username and Demouser@123 as the admin password. Change these values to something that is appropriate for your environment.
 
 ```cli
 az vm create \
@@ -61,13 +61,13 @@ az vm create \
   --location local
 ```
 
-When the VM is created, the **PublicIPAddress** parameter in the output contains the public IP address for the virtual machine. Write down this address because you need it to access the virtual machine.
+When the VM is created, the **PublicIPAddress** parameter in the output contains the public IP address for the virtual machine. Write down this address because you need it to use the virtual machine.
 
 ## Open port 80 for web traffic
 
-Because this VM is going to run the IIS web server, you need to open port 80 to Internet traffic.
+Because this VM is going to run the IIS web server, you need to open port 80 to internet traffic.
 
-Use the [az vm open-port](/cli/azure/vm) command to open port 80.
+Use the [az vm open-port](/cli/azure/vm) command to open port 80:
 
 ```cli
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
@@ -75,7 +75,7 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 
 ## Connect to the virtual machine
 
-Use the next command to create a Remote Desktop connection to your virtual machine. Replace "Public IP Address" with the IP address of your virtual machine. When prompted, enter the username and password that you used for the virtual machine.
+Use the next command to create a Remote Desktop connection to your virtual machine. Replace "Public IP Address" with the IP address of your virtual machine. When asked, enter the username and password that you used for the virtual machine.
 
 ```
 mstsc /v <Public IP Address>
@@ -83,7 +83,7 @@ mstsc /v <Public IP Address>
 
 ## Install IIS using PowerShell
 
-Now that you've logged in to the virtual machine, you can use PowerShell to install IIS. Start PowerShell on the virtual machine and run the following command:
+Now that you've signed in to the virtual machine, you can use PowerShell to install IIS. Start PowerShell on the virtual machine and run the following command:
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -91,7 +91,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## View the IIS welcome page
 
-You can use a web browser of your choice to view the default IIS welcome page. Use the public IP address documented in the previous section to visit the default page.
+You can use a browser of your choice to view the default IIS welcome page. Use the public IP address listed in the previous section to visit the default page:
 
 ![IIS default site](./media/azure-stack-quick-create-vm-windows-cli/default-iis-website.png)
 

@@ -1,29 +1,24 @@
 ---
-title: Offer highly available MySQL databases in Azure Stack | Microsoft Docs
+title: Offer highly available MySQL databases in Azure Stack 
 description: Learn how to create a MySQL Server resource provider host computer and highly available MySQL databases with Azure Stack.
 services: azure-stack
-documentationcenter: ''
-author: jeffgilb
+author: BryanLa
 manager: femila
 editor: ''
 
-ms.assetid:
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: tutorial
-ms.date: 02/12/2019
-ms.author: jeffgilb
-ms.reviewer: quying
+ms.topic: article
+ms.date: 10/07/2019
+ms.author: bryanla
+ms.reviewer: xiaofmao
 ms.lastreviewed: 10/23/2018
 ---
 
-# Tutorial: Offer highly available MySQL databases
+# Offer highly available MySQL databases
 
 As an Azure Stack Operator, you can configure server VMs to host MySQL Server databases. After a MySQL cluster is successfully created, and managed by Azure Stack, users who have subscribed to MySQL services can easily create highly available MySQL databases.
 
-This tutorial shows how to use Azure Stack marketplace items to create a [MySQL with replication cluster](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql-cluster). This solution uses multiple VMs to replicate the databases from the master node to a configurable number of replicas. Once created, the cluster can then be added as an Azure Stack MySQL Hosting Server, and then users can create a highly available MySQL databases.
+This article shows how to use Azure Stack marketplace items to create a [MySQL with replication cluster](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql-cluster). This solution uses multiple VMs to replicate the databases from the master node to a configurable number of replicas. Once created, the cluster can then be added as an Azure Stack MySQL Hosting Server, and then users can create a highly available MySQL databases.
 
 > [!IMPORTANT]
 > The **MySQL with replication** Azure Stack marketplace item might not be available for all Azure cloud subscription environments. Verify that the marketplace item is available in your subscription before attempting to follow the remainder of this tutoral.
@@ -35,9 +30,9 @@ What you will learn:
 > * Create an Azure Stack MySQL Hosting Server
 > * Create a highly available MySQL database
 
-In this tutorial, a three VM MySQL Server cluster will be created and configured using available Azure Stack marketplace items. 
+A three VM MySQL Server cluster will be created and configured using available Azure Stack marketplace items. 
 
-Before starting the steps in this tutorial, ensure that the [MySQL Server resource provider](azure-stack-mysql-resource-provider-deploy.md) has been successfully installed and that the following items are available in the Azure Stack marketplace:
+Before starting, ensure that the [MySQL Server resource provider](azure-stack-mysql-resource-provider-deploy.md) has been successfully installed and that the following items are available in the Azure Stack marketplace:
 
 > [!IMPORTANT]
 > All of the following are required to create the MySQL cluster.
@@ -151,7 +146,7 @@ Be sure to use the public IP or full FQDN for the public IP of the MySQL cluster
 
 Using the MySQL cluster's Public IP and MySQL authentication login information, an Azure Stack Operator can now [create a MySQL Hosting Server using the new MySQL cluster](azure-stack-mysql-resource-provider-hosting-servers.md#connect-to-a-mysql-hosting-server). 
 
-Also ensure that you have created plans and offers to make MySQL database creation available for users. An operator will need to add the **Microsoft.MySqlAdapter** service to a plan and create a new quota specifically for highly available databases. For more information about creating plans, see [Plan, offer, quota, and subscription overview](azure-stack-plan-offer-quota-overview.md).
+Also ensure that you have created plans and offers to make MySQL database creation available for users. An operator will need to add the **Microsoft.MySqlAdapter** service to a plan and create a new quota specifically for highly available databases. For more information about creating plans, see [Service, plan, offer, subscription overview](service-plan-offer-subscription-overview.md).
 
 > [!TIP]
 > The **Microsoft.MySqlAdapter** service will not be available to add to plans until the [MySQL Server resource provider has been deployed](azure-stack-mysql-resource-provider-deploy.md).
@@ -185,13 +180,4 @@ After the MySQL cluster has been created, configured, and added as an Azure Stac
 
 ## Next steps
 
-In this tutorial you learned how to:
-
-> [!div class="checklist"]
-> * Create a MySQL Server cluster from marketplace items
-> * Create an Azure Stack MySQL Hosting Server
-> * Create a highly available MySQL database
-
-Advance to the next tutorial to learn how to:
-> [!div class="nextstepaction"]
-> [Offer web apps](azure-stack-tutorial-app-service.md)
+[Update the MySQL resource provider](azure-stack-mysql-resource-provider-update.md)

@@ -12,9 +12,9 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
-ms.author: mabrigg
-ms.lastreviewed: 12/06/2018
+ms.date: 07/18/2019
+ms.author: thoroet
+ms.lastreviewed: 07/18/2019
 
 ---
 
@@ -22,7 +22,21 @@ ms.lastreviewed: 12/06/2018
 
 *Applies to: Azure Stack integrated systems*
 
-This article describes the general process to replace hardware components that are non hot-swappable. Actual replacement steps vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor’s field replaceable unit (FRU) documentation for detailed steps that are specific to your Azure Stack integrated system.
+This article describes the general process to replace hardware components that are non hot-swappable. Actual replacement steps vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor's field replaceable unit (FRU) documentation for detailed steps that are specific to your Azure Stack integrated system.
+
+> [!CAUTION]  
+> Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, performance decrease, security threads or prevent Azure Stack automation to deploy the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure applied firmware is matching the OEM Version displayed in the [Azure Stack administrator portal](azure-stack-updates.md).
+
+| Hardware Partner | Region | URL |
+|------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Cisco | All | [Cisco Integrated System for Microsoft Azure Stack Operations Guide](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_00.html#concept_wks_t1q_wbb)<br><br>[Release Notes for Cisco Integrated System for Microsoft Azure Stack](https://www.cisco.com/c/en/us/support/servers-unified-computing/ucs-c-series-rack-mount-ucs-managed-server-software/products-release-notes-list.html) |
+| Dell EMC | All | [Cloud for Microsoft Azure Stack 14G (account and login required)](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Microsoft Azure Stack 13G (account and login required)](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
+| Fujitsu | JAPAN | [Fujitsu managed service support desk (account and login required)](https://eservice.fujitsu.com/supportdesk-web/) |
+|  | EMEA | [Fujitsu support IT products and systems](https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del) |
+|  | EU | [Fujitsu MySupport (account and login required)](https://support.ts.fujitsu.com/IndexMySupport.asp) |
+| HPE | All | [HPE ProLiant for Microsoft Azure Stack](http://www.hpe.com/info/MASupdates) |
+| Lenovo | All | [ThinkAgile SXM Best Recipes](https://datacentersupport.lenovo.com/us/en/solutions/ht505122)
+| Wortmann |  | [OEM/firmware package](https://drive.terracloud.de/dl/fiTdTb66mwDAJWgUXUW8KNsd/OEM)<br>[terra Azure Stack documentation (including FRU)](https://drive.terracloud.de/dl/fiWGZwCySZSQyNdykXCFiVCR/TerraAzSDokumentation)
 
 Non hot-swappable components include the following:
 
@@ -34,7 +48,7 @@ Non hot-swappable components include the following:
 - Operating system disk*
 - Data drives (drives that don't support hot swap, for example PCI-e add-in cards)*
 
-*These components may support hot swap, but can vary based on vendor implementation. See your OEM vendor’s FRU documentation for detailed steps.
+*These components may support hot swap, but can vary based on vendor implementation. See your OEM vendor's FRU documentation for detailed steps.
 
 The following flow diagram shows the general FRU process to replace a non hot-swappable hardware component.
 
@@ -67,7 +81,7 @@ The following steps provide a high-level overview of the component replacement p
 4. Replace the damaged hardware component. Whether your OEM hardware vendor performs the component replacement could vary based on your support contract.  
 5. Update the firmware. Follow your vendor-specific firmware update process using the hardware lifecycle host to make sure the replaced hardware component has the approved firmware level applied. Whether your OEM hardware vendor performs this step could vary based on your support contract.  
 6. Use the [Repair](azure-stack-node-actions.md#scale-unit-node-actions) action to bring the scale unit node back into the scale unit.
-7. Use the privileged endpoint to [check the status of virtual disk repair](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair). With new data drives, a full storage repair job can take multiple hours depending on system load and consumed space.
+7. Use the privileged endpoint to [check the status of virtual disk repair](azure-stack-replace-disk.md#check-the-status-of-virtual-disk-repair-using-the-privileged-endpoint). With new data drives, a full storage repair job can take multiple hours depending on system load and consumed space.
 8. After the repair action has finished, validate that all active alerts have been automatically closed.
 
 ## Next steps

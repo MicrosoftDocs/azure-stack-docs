@@ -1,385 +1,356 @@
 ---
-title: Manage a Service Principal for Azure Stack | Microsoft Docs
-description: Describes how to manage a new service principal that can be used with the role-based access control in Azure Resource Manager to manage access to resources.
-services: azure-resource-manager
+title: Use an app identity to access resources | Microsoft Docs
+description: Learn how to manage a service principal that can be used with role-based access control for sign-in and access to resources.
+services: azure-stack
 documentationcenter: na
-author: sethmanheim
+author: BryanLa
 manager: femila
 
-ms.service: azure-resource-manager
+ms.service: azure-stack
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
-ms.author: sethm
-ms.lastreviewed: 12/18/2018
+ms.date: 09/09/2019
+ms.author: bryanla
+ms.lastreviewed: 06/20/2019
 
 ---
-# Provide applications access to Azure Stack
+# Use an app identity to access resources
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack integrated systems and Azure Stack Development Kit (ASDK)*
 
-When an application needs access to deploy or configure resources through Azure Resource Manager in Azure Stack, you create a service principal, which is a credential for your application. You can then delegate only the necessary permissions to that service principal.  
+An application that needs to deploy or configure resources through Azure Resource Manager must be represented by a service principal. Just as a user is represented by a user principal, a service principal is a type of security principal that represents an app. The service principal provides an identity for your app, allowing you to delegate only the necessary permissions to that service principal.  
 
-As an example, you may have a configuration management tool that uses Azure Resource Manager to inventory Azure resources. In this scenario, you can create a service principal, grant the reader role to that service principal, and limit the configuration management tool to read-only access. 
+As an example, you may have a configuration management app that uses Azure Resource Manager to inventory Azure resources. In this scenario, you can create a service principal, grant the reader role to that service principal, and limit the configuration management app to read-only access.
 
-Service principals are preferable to running the app under your own credentials because:
+## Overview
 
- - You can assign permissions to the service principal that are different than your own account permissions. Typically, these permissions are restricted to exactly what the app needs to do.
- - You do not have to change the app's credentials if your responsibilities change.
- - You can use a certificate to automate authentication when executing an unattended script.  
+Like a user principal, a service principal must present credentials during authentication. This authentication consists of two elements:
 
-## Getting started
+- An **Application ID**, sometimes referred to as a Client ID. This is a GUID that uniquely identifies the app's registration in your Active Directory tenant.
+- A **secret** associated with the application ID. You can either generate a client secret string (similar to a password), or specify an X509 certificate (which uses its public key).
 
-Depending on how you have deployed Azure Stack, you start by creating a service principal. This document describes creating a service principal for:
+Running an app under the identity of a service principal is preferable to running it under a user principal because:
 
-- Azure Active Directory (Azure AD). Azure AD is a multi-tenant, cloud-based directory, and identity management service. You can use Azure AD with a connected Azure Stack.
-- Active Directory Federation Services (AD FS). AD FS provides simplified, secured identity federation, and Web single sign-on (SSO) capabilities. You can use AD FS with both connected and disconnected Azure Stack instances.
+ - A service principal can use an X509 certificate for **stronger credentials**.  
+ - You can assign **more restrictive permissions** to a service principal. Typically, these permissions are restricted to only what the app needs to do, known as the *principle of least privilege*.
+ - Service principal **credentials and permissions don't change as frequently** as user credentials. For example, when the user's responsibilities change, password requirements dictate a change, or a user leaves the company.
 
-Once you've created the service principal, a set of steps common to both AD FS and Azure Active Directory are used to delegate permissions to the role.
+You start by creating a new app registration in your directory, which creates an associated [service principal object](/azure/active-directory/develop/developer-glossary#service-principal-object) to represent the app's identity within the directory. This document describes the process of creating and managing a service principal, depending on the directory you chose for your Azure Stack instance:
 
-## Manage service principal for Azure AD
+- Azure Active Directory (Azure AD). Azure AD is a multi-tenant, cloud-based directory, and identity management service. You can use Azure AD with a connected Azure Stack instance.
+- Active Directory Federation Services (AD FS). AD FS provides simplified, secured identity federation, and web single sign-on (SSO) capabilities. You can use AD FS with both connected and disconnected Azure Stack instances.
 
-If you have deployed Azure Stack with Azure Active Directory (Azure AD) as your identity management service, you can create service principals just like you do for Azure. This section shows you how to perform the steps through the portal. Check that you have the [required Azure AD permissions]((/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) before beginning.
+First you learn how to manage a service principal, then how to assign the service principal to a role, limiting its resource access.
 
-### Create service principal
+## Manage an Azure AD service principal
 
-In this section, you create an application (service principal) in Azure AD that represents your application.
+If you deployed Azure Stack with Azure AD as your identity management service, you can create service principals just like you do for Azure. This section shows you how to perform the steps through the Azure portal. Check that you have the [required Azure AD permissions](/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) before beginning.
 
-1. Sign in to your Azure Account through the [Azure portal](https://portal.azure.com).
-2. Select **Azure Active Directory** > **App registrations** > **New application registration**
-3. Provide a name and URL for the application. Select either **Web app / API** or **Native** for the type of application you want to create. After setting the values, select **Create**.
+### Create a service principal that uses a client secret credential
 
-You have created a service principal for your application.
+In this section, you register your app using the Azure portal, which creates the service principal object in your Azure AD tenant. In this example, the service principal is created with a client secret credential, but the portal also supports X509 certificate-based credentials.
 
-### Get credentials
+1. Sign in to the [Azure portal](https://portal.azure.com) using your Azure account.
+2. Select **Azure Active Directory** > **App registrations** > **New registration**.
+3. Provide a **name** for the app.
+4. Select the appropriate **Supported account types**.
+5. Under **Redirect URI**, select **Web**  as the app type, and (optionally) specify a redirect URI if your app requires it.
+6. After setting the values, select **Register**. The app registration is created and the **Overview** page displays.
+7. Copy the **Application ID** for use in your app code. This value is also referred to as the Client ID.
+8. To generate a client secret, select the **Certificates & secrets** page. Select **New client secret**.
+9. Provide a **description** for the secret, and an **expires** duration.
+10. When done, select **Add**.
+11. The value of the secret displays. Copy and save this value in another location, because you can't retrieve it later. You provide the secret with the Application ID in your client app during service principal sign-in.
 
-When programmatically logging in, you use the ID for your application, and for a Web app / API, an authentication key. To get those values, use the following steps:
+    ![Saved key in client secrets](./media/azure-stack-create-service-principal/create-service-principal-in-azure-stack-secret.png)
 
-1. From **App registrations** in Active Directory, select your application.
+## Manage an AD FS service principal
 
-2. Copy the **Application ID** and store it in your application code. The applications in the sample applications section refer to this value as the client ID.
+If you deployed Azure Stack with AD FS as your identity management service, you must use PowerShell to manage the service principal. Examples are provided below for managing service principal credentials, demonstrating both an X509 certificate and a client secret.
 
-     ![Client id](./media/azure-stack-create-service-principal/image12.png)
-3. To generate an authentication key for a Web app / API, select **Settings** > **Keys**. 
+The scripts must be run in an elevated ("Run as administrator") PowerShell console, which opens another session to a VM that hosts a privileged endpoint for your Azure Stack instance. Once the privileged endpoint session has been established, additional cmdlets will execute and manage the service principal. For more information about the privileged endpoint, see [Using the privileged endpoint in Azure Stack](azure-stack-privileged-endpoint.md).
 
-4. Provide a description of the key, and a duration for the key. When done, select **Save**.
+### Create a service principal that uses a certificate credential
 
-After saving the key, the value of the key is displayed. Copy this value to Notepad or some other temporary location, because you cannot retrieve the key later. You provide the key value with the application ID to sign as the application. Store the key value in a place where your application can retrieve it.
+When creating a certificate for a service principal credential, the following requirements must be met:
 
-![Saved key](./media/azure-stack-create-service-principal/image15.png)
-
-Once complete, you can assign your application a role.
-
-## Manage service principal for AD FS
-
-If you have deployed Azure Stack with Active Directory Federation Services (AD FS) as your identity management service, use PowerShell to create a service principal, assign a role for access, and sign in with that identity.
-
-You can use one of two methods to create your service principal with AD FS. You can:
- - [Create a service principal using a certificate](azure-stack-create-service-principals.md#create-a-service-principal-using-a-certificate)
- - [Create a service principal using a client secret](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret)
-
-Tasks for managing AD FS service principals.
-
-| Type | Action |
-| --- | --- |
-| AD FS Certificate | [Create](azure-stack-create-service-principals.md#create-a-service-principal-using-a-certificate) |
-| AD FS Certificate | [Update](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-ad-fs) |
-| AD FS Certificate | [Remove](azure-stack-create-service-principals.md#remove-a-service-principal-for-ad-fs) |
-| AD FS Client Secret | [Create](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret) |
-| AD FS Client Secret | [Update](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret) |
-| AD FS Client Secret | [Remove](azure-stack-create-service-principals.md#remove-a-service-principal-for-ad-fs) |
-
-### Create a service principal using a certificate
-
-When creating a service principal while using AD FS for identity, you can use a certificate.
-
-#### Certificate
-
-A certificate is required.
-
-**Certificate Requirements**
-
- - The Cryptographic Service Provider (CSP) must be legacy key provider.
+ - For production, the certificate must be issued from either an internal Certificate Authority or a Public Certificate Authority. If you use a public certificate authority, you must include the authority in the base operating system image as part of the Microsoft Trusted Root Authority Program. You can find the full list at [Microsoft Trusted Root Certificate Program: Participants](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca). An example of creating a "self-signed" test certificate will also be shown later during [Update a service principal's certificate credential](#update-a-service-principals-certificate-credential). 
+ - The cryptographic provider must be specified as a Microsoft legacy Cryptographic Service Provider (CSP) key provider.
  - The certificate format must be in PFX file, as both the public and private keys are required. Windows servers use .pfx files that contain the public key file (SSL certificate file) and the associated private key file.
- - For production, the certificate must be issued from either an internal Certificate Authority or a Public Certificate Authority. If you use a public certificate authority, you must included the authority in the base operating system image as part of the Microsoft Trusted Root Authority Program. You can find the full list at [Microsoft Trusted Root Certificate Program: Participants](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
  - Your Azure Stack infrastructure must have network access to the certificate authority's Certificate Revocation List (CRL) location published in the certificate. This CRL must be an HTTP endpoint.
 
-#### Parameters
+Once you have a certificate, use the PowerShell script below to register your app and create a service principal. You also use the service principal to sign in to Azure. Substitute your own values for the following placeholders:
 
-The following information is required as input for the automation parameters:
+| Placeholder | Description | Example |
+| ----------- | ----------- | ------- |
+| \<PepVM\> | The name of the privileged endpoint VM on your Azure Stack instance. | "AzS-ERCS01" |
+| \<YourCertificateLocation\> | The location of your X509 certificate in the local certificate store. | "Cert:\CurrentUser\My\AB5A8A3533CC7AA2025BF05120117E06DE407B34" |
+| \<YourAppName\> | A descriptive name for the new app registration. | "My management tool" |
 
-|Parameter|Description|Example|
-|---------|---------|---------|
-|Name|Name for the SPN account|MyAPP|
-|ClientCertificates|Array of certificate objects|X509 certificate|
-|ClientRedirectUris<br>(Optional)|Application redirect URI|-|
-
-#### Use PowerShell to create a service principal
-
-1. Open an elevated Windows PowerShell session, and run the following cmdlets:
+1. Open an elevated Windows PowerShell session, and run the following script:
 
    ```powershell  
-    # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
+    # Sign in to PowerShell interactively, using credentials that have access to the VM running the Privileged Endpoint (typically <domain>\cloudadmin)
     $Creds = Get-Credential
 
-    # Creating a PSSession to the ERCS PrivilegedEndpoint
-    $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
+    # Create a PSSession to the Privileged Endpoint VM
+    $Session = New-PSSession -ComputerName "<PepVm>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
-    # If you have a managed certificate use the Get-Item command to retrieve your certificate from your certificate location.
+    # Use the Get-Item cmdlet to retrieve your certificate.
     # If you don't want to use a managed certificate, you can produce a self signed cert for testing purposes: 
     # $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
     $Cert = Get-Item "<YourCertificateLocation>"
     
-    $ServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name '<YourAppName>' -ClientCertificates $using:cert}
+    # Use the privileged endpoint to create the new app registration (and service principal object)
+    $SpObject = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name "<YourAppName>" -ClientCertificates $using:cert}
     $AzureStackInfo = Invoke-Command -Session $Session -ScriptBlock {Get-AzureStackStampInformation}
     $Session | Remove-PSSession
 
-    # For Azure Stack development kit, this value is set to https://management.local.azurestack.external. This is read from the AzureStackStampInformation output of the ERCS VM.
+    # Using the stamp info for your Azure Stack instance, populate the following variables:
+    # - AzureRM endpoint used for Azure Resource Manager operations 
+    # - Audience for acquiring an OAuth token used to access Graph API 
+    # - GUID of the directory tenant
     $ArmEndpoint = $AzureStackInfo.TenantExternalEndpoints.TenantResourceManager
-
-    # For Azure Stack development kit, this value is set to https://graph.local.azurestack.external/. This is read from the AzureStackStampInformation output of the ERCS VM.
     $GraphAudience = "https://graph." + $AzureStackInfo.ExternalDomainFQDN + "/"
-
-    # TenantID for the stamp. This is read from the AzureStackStampInformation output of the ERCS VM.
     $TenantID = $AzureStackInfo.AADTenantID
 
-    # Register an AzureRM environment that targets your Azure Stack instance
-    Add-AzureRMEnvironment `
-    -Name "AzureStackUser" `
-    -ArmEndpoint $ArmEndpoint
+    # Register and set an AzureRM environment that targets your Azure Stack instance
+    Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
+    Set-AzureRmEnvironment -Name "AzureStackUser" -GraphAudience $GraphAudience -EnableAdfsAuthentication:$true
 
-    # Set the GraphEndpointResourceId value
-    Set-AzureRmEnvironment `
-    -Name "AzureStackUser" `
-    -GraphAudience $GraphAudience `
-    -EnableAdfsAuthentication:$true
-
-    Add-AzureRmAccount -EnvironmentName "AzureStackUser" `
+    # Sign in using the new service principal identity
+    $SpSignin = Connect-AzureRmAccount -Environment "AzureStackUser" `
     -ServicePrincipal `
-    -CertificateThumbprint $ServicePrincipal.Thumbprint `
-    -ApplicationId $ServicePrincipal.ClientId `
+    -CertificateThumbprint $SpObject.Thumbprint `
+    -ApplicationId $SpObject.ClientId `
     -TenantId $TenantID
 
-    # Output the SPN details
-    $ServicePrincipal
+    # Output the service principal details
+    $SpObject
 
    ```
-   > [!Note]  
-   > For validation purposes a self-signed certificate can be created using the below example:
-
-   ```powershell  
-   $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
-   ```
-
-
-2. After the automation finishes, it displays the required details to use the SPN. It is recommended to store the output for later use.
-
-   For example:
+   
+2. After the script finishes, it displays the app registration info, including the service principal's credentials. As demonstrated, the `ClientID` and `Thumbprint` are used to sign in under the service principal's identity. Upon successful sign-in, the service principal identity will be used for subsequent authorization and access to resources managed by Azure Resource Manager.
 
    ```shell
    ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
    ClientId              : 3c87e710-9f91-420b-b009-31fa9e430145
    Thumbprint            : 30202C11BE6864437B64CE36C8D988442082A0F1
    ApplicationName       : Azurestack-MyApp-c30febe7-1311-4fd8-9077-3d869db28342
+   ClientSecret          :
    PSComputerName        : azs-ercs01
    RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
    ```
 
-### Update certificate for service principal for AD FS
+Keep your PowerShell console session open, as you use it with the `ApplicationIdentifier` value in the next section.
 
-If you have deployed Azure Stack with AD FS, you can use PowerShell to update the secret for a service principal.
+### Update a service principal's certificate credential
 
-The script is run from the privileged endpoint on an ERCS virtual machine.
+Now that you created a service principal, this section will show you how to:
 
-#### Parameters
+1. Create a new self-signed X509 certificate for testing.
+2. Update the service principal's credentials, by updating its **Thumbprint** property to match the new certificate.
 
-The following information is required as input for the automation parameters:
+Update the certificate credential using PowerShell, substituting your own values for the following placeholders:
 
-|Parameter|Description|Example|
-|---------|---------|---------|
-|Name|Name for the SPN account|MyAPP|
-|ApplicationIdentifier|Unique identifier|S-1-5-21-1634563105-1224503876-2692824315-2119|
-|ClientCertificate|Array of certificate objects|X509 certificate|
+| Placeholder | Description | Example |
+| ----------- | ----------- | ------- |
+| \<PepVM\> | The name of the privileged endpoint VM on your Azure Stack instance. | "AzS-ERCS01" |
+| \<YourAppName\> | A descriptive name for the new app registration. | "My management tool" |
+| \<YourCertificateLocation\> | The location of your X509 certificate in the local certificate store. | "Cert:\CurrentUser\My\AB5A8A3533CC7AA2025BF05120117E06DE407B34" |
+| \<AppIdentifier\> | The identifier assigned to the application registration. | "S-1-5-21-1512385356-3796245103-1243299919-1356" |
 
-#### Example of updating service principal for AD FS
-
-The example creates a self-signed certificate. When you run the cmdlets in a production deployment, use [Get-Item](https://docs.microsoft.com/powershell/module/Microsoft.PowerShell.Management/Get-Item) to retrieve the certificate object for the certificate you want to use.
-
-1. Open an elevated Windows PowerShell session, and run the following cmdlets:
+1. Using your elevated Windows PowerShell session, run the following cmdlets:
 
      ```powershell
-          # Creating a PSSession to the ERCS PrivilegedEndpoint
-          $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
+     # Create a PSSession to the PrivilegedEndpoint VM
+     $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
-          # This produces a self signed cert for testing purposes. It is preferred to use a managed certificate for this.
-          $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
+     # Create a self-signed certificate for testing purposes. 
+     $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
+     # In production, use Get-Item and a managed certificate instead.
+     # $Cert = Get-Item "<YourCertificateLocation>"
 
-          $RemoveServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier  S-1-5-21-1634563105-1224503876-2692824315-2120 -ClientCertificates $NewCert}
+     # Use the privileged endpoint to update the certificate thumbprint, used by the service principal associated with <AppIdentifier>
+     $SpObject = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier "<AppIdentifier>" -ClientCertificates $using:NewCert}
+     $Session | Remove-PSSession
 
-          $Session | Remove-PSSession
+     # Output the updated service principal details
+     $SpObject
      ```
 
-2. After the automation finishes, it displays the updated thumbprint value required for SPN authentication.
+2. After the script finishes, it displays the updated app registration info, including the thumbprint value for the new self-signed certificate.
 
      ```Shell  
-          ClientId              : 
-          Thumbprint            : AF22EE716909041055A01FE6C6F5C5CDE78948E9
-          ApplicationName       : Azurestack-ThomasAPP-3e5dc4d2-d286-481c-89ba-57aa290a4818
-          ClientSecret          : 
-          RunspaceId            : a580f894-8f9b-40ee-aa10-77d4d142b4e5
+     ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
+     ClientId              : 
+     Thumbprint            : AF22EE716909041055A01FE6C6F5C5CDE78948E9
+     ApplicationName       : Azurestack-MyApp-c30febe7-1311-4fd8-9077-3d869db28342
+     ClientSecret          : 
+     PSComputerName        : azs-ercs01
+     RunspaceId            : a580f894-8f9b-40ee-aa10-77d4d142b4e5
      ```
 
-### Create a service principal using a client secret
+### Create a service principal that uses client secret credentials
 
-When creating a service principal while using AD FS for identity, you can use a certificate. You will use the privileged end point to run the cmdlets.
+> [!IMPORTANT]
+> Using a client secret is less secure than using an X509 certificate credential. Not only is the authentication mechanism less secure, but it also typically requires embedding the secret in the client app source code. As such, for production apps, you're strongly encouraged to use a certificate credential.
 
-These scripts are run from the privileged endpoint on an ERCS virtual machine. For more information about the privileged end point, see [Using the privileged endpoint in Azure Stack](azure-stack-privileged-endpoint.md).
+Now you create another app registration, but this time specify a client secret credential. Unlike a certificate credential, the directory has the ability to generate a client secret credential. Instead of specifying the client secret, you use the `-GenerateClientSecret` switch to request that it be generated. Substitute your own values for the following placeholders:
 
-#### Parameters
-
-The following information is required as input for the automation parameters:
-
-| Parameter | Description | Example |
-|----------------------|--------------------------|---------|
-| Name | Name for the SPN account | MyAPP |
-| GenerateClientSecret | Create secret |  |
-
-#### Use the ERCS PrivilegedEndpoint to create the service principal
+| Placeholder | Description | Example |
+| ----------- | ----------- | ------- |
+| \<PepVM\> | The name of the privileged endpoint VM on your Azure Stack instance. | "AzS-ERCS01" |
+| \<YourAppName\> | A descriptive name for the new app registration. | "My management tool" |
 
 1. Open an elevated Windows PowerShell session, and run the following cmdlets:
 
      ```powershell  
-      # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
+     # Sign in to PowerShell interactively, using credentials that have access to the VM running the Privileged Endpoint (typically <domain>\cloudadmin)
      $Creds = Get-Credential
 
-     # Creating a PSSession to the ERCS PrivilegedEndpoint
-     $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
+     # Create a PSSession to the Privileged Endpoint VM
+     $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
-     # Creating a SPN with a secre
-     $ServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name '<YourAppName>' -GenerateClientSecret}
+     # Use the privileged endpoint to create the new app registration (and service principal object)
+     $SpObject = Invoke-Command -Session $Session -ScriptBlock {New-GraphApplication -Name "<YourAppName>" -GenerateClientSecret}
      $AzureStackInfo = Invoke-Command -Session $Session -ScriptBlock {Get-AzureStackStampInformation}
      $Session | Remove-PSSession
 
-     # Output the SPN details
-     $ServicePrincipal
+     # Using the stamp info for your Azure Stack instance, populate the following variables:
+     # - AzureRM endpoint used for Azure Resource Manager operations 
+     # - Audience for acquiring an OAuth token used to access Graph API 
+     # - GUID of the directory tenant
+     $ArmEndpoint = $AzureStackInfo.TenantExternalEndpoints.TenantResourceManager
+     $GraphAudience = "https://graph." + $AzureStackInfo.ExternalDomainFQDN + "/"
+     $TenantID = $AzureStackInfo.AADTenantID
+
+     # Register and set an AzureRM environment that targets your Azure Stack instance
+     Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
+     Set-AzureRmEnvironment -Name "AzureStackUser" -GraphAudience $GraphAudience -EnableAdfsAuthentication:$true
+
+     # Sign in using the new service principal identity
+     $securePassword = $SpObject.ClientSecret | ConvertTo-SecureString -AsPlainText -Force
+     $credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $SpObject.ClientId, $securePassword
+     $SpSignin = Connect-AzureRmAccount -Environment "AzureStackUser" -ServicePrincipal -Credential $credential -TenantId $TenantID
+
+     # Output the service principal details
+     $SpObject
      ```
 
-2. After cmdlets run, the shell displays the required details to use the SPN. Make sure you store the client secret.
+2. After the script finishes, it displays the app registration info, including the service principal's credentials. As demonstrated, the `ClientID` and generated `ClientSecret` are used to sign in under the service principal's identity. Upon successful sign-in, the service principal identity will be used for subsequent authorization and access to resources managed by Azure Resource Manager.
 
-     ```powershell  
+     ```shell  
      ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
      ClientId              : 8e0ffd12-26c8-4178-a74b-f26bd28db601
      Thumbprint            : 
      ApplicationName       : Azurestack-YourApp-6967581b-497e-4f5a-87b5-0c8d01a9f146
-     ClientSecret          : 6RUZLRoBw3EebMDgaWGiowCkoko5_j_ujIPjA8dS
-     PSComputerName        : 192.168.200.224
+     ClientSecret          : 6RUWLRoBw3EebBLgaWGiowCkoko5_j_ujIPjA8dS
+     PSComputerName        : azs-ercs01
      RunspaceId            : 286daaa1-c9a6-4176-a1a8-03f543f90998
      ```
 
-#### Update client secret for a service principal for AD FS
+Keep your PowerShell console session open, as you use it with the `ApplicationIdentifier` value in the next section.
 
-A new client secret is auto generated by the PowerShell cmdlet.
+### Update a service principal's client secret
 
-The script is run from the privileged endpoint on an ERCS virtual machine.
+Update the client secret credential using PowerShell, using the **ResetClientSecret** parameter, which immediately changes the client secret. Substitute your own values for the following placeholders:
 
-##### Parameters
+| Placeholder | Description | Example |
+| ----------- | ----------- | ------- |
+| \<PepVM\> | The name of the privileged endpoint VM on your Azure Stack instance. | "AzS-ERCS01" |
+| \<AppIdentifier\> | The identifier assigned to the application registration. | "S-1-5-21-1634563105-1224503876-2692824315-2623" |
 
-The following information is required as input for the automation parameters:
+1. Using your elevated Windows PowerShell session, run the following cmdlets:
 
-| Parameter | Description | Example |
-|-----------------------|-----------------------------------------------------------------------------------------------------------|------------------------------------------------|
-| ApplicationIdentifier | Unique identifier. | S-1-5-21-1634563105-1224503876-2692824315-2119 |
-| ChangeClientSecret | Changes the client secret with a rollover period of 2880 minutes where the old secret is still valid. |  |
-| ResetClientSecret | Change the client secret immediately |  |
+     ```powershell
+     # Create a PSSession to the PrivilegedEndpoint VM
+     $Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
-##### Example of updating a client secret for AD FS
+     # Use the privileged endpoint to update the client secret, used by the service principal associated with <AppIdentifier>
+     $SpObject = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier "<AppIdentifier>" -ResetClientSecret}
+     $Session | Remove-PSSession
 
-The example uses the **ResetClientSecret** parameter, which immediately changes the client secret.
-
-1. Open an elevated Windows PowerShell session, and run the following cmdlets:
-
-     ```powershell  
-          # Creating a PSSession to the ERCS PrivilegedEndpoint
-          $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
-
-          # This produces a self signed cert for testing purposes. It is preferred to use a managed certificate for this.
-          $NewCert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<YourAppName>" -KeySpec KeyExchange
-
-          $UpdateServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {Set-GraphApplication -ApplicationIdentifier  S-1-5-21-1634563105-1224503876-2692824315-2120 -ResetClientSecret}
-
-          $Session | Remove-PSSession
+     # Output the updated service principal details
+     $SpObject
      ```
 
-2. After the automation finishes, it displays the newly generated secret required for SPN authentication. Make sure you store the new client secret.
+2. After the script finishes, it displays the updated app registration info, including the newly generated client secret.
 
-     ```powershell  
-          ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2120
-          ClientId              :  
-          Thumbprint            : 
-          ApplicationName       : Azurestack-Yourapp-6967581b-497e-4f5a-87b5-0c8d01a9f146
-          ClientSecret          : MKUNzeL6PwmlhWdHB59c25WDDZlJ1A6IWzwgv_Kn
-          RunspaceId            : 6ed9f903-f1be-44e3-9fef-e7e0e3f48564
+     ```shell  
+     ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
+     ClientId              : 8e0ffd12-26c8-4178-a74b-f26bd28db601
+     Thumbprint            : 
+     ApplicationName       : Azurestack-YourApp-6967581b-497e-4f5a-87b5-0c8d01a9f146
+     ClientSecret          : MKUNzeL6PwmlhWdHB59c25WDDZlJ1A6IWzwgv_Kn
+     PSComputerName        : azs-ercs01
+     RunspaceId            : 6ed9f903-f1be-44e3-9fef-e7e0e3f48564
      ```
 
-### Remove a service principal for AD FS
+### Remove a service principal
 
-If you have deployed Azure Stack with AD FS, you can use PowerShell to delete a service principal.
+Now you'll see how to remove/delete an app registration from your directory, and its associated service principal object, using PowerShell. 
 
-The script is run from the privileged endpoint on an ERCS virtual machine.
+Substitute your own values for the following placeholders:
 
-#### Parameters
-
-The following information is required as input for the automation parameters:
-
-|Parameter|Description|Example|
-|---------|---------|---------|
-| Parameter | Description | Example |
-| ApplicationIdentifier | Unique identifier | S-1-5-21-1634563105-1224503876-2692824315-2119 |
-
-> [!Note]  
-> To view a list of all existing service principals and their Application Identifier, the get-graphapplication command can be used.
-
-#### Example of removing the service principal for AD FS
+| Placeholder | Description | Example |
+| ----------- | ----------- | ------- |
+| \<PepVM\> | The name of the privileged endpoint VM on your Azure Stack instance. | "AzS-ERCS01" |
+| \<AppIdentifier\> | The identifier assigned to the application registration. | "S-1-5-21-1634563105-1224503876-2692824315-2623" |
 
 ```powershell  
-     Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
-     $Creds = Get-Credential
+# Sign in to PowerShell interactively, using credentials that have access to the VM running the Privileged Endpoint (typically <domain>\cloudadmin)
+$Creds = Get-Credential
 
-     # Creating a PSSession to the ERCS PrivilegedEndpoint
-     $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
+# Create a PSSession to the PrivilegedEndpoint VM
+$Session = New-PSSession -ComputerName "<PepVM>" -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
-     $UpdateServicePrincipal = Invoke-Command -Session $Session -ScriptBlock {Remove-GraphApplication -ApplicationIdentifier S-1-5-21-1634563105-1224503876-2692824315-2119}
+# OPTIONAL: Use the privileged endpoint to get a list of applications registered in AD FS
+$AppList = Invoke-Command -Session $Session -ScriptBlock {Get-GraphApplication}
 
-     $Session | Remove-PSSession
+# Use the privileged endpoint to remove the application and associated service principal object for <AppIdentifier>
+Invoke-Command -Session $Session -ScriptBlock {Remove-GraphApplication -ApplicationIdentifier "<AppIdentifier>"}
+```
+
+There will be no output returned from calling the Remove-GraphApplication cmdlet on the privileged endpoint, but you'll see verbatim confirmation output to the console during execution of the cmdlet:
+
+```shell
+VERBOSE: Deleting graph application with identifier S-1-5-21-1634563105-1224503876-2692824315-2623.
+VERBOSE: Remove-GraphApplication : BEGIN on AZS-ADFS01 on ADFSGraphEndpoint
+VERBOSE: Application with identifier S-1-5-21-1634563105-1224503876-2692824315-2623 was deleted.
+VERBOSE: Remove-GraphApplication : END on AZS-ADFS01 under ADFSGraphEndpoint configuration
 ```
 
 ## Assign a role
 
-To access resources in your subscription, you must assign the application to a role. Decide which role represents the right permissions for the application. To learn about the available roles, see [RBAC: Built in Roles]((/azure/role-based-access-control/built-in-roles).
+Access to Azure resources by users and apps is authorized through Role-Based Access Control (RBAC). To allow an app to access resources in your subscription using its service principal, you must *assign* the service principal to a *role* for a specific *resource*. First decide which role represents the right *permissions* for the app. To learn about the available roles, see [Built-in roles for Azure resources](/azure/role-based-access-control/built-in-roles).
 
-You can set the scope at the level of the subscription, resource group, or resource. Permissions are inherited to lower levels of scope. For example, adding an application to the Reader role for a resource group means it can read the resource group and any resources it contains.
+The type of resource you choose also establishes the *access scope* for the service principal. You can set the access scope at the subscription, resource group, or resource level. Permissions are inherited to lower levels of scope. For example, adding an app to the "Reader" role for a resource group, means it can read the resource group and any resources it contains.
 
-1. In the Azure Stack portal, navigate to the level of scope you wish to assign the application to. For example, to assign a role at the subscription scope, select **Subscriptions**. You could instead select a resource group or resource.
+1. Sign in to the appropriate portal, based on the directory you specified during Azure Stack installation (the Azure portal for Azure AD, or the Azure Stack user portal for AD FS, for example). In this example, we show a user signed in to the Azure Stack user portal.
 
-2. Select the particular subscription (resource group or resource) to assign the application to.
+   > [!NOTE]
+   > To add role assignments for a given resource, your user account must belong to a role that declares the `Microsoft.Authorization/roleAssignments/write` permission. For example, either the [Owner](/azure/role-based-access-control/built-in-roles#owner) or [User Access Administrator](/azure/role-based-access-control/built-in-roles#user-access-administrator) built-in roles.  
+2. Navigate to the resource you wish to allow the service principal to access. In this example, assign the service principal to a role at the subscription scope, by selecting **Subscriptions**, then a specific subscription. You could instead select a resource group, or a specific resource like a virtual machine.
 
-     ![Select subscription for assignment](./media/azure-stack-create-service-principal/image16.png)
+     ![Select subscription for assignment](./media/azure-stack-create-service-principal/select-subscription.png)
 
-3. Select **Access Control (IAM)**.
+3. Select the **Access Control (IAM)** page, which is universal across all resources that support RBAC.
+4. Select **+ Add**
+5. Under **Role**, pick the role you wish to assign to the app.
+6. Under **Select**, search for your app using a full or partial Application Name. During registration, the Application Name is generated as *Azurestack-\<YourAppName\>-\<ClientId\>*. For example, if you used an application name of *App2*, and ClientId *2bbe67d8-3fdb-4b62-87cf-cc41dd4344ff* was assigned during creation, the full name would be  *Azurestack-App2-2bbe67d8-3fdb-4b62-87cf-cc41dd4344ff*. You can search for either the exact string, or a portion, like *Azurestack* or *Azurestack-App2*.
+7. Once you find the app, select it and it will show under **Selected members**.
+8. Select **Save** to finish assigning the role.
 
-     ![Select access](./media/azure-stack-create-service-principal/image17.png)
+     [![Assign role](media/azure-stack-create-service-principal/assign-role.png)](media/azure-stack-create-service-principal/assign-role.png#lightbox)
 
-4. Select **Add role assignment**.
+9. When finished, the app will show in the list of principals assigned for the current scope, for the given role.
 
-5. Select the role you wish to assign to the application.
+     [![Assigned role](media/azure-stack-create-service-principal/assigned-role.png)](media/azure-stack-create-service-principal/assigned-role.png#lightbox)
 
-6. Search for your application, and select it.
-
-7. Select **OK** to finish assigning the role. You see your application in the list of users assigned to a role for that scope.
-
-Now that you've created a service principal and assigned a role, you can begin using this within your application to access Azure Stack resources.  
+Now that you've created a service principal and assigned a role, you can begin using this service principal within your app to access Azure Stack resources.  
 
 ## Next steps
 

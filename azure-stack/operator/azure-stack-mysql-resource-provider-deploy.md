@@ -1,9 +1,9 @@
 ---
-title: Using MySQL databases on Azure Stack | Microsoft Docs
-description: Learn how you can deploy MySQL databases as a service on Azure Stack and the quick steps to deploy the MySQL Server resource provider adapter. 
+title: Deploy MySQL resource provider on Azure Stack | Microsoft Docs
+description: Learn how to deploy the MySQL resource provider adapter and MySQL databases as a service on Azure Stack. 
 services: azure-stack 
 documentationCenter: '' 
-author: jeffgilb 
+author: mattbriggs 
 manager: femila 
 editor: '' 
 ms.service: azure-stack 
@@ -11,8 +11,8 @@ ms.workload: na
 ms.tgt_pltfrm: na 
 ms.devlang: na 
 ms.topic: article 
-ms.date: 03/29/2019
-ms.author: jeffgilb
+ms.date: 10/02/2019
+ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 03/18/2019
 ---
@@ -22,20 +22,20 @@ ms.lastreviewed: 03/18/2019
 Use the MySQL Server resource provider to expose MySQL databases as an Azure Stack service. The MySQL resource provider runs as a service on a Windows Server 2016 Server Core virtual machine (VM).
 
 > [!IMPORTANT]
-> Only the resource provider is supported to create items on servers that host SQL or MySQL. Items created on a host server that are not created by the resource provider might result in a mismatched state.
+> Only the resource provider is supported to create items on servers that host SQL or MySQL. Items created on a host server that aren't created by the resource provider might result in a mismatched state.
 
 ## Prerequisites
 
 There are several prerequisites that need to be in place before you can deploy the Azure Stack MySQL resource provider. To meet these requirements, complete the steps in this article on a computer that can access the privileged endpoint VM.
 
-* If you haven't already done so, [register Azure Stack](./azure-stack-registration.md) with Azure so you can download Azure marketplace items.
-* You must install the Azure and Azure Stack PowerShell modules on the system where you  will run this installation. That system must be a Windows 10 or Windows Server 2016 image with the latest version of the .NET runtime. See [Install PowerShell for Azure Stack](./azure-stack-powershell-install.md).
-* Add the required Windows Server core VM to the Azure Stack marketplace by downloading the **Windows Server 2016 Datacenter - Server Core** image.
+* If you haven't already, [register Azure Stack](./azure-stack-registration.md) with Azure so you can download Azure Marketplace items.
+* Install the Azure and Azure Stack PowerShell modules on the system where you'll run this installation. That system must be a Windows 10 or Windows Server 2016 image with the latest version of the .NET runtime. See [Install PowerShell for Azure Stack](./azure-stack-powershell-install.md).
+* Add the required Windows Server core VM to Azure Stack Marketplace by downloading the **Windows Server 2016 Datacenter - Server Core** image.
 
 * Download the MySQL resource provider binary and then run the self-extractor to extract the contents to a temporary directory.
 
   >[!NOTE]
-  >To deploy the MySQL provider on a system that doesn't have Internet access, copy the [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) file to a local path. Provide the path name using the **DependencyFilesLocalPath** parameter.
+  >To deploy the MySQL provider on a system that doesn't have internet access, copy the [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) file to a local path. Provide the path name using the **DependencyFilesLocalPath** parameter.
 
 * The resource provider has a minimum corresponding Azure Stack build.
 
@@ -57,7 +57,7 @@ There are several prerequisites that need to be in place before you can deploy t
 
 ### Certificates
 
-_For integrated systems installations only_. You must provide the SQL PaaS PKI certificate described in the optional PaaS certificates section of [Azure Stack deployment PKI requirements](./azure-stack-pki-certs.md#optional-paas-certificates). Place the .pfx file in the location specified by the **DependencyFilesLocalPath** parameter. Do not provide a certificate for ASDK systems.
+_For integrated systems installations only_. You must provide the SQL PaaS PKI certificate described in the optional PaaS certificates section of [Azure Stack deployment PKI requirements](./azure-stack-pki-certs.md#optional-paas-certificates). Place the .pfx file in the location specified by the **DependencyFilesLocalPath** parameter. Don't provide a certificate for ASDK systems.
 
 ## Deploy the resource provider
 
@@ -93,7 +93,7 @@ You can specify these parameters from the command line. If you don't, or if any 
 | **AzureEnvironment** | The Azure environment of the service admin account used for deploying Azure Stack. Required only for Azure AD deployments. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure AD, **AzureChinaCloud**. | AzureCloud |
 | **DependencyFilesLocalPath** | For integrated systems only, your certificate .pfx file must be placed in this directory. For disconnected environments, download [mysql-connector-net-6.10.5.msi](https://dev.mysql.com/get/Downloads/Connector-Net/mysql-connector-net-6.10.5.msi) to this directory. You can optionally copy one Windows Update MSU package here. | _Optional_ (_mandatory_ for integrated systems or disconnected environments) |
 | **DefaultSSLCertificatePassword** | The password for the .pfx certificate. | _Required_ |
-| **MaxRetryCount** | The number of times you want to retry each operation if there is a failure.| 2 |
+| **MaxRetryCount** | The number of times you want to retry each operation if there's a failure.| 2 |
 | **RetryDuration** | The timeout interval between retries, in seconds. | 120 |
 | **Uninstall** | Removes the resource provider and all associated resources (see the following notes). | No |
 | **DebugMode** | Prevents automatic cleanup on failure. | No |
@@ -113,7 +113,7 @@ Install-Module -Name AzureStack -RequiredVersion 1.6.0
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"  
 
-# For integrated systems, use the IP address of one of the ERCS virtual machines.
+# For integrated systems, use the IP address of one of the ERCS VMs.
 $privilegedEndpoint = "AzS-ERCS01"
 
 # Provide the Azure environment used for deploying Azure Stack. Required only for Azure AD deployments. Supported environment names are AzureCloud, AzureUSGovernment, or AzureChinaCloud. 
@@ -127,7 +127,7 @@ $serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# Set the credentials for the new resource provider VM local administrator account
+# Set the credentials for the new resource provider VM local admin account
 $vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("mysqlrpadmin", $vmLocalAdminPass)
 
@@ -142,7 +142,7 @@ Clear-AzureRMContext -Scope Process -Force
 # Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
-# Change to the directory folder where you extracted the installation files. Do not provide a certificate on ASDK!
+# Change to the directory folder where you extracted the installation files. Don't provide a certificate on ASDK!
 . $tempDir\DeployMySQLProvider.ps1 `
     -AzCredential $AdminCreds `
     -VMLocalCredential $vmLocalAdminCreds `
@@ -159,11 +159,11 @@ When the resource provider installation script finishes, refresh your browser to
 
 ## Verify the deployment by using the Azure Stack portal
 
-1. Sign in to the admin portal as the service administrator.
-2. Select **Resource Groups**
+1. Sign in to the administrator portal as the service admin.
+2. Select **Resource Groups**.
 3. Select the **system.\<location\>.mysqladapter** resource group.
 4. On the summary page for Resource group Overview, there should be no failed deployments.
-5. Finally, select **Virtual machines** in the admin portal to verify that the MySQL resource provider VM was successfully created and is running.
+5. Finally, select **Virtual machines** in the administrator portal to verify that the MySQL resource provider VM was successfully created and is running.
 
 ## Next steps
 

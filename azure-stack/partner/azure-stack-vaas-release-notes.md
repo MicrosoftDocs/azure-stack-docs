@@ -11,10 +11,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 06/10/2019
 
 ---
 
@@ -26,18 +26,25 @@ This article has the release notes for Azure Stack Validation as a Service.
 
 ## Version 4.0.5
 
+2019 June 7
+
+- Cloud Simulation Engine in the Package Validation workflow has been updated to expedite validation time:  
+    Run time: Reduced to 6 hours  
+    Version: 5.1.13.0 -> 5.1.22.0  
+
+
 2019 January 17
 
 - Disk Identification Test updated to address storage pool inconsistencies. Version: 5.1.14.0 -> 5.1.15.0
 - Azure Stack Monthly Update Verification updated to address approved software and content validation inconsistencies. Version: 5.1.14.0 -> 5.1.17.0
-- OEM Extension Package Verification updated to do perform necessary checks before the Azure Stack update step. Version: 5.1.14.0 -> 5.1.16.0
+- OEM Extension Package Verification updated to perform necessary checks before the Azure Stack update step. Version: 5.1.14.0 -> 5.1.16.0
 - Internal bug fixes
 
 ## Version 4.0.2
 
 2019 January 7
 
-If you are running the Azure Stack Monthly Update Verification workflow and the version for your OEM update package is not 1810 or higher, you will receive an error once you get to the OEM update step. This is a bug. A fix is being developed.The mitigation steps are as follows:
+If you are running the Azure Stack Monthly Update Verification workflow and the version for your OEM update package is not 1810 or higher, you will receive an error once you get to the OEM update step. This is a bug. A fix is being developed. The mitigation steps are as follows:
 
 1. Run the OEM update as normal.
 2. Execute Test-AzureStack after successful application of the package and save the output.

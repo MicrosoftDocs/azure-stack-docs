@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 06/10/2019
 ms.author: patricka
 ms.reviewer: jerskine
-ms.lastreviewed: 01/28/2019
+ms.lastreviewed: 06/10/2019
 
 ---
 
@@ -87,7 +87,7 @@ You need at least one of the following forms of metadata:
     Invoke-AzsADFSValidation Completed
     ```
 
-In production environments, testing certificate chains of trust from an operator's workstation isn't fully indicative of the PKI trust posture in the Azure Stack infrastructure. The Azure Stack stamp’s public VIP network needs the connectivity to the CRL for the PKI infrastructure.
+In production environments, testing certificate chains of trust from an operator's workstation isn't fully indicative of the PKI trust posture in the Azure Stack infrastructure. The Azure Stack stamp's public VIP network needs the connectivity to the CRL for the PKI infrastructure.
 
 ## Report and log file
 

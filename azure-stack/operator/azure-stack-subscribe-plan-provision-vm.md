@@ -1,22 +1,15 @@
 ---
-title: Subscribe to an offer in Azure Stack | Microsoft Docs
+title: Subscribe to an offer in Azure Stack 
 description: Create subscriptions for offers in Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: bryanla
 manager: femila
-editor: ''
-
-ms.assetid: 7f3f8683-ef09-4838-92ed-41f2fddbbbed
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/09/2019
-ms.author: efemmano
-ms.lastreviewed: 01/09/2019
-
+ms.date: 10/05/2019
+ms.author: bryanla
+ms.lastreviewed: 05/10/2019
 ---
 # Create subscriptions to offers in Azure Stack
 
@@ -29,27 +22,27 @@ After you [create an offer](azure-stack-create-offer.md), users need a subscript
 
 ## Create a subscription as a cloud operator
 
-Cloud operators can use the admin portal to create a subscription to an offer for a user. You can create subscriptions for members of your own directory tenant. When [multi-tenancy](azure-stack-enable-multitenancy.md) is enabled, you can also create subscriptions for users in additional directory tenants.
+Cloud operators use the administrator portal to create a subscription to an offer for a user. Subscriptions can be created for members of your own directory tenant. When [multi-tenancy](azure-stack-enable-multitenancy.md) is enabled, you can also create subscriptions for users in additional directory tenants.
 
 If don't want your tenants to create their own subscriptions, make your offers private, and then create subscriptions for your tenants. This approach is common when integrating Azure Stack with external billing or service catalog systems.
 
-After you create a subscription for a user, they can sign in to the user portal and see that they are subscribed to the offer.  
+After you create a subscription for a user, they can sign in to the user portal and see that they're subscribed to the offer.  
 
 ### To create a subscription for a user
 
 1. In the Admin portal, go to **User subscriptions.**
 2. Select **Add**. Under **New user subscription**, enter the following information:  
 
-   - **Display name** – A friendly name for identifying the subscription that appears as the *User subscription name*.
-   - **User** – Specify a user from an available directory tenant for this subscription. The user name appears as *Owner*.  The format of the user name depends on your identity solution. For example:
+   - **Display name** - A friendly name for identifying the subscription that appears as the *User subscription name*.
+   - **User** - Specify a user from an available directory tenant for this subscription. The user name appears as *Owner*.  The format of the user name depends on your identity solution. For example:
 
      - **Azure AD:** `<user1>@<contoso.onmicrosoft.com>`
 
      - **AD FS:** `<user1>@<azurestack.local>`
 
-   - **Directory tenant** –  Select the directory tenant where the user account belongs. If you haven't enabled multi-tenancy, only your local directory tenant is available.
+   - **Directory tenant** -  Select the directory tenant where the user account belongs. If you haven't enabled multi-tenancy, only your local directory tenant is available.
 
-3. Select **Offer**. Under **Offers**, choose an **Offer** for this subscription. Because you're creating the subscription for a user, select **Private** as the Accessibility state.
+3. Select **Offer**. Under **Offers**, choose an **Offer** for this subscription. Because you're creating the subscription for a user, select **Private** as the accessibility state.
 
 4. Select **Create** to create the subscription. The new subscription appears under **User subscription**. When the user signs in to the user portal, they can see the subscription details.
 
@@ -84,16 +77,18 @@ As a user, you can sign in to the user portal to locate and subscribe to public 
 
 4. To see the subscription you created, select **All services** and then under the **GENERAL** category select **Subscriptions**. Select the subscription to see the subscription details.  
 
-### To subscribe to an add-on plan
+### To enable an add-on plan in your subscription
 
-If an offer has an add-on plan, you can add that plan to your subscription at any time.  
+If the offer you subscribe to has an add-on plan, you can add that plan to your subscription at any time.  
 
-1. In the user portal, select **All services**. Next, under the **GENERAL** category, select **Subscriptions**, and then select the subscription that you want change. If there are any add-on plans available, **+Add plan** is active and there is a tile for **Add-on plans**. 
+1. In the user portal, select **All services**. Next, under the **GENERAL** category, select **Subscriptions**, and then select the subscription that you want change. If there are add-on plans available, **+ Add plan** is active and shows a tile for **Add-on plans**.
 
-   If **+Add plan** is not active, then there are no add-on plans for the offer associated with that subscription.
+   If **+ Add plan** is not active, then there are no add-on plans for the offer associated with that subscription.
 
-1. Select **+Add plan** or the **Add-on plans** tile. Under **Add-on plans**, select the plan you want to add.
+1. Select **+ Add plan** or the **Add-on plans** tile. Under **Add-on plans**, select the plan you want to add.
 
 ## Next steps
 
-- [Provision a virtual machine](../user/azure-stack-create-vm-template.md)
+Learn more about how a user can now deploy resources into their subscription: 
+  - [Several user quickstarts](../user/azure-stack-quick-windows-portal.md) show how to provision Windows and Linux virtual machines using PowerShell, Azure CLI, and the user portal. 
+  - [A tutorial that uses an Azure Resource Manager template](../user/azure-stack-create-vm-template.md) shows how to deploy an Ubuntu 16.04 virtual machine running Minikube to manage kubenetes cluster. 

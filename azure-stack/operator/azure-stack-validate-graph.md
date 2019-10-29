@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 06/10/2019
 ms.author: patricka
 ms.reviewer: jerskine
-ms.lastreviewed: 01/28/2019
+ms.lastreviewed: 06/10/2019
 
 ---
 
@@ -92,7 +92,7 @@ The following prerequisites must be in place.
     Invoke-AzsGraphValidation Completed
     ```
 
-In production environments, testing network connectivity from an operator's workstation isn't fully indicative of the connectivity available to Azure Stack. The Azure Stack stamp’s public VIP network needs the connectivity for LDAP traffic to perform identity integration.
+In production environments, testing network connectivity from an operator's workstation isn't fully indicative of the connectivity available to Azure Stack. The Azure Stack stamp's public VIP network needs the connectivity for LDAP traffic to perform identity integration.
 
 ## Report and log file
 

@@ -1,61 +1,149 @@
 ### YamlMime:YamlDocument
+
 documentType: LandingData
+
 title: Azure Stack Operator Documentation
+
 metadata:
-  document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
-  title: Azure Stack Operator Documentation - Tutorials, API Reference
-  description: Learn how to use Azure Stack to deliver Azure services from your datacenter. Learn and demonstrate features from a Development Kit or an integrated systems environment.
+
+  title: Azure Stack Documentation - Tutorials, API Reference
+
+  meta.description: azure-stack
+
   services: azure-stack
-  author: jeffgilb
+
+  author: justinha  
+
   manager: femila
+
+  layout: LandingPage
+
+  ms.assetid: cbf798da-6f1a-7d4d-7707-5d5e02589e22
+
   ms.service: azure-stack
-  ms.tgt_pltfrm: na
-  ms.devlang: na
+
+  ms.tgt_pltfrm: from-team
+
+  ms.devlang: from-team
+
   ms.topic: landing-page
-  ms.date: 10/16/2018
-  ms.author: jeffgilb
+
+  ms.date: 07/09/2019
+
+  ms.author: justinha
+
 abstract:
+
   description: Microsoft Azure Stack is a hybrid cloud platform that lets you provide Azure services from your datacenter. Learn how to manage the Azure Stack integrated systems infrastructure and how to offer services with our quickstarts and tutorials.<br/><br/>If you're an Azure Stack user who uses services or builds apps for Azure Stack, see our <a href="/azure-stack/user">user documentation</a>.<br/><br/>If you are an Azure Stack operator interested in the Azure Stack Development Kit (ASDK), a single-node deployment of Azure Stack that you can download and use for free, see our <a href="/azure-stack/asdk">ASDK documentation</a>.
+
 sections:
-- title: Quickstart
-  items:
-  - type: paragraph
-    text: 'Set up your hardware and deploy the Azure Stack Development Kit.'
-  - type: list
-    style: icon48
-    items: 
-    - image: 
-        src: https://docs.microsoft.com/media/common/i_deploy.svg
-      text: Deploy Azure Stack Development Kit
-      href: ../asdk/asdk-download.md
-- title: Step-by-Step Tutorials
-  items:
-  - type: paragraph
-    text: 'Learn how to add services to your Azure Stack deployment.'
-  - type: list
-    style: ordered
+
+  - title: Getting started with Azure Stack
+
     items:
-    - html: <a href="/azure-stack/operator/azure-stack-tutorial-tenant-vm">Offer Virtual Machines on Azure Stack</a>
-    - html: <a href="/azure-stack/operator/azure-stack-tutorial-sql-server">Offer SQL Databases on Azure Stack</a>
-    - html: <a href="/azure-stack/operator/azure-stack-tutorial-sql">Create highly available SQL databases</a>
-    - html: <a href="/azure-stack/operator/azure-stack-tutorial-mysql">Create highly available MySQL databases</a>
-    - html: <a href="/azure-stack/operator/azure-stack-tutorial-app-service">Offer Web Apps on Azure Stack</a>
-- title: Free Pluralsight Video Training
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+
+    - type: list
+
+      style: cards
+
+      className: cardsA
+
+      items:  
+
+      - html: <a href="/azure-stack/operator/azure-stack-manage-portals">
+
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_portal.svg" alt="">
+
+              <br><b>Use the administration portal</b></a>
+
+              <p>Use the administration portal for day-to-day management and operations of Azure Stack.</p>
+
+      - html: <a href="/azure-stack/operator/azure-stack-powershell-install">
+
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
+
+              <br><b>Azure Stack PowerShell</b></a>
+
+              <p>Easily manage your Azure Stack resources from PowerShell.</p>
+
+      - html: <a href="/azure-stack/operator/azure-stack-capacity-planning-overview">
+
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_load-testing.svg" alt="">
+
+              <br><b>Capacity planning</b></a>
+
+              <p>See how different compute resource allocations fit across a selection of hardware offerings.</p>
+
+  - title: Offering Azure Stack services
+
     items:
-    - title: Learn the fundamentals of Azure Stack
-      href: https://www.pluralsight.com/courses/microsoft-azure-stack-big-picture?twoid=26658a98-62ff-48e5-aa5f-2741523aea54
-      image: 
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/microsoft-azure-stack-big-picture?twoid=26658a98-62ff-48e5-aa5f-2741523aea54
-- title: Reference
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+
+    - type: list
+
+      style: cards
+
+      className: cardsA
+
+      items:  
+
+      - html: <a href="/azure-stack/operator/azure-stack-sql-resource-provider">
+
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_SQL.svg" alt="hybrid cloud app ci/cd">
+
+              <br><b>Offer SQL as PaaS</b></a>
+
+              <p>Use the SQL Server resource provider to offer SQL databases as a service of Azure Stack.</p>
+
+      - html: <a href="/azure-stack/operator/azure-stack-mysql-resource-provider">
+
+              <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_mysql.svg" alt="hybrid cloud app identity">
+
+              <br><b>Offer MySQL as PaaS</b></a>
+
+              <p>Use the MySQL resource provider to offer MySQL databases as a service of Azure Stack.</p>
+
+      - html: <a href="/azure-stack/operator/azure-stack-app-service-overview">
+
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_web-apps.svg" alt="hybrid cloud app scaling">
+
+              <br><b>Offer Azure App Service as PaaS</b></a>
+
+              <p>Help users create web applications and APIs for any platform or device.</p>
+
+  - title: Managing Azure Stack
+
     items:
-    - title: Command-Line
-      html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p>
+
+    - type: list
+
+      style: cards
+
+      className: cardsA
+
+      items:  
+
+      - html: <a href="/azure-stack/operator/azure-stack-updates">
+
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_upgrade.svg" alt="">
+
+              <br><b>Update Azure Stack</b></a>
+
+              <p>Microsoft bundles a single package each month to keep Azure Stack integrated systems up-to-date. </p>
+
+      - html: <a href="/azure-stack/operator/azure-stack-backup-infrastructure-backup">
+
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_usb.svg" alt="">
+
+              <br><b>Back up Azure Stack</b></a>
+
+              <p>Back up and restore configuration and service data using the Infrastructure Backup Service.</p>
+
+      - html: <a href="/azure-stack/operator/azure-stack-security-configuration">
+
+              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_cloud-security.svg" alt="">
+
+              <br><b>Configure Azure Stack security</b></a>
+
+              <p>Azure Stack is designed to defend against modern threats and meet compliance standards.</p>
+
+  

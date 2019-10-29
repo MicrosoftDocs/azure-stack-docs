@@ -1,6 +1,6 @@
 ---
-title: Create a Windows Server virtual machine by using PowerShell in Azure Stack | Microsoft Docs
-description: Create a Windows Server virtual machine with PowerShell in Azure Stack.
+title: Create a Windows Server VM by using PowerShell in Azure Stack | Microsoft Docs
+description: Create a Windows Server VM with PowerShell in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 04/09/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.reviewer: kivenkat
@@ -20,7 +20,7 @@ ms.lastreviewed: 01/14/2019
 
 ---
 
-# Quickstart: Create a Windows Server virtual machine by using PowerShell in Azure Stack
+# Quickstart: Create a Windows Server VM by using PowerShell in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -39,11 +39,14 @@ You can create a Windows Server 2016 virtual machine (VM) by using Azure Stack P
 
 * Azure Stack requires a specific version of Azure PowerShell to create and manage the resources. If you don't have PowerShell configured for Azure Stack, follow the steps to [install](../operator/azure-stack-powershell-install.md) PowerShell.
 
-* With the Azure Stack PowerShell set up, you will need to connect to your Azure Stack environment. For instruction, see [Connect to Azure Stack with PowerShell as a user](azure-stack-powershell-configure-user.md).
+* With the Azure Stack PowerShell set up, you'll need to connect to your Azure Stack environment. For instruction, see [Connect to Azure Stack with PowerShell as a user](azure-stack-powershell-configure-user.md).
 
 ## Create a resource group
 
-A resource group is a logical container into which Azure Stack resources are deployed and managed. From your development kit or the Azure Stack integrated system, run the following code block to create a resource group. Values are assigned for all the variables in this document, you can use these values or assign new values.
+A resource group is a logical container into which Azure Stack resources are deployed and managed. From your development kit or the Azure Stack integrated system, run the following code block to create a resource group. 
+
+> [!NOTE]
+> Values are assigned for all variables in the code examples. However, you can assign new values if you want to.
 
 ```powershell
 # Create variables to store the location and resource group names.
@@ -57,7 +60,7 @@ New-AzureRmResourceGroup `
 
 ## Create storage resources
 
-Create a storage account, and a storage container to store the Windows Server 2016 image.
+Create a storage account and a storage container to store the Windows Server 2016 image.
 
 ```powershell
 # Create variables to store the storage account name and the storage account SKU information
@@ -79,7 +82,7 @@ Set-AzureRmCurrentStorageAccount `
 
 ## Create networking resources
 
-Create a virtual network, subnet, and a public IP address. These resources are used to provide network connectivity to the virtual machine.
+Create a virtual network, subnet, and a public IP address. These resources are used to provide network connectivity to the VM.
 
 ```powershell
 # Create a subnet configuration
@@ -106,7 +109,7 @@ $pip = New-AzureRmPublicIpAddress `
 
 ### Create a network security group and a network security group rule
 
-The network security group secures the virtual machine by using inbound and outbound rules. Lets create an inbound rule for port 3389 to allow incoming Remote Desktop connections and an inbound rule for port 80 to allow incoming web traffic.
+The network security group secures the VM by using inbound and outbound rules. Let's create an inbound rule for port 3389 to allow incoming Remote Desktop connections and an inbound rule for port 80 to allow incoming web traffic.
 
 ```powershell
 # Create an inbound network security group rule for port 3389
@@ -141,9 +144,9 @@ $nsg = New-AzureRmNetworkSecurityGroup `
   -SecurityRules $nsgRuleRDP,$nsgRuleWeb
 ```
 
-### Create a network card for the virtual machine
+### Create a network card for the VM
 
-The network card connects the virtual machine to a subnet, network security group, and public IP address.
+The network card connects the VM to a subnet, network security group, and public IP address.
 
 ```powershell
 # Create a virtual network card and associate it with public IP address and NSG
@@ -156,17 +159,17 @@ $nic = New-AzureRmNetworkInterface `
   -NetworkSecurityGroupId $nsg.Id
 ```
 
-## Create a virtual machine
+## Create a VM
 
-Create a virtual machine configuration. This configuration includes the settings used when deploying the virtual machine. For example: credentials, size,  and the virtual machine image.
+Create a VM configuration. This configuration includes the settings used when deploying the VM. For example: credentials, size,  and the VM image.
 
 ```powershell
-# Define a credential object to store the username and password for the virtual machine
+# Define a credential object to store the username and password for the VM
 $UserName='demouser'
 $Password='Password@123'| ConvertTo-SecureString -Force -AsPlainText
 $Credential=New-Object PSCredential($UserName,$Password)
 
-# Create the virtual machine configuration object
+# Create the VM configuration object
 $VmName = "VirtualMachinelatest"
 $VmSize = "Standard_A1"
 $VirtualMachine = New-AzureRmVMConfig `
@@ -186,7 +189,7 @@ $VirtualMachine = Set-AzureRmVMSourceImage `
   -Skus "2016-Datacenter" `
   -Version "latest"
 
-# Sets the operating system disk properties on a virtual machine.
+# Sets the operating system disk properties on a VM.
 $VirtualMachine = Set-AzureRmVMOSDisk `
   -VM $VirtualMachine `
   -CreateOption FromImage | `
@@ -195,23 +198,23 @@ $VirtualMachine = Set-AzureRmVMOSDisk `
   Add-AzureRmVMNetworkInterface -Id $nic.Id
 
 
-# Create the virtual machine.
+# Create the VM.
 New-AzureRmVM `
   -ResourceGroupName $ResourceGroupName `
   -Location $location `
   -VM $VirtualMachine
 ```
 
-## Connect to the virtual machine
+## Connect to the VM
 
-To remote into the virtual machine that you created in the previous step, you need its public IP address. Run the following command to get the public IP address of the virtual machine:
+To remote into the VM that you created in the previous step, you need its public IP address. Run the following command to get the public IP address of the VM:
 
 ```powershell
 Get-AzureRmPublicIpAddress `
   -ResourceGroupName $ResourceGroupName | Select IpAddress
 ```
 
-Use the following command to create a Remote Desktop session with the virtual machine. Replace the IP address with the publicIPAddress of your virtual machine. When prompted, enter the username and password that you used when creating the virtual machine.
+Use the following command to create a Remote Desktop session with the VM. Replace the IP address with the *publicIPAddress* of your VM. When prompted, enter the username and password used when creating the VM.
 
 ```powershell
 mstsc /v <publicIpAddress>
@@ -219,7 +222,7 @@ mstsc /v <publicIpAddress>
 
 ## Install IIS via PowerShell
 
-Now that you have logged in to the Azure VM, you can use a single line of PowerShell to install IIS and enable the local firewall rule to allow web traffic. Open a PowerShell prompt and run the following command:
+Now that you have signed in to the Azure VM, you can use a single line of PowerShell to install IIS and enable the local firewall rule to allow web traffic. Open a PowerShell prompt and run the following command:
 
 ```powershell
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -227,13 +230,13 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 
 ## View the IIS welcome page
 
-With IIS installed, and with port 80 open on your VM, you can use a web browser of your choice to view the default IIS welcome page. Use the *publicIpAddress* you documented in the previous section to visit the default page.
+With IIS installed, and with port 80 open on your VM, you can use any browser to view the default IIS welcome page. Use the *publicIpAddress* you documented in the previous section to visit the default page.
 
 ![IIS default site](./media/azure-stack-quick-create-vm-windows-powershell/default-iis-website.png)
 
-## Delete the virtual machine
+## Delete the VM
 
-When no longer needed, use the following command to remove the resource group that contains the virtual machine and its related resources:
+When no longer needed, use the following command to remove the resource group that contains the VM and its related resources:
 
 ```powershell
 Remove-AzureRmResourceGroup `
@@ -242,4 +245,4 @@ Remove-AzureRmResourceGroup `
 
 ## Next steps
 
-In this quickstart, you’ve deployed a simple Windows virtual machine. To learn more about Azure Stack virtual machines, continue to [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md).
+In this quickstart, you've deployed a simple Windows VM. To learn more about Azure Stack VMs, continue to [Azure Stack VM features](azure-stack-vm-considerations.md).

@@ -3,7 +3,7 @@ title: Azure Stack SQL resource provider 1.1.30.0 release notes | Microsoft Docs
 description: Learn about what's in the latest Azure Stack SQL resource provider update, including any known issues and where to download it.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,8 +13,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2019
-ms.author: jeffgilb
+ms.date: 10/02/2019
+ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
 ---
@@ -47,9 +47,9 @@ This version of the Azure Stack SQL resource provider includes the following imp
 
 - **SQL resource provider Azure Stack PowerShell compatibility**. The SQL resource provider has been updated to work with the Azure Stack 2018-03-01-hybrid PowerShell profile and to provide compatibility with AzureRM 1.3.0 and later.
 
-- **SQL login change password blade**. Fixed an issue where the password can’t be changed on the change password blade. Removed links from password change notifications.
+- **SQL login change password blade**. Fixed an issue where the password can't be changed on the change password blade. Removed links from password change notifications.
 
-- **SQL hosting server settings blade update**. Fixed an issue where the settings blade was incorrectly titled as “Password”.
+- **SQL hosting server settings blade update**. Fixed an issue where the settings blade was incorrectly titled as "Password".
 
 ## Known issues 
 
@@ -78,7 +78,7 @@ This version of the Azure Stack SQL resource provider includes the following imp
     ```powershell
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     ```
-- **SQL resource provider fails to add SQL Server Always On listener**. When using the listener IP address of the SQL Server Always On Listener, the SQL resource provider VM cannot resolve the listener’s host name.
+- **SQL resource provider fails to add SQL Server Always On listener**. When using the listener IP address of the SQL Server Always On Listener, the SQL resource provider VM cannot resolve the listener's host name.
 
     **Workaround**: Ensure that DNS works correctly to resolve the listener IP to listener host name.
     

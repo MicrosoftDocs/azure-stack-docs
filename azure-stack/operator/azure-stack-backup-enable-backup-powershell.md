@@ -1,9 +1,9 @@
 ---
-title: Enable Backup for Azure Stack with PowerShell | Microsoft Docs
-description: Enable the Infrastructure Backup Service with Windows PowerShell so that Azure Stack can be restored if there is a failure. 
+title: Enable backup for Azure Stack with PowerShell | Microsoft Docs
+description: Learn how to enable the Infrastructure Backup Service with PowerShell so that Azure Stack can be restored if there's a failure. 
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: justinha
 manager: femila
 editor: ''
 
@@ -12,8 +12,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
-ms.author: jeffgilb
+ms.date: 04/25/2019
+ms.author: justinha
 ms.reviewer: hectorl
 ms.lastreviewed: 03/14/2019
 
@@ -22,13 +22,13 @@ ms.lastreviewed: 03/14/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Enable the Infrastructure Backup Service with Windows PowerShell so take periodic backups of:
- - Internal identity service and root certificate
- - User plans, offers, subscriptions
- - Compute, storage, and network user quotas
- - User Key vault secrets
- - User RBAC roles and policies
- - User storage accounts
+Enable the Infrastructure Backup Service with Windows PowerShell to take periodic backups of:
+ - Internal identity service and root certificate.
+ - User plans, offers, subscriptions.
+ - Compute, storage, and network user quotas.
+ - User Key Vault secrets.
+ - User RBAC roles and policies.
+ - User storage accounts.
 
 You can access the PowerShell cmdlets to enable backup, start backup, and get backup information via the operator management endpoint.
 
@@ -42,16 +42,16 @@ In the same PowerShell session, edit the following PowerShell script by adding t
 
 | Variable        | Description   |
 |---              |---                                        |
-| $username       | Type the **Username** using the domain and username for the shared drive location with sufficient access to read and write files. For example, `Contoso\backupshareuser`. |
-| $password       | Type the **Password** for the user. |
-| $sharepath      | Type the path to the **Backup storage location**. You must use a Universal Naming Convention (UNC) string for the path to a file share hosted on a separate device. A UNC string specifies the location of resources such as shared files or devices. To ensure availability of the backup data, the  device should be in a separate location. |
-| $frequencyInHours | The frequency in hours determines how often backups are created. The default value is 12. Scheduler supports a maximum of 12 and a minimum of 4.|
-| $retentionPeriodInDays | The retention period in days determines how many days of backups are preserved on the external location. The default value is 7. Scheduler supports a maximum of 14 and a minimum of 2. Backups older than the retention period get automatically deleted from the external location.|
-| $encryptioncertpath | Applies to 1901 and beyond.  Parameter is available in Azure Stack Module version 1.7 and beyond. The encryption certificate path specifies the file path to the .CER file with public key used for data encryption. |
-| $encryptionkey | Applied to build 1811 or earlier. Parameter is available in Azure Stack Module version 1.6 or earlier. The encryption key used for data encryption. Use the [New-AzsEncryptionKeyBase64](https://docs.microsoft.com/powershell/module/azs.backup.admin/new-azsencryptionkeybase64) cmdlet to generate a new key. |
+| `$username`       | Type the **Username** using the domain and username for the shared drive location with sufficient access to read and write files. For example, `Contoso\backupshareuser`. |
+| `$password`       | Type the **Password** for the user. |
+| `$sharepath`      | Type the path to the **Backup storage location**. You must use a Universal Naming Convention (UNC) string for the path to a file share hosted on a separate device. A UNC string specifies the location of resources such as shared files or devices. To ensure availability of the backup data, the device should be in a separate location. |
+| `$frequencyInHours` | The frequency in hours determines how often backups are created. The default value is 12. Scheduler supports a maximum of 12 and a minimum of 4.|
+| `$retentionPeriodInDays` | The retention period in days determines how many days of backups are preserved on the external location. The default value is 7. Scheduler supports a maximum of 14 and a minimum of 2. Backups older than the retention period get automatically deleted from the external location.|
+| `$encryptioncertpath` | Applies to 1901 and later. Parameter is available in Azure Stack Module version 1.7 and later. The encryption certificate path specifies the file path to the .CER file with public key used for data encryption. |
+| `$encryptionkey` | Applies to build 1811 or earlier. Parameter is available in Azure Stack Module version 1.6 or earlier. The encryption key is used for data encryption. Use the [New-AzsEncryptionKeyBase64](https://docs.microsoft.com/powershell/module/azs.backup.admin/new-azsencryptionkeybase64) cmdlet to generate a new key. |
 |     |     |
 
-### Enable backup on 1901 and beyond using certificate
+### Enable backup on 1901 and later using certificate
 ```powershell
 	# Example username:
  	$username = "domain\backupadmin"
@@ -69,7 +69,7 @@ In the same PowerShell session, edit the following PowerShell script by adding t
 
 	New-Item -Path "C:\" -Name "Certs" -ItemType "Directory" 
 
-	#make sure to export the PFX format of the certificate with the public and private keys and then delete the certifcate from the local certificate store of the machine where you created the certificate
+	#make sure to export the PFX format of the certificate with the public and private keys and then delete the certificate from the local certificate store of the machine where you created the certificate
 	
 	Export-Certificate `
     	-Cert $cert `
@@ -137,14 +137,14 @@ The result should look like the following example output:
    ```
 
 ### Azure Stack PowerShell 
-The PowerShell cmdlet to configure infrastructure backup is Set-AzsBackupConfiguration. In previous releases, the cmdlet was Set-AzsBackupShare. This cmdlet requires providing a certificate. If infrastructure backup is configured with an encryption key, you cannot update the encryption key or view the property. You will need to use version 1.6 of the Admin PowerShell. 
+The PowerShell cmdlet to configure infrastructure backup is Set-AzsBackupConfiguration. In previous releases, the cmdlet was Set-AzsBackupShare. This cmdlet requires providing a certificate. If infrastructure backup is configured with an encryption key, you can't update the encryption key or view the property. You need to use version 1.6 of the Admin PowerShell.
 
-If infrastructure backup was configured before updating to 1901, you can use version 1.6 of the Admin PowerShell to set and view the encryption key. Version 1.6 will not allow you to update from encryption key to a certificate file.
-Refer to [Install Azure Stack PowerShell](azure-stack-powershell-install.md) for more information on installing the correct version of the module. 
+If infrastructure backup was configured before updating to 1901, you can use version 1.6 of the admin PowerShell to set and view the encryption key. Version 1.6 won't allow you to update from encryption key to a certificate file.
+Refer to [Install Azure Stack PowerShell](azure-stack-powershell-install.md) for more info on installing the correct version of the module.
 
 
 ## Next steps
 
-Learn to run a backup, see [Back up Azure Stack](azure-stack-backup-back-up-azure-stack.md)
+Learn to run a backup, see [Back up Azure Stack](azure-stack-backup-back-up-azure-stack.md).
 
-Learn to verify that your backup ran, see [Confirm backup completed in administration portal](azure-stack-backup-back-up-azure-stack.md)
+Learn to verify that your backup ran, see [Confirm backup completed in administration portal](azure-stack-backup-back-up-azure-stack.md).

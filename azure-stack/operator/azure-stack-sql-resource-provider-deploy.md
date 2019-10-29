@@ -3,7 +3,7 @@ title: Using SQL databases on Azure Stack | Microsoft Docs
 description: Learn how you can deploy SQL databases as a service on Azure Stack and the quick steps to deploy the SQL Server resource provider adapter.
 services: azure-stack
 documentationCenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -12,9 +12,9 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2019
+ms.date: 10/02/2019
 ms.lastreviewed: 03/18/2019
-ms.author: jeffgilb
+ms.author: mabrigg
 ms.reviewer: jiahan
 ---
 
@@ -37,8 +37,8 @@ There are several prerequisites that need to be in place before you can deploy t
   |Minimum Azure Stack version|SQL RP version|
   |-----|-----|
   |Version 1808 (1.1808.0.97)|[SQL RP version 1.1.33.0](https://aka.ms/azurestacksqlrp11330)|  
-  |Version 1808 (1.1808.0.97)|[SQL RP version 1.1.30.0](https://aka.ms/azurestacksqlrp11300)|
-  |Version 1804 (1.0.180513.1)|[SQL RP version 1.1.24.0](https://aka.ms/azurestacksqlrp11240)
+  |Version 1808 (1.1808.0.97)|[SQL RP version 1.1.30.0](https://aka.ms/azurestacksqlrp11300)|  
+  |Version 1804 (1.0.180513.1)|[SQL RP version 1.1.24.0](https://aka.ms/azurestacksqlrp11240)  
   |     |     |
 
 - Ensure datacenter integration prerequisites are met:
@@ -46,8 +46,8 @@ There are several prerequisites that need to be in place before you can deploy t
     |Prerequisite|Reference|
     |-----|-----|
     |Conditional DNS forwarding is set correctly.|[Azure Stack datacenter integration - DNS](azure-stack-integrate-dns.md)|
-    |Inbound ports for resource providers are open.|[Azure Stack datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
-    |PKI certificate subject and SAN are set correctly.|[Azure Stack deployment mandatory PKI prerequisites](azure-stack-pki-certs.md#mandatory-certificates)[Azure Stack deployment PaaS certificate prerequisites](azure-stack-pki-certs.md#optional-paas-certificates)|
+    |Inbound ports for resource providers are open.|[Azure Stack datacenter integration - Ports and protocols inbound](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
+    |PKI certificate subject and SAN are set correctly.|[Azure Stack deployment mandatory PKI prerequisites](azure-stack-pki-certs.md#mandatory-certificates)<br>[Azure Stack deployment PaaS certificate prerequisites](azure-stack-pki-certs.md#optional-paas-certificates)|
     |     |     |
 
 ### Certificates
@@ -103,7 +103,7 @@ Change the default account information and passwords as needed for your Azure St
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
 # Note that this might not be the most currently available version of Azure Stack PowerShell
-Install-Module -Name AzureRm.BootStrapper -Force
+Install-Module -Name AzureRm.BootStrapper -RequiredVersion 0.5.0 -Force
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
 Install-Module -Name AzureStack -RequiredVersion 1.6.0
 

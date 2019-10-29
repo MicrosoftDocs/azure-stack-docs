@@ -3,18 +3,19 @@ title: Use Azure Resource Manager templates in Azure Stack | Microsoft Docs
 description: Learn how to use Azure Resource Manager templates in Azure Stack to provision resources.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 editor: ''
 
 ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
 ms.service: azure-stack
+
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2019
-ms.author: sethm
+ms.date: 10/07/2019
+ms.author: mabrigg
 ms.reviewer: justini
 ms.lastreviewed: 11/14/2018
 
@@ -27,18 +28,18 @@ You can use Azure Resource Manager templates to deploy and provision all the res
 
 These templates can be deployed with the Microsoft Azure Stack portal, PowerShell, the command line, and Visual Studio.
 
-The following quickstart templates are available on [GitHub](https://aka.ms/azurestackgithub):
+The following quickstart templates are [available on GitHub](https://aka.ms/azurestackgithub):
 
 ## Deploy SharePoint Server (non-high-availability deployment)
 
-Use the PowerShell DSC extension to [create a SharePoint Server 2013 farm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) that includes the following resources:
+Use the PowerShell [Desired State Configuration](/powershell/dsc/overview/overview) (DSC) extension to [create a SharePoint Server 2013 farm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) that includes the following resources:
 
 * A virtual network
 * Three storage accounts
 * Two external load balancers
 * One virtual machine (VM) configured as a domain controller for a new forest with a single domain
 * One VM configured as a SQL Server 2014 stand-alone server
-* One VM configured as a one machine SharePoint Server 2013 farm
+* One VM configured as a one-machine SharePoint Server 2013 farm
 
 ## Deploy AD (non-high-availability-deployment)
 
@@ -73,9 +74,11 @@ Use the PowerShell DSC extension to configure an existing virtual machine Local 
 
 ## Cancel a running template deployment
 
-To cancel a running template deployment, use the [Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell cmdlet.
+To cancel a running template deployment, use the [Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell [cmdlet](/powershell/developer/cmdlet/cmdlet-overview).
 
 ## Next steps
 
 * [Deploy templates with the portal](azure-stack-deploy-template-portal.md)
+* [Deploy templates with PowerShell](azure-stack-deploy-template-powershell.md)
+* [Deploy templates with Visual Studio](azure-stack-deploy-template-visual-studio.md)
 * [Azure Resource Manager overview](/azure/azure-resource-manager/resource-group-overview)

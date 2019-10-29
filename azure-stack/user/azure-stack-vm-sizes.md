@@ -1,6 +1,6 @@
 ---
-title: Virtual Machine sizes supported in Azure Stack | Microsoft Docs
-description: Reference for the supported Virtual machine sizes in Azure Stack.
+title: VM sizes supported in Azure Stack | Microsoft Docs
+description: Reference for the supported VM sizes in Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,44 +11,44 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 07/23/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/11/2019
 
 ---
 
-# Virtual machine sizes supported in Azure Stack
+# VM sizes supported in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-This article lists the virtual machine sizes that are available in Azure Stack.
+This article lists the virtual machine (VM) sizes that are available in Azure Stack.
 
-Disk IOPS (Input/Output Operations Per Second) on Azure Stack is a function of virtual machine (VM) size instead of the disk type. This means that for a Standard_Fs series VM, regardless of whether you choose SSD or HDD for the disk type, the IOPS limit for a single additional data disk is 2300 IOPS. The IOPS limits imposed is a cap (maximum possible) to prevent noisy neighbors. It is not an assurance of IOPS that you will get on a specific VM size.
+Disk IOPS (Input/Output Operations Per Second) on Azure Stack is a function of VM size instead of the disk type. This means that for a Standard_Fs series VM, regardless of whether you choose SSD or HDD for the disk type, the IOPS limit for a single additional data disk is 2300 IOPS. The IOPS limits imposed is a cap (maximum possible) to prevent noisy neighbors. It isn't an assurance of IOPS that you'll get on a specific VM size.
 
-## Virtual machine general purpose
+## VM general purpose
 
-General-purpose VM sizes provide a balanced CPU-to-memory ratio. They are used for testing and development, small to medium databases, and low to medium traffic web servers. Each data disk is 2300 IOPS for the premium VM sizes, except for the Basic A series. For Basic A, the data disk size is 500 IOPS.
+General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used for testing and development, small to medium databases, and low to medium traffic web servers. Each data disk is 2300 IOPS for the premium VM sizes, except for the Basic A series. For Basic A, the data disk size is 500 IOPS.
 
 ### Basic A
 
 > [!NOTE]
-> *Basic A* virtual machine sizes are retired for [creating virtual machine scale sets](../operator/azure-stack-compute-add-scalesets.md) (VMSS) through the portal. To create a VMSS with this size, use PowerShell or a template.
+> *Basic A* VM sizes are retired for [creating virtual machine scale sets](../operator/azure-stack-compute-add-scalesets.md) (VMSS) through the portal. To create a VMSS with this size, use PowerShell or a template.
 
 |Size - Size\Name |vCPU     |Memory | Max temporary disk size | Max OS disk throughput: (IOPS) | Max temp storage throughput (IOPS) | Max data disk throughput (IOPS) | Max NICs |    
 |-----------------|-----|---------|---------|-----|------|-----------|----|
-|**A0\Basic_A0**  |1    |768 MB   | 20 GB   |300  | 300  |1 / 1x300  |1   |
-|**A1\Basic_A1**  |1    |1.75 GB  | 40 GB   |300  | 300  |2 / 2x300  |1   |
-|**A2\Basic_A2**  |2    |3.5 GB   | 60 GB   |300  | 300  |4 / 4x300  |1   |
-|**A3\Basic_A3**  |4    |7 GB     | 120 GB  |300  | 300  |8 / 8x300  |1   |
-|**A4\Basic_A4**  |8    |14 GB    | 240 GB  |300  | 300  |16 / 16X300 |1   |
+|**A0\Basic_A0**  |1    |768 MB   | 20 GB   |300  | 300  |1 / 1x300  |2   |
+|**A1\Basic_A1**  |1    |1.75 GB  | 40 GB   |300  | 300  |2 / 2x300  |2   |
+|**A2\Basic_A2**  |2    |3.5 GB   | 60 GB   |300  | 300  |4 / 4x300  |2   |
+|**A3\Basic_A3**  |4    |7 GB     | 120 GB  |300  | 300  |8 / 8x300  |2   |
+|**A4\Basic_A4**  |8    |14 GB    | 240 GB  |300  | 300  |16 / 16X300 |2   |
 
 ### Standard A 
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |    
 |----------------|--|------|----|----|----|-------|---------|
-|**Standard_A0** |1 |0.768 |20  |500 |500 |1x500  |1 |
-|**Standard_A1** |1 |1.75  |70  |500 |500 |2x500  |1 |
-|**Standard_A2** |2 |3.5   |135 |500 |500 |4x500  |1 |
+|**Standard_A0** |1 |0.768 |20  |500 |500 |1x500  |2 |
+|**Standard_A1** |1 |1.75  |70  |500 |500 |2x500  |2 |
+|**Standard_A2** |2 |3.5   |135 |500 |500 |4x500  |2 |
 |**Standard_A3** |4 |7     |285 |500 |500 |8x500  |2 |
 |**Standard_A4** |8 |14    |605 |500 |500 |16x500 |4 |
 |**Standard_A5** |2 |14    |135 |500 |500 |4x500  |2 |
@@ -71,7 +71,7 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They are used f
 ### D-series
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |----------------|----|----|-----|----|------|------------|---------|
-|**Standard_D1** |1   |3.5 |50   |500 |3000  |4 / 4x500   |1 |
+|**Standard_D1** |1   |3.5 |50   |500 |3000  |4 / 4x500   |2 |
 |**Standard_D2** |2   |7   |100  |500 |6000  |8 / 8x500   |2 |
 |**Standard_D3** |4   |14  |200  |500 |12000 |16 / 16x500 |4 |
 |**Standard_D4** |8   |28  |400  |500 |24000 |32 / 32x500 |8 |
@@ -80,7 +80,7 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They are used f
 ### DS-series
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |-----------------|----|----|-----|-----|------|-------------|---------|
-|**Standard_DS1** |1   |3.5 |7    |1000 |4000  |4 / 4x2300   |1 |
+|**Standard_DS1** |1   |3.5 |7    |1000 |4000  |4 / 4x2300   |2 |
 |**Standard_DS2** |2   |7   |14   |1000 |8000  |8 / 8x2300   |2 |
 |**Standard_DS3** |4   |14  |28   |1000 |16000 |16 / 16x2300 |4 |
 |**Standard_DS4** |8   |28  |56   |1000 |32000 |32 / 32x2300 |8 |
@@ -88,7 +88,7 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They are used f
 ### Dv2-series
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |-------------------|----|----|-----|----|------|------------|---------|
-|**Standard_D1_v2** |1   |3.5 |50   |500 |3000  |4 / 4x500   |1 |
+|**Standard_D1_v2** |1   |3.5 |50   |500 |3000  |4 / 4x500   |2 |
 |**Standard_D2_v2** |2   |7   |100  |500 |6000  |8 / 8x500   |2 |
 |**Standard_D3_v2** |4   |14  |200  |500 |12000 |16 / 16x500 |4 |
 |**Standard_D4_v2** |8   |28  |400  |500 |24000 |32 / 32x500 |8 |
@@ -97,7 +97,7 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They are used f
 ### DSv2-series
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |--------------------|----|----|----|-----|------|-------------|---------|
-|**Standard_DS1_v2** |1   |3.5 |7   |1000 |4000  |4 / 4x2300   |1 |
+|**Standard_DS1_v2** |1   |3.5 |7   |1000 |4000  |4 / 4x2300   |2 |
 |**Standard_DS2_v2** |2   |7   |14  |1000 |8000  |8 / 8x2300   |2 |
 |**Standard_DS3_v2** |4   |14  |28  |1000 |16000 |16 / 16x2300 |4 |
 |**Standard_DS4_v2** |8   |28  |56  |1000 |32000 |32 / 32x2300 |8 |
@@ -135,9 +135,9 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They are used f
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |---------------------|----|----|-----|-----|-------|--------------|---------|
 |**Standard_F2s_v2**  |2   |4   |16   |1000 |4000   |4 / 4x2300    |2 |
-|**Standard_F4s_v2**  |4   |8   |32   |1000 |8000   |8 / 8x2300    |4 |
-|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16 / 16x2300  |8 |
-|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32 / 32x2300  |8 |
+|**Standard_F4s_v2**  |4   |8   |32   |1000 |8000   |8 / 8x2300    |2 |
+|**Standard_F8s_v2**  |8   |16  |64   |1000 |16000  |16 / 16x2300  |4 |
+|**Standard_F16s_v2** |16  |32  |128  |1000 |32000  |32 / 32x2300  |4 |
 |**Standard_F32s_v2** |32  |64  |256  |1000 |64000  |32 / 32x2300  |8 |
 |**Standard_F64s_v2** |64  |128 |512  |1000 |128000 |32 / 32x2300  |8 |
 
@@ -182,4 +182,4 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 
 ## Next steps
 
-[Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md)
+[Azure Stack VM features](azure-stack-vm-considerations.md)

@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/27/2019
+ms.date: 08/13/2019
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
@@ -23,7 +23,7 @@ ms.lastreviewed: 12/07/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-[Quotas](azure-stack-plan-offer-quota-overview.md#plans) define the limits of resources that a user subscription can provision or consume. For example, a quota might allow a user to create up to five VMs. Each resource can have its own types of quotas.
+[Quotas](service-plan-offer-subscription-overview.md#plans) define the limits of resources that a user subscription can provision or consume. For example, a quota might allow a user to create up to five VMs. Each resource can have its own types of quotas.
 
 > [!IMPORTANT]
 > It can take up to two hours for new quotas to be available in the user portal or before a changed quota is enforced.
@@ -56,12 +56,12 @@ ms.lastreviewed: 12/07/2018
 
 | **Item** | **Default value** | **Description** |
 | --- | --- | --- |
-| Maximum public IPs |50 |The maximum number of public IP addresses that a subscription can create in this location. |
 | Maximum virtual networks |50 |The maximum number of virtual networks that a subscription can create in this location. |
 | Maximum virtual network gateways |1 |The maximum number of virtual network gateways (VPN gateways) that a subscription can create in this location. |
 | Maximum network connections |2 |The maximum number of network connections (point-to-point or site-to-site) that a subscription can create across all virtual network gateways in this location. |
-| Maximum load balancers |50 |The maximum number of load balancers that a subscription can create in this location. |
+| Maximum public IPs |50 |The maximum number of public IP addresses that a subscription can create in this location. |
 | Maximum NICs |100 |The maximum number of network interfaces that a subscription can create in this location. |
+| Maximum load balancers |50 |The maximum number of load balancers that a subscription can create in this location. |
 | Maximum network security groups |50 |The maximum number of network security groups that a subscription can create in this location. |
 
 ## View an existing quota
@@ -113,5 +113,5 @@ The new values for the quota apply globally to all plans that use the modified q
 
 ## Next steps
 
-- [Learn more about plans, offers, and quotas.](azure-stack-plan-offer-quota-overview.md)
+- [Learn more about services, plans, offers, and quotas.](service-plan-offer-subscription-overview.md)
 - [Create quotas while creating a plan.](azure-stack-create-plan.md)

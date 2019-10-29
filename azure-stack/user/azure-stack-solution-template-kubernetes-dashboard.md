@@ -11,10 +11,10 @@ ms.workload: na
 pms.tgt_pltfrm: na 
 ms.devlang: na 
 ms.topic: article 
-ms.date: 04/19/2019
+ms.date: 10/10/2019
 ms.author: mabrigg 
 ms.reviewer: waltero 
-ms.lastreviewed: 04/19/2019
+ms.lastreviewed: 06/18/2019
 
 # Keyword target: Azure Stack Kubernetes dashboard 
 --- 
@@ -22,7 +22,7 @@ ms.lastreviewed: 04/19/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit* 
 > [!Note]   
-> Kubernetes on Azure Stack is in preview. Azure Stack disconnected scenario is not currently supported by the preview. 
+> Kubernetes on Azure Stack is in preview. An Azure Stack disconnected scenario is not currently supported by the preview. Only use the marketplace item for development and test scenarios.
 
 Kubernetes includes a web dashboard that you can use for basic management operations. This dashboard lets you view basic health status and metrics for your applications, create and deploy services, and edit existing applications. This article shows you how to set up the Kubernetes dashboard on Azure Stack.
 

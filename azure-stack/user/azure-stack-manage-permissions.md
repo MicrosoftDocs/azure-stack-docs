@@ -1,9 +1,9 @@
 ---
-title: Manage permissions to resources per user in Azure Stack | Microsoft Docs
-description: As a service administrator or tenant, learn how to manage RBAC permissions.
+title: Manage access to resources in Azure Stack with role-based access control | Microsoft Docs
+description: Learn how to manage role-based access control (RBAC) permissions as an admin or a tenant in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: PatAltimore
+author: bryanla
 manager: femila
 editor: ''
 
@@ -13,30 +13,33 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
-ms.author: patricka
+ms.date: 09/13/2019
+ms.author: bryanla
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
 
 ---
 
-# Manage access to resources with Azure Stack Role-Based Access Control
+# Manage access to resources in Azure Stack with role-based access control
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Azure Stack supports role-based access control (RBAC), the same [security model for access management](https://docs.microsoft.com/azure/role-based-access-control/overview) that Microsoft Azure uses. You can use RBAC to manage user, group, or application access to subscriptions, resources, and services.
+Azure Stack supports role-based access control (RBAC), the same [security model for access management](/azure/role-based-access-control/overview) that Microsoft Azure uses. You can use RBAC to manage user, group, or app access to subscriptions, resources, and services.
 
 ## Basics of access management
 
-Role-based access control provides fine-grained access control that you can use to secure your environment. You give users the exact permissions they need by assigning a RBAC role at a certain scope. The scope of the role assignment can be a subscription, a resource group, or a single resource. Read the [Role-Based Access Control in the Azure portal](https://docs.microsoft.com/azure/role-based-access-control/overview) article to get more detailed information about access management.
+Role-based access control (RBAC) provides fine-grained access control that you can use to secure your environment. You give users the exact permissions they need by assigning an RBAC role at a certain scope. The scope of the role assignment can be a subscription, a resource group, or a single resource. For more detailed information about access management, see the [Role-Based Access Control in the Azure portal](/azure/role-based-access-control/overview) article.
+
+> [!NOTE]
+> When Azure Stack is deployed using Active Directory Federation Services as the identity provider, only Universal Groups are supported for RBAC scenarios.
 
 ### Built-in roles
 
 Azure Stack has three basic roles that you can apply to all resource types:
 
-* **Owner** can manage everything, including access to resources.
-* **Contributor** can manage everything except access to resources.
-* **Reader** can view everything, but can’t make any changes.
+* **Owner**: can manage everything, including access to resources.
+* **Contributor**: can manage everything, except access to resources.
+* **Reader**: can view everything, but can't make any changes.
 
 ### Resource hierarchy and inheritance
 
@@ -49,16 +52,16 @@ Azure Stack has the following resource hierarchy:
 Access that you grant at a parent scope is inherited at child scopes. For example:
 
 * You assign the **Reader** role to an Azure AD group at the subscription scope. The members of that group can view every resource group and resource in the subscription.
-* You assign the **Contributor** role to an application at the resource group scope. The application can manage resources of all types in that resource group, but not other resource groups in the subscription.
+* You assign the **Contributor** role to an app at the resource group scope. The app can manage resources of all types in that resource group, but not other resource groups in the subscription.
 
 ### Assigning roles
 
 You can assign more than one role to a user and each role can be associated with a different scope. For example:
 
-* You assign TestUser-A the Reader role to Subscription-1.
-* You assign TestUser-A the Owner role to TestVM-1.
+* You assign TestUser-A the **Reader** role to Subscription-1.
+* You assign TestUser-A the **Owner** role to TestVM-1.
 
-The Azure [role assignments](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) article provides detailed information about viewing, assigning, and deleting roles.
+The Azure [role assignments](/azure/role-based-access-control/role-assignments-portal) article provides detailed information about viewing, assigning, and deleting roles.
 
 ## Set access permissions for a user
 
@@ -67,16 +70,16 @@ The following steps describe how to configure permissions for a user.
 1. Sign in with an account that has owner permissions to the resource you want to manage.
 2. In the left navigation pane, choose **Resource groups**.
 3. Choose the name of the resource group that you want to set permissions on.
-4. In the resource group navigation pane, choose **Access control (IAM)**. The **Role Assignments** view lists the items that have access to the resource group. You can filter and group the results.
+4. In the resource group navigation pane, choose **Access control (IAM)**.<BR> The **Role Assignments** view lists the items that have access to the resource group. You can filter and group the results.
 5. On the **Access control** menu bar, choose **Add**.
 6. On **Add permissions** pane:
 
    * Choose the role you want to assign from the **Role** drop-down list.
    * Choose the resource you want to assign from the **Assign access to** drop-down list.
-   * Select the user, group, or application in your directory that you wish to grant access to. You can search the directory with display names, email addresses, and object identifiers.
+   * Select the user, group, or app in your directory that you wish to grant access to. You can search the directory with display names, email addresses, and object identifiers.
 
 7. Select **Save**.
 
 ## Next steps
 
-[Create service principals](azure-stack-create-service-principals.md)
+[Create service principals](../operator/azure-stack-create-service-principals.md)

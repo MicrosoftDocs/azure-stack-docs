@@ -1,9 +1,9 @@
 ---
 title: Develop templates for Azure Stack | Microsoft Docs
-description: Learn Azure Stack template best practices
+description: Learn how to develop Azure Resource Manager templates for app portability between Azure and Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,28 +13,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2019
-ms.author: sethm
+ms.date: 10/01/2019
+ms.author: mabrigg
 ms.reviewer: unknown
-ms.lastreviewed: 01/05/2019
-
-
+ms.lastreviewed: 05/21/2019
 
 ---
 
-# Azure Resource Manager template considerations
+# Develop templates for Azure Stack with Azure Resource Manager
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-As you develop your application, it is important to ensure template portability between Azure and Azure Stack. This article provides considerations for developing Azure Resource Manager [templates](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), so you can prototype your application and test deployment in Azure without access to an Azure Stack environment.
+As you develop your app, it is important to have template portability between Azure and Azure Stack. This article provides considerations for developing [Azure Resource Manager templates](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf). With these templates, you can prototype your app and test deployment in Azure without access to an Azure Stack environment.
 
 ## Resource provider availability
 
-The template that you plan to deploy must only use Microsoft Azure services that are already available or in preview in Azure Stack.
+The template you plan to deploy must only use Microsoft Azure services that are already available, or in preview, in Azure Stack.
 
 ## Public namespaces
 
-Because Azure Stack is hosted in your datacenter, it has different service endpoint namespaces than the Azure public cloud. As a result, hard-coded public endpoints in Azure Resource Manager templates fail when you try to deploy them to Azure Stack. You can dynamically build service endpoints using the `reference` and `concatenate` functions to retrieve values from the resource provider during deployment. For example, instead of hard-coding *blob.core.windows.net* in your template, retrieve the [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) to dynamically set the *osDisk.URI* endpoint:
+Because Azure Stack is hosted in your datacenter, it has different service endpoint namespaces than the Azure public cloud. As a result, hard-coded public endpoints in Azure Resource Manager templates fail when you try to deploy them to Azure Stack. You can dynamically build service endpoints using the `reference` and `concatenate` functions to retrieve values from the resource provider during deployment. For example, instead of hard-coding `blob.core.windows.net` in your template, retrieve the [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) to dynamically set the *osDisk.URI* endpoint:
 
 ```json
 "osDisk": {"name": "osdisk","vhd": {"uri":
@@ -48,11 +46,11 @@ Azure service versions may differ between Azure and Azure Stack. Each resource r
 
 | Resource Provider | apiVersion |
 | --- | --- |
-| Compute |`'2015-06-15'` |
-| Network |`'2015-06-15'`, `'2015-05-01-preview'` |
-| Storage |`'2016-01-01'`, `'2015-06-15'`, `'2015-05-01-preview'` |
-| KeyVault | `'2015-06-01'` |
-| App Service |`'2015-08-01'` |
+| Compute |**2015-06-15** |
+| Network |**2015-06-15**, **2015-05-01-preview** |
+| Storage |**2016-01-01**, **2015-06-15**, **2015-05-01-preview** |
+| KeyVault | **2015-06-01** |
+| App Service |**2015-08-01** |
 
 ## Template functions
 

@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date:  07/23/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
@@ -71,7 +71,7 @@ Use these steps to prepare and to validate the Azure Stack PKI certificates for 
     ```powershell  
     New-Item C:\Certificates -ItemType Directory
     
-    $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'Admin Extension Host', 'Admin Portal', 'api_appservice', 'ARM Admin', 'ARM Public', 'ftp_appservice', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal', 'sso_appservice', 'wildcard_dbadapter', 'wildcard_sso_appservice'
+    $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'Admin Extension Host', 'Admin Portal', 'ARM Admin', 'ARM Public', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal'
     
     $destination = 'c:\certificates'
     
@@ -82,7 +82,7 @@ Use these steps to prepare and to validate the Azure Stack PKI certificates for 
     > AD FS and Graph are required if you are using AD FS as your identity system. For example:
     >
     > ```powershell  
-    > $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'ADFS', 'Admin Extension Host', 'Admin Portal', 'api_appservice', 'ARM Admin', 'ARM Public', 'ftp_appservice', 'Graph', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal', 'sso_appservice', 'wildcard_dbadapter', 'wildcard_sso_appservice'
+    > $directories = 'ACSBlob', 'ACSQueue', 'ACSTable', 'ADFS', 'Admin Extension Host', 'Admin Portal', 'ARM Admin', 'ARM Public', 'Graph', 'KeyVault', 'KeyVaultInternal', 'Public Extension Host', 'Public Portal'
     > ```
     
      - Place your certificate(s) in the appropriate directories created in the previous step. For example:  
@@ -148,7 +148,7 @@ Invoke-AzsCertificateValidation Completed
 
 **Symptom**: Tests are skipped
 
-**Cause**: AzsReadinessChecker skips certain tests if a dependency isn’t met:
+**Cause**: AzsReadinessChecker skips certain tests if a dependency isn't met:
 
  - Other certificates are skipped if certificate chain fails.
 
@@ -267,8 +267,8 @@ Use these steps to prepare and validate the Azure Stack PKI certificates for pla
 Once your certificates have been validated by the AzsReadinessChecker, you are ready to use them in your Azure Stack deployment or for Azure Stack secret rotation. 
 
  - For deployment, securely transfer your certificates to your deployment engineer so that they can copy them onto the deployment host as specified in the [Azure Stack PKI requirements documentation](azure-stack-pki-certs.md).
- - For secret rotation, you can use the certificates to update old certificates for your Azure Stack environment’s public infrastructure endpoints by following the [Azure Stack Secret Rotation documentation](azure-stack-rotate-secrets.md).
- - For PaaS services, you can use the certificates to install SQL, MySQL, and App Services Resource Providers in Azure Stack by following the [Overview of offering services in Azure Stack documentation](azure-stack-offer-services-overview.md).
+ - For secret rotation, you can use the certificates to update old certificates for your Azure Stack environment's public infrastructure endpoints by following the [Azure Stack Secret Rotation documentation](azure-stack-rotate-secrets.md).
+ - For PaaS services, you can use the certificates to install SQL, MySQL, and App Services Resource Providers in Azure Stack by following the [Overview of offering services in Azure Stack documentation](service-plan-offer-subscription-overview.md).
 
 ## Next steps
 

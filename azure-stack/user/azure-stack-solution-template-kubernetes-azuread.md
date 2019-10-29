@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 01/16/2019
+ms.lastreviewed: 06/18/2019
 
 ---
 
@@ -24,7 +24,7 @@ ms.lastreviewed: 01/16/2019
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 > [!Note]  
-> Kubernetes on Azure Stack is in preview. Azure Stack disconnected scenario is not currently supported by the preview.
+> Kubernetes on Azure Stack is in preview. An Azure Stack disconnected scenario is not currently supported by the preview. Only use the marketplace item for development and test scenarios.
 
 You can follow the steps in this article to deploy and set up the resources for Kubernetes, when using Azure Active Directory (Azure AD) as your identity management service, in a single, coordinated operation.
 
@@ -38,7 +38,7 @@ To get started, make sure you have the right permissions and that your Azure Sta
 
 1. Generate an SSH public and private key pair to sign in to the Linux VM on Azure Stack. You will need the public key when creating the cluster.
 
-    For instructions on generating a key, see [SSH Key Generation](https://github.com/msazurestackworkloads/acs-engine/blob/master/docs/ssh.md#ssh-key-generation).
+    For instructions on generating a key, see [SSH Key Generation](azure-stack-dev-start-howto-ssh-public-key.md).
 
 1. Check that you have a valid subscription in your Azure Stack tenant portal, and that you have enough public IP addresses available to add new applications.
 
@@ -58,25 +58,21 @@ Set up a service principal in Azure. The service principal gives your applicatio
 
 1. Create an Azure AD application.
 
-    a. Select **Azure Active Directory** > **+ App Registrations** > **New Application Registration**.
-
-    b. Enter a **Name** of the application.
-
-    c. Select **Web app / API**.
-
-    d. Enter `http://localhost` for the **Sign-on URL**.
-
-    c. Click **Create**.
+    a. Sign in to your Azure Account through the [Azure portal](https://portal.azure.com).  
+    b. Select **Azure Active Directory** > **App registrations** > **New registration**.  
+    c. Provide a name and URL for the application.  
+    d. Select the **Supported account types**.  
+    e.  Add `http://localhost` for the URI for the application. Select **Web**  for the type of application you want to create. After setting the values, select **Register**.
 
 1. Make note of the **Application ID**. You will need the ID when creating the cluster. The ID is referenced as **Service Principal Client ID**.
 
-1. Select **Settings** > **Keys**.
+1. In the blade for the service principle, select **New client secret**. **Settings** > **Keys**. You need to generate an authentication key for the service principle.
 
     a. Enter the **Description**.
 
     b. Select **Never expires** for **Expires**.
 
-    c. Select **Save**. Make note the key string. You will need the key string when creating the cluster. The key is referenced as the **Service Principal Client Secret**.
+    c. Select **Add**. Make note the key string. You will need the key string when creating the cluster. The key is referenced as the **Service Principal Client Secret**.
 
 ## Give the service principal access
 
@@ -122,7 +118,7 @@ Give the service principal access to your subscription so that the principal can
 
     ![Deploy Solution Template](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings-aad.png)
 
-1. Enter the **Linux VM Admin Username**. User name for the Linux Virtual Machines that are part of the Kubernetes cluster and DVM.
+1. Enter the **Linux VM admin username**. User name for the Linux Virtual Machines that are part of the Kubernetes cluster and DVM.
 
 1. Enter the **SSH Public Key** used for authorization to all Linux machines created as part of the Kubernetes cluster and DVM.
 
@@ -131,21 +127,21 @@ Give the service principal access to your subscription so that the principal can
     > [!Note]  
     > For each cluster, use a new and unique master profile DNS prefix.
 
-1. Select the **Kubernetes Master Pool Profile Count**. The count contains the number of nodes in the master pool. There can be from 1 to 7. This value should be an odd number.
+1. Select the **Kubernetes master pool profile count**. The count contains the number of nodes in the master pool. There can be from 1 to 7. This value should be an odd number.
 
-1. Select **The VMSize of the Kubernetes master VMs**.
+1. Select **The VMSize of the Kubernetes master VMs**. This specifies the VM Size of Kubernetes master VMs. 
 
-1. Select the **Kubernetes Node Pool Profile Count**. The count contains the number of agents in the cluster. 
+1. Select the **Kubernetes node pool profile count**. The count contains the number of agents in the cluster. 
 
-1. Select the **Storage Profile**. You can choose **Blob Disk** or **Managed Disk**. This specifies the VM Size of Kubernetes node VMs. 
+1. Select the **VMSize of the Kubernetes node VMs**. This specifies the VM Size of Kubernetes node VMs. 
 
-1. Select **Azure AD** for the **Azure Stack identity system** for your Azure Stack installation. 
+1. Select **Azure AD** for the **Azure Stack identity system** for your Azure Stack installation.
 
-1. Enter the **Service Principal ClientId** This is used by the Kubernetes Azure cloud provider. The Client ID identified as the Application ID when you created your service principal.
+1. Enter the **Service principal clientId** This is used by the Kubernetes Azure cloud provider. The Client ID identified as the Application ID when your Azure Stack administrator created the service principal.
 
-1. Enter the **Service Principal Client Secret** that you created when creating your service principal.
+1. Enter the **Service principal client secret**. This is the client secret you set up when creating your service.
 
-1. Enter the **Kubernetes Azure Cloud Provider Version**. This is the version for the Kubernetes Azure provider. Azure Stack releases a custom Kubernetes build for each Azure Stack version.
+1. Enter the **Kubernetes version**. This is the version for the Kubernetes Azure provider. Azure Stack releases a custom Kubernetes build for each Azure Stack version.
 
 ### 3. Summary
 

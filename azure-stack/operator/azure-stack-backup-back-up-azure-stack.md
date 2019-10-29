@@ -1,9 +1,9 @@
 ---
 title: Back up Azure Stack | Microsoft Docs
-description: Perform an on-demand backup on Azure Stack with backup in place.
+description: Learn how to do an on-demand backup on Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: justinha
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
-ms.author: jeffgilb
+ms.author: justinha
 ms.reviewer: hectorl
 ms.lastreviewed: 09/05/2018
 
@@ -23,7 +23,7 @@ ms.lastreviewed: 09/05/2018
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-Perform an on-demand backup on Azure Stack. For instructions on configuring the PowerShell environment, see [Install PowerShell for Azure Stack](azure-stack-powershell-install.md). To sign in to Azure Stack, see [Using the administrator portal in Azure Stack](azure-stack-manage-portals.md).
+This article shows you how to do an on-demand backup on Azure Stack. For instructions on configuring the PowerShell environment, see [Install PowerShell for Azure Stack](azure-stack-powershell-install.md). To sign in to Azure Stack, see [Using the administrator portal in Azure Stack](azure-stack-manage-portals.md).
 
 ## Start Azure Stack backup
 
@@ -38,9 +38,9 @@ Use Start-AzSBackup to start a new backup immediately with no job progress track
 Use Start-AzSBackup to start a new backup with the **-AsJob** parameter and save it as a variable to track backup job progress.
 
 > [!NOTE]
-> Backup job will appear as successfully completed in the portal about 10-15 minutes before the job will finish.
+> Your backup job appears as successfully completed in the portal about 10-15 minutes before the job finishes.
 >
-> Therefore, the actual status is better observed via the code below.
+> The actual status is better observed via the code below.
 
 > [!IMPORTANT]
 > The initial 1 millisecond delay is introduced because the code is too quick to register the job correctly and it comes back with no **PSBeginTime** and in turn with no **State** of the job.
@@ -82,7 +82,7 @@ Use Start-AzSBackup to start a new backup with the **-AsJob** parameter and save
 ## Confirm backup has completed
 
 ### Confirm backup has completed using PowerShell
-Use the following PowerShell commands to ensure that backup has completed successfully:
+Use the following PowerShell commands to ensure the backup has completed successfully:
 
 ```powershell
    Get-AzsBackup
@@ -107,10 +107,10 @@ The result should look like the following output:
     Tags              : {}
 ```
 
-### Confirm backup has completed in the administration portal
-Use the Azure Stack administration portal to verify that backup has completed successfully by following these steps:
+### Confirm backup has completed in the administrator portal
+Use the Azure Stack administrator portal to verify that backup has completed successfully by following these steps:
 
-1. Open the [Azure Stack administration portal](azure-stack-manage-portals.md).
+1. Open the [Azure Stack administrator portal](azure-stack-manage-portals.md).
 2. Select **All services**, and then under the **ADMINISTRATION** category select > **Infrastructure backup**. Choose **Configuration** in the **Infrastructure backup** blade.
 3. Find the **Name** and **Date Completed** of the backup in **Available backups** list.
 4. Verify the **State** is **Succeeded**.

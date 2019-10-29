@@ -7,10 +7,10 @@ manager: femila
 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 06/10/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.lastreviewed: 01/14/2019
+ms.lastreviewed: 06/10/2019
 
 #Customer intent: As an Azure AD Administrator, I want to understand how antivirus is kept up to date on Azure Stack.
 ---

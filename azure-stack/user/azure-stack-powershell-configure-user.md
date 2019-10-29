@@ -1,6 +1,6 @@
 ---
 title: Connect to Azure Stack with PowerShell as a user | Microsoft Docs
-description: Steps to connect to Azure Stack using PowerShell. 
+description: Learn how to connect to Azure Stack with PowerShell. 
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 01/24/2019
+ms.lastreviewed: 10/02/2019
 
 ---
 
@@ -23,17 +23,17 @@ ms.lastreviewed: 01/24/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can connect to Azure Stack with PowerShell. You must connect to manage Azure Stack resources with PowerShell. For example, you can use PowerShell to subscribe to offers, create virtual machines, and deploy Azure Resource Manager templates.
+You can connect to Azure Stack with PowerShell to manage Azure Stack resources. For example, you can use PowerShell to subscribe to offers, create virtual machines (VMs), and deploy Azure Resource Manager templates.
 
-To get set up:
+To get setup:
   - Make sure you have the requirements.
   - Connect with Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS). 
   - Register resource providers.
   - Test your connectivity.
 
-## Prerequisites to connect using PowerShell
+## Prerequisites to connecting with PowerShell
 
-Configure these prerequisites from the [development kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), or from a Windows-based external client if you are [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn):
+Configure these prerequisites from the [development kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), or from a Windows-based external client if you're [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn):
 
 * Install [Azure Stack-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
 * Download the [tools required to work with Azure Stack](../operator/azure-stack-powershell-download.md).
@@ -41,11 +41,11 @@ Configure these prerequisites from the [development kit](../asdk/asdk-connect.md
 Make sure you replace the following script variables with values from your Azure Stack configuration:
 
 - **Azure AD tenant name**  
-  The name of your Azure AD tenant used to manage Azure Stack, for example, yourdirectory.onmicrosoft.com.
+  The name of your Azure AD tenant used to manage Azure Stack. For example, yourdirectory.onmicrosoft.com.
 - **Azure Resource Manager endpoint**  
   For Azure Stack development kit, this value is set to https://management.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
 
-## Connect with Azure AD
+## Connect to Azure Stack with Azure AD
 
 ```powershell  
     Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
@@ -59,7 +59,7 @@ Make sure you replace the following script variables with values from your Azure
     Add-AzureRmAccount -EnvironmentName "AzureStackUser" -TenantId $TenantId
 ```
 
-## Connect with AD FS
+## Connect to Azure Stack with AD FS
 
   ```powershell  
   # Register an Azure Resource Manager environment that targets your Azure Stack instance
@@ -71,19 +71,19 @@ Make sure you replace the following script variables with values from your Azure
 
 ## Register resource providers
 
-Resource providers aren’t automatically registered for new user subscriptions that don’t have any resources deployed through the portal. You can explicitly register a resource provider by running the following script:
+Resource providers aren't automatically registered for new user subscriptions that don't have any resources deployed through the portal. You can explicitly register a resource provider by running the following script:
 
 ```powershell  
 foreach($s in (Get-AzureRmSubscription)) {
         Select-AzureRmSubscription -SubscriptionId $s.SubscriptionId | Out-Null
         Write-Progress $($s.SubscriptionId + " : " + $s.SubscriptionName)
-Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider -Force
+Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider
     }
 ```
 
 ## Test the connectivity
 
-When you've got everything set up, test connectivity by using PowerShell to create resources in Azure Stack. As a test, create a resource group for an application and add a virtual machine. Run the following command to create a resource group named "MyResourceGroup":
+When you've got everything setup, test connectivity by using PowerShell to create resources in Azure Stack. As a test, create a resource group for an application and add a VM. Run the following command to create a resource group named "MyResourceGroup":
 
 ```powershell  
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"

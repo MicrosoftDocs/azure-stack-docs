@@ -3,7 +3,7 @@ title: Usage API related FAQs | Microsoft Docs
 description: List of Azure Stack meters, comparison to Azure usage API, Usage Time and Reported Time, error codes.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 
@@ -12,18 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
-ms.author: mabrigg
+ms.date: 09/25/2019
+ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
 
 ---
 
-# Frequently asked questions in Azure Stack usage API
+# Frequently asked questions about Azure Stack usage
 
-This article answers some frequently asked questions about the Azure Stack Usage API.
+This article answers some frequently asked questions about Azure Stack usage and the Azure Stack usage API.
 
 ## What meter IDs can I see?
+
 Usage is reported for the following resource providers:
 
 ### Network
@@ -73,7 +74,7 @@ Usage is reported for the following resource providers:
 **Meter ID**: 1B8C1DEC-EE42-414B-AA36-6229CF199370  
 **Meter name**: TableDataTransOut  
 **Unit**: Egress in GB  
-**Notes**: Table service data egress in GB  
+**Notes**: Table service data egress in GB.
   
 **Meter ID**: 43DAF82B-4618-444A-B994-40C23F7CD438  
 **Meter name**: BlobTransactions  
@@ -105,7 +106,7 @@ Usage is reported for the following resource providers:
 **Unit**: Egress in GB  
 **Notes**: Queue service data egress in GB  
 
-### Compute 
+### Compute
   
 **Meter ID**: FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5  
 **Meter name**: Base VM Size Hours  
@@ -120,69 +121,69 @@ Usage is reported for the following resource providers:
 **Meter ID**: 6DAB500F-A4FD-49C4-956D-229BB9C8C793  
 **Meter name**: VM size hours  
 **Unit**: VM hours  
-**Notes**: Captures both Base and Windows VM. Does not adjust for cores.  
+**Notes**: Captures both base and Windows VM. Does not adjust for cores.  
   
 ### Managed Disks
 
 **Meter ID**: 380874f9-300c-48e0-95a0-d2d9a21ade8f   
 **Meter name**: S4   
 **Unit**: Count of Disks\*month   
-**Notes**: Standard Managed Disk – 32 GB 
+**Notes**: Standard Managed Disk - 32 GB 
 
 **Meter ID**: 1b77d90f-427b-4435-b4f1-d78adec53222   
 **Meter name**: S6   
 **Unit**: Count of Disks\*month   
-**Notes**: Standard Managed Disk – 64 GB 
+**Notes**: Standard Managed Disk - 64 GB 
 
 **Meter ID**: d5f7731b-f639-404a-89d0-e46186e22c8d   
 **Meter name**: S10   
 **Unit**: Count of Disks\*month   
-**Notes**: Standard Managed Disk – 128 GB 
+**Notes**: Standard Managed Disk - 128 GB 
 
 **Meter ID**: ff85ef31-da5b-4eac-95dd-a69d6f97b18a   
 **Meter name**: S15   
 **Unit**: Count of Disks\*month   
-**Notes**: Standard Managed Disk – 256 GB 
+**Notes**: Standard Managed Disk - 256 GB 
 
 **Meter ID**: 88ea9228-457a-4091-adc9-ad5194f30b6e   
 **Meter name**: S20   
 **Unit**: Count of Disks\*month      
-**Notes**: Standard Managed Disk – 512 GB 
+**Notes**: Standard Managed Disk - 512 GB 
 
 **Meter ID**: 5b1db88a-8596-4002-8052-347947c26940   
 **Meter name**: S30   
 **Unit**: Count of Disks\*month   
-**Notes**: Standard Managed Disk – 1024 GB 
+**Notes**: Standard Managed Disk - 1024 GB 
 
 **Meter ID**: 7660b45b-b29d-49cb-b816-59f30fbab011   
 **Meter name**: P4   
 **Unit**: Count of Disks\*month   
-**Notes**: Premium Managed Disk – 32 GB 
+**Notes**: Premium Managed Disk - 32 GB 
 
 **Meter ID**: 817007fd-a077-477f-bc01-b876f27205fd   
 **Meter name**: P6   
 **Unit**: Count of Disks\*month   
-**Notes**: Premium Managed Disk – 64 GB 
+**Notes**: Premium Managed Disk - 64 GB 
 
 **Meter ID**: e554b6bc-96cd-4938-a5b5-0da990278519   
 **Meter name**: P10   
 **Unit**: Count of Disks\*month   
-**Notes**: Premium Managed Disk – 128 GB  
+**Notes**: Premium Managed Disk - 128 GB  
 
 **Meter ID**: cdc0f53a-62a9-4472-a06c-e99a23b02907   
 **Meter name**: P15  
 **Unit**: Count of Disks\*month   
-**Notes**: Premium Managed Disk – 256 GB 
+**Notes**: Premium Managed Disk - 256 GB 
 
 **Meter ID**: b9cb2d1a-84c2-4275-aa8b-70d2145d59aa   
 **Meter name**: P20   
 **Unit**: Count of Disks\*month   
-**Notes**: Premium Managed Disk – 512 GB 
+**Notes**: Premium Managed Disk - 512 GB 
 
 **Meter ID**: 06bde724-9f94-43c0-84c3-d0fc54538369   
 **Meter name**: P30   
 **Unit**: Count of Disks\*month   
-**Notes**: Premium Managed Disk – 1024 GB 
+**Notes**: Premium Managed Disk - 1024 GB 
 
 **Meter ID**: 7ba084ec-ef9c-4d64-a179-7732c6cb5e28   
 **Meter name**: ActualStandardDiskSize   
@@ -207,62 +208,62 @@ Usage is reported for the following resource providers:
 **Meter ID**: 5d76e09f-4567-452a-94cc-7d1f097761f0   
 **Meter name**: S4   
 **Unit**: Count of Disks\*hours   
-**Notes**: Standard Managed Disk – 32 GB (Deprecated) 
+**Notes**: Standard Managed Disk - 32 GB (Deprecated) 
 
 **Meter ID**: dc9fc6a9-0782-432a-b8dc-978130457494   
 **Meter name**: S6   
 **Unit**: Count of Disks\*hours   
-**Notes**: Standard Managed Disk – 64 GB (Deprecated) 
+**Notes**: Standard Managed Disk - 64 GB (Deprecated) 
 
 **Meter ID**: e5572fce-9f58-49d7-840c-b168c0f01fff   
 **Meter name**: S10   
 **Unit**: Count of Disks\*hours   
-**Notes**: Standard Managed Disk – 128 GB (Deprecated) 
+**Notes**: Standard Managed Disk - 128 GB (Deprecated) 
 
 **Meter ID**: 9a8caedd-1195-4cd5-80b4-a4c22f9302b8   
 **Meter name**: S15   
 **Unit**: Count of Disks\*hours   
-**Notes**: Standard Managed Disk – 256 GB (Deprecated) 
+**Notes**: Standard Managed Disk - 256 GB (Deprecated) 
 
 **Meter ID**: 5938f8da-0ecd-4c48-8d5a-c7c6c23546be   
 **Meter name**: S20   
 **Unit**: Count of Disks\*hours      
-**Notes**: Standard Managed Disk – 512 GB (Deprecated) 
+**Notes**: Standard Managed Disk - 512 GB (Deprecated) 
 
 **Meter ID**: 7705a158-bd8b-4b2b-b4c2-0782343b81e6   
 **Meter name**: S30   
 **Unit**: Count of Disks\*hours   
-**Notes**: Standard Managed Disk – 1024 GB (Deprecated) 
+**Notes**: Standard Managed Disk - 1024 GB (Deprecated) 
 
 **Meter ID**: 5c105f5f-cbdf-435c-b49b-3c7174856dcc   
 **Meter name**: P4   
 **Unit**: Count of Disks\*hours   
-**Notes**: Premium Managed Disk – 32 GB (Deprecated) 
+**Notes**: Premium Managed Disk - 32 GB (Deprecated) 
 
 **Meter ID**: 518b412b-1927-4f25-985f-4aea24e55c4f   
 **Meter name**: P6   
 **Unit**: Count of Disks\*hours   
-**Notes**: Premium Managed Disk – 64 GB (Deprecated) 
+**Notes**: Premium Managed Disk - 64 GB (Deprecated) 
 
 **Meter ID**: 5cfb1fed-0902-49e3-8217-9add946fd624   
 **Meter name**: P10   
 **Unit**: Count of Disks\*hours   
-**Notes**: Premium Managed Disk – 128 GB (Deprecated)  
+**Notes**: Premium Managed Disk - 128 GB (Deprecated)  
 
 **Meter ID**: 8de91c94-f740-4d9a-b665-bd5974fa08d4   
 **Meter name**: P15  
 **Unit**: Count of Disks\*hours   
-**Notes**: Premium Managed Disk – 256 GB (Deprecated) 
+**Notes**: Premium Managed Disk - 256 GB (Deprecated) 
 
 **Meter ID**: c7e7839c-293b-4761-ae4c-848eda91130b   
 **Meter name**: P20   
 **Unit**: Count of Disks\*hours   
-**Notes**: Premium Managed Disk – 512 GB (Deprecated) 
+**Notes**: Premium Managed Disk - 512 GB (Deprecated) 
 
 **Meter ID**: 9f502103-adf4-4488-b494-456c95d23a9f   
 **Meter name**: P30   
 **Unit**: Count of Disks\*hours   
-**Notes**: Premium Managed Disk – 1024 GB (Deprecated) 
+**Notes**: Premium Managed Disk - 1024 GB (Deprecated) 
 
 **Meter ID**: 8a409390-1913-40ae-917b-08d0f16f3c38   
 **Meter name**: ActualStandardDiskSize   
@@ -324,7 +325,7 @@ Usage is reported for the following resource providers:
 **Meter ID**: 190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  
 **Meter name**: App Service  
 **Unit**: Virtual core hours  
-**Notes**: Number of virtual cores used to run app service. Note: Microsoft uses this meter to charge the App Service on Azure Stack. Cloud Service Providers can use the other App Service meters (below) to calculate usage for their tenants.  
+**Notes**: Number of virtual cores used to run app service. Note: Microsoft uses this meter to charge the App Service on Azure Stack. Cloud Solution Providers can use the other App Service meters (below) to calculate usage for their tenants.  
   
 **Meter ID**: 67CC4AFC-0691-48E1-A4B8-D744D1FEDBDE  
 **Meter name**: Functions Requests  
@@ -388,30 +389,30 @@ Usage is reported for the following resource providers:
 **Unit**: GB  
 **Notes**: Total incoming request response bytes + total outgoing request bytes + total incoming FTP request response bytes + total incoming web deploy request response bytes.  
   
-
 ## How do the Azure Stack usage APIs compare to the [Azure usage API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) (currently in public preview)?
-* The Tenant Usage API is consistent with the Azure API, with one
+
+* The tenant usage API is consistent with the Azure API, with one
   exception: the *showDetails* flag currently is not supported in
   Azure Stack.
-* The Provider Usage API applies only to Azure Stack.
+* The provider usage API applies only to Azure Stack.
 * Currently, the [RateCard
-  API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-ratecard-api-preview)
+  API](/azure/billing/billing-usage-rate-card-overview#azure-resource-ratecard-api-preview)
   that is available in Azure is not available in Azure Stack.
 
 ## What is the difference between usage time and reported time?
+
 Usage data reports have two main time values:
 
 * **Reported Time**. The time when the usage event entered the usage
   system
 * **Usage Time**. The time when the Azure Stack resource was consumed
 
-You might see a discrepancy in values for Usage Time and Reported Time
-for a specific usage event. The delay can be as long as multiple hours
-in any environment.
+You might see a discrepancy in values for usage time and reported time for a specific usage event. The delay can be as long as several hours in any environment.
 
 Currently, you can query only by *Reported Time*.
 
 ## What do these usage API error codes mean?
+
 | **HTTP status code** | **Error code** | **Description** |
 | --- | --- | --- |
 | 400/Bad Request |*NoApiVersion* |The *api-version* query parameter is missing. |
@@ -426,9 +427,18 @@ Currently, you can query only by *Reported Time*.
 
 Running and stopped VMs generate usage data. Consistent with Azure, deallocation is needed to stop the emission of usage data. In the case in which the portal is unavailable, but the compute resource provider is still running, usage will be emitted.
 
-## Next Steps
-[Customer billing and chargeback in Azure Stack](azure-stack-billing-and-chargeback.md)
+## How do I extract usage data from the Azure Stack usage APIs?
 
-[Provider Resource Usage API](azure-stack-provider-resource-api.md)
+The easiest way to extract usage data from local usage APIs on an Azure Stack is by using the [usage summary script on GitHub](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/Usagesummary.ps1). The script requires the start and end dates as input parameters.
 
-[Tenant Resource Usage API](azure-stack-tenant-resource-usage-api.md)
+Alternatively, you can use the REST APIs, as explained in the [Provider resource usage API](azure-stack-provider-resource-api.md) and [Tenant resource usage API](azure-stack-tenant-resource-usage-api.md) articles.
+
+## How can I associate usage extracted from Azure usage APIs to a specific Azure Stack user subscription?
+
+The usage records include a property bag called **additionalinfo**, which includes the Azure Stack subscription ID. This is the user subscription emitting the corresponding usage record.
+
+## Next steps
+
+* [Customer billing and chargeback in Azure Stack](azure-stack-billing-and-chargeback.md)
+* [Provider Resource Usage API](azure-stack-provider-resource-api.md)
+* [Tenant Resource Usage API](azure-stack-tenant-resource-usage-api.md)

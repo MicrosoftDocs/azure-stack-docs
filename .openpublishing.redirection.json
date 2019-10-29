@@ -1,4 +1,230 @@
 {
   "redirections": [
+    {
+      "source_path": "azure-stack/operator/azure-stack-plan-offer-quota-overview.md",
+      "redirect_url": "/azure-stack/operator/service-plan-offer-subscription-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-operations-checklist.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-manage-basics",
+
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-offer-services-overview.md",
+      "redirect_url": "/azure-stack/operator/service-plan-offer-subscription-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-tutorial-tenant-vm.md",
+      "redirect_url": "/azure-stack/operator/tutorial-offer-services",
+      "redirect_document_id": false
+    },  
+    {
+      "source_path": "azure-stack/operator/azure-stack-tutorial-sql-server.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-sql-resource-provider",
+      "redirect_document_id": false
+    },   
+    {
+      "source_path": "azure-stack/operator/azure-stack-tutorial-app-service.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-app-service-overview",
+      "redirect_document_id": false
+    },             
+    {
+      "source_path": "azure-stack/operator/capacity-planning.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-capacity-planning-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/capacity-planning-storage.md",
+      "redirect_url": "/azure-stack/operator/capacity-planning",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-diagnostics.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-help-and-support.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-help-and-support-overview",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/capacity-planning-compute.md",
+      "redirect_url": "/azure-stack/operator/capacity-planning",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/capacity-planning-spreadsheet.md",
+      "redirect_url": "/azure-stack/operator/capacity-planning",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-version-profiles-powershell.md",
+      "redirect_url": "https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-powershell-install",
+      "redirect_document_id": true
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1710.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1711.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1712.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1802.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1803.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1804.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1805.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1807.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1808.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1809.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1811.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1901.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-1902.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {    
+      "source_path": "azure-stack/operator/azure-stack-update-1903.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },    
+    {    
+      "source_path": "azure-stack/operator/azure-stack-release-notes-1904.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {    
+      "source_path": "azure-stack/operator/azure-stack-release-notes-1905.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {    
+      "source_path": "azure-stack/operator/azure-stack-release-notes-1906.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {    
+      "source_path": "azure-stack/operator/azure-stack-release-notes-1907.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {    
+      "source_path": "azure-stack/operator/azure-stack-release-notes-1908.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {    
+      "source_path": "azure-stack/operator/azure-stack-release-notes-known-issues-1904.md",
+      "redirect_url": "/azure-stack/operator/known-issues",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-release-notes-known-issues-1905.md",
+      "redirect_url": "/azure-stack/operator/known-issues",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-release-notes-known-issues-1906.md",
+      "redirect_url": "/azure-stack/operator/known-issues",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-release-notes-known-issues-1907.md",
+      "redirect_url": "/azure-stack/operator/known-issues",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-release-notes-known-issues-1908.md",
+      "redirect_url": "/azure-stack/operator/known-issues",
+      "redirect_document_id": false
+    },            
+    {
+      "source_path": "azure-stack/operator/azure-stack-release-notes-security-updates-1904.md",
+      "redirect_url": "/azure-stack/operator/release-notes-security-updates",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-release-notes-security-updates-1905.md",
+      "redirect_url": "/azure-stack/operator/release-notes-security-updates",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-release-notes-security-updates-1906.md",
+      "redirect_url": "/azure-stack/operator/release-notes-security-updates",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-release-notes-security-updates-1907.md",
+      "redirect_url": "/azure-stack/operator/release-notes-security-updates",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-release-notes-security-updates.md",
+      "redirect_url": "/azure-stack/operator/release-notes-security-updates",
+      "redirect_document_id": false
+    },    
+    {
+      "source_path": "azure-stack/operator/azure-stack-release-notes-checklist.md",
+      "redirect_url": "/azure-stack/operator/release-notes-checklist",
+      "redirect_document_id": false
+    },        
+    {
+      "source_path": "azure-stack/user/azure-stack-solution-staged-data-analytics.md",
+      "redirect_url": "/azure-stack/user/azure-stack-solution-staged-data",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-create-service-principals.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-create-service-principals",
+      "redirect_document_id": false
+    }
   ]
 }

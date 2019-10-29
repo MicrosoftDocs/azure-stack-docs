@@ -3,7 +3,7 @@ title: Start and stop Azure Stack | Microsoft Docs
 description: Learn how to start and shut down Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 
@@ -13,8 +13,8 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/19/2019
-ms.author: jeffgilb
+ms.date: 10/02/2019
+ms.author: mabrigg
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
 ---
@@ -87,4 +87,4 @@ Perform the following steps if the infrastructure and tenant services don't succ
 
 ## Next steps 
 
-Learn more about [Azure Stack diagnostic tools](azure-stack-diagnostics.md)
+Learn more about [Azure Stack diagnostic tools](azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs)

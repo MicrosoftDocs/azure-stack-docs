@@ -1,9 +1,9 @@
 ---
-title: Using databases provided by the MySQL Adapter RP on AzureStack | Microsoft Docs
-description: How to create and manage MySQL databases provisioned using the MySQL Adapter Resource Provider
+title: Create MySQL databases in Azure Stack | Microsoft Docs
+description: Learn how to create and manage MySQL databases provisioned using the MySQL Adapter Resource Provider in Azure Stack.
 services: azure-stack
 documentationCenter: ''
-author: jeffgilb
+author: mattbriggs
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
-ms.author: jeffgilb
-ms.reviewer: quying
+ms.date: 10/02/2019
+ms.author: mabrigg
+ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
 
 ---
 
-# Create MySQL databases
-An Azure Stack user, subscribed to an offer that includes the MySQL database service, can create and manage self-service MySQL databases in the user portal.
+# Create MySQL databases in Azure Stack
+An Azure Stack user that's subscribed to an offer that includes the MySQL database service can create and manage self-service MySQL databases in the user portal.
 
 ## Create a MySQL database
 
@@ -62,4 +62,4 @@ You can modify the password by changing it on the MySQL server instance.
 
 ## Next steps
 
-[Update the MySQL resource provider](azure-stack-mysql-resource-provider-update.md)
+Learn how to [offer highly available MySQL databases](azure-stack-tutorial-mysql.md).

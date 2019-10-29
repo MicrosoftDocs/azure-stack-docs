@@ -1,6 +1,6 @@
 ---
-title: Manage Key Vault in Azure Stack by using the portal | Microsoft Docs
-description: Learn how to manage Key Vault in Azure Stack by using the portal
+title: Manage Key Vault in Azure Stack using the portal | Microsoft Docs
+description: Learn how to manage Key Vault in Azure Stack by using the Azure Stack portal.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,15 +13,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 10/03/2019
 ms.author: sethm
 ms.lastreviewed: 01/04/2019
 
 ---
 
-# Manage Key Vault in Azure Stack by using the portal
+# Manage Key Vault in Azure Stack using the portal
 
-You can manage Key Vault in Azure Stack by using the Azure Stack portal. This article describes how to create and manage a key vault in Azure Stack.
+This article describes how to create and manage a key vault in Azure Stack using the Azure Stack portal.
 
 ## Prerequisites
 
@@ -35,7 +35,7 @@ You must subscribe to an offer that includes the Azure Key Vault service.
 
     ![Key Vault screen](media/azure-stack-key-vault-manage-portal/image1.png)
 
-3. In the **Create Key Vault** pane, assign a **Name** for your vault. Vault names can contain only alphanumeric characters and the hyphen (-) character. They should not start with a number.
+3. In the **Create Key Vault** pane, assign a **Name** for your vault. Vault names can contain only alphanumeric characters and the hyphen (-) character. They shouldn't start with a number.
 
 4. Choose a **Subscription** from the list of available subscriptions. All subscriptions that offer the Key Vault service are displayed in the drop-down list.
 
@@ -43,15 +43,15 @@ You must subscribe to an offer that includes the Azure Key Vault service.
 
 6. Select the **Pricing tier**. In the Azure Stack Development Kit (ASDK), key vaults support **Standard** SKUs only.
 
-7. Choose one of the existing **Access policies** or create a new one. An access policy allows you to grant permissions for a user, application, or a security group to perform operations with this vault.
+7. Choose one of the existing **Access policies** or create a new one. An access policy allows you to grant permissions for a user, an app, or a security group to perform operations with this vault.
 
 8. Optionally, choose an **Advanced access policy** to enable access to features. For example: virtual machines (VMs) for deployment, Resource Manager for template deployment, and access to Azure Disk Encryption for volume encryption.
 
-9. After you configure the settings, select **OK**, and then select **Create**. This starts the key vault deployment.
+9. After you configure the settings, select **OK**, and then select **Create**. This step starts the key vault deployment.
 
 ## Manage keys and secrets
 
-After you create a vault, use the following procedure to create and manage keys and secrets within the vault.
+After you create a key vault, use the following procedure to create and manage keys and secrets within the vault:
 
 ### Create a key
 
@@ -69,7 +69,7 @@ After you create a vault, use the following procedure to create and manage keys 
 
 7. Select **Create** to start the deployment.
 
-After the key is successfully created, you can select it under **Keys** and view or modify its properties. The properties section contains the **Key Identifier**, which is a Uniform Resource Identifier (URI) that external applications use to access this key. To limit operations on this key, configure the settings under **Permitted operations**.
+After the key is successfully created, you can select it under **Keys** and view or modify its properties. The properties section contains the **Key Identifier**, which is a Uniform Resource Identifier (URI) that external apps use to access this key. To limit operations on this key, configure the settings under **Permitted operations**.
 
 ![URI key](media/azure-stack-key-vault-manage-portal/image4.png)
 
@@ -81,7 +81,7 @@ After the key is successfully created, you can select it under **Keys** and view
 
 3. Under **Secrets**, select **Add**.
 
-4. Under **Create a secret**, from the list of **Upload options**, choose an option with which you want to create a secret. You can create a secret **Manually** if you enter a value for the secret or upload a **Certificate** from your local machine.
+4. Under **Create a secret**, from the list of **Upload options**, choose an option with which you want to create a secret. You can create a secret **Manually** if you enter a value for the secret, or upload a **Certificate** from your local machine.
 
 5. Enter a **Name** for the secret. The secret name can contain only alphanumeric characters and the hyphen (-) character.
 
@@ -89,7 +89,7 @@ After the key is successfully created, you can select it under **Keys** and view
 
 7. Select **Create** to start the deployment.
 
-After the secret is successfully created, you can select it under **Secrets** and view or modify its properties. The **Secret Identifier** is a URI that external applications can use to access this secret.
+After the secret is successfully created, you can select it under **Secrets** and view or modify its properties. The **Secret Identifier** is a URI that external apps can use to access this secret.
 
 ![URI secret](media/azure-stack-key-vault-manage-portal/image5.png)
 
