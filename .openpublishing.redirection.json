@@ -225,6 +225,11 @@
       "source_path": "azure-stack/user/azure-stack-create-service-principals.md",
       "redirect_url": "/azure-stack/operator/azure-stack-create-service-principals",
       "redirect_document_id": false
+    },
+    {
+    "source_path": "azure-stack/user/azure-stack-kubernetes-ask-engine-support.md",
+    "redirect_url": "/azure-stack/operator/azure-stack-kubernetes-aks-engine-support",
+    "redirect_document_id": false
     }
   ]
 }
