@@ -41,9 +41,7 @@ Once you have located the aks-engine, input apimodel.json file, output directory
 
 1.  To continue using the AKS Engine, to perform operations such as **Upgrade** and **Scale**, copy the **aks-engine** binary file to the target machine. If you are using the same **vmd-** machine to a directory.
 
-2.  Create a directory with the name of the cluster or other mnemotechnic name that refers to the new cluster and save the output apimodel.json file in it. 
-
-Ensure it is a protected place since this file contains credentials. After that you can run the aks-engine to run operations such as [Scale](azure-stack-kubernetes-aks-engine-scale.md) or [Upgrade](azure-stack-kubernetes-aks-engine-upgrade.md)
+2.  Create a directory with the name of the cluster or other mnemotechnic name that refers to the new cluster and save the output apimodel.json file in it. Ensure it is a protected place since this file contains credentials. After that you can run the aks-engine to run operations such as [Scale](azure-stack-kubernetes-aks-engine-scale.md) or [Upgrade](azure-stack-kubernetes-aks-engine-upgrade.md)
 
 ## Next steps
 
