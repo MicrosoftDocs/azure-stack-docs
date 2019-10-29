@@ -11,10 +11,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 10/29/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 10/29/2019
 
 
 
@@ -39,7 +39,7 @@ Before you exercise the monthly update process in VaaS, you should be familiar w
 
 ## Required tests
 
-The following tests should be executed in the following order for monthly software validation:
+The following tests must be executed in the following order for monthly software validation:
 
 - Step 1 - Monthly AzureStack Update Verification
 - Step 2 - OEM Extension Package Verification
