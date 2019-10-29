@@ -27,11 +27,11 @@ This section looks at the overall structure of the solution and major parts.
 
 ![Azure Stack Storage Backup](./media/azure-stack-network-howto-backup-storage/azure-stack-storage-backup.png)
 
-### Application Layer
+### Application layer
 
 Data can be replicated between storage accounts on separate Azure Stack scale units by issuing multiple [PUT Blob](https://docs.microsoft.com/rest/api/storageservices/put-blob) or [Put Block](https://docs.microsoft.com/rest/api/storageservices/put-block) operations to write objects to multiple locations. Alternatively, the application can issue the [Copy Blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) operation to copy the Blob to a storage account hosted on a separate scale unit after the Put operation to the primary account completes.
 
-### Scheduled Copy Task
+### Scheduled copy task
 
 AzCopy is an excellent tool that can be utilized to copy data from local filesystems, Azure Cloud Storage, Azure Stack Storage, and s3. Currently, AzCopy cannot copy data between two Azure Stack Storage Accounts. Copying objects from a source Azure Stack Storage account to a target Azure Stack Storage account requires an intermediary local filesystem.
 
@@ -57,7 +57,7 @@ You can create a Linux or Windows server as your intermediate server. The server
 - For instruction on setting up a Linux Server, see [Create a Linux server VM by using the Azure Stack portal](azure-stack-quick-linux-portal.md).  
 - For instruction on setting a Windows Server, see [Create a Windows server VM with the Azure Stack portal](azure-stack-quick-windows-portal.md).  
 
-Once you have set up your Windows Server, you will need to install [Azure Stack PowerShell](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json) and [Azure Stack Tools](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-download?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-1908).
+Once you have set up your Windows Server, you will need to install [Azure Stack PowerShell](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?toc=https%3A%2F%2Fdocs.microsoft.com%2FFazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json) and [Azure Stack Tools](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-download?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json).
 
 ## Set up backup for storage accounts
 
