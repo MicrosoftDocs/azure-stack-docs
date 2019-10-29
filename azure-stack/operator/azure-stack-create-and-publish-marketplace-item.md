@@ -41,11 +41,11 @@ To create a custom marketplace item, do the following:
 
 3. The Gallery package should contain the following structure:
 
-   :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/gallerypkg1.png" alt-text="Gallery package":::
+   ![Screenshot of the Gallery package structure](media/azure-stack-create-and-publish-marketplace-item/gallerypkg1.png)
 
    The deployment templates file structure appears as follows:
 
-   :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/gallerypkg2.png" alt-text="Gallery package":::
+   ![Screenshot of the deployment templates structure](media/azure-stack-create-and-publish-marketplace-item/gallerypkg2.png)
 
 4. Replace the following highlighted values (those with numbers) in the Manifest.json template with the value that you provided when [uploading your custom image](azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal).
 

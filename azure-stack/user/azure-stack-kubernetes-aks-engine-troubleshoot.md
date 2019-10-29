@@ -1,10 +1,10 @@
 ---
 title: Troubleshoot the AKS Engine on Azure Stack | Microsoft Docs
-description: This topic contains troubleshooting steps for the AKS Engine on Azure Stack. 
+description: This article contains troubleshooting steps for the AKS Engine on Azure Stack. 
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
-manager: femila
+manager: femilav
 editor: ''
 
 ms.service: azure-stack
@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 09/14/2019
+ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/14/2019
+ms.lastreviewed: 10/28/2019
 
 ---
 
@@ -82,7 +82,7 @@ For more information, see the [Troubleshooting](https://github.com/Azure/aks-eng
 
 ## Collect AKS Engine logs
 
-You can access review information created by the AKS engine. The AKS Engine reports status,  and errors as the application runs. You can either pipe the output to a text file or copy it directly from the command-line console.
+You can access review information created by the AKS engine. The AKS Engine reports status,  and errors as the application runs. You can either pipe the output to a text file or copy it directly from the command-line console. Refer to a list of error codes triggered by the AKS Engine at [Review custom script extension error codes](#review-custom-script-extension-error-codes).
 
 1.  Gather standard output and error from information displayed in the AKS Engine command-line tool.
 
@@ -109,14 +109,14 @@ This script automates the process of gathering the following logs:
  - Gallery item's DVM logs
  - kube-system Snapshot
 
-Without this script you would need to connect to each node in the cluster locate and download the logs manually. In addition, the script can, optionally, upload the collected logs to an storage account that you can use to share the logs with others.
+Without this script, you would need to connect to each node in the cluster locate and download the logs manually. In addition, the script can, optionally, upload the collected logs to a storage account that you can use to share the logs with others.
 
 Requirements:
 
  - A Linux VM, Git Bash or Bash on Windows.
  - [Azure CLI](azure-stack-version-profiles-azurecli2.md) installed in the machine from where the script will be run.
  - Service principal identity signed into an Azure CLI session to Azure Stack. Since the script has the capability of discovering and creating ARM resources to do its work, it requires the Azure CLI and a service principal identity.
- - User account (subscription) where the Kubernetes cluster is is already selected in the environment. 
+ - User account (subscription) where the Kubernetes cluster is already selected in the environment. 
 1. Download the latest release of the script tar file into your client VM, a machine that has access to your Kubernetes cluster or the same machine you used to deploy your cluster with the AKS engine.
 
     Run the following commands:
@@ -155,6 +155,18 @@ Requirements:
 ## Review custom script extension error codes
 
 You can consult a list of error codes created by the custom script extension (CSE) in running your cluster. The CSE error can be useful in diagnosing the root cause of the problem. The CSE for the Ubuntu server used in your Kubernetes cluster supports many of the AKS Engine operations. For more information about the CSE exit codes, see [cse_helpers.sh](https://github.com/Azure/aks-engine/blob/master/parts/k8s/cloud-init/artifacts/cse_helpers.sh).
+
+### Providing Kubernetes logs to a Microsoft support engineer
+
+If after collecting and examining logs you still cannot resolve your issue, you may want to start the process of creating a support ticket and provide the logs that you collected by running `getkuberneteslogs.sh` with the `--upload-logs` parameter set. 
+
+Contact your Azure Stack operator. Your operator uses the information fro your logs to create the support case.
+
+During the process of addressing any support issues, a Microsoft support engineer may request that your Azure Stack operator collect the Azure Stack system logs. You may need to provide your operator with the storage account information where you uploaded the Kubernetes logs by running `getkuberneteslogs.sh`.
+
+Your operator may run the **Get-AzureStackLog** PowerShell cmdlet. This command uses a parameter (`-InputSaSUri`) that specifies the storage account where you stored the Kubernetes logs.
+
+Your operator may combine the logs you produced along with whatever other system logs may be needed by Microsoft support and make them available to the Microsoft.
 
 ## Open GitHub issues
 
