@@ -1,6 +1,6 @@
 ---
-title: How to set up a multiple site-to-site VPN tunnel | Microsoft Docs
-description: Learn how to How to set up a multiple site-to-site VPN tunnel.
+title: How to set up a multiple site-to-site VPN tunnel in Azure Stack | Microsoft Docs
+description: Learn how to set up a multiple site-to-site VPN tunnel  in Azure Stack.
 services: azure-stack
 author: mattbriggs
 
@@ -15,7 +15,7 @@ ms.lastreviewed: 09/19/2019
 # Intent: As an Azure Stack Operator, I want < what? > so that < why? >
 ---
 
-# How to set up a multiple site-to-site VPN tunnel
+# How to set up a multiple site-to-site VPN tunnel in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -49,7 +49,7 @@ This is a multiple step process. For this solution, you're going to be using the
 
 ## Walkthrough
 
-### Deploy WebTier to Azure Stack instances PPE1
+### Deploy web tier to Azure Stack instances PPE1
 
 1.  Open the Azure Stack user portal and select **Create a resource**.
 
@@ -63,12 +63,12 @@ This is a multiple step process. For this solution, you're going to be using the
 
 4.  Enter a **Resource Group** name and check the parameters.
 
-    > [Note]  
+    > ![Note]  
     > The WebTier address space will be **10.10.0.0/16** and you can see resource group location is **PPE1**
 
     ![](./media/azure-stack-network-howto-vpn-tunnel/image5.png)
 
-### Deploy App Tier to the 2nd Azure Stack instances
+### Deploy app tier to the second Azure Stack instances
 
 You can use same process as the **WebTier** but different parameters as shown here:
 
@@ -105,7 +105,7 @@ You can use same process as the **WebTier** but different parameters as shown he
 
 ![](./media/azure-stack-network-howto-vpn-tunnel/image11.png)
 
-### Create tunnel from App Tier to Web Tier
+### Create tunnel from app tier to web tier
 
 1.  Open the Azure Stack user portal and select **Create a resource**.
 
@@ -150,9 +150,9 @@ If you view the output from the custom script extension, you can see the tunnel 
     > [!Note]
     > Depending on your environment you may need to reboot your system.
 
-For reference refer to the on-premises machine network configuration.
+    For reference refer to the on-premises machine network configuration.
 
-![](./media/azure-stack-network-howto-vpn-tunnel/image18.png)
+    ![](./media/azure-stack-network-howto-vpn-tunnel/image18.png)
 
 3.  Run the script adding the **Output** parameters recorded from the AppTier template deployment.
 
@@ -204,7 +204,7 @@ For reference refer to the on-premises machine network configuration.
 
 ### Deploying a GRE tunnel
 
-For this template, this walkthrough has used the [IKE template](azure-stack-network-howto-vpn-tunnel-ipsec.md). However, you can also deploy a [GRE tunnel](azure-stack-network-howto-vpn-tunnel-gre.md). This tunnel offers greater throughput.
+For this template, this walkthrough has used the [IKE template](network-howto-vpn-tunnel-ipsec.md). However, you can also deploy a [GRE tunnel](network-howto-vpn-tunnel-gre.md). This tunnel offers greater throughput.
 
 The process is the almost identical. However when you deploy the tunnel template onto the existing infrastructure, you need to use the outputs from the other system for the first three inputs. You will need to know the **LOCALTUNNELGATEWAY** for the resource group you are deploying into rather than the resource group you are trying to connect to.
 
@@ -213,5 +213,5 @@ The process is the almost identical. However when you deploy the tunnel template
 ## Next steps
 
 [Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)  
-[How to create a VPN Tunnel using GRE](azure-stack-network-howto-vpn-tunnel-gre.md)  
-[How to create a VPN Tunnel using IPSEC](azure-stack-network-howto-vpn-tunnel-ipsec.md)
+[How to create a VPN Tunnel using GRE](network-howto-vpn-tunnel-gre.md)  
+[How to create a VPN Tunnel using IPSEC](network-howto-vpn-tunnel-ipsec.md)

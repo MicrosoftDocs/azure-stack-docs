@@ -1,6 +1,6 @@
 ---
-title: How to create a VPN Tunnel using GRE. | Microsoft Docs
-description: Learn how to create a VPN Tunnel using GRE.
+title: How to create a VPN Tunnel using GRE  in Azure Stack | Microsoft Docs
+description: Learn how to create a VPN Tunnel using GRE in Azure Stack.
 services: azure-stack
 author: mattbriggs
 
@@ -15,7 +15,7 @@ ms.lastreviewed: 09/19/2019
 # Intent: As an Azure Stack Operator, I want < what? > so that < why? >
 ---
 
-# How to create a VPN Tunnel using GRE
+# How to create a VPN tunnel using GRE in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -34,7 +34,7 @@ You can find the templates in the [Azure Intelligent Edge Patterns](https://gith
     -  Windows Server 2016 Datacenter (latest build recommended)
 	-  Custom Script Extension
 
-## Things to Consider
+## Things to consider
 
 - A Network Security Group is applied to the template Tunnel Subnet. Secure the internal subnet in each VNet with an additional NSG.
 - An RDP Deny rule is applied to the Tunnel NSG and will need to be set to allow if you intend to access the VMs via the Public IP address
@@ -58,4 +58,4 @@ This template provides default values for VNet naming and IP addressing. It requ
 ## Next steps
 
 [Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)  
-[How to set up a multiple site-to-site VPN tunnel](azure-stack-network-howto-vpn-tunnel.md)
+[How to set up a multiple site-to-site VPN tunnel](network-howto-vpn-tunnel.md)

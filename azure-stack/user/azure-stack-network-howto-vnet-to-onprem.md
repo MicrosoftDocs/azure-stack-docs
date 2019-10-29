@@ -35,7 +35,7 @@ This article describes how to create a VPN connection to your Azure Stack. A VPN
     > [!Note]  
     > If you do not have the **Fortinet FortiGate-VM For Azure BYOL** and **FortiGate NGFW - Single VM Deployment (BYOL)** available in your Azure Stack Marketplace, contact your cloud operator.
 
--  To activate the FortiGate NVA you will need at least one available FortiGate license file. Information on how to acquire these licenses, see the Fortinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
+-  To activate the FortiGate NVA, you will need at least one available FortiGate license file. Information on how to acquire these licenses, see the Fortinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
 
     This procedure uses the [Single FortiGate-VM deployment](ttps://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/632940/single-FortiGate-vm-deployment). You can find steps on how to connect the FortiGate NVA to the Azure Stack VNET to in your on-premises network.
 
@@ -89,7 +89,7 @@ The following table summarizes the parameters that are used in these deployments
 
 3. Select **OK**.
 
-4. Configure the Public IP for the Fortigate NVA:
+4. Configure the Public IP for the FortiGate NVA:
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image8.png)
 

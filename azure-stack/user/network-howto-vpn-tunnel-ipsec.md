@@ -1,6 +1,6 @@
 ---
-title: How to create a VPN Tunnel using IPSEC | Microsoft Docs
-description: Learn how to create a VPN Tunnel using IPSEC.
+title: How to create a VPN Tunnel using IPSEC  in Azure Stack | Microsoft Docs
+description: Learn how to create a VPN Tunnel using IPSEC  in Azure Stack.
 services: azure-stack
 author: mattbriggs
 
@@ -15,7 +15,7 @@ ms.lastreviewed: 09/19/2019
 # Intent: As an Azure Stack Operator, I want < what? > so that < why? >
 ---
 
-# How to create a VPN Tunnel using IPSEC
+# How to create a VPN Tunnel using IPSEC  in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -58,5 +58,5 @@ This template provides default values for VNet naming and IP addressing.  It req
 ## Next steps
 
 [Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)  
-[How to set up a multiple site-to-site VPN tunnel](azure-stack-network-howto-vpn-tunnel.md)  
-[How to create a VPN Tunnel using GRE](azure-stack-network-howto-vpn-tunnel-gre.md)
+[How to set up a multiple site-to-site VPN tunnel](network-howto-vpn-tunnel.md)  
+[How to create a VPN Tunnel using GRE](network-howto-vpn-tunnel-gre.md)
