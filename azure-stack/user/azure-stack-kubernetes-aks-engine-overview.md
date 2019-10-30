@@ -48,7 +48,7 @@ The following scenarios are supported by the Azure Stack support team:
 2.  AKS Engine deploys the cluster on an existing VNET. For more information, see [Using a custom virtual network with AKS Engine](https://github.com/Azure/aks-engine/blob/master/docs/tutorials/custom-vnet.md).
 3.  [Upgrade](azure-stack-kubernetes-aks-engine-upgrade.md) and [scale](azure-stack-kubernetes-aks-engine-scale.md) operations.
 
-For more information on the AKS Engine and Azure Stack, see [Support policies for AKS Engine on Azure Stack](azure-stack-kubernetes-ask-engine-support.md).
+For more information on the AKS Engine and Azure Stack, see [Support policies for AKS Engine on Azure Stack](azure-stack-kubernetes-aks-engine-support.md).
 
 ## Install the AKS Engine and deploy a Kubernetes cluster
 

@@ -201,7 +201,7 @@
           - name: AKS Engine on Azure Stack
             href: azure-stack-kubernetes-aks-engine-overview.md
           - name: Support policy
-            href: azure-stack-kubernetes-ask-engine-support.md 
+            href: azure-stack-kubernetes-aks-engine-support.md 
           - name: Set up prerequisites
             href: azure-stack-kubernetes-aks-engine-set-up.md
           - name: Create Linux client
@@ -216,6 +216,8 @@
             href: azure-stack-kubernetes-aks-engine-upgrade.md
           - name: Troubleshoot AKS Engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
+          - name: Move AKS Engine from Marketplace item
+            href: azure-stack-kubernetes-aks-engine-dvm.md
         - name: Marketplace item
           items: 
           - name: Deploy a Kubernetes cluster

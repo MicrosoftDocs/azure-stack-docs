@@ -84,6 +84,42 @@ When the script is finished executing, there will be three new folders, **Deploy
 
 Deployment_Files will hold two files **DeployResourceGroups.ps1** and **DeployResources.ps1**. Executing DeployResourceGroups.ps1 will deploy the resource groups. Executing DeployResources.ps1 will deploy all of the resources that were processed. In the case that the tool was executed with **All** or **Microsoft.Compute/virtualMachines** as the resource type, DeployResources.ps1 will prompt the user to input a virtual machine admin password that will be used to create all of the virtual machines.
 
+### Example
+
+1.  Run the script.
+
+    ![](./media/azure-stack-network-howto-backup-replicator/image2.png)
+
+1.  Wait for script to run.
+
+    ![](./media/azure-stack-network-howto-backup-replicator/image3.png)
+
+1.  Review the newly created folders:
+
+    ![](./media/azure-stack-network-howto-backup-replicator/image4.png)
+
+    ![](./media/azure-stack-network-howto-backup-replicator/image5.png)
+
+1.  Set the context to the target subscription.
+
+    ![](./media/azure-stack-network-howto-backup-replicator/image6.png)
+
+1.  Type `cd` to change to the **Deployment_Files** folder.
+
+    ![](./media/azure-stack-network-howto-backup-replicator/image7.png)
+
+1.  Run `DeployResourceGroups.ps1` to deploy the resource groups.
+
+    ![](./media/azure-stack-network-howto-backup-replicator/image8.png)
+
+1.  Run `DeployResources.ps1` to deploy the resources.
+
+    ![](./media/azure-stack-network-howto-backup-replicator/image9.png)
+
+1.  Run `Get-Job` to check the status. Get-Job | Receive-Job will return the results.
+
+    ![](./media/azure-stack-network-howto-backup-replicator/image10.png)
+
 ## Clean Up
 
 Inside the replicatorV3 folder, there is a file named **cleanup_generated_items.ps1** - it will remove the **Deployment_Files**, **Parameter_Files**, and **Custom_ARM_Templates** folders and all of their contents.
@@ -172,42 +208,6 @@ The tool can replicate resources from one subscription to another as long as the
 To ensure successful replication, ensure that the target subscription’s resource provider versions match those of the source subscription.
 
 When replicating from commercial Azure to commercial Azure or from one subscription within Azure Stack to another subscription within the same Azure Stack, there will be issues when replicating storage accounts. This is due to the storage account naming requirement that all storage account names be unique across all of commercial Azure or across all subscriptions on an Azure Stack region/instance. Replicating storage accounts across different Azure Stack instances will succeed as the Stacks are separate regions/instances.
-
-### Example
-
-1.  Run the script.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image2.png)
-
-1.  Wait for script to run.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image3.png)
-
-1.  Review the newly created folders:
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image4.png)
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image5.png)
-
-1.  Set the context to the target subscription.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image6.png)
-
-1.  Type `cd` to change to the **Deployment_Files** folder.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image7.png)
-
-1.  Run `DeployResourceGroups.ps1` to deploy the resource groups.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image8.png)
-
-1.  Run `DeployResources.ps1` to deploy the resources.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image9.png)
-
-1.  Run `Get-Job` to check the status. Get-Job | Receive-Job will return the results.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image10.png)
 
 ## Next steps
 
