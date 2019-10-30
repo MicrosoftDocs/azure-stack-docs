@@ -197,9 +197,9 @@ When running the tool with **All** as the resource type, the following order wil
             - Network Interface private IP address  
             - Network Security Group configuration  
             - Availability set configuration  
-
+ 
 > ![Note]  
-> Only creates managed disks for OS disk and data disks, no support for using storage accounts currently
+> Only creates managed disks for OS disk and data disks. Currently, no support for using storage accounts. 
 
 ### Limitations
 
