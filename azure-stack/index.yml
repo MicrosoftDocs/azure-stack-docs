@@ -18,7 +18,7 @@ highlightedContent:
 # itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
   items:
     # Card
-    - title: Announcement blog post [TBD]
+    - title: Azure Stack family announcement
       itemType: overview
       url: https://azure.microsoft.com/blog/tag/azure-stack/
     - title: Comparing the Azure Stack family of services
