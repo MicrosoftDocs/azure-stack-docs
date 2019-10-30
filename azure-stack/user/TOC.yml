@@ -216,6 +216,8 @@
             href: azure-stack-kubernetes-aks-engine-upgrade.md
           - name: Troubleshoot AKS Engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
+          - name: Move AKS Engine from Marketplace item
+            href: azure-stack-kubernetes-aks-engine-dvm.md
         - name: Marketplace item
           items: 
           - name: Deploy a Kubernetes cluster
