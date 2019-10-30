@@ -20,7 +20,7 @@ highlightedContent:
     # Card
     - title: Azure Stack family announcement
       itemType: overview
-      url: https://azure.microsoft.com/blog/tag/azure-stack/
+      url: http://aka.ms/AzsFamAnnounce
     - title: Comparing the Azure Stack family of services
       itemType: overview
       url: /azure-stack/operator/compare-azure-azure-stack
