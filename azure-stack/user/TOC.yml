@@ -276,8 +276,8 @@
       href: azure-stack-network-howto-vnet-to-vnet-stacks.md
     - name: VNET peering
       href: azure-stack-network-howto-vnet-to-vnet.md
-    - name: Connect to iSCSI storage
-      href: azure-stack-network-howto-iscsi-storage.md
+    - name: Back up VM with Commvault
+      href: azure-stack-network-howto-backup-commvault.md
 - name: Concepts
   items:
   - name: Hybrid cloud patterns
