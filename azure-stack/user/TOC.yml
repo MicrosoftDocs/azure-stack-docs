@@ -216,8 +216,6 @@
             href: azure-stack-kubernetes-aks-engine-upgrade.md
           - name: Troubleshoot AKS Engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
-          - name: Move AKS Engine from Marketplace item
-            href: azure-stack-kubernetes-aks-engine-dvm.md
         - name: Marketplace item
           items: 
           - name: Deploy a Kubernetes cluster
@@ -228,6 +226,8 @@
             href: azure-stack-solution-template-kubernetes-adfs.md
           - name: Enable the Kubernetes dashboard
             href: azure-stack-solution-template-kubernetes-dashboard.md
+          - name: Move AKS Engine from Marketplace item
+            href: azure-stack-kubernetes-aks-engine-dvm.md
           - name: Troubleshoot Kubernetes cluster
             href: azure-stack-solution-template-kubernetes-trouble.md
       - name: Deploy Cognitive Services
