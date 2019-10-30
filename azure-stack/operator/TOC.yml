@@ -19,7 +19,7 @@
 - name: Quickstarts
   expanded: true
   items:
-  - name: Use the administration portal
+  - name: Use the administrator portal
     href: azure-stack-manage-portals.md
 - name: Tutorials
   items:
