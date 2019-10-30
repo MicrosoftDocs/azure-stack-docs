@@ -17,7 +17,7 @@
         - name: Hybrid identity (TBD)
         - name: Hybrid relay
           href: pattern-hybrid-relay.md
-        - name: Live video at the edge (TBD/Better as aggregate?)      
+        - name: Live video at the edge (base or aggregate?)      
           href: pattern-live-video-at-edge.md
         - name: Tiered data (TBD) 
         - name: Training ML models at the edge

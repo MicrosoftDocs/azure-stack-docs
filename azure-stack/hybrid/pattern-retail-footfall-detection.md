@@ -1,5 +1,5 @@
 ---
-title: Hybrid solution for implementing a AI-based footfall detection using Azure and Azure Stack
+title: Hybrid pattern for implementing a AI-based footfall detection using Azure and Azure Stack
 description: Learn how to use Azure and Azure Stack services, to implement an AI-based footfall detection solution for analyzing retail store traffic.
 author: BryanLa
 ms.service: azure-stack
@@ -10,9 +10,9 @@ ms.reviewer: anajod
 ms.lastreviewed: 10/31/2019
 ---
 
-# Footfall detection solution
+# Footfall detection pattern
 
-This article provides an overview for implementing an AI-based footfall detection solution. This solution is useful for analyzing visitor traffic in retail stores. The solution generates insights from real world actions, using Azure, Azure Stack, and the Custom Vision AI Dev Kit.
+This pattern provides an overview for implementing an AI-based footfall detection solution, for analyzing visitor traffic in retail stores. The solution generates insights from real world actions, using Azure, Azure Stack, and the Custom Vision AI Dev Kit.
 
 ## Context and problem
 
@@ -20,9 +20,9 @@ Contoso Stores would like to gain insights on how customers are receiving their 
 
 Contoso would like to find an unobtrusive, privacy-friendly way to determine their customers' demographics, loyalty, and reactions to store displays and products.
 
-## Solution
+## Solution architecture
 
-This retail analytics solution uses a tiered approach to inferencing at the edge. By using the Custom Vision AI Dev Kit, only images with human faces are sent for analysis to a private Azure Stack that runs Azure Cognitive Services. Anonymized, aggregated data is sent to Azure for aggregation across all stores and visualization in Power BI. Combining the edge and public cloud allows Contoso to take advantage of modern AI technology. While at the same time, remain in compliance with their corporate policies and respect their customers' privacy.
+This retail analytics pattern uses a tiered approach to inferencing at the edge. By using the Custom Vision AI Dev Kit, only images with human faces are sent for analysis to a private Azure Stack that runs Azure Cognitive Services. Anonymized, aggregated data is sent to Azure for aggregation across all stores and visualization in Power BI. Combining the edge and public cloud allows Contoso to take advantage of modern AI technology. While at the same time, remain in compliance with their corporate policies and respect their customers' privacy.
 
 [![Footfall detection solution](media/pattern-retail-footfall-detection/solution-architecture.png)](media/pattern-retail-footfall-detection/solution-architecture.png)
 
@@ -76,12 +76,12 @@ This solution can span many devices and locations, which could get unwieldy. [Az
 
 ### Security
 
-This solution captures customer images, making security a paramount consideration. Make sure all storage accounts are secured with the proper access policies, and that keys are rotated regularly. Ensure storage accounts and Event Hubs have retention policies that meet corporate and government privacy regulations. Also make sure to tier access levels so every person that requires access to the system, only has access to the data they need for their role.
+This solution captures customer images, making security a paramount consideration. Make sure all storage accounts are secured with the proper access policies, and that keys are rotated regularly. Ensure storage accounts and Event Hubs have retention policies that meet corporate and government privacy regulations. Also make sure to tier the user access levels. Tiering ensures that users only have access to the data they need for their role.
 
 ## Next steps
 
 To learn more about the topics introduced in this article:
-- See the [Tiered Data pattern](solution-deployment-guide-tiered-data.md) to learn more about patterns used by this solution.
+- See the [Tiered Data pattern](solution-deployment-guide-tiered-data.md), which is leveraged by the footfall detection pattern.
 - See the [Custom Vision AI Dev Kit](https://azure.github.io/Vision-AI-DevKit-Pages/) to learn more about using custom vision. 
 
-When you're ready to test the solution example, continue with the [Footfall detection deployment guide](solution-deployment-guide-retail-footfall-detection.md), which provides step-by-step instructions for deploying and testing its components.
+When you're ready to test the solution example, continue with the [Footfall detection deployment guide](solution-deployment-guide-retail-footfall-detection.md). The deployment guide provides step-by-step instructions for deploying and testing its components.
