@@ -102,9 +102,9 @@ The topology of this approach will look like the following diagram:
     
     j. Leave the **Guest OS diagnostics** set to **Disabled**.
     
-    h. Leave the default **Diagnostics storage account**.
+    k. Leave the default **Diagnostics storage account**.
     
-    j. Select **OK**.
+    l. Select **OK**.
 
 6. Review the summary of your Commvault VM after it has passed validation. Select **OK**.
 
@@ -132,7 +132,7 @@ You will need to know if your identity manager is Azure AD or AD DFS. The follow
 
 3. After Commvault installs on in your Commvault VM, open the Commcell Console. From Start, select **Commvault** > **Commvault Commcell Console**.
 
-    ![](./media/azure-stack-network-howto-backup-commvault/commcell_console.png)
+    ![](./media/azure-stack-network-howto-backup-commvault/commcell-console.png)
 
 4. Configure your backup repositories to use storage external to the Azure Stack in the Commvault Commcell Console. In the CommCell Browser, select Storage Resources > Storage Pools. Right-click and select **Add Storage Pool.** Select **Cloud**.
 
@@ -140,7 +140,7 @@ You will need to know if your identity manager is Azure AD or AD DFS. The follow
 
 6. Select **Create** > **Cloud Storage**.
 
-    ![](./media/azure-stack-network-howto-backup-commvault/commcell_storage_add_storage_device.png)
+    ![](./media/azure-stack-network-howto-backup-commvault/commcell-storage-add-storage-device.png)
 
 7. Select your cloud service provider. In this procedure, we will use a second Azure Stack in a different location. Select Microsoft Azure Storage.
 
@@ -160,7 +160,7 @@ You will need to know if your identity manager is Azure AD or AD DFS. The follow
 
 10. Create a Microsoft Azure Stack Client by following the instructions at [Creating a Microsoft Azure Stack Client](https://documentation.commvault.com/commvault/v11_sp13/article?p=86495.htm)
 
-    ![](./media/azure-stack-network-howto-backup-commvault/commcell_ceate_client.png)
+    ![](./media/azure-stack-network-howto-backup-commvault/commcell-ceate-client.png)
 
 11. Select the VMs or Resource Groups to protect and attach a backup policy.
 
