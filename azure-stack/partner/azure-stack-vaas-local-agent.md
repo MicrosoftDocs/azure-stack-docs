@@ -96,7 +96,7 @@ Check that your machine meets the following criteria:
 | CloudAdminUserName | The cloud admin user who can access and run permitted commands within the privileged endpoint. For example it may be, AzusreStack\CloudAdmin. See [here](azure-stack-vaas-parameters.md) for more information. |
 | CloudAdminPassword | The password for cloud admin account.|
 
-![Download prerequisites](media/installingprereqs.png)
+![Download prerequisites](media/installing-prereqs.png)
 
 ## Perform sanity checks before starting the tests
 
@@ -148,7 +148,7 @@ If you don't see any errors reported, then the local agent has succeeded. The fo
 
 `Heartbeat was sent successfully.`
 
-![Started agent](media/startedagent.png)
+![Started agent](media/started-agent.png)
 
 An agent is uniquely identified by its name. By default, it uses the fully qualified domain name (FQDN) name of the machine from where it was started. You must minimize the window to avoid any accidental selects on the window as changing the focus pauses all other actions.
 
