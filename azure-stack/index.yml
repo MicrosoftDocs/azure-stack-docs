@@ -21,7 +21,7 @@ highlightedContent:
     - title: Azure Stack family announcement
       itemType: overview
       url: http://aka.ms/AzsFamAnnounce
-    - title: A comparison of the Azure Stack products and solutions family
+    - title: Comparing the Azure Stack family of products and solutions
       itemType: overview
       url: /azure-stack/operator/compare-azure-azure-stack
 
