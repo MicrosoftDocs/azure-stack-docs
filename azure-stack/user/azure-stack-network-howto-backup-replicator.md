@@ -181,7 +181,7 @@ When running the tool with **All** as the resource type, the following order wil
             - Network Security Group configuration  
             - Availability set configuration  
 
-> [Note]  
+> [!Note]  
 > Only creates managed disks for OS disk and data disks. Currently, there isn't support for using storage accounts 
 
 ### Limitations
