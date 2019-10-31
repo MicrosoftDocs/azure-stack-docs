@@ -1,27 +1,27 @@
 ---
-title: How to back up resources using the Azure Stack subscription replicator | Microsoft Docs
-description: Learn how to back up resources using the Azure Stack subscription replicator.
+title: How to replicate resources across multiple Azure Stack subscriptions | Microsoft Docs
+description: Learn how to replicate resources using the Azure Stack subscription replicator set of scripts.
 services: azure-stack
 author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: mabrigg
 ms.reviewer: rtiberiu
-ms.lastreviewed: 10/29/2019
+ms.lastreviewed: 10/30/2019
 
 # keywords:  X
 # Intent: As an Azure Stack Operator, I want < what? > so that < why? >
 ---
 
-# How to back up resources using the Azure Stack subscription replicator
+# How to replicate resources using the Azure Stack subscription replicator
 
-You can use the Azure Stack subscription replicator PowerShell script to copy the resources between Azure Stack subscriptions. The replicator script reads and rebuilds the Azure Resource Manager resources from different Azure and Azure Stack subscriptions. This article looks at how the script works, how you can use the script, and provides a reference for operations in the script.
+You can use the Azure Stack subscription replicator PowerShell script to copy the resources between Azure Stack subscriptions, across Azure Stack stamps, or between Azure Stack and Azure. The replicator script reads and rebuilds the Azure Resource Manager resources from different Azure and Azure Stack subscriptions. This article looks at how the script works, how you can use the script, and provides a reference for script operations.
 
 ## Subscription replicator overview
 
-The Azure subscription replicator (v3) was designed to be modular. This tool uses a core processor that orchestrates the resource replication. In addition, the tool supports customizable processors that act as templates for copying different types of resources. 
+The Azure subscription replicator was designed to be modular. This tool uses a core processor that orchestrates the resource replication. In addition, the tool supports customizable processors that act as templates for copying different types of resources. 
 
 The core processor is made up of the following three scripts:
 
@@ -90,35 +90,18 @@ Deployment_Files will hold two files **DeployResourceGroups.ps1** and **DeployRe
 
     ![](./media/azure-stack-network-howto-backup-replicator/image2.png)
 
-1.  Wait for script to run.
+> [!Note]  
+> Don't forget to configure the source Environment and the subscription context for the PS instance. 
 
-    ![](./media/azure-stack-network-howto-backup-replicator/image3.png)
-
-1.  Review the newly created folders:
+3.  Review the newly created folders:
 
     ![](./media/azure-stack-network-howto-backup-replicator/image4.png)
 
-    ![](./media/azure-stack-network-howto-backup-replicator/image5.png)
-
-1.  Set the context to the target subscription.
+4.  Set the context to the target subscription, change the folder to **Deployment_Files**, deploy the resource groups and then start the resource deployment.
 
     ![](./media/azure-stack-network-howto-backup-replicator/image6.png)
 
-1.  Type `cd` to change to the **Deployment_Files** folder.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image7.png)
-
-1.  Run `DeployResourceGroups.ps1` to deploy the resource groups.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image8.png)
-
-1.  Run `DeployResources.ps1` to deploy the resources.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image9.png)
-
-1.  Run `Get-Job` to check the status. Get-Job | Receive-Job will return the results.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image10.png)
+5.  Run `Get-Job` to check the status. Get-Job | Receive-Job will return the results.
 
 ## Clean Up
 
@@ -197,17 +180,19 @@ When running the tool with **All** as the resource type, the following order wil
             - Network Interface private IP address  
             - Network Security Group configuration  
             - Availability set configuration  
- 
-> [!Note]  
-> Only creates managed disks for OS disk and data disks. Currently, no support for using storage accounts. 
+
+            > ![Note]  
+            > Only creates managed disks for OS disk and data disks, no support for using storage accounts currently
 
 ### Limitations
 
 The tool can replicate resources from one subscription to another as long as the target subscription’s resource providers support all of the resources and options that are being replicated from the source subscription.
 
-To ensure successful replication, ensure that the target subscription’s resource provider versions match those of the source subscription.
+To ensure successful replication, mare sure that the target subscription’s resource provider versions match those of the source subscription.
 
 When replicating from commercial Azure to commercial Azure or from one subscription within Azure Stack to another subscription within the same Azure Stack, there will be issues when replicating storage accounts. This is due to the storage account naming requirement that all storage account names be unique across all of commercial Azure or across all subscriptions on an Azure Stack region/instance. Replicating storage accounts across different Azure Stack instances will succeed as the Stacks are separate regions/instances.
+
+
 
 ## Next steps
 
