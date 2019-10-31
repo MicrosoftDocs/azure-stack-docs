@@ -11,10 +11,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 10/29/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 10/29/2019
 
 
 
@@ -39,22 +39,16 @@ Before you exercise the monthly update process in VaaS, you should be familiar w
 
 ## Required tests
 
-The following tests should be executed in the following order for monthly software validation:
+The following tests must be executed in the following order for monthly software validation:
 
-1. Monthly Azure Stack Update Verification
-2. Cloud Simulation Engine
+- Step 1 - Monthly AzureStack Update Verification
+- Step 2 - OEM Extension Package Verification
+- Step 3 - OEM - Cloud Simulation Engine
 
 ## Validating software updates
 
 1. Create a new **Package Validation** workflow.
 1. For the required tests above, follow the instructions from [Run Package Validation tests](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests). See the section below for additional instructions on the **Monthly Azure Stack Update Verification** test.
-
-### Apply the monthly update
-
-1. Select an agent to execute tests against.
-1. Schedule **Monthly Azure Stack Update Verification**.
-1. Provide the location to the OEM extension package currently deployed on the stamp, and the location to the OEM extension package that will be applied during the update. To configure the URLs for these packages, see [managing packages for validation](azure-stack-vaas-validate-oem-package.md#managing-packages-for-validation).
-1. Follow the steps in the UI from the selected agent.
 
 If you have questions or concerns, contact [VaaS Help](mailto:vaashelp@microsoft.com).
 
