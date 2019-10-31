@@ -40,9 +40,9 @@ Azure Stack HCI is Microsoft’s hyperconverged solution available from a wide r
 Azure Stack HCI is part of the Azure and Azure Stack family, using the same software-defined compute, storage, and networking software as Azure Stack. Here's a quick summary of the different solutions (for more details, see [Comparing the Azure Stack ecosystem](compare-azure-azure-stack.md)):
 
 - [Azure](https://azure.microsoft.com) - Use public cloud services for on-demand, self-service computing resources to migrate and modernize existing apps and build new cloud-native apps.
-- [Azure Stack Hub](azure-stack-overview.md) - Run cloud apps on-premises, when disconnected, or to meet regulatory requirements, using consistent Azure services.
-- [Azure Stack HCI](https://azure.microsoft.com/overview/azure-stack/hci) - Run virtualized apps on-premises, replace and consolidate aging server infrastructure, and connect to Azure for cloud services.
 - [Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) - Accelerate machine learning workloads and run containerized apps or virtualized workloads on-premises, on a cloud-managed appliance.
+- [Azure Stack HCI](https://azure.microsoft.com/overview/azure-stack/hci) - Run virtualized apps on-premises, replace and consolidate aging server infrastructure, and connect to Azure for cloud services.
+- [Azure Stack Hub](azure-stack-overview.md) - Run cloud apps on-premises, when disconnected, or to meet regulatory requirements, using consistent Azure services.
 
 ![Azure Stack Edge is a cloud-managed appliance for running machine-learning and containerized apps at the edge, Azure Stack HCI is a hyperconverged solution for running VMs and storage on-premises, while Azure Stack Hub provides cloud-native, Azure-consistent services on-premises.](media/compare-azure-azure-stack/azure-stack-family.png)
 
