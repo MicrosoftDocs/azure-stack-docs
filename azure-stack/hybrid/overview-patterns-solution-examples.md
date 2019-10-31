@@ -4,10 +4,10 @@ description: An overview of hybrid design patterns and solution examples, which 
 author: BryanLa
 ms.service: azure-stack
 ms.topic: overview
-ms.date: 10/31/2019
+ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 10/31/2019
+ms.lastreviewed: 11/05/2019
 ---
 
 # Hybrid patterns and solution examples for Azure and Azure Stack
@@ -20,7 +20,7 @@ Hybrid scenarios vary greatly with the resources that are available for developm
 
 ## Design patterns
 
-Design patterns cull generalized and repeatable design guidance, from real world customer scenarios and experiences. A pattern is abstract, allowing it to be applicable to different types of scenarios or vertical industries. Each pattern documents the context and problem, and provides an overview of a solution example.
+Design patterns cull generalized and repeatable design guidance, from real world customer scenarios and experiences. A pattern is abstract, allowing it to be applicable to different types of scenarios or vertical industries. Each pattern documents the context and problem, and provides an overview of a solution example. The solution example is meant as a possible implementation of the pattern.
 
 There are two types of pattern articles:
 

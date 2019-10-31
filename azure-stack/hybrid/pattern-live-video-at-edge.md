@@ -72,13 +72,11 @@ It’s important that the video sources, such as networked cameras, be appropria
 
 ## Next steps
 
-To learn more about the topics introduced in this article:
+To learn more about topics introduced in this article:
+- See the [Azure Media Services documentation](/azure/media-services/latest/), for details on Live Video Analytics.
+- See the [Azure IoT Edge documentation](/azure/iot-edge/) for more information about the IoT Edge service.
+- see the [Azure Functions documentation](/azure/azure-functions/) for details on developing apps using Functions.
+- See [Hybrid application design considerations](overview-app-design-considerations.md) to learn more about best practices, and answer additional questions.
+- See the [Azure Stack family of products and solutions](/azure-stack), to learn more about the entire portfolio of products and solutions.
 
-- This pattern uses the following services:
-  - [Azure Media Services](/azure/media-services/latest/).
-  - [Azure IoT Edge](/azure/iot-edge/).
-  - [Azure Functions](/azure/azure-functions/).
-
-- This pattern uses the Azure Stack family of products, including Azure Stack Hub. To learn more, refer to the [Azure Stack documentation](/azure-stack)
-
-When you're ready to test the solution example, continue with the [Live video at the edge deployment guide - TBD](), which provides step-by-step instructions for deploying and testing its components. This example also requires a networked camera.
+When you're ready to test the solution example, continue with the [Live video at the edge solution deployment guide](https://github.com/Azure-Samples/azure-intelligent-edge-patterns). The deployment guide provides step-by-step instructions for deploying and testing its components. This example also requires a networked camera.

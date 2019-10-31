@@ -71,13 +71,11 @@ This pattern allows Azure ML to access possible sensitive data on-premises. Ensu
 
 ## Next steps
 
-To learn more about the topics introduced in this article:
+To learn more about topics introduced in this article:
+- See the [Azure Machine Learning documentation](/azure/machine-learning) for an overview of ML and related topics.
+- See [Azure Container Registry](/azure/container-registry/) to learn how to build, store, and manage images for container deployments.
+- Refer to [App Service on Azure Stack Hub](/azure-stack/operator/azure-stack-app-service-overview) to learn more about the resource provider and how to deploy.
+- See [Hybrid application design considerations](overview-app-design-considerations.md) to learn more about best practices, and answer additional questions.
+- See the [Azure Stack family of products and solutions](/azure-stack), to learn more about the entire portfolio of products and solutions.
 
-- This pattern uses the following services:
-  - [Azure Machine Learning documentation](/azure/machine-learning).
-  - [Azure Container Registry](/azure/container-registry/).
-  - [Azure Stack Hub with App Service](/azure-stack/operator/azure-stack-app-service-overview).
-
-- This pattern uses the Azure Stack family of products, including Azure Stack Hub. To learn more, refer to the [Azure Stack documentation](/azure-stack)
-
-When you're ready to test the solution example, continue with the [ML training at the edge deployment guide - TBD](), which provides step-by-step instructions for deploying and testing its components.
+When you're ready to test the solution example, continue with the [Train ML model at the edge deployment guide](https://aka.ms/edgetrainingdeploy). The deployment guide provides step-by-step instructions for deploying and testing its components.

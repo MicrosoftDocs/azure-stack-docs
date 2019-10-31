@@ -1,6 +1,6 @@
 ---
-title: Pattern for building a hybrid cloud application, that use Azure and an Azure Stack Hub.
-description: Learn how to use Azure and an Azure Stack Hub, to build a hybrid cloud application.
+title: Pattern for building a cross-cloud application, that uses on-prem data and Azure and Azure Stack Hub.
+description: Learn how to use Azure and an Azure Stack Hub, to build a cross-cloud application that uses on-prem data.
 author: BryanLa
 ms.service: azure-stack
 ms.topic: article
@@ -10,9 +10,9 @@ ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 ---
 
-# Hybrid app pattern
+# Cross-cloud scaling (on-premises data) pattern
 
-Learn how to build a hybrid application that spans both Azure and Azure Stack Hub.
+Learn how to build a hybrid application that spans both Azure and Azure Stack Hub, but uses a single on-prem data source.
 
 ## Context and problem
 
@@ -63,4 +63,4 @@ To learn more about the topics introduced in this article:
 
 - This pattern uses the Azure Stack family of products, including Azure Stack Hub. To learn more, refer to the [Azure Stack documentation](/azure-stack)
 
-When you're ready to test the solution example, continue with the [Hybrid app solution deployment guide](solution-deployment-guide-hybrid.md), which provides step-by-step instructions for deploying and testing its components.
+When you're ready to test the solution example, continue with the [Cross-cloud scaling (on-premises data) solution deployment guide](solution-deployment-guide-cross-cloud-scaling-onprem-data.md), which provides step-by-step instructions for deploying and testing its components.

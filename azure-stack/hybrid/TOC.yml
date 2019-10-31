@@ -14,8 +14,6 @@
           href: pattern-cicd-pipeline.md
         - name: Geo-distributed app
           href: pattern-geo-distributed.md
-        - name: Hybrid identity (TBD)
-          href: https://aka.ms/AzureStack
         - name: Hybrid relay
           href: pattern-hybrid-relay.md
         - name: Live video at the edge (base or aggregate?)      
@@ -26,8 +24,8 @@
           href: pattern-train-ml-model-at-edge.md
   - name: Multi
     items:
-    - name: Hybrid app (base or aggregate?)
-      href: pattern-hybrid-app.md
+    - name: Cross-cloud scaling (on-premises data)
+      href: pattern-cross-cloud-scaling-onprem-data.md
     - name: Footfall detection (retail)
       href: pattern-retail-footfall-detection.md
     - name: Out-of-stock detection at the edge (TBD)
@@ -36,24 +34,30 @@
   items:
   - name: Cross-cloud scaling 
     href: solution-deployment-guide-cross-cloud-scaling.md
+  - name: Cross-cloud scaling (on-premises data)
+    href: solution-deployment-guide-cross-cloud-scaling-onprem-data.md
   - name: DevOps hybrid CI/CD 
-    href: solution-deployment-guide-cicd-pipeline.md
+    href: https://aka.ms/hybriddevopsdeploy
   - name: Footfall detection (retail)
     href: solution-deployment-guide-retail-footfall-detection.md
   - name: Geo-distributed app
     href: solution-deployment-guide-geo-distributed.md    
-  - name: Hybrid app
-    href: solution-deployment-guide-hybrid.md
   - name: Hybrid connectivity
     href: solution-deployment-guide-connectivity.md
   - name: Hybrid identity
     href: solution-deployment-guide-identity.md
+  - name: Hybrid relay
+    href: https://aka.ms/hybridrelaydeployment
   - name: Tiered data
-    href: solution-deployment-guide-tiered-data.md
+    href: https://aka.ms/tiereddatadeploy
   - name: High-availability MongoDB
     href: solution-deployment-guide-mongodb-ha.md
   - name: High-availability SQL Server 2016
     href: solution-deployment-guide-sql-ha.md
+  - name: Out-of-stock at the edge
+    href: https://aka.ms/edgeinferencingdeploy
+  - name: Training ML models at the edge
+    href: https://aka.ms/edgetrainingdeploy 
 - name: Concepts
   items:
   - name: Hybrid app design considerations

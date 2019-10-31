@@ -39,7 +39,7 @@ This solution uses the following components:
 |----------|-----------|-------------|
 | Azure |  |  |
 | | Azure VM | An Azure VM provides a publicly accessible endpoint for the on-premises resource. |
-| | Azure Stream Analytics Job | An [Azure Service Bus Relay](/azure/service-bus-relay/) provides the infrastructure for maintaining the tunnel and connection between the Azure VM and Azure Stack Hub VM.|
+| | Azure Service Bus Relay | An [Azure Service Bus Relay](/azure/service-bus-relay/) provides the infrastructure for maintaining the tunnel and connection between the Azure VM and Azure Stack Hub VM.|
 | Azure Stack Hub |    |             |
 | | Compute | An Azure Stack Hub VM provides the server-side of the Hybrid Relay tunnel. |
 | | Storage | The AKS Engine cluster deployed into Azure Stack Hub provides a scalable, resilient engine to run the Face API container.|
@@ -62,12 +62,13 @@ This solution can span many devices and locations, which could get unwieldy. Azu
 
 ### Security
 
-This solution captures customer images and personal data, making security paramount. Make sure all storage accounts are secured with the proper access policies and that keys are rotated regularly. Ensure the storage accounts and Event Hubs have retention policies, that meet corporate and government privacy regulations. Also make sure to tier access levels, so users only have access to the data they need for their role.
+This pattern as shown allows for unfettered access to a port on an internal device from the edge. Consider adding an authentication mechanism to the service on the internal device, or in front of the hybrid relay endpoint. 
 
 ## Next steps
 
-To learn more about the topics introduced in this article:
+To learn more about topics introduced in this article:
 - This pattern uses Azure Service Bus Relays. For more information, see the [Azure Service Bus Relay documentation](/azure/service-bus-relay/).
-- This pattern uses the Azure Stack family of products, including Azure Stack Hub. To learn more, refer to the [Azure Stack documentation](/azure-stack)
+- See [Hybrid application design considerations](overview-app-design-considerations.md) to learn more about best practices, and answer additional questions.
+- See the [Azure Stack family of products and solutions](/azure-stack), to learn more about the entire portfolio of products and solutions.
 
-When you're ready to test the solution example, continue with the [Hybrid relay deployment guide - TBD](), which provides step-by-step instructions for deploying and testing its components.
+When you're ready to test the solution example, continue with the [Hybrid relay solution deployment guide](https://aka.ms/hybridrelaydeployment). The deployment guide provides step-by-step instructions for deploying and testing its components.

@@ -12,12 +12,12 @@
     },
     {
       "source_path": "azure-stack/user/azure-stack-solution-staged-data.md",
-      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-tiered-data",
+      "redirect_url": "https://aka.ms/tiereddatadeploy",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/user/azure-stack-solution-hybrid-cloud.md",
-      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-hybrid",
+      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling-onprem-data",
       "redirect_document_id": false
     },
     {
@@ -42,7 +42,7 @@
     },
     {
       "source_path": "azure-stack/user/azure-stack-solution-pipeline.md",
-      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-cicd-pipeline",
+      "redirect_url": "https://aka.ms/hybriddevopsdeploy",
       "redirect_document_id": false
     },
     {
