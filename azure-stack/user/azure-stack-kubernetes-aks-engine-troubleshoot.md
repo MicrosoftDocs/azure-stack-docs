@@ -34,7 +34,7 @@ You may encounter an issue when deploying or working with the AKS Engine on Azur
 
 ### Try GoFish
 
-If the installation steps in failed, you try to install using the GoFish package manager. [GoFish](https://gofi.sh) describes itself as a cross-platform Homebrew.
+If the installation steps in failed, you can install the AKS Engine using the GoFish package manager. [GoFish](https://gofi.sh) describes itself as a cross-platform Homebrew.
 
 #### Install the AKS Engine with GoFish on Linux
 
