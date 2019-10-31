@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Stack partner documentation
+title: Azure Stack Hub partner documentation
 metadata:
   document_id: 
-  title: Azure Stack partner D\documentation - tutorials, API R\reference
-  description: Learn how to validate your hardware to host Azure Stack. Validation as a Service is a native Azure Service designed for use by solution partners who are co-engineering Azure Stack offerings with Microsoft.
+  title: Azure Stack Hub partner D\documentation - tutorials, API R\reference
+  description: Learn how to validate your hardware to host Azure Stack. Validation as a Service is a native Azure Service designed for use by solution partners who are co-engineering Azure Stack Hub offerings with Microsoft.
   services: azure-stack
   author: mattbriggs
   manager: femila
@@ -16,7 +16,7 @@ metadata:
   ms.author: mabrigg
   ms.reviewer: johnhas
 abstract:
-  description: You can use Validation as a Service to check your hardware for use with Azure Stack. The service is a native Azure service designed for use by solution partners who are co-engineering Azure Stack offerings with Microsoft.
+  description: You can use Validation as a Service to check your hardware for use with Azure Stack. The service is a native Azure service designed for use by solution partners who are co-engineering Azure Stack Hub offerings with Microsoft.
 sections:
 - title: 5-Minute Quickstart
   items: 
@@ -32,10 +32,10 @@ sections:
 - title: Step-by-step tutorials
   items:
   - type: paragraph
-    text: 'Learn how to validate your Azure Stack hardware.'
+    text: 'Learn how to validate your Azure Stack Hub hardware.'
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure-stack/partner/azure-stack-vaas-validate-solution-new">Validate a new Azure Stack solution</a>
+    - html: <a href="/azure-stack/partner/azure-stack-vaas-validate-solution-new">Validate a new Azure Stack Hub solution</a>
     - html: <a href="/azure-stack/partner/azure-stack-vaas-validate-oem-package">Validate OEM packages</a>
     - html: <a href="/azure-stack/partner/azure-stack-vaas-validate-microsoft-updates">Validate software updates from Microsoft</a>
