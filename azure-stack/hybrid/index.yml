@@ -51,7 +51,7 @@ landingContent:
           - text: Cross-cloud scaling
             url: solution-deployment-guide-cross-cloud-scaling.md
           - text: DevOps hybrid CI/CD
-            url: solution-deployment-guide-cicd-pipeline.md
+            url: https://aka.ms/hybriddevopsdeploy 
           - text: Footfall detection (retail)
             url: solution-deployment-guide-retail-footfall-detection.md
           - text: Geo-distributed app

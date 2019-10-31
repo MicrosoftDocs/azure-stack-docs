@@ -234,4 +234,4 @@ For more information, see the following resources:
 
 -   [Hybrid cloud](https://azure.microsoft.com/overview/hybrid-cloud/)
 -   [Hybrid cloud applications](https://azure.microsoft.com/solutions/hybrid-cloud-app/)
--   [Develop Azure Resource Manager templates for cloud consistency](http://aka.ms/consistency)
+-   [Develop Azure Resource Manager templates for cloud consistency](https://aka.ms/consistency)

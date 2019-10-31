@@ -309,4 +309,4 @@ went through the VPN connection.
 
 ## Next steps
 
-* [Deploy apps to Azure and Azure Stack](../hybrid/solution-deployment-guide-cicd-pipeline.md)
+* [Deploy apps to Azure and Azure Stack](azure-stack-solution-pipeline.md)
