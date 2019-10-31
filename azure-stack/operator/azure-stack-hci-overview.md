@@ -42,9 +42,9 @@ Azure Stack HCI is part of the Azure and Azure Stack family, using the same soft
 - [Azure](https://azure.microsoft.com) - Use public cloud services for on-demand, self-service computing resources to migrate and modernize existing apps and build new cloud-native apps.
 - [Azure Stack Hub](azure-stack-overview.md) - Run cloud apps on-premises, when disconnected, or to meet regulatory requirements, using consistent Azure services.
 - [Azure Stack HCI](https://azure.microsoft.com/overview/azure-stack/hci) - Run virtualized apps on-premises, replace and consolidate aging server infrastructure, and connect to Azure for cloud services.
-- [Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) - Accelerate machine learning workloads and run containerized apps or virtualized workloads on-premises.
+- [Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) - Accelerate machine learning workloads and run containerized apps or virtualized workloads on-premises, on a cloud-managed appliance.
 
-![Azure and Azure Stack run cloud services, while Azure Stack HCI runs virtualized applications on-premises](media/azure-stack-hci/azure-family.png)
+![Azure Stack Edge is a cloud-managed appliance for running machine-learning and containerized apps at the edge, Azure Stack HCI is a hyperconverged solution for running VMs and storage on-premises, while Azure Stack Hub provides cloud-native, Azure-consistent services on-premises.](media/compare-azure-azure-stack/azure-stack-family.png)
 
 To learn more:
 
@@ -100,7 +100,7 @@ If you choose to use System Center to deploy and manage your infrastructure, you
 
 ## Hardware partners
 
-You can purchase validated Azure Stack HCI solutions that run Windows Server 2019 from 15 partners. Your preferred Microsoft partner gets you up and running without lengthy design and build time. They also offer a single point of contact for implementation and support services.
+You can purchase validated Azure Stack HCI solutions that run Windows Server 2019 from 20 partners. Your preferred Microsoft partner gets you up and running without lengthy design and build time. They also offer a single point of contact for implementation and support services.
 
 Visit the [Azure Stack HCI website](https://azure.microsoft.com/overview/azure-stack/hci) to view our 70+ Azure Stack HCI solutions currently available from these Microsoft partners: ASUS, Axellio, bluechip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Huawei, Lenovo, NEC, primeLine Solutions, QCT, SecureGUARD, and Supermicro.
 
