@@ -226,6 +226,8 @@
             href: azure-stack-solution-template-kubernetes-adfs.md
           - name: Enable the Kubernetes dashboard
             href: azure-stack-solution-template-kubernetes-dashboard.md
+          - name: Move AKS Engine from Marketplace item
+            href: azure-stack-kubernetes-aks-engine-dvm.md
           - name: Troubleshoot Kubernetes cluster
             href: azure-stack-solution-template-kubernetes-trouble.md
       - name: Deploy Cognitive Services
@@ -270,14 +272,36 @@
       href: azure-stack-solution-sql-ha.md
   - name: Deploy foundational patterns
     items:
+    - name: VNET peering
+      items:
+      - name: VNet peering with FortiGate
+        href: azure-stack-network-howto-vnet-to-vnet.md
+      - name: VNet peering with VMs
+        href: azure-stack-network-howto-vnet-peering.md
     - name: Setup VPN to on-prem
       href: azure-stack-network-howto-vnet-to-onprem.md
     - name: VNET to VNET connection
       href: azure-stack-network-howto-vnet-to-vnet-stacks.md
-    - name: VNET peering
-      href: azure-stack-network-howto-vnet-to-vnet.md
+    - name: Extend the data center
+      href: azure-stack-network-howto-extend-datacenter.md
     - name: Connect to iSCSI storage
       href: azure-stack-network-howto-iscsi-storage.md
+    - name: Set up tunnels
+      items:
+      - name: Set up a multiple site-to-site VPN
+        href: network-howto-vpn-tunnel.md
+      - name: Create a VPN tunnel (GRE)
+        href: network-howto-vpn-tunnel-gre.md
+      - name: Create a VPN tunnel (IPSEC)
+        href: network-howto-vpn-tunnel-ipsec.md
+    - name: Back up and recovery
+      items:
+      - name: Back up your VM on Azure Stack with Commvault
+        href: azure-stack-network-howto-backup-commvault.md
+      - name: Back up your storage accounts on Azure Stack
+        href: azure-stack-network-howto-backup-storage.md
+      - name: Copy subscription resources
+        href: azure-stack-network-howto-backup-replicator.md
 - name: Concepts
   items:
   - name: Hybrid cloud patterns
