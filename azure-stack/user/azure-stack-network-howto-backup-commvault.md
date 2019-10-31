@@ -6,10 +6,10 @@ author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 10/19/2019
+ms.date: 10/30/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/19/2019
+ms.lastreviewed: 10/30/2019
 
 # keywords:  X
 # Intent: As an Azure Stack Operator, I want < what? > so that < why? >
