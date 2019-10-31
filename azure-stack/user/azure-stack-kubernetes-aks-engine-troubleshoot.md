@@ -124,8 +124,8 @@ Requirements:
     ```bash  
     mkdir -p $HOME/kuberneteslogs
     cd $HOME/kuberneteslogs
-    wget https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.0/diagnosis.tar.gz
-    tar xvzf diagnosis.tar.gz -C ./
+    wget https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.1/diagnosis-v0.1.1.tar.gz
+    tar xvf diagnosis-v0.1.1.tar.gz -C ./
     ```
 
 2. Look for the parameters required by the `getkuberneteslogs.sh` script. The script will use the following parameters:
