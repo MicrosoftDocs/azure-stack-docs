@@ -20,19 +20,19 @@ Hybrid scenarios vary greatly with the resources that are available for developm
 
 ## Design patterns
 
-Design patterns cull generalized and repeatable design guidance, from real world customer scenarios and experiences. A pattern is abstract, allowing it to be applicable to different types of scenarios, or vertical industries. Each pattern documents the problem, an associated solution architecture, and an optional solution example. 
+Design patterns cull generalized and repeatable design guidance, from real world customer scenarios and experiences. A pattern is abstract, allowing it to be applicable to different types of scenarios or vertical industries. Each pattern documents the context and problem, and provides an overview of a solution example.
 
-There are two types of patterns:
+There are two types of pattern articles:
 
-- Base pattern: provides design guidance for a single general-purpose scenario.
-- Aggregate pattern: provides design guidance where the application of multiple patterns is used, to solve a scenario or industry-specific problem.
+- Single pattern: provides design guidance for a single general-purpose scenario.
+- Multi-pattern: provides design guidance where the application of multiple patterns is used. This is frequently required for solving more complex scenarios, or industry-specific problems.
 
-## Solution examples
+## Solution deployment guides
 
-Solution examples provide implementation guidance, demonstrating a solution implementation for a given pattern. Step-by-step deployment guides assist in deploying each solution example. The guide may also refer to a companion code sample, stored in the GitHub [solutions sample repo](https://github.com/Azure-Samples/azure-intelligent-edge-patterns). 
+Step-by-step deployment guides assist in deploying a solution example. The guide may also refer to a companion code sample, stored in the GitHub [solutions sample repo](https://github.com/Azure-Samples/azure-intelligent-edge-patterns). 
 
 ## Next steps
 
-- Explore the "Patterns" and "Solution examples" sections of the TOC, to learn more about each.
-- Read the about [Design Considerations for Hybrid Applications](overview-app-design-considerations.md) to review pillars of software quality for designing, deploying, and operating hybrid applications.
+- Explore the "Patterns" and the "Solution deployment guides" sections of the TOC, to learn more about each.
+- Read the about [Hybrid application design considerations](overview-app-design-considerations.md) to review pillars of software quality for designing, deploying, and operating hybrid applications.
 - [Set up a development environment on Azure Stack](../user/azure-stack-dev-start.md) and [deploy your first app](../user/azure-stack-dev-start-deploy-app.md) on Azure Stack.
