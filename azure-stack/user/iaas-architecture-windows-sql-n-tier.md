@@ -124,7 +124,7 @@ If your application makes more reads than writes, you can offload some of the re
 
 Test your deployment by [forcing a manual failover](https://msdn.microsoft.com/library/ff877957.aspx) of the availability group.
 
-For SQL performance optimization, you can also refer the article [SQL server best practices to optimize performance in Azure Stack](https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-sql-server-vm-considerations).
+For SQL performance optimization, you can also refer the article [SQL server best practices to optimize performance in Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-sql-server-vm-considerations).
 
 **Jumpbox**
 
@@ -138,13 +138,13 @@ To secure the jumpbox, add an NSG rule that allows RDP connections only from a s
 
 ### Scale sets
 
-For the web and business tiers, consider using [virtual machine scale sets](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview) instead of deploying separate VMs. A scale set makes it easy to deploy and manage a set of identical VMs. Consider scale sets if you need to quickly scale out VMs.
+For the web and business tiers, consider using [virtual machine scale sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview) instead of deploying separate VMs. A scale set makes it easy to deploy and manage a set of identical VMs. Consider scale sets if you need to quickly scale out VMs.
 
 There are two basic ways to configure VMs deployed in a scale set:
 
 -   Use extensions to configure the VM after it's deployed. With this approach, new VM instances may take longer to start up than a VM with no extensions.
 
--   Deploy a [managed disk](https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-managed-disk-considerations) with a custom disk image. This option may be quicker to deploy. However, it requires you to keep the image up-to-date.
+-   Deploy a [managed disk](https://docs.microsoft.com/azure-stack/user/azure-stack-managed-disk-considerations) with a custom disk image. This option may be quicker to deploy. However, it requires you to keep the image up-to-date.
 
 For more information, see [Design considerations for scale sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview). This design consideration is mostly true for Azure Stack, however there are some caveats:
 
@@ -158,7 +158,7 @@ For more information, see [Design considerations for scale sets](https://docs.mi
 
 ## Subscription limits
 
-Each Azure Stack tenant subscription has default limits in place, including a maximum number of VMs per region configured by the Azure Stack operator. For more information, see [Azure Stack services, plans, offers, subscriptions overview](https://docs.microsoft.com/en-us/azure-stack/operator/service-plan-offer-subscription-overview). Also refer to [Quota types in Azure Stack](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-quota-types).
+Each Azure Stack tenant subscription has default limits in place, including a maximum number of VMs per region configured by the Azure Stack operator. For more information, see [Azure Stack services, plans, offers, subscriptions overview](https://docs.microsoft.com/azure-stack/operator/service-plan-offer-subscription-overview). Also refer to [Quota types in Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-quota-types).
 
 ## Security considerations
 
@@ -168,7 +168,7 @@ Virtual networks are a traffic isolation boundary in Azure. By default, VMs in o
 
 **DMZ**. Consider adding a network virtual appliance (NVA) to create a DMZ between the Internet and the Azure virtual network. NVA is a generic term for a virtual appliance that can perform network-related tasks, such as firewall, packet inspection, auditing, and custom routing.
 
-**Encryption**. Encrypt sensitive data at rest and use [Key Vault in Azure Stack](https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-key-vault-manage-portal) to manage the database encryption keys. For more information, see [Configure Azure Key Vault Integration for SQL Server on Azure VMs](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-ps-sql-keyvault). It's also recommended to store application secrets, such as database connection strings, in Key Vault.
+**Encryption**. Encrypt sensitive data at rest and use [Key Vault in Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal) to manage the database encryption keys. For more information, see [Configure Azure Key Vault Integration for SQL Server on Azure VMs](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-ps-sql-keyvault). It's also recommended to store application secrets, such as database connection strings, in Key Vault.
 
 ## Next steps
 
