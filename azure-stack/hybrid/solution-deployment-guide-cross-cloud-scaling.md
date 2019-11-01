@@ -129,7 +129,7 @@ Using a hosted build agent in Azure Pipelines is a convenient option to build an
 
 ### Manage and configure the CD process
 
-Azure Pipelines and Azure DevOps Server provide a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, QA, and production environments; including requiring approvals at specific stages.
+Azure Pipelines and Azure DevOps Services provide a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, QA, and production environments; including requiring approvals at specific stages.
 
 ## Create release definition
 
@@ -286,7 +286,7 @@ Using a hosted build agent in Azure Pipelines is a convenient option to build an
 
 ### Configure the continuous deployment (CD) process
 
-Azure Pipelines and Azure DevOps Server provide a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, quality assurance (QA), and production. This process can include requiring approvals at specific stages of the application life cycle.
+Azure Pipelines and Azure DevOps Services provide a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, quality assurance (QA), and production. This process can include requiring approvals at specific stages of the application life cycle.
 
 #### Create release definition
 

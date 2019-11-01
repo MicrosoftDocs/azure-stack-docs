@@ -135,7 +135,7 @@ Using a hosted agent in Azure Pipelines is a convenient option to build and depl
 
 ### Manage and configure the CD process
 
-Azure DevOps and Azure DevOps Server provide a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, QA, and production environments; including requiring approvals at specific stages.
+Azure DevOps Services provide a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, QA, and production environments; including requiring approvals at specific stages.
 
 ## Create release definition
 
