@@ -49,13 +49,15 @@ The architecture has the following components.
 
 -   **Active Directory Domain Services (AD DS) Servers**. The computer objects for the failover cluster and its associated clustered roles are created in Active Directory Domain Services (AD DS). Set up AD DS servers in VMs in the same virtual network are preferred method to join other VMs to AD DS. You can also join the VMs to existing Enterprise AD DS by connecting virtual network to Enterprise network with VPN connection. With both approaches, you need to change the virtual network DNS to your AD DS DNS server (in virtual network or existing Enterprise network) to resolve the AD DS domain FQDN.
 
--   **Cloud Witness**. A failover cluster requires more than half of its nodes to be running, which is known as having quorum. If the cluster has just two nodes, a network partition could cause each node to think it's the master node. In that case, you need a *witness* to break ties and establish quorum. A witness is a resource such as a shared disk that can act as a tie breaker to establish quorum. Cloud Witness is a type of witness that uses Azure Blob Storage. To learn more about the concept of quorum, see [Understanding cluster and pool quorum](https://docs.microsoft.com/windows-server/storage/storage-spaces/understand-quorum). For more information about Cloud Witness, see [Deploy a Cloud Witness for a Failover Cluster](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness). In Azure Stack, the Cloud Witness endpoint is different from global Azure. It may look like:
+-   **Cloud Witness**. A failover cluster requires more than half of its nodes to be running, which is known as having quorum. If the cluster has just two nodes, a network partition could cause each node to think it's the master node. In that case, you need a *witness* to break ties and establish quorum. A witness is a resource such as a shared disk that can act as a tie breaker to establish quorum. Cloud Witness is a type of witness that uses Azure Blob Storage. To learn more about the concept of quorum, see [Understanding cluster and pool quorum](https://docs.microsoft.com/windows-server/storage/storage-spaces/understand-quorum). For more information about Cloud Witness, see [Deploy a Cloud Witness for a Failover Cluster](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness). In Azure Stack, the Cloud Witness endpoint is different from global Azure. 
 
-> For global Azure:\
-> https://mywitness.blob.core.windows.net/
->
-> For Azure Stack:\
-> https://mywitness.blob.&lt;region&gt;.&lt;FQDN&gt;/
+It may look like:
+
+- For global Azure:  
+  `https://mywitness.blob.core.windows.net/`
+
+- For Azure Stack:  
+  `https://mywitness.blob.<region>.<FQDN>`
 
 -   **Jumpbox**. Also called a [bastion host](https://en.wikipedia.org/wiki/Bastion_host). A secure VM on the network that administrators use to connect to the other VMs. The jumpbox has an NSG that allows remote traffic only from public IP addresses on a safe list. The NSG should permit remote desktop (RDP) traffic.
 
@@ -65,7 +67,7 @@ Your requirements might differ from the architecture described here. Use these r
 
 ### Virtual machines
 
-For recommendations on configuring the VMs, see Run a Windows VM on Azure Stack.***\[LINK TO BE ADDED when doc is finished\]***
+For recommendations on configuring the VMs, see [Run a Windows VM on Azure Stack](iaas-architecture-vm-windows.md).
 
 ### Virtual network
 
