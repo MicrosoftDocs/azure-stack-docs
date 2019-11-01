@@ -73,13 +73,13 @@ Choose an address range that does not overlap with your on-premises network, in 
 
 Design subnets with functionality and security requirements in mind. All VMs within the same tier or role should go into the same subnet, which can be a security boundary. For more information about designing virtual networks and subnets, see [Plan and design Azure Virtual Networks](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm).
 
-**Load balancers**
+### Load balancers
 
 Don't expose the VMs directly to the Internet, but instead give each VM a private IP address. Clients connect using the public IP address associated with the Layer 7 Load Balancer.
 
 Define load balancer rules to direct network traffic to the VMs. For example, to enable HTTP traffic, map port 80 from the front-end configuration to port 80 on the back-end address pool. When a client sends an HTTP request to port 80, the load balancer selects a back-end IP address by using a [hashing algorithm](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#fundamental-load-balancer-features) that includes the source IP address. Client requests are distributed across all the VMs in the back-end address pool.
 
-**Network security groups**
+### Network security groups
 
 Use NSG rules to restrict traffic between tiers. In the three-tier architecture shown above, the web tier does not communicate directly with the database tier. To enforce this rule, the database tier should block incoming traffic from the web tier subnet.
 
@@ -168,6 +168,6 @@ Virtual networks are a traffic isolation boundary in Azure. By default, VMs in o
 
 **Encryption**. Encrypt sensitive data at rest and use *Key Vault in Azure Stack* to manage the database encryption keys. For more information, see [Configure Azure Key Vault Integration for SQL Server on Azure VMs](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-ps-sql-keyvault). It's also recommended to store application secrets, such as database connection strings, in Key Vault.
 
-# Next steps
+## Next steps
 
 - To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns).
