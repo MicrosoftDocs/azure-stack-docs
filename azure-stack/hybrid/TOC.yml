@@ -25,11 +25,11 @@
   - name: Multi
     items:
     - name: Cross-cloud scaling (on-premises data)
-      href: pattern-cross-cloud-scaling-onprem-data.md
+      href: https://aka.ms/AzureStack
     - name: Footfall detection (retail)
       href: pattern-retail-footfall-detection.md
     - name: Out-of-stock detection at the edge
-      href: https://aka.ms/AzureStack
+      href: https://aka.ms/AzureStack 
 - name: Solution deployment guides
   items:
   - name: Cross-cloud scaling 
