@@ -28,8 +28,6 @@ This architecture builds on the one shown in [N-tier application with SQL Server
 
 ![Highly available network architecture for Azure N-tier applications"](./media/iaas-architecturesql-n-tier-multi-region/image1.png)
 
-You can download the [Visio file](https://archcenter.blob.core.windows.net/cdn/vm-reference-architectures.vsdx) of this architecture.
-
 -   **Primary and secondary regions**. Use two regions to achieve higher availability. One is the primary region. The other region is for failover.
 
 -   **Azure Traffic Manager**. [Traffic Manager](https://azure.microsoft.com/services/traffic-manager) routes incoming requests to one of the regions. During normal operations, it routes requests to the primary region. If that region becomes unavailable, Traffic Manager fails over to the secondary region. For more information, see the section [Traffic Manager configuration](https://docs.microsoft.com/azure/architecture/reference-architectures/n-tier/multi-region-sql-server#traffic-manager-configuration).
