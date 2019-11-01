@@ -18,7 +18,7 @@
           href: pattern-hybrid-relay.md
         - name: Live video at the edge (base or aggregate?)      
           href: pattern-live-video-at-edge.md
-        - name: Tiered data (TBD) 
+        - name: Tiered data
           href: https://aka.ms/AzureStack
         - name: Train ML model at the edge
           href: pattern-train-ml-model-at-edge.md
@@ -28,7 +28,7 @@
       href: pattern-cross-cloud-scaling-onprem-data.md
     - name: Footfall detection (retail)
       href: pattern-retail-footfall-detection.md
-    - name: Out-of-stock detection at the edge (TBD)
+    - name: Out-of-stock detection at the edge
       href: https://aka.ms/AzureStack
 - name: Solution deployment guides
   items:
