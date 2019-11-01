@@ -1,6 +1,6 @@
 ---
 title: Add the Azure Kubernetes Services (AKS) Engine prerequisites to the Azure Stack Marketplace | Microsoft Docs
-description: Learn how to add AKS Engine prerequisites to the Azure Stack Marketplace.
+description: Learn how to add AKS engine prerequisites to the Azure Stack Marketplace.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -23,12 +23,12 @@ ms.lastreviewed: 10/09/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can enable your users to set up the Azure Kubernetes Services (AKS) Engine by adding the items described in this article to your Azure Stack. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS Engine available to your users in both connected and disconnected environments. The AKS Engine depends on a service principle identity, and in the marketplace, a Custom Script extension and the AKS Base Image.
+You can enable your users to set up the Azure Kubernetes Services (AKS) Engine by adding the items described in this article to your Azure Stack. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS engine available to your users in both connected and disconnected environments. The AKS engine depends on a service principle identity, and in the marketplace, a Custom Script extension and the AKS Base Image.
 
-The [AKS Engine](https://github.com/Azure/aks-engine) uses a built image, the AKS Base Image. Any AKS Engine version depends on a specific image version that you can make available in your Azure Stack. Check the table listing the AKS Engine versions and corresponding Kubernetes version at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions).
+The [AKS engine](https://github.com/Azure/aks-engine) uses a built image, the AKS Base Image. Any AKS engine version depends on a specific image version that you can make available in your Azure Stack. Check the table listing the AKS engine versions and corresponding Kubernetes version at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions).
 
 > [!IMPORTANT]
-> The AKS Engine is currently in public preview.
+> The AKS engine is currently in public preview.
 > This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -64,12 +64,12 @@ Add the following item to the marketplace:
 
 1. Enter `AKS Base Image`.
 
-1. Select the image version that matches the version of the AKS Engine. You can find listing of AKS Base Image to AKS Engine version at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). 
+1. Select the image version that matches the version of the AKS engine. You can find listing of AKS Base Image to AKS engine version at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). 
 
     In the list, select:
     - **Publisher**: Azure Kubernetes Service
     - **Offer**: aks
-    - **Version**: AKS Base Image 16.04-LTS Image Distro, September 2019 (2019.09.19 or version that maps to AKS Engine)
+    - **Version**: AKS Base Image 16.04-LTS Image Distro, September 2019 (2019.09.19 or version that maps to AKS engine)
 
 1. Select **Download.**
 
@@ -97,6 +97,6 @@ You can add the custom script to the marketplace by getting the item from Azure.
 
 ## Next steps
 
-[What is the AKS Engine on Azure Stack?](../user/azure-stack-kubernetes-aks-engine-overview.md)
+[What is the AKS engine on Azure Stack?](../user/azure-stack-kubernetes-aks-engine-overview.md)
 
 [Overview of offering services in Azure Stack](service-plan-offer-subscription-overview.md)
