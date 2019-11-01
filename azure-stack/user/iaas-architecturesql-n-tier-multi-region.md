@@ -114,9 +114,9 @@ To configure the availability group:
 
 -   For each virtual network, add the IP addresses of the domain controllers (from both regions) to the DNS server list. You can use the following CLI command. For more information, see [Change DNS servers](https://docs.microsoft.com/azure/virtual-network/manage-virtual-network#change-dns-servers).
 
-> Azure CLI
->
-> az network vnet update --resource-group &lt;resource-group&gt; --name &lt;vnet-name&gt; --dns-servers "10.0.0.4,10.0.0.6,172.16.0.4,172.16.0.6"
+    ```cli
+    az network vnet update --resource-group <resource-group> --name <vnet-name> --dns-servers "10.0.0.4,10.0.0.6,172.16.0.4,172.16.0.6"
+    ```
 
 -   Create a [Windows Server Failover Clustering](https://msdn.microsoft.com/library/hh270278.aspx) (WSFC) cluster that includes the SQL Server instances in both regions.
 
@@ -141,8 +141,8 @@ For the SQL Server cluster, there are two failover scenarios to consider:
 
 -   All of the SQL Server database replicas in the primary region fail. For example, this could happen during a regional outage. In that case, you must manually fail over the availability group, even though Traffic Manager automatically fails over on the front end. Follow the steps in [Perform a Forced Manual Failover of a SQL Server Availability Group](https://msdn.microsoft.com/library/ff877957.aspx), which describes how to perform a forced failover by using SQL Server Management Studio, Transact-SQL, or PowerShell in SQL Server 2016.
 
-> [!Warning]  
-> With forced failover, there is a risk of data loss. Once the primary region is back online, take a snapshot of the database and use [tablediff](https://msdn.microsoft.com/library/ms162843.aspx) to find the differences.
+    > [!Warning]  
+    > With forced failover, there is a risk of data loss. Once the primary region is back online, take a snapshot of the database and use [tablediff](https://msdn.microsoft.com/library/ms162843.aspx) to find the differences.
 
 -   Traffic Manager fails over to the secondary region, but the primary SQL Server database replica is still available. For example, the front-end tier might fail, without affecting the SQL Server VMs. In that case, Internet traffic is routed to the secondary region, and that region can still connect to the primary replica. However, there will be increased latency, because the SQL Server connections are going across regions. In this situation, you should perform a manual failover as follows:
 
