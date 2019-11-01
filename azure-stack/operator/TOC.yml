@@ -2,7 +2,7 @@
   href: index.yml
 - name: Overview
   items:
-  - name: What is Azure Stack?
+  - name: What is Azure Stack Hub?
     href: azure-stack-overview.md
   - name: What is Azure Stack HCI?
     href: azure-stack-hci-overview.md
