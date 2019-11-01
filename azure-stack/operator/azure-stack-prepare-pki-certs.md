@@ -86,7 +86,7 @@ Open Certificate Manager MMC console and connect to the Local Machine certificat
 8. Select **Password** and provide a password for the certificates. Create a password that meets the following password complexity requirements:
 
     * A minimum length of eight characters.
-    * At least three of the following: uppercase letter, lowercase letter, numbers from 0-9, special characters, alphabetical character that's neither uppercase nor lowercase.
+    * At least three of the following: uppercase letter, lowercase letter, numbers from 0-9, special characters, alphabetical character that's not uppercase or lowercase.
 
     Make note of this password. You'll use it as a deployment parameter.
 
