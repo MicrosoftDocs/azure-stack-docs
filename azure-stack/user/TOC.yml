@@ -312,6 +312,8 @@
         href: iaas-architecture-vm-windows.md
       - name: Windows N-tier app with SQL
         href: iaas-architecture-windows-sql-n-tier.md
+      - name: Network virtual appliances
+        href: iaas-architecture-nva-architecture.md
   - name: Hybrid cloud patterns
     items: 
       - name: Hybrid cloud patterns overview
