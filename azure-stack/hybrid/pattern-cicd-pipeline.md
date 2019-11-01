@@ -91,7 +91,7 @@ This pattern isn't recommended:
 ## Next steps
 
 To learn more about topics introduced in this article:
-- See the [Azure DevOps documentation](/azure/devops) to learn more about Azure DevOps and related tools, includng Azure Repos, and Azure Pipelines.
+- See the [Azure DevOps documentation](/azure/devops) to learn more about Azure DevOps and related tools, including Azure Repos, and Azure Pipelines.
 - See the [Azure Stack family of products and solutions](/azure-stack), to learn more about the entire portfolio of products and solutions.
 
 When you're ready to test the solution example, continue with the [DevOps hybrid CI/CD solution deployment guide](https://aka.ms/hybriddevopsdeploy). The deployment guide provides step-by-step instructions for deploying and testing its components. You learn how to deploy an application to Azure and Azure Stack Hub using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.
