@@ -23,6 +23,8 @@ This reference architecture shows how to deploy virtual machines (VMs) and a vir
 
 The architecture has the following components.
 
+![](./media/iaas-architecture-windows-sql-n-tier/image1.png)
+
 ## General
 
 -   **Resource group**. [Resource groups](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) are used to group Azure resources so they can be managed by lifetime, owner, or other criteria.
