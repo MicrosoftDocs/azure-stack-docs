@@ -142,7 +142,7 @@ Azure Stack has a separate marketplace from Azure. Only certain items are added.
     |SSL Profile (Client) | clientssl |
     |Source Address Translation | Auto Map |
         
-        ![](./media/network-howto-f5/image14.png)
+    ![](./media/network-howto-f5/image14.png)
 
     ![](./media/network-howto-f5/image15.png)
 
