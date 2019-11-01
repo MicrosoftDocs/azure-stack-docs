@@ -54,21 +54,21 @@ MarketPlace: Azure Stack has a syndicated marketplace from Azure and only certai
 
 4. Select **F5 BIG-IP VE – ALL (BYOL, 2 Boot Locations)**
 
-    ![](./media/network-howto-f5/image1.jpg)
+    ![](./media/network-howto-f5/image1.png)
 
 1. At the bottom of the next page, selected **Create**
 
-    ![](./media/network-howto-f5/image2.jpg)
+    ![](./media/network-howto-f5/image2.png)
 
 1. Create a New Resource Group called "F5-GSLB"
 
 1. Reference the following values as an example to complete the deployment
 
-    ![](./media/network-howto-f5/image3.jpg)
+    ![](./media/network-howto-f5/image3.png)
 
 1. Validate Deployment completes successfully
 
-    ![](./media/network-howto-f5/image4.jpg)
+    ![](./media/network-howto-f5/image4.png)
 
     > [!Note]  Each BIG-IP Deployment should take around 20 minutes*
 
@@ -100,11 +100,11 @@ MarketPlace: Azure Stack has a syndicated marketplace from Azure and only certai
 
 1. After NGINX is deployed in a docker container on Ubuntu VM within each of the Azure Stack Scale Units, validate you can reach the default webpage
 
-    ![](./media/network-howto-f5/image8.jpg)
+    ![](./media/network-howto-f5/image8.png)
 
 1. Sign in to the Management Interface of the BIG-IP Appliance. In my case I am using the "f5-stack1-ext" Public IP Address.
 
-    ![](./media/network-howto-f5/image9.jpg)
+    ![](./media/network-howto-f5/image9.png)
 
 1. Publish access to NGINX through the BIG-IP
     
@@ -114,11 +114,11 @@ MarketPlace: Azure Stack has a syndicated marketplace from Azure and only certai
 
 1. Select your NGINX Network Interface
 
-    ![](./media/network-howto-f5/image10.jpg)
+    ![](./media/network-howto-f5/image10.png)
 
 1. From the BIG-IP GUI, go to **Local traffic -&gt; Pools -&gt; Pool List** and Select on the **+** sign. Configure the pool using the information provided in Table below leaving all other fields set to defaults.
 
-    ![](./media/network-howto-f5/image11.jpg)
+    ![](./media/network-howto-f5/image11.png)
     
     | Key | Value |
     | --- | --- |
@@ -130,13 +130,13 @@ MarketPlace: Azure Stack has a syndicated marketplace from Azure and only certai
 
 1. Select **Finished**. When configured correctly, the pool status will be green
 
-    ![](./media/network-howto-f5/image12.jpg)
+    ![](./media/network-howto-f5/image12.png)
 
     You now need to configure the Virtual server. To do this, you first need to find the private IP of your F5 BIG-IP.
 
 1. From the BIG-IP GUI, go to **Network -&gt; Self IPs** and note the IP Address
 
-    ![](./media/network-howto-f5/image13.jpg)
+    ![](./media/network-howto-f5/image13.png)
 
 1. Create a virtual server by going to **Local Traffic -&gt; Virtual Servers -&gt; Virtual Server List** and Select on the **+** sign. Configure the Virtual Server using the information provided in Table below leaving all other fields set to defaults.
 
@@ -148,21 +148,21 @@ MarketPlace: Azure Stack has a syndicated marketplace from Azure and only certai
     |SSL Profile (Client) | clientssl |
     |Source Address Translation | Auto Map |
         
-        ![](./media/network-howto-f5/image14.jpg)
+        ![](./media/network-howto-f5/image14.png)
 
-    ![](./media/network-howto-f5/image15.jpg)
+    ![](./media/network-howto-f5/image15.png)
 
 1. You have now completed the BIG-IP configuration for the NGINX application. To verify proper functionality, let's browse the site and verify F5 statistics.
 
 1. Open a browser to and ensure it displays your NGINX default page.
 
-    ![](./media/network-howto-f5/image16.jpg)
+    ![](./media/network-howto-f5/image16.png)
 
 1. Now check the statistics of your virtual server to verify traffic flow, by navigating to **Statistics -&gt; Module Statistics -&gt; Local Traffic**
 
 1. Under **Statistics Type**, select **Virtual Servers**
 
-    ![](./media/network-howto-f5/image17.jpg)
+    ![](./media/network-howto-f5/image17.png)
 
 
 ## Next steps
