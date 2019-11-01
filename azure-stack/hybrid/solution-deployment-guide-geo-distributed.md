@@ -1,18 +1,18 @@
 ---
-title: Direct traffic with a geo-distributed app solution with Azure and Azure Stack | Microsoft Docs
-description: Learn how to create a geo-distributed app solution with Azure and Azure Stack that directs traffic to specific endpoints.
+title: Direct traffic with a geo-distributed app solution using Azure and Azure Stack Hub
+description: Learn how to create a geo-distributed app solution using Azure and Azure Stack Hub, that directs traffic to specific endpoints.
 author: BryanLa
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 10/31/2019
+ms.lastreviewed: 11/05/2019
 ---
 
-# Create a geo-distributed app solution to direct traffic with Azure and Azure Stack
+# Create a geo-distributed app solution to direct traffic with Azure and Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
 
 Learn how to direct traffic to specific endpoints based on various metrics using the geo-distributed apps pattern. Creating a Traffic Manager profile with geographic-based routing and endpoint configuration ensures information is routed to endpoints based on regional requirements, corporate and international regulation, and your data needs.
 
@@ -30,7 +30,7 @@ With the geo-distributed pattern, your app spans regions. You can default to the
 
 #### Scalability considerations
 
-The solution you'll build with this article isn't to accommodate scalability. However, if used in combination with other Azure and on-premises solutions, you can accommodate scalability requirements. For information on creating a hybrid solution with auto-scaling via traffic manager, see [Create cross-cloud scaling solutions with Azure](solution-deployment-guide-cross-cloud-scaling.md).
+The solution you'll build with this article isn't to accommodate scalability. However, if used in combination with other Azure and on-premises solutions, you can accommodate scalability requirements. For information on creating a hybrid solution with autoscaling via traffic manager, see [Create cross-cloud scaling solutions with Azure](solution-deployment-guide-cross-cloud-scaling.md).
 
 #### Availability considerations
 
@@ -40,9 +40,9 @@ As is the case with scalability considerations, this solution doesn't directly a
 
 - Your organization has international branches requiring custom regional security and distribution policies.
 
-- Each of your organization's offices pulls employee, business, and facility data which requires reporting activity per local regulations and time zones.
+- Each of your organization's offices pulls employee, business, and facility data, which requires reporting activity per local regulations and time zones.
 
-- High-scale requirements is met by horizontally scaling out apps with multiple app deployments within a single region and across regions to handle extreme load requirements.
+- High-scale requirements are met by horizontally scaling out apps with multiple app deployments within a single region and across regions to handle extreme load requirements.
 
 ### Planning the topology
 
@@ -60,7 +60,7 @@ Before building out a distributed app footprint, it helps to know the following 
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/solution-deployment-guide-cross-cloud-scaling/hybrid-pillars.png)  
-> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
+> Microsoft Azure Stack Hub is an extension of Azure. Azure Stack Hub brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
 > 
 > The article [Design Considerations for Hybrid Applications](overview-app-design-considerations.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
@@ -76,7 +76,7 @@ In this part, you'll create a web app.
 
 ### Prerequisites
 
-An Azure subscription and Azure Stack installation are required.
+An Azure subscription and Azure Stack Hub installation are required.
 
 ### Geo-distributed app steps
 
@@ -92,10 +92,10 @@ Update the DNS zone file for the domain. Azure AD can then verify ownership of t
 
 ### Create web apps and publish
 
-Set up Hybrid Continuous Integration/Continuous Delivery (CI/CD) to deploy Web App to Azure and Azure Stack, and auto push changes to both clouds.
+Set up Hybrid Continuous Integration/Continuous Delivery (CI/CD) to deploy Web App to Azure and Azure Stack Hub, and auto push changes to both clouds.
 
 > [!Note]  
-> Azure Stack with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. For more information, see [Before you get started with App Service on Azure Stack](../operator/azure-stack-app-service-before-you-get-started.md) in the Azure Stack Operator documentation.
+> Azure Stack Hub with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. For more information, see [Before you get started with App Service on Azure Stack Hub](../operator/azure-stack-app-service-before-you-get-started.md) in the Azure Stack Hub Operator documentation.
 
 #### Add Code to Azure Repos
 
@@ -127,11 +127,11 @@ Set up Hybrid Continuous Integration/Continuous Delivery (CI/CD) to deploy Web A
 
     ![Add code to the build definition](media/solution-deployment-guide-geo-distributed/image4.png)
 
-3. **Run the build**. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that can run on Azure and Azure Stack.
+3. **Run the build**. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that can run on Azure and Azure Stack Hub.
 
 **Using an Azure Hosted Agent**
 
-Using a hosted agent in Azure Pipelines is a convenient option to build and deploy web apps. Maintenance and upgrades are automatically performed by Microsoft Azure which enables uninterrupted development, testing, and deployment.
+Using a hosted agent in Azure Pipelines is a convenient option to build and deploy web apps. Maintenance and upgrades are automatically performed by Microsoft Azure, which enables uninterrupted development, testing, and deployment.
 
 ### Manage and configure the CD process
 
@@ -177,34 +177,34 @@ Azure DevOps and Azure DevOps Server provide a highly configurable and manageabl
 
     ![Save changes in release pipeline](media/solution-deployment-guide-geo-distributed/image14.png)
 
-10. Add a new artifact selecting the build for the Azure Stack app.
+10. Add a new artifact selecting the build for the Azure Stack Hub app.
     
-    ![Add new artifact for Azure Stack app](media/solution-deployment-guide-geo-distributed/image15.png)
+    ![Add new artifact for Azure Stack Hub app](media/solution-deployment-guide-geo-distributed/image15.png)
 
 
 11. Add one more environment by applying the Azure App Service Deployment.
     
     ![Add environment to Azure App Service Deployment](media/solution-deployment-guide-geo-distributed/image16.png)
 
-12. Name the new environment Azure Stack.
+12. Name the new environment Azure Stack Hub.
     
     ![Name environment in Azure App Service Deployment](media/solution-deployment-guide-geo-distributed/image17.png)
 
-13. Find the Azure Stack environment under **Task** tab.
+13. Find the Azure Stack Hub environment under **Task** tab.
     
-    ![Azure Stack environment](media/solution-deployment-guide-geo-distributed/image18.png)
+    ![Azure Stack Hub environment](media/solution-deployment-guide-geo-distributed/image18.png)
 
-14. Select the subscription for the Azure Stack endpoint.
+14. Select the subscription for the Azure Stack Hub endpoint.
     
-    ![Select the subscription for the Azure Stack endpoint](media/solution-deployment-guide-geo-distributed/image19.png)
+    ![Select the subscription for the Azure Stack Hub endpoint](media/solution-deployment-guide-geo-distributed/image19.png)
 
-15. Set the Azure Stack web app name as the App service name.
+15. Set the Azure Stack Hub web app name as the App service name.
 
-    ![Set Azure Stack web app name](media/solution-deployment-guide-geo-distributed/image20.png)
+    ![Set Azure Stack Hub web app name](media/solution-deployment-guide-geo-distributed/image20.png)
 
-16. Select the Azure Stack agent.
+16. Select the Azure Stack Hub agent.
     
-    ![Select the Azure Stack agent](media/solution-deployment-guide-geo-distributed/image21.png)
+    ![Select the Azure Stack Hub agent](media/solution-deployment-guide-geo-distributed/image21.png)
 
 17. Under the Deploy Azure App Service section, select the valid **Package or Folder** for the environment. Select **OK** to folder location.
 
@@ -212,7 +212,7 @@ Azure DevOps and Azure DevOps Server provide a highly configurable and manageabl
 
     ![Select folder for Azure App Service Deployment](media/solution-deployment-guide-geo-distributed/image23.png)
 
-18. Under Variable tab add a variable named `VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS`, set its value as **true**, and scope to Azure Stack.
+18. Under Variable tab add a variable named `VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS`, set its value as **true**, and scope to Azure Stack Hub.
     
     ![Add variable to Azure App Deployment](media/solution-deployment-guide-geo-distributed/image24.png)
 
@@ -220,7 +220,7 @@ Azure DevOps and Azure DevOps Server provide a highly configurable and manageabl
     
     ![Select continuous deployment trigger](media/solution-deployment-guide-geo-distributed/image25.png)
 
-20. Select the **Pre-deployment** conditions icon in the Azure Stack environment and set the trigger to **After release.**
+20. Select the **Pre-deployment** conditions icon in the Azure Stack Hub environment and set the trigger to **After release.**
     
     ![Select pre-deployment conditions](media/solution-deployment-guide-geo-distributed/image26.png)
 
@@ -557,7 +557,7 @@ The app allows [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 by
 
     1.  In **Name**, provide a name for the profile. This name needs to be unique within the traffic manager.net zone and results in the DNS name, traffic manager.net, which is used to access the Traffic Manager profile.
 
-    2.  In **Routing method**, select the **Geographicrouting method**.
+    2.  In **Routing method**, select the **Geographic routing method**.
 
     3.  In **Subscription**, select the subscription under which to create this profile.
 
@@ -579,13 +579,13 @@ The app allows [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 by
 
 3. Select **Add**.
 
-4. Adding the Azure Stack Endpoint.
+4. Adding the Azure Stack Hub Endpoint.
 
 5. For **Type**, select **External endpoint**.
 
-6. Provide a **Name** for this endpoint, ideally the name of the Azure Stack.
+6. Provide a **Name** for this endpoint, ideally the name of the Azure Stack Hub.
 
-7. For fully qualified domain name (**FQDN**), use the external URL for the Azure Stack Web App.
+7. For fully qualified domain name (**FQDN**), use the external URL for the Azure Stack Hub Web App.
 
 8. Under Geo-mapping, select a region/continent where the resource is located. For example, **Europe.**
 
@@ -622,7 +622,7 @@ The app allows [TLS](https://wikipedia.org/wiki/Transport_Layer_Security) 1.0 by
 
 **Global Enterprise relies on Azure Geo-Distribution capabilities**
 
-Directing data traffic via Azure Traffic Manager and geography-specific endpoints enables global enterprises to adhere to regional regulations and keep data compliant and secure which is crucial to the success of local and remote business locations.
+Directing data traffic via Azure Traffic Manager and geography-specific endpoints enables global enterprises to adhere to regional regulations and keep data compliant and secure, which is crucial to the success of local and remote business locations.
 
 ## Next steps
 

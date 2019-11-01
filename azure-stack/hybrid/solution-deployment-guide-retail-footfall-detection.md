@@ -1,18 +1,20 @@
 ---
-title: Deploy an AI-based footfall detection solution using Azure and Azure Stack
-description: Learn how to deploy a footfall detection solution using Azure and Azure Stack. This solution is used for analyzing visitor traffic in retail stores.
+title: Deploy an AI-based footfall detection solution using Azure and Azure Stack Hub
+description: Learn how to deploy a footfall detection solution using Azure and Azure Stack Hub. This solution is used for analyzing visitor traffic in retail stores.
 author: BryanLa
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 10/31/2019
+ms.lastreviewed: 11/05/2019
 ---
 
-# Deploy an AI-based footfall detection solution using Azure and Azure Stack
+# Deploy an AI-based footfall detection solution using Azure and Azure Stack Hub
 
-This article describes how to deploy a solution that generates insights from real world actions by using Azure, Azure Stack, and the Custom Vision AI Dev Kit.
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
+
+This article describes how to deploy a solution that generates insights from real world actions by using Azure, Azure Stack Hub, and the Custom Vision AI Dev Kit.
 
 In this solution, you learn how to:
 
@@ -23,7 +25,7 @@ In this solution, you learn how to:
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/solution-deployment-guide-cross-cloud-scaling/hybrid-pillars.png)  
-> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
+> Microsoft Azure Stack Hub is an extension of Azure. Azure Stack Hub brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
 > 
 > The article [Design Considerations for Hybrid Applications](overview-app-design-considerations.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
@@ -32,18 +34,18 @@ In this solution, you learn how to:
 Before getting started with this deployment guide, make sure you:
 
 - Review the [Footfall detection solution overview](pattern-retail-footfall-detection.md) 
-- Obtain user access to an Azure Stack Development Kit (ASDK) or Azure Stack Integrated System instance, with:
-  - The [Azure App Service on Azure Stack resource provider](../operator/azure-stack-app-service-overview.md) installed. You need operator access to your Azure Stack instance, or work with your administrator to install.
+- Obtain user access to an Azure Stack Hub Development Kit (ASDK) or Azure Stack Hub Integrated System instance, with:
+  - The [Azure App Service on Azure Stack Hub resource provider](../operator/azure-stack-app-service-overview.md) installed. You need operator access to your Azure Stack Hub instance, or work with your administrator to install.
   - A subscription to an offer that provides App Service and Storage quota. You need operator access to create an offer.
 - Obtain access to an Azure subscription
   - If you don't have an Azure subscription, sign up for a [free trial account](https://azure.microsoft.com/free/) before you begin.
 - Create two service principals in your directory:
   - One configured for use with Azure resources, with access at the Azure subscription scope. 
-  - One configured for use with Azure Stack resources, with access at the Azure Stack subscription scope. 
+  - One configured for use with Azure Stack Hub resources, with access at the Azure Stack Hub subscription scope. 
   - To learn more about creating service principals and authorizing access, see [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md). If you prefer to use Azure CLI, see [Create an Azure service principal with Azure CLI](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest).
-- Deploy Azure Cognitive Services in Azure, or Azure Stack.
+- Deploy Azure Cognitive Services in Azure, or Azure Stack Hub.
   - First, [learn more about Cognitive Services](https://azure.microsoft.com/services/cognitive-services/).
-  - Then visit [Deploy Azure Cognitive Services to Azure Stack](../user/azure-stack-solution-template-cognitive-services.md) to deploy Cognitive Services on Azure Stack. You first need to sign up for access to the preview.
+  - Then visit [Deploy Azure Cognitive Services to Azure Stack Hub](../user/azure-stack-solution-template-cognitive-services.md) to deploy Cognitive Services on Azure Stack Hub. You first need to sign up for access to the preview.
 - Clone or download an unconfigured Azure Custom Vision AI Dev Kit. For details, see the [Vision AI DevKit](https://azure.github.io/Vision-AI-DevKit-Pages/).
 - Sign up for a Power BI account.
 - An Azure Cognitive Services Face API subscription key and endpoint URL. You can get both the [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api) free trial. Or, follow the instructions in [Create a Cognitive Services account](/azure/cognitive-services/cognitive-services-apis-create-account).
@@ -66,8 +68,8 @@ First you use the Porter CLI to generate a credential set, then deploy the cloud
 
     - A service principal for accessing Azure resources, including the service principal ID, key, and tenant DNS.
     - The subscription ID for your Azure subscription.
-    - A service principal for accessing Azure Stack resources, including the service principal ID, key, and tenant DNS.
-    - The subscription ID for your Azure Stack subscription.
+    - A service principal for accessing Azure Stack Hub resources, including the service principal ID, key, and tenant DNS.
+    - The subscription ID for your Azure Stack Hub subscription.
     - Your Azure Cognitive Services Face API key and resource endpoint URL.
 
 1. Run the Porter credential generation process and follow the prompts:
@@ -76,24 +78,24 @@ First you use the Porter CLI to generate a credential set, then deploy the cloud
    porter creds generate --tag intelligentedge/footfall-cloud-deployment:0.1.0
    ```
 
-1. Porter also requires a set of parameters to run. Create a parameter text file and enter the following name/value pairs. Ask your Azure Stack administrator if you need assistance with any of the required values.
+1. Porter also requires a set of parameters to run. Create a parameter text file and enter the following name/value pairs. Ask your Azure Stack Hub administrator if you need assistance with any of the required values.
 
    > [!NOTE] 
    > The `resource suffix` value is used to ensure that your deployment’s resources have unique names across Azure. It must be a unique string of letters and numbers, no longer than 8 characters.
 
     ```
-    azure_stack_tenant_arm="Your Azure Stack tenant endpoint"
-    azure_stack_storage_suffix="Your Azure Stack storage suffix"
-    azure_stack_keyvault_suffix="Your Azure Stack keyVault suffix"
+    azure_stack_tenant_arm="Your Azure Stack Hub tenant endpoint"
+    azure_stack_storage_suffix="Your Azure Stack Hub storage suffix"
+    azure_stack_keyvault_suffix="Your Azure Stack Hub keyVault suffix"
     resource_suffix="A unique string to identify your deployment"
     azure_location="A valid Azure region"
-    azure_stack_location="Your Azure Stack location identifier"
+    azure_stack_location="Your Azure Stack Hub location identifier"
     powerbi_display_name="Your first and last name"
     powerbi_principal_name="Your Power BI account email address"
     ```
    Save the text file and make a note of its path.
 
-1. You’re now ready to deploy the hybrid cloud application using Porter. Run the install command and watch as resources are deployed to Azure and Azure Stack:
+1. You’re now ready to deploy the hybrid cloud application using Porter. Run the install command and watch as resources are deployed to Azure and Azure Stack Hub:
 
     ```porter
     porter install footfall-cloud –tag intelligentedge/footfall-cloud-deployment:0.1.0 –creds footfall-cloud-deployment –param-file "path-to-cloud-parameters-file.txt"
@@ -124,7 +126,7 @@ Use the Porter CLI to generate a credential set, then deploy the camera applicat
     porter creds generate --tag intelligentedge/footfall-camera-deployment:0.1.0
     ```
 
-1. Porter also requires a set of parameters to run. Create a parameter text file and enter the following text. Ask your Azure Stack administrator if you don’t know some of the required values.
+1. Porter also requires a set of parameters to run. Create a parameter text file and enter the following text. Ask your Azure Stack Hub administrator if you don’t know some of the required values.
 
     > [!NOTE]
     > The `deployment suffix` value is used to ensure that your deployment’s resources have unique names across Azure. It must be a unique string of letters and numbers, no longer than 8 characters.

@@ -1,34 +1,34 @@
 ---
-title: Deploy a tiered data solution to Azure Stack | Microsoft Docs
-description: Learn how to deploy a tiered data solution to Azure Stack
+title: Deploy a tiered data solution to Azure Stack Hub
+description: Learn how to deploy a tiered data solution to Azure Stack Hub
 author: BryanLa
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 10/31/2019
+ms.lastreviewed: 11/05/2019
 ---
 
-# Deploy a tiered data solution to Azure Stack
+# Deploy a tiered data solution to Azure Stack Hub
 
-This article will show you how to deploy a solution for collecting data that requires analysis at the point of collection so that quick
-decisions can be made. Often this data collection occurs with no Internet access. When connectivity is established, you may need to do a
-resource-intensive analysis of the data to gain additional insight.
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
+
+This article will show you how to deploy a solution for collecting data that requires analysis at the point of collection so that quick decisions can be made. Often this data collection occurs with no Internet access. When connectivity is established, you may need to do a resource-intensive analysis of the data to gain additional insight.
 
 In this solution, you'll create a sample environment to:
 
 > [!div class="checklist"]
 > - Create the raw data storage blob.
-> - Create a New Azure Stack Function to move clean data from Azure Stack to Azure.
+> - Create a New Azure Stack Hub Function to move clean data from Azure Stack Hub to Azure.
 > - Create a Blob storage triggered function.
-> - Create an Azure Stack storage account containing a blob and a queue.
+> - Create an Azure Stack Hub storage account containing a blob and a queue.
 > - Create a queue triggered function.
 > - Test the queue triggered function.
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/solution-deployment-guide-cross-cloud-scaling/hybrid-pillars.png)  
-> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
+> Microsoft Azure Stack Hub is an extension of Azure. Azure Stack Hub brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
 > 
 > The article [Design Considerations for Hybrid Applications](overview-app-design-considerations.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
@@ -39,7 +39,7 @@ In this solution, you'll create a sample environment to:
 ## Prerequisites
 
   - An Azure subscription.
-  - An Azure Active Directory (Azure AD) service principal that has permissions to the tenant subscription on Azure and Azure Stack. You may need to create two service principals if the Azure Stack is using a different AAD tenant than your Azure subscription. To learn how to create a service principal for Azure Stack, go [Create service principals to give applications access to Azure Stack resources](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals).
+  - An Azure Active Directory (Azure AD) service principal that has permissions to the tenant subscription on Azure and Azure Stack Hub. You may need to create two service principals if the Azure Stack Hub is using a different AAD tenant than your Azure subscription. To learn how to create a service principal for Azure Stack Hub, go [Create service principals to give applications access to Azure Stack Hub resources](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals).
       - **Make a note of each service principal's application ID, client secret, Azure AD Tenant ID, and tenant name (xxxxx.onmicrosoft.com).**
   - You will need to provide a collection of data for data analysis. Sample data is provided.
   - [Docker for Windows](https://docs.docker.com/docker-for-windows/) installed on your local machine.
@@ -48,7 +48,7 @@ In this solution, you'll create a sample environment to:
 
 Docker images for each deployment eliminate dependency issues between different versions of Azure PowerShell.
 1.  Make sure that Docker for Windows is using Windows containers.
-2.  Run the following in an elevated command prompt to get the Docker container with the deployment scripts.
+2.  Run the following script in an elevated command prompt to get the Docker container with the deployment scripts.
 
 ```
  docker pull intelligentedge/stageddatasolution:1.0.0
@@ -68,7 +68,7 @@ Docker images for each deployment eliminate dependency issues between different 
       cd .\SDDemo\
       ```
 
-3.  Run the deployment. Provide credentials and resource names where needed. HA refers to the Azure Stack where the HA cluster will be deployed, and DR to the Azure Stack where the DR cluster will be deployed.
+3.  Run the deployment. Provide credentials and resource names where needed. HA refers to the Azure Stack Hub where the HA cluster will be deployed, and DR to the Azure Stack Hub where the DR cluster will be deployed.
 
       ```powershell
       .\DeploySolution-Azure-AzureStack.ps1 `
@@ -85,24 +85,24 @@ Docker images for each deployment eliminate dependency issues between different 
 
 1.  If prompted; enter a region for the Azure deployment and Application Insights.
 
-2.  Type "Y" to allow the NuGet provider to be installed, which will kick off the API Profile "2018-03-01-hybrid" modules to be installed to allow for deployment to Azure and Azure Stack.
+2.  Type "Y" to allow the NuGet provider to be installed, which will kick off the API Profile "2018-03-01-hybrid" modules to be installed to allow for deployment to Azure and Azure Stack Hub.
 
-3.  Once the resources have been deployed, test that the data will be generated for both Azure Stack and Azure.
+3.  Once the resources have been deployed, test that the data will be generated for both Azure Stack Hub and Azure.
 
     ```powershell  
       .\TDAGenerator.exe
     ```
 
 4.  See the data being processed by going to the web applications
-    deployed to Azure or Azure Stack.
+    deployed to Azure or Azure Stack Hub.
 
 ### Azure Web App
  
 ![tiered data solution](media/solution-deployment-guide-tiered-data/image2.png)
  
-### Azure Stack Web App
+### Azure Stack Hub Web App
  
-![tiered data solution for Azure Stack](media/solution-deployment-guide-tiered-data/image3.png)
+![tiered data solution for Azure Stack Hub](media/solution-deployment-guide-tiered-data/image3.png)
 
 ## Next steps
 

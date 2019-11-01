@@ -607,4 +607,4 @@ If you want to know how much traffic is passing through your connection, you can
 
 ## Next steps
 
-[Deploy apps to Azure and Azure Stack](azure-stack-solution-pipeline.md)
+[Deploy apps to Azure and Azure Stack](../user/azure-stack-solution-pipeline.md)

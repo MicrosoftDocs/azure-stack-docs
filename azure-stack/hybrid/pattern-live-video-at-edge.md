@@ -10,7 +10,7 @@ ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 ---
 
-# Analyze live video at the edge pattern
+# Live video at the edge pattern
 
 Learn how to generate analytics from multiple on-premises video streams, and send only relevant video clips to the cloud.
 

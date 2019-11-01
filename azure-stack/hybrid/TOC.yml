@@ -20,7 +20,7 @@
           href: pattern-live-video-at-edge.md
         - name: Tiered data (TBD) 
           href: https://aka.ms/AzureStack
-        - name: Training ML models at the edge
+        - name: Train ML model at the edge
           href: pattern-train-ml-model-at-edge.md
   - name: Multi
     items:
