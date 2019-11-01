@@ -1,6 +1,6 @@
 ---
-title: Cross-cloud scaling pattern for the intelligent edge with Azure Stack Hub
-description: Learn about the cross-cloud scaling pattern for the intelligent edge with Azure Stack Hub
+title: Pattern for building an application that scales cross-cloud, on Azure and Azure Stack Hub.
+description: Learn how to use Azure and Azure Stack Hub, to build a scalable cross-cloud application.
 author: BryanLa
 ms.service: azure-stack
 ms.topic: article
@@ -16,13 +16,13 @@ Automatically add resources to an existing application to accommodate an increas
 
 ## Context and problem
 
-Your app cannot increase capacity to meet unexpected increased in demand. This lack of scalability results in users not reaching the app during peak usage times. The app can service a fixed number of users.
+Your app can't increase capacity to meet unexpected increases in demand. This lack of scalability results in users not reaching the app during peak usage times. The app can service a fixed number of users.
 
 Global enterprises require secure, reliable, and available cloud-based applications. Meeting increases in demand, and using the right infrastructure to support that demand is critical. Businesses struggle to balance costs and maintenance with business data security, storage, and real-time availability.
 
 You may not be able to run your application in the public cloud. However, it may not be economically feasible for the business to maintain the capacity required in their on-premises environment to handle spikes in demand for the app. With this pattern, you can use the elasticity of the public cloud with your on-premises solution.
 
-## Solution architecture
+## Solution
 
 The cross-cloud scaling pattern extends an app located in a local cloud with public cloud resources. The pattern is triggered by an increase or decrease in demand, and respectively adds or removes resources in the cloud. These resources provide redundancy, rapid availability, and geo-compliant routing.
 
@@ -59,7 +59,7 @@ Public IP addresses are used to route the incoming traffic through traffic manag
 An environment for hosting your build pipeline.
 
 **Application Resources**  
-The application resources need to be able to scale in and scale out, such as VM ScaleSets and Containers.
+The application resources need the ability to scale in and scale out, such as VM ScaleSets and Containers.
 
 **Custom Domain Name**  
 Use a custom domain name for routing requests glob.
@@ -74,7 +74,7 @@ Consider the following points when deciding how to implement this pattern:
 
 ### Scalability considerations
 
-The key component of cross-cloud scaling is the ability to deliver on-demand scaling between public and local cloud infrastructure, proving consistent, reliable service as prescribed by the demand.
+The key component of cross-cloud scaling is the ability to deliver on-demand scaling. Scaling must occur between public and local cloud infrastructure, and provide a  consistent, reliable service per the demand.
 
 ### Availability considerations
 
