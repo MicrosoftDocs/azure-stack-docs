@@ -309,7 +309,7 @@
       - name: Linux VM
         href: iaas-architecture-vm-linux.md
       - name: Windows VM
-        href: iaas-architecture-vm-linux.md
+        href: iaas-architecture-vm-windows.md
       - name: Windows N-tier app with SQL
         href: iaas-architecture-windows-sql-n-tier.md
   - name: Hybrid cloud patterns
