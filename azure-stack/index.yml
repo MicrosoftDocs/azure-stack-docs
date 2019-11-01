@@ -21,7 +21,7 @@ highlightedContent:
     - title: Azure Stack family announcement
       itemType: overview
       url: http://aka.ms/AzsFamAnnounce
-    - title: Comparing the Azure Stack family of services
+    - title: Comparing the Azure Stack family of products and solutions
       itemType: overview
       url: /azure-stack/operator/compare-azure-azure-stack
 
@@ -54,15 +54,19 @@ additionalContent:
         # Card
         - title: Operator
           links:
-          - url: /azure-stack/operator/azure-stack-create-service-principals
-            text: Use an app identity to access resources
+          - url: /azure-stack/operator/azure-stack-manage-portals
+            text: Use the administrator portal          
           - url: /azure-stack/operator/release-notes
             text: Release notes
           - url: /azure-stack/operator/azure-stack-servicing-policy
             text: Azure Stack Hub servicing policy
+          - url: /azure-stack/operator/azure-stack-create-service-principals
+            text: Use an app identity to access resources            
         # Card
         - title: User
           links:
+          - url: /azure-stack/user/azure-stack-quick-windows-portal
+            text: Deploy a VM
           - url: /azure-stack/user/azure-stack-vm-sizes
             text: Supported VM sizes
           - url: /azure-stack/user/azure-stack-considerations
@@ -70,7 +74,7 @@ additionalContent:
           - url: /azure-stack/user/azure-stack-key-vault-manage-portal
             text: Create and manage a Key Vault         
         # Card
-        - title: Azure Stack Development Kit (ASDK)
+        - title: Azure Stack Hub Development Kit (ASDK)
           links:
           - url: /azure-stack/asdk/asdk-deploy-considerations
             text: ASDK requirements and considerations
@@ -124,6 +128,4 @@ additionalContent:
           - url: /windows-server/networking/sdn
             text: Software Defined Networking
           - url: /windows-server/failover-clustering/failover-clustering-overview
-            text: Failover Clustering              
-
-           
+            text: Failover Clustering
