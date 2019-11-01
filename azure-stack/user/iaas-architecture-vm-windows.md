@@ -94,5 +94,5 @@ Onboard your VMs to *Azure Security Center* to get a central view of the securit
 
 ## Next steps
 
--   To provision a Windows VM, see Create and Manage Windows VMs
+- To learn more about Azure STack VMs, see [Azure Stack VM features](azure-stack-vm-considerations.md).  
 - To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns).

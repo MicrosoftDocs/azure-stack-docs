@@ -154,21 +154,9 @@ For more information, see [Design considerations for scale sets](https://docs.mi
 
 -   Currently, there is a 700 VM limit on Azure Stack, which accounts for all Azure Stack infrastructure VMs, individual VMs, and scale set instances.
 
-** **
-
 ## Subscription limits
 
 Each Azure Stack tenant subscription has default limits in place, including a maximum number of VMs per region configured by the Azure Stack operator. For more information, see *Azure Stack services, plans, offers, subscriptions overview.* Also refer to Quota types in Azure Stack.
-
--   -   -   
-
-<!-- -->
-
--   -   
-
-<!-- -->
-
--   -   
 
 ## Security considerations
 
