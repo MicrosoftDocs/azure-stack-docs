@@ -1,13 +1,13 @@
 ---
-title: Cross-cloud scaling pattern for the intelligent edge with Azure Stack | Microsoft Docs
-description: Learn about the cross-cloud scaling pattern for the intelligent edge with Azure Stack
+title: Cross-cloud scaling pattern for the intelligent edge with Azure Stack Hub
+description: Learn about the cross-cloud scaling pattern for the intelligent edge with Azure Stack Hub
 author: BryanLa
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 10/31/2019
+ms.lastreviewed: 11/05/2019
 ---
 
 # Cross-cloud scaling pattern
@@ -16,22 +16,22 @@ Automatically add resources to an existing application to accommodate an increas
 
 ## Context and problem
 
-Your app cannot increase capacity to meet unexpected increased in demand. This results in users not reaching the app during peak usage times. The app can service a fixed number of users.
+Your app cannot increase capacity to meet unexpected increased in demand. This lack of scalability results in users not reaching the app during peak usage times. The app can service a fixed number of users.
 
 Global enterprises require secure, reliable, and available cloud-based applications. Meeting increases in demand, and using the right infrastructure to support that demand is critical. Businesses struggle to balance costs and maintenance with business data security, storage, and real-time availability.
 
 You may not be able to run your application in the public cloud. However, it may not be economically feasible for the business to maintain the capacity required in their on-premises environment to handle spikes in demand for the app. With this pattern, you can use the elasticity of the public cloud with your on-premises solution.
 
-## Solution
+## Solution architecture
 
 The cross-cloud scaling pattern extends an app located in a local cloud with public cloud resources. The pattern is triggered by an increase or decrease in demand, and respectively adds or removes resources in the cloud. These resources provide redundancy, rapid availability, and geo-compliant routing.
 
 ![Cross-cloud scaling pattern](media/pattern-cross-cloud-scaling/cross-cloud-scaling.png)
 
-> Note:  
-> This pattern applies only to stateless apps.
+> [!NOTE]
+> This pattern applies only to stateless components of your app.
 
-The Cross-cloud Scaling Pattern consists of the following components.
+The Cross-cloud Scaling pattern consists of the following components.
 
 **Traffic Manager**  
 **In the diagram this is located outside of the public cloud group, but it would need to able to coordinate traffic in both the local data center and the public cloud. The balancer delivers high availability for application by monitoring endpoints and providing failover redistribution when required.
@@ -88,26 +88,25 @@ The cross-cloud pattern ensures seamless management and familiar interface betwe
 
 Use this pattern:
 
--   When you need to increase your app capacity with unexpected demands or periodic demands in demand.
+- When you need to increase your app capacity with unexpected demands or periodic demands in demand.
 
--   When you do not want to invest in resources that will only be used during peaks. Pay for what you use.
+- When you do not want to invest in resources that will only be used during peaks. Pay for what you use.
 
 This pattern isn't recommended when:
 
--   Your solution requires users connecting over the internet.
+- Your solution requires users connecting over the internet.
 
--   Your business has local regulations that require that the originating connection to come from an onsite call.
+- Your business has local regulations that require that the originating connection to come from an onsite call.
 
--   Your network experiences regular bottlenecks that would restrict the performance of the scaling.
+- Your network experiences regular bottlenecks that would restrict the performance of the scaling.
 
--   Your environment is disconnected from the Internet and cannot reach the public cloud.
-
-## Example
-
-Learn how to create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack hosted web app, to an Azure hosted web app with auto-scaling via traffic manager, ensuring flexible and scalable cloud utility when under load.
-
-[Create cross-cloud scaling solutions with Azure](solution-deployment-guide-cross-cloud-scaling.md)
+- Your environment is disconnected from the Internet and cannot reach the public cloud.
 
 ## Next steps
 
-Learn about [Hybrid cloud design patterns for Azure Stack](overview-app-design-considerations.md)
+To learn more about topics introduced in this article:
+- See the [Azure Traffic Manager overview](/azure/traffic-manager/traffic-manager-overview) to learn more about how this DNS-based traffic load balancer works.
+- See [Hybrid application design considerations](overview-app-design-considerations.md) to learn more about best practices, and answer additional questions.
+- See the [Azure Stack family of products and solutions](/azure-stack), to learn more about the entire portfolio of products and solutions.
+
+When you're ready to test the solution example, continue with the [Cross-cloud scaling solution deployment guide](solution-deployment-guide-cross-cloud-scaling.md). The deployment guide provides step-by-step instructions for deploying and testing its components. You learn how to create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack Hub hosted web app, to an Azure hosted web app. You also learn how to use autoscaling via traffic manager, ensuring flexible and scalable cloud utility when under load.

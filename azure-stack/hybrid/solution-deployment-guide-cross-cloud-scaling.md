@@ -1,20 +1,20 @@
 ---
-title: Create cross-cloud scaling app solutions with Azure and Azure Stack | Microsoft Docs
-description: Learn how to create cross-cloud scaling solutions with Azure.
+title: Deploy an app that scales cross-cloud using Azure and Azure Stack Hub
+description: Learn how to deploy an app that scales cross-cloud, using Azure and Azure Stack Hub.
 author: BryanLa
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 10/31/2019
+ms.lastreviewed: 11/05/2019
 ---
 
-# Create cross-cloud scaling app solutions with Azure and Azure Stack
+# Deploy an app that scales cross-cloud using Azure and Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
 
-Learn how to create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack hosted web app to an Azure hosted web app with auto-scaling via traffic manager. This process ensures flexible and scalable cloud utility when under load.
+Learn how to create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack Hub hosted web app to an Azure hosted web app with autoscaling via traffic manager. This process ensures flexible and scalable cloud utility when under load.
 
 With this pattern, your tenant may not be ready to run your app in the public cloud. However, it may not be economically feasible for the business to maintain the capacity required in their on-premises environment to handle spikes in demand for the app. Your tenant can make use of the elasticity of the public cloud with their on-premises solution.
 
@@ -23,13 +23,13 @@ In this solution, you'll build a sample environment to:
 > [!div class="checklist"]
 > - Create a multi-node web app.
 > - Configure and manage the Continuous Deployment (CD) process.
-> - Publish the web app to Azure Stack.
+> - Publish the web app to Azure Stack Hub.
 > - Create a release.
 > - Learn to monitor and track your deployments.
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/solution-deployment-guide-cross-cloud-scaling/hybrid-pillars.png)  
-> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
+> Microsoft Azure Stack Hub is an extension of Azure. Azure Stack Hub brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
 > 
 > The article [Design Considerations for Hybrid Applications](overview-app-design-considerations.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
@@ -37,24 +37,24 @@ In this solution, you'll build a sample environment to:
 
 -   Azure subscription. If needed, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before beginning.
 
-- An Azure Stack Integrated System or deployment of Azure Stack Development Kit.
-    - For instructions on installing Azure Stack, see [Install the Azure Stack Development Kit](../asdk/asdk-install.md).
+- An Azure Stack Hub Integrated System or deployment of Azure Stack Hub Development Kit.
+    - For instructions on installing Azure Stack Hub, see [Install the Azure Stack Hub Development Kit](../asdk/asdk-install.md).
     - For an ASDK post-deployment automation script, go to: [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) 
     - This installation may require a few hours to complete.
 
--   Deploy [App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
+-   Deploy [App Service](../operator/azure-stack-app-service-deploy.md) PaaS services to Azure Stack Hub.
 
--   [Create Plan/Offers](../operator/service-plan-offer-subscription-overview.md) within the Azure Stack environment.
+-   [Create Plan/Offers](../operator/service-plan-offer-subscription-overview.md) within the Azure Stack Hub environment.
 
--   [Create tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) within the Azure Stack environment.
+-   [Create tenant subscription](../operator/azure-stack-subscribe-plan-provision-vm.md) within the Azure Stack Hub environment.
 
 -   Create a web app within the tenant subscription. Make note of the new web app URL for later use.
 
 -   Deploy Azure Pipelines Virtual Machine (VM) within the tenant subscription.
 
--   Windows Server 2016 VM with .NET 3.5 is required. This VM will be built in the tenant subscription on Azure Stack as the private build agent.
+-   Windows Server 2016 VM with .NET 3.5 is required. This VM will be built in the tenant subscription on Azure Stack Hub as the private build agent.
 
--   [Windows Server 2016 with SQL 2017 VM Image](../operator/azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal) is available in the Azure Stack Marketplace. If this image isn't available, work with an Azure Stack Operator to ensure it's added to the environment.
+-   [Windows Server 2016 with SQL 2017 VM Image](../operator/azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal) is available in the Azure Stack Hub Marketplace. If this image isn't available, work with an Azure Stack Hub Operator to ensure it's added to the environment.
 
 ## Issues and considerations
 
@@ -82,12 +82,12 @@ Update the DNS zone file for the domain. Azure AD will verify ownership of the c
 
 3.  Update the DNS zone file for the domain by adding the DNS entry provided by Azure AD. (The DNS entry won't affect mail routing or web hosting behaviors.)
 
-### Create a default multi-node web app in Azure Stack
+### Create a default multi-node web app in Azure Stack Hub
 
-Set up hybrid continuous integration and continuous deployment (CI/CD) to deploy web apps to Azure and Azure Stack and to auto-push changes to both clouds.
+Set up hybrid continuous integration and continuous deployment (CI/CD) to deploy web apps to Azure and Azure Stack Hub and to autopush changes to both clouds.
 
 > [!Note]  
-> Azure Stack with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. For more information, review the App Service documentation [Before you get started with App Service on Azure Stack](../operator/azure-stack-app-service-before-you-get-started.md).
+> Azure Stack Hub with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. For more information, review the App Service documentation [Before you get started with App Service on Azure Stack Hub](../operator/azure-stack-app-service-before-you-get-started.md).
 
 ### Add Code to Azure Repos
 
@@ -121,7 +121,7 @@ Azure Repos
 
     ![Add code to the web app](media/solution-deployment-guide-cross-cloud-scaling/image4.png)
 
-3. Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that run on Azure and Azure Stack.
+3. Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that run on Azure and Azure Stack Hub.
 
 ## Use an Azure hosted agent
 
@@ -129,7 +129,7 @@ Using a hosted build agent in Azure Pipelines is a convenient option to build an
 
 ### Manage and configure the CD process
 
-Azure Pipelines and Azure DevOps Server provide a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, QA, and production environments; including requiring approvals at specific stages.
+Azure Pipelines and Azure DevOps Services provide a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, QA, and production environments; including requiring approvals at specific stages.
 
 ## Create release definition
 
@@ -171,9 +171,9 @@ Azure Pipelines and Azure DevOps Server provide a highly configurable and manage
 
     ![Save changes in release pipeline](media/solution-deployment-guide-cross-cloud-scaling/image14.png)
 
-10. Add a new artifact selecting the build for the Azure Stack app.
+10. Add a new artifact selecting the build for the Azure Stack Hub app.
     
-    ![Add new artifact for Azure Stack app](media/solution-deployment-guide-cross-cloud-scaling/image15.png)
+    ![Add new artifact for Azure Stack Hub app](media/solution-deployment-guide-cross-cloud-scaling/image15.png)
 
 
 11. Add one more environment by applying the Azure App Service Deployment.
@@ -223,9 +223,9 @@ Azure Pipelines and Azure DevOps Server provide a highly configurable and manage
 > [!Note]  
 > Some settings for the tasks may have been automatically defined as [environment variables](https://docs.microsoft.com/azure/devops/pipelines/release/variables?view=vsts&tabs=batch#custom-variables) when creating a release definition from a template. These settings can't be modified in the task settings; instead, the parent environment item must be selected to edit these settings.
 
-## Publish to Azure Stack via Visual Studio
+## Publish to Azure Stack Hub via Visual Studio
 
-By creating endpoints, a Visual Studio Online (VSTO) build can deploy Azure Service apps to Azure Stack. Azure Pipelines connects to the build agent, which connects to Azure Stack.
+By creating endpoints, a Visual Studio Online (VSTO) build can deploy Azure Service apps to Azure Stack Hub. Azure Pipelines connects to the build agent, which connects to Azure Stack Hub.
 
 1.  Sign in to VSTO and navigate to the app settings page.
 
@@ -247,18 +247,18 @@ By creating endpoints, a Visual Studio Online (VSTO) build can deploy Azure Serv
 
 10. Select **Save changes**.
 
-Now that the endpoint information exists, the Azure Pipelines to Azure Stack connection is ready to use. The build agent in Azure Stack gets instructions from Azure Pipelines, and then the agent conveys endpoint information for communication with Azure Stack.
+Now that the endpoint information exists, the Azure Pipelines to Azure Stack Hub connection is ready to use. The build agent in Azure Stack Hub gets instructions from Azure Pipelines, and then the agent conveys endpoint information for communication with Azure Stack Hub.
 
 ## Develop the application build
 
 > [!Note]  
-> Azure Stack with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. For more information, review the App Service documentation [Before you get started with App Service on Azure Stack](../operator/azure-stack-app-service-before-you-get-started.md).
+> Azure Stack Hub with proper images syndicated to run (Windows Server and SQL) and App Service deployment are required. For more information, review the App Service documentation [Before you get started with App Service on Azure Stack Hub](../operator/azure-stack-app-service-before-you-get-started.md).
 
 Use [Azure Resource Manager templates](https://azure.microsoft.com/resources/templates/) like web app code from Azure Repos to deploy to both clouds.
 
 ### Add code to an Azure Repos project
 
-1.  Sign in to Azure Repos with an account that has project creation rights on Azure Stack. The next screen capture shows how to connect to the HybridCICD project.
+1.  Sign in to Azure Repos with an account that has project creation rights on Azure Stack Hub. The next screen capture shows how to connect to the HybridCICD project.
 
 2.  **Clone the repository** by creating and opening the default web app.
 
@@ -278,7 +278,7 @@ Use [Azure Resource Manager templates](https://azure.microsoft.com/resources/tem
 
 3.  In **Arguments**, add **-r win10-x64** code. This addition is required to trigger a self-contained deployment with .NET Core.
 
-4.  Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that can run on Azure and Azure Stack.
+4.  Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that can run on Azure and Azure Stack Hub.
 
 #### Use an Azure hosted build agent
 
@@ -286,7 +286,7 @@ Using a hosted build agent in Azure Pipelines is a convenient option to build an
 
 ### Configure the continuous deployment (CD) process
 
-Azure Pipelines and Azure DevOps Server provide a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, quality assurance (QA), and production. This process can include requiring approvals at specific stages of the application life cycle.
+Azure Pipelines and Azure DevOps Services provide a highly configurable and manageable pipeline for releases to multiple environments such as development, staging, quality assurance (QA), and production. This process can include requiring approvals at specific stages of the application life cycle.
 
 #### Create release definition
 
@@ -318,23 +318,23 @@ Creating a release definition is the final step in the application build process
 
 13. On **Select a Template**, add another environment. Pick **Azure App Service Deployment** and then select **Apply**.
 
-14. Enter `Azure Stack` as the **Environment name**.
+14. Enter `Azure Stack Hub` as the **Environment name**.
 
-15. On the **Tasks** tab, find and select Azure Stack.
+15. On the **Tasks** tab, find and select Azure Stack Hub.
 
-16. From the **Azure subscription** list, select **AzureStack Traders-Vessel EP** for the Azure Stack endpoint.
+16. From the **Azure subscription** list, select **AzureStack Traders-Vessel EP** for the Azure Stack Hub endpoint.
 
-17. Enter the Azure Stack web app name as the **App service name**.
+17. Enter the Azure Stack Hub web app name as the **App service name**.
 
 18. Under **Agent selection**, pick **AzureStack -b Douglas Fir** from the **Agent queue** list.
 
 19. For **Deploy Azure App Service**, select the valid **Package or folder** for the environment. On **Select File Or Folder**, select **OK** for the folder **Location**.
 
-20. On the **Variable** tab, find the variable named `VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS`. Set the variable value to **true**, and set its scope to **Azure Stack**.
+20. On the **Variable** tab, find the variable named `VSTS\_ARM\_REST\_IGNORE\_SSL\_ERRORS`. Set the variable value to **true**, and set its scope to **Azure Stack Hub**.
 
 21. On the **Pipeline** tab, select the **Continuous deployment trigger** icon for the NorthwindCloud Traders-Web artifact and set the **Continuous deployment trigger** to **Enabled**. Do the same thing for the **NorthwindCloud Traders-Vessel** artifact.
 
-22. For the Azure Stack environment, select the **Pre-deployment conditions** icon set the trigger to **After release**.
+22. For the Azure Stack Hub environment, select the **Pre-deployment conditions** icon set the trigger to **After release**.
 
 23. Save all changes.
 
@@ -347,7 +347,7 @@ Creating a release definition is the final step in the application build process
 
 2.  Enter a description for the release, check to see that the correct artifacts are selected, and then select **Create**. After a few moments, a banner appears indicating that the new release was created and the release name is displayed as a link. Select the link to see the release summary page.
 
-3.  The release summary page shows details about the release. In the following screen capture for "Release-2", the **Environments** section shows the **Deployment status** for Azure as "IN PROGRESS", and the status for Azure Stack is "SUCCEEDED". When the deployment status for the Azure environment changes to "SUCCEEDED", a banner appears indicating that the release is ready for approval. When a deployment is pending or has failed, a blue **(i)** information icon is shown. Hover over the icon to see a pop-up that contains the reason for delay or failure.
+3.  The release summary page shows details about the release. In the following screen capture for "Release-2", the **Environments** section shows the **Deployment status** for Azure as "IN PROGRESS", and the status for Azure Stack Hub is "SUCCEEDED". When the deployment status for the Azure environment changes to "SUCCEEDED", a banner appears indicating that the release is ready for approval. When a deployment is pending or has failed, a blue **(i)** information icon is shown. Hover over the icon to see a pop-up that contains the reason for delay or failure.
 
 4.  Other views, such as the list of releases, also display an icon that indicates approval is pending. The pop-up for this icon shows the environment name and more details related to the deployment. It's easy for an administrator see the overall progress of releases and see which releases are waiting for approval.
 
@@ -361,11 +361,11 @@ Creating a release definition is the final step in the application build process
 
 4.  Open the **Summary** tab to see general information about the release. This view shows details about the build, the environments it was deployed to, deployment status, and other information about the release.
 
-5.  Select an environment link (**Azure** or **Azure Stack**) to see information about existing and pending deployments to a specific environment. Use these views as a quick way to verify that the same build was deployed to both environments.
+5.  Select an environment link (**Azure** or **Azure Stack Hub**) to see information about existing and pending deployments to a specific environment. Use these views as a quick way to verify that the same build was deployed to both environments.
 
 6.  Open the **deployed production app** in a browser. For example, for the Azure App Services website, open the URL `https://[your-app-name\].azurewebsites.net`.
 
-**Integration of Azure and Azure Stack provides a scalable cross-cloud solution**
+**Integration of Azure and Azure Stack Hub provides a scalable cross-cloud solution**
 
 A flexible and robust multi-cloud service provides data security, back up and redundancy, consistent and rapid availability, scalable storage and distribution, and geo-compliant routing. This manually triggered process ensures reliable and efficient load switching between hosted web apps and immediate availability of crucial data.
 

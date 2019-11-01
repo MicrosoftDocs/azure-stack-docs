@@ -1,44 +1,46 @@
 ---
-title: Deploy a SQL Server 2016 availability group to Azure and Azure Stack | Microsoft Docs
-description: Learn how to deploy a SQL Server 2016 availability group to Azure and Azure Stack
+title: Deploy a SQL Server 2016 availability group to Azure and Azure Stack Hub
+description: Learn how to deploy a SQL Server 2016 availability group to Azure and Azure Stack Hub
 author: BryanLa
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/31/2019
+ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 10/31/2019
+ms.lastreviewed: 11/05/2019
 ---
 
-# Deploy a SQL Server 2016 availability group to Azure and Azure Stack
+# Deploy a SQL Server 2016 availability group to Azure and Azure Stack Hub
 
-This article will step you through an automated deployment of a basic highly available (HA) SQL Server 2016 Enterprise cluster with an asynchronous disaster recovery (DR) site across two Azure Stack environments. To learn more about SQL Server 2016 and high availability, see [Always On availability groups: a high-availability and disaster-recovery solution](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2016).
+*Applies to: Azure Stack Hub integrated systems*
+
+This article will step you through an automated deployment of a basic highly available (HA) SQL Server 2016 Enterprise cluster with an asynchronous disaster recovery (DR) site across two Azure Stack Hub environments. To learn more about SQL Server 2016 and high availability, see [Always On availability groups: a high-availability and disaster-recovery solution](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server?view=sql-server-2016).
 
 In this solution, you will build a sample environment to:
 
 > [!div class="checklist"]
-> - Orchestrate a deployment across two Azure Stacks
+> - Orchestrate a deployment across two Azure Stack Hubs
 > - Use Docker to minimize dependency issues with Azure API Profiles
 > - Deploy a basic highly available SQL Server 2016 Enterprise cluster with a disaster recovery site
 
 > [!Tip]  
 > ![hybrid-pillars.png](./media/solution-deployment-guide-cross-cloud-scaling/hybrid-pillars.png)  
-> Microsoft Azure Stack is an extension of Azure. Azure Stack brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
+> Microsoft Azure Stack Hub is an extension of Azure. Azure Stack Hub brings the agility and innovation of cloud computing to your on-premises environment, enabling the only hybrid cloud that allows you to build and deploy hybrid apps anywhere.  
 > 
 > The article [Design Considerations for Hybrid Applications](overview-app-design-considerations.md) reviews pillars of software quality (placement, scalability, availability, resiliency, manageability, and security) for designing, deploying, and operating hybrid applications. The design considerations assist in optimizing hybrid app design, minimizing challenges in production environments.
 
 ## Architecture for SQL Server 2016
 
-![SQL Server 2016 SQL HA Azure Stack](media/solution-deployment-guide-sql-ha/image1.png)
+![SQL Server 2016 SQL HA Azure Stack Hub](media/solution-deployment-guide-sql-ha/image1.png)
 
 ## Prerequisites for SQL Server 2016
 
-  - Two connected Azure Stack Integrated Systems (Azure Stack), this deployment does not work on Azure Stack Development Kits (ASDKs). To learn more about Azure Stack, see [What is Azure Stack?](https://azure.microsoft.com/overview/azure-stack/).
-  - A tenant subscription on each Azure Stack.    
-      - **Make a note of each subscription ID and the Azure Resource Manager endpoint for each Azure Stack.**
-  - An Azure Active Directory (Azure AD) service principal that has permissions to the tenant subscription on each Azure Stack. You may need to create two service principals if the Azure Stacks are deployed against different Azure AD tenants. To learn how to create a service principal for Azure Stack, see [Create service principals to give applications access to Azure Stack resources](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals).
+  - Two connected Azure Stack Hub Integrated Systems (Azure Stack Hub), this deployment does not work on Azure Stack Hub Development Kits (ASDKs). To learn more about Azure Stack Hub, see [What is Azure Stack Hub?](https://azure.microsoft.com/overview/azure-stack/).
+  - A tenant subscription on each Azure Stack Hub.    
+      - **Make a note of each subscription ID and the Azure Resource Manager endpoint for each Azure Stack Hub.**
+  - An Azure Active Directory (Azure AD) service principal that has permissions to the tenant subscription on each Azure Stack Hub. You may need to create two service principals if the Azure Stack Hubs are deployed against different Azure AD tenants. To learn how to create a service principal for Azure Stack Hub, see [Create service principals to give applications access to Azure Stack Hub resources](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals).
       - **Make a note of each service principal's application ID, client secret, and tenant name (xxxxx.onmicrosoft.com).**
-  - SQL Server 2016 Enterprise syndicated to each Azure Stack's Marketplace. To learn more about marketplace syndication, see [Download marketplace items from Azure to Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item).
+  - SQL Server 2016 Enterprise syndicated to each Azure Stack Hub's Marketplace. To learn more about marketplace syndication, see [Download marketplace items from Azure to Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item).
     **Make sure that your organization has the appropriate SQL licenses.**
   - [Docker for Windows](https://docs.docker.com/docker-for-windows/) installed on your local machine.
 
@@ -48,7 +50,7 @@ Docker images for each deployment eliminate dependency issues between
 different versions of Azure PowerShell.
 
 1.  Make sure that Docker for Windows is using Windows containers.
-2.  Run the following in an elevated command prompt to get the Docker container with the deployment scripts.
+2.  Run the following script in an elevated command prompt to get the Docker container with the deployment scripts.
 
 ```powershell  
  docker pull intelligentedge/sqlserver2016-hadr:1.0.0
@@ -62,13 +64,13 @@ different versions of Azure PowerShell.
       docker run -it intelligentedge/sqlserver2016-hadr:1.0.0 powershell
       ```
 
-2.  Once the container has started, you will be given an elevated PowerShell terminal in the container. Change directories to get to the deployment script.
+2.  Once the container has started, you'll be given an elevated PowerShell terminal in the container. Change directories to get to the deployment script.
 
       ```powershell  
       cd .\SQLHADRDemo\
       ```
 
-3.  Run the deployment. Provide credentials and resource names where needed. HA refers to the Azure Stack where the HA cluster will be deployed, and DR to the Azure Stack where the DR cluster will be deployed.
+3.  Run the deployment. Provide credentials and resource names where needed. HA refers to the Azure Stack Hub where the HA cluster will be deployed, and DR to the Azure Stack Hub where the DR cluster will be deployed.
 
       ```powershell
       > .\Deploy-AzureResourceGroup.ps1 `
@@ -96,7 +98,7 @@ different versions of Azure PowerShell.
       exit
       ```
 
-7.  Inspect the deployment by viewing the resources in each Azure Stack's portal. Connect to one of the SQL instances on the HA environment and inspecting the Availability Group through SQL Server Management Studio (SSMS).
+7.  Inspect the deployment by viewing the resources in each Azure Stack Hub's portal. Connect to one of the SQL instances on the HA environment and inspecting the Availability Group through SQL Server Management Studio (SSMS).
 
 ![SQL Server 2016 SQL HA](media/solution-deployment-guide-sql-ha/image2.png)
 

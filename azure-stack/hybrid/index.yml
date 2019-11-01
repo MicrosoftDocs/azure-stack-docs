@@ -40,12 +40,6 @@ landingContent:
             url: pattern-cicd-pipeline.md
           - text: Geo-distributed app
             url: pattern-geo-distributed.md
-
-  # Card
-  - title: Explore hybrid solutions
-    linkLists:
-      - linkListType: overview
-        links:
           - text: Footfall detection (retail)
             url: pattern-retail-footfall-detection.md
 
@@ -57,7 +51,7 @@ landingContent:
           - text: Cross-cloud scaling
             url: solution-deployment-guide-cross-cloud-scaling.md
           - text: DevOps hybrid CI/CD
-            url: solution-deployment-guide-cicd-pipeline.md
+            url: https://aka.ms/hybriddevopsdeploy 
           - text: Footfall detection (retail)
             url: solution-deployment-guide-retail-footfall-detection.md
           - text: Geo-distributed app
@@ -69,7 +63,7 @@ landingContent:
       - linkListType: architecture
         links:
           - text: Pattern
-            url: pattern-cross-cloud-scaling.md
+            url: pattern-retail-footfall-detection.md
       - linkListType: tutorial
         links:
           - text: Solution deployment guide
