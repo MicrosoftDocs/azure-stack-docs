@@ -34,7 +34,7 @@ You may encounter an issue when deploying or working with the AKS Engine on Azur
 
 ### Try GoFish
 
-If the installation steps in failed, you try to install using the GoFish package manager. [GoFish](https://gofi.sh) describes itself as a cross-platform Homebrew.
+If your previous installation steps failed, you can install the AKS Engine using the GoFish package manager. [GoFish](https://gofi.sh) describes itself as a cross-platform Homebrew.
 
 #### Install the AKS Engine with GoFish on Linux
 
@@ -124,8 +124,8 @@ Requirements:
     ```bash  
     mkdir -p $HOME/kuberneteslogs
     cd $HOME/kuberneteslogs
-    wget https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.0/diagnosis.tar.gz
-    tar xvzf diagnosis.tar.gz -C ./
+    wget https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.1/diagnosis-v0.1.1.tar.gz
+    tar xvf diagnosis-v0.1.1.tar.gz -C ./
     ```
 
 2. Look for the parameters required by the `getkuberneteslogs.sh` script. The script will use the following parameters:
