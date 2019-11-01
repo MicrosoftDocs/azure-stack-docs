@@ -44,7 +44,7 @@ landingContent:
             url: pattern-retail-footfall-detection.md
 
   # Card
-  - title: Deploy hybrid solution example
+  - title: Deploy hybrid solutions
     linkLists:
       - linkListType: tutorial
         links:
@@ -63,7 +63,7 @@ landingContent:
       - linkListType: architecture
         links:
           - text: Pattern
-            url: pattern-cross-cloud-scaling.md
+            url: pattern-retail-footfall-detection.md
       - linkListType: tutorial
         links:
           - text: Solution deployment guide
