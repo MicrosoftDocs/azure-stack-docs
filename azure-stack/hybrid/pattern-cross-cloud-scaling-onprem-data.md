@@ -24,7 +24,7 @@ The solution takes advantage of the compliance benefits of the private cloud, an
 
 We’ve created a workflow that allows developers to deploy an identical web application to a public and private cloud and be able access a non-internet routable network hosted on the private cloud. These web applications are monitored and upon a significant increase in traffic, a program can trigger the manipulation of DNS records to redirect traffic to the public cloud, and vice versa when traffic is no longer significant.
 
-[![cross-cloud scaling with on-prem data architecture](media/pattern-hybrid-app/solution-architecture.png)](media/pattern-hybrid-app/solution-architecture.png#lightbox)
+[![cross-cloud scaling with on-prem data architecture](media/pattern-cross-cloud-scaling-onprem-data/solution-architecture.png)](media/pattern-hybrid-app/solution-architecture.png#lightbox)
 
 ## Components
 
