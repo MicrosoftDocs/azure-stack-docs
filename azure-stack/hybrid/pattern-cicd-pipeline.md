@@ -20,7 +20,7 @@ Application deployment continuity, security, and reliability are essential to or
 
 Apps often require refactored code to run in each target environment. This means that an app is not completely portable. It must be updated, tested, and validated as it moves through each environment. For example, code written in a development environment must then be rewritten to work in a test environment, and rewritten when it finally lands in a production environment. Furthermore, this code is specifically tied to the host. This increases the cost and complexity of maintaining your app. Each version of the app is tied to each environment. The increased complexity and duplication increase the risk of security and code quality. In addition, the code cannot be readily redeployed when you remove restore failed hosts or deploy additional hosts to handle increases in demand.
 
-## Solution example
+## Solution
 
 The DevOps Pattern enables you to build, test, and deploy an app that runs on multiple clouds. This pattern unites the practice of continuous integration and continuous delivery. With continuous integration, code is built and tested every time a team member commits a change to version control. Continuous delivery automates each step from a build to a production environment. Together, these processes create a release process that supports deployment across diverse environments. With this pattern, you can draft your code and then deploy the same code to a premise environment, different private clouds, and the public clouds. Differences in environment require a change to a configuration file rather than changes to the code.
 
@@ -34,7 +34,7 @@ Using a DevOps release pipeline helps you:
 - Automatically deploy your newly built code to the public cloud for user acceptance testing.
 - Automatically deploy to a private cloud once your code has passed testing.
 
-### Issues and considerations
+## Issues and considerations
 
 The DevOps Pattern is intended to ensure consistency across deployments regardless of the target environment. However, capabilities vary across cloud and on-premises environments. Consider the following:
 
@@ -47,11 +47,11 @@ For more information, see [Develop Azure Resource Manager templates for cloud co
 
 In addition, consider the following points when deciding how to implement this pattern:
 
-#### Scalability considerations
+### Scalability considerations
 
 Deployment automation systems are the key control point in the DevOps Patterns. Implementations can vary. The selection of the correct server size depends on the size of the expected workload. VMs cost more to scale than containers. To use containers for scaling, however, your build process must run with containers.
 
-#### Availability considerations
+### Availability considerations
 
 Availability in the context of the DevPattern means being able to recover any state information associated with your workflow, such as test results, code dependencies, or other artifacts. To assess your availability requirements, consider two common metrics:
 
@@ -63,7 +63,7 @@ In practice, RTO, and RPO imply redundancy and backup. On the global Azure cloud
 
 Another major consideration when designing the system used for deployment automation is access control and the proper management of the rights needed to deploy services to cloud environments. What rights are needed to create, delete, or modify deployments? For example, one set of rights is typically required to create a resource group in Azure and another to deploy services in the resource group.
 
-#### Manageability considerations
+### Manageability considerations
 
 The design of any system based on the DevOps pattern must consider automation, logging, and alerting for each service across the portfolio. Use shared services, an application team, or both, and track security policies and governance as well.
 

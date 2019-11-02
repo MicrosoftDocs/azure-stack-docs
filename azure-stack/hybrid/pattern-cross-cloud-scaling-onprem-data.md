@@ -24,7 +24,7 @@ The solution takes advantage of the compliance benefits of the private cloud, an
 
 We’ve created a workflow that allows developers to deploy an identical web application to a public and private cloud and be able access a non-internet routable network hosted on the private cloud. These web applications are monitored and upon a significant increase in traffic, a program can trigger the manipulation of DNS records to redirect traffic to the public cloud, and vice versa when traffic is no longer significant.
 
-![hybrid app architecture](media/pattern-hybrid-app/solution-architecture.png)
+![cross-cloud scaling with on-prem data architecture](media/pattern-hybrid-app/solution-architecture.png)
 
 ## Components
 
@@ -33,7 +33,16 @@ This solution uses the following components:
 | Layer | Component | Description |
 |----------|-----------|-------------|
 | Azure |  |  |
-| | Azure App Services | Build, deploy, and scale enterprise-grade web, mobile, and serverless compute applications and as well as leveraging RESTful APIs running on any platform with Platform-as-a-service (PaaS) offerings. For more information about Azure App Services see Microsoft Azure App Services Overview. |
+| | Azure App Services | [Azure App Services](/azure/app-service/) allows you to build and host web apps, mobile back ends, and RESTful APIs in the programming language of your choice, without managing infrastructure. |
+| | Azure Virtual Network <br><br>| [Azure Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview) is the fundamental building block for private networks in Azure. VNet enables multiple Azure resource types, such as Virtual Machines (VM), to securely communicate with each other, the internet, and on-premises networks. The solution also demonstrates the use of:<br><br>- application and gateway subnets.<br><br>- a local network gateway<br><br>- a virtual Network Gateway, which acts as a Site-to-Site VPN gateway connection<br><br>- a public IP address<br><br>-a point-to-site VPN connection |
+
+
+
+| | Azure App Services | [Azure App Services](/azure/app-service/) allows you to build and host web apps, mobile back ends, and RESTful APIs in the programming language of your choice, without managing infrastructure. |
+| | Azure App Services | [Azure App Services](/azure/app-service/) allows you to build and host web apps, mobile back ends, and RESTful APIs in the programming language of your choice, without managing infrastructure. |
+| | Azure App Services | [Azure App Services](/azure/app-service/) allows you to build and host web apps, mobile back ends, and RESTful APIs in the programming language of your choice, without managing infrastructure. |
+| | Azure App Services | [Azure App Services](/azure/app-service/) allows you to build and host web apps, mobile back ends, and RESTful APIs in the programming language of your choice, without managing infrastructure. |
+| | Azure App Services | [Azure App Services](/azure/app-service/) allows you to build and host web apps, mobile back ends, and RESTful APIs in the programming language of your choice, without managing infrastructure. |
 | Azure Stack Hub |    |             |
 | | Compute, SQL Server VM | Use the same application model, self-service portal, and APIs enabled by Azure. Azure Stack IaaS allows for a broad range of open source technologies for consistent hybrid cloud deployments. |
 | Azure DevOps | | |
@@ -62,7 +71,7 @@ To learn more about topics introduced in this article:
 - See [Hybrid application design considerations](overview-app-design-considerations.md) to learn more about best practices, and answer additional questions.
 - This pattern uses the Azure Stack family of products, including Azure Stack Hub. See the [Azure Stack family of products and solutions](/azure-stack), to learn more about the entire portfolio of products and solutions.
 
-When you're ready to test the solution example, continue with the [Cross-cloud scaling (on-premises data) solution deployment guide](solution-deployment-guide-cross-cloud-scaling-onprem-data.md.md). The deployment guide provides step-by-step instructions for deploying and testing its components. 
+When you're ready to test the solution example, continue with the [Cross-cloud scaling (on-premises data) solution deployment guide](solution-deployment-guide-cross-cloud-scaling-onprem-data.md). The deployment guide provides step-by-step instructions for deploying and testing its components. 
 
 
 You learn how to create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack Hub hosted web app, to an Azure hosted web app. You also learn how to use autoscaling via traffic manager, ensuring flexible and scalable cloud utility when under load.

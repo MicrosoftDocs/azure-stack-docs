@@ -31,6 +31,8 @@ The cross-cloud scaling pattern extends an app located in a local cloud with pub
 > [!NOTE]
 > This pattern applies only to stateless components of your app.
 
+## Components
+
 The Cross-cloud Scaling pattern consists of the following components.
 
 **Traffic Manager**  
@@ -69,7 +71,6 @@ Public IP addresses are used to route the incoming traffic through traffic manag
 
 ## Issues and considerations
 
-
 Consider the following points when deciding how to implement this pattern:
 
 ### Scalability considerations
@@ -84,22 +85,18 @@ Ensure locally deployed apps are configured for high-availability through on-pre
 
 The cross-cloud pattern ensures seamless management and familiar interface between environments.
 
-#### When to use this pattern
+## When to use this pattern
 
 Use this pattern:
 
 - When you need to increase your app capacity with unexpected demands or periodic demands in demand.
-
 - When you do not want to invest in resources that will only be used during peaks. Pay for what you use.
 
 This pattern isn't recommended when:
 
 - Your solution requires users connecting over the internet.
-
 - Your business has local regulations that require that the originating connection to come from an onsite call.
-
 - Your network experiences regular bottlenecks that would restrict the performance of the scaling.
-
 - Your environment is disconnected from the Internet and cannot reach the public cloud.
 
 ## Next steps

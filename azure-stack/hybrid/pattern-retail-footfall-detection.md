@@ -20,7 +20,7 @@ Contoso Stores would like to gain insights on how customers are receiving their 
 
 Contoso would like to find an unobtrusive, privacy-friendly way to determine their customers' demographics, loyalty, and reactions to store displays and products.
 
-## Solution architecture
+## Solution
 
 This retail analytics pattern uses a tiered approach to inferencing at the edge. By using the Custom Vision AI Dev Kit, only images with human faces are sent for analysis to a private Azure Stack that runs Azure Cognitive Services. Anonymized, aggregated data is sent to Azure for aggregation across all stores and visualization in Power BI. Combining the edge and public cloud allows Contoso to take advantage of modern AI technology. While at the same time, remain in compliance with their corporate policies and respect their customers' privacy.
 
@@ -81,7 +81,7 @@ This solution captures customer images, making security a paramount consideratio
 ## Next steps
 
 To learn more about the topics introduced in this article:
-- See the [Tiered Data pattern](solution-deployment-guide-tiered-data.md), which is leveraged by the footfall detection pattern.
+- See the [Tiered Data pattern](https://aka.ms/tiereddatadeploy), which is leveraged by the footfall detection pattern.
 - See the [Custom Vision AI Dev Kit](https://azure.github.io/Vision-AI-DevKit-Pages/) to learn more about using custom vision. 
 
 When you're ready to test the solution example, continue with the [Footfall detection deployment guide](solution-deployment-guide-retail-footfall-detection.md). The deployment guide provides step-by-step instructions for deploying and testing its components.

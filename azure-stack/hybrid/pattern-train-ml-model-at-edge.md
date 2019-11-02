@@ -20,7 +20,7 @@ Many organizations would like to unlock insights from their on-premises or legac
 
 However, some data is too large send to the cloud, or can't be sent to the cloud for regulatory reasons. Using this pattern, data scientists can use Azure Machine Learning to train models using on-premises data and compute. 
 
-## Solution architecture
+## Solution
 
 The training at the edge pattern uses a virtual machine (VM) running on Azure Stack Hub. The VM is registered as a compute target in Azure ML, allowing it to access data only available on-premises. In this case, the data is stored in Azure Stack Hub’s blob storage. 
 

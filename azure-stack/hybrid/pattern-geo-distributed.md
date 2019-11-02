@@ -24,6 +24,8 @@ The Azure Stack Hub geographic traffic routing pattern, or geo-distributed apps,
 
 ![Geo-distributed pattern](media/pattern-geo-distributed/geo-distribution.png)
 
+## Components
+
 **Traffic Manager**  
 In the diagram, Traffic Manager is located outside of the public cloud, but it would need to able to coordinate traffic in both the local data center and the public cloud. The balancer routes traffic to geographical locations.
 

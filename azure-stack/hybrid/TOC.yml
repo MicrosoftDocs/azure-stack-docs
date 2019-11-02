@@ -10,8 +10,6 @@
     items:
         - name: Cross cloud scaling
           href: pattern-cross-cloud-scaling.md
-        - name: Cross cloud scaling (on-premises data)
-          href: pattern-cross-cloud-scaling-onprem-data.md
         - name: DevOps hybrid CI/CD
           href: pattern-cicd-pipeline.md
         - name: Geo-distributed app
@@ -24,8 +22,8 @@
           href: pattern-train-ml-model-at-edge.md
   - name: Multi
     items:
-    - name: Cross-cloud scaling (on-premises data)
-      href: https://aka.ms/AzureStack
+    - name: Cross cloud scaling (on-premises data)
+      href: pattern-cross-cloud-scaling-onprem-data.md
     - name: Footfall detection (retail)
       href: pattern-retail-footfall-detection.md
     - name: Out-of-stock detection at the edge
@@ -92,3 +90,4 @@
     href: /azure-stack/operator/azure-stack-train-and-cert
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-stack
+f
