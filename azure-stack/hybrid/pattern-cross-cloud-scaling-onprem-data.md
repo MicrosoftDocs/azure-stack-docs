@@ -34,7 +34,7 @@ This solution uses the following components:
 |----------|-----------|-------------|
 | Azure |  |  |
 | | Azure App Services | [Azure App Services](/azure/app-service/) allows you to build and host web apps, mobile back ends, and RESTful APIs in the programming language of your choice, without managing infrastructure. |
-| | Azure Virtual Network <br><br>| [Azure Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview) is the fundamental building block for private networks in Azure. VNet enables multiple Azure resource types, such as Virtual Machines (VM), to securely communicate with each other, the internet, and on-premises networks. The solution also demonstrates the use of:<br><br>- application and gateway subnets.<br><br>- a local network gateway<br><br>- a virtual Network Gateway, which acts as a Site-to-Site VPN gateway connection<br><br>- a public IP address<br><br>-a point-to-site VPN connection |
+| | Azure Virtual Network| [Azure Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview) is the fundamental building block for private networks in Azure. VNet enables multiple Azure resource types, such as Virtual Machines (VM), to securely communicate with each other, the internet, and on-premises networks. The solution also demonstrates the use of:<br>- application and gateway subnets.<br>- a local network gateway<br>- a virtual Network Gateway, which acts as a Site-to-Site VPN gateway connection<br>- a public IP address<br>-a point-to-site VPN connection |
 
 
 
