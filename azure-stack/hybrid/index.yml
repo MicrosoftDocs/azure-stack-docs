@@ -38,13 +38,13 @@ landingContent:
             url: pattern-cross-cloud-scaling.md
           - text: DevOps hybrid CI/CD
             url: pattern-cicd-pipeline.md
-          - text: Geo-distributed app
-            url: pattern-geo-distributed.md
           - text: Footfall detection (retail)
             url: pattern-retail-footfall-detection.md
+          - text: Geo-distributed app
+            url: pattern-geo-distributed.md
 
   # Card
-  - title: Deploy hybrid solutions
+  - title: Deploy hybrid solution examples
     linkLists:
       - linkListType: tutorial
         links:
@@ -58,7 +58,7 @@ landingContent:
             url: solution-deployment-guide-geo-distributed.md
 
   # Card
-  - title: Deploy a retail footfall detection solution
+  - title: Retail footfall detection scenario
     linkLists:
       - linkListType: architecture
         links:
@@ -68,3 +68,15 @@ landingContent:
         links:
           - text: Solution deployment guide
             url: solution-deployment-guide-retail-footfall-detection.md
+
+  # Card
+  - title: Cross-cloud scaling using on-premises data scenario
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Pattern
+            url: pattern-cross-cloud-scaling-onprem-data.md
+      - linkListType: tutorial
+        links:
+          - text: Solution deployment guide
+            url: solution-deployment-guide-cross-cloud-scaling-onprem-data.md
