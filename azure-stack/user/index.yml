@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Stack User Documentation
+title: Azure Stack Hub User Documentation
 metadata:
-  title: Azure Stack Documentation - Tutorials, API Reference
+  title: Azure Stack Hub Documentation - Tutorials, API Reference
   meta.description: azure-stack
   services: azure-stack
   author: mattbriggs
@@ -16,9 +16,9 @@ metadata:
   ms.date: 07/11/2019
   ms.author: mabrigg
 abstract:
-  description: Azure Stack is a hybrid cloud platform that lets you use Azure services from your company's or service provider's datacenter. As a developer, you can build apps on Azure Stack. You can then deploy them to Azure Stack, to Azure, or you can build truly hybrid apps that leverage the connectivity between an Azure Stack cloud and Azure. Learn how to create resources and deploy apps with our quickstarts and tutorials.<br/><br/>If you're an Azure Stack operator who manages the infrastructure and offers services, see our <a href="../operator/">operator documentation</a>.<br/><br/>If you are an Azure Stack user interested in the Azure Stack Development Kit (ASDK), a single-node deployment of Azure Stack that you can download and use for free, see our <a href="../asdk">ASDK documentation</a>.
+  description: Azure Stack Hub is a hybrid cloud platform that lets you use Azure services from your company's or service provider's datacenter. As a developer, you can build apps on Azure Stack Hub. You can then deploy them to Azure Stack Hub, to Azure, or you can build truly hybrid apps that leverage the connectivity between an Azure Stack Hub cloud and Azure. Learn how to create resources and deploy apps with our quickstarts and tutorials.<br/><br/>If you're an Azure Stack Hub operator who manages the infrastructure and offers services, see our <a href="../operator/">operator documentation</a>.<br/><br/>If you are an Azure Stack Hub user interested in the Azure Stack Hub Development Kit (ASDK), a single-node deployment of Azure Stack Hub that you can download and use for free, see our <a href="../asdk">ASDK documentation</a>.
 sections:
-  - title: Getting started with Azure Stack
+  - title: Getting started with Azure Stack Hub
     items:
     - type: list
       style: cards
@@ -26,16 +26,16 @@ sections:
       items:  
       - html: <a href="/azure-stack/user/azure-stack-dev-start">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_code-edit.svg" alt="">
-              <br><b>Develop solutions with Azure Stack</b></a>
-              <p>Develop applications for Azure Stack using a Windows 10, Linux, or macOS workstation.</p>
+              <br><b>Develop solutions with Azure Stack Hub</b></a>
+              <p>Develop applications for Azure Stack Hub using a Windows 10, Linux, or macOS workstation.</p>
       - html: <a href="https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json">
               <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
               <br><b>Azure Stack PowerShell</b></a>
-              <p>Easily manage your Azure Stack resources from PowerShell.</p>
+              <p>Easily manage your Azure Stack Hub resources from PowerShell.</p>
       - html: <a href="/azure-stack/user/azure-stack-version-profiles-azurecli2">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_cligeneric.svg" alt="">
               <br><b>Azure Command-Line Interface (CLI)</b></a>
-              <p>Command-line experience for managing Azure Stack resources.</p>
+              <p>Command-line experience for managing Azure Stack Hub resources.</p>
   - title: Hybrid cloud apps
     items:
     - type: list
@@ -45,16 +45,16 @@ sections:
       - html: <a href="/azure-stack/user/azure-stack-solution-pipeline">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_workflow.svg" alt="hybrid cloud app ci/cd">
               <br><b>Hybrid app continuous integration and delivery</b></a>
-              <p>Deploy hybrid apps to Azure and Azure Stack using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.</p>
+              <p>Deploy hybrid apps to Azure and Azure Stack Hub using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.</p>
       - html: <a href="/azure-stack/user/azure-stack-solution-hybrid-identity">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_identity-protection.svg" alt="hybrid cloud app identity">
               <br><b>Configure hybrid cloud identity</b></a>
-              <p>Configure a hybrid cloud identity for your Azure and Azure Stack applications.</p>
+              <p>Configure a hybrid cloud identity for your Azure and Azure Stack Hub applications.</p>
       - html: <a href="/azure-stack/user/azure-stack-solution-cloud-burst">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_multi-connect.svg" alt="hybrid cloud app scaling">
               <br><b>Cross-cloud scaling solutions</b></a>
-              <p>Create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack hosted web app, to an Azure hosted web app.</p>
-  - title: Infrastructure-as-a-Service (IaaS) on Azure Stack
+              <p>Create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack Hub hosted web app, to an Azure hosted web app.</p>
+  - title: Infrastructure-as-a-Service (IaaS) on Azure Stack Hub
     items:
     - type: list
       style: cards
@@ -63,7 +63,7 @@ sections:
       - html: <a href="/azure-stack/user/azure-stack-create-vm-template">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_package.svg" alt="">
               <br><b>Deploy a VM in IaaS with a template.</b></a>
-              <p>Create a VM using Azure Stack Resource Manager templates</p>
+              <p>Create a VM using Azure Stack Hub Resource Manager templates</p>
       - html: <a href="/azure-stack/user/azure-stack-quick-linux-portal">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_vmm-cloud.svg" alt="">
               <br><b>Quickstart - Create a VM</b></a>
@@ -71,8 +71,8 @@ sections:
       - html: <a href="/azure-stack/user/azure-stack-dev-start-deploy-app">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_web-color.svg" alt="">
               <br><b>Host Apps written in your code.</b></a>
-              <p>Set up a VM in Azure Stack and the deploying your app using C#, Java, Python, Go, Ruby, or NodeJS.</p>
-  - title: Platform-as-a-Service (PaaS) on Azure Stack
+              <p>Set up a VM in Azure Stack Hub and the deploying your app using C#, Java, Python, Go, Ruby, or NodeJS.</p>
+  - title: Platform-as-a-Service (PaaS) on Azure Stack Hub
     items:
     - type: list
       style: cards
@@ -81,7 +81,7 @@ sections:
       - html: <a href="/azure-stack/user/azure-stack-solution-template-service-fabric-cluster">
               <img height="48" width="48" src="/azure-stack/user/media/index/service-fabric-cluster.png" alt="">
               <br><b>Deploy a Service Fabric cluster</b></a>
-              <p>Deploy a secured Service Fabric cluster in Azure Stack.</p>
+              <p>Deploy a secured Service Fabric cluster in Azure Stack Hub.</p>
       - html: <a href="/azure-stack/user/azure-stack-solution-template-kubernetes-deploy">
               <img height="48" width="48" src="/azure-stack/user/media/index/kubernetes.png" alt="">
               <br><b>Deploy a Kubernetes Cluster</b></a>
