@@ -24,7 +24,7 @@ The solution takes advantage of the compliance benefits of the private cloud, co
 
 The solution deployment guide allows you to deploy an identical web application to a public and private cloud. You can also access a non-internet routable network, hosted on the private cloud. The web applications are monitored for load. Upon a significant increase in traffic, a program manipulates DNS records to redirect traffic to the public cloud. When traffic is no longer significant, the DNS records are updated to direct traffic back to the private cloud.
 
-[![cross-cloud scaling with on-prem data architecture](media/pattern-cross-cloud-scaling-onprem-data/solution-architecture.png)](media/pattern-cross-cloud-scaling-onprem-data/solution-architecture.png#lightbox)
+[![](media/pattern-cross-cloud-scaling-onprem-data/solution-architecture.png)](media/pattern-cross-cloud-scaling-onprem-data/solution-architecture.png)
 
 ## Components
 
@@ -32,19 +32,16 @@ This solution uses the following components:
 
 | Layer | Component | Description |
 |----------|-----------|-------------|
-| Azure |  |  |
-| | Azure App Service | [Azure App Service](/azure/app-service/) allows you to build and host web apps, RESTful API apps, and Azure Functions. All in the programming language of your choice, without managing infrastructure. |
+| Azure | Azure App Service | [Azure App Service](/azure/app-service/) allows you to build and host web apps, RESTful API apps, and Azure Functions. All in the programming language of your choice, without managing infrastructure. |
 | | Azure Virtual Network| [Azure Virtual Network (VNet)](/azure/virtual-network/virtual-networks-overview) is the fundamental building block for private networks in Azure. VNet enables multiple Azure resource types, such as Virtual Machines (VM), to securely communicate with each other, the internet, and on-premises networks. The solution also demonstrates the use of additional networking components:<br>- application and gateway subnets<br>- a local on-premises network gateway<br>- a virtual network gateway, which acts as a site-to-site VPN gateway connection<br>- a public IP address<br>- a point-to-site VPN connection<br>- Azure DNS for hosting DNS domains and providing name resolution |
 | | Azure Traffic Manager | [Azure Traffic Manager](/azure/traffic-manager/traffic-manager-overview) is a DNS-based traffic load balancer. It allows you to control the distribution of user traffic for service endpoints in different datacenters. |
 | | Azure Application Insights | [Application Insights](/azure/azure-monitor/app/app-insights-overview) is an extensible Application Performance Management service, for web developers building and managing apps on multiple platforms.|
 | | Azure Functions | [Azure Functions](/azure/azure-functions/) allow you to execute your code in a serverless environment without having to first create a VM or publish a web application. |
 | | Azure Autoscale | [Autoscale](/azure/azure-monitor/platform/autoscale-overview) is a built-in feature of Cloud Services, Virtual Machines, and Web apps. The feature allows applications to perform their best when demand changes. Apps will adjust for traffic spikes, notifying you when metrics change, and scaling as needed. |
-| Azure Stack Hub |    |             |
-| | IaaS Compute | Azure Stack Hub allows you to use the same application model, self-service portal, and APIs enabled by Azure. Azure Stack Hub IaaS allows a broad range of open source technologies for consistent hybrid cloud deployments. The solution example uses a Windows Server VM to SQL Server, for example.|
+| Azure Stack Hub | IaaS Compute | Azure Stack Hub allows you to use the same application model, self-service portal, and APIs enabled by Azure. Azure Stack Hub IaaS allows a broad range of open source technologies for consistent hybrid cloud deployments. The solution example uses a Windows Server VM to SQL Server, for example.|
 | | Azure App Service | Just like the Azure web app, the solution uses [Azure App Service on Azure Stack Hub](/azure-stack/operator/azure-stack-app-service-overview) to host the web app. |
 | | Networking | The Azure Stack Hub Virtual Network, works exactly like the Azure Virtual Network. It uses many of the same networking components, including custom hostnames. 
-| Azure DevOps Services | | |
-| | Sign-up | Quickly set up continuous integration for build, test, and deployment. For more information, see [Sign up, sign in to Azure DevOps](/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops). |
+| Azure DevOps Services | Sign-up | Quickly set up continuous integration for build, test, and deployment. For more information, see [Sign up, sign in to Azure DevOps](/azure/devops/user-guide/sign-up-invite-teammates?view=azure-devops). |
 | | Azure Pipelines | Use [Azure Pipelines](/azure/devops/pipelines/agents/agents?view=azure-devops) for Continuous Integration/Continuous delivery. Azure Pipelines allows you to manage hosted build and release agents and definitions. |
 | | Code repository | Leverage multiple code repositories to streamline your development pipeline. Use existing code repositories in GitHub, Bitbucket, Dropbox, OneDrive, and Azure Repos. |
 

@@ -1,6 +1,6 @@
 ---
-title: Hybrid pattern for implementing a AI-based footfall detection using Azure and Azure Stack
-description: Learn how to use Azure and Azure Stack services, to implement an AI-based footfall detection solution for analyzing retail store traffic.
+title: Hybrid pattern for implementing a AI-based footfall detection using Azure and Azure Stack Hub.
+description: Learn how to use Azure and Azure Stack Hub services, to implement an AI-based footfall detection solution for analyzing retail store traffic.
 author: BryanLa
 ms.service: azure-stack
 ms.topic: article
@@ -12,7 +12,7 @@ ms.lastreviewed: 10/31/2019
 
 # Footfall detection pattern
 
-This pattern provides an overview for implementing an AI-based footfall detection solution, for analyzing visitor traffic in retail stores. The solution generates insights from real world actions, using Azure, Azure Stack, and the Custom Vision AI Dev Kit.
+This pattern provides an overview for implementing an AI-based footfall detection solution, for analyzing visitor traffic in retail stores. The solution generates insights from real world actions, using Azure, Azure Stack Hub, and the Custom Vision AI Dev Kit.
 
 ## Context and problem
 
@@ -22,15 +22,15 @@ Contoso would like to find an unobtrusive, privacy-friendly way to determine the
 
 ## Solution
 
-This retail analytics pattern uses a tiered approach to inferencing at the edge. By using the Custom Vision AI Dev Kit, only images with human faces are sent for analysis to a private Azure Stack that runs Azure Cognitive Services. Anonymized, aggregated data is sent to Azure for aggregation across all stores and visualization in Power BI. Combining the edge and public cloud allows Contoso to take advantage of modern AI technology. While at the same time, remain in compliance with their corporate policies and respect their customers' privacy.
+This retail analytics pattern uses a tiered approach to inferencing at the edge. By using the Custom Vision AI Dev Kit, only images with human faces are sent for analysis to a private Azure Stack Hub that runs Azure Cognitive Services. Anonymized, aggregated data is sent to Azure for aggregation across all stores and visualization in Power BI. Combining the edge and public cloud allows Contoso to take advantage of modern AI technology. While at the same time, remain in compliance with their corporate policies and respect their customers' privacy.
 
 [![Footfall detection solution](media/pattern-retail-footfall-detection/solution-architecture.png)](media/pattern-retail-footfall-detection/solution-architecture.png)
 
 Here's a summary of how the solution works: 
 
 1. The Custom Vision AI Dev Kit gets a configuration from IoT Hub, which installs the IoT Edge Runtime and an ML model.
-2. If the model sees a person, it takes a picture and uploads it to Azure Stack blob storage. 
-3. The blob service triggers an Azure Function on Azure Stack. 
+2. If the model sees a person, it takes a picture and uploads it to Azure Stack Hub blob storage. 
+3. The blob service triggers an Azure Function on Azure Stack Hub. 
 4. The Azure Function calls a container with the Face API to get demographic and emotion data from the image.
 5. The data is anonymized and sent to an Azure Event Hub.
 6. The Event Hub pushes the data to Stream Analytics.
@@ -43,15 +43,14 @@ This solution uses the following components:
 | Layer | Component | Description |
 |----------|-----------|-------------|
 | In-store hardware | [Custom Vision AI Dev Kit](https://azure.github.io/Vision-AI-DevKit-Pages/) | Provides in-store filtering using a local ML model that only captures images of people for analysis. Securely provisioned and updated through IoT Hub.<br><br>|
-| Azure Stack | [App Service](../operator/azure-stack-app-service-overview.md) | The App Service resource provider (RP) provides a base for edge components. Including hosting and management features for web apps/APIs and Functions. |
-| | Azure Kubernetes Service [(AKS) Engine](https://github.com/Azure/aks-engine) cluster | The AKS RP with AKS-Engine cluster deployed into Azure Stack, provides a scalable, resilient engine to run the Face API container. |
-| | Azure Cognitive Services [Face API containers](/azure/cognitive-services/face/face-how-to-install-containers)| The Azure Cognitive Services RP with Face API containers provides demographic, emotion, and unique visitor detection on Contoso's private network. |
-| | Blob Storage | Images captured from the AI Dev Kit are uploaded to Azure Stack's blob storage. |
-| | Azure Functions | An Azure Function running on Azure Stack receives input from blob storage, and manages the interactions with the Face API. It emits anonymized data to an Event Hub located in Azure.<br><br>|
-| Azure |  |  |
-|  | [Azure Event Hubs](/azure/event-hubs/) | Azure Event Hubs provides a scalable platform for ingesting anonymized data that integrates neatly with Azure Stream Analytics. |
+| Azure | [Azure Event Hubs](/azure/event-hubs/) | Azure Event Hubs provides a scalable platform for ingesting anonymized data that integrates neatly with Azure Stream Analytics. |
 |  | [Azure Stream Analytics](/azure/stream-analytics/) | An Azure Stream Analytics job aggregates the anonymized data and groups it into 15-second windows for visualization. |
 |  | [Microsoft Power BI](https://powerbi.microsoft.com/) | Power BI provides an easy-to-use dashboard interface for viewing the output from Azure Stream Analytics. |
+| Azure Stack Hub | [App Service](../operator/azure-stack-app-service-overview.md) | The App Service resource provider (RP) provides a base for edge components. Including hosting and management features for web apps/APIs and Functions. |
+| | Azure Kubernetes Service [(AKS) Engine](https://github.com/Azure/aks-engine) cluster | The AKS RP with AKS-Engine cluster deployed into Azure Stack Hub, provides a scalable, resilient engine to run the Face API container. |
+| | Azure Cognitive Services [Face API containers](/azure/cognitive-services/face/face-how-to-install-containers)| The Azure Cognitive Services RP with Face API containers provides demographic, emotion, and unique visitor detection on Contoso's private network. |
+| | Blob Storage | Images captured from the AI Dev Kit are uploaded to Azure Stack Hub's blob storage. |
+| | Azure Functions | An Azure Function running on Azure Stack Hub receives input from blob storage, and manages the interactions with the Face API. It emits anonymized data to an Event Hub located in Azure.<br><br>|
 
 ## Issues and considerations
 
@@ -68,7 +67,7 @@ To enable this solution to scale across multiple cameras and locations, you'll n
 
 ### Availability
 
-Since this solution is tiered, it's important to think about how to deal with networking or power failures. Depending on business needs, it might be appropriate to implement a mechanism to cache images locally, then forward to Azure Stack when connectivity returns. If the location is large enough, deploying a Data Box Edge with the Face API container to that location might be a better option.
+Since this solution is tiered, it's important to think about how to deal with networking or power failures. Depending on business needs, it might be appropriate to implement a mechanism to cache images locally, then forward to Azure Stack Hub when connectivity returns. If the location is large enough, deploying a Data Box Edge with the Face API container to that location might be a better option.
 
 ### Manageability
 

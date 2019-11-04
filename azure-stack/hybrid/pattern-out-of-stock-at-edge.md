@@ -41,14 +41,11 @@ This solution uses the following components:
 
 | Layer | Component | Description |
 |----------|-----------|-------------|
-| On-premises hardware |  |  |
-| | Network camera | A network camera is required, with either an HTTP or RTSP feed to provide the images for inference. |
-| Azure |  |  |
-|  | Azure IoT Hub | [Azure IoT Hub](/azure/iot-hub/) handles device provisioning, and messaging for the edge devices. |
+| On-premises hardware | Network camera | A network camera is required, with either an HTTP or RTSP feed to provide the images for inference. |
+| Azure | Azure IoT Hub | [Azure IoT Hub](/azure/iot-hub/) handles device provisioning, and messaging for the edge devices. |
 |  | Azure Time Series Insights | [Azure Time Series Insights](/azure/time-series-insights/) stores the messages from IoT Hub for visualization. |
 |  | Power BI | [Microsoft Power BI](https://powerbi.microsoft.com/) provides business-focused reports of out of stock events. Power BI provides an easy-to-use dashboard interface for viewing the output from Azure Stream Analytics. |
-| Azure Stack Edge or Azure IoT Edge device |    |             |
-| | Azure IoT Edge | [Azure IoT Edge](/azure/iot-edge/) orchestrates the runtime for the on-premises containers and handles device management and updates.|
+| Azure Stack Edge or<br>Azure IoT Edge device | Azure IoT Edge | [Azure IoT Edge](/azure/iot-edge/) orchestrates the runtime for the on-premises containers and handles device management and updates.|
 | | Azure project brainwave | On an Azure Stack Edge device, [Project Brainwave](https://blogs.microsoft.com/ai/build-2018-project-brainwave/) uses Field-Programmable Gate Arrays (FPGAs) to accelerate ML inferencing.|
 
 ## Issues and considerations

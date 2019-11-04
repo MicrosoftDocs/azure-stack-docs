@@ -26,7 +26,7 @@ The training at the edge pattern uses a virtual machine (VM) running on Azure St
 
 Once the model is trained, it's registered with Azure ML, containerized, and added to an Azure Container Registry for deployment. For this iteration of the pattern, the Azure Stack Hub training VM must be reachable over the public Internet. 
 
-![train ml model at the edge architecture](media/pattern-train-ml-model-at-edge/solution-architecture.png)
+]![train ml model at the edge architecture](media/pattern-train-ml-model-at-edge/solution-architecture.png)](media/pattern-train-ml-model-at-edge/solution-architecture.png)
 
 Here's how the solution works: 
 
@@ -41,13 +41,11 @@ This solution uses the following components:
 
 | Layer | Component | Description |
 |----------|-----------|-------------|
-| Azure |  |  |
-| | Azure Machine Learning | [Azure Machine Learning](/azure/machine-learning/) orchestrates the training of the ML model. |
+| Azure | Azure Machine Learning | [Azure Machine Learning](/azure/machine-learning/) orchestrates the training of the ML model. |
 | | Azure Container Registry | Azure ML packages the model into a container and stores it in an [Azure Container Registry](/azure/container-registry/) for deployment.|
-| Azure Stack Hub |    |             |
-| | App Service | [Azure Stack Hub with App Service](/azure-stack/operator/azure-stack-app-service-overview) provides the base for the components at the edge. |
+| Azure Stack Hub | App Service | [Azure Stack Hub with App Service](/azure-stack/operator/azure-stack-app-service-overview) provides the base for the components at the edge. |
 | | Compute | An Azure Stack Hub VM running Ubuntu with Docker is used to train the ML model. |
-| | Blob storage | Private data can be hosted on Azure Stack Hub Blob Storage. |
+| | Storage | Private data can be hosted in Azure Stack Hub blob storage. |
 
 ## Issues and considerations
 

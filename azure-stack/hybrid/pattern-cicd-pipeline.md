@@ -47,11 +47,11 @@ For more information, see [Develop Azure Resource Manager templates for cloud co
 
 In addition, consider the following points when deciding how to implement this pattern:
 
-### Scalability considerations
+### Scalability
 
 Deployment automation systems are the key control point in the DevOps Patterns. Implementations can vary. The selection of the correct server size depends on the size of the expected workload. VMs cost more to scale than containers. To use containers for scaling, however, your build process must run with containers.
 
-### Availability considerations
+### Availability
 
 Availability in the context of the DevPattern means being able to recover any state information associated with your workflow, such as test results, code dependencies, or other artifacts. To assess your availability requirements, consider two common metrics:
 
@@ -63,7 +63,7 @@ In practice, RTO, and RPO imply redundancy and backup. On the global Azure cloud
 
 Another major consideration when designing the system used for deployment automation is access control and the proper management of the rights needed to deploy services to cloud environments. What rights are needed to create, delete, or modify deployments? For example, one set of rights is typically required to create a resource group in Azure and another to deploy services in the resource group.
 
-### Manageability considerations
+### Manageability
 
 The design of any system based on the DevOps pattern must consider automation, logging, and alerting for each service across the portfolio. Use shared services, an application team, or both, and track security policies and governance as well.
 

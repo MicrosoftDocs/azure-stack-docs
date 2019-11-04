@@ -46,15 +46,15 @@ Public IP addresses are used to route the incoming traffic through traffic manag
 
 Consider the following points when deciding how to implement this pattern:
 
-### Scalability considerations
+### Scalability
 
 The pattern handles geographical traffic routing rather than scaling to meet increases in traffic. However, you can combine this pattern with other Azure and on-premises solutions. For example, this pattern can be used with the Cross-cloud Scaling Pattern.
 
-### Availability considerations
+### Availability
 
 Ensure locally deployed apps are configured for high-availability through on-premises hardware configuration and software deployment.
 
-### Manageability considerations
+### Manageability
 
 The pattern ensures seamless management and familiar interface between environments.
 

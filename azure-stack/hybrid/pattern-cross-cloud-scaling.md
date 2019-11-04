@@ -73,15 +73,15 @@ Public IP addresses are used to route the incoming traffic through traffic manag
 
 Consider the following points when deciding how to implement this pattern:
 
-### Scalability considerations
+### Scalability
 
 The key component of cross-cloud scaling is the ability to deliver on-demand scaling. Scaling must occur between public and local cloud infrastructure, and provide a  consistent, reliable service per the demand.
 
-### Availability considerations
+### Availability
 
 Ensure locally deployed apps are configured for high-availability through on-premises hardware configuration and software deployment.
 
-### Manageability considerations
+### Manageability
 
 The cross-cloud pattern ensures seamless management and familiar interface between environments.
 
