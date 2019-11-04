@@ -26,7 +26,7 @@ The training at the edge pattern uses a virtual machine (VM) running on Azure St
 
 Once the model is trained, it's registered with Azure ML, containerized, and added to an Azure Container Registry for deployment. For this iteration of the pattern, the Azure Stack Hub training VM must be reachable over the public Internet. 
 
-]![train ml model at the edge architecture](media/pattern-train-ml-model-at-edge/solution-architecture.png)](media/pattern-train-ml-model-at-edge/solution-architecture.png)
+[![train ml model at the edge architecture](media/pattern-train-ml-model-at-edge/solution-architecture.png)](media/pattern-train-ml-model-at-edge/solution-architecture.png)
 
 Here's how the solution works: 
 

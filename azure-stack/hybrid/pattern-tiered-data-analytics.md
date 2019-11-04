@@ -35,7 +35,7 @@ The solution is based on the following scenario:
 
 Utilizing both on-premises and public cloud environments meets the demands of multi-facility enterprises. Azure Stack Hub offers a rapid, secure, and flexible solution for collecting, processing, storing, and distributing local and remote data. Particularly when security, confidentiality, corporate policy, and regulatory requirements may differ between locations and users. 
 
-![tiered data for analytics solution architecture](media/pattern-tiered-data-for-analytics/solution-architecture.png)
+![tiered data for analytics solution architecture](media/pattern-tiered-data-analytics/solution-architecture.png)
 
 ## Components
 

@@ -26,7 +26,7 @@ You may not be able to run your application in the public cloud. However, it may
 
 The cross-cloud scaling pattern extends an app located in a local cloud with public cloud resources. The pattern is triggered by an increase or decrease in demand, and respectively adds or removes resources in the cloud. These resources provide redundancy, rapid availability, and geo-compliant routing.
 
-![Cross-cloud scaling pattern](media/pattern-cross-cloud-scaling/cross-cloud-scaling.png)
+![Cross-cloud scaling pattern](media/pattern-cross-cloud-scale/cross-cloud-scale.png)
 
 > [!NOTE]
 > This pattern applies only to stateless components of your app.
@@ -36,9 +36,11 @@ The cross-cloud scaling pattern extends an app located in a local cloud with pub
 The Cross-cloud Scaling pattern consists of the following components.
 
 **Traffic Manager**  
-**In the diagram this is located outside of the public cloud group, but it would need to able to coordinate traffic in both the local data center and the public cloud. The balancer delivers high availability for application by monitoring endpoints and providing failover redistribution when required.
+
+In the diagram this is located outside of the public cloud group, but it would need to able to coordinate traffic in both the local data center and the public cloud. The balancer delivers high availability for application by monitoring endpoints and providing failover redistribution when required.
 
 **Domain Name System (DNS)**  
+
 The Domain Name System, or DNS, is responsible for translating (or resolving) a website or service name to its IP address.
 
 ### Cloud

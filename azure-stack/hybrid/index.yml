@@ -35,7 +35,7 @@ landingContent:
       - linkListType: architecture
         links:
           - text: Cross-cloud scaling
-            url: pattern-cross-cloud-scaling.md
+            url: pattern-cross-cloud-scale.md
           - text: DevOps hybrid CI/CD
             url: pattern-cicd-pipeline.md
           - text: Footfall detection (retail)
@@ -75,7 +75,7 @@ landingContent:
       - linkListType: architecture
         links:
           - text: Pattern
-            url: pattern-cross-cloud-scaling-onprem-data.md
+            url: pattern-cross-cloud-scale-onprem-data.md
       - linkListType: tutorial
         links:
           - text: Solution deployment guide

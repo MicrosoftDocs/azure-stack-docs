@@ -9,7 +9,7 @@
   - name: Single 
     items:
         - name: Cross cloud scaling
-          href: pattern-cross-cloud-scaling.md
+          href: pattern-cross-cloud-scale.md
         - name: DevOps hybrid CI/CD
           href: pattern-cicd-pipeline.md
         - name: Geo-distributed app
@@ -17,13 +17,13 @@
         - name: Hybrid relay
           href: pattern-hybrid-relay.md
         - name: Tiered data
-          href: pattern-tiered-data-for-analytics.md
+          href: pattern-tiered-data-analytics.md
         - name: Train ML model at the edge
           href: pattern-train-ml-model-at-edge.md
   - name: Multi
     items:
     - name: Cross cloud scaling (on-premises data)
-      href: pattern-cross-cloud-scaling-onprem-data.md
+      href: pattern-cross-cloud-scale-onprem-data.md
     - name: Footfall detection (retail)
       href: pattern-retail-footfall-detection.md
     - name: Out-of-stock detection at the edge

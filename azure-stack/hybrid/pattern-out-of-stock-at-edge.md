@@ -10,7 +10,7 @@ ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 ---
 
-# Tiered data for analytics pattern
+# Out of stock detection at the edge pattern
 
 This pattern illustrates how to determine if shelves have out of stock items using an Azure Stack Edge or Azure IoT Edge device and network cameras.
 
