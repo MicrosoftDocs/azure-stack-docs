@@ -25,6 +25,49 @@ This article describes the end-to-end Azure Stack customer experience from purch
 
 As an Azure Stack customer, you should anticipate the following phases:
 
+# [Customer](#tab/customer)
+
+1. Describe intended use cases and specify requirements.
+2. Determine the billing model to use, review, and approve contracts.
+3. Complete the [Deployment Worksheet](azure-stack-deployment-worksheet.md), and ensure all deployment prerequisites are met and ready for deployment.
+4. Prepare data center by ensuring all required power and cooling, border connectivity, and other required data center integration requirements are in place.
+5. Be available during deployment to provide subscription credentials and support if there are questions on the provided data.
+
+# [Partner](#tab/partner)
+
+1. Planning phase:
+   - Recommend solution options based on customer requirements.
+   - Propose proof of concept (POC) if necessary.
+   - Establish business relationship.
+   - Decide on level of support.
+2. Order process:
+   - Prepare necessary contracts with the customer.
+   - Create customer purchase order.
+   - Decide on delivery timeline.
+   - Connect customer with Microsoft if necessary.
+3. Pre-deployment
+   - Provide customer with necessary training to ensure understanding of all deployment prerequisites and data center integration options.
+   - Assist the customer with validation of collected data to ensure completeness and accuracy.
+4. Factory process
+   - Apply the last validated baseline build.
+   - Apply the required Microsoft deployment toolkit.
+5. Hardware delivery:
+   - Ship hardware to customer site.
+6. Onsite deployment
+   - Deployment handled by an onsite engineer.
+   - Rack and stack.
+   - Hardware lifecycle host (HLH) deployment.
+   - Azure Stack deployment.
+   - Hand off to customer.
+
+# [Microsoft](#tab/micro)
+
+1. Engage with partner to provide presales support.
+2. Prepare software licensing and contracts as needed.
+3. Provide required tooling to collect datacenter integration requirements and documentation to customer.
+4. Provide the latest baseline builds and tool chain updates on a monthly cadence.
+5. Microsoft support engineers assist with any deployment issues.
+
 |     |Planning phase|Order process|Pre-deployment|Factory process|Hardware delivery|Onsite deployment|
 |-----|-----|-----|-----|-----|-----|-----|
 |**Microsoft**|Engage with partner to provide presales support.|Prepare software licensing and contracts as needed.|Provide required tooling to collect datacenter integration requirements and documentation to customer.|Provide the latest baseline builds and tool chain updates on a monthly cadence.|N/A|Microsoft support engineers assist with any deployment issues.|
