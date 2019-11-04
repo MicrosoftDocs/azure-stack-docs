@@ -165,7 +165,7 @@ Installation has four steps:
     ```
 
     > [!Note]  
-    > The Azure Stack module version 1.7.1 is a breaking change. To migrate from AzureStack 1.6.0 please refer to the [migration guide](https://github.com/Azure/azure-powershell/tree/AzureRM/documentation/migration-guides/Stack).
+    > The Azure Stack module version 1.7.1 is a breaking change. To migrate from Azure Stack 1.6.0 please refer to the [migration guide](https://github.com/Azure/azure-powershell/tree/AzureRM/documentation/migration-guides/Stack).
 
     > [!NOTE]
     > On machines without an internet connection, we recommend executing the following cmdlet for disabling the telemetry data collection. You may experience a performance degradation of the cmdlets without disabling the telemetry data collection. This is applicable only for the machines without internet connections
@@ -181,7 +181,7 @@ Installation has four steps:
 
 3. Manually bootstrap the NuGet provider on your disconnected workstation. For instructions, see [Manually bootstrapping the NuGet provider on a machine that isn't connected to the internet](https://docs.microsoft.com/powershell/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet).
 
-4. Register this location as the default repository and install the AzureRM and AzureStack modules from this repository:
+4. Register this location as the default repository and install the AzureRM and `AzureStack` modules from this repository:
 
    ```powershell
    # requires -Version 5
