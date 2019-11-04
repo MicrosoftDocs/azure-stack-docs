@@ -61,30 +61,30 @@ conceptualContent:
           text: Hybrid app design considerations
     - title: Explore hybrid patterns
       links:
-        - url: pattern-cross-cloud-scale.md
+        - url: /azure-stack/hybrid/pattern-cross-cloud-scale
           itemType: architecture
           text: Cross-cloud scaling
-        - url: pattern-cicd-pipeline.md
+        - url: /azure-stack/hybrid/pattern-cicd-pipeline
           itemType: architecture
           text: DevOps hybrid CI/CD
-        - url: pattern-retail-footfall-detection.md
+        - url: /azure-stack/hybrid/pattern-retail-footfall-detection
           itemType: architecture
           text: Footfall detection (retail)
-        - url: pattern-geo-distributed.md
+        - url: /azure-stack/hybrid/pattern-geo-distributed
           itemType: architecture
           text: Geo-distributed app
     - title: Deploy hybrid solution examples
       links:
-        - url: solution-deployment-guide-cross-cloud-scaling.md
+        - url: /azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling
           itemType: tutorial
           text: Cross-cloud scaling
         - url: https://aka.ms/hybriddevopsdeploy 
           itemType: tutorial
           text: DevOps hybrid CI/CD
-        - url: solution-deployment-guide-retail-footfall-detection.md
+        - url: /azure-stack/hybrid/solution-deployment-guide-retail-footfall-detection
           itemType: tutorial
           text: Footfall detection (retail)
-        - url: solution-deployment-guide-geo-distributed.md
+        - url: /azure-stack/hybrid/solution-deployment-guide-geo-distributed
           itemType: tutorial
           text: Geo-distributed app
 
