@@ -18,11 +18,13 @@ Learn how to provide app endpoints across multiple regions, and route user traff
 
 Organizations with wide-reaching geographies strive to securely and accurately distribute and enable access to data while ensuring required levels of security, compliance and performance per user, location, and device across borders.
 
-## Solution architecture
+## Solution
 
 The Azure Stack Hub geographic traffic routing pattern, or geo-distributed apps, allows traffic to be directed to specific endpoints based on various metrics. Creating a Traffic Manager with geographic-based routing and endpoint configuration routes traffic to endpoints based on regional requirements, corporate and international regulation, and data needs.
 
 ![Geo-distributed pattern](media/pattern-geo-distributed/geo-distribution.png)
+
+## Components
 
 **Traffic Manager**  
 In the diagram, Traffic Manager is located outside of the public cloud, but it would need to able to coordinate traffic in both the local data center and the public cloud. The balancer routes traffic to geographical locations.
@@ -44,15 +46,15 @@ Public IP addresses are used to route the incoming traffic through traffic manag
 
 Consider the following points when deciding how to implement this pattern:
 
-### Scalability considerations
+### Scalability
 
 The pattern handles geographical traffic routing rather than scaling to meet increases in traffic. However, you can combine this pattern with other Azure and on-premises solutions. For example, this pattern can be used with the Cross-cloud Scaling Pattern.
 
-### Availability considerations
+### Availability
 
 Ensure locally deployed apps are configured for high-availability through on-premises hardware configuration and software deployment.
 
-### Manageability considerations
+### Manageability
 
 The pattern ensures seamless management and familiar interface between environments.
 

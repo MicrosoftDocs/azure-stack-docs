@@ -9,27 +9,25 @@
   - name: Single 
     items:
         - name: Cross cloud scaling
-          href: pattern-cross-cloud-scaling.md
+          href: pattern-cross-cloud-scale.md
         - name: DevOps hybrid CI/CD
           href: pattern-cicd-pipeline.md
         - name: Geo-distributed app
           href: pattern-geo-distributed.md
         - name: Hybrid relay
           href: pattern-hybrid-relay.md
-        - name: Live video at the edge     
-          href: pattern-live-video-at-edge.md
         - name: Tiered data
-          href: https://aka.ms/AzureStack
+          href: pattern-tiered-data-analytics.md
         - name: Train ML model at the edge
           href: pattern-train-ml-model-at-edge.md
   - name: Multi
     items:
-    - name: Cross-cloud scaling (on-premises data)
-      href: https://aka.ms/AzureStack
+    - name: Cross cloud scaling (on-premises data)
+      href: pattern-cross-cloud-scale-onprem-data.md
     - name: Footfall detection (retail)
       href: pattern-retail-footfall-detection.md
     - name: Out-of-stock detection at the edge
-      href: https://aka.ms/AzureStack 
+      href: pattern-out-of-stock-at-edge.md
 - name: Solution deployment guides
   items:
   - name: Cross-cloud scaling 

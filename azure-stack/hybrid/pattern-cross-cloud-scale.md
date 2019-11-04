@@ -1,6 +1,6 @@
 ---
-title: Cross-cloud scaling pattern for the intelligent edge with Azure Stack Hub
-description: Learn about the cross-cloud scaling pattern for the intelligent edge with Azure Stack Hub
+title: Pattern for building an application that scales cross-cloud, on Azure and Azure Stack Hub.
+description: Learn how to use Azure and Azure Stack Hub, to build a scalable cross-cloud application.
 author: BryanLa
 ms.service: azure-stack
 ms.topic: article
@@ -16,27 +16,31 @@ Automatically add resources to an existing application to accommodate an increas
 
 ## Context and problem
 
-Your app cannot increase capacity to meet unexpected increased in demand. This lack of scalability results in users not reaching the app during peak usage times. The app can service a fixed number of users.
+Your app can't increase capacity to meet unexpected increases in demand. This lack of scalability results in users not reaching the app during peak usage times. The app can service a fixed number of users.
 
 Global enterprises require secure, reliable, and available cloud-based applications. Meeting increases in demand, and using the right infrastructure to support that demand is critical. Businesses struggle to balance costs and maintenance with business data security, storage, and real-time availability.
 
 You may not be able to run your application in the public cloud. However, it may not be economically feasible for the business to maintain the capacity required in their on-premises environment to handle spikes in demand for the app. With this pattern, you can use the elasticity of the public cloud with your on-premises solution.
 
-## Solution architecture
+## Solution
 
 The cross-cloud scaling pattern extends an app located in a local cloud with public cloud resources. The pattern is triggered by an increase or decrease in demand, and respectively adds or removes resources in the cloud. These resources provide redundancy, rapid availability, and geo-compliant routing.
 
-![Cross-cloud scaling pattern](media/pattern-cross-cloud-scaling/cross-cloud-scaling.png)
+![Cross-cloud scaling pattern](media/pattern-cross-cloud-scale/cross-cloud-scaling.png)
 
 > [!NOTE]
 > This pattern applies only to stateless components of your app.
 
+## Components
+
 The Cross-cloud Scaling pattern consists of the following components.
 
 **Traffic Manager**  
-**In the diagram this is located outside of the public cloud group, but it would need to able to coordinate traffic in both the local data center and the public cloud. The balancer delivers high availability for application by monitoring endpoints and providing failover redistribution when required.
+
+In the diagram this is located outside of the public cloud group, but it would need to able to coordinate traffic in both the local data center and the public cloud. The balancer delivers high availability for application by monitoring endpoints and providing failover redistribution when required.
 
 **Domain Name System (DNS)**  
+
 The Domain Name System, or DNS, is responsible for translating (or resolving) a website or service name to its IP address.
 
 ### Cloud
@@ -59,7 +63,7 @@ Public IP addresses are used to route the incoming traffic through traffic manag
 An environment for hosting your build pipeline.
 
 **Application Resources**  
-The application resources need to be able to scale in and scale out, such as VM ScaleSets and Containers.
+The application resources need the ability to scale in and scale out, such as VM ScaleSets and Containers.
 
 **Custom Domain Name**  
 Use a custom domain name for routing requests glob.
@@ -69,37 +73,32 @@ Public IP addresses are used to route the incoming traffic through traffic manag
 
 ## Issues and considerations
 
-
 Consider the following points when deciding how to implement this pattern:
 
-### Scalability considerations
+### Scalability
 
-The key component of cross-cloud scaling is the ability to deliver on-demand scaling between public and local cloud infrastructure, proving consistent, reliable service as prescribed by the demand.
+The key component of cross-cloud scaling is the ability to deliver on-demand scaling. Scaling must occur between public and local cloud infrastructure, and provide a  consistent, reliable service per the demand.
 
-### Availability considerations
+### Availability
 
 Ensure locally deployed apps are configured for high-availability through on-premises hardware configuration and software deployment.
 
-### Manageability considerations
+### Manageability
 
 The cross-cloud pattern ensures seamless management and familiar interface between environments.
 
-#### When to use this pattern
+## When to use this pattern
 
 Use this pattern:
 
 - When you need to increase your app capacity with unexpected demands or periodic demands in demand.
-
 - When you do not want to invest in resources that will only be used during peaks. Pay for what you use.
 
 This pattern isn't recommended when:
 
 - Your solution requires users connecting over the internet.
-
 - Your business has local regulations that require that the originating connection to come from an onsite call.
-
 - Your network experiences regular bottlenecks that would restrict the performance of the scaling.
-
 - Your environment is disconnected from the Internet and cannot reach the public cloud.
 
 ## Next steps

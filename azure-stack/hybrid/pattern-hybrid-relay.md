@@ -18,7 +18,7 @@ Learn how to connect to resources or devices at the edge, that are protected by 
 
 Edge devices are often behind a corporate firewall or NAT device. Although they're secure, they may be unable to communicate with the public cloud, or edge devices on other corporate networks. It may be necessary to expose certain ports and functionality to users in the public cloud in a secure manner. 
 
-## Solution architecture
+## Solution
 
 The hybrid relay pattern uses Azure Service Bus Relays to establish a WebSockets tunnel, between two endpoints that can't directly communicate. Devices that aren't on-premises, but need to connect to an on-premises endpoint,  will connect to an endpoint in the public cloud. This endpoint will redirect the traffic, on predefined routes over a secure channel. An endpoint inside the on-premises environment receives the traffic, and routes it to the correct destination. 
 
@@ -37,11 +37,9 @@ This solution uses the following components:
 
 | Layer | Component | Description |
 |----------|-----------|-------------|
-| Azure |  |  |
-| | Azure VM | An Azure VM provides a publicly accessible endpoint for the on-premises resource. |
+| Azure | Azure VM | An Azure VM provides a publicly accessible endpoint for the on-premises resource. |
 | | Azure Service Bus Relay | An [Azure Service Bus Relay](/azure/service-bus-relay/) provides the infrastructure for maintaining the tunnel and connection between the Azure VM and Azure Stack Hub VM.|
-| Azure Stack Hub |    |             |
-| | Compute | An Azure Stack Hub VM provides the server-side of the Hybrid Relay tunnel. |
+| Azure Stack Hub | Compute | An Azure Stack Hub VM provides the server-side of the Hybrid Relay tunnel. |
 | | Storage | The AKS Engine cluster deployed into Azure Stack Hub provides a scalable, resilient engine to run the Face API container.|
 
 ## Issues and considerations

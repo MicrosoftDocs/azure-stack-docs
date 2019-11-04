@@ -52,22 +52,22 @@
     },
     {
       "source_path": "azure-stack/user/azure-stack-edge-pattern-geo-distribution.md",
-      "redirect_url": "/azure-stack/hybrid/solution-overview-geo-distributed",
+      "redirect_url": "/azure-stack/hybrid/pattern-geo-distributed",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/user/hybrid-solution-retail-footfall-detection.md",
-      "redirect_url": "/azure-stack/hybrid/solution-overview-retail-footfall-detection",
+      "redirect_url": "/azure-stack/hybrid/pattern-retail-footfall-detection",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/user/azure-stack-edge-pattern-hybrid-ci-cd.md",
-      "redirect_url": "/azure-stack/hybrid/solution-overview-cicd-pipeline",
+      "redirect_url": "/azure-stack/hybrid/pattern-cicd-pipeline",
       "redirect_document_id": false
     },
     {
       "source_path": "azure-stack/user/azure-stack-edge-pattern-cross-cloud-scaling.md",
-      "redirect_url": "/azure-stack/hybrid/solution-overview-cross-cloud-scaling",
+      "redirect_url": "/azure-stack/hybrid/pattern-cross-cloud-scale",
       "redirect_document_id": false
     },
     {
