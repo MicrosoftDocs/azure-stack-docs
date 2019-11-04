@@ -196,9 +196,9 @@
         href: azure-stack-solution-template-service-fabric-cluster.md
       - name: Deploy a Kubernetes cluster
         items:
-        - name: AKS Engine
+        - name: AKS engine
           items:
-          - name: AKS Engine on Azure Stack
+          - name: AKS engine on Azure Stack
             href: azure-stack-kubernetes-aks-engine-overview.md
           - name: Support policy
             href: azure-stack-kubernetes-aks-engine-support.md 
@@ -214,7 +214,7 @@
             href: azure-stack-kubernetes-aks-engine-scale.md
           - name: Upgrade a cluster
             href: azure-stack-kubernetes-aks-engine-upgrade.md
-          - name: Troubleshoot AKS Engine
+          - name: Troubleshoot AKS engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
         - name: Marketplace item
           items: 
@@ -226,7 +226,7 @@
             href: azure-stack-solution-template-kubernetes-adfs.md
           - name: Enable the Kubernetes dashboard
             href: azure-stack-solution-template-kubernetes-dashboard.md
-          - name: Move AKS Engine from Marketplace item
+          - name: Move AKS engine from Marketplace item
             href: azure-stack-kubernetes-aks-engine-dvm.md
           - name: Troubleshoot Kubernetes cluster
             href: azure-stack-solution-template-kubernetes-trouble.md

@@ -251,7 +251,7 @@
       href: azure-stack-linux.md
     - name: Add a Red Hat virtual machine
       href: azure-stack-redhat-create-upload-vhd.md
-    - name: Offer the AKS Engine
+    - name: Offer the AKS engine
       href: azure-stack-aks-engine.md
     - name: Offer Kubernetes marketplace item
       href: azure-stack-solution-template-kubernetes-cluster-add.md
