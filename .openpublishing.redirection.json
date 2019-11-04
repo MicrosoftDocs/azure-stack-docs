@@ -67,7 +67,7 @@
     },
     {
       "source_path": "azure-stack/user/azure-stack-edge-pattern-cross-cloud-scaling.md",
-      "redirect_url": "/azure-stack/hybrid/pattern-cross-cloud-scaling",
+      "redirect_url": "/azure-stack/hybrid/pattern-cross-cloud-scale",
       "redirect_document_id": false
     },
     {
