@@ -60,7 +60,7 @@ Install GoFish from the [Install](https://gofi.sh/#install) page.
 
     ```PowerShell
     Set-ExecutionPolicy Bypass -Scope Process -Force
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.ps1'))
+    iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.ps1'))
     ```
 
 2.  Run the following command in the same session to install the AKS engine with GoFish:
