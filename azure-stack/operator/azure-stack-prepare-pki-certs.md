@@ -1,6 +1,6 @@
 ﻿---
-title: Prepare Azure Stack PKI certificates for use in deployment or rotation | Microsoft Docs
-description: Learn how to prepare Azure Stack PKI certificates for Azure Stack integrated systems.
+title: Prepare Azure Stack PKI certificates for deployment or rotation | Microsoft Docs
+description: Learn how to prepare PKI certificates for Azure Stack integrated systems deployment or for rotating secrets in an existing Azure Stack environment.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -18,7 +18,7 @@ ms.reviewer: ppacent
 ms.lastreviewed: 09/16/2019
 ---
 
-# Prepare Azure Stack PKI certificates for use in deployment or rotation
+# Prepare Azure Stack PKI certificates for deployment or rotation
 
 The certificate files [obtained from your certificate authority (CA) of choice](azure-stack-get-pki-certs.md) must be imported and exported with properties matching Azure Stack's certificate requirements.
 
