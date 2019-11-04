@@ -24,7 +24,7 @@ ms.lastreviewed: 10/16/2018
 After you have gained familiarity with the basic Azure Stack Development Kit (ASDK) service features and capabilities, you can deepen your understanding of Azure Stack further by testing out more advanced scenarios. These more advanced evaluation tasks are documented fully in the Azure Stack Operator documentation.
 
 > [!NOTE]
-> While many operator tasks are supported for both ASDK and production and multi-node Azure Stack deployments, not all usage scenarios are supported for ASDK deployments. For more information, see [ASDK and multi-node Azure Stack differences](asdk-what-is.md#asdk-and-multi-node-azure-stack-differences).
+> While many operator tasks are supported for both ASDK and production and multi-node Azure Stack deployments, not all usage scenarios are supported for ASDK deployments. For more information, see [ASDK and multi-node Azure Stack differences](asdk-what-is.md#asdk-and-multi-node-azure-stack-hub-differences).
 
 ## Delegate offers in Azure Stack
 As the Azure Stack Operator, you often want to put other people in charge of creating offers and signing up users. For example, if you're a service provider, you might want resellers to sign up customers and manage them on your behalf. Or if you're part of a central IT group in an enterprise, you might want subsidiaries to sign up users without your intervention.
