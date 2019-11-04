@@ -68,12 +68,6 @@ As an Azure Stack customer, you should anticipate the following phases:
 4. Provide the latest baseline builds and tool chain updates on a monthly cadence.
 5. Microsoft support engineers assist with any deployment issues.
 
-|     |Planning phase|Order process|Pre-deployment|Factory process|Hardware delivery|Onsite deployment|
-|-----|-----|-----|-----|-----|-----|-----|
-|**Microsoft**|Engage with partner to provide presales support.|Prepare software licensing and contracts as needed.|Provide required tooling to collect datacenter integration requirements and documentation to customer.|Provide the latest baseline builds and tool chain updates on a monthly cadence.|N/A|Microsoft support engineers assist with any deployment issues.|
-|**Partner**|Recommend solution options based on customer requirements.<br><br>Propose proof of concept (POC) if necessary.<br><br>Establish business relationship.<br><br>Decide on level of support.|Prepare necessary contracts with the customer.<br><br>Create customer purchase order.<br><br>Decide on delivery timeline.<br><br>Connect customer with Microsoft if necessary.|Provide customer with necessary training to ensure understanding of all deployment prerequisites and datacenter integration options.<br><br>Assist the customer with validation of collected data to ensure completeness and accuracy.|Apply the last validated baseline build.<br><br>Apply the required Microsoft deployment toolkit.|Ship hardware to customer site.|Deployment handled by an onsite engineer.<br><br>Rack and stack.<br><br>Hardware lifecycle host (HLH) deployment.<br><br>Azure Stack deployment.<br><br>Hand off to customer.|
-|**Customer**|Describe intended use cases and specify requirements.|Determine the billing model to use, review, and approve contracts.|Complete the [Deployment Worksheet](azure-stack-deployment-worksheet.md), and ensure all deployment prerequisites are met and ready for deployment.|N/A|Prepare datacenter by ensuring all required power and cooling, border connectivity, and other required datacenter integration requirements are in place.|Be available during deployment to provide subscription credentials and support if there are questions on the provided data.|
-| | | | | | | |
 
 
 ## Planning phase
