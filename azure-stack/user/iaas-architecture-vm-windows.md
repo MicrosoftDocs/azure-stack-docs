@@ -19,7 +19,7 @@ ms.lastreviewed: 11/01/2019
 
 Provisioning a virtual machine (VM) in Azure Stack requires some additional components besides the VM itself, including networking and storage resources. This article shows best practices for running a Windows VM on Azure.
 
-![](./media/iaas-architecture-vm-windows/image1.png)
+![Architecture for Windows VM on Azure Stack](./media/iaas-architecture-vm-windows/image1.png)
 
 ## Resource group
 
@@ -95,5 +95,5 @@ Onboard your VMs to [Azure Security Center](https://docs.microsoft.com/azure/sec
 
 ## Next steps
 
-- To learn more about Azure STack VMs, see [Azure Stack VM features](azure-stack-vm-considerations.md).  
+- To learn more about Azure Stack VMs, see [Azure Stack VM features](azure-stack-vm-considerations.md).  
 - To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns).

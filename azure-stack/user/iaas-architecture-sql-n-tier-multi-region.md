@@ -26,7 +26,7 @@ This reference architecture shows a set of proven practices for running across a
 
 This architecture builds on the one shown in [N-tier application with SQL Server](iaas-architecture-windows-sql-n-tier.md).
 
-![Highly available network architecture for Azure N-tier applications"](./media/iaas-architecturesql-n-tier-multi-region/image1.png)
+![Highly available network architecture for Azure N-tier applications](./media/iaas-architecturesql-n-tier-multi-region/image1.png)
 
 -   **Primary and secondary regions**. Use two regions to achieve higher availability. One is the primary region. The other region is for failover.
 
@@ -46,11 +46,11 @@ A multi-region architecture can provide higher availability than deploying to a 
 
 There are several general approaches to achieving high availability across regions:
 
--   Active/passive with hot standby. Traffic goes to one region, while the other waits on hot standby. Hot standby means the VMs in the secondary region are allocated and running at all times.
+-   **Active/passive with hot standby**. Traffic goes to one region, while the other waits on hot standby. Hot standby means the VMs in the secondary region are allocated and running at all times.
 
--   Active/passive with cold standby. Traffic goes to one region, while the other waits on cold standby. Cold standby means the VMs in the secondary region are not allocated until needed for failover. This approach costs less to run, but will generally take longer to come online during a failure.
+-   **Active/passive with cold standby**. Traffic goes to one region, while the other waits on cold standby. Cold standby means the VMs in the secondary region are not allocated until needed for failover. This approach costs less to run, but will generally take longer to come online during a failure.
 
--   Active/active. Both regions are active, and requests are load balanced between them. If one region becomes unavailable, it is taken out of rotation.
+-   **Active/active**. Both regions are active, and requests are load balanced between them. If one region becomes unavailable, it is taken out of rotation.
 
 This reference architecture focuses on active/passive with hot standby, using Traffic Manager for failover. You could deploy a small number of VMs for hot standby and then scale out as needed.
 
@@ -75,8 +75,6 @@ If Traffic Manager fails over, we recommend performing a manual failback rather 
 Note that Traffic Manager automatically fails back by default. To prevent this, manually lower the priority of the primary region after a failover event. For example, suppose the primary region is priority 1 and the secondary is priority 2. After a failover, set the primary region to priority 3, to prevent automatic failback. When you are ready to switch,  back, update the priority to 1.
 
 The following [Azure CLI](https://docs.microsoft.com/cli/azure/) command updates the priority:
-
-Azure CLI
 
 ```cli  
 az network traffic-manager endpoint update --resource-group <resource-group> --profile-name <profile>
@@ -127,7 +125,7 @@ To configure the availability group:
     -   Put one or more secondary replicas in the secondary region. Configure these to use *asynchronous* commit, for performance reasons. (Otherwise, all T-SQL transactions have to wait on a round trip over the network to the secondary region.)
 
 > [!Note]  
-> Asynchronous commit replicas do not support automatic failover.
+> Asynchronous commit replicas don't support automatic failover.
 
 ## Availability considerations
 

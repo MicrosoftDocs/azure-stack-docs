@@ -23,7 +23,7 @@ There are NVAs from different vendors available on [Azure Stack Marketplace](htt
 
 The architecture has the following components.
 
-### Networking and load balancing
+## Networking and load balancing
 
 -   **Virtual network and subnets**. Every Azure VM is deployed into a virtual network that can be segmented into subnets. Create a separate subnet for each tier.
 

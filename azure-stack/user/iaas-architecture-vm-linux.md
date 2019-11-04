@@ -19,7 +19,7 @@ ms.lastreviewed: 11/01/2019
 
 Provisioning a virtual machine (VM) in Azure Stack, like Azure, requires some additional components besides the VM itself, including networking and storage resources. This article shows best practices for running a Linux VM on Azure Stack.
 
-![](./media/iaas-architecture-vm-linux/image1.png)
+![Architecture for Linux VM on Azure Stack](./media/iaas-architecture-vm-linux/image1.png)
 
 ## Resource group
 
@@ -45,21 +45,17 @@ The OS disk is a VHD stored in [Azure Stack Storage](https://docs.microsoft.com/
 
 When you create a VHD, it is unformatted. Log into the VM to format the disk. In the Linux shell, data disks are displayed as /dev/sdc, /dev/sdd, and so on. You can run lsblk to list the block devices, including the disks. To use a data disk, create a partition and file system, and mount the disk. For example:
 
-bashCopy
-
-\# Create a partition.
-
+```bash
+# Create a partition.
 sudo fdisk /dev/sdc \# Enter 'n' to partition, 'w' to write the change.
 
-\# Create a file system.
-
+# Create a file system.
 sudo mkfs -t ext3 /dev/sdc1
 
-\# Mount the drive.
-
+# Mount the drive.
 sudo mkdir /data1
-
 sudo mount /dev/sdc1 /data1
+```
 
 When you add a data disk, a logical unit number (LUN) ID is assigned to the disk. Optionally, you can specify the LUN ID — for example, if you're replacing a disk and want to retain the same LUN ID, or you have an application that looks for a specific LUN ID. However, remember that LUN IDs must be unique for each disk.
 
@@ -114,5 +110,5 @@ Onboard your VMs to [Azure Security Center](https://docs.microsoft.com/azure/sec
 
 ## Next steps
 
-- To learn more about Azure STack VMs, see [Azure Stack VM features](azure-stack-vm-considerations.md).  
+- To learn more about Azure Stack VMs, see [Azure Stack VM features](azure-stack-vm-considerations.md).  
 - To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns).
