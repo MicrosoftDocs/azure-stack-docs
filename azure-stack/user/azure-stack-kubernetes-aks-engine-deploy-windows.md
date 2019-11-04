@@ -1,6 +1,6 @@
 ---
-title: Deploy the AKS Engine on Windows in Azure Stack | Microsoft Docs
-description: Learn how to use a Windows machine in your Azure Stack to host the AKS Engine in order to deploy and manage a Kubernetes cluster.
+title: Deploy the AKS engine on Windows in Azure Stack | Microsoft Docs
+description: Learn how to use a Windows machine in your Azure Stack to host the AKS engine in order to deploy and manage a Kubernetes cluster.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -19,15 +19,15 @@ ms.lastreviewed: 10/30/2019
 
 ---
 
-# Install the AKS Engine on Windows in Azure Stack
+# Install the AKS engine on Windows in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can use a Windows machine in your Azure Stack to host the AKS Engine in order to deploy and manage a Kubernetes cluster. In this article, we look at preparing the client VM to manage your cluster for both connected and disconnected Azure Stack instances, check the install, and setting up the client VM on the ASDK.
+You can use a Windows machine in your Azure Stack to host the AKS engine in order to deploy and manage a Kubernetes cluster. In this article, we look at preparing the client VM to manage your cluster for both connected and disconnected Azure Stack instances, check the install, and setting up the client VM on the ASDK.
 
 ## Prepare the client VM
 
-The AKS Engine is a command-line tool used to deploy and manage your Kubernetes cluster. You can run the engine on a machine in your Azure Stack. From this machine, you will execute the AKS Engine to deploy the IaaS resources and software needed to run your cluster. You can then use the machine running the engine to perform management tasks on your cluster.
+The AKS engine is a command-line tool used to deploy and manage your Kubernetes cluster. You can run the engine on a machine in your Azure Stack. From this machine, you will execute the AKS engine to deploy the IaaS resources and software needed to run your cluster. You can then use the machine running the engine to perform management tasks on your cluster.
 
 When choosing your client machine, consider:
 
@@ -43,11 +43,11 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 3. [Install Chocolatey using the PowerShell instructions.](https://chocolatey.org/install#install-with-powershellexe). 
 
     According to the Chocolaty website: Chocolatey is a package manager for Windows, like apt-get or yum but for Windows. It was designed to be a decentralized framework for quickly installing applications and tools that you need. It is built on the NuGet infrastructure currently using PowerShell as its focus for delivering packages from the distros to your door, err, computer.
-4. Find the version of AKS Engine in the [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) table. The AKS Base Engine must be available in your Azure Stack Marketplace. When running the command, you must specify the version `--version v0.41.2`. If you don't specify the version, the command will install the latest version, which may need an VHD image that is not available in your marketplace.
+4. Find the version of AKS engine in the [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) table. The AKS Base Engine must be available in your Azure Stack Marketplace. When running the command, you must specify the version `--version v0.43.0`. If you don't specify the version, the command will install the latest version, which may need an VHD image that is not available in your marketplace.
 5. Run the following command from an elevated prompt and include the version number:
 
     ```PowerShell  
-        choco install aks-engine --version 0.41.2 -y
+        choco install aks-engine --version 0.43.0 -y
     ```
 
 > [!Note]  
@@ -59,7 +59,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 
 1.  From a machine with access to the Internet, go to GitHub [Azure/aks-engine](https://github.com/Azure/aks-engine/releases/latest). Download an archive (*.tar.gz) for a Windows machine, for example, `aks-engine-v0.38.8-windows-amd64.tar.gz`.
 
-2.  Create a storage account in your Azure Stack instance to upload the archive file (*.tar.gz) with the AKS Engine binary. For instructions on using the Azure Storage Explorer, see [Azure Storage Explorer with Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-connect-se).
+2.  Create a storage account in your Azure Stack instance to upload the archive file (*.tar.gz) with the AKS engine binary. For instructions on using the Azure Storage Explorer, see [Azure Storage Explorer with Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-connect-se).
 
 3. Create a Windows VM in your Azure Stack. For instructions, see [Quickstart: Create a Windows server VM by using the Azure Stack portal](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-windows-portal)
 
@@ -72,7 +72,7 @@ You can install the client VM to manage your Kubernetes cluster on an Azure Stac
 7.  Run the following command from an elevated prompt. Include the right version number:
 
     ```PowerShell  
-        choco install aks-engine --version 0.41.2 -y
+        choco install aks-engine --version 0.43.0 -y
     ```
 
 ## Verify the installation
@@ -86,7 +86,7 @@ Once your client VM is set up, check that you have installed the AKS engine.
     aks-engine version
     ```
 
-If you are unable to verify that you have installed the AKS Engine on your client VM, see [Troubleshoot AKS engine install](azure-stack-kubernetes-aks-engine-troubleshoot.md)
+If you are unable to verify that you have installed the AKS engine on your client VM, see [Troubleshoot AKS engine install](azure-stack-kubernetes-aks-engine-troubleshoot.md)
 
 
 ## ASDK installation

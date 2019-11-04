@@ -196,7 +196,7 @@
         href: azure-stack-solution-template-service-fabric-cluster.md
       - name: Deploy a Kubernetes cluster
         items:
-        - name: AKS Engine
+        - name: AKS engine
           items:
           - name: AKS Engine on Azure Stack Hub
             href: azure-stack-kubernetes-aks-engine-overview.md
@@ -214,7 +214,7 @@
             href: azure-stack-kubernetes-aks-engine-scale.md
           - name: Upgrade a cluster
             href: azure-stack-kubernetes-aks-engine-upgrade.md
-          - name: Troubleshoot AKS Engine
+          - name: Troubleshoot AKS engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
         - name: Marketplace item
           items: 
@@ -226,7 +226,7 @@
             href: azure-stack-solution-template-kubernetes-adfs.md
           - name: Enable the Kubernetes dashboard
             href: azure-stack-solution-template-kubernetes-dashboard.md
-          - name: Move AKS Engine from Marketplace item
+          - name: Move AKS engine from Marketplace item
             href: azure-stack-kubernetes-aks-engine-dvm.md
           - name: Troubleshoot Kubernetes cluster
             href: azure-stack-solution-template-kubernetes-trouble.md
@@ -304,6 +304,18 @@
         href: azure-stack-network-howto-backup-replicator.md
 - name: Concepts
   items:
+  - name: IaaS architectures 
+    items:
+      - name: Linux VM
+        href: iaas-architecture-vm-linux.md
+      - name: Windows VM
+        href: iaas-architecture-vm-windows.md
+      - name: N-tier app with SQL
+        href: iaas-architecture-windows-sql-n-tier.md
+      - name: N-tier app in multiple regions
+        href: iaas-architecture-sql-n-tier-multi-region.md
+      - name: Network virtual appliances
+        href: iaas-architecture-nva-architecture.md
   - name: Hybrid cloud patterns
     items: 
       - name: Hybrid cloud patterns overview
