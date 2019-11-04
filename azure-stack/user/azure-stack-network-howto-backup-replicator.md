@@ -1,27 +1,27 @@
 ---
-title: How to back up resources using the Azure Stack subscription replicator | Microsoft Docs
-description: Learn how to back up resources using the Azure Stack subscription replicator.
+title: How to replicate resources across multiple Azure Stack subscriptions | Microsoft Docs
+description: Learn how to replicate resources using the Azure Stack subscription replicator set of scripts.
 services: azure-stack
 author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 10/29/2019
+ms.date: 10/30/2019
 ms.author: mabrigg
 ms.reviewer: rtiberiu
-ms.lastreviewed: 10/29/2019
+ms.lastreviewed: 10/30/2019
 
 # keywords:  X
 # Intent: As an Azure Stack Operator, I want < what? > so that < why? >
 ---
 
-# How to back up resources using the Azure Stack subscription replicator
+# How to replicate resources using the Azure Stack subscription replicator
 
-You can use the Azure Stack subscription replicator PowerShell script to copy the resources between Azure Stack subscriptions. The replicator script reads and rebuilds the Azure Resource Manager resources from different Azure and Azure Stack subscriptions. This article looks at how the script works, how you can use the script, and provides a reference for operations in the script.
+You can use the Azure Stack subscription replicator PowerShell script to copy the resources between Azure Stack subscriptions, across Azure Stack stamps, or between Azure Stack and Azure. The replicator script reads and rebuilds the Azure Resource Manager resources from different Azure and Azure Stack subscriptions. This article looks at how the script works, how you can use the script, and provides a reference for script operations.
 
 ## Subscription replicator overview
 
-The Azure subscription replicator (v3) was designed to be modular. This tool uses a core processor that orchestrates the resource replication. In addition, the tool supports customizable processors that act as templates for copying different types of resources. 
+The Azure subscription replicator was designed to be modular. This tool uses a core processor that orchestrates the resource replication. In addition, the tool supports customizable processors that act as templates for copying different types of resources. 
 
 The core processor is made up of the following three scripts:
 
@@ -55,7 +55,7 @@ There is a folder in the Replicator file structure named **Standardized_ARM_Temp
 
 The script **post-process.ps1** is responsible for cleaning up the parameters files and creating the scripts that the user will use to deploy the new resources. During the cleaning phase, the script replaces all references to the source subscription ID, tenant ID, and location with the corresponding target values. It then outputs the parameters file to the **Parameter_Files** folder. It then determines whether the resource being processed uses a customized Azure Resource Manager template or not and generates the corresponding deployment code, which utilizes the **New-AzureRmResourceGroupDeployment** cmdlet. The deployment code is then added to file named **DeployResources.ps1** stored in the **Deployment_Files** folder. Lastly the script determines the resource group to which the resource belongs and checks the **DeployResourceGroups.ps1** script to see if the deployment code to deploy that resource group already exists. If it does not, then it will add code to that script to deploy the resource group, if it does then it does nothing.
 
-### Dynamic API Retrieval
+### Dynamic API retrieval
 
 The tool has dynamic API retrieval built in so that the newest resource provider API version available in the source subscription is used to deploy the resources in the target subscription:
 
@@ -65,22 +65,22 @@ Figure API retrieval in **resource_processor.ps1**.
 
 However, there is the chance that the target subscription’s resource provider API version is older than the source subscription’s and does not support the version being provided from the source subscription. In this case, an error will be thrown when the deployment is run. To resolve this, update the resource providers in the target subscription to match those in the source subscription.
 
-### Parallel Deployments
+### Parallel deployments
 
 The tool requires a parameter named **parallel**. This parameter takes a boolean value specifying whether or not the retrieved resources should be deployed in parallel or not. If the value is set to **true,** then each call to **New-AzureRmResourceGroupDeployment** will have the **-asJob** flag and blocks of code to wait for parallel jobs to finish will be added in between sets of resource deployments based on the resource types. It ensures that all resources of one type have all been deployed prior to deploying the next type of resource. If the **parallel** parameter value is set to **false**, the resources will all be deployed in serial.
 
-## Adding Additional Resource Types
+## Add additional resource types
 
 Adding new resource types is simple. The developer must create a customized processor and either an Azure Resource Manager template or an Azure Resource Manager template generator. After that is complete the developer must add the resource type to the ValidateSet for the **$resourceType** parameter and the **$resourceTypes** array in resource_retriever.ps1. When adding the resource type to the **$resourceTypes **array, it must be added in the correct order. The order of the array determines the order that resources will be deployed, so keep dependencies in mind. Lastly, if the customized processor utilizes an Azure Resource Manager template generator, they must add the resource type name to the **$customTypes** array in **post_process.ps1**.
 
-## Running Azure subscription replicator
+## Run Azure subscription replicator
 
 To run the Azure subscription replicator (v3) tool you’ll need to kick off resource_retriever.ps1, supplying all of the parameters. The **resourceType** parameter, there is an option to choose **All** rather than one resource type. If **All** is selected, resource_retriever.ps1 will process all the resources in an order so that when the deployment is run, dependent resources are deployed first. For example, VNets are deployed prior to virtual machines as virtual machines require a VNet to be in place for them to be deployed properly.
 
 When the script is finished executing, there will be three new folders, **Deployment_Files**, **Parameter_Files**, and **Custom_ARM_Templates**.
 
  > [!Note]  
- > Before running any of the generated scripts, you must set the right environment and login to the target subscription (in the new Azure Stack for ex) and set the working directory to the **Deployment_Files** folder.
+ > Before you run any of the generated scripts, you must set the right environment and login to the target subscription (in the new Azure Stack for ex) and set the working directory to the **Deployment_Files** folder.
 
 Deployment_Files will hold two files **DeployResourceGroups.ps1** and **DeployResources.ps1**. Executing DeployResourceGroups.ps1 will deploy the resource groups. Executing DeployResources.ps1 will deploy all of the resources that were processed. In the case that the tool was executed with **All** or **Microsoft.Compute/virtualMachines** as the resource type, DeployResources.ps1 will prompt the user to input a virtual machine admin password that will be used to create all of the virtual machines.
 
@@ -88,39 +88,22 @@ Deployment_Files will hold two files **DeployResourceGroups.ps1** and **DeployRe
 
 1.  Run the script.
 
-    ![](./media/azure-stack-network-howto-backup-replicator/image2.png)
+    ![Run the script](./media/azure-stack-network-howto-backup-replicator/image2.png)
 
-1.  Wait for script to run.
+    > [!Note]  
+    > Don't forget to configure the source evironment and the subscription context for the PS instance. 
 
-    ![](./media/azure-stack-network-howto-backup-replicator/image3.png)
+2.  Review the newly created folders:
 
-1.  Review the newly created folders:
+    ![Review the folders](./media/azure-stack-network-howto-backup-replicator/image4.png)
 
-    ![](./media/azure-stack-network-howto-backup-replicator/image4.png)
+3.  Set the context to the target subscription, change the folder to **Deployment_Files**, deploy the resource groups and then start the resource deployment.
 
-    ![](./media/azure-stack-network-howto-backup-replicator/image5.png)
+    ![Configure and start the deployment](./media/azure-stack-network-howto-backup-replicator/image6.png)
 
-1.  Set the context to the target subscription.
+4.  Run `Get-Job` to check the status. Get-Job | Receive-Job will return the results.
 
-    ![](./media/azure-stack-network-howto-backup-replicator/image6.png)
-
-1.  Type `cd` to change to the **Deployment_Files** folder.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image7.png)
-
-1.  Run `DeployResourceGroups.ps1` to deploy the resource groups.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image8.png)
-
-1.  Run `DeployResources.ps1` to deploy the resources.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image9.png)
-
-1.  Run `Get-Job` to check the status. Get-Job | Receive-Job will return the results.
-
-    ![](./media/azure-stack-network-howto-backup-replicator/image10.png)
-
-## Clean Up
+## Clean up
 
 Inside the replicatorV3 folder, there is a file named **cleanup_generated_items.ps1** - it will remove the **Deployment_Files**, **Parameter_Files**, and **Custom_ARM_Templates** folders and all of their contents.
 
@@ -197,17 +180,19 @@ When running the tool with **All** as the resource type, the following order wil
             - Network Interface private IP address  
             - Network Security Group configuration  
             - Availability set configuration  
- 
+
 > [!Note]  
-> Only creates managed disks for OS disk and data disks. Currently, no support for using storage accounts. 
+> Only creates managed disks for OS disk and data disks. Currently, there isn't support for using storage accounts 
 
 ### Limitations
 
 The tool can replicate resources from one subscription to another as long as the target subscription’s resource providers support all of the resources and options that are being replicated from the source subscription.
 
-To ensure successful replication, ensure that the target subscription’s resource provider versions match those of the source subscription.
+To ensure successful replication, mare sure that the target subscription’s resource provider versions match those of the source subscription.
 
 When replicating from commercial Azure to commercial Azure or from one subscription within Azure Stack to another subscription within the same Azure Stack, there will be issues when replicating storage accounts. This is due to the storage account naming requirement that all storage account names be unique across all of commercial Azure or across all subscriptions on an Azure Stack region/instance. Replicating storage accounts across different Azure Stack instances will succeed as the Stacks are separate regions/instances.
+
+
 
 ## Next steps
 
