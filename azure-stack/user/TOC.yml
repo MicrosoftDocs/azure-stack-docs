@@ -280,6 +280,20 @@
         href: azure-stack-network-howto-backup-storage.md
       - name: Copy subscription resources
         href: azure-stack-network-howto-backup-replicator.md
+- name: Concepts
+  items:
+  - name: IaaS architectures 
+    items:
+      - name: Linux VM
+        href: iaas-architecture-vm-linux.md
+      - name: Windows VM
+        href: iaas-architecture-vm-windows.md
+      - name: N-tier app with SQL
+        href: iaas-architecture-windows-sql-n-tier.md
+      - name: N-tier app in multiple regions
+        href: iaas-architecture-sql-n-tier-multi-region.md
+      - name: Network virtual appliances
+        href: iaas-architecture-nva-architecture.md
 - name: Reference
   items:
   - name: Azure Stack PowerShell
