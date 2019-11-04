@@ -39,7 +39,7 @@ This article assumes a basic understanding of Azure Stack networking.
 
 ## Architecture diagrams
 
-An NVA can be deployed to a DMZ in many different architectures. For example, the following figure illustrates the use of a single NVA for ingress.
+An NVA can be deployed to a perimeter network in many different architectures. For example, the following figure illustrates the use of a single NVA for ingress.
 
 ![A screenshot of a social media post Description automatically generated](./media/iaas-architecture-nva-architecture/image1.png)
 
@@ -57,7 +57,7 @@ The following architectures describe the resources and configuration necessary f
 
 ## Ingress with layer 7 NVAs
 
-The following figure shows a high availability architecture that implements an ingress DMZ behind an internet-facing load balancer. This architecture is designed to provide connectivity to Azure Stack workloads for layer 7 traffic, such as HTTP or HTTPS:
+The following figure shows a high availability architecture that implements an ingress perimeter network behind an internet-facing load balancer. This architecture is designed to provide connectivity to Azure Stack workloads for layer 7 traffic, such as HTTP or HTTPS:
 
 ![A screenshot of a map Description automatically generated](./media/iaas-architecture-nva-architecture/image2.png)
 
@@ -65,7 +65,7 @@ The benefit of this architecture is that all NVAs are active, and if one fails t
 
 ## Egress with layer 7 NVAs
 
-The Ingress with layer 7 NVAs architecture can be expanded to provide an egress DMZ for requests originating in the Azure Stack workload. The following architecture is designed to provide high availability of the NVAs in the DMZ for layer 7 traffic, such as HTTP or HTTPS:
+The Ingress with layer 7 NVAs architecture can be expanded to provide an egress perimeter network for requests originating in the Azure Stack workload. The following architecture is designed to provide high availability of the NVAs in the perimeter network for layer 7 traffic, such as HTTP or HTTPS:
 
 ![A screenshot of a cell phone Description automatically generated](./media/iaas-architecture-nva-architecture/image3.png)
 
@@ -73,7 +73,7 @@ In this architecture, all traffic originating in Azure Stack is routed to an int
 
 ## Ingress-egress with layer 7  NVAs
 
-In the two ingress and egress architectures, there was a separate DMZ for ingress and egress. The following architecture demonstrates how to create a DMZ that can be used for both ingress and egress for layer 7 traffic, such as HTTP or HTTPS:
+In the two ingress and egress architectures, there was a separate perimeter network for ingress and egress. The following architecture demonstrates how to create a perimeter network that can be used for both ingress and egress for layer 7 traffic, such as HTTP or HTTPS:
 
 ![A screenshot of a social media post Description automatically generated](./media/iaas-architecture-nva-architecture/image4.png)
 
