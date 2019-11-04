@@ -44,6 +44,50 @@ productDirectory:
       - url: /azure-stack/operator/azure-stack-hci-overview
         text: Azure Stack HCI overview
 
+# conceptualContent section (optional)
+conceptualContent:
+# itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
+  title: Azure Stack hybrid patterns and solution examples
+  summary: Use patterns and solution examples to guide you through development of hybrid solutions that span Azure and Azure Stack.
+  items:
+    # Card
+    - title: Learn about hybrid
+      links:
+        - url: /azure-stack/hybrid/overview-patterns-solution-examples
+          itemType: overview
+          text: What are patterns and solution examples?
+        - url: /azure-stack/hybrid/overview-app-design-considerations
+          itemType: concept
+          text: Hybrid app design considerations
+    - title: Explore hybrid patterns
+      links:
+        - url: pattern-cross-cloud-scale.md
+          itemType: architecture
+          text: Cross-cloud scaling
+        - url: pattern-cicd-pipeline.md
+          itemType: architecture
+          text: DevOps hybrid CI/CD
+        - url: pattern-retail-footfall-detection.md
+          itemType: architecture
+          text: Footfall detection (retail)
+        - url: pattern-geo-distributed.md
+          itemType: architecture
+          text: Geo-distributed app
+    - title: Deploy hybrid solution examples
+      links:
+        - url: solution-deployment-guide-cross-cloud-scaling.md
+          itemType: tutorial
+          text: Cross-cloud scaling
+        - url: https://aka.ms/hybriddevopsdeploy 
+          itemType: tutorial
+          text: DevOps hybrid CI/CD
+        - url: solution-deployment-guide-retail-footfall-detection.md
+          itemType: tutorial
+          text: Footfall detection (retail)
+        - url: solution-deployment-guide-geo-distributed.md
+          itemType: tutorial
+          text: Geo-distributed app
+
 # additionalContent section (optional)
 # Card with links style
 additionalContent:
