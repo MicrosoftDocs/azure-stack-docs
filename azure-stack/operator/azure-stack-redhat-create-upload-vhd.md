@@ -183,7 +183,7 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
    Change the second field of root user from "!!" to the encrypted password.
 
-1. Create a virtual machine in KVM from the qcow2 image. Set the disk type to **qcow2**, and set the virtual network interface device model to **virtio**. Then, start the virtual machine, and sign in as root.
+1. Create a VM in KVM from the qcow2 image. Set the disk type to **qcow2**, and set the virtual network interface device model to **virtio**. Then, start the VM, and sign in as root.
 
 1. Create or edit the `/etc/sysconfig/network` file, and add the following text:
 
@@ -223,15 +223,15 @@ This section assumes that you already have an ISO file from the Red Hat website 
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
     ```
 
-   This command also ensures that all console messages are sent to the first serial port, which can assist Azure support with debugging issues. The command also turns off the new RHEL 7 naming conventions for NICs
+   This command also ensures that all console messages are sent to the first serial port, which can assist Azure support with debugging issues. The command also turns off the new RHEL 7 naming conventions for NICs.
 
-   Graphical and quiet boot are not useful in a cloud environment where all the logs are sent to the serial port. You can leave the `crashkernel` option configured if desired. This parameter reduces the amount of available memory in the virtual machine by 128 MB or more, which might be problematic on smaller virtual machine sizes. We recommend that you remove the following parameters:
+   Graphical and quiet boot aren't useful in a cloud environment where all the logs are sent to the serial port. You can leave the `crashkernel` option configured if desired. This parameter reduces the amount of available memory in the VM by 128 MB or more, which might be problematic on smaller VM sizes. We recommend that you remove the following parameters:
 
     ```sh
     rhgb quiet crashkernel=auto
     ```
 
-1. After you are done editing `/etc/default/grub`, run the following command to rebuild the grub configuration:
+1. After you're done editing `/etc/default/grub`, run the following command to rebuild the grub configuration:
 
     ```bash
     grub2-mkconfig -o /boot/grub2/grub.cfg
@@ -271,39 +271,47 @@ This section assumes that you already have an ISO file from the Red Hat website 
     ClientAliveInterval 180
     ```
 
-1. When creating a custom vhd for Azure Stack, keep in mind that WALinuxAgent version between 2.2.20 and 2.2.35 (both exclusive) do not work on Azure Stack environments. You may use versions 2.2.20/2.2.35 versions to prepare your image. To use versions above 2.2.35 to prepare your custom image, update your Azure Stack to 1903 release or apply the 1901/1902 hotfix. 
+1. When creating a custom vhd for Azure Stack, keep in mind that WALinuxAgent version between 2.2.20 and 2.2.35 (both exclusive) don't work on Azure Stack environments. You can use versions 2.2.20/2.2.35 versions to prepare your image. To use versions above 2.2.35 to prepare your custom image, update your Azure Stack to 1903 release or apply the 1901/1902 hotfix.
 
-     Follow these instructions to download the WALinuxAgent:
-    
-   a.	Download setuptools
+    Follow these instructions to download the WALinuxAgent:
+
+    a. Download setuptools.
+
     ```bash
     wget https://pypi.python.org/packages/source/s/setuptools/setuptools-7.0.tar.gz --no-check-certificate
     tar xzf setuptools-7.0.tar.gz
     cd setuptools-7.0
     ```
-   b. This is an example where we download "2.2.20" version from the GitHub repo. Download and unzip the 2.2.20 version of the agent from our GitHub. 
+
+   b. This is an example where we download "2.2.20" version from the GitHub repo. Download and unzip the 2.2.20 version of the agent from our GitHub.
+
     ```bash
     wget https://github.com/Azure/WALinuxAgent/archive/v2.2.20.zip
     unzip v2.2.20.zip
     cd WALinuxAgent-2.2.20
     ```
-    c. Install setup.py
+
+    c. Install setup.py.
+
     ```bash
     sudo python setup.py install
     ```
-    d. Restart waagent
+
+    d. Restart waagent.
+
     ```bash
     sudo systemctl restart waagent
     ```
-    e. Test if the agent version matches the one your downloaded. For this example, it should be 2.2.20.
-    
+
+    e. Test if the agent version matches the one you downloaded. For this example, it should be 2.2.20.
+
     ```bash
     waagent -version
     ```
 
-1. Do not create swap space on the operating system disk.
+1. Don't create swap space on the operating system disk.
 
-    The Azure Linux Agent can automatically configure swap space by using the local resource disk that is attached to the virtual machine after the virtual machine is provisioned on Azure. The local resource disk is a temporary disk, and it might be emptied when the virtual machine is deprovisioned. After you install the Azure Linux Agent in the previous step, modify the following parameters in `/etc/waagent.conf` appropriately:
+    The Azure Linux Agent can automatically configure swap space by using the local resource disk that's attached to the VM after the VM is provisioned on Azure. The local resource disk is a temporary disk, and it might be emptied when the VM is deprovisioned. After you install the Azure Linux Agent in the previous step, modify the following parameters in `/etc/waagent.conf` appropriately:
 
     ```sh
     ResourceDisk.Format=y
@@ -319,9 +327,9 @@ This section assumes that you already have an ISO file from the Red Hat website 
     subscription-manager unregister
     ```
 
-1. If you are using a system that was deployed using an Enterprise Certificate Authority, the RHEL virtual machine will not trust the Azure Stack root certificate. You need to place that into the trusted root store. See [Adding trusted root certificates to the server](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html).
+1. If you're using a system that was deployed using an Enterprise Certificate Authority, the RHEL VM won't trust the Azure Stack root certificate. You need to place that into the trusted root store. For more information, see [Adding trusted root certificates to the server](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html).
 
-1. Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure:
+1. Run the following commands to deprovision the VM and prepare it for provisioning on Azure:
 
     ```bash
     sudo waagent -force -deprovision
@@ -329,12 +337,12 @@ This section assumes that you already have an ISO file from the Red Hat website 
     logout
     ```
 
-1. Shut down the virtual machine in KVM.
+1. Shut down the VM in KVM.
 
 1. Convert the qcow2 image to the VHD format.
 
     > [!NOTE]
-    > There is a known bug in qemu-img versions >=2.2.1 that results in an improperly formatted VHD. The issue has been fixed in QEMU 2.6. It is recommended to use either qemu-img 2.2.0 or lower, or update to 2.6 or higher. Reference: https://bugs.launchpad.net/qemu/+bug/1490611.
+    > There's a known bug in qemu-img versions >=2.2.1 that results in an improperly formatted VHD. The issue has been fixed in QEMU 2.6. It's recommended to use either qemu-img 2.2.0 or lower, or update to 2.6 or higher. Reference: https://bugs.launchpad.net/qemu/+bug/1490611.
 
     First convert the image to raw format:
 
@@ -358,13 +366,13 @@ This section assumes that you already have an ISO file from the Red Hat website 
     qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-    Or, with qemu version **2.6+** include the `force_size` option:
+    Or, with qemu version **2.6+**, include the `force_size` option:
 
     ```bash
     qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-## Prepare a Red Hat-based virtual machine from VMware
+## Prepare a Red Hat-based VM from VMware
 
 This section assumes that you have already installed a RHEL virtual machine in VMware. For details about how to install an operating system in VMware, see [VMware Guest Operating System Installation Guide](https://partnerweb.vmware.com/GOSIG/home.html).
 
