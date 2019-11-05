@@ -63,10 +63,8 @@ This article describes the end-to-end process for Azure Stack data center integr
 
 ---
 
-## Planning phase
-The planning phase is when Microsoft, or the Azure Stack solution partner, will work with you to evaluate and understand your needs to determine if Azure Stack is the right solution for you:
-
-They'll help you decide on the following questions:
+## Planning
+Microsoft or an Azure Stack solution partner will help evaluate your needs. They'll help you decide things like:
 
 -   Is Azure Stack the right solution for your organization?
 
@@ -78,7 +76,7 @@ They'll help you decide on the following questions:
 
 To ensure that the hardware solution will best fit your needs, the [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) is used to assist in pre-purchase planning to determine the appropriate capacity and configuration for your Azure Stack hardware solution.
 
-The spreadsheet is *not* intended to be used as a substitute for your own investigation and analysis of hardware solutions that best suit your needs. When planning for an Azure Stack deployment, you should also review the [general datacenter integration considerations](azure-stack-datacenter-integration.md) for Azure Stack integrated systems.
+The spreadsheet is *not* intended to be used as a substitute for your own investigation and analysis of hardware solutions that best suit your needs. 
 
 ## Order process phase
 At this stage, many of your questions with regards to feasibility would have been answered. Now that you're ready to commit to purchasing Azure Stack, and after signing all the required contracts and purchase orders, you'll be asked to provide the integration requirements data to your solution provider.
