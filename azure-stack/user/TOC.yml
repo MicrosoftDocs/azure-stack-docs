@@ -1,8 +1,8 @@
-- name: Azure Stack User Documentation
+- name: Azure Stack Hub User Documentation
   href: index.yml
 - name: Overview
   items:
-  - name: Build solutions with Azure Stack
+  - name: Build solutions with Azure Stack Hub
     href: azure-stack-hybrid-cloud-patterns.md
   - name: Key considerations
     href: azure-stack-considerations.md
@@ -33,29 +33,29 @@
         href: azure-stack-subscribe-services.md
       - name: Enable a Cloud Solution Provider
         href: azure-stack-csp-enable-billing-usage-tracking.md
-      - name: Use the Azure Stack Portal
+      - name: Use the Azure Stack Hub Portal
         href: azure-stack-use-portal.md
       - name: Configure your client
         items:  
         - name: Set up a development environment
           href: azure-stack-dev-start.md
-        - name: Use PowerShell with Azure Stack
+        - name: Use PowerShell with Azure Stack Hub
           items: 
-          - name: Azure Stack PowerShell overview
+          - name: Azure Stack Hub PowerShell overview
             href: azure-stack-powershell-overview.md
           - name: Install Azure Stack PowerShell
             href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
             maintainContext: true
           - name: Connect with PowerShell
             href: azure-stack-powershell-configure-user.md
-          - name: Download Azure Stack tools
+          - name: Download Azure Stack Hub tools
             href: /azure-stack/operator/azure-stack-powershell-download?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
             maintainContext: true
           - name: Use Docker to run PowerShell
             href: azure-stack-powershell-user-docker.md
-          - name: Use the Azure Stack Policy module
+          - name: Use the Azure Stack Hub Policy module
             href: azure-stack-policy-module.md
-        - name: Use Azure CLI with Azure Stack
+        - name: Use Azure CLI with Azure Stack Hub
           href: azure-stack-version-profiles-azurecli2.md
         - name: Use Visual Studio Code
           href: azure-stack-dev-start-vscode-azure.md
@@ -65,7 +65,7 @@
           href: azure-stack-dev-start-howto-ssh-public-key.md
         - name: Use a REST client with the API
           href: azure-stack-rest-api-use.md
-      - name: Use Azure Stack Resource Manager templates
+      - name: Use Azure Stack Hub Resource Manager templates
         items:
         - name: Template overview
           href: azure-stack-arm-templates.md
@@ -161,9 +161,9 @@
             href: azure-stack-vpn-s2s.md
           - name: VPN gateway settings
             href: azure-stack-vpn-gateway-settings.md
-        - name: iDNS for Azure Stack
+        - name: iDNS for Azure Stack Hub
           href: azure-stack-understanding-dns.md
-        - name: DNS in Azure Stack
+        - name: DNS in Azure Stack Hub
           href: azure-stack-dns.md
       - name: Key Vault
         items:
@@ -198,7 +198,7 @@
         items:
         - name: AKS engine
           items:
-          - name: AKS engine on Azure Stack
+          - name: AKS Engine on Azure Stack Hub
             href: azure-stack-kubernetes-aks-engine-overview.md
           - name: Support policy
             href: azure-stack-kubernetes-aks-engine-support.md 
@@ -252,7 +252,7 @@
         href: azure-stack-dev-start-howto-vm-nodejs.md
   - name: Deploy hybrid cloud patterns
     items:
-    - name: Deploy apps to Azure and Azure Stack
+    - name: Deploy apps to Azure and Azure Stack Hub
       href: azure-stack-solution-pipeline.md
     - name: Configure hybrid cloud identity
       href: azure-stack-solution-hybrid-identity.md
@@ -332,13 +332,13 @@
   items:
   - name: Azure Stack PowerShell
     href: /powershell/azure/azure-stack/overview?view=azurestackps-1.3.0
-  - name: Azure Stack REST API Browser
+  - name: Azure Stack Hub REST API Browser
     href: /rest/api/
-  - name: Azure Stack CLI
+  - name: Azure CLI
     href: /cli/azure/reference-index?view=azure-cli-2017-03-09-profile
 - name: Related
   items:
-  - name: Azure Stack Operator Documentation
+  - name: Azure Stack Hub Operator Documentation
     href: /azure-stack/operator/
   - name: ASDK Documentation
     href: /azure-stack/asdk/

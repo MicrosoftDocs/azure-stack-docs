@@ -6,10 +6,10 @@
     tocHref: /azure-stack/
     topicHref: /azure-stack/
     items:
-    - name: ASDK
+    - name: Hub ASDK
       tocHref: /azure-stack/asdk/
       topicHref: /azure-stack/asdk/index
-    - name: Operator
+    - name: Hub Operator
       tocHref: /azure-stack/operator/
       topicHref: /azure-stack/operator/index
       items:
@@ -23,10 +23,9 @@
         - name: Replicate Azure Stack VMs to Azure
           tocHref: /azure/site-recovery/azure-stack-site-recovery
           topicHref: /azure/site-recovery/azure-stack-site-recovery
-    - name: Partner
+    - name: Hub Partner
       tocHref: /azure-stack/partner/
       topicHref: /azure-stack/partner/index
-    - name: User
+    - name: Hub User
       tocHref: /azure-stack/user/
       topicHref: /azure-stack/user/index
-
