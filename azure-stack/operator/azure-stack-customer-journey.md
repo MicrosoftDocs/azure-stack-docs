@@ -21,7 +21,7 @@ ms.lastreviewed: 12/10/2018
  
 # Azure Stack data center integration walkthrough
 
-This article describes the end-to-end process for Azure Stack data center integration, from purchasing to post-deployment support. The integration is a collaborative project between the customer, a solution provider, and Microsoft. Click the following tabs to see the specific steps for each member of the project, and see the next sections for a summary of different phases for tne project timeline. 
+This article describes the end-to-end process for Azure Stack data center integration, from purchasing to post-deployment support. The integration is a collaborative project between the customer, a solution provider, and Microsoft. Click the following tabs to see the specific steps for each member of the project, and see the next sections for a summary of different phases for the project timeline. 
 
 # [Customer](#tab/customer)
 
