@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 11/05/2019
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 10/29/2019
+ms.lastreviewed: 11/05/2019
 ---
 
 # Azure Stack updates: release notes
@@ -74,19 +74,19 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- What's new, also net new experiences and features. -->
 
-- The admin portal now shows the privileged endpoint IP addresses in the region properties menu for easier discovery. In addition it shows the current configured time server and DNS forwarders.
+- The administrator portal now shows the privileged endpoint IP addresses in the region properties menu for easier discovery. In addition, it shows the current configured time server and DNS forwarders.
 
-- Azure Stack's health and monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration. <!-- For more information, see [Link to new article]. -->
+- The Azure Stack health and monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration. <!-- For more information, see [Link to new article]. -->
 
-- A new version of Azure Stack Admin PowerShell modules is available. For more information, see
+- A new version of Azure Stack Admin PowerShell modules is available. <!-- For more information, see -->
 
-- Added the **Set-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to configure the manual update for Windows Defender definitions in Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
+- Added the **Set-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to configure the manual update for Windows Defender definitions in the Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
 
-- Added the **Get-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to retrieve the configuration of the manual update for Windows Defender definitions in Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
+- Added the **Get-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to retrieve the configuration of the manual update for Windows Defender definitions in the Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
 
-- Added the **Set-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to change the forwarder settings of the DNS servers in Azure Stack. For more information on DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
+- Added the **Set-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to change the forwarder settings of the DNS servers in Azure Stack. For more information about DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
 
-- Added the **Get-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to retrieve the forwarder settings of the DNS servers in Azure Stack. For more information on DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
+- Added the **Get-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to retrieve the forwarder settings of the DNS servers in Azure Stack. For more information about DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
 
 ### Improvements
 
@@ -96,18 +96,17 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Azure Stack is moving to 4096 bit RSA keys for the internal certificates. Running internal secret rotation will replace old 2048 bit certificates with 4096 bit long certificates. For more information about secret rotation in Azure Stack, see [Rotate secrets in Azure Stack](azure-stack-rotate-secrets.md).
 
-- Upgrades to the complexity of cryptographic algorithms and key strength for several internal components to comply with the Committee on National Security Systems - Policy 15 (CNSSP-15) which provides best practices for the Use of Public Standards for Secure Information Sharing. Among the improvements, there are AES256 for Kerberos authentication and SHA384 for VPN encryption. For more information on CNSSP-15, please refer to [Committee on National Security Systems, Policies page](http://www.cnss.gov/CNSS/issuances/Policies.cfm).
+- Upgrades to the complexity of cryptographic algorithms and key strength for several internal components to comply with the Committee on National Security Systems - Policy 15 (CNSSP-15), which provides best practices for the use of public standards for secure information sharing. Among the improvements, there is AES256 for Kerberos authentication, and SHA384 for VPN encryption. For more information about CNSSP-15, see the [Committee on National Security Systems, Policies page](http://www.cnss.gov/CNSS/issuances/Policies.cfm).
 
 ### Changes
 
 - When downloading marketplace items from Azure to Azure Stack, there is a new user interface that enables you to specify a version of the item, when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md).  
 
-- Starting in 1910, the Azure Stack system will require an additional /20 private internal IP space. This network will be private to the Azure Stack system and can be re-used on multiple Azure Stack systems within your datacenter. While the network is private to Azure Stack, it must not overlap with a network in your datacenter. The /20 private IP space will be divided into multiple networks that will enable running Azure Stack infrastructure on containers (as previously mentioned in [1905 release notes](https://docs.microsoft.com/azure-stack/operator/release-notes?view=azs-1905)). The goal of running Azure Stack infrastructure in containers is to optimize utilization and enhance performance. In addition, the /20 private IP space will also be used to enable ongoing efforts that will reduce required routable IP space prior to deployment. 
+- Starting in 1910, the Azure Stack system requires an additional /20 private internal IP space. This network is private to the Azure Stack system and can be re-used on multiple Azure Stack systems within your datacenter. While the network is private to Azure Stack, it must not overlap with a network in your datacenter. The /20 private IP space is divided into multiple networks that enable running the Azure Stack infrastructure on containers (as previously mentioned in the [1905 release notes](release-notes.md?view=azs-1905)). The goal of running the Azure Stack infrastructure in containers is to optimize utilization and enhance performance. In addition, the /20 private IP space is also used to enable ongoing efforts that will reduce required routable IP space prior to deployment.
 
+  - Please note that the /20 input serves as a 1911 pre-requisite. When the Azure Stack 1911 update is released and an attempt is made to install it, the update will fail if you have not completed the /20 input as described below in remediation steps. An alert will be present in the admin portal until the above remediation steps have been completed. Please see the [Datacenter network integration](azure-stack-network.md#private-network) article to understand how this new private space will be consumed. 
 
-   - Please make note that the /20 input serves as a 1911 pre-requisite. When the Azure Stack 1911 update is released and an attempt is made to install it, the update will fail if you have not completed the /20 input as described below in remediation steps. An alert will be present in the admin portal until the above remediation steps have been completed. Please refer to the [Datacenter Network Integration](azure-stack-network.md#private-network) article to understand how this new private space will be consumed. 
-
-   - Remediation Steps: To remediate, follow the instructions to [open a PEP Session](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Prepare a [private internal IP range](azure-stack-network.md#logical-networks) of size /20 and run the following cmdlet in the PEP session using the following format: `Set-AzsInternalNetwork -UserSubnet 100.87.0.0/20`. If the operation is performed successfully, you will receive the message **Azs Internal Network range added to the config**. If successfully completed, the alert will close in the admin portal. The Azure Stack system will now be able to update to 1911.
+  - Remediation steps: To remediate, follow the instructions to [open a PEP Session](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Prepare a [private internal IP range](azure-stack-network.md#logical-networks) of size /20, and run the following cmdlet in the PEP session using the format: `Set-AzsInternalNetwork -UserSubnet 100.87.0.0/20`. If the operation is performed successfully, you will receive the message **Azs Internal Network range added to the config**. If successfully completed, the alert will close in the admin portal. The Azure Stack system will now be able to update to 1911.
 
 ### Fixes
 
