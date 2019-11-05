@@ -1,5 +1,6 @@
 ---
-title: Create and upload a Red Hat Enterprise Linux VHD for use in Azure Stack | Microsoft Docs
+title: Prepare a Red Hat-based virtual machine for Azure Stack | Microsoft Docs
+titleSuffix: Azure Stack
 description: Learn to create and upload an Azure virtual hard disk (VHD) that contains a Red Hat Linux operating system.
 services: azure-stack
 documentationcenter: ''
@@ -22,30 +23,30 @@ ms.lastreviewed: 08/15/2018
 ---
 # Prepare a Red Hat-based virtual machine for Azure Stack
 
-In this article, you will learn how to prepare a Red Hat Enterprise Linux (RHEL) virtual machine for use in Azure Stack. The versions of RHEL that are covered in this article are 7.1+. The hypervisors for preparation that are covered in this article are Hyper-V, kernel-based virtual machine (KVM), and VMware.
+In this article, you'll learn how to prepare a Red Hat Enterprise Linux (RHEL) virtual machine (VM) for use in Azure Stack. The versions of RHEL that are covered in this article are 7.1+. The hypervisors for preparation that are covered in this article are Hyper-V, kernel-based virtual machine (KVM), and VMware.
 
-For Red Hat Enterprise Linux support information, refer to [Red Hat and Azure Stack: Frequently Asked Questions](https://access.redhat.com/articles/3413531).
+For Red Hat Enterprise Linux support information, see [Red Hat and Azure Stack: Frequently Asked Questions](https://access.redhat.com/articles/3413531).
 
-## Prepare a Red Hat-based virtual machine from Hyper-V Manager
+## Prepare a Red Hat-based VM from Hyper-V Manager
 
-This section assumes that you already have an ISO file from the Red Hat website and installed the RHEL image to a virtual hard disk (VHD). For more information about how to use Hyper-V Manager to install an operating system image, see [Install the Hyper-V Role and Configure a Virtual Machine](https://technet.microsoft.com/library/hh846766.aspx).
+This section assumes that you already have an ISO file from the Red Hat website and have installed the RHEL image to a virtual hard disk (VHD). For more information about how to use Hyper-V Manager to install an operating system image, see [Install the Hyper-V Role and Configure a VM](https://technet.microsoft.com/library/hh846766.aspx).
 
 ### RHEL installation notes
 
-* Azure Stack does not support the VHDX format. Azure supports only fixed VHD. You can use Hyper-V Manager to convert the disk to VHD format, or you can use the convert-vhd cmdlet. If you use VirtualBox, select **Fixed size** as opposed to the default dynamically allocated option when you create the disk.
-* Azure Stack supports only generation 1 virtual machines. You can convert a generation 1 virtual machine from VHDX to the VHD file format and from dynamically expanding to a fixed-size disk. You can't change a virtual machine's generation. For more information, see [Should I create a generation 1 or 2 virtual machine in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
+* Azure Stack doesn't support the VHDX format. Azure supports only fixed VHD. You can use Hyper-V Manager to convert the disk to VHD format, or you can use the convert-vhd cmdlet. If you use VirtualBox, select **Fixed size** as opposed to the default dynamically allocated option when you create the disk.
+* Azure Stack supports only generation 1 VMs. You can convert a generation 1 VM from VHDX to the VHD file format and from dynamically expanding to a fixed-size disk. You can't change a VM's generation. For more information, see [Should I create a generation 1 or 2 VM in Hyper-V?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
 * The maximum size that's allowed for the VHD is 1,023 GB.
-* When you install the Linux operating system, we recommend that you use standard partitions rather than Logical Volume Manager (LVM), which is often the default for many installations. This practice avoids LVM name conflicts with cloned virtual machines, particularly if you ever need to attach an operating system disk to another identical virtual machine for troubleshooting.
-* Kernel support for mounting Universal Disk Format (UDF) file systems is required. At first boot, the UDF-formatted media that is attached to the guest passes the provisioning configuration to the Linux virtual machine. The Azure Linux Agent must mount the UDF file system to read its configuration and provision the virtual machine.
-* Do not configure a swap partition on the operating system disk. The Linux Agent can be configured to create a swap file on the temporary resource disk. More information about can be found in the following steps.
+* When you install the Linux operating system, we recommend that you use standard partitions rather than Logical Volume Manager (LVM), which is often the default for many installations. This practice avoids LVM name conflicts with cloned VMs, particularly if you ever need to attach an operating system disk to another identical VM for troubleshooting.
+* Kernel support for mounting Universal Disk Format (UDF) file systems is required. At first boot, the UDF-formatted media that's attached to the guest passes the provisioning configuration to the Linux VM. The Azure Linux Agent must mount the UDF file system to read its configuration and provision the VM.
+* Don't configure a swap partition on the operating system disk. The Linux Agent can be configured to create a swap file on the temporary resource disk. More information about can be found in the following steps.
 * All VHDs on Azure must have a virtual size aligned to 1 MB. When converting from a raw disk to VHD, you must ensure that the raw disk size is a multiple of 1 MB before conversion. More details can be found in the steps below.
-* Azure Stack does not support cloud-init. Your VM must be configured with a supported version of the Windows Azure Linux Agent (WALA).
+* Azure Stack doesn't support cloud-init. Your VM must be configured with a supported version of the Windows Azure Linux Agent (WALA).
 
-### Prepare an RHEL 7 virtual machine from Hyper-V Manager
+### Prepare an RHEL 7 VM from Hyper-V Manager
 
-1. In Hyper-V Manager, select the virtual machine.
+1. In Hyper-V Manager, select the VM.
 
-1. Click **Connect** to open a console window for the virtual machine.
+1. Select **Connect** to open a console window for the VM.
 
 1. Create or edit the `/etc/sysconfig/network` file, and add the following text:
 
@@ -87,13 +88,13 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
    This ensures that all console messages are sent to the first serial port, which can assist Azure support with debugging issues. This configuration also turns off the new RHEL 7 naming conventions for NICs.
 
-   Graphical and quiet boot are not useful in a cloud environment where we want all the logs to be sent to the serial port. You can leave the `crashkernel` option configured if desired. Note that this parameter reduces the amount of available memory in the virtual machine by 128 MB or more, which might be problematic on smaller virtual machine sizes. We recommend that you remove the following parameters:
+   Graphical and quiet boot aren't useful in a cloud environment where we want all the logs to be sent to the serial port. You can leave the `crashkernel` option configured if desired. Note that this parameter reduces the amount of available memory in the VM by 128 MB or more, which might be problematic on smaller VM sizes. We recommend that you remove the following parameters:
 
     ```sh
     rhgb quiet crashkernel=auto
     ```
 
-1. After you are done editing `/etc/default/grub`, run the following command to rebuild the grub configuration:
+1. After you're done editing `/etc/default/grub`, run the following command to rebuild the grub configuration:
 
     ```bash
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
@@ -125,9 +126,9 @@ This section assumes that you already have an ISO file from the Red Hat website 
     sudo systemctl enable waagent.service
     ```
 
-1. Do not create swap space on the operating system disk.
+1. Don't create swap space on the operating system disk.
 
-    The Azure Linux Agent can automatically configure swap space by using the local resource disk that is attached to the virtual machine after the virtual machine is provisioned on Azure. The local resource disk is a temporary disk, and it might be emptied when the virtual machine is deprovisioned. After you install the Azure Linux Agent in the previous step, modify the following parameters in `/etc/waagent.conf` appropriately:
+    The Azure Linux Agent can automatically configure swap space by using the local resource disk that's attached to the VM after the VM is provisioned on Azure. The local resource disk is a temporary disk, and it might be emptied when the VM is deprovisioned. After you install the Azure Linux Agent in the previous step, modify the following parameters in `/etc/waagent.conf` appropriately:
 
     ```sh
     ResourceDisk.Format=y
@@ -143,9 +144,9 @@ This section assumes that you already have an ISO file from the Red Hat website 
     sudo subscription-manager unregister
     ```
 
-1. If you are using a system that was deployed using an Enterprise Certificate Authority, the RHEL virtual machine will not trust the Azure Stack root certificate. You need to place that into the trusted root store. See [Adding trusted root certificates to the server](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html).
+1. If you're using a system that was deployed using an Enterprise Certificate Authority, the RHEL VM won't trust the Azure Stack root certificate. You need to place that into the trusted root store. For more information, see [Adding trusted root certificates to the server](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html).
 
-1. Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure:
+1. Run the following commands to deprovision the VM and prepare it for provisioning on Azure:
 
     ```bash
     sudo waagent -force -deprovision
@@ -153,7 +154,7 @@ This section assumes that you already have an ISO file from the Red Hat website 
     logout
     ```
 
-1. Click **Action** > **Shut Down** in Hyper-V Manager.
+1. Select **Action** > **Shut Down** in Hyper-V Manager.
 
 1. Convert the VHD to a fixed size VHD using either the Hyper-V Manager "Edit disk" feature, or the Convert-VHD PowerShell command. Your Linux VHD is now ready to be uploaded to Azure.
 
