@@ -27,48 +27,43 @@ As an Azure Stack customer, you should anticipate the following phases:
 
 # [Customer](#tab/customer)
 
-1. Describe intended use cases and specify requirements.
-2. Determine the billing model to use, review, and approve contracts.
-3. Complete the [Deployment Worksheet](azure-stack-deployment-worksheet.md), and ensure all deployment prerequisites are met and ready for deployment.
-4. Prepare data center by ensuring all required power and cooling, border connectivity, and other required data center integration requirements are in place.
-5. Be available during deployment to provide subscription credentials and support if there are questions on the provided data.
+1. Describe use cases and requirements
+1. Determine the billing model
+1. Review and approve contracts.
+1. Complete the [Deployment Worksheet](azure-stack-deployment-worksheet.md)
+1. Make sure deployment prerequisites are met
+1. Prepare the data center 
+1. Provide subscription info during deployment
+1. Resolve any questions about the provided data
 
 # [Partner](#tab/partner)
 
-1. Planning phase:
-   - Recommend solution options based on customer requirements.
-   - Propose proof of concept (POC) if necessary.
-   - Establish business relationship.
-   - Decide on level of support.
-2. Order process:
-   - Prepare necessary contracts with the customer.
-   - Create customer purchase order.
-   - Decide on delivery timeline.
-   - Connect customer with Microsoft if necessary.
-3. Pre-deployment
-   - Provide customer with necessary training to ensure understanding of all deployment prerequisites and data center integration options.
-   - Assist the customer with validation of collected data to ensure completeness and accuracy.
-4. Factory process
-   - Apply the last validated baseline build.
-   - Apply the required Microsoft deployment toolkit.
-5. Hardware delivery:
-   - Ship hardware to customer site.
-6. Onsite deployment
-   - Deployment handled by an onsite engineer.
-   - Rack and stack.
-   - Hardware lifecycle host (HLH) deployment.
-   - Azure Stack deployment.
-   - Hand off to customer.
+1. Recommend solution options based on customer requirements
+1. Propose proof of concept (POC) 
+1. Decide on level of support
+1. Prepare necessary contracts with the customer
+1. Create customer purchase order
+1. Decide delivery schedule
+1. Connect customer with Microsoft 
+1. Train customer on deployment 
+1. Help customer validate collected data
+1. Install and validate baseline build and Microsoft deployment toolkit
+1. Ship hardware to customer site
+1. Provide onsite engineer
+1. Rack and stack
+1. Deploy Hardware lifecycle host (HLH) 
+1. Deploy Azure Stack
+1. Hand off to customer
 
 # [Microsoft](#tab/micro)
 
-1. Engage with partner to provide presales support.
-2. Prepare software licensing and contracts as needed.
-3. Provide required tooling to collect datacenter integration requirements and documentation to customer.
-4. Provide the latest baseline builds and tool chain updates on a monthly cadence.
-5. Microsoft support engineers assist with any deployment issues.
+1. Engage partner for presales support
+2. Prepare software licensing and contracts
+3. Provide tools to collect data center integration requirements
+4. Provide monthly baseline builds and tool chain updates
+5. Microsoft support engineers assist with any deployment issues
 
-
+---
 
 ## Planning phase
 The planning phase is when Microsoft, or the Azure Stack solution partner, will work with you to evaluate and understand your needs to determine if Azure Stack is the right solution for you:
