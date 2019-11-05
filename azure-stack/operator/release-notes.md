@@ -78,7 +78,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Azure Stack's health and monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration. <!-- For more information, see [Link to new article]. -->
 
-- You can now update the DNS forwarder that you specified at Azure Stack deployment time using the privileged endpoint. This does not require opening a support case. <!-- For more information, see [Link to new article]. -->
+- A new version of Azure Stack Admin PowerShell modules is available. For more information, see
 
 - Added the **Set-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to configure the manual update for Windows Defender definitions in Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
 
