@@ -44,7 +44,7 @@ If you get an error message during template validation that the parameter 'osPro
 - [Compute](https://docs.microsoft.com/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftcompute)
 - [Network](https://docs.microsoft.com/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftnetwork)
 
-To copy a VHD from Azure to Azure Stack, use [AzCopy 7.3.0](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#download-and-install-azcopy). Work with your vendor to resolve issues with the image itself. For more information about the WALinuxAgent requirements for Azure Stack, see [Azure LinuX Agent](azure-stack-linux.md#azure-linux-agent).
+To copy a VHD from Azure to Azure Stack, use [AzCopy 7.3.0](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#download-and-install-azcopy). Work with your vendor to resolve issues with the image itself. For more information about the WALinuxAgent requirements for Azure Stack, see [Azure LinuX Agent](../operator/azure-stack-linux.md#azure-linux-agent).
 
 ### Deployment fails due to lack of external access
 When deployment fails at stages where external access is required, an exception like the following example will be returned:
@@ -54,7 +54,7 @@ An error occurred while trying to test identity provider endpoints: System.Net.W
    at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.GetResponse(WebRequest request)
    at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.ProcessRecord()at, <No file>: line 48 - 8/12/2018 2:40:08 AM
 ```
-If this error occurs, make sure all minimum networking requirements have been met by reviewing the [deployment network traffic documentation](deployment-networking.md). A network checker tool is also available for partners as part of the Partner Toolkit.
+If this error occurs, make sure all minimum networking requirements have been met by reviewing the [deployment network traffic documentation](../operator/deployment-networking.md). A network checker tool is also available for partners as part of the Partner Toolkit.
 
 Other deployment failures are typically due to problems connecting to resources on the Internet.
 
@@ -67,7 +67,7 @@ To verify connectivity to resources on the Internet, you can perform the followi
    Test-NetConnection login.windows.net -port 443
    ```
 
-If this command fails, verify the TOR switch and any other network devices are configured to [allow network traffic](azure-stack-network.md).
+If this command fails, verify the TOR switch and any other network devices are configured to [allow network traffic](../operator/azure-stack-network.md).
 
 
 ## Virtual machines
