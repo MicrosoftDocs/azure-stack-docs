@@ -44,6 +44,50 @@ productDirectory:
       - url: /azure-stack/operator/azure-stack-hci-overview
         text: Azure Stack HCI overview
 
+# conceptualContent section (optional)
+conceptualContent:
+# itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
+  title: Hybrid patterns and solution examples
+  summary: Use patterns and solution examples to guide you through development of hybrid solutions that span Azure and Azure Stack.
+  items:
+    # Card
+    - title: Learn about hybrid
+      links:
+        - url: /azure-stack/hybrid/overview-patterns-solution-examples
+          itemType: overview
+          text: What are patterns and solution examples?
+        - url: /azure-stack/hybrid/overview-app-design-considerations
+          itemType: concept
+          text: Hybrid app design considerations
+    - title: Explore hybrid patterns
+      links:
+        - url: /azure-stack/hybrid/pattern-cross-cloud-scale
+          itemType: architecture
+          text: Cross-cloud scaling
+        - url: /azure-stack/hybrid/pattern-cicd-pipeline
+          itemType: architecture
+          text: DevOps hybrid CI/CD
+        - url: /azure-stack/hybrid/pattern-retail-footfall-detection
+          itemType: architecture
+          text: Footfall detection (retail)
+        - url: /azure-stack/hybrid/pattern-geo-distributed
+          itemType: architecture
+          text: Geo-distributed app
+    - title: Deploy hybrid solution examples
+      links:
+        - url: /azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling
+          itemType: tutorial
+          text: Cross-cloud scaling
+        - url: https://aka.ms/hybriddevopsdeploy 
+          itemType: tutorial
+          text: DevOps hybrid CI/CD
+        - url: /azure-stack/hybrid/solution-deployment-guide-retail-footfall-detection
+          itemType: tutorial
+          text: Footfall detection (retail)
+        - url: /azure-stack/hybrid/solution-deployment-guide-geo-distributed
+          itemType: tutorial
+          text: Geo-distributed app
+
 # additionalContent section (optional)
 # Card with links style
 additionalContent:
