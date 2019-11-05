@@ -1,6 +1,6 @@
 ---
 title: Deploy a Kubernetes cluster with the AKS engine on Azure Stack | Microsoft Docs
-description: How to deploy a Kubernetes cluster on Azure Stack from a client VM running the AKS Engine. 
+description: How to deploy a Kubernetes cluster on Azure Stack from a client VM running the AKS engine. 
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -23,17 +23,17 @@ ms.lastreviewed: 10/10/2019
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-You can deploy a Kubernetes cluster on Azure Stack from a client VM running the AKS Engine. In this article, we look at writing a cluster specification, deploying a cluster with the `apimodel.json` file, and checking your cluster by deploying MySQL with Helm.
+You can deploy a Kubernetes cluster on Azure Stack from a client VM running the AKS engine. In this article, we look at writing a cluster specification, deploying a cluster with the `apimodel.json` file, and checking your cluster by deploying MySQL with Helm.
 
 ## Define a cluster specification
 
-You can specify a cluster specification in a document file using the JSON format called the [API model](https://github.com/Azure/aks-engine/blob/master/docs/topics/architecture.md#architecture-diagram). The AKS Engine uses a cluster specification in the API model to create your cluster. 
+You can specify a cluster specification in a document file using the JSON format called the [API model](https://github.com/Azure/aks-engine/blob/master/docs/topics/architecture.md#architecture-diagram). The AKS engine uses a cluster specification in the API model to create your cluster. 
 
 ### Update the API model
 
 This section looks at creating an API model for your cluster.
 
-1.  Start by using an Azure Stack [example](https://github.com/Azure/aks-engine/tree/master/examples/azure-stack) API Model file and make a local copy for your deployment. From the machine, you installed AKS Engine, run:
+1.  Start by using an Azure Stack [example](https://github.com/Azure/aks-engine/tree/master/examples/azure-stack) API Model file and make a local copy for your deployment. From the machine, you installed AKS engine, run:
 
     ```bash
     curl -o kubernetes-azurestack.json https://raw.githubusercontent.com/Azure/aks-engine/master/examples/azure-stack/kubernetes-azurestack.json
@@ -51,7 +51,7 @@ This section looks at creating an API model for your cluster.
     > [!Note]  
     > If you don't have nano installed, you can install nano on Ubuntu: `sudo apt-get install nano`.
 
-3.  In the kubernetes-azurestack.json file, find `orchestratorRelease`. Select one of the supported Kubernetes versions. For example, 1.11, 1.12, 1.13, 1.14. The versions are often updates. Specify the version as x.xx rather than x.xx.x. For a list of current versions, see [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). You can find out the supported version by running the following AKS Engine command:
+3.  In the kubernetes-azurestack.json file, find `orchestratorRelease`. Select one of the supported Kubernetes versions. For example, 1.14, 1.15. The versions are often updates. Specify the version as x.xx rather than x.xx.x. For a list of current versions, see [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). You can find out the supported version by running the following AKS engine command:
 
     ```bash
     aks-engine get-versions
@@ -114,11 +114,11 @@ Ask your Azure Stack operator to:
 
 Proceed to deploy a cluster:
 
-1.  Review the available parameters for AKS Engine on Azure Stack [CLI flags](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cli-flags).
+1.  Review the available parameters for AKS engine on Azure Stack [CLI flags](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#cli-flags).
 
     | Parameter | Example | Description |
     | --- | --- | --- |
-    | azure-env | AzureStackCloud | To indicate to AKS Engine that your target platform is Azure Stack use `AzureStackCloud`. |
+    | azure-env | AzureStackCloud | To indicate to AKS engine that your target platform is Azure Stack use `AzureStackCloud`. |
     | identity-system | adfs | Optional. Specify your identity management solution if you are using Active Directory Federated Services (AD FS). |
     | location | local | The region name for your Azure Stack. For the ASDK the region is set to `local`. |
     | resource-group | kube-rg | Enter the name of a new resource group or select an existing resource group. The resource name needs to be alphanumeric and lowercase. |
@@ -143,13 +143,13 @@ Proceed to deploy a cluster:
     --identity-system adfs # required if using AD FS
     ```
 
-2.  If for some reason the execution fails after the output directory has been created, you can correct the issue and rerun the command. If you are rerunning the deployment and had used the same output directory before, the AKS Engine will return an error saying that the directory already exists. You can overwrite the existing directory by using the flag: `--force-overwrite`.
+2.  If for some reason the execution fails after the output directory has been created, you can correct the issue and rerun the command. If you are rerunning the deployment and had used the same output directory before, the AKS engine will return an error saying that the directory already exists. You can overwrite the existing directory by using the flag: `--force-overwrite`.
 
-3.  Save the AKS Engine cluster configuration in a secure, encrypted location.
+3.  Save the AKS engine cluster configuration in a secure, encrypted location.
 
-    Locate the file `apimodel.json`. Save it to a secure location. This file will be used as input in all of your other AKS Engine operations.
+    Locate the file `apimodel.json`. Save it to a secure location. This file will be used as input in all of your other AKS engine operations.
 
-    The generated `apimodel.json` contains the service principal, secret, and SSH public key you use in the input API model. It also has all the other metadata needed by the AKS Engine to perform all other operations. If you lose it, the AKS Engine won't be able configure the cluster.
+    The generated `apimodel.json` contains the service principal, secret, and SSH public key you use in the input API model. It also has all the other metadata needed by the AKS engine to perform all other operations. If you lose it, the AKS engine won't be able configure the cluster.
 
     The secrets are **unencrypted**. Keep the file in an encrypted, secure place. 
 
@@ -193,4 +193,4 @@ Verify your cluster by deploying mysql with Helm to check your cluster.
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Troubleshoot the AKS Engine on Azure Stack](azure-stack-kubernetes-aks-engine-troubleshoot.md)
+> [Troubleshoot the AKS engine on Azure Stack](azure-stack-kubernetes-aks-engine-troubleshoot.md)
