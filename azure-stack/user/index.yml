@@ -35,25 +35,7 @@ sections:
       - html: <a href="/azure-stack/user/azure-stack-version-profiles-azurecli2">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_cligeneric.svg" alt="">
               <br><b>Azure Command-Line Interface (CLI)</b></a>
-              <p>Command-line experience for managing Azure Stack Hub resources.</p>
-  - title: Hybrid cloud apps
-    items:
-    - type: list
-      style: cards
-      className: cardsA
-      items:  
-      - html: <a href="/azure-stack/user/azure-stack-solution-pipeline">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_workflow.svg" alt="hybrid cloud app ci/cd">
-              <br><b>Hybrid app continuous integration and delivery</b></a>
-              <p>Deploy hybrid apps to Azure and Azure Stack Hub using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.</p>
-      - html: <a href="/azure-stack/user/azure-stack-solution-hybrid-identity">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_identity-protection.svg" alt="hybrid cloud app identity">
-              <br><b>Configure hybrid cloud identity</b></a>
-              <p>Configure a hybrid cloud identity for your Azure and Azure Stack Hub applications.</p>
-      - html: <a href="/azure-stack/user/azure-stack-solution-cloud-burst">
-              <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_multi-connect.svg" alt="hybrid cloud app scaling">
-              <br><b>Cross-cloud scaling solutions</b></a>
-              <p>Create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack Hub hosted web app, to an Azure hosted web app.</p>
+              <p>Command-line experience for managing Azure Stack resources.</p>
   - title: Infrastructure-as-a-Service (IaaS) on Azure Stack Hub
     items:
     - type: list
