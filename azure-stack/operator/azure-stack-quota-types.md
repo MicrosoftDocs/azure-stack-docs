@@ -74,7 +74,7 @@ There are two different ways to view an existing quota:
 1. In the left navigation pane of the administrator portal, select **Plans**.
 2. Select the plan you want to view details for by clicking on its name.
 3. In the blade that opens, select **Services and quotas**.
-4. Select the quota you want see by clicking it in the **Name** column.
+4. Select the quota you want to see by clicking it in the **Name** column.
 
     [![Quotas in Azure Stack administrator portal](media/azure-stack-quota-types/quotas1sm.png "View quotas in administrator portal")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
