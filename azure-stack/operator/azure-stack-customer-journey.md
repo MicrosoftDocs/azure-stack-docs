@@ -1,6 +1,6 @@
 ---
-title: Azure Stack datacenter integration walkthrough | Microsoft Docs
-description: Learn what to expect for a successful on-site deployment of Azure Stack in your datacenter, from planning to post-deployment.
+title: Azure Stack data center integration walkthrough | Microsoft Docs
+description: Learn what to expect for a successful on-site deployment of Azure Stack in your data center, from planning to post-deployment.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -19,17 +19,15 @@ ms.reviewer: asganesh
 ms.lastreviewed: 12/10/2018
 ---
  
-# Azure Stack datacenter integration walkthrough
+# Azure Stack data center integration walkthrough
 
-This article describes the end-to-end Azure Stack customer experience from purchasing an integrated system through to a successful on-site deployment by a solution provider. Use this information to ease your journey and to help set expectations for you as an Azure Stack customer.
-
-As an Azure Stack customer, you should anticipate the following phases:
+This article describes the end-to-end process for Azure Stack data center integration, from purchasing to post-deployment support. The integration is a collaborative project between the customer, a solution provider, and Microsoft. Click the following tabs to see the specific steps for each member of the project, and see the next sections for a summary of different phases for tne project timeline. 
 
 # [Customer](#tab/customer)
 
 1. Describe use cases and requirements
 1. Determine the billing model
-1. Review and approve contracts.
+1. Review and approve contracts
 1. Complete the [Deployment Worksheet](azure-stack-deployment-worksheet.md)
 1. Make sure deployment prerequisites are met
 1. Prepare the data center 
