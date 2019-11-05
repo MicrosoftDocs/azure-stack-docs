@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2019
-ms.author: mabrigg
+ms.date: 09/19/2019
+ms.author: mabriggs
 ms.reviewer: fiseraci
-ms.lastreviewed: 09/18/2019
+ms.lastreviewed: 09/19/2019
 
 ---
 # Use the privileged endpoint in Azure Stack

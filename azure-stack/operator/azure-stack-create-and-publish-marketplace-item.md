@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 10/25/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
@@ -41,11 +41,11 @@ To create a custom marketplace item, do the following:
 
 3. The Gallery package should contain the following structure:
 
-   :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/gallerypkg1.png" alt-text="Gallery package":::
+   ![Screenshot of the Gallery package structure](media/azure-stack-create-and-publish-marketplace-item/gallerypkg1.png)
 
    The deployment templates file structure appears as follows:
 
-   :::image type="content" source="media/azure-stack-create-and-publish-marketplace-item/gallerypkg2.png" alt-text="Gallery package":::
+   ![Screenshot of the deployment templates structure](media/azure-stack-create-and-publish-marketplace-item/gallerypkg2.png)
 
 4. Replace the following highlighted values (those with numbers) in the Manifest.json template with the value that you provided when [uploading your custom image](azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal).
 
@@ -153,10 +153,10 @@ To create a custom marketplace item, do the following:
 
 10. For any further edits to Manifest.json, see [Reference: Marketplace item manifest.json](#reference-marketplace-item-manifestjson).
 
-11. When you finish modifying your files, convert it to an .azpkg file. You perform the conversion using the **AzureGalleryPackager.exe** tool and the sample gallery package you downloaded previously. Run the following command:
+11. When you finish modifying your files, convert it to an .azpkg file. You perform the conversion using the **AzureGallery.exe** tool and the sample gallery package you downloaded previously. Run the following command:
 
     ```shell
-    .\AzureGalleryPackager.exe package –m c:\<path>\<gallery package name>\manifest.json –o c:\Temp
+    .\AzureGallery.exe package –m c:\<path>\<gallery package name>\manifest.json –o c:\Temp
     ```
 
     > [!NOTE]

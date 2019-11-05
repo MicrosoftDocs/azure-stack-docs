@@ -11,10 +11,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 06/10/2019
+ms.lastreviewed: 10/28/2019
 
 ---
 
@@ -63,7 +63,7 @@ If you are running the Azure Stack Monthly Update Verification workflow and the 
 
 - VaaS prerequisites
 
-    `Install-VaaSPrerequisites` no longer requires cloud admin credentials. If you are running the latest version of this cmdlet, see [Download and install the agent](azure-stack-vaas-local-agent.md#download-and-install-the-agent) for the revised commands for installing prerequisites. Here are the commands:
+    `Install-VaaSPrerequisites` no longer requires cloud admin credentials. If you are running the latest version of this cmdlet, see [Download and install the local agent](azure-stack-vaas-local-agent.md#download-and-install-the-local-agent) for the revised commands for installing prerequisites. Here are the commands:
 
     ```powershell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -80,7 +80,7 @@ If you are running the Azure Stack Monthly Update Verification workflow and the 
 
 - VaaS prerequisites and VHD updates
 
-    `Install-VaaSPrerequisites` now requires cloud admin credentials to address an issue during Package Validation. The documentation at [Download and install the agent](azure-stack-vaas-local-agent.md#download-and-install-the-agent) has been updated with the following:
+    `Install-VaaSPrerequisites` now requires cloud admin credentials to address an issue during Package Validation. The documentation at [Download and install the local agent](azure-stack-vaas-local-agent.md#download-and-install-the-local-agent) has been updated with the following:
 
     ```powershell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -97,7 +97,7 @@ If you are running the Azure Stack Monthly Update Verification workflow and the 
 
 - Local agent update
 
-    The previous version of the local agent is not compatible with the current 4.0.0 release of the service. All users must update their local agents. See [Download and install the agent](azure-stack-vaas-local-agent.md#download-and-install-the-agent) for instructions on installing the newest agent.
+    The previous version of the local agent is not compatible with the current 4.0.0 release of the service. All users must update their local agents. See [Download and install the local agent](azure-stack-vaas-local-agent.md#download-and-install-the-local-agent) for instructions on installing the newest agent.
 
 - PowerShell automation update
 

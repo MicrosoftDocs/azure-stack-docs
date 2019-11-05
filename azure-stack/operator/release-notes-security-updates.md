@@ -26,7 +26,10 @@ This article lists all the security updates in the last four updates of Azure St
 ::: moniker range="azs-1910"
 ## 1910 update
 
-This update of Azure Stack does not include security updates to the underlying operating system that hosts Azure Stack.
+This update of Azure Stack does not include security updates to the underlying operating system that hosts Azure Stack. This update contains a security update for a component of Azure Stack infrastructure.
+
+- [CVE-2019-1234](https://portal.msrc.microsoft.com/security-guidance/advisory/CVE-2019-1234)
+
 ::: moniker-end
 
 ::: moniker range="azs-1908"
