@@ -47,7 +47,7 @@ productDirectory:
 # conceptualContent section (optional)
 conceptualContent:
 # itemType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
-  title: Azure Stack hybrid patterns and solution examples
+  title: Hybrid patterns and solution examples
   summary: Use patterns and solution examples to guide you through development of hybrid solutions that span Azure and Azure Stack.
   items:
     # Card
