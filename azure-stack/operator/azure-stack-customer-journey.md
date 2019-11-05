@@ -67,11 +67,8 @@ This article describes the end-to-end process for Azure Stack data center integr
 Microsoft or an Azure Stack solution partner will help evaluate your needs. They'll help you decide things like:
 
 -   Is Azure Stack the right solution for your organization?
-
 -   What size solution will you need?
-
 -   What type of billing and licensing model will work for your organization?
-
 -   What are the power and cooling requirements?
 
 To ensure that the hardware solution will best fit your needs, the [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) is used to assist in pre-purchase planning to determine the appropriate capacity and configuration for your Azure Stack hardware solution.
