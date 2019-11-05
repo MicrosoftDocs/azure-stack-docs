@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 11/05/2019
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 10/29/2019
+ms.lastreviewed: 11/05/2019
 ---
 
 # Azure Stack known issues
@@ -42,8 +42,8 @@ To access known issues for a different version, use the version selector dropdow
 ## 1910 update process
 
 - Applicable: This issue applies to all supported releases.
-- Cause: When attempting to install the 1907 Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing.
-- Remediation: Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and restarts the download. If the problem persists, we recommend manually uploading the update package by following the [Install updates section](azure-stack-apply-updates.md#install-updates-and-monitor-progress).
+- Cause: When attempting to install the Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing.
+- Remediation: You can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and restarts the download. If the problem persists, we recommend manually uploading the update package by following the [Install updates section](azure-stack-apply-updates.md#install-updates-and-monitor-progress).
 - Occurrence: Common
 
 ## Portal
@@ -65,7 +65,7 @@ To access known issues for a different version, use the version selector dropdow
 ### Subscriptions Lock blade
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the administrator portal, the **Lock** blade for user subscriptions has two butons that say **subscription**.
+- Cause: In the administrator portal, the **Lock** blade for user subscriptions has two buttons that say **Subscription**.
 - Occurrence: Common
 
 ### Subscription permissions
@@ -182,7 +182,7 @@ To access known issues for a different version, use the version selector dropdow
 
 ### Virtual machine diagnostic settings blade
 
-- Applicable: This issue applies to the 1906 and 1907 releases.    
+- Applicable: This issue applies to the 1906 and 1907 releases.
 - Cause: The virtual machine diagnostic settings blade has a **Sink** tab, which asks for an **Application Insight Account**. This is the result of a new blade and is not yet supported in Azure Stack.
 - Remediation: None.
 - Occurrence: Common

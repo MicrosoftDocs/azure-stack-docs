@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 11/05/2019
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 09/17/2019
+ms.lastreviewed: 11/05/2019
 
 ---
 
@@ -56,7 +56,7 @@ Review this checklist in order to prepare for an Azure Stack update. This articl
 
 | Activity | Details |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Apply latest hotfixes | Apply the latest hotfixes applicable to updated version. |
+| Apply latest hotfixes | Apply the latest hotfixes applicable to the updated version. |
 | Retrieve encryption keys | Retrieve the data at rest encryption keys and securely store them outside of your Azure Stack deployment. Follow the [instructions on how to retrieve the keys](azure-stack-security-bitlocker.md). |
 |  |  |
 | Re-enable multi-tenancy | In case of a multi-tenanted Azure Stack, [make sure you configure all guest directory tenants](azure-stack-enable-multitenancy.md#configure-guest-directory) after a successful update. |
