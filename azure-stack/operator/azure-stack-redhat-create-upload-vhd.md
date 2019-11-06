@@ -86,9 +86,9 @@ This section assumes that you already have an ISO file from the Red Hat website 
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
     ```
 
-   This ensures that all console messages are sent to the first serial port, which can assist Azure support with debugging issues. This configuration also turns off the new RHEL 7 naming conventions for NICs.
+   This modification ensures all console messages are sent to the first serial port, which can assist Azure support with debugging issues. This configuration also turns off the new RHEL 7 naming conventions for NICs.
 
-   Graphical and quiet boot aren't useful in a cloud environment where we want all the logs to be sent to the serial port. You can leave the `crashkernel` option configured if desired. Note that this parameter reduces the amount of available memory in the VM by 128 MB or more, which might be problematic on smaller VM sizes. We recommend that you remove the following parameters:
+   Graphical and quiet boot aren't useful in a cloud environment where we want all the logs to be sent to the serial port. You can leave the `crashkernel` option configured if desired. This parameter reduces the amount of available memory in the VM by 128 MB or more, which might be problematic on smaller VM sizes. We recommend that you remove the following parameters:
 
     ```sh
     rhgb quiet crashkernel=auto
@@ -225,7 +225,7 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
    This command also ensures that all console messages are sent to the first serial port, which can assist Azure support with debugging issues. The command also turns off the new RHEL 7 naming conventions for NICs.
 
-   Graphical and quiet boot aren't useful in a cloud environment where all the logs are sent to the serial port. You can leave the `crashkernel` option configured if desired. This parameter reduces the amount of available memory in the VM by 128 MB or more, which might be problematic on smaller VM sizes. We recommend that you remove the following parameters:
+   Graphical and quiet boot aren't useful in a cloud environment where all the logs are sent to the serial port. You can leave the `crashkernel` option configured if desired. This parameter reduces the amount of available memory in the VM by 128 MB or more, which might be problematic on smaller VM sizes. We recommend you remove the following parameters:
 
     ```sh
     rhgb quiet crashkernel=auto
@@ -283,7 +283,7 @@ This section assumes that you already have an ISO file from the Red Hat website 
     cd setuptools-7.0
     ```
 
-   b. This is an example where we download "2.2.20" version from the GitHub repo. Download and unzip the 2.2.20 version of the agent from our GitHub.
+   b. Download and unzip the 2.2.20 version of the agent from our GitHub.
 
     ```bash
     wget https://github.com/Azure/WALinuxAgent/archive/v2.2.20.zip
@@ -374,10 +374,10 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
 ## Prepare a Red Hat-based VM from VMware
 
-This section assumes that you've already installed a RHEL VM in VMware. For details about how to install an operating system in VMware, see [VMware Guest Operating System Installation Guide](https://partnerweb.vmware.com/GOSIG/home.html).
+This section assumes that you've already installed an RHEL VM in VMware. For details about how to install an operating system in VMware, see [VMware Guest Operating System Installation Guide](https://partnerweb.vmware.com/GOSIG/home.html).
 
-* When you install the Linux operating system, we recommend that you use standard partitions rather than LVM, which is often the default for many installations. This avoids LVM name conflicts with cloned VMs, particularly if an operating system disk ever needs to be attached to another VM for troubleshooting. LVM or RAID can be used on data disks if preferred.
-* Don't configure a swap partition on the operating system disk. You can configure the Linux agent to create a swap file on the temporary resource disk. You can find more information about this in the steps that follow.
+* When you install the Linux operating system, we recommend that you use standard partitions rather than LVM, which is often the default for many installations. This method avoids LVM name conflicts with cloned VMs, particularly if an operating system disk ever needs to be attached to another VM for troubleshooting. LVM or RAID can be used on data disks if preferred.
+* Don't configure a swap partition on the operating system disk. You can configure the Linux agent to create a swap file on the temporary resource disk. You can find more information about this configuration in the steps that follow.
 * When you create the virtual hard disk, select **Store virtual disk as a single file**.
 
 ### Prepare an RHEL 7 VM from VMware
@@ -420,13 +420,13 @@ This section assumes that you've already installed a RHEL VM in VMware. For deta
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
     ```
 
-    This configuration also ensures that all console messages are sent to the first serial port, which can assist Azure support with debugging issues. It also turns off the new RHEL 7 naming conventions for NICs. In addition, we recommend that you remove the following parameters:
+    This configuration also ensures that all console messages are sent to the first serial port, which can assist Azure support with debugging issues. It also turns off the new RHEL 7 naming conventions for NICs. We recommend that you remove the following parameters:
 
     ```sh
     rhgb quiet crashkernel=auto
     ```
 
-    Graphical and quiet boot aren't useful in a cloud environment where we want all the logs to be sent to the serial port. You can leave the `crashkernel` option configured if desired. Note that this parameter reduces the amount of available memory in the VM by 128 MB or more, which might be problematic on smaller VM sizes.
+    Graphical and quiet boot aren't useful in a cloud environment where we want all the logs to be sent to the serial port. You can leave the `crashkernel` option configured if desired. This parameter reduces the amount of available memory in the VM by 128 MB or more, which might be problematic on smaller VM sizes.
 
 1. After you're done editing `/etc/default/grub`, run the following command to rebuild the grub configuration:
 
@@ -684,7 +684,7 @@ This section assumes that you've already installed a RHEL VM in VMware. For deta
 
 ## Known issues
 
-### The Hyper-V driver could not be included in the initial RAM disk when using a non-Hyper-V hypervisor
+### The Hyper-V driver couldn't be included in the initial RAM disk when using a non-Hyper-V hypervisor
 
 In some cases, Linux installers might not include the drivers for Hyper-V in the initial RAM disk (initrd or initramfs) unless Linux detects that it's running in a Hyper-V environment.
 
