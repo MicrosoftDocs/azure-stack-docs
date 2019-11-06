@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 11/05/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 10/15/2018
+ms.lastreviewed: 11/05/2019
 
 ---
 # Troubleshoot the ASDK
@@ -36,6 +36,39 @@ If you experience a failure during installation, you can restart the deployment 
 
 ### At the end of the deployment, the PowerShell session is still open and doesn't show any output
 This behavior is probably just the result of the default behavior of a PowerShell command window when it's been selected. The ASDK deployment has succeeded but the script was paused when selecting the window. You can verify setup has completed by looking for the word "select" in the titlebar of the command window. Press the ESC key to unselect it, and the completion message should be shown after it.
+
+### Template validation error parameter osProfile is not allowed
+
+If you get an error message during template validation that the parameter 'osProfile' is not allowed, make sure you are using the correct versions of the APIs for these components:
+
+- [Compute](https://docs.microsoft.com/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftcompute)
+- [Network](https://docs.microsoft.com/azure-stack/user/azure-stack-profiles-azure-resource-manager-versions#microsoftnetwork)
+
+To copy a VHD from Azure to Azure Stack, use [AzCopy 7.3.0](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-transfer#download-and-install-azcopy). Work with your vendor to resolve issues with the image itself. For more information about the WALinuxAgent requirements for Azure Stack, see [Azure LinuX Agent](../operator/azure-stack-linux.md#azure-linux-agent).
+
+### Deployment fails due to lack of external access
+When deployment fails at stages where external access is required, an exception like the following example will be returned:
+
+```
+An error occurred while trying to test identity provider endpoints: System.Net.WebException: The operation has timed out.
+   at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.GetResponse(WebRequest request)
+   at Microsoft.PowerShell.Commands.WebRequestPSCmdlet.ProcessRecord()at, <No file>: line 48 - 8/12/2018 2:40:08 AM
+```
+If this error occurs, make sure all minimum networking requirements have been met by reviewing the [deployment network traffic documentation](../operator/deployment-networking.md). A network checker tool is also available for partners as part of the Partner Toolkit.
+
+Other deployment failures are typically due to problems connecting to resources on the Internet.
+
+To verify connectivity to resources on the Internet, you can perform the following steps:
+
+1. Open PowerShell.
+2. Enter-PSSession to the WAS01 or any of the ERCs VMs.
+3. Run the following cmdlet: 
+   ```powershell
+   Test-NetConnection login.windows.net -port 443
+   ```
+
+If this command fails, verify the TOR switch and any other network devices are configured to [allow network traffic](../operator/azure-stack-network.md).
+
 
 ## Virtual machines
 ### Default image and gallery item
