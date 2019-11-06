@@ -38,8 +38,8 @@ This article describes the end-to-end process for Azure Stack data center integr
 
 1. Recommend solution options based on customer requirements
 1. Propose proof of concept (POC) 
-1. Decide on level of support
-1. Prepare necessary contracts with the customer
+1. Decide level of support
+1. Prepare contracts with the customer
 1. Create customer purchase order
 1. Decide delivery schedule
 1. Connect customer with Microsoft 
@@ -64,29 +64,26 @@ This article describes the end-to-end process for Azure Stack data center integr
 ---
 
 ## Planning
-Microsoft or an Azure Stack solution partner will help evaluate your needs. They'll help you decide things like:
+Microsoft or an Azure Stack solution partner will help evaluate your goals. They'll help you decide questions like:
 
 -   Is Azure Stack the right solution for your organization?
--   What size solution will you need?
 -   What type of billing and licensing model will work for your organization?
+-   What size solution will you need?
 -   What are the power and cooling requirements?
 
-To ensure that the hardware solution will best fit your needs, the [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) is used to assist in pre-purchase planning to determine the appropriate capacity and configuration for your Azure Stack hardware solution.
-
-The spreadsheet is *not* intended to be used as a substitute for your own investigation and analysis of hardware solutions that best suit your needs. 
+Use the [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) to investigate and analyze the best hardware capacity and configuration for your needs. 
 
 ## Ordering
-At this stage, many of your questions with regards to feasibility would have been answered. Now that you're ready to commit to purchasing Azure Stack, and after signing all the required contracts and purchase orders, you'll be asked to provide the integration requirements data to your solution provider.
+Your organization commits to purchasing Azure Stack, signs contracts and purchase orders, and provides the integration requirements data to the solution provider.
 
 ## Pre-deployment
-During this phase, you'll need to decide how you want to integrate Azure Stack into your datacenter. To ease this process, Microsoft put together a requirements template to help you gather the necessary information to plan for an integrated system deployment within your environment. This requirements template was made in collaboration with the solution providers.
-
+You decide how to integrate Azure Stack into your datacenter. Microsoft collaborated with solution providers to publish a [deployment worksheet](azure-stack-deployment-worksheet.md) to help you gather the necessary information.
 The [general datacenter integration considerations](azure-stack-datacenter-integration.md) article provides information that helps you complete the template, known as the Deployment Worksheet.
 
 > [!IMPORTANT]
-> During this stage it's important that all prerequisite information is investigated and decided on before ordering the solution. Be aware that this step is time consuming and requires coordination and data gathering from multiple disciplines within your organization. Incorrect or incomplete information can result in a longer deployment. 
+> All prerequisites are investigated before ordering the solution to help prevent deployment delays. Verifying prerequisites can take time and require coordination and data gathering from different departments within your organization. 
 
-In the pre-deployment phase you'll need to decide on the following items:
+You'll choose the following items:
 
 - **Azure Stack connection model and identity provider**. You can choose to deploy Azure Stack either [connected to the internet (and to Azure) or disconnected](azure-stack-connection-models.md). To get the most benefit from Azure Stack, including hybrid scenarios, you'd want to deploy connected to Azure. Choosing Active Directory Federation Services (AD FS) or Azure Active Directory (Azure AD) is a one-time decision that you must make at deployment time. **You can't change your identity provider later without redeploying the entire system**.
 
