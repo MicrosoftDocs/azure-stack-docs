@@ -1,8 +1,8 @@
-- name: Azure Stack Operator Documentation
+- name: Azure Stack Hub Operator Documentation
   href: index.yml
 - name: Overview
   items:
-  - name: What is Azure Stack?
+  - name: What is Azure Stack Hub?
     href: azure-stack-overview.md
   - name: What is Azure Stack HCI?
     href: azure-stack-hci-overview.md
@@ -19,7 +19,7 @@
 - name: Quickstarts
   expanded: true
   items:
-  - name: Use the administration portal
+  - name: Use the administrator portal
     href: azure-stack-manage-portals.md
 - name: Tutorials
   items:
@@ -251,12 +251,14 @@
       href: azure-stack-linux.md
     - name: Add a Red Hat virtual machine
       href: azure-stack-redhat-create-upload-vhd.md
-    - name: Offer the AKS Engine
+    - name: Offer the AKS engine
       href: azure-stack-aks-engine.md
     - name: Offer Kubernetes marketplace item
       href: azure-stack-solution-template-kubernetes-cluster-add.md
     - name: Create a site-to-site VPN connection
       href: azure-stack-create-vpn-connection-one-node.md
+    - name: Offer Commvault marketplace item
+      href: azure-stack-network-offer-backup-commvault.md
   - name: Offer services
     items:
     - name: Service, plan, offer, subscription overview
@@ -465,7 +467,7 @@
     href: /powershell/azure/azure-stack/overview
 - name: Related
   items:
-  - name: Azure Stack User documentation
+  - name: Azure Stack Hub User documentation
     href: /azure-stack/user/
   - name: ASDK documentation
     href: /azure-stack/asdk/

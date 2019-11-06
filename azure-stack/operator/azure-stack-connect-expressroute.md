@@ -59,7 +59,7 @@ The following figure shows the Azure Stack and Azure environments after you fini
 
 ![ExpressRoute network](media/azure-stack-connect-expressroute/Conceptual.png)
 
-The following figure shows how multiple tenants connect from the Azure Stack infrastructure through the ExpressRoute router to Azure at the Microsoft edge:
+The following figure shows how multiple tenants connect from the Azure Stack infrastructure through the ExpressRoute router to Azure:
 
 ![Multi-tenant connections with ExpressRoute](media/azure-stack-connect-expressroute/Architecture.png)
 
@@ -607,4 +607,4 @@ If you want to know how much traffic is passing through your connection, you can
 
 ## Next steps
 
-[Deploy apps to Azure and Azure Stack](../user/azure-stack-solution-pipeline.md )
+[Deploy apps to Azure and Azure Stack](../user/azure-stack-solution-pipeline.md)
