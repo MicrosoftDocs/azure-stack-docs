@@ -101,7 +101,7 @@ The Azure Storage account is hosted in the Azure public cloud, not on your Azure
 
 3. Under **Resource group**, select **Create new**. Enter a name for your new resource group.
 
-4. Review the [naming conventions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions#storage) for Azure Storage accounts. Enter a name for your storage account.
+4. Review the [naming conventions](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#storage) for Azure Storage accounts. Enter a name for your storage account.
 
 5. Select the **US West** region for your storage account.
 

@@ -11,10 +11,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/23/2019
+ms.date: 11/06/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 12/03/2018
+ms.lastreviewed: 11/06/2019
 
 
 ---
@@ -154,9 +154,6 @@ Import-Module .\Connect\AzureStack.Connect.psm1
 # Configure the PowerShell environment
 # Register an AzureRM environment that targets your Azure Stack instance
 Add-AzureRmEnvironment -Name $ARMEvnName -ARMEndpoint $ARMEndPoint 
-
-# Set the GraphEndpointResourceId value
-Set-AzureRmEnvironment -Name $ARMEvnName -GraphEndpoint $GraphAudience
 
 # Login
 $TenantID = Get-AzsDirectoryTenantId -AADTenantName $AADTenantName -EnvironmentName $ARMEvnName

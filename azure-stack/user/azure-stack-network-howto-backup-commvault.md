@@ -148,7 +148,7 @@ You will need to know if your identity manager is Azure AD or AD DFS. The follow
 
 9. Enter your access information for your storage account. You can find instruction on setting up an Azure Storage account here. Access information:
 
-    -  **Service host**: Get the name of the URL from the Blob container properties in your resource. For example, my URL was https://backuptest.blob.westus.stackpoc.com/mybackups and I used, blob.westus.stackpoc.com in Service host.
+    -  **Service host**: Get the name of the URL from the Blob container properties in your resource. For example, my URL was https:\//backuptest.blob.westus.stackpoc.com/mybackups and I used, blob.westus.stackpoc.com in Service host.
     
     -   **Account Name**: Use the Storage account name. You can find this in the Access Keys blade in the storage resource.
     
