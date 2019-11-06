@@ -1,5 +1,6 @@
 ---
 title: Region management in Azure Stack | Microsoft Docs
+titleSuffix: Azure Stack
 description: Overview of region management in Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -32,11 +33,11 @@ One integrated system deployment (referred to as an *Azure Stack cloud*) makes u
 
 Azure Stack has a set of region management capabilities available in the **Region management** tile. This tile is available to an Azure Stack operator on the default dashboard in the administrator portal. Through this tile, you can monitor and update your Azure Stack region and its components, which are region-specific.
 
-![The region management tile](media/azure-stack-region-management/image1.png)
+![The region management tile in Azure Stack administrator portal](media/azure-stack-region-management/image1.png)
 
 If you click a region in the **Region management** tile, you can access the following information:
 
-[![Description of panes on the Region management blade](media/azure-stack-region-management/regionssm.png "Region management blade")](media/azure-stack-region-management/regions.png#lightbox)
+[![Description of panes on the Region management blade in Azure Stack administrator portal](media/azure-stack-region-management/regionssm.png "Region management blade in Azure Stack administrator portal")](media/azure-stack-region-management/regions.png#lightbox)
 
 1. **The resource menu**: Access specific infrastructure management areas, and view and manage user resources such as storage accounts and virtual networks.
 
