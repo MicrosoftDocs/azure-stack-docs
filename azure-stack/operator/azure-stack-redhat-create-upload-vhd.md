@@ -80,7 +80,7 @@ This section assumes that you already have an ISO file from the Red Hat website 
     sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure. To do this modification, open `/etc/default/grub` in a text editor, and modify the `GRUB_CMDLINE_LINUX` parameter. For example:
+1. Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure. To make this modification, open `/etc/default/grub` in a text editor, and modify the `GRUB_CMDLINE_LINUX` parameter. For example:
 
     ```sh
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -374,13 +374,13 @@ This section assumes that you already have an ISO file from the Red Hat website 
 
 ## Prepare a Red Hat-based VM from VMware
 
-This section assumes that you have already installed a RHEL virtual machine in VMware. For details about how to install an operating system in VMware, see [VMware Guest Operating System Installation Guide](https://partnerweb.vmware.com/GOSIG/home.html).
+This section assumes that you've already installed a RHEL VM in VMware. For details about how to install an operating system in VMware, see [VMware Guest Operating System Installation Guide](https://partnerweb.vmware.com/GOSIG/home.html).
 
-* When you install the Linux operating system, we recommend that you use standard partitions rather than LVM, which is often the default for many installations. This avoids LVM name conflicts with cloned virtual machine, particularly if an operating system disk ever needs to be attached to another virtual machine for troubleshooting. LVM or RAID can be used on data disks if preferred.
-* Do not configure a swap partition on the operating system disk. You can configure the Linux agent to create a swap file on the temporary resource disk. You can find more information about this in the steps that follow.
+* When you install the Linux operating system, we recommend that you use standard partitions rather than LVM, which is often the default for many installations. This avoids LVM name conflicts with cloned VMs, particularly if an operating system disk ever needs to be attached to another VM for troubleshooting. LVM or RAID can be used on data disks if preferred.
+* Don't configure a swap partition on the operating system disk. You can configure the Linux agent to create a swap file on the temporary resource disk. You can find more information about this in the steps that follow.
 * When you create the virtual hard disk, select **Store virtual disk as a single file**.
 
-### Prepare an RHEL 7 virtual machine from VMware
+### Prepare an RHEL 7 VM from VMware
 
 1. Create or edit the `/etc/sysconfig/network` file, and add the following text:
 
@@ -414,7 +414,7 @@ This section assumes that you have already installed a RHEL virtual machine in V
     sudo subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure. To do this modification, open `/etc/default/grub` in a text editor, and modify the `GRUB_CMDLINE_LINUX` parameter. For example:
+1. Modify the kernel boot line in your grub configuration to include additional kernel parameters for Azure. To make this modification, open `/etc/default/grub` in a text editor, and modify the `GRUB_CMDLINE_LINUX` parameter. For example:
 
     ```sh
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -426,9 +426,9 @@ This section assumes that you have already installed a RHEL virtual machine in V
     rhgb quiet crashkernel=auto
     ```
 
-    Graphical and quiet boot are not useful in a cloud environment where we want all the logs to be sent to the serial port. You can leave the `crashkernel` option configured if desired. Note that this parameter reduces the amount of available memory in the virtual machine by 128 MB or more, which might be problematic on smaller virtual machine sizes.
+    Graphical and quiet boot aren't useful in a cloud environment where we want all the logs to be sent to the serial port. You can leave the `crashkernel` option configured if desired. Note that this parameter reduces the amount of available memory in the VM by 128 MB or more, which might be problematic on smaller VM sizes.
 
-1. After you are done editing `/etc/default/grub`, run the following command to rebuild the grub configuration:
+1. After you're done editing `/etc/default/grub`, run the following command to rebuild the grub configuration:
 
     ```bash
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
@@ -448,7 +448,7 @@ This section assumes that you have already installed a RHEL virtual machine in V
     dracut -f -v
     ```
 
-1. Stop and Uninstall cloud-init:
+1. Stop and uninstall cloud-init:
 
     ```bash
     systemctl stop cloud-init
@@ -474,9 +474,9 @@ This section assumes that you have already installed a RHEL virtual machine in V
     sudo systemctl enable waagent.service
     ```
 
-1. Do not create swap space on the operating system disk.
+1. Don't create swap space on the operating system disk.
 
-    The Azure Linux Agent can automatically configure swap space by using the local resource disk that is attached to the virtual machine after the virtual machine is provisioned on Azure. Note that the local resource disk is a temporary disk, and it might be emptied when the virtual machine is deprovisioned. After you install the Azure Linux Agent in the previous step, modify the following parameters in `/etc/waagent.conf` appropriately:
+    The Azure Linux Agent can automatically configure swap space by using the local resource disk that's attached to the VM after the VM is provisioned on Azure. Note that the local resource disk is a temporary disk, and it might be emptied when the VM is deprovisioned. After you install the Azure Linux Agent in the previous step, modify the following parameters in `/etc/waagent.conf` appropriately:
 
     ```sh
     ResourceDisk.Format=y
@@ -492,9 +492,9 @@ This section assumes that you have already installed a RHEL virtual machine in V
     sudo subscription-manager unregister
     ```
 
-1. If you are using a system that was deployed using an Enterprise Certificate Authority, the RHEL virtual machine will not trust the Azure Stack root certificate. You need to place that into the trusted root store. See [Adding trusted root certificates to the server](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html).
+1. If you're using a system that was deployed using an Enterprise Certificate Authority, the RHEL VM won't trust the Azure Stack root certificate. You need to place that into the trusted root store. For more information, see [Adding trusted root certificates to the server](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html).
 
-1. Run the following commands to deprovision the virtual machine and prepare it for provisioning on Azure:
+1. Run the following commands to deprovision the VM and prepare it for provisioning on Azure:
 
     ```bash
     sudo waagent -force -deprovision
@@ -502,10 +502,10 @@ This section assumes that you have already installed a RHEL virtual machine in V
     logout
     ```
 
-1. Shut down the virtual machine, and convert the VMDK file to the VHD format.
+1. Shut down the VM, and convert the VMDK file to the VHD format.
 
     > [!NOTE]
-    > There is a known bug in qemu-img versions >=2.2.1 that results in an improperly formatted VHD. The issue has been fixed in QEMU 2.6. It is recommended to use either qemu-img 2.2.0 or lower, or update to 2.6 or higher. Reference: <https://bugs.launchpad.net/qemu/+bug/1490611>.
+    > There's a known bug in qemu-img versions >=2.2.1 that results in an improperly formatted VHD. The issue has been fixed in QEMU 2.6. It's recommended to use either qemu-img 2.2.0 or lower, or update to 2.6 or higher. Reference: <https://bugs.launchpad.net/qemu/+bug/1490611>.
 
     First convert the image to raw format:
 
@@ -529,13 +529,13 @@ This section assumes that you have already installed a RHEL virtual machine in V
     qemu-img convert -f raw -o subformat=fixed -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-    Or, with qemu version **2.6+** include the `force_size` option:
+    Or, with qemu version **2.6+**, include the `force_size` option:
 
     ```bash
     qemu-img convert -f raw -o subformat=fixed,force_size -O vpc rhel-7.4.raw rhel-7.4.vhd
     ```
 
-## Prepare a Red Hat-based virtual machine from an ISO by using a kickstart file automatically
+## Prepare a Red Hat-based VM from an ISO by using a kickstart file automatically
 
 1. Create a kickstart file that includes the following content, and save the file. For details about kickstart installation, see the [Kickstart Installation Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/Installation_Guide/chap-kickstart-installations.html).
 
@@ -666,29 +666,29 @@ This section assumes that you have already installed a RHEL virtual machine in V
 
 1. Place the kickstart file where the installation system can access it.
 
-1. In Hyper-V Manager, create a new virtual machine. On the **Connect Virtual Hard Disk** page, select **Attach a virtual hard disk later**, and complete the New Virtual Machine Wizard.
+1. In Hyper-V Manager, create a new VM. On the **Connect Virtual Hard Disk** page, select **Attach a virtual hard disk later**, and complete the New Virtual Machine Wizard.
 
-1. Open the virtual machine settings:
+1. Open the VM settings:
 
-    a. Attach a new virtual hard disk to the virtual machine. Make sure to select **VHD Format** and **Fixed Size**.
+    a. Attach a new virtual hard disk to theVM. Make sure to select **VHD Format** and **Fixed Size**.
 
     b. Attach the installation ISO to the DVD drive.
 
     c. Set the BIOS to boot from CD.
 
-1. Start the virtual machine. When the installation guide appears, press **Tab** to configure the boot options.
+1. Start the VM. When the installation guide appears, press **Tab** to configure the boot options.
 
 1. Enter `inst.ks=<the location of the kickstart file>` at the end of the boot options, and press **Enter**.
 
-1. Wait for the installation to finish. When it's finished, the virtual machine is shut down automatically. Your Linux VHD is now ready to be uploaded to Azure.
+1. Wait for the installation to finish. When it's finished, the VM is shut down automatically. Your Linux VHD is now ready to be uploaded to Azure.
 
 ## Known issues
 
 ### The Hyper-V driver could not be included in the initial RAM disk when using a non-Hyper-V hypervisor
 
-In some cases, Linux installers might not include the drivers for Hyper-V in the initial RAM disk (initrd or initramfs) unless Linux detects that it is running in a Hyper-V environment.
+In some cases, Linux installers might not include the drivers for Hyper-V in the initial RAM disk (initrd or initramfs) unless Linux detects that it's running in a Hyper-V environment.
 
-When you're using a different virtualization system (that is, Oracle VM VirtualBox, Xen Project, etc.) to prepare your Linux image, you might need to rebuild initrd to ensure that at least the hv_vmbus and hv_storvsc kernel modules are available on the initial RAM disk. This is a known issue at least on systems that are based on the upstream Red Hat distribution.
+When you're using a different virtualization system (like Oracle VM VirtualBox, Xen Project, and so on) to prepare your Linux image, you might need to rebuild initrd to ensure that at least the hv_vmbus and hv_storvsc kernel modules are available on the initial RAM disk. This is a known issue at least on systems that are based on the upstream Red Hat distribution.
 
 To resolve this issue, add Hyper-V modules to initramfs and rebuild it:
 
@@ -708,6 +708,6 @@ For more information, see [rebuilding initramfs](https://access.redhat.com/solut
 
 ## Next steps
 
-You're now ready to use your Red Hat Enterprise Linux virtual hard disk to create new virtual machines in Azure Stack. If this is the first time that you're uploading the VHD file to Azure Stack, see [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md).
+You're now ready to use your Red Hat Enterprise Linux virtual hard disk to create new VMs in Azure Stack. If this is the first time that you're uploading the VHD file to Azure Stack, see [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md).
 
 For more information about the hypervisors that are certified to run Red Hat Enterprise Linux, see [the Red Hat website](https://access.redhat.com/certified-hypervisors).
