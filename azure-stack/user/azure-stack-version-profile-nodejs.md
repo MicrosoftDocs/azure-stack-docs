@@ -70,7 +70,7 @@ Use the specific API versions defined inside the package for the specific API-ve
 
 2. Install or upgrade to the current version of [Node.js](https://nodejs.org/en/download/). Node.js also includes the [npm](https://www.npmjs.com/) JavaScript package manager.
 
-3. Install or upgrade [Visual Studio Code](https://code.visualstudio.com/) and install the [Node.js extension](https://code.visualstudio.com/docs/Node.js/nodejs-debugging) for Visual Studio Code.
+3. Install or upgrade [Visual Studio Code](https://code.visualstudio.com/) and install the [Node.js extension](https://code.visualstudio.com/docs/nodejs/nodejs-debugging) for Visual Studio Code.
 
 2.  Install the client packages for the Azure Stack Resource Manger. For more information, see [how to install client libraries](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid).
 
@@ -92,7 +92,7 @@ To use the Node.js Azure SDK with Azure Stack, you must supply the following val
 | --- | --- | --- |
 | Tenant ID | TENANT\_ID | The value of your Azure Stack [tenant ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview). |
 | Client ID | CLIENT\_ID | The service principal application ID saved when service principal was created on the previous section of this document.  |
-| Subscription ID | AZURE\_SUBSCRIPTION\_ID   The [subscription ID](https://docs.microsoft.com/azure/azure-stack/service-plan-offer-subscription-overview#subscriptions) is how you access offers in Azure Stack.  |
+| Subscription ID | AZURE\_SUBSCRIPTION\_ID   The [subscription ID](/azure-stack/operator/service-plan-offer-subscription-overview#subscriptions) is how you access offers in Azure Stack.  |
 | Client Secret | APPLICATION\_SECRET | The service principal application Secret saved when service principal was created. |
 | Resource Manager Endpoint | ARM\_ENDPOINT | See [the Azure Stack Resource Manager endpoint](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-ruby#the-azure-stack-resource-manager-endpoint). |
 

@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2019
+ms.date: 11/05/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/09/2019
+ms.lastreviewed: 11/05/2019
 
 ---
 
@@ -52,7 +52,7 @@ If you use Active Directory Federated Services (AD FS) for your identity managem
 
 ## Add the AKS Base Image
 
-You can add the AKS Base Image to the marketplace by getting the item from Azure. However, if your Azure Stack is disconnected, use these instructions [Download marketplace items from Azure](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-1908#disconnected-or-a-partially-connected-scenario) to add the item. Add the item specified in step five.
+You can add the AKS Base Image to the marketplace by getting the item from Azure. However, if your Azure Stack is disconnected, use these instructions [Download marketplace items from Azure](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-1908#disconnected-or-a-partially-connected-scenario) to add the item. Add the item specified in step 5.
 
 Add the following item to the marketplace:
 
@@ -62,20 +62,20 @@ Add the following item to the marketplace:
 
 1. Select **+ Add from Azure**.
 
-1. Enter `AKS Base Image`.
+1. Enter `AKS Base`.
 
 1. Select the image version that matches the version of the AKS engine. You can find listing of AKS Base Image to AKS engine version at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). 
 
     In the list, select:
     - **Publisher**: Azure Kubernetes Service
     - **Offer**: aks
-    - **Version**: AKS Base Image 16.04-LTS Image Distro, September 2019 (2019.09.19 or version that maps to AKS engine)
+    - **Version**: AKS Base Image 16.04-LTS Image Distro, October 2019 (2019.10.24 or version that maps to AKS engine)
 
 1. Select **Download.**
 
 ## Add a Custom Script extension
 
-You can add the custom script to the marketplace by getting the item from Azure. However, if your Azure Stack is disconnected, use the instructions [Download marketplace items from Azure](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-1908#disconnected-or-a-partially-connected-scenario) to add the item.  Add the item specified in step five.
+You can add the custom script to the marketplace by getting the item from Azure. However, if your Azure Stack is disconnected, use the instructions [Download marketplace items from Azure](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-1908#disconnected-or-a-partially-connected-scenario) to add the item.  Add the item specified in step 5.
 
 1. Open the [Administration portal](https://adminportal.local.azurestack.external).
 
