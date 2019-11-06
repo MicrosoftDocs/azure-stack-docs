@@ -75,10 +75,10 @@ To ensure that the hardware solution will best fit your needs, the [Azure Stack 
 
 The spreadsheet is *not* intended to be used as a substitute for your own investigation and analysis of hardware solutions that best suit your needs. 
 
-## Order process phase
+## Ordering
 At this stage, many of your questions with regards to feasibility would have been answered. Now that you're ready to commit to purchasing Azure Stack, and after signing all the required contracts and purchase orders, you'll be asked to provide the integration requirements data to your solution provider.
 
-## Pre-deployment phase
+## Pre-deployment
 During this phase, you'll need to decide how you want to integrate Azure Stack into your datacenter. To ease this process, Microsoft put together a requirements template to help you gather the necessary information to plan for an integrated system deployment within your environment. This requirements template was made in collaboration with the solution providers.
 
 The [general datacenter integration considerations](azure-stack-datacenter-integration.md) article provides information that helps you complete the template, known as the Deployment Worksheet.
@@ -104,7 +104,7 @@ In the pre-deployment phase you'll need to decide on the following items:
 
 Once all the pre-requisite information is gathered through the deployment worksheet, the solution provider will kick off the factory process based on the data collected to ensure a successful integration of Azure Stack into your datacenter.
 
-## Hardware delivery phase
+## Hardware delivery 
 Your solution provider will work with you on scheduling when the solution will arrive to your facility. Once received and put in place, you'll need to schedule time with the solution provider to have an engineer come onsite to perform the Azure Stack deployment.
 
 It's **crucial** that all prerequisite data is locked and available *before the onsite engineer arrives to deploy the solution*.
@@ -118,7 +118,7 @@ It's **crucial** that all prerequisite data is locked and available *before the 
 > [!TIP]
 > If any of this information has changed, make sure to communicate the change with the solution provider before you schedule the actual deployment.
 
-## Onsite deployment phase
+## Onsite deployment 
 To deploy Azure Stack, an onsite engineer from your hardware solution provider will need to be present to kick off the deployment. To ensure a successful deployment, ensure that all information provided through the deployment worksheet hasn't changed.
 
 The following checks are what you should expect from the onsite engineer during the deployment experience:
@@ -132,7 +132,7 @@ The following checks are what you should expect from the onsite engineer during 
 > [!NOTE]
 > A deployment procedure by the onsite engineer might take about one business week to complete.
 
-## Post-deployment phase
+## Post-deployment 
 Several steps must be performed by the partner before the solution is handed off to the customer in the post-integration phase. In this phase, validation is important to ensure the system is deployed and performing correctly. 
 
 Actions that should be taken by the OEM Partner are:
@@ -164,7 +164,7 @@ There are several steps that are required or optional depending on the installat
 
   -   [Nagios Integration](azure-stack-integrate-monitor.md#integrate-with-nagios).
 
-## Overall timeline
+## Schedule
 
 ![Overall timeline for Azure Stack on-site deployment](./media/azure-stack-datacenter-integration-walkthrough/image1.png)
 
