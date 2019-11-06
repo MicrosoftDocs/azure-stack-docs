@@ -99,7 +99,6 @@ In the pre-deployment phase you'll need to decide on the following items:
 
 - **Firewall integration**. It's recommended that you [use a firewall](azure-stack-firewall.md) to help secure Azure Stack. Firewalls can help prevent DDOS attacks, intrusion detection, and content inspection. However, it should be noted that it can become a throughput bottleneck for Azure storage services.
 
-
 - **Certificate requirements**. It's critical that all [required certificates](azure-stack-pki-certs.md) are available *before* an onsite engineer arrives at your datacenter for deployment.
 
 Once all the pre-requisite information is gathered through the deployment worksheet, the solution provider will kick off the factory process based on the data collected to ensure a successful integration of Azure Stack into your datacenter.
