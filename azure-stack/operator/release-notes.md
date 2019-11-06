@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 11/06/2019
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 11/05/2019
+ms.lastreviewed: 11/06/2019
 ---
 
 # Azure Stack updates: release notes
@@ -76,7 +76,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - The administrator portal now shows the privileged endpoint IP addresses in the region properties menu for easier discovery. In addition, it shows the current configured time server and DNS forwarders.
 
-- The Azure Stack health and monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration. <!-- For more information, see [Link to new article]. -->
+- The Azure Stack health and monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration. For more information, see [Monitor Azure Stack hardware components](azure-stack-hardware-monitoring.md).
 
 - A new version of Azure Stack Admin PowerShell modules is available. <!-- For more information, see -->
 
