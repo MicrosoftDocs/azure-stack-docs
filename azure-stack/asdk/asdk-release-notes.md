@@ -32,13 +32,16 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 
 - For a list of fixed issues, changes, and new features in this release, see the relevant sections in the [Azure Stack release notes](../operator/release-notes.md).
 
-### Known issues
+### Fixed and known issues
 
+- Collect logs and store them in the specified Azure Storage blob container has been fixed. The general syntax for this operation is as follows: Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>". 
+- Deployment: the slow loaded spooler service prevent the removal of some windows feature and requires a reboot. This issue has been resolved. 
 - For a list of Azure Stack known issues in this release, see [the known issues article](../operator/known-issues.md).
 - Note that available Azure Stack hotfixes are not applicable to the ASDK.
 ::: moniker-end
 
 ::: moniker range="azs-1908"
+  
 ## Build 1.1908.0.20
 
 ### New features
