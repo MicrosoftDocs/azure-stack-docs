@@ -12,7 +12,38 @@ ms.lastreviewed: 11/18/2019
 
 # How to remove Event Hubs on Azure Stack Hub
 
+> [!WARNING]
+> Uninstalling Event Hubs will remove (erase) not only the resource provider, but also any Event Hubs clusters, namespaces, and event hubs configured. It will also remove their associated event data.  
+> Please proceed with extreme caution before deciding to uninstall Event Hubs. 
+> Uninstalling Event Hubs **does not** delete the packages used to install Event Hubs. To achieve that, please refer to [Delete Event Hubs packages](#delete-event-hub-packages).
 
+## Uninstall Event Hubs
+
+This sequence of steps will remove all Event Hubs resources, including clusters, namespaces, event hubs, and the resource provider.
+
+To remove Event Hubs and all related resources created by users, please perform the following steps:
+
+1. Sign in to the Azure Stack Hub administrator portal.
+2. Select **Marketplace Management** on the left.
+3. Select **Resource providers**.
+4. Select **Event Hubs** from the list of resource providers. You may want to filter the list by entering "Event Hubs" in the search text box provided.
+
+   [![Remove event hubs - step 1](media/event-hubs-rp-remove/1-uninstall.png)](media/event-hubs-rp-remove/1-uninstall.png)
+
+5. Select **Uninstall** from the options provided across the top the page.
+
+   [![Remove event hubs - step 2](media/event-hubs-rp-remove/2-uninstall.png)](media/event-hubs-rp-remove/1-uninstall.png)
+
+6. Enter the name of the resource provider, then select **Uninstall**. This confirms your desire to uninstall the Event Hubs resource provider, and all related clusters, namespaces, event hubs, and event data.
+
+   [![Remove event hubs - step 3](media/event-hubs-rp-remove/3-uninstall.png)](media/event-hubs-rp-remove/1-uninstall.png)
+
+> [!IMPORTANT]
+> You must wait at least 10 minutes after Event Hubs has been removed successfully, before installing Event Hubs again. This is due to the fact that background activities might still be running, which may conflict with any new installation.
+
+## Delete Event Hub packages
+
+Use this option if after uninstalling Event Hubs you also wish to remove any packages used to install Event Hubs. 
 
 ## Next steps
 
