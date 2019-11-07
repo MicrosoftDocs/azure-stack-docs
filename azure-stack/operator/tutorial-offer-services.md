@@ -60,6 +60,7 @@ Add-on services are supported by resource providers that are installed after Azu
 | Microsoft.Web | App Service function apps, web apps, API apps | 
 | Microsoft.MySqlAdapter | MySQL hosting server, MySQL database | 
 | Microsoft.SqlAdapter | SQL Server hosting server, SQL Server database |
+| Microsoft.EventHub | Event Hubs |
 
 ::: moniker range=">=azs-1902"
 ## Create an offer

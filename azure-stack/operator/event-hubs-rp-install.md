@@ -1,22 +1,22 @@
 ---
-title: How to install Event Hubs on Azure Stack
-description: Learn how to install the Event Hubs resource provider on Azure Stack. 
+title: How to install Event Hubs on Azure Stack Hub
+description: Learn how to install the Event Hubs resource provider on Azure Stack Hub. 
 author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 10/31/2019
+ms.date: 11/18/2019
 ms.reviewer: jfggdl
-ms.lastreviewed: 10/31/2019
+ms.lastreviewed: 11/18/2019
 ---
 
-# How to install Event Hubs on Azure Stack
+# How to install Event Hubs on Azure Stack Hub
 
 This article shows you how to download and install the Event Hubs resource provider, making it available to offer to customers for subscription.
 
 ## Download packages
 
-Before you can install Event Hubs on Azure Stack, you must download the resource provider and its dependent packages. You have two options, depending on your situation or requirements:
+Before you can install Event Hubs on Azure Stack Hub, you must download the resource provider and its dependent packages. You have two options, depending on your situation or requirements:
 
 - Download Event Hubs under a connected scenario.
 - Download Event Hubs under a disconnected or partially connected scenario.
@@ -24,10 +24,10 @@ Before you can install Event Hubs on Azure Stack, you must download the resource
 ### Download Event Hubs - connected scenario
 
 > [!NOTE]
-> The download process can take 30 minutes to 2 hours, depending on the network latency and existing packages on your Azure Stack instance. 
-Follow these instructions if your Azure Stack has Internet connectivity:
+> The download process can take 30 minutes to 2 hours, depending on the network latency and existing packages on your Azure Stack Hub instance. 
+Follow these instructions if your Azure Stack Hub has Internet connectivity:
 
-1. Sign in to the Azure Stack administrator portal.
+1. Sign in to the Azure Stack Hub administrator portal.
 2. Select **Marketplace Management** on the left.
 3. Select **Resource providers**.
 4. Select **+ Add from Azure**.
@@ -38,7 +38,7 @@ Follow these instructions if your Azure Stack has Internet connectivity:
 
 Notice that additional software packages are downloaded along with Event Hubs, including:
 
-- Microsoft Azure Stack Add-On RP Windows Server INTERNAL ONLY
+- Microsoft Azure Stack Hub Add-On RP Windows Server INTERNAL ONLY
 - PowerShell Desired State Configuration
 
 Once the download process is complete, skip to the [Install Prerequisites section](#install-prerequisites).
@@ -49,18 +49,18 @@ This process is necessary when any of the following conditions are true:
 
 - You don't have an Internet connection.
 - Your connection isn't reliable.
-- Your requirements prevent you from directly using Azure Stack to download packages.
+- Your requirements prevent you from directly using Azure Stack Hub to download packages.
 
-First you download the packages to your local machine, then you import them into your Azure Stack instance.
+First you download the packages to your local machine, then you import them into your Azure Stack Hub instance.
 
 1. If you haven't already, follow the instructions in [Download Marketplace items - Disconnected or partially connected scenarios](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario). Here you download the Marketplace Syndication tool, which allows you to download the Event Hubs packages.
 2. Run the Marketplace Syndication tool (`Export-AzSOfflineMarketplaceItem` PowerShell cmdlet). 
 3. After the tool's "Azure Marketplace Items" window opens, find and select "Event Hubs" to download the required packages to your local machine.
-4. Once the download finishes, you import the packages to your Azure Stack instance and publish to Marketplace. 
+4. Once the download finishes, you import the packages to your Azure Stack Hub instance and publish to Marketplace. 
 
 ## Installation 
 
-1. If you haven't already, sign in to the Azure Stack administrator portal.
+1. If you haven't already, sign in to the Azure Stack Hub administrator portal.
 2. Select **Marketplace Management** on the left, then select **Resource providers**.
 3. Once Event Hubs and other required software have been downloaded, **Marketplace Management** should show the "Event Hubs" packages with a status of "Not Installed". There may be other packages that show a status of "Downloaded". Select the "Event Hubs" row you wish to install.
    [![Marketplace management downloaded packages](media/event-hubs-rp-install/2-marketplace-management-downloaded.png)](media/event-hubs-rp-install/2-marketplace-management-downloaded.png#lightbox)
@@ -96,7 +96,7 @@ First you download the packages to your local machine, then you import them into
 2. Next you'll see the following page, which indicates that Event Hubs resource provider is being installed.
    [![Marketplace management event hubs - installing](media/event-hubs-rp-install/9-marketplace-management-install-inprogress.png)](media/event-hubs-rp-install/9-marketplace-management-install-inprogress.png#lightbox)
  
-3. Wait for the installation complete notification. This process usually takes one or more hours, depending on your Azure Stack type. 
+3. Wait for the installation complete notification. This process usually takes one or more hours, depending on your Azure Stack Hub type. 
    [![Marketplace management event hubs - install complete](media/event-hubs-rp-install/10-marketplace-management-install-complete.png)](media/event-hubs-rp-install/10-marketplace-management-install-complete.png#lightbox)
 
 4. Verify that the installation of Event Hubs has succeeded, by returning to the **Marketplace Management**, **Resource Providers** page. The status of Event Hubs should show "Installed".
@@ -131,5 +131,6 @@ Before users can deploy Event Hubs resources, you must create one or more plans,
 - If this is the first time you're offering a service, start with the [Offer services to users](tutorial-offer-services.md) tutorial. Then continue with the next tutorial, [Test a service offering](tutorial-test-offer.md).
 - Once you're familiar with the concept of offering a service, create an offer and plan that includes the Event Hubs resource provider. Then create a subscription for your users, or give them the offer information so they can create their own. For reference, you can also follow the series of articles under the [Service, plan, offer, subscription overview](service-plan-offer-subscription-overview.md).
 
+If you're ready to manage the Event Hubs resource provider, see [Manage Event Hubs on Azure Stack Hub](event-hubs-rp-admin).
 
 If you need to remove the resource provider, see [Remove the Event Hubs resource provider](event-hubs-rp-remove.md)
