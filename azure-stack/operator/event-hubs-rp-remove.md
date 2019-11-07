@@ -13,7 +13,7 @@ ms.lastreviewed: 11/18/2019
 # How to remove Event Hubs on Azure Stack Hub
 
 > [!WARNING]
-> Uninstalling Event Hubs will remove (erase) not only the resource provider, but also any Event Hubs clusters, namespaces, and event hubs configured. It will also remove their associated event data.  
+> Uninstalling Event Hubs will remove (erase) the resource provider, and all user-created Event Hubs clusters, namespaces, and event hubs resources. It will also remove their associated event data.  
 > Please proceed with extreme caution before deciding to uninstall Event Hubs. 
 > Uninstalling Event Hubs **does not** delete the packages used to install Event Hubs. To achieve that, please refer to [Delete Event Hubs packages](#delete-event-hub-packages).
 
@@ -21,7 +21,7 @@ ms.lastreviewed: 11/18/2019
 
 This sequence of steps will remove all Event Hubs resources, including clusters, namespaces, event hubs, and the resource provider.
 
-To remove Event Hubs and all related resources created by users, please perform the following steps:
+To remove Event Hubs and all related resources created by users, complete the following steps:
 
 1. Sign in to the Azure Stack Hub administrator portal.
 2. Select **Marketplace Management** on the left.
@@ -34,7 +34,9 @@ To remove Event Hubs and all related resources created by users, please perform 
 
    [![Remove event hubs - step 2](media/event-hubs-rp-remove/2-uninstall.png)](media/event-hubs-rp-remove/1-uninstall.png)
 
-6. Enter the name of the resource provider, then select **Uninstall**. This confirms your desire to uninstall the Event Hubs resource provider, and all related clusters, namespaces, event hubs, and event data.
+6. Enter the name of the resource provider, then select **Uninstall**. This action confirms your desire to uninstall:
+- The Event Hubs resource provider
+- All user created clusters, namespaces, event hubs, and event data.
 
    [![Remove event hubs - step 3](media/event-hubs-rp-remove/3-uninstall.png)](media/event-hubs-rp-remove/1-uninstall.png)
 
