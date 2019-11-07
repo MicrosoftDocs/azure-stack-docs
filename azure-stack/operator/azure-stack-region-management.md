@@ -39,7 +39,7 @@ If you click a region in the **Region management** tile, you can access the foll
 
 [![Description of panes on the Region management blade in Azure Stack administrator portal](media/azure-stack-region-management/regionssm.png "Region management blade in Azure Stack administrator portal")](media/azure-stack-region-management/regions.png#lightbox)
 
-1. **The resource menu**: Access specific infrastructure management areas, and view and manage user resources such as storage accounts and virtual networks.
+1. **The resource menu**: Access different infrastructure management areas, and view and manage user resources such as storage accounts and virtual networks.
 
 2. **Alerts**: List system-wide alerts and provide details on each of those alerts.
 
