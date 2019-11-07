@@ -6,10 +6,10 @@ author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 10/30/2019
+ms.date: 11/07/2019
 ms.author: mabrigg
 ms.reviewer: rtiberiu
-ms.lastreviewed: 10/30/2019
+ms.lastreviewed: 11/07/2019
 
 # keywords:  X
 # Intent: As an Azure Stack Operator, I want < what? > so that < why? >
@@ -18,6 +18,8 @@ ms.lastreviewed: 10/30/2019
 # How to replicate resources using the Azure Stack subscription replicator
 
 You can use the Azure Stack subscription replicator PowerShell script to copy the resources between Azure Stack subscriptions, across Azure Stack stamps, or between Azure Stack and Azure. The replicator script reads and rebuilds the Azure Resource Manager resources from different Azure and Azure Stack subscriptions. This article looks at how the script works, how you can use the script, and provides a reference for script operations.
+
+You can find the scripts used in this article in the [Azure Intelligent Edge Patterns](https://github.com/Azure-Samples/azure-intelligent-edge-patterns) GitHub repository. The scripts are in the **subscription replicator** folder.
 
 ## Subscription replicator overview
 
