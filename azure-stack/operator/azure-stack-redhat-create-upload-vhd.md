@@ -670,7 +670,7 @@ This section assumes that you've already installed an RHEL VM in VMware. For det
 
 1. Open the VM settings:
 
-    a. Attach a new virtual hard disk to theVM. Make sure to select **VHD Format** and **Fixed Size**.
+    a. Attach a new virtual hard disk to the VM. Make sure to select **VHD Format** and **Fixed Size**.
 
     b. Attach the installation ISO to the DVD drive.
 
