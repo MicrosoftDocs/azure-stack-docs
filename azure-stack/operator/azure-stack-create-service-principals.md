@@ -11,9 +11,9 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2019
+ms.date: 11/06/2019
 ms.author: bryanla
-ms.lastreviewed: 06/20/2019
+ms.lastreviewed: 11/06/2019
 
 ---
 # Use an app identity to access resources
@@ -118,7 +118,6 @@ Once you have a certificate, use the PowerShell script below to register your ap
 
     # Register and set an AzureRM environment that targets your Azure Stack instance
     Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
-    Set-AzureRmEnvironment -Name "AzureStackUser" -GraphAudience $GraphAudience -EnableAdfsAuthentication:$true
 
     # Sign in using the new service principal identity
     $SpSignin = Connect-AzureRmAccount -Environment "AzureStackUser" `
@@ -229,7 +228,6 @@ Now you create another app registration, but this time specify a client secret c
 
      # Register and set an AzureRM environment that targets your Azure Stack instance
      Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint $ArmEndpoint
-     Set-AzureRmEnvironment -Name "AzureStackUser" -GraphAudience $GraphAudience -EnableAdfsAuthentication:$true
 
      # Sign in using the new service principal identity
      $securePassword = $SpObject.ClientSecret | ConvertTo-SecureString -AsPlainText -Force
