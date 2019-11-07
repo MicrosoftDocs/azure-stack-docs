@@ -23,7 +23,7 @@ ms.lastreviewed: 10/30/2019
 
 *Applies to: Azure Stack integrated systems*
 
-As part of troubleshooting, Microsoft Customer Support Services (CSS) may need to analyze diagnostic logs. Beginning with the 1907 release, Azure Stack operators can upload on-demand diagnostic logs to a blob container in Azure by using **Help and Support**. If the portal is unavailable, operators can collect logs using Get-AzureStackLog through the privileged endpoint (PEP). This topic covers both ways of collecting diagnostic logs on demand.
+As part of troubleshooting, Microsoft Customer Support Services (CSS) may need to analyze diagnostic logs. Beginning with the 1907 release, Azure Stack operators can upload diagnostic logs to a blob container in Azure by using **Help and Support**. Using **Help and Support** is recommended over using PowerShell because it's simpler. But if the portal is unavailable, operators can continue to collect logs using Get-AzureStackLog through the privileged endpoint (PEP) as in previous releases. This topic covers both ways of collecting diagnostic logs on demand.
 
 >[!Note]
 >As an alternative to collecting logs on demand, you can streamline the troubleshooting process by enabling [automatic diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md). If system health conditions need to be investigated, the logs are uploaded automatically for analysis by CSS. 
@@ -43,7 +43,7 @@ Use the following steps to configure on-demand log collection using the SAS URL 
 >[!NOTE]
 >If automatic diagnostic log collection is enabled, **Help and Support** shows when log collection is in progress. If you click **Collect logs now** to collect logs from a specific time while automatic log collection is in progress, on-demand collection begins after automatic log collection is complete. 
 
-## Using PEP to collect diagnostic logs
+## Use the privileged endpoint (PEP) to collect diagnostic logs
 
 <!--how do you look up the PEP IP address. You look up the azurestackstampinfo.json--->
 
