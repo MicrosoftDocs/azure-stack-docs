@@ -1,6 +1,6 @@
 ---
-title: Azure Stack data center integration walkthrough | Microsoft Docs
-description: Learn what to expect for a successful on-site deployment of Azure Stack in your data center, from planning to post-deployment.
+title: Azure Stack datacenter integration walkthrough | Microsoft Docs
+description: Learn what to expect for a successful on-site deployment of Azure Stack in your datacenter, from planning to post-deployment.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -13,15 +13,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2019
+ms.date: 11/07/2019
 ms.author: mabrigg
 ms.reviewer: asganesh
-ms.lastreviewed: 12/10/2018
+ms.lastreviewed: 11/07/2019
 ---
  
-# Azure Stack data center integration walkthrough
+# Azure Stack datacenter integration walkthrough
 
-This article describes the end-to-end process for Azure Stack data center integration, from purchasing to post-deployment support. The integration is a collaborative project between the customer, a solution provider, and Microsoft. Click the following tabs to see the specific steps for each member of the project, and see the next sections for a summary of different phases for the project timeline. 
+This article describes the end-to-end process for Azure Stack datacenter integration, from purchasing to post-deployment support. The integration is a collaborative project between the customer, a solution provider, and Microsoft. Click the following tabs to see the specific steps for each member of the project, and see the next sections for a summary of different phases for the project timeline. 
 
 # [Customer](#tab/customer)
 
@@ -30,7 +30,7 @@ This article describes the end-to-end process for Azure Stack data center integr
 1. Review and approve contracts
 1. Complete the [Deployment Worksheet](azure-stack-deployment-worksheet.md)
 1. Make sure deployment prerequisites are met
-1. Prepare the data center 
+1. Prepare the datacenter 
 1. Provide subscription info during deployment
 1. Resolve any questions about the provided data
 
@@ -57,7 +57,7 @@ This article describes the end-to-end process for Azure Stack data center integr
 
 1. Engage partner for presales support
 2. Prepare software licensing and contracts
-3. Provide tools to collect data center integration requirements
+3. Provide tools to collect datacenter integration requirements
 4. Provide monthly baseline builds and tool chain updates
 5. Microsoft support engineers assist with any deployment issues
 
