@@ -44,7 +44,7 @@ This article walks through offering Commvault Live Sync to update a recovery VM 
     ![Commvault for Azure Stack](./media/azure-stack-network-offer-backup-commvault/get-commvault-for-marketplace.png)
 
 3. Enter `commvault`.
-4. Select **Commvault Trail**. And then select **Download**.
+4. Select **Commvault Trial**. And then select **Download**.
 
 
 ## Next steps
