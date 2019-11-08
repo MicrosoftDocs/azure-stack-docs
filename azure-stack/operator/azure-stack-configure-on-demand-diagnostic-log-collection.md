@@ -49,7 +49,7 @@ Use the following steps to configure on-demand log collection using the SAS URL 
 
 
 
-#### To run Get-AzureStackLog on Azure Stack integrated systems
+### Run Get-AzureStackLog on Azure Stack integrated systems
 
 To run Get-AzureStackLog on an integrated system, you need to have access to the Privileged End Point (PEP). Here's an example script you can run using the PEP to collect logs on an integrated system:
 
@@ -73,7 +73,7 @@ if ($session) {
 }
 ```
 
-#### Run Get-AzureStackLog on an Azure Stack Development Kit (ASDK) system
+### Run Get-AzureStackLog on an Azure Stack Development Kit (ASDK) system
 
 Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
 
