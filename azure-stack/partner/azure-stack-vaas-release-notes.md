@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Validation as a Service release notes  | Microsoft Docs
+title: Azure Stack Validation as a Service release notes | Microsoft Docs
 description: Azure Stack Validation as a Service release notes.
 services: azure-stack
 documentationcenter: ''
@@ -28,23 +28,23 @@ This article has the release notes for Azure Stack Validation as a Service.
 
 2019 November 7
 
-- Test Content Updates
-    1. Monthly Azure Stack Update Verification (Version 5.1.46.0 -> 5.1.49.0)
-    2. OEM Extension Package Verification (Version 5.1.46.0 -> 5.1.49.0)
-    3. Results for 5.1.46.0 have been retained. If you had a successful runs on 5.1.46.0, notify vaashelp@microsoft.com when submitting results.
+- Test content updates
+  - Monthly Azure Stack Update Verification (Version 5.1.46.0 -> 5.1.49.0)
+  - OEM Extension Package Verification (Version 5.1.46.0 -> 5.1.49.0)
+  - Results for 5.1.46.0 have been retained. If you had a successful runs on 5.1.46.0, notify vaashelp@microsoft.com when submitting results.
 
-- Bug Fixes 
-    1. Fixed an issue where Monthly Azure Stack Update Verification failed to run if the update .zip contained special characters
+- Bug fixes
+  - Fixed an issue where Monthly Azure Stack Update Verification failed to run if the update .zip contained special characters.
 
-- Known Issues
-    1. VaaS tests fail if mstest.exe is not found. Workaround:
-            - CTRL+C the agent in the PowerShell window
-            - Type mstest.exe to verify that mstest.exe is a recognized program.
-            - If mstest.exe is not recognized, close the current PowerShell window.
-            - Click Start (not PowerShell on your taskbar), find PowerShell, and open as an administrator.
-            - Type mstest.exe and verify it is available as a command
-            - Restart the agent and re-run the test
-    2. Occasionally, Cloud Simulation Engine will report failures with *vm tests. Contact vaashelp@microsoft.com before attempting a re-run. 
+- Known issues
+  - VaaS tests fail if mstest.exe is not found. Workaround:
+    1. CTRL+C the agent in the PowerShell window.
+    1. Type mstest.exe to verify that mstest.exe is a recognized program.
+    1. If mstest.exe is not recognized, close the current PowerShell window.
+    1. Click Start (not PowerShell on your taskbar), find PowerShell, and open as an administrator.
+    1. Type mstest.exe and verify it is available as a command.
+    1. Restart the agent and re-run the test.
+  - Occasionally, Cloud Simulation Engine will report failures with \*vm tests. Contact vaashelp@microsoft.com before attempting a re-run. 
 
 
 2019 October 29
