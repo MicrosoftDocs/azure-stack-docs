@@ -40,7 +40,6 @@
     - name: Azure Stack Capacity Planner
       href: azure-stack-capacity-planner.md
   - name: Datacenter integration
-    href: azure-stack-customer-journey.md
     items:
     - name: Walkthrough
       href: azure-stack-customer-journey.md
@@ -153,8 +152,6 @@
         href: azure-stack-servicing-policy.md
       - name: Checklist for applying updates
         href: release-notes-checklist.md
-      - name: Plan for update
-        href: azure-stack-update-plan.md
       - name: Prepare the update package
         href: azure-stack-update-prepare-package.md
       - name: Apply updates
