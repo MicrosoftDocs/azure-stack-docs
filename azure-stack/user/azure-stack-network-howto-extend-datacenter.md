@@ -1,32 +1,41 @@
 ---
-title: How to extend the data center on Azure Stack | Microsoft Docs
+title: How to extend the data center on Azure Stack Hub | Microsoft Docs
 description: Learn how to extend the datacenter on Azure Stack.
 services: azure-stack
 author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 10/19/2019
+ms.date: 11/07/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/19/2019
+ms.lastreviewed: 11/07/2019
 
 # keywords:  X
+# Intent: As an Azure Stack Operator, I want < what? > so that < why? >
 ---
 
-# How to extend the data center on Azure Stack
+# How to extend the data center on  Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
 
-This article provides Azure Stack storage infrastructure information to help you decide how to integrate Azure Stack into your existing networking environment. Storage space on Azure Stack is limited. You can integrate storage with storage outside of your Azure Stack and into your local data center. After providing a general discussion of extending your data center, the article presents two different scenarios. You can connect to a Windows file storage server. You can also connect to a Windows iSCSI server.
+This article provides Azure Stack Hub storage infrastructure information to help you decide how to integrate Azure Stack into your existing networking environment. After providing a general discussion of extending your data center, the article presents two different scenarios. You can connect to a Windows file storage server. You can also connect to a Windows iSCSI server.
 
-## Overview of extending storage to Azure Stack
+## Overview of extending storage to Azure Stack Hub
+
+There are scenarios where having your data located in the public cloud isn’t enough. Perhaps you have a compute-intensive virtualized database workload, sensitive to latencies, and the round-trip time to the public cloud could affect performance of the database workload. Perhaps there is data on premises, held on a file server, NAS, or iSCSI storage array, which needs to be accessed by on-premises workloads, and needs to reside on-premises to meet regulatory or compliance goals.  These are just two of the scenarios where having data reside on-premises, remains important for many organizations.
+
+So, why not just host that data in storage accounts on Azure Stack, or inside virtualized file servers, running on the Azure Stack system? Well, unlike in Azure, Azure Stack storage is finite. The capacity you have available for your usage depends entirely on the per-node capacity you chose to purchase, in addition to the number of nodes you have. And because Azure Stack is a Hyper-Converged solution, should you wish to grow your storage capacity to meet usage demands, you also need to grow your compute footprint through the addition of nodes.  This can be potentially cost prohibitive, especially if the need to extra capacity is for cold, archival storage that could be added for low cost outside of the Azure Stack system.
+
+Which brings you to the scenario that you will cover below. How can you connect Azure Stack systems, virtualized workloads running on the Azure Stack, simply and efficiently, to storage systems outside of the Azure Stack, accessible via the network.
+
+## Design for extending storage
 
 The diagram depicts a scenario, where a single virtual machine, running a workload, connects to, and utilizes external (to the VM, and the Azure Stack itself) storage, for purposes of data reading/writing etc. For this article, you'll focus on simple retrieval of files, but you can expand this example for more complex scenarios, such as the remote storage of database files.
 
 ![Azure Stack extend storage](./media/azure-stack-network-howto-extend-datacenter/image1.png)
 
-In the diagram, you'll see that the VM on the Azure Stack system has been deployed with multiple NICs. From both a redundancy, but also as a storage best practice, it's important to have multiple paths between target and destination. Where things become more complex, are where VMs in Azure Stack have both public and private IPs, just like in Azure. If the external storage needed to reach the VM, it can only do so via the public IP, as the Private IPs are primarily used within the Azure Stack systems, within vNets and the subnets. The external storage would not be able to communicate with the private IP space of the VM, unless it passes through a site-to-site VPN, to connect to the vNet itself. So, for this example, you'll focus on communication via the public IP space. One thing to notice with the public IP space in the graphic, is that there are 2 different public IP pool subnets. By default, Azure Stack requires just one pool for public IP address purposes, but something to consider, for redundant routing, may be to add a second. However it is not possible to select an IP address from a specific pool, so you may end up with VMs with public IPs from the same pool across multiple virtual network cards.
+In the diagram, you'll see that the VM on the Azure Stack system has been deployed with multiple NICs. From both a redundancy, but also as a storage best practice, it's important to have multiple paths between target and destination. Where things become more complex, are where VMs in Azure Stack have both public and private IPs, just like in Azure. If the external storage needed to reach the VM, it can only do so via the public IP, as the Private IPs are primarily used within the Azure Stack systems, within vNets and the subnets. The external storage would not be able to communicate with the private IP space of the VM, unless it passes through a site-to-site VPN, to connect to the vNet itself. So, for this example, you'll focus on communication via the public IP space. One thing to notice with the public IP space in the graphic, is that there are two different public IP pool subnets. By default, Azure Stack requires just one pool for public IP address purposes, but something to consider, for redundant routing, may be to add a second. However it is not possible to select an IP address from a specific pool, so you may end up with VMs with public IPs from the same pool across multiple virtual network cards.
 
 In this example, you can assume that the routing between the border devices and the external storage is taken care of, and traffic can traverse the network appropriately. For this example, it doesn't matter if the backbone is 1 GbE, 10 GbE, 25 GbE or even faster, however this would be important to consider as you plan for your integration, to address the performance needs of any applications accessing this external storage.
 
@@ -80,7 +89,7 @@ In this scenario, deploy and configure a Windows Server 2019 virtual machine on 
     
     ![](./media/azure-stack-network-howto-extend-datacenter/image4.png)
 
-13. Under DNS name, select **Configure** and provide a DNS name label, **vm001** and select **Save**, then select **VM001** in the breadcrumb to return to the *Overview* blade.
+13. Under DNS name, select **Configure** and provide a DNS name label, **vm001, and select **Save**, then select **VM001** in the breadcrumb to return to the *Overview* blade.
 
 14. On the right-hand side of the overview blade, select **storagetesting-vnet/default** under the Virtual network/subnet text.
 
@@ -142,7 +151,7 @@ Once updated and rebooted, you can now configure this server as a file server.
 
 3)  Select **Next**, select **Role-based or feature-based installation**, and advance through the selections until you reach the **Select server roles** page.
 
-4)  Expand **File and Storage Services**, expand **File & iSCSI Services** and tick the **File Server** box. Once completed, close **Server Manager**.
+4)  Expand **File and Storage Services**, expand **File & iSCSI Services** and select **File Server**. Once completed, close **Server Manager**.
 
 5)  Reopen **Server Manager** and select **File and Storage Services**.
 
@@ -160,7 +169,7 @@ You have now created your file share on your file server.
 
 ### Testing file storage performance and connectivity
 
-To check communication and run some rudimentary tests, log back into the Azure Stack user portal on your **Azure Stack** system and navigate to the **overview** blade for **VM001**.
+To check communication and run some rudimentary tests, sign in to the Azure Stack user portal on your **Azure Stack** system and navigate to the **overview** blade for **VM001**.
 
 1)  Select **Connect** to establish an RDP connection into VM001.
 
@@ -187,7 +196,7 @@ In this scenario, you will deploy and configure a Windows Server 2019 virtual ma
 
 ### Deploy the Windows Server 2019 VM on Azure Stack
 
-If you haven't already deployed the Windows Server 2019 VM on Azure Stack, please follow the steps at [Deploy the Windows Server 2019 VM on Azure Stack](#deploy-the-windows-server-2019-vm-on-azure-stack). Then you can configure the Windows Server 2019 iSCSI target.
+If you haven't already deployed the Windows Server 2019 VM on Azure Stack, follow the steps at [Deploy the Windows Server 2019 VM on Azure Stack](#deploy-the-windows-server-2019-vm-on-azure-stack). Then you can configure the Windows Server 2019 iSCSI target.
 
 ### Configure the Windows Server 2019 iSCSI target
 
@@ -200,6 +209,196 @@ For your iSCSI Target, it could be Windows Server 2016 or 2019, physical or virt
 Update your file server with the latest cumulative updates and fixes, rebooting before proceeding with the configuration of the iSCSI Target Server.
 
 Once updated and rebooted, you can now configure this server as an iSCSI Target Server.
+
+1. Open **Server Manager** > **Manage** > **Add Roles and Features**.
+
+2. Once opened, select **Next**, select **Role-based or feature-based installation**, and advance through the selections until you reach the **Select server roles** page.
+
+3. Expand **File and Storage Services**, expand **File & iSCSI Services** and select the **iSCSI Target Server**, accept prompts to add new features, then advance through to completion.
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image8.png)
+    
+    Once completed, close the **Server Manager.**
+
+4. Open **File Explorer,** navigate to `C:\\` and **create a new folder**, called `iSCSI`.
+
+5. Reopen **Server Manager** > **File and Storage Services** from the left-hand menu.
+
+6. Select **iSCSI** and select the "**To create an iSCSI virtual disk, start the New iSCSI Virtual Disk Wizard**.
+
+7. On the **Select iSCSI virtual disk location** page, select **Type a custom path** and browse to your `C:\\iSCSI`. Select **Next**.
+
+8. Give the iSCSI virtual disk a name of `iSCSIdisk1` and optionally, a description, then select **Next**.
+
+9. Set the size of the virtual disk to `10GB` and select **Fixed size** and select **Next**.
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image9.png)
+
+10. Since this is a new target, select **New iSCSI target** and select **Next**.
+
+11. On the **Specify target name** page, enter **TARGET1** and select **Next**.
+
+12. On the **Specify access servers** page, select **Add**. This opens a dialog to enter specific **initiators** that will be authorized to connect to the iSCSI Target.
+
+13. Select **Enter a value for the selected type** in **Add initiator ID window** and under **Type** ensure IQN is selected in the drop-down menu. Enter `iqn.1991-05.com.microsoft:<computername>` where `<computername>` is the **computer name** of **VM001**. Select **Next**.
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image10.png)
+
+14. On the **Enable Authentication** page, leave the boxes blank, then select **Next**.
+
+15. Confirm your selections and select **Create**, then close.
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image11.png)
+
+You should see your iSCSI virtual disk created in Server Manager.
+
+### Configure the Windows Server 2019 iSCSI Initiator and MPIO
+
+To set up the iSCSI Initiator, sign in to the **user portal** on your **Azure Stack** system and navigate to the **overview** blade for **VM001.**.
+
+1.  Establish an RDP connection to VM001. Once connected, open **Server Manager**.
+
+2.  Select **Add roles and features**, and accept the defaults until you reach the **Features** page.
+
+3.  On the **Features** page, add **Multipath I/O** and select **Next**.
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image12.png)
+
+4.  Tick the **Restart the destination server automatically if necessary** box and select **Install**, then select **Close.** A reboot will most likely be required, so once completed, reconnect to VM001.
+
+5.  Back in **Server Manager**, wait for the **MPIO install to complete**, select **close**, then select **Tools** and select **MPIO**.
+
+6.  Select the **Discover Multi-Paths** tab, and select the box to **Add support for iSCSI devices** > **Add**, then select **Yes** to **reboot** VM001. Select **OK,** then manually reboot.
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image13.png)
+
+1.  Once rebooted, establish a **new RDP connection to VM001**.
+
+2.  Once connected, open **Server Manager**, select **Tools** > **iSCSI Initiator**.
+
+3.  Select **Yes** when the Microsoft iSCSI opens to allow the iSCSI service to run by default.
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image17.png)
+
+4.  Select the **Discovery** tab.
+
+5.  Select the **Discover Portal** button. You will now add two targets.
+
+6.  Enter the first IP address of your iSCSI Target server, and select **Advanced**.
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image15.png)
+
+7. Select the following for **Advanced Settings**:
+
+    - Local adapter: Microsoft iSCSI Initiator
+
+    - Initiator IP: 10.10.10.4
+
+    - When set, select **OK**.
+
+8.  Select **OK** in **Discover Target Portal**.
+
+9.  Repeat the process with the following:
+
+    - IP address: Your second iSCSI Target IP address
+
+    - Local adapter: Microsoft iSCSI Initiator
+
+    - Initiator IP: 10.10.11.4
+
+10. Your target portals should look like this, with your own iSCSI Target IPs under the **Address** column.
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image16.png)
+
+11. Select the **Targets** tab and then select your iSCSI Target. Select **Connect**.
+
+12. Select **Enable multi-path** in **Connect to target**, and select **Advanced**.
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image17.png)
+
+13. For **Connect to Target**, enter the following information:
+
+    - Local adapter: Microsoft iSCSI Initiator
+
+    - Initiator IP: 10.10.10.4
+
+    - Target portal IP: \<your first iSCSI Target IP / 3260>
+
+    - Select **OK**.
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image18.png)
+
+1.  Repeat the process for the second initiator/target combination.
+
+    - Local adapter: Microsoft iSCSI Initiator
+
+    - Initiator IP: 10.10.11.4
+
+    - Target portal IP: \<your second iSCSI Target IP / 3260>
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image19.png)
+
+1.  Select the **Volumes and Devices** tab, and then select **Auto Configure** – you should see an MPIO volume presented:
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image20.png)
+
+2.  Back on the **Targets** tab, select **Devices** and you should see two connections to the single iSCSI VHD you created earlier.
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image20.png)
+
+3.  Select the **MPIO button** to see more information about the load-balancing policy and paths.
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image21.png)
+
+4.  Select **OK** three times to exit the windows and the iSCSI Initiator.
+
+5.  Open Disk Management (diskmgmt.msc) and you should be prompted with an **Initialize Disk** pop-up.
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image22.png)
+
+6.  Select **OK** to accept the defaults, then scroll down to the new disk, right-click, and select **New Simple Volume**.
+
+7.  Walk through the wizard, accepting the defaults. Change the Volume label to **iSCSIdisk1** and then select **Finish**.
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image23.png)
+
+8.  The drive should then be formatted and presented with a drive letter.
+
+9.  Open **File Explorer** > **This PC** to see your new drive attached to VM001.
+
+### Test External Storage Connectivity
+
+To validate communication and run a rudimentary file copy test, sign in to the **user portal** on your **Azure Stack** system and navigate to the **overview** blade for **VM001**.
+
+1. Select **Connect** to establish an RDP connection into **VM001**.
+
+2. Open **Task Manager** and then select the **Performance** tab. Snap the window to the right-hand side of the RDP session.
+
+3. Open **Windows PowerShell ISE** as administrator and snap it to the left-hand side of the RDP session. On the right-hand side of the ISE, close the **Commands** pane, and select the **Script** button, to expand the white script pane at the top of the ISE window.
+
+4. In this VM, there are no native PowerShell modules to create a VHD, which you will use as a large file to test the file transfer to the iSCSI Target. In this case, you will run DiskPart to create a VHD file. In the ISE, run the following:
+
+    1. `Start-Process Diskpart`
+
+    2. A new CMD prompt opens. Enter the following cmd:<br>`Create vdisk file="c:\\test.vhd" type=fixed maximum=5120`
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image24.png)
+
+    This will take a few moments to create. Once created, to validate the creation, open **File Explorer** and navigate to C:\\ - you should see the new test.vhd present, and a size of 5 GB.
+
+    ![](./media/azure-stack-network-howto-extend-datacenter/image25.png)
+
+    Close the CMD prompt. Return to the ISE, Enter the following command in the ISE. Replace F:\\ with the iSCSI Target drive letter that was applied earlier.
+
+    1. `Copy-Item "C:\\test.vhd" -Destination "F:\\"`
+
+    2. Select the line in the ISE. Press **F8** on your keyboard.
+
+    3. While the command runs, watch the two network adapters and see the transfer of data taking place across both network adapters in VM001. You should also notice that each network adapter should share the load evenly.
+
+        ![](./media/azure-stack-network-howto-extend-datacenter/image26.png)
+
+This scenario was designed to highlight the connectivity between a workload running on Azure Stack, and an external storage array, in this case, a Windows Server-based iSCSI Target. This wasn’t designed to be a performance test, nor be reflective of the steps you’d need to perform if you were using an alternative iSCSI-based appliance, however it does highlight some of the core considerations you’d make when deploying workloads on Azure Stack, and connecting them to storage systems outside of the Azure Stack environment.
 
 ## Next Steps
 
