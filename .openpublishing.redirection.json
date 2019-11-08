@@ -305,6 +305,11 @@
     "source_path": "azure-stack/user/azure-stack-kubernetes-ask-engine-support.md",
     "redirect_url": "/azure-stack/operator/azure-stack-kubernetes-aks-engine-support",
     "redirect_document_id": false
-    }
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-plan.md",
+      "redirect_url": "/azure-stack/operator/release-notes-checklist",
+      "redirect_document_id": false
+      }
   ]
 }
