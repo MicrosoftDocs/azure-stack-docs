@@ -46,9 +46,11 @@ Azure Stack Hub enables these usage scenarios by providing:
 
 ## Azure Stack Hub architecture
 
-Azure Stack Hub integrated systems are comprised in racks of 4-16 servers built by trusted hardware partners and delivered straight to your datacenter. After delivery, a solution provider will work with you to deploy the integrated system and ensure the Azure Stack Hub solution meets your business requirements. Prepare your datacenter by ensuring all required power and cooling, border connectivity, and other required datacenter integration requirements are in place.
+Azure Stack Hub integrated systems are comprised in racks of 4-16 servers built by trusted hardware partners and delivered straight to your datacenter. 
 
-![Diagram of an Azure Stack integrated system](./media/compare-azure-stack/azure-stack-integrated-system.png)
+![diagram showing an Azure Stack integrated system](./media/azure-stack-overview/azure-stack-integrated-system.md). 
+
+After delivery, a solution provider will work with you to deploy the integrated system and ensure the Azure Stack Hub solution meets your business requirements. Prepare your datacenter by ensuring all required power and cooling, border connectivity, and other required datacenter integration requirements are in place.
 
 > For more information about the Azure Stack Hub datacenter integration experience, see [Azure Stack Hub datacenter integration](azure-stack-customer-journey.md).
 
