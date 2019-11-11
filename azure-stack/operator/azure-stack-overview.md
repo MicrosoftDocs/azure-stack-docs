@@ -60,6 +60,8 @@ The Azure Stack Hub architecture lets you provide Azure services at the edge for
 
 ## Deployment options
 
+<!---At deployment, move out asdk, break into connected/disc…then explain  roles operator vs user < replace how is azure stack managed with role description, rbac, reporting, high availability take out.--->
+
 ### Production or evaluation environments
 
 Azure Stack Hub is offered in two deployment options to meet your needs, Azure Stack Hub integrated systems for production use and the Azure Stack Hub Development Kit (ASDK) for evaluating Azure Stack Hub:
