@@ -133,7 +133,7 @@ For customers wishing to migrate to a contained database for existing Azure App 
             GO  
 
             /********[appservice_hosting] Migration End********/
-    '''
+    ```
 
 1. Migrate logins to contained database users.
 
