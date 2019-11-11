@@ -13,18 +13,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/16/2019
+ms.date: 11/08/2019
 ms.author: justinha
 ms.reviewer: unknown
 ms.custom: 
-ms.lastreviewed: 05/14/2019
+ms.lastreviewed: 11/08/2019
 
 ---
 # Azure Stack Hub overview
 
 Azure Stack Hub is an extension of Azure that provides a way to run apps in an on-premises environment and deliver Azure services in your datacenter. With a consistent cloud platform, organizations can confidently make technology decisions based on business requirements, rather than business decisions based on technology limitations.
 
-## Why use Azure Stack Hub ?
+## Why use Azure Stack Hub?
 
 Azure provides a rich platform for developers to build modern apps. However, some cloud-based apps face obstacles like latency, intermittent connectivity, and regulations. Azure and Azure Stack Hub unlock new hybrid cloud use cases for both customer-facing and internal line-of-business apps:
 
@@ -47,6 +47,8 @@ Azure Stack Hub enables these usage scenarios by providing:
 ## Azure Stack Hub architecture
 
 Azure Stack Hub integrated systems are comprised in racks of 4-16 servers built by trusted hardware partners and delivered straight to your datacenter. After delivery, a solution provider will work with you to deploy the integrated system and ensure the Azure Stack Hub solution meets your business requirements. Prepare your datacenter by ensuring all required power and cooling, border connectivity, and other required datacenter integration requirements are in place.
+
+![Diagram of an Azure Stack integrated system](./media/compare-azure-stack/azure-stack-integrated-system.png)
 
 > For more information about the Azure Stack Hub datacenter integration experience, see [Azure Stack Hub datacenter integration](azure-stack-customer-journey.md).
 
