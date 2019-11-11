@@ -123,36 +123,14 @@ There are three optional PaaS resource providers that you can deploy and use wit
 
 - **App Service**: [Azure App Service on Azure Stack Hub](azure-stack-app-service-overview.md) is a PaaS offering of Microsoft Azure available to Azure Stack Hub. The service enables your internal or external customers to create web, API, and Azure Functions apps for any platform or device.
 - **SQL Server**: Use the [SQL Server resource provider](azure-stack-sql-resource-provider.md) to offer SQL databases as a service of Azure Stack Hub. After you install the resource provider and connect it to one or more SQL Server instances, you and your users can create databases for cloud-native apps, websites that use SQL, and other workloads that use SQL.
-- **MySQL Server**: Use the [MySQL Server resource provider](azure-stack-mysql-resource-provider-deploy.md) to expose MySQL databases as an Azure Stack Hub service. The MySQL resource provider runs as a service on a Windows Server 2016 Server Core VM.
-
-## Providing high availability
-
-To achieve high availability of a multi-VM production system in Azure, VMs are placed in an [availability set](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) that spreads them across multiple fault domains and update domains. In the smaller scale of Azure Stack Hub, a fault domain in an availability set is defined as a single node in the scale unit.  
-
-While the infrastructure of Azure Stack Hub is already resilient to failures, the underlying technology (failover clustering) still incurs some downtime for VMs on an impacted physical server if there's a hardware failure. Azure Stack Hub supports having an availability set with a maximum of three fault domains to be consistent with Azure.
-
-- **Fault domains**: VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack Hub nodes). If there's a hardware failure, VMs from the failed fault domain will be restarted in other fault domains. They'll be kept in separate fault domains from the other VMs but in the same availability set if possible. When the hardware comes back online, VMs will be rebalanced to maintain high availability.
-
-- **Update domains**: Update domains are another Azure concept that provides high availability in availability sets. An update domain is a logical group of underlying hardware that can undergo maintenance at the same time. VMs located in the same update domain will be restarted together during planned maintenance. As tenants create VMs within an availability set, the Azure platform automatically distributes VMs across these update domains. In Azure Stack Hub, VMs are live migrated across the other online hosts in the cluster before their underlying host is updated. Since there's no tenant downtime during a host update, the update domain feature on Azure Stack Hub only exists for template compatibility with Azure. VMs in an availability set will show **0** as their update domain number on the portal.
-
-## Role-based access control
-
-You can use role-based access control (RBAC) to grant system access to authorized users, groups, and services by assigning them roles at a subscription, resource group, or individual resource level. Each role defines the access level a user, group, or service has over Microsoft Azure Stack Hub resources.
-
-Azure Stack Hub RBAC has three basic roles that apply to all resource types: Owner, Contributor, and Reader. Owner has full access to all resources including the right to delegate access to others. Contributor can create and manage all types of Azure resources but can't grant access to others. Reader can only view existing resources. The rest of the RBAC roles allow management of specific Azure resources. For instance, the Virtual Machine Contributor role allows creation and management of VMs but doesn't allow management of the virtual network or the subnet that the VM connects to.
-
-> For more information, see [Manage role-based access control](azure-stack-manage-permissions.md).
-
-## Reporting usage data
-
-Azure Stack Hub collects and aggregates usage data across all resource providers, and transmits it to Azure for processing by Azure commerce. The usage data collected on Azure Stack Hub can be viewed via a REST API. There's an Azure-consistent Tenant API as well as Provider and Delegated Provider APIs to get usage data across all tenant subscriptions. This data can be used to integrate with an external tool or service for billing or chargeback. Once usage has been processed by Azure commerce, it can be viewed in the Azure billing portal.
-
-> Learn more about [reporting Azure Stack Hub usage data to Azure](azure-stack-usage-reporting.md).
+- **MySQL Server**: Use the [MySQL Server resource provider](azure-stack-mysql-resource-provider-deploy.md) to expose MySQL databases as an Azure Stack Hub service. The MySQL resource provider runs as a service on a Windows Server 2019 Server Core VM.
 
 ## Next steps
 
-[Compare Azure Stack Hub and global Azure](compare-azure-azure-stack.md).
+[Compare the Azure Stack portfolio](compare-azure-azure-stack.md)
 
-[Administration basics](azure-stack-manage-basics.md).
+[Administration basics](azure-stack-manage-basics.md)
 
-[Quickstart: use the Azure Stack Hub administration portal](azure-stack-manage-portals.md).
+[Quickstart: use the Azure Stack Hub administration portal](azure-stack-manage-portals.md)
+
+[Understand usage and billing](azure-stack-usage-reporting.md).
