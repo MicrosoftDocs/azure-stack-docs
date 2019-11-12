@@ -32,15 +32,15 @@ To remove Event Hubs and all related resources created by users, complete the fo
 
 5. Select **Uninstall** from the options provided across the top the page.
 
-   [![Remove event hubs 2](media/event-hubs-rp-remove/2-uninstall.png)](media/event-hubs-rp-remove/1-uninstall.png)
+   [![Remove event hubs 2](media/event-hubs-rp-remove/2-uninstall.png)](media/event-hubs-rp-remove/2-uninstall.png)
 
 6. Enter the name of the resource provider, then select **Uninstall**. This action confirms your desire to uninstall:
    - The Event Hubs resource provider
    - All user-created clusters, namespaces, event hubs, and event data.
 
-   [![Remove event hubs 3](media/event-hubs-rp-remove/3-uninstall.png)](media/event-hubs-rp-remove/1-uninstall.png)
+   [![Remove event hubs 3](media/event-hubs-rp-remove/3-uninstall.png)](media/event-hubs-rp-remove/3-uninstall.png)
 
-   [![Removing event hubs 4](media/event-hubs-rp-remove/3-uninstall.png)](media/event-hubs-rp-remove/1-uninstall.png)
+   [![Removing event hubs 4](media/event-hubs-rp-remove/4-uninstall.png)](media/event-hubs-rp-remove/4-uninstall.png)
 
    > [!IMPORTANT]
    > You must wait at least 10 minutes after Event Hubs has been removed successfully, before installing Event Hubs again. This is due to the fact that background activities might still be running, which may conflict with any new installation.

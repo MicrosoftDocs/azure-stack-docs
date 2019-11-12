@@ -333,13 +333,14 @@
         href: event-hubs-rp-prerequisites.md
       - name: Install
         href: event-hubs-rp-install.md
-      - name: Update
       - name: Remove
         href: event-hubs-rp-remove.md        
       - name: Life cycle management
         items:
         - name: Collect logs
           href: azure-stack-diagnostic-log-collection-overview.md?toc=TOC.json&bc=breadcrumb/toc.json
+        - name: Apply updates
+          href: event-hubs-rp-update.md
       - name: Administration
         items:
         - name: Manage service limits, quotas, and clusters
