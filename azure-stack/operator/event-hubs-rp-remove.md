@@ -28,20 +28,22 @@ To remove Event Hubs and all related resources created by users, complete the fo
 3. Select **Resource providers**.
 4. Select **Event Hubs** from the list of resource providers. You may want to filter the list by entering "Event Hubs" in the search text box provided.
 
-   [![Remove event hubs - step 1](media/event-hubs-rp-remove/1-uninstall.png)](media/event-hubs-rp-remove/1-uninstall.png)
+   [![Remove event hubs 1](media/event-hubs-rp-remove/1-uninstall.png)](media/event-hubs-rp-remove/1-uninstall.png#lightbox)
 
 5. Select **Uninstall** from the options provided across the top the page.
 
-   [![Remove event hubs - step 2](media/event-hubs-rp-remove/2-uninstall.png)](media/event-hubs-rp-remove/1-uninstall.png)
+   [![Remove event hubs 2](media/event-hubs-rp-remove/2-uninstall.png)](media/event-hubs-rp-remove/1-uninstall.png)
 
 6. Enter the name of the resource provider, then select **Uninstall**. This action confirms your desire to uninstall:
-- The Event Hubs resource provider
-- All user created clusters, namespaces, event hubs, and event data.
+   - The Event Hubs resource provider
+   - All user-created clusters, namespaces, event hubs, and event data.
 
-   [![Remove event hubs - step 3](media/event-hubs-rp-remove/3-uninstall.png)](media/event-hubs-rp-remove/1-uninstall.png)
+   [![Remove event hubs 3](media/event-hubs-rp-remove/3-uninstall.png)](media/event-hubs-rp-remove/1-uninstall.png)
 
-> [!IMPORTANT]
-> You must wait at least 10 minutes after Event Hubs has been removed successfully, before installing Event Hubs again. This is due to the fact that background activities might still be running, which may conflict with any new installation.
+   [![Removing event hubs 4](media/event-hubs-rp-remove/3-uninstall.png)](media/event-hubs-rp-remove/1-uninstall.png)
+
+   > [!IMPORTANT]
+   > You must wait at least 10 minutes after Event Hubs has been removed successfully, before installing Event Hubs again. This is due to the fact that background activities might still be running, which may conflict with any new installation.
 
 ## Delete Event Hub packages
 
