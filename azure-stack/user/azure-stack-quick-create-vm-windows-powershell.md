@@ -12,11 +12,11 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.reviewer: kivenkat
-ms.lastreviewed: 01/14/2019
+ms.lastreviewed: 11/11/2019
 
 ---
 
