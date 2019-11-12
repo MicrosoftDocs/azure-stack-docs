@@ -37,21 +37,21 @@ ms.lastreviewed: 12/07/2018
 | Maximum number of VM cores | 100 | The maximum number of cores that a subscription can create in this location (for example, an A3 VM has four cores). |
 | Maximum number of availability sets | 10 | The maximum number of availability sets that can be created in this location. |
 | Maximum number of virtual machine scale sets | 100 | The maximum number of scale sets that can be created in this location. |
-| Maximum capacity (in GB) of standard managed disk | 2048 | The maximum capacity of standard managed disks that can be created in this location. |
-| Maximum capacity (in GB) of premium managed disk | 2048 | The maximum capacity of premium managed disks that can be created in this location. |
+| Maximum capacity (in GB) of standard managed disk | 2048 | The maximum capacity of standard managed disks that can be created in this location. This value is a total of the allocation size of all standard managed disks and the used size of all standard snapshots. |
+| Maximum capacity (in GB) of premium managed disk | 2048 | The maximum capacity of premium managed disks that can be created in this location. This value is a total of the allocation size of all premium managed disks and the used size of all premium snapshots. |
 
 > [!NOTE]
-> The maximum capacity of unmanaged disk (page blobs) is separate from the managed disk quota. You can set this value in **Storage quotas**.
+> The maximum capacity of unmanaged disks (page blobs) is separate from the managed disk quota. You can set this value in **Maximum capacity (GB)** in **Storage quotas**.
 
 ## Storage quota types
 
 | **Item** | **Default value** | **Description** |
 | --- | --- | --- |
-| Maximum capacity (GB) |2048 |Total storage capacity (including blobs and all associated snapshots, tables, queues) that can be consumed by a subscription in this location. |
+| Maximum capacity (GB) |2048 |Total storage capacity that can be consumed by a subscription in this location. This value is a total of the used size of all blobs (including unmanaged disks) and all associated snapshots, tables, queues. |
 | Total number of storage accounts |20 |The maximum number of storage accounts that a subscription can create in this location. |
 
 > [!NOTE]
-> The maximum capacity of managed disks is separate from the total storage quota. You can set this value in **Compute quotas**.
+> When **Maximum capacity (GB)** is exceeded in one subscription, you can't create new storage resource in this subscription. But you can continuely using the unmanaged disks created in this subscription in VMs, which may cause total used capacity way beyond the quota limit.<br>The maximum capacity of managed disks is separate from the total storage quota. You can set this value in **Compute quotas**.
 
 ## Network quota types
 
