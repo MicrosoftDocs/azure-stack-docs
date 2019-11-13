@@ -20,7 +20,7 @@ ms.custom:
 ms.lastreviewed: 05/14/2019
 
 ---
-# Azure Stack Hub overviews
+# Azure Stack Hub overview
 
 Azure Stack Hub is an extension of Azure that provides a way to run apps in an on-premises environment and deliver Azure services in your datacenter. With a consistent cloud platform, organizations can confidently make technology decisions based on business requirements, rather than business decisions based on technology limitations.
 
