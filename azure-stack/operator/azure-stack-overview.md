@@ -38,7 +38,7 @@ Azure Stack Hub enables these usage scenarios by providing:
 
 - An integrated delivery experience to get up and running quickly with purpose-built Azure Stack Hub integrated systems from trusted hardware partners. After delivery, Azure Stack Hub easily integrates into the datacenter with monitoring through the System Center Operations Manager Management Pack or Nagios extension.
 
-- Flexible identity management using Azure Active Directory (Azure AD) for Azure and Azure Stack Hub hybrid environments, and leveraging Active Directory Federation Services (AD FS) for disconnected deployments.
+- Identity management using Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS) for disconnected deployments.
 
 - An Azure-consistent app development environment to maximize developer productivity and enable common DevOps approaches across hybrid environments.
 
@@ -68,11 +68,6 @@ Azure Stack Hub is offered in two deployment options to meet your needs, Azure S
 
 - **Azure Stack Hub integrated systems**: Azure Stack Hub integrated systems are offered through a partnership of Microsoft and hardware partners, creating a solution that offers cloud-paced innovation and computing management simplicity. Because Azure Stack Hub is offered as an integrated hardware and software system, you have the flexibility and control you need, along with the ability to innovate from the cloud. Azure Stack Hub integrated systems range in size from 4-16 nodes, and are jointly supported by the hardware partner and Microsoft. Use Azure Stack Hub integrated systems to create new scenarios and deploy new solutions for your production workloads.
 
-- **Azure Stack Hub Development Kit (ASDK)**: [The ASDK](../asdk/asdk-what-is.md) is a free, single-node deployment of Azure Stack Hub that you can use to evaluate and learn about Azure Stack Hub. You can also use the ASDK as a developer environment to build apps using the APIs and tooling that's consistent with Azure. However, the ASDK isn't intended to be used as a production environment and has the following limitations as compared to the full integrated systems production deployment:
-
-    - The ASDK can only be associated with a single Azure AD or AD FS identity provider.
-    - Because Azure Stack Hub components are deployed on a single host computer, there are limited physical resources available for tenant resources. This configuration isn't intended to scale or for performance evaluation.
-    - Networking scenarios are limited because of the single host and NIC deployment requirements.
 
 ### Connection models
 
@@ -82,12 +77,10 @@ You can choose to deploy Azure Stack Hub either **connected** to the internet (a
 
 ### Identity provider 
 
-Azure Stack Hub uses either Azure AD or Active AD FS to provide identities. Azure AD is Microsoft's cloud-based, multi-tenant identity provider. Most hybrid scenarios with internet-connected deployments use Azure AD as the identity store.
+Azure Stack Hub uses either Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS). Azure AD is Microsoft's cloud-based, multi-tenant identity provider. Most hybrid scenarios with internet-connected deployments use Azure AD as the identity store.
 
 For disconnected deployments of Azure Stack Hub, you need to use AD FS. Azure Stack Hub resource providers and other apps work similarly with AD FS or Azure AD. Azure Stack Hub includes its own Active Directory instance and an Active Directory Graph API.
 
-> [!IMPORTANT]
-> You can't change the identity provider after deployment. To use a different identity provider, you need to re-deploy Azure Stack Hub. You can learn more about Azure Stack Hub identity considerations at [Overview of identity for Azure Stack Hub](azure-stack-identity-overview.md).
 
 ## How is Azure Stack Hub managed?
 
