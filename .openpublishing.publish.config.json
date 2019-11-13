@@ -47,10 +47,6 @@
     "master": [
       "Publish",
       "PDF"
-    ],
-    "release-eh-private": [
-      "Publish",
-      "PDF"
     ]
   },
   "need_generate_pdf_url_template": true,
