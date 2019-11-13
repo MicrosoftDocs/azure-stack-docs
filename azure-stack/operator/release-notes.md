@@ -78,6 +78,10 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - The Azure Stack health and monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration. For more information, see [Monitor Azure Stack hardware components](azure-stack-hardware-monitoring.md).
 
+- [Cloud-init support for Azure Stack](/azure/virtual-machines/linux/using-cloud-init): Cloud-init is a widely used approach to customize a Linux VM as it boots for the first time. You can use cloud-init to install packages and write files, or to configure users and security. Because cloud-init is called during the initial boot process, there are no additional steps or required agents to apply your configuration. The Ubuntu images on the marketplace have been updated to support cloud-init for provisioning.
+
+- Azure Stack now supports all Windows Azure Linux Agent versions as Azure.
+
 - A new version of Azure Stack Admin PowerShell modules is available. <!-- For more information, see -->
 
 - Added the **Set-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to configure the manual update for Windows Defender definitions in the Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
@@ -113,6 +117,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
 - Fixed an issue that prevented enforcing TLS 1.2 policy on environments deployed prior to the Azure Stack 1904 release.
+- Fixed an issue where an Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in. 
+- Removed Reset Password from the Virtual Machine Scale set UI
 
 ## Security updates
 
