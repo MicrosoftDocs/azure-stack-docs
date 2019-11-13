@@ -78,7 +78,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - The Azure Stack health and monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration. For more information, see [Monitor Azure Stack hardware components](azure-stack-hardware-monitoring.md).
 
-- [Cloud-init support for Azure Stack](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/using-cloud-init): Cloud-init is a widely used approach to customize a Linux VM as it boots for the first time. You can use cloud-init to install packages and write files, or to configure users and security. Because cloud-init is called during the initial boot process, there are no additional steps or required agents to apply your configuration. The Ubuntu images on the marketplace have been updated to support cloud-init for provisioning.
+- [Cloud-init support for Azure Stack](/azure/virtual-machines/linux/using-cloud-init): Cloud-init is a widely used approach to customize a Linux VM as it boots for the first time. You can use cloud-init to install packages and write files, or to configure users and security. Because cloud-init is called during the initial boot process, there are no additional steps or required agents to apply your configuration. The Ubuntu images on the marketplace have been updated to support cloud-init for provisioning.
 
 - Azure Stack now supports all Windows Azure Linux Agent versions as Azure.
 
