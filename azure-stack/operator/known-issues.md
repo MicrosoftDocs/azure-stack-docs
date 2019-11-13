@@ -151,6 +151,13 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: Recreate the storage account with the same name you used previously.
 - Occurrence: Common
 
+### Consumed Compute Quota
+
+- Applicable: This issue applies to all supported releases.
+- When creating a new virtual machine, you may receive an error like 'This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.'. This suggests that the quota for total cores available to you is fully consumed.
+- Remediation: Ask your operator to add an add-on plan with additional quota. Editing the current plan's quota will not work and reflect increased quota.
+- Ocurrence : Rare
+
 ### Virtual machine scale set
 
 #### Create failures during patch and update on 4-node Azure Stack environments
@@ -159,19 +166,7 @@ To access known issues for a different version, use the version selector dropdow
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack.
 
-### Ubuntu SSH access
 
-- Applicable: This issue applies to all supported releases.
-- Cause: An Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in.
-- Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
-- Occurrence: Common
-
-### Virtual machine scale set reset password does not work
-
-- Applicable: This issue applies to the 1906 and 1907 releases.
-- Cause: A new reset password blade appears in the scale set UI, but Azure Stack does not support resetting password on a scale set yet.
-- Remediation: None.
-- Occurrence: Common
 
 ### Rainy cloud on scale set diagnostics
 
