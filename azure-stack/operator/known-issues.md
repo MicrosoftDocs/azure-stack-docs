@@ -154,8 +154,8 @@ To access known issues for a different version, use the version selector dropdow
 ### Consumed Compute Quota
 
 - Applicable: This issue applies to all supported releases.
-- When creating a new virtual machine, you may receive an error like 'This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.'. This suggests that the quota for total cores available to you is fully consumed.
-- Remediation: Ask your operator to add an add-on plan with additional quota. Editing the current plan's quota will not work and reflect increased quota.
+- When creating a new virtual machine, you may receive an error such as **This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.**. This indicates that the quota for total cores available to you is fully consumed.
+- Remediation: Ask your operator to add an add-on plan with additional quota. Editing the current plan's quota will not work or reflect increased quota.
 - Ocurrence : Rare
 
 ### Virtual machine scale set
