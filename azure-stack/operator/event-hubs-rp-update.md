@@ -30,13 +30,13 @@ Resource providers are updated using the same update feature on the administrato
 
 ## Apply an update
 
-If in update is available for the Event Hubs resource provider:
+If an update is available for the Event Hubs resource provider:
 
-1. Select the update row.
+1. Select the row of the resource provider update.
 2. Install the update.
 
 For detailed release notes that accompany updates, refer to the [Event Hubs on Azure Stack Hub service updates](https://azure.microsoft.com/updates/?product=azure-stack) feed.
 
 ## Next steps
 
-Learn more about the [Updates feature on the administrator Dashboard](azure-stack-apply-updates.md).
+Learn more about the [administrator dashboard updates feature](azure-stack-apply-updates.md).
