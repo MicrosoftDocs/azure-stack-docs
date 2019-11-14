@@ -131,6 +131,6 @@ Before users can deploy Event Hubs resources, you must create one or more plans,
 - If this is the first time you're offering a service, start with the [Offer services to users](tutorial-offer-services.md) tutorial. Then continue with the next tutorial, [Test a service offering](tutorial-test-offer.md).
 - Once you're familiar with the concept of offering a service, create an offer and plan that includes the Event Hubs resource provider. Then create a subscription for your users, or give them the offer information so they can create their own. For reference, you can also follow the series of articles under the [Service, plan, offer, subscription overview](service-plan-offer-subscription-overview.md).
 
-If you're ready to manage the Event Hubs resource provider, see [Manage Event Hubs on Azure Stack Hub](event-hubs-rp-admin.md).
+To check for updates, [How to update Event Hubs on Azure Stack Hub](event-hubs-rp-update.md).
 
 If you need to remove the resource provider, see [Remove the Event Hubs resource provider](event-hubs-rp-remove.md)
