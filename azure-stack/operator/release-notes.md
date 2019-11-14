@@ -92,6 +92,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Added the **Get-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to retrieve the forwarder settings of the DNS servers in Azure Stack. For more information about DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
 
+
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
@@ -101,6 +102,30 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Azure Stack is moving to 4096 bit RSA keys for the internal certificates. Running internal secret rotation will replace old 2048 bit certificates with 4096 bit long certificates. For more information about secret rotation in Azure Stack, see [Rotate secrets in Azure Stack](azure-stack-rotate-secrets.md).
 
 - Upgrades to the complexity of cryptographic algorithms and key strength for several internal components to comply with the Committee on National Security Systems - Policy 15 (CNSSP-15), which provides best practices for the use of public standards for secure information sharing. Among the improvements, there is AES256 for Kerberos authentication, and SHA384 for VPN encryption. For more information about CNSSP-15, see the [Committee on National Security Systems, Policies page](http://www.cnss.gov/CNSS/issuances/Policies.cfm).
+
+- As a result of the above upgrade, Azure Stack now has new default values for IPsec/IKEv2 configurations. The new default values used on Azure Stack side are as follows:
+### IKE Phase 1 (Main Mode) parameters
+
+| Property              | Value|
+|-|-|
+| IKE Version           | IKEv2 |
+|Diffie-Hellman Group   | ECP384 |
+| Authentication Method | Pre-Shared Key |
+|Encryption & Hashing Algorithms | AES256, SHA384 |
+|SA Lifetime (Time)     | 28,800 seconds|
+
+### IKE Phase 2 (Quick Mode) parameters
+
+| Property| Value|
+|-|-|
+|IKE Version |IKEv2 |
+|Encryption & Hashing Algorithms (Encryption)     | GCMAES256|
+|Encryption & Hashing Algorithms (Authentication) | GCMAES256|
+|SA Lifetime (Time)  | 27,000 seconds  |
+|SA Lifetime (Kilobytes) | 33,553,408     |
+|Perfect Forward Secrecy (PFS) | ECP384 |
+|Dead Peer Detection | Supported|  
+The above changes are reflected on our [default IPsec/IKE proposal](azure-stack-vpn-gateway-settings.md#ipsecike-parameters) documentation as well.
 
 ### Changes
 
@@ -119,6 +144,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue that prevented enforcing TLS 1.2 policy on environments deployed prior to the Azure Stack 1904 release.
 - Fixed an issue where an Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in. 
 - Removed Reset Password from the Virtual Machine Scale set UI
+- Fixed an issue where deleting the Load Balancer from the portal did not result in the deletion of the object in the infrastructure layer. 
+- Fixed an issue where to show accurate percentage of Gateway Pool Utilization Alert on the Admin portal. 
+- Fixed an issue where adding of more than one public IPs on the same NIC on a Virtual Machine resulted in internet connectivity issues. Now, a NIC with two public IPs should work as expected. 
 
 ## Security updates
 
