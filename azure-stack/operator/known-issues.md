@@ -103,6 +103,10 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: Stop the virtual machine before adding/removing a network interface.
 - Occurrence: Common
 
+- Applicable: This issue applies to all supported releases.
+- Cause: The primary NIC of a VM cannot be changed. Deleting/Detaching the primary NIC will result in issues starting up the VM.
+- Occurrence: Common
+
 ### Virtual Network Gateway
 
 #### Local network gateway deletion
