@@ -16,15 +16,15 @@ The Event Hubs resource provider will require regular servicing. Servicing is do
 
 ## Check for updates
 
-Resource providers are updated using the same [Updates feature on the administrator Dashboard](azure-stack-apply-updates.md), as used to apply Azure Stack Hub updates.
+Resource providers are updated using the same update feature on the administrator Dashboard, as used to apply Azure Stack Hub updates.
 
 1. Sign in to the Azure Stack Hub administrator portal.
 2. Select **Dashboard** on the left.
 3. Select the **Update** tile on the Dashboard page.
 
-   ![Dashboard page - updates tile](media/event-hubs-rp-update/1-dashboard.png)
+   [![Dashboard page - updates tile](media/event-hubs-rp-update/1-dashboard.png)](media/event-hubs-rp-update/1-dashboard.png#lightbox)
 
-4. On the **Updates** page, you find Event Hubs resource provider updates under the **Resource Provider** section.
+4. On the **Updates** page, you find updates for the Event Hubs resource provider, under the **Resource Provider** section.
 
    ![Updates page](media/event-hubs-rp-update/2-update-available.png)
 
@@ -32,10 +32,11 @@ Resource providers are updated using the same [Updates feature on the administra
 
 If in update is available for the Event Hubs resource provider:
 
-1. Select the update row
-2. TBD
+1. Select the update row.
+2. Install the update.
 
 For detailed release notes that accompany updates, refer to the [Event Hubs on Azure Stack Hub service updates](https://azure.microsoft.com/updates/?product=azure-stack) feed.
 
 ## Next steps
 
+Learn more about the [Updates feature on the administrator Dashboard](azure-stack-apply-updates.md).

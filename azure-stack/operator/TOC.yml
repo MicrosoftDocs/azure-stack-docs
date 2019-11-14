@@ -338,10 +338,6 @@
           href: azure-stack-diagnostic-log-collection-overview.md?toc=TOC.json&bc=breadcrumb/toc.json
         - name: Apply updates
           href: event-hubs-rp-update.md
-      - name: Administration
-        items:
-        - name: Manage service limits, quotas, and clusters
-          href: event-hubs-rp-admin.md
       - name: Service updates
         href: https://azure.microsoft.com/updates/?product=azure-stack
     - name: MySQL on Azure Stack Hub
