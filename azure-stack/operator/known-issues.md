@@ -90,6 +90,11 @@ To access known issues for a different version, use the version selector dropdow
 
 ## Networking
 
+### Network Security Groups
+- Applicable: This issue applies to all supported releases. 
+- Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
+- Occurrence: Common
+
 ### Service endpoints
 
 - Applicable: This issue applies to all supported releases.
@@ -101,6 +106,10 @@ To access known issues for a different version, use the version selector dropdow
 - Applicable: This issue applies to all supported releases.
 - Cause: A new network interface cannot be added to a VM that is in a **running** state.
 - Remediation: Stop the virtual machine before adding/removing a network interface.
+- Occurrence: Common
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The primary NIC of a VM cannot be changed. Deleting/Detaching the primary NIC will result in issues starting up the VM.
 - Occurrence: Common
 
 ### Virtual Network Gateway
