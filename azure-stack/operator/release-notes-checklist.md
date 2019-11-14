@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 11/07/2019
 ms.author: sethm
-ms.reviewer: hectorl
-ms.lastreviewed: 08/30/2019
+ms.reviewer: ppacent
+ms.lastreviewed: 11/07/2019
 
 ---
 
@@ -32,12 +32,13 @@ Review this checklist in order to prepare for an Azure Stack update. This articl
 |------------------------------|-----------------------------------------------------------|
 | Review known issues     | [List of known issues](known-issues.md).                |
 | Review security updates | [List of security updates](release-notes-security-updates.md).      |
-| Apply latest OEM package | Contact your OEM to ensure your system meets the minimum OEM Package requirements for the Azure Stack version your system is being updated to. |
-| Run Test-AzureStack | Run `Test-AzureStack -Group UpdateReadiness` to identify operational issues. |
-| Resolve issues | Resolve any operational issues identified by `Test-AzureStack`. |
-| Apply latest hotfixes | Apply the latest hotfixes that apply to the currently installed release. |
+| Apply latest OEM package | Contact your OEM to ensure your system meets the minimum OEM Package requirements for the Azure Stack version your system is being updated to. Ensure your OEM package is compatible with the Azure Stack version you are updating to. If your OEM package is not compatible with the Azure Stack version you are updating to, you will need to perform an OEM package update before running an Azure Stack update. For instructions, see "Apply Azure Stack original equipment manufacturer (OEM) updates." |
+| Apply latest hotfixes | Apply the latest hotfixes that apply to the currently installed release. For a list of the latest hotfixes, see the release notes Hotfix section. |
 | Run capacity planner tool | Make sure to use the latest version of the [Azure Stack Capacity Planner tool](azure-stack-capacity-planning-overview.md) to perform your workload planning and sizing. The latest version contains bug fixes and provides new features that are released with each Azure Stack update. |
+| Run Test-AzureStack | Run `Test-AzureStack -Group UpdateReadiness` to identify operational issues. The cmdlet is accessible through the  Privileged Endpoint Session (PEP). For more information, see [Validate Azure Stack system state](azure-stack-diagnostic-test.md). |
+| Resolve issues | Resolve any operational issues identified by `Test-AzureStack`. |
 | Update available | In connected scenarios only, Azure Stack deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. Disconnected customers can download and import new packages using the [process described here](azure-stack-apply-updates.md). |
+| Notify your users | You should notify users of any maintenance operations, and that you schedule normal maintenance windows during non-business hours if possible. Maintenance operations can affect both tenant workloads and portal operations. |
 
 ## During Azure Stack update
 

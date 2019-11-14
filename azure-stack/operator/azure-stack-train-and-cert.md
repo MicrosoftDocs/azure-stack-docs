@@ -6,9 +6,9 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
-ms.lastreviewed: 03/20/2019
+ms.lastreviewed: 11/11/2019
 ms.reviewer: efemmano
 
 ---

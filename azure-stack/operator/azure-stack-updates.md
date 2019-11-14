@@ -78,7 +78,7 @@ Once you know you have an update, apply it by using the following steps.
 
 1. **Plan for the update**.
 
-    Prepare your Azure Stack to make the update process go as smoothly as possible so that there is a minimal impact on your users. Notifying your users of any possible service outage and then follow the steps to prepare your instance for the update. For more steps to plan for the update, see [Plan for an Azure Stack update](azure-stack-update-plan.md).
+    Prepare your Azure Stack to make the update process go as smoothly as possible so that there is a minimal impact on your users. Notifying your users of any possible service outage and then follow the steps to prepare your instance for the update. For more steps to plan for the update, see [Azure Stack update activity checklist](release-notes-checklist.md).
 
 2. **Upload and prepare the update package**.
 
@@ -100,6 +100,6 @@ As updates install, you can view high-level status as the update process targets
 
 ## Next steps
 
-- To begin the update process, follow the steps in see [Plan for an Azure Stack update](azure-stack-update-plan.md).
+- To begin the update process, follow the steps in see [Azure Stack update activity checklist](release-notes-checklist.md).
 - To learn what versions of Azure Stack are in support, see [Azure Stack Servicing Policy](azure-stack-servicing-policy.md).  
 - To learn more about the current and recent updates, see the [Azure Stack release notes](release-notes.md).
