@@ -60,7 +60,7 @@ Linux distributions listed as available in the marketplace include the necessary
 | CentOS-based 7.5 | 64-bit | Rogue Wave | Yes |
 | CentOS-based 7.3 | 64-bit | Rogue Wave | Yes |
 | ClearLinux | 64-bit | ClearLinux.org | Yes |
-| Container Linux |  64-bit | CoreOS | Stable |
+| CoreOS Linux (Stable) |  64-bit | CoreOS | Yes |
 | Debian 8 "Jessie" | 64-bit | credativ |  Yes |
 | Debian 9 "Stretch" | 64-bit | credativ | Yes |
 | Oracle Linux | 64-bit | Oracle | Yes |
