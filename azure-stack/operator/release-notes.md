@@ -103,18 +103,19 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Upgrades to the complexity of cryptographic algorithms and key strength for several internal components to comply with the Committee on National Security Systems - Policy 15 (CNSSP-15), which provides best practices for the use of public standards for secure information sharing. Among the improvements, there is AES256 for Kerberos authentication, and SHA384 for VPN encryption. For more information about CNSSP-15, see the [Committee on National Security Systems, Policies page](http://www.cnss.gov/CNSS/issuances/Policies.cfm).
 
-- As a result of the above upgrade, Azure Stack now has new default values for IPsec/IKEv2 configurations. The new default values used on Azure Stack side are as follows:
-### IKE Phase 1 (Main Mode) parameters
+- As a result of the above upgrade, Azure Stack now has new default values for IPsec/IKEv2 configurations. The new default values used on the Azure Stack side are as follows:
+
+#### IKE Phase 1 (Main Mode) parameters
 
 | Property              | Value|
 |-|-|
 | IKE Version           | IKEv2 |
 |Diffie-Hellman Group   | ECP384 |
-| Authentication Method | Pre-Shared Key |
+| Authentication method | Pre-shared key |
 |Encryption & Hashing Algorithms | AES256, SHA384 |
 |SA Lifetime (Time)     | 28,800 seconds|
 
-### IKE Phase 2 (Quick Mode) parameters
+#### IKE Phase 2 (Quick Mode) parameters
 
 | Property| Value|
 |-|-|
