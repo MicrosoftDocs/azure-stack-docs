@@ -105,29 +105,29 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - As a result of the above upgrade, Azure Stack now has new default values for IPsec/IKEv2 configurations. The new default values used on the Azure Stack side are as follows:
 
-#### IKE Phase 1 (Main Mode) parameters
+   **IKE Phase 1 (Main Mode) parameters**
 
-| Property              | Value|
-|-|-|
-| IKE Version           | IKEv2 |
-|Diffie-Hellman Group   | ECP384 |
-| Authentication method | Pre-shared key |
-|Encryption & Hashing Algorithms | AES256, SHA384 |
-|SA Lifetime (Time)     | 28,800 seconds|
+   | Property              | Value|
+   |-|-|
+   | IKE Version           | IKEv2 |
+   |Diffie-Hellman Group   | ECP384 |
+   | Authentication method | Pre-shared key |
+   |Encryption & Hashing Algorithms | AES256, SHA384 |
+   |SA Lifetime (Time)     | 28,800 seconds|
 
-#### IKE Phase 2 (Quick Mode) parameters
+   **IKE Phase 2 (Quick Mode) parameters**
 
-| Property| Value|
-|-|-|
-|IKE Version |IKEv2 |
-|Encryption & Hashing Algorithms (Encryption)     | GCMAES256|
-|Encryption & Hashing Algorithms (Authentication) | GCMAES256|
-|SA Lifetime (Time)  | 27,000 seconds  |
-|SA Lifetime (Kilobytes) | 33,553,408     |
-|Perfect Forward Secrecy (PFS) | ECP384 |
-|Dead Peer Detection | Supported|
+   | Property| Value|
+   |-|-|
+   |IKE Version |IKEv2 |
+   |Encryption & Hashing Algorithms (Encryption)     | GCMAES256|
+   |Encryption & Hashing Algorithms (Authentication) | GCMAES256|
+   |SA Lifetime (Time)  | 27,000 seconds  |
+   |SA Lifetime (Kilobytes) | 33,553,408     |
+   |Perfect Forward Secrecy (PFS) | ECP384 |
+   |Dead Peer Detection | Supported|
 
-Thse changes are reflected in the [default IPsec/IKE proposal](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters) documentation as well.
+   These changes are reflected in the [default IPsec/IKE proposal](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters) documentation as well.
 
 ### Changes
 
