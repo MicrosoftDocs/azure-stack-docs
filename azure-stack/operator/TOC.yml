@@ -278,7 +278,7 @@
     href: azure-stack-network-solutions-enable.md
   - name: Manage add-on service resource providers
     items:
-    - name: App Service on Azure Stack
+    - name: App Service on Azure Stack Hub
       items:
       - name: Overview
         href: azure-stack-app-service-overview.md
@@ -322,22 +322,25 @@
           href: azure-stack-app-service-release-notes-update-six.md
         - name: App Service on Azure Stack update 7 release notes
           href: azure-stack-app-service-release-notes-update-seven.md
-    - name: Event Hubs on Azure Stack
+    - name: Event Hubs on Azure Stack Hub
       items:
       - name: Overview
-      - name: Before you get started
-      - name: Install, update, and remove
+        href: event-hubs-rp-overview.md
+      - name: Prerequisites
+        href: event-hubs-rp-prerequisites.md
+      - name: Install
+        href: event-hubs-rp-install.md
+      - name: Remove
+        href: event-hubs-rp-remove.md        
       - name: Life cycle management
         items:
-        - name: How to collect logs
-          href: azure-stack-diagnostic-log-collection-overview.md
-          maintainContext: true
-      - name: Administration
-        items:
-        -name: Service limits, quotas, and clusters
+        - name: Collect logs
+          href: azure-stack-diagnostic-log-collection-overview.md?toc=TOC.json&bc=breadcrumb/toc.json
+        - name: Apply updates
+          href: event-hubs-rp-update.md
       - name: Service updates
         href: https://azure.microsoft.com/updates/?product=azure-stack
-    - name: MySQL on Azure Stack
+    - name: MySQL on Azure Stack Hub
       items:
       - name: Overview 
         href: azure-stack-mysql-resource-provider.md
@@ -361,7 +364,7 @@
           href: azure-stack-mysql-resource-provider-11300.md
         - name: MySQL resource provider 1.1.33.0 release notes
           href: azure-stack-mysql-resource-provider-11330.md
-    - name: SQL on Azure Stack
+    - name: SQL on Azure Stack Hub
       items:
       - name: Overview
         href: azure-stack-sql-resource-provider.md

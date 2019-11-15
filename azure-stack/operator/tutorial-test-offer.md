@@ -139,3 +139,4 @@ Next, learn about deploying resource providers for add-on services. They allow y
 - [Offer SQL on Azure Stack](azure-stack-sql-resource-provider.md)
 - [Offer MySQL on Azure Stack](azure-stack-mysql-resource-provider.md)
 - [Offer App Service on Azure Stack](azure-stack-app-service-overview.md)
+- [Offer Event Hubs on Azure Stack](event-hubs-rp-overview.md)
