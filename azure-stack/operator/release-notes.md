@@ -145,9 +145,9 @@ The above changes are reflected on our [default IPsec/IKE proposal](azure-stack-
 - Fixed an issue that prevented enforcing TLS 1.2 policy on environments deployed prior to the Azure Stack 1904 release.
 - Fixed an issue where an Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in. 
 - Removed Reset Password from the Virtual Machine Scale set UI
-- Fixed an issue where deleting the Load Balancer from the portal did not result in the deletion of the object in the infrastructure layer. 
-- Fixed an issue where to show accurate percentage of Gateway Pool Utilization Alert on the Admin portal. 
-- Fixed an issue where adding of more than one public IPs on the same NIC on a Virtual Machine resulted in internet connectivity issues. Now, a NIC with two public IPs should work as expected. 
+- Fixed an issue where deleting the load balancer from the portal did not result in the deletion of the object in the infrastructure layer. 
+- Fixed an issue that showed an inaccurate percentage of the Gateway Pool Utilization Alert on the admin portal. 
+- Fixed an issue where adding more than one public IP on the same NIC on a Virtual Machine resulted in internet connectivity issues. Now, a NIC with two public IPs should work as expected. 
 
 ## Security updates
 
