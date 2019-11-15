@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 11/15/2019
 ms.author: mabrigg
 ms.reviewer: wamota
-ms.lastreviewed: 08/30/2018
+ms.lastreviewed: 11/15/2019
 ---
 
 # Border connectivity 
@@ -64,6 +64,8 @@ If your datacenter requires all traffic to use a proxy, you must configure a *tr
 A transparent proxy (also known as an intercepting, inline, or forced proxy) intercepts normal communication at the network layer without requiring any special client configuration. Clients don't need to be aware of the existence of the proxy.
 
 ![Transparent proxy](media/azure-stack-border-connectivity/transparent-proxy.png)
+
+SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-decryption) and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60s with 3 retry attempts.
 
 ## Next steps
 [DNS integration](azure-stack-integrate-dns.md)
