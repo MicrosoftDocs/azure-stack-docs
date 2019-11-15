@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 11/15/2019
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 11/14/2019
+ms.lastreviewed: 11/15/2019
 ---
 
 # Azure Stack known issues
@@ -91,6 +91,7 @@ To access known issues for a different version, use the version selector dropdow
 ## Networking
 
 ### Network Security Groups
+
 - Applicable: This issue applies to all supported releases. 
 - Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
 - Occurrence: Common
@@ -121,8 +122,6 @@ To access known issues for a different version, use the version selector dropdow
 - Applicable: This issue applies to all supported releases.
 - Cause: The primary NIC of a VM cannot be changed. Deleting/Detaching the primary NIC will result in issues starting up the VM.
 - Occurrence: Common
-
-### Virtual Network Gateway
 
 #### Alerts
 
@@ -169,27 +168,27 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to all supported releases.
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
-- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack.
+- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack deployment.
 
-### Ubuntu SSH access
-
-- Applicable: This issue applies to all supported releases.
-- Cause: An Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in.
-- Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
-- Occurrence: Common
-
-### Virtual machine scale set reset password does not work
+#### Virtual machine scale set reset password does not work
 
 - Applicable: This issue applies to the 1906 and 1907 releases.
 - Cause: A new reset password blade appears in the scale set UI, but Azure Stack does not support resetting password on a scale set yet.
 - Remediation: None.
 - Occurrence: Common
 
-### Rainy cloud on scale set diagnostics
+#### Rainy cloud on scale set diagnostics
 
 - Applicable: This issue applies to the 1906 and 1907 releases.
 - Cause: The virtual machine scale set overview page shows an empty chart. Clicking on the empty chart opens a "rainy cloud" blade. This is the chart for scale set diagnostic information, such as CPU percentage, and is not a feature supported in the current Azure Stack build.
 - Remediation: None.
+- Occurrence: Common
+
+### Ubuntu SSH access
+
+- Applicable: This issue applies to all supported releases.
+- Cause: An Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in.
+- Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
 - Occurrence: Common
 
 ### Virtual machine diagnostic settings blade
@@ -234,7 +233,7 @@ To access known issues for a different version, use the version selector dropdow
 ### Subscriptions Lock blade
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the administrator portal, the **Lock** blade for user subscriptions has two butons that say **subscription**.
+- Cause: In the administrator portal, the **Lock** blade for user subscriptions has two buttons labeled **subscription**.
 - Occurrence: Common
 
 ### Subscription permissions
