@@ -6,10 +6,10 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/09/2019
+ms.date: 11/15/2019
 ms.author: justinha
 ms.reviewer: wamota
-ms.lastreviewed: 09/09/2019
+ms.lastreviewed: 11/15/2019
 ---
 
 # Publish Azure Stack services in your datacenter 
@@ -21,9 +21,12 @@ The following architectural diagram shows the different network layers and ACLs:
 ![Diagram showing different network layers and ACLs](media/azure-stack-integrate-endpoints/Integrate-Endpoints-01.png)
 
 ### Ports and URLs
+
 To make Azure Stack services (like the portals, Azure Resource Manager, DNS, and so on) available to external networks, you must allow inbound traffic to these endpoints for specific URLs, ports, and protocols.
  
 In a deployment where a transparent proxy uplinks to a traditional proxy server or a firewall is protecting the solution, you must allow specific ports and URLs for both [inbound](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound) and [outbound](azure-stack-integrate-endpoints.md#ports-and-urls-outbound) communication. These include ports and URLs for identity, the marketplace, patch and update, registration, and usage data.
+
+SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. 
 
 ## Ports and protocols (inbound)
 
@@ -65,6 +68,8 @@ With the addition of the [Extension Host](azure-stack-extension-host-prepare.md)
 ## Ports and URLs (outbound)
 
 Azure Stack supports only transparent proxy servers. In a deployment with a transparent proxy uplink to a traditional proxy server, you must allow the ports and URLs in the following table for outbound communication.
+
+SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60s.
 
 > [!Note]  
 > Azure Stack doesn't support using ExpressRoute to reach the Azure services listed in the following table because ExpressRoute may not be able to route traffic to all of the endpoints.
