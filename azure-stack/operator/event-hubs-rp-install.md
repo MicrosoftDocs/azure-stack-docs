@@ -25,6 +25,7 @@ Before you can install Event Hubs on Azure Stack Hub, you must download the reso
 
 > [!NOTE]
 > The download process can take 30 minutes to 2 hours, depending on the network latency and existing packages on your Azure Stack Hub instance. 
+
 Follow these instructions if your Azure Stack Hub has Internet connectivity:
 
 1. Sign in to the Azure Stack Hub administrator portal.
