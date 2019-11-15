@@ -125,8 +125,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 |SA Lifetime (Time)  | 27,000 seconds  |
 |SA Lifetime (Kilobytes) | 33,553,408     |
 |Perfect Forward Secrecy (PFS) | ECP384 |
-|Dead Peer Detection | Supported|  
-The above changes are reflected on our [default IPsec/IKE proposal](azure-stack-vpn-gateway-settings.md#ipsecike-parameters) documentation as well.
+|Dead Peer Detection | Supported|
+
+Thse changes are reflected in the [default IPsec/IKE proposal](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters) documentation as well.
 
 ### Changes
 
