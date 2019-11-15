@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 11/14/2019
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 11/05/2019
+ms.lastreviewed: 11/14/2019
 ---
 
 # Azure Stack known issues
@@ -110,7 +110,13 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: Stop the virtual machine before adding/removing a network interface.
 - Occurrence: Common
 
-#### Primary Network Interface
+- Applicable: This issue applies to all supported releases.
+- Cause: The primary NIC of a VM cannot be changed. Deleting/detaching the primary NIC results in issues when starting up the VM.
+- Occurrence: Common
+
+### Virtual Network Gateway
+
+#### Local network gateway deletion
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The primary NIC of a VM cannot be changed. Deleting/Detaching the primary NIC will result in issues starting up the VM.
