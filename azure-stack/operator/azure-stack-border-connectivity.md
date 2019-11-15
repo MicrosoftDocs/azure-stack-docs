@@ -65,7 +65,7 @@ A transparent proxy (also known as an intercepting, inline, or forced proxy) int
 
 ![Transparent proxy](media/azure-stack-border-connectivity/transparent-proxy.png)
 
-SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-decryption) and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60s with 3 retry attempts.
+SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60s with 3 retry attempts.
 
 ## Next steps
 [DNS integration](azure-stack-integrate-dns.md)

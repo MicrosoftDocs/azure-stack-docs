@@ -26,7 +26,7 @@ To make Azure Stack services (like the portals, Azure Resource Manager, DNS, and
  
 In a deployment where a transparent proxy uplinks to a traditional proxy server or a firewall is protecting the solution, you must allow specific ports and URLs for both [inbound](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound) and [outbound](azure-stack-integrate-endpoints.md#ports-and-urls-outbound) communication. These include ports and URLs for identity, the marketplace, patch and update, registration, and usage data.
 
-SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-decryption) and can lead to service failures when accessing endpoints. 
+SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. 
 
 ## Ports and protocols (inbound)
 
@@ -69,7 +69,7 @@ With the addition of the [Extension Host](azure-stack-extension-host-prepare.md)
 
 Azure Stack supports only transparent proxy servers. In a deployment with a transparent proxy uplink to a traditional proxy server, you must allow the ports and URLs in the following table for outbound communication.
 
-SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-decryption) and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60s.
+SSL traffic interception is [not supported](azure-stack-firewall.md#ssl-interception) and can lead to service failures when accessing endpoints. The maximum supported timeout to communicate with endpoints required for identity is 60s.
 
 > [!Note]  
 > Azure Stack doesn't support using ExpressRoute to reach the Azure services listed in the following table because ExpressRoute may not be able to route traffic to all of the endpoints.
