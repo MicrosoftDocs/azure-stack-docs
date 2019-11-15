@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 11/15/2019
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 11/08/2019
+ms.lastreviewed: 11/15/2019
 ---
 
 # Azure Stack updates: release notes
@@ -177,7 +177,7 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 The 1910 release of Azure Stack must be applied on the 1908 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1908.8.41](https://support.microsoft.com/help/4528074)
+- [Azure Stack hotfix 1.1908.9.43](https://support.microsoft.com/help/4531007)
 
 ### After successfully applying the 1910 update
 
