@@ -59,13 +59,13 @@ You can prepare your own Linux image using the following instructions:
 
 ## Cloud-init
 
-[Cloud-init](https://cloud-init.io/) is supported on Azure Stack releases beyond 1910.
-To use cloud-init to customize your Linux VM, you can use the powershell instructions below. 
+[Cloud-init](https://cloud-init.io/) is supported on Azure Stack releases beyond 1910. To use cloud-init to customize your Linux VM, you can use the following PowerShell instructions: 
 
 ### Step 1: Create a cloud-init.txt file with your cloud-config
 
 Create a file named cloud-init.txt and paste the following cloud configuration:
-``` yaml
+
+```yaml
 #cloud-config
 package_upgrade: true
 packages:
@@ -109,17 +109,17 @@ runcmd:
   
 ### Step 2: Reference the cloud-init.txt during the Linux VM deployment
 
-Upload the file to an Azure storage account, Azure Stack storage account or GitHub repository reachable by your Azure Stack Linux VM.
-Currently, using cloud-init for VM deployment is only supported on REST, Powershell and CLI and doesn't have an associated portal UI on Azure Stack.
+Upload the file to an Azure storage account, Azure Stack storage account, or GitHub repository reachable by your Azure Stack Linux VM.
+Currently, using cloud-init for VM deployment is only supported on REST, Powershell, and CLI, and doesn't have an associated portal UI on Azure Stack.
 
-You may follow [these](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-create-vm-linux-powershell) instructions to create the Linux VM using powershell, but make sure to reference the cloud-init.txt as a part of the -CustomData flag like below:
+You can follow [these](../user/azure-stack-quick-create-vm-linux-powershell.md) instructions to create the Linux VM using powershell, but make sure to reference the cloud-init.txt as a part of the `-CustomData` flag:
 
-``` powershell
+```powershell
 $VirtualMachine =Set-AzureRmVMOperatingSystem -VM $VirtualMachine `
   -Linux `
   -ComputerName "MainComputer" `
   -Credential $cred -CustomData "#include https://cloudinitstrg.blob.core.windows.net/strg/cloud-init.txt"
-  ```
+```
 
 ## Add your image to Marketplace
 
