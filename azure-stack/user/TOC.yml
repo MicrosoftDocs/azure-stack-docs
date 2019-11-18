@@ -214,6 +214,8 @@
             href: azure-stack-kubernetes-aks-engine-upgrade.md
           - name: Troubleshoot AKS engine
             href: azure-stack-kubernetes-aks-engine-troubleshoot.md
+          - name: Use Azure Monitor for containers
+            href: kubernetes-aks-engine-azure-monitor.md
         - name: Marketplace item
           items: 
           - name: Deploy a Kubernetes cluster
