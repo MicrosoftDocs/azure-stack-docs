@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 11/15/2019
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 11/08/2019
+ms.lastreviewed: 11/15/2019
 ---
 
 # Azure Stack updates: release notes
@@ -78,6 +78,10 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - The Azure Stack health and monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration. For more information, see [Monitor Azure Stack hardware components](azure-stack-hardware-monitoring.md).
 
+- [Cloud-init support for Azure Stack](/azure/virtual-machines/linux/using-cloud-init): Cloud-init is a widely used approach to customize a Linux VM as it boots for the first time. You can use cloud-init to install packages and write files, or to configure users and security. Because cloud-init is called during the initial boot process, there are no additional steps or required agents to apply your configuration. The Ubuntu images on the marketplace have been updated to support cloud-init for provisioning.
+
+- Azure Stack now supports all Windows Azure Linux Agent versions as Azure.
+
 - A new version of Azure Stack Admin PowerShell modules is available. <!-- For more information, see -->
 
 - Added the **Set-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to configure the manual update for Windows Defender definitions in the Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
@@ -88,6 +92,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Added the **Get-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to retrieve the forwarder settings of the DNS servers in Azure Stack. For more information about DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
 
+
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
@@ -97,6 +102,32 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Azure Stack is moving to 4096 bit RSA keys for the internal certificates. Running internal secret rotation will replace old 2048 bit certificates with 4096 bit long certificates. For more information about secret rotation in Azure Stack, see [Rotate secrets in Azure Stack](azure-stack-rotate-secrets.md).
 
 - Upgrades to the complexity of cryptographic algorithms and key strength for several internal components to comply with the Committee on National Security Systems - Policy 15 (CNSSP-15), which provides best practices for the use of public standards for secure information sharing. Among the improvements, there is AES256 for Kerberos authentication, and SHA384 for VPN encryption. For more information about CNSSP-15, see the [Committee on National Security Systems, Policies page](http://www.cnss.gov/CNSS/issuances/Policies.cfm).
+
+- As a result of the above upgrade, Azure Stack now has new default values for IPsec/IKEv2 configurations. The new default values used on the Azure Stack side are as follows:
+
+   **IKE Phase 1 (Main Mode) parameters**
+
+   | Property              | Value|
+   |-|-|
+   | IKE Version           | IKEv2 |
+   |Diffie-Hellman Group   | ECP384 |
+   | Authentication method | Pre-shared key |
+   |Encryption & Hashing Algorithms | AES256, SHA384 |
+   |SA Lifetime (Time)     | 28,800 seconds|
+
+   **IKE Phase 2 (Quick Mode) parameters**
+
+   | Property| Value|
+   |-|-|
+   |IKE Version |IKEv2 |
+   |Encryption & Hashing Algorithms (Encryption)     | GCMAES256|
+   |Encryption & Hashing Algorithms (Authentication) | GCMAES256|
+   |SA Lifetime (Time)  | 27,000 seconds  |
+   |SA Lifetime (Kilobytes) | 33,553,408     |
+   |Perfect Forward Secrecy (PFS) | ECP384 |
+   |Dead Peer Detection | Supported|
+
+   These changes are reflected in the [default IPsec/IKE proposal](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters) documentation as well.
 
 ### Changes
 
@@ -113,6 +144,11 @@ For more information about update build types, see [Manage updates in Azure Stac
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
 - Fixed an issue that prevented enforcing TLS 1.2 policy on environments deployed prior to the Azure Stack 1904 release.
+- Fixed an issue where an Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in. 
+- Removed Reset Password from the Virtual Machine Scale set UI
+- Fixed an issue where deleting the load balancer from the portal did not result in the deletion of the object in the infrastructure layer. 
+- Fixed an issue that showed an inaccurate percentage of the Gateway Pool Utilization Alert on the admin portal. 
+- Fixed an issue where adding more than one public IP on the same NIC on a Virtual Machine resulted in internet connectivity issues. Now, a NIC with two public IPs should work as expected. 
 
 ## Security updates
 
@@ -141,7 +177,7 @@ Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do n
 The 1910 release of Azure Stack must be applied on the 1908 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1908.8.41](https://support.microsoft.com/help/4528074)
+- [Azure Stack hotfix 1.1908.9.43](https://support.microsoft.com/help/4531007)
 
 ### After successfully applying the 1910 update
 

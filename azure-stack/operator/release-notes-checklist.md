@@ -50,7 +50,7 @@ Review this checklist in order to prepare for an Azure Stack update. This articl
 |  |  |
 | Resume updates | After remediating a failed update, [resume updates in Azure Stack using the privileged endpoint](azure-stack-monitor-update.md). |
 
-> [!Important]  
+> [!IMPORTANT]  
 > Do not run **Test-AzureStack** during an update, as this will cause the update to stall.
 
 ## After Azure Stack update
