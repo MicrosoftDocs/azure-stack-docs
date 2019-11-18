@@ -109,10 +109,10 @@ runcmd:
   
 ### Step 2: Reference the cloud-init.txt during the Linux VM deployment
 
-Upload the file to an Azure storage account, Azure Stack storage account or github repository reachable by your Azure Stack Linux VM.
+Upload the file to an Azure storage account, Azure Stack storage account or GitHub repository reachable by your Azure Stack Linux VM.
 Currently, using cloud-init for VM deployment is only supported on REST, Powershell and CLI and doesn't have an associated portal UI on Azure Stack.
 
-You may follow [these](https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-quick-create-vm-linux-powershell) instructions to create the Linux VM using powershell, but make sure to reference the cloud-init.txt as a part of the -CustomData flag like below:
+You may follow [these](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-create-vm-linux-powershell) instructions to create the Linux VM using powershell, but make sure to reference the cloud-init.txt as a part of the -CustomData flag like below:
 
 ``` powershell
 $VirtualMachine =Set-AzureRmVMOperatingSystem -VM $VirtualMachine `
