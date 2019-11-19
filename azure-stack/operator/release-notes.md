@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 11/21/2019
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 11/19/2019
+ms.lastreviewed: 11/21/2019
 ---
 
 # Azure Stack updates: release notes
@@ -52,7 +52,7 @@ For help with troubleshooting updates and the update process, see [Troubleshoot 
 ::: moniker range="azs-1910"
 ## 1910 build reference
 
-The Azure Stack 1910 update build number is **1.1910.x.xx**.
+The Azure Stack 1910 update build number is **1.1910.0.58**.
 
 ### Update type
 
