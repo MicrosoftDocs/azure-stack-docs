@@ -92,10 +92,10 @@ To access known issues for a different version, use the version selector dropdow
 - Cause: In the user portal, when you try to upload a blob in the upload blade, there is an option to select **AAD** or **Key Authentication**, however **AAD** is not supported in Azure Stack.
 - Occurrence: Common
 
-### Loadbalancer backend pool
+### Load balancer backend pool
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when adding a **Loadbalancer** backend pool, the operation results in an error message of **Failed to save load balancer backend pool**; however, the operation did actually succeed. 
+- Cause: In the user portal, when adding a **Load balancer** backend pool, the operation results in an error message of **Failed to save load balancer backend pool**; however, the operation did actually succeed. 
 - Occurrence: Common
 
 ### Incorrect tooltip when creating VM
