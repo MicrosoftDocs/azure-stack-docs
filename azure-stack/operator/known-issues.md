@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2019
+ms.date: 11/19/2019
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 11/15/2019
+ms.lastreviewed: 11/19/2019
 ---
 
 # Azure Stack known issues
@@ -177,25 +177,11 @@ To access known issues for a different version, use the version selector dropdow
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack deployment.
 
-#### Rainy cloud on scale set diagnostics
-
-- Applicable: This issue applies to the 1906 and 1907 releases.
-- Cause: The virtual machine scale set overview page shows an empty chart. Clicking on the empty chart opens a "rainy cloud" blade. This is the chart for scale set diagnostic information, such as CPU percentage, and is not a feature supported in the current Azure Stack build.
-- Remediation: None.
-- Occurrence: Common
-
 ### Ubuntu SSH access
 
 - Applicable: This issue applies to all supported releases.
 - Cause: An Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in.
 - Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
-- Occurrence: Common
-
-### Virtual machine diagnostic settings blade
-
-- Applicable: This issue applies to the 1906 and 1907 releases.
-- Cause: The virtual machine diagnostic settings blade has a **Sink** tab, which asks for an **Application Insight Account**. This is the result of a new blade and is not yet supported in Azure Stack.
-- Remediation: None.
 - Occurrence: Common
 
 <!-- ## Storage -->
