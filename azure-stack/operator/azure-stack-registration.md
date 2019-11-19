@@ -125,7 +125,7 @@ Connected environments can access the internet and Azure. For these environments
 
 1. To register the Azure Stack resource provider with Azure, start PowerShell ISE as an administrator and use the following PowerShell cmdlets with the **EnvironmentName** parameter set to the appropriate Azure subscription type (see parameters below).
 
-2. Add the Azure account that you use to register Azure Stack. To add the account, run the **Add-AzureRmAccount** cmdlet. You are prompted to enter your Azure account credentials and you may have to use 2-factor authentication based on your account's configuration.
+2. Add the Azure account that you use to register Azure Stack. To add the account, run the **Add-AzureRmAccount** cmdlet. You're prompted to enter your Azure account credentials and you may have to use 2-factor authentication based on your account's configuration.
 
    ```powershell
    Add-AzureRmAccount -EnvironmentName "<environment name>"
@@ -156,7 +156,7 @@ Connected environments can access the internet and Azure. For these environments
    Import-Module .\RegisterWithAzure.psm1
    ```
 
-6. Next, in the same PowerShell session, ensure you are logged in to the correct Azure PowerShell Context. This is the Azure account that was used to register the Azure Stack resource provider previously. Powershell to run:
+6. Next, in the same PowerShell session, ensure you're signed in to the correct Azure PowerShell Context. This is the Azure account that was used to register the Azure Stack resource provider previously. Powershell to run:
 
    ```powershell  
    Connect-AzureRmAccount -Environment "<environment name>"
