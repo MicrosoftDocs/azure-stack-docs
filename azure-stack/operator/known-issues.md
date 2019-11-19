@@ -104,8 +104,6 @@ To access known issues for a different version, use the version selector dropdow
 
 ### Network interface
 
-#### Add/remove network interface
-
 - Applicable: This issue applies to all supported releases.
 - Cause: A new network interface cannot be added to a VM that is in a **running** state.
 - Remediation: Stop the virtual machine before adding/removing a network interface.
