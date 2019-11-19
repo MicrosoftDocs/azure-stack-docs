@@ -90,6 +90,12 @@ To access known issues for a different version, use the version selector dropdow
 
 ## Networking
 
+### Load balancer
+
+- Applicable: This issue applies to all supported releases. 
+- Cause: When adding availability set VMs to the backend pool of a load balancer, an error message is displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal; the functionality is still in place and VMs are successfully added to the backend pool interally. 
+- Occurrence: Common
+
 ### Network Security Groups
 
 - Applicable: This issue applies to all supported releases. 
@@ -104,24 +110,20 @@ To access known issues for a different version, use the version selector dropdow
 
 ### Network interface
 
+#### Adding/Removing network interface
+
 - Applicable: This issue applies to all supported releases.
 - Cause: A new network interface cannot be added to a VM that is in a **running** state.
 - Remediation: Stop the virtual machine before adding/removing a network interface.
 - Occurrence: Common
 
-### NIC
+#### Primary network interface
 
 - Applicable: This issue applies to all supported releases.
 - Cause: The primary NIC of a VM cannot be changed. Deleting/detaching the primary NIC results in issues when starting up the VM.
 - Occurrence: Common
 
 ### Virtual Network Gateway
-
-#### Local network gateway deletion
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The primary NIC of a VM cannot be changed. Deleting/Detaching the primary NIC will result in issues starting up the VM.
-- Occurrence: Common
 
 #### Alerts
 
@@ -244,6 +246,12 @@ To access known issues for a different version, use the version selector dropdow
 
 ## Networking
 
+### Load Balancer
+
+- Applicable: This issue applies to all supported releases. 
+- Cause: When adding Avaiability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
+- Occurrence: Common
+
 ### Network Security Groups
 
 - Applicable: This issue applies to all supported releases. 
@@ -273,13 +281,6 @@ To access known issues for a different version, use the version selector dropdow
 - Occurrence: Common
 
 ### Virtual Network Gateway
-
-#### Local network gateway deletion
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, deleting the **Local Network Gateway** displays the following error message: **Cannot delete a Local Network Gateway with an active connection**, even though there is no active connection.
-- Mitigation: The fix for this issue will be released in 1907. A workaround for this issue is to create a new Local Network Gateway  with the same IP address, address space and configuration details with a different name. The old LNG can be deleted once the environment has been updated to 1907.
-- Occurrence: Common
 
 #### Alerts
 
@@ -409,6 +410,12 @@ To access known issues for a different version, use the version selector dropdow
 - Occurrence: Common
 
 ## Networking
+
+### Load Balancer
+
+- Applicable: This issue applies to all supported releases. 
+- Cause: When adding Avaiability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
+- Occurrence: Common
 
 ### Network Security Groups
 
