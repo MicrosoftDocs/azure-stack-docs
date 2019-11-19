@@ -1,6 +1,7 @@
 ---
-title: Azure registration for Azure Stack integrated systems | Microsoft Docs
-description: Describes the Azure registration process for multi-node Azure Stack Azure-connected deployments.
+title: Register Azure Stack with Azure
+titleSuffix: Azure Stack
+description: Learn how to register multi-node Azure Stack with Azure.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
