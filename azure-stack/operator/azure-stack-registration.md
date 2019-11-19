@@ -313,7 +313,7 @@ To get the activation key, run the following PowerShell cmdlets:
 
 ### Create an Activation Resource in Azure Stack
 
-Return to the Azure Stack environment with the file or text from the activation key created from Get-AzsActivationKey. Next you create an activation resource in Azure Stack using that activation key. To create an activation resource, run the following PowerShell cmdlets: 
+Return to the Azure Stack environment with the file or text from the activation key created from Get-AzsActivationKey. Next create an activation resource in Azure Stack using that activation key. To create an activation resource, run the following PowerShell cmdlets:
 
   ```Powershell
   $ActivationKey = "<activation key>"
@@ -329,28 +329,29 @@ Optionally, you can use the Get-Content cmdlet to point to a file that contains 
 
 ## Verify Azure Stack registration
 
-You can use the **Region management** tile to verify that the Azure Stack registration was successful. This tile is available on the default dashboard in the administration portal. The status can be registered, or not registered. If registered, it also shows the Azure subscription ID that you used to register your Azure Stack along with the registration resource group and name.
+You can use the **Region management** tile to verify that the Azure Stack registration was successful. This tile is available on the default dashboard in the administrator portal. The status can be registered, or not registered. If registered, it also shows the Azure subscription ID that you used to register your Azure Stack along with the registration resource group and name.
 
-1. Sign in to the [Azure Stack administration portal](https://adminportal.local.azurestack.external).
+1. Sign in to the [Azure Stack administrator portal](https://adminportal.local.azurestack.external).
 
 2. From the Dashboard, select **Region management**.
 
 3. Select **Properties**. This blade shows the status and details of your environment. The status can be **Registered**, **Not registered**, or **Expired**.
 
-    [![Region management tile](media/azure-stack-registration/admin1sm.png "Region management tile")](media/azure-stack-registration/admin1.png#lightbox)
+    [![Region management tile in Azure Stack administrator portal](media/azure-stack-registration/admin1sm.png "Region management tile")](media/azure-stack-registration/admin1.png#lightbox)
 
     If registered, the properties include:
     
-    - **Registration subscription ID**: The Azure subscription ID registered and associated to Azure Stack
+    - **Registration subscription ID**: The Azure subscription ID registered and associated to Azure Stack.
     - **Registration resource group**: The Azure resource group in the associated subscription containing the Azure Stack resources.
 
 4. You can use the Azure portal to view Azure Stack registration resources, and then verify that the registration succeeded. Sign in to the [Azure portal](https://portal.azure.com) using an account associated to the subscription you used to register Azure Stack. Select **All resources**, enable the **Show hidden types** checkbox, and select the registration name.
-5. If the registration did not succeed, you must re-register by following the [steps here](#change-the-subscription-you-use) to resolve the issue.  
 
-Alternatively, you can verify if your registration was successful by using the Marketplace management feature. If you see a list of marketplace items in the Marketplace Management blade, your registration was successful. However, in disconnected environments, you will not be able to see marketplace items in Marketplace management.
+5. If the registration didn't succeed, you must re-register by following the [steps here](#change-the-subscription-you-use) to resolve the issue.  
+
+Alternatively, you can verify if your registration was successful by using the Marketplace management feature. If you see a list of marketplace items in the Marketplace management blade, your registration was successful. However, in disconnected environments, you won't be able to see marketplace items in Marketplace management.
 
 > [!NOTE]
-> After registration is complete, the active warning for not registering will no longer appear. In Azure Stack releases earlier than 1904, in disconnected scenarios, you will see a message in Marketplace management asking you to register and activate your Azure Stack, even if you have registered successfully. This message does not appear in release 1904 and later.
+> After registration is complete, the active warning for not registering will no longer appear. In Azure Stack releases before 1904, in disconnected scenarios, you see a message in Marketplace management asking you to register and activate your Azure Stack, even if you have registered successfully. This message doesn't appear in release 1904 and later.
 
 ## Renew or change registration
 
