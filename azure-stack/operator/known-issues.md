@@ -89,30 +89,30 @@ To access known issues for a different version, use the version selector dropdow
 - Occurrence: Common
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you try to upload a blob in the upload blade, there is an option to select **AAD** or **Key Authentication**, however **AAD** is not supported by Azure Stack today.
+- Cause: In the user portal, when you try to upload a blob in the upload blade, there is an option to select **AAD** or **Key Authentication**, however **AAD** is not supported in Azure Stack.
 - Occurrence: Common
 
-### Loadbalancer Backend Pool
+### Loadbalancer backend pool
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when adding **Loadbalancer** backend pool, the operation will result in an error message of "Failed to save load balancer backend pool", however functionality wise, the operation did actually succeed. 
+- Cause: In the user portal, when adding a **Loadbalancer** backend pool, the operation results in an error message of **Failed to save load balancer backend pool**; however, the operation did actually succeed. 
 - Occurrence: Common
 
-### Incorrect Tooltip when Creating VM
+### Incorrect tooltip when creating VM
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you select a managed disk, with disk type Premium SSD, the drop down list shows **OS Disk**. The tooltip next to that option says **Certain OS Disk sizes may be available for free with Azure Free Account**, however, this is not valid for Azure Stack. In addition, the list includes **Free account eligible** which is also not valid for Azure Stack. 
+- Cause: In the user portal, when you select a managed disk, with disk type Premium SSD, the drop-down list shows **OS Disk**. The tooltip next to that option says **Certain OS Disk sizes may be available for free with Azure Free Account**; however, this is not valid for Azure Stack. In addition, the list includes **Free account eligible** which is also not valid for Azure Stack. 
 - Occurrence: Common
 
-### VPN Troubleshoot and Metrics
+### VPN troubleshoot and metrics
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN Gateway Resource appears however this is not supported in Azure Stack. 
+- Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack. 
 - Occurrence: Common
 
 ### Adding extension to VM Scale Set
 
-- Applicable: This issue applies to releases 1907 and onwards.
+- Applicable: This issue applies to releases 1907 and greater.
 - Cause: In the user portal, once a virtual machine scale set is created, the UI does not permit the user to add an extension.
 - Occurrence: Common
 
@@ -120,14 +120,14 @@ To access known issues for a different version, use the version selector dropdow
 ### Delete a storage container
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when a user attempts to delete a storage container, the operation fails when the user does not toggle **Override Azure Policy and RBAC Role settings**
+- Cause: In the user portal, when a user attempts to delete a storage container, the operation fails when the user does not toggle **Override Azure Policy and RBAC Role settings**.
 - Remediation: Ensure that the box is checked for **Override Azure Policy and RBAC Role settings**.
 - Occurrence: Common
 
-### Refresh Button on Virtual Machines Fails
+### Refresh button on Virtual Machines fails
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you navigate to Virtual Machines and try to refresh via the button in the top header, the states fail to update accurately. 
+- Cause: In the user portal, when you navigate to Virtual Machines and try to refresh using the button at the top, the states fail to update accurately. 
 - Remediation: The status is automatically updated every 5 minutes regtardless of whether the refresh button has been clicked or not. Wait 5 minutes and check the status.
 - Occurrence: Common
 
@@ -137,16 +137,18 @@ To access known issues for a different version, use the version selector dropdow
 - Cause: In the user portal, when you create a Route Table, **Virtual Network gateway** appears as one of the next hop type options, however this is not supported in Azure Stack.
 - Occurrence: Common
 
-### Storage Account Options
+### Storage account options
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the name of Storage Accounts show has **Storage account - blob, file, table, queue**, however **file** is not supported by Azure Stack today.
+- Cause: In the user portal, the name of storage accounts is shown as **Storage account - blob, file, table, queue**, however **file** is not supported by Azure Stack.
 - Occurrence: Common
 
 ### Storage Account Configuration
+
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you create a storage account and view it's **Configuration**, the user is unable to save configuration changes as it results in an AJAX Error. 
+- Cause: In the user portal, when you create a storage account and view its **Configuration**, you cannot save configuration changes, as it results in an AJAX error. 
 - Occurrence: Common
+
 ## Networking
 
 ### Network Security Groups
