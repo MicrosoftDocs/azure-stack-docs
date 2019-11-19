@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2019
+ms.date: 11/21/2019
 ms.author: sethm
 ms.reviewer: fiseraci
-ms.lastreviewed: 11/15/2019
+ms.lastreviewed: 11/21/2019
 ---
 
 # Azure Stack security updates

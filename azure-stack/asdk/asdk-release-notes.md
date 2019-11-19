@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2019
+ms.date: 11/21/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 10/29/2019
+ms.lastreviewed: 11/21/2019
 
 ---
 
@@ -26,7 +26,7 @@ This article provides info on changes, fixes, and known issues in the Azure Stac
 Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [RSS feed](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
 
 ::: moniker range="azs-1910"
-## Build 1.1910.x.xx
+## Build 1.1910.0.58
 
 ### New features
 
@@ -34,12 +34,14 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 
 ### Fixed and known issues
 
-- Fixed an issue with collecting logs and storing them in an Azure Storage blob container. The syntax for this operation is as follows:  
+- Fixed an issue with collecting logs and storing them in an Azure Storage blob container. The syntax for this operation is as follows:
+
   ```powershell
   Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
   ``` 
-- Fixed a deployment issue where a slow loading spooler service prevents the removal of some Windows features and requires a reboot. 
-- For a list of Azure Stack known issues in this release, see [the known issues article](../operator/known-issues.md).
+
+- Fixed a deployment issue where a slow loading spooler service prevents the removal of some Windows features and requires a reboot.
+- For a list of Azure Stack known issues in this release, see the [known issues](../operator/known-issues.md) article.
 - Note that available Azure Stack hotfixes are not applicable to the ASDK.
 ::: moniker-end
 
