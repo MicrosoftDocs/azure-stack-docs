@@ -47,22 +47,22 @@ Before registering Azure Stack with Azure, you must have:
 - The subscription ID for an Azure subscription. Only EA, CSP, or CSP shared services subscriptions are supported for registration. CSPs need to decide whether to [use a CSP or APSS subscription](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-apss-subscription).<br><br>To get the ID, sign in to Azure, click **All services**. Then, under the **GENERAL** category, select **Subscriptions**, click the subscription you want to use, and under **Essentials** you can find the Subscription ID. As a best practice, use separate subscriptions for production and dev or test environments. 
 
   > [!Note]  
-  > Germany cloud subscriptions are not currently supported.
+  > Germany cloud subscriptions aren't currently supported.
 
-- The username and password for an account that is an owner for the subscription.
+- The username and password for an account that's an owner for the subscription.
 
-- The user account needs to have access to the Azure subscription and have permissions to create identity applications and service principals in the directory associated with that subscription. We recommend that you register Azure Stack with Azure using least-privilege administration. For more information on how to create a custom role definition that limits access to your subscription for registration, see [create a registration role for Azure Stack](azure-stack-registration-role.md).
+- The user account needs to have access to the Azure subscription and have permissions to create identity apps and service principals in the directory associated with that subscription. We recommend that you register Azure Stack with Azure using least-privilege administration. For more information on how to create a custom role definition that limits access to your subscription for registration, see [create a registration role for Azure Stack](azure-stack-registration-role.md).
 
 - Registered the Azure Stack resource provider (see the following Register Azure Stack Resource Provider section for details).
 
-After registration, Azure Active Directory global administrator permission is not required. However, some operations may require the global administrator credential. For example, a resource provider installer script or a new feature requiring a permission to be granted. You can either temporarily reinstate the account's global administrator permissions or use a separate global administrator account that is an owner of the *default provider subscription*.
+After registration, Azure Active Directory (Azure AD) global administrator permission isn't required. However, some operations may require the global admin credential (for example, a resource provider installer script or a new feature requiring a permission to be granted). You can either temporarily reinstate the account's global admin permissions or use a separate global admin account that's an owner of the *default provider subscription*.
 
-The user who registers Azure Stack is the owner of the service principal in Azure Active Directory. Only the user who registered Azure Stack can modify the Azure Stack registration. If a non-admin user that is not an owner of the registration service principal attempts to register or re-register Azure Stack, they may encounter a 403 response. A 403 response indicates the user has insufficient permissions to complete the operation.
+The user who registers Azure Stack is the owner of the service principal in Azure AD. Only the user who registered Azure Stack can modify the Azure Stack registration. If a non-admin user that's not an owner of the registration service principal attempts to register or re-register Azure Stack, they may encounter a 403 response. A 403 response indicates the user has insufficient permissions to complete the operation.
 
 If you don't have an Azure subscription that meets these requirements, you can [create a free Azure account here](https://azure.microsoft.com/free/?b=17.06). Registering Azure Stack incurs no cost on your Azure subscription.
 
 > [!NOTE]
-> If you have more than one Azure Stack, a best practice is to register each Azure Stack to its own subscription. This will make it easier for you to track usage.
+> If you have more than one Azure Stack, a best practice is to register each Azure Stack to its own subscription. This makes it easier for you to track usage.
 
 ### PowerShell language mode
 
@@ -78,40 +78,40 @@ Ensure the output returns **FullLanguageMode**. If any other language mode is re
 
 Use the latest PowerShell for Azure Stack to register with Azure.
 
-If the latest version is not already installed, see [install PowerShell for Azure Stack](azure-stack-powershell-install.md).
+If the latest version isn't already installed, see [install PowerShell for Azure Stack](azure-stack-powershell-install.md).
 
 ### Download the Azure Stack tools
 
-The Azure Stack tools GitHub repository contains PowerShell modules that support Azure Stack functionality; including registration functionality. During the registration process, you need to import and use the **RegisterWithAzure.psm1** PowerShell module, found in the Azure Stack tools repository, to register your Azure Stack instance with Azure.
+The Azure Stack tools GitHub repository contains PowerShell modules that support Azure Stack functionality, including registration functionality. During the registration process, you need to import and use the **RegisterWithAzure.psm1** PowerShell module (found in the Azure Stack tools repository) to register your Azure Stack instance with Azure.
 
-To ensure you are using the latest version, you should delete any existing versions of the Azure Stack tools and [download the latest version from GitHub](azure-stack-powershell-download.md) before registering with Azure.
+To ensure you're using the latest version, delete any existing versions of the Azure Stack tools and [download the latest version from GitHub](azure-stack-powershell-download.md) before registering with Azure.
 
 ### Determine your registration scenario
 
 Your Azure Stack deployment may be *connected* or *disconnected*.
 
 - **Connected**  
- Connected means you have deployed Azure Stack so that it can connect to the Internet and to Azure. You either have Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS) for your identity store. With a connected deployment, you can choose from two billing models: pay-as-you-use or capacity-based.
-  - [Register a connected Azure Stack with Azure using the **pay-as-you-use** billing model](#register-connected-with-pay-as-you-go-billing)
-  - [Register a connected Azure Stack with Azure using the **capacity** billing model](#register-connected-with-capacity-billing)
+ Connected means you've deployed Azure Stack so that it can connect to the internet and to Azure. You either have Azure AD or Active Directory Federation Services (AD FS) for your identity store. With a connected deployment, you can choose from two billing models: pay-as-you-use or capacity-based.
+  - [Register a connected Azure Stack with Azure using the **pay-as-you-use** billing model](#register-connected-with-pay-as-you-go-billing).
+  - [Register a connected Azure Stack with Azure using the **capacity** billing model](#register-connected-with-capacity-billing).
 
 - **Disconnected**  
- With the disconnected from Azure deployment option, you can deploy and use Azure Stack without a connection to the Internet. However, with a disconnected deployment, you are limited to an AD FS identity store and the capacity-based billing model.
+ With the disconnected from Azure deployment option, you can deploy and use Azure Stack without a connection to the internet. However, with a disconnected deployment, you're limited to an AD FS identity store and the capacity-based billing model.
   - [Register a disconnected Azure Stack using the **capacity** billing model
-](#register-disconnected-with-capacity-billing)
+](#register-disconnected-with-capacity-billing).
 
-### Determine a unique registration name to use 
+### Determine a unique registration name to use
 
-When you register Azure Stack with Azure, you must provide a unique registration name. An easy way to associate your Azure Stack subscription with an Azure registration is to use your Azure Stack **Cloud ID**. 
+When you register Azure Stack with Azure, you must provide a unique registration name. An easy way to associate your Azure Stack subscription with an Azure registration is to use your Azure Stack **Cloud ID**.
 
 > [!NOTE]
 > Azure Stack registrations using the capacity-based billing model will need to change the unique name when re-registering after those yearly subscriptions expire unless you [delete the expired registration](azure-stack-registration.md#change-the-subscription-you-use) and re-register with Azure.
 
-To determine the Cloud ID for your Azure Stack deployment, open PowerShell as an administrator on a computer that can access the Privileged Endpoint, run the following commands, and record the **CloudID** value: 
+To determine the Cloud ID for your Azure Stack deployment, open PowerShell as an admin on a computer that can access the Privileged Endpoint, run the following commands, and then record the **CloudID** value:
 
 ```powershell
 Run: Enter-PSSession -ComputerName <privileged endpoint computer name> -ConfigurationName PrivilegedEndpoint
-Run: Get-AzureStackStampInformation 
+Run: Get-AzureStackStampInformation
 ```
 
 ## Register connected with pay-as-you-go billing
