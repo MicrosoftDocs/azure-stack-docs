@@ -1,6 +1,7 @@
 ---
-title: How to create a registration role for Azure Stack
-description: How to create a custom role to avoid using global administrator for registration.
+title: Create a custom role for Azure Stack registration
+titleSuffix: Azure Stack
+description: Learn how to create a custom role to avoid using global administrator for Azure Stack registration.
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
