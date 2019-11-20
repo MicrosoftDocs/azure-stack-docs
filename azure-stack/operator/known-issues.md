@@ -67,12 +67,14 @@ To access known issues for a different version, use the version selector dropdow
 - Cause: In the user portal, the storage account **Configuration** blade shows an option to change **security transfer type**. The feature is currently not supported in Azure Stack.
 - Occurrence: Common
 
-### Upload blob
+### Upload blob with OAuth error
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, when you try to upload a blob using the **OAuth(preview)** option, the task fails with an error message.
 - Remediation: Upload the blob using the SAS option.
 - Occurrence: Common
+
+### Upload blob option unsupported
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, when you try to upload a blob in the upload blade, there is an option to select **AAD** or **Key Authentication**, however **AAD** is not supported in Azure Stack.
@@ -81,19 +83,19 @@ To access known issues for a different version, use the version selector dropdow
 ### Load balancer backend pool
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when adding a **Load balancer** backend pool, the operation results in an error message of **Failed to save load balancer backend pool**; however, the operation did actually succeed. 
+- Cause: In the user portal, when adding a **Load balancer** backend pool, the operation results in an error message of **Failed to save load balancer backend pool**; however, the operation did actually succeed.
 - Occurrence: Common
 
 ### Incorrect tooltip when creating VM
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you select a managed disk, with disk type Premium SSD, the drop-down list shows **OS Disk**. The tooltip next to that option says **Certain OS Disk sizes may be available for free with Azure Free Account**; however, this is not valid for Azure Stack. In addition, the list includes **Free account eligible** which is also not valid for Azure Stack. 
+- Cause: In the user portal, when you select a managed disk, with disk type Premium SSD, the drop-down list shows **OS Disk**. The tooltip next to that option says **Certain OS Disk sizes may be available for free with Azure Free Account**; however, this is not valid for Azure Stack. In addition, the list includes **Free account eligible** which is also not valid for Azure Stack.
 - Occurrence: Common
 
 ### VPN troubleshoot and metrics
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack. 
+- Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack.
 - Occurrence: Common
 
 ### Adding extension to VM Scale Set
@@ -101,7 +103,6 @@ To access known issues for a different version, use the version selector dropdow
 - Applicable: This issue applies to releases 1907 and greater.
 - Cause: In the user portal, once a virtual machine scale set is created, the UI does not permit the user to add an extension.
 - Occurrence: Common
-
 
 ### Delete a storage container
 
@@ -114,13 +115,13 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, when you navigate to Virtual Machines and try to refresh using the button at the top, the states fail to update accurately. 
-- Remediation: The status is automatically updated every 5 minutes regtardless of whether the refresh button has been clicked or not. Wait 5 minutes and check the status.
+- Remediation: The status is automatically updated every 5 minutes regardless of whether the refresh button has been clicked or not. Wait 5 minutes and check the status.
 - Occurrence: Common
 
 ### Virtual Network Gateway 
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you create a Route Table, **Virtual Network gateway** appears as one of the next hop type options, however this is not supported in Azure Stack.
+- Cause: In the user portal, when you create a Route Table, **Virtual Network gateway** appears as one of the next hop type options; however this is not supported in Azure Stack.
 - Occurrence: Common
 
 ### Storage account options
@@ -140,7 +141,7 @@ To access known issues for a different version, use the version selector dropdow
 ### Load balancer
 
 - Applicable: This issue applies to all supported releases. 
-- Cause: When adding availability set VMs to the backend pool of a load balancer, an error message is displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal; the functionality is still in place and VMs are successfully added to the backend pool interally. 
+- Cause: When adding availability set VMs to the backend pool of a load balancer, an error message is displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal; the functionality is still in place and VMs are successfully added to the backend pool internally.
 - Occurrence: Common
 
 ### Network Security Groups
@@ -206,17 +207,16 @@ To access known issues for a different version, use the version selector dropdow
 ### VM boot diagnostics
 
 - Applicable: This issue applies to all supported releases.
-- Cause: When creating a new Windows virtual machine (VM), the following error may be displayed:
-**Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'**. The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
+- Cause: When creating a new Windows virtual machine (VM), the following error may be displayed: **Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'**. The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
 - Remediation: Recreate the storage account with the same name you used previously.
 - Occurrence: Common
 
-### Consumed Compute Quota
+### Consumed compute quota
 
 - Applicable: This issue applies to all supported releases.
-- When creating a new virtual machine, you may receive an error such as **This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.**. This indicates that the quota for total cores available to you is fully consumed.
+- When creating a new virtual machine, you may receive an error such as **This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.**. This indicates that the quota for total cores available to you has been reached.
 - Remediation: Ask your operator to add an add-on plan with additional quota. Editing the current plan's quota will not work or reflect increased quota.
-- Ocurrence : Rare
+- Occurrence: Rare
 
 ### Virtual machine scale set
 
