@@ -1,7 +1,7 @@
 ---
 title: Register Azure Stack with Azure
 titleSuffix: Azure Stack
-description: Learn how to register multi-node Azure Stack with Azure.
+description: Learn how to register Azure Stack integrated systems with Azure so you can download Azure Marketplace items and set up data reporting. 
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -23,7 +23,7 @@ ms.lastreviewed: 03/04/2019
 
 # Register Azure Stack with Azure
 
-Register Azure Stack with Azure so you can download marketplace items from Azure and set up commerce data reporting back to Microsoft. After you register Azure Stack, usage is reported to Azure commerce and you can see it under the Azure billing Subscription ID used for registration.
+Register Azure Stack with Azure so you can download Azure Marketplace items from Azure and set up commerce data reporting back to Microsoft. After you register Azure Stack, usage is reported to Azure commerce and you can see it under the Azure billing Subscription ID used for registration.
 
 The information in this article describes registering Azure Stack integrated systems with Azure. For information about registering the ASDK with Azure, see [Azure Stack registration](../asdk/asdk-register.md) in the ASDK documentation.
 
