@@ -55,13 +55,6 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
 - Occurrence: Common
 
-### Subscriptions Properties blade
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the administrator portal, the **Properties** blade for subscriptions does not load correctly
-- Remediation: You can view these subscription properties in the **Essentials** pane of the **Subscriptions Overview** blade.
-- Occurrence: Common
-
 ### Subscriptions Lock blade
 
 - Applicable: This issue applies to all supported releases.
