@@ -1,6 +1,7 @@
 ---
-title: Remediate certificate issues for Azure Stack | Microsoft Docs
-description: Use the Azure Stack Readiness Checker to review and remediate certificate issues.
+title: Fix common issues with PKI certificates
+tittleSuffix: Azure Stack
+description: Use the Azure Stack Readiness Checker to review and fix common issues with Azure Stack PKI certificates.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -20,7 +21,7 @@ ms.lastreviewed: 11/19/2018
 
 ---
 
-# Remediate common issues for Azure Stack PKI certificates
+# Fix common issues with Azure Stack PKI certificates
 
 The information in this article can help you understand and resolve common issues with Azure Stack PKI certificates. You can discover issues when you use the Azure Stack readiness checker tool to [validate Azure Stack PKI certificates](azure-stack-validate-pki-certs.md). The tool checks to ensure that certificates meet the PKI requirements of an Azure Stack deployment and Azure Stack secret rotation, and logs the results to a [report.json file](azure-stack-validation-report.md).  
 
