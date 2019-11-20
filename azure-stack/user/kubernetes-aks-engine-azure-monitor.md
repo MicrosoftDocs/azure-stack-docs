@@ -26,7 +26,7 @@ ms.lastreviewed: 11/15/2019
 You can use [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) for containers to monitor your containers in an AKS engine deployed Kubernetes cluster in Azure Stack Hub. 
 
 > [!IMPORTANT]
-> The AKS engine is currently in public preview.
+> Azure Monitor for containers on Azure Stack Hub is currently in public preview.
 > This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
