@@ -357,7 +357,7 @@ Alternatively, you can verify if your registration was successful by using the M
 
 ### Renew or change registration in connected environments
 
-You'll need to update or renew your registration in the following circumstances:
+You need to update or renew your registration in the following circumstances:
 
 - After you renew your capacity-based yearly subscription.
 - When you change your billing model.
@@ -365,7 +365,7 @@ You'll need to update or renew your registration in the following circumstances:
 
 #### Change the subscription you use
 
-If you would like to change the subscription you use, you must first run the **Remove-AzsRegistration** cmdlet, then ensure you are logged in to the correct Azure PowerShell context, and finally run **Set-AzsRegistration** with any changed parameters including `<billing model>`:
+If you want to change the subscription you use, you must first run the **Remove-AzsRegistration** cmdlet, then ensure you're signed in to the correct Azure PowerShell context. Then run **Set-AzsRegistration** with any changed parameters including `<billing model>`:
 
   ```powershell  
   Remove-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -RegistrationName $RegistrationName
@@ -375,7 +375,7 @@ If you would like to change the subscription you use, you must first run the **R
 
 #### Change the billing model or how to offer features
 
-If you would like to change the billing model or how to offer features for your installation, you can call the registration function to set the new values. You do not need to first remove the current registration:
+If you want to change the billing model or how to offer features for your installation, you can call the registration function to set the new values. You don't need to first remove the current registration:
 
   ```powershell  
   Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel <billing model> -RegistrationName $RegistrationName
@@ -383,7 +383,7 @@ If you would like to change the billing model or how to offer features for your 
 
 ### Renew or change registration in disconnected environments
 
-You'll need to update or renew your registration in the following circumstances:
+You need to update or renew your registration in the following circumstances:
 
 - After you renew your capacity-based yearly subscription.
 - When you change your billing model.
@@ -399,7 +399,7 @@ To remove the activation resource in Azure Stack, run the following PowerShell c
   Remove-AzsActivationResource -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
   ```
 
-Next, to remove the registration resource in Azure, ensure you are on an Azure connected computer, sign in to the correct Azure PowerShell context, and run the appropriate PowerShell cmdlets as described below.
+Next, to remove the registration resource in Azure, ensure you're on an Azure-connected computer, sign in to the correct Azure PowerShell context, and run the appropriate PowerShell cmdlets as described below.
 
 You can use the registration token used to create the resource:  
 
@@ -417,11 +417,11 @@ Or you can use the registration name:
 
 ### Re-register using disconnected steps
 
-You have now completely unregistered in a disconnected scenario and must repeat the steps for registering an Azure Stack environment in a disconnected scenario.
+You've now completely unregistered in a disconnected scenario and must repeat the steps for registering an Azure Stack environment in a disconnected scenario.
 
 ### Disable or enable usage reporting
 
-For Azure Stack environments that use a capacity billing model, turn off usage reporting with the **UsageReportingEnabled** parameter using either the **Set-AzsRegistration** or the **Get-AzsRegistrationToken** cmdlets. Azure Stack reports usage metrics by default. Operators with capacity uses or supporting a disconnected environment needs to turn off usage reporting.
+For Azure Stack environments that use a capacity billing model, turn off usage reporting with the **UsageReportingEnabled** parameter using either the **Set-AzsRegistration** or the **Get-AzsRegistrationToken** cmdlets. Azure Stack reports usage metrics by default. Operators with capacity uses or supporting a disconnected environment need to turn off usage reporting.
 
 #### With a connected Azure Stack
 
@@ -448,7 +448,7 @@ For Azure Stack environments that use a capacity billing model, turn off usage r
    > [!Tip]  
    > The registration token is saved in the file specified for *$FilePathForRegistrationToken*. You can change the filepath or filename at your discretion.
 
-2. Save this registration token for use on the Azure connected machine. You can copy the file or the text from $FilePathForRegistrationToken.
+2. Save this registration token for use on the Azure connected machine. You can copy the file or the text from *$FilePathForRegistrationToken*.
 
 ## Move a registration resource
 
