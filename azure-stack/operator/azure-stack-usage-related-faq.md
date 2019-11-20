@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 09/25/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
 
 ---
 
-# Frequently asked questions in Azure Stack usage API
+# Frequently asked questions about Azure Stack usage
 
-This article answers some frequently asked questions about the Azure Stack usage API.
+This article answers some frequently asked questions about Azure Stack usage and the Azure Stack usage API.
 
 ## What meter IDs can I see?
 
@@ -325,7 +325,7 @@ Usage is reported for the following resource providers:
 **Meter ID**: 190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  
 **Meter name**: App Service  
 **Unit**: Virtual core hours  
-**Notes**: Number of virtual cores used to run app service. Note: Microsoft uses this meter to charge the App Service on Azure Stack. Cloud Service Providers can use the other App Service meters (below) to calculate usage for their tenants.  
+**Notes**: Number of virtual cores used to run app service. Note: Microsoft uses this meter to charge the App Service on Azure Stack. Cloud Solution Providers can use the other App Service meters (below) to calculate usage for their tenants.  
   
 **Meter ID**: 67CC4AFC-0691-48E1-A4B8-D744D1FEDBDE  
 **Meter name**: Functions Requests  
@@ -426,6 +426,16 @@ Currently, you can query only by *Reported Time*.
 ## What is the policy for charging for VMs?
 
 Running and stopped VMs generate usage data. Consistent with Azure, deallocation is needed to stop the emission of usage data. In the case in which the portal is unavailable, but the compute resource provider is still running, usage will be emitted.
+
+## How do I extract usage data from the Azure Stack usage APIs?
+
+The easiest way to extract usage data from local usage APIs on an Azure Stack is by using the [usage summary script on GitHub](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/Usagesummary.ps1). The script requires the start and end dates as input parameters.
+
+Alternatively, you can use the REST APIs, as explained in the [Provider resource usage API](azure-stack-provider-resource-api.md) and [Tenant resource usage API](azure-stack-tenant-resource-usage-api.md) articles.
+
+## How can I associate usage extracted from Azure usage APIs to a specific Azure Stack user subscription?
+
+The usage records include a property bag called **additionalinfo**, which includes the Azure Stack subscription ID. This is the user subscription emitting the corresponding usage record.
 
 ## Next steps
 

@@ -6,10 +6,10 @@ author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: overview
-ms.date: 04/24/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 04/24/2019
+ms.lastreviewed: 11/11/2019
 
 # keywords:  Deploy an app to Azure Stack
 # Intent: I am developer using Windows 10 or Linux Ubuntu who would like to deploy an app to Azure Stack.
@@ -60,7 +60,7 @@ This article uses a C# 6.0 app that uses ASP.NET Core 2.2 running on a Windows 2
     | 443 | HTTPS | Hypertext Transfer Protocol Secure (HTTPS) is a secure version of HTTP that requires a security certificate and allows for the encrypted transmission of information.  |
     | 22 | SSH | Secure Shell (SSH) is an encrypted network protocol for secure communications. You will use this connection with an SSH client to configure the VM and deploy the app. |
     | 3389 | RDP | Optional. The Remote Desktop Protocol allows for a remote desktop connection to use a graphic user interface your machine.   |
-    | 8080 | Custom | The default port for the Apache Tomcat service is 8080. For a production server, you will want to route your traffic through 80 and 443. |
+    | 8172 | Custom | The port used by WebDeploy. |
 
     For each port:
 
@@ -110,7 +110,7 @@ Create a publish target to your VM in Azure Stack.
     ![Deploy an ASP.NET web app to Azure Stack publish](media/azure-stack-dev-start-howto-vm-dotnet/deploy-app-to-azure-stack.png)
 
 1. In the **Publish** window, select **New Profile**.
-1. Select **IIS**, **FTP**, and so on.
+1. Select **IIS, FTP, etc**.
 1. Select **Publish**.
 1. For **Publish method**, select **Web Deploy**.
 1. For **Server** enter the DNS name that you defined earlier, such as *w21902.local.cloudapp.azurestack.external*.

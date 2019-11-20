@@ -1,6 +1,6 @@
 ---
-title: Post deployment configurations for the Azure Stack Development Kit (ASDK) | Microsoft Docs
-description: Describes the recommended configuration changes to make after installing the Azure Stack Development Kit (ASDK).
+title: Post deployment configurations for the ASDK | Microsoft Docs
+description: Learn about the recommended configuration changes to make after installing the Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -21,9 +21,9 @@ ms.lastreviewed: 07/31/2019
 
 ---
 
-# Post ASDK installation configuration tasks
+# Post deployment configurations for ASDK
 
-After [installing the Azure Stack Development Kit (ASDK)](asdk-install.md), you should make a few recommended post-installation configuration changes while signed in as AzureStack\AzureStackAdmin on the ASDK host computer.
+After you [install the Azure Stack Development Kit (ASDK)](asdk-install.md), you should make a few recommended post deployment configuration changes while signed in as AzureStack\AzureStackAdmin on the ASDK host computer.
 
 ## Install Azure Stack PowerShell
 
@@ -35,14 +35,14 @@ PowerShell commands for Azure Stack are installed through the PowerShell Gallery
 Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 ```
 
-You can use API version profiles  to specify Azure Stack compatible AzureRM modules.  API version profiles provide a way to manage version differences between Azure and Azure Stack. An API version profile is a set of AzureRM PowerShell modules with specific API versions. The **AzureRM.BootStrapper** module that is available through the PowerShell Gallery provides PowerShell cmdlets that are required to work with API version profiles.
+Use API version profiles to specify Azure Stack compatible AzureRM modules.  API version profiles provide a way to manage version differences between Azure and Azure Stack. An API version profile is a set of AzureRM PowerShell modules with specific API versions. The **AzureRM.BootStrapper** module that's available through the PowerShell Gallery provides PowerShell cmdlets that are required to work with API version profiles.
 
-You can install the latest Azure Stack PowerShell module with or without Internet connectivity to the ASDK host computer:
+You can install the latest Azure Stack PowerShell module with or without internet connectivity to the ASDK host computer:
 
 > [!IMPORTANT]
 > Before installing the required version, make sure that you [uninstall any existing Azure PowerShell modules](../operator/azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-powershell-modules).
 
-- **With an internet connection** from the ASDK host computer. Run the following PowerShell script to install these modules on your development kit installation:
+- **With an internet connection** from the ASDK host computer: Run the following PowerShell script to install these modules on your ASDK installation:
 
 
   ```powershell  
@@ -59,7 +59,7 @@ You can install the latest Azure Stack PowerShell module with or without Interne
 
   If the installation is successful, the AzureRM and AzureStack modules are displayed in the output.
 
-- **Without an internet connection** from the ASDK host computer. In a disconnected scenario, you must first download the PowerShell modules to a machine that has internet connectivity using the following PowerShell commands:
+- **Without an internet connection** from the ASDK host computer: In a disconnected scenario, you must first download the PowerShell modules to a machine that has internet connectivity using the following PowerShell commands:
 
   ```powershell
   $Path = "<Path that is used to save the packages>"
@@ -107,16 +107,16 @@ You can install the latest Azure Stack PowerShell module with or without Interne
 
 ## Validate the ASDK installation
 
-To ensure that your ASDK deployment was successful, you can use the Test-AzureStack cmdlet by following these steps:
+To ensure that your ASDK deployment was successful, use the Test-AzureStack cmdlet by following these steps:
 
 1. Sign in as AzureStack\AzureStackAdmin on the ASDK host computer.
-2. Open PowerShell as an administrator (not PowerShell ISE).
+2. Open PowerShell as an admin (not PowerShell ISE).
 3. Run: `Enter-PSSession -ComputerName AzS-ERCS01 -ConfigurationName PrivilegedEndpoint`
 4. Run: `Test-AzureStack`
 
 The tests take a few minutes to complete. If the installation was successful, the output looks something like:
 
-![test-azurestack](media/asdk-post-deploy/test-azurestack.png)
+![Test Azure Stack - Installation successful](media/asdk-post-deploy/test-azurestack.png)
 
 If there was a failure, follow the troubleshooting steps to get help.
 
@@ -125,7 +125,7 @@ If there was a failure, follow the troubleshooting steps to get help.
 For deployments using Azure AD, you need to [enable multi-tenancy](../operator/azure-stack-enable-multitenancy.md#enable-multi-tenancy) for your ASDK installation.
 
 > [!NOTE]
-> When administrator or user accounts from domains other than the one used to register Azure Stack are used to log in to an Azure Stack portal, the domain name used to register Azure Stack must be appended to the portal url. For example, if Azure Stack has been registered with fabrikam.onmicrosoft.com and the user account logging in is admin@contoso.com, the url to use to log into the user portal would be: https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.
+> When admin or user accounts from domains other than the one used to register Azure Stack are used to log in to an Azure Stack portal, the domain name used to register Azure Stack must be appended to the portal URL. For example, if Azure Stack has been registered with fabrikam.onmicrosoft.com and the user account logging in is admin@contoso.com, the URL to use to log in to the user portal would be: https\://portal.local.azurestack.external/fabrikam.onmicrosoft.com.
 
 ## Next steps
 

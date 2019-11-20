@@ -6,10 +6,10 @@ services: azure-stack
 author: mattbriggs 
 ms.service: azure-stack 
 ms.topic: overview 
-ms.date: 07/30/2019
+ms.date: 11/11/2019
 ms.author: mabrigg 
 ms.reviewer: sijuman 
-ms.lastreviewed: 07/30/2019
+ms.lastreviewed: 11/11/2019
 
 # keywords: Develop apps on Azure Stack 
 # Intent: I am a developer using Windows 10 or Linux Ubuntu who would like to develop an app for Azure Stack using the SDKs. 

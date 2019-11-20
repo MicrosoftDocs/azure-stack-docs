@@ -11,10 +11,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 11/11/2019
 
 
 
@@ -62,7 +62,7 @@ Common test parameters include sensitive information that can't be stored in con
 Parameter    | Description
 -------------|-----------------
 Tenant Administrator User                            | Azure Active Directory Tenant Administrator that was provisioned by the service administrator in the AAD directory. This user performs tenant-level actions like deploying templates to set up resources (VMs, storage accounts, etc.) and executing workloads. For details on provisioning the tenant account, see [Add a new Azure Stack tenant](../operator/azure-stack-add-new-user-aad.md).
-Service Administrator User             | Azure Active Directory Administrator of the AAD Directory Tenant specified during Azure Stack deployment. Search for `AADTenant` in the ECE configuration file and select the value in the `UniqueName` element.
+Service Administrator User             | Azure Active Directory Administrator of the Azure AD Directory Tenant specified during Azure Stack deployment. Search for `AADTenant` in the ECE configuration file and select the value in the `UniqueName` element.
 Cloud Administrator User               | Azure Stack domain administrator account (for example, `contoso\cloudadmin`). Search for `User Role="CloudAdmin"` in the ECE configuration file and select the value in the `UserName` element.
 Diagnostics Connection String          | A SAS URL to an Azure Storage Account to which diagnostics logs will be copied during test execution. For instructions on generating the SAS URL, see [Generate the diagnostics connection string](#generate-the-diagnostics-connection-string). |
 

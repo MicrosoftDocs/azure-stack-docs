@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 06/18/2019
+ms.lastreviewed: 10/28/2019
 
 ---
 
@@ -24,7 +24,7 @@ ms.lastreviewed: 06/18/2019
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 > [!note]  
-> Kubernetes on Azure Stack is in preview. An Azure Stack disconnected scenario is not currently supported by the preview. Only use the marketplace item for development and test scenarios.
+> Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS engine](azure-stack-aks-engine.md).
 
 You can offer Kubernetes as a Marketplace item to your users. Your users can, then, deploy Kubernetes in a single, coordinated operation.
 
@@ -152,4 +152,4 @@ To remove the Kubernetes item:
 
 [Deploy a Kubernetes to Azure Stack](../user/azure-stack-solution-template-kubernetes-deploy.md)
 
-[Overview of offering services in Azure Stack](azure-stack-offer-services-overview.md)
+[Overview of offering services in Azure Stack](service-plan-offer-subscription-overview.md)

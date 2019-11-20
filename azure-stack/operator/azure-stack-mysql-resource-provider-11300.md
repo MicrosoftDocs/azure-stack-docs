@@ -1,6 +1,6 @@
 ﻿---
 title: Azure Stack MySQL resource provider 1.1.30.0 release notes | Microsoft Docs
-description: Learn about what's in the latest Azure Stack MySQL resource provider update, including any known issues, and where to download it.
+description: View the release notes to see what's new in the Azure Stack MySQL resource provider 1.1.30.0 update.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 12/10/2018
 ---
 
-# MySQL resource provider 1.1.30.0  release notes
+# MySQL resource provider 1.1.30.0 release notes
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -49,23 +49,23 @@ This version of the Azure Stack MySQL resource provider includes the following i
 
 - **MySQL login change password blade**. Fixed an issue where the password can't be changed on the change password blade. Removed links from password change notifications.
 
-## Known issues 
+## Known issues
 
-- **MySQL SKUs can take up to an hour to be visible in the portal**. It can take up to an hour for newly created SKUs to be visible for use when creating new MySQL databases. 
+- **MySQL SKUs can take up to an hour to be visible in the portal**. It can take up to an hour for newly created SKUs to be visible for use when creating new MySQL databases.
 
     **Workaround**: None.
 
-- **Reused MySQL logins**. Attempting to create a new MySQL login with the same username as an existing login under the same subscription will result in reusing the same login and the existing password. 
+- **Reused MySQL logins**. Attempting to create a new MySQL login with the same username as an existing login under the same subscription will result in reusing the same login and the existing password.
 
     **Workaround**: Use different usernames when creating new logins under the same subscription or create logins with the same username under different subscriptions.
 
-- **TLS 1.2 support requirement**. If you try to deploy or update the MySQL resource provider from a computer where TLS 1.2 is not enabled, the operation might fail. Run the following PowerShell command on the computer being used to deploy or update the resource provider to verify that TLS 1.2 is returned as supported:
+- **TLS 1.2 support requirement**. If you try to deploy or update the MySQL resource provider from a computer where TLS 1.2 isn't enabled, the operation might fail. Run the following PowerShell command on the computer being used to deploy or update the resource provider to verify that TLS 1.2 is returned as supported:
 
   ```powershell
   [System.Net.ServicePointManager]::SecurityProtocol
   ```
 
-  If **Tls12** is not included in the output of the command, TLS 1.2 is not enabled on the computer.
+  If **Tls12** isn't included in the output of the command, TLS 1.2 isn't enabled on the computer.
 
     **Workaround**: Run the following PowerShell command to enable TLS 1.2 and then start the resource provider deployment or update script from the same PowerShell session:
 

@@ -6,10 +6,10 @@ author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: overview
-ms.date: 04/24/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 04/24/2019
+ms.lastreviewed: 10/02/2019
 
 # keywords:  Deploy an app to Azure Stack
 # Intent: I am a developer using Windows 10 or Linux Ubuntu who would like to deploy an app for Azure Stack.
@@ -101,4 +101,4 @@ This article uses Ruby and a Ruby on Rails web framework.
 
 - Learn more about how to [develop for Azure Stack](azure-stack-dev-start.md).
 - Learn about [common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
-- To learn the Ruby programming language and find additional resources for Python, see [Ruby-lang.org](https://www.ruby-lang.org).
+- To learn the Ruby programming language and find additional resources for Ruby, see [Ruby-lang.org](https://www.ruby-lang.org).

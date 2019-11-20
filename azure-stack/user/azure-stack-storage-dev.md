@@ -4,7 +4,7 @@ description: Guidance to get started with using Azure Stack storage development 
 services: azure-stack 
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 06/13/2019
+ms.date: 10/02/2019
 ms.topic: conceptual
 ms.service: azure-stack
 manager: femila
@@ -28,6 +28,7 @@ Use this article as a guide to get started using Azure Stack storage development
 
 For the storage client libraries, be aware of the version that is compatible with the REST API. You must also specify the Azure Stack endpoint in your code.
 
+::: moniker range=">=azs-1811"
 ### 1811 update or newer versions
 
 | Client library | Azure Stack supported version | Link | Endpoint specification |
@@ -56,7 +57,9 @@ To install via Composer: (take the blob as an example).
 
 2. Download [composer.phar](https://getcomposer.org/composer.phar) to the project root.
 3. Run: `php composer.phar install`.
+::: moniker-end
 
+::: moniker range=">=azs-1802 <=azs-1809"
 ### Previous versions (1802 to 1809 update)
 
 | Client library | Azure Stack supported version | Link | Endpoint specification |
@@ -85,6 +88,7 @@ To install via Composer: (take blob as example).
 
 2. Download [composer.phar](https://getcomposer.org/composer.phar) to the project root.
 3. Run: `php composer.phar install`.
+:::moniker-end
 
 ## Endpoint declaration
 

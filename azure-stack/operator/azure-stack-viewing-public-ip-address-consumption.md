@@ -1,6 +1,6 @@
 ---
-title: View public IP address consumption in Azure Stack | Microsoft Docs
-description: Administrators can view the consumption of public IP addresses in a region
+title: Manage network resources in Azure Stack | Microsoft Docs
+description: Administrators can manage network resources, including the MAC address pool and the consumption of public IP addresses in a region
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,13 +12,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/16/2019
+ms.date: 09/17/2019
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.lastreviewed: 01/14/2019
+ms.lastreviewed: 09/17/2019
 
 ---
-# View public IP address consumption in Azure Stack
+# Manage network resources
+
+## MAC address pool
+
+Azure Stack uses a static MAC address pool to automatically generate and assign MAC address to virtual machines.
+This MAC address pool is automatically generated during deployment and uses the following range:
+
+- StartMacAddress: 00-1D-D8-B7-00-00
+- EndMacAddress : 00-1D-D8-F4-FF-FF
+
+> [!Note]  
+> This MAC address pool is the same across each Azure Stack system and is not configurable.
+
+Depending on how the virtual networks connect with existing corporate networks, you may expect duplicated MAC addresses of virtual machines.
+
+More information can be found about MAC address pool utilization using the cmdlet [Get-AzsMacAddressPool](https://docs.microsoft.com/powershell/module/azs.fabric.admin/get-azsmacaddresspool) in the Azure Stack Administrator PowerShell Module.
+
+## View public IP address consumption in Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
@@ -36,7 +53,7 @@ they are running low on this resource.
 The **Public IP addresses** menu item under **Tenant Resources** lists only those public IP addresses that have been *explicitly created by tenants*. You can find the menu item on the **Resource providers**, **Network** pane. The number of **Used** public IP addresses on the **Public IP pools usage** tile is always different from (larger than) the number on the **Public IP Addresses** tile
 under **Tenant Resources**.
 
-## View the public IP address usage information
+### View the public IP address usage information
 
 To view the total number of public IP addresses that have been consumed
 in the region:
@@ -44,15 +61,15 @@ in the region:
 1. In the Azure Stack administrator portal, select **All services**. Then, under the **ADMINISTRATION** category select **Network**.
 1. The **Network** pane displays the **Public IP pools usage** tile in the **Overview** section.
 
-![Network Resource Provider pane](media/azure-stack-viewing-public-ip-address-consumption/image01.png)
+    ![Network Resource Provider pane](media/azure-stack-viewing-public-ip-address-consumption/ip-address-consumption-01.png)
 
 The **Used** number represents the number of assigned public IP addresses from public IP address pools. The **Free** number represents the number of public IP addresses from public IP address pools that have not been assigned and are still available. The **% Used** number represents the number of used or assigned addresses as a percentage of the total number of public IP addresses in public IP address pools in that location.
 
-## View the public IP addresses that were created by tenant subscriptions
+### View the public IP addresses that were created by tenant subscriptions
 
 Select **Public IP addresses** under **Tenant Resources**. Review the list of public IP addresses explicitly created by tenant subscriptions in a specific region.
 
-![Tenant public IP addresses](media/azure-stack-viewing-public-ip-address-consumption/image02.png)
+![Tenant public IP addresses](media/azure-stack-viewing-public-ip-address-consumption/ip-address-consumption-02.png)
 
 You might notice that some public IP addresses that have been dynamically allocated appear in the list. However, an address hasn't been associated with them yet. The address resource has been created in the Network Resource Provider, but not yet in the Network Controller.
 
@@ -62,7 +79,7 @@ binds to an interface, a network interface card
 address binds to an interface, the Network Controller allocates an IP
 address. The address appears in the **Address** field.
 
-## View the public IP address information summary table
+### View the public IP address information summary table
 
 In different cases, public IP addresses are
 assigned that determine whether the address appears in one

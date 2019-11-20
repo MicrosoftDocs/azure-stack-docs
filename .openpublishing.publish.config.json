@@ -6,7 +6,7 @@
       "build_output_subfolder": "AzureStack",
       "locale": "en-us",
       "monikers": [],
-      "moniker_ranges": [],
+      "moniker_ranges": [">=azs-1802"],
       "open_to_public_contributors": true,
       "type_mapping": {
         "Conceptual": "Content",
@@ -47,11 +47,7 @@
     "master": [
       "Publish",
       "PDF"
-    ],
-    "release-1904": [
-      "Publish",
-      "PDF"
-    ] 
+    ]
   },
   "need_generate_pdf_url_template": true,
   "targets": {

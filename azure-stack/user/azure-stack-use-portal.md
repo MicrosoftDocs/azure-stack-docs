@@ -1,5 +1,5 @@
 ---
-title: Use the Azure Stack portal | Microsoft Docs
+title: Use the Azure Stack user portal | Microsoft Docs
 description: Learn how to access and use the user portal in Azure Stack.
 services: azure-stack
 documentationcenter: ''
@@ -11,13 +11,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2019
+ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: efemmano
 ms.lastreviewed: 01/25/2019
 
 ---
-# Use the Azure Stack portal
+# Use the Azure Stack user portal
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 

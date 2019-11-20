@@ -23,7 +23,7 @@ ms.lastreviewed: 01/14/2019
 
 This article provides SQL server best practices to optimize SQL Server and improve performance in Microsoft Azure Stack virtual machines (VMs). When running SQL Server in Azure Stack VMs, use the same database performance-tuning options applicable to SQL Server in an on-premises server environment. The performance of a relational database in an Azure Stack cloud depends on many factors, including family size of a VM and the configuration of the data disks.
 
-When creating SQL Server images, [consider provisioning your VMs in the Azure Stack portal](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Download the SQL IaaS Extension from Marketplace Management in the Azure Stack Admin Portal and download your choice of SQL VM virtual hard drives (VHDs). These include SQL2014SP2, SQL2016SP1, and SQL2017.
+When creating SQL Server images, [consider provisioning your VMs in the Azure Stack portal](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Download the SQL IaaS Extension from Marketplace Management in the Azure Stack administrator portal and download your choice of SQL VM virtual hard drives (VHDs). These include SQL2014SP2, SQL2016SP1, and SQL2017.
 
 > [!NOTE]  
 > While the article describes how to provision a SQL Server VM using the global Azure portal, the guidance also applies to Azure Stack with the following differences: SSD isn't available for the operating system disk, managed disks are not available, and there are minor differences in storage configuration.
@@ -94,12 +94,12 @@ We recommend storing TempDB on a data disk as each data disk provides a maximum 
 
 ### Data disks
 
-- **Use data disks for data and log files.** If you're not using disk striping, use two data disks from a VM that supports Premium storage, where one disk contains the log files and the other contains the data and TempDB files. Each data disk provides a number of IOPS and bandwidth (MB/s) depending on the VM family, as described in [VM sizes supported in Azure Stack](azure-stack-vm-sizes.md). If you're using a disk-striping technique, such as Storage Spaces, place all data and log files on the same drive (including TempDB). This configuration gives you the maximum number of IOPS available for SQL Server to consume, no matter which file needs them at any particular time.
+- **Use data disks for data and log files.** If you're not using disk striping, use two data disks from a VM that supports Premium storage, where one disk contains the log files and the other contains the data and TempDB files. Each data disk provides a number of IOPS depending on the VM family, as described in [VM sizes supported in Azure Stack](azure-stack-vm-sizes.md). If you're using a disk-striping technique, such as Storage Spaces, place all data and log files on the same drive (including TempDB). This configuration gives you the maximum number of IOPS available for SQL Server to consume, no matter which file needs them at any particular time.
 
 > [!NOTE]  
 > When you provision a SQL Server VM in the portal, you have the option of editing your storage configuration. Depending on your configuration, Azure Stack configures one or more disks. Multiple disks are combined into a single storage pool. Both the data and log files reside together in this configuration.
 
-- **Disk striping:** For more throughput, you can add additional data disks and use disk striping. To determine the number of data disks you need, analyze the number of IOPS and bandwidth required for your log files and for your data and TempDB files. Notice that IOPS limits are per data disk based on the VM series family, and not based on the VM size. Network bandwidth limits, however, are based on the VM size. See the tables on [VM sizes in Azure Stack](azure-stack-vm-sizes.md) for more detail. Use the following guidelines:
+- **Disk striping:** For more throughput, you can add additional data disks and use disk striping. To determine the number of data disks you need, analyze the number of IOPS required for your log files and for your data and TempDB files. Notice that IOPS limits are per data disk based on the VM series family, and not based on the VM size. Network bandwidth limits, however, are based on the VM size. See the tables on [VM sizes in Azure Stack](azure-stack-vm-sizes.md) for more detail. Use the following guidelines:
 
   - For Windows Server 2012 or later, use [Storage Spaces](https://technet.microsoft.com/library/hh831739.aspx) with the following guidelines:
 

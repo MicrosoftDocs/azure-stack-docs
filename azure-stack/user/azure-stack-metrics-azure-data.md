@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 08/27/2019
 ms.author: mabrigg
 ms.lastreviewed: 12/01/2018
 
@@ -28,7 +28,7 @@ For an overview of Azure Monitor, see the global Azure article [Get started with
 
 ![Azure Stack Monitor blade](./media/azure-stack-metrics-azure-data/azs-monitor.png)
 
-Azure Monitor is a platform service that provides a single source for monitoring Azure resources. Azure Monitor lets you visualize, query, route, archive, and take other actions on metrics and logs coming from resources in Azure. You can work with this data by using the Azure Stack admin portal, Monitor PowerShell Cmdlets, Cross-Platform CLI, or Azure Monitor REST APIs. For the specific connectivity supported by Azure Stack, see [How to consume monitoring data from Azure Stack](azure-stack-metrics-monitor.md).
+Azure Monitor is a platform service that provides a single source for monitoring Azure resources. Azure Monitor lets you visualize, query, route, archive, and take other actions on metrics and logs coming from resources in Azure. You can work with this data by using the Azure Stack administrator portal, Monitor PowerShell Cmdlets, Cross-Platform CLI, or Azure Monitor REST APIs. For the specific connectivity supported by Azure Stack, see [How to consume monitoring data from Azure Stack](azure-stack-metrics-monitor.md).
 
 > [!Note]
 > Metrics and diagnostic logs aren't available for the Azure Stack Development Kit.
@@ -37,9 +37,9 @@ Azure Monitor is a platform service that provides a single source for monitoring
 
 Register the **Microsoft.insights** resource provider on your subscription's offer resource providers settings. You can verify that the resource provider is available in your offer associated with your subscription:
 
-1. Open the Azure Stack admin portal.
-2. Select **Offers**.
-3. Select the offer associated with the subscription.
+1. Open the Azure Stack user portal .
+2. Select **Subscriptions**.
+3. Select the subscription you want to register.
 4. Select **Resource providers** under **Settings.** 
 5. Find **Microsoft.Insights** in the list and verify that the status is **Registered**.
 
@@ -112,19 +112,22 @@ You can use the Azure Monitor REST API, cross-platform Command-Line Interface (C
 Visualizing your monitoring data in graphics and charts helps you find trends quicker than looking through the data itself. 
 
 A few visualization methods include:
- - Use the Azure Stack user and admin portal.
+ - Use the Azure Stack user and administrator portal.
  - Route data to Microsoft Power BI.
  - Route the data to a third-party visualization tool using either live streaming or by having the tool read from an archive in Azure storage.
 
 ## Methods of accessing Azure monitor on Azure Stack
 
-In general, you can manipulate data tracking, routing, and retrieval using one of the following methods. Not all methods are available for all actions or data types.
+You can work with data tracking, routing, and retrieval using one of the following methods. Not all methods are available for all actions or data types. 
 
- - [Azure Stack Portal](azure-stack-use-portal.md)
+ - [Azure Stack user portal ](azure-stack-use-portal.md)
  - [PowerShell](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-powershell-samples)
  - [Cross-platform Command Line Interface(CLI)](https://docs.microsoft.com/azure/monitoring-and-diagnostics/insights-cli-samples)
  - [REST API](https://docs.microsoft.com/rest/api/monitor)
  - [.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor)
+
+> [!Important]  
+> If you encounter a **resource not found** error when viewing the performance graph of a VM, make sure you've registered Microsoft.insights on the subscription associated with the VM.
 
 ## Next steps
 

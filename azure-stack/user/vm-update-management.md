@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: rtiberiu
-ms.lastreviewed: 03/20/2019
+ms.lastreviewed: 11/11/2019
 ---
 
 # VM update and management automation in Azure Stack
@@ -40,7 +40,7 @@ Several prerequisites must be met before using these features to update and mana
 To use the Azure Monitor for VMs, Inventory, Change Tracking, and Update Management Azure Automation features for Azure Stack VMs, you first need to enable these solutions in Azure.
 
 > [!TIP]
-> If you've already enabled these features for Azure VMs, you can use your pre-existing LogAnalytics Workspace credentials. If you already have a LogAnalytics WorkspaceID and Primary Key that you want to use, skip ahead to [the next section](./vm-update-management.md#in-the-azure-stack-admin-portal). Otherwise, continue in this section to create a new LogAnalytics Workspace and automation account.
+> If you've already enabled these features for Azure VMs, you can use your pre-existing LogAnalytics Workspace credentials. If you already have a LogAnalytics WorkspaceID and Primary Key that you want to use, skip ahead to [the next section](./vm-update-management.md#in-the-azure-stack-administrator-portal). Otherwise, continue in this section to create a new LogAnalytics Workspace and automation account.
 
 The first step in enabling these solutions is to [create a LogAnalytics Workspace](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace) in your Azure subscription. A Log Analytics workspace is a unique Azure Monitor logs environment with its own data repository, data sources, and solutions. After you've created a workspace, note the WorkspaceID and Key. To view this information, go to the workspace blade, click on **Advanced settings**, and review the **Workspace ID** and **Primary Key** values. 
 
@@ -72,8 +72,8 @@ As a solution, Azure Monitor for VMs includes support for monitoring performance
 
 After the Log Analytics Workspace is created, enable the performance counters in the workspace for collection on Linux and Windows VMs. Then, install and enable the ServiceMap and InfrastructureInsights solution in your workspace. The process is described in the [Deploy Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-onboard#how-to-enable-azure-monitor-for-vms-preview) guide.
 
-### In the Azure Stack admin portal
-After enabling the Azure Automation solutions in the Azure portal, you next need to sign in to the Azure Stack admin portal as a cloud admin and download the **Azure Monitor, Update and Configuration Management** and the **Azure Monitor, Update and Configuration Management for Linux** extension in the Azure Stack marketplace.
+### In the Azure Stack administrator portal
+After enabling the Azure Automation solutions in the Azure portal, you next need to sign in to the Azure Stack administrator portal as a cloud admin and download the **Azure Monitor, Update and Configuration Management** and the **Azure Monitor, Update and Configuration Management for Linux** extension in the Azure Stack marketplace.
 
    ![Azure Monitor, update and configuration management extension marketplace item](media/vm-update-management/2.PNG) 
 
@@ -127,6 +127,7 @@ The [Using Azure Monitor for VMs Map to understand app components](https://docs.
 
    ![Azure Monitor VMs Map tab](https://docs.microsoft.com/azure/azure-monitor/insights/media/vminsights-maps/map-multivm-azure-monitor-01.png)
 
+In case [Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview) is not showing you any performance data, you have to enable the collection of performance data for Windows and Linux in your [LogAnalytics Workspace](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-performance-counters) Advanced Settings.
 
 ## Enable Update Management using a Resource Manager template
 If you have a large number of Azure Stack VMs, you can use [this Azure Resource Manager template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) to more easily deploy the solution on VMs. The template deploys the Microsoft Monitoring Agent extension to an existing Azure Stack VM and adds it to an existing Azure LogAnalytics workspace.

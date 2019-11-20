@@ -3,7 +3,7 @@ title: Create a subscription with an offer in Azure Stack | Microsoft Docs
 description: Learn how to create a new subscription with an offer in Azure Stack and then test the offer with a test VM.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: bryanla
 manager: femila
 editor: ''
 
@@ -15,7 +15,7 @@ ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/04/2019
-ms.author: sethm
+ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 11/13/2018
 ---
@@ -56,7 +56,7 @@ To subscribe to an offer as a user, sign in to the Azure Stack user portal to ch
 
 ## Test the offer
 
-While signed in to the user portal, test the offer by provisioning a (VM) using the new subscription capabilities.
+While signed in to the user portal, test the offer by provisioning a VM using the new subscription capabilities.
 
 > [!NOTE]
 > This test requires that a Windows Server 2016 Datacenter VM first be added to the Azure Stack marketplace.

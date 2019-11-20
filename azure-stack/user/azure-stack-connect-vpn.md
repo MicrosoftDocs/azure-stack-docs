@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/21/2019
+ms.date: 10/04/2019
 ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2018
@@ -23,7 +23,7 @@ ms.lastreviewed: 10/24/2018
 
 *Applies to: Azure Stack integrated systems*
 
-This article shows you how to create a site-to-site VPN to connect a virtual network in Azure Stack to a virtual network in Azure.
+This article describes how to create a site-to-site VPN to connect a virtual network in Azure Stack to a virtual network in Azure.
 
 ## Before you begin
 

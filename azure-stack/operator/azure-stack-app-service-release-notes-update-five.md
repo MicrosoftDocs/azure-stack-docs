@@ -1,6 +1,6 @@
 ---
-title: App Service on Azure Stack update 5 release notes | Microsoft Docs
-description: Learn about what's in update five for App Service on Azure Stack, the known issues, and where to download the update.
+title: App Service on Azure Stack Update 5 release notes | Microsoft Docs
+description: Learn about improvements, fixes, and known issues in Update 5 for App Service on Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -19,36 +19,35 @@ ms.reviewer: anwestg
 ms.lastreviewed: 03/25/2019
 
 ---
-# App Service on Azure Stack update 5 release notes
+# App Service on Azure Stack Update 5 release notes
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-These release notes describe the improvements and fixes in Azure App Service on Azure Stack Update 5 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
+These release notes describe improvements, fixes, and known issues in Azure App Service on Azure Stack Update 5. Known issues are divided into three sections: issues directly related to deployment, issues with the update process, and issues with the build (post-installation).
 
 > [!IMPORTANT]
-> Apply the 1901 update to your Azure Stack integrated system or deploy the latest Azure Stack development kit before deploying Azure App Service 1.5.
-
+> Apply the 1901 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before deploying Azure App Service 1.5.
 
 ## Build reference
 
-The App Service on Azure Stack Update 5 build number is **80.0.2.15**
+The App Service on Azure Stack Update 5 build number is **80.0.2.15**.
 
 ### Prerequisites
 
-Refer to the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
+Refer to the [Prerequisites for deploying App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
 Before you begin the upgrade of Azure App Service on Azure Stack to 1.5:
 
-- Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Admin Portal
+- Ensure all roles are ready in the Azure App Service administration in the Azure Stack administrator portal.
 
-- Back up the App Service and Master Databases:
+- Back up the App Service and master databases:
   - AppService_Hosting;
   - AppService_Metering;
   - Master
 
-- Back up the Tenant App content file share
+- Back up the tenant app content file share.
 
-- Syndicate the **Custom Script Extension** version **1.9.1** from the Marketplace
+- Syndicate the **Custom Script Extension** version **1.9.1** from Azure Marketplace.
 
 ### New features and fixes
 
@@ -62,7 +61,7 @@ Azure App Service on Azure Stack Update 5 includes the following improvements an
 
 - Updates to core service to improve reliability and error messaging enabling easier diagnosis of common issues.
 
-- **Updates to the following application frameworks and tools**:
+- **Updates to the following app frameworks and tools**:
   - Added ASP.NET Core 2.1.6 and 2.2.0
   - Added NodeJS 10.14.1
   - Added NPM 6.4.1
@@ -74,20 +73,18 @@ Azure App Service on Azure Stack Update 5 includes the following improvements an
 ### Post-deployment Steps
 
 > [!IMPORTANT]  
-> If you have provided the App Service resource provider with a SQL Always On Instance you MUST [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
+> If you've provided the App Service resource provider with a SQL Always On Instance you *must* [add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) and synchronize the databases to prevent any loss of service in the event of a database failover.
 
 ### Post-update steps
 
-For customers wishing to migrate to contained database for existing Azure App Service on Azure Stack deployments, execute these steps after the Azure App Service on Azure Stack 1.5 update has completed:
+For customers wishing to migrate to a contained database for existing Azure App Service on Azure Stack deployments, execute these steps after the Azure App Service on Azure Stack 1.5 update has completed:
 
 > [!IMPORTANT]
-> The migration procedure takes approximately 5-10 minutes.  The procedure involves killing the existing database login sessions.  Plan for downtime to migrate and validate Azure App Service on Azure Stack post migration.  If you completed these steps after updating to Azure App Service on Azure Stack 1.3 then these steps are not required.
->
->
+> The migration procedure takes approximately 5-10 minutes. The procedure involves killing the existing database login sessions. Plan for downtime to migrate and validate Azure App Service on Azure Stack post migration. If you completed these steps after updating to Azure App Service on Azure Stack 1.3 then these steps aren't required.
 
-1. Add [AppService databases (appservice_hosting and appservice_metering) to an Availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)
+1. Add [AppService databases (appservice_hosting and appservice_metering) to an Availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database).
 
-1. Enable contained database
+1. Enable contained database.
     ```sql
 
         sp_configure 'contained database authentication', 1;
@@ -96,7 +93,7 @@ For customers wishing to migrate to contained database for existing Azure App Se
             GO
     ```
 
-1. Converting a Database to Partially Contained, the conversion will incur downtime as all active sessions need to be killed
+1. Converting a database to partially contained, the conversion will incur downtime as all active sessions need to be killed.
 
     ```sql
         /******** [appservice_metering] Migration Start********/
@@ -136,9 +133,9 @@ For customers wishing to migrate to contained database for existing Azure App Se
             GO  
 
             /********[appservice_hosting] Migration End********/
-    '''
+    ```
 
-1. Migrate Logins to Contained Database Users
+1. Migrate logins to contained database users.
 
     ```sql
         IF EXISTS(SELECT * FROM sys.databases WHERE Name=DB_NAME() AND containment = 1)
@@ -167,27 +164,28 @@ For customers wishing to migrate to contained database for existing Azure App Se
         GO
     ```
 
-Validate
+**Validate**
 
-1. Check if SQL Server has containment enabled
+1. Check if SQL Server has containment enabled.
 
     ```sql
         sp_configure  @configname='contained database authentication'
     ```
 
-1. Check existing contained behavior
+1. Check existing contained behavior.
     ```sql
         SELECT containment FROM sys.databases WHERE NAME LIKE (SELECT DB_NAME())
     ```
 
 ### Known issues (post-installation)
 
-- Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network,  as called out in the Azure App Service on Azure Stack deployment documentation.
+- Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network. This issue is called out in the Azure App Service on Azure Stack deployment documentation.
 
-If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
+If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule which enables SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the administrator portal and add an outbound security rule with the following properties:
+
  * Source: Any
  * Source port range: *
- * Destination: IP Addresses
+ * Destination: IP addresses
  * Destination IP address range: Range of IPs for your file server
  * Destination port range: 445
  * Protocol: TCP
@@ -195,11 +193,11 @@ If you chose to deploy into an existing virtual network and an internal IP addre
  * Priority: 700
  * Name: Outbound_Allow_SMB445
 
-### Known issues for Cloud Admins operating Azure App Service on Azure Stack
+### Known issues for cloud admins operating Azure App Service on Azure Stack
 
-Refer to the documentation in the [Azure Stack 1809 Release Notes](azure-stack-update-1903.md)
+Refer to the documentation in the [Azure Stack 1809 release notes](azure-stack-update-1903.md).
 
 ## Next steps
 
 - For an overview of Azure App Service, see [Azure App Service on Azure Stack overview](azure-stack-app-service-overview.md).
-- For more information about how to prepare to deploy App Service on Azure Stack, see [Before you get started with App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md).
+- For more info on how to prepare to deploy App Service on Azure Stack, see [Prerequisites for deploying App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md).

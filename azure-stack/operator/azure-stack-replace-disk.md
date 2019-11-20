@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2019
+ms.date: 10/10/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 06/04/2019
@@ -70,10 +70,10 @@ After you replace the disk, you can monitor the virtual disk health status and r
 $scaleunit=Get-AzsScaleUnit
 $StorageSubSystem=Get-AzsStorageSubSystem -ScaleUnit $scaleunit.Name
 
-Get-AzsDrive -StorageSubSystem $StorageSubSystem.Name -ScaleUnit $scaleunit.name | Format-Table Storagenode, Healthstatus, PhysicalLocation, Model, MediaType,  CapacityGB, CanPool, CannotPoolReason
+Get-AzsDrive -StorageSubSystem $StorageSubSystem.Name -ScaleUnit $scaleunit.name | Sort-Object StorageNode,MediaType,PhysicalLocation | Format-Table Storagenode, Healthstatus, PhysicalLocation, Model, MediaType,  CapacityGB, CanPool, CannotPoolReason
 ```
 
-![Replaced physical disks in Azure Stack](media/azure-stack-replace-disk/get-azure-stack-volumes-health.png)
+![Replaced physical disks in Azure Stack](media/azure-stack-replace-disk/check-replaced-physical-disks-azure-stack.png)
 
 ## Check the status of virtual disk repair using the privileged endpoint
  

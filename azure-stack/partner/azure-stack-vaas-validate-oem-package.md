@@ -11,10 +11,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 11/11/2019
 
 ROBOTS: NOINDEX
 
@@ -148,24 +148,30 @@ Use this option if it is acceptable to allow unauthenticated clients access to i
 
 5. Enter the Azure Storage blob URL to the test signed OEM package requiring a signature from Microsoft. For instructions, see [Generate package blob URL for VaaS](#generate-package-blob-url-for-vaas).
 
-6. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
+6. Copy the AzureStack update package folder to a local directory on the DVM. Enter the parent directory path for 'AzureStack update package folder path'
 
-7. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
+7. Copy the OEM package folder created above to a local directory on the DVM. Enter the parent directory path for 'OEM update package folder path'
+
+    > [!NOTE]
+    > Copy the AzureStack update and OEM update to **2 separate** parent directories.
+
+8. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
 
     > [!NOTE]
     > Environment parameters cannot be modified after creating a workflow.
 
-8. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
+9. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
 
-9. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
+10. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
     You will be redirected to the tests summary page.
 
 ## Required tests
 
-The following tests are required for OEM package validation:
+The following tests are required to be run, in the order specified, for OEM package validation:
 
-- OEM Extension Package Verification
-- Cloud Simulation Engine
+- Step 1 - Monthly AzureStack Update Verification
+- Step 2 - OEM Extension Package Verification
+- Step 3 - OEM - Cloud Simulation Engine
 
 ## Run Package Validation tests
 
@@ -177,40 +183,20 @@ The following tests are required for OEM package validation:
     > Scheduling a validation test over an existing instance will create a new instance in place of the old instance in the portal. Logs for the old instance will be retained but are not accessible from the portal.  
     > Once a test has completed successfully, the **Schedule** action becomes disabled.
 
-2. Select the agent that will run the test. For information about adding local test execution agents, see [Deploy the local agent](azure-stack-vaas-local-agent.md).
+2. For package validation you will run the **required tests**, in the order listed.
 
-3. To complete OEM Extension Package Verification, select **Schedule** from the context menu to open a prompt for scheduling the test instance.
+    > [!CAUTION]
+    > VaaS will run the tests in the order they were scheduled. It is required to schedule the tests in the order specified.
 
-4. Review the test parameters and then select **Submit** to schedule OEM Extension Package Verification for execution.
+3. Select the agent that will run the test. For information about adding local test execution agents, see [Deploy the local agent](azure-stack-vaas-local-agent.md).
 
-    OEM Extension Package Verification is split into two manual steps: Azure Stack Update, and OEM Update.
+4. To schedule the test run, select **Schedule** from the context menu to open a prompt for scheduling the test instance.
 
-   1. **Select** "Run" in the UI to execute the precheck script. This is an automated test that takes about 5 minutes to complete and requires no action.
+5. Review the test parameters and then select **Submit** to schedule the test.
 
-   1. Once the precheck script has completed, perform the manual step: **install** the latest available Azure Stack update using the Azure Stack portal.
+6. You do not need to wait for the test to complete before scheduling the next test. Schedule all **required** tests in the order specified above.
 
-   1. **Run** Test-AzureStack on the stamp. If any failures occur, do not continue with the test and contact [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com).
-
-       For information on how to run the Test-AzureStack command, see [Validate Azure Stack system state](../operator/azure-stack-diagnostic-test.md).
-
-   1. **Select** "Next" to execute the postcheck script. This is an automated test and marks the end of the Azure Stack update process.
-
-   1. **Select** "Run" to execute the precheck script for OEM Update.
-
-   1. Once the precheck has completed, perform the manual step: **install** the OEM extension package through the portal.
-
-   1. **Run** Test-AzureStack  on the stamp.
-
-      > [!NOTE]
-      > As before, do not continue with the test and contact [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) if it fails. This step is critical as it will save you a redeployment.
-
-   1. **Select** "Next" to execute the postcheck script. This marks the end of the OEM update step.
-
-   1. Answer any remaining questions at the end of the test and **select** "Submit".
-
-   1. This marks the end of the interactive test.
-
-5. Review the result for OEM Extension Package Verification. Once the test has succeeded, schedule Cloud Simulation Engine for execution.
+7. Review the results for the **required** tests.
 
 To submit a package signing request, send [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) the Solution name and Package Validation name associated with this run.
 

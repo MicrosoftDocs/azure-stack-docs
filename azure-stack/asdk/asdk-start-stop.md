@@ -1,6 +1,6 @@
 ---
-title: Start and stop the Azure Stack Development Kit (ASDK) | Microsoft Docs
-description: Learn how to start and shut down the Azure Stack Development Kit (ASDK).
+title: Start and stop the ASDK | Microsoft Docs
+description: Learn how to start and stop the Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -21,14 +21,14 @@ ms.lastreviewed: 07/18/2019
 
 ---
 
-# Start and stop the Azure Stack Development Kit (ASDK)
-It is not recommended to simply restart the ASDK host computer. Instead, you should follow the procedures in this article to properly shut down and restart ASDK services. 
+# Start and stop the ASDK
+It's not recommended to simply restart the ASDK host computer. Instead, follow the procedures in this article to properly shut down and restart ASDK services.
 
 ## Stop Azure Stack 
 To properly shut down Azure Stack services, and the ASDK host computer, use the following PowerShell commands:
 
 1. Log in as AzureStack\AzureStackAdmin on the ASDK host computer.
-2. Open PowerShell as an administrator (not PowerShell ISE).
+2. Open PowerShell as an admin (not PowerShell ISE).
 3. Run the following commands to establish a privileged endpoint (PEP) session: 
 
    ```powershell
@@ -42,13 +42,13 @@ To properly shut down Azure Stack services, and the ASDK host computer, use the 
 5. Review the PowerShell output to ensure all Azure Stack services are successfully shut down before the ASDK host computer shuts down. The shutdown process takes several minutes.
 
 ## Start Azure Stack 
-ASDK services should start automatically when the host computer is started. However, ASDK infrastructure services startup time varies based on the performance of the ASDK host computer hardware configuration. It can take several hours for all services to successfully restart in some cases.
+ASDK services should start automatically when the host computer is started. However, ASDK infrastructure services startup time varies based on the performance of the ASDK host computer's hardware configuration. It can take several hours for all services to successfully restart in some cases.
 
 Regardless of how the ASDK was shut down, you should use the following steps to verify that all Azure Stack services are started and fully operational after the host computer is powered on: 
 
 1. Power on the ASDK host computer. 
 2. Log in as AzureStack\AzureStackAdmin on the ASDK host computer.
-3. Open PowerShell as an administrator (not PowerShell ISE).
+3. Open PowerShell as an admin (not PowerShell ISE).
 4. Run the following commands to establish a privileged endpoint (PEP) session:
 
    ```powershell
@@ -61,13 +61,13 @@ Regardless of how the ASDK was shut down, you should use the following steps to 
    ```
 6. Review the output to ensure that Azure Stack services have restarted successfully.
 
-To learn more about the recommended procedures to properly shut down and restart Azure Stack services, see [Start and stop Azure Stack](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep). 
+To learn more about the recommended procedures to properly shut down and restart Azure Stack services, see [Start and stop Azure Stack](../operator/azure-stack-start-and-stop.md).
 
 ## Troubleshoot startup and shutdown 
-Perform these steps if Azure Stack services don't successfully start within two hours after you power on your ASDK host computer:
+Follow these steps if Azure Stack services don't successfully start within two hours after you power on your ASDK host computer:
 
 1. Log in as AzureStack\AzureStackAdmin on the ASDK host computer.
-2. Open PowerShell as an administrator (not PowerShell ISE).
+2. Open PowerShell as an admin (not PowerShell ISE).
 3. Run the following commands to establish a privileged endpoint (PEP) session:
 
    ```powershell
@@ -88,4 +88,4 @@ Perform these steps if Azure Stack services don't successfully start within two 
 If running **Start-AzureStack** results in a failure, visit the [Azure Stack support forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack) to get ASDK troubleshooting support. 
 
 ## Next steps 
-Learn more about Azure Stack diagnostic tool and issue logging, see [Azure Stack diagnostic tools](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep).
+Learn more about Azure Stack diagnostic tool and issue logging, see [Azure Stack diagnostic tools](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#using-pep-to-collect-diagnostic-logs).

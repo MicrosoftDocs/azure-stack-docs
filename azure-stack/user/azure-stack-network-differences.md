@@ -5,7 +5,7 @@ services: azure-stack
 keywords: 
 author: mattbriggs
 manager: femila
-ms.date: 07/10/2019
+ms.date: 10/10/2019
 ms.topic: article
 ms.service: azure-stack
 ms.author: mabrigg
@@ -58,6 +58,7 @@ This article provides an overview of the unique considerations for Azure Stack n
 |  | Inbound NAT Rules support for Service Endpoints | Azure supports specifying Service Endpoints for Inbound NAT rules. | Azure Stack doesn't yet support Service Endpoints, so these can't be specified. |
 |  | Protocol | Azure Supports specifying GRE or ESP. | Protocol Class isn't supported in Azure Stack. |
 | Public IP Address | Public IP Address Version | Azure supports both IPv6 and IPv4. | Only IPv4 is supported. |
+| | SKU | Azure supports Basic and Standard. | Only Basic is supported. |
 | Network Interface | Get Effective Route Table | Supported | Not yet supported. |
 |  | Get Effective ACLs | Supported | Not yet supported. |
 |  | Enable Accelerated Networking | Supported | Not yet supported. |
@@ -71,6 +72,23 @@ This article provides an overview of the unique considerations for Azure Stack n
 | Application gateway | Layer-7 load balancing | Supported | Not yet supported. |
 | Traffic Manager | Route incoming traffic for optimal application performance and reliability. | Supported | Not yet supported. |
 | Express Route | Set up a fast, private connection to Microsoft cloud services from your on-premises infrastructure or colocation facility. | Supported | Support for connecting Azure Stack to an Express Route circuit. |
+
+## API versions 
+
+Azure Stack Networking supports the following API versions: 
+
+- 2018-11-01
+- 2018-10-01
+- 2018-08-01
+- 2018-07-01
+- 2018-06-01
+- 2018-05-01
+- 2018-04-01
+- 2018-03-01
+- 2018-02-01
+- 2018-01-01
+- 2017-11-01
+- 2017-10-01
 
 ## Next steps
 

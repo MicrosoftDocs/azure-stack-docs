@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 08/12/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019
@@ -27,7 +27,7 @@ Azure Stack multi-node systems that use the consumption-based billing model shou
 > [!IMPORTANT]
 > All workloads [must be deployed under tenant subscriptions](#are-users-charged-for-the-infrastructure-vms) to comply with the licensing terms of Azure Stack.
 
-Usage data reporting is required for the Azure Stack multi-node users who license under the pay-as-you-use model. It is optional for customers who license under the capacity model (see the [How to buy](https://azure.microsoft.com/overview/azure-stack/how-to-buy/) page). For Azure Stack Development Kit users, Azure Stack operators can report usage data and test the feature. However, users will not be charged for any usage they incur.
+Usage data reporting is required for the Azure Stack multi-node users who license under the pay-as-you-use model. It is optional for customers who license under the capacity model (see the [How to buy](https://azure.microsoft.com/overview/azure-stack/how-to-buy/) page). For Azure Stack Development Kit (ASDK) users, Azure Stack operators can report usage data and test the feature. However, users will not be charged for any usage they incur.
 
 ![billing flow](media/azure-stack-usage-reporting/billing-flow.png)
 
@@ -48,7 +48,7 @@ To set up usage data reporting, you must [register your Azure Stack instance wit
 
 - To test usage data reporting, create a few resources in Azure Stack. For example, you can create a [storage account](azure-stack-provision-storage-account.md), [Windows Server VM](../user/azure-stack-create-vm-template.md), and a Linux VM with Basic and Standard SKUs to see how core usage is reported. The usage data for different types of resources are reported under different meters.
 
-- Leave your resources running for few hours. Usage information is collected approximately once every hour. After collecting, this data is transmitted to Azure and processed into the Azure commerce system. This process can take up to a few hours.
+- Leave your resources running for a few hours. Usage information is collected approximately once every hour. After collecting, this data is transmitted to Azure and processed into the Azure commerce system. This process can take up to a few hours.
 
 ## View usage - CSP subscriptions
 
@@ -66,11 +66,11 @@ If you registered your Azure Stack using any other subscription type; for exampl
 
 ![billing flow](media/azure-stack-usage-reporting/pricing-details.png)
 
-For the Azure Stack Development Kit, Azure Stack resources are not charged, so the price shown is $0.00.
+For the ASDK, Azure Stack resources are not charged, so the price shown is $0.00.
 
 ## Which Azure Stack deployments are charged?
 
-Resource usage is free for the Azure Stack Development Kit. Azure Stack multi-node systems, workload VMs, Storage services, and App Services, are charged.
+Resource usage is free for the ASDK. Azure Stack multi-node systems, workload VMs, Storage services, and App Services, are charged.
 
 ## Are users charged for the infrastructure VMs?
 
@@ -92,7 +92,7 @@ For Azure Stack multi-node, Enterprise Agreement (EA) and CSP subscriptions are 
 
 ## Does usage data reporting work in sovereign clouds?
 
-In the Azure Stack Development Kit, usage data reporting requires subscriptions that are created in the global Azure system. Subscriptions created in one of the sovereign clouds (the Azure Government, Azure Germany, and Azure China clouds) cannot be registered with Azure, so they do not support usage data reporting.
+In the Azure Stack Development Kit, usage data reporting requires subscriptions that are created in the global Azure system. Subscriptions created in one of the sovereign clouds (the Azure Government, Azure Germany, and Azure China 21Vianet clouds) cannot be registered with Azure, so they do not support usage data reporting.
 
 ## Why doesn't the usage reported in Azure Stack match the report generated from Azure Account Center?
 
@@ -103,4 +103,4 @@ There is always a delay between the usage data reported by the Azure Stack usage
 - [Provider usage API](azure-stack-provider-resource-api.md)  
 - [Tenant usage API](azure-stack-tenant-resource-usage-api.md)
 - [Usage FAQ](azure-stack-usage-related-faq.md)
-- [Manage usage and billing as a Cloud Service Provider](azure-stack-add-manage-billing-as-a-csp.md)
+- [Manage usage and billing as a Cloud Solution Provider](azure-stack-add-manage-billing-as-a-csp.md)
