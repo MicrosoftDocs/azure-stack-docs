@@ -124,7 +124,7 @@ Changing the largest VM on the Azure Stack fabric will result in an increase in 
 
 **Q**: What state do Tenant VMs have to be in to consume memory?
 
-v: In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs that are in "Creating", "Failed" or VMs shut down from within the guest as opposed to stop deallocated from portal/powershell/cli will consume memory.
+**A**: In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs that are in "Creating", "Failed" or VMs shut down from within the guest as opposed to stop deallocated from portal/powershell/cli will consume memory.
 
 **Q**: I have a four host Azure Stack. My tenant has 3 VMs that consume 56 GB RAM (D5_v2) each. One of the VMs is resized to 112 GB RAM (D14_v2), and available memory reporting on dashboard resulted in a spike of 168 GB usage on the capacity blade. Subsequent resizing of the other two D5_v2 VMs to D14_v2, resulted in only 56GB of RAM increase each. Why is this so?
 
