@@ -23,11 +23,11 @@ ms.lastreviewed: 11/19/2018
 
 # Fix common issues with Azure Stack PKI certificates
 
-The information in this article can help you understand and resolve common issues with Azure Stack PKI certificates. You can discover issues when you use the Azure Stack readiness checker tool to [validate Azure Stack PKI certificates](azure-stack-validate-pki-certs.md). The tool checks to ensure that certificates meet the PKI requirements of an Azure Stack deployment and Azure Stack secret rotation, and logs the results to a [report.json file](azure-stack-validation-report.md).  
+The information in this article helps you understand and resolve common issues with Azure Stack PKI certificates. You can discover issues when you use the Azure Stack Readiness Checker tool to [validate Azure Stack PKI certificates](azure-stack-validate-pki-certs.md). The tool checks if the certificates meet the PKI requirements of an Azure Stack deployment and Azure Stack secret rotation, and then logs the results to a [report.json file](azure-stack-validation-report.md).  
 
 ## PFX Encryption
 
-**Failure** - PFX encryption is not TripleDES-SHA1.
+**Failure** - PFX encryption isn't TripleDES-SHA1.
 
 **Remediation** - Export PFX files with **TripleDES-SHA1** encryption. This is the default for all Windows 10 clients when exporting from certificate snap-in or using `Export-PFXCertificate`.
 
@@ -49,19 +49,19 @@ The information in this article can help you understand and resolve common issue
 
 ## Private key
 
-**Failure** - The private key is missing or does not contain the local machine attribute.  
+**Failure** - The private key is missing or doesn't contain the local machine attribute.  
 
 **Remediation** - From the computer that generated the CSR, re-export the certificate using the steps in [Prepare Azure Stack PKI certificates for deployment](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment). These steps include exporting from the local machine certificate store.
 
 ## Certificate chain
 
-**Failure** - Certificate chain is not complete.  
+**Failure** - Certificate chain isn't complete.  
 
 **Remediation** - Certificates should contain a complete certificate chain. Re-export the certificate using the steps in [Prepare Azure Stack PKI certificates for deployment](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment) and select the option **Include all certificates in the certification path if possible**.
 
 ## DNS names
 
-**Failure** - The **DNSNameList** on the certificate does not contain the Azure Stack service endpoint name, or a valid wildcard match. Wildcard matches are only valid for the left-most namespace of the DNS name. For example, `*.region.domain.com` is only valid for `portal.region.domain.com`, not `*.table.region.domain.com`.
+**Failure** - The **DNSNameList** on the certificate doesn't contain the Azure Stack service endpoint name or a valid wildcard match. Wildcard matches are only valid for the left-most namespace of the DNS name. For example, `*.region.domain.com` is only valid for `portal.region.domain.com`, not `*.table.region.domain.com`.
 
 **Remediation** - Use the steps in Azure Stack certificates signing request generation to regenerate the CSR with the correct DNS names to support Azure Stack endpoints. Resubmit the CSR to a certificate authority, and then follow the steps in [Prepare Azure Stack PKI certificates for deployment](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment) to export the certificate from the machine that generated the CSR.  
 
@@ -69,7 +69,7 @@ The information in this article can help you understand and resolve common issue
 
 **Failure** - Key usage is missing digital signature or key encipherment, or enhanced key usage is missing server authentication or client authentication.  
 
-**Remediation** - Use the steps in [Azure Stack certificates signing request generation](azure-stack-get-pki-certs.md) to regenerate the CSR with the correct key usage attributes. Resubmit the CSR to the certificate authority and confirm that a certificate template is not overwriting the key usage in the request.
+**Remediation** - Use the steps in [Azure Stack certificates signing request generation](azure-stack-get-pki-certs.md) to regenerate the CSR with the correct key usage attributes. Resubmit the CSR to the certificate authority and confirm that a certificate template isn't overwriting the key usage in the request.
 
 ## Key size
 
@@ -85,7 +85,7 @@ The information in this article can help you understand and resolve common issue
 
 ## Other certificates
 
-**Failure** - The PFX package contains certificates that are not the leaf certificate or part of the certificate chain.  
+**Failure** - The PFX package contains certificates that aren't the leaf certificate or part of the certificate chain.  
 
 **Remediation** - Re-export the certificate using the steps in [Prepare Azure Stack PKI certificates for deployment](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment), and select the option **Include all certificates in the certification path if possible**. Ensure that only the leaf certificate is selected for export.
 
@@ -93,12 +93,12 @@ The information in this article can help you understand and resolve common issue
 
 The **AzsReadinessChecker** tool contains a helper cmdlet called **Repair-AzsPfxCertificate**, which can import and then export a PFX file to fix common packaging issues, including:
 
-- **PFX encryption** is not TripleDES-SHA1.
+- **PFX encryption** isn't TripleDES-SHA1.
 - **Private key** is missing local machine attribute.
-- **Certificate chain** is incomplete or wrong. The local machine must contain the certificate chain if the PFX package does not.
+- **Certificate chain** is incomplete or wrong. The local machine must contain the certificate chain if the PFX package doesn't.
 - **Other certificates**
 
-**Repair-AzsPfxCertificate** cannot help if you need to generate a new CSR and reissue a certificate.
+**Repair-AzsPfxCertificate** can't help if you need to generate a new CSR and reissue a certificate.
 
 ### Prerequisites
 
@@ -130,7 +130,7 @@ The following prerequisites must be in place on the computer on which the tool r
 
 3. From the PowerShell prompt, run the following command to export a new PFX file:
 
-   - For `-PfxPath`, specify the path to the PFX file you are working with. In the following example, the path is `.\certificates\ssl.pfx`.
+   - For `-PfxPath`, specify the path to the PFX file you're working with. In the following example, the path is `.\certificates\ssl.pfx`.
    - For `-ExportPFXPath`, specify the location and name of the PFX file for export. In the following example, the path is `.\certificates\ssl_new.pfx`:
 
    ```powershell
