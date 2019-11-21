@@ -136,6 +136,13 @@ To access known issues for a different version, use the version selector dropdow
 - Cause: In the user portal, when you create a storage account and view its **Configuration**, you cannot save configuration changes, as it results in an AJAX error. 
 - Occurrence: Common
 
+### Capacity Monitoring in SQL and MySQL resource provider keeps loading
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The current versions of SQL and MySQL resource provider is not compatible to some latest portal changes in 1910 update.
+- Remediation: Follow the resource provider update process to apply SQL and MySQL resource provider hotfix 1.1.47.0. ([SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470) / [MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)) 
+- Occurrence: Common
+
 ## Networking
 
 ### Load balancer
