@@ -3,7 +3,7 @@ title: Download marketplace items from Azure and publish to Azure Stack | Micros
 description: Learn how to download marketplace items from Azure and publish to Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: justinha
+author: sethmanheim
 manager: femila
 editor: ''
 
@@ -54,17 +54,21 @@ Your Azure Stack deployment must have internet connectivity and be [registered w
 
     ![Add marketplace items from Azure](media/azure-stack-download-azure-marketplace-item/marketplace.png)
 
-4. The portal displays the list of items available for download from the Azure Marketplace. You can filter products by name, publisher and/or type of product. You can also click on each item to view its description and additional information, including its download size:
+4. The portal displays the list of items available for download from the Azure Marketplace. You can filter products by name, publisher and/or type of product. Each line item also shows the currently available version. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple**. You can click on each item to view its description and additional information, including its download size:
 
-    ![Azure Marketplace items list ](media/azure-stack-download-azure-marketplace-item/image03.PNG)
+    [![List of marketplace items](media/azure-stack-download-azure-marketplace-item/add-from-azure1sm.png "List of marketplace items")](media/azure-stack-download-azure-marketplace-item/add-from-azure1.png#lightbox)
 
-5. Select the item you want, and then select **Download**. Download times vary.
+5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown:
+
+    [![Select version](media/azure-stack-download-azure-marketplace-item/add-from-azure3sm.png "Select version")](media/azure-stack-download-azure-marketplace-item/add-from-azure3.png#lightbox)
+
+6. Select the item you want, and then select **Download**. Download times vary.
 
     ![Downloading Azure Marketplace item](media/azure-stack-download-azure-marketplace-item/image04.png)
 
     After the download completes, you can deploy the new marketplace item as either an Azure Stack operator or a user.
 
-6. To deploy the downloaded item, select **+ Create a resource**, and then search among the categories for the new marketplace item. Next select the item to begin the deployment process. The process varies for different marketplace items.
+7. To deploy the downloaded item, select **+ Create a resource**, and then search among the categories for the new marketplace item. Next select the item to begin the deployment process. The process varies for different marketplace items.
 
 ## Disconnected or a partially connected scenario
 
@@ -146,7 +150,11 @@ Once you have registered, you can disregard the following message that appears o
 
 6. When the tool runs, you should see a screen similar to the following image, with the list of available Azure marketplace items:
 
-   [![Azure Marketplace items popup](media/azure-stack-download-azure-marketplace-item/image05.png "Azure Marketplace items")](media/azure-stack-download-azure-marketplace-item/image05.png#lightbox)
+   [![Azure Marketplace items popup](media/azure-stack-download-azure-marketplace-item/tool1sm.png "Azure Marketplace items")](media/azure-stack-download-azure-marketplace-item/tool1.png#lightbox)
+
+7. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple versions**. If the version of an item is shown as **Multiple versions**, you can select that item and then choose a specific version from the resulting version selector window:
+
+   [![Version selector](media/azure-stack-download-azure-marketplace-item/tool2sm.png "Select version")](media/azure-stack-download-azure-marketplace-item/tool2.png#lightbox)
 
 7. If you have not installed the Azure Storage tools, you will get the following message. In order to install these tools, make sure you download [AzCopy](/azure/storage/common/storage-use-azcopy#download-azcopy):
 
