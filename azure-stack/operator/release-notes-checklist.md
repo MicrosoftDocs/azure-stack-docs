@@ -50,14 +50,14 @@ Review this checklist in order to prepare for an Azure Stack update. This articl
 |  |  |
 | Resume updates | After remediating a failed update, [resume updates in Azure Stack using the privileged endpoint](azure-stack-monitor-update.md). |
 
-> [!Important]  
+> [!IMPORTANT]  
 > Do not run **Test-AzureStack** during an update, as this will cause the update to stall.
 
 ## After Azure Stack update
 
 | Activity | Details |
 |--------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Apply latest hotfixes | Apply the latest hotfixes applicable to updated version. |
+| Apply latest hotfixes | Apply the latest hotfixes applicable to the updated version. |
 | Retrieve encryption keys | Retrieve the data at rest encryption keys and securely store them outside of your Azure Stack deployment. Follow the [instructions on how to retrieve the keys](azure-stack-security-bitlocker.md). |
 |  |  |
 | Re-enable multi-tenancy | In case of a multi-tenanted Azure Stack, [make sure you configure all guest directory tenants](azure-stack-enable-multitenancy.md#configure-guest-directory) after a successful update. |

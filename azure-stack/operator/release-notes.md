@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 11/21/2019
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 11/08/2019
+ms.lastreviewed: 11/21/2019
 ---
 
 # Azure Stack updates: release notes
@@ -27,13 +27,13 @@ This article describes the contents of Azure Stack update packages. The update i
 
 To access release notes for a different version, use the version selector dropdown above the table of contents on the left.
 
-::: moniker range=">=azs-1905"
+::: moniker range=">=azs-1906"
 > [!IMPORTANT]  
 > This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
 ::: moniker-end
-::: moniker range="<azs-1905"
+::: moniker range="<azs-1906"
 > [!IMPORTANT]  
-> If your Azure Stack instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support). 
+> If your Azure Stack instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
 
 ## Update planning
@@ -49,12 +49,158 @@ For help with troubleshooting updates and the update process, see [Troubleshoot 
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+::: moniker range="azs-1910"
+## 1910 build reference
+
+The Azure Stack 1910 update build number is **1.1910.0.58**.
+
+### Update type
+
+Starting with 1908, the underlying operating system on which Azure Stack runs was updated to Windows Server 2019. This enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack in the near future.
+
+The Azure Stack 1910 update build type is **Express**.
+
+The 1910 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The expected time it takes for the 1910 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack environment. Exact update runtimes will typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack operators unless the update fails. This runtime approximation is specific to the 1910 update and should not be compared to other Azure Stack updates.
+
+For more information about update build types, see [Manage updates in Azure Stack](azure-stack-updates.md).
+
+- Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware configuration.
+- Runtimes lasting longer than expected are not uncommon and do not require action by Azure Stack operators unless the update fails.
+- This runtime approximation is specific to the 1910 update and should not be compared to other Azure Stack updates.
+
+<!-- ## What's in this update -->
+
+<!-- The current theme (if any) of this release. -->
+
+### What's new
+
+<!-- What's new, also net new experiences and features. -->
+
+- The administrator portal now shows the privileged endpoint IP addresses in the region properties menu for easier discovery. In addition, it shows the current configured time server and DNS forwarders.
+
+- The Azure Stack health and monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration. For more information, see [Monitor Azure Stack hardware components](azure-stack-hardware-monitoring.md).
+
+- [Cloud-init support for Azure Stack](/azure/virtual-machines/linux/using-cloud-init): Cloud-init is a widely used approach to customize a Linux VM as it boots for the first time. You can use cloud-init to install packages and write files, or to configure users and security. Because cloud-init is called during the initial boot process, there are no additional steps or required agents to apply your configuration. The Ubuntu images on the marketplace have been updated to support cloud-init for provisioning.
+
+- Azure Stack now supports all Windows Azure Linux Agent versions as Azure.
+
+- A new version of Azure Stack Admin PowerShell modules is available. <!-- For more information, see -->
+
+- Added the **Set-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to configure the manual update for Windows Defender definitions in the Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
+
+- Added the **Get-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to retrieve the configuration of the manual update for Windows Defender definitions in the Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
+
+- Added the **Set-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to change the forwarder settings of the DNS servers in Azure Stack. For more information about DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
+
+- Added the **Get-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to retrieve the forwarder settings of the DNS servers in Azure Stack. For more information about DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
+
+
+### Improvements
+
+<!-- Changes and product improvements with tangible customer-facing value. -->
+
+- Added auditing rule to report when an external device (for example, a USB key) is mounted to a node of the Azure Stack infrastructure. The audit log is emitted via syslog and will be displayed as **Microsoft-Windows-Security-Auditing: 6416|Plug and Play Events**. For more information about how to configure the syslog client, see [Syslog forwarding](azure-stack-integrate-security.md).
+
+- Azure Stack is moving to 4096 bit RSA keys for the internal certificates. Running internal secret rotation will replace old 2048 bit certificates with 4096 bit long certificates. For more information about secret rotation in Azure Stack, see [Rotate secrets in Azure Stack](azure-stack-rotate-secrets.md).
+
+- Upgrades to the complexity of cryptographic algorithms and key strength for several internal components to comply with the Committee on National Security Systems - Policy 15 (CNSSP-15), which provides best practices for the use of public standards for secure information sharing. Among the improvements, there is AES256 for Kerberos authentication, and SHA384 for VPN encryption. For more information about CNSSP-15, see the [Committee on National Security Systems, Policies page](http://www.cnss.gov/CNSS/issuances/Policies.cfm).
+
+- As a result of the above upgrade, Azure Stack now has new default values for IPsec/IKEv2 configurations. The new default values used on the Azure Stack side are as follows:
+
+   **IKE Phase 1 (Main Mode) parameters**
+
+   | Property              | Value|
+   |-|-|
+   | IKE Version           | IKEv2 |
+   |Diffie-Hellman Group   | ECP384 |
+   | Authentication method | Pre-shared key |
+   |Encryption & Hashing Algorithms | AES256, SHA384 |
+   |SA Lifetime (Time)     | 28,800 seconds|
+
+   **IKE Phase 2 (Quick Mode) parameters**
+
+   | Property| Value|
+   |-|-|
+   |IKE Version |IKEv2 |
+   |Encryption & Hashing Algorithms (Encryption)     | GCMAES256|
+   |Encryption & Hashing Algorithms (Authentication) | GCMAES256|
+   |SA Lifetime (Time)  | 27,000 seconds  |
+   |SA Lifetime (Kilobytes) | 33,553,408     |
+   |Perfect Forward Secrecy (PFS) | ECP384 |
+   |Dead Peer Detection | Supported|
+
+   These changes are reflected in the [default IPsec/IKE proposal](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters) documentation as well.
+
+- Infrastructure backup service improves logic that calculates desired free space for backups instead of relying on a fixed threshold. The service will use the size of a backup, retention policy, reserve, and current utilization of external storage location to determine if a warning needs to be raised to the operater. 
+
+### Changes
+
+- When downloading marketplace items from Azure to Azure Stack, there is a new user interface that enables you to specify a version of the item, when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md).  
+
+- Starting in 1910, the Azure Stack system requires an additional /20 private internal IP space. This network is private to the Azure Stack system and can be re-used on multiple Azure Stack systems within your datacenter. While the network is private to Azure Stack, it must not overlap with a network in your datacenter. The /20 private IP space is divided into multiple networks that enable running the Azure Stack infrastructure on containers (as previously mentioned in the [1905 release notes](release-notes.md?view=azs-1905)). The goal of running the Azure Stack infrastructure in containers is to optimize utilization and enhance performance. In addition, the /20 private IP space is also used to enable ongoing efforts that will reduce required routable IP space prior to deployment.
+
+  - Please note that the /20 input serves as a pre-requisite to the next Azure Stack update. When the next Azure Stack update is released and an attempt is made to install it, the update will fail if you have not completed the /20 input as described below in remediation steps. An alert will be present in the admin portal until the above remediation steps have been completed. Please see the [Datacenter network integration](azure-stack-network.md#private-network) article to understand how this new private space will be consumed. 
+
+  - Remediation steps: To remediate, follow the instructions to [open a PEP Session](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Prepare a [private internal IP range](azure-stack-network.md#logical-networks) of size /20, and run the following cmdlet in the PEP session using the format: `Set-AzsPrivateNetwork -UserSubnet 100.87.0.0/20`. If the operation is performed successfully, you will receive the message **Azs Internal Network range added to the config**. If successfully completed, the alert will close in the admin portal. The Azure Stack system will now be able to update to the next version.
+  
+- Infrastructure backup service deletes partially uploaded backup data if the external storage location runs out of capacity during the upload procedure.  
+
+- Infrastructure backup service adds identity service to the backup payload for AAD deployments.  
+
+### Fixes
+
+<!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
+
+- Fixed an issue that prevented enforcing TLS 1.2 policy on environments deployed prior to the Azure Stack 1904 release.
+- Fixed an issue where an Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in. 
+- Removed **Reset Password** from the Virtual Machine Scale Set UI.
+- Fixed an issue where deleting the load balancer from the portal did not result in the deletion of the object in the infrastructure layer.
+- Fixed an issue that showed an inaccurate percentage of the Gateway Pool utilization alert on the admin portal.
+- Fixed an issue where adding more than one public IP on the same NIC on a Virtual Machine resulted in internet connectivity issues. Now, a NIC with two public IPs should work as expected.
+
+## Security updates
+
+For information about security updates in this update of Azure Stack, see [Azure Stack security updates](release-notes-security-updates.md).
+
+## Update planning
+
+Before applying the update, make sure to review the following information:
+
+- [Known issues](known-issues.md)
+- [Security updates](release-notes-security-updates.md)
+- [Checklist of activities before and after applying the update](release-notes-checklist.md)
+
+## Download the update
+
+You can download the Azure Stack 1910 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
+
+## Hotfixes
+
+Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1908 before updating Azure Stack to 1910.
+
+Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do not attempt to install hotfixes on the ASDK.
+
+### Prerequisites: Before applying the 1910 update
+
+The 1910 release of Azure Stack must be applied on the 1908 release with the following hotfixes:
+
+<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
+- [Azure Stack hotfix 1.1908.9.43](https://support.microsoft.com/help/4531007)
+
+### After successfully applying the 1910 update
+
+After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
+
+<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
+- No hotfix available for 1910.
+::: moniker-end
+
 ::: moniker range="azs-1908"
 ## 1908 build reference
 
 The Azure Stack 1908 update build number is **1.1908.4.33**.
 
-### <a name="update-type-1908"></a>Update type
+### Update type
 
 For 1908, the underlying operating system on which Azure Stack runs has been updated to Windows Server 2019. This enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack in the near future.
 
@@ -70,7 +216,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- The current theme (if any) of this release. -->
 
-### <a name="whats-new-1908"></a>What's new
+### What's new
 
 <!-- What's new, also net new experiences and features. -->
 
@@ -78,25 +224,24 @@ For more information about update build types, see [Manage updates in Azure Stac
 - All components of Azure Stack infrastructure now operate in FIPS 140-2 mode.
 - Azure Stack operators can now remove portal user data. For more information, see [Clear portal user data from Azure Stack](azure-stack-portal-clear.md).
 
-### <a name="improvements-1908"></a>Improvements
+### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 - Improvements to data at rest encryption of Azure Stack to persist secrets into the hardware Trusted Platform Module (TPM) of the physical nodes.
 
-### <a name="changes-1908"></a>Changes
+### Changes
 
 - Hardware providers will be releasing OEM extension package 2.1 or later at the same time as Azure Stack version 1908. The OEM extension package 2.1 or later is a prerequisite for Azure Stack version 1908. For more information about how to download OEM extension package 2.1 or later, contact your system's hardware provider, and see the [OEM updates](azure-stack-update-oem.md#oem-contact-information) article.  
 
-### <a name="fixes-1908"></a>Fixes
+### Fixes
 
-- Fixed an issue with compatibility with future Azure Stack OEM updates and an issue with VM deployment useing customer user images. This issue was found in 1907 and fixed in hotfix [KB4517473](https://support.microsoft.com/en-us/help/4517473/azure-stack-hotfix-1-1907-12-44)  
+- Fixed an issue with compatibility with future Azure Stack OEM updates and an issue with VM deployment using customer user images. This issue was found in 1907 and fixed in hotfix [KB4517473](https://support.microsoft.com/en-us/help/4517473/azure-stack-hotfix-1-1907-12-44)  
 - Fixed an issue with OEM Firmware update and corrected misdiagnosis in Test-AzureStack for Fabric Ring Health. This issue was found in 1907 and fixed in hotfix [KB4515310](https://support.microsoft.com/en-us/help/4515310/azure-stack-hotfix-1-1907-7-35)
 - Fixed an issue with OEM Firmware update process. This issue was found in 1907 and fixed in hotfix [KB4515650](https://support.microsoft.com/en-us/help/4515650/azure-stack-hotfix-1-1907-8-37)
 
-
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
-## <a name="security-updates-1908"></a>Security updates
+## Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](release-notes-security-updates.md).
 
@@ -104,7 +249,7 @@ For information about security updates in this update of Azure Stack, see [Azure
 
 You can download the Azure Stack 1908 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
 
-## <a name="hotfixes-1908"></a>Hotfixes
+## Hotfixes
 
 Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1907 before updating Azure Stack to 1908.
 
@@ -132,7 +277,7 @@ After the installation of this update, install any applicable hotfixes. For more
 
 The Azure Stack 1907 update build number is **1.1907.0.20**.
 
-### <a name="update-type-1907"></a>Update type
+### Update type
 
 The Azure Stack 1907 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. Based on internal testing, the expected time it takes for the 1907 update to complete is approximately 13 hours.
 
@@ -140,11 +285,11 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 - Runtimes lasting longer than expected are not uncommon and do not require action by Azure Stack operators unless the update fails.
 - This runtime approximation is specific to the 1907 update and should not be compared to other Azure Stack updates.
 
-## <a name="whats-in-this-update-1907"></a>What's in this update
+## What's in this update
 
 <!-- The current theme (if any) of this release. -->
 
-### <a name="whats-new-1907"></a>What's new
+### What's new
 
 <!-- What's new, also net new experiences and features. -->
 
@@ -154,7 +299,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Added an internal secret rotation procedure to rotate internal SQL TLS certificates as required during a system update.
 
-### <a name="improvements-1907"></a>Improvements
+### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
@@ -171,7 +316,7 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Improved storage of internal logs for administrator operations. This results in improved performance and reliability during administrator operations by minimizing the memory and storage consumption of internal log processes. You might also notice improved page load times of the update blade in the administrator portal. As part of this improvement, update logs older than 6 months will no longer be available in the system. If you require logs for these updates, be sure to [Download the summary](azure-stack-apply-updates.md) for all update runs older than 6 months before performing the 1907 update.
 
-### <a name="changes-1907"></a>Changes
+### Changes
 
 - Azure Stack version 1907 contains a warning alert that instructs operators to be sure to update their system's OEM package to version 2.1 or later before updating to version 1908. For more information about how to apply Azure Stack OEM updates, see [Apply an Azure Stack original equipment manufacturer update](azure-stack-update-oem.md).
 
@@ -183,7 +328,9 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - We now validate that an image being ingested into the **Compute -> VM images** blade is of type page blob.
 
-### <a name="fixes-1907"></a>Fixes
+- The privileged endpoint command **Set-BmcCredential** now updates the credential in the Baseboard Management Controller.
+
+### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 - Fixed an issue in which the publisher, offer, and SKU were treated as case sensitive in a Resource Manager template: the image was not fetched for deployment unless the image parameters were the same case as that of the publisher, offer, and SKU.
@@ -212,11 +359,11 @@ The Azure Stack 1907 update build type is **Express**. For more information abou
 
 - Fixed an issue in the health resource provider which impacted the availability of the region and alert blades in the administrator portal. This issue was found in 1906 and fixed in hotfix [KB4512794](https://support.microsoft.com/help/4512794).
 
-## <a name="security-updates-1907"></a>Security updates
+## Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](release-notes-security-updates.md).
 
-## <a name="update-planning-1907"></a>Update planning
+## Update planning
 
 Before applying the update, make sure to review the following information:
 
@@ -224,11 +371,11 @@ Before applying the update, make sure to review the following information:
 - [Security updates](release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](release-notes-checklist.md)
 
-## <a name="download-the-update-1907"></a>Download the update
+## Download the update
 
 You can download the Azure Stack 1907 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
 
-## <a name="hotfixes-1907"></a>Hotfixes
+## Hotfixes
 
 Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1906 before updating Azure Stack to 1907.
 
@@ -254,11 +401,11 @@ After the installation of this update, install any applicable hotfixes. For more
 
 The Azure Stack 1906 update build number is **1.1906.0.30**.
 
-### <a name="update-type-1906"></a>Update type
+### Update type
 
 The Azure Stack 1906 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack](azure-stack-updates.md) article. The expected time it takes for the 1906 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack environment. Exact update runtimes will typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack operators unless the update fails. This runtime approximation is specific to the 1906 update and should not be compared to other Azure Stack updates.
 
-## <a name="whats-in-this-update-1906"></a>What's in this update
+## What's in this update
 
 <!-- The current theme (if any) of this release. -->
 
@@ -274,7 +421,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - Visual Studio Code is now supported with Azure Stack deployment using AD FS.
 
-### <a name="improvements-1906"></a>Improvements
+### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
@@ -292,7 +439,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - The 1906 release introduces greater visibility into update progress, so you can be assured that updates are not pausing. This results in an increase in the total number of update steps shown to operators in the **Update** blade. You might also notice more update steps happening in parallel than in previous updates.
 
-#### <a name="networking-updates-1906"></a>Networking updates
+#### Networking updates
 
 - Updated lease time set in DHCP responder to be consistent with Azure.
 
@@ -300,7 +447,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - Removed the **Standard** SKU option from both the load balancer and public IP, as that is currently not supported.
 
-### <a name="changes-1906"></a>Changes
+### Changes
 
 - Creating a storage account experience is now consistent with Azure.
 
@@ -310,7 +457,7 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - Updated strings in infrastructure backup resource provider for consistent terminology.
 
-### <a name="fixes-1906"></a>Fixes
+### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
@@ -332,11 +479,11 @@ The Azure Stack 1906 update build type is **Express**. For more information abou
 
 - You can now remove a scale set from the **Virtual machine scale sets** blade.
 
-## <a name="security-updates-1906"></a>Security updates
+## Security updates
 
 For information about security updates in this update of Azure Stack, see [Azure Stack security updates](release-notes-security-updates.md).
 
-## <a name="update-planning-1906"></a>Update planning
+## Update planning
 
 Before applying the update, make sure to review the following information:
 
@@ -344,11 +491,11 @@ Before applying the update, make sure to review the following information:
 - [Security updates](release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](release-notes-checklist.md)
 
-## <a name="download-the-update-1906"></a>Download the update
+## Download the update
 
 You can download the Azure Stack 1906 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
 
-## <a name="hotfixes-1906"></a>Hotfixes
+## Hotfixes
 
 Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1905 before updating Azure Stack to 1906. After updating, install any [available hotfixes for 1906](#after-successfully-applying-the-1906-update).
 
@@ -369,131 +516,7 @@ After the installation of this update, install any applicable hotfixes. For more
 - [Azure Stack hotfix 1.1906.15.60](https://support.microsoft.com/help/4524559)
 ::: moniker-end
 
-::: moniker range="azs-1905"
-## 1905 build reference
-
-The Azure Stack 1905 update build number is **1.1905.0.40**.
-
-### <a name="update-type-1905"></a>Update type
-
-The Azure Stack 1905 update build type is **Full**. As a result, the 1905 update has a longer runtime than express updates like 1903 and 1904. Exact runtimes for full updates typically depend on the number of nodes that your Azure Stack instance contains, the capacity used on your system by tenant workloads, your system's network connectivity (if connected to the internet), and your system hardware configuration. The 1905 update has had the following expected runtimes in our internal testing: 4 nodes - 35 hours, 8 nodes - 45 hours, 12 nodes - 55 hours, 16 nodes - 70 hours. 1905 runtimes lasting longer than these expected values are not uncommon and do not require action by Azure Stack operators unless the update fails. For more information about update build types, see [Manage updates in Azure Stack](azure-stack-updates.md).
-
-## <a name="whats-in-this-update-1905"></a>What's in this update
-
-<!-- The current theme (if any) of this release. -->
-
-<!-- What's new, also net new experiences and features. -->
-
-- With this update, the update engine in Azure Stack can update the firmware of scale unit nodes. This requires a compliant update package from the hardware partners. Reach out to your hardware partner for details about availability.
-
-- Windows Server 2019 is now supported and available to syndicate through the Azure Stack Marketplace.
-With this update, Windows Server 2019 can now be successfully activated on a 2016 host.
-
-- A new [Azure Account Visual Studio Code extension](../user/azure-stack-dev-start-vscode-azure.md) allows developers to target Azure Stack by logging in and viewing subscriptions, as well as a number of other services. The Azure Account extension works on both Azure Active Directory (Azure AD) and AD FS environments, and only requires a small change in Visual Studio Code user settings. Visual Studio Code requires a service principal to be given permission in order to run on this environment. To do so, import the identity script and run the cmdlets specified in [Multi-tenancy in Azure Stack](../operator/azure-stack-enable-multitenancy.md). This requires an update to the home directory, and registration of the Guest tenant directory for each directory. An alert is displayed after updating to 1905 or later, to update the home directory tenant for which the Visual Studio Code service principal is included. 
-
-### <a name="improvements-1905"></a>Improvements
-
-<!-- Changes and product improvements with tangible customer-facing value. -->
-- As a part of enforcing TLS 1.2 on Azure Stack, the following extensions have been updated to these versions:
-
-  - microsoft.customscriptextension-arm-1.9.3
-  - microsoft.iaasdiagnostics-1.12.2.2
-  - microsoft.antimalware-windows-arm-1.5.5.9
-  - microsoft.dsc-arm-2.77.0.0
-  - microsoft.vmaccessforlinux-1.5.2
-
-  Please download these versions of the extensions immediately, so that new deployments of the extension do not fail when TLS 1.2 is enforced in a future release. Always set **autoUpgradeMinorVersion=true** so that minor version updates to extensions (for example, 1.8 to 1.9) are automatically performed.
-
-- A new **Help and Support Overview** in the Azure Stack portal makes it easier for operators to check their support options, get expert help, and learn more about Azure Stack. On integrated systems, creating a support request will preselect Azure Stack service. We highly recommend that customers use this experience to submit tickets rather than using the global Azure portal. For more information, see [Azure Stack Help and Support](azure-stack-help-and-support-overview.md).
-
-- When multiple Azure Active Directories are onboarded (through [this process](azure-stack-enable-multitenancy.md)), it is possible to neglect rerunning the script when certain updates occur, or when changes to the Azure AD Service Principal authorization cause rights to be missing. This can cause various issues, from blocked access for certain features, to more discrete failures which are hard to trace back to the original issue. To prevent this, 1905 introduces a new feature that checks for these permissions and creates an alert when certain configuration issues are found. This validation runs every hour, and displays the remediation actions required to fix the issue. The alert closes once all the tenants are in a healthy state.
-
-- Improved reliability of infrastructure backup operations during service failover.
-
-- A new version of the [Azure Stack Nagios plugin](azure-stack-integrate-monitor.md#integrate-with-nagios) is available that uses the [Azure Active Directory authentication libraries](/azure/active-directory/develop/active-directory-authentication-libraries) (ADAL) for authentication. The plugin now also supports Azure AD and Active Directory Federation Services (AD FS) deployments of Azure Stack. For more information, see the [Nagios plugin exchange](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details) site.
-
-- A new hybrid profile **2019-03-01-Hybrid** was released that supports all the latest features in Azure Stack. Both Azure PowerShell and Azure CLI support the **2019-03-01-Hybrid** profile. The .NET, Ruby, Node.js, Go, and Python SDKs have published packages that support the **2019-03-01-Hybrid** profile. The respective documentation and some samples have been updated to reflect the changes.
-
-- The [Node.js SDK](https://www.npmjs.com/search?q=2019-03-01-hybrid) now supports API profiles. Packages that support the **2019-03-01-Hybrid** profile are published.
-
-- The 1905 Azure Stack update adds two new infrastructure roles to improve platform reliability and supportability:
-
-  - **Infrastructure ring**: In the future, the infrastructure ring will host containerized versions of existing infrastructure roles – for example, xrp - that currently require their own designated infrastructure VMs. This will improve platform reliability and reduce the number of infrastructure VMs that Azure Stack requires. This subsequently reduces the overall resource consumption of Azure Stack's infrastructure roles in the future.
-  - **Support ring**: In the future, the support ring will be used to handle enhanced support scenarios for customers.  
-
-  In addition, we added an extra instance of the domain controller VM for improved availability of this role.
-
-  These changes will increase the resource consumption of Azure Stack infrastructure in the following ways:
-  
-    | Azure Stack SKU | Increase in Compute Consumption | Increase in Memory Consumption |
-    | -- | -- | -- |
-    |4 Nodes|22 vCPU|28 GB|
-    |8 Nodes|38 vCPU|44 GB|
-    |12 Nodes|54 vCPU|60 GB|
-    |16 Nodes|70 vCPU|76 GB|
-  
-### <a name="changes-1905"></a>Changes
-
-- To increase reliability and availability during planned and unplanned maintenance scenarios, Azure Stack adds an additional infrastructure role instance for domain services.
-
-- With this update, during repair and add node operations, the hardware is validated to ensure homogenous scale unit nodes within a scale unit.
-
-- If scheduled backups are failing to complete and the defined retention period is exceeded, the infrastructure backup controller will ensure at least one successful backup is retained. 
-
-### <a name="fixes-1905"></a>Fixes
-
-<!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
-
-- Fixed an issue in which a **Compute host agent** warning appeared after restarting a node in the scale unit.
-
-- Fixed issues in marketplace management in the administrator portal which showed incorrect results when filters were applied, and showed duplicate publisher names in the publisher filter. Also made performance improvements to display results faster.
-
-- Fixed issue in the available backup blade that listed a new available backup before it completed upload to the external storage location. Now the available backup will show in the list after it is successfully uploaded to the storage location. 
-
-<!-- ICM: 114819337; Task: 4408136 -->
-- Fixed issue with retrieving recovery keys during backup operation. 
-
-<!-- Bug: 4525587 -->
-- Fixed issue with OEM update displaying version as 'undefined' in operator portal.
-
-### <a name="security-updates-1905"></a>Security updates
-
-For information about security updates in this update of Azure Stack, see [Azure Stack security updates](release-notes-security-updates.md).
-
-## <a name="update-planning-1905"></a>Update planning
-
-Before applying the update, make sure to review the following information:
-
-- [Known issues](known-issues.md)
-- [Security updates](release-notes-security-updates.md)
-- [Checklist of activities before and after applying the update](release-notes-checklist.md)
-
-## <a name="download-the-update-1905"></a>Download the update
-
-You can download the Azure Stack 1905 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload). When using the downloader tool, be sure to use the latest version and not a cached copy from your downloads directory.
-
-## <a name="hotfixes-1905"></a>Hotfixes
-
-Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1904 before updating Azure Stack to 1905.
-
-Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do not attempt to install hotfixes on the ASDK.
-
-### Before applying the 1905 update
-
-The 1905 release of Azure Stack must be applied on the 1904 release with the following hotfixes:
-
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1904.4.45](https://support.microsoft.com/help/4505688)
-
-### After successfully applying the 1905 update
-
-After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
-
-<!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1905.3.48](https://support.microsoft.com/help/4510078)
-::: moniker-end
-
-::: moniker range=">=azs-1905"
+::: moniker range=">=azs-1906"
 ## Automatic update notifications
 
 Systems that can access the internet from the infrastructure network will see the **Update available** message in the operator portal. Systems without internet access can download and import the .zip file with the corresponding .xml.
@@ -519,6 +542,9 @@ To access archived release notes for an older version, use the version selector 
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
+::: moniker range="azs-1905"
+## 1905 archived release notes
+::: moniker-end
 ::: moniker range="azs-1904"
 ## 1904 archived release notes
 ::: moniker-end
@@ -556,7 +582,7 @@ To access archived release notes for an older version, use the version selector 
 ## 1802 archived release notes
 ::: moniker-end
 
-::: moniker range="<azs-1905"
+::: moniker range="<azs-1906"
 You can access [older versions of Azure Stack release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
 
