@@ -29,7 +29,7 @@ The information in this article helps you understand and resolve common issues w
 
 **Failure** - PFX encryption isn't TripleDES-SHA1.
 
-**Remediation** - Export PFX files with **TripleDES-SHA1** encryption. This is the default for all Windows 10 clients when exporting from certificate snap-in or using `Export-PFXCertificate`.
+**Remediation** - Export PFX files with **TripleDES-SHA1** encryption. This is the default encryption for all Windows 10 clients when exporting from certificate snap-in or using `Export-PFXCertificate`.
 
 ## Read PFX
 
@@ -63,7 +63,7 @@ The information in this article helps you understand and resolve common issues w
 
 **Failure** - The **DNSNameList** on the certificate doesn't contain the Azure Stack service endpoint name or a valid wildcard match. Wildcard matches are only valid for the left-most namespace of the DNS name. For example, `*.region.domain.com` is only valid for `portal.region.domain.com`, not `*.table.region.domain.com`.
 
-**Remediation** - Use the steps in Azure Stack certificates signing request generation to regenerate the CSR with the correct DNS names to support Azure Stack endpoints. Resubmit the CSR to a certificate authority, and then follow the steps in [Prepare Azure Stack PKI certificates for deployment](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment) to export the certificate from the machine that generated the CSR.  
+**Remediation** - Use the steps in Azure Stack certificates signing request generation to regenerate the CSR with the correct DNS names to support Azure Stack endpoints. Resubmit the CSR to a certificate authority. Then follow the steps in [Prepare Azure Stack PKI certificates for deployment](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment) to export the certificate from the machine that generated the CSR.  
 
 ## Key usage
 
