@@ -38,7 +38,7 @@ When a disk fails, you receive an alert that tells you that connectivity has bee
 
 If you open the alert, the alert description contains the scale unit node and the exact physical slot location for the disk that you must replace. Azure Stack further helps you to identify the failed disk by using LED indicator capabilities.
 
-## Replace the disk
+## Replace the physical disk
 
 Follow your OEM hardware vendor's FRU instructions for actual disk replacement.
 
@@ -86,7 +86,7 @@ After you replace the disk, you can monitor the virtual disk health status and r
         $cred = Get-Credential
         Enter-PSSession -ComputerName <IP_address_of_ERCS>`
           -ConfigurationName PrivilegedEndpoint -Credential $cred
-    ``` 
+    ```
   
 2. Run the following command to view virtual disk health:
     ```powershell
@@ -108,4 +108,4 @@ After you replace the disk, you can monitor the virtual disk health status and r
 If the virtual disk repair job appears stuck, run the following command to restart the job:
   ```powershell
         Get-VirtualDisk -CimSession s-cluster | Repair-VirtualDisk
-  ``` 
+  ```
