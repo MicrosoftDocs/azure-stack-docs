@@ -12,11 +12,11 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2019
+ms.date: 09/30/2019
 ms.reviewer: ppacent
 ms.author: mabrigg
 ms.lastreviewed: 09/30/2019
-monikerRange: '>=azs-1803'
+monikerRange: '>=azs-1802'
 ---
 
 # Rotate secrets in Azure Stack
@@ -383,9 +383,11 @@ This command rotates all of the infrastructure secrets exposed to Azure Stack in
 The baseboard management controller (BMC) monitors the physical state of your servers. Refer to your original equipment manufacturer (OEM) hardware vendor for instructions to update the user account name and password of the BMC. 
 
 >[!NOTE]
-> Your OEM may provide additional management applications. Updating the user name or password for other management applications has no affect on the BMC user name or password.   
+> Your OEM may provide additional management applications. Updating the user name or password for other management applications has no affect on the BMC user name or password.
 
-1. Update the BMC on the Azure Stack physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
+1. **Versions earlier than 1910**: Update the BMC on the Azure Stack physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
+
+   **Version 1910 and later**: It is no longer required that you first update the BMC credentials on the Azure Stack physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
 2. Open a privileged endpoint in Azure Stack sessions. For instructions, see [Using the privileged endpoint in Azure Stack](azure-stack-privileged-endpoint.md).
 3. After your PowerShell prompt has changed to **[IP address or ERCS VM name]: PS>** or to **[azs-ercs01]: PS>**, depending on the environment, run `Set-BmcCredential` by running `Invoke-Command`. Pass your privileged endpoint session variable as a parameter. For example:
 

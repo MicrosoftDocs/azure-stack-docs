@@ -36,7 +36,7 @@ Wherever possible, download the images available through Marketplace Management.
 
 ### Azure Linux Agent
 
-The Azure Linux Agent (typically called **WALinuxAgent** or **walinuxagent**) is required, and not all versions of the agent work on Azure Stack. Versions between 2.2.20 and 2.2.35 aren't supported on Azure Stack. To use the latest agent versions above 2.2.35, apply the 1901 hotfix/1902 hotfix, or update your Azure Stack to the 1903 release (or above). Note that [cloud-init](https://cloud-init.io/) isn't supported on Azure Stack at this time.
+The Azure Linux Agent (typically called **WALinuxAgent** or **walinuxagent**) is required, and not all versions of the agent work on Azure Stack. Versions between 2.2.21 and 2.2.34 (inclusive) aren't supported on Azure Stack. To use the latest agent versions above 2.2.35, apply the 1901 hotfix/1902 hotfix, or update your Azure Stack to the 1903 release (or above). Note that [cloud-init](https://cloud-init.io/) is supported on Azure Stack releases beyond 1910.
 
 | Azure Stack build | Azure Linux Agent build |
 | ------------- | ------------- |
@@ -47,6 +47,7 @@ The Azure Linux Agent (typically called **WALinuxAgent** or **walinuxagent**) is
 | 1.1903.0.35  | 2.2.35 or newer |
 | Builds after 1903 | 2.2.35 or newer |
 | Not supported | 2.2.21-2.2.34 |
+| Builds after 1910 | All Azure WALA agent versions|
 
 You can prepare your own Linux image using the following instructions:
 
@@ -55,6 +56,70 @@ You can prepare your own Linux image using the following instructions:
 * [Red Hat Enterprise Linux](azure-stack-redhat-create-upload-vhd.md)
 * [SLES & openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+
+## Cloud-init
+
+[Cloud-init](https://cloud-init.io/) is supported on Azure Stack releases beyond 1910. To use cloud-init to customize your Linux VM, you can use the following PowerShell instructions: 
+
+### Step 1: Create a cloud-init.txt file with your cloud-config
+
+Create a file named cloud-init.txt and paste the following cloud configuration:
+
+```yaml
+#cloud-config
+package_upgrade: true
+packages:
+  - nginx
+  - nodejs
+  - npm
+write_files:
+  - owner: www-data:www-data
+    path: /etc/nginx/sites-available/default
+    content: |
+      server {
+        listen 80;
+        location / {
+          proxy_pass http://localhost:3000;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection keep-alive;
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;
+        }
+      }
+  - owner: azureuser:azureuser
+    path: /home/azureuser/myapp/index.js
+    content: |
+      var express = require('express')
+      var app = express()
+      var os = require('os');
+      app.get('/', function (req, res) {
+        res.send('Hello World from host ' + os.hostname() + '!')
+      })
+      app.listen(3000, function () {
+        console.log('Hello world app listening on port 3000!')
+      })
+runcmd:
+  - service nginx restart
+  - cd "/home/azureuser/myapp"
+  - npm init
+  - npm install express -y
+  - nodejs index.js
+  ```
+  
+### Step 2: Reference the cloud-init.txt during the Linux VM deployment
+
+Upload the file to an Azure storage account, Azure Stack storage account, or GitHub repository reachable by your Azure Stack Linux VM.
+Currently, using cloud-init for VM deployment is only supported on REST, Powershell, and CLI, and doesn't have an associated portal UI on Azure Stack.
+
+You can follow [these](../user/azure-stack-quick-create-vm-linux-powershell.md) instructions to create the Linux VM using powershell, but make sure to reference the cloud-init.txt as a part of the `-CustomData` flag:
+
+```powershell
+$VirtualMachine =Set-AzureRmVMOperatingSystem -VM $VirtualMachine `
+  -Linux `
+  -ComputerName "MainComputer" `
+  -Credential $cred -CustomData "#include https://cloudinitstrg.blob.core.windows.net/strg/cloud-init.txt"
+```
 
 ## Add your image to Marketplace
 
