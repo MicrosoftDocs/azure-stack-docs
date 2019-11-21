@@ -26,7 +26,7 @@ ms.lastreviewed: 11/15/2019
 You can use [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) for containers to monitor your containers in an AKS engine deployed Kubernetes cluster in Azure Stack Hub. 
 
 > [!IMPORTANT]
-> The AKS engine is currently in public preview.
+> Azure Monitor for containers on Azure Stack Hub is currently in public preview.
 > This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
@@ -48,21 +48,21 @@ You can specify an **addon** in the AKS engine cluster specification json file. 
 
 Supported API definitions for the Azure Stack Hub cluster can be found in this example: [kubernetes-container-monitoring_existing_workspace_id_and_key.json](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Specifically, find the **addons** property in **kubernetesConfig**:
 
-    ```JSON  
-    "orchestratorType": "Kubernetes",
-          "kubernetesConfig": {
-            "addons": [
-              {
-                "name": "container-monitoring",
-                "enabled": true,
-                "config": {
-                  "workspaceGuid": "<Azure Log Analytics Workspace Guid in Base-64 encoded>",
-                  "workspaceKey": "<Azure Log Analytics Workspace Key in Base-64 encoded>"
-                }
-              }
-            ]
-          }
-    ```
+```JSON  
+ "orchestratorType": "Kubernetes",
+       "kubernetesConfig": {
+         "addons": [
+           {
+             "name": "container-monitoring",
+             "enabled": true,
+             "config": {
+               "workspaceGuid": "<Azure Log Analytics Workspace Guid in Base-64 encoded>",
+               "workspaceKey": "<Azure Log Analytics Workspace Key in Base-64 encoded>"
+             }
+           }
+         ]
+       }
+```
 
 ## Next steps
 
