@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2019
+ms.date: 11/21/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 11/05/2019
+ms.lastreviewed: 11/21/2019
 
 ---
 
@@ -24,8 +24,6 @@ ms.lastreviewed: 11/05/2019
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 You can enable your users to set up the Azure Kubernetes Services (AKS) Engine by adding the items described in this article to your Azure Stack. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS engine available to your users in both connected and disconnected environments. The AKS engine depends on a service principle identity, and in the marketplace, a Custom Script extension and the AKS Base Image.
-
-The [AKS engine](https://github.com/Azure/aks-engine) uses a built image, the AKS Base Image. Any AKS engine version depends on a specific image version that you can make available in your Azure Stack. Check the table listing the AKS engine versions and corresponding Kubernetes version at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions).
 
 > [!IMPORTANT]
 > The AKS engine is currently in public preview.
