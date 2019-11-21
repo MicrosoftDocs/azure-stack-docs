@@ -75,11 +75,11 @@ Starting in 1910, the size for the Private Network will change to a /20 (4096 IP
 
 This /20 private IP space will be divided into multiple networks that will enable running the Azure Stack system internal infrastructure on containers in future releases. For more information, see the [1910 release notes](release-notes.md). In addition, this new private IP space enables ongoing efforts to reduce the required routable IP space prior to deployment.
 
-For systems deployed before 1910, this /20 subnet will be an additional network to be entered into systems after updating to 1910. The additional network will need to be provided to the system through the **Set-AzsPrivateNetwork** PEP cmdlet. For guidance on this cmdlet please see the [1910 release notes](release-notes.md).
+For systems deployed before 1910, this /20 subnet will be an additional network to be entered into systems after updating to 1910. The additional network will need to be provided to the system through the **Set-AzsPrivateNetwork** PEP cmdlet. For guidance on this cmdlet, see the [1910 release notes](release-notes.md).
 
 ### Azure Stack infrastructure network
 
-This /24 network is dedicated to internal Azure Stack components so that they can communicate and exchange data among themselves. This subnet can be routable externally of the Azure Stack solution to your datacenter, we do not recommend using Public or Internet routable IP addresses on this subnet. This network is advertised to the Border but most of its IPs are protected by Access Control Lists (ACLs). The IPs allowed for access are within a small range equivalent in size to a /27 network and host services like the [privileged end point (PEP)](azure-stack-privileged-endpoint.md) and [Azure Stack Backup](azure-stack-backup-reference.md).
+This /24 network is dedicated to internal Azure Stack components so that they can communicate and exchange data among themselves. This subnet can be routable externally for the Azure Stack solution to your datacenter. We do not recommend using public or internet routable IP addresses on this subnet. This network is advertised to the border, but most of its IPs are protected by Access Control Lists (ACLs). The IPs allowed for access are within a small range equivalent in size to a /27 network and host services such as the [privileged end point (PEP)](azure-stack-privileged-endpoint.md) and [Azure Stack Backup](azure-stack-backup-reference.md).
 
 ### Public VIP network
 
@@ -95,7 +95,7 @@ This /29 (six host IPs) network is dedicated to connecting the management ports 
 
 ## Permitted networks
 
-Starting on 1910, the Deployment Worksheet will have this new field allowing the operator to change some access control list (ACL)s to allow access to network device management interfaces and the hardware lifecycle host (HLH) from a trusted datacenter network range. With the access control list change, the operator can allow their management jumpbox VMs within a specific network range to access the switch management interface, the HLH OS and the HLH BMC. The operator can provide one or multiple subnets to this list, if left blank it will default to deny access. This new functionality replaces the need for post-deployment manual intervention as it used to be described on the [Modify specific settings on your Azure Stack switch configuration](https://docs.microsoft.com/azure-stack/operator/azure-stack-customer-defined#access-control-list-updates).
+Starting in 1910, the deployment worksheet will have a new field allowing the operator to change some access control lists (ACLs) to allow access to network device management interfaces and the hardware lifecycle host (HLH) from a trusted datacenter network range. With the access control list change, the operator can allow their management jumpbox VMs within a specific network range to access the switch management interface, the HLH OS and the HLH BMC. The operator can provide one or multiple subnets to this list, if left blank it will default to deny access. This new functionality replaces the need for post-deployment manual intervention as it used to be described on the [Modify specific settings on your Azure Stack switch configuration](azure-stack-customer-defined.md#access-control-list-updates).
 
 ## Next steps
 
