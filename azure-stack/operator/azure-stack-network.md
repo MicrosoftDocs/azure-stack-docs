@@ -71,13 +71,14 @@ This /20 (4096 IPs) network is private to the Azure Stack region (doesn't route 
 - **Internal virtual IP network**: A /25 network dedicated to internal-only VIPs for the software load balancer.
 - **Container network**: A /23 (512 IPs) network dedicated to internal-only traffic between containers running infrastructure services.
 
-Starting in 1910, the size for the Private Network will change to a /20 (4096 IPs) of private IP space. This network will be private to the Azure Stack system (doesn't route beyond the border switch devices of the Azure Stack system) and can be reused on multiple Azure Stack systems within your datacenter. While the network is private to Azure Stack, it must not overlap with other networks in the datacenter. For guidance on Private IP space, we recommend following the [RFC 1918](https://tools.ietf.org/html/rfc1918).
+Starting in 1910, the size for the Private Network will change to a /20 (4096 IPs) of private IP space. This network will be private to the Azure Stack system (doesn't route beyond the border switch devices of the Azure Stack system) and can be reused on multiple Azure Stack systems within your datacenter. While the network is private to Azure Stack, it must not overlap with other networks in the datacenter. For guidance on the private IP space, we recommend following the [RFC 1918](https://tools.ietf.org/html/rfc1918).
 
-This /20 Private IP space will be divided into multiple networks that will enable running the Azure Stack system internal infrastructure on containers in future releases. For more details, please refer to the [1910 release notes](release-notes.md). In addition this new Private IP space enables ongoing efforts to reduce the required routable IP space prior to deployment.
+This /20 private IP space will be divided into multiple networks that will enable running the Azure Stack system internal infrastructure on containers in future releases. For more information, see the [1910 release notes](release-notes.md). In addition, this new private IP space enables ongoing efforts to reduce the required routable IP space prior to deployment.
 
 For systems deployed before 1910, this /20 subnet will be an additional network to be entered into systems after updating to 1910. The additional network will need to be provided to the system through the **Set-AzsPrivateNetwork** PEP cmdlet. For guidance on this cmdlet please see the [1910 release notes](release-notes.md).
 
 ### Azure Stack infrastructure network
+
 This /24 network is dedicated to internal Azure Stack components so that they can communicate and exchange data among themselves. This subnet can be routable externally of the Azure Stack solution to your datacenter, we do not recommend using Public or Internet routable IP addresses on this subnet. This network is advertised to the Border but most of its IPs are protected by Access Control Lists (ACLs). The IPs allowed for access are within a small range equivalent in size to a /27 network and host services like the [privileged end point (PEP)](azure-stack-privileged-endpoint.md) and [Azure Stack Backup](azure-stack-backup-reference.md).
 
 ### Public VIP network
