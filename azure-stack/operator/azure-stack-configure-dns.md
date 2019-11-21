@@ -11,10 +11,10 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/21/2019
+ms.date: 11/21/2019
 ms.author: sethm
 ms.reviewer: thoroet
-ms.lastreviewed: 10/21/2019
+ms.lastreviewed: 11/21/2019
 
 ---
 
