@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 11/21/2019
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 09/13/2019
+ms.lastreviewed: 11/21/2019
 ---
 
 # Azure Stack known issues
@@ -25,11 +25,11 @@ This article lists known issues in releases of Azure Stack. The list is updated 
 
 To access known issues for a different version, use the version selector dropdown above the table of contents on the left.
 
-::: moniker range=">=azs-1905"
+::: moniker range=">=azs-1906"
 > [!IMPORTANT]  
 > Review this section before applying the update.
 ::: moniker-end
-::: moniker range="<azs-1905"
+::: moniker range="<azs-1906"
 > [!IMPORTANT]  
 > If your Azure Stack instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support). 
 ::: moniker-end
@@ -37,6 +37,216 @@ To access known issues for a different version, use the version selector dropdow
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
 <!---------------------------------------------------------->
+
+::: moniker range="azs-1910"
+## Portal
+
+### Administrative subscriptions
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The two administrative subscriptions that were introduced with version 1804 should not be used. The subscription types are **Metering** subscription, and **Consumption** subscription.
+- Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
+- Occurrence: Common
+
+### Subscriptions Lock blade
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the administrator portal, the **Lock** blade for user subscriptions has two buttons that say **Subscription**.
+- Occurrence: Common
+
+### Subscription permissions
+
+- Applicable: This issue applies to all supported releases.
+- Cause: You cannot view permissions to your subscription using the Azure Stack portals.
+- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
+- Occurrence: Common
+
+### Storage account settings
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the storage account **Configuration** blade shows an option to change **security transfer type**. The feature is currently not supported in Azure Stack.
+- Occurrence: Common
+
+### Upload blob with OAuth error
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you try to upload a blob using the **OAuth(preview)** option, the task fails with an error message.
+- Remediation: Upload the blob using the SAS option.
+- Occurrence: Common
+
+### Upload blob option unsupported
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you try to upload a blob in the upload blade, there is an option to select **AAD** or **Key Authentication**, however **AAD** is not supported in Azure Stack.
+- Occurrence: Common
+
+### Load balancer backend pool
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when adding a **Load balancer** backend pool, the operation results in an error message of **Failed to save load balancer backend pool**; however, the operation did actually succeed.
+- Occurrence: Common
+
+### Incorrect tooltip when creating VM
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you select a managed disk, with disk type Premium SSD, the drop-down list shows **OS Disk**. The tooltip next to that option says **Certain OS Disk sizes may be available for free with Azure Free Account**; however, this is not valid for Azure Stack. In addition, the list includes **Free account eligible** which is also not valid for Azure Stack.
+- Occurrence: Common
+
+### VPN troubleshoot and metrics
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack.
+- Occurrence: Common
+
+### Adding extension to VM Scale Set
+
+- Applicable: This issue applies to releases 1907 and greater.
+- Cause: In the user portal, once a virtual machine scale set is created, the UI does not permit the user to add an extension.
+- Occurrence: Common
+
+### Delete a storage container
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when a user attempts to delete a storage container, the operation fails when the user does not toggle **Override Azure Policy and RBAC Role settings**.
+- Remediation: Ensure that the box is checked for **Override Azure Policy and RBAC Role settings**.
+- Occurrence: Common
+
+### Refresh button on Virtual Machines fails
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you navigate to Virtual Machines and try to refresh using the button at the top, the states fail to update accurately. 
+- Remediation: The status is automatically updated every 5 minutes regardless of whether the refresh button has been clicked or not. Wait 5 minutes and check the status.
+- Occurrence: Common
+
+### Virtual Network Gateway 
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you create a Route Table, **Virtual Network gateway** appears as one of the next hop type options; however this is not supported in Azure Stack.
+- Occurrence: Common
+
+### Storage account options
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the name of storage accounts is shown as **Storage account - blob, file, table, queue**, however **file** is not supported by Azure Stack.
+- Occurrence: Common
+
+### Storage Account Configuration
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, when you create a storage account and view its **Configuration**, you cannot save configuration changes, as it results in an AJAX error. 
+- Occurrence: Common
+
+### Capacity mnitoring in SQL and MySQL resource provider keeps loading
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The current versions of the SQL and MySQL resource provider are not compatible with some of the latest portal changes in the 1910 update.
+- Remediation: Follow the resource provider update process to apply the SQL and MySQL resource provider hotfix 1.1.47.0. ([SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470) and [MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)).
+- Occurrence: Common
+
+## Networking
+
+### Load balancer
+
+- Applicable: This issue applies to all supported releases. 
+- Cause: When adding availability set VMs to the backend pool of a load balancer, an error message is displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal; the functionality is still in place and VMs are successfully added to the backend pool internally.
+- Occurrence: Common
+
+### Network Security Groups
+
+- Applicable: This issue applies to all supported releases. 
+- Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
+- Occurrence: Common
+
+### Service endpoints
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
+
+### Network interface
+
+#### Adding/Removing network interface
+
+- Applicable: This issue applies to all supported releases.
+- Cause: A new network interface cannot be added to a VM that is in a **running** state.
+- Remediation: Stop the virtual machine before adding/removing a network interface.
+- Occurrence: Common
+
+#### Primary network interface
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The primary NIC of a VM cannot be changed. Deleting/detaching the primary NIC results in issues when starting up the VM.
+- Occurrence: Common
+
+### Virtual Network Gateway
+
+#### Alerts
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Virtual Network Gateway** blade shows an option to use **Alerts**. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
+
+#### Active-Active
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, while creating, and in the resource menu of **Virtual Network Gateway**, you will see an option to enable **Active-Active** configuration. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
+
+#### VPN troubleshooter
+
+- Applicable: This issue applies to all supported releases.
+- Cause: In the user portal, the **Connections** blade shows a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack.
+- Occurrence: Common
+
+#### Documentation
+
+- Applicable: This issue applies to all supported releases.
+- Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack. Use the following links for the Azure Stack documentation:
+
+  - [Gateway SKUs](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
+  - [Highly Available Connections](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
+  - [Configure BGP on Azure Stack](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
+  - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
+  - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
+
+## Compute
+
+### VM boot diagnostics
+
+- Applicable: This issue applies to all supported releases.
+- Cause: When creating a new Windows virtual machine (VM), the following error may be displayed: **Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'**. The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
+- Remediation: Recreate the storage account with the same name you used previously.
+- Occurrence: Common
+
+### Consumed compute quota
+
+- Applicable: This issue applies to all supported releases.
+- When creating a new virtual machine, you may receive an error such as **This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.**. This indicates that the quota for total cores available to you has been reached.
+- Remediation: Ask your operator to add an add-on plan with additional quota. Editing the current plan's quota will not work or reflect increased quota.
+- Occurrence: Rare
+
+### Virtual machine scale set
+
+#### Create failures during patch and update on 4-node Azure Stack environments
+
+- Applicable: This issue applies to all supported releases.
+- Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
+- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack deployment.
+
+### Ubuntu SSH access
+
+- Applicable: This issue applies to all supported releases.
+- Cause: An Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in.
+- Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
+- Occurrence: Common
+
+<!-- ## Storage -->
+<!-- ## SQL and MySQL-->
+<!-- ## App Service -->
+<!-- ## Usage -->
+<!-- ### Identity -->
+<!-- ### Marketplace -->
+::: moniker-end
 
 ::: moniker range="azs-1908"
 ## 1908 update process
@@ -65,7 +275,7 @@ To access known issues for a different version, use the version selector dropdow
 ### Subscriptions Lock blade
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the administrator portal, the **Lock** blade for user subscriptions has two butons that say **subscription**.
+- Cause: In the administrator portal, the **Lock** blade for user subscriptions has two buttons labeled **subscription**.
 - Occurrence: Common
 
 ### Subscription permissions
@@ -90,7 +300,14 @@ To access known issues for a different version, use the version selector dropdow
 
 ## Networking
 
+### Load Balancer
+
+- Applicable: This issue applies to all supported releases. 
+- Cause: When adding Avaiability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
+- Occurrence: Common
+
 ### Network Security Groups
+
 - Applicable: This issue applies to all supported releases. 
 - Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
 - Occurrence: Common
@@ -103,23 +320,21 @@ To access known issues for a different version, use the version selector dropdow
 
 ### Network interface
 
+#### Adding/Removing Network Interface
+
 - Applicable: This issue applies to all supported releases.
 - Cause: A new network interface cannot be added to a VM that is in a **running** state.
 - Remediation: Stop the virtual machine before adding/removing a network interface.
 - Occurrence: Common
 
+#### Primary Network Interface
+
 - Applicable: This issue applies to all supported releases.
-- Cause: The primary NIC of a VM cannot be changed. Deleting/Detaching the primary NIC will result in issues starting up the VM.
+- Cause: A new network interface cannot be added to a VM that is in a **running** state.
+- Remediation: Stop the virtual machine before adding/removing a network interface.
 - Occurrence: Common
 
 ### Virtual Network Gateway
-
-#### Local network gateway deletion
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, deleting the **Local Network Gateway** displays the following error message: **Cannot delete a Local Network Gateway with an active connection**, even though there is no active connection.
-- Mitigation: The fix for this issue will be released in 1907. A workaround for this issue is to create a new Local Network Gateway  with the same IP address, address space and configuration details with a different name. The old LNG can be deleted once the environment has been updated to 1907.
-- Occurrence: Common
 
 #### Alerts
 
@@ -250,6 +465,18 @@ To access known issues for a different version, use the version selector dropdow
 
 ## Networking
 
+### Load Balancer
+
+- Applicable: This issue applies to all supported releases. 
+- Cause: When adding Avaiability Set VMs to the backend pool of a Load Balancer, an error message is being displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal, the functionality is still in place and VMs are successfully added to the backend pool interally. 
+- Occurrence: Common
+
+### Network Security Groups
+
+- Applicable: This issue applies to all supported releases. 
+- Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
+- Occurrence: Common
+
 ### Service endpoints
 
 - Applicable: This issue applies to all supported releases.
@@ -257,6 +484,15 @@ To access known issues for a different version, use the version selector dropdow
 - Occurrence: Common
 
 ### Network interface
+
+#### Adding/Removing Network Interface
+
+- Applicable: This issue applies to all supported releases.
+- Cause: A new network interface cannot be added to a VM that is in a **running** state.
+- Remediation: Stop the virtual machine before adding/removing a network interface.
+- Occurrence: Common
+
+#### Primary Network Interface
 
 - Applicable: This issue applies to all supported releases.
 - Cause: A new network interface cannot be added to a VM that is in a **running** state.
@@ -528,162 +764,7 @@ To access known issues for a different version, use the version selector dropdow
 <!-- ### Marketplace -->
 ::: moniker-end
 
-::: moniker range="azs-1905"
-## 1905 update process
-
-### Host node update prerequisite failure
-
-- Applicable: This issue applies to the 1905 update.
-- Cause: When attempting to install the 1905 Azure Stack update, the status for the update might fail due to **Host Node Update Prerequisite**. This is generally caused by a host node having insufficient free disk space.
-- Remediation: Contact Azure Stack support to receive assistance clearing disk space on the host node.
-- Occurrence: Uncommon
-
-### Preparation failed
-
-- Applicable: This issue applies to all supported releases.
-- Cause: When attempting to install the 1905 Azure Stack update, the status for the update might fail and change state to **PreparationFailed**. This is caused by the update resource provider (URP) being unable to properly transfer the files from the storage container to an internal infrastructure share for processing. The 1905 update package is larger than previous update packages which may make this issue more likely to occur.
-- Remediation: Starting with version 1901 (1.1901.0.95), you can work around this issue by clicking **Update now** again (not **Resume**). The URP then cleans up the files from the previous attempt, and restarts the download. If the problem persists, we recommend manually uploading the update package by following the [Import and install updates section](azure-stack-apply-updates.md).
-- Occurrence: Common
-
-## Portal
-
-### Subscription resources
-
-- Applicable: This issue applies to all supported releases.
-- Cause: Deleting user subscriptions results in orphaned resources.
-- Remediation: First delete user resources or the entire resource group, and then delete the user subscriptions.
-- Occurrence: Common
-
-### Subscription permissions
-
-- Applicable: This issue applies to all supported releases.
-- Cause: You cannot view permissions to your subscription using the Azure Stack portals.
-- Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
-- Occurrence: Common
-
-### Marketplace management
-
-- Applicable: This issue applies to 1904 and 1905
-- Cause: The marketplace management screen is not visible when you sign in to the administrator portal.
-- Remediation: Refresh the browser or go to **Settings** and select the option **Reset to default settings**.
-- Occurrence: Intermittent
-
-### Docker extension
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In both the administrator and user portals, if you search for **Docker**, the item is incorrectly returned. It is not available in Azure Stack. If you try to create it, an error is displayed.
-- Remediation: No mitigation.
-- Occurrence: Common
-
-### Upload blob
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you try to upload a blob using the **OAuth(preview)** option, the task fails with an error message.
-- Remediation: Upload the blob using the SAS option.
-- Occurrence: Common
-
-### Template
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the template deployment UI does not populate parameters for the template names beginning with "_" (the underscore character).
-- Remediation: Remove the "_" (underscore character) from the template name.
-- Occurrence: Common
-
-## Networking
-
-### Load balancer
-
-#### Add backend pool
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, if you attempt to add a **Backend Pool** to a **Load Balancer**, the operation fails with the error message **failed to update Load Balancer...**.
-- Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
-- Occurrence: Common
-
-#### Create inbound NAT
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, if you attempt to create an **Inbound NAT Rule** for a **Load Balancer**, the operation fails with the error message **Failed to update Load Balancer...**.
-- Remediation: Use PowerShell, CLI or a Resource Manager template to associate the backend pool with a load balancer resource.
-- Occurrence: Common
-
-#### Create load balancer
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Create Load Balancer** window shows an option to create a **Standard** load balancer SKU. This option is not supported in Azure Stack.
-- Remediation: Use the **Basic** load balancer options instead.
-- Occurrence: Common
-
-### Public IP address
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Create Public IP Address** window shows an option to create a **Standard** SKU. The **Standard** SKU is not supported in Azure Stack.
-- Remediation: Use the **Basic** SKU for public IP address.
-- Occurrence: Common
-
-## Compute
-
-### VM boot diagnostics
-
-- Applicable: This issue applies to all supported releases.
-- Cause: When creating a new Windows virtual machine (VM), the following error may be displayed:
-**Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'**.
-The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
-- Remediation: Recreate the storage account with the same name you used previously.
-- Occurrence: Common
-
-### VM resize
-
-- Applicable: This issue applies to the 1905 release.
-- Cause: Unable to successfully resize a managed disk VM. Attempting to resize the VM generates an error with "code": "InternalOperationError",
-  "message": "An internal error occurred in the operation."
-- Remediation: We are working to remediate this in the next release. Currently, you must recreate the VM with the new VM size.
-- Occurrence: Common
-
-### Virtual machine scale set
-
-#### CentOS
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack Marketplace which will cause deployment failures calling out that the image is not found.
-- Remediation: Select another operating system for your deployment, or use an Azure Resource Manager template specifying another CentOS image that has been downloaded prior to deployment from the marketplace by the operator.
-- Occurrence: Common
-
-#### Remove scale set
-
-- Applicable: This issue applies to all supported releases.
-- Cause: You cannot remove a scale set from the **Virtual machine scale sets** blade.
-- Remediation: Select the scale set that you want to remove, then click the **Delete** button from the **Overview** pane.
-- Occurrence: Common
-
-#### Create failures during patch and update on 4-node Azure Stack environments
-
-- Applicable: This issue applies to all supported releases.
-- Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
-- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack.
-
-#### Scale set instance view blade doesn't load
-
-- Applicable: This issue applies to 1904 and 1905 release.
-- Cause: The instance view blade of a virtual machine scale set located at Azure Stack portal -> Dashboard -> Virtual machine scale sets -> AnyScaleSet - Instances -> AnyScaleSetInstance fails to load, and displays a crying cloud image.
-- Remediation: There is currently no remediation and we are working on a fix. Until then, please use the CLI command `az vmss get-instance-view` to get the instance view of a scale set.
-
-### Ubuntu SSH access
-
-- Applicable: This issue applies to all supported releases.
-- Cause: An Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in.
-- Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
-- Occurrence: Common
-
-<!-- ## Storage -->
-<!-- ## SQL and MySQL-->
-<!-- ## App Service -->
-<!-- ## Usage -->
-<!-- ### Identity -->
-<!-- ### Marketplace -->
-::: moniker-end
-
-::: moniker range=">=azs-1905"
+::: moniker range=">=azs-1906"
 ## Archive
 
 To access archived known issues for an older version, use the version selector dropdown above the table of contents on the left, and select the version you want to see.
@@ -697,6 +778,9 @@ To access archived known issues for an older version, use the version selector d
 <!------------------------------------------------------------>
 <!------------------- UNSUPPORTED VERSIONS ------------------->
 <!------------------------------------------------------------>
+::: moniker range="azs-1905"
+## 1905 archived known issues
+::: moniker-end
 ::: moniker range="azs-1904"
 ## 1904 archived known issues
 ::: moniker-end
@@ -734,6 +818,6 @@ To access archived known issues for an older version, use the version selector d
 ## 1802 archived known issues
 ::: moniker-end
 
-::: moniker range="<azs-1905"
+::: moniker range="<azs-1906"
 You can access [older versions of Azure Stack known issues on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack support, see [Azure Stack servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
