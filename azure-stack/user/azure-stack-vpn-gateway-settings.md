@@ -167,9 +167,9 @@ Unlike Azure, which supports multiple offers as both an initiator and a responde
 | Property              | Value|
 |-|-|
 | IKE Version           | IKEv2 |
-|Diffie-Hellman Group   | Group 2 (1024 bit) |
+|Diffie-Hellman Group   | ECP384 |
 | Authentication Method | Pre-Shared Key |
-|Encryption & Hashing Algorithms | AES256, SHA256 |
+|Encryption & Hashing Algorithms | AES256, SHA384 |
 |SA Lifetime (Time)     | 28,800 seconds|
 
 ### IKE Phase 2 (Quick Mode) parameters
@@ -181,10 +181,8 @@ Unlike Azure, which supports multiple offers as both an initiator and a responde
 |Encryption & Hashing Algorithms (Authentication) | GCMAES256|
 |SA Lifetime (Time)  | 27,000 seconds  |
 |SA Lifetime (Kilobytes) | 33,553,408     |
-|Perfect Forward Secrecy (PFS) |None (see **Note 1**) |
+|Perfect Forward Secrecy (PFS) | ECP384 |
 |Dead Peer Detection | Supported|  
-
-**Note 1:** Before version 1807, Azure Stack used a value of PFS2048 for the Perfect Forward Secrecy (PFS).
 
 ## Next steps
 
