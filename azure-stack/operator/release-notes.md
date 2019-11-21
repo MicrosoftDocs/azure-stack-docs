@@ -131,6 +131,8 @@ For more information about update build types, see [Manage updates in Azure Stac
 
    These changes are reflected in the [default IPsec/IKE proposal](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters) documentation as well.
 
+- Infrastructure backup service improves logic that calculates desired free space for backups instead of relying on a fixed threshold. The service will use the size of a backup, retention policy, reserve, and current utilization of external storage location to determine if a warning needs to be raised to the operater. 
+
 ### Changes
 
 - When downloading marketplace items from Azure to Azure Stack, there is a new user interface that enables you to specify a version of the item, when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md).  
@@ -140,6 +142,10 @@ For more information about update build types, see [Manage updates in Azure Stac
   - Please note that the /20 input serves as a pre-requisite to the next Azure Stack update. When the next Azure Stack update is released and an attempt is made to install it, the update will fail if you have not completed the /20 input as described below in remediation steps. An alert will be present in the admin portal until the above remediation steps have been completed. Please see the [Datacenter network integration](azure-stack-network.md#private-network) article to understand how this new private space will be consumed. 
 
   - Remediation steps: To remediate, follow the instructions to [open a PEP Session](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Prepare a [private internal IP range](azure-stack-network.md#logical-networks) of size /20, and run the following cmdlet in the PEP session using the format: `Set-AzsPrivateNetwork -UserSubnet 100.87.0.0/20`. If the operation is performed successfully, you will receive the message **Azs Internal Network range added to the config**. If successfully completed, the alert will close in the admin portal. The Azure Stack system will now be able to update to the next version.
+  
+- Infrastructure backup service deletes partially uploaded backup data if the external storage location runs out of capacity during the upload procedure.  
+
+- Infrastructure backup service adds identity service to the backup payload for AAD deployments.  
 
 ### Fixes
 
