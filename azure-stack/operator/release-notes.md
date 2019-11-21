@@ -60,13 +60,9 @@ Starting with 1908, the underlying operating system on which Azure Stack runs wa
 
 The Azure Stack 1910 update build type is **Express**.
 
-The 1910 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The expected time it takes for the 1910 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack environment. Exact update runtimes will typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack operators unless the update fails. This runtime approximation is specific to the 1910 update and should not be compared to other Azure Stack updates.
+The 1910 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The expected time it takes for the 1910 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack environment. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack operators unless the update fails. This runtime approximation is specific to the 1910 update and should not be compared to other Azure Stack updates.
 
 For more information about update build types, see [Manage updates in Azure Stack](azure-stack-updates.md).
-
-- Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware configuration.
-- Runtimes lasting longer than expected are not uncommon and do not require action by Azure Stack operators unless the update fails.
-- This runtime approximation is specific to the 1910 update and should not be compared to other Azure Stack updates.
 
 <!-- ## What's in this update -->
 

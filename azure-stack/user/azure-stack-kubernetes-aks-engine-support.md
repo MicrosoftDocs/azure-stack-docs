@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 09/14/2019
+ms.date: 11/21/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 09/14/2019
+ms.lastreviewed: 11/21/2019
 
 ---
 
@@ -24,11 +24,6 @@ ms.lastreviewed: 09/14/2019
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 This article provides details about technical support policies and limitations for AKS engine on Azure Stack. The article also details Kubernetes Marketplace item, third-party open-source components, and security or patch management. 
-
-> [!IMPORTANT]
-> The AKS engine is currently in public preview.
-> This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
-> For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## Self-managed Kubernetes clusters on Azure Stack with AKS engine
 
