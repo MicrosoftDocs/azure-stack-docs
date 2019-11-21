@@ -1,6 +1,6 @@
 ---
 title: Fix common issues with PKI certificates
-tittleSuffix: Azure Stack
+titleSuffix: Azure Stack
 description: Fix common issues with Azure Stack PKI certificates using the Azure Stack Readiness Checker.
 services: azure-stack
 documentationcenter: ''
