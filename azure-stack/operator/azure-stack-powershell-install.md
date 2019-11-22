@@ -100,7 +100,7 @@ Run the following PowerShell script to install these modules on your development
     Install-Module -Name AzureStack -RequiredVersion 1.8.0
     ```
 
-- For Azure Stack 1904 or later:
+- For Azure Stack 1908 or after 1903:
 
     ```powershell  
     # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
@@ -121,6 +121,7 @@ Run the following PowerShell script to install these modules on your development
     ```
 
     > [!Note]  
+    > - Azure Stack module version 1.8.0 is a breaking change release. Refer to the [release note](release-notes.md#changes) for details.
     > - The Azure Stack module version 1.7.1 is a breaking change release. To migrate from Azure Stack 1.6.0, please refer to the [migration guide](https://aka.ms/azspshmigration171).
     > - The AzureRM module version 2.4.0 comes with a breaking change for the cmdlet Remove-AzureRmStorageAccount. This cmdlet expects `-Force` parameter to be specified for removing the storage account without confirmation.
     > - You don't need to install **AzureRM.BootStrapper** to install the modules for Azure Stack version 1901 or later.
@@ -153,7 +154,7 @@ Installation has four steps:
 
 ### Install Azure Stack PowerShell
 
-- Azure Stack 1904 or later.
+- Azure Stack 1910 or later.
 
     ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop
@@ -162,6 +163,17 @@ Installation has four steps:
     $Path = "<Path that is used to save the packages>"
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.0
+    ```
+
+- For Azure Stack 1908 or after 1903:
+
+    ```powershell
+    Import-Module -Name PowerShellGet -ErrorAction Stop
+    Import-Module -Name PackageManagement -ErrorAction Stop
+
+    $Path = "<Path that is used to save the packages>"
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.7.2
     ```
 
 - Azure Stack 1903 or earlier.
@@ -176,6 +188,7 @@ Installation has four steps:
     ```
 
     > [!Note]  
+    > - Azure Stack module version 1.8.0 is a breaking change release. Refer to the [release note](release-notes.md#changes) for details.
     > The Azure Stack module version 1.7.1 is a breaking change. To migrate from Azure Stack 1.6.0 please refer to the [migration guide](https://github.com/Azure/azure-powershell/tree/AzureRM/documentation/migration-guides/Stack).
 
     > [!NOTE]
