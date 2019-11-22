@@ -88,7 +88,7 @@ Azure Stack supports secret rotation with external certificates from a new Certi
 
 <sup>*</sup>Indicates that the Public Certificate Authorities are those that are part of the Windows Trusted Root Program. You can find the full list in the article [Microsoft Trusted Root Certificate Program: Participants (as of June 27, 2017)](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
 
-## Alert remediation
+## Fixing alerts
 
 When secrets are within 30 days of expiration, the following alerts are generated in the administrator portal:
 
@@ -99,21 +99,17 @@ When secrets are within 30 days of expiration, the following alerts are generate
 Running secret rotation using the instructions below will fix these alerts.
 
 > [!Note]
-> Azure Stack environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations.
-> These alerts are inaccurate and should be ignored without running internal secret rotation.
-> Inaccurate internal secret expiration alerts are a known issue that is resolved in 1811- internal secrets will not expire unless the environment has been active for two years.
+> Azure Stack environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored without running internal secret rotation. Inaccurate internal secret expiration alerts are a known issue that's resolved in 1811—internal secrets won't expire unless the environment has been active for two years.
 
 ## Pre-steps for secret rotation
 
    > [!IMPORTANT]
-   > If secret rotation has already been performed on your Azure Stack environment then you must update the system to version 1811 or later before you execute secret rotation again.
-   > Secret Rotation must be executed by via the [Privileged Endpoint](azure-stack-privileged-endpoint.md) and requires Azure Stack Operator credentials.
-   > If your environment Azure Stack Operator(s) do not know whether secret rotation has been run on your environment, update to 1811 before executing secret rotation again.
+   > If secret rotation has already been performed on your Azure Stack environment then you must update the system to version 1811 or later before you execute secret rotation again. Secret Rotation must be executed via the [Privileged Endpoint](azure-stack-privileged-endpoint.md) and requires Azure Stack Operator credentials. If your environment Azure Stack Operator(s) don't know whether secret rotation has been run on your environment, update to 1811 before executing secret rotation again.
 
-1. It is highly recommended that you update your Azure Stack instance to version 1811.
+1. It's highly recommended you update your Azure Stack instance to version 1811.
 
-    > [!Note] 
-    > For pre-1811 versions you do not need to rotate secrets to add extension host certificates. You should follow the instructions in the article [Prepare for extension host for Azure Stack](azure-stack-extension-host-prepare.md) to add extension host certificates.
+    > [!Note]
+    > For pre-1811 versions, you don't need to rotate secrets to add extension host certificates. You should follow the instructions in the article [Prepare for extension host for Azure Stack](azure-stack-extension-host-prepare.md) to add extension host certificates.
 
 2. Operators may notice alerts open and automatically close during rotation of Azure Stack secrets.  This behavior is expected and the alerts can be ignored.  Operators can verify the validity of these alerts by running **Test-AzureStack**.  For operators using System Center Operations Manager to monitor Azure Stack systems, placing a system in maintenance mode will prevent these alerts from reaching their ITSM systems but will continue to alert if the Azure Stack system becomes unreachable.
 
@@ -132,9 +128,10 @@ Running secret rotation using the instructions below will fix these alerts.
 > [!IMPORTANT]
 > The CertDirectoryMaker script will create a folder structure that will adhere to:
 >
-> **.\Certificates\AAD** or ***.\Certificates\ADFS*** depending on your Identity Provider used for Azure Stack
+> **.\Certificates\AAD** or ***.\Certificates\ADFS*** depending on your Identity Provider used for Azure Stack.
 >
-> It is of utmost importance that your folder structure ends with **AAD** or **ADFS** folders and all subdirectories are within this structure; otherwise, **Start-SecretRotation** will come up with:
+> It's of utmost importance that your folder structure ends with **AAD** or **ADFS** folders and all subdirectories are within this structure; otherwise, **Start-SecretRotation** will come up with:
+>
 > ```powershell
 > Cannot bind argument to parameter 'Path' because it is null.
 > + CategoryInfo          : InvalidData: (:) [Test-Certificate], ParameterBindingValidationException
@@ -142,10 +139,9 @@ Running secret rotation using the instructions below will fix these alerts.
 > + PSComputerName        : xxx.xxx.xxx.xxx
 > ```
 >
-> As you can see the error massage would indicate that there is a problem accessing your fileshare but in reality it is the folder structure that is being enforced here.
-> More information can be found in the Microsoft AzureStack Readiness Checker - [PublicCertHelper module](https://www.powershellgallery.com/packages/Microsoft.AzureStack.ReadinessChecker/1.1811.1101.1/Content/CertificateValidation%5CPublicCertHelper.psm1)
+> The error massage indicates that there's a problem accessing your fileshare but in reality it's the folder structure that's being enforced here. More information can be found in the Microsoft AzureStack Readiness Checker - [PublicCertHelper module](https://www.powershellgallery.com/packages/Microsoft.AzureStack.ReadinessChecker/1.1811.1101.1/Content/CertificateValidation%5CPublicCertHelper.psm1).
 >
-> It is also important that your fileshare folder structure begins with **Certificates** folder otherwise it will also fail on validation.
+> It's also important that your fileshare folder structure begins with **Certificates** folder, otherwise it will also fail on validation.
 > Fileshare mount should look like **\\\\\<IPAddress>\\\<ShareName>\\** and it should contain folder **Certificates\AAD** or **Certificates\ADFS** inside.
 >
 > For example:
