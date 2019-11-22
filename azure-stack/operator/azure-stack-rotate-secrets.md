@@ -99,7 +99,7 @@ When secrets are within 30 days of expiration, the following alerts are generate
 Running secret rotation using the instructions below will fix these alerts.
 
 > [!Note]
-> Azure Stack environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored without running internal secret rotation. Inaccurate internal secret expiration alerts are a known issue that's resolved in 1811—internal secrets won't expire unless the environment has been active for two years.
+> Azure Stack environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored without running internal secret rotation. Inaccurate internal secret expiration alerts are a known issue that's resolved in 1811. Internal secrets won't expire unless the environment has been active for two years.
 
 ## Pre-steps for secret rotation
 
@@ -249,16 +249,13 @@ Remove-PSSession -Session $PEPSession
 ## Rotating only internal secrets
 
 > [!Note]
-> Internal Secret Rotation should only be done if you suspect an internal secret has been compromised by a malicious entity, or if you have received an alert (on build 1811 or later) indicating internal certificates are nearing expiration.
-> Azure Stack environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations.
-> These alerts are inaccurate and should be ignored without running internal secret rotation.
-> Inaccurate internal secret expiration alerts are a known issue that is resolved in 1811- internal secrets will not expire unless the environment has been active for two years.
+> Internal secret rotation should only be done if you suspect an internal secret has been compromised by a malicious entity, or if you've received an alert (on build 1811 or later) indicating internal certificates are nearing expiration. Azure Stack environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations. These alerts are inaccurate and should be ignored without running internal secret rotation. Inaccurate internal secret expiration alerts are a known issue that's resolved in 1811. Internal secrets won't expire unless the environment has been active for two years.
 
-1. Create a PowerShell session with the [Privileged Endpoint](azure-stack-privileged-endpoint.md).
+1. Create a PowerShell session with the [Privileged endpoint](azure-stack-privileged-endpoint.md).
 2. In the Privileged Endpoint session, run **Start-SecretRotation -Internal**.
 
     > [!Note]
-    > Azure Stack environments on pre-1811 versions will not require the **-Internal** flag. **Start-SecretRotation** will rotate only internal secrets.
+    > Azure Stack environments on pre-1811 versions won't require the **-Internal** flag. **Start-SecretRotation** will rotate only internal secrets.
 
 3. Wait while your secrets rotate.
 
@@ -270,11 +267,11 @@ Remove-PSSession -Session $PEPSession
 Start-SecretRotation -Internal -ReRun
 ```
 
-Contact Support if you experience repeated secret rotation failures.
+Contact support if you experience repeated secret rotation failures.
 
 ## Start-SecretRotation reference
 
-Rotates the secrets of an Azure Stack System. Only executed against the Azure Stack Privileged Endpoint.
+Rotates the secrets of an Azure Stack System. Only executed against the Azure Stack privileged endpoint.
 
 ### Syntax
 
@@ -304,7 +301,7 @@ Start-SecretRotation [-ReRun] [-Internal]
 
 ### Description
 
-The **Start-SecretRotation** cmdlet rotates the infrastructure secrets of an Azure Stack system. By default it rotates only the certificates of all external network infrastructure endpoints. If used with the -Internal flag internal infrastructure secrets will be rotated. When rotating external network infrastructure endpoints, **Start-SecretRotation** should be run with an **Invoke-Command** script block with the Azure Stack environment's privileged endpoint session passed in as the **Session** parameter.
+The **Start-SecretRotation** cmdlet rotates the infrastructure secrets of an Azure Stack system. By default, it rotates only the certificates of all external network infrastructure endpoints. If used with the -Internal flag, internal infrastructure secrets will be rotated. When rotating external network infrastructure endpoints, **Start-SecretRotation** should be run with an **Invoke-Command** script block with the Azure Stack environment's privileged endpoint session passed in as the **Session** parameter.
 
 ### Parameters
 
@@ -326,7 +323,7 @@ This must be run via your Azure Stack [environment's privileged endpoint](azure-
 PS C:\> Start-SecretRotation -Internal
 ```
 
-This command rotates all of the infrastructure secrets exposed to Azure Stack internal network.
+This command rotates all of the infrastructure secrets exposed to the Azure Stack internal network.
 
 #### Rotate only external infrastructure secrets  
 
@@ -354,7 +351,7 @@ This command rotates the TLS certificates used for Azure Stack's external networ
 > [!IMPORTANT]
 > This command only applies to Azure Stack **pre-1811** as the rotation has been split for internal and external certificates.
 >
-> **From *1811+* you cannot rotate both internal and external certificates any more!!!**
+> **From *1811+* you can't rotate both internal and external certificates anymore!**
 
 ```powershell
 # Create a PEP Session
@@ -377,15 +374,17 @@ This command rotates all of the infrastructure secrets exposed to Azure Stack in
 
 ## Update the baseboard management controller (BMC) credential
 
-The baseboard management controller (BMC) monitors the physical state of your servers. Refer to your original equipment manufacturer (OEM) hardware vendor for instructions to update the user account name and password of the BMC. 
+The baseboard management controller (BMC) monitors the physical state of your servers. Refer to your original equipment manufacturer (OEM) hardware vendor for instructions to update the user account name and password of the BMC.
 
 >[!NOTE]
-> Your OEM may provide additional management applications. Updating the user name or password for other management applications has no affect on the BMC user name or password.
+> Your OEM may provide additional management apps. Updating the user name or password for other management apps has no affect on the BMC user name or password.
 
 1. **Versions earlier than 1910**: Update the BMC on the Azure Stack physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
 
-   **Version 1910 and later**: It is no longer required that you first update the BMC credentials on the Azure Stack physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
+   **Version 1910 and later**: It's no longer required that you first update the BMC credentials on the Azure Stack physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
+
 2. Open a privileged endpoint in Azure Stack sessions. For instructions, see [Using the privileged endpoint in Azure Stack](azure-stack-privileged-endpoint.md).
+
 3. After your PowerShell prompt has changed to **[IP address or ERCS VM name]: PS>** or to **[azs-ercs01]: PS>**, depending on the environment, run `Set-BmcCredential` by running `Invoke-Command`. Pass your privileged endpoint session variable as a parameter. For example:
 
     ```powershell
