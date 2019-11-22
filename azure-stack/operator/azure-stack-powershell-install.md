@@ -89,7 +89,7 @@ The API version profile and Azure Stack PowerShell modules you require will depe
 
 Run the following PowerShell script to install these modules on your development workstation:
 
-- For Azure Stack 1904 or later:
+- For Azure Stack 1910 or later:
 
     ```powershell  
     # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
@@ -98,6 +98,17 @@ Run the following PowerShell script to install these modules on your development
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
     Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
     Install-Module -Name AzureStack -RequiredVersion 1.8.0
+    ```
+
+- For Azure Stack 1904 or later:
+
+    ```powershell  
+    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
+    Install-Module -Name AzureRM.BootStrapper
+
+    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
+    Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
+    Install-Module -Name AzureStack -RequiredVersion 1.7.1
     ```
   
 - For Azure Stack version 1903 or earlier, only install the two modules below:
