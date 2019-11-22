@@ -1,5 +1,6 @@
 ---
-title: Rotate secrets in Azure Stack | Microsoft Docs
+title: Rotate secrets
+titleSuffix: Azure Stack
 description: Learn how to rotate your secrets in Azure Stack.
 services: azure-stack
 documentationcenter: ''
