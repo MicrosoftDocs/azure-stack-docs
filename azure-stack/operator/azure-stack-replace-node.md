@@ -36,7 +36,7 @@ The following flow diagram shows the general FRU process to replace an entire sc
 *This action may not be required based on the physical condition of the hardware.
 
 > [!Note]  
-> If the shutdown operation does fail, it's recommended to use the drain operation followed by the stop operation. For more information, see [Scale unit node actions in Azure Stack](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-node-actions).
+> If the shutdown operation does fail, it's recommended to use the drain operation followed by the stop operation. For more information, see [Scale unit node actions in Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-node-actions).
 
 ## Review alert information
 
