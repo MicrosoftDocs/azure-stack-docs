@@ -68,7 +68,7 @@ Azure Stack uses various secrets to maintain secure communication between the Az
 > [!Important]
 > Starting with Azure Stack's 1811 release, secret rotation has been separated for internal and external certificates.
 
-In order to maintain the integrity of the Azure Stack infrastructure, operators need the ability to periodically rotate their infrastructure's secrets at frequencies that are consistent with their organization's security requirements.
+To maintain the integrity of the Azure Stack infrastructure, operators need the ability to periodically rotate their infrastructure's secrets at frequencies that are consistent with their organization's security requirements.
 
 ### Rotating Secrets with external certificates from a new Certificate Authority
 
@@ -113,12 +113,12 @@ Running secret rotation using the instructions below will fix these alerts.
 
 2. Operators may notice alerts open and automatically close during rotation of Azure Stack secrets.  This behavior is expected and the alerts can be ignored.  Operators can verify the validity of these alerts by running **Test-AzureStack**.  For operators using System Center Operations Manager to monitor Azure Stack systems, placing a system in maintenance mode will prevent these alerts from reaching their ITSM systems but will continue to alert if the Azure Stack system becomes unreachable.
 
-3. Notify your users of any maintenance operations. Schedule normal maintenance windows, as much as possible,  during non-business hours. Maintenance operations may affect both user workloads and portal operations.
+3. Notify your users of any maintenance operations. Schedule normal maintenance windows, as much as possible,  during non-business hours. Maintenance operations may effect both user workloads and portal operations.
 
     > [!Note]
     > The next steps only apply when rotating Azure Stack external secrets.
 
-4. Run **[Test-AzureStack](azure-stack-diagnostic-test.md)** and confirm all test outputs are healthy prior to rotating secrets.
+4. Run **[Test-AzureStack](azure-stack-diagnostic-test.md)** and confirm all test outputs are healthy before rotating secrets.
 5. Prepare a new set of replacement external certificates. The new set matches the certificate specifications outlined in the [Azure Stack PKI certificate requirements](azure-stack-pki-certs.md). You can generate a certificate signing request (CSR) for purchasing or creating new certificates using the steps outlined in [Generate PKI Certificates](azure-stack-get-pki-certs.md) and prepare them for use in your Azure Stack environment using the steps in [Prepare Azure Stack PKI Certificates](azure-stack-prepare-pki-certs.md). Be sure to validate the certificates you prepare with the steps outlined in [Validate PKI Certificates](azure-stack-validate-pki-certs.md).
 6. Store a back up to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the file share with the backup copies before you rerun the rotation. Note, keep backup copies in the secure backup location.
 7. Create a fileshare you can access from the ERCS VMs. The file share must be  readable and writable for the **CloudAdmin** identity.
@@ -317,7 +317,7 @@ The **Start-SecretRotation** cmdlet rotates the infrastructure secrets of an Azu
 
 #### Rotate only internal infrastructure secrets
 
-This must be run via your Azure Stack [environment's privileged endpoint](azure-stack-privileged-endpoint.md).
+This command must be run via your Azure Stack [environment's privileged endpoint](azure-stack-privileged-endpoint.md).
 
 ```powershell
 PS C:\> Start-SecretRotation -Internal
