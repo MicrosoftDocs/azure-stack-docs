@@ -153,7 +153,7 @@ Running secret rotation using the instructions below will fix these alerts.
 
 To rotate external secrets:
 
-1. Within the newly created **\Certificates\\\<IdentityProvider>** directory created in the Pre-steps, place the new set of replacement external certificates in the directory structure according to the format outlined in the Mandatory Certificates section of the [Azure Stack PKI certificate requirements](azure-stack-pki-certs.md#mandatory-certificates).
+1. Within the newly created **\Certificates\\\<IdentityProvider>** directory created in the pre-steps, place the new set of replacement external certificates in the directory structure according to the format outlined in the **Mandatory certificates** section of the [Azure Stack PKI certificate requirements](azure-stack-pki-certs.md#mandatory-certificates).
 
     Example of folder structure for the Azure AD Identity Provider:
     ```powershell
@@ -196,12 +196,12 @@ To rotate external secrets:
 
     ```
 
-2. Create a PowerShell Session with the [Privileged Endpoint](azure-stack-privileged-endpoint.md) using the **CloudAdmin** account and store the sessions as a variable. You will use this variable as the parameter in the next step.
+2. Create a PowerShell Session with the [Privileged endpoint](azure-stack-privileged-endpoint.md) using the **CloudAdmin** account and store the sessions as a variable. You'll use this variable as the parameter in the next step.
 
     > [!IMPORTANT]  
-    > Do not enter the session, store the session as a variable.
+    > Don't enter the session. Store the session as a variable.
 
-3. Run **[Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/Invoke-Command?view=powershell-5.1)**. Pass your Privileged Endpoint PowerShell session variable as the **Session** parameter.
+3. Run **[Invoke-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/Invoke-Command?view=powershell-5.1)**. Pass your privileged endpoint PowerShell session variable as the **Session** parameter.
 
 4. Run **Start-SecretRotation** with the following parameters:
     - **PfxFilesPath**  
@@ -211,17 +211,18 @@ To rotate external secrets:
     - **CertificatePassword**  
     A secure string of the password used for all of the pfx certificate files created.
 
-5. Wait while your secrets rotate. External secret rotation usually takes approximately one hour.
+5. Wait while your secrets rotate. External secret rotation takes approximately one hour.
 
     When secret rotation successfully completes, your console will display **Overall action status: Success**.
 
     > [!Note]
-    > If secret rotation fails, follow the instructions in the error message and re-run **Start-SecretRotation** with the **-ReRun** Parameter.
+    > If secret rotation fails, follow the instructions in the error message and re-run **Start-SecretRotation** with the **-ReRun** parameter.
 
     ```powershell
     Start-SecretRotation -ReRun
     ```
-    Contact Support if you experience repeated secret rotation failures.
+
+    Contact support if you experience repeated secret rotation failures.
 
 6. After successful completion of secret rotation, remove your certificates from the share created in the pre-step and store them in their secure backup location.
 
