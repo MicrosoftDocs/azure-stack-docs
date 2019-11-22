@@ -114,31 +114,31 @@ To access known issues for a different version, use the version selector dropdow
 ### Refresh button on Virtual Machines fails
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you navigate to Virtual Machines and try to refresh using the button at the top, the states fail to update accurately. 
+- Cause: In the user portal, when you navigate to Virtual Machines and try to refresh using the button at the top, the states fail to update accurately.
 - Remediation: The status is automatically updated every 5 minutes regardless of whether the refresh button has been clicked or not. Wait 5 minutes and check the status.
 - Occurrence: Common
 
-### Virtual Network Gateway 
+### Virtual Network Gateway
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you create a Route Table, **Virtual Network gateway** appears as one of the next hop type options; however this is not supported in Azure Stack.
+- Cause: In the user portal, when you create a route table, **Virtual Network gateway** appears as one of the next hop type options; however, this is not supported in Azure Stack.
 - Occurrence: Common
 
 ### Storage account options
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the name of storage accounts is shown as **Storage account - blob, file, table, queue**, however **file** is not supported by Azure Stack.
+- Cause: In the user portal, the name of storage accounts is shown as **Storage account - blob, file, table, queue**, however **file** is not supported in Azure Stack.
 - Occurrence: Common
 
-### Storage Account Configuration
+### Storage account configuration
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you create a storage account and view its **Configuration**, you cannot save configuration changes, as it results in an AJAX error. 
+- Cause: In the user portal, when you create a storage account and view its **Configuration**, you cannot save configuration changes, as it results in an AJAX error.
 - Occurrence: Common
 
 ### Capacity monitoring in SQL resource provider keeps loading
 
-- Applicable: This issue applies to Azure Stack 1910 update or newer versions with SQL resource provider version 1.1.33.0 or previous versions installed.
+- Applicable: This issue applies to the Azure Stack 1910 update or later, with SQL resource provider version 1.1.33.0 or earlier installed.
 - Cause: The current version of the SQL resource provider is not compatible with some of the latest portal changes in the 1910 update.
 - Remediation: Follow the resource provider update process to apply the SQL resource provider hotfix 1.1.47.0 after Azure Stack is upgraded to the 1910 update ([SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)). For the MySQL resource provider, it is also recommended that you apply the MySQL resource provider hotfix 1.1.47.0 after Azure Stack is upgraded to 1910 update ([MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)).
 - Occurrence: Common
@@ -147,7 +147,7 @@ To access known issues for a different version, use the version selector dropdow
 
 ### Load balancer
 
-- Applicable: This issue applies to all supported releases. 
+- Applicable: This issue applies to all supported releases.
 - Cause: When adding availability set VMs to the backend pool of a load balancer, an error message is displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal; the functionality is still in place and VMs are successfully added to the backend pool internally.
 - Occurrence: Common
 
@@ -165,17 +165,17 @@ To access known issues for a different version, use the version selector dropdow
 
 ### Network interface
 
-#### Adding/Removing network interface
+#### Adding/removing network interface
 
 - Applicable: This issue applies to all supported releases.
 - Cause: A new network interface cannot be added to a VM that is in a **running** state.
-- Remediation: Stop the virtual machine before adding/removing a network interface.
+- Remediation: Stop the virtual machine before adding or removing a network interface.
 - Occurrence: Common
 
 #### Primary network interface
 
 - Applicable: This issue applies to all supported releases.
-- Cause: The primary NIC of a VM cannot be changed. Deleting/detaching the primary NIC results in issues when starting up the VM.
+- Cause: The primary NIC of a VM cannot be changed. Deleting or detaching the primary NIC results in issues when starting up the VM.
 - Occurrence: Common
 
 ### Virtual Network Gateway
@@ -195,7 +195,7 @@ To access known issues for a different version, use the version selector dropdow
 #### VPN troubleshooter
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Connections** blade shows a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack.
+- Cause: In the user portal, the **Connections** blade displays a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack.
 - Occurrence: Common
 
 #### Documentation
@@ -214,7 +214,7 @@ To access known issues for a different version, use the version selector dropdow
 ### VM boot diagnostics
 
 - Applicable: This issue applies to all supported releases.
-- Cause: When creating a new Windows virtual machine (VM), the following error may be displayed: **Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'**. The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
+- Cause: When creating a new Windows virtual machine (VM), the following error might be displayed: **Failed to start virtual machine 'vm-name'. Error: Failed to update serial output settings for VM 'vm-name'**. The error occurs if you enable boot diagnostics on a VM, but delete your boot diagnostics storage account.
 - Remediation: Recreate the storage account with the same name you used previously.
 - Occurrence: Common
 
@@ -222,7 +222,7 @@ To access known issues for a different version, use the version selector dropdow
 
 - Applicable: This issue applies to all supported releases.
 - When creating a new virtual machine, you may receive an error such as **This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.**. This indicates that the quota for total cores available to you has been reached.
-- Remediation: Ask your operator to add an add-on plan with additional quota. Editing the current plan's quota will not work or reflect increased quota.
+- Remediation: Ask your operator for an add-on plan with additional quota. Editing the current plan's quota will not work or reflect increased quota.
 - Occurrence: Rare
 
 ### Virtual machine scale set
