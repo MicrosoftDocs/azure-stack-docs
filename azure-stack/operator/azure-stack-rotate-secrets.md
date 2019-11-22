@@ -21,18 +21,18 @@ monikerRange: '>=azs-1802'
 
 # Rotate secrets in Azure Stack
 
-*These instructions apply only to Azure Stack Integrated Systems Version 1803 and Later. Do not attempt secret rotation on pre-1802 Azure Stack Versions*
+*These instructions apply only to Azure Stack Integrated Systems version 1803 and Later. Don't attempt secret rotation on pre-1802 Azure Stack Versions*
 
 Secrets help you maintain secure communication between the Azure Stack infrastructure resources and services.
 
-## Overview to rotate secrets
+## Rotate secrets overview
 
-1. Prepare the certificates, which will be used for secret rotation.
+1. Prepare the certificates which will be used for secret rotation.
 2. Review the Azure Stack [public key infrastructure certificate requirements](https://docs.microsoft.com/azure-stack/operator/azure-stack-pki-certs).
 3. [Use the privileged endpoint](azure-stack-privileged-endpoint.md) and run **Test-azurestack**  to confirm that everything is fine.  
-4. You can find out more information about the [pre-steps for secret rotation](#pre-steps-for-secret-rotation).
-5. [Validate Azure Stack PKI certificates](https://docs.microsoft.com/azure-stack/operator/azure-stack-validate-pki-certs). Make sure there are no special characters in password such as, `*` or `)`.
-6. Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Remediate common issues for Azure Stack PKI certificates](https://docs.microsoft.com/azure-stack/operator/azure-stack-remediate-certs#pfx-encryption).
+4. Review the [pre-steps for secret rotation](#pre-steps-for-secret-rotation).
+5. [Validate Azure Stack PKI certificates](https://docs.microsoft.com/azure-stack/operator/azure-stack-validate-pki-certs). Make sure there are no special characters in the password, like `*` or `)`.
+6. Make sure the PFX encryption is **TripleDES-SHA1**. If you run into an issue, see [Fix common issues with Azure Stack PKI certificates](https://docs.microsoft.com/azure-stack/operator/azure-stack-remediate-certs#pfx-encryption).
 7. Prepare the folder structure.  You can find an example in the 
     [Rotating external secrets](https://docs.microsoft.com/azure-stack/operator/azure-stack-rotate-secrets#rotating-external-secrets) section.
 8. [Start the secret rotation](#use-powershell-to-rotate-secrets).
@@ -49,21 +49,21 @@ Azure Stack uses various secrets to maintain secure communication between the Az
 
     Infrastructure service certificates for external-facing services that are provided by the Azure Stack Operator. External secrets include the certificates for the following services:
 
-    - Administrator Portal
-    - Public Portal
+    - Administrator portal
+    - Public portal
     - Administrator Azure Resource Manager
     - Global Azure Resource Manager
-    - Administrator KeyVault
-    - KeyVault
+    - Administrator Key Vault
+    - Key Vault
     - Admin Extension Host
     - ACS (including blob, table, and queue storage)
-    - ADFS *
-    - Graph *
+    - ADFS*
+    - Graph*
     
     \* Only applicable if the environment's identity provider is Active Directory Federated Services (AD FS).
 
 > [!Note]
-> All other secure keys and strings, including BMC and switch passwords, user and administrator account passwords are still manually updated by the administrator.
+> All other secure keys and strings, including BMC and switch passwords as well as user and administrator account passwords are still manually updated by the administrator.
 
 > [!Important]
 > Starting with Azure Stack's 1811 release, secret rotation has been separated for internal and external certificates.
@@ -74,7 +74,7 @@ In order to maintain the integrity of the Azure Stack infrastructure, operators 
 
 Azure Stack supports secret rotation with external certificates from a new Certificate Authority (CA) in the following contexts:
 
-|Installed Certificate CA|CA to Rotate To|Supported|Azure Stack Versions Supported|
+|Installed Certificate CA|CA to Rotate To|Supported|Azure Stack versions supported|
 |-----|-----|-----|-----|
 |From Self-Signed|To Enterprise|Supported|1903 & Later|
 |From Self-Signed|To Self-Signed|Not Supported||
@@ -90,13 +90,13 @@ Azure Stack supports secret rotation with external certificates from a new Certi
 
 ## Alert remediation
 
-When secrets are within 30 days of expiration, the following alerts are generated in the Administrator Portal:
+When secrets are within 30 days of expiration, the following alerts are generated in the administrator portal:
 
 - Pending service account password expiration
 - Pending internal certificate expiration
 - Pending external certificate expiration
 
-Running secret rotation using the instructions below will remediate these alerts.
+Running secret rotation using the instructions below will fix these alerts.
 
 > [!Note]
 > Azure Stack environments on pre-1811 versions may see alerts for pending internal certificate or secret expirations.
