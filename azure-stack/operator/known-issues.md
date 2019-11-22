@@ -139,8 +139,8 @@ To access known issues for a different version, use the version selector dropdow
 ### Capacity monitoring in SQL resource provider keeps loading
 
 - Applicable: This issue applies to Azure Stack 1910 update or newer versions with SQL resource provider version 1.1.33.0 or previous versions installed.
-- Cause: The current versions of the SQL resource provider is not compatible with some of the latest portal changes in the 1910 update.
-- Remediation: Follow the resource provider update process to apply the SQL resource provider hotfix 1.1.47.0 after Azure Stack being upgraded to 1910 update ([SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)). For MySQL resource provider, it is also recommended to apply the MySQL resource provider hotfix 1.1.47.0 after Azure Stack being upgraded to 1910 update ([MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)).
+- Cause: The current version of the SQL resource provider is not compatible with some of the latest portal changes in the 1910 update.
+- Remediation: Follow the resource provider update process to apply the SQL resource provider hotfix 1.1.47.0 after Azure Stack is upgraded to the 1910 update ([SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)). For the MySQL resource provider, it is also recommended that you apply the MySQL resource provider hotfix 1.1.47.0 after Azure Stack is upgraded to 1910 update ([MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)).
 - Occurrence: Common
 
 ## Networking
