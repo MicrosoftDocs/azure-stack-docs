@@ -1,5 +1,6 @@
 ---
-title: Replace a scale unit node on an Azure Stack integrated system | Microsoft Docs
+title: Replace a scale unit node on an Azure Stack integrated system
+titleSuffix: Azure Stack
 description: Learn how to replace a physical scale unit node on an Azure Stack integrated system.
 services: azure-stack
 documentationcenter: ''
@@ -26,8 +27,7 @@ ms.lastreviewed: 11/11/2019
 This article describes the general process to replace a physical computer (also referred to as a scale unit node) on an Azure Stack integrated system. Actual scale unit node replacement steps will vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor's field replaceable unit (FRU) documentation for detailed steps that are specific to your system.
 
 > [!CAUTION]  
-> Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, performance decrease, security threads or prevent Azure Stack automation to deploy the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure applied firmware is matching the OEM Version displayed in the [Azure Stack administrator portal](azure-stack-updates.md).<br>
-For more information and links to partner documentation, refer to [Replace a hardware component](azure-stack-replace-component.md).
+> Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, performance decrease, security threads, or prevent Azure Stack automation from deploying the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure the applied firmware matches the OEM Version displayed in the [Azure Stack administrator portal](azure-stack-updates.md). For more information and links to partner documentation, refer to [Replace a hardware component](azure-stack-replace-component.md).
 
 The following flow diagram shows the general FRU process to replace an entire scale unit node.
 
@@ -36,7 +36,7 @@ The following flow diagram shows the general FRU process to replace an entire sc
 *This action may not be required based on the physical condition of the hardware.
 
 > [!Note]  
-> If the shutdown operation does fail, it is recommended to use the drain operation followed by the stop operation. For more details see available node operations  
+> If the shutdown operation does fail, it's recommended to use the drain operation followed by the stop operation. For more details, see available node operations.
 
 ## Review alert information
 
@@ -54,9 +54,9 @@ If you open the **Scale unit node is offline** alert, the alert description cont
 
 ## Scale unit node replacement process
 
-The following steps are provided as a high-level overview of the scale unit node replacement process. See your OEM hardware vendor's FRU documentation for detailed steps that are specific to your system. Do not follow these steps without referring to your OEM-provided documentation.
+The following steps are provided as a high-level overview of the scale unit node replacement process. See your OEM hardware vendor's FRU documentation for detailed steps that are specific to your system. Don't follow these steps without referring to your OEM-provided documentation.
 
-1. Use the **Shutdown** action to gracefully shutdown the scale unit node. This action may not be required based on the physical condition of the hardware. 
+1. Use the **Shutdown** action to gracefully shutdown the scale unit node. This action may not be required based on the physical condition of the hardware.
 
 2. In the unlikely case the shutdown action fails, use the [Drain](azure-stack-node-actions.md#drain) action to put the scale unit node into maintenance mode. This action may not be required based on the physical condition of the hardware.
 
