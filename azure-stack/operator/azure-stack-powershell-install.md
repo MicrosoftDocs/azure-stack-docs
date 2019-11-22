@@ -97,7 +97,7 @@ Run the following PowerShell script to install these modules on your development
 
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
     Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
-    Install-Module -Name AzureStack -RequiredVersion 1.7.2
+    Install-Module -Name AzureStack -RequiredVersion 1.8.0
     ```
   
 - For Azure Stack version 1903 or earlier, only install the two modules below:
@@ -150,7 +150,7 @@ Installation has four steps:
 
     $Path = "<Path that is used to save the packages>"
     Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.7.2
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.0
     ```
 
 - Azure Stack 1903 or earlier.
