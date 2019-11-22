@@ -136,11 +136,11 @@ To access known issues for a different version, use the version selector dropdow
 - Cause: In the user portal, when you create a storage account and view its **Configuration**, you cannot save configuration changes, as it results in an AJAX error. 
 - Occurrence: Common
 
-### Capacity mnitoring in SQL and MySQL resource provider keeps loading
+### Capacity monitoring in SQL resource provider keeps loading
 
-- Applicable: This issue applies to all supported releases.
-- Cause: The current versions of the SQL and MySQL resource provider are not compatible with some of the latest portal changes in the 1910 update.
-- Remediation: Follow the resource provider update process to apply the SQL and MySQL resource provider hotfix 1.1.47.0. ([SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470) and [MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)).
+- Applicable: This issue applies to Azure Stack 1910 update or newer versions with SQL resource provider version 1.1.33.0 or previous versions installed.
+- Cause: The current versions of the SQL resource provider is not compatible with some of the latest portal changes in the 1910 update.
+- Remediation: Follow the resource provider update process to apply the SQL resource provider hotfix 1.1.47.0 after Azure Stack being upgraded to 1910 update ([SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)). For MySQL resource provider, it is also recommended to apply the MySQL resource provider hotfix 1.1.47.0 after Azure Stack being upgraded to 1910 update ([MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)).
 - Occurrence: Common
 
 ## Networking
