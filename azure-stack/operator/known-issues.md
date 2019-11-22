@@ -100,7 +100,7 @@ To access known issues for a different version, use the version selector dropdow
 
 ### Adding extension to VM Scale Set
 
-- Applicable: This issue applies to releases 1907 and greater.
+- Applicable: This issue applies to releases 1907 and later.
 - Cause: In the user portal, once a virtual machine scale set is created, the UI does not permit the user to add an extension.
 - Occurrence: Common
 
@@ -111,10 +111,10 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: Ensure that the box is checked for **Override Azure Policy and RBAC Role settings**.
 - Occurrence: Common
 
-### Refresh button on Virtual Machines fails
+### Refresh button on virtual machines fails
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you navigate to Virtual Machines and try to refresh using the button at the top, the states fail to update accurately.
+- Cause: In the user portal, when you navigate to **Virtual Machines** and try to refresh using the button at the top, the states fail to update accurately.
 - Remediation: The status is automatically updated every 5 minutes regardless of whether the refresh button has been clicked or not. Wait 5 minutes and check the status.
 - Occurrence: Common
 
