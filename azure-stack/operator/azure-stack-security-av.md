@@ -2,15 +2,15 @@
 title: Update Windows Defender Antivirus on Azure Stack Hub
 description: Details on how antivirus is kept up to date on Azure Stack Hub
 services: azure-stack
-author: PatAltimore
+author: justinha
 manager: femila
 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 06/10/2019
-ms.author: patricka
+ms.date: 11/22/2019
+ms.author: justinha
 ms.reviewer: fiseraci
-ms.lastreviewed: 06/10/2019
+ms.lastreviewed: 11/22/2019
 
 #Customer intent: As an Azure AD Administrator, I want to understand how antivirus is kept up to date on Azure Stack Hub.
 ---
