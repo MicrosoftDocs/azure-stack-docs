@@ -233,13 +233,6 @@ To access known issues for a different version, use the version selector dropdow
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack deployment.
 
-### Ubuntu SSH access
-
-- Applicable: This issue applies to all supported releases.
-- Cause: An Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in.
-- Remediation: Use VM access for the Linux extension to implement SSH keys after provisioning, or use password-based authentication.
-- Occurrence: Common
-
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
 <!-- ## App Service -->
