@@ -114,14 +114,14 @@ Running secret rotation using the instructions below will fix these alerts.
 
 2. Operators may notice alerts open and automatically close during rotation of Azure Stack secrets.  This behavior is expected and the alerts can be ignored.  Operators can verify the validity of these alerts by running **Test-AzureStack**.  For operators using System Center Operations Manager to monitor Azure Stack systems, placing a system in maintenance mode will prevent these alerts from reaching their ITSM systems but will continue to alert if the Azure Stack system becomes unreachable.
 
-3. Notify your users of any maintenance operations. Schedule normal maintenance windows, as much as possible,  during non-business hours. Maintenance operations may effect both user workloads and portal operations.
+3. Notify your users of any maintenance operations. Schedule normal maintenance windows, as much as possible,  during non-business hours. Maintenance operations may affect both user workloads and portal operations.
 
     > [!Note]
     > The next steps only apply when rotating Azure Stack external secrets.
 
 4. Run **[Test-AzureStack](azure-stack-diagnostic-test.md)** and confirm all test outputs are healthy before rotating secrets.
 5. Prepare a new set of replacement external certificates. The new set matches the certificate specifications outlined in the [Azure Stack PKI certificate requirements](azure-stack-pki-certs.md). You can generate a certificate signing request (CSR) for purchasing or creating new certificates using the steps outlined in [Generate PKI Certificates](azure-stack-get-pki-certs.md) and prepare them for use in your Azure Stack environment using the steps in [Prepare Azure Stack PKI Certificates](azure-stack-prepare-pki-certs.md). Be sure to validate the certificates you prepare with the steps outlined in [Validate PKI Certificates](azure-stack-validate-pki-certs.md).
-6. Store a back up to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the file share with the backup copies before you rerun the rotation. Note, keep backup copies in the secure backup location.
+6. Store a backup to the certificates used for rotation in a secure backup location. If your rotation runs and then fails, replace the certificates in the file share with the backup copies before you rerun the rotation. Keep backup copies in the secure backup location.
 7. Create a fileshare you can access from the ERCS VMs. The file share must be  readable and writable for the **CloudAdmin** identity.
 8. Open a PowerShell ISE console from a computer where you have access to the fileshare. Navigate to your fileshare.
 9. Run **[CertDirectoryMaker.ps1](https://www.aka.ms/azssecretrotationhelper)** to create the required directories for your external certificates.
