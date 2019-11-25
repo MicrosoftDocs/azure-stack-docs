@@ -145,12 +145,12 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - The AzureStack PowerShell Module has been updated to version 1.8.0 for the 1910 release.<br>Changes include:
    - **New DRP Admin module**: The Deployment Resource Provider (DRP) enables orchestrated deployments of resource providers to Azure Stack. These commands interact with the Azure Resource Manager layer to interact with DRP.
-   - **BRP**
-           - Support single role restore for Azures stack infrastructure backup.
+   - **BRP**: <br />
+           - Support single role restore for Azures stack infrastructure backup. <br />
            - Add parameter `RoleName` to cmdlet `Restore-AzsBackup`.
-   - **FRP**: Breaking changes for **Drive** and **Volume** resources with API version `2019-05-01`: (The features are supported by Azure Stack 1910+)
-            - The value of `ID`, `Name`, `HealthStatus` and `OperationalStatus` have been changed.
-            - Supported new properties `FirmwareVersion`, `IsIndicationEnabled`, `Manufacturer`, and `StoragePool` for **Drive** resources.
+   - **FRP**: Breaking changes for **Drive** and **Volume** resources with API version `2019-05-01`: (The features are supported by Azure Stack 1910+) <br />
+            - The value of `ID`, `Name`, `HealthStatus` and `OperationalStatus` have been changed. <br />
+            - Supported new properties `FirmwareVersion`, `IsIndicationEnabled`, `Manufacturer`, and `StoragePool` for **Drive** resources. <br />
             - The properties `CanPool` and `CannotPoolReason` of **Drive** resources have been deprecated; use `OperationalStatus` instead.
 
 ### Fixes
