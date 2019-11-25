@@ -21,7 +21,7 @@ ms.lastreviewed: 06/10/2019
 
 ## Connected scenario
 
-For anti-malware definition and engine updates, the Azure Stack [update resource provider](azure-stack-updates.md#the-update-resource-provider) downloads anti-malware definitions and engine updates multiple times per day. Each Azure Stack infrastructure component gets the update from the update resource provider and applies the update automatically.
+The Azure Stack [update resource provider](azure-stack-updates.md#the-update-resource-provider) downloads anti-malware definitions and engine updates multiple times per day. Each Azure Stack infrastructure component gets the update from the update resource provider and applies the update automatically.
 
 For anti-malware platform updates, apply the [monthly Azure Stack update](azure-stack-apply-updates.md). The monthly Azure Stack update includes Windows Defender Antivirus platform updates for the month.
 
