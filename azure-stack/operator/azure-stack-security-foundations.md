@@ -35,22 +35,22 @@ The security posture for Azure Stack is designed to defend against modern threat
     Starting from the assumption that the system has already been breached, focus on *detecting and limiting the impact of breaches* versus only trying to prevent attacks.
 
  - **Hardened by Default**  
-Since the infrastructure runs on well-defined hardware and software, Azure Stack *enables, configures, and validates all the security features* by default.
+    Since the infrastructure runs on well-defined hardware and software, Azure Stack *enables, configures, and validates all the security features* by default.
 
 Because Azure Stack is delivered as an integrated system, the security posture of the Azure Stack infrastructure is defined by Microsoft. Just like in Azure, tenants are responsible for defining the security posture of their tenant workloads. This document provides foundational knowledge on the security posture of the Azure Stack infrastructure.
 
 ## Data at rest encryption
-All Azure Stack infrastructure and tenant data is encrypted at rest using BitLocker. This encryption protects against physical loss or theft of Azure Stack storage components. For more information, see [data at rest encryption in Azure Stack](azure-stack-security-bitlocker.md).
+All Azure Stack infrastructure and tenant data are encrypted at rest using BitLocker. This encryption protects against physical loss or theft of Azure Stack storage components. For more information, see [data at rest encryption in Azure Stack](azure-stack-security-bitlocker.md).
 
 ## Data in transit encryption
-The Azure Stack infrastructure components communicate using channels encrypted with TLS 1.2. Encryption certificates are self-managed by the infrastructure. 
+The Azure Stack infrastructure components communicate using channels encrypted with TLS 1.2. Encryption certificates are self-managed by the infrastructure.
 
-All external infrastructure endpoints, such as the REST endpoints or the Azure Stack portal, support TLS 1.2 for secure communications. Encryption certificates, either from a third party or your enterprise Certificate Authority, must be provided for those endpoints.
+All external infrastructure endpoints, like the REST endpoints or the Azure Stack portal, support TLS 1.2 for secure communications. Encryption certificates, either from a third party or your enterprise Certificate Authority, must be provided for those endpoints.
 
 While self-signed certificates can be used for these external endpoints, Microsoft strongly advises against using them.
 
 ## Secret management
-Azure Stack infrastructure uses a multitude of secrets, like passwords, to function. Most of them are automatically rotated frequently because they are group Managed Service Accounts (gMSA), which rotate every 24 hours.
+Azure Stack infrastructure uses a multitude of secrets, like passwords, to function. Most of them are automatically rotated frequently because they're group Managed Service Accounts (gMSA), which rotate every 24 hours.
 
 The remaining secrets that aren't gMSA can be rotated manually with a script in the privileged endpoint.
 
@@ -86,7 +86,7 @@ Network ACLs are enforced in three layers:
 
 ## Regulatory compliance
 
-Azure Stack has gone through a formal assessment by a third party-independent auditing firm. As a result, documentation on how the Azure Stack infrastructure meets the applicable controls from several major compliance standards is available. The documentation isn't a certification of Azure Stack due to the standards including several personnel-related and process-related controls. Rather, customers can use this documentation to jump-start their certification process.
+Azure Stack has gone through a formal assessment by a third party-independent auditing firm. As a result, documentation on how the Azure Stack infrastructure meets the applicable controls from several major compliance standards is available. The documentation isn't a certification of Azure Stack because the standards include several personnel-related and process-related controls. Rather, customers can use this documentation to jump-start their certification process.
 
 The assessments include the following standards:
 
