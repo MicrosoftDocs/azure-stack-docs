@@ -11,10 +11,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 11/22/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/02/2019
+ms.lastreviewed: 11/22/2019
 
 ---
 # Manage and deploy resources to Azure Stack with Azure CLI
@@ -159,13 +159,6 @@ To trust the Azure Stack CA root certificate, append it to the existing Python c
 
 1. Register your Azure Stack environment by running the `az cloud register` command.
 
-    In some scenarios, direct outbound internet connectivity is routed through a proxy or firewall, which enforces SSL interception. In these cases, the `az cloud register` command can fail with an error such as "Unable to get endpoints from the cloud." To work around this error, set the following environment variables:
-
-    ```shell  
-    set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
-    set ADAL_PYTHON_SSL_NO_VERIFY=1
-    ```
-
 2. Register your environment. Use the following parameters when running `az cloud register`:
 
     | Value | Example | Description |
@@ -278,13 +271,6 @@ If you're using the ASDK, you need to trust the CA root certificate on your remo
 ### Connect to Azure Stack
 
 1. Register your Azure Stack environment by running the `az cloud register` command.
-
-    In some scenarios, direct outbound internet connectivity is routed through a proxy or firewall, which enforces SSL interception. In these cases, the `az cloud register` command can fail with an error such as "Unable to get endpoints from the cloud." To work around this error, set the following environment variables:
-
-    ```shell  
-    set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
-    set ADAL_PYTHON_SSL_NO_VERIFY=1
-    ```
 
 2. Register your environment. Use the following parameters when running `az cloud register`:
 
