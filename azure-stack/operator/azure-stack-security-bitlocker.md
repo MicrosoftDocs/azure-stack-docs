@@ -50,7 +50,7 @@ In extreme circumstances, a BitLocker unlock request could fail resulting in a s
 > [!WARNING]
 > Retrieve your BitLocker recovery keys and store them in a secure location outside of Azure Stack. Not having the recovery keys during certain support scenarios may result in data loss and require a system restore from a backup image.
 
-If you suspect that your system is experiencing issues with BitLocker, such as Azure Stack failing to start, contact support. Support requires your BitLocker recovery keys. The majority of the BitLocker related issues can be resolved with a FRU operation for that specific VM/host/volume. For the other cases, a manual unlocking procedure using BitLocker recovery keys can be performed. If BitLocker recovery keys aren't available, the only option is to restore from a backup image. Depending on when the last backup was performed, you may encounter data loss.
+If you suspect your system is experiencing issues with BitLocker, such as Azure Stack failing to start, contact support. Support requires your BitLocker recovery keys. The majority of the BitLocker related issues can be resolved with a FRU operation for that specific VM/host/volume. For the other cases, a manual unlocking procedure using BitLocker recovery keys can be done. If BitLocker recovery keys aren't available, the only option is to restore from a backup image. Depending on when the last backup was done, you may experience data loss.
 
 ## Next steps
 
