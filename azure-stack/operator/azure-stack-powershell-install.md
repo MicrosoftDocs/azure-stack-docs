@@ -108,7 +108,7 @@ Run the following PowerShell script to install these modules on your development
 
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
     Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
-    Install-Module -Name AzureStack -RequiredVersion 1.7.1
+    Install-Module -Name AzureStack -RequiredVersion 1.7.2
     ```
   
 - For Azure Stack version 1903 or earlier, only install the two modules below:
@@ -117,12 +117,12 @@ Run the following PowerShell script to install these modules on your development
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
 
     Install-Module -Name AzureRM -RequiredVersion 2.4.0
-    Install-Module -Name AzureStack -RequiredVersion 1.7.1
+    Install-Module -Name AzureStack -RequiredVersion 1.7.2
     ```
 
     > [!Note]  
     > - Azure Stack module version 1.8.0 is a breaking change release. Refer to the [release note](release-notes.md#changes) for details.
-    > - The Azure Stack module version 1.7.1 is a breaking change release. To migrate from Azure Stack 1.6.0, please refer to the [migration guide](https://aka.ms/azspshmigration171).
+    > - The Azure Stack module version 1.7.2 is a breaking change release. To migrate from Azure Stack 1.6.0, please refer to the [migration guide](https://aka.ms/azspshmigration171).
     > - The AzureRM module version 2.4.0 comes with a breaking change for the cmdlet Remove-AzureRmStorageAccount. This cmdlet expects `-Force` parameter to be specified for removing the storage account without confirmation.
     > - You don't need to install **AzureRM.BootStrapper** to install the modules for Azure Stack version 1901 or later.
     > - Don't install the 2018-03-01-hybrid profile in addition to using the above AzureRM modules on Azure Stack version 1901 or later.
