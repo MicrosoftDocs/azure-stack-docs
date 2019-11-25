@@ -147,13 +147,13 @@ For more information about update build types, see [Manage updates in Azure Stac
    - **New DRP Admin module**  
            The Deployment Resource Provider (DRP) enables orchestrated deployments of Resource Providers to Azure Stack. These commands interact with the Azure Resource Manager layer to interact with DRP.
    - **BRP**
-       - Support single role restore for Azures stack infrastructure backup.
-       - Add parameter `RoleName` to cmdlet `Restore-AzsBackup`.
+           - Support single role restore for Azures stack infrastructure backup.
+           - Add parameter `RoleName` to cmdlet `Restore-AzsBackup`.
    - **FRP**  
      Breaking changes for **Drive** and **Volume** resources with API version `2019-05-01`: (The features are supported by Azure Stack 1910+)
-        - The value of `ID`, `Name`, `HealthStatus` and `OperationalStatus` have been changed.
-        - Supported new properties `FirmwareVersion`, `IsIndicationEnabled`, `Manufacturer`, and `StoragePool` for **Drive** resources.
-        - The properties `CanPool` and `CannotPoolReason` of **Drive** resources have been deprecated; use `OperationalStatus` instead.
+            - The value of `ID`, `Name`, `HealthStatus` and `OperationalStatus` have been changed.
+            - Supported new properties `FirmwareVersion`, `IsIndicationEnabled`, `Manufacturer`, and `StoragePool` for **Drive** resources.
+            - The properties `CanPool` and `CannotPoolReason` of **Drive** resources have been deprecated; use `OperationalStatus` instead.
             '
 
 ### Fixes
