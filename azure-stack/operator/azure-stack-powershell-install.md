@@ -117,7 +117,7 @@ Run the following PowerShell script to install these modules on your development
     # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
 
     Install-Module -Name AzureRM -RequiredVersion 2.4.0
-    Install-Module -Name AzureStack -RequiredVersion 1.7.2
+    Install-Module -Name AzureStack -RequiredVersion 1.7.1
     ```
 
     > [!Note]  
