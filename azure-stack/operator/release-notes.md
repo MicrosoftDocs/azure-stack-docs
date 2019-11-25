@@ -148,7 +148,7 @@ For more information about update build types, see [Manage updates in Azure Stac
    - **BRP**: <br />
            - Support single role restore for Azures stack infrastructure backup. <br />
            - Add parameter `RoleName` to cmdlet `Restore-AzsBackup`.
-   - **FRP**: Breaking changes for **Drive** and **Volume** resources with API version `2019-05-01`: (The features are supported by Azure Stack 1910+) <br />
+   - **FRP**: Breaking changes for **Drive** and **Volume** resources with API version `2019-05-01`. The features are supported by Azure Stack 1910 and later: <br />
             - The value of `ID`, `Name`, `HealthStatus` and `OperationalStatus` have been changed. <br />
             - Supported new properties `FirmwareVersion`, `IsIndicationEnabled`, `Manufacturer`, and `StoragePool` for **Drive** resources. <br />
             - The properties `CanPool` and `CannotPoolReason` of **Drive** resources have been deprecated; use `OperationalStatus` instead.
