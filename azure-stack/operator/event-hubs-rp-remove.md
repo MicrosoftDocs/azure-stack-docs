@@ -43,7 +43,7 @@ To remove Event Hubs and all related resources created by users, complete the fo
    [![Removing event hubs 4](media/event-hubs-rp-remove/4-uninstall.png)](media/event-hubs-rp-remove/4-uninstall.png#lightbox)
 
    > [!IMPORTANT]
-   > You must wait at least 10 minutes after Event Hubs has been removed successfully, before installing Event Hubs again. This is due to the fact that background activities might still be running, which may conflict with any new installation.
+   > You must wait at least 10 minutes after Event Hubs has been removed successfully before installing Event Hubs again. This is due to the fact that cleanup activities might still be running, which may conflict with any new installation.
 
 ## Delete Event Hub packages
 
