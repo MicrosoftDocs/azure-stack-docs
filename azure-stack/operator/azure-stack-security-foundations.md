@@ -1,7 +1,7 @@
 ---
 title: Azure Stack security controls
 titleSuffix: Azure Stack
-description: Learn about the security [posture and controls applied to Azure Stack.
+description: Learn about the security posture and controls applied to Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
