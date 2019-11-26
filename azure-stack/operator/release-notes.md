@@ -90,7 +90,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Added the **Get-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to retrieve the forwarder settings of the DNS servers in Azure Stack. For more information about DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
 
-- Added support for management of **Kubernetes clusters** using [AKS engine](https://docs.microsoft.com/en-us/azure-stack/user/azure-stack-kubernetes-aks-engine-overview). Starting with this update customers can deploy production Kubernetes clusters. AKS engine will allow users to:
+- Added support for management of **Kubernetes clusters** using [AKS engine](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview). Starting with this update customers can deploy production Kubernetes clusters. AKS engine will allow users to:
    1. Manage the life-cycle of their Kubernetes clusters. They will be able to create, update, and scale clusters.
    2.	Maintain their clusters using managed images produced by the AKS and the Azure Stack teams.
    3.	Take advantage of an ARM integrated Kubernetes cloud provider that builds clusters using Azure native resources.
