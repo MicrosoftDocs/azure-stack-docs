@@ -1,6 +1,7 @@
 ﻿---
-title: Azure Stack SQL resource provider 1.1.30.0 release notes | Microsoft Docs
-description: Learn about what's in the latest Azure Stack SQL resource provider update, including any known issues and where to download it.
+title: Azure Stack SQL resource provider 1.1.30.0 release notes
+titleSuffix: Azure Stack
+description: View the releases notes for the Azure Stack SQL resource provider 1.1.30.0 update. 
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -47,47 +48,48 @@ This version of the Azure Stack SQL resource provider includes the following imp
 
 - **SQL resource provider Azure Stack PowerShell compatibility**. The SQL resource provider has been updated to work with the Azure Stack 2018-03-01-hybrid PowerShell profile and to provide compatibility with AzureRM 1.3.0 and later.
 
-- **SQL login change password blade**. Fixed an issue where the password can't be changed on the change password blade. Removed links from password change notifications.
+- **SQL sign-in change password blade**. Fixed an issue where the password can't be changed on the change password blade. Removed links from password change notifications.
 
 - **SQL hosting server settings blade update**. Fixed an issue where the settings blade was incorrectly titled as "Password".
 
-## Known issues 
+## Known issues
 
-- **SQL SKUs can take up to an hour to be visible in the portal**. It can take up to an hour for newly created SKUs to be visible for use when creating new SQL databases. 
+- **SQL SKUs can take up to an hour to be visible in the portal**. It can take up to an hour for newly created SKUs to be visible for use when creating new SQL databases.
 
     **Workaround**: None.
 
-- **Reused SQL logins**. Attempting to create a new SQL login with the same username as an existing login under the same subscription will result in reusing the same login and the existing password. 
+- **Reused SQL sign-ins**. Attempting to create a new SQL sign-in with the same username as an existing sign-in under the same subscription will result in reusing the same sign-in and the existing password.
 
-    **Workaround**: Use different usernames when creating new logins under the same subscription or create logins with the same username under different subscriptions.
+    **Workaround**: Use different usernames when creating new sign-ins under the same subscription or create sign-ins with the same username under different subscriptions.
 
-- **Shared SQL logins cause data inconsistency**. If a SQL login is shared for multiple SQL databases under the same subscription, changing the login password will cause data inconsistency.
+- **Shared SQL sign-ins cause data inconsistency**. If a SQL sign-in is shared for multiple SQL databases under the same subscription, changing the sign-in password will cause data inconsistency.
 
-    **Workaround**: Always use different logins for different databases under the same subscription.
+    **Workaround**: Always use different sign-ins for different databases under the same subscription.
 
-- **TLS 1.2 support requirement**. If you try to deploy or update the SQL resource provider from a computer where TLS 1.2 is not enabled, the operation might fail. Run the following PowerShell command on the computer being used to deploy or update the resource provider to verify that TLS 1.2 is returned as supported:
+- **TLS 1.2 support requirement**. If you try to deploy or update the SQL resource provider from a computer where TLS 1.2 isn't enabled, the operation might fail. Run the following PowerShell command on the computer being used to deploy or update the resource provider to verify that TLS 1.2 is returned as supported:
 
   ```powershell
   [System.Net.ServicePointManager]::SecurityProtocol
   ```
 
-  If **Tls12** is not included in the output of the command, TLS 1.2 is not enabled on the computer.
+  If **Tls12** isn't included in the output of the command, TLS 1.2 isn't enabled on the computer.
 
     **Workaround**: Run the following PowerShell command to enable TLS 1.2 and then start the resource provider deployment or update script from the same PowerShell session:
 
     ```powershell
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     ```
-- **SQL resource provider fails to add SQL Server Always On listener**. When using the listener IP address of the SQL Server Always On Listener, the SQL resource provider VM cannot resolve the listener's host name.
+
+- **SQL resource provider fails to add SQL Server Always On listener**. When using the listener IP address of the SQL Server Always On Listener, the SQL resource provider VM can't resolve the listener's host name.
 
     **Workaround**: Ensure that DNS works correctly to resolve the listener IP to listener host name.
-    
+
 ### Known issues for Cloud Admins operating Azure Stack
-Refer to the documentation in the [Azure Stack Release Notes](azure-stack-servicing-policy.md).
+Refer to the documentation in the [Azure Stack release notes](azure-stack-servicing-policy.md).
 
 ## Next steps
 [Learn more about the SQL resource provider](azure-stack-sql-resource-provider.md).
 
 [Prepare to deploy the SQL resource provider](azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
-[Upgrade the SQL resource provider from a previous version](azure-stack-sql-resource-provider-update.md). 
+[Upgrade the SQL resource provider from a previous version](azure-stack-sql-resource-provider-update.md).
