@@ -1,7 +1,7 @@
 ---
 title: Use SQL databases
 titleSuffix: Azure Stack
-description: Learn how to deploy SQL databases as a service on Azure Stack and the SQL Server resource provider adapter.
+description: Learn how to use the SQL Server resource provider to offer SQL databases as a service on Azure Stack.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -21,13 +21,13 @@ ms.lastreviewed: 10/25/2018
 
 # Use SQL databases on Azure Stack
 
-Use the SQL Server resource provider to offer SQL databases as a service of [Azure Stack](azure-stack-overview.md). After you install the resource provider and connect it to one or more SQL Server instances, you and your users can create:
+Use the SQL Server resource provider to offer SQL databases as a service on [Azure Stack](azure-stack-overview.md). After you install the resource provider and connect it to one or more SQL Server instances, you and your users can create:
 
 - Databases for cloud-native apps.
 - Websites that use SQL.
 - Workloads that use SQL.
 
-The resource provider doesn't provide all the database management abilities of [Azure SQL Database](https://azure.microsoft.com/services/sql-database/). For example, elastic pools that automatically allocate resources aren't supported. However, the resource provider supports similar create, read, update, and delete (CRUD) operations on a SQL Server database. 
+The resource provider doesn't provide all the database management abilities of [Azure SQL Database](https://azure.microsoft.com/services/sql-database/). For example, elastic pools that automatically allocate resources aren't supported. However, the resource provider supports similar create, read, update, and delete (CRUD) operations on a SQL Server database.
 
 ## SQL resource provider adapter architecture
 
