@@ -12,7 +12,7 @@ ms.lastreviewed: 11/18/2019
 
 # Prerequisites for installing Event Hubs on Azure Stack Hub
 
-The following prerequisites must be completed, before you can install Event Hubs on Azure Stack Hub. **Several days or weeks of lead time may be required**, to complete all steps.
+The following prerequisites must be completed before you can install Event Hubs on Azure Stack Hub. **Several days or weeks of lead time may be required** to complete all steps.
 
 ## Prerequisites
 
