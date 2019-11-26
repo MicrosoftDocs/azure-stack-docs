@@ -90,16 +90,16 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Added the **Get-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to retrieve the forwarder settings of the DNS servers in Azure Stack. For more information about DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
 
-- Added support for management of **Kubernetes clusters** using [AKS engine](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview). Starting with this update customers can deploy production Kubernetes clusters. AKS engine will allow users to:
-   1. Manage the life-cycle of their Kubernetes clusters. They will be able to create, update, and scale clusters.
-   2.	Maintain their clusters using managed images produced by the AKS and the Azure Stack teams.
-   3.	Take advantage of an ARM integrated Kubernetes cloud provider that builds clusters using Azure native resources.
-   4.	Deploy and manage their clusters in connected or disconnected Azure Stack stamps.
-   5.	Utilize Azure hybrid features:
+- Added support for management of **Kubernetes clusters** using [AKS engine](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview). Starting with this update customers can deploy production Kubernetes clusters. AKS engine enables users to:
+   - Manage the life-cycle of their Kubernetes clusters. They can create, update, and scale clusters.
+   - Maintain their clusters using managed images produced by the AKS and the Azure Stack teams.
+   - Take advantage of an ARM-integrated Kubernetes cloud provider that builds clusters using Azure native resources.
+   - Deploy and manage their clusters in connected or disconnected Azure Stack stamps.
+   - Utilize Azure hybrid features:
       *	Integration with Azure Arc (private preview coming soon)
       *	Integration with Azure Monitor for Containers (in public preview)
-   6.	Use Windows Containers with AKS engine (in private preview)
-   7.	Receive CSS and PG support for their deployments
+   - Use Windows Containers with AKS engine (in private preview).
+   - Receive CSS and PG support for their deployments.
 
 ### Improvements
 
