@@ -93,7 +93,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Added support for management of **Kubernetes clusters** using [AKS engine](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview). Starting with this update customers can deploy production Kubernetes clusters. AKS engine enables users to:
    - Manage the life-cycle of their Kubernetes clusters. They can create, update, and scale clusters.
    - Maintain their clusters using managed images produced by the AKS and the Azure Stack teams.
-   - Take advantage of an ARM-integrated Kubernetes cloud provider that builds clusters using Azure native resources.
+   - Take advantage of an Azure Resource Manager-integrated Kubernetes cloud provider that builds clusters using Azure native resources.
    - Deploy and manage their clusters in connected or disconnected Azure Stack stamps.
    - Utilize Azure hybrid features:
       *	Integration with Azure Arc (private preview coming soon)
