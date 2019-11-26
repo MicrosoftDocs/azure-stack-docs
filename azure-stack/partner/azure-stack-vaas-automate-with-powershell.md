@@ -32,6 +32,8 @@ This script can be used to:
 > * Launch VaaS tests in test pass, solution validation, and package validation workflows.
 > * Report test results.
 
+## Launch the Test Pass workflow
+
 The following links contain information about how to run tests via the VaaS portal. Before using the script, you should learn about the required parameters and their values:
 
 * SolutionValidation Workflow: [Validate a new Azure Stack solution](azure-stack-vaas-validate-solution-new.md)
