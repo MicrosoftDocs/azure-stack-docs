@@ -1,6 +1,7 @@
 ---
-title: Using SQL databases on Azure Stack | Microsoft Docs
-description: Learn how you can deploy SQL databases as a service on Azure Stack and the quick steps to deploy the SQL Server resource provider adapter.
+title: Use SQL databases
+titleSuffix: Azure Stack
+description: Learn how to deploy SQL databases as a service on Azure Stack and the SQL Server resource provider adapter.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -18,9 +19,9 @@ ms.reviewer: xiaofmao
 ms.lastreviewed: 10/25/2018
 ---
 
-# Use SQL databases on Microsoft Azure Stack
+# Use SQL databases on Azure Stack
 
-Use the SQL Server resource provider to offer SQL databases as a service of [Azure Stack](azure-stack-overview.md). After you install the resource provider, and connect it to one or more SQL Server instances, you and your users can create:
+Use the SQL Server resource provider to offer SQL databases as a service of [Azure Stack](azure-stack-overview.md). After you install the resource provider and connect it to one or more SQL Server instances, you and your users can create:
 
 - Databases for cloud-native apps.
 - Websites that use SQL.
@@ -39,7 +40,7 @@ The resource provider consists of the following components:
 You must create at least one instance of SQL Server or provide access to external SQL Server instances.
 
 > [!NOTE]
-> Hosting servers that are installed on Azure Stack integrated systems must be created from a tenant subscription. They can't be created from the default provider subscription. They must be created from the tenant portal or by using PowerShell with the appropriate sign-in. All hosting servers are billable virtual machines and must have licenses. The service administrator can be the owner of the tenant subscription.
+> Hosting servers that are installed on Azure Stack integrated systems must be created from a tenant subscription. They can't be created from the default provider subscription. They must be created from the tenant portal or by using PowerShell with the appropriate sign-in. All hosting servers are billable VMs and must have licenses. The service admin can be the owner of the tenant subscription.
 
 ## Next steps
 
