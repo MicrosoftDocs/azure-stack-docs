@@ -46,7 +46,7 @@ This version of the Azure Stack SQL resource provider includes the following imp
 
 - **SQL hosting server doesn't list hosted databases.** User-created databases might not be listed when viewing tenant resources for SQL hosting servers.
 
-- **Previous SQL resource provider (1.1.30.0) deployment could fail if TLS 1.2 isn' enabled**. Updated the SQL resource provider 1.1.33.0 to enable TLS 1.2 when deploying the resource provider, updating the resource provider, or rotating secrets. 
+- **Previous SQL resource provider (1.1.30.0) deployment could fail if TLS 1.2 isn't enabled**. Updated the SQL resource provider 1.1.33.0 to enable TLS 1.2 when deploying the resource provider, updating the resource provider, or rotating secrets.
 
 - **SQL resource provider secret rotation fails**. Fixed issue resulting in the following error code when rotating secrets:
 `New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
@@ -61,7 +61,7 @@ This version of the Azure Stack SQL resource provider includes the following imp
 
     **Workaround**: Use different usernames when creating new sign-ins under the same subscription or create sign-ins with the same username under different subscriptions.
 
-- **Shared SQL sign-ins cause data inconsistency**. If a SQL sign-in in is shared for multiple SQL databases under the same subscription, changing the sign-in password will cause data inconsistency.
+- **Shared SQL sign-ins cause data inconsistency**. If a SQL sign-in is shared for multiple SQL databases under the same subscription, changing the sign-in password will cause data inconsistency.
 
     **Workaround**: Always use different sign-ins for different databases under the same subscription.
 
