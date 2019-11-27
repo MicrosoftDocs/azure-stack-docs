@@ -11,10 +11,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 11/11/2019
 
 ROBOTS: NOINDEX
 
@@ -189,7 +189,7 @@ The following tests are required to be run, for OEM package validation:
 
 4. Review the test parameters and then select **Submit** to schedule the test.
 
-5. Review the test results.
+5. Review the results for the **required** tests.
 
 To submit a package signing request, send [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) the Solution name and Package Validation name associated with this run.
 
