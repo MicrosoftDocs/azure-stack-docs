@@ -368,13 +368,9 @@
         items:
         - name: MySQL resource provider 1.1.33.0 release notes
           href: azure-stack-mysql-resource-provider-11330.md
-<<<<<<< HEAD
-    - name: SQL on Azure Stack Hub
-=======
         - name: MySQL resource provider 1.1.30.0 release notes
           href: azure-stack-mysql-resource-provider-11300.md
-    - name: SQL on Azure Stack
->>>>>>> 0f85fdc7b88523e45d7af16be5cff29753414c49
+    - name: SQL on Azure Stack Hub
       items:
       - name: Overview
         href: azure-stack-sql-resource-provider.md
