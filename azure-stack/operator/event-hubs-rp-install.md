@@ -131,4 +131,4 @@ To check for updates, [How to update Event Hubs on Azure Stack Hub](event-hubs-r
 
 If you need to remove the resource provider, see [Remove the Event Hubs resource provider](event-hubs-rp-remove.md)
 
-To learn more about the user experience, visit the [Event Hubs on Azure Stack Hub overview](../user/event-hubs-rp-overview) in the User documents.
+To learn more about the user experience, visit the [Event Hubs on Azure Stack Hub overview](../user/event-hubs-rp-overview.md) in the User documents.
