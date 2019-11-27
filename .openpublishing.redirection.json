@@ -11,6 +11,16 @@
       "redirect_document_id": false
     },
     {
+      "source_path": "azure-stack/operator/azure-stack-mysql-resource-provider-11470.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-mysql-resource-provider-11330",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-sql-resource-provider-11470.md",
+      "redirect_url": "/azure-stack/operator/azure-stack-sql-resource-provider-11330",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/user/azure-stack-solution-staged-data.md",
       "redirect_url": "https://aka.ms/tiereddatadeploy",
       "redirect_document_id": false
