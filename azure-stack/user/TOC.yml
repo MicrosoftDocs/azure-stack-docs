@@ -179,6 +179,10 @@
           href: azure-stack-key-vault-store-credentials.md
         - name: KeyVault sample app
           href: azure-stack-key-vault-sample-app.md
+      - name: Event Hubs
+        items:
+        - name: Overview
+          href: event-hubs-rp-overview.md
       - name: Azure Monitor
         href: azure-stack-metrics-azure-data.md
         items: 

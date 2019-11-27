@@ -5,16 +5,16 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 11/18/2019
+ms.date: 11/27/2019
 ms.reviewer: jfggdl
-ms.lastreviewed: 11/18/2019
+ms.lastreviewed: 11/27/2019
 ---
 
 # Event Hubs on Azure Stack Hub overview
 
 Event Hubs on Azure Stack Hub allow you to realize hybrid cloud scenarios. Streaming and event-based solutions are supported, for both on-premises and Azure cloud processing. Whether your scenario is hybrid (connected), or disconnected, your solution can support processing of events/streams at large scale. Your scenario is only bound by the Event Hubs Cluster size, which you can provision according to your needs. 
 
-## Features
+## Features 
 
 The different editions of Event Hubs (on Azure Stack Hub and on Azure) offer a high degree of feature parity between them. This parity means all SDKs, samples, PowerShell, CLI, and portals offer a similar experience, differing in only a few instances. The following table summarizes the high-level differences in feature availability that exists between editions.  
 
@@ -39,4 +39,4 @@ In general, if you can't find an Event Hubs topic in the [Azure Stack Hub Operat
 
 ## Next steps
 
-Complete the [Prerequisites for installing Event Hubs on Azure Stack](event-hubs-rp-prerequisites.md), before beginning the installation process.
+If it's not available in your subscription, work with your administrator to [install the Event Hubs on Azure Stack Hub resource provider](../operator/event-hubs-rp-overview.md).

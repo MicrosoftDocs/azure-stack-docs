@@ -21,6 +21,8 @@ Before you can install Event Hubs on Azure Stack Hub, you must download the reso
 - Download Event Hubs under a connected scenario.
 - Download Event Hubs under a disconnected or partially connected scenario.
 
+If you're not familiar with the **Marketplace Management** feature of the Azure Stack Hub administrator portal, spend time reviewing [Download marketplace items from Azure and publish to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md). This article will walk you through the process of downloading items from Azure to the Azure Stack Hub marketplace. It covers both connected and disconnected scenarios. 
+
 ### Download Event Hubs - connected scenario
 
 > [!NOTE]
@@ -46,18 +48,11 @@ Once the download process is complete, skip to the [Install Prerequisites sectio
 
 ### Download Event Hubs - disconnected or partially connected scenario
 
-This process is necessary when any of the following conditions are true:
-
-- You don't have an Internet connection.
-- Your connection isn't reliable.
-- Your requirements prevent you from directly using Azure Stack Hub to download packages.
-
 First you download the packages to your local machine, then you import them into your Azure Stack Hub instance.
 
-1. If you haven't already, follow the instructions in [Download Marketplace items - Disconnected or partially connected scenarios](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario). Here you download the Marketplace Syndication tool, which allows you to download the Event Hubs packages.
-2. Run the Marketplace Syndication tool (`Export-AzSOfflineMarketplaceItem` PowerShell cmdlet). 
-3. After the tool's "Azure Marketplace Items" window opens, find and select "Event Hubs" to download the required packages to your local machine.
-4. Once the download finishes, you import the packages to your Azure Stack Hub instance and publish to Marketplace. 
+1. If you haven't already, follow the instructions in [Download Marketplace items - Disconnected or partially connected scenarios](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario). Here you download and run the Marketplace Syndication tool, which allows you to download the Event Hubs packages.
+2. After the syndication tool's "Azure Marketplace Items" window opens, find and select "Event Hubs" to download the required packages to your local machine.
+3. Once the download finishes, you import the packages to your Azure Stack Hub instance and publish to Marketplace. 
 
 ## Installation 
 
@@ -74,7 +69,7 @@ First you download the packages to your local machine, then you import them into
 1. Next you're transferred to the install page. Select **Install Prerequisites** to begin the installation process.
    ![Marketplace management event hubs - prerequisites](media/event-hubs-rp-install/4-marketplace-management-install-prereqs-start.png)
  
-2. Wait until the installation of prerequisites succeeds, then verify that it completed successfully. You should see a green checkmark next to **Install prerequisites** before proceeding to the next step.
+2. Wait until the installation of prerequisites succeeds. You should see a green checkmark next to **Install prerequisites** before proceeding to the next step.
 
    ![Marketplace management event hubs - prerequisites](media/event-hubs-rp-install/5-marketplace-management-install-prereqs-succeeded.png)
 
@@ -135,3 +130,5 @@ Before users can deploy Event Hubs resources, you must create one or more plans,
 To check for updates, [How to update Event Hubs on Azure Stack Hub](event-hubs-rp-update.md).
 
 If you need to remove the resource provider, see [Remove the Event Hubs resource provider](event-hubs-rp-remove.md)
+
+To learn more about the user experience, visit the [Event Hubs on Azure Stack Hub overview](../user/event-hubs-rp-overview.md) in the User documents.
