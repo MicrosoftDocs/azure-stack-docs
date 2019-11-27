@@ -20,7 +20,7 @@ ROBOTS: NOINDEX
 
 ---
 
-# Automate Azure Stack Validation with PowerShell
+# Automate Azure Stack validation with PowerShell
 
 Validation as a Service (VaaS) provides the ability to automate the launching of tests using the **RunVaaSAutomation.ps1** script.
 
@@ -32,7 +32,7 @@ This script can be used to:
 > * Launch VaaS tests in test pass, solution validation, and package validation workflows.
 > * Report test results.
 
-## Launch the Test Pass workflow
+## Launch the test pass workflow
 
 The following links contain information about how to run tests via the VaaS portal. Before using the script, you should learn about the required parameters and their values:
 
@@ -58,9 +58,9 @@ Expand-Archive -Path "$RootFolder\RunVaaSAutomation.zip" -DestinationPath "$Root
 Set-Location "$RootFolder\RunVaaSAutomation"
 ```
 
-## Launch Solution Validation workflow
+## Launch the solution validation workflow
 
-To learn how to run Solution Validation workflow via VaaS Port, visit [Validate OEM packages](azure-stack-vaas-validate-oem-package.md).
+To learn how to run the solution validation workflow via VaaS port, see [Validate OEM packages](azure-stack-vaas-validate-oem-package.md).
 
 Run the following script with the appropriate parameter values:
 
@@ -80,7 +80,7 @@ $ProjectName    = ''
 $DiagnosticsStorageConnection=''
 $VaaSProject_SolutionValidation_Configuration='Min' # enter 'Min' or 'Max'
 
-# No need to modify the lines below
+# No need to modify the following lines
 Import-Module .\VaaSAutomation.psm1 -verbose -force
 $stampInfo = Get-StampInfo -cloudAdminUserName $CloudAdminUserName -cloudAdminPassword $CloudAdminPassword -retryCount 3 -retryPeriod 30 -outputFolder "."
 $AgentName = "$((Get-WmiObject win32_computersystem).DNSHostName).$((Get-WmiObject win32_computersystem).Domain)".ToLower()
@@ -113,9 +113,9 @@ $scriptParameters = @{
 & .\RunVaaSAutomation.ps1 @scriptParameters
 ```
 
-## Launch Package Validation workflow
+## Launch package validation workflow
 
-To learn how to run Package Validation workflow via VaaS Port, visit [Validate OEM packages](azure-stack-vaas-validate-oem-package.md).
+To learn how to run the package validation workflow via VaaS Port, see [Validate OEM packages](azure-stack-vaas-validate-oem-package.md).
 
 Run the following script with the appropriate parameter values:
 
@@ -138,7 +138,7 @@ $VaaSProject_PackageValidation_RequireDigitalSignature = "false" # enter 'true' 
 $VaaSProject_PackageValidation_LocalPathtoAzureStackUpdatePkgs = ""
 $VaaSProject_PackageValidation_LocalPathtoOEMUpdatePkgs = ""
 
-# No need to modify the lines below
+# No need to modify the following lines
 Import-Module .\VaaSAutomation.psm1 -verbose -force
 $stampInfo = Get-StampInfo -cloudAdminUserName $CloudAdminUserName -cloudAdminPassword $CloudAdminPassword -retryCount 3 -retryPeriod 30 -outputFolder "."
 $AgentName = "$((Get-WmiObject win32_computersystem).DNSHostName).$((Get-WmiObject win32_computersystem).Domain)".ToLower()
@@ -176,9 +176,9 @@ $scriptParameters = @{
 & .\RunVaaSAutomation.ps1 @scriptParameters
 ```
 
-## Launch Test Pass workflow
+## Launch the test pass workflow
 
-To learn how to run Test Pass workflow via VaaS Port, visit [Scheduling a test](azure-stack-vaas-schedule-test-pass.md).
+To learn how to run the test pass workflow via VaaS port, see [Scheduling a test](azure-stack-vaas-schedule-test-pass.md).
 
 Run the following script with the appropriate parameter values:
 
@@ -197,8 +197,8 @@ $SolutionName   = ''
 $ProjectName    = ''
 $DiagnosticsStorageConnection=''
 
-# You don't need to moidfy the lines below.
-# Below is an example to run "Cloud Simulation Engine" test.
+# No need to modify the following lines
+# The following code is an example of running the "Cloud Simulation Engine" test
 Import-Module .\VaaSAutomation.psm1 -verbose -force
 $stampInfo = Get-StampInfo -cloudAdminUserName $CloudAdminUserName -cloudAdminPassword $CloudAdminPassword -retryCount 3 -retryPeriod 30 -outputFolder "."
 $AgentName = "$((Get-WmiObject win32_computersystem).DNSHostName).$((Get-WmiObject win32_computersystem).Domain)".ToLower()
@@ -256,7 +256,7 @@ $scriptParameters = @{
 & .\RunVaaSAutomation.ps1 @scriptParameters
 ```
 
-## Parameter Table
+## Parameter table
 
 For more information, see [Workflow common parameters](azure-stack-vaas-parameters.md).
 
@@ -273,7 +273,7 @@ For more information, see [Workflow common parameters](azure-stack-vaas-paramete
 | CloudAdminPassword | The password for the cloud administrator.  |
 | SolutionName | The name of the VaaS solution. |
 | ProjectName | The name of the VaaS workflow. |
-| DiagnosticsStorageConnection | A SAS URL to an Azure Storage Account to which diagnostics logs will be copied during test execution. For instructions on generating the SAS URL, see [Generate the diagnostics connection string](azure-stack-vaas-parameters.md). |
+| DiagnosticsStorageConnection | A SAS URL to an Azure Storage account to which diagnostics logs will be copied during test execution. For instructions on generating the SAS URL, see [Generate the diagnostics connection string](azure-stack-vaas-parameters.md). |
 
 ## Review the results
 
@@ -285,5 +285,4 @@ For other options, see [Monitor and manage tests in the VaaS portal](azure-stack
 
 To learn more about PowerShell on Azure Stack, review the latest modules.
 
-> [!div class="nextstepaction"]
-> [Azure Stack Module](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.6.0)
+- [Azure Stack module](/powershell/azure/azure-stack/overview?view=azurestackps-1.6.0)
