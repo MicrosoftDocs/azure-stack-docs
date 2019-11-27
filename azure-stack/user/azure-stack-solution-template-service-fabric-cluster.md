@@ -15,7 +15,7 @@ ms.topic: tutorial
 ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.lastreviewed: 09/17/2019
+ms.lastreviewed: 09/25/2019
 ---
 
 # Deploy a Service Fabric cluster in Azure Stack
@@ -31,7 +31,7 @@ The Service Fabric cluster in Azure Stack doesn't use the resource provider Micr
 The following are required to deploy the Service Fabric cluster:
 1. **Cluster certificate**  
    This is the X.509 server certificate you add to Key Vault when deploying Service Fabric. 
-   - The **CN** on this cert must match the Fully Qualified Domain Name (FQDN) of the Service Fabric cluster you create. For more guidance on the FQDN, see [Certificates required for Azure Stack production deployment of Azure App Service](../operator/azure-stack-app-service-before-you-get-started.md#certificates-required-for-azure-stack-production-deployment-of-azure-app-service).
+   - The **CN** on this cert must match the Fully Qualified Domain Name (FQDN) of the Service Fabric cluster you create. 
    - The certificate format must be PFX, as both the public and private keys are required. 
      See [requirements](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) for creating this server-side cert.
 

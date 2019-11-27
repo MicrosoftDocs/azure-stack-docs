@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2019
+ms.date: 11/21/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 08/30/2019
+ms.lastreviewed: 11/21/2019
 
 ---
 
@@ -25,7 +25,28 @@ This article provides info on changes, fixes, and known issues in the Azure Stac
 
 Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [RSS feed](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
 
+::: moniker range="azs-1910"
+## Build 1.1910.0.58
+
+### New features
+
+- For a list of fixed issues, changes, and new features in this release, see the relevant sections in the [Azure Stack release notes](../operator/release-notes.md).
+
+### Fixed and known issues
+
+- Fixed an issue with collecting logs and storing them in an Azure Storage blob container. The syntax for this operation is as follows:
+
+  ```powershell
+  Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
+  ``` 
+
+- Fixed a deployment issue where a slow loading spooler service prevents the removal of some Windows features and requires a reboot.
+- For a list of Azure Stack known issues in this release, see the [known issues](../operator/known-issues.md) article.
+- Note that available Azure Stack hotfixes are not applicable to the ASDK.
+::: moniker-end
+
 ::: moniker range="azs-1908"
+  
 ## Build 1.1908.0.20
 
 ### New features
@@ -75,21 +96,4 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 - For a list of Azure Stack issues fixed in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1906#fixes-1906) of the Azure Stack release notes.
 - For a list of known issues, see [this article](/azure-stack/operator/known-issues?view=azs-1906).
 - Note that [available Azure Stack hotfixes](/azure-stack/operator/release-notes?view=azs-1906#hotfixes-1906) are not applicable to the Azure Stack ASDK.
-::: moniker-end
-
-::: moniker range="azs-1905"
-## Build 1.1905.0.40
-
-<!-- ### Changes -->
-
-### New features
-
-- For a list of new features in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1905#whats-in-this-update-1905) of the Azure Stack release notes.
-
-### Fixed and known issues
-
-- Fixed an issue in which you had to edit the **RegisterWithAzure.psm1** PowerShell script in order to [register the ASDK](asdk-register.md) successfully.
-- For a list of other Azure Stack issues fixed in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1905#fixes-1905) of the Azure Stack release notes.
-- For a list of known issues, see [this article](/azure-stack/operator/known-issues?view=azs-1905).
-- Note that [available Azure Stack hotfixes](/azure-stack/operator/release-notes?view=azs-1905#hotfixes-1905) are not applicable to the Azure Stack ASDK.
 ::: moniker-end

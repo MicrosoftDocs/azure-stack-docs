@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
-ms.reviewer: jiahan
-ms.lastreviewed: 03/11/2019
+ms.reviewer: xiaofmao
+ms.lastreviewed: 11/11/2019
 ---
 
 # Update the SQL resource provider
@@ -63,10 +63,10 @@ You can specify the following parameters from the command line when you run the 
 | **DebugMode** | Prevents automatic cleanup on failure. | No |
 
 ## Update script PowerShell example
-The following is an example of using the *UpdateSQLProvider.ps1* script that you can run from an elevated PowerShell console. Be sure to change the variable information and passwords as needed:  
-
 > [!NOTE]
 > This update process only applies to Azure Stack integrated systems.
+
+If you are updating the SQL resource provider version to 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack modules in PowerShell. If you are updating to the SQL resource provider version 1.1.47.0, this step can be skipped.
 
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
@@ -74,7 +74,11 @@ The following is an example of using the *UpdateSQLProvider.ps1* script that you
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
 Install-Module -Name AzureStack -RequiredVersion 1.6.0
+```
 
+The following is an example of using the *UpdateSQLProvider.ps1* script that you can run from an elevated PowerShell console. Be sure to change the variable information and passwords as needed:  
+
+```powershell
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but this might have been changed at installation.
 $domain = "AzureStack"
 

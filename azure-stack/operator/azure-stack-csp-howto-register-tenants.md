@@ -69,7 +69,7 @@ Update your registration with the new customer subscription. Azure reports the c
 3. In the PowerShell session, run:
 
    ```powershell
-   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties <PSObject>
+   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01
    ```
 
 ### New-AzureRmResource PowerShell parameters
@@ -81,8 +81,7 @@ The following section describes the parameters for the **New-AzureRmResource** c
 |registrationSubscriptionID | The Azure subscription that was used for the initial registration of the Azure Stack.|
 | customerSubscriptionID | The Azure subscription (not Azure Stack) belonging to the customer to be registered. Must be created in the CSP offer. In practice, this means through Partner Center. If a customer has more than one Azure Active Directory tenant, this subscription must be created in the tenant that will be used to log into Azure Stack. The customer subscription ID must use lowercase letters. |
 | resourceGroup | The resource group in Azure in which your registration is stored. |
-| registrationName | The name of the registration of your Azure Stack. It's an object stored in Azure. |
-| Properties | Specifies properties for the resource. Use this parameter to specify the values of properties that are specific to the resource type.
+| registrationName | The name of the registration of your Azure Stack. It's an object stored in Azure. 
 
 > [!NOTE]  
 > Tenants must be registered with each Azure Stack they use. If you have two Azure Stack deployments, and a tenant uses both of them, you must update the initial registrations of each deployment with the tenant subscription.

@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2019
+ms.date: 11/01/2019
 ms.author: mabrigg
 ms.reviewer: wfayed
-ms.lastreviewed: 12/11/2018
+ms.lastreviewed: 11/01/2019
 
 ---
 # Azure disconnected deployment planning decisions for Azure Stack integrated systems

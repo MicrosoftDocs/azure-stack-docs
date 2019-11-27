@@ -40,7 +40,6 @@
     - name: Azure Stack Capacity Planner
       href: azure-stack-capacity-planner.md
   - name: Datacenter integration
-    href: azure-stack-customer-journey.md
     items:
     - name: Walkthrough
       href: azure-stack-customer-journey.md
@@ -62,6 +61,8 @@
         href: azure-stack-customer-defined.md
       - name: DNS integration
         href: azure-stack-integrate-dns.md
+      - name: Configure DNS forwarder
+        href: azure-stack-configure-dns.md
       - name: Configure time server
         href: azure-stack-configure-time.md
       - name: Firewall integration
@@ -151,8 +152,6 @@
         href: azure-stack-servicing-policy.md
       - name: Checklist for applying updates
         href: release-notes-checklist.md
-      - name: Plan for update
-        href: azure-stack-update-plan.md
       - name: Prepare the update package
         href: azure-stack-update-prepare-package.md
       - name: Apply updates
@@ -167,6 +166,8 @@
         href: azure-stack-updates-troubleshoot.md
     - name: Monitor health and alerts
       href: azure-stack-monitor-health.md
+    - name: Monitor hardware components
+      href: azure-stack-hardware-monitoring.md
     - name: Manage network resources
       href: azure-stack-viewing-public-ip-address-consumption.md
     - name: Change user subscription owner
@@ -345,10 +346,10 @@
         href: azure-stack-mysql-resource-provider-remove.md
       - name: MySQL resource provider release notes
         items:
-        - name: MySQL resource provider 1.1.30.0 release notes
-          href: azure-stack-mysql-resource-provider-11300.md
         - name: MySQL resource provider 1.1.33.0 release notes
           href: azure-stack-mysql-resource-provider-11330.md
+        - name: MySQL resource provider 1.1.30.0 release notes
+          href: azure-stack-mysql-resource-provider-11300.md
     - name: SQL on Azure Stack
       items:
       - name: Overview
@@ -369,10 +370,10 @@
         href: azure-stack-sql-resource-provider-remove.md 
       - name: SQL resource provider release notes
         items:
-        - name: SQL resource provider 1.1.30.0 release notes
-          href: azure-stack-sql-resource-provider-11300.md 
         - name: SQL resource provider 1.1.33.0 release notes
           href: azure-stack-sql-resource-provider-11330.md   
+        - name: SQL resource provider 1.1.30.0 release notes
+          href: azure-stack-sql-resource-provider-11300.md 
   - name: Usage and billing
     href: azure-stack-billing-and-chargeback.md
     items:

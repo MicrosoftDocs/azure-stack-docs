@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Validation as a Service release notes  | Microsoft Docs
+title: Azure Stack Validation as a Service release notes | Microsoft Docs
 description: Azure Stack Validation as a Service release notes.
 services: azure-stack
 documentationcenter: ''
@@ -23,6 +23,51 @@ ms.lastreviewed: 10/28/2019
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
 This article has the release notes for Azure Stack Validation as a Service.
+
+## Version 4.3.5.3
+
+2019 November 7
+
+- Test content updates
+  - Monthly Azure Stack Update Verification (Version 5.1.46.0 -> 5.1.49.0)
+  - OEM Extension Package Verification (Version 5.1.46.0 -> 5.1.49.0)
+  - Results for 5.1.46.0 have been retained. If you had a successful runs on 5.1.46.0, notify vaashelp@microsoft.com when submitting results.
+
+- Bug fixes
+  - Fixed an issue where Monthly Azure Stack Update Verification failed to run if the update .zip contained special characters.
+
+- Known issues
+  - VaaS tests fail if mstest.exe is not found. Workaround:
+    1. CTRL+C the agent in the PowerShell window.
+    1. Type mstest.exe to verify that mstest.exe is a recognized program.
+    1. If mstest.exe is not recognized, close the current PowerShell window.
+    1. Click Start (not PowerShell on your taskbar), find PowerShell, and open as an administrator.
+    1. Type mstest.exe and verify it is available as a command.
+    1. Restart the agent and re-run the test.
+  - Occasionally, Cloud Simulation Engine will report failures with \*vm tests. Contact vaashelp@microsoft.com before attempting a re-run. 
+
+
+2019 October 29
+
+- Online documentation for the Monthly Azure Stack Update workflow and the OEM Package Validation workflow have been updated.
+
+    Please review the updated documentation here Validate OEM packages and here Validate software updates from Microsoft
+- VaaS Workflow Update: Monthly Azure Stack Update  (Version 5.1.30.0 -> 5.1.46.0)  – the monthly Azure Stack update verification test workflow has been updated.
+
+    The workflow no longer requires manual intervention and can be scheduled to run seamlessly.
+- VaaS Workflow Update: OEM Package Validation  (Version 5.1.30.0 -> 5.1.46.0)  –  OEM Package validation workflow has been updated.
+
+    The workflow no longer requires manual intervention and can be scheduled to run seamlessly.
+- Cloud Simulation Engine in the OEM Package Validation workflow (Version 5.1.30.0 -> 5.1.46.0) has been updated to expedite validation time: Run time reduced to 1 hour.
+- Cloud Simulation Engine in the OEM Package Validation workflow and the Azure Stack Update workflow  (Version 5.1.30.0 -> 5.1.46.0) require that the updates to be validated be in 2 distinct parent folders with no other updates in child folders.
+- Cloud Simulation Engine in the OEM Package Validation workflow and the Azure Stack Update workflow  (Version 5.1.30.0 -> 5.1.46.0) require that the tests be scheduled in the following order – Monthly Azure Stack Update Verification test, OEM Extension Package Verification test, and finally Cloud Simulation Engine.
+- VaaS Agent Update: The updated VaaS Agent now uses the Azure Stack Cloud Admin credentials to query the stamp to get the stamp information in order to auto populate the workflows. 
+
+    This update requires all of the agents to be updated and restarted. Please see these instructions on how to update the VaaS Agent: https://docs.microsoft.com/en-us/azure-stack/partner/azure-stack-vaas-local-agent
+- VaaS Portal UI Update: The agent selection table has been moved above the test scheduling pane to facilitate testing.
+
+    When scheduling a job it is no longer requires to enter stamp information if the VaaS agents have been correctly updated.
+
 
 ## Version 4.0.5
 
