@@ -1,6 +1,7 @@
 ---
-title: Using databases provided by the SQL Adapter Resource provider on Azure Stack | Microsoft Docs
-description: How to create and manage SQL databases provisioned by using the SQL Adapter Resource provider
+title: Create SQL databases
+titleSuffix: Azure Stack
+description: Learn how to create and manage SQL databases provisioned using the SQL resource provider adapter.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
