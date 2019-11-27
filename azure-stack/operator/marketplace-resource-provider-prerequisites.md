@@ -12,7 +12,7 @@ ms.lastreviewed: 11/27/2019
 
 # Prerequisites for installing Azure Stack Hub resource providers from Marketplace
 
-The following prerequisites must be completed, before you can install Marketplace-installable resource providers on Azure Stack Hub. 
+The following prerequisites must be completed, before you can install resource providers from Marketplace on Azure Stack Hub. 
 
 ## Prerequisites
 
