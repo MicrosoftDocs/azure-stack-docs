@@ -18,15 +18,15 @@ Event Hubs on Azure Stack Hub allow you to realize hybrid cloud scenarios. Strea
 
 The different editions of Event Hubs (on Azure Stack Hub and on Azure) offer a high degree of feature parity between them. This parity means all SDKs, samples, PowerShell, CLI, and portals offer a similar experience, differing in only a few instances. The following table summarizes the high-level differences in feature availability that exists between editions.  
 
-| Feature | Event Hubs on Azure Stack Hub | Event Hubs on Azure | Notes |
+| Feature | Event Hubs on Azure Stack Hub | Event Hubs on Azure |
 |-|-|-|-|
-| Operator administrator experience | ✔ | ✘ | |
-| Kafka support | ✔ | ✔ | |
-| Same set of SDKs | ✔ | ✔ | |
-| Capture feature | ✘ | ✔ | |
-| Geo-disaster recovery | ✘ | ✔ | |
-| Azure Monitor | ✘ | ✔ | |
-| Auto-inflate feature | ✘ | ✔ | |
+| Operator administrator experience | ✔ | ✘ |
+| Kafka support | ✔ | ✔ |
+| Same set of SDKs | ✔ | ✔ |
+| Capture feature | ✘ | ✔ |
+| Geo-disaster recovery | ✘ | ✔ |
+| Azure Monitor | ✘ | ✔ |
+| Auto-inflate feature | ✘ | ✔ |
 
 In addition, Azure Resource Management operations can be accomplished using Azure Resource Manager templates, [PowerShell](/powershell/module/azurerm.eventhub/), and [Azure CLI](/cli/azure/eventhubs/eventhub/). Currently, there's no support for Operator Administration operations in PowerShell and Azure CLI.
 
