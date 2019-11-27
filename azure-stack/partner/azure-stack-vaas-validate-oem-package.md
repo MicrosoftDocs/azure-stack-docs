@@ -155,7 +155,7 @@ Use this option if it is acceptable to allow unauthenticated clients access to i
     > [!NOTE]
     > Copy the AzureStack update and OEM update to **2 separate** directories.
 
-8. 'RequireDigitalSignature' - provide true if you need the package to be Microsoft signed (Running OEM Validation workflow). If you are validating a Microsoft signed package on latest AzureStack update, provide this value as false (Running Monthly AzureStack update verification).
+8. 'RequireDigitalSignature' - provide **true** if you need the package to be Microsoft signed (Running OEM Validation workflow). If you are validating a Microsoft signed package on latest AzureStack update, provide this value as false (Running Monthly AzureStack update verification).
 
 9. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
 
@@ -169,7 +169,7 @@ Use this option if it is acceptable to allow unauthenticated clients access to i
 
 ## Required tests
 
-The following tests are required to be run, for OEM package validation:
+The following tests are required to be run for OEM package validation:
 
 - OEM Validation Workflow
 
