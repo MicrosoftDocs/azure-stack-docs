@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: article 
 ms.date: 10/02/2019
 ms.author: mabrigg
-ms.reviewer: jiahan
+ms.reviewer: xiaofmao
 ms.lastreviewed: 03/18/2019
 ---
 
@@ -41,10 +41,14 @@ There are several prerequisites that need to be in place before you can deploy t
 
   |Minimum Azure Stack version|MySQL RP version|
   |-----|-----|
+  |Version 1910 (1.1910.0.58)|[MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)|
   |Version 1808 (1.1808.0.97)|[MySQL RP version 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|  
   |Version 1808 (1.1808.0.97)|[MySQL RP version 1.1.30.0](https://aka.ms/azurestackmysqlrp11300)|
   |Version 1804 (1.0.180513.1)|[MySQL RP version 1.1.24.0](https://aka.ms/azurestackmysqlrp11240)
   |     |     |
+  
+> [!IMPORTANT]
+> Before deploying the MySQL resource provider version 1.1.47.0, you should have your Azure Stack system upgraded to 1910 update or later versions. The MySQL resource provider version 1.1.47.0 on previous unsupported Azure Stack versions doesn't work.
 
 * Ensure datacenter integration prerequisites are met:
 
@@ -101,7 +105,7 @@ You can specify these parameters from the command line. If you don't, or if any 
 
 ## Deploy the MySQL resource provider using a custom script
 
-To eliminate any manual configuration when deploying the resource provider, you can customize the following script. Change the default account information and passwords as needed for your Azure Stack deployment.
+If you are deploying the MySQL resource provider version 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack modules in PowerShell. If you are deploying the MySQL resource provider version 1.1.47.0, this step can be skipped.
 
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
@@ -109,7 +113,11 @@ To eliminate any manual configuration when deploying the resource provider, you 
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
 Install-Module -Name AzureStack -RequiredVersion 1.6.0
+```
 
+To eliminate any manual configuration when deploying the resource provider, you can customize the following script. Change the default account information and passwords as needed for your Azure Stack deployment.
+
+```powershell
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"  
 
