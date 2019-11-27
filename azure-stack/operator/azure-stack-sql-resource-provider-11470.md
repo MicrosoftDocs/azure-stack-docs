@@ -42,30 +42,12 @@ This version of the Azure Stack SQL resource provider includes the following imp
 ### Fixes
 - **SQL resource provider portal extension might choose the wrong subscription**. The SQL resource provider uses Azure Resource Manager calls to determine the first service admin subscription to use, which might not be the *Default Provider Subscription*. If that happens, the SQL resource provider does not work normally. 
 
-- **SQL hosting server does not list hosted databases.** User-created databases might not be listed when viewing tenant resources for SQL hosting servers.
-
-- **Previous SQL resource provider (1.1.30.0) deployment could fail if TLS 1.2 is not enabled**. Updated the SQL resource provider 1.1.33.0 to enable TLS 1.2 when deploying the resource provider, updating the resource provider, or rotating secrets. 
-
-- **SQL resource provider secret rotation fails**. Fixed issue resulting in the following error code when rotating secrets:
-`New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
-
 ## Known issues 
 
 - **SQL SKUs can take up to an hour to be visible in the portal**. It can take up to an hour for newly created SKUs to be visible for use when creating new SQL databases. 
 
     **Workaround**: None.
 
-- **Reused SQL logins**. Attempting to create a new SQL login with the same username as an existing login under the same subscription will result in reusing the same login and the existing password. 
-
-    **Workaround**: Use different usernames when creating new logins under the same subscription or create logins with the same username under different subscriptions.
-
-- **Shared SQL logins cause data inconsistency**. If a SQL login is shared for multiple SQL databases under the same subscription, changing the login password will cause data inconsistency.
-
-    **Workaround**: Always use different logins for different databases under the same subscription.
-
-- **SQL resource provider fails to add SQL Server Always On listener**. When using the listener IP address of the SQL Server Always On Listener, the SQL resource provider VM cannot resolve the listener's host name.
-
-    **Workaround**: Ensure that DNS works correctly to resolve the listener IP to listener host name.
 
 ### Known issues for Cloud Admins operating Azure Stack
 Refer to the documentation in the [Azure Stack Release Notes](azure-stack-servicing-policy.md).

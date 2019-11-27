@@ -43,26 +43,11 @@ This version of the Azure Stack MySQL resource provider includes the following i
 
 - **MySQL resource provider portal extension might choose the wrong subscription**. The MySQL resource provider uses Azure Resource Manager calls to determine the first service admin subscription to use, which might not be the *Default Provider Subscription*. If that happens, the MySQL resource provider doesn't work normally.
 
-- **MySQL hosting server doesn't list hosted databases.** User-created databases might not be listed when viewing tenant resources for MySQL hosting servers.
-
-- **Previous MySQL resource provider (1.1.30.0) deployment could fail if TLS 1.2 isn't enabled**. Updated the MySQL resource provider 1.1.33.0 to enable TLS 1.2 when deploying the resource provider, updating the resource provider, or rotating secrets.
-
-- **MySQL resource provider secret rotation fails**. Fixed an issue resulting in the following error code when rotating secrets:
-`New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
-
 ## Known issues
 
 - **MySQL SKUs can take up to an hour to be visible in the portal**. It can take up to an hour for newly created SKUs to be visible for use when creating new MySQL databases. 
 
     **Workaround**: None.
-
-- **Reused MySQL logins**. Attempting to create a new MySQL login with the same username as an existing login under the same subscription will result in reusing the same login and the existing password.
-
-    **Workaround**: Use different usernames when creating new logins under the same subscription or create logins with the same username under different subscriptions.
-
-- **Shared MySQL logins cause data inconsistency**. If a MySQL login is shared for multiple MySQL databases under the same subscription, changing the login password will cause data inconsistency.
-
-    **Workaround**: Always use different logins for different databases under the same subscription.
 
 
 ### Known issues for Cloud Admins operating Azure Stack
