@@ -61,6 +61,8 @@
         href: azure-stack-customer-defined.md
       - name: DNS integration
         href: azure-stack-integrate-dns.md
+      - name: Configure DNS forwarder
+        href: azure-stack-configure-dns.md
       - name: Configure time server
         href: azure-stack-configure-time.md
       - name: Firewall integration
@@ -164,6 +166,8 @@
         href: azure-stack-updates-troubleshoot.md
     - name: Monitor health and alerts
       href: azure-stack-monitor-health.md
+    - name: Monitor hardware components
+      href: azure-stack-hardware-monitoring.md
     - name: Manage network resources
       href: azure-stack-viewing-public-ip-address-consumption.md
     - name: Change user subscription owner
@@ -362,11 +366,15 @@
         href: azure-stack-mysql-resource-provider-remove.md
       - name: MySQL resource provider release notes
         items:
-        - name: MySQL resource provider 1.1.30.0 release notes
-          href: azure-stack-mysql-resource-provider-11300.md
         - name: MySQL resource provider 1.1.33.0 release notes
           href: azure-stack-mysql-resource-provider-11330.md
+<<<<<<< HEAD
     - name: SQL on Azure Stack Hub
+=======
+        - name: MySQL resource provider 1.1.30.0 release notes
+          href: azure-stack-mysql-resource-provider-11300.md
+    - name: SQL on Azure Stack
+>>>>>>> 0f85fdc7b88523e45d7af16be5cff29753414c49
       items:
       - name: Overview
         href: azure-stack-sql-resource-provider.md
@@ -386,10 +394,10 @@
         href: azure-stack-sql-resource-provider-remove.md 
       - name: SQL resource provider release notes
         items:
-        - name: SQL resource provider 1.1.30.0 release notes
-          href: azure-stack-sql-resource-provider-11300.md 
         - name: SQL resource provider 1.1.33.0 release notes
           href: azure-stack-sql-resource-provider-11330.md   
+        - name: SQL resource provider 1.1.30.0 release notes
+          href: azure-stack-sql-resource-provider-11300.md 
   - name: Usage and billing
     href: azure-stack-billing-and-chargeback.md
     items:

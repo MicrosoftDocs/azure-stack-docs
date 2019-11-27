@@ -14,10 +14,10 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 02/08/2019
+ms.date: 11/27/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 02/08/2019
+ms.lastreviewed: 11/27/2019
 
 ---
 
@@ -46,7 +46,7 @@ Single-node ASDK deployments differ from multi-node Azure Stack Hub deployments 
 |Description|ASDK|Multi-node Azure Stack Hub|
 |-----|-----|-----|
 |**Scale**|All components are installed on a single-node server computer.|Can range in size from 4-16 nodes.|
-|**Resilience**|Single-node configuration doesn't provide high availability|[High availability](../operator/azure-stack-overview.md#providing-high-availability) capabilities are supported.|
+|**Resilience**|Single-node configuration doesn't provide high availability|High availability capabilities are supported.|
 |**Networking**|The ASDK host routes all ASDK network traffic. There are no additional switch requirements.|More complex [network routing infrastructure](../operator/azure-stack-network.md#network-infrastructure) in multi-node deployments is necessary including Top-Of-Rack (TOR), Baseboard Management Controller (BMC), and border (datacenter network) switches.|
 |**Patch and update process**|To move to a new version of the ASDK, you must redeploy the ASDK on the ASDK host computer.|[Patch and update](../operator/azure-stack-updates.md) process used to update the installed Azure Stack Hub version.|
 |**Support**|MSDN Azure Stack forum. Microsoft Customer Service and Support (CSS) support is *not* available for non-production environments.|[MSDN Azure Stack forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack) and full CSS support.|

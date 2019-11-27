@@ -15,7 +15,7 @@ ms.date: 10/01/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
-<!-- dev: viananth -->
+# dev: viananth
 ---
 
 # Use API version profiles with Python in Azure Stack
