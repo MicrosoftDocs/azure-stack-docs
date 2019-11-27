@@ -22,7 +22,7 @@ The following prerequisites must be completed, before you can install Event Hubs
 
 ## Prerequisites
 
-1. If you haven't already, complete the steps outlined in [Prerequisites for installing Azure Stack Hub resource providers from Marketplace](marketplace-resource-provider-prerequisites.md).
+1. If you haven't already, complete the steps outlined in [Prerequisites for installing resource providers from Marketplace](marketplace-resource-provider-prerequisites.md).
 
 2. Procure public key infrastructure (PKI) SSL certificates for Event Hubs. 
 
