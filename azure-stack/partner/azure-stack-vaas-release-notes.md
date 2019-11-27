@@ -146,7 +146,7 @@ If you are running the Azure Stack Monthly Update Verification workflow and the 
 
 - PowerShell automation update
 
-    Changes were made to `LaunchVaaSTests` PowerShell scripts that require the latest version of the scripting packages. See [Launch the Test Pass workflow](azure-stack-vaas-automate-with-powershell.md#launch-the-test-pass-workflow) for instructions on installing the latest version of the scripting package.
+    Changes were made to `LaunchVaaSTests` PowerShell scripts that require the latest version of the scripting packages. See [Launch the Test Pass workflow](azure-stack-vaas-automate-with-powershell.md) for instructions on installing the latest version of the scripting package.
 
 - Validation as a Service Portal
 
