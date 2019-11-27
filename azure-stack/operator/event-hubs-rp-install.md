@@ -98,7 +98,7 @@ First you download the packages to your local machine, then you import them into
 4. Verify that the installation of Event Hubs has succeeded, by returning to the **Marketplace Management**, **Resource Providers** page. The status of Event Hubs should show "Installed".
    ![Marketplace management event hubs available](media/event-hubs-rp-install/11-marketplace-management-rps-installed.png)
 
-## Register Event Hubs [TODO - verify this section. Even if we need it, only register Microsoft.EventHub.Admin]
+## Register Event Hubs
 
 Now you need to register the Event Hubs resource provider. Registration allows you to use the Event Hubs administration page, to manage the service.
 
@@ -131,4 +131,4 @@ To check for updates, [How to update Event Hubs on Azure Stack Hub](event-hubs-r
 
 If you need to remove the resource provider, see [Remove the Event Hubs resource provider](event-hubs-rp-remove.md)
 
-To learn more about the user experience for Event Hubs, visit []() in the User documents.[TODO]
+To learn more about the user experience, visit the [Event Hubs on Azure Stack Hub overview](../user/event-hubs-rp-overview) in the User documents.

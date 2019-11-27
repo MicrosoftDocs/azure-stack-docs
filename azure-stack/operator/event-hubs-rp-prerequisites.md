@@ -5,30 +5,28 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 11/18/2019
+ms.date: 11/27/2019
 ms.reviewer: jfggdl
-ms.lastreviewed: 11/18/2019
+ms.lastreviewed: 11/27/2019
 ---
 
 # Prerequisites for installing Event Hubs on Azure Stack Hub
 
 The following prerequisites must be completed, before you can install Event Hubs on Azure Stack Hub. **Several days or weeks of lead time may be required**, to complete all steps.
 
-## Prerequisites
+> [!IMPORTANT]
+> These prerequisites assume that you've already deployed at least a 4-node Azure Stack Hub integrated system. The Event Hubs resource provider is not supported on the Azure Stack Hub Development Kit (ASDK).
 
 > [!IMPORTANT]
 > **Private Preview Only**. Azure Stack Hub 1910 build version or higher is required by Event Hubs. Please note that Azure Stack Hub builds are incremental. For example, if you have [version 1907](/azure-stack/operator/release-notes?view=azs-1907#1907-build-reference) installed, you must first upgrade to [1908](/azure-stack/operator/release-notes?view=azs-1908#1908-build-reference), and then to 1910, in order to participate in the private preview. That is, you cannot skip builds in-between.
 
-1. [TODO - deploy at least 4-node Azure Stack Hub. look for link. make sure this includes registration and AAD home directory designation and remove #2 below. Also add NOTE: Event Hubs is not supported on ASDK]
+## Prerequisites
 
-2. Update your Azure Active Directory (Azure AD) home directory. Starting with build 1910, the new Deployment Resource Provider (DRP) application must be used to register your home directory tenant. This app will enable DRP to successfully create and register Resource Providers. If this step isn't completed, your Resource Provider installation will fail. 
+1. If you haven't already, complete the steps outlined in [Prerequisites for installing Azure Stack Hub resource providers from Marketplace](marketplace-resource-provider-prerequisites.md).
 
-   - After you've successfully updated your Azure Stack Hub instance to 1910, follow the [instructions for cloning/downloading the Azure Stack Hub Tools repository](azure-stack-powershell-download.md). 
-   - Then, follow the instructions for [Updating the Azure Stack Hub Azure AD Home Directory (after installing updates or new Resource Providers)](https://github.com/Azure/AzureStack-Tools/tree/master/Identity#updating-the-azure-stack-aad-home-directory-after-installing-updates-or-new-resource-providers). 
+2. Procure public key infrastructure (PKI) SSL certificates for Event Hubs. 
 
-3. Procure public key infrastructure (PKI) SSL certificates for Event Hubs. 
-
-   Please adhere to the following naming pattern for the certificate `Alternate Subject Name`. See [PKI certificate requirements](azure-stack-pki-certs.md) for the full list of detailed requirements. : 
+   Please adhere to the naming pattern shown below for the certificate `Alternate Subject Name`. See [PKI certificate requirements](azure-stack-pki-certs.md) for the full list of detailed requirements.  
 
    | Subject name | Alternative subject name |
    |--------------|--------------------------|
@@ -36,10 +34,9 @@ The following prerequisites must be completed, before you can install Event Hubs
 
    ![example certificate](media/event-hubs-rp-prerequisites/certificate-example.png)
 
-    [!NOTE] PFX files must be password protected. The password will be requested during installation.
+> [!NOTE] **PFX files must be password protected**. The password will be requested later during installation.
 
-
-    Be sure to [Validate your certificate](/azure-stack/operator/azure-stack-validate-pki-certs.mdperform-platform-as-a-service-certificate-validation), to prepare and validate the certificates you use for the Event Hubs resource provider. 
+3. Be sure to review [Validate your certificate](/azure-stack/operator/azure-stack-validate-pki-certs.mdperform-platform-as-a-service-certificate-validation). The article shows you how to prepare and validate the certificates you use for the Event Hubs resource provider. 
 
 ## Next steps
 
