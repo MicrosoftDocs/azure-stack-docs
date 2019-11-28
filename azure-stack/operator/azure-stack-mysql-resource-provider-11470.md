@@ -15,7 +15,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2019
 ms.author: justinha
-ms.reviewer: jiahan
+ms.reviewer: xiaofmao
 ms.lastreviewed: 11/26/2019
 ---
 
@@ -30,28 +30,23 @@ Download the MySQL resource provider binary and then run the self-extractor to e
 
 > |Minimum Azure Stack version|MySQL resource provider version|
 > |-----|-----|
-> |Version 1808 (1.1808.0.97)|[MySQL RP version 1.1.33.0](https://aka.ms/azurestackmysqlrp11330)|  
+> |Version 1910 (1.1910.0.58)|[MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)|  
 > |     |     |
 
 > [!IMPORTANT]
 > Apply the minimum supported Azure Stack update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before deploying the latest version of the MySQL resource provider.
 
 ## New features and fixes
-This version of the Azure Stack MySQL resource provider includes the following improvements and fixes:
 
-### Fixes
+This version of the Azure Stack MySQL resource provider is a hotfix release to make the resource provider compatible with some of the latest portal changes in the 1910 update without any new feature.
 
-- **MySQL resource provider portal extension might choose the wrong subscription**. The MySQL resource provider uses Azure Resource Manager calls to determine the first service admin subscription to use, which might not be the *Default Provider Subscription*. If that happens, the MySQL resource provider doesn't work normally.
+It also supports the current latest Azure Stack API version profile 2019-03-01-hybrid and AzureStack PowerShell module 1.8.0. So during deployment and update, no specific history versions of modules need to be installed.
+
+It is recommended that you apply the MySQL resource provider hotfix 1.1.47.0 after Azure Stack is upgraded to 1910 update.
 
 ## Known issues
 
-- **MySQL SKUs can take up to an hour to be visible in the portal**. It can take up to an hour for newly created SKUs to be visible for use when creating new MySQL databases. 
-
-    **Workaround**: None.
-
-
-### Known issues for Cloud Admins operating Azure Stack
-Refer to the documentation in the [Azure Stack Release Notes](azure-stack-servicing-policy.md).
+None.
 
 ## Next steps
 [Learn more about the MySQL resource provider](azure-stack-mysql-resource-provider.md).
