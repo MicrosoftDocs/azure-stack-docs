@@ -91,7 +91,7 @@ You can use PowerShell to get stamp utilization information without help from CS
 4. Run get-azurestacklog -filterbyrole seedring using an invoke-command call
 5. Extract the seedring .zip, and you can obtain the validation report from the ERCS folder where you ran test-azurestack
 
-For more information, see [Azure Stack Diagnostics](azure-stack-configure-on-demand-diagnostic-log-collection.md#to-run-get-azurestacklog-on-azure-stack-integrated-systems).
+For more information, see [Azure Stack Diagnostics](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs).
 
 ## Troubleshoot virtual machines
 ### Default image and gallery item
