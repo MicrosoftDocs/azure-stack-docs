@@ -57,13 +57,13 @@ This version of the Azure Stack SQL resource provider includes the following imp
 
     **Workaround**: None.
 
-- **Reused SQL sign-ins**. Attempting to create a new SQL sign-in with the same username as an existing sign-in under the same subscription will result in reusing the same sign-in and the existing password.
+- **Reused SQL logins**. Attempting to create a new SQL login with the same username as an existing login under the same subscription will result in reusing the same login and the existing password.
 
-    **Workaround**: Use different usernames when creating new sign-ins under the same subscription or create sign-ins with the same username under different subscriptions.
+    **Workaround**: Use different usernames when creating new logins under the same subscription or create logins with the same username under different subscriptions.
 
-- **Shared SQL sign-ins cause data inconsistency**. If a SQL sign-in is shared for multiple SQL databases under the same subscription, changing the sign-in password will cause data inconsistency.
+- **Shared SQL logins cause data inconsistency**. If a SQL login is shared for multiple SQL databases under the same subscription, changing the login password will cause data inconsistency.
 
-    **Workaround**: Always use different sign-ins for different databases under the same subscription.
+    **Workaround**: Always use different logins for different databases under the same subscription.
 
 - **SQL resource provider fails to add SQL Server Always On listener**. When using the listener IP address of the SQL Server Always On Listener, the SQL resource provider VM can't resolve the listener's host name.
 

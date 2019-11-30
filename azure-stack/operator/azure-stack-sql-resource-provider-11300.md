@@ -48,7 +48,7 @@ This version of the Azure Stack SQL resource provider includes the following imp
 
 - **SQL resource provider Azure Stack PowerShell compatibility**. The SQL resource provider has been updated to work with the Azure Stack 2018-03-01-hybrid PowerShell profile and to provide compatibility with AzureRM 1.3.0 and later.
 
-- **SQL sign-in change password blade**. Fixed an issue where the password can't be changed on the change password blade. Removed links from password change notifications.
+- **SQL login change password blade**. Fixed an issue where the password can't be changed on the change password blade. Removed links from password change notifications.
 
 - **SQL hosting server settings blade update**. Fixed an issue where the settings blade was incorrectly titled as "Password".
 
@@ -58,13 +58,13 @@ This version of the Azure Stack SQL resource provider includes the following imp
 
     **Workaround**: None.
 
-- **Reused SQL sign-ins**. Attempting to create a new SQL sign-in with the same username as an existing sign-in under the same subscription will result in reusing the same sign-in and the existing password.
+- **Reused SQL logins**. Attempting to create a new SQL login with the same username as an existing login under the same subscription will result in reusing the same login and the existing password.
 
-    **Workaround**: Use different usernames when creating new sign-ins under the same subscription or create sign-ins with the same username under different subscriptions.
+    **Workaround**: Use different usernames when creating new logins under the same subscription or create logins with the same username under different subscriptions.
 
-- **Shared SQL sign-ins cause data inconsistency**. If a SQL sign-in is shared for multiple SQL databases under the same subscription, changing the sign-in password will cause data inconsistency.
+- **Shared SQL logins cause data inconsistency**. If a SQL login is shared for multiple SQL databases under the same subscription, changing the login password will cause data inconsistency.
 
-    **Workaround**: Always use different sign-ins for different databases under the same subscription.
+    **Workaround**: Always use different logins for different databases under the same subscription.
 
 - **TLS 1.2 support requirement**. If you try to deploy or update the SQL resource provider from a computer where TLS 1.2 isn't enabled, the operation might fail. Run the following PowerShell command on the computer being used to deploy or update the resource provider to verify that TLS 1.2 is returned as supported:
 
