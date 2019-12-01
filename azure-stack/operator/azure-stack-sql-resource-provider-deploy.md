@@ -1,6 +1,7 @@
 ---
-title: Using SQL databases on Azure Stack | Microsoft Docs
-description: Learn how you can deploy SQL databases as a service on Azure Stack and the quick steps to deploy the SQL Server resource provider adapter.
+title: Deploy SQL Server resource provider
+titleSuffix: Azure Stack
+description: Learn how to deploy the SQL Server resource provider on Azure Stack.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
