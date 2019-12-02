@@ -27,7 +27,8 @@ ms.lastreviewed: 12/02/2019
 
 This article describes the general process to replace a physical disk in Azure Stack. If a physical disk fails, you should replace it as soon as possible.
 
-Replacing a physical data drive does **not** require the scale unit node to be put into maintenance mode  (drain) upfront. Also after the physical drive has been replaced the scale unit node doesn't need to be repaired using the Azure Stack Hub administrator portal. The following article has more information when a repair is required [Replace a hardware component on an Azure Stack scale unit node](azure-stack-replace-component.md).
+> [!Note]  
+> Replacing a physical data drive does **not** require the scale unit node to be put into maintenance mode  (drain) upfront. Also after the physical drive has been replaced the scale unit node doesn't need to be repaired using the Azure Stack Hub administrator portal. The following article has more information when a repair is required [Replace a hardware component on an Azure Stack scale unit node](azure-stack-replace-component.md).
 
 You can use this procedure for integrated systems, and for Azure Stack Development Kit (ASDK) deployments that have hot-swappable disks.
 
