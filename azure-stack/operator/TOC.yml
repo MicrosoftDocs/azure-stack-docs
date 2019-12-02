@@ -341,7 +341,7 @@
         - name: Collect logs
           href: azure-stack-diagnostic-log-collection-overview.md?toc=TOC.json&bc=breadcrumb/toc.json
         - name: Apply updates
-          href: event-hubs-rp-update.md
+          href: resource-provider-apply-updates.md
       - name: Service updates
         href: https://azure.microsoft.com/updates/?product=azure-stack
     - name: MySQL on Azure Stack Hub
