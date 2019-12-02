@@ -1,6 +1,7 @@
 ---
-title: SQL Hosting Servers on Azure Stack | Microsoft Docs
-description: How to add SQL instances for provisioning through the SQL Adapter Resource provider.
+title: Add hosting servers for the SQL resource provider
+titleSuffix: Azure Stack
+description: Learn how to add SQL instances for provisioning through the SQL resource provider adapter.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
