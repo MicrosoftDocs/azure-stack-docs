@@ -1,7 +1,7 @@
 ---
 title: Add hosting servers for the SQL resource provider
 titleSuffix: Azure Stack
-description: Learn how to add SQL instances for provisioning through the SQL resource provider adapter.
+description: Learn how to add hosting servers for provisioning through the SQL resource provider adapter.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -80,7 +80,7 @@ You can use standalone (non-HA) SQL servers using any edition of SQL Server 2014
 
 To add a standalone hosting server that's already set up, follow these steps:
 
-1. Sign in to the Azure Stack adminstrator portal as a service admin.
+1. Sign in to the Azure Stack administrator portal as a service admin.
 
 2. Select **All services** &gt; **ADMINISTRATIVE RESOURCES** &gt; **SQL Hosting Servers**.
 
