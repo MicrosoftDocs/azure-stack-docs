@@ -6,7 +6,7 @@ author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 11/01/2019
+ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
@@ -67,7 +67,14 @@ All NSGs contain a set of [default rules](https://docs.microsoft.com/azure/virtu
 
 **Diagnostics**. Enable monitoring and diagnostics, including basic health metrics, diagnostics infrastructure logs, and  [boot diagnostics](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). Boot diagnostics can help you diagnose boot failure if your VM gets into a non-bootable state. Create an Azure Storage account to store the logs. A standard locally redundant storage (LRS) account is sufficient for diagnostic logs. For more information, see [Enable monitoring and diagnostics](https://docs.microsoft.com/azure-stack/user/azure-stack-metrics-azure-data).
 
-**Availability**. Your VM may be subject to a reboot due to planned maintenance as scheduled by the Azure Stack operator. For higher availability, deploy multiple VMs in an [availability set](https://docs.microsoft.com/azure-stack/operator/azure-stack-overview#providing-high-availability).
+**Availability**. Your VM may be subject to a reboot due to planned maintenance as scheduled by the Azure Stack operator. For high availability of a multi-VM production system in Azure, VMs are placed in an [availability set](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) that spreads them across multiple fault domains and update domains. In the smaller scale of Azure Stack Hub, a fault domain in an availability set is defined as a single node in the scale unit.  
+
+While the infrastructure of Azure Stack Hub is already resilient to failures, the underlying technology (failover clustering) still incurs some downtime for VMs on an impacted physical server if there's a hardware failure. Azure Stack Hub supports having an availability set with a maximum of three fault domains to be consistent with Azure.
+
+|                   |             |
+|-------------------|-------------|
+| **Fault domains** | VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack Hub nodes). If there's a hardware failure, VMs from the failed fault domain will be restarted in other fault domains. They'll be kept in separate fault domains from the other VMs but in the same availability set if possible. When the hardware comes back online, VMs will be rebalanced to maintain high availability. |
+| **Update domains**| Update domains are another way that Azure provides high availability in availability sets. An update domain is a logical group of underlying hardware that can undergo maintenance at the same time. VMs located in the same update domain will be restarted together during planned maintenance. As tenants create VMs within an availability set, the Azure platform automatically distributes VMs across these update domains. <br>In Azure Stack Hub, VMs are live migrated across the other online hosts in the cluster before their underlying host is updated. Since there's no tenant downtime during a host update, the update domain feature on Azure Stack Hub only exists for template compatibility with Azure. VMs in an availability set will show 0 as their update domain number on the portal. |
 
 **Backups** For recommendations on protecting your Azure Stack IaaS VMs, reference this article.
 
@@ -90,7 +97,7 @@ Onboard your VMs to [Azure Security Center](https://docs.microsoft.com/azure/sec
 
 **Audit logs**. Use [activity logs](https://docs.microsoft.com/azure-stack/user/azure-stack-metrics-azure-data?#activity-log) to see provisioning actions and other VM events.
 
-**Data encryption**. Azure Stack protects user and infrastructure data at the storage subsystem level using encryption at rest. Azure Stack's storage subsystem is encrypted using BitLocker with 128-bit AES encryption. Refer to [this](https://docs.microsoft.com/azure-stack/operator/azure-stack-security-bitlocker) article for more details.
+**Data encryption**. Azure Stack uses BitLocker 128-bit AES encryption to protect user and infrastructure data at rest in the storage subsystem. For more information, see [Data at rest encryption in Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-security-bitlocker).
 
 
 ## Next steps
