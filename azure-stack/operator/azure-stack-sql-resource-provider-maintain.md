@@ -1,6 +1,7 @@
 ---
-title: Maintaining the SQL resource provider on Azure Stack | Microsoft Docs
-description: Learn how you can maintain the SQL resource provider service on Azure Stack.
+title: SQL resource provider maintenance operations
+titleSuffix: Azure Stack
+description: Learn about SQL resource provider maintenance operations on Azure Stack.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
