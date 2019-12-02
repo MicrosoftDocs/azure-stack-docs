@@ -22,7 +22,7 @@ The following prerequisites must be completed before you can install Event Hubs 
 
 ## Common prerequisites
 
-[!INCLUDE [Common RP prerequisites](../include/marketplace-resource-provider-prerequisites.md)]
+[!INCLUDE [Common RP prerequisites](../includes/marketplace-resource-provider-prerequisites.md)]
 
 ## Event Hub prerequisites
 
