@@ -13,17 +13,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2019
+ms.date: 11/07/2019
 ms.author: justinha
 ms.reviewer: shisab
-ms.lastreviewed: 10/30/2019
+ms.lastreviewed: 11/07/2019
 
 ---
 # Collect Azure Stack diagnostic logs on demand
 
 *Applies to: Azure Stack integrated systems*
 
-As part of troubleshooting, Microsoft Customer Support Services (CSS) may need to analyze diagnostic logs. Beginning with the 1907 release, Azure Stack operators can upload on-demand diagnostic logs to a blob container in Azure by using **Help and Support**. If the portal is unavailable, operators can collect logs using Get-AzureStackLog through the privileged endpoint (PEP). This topic covers both ways of collecting diagnostic logs on demand.
+As part of troubleshooting, Microsoft Customer Support Services (CSS) may need to analyze diagnostic logs. Beginning with the 1907 release, Azure Stack operators can upload diagnostic logs to a blob container in Azure by using **Help and Support**. Using **Help and Support** is recommended over the previous method of using PowerShell because it's simpler. But if the portal is unavailable, operators can continue to collect logs using **Get-AzureStackLog** through the privileged endpoint (PEP) as in previous releases. This topic covers both ways of collecting diagnostic logs on demand.
 
 >[!Note]
 >As an alternative to collecting logs on demand, you can streamline the troubleshooting process by enabling [automatic diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md). If system health conditions need to be investigated, the logs are uploaded automatically for analysis by CSS. 
@@ -43,37 +43,13 @@ Use the following steps to configure on-demand log collection using the SAS URL 
 >[!NOTE]
 >If automatic diagnostic log collection is enabled, **Help and Support** shows when log collection is in progress. If you click **Collect logs now** to collect logs from a specific time while automatic log collection is in progress, on-demand collection begins after automatic log collection is complete. 
 
-## Using PEP to collect diagnostic logs
+## Use the privileged endpoint (PEP) to collect diagnostic logs
 
 <!--how do you look up the PEP IP address. You look up the azurestackstampinfo.json--->
 
-Azure Stack diagnostics tools help make log collection easy and efficient. The following diagram shows how the diagnostics tools work:
 
-![Azure Stack diagnostic tools workflow diagram](media/azure-stack-diagnostics/get-azslogs.png)
 
-### Trace Collector
-
-The Trace Collector is enabled by default and runs continuously in the background to collect all Event Tracing for Windows (ETW) logs from Azure Stack component services. ETW logs are stored in a common local share with a five-day age limit. Once this limit is reached, the oldest files are deleted as new ones are created. The default maximum size allowed for each file  is 200 MB. A size check happens every 2 minutes, and if the current file is >= 200 MB, it's saved and a new file generates. There's also an 8 GB limit on the total file size generated per event session.
-
-### Get-AzureStackLog
-
-The PowerShell cmdlet Get-AzureStackLog can be used to collect logs from all the components in an Azure Stack environment. It saves them in zip files in a user-defined location. If the Azure Stack technical support team needs your logs to help troubleshoot an issue, they may ask you to run Get-AzureStackLog.
-
-> [!CAUTION]
-> These log files may contain personally identifiable information (PII). Take this into account before you publicly post any log files.
-
-The following are some example log types that are collected:
-
-* **Azure Stack deployment logs**
-* **Windows event logs**
-* **Panther logs**
-* **Cluster logs**
-* **Storage diagnostic logs**
-* **ETW logs**
-
-These files are collected and saved in a share by Trace Collector. Get-AzureStackLog can then be used to collect them when necessary.
-
-#### To run Get-AzureStackLog on Azure Stack integrated systems
+### Run Get-AzureStackLog on Azure Stack integrated systems
 
 To run Get-AzureStackLog on an integrated system, you need to have access to the Privileged End Point (PEP). Here's an example script you can run using the PEP to collect logs on an integrated system:
 
@@ -97,7 +73,7 @@ if ($session) {
 }
 ```
 
-#### Run Get-AzureStackLog on an Azure Stack Development Kit (ASDK) system
+### Run Get-AzureStackLog on an Azure Stack Development Kit (ASDK) system
 
 Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
 
@@ -272,4 +248,34 @@ if ($session) {
    Remove-PSSession -Session $session
 }
 ```
+
+### How diagnostic log collection using the PEP works
+
+Azure Stack diagnostics tools help make log collection easy and efficient. The following diagram shows how the diagnostics tools work:
+
+![Azure Stack diagnostic tools workflow diagram](media/azure-stack-diagnostics/get-azslogs.png)
+
+
+#### Trace Collector
+
+The Trace Collector is enabled by default and runs continuously in the background to collect all Event Tracing for Windows (ETW) logs from Azure Stack component services. ETW logs are stored in a common local share with a five-day age limit. Once this limit is reached, the oldest files are deleted as new ones are created. The default maximum size allowed for each file is 200 MB. A size check happens every 2 minutes, and if the current file is >= 200 MB, it's saved and a new file generates. There's also an 8 GB limit on the total file size generated per event session.
+
+#### Get-AzureStackLog
+
+The PowerShell cmdlet Get-AzureStackLog can be used to collect logs from all the components in an Azure Stack environment. It saves them in zip files in a user-defined location. If the Azure Stack technical support team needs your logs to help troubleshoot an issue, they may ask you to run Get-AzureStackLog.
+
+> [!CAUTION]
+> These log files may contain personally identifiable information (PII). Take this into account before you publicly post any log files.
+
+The following are some example log types that are collected:
+
+* **Azure Stack deployment logs**
+* **Windows event logs**
+* **Panther logs**
+* **Cluster logs**
+* **Storage diagnostic logs**
+* **ETW logs**
+
+These files are collected and saved in a share by Trace Collector. Get-AzureStackLog can then be used to collect them when necessary.
+
 
