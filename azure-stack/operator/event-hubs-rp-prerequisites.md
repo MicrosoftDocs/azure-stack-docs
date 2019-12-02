@@ -20,11 +20,13 @@ The following prerequisites must be completed before you can install Event Hubs 
 > [!IMPORTANT]
 > **Private Preview Only**. Azure Stack Hub 1910 build version or higher is required by Event Hubs. Please note that Azure Stack Hub builds are incremental. For example, if you have [version 1907](/azure-stack/operator/release-notes?view=azs-1907#1907-build-reference) installed, you must first upgrade to [1908](/azure-stack/operator/release-notes?view=azs-1908#1908-build-reference), and then to 1910, in order to participate in the private preview. That is, you cannot skip builds in-between.
 
-## Prerequisites
+## Common prerequisites
 
-1. If you haven't already, complete the steps outlined in [Prerequisites for installing resource providers from Marketplace](marketplace-resource-provider-prerequisites.md).
+[!INCLUDE [Common RP prerequisites](../includes/marketplace-resource-provider-prerequisites.md)]
 
-2. Procure public key infrastructure (PKI) SSL certificates for Event Hubs. 
+## Event Hub prerequisites
+
+1. Procure public key infrastructure (PKI) SSL certificates for Event Hubs. 
 
    Please adhere to the naming pattern shown below for the certificate `Alternate Subject Name`. See [PKI certificate requirements](azure-stack-pki-certs.md) for the full list of detailed requirements.  
 
@@ -37,7 +39,7 @@ The following prerequisites must be completed before you can install Event Hubs 
 > [!NOTE]
 > **PFX files must be password protected**. The password will be requested later during installation.
 
-3. Be sure to review [Validate your certificate](/azure-stack/operator/azure-stack-validate-pki-certs.mdperform-platform-as-a-service-certificate-validation). The article shows you how to prepare and validate the certificates you use for the Event Hubs resource provider. 
+2. Be sure to review [Validate your certificate](/azure-stack/operator/azure-stack-validate-pki-certs.mdperform-platform-as-a-service-certificate-validation). The article shows you how to prepare and validate the certificates you use for the Event Hubs resource provider. 
 
 ## Next steps
 

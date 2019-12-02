@@ -282,8 +282,6 @@
     href: azure-stack-network-solutions-enable.md
   - name: Manage add-on service resource providers
     items:
-    - name: Prerequisites for Marketplace resource providers
-      href: marketplace-resource-provider-prerequisites.md
     - name: App Service on Azure Stack Hub
       items:
       - name: Overview
