@@ -79,9 +79,9 @@ In connected scenarios, antivirus definition and engine updates are applied mult
 
 Administration in Azure Stack is controlled through three entry points, each with a specific purpose:
 
-1. The [administrator portal](azure-stack-manage-portals.md) provides a point-and-click experience for daily management operations.
-2. Azure Resource Manager exposes all the management operations of the administrator portal via a REST API, used by PowerShell and Azure CLI.
-3. For specific low-level operations (for example, data center integration or support scenarios), Azure Stack exposes a PowerShell endpoint called [privileged endpoint](azure-stack-privileged-endpoint.md). This endpoint exposes only a whitelisted set of cmdlets and it's heavily audited.
+- The [administrator portal](azure-stack-manage-portals.md) provides a point-and-click experience for daily management operations.
+- Azure Resource Manager exposes all the management operations of the administrator portal via a REST API, used by PowerShell and Azure CLI.
+- For specific low-level operations (for example, data center integration or support scenarios), Azure Stack exposes a PowerShell endpoint called [privileged endpoint](azure-stack-privileged-endpoint.md). This endpoint exposes only a whitelisted set of cmdlets and it's heavily audited.
 
 ## Network controls
 
@@ -89,9 +89,9 @@ Azure Stack infrastructure comes with multiple layers of network Access Control 
 
 Network ACLs are enforced in three layers:
 
-1. Top of Rack switches
-2. Software Defined Network
-3. Host and VM operating system firewalls
+- Layer 1: Top of Rack switches
+- Layer 2: Software Defined Network
+- Layer 3: Host and VM operating system firewalls
 
 ## Regulatory compliance
 
