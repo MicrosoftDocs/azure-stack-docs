@@ -24,7 +24,7 @@ ms.lastreviewed: 10/16/2018
 You can create SQL Server database hosting servers on a virtual machine (VM) in [Azure Stack](azure-stack-overview.md), or on a VM outside your Azure Stack environment, as long as the SQL resource provider can connect to the instance.
 
 > [!NOTE]
-> The SQL resource provider should be created in the default provider subscription while SQL hosting servers should be created in a billable, user subscription. The resource provider server should not be used to host user databases.
+> The SQL resource provider should be created in the default provider subscription while SQL hosting servers should be created in a billable, user subscription. The resource provider server shouldn't be used to host user databases.
 
 ## Overview
 
@@ -32,28 +32,28 @@ Before you add a SQL hosting server, review the following mandatory and general 
 
 ### Mandatory requirements
 
-* Enable SQL authentication on the SQL Server instance. Because the SQL resource provider VM isn't domain joined, it can only connect to a hosting server using SQL authentication.
-* Configure the IP addresses for the SQL instances as Public when installed on Azure Stack. The resource provider, and users, such as Web Apps, communicate over the user network, so connectivity to the SQL instance on this network is required.
+* Enable SQL authentication on the SQL Server instance. Because the SQL resource provider VM isn't domain-joined, it can only connect to a hosting server using SQL authentication.
+* Configure the IP addresses for the SQL instances as Public when installed on Azure Stack. The resource provider and users, such as web apps, communicate over the user network, so connectivity to the SQL instance on this network is required.
 
 ### General requirements
 
 * Dedicate the SQL instance for use by the resource provider and user workloads. You can't use a SQL instance that's being used by any other consumer. This restriction also applies to App Services.
 * Configure an account with the appropriate privilege levels for the resource provider (described below).
-* You are responsible for managing the SQL instances and their hosts.  For example, the resource provider doesn't apply updates, handle backups, or handle credential rotation.
+* You're responsible for managing the SQL instances and their hosts. For example, the resource provider doesn't apply updates, handle backups, or handle credential rotation.
 
-### SQL Server virtual machine images
+### SQL Server VM images
 
-SQL IaaS virtual machine images are available through the Marketplace Management feature. These images are the same as the SQL VMs that are available in Azure.
+SQL IaaS VM images are available through the Marketplace Management feature. These images are the same as the SQL VMs that are available in Azure.
 
-Make sure you always download the latest version of the **SQL IaaS Extension** before you deploy a SQL VM using a Marketplace item. The IaaS extension and corresponding portal enhancements provide additional features such as automatic patching and backup. For more information about this extension, see [Automate management tasks on Azure Virtual Machines with the SQL Server Agent Extension](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
+Make sure you always download the latest version of the **SQL IaaS Extension** before you deploy a SQL VM using a Marketplace item. The IaaS extension and corresponding portal enhancements provide additional features such as automatic patching and backup. For more information about this extension, see [Automate management tasks on Azure VMs with the SQL Server Agent Extension](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension).
 
 > [!NOTE]
-> The SQL IaaS Extension is _required_ for all SQL on Windows images in the marketplace; the VM will fail to deploy if you did not download the extension. It is not used with Linux-based SQL virtual machine images.
+> The SQL IaaS Extension is _required_ for all SQL on Windows images in the marketplace; the VM will fail to deploy if you didn't download the extension. It's not used with Linux-based SQL VM images.
 
 There are other options for deploying SQL VMs, including templates in the [Azure Stack Quickstart Gallery](https://github.com/Azure/AzureStack-QuickStart-Templates).
 
 > [!NOTE]
-> Any hosting servers installed on a multi-node Azure Stack must be created from a user subscription and not the Default Provider Subscription. They must be created from the user portal or from a PowerShell session with an appropriate login. All hosting servers are billable VMs and must have appropriate SQL licenses. The service administrator _can_ be the owner of that subscription.
+> Any hosting servers installed on a multi-node Azure Stack must be created from a user subscription and not the Default Provider Subscription. They must be created from the user portal or from a PowerShell session with an appropriate login. All hosting servers are billable VMs and must have appropriate SQL licenses. The service admin _can_ be the owner of that subscription.
 
 ### Required Privileges
 
