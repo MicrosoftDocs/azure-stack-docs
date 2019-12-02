@@ -153,7 +153,7 @@ Use these commands to set the contained database authentication server option fo
 
 ### To add SQL Always On hosting servers
 
-1. Sign in to the Azure Stack Administration portal as a service admin.
+1. Sign in to the Azure Stack administrator portal as a service admin.
 
 2. Select **Browse** &gt; **ADMINISTRATIVE RESOURCES** &gt; **SQL Hosting Servers** &gt; **+Add**.
 
@@ -163,7 +163,7 @@ Use these commands to set the contained database authentication server option fo
 
 4. Check the Always On Availability Group box to enable support for SQL Always On Availability Group instances.
 
-   ![Enable Always On](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
+   ![Enable Always On Availability Group in Azure Stack administrator portal](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
 
 5. Add the SQL Always On instance to a SKU.
 
@@ -174,7 +174,7 @@ Use these commands to set the contained database authentication server option fo
 Use a SKU name that describes the capabilities of the servers in the SKU, such as capacity and performance. The name serves as an aid to help users deploy their databases to the appropriate SKU. For example, you can use SKU names to differentiate service offerings by the following characteristics:
   
 * high capacity
-* high-performance
+* high performance
 * high availability
 
 As a best practice, all the hosting servers in a SKU should have the same resource and performance characteristics.
@@ -185,7 +185,7 @@ SKUs can take up to an hour to be visible in the portal. Users can't create a da
 
 To edit a SKU, go to **All services** > **SQL Adapter** > **SKUs**. Select the SKU to modify, make any necessary changes, and click **Save** to save changes. 
 
-To delete a SKU that is no longer needed, go to **All services** > **SQL Adapter** > **SKUs**. Right-click the SKU name and select **Delete** to delete it.
+To delete a SKU that's no longer needed, go to **All services** > **SQL Adapter** > **SKUs**. Right-click the SKU name and select **Delete** to delete it.
 
 > [!IMPORTANT]
 > It can take up to an hour for new SKUs to be available in the user portal.
