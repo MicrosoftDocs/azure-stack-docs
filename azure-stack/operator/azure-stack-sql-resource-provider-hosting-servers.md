@@ -57,7 +57,7 @@ There are other options for deploying SQL VMs, including templates in the [Azure
 
 ### Required Privileges
 
-You can create an administrative user with lower privileges than a SQL sysadmin. The user only needs permissions for the following operations:
+You can create an admin user with lower privileges than a SQL sysadmin. The user only needs permissions for the following operations:
 
 * Database: Create, Alter, With Containment (for Always On only), Drop, Backup
 * Availability Group: Alter, Join, Add/Remove Database
@@ -69,9 +69,9 @@ You can create an administrative user with lower privileges than a SQL sysadmin.
 The following information provides additional security guidance:
 
 * All Azure Stack storage is encrypted using BitLocker, so any SQL instance on Azure Stack will use encrypted blob storage.
-* The SQL Resource Provider fully supports TLS 1.2. Ensure that any SQL Server that is managed through the SQL RP is configured for TLS 1.2 _only_ and the RP will default to that. All supported versions of SQL Server support TLS 1.2, see [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server).
-* Use SQL Server Configuration Manager to set the **ForceEncryption** option to ensure all communications to the SQL server are always encrypted. See [To configure the server to force encrypted connections](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#to-configure-the-server-to-force-encrypted-connections).
-* Ensure any client application is also communicating over an encrypted connection.
+* The SQL Resource Provider fully supports TLS 1.2. Ensure that any SQL Server that's managed through the SQL RP is configured for TLS 1.2 _only_ and the RP will default to that. All supported versions of SQL Server support TLS 1.2. For more information, see [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server).
+* Use SQL Server Configuration Manager to set the **ForceEncryption** option to ensure all communications to the SQL server are always encrypted. For more information, see [To configure the server to force encrypted connections](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#to-configure-the-server-to-force-encrypted-connections).
+* Ensure any client app is also communicating over an encrypted connection.
 * The RP is configured to trust the certificates used by the SQL Server instances.
 
 ## Provide capacity by connecting to a standalone hosting SQL server
@@ -80,19 +80,19 @@ You can use standalone (non-HA) SQL servers using any edition of SQL Server 2014
 
 To add a standalone hosting server that's already set up, follow these steps:
 
-1. Sign in to the Azure Stack operator portal as a service administrator.
+1. Sign in to the Azure Stack adminstrator portal as a service admin.
 
 2. Select **All services** &gt; **ADMINISTRATIVE RESOURCES** &gt; **SQL Hosting Servers**.
 
-   ![SQL Hosting Servers](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
+   ![SQL Hosting Servers in Azure Stack administrator portal](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
 
    Under **SQL Hosting Servers**,  you can connect the SQL resource provider to instances of SQL Server that will serve as the resource provider's backend.
 
-   ![SQL Adapter dashboard](./media/azure-stack-sql-rp-deploy/sqlrp-hostingserver.png)
+   ![SQL Adapter dashboard in Azure Stack administrator portal](./media/azure-stack-sql-rp-deploy/sqlrp-hostingserver.png)
 
 3. Click **Add** and then provide the connection details for your SQL Server instance on the **Add a SQL Hosting Server** blade.
 
-   ![Add a SQL Hosting Server](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
+   ![Add a SQL Hosting Server in Azure Stack administrator portal](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 
     Optionally, provide an instance name, and specify a port number if the instance isn't assigned to the default port of 1433.
 
@@ -104,7 +104,7 @@ To add a standalone hosting server that's already set up, follow these steps:
    * To use an existing SKU, choose an available SKU and then select **Create**.
    * To create a SKU, select **+ Create new SKU**. In **Create SKU**, enter the required information, and then select **OK**.
 
-     ![Create a SKU](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
+     ![Create a SKU in Azure Stack administrator portal](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
 ## Provide high availability using SQL Always On Availability Groups
 
