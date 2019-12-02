@@ -182,7 +182,7 @@
       - name: Event Hubs
         items:
         - name: Overview
-          href: event-hubs-rp-overview.md
+          href: event-hubs-overview.md
       - name: Azure Monitor
         href: azure-stack-metrics-azure-data.md
         items: 
