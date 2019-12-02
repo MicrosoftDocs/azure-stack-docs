@@ -1,6 +1,7 @@
 ---
-title: Add Kubernetes to the Azure Stack Marketplace | Microsoft Docs
-description: Learn how to add Kubernetes to the Azure Stack Marketplace.
+title: Add Kubernetes to Azure Stack Marketplace
+titleSuffix: Azure Stack
+description: Learn how to add Kubernetes to Azure Stack Marketplace.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -19,22 +20,22 @@ ms.lastreviewed: 10/28/2019
 
 ---
 
-# Add Kubernetes to the Azure Stack Marketplace
+# Add Kubernetes to Azure Stack Marketplace
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 > [!note]  
 > Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS engine](azure-stack-aks-engine.md).
 
-You can offer Kubernetes as a Marketplace item to your users. Your users can, then, deploy Kubernetes in a single, coordinated operation.
+You can offer Kubernetes as a marketplace item to your users. Your users can then deploy Kubernetes in a single, coordinated operation.
 
-The following article look at using an Azure Resource Manager template to deploy and provision the resources for a standalone Kubernetes cluster. Before you start, check your Azure Stack and global Azure tenant settings. Collect the required information about your Azure Stack. Add necessary resources to your tenant and to the Azure Stack Marketplace. The cluster depends on an Ubuntu server, custom script, and the Kubernetes Cluster Marketplace item to be in the marketplace.
+This article looks at using an Azure Resource Manager template to deploy and provision the resources for a standalone Kubernetes cluster. Before you start, check your Azure Stack and global Azure tenant settings. Collect the required information about your Azure Stack. Add necessary resources to your tenant and to Azure Stack Marketplace. The cluster depends on an Ubuntu server, custom script, and the Kubernetes Cluster marketplace item to be in Azure Stack Marketplace.
 
 ## Create a plan, an offer, and a subscription
 
-Create a plan, an offer, and a subscription for the Kubernetes Marketplace item. You can also use an existing plan and offer.
+Create a plan, an offer, and a subscription for the Kubernetes marketplace item. You can also use an existing plan and offer.
 
-1. Sign in to the [Administration portal.](https://adminportal.local.azurestack.external)
+1. Sign in to the [administrator portal.](https://adminportal.local.azurestack.external)
 
 1. Create a plan as the base plan. For instructions, see [Create a plan in Azure Stack](azure-stack-create-plan.md).
 
@@ -60,13 +61,13 @@ Create a plan, an offer, and a subscription for the Kubernetes Marketplace item.
 
 ## Create a service principal and credentials in AD FS
 
-If you use Active Directory Federated Services (AD FS) for your identity management service, you will need to create a service principal for users deploying a Kubernetes cluster. Create service principal using a client secret. For instructions, see [Create a service principal using a client secret](azure-stack-create-service-principals.md#create-a-service-principal-that-uses-client-secret-credentials).
+If you use Active Directory Federated Services (AD FS) for your identity management service, you need to create a service principal for users deploying a Kubernetes cluster. Create service principal using a client secret. For instructions, see [Create a service principal using a client secret](azure-stack-create-service-principals.md#create-a-service-principal-that-uses-client-secret-credentials).
 
 ## Add an Ubuntu server image
 
-Add the following Ubuntu Server image to the Marketplace:
+Add the following Ubuntu Server image to Azure Stack Marketplace:
 
-1. Sign in to the [Administration portal](https://adminportal.local.azurestack.external).
+1. Sign in to the [administrator portal](https://adminportal.local.azurestack.external).
 
 1. Select **All services**, and then under the **ADMINISTRATION** category, select **Marketplace management**.
 
@@ -84,9 +85,9 @@ Add the following Ubuntu Server image to the Marketplace:
 
 ## Add a custom script for Linux
 
-Add the Kubernetes from the Marketplace:
+Add the Kubernetes from Azure Stack Marketplace:
 
-1. Open the [Administration portal](https://adminportal.local.azurestack.external).
+1. Open the [administrator portal](https://adminportal.local.azurestack.external).
 
 1. Select **ALL services** and then under the **ADMINISTRATION** category, select **Marketplace Management**.
 
@@ -100,14 +101,13 @@ Add the Kubernetes from the Marketplace:
    - **Publisher**: Microsoft Corp
 
      > [!Note]  
-     > More than one version of Custom Script for Linux may be listed. You will need to add the last version of the item.
+     > More than one version of Custom Script for Linux may be listed. You need to add the last version of the item.
 
 1. Select **Download.**
 
-
 ## Add Kubernetes to the marketplace
 
-1. Open the [Administration portal](https://adminportal.local.azurestack.external).
+1. Open the [administrator portal](https://adminportal.local.azurestack.external).
 
 1. Select **All services** and then under the **ADMINISTRATION** category, select **Marketplace Management**.
 
@@ -120,13 +120,13 @@ Add the Kubernetes from the Marketplace:
 1. Select **Download.**
 
     > [!note]  
-    > It may take five minutes for the marketplace item to appear in the Marketplace.
+    > It may take five minutes for the marketplace item to appear in Azure Stack Marketplace.
 
-    ![Kubernetes](../user/media/azure-stack-solution-template-kubernetes-deploy/marketplaceitem.png)
+    ![Kubernetes item in Azure Stack Marketplace](../user/media/azure-stack-solution-template-kubernetes-deploy/marketplaceitem.png)
 
-## Update or remove the Kubernetes 
+## Update or remove the Kubernetes
 
-When updating the Kubernetes item, you'll remove the previous item in the Marketplace. Follow the instruction in this article to add the Kubernetes update to the marketplace.
+When updating the Kubernetes item, you remove the previous item in Azure Stack Marketplace. Follow the instruction below to add the Kubernetes update to Azure Stack Marketplace.
 
 To remove the Kubernetes item:
 
@@ -138,7 +138,7 @@ To remove the Kubernetes item:
     Get-AzsGalleryItem | Select Name
     ```
     
-3. Note name of the current item, such as `Microsoft.AzureStackKubernetesCluster.0.3.0`
+3. Note name of the current item, such as `Microsoft.AzureStackKubernetesCluster.0.3.0`.
 
 4. Use the following PowerShell cmdlet to remove the item:
 

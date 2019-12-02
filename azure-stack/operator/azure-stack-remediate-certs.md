@@ -105,7 +105,7 @@ The **AzsReadinessChecker** tool contains a helper cmdlet called **Repair-AzsPfx
 The following prerequisites must be in place on the computer on which the tool runs:
 
 - Windows 10 or Windows Server 2016, with internet connectivity.
-- PowerShell 5.1 or later. To check your version, run the following PowerShell cmdlet and then review the *Major** and **Minor** versions:
+- PowerShell 5.1 or later. To check your version, run the following PowerShell cmdlet and then review the **Major** and **Minor** versions:
 
    ```powershell
    $PSVersionTable.PSVersion
