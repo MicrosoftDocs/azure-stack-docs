@@ -32,7 +32,7 @@ There are several prerequisites that need to be in place before you can deploy t
 
 - If you haven't already, [register Azure Stack](azure-stack-registration.md) with Azure so you can download Azure Marketplace items.
 
-- You must install the Azure and Azure Stack PowerShell modules on the system where you'll run this installation. That system must be a Windows 10 or Windows Server 2016 image with the latest version of the .NET runtime. See [Install PowerShell for Azure Stack](./azure-stack-powershell-install.md).
+- Install the Azure and Azure Stack PowerShell modules on the system where you'll run this installation. That system must be a Windows 10 or Windows Server 2016 image with the latest version of the .NET runtime. See [Install PowerShell for Azure Stack](./azure-stack-powershell-install.md).
 
 - Add the required Windows Server core VM to Azure Stack Marketplace by downloading the **Windows Server 2016 Datacenter - Server Core** image.
 
@@ -124,7 +124,7 @@ $domain = "AzureStack"
 # For integrated systems, use the IP address of one of the ERCS VMs
 $privilegedEndpoint = "AzS-ERCS01"
 
-# Provide the Azure environment used for deploying Azure Stack. Required only for Azure AD deployments. Supported values for the <environment name> parameter are AzureCloud, AzureChinaCloud, or AzureUSGovernment depending which Azure subscription you are using. 
+# Provide the Azure environment used for deploying Azure Stack. Required only for Azure AD deployments. Supported values for the <environment name> parameter are AzureCloud, AzureChinaCloud, or AzureUSGovernment depending which Azure subscription you're using.
 $AzureEnvironment = "<EnvironmentName>"
 
 # Point to the directory where the resource provider installation files were extracted.
