@@ -1,6 +1,7 @@
 ---
-title: Removing the SQL resource provider on Azure Stack | Microsoft Docs
-description: Learn how you to remove the SQL resource provider from your Azure Stack deployment.
+title: Remove the SQL resource provider
+titleSuffix: Azure Stack
+description: Learn how to remove the SQL resource provider from your Azure Stack deployment.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
