@@ -123,7 +123,7 @@
       - name: Life cycle management
         items:
         - name: Collect logs
-          href: azure-stack-diagnostic-log-collection-overview.md?toc=TOC.json&bc=breadcrumb/toc.json
+          href: azure-stack-diagnostic-log-collection-overview.md
         - name: Apply updates
           href: resource-provider-apply-updates.md
       - name: Service updates

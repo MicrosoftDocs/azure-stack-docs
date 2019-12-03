@@ -8,7 +8,7 @@ ms.reviewer: bryanla
 ms.lastreviewed: 11/27/2019
 ---
 
-The following prerequisites are common for all resource providers installed from Azure Stack Hub Marketplace: 
+If you've already installed a resource provider from Azure Stack Hub Marketplace, you've likely completed the common prerequisites, and can skip this section. Otherwise, complete the following prerequisites first: 
 
 1. [Register your Azure Stack Hub instance with Azure](../operator/azure-stack-registration.md), if you haven't done so. This step is required as you'll be connecting to and downloading items to marketplace from Azure.
 
