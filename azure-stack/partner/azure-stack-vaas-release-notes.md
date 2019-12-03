@@ -24,6 +24,21 @@ ms.lastreviewed: 10/28/2019
 
 This article has the release notes for Azure Stack Validation as a Service.
 
+## Version 4.4.2.1
+
+2019 December 3
+
+- Test content updates
+  - Online documentation for the Monthly Azure Stack Update workflow and the OEM Package Validation workflow have been updated. Please review the updated documentation here​ Validate OEM packages and here Validate software updates from Microsoft
+  - VaaS Package Validation workflow update: OEM Validation Workflow is the only test required for monthly Azure Stack update verification and OEM package validation. The test updates the stamp with the provided AzureStack/OEM packages and runs Cloud Simulation Engine verification tests.
+  - VaaS PowerShell Extension update: Package Validation workflow automation is now supported. Please see Azure Stack VaaS Automate with Powershell for detailed information about the location and step-by-step instructions to use this extension.
+
+- Known issues
+  - Contact vaashelp@microsoft.com if the following test cases fail to run during OEM Validation Workflow:
+    - Test101LinuxEmptyAttachedDiskManagedDisk
+    - Test101WindowsEmptyAttachedDiskManagedDisk
+
+
 ## Version 4.3.5.3
 
 2019 November 7
