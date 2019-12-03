@@ -21,15 +21,15 @@ ms.lastreviewed: 01/11/2019
 
 # SQL resource provider maintenance operations
 
-The SQL resource provider runs on a locked down virtual machine. To enable maintenance operations, you need to update the virtual machine's security. To do this using the principal of Least Privilege, you can use [PowerShell Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) endpoint *DBAdapterMaintenance*. The resource provider installation package includes a script for this operation.
+The SQL resource provider runs on a locked down virtual machine (VM). To enable maintenance operations, you need to update the VM's security. To do this using the principal of Least Privilege, use [PowerShell Just Enough Administration (JEA)](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) endpoint *DBAdapterMaintenance*. The resource provider installation package includes a script for this action.
 
 ## Patching and updating
 
 The SQL resource provider isn't serviced as part of Azure Stack because it's an add-on component. Microsoft provides updates to the SQL resource provider as necessary. When an updated SQL adapter is released, a script is provided to apply the update. This script creates a new resource provider VM, migrating the state of the old provider VM to the new VM. For more information, see [Update the SQL resource provider](azure-stack-sql-resource-provider-update.md).
 
-### Provider virtual machine
+### Provider VM
 
-Because the resource provider runs on a *user* virtual machine, you need to apply the required patches and updates when they're released. You can use the Windows update packages that are provided as part of the patch-and-update cycle to apply updates to the VM.
+Because the resource provider runs on a *user* VM, you need to apply the required patches and updates when they're released. You can use the Windows update packages that are provided as part of the patch-and-update cycle to apply updates to the VM.
 
 ## Updating SQL credentials
 
@@ -37,16 +37,16 @@ You're responsible for creating and maintaining sysadmin accounts on your SQL se
 
 To modify the settings, select **Browse** &gt; **ADMINISTRATIVE RESOURCES** &gt; **SQL Hosting Servers** &gt; **SQL Logins** and select a user name. The change must be made on the SQL instance first (and any replicas, if necessary.) Under **Settings**, select **Password**.
 
-![Update the admin password](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
+![Update the SQL admin password](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
 
 ## Secrets rotation
 
 *These instructions only apply to Azure Stack Integrated Systems.*
 
-When using the SQL and MySQL resource providers with Azure Stack integrated systems, the Azure Stack operator is responsible for rotating the following resource provider infrastructure secrets to ensure that they do not expire:
+When using the SQL and MySQL resource providers with Azure Stack integrated systems, the Azure Stack operator is responsible for rotating the following resource provider infrastructure secrets to ensure that they don't expire:
 
-- External SSL Certificate [provided during deployment](azure-stack-pki-certs.md).
-- The resource provider VM local administrator account password provided during deployment.
+- External SSL certificate [provided during deployment](azure-stack-pki-certs.md).
+- The resource provider VM local admin account password provided during deployment.
 - Resource provider diagnostic user (dbadapterdiag) password.
 
 ### PowerShell examples for rotating secrets
@@ -74,7 +74,7 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
     -DiagnosticsUserPassword  $passwd
 ```
 
-**Change the VM local administrator account password.**
+**Change the VM local admin account password.**
 
 ```powershell
 .\SecretRotationSQLProvider.ps1 `
@@ -99,49 +99,49 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
 
 |Parameter|Description|
 |-----|-----|
-|AzCredential|Azure Stack Service Admin account credential.|
+|AzCredential|Azure Stack service admin account credential.|
 |CloudAdminCredential|Azure Stack cloud admin domain account credential.|
 |PrivilegedEndpoint|Privileged Endpoint to access Get-AzureStackStampInformation.|
 |DiagnosticsUserPassword|Diagnostics user account password.|
-|VMLocalCredential|Local administrator account on the MySQLAdapter VM.|
-|DefaultSSLCertificatePassword|Default SSL Certificate (*pfx) password.|
+|VMLocalCredential|Local admin account on the MySQLAdapter VM.|
+|DefaultSSLCertificatePassword|Default SSL certificate (*pfx) password.|
 |DependencyFilesLocalPath|Dependency files local path.|
 |     |     |
 
 ### Known issues
 
-**Issue**: Secrets rotation logs.<br>
-The logs for secrets rotation aren't automatically collected if the secret rotation custom script fails when it is run.
+**Issue**:<br>
+Secrets rotation logs. The logs for secrets rotation aren't automatically collected if the secret rotation custom script fails when it's run.
 
 **Workaround**:<br>
 Use the Get-AzsDBAdapterLogs cmdlet to collect all resource provider logs, including AzureStack.DatabaseAdapter.SecretRotation.ps1_*.log, saved in C:\Logs.
 
-## Update the virtual machine operating system
+## Update the VM operating system
 
-Use one of the following methods to update the virtual machine operating system.
+Use one of the following methods to update the VM operating system.
 
-- Install the latest resource provider package using a currently patched Windows Server 2016 Core image.
+- Install the latest resource provider package using a currently-patched Windows Server 2016 Core image.
 - Install a Windows Update package during the installation of, or update to, the resource provider.
 
-## Update the virtual machine Windows Defender definitions
+## Update the VM Windows Defender definitions
 
 To update the Windows Defender definitions:
 
-1. Download the Windows Defender definitions update from [Windows Defender Definition](https://www.microsoft.com/en-us/wdsi/definitions).
+1. Download the Windows Defender definitions update from [Security intelligence updates for Windows Defender](https://www.microsoft.com/en-us/wdsi/definitions).
 
-   On the definitions update page, scroll down to "Manually download and install the definitions". Download the "Windows Defender Antivirus for Windows 10 and Windows 8.1" 64-bit file.
+   On the definitions update page, scroll down to "Manually download the update". Download the "Windows Defender Antivirus for Windows 10 and Windows 8.1" 64-bit file.
 
-   Alternatively, use [this direct link](https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64) to download/run the fpam-fe.exe file.
+   You can also use [this direct link](https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64) to download/run the fpam-fe.exe file.
 
-2. Create a PowerShell session to the SQL resource provider  adapter virtual machine's maintenance endpoint.
+2. Create a PowerShell session to the SQL resource provider  adapter VM's maintenance endpoint.
 
-3. Copy the definitions update file to the virtual machine using the maintenance endpoint session.
+3. Copy the definitions update file to the VM using the maintenance endpoint session.
 
 4. On the maintenance PowerShell session, run the *Update-DBAdapterWindowsDefenderDefinitions* command.
 
-5. After you install the definitions, we recommend that you delete the definitions update file by using the *Remove-ItemOnUserDrive* command.
+5. After you install the definitions, we recommend you delete the definitions update file by using the *Remove-ItemOnUserDrive* command.
 
-**PowerShell script example for updating definitions.**
+**PowerShell script example for updating definitions**
 
 You can edit and run the following script to update the Defender definitions. Replace values in the script with values from your environment.
 
@@ -163,7 +163,7 @@ Invoke-WebRequest -Uri 'https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64'
 # Create a session to the maintenance endpoint.
 $session = New-PSSession -ComputerName $databaseRPMachine `
     -Credential $vmLocalAdminCreds -ConfigurationName DBAdapterMaintenance
-# Copy the defender update file to the adapter virtual machine.
+# Copy the defender update file to the adapter VM.
 Copy-Item -ToSession $session -Path $localPathToDefenderUpdate `
      -Destination "User:\"
 # Install the update definitions.
@@ -177,7 +177,7 @@ $session | Remove-PSSession
 
 ## Collect diagnostic logs
 
-To collect logs from the locked down virtual machine, you can use the PowerShell Just Enough Administration (JEA) endpoint *DBAdapterDiagnostics*. This endpoint provides the following commands:
+To collect logs from the locked down VM, use the PowerShell Just Enough Administration (JEA) endpoint *DBAdapterDiagnostics*. This endpoint provides the following commands:
 
 - **Get-AzsDBAdapterLog**. This command creates a zip package of the resource provider diagnostics logs and saves the file on the session's user drive. You can run this command without any parameters and the last four hours of logs are collected.
 - **Remove-AzsDBAdapterLog**. This command removes existing log packages on the resource provider VM.
@@ -187,16 +187,16 @@ To collect logs from the locked down virtual machine, you can use the PowerShell
 When a resource provider is installed or updated, the **dbadapterdiag** user account is created. You'll use this account to collect diagnostic logs.
 
 >[!NOTE]
->The dbadapterdiag account password is the same as the password used for the local administrator on the virtual machine that's created during a provider deployment or update.
+>The dbadapterdiag account password is the same as the password used for the local admin on the VM that's created during a provider deployment or update.
 
-To use the *DBAdapterDiagnostics* commands, create a remote PowerShell session to the resource provider virtual machine and run the **Get-AzsDBAdapterLog** command.
+To use the *DBAdapterDiagnostics* commands, create a remote PowerShell session to the resource provider VM and run the **Get-AzsDBAdapterLog** command.
 
 You set the time span for log collection by using the **FromDate** and **ToDate** parameters. If you don't specify one or both of these parameters, the following defaults are used:
 
 - FromDate is four hours before the current time.
 - ToDate is the current time.
 
-**PowerShell script example for collecting logs.**
+**PowerShell script example for collecting logs**
 
 The following script shows how to collect diagnostic logs from the resource provider VM.
 
