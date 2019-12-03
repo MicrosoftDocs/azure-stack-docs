@@ -29,7 +29,7 @@ The SQL resource provider isn't serviced as part of Azure Stack because it's an 
 
 ### Provider VM
 
-Because the resource provider runs on a *user* VM, you need to apply the required patches and updates when they're released. You can use the Windows update packages that are provided as part of the patch-and-update cycle to apply updates to the VM.
+Because the resource provider runs on a *user* VM, you need to apply the required patches and updates when they're released. Use the Windows update packages that are provided as part of the patch-and-update cycle to apply updates to the VM.
 
 ## Updating SQL credentials
 
@@ -120,7 +120,7 @@ Use the Get-AzsDBAdapterLogs cmdlet to collect all resource provider logs, inclu
 
 Use one of the following methods to update the VM operating system.
 
-- Install the latest resource provider package using a currently-patched Windows Server 2016 Core image.
+- Install the latest resource provider package using a currently patched Windows Server 2016 Core image.
 - Install a Windows Update package during the installation of, or update to, the resource provider.
 
 ## Update the VM Windows Defender definitions
