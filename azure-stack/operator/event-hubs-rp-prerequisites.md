@@ -26,14 +26,14 @@ The following prerequisites must be completed before you can install Event Hubs 
 
 ## Event Hub prerequisites
 
-1. Procure public key infrastructure (PKI) SSL certificates for Event Hubs. The certificate `Subject Name` is user-defined, but please adhere to the naming pattern `CN=*.eventhub.<region>.<fqdn>` for `Alternate Subject Name`. See [PKI certificate requirements](azure-stack-pki-certs.md) for the full list of detailed requirements.  
+1. Procure public key infrastructure (PKI) SSL certificates for Event Hubs. The Subject Alternate Name (SAN) must adhere to the following naming pattern: `CN=*.eventhub.<region>.<fqdn>`. Subject Name may be specified, but it's not used by Event Hubs when handling certificates. Only the Subject Alternate Name is used. See [PKI certificate requirements](azure-stack-pki-certs.md) for the full list of detailed requirements.  
 
    ![example certificate](media/event-hubs-rp-prerequisites/certificate-example.png)
 
    > [!NOTE]
    > **PFX files must be password protected**. The password will be requested later during installation.
 
-2. Be sure to review [Validate your certificate](/azure-stack/operator/azure-stack-validate-pki-certs.mdperform-platform-as-a-service-certificate-validation). The article shows you how to prepare and validate the certificates you use for the Event Hubs resource provider. 
+2. Be sure to review [Validate your certificate](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation). The article shows you how to prepare and validate the certificates you use for the Event Hubs resource provider. 
 
 ## Next steps
 
