@@ -36,7 +36,7 @@ Unmanaged disks require that you create a storage account to store the disks. Th
 
 It is recommended to use Managed Disks for VM for easier management and capacity balance. You don't need to prepare storage account and containers before using Managed Disk.  When creating multiple Managed Disks, the disks will be distributed into multiple volumes which brings benefit to balance the capacity of volumes.  
 
-For Unmanaged Disks, to improve performance and reduce the overall costs, we recommend you to place each VM disk in a separate container. Even you can put both OS disks and Data disks in the same container, the best practice is one container should hold either an OS disk or a data disk, but not both at the same time. 
+For Unmanaged Disks, to improve performance and reduce the overall costs, we recommend you to place each unmanaged disk in a separate container. Even you can put both OS disks and Data disks in the same container, the best practice is one container should hold either an OS disk or a data disk, but not both at the same time. 
 
 If you add one or more data disks to a VM, use additional containers as a location to store these disks. The OS disk for additional VMs should also be in their own containers.
 
