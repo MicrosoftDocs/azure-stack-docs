@@ -1,5 +1,3 @@
-- name: Azure Stack Hub Operator Documentation
-  href: index.yml
 - name: Tutorials
   items:
   - name: Offer a service to users
