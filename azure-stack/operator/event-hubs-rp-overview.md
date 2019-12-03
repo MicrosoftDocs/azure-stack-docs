@@ -16,7 +16,7 @@ Event Hubs on Azure Stack Hub allows you to realize hybrid cloud scenarios. Stre
 
 ## Features
 
-See the [Azure Stack Hub User](/azure-stack/user/event-hubs-overview.md) documentation for a feature comparison, between Event Hubs on Azure Stack vs. Azure.
+See the [Azure Stack Hub User](/azure-stack/user/event-hubs-overview) documentation for a feature comparison, between Event Hubs on Azure Stack vs. Azure.
 
 ## Feature documentation
 
