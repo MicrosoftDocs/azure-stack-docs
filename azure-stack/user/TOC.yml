@@ -73,7 +73,7 @@
           href: azure-stack-developer.md  
         - name: Check templates
           href: azure-stack-validate-templates.md
-          name: Deploy templates
+        - name: Deploy templates
           items:
           - name: Deploy with the portal
             href: azure-stack-deploy-template-portal.md
