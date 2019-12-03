@@ -118,6 +118,8 @@
         href: event-hubs-rp-prerequisites.md
       - name: Install
         href: event-hubs-rp-install.md
+      - name: Manage
+        href: event-hubs-rp-manage.md
       - name: Remove
         href: event-hubs-rp-remove.md        
       - name: Life cycle management
