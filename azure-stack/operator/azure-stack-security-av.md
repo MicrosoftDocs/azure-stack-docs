@@ -39,70 +39,62 @@ For those disconnected deployments that are not yet on 1910 or later, or that do
 With the 1910 release, two new cmdlets were added to the privileged endpoint to configure Windows Defender manual update in Azure Stack Hub. 
 
 ```powershell 
-
 ### cmdlet to configure the storage blob container for the Defender updates 
-
 Set-AzsDefenderManualUpdate [-Container <string>] [-Remove]  
-
 ### cmdlet to retrieve the configuration of the Defender manual update settings 
-
 Get-AzsDefenderManualUpdate  
-
 ``` 
 
-The following procedure shows how to setup Defender manual update. 
+The following procedure shows how to setup Windows Defender manual update. 
 
 1. Connect to the privileged endpoint and run the following cmdlet to specify the name of the storage blob container where the Defender updates will be uploaded. 
 
-> [!NOTE] 
-> The manual update process described below only works in disconnected environments where access to "go.microsoft.com" is not allowed. Trying to run the cmdlet Set-AzsDefenderManualUpdate in connected environments will result in an error. 
+  > [!NOTE] 
+  > The manual update process described below only works in disconnected environments where access to "go.microsoft.com" is not allowed. Trying to run the cmdlet Set-AzsDefenderManualUpdate in connected environments will result in an error. 
 
-```powershell 
+  ```powershell 
+  ### Configure the storage blob container for the Defender updates 
+  Set-AzsDefenderManualUpdate -Container <yourContainerName> 
+  ``` 
 
-### Configure the storage blob container for the Defender updates 
+2. Download the two Windows Defender update packages and save them on a location that is reachable from your Azure Stack Hub administration portal.  
 
-Set-AzsDefenderManualUpdate -Container <yourContainerName> 
-``` 
+  * mpam-fe.exe from [https://go.microsoft.com/fwlink/?LinkId=121721&arch=x64](https://go.microsoft.com/fwlink/?LinkId=121721&arch=x64) 
+  * nis_full.exe from [https://go.microsoft.com/fwlink/?LinkId=197094](https://go.microsoft.com/fwlink/?LinkId=197094) 
 
-2. Download the two Defender update packages and save them on a location that is reachable from your Azure Stack Hub administration portal.  
+  > [!NOTE] 
+  > You'll have to download these two files **every time** you want to update the Defender signatures. 
 
- * mpam-fe.exe from [https://go.microsoft.com/fwlink/?LinkId=121721&arch=x64](https://go.microsoft.com/fwlink/?LinkId=121721&arch=x64) 
+3. In the administration portal, select **All services**. Then, under the **DATA + STORAGE** category, select **Storage accounts**. (Or, in the filter box, start typing **storage accounts**, and select it.) 
 
- * nis_full.exe from [https://go.microsoft.com/fwlink/?LinkId=197094](https://go.microsoft.com/fwlink/?LinkId=197094) 
+   ![Azure Stack Hub Defender - all services](./media/azure-stack-security-av/image1.png)  
 
-> [!NOTE] 
-> You'll have to download these two files **every time** you want to update the Defender signatures. 
+4. In the filter box, type **update**, and select the **updateadminaccount** storage account. 
 
-3.  In the administration portal, select **All services**. Then, under the **DATA + STORAGE** category, select **Storage accounts**. (Or, in the filter box, start typing **storage accounts**, and select it.) 
+5. In the storage account details, under **Services**, select **Blobs**. 
 
-    ![Azure Stack Hub Defender - all services](./media/azure-stack-security-av/image1.png)  
+   ![Azure Stack Hub Defender - blob](./media/azure-stack-security-av/image2.png) 
 
-4.  In the filter box, type **update**, and select the **updateadminaccount** storage account. 
+6. Under **Blob service**, select **+ Container** to create a container. Enter the name that was specified with the Set-AzsDefenderManualUpdate (in this example *defenderupdates*) and then select **OK**. 
 
-5.  In the storage account details, under **Services**, select **Blobs**. 
+   ![Azure Stack Hub Defender - container](./media/azure-stack-security-av/image3.png) 
 
-    ![Azure Stack Hub Defender - blob](./media/azure-stack-security-av/image2.png) 
+7. After the container is created, click the container name, and then click **Upload** to upload the package files to the container. 
 
-6.  Under **Blob service**, select **+ Container** to create a container. Enter the name that was specified with the Set-AzsDefenderManualUpdate (in this example *defenderupdates*) and then select **OK**. 
+   ![Azure Stack Hub Defender - upload](./media/azure-stack-security-av/image4.png) 
 
-    ![Azure Stack Hub Defender - container](./media/azure-stack-security-av/image3.png) 
+8. Under **Upload blob**, click the folder icon, browse to the Windows Defender update *mpam-fe.exe* files and then click **Open** in the file explorer window. 
 
-7.  After the container is created, click the container name, and then click **Upload** to upload the package files to the container. 
+9. Under **Upload blob**, click **Upload**. 
 
-    ![Azure Stack Hub Defender - upload](./media/azure-stack-security-av/image4.png) 
+   ![Azure Stack Hub Defender - upload blob1](./media/azure-stack-security-av/image5.png) 
 
-8.  Under **Upload blob**, click the folder icon, browse to the Defender update *mpam-fe.exe* files and then click **Open** in the file explorer window. 
+1. Repeat steps 8 and 9 for the *nis_full.exe* file. 
 
-9.  Under **Upload blob**, click **Upload**. 
+   ![Azure Stack Hub Defender - upload blob2](./media/azure-stack-security-av/image6.png)
 
-    ![Azure Stack Hub Defender - upload blob1](./media/azure-stack-security-av/image5.png) 
-
-1.  Repeat steps 8 and 9 for the *nis_full.exe* file. 
-
-    ![Azure Stack Hub Defender - upload blob2](./media/azure-stack-security-av/image6.png)
-
-A scheduled task scans the blob container every 30 minutes and applies any new Defender package.  
+A scheduled task scans the blob container every 30 minutes and applies any new Windows Defender package.  
 
 ## Next steps
 
-[Learn more about Azure Stack security](azure-stack-security-foundations.md)
+[Learn more about Azure Stack Hub security](azure-stack-security-foundations.md)
