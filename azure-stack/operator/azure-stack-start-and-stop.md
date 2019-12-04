@@ -1,6 +1,7 @@
 ---
-title: Start and stop Azure Stack | Microsoft Docs
-description: Learn how to start and shut down Azure Stack.
+title: Start and stop
+titleSuffix: Azure Stack
+description: Learn how to start and stop Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -20,13 +21,14 @@ ms.lastreviewed: 10/15/2018
 ---
 
 # Start and stop Azure Stack
-You should follow the procedures in this article to properly shut down and restart Azure Stack services. Shutdown will physically power off the entire Azure Stack environment. Start up powers on all infrastructure roles and returns tenant resources to the power state they were in prior to shutdown.
 
-## Stop Azure Stack 
+Follow the procedures in this article to properly shut down and restart Azure Stack services. Shutdown will physically power off the entire Azure Stack environment. Start up powers on all infrastructure roles and returns tenant resources to the power state they were in prior to shutdown.
+
+## Stop Azure Stack
 
 Shut down Azure Stack with the following steps:
 
-1. Prepare all workloads running on your Azure Stack environment's tenant resources for the upcoming shutdown. 
+1. Prepare all workloads running on your Azure Stack environment's tenant resources for the upcoming shutdown.
 
 2. Open a Privileged Endpoint Session (PEP) from a machine with network access to the Azure Stack ERCS VMs. For instructions, see [Using the privileged endpoint in Azure Stack](azure-stack-privileged-endpoint.md).
 
@@ -38,10 +40,10 @@ Shut down Azure Stack with the following steps:
 
 4. Wait for all physical Azure Stack nodes to power off.
 
-> [!Note]  
-> You can verify the power status of a physical node by following the instructions from the Original Equipment Manufacturer (OEM) who supplied your Azure Stack hardware. 
+> [!Note]
+> You can verify the power status of a physical node by following the instructions from the Original Equipment Manufacturer (OEM) who supplied your Azure Stack hardware.
 
-## Start Azure Stack 
+## Start Azure Stack
 
 Start Azure Stack with the following steps. Follow these steps regardless of how Azure Stack stopped.
 

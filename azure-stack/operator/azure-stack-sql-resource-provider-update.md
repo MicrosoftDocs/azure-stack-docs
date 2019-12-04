@@ -1,6 +1,7 @@
 ---
-title: Updating the Azure Stack SQL resource provider | Microsoft Docs
-description: Learn how you can update the Azure Stack SQL resource provider.
+title: Update the Azure Stack SQL resource provider
+titleSuffix: Azure Stack
+description: Learn how to update the Azure Stack SQL resource provider.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
