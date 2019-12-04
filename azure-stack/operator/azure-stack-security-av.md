@@ -8,10 +8,10 @@ manager: femila
 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/03/2019
+ms.date: 12/04/2019
 ms.author: justinha
 ms.reviewer: fiseraci
-ms.lastreviewed: 12/03/2019
+ms.lastreviewed: 12/04/2019
 
 #Customer intent: As an Azure AD Administrator, I want to understand how antivirus is kept up to date on Azure Stack.
 ---
@@ -34,7 +34,7 @@ To apply the updates to your Azure Stack Hub solution, you first have to downloa
 For those disconnected deployments that are not yet on 1910 or later, or that don't have the ability to download Defender definitions and engine updates on a daily basis, the monthly Azure Stack Hub update includes Windows Defender Antivirus definitions, engine, and platform updates for the month. 
 
 
-### Setup Defender for manual updates 
+### Set up Windows Defender for manual updates 
 
 With the 1910 release, two new cmdlets were added to the privileged endpoint to configure Windows Defender manual update in Azure Stack Hub. 
 
@@ -49,13 +49,12 @@ The following procedure shows how to setup Windows Defender manual update.
 
 1. Connect to the privileged endpoint and run the following cmdlet to specify the name of the storage blob container where the Defender updates will be uploaded. 
 
-  > [!NOTE] 
-  > The manual update process described below only works in disconnected environments where access to "go.microsoft.com" is not allowed. Trying to run the cmdlet Set-AzsDefenderManualUpdate in connected environments will result in an error. 
+   > [!NOTE] 
+   > The manual update process described below only works in disconnected environments where access to "go.microsoft.com" is not allowed. Trying to run the cmdlet Set-AzsDefenderManualUpdate in connected environments will result in an error. 
 
-  ```powershell 
-  ### Configure the storage blob container for the Defender updates 
-  Set-AzsDefenderManualUpdate -Container <yourContainerName> 
-  ``` 
+   ```powershell 
+   ### Configure the storage blob container for the Defender updates 
+   ``` 
 
 2. Download the two Windows Defender update packages and save them on a location that is reachable from your Azure Stack Hub administration portal.  
 
