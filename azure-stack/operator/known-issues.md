@@ -143,6 +143,12 @@ To access known issues for a different version, use the version selector dropdow
 - Remediation: Follow the resource provider update process to apply the SQL resource provider hotfix 1.1.47.0 after Azure Stack is upgraded to the 1910 update ([SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)). For the MySQL resource provider, it is also recommended that you apply the MySQL resource provider hotfix 1.1.47.0 after Azure Stack is upgraded to 1910 update ([MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)).
 - Occurrence: Common
 
+### Access Control (IAM)
+
+- Applicable: This issue applies to releases 1903 and later
+- Cause: IAM Extension is out of date. Ibiza shipped with Azure Stack introducing a new behavior that causes RBAC extension to break if user is opening RBAC extension from a subscription which is not selected in the global subscription picker.
+- Remediation: Ensure the subscription is checked in the global subscription picker. 
+
 ## Networking
 
 ### Load balancer
