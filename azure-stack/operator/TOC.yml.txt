@@ -1,0 +1,14 @@
+- name: Tutorials
+  items:
+  - name: Offer a service to users
+    href: tutorial-offer-services.md
+- name: How-to guides
+  items:
+  - name: Manage add-on service resource providers
+    items:
+    - name: Event Hubs on Azure Stack Hub
+      items:
+      - name: Prerequisites
+        href: event-hubs-rp-prerequisites.md
+      - name: Install
+        href: event-hubs-rp-install.md
