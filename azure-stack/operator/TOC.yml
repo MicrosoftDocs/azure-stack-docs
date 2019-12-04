@@ -351,7 +351,7 @@
         - name: Rotate secrets
           href: azure-stack-rotate-secrets.md
         - name: Service update notes
-          href: https://azure.microsoft.com/updates/?product=azure-stack
+          href: https://azure.microsoft.com/updates/?product=event-hubs
       - name: Remove
         href: event-hubs-rp-remove.md   
     - name: MySQL on Azure Stack Hub
