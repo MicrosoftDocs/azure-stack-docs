@@ -22,7 +22,7 @@ ms.lastreviewed: 10/15/2018
 
 # Start and stop Azure Stack
 
-Follow the procedures in this article to properly shut down and restart Azure Stack services. *Stop* will physically shut down and power off the entire Azure Stack environment. *Start* powers on all infrastructure roles and returns tenant resources to the power state they were in prior to shutdown.
+Follow the procedures in this article to properly shut down and restart Azure Stack services. *Stop* will physically shut down and power off the entire Azure Stack environment. *Start* powers on all infrastructure roles and returns tenant resources to the power state they were in before shutdown.
 
 ## Stop Azure Stack
 
@@ -51,7 +51,7 @@ Start Azure Stack with the following steps. Follow these steps regardless of how
 
 2. Wait until the Azure Stack infrastructure services starts. Azure Stack infrastructure services can require two hours to finish the start process. You can verify the start status of Azure Stack with the [**Get-ActionStatus** cmdlet](#get-the-startup-status-for-azure-stack).
 
-3. Ensure that all of your tenant resources have returned to the state they were in prior to shutdown. Workloads running on tenant resources may need to be reconfigured after startup by the workload manager.
+3. Ensure that all of your tenant resources have returned to the state they were in before shutdown. Workloads running on tenant resources may need to be reconfigured after startup by the workload manager.
 
 ## Get the startup status for Azure Stack
 
