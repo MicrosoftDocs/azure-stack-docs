@@ -58,11 +58,11 @@ The following procedure shows how to setup Windows Defender manual update.
 
 2. Download the two Windows Defender update packages and save them on a location that is reachable from your Azure Stack Hub administration portal.  
 
-  * mpam-fe.exe from [https://go.microsoft.com/fwlink/?LinkId=121721&arch=x64](https://go.microsoft.com/fwlink/?LinkId=121721&arch=x64) 
-  * nis_full.exe from [https://go.microsoft.com/fwlink/?LinkId=197094](https://go.microsoft.com/fwlink/?LinkId=197094) 
+   * mpam-fe.exe from [https://go.microsoft.com/fwlink/?LinkId=121721&arch=x64](https://go.microsoft.com/fwlink/?LinkId=121721&arch=x64) 
+   * nis_full.exe from [https://go.microsoft.com/fwlink/?LinkId=197094](https://go.microsoft.com/fwlink/?LinkId=197094) 
 
-  > [!NOTE] 
-  > You'll have to download these two files **every time** you want to update the Defender signatures. 
+   > [!NOTE] 
+   > You'll have to download these two files **every time** you want to update the Defender signatures. 
 
 3. In the administration portal, select **All services**. Then, under the **DATA + STORAGE** category, select **Storage accounts**. (Or, in the filter box, start typing **storage accounts**, and select it.) 
 
