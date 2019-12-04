@@ -105,6 +105,12 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
+- Azure Stack has improved its ability to autoremediate some patch & update issues that would previously cause update failures or prevent operators from being able to initiate an Azure Stack update. As a result, there are fewer tests included in the **Test-AzureStack -UpdateReadiness** group. For more information please see [Validate Azure Stack system state](https://docs.microsoft.com/azure-stack/operator/azure-stack-diagnostic-test#groups). The following three tests remain as part of the **UpdateReadiness** group:
+   - **AzSInfraFileValidation**
+   - **AzSActionPlanStatus**
+   - **AzsStampBMCSummary**
+
+
 - Added auditing rule to report when an external device (for example, a USB key) is mounted to a node of the Azure Stack infrastructure. The audit log is emitted via syslog and will be displayed as **Microsoft-Windows-Security-Auditing: 6416|Plug and Play Events**. For more information about how to configure the syslog client, see [Syslog forwarding](azure-stack-integrate-security.md).
 
 - Azure Stack is moving to 4096 bit RSA keys for the internal certificates. Running internal secret rotation will replace old 2048 bit certificates with 4096 bit long certificates. For more information about secret rotation in Azure Stack, see [Rotate secrets in Azure Stack](azure-stack-rotate-secrets.md).
