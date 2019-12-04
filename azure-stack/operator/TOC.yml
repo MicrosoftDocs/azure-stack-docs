@@ -331,7 +331,7 @@
       - name: Overview
         href: event-hubs-rp-overview.md
       - name: Capacity planning
-        href: event-hubs-rp-overview.md
+        href: event-hubs-capacity-planning.md
       - name: Prerequisites
         href: event-hubs-rp-prerequisites.md
       - name: Install
