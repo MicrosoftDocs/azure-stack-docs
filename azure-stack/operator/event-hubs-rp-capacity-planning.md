@@ -12,7 +12,7 @@ ms.lastreviewed: 11/18/2019
 
 # Plan for capacity of Event Hubs on Azure Stack Hub
 
-
+TBD
 
 
 
