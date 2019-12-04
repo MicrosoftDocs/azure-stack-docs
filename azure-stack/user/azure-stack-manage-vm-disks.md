@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/24/2019
+ms.date: 12/03/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
@@ -32,17 +32,17 @@ Beginning with version 1808, Azure Stack supports the use of managed disks and u
 
 Unmanaged disks require that you create a storage account to store the disks. The disks you create are referred to as VM disks and are stored in containers in the storage account.
 
-### Best practice guidelines
+## Best practice guidelines
 
-It is recommended to use Managed Disks for VM for easier management and capacity balance. You don't need to prepare storage account and containers before using Managed Disk.  When creating multiple Managed Disks, the disks will be distributed into multiple volumes which brings benefit to balance the capacity of volumes.  
+It is recommended that you use Managed Disks for VM for easier management and capacity balance. You don't have to prepare a storage account and containers before using Managed Disks. When creating multiple managed disks, the disks are distributed into multiple volumes, which helps to balance the capacity of volumes.  
 
-For Unmanaged Disks, to improve performance and reduce the overall costs, we recommend you to place each unmanaged disk in a separate container. Even you can put both OS disks and Data disks in the same container, the best practice is one container should hold either an OS disk or a data disk, but not both at the same time. 
+For unmanaged disks, to improve performance and reduce the overall costs, we recommend that you place each unmanaged disk in a separate container. Although you can put both OS disks and data disks in the same container, the best practice is that one container should hold either an OS disk or a data disk, but not both at the same time.
 
 If you add one or more data disks to a VM, use additional containers as a location to store these disks. The OS disk for additional VMs should also be in their own containers.
 
 When you create VMs, you can reuse the same storage account for each new virtual machine. Only the containers you create should be unique.
 
-### Adding new disks
+## Adding new disks
 
 The following table summarizes how to add disks by using the portal, and by using PowerShell:
 
