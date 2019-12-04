@@ -40,7 +40,7 @@ Download the MySQL resource provider binary and then run the self-extractor to e
 
 This version of the Azure Stack MySQL resource provider is a hotfix release to make the resource provider compatible with some of the latest portal changes in the 1910 update without any new feature.
 
-It also supports the current latest Azure Stack API version profile 2019-03-01-hybrid and AzureStack PowerShell module 1.8.0. So during deployment and update, no specific history versions of modules need to be installed.
+It also supports the current latest Azure Stack API version profile 2019-03-01-hybrid and Azure Stack PowerShell module 1.8.0. So during deployment and update, no specific history versions of modules need to be installed.
 
 It is recommended that you apply the MySQL resource provider hotfix 1.1.47.0 after Azure Stack is upgraded to the 1910 release.
 
