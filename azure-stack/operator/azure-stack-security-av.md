@@ -54,6 +54,7 @@ The following procedure shows how to setup Windows Defender manual update.
 
    ```powershell 
    ### Configure the storage blob container for the Defender updates 
+   Set-AzsDefenderManualUpdate -Container <yourContainerName>
    ``` 
 
 2. Download the two Windows Defender update packages and save them on a location that is reachable from your Azure Stack Hub administration portal.  
