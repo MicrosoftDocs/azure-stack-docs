@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/25/2019
+ms.date: 12/04/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 11/22/2019
@@ -104,6 +104,12 @@ For more information about update build types, see [Manage updates in Azure Stac
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
+
+- Azure Stack has improved its ability to auto-remediate some patch and update issues that previously caused update failures or prevented operators from being able to initiate an Azure Stack update. As a result, there are fewer tests included in the **Test-AzureStack -UpdateReadiness** group. For more information, see [Validate Azure Stack system state](azure-stack-diagnostic-test.md#groups). The following three tests remain in the **UpdateReadiness** group:
+
+  - **AzSInfraFileValidation**
+  - **AzSActionPlanStatus**
+  - **AzsStampBMCSummary**
 
 - Added auditing rule to report when an external device (for example, a USB key) is mounted to a node of the Azure Stack infrastructure. The audit log is emitted via syslog and will be displayed as **Microsoft-Windows-Security-Auditing: 6416|Plug and Play Events**. For more information about how to configure the syslog client, see [Syslog forwarding](azure-stack-integrate-security.md).
 
