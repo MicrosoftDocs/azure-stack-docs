@@ -27,4 +27,4 @@ If you can't find an Event Hubs topic in the [Azure Stack Hub Operator](/azure-s
 
 ## Next steps
 
-Complete the [Prerequisites for installing Event Hubs on Azure Stack](event-hubs-rp-prerequisites.md), before beginning the installation process.
+Review [Capacity planning for Event Hubs on Azure Stack Hub](event-hubs-rp-capacity-planning.md), before beginning the installation process. Understanding capacity planning will help you ensure your users have the capacity they require.
