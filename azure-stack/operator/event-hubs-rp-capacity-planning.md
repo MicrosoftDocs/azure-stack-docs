@@ -12,7 +12,7 @@ ms.lastreviewed: 11/18/2019
 
 # How to do capacity planning for Event Hubs on Azure Stack Hub
 
-As an Operator you manage your Azure Stack Hub capacity using [quotas](azure-stack-quota-types) on resources. For Event Hubs, you control resource consumption by setting quotas on the maximum number of cores utilized by Event Hub clusters. Event Hub clusters are created by users when they deploy an Event Hubs resource.
+As an Operator you manage your Azure Stack Hub capacity using [quotas](azure-stack-quota-types.md) on resources. For Event Hubs, you control resource consumption by setting quotas on the maximum number of cores utilized by Event Hub clusters. Event Hub clusters are created by users when they deploy an Event Hubs resource.
 
 ## Event Hubs cluster resource consumption
 
@@ -24,7 +24,7 @@ Your users will need to create Event Hubs clusters with CUs that meet their busi
 
 | | VM Type | Nodes | Cores per VM/node | Total Cores | VM Storage | Memory | Storage Accounts |
 |-|---------|-------|-------------------|-------------|------------|--------|------------------|
-| **1 CU Event Hubs cluster** | [D11_V2](../user/azure-stack-vm-sizes#mo-dv2) | 5 | 2 | 10 | 500 GiB | 70 GiB | 4 |
+| **1 CU Event Hubs cluster** | [D11_V2](../user/azure-stack-vm-sizes.md#mo-dv2) | 5 | 2 | 10 | 500 GiB | 70 GiB | 4 |
 
 All Event Hubs clusters use a [D11_V2](../user/azure-stack-vm-sizes.md#mo-dv2) VM type for their nodes. A D11_V2 VM type consists of 2 cores. So 1 CU Event Hubs cluster uses 5 D11_V2 VMs, which translates into 10 cores used. In determining the number of cores to configure for a quota, use a multiple of the total cores used by 1 CU. This reflects the maximum CU count you'll allow your users to use, when creating Event Hubs clusters. For example, if you want to configure a quota that allows users to create a cluster with 2 CUs of capacity, then you will need to set your quota at 20 cores.
 
