@@ -78,7 +78,7 @@ This article has the release notes for Azure Stack Validation as a Service.
 - Cloud Simulation Engine in the OEM Package Validation workflow and the Azure Stack Update workflow  (Version 5.1.30.0 -> 5.1.46.0) require that the tests be scheduled in the following order – Monthly Azure Stack Update Verification test, OEM Extension Package Verification test, and finally Cloud Simulation Engine.
 - VaaS Agent Update: The updated VaaS Agent now uses the Azure Stack Cloud Admin credentials to query the stamp to get the stamp information in order to auto populate the workflows. 
 
-    This update requires all of the agents to be updated and restarted. Please see these instructions on how to update the VaaS Agent: https://docs.microsoft.com/en-us/azure-stack/partner/azure-stack-vaas-local-agent
+    This update requires all of the agents to be updated and restarted. Please see these instructions on how to update the VaaS Agent: https://docs.microsoft.com/azure-stack/partner/azure-stack-vaas-local-agent
 - VaaS Portal UI Update: The agent selection table has been moved above the test scheduling pane to facilitate testing.
 
     When scheduling a job it is no longer requires to enter stamp information if the VaaS agents have been correctly updated.
