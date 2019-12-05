@@ -133,7 +133,7 @@ To update the Windows Defender definitions:
 
    You can also use [this direct link](https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64) to download/run the fpam-fe.exe file.
 
-2. Create a PowerShell session to the SQL resource provider  adapter VM's maintenance endpoint.
+2. Create a PowerShell session to the SQL resource provider adapter VM's maintenance endpoint.
 
 3. Copy the definitions update file to the VM using the maintenance endpoint session.
 
