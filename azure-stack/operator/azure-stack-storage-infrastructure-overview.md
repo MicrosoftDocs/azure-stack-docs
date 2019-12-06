@@ -1,6 +1,7 @@
 ---
-title: Manage storage infrastructure for Azure Stack | Microsoft Docs
-description: Manage storage infrastructure for Azure Stack.
+title: Manage storage infrastructure
+titleSuffix: Azure Stack
+description: Learn how to manage storage infrastructure for Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
