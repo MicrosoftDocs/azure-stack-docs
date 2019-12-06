@@ -20,9 +20,9 @@ To understand capacity consumption of Event Hubs deployments, its important to n
 
 Your users will need to create Event Hubs clusters with CUs that meet their business requirements. In order to inform your decision on quota configuration, the following table shows:
 - The core utilization by a 1 CU Event Hubs cluster.
-- The approximate consumption required for other resources.
+- The approximate capacity required for consumption by other resources.
 
-| | VM Type | Nodes | Cores per VM/node | Total Cores | VM Storage | Memory | Storage Accounts |
+| | VM Type | Cluster Nodes | Cores per VM/node | Total Cores | VM Storage | Memory | Storage Accounts |
 |-|---------|-------|-------------------|-------------|------------|--------|------------------|
 | **1 CU Event Hubs cluster** | [D11_V2](../user/azure-stack-vm-sizes.md#mo-dv2) | 5 | 2 | 10 | 500 GiB | 70 GiB | 4 |
 
@@ -37,7 +37,7 @@ The total capacity consumed by the Event Hubs service includes the resource prov
 
 The resource consumption by the Event Hubs resource provider is constant, and independent of the number or sizes of clusters created by users. The following table shows the core utilization by the Event Hubs resource provider on Azure Stack Hub, and the approximate resource consumption by other resources. Please note that the Event Hubs resource provider uses a [D2_V2](/user/azure-stack-vm-sizes#dv2-series) VM type for its deployment.
 
-|                                  | VM Type | Nodes | Cores | VM Storage | Memory | Storage Accounts |
+|                                  | VM Type | Cluster Nodes | Cores | VM Storage | Memory | Storage Accounts |
 |----------------------------------|---------|-------|-------|------------|--------|------------------|
 | **Event Hubs resource provider** | D2_V2   | 3     | 6     | 300 GiB    | 21 GiB | 2                |
 
