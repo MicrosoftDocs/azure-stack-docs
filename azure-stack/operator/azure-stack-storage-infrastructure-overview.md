@@ -27,7 +27,7 @@ ms.reviewer: jiahan
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-This article describes the health and operational status of Azure Stack storage infrastructure resources. These resources include storage drives and volumes. The information in this topic can be invaluable when trying to troubleshoot various issues such as a drive can't be added to a pool.
+This article describes the health and operational status of Azure Stack storage infrastructure resources. These resources include storage drives and volumes. The information in this topic helps you troubleshoot various issues, like when a drive can't be added to a pool.
 
 ## Understand drives and volumes
 
@@ -35,26 +35,26 @@ This article describes the health and operational status of Azure Stack storage 
 
 Powered by Windows Server software, Azure Stack defines storage capabilities with a combination of Storage Spaces Direct (S2D) and Windows Server Failover Clustering to provide a performant, scalable, and resilient storage service.
 
-Azure Stack integrated system partners offer numerous solution variations, including a wide range of storage flexibility. You currently can select a combination of three drive types: NVMe (Non-Volatile Memory Express), SATA/SAS SSD (Solid-State Drive), HDD (Hard Disk Drive).
+Azure Stack integrated system partners offer numerous solution variations, including a wide range of storage flexibility. You currently can select a combination of three drive types: NVMe (non-volatile memory express), SATA/SAS SSD (solid-state drive), HDD (hard disk drive).
 
 Storage Spaces Direct features a cache to maximize storage performance. In Azure Stack appliance with single or multiple types of drives, Storage Spaces Direct automatically use all drives of the "fastest" (NVMe &gt; SSD &gt; HDD) type for caching. The remaining drives are used for capacity. The drives could be grouped into either an "all-flash" or "hybrid" deployment:
 
 ![Azure Stack storage infrastructure](media/azure-stack-storage-infrastructure-overview/image1.png)
 
-All-flash deployments aim to maximize storage performance and do not include rotational hard disk drives (HDD).
+All-flash deployments aim to maximize storage performance and don't include rotational HDDs.
 
 ![Azure Stack storage infrastructure](media/azure-stack-storage-infrastructure-overview/image2.png)
 
-Hybrid deployments aim to balance performance and capacity or to maximize capacity and do include rotational hard disk drives (HDD).
+Hybrid deployments aim to balance performance and capacity or to maximize capacity and do include rotational HDDs.
 
-The behavior of the cache is determined automatically based on the type(s) of drives that are being cached for. When caching for solid-state drives (such as NVMe caching for SSDs), only writes are cached. This reduces wear on the capacity drives, reducing the cumulative traffic to the capacity drives and extending their lifetime. In the meantime, because reads do not significantly affect the lifespan of flash, and because solid-state drives universally offer low read latency, reads are not cached. When caching for hard disk drives (such as SSDs caching for HDDs), both reads and writes are cached, to provide flash-like latency (often /~10x better) for both.
+The behavior of the cache is determined automatically based on the type(s) of drives that are being cached for. When caching for SSDs (such as NVMe caching for SSDs), only writes are cached. This reduces wear on the capacity drives, reducing the cumulative traffic to the capacity drives and extending their lifetime. In the meantime, because reads don't significantly affect the lifespan of flash, and because SSDs universally offer low read latency, reads aren't cached. When caching for HDDs (such as SSDs caching for HDDs), both reads and writes are cached, to provide flash-like latency (often /~10x better) for both.
 
 ![Azure Stack storage infrastructure](media/azure-stack-storage-infrastructure-overview/image3.png)
 
 For the available configuration of storage, you can check Azure Stack OEM partner (https://azure.microsoft.com/overview/azure-stack/partners/) for detailed specification.
 
 > [!Note]  
-> Azure Stack appliance can be delivered in a hybrid deployment, with both HDD and SSD (or NVMe) drives. But the drives of faster type would be used as cache drives, and all remaining drives would be used as capacity drives as a pool. The tenant data (blobs, tables, queues and disks) would be placed on capacity drives. So provisioning premium disks or selecting premium storage account type doesn't mean the objects are guaranteed to be allocated on SSD or NVMe drives and gain greater performance.
+> Azure Stack appliance can be delivered in a hybrid deployment, with both HDD and SSD (or NVMe) drives. But the drives of faster type would be used as cache drives, and all remaining drives would be used as capacity drives as a pool. The tenant data (blobs, tables, queues, and disks) would be placed on capacity drives. Provisioning premium disks or selecting a premium storage account type doesn't guarantee the objects will be allocated on SSD or NVMe drives.
 
 ### Volumes
 
