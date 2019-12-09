@@ -1,6 +1,7 @@
 ---
-title: Using databases provided by the SQL Adapter Resource provider on Azure Stack | Microsoft Docs
-description: How to create and manage SQL databases provisioned by using the SQL Adapter Resource provider
+title: Create SQL databases
+titleSuffix: Azure Stack
+description: Learn how to create and manage SQL databases provisioned using the SQL resource provider adapter.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -35,25 +36,27 @@ You can create and manage self-service databases in the user portal. An Azure St
 
 4. Under **Create Database**, select **SKU**. Under **Select a SKU**, select the SKU for your database.
 
-   ![Create Database](./media/azure-stack-sql-rp-deploy/newsqldb.png)
+   ![Create Database in Azure Stack user portal.](./media/azure-stack-sql-rp-deploy/newsqldb.png)
 
    >[!NOTE]
    >As hosting servers are added to Azure Stack, they're assigned a SKU. Databases are created in the pool of hosting servers in a SKU.
 
 5. Select **Login**.
+
 6. Under **Select a Login**, choose an existing login, or select **+ Create a new login**.
+
 7. Under **New Login**, enter a name for **Database login** and a **Password**.
 
    >[!NOTE]
-   >These settings are the SQL Authentication credential that's created for your access to this database only. The login user name must be globally unique. You can reuse login settings for other databases that use the same SKU.
+   >These settings are the SQL authentication credential that's created for your access to this database only. The login user name must be globally unique. You can reuse login settings for other databases that use the same SKU.
 
-   ![Create a new database login](./media/azure-stack-sql-rp-deploy/create-new-login.png)
+   ![Create a new database login in Azure Stack user portal](./media/azure-stack-sql-rp-deploy/create-new-login.png)
 
 8. Select **OK** to finish deploying the database.
 
-Under **Essentials**, which is shown after the database is deployed, take note of the **Connection string**. You can use this string in any application that needs to access the SQL Server database.
+Under **Essentials**, which is shown after the database is deployed, take note of the **Connection string**. You can use this string in any app that needs to access the SQL Server database.
 
-![Retrieve the connection string](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
+![Retrieve the connection string for the SQL Server database](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
 
 ## SQL Always On databases
 
@@ -63,15 +66,15 @@ By design, Always On databases are handled differently than in a standalone serv
 
 The following screen capture shows how you can use SQL Server Management Studio to look at database status in SQL Always On.
 
-![AlwaysOn database status](./media/azure-stack-sql-rp-deploy/verifyalwayson.png)
+![AlwaysOn database status in SQL Server Management Studio](./media/azure-stack-sql-rp-deploy/verifyalwayson.png)
 
-Always On databases should show as Synchronized and available on all the SQL instances and appear in Availability Groups. In the previous screen capture, the database example is newdb1 and its status is **newdb1 (Synchronized)**.
+Always On databases should show as **Synchronized** and available on all the SQL instances and appear in **Availability Groups**. In the previous screenshot, the database example is newdb1 and its status is **newdb1 (Synchronized)**.
 
 ### Delete an AlwaysOn database
 
-When you delete a SQL AlwaysOn database from the resource provider, SQL deletes database from the Primary replica and from the availability group.
+When you delete a SQL Always On database from the resource provider, SQL deletes the database from the **Primary** replica and from the availability group.
 
-SQL then puts the database into the Restoring state on the other replicas and doesn't drop the database unless triggered. If the database isn't dropped, the secondary replicas go into a Not Synchronizing state.
+SQL then puts the database into the **Restoring** state on the other replicas and doesn't drop the database unless triggered. If the database isn't dropped, the secondary replicas go into a **Not Synchronizing** state.
 
 ## Next steps
 
