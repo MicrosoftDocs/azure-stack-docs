@@ -33,11 +33,11 @@ This article describes the health and operational status of Azure Stack storage 
 
 ### Drives
 
-Powered by Windows Server software, Azure Stack defines storage capabilities with a combination of Storage Spaces Direct (S2D) and Windows Server Failover Clustering to provide a performant, scalable, and resilient storage service.
+Powered by Windows Server software, Azure Stack defines storage capabilities with a combination of Storage Spaces Direct (S2D) and Windows Server Failover Clustering. This combination provides a performant, scalable, and resilient storage service.
 
 Azure Stack integrated system partners offer many solution variations, including a wide range of storage flexibility. You currently can select a combination of three drive types: NVMe (non-volatile memory express), SATA/SAS SSD (solid-state drive), HDD (hard disk drive).
 
-Storage Spaces Direct features a cache to maximize storage performance. In Azure Stack appliance with single or multiple types of drives, Storage Spaces Direct automatically use all drives of the "fastest" (NVMe &gt; SSD &gt; HDD) type for caching. The remaining drives are used for capacity. The drives could be grouped into either an "all-flash" or "hybrid" deployment:
+Storage Spaces Direct features a cache to maximize storage performance. In an Azure Stack appliance with single or multiple types of drives, Storage Spaces Direct automatically use all drives of the "fastest" (NVMe &gt; SSD &gt; HDD) type for caching. The remaining drives are used for capacity. The drives could be grouped into either an "all-flash" or "hybrid" deployment:
 
 ![Azure Stack storage infrastructure](media/azure-stack-storage-infrastructure-overview/image1.png)
 
@@ -47,7 +47,7 @@ All-flash deployments aim to maximize storage performance and don't include rota
 
 Hybrid deployments aim to balance performance and capacity or to maximize capacity and do include rotational HDDs.
 
-The behavior of the cache is determined automatically based on the type(s) of drives that are being cached for. When caching for SSDs (such as NVMe caching for SSDs), only writes are cached. This reduces wear on the capacity drives, reducing the cumulative traffic to the capacity drives and extending their lifetime. In the meantime, because reads don't significantly affect the lifespan of flash, and because SSDs universally offer low read latency, reads aren't cached. When caching for HDDs (such as SSDs caching for HDDs), both reads and writes are cached, to provide flash-like latency (often /~10x better) for both.
+The behavior of the cache is determined automatically based on the type(s) of drives that are being cached for. When caching for SSDs (such as NVMe caching for SSDs), only writes are cached. This reduces wear on the capacity drives, reducing the cumulative traffic to the capacity drives and extending their lifetime. In the meantime, reads aren't cached. They aren't cached because reads don't significantly affect the lifespan of flash and because SSDs universally offer low read latency. When caching for HDDs (such as SSDs caching for HDDs), both reads and writes are cached, to provide flash-like latency (often /~10x better) for both.
 
 ![Azure Stack storage infrastructure](media/azure-stack-storage-infrastructure-overview/image3.png)
 
@@ -80,11 +80,11 @@ In a multi-node deployment, you would see three infrastructure volumes, while th
 
 - If you use the Azure Stack Development Kit, there's a single volume with multiple shares.
 
-Volumes in Storage Spaces Direct provide resiliency to protect against hardware problems, such as drive or server failures, and to enable continuous availability throughout server maintenance, such as software updates. Azure Stack deployment uses three-way mirroring to ensure data resilience. Three copies of tenant data are written to different servers, where they land in cache:
+Volumes in Storage Spaces Direct provide resiliency to protect against hardware problems, such as drive or server failures. They also enable continuous availability throughout server maintenance, like software updates. Azure Stack deployment uses three-way mirroring to ensure data resilience. Three copies of tenant data are written to different servers, where they land in cache:
 
 ![Azure Stack storage infrastructure](media/azure-stack-storage-infrastructure-overview/image5.png)
 
-Mirroring provides fault tolerance by keeping multiple copies of all data. How that data is striped and placed is non-trivial, but it's absolutely true to say that any data stored using mirroring is written, in its entirety, multiple times. Each copy is written to different physical hardware (different drives in different servers) that are assumed to fail independently. Three-way mirroring can safely tolerate at least two hardware problems (drive or server) at a time. For example, if you're rebooting one server when suddenly another drive or server fails, all data remains safe and continuously accessible.
+Mirroring provides fault tolerance by keeping multiple copies of all data. How that data is striped and placed is non-trivial, but it's true to say that any data stored using mirroring is written in its entirety multiple times. Each copy is written to different physical hardware (different drives in different servers) that are assumed to fail independently. Three-way mirroring can safely tolerate at least two hardware problems (drive or server) at a time. For example, if you're rebooting one server when suddenly another drive or server fails, all data remains safe and continuously accessible.
 
 ## Volume states
 
@@ -116,7 +116,7 @@ The following sections list the health and operational states:
 
 ### Volume health state: Warning
 
-When the volume is in a Warning health state, it means that one or more copies of your data are unavailable, but Azure Stack can still read at least one copy of your data.
+When the volume is in a Warning health state, it means that one or more copies of your data are unavailable but Azure Stack can still read at least one copy of your data.
 
 | Operational state | Description |
 |---|---|
@@ -170,11 +170,11 @@ A drive in the Warning state can read and write data successfully but has an iss
 | Lost communication | Connectivity has been lost to the drive.<br> <br>**Action:** Bring all servers back online. If that doesn't fix it, reconnect the drive. If this state persists, replace the drive to ensure full resiliency. |
 | Predictive failure | A failure of the drive is predicted to occur soon.<br> <br>**Action:** Replace the drive as soon as possible to ensure full resiliency. |
 | IO error | There was a temporary error accessing the drive.<br> <br>**Action:** If this state persists, replace the drive to ensure full resiliency. |
-| Transient error | There was a temporary error with the drive. This usually means the drive was unresponsive, but it could also mean that the Storage Spaces Direct protective partition was inappropriately removed from the drive. <br> <br>**Action:** If this state persists, replace the drive to ensure full resiliency. |
+| Transient error | There was a temporary error with the drive. This error usually means the drive was unresponsive, but it could also mean that the Storage Spaces Direct protective partition was inappropriately removed from the drive. <br> <br>**Action:** If this state persists, replace the drive to ensure full resiliency. |
 | Abnormal latency | The drive is sometimes unresponsive and is showing signs of failure.<br> <br>**Action:** If this state persists, replace the drive to ensure full resiliency. |
 | Removing from pool | Azure Stack is in the process of removing the drive from its storage pool.<br> <br>**Action:** Wait for Azure Stack to finish removing the drive, and check the status afterward.<br>If the status remains, contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. |
 | Starting maintenance mode | Azure Stack is in the process of putting the drive in maintenance mode. This state is temporary—the drive should soon be in the In maintenance mode state.<br> <br>**Action:** Wait for Azure Stack to finish the process and check the status afterward. |
-| In maintenance mode | The drive is in maintenance mode, halting reads and writes from the drive. This usually means Azure Stack administration tasks such as PNU or FRU are operating the drive. But the admin could also place the drive in maintenance mode.<br> <br>**Action:** Wait for Azure Stack to finish the administration task, and check the status afterward.<br>If the status remains, contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. |
+| In maintenance mode | The drive is in maintenance mode, halting reads and writes from the drive. This state usually means Azure Stack administration tasks such as PNU or FRU are operating the drive. But the admin could also place the drive in maintenance mode.<br> <br>**Action:** Wait for Azure Stack to finish the administration task, and check the status afterward.<br>If the status remains, contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. |
 | Stopping maintenance mode | Azure Stack is in the process of bringing the drive back online. This state is temporary - the drive should soon be in another state, ideally Healthy.<br> <br>**Action:** Wait for Azure Stack to finish the process and check the status afterward. |
 
 ### Drive health state: Unhealthy
