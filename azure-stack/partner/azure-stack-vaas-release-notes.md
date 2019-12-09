@@ -24,6 +24,21 @@ ms.lastreviewed: 10/28/2019
 
 This article has the release notes for Azure Stack Validation as a Service.
 
+## Version 4.4.2.1
+
+2019 December 3
+
+- Test content updates
+  - Online documentation for the Monthly Azure Stack Update workflow and the OEM Package Validation workflow have been updated. Please review the updated documentation here​ Validate OEM packages and here Validate software updates from Microsoft
+  - VaaS Package Validation workflow update: OEM Validation Workflow is the only test required for monthly Azure Stack update verification and OEM package validation. The test updates the stamp with the provided AzureStack/OEM packages and runs Cloud Simulation Engine verification tests.
+  - VaaS PowerShell Extension update: Package Validation workflow automation is now supported. Please see Azure Stack VaaS Automate with Powershell for detailed information about the location and step-by-step instructions to use this extension.
+
+- Known issues
+  - Contact vaashelp@microsoft.com if the following test cases fail to run during OEM Validation Workflow:
+    - Test101LinuxEmptyAttachedDiskManagedDisk
+    - Test101WindowsEmptyAttachedDiskManagedDisk
+
+
 ## Version 4.3.5.3
 
 2019 November 7
@@ -63,7 +78,7 @@ This article has the release notes for Azure Stack Validation as a Service.
 - Cloud Simulation Engine in the OEM Package Validation workflow and the Azure Stack Update workflow  (Version 5.1.30.0 -> 5.1.46.0) require that the tests be scheduled in the following order – Monthly Azure Stack Update Verification test, OEM Extension Package Verification test, and finally Cloud Simulation Engine.
 - VaaS Agent Update: The updated VaaS Agent now uses the Azure Stack Cloud Admin credentials to query the stamp to get the stamp information in order to auto populate the workflows. 
 
-    This update requires all of the agents to be updated and restarted. Please see these instructions on how to update the VaaS Agent: https://docs.microsoft.com/en-us/azure-stack/partner/azure-stack-vaas-local-agent
+    This update requires all of the agents to be updated and restarted. Please see these instructions on how to update the VaaS Agent: https://docs.microsoft.com/azure-stack/partner/azure-stack-vaas-local-agent
 - VaaS Portal UI Update: The agent selection table has been moved above the test scheduling pane to facilitate testing.
 
     When scheduling a job it is no longer requires to enter stamp information if the VaaS agents have been correctly updated.
@@ -146,7 +161,7 @@ If you are running the Azure Stack Monthly Update Verification workflow and the 
 
 - PowerShell automation update
 
-    Changes were made to `LaunchVaaSTests` PowerShell scripts that require the latest version of the scripting packages. See [Launch the Test Pass workflow](azure-stack-vaas-automate-with-powershell.md#launch-the-test-pass-workflow) for instructions on installing the latest version of the scripting package.
+    Changes were made to `LaunchVaaSTests` PowerShell scripts that require the latest version of the scripting packages. See [Launch the Test Pass workflow](azure-stack-vaas-automate-with-powershell.md) for instructions on installing the latest version of the scripting package.
 
 - Validation as a Service Portal
 
