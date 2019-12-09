@@ -343,15 +343,15 @@
         - name: Backup & restore
           href: azure-stack-backup-infrastructure-backup.md
         - name: Collect logs
-          href: azure-stack-diagnostic-log-collection-overview.md?toc=TOC.json&bc=breadcrumb/toc.json
+          href: azure-stack-diagnostic-log-collection-overview.md
         - name: Health & alerts
           href: azure-stack-monitor-health.md
         - name: Manage
           href: event-hubs-rp-manage.md 
         - name: Rotate secrets
           href: azure-stack-rotate-secrets.md
-        - name: Service update notes
-          href: https://azure.microsoft.com/updates/?product=event-hubs
+        - name: Service update announcements
+          href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
       - name: Remove
         href: event-hubs-rp-remove.md   
     - name: MySQL on Azure Stack Hub

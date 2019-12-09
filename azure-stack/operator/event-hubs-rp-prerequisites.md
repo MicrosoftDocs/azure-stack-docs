@@ -5,9 +5,9 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 11/27/2019
+ms.date: 12/09/2019
 ms.reviewer: jfggdl
-ms.lastreviewed: 11/27/2019
+ms.lastreviewed: 12/09/2019
 ---
 
 # Prerequisites for installing Event Hubs on Azure Stack Hub
