@@ -29,6 +29,8 @@ Use the SQL Server resource provider to offer SQL databases as a service on [Azu
 
 The resource provider doesn't provide all the database management abilities of [Azure SQL Database](https://azure.microsoft.com/services/sql-database/). For example, elastic pools that automatically allocate resources aren't supported. However, the resource provider supports similar create, read, update, and delete (CRUD) operations on a SQL Server database.
 
+Azure Stack operator is responsible for deploying, configuring and maintaining the database server instances for security, HA, backup, patching and updates. The database server instance is shared by different user databases, including the database server name and public IP address. And there is no reporting of the database usage.
+
 ## SQL resource provider adapter architecture
 
 The resource provider consists of the following components:
