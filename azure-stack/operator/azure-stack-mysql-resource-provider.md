@@ -22,10 +22,12 @@ ms.lastreviewed: 10/25/2018
 
 MySQL databases are commonly used with websites and support many website platforms. For example, you can create WordPress websites using the App Services resource provider (PaaS) add-on.
 
-After you deploy the resource provider, you can:
+After you deploy the resource provider and connect it to one or more MySQL server instances, you can:
 
-* Create MySQL servers and databases using Azure Resource Manager deployment templates.
+* Create MySQL databases using Azure Resource Manager deployment templates.
 * Provide MySQL databases as a service.  
+
+Azure Stack operator is responsible for deploying, configuring and maintaining the database server instances for security, HA, backup, patching and updates. The database server instance is shared by different user databases, including the database server name and public IP address. And there is no reporting of the database usage.
 
 ## MySQL resource provider adapter architecture
 
