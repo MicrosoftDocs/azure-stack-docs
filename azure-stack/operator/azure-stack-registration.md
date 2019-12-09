@@ -270,11 +270,11 @@ You need your registration token and a unique token name.
 
 2. Then run the following PowerShell cmdlets:  
 
-  ```powershell  
-  $RegistrationToken = "<Your Registration Token>"
-  $RegistrationName = "<unique-registration-name>"
-  Register-AzsEnvironment -RegistrationToken $RegistrationToken -RegistrationName $RegistrationName
-  ```
+    ```powershell  
+    $RegistrationToken = "<Your Registration Token>"
+    $RegistrationName = "<unique-registration-name>"
+    Register-AzsEnvironment -RegistrationToken $RegistrationToken -RegistrationName $RegistrationName
+    ```
 
 Optionally, you can use the Get-Content cmdlet to point to a file that contains your registration token.
 
@@ -282,16 +282,16 @@ You need your registration token and a unique token name.
 
 1. Start PowerShell ISE as an administrator and navigate to the **Registration** folder in the **AzureStack-Tools-master** directory created when you downloaded the Azure Stack tools. Import the **RegisterWithAzure.psm1** module:  
 
-  ```powershell  
-  Import-Module .\RegisterWithAzure.psm1
-  ```
+    ```powershell  
+    Import-Module .\RegisterWithAzure.psm1
+    ```
 
 2. Then run the following PowerShell cmdlets:  
 
-  ```powershell  
-  $RegistrationToken = Get-Content -Path '<Path>\<Registration Token File>'
-  Register-AzsEnvironment -RegistrationToken $RegistrationToken -RegistrationName $RegistrationName
-  ```
+    ```powershell  
+    $RegistrationToken = Get-Content -Path '<Path>\<Registration Token File>'
+    Register-AzsEnvironment -RegistrationToken $RegistrationToken -RegistrationName $RegistrationName
+    ```
 
   > [!Note]  
   > Save the registration resource name and the registration token for future reference.
