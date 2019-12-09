@@ -127,7 +127,7 @@ Use one of the following methods to update the VM operating system.
 
 To update the Windows Defender definitions:
 
-1. Download the Windows Defender definitions update from [Security intelligence updates for Windows Defender](https://www.microsoft.com/en-us/wdsi/definitions).
+1. Download the Windows Defender definitions update from [Security intelligence updates for Windows Defender](https://www.microsoft.com/wdsi/definitions).
 
    On the definitions update page, scroll down to "Manually download the update". Download the "Windows Defender Antivirus for Windows 10 and Windows 8.1" 64-bit file.
 
@@ -156,7 +156,7 @@ $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential `
 $databaseRPMachine  = "<RP VM IP address>"
 $localPathToDefenderUpdate = "C:\DefenderUpdates\mpam-fe.exe"
 
-# Download the Windows Defender update definitions file from https://www.microsoft.com/en-us/wdsi/definitions.
+# Download the Windows Defender update definitions file from https://www.microsoft.com/wdsi/definitions.
 Invoke-WebRequest -Uri 'https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64' `
     -Outfile $localPathToDefenderUpdate
 
