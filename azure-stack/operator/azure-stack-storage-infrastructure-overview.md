@@ -35,7 +35,7 @@ This article describes the health and operational status of Azure Stack storage 
 
 Powered by Windows Server software, Azure Stack defines storage capabilities with a combination of Storage Spaces Direct (S2D) and Windows Server Failover Clustering to provide a performant, scalable, and resilient storage service.
 
-Azure Stack integrated system partners offer numerous solution variations, including a wide range of storage flexibility. You currently can select a combination of three drive types: NVMe (non-volatile memory express), SATA/SAS SSD (solid-state drive), HDD (hard disk drive).
+Azure Stack integrated system partners offer many solution variations, including a wide range of storage flexibility. You currently can select a combination of three drive types: NVMe (non-volatile memory express), SATA/SAS SSD (solid-state drive), HDD (hard disk drive).
 
 Storage Spaces Direct features a cache to maximize storage performance. In Azure Stack appliance with single or multiple types of drives, Storage Spaces Direct automatically use all drives of the "fastest" (NVMe &gt; SSD &gt; HDD) type for caching. The remaining drives are used for capacity. The drives could be grouped into either an "all-flash" or "hybrid" deployment:
 
@@ -84,7 +84,7 @@ Volumes in Storage Spaces Direct provide resiliency to protect against hardware 
 
 ![Azure Stack storage infrastructure](media/azure-stack-storage-infrastructure-overview/image5.png)
 
-Mirroring provides fault tolerance by keeping multiple copies of all data. How that data is striped and placed is non-trivial, but it is absolutely true to say that any data stored using mirroring is written, in its entirety, multiple times. Each copy is written to different physical hardware (different drives in different servers) that are assumed to fail independently. Three-way mirroring can safely tolerate at least two hardware problems (drive or server) at a time. For example, if you're rebooting one server when suddenly another drive or server fails, all data remains safe and continuously accessible.
+Mirroring provides fault tolerance by keeping multiple copies of all data. How that data is striped and placed is non-trivial, but it's absolutely true to say that any data stored using mirroring is written, in its entirety, multiple times. Each copy is written to different physical hardware (different drives in different servers) that are assumed to fail independently. Three-way mirroring can safely tolerate at least two hardware problems (drive or server) at a time. For example, if you're rebooting one server when suddenly another drive or server fails, all data remains safe and continuously accessible.
 
 ## Volume states
 
@@ -112,7 +112,7 @@ The following sections list the health and operational states:
 | Operational state | Description |
 |---|---|
 | OK | The volume is healthy. |
-| Suboptimal | Data isn't written evenly across drives.<br> <br>**Action:** Please contact Support to optimize drive usage in the storage pool. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. You may have to restore from backup after the failed connection is restored. |
+| Suboptimal | Data isn't written evenly across drives.<br> <br>**Action:** Contact Support to optimize drive usage in the storage pool. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. You may have to restore from backup after the failed connection is restored. |
 
 ### Volume health state: Warning
 
@@ -130,7 +130,7 @@ When a volume is in an Unhealthy health state, some or all of the data on the vo
 
 | Operational state | Description |
 |---|---|
-| No redundancy | The volume has lost data because too many drives failed.<br> <br>**Action:** Please contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. |
+| No redundancy | The volume has lost data because too many drives failed.<br> <br>**Action:** Contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. |
 
 ### Volume health state: Unknown
 
@@ -138,7 +138,7 @@ The volume can also be in the Unknown health state if the virtual disk has becom
 
 | Operational state | Description |
 |---|---|
-| Detached | A storage device failure occurred which may cause the volume to be inaccessible. Some data may be lost.<br> <br>**Action:** <br>1. Check the physical and network connectivity of all storage devices.<br>2. If all devices are connected correctly, please contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. You may have to restore from backup after the failed connection is restored. |
+| Detached | A storage device failure occurred which may cause the volume to be inaccessible. Some data may be lost.<br> <br>**Action:** <br>1. Check the physical and network connectivity of all storage devices.<br>2. If all devices are connected correctly, contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. You may have to restore from backup after the failed connection is restored. |
 
 ## Drive states
 
@@ -159,7 +159,7 @@ The following sections describe the health states a drive can be in:
 | Operational state | Description |
 |---|---|
 | OK | The volume is healthy. |
-| In service | The drive is performing some internal housekeeping operations. When the action is complete, the drive should return to the OK health state. |
+| In service | The drive is doing some internal housekeeping operations. When the action is complete, the drive should return to the OK health state. |
 
 ### Drive health state: Healthy
 
@@ -167,15 +167,15 @@ A drive in the Warning state can read and write data successfully but has an iss
 
 | Operational state | Description |
 |---|---|
-| Lost communication | Connectivity has been lost to the drive.<br> <br>**Action:** Bring all servers back online. If that doesn't fix it, reconnect the drive. If this keeps happening, replace the drive to ensure full resiliency. |
+| Lost communication | Connectivity has been lost to the drive.<br> <br>**Action:** Bring all servers back online. If that doesn't fix it, reconnect the drive. If this state persists, replace the drive to ensure full resiliency. |
 | Predictive failure | A failure of the drive is predicted to occur soon.<br> <br>**Action:** Replace the drive as soon as possible to ensure full resiliency. |
-| IO error | There was a temporary error accessing the drive.<br> <br>**Action:** If this keeps happening, replace the drive to ensure full resiliency. |
-| Transient error | There was a temporary error with the drive. This usually means the drive was unresponsive, but it could also mean that the Storage Spaces Direct protective partition was inappropriately removed from the drive. <br> <br>**Action:** If this keeps happening, replace the drive to ensure full resiliency. |
-| Abnormal latency | The drive is sometimes unresponsive and is showing signs of failure.<br> <br>**Action:** If this keeps happening, replace the drive to ensure full resiliency. |
-| Removing from pool | Azure Stack is in the process of removing the drive from its storage pool.<br> <br>**Action:** Wait for Azure Stack to finish removing the drive, and check the status afterward.<br>If the status remains, please contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. |
-| Starting maintenance mode | Azure Stack is in the process of putting the drive in maintenance mode. This is a temporary state—the drive should soon be in the In maintenance mode state.<br> <br>**Action:** Wait for Azure Stack to finish the process and check the status afterward. |
-| In maintenance mode | The drive is in maintenance mode, halting reads and writes from the drive. This usually means Azure Stack administration tasks such as PNU or FRU are operating the drive. But the admin could also place the drive in maintenance mode.<br> <br>**Action:** Wait for Azure Stack to finish the administration task, and check the status afterward.<br>If the status remains, please contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. |
-| Stopping maintenance mode | Azure Stack is in the process of bringing the drive back online. This is a temporary state - the drive should soon be in another state, ideally Healthy.<br> <br>**Action:** Wait for Azure Stack to finish the process and check the status afterward. |
+| IO error | There was a temporary error accessing the drive.<br> <br>**Action:** If this state persists, replace the drive to ensure full resiliency. |
+| Transient error | There was a temporary error with the drive. This usually means the drive was unresponsive, but it could also mean that the Storage Spaces Direct protective partition was inappropriately removed from the drive. <br> <br>**Action:** If this state persists, replace the drive to ensure full resiliency. |
+| Abnormal latency | The drive is sometimes unresponsive and is showing signs of failure.<br> <br>**Action:** If this state persists, replace the drive to ensure full resiliency. |
+| Removing from pool | Azure Stack is in the process of removing the drive from its storage pool.<br> <br>**Action:** Wait for Azure Stack to finish removing the drive, and check the status afterward.<br>If the status remains, contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. |
+| Starting maintenance mode | Azure Stack is in the process of putting the drive in maintenance mode. This state is temporary—the drive should soon be in the In maintenance mode state.<br> <br>**Action:** Wait for Azure Stack to finish the process and check the status afterward. |
+| In maintenance mode | The drive is in maintenance mode, halting reads and writes from the drive. This usually means Azure Stack administration tasks such as PNU or FRU are operating the drive. But the admin could also place the drive in maintenance mode.<br> <br>**Action:** Wait for Azure Stack to finish the administration task, and check the status afterward.<br>If the status remains, contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. |
+| Stopping maintenance mode | Azure Stack is in the process of bringing the drive back online. This state is temporary - the drive should soon be in another state, ideally Healthy.<br> <br>**Action:** Wait for Azure Stack to finish the process and check the status afterward. |
 
 ### Drive health state: Unhealthy
 
@@ -183,14 +183,14 @@ A drive in the Unhealthy state can't currently be written to or accessed.
 
 | Operational state | Description |
 |---|---|
-| Split | The drive has become separated from the pool.<br> <br>**Action:** Replace the drive with a new disk. If you must use this disk, remove the disk from the system, make sure there is no useful data on the disk, erase the disk, and then reseat the disk. |
+| Split | The drive has become separated from the pool.<br> <br>**Action:** Replace the drive with a new disk. If you must use this disk, remove the disk from the system, make sure there's no useful data on the disk, erase the disk, and then reseat the disk. |
 | Not usable | The physical disk is quarantined because it's not supported by your solution vendor. Only disks that are approved for the solution and have the correct disk firmware are supported.<br> <br>**Action:** Replace the drive with a disk that has an approved manufacturer and model number for the solution. |
 | Stale metadata | The replacement disk was previously used and may contain data from an unknown storage system. The disk is quarantined. <br> <br>**Action:** Replace the drive with a new disk. If you must use this disk, remove the disk from the system, make sure there's no useful data on the disk, erase the disk, and then reseat the disk. |
 | Unrecognized metadata | Unrecognized metadata found on the drive, which usually means that the drive has metadata from a different pool on it.<br> <br>**Action:** Replace the drive with a new disk. If you must use this disk, remove the disk from the system, make sure there's no useful data on the disk, erase the disk, and then reseat the disk. |
 | Failed media | The drive failed and won't be used by Storage Spaces anymore.<br> <br>**Action:** Replace the drive as soon as possible to ensure full resiliency. |
 | Device hardware failure | There was a hardware failure on this drive. <br> <br>**Action:** Replace the drive as soon as possible to ensure full resiliency. |
-| Updating firmware | Azure Stack is updating the firmware on the drive. This is a temporary state that usually lasts less than a minute and during which time other drives in the pool handle all reads and writes.<br> <br>**Action:** Wait for Azure Stack to finish the updating and check the status afterward. |
-| Starting | The drive is getting ready for operation. This should be a temporary state—once complete, the drive should transition to a different operational state.<br> <br>**Action:** Wait for Azure Stack to finish the operation and check the status afterward. |
+| Updating firmware | Azure Stack is updating the firmware on the drive. This state is temporary and usually lasts less than a minute and during which time other drives in the pool handle all reads and writes.<br> <br>**Action:** Wait for Azure Stack to finish the updating and check the status afterward. |
+| Starting | The drive is getting ready for operation. This state should be temporary—once complete, the drive should transition to a different operational state.<br> <br>**Action:** Wait for Azure Stack to finish the operation and check the status afterward. |
 
 ## Reasons a drive can't be pooled
 
@@ -203,10 +203,10 @@ Some drives just aren't ready to be in Azure Stack storage pool. You can find ou
 | In use by cluster | The drive is currently used by a Failover Cluster.<br> <br>**Action:** Replace the drive with a new disk. |
 | Removable media | The drive is classified as a removable drive. <br> <br>**Action:** Replace the drive with a new disk. |
 | Not healthy | The drive isn't in a healthy state and might need to be replaced.<br> <br>**Action:** Replace the drive with a new disk. |
-| Insufficient capacity | There are partitions taking up the free space on the drive.<br> <br>**Action:** Replace the drive with a new disk. If you must use this disk, remove the disk from the system, make sure there is no useful data on the disk, erase the disk, and then reseat the disk. |
+| Insufficient capacity | There are partitions taking up the free space on the drive.<br> <br>**Action:** Replace the drive with a new disk. If you must use this disk, remove the disk from the system, make sure there's no useful data on the disk, erase the disk, and then reseat the disk. |
 | Verification in progress | The Health Service is checking to see if the drive or firmware on the drive is approved for use.<br> <br>**Action:** Wait for Azure Stack to finish the process, and check the status afterward. |
-| Verification failed | The Health Service couldn't check to see if the drive or firmware on the drive is approved for use.<br> <br>**Action:** Please contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. |
-| Offline | The drive is offline. <br> <br>**Action:** Please contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. |
+| Verification failed | The Health Service couldn't check to see if the drive or firmware on the drive is approved for use.<br> <br>**Action:** Contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. |
+| Offline | The drive is offline. <br> <br>**Action:** Contact Support. Before you do, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles. |
 
 ## Next step
 
