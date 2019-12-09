@@ -24,7 +24,7 @@ Use the **Service Fabric Cluster** item from the Azure Marketplace to deploy a s
 
 For more information about working with Service Fabric, see [Overview of Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) and [Service Fabric cluster security scenarios](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) in the Azure documentation.
 
-The Service Fabric cluster in Azure Stack doesn't use the resource provider Microsoft.ServiceFabric. Instead, in Azure Stack, the Service Fabric cluster is a virtual machine scale set with preinstalled software using [Desired State Configuration (DSC)](https://docs.microsoft.com/powershell/dsc/overview/overview).
+The Service Fabric cluster in Azure Stack doesn't use the resource provider Microsoft.ServiceFabric. Instead, in Azure Stack, the Service Fabric cluster is a virtual machine scale set with preinstalled software using [Desired State Configuration (DSC)](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview).
 
 ## Prerequisites
 
