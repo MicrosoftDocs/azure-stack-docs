@@ -58,7 +58,7 @@ Set-Location "$RootFolder\RunVaaSAutomation"
 
 ## Launch the solution validation workflow
 
-To learn how to run the solution validation workflow via VaaS portl, see [Validate OEM packages](azure-stack-vaas-validate-oem-package.md).
+To learn how to run the solution validation workflow via the VaaS portal, see [Validate OEM packages](azure-stack-vaas-validate-oem-package.md).
 
 Run the following script with the appropriate parameter values:
 
