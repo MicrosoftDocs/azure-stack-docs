@@ -23,7 +23,7 @@ The Event Hubs management experience allows you to control the service and visua
    - **Alerts**: displays all critical and warning alerts for Event Hubs. See the [Alerts section](#alerts) section for details.
    - **Event Hubs clusters**: displays a list of all clusters configured. See the [Event Hubs clusters](#event-hubs-clusters) section for details.
 
-   [![Manage event hubs](media/event-hubs-rp-manage/1-manage-event-hubs.png)](media/event-hubs-rp-manage/1-manage-event-hubs.png#lightbox)
+[![Manage event hubs](media/event-hubs-rp-manage/1-manage-event-hubs.png)](media/event-hubs-rp-manage/1-manage-event-hubs.png#lightbox)
 
 ## Alerts
 
