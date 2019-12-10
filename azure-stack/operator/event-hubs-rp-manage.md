@@ -23,7 +23,7 @@ The Event Hubs management experience allows you to control the service and visua
    - **Alerts**: displays all critical and warning alerts for Event Hubs. See the [Alerts section](#alerts) section for details.
    - **Event Hubs clusters**: displays a list of all clusters configured. See the [Event Hubs clusters](#event-hubs-clusters) section for details.
 
-   ![Manage event hubs](media/event-hubs-rp-manage/1-manage-event-hubs.png)
+   [![Manage event hubs](media/event-hubs-rp-manage/1-manage-event-hubs.png)](media/event-hubs-rp-manage/1-manage-event-hubs.png#lightbox)
 
 ## Alerts
 
@@ -52,22 +52,23 @@ For more information on Azure Stack Hub monitoring capability, including alertin
 ## Event Hubs clusters
 
 Selecting **Event Hubs clusters** on the main page displays a list of available user clusters. The list includes the following for each cluster:
+
 - high-level configuration information
 - service health
 - backup status
 
-   ![User resource](media/event-hubs-rp-manage/2-user-resources.png)
+[![User resource](media/event-hubs-rp-manage/2-user-resources.png)](media/event-hubs-rp-manage/2-user-resources.png#lightbox)
 
-Selecting the links under **Health** or **Backup** will display detailed information on the state of Event Hubs health and its backup status, respectively.
+Selecting a link under **Health** or **Backup** will display detailed information on the state of Event Hubs health and backup status, respectively.
 
-Selecting one of the links under **Name** displays a list of service limits for the cluster, along with status information across the top. 
+Selecting a link under **Name** displays a list of service limits for the cluster, along with status information across the top. 
 
-   ![User clusters](media/event-hubs-rp-manage/3-user-clusters.png)
+[![User clusters](media/event-hubs-rp-manage/3-user-clusters.png)](media/event-hubs-rp-manage/3-user-clusters.png#lightbox)
 
 Service limits are configuration parameters that define the operational boundaries of Event Hubs. The service limits available are similar to the ones offered for Azure Event Hubs Dedicated. By selecting the link(s) under **Config value**, you can change the assigned value.
 
 > [!IMPORTANT]
-> Please spend time analyzing the full implications before changing service limits. Service limit changes may impact the behavior of your solution that consumes and produces events. Changes may also impact the resource consumption from your Azure Stack capacity.
+> You should spend time analyzing the full implications before changing service limits. Service limit changes may impact the behavior of your solution that consumes and produces events. Changes may also impact the resource consumption from your Azure Stack capacity.
 
 ## Next steps
 
