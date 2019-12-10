@@ -21,15 +21,18 @@ ms.lastreviewed: 10/25/2018
 
 # Use SQL databases on Azure Stack
 
-Use the SQL Server resource provider to offer SQL databases as a service on [Azure Stack](azure-stack-overview.md). After you install the resource provider and connect it to one or more SQL Server instances, you and your users can create:
+Use the SQL resource provider to offer SQL databases as a service on [Azure Stack](azure-stack-overview.md). After you install the resource provider and connect it to one or more SQL Server instances, you and your users can create:
 
 - Databases for cloud-native apps.
 - Websites that use SQL.
 - Workloads that use SQL.
 
-The resource provider doesn't provide all the database management abilities of [Azure SQL Database](https://azure.microsoft.com/services/sql-database/). For example, elastic pools that automatically allocate resources aren't supported. However, the resource provider supports similar create, read, update, and delete (CRUD) operations on a SQL Server database.
+There are several limitations to consider, before installing the MySQL resource provider:
 
-Azure Stack operator is responsible for deploying, configuring and maintaining the database server instances for security, HA, backup, patching and updates. The database server instance is shared by different user databases, including the database server name and public IP address. And there is no reporting of the database usage.
+- Users can only create and manage individual databases. Database Server instance is not accessible to end users. This may limit compatibility with on-premises database applications that need access to master, Temp DB, or to dynamically manage databases.
+- Your Azure Stack operator is responsible for deploying, updating, securing, configuring and maintaining the SQL database servers and hosts. The RP service does not provide any host and database server instance management functionality. 
+- Databases from different users in different subscriptions may be located on the same database server instance. The RP does not provide any mechanism for isolating databases on different hosts or database server instances.
+- The RP do not provide any reporting on tenant usage of databases.
 
 ## SQL resource provider adapter architecture
 
