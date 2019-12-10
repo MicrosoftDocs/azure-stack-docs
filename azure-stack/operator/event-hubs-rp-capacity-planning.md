@@ -12,28 +12,28 @@ ms.lastreviewed: 12/09/2019
 
 # How to do capacity planning for Event Hubs on Azure Stack Hub
 
-As an Operator you manage your Azure Stack Hub capacity using [quotas](azure-stack-quota-types.md) on resources. You control Event Hubs resource consumption by setting quotas on the maximum number of cores utilized by Event Hub clusters. Event Hub clusters are created by users when they deploy an Event Hubs resource. There are also various resource consumption requirements for the resource provider, which are covered in this article.
+As an Operator you manage your Azure Stack Hub capacity using [quotas](azure-stack-quota-types.md) on resources. You control Event Hubs resource consumption by setting quotas on the maximum number of cores use by Event Hub clusters. Event Hub clusters are created by users when they deploy an Event Hubs resource. There are also various resource consumption requirements for the resource provider, which are covered in this article.
 
 ## Cluster resource consumption
 
-To understand capacity consumption of Event Hubs deployments, it's important to note that users create Event Hubs clusters based on Capacity Units (CUs). They do not specify a CPU core count when creating an Event Hubs cluster. However, every CU directly maps to a specific number of cores consumed. 
+To understand capacity consumption of Event Hubs deployments, it's important to note that users create Event Hubs clusters based on Capacity Units (CUs). They don't specify a CPU core count when creating an Event Hubs cluster. However, every CU directly maps to a specific number of cores consumed. 
 
 Your users will need to create Event Hubs clusters with CUs that meet their business requirements. To inform your decision on quota configuration, the following table shows:
-- The core utilization by a 1 CU Event Hubs cluster.
-- The approximate capacity required for consumption by other resources.
+- The total cores used by a 1 CU Event Hubs cluster.
+- The approximate capacity required for consumption of other resources, including VM storage, memory, and storage accounts.
 
 | | VM Type | Cluster Nodes | Cores per VM/node | Total Cores | VM Storage | Memory | Storage Accounts |
 |-|---------|-------|-------------------|-------------|------------|--------|------------------|
 | **1 CU Event Hubs cluster** | [D11_V2](../user/azure-stack-vm-sizes.md#mo-dv2) | 5 | 2 | 10 | 500 GiB | 70 GiB | 4 |
 
-All Event Hubs clusters use a [D11_V2](../user/azure-stack-vm-sizes.md#mo-dv2) VM type for their nodes. A D11_V2 VM type consists of 2 cores. So 1 CU Event Hubs cluster uses 5 D11_V2 VMs, which translates into 10 cores used. In determining the number of cores to configure for a quota, use a multiple of the total cores used by 1 CU. This reflects the maximum CU count you'll allow your users to use, when creating Event Hubs clusters. For example, to configure a quota that allows users to create a cluster with 2 CUs of capacity, you will need to set your quota at 20 cores.
+All Event Hubs clusters use a [D11_V2](../user/azure-stack-vm-sizes.md#mo-dv2) VM type for their nodes. A D11_V2 VM type consists of 2 cores. So 1 CU Event Hubs cluster uses 5 D11_V2 VMs, which translates into 10 cores used. In determining the number of cores to configure for a quota, use a multiple of the total cores used by 1 CU. This calculation reflects the maximum CU count you'll allow your users to use, when creating Event Hubs clusters. For example, to configure a quota that allows users to create a cluster with 2 CUs of capacity, set your quota at 20 cores.
 
 > [!NOTE]
 > **Public preview only** The available version of Event Hubs on Azure Stack Hub only supports the creation of 1 CU clusters. The General Availability (GA) version of Event Hubs will include support for different CU configuration options.
 
 ## Resource provider resource consumption  
 
-The resource consumption by the Event Hubs resource provider is constant, and independent of the number or sizes of clusters created by users. The following table shows the core utilization by the Event Hubs resource provider on Azure Stack Hub, and the approximate resource consumption by other resources. Note that the Event Hubs resource provider uses a [D2_V2](/user/azure-stack-vm-sizes#dv2-series) VM type for its deployment.
+The resource consumption by the Event Hubs resource provider is constant, and independent of the number or sizes of clusters created by users. The following table shows the core utilization by the Event Hubs resource provider on Azure Stack Hub, and the approximate resource consumption by other resources. The Event Hubs resource provider uses a [D2_V2](/user/azure-stack-vm-sizes#dv2-series) VM type for its deployment.
 
 |                                  | VM Type | Cluster Nodes | Cores | VM Storage | Memory | Storage Accounts |
 |----------------------------------|---------|-------|-------|------------|--------|------------------|
@@ -46,7 +46,7 @@ The resource consumption by the Event Hubs resource provider is constant, and in
 
 The total capacity consumed by the Event Hubs service includes resource consumption by the resource provider, and consumption by user-created clusters.
 
-The following table shows the total Event Hubs consumption under various configurations, regardless if they are managed by quota. These numbers are based on the resource provider and Event Hubs cluster consumptions presented above. You can easily calculate your total Azure Stack Hub usage for other deployment sizes, using these examples.
+The following table shows the total Event Hubs consumption under various configurations, regardless if they're managed by quota. These numbers are based on the resource provider and Event Hubs cluster consumptions presented above. You can easily calculate your total Azure Stack Hub usage for other deployment sizes, using these examples.
 
 |                                      | Cores | VM Storage | Memory  | Storage Accounts | Total Storage |
 |--------------------------------------|-------|------------|---------|------------------|---------------|
