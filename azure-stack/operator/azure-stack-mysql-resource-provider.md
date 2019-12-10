@@ -27,7 +27,12 @@ After you deploy the resource provider and connect it to one or more MySQL serve
 * Create MySQL databases using Azure Resource Manager deployment templates.
 * Provide MySQL databases as a service.  
 
-Azure Stack operator is responsible for deploying, configuring and maintaining the database server instances for security, HA, backup, patching and updates. The database server instance is shared by different user databases, including the database server name and public IP address. And there is no reporting of the database usage.
+There are several things you need to know before using MySQL resource provider:
+
+- Users can only create and manage individual databases. Database Server instance is not accessible to end users. This may limit compatibility with on-premises database applications that need access to master or temp DB or dynamically manage databases.
+- Azure Stack operator is responsible for deploying, updating, securing, configuring and maintaining the MySQL database servers and hosts. The RP service does not provide any host and database server instance management functionality. 
+- Databases from different users in different subscriptions may be located on the same database server instance. The RP does not provide any mechanism for isolating databases on different hosts or database server instances.
+- The RP does not provide any reporting on tenant usage of databases.
 
 ## MySQL resource provider adapter architecture
 
