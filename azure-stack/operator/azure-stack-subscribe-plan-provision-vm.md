@@ -1,5 +1,5 @@
 ---
-title: Subscribe to an offer
+title: Create subscriptions to offers
 titleSuffix: Azure Stack
 description: Learn to create subscriptions for offers in Azure Stack.
 services: azure-stack
