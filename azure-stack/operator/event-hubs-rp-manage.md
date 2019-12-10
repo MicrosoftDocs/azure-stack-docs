@@ -12,12 +12,16 @@ ms.lastreviewed: 12/09/2019
 
 # How to manage Event Hubs on Azure Stack Hub
 
-The Event Hubs management experience allows you to control the service and visualize its status and alerts. You can access it through [Region Management](azure-stack-region-management.md), or use the following steps.
+The Event Hubs management experience allows you to control the service and visualize its status and alerts. 
+
+## Overview
+
+Use the following steps to access the Event Hubs management page:
 
 1. Sign in to the Azure Stack Hub administrator portal.
 2. Select **All Services** from the pane on the left.
-3. Search for "Event Hubs" and select the service.
-4. The Event Hubs management page displays. You'll find four sections in the left pane:
+3. Search for "Event Hubs" and select the service. If you cannot find the Event Hubs service, the resource provider must first be [installed](event-hubs-rp-install.md).
+4. The Event Hubs management overview page display. You'll find four sections in the left pane:
    - **Overview**: provides a general view and access to specific management areas.
    - **Quotas**: allows you to create, update, and delete quotas. It also provides the associated plans using the quotas. For more information on quota types defined for Event Hubs, see [Quota Types](azure-stack-quota-types.md#event-hubs-quota-types).
    - **Alerts**: displays all critical and warning alerts for Event Hubs. See the [Alerts section](#alerts) section for details.
