@@ -32,7 +32,7 @@ The following quickstart templates are [available on GitHub](https://aka.ms/azur
 
 ## Deploy SharePoint Server (non-high-availability deployment)
 
-Use the PowerShell [Desired State Configuration](/powershell/dsc/overview/overview) (DSC) extension to [create a SharePoint Server 2013 farm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) that includes the following resources:
+Use the PowerShell [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) extension to [create a SharePoint Server 2013 farm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) that includes the following resources:
 
 * A virtual network
 * Three storage accounts
@@ -74,7 +74,7 @@ Use the PowerShell DSC extension to configure an existing virtual machine Local 
 
 ## Cancel a running template deployment
 
-To cancel a running template deployment, use the [Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell [cmdlet](/powershell/developer/cmdlet/cmdlet-overview).
+To cancel a running template deployment, use the [Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell [cmdlet](/powershell/scripting/developer/cmdlet/cmdlet-overview).
 
 ## Next steps
 
