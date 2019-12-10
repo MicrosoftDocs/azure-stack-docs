@@ -58,7 +58,7 @@ For the available configuration of storage, you can check Azure Stack OEM partne
 
 ### Volumes
 
-The *storage service* partitions the available storage into separate volumes that are allocated to hold system and tenant data. Volumes combine the drives in the storage pool to introduce the fault tolerance, scalability, and performance benefits of Storage Spaces Direct.
+The *storage service* partitions the available storage into separate volumes that are allocated to hold system and tenant data. Volumes combine the drives in the storage pool to provide the fault tolerance, scalability, and performance benefits of Storage Spaces Direct.
 
 ![Azure Stack storage infrastructure](media/azure-stack-storage-infrastructure-overview/image4.png)
 
@@ -116,13 +116,13 @@ The following sections list the health and operational states:
 
 ### Volume health state: Warning
 
-When the volume is in a Warning health state, it means that one or more copies of your data are unavailable but Azure Stack can still read at least one copy of your data.
+When the volume is in a Warning health state it means that one or more copies of your data are unavailable but Azure Stack can still read at least one copy of your data.
 
 | Operational state | Description |
 |---|---|
 | In service | Azure Stack is repairing the volume, like  after adding or removing a drive. When the repair is complete, the volume should return to the OK health state.<br> <br>**Action:** Wait for Azure Stack to finish repairing the volume and check the status afterward. |
 | Incomplete | The resilience of the volume is reduced because one or more drives failed or are missing. However, the missing drives contain up-to-date copies of your data.<br> <br>**Action:** Reconnect any missing drives, replace any failed drives, and bring online any servers that are offline. |
-| Degraded | The resilience of the volume is reduced because one or more drives failed or are missing, and there are outdated copies of your data on these drives.<br> <br>**Action:** Reconnect any missing drives, replace any failed drives, and bring online any servers that are offline. |
+| Degraded | The resilience of the volume is reduced because of one or more failed or missing drives as well as outdated copies of data on the drives.<br> <br>**Action:** Reconnect any missing drives, replace any failed drives, and bring online any servers that are offline. |
 
 ### Volume health state: Unhealthy
 
