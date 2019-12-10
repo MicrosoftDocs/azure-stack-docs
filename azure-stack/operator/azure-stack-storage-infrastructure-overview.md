@@ -116,7 +116,7 @@ The following sections list the health and operational states:
 
 ### Volume health state: Warning
 
-When the volume is in a Warning health state it means that one or more copies of your data are unavailable but Azure Stack can still read at least one copy of your data.
+When the volume is in a Warning health state, it means that one or more copies of your data are unavailable but Azure Stack can still read at least one copy of your data.
 
 | Operational state | Description |
 |---|---|
