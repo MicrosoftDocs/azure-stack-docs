@@ -3,9 +3,9 @@ author: BryanLa
 ms.author: bryanla
 ms.service: azure-stack
 ms.topic: include
-ms.date: 11/27/2019
+ms.date: 12/09/2019
 ms.reviewer: bryanla
-ms.lastreviewed: 11/27/2019
+ms.lastreviewed: 12/09/2019
 ---
 
 If you've already installed a resource provider from Azure Stack Hub Marketplace, you've likely completed the common prerequisites, and can skip this section. Otherwise, complete the following prerequisites first: 

@@ -28,8 +28,13 @@ Resource providers are updated using the same update feature that is used to app
 
 If an update is available for a given resource provider:
 
-1. Select the row of the resource provider update.
-2. Install the update.
+1. Select the row of the resource provider update. Notice the **Download** link at the top of the page becomes enabled.
+2. Click the **Download** link to begin the download of the resource provider install package. Notice the **State** column for the resource provider row change from "Available" to "Downloading".
+3. When the **State** changes to "Ready to install", the download is complete. Notice the **Install now** link at the top of the page also becomes enabled.
+4. Select the **Install now** link and you're taken to the **Install** page for the resource provider. 
+5. Select the **Install** button to begin the installation.
+6. An "Installation in progress" notification will be shown in the upper right, and you return to the **Updates** page. The resource provider row **Status** column also changes to "Installing".
+7. When installation is complete, another notification will indicate success or failure. A successful installation will also update the **Version** on the **Marketplace management - Resource providers** page.
 
 ## Next steps
 
