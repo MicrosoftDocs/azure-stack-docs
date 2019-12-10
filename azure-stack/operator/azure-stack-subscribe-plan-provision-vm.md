@@ -90,6 +90,7 @@ If the offer you subscribe to has an add-on plan, you can add that plan to your 
 
 ## Next steps
 
-Learn more about how a user can now deploy resources into their subscription: 
-  - [Several user quickstarts](../user/azure-stack-quick-windows-portal.md) show how to provision Windows and Linux virtual machines using PowerShell, Azure CLI, and the user portal. 
-  - [A tutorial that uses an Azure Resource Manager template](../user/azure-stack-create-vm-template.md) shows how to deploy an Ubuntu 16.04 virtual machine running Minikube to manage kubenetes cluster. 
+Learn more about how a user can now deploy resources into their subscription:
+
+- [Several user quickstarts](../user/azure-stack-quick-windows-portal.md) show how to provision Windows and Linux virtual machines using PowerShell, Azure CLI, and the user portal.
+- [A tutorial that uses an Azure Resource Manager template](../user/azure-stack-create-vm-template.md) shows how to deploy an Ubuntu 16.04 virtual machine running Minikube to manage Kubernetes cluster.
