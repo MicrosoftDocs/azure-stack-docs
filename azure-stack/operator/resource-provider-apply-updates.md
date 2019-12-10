@@ -34,7 +34,7 @@ If an update is available for a given resource provider:
 4. Select the **Install now** link and you're taken to the **Install** page for the resource provider. 
 5. Select the **Install** button to begin the installation.
 6. An "Installation in progress" notification will be shown in the upper right, and you return to the **Updates** page. The resource provider row **Status** column also changes to "Installing".
-7. When installation is complete, another notification will indicate success or failure. A successfull installation will also update the **Version** on the **Marketplace management - Resource providers** page.
+7. When installation is complete, another notification will indicate success or failure. A successful installation will also update the **Version** on the **Marketplace management - Resource providers** page.
 
 ## Next steps
 
