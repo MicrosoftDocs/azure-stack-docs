@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2019
+ms.date: 12/10/2019
 ms.author: sethm
 ms.reviewer: ppacent
-ms.lastreviewed: 11/07/2019
+ms.lastreviewed: 12/10/2019
 
 ---
 
@@ -33,6 +33,7 @@ Review this checklist in order to prepare for an Azure Stack update. This articl
 | Review known issues     | [List of known issues](known-issues.md).                |
 | Review security updates | [List of security updates](release-notes-security-updates.md).      |
 | Apply latest OEM package | Contact your OEM to ensure your system meets the minimum OEM Package requirements for the Azure Stack version your system is being updated to. Ensure your OEM package is compatible with the Azure Stack version you are updating to. If your OEM package is not compatible with the Azure Stack version you are updating to, you will need to perform an OEM package update before running an Azure Stack update. For instructions, see "Apply Azure Stack original equipment manufacturer (OEM) updates." |
+| Optional: Configure automatic log collection | It is recommended that you configure automatic log collection on your Azure Stack Hub environment to streamline the process of collecting system logs in the event that you need to open a support ticket. To configure automatic log collection, see the instructions in [Configure automatic Azure Stack diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md). |
 | Apply latest hotfixes | Apply the latest hotfixes that apply to the currently installed release. For a list of the latest hotfixes, see the release notes Hotfix section. |
 | Run capacity planner tool | Make sure to use the latest version of the [Azure Stack Capacity Planner tool](azure-stack-capacity-planning-overview.md) to perform your workload planning and sizing. The latest version contains bug fixes and provides new features that are released with each Azure Stack update. |
 | Run Test-AzureStack | Run `Test-AzureStack -Group UpdateReadiness` to identify operational issues. The cmdlet is accessible through the  Privileged Endpoint Session (PEP). For more information, see [Validate Azure Stack system state](azure-stack-diagnostic-test.md). |

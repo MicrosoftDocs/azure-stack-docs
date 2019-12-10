@@ -46,7 +46,6 @@ Azure Stack is an extension of Azure that brings the agility and innovation of c
 - Azure Resource Manager
 - Azure Marketplace
 - Containers
-- Azure IoT Hub and Event Hubs
 - Admin tools (Plans, offers, RBAC, etc.)
 
 The PaaS capabilities of Azure Stack are optional because Azure Stack is not operated by Microsoft—it is operated by our customers. This means you can offer whatever PaaS service you want to end users if you are prepared to abstract the underlying infrastructure and processes away from the end user. However, Azure Stack does include several optional PaaS service providers including App Service, SQL databases, and MySQL databases. These are delivered as resource providers, so they are multi-tenant ready, updated over time with standard Azure Stack updates, visible in the Azure Stack portal, and well-integrated with Azure Stack.
