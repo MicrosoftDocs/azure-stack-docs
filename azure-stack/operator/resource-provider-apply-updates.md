@@ -20,15 +20,19 @@ Resource providers are updated using the same update feature that is used to app
 
 1. Sign in to the Azure Stack Hub administrator portal.
 2. Select the **All services** link on the left, then under the **Administration** section select **Updates**.
+   ![All services page](media/resource-provider-apply-updates/1-all-services.png)
+
 3. On the **Updates** page, you find updates for the resource providers, under the **Resource Provider** section.
 
-   ![Updates page](media/resource-provider-apply-updates/2-update-available.png)
+   [![Update available page](media/resource-provider-apply-updates/3-update-available.png)](media/resource-provider-apply-updates/3-update-available.png#lightbox)
 
 ## Apply an update
 
 If an update is available for a given resource provider:
 
-1. Select the row of the resource provider update. Notice the **Download** link at the top of the page becomes enabled.
+1. Select the row of the resource provider you want to update. Notice the **Download** link at the top of the page becomes enabled.
+   [![Update available page](media/resource-provider-apply-updates/4-download.png)](media/resource-provider-apply-updates/3-update-available.png#lightbox)
+
 2. Click the **Download** link to begin the download of the resource provider install package. Notice the **State** column for the resource provider row change from "Available" to "Downloading".
 3. When the **State** changes to "Ready to install", the download is complete. Notice the **Install now** link at the top of the page also becomes enabled.
 4. Select the **Install now** link and you're taken to the **Install** page for the resource provider. 
