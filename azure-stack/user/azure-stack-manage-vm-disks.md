@@ -290,7 +290,7 @@ $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk3' `
                                         -VhdUri $DataDiskVhdUri03 -CreateOption Empty
 ```
 
-The following command add unmanaged OS disk to the virtual machine stored in `$VirtualMachine`.
+The following commands add an unmanaged OS disk to the virtual machine stored in `$VirtualMachine`.
 
 ```powershell
 # Set OS Disk
