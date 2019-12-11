@@ -318,6 +318,7 @@ New-AzureRmVM -ResourceGroupName $rgName -Location $location -VM $VirtualMachine
 The following examples use PowerShell commands to add three data disks to an existing VM.
 
 #### Get virtual machine
+
  The first command gets the VM named **VirtualMachine** by using the **Get-AzureRmVM** cmdlet. The command stores the VM in the `$VirtualMachine` variable:
 
 ```powershell
@@ -326,10 +327,11 @@ $VirtualMachine = Get-AzureRmVM -ResourceGroupName "myResourceGroup" `
 ```
 
 #### Add managed disk
->[!NOTE]  
->It is only for adding managed disks in this section.
 
-The next three commands add the managed data disks to the VM stored in the `$VirtualMachine` variable. Each command specifies the name, and additional properties of the disk:
+>[!NOTE]  
+>This section is only for adding managed disks.
+
+The next three commands add the managed data disks to the VM stored in the `$VirtualMachine` variable. Each command specifies the name and additional properties of the disk:
 
 ```powershell
 Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "DataDisk1" -Lun 0 `
@@ -347,10 +349,11 @@ Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "DataDisk3" -Lun 2 `
 ```
 
 #### Add unamanged disk
->[!NOTE]  
->It is only for adding unmanaged disks in this section. 
 
-The next three commands assign paths of three data disks to the `$DataDiskVhdUri01`, `$DataDiskVhdUri02`, and `$DataDiskVhdUri03` variables. The different path names in the VHD URIs indicate different containers for the disk placement:
+>[!NOTE]  
+>This section is only for adding unmanaged disks. 
+
+The next three commands assign paths for three data disks to the `$DataDiskVhdUri01`, `$DataDiskVhdUri02`, and `$DataDiskVhdUri03` variables. The different path names in the VHD URIs indicate different containers for the disk placement:
 
 ```powershell
 $DataDiskVhdUri01 = "https://contoso.blob.local.azurestack.external/test1/data1.vhd"
@@ -386,7 +389,7 @@ Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "DataDisk3" `
 
 #### Update virtual machine state
 
-The final command updates the state of the VM stored in `$VirtualMachine` in `-ResourceGroupName`:
+This command updates the state of the VM stored in `$VirtualMachine` in `-ResourceGroupName`:
 
 ```powershell
 Update-AzureRmVM -ResourceGroupName "myResourceGroup" -VM $VirtualMachine
