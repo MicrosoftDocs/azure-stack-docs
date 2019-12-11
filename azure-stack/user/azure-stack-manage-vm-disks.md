@@ -49,7 +49,7 @@ The following table summarizes how to add disks by using the portal, and by usin
 | Method | Options
 |-|-|
 |User portal|- Add new data disks to an existing VM. New disks are created by Azure Stack. </br> </br> - Add an existing disk (.vhd) file to a  previously created VM. To do so, you must prepare the .vhd and then upload the file to Azure Stack. |
-|[PowerShell](#use-powershell-to-add-multiple-unmanaged-disks-to-a-vm) | - Create a new VM with an OS disk, and at the same time add one or more data disks to that VM. |
+|[PowerShell](#use-powershell-to-add-multiple-disks-to-a-vm) | - Create a new VM with an OS disk, and at the same time add one or more data disks to that VM. |
 
 ## Use the portal to add disks to a VM
 
