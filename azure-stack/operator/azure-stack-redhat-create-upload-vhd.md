@@ -15,10 +15,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 12/11/2019
 ms.author: mabrigg
-ms.reviewer: jeffgo
-ms.lastreviewed: 08/15/2018
+ms.reviewer: kivenkat
+ms.lastreviewed: 12/11/2019
 
 ---
 # Prepare a Red Hat-based virtual machine for Azure Stack
