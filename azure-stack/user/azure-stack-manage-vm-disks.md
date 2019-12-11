@@ -172,10 +172,10 @@ The **Add-AzureRmVMDataDisk** cmdlet adds a data disk to a VM. You can add a dat
 
 ### Add data disks to a **new** VM
 
-The following examples use PowerShell commands to create a VM with three data disks. The script is provided with several parts due to the minor differences when using managed disk or unmanaged disk. 
+The following examples use PowerShell commands to create a VM with three data disks. The commands are provided with several parts due to the minor differences when using managed disk or unmanaged disk. 
 
 #### Create virtual machine configuration and network resources
-The following commands creates a VM object, and then stores it in the `$VirtualMachine` variable. The commands assigns a name and size to the VM, then creates the network resources (virtual network, subnet, virtual network adapter, NSG and public IP address) for the VM:
+The following commands creates a VM object, and then stores it in the `$VirtualMachine` variable. The commands assign a name and size to the VM, then create the network resources (virtual network, subnet, virtual network adapter, NSG and public IP address) for the VM:
 
 ```powershell
 # Create new virtual machine configuration
@@ -248,8 +248,6 @@ The following command add OS disk as managed disk to the virtual machine storged
 $osDiskName = "osDisk"
 $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name $osDiskName  `
                                       -CreateOption FromImage -Windows
-
-!!!NEED TEST ABOVE
 ```
 
 #### Add unmanaged disk
