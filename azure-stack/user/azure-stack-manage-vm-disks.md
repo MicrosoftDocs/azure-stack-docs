@@ -242,7 +242,7 @@ $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk3' `
                                         -CreateOption Empty
 ```
 
-The following command add OS disk as managed disk to the virtual machine storged in `$VirtualMachine`.
+The following command adds an OS disk as a managed disk to the virtual machine storged in `$VirtualMachine`.
 
 ```powershell
 # Set OS Disk
@@ -252,8 +252,9 @@ $VirtualMachine = Set-AzureRmVMOSDisk -VM $VirtualMachine -Name $osDiskName  `
 ```
 
 #### Add unmanaged disk
+
 >[!NOTE]  
->It is only for adding unmanaged disks in this section. 
+>This section is only for adding unmanaged disks. 
 
 The next three commands assign paths of three unmanaged data disks to the `$DataDiskVhdUri01`, `$DataDiskVhdUri02`, and `$DataDiskVhdUri03` variables. Define a different path name in the URL to distribute the disks to different containers:
 
