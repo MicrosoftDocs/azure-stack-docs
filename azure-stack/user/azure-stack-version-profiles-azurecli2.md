@@ -11,10 +11,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 12/10/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 11/22/2019
+ms.lastreviewed: 12/10/2019
 
 ---
 # Manage and deploy resources to Azure Stack with Azure CLI
@@ -358,7 +358,7 @@ Trust the Azure Stack CA root certificate by appending it to the existing Python
 1. Find the certificate location on your machine. The location may vary depending on where you've installed Python. You need to have pip and the certifi module installed. Use the following Python command from the bash prompt:
 
     ```bash  
-    python3 -c "import certifi; print(certifi.where())"
+    az --version
     ```
 
     Make a note of the certificate location. For example, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Your specific path depends on your operating system and the version of Python that you've installed.
@@ -381,12 +381,7 @@ Trust the Azure Stack CA root certificate by appending it to the existing Python
 
 Use the following steps to connect to Azure Stack:
 
-1. Register your Azure Stack environment by running the `az cloud register` command. In some scenarios, direct outbound internet connectivity is routed through a proxy or firewall, which enforces SSL interception. In these cases, the `az cloud register` command can fail with an error such as "Unable to get endpoints from the cloud." To work around this error, set the following environment variables:
-
-   ```shell
-   export AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1
-   export ADAL_PYTHON_SSL_NO_VERIFY=1
-   ```
+1. Register your Azure Stack environment by running the `az cloud register` command.
 
 2. Register your environment. Use the following parameters when running `az cloud register`:
 
@@ -469,7 +464,7 @@ Trust the Azure Stack CA root certificate by appending it to the existing Python
 1. Find the certificate location on your machine. The location may vary depending on where you've installed Python. You need to have pip and the certifi module installed. Use the following Python command from the bash prompt:
 
     ```bash  
-    python3 -c "import certifi; print(certifi.where())"
+    az --version 
     ```
 
     Make a note of the certificate location. For example, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Your specific path depends on your operating system and the version of Python that you've installed.
@@ -492,12 +487,7 @@ Trust the Azure Stack CA root certificate by appending it to the existing Python
 
 Use the following steps to connect to Azure Stack:
 
-1. Register your Azure Stack environment by running the `az cloud register` command. In some scenarios, direct outbound internet connectivity is routed through a proxy or firewall, which enforces SSL interception. In these cases, the `az cloud register` command can fail with an error such as "Unable to get endpoints from the cloud." To work around this error, set the following environment variables:
-
-   ```shell
-   export AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1
-   export ADAL_PYTHON_SSL_NO_VERIFY=1
-   ```
+1. Register your Azure Stack environment by running the `az cloud register` command.
 
 2. Register your environment. Use the following parameters when running `az cloud register`.
 
