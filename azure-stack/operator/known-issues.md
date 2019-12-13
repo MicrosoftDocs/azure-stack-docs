@@ -235,6 +235,12 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Remediation: Ask your operator for an add-on plan with additional quota. Editing the current plan's quota will not work or reflect increased quota.
 - Occurrence: Rare
 
+### Privileged Endpoint
+
+- Applicable: This issue applies to 1910 and earlier releases.
+- Unable to connect to the Privileged Endpoint (ERC VMs) from a computer running a non-English version of Windows.
+- Remediation: This is a known issue that has been fixed in releases later than 1910. As a workaround you can run the **New-PSSession** and **Enter-PSSession** Powershell cmdlets using the **en-US** culture; for examples, set the culture using this script: https://resources.oreilly.com/examples/9780596528492/blob/master/Use-Culture.ps1.  
+
 ### Virtual machine scale set
 
 #### Create failures during patch and update on 4-node Azure Stack environments
@@ -242,12 +248,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Applicable: This issue applies to all supported releases.
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack deployment.
-
-## Privileged Endpoint
-
-- Applicable: This issue applies to 1910 and earlier releases.
-- Unable to connect to the Privileged Endpoint (ERC VMs) from a computer running a non-English version of Windows.
-- Remediation: This is a known issue that has been fixed in releases later than 1910. As a workaround you can run the **New-PSSession** and **Enter-PSSession** Powershell cmdlets using the **en-US** culture; for examples, set the culture using this script: https://resources.oreilly.com/examples/9780596528492/blob/master/Use-Culture.ps1.  
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
