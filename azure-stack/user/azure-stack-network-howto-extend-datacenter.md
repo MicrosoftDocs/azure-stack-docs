@@ -223,7 +223,7 @@ Once updated and rebooted, you can now configure this server as an iSCSI Target.
 
 ### Configure the Windows Server 2019 iSCSI Initiator and MPIO
 
-To setup the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user portal** on your **Azure Stack** system and navigate to the **overview** blade for **VM001.**
+To set up the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user portal** on your **Azure Stack** system and navigate to the **overview** blade for **VM001.**
 
 1.  Establish an RDP connection to VM001. Once connected, open **Server Manager**.
 
@@ -311,7 +311,7 @@ To setup the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user 
 
     ![](./media/azure-stack-network-howto-extend-datacenter/image23.png)
 
-4.  Select the **MPIO button** to see more information about the load balancing policy and paths.
+4.  Select the **MPIO button** to see more information about the load-balancing policy and paths.
 
     ![](./media/azure-stack-network-howto-extend-datacenter/image24.png)
 
