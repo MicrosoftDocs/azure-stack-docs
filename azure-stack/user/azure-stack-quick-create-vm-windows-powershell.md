@@ -180,7 +180,7 @@ $VirtualMachine = Set-AzureRmVMOperatingSystem `
   -VM $VirtualMachine `
   -Windows `
   -ComputerName "MainComputer" `
-  -Credential $Credential
+  -Credential $Credential -ProvisionVMAgent
 
 $VirtualMachine = Set-AzureRmVMSourceImage `
   -VM $VirtualMachine `
