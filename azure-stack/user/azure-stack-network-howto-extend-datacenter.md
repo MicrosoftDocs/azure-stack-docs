@@ -1,3 +1,20 @@
+---
+title: How to extend the data center on Azure Stack Hub | Microsoft Docs
+description: Learn how to extend the datacenter on Azure Stack.
+services: azure-stack
+author: mattbriggs
+
+ms.service: azure-stack
+ms.topic: how-to
+ms.date: 12/13/2019
+ms.author: mabrigg
+ms.reviewer: sijuman
+ms.lastreviewed: 12/13/2019
+
+# keywords:  X
+# Intent: As an Azure Stack Operator, I want < what? > so that < why? >
+---
+
 # Extending Storage to Azure Stack
 
 *Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
