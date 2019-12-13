@@ -39,6 +39,11 @@ To access known issues for a different version, use the version selector dropdow
 <!---------------------------------------------------------->
 
 ::: moniker range="azs-1910"
+## Update
+
+For known Azure Stack Hub update issues please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-updates-troubleshoot.md).
+
+
 ## Portal
 
 ### Administrative subscriptions

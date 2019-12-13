@@ -160,40 +160,40 @@ To rotate external secrets:
     ```powershell
         <ShareName>
         │   │
-        │   ├───Certificates
-        │   └───AAD
-        │       ├───ACSBlob
-        │       │       <CertName>.pfx
-        │       │
-        │       ├───ACSQueue
-        │       │       <CertName>.pfx
-        │       │
-        │       ├───ACSTable
-        │       │       <CertName>.pfx
-        │       │
-        │       ├───Admin Extension Host
-        │       │       <CertName>.pfx
-        │       │
-        │       ├───Admin Portal
-        │       │       <CertName>.pfx
-        │       │
-        │       ├───ARM Admin
-        │       │       <CertName>.pfx
-        │       │
-        │       ├───ARM Public
-        │       │       <CertName>.pfx
-        │       │
-        │       ├───KeyVault
-        │       │       <CertName>.pfx
-        │       │
-        │       ├───KeyVaultInternal
-        │       │       <CertName>.pfx
-        │       │
-        │       ├───Public Extension Host
-        │       │       <CertName>.pfx
-        │       │
-        │       └───Public Portal
-        │               <CertName>.pfx
+        │   └───Certificates
+        │         └───AAD
+        │             ├───ACSBlob
+        │             │       <CertName>.pfx
+        │             │
+        │             ├───ACSQueue
+        │             │       <CertName>.pfx
+        │             │
+        │             ├───ACSTable
+        │             │       <CertName>.pfx
+        │             │
+        │             ├───Admin Extension Host
+        │             │       <CertName>.pfx
+        │             │
+        │             ├───Admin Portal
+        │             │       <CertName>.pfx
+        │             │
+        │             ├───ARM Admin
+        │             │       <CertName>.pfx
+        │             │
+        │             ├───ARM Public
+        │             │       <CertName>.pfx
+        │             │
+        │             ├───KeyVault
+        │             │       <CertName>.pfx
+        │             │
+        │             ├───KeyVaultInternal
+        │             │       <CertName>.pfx
+        │             │
+        │             ├───Public Extension Host
+        │             │       <CertName>.pfx
+        │             │
+        │             └───Public Portal
+        │                     <CertName>.pfx
 
     ```
 
