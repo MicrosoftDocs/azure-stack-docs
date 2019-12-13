@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2019
+ms.date: 12/13/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 11/22/2019
@@ -214,7 +214,7 @@ The 1910 release of Azure Stack must be applied on the 1908 release with the fol
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- No hotfix available for 1910.
+- [Azure Stack hotfix 1.1910.8.76](https://support.microsoft.com/help/4534999)
 ::: moniker-end
 
 ::: moniker range="azs-1908"
