@@ -168,7 +168,7 @@ For more information about working with storage accounts in Azure Stack, see [In
 
 You can use PowerShell to provision a VM and add new data disks, or attach a pre-existing managed disk or .vhd file as a data disk.
 
-The **Add-AzureRmVMDataDisk** cmdlet adds a data disk to a VM. You can add a data disk when you create a VM, or you can add a data disk to an existing VM. For an unamanaged disk, specify the **VhdUri** parameter to distribute the disks to different containers.
+The **Add-AzureRmVMDataDisk** cmdlet adds a data disk to a VM. You can add a data disk when you create a VM, or you can add a data disk to an existing VM. For an unmanaged disk, specify the **VhdUri** parameter to distribute the disks to different containers.
 
 ### Add data disks to a **new** VM
 
@@ -242,7 +242,7 @@ $VirtualMachine = Add-AzureRmVMDataDisk -VM $VirtualMachine -Name 'DataDisk3' `
                                         -CreateOption Empty
 ```
 
-The following command adds an OS disk as a managed disk to the virtual machine storged in `$VirtualMachine`.
+The following command adds an OS disk as a managed disk to the virtual machine stored in `$VirtualMachine`.
 
 ```powershell
 # Set OS Disk
@@ -348,7 +348,7 @@ Add-AzureRmVMDataDisk -VM $VirtualMachine -Name "DataDisk3" -Lun 2 `
                       -Caching ReadOnly -DiskSizeinGB 12 -CreateOption Empty
 ```
 
-#### Add unamanged disk
+#### Add unmanaged disk
 
 >[!NOTE]  
 >This section is only for adding unmanaged disks. 
