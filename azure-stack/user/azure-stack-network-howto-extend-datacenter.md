@@ -19,6 +19,8 @@ ms.lastreviewed: 12/13/2019
 
 *Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
 
+This article provides Azure Stack Hub storage infrastructure information to help you decide how to integrate Azure Stack into your existing networking environment. After providing a general discussion of extending your data center, the article presents two different scenarios. You can connect to a Windows file storage server. You can also connect to a Windows iSCSI server.
+
 ## Overview of extending storage to Azure Stack Hub
 
 There are scenarios where having your data located in the public cloud isn’t enough. Perhaps you have a compute-intensive virtualized database workload, sensitive to latencies, and the round-trip time to the public cloud could affect performance of the database workload. Perhaps there is data on premises, held on a file server, NAS, or iSCSI storage array, which needs to be accessed by on-premises workloads, and needs to reside on-premises to meet regulatory or compliance goals. These are just two of the scenarios where having data reside on-premises, remains important for many organizations.
@@ -51,7 +53,7 @@ In this scenario, we will deploy and configure a Windows Server 2019 virtual mac
 
 2.  Once you have a Windows Server 2019 image in your Azure Stack environment, **sign into the Azure Stack Hub user portal**.
 
-3.  Once logged into the Azure Stack Hub user portal, ensure you have a [subscription to an offer](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-subscribe-plan-provision-vm?view=azs-1908), that allows you to provision IaaS resources (Compute, Storage and Network).
+3.  Once logged into the Azure Stack Hub user portal, ensure you have a [subscription to an offer](https://docs.microsoft.com/azure-stack/operator/azure-stack-subscribe-plan-provision-vm?view=azs-1908), that allows you to provision IaaS resources (Compute, Storage and Network).
 
 4.  Once you have a subscription available, back on the **dashboard** in the Azure Stack Hub user portal, select **Create a resource**, select **Compute** and then select the **Windows Server 2019 Datacenter gallery item**.
 
