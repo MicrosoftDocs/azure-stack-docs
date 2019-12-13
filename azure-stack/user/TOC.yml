@@ -252,30 +252,35 @@
         href: azure-stack-dev-start-howto-vm-nodejs.md
   - name: Deploy foundational patterns
     items:
-    - name: VNET peering
-      items:
-      - name: VNet peering with FortiGate
-        href: azure-stack-network-howto-vnet-to-vnet.md
-      - name: VNet peering with VMs
-        href: azure-stack-network-howto-vnet-peering.md
-    - name: Setup VPN to on-prem
-      href: azure-stack-network-howto-vnet-to-onprem.md
-    - name: VNET to VNET connection
-      href: azure-stack-network-howto-vnet-to-vnet-stacks.md
-    - name: Extend the data center
-      href: azure-stack-network-howto-extend-datacenter.md
+    - name: Networking patterns
+      items: 
+      - name: Use third party NVAs (Fortinet Fortigate NVA)
+        items:
+        - name: VNet peering with FortiGate
+          href: azure-stack-network-howto-vnet-to-vnet.md
+        - name: Setup VPN to on-prem
+          href: azure-stack-network-howto-vnet-to-onprem.md
+        - name: VNET to VNET connection
+          href: azure-stack-network-howto-vnet-to-vnet-stacks.md
+      - name: Use RRAS
+        items:
+        - name: VNet peering with VMs
+          href: azure-stack-network-howto-vnet-peering.md
+        - name: Set up a multiple site-to-site VPN
+          href: network-howto-vpn-tunnel.md
+        - name: Create a VPN tunnel (GRE)
+          href: network-howto-vpn-tunnel-gre.md
+        - name: Create a VPN tunnel (IPSEC)
+          href: network-howto-vpn-tunnel-ipsec.md
     - name: F5 load balancer
       href: network-howto-f5.md
-    - name: Connect to iSCSI storage
-      href: azure-stack-network-howto-iscsi-storage.md
-    - name: Set up tunnels
+    - name: Connect to external storage
       items:
-      - name: Set up a multiple site-to-site VPN
-        href: network-howto-vpn-tunnel.md
-      - name: Create a VPN tunnel (GRE)
-        href: network-howto-vpn-tunnel-gre.md
-      - name: Create a VPN tunnel (IPSEC)
-        href: network-howto-vpn-tunnel-ipsec.md
+        - name: Connect to iSCSI storage
+          href: azure-stack-network-howto-iscsi-storage.md
+        - name: Extend the data center
+          href: azure-stack-network-howto-extend-datacenter.md
+    - name: VNET peering
     - name: Back up and recovery
       items:
       - name: Back up your VM on Azure Stack with Commvault
