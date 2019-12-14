@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/30/2019
+ms.date: 12/13/2019
 ms.reviewer: ppacent
 ms.author: mabrigg
-ms.lastreviewed: 09/30/2019
+ms.lastreviewed: 12/13/2019
 monikerRange: '>=azs-1802'
 ---
 
@@ -383,6 +383,10 @@ The baseboard management controller (BMC) monitors the physical state of your se
 1. **Versions earlier than 1910**: Update the BMC on the Azure Stack physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
 
    **Version 1910 and later**: It's no longer required that you first update the BMC credentials on the Azure Stack physical servers by following your OEM instructions. The user name and password for each BMC in your environment must be the same. The BMC user names can't exceed 16 characters.
+
+    | Parameter | Description | State |
+    | --- | --- | --- |
+    | BypassBMCUpdate | When you use the parameter, credentials in the BMC aren't update. Only the Azure Stack internal datastore is updated. | Optional |
 
 2. Open a privileged endpoint in Azure Stack sessions. For instructions, see [Using the privileged endpoint in Azure Stack](azure-stack-privileged-endpoint.md).
 
