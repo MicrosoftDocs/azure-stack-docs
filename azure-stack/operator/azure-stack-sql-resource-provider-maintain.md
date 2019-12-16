@@ -245,7 +245,7 @@ Azure Diagnostics extension is installed on the SQL resource provider adapter VM
 
 Once the event logs and IIS logs collection are configured for SQL resource provider, the logs can be found in a system storage account named **sqladapterdiagaccount**.
 
-To learn more about Azure Diagnostics extension, please see [What is Azure Diagnostics extension](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/diagnostics-extension-overview).
+To learn more about Azure Diagnostics extension, please see [What is Azure Diagnostics extension](/azure-monitor/platform/diagnostics-extension-overview).
 
 ## Next steps
 
