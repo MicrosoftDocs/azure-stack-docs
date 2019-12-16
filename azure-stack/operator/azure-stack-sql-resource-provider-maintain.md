@@ -237,7 +237,6 @@ Azure Diagnostics extension is installed on the SQL resource provider adapter VM
 
 3. Add **“Microsoft-AzureStack-DatabaseAdapter/Operational!\*”** to collect SQL resource provider operational event logs.
 ![Add event logs](media/azure-stack-sql-resource-provider-maintain/sqlrp-event-logs.png)
-media/azure-stack-sql-resource-provider-maintain
 
 4. To enable the collection of IIS logs, check **“IIS logs”** and **“Failed request logs”**.
 ![Add IIS logs](media/azure-stack-sql-resource-provider-maintain/sqlrp-iis-logs.png)
