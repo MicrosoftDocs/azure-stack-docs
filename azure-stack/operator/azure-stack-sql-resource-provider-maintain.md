@@ -233,13 +233,14 @@ Azure Diagnostics extension is installed on the SQL resource provider adapter VM
 1. In Admin portal, go to the SQL resource provider adapter VM.
 
 2. In **Diagnostics settings** of the VM, go to the **Logs** tab and choose **Custom** to customize event logs being collected.
-![Go to diagnostics settings](./media/azure-stack-sql-resource-provider-maintain/sqlrp-diagnostics-settings.PNG)
+![Go to diagnostics settings](media/azure-stack-sql-resource-provider-maintain/sqlrp-diagnostics-settings.PNG)
 
 3. Add **“Microsoft-AzureStack-DatabaseAdapter/Operational!\*”** to collect SQL resource provider operational event logs.
-![Add event logs](./media/azure-stack-sql-resource-provider-maintain/sqlrp-event-logs.PNG)
+![Add event logs](media/azure-stack-sql-resource-provider-maintain/sqlrp-event-logs.PNG)
+media/azure-stack-sql-resource-provider-maintain
 
 4. To enable the collection of IIS logs, check **“IIS logs”** and **“Failed request logs”**.
-![Add IIS logs](./media/azure-stack-sql-resource-provider-maintain/sqlrp-iis-logs.PNG)
+![Add IIS logs](media/azure-stack-sql-resource-provider-maintain/sqlrp-iis-logs.PNG)
 
 5. Finally click **“Save”** button to save all the Diagnostics settings.
 
