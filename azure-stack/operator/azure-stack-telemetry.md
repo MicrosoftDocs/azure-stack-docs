@@ -1,6 +1,7 @@
 ---
-title: Azure Stack telemetry | Microsoft Docs
-description: Describes how to configure Azure Stack telemetry settings using PowerShell.
+title: Azure Stack telemetry
+titleSuffix: Azure Stack
+description: Learn how to configure Azure Stack telemetry settings using PowerShell.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -27,7 +28,7 @@ Azure Stack telemetry automatically uploads system data to Microsoft via the Con
 For an Azure Stack operator, telemetry can provide valuable insights into enterprise deployments and gives you a voice that helps shape future versions of Azure Stack.
 
 > [!NOTE]
-> You can also configure Azure Stack to forward usage information to Azure for billing. This is required for Multi-Node Azure Stack customers who choose pay-as-you-use billing. Usage reporting is controlled independently from telemetry and is not required for Multi-Node customers who choose the capacity model or for Azure Stack Development Kit users. For these scenarios, usage reporting can be turned off [using the registration script](azure-stack-usage-reporting.md).
+> You can also configure Azure Stack to forward usage information to Azure for billing. This is required for multi-node Azure Stack customers who choose pay-as-you-use billing. Usage reporting is controlled independently from telemetry and isn't required for multi-node customers who choose the capacity model or for Azure Stack Development Kit users. For these scenarios, usage reporting can be turned off [using the registration script](azure-stack-usage-reporting.md).
 
 Azure Stack telemetry is based on the Windows Server 2016 Connected User Experience and Telemetry component, which uses the [Event Tracing for Windows (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx) TraceLogging technology to gather and store events and data. Azure Stack components use the same technology to publish events and data gathered by using public operating system event logging and tracing APIs. Examples of these Azure Stack components include these providers: Network Resource, Storage Resource, Monitoring Resource, and Update Resource. The Connected User Experience and Telemetry component encrypts data using SSL and uses certificate pinning to transmit data over HTTPS to the Microsoft Data Management service.
 
@@ -52,7 +53,7 @@ Microsoft doesn't intend to gather sensitive data, such as credit card numbers, 
 
 ## Examples of how Microsoft uses the telemetry data
 
-Telemetry plays an important role in helping to quickly identify and fix critical reliability issues in customer deployments and configurations. Insights from telemetry data can help identify issues with services or hardware configurations. Microsoft's ability to get this data from customers and drive improvements to the ecosystem, raises the bar for the quality of integrated Azure Stack solutions.
+Telemetry plays an important role in helping to quickly identify and fix critical reliability issues in customer deployments and configurations. Insights from telemetry data can help identify issues with services or hardware configurations. Microsoft's ability to get this data from customers and drive improvements to the ecosystem raises the bar for the quality of integrated Azure Stack solutions.
 
 Telemetry also helps Microsoft to better understand how customers deploy components, use features, and use services to achieve their business goals. These insights help prioritize engineering investments in areas that can directly impact customer experiences and workloads.
 
@@ -85,7 +86,7 @@ Security data, and Basic Health and Quality data. Basic device information, incl
 
 - *Telemetry functionality*, including the percentage of uploaded events, dropped events, and the last data upload time.
 - *Quality-related information* that helps Microsoft develop a basic understanding of how Azure Stack is performing. For example, the count of critical alerts on a particular hardware configuration.
-- *Compatibility data* that helps provide an understanding about which Resource Providers are installed on a system and a virtual machine. This identifies potential compatibility problems.
+- *Compatibility data* that helps provide an understanding about which Resource Providers are installed on a system and a virtual machine (VM). This identifies potential compatibility problems.
 
 **2 (Enhanced)**</br>
 Additional insights, including: how the operating system and Azure Stack services are used, how these services perform, advanced reliability data, and data from the **Security** and **Basic** levels.
@@ -120,7 +121,7 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 
 ### ASDK and Multi-Node: enable or disable telemetry after deployment
 
-To enable or disable telemetry after deployment, you need to have access to the Privileged End Point (PEP) which is exposed on the ERCS VMs.
+To enable or disable telemetry after deployment, you need to have access to the privileged endpoint (PEP) which is exposed on the ERCS VMs.
 
 1. To Enable: `Set-Telemetry -Enable`
 2. To Disable: `Set-Telemetry -Disable`
