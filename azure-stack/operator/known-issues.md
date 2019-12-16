@@ -43,7 +43,6 @@ To access known issues for a different version, use the version selector dropdow
 
 For known Azure Stack Hub update issues please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-updates-troubleshoot.md).
 
-
 ## Portal
 
 ### Administrative subscriptions
@@ -232,8 +231,15 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ### Consumed compute quota
 
 - Applicable: This issue applies to all supported releases.
-- When creating a new virtual machine, you may receive an error such as **This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.**. This indicates that the quota for total cores available to you has been reached.
+- Cause: When creating a new virtual machine, you may receive an error such as **This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.**. This indicates that the quota for total cores available to you has been reached.
 - Remediation: Ask your operator for an add-on plan with additional quota. Editing the current plan's quota will not work or reflect increased quota.
+- Occurrence: Rare
+
+### Privileged Endpoint
+
+- Applicable: This issue applies to 1910 and earlier releases.
+- Cause: Unable to connect to the Privileged Endpoint (ERC VMs) from a computer running a non-English version of Windows.
+- Remediation: This is a known issue that has been fixed in releases later than 1910. As a workaround you can run the **New-PSSession** and **Enter-PSSession** Powershell cmdlets using the **en-US** culture; for examples, set the culture using this script: https://resources.oreilly.com/examples/9780596528492/blob/master/Use-Culture.ps1.
 - Occurrence: Rare
 
 ### Virtual machine scale set
