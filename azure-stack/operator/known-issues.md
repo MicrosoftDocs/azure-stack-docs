@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 12/13/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 11/21/2019
@@ -42,7 +42,6 @@ To access known issues for a different version, use the version selector dropdow
 ## Update
 
 For known Azure Stack Hub update issues please see [Troubleshooting Updates in Azure Stack Hub](azure-stack-updates-troubleshoot.md).
-
 
 ## Portal
 
@@ -150,9 +149,9 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 ### Access Control (IAM)
 
-- Applicable: This issue applies to releases 1903 and later
-- Cause: IAM Extension is out of date. Ibiza shipped with Azure Stack introducing a new behavior that causes RBAC extension to break if user is opening RBAC extension from a subscription which is not selected in the global subscription picker.
-- Remediation: Ensure the subscription is checked in the global subscription picker. 
+- Applicable: This issue applies to stamps that were deployed with a base image 1903 or earlier.
+- Cause: The IAM extension is out of date. The Ibiza portal that shipped with Azure Stack introduces a new behavior that causes the RBAC extension to fail if the user is opening the **Access Control (IAM)** blade for a subscription that is not selected in the global subscription selector (**Directory + Subscription** in the user portal). The blade displays **Loading** in a loop, and the user cannot add new roles to the subscription. The **Add** blade also displays **Loading** in a loop.
+- Remediation: Ensure that the subscription is checked in the **Directory + Subscription** menu. The menu can be accessed from the top of the portal, near the **Notifications** button, or via the shortcut on the **All resources** blade that displays **Don't see a subscription? Open Directory + Subscription settings**. The subscription must be selected in this menu.
 
 ## Networking
 
@@ -232,8 +231,15 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ### Consumed compute quota
 
 - Applicable: This issue applies to all supported releases.
-- When creating a new virtual machine, you may receive an error such as **This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.**. This indicates that the quota for total cores available to you has been reached.
+- Cause: When creating a new virtual machine, you may receive an error such as **This subscription is at capacity for Total Regional vCPUs on this location. This subscription is using all 50 Total Regional vCPUs available.**. This indicates that the quota for total cores available to you has been reached.
 - Remediation: Ask your operator for an add-on plan with additional quota. Editing the current plan's quota will not work or reflect increased quota.
+- Occurrence: Rare
+
+### Privileged Endpoint
+
+- Applicable: This issue applies to 1910 and earlier releases.
+- Cause: Unable to connect to the Privileged Endpoint (ERC VMs) from a computer running a non-English version of Windows.
+- Remediation: This is a known issue that has been fixed in releases later than 1910. As a workaround you can run the **New-PSSession** and **Enter-PSSession** Powershell cmdlets using the **en-US** culture; for examples, set the culture using this script: https://resources.oreilly.com/examples/9780596528492/blob/master/Use-Culture.ps1.
 - Occurrence: Rare
 
 ### Virtual machine scale set

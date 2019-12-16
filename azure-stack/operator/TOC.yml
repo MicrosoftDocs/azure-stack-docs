@@ -435,7 +435,6 @@
         - name: Usage registration error codes
           href: azure-stack-registration-errors.md        
   - name: Back up Azure Stack
-    href: azure-stack-backup-infrastructure-backup.md
     items:
     - name: Enable Backup for Azure Stack from the administration console
       href: azure-stack-backup-enable-backup-console.md
@@ -443,6 +442,8 @@
       href: azure-stack-backup-enable-backup-powershell.md
     - name: Back up Azure Stack
       href: azure-stack-backup-back-up-azure-stack.md
+    - name: Recover data with the backup service
+      href: azure-stack-backup-infrastructure-backup.md
     - name: Back up files and applications on Azure Stack
       href: /azure/backup/backup-mabs-files-applications-azure-stack?toc=/azure-stack/operator/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Replicate Azure Stack VMs to Azure 
