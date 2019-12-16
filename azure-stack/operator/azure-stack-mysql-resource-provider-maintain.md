@@ -223,24 +223,28 @@ $session | Remove-PSSession
 ```
 
 ## Configure Azure Diagnostics extension for MySQL resource provider
-Azure Diagnostics extension is installed on the MySQL resource provider adapter VM by default. The following steps show how to customize the extension for gathering the MySQL resource provider operational event logs and IIS logs for troubleshooting and auditing purpose.
 
-1. In Admin portal, go to the MySQL resource provider adapter VM.
+The Azure Diagnostics extension is installed on the MySQL resource provider adapter VM by default. The following steps show how to customize the extension for gathering the MySQL resource provider operational event logs and IIS logs for troubleshooting and auditing purposes.
 
-2. In **Diagnostics settings** of the VM, go to the **Logs** tab and choose **Custom** to customize event logs being collected.
-![Go to diagnostics settings](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-diagnostics-settings.png)
+1. In the admin portal, go to the MySQL resource provider adapter VM.
 
-3. Add **“Microsoft-AzureStack-DatabaseAdapter/Operational!\*”** to collect MySQL resource provider operational event logs.
-![Add event logs](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-event-logs.png)
+2. In the **Diagnostics settings** of the VM, go to the **Logs** tab and choose **Custom** to customize event logs being collected.
+   
+   ![Go to diagnostics settings](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-diagnostics-settings.png)
 
-4. To enable the collection of IIS logs, check **“IIS logs”** and **“Failed request logs”**.
-![Add IIS logs](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-iis-logs.png)
+3. Add **Microsoft-AzureStack-DatabaseAdapter/Operational** to collect MySQL resource provider operational event logs.
 
-5. Finally click **“Save”** button to save all the Diagnostics settings.
+   ![Add event logs](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-event-logs.png)
+
+4. To enable the collection of IIS logs, check **IIS logs** and **Failed request logs**.
+
+   ![Add IIS logs](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-iis-logs.png)
+
+5. Finally, select **Save** to save all the diagnostics settings.
 
 Once the event logs and IIS logs collection are configured for MySQL resource provider, the logs can be found in a system storage account named **mysqladapterdiagaccount**.
 
-To learn more about Azure Diagnostics extension, please see [What is Azure Diagnostics extension](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/diagnostics-extension-overview).
+To learn more about Azure Diagnostics extension, see [What is Azure Diagnostics extension](/azure-monitor/platform/diagnostics-extension-overview).
 
 ## Next steps
 
