@@ -254,6 +254,8 @@
     items:
     - name: Networking patterns
       items: 
+      - name: VNet peering with VMs
+        href: azure-stack-network-howto-vnet-peering.md
       - name: Use third party NVAs (Fortinet Fortigate NVA)
         items:
         - name: VNet peering with FortiGate
@@ -264,8 +266,6 @@
           href: azure-stack-network-howto-vnet-to-vnet-stacks.md
       - name: Use RRAS
         items:
-        - name: VNet peering with VMs
-          href: azure-stack-network-howto-vnet-peering.md
         - name: Set up a multiple site-to-site VPN
           href: network-howto-vpn-tunnel.md
         - name: Create a VPN tunnel (GRE)
