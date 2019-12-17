@@ -227,6 +227,27 @@ $cleanup = Invoke-Command -Session $session -ScriptBlock {Remove-AzsDBAdapterLog
 # Close the session.
 $session | Remove-PSSession
 ```
+## Configure Azure Diagnostics extension for SQL resource provider
+Azure Diagnostics extension is installed on the SQL resource provider adapter VM by default. The following steps show how to customize the extension for gathering the SQL resource provider operational event logs and IIS logs for troubleshooting and auditing purpose.
+
+1. Sign in to the Azure Stack Hub administrator portal.
+
+2. Select **Virtual machines** from the pane on the left, search for the SQL resource provider adapter VM and select the VM.
+
+3. In **Diagnostics settings** of the VM, go to the **Logs** tab and choose **Custom** to customize event logs being collected.
+![Go to diagnostics settings](media/azure-stack-sql-resource-provider-maintain/sqlrp-diagnostics-settings.png)
+
+4. Add **Microsoft-AzureStack-DatabaseAdapter/Operational!\*** to collect SQL resource provider operational event logs.
+![Add event logs](media/azure-stack-sql-resource-provider-maintain/sqlrp-event-logs.png)
+
+5. To enable the collection of IIS logs, check **IIS logs** and **Failed request logs**.
+![Add IIS logs](media/azure-stack-sql-resource-provider-maintain/sqlrp-iis-logs.png)
+
+6. Finally select **Save** to save all the Diagnostics settings.
+
+Once the event logs and IIS logs collection are configured for SQL resource provider, the logs can be found in a system storage account named **sqladapterdiagaccount**.
+
+To learn more about Azure Diagnostics extension, please see [What is Azure Diagnostics extension](/azure-monitor/platform/diagnostics-extension-overview).
 
 ## Next steps
 
