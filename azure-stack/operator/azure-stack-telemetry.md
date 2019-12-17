@@ -30,7 +30,7 @@ For an Azure Stack operator, telemetry can provide valuable insights into enterp
 > [!NOTE]
 > You can also configure Azure Stack to forward usage information to Azure for billing. This is required for multi-node Azure Stack customers who choose pay-as-you-use billing. Usage reporting is controlled independently from telemetry and isn't required for multi-node customers who choose the capacity model or for Azure Stack Development Kit users. For these scenarios, usage reporting can be turned off [using the registration script](azure-stack-usage-reporting.md).
 
-Azure Stack telemetry is based on the Windows Server 2016 Connected User Experience and Telemetry component, which uses the [Event Tracing for Windows (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx) TraceLogging technology to gather and store events and data. Azure Stack components use the same technology to publish events and data gathered by using public operating system event logging and tracing APIs. Examples of these Azure Stack components include these providers: Network Resource, Storage Resource, Monitoring Resource, and Update Resource. The Connected User Experience and Telemetry component encrypts data using SSL and uses certificate pinning to transmit data over HTTPS to the Microsoft Data Management service.
+Azure Stack telemetry is based on the Windows Server 2016 Connected User Experience and Telemetry component. This component uses the [Event Tracing for Windows (ETW)](https://msdn.microsoft.com/library/dn904632(v=vs.85).aspx) TraceLogging technology to gather and store events and data. Azure Stack components use the same technology to publish events and data gathered by using public operating system event logging and tracing APIs. Examples of these Azure Stack components include these providers: Network Resource, Storage Resource, Monitoring Resource, and Update Resource. The Connected User Experience and Telemetry component encrypts data using SSL and uses certificate pinning to transmit data over HTTPS to the Microsoft Data Management service.
 
 > [!IMPORTANT]
 > To enable telemetry data flow, port 443 (HTTPS) must be open in your network. The Connected User Experience and Telemetry component connects to the Microsoft Data Management service at https://v10.vortex-win.data.microsoft.com. The Connected User Experience and Telemetry component also connects to https://settings-win.data.microsoft.com to download configuration information.
@@ -49,7 +49,7 @@ We understand that the privacy and security of customer information is important
 - We're transparent about how telemetry data gets used.
 - We use telemetry data to improve customer experiences.
 
-Microsoft doesn't intend to gather sensitive data, such as credit card numbers, usernames and passwords, email addresses, or similar sensitive information. If we determine that sensitive information has been inadvertently received, we delete it.
+Microsoft doesn't intend to gather sensitive data, like credit card numbers, usernames and passwords, email addresses, or similar sensitive information. If we determine that sensitive information has been inadvertently received, we delete it.
 
 ## Examples of how Microsoft uses the telemetry data
 
@@ -61,7 +61,7 @@ Some examples include customer use of containers, storage, and networking config
 
 ## Manage telemetry collection
 
-We don't recommended turning off telemetry in your organization. However, in some scenarios this may be necessary.
+We don't recommend turning off telemetry in your organization. However, in some scenarios it may be necessary.
 
 In these scenarios, you can configure the telemetry level sent to Microsoft by using registry settings before you deploy Azure Stack, or by using the Telemetry Endpoints after you deploy Azure Stack.
 
@@ -106,7 +106,7 @@ Turning off Windows and Azure Stack telemetry also disables SQL telemetry. For m
 
 You can use the Windows Registry Editor to manually set the telemetry level on the physical host computer before you deploy Azure Stack. If a management policy already exists, such as Group Policy, it overrides this registry setting.
 
-Before deploying Azure Stack on the development kit host, boot into CloudBuilder.vhdx and run the following script in an elevated PowerShell window:
+Before you deploy Azure Stack on the development kit host, boot into CloudBuilder.vhdx and run the following script in an elevated PowerShell window:
 
 ```powershell
 ### Get current AllowTelemetry value on DVM Host
@@ -121,7 +121,7 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 
 ### ASDK and Multi-Node: enable or disable telemetry after deployment
 
-To enable or disable telemetry after deployment, you need to have access to the privileged endpoint (PEP) which is exposed on the ERCS VMs.
+To enable or disable telemetry after deployment, you need access to the privileged endpoint (PEP) which is exposed on the ERCS VMs.
 
 1. To Enable: `Set-Telemetry -Enable`
 2. To Disable: `Set-Telemetry -Disable`
