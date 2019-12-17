@@ -13,10 +13,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2019
+ms.date: 12/16/2019
 ms.author: justinha
 ms.reviewer: ppacent
-ms.lastreviewed: 09/10/2019
+ms.lastreviewed: 12/16/2019
 ---
 
 # Azure Stack Hub public key infrastructure (PKI) certificate requirements
@@ -52,7 +52,8 @@ The following list describes the certificate requirements that are needed to dep
 - Ensure that the subject names and subject alternative names in the subject alternative name extension (x509v3_config) match. The subject alternative name field lets you specify additional host names (websites, IP addresses, common names) to be protected by a single SSL certificate.
 
 > [!NOTE]  
-> Self-signed certificates aren't supported.
+> Self-signed certificates aren't supported.  
+> When deploying Azure Stack Hub in disconnected mode it is recommended to use certificates issued by an enterprise certificate authority. This is important because clients accessing Azure Stack endpoints must be able to contact the certificate revocation list (CRL).
 
 > [!NOTE]  
 > The presence of Intermediary Certificate Authorities in a certificate's chain-of-trusts *is* supported.
