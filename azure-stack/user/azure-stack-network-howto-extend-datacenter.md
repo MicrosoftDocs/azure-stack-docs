@@ -15,7 +15,7 @@ ms.lastreviewed: 12/13/2019
 # Intent: As an Azure Stack Operator, I want < what? > so that < why? >
 ---
 
-# Extending Storage to Azure Stack
+# Extending storage to Azure Stack
 
 *Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
 
@@ -227,7 +227,7 @@ To set up the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user
 
 1.  Establish an RDP connection to VM001. Once connected, open **Server Manager**.
 
-2.  select **Add roles and features**, and accept the defaults until you reach the **Features** page.
+2.  Select **Add roles and features**, and accept the defaults until you reach the **Features** page.
 
 3.  On the **Features** page, add **Multipath I/O** and select **Next**.
 
@@ -331,7 +331,7 @@ To set up the iSCSI Initiator, firstly, log back into the **Azure Stack Hub user
 
 10. Open **File Explorer** and select **This PC** to see your new drive attached to VM001.
 
-### Testing External Storage Connectivity
+### Testing external storage connectivity
 
 To validate communication and run a rudimentary file copy test, firstly, log back into the **Azure Stack Hub user portal** on your **Azure Stack** system and navigate to the **overview** blade for **VM001**
 
