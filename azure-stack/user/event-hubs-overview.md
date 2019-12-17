@@ -25,7 +25,7 @@ The different editions of Event Hubs (on Azure Stack Hub and on Azure) offer a h
 | Same set of SDKs | ✔ | ✔ |
 | Capture feature | ✘ | ✔ |
 | Geo-disaster recovery | ✘ | ✔ |
-| Azure Monitor | ✘ | ✔ |
+| Azure Monitor | ✔ | ✔ |
 | Auto-inflate feature | ✘ | ✔ |
 
 In addition, Azure Resource Management operations can be accomplished using Azure Resource Manager templates, [PowerShell](/powershell/module/azurerm.eventhub/), and [Azure CLI](/cli/azure/eventhubs/eventhub/). Currently, there's no support for Operator Administration operations in PowerShell and Azure CLI.
@@ -40,3 +40,5 @@ In general, if you can't find an Event Hubs topic in the [Azure Stack Hub Operat
 ## Next steps
 
 If it's not available in your subscription, work with your administrator to [install the Event Hubs on Azure Stack Hub resource provider](../operator/event-hubs-rp-overview.md).
+
+If you have Event Hubs installed and you're ready to use it, consult the [Event Hubs documentation](/azure/event-hubs/event-hubs-about) for more details on the service.
