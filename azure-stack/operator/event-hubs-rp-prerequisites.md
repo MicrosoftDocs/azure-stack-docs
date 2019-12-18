@@ -24,7 +24,7 @@ The following prerequisites must be completed before you can install Event Hubs 
 
 [!INCLUDE [Common RP prerequisites](../includes/marketplace-resource-provider-prerequisites.md)]
 
-## Event Hub prerequisites
+## Event Hubs prerequisites
 
 1. Procure public key infrastructure (PKI) SSL certificates for Event Hubs. The Subject Alternate Name (SAN) must adhere to the following naming pattern: `CN=*.eventhub.<region>.<fqdn>`. Subject Name may be specified, but it's not used by Event Hubs when handling certificates. Only the Subject Alternate Name is used. See [PKI certificate requirements](azure-stack-pki-certs.md) for the full list of detailed requirements.  
 

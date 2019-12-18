@@ -45,7 +45,7 @@ To remove Event Hubs and all related resources created by users, complete the fo
    > [!IMPORTANT]
    > You must wait at least 10 minutes after Event Hubs has been removed successfully before installing Event Hubs again. This is due to the fact that cleanup activities might still be running, which may conflict with any new installation.
 
-## Delete Event Hub packages
+## Delete Event Hubs packages
 
 Use this option if after uninstalling Event Hubs you also wish to remove any packages used to install Event Hubs. 
 
