@@ -15,7 +15,7 @@ ms.lastreviewed: 12/09/2019
 > [!WARNING]
 > Uninstalling Event Hubs will remove (erase) the resource provider, and all user-created Event Hubs clusters, namespaces, and event hubs resources. It will also remove their associated event data.  
 > Please proceed with extreme caution before deciding to uninstall Event Hubs. 
-> Uninstalling Event Hubs **does not** delete the packages used to install Event Hubs. To achieve that, please refer to [Delete Event Hubs packages](#delete-event-hub-packages).
+> Uninstalling Event Hubs **does not** delete the packages used to install Event Hubs. To achieve that, please refer to [Delete Event Hubs packages](#delete-event-hubs-packages).
 
 ## Uninstall Event Hubs
 
@@ -45,7 +45,7 @@ To remove Event Hubs and all related resources created by users, complete the fo
    > [!IMPORTANT]
    > You must wait at least 10 minutes after Event Hubs has been removed successfully before installing Event Hubs again. This is due to the fact that cleanup activities might still be running, which may conflict with any new installation.
 
-## Delete Event Hub packages
+## Delete Event Hubs packages
 
 Use this option if after uninstalling Event Hubs you also wish to remove any packages used to install Event Hubs. 
 

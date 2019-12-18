@@ -36,7 +36,7 @@ Use the following steps to access the Event Hubs management page:
 | Category | Alert | Type | Condition |
 |----------|-------|------|-----------|
 | Performance | | | |
-| | EventHub-CpuUsage | Warning | The average of % CPU usage of event hub cluster in the last 6 hours is larger than 50%. |
+| | EventHub-CpuUsage | Warning | The average of % CPU usage of Event Hubs cluster in the last 6 hours is larger than 50%. |
 | | EventHub-MemoryUsage | Warning | The average of % Data Disk(E:) usage of Event Hubs cluster in the last 6 hours is larger than 50%. |
 | | EventHub-DiskUsage | Warning | The average of % free memory space of Event Hubs cluster in the last 6 hours is smaller than 50%. |
 | Usage/Quota | | | |
