@@ -32,8 +32,8 @@ Here's a summary of how the solution works:
 2. If the model sees a person, it takes a picture and uploads it to Azure Stack Hub blob storage. 
 3. The blob service triggers an Azure Function on Azure Stack Hub. 
 4. The Azure Function calls a container with the Face API to get demographic and emotion data from the image.
-5. The data is anonymized and sent to an Azure Event Hub.
-6. The Event Hub pushes the data to Stream Analytics.
+5. The data is anonymized and sent to an Azure Event Hubs cluster.
+6. The Event Hubs cluster pushes the data to Stream Analytics.
 7. Stream Analytics aggregates the data and pushes it to Power BI.
 
 ## Components
@@ -50,7 +50,7 @@ This solution uses the following components:
 | | Azure Kubernetes Service [(AKS) Engine](https://github.com/Azure/aks-engine) cluster | The AKS RP with AKS-Engine cluster deployed into Azure Stack Hub, provides a scalable, resilient engine to run the Face API container. |
 | | Azure Cognitive Services [Face API containers](/azure/cognitive-services/face/face-how-to-install-containers)| The Azure Cognitive Services RP with Face API containers provides demographic, emotion, and unique visitor detection on Contoso's private network. |
 | | Blob Storage | Images captured from the AI Dev Kit are uploaded to Azure Stack Hub's blob storage. |
-| | Azure Functions | An Azure Function running on Azure Stack Hub receives input from blob storage, and manages the interactions with the Face API. It emits anonymized data to an Event Hub located in Azure.<br><br>|
+| | Azure Functions | An Azure Function running on Azure Stack Hub receives input from blob storage, and manages the interactions with the Face API. It emits anonymized data to an Event Hubs cluster located in Azure.<br><br>|
 
 ## Issues and considerations
 
@@ -62,7 +62,7 @@ To enable this solution to scale across multiple cameras and locations, you'll n
 
 - Increase the number of Stream Analytics streaming units
 - Scale out the Face API deployment
-- Increase the Event Hubs throughput
+- Increase the Event Hubs cluster throughput
 - For extreme cases, migrate from Azure Functions to a virtual machine may be necessary.
 
 ### Availability
