@@ -21,7 +21,7 @@ ms.reviewer: ppacent
 # Keywords: update azure stack troubleshoot
 
 ---
-# Best practices for troublshooting Azure Stack Hub patch and update issues
+# Best practices for troubleshooting Azure Stack Hub patch and update issues
 
 This article provides an overview of best practices for troubleshooting Azure Stack patch and update issues as well as remediations to common patch and update issues.
 
