@@ -1,6 +1,6 @@
 ---
-title: Azure Stack known issues 
-description: Learn about known issues in Azure Stack releases.
+title: Azure Stack Hub known issues 
+description: Learn about known issues in Azure Stack Hub releases.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -19,9 +19,9 @@ ms.reviewer: prchint
 ms.lastreviewed: 11/21/2019
 ---
 
-# Azure Stack known issues
+# Azure Stack Hub known issues
 
-This article lists known issues in releases of Azure Stack. The list is updated as new issues are identified.
+This article lists known issues in releases of Azure Stack Hub. The list is updated as new issues are identified.
 
 To access known issues for a different version, use the version selector dropdown above the table of contents on the left.
 
@@ -31,7 +31,7 @@ To access known issues for a different version, use the version selector dropdow
 ::: moniker-end
 ::: moniker range="<azs-1906"
 > [!IMPORTANT]  
-> If your Azure Stack instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support). 
+> If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support). 
 ::: moniker-end
 
 <!---------------------------------------------------------->
@@ -61,14 +61,14 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ### Subscription permissions
 
 - Applicable: This issue applies to all supported releases.
-- Cause: You cannot view permissions to your subscription using the Azure Stack portals.
+- Cause: You cannot view permissions to your subscription using the Azure Stack Hub portals.
 - Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
 - Occurrence: Common
 
 ### Storage account settings
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the storage account **Configuration** blade shows an option to change **security transfer type**. The feature is currently not supported in Azure Stack.
+- Cause: In the user portal, the storage account **Configuration** blade shows an option to change **security transfer type**. The feature is currently not supported in Azure Stack Hub.
 - Occurrence: Common
 
 ### Upload blob with OAuth error
@@ -81,7 +81,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ### Upload blob option unsupported
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you try to upload a blob in the upload blade, there is an option to select **AAD** or **Key Authentication**, however **AAD** is not supported in Azure Stack.
+- Cause: In the user portal, when you try to upload a blob in the upload blade, there is an option to select **AAD** or **Key Authentication**, however **AAD** is not supported in Azure Stack Hub.
 - Occurrence: Common
 
 ### Load balancer backend pool
@@ -93,13 +93,13 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ### Incorrect tooltip when creating VM
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you select a managed disk, with disk type Premium SSD, the drop-down list shows **OS Disk**. The tooltip next to that option says **Certain OS Disk sizes may be available for free with Azure Free Account**; however, this is not valid for Azure Stack. In addition, the list includes **Free account eligible** which is also not valid for Azure Stack.
+- Cause: In the user portal, when you select a managed disk, with disk type Premium SSD, the drop-down list shows **OS Disk**. The tooltip next to that option says **Certain OS Disk sizes may be available for free with Azure Free Account**; however, this is not valid for Azure Stack Hub. In addition, the list includes **Free account eligible** which is also not valid for Azure Stack Hub.
 - Occurrence: Common
 
 ### VPN troubleshoot and metrics
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack.
+- Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack Hub.
 - Occurrence: Common
 
 ### Adding extension to VM Scale Set
@@ -125,13 +125,13 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ### Virtual Network Gateway
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you create a route table, **Virtual Network gateway** appears as one of the next hop type options; however, this is not supported in Azure Stack.
+- Cause: In the user portal, when you create a route table, **Virtual Network gateway** appears as one of the next hop type options; however, this is not supported in Azure Stack Hub.
 - Occurrence: Common
 
 ### Storage account options
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the name of storage accounts is shown as **Storage account - blob, file, table, queue**, however **file** is not supported in Azure Stack.
+- Cause: In the user portal, the name of storage accounts is shown as **Storage account - blob, file, table, queue**; however, **file** is not supported in Azure Stack Hub.
 - Occurrence: Common
 
 ### Storage account configuration
@@ -142,15 +142,15 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 ### Capacity monitoring in SQL resource provider keeps loading
 
-- Applicable: This issue applies to the Azure Stack 1910 update or later, with SQL resource provider version 1.1.33.0 or earlier installed.
+- Applicable: This issue applies to the Azure Stack Hub 1910 update or later, with SQL resource provider version 1.1.33.0 or earlier installed.
 - Cause: The current version of the SQL resource provider is not compatible with some of the latest portal changes in the 1910 update.
-- Remediation: Follow the resource provider update process to apply the SQL resource provider hotfix 1.1.47.0 after Azure Stack is upgraded to the 1910 update ([SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)). For the MySQL resource provider, it is also recommended that you apply the MySQL resource provider hotfix 1.1.47.0 after Azure Stack is upgraded to 1910 update ([MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)).
+- Remediation: Follow the resource provider update process to apply the SQL resource provider hotfix 1.1.47.0 after Azure Stack Hub is upgraded to the 1910 update ([SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)). For the MySQL resource provider, it is also recommended that you apply the MySQL resource provider hotfix 1.1.47.0 after Azure Stack Hub is upgraded to 1910 update ([MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)).
 - Occurrence: Common
 
 ### Access Control (IAM)
 
 - Applicable: This issue applies to stamps that were deployed with a base image 1903 or earlier.
-- Cause: The IAM extension is out of date. The Ibiza portal that shipped with Azure Stack introduces a new behavior that causes the RBAC extension to fail if the user is opening the **Access Control (IAM)** blade for a subscription that is not selected in the global subscription selector (**Directory + Subscription** in the user portal). The blade displays **Loading** in a loop, and the user cannot add new roles to the subscription. The **Add** blade also displays **Loading** in a loop.
+- Cause: The IAM extension is out of date. The Ibiza portal that shipped with Azure Stack Hub introduces a new behavior that causes the RBAC extension to fail if the user is opening the **Access Control (IAM)** blade for a subscription that is not selected in the global subscription selector (**Directory + Subscription** in the user portal). The blade displays **Loading** in a loop, and the user cannot add new roles to the subscription. The **Add** blade also displays **Loading** in a loop.
 - Remediation: Ensure that the subscription is checked in the **Directory + Subscription** menu. The menu can be accessed from the top of the portal, near the **Notifications** button, or via the shortcut on the **All resources** blade that displays **Don't see a subscription? Open Directory + Subscription settings**. The subscription must be selected in this menu.
 
 ### SQL resource provider
@@ -176,7 +176,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ### Service endpoints
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack.
+- Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack Hub.
 - Occurrence: Common
 
 ### Network interface
@@ -199,29 +199,29 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 #### Alerts
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Virtual Network Gateway** blade shows an option to use **Alerts**. This feature is currently not supported in Azure Stack.
+- Cause: In the user portal, the **Virtual Network Gateway** blade shows an option to use **Alerts**. This feature is currently not supported in Azure Stack Hub.
 - Occurrence: Common
 
 #### Active-Active
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, while creating, and in the resource menu of **Virtual Network Gateway**, you will see an option to enable **Active-Active** configuration. This feature is currently not supported in Azure Stack.
+- Cause: In the user portal, while creating, and in the resource menu of **Virtual Network Gateway**, you will see an option to enable **Active-Active** configuration. This feature is currently not supported in Azure Stack Hub.
 - Occurrence: Common
 
 #### VPN troubleshooter
 
 - Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Connections** blade displays a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack.
+- Cause: In the user portal, the **Connections** blade displays a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack Hub.
 - Occurrence: Common
 
 #### Documentation
 
 - Applicable: This issue applies to all supported releases.
-- Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack. Use the following links for the Azure Stack documentation:
+- Cause: The documentation links in the overview page of Virtual Network gateway link to Azure-specific documentation instead of Azure Stack Hub. Use the following links for the Azure Stack Hub documentation:
 
   - [Gateway SKUs](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-skus)
   - [Highly Available Connections](../user/azure-stack-vpn-gateway-about-vpn-gateways.md#gateway-availability)
-  - [Configure BGP on Azure Stack](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
+  - [Configure BGP on Azure Stack Hub](../user/azure-stack-vpn-gateway-settings.md#gateway-requirements)
   - [ExpressRoute circuits](azure-stack-connect-expressroute.md)
   - [Specify custom IPsec/IKE policies](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters)
 
@@ -250,11 +250,11 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 ### Virtual machine scale set
 
-#### Create failures during patch and update on 4-node Azure Stack environments
+#### Create failures during patch and update on 4-node Azure Stack Hub environments
 
 - Applicable: This issue applies to all supported releases.
-- Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack environment.
-- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack deployment.
+- Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack Hub environment.
+- Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack Hub deployment.
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
