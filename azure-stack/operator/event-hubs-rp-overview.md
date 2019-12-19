@@ -16,13 +16,16 @@ Event Hubs on Azure Stack Hub allows you to realize hybrid cloud scenarios. Stre
 
 ## Features
 
-See the [Azure Stack Hub User](/azure-stack/user/event-hubs-overview) documentation for a feature comparison, between Event Hubs on Azure Stack vs. Azure.
+See the [Azure Stack Hub User documentation](/azure-stack/user/event-hubs-overview) for a feature comparison, between Event Hubs on Azure Stack vs. Azure Event Hubs.
 
 ## Feature documentation
 
-The [Azure Event Hubs documentation](/azure/event-hubs/) applies to both editions of Event Hubs: Event Hubs on Azure Stack Hub, and Azure Event Hubs. For example, where the documentation discusses differences based on Azure Event Hubs pricing tiers, refer to the Event Hubs Dedicated cluster documentation. Both the Event Hubs Dedicated offer and Event Hubs on Azure Stack Hub have nearly identical experiences (UI, PowerShell, Azure CLI). For example, the documentation for [creating an Azure Event Hubs Dedicated cluster (public cloud)](/azure/event-hubs/event-hubs-dedicated-cluster-create-portal) is applicable when creating a cluster on Azure Stack Hub.
+To learn more about the Event Hubs user experience, refer to the [Azure Event Hubs documentation](/azure/event-hubs/). This documentation applies to both editions of Event Hubs, and contains topics on using Event Hubs and activities such as:
 
-If you can't find an Event Hubs topic in the [Azure Stack Hub Operator](/azure-stack/operator/event-hubs-rp-overview.md) and [Azure Stack Hub User](/azure-stack/user/event-hubs-overview.md) documentation, refer to the [Azure Event Hub](/azure/event-hubs/) documentation. In most cases, the Azure Event Hubs documentation should be used when working with the service on the Azure Stack Hub platform.
+- Details on [Event Hubs concepts](/azure/event-hubs/event-hubs-features)
+- How to [create an Event Hubs cluster and namespace](/azure/event-hubs/event-hubs-dedicated-cluster-create-portal)
+- How to create an [event hub](/azure/event-hubs/event-hubs-create#create-an-event-hub)
+- How to stream [using the Kafka protocol](/azure/event-hubs/event-hubs-quickstart-kafka-enabled-event-hubs)
 
 
 ## Next steps
