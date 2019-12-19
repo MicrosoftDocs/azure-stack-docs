@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 12/18/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 11/21/2019
@@ -153,12 +153,11 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: The IAM extension is out of date. The Ibiza portal that shipped with Azure Stack introduces a new behavior that causes the RBAC extension to fail if the user is opening the **Access Control (IAM)** blade for a subscription that is not selected in the global subscription selector (**Directory + Subscription** in the user portal). The blade displays **Loading** in a loop, and the user cannot add new roles to the subscription. The **Add** blade also displays **Loading** in a loop.
 - Remediation: Ensure that the subscription is checked in the **Directory + Subscription** menu. The menu can be accessed from the top of the portal, near the **Notifications** button, or via the shortcut on the **All resources** blade that displays **Don't see a subscription? Open Directory + Subscription settings**. The subscription must be selected in this menu.
 
-### SQL RP
+### SQL resource provider
 
-- Applicable: This issue applies to stamps that are running 1908 or older.
-- Cause: When deploying the SQL RP version 1.1.47.0, the portal will break and show no assests other than those associated with SQL RP.
+- Applicable: This issue applies to stamps that are running 1908 or earlier.
+- Cause: When deploying the SQL resource provider (RP) version 1.1.47.0, the portal shows no assets other than those associated with the SQL RP.
 - Remediation: Delete the RP, upgrade the stamp, and re-deploy the SQL RP.
-
 
 ## Networking
 
