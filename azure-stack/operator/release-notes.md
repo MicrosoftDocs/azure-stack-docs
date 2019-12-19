@@ -178,7 +178,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Removed **Reset Password** from the Virtual Machine Scale Set UI.
 - Fixed an issue where deleting the load balancer from the portal did not result in the deletion of the object in the infrastructure layer.
 - Fixed an issue that showed an inaccurate percentage of the Gateway Pool utilization alert on the admin portal.
-- Fixed an issue where adding more than one public IP on the same NIC on a Virtual Machine resulted in internet connectivity issues. Now, a NIC with two public IPs should work as expected.
+<!-- Fixed an issue where adding more than one public IP on the same NIC on a Virtual Machine resulted in internet connectivity issues. Now, a NIC with two public IPs should work as expected.[This fix actually didn't go in 1910 due to build issues, commenting out until next build (2002) ] -->
 
 ## Security updates
 
