@@ -159,9 +159,7 @@ Use these steps to prepare and to validate the Azure Stack PKI certificates for 
     # IoTHub
     Invoke-AzsCertificateValidation -CertificateType IoTHub -CertificatePath C:\Certificates\IoTHub -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
     ```
-
-    > [!note]  
-    > Each folder should contain a single PFX file for the certificate type, if a certificate type has multi-certificate requirements nested folders for each individual certificate are expected and name sensitive.  Below is an example folder/ certificate structure for all certificate types, and the appropriate value for ```-CertificateType``` and ```-CertificatePath```:
+Each folder should contain a single PFX file for the certificate type, if a certificate type has multi-certificate requirements nested folders for each individual certificate are expected and name sensitive.  The following code shows an example folder/certificate structure for all certificate types, and the appropriate value for ```-CertificateType``` and ```-CertificatePath```.
     
     ```powershell  
     C:\>tree c:\SecretStore /A /F
