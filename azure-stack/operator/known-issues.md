@@ -90,6 +90,12 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: In the user portal, when adding a **Load balancer** backend pool, the operation results in an error message of **Failed to save load balancer backend pool**; however, the operation did actually succeed.
 - Occurrence: Common
 
+### Alert for network interface disconnected
+
+- Applicable: This issue applies to the 1908 release.
+- Cause: When a cable is disconnected from a network adapter, an alert does not show in the administrator portal. This issue is caused because this fault is disabled by default in Windows Server 2019.
+- Occurrence: Common
+
 ### Incorrect tooltip when creating VM
 
 - Applicable: This issue applies to all supported releases.
