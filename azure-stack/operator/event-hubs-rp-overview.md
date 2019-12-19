@@ -12,7 +12,7 @@ ms.lastreviewed: 12/09/2019
 
 # Event Hubs on Azure Stack Hub overview
 
-Event Hubs on Azure Stack Hub allows you to realize hybrid cloud scenarios. Streaming and event-based solutions are supported, for both on-premises and Azure cloud processing. Whether your scenario is hybrid (connected), or disconnected, your solution can support processing of events/streams at large scale. Your scenario is only bound by the Event Hubs Cluster size, which you can provision according to your needs. 
+Event Hubs on Azure Stack Hub allows you to realize hybrid cloud scenarios. Streaming and event-based solutions are supported, for both on-premises and Azure cloud processing. Whether your scenario is hybrid (connected), or disconnected, your solution can support processing of events/streams at large scale. Your scenario is only bound by cluster size, which you can provision according to your needs. 
 
 ## Features
 
@@ -20,7 +20,7 @@ See the [Azure Stack Hub User documentation](/azure-stack/user/event-hubs-overvi
 
 ## Feature documentation
 
-To learn more about the Event Hubs user experience, refer to the [Azure Event Hubs documentation](/azure/event-hubs/). This documentation applies to both editions of Event Hubs, and contains topics on using Event Hubs and activities such as:
+To learn more about the Event Hubs user experience, refer to the [Azure Event Hubs documentation](/azure/event-hubs/). This documentation applies to both editions of Event Hubs, and contains topics such as:
 
 - Details on [Event Hubs concepts](/azure/event-hubs/event-hubs-features)
 - How to [create an Event Hubs cluster and namespace](/azure/event-hubs/event-hubs-dedicated-cluster-create-portal)
