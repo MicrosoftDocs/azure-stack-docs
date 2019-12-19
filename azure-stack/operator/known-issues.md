@@ -21,7 +21,7 @@ ms.lastreviewed: 11/21/2019
 
 # Azure Stack Hub known issues
 
-This article lists known issues in releases of Azure Stac Hub. The list is updated as new issues are identified.
+This article lists known issues in releases of Azure Stack Hub. The list is updated as new issues are identified.
 
 To access known issues for a different version, use the version selector dropdown above the table of contents on the left.
 
