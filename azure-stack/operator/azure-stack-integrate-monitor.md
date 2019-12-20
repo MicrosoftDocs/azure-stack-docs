@@ -116,7 +116,7 @@ samples/etc/azurestack_services.cfg
 
 The following parameters are available to be configured in the azurestack.cfg file. Parameters in bold need to be configured independently from the authentication model you choose.
 
-For more information on how to create an SPN, see [Use an app identity to access resources](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-service-principals).
+For more information on how to create an SPN, see [Use an app identity to access resources](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
 
 | Parameter | Description | Authentication |
 | --- | --- | --- |

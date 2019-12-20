@@ -158,7 +158,7 @@ Important considerations for your Azure Stack deployment:
 
 This article provided general guidelines for protecting user VMs deployed on Azure Stack. For information about using Azure services to protect user VMs, refer to:
 
-- [Considerations for business continuity and disaster recovery](http://aka.ms/azurestackbcdrconsiderationswp)
+- [Considerations for business continuity and disaster recovery](https://aka.ms/azurestackbcdrconsiderationswp)
 
 ### Azure Backup Server
  - [Use Azure Backup to back up files and apps on Azure Stack](https://docs.microsoft.com/azure/backup/backup-mabs-files-applications-azure-stack)
@@ -168,6 +168,6 @@ This article provided general guidelines for protecting user VMs deployed on Azu
  - [Azure Site Recovery support for Azure Stack](https://docs.microsoft.com/azure/site-recovery/)  
  
  ### Partner products
- - [Azure Stack Datacenter Integration Partner Ecosystem datasheet](http://aka.ms/azurestackbcdrpartners)
+ - [Azure Stack Datacenter Integration Partner Ecosystem datasheet](https://aka.ms/azurestackbcdrpartners)
 
 To learn more about the partner products that offer VM protection on Azure Stack, refer to [Protecting apps and data on Azure Stack](https://azure.microsoft.com/blog/protecting-applications-and-data-on-azure-stack/).
