@@ -1,6 +1,6 @@
 ---
-title: Azure Stack release notes | Microsoft Docs
-description: Learn about the updates for Azure Stack integrated systems, including what's new, and where to download the update.
+title: Azure Stack Hub release notes | Microsoft Docs
+description: Learn about the updates for Azure Stack Hub integrated systems, including what's new, and where to download the update.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,27 +13,27 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2019
+ms.date: 12/18/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 11/22/2019
 ---
 
-# Azure Stack updates: release notes
+# Azure Stack Hub updates: release notes
 
-*Applies to: Azure Stack integrated systems*
+*Applies to: Azure Stack Hub integrated systems*
 
-This article describes the contents of Azure Stack update packages. The update includes what's new improvements, and fixes for this release of Azure Stack.
+This article describes the contents of Azure Stack Hub update packages. The update includes what's new improvements, and fixes for this release of Azure Stack Hub.
 
 To access release notes for a different version, use the version selector dropdown above the table of contents on the left.
 
 ::: moniker range=">=azs-1906"
 > [!IMPORTANT]  
-> This update package is only for Azure Stack integrated systems. Do not apply this update package to the Azure Stack Development Kit.
+> This update package is only for Azure Stack Hub integrated systems. Do not apply this update package to the Azure Stack Development Kit.
 ::: moniker-end
 ::: moniker range="<azs-1906"
 > [!IMPORTANT]  
-> If your Azure Stack instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
+> If your Azure Stack Hub instance is behind by more than two updates, it's considered out of compliance. You must [update to at least the minimum supported version to receive support](azure-stack-servicing-policy.md#keep-your-system-under-support).
 ::: moniker-end
 
 ## Update planning
@@ -44,7 +44,7 @@ Before applying the update, make sure to review the following information:
 - [Security updates](release-notes-security-updates.md)
 - [Checklist of activities before and after applying the update](release-notes-checklist.md)
 
-For help with troubleshooting updates and the update process, see [Troubleshoot patch and update issues for Azure Stack](azure-stack-updates-troubleshoot.md).
+For help with troubleshooting updates and the update process, see [Troubleshoot patch and update issues for Azure Stack Hub](azure-stack-updates-troubleshoot.md).
 
 <!---------------------------------------------------------->
 <!------------------- SUPPORTED VERSIONS ------------------->
@@ -52,17 +52,17 @@ For help with troubleshooting updates and the update process, see [Troubleshoot 
 ::: moniker range="azs-1910"
 ## 1910 build reference
 
-The Azure Stack 1910 update build number is **1.1910.0.58**.
+The Azure Stack Hub 1910 update build number is **1.1910.0.58**.
 
 ### Update type
 
-Starting with 1908, the underlying operating system on which Azure Stack runs was updated to Windows Server 2019. This enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack in the near future.
+Starting with 1908, the underlying operating system on which Azure Stack Hub runs was updated to Windows Server 2019. This enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack Hub in the near future.
 
-The Azure Stack 1910 update build type is **Express**.
+The Azure Stack Hub 1910 update build type is **Express**.
 
-The 1910 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The expected time it takes for the 1910 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack environment. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack operators unless the update fails. This runtime approximation is specific to the 1910 update and should not be compared to other Azure Stack updates.
+The 1910 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The expected time it takes for the 1910 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack Hub environment. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 1910 update and should not be compared to other Azure Stack Hub updates.
 
-For more information about update build types, see [Manage updates in Azure Stack](azure-stack-updates.md).
+For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
 <!-- ## What's in this update -->
 
@@ -74,50 +74,50 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - The administrator portal now shows the privileged endpoint IP addresses in the region properties menu for easier discovery. In addition, it shows the current configured time server and DNS forwarders.
 
-- The Azure Stack health and monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration. For more information, see [Monitor Azure Stack hardware components](azure-stack-hardware-monitoring.md).
+- The Azure Stack Hub health and monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration. For more information, see [Monitor Azure Stack Hub hardware components](azure-stack-hardware-monitoring.md).
 
-- [Cloud-init support for Azure Stack](/azure/virtual-machines/linux/using-cloud-init): Cloud-init is a widely used approach to customize a Linux VM as it boots for the first time. You can use cloud-init to install packages and write files, or to configure users and security. Because cloud-init is called during the initial boot process, there are no additional steps or required agents to apply your configuration. The Ubuntu images on the marketplace have been updated to support cloud-init for provisioning.
+- [Cloud-init support for Azure Stack Hub](/azure/virtual-machines/linux/using-cloud-init): Cloud-init is a widely used approach to customize a Linux VM as it boots for the first time. You can use cloud-init to install packages and write files, or to configure users and security. Because cloud-init is called during the initial boot process, there are no additional steps or required agents to apply your configuration. The Ubuntu images on the marketplace have been updated to support cloud-init for provisioning.
 
-- Azure Stack now supports all Windows Azure Linux Agent versions as Azure.
+- Azure Stack Hub now supports all Windows Azure Linux Agent versions as Azure.
 
-- A new version of Azure Stack Admin PowerShell modules is available. <!-- For more information, see -->
+- A new version of Azure Stack Hub admin PowerShell modules is available. <!-- For more information, see -->
 
-- Added the **Set-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to configure the manual update for Windows Defender definitions in the Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
+- Added the **Set-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to configure the manual update for Windows Defender definitions in the Azure Stack Hub infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack Hub](azure-stack-security-av.md).
 
-- Added the **Get-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to retrieve the configuration of the manual update for Windows Defender definitions in the Azure Stack infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
+- Added the **Get-AzSDefenderManualUpdate** cmdlet in the privileged endpoint (PEP) to retrieve the configuration of the manual update for Windows Defender definitions in the Azure Stack Hub infrastructure. For more information, see [Update Windows Defender Antivirus on Azure Stack Hub](azure-stack-security-av.md).
 
-- Added the **Set-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to change the forwarder settings of the DNS servers in Azure Stack. For more information about DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
+- Added the **Set-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to change the forwarder settings of the DNS servers in Azure Stack Hub. For more information about DNS configuration, see [Azure Stack Hub datacenter DNS integration](azure-stack-integrate-dns.md).
 
-- Added the **Get-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to retrieve the forwarder settings of the DNS servers in Azure Stack. For more information about DNS configuration, see [Azure Stack datacenter DNS integration](azure-stack-integrate-dns.md).
+- Added the **Get-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to retrieve the forwarder settings of the DNS servers in Azure Stack Hub. For more information about DNS configuration, see [Azure Stack Hub datacenter DNS integration](azure-stack-integrate-dns.md).
 
-- Added support for management of **Kubernetes clusters** using [AKS engine](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview). Starting with this update customers can deploy production Kubernetes clusters. AKS engine enables users to:
-   - Manage the life-cycle of their Kubernetes clusters. They can create, update, and scale clusters.
-   - Maintain their clusters using managed images produced by the AKS and the Azure Stack teams.
-   - Take advantage of an Azure Resource Manager-integrated Kubernetes cloud provider that builds clusters using Azure native resources.
-   - Deploy and manage their clusters in connected or disconnected Azure Stack stamps.
-   - Utilize Azure hybrid features:
-      *	Integration with Azure Arc (private preview coming soon)
-      *	Integration with Azure Monitor for Containers (in public preview)
-   - Use Windows Containers with AKS engine (in private preview).
-   - Receive CSS and PG support for their deployments.
+- Added support for management of **Kubernetes clusters** using the [AKS engine](../user/azure-stack-kubernetes-aks-engine-overview.md). Starting with this update, customers can deploy production Kubernetes clusters. The AKS engine enables users to:
+  - Manage the life-cycle of their Kubernetes clusters. They can create, update, and scale clusters.
+  - Maintain their clusters using managed images produced by the AKS and the Azure Stack teams.
+  - Take advantage of an Azure Resource Manager-integrated Kubernetes cloud provider that builds clusters using native Azure resources.
+  - Deploy and manage their clusters in connected or disconnected Azure Stack Hub stamps.
+  - Use Azure hybrid features:
+    - Integration with Azure Arc (private preview coming soon).
+    - Integration with Azure Monitor for Containers (in public preview).
+  - Use Windows Containers with AKS engine (in private preview).
+  - Receive CSS and engineering support for their deployments.
 
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
-- Azure Stack has improved its ability to auto-remediate some patch and update issues that previously caused update failures or prevented operators from being able to initiate an Azure Stack update. As a result, there are fewer tests included in the **Test-AzureStack -UpdateReadiness** group. For more information, see [Validate Azure Stack system state](azure-stack-diagnostic-test.md#groups). The following three tests remain in the **UpdateReadiness** group:
+- Azure Stack Hub has improved its ability to auto-remediate some patch and update issues that previously caused update failures or prevented operators from being able to initiate an Azure Stack Hub update. As a result, there are fewer tests included in the **Test-AzureStack -UpdateReadiness** group. For more information, see [Validate Azure Stack Hub system state](azure-stack-diagnostic-test.md#groups). The following three tests remain in the **UpdateReadiness** group:
 
   - **AzSInfraFileValidation**
   - **AzSActionPlanStatus**
   - **AzsStampBMCSummary**
 
-- Added auditing rule to report when an external device (for example, a USB key) is mounted to a node of the Azure Stack infrastructure. The audit log is emitted via syslog and will be displayed as **Microsoft-Windows-Security-Auditing: 6416|Plug and Play Events**. For more information about how to configure the syslog client, see [Syslog forwarding](azure-stack-integrate-security.md).
+- Added an auditing rule to report when an external device (for example, a USB key) is mounted to a node of the Azure Stack Hub infrastructure. The audit log is emitted via syslog and will be displayed as **Microsoft-Windows-Security-Auditing: 6416|Plug and Play Events**. For more information about how to configure the syslog client, see [Syslog forwarding](azure-stack-integrate-security.md).
 
-- Azure Stack is moving to 4096 bit RSA keys for the internal certificates. Running internal secret rotation will replace old 2048 bit certificates with 4096 bit long certificates. For more information about secret rotation in Azure Stack, see [Rotate secrets in Azure Stack](azure-stack-rotate-secrets.md).
+- Azure Stack hub is moving to 4096 bit RSA keys for the internal certificates. Running internal secret rotation will replace old 2048 bit certificates with 4096 bit long certificates. For more information about secret rotation in Azure Stack Hub, see [Rotate secrets in Azure Stack Hub](azure-stack-rotate-secrets.md).
 
 - Upgrades to the complexity of cryptographic algorithms and key strength for several internal components to comply with the Committee on National Security Systems - Policy 15 (CNSSP-15), which provides best practices for the use of public standards for secure information sharing. Among the improvements, there is AES256 for Kerberos authentication, and SHA384 for VPN encryption. For more information about CNSSP-15, see the [Committee on National Security Systems, Policies page](http://www.cnss.gov/CNSS/issuances/Policies.cfm).
 
-- As a result of the above upgrade, Azure Stack now has new default values for IPsec/IKEv2 configurations. The new default values used on the Azure Stack side are as follows:
+- As a result of the above upgrade, Azure Stack Hub now has new default values for IPsec/IKEv2 configurations. The new default values used on the Azure Stack Hub side are as follows:
 
    **IKE Phase 1 (Main Mode) parameters**
 
@@ -143,28 +143,28 @@ For more information about update build types, see [Manage updates in Azure Stac
 
    These changes are reflected in the [default IPsec/IKE proposal](../user/azure-stack-vpn-gateway-settings.md#ipsecike-parameters) documentation as well.
 
-- Infrastructure backup service improves logic that calculates desired free space for backups instead of relying on a fixed threshold. The service will use the size of a backup, retention policy, reserve, and current utilization of external storage location to determine if a warning needs to be raised to the operater. 
+- The infrastructure backup service improves logic that calculates desired free space for backups instead of relying on a fixed threshold. The service will use the size of a backup, retention policy, reserve, and current utilization of external storage location to determine if a warning needs to be raised to the operator.
 
 ### Changes
 
-- When downloading marketplace items from Azure to Azure Stack, there is a new user interface that enables you to specify a version of the item, when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md).  
+- When downloading marketplace items from Azure to Azure Stack Hub, there is a new user interface that enables you to specify a version of the item, when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).  
 
-- Starting with the 1910 release, the Azure Stack system **requires** an additional /20 private internal IP space. This network is private to the Azure Stack system and can be re-used on multiple Azure Stack systems within your datacenter. While the network is private to Azure Stack, it must not overlap with a network in your datacenter. The /20 private IP space is divided into multiple networks that enable running the Azure Stack infrastructure on containers (as previously mentioned in the [1905 release notes](release-notes.md?view=azs-1905)). The goal of running the Azure Stack infrastructure in containers is to optimize utilization and enhance performance. In addition, the /20 private IP space is also used to enable ongoing efforts that will reduce required routable IP space prior to deployment.
+- Starting with the 1910 release, the Azure Stack Hub system **requires** an additional /20 private internal IP space. This network is private to the Azure Stack Hub system and can be re-used on multiple Azure Stack Hub systems within your datacenter. While the network is private to Azure Stack Hub, it must not overlap with a network in your datacenter. The /20 private IP space is divided into multiple networks that enable running the Azure Stack Hub infrastructure on containers (as previously mentioned in the [1905 release notes](release-notes.md?view=azs-1905)). The goal of running the Azure Stack Hub infrastructure in containers is to optimize utilization and enhance performance. In addition, the /20 private IP space is also used to enable ongoing efforts that will reduce required routable IP space prior to deployment.
 
-  - Please note that the /20 input serves as a pre-requisite to the next Azure Stack update after 1910. When the next Azure Stack update after 1910 is released and an attempt is made to install it, the update will fail if you have not completed the /20 input as described below in remediation steps. An alert will be present in the admin portal until the above remediation steps have been completed. Please see the [Datacenter network integration](azure-stack-network.md#private-network) article to understand how this new private space will be consumed. 
+  - Please note that the /20 input serves as a pre-requisite to the next Azure Stack Hub update after 1910. When the next Azure Stack Hub update after 1910 is released and you attempt to install it, the update will fail if you have not completed the /20 input as described in the remediation steps as follows. An alert will be present in the admin portal until the above remediation steps have been completed. See the [Datacenter network integration](azure-stack-network.md#private-network) article to understand how this new private space will be consumed. 
 
-  - Remediation steps: To remediate, follow the instructions to [open a PEP Session](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Prepare a [private internal IP range](azure-stack-network.md#logical-networks) of size /20, and run the following cmdlet (only available starting with 1910) in the PEP session using the following example: `Set-AzsPrivateNetwork -UserSubnet 100.87.0.0/20`. If the operation is performed successfully, you will receive the message **Azs Internal Network range added to the config**. If successfully completed, the alert will close in the admin portal. The Azure Stack system will now be able to update to the next version.
+  - Remediation steps: To remediate, follow the instructions to [open a PEP Session](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Prepare a [private internal IP range](azure-stack-network.md#logical-networks) of size /20, and run the following cmdlet (only available starting with 1910) in the PEP session using the following example: `Set-AzsPrivateNetwork -UserSubnet 100.87.0.0/20`. If the operation is performed successfully, you will receive the message **Azs Internal Network range added to the config**. If successfully completed, the alert will close in the admin portal. The Azure Stack Hub system will now be able to update to the next version.
   
-- Infrastructure backup service deletes partially uploaded backup data if the external storage location runs out of capacity during the upload procedure.  
+- The infrastructure backup service deletes partially uploaded backup data if the external storage location runs out of capacity during the upload procedure.  
 
-- Infrastructure backup service adds identity service to the backup payload for AAD deployments.  
+- The infrastructure backup service adds identity service to the backup payload for AAD deployments.  
 
-- The AzureStack PowerShell Module has been updated to version 1.8.0 for the 1910 release.<br>Changes include:
-   - **New DRP Admin module**: The Deployment Resource Provider (DRP) enables orchestrated deployments of resource providers to Azure Stack. These commands interact with the Azure Resource Manager layer to interact with DRP.
+- The Azure Stack PowerShell Module has been updated to version 1.8.0 for the 1910 release.<br>Changes include:
+   - **New DRP Admin module**: The Deployment Resource Provider (DRP) enables orchestrated deployments of resource providers to Azure Stack Hub. These commands interact with the Azure Resource Manager layer to interact with DRP.
    - **BRP**: <br />
            - Support single role restore for Azures stack infrastructure backup. <br />
            - Add parameter `RoleName` to cmdlet `Restore-AzsBackup`.
-   - **FRP**: Breaking changes for **Drive** and **Volume** resources with API version `2019-05-01`. The features are supported by Azure Stack 1910 and later: <br />
+   - **FRP**: Breaking changes for **Drive** and **Volume** resources with API version `2019-05-01`. The features are supported by Azure Stack Hub 1910 and later: <br />
             - The value of `ID`, `Name`, `HealthStatus` and `OperationalStatus` have been changed. <br />
             - Supported new properties `FirmwareVersion`, `IsIndicationEnabled`, `Manufacturer`, and `StoragePool` for **Drive** resources. <br />
             - The properties `CanPool` and `CannotPoolReason` of **Drive** resources have been deprecated; use `OperationalStatus` instead.
@@ -173,16 +173,16 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
-- Fixed an issue that prevented enforcing TLS 1.2 policy on environments deployed prior to the Azure Stack 1904 release.
+- Fixed an issue that prevented enforcing TLS 1.2 policy on environments deployed prior to the Azure Stack Hub 1904 release.
 - Fixed an issue where an Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in. 
 - Removed **Reset Password** from the Virtual Machine Scale Set UI.
 - Fixed an issue where deleting the load balancer from the portal did not result in the deletion of the object in the infrastructure layer.
 - Fixed an issue that showed an inaccurate percentage of the Gateway Pool utilization alert on the admin portal.
-- Fixed an issue where adding more than one public IP on the same NIC on a Virtual Machine resulted in internet connectivity issues. Now, a NIC with two public IPs should work as expected.
+<!-- Fixed an issue where adding more than one public IP on the same NIC on a Virtual Machine resulted in internet connectivity issues. Now, a NIC with two public IPs should work as expected.[This fix actually didn't go in 1910 due to build issues, commenting out until next build (2002) ] -->
 
 ## Security updates
 
-For information about security updates in this update of Azure Stack, see [Azure Stack security updates](release-notes-security-updates.md).
+For information about security updates in this update of Azure Stack Hub, see [Azure Stack Hub security updates](release-notes-security-updates.md).
 
 ## Update planning
 
@@ -194,27 +194,27 @@ Before applying the update, make sure to review the following information:
 
 ## Download the update
 
-You can download the Azure Stack 1910 update package from [the Azure Stack download page](https://aka.ms/azurestackupdatedownload).
+You can download the Azure Stack Hub 1910 update package from [the Azure Stack Hub download page](https://aka.ms/azurestackupdatedownload).
 
 ## Hotfixes
 
-Azure Stack releases hotfixes on a regular basis. Be sure to install the latest Azure Stack hotfix for 1908 before updating Azure Stack to 1910.
+Azure Stack Hub releases hotfixes on a regular basis. Be sure to install the latest Azure Stack Hub hotfix for 1908 before updating Azure Stack Hub to 1910.
 
-Azure Stack hotfixes are only applicable to Azure Stack integrated systems; do not attempt to install hotfixes on the ASDK.
+Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
 ### Prerequisites: Before applying the 1910 update
 
-The 1910 release of Azure Stack must be applied on the 1908 release with the following hotfixes:
+The 1910 release of Azure Stack Hub must be applied on the 1908 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1908.9.43](https://support.microsoft.com/help/4531007)
+- [Azure Stack Hub hotfix 1.1908.11.47](https://support.microsoft.com/help/4535000)
 
 ### After successfully applying the 1910 update
 
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1910.8.76](https://support.microsoft.com/help/4534999)
+- [Azure Stack Hub hotfix 1.1910.9.78](https://support.microsoft.com/help/4536210)
 ::: moniker-end
 
 ::: moniker range="azs-1908"
@@ -291,7 +291,7 @@ The Azure Stack 1908 Update requires **Azure Stack OEM version 2.1 or later** fr
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack hotfix 1.1908.9.43](https://support.microsoft.com/help/4531007)
+- [Azure Stack hotfix 1.1908.11.47](https://support.microsoft.com/help/4535000)
 ::: moniker-end
 
 ::: moniker range="azs-1907"
