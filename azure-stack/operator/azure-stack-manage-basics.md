@@ -100,7 +100,7 @@ In addition to providing services, you must do the regular duties of an operator
 
 ## What to tell your users
 
-You'll need to let your users know how to work with services in Azure Stack, how to connect to the environment, and how to subscribe to offers. Besides any custom documentation that you may want to provide your users, you can direct users to [Azure Stack User Documentation](https://docs.microsoft.com/en-us/azure-stack/user/).
+You'll need to let your users know how to work with services in Azure Stack, how to connect to the environment, and how to subscribe to offers. Besides any custom documentation that you may want to provide your users, you can direct users to [Azure Stack User Documentation](/azure-stack/user/).
 
 **Understand how to work with services in Azure Stack**
 
