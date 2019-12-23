@@ -149,7 +149,7 @@ The certificate for identity must contain a subject that matches the following f
 
 ### Validate certificates
 
-Before deploying the App Service resource provider, you should [validate the certificates to be used](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation) by using the Azure Stack Readiness Checker tool available from the [PowerShell Gallery](https://aka.ms/AzsReadinessChecker). The Azure Stack Readiness Checker Tool validates that the generated PKI certificates are suitable for App Service deployment.
+Before deploying the App Service resource provider, you should [validate the certificates to be used](azure-stack-validate-pki-certs.md#using-validated-certificates) by using the Azure Stack Readiness Checker tool available from the [PowerShell Gallery](https://aka.ms/AzsReadinessChecker). The Azure Stack Readiness Checker Tool validates that the generated PKI certificates are suitable for App Service deployment.
 
 As a best practice, when working with any of the necessary [Azure Stack PKI certificates](azure-stack-pki-certs.md), you should plan enough time to test and reissue certificates if necessary.
 
