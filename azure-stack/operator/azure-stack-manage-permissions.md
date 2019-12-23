@@ -3,7 +3,7 @@ title: Set access permissions using role-based access control | Microsoft Docs
 description: Learn how to set access permissions using role-based access control (RBAC) in Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: PatAltimore
+author: thoroet
 manager: femila
 editor: ''
 
@@ -12,10 +12,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2019
-ms.author: patricka
+ms.date: 12/23/2019
+ms.author: justinha
 ms.reviewer: thoroet
-ms.lastreviewed: 01/14/2019
+ms.lastreviewed: 12/23/2019
 
 ---
 # Set access permissions using role-based access control
@@ -27,6 +27,9 @@ A user in Azure Stack can be a reader, owner, or contributor for each instance o
  - Reader: User can view everything, but can't make any changes.
  - Contributor: User can manage everything except access to resources.
  - Owner: User can manage everything, including access to resources.
+ - Custom: User has limited, specific access to resources.
+
+ For more information about creating a custom role, see [Custom roles for Azure resources](https://docs.microsoft.com/azure/role-based-access-control/custom-roles).
 
 ## Set access permissions for a user
 
