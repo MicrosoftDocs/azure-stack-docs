@@ -8,7 +8,7 @@ manager: femila
 editor: ''
 
 ms.service: azure-stack
-ms.workload: tzl
+ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
