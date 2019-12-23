@@ -48,19 +48,19 @@ Your Azure Stack Hub deployment must have internet connectivity and be [registe
 
    To review available space: in **Region management**, select the region you want to explore and then go to **Resource Providers** > **Storage**:
 
-   ![Review storage space in Azure Stack administrator portal](media/azure-stack-download-azure-marketplace-item-tzl/storage.png)
+   ![Review storage space in Azure Stack administrator portal](media/azure-stack-download-azure-marketplace-item/storage.png)
 
 3. Open Azure Stack Hub Marketplace and connect to Azure. To do so, select the **Marketplace management** service, select **Marketplace items**, and then select **Add from Azure**:
 
-   ![Add marketplace items from Azure](media/azure-stack-download-azure-marketplace-item-tzl/marketplace.png)
+   ![Add marketplace items from Azure](media/azure-stack-download-azure-marketplace-item/marketplace.png)
 
 4. Each line item also shows the currently available version. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple**. You can click on each item to view its description and additional information, including its download size:
 
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure1.png)
+   ![Add from Azure](media/azure-stack-download-azure-marketplace-item/add-from-azure1.png)
 
 5. If the version of an item is shown as **Multiple**, you can select that item and then choose a specific version from the resulting version selector dropdown:
 
-   ![Add from Azure](media/azure-stack-download-azure-marketplace-item-tzl/add-from-azure3.png)
+   ![Add from Azure](media/azure-stack-download-azure-marketplace-item/add-from-azure3.png)
 
 6. Select the item you want, and then select **Download**. Download times vary and depends on the network connectivity. After the download completes, you can deploy the new marketplace item as either an Azure Stack operator or a user.
 
@@ -101,7 +101,7 @@ There are two parts to this scenario:
 
 Once you have registered, you can disregard the following message that appears on the Marketplace management blade, as this is not relevant for the disconnected use case:
 
-![Marketplace management](media/azure-stack-download-azure-marketplace-item-tzl/toolsmsg.png)
+![Marketplace management](media/azure-stack-download-azure-marketplace-item/toolsmsg.png)
 
 ### Use the marketplace syndication tool to download marketplace items
 
@@ -163,13 +163,13 @@ Once you have registered, you can disregard the following message that appears o
 
 7. When the tool runs, you should see a screen similar to the following image, with the list of available Azure marketplace items:
 
-   ![Marketplace items](media/azure-stack-download-azure-marketplace-item-tzl/tool1.png)
+   ![Marketplace items](media/azure-stack-download-azure-marketplace-item/tool1.png)
 
 8. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple versions**. If the version of an item is shown as **Multiple versions**, you can select that item and then choose a specific version from the resulting version selector window.
 
 9. If you have not installed the Azure Storage tools, you will get the following message. In order to install these tools, make sure you download [AzCopy](/azure/storage/common/storage-use-azcopy#download-azcopy):
 
-   ![Storage tools](media/azure-stack-download-azure-marketplace-item-tzl/vmnew1.png)
+   ![Storage tools](media/azure-stack-download-azure-marketplace-item/vmnew1.png)
 
 10. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images. You reference the *version* when you import the item in the next procedure.
 
@@ -197,7 +197,7 @@ Once you have registered, you can disregard the following message that appears o
 
    The following image shows a folder structure example. **D:\downloadfolder** contains all the downloaded marketplace items. Each subfolder is a marketplace item (for example, **microsoft.custom-script-linux-arm-2.0.3**), named by the product ID. Inside each subfolder is the marketplace item's downloaded content.
 
-   ![Marketplace download directory structure](media/azure-stack-download-azure-marketplace-item-tzl/mp1.png)
+   ![Marketplace download directory structure](media/azure-stack-download-azure-marketplace-item/mp1.png)
 
 2. Follow the instructions in [this article](azure-stack-powershell-configure-admin.md) to configure the Azure Stack Operator PowerShell session.
 
