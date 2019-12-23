@@ -64,8 +64,8 @@ These services require additional configuration before you can make them availab
 Azure Stack will continue to add support for Azure services. For the projected roadmap, see the [Azure Stack: An extension of Azure](https://go.microsoft.com/fwlink/?LinkId=842846&clcid=0x409) whitepaper. You can also monitor the [Azure Stack blog posts](https://azure.microsoft.com/blog/tag/azure-stack-technical-preview) for new announcements.
 
 ## What account should I use?
-There are a few account considerations to be aware of when managing Azure Stack. Especially in deployments using Windows Server Active Directory Federation Services (AD FS) as the identity provider instead of Azure Active Directory (Azure AD). The following account considerations apply to both Azure Stack integrated systems and ASDK deployments:
 
+There are a few account considerations to be aware of when managing Azure Stack. Especially in deployments using Windows Server Active Directory Federation Services (AD FS) as the identity provider instead of Azure Active Directory (Azure AD). The following account considerations apply to both Azure Stack integrated systems and ASDK deployments:
 
 |Account|Azure AD|AD FS|
 |-----|-----|-----|
@@ -100,7 +100,7 @@ In addition to providing services, you must do the regular duties of an operator
 
 ## What to tell your users
 
-You'll need to let your users know how to work with services in Azure Stack, how to connect to the environment, and how to subscribe to offers. Besides any custom documentation that you may want to provide your users, you can direct users to [Azure Stack User Documentation](https://docs.microsoft.com/azure-stack/user/).
+You'll need to let your users know how to work with services in Azure Stack, how to connect to the environment, and how to subscribe to offers. Besides any custom documentation that you may want to provide your users, you can direct users to [Azure Stack User Documentation](/azure-stack/user/).
 
 **Understand how to work with services in Azure Stack**
 

@@ -77,9 +77,9 @@ The plugin works with Nagios 4x and XI. To download the plugin, see [Monitoring 
 
 ### Requirements for Nagios
 
-1.  Minimum Nagios Version is 4.x
+1. Minimum Nagios Version is 4.x
 
-2.  Microsoft Azure Active Directory Python library. This library can be installed using Python PIP.
+2. Microsoft Azure Active Directory Python library. This library can be installed using Python PIP.
 
     ```bash  
     sudo pip install adal pyyaml six
@@ -101,11 +101,11 @@ samples/etc/azurestack_hosts.cfg
 samples/etc/azurestack_services.cfg
 ```
 
-1.  Copy the plugin `azurestack_plugin.py` into the following directory: `/usr/local/nagios/libexec`.
+1. Copy the plugin `azurestack_plugin.py` into the following directory: `/usr/local/nagios/libexec`.
 
-2.  Copy the handler `azurestack_handler.sh` into the following directory: `/usr/local/nagios/libexec/eventhandlers`.
+2. Copy the handler `azurestack_handler.sh` into the following directory: `/usr/local/nagios/libexec/eventhandlers`.
 
-3.  Make sure the plugin file is set to be executable:
+3. Make sure the plugin file is set to be executable:
 
     ```bash
     sudo cp azurestack_plugin.py <PLUGINS_DIR>
@@ -116,7 +116,7 @@ samples/etc/azurestack_services.cfg
 
 The following parameters are available to be configured in the azurestack.cfg file. Parameters in bold need to be configured independently from the authentication model you choose.
 
-For more information on how to create an SPN, see [Use an app identity to access resources](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
+For more information on how to create an SPN, see [Use an app identity to access resources](azure-stack-create-service-principals.md).
 
 | Parameter | Description | Authentication |
 | --- | --- | --- |
@@ -146,35 +146,35 @@ The other configuration files contain optional configuration settings as they ca
 
 ### Setup steps
 
-1.  Modify the configuration file.
+1. Modify the configuration file.
 
-2.  Copy the modified configuration files into the following folder: `/usr/local/nagios/etc/objects`.
+2. Copy the modified configuration files into the following folder: `/usr/local/nagios/etc/objects`.
 
 ### Update Nagios configuration
 
 The Nagios configuration needs to be updated to ensure the Azure Stack – Nagios Plugin is loaded.
 
-1.  Open the following file:
+1. Open the following file:
 
-```bash  
-/usr/local/nagios/etc/nagios.cfg
-```
+   ```bash  
+   /usr/local/nagios/etc/nagios.cfg
+   ```
 
-2.  Add the following entry:
+2. Add the following entry:
 
-```bash  
-# Load the Azure Stack Plugin Configuration
-cfg_file=/usr/local/Nagios/etc/objects/azurestack_contacts.cfg
-cfg_file=/usr/local/Nagios/etc/objects/azurestack_commands.cfg
-cfg_file=/usr/local/Nagios/etc/objects/azurestack_hosts.cfg
-cfg_file=/usr/local/Nagios/etc/objects/azurestack_services.cfg
-```
+   ```bash  
+   # Load the Azure Stack Plugin Configuration
+   cfg_file=/usr/local/Nagios/etc/objects/azurestack_contacts.cfg
+   cfg_file=/usr/local/Nagios/etc/objects/azurestack_commands.cfg
+   cfg_file=/usr/local/Nagios/etc/objects/azurestack_hosts.cfg
+   cfg_file=/usr/local/Nagios/etc/objects/azurestack_services.cfg
+   ```
 
-3.  Reload Nagios.
+3. Reload Nagios.
 
-```bash  
-sudo service nagios reload
-```
+   ```bash  
+   sudo service nagios reload
+   ```
 
 ### Manually close active alerts
 

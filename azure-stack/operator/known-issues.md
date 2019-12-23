@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2019
+ms.date: 12/19/2019
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 11/21/2019
@@ -88,6 +88,12 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, when adding a **Load balancer** backend pool, the operation results in an error message of **Failed to save load balancer backend pool**; however, the operation did actually succeed.
+- Occurrence: Common
+
+### Alert for network interface disconnected
+
+- Applicable: This issue applies to the 1908 and 1910 releases.
+- Cause: When a cable is disconnected from a network adapter, an alert does not show in the administrator portal. This issue is caused because this fault is disabled by default in Windows Server 2019.
 - Occurrence: Common
 
 ### Incorrect tooltip when creating VM
@@ -312,6 +318,12 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Applicable: This issue applies to all supported releases.
 - Cause: In the user portal, when you try to upload a blob using the **OAuth(preview)** option, the task fails with an error message.
 - Remediation: Upload the blob using the SAS option.
+- Occurrence: Common
+
+### Alert for network interface disconnected
+
+- Applicable: This issue applies to the 1908 release.
+- Cause: When a cable is disconnected from a network adapter, an alert does not show in the administrator portal. This issue is caused because this fault is disabled by default in Windows Server 2019.
 - Occurrence: Common
 
 ## Networking
