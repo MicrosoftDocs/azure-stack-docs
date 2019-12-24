@@ -38,7 +38,7 @@ If Azure Stack Hub connects to the internet, you can use the administrator porta
 
 ### Prerequisites
 
-Your Azure Stack Hub deployment must have internet connectivity and be [registered with Azure]{.underline}.
+Your Azure Stack Hub deployment must have internet connectivity and be registered with Azure.
 
 ### Use the portal to download marketplace items
 
@@ -85,7 +85,7 @@ There are two parts to this scenario:
 
 - A disconnected Azure Stack Hub environment with the following prerequisites:
 
-  - Your Azure Stack deployment must be [registered with Azure]{.underline}.
+  - Your Azure Stack deployment must be registered with Azure.
 
   - The computer that has internet connectivity must have **Azure Stack PowerShell Module version 1.2.11** or later. If not already present, [install Azure Stack-specific PowerShell modules](azure-stack-powershell-install.md).
 
