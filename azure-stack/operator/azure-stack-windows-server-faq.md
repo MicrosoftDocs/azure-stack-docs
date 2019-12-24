@@ -53,7 +53,7 @@ If you download both versions of the image, only the latest version is visible t
 You can change the license model attribute to switch from bring your own license (BYOL) to the pay-as-you-go (PAYG) model by running the following script:
 
 ```powershell
-vm= Get-Azurermvm -ResourceGroup "<your RG>" -Name "<your VM>"
+$vm= Get-Azurermvm -ResourceGroup "<your RG>" -Name "<your VM>"
 $vm.LicenseType = "None"
 Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
 ```
