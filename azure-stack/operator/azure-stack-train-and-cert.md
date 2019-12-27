@@ -18,7 +18,7 @@ ms.reviewer: efemmano
 
 *Applies to: Azure Stack integrated systems*
 
-The following training and certification opportunities are available to help you learn about Azure Stack and demonstrate your Azure Stack proficiency.
+Want to learn about Azure Stack and demonstrate your Azure Stack proficiency? Check out the following training and certification opportunities.
 
 ## Training
 
