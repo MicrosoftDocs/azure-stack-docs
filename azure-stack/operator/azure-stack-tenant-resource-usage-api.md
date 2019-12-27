@@ -1,5 +1,5 @@
 ---
-title: Tenant resource usage APIs
+title: Tenant resource usage APIs reference
 titleSuffix: Azure Stack
 description: Reference for resource usage APIs, which retrieve Azure Stack usage information.
 services: azure-stack
@@ -19,7 +19,7 @@ ms.reviewer: alfredop
 ms.lastreviewed: 01/14/2019
 
 ---
-# Tenant resource usage API
+# Tenant resource usage API reference
 
 A tenant can use the tenant APIs to view the tenant's own resource usage data. These APIs are consistent with the Azure usage APIs.
 
