@@ -29,7 +29,7 @@ This article answers some frequently asked questions about Windows Server images
 
 First, determine if any Azure Resource Manager templates refer to specific versions. If so, update those templates, or keep older image versions. It is best to use **version: latest**.
 
-Next, if any Virtual Machine scale sets refer to a specific version, you should think about whether these will be scaled later, and decide whether to keep older versions. If neither of these conditions apply, delete older images in the marketplace before downloading newer ones. Use marketplace management to delete them if that is how the original was downloaded. Then download the newer version.
+Next, if any virtual machine scale sets refer to a specific version, you should think about whether these will be scaled later, and decide whether to keep older versions. If neither of these conditions apply, delete older images in the marketplace before downloading newer ones. Use marketplace management to delete them if that is how the original was downloaded. Then download the newer version.
 
 ### What are the licensing options for Windows Server Marketplace images on Azure Stack?
 
@@ -99,7 +99,7 @@ Run the following command from an elevated command prompt:
 slmgr /dlv
 ```
 
-If it is correctly activated, you will see this clearly indicated and the host name displayed in the `slmgr` output. Do not depend on watermarks on the display as they might not be up-to-date, or are showing from a different virtual machine behind yours.
+If it is correctly activated, you will see this clearly indicated and the host name displayed in the `slmgr` output. Do not depend on watermarks on the display as they might not be up to date, or are showing from a different virtual machine behind yours.
 
 ### My VM is not set up to use AVMA, how can I fix it?
 
