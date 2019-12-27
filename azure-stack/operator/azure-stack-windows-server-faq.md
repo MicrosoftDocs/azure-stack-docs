@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 12/27/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 08/29/2019
@@ -29,7 +29,7 @@ This article answers some frequently asked questions about Windows Server images
 
 First, determine if any Azure Resource Manager templates refer to specific versions. If so, update those templates, or keep older image versions. It is best to use **version: latest**.
 
-Next, if any Virtual Machine scale sets refer to a specific version, you should think about whether these will be scaled later, and decide whether to keep older versions. If neither of these conditions apply, delete older images in the marketplace before downloading newer ones. Use marketplace management to delete them if that is how the original was downloaded. Then download the newer version.
+Next, if any virtual machine scale sets refer to a specific version, you should think about whether these will be scaled later, and decide whether to keep older versions. If neither of these conditions apply, delete older images in the marketplace before downloading newer ones. Use marketplace management to delete them if that is how the original was downloaded. Then download the newer version.
 
 ### What are the licensing options for Windows Server Marketplace images on Azure Stack?
 
@@ -78,6 +78,8 @@ Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
 
 These images do apply the **licenseType** parameter, so they are pay as you use. You can set this parameter (see the previous FAQ answer). This only applies to the Windows Server software, not to layered products such as SQL, which require you to bring your own license. Pay as you use licensing does not apply to layered software products.
 
+Note that you can only change the **licenseType** property for SQL Server images from the Marketplace if the version is XX.X.20190410 or higher. If you are running an older version of the SQL Server images from the Marketplace, you cannot change the **licenseType** attribute, and you must redeploy using the latest SQL Server images from the Marketplace.
+
 ### I have an Enterprise Agreement (EA) and will be using my EA Windows Server license; how do I make sure images are billed correctly?
 
 You can add **licenseType: Windows_Server** in an Azure Resource Manager template. This setting must be added to each virtual machine resource block.
@@ -97,7 +99,7 @@ Run the following command from an elevated command prompt:
 slmgr /dlv
 ```
 
-If it is correctly activated, you will see this clearly indicated and the host name displayed in the `slmgr` output. Do not depend on watermarks on the display as they might not be up-to-date, or are showing from a different virtual machine behind yours.
+If it is correctly activated, you will see this clearly indicated and the host name displayed in the `slmgr` output. Do not depend on watermarks on the display as they might not be up to date, or are showing from a different virtual machine behind yours.
 
 ### My VM is not set up to use AVMA, how can I fix it?
 
