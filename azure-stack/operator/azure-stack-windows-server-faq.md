@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 12/27/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 08/29/2019
@@ -77,6 +77,8 @@ Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
 ### What about other VMs that use Windows Server, such as SQL or Machine Learning Server?
 
 These images do apply the **licenseType** parameter, so they are pay as you use. You can set this parameter (see the previous FAQ answer). This only applies to the Windows Server software, not to layered products such as SQL, which require you to bring your own license. Pay as you use licensing does not apply to layered software products.
+
+Note that you can only change the **licenseType** property for SQL Server images from the Marketplace if the version is XX.X.20190410 or higher. If you are running an older version of the SQL Server images from the Marketplace, you cannot change the **licenseType** attribute, and you must redeploy using the latest SQL Server images from the Marketplace.
 
 ### I have an Enterprise Agreement (EA) and will be using my EA Windows Server license; how do I make sure images are billed correctly?
 
