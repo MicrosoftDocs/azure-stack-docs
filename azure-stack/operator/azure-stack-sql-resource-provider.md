@@ -27,7 +27,7 @@ Use the SQL resource provider to offer SQL databases as a service on [Azure Stac
 - Websites that use SQL.
 - Workloads that use SQL.
 
-There are several limitations to consider, before installing the MySQL resource provider:
+There are several limitations to consider, before installing the SQL resource provider:
 
 - Users can only create and manage individual databases. Database Server instance is not accessible to end users. This may limit compatibility with on-premises database applications that need access to master, Temp DB, or to dynamically manage databases.
 - Your Azure Stack operator is responsible for deploying, updating, securing, configuring and maintaining the SQL database servers and hosts. The RP service does not provide any host and database server instance management functionality. 
