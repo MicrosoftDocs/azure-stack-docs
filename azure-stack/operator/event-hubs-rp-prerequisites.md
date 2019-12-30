@@ -33,7 +33,7 @@ The following prerequisites must be completed before you can install Event Hubs 
    > [!NOTE]
    > **PFX files must be password protected**. The password will be requested later during installation.
 
-2. Be sure to review [Validate your certificate](azure-stack-validate-pki-certs.md#perform-platform-as-a-service-certificate-validation). The article shows you how to prepare and validate the certificates you use for the Event Hubs resource provider. 
+2. Be sure to review [Validate your certificate](azure-stack-validate-pki-certs.md). The article shows you how to prepare and validate the certificates you use for the Event Hubs resource provider. 
 
 ## Next steps
 
