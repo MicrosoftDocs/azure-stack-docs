@@ -16,7 +16,7 @@ Generate portable ML models, from data that only exists on-premises.
 
 ## Context and problem
 
-Many organizations would like to unlock insights from their on-premises or legacy data using tools that their data scientists understand. The [Azure Machine Learning service](/azure/machine-learning/) provides cloud-native tooling to train, tune, and deploy ML and Deep Learning models.  
+Many organizations would like to unlock insights from their on-premises or legacy data using tools that their data scientists understand. [Azure Machine Learning](/azure/machine-learning/) provides cloud-native tooling to train, tune, and deploy ML and Deep Learning models.  
 
 However, some data is too large send to the cloud, or can't be sent to the cloud for regulatory reasons. Using this pattern, data scientists can use Azure Machine Learning to train models using on-premises data and compute. 
 
