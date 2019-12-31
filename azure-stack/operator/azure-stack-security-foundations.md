@@ -71,7 +71,7 @@ For more information on WDAC, please refer to [Windows Defender Application Cont
 
 ## Credential Guard
 
-Another Windows Server 2016 security feature in Azure Stack is Windows Defender Credential Guard, which is used to protect Azure Stack infrastructure credentials from Pass-the-Hash and Pass-the-Ticket attacks.
+Another Windows Server security feature in Azure Stack is Windows Defender Credential Guard, which is used to protect Azure Stack infrastructure credentials from Pass-the-Hash and Pass-the-Ticket attacks.
 
 ## Antimalware
 
