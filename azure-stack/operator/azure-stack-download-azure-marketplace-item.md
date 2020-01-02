@@ -167,13 +167,13 @@ Once you have registered, you can disregard the following message that appears o
 
 8. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple versions**. If the version of an item is shown as **Multiple versions**, you can select that item and then choose a specific version from the resulting version selector window.
 
-9. If you have not installed the Azure Storage tools, you will get the following message. In order to install these tools, make sure you download [AzCopy](/azure/storage/common/storage-use-azcopy#download-azcopy):
-
-   ![Storage tools](media/azure-stack-download-azure-marketplace-item/vmnew1.png)
-
-10. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images. You reference the *version* when you import the item in the next procedure.
+9. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images. You reference the *version* when you import the item in the next procedure.
 
     You can also filter the list of images by using the **Add criteria** option.
+
+10. If you have not installed the Azure Storage tools, you will get the following message. In order to install these tools, make sure you download [AzCopy](/azure/storage/common/storage-use-azcopy#download-azcopy):
+
+    ![Storage tools](media/azure-stack-download-azure-marketplace-item/vmnew1.png)
 
 11. Select **OK**, and then review and accept the legal terms.
 

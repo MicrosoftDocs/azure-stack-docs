@@ -4,7 +4,7 @@ titleSuffix: Azure Stack
 description: Learn about the security posture and controls applied to Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: PatAltimore
+author: JustinHall
 manager: femila
 editor: ''
 
@@ -14,9 +14,9 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2019
-ms.author: patricka
+ms.author: justinha
 ms.reviewer: fiseraci
-ms.lastreviewed: 06/10/2019
+ms.lastreviewed: 12/29/2019
 
 ---
 # Azure Stack infrastructure security controls
@@ -50,6 +50,7 @@ The Azure Stack infrastructure components communicate using channels encrypted w
 All external infrastructure endpoints, like the REST endpoints or the Azure Stack portal, support TLS 1.2 for secure communications. Encryption certificates, either from a third party or your enterprise Certificate Authority, must be provided for those endpoints.
 
 While self-signed certificates can be used for these external endpoints, Microsoft strongly advises against using them.
+For more information on how to enforce TLS 1.2 on the external endpoints of Azure Stack Hub, see [Configure Azure Stack security controls](azure-stack-security-configuration.md).
 
 ## Secret management
 
@@ -57,23 +58,31 @@ Azure Stack infrastructure uses a multitude of secrets, like passwords, to funct
 
 The remaining secrets that aren't gMSA can be rotated manually with a script in the privileged endpoint.
 
-## Code integrity
+Azure Stack Hub infrastructure uses 4096-bit RSA keys for all its internal certificates. Same key-length certificates can also be used for the external endpoints. For more information on secrets and certificate rotation, please refer to [Rotate secrets in Azure Stack](azure-stack-rotate-secrets.md).
 
-Azure Stack makes use of the latest Windows Server 2016 security features. One of them is Windows Defender Device Guard, which provides app whitelisting and ensures that only authorized code runs within the Azure Stack infrastructure.
+## Windows Defender Application Control
 
-Authorized code is signed by either Microsoft or the OEM partner. The signed authorized code is included in the list of allowed software specified in a policy defined by Microsoft. In other words, only software that has been approved to run in the Azure Stack infrastructure can be executed. Any attempt to execute unauthorized code is blocked and an audit is generated.
+Azure Stack makes use of the latest Windows Server security features. One of them is Windows Defender Application Control (WDAC, formerly known as Code Integrity), which provides executables whitelisting and ensures that only authorized code runs within the Azure Stack infrastructure.
 
-The Device Guard policy also prevents third-party agents or software from running in the Azure Stack infrastructure.
+Authorized code is signed by either Microsoft or the OEM partner. The signed authorized code is included in the list of allowed software specified in a policy defined by Microsoft. In other words, only software that has been approved to run in the Azure Stack Hub infrastructure can be executed. Any attempt to execute unauthorized code is blocked and an alert is generated. Azure Stack Hub enforces both User Mode Code Integrity (UMCI) and Hypervisor Code Integrity (HVCI).
+
+The WDAC policy also prevents third-party agents or software from running in the Azure Stack infrastructure.
+For more information on WDAC, please refer to [Windows Defender Application Control and virtualization-based protection of code integrity](https://docs.microsoft.com/windows/security/threat-protection/device-guard/introduction-to-device-guard-virtualization-based-security-and-windows-defender-application-control).
 
 ## Credential Guard
 
-Another Windows Server 2016 security feature in Azure Stack is Windows Defender Credential Guard, which is used to protect Azure Stack infrastructure credentials from Pass-the-Hash and Pass-the-Ticket attacks.
+Another Windows Server security feature in Azure Stack is Windows Defender Credential Guard, which is used to protect Azure Stack infrastructure credentials from Pass-the-Hash and Pass-the-Ticket attacks.
 
 ## Antimalware
 
 Every component in Azure Stack (both Hyper-V hosts and virtual machines) is protected with Windows Defender Antivirus.
 
-In connected scenarios, antivirus definition and engine updates are applied multiple times a day. In disconnected scenarios, antimalware updates are applied as part of monthly Azure Stack updates. For more information, see [update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
+In connected scenarios, antivirus definition and engine updates are applied multiple times a day. 
+In disconnected scenarios, antimalware updates are applied as part of monthly Azure Stack updates. In case a more frequent update to the Windows Defender's definitions is required in disconnected scenarios, Azure Stack Hub also support importing  Windows Defender updates. For more information, see [update Windows Defender Antivirus on Azure Stack](azure-stack-security-av.md).
+
+## Secure Boot
+
+Azure Stack Hub enforces Secure Boot on all the Hyper-V hosts and infrastructure virtual machines. 
 
 ## Constrained administration model
 
