@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/26/2019
+ms.date: 01/02/2020
 ms.author: sethm
 ms.reviewer: ihcherie
-ms.lastreviewed: 12/26/2019
+ms.lastreviewed: 01/02/2020
 
 ---
 # Azure Marketplace items available for Azure Stack
@@ -233,7 +233,6 @@ Microsoft Azure Stack supports the following Azure Marketplace VMs and solution 
 | ![Xoops](media/azure-stack-marketplace-azure-items/xoops.png) | [Xoops](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.xoops) | CMS and Web Portal Program that creates dynamic websites. | Bitnami |
 | ![Zurmo](media/azure-stack-marketplace-azure-items/zurmo.png) | [Zurmo](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.zurmo) | Open-source CRM system: Mobile, Social, and Gamified. | Bitnami |
 | ![ZooKeeper](media/azure-stack-marketplace-azure-items/zookeeper.png) | [ZooKeeper](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.zookeeper) | ZooKeeper provides a reliable, centralized register of configuration data and services for distributed apps. | Bitnami |
-| ![Check Point vSEC Security Management](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Check Point vSEC Security Management](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | Check Point vSEC delivers advanced, multi-layered threat prevention to protect customer assets in Azure from malware and sophisticated threats. **Download both Check Point vSEC marketplace items.** | Check Point |
 | ![Check Point CloudGuard IaaS High Availability](media/azure-stack-marketplace-azure-items/checkpoint.png) | [CloudGuard IaaS High Availability](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | This solution deploys a 2 member Check Point CloudGuard IaaS cluster. Each member has 2 network interfaces. | Check Point |
 | ![Check Point CloudGuard IaaS Security Management](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Check Point CloudGuard IaaS Security Management](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | This solution deploys a single Check Point Security Management Server with a single network interface. | Check Point |
 | ![Check Point CloudGuard IaaS Single Gateway](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Check Point CloudGuard IaaS Single Gateway](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | This solution deploys a single Check Point CloudGuard IaaS security gateway with 2 network interfaces. After deployment, you should set up User Defined Routes (UDRs) to route traffic through the gateway. | Check Point |
