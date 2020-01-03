@@ -30,7 +30,7 @@ In Azure Stack, you can add your custom virtual machine (VM) image to the market
 
 Create a custom generalized VHD. If the VHD is from outside Azure, follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed) to correctly **Sysprep** your VHD and make it generalized.
 
-If the VHD is from Azure, follow the instructions in [this document](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/download-vhd)to correctly generalize and download the VHD before porting it to Azure Stack.
+If the VHD is from Azure, follow the instructions in [this document](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before porting it to Azure Stack.
 
 ### Linux
 
@@ -57,6 +57,7 @@ Keep in mind the Azure Linux Agent versions that work with Azure Stack [as docum
 2. Stop dellocate the VM
 
 3. Download the VHD
+
    a. To download the VHD file, you need to generate a shared access signature (SAS) URL. When the URL is generated, an expiration time is assigned to the URL.
 
    b. On the menu of the blade for the VM, click Disks.
