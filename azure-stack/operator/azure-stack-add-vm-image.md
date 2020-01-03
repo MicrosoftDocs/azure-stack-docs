@@ -72,8 +72,7 @@ If the VHD is from Azure, follow these instructions to generalize and download t
    
    1. Under the URL that was generated, select **Download the VHD file**.
 
-   1. You may need to select **Save** in the browser to start the download. The default name for the VHD file is _abcd_.
-
+   1. You might need to select **Save** in the browser to start the download. The default name for the VHD file is _abcd_.
 
 ### Considerations
 
