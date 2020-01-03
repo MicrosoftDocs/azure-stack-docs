@@ -111,7 +111,7 @@ Add-AzureRmVhd -Destination "https://bash.blob.redmond.azurestack.com/sample/vhd
 
    ![Set blob access to public](./media/azure-stack-add-vm-image/image2.png)
    
-   
+
 ## Step 3 Option 1: Add the VM Image as an Azure Stack operator using the portal
 
 1. Sign in to Azure Stack as operator. In the menu, select **All services** > **Compute** under **VM Images** > **Add**.
