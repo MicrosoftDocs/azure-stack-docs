@@ -47,9 +47,9 @@ If the VHD is from Azure, follow these instructions to generalize the VHD:
 1. Stop the **waagent** service:
 
    ```bash
-   # sudo waagent -force -deprovision
-   # export HISTSIZE=0
-   # logout
+   sudo waagent -force -deprovision
+   export HISTSIZE=0
+   logout
    ```
 
 2. Shut down the VM and download the VHD. If you are bringing your VHD from Azure, you can do this using disk export, as shown in [Download a Windows VHD from Azure](/azure/virtual-machines/windows/download-vhd).
