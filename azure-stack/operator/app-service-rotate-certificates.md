@@ -21,7 +21,7 @@ ms.lastreviewed: 01/03/2020
 
 # Rotate App Service on Azure Stack Hub Secrets and Certificates
 
-These instructions only apply to Azure App Service on Azure Stack Hub.  Rotation of Azure App Service on Azure Stack Hub secrets is not included in the centralised secret rotation procedure for Azure Stack Hub.  Operators can monitor the validity of secrets within the system, the date on which they were last updated and the time remaining until the secrets expire.
+These instructions only apply to Azure App Service on Azure Stack Hub.  Rotation of Azure App Service on Azure Stack Hub secrets is not included in the centralized secret rotation procedure for Azure Stack Hub.  Operators can monitor the validity of secrets within the system, the date on which they were last updated and the time remaining until the secrets expire.
 
 > [!Important]
 > Operators will not receive alerts for secret expiration on the Azure Stack Hub dashboard as Azure App Service on Azure Stack Hub is not integrated with the Azure Stack Hub alerting service.  Operators must regularly monitor their secrets using the Azure App Service on Azure Stack Hub administration experience in the Azure Stack Hub Administrators portal.
@@ -59,7 +59,7 @@ To update the credentials for the database connection string for the App Service
 
 1. Provide the **SQL SA Username** and **Password** and click **OK** to start the rotation procedure. 
 
-1. The credentials will be rotated through out the Azure App Service role instances. Operators can monitor the Status of the procedure using the **Status** button.
+1. The credentials will be rotated throughout the Azure App Service role instances. Operators can monitor the Status of the procedure using the **Status** button.
 
 ## Rotate Certificates
 
