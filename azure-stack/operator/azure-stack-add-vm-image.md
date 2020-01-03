@@ -18,19 +18,19 @@ ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
 
 ---
-# Add a custom VM to Azure Stack
+# Add a custom VM image to Azure Stack
 
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
-In Azure Stack, you can add your custom virtual machine (VM) image to the marketplace and make it available to your users. Images are added by using Azure Resource Manager templates for Azure Stack. You can also add VM images to the Azure Marketplace UI as a marketplace item using the administrator portal or Windows PowerShell. Use either an image from the global Azure Marketplace, or your own custom VM image.
+In Azure Stack, you can add your custom virtual machine (VM) image to the marketplace and make it available to your users. You can add VM images to the Azure Stack Hub Marketplace through the administrator portal or Windows PowerShell. Use either an image from the global Azure Marketplace as a base for your custom image, or your create your own using Hyper-V.
 
-## Generalize the VM image
+## Create the custom VM image
 
 ### Windows
 
 Create a custom generalized VHD. If the VHD is from outside Azure, follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed) to correctly **Sysprep** your VHD and make it generalized.
 
-If the VHD is from Azure, follow the instructions in [Generalize the source VM by using Sysprep](/azure/virtual-machines/windows/upload-generalized-managed#generalize-the-source-vm-by-using-sysprep) before porting it to Azure Stack.
+If the VHD is from Azure, follow the instructions in [this document](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/download-vhd)to correctly generalize and download the VHD before porting it to Azure Stack.
 
 ### Linux
 
@@ -42,7 +42,7 @@ If the VHD is from outside Azure, follow the appropriate instructions to general
 - [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-If the VHD is from Azure, follow these instructions to generalize the VHD:
+If the VHD is from Azure, follow these instructions to generalize and download the VHD:
 
 1. Stop the **waagent** service:
 
@@ -52,17 +52,36 @@ If the VHD is from Azure, follow these instructions to generalize the VHD:
    # logout
    ```
 
-2. Shut down the VM and download the VHD. If you are bringing your VHD from Azure, you can do this using disk export, as shown in [Download a Windows VHD from Azure](/azure/virtual-machines/windows/download-vhd).
-
 Keep in mind the Azure Linux Agent versions that work with Azure Stack [as documented here](azure-stack-linux.md#azure-linux-agent). Make sure that the sysprepped image has an Azure Linux agent version that is compatible with Azure Stack.
+
+2. Stop dellocate the VM
+
+3. Download the VHD
+   a. To download the VHD file, you need to generate a shared access signature (SAS) URL. When the URL is generated, an expiration time is assigned to the URL.
+
+   b. On the menu of the blade for the VM, click Disks.
+
+   c. Select the operating system disk for the VM, and then click Disk Export.
+
+   d. Set the expiration time of the URL to 36000.
+
+   e. Click Generate URL.
+
+   f. Generate URL
+   
+   g. Under the URL that was generated, click Download the VHD file.
+
+   h. You may need to click Save in the browser to start the download. The default name for the VHD file is abcd.
+
 
 ### Common steps for both Windows and Linux
 
+
 Before you upload the image, it's important to consider the following:
 
-- Azure Stack only supports generating one (1) VM in the fixed disk VHD format. The fixed-format structures the logical disk linearly within the file, so that disk offset *X* is stored at blob offset *X*. A small footer at the end of the blob describes the properties of the VHD. To confirm if your disk is fixed, use the **Get-VHD** PowerShell cmdlet.
+- Azure Stack only supports generation one (1) VM in the fixed disk VHD format. The fixed-format structures the logical disk linearly within the file, so that disk offset *X* is stored at blob offset *X*. A small footer at the end of the blob describes the properties of the VHD. To confirm if your disk is fixed, use the **Get-VHD** PowerShell cmdlet.
 
-- Azure Stack does not support dynamic disk VHDs. Resizing a dynamic disk that's attached to a VM will leave the VM in a failed state. To mitigate this issue, delete the VM without deleting the VM's disk, a VHD blob in a storage account. Then, convert the VHD from a dynamic disk to a fixed disk and re-create the VM.
+- Azure Stack does not support dynamic disk VHDs. 
 
 ## Add a VM image as an Azure Stack operator using the portal
 
@@ -73,8 +92,6 @@ Before you upload the image, it's important to consider the following:
    - On a disconnected Azure Stack, if your VHD is in Azure, you will need to download the VHD to a machine that has connectivity to both Azure and Azure Stack. Then you copy the VHD to this machine from Azure before you transfer the VHD to Azure Stack using any of the common [storage data transfer tools](../user/azure-stack-storage-transfer.md) that can be used across Azure and Azure Stack.
 
 2. You can follow [this example](/powershell/module/azurerm.compute/add-azurermvhd?view=azurermps-6.13.0) to upload a VHD to a storage account in the Azure Stack Administrator portal.
-
-   - It is more efficient to upload an image to Azure Stack blob storage than to Azure blob storage because it takes less time to push the image to the Azure Stack image repository.
 
    - When you upload the [Windows VM image](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-upload-image/), make sure to switch the **Login to Azure** step with the [Configure the Azure Stack operator's PowerShell environment](azure-stack-powershell-configure-admin.md) step.  
 
@@ -87,11 +104,9 @@ Before you upload the image, it's important to consider the following:
 
    ![Set blob access to public](./media/azure-stack-add-vm-image/image2.png)
 
-5. Sign in to Azure Stack as operator. In the menu, select **All services** > **Images** under **Compute** > **Add**.
+5. Sign in to Azure Stack as operator. In the menu, select **All services** > **Compute** under **VM Images** > **Add**.
 
-6. Under **Create image**, enter the Name, Subscription, Resource Group, Location, OS disk, OS type, storage blob URI, Account type, and Host caching. Then, select **Create** to begin creating the VM image.
-
-   ![Begin to create the image](./media/azure-stack-add-vm-image/image4.png)
+6. Under **Create image**, enter the Publisher, Offer, SKU, version and OS disk blob URI. Then, select **Create** to begin creating the VM image.
 
    When the image is successfully created, the VM image status changes to **Succeeded**.
 
