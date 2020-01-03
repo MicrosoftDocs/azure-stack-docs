@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2019
+ms.date: 01/02/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 03/23/2019
+ms.lastreviewed: 01/02/2020
 ---
 
 # Deploy App Service in a highly available configuration
@@ -206,13 +206,13 @@ To deploy the App Service resource provider, follow these steps:
     |Management Role|1|3|
     |Publisher Role|1|3|
     |FrontEnd Role|1|3|
-    |Shared Worker Role|1|10|
+    |Shared Worker Role|1|2|
     |     |     |     |
 
     ![Infrastructure role instance values on App Service](media/app-service-deploy-ha/12.png)
 
     > [!NOTE]
-    > Changing from the default values to those recommended in this tutoral increases the hardware requirements for installing App Service. A total of 26 cores and 46,592 MB of RAM is needed to support the recommended 21 VMs instead of the default 18 cores and 32,256 MB of RAM for 15 VMs.
+    > Changing from the default values to those recommended in this tutoral increases the hardware requirements for installing App Service. A total of 18 cores and 32,256 MB of RAM is needed to support the recommended 13 VMs instead of the default 9 cores and 16,128 MB of RAM for 6 VMs.
 
 15. Select the platform image to use for installing the App Service infrastructure VMs and click **Next**:
 
