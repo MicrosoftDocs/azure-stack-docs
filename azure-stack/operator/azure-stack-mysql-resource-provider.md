@@ -20,9 +20,7 @@ ms.lastreviewed: 10/25/2018
 
 # Use MySQL databases on Microsoft Azure Stack
 
-MySQL databases are commonly used with websites and support many website platforms. For example, you can create WordPress websites using the App Services resource provider (PaaS) add-on.
-
-After you deploy the resource provider and connect it to one or more MySQL server instances, you can:
+Use the MySQL resource provider to offer MySQL database service on [Azure Stack](azure-stack-overview.md). After you deploy the resource provider and connect it to one or more MySQL server instances, you can:
 
 * Create MySQL databases using Azure Resource Manager deployment templates.
 * Provide MySQL databases as a service.  
