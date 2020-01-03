@@ -30,7 +30,7 @@ In Azure Stack, you can add your custom virtual machine (VM) image to the market
 
 Create a custom generalized VHD. If the VHD is from outside Azure, follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed) to correctly **Sysprep** your VHD and make it generalized.
 
-If the VHD is from Azure, follow the instructions in [this document](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before porting it to Azure Stack.
+If the VHD is from Azure, follow the instructions in [this document](https://docs.microsoft.com/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before porting it to Azure Stack.
 
 ### Linux
 
@@ -97,7 +97,7 @@ Before you upload the image, it's important to consider the following:
      One such tool used in this example is the Add-AzureRmVHD command to upload a VHD to a storage account in the Azure Stack Hub Administrator portal.  
 
      ```powershell
-     Add-AzureRmVhd -Destination "https://bash.blob.redmond.azurestack.com/sample/vhdtestingmgd.vhd" -LocalFilePath      "C:\vhd\vhdtestingmgd.vhd" 
+     Add-AzureRmVhd -Destination "https://bash.blob.redmond.azurestack.com/sample/vhdtestingmgd.vhd" -LocalFilePath "C:\vhd\vhdtestingmgd.vhd" 
      ```
 
 3. Make a note of the blob storage URI where you upload the image. The blob storage URI has the following format:
@@ -105,20 +105,26 @@ Before you upload the image, it's important to consider the following:
 
 4. To make the blob anonymously accessible, go to the storage account blob container where the VM image VHD was uploaded. Select **Blob**, and then select **Access policy**. Optionally, you can generate a shared access signature for the container, and include it as part of the blob URI. This step makes sure the blob is available to be used. If the blob isn't anonymously accessible, the VM image will be created in a failed state.
 
-   ![Go to storage account blobs](./media/azure-stack-add-vm-image/image1.png)
+   ![Go to storage account blobs](./media/azure-stack-add-vm-image/tca1.png)
 
-   ![Set blob access to public](./media/azure-stack-add-vm-image/image2.png)
+   ![Set blob access to public](./media/azure-stack-add-vm-image/tca2.png)
+
+   ![Set blob access to public](./media/azure-stack-add-vm-image/tca3.png)
    
 
 ## Step 3, Option 1: Add the VM Image as an Azure Stack operator using the portal
 
 1. Sign in to Azure Stack as operator. In the menu, select **All services** > **Compute** under **VM Images** > **Add**.
 
+   ![Custom image sideloading UI](./media/azure-stack-add-vm-image/tca4.png)
+
 2. Under **Create image**, enter the Publisher, Offer, SKU, version and OS disk blob URI. Then, select **Create** to begin creating the VM image.
+   
+   ![Custom image sideloading UI](./media/azure-stack-add-vm-image/tca5.png)
 
    When the image is successfully created, the VM image status changes to **Succeeded**.
-
-3. When you add an image, it is only available for Azure Resource Manager-based templates and PowerShell deployments. To make an image available to your users as a marketplace item, publish the marketplace item using the steps in the article [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md). Make sure you note the **Publisher**, **Offer**, **SKU**, and **Version** values. You will need them when you edit the resource manager template and Manifest.json in your custom .azpkg.
+   
+3. When you add an image, it is only available for Azure Resource Manager-based templates and PowerShell deployments. To make an image available to your users as a marketplace item, publish the marketplace item using the steps in the article [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md). Make sure you note the **Publisher**, **Offer**, **SKU**, and **Version** values. You will need them when you edit the Resource Manager template and Manifest.json in your custom .azpkg.
 
 ## Step 3, Option 2: Add a VM image as an Azure Stack operator using PowerShell
 

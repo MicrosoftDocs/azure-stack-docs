@@ -31,7 +31,7 @@ The examples in this article show how to create a single VM Marketplace offer, o
 ## Create a Marketplace item
 
 > [!IMPORTANT]
-> Before creating the VM marketplace item, upload the custom VM image to the Azure Stack portal, following the instructions in [Add a VM image to Azure Stack](azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal). Then, follow the instructions in this article to package the image (create an .azpkg) and upload it to the Azure Stack Marketplace.
+> Before creating the VM marketplace item, upload the custom VM image to the Azure Stack portal, following the instructions in [Add a VM image to Azure Stack](azure-stack-add-vm-image.md). Then, follow the instructions in this article to package the image (create an .azpkg) and upload it to the Azure Stack Marketplace.
 
 To create a custom marketplace item, do the following:
 
@@ -47,7 +47,7 @@ To create a custom marketplace item, do the following:
 
    ![Screenshot of the deployment templates structure](media/azure-stack-create-and-publish-marketplace-item/gallerypkg2.png)
 
-4. Replace the following highlighted values (those with numbers) in the Manifest.json template with the value that you provided when [uploading your custom image](azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal).
+4. Replace the following highlighted values (those with numbers) in the Manifest.json template with the value that you provided when [uploading your custom image](azure-stack-add-vm-image.md).
 
    > [!NOTE]  
    > Never hard code any secrets such as product keys, password, or any customer identifiable information in the Azure Resource Manager template. Template JSON files are accessible without the need for authentication once published in the gallery. Store all secrets in [Key Vault](/azure/azure-resource-manager/resource-manager-keyvault-parameter) and call them from within the template.
