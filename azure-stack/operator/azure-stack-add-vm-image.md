@@ -52,31 +52,30 @@ If the VHD is from Azure, follow these instructions to generalize and download t
    logout
    ```
 
-Keep in mind the Azure Linux Agent versions that work with Azure Stack [as documented here](azure-stack-linux.md#azure-linux-agent). Make sure that the sysprepped image has an Azure Linux agent version that is compatible with Azure Stack.
+   Keep in mind the Azure Linux Agent versions that work with Azure Stack [as documented here](azure-stack-linux.md#azure-linux-agent). Make sure that the sysprepped image has an Azure Linux agent version that is compatible with Azure Stack.
 
-2. Stop deallocate the VM
+2. Stop deallocate the VM.
 
-3. Download the VHD
+3. Download the VHD.
 
-   a. To download the VHD file, you need to generate a shared access signature (SAS) URL. When the URL is generated, an expiration time is assigned to the URL.
+   1. To download the VHD file, you need to generate a shared access signature (SAS) URL. When the URL is generated, an expiration time is assigned to the URL.
 
-   b. On the menu of the blade for the VM, click Disks.
+   1. On the menu of the blade for the VM, select **Disks**.
 
-   c. Select the operating system disk for the VM, and then click Disk Export.
+   1. Select the operating system disk for the VM, and then select **Disk Export**.
 
-   d. Set the expiration time of the URL to 36000.
+   1. Set the expiration time of the URL to 36000.
 
-   e. Click Generate URL.
+   1. Select **Generate URL**.
 
-   f. Generate URL
+   1. Generate the URL.
    
-   g. Under the URL that was generated, click Download the VHD file.
+   1. Under the URL that was generated, select **Download the VHD file**.
 
-   h. You may need to click Save in the browser to start the download. The default name for the VHD file is abcd.
+   1. You may need to select **Save** in the browser to start the download. The default name for the VHD file is _abcd_.
 
 
 ### Considerations
-
 
 Before you upload the image, it's important to consider the following:
 
@@ -96,11 +95,11 @@ Before you upload the image, it's important to consider the following:
 
    - On a disconnected Azure Stack, if your VHD is in Azure, you will need to download the VHD to a machine that has connectivity to both Azure and Azure Stack. Then you copy the VHD to this machine from Azure before you transfer the VHD to Azure Stack using any of the common [storage data transfer tools](../user/azure-stack-storage-transfer.md) that can be used across Azure and Azure Stack.
 
-   - One such tool used in this example is the Add-AzureRmVHD command to upload a VHD to a storage account in the Azure Stack Hub Administrator portal.  
+     One such tool used in this example is the Add-AzureRmVHD command to upload a VHD to a storage account in the Azure Stack Hub Administrator portal.  
 
-```powershell
-Add-AzureRmVhd -Destination "https://bash.blob.redmond.azurestack.com/sample/vhdtestingmgd.vhd" -LocalFilePath "C:\vhd\vhdtestingmgd.vhd" 
-```
+     ```powershell
+     Add-AzureRmVhd -Destination "https://bash.blob.redmond.azurestack.com/sample/vhdtestingmgd.vhd" -LocalFilePath "C:\vhd\vhdtestingmgd.vhd" 
+     ```
 
 3. Make a note of the blob storage URI where you upload the image. The blob storage URI has the following format:
      *&lt;storageAccount&gt;/&lt;blobContainer&gt;/&lt;targetVHDName&gt;*.vhd.
@@ -114,7 +113,7 @@ Add-AzureRmVhd -Destination "https://bash.blob.redmond.azurestack.com/sample/vhd
    ![Set blob access to public](./media/azure-stack-add-vm-image/tca3.png)
    
 
-## Step 3 Option 1: Add the VM Image as an Azure Stack operator using the portal
+## Step 3, Option 1: Add the VM Image as an Azure Stack operator using the portal
 
 1. Sign in to Azure Stack as operator. In the menu, select **All services** > **Compute** under **VM Images** > **Add**.
 
@@ -128,7 +127,7 @@ Add-AzureRmVhd -Destination "https://bash.blob.redmond.azurestack.com/sample/vhd
    
 3. When you add an image, it is only available for Azure Resource Manager-based templates and PowerShell deployments. To make an image available to your users as a marketplace item, publish the marketplace item using the steps in the article [Create and publish a Marketplace item](azure-stack-create-and-publish-marketplace-item.md). Make sure you note the **Publisher**, **Offer**, **SKU**, and **Version** values. You will need them when you edit the resource manager template and Manifest.json in your custom .azpkg.
 
-## Step 3 Option 2: Add a VM image as an Azure Stack operator using PowerShell
+## Step 3, Option 2: Add a VM image as an Azure Stack operator using PowerShell
 
 1. [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).  
 
