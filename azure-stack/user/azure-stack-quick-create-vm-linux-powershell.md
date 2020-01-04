@@ -57,7 +57,7 @@ New-AzureRmResourceGroup `
 
 ## Create storage resources
 
-Create a storage account, and then create a storage container for the Ubuntu Server 16.04 LTS image.
+Create a storage account that will be used for storing the boot diagnostics output.
 
 ```powershell  
 # Create variables to store the storage account name and the storage account SKU information
