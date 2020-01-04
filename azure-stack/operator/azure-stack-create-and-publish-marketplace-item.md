@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2019
+ms.date: 01/03/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
@@ -31,11 +31,11 @@ The examples in this article show how to create a single VM Marketplace offer, o
 ## Create a Marketplace item
 
 > [!IMPORTANT]
-> Before creating the VM marketplace item, upload the custom VM image to the Azure Stack portal, following the instructions in [Add a VM image to Azure Stack](azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal). Then, follow the instructions in this article to package the image (create an .azpkg) and upload it to the Azure Stack Marketplace.
+> Before creating the VM marketplace item, upload the custom VM image to the Azure Stack portal, following the instructions in [Add a VM image to Azure Stack](azure-stack-add-vm-image.md). Then, follow the instructions in this article to package the image (create an .azpkg) and upload it to the Azure Stack Marketplace.
 
 To create a custom marketplace item, do the following:
 
-1. Download the [Azure Gallery Packager tool](https://aka.ms/azsmarketplaceitem) and the sample Azure Stack gallery package. This download includes custom VM templates. Extract the .zip file and rename the folder **SimpleVMTemplate** with the name of the item that you will show on your Azure Stack portal.
+1. Download the [Azure Gallery Packager tool](https://aka.ms/azsmarketplaceitem) and the sample Azure Stack gallery package. This download includes custom VM templates. Extract the .zip file, and under the folder **Custom VMs**, you can use either the Linux or the Windows templates that are available. You can decide to re-use the pre-made templates and modify the respective parameters with the product details of the item that you will show on your Azure Stack portal. Or, you can simply re-use the .azpkg file available and skip the following steps to customize your own gallery package.
 
 2. Create an Azure Resource Manager template or use our sample templates for Windows/Linux. These sample templates are provided in the packager tool .zip file you downloaded in step 1. You can either use the template and change the text fields, or you can download a pre-configured template from GitHub. For more information about Azure Resource Manager templates, see [Azure Resource Manager templates](/azure/azure-resource-manager/resource-group-authoring-templates).
 
@@ -47,7 +47,7 @@ To create a custom marketplace item, do the following:
 
    ![Screenshot of the deployment templates structure](media/azure-stack-create-and-publish-marketplace-item/gallerypkg2.png)
 
-4. Replace the following highlighted values (those with numbers) in the Manifest.json template with the value that you provided when [uploading your custom image](azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal).
+4. Replace the following highlighted values (those with numbers) in the Manifest.json template with the value that you provided when [uploading your custom image](azure-stack-add-vm-image.md).
 
    > [!NOTE]  
    > Never hard code any secrets such as product keys, password, or any customer identifiable information in the Azure Resource Manager template. Template JSON files are accessible without the need for authentication once published in the gallery. Store all secrets in [Key Vault](/azure/azure-resource-manager/resource-manager-keyvault-parameter) and call them from within the template.

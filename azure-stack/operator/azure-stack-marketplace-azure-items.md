@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/26/2019
+ms.date: 01/02/2020
 ms.author: sethm
 ms.reviewer: ihcherie
-ms.lastreviewed: 12/26/2019
+ms.lastreviewed: 01/02/2020
 
 ---
 # Azure Marketplace items available for Azure Stack
@@ -233,7 +233,6 @@ Microsoft Azure Stack supports the following Azure Marketplace VMs and solution 
 | ![Xoops](media/azure-stack-marketplace-azure-items/xoops.png) | [Xoops](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.xoops) | CMS and Web Portal Program that creates dynamic websites. | Bitnami |
 | ![Zurmo](media/azure-stack-marketplace-azure-items/zurmo.png) | [Zurmo](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.zurmo) | Open-source CRM system: Mobile, Social, and Gamified. | Bitnami |
 | ![ZooKeeper](media/azure-stack-marketplace-azure-items/zookeeper.png) | [ZooKeeper](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.zookeeper) | ZooKeeper provides a reliable, centralized register of configuration data and services for distributed apps. | Bitnami |
-| ![Check Point vSEC Security Management](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Check Point vSEC Security Management](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | Check Point vSEC delivers advanced, multi-layered threat prevention to protect customer assets in Azure from malware and sophisticated threats. **Download both Check Point vSEC marketplace items.** | Check Point |
 | ![Check Point CloudGuard IaaS High Availability](media/azure-stack-marketplace-azure-items/checkpoint.png) | [CloudGuard IaaS High Availability](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | This solution deploys a 2 member Check Point CloudGuard IaaS cluster. Each member has 2 network interfaces. | Check Point |
 | ![Check Point CloudGuard IaaS Security Management](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Check Point CloudGuard IaaS Security Management](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | This solution deploys a single Check Point Security Management Server with a single network interface. | Check Point |
 | ![Check Point CloudGuard IaaS Single Gateway](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Check Point CloudGuard IaaS Single Gateway](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | This solution deploys a single Check Point CloudGuard IaaS security gateway with 2 network interfaces. After deployment, you should set up User Defined Routes (UDRs) to route traffic through the gateway. | Check Point |
@@ -247,7 +246,7 @@ Microsoft Azure Stack supports the following Azure Marketplace VMs and solution 
 | ![Hortonworks Data Platform (HDP) Sandbox](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks Data Platform (HDP) Sandbox](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | Powered by HDP 2.5 100% open-source platform for Hadoop, Spark, Storm, HBase, Kafka, Hive, Ambari. | Hortonworks |
 | ![Kaspersky](media/azure-stack-marketplace-azure-items/kaspersky.png) | [Kaspersky Hybrid Cloud Security](https://azuremarketplace.microsoft.com/marketplace/apps/kaspersky_lab.kaspersky_hybrid_cloud_security?tab=Overview) | The Kaspersky Hybrid Cloud Security enables a seamlessly orchestrated and adaptive cybersecurity ecosystem. | Kaspersky Lab |
 | ![KEMP LoadMaster Load Balancer ADC Content Switch](media/azure-stack-marketplace-azure-items/kemp.png) | [KEMP LoadMaster Load Balancer ADC Content Switch](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | Layer 4-7 Application Delivery Controller (ADC) Load Balancer, Content Switch, and Traffic Manager. | KEMP Technologies Inc. |
-| ![Kubernetes](media/azure-stack-marketplace-azure-items/kubernetes.png) | [Kubernetes](azure-stack-solution-template-kubernetes-cluster-add.md) | This solution deploys a Kubernetes cluster running as a standalone cluster with templates generated using AKS-Engine.<br>**This solution template also requires Ubuntu Server 16.04 LTS and Custom Script for Linux 2.0.**| Microsoft |
+| ![Kubernetes](media/azure-stack-marketplace-azure-items/kubernetes.png) | [Kubernetes](azure-stack-aks-engine.md) | This solution deploys a Kubernetes cluster running as a standalone cluster with templates generated using AKS-Engine.<br>**This solution template also requires Ubuntu Server 16.04 LTS and Custom Script for Linux 2.0.**| Microsoft |
 | ![Service Fabric Cluster](media/azure-stack-marketplace-azure-items/servicefrabric.png) | [Service Fabric Cluster](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ServiceFabricCluster?tab=Overview) | This solution deploys Service Fabric running as a standalone cluster on a Virtual Machine Scale Set. <br>**This solution template requires you to also download the Windows Server 2016 Datacenter**| Microsoft |
 | ![NRI mPLAT Suite - Multi-Cloud Conductor](media/azure-stack-marketplace-azure-items/nri.png) | [mPLAT Suite - Multi-Cloud Conductor](https://azuremarketplace.microsoft.com/marketplace/apps/nri.mplatmc2018-vm) | A Single Pane of Glass to monitor, configure, provision, automate, and govern any workload or cloud. | NRI |
 | ![NooBaa Hybrid AWS S3 compatible - Community Edition](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa Hybrid AWS S3 compatible - Community Edition](https://www.noobaa.io/hybrid-cloud) | S3-compatible storage service that spans public and on-premises capacity resources. | NooBaa |
