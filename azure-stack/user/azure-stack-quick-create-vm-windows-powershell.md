@@ -60,7 +60,7 @@ New-AzureRmResourceGroup `
 
 ## Create storage resources
 
-Create a storage account and a storage container to store the Windows Server 2016 image.
+Create a storage account to store the output of boot diagnostics.
 
 ```powershell
 # Create variables to store the storage account name and the storage account SKU information
