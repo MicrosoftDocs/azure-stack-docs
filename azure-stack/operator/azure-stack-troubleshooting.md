@@ -1,7 +1,7 @@
 ---
-title: Troubleshoot issues in Azure Stack
+title: Troubleshoot Azure Stack
 titleSuffix: Azure Stack
-description: Learn how to troubleshoot common issues in Azure Stack, including issues with VMs, storage, and App Service.
+description: Learn how to troubleshoot Azure Stack, including issues with VMs, storage, and App Service.
 services: azure-stack
 documentationcenter: ''
 author: justinha
