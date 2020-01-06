@@ -22,7 +22,7 @@ ms.lastreviewed: 11/05/2019
 ---
 # Troubleshoot Azure Stack
 
-This document provides troubleshooting information for Azure Stack integrated environments. For help with the Azure Stack Development Kit, see [ASDK Troubleshooting](../asdk/asdk-troubleshooting.md) or get help from experts on the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
+This document provides troubleshooting information for Azure Stack integrated environments. For help with the Azure Stack Development Kit, see [ASDK Troubleshooting](../asdk/asdk-troubleshooting.md) or get help from experts on the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
 
 ## Frequently asked questions
 
@@ -56,7 +56,7 @@ To increase the total available memory capacity for Azure Stack, you can add add
 
 #### Retention period
 
-The retention period setting allows a cloud operator to specify a time period in days (between 0 and 9999 days) during which any deleted account can potentially be recovered. The default retention period is set to **0** days. Setting the value to **0** means that any deleted account is immediately out of retention and marked for periodic garbage collection.
+The retention period setting lets a cloud operator to specify a time period in days (between 0 and 9999 days) during which any deleted account can potentially be recovered. The default retention period is set to **0** days. Setting the value to **0** means that any deleted account is immediately out of retention and marked for periodic garbage collection.
 
 * [Set the retention period](azure-stack-manage-storage-accounts.md#set-the-retention-period)
 
@@ -98,11 +98,11 @@ For more information, see [Azure Stack Diagnostics](azure-stack-configure-on-dem
 ### Default image and gallery item
 A Windows Server image and gallery item must be added before deploying VMs in Azure Stack.
 
-### I have deleted some VMs, but still see the VHD files on disk
+### I've deleted some VMs, but still see the VHD files on disk
 This behavior is by design:
 
 * When you delete a VM, VHDs aren't deleted. Disks are separate resources in the resource group.
-* When a storage account gets deleted, the deletion is visible immediately through Azure Resource Manager, but the disks it may contain are still kept in storage until garbage collection runs.
+* When a storage account gets deleted, the deletion is visible immediately through Azure Resource Manager. But the disks it may contain are still kept in storage until garbage collection runs.
 
 If you see "orphan" VHDs, it's important to know if they're part of the folder for a storage account that was deleted. If the storage account wasn't deleted, it's normal that they're still there.
 
@@ -111,7 +111,7 @@ You can read more about configuring the retention threshold and on-demand reclam
 ## Troubleshoot storage
 
 ### Storage reclamation
-It may take up to 14 hours for reclaimed capacity to show up in the portal. Space reclamation depends on various factors including usage percentage of internal container files in block blob store. Therefore, depending on how much data is deleted, there's no guarantee on the amount of space that could be reclaimed when garbage collector runs.
+It may take up to 14 hours for reclaimed capacity to show up in the portal. Space reclamation depends on different factors including usage percentage of internal container files in block blob store. Therefore, depending on how much data is deleted, there's no guarantee on the amount of space that could be reclaimed when garbage collector runs.
 
 ### Azure Storage Explorer not working with Azure Stack
 
