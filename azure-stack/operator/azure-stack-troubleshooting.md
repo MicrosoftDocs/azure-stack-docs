@@ -1,7 +1,7 @@
 ---
-title: Troubleshoot Azure Stack
+title: Troubleshoot issues in Azure Stack
 titleSuffix: Azure Stack
-description: Learn how to troubleshoot Azure Stack.
+description: Learn how to troubleshoot common issues in Azure Stack, including issues with VMs, storage, and App Service.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -20,7 +20,7 @@ ms.reviewer: prchint
 ms.lastreviewed: 11/05/2019
 
 ---
-# Troubleshoot Azure Stack
+# Troubleshoot issues in Azure Stack
 
 This document provides troubleshooting information for Azure Stack integrated environments. For help with the Azure Stack Development Kit, see [ASDK Troubleshooting](../asdk/asdk-troubleshooting.md) or get help from experts on the [Azure Stack MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
 
@@ -95,10 +95,13 @@ You can use PowerShell to get stamp utilization information without help from CS
 For more information, see [Azure Stack Diagnostics](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs).
 
 ## Troubleshoot virtual machines (VMs)
+
 ### Default image and gallery item
+
 A Windows Server image and gallery item must be added before deploying VMs in Azure Stack.
 
 ### I've deleted some VMs, but still see the VHD files on disk
+
 This behavior is by design:
 
 * When you delete a VM, VHDs aren't deleted. Disks are separate resources in the resource group.
