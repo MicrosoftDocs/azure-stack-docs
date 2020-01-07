@@ -27,7 +27,7 @@ For those Azure Stack Hub deployments that are connected to the public Internet,
 
 ## Disconnected scenario
 
-For those Azure Stack Hub deployments that are not connected to the public Internet (e.g. air-gapped data centers), starting with the 1910 release, customers have the ability to apply the antimalware definitions and engine updates as they are published. 
+For those Azure Stack Hub deployments that are not connected to the public Internet (e.g. air-gapped datacenters), starting with the 1910 release, customers have the ability to apply the antimalware definitions and engine updates as they are published. 
 
 To apply the updates to your Azure Stack Hub solution, you first have to download them from the Microsoft site (links below) and subsequently, import them into a storage blob container under your *updateadminaccount*. A scheduled task scans the blob container every 30 minutes and, if new Defender definitions and engine updates are found, it applies them to the Azure Stack Hub infrastructure. 
 
