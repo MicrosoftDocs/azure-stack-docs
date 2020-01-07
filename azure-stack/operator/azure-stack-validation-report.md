@@ -1,6 +1,6 @@
 ---
-title: Validation report for Azure Stack | Microsoft Docs
-description: Use the Azure Stack Readiness Checker report to review validation results.
+title: Validation report for Azure Stack Hub | Microsoft Docs
+description: Use the Azure Stack readiness checker report to review validation results.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,16 +13,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 01/07/2020
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/23/2018
 
 ---
 
-# Azure Stack validation report
+# Azure Stack Hub validation report
 
-Use the *Azure Stack Readiness Checker* tool to run validations that support deployment and servicing of an Azure Stack environment. The tool writes results to a .json report file. The report displays detailed and summarized data about the state of prerequisites for deployment of Azure Stack. The report also displays information about secrets rotation for existing Azure Stack deployments.  
+Use the *Azure Stack Hub readiness checker* tool to run validations that support deployment and servicing of an Azure Stack Hub environment. The tool writes results to a .json report file. The report displays detailed and summarized data about the state of prerequisites for deployment of Azure Stack Hub. The report also displays information about secrets rotation for existing Azure Stack Hub deployments.  
 
 ## Where to find the report
 
