@@ -90,7 +90,7 @@ Administration in Azure Stack is controlled through three entry points, each wit
 
 - The [administrator portal](azure-stack-manage-portals.md) provides a point-and-click experience for daily management operations.
 - Azure Resource Manager exposes all the management operations of the administrator portal via a REST API, used by PowerShell and Azure CLI.
-- For specific low-level operations (for example, data center integration or support scenarios), Azure Stack exposes a PowerShell endpoint called [privileged endpoint](azure-stack-privileged-endpoint.md). This endpoint exposes only a whitelisted set of cmdlets and it's heavily audited.
+- For specific low-level operations (for example, datacenter integration or support scenarios), Azure Stack exposes a PowerShell endpoint called [privileged endpoint](azure-stack-privileged-endpoint.md). This endpoint exposes only a whitelisted set of cmdlets and it's heavily audited.
 
 ## Network controls
 
