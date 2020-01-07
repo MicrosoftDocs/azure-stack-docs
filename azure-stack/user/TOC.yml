@@ -280,7 +280,7 @@
       items:
         - name: Connect to iSCSI storage
           href: azure-stack-network-howto-iscsi-storage.md
-        - name: Extend the data center
+        - name: Extend the datacenter
           href: azure-stack-network-howto-extend-datacenter.md
     - name: VNET peering
     - name: Back up and recovery
