@@ -47,7 +47,8 @@ To learn more about adding items to Azure Stack Marketplace, see the [Azure Stac
 
 You'll also need an SSH client like [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) to log in to the Linux VMs after they're deployed.
 
-## Create a MySQL Server cluster 
+## Create a MySQL Server cluster
+
 Use the steps in this section to deploy the MySQL Server cluster using the [MySQL with Replication](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql-cluster) marketplace item. This template deploys three MySQL Server instances configured in a highly available MySQL cluster. By default, it creates the following resources:
 
 - A virtual network
@@ -63,40 +64,42 @@ Use the steps in this section to deploy the MySQL Server cluster using the [MySQ
 
 2. Select **\+** **Create a resource** > **Compute**, and then **MySQL with Replication**.
 
-   ![Custom template deployment](media/azure-stack-tutorial-mysqlrp/1.png)
+   ![Custom template deployment in Azure Stack](media/azure-stack-tutorial-mysqlrp/1.png)
 
-3. Provide basic deployment information on the **Basics** page. Review the default values and change as needed and click **OK**.<br><br>At a minimum, provide the following:
-   - Deployment name (default is mymysql)
-   - Application root password. Provide a 12 character alphanumeric password with **no special characters**
-   - Application database name (default is bitnami)
-   - Number of MySQL database replica VMs to create (default is 2)
-   - Select the subscription to use
-   - Select the resource group to use or create a new one
-   - Select the location (default is local for ASDK)
+3. Provide basic deployment information on the **Basics** page. Review the default values and change as needed and select **OK**.<br><br>At a minimum, provide the following:
 
-   [![](media/azure-stack-tutorial-mysqlrp/2-sm.PNG "Deployment basics")](media/azure-stack-tutorial-mysqlrp/2-lg.PNG#lightbox)
+   - Deployment name (default is mymysql).
+   - Application root password. Provide a 12 character alphanumeric password with **no special characters**.
+   - Application database name (default is bitnami).
+   - Number of MySQL database replica VMs to create (default is 2).
+   - Select the subscription to use.
+   - Select the resource group to use or create a new one.
+   - Select the location (default is local for ASDK).
 
-4. On the **Environment Configuration** page, provide the following information and then click **OK**: 
-   - Password or SSH public key to use for secure shell (SSH) authentication. If using a password, it must contain letters, numbers and **can** contain special characters
-   - VM size (default is Standard D1 v2 VMs)
+   [![](media/azure-stack-tutorial-mysqlrp/2-sm.PNG "Deployment basics — Create MySQL with Replication")](media/azure-stack-tutorial-mysqlrp/2-lg.PNG#lightbox)
+
+4. On the **Environment Configuration** page, provide the following information and then select **OK**:
+
+   - Password or SSH public key to use for secure shell (SSH) authentication. If using a password, it must contain letters, numbers, and **can** contain special characters.
+   - VM size (default is Standard D1 v2 VMs).
    - Data disk size in GB
-   Click **OK**
 
-   [![](media/azure-stack-tutorial-mysqlrp/3-sm.PNG "Environment configuration")](media/azure-stack-tutorial-mysqlrp/3-lg.PNG#lightbox)
+   [![](media/azure-stack-tutorial-mysqlrp/3-sm.PNG "Environment configuration — Create MySQL with Replication")](media/azure-stack-tutorial-mysqlrp/3-lg.PNG#lightbox)
 
-5. Review the deployment **Summary**. Optionally, you can download the customized template and parameters, and then click **OK**.
+5. Review the deployment **Summary**. Optionally, you can download the customized template and parameters and then select **OK**.
 
-   [![](media/azure-stack-tutorial-mysqlrp/4-sm.PNG "Summary")](media/azure-stack-tutorial-mysqlrp/4-lg.PNG#lightbox)
+   [![](media/azure-stack-tutorial-mysqlrp/4-sm.PNG "Summary — Create MySQL with Replication")](media/azure-stack-tutorial-mysqlrp/4-lg.PNG#lightbox)
 
-6. Click **Create** on the **Buy** page to start the deployment.
+6. Select **Create** on the **Buy** page to start the deployment.
 
-   ![Buy](media/azure-stack-tutorial-mysqlrp/5.png)
+   ![Buy page — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/5.png)
 
     > [!NOTE]
-    > The deployment will take about an hour. Ensure that the deployment has finished and the MySQL cluster has been completely configured before continuing. 
+    > The deployment will take about an hour. Ensure that the deployment has finished and the MySQL cluster has been completely configured before continuing.
 
-7. After all deployments have completed successfully, review the resource group items and select the **mysqlip** Public IP address item. Record the public IP address and full FQDN of the public IP for the cluster.<br><br>You will need to provide this to an Azure Stack Operator so they can create a MySQL hosting server leveraging this MySQL cluster.
+7. After all deployments have completed successfully, review the resource group items and select the **mysqlip** Public IP address item. Record the public IP address and full FQDN of the public IP for the cluster.
 
+    You'll need to provide this to an Azure Stack Operator so they can create a MySQL hosting server leveraging this MySQL cluster.
 
 ### Create a network security group rule
 By default, no public access is configured for MySQL into the host VM. For the Azure Stack MySQL resource provider to connect and manage the MySQL cluster, an inbound network security group (NSG) rule needs to be created.
