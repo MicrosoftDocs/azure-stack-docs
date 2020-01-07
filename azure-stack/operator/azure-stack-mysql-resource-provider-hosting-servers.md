@@ -29,7 +29,12 @@ MySQL versions 5.6, 5.7 and 8.0 may be used for your hosting servers. The MySQL 
 
 ## Connect to a MySQL hosting server
 
-Make sure you have the credentials for an account with system admin privileges. To add a hosting server, follow these steps:
+Make sure you have the credentials for an account with system admin privileges.
+
+> [!NOTE]
+> For MySQL 8.0 and above versions, the remote access isn't enabled by default. You need to create a new user account and grant the previledge of remote access to this user account before adding it as a hosting server.
+
+To add a hosting server, follow these steps:
 
 1. Sign in to the Azure Stack administrator portal as a service admin.
 2. Select **All services**.

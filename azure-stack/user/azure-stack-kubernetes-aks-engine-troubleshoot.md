@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 10/28/2019
+ms.date: 11/21/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/28/2019
+ms.lastreviewed: 11/21/2019
 
 ---
 
@@ -24,11 +24,6 @@ ms.lastreviewed: 10/28/2019
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 You may encounter an issue when deploying or working with the AKS engine on Azure Stack. This article looks at the steps to troubleshoot your deployment of the AKS engine, collect information about your AKS engine, collect Kubernetes logs, review custom script extension error codes, and instructions on opening a GitHub issue for the AKS engine.
-
-> [!IMPORTANT]
-> The AKS engine is currently in public preview.
-> This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
-> For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## Troubleshoot the AKS engine install
 

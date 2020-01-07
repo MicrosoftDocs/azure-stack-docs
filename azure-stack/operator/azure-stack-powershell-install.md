@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 09/18/2019
+ms.date: 09/19/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 09/18/2019
+ms.lastreviewed: 09/19/2019
 ---
 # Install PowerShell for Azure Stack
 
@@ -34,7 +34,7 @@ You can install Azure Stack compatible PowerShell modules in internet-connected,
 Before you get started with Azure Stack and PowerShell, you must have the following prerequisites:
 
 - **PowerShell Version 5.0** <br>
-To check your version, run **$PSVersionTable.PSVersion** and compare the **Major** version. If you don't have PowerShell 5.0, follow the [Installing Windows PowerShell](https://docs.microsoft.com/powershell/scripting/setup/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell).
+To check your version, run **$PSVersionTable.PSVersion** and compare the **Major** version. If you don't have PowerShell 5.0, follow the [Installing Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell).
 
   > [!Note]
   > PowerShell 5.0 requires a Windows machine.
@@ -89,7 +89,18 @@ The API version profile and Azure Stack PowerShell modules you require will depe
 
 Run the following PowerShell script to install these modules on your development workstation:
 
-- For Azure Stack 1904 or later:
+- For Azure Stack 1910 or later:
+
+    ```powershell  
+    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
+    Install-Module -Name AzureRM.BootStrapper
+
+    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
+    Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
+    Install-Module -Name AzureStack -RequiredVersion 1.8.0
+    ```
+
+- For Azure Stack 1908 or after 1903:
 
     ```powershell  
     # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
@@ -110,7 +121,8 @@ Run the following PowerShell script to install these modules on your development
     ```
 
     > [!Note]  
-    > - The Azure Stack module version 1.7.1 is a breaking change release. To migrate from Azure Stack 1.6.0, please refer to the [migration guide](https://aka.ms/azspshmigration171).
+    > - Azure Stack module version 1.8.0 is a breaking change release. Refer to the [release note](release-notes.md) for details.
+    > - The Azure Stack module version 1.7.2 is a breaking change release. To migrate from Azure Stack 1.6.0, please refer to the [migration guide](https://aka.ms/azspshmigration171).
     > - The AzureRM module version 2.4.0 comes with a breaking change for the cmdlet Remove-AzureRmStorageAccount. This cmdlet expects `-Force` parameter to be specified for removing the storage account without confirmation.
     > - You don't need to install **AzureRM.BootStrapper** to install the modules for Azure Stack version 1901 or later.
     > - Don't install the 2018-03-01-hybrid profile in addition to using the above AzureRM modules on Azure Stack version 1901 or later.
@@ -142,7 +154,18 @@ Installation has four steps:
 
 ### Install Azure Stack PowerShell
 
-- Azure Stack 1904 or later.
+- Azure Stack 1910 or later.
+
+    ```powershell
+    Import-Module -Name PowerShellGet -ErrorAction Stop
+    Import-Module -Name PackageManagement -ErrorAction Stop
+
+    $Path = "<Path that is used to save the packages>"
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.0
+    ```
+
+- For Azure Stack 1908 or after 1903:
 
     ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop
@@ -165,6 +188,7 @@ Installation has four steps:
     ```
 
     > [!Note]  
+    > - Azure Stack module version 1.8.0 is a breaking change release. Refer to the [release note](release-notes.md) for details.
     > The Azure Stack module version 1.7.1 is a breaking change. To migrate from Azure Stack 1.6.0 please refer to the [migration guide](https://github.com/Azure/azure-powershell/tree/AzureRM/documentation/migration-guides/Stack).
 
     > [!NOTE]
@@ -179,7 +203,7 @@ Installation has four steps:
 
 2. Sign in to the disconnected workstation and copy the packages from the USB device to a location on the workstation.
 
-3. Manually bootstrap the NuGet provider on your disconnected workstation. For instructions, see [Manually bootstrapping the NuGet provider on a machine that isn't connected to the internet](https://docs.microsoft.com/powershell/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet).
+3. Manually bootstrap the NuGet provider on your disconnected workstation. For instructions, see [Manually bootstrapping the NuGet provider on a machine that isn't connected to the internet](https://docs.microsoft.com/powershell/scripting/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet).
 
 4. Register this location as the default repository and install the AzureRM and `AzureStack` modules from this repository:
 

@@ -9,7 +9,7 @@ editor: ''
 
 ms.service: azure-stack
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 12/18/2019
 ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 10/01/2019
@@ -34,7 +34,7 @@ To deliver a service, follow these high-level steps:
 1. Plan your service offering, using:
 
    - Foundational services, like compute, storage, networking, or Key Vault.
-   - Add-on services, like App Service, SQL Server, or MySQL Server.
+   - Value-add services, like App Service, SQL Server, or MySQL Server.
 
 2. Create a plan that consists of one or more services. When creating a plan, select or create quotas that define the resource limits of each service in the plan.
 3. Create an offer that has one or more plans. The offer can include base plans and optional add-on plans.

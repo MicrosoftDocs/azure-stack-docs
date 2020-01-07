@@ -12,10 +12,10 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 10/16/2019
+ms.date: 01/02/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/16/2019
+ms.lastreviewed: 01/02/2020
 
 ---
 
@@ -96,7 +96,7 @@ The following instructions use the minimum steps to perform the upgrade. If woul
 
     ```bash  
     aks-engine upgrade \
-    --azure-env AzureStackCloud   
+    --azure-env AzureStackCloud \
     --location <for an ASDK is local> \
     --resource-group kube-rg \
     --subscription-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \

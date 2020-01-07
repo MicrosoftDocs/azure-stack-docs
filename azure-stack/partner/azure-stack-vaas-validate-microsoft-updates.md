@@ -26,7 +26,7 @@ ROBOTS: NOINDEX
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Microsoft will periodically release updates to the Azure Stack software. These updates are provided to Azure Stack coengineering partners. The updates are provided in advance of publicly available. You can check the updates against your solution and provide feedback to Microsoft.
+Microsoft will periodically release updates to the Azure Stack software. These updates are provided to Azure Stack co-engineering partners. The updates are provided in advance of publicly available. You can check the updates against your solution and provide feedback to Microsoft.
 
 Microsoft software updates to Azure Stack are designated using a naming convention, for example, 1803 indicating the update is for March 2018. For information about the Azure Stack update policy, cadence and release notes are available, see [Azure Stack servicing policy](../operator/azure-stack-servicing-policy.md).
 
@@ -35,15 +35,12 @@ Microsoft software updates to Azure Stack are designated using a naming conventi
 Before you exercise the monthly update process in VaaS, you should be familiar with the following items:
 
 - [Validation as a Service key concepts](azure-stack-vaas-key-concepts.md)
-- [Interactive feature verification testing](azure-stack-vaas-interactive-feature-verification.md)
 
 ## Required tests
 
 The following tests must be executed in the following order for monthly software validation:
 
-- Step 1 - Monthly AzureStack Update Verification
-- Step 2 - OEM Extension Package Verification
-- Step 3 - OEM - Cloud Simulation Engine
+- OEM Validation Workflow
 
 ## Validating software updates
 

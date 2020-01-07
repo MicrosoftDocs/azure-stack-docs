@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 07/17/2019
+ms.date: 01/06/2020
 ms.author: sethm
 ms.lastreviewed: 12/27/2018
 
@@ -27,9 +27,9 @@ Before you use services or build apps for Azure Stack, it's important to underst
 
 Azure Stack is a hybrid cloud platform that enables you to use Azure services from your company or service provider datacenter. You can build an app on Azure Stack and then deploy it to Azure Stack, to Azure, or to your Azure hybrid cloud.
 
-Your Azure Stack operator lets you know which services are available for you to use, and how to get support. They offer these services through their customized plans and offers.
+Your Azure Stack operator tells you which services are available for you to use, and how to get support. They offer these services through their customized plans and offers.
 
-The Azure technical documentation content assumes that apps are being developed for an Azure service and not for Azure Stack. When you build and deploy apps to Azure Stack, you must understand some key differences, such as:
+The [Azure technical documentation content](/azure) assumes that apps are being developed for an Azure service and not for Azure Stack. When you build and deploy apps to Azure Stack, you must understand some key differences, such as:
 
 * Azure Stack delivers a subset of the services and features that are available in Azure.
 * Your company or service provider can choose which services they want to offer. The available options might include customized services or applications. They may offer their own customized documentation.
@@ -49,7 +49,7 @@ The following table describes the high-level differences between Azure Stack and
 | Available services | See the list of [Azure products](https://azure.microsoft.com/services/?b=17.04b). Available services vary by Azure region. | Azure Stack supports a subset of Azure services. Actual services will vary based on what your organization or service provider chooses to offer.
 | Azure Resource Manager endpoint* | https://management.azure.com | For an Azure Stack integrated system, use the endpoint that your Azure Stack operator provides.<br><br>For the development kit, use: https://management.local.azurestack.external.
 | Portal URL* | [https://portal.azure.com](https://portal.azure.com) | For an Azure Stack integrated system, use the URL that your Azure Stack operator provides.<br><br>For the development kit, use: https://portal.local.azurestack.external.
-| Region | You can select which region you want to deploy to. | For an  Azure Stack integrated system, use the region that's available on your system.<br><br>For the development kit, the region will always be **local**.
+| Region | You can select which region you want to deploy to. | For an  Azure Stack integrated system, use the region that's available on your system.<br><br>For the Azure Stack Development Kit (ASDK), the region will always be **local**.
 | Resource groups | A resource group can span regions. | For both integrated systems and the development kit, there's only one region.
 |Supported namespaces, resource types, and API versions | The latest (or earlier versions that aren't yet deprecated). | Azure Stack supports specific versions. See the [Version requirements](#version-requirements) section of this article.
 | | |
@@ -62,8 +62,8 @@ Microsoft provides tools and guidance that help you develop for Azure Stack.
 
 | Recommendation | References |
 | -------- | ------------- |
-| Install the correct tools on your developer workstation. | - [Install PowerShell](../operator/azure-stack-powershell-install.md)<br>- [Download tools](../operator/azure-stack-powershell-download.md)<br>- [Configure PowerShell](azure-stack-powershell-configure-user.md)<br>- [Install Visual Studio](azure-stack-install-visual-studio.md) 
-| Review information about the following items:<br>- Azure Resource Manager template considerations<br>- How to find quickstart templates<br>- Use a policy module to help you use Azure to develop for Azure Stack | [Develop for Azure Stack](azure-stack-developer.md) | 
+| Install the correct tools on your developer workstation. | - [Install PowerShell](../operator/azure-stack-powershell-install.md)<br>- [Download tools](../operator/azure-stack-powershell-download.md)<br>- [Configure PowerShell](azure-stack-powershell-configure-user.md)<br>- [Install Visual Studio](azure-stack-install-visual-studio.md)
+| Review information about the following items:<br>- Azure Resource Manager template considerations.<br>- How to find quickstart templates.<br>- Use a policy module to help you use Azure to develop for Azure Stack. | [Develop for Azure Stack](azure-stack-developer.md) |
 | Review and follow the best practices for templates. | [Resource Manager Quickstart Templates](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
 | | |
 
@@ -90,6 +90,6 @@ Example output (truncated):
 
 For more detailed information about differences at a service level, see:
 
-* [Considerations for VMS in Azure Stack](azure-stack-vm-considerations.md)
+* [Considerations for VMs in Azure Stack](azure-stack-vm-considerations.md)
 * [Considerations for Storage in Azure Stack](azure-stack-acs-differences.md)
 * [Considerations for Azure Stack networking](azure-stack-network-differences.md)

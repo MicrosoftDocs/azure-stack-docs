@@ -37,7 +37,7 @@ The Cross-cloud Scaling pattern consists of the following components.
 
 **Traffic Manager**  
 
-In the diagram this is located outside of the public cloud group, but it would need to able to coordinate traffic in both the local data center and the public cloud. The balancer delivers high availability for application by monitoring endpoints and providing failover redistribution when required.
+In the diagram this is located outside of the public cloud group, but it would need to able to coordinate traffic in both the local datacenter and the public cloud. The balancer delivers high availability for application by monitoring endpoints and providing failover redistribution when required.
 
 **Domain Name System (DNS)**  
 

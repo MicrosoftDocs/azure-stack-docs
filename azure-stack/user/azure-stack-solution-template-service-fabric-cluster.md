@@ -15,7 +15,7 @@ ms.topic: tutorial
 ms.date: 10/02/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.lastreviewed: 09/17/2019
+ms.lastreviewed: 09/25/2019
 ---
 
 # Deploy a Service Fabric cluster in Azure Stack
@@ -24,14 +24,14 @@ Use the **Service Fabric Cluster** item from the Azure Marketplace to deploy a s
 
 For more information about working with Service Fabric, see [Overview of Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) and [Service Fabric cluster security scenarios](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) in the Azure documentation.
 
-The Service Fabric cluster in Azure Stack doesn't use the resource provider Microsoft.ServiceFabric. Instead, in Azure Stack, the Service Fabric cluster is a virtual machine scale set with preinstalled software using [Desired State Configuration (DSC)](https://docs.microsoft.com/powershell/dsc/overview/overview).
+The Service Fabric cluster in Azure Stack doesn't use the resource provider Microsoft.ServiceFabric. Instead, in Azure Stack, the Service Fabric cluster is a virtual machine scale set with preinstalled software using [Desired State Configuration (DSC)](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview).
 
 ## Prerequisites
 
 The following are required to deploy the Service Fabric cluster:
 1. **Cluster certificate**  
    This is the X.509 server certificate you add to Key Vault when deploying Service Fabric. 
-   - The **CN** on this cert must match the Fully Qualified Domain Name (FQDN) of the Service Fabric cluster you create. For more guidance on the FQDN, see [Certificates required for Azure Stack production deployment of Azure App Service](../operator/azure-stack-app-service-before-you-get-started.md#certificates-required-for-azure-stack-production-deployment-of-azure-app-service).
+   - The **CN** on this cert must match the Fully Qualified Domain Name (FQDN) of the Service Fabric cluster you create. 
    - The certificate format must be PFX, as both the public and private keys are required. 
      See [requirements](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) for creating this server-side cert.
 
