@@ -32,7 +32,7 @@ An offer consists of one or more plans. A plan entitles access to one or more se
 
 A resource provider supports creation, deployment, and management of its resources as services. A common example is the Microsoft.Compute resource provider, which offers the ability to create and deploy virtual machines (VMs). See [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) for an overview of the Azure resource management model.
 
-In Azure Stack, there are two general categories of resource providers: ones that deploy resources as foundational services, and ones that deploy as add-on services.
+In Azure Stack, there are two general categories of resource providers: ones that deploy resources as foundational services, and ones that deploy as value-add services.
 
 ### Foundational services
 
@@ -48,12 +48,12 @@ Foundational services are supported by the following resource providers, which a
 | Microsoft.Network | Virtual networks, public IP addresses, load balancers |
 | Microsoft.Storage | Storage accounts, blobs, queues, tables |
 
-### Add-on services
+### Value-add services
 
 >[!NOTE]
-> In order to offer an add-on service, the corresponding resource provider must first be installed in Azure Stack Marketplace. Once installed, its resources are offered to users the same way as foundational services. Please see the **How-to guides** section of the TOC, for the current set of resource providers that support add-on service offerings.
+> In order to offer a value-add service, the corresponding resource provider must first be installed in Azure Stack Marketplace. Once installed, its resources are offered to users the same way as foundational services. Please see the **How-to guides** section of the TOC, for the current set of resource providers that support value-add service offerings.
 
-Add-on services are supported by resource providers that are installed after Azure Stack has been deployed. Examples include:
+Value-add services are supported by resource providers that are installed after Azure Stack has been deployed. Examples include:
 
 | Resource Provider | Example resources |
 | ----------------- | ------------------------- |
