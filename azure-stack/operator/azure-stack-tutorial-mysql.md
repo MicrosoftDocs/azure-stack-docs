@@ -1,5 +1,6 @@
 ---
-title: Offer highly available MySQL databases in Azure Stack 
+title: Offer highly available MySQL databases
+titleSuffix: Azure Stack
 description: Learn how to create a MySQL Server resource provider host computer and highly available MySQL databases with Azure Stack.
 services: azure-stack
 author: BryanLa
