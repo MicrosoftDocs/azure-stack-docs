@@ -102,17 +102,23 @@ Use the steps in this section to deploy the MySQL Server cluster using the [MySQ
     You'll need to provide this to an Azure Stack Operator so they can create a MySQL hosting server leveraging this MySQL cluster.
 
 ### Create a network security group rule
+
 By default, no public access is configured for MySQL into the host VM. For the Azure Stack MySQL resource provider to connect and manage the MySQL cluster, an inbound network security group (NSG) rule needs to be created.
 
 1. In the administrator portal, navigate to the resource group created when deploying the MySQL cluster and select the network security group (**default-subnet-sg**):
 
-   ![open](media/azure-stack-tutorial-mysqlrp/6.png)
+   ![Select network security group in Azure Stack administrator portal](media/azure-stack-tutorial-mysqlrp/6.png)
 
-2. Select **Inbound security rules** and then click **Add**.<br><br>Enter **3306** in the **Destination port range** and optionally provide a description in the **Name** and **Description** fields. Click Add to close the inbound security rule dialog.
+2. Select **Inbound security rules** and then select **Add**.
+
+    Enter **3306** in the **Destination port range** and optionally provide a description in the **Name** and **Description** fields.
 
    ![open](media/azure-stack-tutorial-mysqlrp/7.png)
 
+3. Select **Add** to close the inbound security rule dialog.
+
 ### Configure external access to the MySQL cluster
+
 Before the MySQL cluster can be added as an Azure Stack MySQL Server host, external access must be enabled.
 
 1. Using an SSH client, this example uses [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), log into the primary MySQL machine from a computer that can access the public IP. The primary MySQL VM name usually ends with **0** and has a public IP assigned to it.<br><br>Use the public IP and log into the VM with the username of **bitnami** and the application password you created earlier without special characters.
