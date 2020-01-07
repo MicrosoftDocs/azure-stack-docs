@@ -102,7 +102,7 @@ A Windows Server image and gallery item must be added before deploying VMs in Az
 
 ### I've deleted some VMs, but still see the VHD files on disk
 
-This behavior is by design: 
+This behavior is by design:
 
 * When you delete a VM, VHDs aren't deleted. Disks are separate resources in the resource group.
 * When a storage account gets deleted, the deletion is visible immediately through Azure Resource Manager. But the disks it may contain are still kept in storage until garbage collection runs.
