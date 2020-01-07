@@ -67,7 +67,7 @@ The diagram shows the resources deployed from the template to create the iSCSI c
 The resource group template generates output, which is meant to be the input for the next step. It is mainly focused on the server name and the Azure Stack public IP address where the iSCSI traffic originates. For this example:
 
 1. Deploy the infrastructure template.
-2. Deploy an Azure Stack VM to a VM hosted elsewhere in your data center. 
+2. Deploy an Azure Stack VM to a VM hosted elsewhere in your datacenter. 
 3. Run `Create-iSCSITarget.ps1` using the IP address and server name outputs from the template as in-out parameters for the script on the iSCSI target, which can be a virtual machine or physical server.
 4. Use the external IP address or addresses of the iSCSI Target server as inputs to run the `Connect-toiSCSITarget.ps1` script. 
 
