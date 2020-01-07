@@ -1,5 +1,5 @@
 ---
-title: How to extend the data center on Azure Stack Hub | Microsoft Docs
+title: How to extend the datacenter on Azure Stack Hub | Microsoft Docs
 description: Learn how to extend the datacenter on Azure Stack.
 services: azure-stack
 author: mattbriggs
@@ -19,7 +19,7 @@ ms.lastreviewed: 12/13/2019
 
 *Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
 
-This article provides Azure Stack Hub storage infrastructure information to help you decide how to integrate Azure Stack into your existing networking environment. After providing a general discussion of extending your data center, the article presents two different scenarios. You can connect to a Windows file storage server. You can also connect to a Windows iSCSI server.
+This article provides Azure Stack Hub storage infrastructure information to help you decide how to integrate Azure Stack into your existing networking environment. After providing a general discussion of extending your datacenter, the article presents two different scenarios. You can connect to a Windows file storage server. You can also connect to a Windows iSCSI server.
 
 ## Overview of extending storage to Azure Stack Hub
 

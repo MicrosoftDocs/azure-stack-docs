@@ -27,7 +27,7 @@ The Azure Stack Hub geographic traffic routing pattern, or geo-distributed apps,
 ## Components
 
 **Traffic Manager**  
-In the diagram, Traffic Manager is located outside of the public cloud, but it would need to able to coordinate traffic in both the local data center and the public cloud. The balancer routes traffic to geographical locations.
+In the diagram, Traffic Manager is located outside of the public cloud, but it would need to able to coordinate traffic in both the local datacenter and the public cloud. The balancer routes traffic to geographical locations.
 
 **Domain Name System (DNS)**  
 The Domain Name System, or DNS, is responsible for translating (or resolving) a website or service name to its IP address.
