@@ -19,11 +19,11 @@ ms.reviewer: ppacent
 
 ---
 
-# Monitor updates in Azure Stack using Powershell
+# Monitor updates in Azure Stack Hub using Powershell
 
-*Applies to: Azure Stack integrated systems*
+*Applies to: Azure Stack Hub integrated systems*
 
-You can use the Azure Stack administrative endpoints to monitor and manage your updates. They're accessible with PowerShell. For instructions on getting set up with PowerShell on Azure Stack, see [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).
+You can use the Azure Stack Hub administrative endpoints to monitor and manage your updates. They're accessible with PowerShell. For instructions on getting set up with PowerShell on Azure Stack Hub, see [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
 
 You can use the following PowerShell cmdlet to manage your updates:
 
