@@ -56,8 +56,8 @@ Use these steps to prepare and validate the Azure Stack PKI certificates:
     $subject = "C=US,ST=Washington,L=Redmond,O=Microsoft,OU=Azure Stack"
     ```
 
-    > [!note]  
-    > If a common name (CN) is supplied, it will be configured on every certificate request, if it is omitted, the first DNS name of the Azure Stack service will be configured on the certificate request.
+    > [!NOTE]  
+    > If a common name (CN) is supplied, it will be configured on every certificate request. If a CN is omitted, the first DNS name of the Azure Stack service will be configured on the certificate request.
 
 3. Declare an output directory that already exists. For example:
 
@@ -78,8 +78,8 @@ Use these steps to prepare and validate the Azure Stack PKI certificates:
     ```powershell
     $IdentitySystem = "ADFS"
     ```
-    > [!note]  
-    > The parameter is only required for CertificateType Deployment.
+    > [!NOTE]  
+    > The parameter is required only for CertificateType Deployment.
 
 5. Declare **region name** and an **external FQDN** intended for the Azure Stack deployment.
 
@@ -88,8 +88,8 @@ Use these steps to prepare and validate the Azure Stack PKI certificates:
     $externalFQDN = 'azurestack.contoso.com'
     ```
 
-    > [!note]  
-    > `<regionName>.<externalFQDN>` forms the basis on which all external DNS names in Azure Stack are created, in this example, the portal would be `portal.east.azurestack.contoso.com`.  
+    > [!NOTE]  
+    > `<regionName>.<externalFQDN>` forms the basis on which all external DNS names in Azure Stack are created. In this example, the portal would be `portal.east.azurestack.contoso.com`.  
 
 6. To generate certificate signing requests for deployment:
 
@@ -97,7 +97,7 @@ Use these steps to prepare and validate the Azure Stack PKI certificates:
     New-AzsCertificateSigningRequest -certificateType Deployment -RegionName $regionName -FQDN $externalFQDN -subject $subject -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ```
 
-    To generate certificate requests for other Azure Stack services change the value for ```-CertificateType```. For example:
+    To generate certificate requests for other Azure Stack services, change the value for `-CertificateType`. For example:
 
     ```powershell  
     # App Services
