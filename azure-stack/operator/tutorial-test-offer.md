@@ -134,7 +134,7 @@ In this tutorial you learned how to:
 > * Create a subscription
 > * Create and deploy resources 
 
-Next, learn about deploying resource providers for add-on services. They allow you to offer even more services to users in your plans:
+Next, learn about deploying resource providers for value-add services. They allow you to offer even more services to users in your plans:
 
 - [Offer SQL on Azure Stack](azure-stack-sql-resource-provider.md)
 - [Offer MySQL on Azure Stack](azure-stack-mysql-resource-provider.md)

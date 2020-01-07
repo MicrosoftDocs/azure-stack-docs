@@ -280,7 +280,7 @@
       href: azure-stack-quota-types.md
   - name: Offer network solutions
     href: azure-stack-network-solutions-enable.md
-  - name: Manage add-on service resource providers
+  - name: Manage value-add resource providers
     items:
     - name: App Service on Azure Stack
       items:
