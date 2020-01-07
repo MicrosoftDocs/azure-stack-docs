@@ -83,7 +83,7 @@ Used memory is made up of several components. The following components consume t
  - Infrastructure services – These are the infrastructure VMs that make up Azure Stack. As of the 1904 release version of Azure Stack, this entails ~31 VMs that take up 242 GB + (4 GB x # of nodes) of memory. The memory utilization of the infrastructure services component may change as we work on making our infrastructure services more scalable and resilient.
  - Resiliency reserve – Azure Stack reserves a portion of the memory to allow for tenant availability during a single host failure as well as during patch and update to allow for successful live migration of VMs.
  - Tenant VMs – These are the tenant VMs created by Azure Stack users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in "Creating" or "Failed" state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option from portal/powershell/cli will not consume memory from Azure Stack.
- - Add-on RPs – VMs deployed for the Add-on RPs like SQL, MySQL, App Service etc.
+ - Value-add resource providers (RPs) – VMs deployed for the value-add RPs like SQL, MySQL, App Service etc.
 
 
 The best way to understand memory consumption on the portal is to use the [Azure Stack Capacity Planner](https://aka.ms/azstackcapacityplanner) to see the impact of various workloads. 
