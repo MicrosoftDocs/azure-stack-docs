@@ -55,7 +55,7 @@ On Azure Stack Hub, virtual machine scale sets do not support autoscale. You can
 ## Add the virtual machine scale set (prior to version 1808)
 
 >[!IMPORTANT]  
-> The information in this section applies when you use a version of Azure Stack Hub prior to 1808. If you use version 1808 or later, see [Use the Azure Stack Hub portal](#use-the-azure-stack-portal).
+> The information in this section applies when you use a version of Azure Stack Hub prior to 1808. If you use version 1808 or later, see [Use the Azure Stack Hub portal](#use-the-azure-stack-hub-portal).
 
 1. Open the Azure Stack Hub Marketplace and connect to Azure. Select **Marketplace management**, then click **+ Add from Azure**.
 

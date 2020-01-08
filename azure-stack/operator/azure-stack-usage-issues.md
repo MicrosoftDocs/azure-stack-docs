@@ -35,7 +35,7 @@ To mitigate the issue, try the following steps:
 
 - Verify that network configuration allows the Azure Bridge to connect to the remote service.
 
-- Go to the [**Region Management** > **Properties**](azure-stack-registration.md#verify-azure-stack-registration) blade to find the Azure subscription ID used for the registration, resource group, and name of the registration resource. Verify that the registration resource exists under the correct Azure subscription ID in Azure portal. To do so, go to **All resources** created under the Azure subscription ID, and check the **Show hidden types** box. If you can't find the registration resource, follow the steps in [Renew or change registration](azure-stack-registration.md#renew-or-change-registration) to re-register your Azure Stack Hub.
+- Go to the [**Region Management** > **Properties**](azure-stack-registration.md#verify-azure-stack-hub-registration) blade to find the Azure subscription ID used for the registration, resource group, and name of the registration resource. Verify that the registration resource exists under the correct Azure subscription ID in Azure portal. To do so, go to **All resources** created under the Azure subscription ID, and check the **Show hidden types** box. If you can't find the registration resource, follow the steps in [Renew or change registration](azure-stack-registration.md#renew-or-change-registration) to re-register your Azure Stack Hub.
 
   ![Portal](media/azure-stack-usage-issues/stackres.png)
 
