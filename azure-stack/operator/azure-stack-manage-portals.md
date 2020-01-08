@@ -15,7 +15,6 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/07/2019
 ms.author: justinha
-ms.custom: mvc
 ms.reviewer: efemmano
 ms.lastreviewed: 06/07/2019
 

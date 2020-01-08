@@ -4,7 +4,6 @@ description: Learn how to use the Azure Stack Hub validation tool to validate sy
 services: azure-stack
 author: justinha
 manager: femila
-services: azure-stack
 cloud: azure-stack
 
 ms.service: azure-stack
