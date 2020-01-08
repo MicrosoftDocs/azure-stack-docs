@@ -152,19 +152,19 @@ Before the MySQL cluster can be added as an Azure Stack MySQL Server host, exter
 
 ## Create an Azure Stack MySQL Hosting Server
 
-After the MySQL Server cluster has been created, and properly configured, an Azure Stack Operator must create an Azure Stack MySQL Hosting Server to make the additional capacity available for users to create databases.
+After the MySQL Server cluster is created and properly configured, an Azure Stack operator must create an Azure Stack MySQL Hosting Server to make the additional capacity available for users to create databases.
 
-Be sure to use the public IP or full FQDN for the public IP of the MySQL cluster primary VM recorded previously when the MySQL cluster's resource group was created (**mysqlip**). In addition, the operator will need to know the MySQL Server authentication credentials you created to remotely access the MySQL cluster database.
+Be sure to use the public IP or full FQDN for the public IP of the MySQL cluster primary VM recorded previously when the MySQL cluster's resource group was created (**mysqlip**). In addition, the operator needs to know the MySQL Server authentication credentials you created to remotely access the MySQL cluster database.
 
 > [!NOTE]
-> This step must be run from the Azure Stack administration portal by an Azure Stack Operator.
+> This step must be run from the Azure Stack administrator portal by an Azure Stack operator.
 
-Using the MySQL cluster's Public IP and MySQL authentication login information, an Azure Stack Operator can now [create a MySQL Hosting Server using the new MySQL cluster](azure-stack-mysql-resource-provider-hosting-servers.md#connect-to-a-mysql-hosting-server). 
+Using the MySQL cluster's Public IP and MySQL authentication login information, an Azure Stack operator can now [create a MySQL Hosting Server using the new MySQL cluster](azure-stack-mysql-resource-provider-hosting-servers.md#connect-to-a-mysql-hosting-server).
 
-Also ensure that you have created plans and offers to make MySQL database creation available for users. An operator will need to add the **Microsoft.MySqlAdapter** service to a plan and create a new quota specifically for highly available databases. For more information about creating plans, see [Service, plan, offer, subscription overview](service-plan-offer-subscription-overview.md).
+Also ensure that you've created plans and offers to make MySQL database creation available for users. An operator will need to add the **Microsoft.MySqlAdapter** service to a plan and create a new quota specifically for highly available databases. For more information about creating plans, see [Service, plan, offer, subscription overview](service-plan-offer-subscription-overview.md).
 
 > [!TIP]
-> The **Microsoft.MySqlAdapter** service will not be available to add to plans until the [MySQL Server resource provider has been deployed](azure-stack-mysql-resource-provider-deploy.md).
+> The **Microsoft.MySqlAdapter** service won't be available to add to plans until the [MySQL Server resource provider has been deployed](azure-stack-mysql-resource-provider-deploy.md).
 
 
 
