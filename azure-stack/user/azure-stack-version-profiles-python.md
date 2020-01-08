@@ -59,7 +59,7 @@ To use the Python Azure SDK with Azure Stack Hub, you must supply the following 
 | Client ID | `AZURE_CLIENT_ID` | The service principal app ID saved when the service principal was created in the previous section of this article. |
 | Subscription ID | `AZURE_SUBSCRIPTION_ID` | You use the [subscription ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) to access offers in Azure Stack Hub. |
 | Client secret | `AZURE_CLIENT_SECRET` | The service principal app secret saved when the service principal was created. |
-| Resource Manager endpoint | `ARM_ENDPOINT` | See the [Azure Stack Hub Resource Manager endpoint](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint) article. |
+| Resource Manager endpoint | `ARM_ENDPOINT` | See the [Azure Stack Hub Resource Manager endpoint](azure-stack-version-profiles-ruby.md#the-auzure-stack-hub-resource-manager-endpoint) article. |
 | Resource location | `AZURE_RESOURCE_LOCATION` | The resource location of your Azure Stack Hub environment.
 
 ### Trust the Azure Stack Hub CA root certificate

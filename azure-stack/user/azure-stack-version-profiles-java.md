@@ -97,7 +97,7 @@ To use the Azure Java SDK with Azure Stack Hub, you must supply the following va
 | Client ID                 | `AZURE_CLIENT_ID`             | The service principal application ID saved when the service principal was created in the previous section.                                                                                              |
 | Subscription ID           | `AZURE_SUBSCRIPTION_ID`      | You use the [subscription ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) to access offers in Azure Stack Hub.                |
 | Client Secret             | `AZURE_CLIENT_SECRET`        | The service principal application secret saved when the service principal was created.                                                                                                                                   |
-| Resource Manager Endpoint | `ARM_ENDPOINT`              | See the [Azure Stack Hub Resource Manager endpoint](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint) article. |
+| Resource Manager Endpoint | `ARM_ENDPOINT`              | See the [Azure Stack Hub Resource Manager endpoint](../user/azure-stack-version-profiles-ruby.md#the-auzure-stack-hub-resource-manager-endpoint) article. |
 | Location                  | `RESOURCE_LOCATION`    | **Local** for Azure Stack Hub.                                                                                                                                                                                                |
 
 To find the tenant ID for your Azure Stack Hub, see the instructions [here](../operator/azure-stack-csp-ref-operations.md). To set your environment variables, use the procedures in the following sections:

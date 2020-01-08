@@ -82,7 +82,7 @@ If you're using a Windows 10 machine, you can work with PowerShell 5.0 and Visua
 
 2. Download Azure Stack Hub Tools. For instructions, see [Download Azure Stack Hub tools from GitHub](../operator/azure-stack-powershell-download.md). 
 
-3. If you're using an ASDK, install and configure a [VPN connection to Azure Stack Hub](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). 
+3. If you're using an ASDK, install and configure a [VPN connection to Azure Stack Hub](azure-stack-connect-azure-stack.md#connect-to-auzure-stack-hub-with-vpn). 
 
 4. Install and configure the Azure CLI. For instructions, see [Use API version profiles with the Azure CLI in Azure Stack Hub](azure-stack-version-profiles-azurecli2.md). 
 

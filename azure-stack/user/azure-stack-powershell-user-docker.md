@@ -34,7 +34,7 @@ In this article, you use Docker to create Windows-based containers on which to r
 
 1. You need to run Docker by using Windows containers that require Windows 10. When you run Docker, switch to Windows containers.
 
-1. Run Docker from a machine that's joined to the same domain as Azure Stack Hub. If you are using the Azure Stack Development Kit (ASDK), you need to install [the VPN on your remote machine](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn).
+1. Run Docker from a machine that's joined to the same domain as Azure Stack Hub. If you are using the Azure Stack Development Kit (ASDK), you need to install [the VPN on your remote machine](azure-stack-connect-azure-stack.md#connect-to-auzure-stack-hub-with-vpn).
 
 ## Set up a service principal for using PowerShell
 

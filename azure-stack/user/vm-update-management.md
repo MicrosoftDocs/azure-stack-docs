@@ -40,7 +40,7 @@ Several prerequisites must be met before using these features to update and mana
 To use the Azure Monitor for VMs, Inventory, Change Tracking, and Update Management Azure Automation features for Azure Stack Hub VMs, you first need to enable these solutions in Azure.
 
 > [!TIP]
-> If you've already enabled these features for Azure VMs, you can use your pre-existing LogAnalytics Workspace credentials. If you already have a LogAnalytics WorkspaceID and Primary Key that you want to use, skip ahead to [the next section](./vm-update-management.md#in-the-azure-stack-administrator-portal). Otherwise, continue in this section to create a new LogAnalytics Workspace and automation account.
+> If you've already enabled these features for Azure VMs, you can use your pre-existing LogAnalytics Workspace credentials. If you already have a LogAnalytics WorkspaceID and Primary Key that you want to use, skip ahead to [the next section](./vm-update-management.md#in-the-auzure-stack-hub-administrator-portal). Otherwise, continue in this section to create a new LogAnalytics Workspace and automation account.
 
 The first step in enabling these solutions is to [create a LogAnalytics Workspace](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace) in your Azure subscription. A Log Analytics workspace is a unique Azure Monitor logs environment with its own data repository, data sources, and solutions. After you've created a workspace, note the WorkspaceID and Key. To view this information, go to the workspace blade, click on **Advanced settings**, and review the **Workspace ID** and **Primary Key** values. 
 
