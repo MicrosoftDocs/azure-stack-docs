@@ -16,7 +16,7 @@ ms.topic: article
 ms.date: 08/29/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 01/08/2020
 
 ---
 
@@ -342,7 +342,7 @@ Admins must configure SSO to:
 - Enable the advanced developer tools within App Service (Kudu).
 - Enable the use of the Azure Functions portal experience.
 
-Follow these steps:
+Now you register a new app in the tenant Azure AD instance. Follow these steps:
 
 1. Open a PowerShell instance as azurestack\AzureStackAdmin.
 2. Go to the location of the scripts that you downloaded and extracted in the [prerequisite step](azure-stack-app-service-before-you-get-started.md).
@@ -350,14 +350,14 @@ Follow these steps:
 4. Run the **Create-AADIdentityApp.ps1** script. When you're prompted, enter the Azure AD tenant ID that you're using for your Azure Stack deployment. For example, enter **myazurestack.onmicrosoft.com**.
 5. In the **Credential** window, enter your Azure AD service admin account and password. Select **OK**.
 6. Enter the certificate file path and certificate password for the [certificate created earlier](azure-stack-app-service-before-you-get-started.md). The certificate created for this step by default is **sso.appservice.local.azurestack.external.pfx**.
-7. The script creates a new app in the tenant Azure AD instance. Make note of the application ID that's returned in the PowerShell output. You need this information during installation.
+7. Make note of the application ID that's returned in the PowerShell output. You use the ID in the following steps to provide consent for the application's permissions, and during installation. 
 8. Open a new browser window, and sign in to the [Azure portal](https://portal.azure.com) as the Azure Active Directory service admin.
-9. Open the Azure AD resource provider.
-10. Select **App Registrations**.
-11. Search for the application ID returned as part of step 7. An App Service application is listed.
-12. Select **Application** in the list.
-13. Select **Settings**.
-14. Select **Required Permissions** > **Grant Permissions** > **Yes**.
+9. Open the Azure Active Directory service.
+10. Select **App Registrations** in the left pane.
+11. Search for the application ID you noted in step 7. An App Service application registration entry is listed.
+12. Select the App Service application registration from the list.
+13. Select **API permissions** in the left pane.
+14. Select **Grant admin consent for \<tenant\>**, where \<tenant\> is the name of your Azure AD tenant. Confirm the consent grant by selecting **Yes**.
 
 ```powershell
     Create-AADIdentityApp.ps1
