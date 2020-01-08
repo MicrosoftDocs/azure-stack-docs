@@ -121,18 +121,21 @@ By default, no public access is configured for MySQL into the host VM. For the A
 
 Before the MySQL cluster can be added as an Azure Stack MySQL Server host, external access must be enabled.
 
-1. Using an SSH client, this example uses [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html), log into the primary MySQL machine from a computer that can access the public IP. The primary MySQL VM name usually ends with **0** and has a public IP assigned to it.<br><br>Use the public IP and log into the VM with the username of **bitnami** and the application password you created earlier without special characters.
+1. Using an SSH client (this example uses [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)) log in to the primary MySQL machine from a computer that can access the public IP. The primary MySQL VM name usually ends with **0** and has a public IP assigned to it.
+
+    Use the public IP and log in to the VM with the username of **bitnami** and the application password you created earlier without special characters.
 
    ![LinuxLogin](media/azure-stack-tutorial-mysqlrp/bitnami1.png)
-
 
 2. In the SSH client window, use the following command to ensure the bitnami service is active and running. Provide the bitnami password again when prompted:
 
    `sudo service bitnami status`
 
-   ![Check service](media/azure-stack-tutorial-mysqlrp/bitnami2.png)
+   ![Check bitnami service](media/azure-stack-tutorial-mysqlrp/bitnami2.png)
 
-3. Create a remote access user account to be used by the Azure Stack MySQL Hosting Server to connect to MySQL and then exit the SSH client.<br><br>Run the following commands to log into MySQL as root, using the root password created earlier, and create a new admin user, replace *\<username\>* and *\<password\>* as required for your environment. In this example, the user to be created is named **sqlsa** and a strong password is used:
+3. Create a remote access user account to be used by the Azure Stack MySQL Hosting Server to connect to MySQL and then exit the SSH client.
+
+    Run the following commands to log in to MySQL as root, using the root password created earlier. Create a new admin user and replace *\<username\>* and *\<password\>* as required for your environment. In this example, the created user is named **sqlsa** and a strong password is used:
 
    ```mysql
    mysql -u root -p
@@ -140,14 +143,16 @@ Before the MySQL cluster can be added as an Azure Stack MySQL Server host, exter
    grant all privileges on *.* to <username>@'%' with grant option;
    flush privileges;
    ```
+
    ![Create admin user](media/azure-stack-tutorial-mysqlrp/bitnami3.png)
 
+4. Record the new MySQL user information.
 
-4. Record the new MySQL user information.<br><br>You will need to provide this username and password, along with the public IP address or full FQDN of the public IP for the cluster, to an Azure Stack Operator so they can create a MySQL hosting server using this MySQL cluster.
-
+    You'll need to provide this username and password, along with the public IP address or full FQDN of the public IP for the cluster, to an Azure Stack operator so they can create a MySQL hosting server using this MySQL cluster.
 
 ## Create an Azure Stack MySQL Hosting Server
-After the MySQL Server cluster has been created, and properly configured, an Azure Stack Operator must create an Azure Stack MySQL Hosting Server to make the additional capacity available for users to create databases. 
+
+After the MySQL Server cluster has been created, and properly configured, an Azure Stack Operator must create an Azure Stack MySQL Hosting Server to make the additional capacity available for users to create databases.
 
 Be sure to use the public IP or full FQDN for the public IP of the MySQL cluster primary VM recorded previously when the MySQL cluster's resource group was created (**mysqlip**). In addition, the operator will need to know the MySQL Server authentication credentials you created to remotely access the MySQL cluster database.
 
