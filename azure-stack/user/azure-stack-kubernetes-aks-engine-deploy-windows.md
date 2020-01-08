@@ -95,8 +95,8 @@ You will need to add a certificate when running the client VM for the AKS engine
 
 When you are using an ASDK your Azure Resource Manager endpoint is using a self-signed certificate, you need explicitly to add this certificate to the machine’s trusted certificate store. You can find the ASDK root certificate in any VM you deploy in the ASDK.
 
-1. Export the CA root certificate. For instructions, see [Export the Azure Stack Hub CA root certificate](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-azurecli2#export-the-auzure-stack-hub-ca-root-certificate)
-2. Trust the Azure Stack Hub CA root certificate. For instructions, see [Trust the Azure Stack Hub CA root certificate](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-azurecli2#trust-the-auzure-stack-hub-ca-root-certificate).
+1. Export the CA root certificate. For instructions, see [Export the Azure Stack Hub CA root certificate](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-azurecli2#export-the-azure-stack-hub-ca-root-certificate)
+2. Trust the Azure Stack Hub CA root certificate. For instructions, see [Trust the Azure Stack Hub CA root certificate](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-azurecli2#trust-the-azure-stack-hub-ca-root-certificate).
 
 ## Next steps
 

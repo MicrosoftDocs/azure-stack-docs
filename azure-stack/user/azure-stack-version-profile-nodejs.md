@@ -94,7 +94,7 @@ To use the Node.js Azure SDK with Azure Stack Hub, you must supply the following
 | Client ID | CLIENT\_ID | The service principal application ID saved when service principal was created on the previous section of this document.  |
 | Subscription ID | AZURE\_SUBSCRIPTION\_ID   The [subscription ID](/azure-stack/operator/service-plan-offer-subscription-overview#subscriptions) is how you access offers in Azure Stack Hub.  |
 | Client Secret | APPLICATION\_SECRET | The service principal application Secret saved when service principal was created. |
-| Resource Manager Endpoint | ARM\_ENDPOINT | See [the Azure Stack Hub Resource Manager endpoint](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-ruby#the-auzure-stack-hub-resource-manager-endpoint). |
+| Resource Manager Endpoint | ARM\_ENDPOINT | See [the Azure Stack Hub Resource Manager endpoint](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-ruby#the-azure-stack-hub-resource-manager-endpoint). |
 
 #### Set your environmental variables for Node.js
 
