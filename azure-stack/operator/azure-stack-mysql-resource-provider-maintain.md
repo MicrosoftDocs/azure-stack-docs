@@ -246,7 +246,7 @@ The Azure Diagnostics extension is installed on the MySQL resource provider adap
 
 Once the event logs and IIS logs collection are configured for MySQL resource provider, the logs can be found in a system storage account named **mysqladapterdiagaccount**.
 
-To learn more about the Azure Diagnostics extension, see [What is Azure Diagnostics extension](/azure-monitor/platform/diagnostics-extension-overview).
+To learn more about the Azure Diagnostics extension, see [What is Azure Diagnostics extension](/azure/azure-monitor/platform/diagnostics-extension-overview).
 
 ## Next steps
 
