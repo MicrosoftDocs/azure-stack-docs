@@ -1,6 +1,6 @@
 ---
-title: Use API version profiles with Python in Azure Stack | Microsoft Docs
-description: Learn how to use API version profiles with Python in Azure Stack.
+title: Use API version profiles with Python in Azure Stack Hub | Microsoft Docs
+description: Learn how to use API version profiles with Python in Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -18,11 +18,11 @@ ms.lastreviewed: 05/16/2019
 # dev: viananth
 ---
 
-# Use API version profiles with Python in Azure Stack
+# Use API version profiles with Python in Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
-The Python SDK supports API version profiles to target different cloud platforms, such as Azure Stack and global Azure. Use API profiles in creating solutions for a hybrid cloud.
+The Python SDK supports API version profiles to target different cloud platforms, such as Azure Stack Hub and global Azure. Use API profiles in creating solutions for a hybrid cloud.
 
 The instructions in this article require a Microsoft Azure subscription. If you don't have one, you can get a [free trial account](https://go.microsoft.com/fwlink/?LinkId=330212).
 
@@ -33,38 +33,38 @@ The Python SDK supports the following API profiles:
 - **latest**  
     This profile targets the most recent API versions for all service providers in the Azure platform.
 - **2019-03-01-hybrid**  
-    This profile targets the latest API versions for all the resource providers in the Azure Stack platform for versions 1904 or later.
+    This profile targets the latest API versions for all the resource providers in the Azure Stack Hub platform for versions 1904 or later.
 - **2018-03-01-hybrid**  
-    This profile targets the most compatible API versions for all the resource providers in the Azure Stack platform.
+    This profile targets the most compatible API versions for all the resource providers in the Azure Stack Hub platform.
 - **2017-03-09-profile**  
-    This profile targets the most compatible API versions of the resource providers supported by Azure Stack.
+    This profile targets the most compatible API versions of the resource providers supported by Azure Stack Hub.
 
-   For more info on API profiles and Azure Stack, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md).
+   For more info on API profiles and Azure Stack Hub, see [Manage API version profiles in Azure Stack Hub](azure-stack-version-profiles.md).
 
 ## Install the Azure Python SDK
 
 1. Install Git from [the official site](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 2. For instructions on how to install the Python SDK, see [Azure for Python developers](/python/azure/python-sdk-azure-install?view=azure-python).
-3. If not available, create a subscription and save the subscription ID to use later. For instructions on creating a subscription, see [Create subscriptions to offers in Azure Stack](../operator/azure-stack-subscribe-plan-provision-vm.md).
-4. Create a service principal and save its ID and secret. For instructions on how to create a service principal for Azure Stack, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md).
-5. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign a role to your service principal, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md).
+3. If not available, create a subscription and save the subscription ID to use later. For instructions on creating a subscription, see [Create subscriptions to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md).
+4. Create a service principal and save its ID and secret. For instructions on how to create a service principal for Azure Stack Hub, see [Provide applications access to Azure Stack Hub](../operator/azure-stack-create-service-principals.md).
+5. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign a role to your service principal, see [Provide applications access to Azure Stack Hub](../operator/azure-stack-create-service-principals.md).
 
 ## Prerequisites
 
-To use the Python Azure SDK with Azure Stack, you must supply the following values and then set values with environment variables. To set the environment variables, see the instructions after the following table, for your specific operating system.
+To use the Python Azure SDK with Azure Stack Hub, you must supply the following values and then set values with environment variables. To set the environment variables, see the instructions after the following table, for your specific operating system.
 
 | Value | Environment variables | Description |
 |---------------------------|-----------------------|-------------------------------------------------------------------------------------------------------------------------|
-| Tenant ID | `AZURE_TENANT_ID` | Your Azure Stack [tenant ID](../operator/azure-stack-identity-overview.md). |
+| Tenant ID | `AZURE_TENANT_ID` | Your Azure Stack Hub [tenant ID](../operator/azure-stack-identity-overview.md). |
 | Client ID | `AZURE_CLIENT_ID` | The service principal app ID saved when the service principal was created in the previous section of this article. |
-| Subscription ID | `AZURE_SUBSCRIPTION_ID` | You use the [subscription ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) to access offers in Azure Stack. |
+| Subscription ID | `AZURE_SUBSCRIPTION_ID` | You use the [subscription ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) to access offers in Azure Stack Hub. |
 | Client secret | `AZURE_CLIENT_SECRET` | The service principal app secret saved when the service principal was created. |
-| Resource Manager endpoint | `ARM_ENDPOINT` | See the [Azure Stack Resource Manager endpoint](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint) article. |
-| Resource location | `AZURE_RESOURCE_LOCATION` | The resource location of your Azure Stack environment.
+| Resource Manager endpoint | `ARM_ENDPOINT` | See the [Azure Stack Hub Resource Manager endpoint](azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint) article. |
+| Resource location | `AZURE_RESOURCE_LOCATION` | The resource location of your Azure Stack Hub environment.
 
-### Trust the Azure Stack CA root certificate
+### Trust the Azure Stack Hub CA root certificate
 
-If you are using the ASDK, you must explicitly trust the CA root certificate on your remote machine. You do not need to trust the CA root certificate with Azure Stack integrated systems.
+If you are using the ASDK, you must explicitly trust the CA root certificate on your remote machine. You do not need to trust the CA root certificate with Azure Stack Hub integrated systems.
 
 #### Windows
 
@@ -76,7 +76,7 @@ If you are using the ASDK, you must explicitly trust the CA root certificate on 
 
     Make a note of the certificate store location; for example, **~/lib/python3.5/site-packages/certifi/cacert.pem**. Your particular path depends on your operating system and the version of Python that you have installed.
 
-2. Trust the Azure Stack CA root certificate by appending it to the existing Python certificate:
+2. Trust the Azure Stack Hub CA root certificate by appending it to the existing Python certificate:
 
     ```powershell
     $pemFile = "<Fully qualified path to the PEM certificate; for ex: C:\Users\user1\Downloads\root.pem>"
@@ -104,23 +104,23 @@ If you are using the ASDK, you must explicitly trust the CA root certificate on 
     Write-Host "Adding the certificate content to Python Cert store"
     Add-Content "${env:ProgramFiles(x86)}\Python35\Lib\site-packages\certifi\cacert.pem" $rootCertEntry
 
-    Write-Host "Python Cert store was updated to allow the Azure Stack CA root certificate"
+    Write-Host "Python Cert store was updated to allow the Azure Stack Hub CA root certificate"
     ```
 
 > [!NOTE]  
 > If you are using **virtualenv** for developing with Python SDK as mentioned in the following [Run the Python sample](#run-the-python-sample) section, you must add the previous certificate to your virtual environment certificate store. The path might look similar to: `..\mytestenv\Lib\site-packages\certifi\cacert.pem`.
 
-## Python samples for Azure Stack
+## Python samples for Azure Stack Hub
 
-Some of the code samples available for Azure Stack using the Python SDK are:
+Some of the code samples available for Azure Stack Hub using the Python SDK are:
 
 - [Manage resources and resource groups](https://azure.microsoft.com/resources/samples/hybrid-resourcemanager-python-manage-resources/)
 - [Manage storage account](https://azure.microsoft.com/resources/samples/hybrid-storage-python-manage-storage-account/)
-- [Manage virtual machines](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/): This sample uses **2019-03-01-hybrid** profile, which targets the latest API versions supported by Azure Stack.
+- [Manage virtual machines](https://azure.microsoft.com/resources/samples/hybrid-compute-python-manage-vm/): This sample uses **2019-03-01-hybrid** profile, which targets the latest API versions supported by Azure Stack Hub.
 
 ## Manage virtual machine sample
 
-Use the following Python code sample to perform common management tasks for virtual machines (VMs) in your Azure Stack. The code sample shows you how to:
+Use the following Python code sample to perform common management tasks for virtual machines (VMs) in your Azure Stack Hub. The code sample shows you how to:
 
 - Create VMs:
   - Create a Linux VM
@@ -170,7 +170,7 @@ Each operation is clearly labeled with a comment and a print function. The examp
     pip install -r requirements.txt
     ```
 
-6. Create a [service principal](../operator/azure-stack-create-service-principals.md) to work with Azure Stack. Make sure your service principal has the [contributor/owner role](../operator/azure-stack-create-service-principals.md#assign-a-role) on your subscription.
+6. Create a [service principal](../operator/azure-stack-create-service-principals.md) to work with Azure Stack Hub. Make sure your service principal has the [contributor/owner role](../operator/azure-stack-create-service-principals.md#assign-a-role) on your subscription.
 
 7. Set the following variables and export these environment variables into your current shell:
 
@@ -183,7 +183,7 @@ Each operation is clearly labeled with a comment and a print function. The examp
     export AZURE_RESOURCE_LOCATION={your AzureStack Resource location}
     ```
 
-8. To run this sample, Ubuntu 16.04-LTS and WindowsServer 2012-R2-DataCenter images must be present in the Azure Stack Marketplace. These images can be either [downloaded from Azure](../operator/azure-stack-download-azure-marketplace-item.md), or added to the [platform image repository](../operator/azure-stack-add-vm-image.md).
+8. To run this sample, Ubuntu 16.04-LTS and WindowsServer 2012-R2-DataCenter images must be present in the Azure Stack Hub Marketplace. These images can be either [downloaded from Azure](../operator/azure-stack-download-azure-marketplace-item.md), or added to the [platform image repository](../operator/azure-stack-add-vm-image.md).
 
 9. Run the sample:
 

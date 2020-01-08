@@ -1,6 +1,6 @@
 ---
 title: Add hosting servers for the SQL resource provider
-titleSuffix: Azure Stack
+titleSuffix: Azure Stack Hub
 description: Learn how to add hosting servers for provisioning through the SQL resource provider adapter.
 services: azure-stack
 documentationCenter: ''
@@ -21,7 +21,7 @@ ms.lastreviewed: 10/16/2018
 ---
 # Add hosting servers for the SQL resource provider
 
-You can create SQL Server database hosting servers on a virtual machine (VM) in [Azure Stack](azure-stack-overview.md), or on a VM outside your Azure Stack environment, as long as the SQL resource provider can connect to the instance.
+You can create SQL Server database hosting servers on a virtual machine (VM) in [Azure Stack Hub](azure-stack-overview.md), or on a VM outside your Azure Stack Hub environment, as long as the SQL resource provider can connect to the instance.
 
 > [!NOTE]
 > The SQL resource provider should be created in the default provider subscription while SQL hosting servers should be created in a billable, user subscription. The resource provider server shouldn't be used to host user databases.
@@ -33,7 +33,7 @@ Before you add a SQL hosting server, review the following mandatory and general 
 ### Mandatory requirements
 
 * Enable SQL authentication on the SQL Server instance. Because the SQL resource provider VM isn't domain-joined, it can only connect to a hosting server using SQL authentication.
-* Configure the IP addresses for the SQL instances as Public when installed on Azure Stack. The resource provider and users, such as web apps, communicate over the user network, so connectivity to the SQL instance on this network is required.
+* Configure the IP addresses for the SQL instances as Public when installed on Azure Stack Hub. The resource provider and users, such as web apps, communicate over the user network, so connectivity to the SQL instance on this network is required.
 
 ### General requirements
 
@@ -50,10 +50,10 @@ Make sure you always download the latest version of the **SQL IaaS Extension** b
 > [!NOTE]
 > The SQL IaaS Extension is _required_ for all SQL on Windows images in the marketplace; the VM will fail to deploy if you didn't download the extension. It's not used with Linux-based SQL VM images.
 
-There are other options for deploying SQL VMs, including templates in the [Azure Stack Quickstart Gallery](https://github.com/Azure/AzureStack-QuickStart-Templates).
+There are other options for deploying SQL VMs, including templates in the [Azure Stack Hub Quickstart Gallery](https://github.com/Azure/AzureStack-QuickStart-Templates).
 
 > [!NOTE]
-> Any hosting servers installed on a multi-node Azure Stack must be created from a user subscription and not the Default Provider Subscription. They must be created from the user portal or from a PowerShell session with an appropriate login. All hosting servers are billable VMs and must have appropriate SQL licenses. The service admin _can_ be the owner of that subscription.
+> Any hosting servers installed on a multi-node Azure Stack Hub must be created from a user subscription and not the Default Provider Subscription. They must be created from the user portal or from a PowerShell session with an appropriate login. All hosting servers are billable VMs and must have appropriate SQL licenses. The service admin _can_ be the owner of that subscription.
 
 ### Required Privileges
 
@@ -68,7 +68,7 @@ You can create an admin user with lower privileges than a SQL sysadmin. The user
 
 The following information provides additional security guidance:
 
-* All Azure Stack storage is encrypted using BitLocker, so any SQL instance on Azure Stack will use encrypted blob storage.
+* All Azure Stack Hub storage is encrypted using BitLocker, so any SQL instance on Azure Stack Hub will use encrypted blob storage.
 * The SQL Resource Provider fully supports TLS 1.2. Ensure that any SQL Server that's managed through the SQL RP is configured for TLS 1.2 _only_ and the RP will default to that. All supported versions of SQL Server support TLS 1.2. For more information, see [TLS 1.2 support for Microsoft SQL Server](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server).
 * Use SQL Server Configuration Manager to set the **ForceEncryption** option to ensure all communications to the SQL server are always encrypted. For more information, see [To configure the server to force encrypted connections](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine?view=sql-server-2017#to-configure-the-server-to-force-encrypted-connections).
 * Ensure any client app is also communicating over an encrypted connection.
@@ -80,19 +80,19 @@ You can use standalone (non-HA) SQL servers using any edition of SQL Server 2014
 
 To add a standalone hosting server that's already set up, follow these steps:
 
-1. Sign in to the Azure Stack administrator portal as a service admin.
+1. Sign in to the Azure Stack Hub administrator portal as a service admin.
 
 2. Select **All services** &gt; **ADMINISTRATIVE RESOURCES** &gt; **SQL Hosting Servers**.
 
-   ![SQL Hosting Servers in Azure Stack administrator portal](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
+   ![SQL Hosting Servers in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sqlhostingservers.png)
 
    Under **SQL Hosting Servers**,  you can connect the SQL resource provider to instances of SQL Server that will serve as the resource provider's backend.
 
-   ![SQL Adapter dashboard in Azure Stack administrator portal](./media/azure-stack-sql-rp-deploy/sqlrp-hostingserver.png)
+   ![SQL Adapter dashboard in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sqlrp-hostingserver.png)
 
 3. Click **Add** and then provide the connection details for your SQL Server instance on the **Add a SQL Hosting Server** blade.
 
-   ![Add a SQL Hosting Server in Azure Stack administrator portal](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
+   ![Add a SQL Hosting Server in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
 
     Optionally, provide an instance name, and specify a port number if the instance isn't assigned to the default port of 1433.
 
@@ -104,7 +104,7 @@ To add a standalone hosting server that's already set up, follow these steps:
    * To use an existing SKU, choose an available SKU and then select **Create**.
    * To create a SKU, select **+ Create new SKU**. In **Create SKU**, enter the required information, and then select **OK**.
 
-     ![Create a SKU in Azure Stack administrator portal](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
+     ![Create a SKU in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
 
 ## Provide high availability using SQL Always On Availability Groups
 
@@ -153,7 +153,7 @@ Use these commands to set the contained database authentication server option fo
 
 ### To add SQL Always On hosting servers
 
-1. Sign in to the Azure Stack administrator portal as a service admin.
+1. Sign in to the Azure Stack Hub administrator portal as a service admin.
 
 2. Select **Browse** &gt; **ADMINISTRATIVE RESOURCES** &gt; **SQL Hosting Servers** &gt; **+Add**.
 
@@ -163,7 +163,7 @@ Use these commands to set the contained database authentication server option fo
 
 4. Check the Always On Availability Group box to enable support for SQL Always On Availability Group instances.
 
-   ![Enable Always On Availability Group in Azure Stack administrator portal](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
+   ![Enable Always On Availability Group in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/AlwaysOn.PNG)
 
 5. Add the SQL Always On instance to a SKU.
 

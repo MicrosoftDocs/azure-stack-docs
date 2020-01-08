@@ -1,6 +1,6 @@
 ---
-title: MySQL resource provider maintenance operations in Azure Stack | Microsoft Docs
-description: Learn how to maintain the MySQL resource provider service in Azure Stack.
+title: MySQL resource provider maintenance operations in Azure Stack Hub | Microsoft Docs
+description: Learn how to maintain the MySQL resource provider service in Azure Stack Hub.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -18,7 +18,7 @@ ms.lastreviewed: 01/11/2019
 
 ---
 
-# MySQL resource provider maintenance operations in Azure Stack
+# MySQL resource provider maintenance operations in Azure Stack Hub
 
 The MySQL resource provider runs on a locked down virtual machine (VM). To enable maintenance operations, you need to update the VM's security. To do this using the principle of least privilege (POLP), you can use PowerShell Just Enough Administration (JEA) endpoint DBAdapterMaintenance. The resource provider installation package includes a script for this operation.
 
@@ -89,9 +89,9 @@ $session | Remove-PSSession
 
 ## Secrets rotation
 
-*These instructions only apply to Azure Stack Integrated Systems.*
+*These instructions only apply to Azure Stack Hub Integrated Systems.*
 
-When using the SQL and MySQL resource providers with Azure Stack integrated systems, the Azure Stack operator is responsible for rotating the following resource provider infrastructure secrets to ensure that they don't expire:
+When using the SQL and MySQL resource providers with Azure Stack Hub integrated systems, the Azure Stack Hub operator is responsible for rotating the following resource provider infrastructure secrets to ensure that they don't expire:
 
 - External SSL Certificate [provided during deployment](azure-stack-pki-certs.md).
 - The resource provider VM local administrator account password provided during deployment.
@@ -151,8 +151,8 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
 
 |Parameter|Description|
 |-----|-----|
-|AzCredential|Azure Stack service admin account credential.|
-|CloudAdminCredential|Azure Stack cloud admin domain account credential.|
+|AzCredential|Azure Stack Hub service admin account credential.|
+|CloudAdminCredential|Azure Stack Hub cloud admin domain account credential.|
 |PrivilegedEndpoint|Privileged Endpoint to access Get-AzureStackStampInformation.|
 |DiagnosticsUserPassword|Diagnostics user account password.|
 |VMLocalCredential|The local admin account on the MySQLAdapter VM.|

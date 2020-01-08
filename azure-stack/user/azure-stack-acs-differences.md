@@ -1,6 +1,6 @@
 ---
-title: Azure stack storage differences and considerations | Microsoft Docs
-description: Understand the differences between Azure stack storage and Azure storage, along with Azure Stack deployment considerations.
+title: Azure Stack Hub storage differences and considerations | Microsoft Docs
+description: Understand the differences between Azure Stack Hub storage and Azure storage, along with Azure Stack Hub deployment considerations.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,17 +18,17 @@ ms.reviwer: xiaofmao
 ms.lastreviewed: 01/30/2019
 
 ---
-# Azure Stack storage: Differences and considerations
+# Azure Stack Hub storage: Differences and considerations
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
-Azure Stack storage is the set of storage cloud services in Microsoft Azure Stack. Azure Stack storage provides blob, table, queue, and account management functionality with Azure-consistent semantics.
+Azure Stack Hub storage is the set of storage cloud services in Microsoft Azure Stack Hub. Azure Stack Hub storage provides blob, table, queue, and account management functionality with Azure-consistent semantics.
 
-This article summarizes the known Azure Stack Storage differences from Azure Storage services. It also lists things to consider when you deploy Azure Stack. To learn about high-level differences between global Azure and Azure Stack, see the [Key considerations](azure-stack-considerations.md) article.
+This article summarizes the known Azure Stack Hub Storage differences from Azure Storage services. It also lists things to consider when you deploy Azure Stack Hub. To learn about high-level differences between global Azure and Azure Stack Hub, see the [Key considerations](azure-stack-considerations.md) article.
 
 ## Cheat sheet: Storage differences
 
-| Feature | Azure (global) | Azure Stack |
+| Feature | Azure (global) | Azure Stack Hub |
 | --- | --- | --- |
 |File storage|Cloud-based SMB file shares supported|Not yet supported
 |Azure storage service encryption for data at Rest|256-bit AES encryption. Support encryption using customer-managed keys in Key Vault.|BitLocker 128-bit AES encryption. Encryption using customer-managed keys isn't supported.
@@ -58,7 +58,7 @@ There are also differences with storage metrics:
 
 ## API version
 
-The following versions are supported with Azure Stack Storage:
+The following versions are supported with Azure Stack Hub Storage:
 
 Azure Storage services APIs:
 
@@ -98,10 +98,10 @@ Previous versions:
 - [2015-06-15](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 - [2015-05-01-preview](https://docs.microsoft.com/rest/api/storagerp/?redirectedfrom=MSDN)
 
-For more information about Azure Stack supported storage client libraries, see: [Get started with Azure Stack storage development tools](azure-stack-storage-dev.md).
+For more information about Azure Stack Hub supported storage client libraries, see: [Get started with Azure Stack Hub storage development tools](azure-stack-storage-dev.md).
 
 ## Next steps
 
-* [Get started with Azure Stack Storage development tools](azure-stack-storage-dev.md)
-* [Use data transfer tools for Azure Stack storage](azure-stack-storage-transfer.md)
-* [Introduction to Azure Stack Storage](azure-stack-storage-overview.md)
+* [Get started with Azure Stack Hub Storage development tools](azure-stack-storage-dev.md)
+* [Use data transfer tools for Azure Stack Hub storage](azure-stack-storage-transfer.md)
+* [Introduction to Azure Stack Hub Storage](azure-stack-storage-overview.md)

@@ -1,5 +1,5 @@
 ---
-title: Test an Azure Stack service offering.
+title: Test an Azure Stack Hub service offering.
 description: Learn how to test a service offering, by creating a subscription and deploying resources. 
 author: BryanLa
 ms.author: bryanla
@@ -26,7 +26,7 @@ Before starting this tutorial, you must complete the following prerequisites:
 
 - Complete the [Offer a service to users](tutorial-offer-services.md) tutorial. In it, you learn how to create the offer used by this tutorial.
 
-- The offer you subscribe to in this tutorial enables deployment of a virtual machine (VM) resource. If you'd like to test VM deployment, you must first make a VM image available in Azure Stack Marketplace, by downloading it from Azure Marketplace. See [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md) for instructions. 
+- The offer you subscribe to in this tutorial enables deployment of a virtual machine (VM) resource. If you'd like to test VM deployment, you must first make a VM image available in Azure Stack Hub Marketplace, by downloading it from Azure Marketplace. See [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md) for instructions. 
 
 ## Subscribe to the offer
 
@@ -136,6 +136,6 @@ In this tutorial you learned how to:
 
 Next, learn about deploying resource providers for value-add services. They allow you to offer even more services to users in your plans:
 
-- [Offer SQL on Azure Stack](azure-stack-sql-resource-provider.md)
-- [Offer MySQL on Azure Stack](azure-stack-mysql-resource-provider.md)
-- [Offer App Service on Azure Stack](azure-stack-app-service-overview.md)
+- [Offer SQL on Azure Stack Hub](azure-stack-sql-resource-provider.md)
+- [Offer MySQL on Azure Stack Hub](azure-stack-mysql-resource-provider.md)
+- [Offer App Service on Azure Stack Hub](azure-stack-app-service-overview.md)

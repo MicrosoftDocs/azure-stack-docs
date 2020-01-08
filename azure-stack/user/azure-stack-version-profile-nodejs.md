@@ -1,6 +1,6 @@
 ---
-title: Using API version profiles with Node.js in Azure Stack | Microsoft Docs
-description: Learn about using API version profiles with Node.js in Azure Stack.
+title: Using API version profiles with Node.js in Azure Stack Hub | Microsoft Docs
+description: Learn about using API version profiles with Node.js in Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,25 +18,25 @@ ms.lastreviewed: 11/11/2019
 
 ---
 
-# Use API version Profiles with Node.js software development kit (SDK) in Azure Stack
+# Use API version Profiles with Node.js software development kit (SDK) in Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
 ## Node.js and API version profiles
 
-You can use Node.js SDK to help build and manage the infrastructure for your apps. API profiles in the Node.js SDK help with your hybrid cloud solutions by letting you switch between global Azure resources and Azure Stack resources. You can code once and then target both global Azure and Azure Stack. 
+You can use Node.js SDK to help build and manage the infrastructure for your apps. API profiles in the Node.js SDK help with your hybrid cloud solutions by letting you switch between global Azure resources and Azure Stack Hub resources. You can code once and then target both global Azure and Azure Stack Hub. 
 
-In this article, you can use [Visual Studio Code](https://code.visualstudio.com/) as your development tool. Visual Studio Code can debug the Node.js SDK and allows you to run the app and push the app to your Azure Stack instance. You can debug from Visual Studio Code or through a terminal window running the command `node <nodefile.js>`.
+In this article, you can use [Visual Studio Code](https://code.visualstudio.com/) as your development tool. Visual Studio Code can debug the Node.js SDK and allows you to run the app and push the app to your Azure Stack Hub instance. You can debug from Visual Studio Code or through a terminal window running the command `node <nodefile.js>`.
 
 ## The Node.js SDK
 
-The Node.js SDK provides Azure Stack Resource Manager tools. Resource providers in the SDK include compute, networking, storage, app services, and KeyVault. There are 10 resource provider client libraries that you can install in your node.js application. You can also download specify which resource provider you will use for the **2018-03-01-hybrid** or **2019-03-01-profile** in order to optimize the memory for your application. Each module consists of a resource provider, the respective API version, and the API profile. 
+The Node.js SDK provides Azure Stack Hub Resource Manager tools. Resource providers in the SDK include compute, networking, storage, app services, and KeyVault. There are 10 resource provider client libraries that you can install in your node.js application. You can also download specify which resource provider you will use for the **2018-03-01-hybrid** or **2019-03-01-profile** in order to optimize the memory for your application. Each module consists of a resource provider, the respective API version, and the API profile. 
 
 An API profile is a combination of resource providers and API versions. You can use an API profile to get the latest, most stable version of each resource type in a resource provider package.
 
   -   To make use of the latest versions of all the services, use the **latest** profile of the packages.
 
-  -   To use the services compatible with Azure Stack, use the **\@azure/arm-resources-profile-hybrid-2019-03-01** or **\@azure/arm-storage-profile-2019-03-01-hybrid**
+  -   To use the services compatible with Azure Stack Hub, use the **\@azure/arm-resources-profile-hybrid-2019-03-01** or **\@azure/arm-storage-profile-2019-03-01-hybrid**
 
 ### Packages in npm
 
@@ -72,29 +72,29 @@ Use the specific API versions defined inside the package for the specific API-ve
 
 3. Install or upgrade [Visual Studio Code](https://code.visualstudio.com/) and install the [Node.js extension](https://code.visualstudio.com/docs/nodejs/nodejs-debugging) for Visual Studio Code.
 
-2.  Install the client packages for the Azure Stack Resource Manger. For more information, see [how to install client libraries](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid).
+2.  Install the client packages for the Azure Stack Hub Resource Manger. For more information, see [how to install client libraries](https://www.npmjs.com/package/@azure/arm-keyvault-profile-2019-03-01-hybrid).
 
 3.  The packages that need to be installed depends on the profile version you would like to use. You can find a list of resource providers in the [Packages in npm](#packages-in-npm) section.
 
 4. Install the resource provider client library using npm. From the command line, run: `npm install <package-name>`. For example, you can run `npm install @azure/arm-authorization-profile-2019-03-01-hybrid` to install the authorization resource provider library.
 
-5.  Create a subscription and make a note of the Subscription ID when you use the SDK. For instructions, see [Create subscriptions to offers in Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm).
+5.  Create a subscription and make a note of the Subscription ID when you use the SDK. For instructions, see [Create subscriptions to offers in Azure Stack Hub](https://docs.microsoft.com/azure/azure-stack/azure-stack-subscribe-plan-provision-vm).
 
-6.  Create a service principal and save the client ID and the client secret. The client ID is also known as the application ID when creating a service principal. For instructions, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md).
+6.  Create a service principal and save the client ID and the client secret. The client ID is also known as the application ID when creating a service principal. For instructions, see [Provide applications access to Azure Stack Hub](../operator/azure-stack-create-service-principals.md).
 
-7.  Make sure your service principal has contributor/owner role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md).
+7.  Make sure your service principal has contributor/owner role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack Hub](../operator/azure-stack-create-service-principals.md).
 
 ### Node.js prerequisites 
 
-To use the Node.js Azure SDK with Azure Stack, you must supply the following values, and then set values with environment variables. To set the environmental variables, see the instructions following the table for your operating system.
+To use the Node.js Azure SDK with Azure Stack Hub, you must supply the following values, and then set values with environment variables. To set the environmental variables, see the instructions following the table for your operating system.
 
 | Value | Environment variables | Description |
 | --- | --- | --- |
-| Tenant ID | TENANT\_ID | The value of your Azure Stack [tenant ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview). |
+| Tenant ID | TENANT\_ID | The value of your Azure Stack Hub [tenant ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-overview). |
 | Client ID | CLIENT\_ID | The service principal application ID saved when service principal was created on the previous section of this document.  |
-| Subscription ID | AZURE\_SUBSCRIPTION\_ID   The [subscription ID](/azure-stack/operator/service-plan-offer-subscription-overview#subscriptions) is how you access offers in Azure Stack.  |
+| Subscription ID | AZURE\_SUBSCRIPTION\_ID   The [subscription ID](/azure-stack/operator/service-plan-offer-subscription-overview#subscriptions) is how you access offers in Azure Stack Hub.  |
 | Client Secret | APPLICATION\_SECRET | The service principal application Secret saved when service principal was created. |
-| Resource Manager Endpoint | ARM\_ENDPOINT | See [the Azure Stack Resource Manager endpoint](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-ruby#the-azure-stack-resource-manager-endpoint). |
+| Resource Manager Endpoint | ARM\_ENDPOINT | See [the Azure Stack Hub Resource Manager endpoint](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-ruby#the-azure-stack-resource-manager-endpoint). |
 
 #### Set your environmental variables for Node.js
 
@@ -112,7 +112,7 @@ To set your environment variables:
 
     `export Azure_Tenant_ID=<Your_Tenant_ID>`
 
-**The Azure Stack Resource Manager endpoint**
+**The Azure Stack Hub Resource Manager endpoint**
 
 The Microsoft Azure Resource Manager is a management framework that allows administrators to deploy, manage, and monitor Azure resources. Azure Resource Manager can handle these tasks as a group, rather than individually, in a single operation.
 
@@ -148,17 +148,17 @@ Sample JSON file:
 
 -  **\@azure/arm-resourceprovider-profile-2019-03-01-hybrid**
 
-    Latest Profile built for Azure Stack. Use this profile for services to be most compatible with Azure Stack as long as you are on 1808 stamp or further.
+    Latest Profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub as long as you are on 1808 stamp or further.
 
 -  **\@azure-arm-resource**
 
     Profile consists of latest versions of all services. Use the latest versions of all the services in Azure.
 
-For more information about Azure Stack and API profiles, see a [Summary of API profiles](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles#summary-of-api-profiles).
+For more information about Azure Stack Hub and API profiles, see a [Summary of API profiles](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles#summary-of-api-profiles).
 
 ### Azure Node.js SDK API Profile usage
 
-The following lines should be used to instantiate a profile client. This parameter is only required for Azure Stack or other private clouds. Global Azure already has these settings by default with @azure-arm-resource or @azure-arm-storage.
+The following lines should be used to instantiate a profile client. This parameter is only required for Azure Stack Hub or other private clouds. Global Azure already has these settings by default with @azure-arm-resource or @azure-arm-storage.
 
 ```Node.js  
 var ResourceManagementClient = require('@azure/arm-resources-profile-hybrid-2019-03-01').ResourceManagementClient;
@@ -166,7 +166,7 @@ var ResourceManagementClient = require('@azure/arm-resources-profile-hybrid-2019
 var StorageManagementClient = require('@azure/arm-storage-profile-2019-03-01-hybrid').StorageManagementClient;
 ````
 
-The following code is needed to authenticate the service principal on Azure Stack. It creates a token by the tenant ID and the authentication base, which is specific to Azure Stack.
+The following code is needed to authenticate the service principal on Azure Stack Hub. It creates a token by the tenant ID and the authentication base, which is specific to Azure Stack Hub.
 
 ```Node.js  
 var clientId = process.env['AZURE_CLIENT_ID'];
@@ -177,9 +177,9 @@ var base_url = process.env['ARM_ENDPOINT'];
 var resourceClient, storageClient;
 ```
 
-This will allow you to use the API Profile client library to deploy your application successfully to Azure Stack.
+This will allow you to use the API Profile client library to deploy your application successfully to Azure Stack Hub.
 
-The below code snippet uses the Azure Resource Manager endpoint that you specify for your Azure Stack instance and gathers the data shown above such as gallery endpoint, graph endpoint, audiences, and portal endpoint.
+The below code snippet uses the Azure Resource Manager endpoint that you specify for your Azure Stack Hub instance and gathers the data shown above such as gallery endpoint, graph endpoint, audiences, and portal endpoint.
 
 ```Node.js  
 var map = {};
@@ -188,7 +188,7 @@ const fetchUrl = base_url + 'metadata/endpoints?api-version=1.0'
 
 ## Environment settings
 
-To authenticate the service principal to the Azure Stack environment, use the following code: Using this code and setting your environment variables in the command prompt automatically generates this mapping for the developer.
+To authenticate the service principal to the Azure Stack Hub environment, use the following code: Using this code and setting your environment variables in the command prompt automatically generates this mapping for the developer.
 
 ```Node.js  
 function main() {
@@ -214,7 +214,7 @@ function main() {
 
 ## Samples using API profiles
 
-You can use the following samples as a reference for creating solutions with Node.js and Azure Stack API profiles. You can get the samples from GitHub in the following repositories:
+You can use the following samples as a reference for creating solutions with Node.js and Azure Stack Hub API profiles. You can get the samples from GitHub in the following repositories:
 
 - [Storage node resource provider getting started](https://github.com/sijuman/storage-node-resource-provider-getting-started)
 - [Compute node manage](https://github.com/sijuman/compute-node-manage-vm)
@@ -235,7 +235,7 @@ You can use the following samples as a reference for creating solutions with Nod
     - Client ID
     - Client secret
     - Azure Subscription ID
-    - Azure Stack Resource Manager endpoint
+    - Azure Stack Hub Resource Manager endpoint
 
 4.  Set the following environment variables using the information you retrieved from the service principal you created using the command prompt:
 
@@ -244,7 +244,7 @@ You can use the following samples as a reference for creating solutions with Nod
     export CLIENT_ID=<your client id>
     export APPLICATION_SECRET=<your client secret>K
     export AZURE_SUBSCRIPTION_ID=<your subscription id>
-    export ARM_ENDPOINT=<your Azure Stack Resource manager URL>
+    export ARM_ENDPOINT=<your Azure Stack Hub Resource manager URL>
     ```
 
     > [!Note]  
@@ -252,9 +252,9 @@ You can use the following samples as a reference for creating solutions with Nod
 
 5.  Open the `index.js` file of the sample application.
 
-6.  Set the location variable to your Azure Stack location. For example, `LOCAL = "local"`.
+6.  Set the location variable to your Azure Stack Hub location. For example, `LOCAL = "local"`.
 
-7.  Set the credentials that will allow you to authenticate to Azure Stack. This portion of the code is included in this sample on the index.js file.
+7.  Set the credentials that will allow you to authenticate to Azure Stack Hub. This portion of the code is included in this sample on the index.js file.
 
     ```Node.js  
     var clientId = process.env['CLIENT_ID'];
@@ -408,5 +408,5 @@ return resourceClient.resourceGroups.deleteMethod(resourceGroupName, callback);
 
 For more information about API profiles, see:
 
-- [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md)
+- [Manage API version profiles in Azure Stack Hub](azure-stack-version-profiles.md)
 - [Resource provider API versions supported by profiles](azure-stack-profiles-azure-resource-manager-versions.md)

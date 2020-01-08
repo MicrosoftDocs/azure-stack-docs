@@ -25,7 +25,7 @@ You need the following information:
 
 -   **Subscription ID**  
 
-    You use the subscription ID to access offers in Azure Stack.
+    You use the subscription ID to access offers in Azure Stack Hub.
 
 -   **Tenant ID**
 
@@ -47,7 +47,7 @@ To get the subscription ID:
 
 2.  Select **All Services**.
 
-    > ![Azure Stack hub auth info subscription ID tenant ID](./media/authenticate-azure-stack-hub/azure-stack-hub-auth-info.png)
+    > ![Azure Stack Hub auth info subscription ID tenant ID](./media/authenticate-azure-stack-hub/azure-stack-hub-auth-info.png)
 
 3.  Select **Subscriptions**.
 
@@ -75,4 +75,4 @@ To get the metadata endpoint that points to properties such as gallery endpoint,
 
 ## Next steps
 
-Learn more about using the [Azure Stack Resource Manager](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles?view=azs-1910) with Azure Stack Hub.
+Learn more about using the [Azure Stack Hub Resource Manager](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles?view=azs-1910) with Azure Stack Hub.

@@ -1,5 +1,5 @@
 ---
-title: Add MySQL hosting servers in Azure Stack | Microsoft Docs
+title: Add MySQL hosting servers in Azure Stack Hub | Microsoft Docs
 description: Learn how to add MySQL hosting servers for provisioning through the MySQL Adapter Resource Provider.
 services: azure-stack
 documentationCenter: ''
@@ -18,9 +18,9 @@ ms.lastreviewed: 11/06/2019
 
 ---
 
-# Add MySQL hosting servers in Azure Stack
+# Add MySQL hosting servers in Azure Stack Hub
 
-You can host a MySQL hosting server instance on a virtual machine (VM) in [Azure Stack](azure-stack-overview.md), or on a VM outside your Azure Stack environment, as long as the MySQL resource provider can connect to the instance.
+You can host a MySQL hosting server instance on a virtual machine (VM) in [Azure Stack Hub](azure-stack-overview.md), or on a VM outside your Azure Stack Hub environment, as long as the MySQL resource provider can connect to the instance.
 
 > [!NOTE]
 > The MySQL resource provider should be created in the default provider subscription while MySQL hosting servers should be created in billable, user subscriptions. The resource provider server shouldn't be used to host user databases.
@@ -36,7 +36,7 @@ Make sure you have the credentials for an account with system admin privileges.
 
 To add a hosting server, follow these steps:
 
-1. Sign in to the Azure Stack administrator portal as a service admin.
+1. Sign in to the Azure Stack Hub administrator portal as a service admin.
 2. Select **All services**.
 3. Under the  **ADMINISTRATIVE RESOURCES** category, select **MySQL Hosting Servers** > **+Add**. The **Add a MySQL Hosting Server** dialog will open, shown in the following screen capture.
 
@@ -45,7 +45,7 @@ To add a hosting server, follow these steps:
 4. Provide the connection details of your MySQL Server instance.
 
    * For **MySQL Hosting Server Name**, provide the fully qualified domain name (FQDN) or a valid IPv4 address. Don't use the short VM name.
-   * The default admin **Username** for the Bitnami MySQL images available in Azure Stack Marketplace is *root*.
+   * The default admin **Username** for the Bitnami MySQL images available in Azure Stack Hub Marketplace is *root*.
    * If you don't know the root **Password**, see the [Bitnami documentation](https://docs.bitnami.com/azure/faq/#how-to-find-application-credentials) to learn how to get it.
    * A default MySQL instance isn't provided, so you have to specify the **Size of Hosting Server in GB**. Enter a size that's close to the capacity of the database server.
    * Keep the default setting for **Subscription**.
@@ -78,7 +78,7 @@ The following information applies to the RP and MySQL hosting servers:
 
 ## Increase backend database capacity
 
-You can increase backend database capacity by deploying more MySQL servers in the Azure Stack portal. Add these servers to a new or existing SKU. If you add a server to an existing SKU, make sure the server characteristics are the same as the other servers in the SKU.
+You can increase backend database capacity by deploying more MySQL servers in the Azure Stack Hub portal. Add these servers to a new or existing SKU. If you add a server to an existing SKU, make sure the server characteristics are the same as the other servers in the SKU.
 
 ## SKU notes
 Use a SKU name that describes the capabilities of the servers in the SKU, such as capacity and performance. The name serves as an aid to help users deploy their databases to the appropriate SKU. For example, you can use SKU names to differentiate service offerings by the following characteristics:

@@ -1,6 +1,6 @@
 ---
-title: How to set up a multiple site-to-site VPN tunnel in Azure Stack | Microsoft Docs
-description: Learn how to set up a multiple site-to-site VPN tunnel  in Azure Stack.
+title: How to set up a multiple site-to-site VPN tunnel in Azure Stack Hub | Microsoft Docs
+description: Learn how to set up a multiple site-to-site VPN tunnel  in Azure Stack Hub.
 services: azure-stack
 author: mattbriggs
 
@@ -12,14 +12,14 @@ ms.reviewer: sijuman
 ms.lastreviewed: 09/19/2019
 
 # keywords:  X
-# Intent: As an Azure Stack Operator, I want < what? > so that < why? >
+# Intent: As an Azure Stack Hub Operator, I want < what? > so that < why? >
 ---
 
-# How to set up a multiple site-to-site VPN tunnel in Azure Stack
+# How to set up a multiple site-to-site VPN tunnel in Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
-This article shows you how to use an Azure Stack Resource Manager template to deploy the solution. The solution creates multiple resource groups with associated virtual networks and how to connect these systems.
+This article shows you how to use an Azure Stack Hub Resource Manager template to deploy the solution. The solution creates multiple resource groups with associated virtual networks and how to connect these systems.
 
 You can find the templates in the [Azure Intelligent Edge Patterns](https://github.com/Azure-Samples/azure-intelligent-edge-patterns) GitHub repository. The template is in the **rras-gre-vnet-vnet** folder. 
 
@@ -33,7 +33,7 @@ You can find the templates in the [Azure Intelligent Edge Patterns](https://gith
 
 -  Deploy a three tier application, Web, App, and DB.
 
--  Deploy the first two templates on separate Azure Stack instances.
+-  Deploy the first two templates on separate Azure Stack Hub instances.
 
 -  **WebTier** will be deployed on PPE1 and **AppTier** will be deployed on PPE2.
 
@@ -43,15 +43,15 @@ You can find the templates in the [Azure Intelligent Edge Patterns](https://gith
 
 ## Steps to deploy multiple VPNs
 
-This is a multiple step process. For this solution, you're going to be using the Azure Stack portal. However, you can use PowerShell, Azure CLI, or other infrastructure-as-code tool chains to capture the outputs and use then as inputs.
+This is a multiple step process. For this solution, you're going to be using the Azure Stack Hub portal. However, you can use PowerShell, Azure CLI, or other infrastructure-as-code tool chains to capture the outputs and use then as inputs.
 
 ![alt text](./media/azure-stack-network-howto-vpn-tunnel/image2.png)
 
 ## Walkthrough
 
-### Deploy web tier to Azure Stack instances PPE1
+### Deploy web tier to Azure Stack Hub instances PPE1
 
-1.  Open the Azure Stack user portal and select **Create a resource**.
+1.  Open the Azure Stack Hub user portal and select **Create a resource**.
 
 2.  Select **Template Deployment**.
 
@@ -68,7 +68,7 @@ This is a multiple step process. For this solution, you're going to be using the
 
     ![](./media/azure-stack-network-howto-vpn-tunnel/image5.png)
 
-### Deploy app tier to the second Azure Stack instances
+### Deploy app tier to the second Azure Stack Hub instances
 
 You can use same process as the **WebTier** but different parameters as shown here:
 
@@ -95,7 +95,7 @@ You can use same process as the **WebTier** but different parameters as shown he
 
 ### Create tunnel from web tier to app tier
 
-1.  Open the Azure Stack user portal and select **Create a resource**.
+1.  Open the Azure Stack Hub user portal and select **Create a resource**.
 
 2.  Select **template deployment**.
 
@@ -107,7 +107,7 @@ You can use same process as the **WebTier** but different parameters as shown he
 
 ### Create tunnel from app tier to web tier
 
-1.  Open the Azure Stack user portal and select **Create a resource**.
+1.  Open the Azure Stack Hub user portal and select **Create a resource**.
 
 2.  Select **Template deployment**.
 
@@ -162,7 +162,7 @@ If you view the output from the custom script extension, you can see the tunnel 
 
 ### Configure app tier to DB tier
 
-1.  Open the Azure Stack user portal and select **Create a resource**.
+1.  Open the Azure Stack Hub user portal and select **Create a resource**.
 
 2.  Select **Template deployment**.
 
@@ -200,7 +200,7 @@ If you view the output from the custom script extension, you can see the tunnel 
     > You can test RDP both from one machine to the second, and from the second to the first.
 
     > [!Note]  
-    > To implement this solution on-premises you will need to deploy routes to the Azure Stack remote network into you switching infrastructure or at a minimum on specific VMs
+    > To implement this solution on-premises you will need to deploy routes to the Azure Stack Hub remote network into you switching infrastructure or at a minimum on specific VMs
 
 ### Deploying a GRE tunnel
 
@@ -212,6 +212,6 @@ The process is the almost identical. However when you deploy the tunnel template
 
 ## Next steps
 
-[Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)  
+[Differences and considerations for Azure Stack Hub networking](azure-stack-network-differences.md)  
 [How to create a VPN Tunnel using GRE](network-howto-vpn-tunnel-gre.md)  
 [How to create a VPN Tunnel using IPSEC](network-howto-vpn-tunnel-ipsec.md)

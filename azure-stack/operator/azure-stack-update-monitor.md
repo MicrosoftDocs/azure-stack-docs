@@ -1,6 +1,6 @@
 ---
-title: Monitor updates in Azure Stack using Powershell | Microsoft Docs
-description: Learn to monitor updates in Azure Stack using Powershell
+title: Monitor updates in Azure Stack Hub using Powershell | Microsoft Docs
+description: Learn to monitor updates in Azure Stack Hub using Powershell
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -53,4 +53,4 @@ Get-AzsUpdateRun -Name 5173e9f4-3040-494f-b7a7-738a6331d55c -UpdateName Microsof
 
 ## Next steps
 
--   [Managing updates in Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates)
+-   [Managing updates in Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates)

@@ -1,6 +1,6 @@
 ---
-title: Create a Windows Server VM by using PowerShell in Azure Stack | Microsoft Docs
-description: Create a Windows Server VM with PowerShell in Azure Stack.
+title: Create a Windows Server VM by using PowerShell in Azure Stack Hub | Microsoft Docs
+description: Create a Windows Server VM with PowerShell in Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -20,11 +20,11 @@ ms.lastreviewed: 11/11/2019
 
 ---
 
-# Quickstart: Create a Windows Server VM by using PowerShell in Azure Stack
+# Quickstart: Create a Windows Server VM by using PowerShell in Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
-You can create a Windows Server 2016 virtual machine (VM) by using Azure Stack PowerShell. Follow the steps in this article to create and use a VM. This article also gives you the steps to:
+You can create a Windows Server 2016 virtual machine (VM) by using Azure Stack Hub PowerShell. Follow the steps in this article to create and use a VM. This article also gives you the steps to:
 
 * Connect to the VM with a remote client.
 * Install the IIS web server and view the default home page.
@@ -35,15 +35,15 @@ You can create a Windows Server 2016 virtual machine (VM) by using Azure Stack P
 
 ## Prerequisites for Windows Server VM
 
-* Make sure that your Azure Stack operator has added the **Windows Server 2016** image to the Azure Stack marketplace.
+* Make sure that your Azure Stack Hub operator has added the **Windows Server 2016** image to the Azure Stack Hub marketplace.
 
-* Azure Stack requires a specific version of Azure PowerShell to create and manage the resources. If you don't have PowerShell configured for Azure Stack, follow the steps to [install](../operator/azure-stack-powershell-install.md) PowerShell.
+* Azure Stack Hub requires a specific version of Azure PowerShell to create and manage the resources. If you don't have PowerShell configured for Azure Stack Hub, follow the steps to [install](../operator/azure-stack-powershell-install.md) PowerShell.
 
-* With the Azure Stack PowerShell set up, you'll need to connect to your Azure Stack environment. For instruction, see [Connect to Azure Stack with PowerShell as a user](azure-stack-powershell-configure-user.md).
+* With the Azure Stack Hub PowerShell set up, you'll need to connect to your Azure Stack Hub environment. For instruction, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
 
 ## Create a resource group
 
-A resource group is a logical container into which Azure Stack resources are deployed and managed. From your development kit or the Azure Stack integrated system, run the following code block to create a resource group. 
+A resource group is a logical container into which Azure Stack Hub resources are deployed and managed. From your development kit or the Azure Stack Hub integrated system, run the following code block to create a resource group. 
 
 > [!NOTE]
 > Values are assigned for all variables in the code examples. However, you can assign new values if you want to.
@@ -245,4 +245,4 @@ Remove-AzureRmResourceGroup `
 
 ## Next steps
 
-In this quickstart, you've deployed a simple Windows VM. To learn more about Azure Stack VMs, continue to [Azure Stack VM features](azure-stack-vm-considerations.md).
+In this quickstart, you've deployed a simple Windows VM. To learn more about Azure Stack Hub VMs, continue to [Azure Stack Hub VM features](azure-stack-vm-considerations.md).

@@ -1,6 +1,6 @@
 ---
-title: Create and publish a Marketplace item in Azure Stack | Microsoft Docs
-description: Learn how to create and publish an Azure Stack Marketplace item.
+title: Create and publish a Marketplace item in Azure Stack Hub | Microsoft Docs
+description: Learn how to create and publish an Azure Stack Hub Marketplace item.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -18,11 +18,11 @@ ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
 
 ---
-# Create and publish a custom Azure Stack Marketplace item
+# Create and publish a custom Azure Stack Hub Marketplace item
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
-Every item published to the Azure Stack Marketplace uses the Azure Gallery Package (.azpkg) format. The *Azure Gallery Packager* tool enables you to create a custom Azure Gallery package that you can upload to the Azure Stack Marketplace, which can then be downloaded by users. The deployment process uses an Azure Resource Manager template.
+Every item published to the Azure Stack Hub Marketplace uses the Azure Gallery Package (.azpkg) format. The *Azure Gallery Packager* tool enables you to create a custom Azure Gallery package that you can upload to the Azure Stack Hub Marketplace, which can then be downloaded by users. The deployment process uses an Azure Resource Manager template.
 
 ## Marketplace items
 
@@ -31,11 +31,11 @@ The examples in this article show how to create a single VM Marketplace offer, o
 ## Create a Marketplace item
 
 > [!IMPORTANT]
-> Before creating the VM marketplace item, upload the custom VM image to the Azure Stack portal, following the instructions in [Add a VM image to Azure Stack](azure-stack-add-vm-image.md). Then, follow the instructions in this article to package the image (create an .azpkg) and upload it to the Azure Stack Marketplace.
+> Before creating the VM marketplace item, upload the custom VM image to the Azure Stack Hub portal, following the instructions in [Add a VM image to Azure Stack Hub](azure-stack-add-vm-image.md). Then, follow the instructions in this article to package the image (create an .azpkg) and upload it to the Azure Stack Hub Marketplace.
 
 To create a custom marketplace item, do the following:
 
-1. Download the [Azure Gallery Packager tool](https://aka.ms/azsmarketplaceitem) and the sample Azure Stack gallery package. This download includes custom VM templates. Extract the .zip file, and under the folder **Custom VMs**, you can use either the Linux or the Windows templates that are available. You can decide to re-use the pre-made templates and modify the respective parameters with the product details of the item that you will show on your Azure Stack portal. Or, you can simply re-use the .azpkg file available and skip the following steps to customize your own gallery package.
+1. Download the [Azure Gallery Packager tool](https://aka.ms/azsmarketplaceitem) and the sample Azure Stack Hub gallery package. This download includes custom VM templates. Extract the .zip file, and under the folder **Custom VMs**, you can use either the Linux or the Windows templates that are available. You can decide to re-use the pre-made templates and modify the respective parameters with the product details of the item that you will show on your Azure Stack Hub portal. Or, you can simply re-use the .azpkg file available and skip the following steps to customize your own gallery package.
 
 2. Create an Azure Resource Manager template or use our sample templates for Windows/Linux. These sample templates are provided in the packager tool .zip file you downloaded in step 1. You can either use the template and change the text fields, or you can download a pre-configured template from GitHub. For more information about Azure Resource Manager templates, see [Azure Resource Manager templates](/azure/azure-resource-manager/resource-group-authoring-templates).
 
@@ -140,9 +140,9 @@ To create a custom marketplace item, do the following:
     ![Package display](media/azure-stack-create-and-publish-marketplace-item/pkg1.png)
     ![Package display](media/azure-stack-create-and-publish-marketplace-item/pkg2.png)
 
-6. To ensure that the resource can be deployed successfully, test the template with the [Azure Stack APIs](../user/azure-stack-profiles-azure-resource-manager-versions.md).
+6. To ensure that the resource can be deployed successfully, test the template with the [Azure Stack Hub APIs](../user/azure-stack-profiles-azure-resource-manager-versions.md).
 
-7. If your template relies on a virtual machine (VM) image, follow the instructions to [add a VM image to Azure Stack](azure-stack-add-vm-image.md).
+7. If your template relies on a virtual machine (VM) image, follow the instructions to [add a VM image to Azure Stack Hub](azure-stack-add-vm-image.md).
 
 8. Save your Azure Resource Manager template in the **/Contoso.TodoList/DeploymentTemplates/** folder.
 
@@ -166,9 +166,9 @@ To create a custom marketplace item, do the following:
 
 ## Publish a Marketplace item
 
-1. Use PowerShell or Azure Storage Explorer to upload your Marketplace item (.azpkg) to Azure Blob storage. You can upload to local Azure Stack storage or upload to Azure Storage, which is a temporary location for the package. Make sure that the blob is publicly accessible.
+1. Use PowerShell or Azure Storage Explorer to upload your Marketplace item (.azpkg) to Azure Blob storage. You can upload to local Azure Stack Hub storage or upload to Azure Storage, which is a temporary location for the package. Make sure that the blob is publicly accessible.
 
-2. To import the gallery package into Azure Stack, the first step is to remotely connect (RDP) to the client VM, in order to copy the file you just created to your Azure Stack.
+2. To import the gallery package into Azure Stack Hub, the first step is to remotely connect (RDP) to the client VM, in order to copy the file you just created to your Azure Stack Hub.
 
 3. Add a context:
 
@@ -185,7 +185,7 @@ To create a custom marketplace item, do the following:
     https://sample.blob.core.windows.net/<temporary blob name>/<offerName.publisherName.version>.azpkg –Verbose
     ```
 
-5. Verify that you have a valid Storage account that is available to store your item. You can get the `GalleryItemURI` value from the Azure Stack administrator portal. Select **Storage account -> Blob Properties -> URL**, with the extension .azpkg. The storage account is only for temporary use, in order to publish to the marketplace.
+5. Verify that you have a valid Storage account that is available to store your item. You can get the `GalleryItemURI` value from the Azure Stack Hub administrator portal. Select **Storage account -> Blob Properties -> URL**, with the extension .azpkg. The storage account is only for temporary use, in order to publish to the marketplace.
 
    After completing your gallery package and uploading it using **Add-AzsGalleryItem**, your custom VM should now appear on the Marketplace as well as in the **Create a resource** view. Note that the custom gallery package is not visible in **Marketplace Management**.
 
@@ -227,7 +227,7 @@ To create a custom marketplace item, do the following:
 | PublisherDisplayName |X |String |Recommendation of 30 characters |The portal might not display your publisher name correctly if it's longer than 30 characters. |
 | PublisherLegalName |X |String |Maximum of 256 characters | |
 | Summary |X |String |60 to 100 characters | |
-| LongSummary |X |String |140 to 256 characters |Not yet applicable in Azure Stack. |
+| LongSummary |X |String |140 to 256 characters |Not yet applicable in Azure Stack Hub. |
 | Description |X |[HTML](https://github.com/Azure/portaldocs/blob/master/gallery-sdk/generated/index-gallery.md#gallery-item-metadata-html-sanitization) |500 to 5,000 characters | |
 
 ### Images
@@ -244,7 +244,7 @@ The Marketplace uses the following icons:
 
 ### Categories
 
-Each Marketplace item should be tagged with a category that identifies where the item appears on the portal UI. You can choose one of the existing categories in Azure Stack (**Compute**, **Data + Storage**, and so on) or choose a new one.
+Each Marketplace item should be tagged with a category that identifies where the item appears on the portal UI. You can choose one of the existing categories in Azure Stack Hub (**Compute**, **Data + Storage**, and so on) or choose a new one.
 
 ### Links
 
@@ -272,18 +272,18 @@ For any field that allows HTML, the following [elements and attributes are allow
 
 ## Reference: Marketplace item UI
 
-Icons and text for Marketplace items as seen in the Azure Stack portal are as follows.
+Icons and text for Marketplace items as seen in the Azure Stack Hub portal are as follows.
 
 ### Create blade
 
-![Create blade—Azure Stack Marketplace items](media/azure-stack-create-and-publish-marketplace-item/image1.png)
+![Create blade—Azure Stack Hub Marketplace items](media/azure-stack-create-and-publish-marketplace-item/image1.png)
 
 ### Marketplace item details blade
 
-![Azure Stack Marketplace item details blade](media/azure-stack-create-and-publish-marketplace-item/image3.png)
+![Azure Stack Hub Marketplace item details blade](media/azure-stack-create-and-publish-marketplace-item/image3.png)
 
 ## Next steps
 
-- [Azure Stack Marketplace overview](azure-stack-marketplace.md)
+- [Azure Stack Hub Marketplace overview](azure-stack-marketplace.md)
 - [Download Marketplace items](azure-stack-download-azure-marketplace-item.md)
 - [Format and structure of Azure Resource Manager templates](/azure/azure-resource-manager/resource-group-authoring-templates)

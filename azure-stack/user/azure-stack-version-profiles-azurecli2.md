@@ -1,6 +1,6 @@
 ---
-title: Manage Azure Stack with Azure CLI | Microsoft Docs
-description: Learn how to use the cross-platform command-line interface (CLI) to manage and deploy resources on Azure Stack.
+title: Manage Azure Stack Hub with Azure CLI | Microsoft Docs
+description: Learn how to use the cross-platform command-line interface (CLI) to manage and deploy resources on Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -17,43 +17,43 @@ ms.reviewer: sijuman
 ms.lastreviewed: 12/10/2019
 
 ---
-# Manage and deploy resources to Azure Stack with Azure CLI
+# Manage and deploy resources to Azure Stack Hub with Azure CLI
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
 Follow the steps in this article to set up the Azure Command-Line Interface (CLI) to manage Azure Stack Development Kit (ASDK) resources from Linux, Mac, and Windows client platforms.
 
 ## Prepare for Azure CLI
 
-If you're using the ASDK, you need the CA root certificate for Azure Stack to use Azure CLI on your development machine. You use the certificate to manage resources through the CLI.
+If you're using the ASDK, you need the CA root certificate for Azure Stack Hub to use Azure CLI on your development machine. You use the certificate to manage resources through the CLI.
 
- - **The Azure Stack CA root certificate** is required if you're using the CLI from a workstation outside the ASDK.  
+ - **The Azure Stack Hub CA root certificate** is required if you're using the CLI from a workstation outside the ASDK.  
 
  - **The virtual machine aliases endpoint** provides an alias, like "UbuntuLTS" or "Win2012Datacenter." This alias references an image publisher, offer, SKU, and version as a single parameter when deploying VMs.  
 
 The following sections describe how to get these values.
 
-### Export the Azure Stack CA root certificate
+### Export the Azure Stack Hub CA root certificate
 
 If you're using an integrated system, you don't need to export the CA root certificate. If you're using the ASDK, export the CA root certificate on an ASDK.
 
 To export the ASDK root certificate in PEM format:
 
-1. Get the name of your Azure Stack Root Cert:
-    - Sign in to the Azure Stack User or Administrator portal.
+1. Get the name of your Azure Stack Hub Root Cert:
+    - Sign in to the Azure Stack Hub User or Administrator portal.
     - Click on **Secure** near the address bar.
     - On the pop-up window, Click **Valid**.
     - On the Certificate Window, click **Certification Path** tab.
-    - Note down the name of your Azure Stack Root Cert.
+    - Note down the name of your Azure Stack Hub Root Cert.
 
-    ![Azure Stack Root Certificate](media/azure-stack-version-profiles-azurecli2/root-cert-name.png)
+    ![Azure Stack Hub Root Certificate](media/azure-stack-version-profiles-azurecli2/root-cert-name.png)
 
-2. [Create a Windows VM on Azure Stack](azure-stack-quick-windows-portal.md).
+2. [Create a Windows VM on Azure Stack Hub](azure-stack-quick-windows-portal.md).
 
 3. Sign in to the VM, open an elevated PowerShell prompt, and then run the following script:
 
     ```powershell  
-      $label = "<the name of your azure stack root cert from Step 1>"
+      $label = "<the name of your Azure Stack Hub root cert from Step 1>"
       Write-Host "Getting certificate from the current user trusted store with subject CN=$label"
       $root = Get-ChildItem Cert:\CurrentUser\Root | Where-Object Subject -eq "CN=$label" | select -First 1
       if (-not $root)
@@ -80,13 +80,13 @@ You can set up a publicly accessible endpoint that hosts a VM alias file. The VM
 
 2. Download the [sample file](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) from GitHub.
 
-3. Create a storage account in Azure Stack. When that's done, create a blob container. Set the access policy to "public."  
+3. Create a storage account in Azure Stack Hub. When that's done, create a blob container. Set the access policy to "public."  
 
 4. Upload the JSON file to the new container. When that's done, you can view the URL of the blob. Select the blob name and then selecting the URL from the blob properties.
 
 ### Install or upgrade CLI
 
-Sign in to your development workstation and install CLI. Azure Stack requires version 2.0 or later of Azure CLI. The latest version of the API Profiles requires a current version of the CLI. You install the CLI by using the steps described in the [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) article. 
+Sign in to your development workstation and install CLI. Azure Stack Hub requires version 2.0 or later of Azure CLI. The latest version of the API Profiles requires a current version of the CLI. You install the CLI by using the steps described in the [Install the Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) article. 
 
 1. To verify whether the installation was successful, open a terminal or command prompt window and run the following command:
 
@@ -96,7 +96,7 @@ Sign in to your development workstation and install CLI. Azure Stack requires ve
 
     You should see the version of Azure CLI and other dependent libraries that are installed on your computer.
 
-    ![Azure CLI on Azure Stack Python location](media/azure-stack-version-profiles-azurecli2/cli-python-location.png)
+    ![Azure CLI on Azure Stack Hub Python location](media/azure-stack-version-profiles-azurecli2/cli-python-location.png)
 
 2. Make a note of the CLI's Python location. If you're running the ASDK, you need to use this location to add your certificate.
 
@@ -105,11 +105,11 @@ Sign in to your development workstation and install CLI. Azure Stack requires ve
 
 This section walks you through setting up CLI if you're using Azure AD as your identity management service, and are using CLI on a Windows machine.
 
-### Trust the Azure Stack CA root certificate
+### Trust the Azure Stack Hub CA root certificate
 
 If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step isn't needed with the integrated systems.
 
-To trust the Azure Stack CA root certificate, append it to the existing Python certificate store for the Python version installed with the Azure CLI. You may be running your own instance of Python. Azure CLI includes its own version of Python.
+To trust the Azure Stack Hub CA root certificate, append it to the existing Python certificate store for the Python version installed with the Azure CLI. You may be running your own instance of Python. Azure CLI includes its own version of Python.
 
 1. Find the certificate store location on your machine.  You can find the location by running the command  `az --version`.
 
@@ -124,7 +124,7 @@ To trust the Azure Stack CA root certificate, append it to the existing Python c
 
     Make a note of the certificate location. For example, `C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\lib\site-packages\certifi\cacert.pem`. Your particular path depends on your OS and your CLI installation.
 
-2. Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
+2. Trust the Azure Stack Hub CA root certificate by appending it to the existing Python certificate.
 
     ```powershell
     $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Downloads\root.pem>"
@@ -152,12 +152,12 @@ To trust the Azure Stack CA root certificate, append it to the existing Python c
     Write-Host "Adding the certificate content to Python Cert store"
     Add-Content "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\CLI2\Lib\site-packages\certifi\cacert.pem" $rootCertEntry
 
-    Write-Host "Python Cert store was updated to allow the Azure Stack CA root certificate"
+    Write-Host "Python Cert store was updated to allow the Azure Stack Hub CA root certificate"
     ```
 
-### Connect to Azure Stack
+### Connect to Azure Stack Hub
 
-1. Register your Azure Stack environment by running the `az cloud register` command.
+1. Register your Azure Stack Hub environment by running the `az cloud register` command.
 
 2. Register your environment. Use the following parameters when running `az cloud register`:
 
@@ -179,16 +179,16 @@ To trust the Azure Stack CA root certificate, append it to the existing Python c
       az cloud set -n <environmentname>
       ```
 
-1. Update your environment configuration to use the Azure Stack specific API version profile. To update the configuration, run the following command:
+1. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
 
     ```azurecli
     az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >If you're running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
+    >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
  
-1. Sign in to your Azure Stack environment by using the `az login` command. Sign in to the Azure Stack environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
+1. Sign in to your Azure Stack Hub environment by using the `az login` command. Sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
    - Sign in as a *user*: 
 
@@ -211,7 +211,7 @@ To trust the Azure Stack CA root certificate, append it to the existing Python c
 
 ### Test the connectivity
 
-With everything set up, use CLI to create resources within Azure Stack. For example, you can create a resource group for an app and add a VM. Use the following command to create a resource group named "MyResourceGroup":
+With everything set up, use CLI to create resources within Azure Stack Hub. For example, you can create a resource group for an app and add a VM. Use the following command to create a resource group named "MyResourceGroup":
 
 ```azurecli
 az group create -n MyResourceGroup -l local
@@ -225,7 +225,7 @@ If the resource group is created successfully, the previous command outputs the 
 
 This section walks you through setting up CLI if you're using Active Directory Federated Services (AD FS) as your identity management service, and are using CLI on a Windows machine.
 
-### Trust the Azure Stack CA root certificate
+### Trust the Azure Stack Hub CA root certificate
 
 If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step isn't needed with the integrated systems.
 
@@ -237,7 +237,7 @@ If you're using the ASDK, you need to trust the CA root certificate on your remo
 
     Make a note of the certificate location. For example, `~/lib/python3.5/site-packages/certifi/cacert.pem`. Your particular path depends on your OS and the version of Python that you've installed.
 
-2. Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
+2. Trust the Azure Stack Hub CA root certificate by appending it to the existing Python certificate.
 
     ```powershell
     $pemFile = "<Fully qualified path to the PEM certificate Ex: C:\Users\user1\Downloads\root.pem>"
@@ -265,12 +265,12 @@ If you're using the ASDK, you need to trust the CA root certificate on your remo
     Write-Host "Adding the certificate content to Python Cert store"
     Add-Content "${env:ProgramFiles(x86)}\Microsoft SDKs\Azure\CLI2\Lib\site-packages\certifi\cacert.pem" $rootCertEntry
 
-    Write-Host "Python Cert store was updated to allow the Azure Stack CA root certificate"
+    Write-Host "Python Cert store was updated to allow the Azure Stack Hub CA root certificate"
     ```
 
-### Connect to Azure Stack
+### Connect to Azure Stack Hub
 
-1. Register your Azure Stack environment by running the `az cloud register` command.
+1. Register your Azure Stack Hub environment by running the `az cloud register` command.
 
 2. Register your environment. Use the following parameters when running `az cloud register`:
 
@@ -292,16 +292,16 @@ If you're using the ASDK, you need to trust the CA root certificate on your remo
       az cloud set -n <environmentname>
       ```
 
-1. Update your environment configuration to use the Azure Stack specific API version profile. To update the configuration, run the following command:
+1. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
 
     ```azurecli
     az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >If you're running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
+    >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
 
-1. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
+1. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
    - Sign in as a *user*:
 
@@ -334,7 +334,7 @@ If you're using the ASDK, you need to trust the CA root certificate on your remo
 
 ### Test the connectivity
 
-With everything set up, use CLI to create resources within Azure Stack. For example, you can create a resource group for an app and add a VM. Use the following command to create a resource group named "MyResourceGroup":
+With everything set up, use CLI to create resources within Azure Stack Hub. For example, you can create a resource group for an app and add a VM. Use the following command to create a resource group named "MyResourceGroup":
 
 ```azurecli
 az group create -n MyResourceGroup -l local
@@ -349,11 +349,11 @@ If the resource group is created successfully, the previous command outputs the 
 
 This section walks you through setting up CLI if you're using Azure AD as your identity management service, and are using CLI on a Linux machine.
 
-### Trust the Azure Stack CA root certificate
+### Trust the Azure Stack Hub CA root certificate
 
 If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step isn't needed with the integrated systems.
 
-Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
+Trust the Azure Stack Hub CA root certificate by appending it to the existing Python certificate.
 
 1. Find the certificate location on your machine. The location may vary depending on where you've installed Python. You need to have pip and the certifi module installed. Use the following Python command from the bash prompt:
 
@@ -371,17 +371,17 @@ Trust the Azure Stack CA root certificate by appending it to the existing Python
      sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
      ```
 
-   - For a Linux machine within the Azure Stack environment:
+   - For a Linux machine within the Azure Stack Hub environment:
 
      ```bash  
      sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
      ```
 
-### Connect to Azure Stack
+### Connect to Azure Stack Hub
 
-Use the following steps to connect to Azure Stack:
+Use the following steps to connect to Azure Stack Hub:
 
-1. Register your Azure Stack environment by running the `az cloud register` command.
+1. Register your Azure Stack Hub environment by running the `az cloud register` command.
 
 2. Register your environment. Use the following parameters when running `az cloud register`:
 
@@ -403,16 +403,16 @@ Use the following steps to connect to Azure Stack:
         az cloud set -n <environmentname>
       ```
 
-4. Update your environment configuration to use the Azure Stack specific API version profile. To update the configuration, run the following command:
+4. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
 
     ```azurecli
       az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >If you're running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
+    >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
 
-5. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
+5. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
    * Sign in as a *user*:
 
@@ -441,7 +441,7 @@ Use the following steps to connect to Azure Stack:
 
 ### Test the connectivity
 
-With everything set up, use CLI to create resources within Azure Stack. For example, you can create a resource group for an app and add a VM. Use the following command to create a resource group named "MyResourceGroup":
+With everything set up, use CLI to create resources within Azure Stack Hub. For example, you can create a resource group for an app and add a VM. Use the following command to create a resource group named "MyResourceGroup":
 
 ```azurecli
     az group create -n MyResourceGroup -l local
@@ -455,11 +455,11 @@ If the resource group is created successfully, the previous command outputs the 
 
 This section walks you through setting up CLI if you're using Active Directory Federated Services (AD FS) as your management service, and are using CLI on a Linux machine.
 
-### Trust the Azure Stack CA root certificate
+### Trust the Azure Stack Hub CA root certificate
 
 If you're using the ASDK, you need to trust the CA root certificate on your remote machine. This step isn't needed with the integrated systems.
 
-Trust the Azure Stack CA root certificate by appending it to the existing Python certificate.
+Trust the Azure Stack Hub CA root certificate by appending it to the existing Python certificate.
 
 1. Find the certificate location on your machine. The location may vary depending on where you've installed Python. You need to have pip and the certifi module installed. Use the following Python command from the bash prompt:
 
@@ -477,17 +477,17 @@ Trust the Azure Stack CA root certificate by appending it to the existing Python
      sudo cat PATH_TO_PEM_FILE >> ~/<yourpath>/cacert.pem
      ```
 
-   - For a Linux machine within the Azure Stack environment:
+   - For a Linux machine within the Azure Stack Hub environment:
 
      ```bash  
      sudo cat /var/lib/waagent/Certificates.pem >> ~/<yourpath>/cacert.pem
      ```
 
-### Connect to Azure Stack
+### Connect to Azure Stack Hub
 
-Use the following steps to connect to Azure Stack:
+Use the following steps to connect to Azure Stack Hub:
 
-1. Register your Azure Stack environment by running the `az cloud register` command.
+1. Register your Azure Stack Hub environment by running the `az cloud register` command.
 
 2. Register your environment. Use the following parameters when running `az cloud register`.
 
@@ -509,16 +509,16 @@ Use the following steps to connect to Azure Stack:
         az cloud set -n <environmentname>
       ```
 
-4. Update your environment configuration to use the Azure Stack specific API version profile. To update the configuration, run the following command:
+4. Update your environment configuration to use the Azure Stack Hub specific API version profile. To update the configuration, run the following command:
 
     ```azurecli
       az cloud update --profile 2019-03-01-hybrid
    ```
 
     >[!NOTE]  
-    >If you're running a version of Azure Stack before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
+    >If you're running a version of Azure Stack Hub before the 1808 build, you must use the API version profile **2017-03-09-profile** rather than the API version profile **2019-03-01-hybrid**. You also need to use a recent version of the Azure CLI.
 
-5. Sign in to your Azure Stack environment by using the `az login` command. You can sign in to the Azure Stack environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
+5. Sign in to your Azure Stack Hub environment by using the `az login` command. You can sign in to the Azure Stack Hub environment either as a user or as a [service principal](/azure/active-directory/develop/app-objects-and-service-principals). 
 
 6. Sign in: 
 
@@ -551,7 +551,7 @@ Use the following steps to connect to Azure Stack:
 
 ### Test the connectivity
 
-With everything set up, use CLI to create resources within Azure Stack. For example, you can create a resource group for an app and add a VM. Use the following command to create a resource group named "MyResourceGroup":
+With everything set up, use CLI to create resources within Azure Stack Hub. For example, you can create a resource group for an app and add a VM. Use the following command to create a resource group named "MyResourceGroup":
 
 ```azurecli
   az group create -n MyResourceGroup -l local
@@ -563,14 +563,14 @@ If the resource group is created successfully, the previous command outputs the 
 
 ## Known issues
 
-There are known issues when using CLI in Azure Stack:
+There are known issues when using CLI in Azure Stack Hub:
 
- - The CLI interactive mode. For example, the `az interactive` command, isn't yet supported in Azure Stack.
- - To get the list of VM images available in Azure Stack, use the `az vm image list --all` command instead of the `az vm image list` command. Specifying the `--all` option ensures that the response returns only the images that are available in your Azure Stack environment.
- - VM image aliases that are available in Azure may not be applicable to Azure Stack. When using VM images, you must use the entire URN parameter (Canonical:UbuntuServer:14.04.3-LTS:1.0.0) instead of the image alias. This URN must match the image specifications as derived from the `az vm images list` command.
+ - The CLI interactive mode. For example, the `az interactive` command, isn't yet supported in Azure Stack Hub.
+ - To get the list of VM images available in Azure Stack Hub, use the `az vm image list --all` command instead of the `az vm image list` command. Specifying the `--all` option ensures that the response returns only the images that are available in your Azure Stack Hub environment.
+ - VM image aliases that are available in Azure may not be applicable to Azure Stack Hub. When using VM images, you must use the entire URN parameter (Canonical:UbuntuServer:14.04.3-LTS:1.0.0) instead of the image alias. This URN must match the image specifications as derived from the `az vm images list` command.
 
 ## Next steps
 
 - [Deploy templates with Azure CLI](azure-stack-deploy-template-command-line.md)
-- [Enable Azure CLI for Azure Stack users (Operator)](../operator/azure-stack-cli-admin.md)
+- [Enable Azure CLI for Azure Stack Hub users (Operator)](../operator/azure-stack-cli-admin.md)
 - [Manage user permissions](azure-stack-manage-permissions.md) 
