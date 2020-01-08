@@ -49,7 +49,7 @@ Start Azure Stack Hub with the following steps. Follow these steps regardless of
 
 1. Power on each of the physical nodes in your Azure Stack Hub environment. Verify the power on instructions for the physical nodes by following the instructions from the OEM who supplied the hardware for your Azure Stack Hub.
 
-2. Wait until the Azure Stack Hub infrastructure services starts. Azure Stack Hub infrastructure services can require two hours to finish the start process. You can verify the start status of Azure Stack Hub with the [**Get-ActionStatus** cmdlet](#get-the-startup-status-for-azure-stack).
+2. Wait until the Azure Stack Hub infrastructure services starts. Azure Stack Hub infrastructure services can require two hours to finish the start process. You can verify the start status of Azure Stack Hub with the [**Get-ActionStatus** cmdlet](#get-the-startup-status-for-azure-stack-hub).
 
 3. Ensure that all of your tenant resources have returned to the state they were in before shutdown. Workloads running on tenant resources may need to be reconfigured after startup by the workload manager.
 
