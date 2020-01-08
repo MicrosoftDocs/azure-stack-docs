@@ -19,17 +19,17 @@ ms.reviewer: ppacent
 
 ---
 
-# Apply Azure Stack original equipment manufacturer (OEM) updates
+# Apply Azure Stack Hub original equipment manufacturer (OEM) updates
 
-*Applies to: Azure Stack integrated systems*
+*Applies to: Azure Stack Hub integrated systems*
 
-You can apply original equipment manufacturer (OEM) updates to your Azure Stack hardware components to receive driver and firmware improvements as well as security patches while minimizing the impact on your users. In this article, you can learn about OEM updates, OEM contact information, and how to apply an OEM update.
+You can apply original equipment manufacturer (OEM) updates to your Azure Stack Hub hardware components to receive driver and firmware improvements as well as security patches while minimizing the impact on your users. In this article, you can learn about OEM updates, OEM contact information, and how to apply an OEM update.
 
 ## Overview of OEM updates
 
 In addition to Microsoft Azure Stack updates, many OEMs also release regular updates for your Azure Stack hardware, such as driver and firmware updates. These are referred to as **OEM Package Updates**. To understand whether your OEM releases OEM Package Updates, check your [OEM's Azure Stack documentation](#oem-contact-information).
 
-These OEM package updates are uploaded into the **updateadminaccount** storage account and applied via the Azure Stack Administrator portal. For more information, see [Applying OEM Updates](#apply-oem-updates).
+These OEM package updates are uploaded into the **updateadminaccount** storage account and applied via the Azure Stack Hub Administrator portal. For more information, see [Applying OEM Updates](#apply-oem-updates).
 
 Ask your original equipment manufacturer (OEM) about their specific notification process to ensure OEM package update notifications reach your organization.
 
@@ -56,9 +56,9 @@ Apply the OEM packages with the following steps:
 1. You will need to contact your OEM to:
       - Determine the current version of your OEM package.  
       - Find the best method to download your OEM package.  
-2. Before applying an OEM package update, you should always apply the latest Azure Stack hotfix available on your system's current Azure Stack version. For more information about hotfixes see [Azure Stack Hotfixes](https://docs.microsoft.com/azure-stack/operator/azure-stack-servicing-policy).
+2. Before applying an OEM package update, you should always apply the latest Azure Stack hotfix available on your system's current Azure StackHub version. For more information about hotfixes see [Azure Stack Hub Hotfixes](https://docs.microsoft.com/azure-stack/operator/azure-stack-servicing-policy).
 3. Prepare your OEM package with the steps outlined in [Download update packages for integrated systems](azure-stack-servicing-policy.md).
-4. Apply the updates with the steps outlined in [Apply updates in Azure Stack](azure-stack-apply-updates.md).
+4. Apply the updates with the steps outlined in [Apply updates in Azure Stack Hub](azure-stack-apply-updates.md).
 
 ## Configure hardware vendor VM
 
@@ -87,4 +87,4 @@ For more information about the privileged endpoint on Azure Stack, see [Using th
 
 ## Next steps
 
-[Azure Stack updates](azure-stack-updates.md)
+[Azure Stack Hub updates](azure-stack-updates.md)
