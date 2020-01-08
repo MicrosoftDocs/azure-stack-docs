@@ -166,10 +166,9 @@ Also ensure that you've created plans and offers to make MySQL database creation
 > [!TIP]
 > The **Microsoft.MySqlAdapter** service won't be available to add to plans until the [MySQL Server resource provider has been deployed](azure-stack-mysql-resource-provider-deploy.md).
 
-
-
 ## Create a highly available MySQL database
-After the MySQL cluster has been created, configured, and added as an Azure Stack MySQL Hosting Server by an Azure Stack Operator, a tenant user with a subscription including MySQL Server database capabilities can create highly available MySQL databases by following the steps in this section. 
+
+After the MySQL cluster is created and configured, and added as an Azure Stack MySQL Hosting Server by an Azure Stack operator, a tenant user with a subscription including MySQL Server database capabilities can create highly available MySQL databases by following the steps in this section.
 
 > [!NOTE]
 > Run these steps from the Azure Stack user portal as a tenant user with a subscription providing MySQL Server capabilities (Microsoft.MySQLAdapter service).
@@ -177,21 +176,23 @@ After the MySQL cluster has been created, configured, and added as an Azure Stac
 1. 
    [!INCLUDE [azs-user-portal](../includes/azs-user-portal.md)]
 
-2. Select **\+** **Create a resource** > **Data \+ Storage**, and then **MySQL Database**.<br><br>Provide the required database property information including name, collation, the subscription to use, and location to use for the deployment. 
+2. Select **\+** **Create a resource** > **Data \+ Storage**, and then **MySQL Database**.
 
-   ![Create MySQL database](./media/azure-stack-tutorial-mysqlrp/createdb1.png)
+    Provide the required database property information including name, collation, the subscription to use, and location to use for the deployment.
 
-3. Select **SKU** and then choose the appropriate MySQL Hosting Server SKU to use. In this example, the Azure Stack Operator has created the **MySQL-HA** SKU to support high availability for MySQL cluster databases.
+    ![Create MySQL database in Azure Stack user portal](./media/azure-stack-tutorial-mysqlrp/createdb1.png)
 
-   ![Select SKU](./media/azure-stack-tutorial-mysqlrp/createdb2.png)
+3. Select **SKU** and then choose the appropriate MySQL Hosting Server SKU to use. In this example, the Azure Stack operator has created the **MySQL-HA** SKU to support high availability for MySQL cluster databases.
 
-4. Select **Login** > **Create a new login** and then provide the MySQL authentication credentials to be used for the new database. When finished, click **OK** and then **Create** to begin the database deployment process.
+   ![Select SKU in Azure Stack user portal](./media/azure-stack-tutorial-mysqlrp/createdb2.png)
 
-   ![Add login](./media/azure-stack-tutorial-mysqlrp/createdb3.png)
+4. Select **Login** > **Create a new login** and then provide the MySQL authentication credentials to be used for the new database. When finished, select **OK** and then **Create** to begin the database deployment process.
 
-5. When the MySQL database deployment completes successfully, review the database properties to discover the connection string to use for connecting to the new highly available database. 
+   ![Add login in Azure Stack user portal](./media/azure-stack-tutorial-mysqlrp/createdb3.png)
 
-   ![View connection string](./media/azure-stack-tutorial-mysqlrp/createdb4.png)
+5. When the MySQL database deployment completes successfully, review the database properties to discover the connection string to use for connecting to the new highly available database.
+
+   ![View connection string in Azure Stack user portal](./media/azure-stack-tutorial-mysqlrp/createdb4.png)
 
 ## Next steps
 
