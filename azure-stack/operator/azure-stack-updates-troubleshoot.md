@@ -17,13 +17,13 @@ ms.author: mabrigg
 ms.lastreviewed: 09/23/2019
 ms.reviewer: ppacent 
 
-# Intent: As an Azure Stack operator, I want to resolve issues with my update so that Azure Stack can return to production as quickly as possible. 
+# Intent: As an Azure Stack Hub operator, I want to resolve issues with my update so that Azure Stack can return to production as quickly as possible. 
 # Keywords: update azure stack troubleshoot
 
 ---
 # Best practices for troubleshooting Azure Stack Hub patch and update issues
 
-This article provides an overview of best practices for troubleshooting Azure Stack patch and update issues as well as remediations to common patch and update issues.
+This article provides an overview of best practices for troubleshooting Azure Stack Hub patch and update issues as well as remediations to common patch and update issues.
 
 
 The Azure Stack Hub patch and update process is designed to allow operators to apply update packages in a consistent, streamlined way. While uncommon, issues can occur during patch and update issues. The following steps are recommended should you encounter an issue during the patch and update process:
@@ -49,5 +49,5 @@ The Azure Stack Hub patch and update process is designed to allow operators to a
 
 ## Next steps
 
-- [Update Azure Stack](azure-stack-updates.md)  
-- [Microsoft Azure Stack help and support](azure-stack-help-and-support-overview.md)
+- [Update Azure Stack Hub](azure-stack-updates.md)  
+- [Microsoft Azure Stack Hub help and support](azure-stack-help-and-support-overview.md)
