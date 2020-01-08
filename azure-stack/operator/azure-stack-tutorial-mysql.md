@@ -19,7 +19,7 @@ ms.lastreviewed: 10/23/2018
 
 As an Azure Stack operator, you can configure server virtual machines (VMs) to host MySQL Server databases. After a MySQL cluster is successfully created and managed by Azure Stack, users who have subscribed to MySQL services can easily create highly available MySQL databases.
 
-This article shows how to use Azure Stack Marketplace items to create a [MySQL with replication cluster](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql-cluster). This solution uses multiple VMs to replicate the databases from the master node to a configurable number of replicas. Once created, the cluster can then be added as an Azure Stack MySQL Hosting Server, and then users can create a highly available MySQL databases.
+This article shows how to use Azure Stack Marketplace items to create a [MySQL with replication cluster](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/bitnami.mysql-cluster). This solution uses multiple VMs to replicate the databases from the master node to a configurable number of replicas. Once created, the cluster can then be added as an Azure Stack MySQL Hosting Server, and then users can create highly available MySQL databases.
 
 > [!IMPORTANT]
 > The **MySQL with replication** Azure Stack Marketplace item might not be available for all Azure cloud subscription environments. Verify that the marketplace item is available in your subscription before attempting to follow the rest of this tutorial.
@@ -66,7 +66,9 @@ Use the steps in this section to deploy the MySQL Server cluster using the [MySQ
 
    ![Custom template deployment in Azure Stack](media/azure-stack-tutorial-mysqlrp/1.png)
 
-3. Provide basic deployment information on the **Basics** page. Review the default values and change as needed and select **OK**.<br><br>At a minimum, provide the following:
+3. Provide basic deployment information on the **Basics** page. Review the default values and change as needed and select **OK**.
+
+    At a minimum, provide the following info:
 
    - Deployment name (default is mymysql).
    - Application root password. Provide a 12 character alphanumeric password with **no special characters**.
@@ -99,7 +101,7 @@ Use the steps in this section to deploy the MySQL Server cluster using the [MySQ
 
 7. After all deployments have completed successfully, review the resource group items and select the **mysqlip** Public IP address item. Record the public IP address and full FQDN of the public IP for the cluster.
 
-    You'll need to provide this to an Azure Stack Operator so they can create a MySQL hosting server leveraging this MySQL cluster.
+    You'll need to provide this IP address to an Azure Stack Operator so they can create a MySQL hosting server leveraging this MySQL cluster.
 
 ### Create a network security group rule
 
