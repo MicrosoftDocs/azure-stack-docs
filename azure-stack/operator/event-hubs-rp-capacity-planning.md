@@ -40,7 +40,7 @@ The resource consumption by the Event Hubs resource provider is constant, and in
 | **Event Hubs resource provider** | D2_V2   | 3     | 6     | 300 GiB    | 21 GiB | 2                |
 
 > [!IMPORTANT]
-> Resource provider consumption is not something that is controlled by quotas. You do not need to accomodate the cores used by the resource provider in your quota configurations. Resource providers are installed using an administrator subscription. The subscription does not impose resource consumption limits on operators, when installing their required resource providers.
+> Resource provider consumption is not something that is controlled by quotas. You do not need to accommodate the cores used by the resource provider in your quota configurations. Resource providers are installed using an administrator subscription. The subscription does not impose resource consumption limits on operators, when installing their required resource providers.
 
 ## Total resource consumption
 
