@@ -330,7 +330,7 @@ GO
 
 ## Create an Azure Active Directory app
 
-Configure an Azure AD service principal to support the following operations:
+Configure an Azure AD service principal, to support the following operations:
 
 - Virtual machine scale set integration on worker tiers.
 - SSO for the Azure Functions portal and advanced developer tools.
@@ -342,7 +342,7 @@ Admins must configure SSO to:
 - Enable the advanced developer tools within App Service (Kudu).
 - Enable the use of the Azure Functions portal experience.
 
-Now you register a new app in the tenant Azure AD instance. Follow these steps:
+Follow these steps to create the service principal in your Azure AD tenant:
 
 1. Open a PowerShell instance as azurestack\AzureStackAdmin.
 2. Go to the location of the scripts that you downloaded and extracted in the [prerequisite step](azure-stack-app-service-before-you-get-started.md).
@@ -354,7 +354,7 @@ Now you register a new app in the tenant Azure AD instance. Follow these steps:
 8. Open a new browser window, and sign in to the [Azure portal](https://portal.azure.com) as the Azure Active Directory service admin.
 9. Open the Azure Active Directory service.
 10. Select **App Registrations** in the left pane.
-11. Search for the application ID you noted in step 7. An App Service application registration entry is listed.
+11. Search for the application ID you noted in step 7. 
 12. Select the App Service application registration from the list.
 13. Select **API permissions** in the left pane.
 14. Select **Grant admin consent for \<tenant\>**, where \<tenant\> is the name of your Azure AD tenant. Confirm the consent grant by selecting **Yes**.
