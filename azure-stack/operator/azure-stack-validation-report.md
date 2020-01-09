@@ -1,6 +1,6 @@
 ---
 title: Validation report for Azure Stack Hub | Microsoft Docs
-description: Use the Azure Stack readiness checker report to review validation results.
+description: Use the Azure Stack Hub readiness checker report to review validation results.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -73,13 +73,13 @@ Error Details                 :
 
 Azure Identity Validation found no errors or warnings.
 
-############### Azure Stack Graph Validation Summary ###############
+############### Azure Stack Hub Graph Validation Summary ###############
 
-Azure Stack Graph Validation results not available.
+Azure Stack Hub Graph Validation results not available.
 
-############### Azure Stack ADFS Validation Summary ###############
+############### Azure Stack Hub ADFS Validation Summary ###############
 
-Azure Stack ADFS Validation results not available.
+Azure Stack Hub ADFS Validation results not available.
 
 ############### AzsReadiness Job Summary ###############
 
@@ -116,13 +116,13 @@ Registration Validation found no errors or warnings.
 
 Azure Identity Validation found no errors or warnings.
 
-############### Azure Stack Graph Validation Summary ###############
+############### Azure Stack Hub Graph Validation Summary ###############
 
-Azure Stack Graph Validation results not available.
+Azure Stack Hub Graph Validation results not available.
 
-############### Azure Stack ADFS Validation Summary ###############
+############### Azure Stack Hub ADFS Validation Summary ###############
 
-Azure Stack ADFS Validation results not available.
+Azure Stack Hub ADFS Validation results not available.
 ```
 
 ## View a filtered report

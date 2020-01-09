@@ -1,6 +1,6 @@
 ﻿---
-title: Azure Stack MySQL resource provider 1.1.30.0 release notes | Microsoft Docs
-description: View the release notes to see what's new in the Azure Stack MySQL resource provider 1.1.30.0 update.
+title: Azure Stack Hub MySQL resource provider 1.1.30.0 release notes | Microsoft Docs
+description: View the release notes to see what's new in the Azure Stack Hub MySQL resource provider 1.1.30.0 update.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -21,31 +21,31 @@ ms.lastreviewed: 12/10/2018
 
 # MySQL resource provider 1.1.30.0 release notes
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
 These release notes describe the improvements and known issues in MySQL resource provider version 1.1.30.0.
 
 ## Build reference
-Download the MySQL resource provider binary and then run the self-extractor to extract the contents to a temporary directory. The resource provider has a minimum corresponding Azure Stack build. The minimum Azure Stack release version required to install this version of the MySQL resource provider is listed below:
+Download the MySQL resource provider binary and then run the self-extractor to extract the contents to a temporary directory. The resource provider has a minimum corresponding Azure Stack Hub build. The minimum Azure Stack Hub release version required to install this version of the MySQL resource provider is listed below:
 
-> |Minimum Azure Stack version|MySQL resource provider version|
+> |Minimum Azure Stack Hub version|MySQL resource provider version|
 > |-----|-----|
-> |Azure Stack 1808 update (1.1808.0.97)|[1.1.30.0](https://aka.ms/azurestackmysqlrp11300)|
+> |Azure Stack Hub 1808 update (1.1808.0.97)|[1.1.30.0](https://aka.ms/azurestackmysqlrp11300)|
 > |     |     |
 
 > [!IMPORTANT]
-> Apply the minimum supported Azure Stack update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before deploying the latest version of the MySQL resource provider.
+> Apply the minimum supported Azure Stack Hub update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development Kit (ASDK) before deploying the latest version of the MySQL resource provider.
 
 ## New features and fixes
-This version of the Azure Stack MySQL resource provider includes the following improvements and fixes:
+This version of the Azure Stack Hub MySQL resource provider includes the following improvements and fixes:
 
 - **Telemetry enabled for MySQL resource provider deployments**. Telemetry collection has been enabled for MySQL resource provider deployments. Telemetry collected includes resource provider deployment, start and stop times, exit status, exit messages, and error details (if applicable).
 
-- **TLS 1.2 encryption update**. Enabled TLS 1.2-only support for resource provider communication with internal Azure Stack components. 
+- **TLS 1.2 encryption update**. Enabled TLS 1.2-only support for resource provider communication with internal Azure Stack Hub components. 
 
 ### Fixes
 
-- **MySQL resource provider Azure Stack PowerShell compatibility**. The MySQL resource provider has been updated to work with the Azure Stack 2018-03-01-hybrid PowerShell profile and to provide compatibility with AzureRM 1.3.0 and later.
+- **MySQL resource provider Azure Stack Hub PowerShell compatibility**. The MySQL resource provider has been updated to work with the Azure Stack Hub 2018-03-01-hybrid PowerShell profile and to provide compatibility with AzureRM 1.3.0 and later.
 
 - **MySQL login change password blade**. Fixed an issue where the password can't be changed on the change password blade. Removed links from password change notifications.
 
@@ -73,8 +73,8 @@ This version of the Azure Stack MySQL resource provider includes the following i
     [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12
     ```
  
-### Known issues for Cloud Admins operating Azure Stack
-Refer to the documentation in the [Azure Stack Release Notes](azure-stack-servicing-policy.md).
+### Known issues for Cloud Admins operating Azure Stack Hub
+Refer to the documentation in the [Azure Stack Hub Release Notes](azure-stack-servicing-policy.md).
 
 ## Next steps
 [Learn more about the MySQL resource provider](azure-stack-mysql-resource-provider.md).

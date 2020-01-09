@@ -11,7 +11,7 @@ ms.lastreviewed: 11/11/2019
 ---
 # Use an app identity to access Azure Stack Hub resources
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit (ASDK)*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit (ASDK)*
 
 An application that needs to deploy or configure resources through Azure Resource Manager must be represented by a service principal. Just as a user is represented by a user principal, a service principal is a type of security principal that represents an app. The service principal provides an identity for your app, allowing you to delegate only the necessary permissions to that service principal.  
 

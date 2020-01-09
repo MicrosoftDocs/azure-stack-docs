@@ -1,7 +1,7 @@
 ---
-title: Replace a scale unit node on an Azure Stack integrated system
-titleSuffix: Azure Stack
-description: Learn how to replace a physical scale unit node on an Azure Stack integrated system.
+title: Replace a scale unit node on an Azure Stack Hub integrated system
+titleSuffix: Azure Stack Hub
+description: Learn how to replace a physical scale unit node on an Azure Stack Hub integrated system.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -20,14 +20,14 @@ ms.lastreviewed: 11/11/2019
 
 ---
 
-# Replace a scale unit node on an Azure Stack integrated system
+# Replace a scale unit node on an Azure Stack Hub integrated system
 
-*Applies to: Azure Stack integrated systems*
+*Applies to: Azure Stack Hub integrated systems*
 
-This article describes the general process to replace a physical computer (also referred to as a scale unit node) on an Azure Stack integrated system. Actual scale unit node replacement steps will vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor's field replaceable unit (FRU) documentation for detailed steps that are specific to your system.
+This article describes the general process to replace a physical computer (also referred to as a scale unit node) on an Azure Stack Hub integrated system. Actual scale unit node replacement steps will vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor's field replaceable unit (FRU) documentation for detailed steps that are specific to your system.
 
 > [!CAUTION]  
-> Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, performance decrease, security threads, or prevent Azure Stack automation from deploying the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure the applied firmware matches the OEM Version displayed in the [Azure Stack administrator portal](azure-stack-updates.md). For more information and links to partner documentation, see [Replace a hardware component](azure-stack-replace-component.md).
+> Firmware leveling is critical for the success of the operation described in this article. Missing this step can lead to system instability, performance decrease, security threads, or prevent Azure Stack Hub automation from deploying the operating system. Always consult your hardware partner's documentation when replacing hardware to ensure the applied firmware matches the OEM Version displayed in the [Azure Stack Hub administrator portal](azure-stack-updates.md). For more information and links to partner documentation, see [Replace a hardware component](azure-stack-replace-component.md).
 
 The following flow diagram shows the general FRU process to replace an entire scale unit node.
 
@@ -36,7 +36,7 @@ The following flow diagram shows the general FRU process to replace an entire sc
 *This action may not be required based on the physical condition of the hardware.
 
 > [!Note]  
-> If the shutdown operation does fail, it's recommended to use the drain operation followed by the stop operation. For more information, see [Scale unit node actions in Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-node-actions).
+> If the shutdown operation does fail, it's recommended to use the drain operation followed by the stop operation. For more information, see [Scale unit node actions in Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-node-actions).
 
 ## Review alert information
 
