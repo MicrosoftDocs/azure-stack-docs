@@ -128,6 +128,8 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 
  ```
 
+When the resource provider update script finishes, please close the current PowerShell session and use new session for other Azure Stack operations.
+
 ## Next steps
 
 [Maintain the SQL resource provider](azure-stack-sql-resource-provider-maintain.md)
