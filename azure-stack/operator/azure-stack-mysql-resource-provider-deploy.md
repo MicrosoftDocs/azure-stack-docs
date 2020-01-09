@@ -29,7 +29,7 @@ Use the MySQL Server resource provider to expose MySQL databases as an Azure Sta
 There are several prerequisites that need to be in place before you can deploy the Azure Stack Hub MySQL resource provider. To meet these requirements, complete the steps in this article on a computer that can access the privileged endpoint VM.
 
 * If you haven't already, [register Azure Stack Hub](./azure-stack-registration.md) with Azure so you can download Azure Marketplace items.
-* Install the Azure and Azure Stack Hub PowerShell modules on the system where you'll run this installation. That system must be a Windows 10 or Windows Server 2016 image with the latest version of the .NET runtime. See [Install PowerShell for Azure Stack Hub](./azure-stack-powershell-install.md).
+
 * Add the required Windows Server core VM to Azure Stack Hub Marketplace by downloading the **Windows Server 2016 Datacenter - Server Core** image.
 
 * Download the MySQL resource provider binary and then run the self-extractor to extract the contents to a temporary directory.
@@ -58,6 +58,38 @@ There are several prerequisites that need to be in place before you can deploy t
     |Inbound ports for resource providers are open.|[Azure Stack Hub datacenter integration - Publish endpoints](azure-stack-integrate-endpoints.md#ports-and-protocols-inbound)|
     |PKI certificate subject and SAN are set correctly.|[Azure Stack Hub deployment mandatory PKI prerequisites](azure-stack-pki-certs.md#mandatory-certificates)[Azure Stack Hub deployment PaaS certificate prerequisites](azure-stack-pki-certs.md#optional-paas-certificates)|
     |     |     |
+
+- In a disconnected scenario, you need first use the following steps to download the required PowerShell modules and register the repository manually.
+
+1. Sign in to a computer with internet connectivity and use the following scripts to download the PowerShell modules.
+
+```powershell
+Import-Module -Name PowerShellGet -ErrorAction Stop
+Import-Module -Name PackageManagement -ErrorAction Stop
+
+# path to save the packages, c:\temp\azs1.6.0 as an example here
+$Path = "c:\temp\azs1.6.0"
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.3.0
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.6.0
+```
+
+2. Then you copy the downloaded packages to a USB device.
+
+3. Sign in to the disconnected workstation and copy the packages from the USB device to a location on the workstation.
+
+4. Register this location as a local repository.
+
+```powershell
+# requires -Version 5
+# requires -RunAsAdministrator
+# requires -Module PowerShellGet
+# requires -Module PackageManagement
+
+$SourceLocation = "C:\temp\azs1.6.0"
+$RepoName = "azs1.6.0"
+
+Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
+```
 
 ### Certificates
 
@@ -105,7 +137,7 @@ You can specify these parameters from the command line. If you don't, or if any 
 
 ## Deploy the MySQL resource provider using a custom script
 
-If you are deploying the MySQL resource provider version 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. If you are deploying the MySQL resource provider version 1.1.47.0, this step can be skipped.
+If you are deploying the MySQL resource provider version 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. If you are deploying the MySQL resource provider version 1.1.47.0, the deployment script will automaticly download and install the necessary PowerShell modules for you to path C:\Program Files\SqlMySqlPsh.
 
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
@@ -114,6 +146,9 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
 Install-Module -Name AzureStack -RequiredVersion 1.6.0
 ```
+
+> [!NOTE]
+> In disconnected scenario, you need to download the required PowerShell modules and register the repository manually as a prerequisite.
 
 To eliminate any manual configuration when deploying the resource provider, you can customize the following script. Change the default account information and passwords as needed for your Azure Stack Hub deployment.
 
@@ -145,6 +180,11 @@ $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domai
 
 # Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+
+# For version 1.1.47.0, we install the PowerShell modules used by the RP to C:\Program Files\SqlMySqlPsh,
+# add this path to the system $env:PSModulePath to make sure it can find the modules.
+$rpModulePath = Join-Path -Path $env:ProgramFiles -ChildPath 'SqlMySqlPsh'
+$env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 
 # Change to the directory folder where you extracted the installation files. Don't provide a certificate on ASDK!
 . $tempDir\DeployMySQLProvider.ps1 `
