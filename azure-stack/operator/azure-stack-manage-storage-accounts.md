@@ -1,6 +1,6 @@
 ---
-title: Manage Azure Stack storage accounts | Microsoft Docs
-description: Learn how to find, manage, recover, and reclaim Azure Stack storage accounts.
+title: Manage Azure Stack Hub storage accounts | Microsoft Docs
+description: Learn how to find, manage, recover, and reclaim Azure Stack Hub storage accounts.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -17,21 +17,21 @@ ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/19/2019
 
-# keyword: Azure Stack storage accounts
+# keyword: Azure Stack Hub storage accounts
 ---
-# Manage Azure Stack storage accounts
+# Manage Azure Stack Hub storage accounts
 
-Learn how to manage Azure Stack storage accounts. Find, recover, and reclaim storage capacity based on business needs.
+Learn how to manage Azure Stack Hub storage accounts. Find, recover, and reclaim storage capacity based on business needs.
 
 ## Find a storage account
 
-The list of storage accounts in the region can be viewed in Azure Stack by following these steps:
+The list of storage accounts in the region can be viewed in Azure Stack Hub by following these steps:
 
 1. Sign in to the [administrator portal](https://adminportal.local.azurestack.external).
 
 2. Select **All services** > **Storage** > **Storage accounts**.
 
-   ![Azure Stack storage accounts](media/azure-stack-manage-storage-accounts/image4.png)
+   ![Azure Stack Hub storage accounts](media/azure-stack-manage-storage-accounts/image4.png)
 
 By default, the first 10 accounts are displayed. You can choose to fetch
 more by clicking the  **Load more** link at the bottom of the list.
@@ -49,7 +49,7 @@ and fetch the relevant accounts** only.
     accounts to be displayed. Use them as appropriate.
 3. As you type, the list will automatically apply the filter.
 
-    ![Filter Azure Stack storage accounts](media/azure-stack-manage-storage-accounts/image5.png)
+    ![Filter Azure Stack Hub storage accounts](media/azure-stack-manage-storage-accounts/image5.png)
 
 4. To reset the filter: select **Filter**, clear out the
     selections and update.
@@ -61,7 +61,7 @@ when the full name or ID isn't easily available.
 You can use free text here to help find the account you're interested
 in.
 
-![Find Azure Stack storage accounts](media/azure-stack-manage-storage-accounts/image6.png)
+![Find Azure Stack Hub storage accounts](media/azure-stack-manage-storage-accounts/image6.png)
 
 ## Look at account details
 Once you've located the accounts you're interested in viewing, you
@@ -75,7 +75,7 @@ creation time, location, and so on.
 You may be in a situation where you need to recover a deleted
 account.
 
-In Azure Stack, there's a simple way to do that:
+In Azure Stack Hub, there's a simple way to do that:
 
 1. Browse to the storage accounts list. For more information, see [Find a storage account](azure-stack-manage-storage-accounts.md) at the top of this article.
 2. Locate that particular account in the list. You may need to filter.
@@ -165,10 +165,10 @@ You can also use PowerShell to explicitly override the retention period and imme
     Start-AzsReclaimStorageCapacity -FarmName $farm_name
 ```
 
-For more information, see [Azure Stack PowerShell documentation](https://docs.microsoft.com/powershell/azure/azure-stack/overview).
+For more information, see [Azure Stack Hub PowerShell documentation](https://docs.microsoft.com/powershell/azure/azure-stack/overview).
  
 
 ## Next steps
 
  - For information on managing permissions, see [Set access permissions using role-based access control](azure-stack-manage-permissions.md).
- - For information on managing storage capacity for Azure Stack, see [Manage storage capacity for Azure Stack](azure-stack-manage-storage-shares.md).
+ - For information on managing storage capacity for Azure Stack Hub, see [Manage storage capacity for Azure Stack Hub](azure-stack-manage-storage-shares.md).

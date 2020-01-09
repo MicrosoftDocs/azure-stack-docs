@@ -1,6 +1,6 @@
 ---
-title: Run a Windows virtual machine on Azure Stack | Microsoft Docs
-description: Learn how to run a Windows virtual machine on Azure Stack.
+title: Run a Windows virtual machine on Azure Stack Hub | Microsoft Docs
+description: Learn how to run a Windows virtual machine on Azure Stack Hub.
 services: azure-stack
 author: mattbriggs
 
@@ -12,38 +12,38 @@ ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
 
 # keywords:  X
-# Intent: As an Azure Stack Operator, I want < what? > so that < why? >
+# Intent: As an Azure Stack Hub Operator, I want < what? > so that < why? >
 ---
 
-# Run a Windows virtual machine on Azure Stack
+# Run a Windows virtual machine on Azure Stack Hub
 
-Provisioning a virtual machine (VM) in Azure Stack requires some additional components besides the VM itself, including networking and storage resources. This article shows best practices for running a Windows VM on Azure.
+Provisioning a virtual machine (VM) in Azure Stack Hub requires some additional components besides the VM itself, including networking and storage resources. This article shows best practices for running a Windows VM on Azure.
 
-![Architecture for Windows VM on Azure Stack](./media/iaas-architecture-vm-windows/image1.png)
+![Architecture for Windows VM on Azure Stack Hub](./media/iaas-architecture-vm-windows/image1.png)
 
 ## Resource group
 
-A [resource group](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) is a logical container that holds related Azure Stack resources. In general, group resources based on their lifetime and who will manage them.
+A [resource group](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) is a logical container that holds related Azure Stack Hub resources. In general, group resources based on their lifetime and who will manage them.
 
 Put closely associated resources that share the same lifecycle into the same [resource group](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). Resource groups allow you to deploy and monitor resources as a group and track billing costs by resource group. You can also delete resources as a set, which is useful for test deployments. Assign meaningful resource names to simplify locating a specific resource and understanding its role. For more information, see [Recommended Naming Conventions for Azure Resources](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
 ## Virtual machine
 
-You can provision a VM from a list of published images, or from a custom-managed image or virtual hard disk (VHD) file uploaded to Azure Stack Blob storage.
+You can provision a VM from a list of published images, or from a custom-managed image or virtual hard disk (VHD) file uploaded to Azure Stack Hub Blob storage.
 
-Azure Stack offers different virtual machine sizes from Azure. For more information, see [Sizes for virtual machines in Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes). If you are moving an existing workload to Azure Stack, start with the VM size that's the closest match to your on-premises servers/Azure. Then measure the performance of your actual workload in terms of CPU, memory, and disk input/output operations per second (IOPS), and adjust the size as needed.
+Azure Stack Hub offers different virtual machine sizes from Azure. For more information, see [Sizes for virtual machines in Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes). If you are moving an existing workload to Azure Stack Hub, start with the VM size that's the closest match to your on-premises servers/Azure. Then measure the performance of your actual workload in terms of CPU, memory, and disk input/output operations per second (IOPS), and adjust the size as needed.
 
 ## Disks
 
 Cost is based on the capacity of the provisioned disk. IOPS and throughput (that is, data transfer rate) depend on VM size, so when you provision a disk, consider all three factors (capacity, IOPS, and throughput).
 
-Disk IOPS (Input/Output Operations Per Second) on Azure Stack is a function of [VM size](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) instead of the disk type. This means that for a Standard_Fs series VM, regardless of whether you choose SSD or HDD for the disk type, the IOPS limit for a single additional data disk is 2300 IOPS. The IOPS limit imposed is a cap (maximum possible) to prevent noisy neighbors. It isn't an assurance of IOPS that you'll get on a specific VM size.
+Disk IOPS (Input/Output Operations Per Second) on Azure Stack Hub is a function of [VM size](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes) instead of the disk type. This means that for a Standard_Fs series VM, regardless of whether you choose SSD or HDD for the disk type, the IOPS limit for a single additional data disk is 2300 IOPS. The IOPS limit imposed is a cap (maximum possible) to prevent noisy neighbors. It isn't an assurance of IOPS that you'll get on a specific VM size.
 
 We also recommend using [Managed Disks](https://docs.microsoft.com/azure-stack/user/azure-stack-managed-disk-considerations). Managed disks simplify disk management by handling the storage for you. Managed disks do not require a storage account. You simply specify the size and type of disk and it is deployed as a highly available resource.
 
-The OS disk is a VHD stored in Azure Stack blob storage, so it persists even when the host machine is down. We also recommend creating one or more [data disks](https://docs.microsoft.com/azure-stack/user/azure-stack-manage-vm-disks), which are persistent VHDs used for application data. When possible, install applications on a data disk, not the OS disk. Some legacy applications might need to install components on the C: drive; in that case, you can [resize the OS disk](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-expand-os-disk) using PowerShell.
+The OS disk is a VHD stored in Azure Stack Hub blob storage, so it persists even when the host machine is down. We also recommend creating one or more [data disks](https://docs.microsoft.com/azure-stack/user/azure-stack-manage-vm-disks), which are persistent VHDs used for application data. When possible, install applications on a data disk, not the OS disk. Some legacy applications might need to install components on the C: drive; in that case, you can [resize the OS disk](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-expand-os-disk) using PowerShell.
 
-The VM is also created with a temporary disk (the D: drive on Windows). This disk is stored on a temporary volume in the Azure Stack storage infrastructure. It may be deleted during reboots and other VM lifecycle events. Use this disk only for temporary data, such as page or swap files.
+The VM is also created with a temporary disk (the D: drive on Windows). This disk is stored on a temporary volume in the Azure Stack Hub storage infrastructure. It may be deleted during reboots and other VM lifecycle events. Use this disk only for temporary data, such as page or swap files.
 
 ## Network
 
@@ -67,7 +67,7 @@ All NSGs contain a set of [default rules](https://docs.microsoft.com/azure/virtu
 
 **Diagnostics**. Enable monitoring and diagnostics, including basic health metrics, diagnostics infrastructure logs, and  [boot diagnostics](https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/). Boot diagnostics can help you diagnose boot failure if your VM gets into a non-bootable state. Create an Azure Storage account to store the logs. A standard locally redundant storage (LRS) account is sufficient for diagnostic logs. For more information, see [Enable monitoring and diagnostics](https://docs.microsoft.com/azure-stack/user/azure-stack-metrics-azure-data).
 
-**Availability**. Your VM may be subject to a reboot due to planned maintenance as scheduled by the Azure Stack operator. For high availability of a multi-VM production system in Azure, VMs are placed in an [availability set](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) that spreads them across multiple fault domains and update domains. In the smaller scale of Azure Stack Hub, a fault domain in an availability set is defined as a single node in the scale unit.  
+**Availability**. Your VM may be subject to a reboot due to planned maintenance as scheduled by the Azure Stack Hub operator. For high availability of a multi-VM production system in Azure, VMs are placed in an [availability set](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) that spreads them across multiple fault domains and update domains. In the smaller scale of Azure Stack Hub, a fault domain in an availability set is defined as a single node in the scale unit.  
 
 While the infrastructure of Azure Stack Hub is already resilient to failures, the underlying technology (failover clustering) still incurs some downtime for VMs on an impacted physical server if there's a hardware failure. Azure Stack Hub supports having an availability set with a maximum of three fault domains to be consistent with Azure.
 
@@ -76,9 +76,9 @@ While the infrastructure of Azure Stack Hub is already resilient to failures, th
 | **Fault domains** | VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack Hub nodes). If there's a hardware failure, VMs from the failed fault domain will be restarted in other fault domains. They'll be kept in separate fault domains from the other VMs but in the same availability set if possible. When the hardware comes back online, VMs will be rebalanced to maintain high availability. |
 | **Update domains**| Update domains are another way that Azure provides high availability in availability sets. An update domain is a logical group of underlying hardware that can undergo maintenance at the same time. VMs located in the same update domain will be restarted together during planned maintenance. As tenants create VMs within an availability set, the Azure platform automatically distributes VMs across these update domains. <br>In Azure Stack Hub, VMs are live migrated across the other online hosts in the cluster before their underlying host is updated. Since there's no tenant downtime during a host update, the update domain feature on Azure Stack Hub only exists for template compatibility with Azure. VMs in an availability set will show 0 as their update domain number on the portal. |
 
-**Backups** For recommendations on protecting your Azure Stack IaaS VMs, reference this article.
+**Backups** For recommendations on protecting your Azure Stack Hub IaaS VMs, reference this article.
 
-**Stopping a VM**. Azure makes a distinction between "stopped" and "deallocated" states. You are charged when the VM status is stopped, but not when the VM is deallocated. In the Azure Stack portal, the **Stop** button deallocates the VM. If you shut down through the OS while logged in, the VM is stopped but **not** deallocated, so you will still be charged.
+**Stopping a VM**. Azure makes a distinction between "stopped" and "deallocated" states. You are charged when the VM status is stopped, but not when the VM is deallocated. In the Azure Stack Hub portal, the **Stop** button deallocates the VM. If you shut down through the OS while logged in, the VM is stopped but **not** deallocated, so you will still be charged.
 
 **Deleting a VM**. If you delete a VM, the VM disks are not deleted. That means you can safely delete the VM without losing data. However, you will still be charged for storage. To delete the VM disk, delete the managed disk object. To prevent accidental deletion, use a *resource lock* to lock the entire resource group or lock individual resources, such as a VM.
 
@@ -97,10 +97,10 @@ Onboard your VMs to [Azure Security Center](https://docs.microsoft.com/azure/sec
 
 **Audit logs**. Use [activity logs](https://docs.microsoft.com/azure-stack/user/azure-stack-metrics-azure-data?#activity-log) to see provisioning actions and other VM events.
 
-**Data encryption**. Azure Stack uses BitLocker 128-bit AES encryption to protect user and infrastructure data at rest in the storage subsystem. For more information, see [Data at rest encryption in Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-security-bitlocker).
+**Data encryption**. Azure Stack Hub uses BitLocker 128-bit AES encryption to protect user and infrastructure data at rest in the storage subsystem. For more information, see [Data at rest encryption in Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-security-bitlocker).
 
 
 ## Next steps
 
-- To learn more about Azure Stack VMs, see [Azure Stack VM features](azure-stack-vm-considerations.md).  
+- To learn more about Azure Stack Hub VMs, see [Azure Stack Hub VM features](azure-stack-vm-considerations.md).  
 - To learn more about Azure Cloud Patterns, see [Cloud Design Patterns](https://docs.microsoft.com/azure/architecture/patterns).

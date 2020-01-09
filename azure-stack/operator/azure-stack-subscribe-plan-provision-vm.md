@@ -1,6 +1,6 @@
 ---
-title: Subscribe to an offer in Azure Stack 
-description: Create subscriptions for offers in Azure Stack
+title: Subscribe to an offer in Azure Stack Hub 
+description: Create subscriptions for offers in Azure Stack Hub
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -11,9 +11,9 @@ ms.date: 10/05/2019
 ms.author: bryanla
 ms.lastreviewed: 05/10/2019
 ---
-# Create subscriptions to offers in Azure Stack
+# Create subscriptions to offers in Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
 After you [create an offer](azure-stack-create-offer.md), users need a subscription to that offer before they can use it. There are two ways that users can get subscribed to an offer:
 
@@ -24,7 +24,7 @@ After you [create an offer](azure-stack-create-offer.md), users need a subscript
 
 Cloud operators use the administrator portal to create a subscription to an offer for a user. Subscriptions can be created for members of your own directory tenant. When [multi-tenancy](azure-stack-enable-multitenancy.md) is enabled, you can also create subscriptions for users in additional directory tenants.
 
-If don't want your tenants to create their own subscriptions, make your offers private, and then create subscriptions for your tenants. This approach is common when integrating Azure Stack with external billing or service catalog systems.
+If don't want your tenants to create their own subscriptions, make your offers private, and then create subscriptions for your tenants. This approach is common when integrating Azure Stack Hub with external billing or service catalog systems.
 
 After you create a subscription for a user, they can sign in to the user portal and see that they're subscribed to the offer.  
 
@@ -61,11 +61,11 @@ A cloud operator can add a plan to a previously created subscription at any time
 As a user, you can sign in to the user portal to locate and subscribe to public offers and add-on plans for your directory tenant (organization).
 
 >[!NOTE]
->If your Azure Stack environment supports [multi-tenancy](azure-stack-enable-multitenancy.md), you can also subscribe to offers from a remote directory tenant.
+>If your Azure Stack Hub environment supports [multi-tenancy](azure-stack-enable-multitenancy.md), you can also subscribe to offers from a remote directory tenant.
 
 ### To subscribe to an offer
 
-1. [Sign in](../asdk/asdk-connect.md) to the [Azure Stack user portal](https://portal.local.azurestack.external) and select **Get a Subscription**.
+1. [Sign in](../asdk/asdk-connect.md) to the [Azure Stack Hub user portal](https://portal.local.azurestack.external) and select **Get a Subscription**.
 
    ![Get a subscription](media/azure-stack-subscribe-plan-provision-vm/image01.png)
   

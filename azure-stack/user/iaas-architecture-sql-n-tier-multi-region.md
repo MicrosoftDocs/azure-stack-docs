@@ -1,6 +1,6 @@
 ---
-title:  Run an N-tier application in multiple Azure Stack regions for high availability | Microsoft Docs
-description: Learn how to run an N-tier application in multiple Azure Stack regions for high availability.
+title:  Run an N-tier application in multiple Azure Stack Hub regions for high availability | Microsoft Docs
+description: Learn how to run an N-tier application in multiple Azure Stack Hub regions for high availability.
 services: azure-stack
 author: mattbriggs
 
@@ -12,12 +12,12 @@ ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
 
 # keywords:  X
-# Intent: As an Azure Stack Operator, I want < what? > so that < why? >
+# Intent: As an Azure Stack Hub Operator, I want < what? > so that < why? >
 ---
 
-# Run an N-tier application in multiple Azure Stack regions for high availability
+# Run an N-tier application in multiple Azure Stack Hub regions for high availability
 
-This reference architecture shows a set of proven practices for running across an N-tier application multiple Azure Stack regions, in order to achieve availability and a robust disaster recovery infrastructure. In this document, Traffic Manager is used to achieve high availability, however if Traffic Manager is not a preferred choice in your environment, a pair of highly available load balancers could also be substituted in.
+This reference architecture shows a set of proven practices for running across an N-tier application multiple Azure Stack Hub regions, in order to achieve availability and a robust disaster recovery infrastructure. In this document, Traffic Manager is used to achieve high availability, however if Traffic Manager is not a preferred choice in your environment, a pair of highly available load balancers could also be substituted in.
 
 > [!Note]  
 > Please note the Traffic Manager used in the architecture below needs to be configured in Azure and the endpoints used to configure the Traffic Manager profile need to be publicly routable IPs.
@@ -38,7 +38,7 @@ This architecture builds on the one shown in [N-tier application with SQL Server
 
 -   **SQL Server Always On Availability Group**. If you are using SQL Server, we recommend [SQL Always On Availability Groups](https://msdn.microsoft.com/library/hh510230.aspx) for high availability. Create a single availability group that includes the SQL Server instances in both regions.
 
--   **VNET to VNET VPN Connection**. As VNET Peering is not yet available on Azure Stack, use VNET to VNET VPN connection in order to connect the two VNETs. Please see [VNET to VNET in Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-network-howto-vnet-to-vnet?view=azs-1908) for more information.
+-   **VNET to VNET VPN Connection**. As VNET Peering is not yet available on Azure Stack Hub, use VNET to VNET VPN connection in order to connect the two VNETs. Please see [VNET to VNET in Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-network-howto-vnet-to-vnet?view=azs-1908) for more information.
 
 ## Recommendations
 

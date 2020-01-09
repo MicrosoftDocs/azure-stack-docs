@@ -1,6 +1,6 @@
 ---
-title: Monitor updates in Azure Stack using the privileged endpoint | Microsoft Docs
-description: Learn how to use the privileged endpoint to monitor update status for Azure Stack integrated systems.
+title: Monitor updates in Azure Stack Hub using the privileged endpoint | Microsoft Docs
+description: Learn how to use the privileged endpoint to monitor update status for Azure Stack Hub integrated systems.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -17,13 +17,13 @@ ms.reviewer: fiseraci
 ms.lastreviewed: 11/05/2018
 
 ---
-# Monitor updates in Azure Stack using the privileged endpoint
+# Monitor updates in Azure Stack Hub using the privileged endpoint
 
-*Applies to: Azure Stack integrated systems*
+*Applies to: Azure Stack Hub integrated systems*
 
-You can use the [privileged endpoint](azure-stack-privileged-endpoint.md) to monitor the progress of an Azure Stack update run. You can also use the privileged endpoint to resume a failed update run from the last successful step should the Azure Stack portal become unavailable. Using the Azure Stack portal is the recommended method to manage updates in Azure Stack.
+You can use the [privileged endpoint](azure-stack-privileged-endpoint.md) to monitor the progress of an Azure Stack Hub update run. You can also use the privileged endpoint to resume a failed update run from the last successful step should the Azure Stack Hub portal become unavailable. Using the Azure Stack Hub portal is the recommended method to manage updates in Azure Stack Hub.
 
-The following new PowerShell cmdlets for update management are included in the 1710 update for Azure Stack integrated systems.
+The following new PowerShell cmdlets for update management are included in the 1710 update for Azure Stack Hub integrated systems.
 
 | Cmdlet  | Description  |
 |---------|---------|
@@ -32,18 +32,18 @@ The following new PowerShell cmdlets for update management are included in the 1
 | | |
 
 ## Verify the cmdlets are available
-Because the cmdlets are new in the 1710 update package for Azure Stack, the 1710 update process needs to get to a certain point before the monitoring capability is available. Typically, the cmdlets are available if the status in the administrator portal indicates that the 1710 update is at the **Restart Storage Hosts** step. Specifically, the cmdlet update occurs during **Step: Running step 2.6 - Update PrivilegedEndpoint whitelist**.
+Because the cmdlets are new in the 1710 update package for Azure Stack Hub, the 1710 update process needs to get to a certain point before the monitoring capability is available. Typically, the cmdlets are available if the status in the administrator portal indicates that the 1710 update is at the **Restart Storage Hosts** step. Specifically, the cmdlet update occurs during **Step: Running step 2.6 - Update PrivilegedEndpoint whitelist**.
 
 You can also determine whether the cmdlets are available programmatically by querying the command list from the privileged endpoint. To do this query, run the following commands from the hardware lifecycle host or from a Privileged Access Workstation. Also, make sure the privileged endpoint is a trusted host. For more information, see step 1 of [Access the privileged endpoint](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint).
 
-1. Create a PowerShell session on any of the ERCS virtual machines (VMs) in your Azure Stack environment (*Prefix*-ERCS01, *Prefix*-ERCS02, or *Prefix*-ERCS03). Replace *Prefix* with the VM prefix string that's specific to your environment.
+1. Create a PowerShell session on any of the ERCS virtual machines (VMs) in your Azure Stack Hub environment (*Prefix*-ERCS01, *Prefix*-ERCS02, or *Prefix*-ERCS03). Replace *Prefix* with the VM prefix string that's specific to your environment.
 
    ```powershell
    $cred = Get-Credential
 
    $pepSession = New-PSSession -ComputerName <Prefix>-ercs01 -Credential $cred -ConfigurationName PrivilegedEndpoint 
    ```
-   When prompted for credentials, use the &lt;*Azure Stack domain*&gt;\cloudadmin account, or an account that's a member of the CloudAdmins group. For the CloudAdmin account, enter the same password that was provided during installation for the AzureStackAdmin domain administrator account.
+   When prompted for credentials, use the &lt;*Azure Stack Hub domain*&gt;\cloudadmin account, or an account that's a member of the CloudAdmins group. For the CloudAdmin account, enter the same password that was provided during installation for the AzureStackAdmin domain administrator account.
 
 2. Get the full list of commands that are available in the privileged endpoint.
 
@@ -83,14 +83,14 @@ You can also determine whether the cmdlets are available programmatically by que
 
 ### Connect to the privileged endpoint and assign session variable
 
-Run the following commands to create a PowerShell session on any of the ERCS VMs in your Azure Stack environment (*Prefix*-ERCS01, *Prefix*-ERCS02, or *Prefix*-ERCS03), and to assign a session variable.
+Run the following commands to create a PowerShell session on any of the ERCS VMs in your Azure Stack Hub environment (*Prefix*-ERCS01, *Prefix*-ERCS02, or *Prefix*-ERCS03), and to assign a session variable.
 
 ```powershell
 $cred = Get-Credential
 
 $pepSession = New-PSSession -ComputerName <Prefix>-ercs01 -Credential $cred -ConfigurationName PrivilegedEndpoint 
 ```
- When prompted for credentials, use the &lt;*Azure Stack domain*&gt;\cloudadmin account, or an account that's a member of the CloudAdmins group. For the CloudAdmin account, enter the same password that was provided during installation for the AzureStackAdmin domain administrator account.
+ When prompted for credentials, use the &lt;*Azure Stack Hub domain*&gt;\cloudadmin account, or an account that's a member of the CloudAdmins group. For the CloudAdmin account, enter the same password that was provided during installation for the AzureStackAdmin domain administrator account.
 
 ### Get high-level status of the current update run
 
@@ -164,10 +164,10 @@ Invoke-Command -Session $pepSession -ScriptBlock { Resume-AzureStackUpdate }
 
 ## Troubleshoot
 
-The privileged endpoint is available on all ERCS VMs in the Azure Stack environment. Because the connection isn't made to a highly available endpoint, you may experience occasional interruptions, warning, or error messages. These messages may indicate that the session was disconnected or that there was an error communicating with the ECE Service. This behavior is expected. You can retry the operation in a few minutes or create a new privileged endpoint session on one of the other ERCS VMs.
+The privileged endpoint is available on all ERCS VMs in the Azure Stack Hub environment. Because the connection isn't made to a highly available endpoint, you may experience occasional interruptions, warning, or error messages. These messages may indicate that the session was disconnected or that there was an error communicating with the ECE Service. This behavior is expected. You can retry the operation in a few minutes or create a new privileged endpoint session on one of the other ERCS VMs.
 
 ## Next steps
 
-- [Managing updates in Azure Stack](azure-stack-updates.md)
+- [Managing updates in Azure Stack Hub](azure-stack-updates.md)
 
 

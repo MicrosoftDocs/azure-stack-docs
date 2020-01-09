@@ -1,6 +1,6 @@
 ---
-title: Deploy a Go web app to a virtual machine in Azure Stack | Microsoft Docs
-description: How to deploy a Go web app to a VM in Azure Stack
+title: Deploy a Go web app to a virtual machine in Azure Stack Hub | Microsoft Docs
+description: How to deploy a Go web app to a VM in Azure Stack Hub
 services: azure-stack
 author: mattbriggs
 
@@ -11,17 +11,17 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
 
-# keywords:  Deploy a Go web app to Azure Stack
-# Intent: I am a developer using Windows 10 or Linux Ubuntu who would like to deploy a Go web app for Azure Stack.
+# keywords:  Deploy a Go web app to Azure Stack Hub
+# Intent: I am a developer using Windows 10 or Linux Ubuntu who would like to deploy a Go web app for Azure Stack Hub.
 ---
 
-# Deploy a Go web app to a VM in Azure Stack
+# Deploy a Go web app to a VM in Azure Stack Hub
 
-You can create a virtual machine (VM) to host a Go web app in Azure Stack. In this article, you set up a server, configure the server to host your Go web app, and then deploy the app to Azure Stack.
+You can create a virtual machine (VM) to host a Go web app in Azure Stack Hub. In this article, you set up a server, configure the server to host your Go web app, and then deploy the app to Azure Stack Hub.
 
 ## Create a VM
 
-1. Set up your VM in Azure Stack by following the instructions in [Deploy a Linux VM to host a web app in Azure Stack](azure-stack-dev-start-howto-deploy-linux.md).
+1. Set up your VM in Azure Stack Hub by following the instructions in [Deploy a Linux VM to host a web app in Azure Stack Hub](azure-stack-dev-start-howto-deploy-linux.md).
 
 2. In the VM network pane, make sure that the following ports are accessible:
 
@@ -92,6 +92,6 @@ You can create a virtual machine (VM) to host a Go web app in Azure Stack. In th
 
 ## Next steps
 
-- Learn more about how to [develop for Azure Stack](azure-stack-dev-start.md).
-- Learn about [common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
+- Learn more about how to [develop for Azure Stack Hub](azure-stack-dev-start.md).
+- Learn about [common deployments for Azure Stack Hub as IaaS](azure-stack-dev-start-deploy-app.md).
 - To learn the Go programming language and find additional resources for Go, see [Golang.org](https://golang.org).
