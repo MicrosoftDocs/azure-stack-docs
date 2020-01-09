@@ -1,5 +1,5 @@
 ---
-title: Offer highly available MySQL databases
+title: Create highly available MySQL databases
 titleSuffix: Azure Stack
 description: Learn how to create a MySQL Server resource provider host computer and highly available MySQL databases with Azure Stack.
 services: azure-stack
@@ -15,7 +15,7 @@ ms.reviewer: xiaofmao
 ms.lastreviewed: 10/23/2018
 ---
 
-# Offer highly available MySQL databases
+# Create highly available MySQL databases
 
 As an Azure Stack operator, you can configure server virtual machines (VMs) to host MySQL Server databases. After a MySQL cluster is successfully created and managed by Azure Stack, users who have subscribed to MySQL services can easily create highly available MySQL databases.
 
