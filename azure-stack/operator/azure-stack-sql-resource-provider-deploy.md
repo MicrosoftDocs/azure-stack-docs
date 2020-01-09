@@ -194,7 +194,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 
  ```
 
-When the resource provider installation script finishes, refresh your browser to make sure you can see the latest updates.
+When the resource provider installation script finishes, refresh your browser to make sure you can see the latest updates. And please close the current PowerShell session and use new session for other Azure Stack operations.
 
 ## Verify the deployment using the Azure Stack Hub portal
 
