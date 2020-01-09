@@ -1,5 +1,5 @@
 ---
-title: Offer Azure Stack services for subscription.
+title: Offer Azure Stack Hub services for subscription.
 description: Learn how to create a service offering, using offers, plans, and services. 
 author: BryanLa
 ms.author: bryanla
@@ -32,14 +32,14 @@ An offer consists of one or more plans. A plan entitles access to one or more se
 
 A resource provider supports creation, deployment, and management of its resources as services. A common example is the Microsoft.Compute resource provider, which offers the ability to create and deploy virtual machines (VMs). See [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) for an overview of the Azure resource management model.
 
-In Azure Stack, there are two general categories of resource providers: ones that deploy resources as foundational services, and ones that deploy as value-add services.
+In Azure Stack Hub, there are two general categories of resource providers: ones that deploy resources as foundational services, and ones that deploy as value-add services.
 
 ### Foundational services
 
 >[!NOTE]
 > In this tutorial, you learn how to create an offer based on foundational services. 
 
-Foundational services are supported by the following resource providers, which are available natively with every installation of Azure Stack:
+Foundational services are supported by the following resource providers, which are available natively with every installation of Azure Stack Hub:
 
 | Resource Provider | Example resources |
 | ----------------- | ------------------|
@@ -51,9 +51,9 @@ Foundational services are supported by the following resource providers, which a
 ### Value-add services
 
 >[!NOTE]
-> In order to offer a value-add service, the corresponding resource provider must first be installed in Azure Stack Marketplace. Once installed, its resources are offered to users the same way as foundational services. Please see the **How-to guides** section of the TOC, for the current set of resource providers that support value-add service offerings.
+> In order to offer a value-add service, the corresponding resource provider must first be installed in Azure Stack Hub Marketplace. Once installed, its resources are offered to users the same way as foundational services. Please see the **How-to guides** section of the TOC, for the current set of resource providers that support value-add service offerings.
 
-Value-add services are supported by resource providers that are installed after Azure Stack has been deployed. Examples include:
+Value-add services are supported by resource providers that are installed after Azure Stack Hub has been deployed. Examples include:
 
 | Resource Provider | Example resources |
 | ----------------- | ------------------------- |

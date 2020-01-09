@@ -40,7 +40,7 @@ This usage API is a provider API, so the caller must be assigned an **Owner**, *
 
 | Argument | Description |
 | --- | --- |
-| `armendpoint` |Azure Resource Manager endpoint of your Azure Stack environment. The Azure Stack Hub convention is that the name of the Azure Resource Manager endpoint is in the format `https://adminmanagement.{domain-name}`. For example, for the Azure Stack Development Kit (ASDK), if the domain name is *local.azurestack.external*, then the Resource Manager endpoint is `https://adminmanagement.local.azurestack.external`. |
+| `armendpoint` |Azure Resource Manager endpoint of your Azure Stack Hub environment. The Azure Stack Hub convention is that the name of the Azure Resource Manager endpoint is in the format `https://adminmanagement.{domain-name}`. For example, for the Azure Stack Development Kit (ASDK), if the domain name is *local.azurestack.external*, then the Resource Manager endpoint is `https://adminmanagement.local.azurestack.external`. |
 | `subId` |Subscription ID of the user who makes the call. |
 | `reportedStartTime` |Start time of the query. The value for `DateTime` should be in Coordinated Universal Time (UTC) and at the beginning of the hour; for example, 13:00. For daily aggregation, set this value to UTC midnight. The format is escaped ISO 8601; for example, `2015-06-16T18%3a53%3a11%2b00%3a00Z`, where the colon is escaped to `%3a` and the plus is escaped to `%2b` so that it's URI-friendly. |
 | `reportedEndTime` |End time of the query. The constraints that apply to `reportedStartTime` also apply to this argument. The value for `reportedEndTime` can't be either in the future, or the current date. If it is, the result is set to "processing not complete." |

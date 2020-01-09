@@ -1,6 +1,6 @@
 ---
-title: Manage Key Vault in Azure Stack using the portal | Microsoft Docs
-description: Learn how to manage Key Vault in Azure Stack by using the Azure Stack portal.
+title: Manage Key Vault in Azure Stack Hub using the portal | Microsoft Docs
+description: Learn how to manage Key Vault in Azure Stack Hub by using the Azure Stack Hub portal.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -19,9 +19,9 @@ ms.lastreviewed: 01/04/2019
 
 ---
 
-# Manage Key Vault in Azure Stack using the portal
+# Manage Key Vault in Azure Stack Hub using the portal
 
-This article describes how to create and manage a key vault in Azure Stack using the Azure Stack portal.
+This article describes how to create and manage a key vault in Azure Stack Hub using the Azure Stack Hub portal.
 
 ## Prerequisites
 

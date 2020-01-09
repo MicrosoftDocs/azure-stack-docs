@@ -1,6 +1,6 @@
 ---
-title: Get started with Azure Stack storage development tools  | Microsoft Docs
-description: Guidance to get started with using Azure Stack storage development tools
+title: Get started with Azure Stack Hub storage development tools  | Microsoft Docs
+description: Guidance to get started with using Azure Stack Hub storage development tools
 services: azure-stack 
 author: mattbriggs
 ms.author: mabrigg
@@ -13,25 +13,25 @@ ms.lastreviewed: 02/27/2019
 
 ---
 
-# Get started with Azure Stack storage development tools
+# Get started with Azure Stack Hub storage development tools
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
-Microsoft Azure Stack provides a set of storage services that includes blob, table, and queue storage.
+Microsoft Azure Stack Hub provides a set of storage services that includes blob, table, and queue storage.
 
-Use this article as a guide to get started using Azure Stack storage development tools. You can find more detailed information and sample code in corresponding Azure storage tutorials.
+Use this article as a guide to get started using Azure Stack Hub storage development tools. You can find more detailed information and sample code in corresponding Azure storage tutorials.
 
 > [!NOTE]  
-> There are differences between Azure Stack storage and Azure storage, including specific requirements for each platform. For example, there are specific client libraries and endpoint suffix requirements for Azure Stack. For more information, see [Azure Stack storage: Differences and considerations](azure-stack-acs-differences.md).
+> There are differences between Azure Stack Hub storage and Azure storage, including specific requirements for each platform. For example, there are specific client libraries and endpoint suffix requirements for Azure Stack Hub. For more information, see [Azure Stack Hub storage: Differences and considerations](azure-stack-acs-differences.md).
 
 ## Azure client libraries
 
-For the storage client libraries, be aware of the version that is compatible with the REST API. You must also specify the Azure Stack endpoint in your code.
+For the storage client libraries, be aware of the version that is compatible with the REST API. You must also specify the Azure Stack Hub endpoint in your code.
 
 ::: moniker range=">=azs-1811"
 ### 1811 update or newer versions
 
-| Client library | Azure Stack supported version | Link | Endpoint specification |
+| Client library | Azure Stack Hub supported version | Link | Endpoint specification |
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
 | .NET | 9.2.0 | Nuget package:<br><https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0><br> <br>GitHub release:<br><https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0> | app.config file |
 | Java | 7.0.0 | Maven package:<br><https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/7.0.0><br> <br>GitHub release:<br><https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0> | Connection string setup |
@@ -62,7 +62,7 @@ To install via Composer: (take the blob as an example).
 ::: moniker range=">=azs-1802 <=azs-1809"
 ### Previous versions (1802 to 1809 update)
 
-| Client library | Azure Stack supported version | Link | Endpoint specification |
+| Client library | Azure Stack Hub supported version | Link | Endpoint specification |
 |----------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------|
 | .NET | 8.7.0 | Nuget package:<br><https://www.nuget.org/packages/WindowsAzure.Storage/8.7.0><br> <br>GitHub release:<br><https://github.com/Azure/azure-storage-net/releases/tag/v8.7.0> | app.config file |
 | Java | 6.1.0 | Maven package:<br><https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0><br> <br>GitHub release:<br><https://github.com/Azure/azure-storage-java/releases/tag/v6.1.0> | Connection string setup |
@@ -92,7 +92,7 @@ To install via Composer: (take blob as example).
 
 ## Endpoint declaration
 
-An Azure Stack endpoint includes two parts: the name of a region and the Azure Stack domain.
+An Azure Stack Hub endpoint includes two parts: the name of a region and the Azure Stack Hub domain.
 In the Azure Stack Development Kit, the default endpoint is **local.azurestack.external**.
 Contact your cloud admin if you're not sure about your endpoint.
 
@@ -100,7 +100,7 @@ Contact your cloud admin if you're not sure about your endpoint.
 
 ### .NET
 
-For Azure Stack, the endpoint suffix is specified in the app.config file:
+For Azure Stack Hub, the endpoint suffix is specified in the app.config file:
 
 ```xml
 <add key="StorageConnectionString"
@@ -110,7 +110,7 @@ EndpointSuffix=local.azurestack.external;" />
 
 ### Java
 
-For Azure Stack, the endpoint suffix is specified in the setup of connection string:
+For Azure Stack Hub, the endpoint suffix is specified in the setup of connection string:
 
 ```java
 public static final String storageConnectionString =
@@ -122,7 +122,7 @@ public static final String storageConnectionString =
 
 ### Node.js
 
-For Azure Stack, the endpoint suffix is specified in the declaration instance:
+For Azure Stack Hub, the endpoint suffix is specified in the declaration instance:
 
 ```nodejs
 var blobSvc = azure.createBlobService('myaccount', 'mykey',
@@ -131,7 +131,7 @@ var blobSvc = azure.createBlobService('myaccount', 'mykey',
 
 ### C++
 
-For Azure Stack, the endpoint suffix is specified in the setup of connection string:
+For Azure Stack Hub, the endpoint suffix is specified in the setup of connection string:
 
 ```cpp
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;
@@ -142,7 +142,7 @@ EndpointSuffix=local.azurestack.external"));
 
 ### PHP
 
-For Azure Stack, the endpoint suffix is specified in the setup of connection string:
+For Azure Stack Hub, the endpoint suffix is specified in the setup of connection string:
 
 ```php
 $connectionString = 'BlobEndpoint=https://<storage account name>.blob.local.azurestack.external/;
@@ -153,7 +153,7 @@ AccountName=<storage account name>;AccountKey=<storage account key>'
 
 ### Python
 
-For Azure Stack, the endpoint suffix is specified in the declaration instance:
+For Azure Stack Hub, the endpoint suffix is specified in the declaration instance:
 
 ```python
 block_blob_service = BlockBlobService(account_name='myaccount',
@@ -163,7 +163,7 @@ endpoint_suffix='local.azurestack.external')
 
 ### Ruby
 
-For Azure Stack, the endpoint suffix is specified in the setup of connection string:
+For Azure Stack Hub, the endpoint suffix is specified in the setup of connection string:
 
 ```ruby
 set
@@ -175,7 +175,7 @@ EndpointSuffix=local.azurestack.external
 
 ## Blob storage
 
-The following Azure Blob storage tutorials are applicable to Azure Stack. Note the specific endpoint suffix requirement for Azure Stack described in the previous [Examples](#examples) section.
+The following Azure Blob storage tutorials are applicable to Azure Stack Hub. Note the specific endpoint suffix requirement for Azure Stack Hub described in the previous [Examples](#examples) section.
 
 * [Get started with Azure Blob storage using .NET](/azure/storage/blobs/storage-dotnet-how-to-use-blobs)
 * [How to use Blob storage from Java](/azure/storage/blobs/storage-java-how-to-use-blob-storage)
@@ -187,7 +187,7 @@ The following Azure Blob storage tutorials are applicable to Azure Stack. Note t
 
 ## Queue storage
 
-The following Azure Queue storage tutorials are applicable to Azure Stack. Note the specific endpoint suffix requirement for Azure Stack described in the previous [Examples](#examples) section.
+The following Azure Queue storage tutorials are applicable to Azure Stack Hub. Note the specific endpoint suffix requirement for Azure Stack Hub described in the previous [Examples](#examples) section.
 
 * [Get started with Azure Queue storage using .NET](/azure/storage/queues/storage-dotnet-how-to-use-queues)
 * [How to use Queue storage from Java](/azure/storage/queues/storage-java-how-to-use-queue-storage)
@@ -199,7 +199,7 @@ The following Azure Queue storage tutorials are applicable to Azure Stack. Note 
 
 ## Table storage
 
-The following Azure Table storage tutorials are applicable to Azure Stack. Note the specific endpoint suffix requirement for Azure Stack described in the previous [Examples](#examples) section.
+The following Azure Table storage tutorials are applicable to Azure Stack Hub. Note the specific endpoint suffix requirement for Azure Stack Hub described in the previous [Examples](#examples) section.
 
 * [Get started with Azure Table storage using .NET](/azure/cosmos-db/table-storage-how-to-use-dotnet)
 * [How to use Table storage from Java](/azure/cosmos-db/table-storage-how-to-use-java)

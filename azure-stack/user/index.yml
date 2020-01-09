@@ -16,7 +16,7 @@ metadata:
   ms.date: 07/11/2019
   ms.author: mabrigg
 abstract:
-  description: Azure Stack Hub is a hybrid cloud platform that lets you use Azure services from your company's or service provider's datacenter. As a developer, you can build apps on Azure Stack Hub. You can then deploy them to Azure Stack Hub, to Azure, or you can build truly hybrid apps that leverage the connectivity between an Azure Stack Hub cloud and Azure. Learn how to create resources and deploy apps with our quickstarts and tutorials.<br/><br/>If you're an Azure Stack Hub operator who manages the infrastructure and offers services, see our <a href="../operator/">operator documentation</a>.<br/><br/>If you are an Azure Stack Hub user interested in the Azure Stack Hub Development Kit (ASDK), a single-node deployment of Azure Stack Hub that you can download and use for free, see our <a href="../asdk">ASDK documentation</a>.
+  description: Azure Stack Hub is a hybrid cloud platform that lets you use Azure services from your company's or service provider's datacenter. As a developer, you can build apps on Azure Stack Hub. You can then deploy them to Azure Stack Hub, to Azure, or you can build truly hybrid apps that leverage the connectivity between an Azure Stack Hub cloud and Azure. Learn how to create resources and deploy apps with our quickstarts and tutorials.<br/><br/>If you're an Azure Stack Hub operator who manages the infrastructure and offers services, see our <a href="../operator/">operator documentation</a>.<br/><br/>If you are an Azure Stack Hub user interested in the Azure Stack Development Kit (ASDK), a single-node deployment of Azure Stack Hub that you can download and use for free, see our <a href="../asdk">ASDK documentation</a>.
 sections:
   - title: Getting started with Azure Stack Hub
     items:
@@ -30,12 +30,12 @@ sections:
               <p>Develop applications for Azure Stack Hub using a Windows 10, Linux, or macOS workstation.</p>
       - html: <a href="https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json">
               <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
-              <br><b>Azure Stack PowerShell</b></a>
+              <br><b>Azure Stack Hub PowerShell</b></a>
               <p>Easily manage your Azure Stack Hub resources from PowerShell.</p>
       - html: <a href="/azure-stack/user/azure-stack-version-profiles-azurecli2">
               <img height="48" width="48" src="https://docs.microsoft.com/media/common/i_cligeneric.svg" alt="">
               <br><b>Azure Command-Line Interface (CLI)</b></a>
-              <p>Command-line experience for managing Azure Stack resources.</p>
+              <p>Command-line experience for managing Azure Stack Hub resources.</p>
   - title: Infrastructure-as-a-Service (IaaS) on Azure Stack Hub
     items:
     - type: list

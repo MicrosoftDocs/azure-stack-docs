@@ -1,6 +1,6 @@
 ---
-title: Deploy Azure Stack App Service in a highly available configuration | Microsoft Docs
-description: Learn how to deploy App Service in Azure Stack using a highly available configuration.
+title: Deploy Azure Stack Hub App Service in a highly available configuration | Microsoft Docs
+description: Learn how to deploy App Service in Azure Stack Hub using a highly available configuration.
 services: azure-stack
 documentationcenter: ''
 author: BryanLa
@@ -21,12 +21,12 @@ ms.lastreviewed: 01/02/2020
 
 # Deploy App Service in a highly available configuration
 
-This article shows you how to use Azure Stack marketplace items to deploy App Service for Azure Stack in a highly available configuration. In addition to available marketplace items, this solution also uses the [appservice-fileshare-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Quickstart template. This template automates the creation of a highly available infrastructure for hosting the App Service resource provider. App Service is then installed on this highly available VM infrastructure. 
+This article shows you how to use Azure Stack Hub marketplace items to deploy App Service for Azure Stack Hub in a highly available configuration. In addition to available marketplace items, this solution also uses the [appservice-fileshare-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Hub Quickstart template. This template automates the creation of a highly available infrastructure for hosting the App Service resource provider. App Service is then installed on this highly available VM infrastructure. 
 
 ## Deploy the highly available App Service infrastructure VMs
-The [appservice-fileshare-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Quickstart template simplifies the deployment of App Service in a highly available configuration. It should be deployed in the Default Provider Subscription. 
+The [appservice-fileshare-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Hub Quickstart template simplifies the deployment of App Service in a highly available configuration. It should be deployed in the Default Provider Subscription. 
 
-When used to create a custom resource in Azure Stack, the template creates:
+When used to create a custom resource in Azure Stack Hub, the template creates:
 - A virtual network and required subnets.
 - Network security groups for file server, SQL Server, and Active Directory Domain Services (AD DS) subnets.
 - Storage accounts for VM disks and cluster cloud witness.
@@ -36,8 +36,8 @@ When used to create a custom resource in Azure Stack, the template creates:
 - Two node file server cluster.
 - Two domain controllers.
 
-### Required Azure Stack marketplace items
-Before using this template, ensure that the following [Azure Stack marketplace items](azure-stack-marketplace-azure-items.md) are available in your Azure Stack instance:
+### Required Azure Stack Hub marketplace items
+Before using this template, ensure that the following [Azure Stack Hub marketplace items](azure-stack-marketplace-azure-items.md) are available in your Azure Stack Hub instance:
 
 - Windows Server 2016 Datacenter Core Image (for AD DS and file server VMs)
 - SQL Server 2016 SP2 on Windows Server 2016 (Enterprise)
@@ -48,7 +48,7 @@ Before using this template, ensure that the following [Azure Stack marketplace i
 > Review [the template readme file](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) on GitHub for additional details on template requirements and default values. 
 
 ### Deploy the App Service infrastructure
-Use the steps in this section to create a custom deployment using the **appservice-fileshare-sqlserver-ha** Azure Stack Quickstart template.
+Use the steps in this section to create a custom deployment using the **appservice-fileshare-sqlserver-ha** Azure Stack Hub Quickstart template.
 
 1. [!INCLUDE [azs-admin-portal](../includes/azs-admin-portal.md)]
 
@@ -103,7 +103,7 @@ Follow these steps to discover the template output values:
 
 
 ## Deploy App Service in a highly available configuration
-Follow the steps in this section to deploy App Service for Azure Stack in a highly available configuration based on the [appservice-fileshare-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Quickstart template. 
+Follow the steps in this section to deploy App Service for Azure Stack Hub in a highly available configuration based on the [appservice-fileshare-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Hub Quickstart template. 
 
 After you install the App Service resource provider, you can include it in your offers and plans. Users can then subscribe to get the service and start creating apps.
 
@@ -111,28 +111,28 @@ After you install the App Service resource provider, you can include it in your 
 > Before you run the resource provider installer, make sure that you've read the release notes, which accompany each App Service release, to learn about new functionality, fixes, and any known issues which could affect your deployment.
 
 ### Prerequisites
-Before you can run the App Service installer, several steps are required as described in the [Before you get started with App Service on Azure Stack article](azure-stack-app-service-before-you-get-started.md):
+Before you can run the App Service installer, several steps are required as described in the [Before you get started with App Service on Azure Stack Hub article](azure-stack-app-service-before-you-get-started.md):
 
 > [!TIP]
 > Not all steps described in the [Before you get started with App Service article](azure-stack-app-service-before-you-get-started.md) are required because the template deployment configures the infrastructure VMs for you.
 
 - [Download the App Service installer and helper scripts](azure-stack-app-service-before-you-get-started.md#download-the-installer-and-helper-scripts).
-- [Download items from the Azure Stack marketplace](azure-stack-app-service-before-you-get-started.md#download-items-from-the-azure-marketplace).
+- [Download items from the Azure Stack Hub marketplace](azure-stack-app-service-before-you-get-started.md#download-items-from-the-azure-marketplace).
 - [Generate required certificates](azure-stack-app-service-before-you-get-started.md#get-certificates).
-- Create the ID Application based on the identify provider you've chosen for Azure Stack. An ID Application can be made for either [Azure AD](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-app) or [Active Directory Federation Services](azure-stack-app-service-before-you-get-started.md#create-an-active-directory-federation-services-app) and record the application ID.
-- Ensure that you've added the Windows Server 2016 Datacenter image to the Azure Stack marketplace. This image is required for App Service installation.
+- Create the ID Application based on the identify provider you've chosen for Azure Stack Hub. An ID Application can be made for either [Azure AD](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-app) or [Active Directory Federation Services](azure-stack-app-service-before-you-get-started.md#create-an-active-directory-federation-services-app) and record the application ID.
+- Ensure that you've added the Windows Server 2016 Datacenter image to the Azure Stack Hub marketplace. This image is required for App Service installation.
 
 ### Steps for App Service deployment
 Installing the App Service resource provider takes at least an hour. The length of time needed depends on how many role instances you deploy. During the deployment, the installer runs the following tasks:
 
-- Create a blob container in the specified Azure Stack storage account.
+- Create a blob container in the specified Azure Stack Hub storage account.
 - Create a DNS zone and entries for App Service.
 - Register the App Service resource provider.
 - Register the App Service gallery items.
 
 To deploy the App Service resource provider, follow these steps:
 
-1. Run the previously downloaded App Service installer (**appservice.exe**) as an admin from a computer that can access the Azure Stack Admin Azure Resource Management Endpoint.
+1. Run the previously downloaded App Service installer (**appservice.exe**) as an admin from a computer that can access the Azure Stack Hub Admin Azure Resource Management Endpoint.
 
 2. Select **Deploy App Service or upgrade to the latest version**.
 
@@ -146,13 +146,13 @@ To deploy the App Service resource provider, follow these steps:
 
     ![Non-Microsoft licensing terms on App Service](media/app-service-deploy-ha/03.png)
 
-5. Provide the App Service cloud endpoint configuration for your Azure Stack environment.
+5. Provide the App Service cloud endpoint configuration for your Azure Stack Hub environment.
 
     ![App Service cloud endpoint configuration on App Service](media/app-service-deploy-ha/04.png)
 
-6. **Connect** to the Azure Stack subscription to be used for the installation and choose the location. 
+6. **Connect** to the Azure Stack Hub subscription to be used for the installation and choose the location. 
 
-    ![Connect to the Azure Stack subscription on App Service](media/app-service-deploy-ha/05.png)
+    ![Connect to the Azure Stack Hub subscription on App Service](media/app-service-deploy-ha/05.png)
 
 7. Select **Use existing VNet and Subnets** and the **Resource Group Name** for the resource group used to deploy the highly available template.<br><br>Next, select the virtual network created as part of the template deployment and then select the appropriate role subnets from the drop-down list options. 
 
@@ -184,7 +184,7 @@ To deploy the App Service resource provider, follow these steps:
     ![ID application certificate and root certificate on App Service](media/app-service-deploy-ha/008.png)
 
 11. Next, provide the remaining required information for the following certificates and click **Next**:
-    - Default Azure Stack SSL certificate (in the format of **_.appservice.local.azurestack.external.pfx**)
+    - Default Azure Stack Hub SSL certificate (in the format of **_.appservice.local.azurestack.external.pfx**)
     - API SSL certificate (in the format of **api.appservice.local.azurestack.external.pfx**)
     - Publisher certificate (in the form of **ftp.appservice.local.azurestack.external.pfx**) 
 
@@ -234,7 +234,7 @@ To deploy the App Service resource provider, follow these steps:
 
 [Add the appservice_hosting and appservice_metering databases to an availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database) if you've provided the App Service resource provider with a SQL Always On Instance. Synchronize the databases to prevent any loss of service in the event of a database failover. You can also run a [script](https://blog.sqlauthority.com/2017/11/30/sql-server-alwayson-availability-groups-script-sync-logins-replicas/) to import the AppServices logins from the original primary server to a failover server.
 
-[Scale out App Service](azure-stack-app-service-add-worker-roles.md). You might need to add additional App Service infrastructure role workers to meet expected app demand in your environment. By default, App Service on Azure Stack supports free and shared worker tiers. To add other worker tiers, you need to add more worker roles.
+[Scale out App Service](azure-stack-app-service-add-worker-roles.md). You might need to add additional App Service infrastructure role workers to meet expected app demand in your environment. By default, App Service on Azure Stack Hub supports free and shared worker tiers. To add other worker tiers, you need to add more worker roles.
 
 [Configure deployment sources](azure-stack-app-service-configure-deployment-sources.md). Additional configuration is required to support on-demand deployment from multiple source control providers like GitHub, BitBucket, OneDrive, and DropBox.
 

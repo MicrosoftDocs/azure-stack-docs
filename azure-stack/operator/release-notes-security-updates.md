@@ -239,13 +239,13 @@ For more information about these vulnerabilities, click on the preceding links, 
 ::: moniker range="azs-1907"
 ## 1907 update
 
-This update of Azure Stack does not include security updates to the underlying operating system that hosts Azure Stack.
+This update of Azure Stack Hub does not include security updates to the underlying operating system that hosts Azure Stack Hub.
 ::: moniker-end
 
 ::: moniker range="azs-1906"
 ## 1906 update
 
-This update of Azure Stack does not include security updates to the underlying operating system that hosts Azure Stack.
+This update of Azure Stack Hub does not include security updates to the underlying operating system that hosts Azure Stack Hub.
 ::: moniker-end
 
 ## Next steps
