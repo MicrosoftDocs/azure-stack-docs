@@ -58,7 +58,7 @@ There are several prerequisites that need to be in place before you can deploy t
 
 - In a disconnected scenario, you need to download the required PowerShell modules and register the repository manually.
 
-1.First sign in to a computer with internet connectivity and use the following scripts to download the PowerShell modules.
+1. First sign in to a computer with internet connectivity and use the following scripts to download the PowerShell modules.
 
 ```powershell
 Import-Module -Name PowerShellGet -ErrorAction Stop
@@ -70,11 +70,11 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.6.0
 ```
 
-2.Then you copy the downloaded packages to a USB device.
+2. Then you copy the downloaded packages to a USB device.
 
-3.Sign in to the disconnected workstation and copy the packages from the USB device to a location on the workstation.
+3. Sign in to the disconnected workstation and copy the packages from the USB device to a location on the workstation.
 
-4.Register this location as a local repository named as **azs1.6.0**
+4. Register this location as a local repository.
 
 ```powershell
 # requires -Version 5
