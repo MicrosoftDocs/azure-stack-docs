@@ -1,6 +1,6 @@
 ---
 title: Usage API related FAQs | Microsoft Docs
-description: List of Azure Stack meters, comparison to Azure usage API, Usage Time and Reported Time, error codes.
+description: List of Azure Stack Hub meters, comparison to Azure usage API, Usage Time and Reported Time, error codes.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -19,9 +19,9 @@ ms.lastreviewed: 02/26/2019
 
 ---
 
-# Frequently asked questions about Azure Stack usage
+# Frequently asked questions about Azure Stack Hub usage
 
-This article answers some frequently asked questions about Azure Stack usage and the Azure Stack usage API.
+This article answers some frequently asked questions about Azure Stack Hub usage and the Azure Stack Hub usage API.
 
 ## What meter IDs can I see?
 
@@ -325,7 +325,7 @@ Usage is reported for the following resource providers:
 **Meter ID**: 190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  
 **Meter name**: App Service  
 **Unit**: Virtual core hours  
-**Notes**: Number of virtual cores used to run app service. Note: Microsoft uses this meter to charge the App Service on Azure Stack. Cloud Solution Providers can use the other App Service meters (below) to calculate usage for their tenants.  
+**Notes**: Number of virtual cores used to run app service. Note: Microsoft uses this meter to charge the App Service on Azure Stack Hub. Cloud Solution Providers can use the other App Service meters (below) to calculate usage for their tenants.  
   
 **Meter ID**: 67CC4AFC-0691-48E1-A4B8-D744D1FEDBDE  
 **Meter name**: Functions Requests  
@@ -389,15 +389,15 @@ Usage is reported for the following resource providers:
 **Unit**: GB  
 **Notes**: Total incoming request response bytes + total outgoing request bytes + total incoming FTP request response bytes + total incoming web deploy request response bytes.  
   
-## How do the Azure Stack usage APIs compare to the [Azure usage API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) (currently in public preview)?
+## How do the Azure Stack Hub usage APIs compare to the [Azure usage API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) (currently in public preview)?
 
 * The tenant usage API is consistent with the Azure API, with one
   exception: the *showDetails* flag currently is not supported in
-  Azure Stack.
-* The provider usage API applies only to Azure Stack.
+  Azure Stack Hub.
+* The provider usage API applies only to Azure Stack Hub.
 * Currently, the [RateCard
   API](/azure/billing/billing-usage-rate-card-overview#azure-resource-ratecard-api-preview)
-  that is available in Azure is not available in Azure Stack.
+  that is available in Azure is not available in Azure Stack Hub.
 
 ## What is the difference between usage time and reported time?
 
@@ -405,7 +405,7 @@ Usage data reports have two main time values:
 
 * **Reported Time**. The time when the usage event entered the usage
   system
-* **Usage Time**. The time when the Azure Stack resource was consumed
+* **Usage Time**. The time when the Azure Stack Hub resource was consumed
 
 You might see a discrepancy in values for usage time and reported time for a specific usage event. The delay can be as long as several hours in any environment.
 
@@ -427,18 +427,18 @@ Currently, you can query only by *Reported Time*.
 
 Running and stopped VMs generate usage data. Consistent with Azure, deallocation is needed to stop the emission of usage data. In the case in which the portal is unavailable, but the compute resource provider is still running, usage will be emitted.
 
-## How do I extract usage data from the Azure Stack usage APIs?
+## How do I extract usage data from the Azure Stack Hub usage APIs?
 
-The easiest way to extract usage data from local usage APIs on an Azure Stack is by using the [usage summary script on GitHub](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/Usagesummary.ps1). The script requires the start and end dates as input parameters.
+The easiest way to extract usage data from local usage APIs on an Azure Stack Hub is by using the [usage summary script on GitHub](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/Usagesummary.ps1). The script requires the start and end dates as input parameters.
 
 Alternatively, you can use the REST APIs, as explained in the [Provider resource usage API](azure-stack-provider-resource-api.md) and [Tenant resource usage API](azure-stack-tenant-resource-usage-api.md) articles.
 
-## How can I associate usage extracted from Azure usage APIs to a specific Azure Stack user subscription?
+## How can I associate usage extracted from Azure usage APIs to a specific Azure Stack Hub user subscription?
 
-The usage records include a property bag called **additionalinfo**, which includes the Azure Stack subscription ID. This is the user subscription emitting the corresponding usage record.
+The usage records include a property bag called **additionalinfo**, which includes the Azure Stack Hub subscription ID. This is the user subscription emitting the corresponding usage record.
 
 ## Next steps
 
-* [Customer billing and chargeback in Azure Stack](azure-stack-billing-and-chargeback.md)
+* [Customer billing and chargeback in Azure Stack Hub](azure-stack-billing-and-chargeback.md)
 * [Provider Resource Usage API](azure-stack-provider-resource-api.md)
 * [Tenant Resource Usage API](azure-stack-tenant-resource-usage-api.md)

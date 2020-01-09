@@ -49,9 +49,9 @@ Datacenter editions are available in the marketplace for downloading; customers 
 Linux distributions listed as available in the marketplace include the necessary Windows Azure Linux Agent (WALA). If you bring your own image to Azure Stack Hub, follow the guidelines in [Add Linux images to Azure Stack Hub](azure-stack-linux.md).
 
 > [!NOTE]
-> Custom images should be built with the latest public WALA version (on the 1903 Azure Stack Hub build and above, or with the 1901/1902 hotfix), or with version 2.2.20. Versions before 2.2.20 and between 2.2.21 and 2.2.34 (inclusive) may not function properly on Azure Stack Hub. On Azure Stack Hub 1910 and above, all Azure WALA agent versions work with Azure Stack.
+> Custom images should be built with the latest public WALA version (on the 1903 Azure Stack Hub build and above, or with the 1901/1902 hotfix), or with version 2.2.20. Versions before 2.2.20 and between 2.2.21 and 2.2.34 (inclusive) may not function properly on Azure Stack Hub. On Azure Stack Hub 1910 and above, all Azure WALA agent versions work with Azure Stack Hub.
 >
-> [cloud-init](https://cloud-init.io/) is supported on Azure Stack 1910 and above.
+> [cloud-init](https://cloud-init.io/) is supported on Azure Stack Hub 1910 and above.
 
 | Distribution | Description | Publisher | Marketplace |
 | --- | --- | --- | --- |
@@ -70,7 +70,7 @@ Linux distributions listed as available in the marketplace include the necessary
 | Ubuntu 16.04-LTS | 64-bit | Canonical | Yes |
 | Ubuntu 18.04-LTS | 64-bit | Canonical | Yes |
 
-For Red Hat Enterprise Linux support information, see [Red Hat and Azure Stack: Frequently Asked Questions](https://access.redhat.com/articles/3413531).
+For Red Hat Enterprise Linux support information, see [Red Hat and Azure Stack Hub: Frequently Asked Questions](https://access.redhat.com/articles/3413531).
 
 ## Next steps
 

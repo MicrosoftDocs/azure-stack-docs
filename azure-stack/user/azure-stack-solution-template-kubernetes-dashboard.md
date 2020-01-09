@@ -1,6 +1,6 @@
 --- 
-title: Access the Kubernetes Dashboard in Azure Stack | Microsoft Docs 
-description: Learn how to access the Kubernetes Dashboard in Azure Stack 
+title: Access the Kubernetes Dashboard in Azure Stack Hub | Microsoft Docs 
+description: Learn how to access the Kubernetes Dashboard in Azure Stack Hub 
 services: azure-stack 
 documentationcenter: '' 
 author: mattbriggs 
@@ -16,21 +16,21 @@ ms.author: mabrigg
 ms.reviewer: waltero 
 ms.lastreviewed: 06/18/2019
 
-# Keyword target: Azure Stack Kubernetes dashboard 
+# Keyword target: Azure Stack Hub Kubernetes dashboard 
 --- 
-# Access the Kubernetes Dashboard in Azure Stack 
+# Access the Kubernetes Dashboard in Azure Stack Hub 
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit* 
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit* 
 > [!Note]   
 > Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
 
-Kubernetes includes a web dashboard that you can use for basic management operations. This dashboard lets you view basic health status and metrics for your applications, create and deploy services, and edit existing applications. This article shows you how to set up the Kubernetes dashboard on Azure Stack.
+Kubernetes includes a web dashboard that you can use for basic management operations. This dashboard lets you view basic health status and metrics for your applications, create and deploy services, and edit existing applications. This article shows you how to set up the Kubernetes dashboard on Azure Stack Hub.
 
 ## Prerequisites for Kubernetes Dashboard
 
-* Azure Stack Kubernetes cluster
+* Azure Stack Hub Kubernetes cluster
 
-    You will need to have deployed a Kubernetes cluster to Azure Stack. For more information, see [Deploy Kubernetes](azure-stack-solution-template-kubernetes-deploy.md).
+    You will need to have deployed a Kubernetes cluster to Azure Stack Hub. For more information, see [Deploy Kubernetes](azure-stack-solution-template-kubernetes-deploy.md).
 
 * SSH client
 
@@ -38,21 +38,21 @@ Kubernetes includes a web dashboard that you can use for basic management operat
 
 * FTP (PSCP)
 
-    You may also need an FTP client that supports SSH and SSH File Transfer Protocol to transfer the certificates from the master node to your Azure Stack management machine. You can use [FileZilla](https://filezilla-project.org/download.php?type=client). You will need the private key used when you deployed your Kubernetes cluster.
+    You may also need an FTP client that supports SSH and SSH File Transfer Protocol to transfer the certificates from the master node to your Azure Stack Hub management machine. You can use [FileZilla](https://filezilla-project.org/download.php?type=client). You will need the private key used when you deployed your Kubernetes cluster.
 
 ## Overview of steps to enable dashboard
 
 1.  Export the Kubernetes certificates from the master node in the cluster. 
-2.  Import the certificates to your Azure Stack management machine.
+2.  Import the certificates to your Azure Stack Hub management machine.
 2.  Open the Kubernetes web dashboard. 
 
 ## Export certificate from the master 
 
 You can retrieve the URL for the dashboard from the master node in your cluster.
 
-1. Get the public IP address and username for your cluster master from the Azure Stack dashboard. To get this information:
+1. Get the public IP address and username for your cluster master from the Azure Stack Hub dashboard. To get this information:
 
-    - Sign in to the [Azure Stack portal](https://portal.local.azurestack.external/)
+    - Sign in to the [Azure Stack Hub portal](https://portal.local.azurestack.external/)
     - Select **All services** > **All resources**. Find the master in your cluster resource group. The master is named `k8s-master-<sequence-of-numbers>`. 
 
 2. Open the master node in the portal. Copy the **Public IP** address. Click **Connect** to get your user name in the  **Login using VM local account** box. This is the same user name you set when creating your cluster. Use the public IP address rather than the private IP address listed in the connect blade.
@@ -98,7 +98,7 @@ You can retrieve the URL for the dashboard from the master node in your cluster.
     - the private secret
     - Use **SFTP - SSH File Transfer Protocol**
 
-2. Copy `/etc/kubernetes/certs/client.pfx` and  `/etc/kubernetes/certs/ca.crt` to your Azure Stack management machine.
+2. Copy `/etc/kubernetes/certs/client.pfx` and  `/etc/kubernetes/certs/ca.crt` to your Azure Stack Hub management machine.
 
 3. Make note of the file locations. Update the script with the locations, and then open PowerShell with an elevated prompt. Run the updated script:  
 
@@ -126,12 +126,12 @@ You can retrieve the URL for the dashboard from the master node in your cluster.
 
 You can use the dashboard. For more information on the Kubernetes dashboard, see [Kubernetes Web UI Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) 
 
-![Azure Stack Kubernetes Dashboard](media/azure-stack-solution-template-kubernetes-dashboard/azure-stack-kub-dashboard.png)
+![Azure Stack Hub Kubernetes Dashboard](media/azure-stack-solution-template-kubernetes-dashboard/azure-stack-kub-dashboard.png)
 
 ## Next steps 
 
-[Deploy Kubernetes to Azure Stack](azure-stack-solution-template-kubernetes-deploy.md)  
+[Deploy Kubernetes to Azure Stack Hub](azure-stack-solution-template-kubernetes-deploy.md)  
 
-[Add a Kubernetes cluster to the Marketplace (for the Azure Stack operator)](../operator/azure-stack-solution-template-kubernetes-cluster-add.md)  
+[Add a Kubernetes cluster to the Marketplace (for the Azure Stack Hub operator)](../operator/azure-stack-solution-template-kubernetes-cluster-add.md)  
 
 [Kubernetes on Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)  

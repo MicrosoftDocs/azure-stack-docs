@@ -1,6 +1,6 @@
 ---
-title: Identity architecture for Azure Stack | Microsoft Docs
-description: Learn about identity architecture for Azure Stack, and the differences between Azure AD and AD FS.
+title: Identity architecture for Azure Stack Hub | Microsoft Docs
+description: Learn about identity architecture for Azure Stack Hub, and the differences between Azure AD and AD FS.
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
@@ -19,9 +19,9 @@ ms.reviewer: fiseraci
 ms.lastreviewed: 05/09/2019
 ---
 
-# Identity architecture for Azure Stack
+# Identity architecture for Azure Stack Hub
 
-When choosing an identity provider to use with Azure Stack, you should understand the important differences between the options of Azure Active Directory (Azure AD) and Active Directory Federation Services (AD FS).
+When choosing an identity provider to use with Azure Stack Hub, you should understand the important differences between the options of Azure Active Directory (Azure AD) and Active Directory Federation Services (AD FS).
 
 ## Capabilities and limitations
 
@@ -46,30 +46,30 @@ The following sections discuss the different identity topologies that you can us
 
 ### Azure AD: single-tenant topology
 
-By default, when you install Azure Stack and use Azure AD, Azure Stack uses a single-tenant topology.
+By default, when you install Azure Stack Hub and use Azure AD, Azure Stack Hub uses a single-tenant topology.
 
 A single-tenant topology is useful when:
 - All users are part of the same tenant.
-- A service provider hosts an Azure Stack instance for an organization.
+- A service provider hosts an Azure Stack Hub instance for an organization.
 
-![Azure Stack single-tenant topology with Azure AD](media/azure-stack-identity-architecture/single-tenant.png)
+![Azure Stack Hub single-tenant topology with Azure AD](media/azure-stack-identity-architecture/single-tenant.png)
 
 This topology features the following characteristics:
 
-- Azure Stack registers all apps and services to the same Azure AD tenant directory.
-- Azure Stack authenticates only the users and apps from that directory, including tokens.
+- Azure Stack Hub registers all apps and services to the same Azure AD tenant directory.
+- Azure Stack Hub authenticates only the users and apps from that directory, including tokens.
 - Identities for administrators (cloud operators) and tenant users are in the same directory tenant.
-- To enable a user from another directory to access this Azure Stack environment, you must [invite the user as a guest](azure-stack-identity-overview.md#guest-users) to the tenant directory.
+- To enable a user from another directory to access this Azure Stack Hub environment, you must [invite the user as a guest](azure-stack-identity-overview.md#guest-users) to the tenant directory.
 
 ### Azure AD: multi-tenant topology
 
-Cloud operators can configure Azure Stack to allow access to apps by tenants from one or more organizations. Users access apps through the Azure Stack user portal. In this configuration, the administrator portal (used by the cloud operator) is limited to users from a single directory.
+Cloud operators can configure Azure Stack Hub to allow access to apps by tenants from one or more organizations. Users access apps through the Azure Stack Hub user portal. In this configuration, the administrator portal (used by the cloud operator) is limited to users from a single directory.
 
 A multi-tenant topology is useful when:
 
-- A service provider wants to allow users from multiple organizations to access Azure Stack.
+- A service provider wants to allow users from multiple organizations to access Azure Stack Hub.
 
-![Azure Stack multi-tenant topology with Azure AD](media/azure-stack-identity-architecture/multi-tenant.png)
+![Azure Stack Hub multi-tenant topology with Azure AD](media/azure-stack-identity-architecture/multi-tenant.png)
 
 This topology features the following characteristics:
 
@@ -81,15 +81,15 @@ This topology features the following characteristics:
 
 The AD FS topology is required when either of the following conditions is true:
 
-- Azure Stack doesn't connect to the internet.
-- Azure Stack can connect to the internet, but you choose to use AD FS for your identity provider.
+- Azure Stack Hub doesn't connect to the internet.
+- Azure Stack Hub can connect to the internet, but you choose to use AD FS for your identity provider.
   
-![Azure Stack topology using AD FS](media/azure-stack-identity-architecture/adfs.png)
+![Azure Stack Hub topology using AD FS](media/azure-stack-identity-architecture/adfs.png)
 
 This topology features the following characteristics:
 
-- To support the use of this topology in production, you must integrate the built-in Azure Stack AD FS instance with an existing AD FS instance that's backed by Active Directory, through a federation trust.
-- You can integrate the Graph service in Azure Stack with your existing Active Directory instance. You can also use the OData-based Graph API service that supports APIs that are consistent with the Azure AD Graph API.
+- To support the use of this topology in production, you must integrate the built-in Azure Stack Hub AD FS instance with an existing AD FS instance that's backed by Active Directory, through a federation trust.
+- You can integrate the Graph service in Azure Stack Hub with your existing Active Directory instance. You can also use the OData-based Graph API service that supports APIs that are consistent with the Azure AD Graph API.
 
   To interact with your Active Directory instance, the Graph API requires user credentials from your Active Directory instance that have read-only permissions.
   - The built-in AD FS instance is based on Windows Server 2016.

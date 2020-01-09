@@ -1,6 +1,6 @@
 ﻿---
-title: Using the privileged endpoint in Azure Stack | Microsoft Docs
-description: Learn how to use the privileged endpoint (PEP) in Azure Stack as an operator.
+title: Using the privileged endpoint in Azure Stack Hub | Microsoft Docs
+description: Learn how to use the privileged endpoint (PEP) in Azure Stack Hub as an operator.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,11 +18,11 @@ ms.reviewer: fiseraci
 ms.lastreviewed: 1/8/2020
 
 ---
-# Use the privileged endpoint in Azure Stack
+# Use the privileged endpoint in Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
-As an Azure Stack operator, you should use the administrator portal, PowerShell, or Azure Resource Manager APIs for most day-to-day management tasks. However, for some less common operations, you need to use the *privileged endpoint* (PEP). The PEP is a pre-configured remote PowerShell console that provides you with just enough capabilities to help you do a required task. The endpoint uses [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) to expose only a restricted set of cmdlets. To access the PEP and invoke the restricted set of cmdlets, a low-privileged account is used. No admin accounts are required. For additional security, scripting isn't allowed.
+As an Azure Stack Hub operator, you should use the administrator portal, PowerShell, or Azure Resource Manager APIs for most day-to-day management tasks. However, for some less common operations, you need to use the *privileged endpoint* (PEP). The PEP is a pre-configured remote PowerShell console that provides you with just enough capabilities to help you do a required task. The endpoint uses [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) to expose only a restricted set of cmdlets. To access the PEP and invoke the restricted set of cmdlets, a low-privileged account is used. No admin accounts are required. For additional security, scripting isn't allowed.
 
 You can use the PEP to perform these tasks:
 
@@ -39,7 +39,7 @@ The PEP logs every action (and its corresponding output) that you perform in the
 
 You access the PEP through a remote PowerShell session on the virtual machine (VM) that hosts the PEP. In the ASDK, this VM is named **AzS-ERCS01**. If you're using an integrated system, there are three instances of the PEP, each running inside a VM (*Prefix*-ERCS01, *Prefix*-ERCS02, or *Prefix*-ERCS03) on different hosts for resiliency.
 
-Before you begin this procedure for an integrated system, make sure you can access the PEP either by IP address or through DNS. After the initial deployment of Azure Stack, you can access the PEP only by IP address because DNS integration isn't set up yet. Your OEM hardware vendor will provide you with a JSON file named **AzureStackStampDeploymentInfo** that contains the PEP IP addresses.
+Before you begin this procedure for an integrated system, make sure you can access the PEP either by IP address or through DNS. After the initial deployment of Azure Stack Hub, you can access the PEP only by IP address because DNS integration isn't set up yet. Your OEM hardware vendor will provide you with a JSON file named **AzureStackStampDeploymentInfo** that contains the PEP IP addresses.
 
 You may also find the IP address in the Azure Stack Hub administrator portal. Open the portal, for example, `https://adminportal.local.azurestack.external`. Select **Region Management** > **Properties**.
 
@@ -72,7 +72,7 @@ You will need set your current culture setting to `en-US` when running the privi
     The `ComputerName` parameter can be either the IP address or the DNS name of one of the VMs that hosts the PEP.
 
     > [!NOTE]  
-    >Azure Stack doesn't make a remote call when validating the PEP credential. It relies on a locally-stored RSA public key to do that.
+    >Azure Stack Hub doesn't make a remote call when validating the PEP credential. It relies on a locally-stored RSA public key to do that.
 
    - If you're running the ASDK:
 
@@ -85,7 +85,7 @@ You will need set your current culture setting to `en-US` when running the privi
     
    - When prompted, use the following credentials:
    
-       - **User name**: Specify the CloudAdmin account, in the format **&lt;*Azure Stack domain*&gt;\cloudadmin**. (For ASDK, the user name is **azurestack\cloudadmin**.)
+       - **User name**: Specify the CloudAdmin account, in the format **&lt;*Azure Stack Hub domain*&gt;\cloudadmin**. (For ASDK, the user name is **azurestack\cloudadmin**.)
   
         - **Password**: Enter the same password that was provided during installation for the AzureStackAdmin domain administrator account.
 
@@ -163,7 +163,7 @@ To import the PEP session on your local machine, do the following steps:
 
      When prompted, use the following credentials:
 
-     - **User name**: Specify the CloudAdmin account, in the format **&lt;*Azure Stack domain*&gt;\cloudadmin**. (For ASDK, the user name is **azurestack\cloudadmin**.)
+     - **User name**: Specify the CloudAdmin account, in the format **&lt;*Azure Stack Hub domain*&gt;\cloudadmin**. (For ASDK, the user name is **azurestack\cloudadmin**.)
      - **Password**: Enter the same password that was provided during installation for the AzureStackAdmin domain administrator account.
 
 3. Import the PEP session into your local machine:
@@ -172,7 +172,7 @@ To import the PEP session on your local machine, do the following steps:
       Import-PSSession $session
     ```
 
-4. Now, you can use tab-completion and do scripting as usual on your local PowerShell session with all the functions and cmdlets of the PEP, without decreasing the security posture of Azure Stack. Enjoy!
+4. Now, you can use tab-completion and do scripting as usual on your local PowerShell session with all the functions and cmdlets of the PEP, without decreasing the security posture of Azure Stack Hub. Enjoy!
 
 ## Close the privileged endpoint session
 
@@ -203,4 +203,4 @@ After the transcript log files are successfully transferred to the file share, t
 
 ## Next steps
 
-[Azure Stack diagnostic tools](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)
+[Azure Stack Hub diagnostic tools](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)

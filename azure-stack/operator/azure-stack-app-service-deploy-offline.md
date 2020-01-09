@@ -1,6 +1,6 @@
 ---
-title: Deploy App Service in an offline environment in Azure Stack | Microsoft Docs
-description: Learn how to deploy App Service in an offline Azure Stack environment secured by AD FS.
+title: Deploy App Service in an offline environment in Azure Stack Hub | Microsoft Docs
+description: Learn how to deploy App Service in an offline Azure Stack Hub environment secured by AD FS.
 services: azure-stack
 documentationcenter: ''
 author: BryanLa
@@ -19,22 +19,22 @@ ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
 
 ---
-# Deploy App Service in an offline environment in Azure Stack
+# Deploy App Service in an offline environment in Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Apply the 1907 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.7.
+> Apply the 1907 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.7.
 
-By following the instructions in this article, you can deploy the [App Service resource provider](azure-stack-app-service-overview.md) to an Azure Stack environment that is:
+By following the instructions in this article, you can deploy the [App Service resource provider](azure-stack-app-service-overview.md) to an Azure Stack Hub environment that is:
 
 - Not connected to the internet.
 - Secured by Active Directory Federation Services (AD FS).
 
 > [!IMPORTANT]
-> Before you run the resource provider installer, make sure you've completed the steps in [Prerequisites for deploying App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md). You should also read the [release notes](azure-stack-app-service-release-notes-update-seven.md) that accompany the 1.7 release to learn about new functionality, fixes, and any known issues that could affect your deployment.
+> Before you run the resource provider installer, make sure you've completed the steps in [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md). You should also read the [release notes](azure-stack-app-service-release-notes-update-seven.md) that accompany the 1.7 release to learn about new functionality, fixes, and any known issues that could affect your deployment.
 
-To add the App Service resource provider to your offline Azure Stack deployment, you must complete these top-level tasks:
+To add the App Service resource provider to your offline Azure Stack Hub deployment, you must complete these top-level tasks:
 
 1. Complete the [prerequisite steps](azure-stack-app-service-before-you-get-started.md) (like purchasing certificates, which can take a few days to receive).
 2. [Download and extract the installation and helper files](azure-stack-app-service-before-you-get-started.md) to a machine that's connected to the internet.
@@ -55,11 +55,11 @@ To deploy App Service in an offline environment, first create an offline install
 
     ![Offline installation package generated successfully in App Service Installer](media/azure-stack-app-service-deploy-offline/image02.png)
 
-4. Copy the installer (AppService.exe) and the offline installation package to your Azure Stack host machine.
+4. Copy the installer (AppService.exe) and the offline installation package to your Azure Stack Hub host machine.
 
-## Complete the offline installation of App Service on Azure Stack
+## Complete the offline installation of App Service on Azure Stack Hub
 
-1. Run appservice.exe as an admin from a computer that can reach the Azure Stack Admin Azure Resource Management endpoint.
+1. Run appservice.exe as an admin from a computer that can reach the Azure Stack Hub Admin Azure Resource Management endpoint.
 
 1. Select **Advanced** > **Complete offline installation**.
 
@@ -73,25 +73,25 @@ To deploy App Service in an offline environment, first create an offline install
 
 1. Review and accept the third-party license terms, and then select **Next**.
 
-1. Make sure the App Service cloud configuration info is correct. If you used the default settings during ASDK deployment, you can accept the default values here. However, if you customized the options when you deployed Azure Stack or are deploying on an integrated system, you must edit the values in this window to reflect those changes. For example, if you use the domain suffix mycloud.com, your Azure Stack Tenant Azure Resource Manager endpoint must change to `management.<region>.mycloud.com`. After you confirm your info, select **Next**.
+1. Make sure the App Service cloud configuration info is correct. If you used the default settings during ASDK deployment, you can accept the default values here. However, if you customized the options when you deployed Azure Stack Hub or are deploying on an integrated system, you must edit the values in this window to reflect those changes. For example, if you use the domain suffix mycloud.com, your Azure Stack Hub Tenant Azure Resource Manager endpoint must change to `management.<region>.mycloud.com`. After you confirm your info, select **Next**.
 
     ![Configure Azure App Service cloud in App Service Installer][3]
 
 1. On the next page:
 
-   a. Select the **Connect** button next to the **Azure Stack Subscriptions** box. 
+   a. Select the **Connect** button next to the **Azure Stack Hub Subscriptions** box. 
 
    b. Provide your admin account. For example: cloudadmin@azurestack.local. Enter your password and then select **Sign In**.
 
-   c. In the **Azure Stack Subscriptions** box, select **Default Provider Subscription**.
+   c. In the **Azure Stack Hub Subscriptions** box, select **Default Provider Subscription**.
    > [!NOTE]
    > App Service can be deployed only into **Default Provider Subscription**.
 
-   d. In the **Azure Stack Locations** box, select the location that corresponds to the region you're deploying to. For example, if you're deploying to the ASDK, select **local**.
+   d. In the **Azure Stack Hub Locations** box, select the location that corresponds to the region you're deploying to. For example, if you're deploying to the ASDK, select **local**.
 
    e. Select **Next**.
 
-      ![Azure Stack subscriptions and locations in App Service Installer][4]
+      ![Azure Stack Hub subscriptions and locations in App Service Installer][4]
 
 1. You can allow the App Service installer to create a virtual network and associated subnets. Or, you can deploy into an existing virtual network, as configured through [these steps](azure-stack-app-service-before-you-get-started.md#virtual-network).
    - To use the App Service installer method, select **Create VNet with default settings**, accept the defaults, and then select **Next**.
@@ -136,7 +136,7 @@ To deploy App Service in an offline environment, first create an offline install
     > [!NOTE]
     > The installer tries to test connectivity to the computer running SQL Server  before proceeding. However, if you chose to deploy into an existing virtual network, the installer might not be able to connect to the computer running SQL Server and displays a warning asking whether you want to continue. Verify the SQL Server info and continue if it's correct.
     >
-    > From Azure App Service on Azure Stack 1.3 onward, the installer checks that the computer running SQL Server has database containment enabled at the SQL Server level. If it doesn't, you're prompted with the following exception:
+    > From Azure App Service on Azure Stack Hub 1.3 onward, the installer checks that the computer running SQL Server has database containment enabled at the SQL Server level. If it doesn't, you're prompted with the following exception:
     > ```sql
     >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
     >    ***********************************************************
@@ -146,14 +146,14 @@ To deploy App Service in an offline environment, first create an offline install
     >    GO
     >    ***********************************************************
     > ```
-    > For more details, see the [release notes for Azure App Service on Azure Stack 1.3](azure-stack-app-service-release-notes-update-three.md).
+    > For more details, see the [release notes for Azure App Service on Azure Stack Hub 1.3](azure-stack-app-service-release-notes-update-three.md).
 
     ![Enter SQL Server info in App Service Installer][12]
 
 1. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in an ASDK deployment. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
 
      > [!NOTE]
-     > For production deployments, follow the guidance in [Capacity planning for Azure App Service server roles in Azure Stack](azure-stack-app-service-capacity-planning.md).
+     > For production deployments, follow the guidance in [Capacity planning for Azure App Service server roles in Azure Stack Hub](azure-stack-app-service-capacity-planning.md).
      >
      >
 
@@ -168,7 +168,7 @@ To deploy App Service in an offline environment, first create an offline install
     ![Set role tiers and SKU options in App Service Installer][14]
 
     > [!NOTE]
-    > Windows Server 2016 Core is *not* a supported platform image for use with Azure App Service on Azure Stack.  Don't use evaluation images for production deployments. Azure App Service on Azure Stack requires that Microsoft .NET 3.5.1 SP1 be activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled.
+    > Windows Server 2016 Core is *not* a supported platform image for use with Azure App Service on Azure Stack Hub.  Don't use evaluation images for production deployments. Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 be activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled.
 
 1. In the **Select Platform Image** box, choose your deployment Windows Server 2016 virtual machine (VM) image from the images available on the compute resource provider for the App Service cloud. Select **Next**.
 
@@ -187,7 +187,7 @@ To deploy App Service in an offline environment, first create an offline install
     ![Summary of selections made in App Service Installer][17]
 
 1. On the next page:
-    1. Track the installation progress. App Service on Azure Stack takes about 60 minutes to deploy, based on the default selections.
+    1. Track the installation progress. App Service on Azure Stack Hub takes about 60 minutes to deploy, based on the default selections.
     2. After the installer finishes running, select **Exit**.
 
     ![Track installation process in App Service Installer][18]
@@ -209,26 +209,26 @@ If you chose to deploy into an existing virtual network and an internal IP addre
 - Priority: 700
 - Name: Outbound_Allow_SMB445
 
-## Validate the App Service on Azure Stack installation
+## Validate the App Service on Azure Stack Hub installation
 
-1. In the Azure Stack administrator portal, go to **Administration - App Service**.
+1. In the Azure Stack Hub administrator portal, go to **Administration - App Service**.
 
 1. In the overview, under status, check to see that the **Status** displays **All roles are ready**.
 
     ![Overview in App Service Administration](media/azure-stack-app-service-deploy/image12.png)
 
-## Test drive App Service on Azure Stack
+## Test drive App Service on Azure Stack Hub
 
 After you deploy and register the App Service resource provider, test it to make sure that users can deploy web and API apps.
 
 > [!NOTE]
 > You must create an offer that has the Microsoft.Web namespace within the plan. Then, you need to have a tenant subscription that subscribes to this offer. For more info, see [Create offer](azure-stack-create-offer.md) and [Create plan](azure-stack-create-plan.md).
 >
-> You *must* have a tenant subscription to create apps that use App Service on Azure Stack. The only capabilities that a service admin can complete within the administrator portal are related to the resource provider administration of App Service. These capabilities include adding capacity, configuring deployment sources, and adding Worker tiers and SKUs.
+> You *must* have a tenant subscription to create apps that use App Service on Azure Stack Hub. The only capabilities that a service admin can complete within the administrator portal are related to the resource provider administration of App Service. These capabilities include adding capacity, configuring deployment sources, and adding Worker tiers and SKUs.
 >
 > As of the third technical preview, to create web, API, and Azure Functions apps, you must use the tenant portal and have a tenant subscription.
 
-1. In the Azure Stack tenant portal, select **+ Create a resource** > **Web + Mobile** > **Web App**.
+1. In the Azure Stack Hub tenant portal, select **+ Create a resource** > **Web + Mobile** > **Web App**.
 
 1. On the **Web App** blade, type a name in the **Web app** box.
 
@@ -246,7 +246,7 @@ After you deploy and register the App Service resource provider, test it to make
 
 ## Deploy a WordPress, DNN, or Django website (optional)
 
-1. In the Azure Stack tenant portal, select **+**, go to Azure Marketplace, deploy a Django website, and wait for successful completion. The Django web platform uses a file system-based database. It doesn't require any additional resource providers, such as SQL or MySQL.
+1. In the Azure Stack Hub tenant portal, select **+**, go to Azure Marketplace, deploy a Django website, and wait for successful completion. The Django web platform uses a file system-based database. It doesn't require any additional resource providers, such as SQL or MySQL.
 
 1. If you also deployed a MySQL resource provider, you can deploy a WordPress website from Azure Marketplace. When you're prompted for database parameters, enter the user name as *User1\@Server1*, with the user name and server name of your choice.
 
@@ -254,7 +254,7 @@ After you deploy and register the App Service resource provider, test it to make
 
 ## Next steps
 
-Prepare for additional admin operations for App Service on Azure Stack:
+Prepare for additional admin operations for App Service on Azure Stack Hub:
 
 - [Capacity planning](azure-stack-app-service-capacity-planning.md)
 - [Configure deployment sources](azure-stack-app-service-configure-deployment-sources.md)
