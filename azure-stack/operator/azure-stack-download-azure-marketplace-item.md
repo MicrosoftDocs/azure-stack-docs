@@ -157,7 +157,7 @@ Once you have registered, you can disregard the following message that appears o
    Export-AzSOfflineResourceProvider -destination "Destination folder path" -azCopyDownloadThreads "AzCopy threads number" -azureContext $AzureContext
    ```
 
-   The `-azCopyDownloadThreads` parameter is optional. It should only be used when you have a low-bandwidth network, and you are using premium download. This option specifies the number of concurrent operations in AzCopy. If you are running a low-bandwidth network, you can specify a lower number to avoid failure caused by resource competition. You can see more details in [this Azure article](/azure/storage/common/storage-use-azcopy#specify-the-number-of-concurrent-operations-to-start).
+   The `-azCopyDownloadThreads` parameter is optional. It should only be used when you have a low-bandwidth network, and you are using premium download. This option specifies the number of concurrent operations in AzCopy. If you are running a low-bandwidth network, you can specify a lower number to avoid failure caused by resource competition. You can see more details in [this Azure article](/previous-versions/azure/storage/storage-use-azcopy#specify-the-number-of-concurrent-operations-to-start).
 
    The `-azureContext` parameter is also optional. If you do not specify the Azure context, then the cmdlet will use the default Azure context.
 
