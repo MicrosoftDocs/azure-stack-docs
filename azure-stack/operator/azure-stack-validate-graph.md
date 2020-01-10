@@ -1,6 +1,6 @@
 ---
-title: Validate Azure Graph integration for Azure Stack
-description: Use the Azure Stack Readiness Checker to validate graph integration for Azure Stack.
+title: Validate Azure Graph integration for Azure Stack Hub
+description: Use the Azure Stack Hub Readiness Checker to validate graph integration for Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
@@ -20,9 +20,9 @@ ms.lastreviewed: 06/10/2019
 
 ---
 
-# Validate graph integration for Azure Stack
+# Validate graph integration for Azure Stack Hub
 
-Use the Azure Stack Readiness Checker tool (AzsReadinessChecker) to validate that your environment is ready for graph integration with Azure Stack. Validate graph integration before you begin datacenter integration or before an Azure Stack deployment.
+Use the Azure Stack Hub Readiness Checker tool (AzsReadinessChecker) to validate that your environment is ready for graph integration with Azure Stack Hub. Validate graph integration before you begin datacenter integration or before an Azure Stack Hub deployment.
 
 The readiness checker validates:
 
@@ -31,11 +31,11 @@ The readiness checker validates:
 * The KDC can be resolved and is contactable.
 * Necessary network connectivity is in place.
 
-For more information about Azure Stack datacenter integration, see [Azure Stack datacenter integration - Identity](azure-stack-integrate-identity.md).
+For more information about Azure Stack Hub datacenter integration, see [Azure Stack Hub datacenter integration - Identity](azure-stack-integrate-identity.md).
 
 ## Get the readiness checker tool
 
-Download the latest version of the Azure Stack Readiness Checker tool (AzsReadinessChecker) from the [PowerShell Gallery](https://aka.ms/AzsReadinessChecker).
+Download the latest version of the Azure Stack Hub Readiness Checker tool (AzsReadinessChecker) from the [PowerShell Gallery](https://aka.ms/AzsReadinessChecker).
 
 ## Prerequisites
 
@@ -47,7 +47,7 @@ The following prerequisites must be in place.
 * PowerShell 5.1 or later. To check your version, run the following PowerShell command and then review the *Major* version and *Minor* versions:  
    > `$PSVersionTable.PSVersion`
 * Active Directory PowerShell module.
-* Latest version of the [Microsoft Azure Stack Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.
+* Latest version of the [Microsoft Azure Stack Hub Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.
 
 **Active Directory environment:**
 
@@ -81,7 +81,7 @@ The following prerequisites must be in place.
 
     Details:
 
-    [-] In standalone mode, some tests should not be considered fully indicative of connectivity or readiness the Azure Stack Stamp requires prior to Data Center Integration.
+    [-] In standalone mode, some tests should not be considered fully indicative of connectivity or readiness the Azure Stack Hub Stamp requires prior to Datacenter Integration.
 
     Additional help URL: https://aka.ms/AzsGraphIntegration
 
@@ -92,13 +92,13 @@ The following prerequisites must be in place.
     Invoke-AzsGraphValidation Completed
     ```
 
-In production environments, testing network connectivity from an operator's workstation isn't fully indicative of the connectivity available to Azure Stack. The Azure Stack stamp's public VIP network needs the connectivity for LDAP traffic to perform identity integration.
+In production environments, testing network connectivity from an operator's workstation isn't fully indicative of the connectivity available to Azure Stack Hub. The Azure Stack Hub stamp's public VIP network needs the connectivity for LDAP traffic to perform identity integration.
 
 ## Report and log file
 
 Each time validation runs, it logs results to **AzsReadinessChecker.log** and **AzsReadinessCheckerReport.json**. The location of these files appears with the validation results in PowerShell.
 
-The validation files can help you share status before you deploy Azure Stack or investigate validation problems. Both files persist the results of each subsequent validation check. The report gives your deployment team confirmation of the identity configuration. The log file can help your deployment or support team investigate validation issues.
+The validation files can help you share status before you deploy Azure Stack Hub or investigate validation problems. Both files persist the results of each subsequent validation check. The report gives your deployment team confirmation of the identity configuration. The log file can help your deployment or support team investigate validation issues.
 
 By default, both files are written to
 `C:\Users\<username>\AppData\Local\Temp\AzsReadinessChecker\`.
@@ -106,7 +106,7 @@ By default, both files are written to
 Use:
 
 * **-OutputPath**: The *path* parameter at the end of the run command to specify a different report location.
-* **-CleanReport**: The parameter at the end of the run command to clear *AzsReadinessCheckerReport.json* of previous report information. For more information, see [Azure Stack validation report](azure-stack-validation-report.md).
+* **-CleanReport**: The parameter at the end of the run command to clear *AzsReadinessCheckerReport.json* of previous report information. For more information, see [Azure Stack Hub validation report](azure-stack-validation-report.md).
 
 ## Validation failures
 
@@ -115,4 +115,4 @@ If a validation check fails, details about the failure appear in the PowerShell 
 ## Next steps
 
 [View the readiness report](azure-stack-validation-report.md)  
-[General Azure Stack integration considerations](azure-stack-datacenter-integration.md)  
+[General Azure Stack Hub integration considerations](azure-stack-datacenter-integration.md)  

@@ -1,6 +1,6 @@
 ---
-title: Capacity planning for App Service server roles in Azure Stack | Microsoft Docs
-description: Learn about capacity planning for App Service server roles in Azure Stack.
+title: Capacity planning for App Service server roles in Azure Stack Hub | Microsoft Docs
+description: Learn about capacity planning for App Service server roles in Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: BryanLa
@@ -19,11 +19,11 @@ ms.reviewer: anwestg
 ms.lastreviewed: 03/13/2019
 
 ---
-# Capacity planning for App Service server roles in Azure Stack
+# Capacity planning for App Service server roles in Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
-To set up a production-ready deployment of Azure App Service on Azure Stack, you must plan for the capacity you expect the system to support.  
+To set up a production-ready deployment of Azure App Service on Azure Stack Hub, you must plan for the capacity you expect the system to support.  
 
 This article provides guidance for the minimum number of compute instances and compute SKUs you should use for any production deployment.
 
@@ -78,7 +78,7 @@ To provide Azure Functions to users in the consumption plan model, you must depl
 When deciding on the number of shared web worker roles to use, review these considerations:
 
 - **Memory**: Memory is the most critical resource for a web worker role. Insufficient memory impacts web site performance when virtual memory is swapped from disk. Each server requires about 1.2 GB of RAM for the operating system. RAM above this threshold can be used to run web sites.
-- **Percentage of active web sites**: Typically, about 5 percent of apps in an Azure App Service on Azure Stack deployment are active. However, the percentage of apps that are active at any given moment can be higher or lower. With an active app rate of 5 percent, the maximum number of apps to place in an Azure App Service on Azure Stack deployment should be less than 20 times the number of active web sites (5 x 20 = 100).
+- **Percentage of active web sites**: Typically, about 5 percent of apps in an Azure App Service on Azure Stack Hub deployment are active. However, the percentage of apps that are active at any given moment can be higher or lower. With an active app rate of 5 percent, the maximum number of apps to place in an Azure App Service on Azure Stack Hub deployment should be less than 20 times the number of active web sites (5 x 20 = 100).
 - **Average memory footprint**: The average memory footprint for apps observed in production environments is about 70 MB. Using this footprint, the memory allocated across all web worker role computers or VMs is calculated as follows:
 
    `Number of provisioned applications * 70 MB * 5% - (number of web worker roles * 1044 MB)`
@@ -91,11 +91,11 @@ When deciding on the number of shared web worker roles to use, review these cons
 
 ### Additional considerations for dedicated workers during upgrade and maintenance
 
-During upgrade and maintenance of workers, Azure App Service on Azure Stack will perform maintenance on 20% of each worker tier at any one time.  Therefore, cloud admins must always maintain a 20% pool of unallocated workers per worker tier to ensure their tenants don't experience any loss of service during upgrade and maintenance.  For example, if you have 10 workers in a worker tier you should ensure that 2 are unallocated to allow upgrade and maintenance. If the full 10 workers become allocated, you should scale the worker tier up to maintain a pool of unallocated workers. 
+During upgrade and maintenance of workers, Azure App Service on Azure Stack Hub will perform maintenance on 20% of each worker tier at any one time.  Therefore, cloud admins must always maintain a 20% pool of unallocated workers per worker tier to ensure their tenants don't experience any loss of service during upgrade and maintenance.  For example, if you have 10 workers in a worker tier you should ensure that 2 are unallocated to allow upgrade and maintenance. If the full 10 workers become allocated, you should scale the worker tier up to maintain a pool of unallocated workers. 
 
 During upgrade and maintenance, Azure App Service will move workloads to unallocated workers to ensure the workloads will continue to operate. However, if there are no unallocated workers available during upgrade then there's potential for tenant workload downtime. With regards to shared workers, customers don't need to provision additional workers as the service will allocate tenant apps within available workers automatically. For high availability, there's a minimum requirement of two workers in this tier.
 
-Cloud admins can monitor their worker tier allocation in the App Service admin area in the Azure Stack administrator portal. Navigate to App Service and then select Worker Tiers in the left-hand pane. The Worker Tiers table shows worker tier name, size, image used, number of available workers (unallocated), total number of workers in each tier and the overall state of the worker tier.
+Cloud admins can monitor their worker tier allocation in the App Service admin area in the Azure Stack Hub administrator portal. Navigate to App Service and then select Worker Tiers in the left-hand pane. The Worker Tiers table shows worker tier name, size, image used, number of available workers (unallocated), total number of workers in each tier and the overall state of the worker tier.
 
 ![App Service Administration - Worker Tiers][1]
 
@@ -115,7 +115,7 @@ For more information, see [Provision a file server](azure-stack-app-service-befo
 
 ## Next steps
 
-[Prerequisites for deploying App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md)
+[Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md)
 
 <!--Image references-->
 [1]: ./media/azure-stack-app-service-capacity-planning/worker-tier-allocation.png

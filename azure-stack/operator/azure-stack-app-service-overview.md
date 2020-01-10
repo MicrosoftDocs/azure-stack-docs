@@ -60,6 +60,7 @@ In Azure, there are shared and dedicated workers. A shared worker supports high-
 
 ## Portal features
 
+
 Azure App Service on Azure Stack Hub uses the same user interface that Azure App Service uses. The same is true with the back end. However, some features are disabled in Azure Stack Hub. The Azure-specific expectations or services that those features require aren't currently available in Azure Stack Hub.
 
 ## Next steps

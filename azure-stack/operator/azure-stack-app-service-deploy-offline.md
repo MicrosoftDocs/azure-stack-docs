@@ -19,6 +19,7 @@ ms.reviewer: anwestg
 ms.lastreviewed: 01/09/2020
 
 ---
+
 # Deploy Azure App Service in an offline environment in Azure Stack Hub
 
 *Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
@@ -27,7 +28,6 @@ ms.lastreviewed: 01/09/2020
 > Apply the 1910 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Hub Development Kit (ASDK) before you deploy Azure App Service 1.8.
 
 By following the instructions in this article, you can deploy the [Azure App Service resource provider](azure-stack-app-service-overview.md) to an Azure Stack Hub environment that is:
-
 - Not connected to the internet.
 - Secured by Active Directory Federation Services (AD FS).
 
@@ -72,6 +72,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
 1. Review and accept the Microsoft Software License Terms, and then select **Next**.
 
 1. Review and accept the third-party license terms, and then select **Next**.
+
 
 1. Make sure the Azure App Service cloud configuration info is correct. If you used the default settings during ASDK deployment, you can accept the default values here. However, if you customized the options when you deployed Azure Stack Hub or are deploying on an integrated system, you must edit the values in this window to reflect those changes. For example, if you use the domain suffix mycloud.com, your Azure Stack Hub Tenant Azure Resource Manager endpoint must change to `management.<region>.mycloud.com`. After you confirm your info, select **Next**.
 
@@ -188,6 +189,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
 1. On the next page:
     1. Track the installation progress. App Service on Azure Stack Hub can takes up to 240 minutes to deploy based on the default selections and age of the base Windows 2016 Datacenter image.
+
     2. After the installer finishes running, select **Exit**.
 
     ![Track installation process in Azure App Service Installer][18]
