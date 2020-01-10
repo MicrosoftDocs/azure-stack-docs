@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 01/10/2020
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 11/21/2019
@@ -93,7 +93,9 @@ This section looks at creating an API model for your cluster.
     | Field | Description |
     | --- | --- |
     | adminUsername | Enter the VM admin user name. |
-    | ssh | Enter the public key that will be used for SSH authentication with VMs. |
+    | ssh | Enter the public key that will be used for SSH authentication with VMs. If you are using Putty, open PuTTY Key Generator to load the Putty private key and the pubic key which starts with ssh-rsa as in the following example. You can use the key generated when creating the Linux client but **you need to copy the public key so that it is a single line text as shown in the example**.|
+
+    ![PuTTY key generator](media/azure-stack-kubernetes-aks-engine-deploy-cluster/putty-key-generator.png)
 
 ### More information about the API model
 
