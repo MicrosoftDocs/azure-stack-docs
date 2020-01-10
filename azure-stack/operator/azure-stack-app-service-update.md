@@ -64,11 +64,20 @@ To upgrade your deployment of Azure App Service on Azure Stack Hub, follow these
 
 7. On the next page:
 
-   1. Click the **Connect** button next to the **Azure Stack Hub Subscriptions** box.
-        * If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Click  **Sign In**.
-        * If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, *cloudadmin\@azureStack Hub.local*. Enter your password, and click **Sign In**.
-   2. In the **Azure Stack Hub Subscriptions** box, select the **Default Provider Subscription**.
-   3. In the **Azure Stack Hub Locations** box, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
+   1. Select the connection method you wish to use - **Credential** or **Service Principal**
+    1. **Credential**
+            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
+            - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
+    1. **Service Principal**
+            - The service principal which you use **must** have 
+            - Provide the **Service Principal ID**, **Certificate File** and **Password** and select **Connect**.
+
+   1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.
+
+     > [!IMPORTANT]
+     > App Service **must** be deployed to the **Default Provider Subscription**.
+
+   1. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
    4. If an existing Azure App Service deployment is detected, then the resource group and storage account are populated and unavailable.
    5. Click **Next** to review the upgrade summary.
 
