@@ -23,7 +23,7 @@ ms.reviewer: anwestg
 *Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
 
 > [!IMPORTANT]
-> Apply the 1907 update or later to your Azure Stack Hub integrated system or deploy the latest Azure Stack hub development kit before deploying Azure App Service 1.8.
+> Apply the 1910 update or later to your Azure Stack Hub integrated system or deploy the latest Azure Stack hub development kit before deploying Azure App Service 1.8.
 
 By following the instructions in this article, you can upgrade the [Azure App Service resource provider](azure-stack-app-service-overview.md) deployed in an Azure Stack Hub environment that is:
 
@@ -37,7 +37,7 @@ By following the instructions in this article, you can upgrade the [Azure App Se
 
 To upgrade the App Service resource provider in an Azure Stack Hub environment, you must complete these tasks:
 
-1. Download the [Azure App Service Installer](https://aka.ms/appsvcupdate7installer).
+1. Download the [Azure App Service Installer](https://aka.ms/appsvcupdate8installer).
 2. Create an offline upgrade package.
 3. Run the App Service installer (appservice.exe) and complete the upgrade.
 
