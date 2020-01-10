@@ -59,7 +59,7 @@ There are several prerequisites that need to be in place before you can deploy t
     |PKI certificate subject and SAN are set correctly.|[Azure Stack Hub deployment mandatory PKI prerequisites](azure-stack-pki-certs.md#mandatory-certificates)[Azure Stack Hub deployment PaaS certificate prerequisites](azure-stack-pki-certs.md#optional-paas-certificates)|
     |     |     |
 
-In a disconnected scenario, you need first use the following steps to download the required PowerShell modules and register the repository manually.
+In a disconnected scenario, complete the following steps to download the required PowerShell modules and register the repository manually.
 
 1. Sign in to a computer with internet connectivity and use the following scripts to download the PowerShell modules.
 
@@ -199,7 +199,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 
 ```
 
-When the resource provider installation script finishes, refresh your browser to make sure you can see the latest updates. And please close the current PowerShell session and use new session for other Azure Stack operations.
+When the resource provider installation script finishes, refresh your browser to make sure you can see the latest updates and close the current PowerShell session.
 
 ## Verify the deployment by using the Azure Stack Hub portal
 
