@@ -1,7 +1,7 @@
 ---
-title: Guest operating systems
+title: Guest operating systems supported on Azure Stack Hub
 titleSuffix: Azure Stack
-description: Learn which guest operating systems can be used on Azure Stack.
+description: Learn which guest operating systems can be used on Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -39,7 +39,7 @@ Azure Stack Hub supports the Windows guest operating systems listed in the follo
 > [!NOTE]
 > To deploy Windows 10 client operating systems on Azure Stack Hub, you must have [Windows per-user licensing](https://www.microsoft.com/licensing/product-licensing/windows10.aspx) or purchase through a Qualified Multitenant Hoster ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)).
 
-Marketplace images are available for pay-as-you-use or BYOL (EA/SPLA) licensing. Use of both on a single Azure Stack instance isn't supported. During deployment, Azure Stack injects a suitable version of the guest agent into the image.
+Marketplace images are available for pay-as-you-use or BYOL (EA/SPLA) licensing. Use of both on a single Azure Stack Hub instance isn't supported. During deployment, Azure Stack Hub injects a suitable version of the guest agent into the image.
 
 Datacenter editions are available in Azure Stack Marketplace for downloading; customers can bring their own server images including other editions. Windows client images aren't available in Azure Stack Marketplace.
 

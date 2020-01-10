@@ -1,7 +1,7 @@
 ---
 title: Tenant resource usage APIs reference
 titleSuffix: Azure Stack
-description: Reference for resource usage APIs, which retrieve Azure Stack usage information.
+description: Reference for resource usage APIs, which retrieve Azure Stack Hub usage information.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim

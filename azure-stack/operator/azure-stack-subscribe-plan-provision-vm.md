@@ -1,7 +1,7 @@
 ---
-title: Create subscriptions to offers
+title: Create subscriptions to offers in Azure Stack Hub.
 titleSuffix: Azure Stack
-description: Learn to create subscriptions for offers in Azure Stack.
+description: Learn to create subscriptions for offers in Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -23,7 +23,7 @@ After you [create an offer](azure-stack-create-offer.md), users need a subscript
 
 Cloud operators use the administrator portal to create a subscription to an offer for a user. Subscriptions can be created for members of your own directory tenant. When [multi-tenancy](azure-stack-enable-multitenancy.md) is enabled, you can also create subscriptions for users in additional directory tenants.
 
-If you don't want your tenants to create their own subscriptions, make your offers private, and then create subscriptions for your tenants. This approach is common when integrating Azure Stack with external billing or service catalog systems.
+If you don't want your tenants to create their own subscriptions, make your offers private, and then create subscriptions for your tenants. This approach is common when integrating Azure Stack Hub with external billing or service catalog systems.
 
 After you create a subscription for a user, they can sign in to the user portal and see that they're subscribed to the offer.  
 
@@ -66,11 +66,11 @@ As a user, you can sign in to the user portal to locate and subscribe to public 
 
 1. Sign in to the Azure Stack Hub user portal and select **Get a Subscription**.
 
-   ![Get a subscription in Azure Stack user portal](media/azure-stack-subscribe-plan-provision-vm/image01.png)
+   ![Get a subscription in Azure Stack Hub user portal](media/azure-stack-subscribe-plan-provision-vm/image01.png)
   
 2. Under **Get a subscription**, enter the friendly name of the subscription in **Display Name**. Select **Offer** and under **Choose an offer**, pick an offer. Select **Create** to create the subscription.
 
-   ![Choose an offer in Azure Stack user portal](media/azure-stack-subscribe-plan-provision-vm/image02.png)
+   ![Choose an offer in Azure Stack Hub user portal](media/azure-stack-subscribe-plan-provision-vm/image02.png)
   
 3. After you subscribe to an offer, refresh the portal to see which services are part of the new subscription.
 
