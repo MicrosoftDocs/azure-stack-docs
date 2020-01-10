@@ -53,7 +53,8 @@
     },
     "fileMetadata": {
       "titleSuffix": {
-        "**/*.md": "Azure Stack Hub"
+        "**/*.md": "Azure Stack Hub",
+        "asdk/**/*.md": "Azure Stack Hub Development Kit (ASDK)"
       }
     },
     "template": [],
