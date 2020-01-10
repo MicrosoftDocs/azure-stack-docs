@@ -137,7 +137,7 @@ You can specify these parameters from the command line. If you don't, or if any 
 
 ## Deploy the MySQL resource provider using a custom script
 
-If you are deploying the MySQL resource provider version 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. If you are deploying the MySQL resource provider version 1.1.47.0, the deployment script will automaticly download and install the necessary PowerShell modules for you to path C:\Program Files\SqlMySqlPsh.
+If you are deploying the MySQL resource provider version 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. If you are deploying the MySQL resource provider version 1.1.47.0, the deployment script will automatically download and install the necessary PowerShell modules for you to path C:\Program Files\SqlMySqlPsh.
 
 ```powershell
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
