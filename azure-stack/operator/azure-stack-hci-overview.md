@@ -1,12 +1,10 @@
 ---
 title: Azure Stack Hub HCI overview
 description: Azure Stack Hub HCI is a hyper-converged Windows Server 2019 cluster that uses validated hardware to run virtualized workloads on-premises. You can also optionally connect to Azure services for cloud-based backup, site-recovery, and more. Azure Stack Hub HCI solutions use Microsoft-validated hardware to ensure optimal performance and reliability, and include support for technologies such as NVMe drives, persistent memory, and remote-direct memory access (RDMA) networking.
-ms.technology: storage
 ms.topic: article
 author: jasongerend
 ms.author: jgerend
 ms.localizationpriority: medium
-ms.prod: windows-server-threshold
 ms.date: 11/04/2019
 ---
 # Azure Stack Hub HCI overview
