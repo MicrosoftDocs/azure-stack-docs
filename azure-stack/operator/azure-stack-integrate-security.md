@@ -2,14 +2,14 @@
 title: Integrate Azure Stack Hub with monitoring solutions using syslog forwarding | Microsoft Docs
 description: Learn how to integrate Azure Stack Hub with monitoring solutions using syslog forwarding.
 services: azure-stack
-author: PatAltimore
+author: justinha
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/23/2019
-ms.author: patricka
+ms.date: 01/10/2020
+ms.author: justinha
 ms.reviewer: fiseraci
-ms.lastreviewed: 04/23/2019
+ms.lastreviewed: 01/10/2020
 keywords:
 ---
 
@@ -46,7 +46,7 @@ Configuring syslog forwarding requires access to the privileged endpoint (PEP). 
 ```powershell
 ### cmdlet to pass the syslog server information to the client and to configure the transport protocol, the encryption and the authentication between the client and the server
 
-Set-SyslogServer [-ServerName <String>] [-ServerPort <String>] [-NoEncryption] [-SkipCertificateCheck] [-SkipCNCheck] [-UseUDP] [-Remove]
+Set-SyslogServer [-ServerName <String>] [-ServerPort <UInt16>] [-NoEncryption] [-SkipCertificateCheck] [-SkipCNCheck] [-UseUDP] [-Remove]
 
 ### cmdlet to configure the certificate for the syslog client to authenticate with the server
 
@@ -59,7 +59,7 @@ Parameters for *Set-SyslogServer* cmdlet:
 | Parameter | Description | Type | Required |
 |---------|---------|---------|---------|
 |*ServerName* | FQDN or IP address of the syslog server. | String | yes|
-|*ServerPort* | Port number the syslog server is listening on. | String | yes|
+|*ServerPort* | Port number the syslog server is listening on. | UInt16 | yes|
 |*NoEncryption*| Force the client to send syslog messages in clear text. | flag | no|
 |*SkipCertificateCheck*| Skip validation of the certificate provided by the syslog server during initial TLS handshake. | flag | no|
 |*SkipCNCheck*| Skip validation of the Common Name value of the certificate provided by the syslog server during initial TLS handshake. | flag | no|
