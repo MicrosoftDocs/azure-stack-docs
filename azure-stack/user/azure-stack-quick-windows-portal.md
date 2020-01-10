@@ -28,7 +28,7 @@ Sign in to the Azure Stack Hub portal. The address of the Azure Stack Hub portal
 * For the Azure Stack Development Kit (ASDK), go to: https://portal.local.azurestack.external.
 * For an Azure Stack Hub integrated system, go to the URL that your Azure Stack Hub operator provided.
 
-## Create a VMv
+## Create a VM
 
 1. Select **Create a resource** > **Compute** > Search for` Windows Server 2016 Datacenter – Pay as you use`.
     If you don't see the **Windows Server 2016 Datacenter - Pay-as-you-use** entry, contact your Azure Stack Hub cloud operator and ask for the image to be added to the Azure Stack Hub Marketplace. For instructions, your cloud operator can refer to [Create and publish a custom Azure Stack Hub Marketplace item](../operator/azure-stack-create-and-publish-marketplace-item.md).
@@ -51,7 +51,7 @@ Sign in to the Azure Stack Hub portal. The address of the Azure Stack Hub portal
 
     ![Create a VM - Settings](./media/azure-stack-quick-windows-portal/image5.png)
 
-1. Select **OK** under **Summary**  to create the VM.
+1. Select **OK** under **Summary** to create the VM.
 
     ![Create a VM - Summary](./media/azure-stack-quick-windows-portal/image6.png)
 
