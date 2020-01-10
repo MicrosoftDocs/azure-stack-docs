@@ -114,6 +114,7 @@ You can read more about configuring the retention threshold and on-demand reclam
 ## Troubleshoot storage
 
 ### Storage reclamation
+
 It may take up to 14 hours for reclaimed capacity to show up in the portal. Space reclamation depends on different factors including usage percentage of internal container files in block blob store. Therefore, depending on how much data is deleted, there's no guarantee on the amount of space that could be reclaimed when garbage collector runs.
 
 ### Azure Storage Explorer not working with Azure Stack
@@ -121,6 +122,7 @@ It may take up to 14 hours for reclaimed capacity to show up in the portal. Spac
 If you're using an integrated system in a disconnected scenario, it's recommended to use an Enterprise Certificate Authority (CA). Export the root certificate in a Base-64 format and then import it in Azure Storage Explorer. Make sure that you remove the trailing slash (‘/’) from the ARM endpoint. For more information, see [Prepare for connecting to Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-connect-se#prepare-for-connecting-to-azure-stack).
 
 ## Troubleshooting App Service
+
 ### Create-AADIdentityApp.ps1 script fails
 
 If the Create-AADIdentityApp.ps1 script that's required for App Service fails, be sure to include the required `-AzureStackAdminCredential` parameter when running the script. For more information, see [Prerequisites for deploying App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-app).
