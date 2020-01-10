@@ -21,8 +21,6 @@ ms.lastreviewed: 04/08/2019
 
 # Allow apps to access Azure Stack Hub Key Vault secrets
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Follow the steps in this article to run the sample app **HelloKeyVault** that retrieves keys and secrets from a key vault in Azure Stack Hub.
 
 ## Prerequisites

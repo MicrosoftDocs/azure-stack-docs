@@ -21,8 +21,6 @@ ms.lastreviewed: 11/11/2019
 
 # Deploy Azure Cognitive Services to Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 > [!Note]  
 > Azure Cognitive Services on Azure Stack Hub is in preview.
 

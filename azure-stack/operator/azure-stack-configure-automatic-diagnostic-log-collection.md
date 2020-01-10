@@ -21,8 +21,6 @@ ms.lastreviewed: 10/08/2019
 ---
 # Configure automatic Azure Stack Hub diagnostic log collection
 
-*Applies to: Azure Stack Hub integrated systems*
-
 We recommend configuring the automatic diagnostic log collection feature to streamline your log collection and customer support experience. 
 If system health conditions need to be investigated, the logs can be uploaded automatically for analysis by Microsoft Customer Support Services (CSS). 
 

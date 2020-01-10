@@ -21,8 +21,6 @@ ms.lastreviewed: 11/11/2019
 
 # Scale unit node actions in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems*
-
 This article describes how to view the status of a scale unit. You can view the unit's nodes. You can run node actions like power on, power off, shut down, drain, resume, and repair. Typically, you use these node actions during field replacement of parts, or to help recover a node.
 
 > [!Important]  

@@ -21,8 +21,6 @@ ms.lastreviewed: 12/27/2018
 
 # Deploy a VM with a securely stored certificate on Azure Stack Hub 
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 This article describes how to deploy an Azure Stack Hub virtual machine (VM) with a Key Vault certificate installed.
 
 ## Overview

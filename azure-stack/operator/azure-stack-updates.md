@@ -21,8 +21,6 @@ ms.reviewer: ppacent
 
 # Manage updates in Azure Stack Hub overview
 
-*Applies to: Azure Stack Hub integrated systems*
-
 Full and express updates, hotfixes, as well as driver and firmware updates from the original equipment manufacturer (OEM) all help keep Azure Stack Hub up-to-date. This article explains the different types of updates, when to expect their release, and where to find more about the current release.
 
 > [!Note]  

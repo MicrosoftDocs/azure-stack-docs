@@ -19,8 +19,6 @@ ms.lastreviewed: 05/16/2019
 ---
 # Enable Azure CLI for Azure Stack Hub users
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You can provide the CA root certificate to users of Azure Stack Hub so that they can enable Azure CLI on their development machines. Your users need the certificate to manage resources through CLI.
 
  - **The Azure Stack Hub CA root certificate** is required if users are using CLI from a workstation outside the Azure Stack Development Kit (ASDK).  

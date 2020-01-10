@@ -20,8 +20,6 @@ ms.lastreviewed: 09/19/2019
 
 # Connect to Azure Stack Hub with PowerShell
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You can configure Azure Stack Hub to use PowerShell to manage resources like creating offers, plans, quotas, and alerts. This topic helps you configure the operator environment.
 
 ## Prerequisites

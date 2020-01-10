@@ -21,8 +21,6 @@ ms.lastreviewed: 01/09/2019
 
 # MySQL resource provider 1.1.33.0  release notes
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 These release notes describe the improvements and known issues in MySQL resource provider version 1.1.33.0.
 
 ## Build reference

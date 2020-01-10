@@ -22,8 +22,6 @@ ms.lastreviewed: 06/10/2019
 
 # Azure App Service on Azure Stack Hub billing overview and FAQ
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 This article shows how cloud operators are billed for offering Azure App Service on Azure Stack Hub and how they can bill their tenants for their use of the service.
 
 ## Billing overview

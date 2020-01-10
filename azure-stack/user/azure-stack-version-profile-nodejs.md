@@ -20,8 +20,6 @@ ms.lastreviewed: 11/11/2019
 
 # Use API version Profiles with Node.js software development kit (SDK) in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 ## Node.js and API version profiles
 
 You can use Node.js SDK to help build and manage the infrastructure for your apps. API profiles in the Node.js SDK help with your hybrid cloud solutions by letting you switch between global Azure resources and Azure Stack Hub resources. You can code once and then target both global Azure and Azure Stack Hub. 

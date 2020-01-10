@@ -21,8 +21,6 @@ ms.lastreviewed: 10/15/2018
 
 # Manage usage and billing for Azure Stack Hub as a Cloud Solution Provider
 
-*Applies to: Azure Stack Hub integrated systems*
-
 This article describes how to register Azure Stack Hub as a Cloud Solution Provider (CSP) and how to add customers.
 
 As a CSP, you work with diverse customers using your Azure Stack Hub. Each customer has a CSP subscription in Azure. You must direct usage from your Azure Stack Hub to each user subscription.

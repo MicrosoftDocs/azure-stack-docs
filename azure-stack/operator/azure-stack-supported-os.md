@@ -20,8 +20,6 @@ ms.lastreviewed: 06/06/2019
 
 # Guest operating systems supported on Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 ## Windows
 
 Azure Stack Hub supports the Windows guest operating systems listed in the following table:

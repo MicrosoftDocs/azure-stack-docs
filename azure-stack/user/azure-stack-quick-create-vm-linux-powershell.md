@@ -20,8 +20,6 @@ ms.lastreviewed: 11/11/2019
 
 # Quickstart: Create a Linux server VM by using PowerShell in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and the Azure Stack Development Kit*
-
 You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using Azure Stack Hub PowerShell. In this article, you create and use a virtual machine. This article also shows you how to:
 
 * Connect to the VM with a remote client.
@@ -40,7 +38,7 @@ You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using Azure St
 
 ## Create a resource group
 
-A resource group is a logical container where you can deploy and manage Azure Stack Hub resources. To create a resource group, from your Azure Stack Development Kit (ASDK) or the Azure Stack Hub integrated system, run the following code block: 
+A resource group is a logical container where you can deploy and manage Azure Stack Hub resources. To create a resource group, run the following code block: 
 
 > [!NOTE]
 > We've assigned values for all variables in the following code examples. However, you can assign your own values.
