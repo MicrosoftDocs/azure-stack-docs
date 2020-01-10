@@ -35,7 +35,7 @@ This document contains the procedure for rotating the following secrets:
 
 ## Rotate encryption keys
 
-To rotate the encryption keys used within Azure App Service on Azure Stack Hub complete the following steps:
+To rotate the encryption keys used within Azure App Service on Azure Stack Hub, complete the following steps:
 
 1. Go to the App Service Administration experience in the Azure Stack Hub Administrators Portal.
 
@@ -63,7 +63,7 @@ To update the credentials for the database connection string for the App Service
 
 ## Rotate certificates
 
-To rotate the certificates used within Azure App Service on Azure Stack Hub complete the following steps:
+To rotate the certificates used within Azure App Service on Azure Stack Hub, complete the following steps:
 
 1. Go to the App Service Administration experience in the Azure Stack Hub Administrators Portal.
 
@@ -77,7 +77,7 @@ To rotate the certificates used within Azure App Service on Azure Stack Hub comp
 
 ## Rotate system credentials
 
-To rotate the System Credentials used within Azure App Service on Azure Stack Hub complete the following steps:
+To rotate the System Credentials used within Azure App Service on Azure Stack Hub, complete the following steps:
 
 1. Go to the App Service Administration experience in the Azure Stack Hub Administrators Portal.
 
