@@ -22,20 +22,20 @@ ms.lastreviewed: 11/13/2018
 
 # Tutorial: Create a VM using a community template
 
-As an Azure Stack operator or user, you can create a virtual machine (VM) using [custom GitHub quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates) rather than deploying a template manually from the Azure Stack marketplace.
+As an Azure Stack Hub operator or user, you can create a virtual machine (VM) using [custom GitHub quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates) rather than deploying a template manually from the Azure Stack Hub marketplace.
 
 In this tutorial, you learn how to:
 
 > [!div class="checklist"]
-> * Use Azure Stack quickstart templates
+> * Use Azure Stack Hub quickstart templates
 > * Create a VM using a custom GitHub template
 > * Start Minikube and install an application
 
-## Azure Stack quickstart templates
+## Azure Stack Hub quickstart templates
 
-Azure Stack quickstart templates are stored in the GitHub [global Azure Stack quickstart templates repository](https://github.com/Azure/AzureStack-QuickStart-Templates). This repo contains Azure Resource Manager deployment templates that have been tested with the Microsoft Azure Stack Development Kit (ASDK). You can use them to make it easier for you to evaluate Azure Stack and use the ASDK environment.
+Azure Stack Hub quickstart templates are stored in the GitHub [global Azure Stack Hub quickstart templates repository](https://github.com/Azure/AzureStack-QuickStart-Templates). This repo contains Azure Resource Manager deployment templates that have been tested with the Microsoft Azure Stack Development Kit (ASDK). You can use them to make it easier for you to evaluate Azure Stack Hub and use the ASDK environment.
 
-Over time, many GitHub users have contributed to the repo, resulting in a collection of more than 400 deployment templates. This repo is a good starting point for understanding how you can deploy various kinds of environments to Azure Stack.
+Over time, many GitHub users have contributed to the repo, resulting in a collection of more than 400 deployment templates. This repo is a good starting point for understanding how you can deploy various kinds of environments to Azure Stack Hub.
 
 >[!IMPORTANT]
 > Some of these templates are created by members of the community and not by Microsoft. Each template is licensed under a license agreement by its owner, not Microsoft. Microsoft is not responsible for these templates and does not screen for security, compatibility, or performance. Community templates are not supported under any Microsoft support program or service, and are made available "AS IS," without warranty of any kind.
@@ -44,7 +44,7 @@ If you want to contribute Azure Resource Manager templates to GitHub, make your 
 
 ## Create a VM using a custom GitHub template
 
-In this example tutorial, the [101-vm-linux-minikube](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-linux-minikube) Azure Stack quickstart template is used to deploy an Ubuntu 16.04 VM on Azure Stack running Minikube to manage a Kubernetes cluster.
+In this example tutorial, the [101-vm-linux-minikube](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-linux-minikube) Azure Stack Hub quickstart template is used to deploy an Ubuntu 16.04 VM on Azure Stack Hub running Minikube to manage a Kubernetes cluster.
 
 Minikube is a tool that makes it easy to run Kubernetes locally. Minikube runs a single-node Kubernetes cluster inside a VM, enabling you to try out Kubernetes or develop with it day-to-day. It supports a simple, one-node Kubernetes cluster running on a Linux VM. Minikube is the fastest and most straightforward way to get a fully functional Kubernetes cluster running. It enables developers to develop and test their Kubernetes-based application deployments on their local machines. Architecturally, the Minikube VM runs both master and agent node components locally:
 
@@ -61,7 +61,7 @@ This template installs the following components:
 * xRDP
 
 > [!IMPORTANT]
-> The Ubuntu VM image (Ubuntu Server 16.04 LTS, in this example) must already have been added to the Azure Stack marketplace before performing these steps.
+> The Ubuntu VM image (Ubuntu Server 16.04 LTS, in this example) must already have been added to the Azure Stack Hub marketplace before performing these steps.
 
 1. Select **+ Create a resource**, then **Custom**, then **Template deployment**.
 
@@ -131,6 +131,6 @@ Now that the Linux VM has been successfully created, you can sign in to start Mi
 In this tutorial, you learned how to:
 
 > [!div class="checklist"]
-> * Learn about Azure Stack quickstart templates
+> * Learn about Azure Stack Hub quickstart templates
 > * Create a VM using a custom GitHub template
 > * Start minikube and install an application

@@ -12,9 +12,7 @@ ms.date: 10/05/2019
 ms.author: bryanla
 ms.lastreviewed: 05/10/2019
 ---
-# Create subscriptions to offers in Azure Stack
-
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Create subscriptions to offers in Azure Stack Hub
 
 After you [create an offer](azure-stack-create-offer.md), users need a subscription to that offer before they can use it. There are two ways that users can subscribe to an offer:
 
@@ -62,11 +60,11 @@ A cloud operator can add a plan to a previously created subscription at any time
 As a user, you can sign in to the user portal to locate and subscribe to public offers and add-on plans for your directory tenant (organization).
 
 >[!NOTE]
->If your Azure Stack environment supports [multi-tenancy](azure-stack-enable-multitenancy.md), you can also subscribe to offers from a remote directory tenant.
+>If your Azure Stack Hub environment supports [multi-tenancy](azure-stack-enable-multitenancy.md), you can also subscribe to offers from a remote directory tenant.
 
 ### To subscribe to an offer
 
-1. [Sign in](../asdk/asdk-connect.md) to the [Azure Stack user portal](https://portal.local.azurestack.external) and select **Get a Subscription**.
+1. Sign in to the Azure Stack Hub user portal and select **Get a Subscription**.
 
    ![Get a subscription in Azure Stack user portal](media/azure-stack-subscribe-plan-provision-vm/image01.png)
   

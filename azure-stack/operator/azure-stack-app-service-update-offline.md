@@ -1,6 +1,6 @@
 ---
 title: 'Update Azure App Service Offline | Microsoft Docs'
-description: Detailed guidance for updating Azure App Service on Azure Stack offline
+description: Detailed guidance for updating Azure App Service on Azure Stack Hub offline
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -18,24 +18,22 @@ ms.author: anwestg
 ms.reviewer: anwestg
 
 ---
-# Offline update of Azure App Service on Azure Stack
-
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Offline update of Azure App Service on Azure Stack Hub
 
 > [!IMPORTANT]
-> Apply the 1907 update or later to your Azure Stack integrated system or deploy the latest Azure Stack development kit before deploying Azure App Service 1.7.
+> Apply the 1907 update or later to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development kit before deploying Azure App Service 1.7.
 
-By following the instructions in this article, you can upgrade the [App Service resource provider](azure-stack-app-service-overview.md) deployed in an Azure Stack environment that is:
+By following the instructions in this article, you can upgrade the [App Service resource provider](azure-stack-app-service-overview.md) deployed in an Azure Stack Hub environment that is:
 
 * not connected to the Internet
 * secured by Active Directory Federation Services (AD FS).
 
 > [!IMPORTANT]
-> Prior to running the upgrade, make sure that you have already completed the [deployment of the Azure App Service on Azure Stack Resource Provider](azure-stack-app-service-deploy-offline.md) and that you have read the [release notes](azure-stack-app-service-release-notes-update-seven.md), which accompany the 1.7 release, to learn about new functionality, fixes, and any known issues that could affect your deployment.
+> Prior to running the upgrade, make sure that you have already completed the [deployment of the Azure App Service on Azure Stack Hub Resource Provider](azure-stack-app-service-deploy-offline.md) and that you have read the [release notes](azure-stack-app-service-release-notes-update-seven.md), which accompany the 1.7 release, to learn about new functionality, fixes, and any known issues that could affect your deployment.
 
 ## Run the App Service resource provider installer
 
-To upgrade the App Service resource provider in an Azure Stack environment, you must complete these tasks:
+To upgrade the App Service resource provider in an Azure Stack Hub environment, you must complete these tasks:
 
 1. Download the [App Service Installer](https://aka.ms/appsvcupdate7installer).
 2. Create an offline upgrade package.
@@ -63,12 +61,12 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
 3. The App Service installer creates an offline upgrade package and displays the path to it.  You can click **Open folder** to open the folder in your file explorer.
 
-4. Copy the installer (AppService.exe) and the offline upgrade package to your Azure Stack host machine.
+4. Copy the installer (AppService.exe) and the offline upgrade package to your Azure Stack Hub host machine.
 
-## Complete the upgrade of App Service on Azure Stack
+## Complete the upgrade of App Service on Azure Stack Hub
 
 > [!IMPORTANT]
-> The App Service installer must be run on a machine which can reach the Azure Stack Administrator Azure Resource Manager Endpoint.
+> The App Service installer must be run on a machine which can reach the Azure Stack Hub Administrator Azure Resource Manager Endpoint.
 >
 >
 
@@ -86,17 +84,17 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
 5. Review and accept the third-party license terms and then click **Next**.
 
-6. Make sure that the Azure Stack Azure Resource Manager endpoint and Active Directory Tenant information is correct. If you used the default settings during Azure Stack Development Kit deployment, you can accept the default values here. However, if you customized the options when you deployed Azure Stack, you must edit the values in this window. For example, if you use the domain suffix *mycloud.com*, your Azure Stack Azure Resource Manager endpoint must change to *management.region.mycloud.com*. After you confirm your information, click **Next**.
+6. Make sure that the Azure Stack Hub Azure Resource Manager endpoint and Active Directory Tenant information is correct. If you used the default settings during Azure Stack Development Kit deployment, you can accept the default values here. However, if you customized the options when you deployed Azure Stack Hub, you must edit the values in this window. For example, if you use the domain suffix *mycloud.com*, your Azure Stack Hub Azure Resource Manager endpoint must change to *management.region.mycloud.com*. After you confirm your information, click **Next**.
 
-    ![Azure Stack Cloud Information][3]
+    ![Azure Stack Hub Cloud Information][3]
 
 7. On the next page:
 
-   1. Click the **Connect** button next to the **Azure Stack Subscriptions** box.
-      * If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack. Click  **Sign In**.
+   1. Click the **Connect** button next to the **Azure Stack Hub Subscriptions** box.
+      * If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Click  **Sign In**.
       * If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, _cloudadmin@azurestack.local_. Enter your password, and click **Sign In**.
-   2. In the **Azure Stack Subscriptions** box, select the **Default Provider Subscription**.
-   3. In the **Azure Stack Locations** box, select the location that corresponds to the region you're deploying to. For example, select **local** if your deploying to the Azure Stack Development Kit.
+   2. In the **Azure Stack Hub Subscriptions** box, select the **Default Provider Subscription**.
+   3. In the **Azure Stack Hub Locations** box, select the location that corresponds to the region you're deploying to. For example, select **local** if your deploying to the Azure Stack Development Kit.
    4. If an existing App Service deployment is detected, then the resource group and storage account will be populated and greyed out.
    5. Click **Next** to review the upgrade summary.
 
@@ -110,7 +108,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
        ![App Service Upgrade Summary][5]
 
 9. Upgrade progress page:
-    1. Track the upgrade progress. The duration of the upgrade of App Service on Azure Stack varies dependent on number of role instances deployed.
+    1. Track the upgrade progress. The duration of the upgrade of App Service on Azure Stack Hub varies dependent on number of role instances deployed.
     2. After the upgrade successfully completes, click **Exit**.
 
         ![App Service Upgrade Progress][6]
@@ -125,7 +123,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
 ## Next steps
 
-Prepare for additional administrator operations for App Service on Azure Stack
+Prepare for additional administrator operations for App Service on Azure Stack Hub
 
 * [Plan for additional capacity](azure-stack-app-service-capacity-planning.md)
 * [Add additional capacity](azure-stack-app-service-add-worker-roles.md)

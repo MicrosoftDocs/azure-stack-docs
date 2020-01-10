@@ -8,25 +8,22 @@ author: sethmanheim
 manager: femila
 editor: ''
 
-ms.assetid:
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2019
+ms.date: 01/07/2020
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/06/2019
 ---
 
-# Guest operating systems supported on Azure Stack
-
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Guest operating systems supported on Azure Stack Hub
 
 ## Windows
 
-Azure Stack supports the Windows guest operating systems listed in the following table:
+Azure Stack Hub supports the Windows guest operating systems listed in the following table:
 
 | Operating system | Description | Available in Azure Stack Marketplace |
 | --- | --- | --- |
@@ -40,7 +37,7 @@ Azure Stack supports the Windows guest operating systems listed in the following
 | Windows 10 *(see note 1)* | 64-bit, Pro, and Enterprise | Bring your own image |
 
 > [!NOTE]
-> To deploy Windows 10 client operating systems on Azure Stack, you must have [Windows per User Licensing](https://www.microsoft.com/Licensing/product-licensing/windows10.aspx) or purchase through a Qualified Multitenant Hoster ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)).
+> To deploy Windows 10 client operating systems on Azure Stack Hub, you must have [Windows per-user licensing](https://www.microsoft.com/licensing/product-licensing/windows10.aspx) or purchase through a Qualified Multitenant Hoster ([QMTH](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)).
 
 Marketplace images are available for pay-as-you-use or BYOL (EA/SPLA) licensing. Use of both on a single Azure Stack instance isn't supported. During deployment, Azure Stack injects a suitable version of the guest agent into the image.
 
@@ -51,9 +48,9 @@ Datacenter editions are available in Azure Stack Marketplace for downloading; cu
 Linux distributions listed as available in Azure Stack Marketplace include the necessary Windows Azure Linux Agent (WALA). If you bring your own image to Azure Stack, follow the guidelines in [Add Linux images to Azure Stack](azure-stack-linux.md).
 
 > [!NOTE]
-> Custom images should be built with the latest public WALA version (on the 1903 Azure Stack build and above, or with the 1901/1902 hotfix), or with version 2.2.20. Versions before 2.2.20 and between 2.2.21 and 2.2.34 (inclusive) may not function properly on Azure Stack. On Azure Stack 1910 release and beyond, all Azure WALA agent versions will work with Azure Stack.
+> Custom images should be built with the latest public WALA version (on the 1903 Azure Stack Hub build and above, or with the 1901/1902 hotfix), or with version 2.2.20. Versions before 2.2.20 and between 2.2.21 and 2.2.34 (inclusive) may not function properly on Azure Stack Hub. On Azure Stack Hub 1910 and above, all Azure WALA agent versions work with Azure Stack Hub.
 >
-> [cloud-init](https://cloud-init.io/) is supported on Azure Stack 1910 release and beyond at this time.
+> [cloud-init](https://cloud-init.io/) is supported on Azure Stack Hub 1910 and above.
 
 | Distribution | Description | Publisher | Azure Stack Marketplace |
 | --- | --- | --- | --- |
@@ -72,7 +69,7 @@ Linux distributions listed as available in Azure Stack Marketplace include the n
 | Ubuntu 16.04-LTS | 64-bit | Canonical | Yes |
 | Ubuntu 18.04-LTS | 64-bit | Canonical | Yes |
 
-For Red Hat Enterprise Linux support information, see [Red Hat and Azure Stack: Frequently Asked Questions](https://access.redhat.com/articles/3413531).
+For Red Hat Enterprise Linux support information, see [Red Hat and Azure Stack Hub: Frequently Asked Questions](https://access.redhat.com/articles/3413531).
 
 ## Next steps
 

@@ -1,6 +1,6 @@
 ---
-title: Make API requests to Azure Stack | Microsoft Docs
-description: Learn how to retrieve an authentication from Azure to make API requests to Azure Stack.
+title: Make API requests to Azure Stack Hub | Microsoft Docs
+description: Learn how to retrieve an authentication from Azure to make API requests to Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -20,17 +20,15 @@ ms.lastreviewed: 01/14/2019
 
 <!--  cblackuk and charliejllewellyn. This is a community contribution by cblackuk-->
 
-# Make API requests to Azure Stack
+# Make API requests to Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+You can use the Azure Stack Hub REST APIs to automate operations such as adding a virtual machine (VM) to your Azure Stack Hub cloud.
 
-You can use the Azure Stack REST APIs to automate operations such as adding a virtual machine (VM) to your Azure Stack cloud.
+The APIs require your client to authenticate to the Microsoft Azure sign-in endpoint. The endpoint returns a token to use in the header of every request sent to the Azure Stack Hub APIs. Microsoft Azure uses Oauth 2.0.
 
-The APIs require your client to authenticate to the Microsoft Azure sign-in endpoint. The endpoint returns a token to use in the header of every request sent to the Azure Stack APIs. Microsoft Azure uses Oauth 2.0.
+This article provides examples that use the **cURL** utility to create Azure Stack Hub requests. cURL is a command-line tool with a library for transferring data. These examples walk through the process of retrieving a token to access the Azure Stack Hub APIs. Most programming languages provide Oauth 2.0 libraries, which have robust token management and handle tasks such as refreshing the token.
 
-This article provides examples that use the **cURL** utility to create Azure Stack requests. cURL is a command-line tool with a library for transferring data. These examples walk through the process of retrieving a token to access the Azure Stack APIs. Most programming languages provide Oauth 2.0 libraries, which have robust token management and handle tasks such as refreshing the token.
-
-Review the entire process of using the Azure Stack REST APIs with a generic REST client, such as **cURL**, to help you understand the underlying requests and what you can expect in a response payload.
+Review the entire process of using the Azure Stack Hub REST APIs with a generic REST client, such as **cURL**, to help you understand the underlying requests and what you can expect in a response payload.
 
 This article does not explore all the options available for retrieving tokens, such as interactive sign-in or creating dedicated app IDs. To get information about these topics, see the [Azure REST API reference](/rest/api/).
 
@@ -67,16 +65,16 @@ For each value:
    The type of authentication scheme you'll use. In this example, the value is `password`.
 
 - **resource**:  
-   The resource the token accesses. You can find the resource by querying the Azure Stack management metadata endpoint. Look at the **audiences** section.
+   The resource the token accesses. You can find the resource by querying the Azure Stack Hub management metadata endpoint. Look at the **audiences** section.
 
-- **Azure Stack management endpoint**:
+- **Azure Stack Hub management endpoint**:
 
    ```bash
-   https://management.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-01
+   https://management.{region}.{Azure Stack Hub domain}/metadata/endpoints?api-version=2015-01-01
    ```
 
   > [!NOTE]  
-  > If you are an admin trying to access the tenant API, make sure to use the tenant endpoint; for example, `https://adminmanagement.{region}.{Azure Stack domain}/metadata/endpoints?api-version=2015-01-011`.
+  > If you are an admin trying to access the tenant API, make sure to use the tenant endpoint; for example, `https://adminmanagement.{region}.{Azure Stack Hub domain}/metadata/endpoints?api-version=2015-01-011`.
 
   For example, with the Azure Stack Development Kit as an endpoint:
 
@@ -124,7 +122,7 @@ For each value:
 
 - **username**
 
-  For example, the Azure Stack Azure AD account:
+  For example, the Azure Stack Hub Azure AD account:
 
   ```bash
   azurestackadmin@fabrikam.onmicrosoft.com
@@ -132,7 +130,7 @@ For each value:
 
 - **password**
 
-  The Azure Stack Azure AD admin password.
+  The Azure Stack Hub Azure AD admin password.
 
 ### Example
 
@@ -198,7 +196,7 @@ The path specifies the resource or resource collection, which may include multip
 - **Query string**:  
 The string provides additional simple parameters, such as the API version or resource selection criteria.
 
-## Azure Stack request URI construct
+## Azure Stack Hub request URI construct
 
 ```bash
 {URI-scheme} :// {URI-host} / {subscription id} / {resource group} / {provider} / {resource-path} ? {OPTIONAL: filter-expression} {MANDATORY: api-version}

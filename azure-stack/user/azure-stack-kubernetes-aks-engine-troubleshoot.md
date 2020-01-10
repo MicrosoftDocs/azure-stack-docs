@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot the AKS engine on Azure Stack | Microsoft Docs
-description: This article contains troubleshooting steps for the AKS engine on Azure Stack. 
+title: Troubleshoot the AKS engine on Azure Stack Hub | Microsoft Docs
+description: This article contains troubleshooting steps for the AKS engine on Azure Stack Hub. 
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -19,11 +19,9 @@ ms.lastreviewed: 11/21/2019
 
 ---
 
-# Troubleshoot the AKS engine on Azure Stack
+# Troubleshoot the AKS engine on Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
-You may encounter an issue when deploying or working with the AKS engine on Azure Stack. This article looks at the steps to troubleshoot your deployment of the AKS engine, collect information about your AKS engine, collect Kubernetes logs, review custom script extension error codes, and instructions on opening a GitHub issue for the AKS engine.
+You may encounter an issue when deploying or working with the AKS engine on Azure Stack Hub. This article looks at the steps to troubleshoot your deployment of the AKS engine, collect information about your AKS engine, collect Kubernetes logs, review custom script extension error codes, and instructions on opening a GitHub issue for the AKS engine.
 
 ## Troubleshoot the AKS engine install
 
@@ -69,9 +67,9 @@ Install GoFish from the [Install](https://gofi.sh/#install) page.
 When encountering errors while deploying a Kubernetes cluster using the AKS engine, you can check:
 
 1.  Are you using the correct Service Principal credentials (SPN)?
-2.  Does the SPN have a "Contributors" role to the Azure Stack subscription?
-3. Do you have a large enough quota in your Azure Stack plan?
-4.  Is the Azure Stack instance having a patch or upgrade being applied?
+2.  Does the SPN have a "Contributors" role to the Azure Stack Hub subscription?
+3. Do you have a large enough quota in your Azure Stack Hub plan?
+4.  Is the Azure Stack Hub instance having a patch or upgrade being applied?
 
 For more information, see the [Troubleshooting](https://github.com/Azure/aks-engine/blob/master/docs/howto/troubleshooting.md) article in the **Azure/aks-engine** GitHub repo.
 
@@ -110,7 +108,7 @@ Requirements:
 
  - A Linux VM, Git Bash or Bash on Windows.
  - [Azure CLI](azure-stack-version-profiles-azurecli2.md) installed in the machine from where the script will be run.
- - Service principal identity signed into an Azure CLI session to Azure Stack. Since the script has the capability of discovering and creating ARM resources to do its work, it requires the Azure CLI and a service principal identity.
+ - Service principal identity signed into an Azure CLI session to Azure Stack Hub. Since the script has the capability of discovering and creating ARM resources to do its work, it requires the Azure CLI and a service principal identity.
  - User account (subscription) where the Kubernetes cluster is already selected in the environment. 
 1. Download the latest release of the script tar file into your client VM, a machine that has access to your Kubernetes cluster or the same machine you used to deploy your cluster with the AKS engine.
 
@@ -132,9 +130,9 @@ Requirements:
     | -i, --identity-file | RSA private key tied to the public key used to create the Kubernetes cluster (sometimes named 'id_rsa')  | yes | `./rsa.pem` (Putty)<br>`~/.ssh/id_rsa` (SSH) |
     |   -g, --resource-group    | Kubernetes cluster resource group | yes | k8sresourcegroup |
     |   -n, --user-namespace               | Collect logs from containers in the specified namespaces (kube-system logs are always collected) | no |   monitoring |
-    |       --api-model                    | Persists apimodel.json file in an Azure Stack Storage account. Upload apimodel.json file to storage account happens when --upload-logs parameter is also provided. | no | `./apimodel.json` |
+    |       --api-model                    | Persists apimodel.json file in an Azure Stack Hub Storage account. Upload apimodel.json file to storage account happens when --upload-logs parameter is also provided. | no | `./apimodel.json` |
     | --all-namespaces               | Collect logs from containers in all namespaces. It overrides --user-namespace | no | |
-    | --upload-logs                  | Persists retrieved logs in an Azure Stack storage account. Logs can be found in KubernetesLogs resource group | no | |
+    | --upload-logs                  | Persists retrieved logs in an Azure Stack Hub storage account. Logs can be found in KubernetesLogs resource group | no | |
     --disable-host-key-checking    | Sets SSH's StrictHostKeyChecking option to "no" while the script executes. Only use in a safe environment. | no | |
 
 3. Run any of the following example commands with your information:
@@ -155,9 +153,9 @@ You can consult a list of error codes created by the custom script extension (CS
 
 If after collecting and examining logs you still cannot resolve your issue, you may want to start the process of creating a support ticket and provide the logs that you collected by running `getkuberneteslogs.sh` with the `--upload-logs` parameter set. 
 
-Contact your Azure Stack operator. Your operator uses the information fro your logs to create the support case.
+Contact your Azure Stack Hub operator. Your operator uses the information fro your logs to create the support case.
 
-During the process of addressing any support issues, a Microsoft support engineer may request that your Azure Stack operator collect the Azure Stack system logs. You may need to provide your operator with the storage account information where you uploaded the Kubernetes logs by running `getkuberneteslogs.sh`.
+During the process of addressing any support issues, a Microsoft support engineer may request that your Azure Stack Hub operator collect the Azure Stack Hub system logs. You may need to provide your operator with the storage account information where you uploaded the Kubernetes logs by running `getkuberneteslogs.sh`.
 
 Your operator may run the **Get-AzureStackLog** PowerShell cmdlet. This command uses a parameter (`-InputSaSUri`) that specifies the storage account where you stored the Kubernetes logs.
 
@@ -177,4 +175,4 @@ If you are unable to resolve your deployment error, you can open a GitHub Issue.
 
 ## Next steps
 
-- Read about the [The AKS engine on Azure Stack](azure-stack-kubernetes-aks-engine-overview.md)
+- Read about the [The AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)

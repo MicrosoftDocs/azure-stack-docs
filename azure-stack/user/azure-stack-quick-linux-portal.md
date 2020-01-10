@@ -1,6 +1,6 @@
 ---
-title: Create a Linux VM by using Azure Stack | Microsoft Docs
-description: Create a Linux server VM by using Azure Stack.
+title: Create a Linux VM by using Azure Stack Hub | Microsoft Docs
+description: Create a Linux server VM by using Azure Stack Hub.
 services: azure-stack
 cloud: azure-stack
 author: mattbriggs
@@ -15,24 +15,22 @@ ms.custom: mvc
 ms.lastreviewed: 12/03/2018
 ---
 
-# Quickstart: Create a Linux server VM by using the Azure Stack portal
+# Quickstart: Create a Linux server VM by using the Azure Stack Hub portal
 
-*Applies to: Azure Stack integrated systems and the Azure Stack Development Kit*
-
-You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using the Azure Stack portal. In this article, you create and use a virtual machine. This article also shows you how to:
+You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using the Azure Stack Hub portal. In this article, you create and use a virtual machine. This article also shows you how to:
 
 * Connect to the VM with a remote client.
 * Install an NGINX web server.
 * Clean up your resources.
 
 > [!NOTE]  
-> The images in this article are updated to match changes that were introduced in Azure Stack version 1808. Version 1808 adds support for using *managed disks* in addition to unmanaged disks. If you're using an earlier version, images for some tasks, such as disk selection, differ from what's displayed in your UI.  
+> The images in this article are updated to match changes that were introduced in Azure Stack Hub version 1808. Version 1808 adds support for using *managed disks* in addition to unmanaged disks. If you're using an earlier version, images for some tasks, such as disk selection, differ from what's displayed in your UI.  
 
 ## Prerequisites
 
-* A Linux image in the Azure Stack Marketplace
+* A Linux image in the Azure Stack Hub Marketplace
 
-   The Azure Stack Marketplace, by default, doesn't have a Linux image. Have the Azure Stack operator provide the Ubuntu Server 16.04 LTS image you need. The operator can use the instructions in [Download Marketplace items from Azure to Azure Stack](../operator/azure-stack-download-azure-marketplace-item.md).
+   The Azure Stack Hub Marketplace, by default, doesn't have a Linux image. Have the Azure Stack Hub operator provide the Ubuntu Server 16.04 LTS image you need. The operator can use the instructions in [Download Marketplace items from Azure to Azure Stack Hub](../operator/azure-stack-download-azure-marketplace-item.md).
 
 * Access to an SSH client
 
@@ -62,17 +60,17 @@ To create an SSH key pair:
 
    ![PuTTY Key Generator results](media/azure-stack-quick-linux-portal/Putty02.PNG)
 
-## Sign in to the Azure Stack portal
+## Sign in to the Azure Stack Hub portal
 
-The address of the Azure Stack portal depends on which Azure Stack product you're connecting to:
+The address of the Azure Stack Hub portal depends on which Azure Stack Hub product you're connecting to:
 
 * For the ASDK, go to https://portal.local.azurestack.external.
 
-* For an Azure Stack integrated system, go to the URL that your Azure Stack operator provided.
+* For an Azure Stack Hub integrated system, go to the URL that your Azure Stack Hub operator provided.
 
 ## Create the VM
 
-1. In the upper-left corner of the Azure Stack portal, select **Create a resource**.
+1. In the upper-left corner of the Azure Stack Hub portal, select **Create a resource**.
 
 1. Select **Compute**, and then select **Ubuntu Server 16.04 LTS**.
    
@@ -93,7 +91,7 @@ The address of the Azure Stack portal depends on which Azure Stack product you'r
 
 1. On the **Settings** page, make changes to the defaults.
    
-   Beginning with Azure Stack version 1808, you can configure **Storage** and choose to use *managed disks*. In earlier versions than 1808, only unmanaged disks can be used.
+   Beginning with Azure Stack Hub version 1808, you can configure **Storage** and choose to use *managed disks*. In earlier versions than 1808, only unmanaged disks can be used.
 
    ![Configure storage for managed disks](media/azure-stack-quick-linux-portal/linux-03.PNG)
     
@@ -115,7 +113,7 @@ The address of the Azure Stack portal depends on which Azure Stack product you'r
 
 1. In the **Category** pane, scroll up to and select **Session**.
 
-1. In the **Host Name (or IP address)** box, paste the connection string that's shown in the Azure Stack portal. In this example, the string is *asadmin@192.168.102.34*.
+1. In the **Host Name (or IP address)** box, paste the connection string that's shown in the Azure Stack Hub portal. In this example, the string is *asadmin@192.168.102.34*.
 
 1. Select **Open** to open a session for the VM.
 
@@ -135,11 +133,11 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-When you finish installing NGINX, close the SSH session and open the VM **Overview** page in the Azure Stack portal.
+When you finish installing NGINX, close the SSH session and open the VM **Overview** page in the Azure Stack Hub portal.
 
 ## Open port 80 for web traffic
 
-A network security group (NSG) secures inbound and outbound traffic. When a VM is created in the Azure Stack portal, an inbound rule is created on port 22 for SSH connections. Because this VM hosts a web server, an NSG rule needs to be created to allow web traffic on port 80.
+A network security group (NSG) secures inbound and outbound traffic. When a VM is created in the Azure Stack Hub portal, an inbound rule is created on port 22 for SSH connections. Because this VM hosts a web server, an NSG rule needs to be created to allow web traffic on port 80.
 
 1. On the VM **Overview** page, select the name of the **Resource group**.
 
@@ -169,4 +167,4 @@ Clean up the resources that you don't need any longer. To delete the VM and its 
 
 ## Next steps
 
-In this quickstart, you deployed a basic Linux server VM with a web server. To learn more about Azure Stack VMs, continue to [Considerations for VMs in Azure Stack](azure-stack-vm-considerations.md).
+In this quickstart, you deployed a basic Linux server VM with a web server. To learn more about Azure Stack Hub VMs, continue to [Considerations for VMs in Azure Stack Hub](azure-stack-vm-considerations.md).

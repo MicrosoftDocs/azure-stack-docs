@@ -39,7 +39,7 @@ The request gets consumption details for the requested subscriptions and for the
 
 | **Parameter** | **Description** |
 | --- | --- |
-| Armendpoint |Azure Resource Manager endpoint of your Azure Stack environment. The Azure Stack convention is that the name of Azure Resource Manager endpoint is in the format `https://management.{domain-name}`. For example, for the development kit, the domain name is local.azurestack.external, then the Resource Manager  endpoint is `https://management.local.azurestack.external`. |
+| Armendpoint |Azure Resource Manager endpoint of your Azure Stack Hub environment. The Azure Stack Hub convention is that the name of Azure Resource Manager endpoint is in the format `https://management.{domain-name}`. For example, for the development kit, the domain name is local.azurestack.external, then the Resource Manager  endpoint is `https://management.local.azurestack.external`. |
 | subId |Subscription ID of the user who is making the call. You can use this API only to query for a single subscription's usage. Providers can use the provider resource usage API to query usage for all tenants. |
 | reportedStartTime |Start time of the query. The value for *DateTime* should be in UTC and at the beginning of the hour; for example, 13:00. For daily aggregation, set this value to UTC midnight. The format is escaped ISO 8601; for example, **2015-06-16T18%3a53%3a11%2b00%3a00Z**, where colon is escaped to %3a and plus is escaped to %2b so that it's URI friendly. |
 | reportedEndTime |End time of the query. The constraints that apply to **reportedStartTime** also apply to this parameter. The value for **reportedEndTime** can't be in the future. |

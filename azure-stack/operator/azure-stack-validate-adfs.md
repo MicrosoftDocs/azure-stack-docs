@@ -1,6 +1,6 @@
 ---
-title: Validate AD FS integration for Azure Stack
-description: Use the Azure Stack Readiness Checker to validate AD FS integration for Azure Stack.
+title: Validate AD FS integration for Azure Stack Hub
+description: Use the Azure Stack Hub Readiness Checker to validate AD FS integration for Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
@@ -20,21 +20,21 @@ ms.lastreviewed: 06/10/2019
 
 ---
 
-# Validate AD FS integration for Azure Stack
+# Validate AD FS integration for Azure Stack Hub
 
-Use the Azure Stack Readiness Checker tool (AzsReadinessChecker) to validate that your environment is ready for Active Directory Federation Services (AD FS) integration with Azure Stack. Validate AD FS integration before you begin datacenter integration or before an Azure Stack deployment.
+Use the Azure Stack Hub Readiness Checker tool (AzsReadinessChecker) to validate that your environment is ready for Active Directory Federation Services (AD FS) integration with Azure Stack Hub. Validate AD FS integration before you begin datacenter integration or before an Azure Stack Hub deployment.
 
 The readiness checker validates:
 
 * The *federation metadata* contains the valid XML elements for federation.
-* The *AD FS SSL certificate* can be retrieved, and a chain of trust can be built. On stamp AD FS must trust the SSL certificate chain. The certificate must be signed by the same *certificate authority* used for the Azure Stack deployment certificates or by a trusted root authority partner. For the full list of trusted root authority partners, see [TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
+* The *AD FS SSL certificate* can be retrieved, and a chain of trust can be built. On stamp AD FS must trust the SSL certificate chain. The certificate must be signed by the same *certificate authority* used for the Azure Stack Hub deployment certificates or by a trusted root authority partner. For the full list of trusted root authority partners, see [TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
 * The *AD FS signing certificate* is trusted and not nearing expiration.
 
-For more information about Azure Stack datacenter integration, see [Azure Stack datacenter integration - Identity](azure-stack-integrate-identity.md).
+For more information about Azure Stack Hub datacenter integration, see [Azure Stack Hub datacenter integration - Identity](azure-stack-integrate-identity.md).
 
 ## Get the readiness checker tool
 
-Download the latest version of the Azure Stack Readiness Checker tool (AzsReadinessChecker) from the [PowerShell Gallery](https://aka.ms/AzsReadinessChecker).  
+Download the latest version of the Azure Stack Hub Readiness Checker tool (AzsReadinessChecker) from the [PowerShell Gallery](https://aka.ms/AzsReadinessChecker).  
 
 ## Prerequisites
 
@@ -45,7 +45,7 @@ The following prerequisites must be in place.
 * Windows 10 or Windows Server 2016, with domain connectivity.
 * PowerShell 5.1 or later. To check your version, run the following PowerShell command and then review the *Major* version and *Minor* versions:  
    > `$PSVersionTable.PSVersion`
-* Latest version of the [Microsoft Azure Stack Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.
+* Latest version of the [Microsoft Azure Stack Hub Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.
 
 **Active Directory Federation Services environment:**
 
@@ -78,7 +78,7 @@ You need at least one of the following forms of metadata:
             Test Certificate Expiry:               OK
 
     Details:
-    [-] In standalone mode, some tests should not be considered fully indicative of connectivity or readiness the Azure Stack Stamp requires prior to Datacenter Integration.
+    [-] In standalone mode, some tests should not be considered fully indicative of connectivity or readiness the Azure Stack Hub Stamp requires prior to Datacenter Integration.
     Additional help URL: https://aka.ms/AzsADFSIntegration
 
     Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
@@ -87,13 +87,13 @@ You need at least one of the following forms of metadata:
     Invoke-AzsADFSValidation Completed
     ```
 
-In production environments, testing certificate chains of trust from an operator's workstation isn't fully indicative of the PKI trust posture in the Azure Stack infrastructure. The Azure Stack stamp's public VIP network needs the connectivity to the CRL for the PKI infrastructure.
+In production environments, testing certificate chains of trust from an operator's workstation isn't fully indicative of the PKI trust posture in the Azure Stack Hub infrastructure. The Azure Stack Hub stamp's public VIP network needs the connectivity to the CRL for the PKI infrastructure.
 
 ## Report and log file
 
 Each time validation runs, it logs results to **AzsReadinessChecker.log** and **AzsReadinessCheckerReport.json**. The location of these files appears with the validation results in PowerShell.
 
-The validation files can help you share status before you deploy Azure Stack or investigate validation problems. Both files persist the results of each subsequent validation check. The report gives your deployment team confirmation of the identity configuration. The log file can help your deployment or support team investigate validation issues.
+The validation files can help you share status before you deploy Azure Stack Hub or investigate validation problems. Both files persist the results of each subsequent validation check. The report gives your deployment team confirmation of the identity configuration. The log file can help your deployment or support team investigate validation issues.
 
 By default, both files are written to
 `C:\Users\<username>\AppData\Local\Temp\AzsReadinessChecker\`.
@@ -101,7 +101,7 @@ By default, both files are written to
 Use:
 
 * **-OutputPath**: The *path* parameter at the end of the run command to specify a different report location.
-* **-CleanReport**: The parameter at the end of the run command to clear AzsReadinessCheckerReport.json of previous report information. For more information, see [Azure Stack validation report](azure-stack-validation-report.md).
+* **-CleanReport**: The parameter at the end of the run command to clear AzsReadinessCheckerReport.json of previous report information. For more information, see [Azure Stack Hub validation report](azure-stack-validation-report.md).
 
 ## Validation failures
 
@@ -122,4 +122,4 @@ The following examples provide guidance on common validation failures.
 ## Next steps
 
 [View the readiness report](azure-stack-validation-report.md)  
-[General Azure Stack integration considerations](azure-stack-datacenter-integration.md)  
+[General Azure Stack Hub integration considerations](azure-stack-datacenter-integration.md)  

@@ -14,7 +14,7 @@ ms.reviewer: efemmano
 
 ---
 
-# Azure Stack training and certification
+# Azure Stack Hub training and certification
 
 *Applies to: Azure Stack integrated systems*
 
@@ -37,8 +37,8 @@ Want to learn about Azure Stack and demonstrate your Azure Stack proficiency? Ch
 
 ## Certification
 
-*Configuring and Operating a Hybrid Cloud with Microsoft Azure Stack certification*, [Exam 70-537](https://www.microsoft.com/learning/exam-70-537.aspx)
+*Configuring and Operating a Hybrid Cloud with Microsoft Azure Stack Hub certification*, [Exam 70-537](https://www.microsoft.com/learning/exam-70-537.aspx)
 
 ## Next steps
 
-[Azure Stack documentation](/azure-stack/operator)
+[Azure Stack Hub documentation](/azure-stack/operator)

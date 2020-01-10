@@ -1,6 +1,6 @@
 ---
-title: Connect Azure Stack to Azure using VPN | Microsoft Docs
-description: How to connect virtual networks in Azure Stack to virtual networks in Azure using VPN.
+title: Connect Azure Stack Hub to Azure using VPN | Microsoft Docs
+description: How to connect virtual networks in Azure Stack Hub to virtual networks in Azure using VPN.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -19,17 +19,15 @@ ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2018
 
 ---
-# Connect Azure Stack to Azure using VPN
+# Connect Azure Stack Hub to Azure using VPN
 
-*Applies to: Azure Stack integrated systems*
-
-This article describes how to create a site-to-site VPN to connect a virtual network in Azure Stack to a virtual network in Azure.
+This article describes how to create a site-to-site VPN to connect a virtual network in Azure Stack Hub to a virtual network in Azure.
 
 ## Before you begin
 
 To complete the connection configuration, make sure you have the following items before you begin:
 
-* An Azure Stack integrated systems (multi-node) deployment that is directly connected to the internet. Your external public IP address range must be directly reachable from the public internet.
+* An Azure Stack Hub integrated systems (multi-node) deployment that is directly connected to the internet. Your external public IP address range must be directly reachable from the public internet.
 * A valid Azure subscription. If you don't have an Azure subscription, you can create a [free Azure account here](https://azure.microsoft.com/free/?b=17.06).
 
 ### VPN connection diagram
@@ -42,7 +40,7 @@ The following figure shows what the connection configuration should look like wh
 
 The network configuration examples table shows the values that are used for examples in this article. You can use these values, or you can refer to them to better understand the examples in this article:
 
-|   |Azure Stack|Azure|
+|   |Azure Stack Hub|Azure|
 |---------|---------|---------|
 |Virtual network name     |Azs-VNet|AzureVNet |
 |Virtual network address space |10.1.0.0/16|10.100.0.0/16|
@@ -99,8 +97,8 @@ First, create the network resources for Azure. The following instructions show h
 2. Go to **Marketplace**, and then select **Networking**.
 3. From the list of resources, select **Local network gateway**.
 4. In the **Name** field, type **Azs-GW**.
-5. In the **IP address** field, type the public IP address for your Azure Stack Virtual Network Gateway that is listed previously in the network configuration table.
-6. In the **Address Space** field, from Azure Stack, type the **10.1.0.0/24** and **10.1.1.0/24** address space for **AzureVNet**.
+5. In the **IP address** field, type the public IP address for your Azure Stack Hub Virtual Network Gateway that is listed previously in the network configuration table.
+6. In the **Address Space** field, from Azure Stack Hub, type the **10.1.0.0/24** and **10.1.1.0/24** address space for **AzureVNet**.
 7. Verify that your **Subscription**, **Resource Group**, and **Location** are correct, and then select **Create**.
 
 ## Create the connection
@@ -140,9 +138,9 @@ Now create a VM in Azure, and put it on your VM subnet in your virtual network.
 
 9. Review the settings on the **Summary** section, and then select **OK**.
 
-## Create the network resources in Azure Stack
+## Create the network resources in Azure Stack Hub
 
-Next, create the network resources in Azure Stack.
+Next, create the network resources in Azure Stack Hub.
 
 ### Sign in as a user
 
@@ -178,7 +176,7 @@ A service admin can sign in as a user to test the plans, offers, and subscriptio
 
 ### Create the virtual network gateway
 
-1. In the Azure Stack portal, select **+ Create a resource**.
+1. In the Azure Stack Hub portal, select **+ Create a resource**.
 2. Go to **Marketplace**, and then select **Networking**.
 3. From the list of network resources, select **Virtual network gateway**.
 4. In **Name**, type **Azs-GW**.
@@ -191,15 +189,15 @@ A service admin can sign in as a user to test the plans, offers, and subscriptio
 
 ### Create the local network gateway
 
-The concept of a *local network gateway* in Azure Stack is a bit different than in an Azure deployment.
+The concept of a *local network gateway* in Azure Stack Hub is a bit different than in an Azure deployment.
 
-In an Azure deployment, a local network gateway represents an on-premises (at the user location) physical device that you connect to a virtual network gateway in Azure. However, in Azure Stack both ends of the connection are virtual network gateways.
+In an Azure deployment, a local network gateway represents an on-premises (at the user location) physical device that you connect to a virtual network gateway in Azure. However, in Azure Stack Hub both ends of the connection are virtual network gateways.
 
 A more generic description is that the local network gateway resource always indicates the remote gateway at the other end of the connection.
 
 ### Create the local network gateway resource
 
-1. Sign in to the Azure Stack portal.
+1. Sign in to the Azure Stack Hub portal.
 2. In the user portal, select **+ Create a resource**.
 3. Go to **Marketplace**, and then select **Networking**.
 4. From the list of resources, select **local network gateway**.
@@ -225,7 +223,7 @@ A more generic description is that the local network gateway resource always ind
 
 ### Create a VM
 
-To check the VPN connection, create two VMs: one in Azure, and one in Azure Stack. After you create these VMs, you can use them to send and receive data through the VPN tunnel.
+To check the VPN connection, create two VMs: one in Azure, and one in Azure Stack Hub. After you create these VMs, you can use them to send and receive data through the VPN tunnel.
 
 1. In the Azure portal, select **+ Create a resource**.
 2. Go to **Marketplace**, and then select **Compute**.
@@ -242,16 +240,16 @@ To check the VPN connection, create two VMs: one in Azure, and one in Azure Stac
 
 After the site-to-site connection is established, you should verify that you can get data flowing in both directions. The easiest way to test the connection is by doing a ping test:
 
-* Sign in to the VM you created in Azure Stack and ping the VM in Azure.
-* Sign in to the VM you created in Azure and ping the VM in Azure Stack.
+* Sign in to the VM you created in Azure Stack Hub and ping the VM in Azure.
+* Sign in to the VM you created in Azure and ping the VM in Azure Stack Hub.
 
 >[!NOTE]
 >To make sure that you're sending traffic through the site-to-site connection, ping the Direct IP (DIP)
 address of the VM on the remote subnet, not the VIP.
 
-### Sign in to the user VM in Azure Stack
+### Sign in to the user VM in Azure Stack Hub
 
-1. Sign in to the Azure Stack portal.
+1. Sign in to the Azure Stack Hub portal.
 2. In the left navigation bar, select **Virtual Machines**.
 3. In the list of VMs, find **Azs-VM** that you created previously, and then select it.
 4. On the section for the VM, select **Connect**, and then open the Azs-VM.rdp file.
@@ -288,7 +286,7 @@ address of the VM on the remote subnet, not the VIP.
     -Protocol ICMPv4
    ```
 
-10. From the VM in Azure, ping the VM in Azure Stack, through the tunnel. To do this, you ping the DIP that you recorded from Azs-VM. In the example environment, this is **10.1.0.4**, but be sure to ping the address you noted in your lab. You should see a result that looks like the following screen capture:
+10. From the VM in Azure, ping the VM in Azure Stack Hub, through the tunnel. To do this, you ping the DIP that you recorded from Azs-VM. In the example environment, this is **10.1.0.4**, but be sure to ping the address you noted in your lab. You should see a result that looks like the following screen capture:
 
     ![Successful ping](media/azure-stack-connect-vpn/image19b.png)
 
@@ -301,7 +299,7 @@ You should also do more rigorous data transfer testing (for example, copying dif
 If you want to know how much data passes through your site-to-site connection, this information is available in the **Connection** section. This test is also another way to verify the ping you just sent actually
 went through the VPN connection.
 
-1. While signed in to the user VM in Azure Stack, use your user account to sign in to the user portal.
+1. While signed in to the user VM in Azure Stack Hub, use your user account to sign in to the user portal.
 2. Go to **All resources**, and then select the **Azs-Azure** connection. **Connections** appears.
 3. On the **Connection** section, the statistics for **Data in** and **Data out** appear. In the following screen capture, the large numbers are attributed to additional file transfer. You should see some nonzero values there.
 
@@ -309,4 +307,4 @@ went through the VPN connection.
 
 ## Next steps
 
-* [Deploy apps to Azure and Azure Stack](azure-stack-solution-pipeline.md)
+* [Deploy apps to Azure and Azure Stack Hub](azure-stack-solution-pipeline.md)

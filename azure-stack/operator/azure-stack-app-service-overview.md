@@ -20,15 +20,13 @@ ms.lastreviewed: 10/16/2018
 
 ---
 
-# App Service on Azure Stack overview
+# App Service on Azure Stack Hub overview
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
-Azure App Service on Azure Stack is a platform-as-a-service (PaaS) offering from Microsoft Azure available on Azure Stack. The service enables your internal or external customers to create web, API, and Azure Functions apps for any platform or device. They can integrate your apps with on-premises apps and automate their business processes. Azure Stack cloud operators can run customer apps on fully managed virtual machines (VMs) with their choice of shared VM resources or dedicated VMs.
+Azure App Service on Azure Stack Hub is a platform-as-a-service (PaaS) offering from Microsoft Azure available on Azure Stack Hub. The service enables your internal or external customers to create web, API, and Azure Functions apps for any platform or device. They can integrate your apps with on-premises apps and automate their business processes. Azure Stack Hub cloud operators can run customer apps on fully managed virtual machines (VMs) with their choice of shared VM resources or dedicated VMs.
 
 Azure App Service enables you to automate business processes and host cloud APIs. As a single integrated service, Azure App Service lets you combine various components (like) websites, REST APIs, and business processes) into a single solution.
 
-## Why offer Azure App Service on Azure Stack?
+## Why offer Azure App Service on Azure Stack Hub?
 
 Here are some key features and capabilities of App Service:
 
@@ -44,7 +42,7 @@ App Service offers several app types, each of which is intended to host a specif
 - [API Apps](/azure/app-service/overview) for hosting REST APIs.
 - Azure Functions for hosting event driven, serverless workloads.
 
-The word *app* refers to the hosting resources dedicated to running a workload. Taking *web app* as an example, you're probably accustomed to thinking of a web app as both the compute resources and app code that together deliver functionality to a browser. In App Service, a web app is the compute resource that Azure Stack provides for hosting your app code.
+The word *app* refers to the hosting resources dedicated to running a workload. Taking *web app* as an example, you're probably accustomed to thinking of a web app as both the compute resources and app code that together deliver functionality to a browser. In App Service, a web app is the compute resource that Azure Stack Hub provides for hosting your app code.
 
 Your app can be composed of multiple App Service apps of different kinds. For example, if your app is composed of a web front end and a REST API back end, you can:
 
@@ -61,11 +59,11 @@ In Azure, there are shared and dedicated workers. A shared worker supports high-
 
 ## Portal features
 
-App Service on Azure Stack uses the same user interface that Azure App Service uses. The same is true with the back end. However, some features are disabled in Azure Stack. The Azure-specific expectations or services that those features require aren't currently available in Azure Stack.
+App Service on Azure Stack Hub uses the same user interface that Azure App Service uses. The same is true with the back end. However, some features are disabled in Azure Stack Hub. The Azure-specific expectations or services that those features require aren't currently available in Azure Stack Hub.
 
 ## Next steps
 
-- [Prerequisites for deploying App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md)
+- [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md)
 - [Install the App Service resource provider](azure-stack-app-service-deploy.md)
 
 You can also try out other [platform as a service (PaaS) services](service-plan-offer-subscription-overview.md), such as the [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md) and the [MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md).

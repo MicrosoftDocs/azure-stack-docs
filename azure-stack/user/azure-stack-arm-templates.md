@@ -1,6 +1,6 @@
 ---
-title: Use Azure Resource Manager templates in Azure Stack | Microsoft Docs
-description: Learn how to use Azure Resource Manager templates in Azure Stack to provision resources.
+title: Use Azure Resource Manager templates in Azure Stack Hub | Microsoft Docs
+description: Learn how to use Azure Resource Manager templates in Azure Stack Hub to provision resources.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -20,13 +20,11 @@ ms.reviewer: justini
 ms.lastreviewed: 11/14/2018
 
 ---
-# Use Azure Resource Manager templates in Azure Stack
-
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Use Azure Resource Manager templates in Azure Stack Hub
 
 You can use Azure Resource Manager templates to deploy and provision all the resources for your application in a single, coordinated operation. You can also redeploy templates to make changes to the resources in a resource group.
 
-These templates can be deployed with the Microsoft Azure Stack portal, PowerShell, the command line, and Visual Studio.
+These templates can be deployed with the Microsoft Azure Stack Hub portal, PowerShell, the command line, and Visual Studio.
 
 The following quickstart templates are [available on GitHub](https://aka.ms/azurestackgithub):
 

@@ -1,6 +1,6 @@
 ---
-title: Manage access to resources in Azure Stack with role-based access control | Microsoft Docs
-description: Learn how to manage role-based access control (RBAC) permissions as an admin or a tenant in Azure Stack.
+title: Manage access to resources in Azure Stack Hub with role-based access control | Microsoft Docs
+description: Learn how to manage role-based access control (RBAC) permissions as an admin or a tenant in Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -20,22 +20,20 @@ ms.lastreviewed: 03/11/2019
 
 ---
 
-# Manage access to resources in Azure Stack with role-based access control
+# Manage access to resources in Azure Stack Hub with role-based access control
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
-Azure Stack supports role-based access control (RBAC), the same [security model for access management](/azure/role-based-access-control/overview) that Microsoft Azure uses. You can use RBAC to manage user, group, or app access to subscriptions, resources, and services.
+Azure Stack Hub supports role-based access control (RBAC), the same [security model for access management](/azure/role-based-access-control/overview) that Microsoft Azure uses. You can use RBAC to manage user, group, or app access to subscriptions, resources, and services.
 
 ## Basics of access management
 
 Role-based access control (RBAC) provides fine-grained access control that you can use to secure your environment. You give users the exact permissions they need by assigning an RBAC role at a certain scope. The scope of the role assignment can be a subscription, a resource group, or a single resource. For more detailed information about access management, see the [Role-Based Access Control in the Azure portal](/azure/role-based-access-control/overview) article.
 
 > [!NOTE]
-> When Azure Stack is deployed using Active Directory Federation Services as the identity provider, only Universal Groups are supported for RBAC scenarios.
+> When Azure Stack Hub is deployed using Active Directory Federation Services as the identity provider, only Universal Groups are supported for RBAC scenarios.
 
 ### Built-in roles
 
-Azure Stack has three basic roles that you can apply to all resource types:
+Azure Stack Hub has three basic roles that you can apply to all resource types:
 
 * **Owner**: can manage everything, including access to resources.
 * **Contributor**: can manage everything, except access to resources.
@@ -43,7 +41,7 @@ Azure Stack has three basic roles that you can apply to all resource types:
 
 ### Resource hierarchy and inheritance
 
-Azure Stack has the following resource hierarchy:
+Azure Stack Hub has the following resource hierarchy:
 
 * Each subscription belongs to one directory.
 * Each resource group belongs to one subscription.

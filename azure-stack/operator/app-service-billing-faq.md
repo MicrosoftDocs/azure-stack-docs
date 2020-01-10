@@ -1,6 +1,6 @@
 ---
-title: Azure App Service on Azure Stack billing overview and FAQ | Microsoft Docs
-description: Details on how Azure App Service on Azure Stack is metered and billed.
+title: Azure App Service on Azure Stack Hub billing overview and FAQ | Microsoft Docs
+description: Details on how Azure App Service on Azure Stack Hub is metered and billed.
 services: azure-stack
 documentationcenter: ''
 author: apwestgarth
@@ -20,15 +20,13 @@ ms.lastreviewed: 06/10/2019
 
 ---
 
-# Azure App Service on Azure Stack billing overview and FAQ
+# Azure App Service on Azure Stack Hub billing overview and FAQ
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
-This article shows how cloud operators are billed for offering Azure App Service on Azure Stack and how they can bill their tenants for their use of the service.
+This article shows how cloud operators are billed for offering Azure App Service on Azure Stack Hub and how they can bill their tenants for their use of the service.
 
 ## Billing overview
 
-Azure Stack cloud operators choose to deploy the Azure App Service on Azure Stack onto their Azure Stack stamp to offer the tenant capabilities of Azure App Service and Azure Functions to their customers. The Azure App Service resource provider consists of multiple types of roles that can be divided between infrastructure and worker tiers.
+Azure Stack Hub cloud operators choose to deploy the Azure App Service on Azure Stack Hub onto their Azure Stack Hub stamp to offer the tenant capabilities of Azure App Service and Azure Functions to their customers. The Azure App Service resource provider consists of multiple types of roles that can be divided between infrastructure and worker tiers.
 
 Infrastructure roles aren't billed because they're required for the core operation of the service. Infrastructure roles can be scaled out as required to support the demands of the cloud operator's tenants. The infrastructure roles are as follows:
 
@@ -56,23 +54,23 @@ This billing model enables cloud operators to provision a pool of dedicated work
 
 For example, say you have 20 workers in the small worker tier. Then if you have five customers that create two S1 App Service plans each, and they each scale the App Service plan up to two instances, you have no workers available. As a result, there's also no capacity for any of your customers or new customers to scale out or create new App Service plans. 
 
-Cloud operators can view the current number of available workers per worker tier by looking at the worker tiers in the Azure App Service configuration on Azure Stack administration.
+Cloud operators can view the current number of available workers per worker tier by looking at the worker tiers in the Azure App Service configuration on Azure Stack Hub administration.
 
 ![App Service - Worker Tiers screen][1]
 
-## See customer usage by using the Azure Stack usage service
+## See customer usage by using the Azure Stack Hub usage service
 
-Cloud operators can query the [Azure Stack Tenant Resource Usage API](azure-stack-tenant-resource-usage-api.md) to retrieve usage information for their customers. You can find all of the individual meters that App Service emits to describe tenant usage in the [Usage FAQ](azure-stack-usage-related-faq.md). These meters then are used to calculate the usage per customer subscription to calculate charges.
+Cloud operators can query the [Azure Stack Hub Tenant Resource Usage API](azure-stack-tenant-resource-usage-api.md) to retrieve usage information for their customers. You can find all of the individual meters that App Service emits to describe tenant usage in the [Usage FAQ](azure-stack-usage-related-faq.md). These meters then are used to calculate the usage per customer subscription to calculate charges.
 
 ## Frequently asked questions
 
 ### How do I license the SQL Server and file server infrastructure required in the prerequisites?
 
-Licensing for SQL Server and file server infrastructure, required by the Azure App Service resource provider, is covered in the Azure App Service on Azure Stack [Before you get started](azure-stack-app-service-before-you-get-started.md#licensing-concerns-for-required-file-server-and-sql-server) article.
+Licensing for SQL Server and file server infrastructure, required by the Azure App Service resource provider, is covered in the Azure App Service on Azure Stack Hub [Before you get started](azure-stack-app-service-before-you-get-started.md#licensing-concerns-for-required-file-server-and-sql-server) article.
 
 ### The Usage FAQ lists the tenant meters but not the prices for those meters. Where can I find them?
 
-As a cloud operator, you're free to apply your own pricing model to your customers. The usage service provides the usage metering. You can then use the meter quantity to charge your customers based on the pricing model you determine. The ability to set pricing enables operators to differentiate from other Azure Stack operators.
+As a cloud operator, you're free to apply your own pricing model to your customers. The usage service provides the usage metering. You can then use the meter quantity to charge your customers based on the pricing model you determine. The ability to set pricing enables operators to differentiate from other Azure Stack Hub operators.
 
 ### As a CSP, how can I offer free and shared SKUs for customers to try out the service?
 
@@ -84,17 +82,17 @@ You can then choose to create a quota, for use in a plan, which only offers free
 
 ## Sample scripts to assist with billing
 
-The Azure App Service team created sample PowerShell scripts to assist with querying the Azure Stack usage service. Cloud operators can use these sample scripts to prepare their own billing for their tenants. The sample scripts are in the [Azure Stack Tools repository](https://github.com/Azure/AzureStack-tools) in GitHub. The App Service scripts are in the [AppService folder under Usage](https://github.com/Azure/AzureStack-Tools/tree/master/Usage/AppService).
+The Azure App Service team created sample PowerShell scripts to assist with querying the Azure Stack Hub usage service. Cloud operators can use these sample scripts to prepare their own billing for their tenants. The sample scripts are in the [Azure Stack Hub Tools repository](https://github.com/Azure/AzureStack-tools) in GitHub. The App Service scripts are in the [AppService folder under Usage](https://github.com/Azure/AzureStack-Tools/tree/master/Usage/AppService).
 
 The sample scripts available are:
 
-- [Get-AppServiceBillingRecords](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Get-AppServiceBillingRecords.ps1): This sample fetches Azure App Service on Azure Stack billing records from the Azure Stack Usage API.
-- [Get-AppServiceSubscriptionUsage](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Get-AppServiceSubscriptionUsage.ps1): This sample calculates Azure App Service on Azure Stack usage amounts per subscription. This script calculates usage amounts based on data from the Usage API and the prices provided per meter by the cloud operator.
+- [Get-AppServiceBillingRecords](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Get-AppServiceBillingRecords.ps1): This sample fetches Azure App Service on Azure Stack Hub billing records from the Azure Stack Hub Usage API.
+- [Get-AppServiceSubscriptionUsage](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Get-AppServiceSubscriptionUsage.ps1): This sample calculates Azure App Service on Azure Stack Hub usage amounts per subscription. This script calculates usage amounts based on data from the Usage API and the prices provided per meter by the cloud operator.
 - [Suspend-UserSubscriptions](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Suspend-UserSubscriptions.ps1): This sample suspends or enables subscriptions based on usage limits specified by the cloud operator.
 
 ## Next steps
 
-- [Azure Stack Tenant Resource Usage API](azure-stack-tenant-resource-usage-api.md)
+- [Azure Stack Hub Tenant Resource Usage API](azure-stack-tenant-resource-usage-api.md)
 
 <!--Image references-->
 [1]: ./media/app-service-billing-faq/app-service-worker-tiers.png

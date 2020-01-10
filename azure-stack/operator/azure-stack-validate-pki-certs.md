@@ -1,6 +1,6 @@
 ---
-title: Validate Azure Stack Public Key Infrastructure certificates for Azure Stack integrated systems deployment | Microsoft Docs
-description: Describes how to validate the Azure Stack PKI certificates for Azure Stack integrated systems. Covers using the Azure Stack Certificate Checker tool.
+title: Validate Azure Stack Hub Public Key Infrastructure certificates for Azure Stack Hub integrated systems deployment | Microsoft Docs
+description: Describes how to validate the Azure Stack Hub PKI certificates for Azure Stack Hub integrated systems. Covers using the Azure Stack Hub Certificate Checker tool.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,9 +18,9 @@ ms.reviewer: ppacent
 ms.lastreviewed: 01/08/2019
 ---
 
-# Validate Azure Stack PKI certificates
+# Validate Azure Stack Hub PKI certificates
 
-The Azure Stack Readiness Checker tool described in this article is available [from the PowerShell Gallery](https://aka.ms/AzsReadinessChecker). You can use the tool to validate that  the [generated PKI certificates](azure-stack-get-pki-certs.md) are suitable for pre-deployment. Validate certificates by leaving  enough time to test and reissue certificates if necessary.
+The Azure Stack Hub Readiness Checker tool described in this article is available [from the PowerShell Gallery](https://aka.ms/AzsReadinessChecker). You can use the tool to validate that  the [generated PKI certificates](azure-stack-get-pki-certs.md) are suitable for pre-deployment. Validate certificates by leaving  enough time to test and reissue certificates if necessary.
 
 The Readiness Checker tool performs the following certificate validations:
 
@@ -50,16 +50,16 @@ The Readiness Checker tool performs the following certificate validations:
 
 ## Prerequisites
 
-Your system should meet the following prerequisites before validating PKI certificates for an Azure Stack deployment:
+Your system should meet the following prerequisites before validating PKI certificates for an Azure Stack Hub deployment:
 
-- Microsoft Azure Stack Readiness Checker
+- Microsoft Azure Stack Hub Readiness Checker
 - SSL Certificate(s) exported following the [preparation instructions](azure-stack-prepare-pki-certs.md)
 - DeploymentData.json
 - Windows 10 or Windows Server 2016
 
 ## Perform core services certificate validation
 
-Use these steps to prepare and to validate the Azure Stack PKI certificates for deployment and secret rotation:
+Use these steps to prepare and to validate the Azure Stack Hub PKI certificates for deployment and secret rotation:
 
 1. Install **AzsReadinessChecker** from a PowerShell prompt (5.1 or above), by running the following cmdlet:
 
@@ -90,7 +90,7 @@ Use these steps to prepare and to validate the Azure Stack PKI certificates for 
         - `C:\Certificates\Deployment\Admin Portal\CustomerCertificate.pfx`
         - `C:\Certificates\Deployment\ARM Admin\CustomerCertificate.pfx`
 
-3. In the PowerShell window, change the values of **RegionName** and **FQDN** appropriate to the Azure Stack environment and run the following:
+3. In the PowerShell window, change the values of **RegionName** and **FQDN** appropriate to the Azure Stack Hub environment and run the following:
 
     ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
@@ -144,7 +144,7 @@ Use these steps to prepare and to validate the Azure Stack PKI certificates for 
     Invoke-AzsCertificateValidation Completed
     ```
 
-    To validate certificates for other Azure Stack services change the value for ```-CertificateType```. For example:
+    To validate certificates for other Azure Stack Hub services change the value for ```-CertificateType```. For example:
 
     ```powershell  
     # App Services
@@ -154,7 +154,7 @@ Use these steps to prepare and to validate the Azure Stack PKI certificates for 
     Invoke-AzsCertificateValidation -CertificateType DBAdapter -CertificatePath C:\Certificates\DBAdapter -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
 
     # EventHub
-    Invoke-AzsCertificateValidation -CertificateType EventHub -CertificatePath C:\Certificates\EventHub -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
+    Invoke-AzsCertificateValidation -CertificateType EventHubs -CertificatePath C:\Certificates\EventHub -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
 
     # IoTHub
     Invoke-AzsCertificateValidation -CertificateType IoTHub -CertificatePath C:\Certificates\IoTHub -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
@@ -253,11 +253,11 @@ Each folder should contain a single PFX file for the certificate type, if a cert
 
 ## Using validated certificates
 
-Once your certificates have been validated by the AzsReadinessChecker, you are ready to use them in your Azure Stack deployment or for Azure Stack secret rotation. 
+Once your certificates have been validated by the AzsReadinessChecker, you are ready to use them in your Azure Stack Hub deployment or for Azure Stack Hub secret rotation. 
 
- - For deployment, securely transfer your certificates to your deployment engineer so that they can copy them onto the deployment host as specified in the [Azure Stack PKI requirements documentation](azure-stack-pki-certs.md).
- - For secret rotation, you can use the certificates to update old certificates for your Azure Stack environment's public infrastructure endpoints by following the [Azure Stack Secret Rotation documentation](azure-stack-rotate-secrets.md).
- - For PaaS services, you can use the certificates to install SQL, MySQL, and App Services Resource Providers in Azure Stack by following the [Overview of offering services in Azure Stack documentation](service-plan-offer-subscription-overview.md).
+ - For deployment, securely transfer your certificates to your deployment engineer so that they can copy them onto the deployment host as specified in the [Azure Stack Hub PKI requirements documentation](azure-stack-pki-certs.md).
+ - For secret rotation, you can use the certificates to update old certificates for your Azure Stack Hub environment's public infrastructure endpoints by following the [Azure Stack Hub Secret Rotation documentation](azure-stack-rotate-secrets.md).
+ - For PaaS services, you can use the certificates to install SQL, MySQL, and App Services Resource Providers in Azure Stack Hub by following the [Overview of offering services in Azure Stack Hub documentation](service-plan-offer-subscription-overview.md).
 
 ## Next steps
 
