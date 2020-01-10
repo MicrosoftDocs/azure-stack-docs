@@ -20,8 +20,6 @@ ms.lastreviewed: 11/06/2019
 ---
 # Use data transfer tools in Azure Stack Hub Storage
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Azure Stack Hub provides a set of storage services for disks, blobs, tables, queues, and account management functions. Some Azure Storage tools are available if you want to manage or move data to or from Azure Stack Hub Storage. This article provides an overview of the available tools.
 
 Your requirements determine which of the following tools works best for you:

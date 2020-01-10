@@ -21,8 +21,6 @@ ms.lastreviewed: 09/19/2019
 
 # Download Azure Stack Hub tools from GitHub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 **AzureStack-Tools** is a [GitHub repository](https://github.com/Azure/AzureStack-Tools) that hosts PowerShell modules for managing and deploying resources to Azure Stack Hub. If you're planning to establish VPN connectivity, you can download these PowerShell modules to the Azure Stack Development Kit (ASDK), or to a Windows-based external client. To get these tools, clone the GitHub repository or download the **AzureStack-Tools** folder by running the following script:
 
 ```powershell

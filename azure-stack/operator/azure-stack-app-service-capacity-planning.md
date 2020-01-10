@@ -21,8 +21,6 @@ ms.lastreviewed: 03/13/2019
 ---
 # Capacity planning for App Service server roles in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 To set up a production-ready deployment of Azure App Service on Azure Stack Hub, you must plan for the capacity you expect the system to support.  
 
 This article provides guidance for the minimum number of compute instances and compute SKUs you should use for any production deployment.

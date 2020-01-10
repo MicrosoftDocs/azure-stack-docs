@@ -20,8 +20,6 @@ ms.lastreviewed: 11/11/2019
 
 # Supported metrics for Azure Monitor on Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems*
-
 Metrics from Azure monitor on Azure Stack Hub are retrieved in the same way as they are in global Azure. You can create your measures in the portal, get them from the REST API, or query them with PowerShell or CLI.
 
 The following tables list the metrics available with Azure Monitor's metric pipeline on Azure Stack Hub. To query and access these metrics, use the **2018-01-01** api-version version of the API profile. For more information about API profiles and Azure Stack Hub, see [Manage API version profiles in Azure Stack Hub](azure-stack-version-profiles.md).

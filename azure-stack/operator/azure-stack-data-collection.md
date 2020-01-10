@@ -20,7 +20,6 @@ ms.lastreviewed: 06/10/2019
 
 ---
 # Azure Stack Hub log and customer data handling 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*  
 
 To the extent Microsoft is a processor or subprocessor of personal data in connection with Azure Stack Hub, Microsoft makes to all customers, effective May 25, 2018, the following commitments:
 

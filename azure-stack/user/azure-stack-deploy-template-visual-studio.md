@@ -23,8 +23,6 @@ ms.lastreviewed: 05/21/2019
 
 # Deploy templates in Azure Stack Hub using Visual Studio
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You can use Visual Studio to deploy Azure Resource Manager templates to Azure Stack Hub.
 
 ## To deploy a template

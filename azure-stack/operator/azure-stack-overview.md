@@ -46,8 +46,6 @@ The Azure Stack Hub architecture lets you provide Azure services at the edge for
 
 ## Deployment options
 
-<!---At deployment, move out asdk, break into connected/disc…then explain  roles operator vs user < replace how is Azure Stack Hub managed with role description, rbac, reporting, high availability take out.--->
-
 Azure Stack Hub integrated systems are offered through a partnership of Microsoft and hardware partners, creating a solution that offers cloud-paced innovation and computing management simplicity. Because Azure Stack Hub is offered as an integrated hardware and software system, you have the flexibility and control you need, along with the ability to innovate from the cloud. 
 
 An Azure Stack Hub integrated system can range in size from 4-16 servers, called a *scale unit*. Integrated systems are jointly supported by the hardware partner and Microsoft. The following diagram shows an example of a scale unit. 

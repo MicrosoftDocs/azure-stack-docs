@@ -21,8 +21,6 @@ ms.lastreviewed: 11/21/2019
 
 # Troubleshoot the AKS engine on Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You may encounter an issue when deploying or working with the AKS engine on Azure Stack Hub. This article looks at the steps to troubleshoot your deployment of the AKS engine, collect information about your AKS engine, collect Kubernetes logs, review custom script extension error codes, and instructions on opening a GitHub issue for the AKS engine.
 
 ## Troubleshoot the AKS engine install

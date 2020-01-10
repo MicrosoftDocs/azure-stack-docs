@@ -21,8 +21,6 @@ ms.lastreviewed: 11/21/2019
 
 # Deploy a Kubernetes cluster with the AKS engine on Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You can deploy a Kubernetes cluster on Azure Stack Hub from a client VM running the AKS engine. In this article, we look at writing a cluster specification, deploying a cluster with the `apimodel.json` file, and checking your cluster by deploying MySQL with Helm.
 
 ## Define a cluster specification

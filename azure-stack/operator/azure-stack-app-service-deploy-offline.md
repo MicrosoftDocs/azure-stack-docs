@@ -231,9 +231,9 @@ After you deploy and register the Azure App Service resource provider, test it t
 >
 > You *must* have a tenant subscription to create apps that use Azure App Service on Azure Stack Hub. The only capabilities that a service admin can complete within the administrator portal are related to the resource provider administration of Azure App Service. These capabilities include adding capacity, configuring deployment sources, and adding Worker tiers and SKUs.
 >
-> As of the third technical preview, to create web, API, and Azure Functions apps, you must use the tenant portal and have a tenant subscription.
+> As of the third technical preview, to create web, API, and Azure Functions apps, you must use the user portal and have a tenant subscription.
 
-1. In the Azure Stack Hub tenant portal, select **+ Create a resource** > **Web + Mobile** > **Web App**.
+1. In the Azure Stack Hub user portal, select **+ Create a resource** > **Web + Mobile** > **Web App**.
 
 1. On the **Web App** blade, type a name in the **Web app** box.
 
@@ -251,7 +251,7 @@ After you deploy and register the Azure App Service resource provider, test it t
 
 ## Deploy a WordPress, DNN, or Django website (optional)
 
-1. In the Azure Stack Hub tenant portal, select **+**, go to Azure Marketplace, deploy a Django website, and wait for successful completion. The Django web platform uses a file system-based database. It doesn't require any additional resource providers, such as SQL or MySQL.
+1. In the Azure Stack Hub user portal, select **+**, go to Azure Marketplace, deploy a Django website, and wait for successful completion. The Django web platform uses a file system-based database. It doesn't require any additional resource providers, such as SQL or MySQL.
 
 1. If you also deployed a MySQL resource provider, you can deploy a WordPress website from Azure Marketplace. When you're prompted for database parameters, enter the user name as *User1\@Server1*, with the user name and server name of your choice.
 

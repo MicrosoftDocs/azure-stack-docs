@@ -22,8 +22,6 @@ ms.lastreviewed: 12/10/2019
 
 # Azure Stack Hub update activity checklist
 
-*Applies to: Azure Stack Hub integrated systems*
-
 Review this checklist in order to prepare for an Azure Stack Hub update. This article contains a checklist of update-related activities for Azure Stack Hub operators.
 
 ## Prepare for Azure Stack Hub update

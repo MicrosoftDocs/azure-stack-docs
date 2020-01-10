@@ -29,7 +29,6 @@ This document provides instructions on how to scale infrastructure and worker ro
 > [!NOTE]
 > If your Azure Stack Hub Environment doesn't have more than 96-GB RAM, you may have difficulties adding additional capacity.
 
-
 Azure App Service on Azure Stack Hub supports free and shared worker tiers by default. To add other worker tiers, you need to add more worker roles.
 
 If you're not sure what was deployed with the default Azure App Service on Azure Stack Hub installation, you can review additional info in the [App Service on Azure Stack Hub overview](azure-stack-app-service-overview.md).

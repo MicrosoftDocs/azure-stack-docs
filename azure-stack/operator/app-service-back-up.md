@@ -21,8 +21,6 @@ ms.lastreviewed: 03/21/2019
 ---
 # Back up App Service on Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*  
-
 This document provides instructions on how to back up App Service on Azure Stack Hub.
 
 > [!IMPORTANT]

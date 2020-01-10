@@ -21,8 +21,6 @@ ms.lastreviewed: 09/17/2019
 
 # Add tenant for usage and billing to Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems*
-
 This article shows you how to add a tenant to an Azure Stack Hub deployment managed by a Cloud Solution Provider (CSP). When the new tenant uses resources, Azure Stack Hub reports usage to their CSP subscription.
 
 CSPs often offer services to multiple end customers (tenants) on their Azure Stack Hub deployment. Adding tenants to the Azure Stack Hub registration ensures that each tenant's usage is reported and billed to the corresponding CSP subscription. If you don't complete the steps in this article, tenant usage is charged to the subscription used in the initial registration of Azure Stack Hub. Before you can add an end customer to Azure Stack Hub for usage tracking and to manage their tenant, you must configure Azure Stack Hub as a CSP. For steps and resources, see [Manage usage and billing for Azure Stack Hub as a Cloud Solution Provider](azure-stack-add-manage-billing-as-a-csp.md).

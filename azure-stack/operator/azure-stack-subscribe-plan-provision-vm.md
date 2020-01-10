@@ -13,8 +13,6 @@ ms.lastreviewed: 05/10/2019
 ---
 # Create subscriptions to offers in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 After you [create an offer](azure-stack-create-offer.md), users need a subscription to that offer before they can use it. There are two ways that users can get subscribed to an offer:
 
 - As a cloud operator, you can create a subscription for a user from within the administrator portal. Subscriptions you create can be for both public and private offers.
@@ -65,7 +63,7 @@ As a user, you can sign in to the user portal to locate and subscribe to public 
 
 ### To subscribe to an offer
 
-1. [Sign in](../asdk/asdk-connect.md) to the [Azure Stack Hub user portal](https://portal.local.azurestack.external) and select **Get a Subscription**.
+1. Sign in to the Azure Stack Hub user portal and select **Get a Subscription**.
 
    ![Get a subscription](media/azure-stack-subscribe-plan-provision-vm/image01.png)
   

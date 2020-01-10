@@ -20,8 +20,6 @@ ms.lastreviewed: 10/22/2018
 
 # Connect Azure Stack Hub to Azure using Azure ExpressRoute
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 This article describes how to connect an Azure Stack Hub virtual network to an Azure virtual network using a [Microsoft Azure ExpressRoute](/azure/expressroute/) direct connection.
 
 You can use this article as a tutorial and use the examples to set up the same test environment. Or, you can use the article as a walkthrough that guides you through setting up your own ExpressRoute environment.
@@ -80,7 +78,7 @@ To set up the Azure Stack Hub environment for the first tenant, use the followin
 
 Before you start configuring Azure Stack Hub, you need:
 
-* An Azure Stack Hub integrated system deployment or an Azure Stack Development Kit (ASDK) deployment. For information about deploying the ASDK, see the [Azure Stack Development Kit deployment quickstart](../asdk/asdk-download.md).
+* An Azure Stack Hub deployment. 
 * An offer in Azure Stack Hub that your users can subscribe to. For more information, see [Service, plan, offer, subscription overview](service-plan-offer-subscription-overview.md).
 
 ### Create network resources in Azure Stack Hub

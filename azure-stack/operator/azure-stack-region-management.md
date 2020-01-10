@@ -23,8 +23,6 @@ ms.lastreviewed: 11/27/2018
 
 # Region management in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Azure Stack Hub uses the concept of *regions*, which are logical entities comprised of the hardware resources that make up the Azure Stack Hub infrastructure. In region management, you can find all resources that are required to successfully operate the Azure Stack Hub infrastructure.
 
 One integrated system deployment (referred to as an *Azure Stack Hub cloud*) makes up a single region. Each Azure Stack Development Kit (ASDK) has one region, named **local**. If you deploy a second Azure Stack Hub integrated system, or you set up another instance of the ASDK on separate hardware, this Azure Stack Hub cloud is a different region.

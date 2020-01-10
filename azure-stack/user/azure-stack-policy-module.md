@@ -20,8 +20,6 @@ ms.lastreviewed: 03/26/2019
 
 # Manage Azure policy using the Azure Stack Hub policy module
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 The Azure Stack Hub policy module enables you to configure an Azure subscription with the same versioning and service availability as Azure Stack Hub. The module uses the [**New-AzureRmPolicyDefinition**](/powershell/module/azurerm.resources/new-azurermpolicydefinition) PowerShell cmdlet to create an Azure policy, which limits the resource types and services available in a subscription. You then create a policy assignment within the appropriate scope by using the [**New-AzureRmPolicyAssignment**](/powershell/module/azurerm.resources/new-azurermpolicyassignment) cmdlet. After configuring the policy, you can use your Azure subscription to develop apps targeted for Azure Stack Hub.
 
 ## Install the module

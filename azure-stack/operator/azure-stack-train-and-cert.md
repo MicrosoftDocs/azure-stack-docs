@@ -15,8 +15,6 @@ ms.reviewer: efemmano
 
 # Azure Stack Hub training and certification
 
-*Applies to: Azure Stack Hub integrated systems*
-
 The following training and certification opportunities are available to help you learn about Azure Stack Hub and demonstrate your Azure Stack Hub proficiency.
 
 ## Training

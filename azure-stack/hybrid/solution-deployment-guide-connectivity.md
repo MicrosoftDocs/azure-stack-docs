@@ -12,8 +12,6 @@ ms.lastreviewed: 11/05/2019
 
 # Configure hybrid cloud connectivity using Azure and Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
-
 You can access resources with security in global Azure and Azure Stack Hub using the hybrid connectivity pattern.
 
 In this solution, you'll build a sample environment to:

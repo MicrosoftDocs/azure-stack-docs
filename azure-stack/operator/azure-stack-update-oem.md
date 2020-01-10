@@ -21,8 +21,6 @@ ms.reviewer: ppacent
 
 # Apply Azure Stack Hub original equipment manufacturer (OEM) updates
 
-*Applies to: Azure Stack Hub integrated systems*
-
 You can apply original equipment manufacturer (OEM) updates to your Azure Stack Hub hardware components to receive driver and firmware improvements as well as security patches while minimizing the impact on your users. In this article, you can learn about OEM updates, OEM contact information, and how to apply an OEM update.
 
 ## Overview of OEM updates

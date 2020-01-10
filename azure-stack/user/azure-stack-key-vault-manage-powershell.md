@@ -20,8 +20,6 @@ ms.lastreviewed: 05/09/2019
 
 # Manage Key Vault in Azure Stack Hub using PowerShell
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 This article describes how to create and manage a key vault in Azure Stack Hub using PowerShell. You'll learn how to use Key Vault PowerShell cmdlets to:
 
 * Create a key vault.

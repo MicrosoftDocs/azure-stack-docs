@@ -21,8 +21,6 @@ ms.lastreviewed: 03/20/2018
 ---
 # App Service on Azure Stack Hub Update 1 release notes
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 These release notes describe improvements, fixes, and known issues in Azure App Service on Azure Stack Hub Update 1. Known issues are divided into three sections: issues directly related to deployment, issues with the update process, and issues with the build (post-installation).
 
 > [!IMPORTANT]
@@ -79,7 +77,7 @@ Azure App Service on Azure Stack Hub Update 1 includes the following improvement
     - Updated **Git for Windows** to v 2.14.1
     - Updated **Mercurial** to v4.5.0
 
-  - Added support for **HTTPS Only** feature within Custom Domain feature in the App Service Tenant Portal.
+  - Added support for **HTTPS Only** feature within Custom Domain feature in the App Service user portal.
 
   - Added validation of storage connection in the custom storage picker for Azure Functions.
 
@@ -87,7 +85,7 @@ Azure App Service on Azure Stack Hub Update 1 includes the following improvement
 
 - When creating an offline deployment package, customers will no longer receive an access denied error message when opening the folder from the App Service installer.
 
-- Resolved issues when working in the custom domains feature in the App Service tenant portal.
+- Resolved issues when working in the custom domains feature in the App Service user portal.
 
 - Prevent customers from using reserved admin names during setup.
 

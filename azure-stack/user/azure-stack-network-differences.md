@@ -16,8 +16,6 @@ ms.lastreviewed: 07/10/2019
 
 # Differences and considerations for Azure Stack Hub networking
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Azure Stack Hub networking has many of the features provided by Azure networking. However, there are some key differences that you should understand before deploying an Azure Stack Hub network.
 
 This article provides an overview of the unique considerations for Azure Stack Hub networking and its features. To learn about high-level differences between Azure Stack Hub and Azure, see the [Key considerations](azure-stack-considerations.md) article.

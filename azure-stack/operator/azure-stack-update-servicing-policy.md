@@ -21,8 +21,6 @@ ms.reviewer: ppacent
 
 # Azure Stack Hub servicing policy
 
-*Applies to: Azure Stack Hub integrated systems*
-
 This article describes the servicing policy for Azure Stack Hub integrated systems, what you must do to keep your system in a supported state, and how to get support.
 
 ## Keep your system under support

@@ -17,8 +17,6 @@ ms.lastreviewed: 10/19/2019
 
 # Back up your storage accounts on Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 This article looks at protection and recovery of storage accounts within an Azure Storage accounts on Azure Stack Hub.
 
 ## Elements of the solution
