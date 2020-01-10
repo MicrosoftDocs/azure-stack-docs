@@ -21,8 +21,6 @@ ms.lastreviewed: 01/11/2019
 ---
 # Deploy App Service in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 This article describes how to deploy App Service in Azure Stack Hub.
 
 > [!IMPORTANT]
@@ -211,7 +209,7 @@ After you deploy and register the App Service resource provider, test it to make
 >
 >You *must* have a tenant subscription to create apps that use App Service on Azure Stack Hub. The only tasks that a service admin can complete in the administrator portal are related to the resource provider administration of App Service. This includes adding capacity, configuring deployment sources, and adding Worker tiers and SKUs.
 >
->To create web, API, and Azure Functions apps, you must use the tenant portal and have a tenant subscription.
+>To create web, API, and Azure Functions apps, you must use the user portal and have a tenant subscription.
 >
 
 To create a test web app, follow these steps:
@@ -234,7 +232,7 @@ To create a test web app, follow these steps:
 
 ## Deploy a WordPress, DNN, or Django website (optional)
 
-1. In the Azure Stack Hub tenant portal, select **+**, go to the Azure Marketplace, deploy a Django website, and then wait for the deployment to finish. The Django web platform uses a file system-based database. It doesn't require any additional resource providers, such as SQL or MySQL.
+1. In the Azure Stack Hub user portal, select **+**, go to the Azure Marketplace, deploy a Django website, and then wait for the deployment to finish. The Django web platform uses a file system-based database. It doesn't require any additional resource providers, such as SQL or MySQL.
 
 2. If you also deployed a MySQL resource provider, you can deploy a WordPress website from the Marketplace. When you're prompted for database parameters, enter the user name as *User1\@Server1*, with the user name and server name of your choice.
 

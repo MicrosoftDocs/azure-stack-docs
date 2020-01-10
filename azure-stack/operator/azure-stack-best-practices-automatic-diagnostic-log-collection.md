@@ -21,9 +21,6 @@ ms.lastreviewed: 07/25/2019
 ---
 # Best practices for automatic Azure Stack Hub log collection 
 
-*Applies to: Azure Stack Hub integrated systems*
-
-
 This topic covers best practices for managing automatic diagnostic log collection for Azure Stack Hub. 
 
 ## Collecting logs from multiple Azure Stack Hub systems

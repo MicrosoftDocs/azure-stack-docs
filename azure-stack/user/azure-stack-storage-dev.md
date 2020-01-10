@@ -15,8 +15,6 @@ ms.lastreviewed: 02/27/2019
 
 # Get started with Azure Stack Hub storage development tools
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Microsoft Azure Stack Hub provides a set of storage services that includes blob, table, and queue storage.
 
 Use this article as a guide to get started using Azure Stack Hub storage development tools. You can find more detailed information and sample code in corresponding Azure storage tutorials.

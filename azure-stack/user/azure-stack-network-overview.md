@@ -15,8 +15,6 @@ ms.lastreviewed: 01/14/2019
 ---
 # Introduction to Azure Stack Hub networking
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Azure Stack Hub provides different kinds of networking capabilities that can be used together or separately:
 
 - **Connectivity between Azure Stack Hub resources**  

@@ -22,8 +22,6 @@ ms.lastreviewed: 05/21/2019
 
 # Develop templates for Azure Stack Hub with Azure Resource Manager
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 As you develop your app, it is important to have template portability between Azure and Azure Stack Hub. This article provides considerations for developing [Azure Resource Manager templates](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf). With these templates, you can prototype your app and test deployment in Azure without access to an Azure Stack Hub environment.
 
 ## Resource provider availability

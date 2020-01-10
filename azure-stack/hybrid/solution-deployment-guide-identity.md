@@ -12,8 +12,6 @@ ms.lastreviewed: 11/05/2019
 
 # Configure hybrid cloud identity for Azure and Azure Stack Hub applications
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
-
 Learn how to configure a hybrid cloud identity for your Azure and Azure Stack Hub apps.
 
 You have two options for granting access to your apps in both global Azure and Azure Stack Hub.

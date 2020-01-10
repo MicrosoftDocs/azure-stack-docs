@@ -21,7 +21,6 @@ ms.lastreviewed: 12/07/2018
 ---
 # Quota types in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
 [Quotas](service-plan-offer-subscription-overview.md#plans) define the limits of resources that a user subscription can provision or consume. For example, a quota might allow a user to create up to five virtual machines (VMs). Each resource can have its own types of quotas.
 

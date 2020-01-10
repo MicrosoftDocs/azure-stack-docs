@@ -22,8 +22,6 @@ ms.lastreviewed: 11/11/2019
 
 # Quickstart: Create a Windows Server VM by using PowerShell in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You can create a Windows Server 2016 virtual machine (VM) by using Azure Stack Hub PowerShell. Follow the steps in this article to create and use a VM. This article also gives you the steps to:
 
 * Connect to the VM with a remote client.

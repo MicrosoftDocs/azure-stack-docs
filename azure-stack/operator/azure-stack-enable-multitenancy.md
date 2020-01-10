@@ -20,8 +20,6 @@ ms.lastreviewed: 06/10/2019
 
 # Configure multi-tenancy in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You can configure Azure Stack Hub to support users from multiple Azure Active Directory (Azure AD) tenants, allowing them to use services in Azure Stack Hub. For example, consider the following scenario:
 
 - You're the service administrator of contoso.onmicrosoft.com, where Azure Stack Hub is installed.

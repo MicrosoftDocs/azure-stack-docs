@@ -17,8 +17,6 @@ ms.lastreviewed: 10/30/2019
 
 # Back up your VM on Azure Stack Hub with Commvault
 
-*Applies to: Azure Stack Hub integrated systems and the Azure Stack Development Kit*
-
 ## Overview of backing up a VM with Commvault
 
 This article walks through the configuration of Commvault Live Sync to update a recovery VM located on a separate Azure Stack Hub scale unit. This article details how to configure a common partner solution to protect and recover the data and system state of Virtual Machines deployed on Azure Stack Hub.

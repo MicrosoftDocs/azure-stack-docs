@@ -22,8 +22,6 @@ ms.lastreviewed: 05/16/2019
 
 # Use API version profiles with Ruby in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 ## Ruby and API version profiles
 
 The Ruby SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Virtual Networks, and Storage, with the Ruby language. API profiles in the Ruby SDK enable hybrid cloud development by helping you switch between global Azure resources and resources on Azure Stack Hub.

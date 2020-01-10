@@ -20,8 +20,6 @@ ms.lastreviewed: 05/16/2019
 
 # Use API version profiles with Python in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 The Python SDK supports API version profiles to target different cloud platforms, such as Azure Stack Hub and global Azure. Use API profiles in creating solutions for a hybrid cloud.
 
 The instructions in this article require a Microsoft Azure subscription. If you don't have one, you can get a [free trial account](https://go.microsoft.com/fwlink/?LinkId=330212).

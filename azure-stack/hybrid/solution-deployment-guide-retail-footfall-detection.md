@@ -12,8 +12,6 @@ ms.lastreviewed: 11/05/2019
 
 # Deploy an AI-based footfall detection solution using Azure and Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
-
 This article describes how to deploy a solution that generates insights from real world actions by using Azure, Azure Stack Hub, and the Custom Vision AI Dev Kit.
 
 In this solution, you learn how to:

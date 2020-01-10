@@ -20,8 +20,6 @@ ms.lastreviewed: 05/07/2019
 ---
 # Delegate offers in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 As an Azure Stack Hub operator, you might want to put other people in charge of signing up users and creating subscriptions. For example, if you're a service provider, you might want resellers to sign up customers and manage them on your behalf. Or, if you're part of a central IT group in an enterprise, you might want to delegate user sign-up to other IT staff.
 
 Delegation makes it easier to reach and manage more users than you can by yourself, as shown in the following figure:

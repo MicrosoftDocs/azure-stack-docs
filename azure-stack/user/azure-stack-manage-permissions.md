@@ -22,8 +22,6 @@ ms.lastreviewed: 03/11/2019
 
 # Manage access to resources in Azure Stack Hub with role-based access control
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Azure Stack Hub supports role-based access control (RBAC), the same [security model for access management](/azure/role-based-access-control/overview) that Microsoft Azure uses. You can use RBAC to manage user, group, or app access to subscriptions, resources, and services.
 
 ## Basics of access management

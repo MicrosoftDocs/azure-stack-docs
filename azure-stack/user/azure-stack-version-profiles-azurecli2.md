@@ -19,8 +19,6 @@ ms.lastreviewed: 12/10/2019
 ---
 # Manage and deploy resources to Azure Stack Hub with Azure CLI
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Follow the steps in this article to set up the Azure Command-Line Interface (CLI) to manage Azure Stack Development Kit (ASDK) resources from Linux, Mac, and Windows client platforms.
 
 ## Prepare for Azure CLI

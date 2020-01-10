@@ -21,8 +21,6 @@ ms.lastreviewed: 11/22/2019
 
 # Azure Stack Hub updates: release notes
 
-*Applies to: Azure Stack Hub integrated systems*
-
 This article describes the contents of Azure Stack Hub update packages. The update includes what's new improvements, and fixes for this release of Azure Stack Hub.
 
 To access release notes for a different version, use the version selector dropdown above the table of contents on the left.

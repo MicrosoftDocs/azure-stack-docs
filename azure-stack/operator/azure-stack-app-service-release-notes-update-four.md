@@ -21,8 +21,6 @@ ms.lastreviewed: 03/25/2019
 ---
 # App Service on Azure Stack Hub Update 4 release notes
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 These release notes describe improvements, fixes, and known issues in Azure App Service on Azure Stack Hub Update 4. Known issues are divided into three sections: issues directly related to deployment, issues with the update process, and issues with the build (post-installation).
 
 > [!IMPORTANT]
@@ -86,7 +84,7 @@ Azure App Service on Azure Stack Hub Update 4 includes the following improvement
 
 - Resolved configuration issue when Azure Stack Hub rotates the Azure Resource Manager client certificate.
 
-- Restored functionality in the cross-origin resource sharing settings in the App Service tenant portal.
+- Restored functionality in the cross-origin resource sharing settings in the App Service user portal.
 
 - Error message is now displayed in App Service administrator portal when the resource provider control plane can't connect to the configured SQL Server instance.
 

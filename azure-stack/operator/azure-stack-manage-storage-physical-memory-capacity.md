@@ -22,8 +22,6 @@ ms.lastreviewed: 01/14/2019
 
 # Manage physical memory capacity in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems*
-
 To increase the total available memory capacity in Azure Stack Hub, you can add more memory. In Azure Stack Hub, your physical server is also referred to as a *scale unit node*. All scale unit nodes that are members of a single scale unit must have the same amount of memory.
 
 > [!note]  

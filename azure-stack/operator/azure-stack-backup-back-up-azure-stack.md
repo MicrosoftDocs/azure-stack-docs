@@ -21,8 +21,6 @@ ms.lastreviewed: 09/05/2018
 ---
 # Back up Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 This article shows you how to do an on-demand backup on Azure Stack Hub. For instructions on configuring the PowerShell environment, see [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md). To sign in to Azure Stack Hub, see [Using the administrator portal in Azure Stack Hub](azure-stack-manage-portals.md).
 
 ## Start Azure Stack Hub backup

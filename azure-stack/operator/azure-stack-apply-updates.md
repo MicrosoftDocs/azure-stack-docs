@@ -21,8 +21,6 @@ ms.reviewer: ppacent
 
 # Install Azure Stack Hub Updates
 
-*Applies to: Azure Stack Hub integrated systems*
-
 You can install update packages using the **Update** blade in the Azure Stack Hub. This article walks you through the steps to update, monitor, and troubleshoot the update process. Use the Update blade to view update info, install updates, monitor update progress, review update history, and view the current Azure Stack Hub and OEM package version.
 
 You can manage updates from the administrator portal and use the **Updates** section of the dashboard to:

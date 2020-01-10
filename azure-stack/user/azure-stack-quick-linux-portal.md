@@ -17,8 +17,6 @@ ms.lastreviewed: 12/03/2018
 
 # Quickstart: Create a Linux server VM by using the Azure Stack Hub portal
 
-*Applies to: Azure Stack Hub integrated systems and the Azure Stack Development Kit*
-
 You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using the Azure Stack Hub portal. In this article, you create and use a virtual machine. This article also shows you how to:
 
 * Connect to the VM with a remote client.
