@@ -20,8 +20,6 @@ ms.lastreviewed: 05/21/2019
 
 # Create VPN gateways for Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Before you can send network traffic between your Azure virtual network and your on-premises site, you must create a virtual network (VPN) gateway for your virtual network.
 
 A VPN gateway is a type of virtual network gateway that sends encrypted traffic across a public connection. You can use VPN gateways to send traffic securely between a virtual network in Azure Stack Hub and a virtual network in Azure. You can also send traffic securely between a virtual network and another network that is connected to a VPN device.

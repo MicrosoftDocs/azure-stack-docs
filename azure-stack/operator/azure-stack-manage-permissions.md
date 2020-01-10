@@ -20,8 +20,6 @@ ms.lastreviewed: 12/23/2019
 ---
 # Set access permissions using role-based access control
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 A user in Azure Stack Hub can be a reader, owner, or contributor for each instance of a subscription, resource group, or service. For example, User A might have reader permissions to Subscription One, but have owner permissions to Virtual Machine Seven.
 
  - Reader: User can view everything, but can't make any changes.

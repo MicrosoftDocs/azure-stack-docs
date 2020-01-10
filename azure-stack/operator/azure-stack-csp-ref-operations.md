@@ -21,8 +21,6 @@ ms.lastreviewed: 10/14/2019
 
 # Register tenants for usage tracking in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems*
-
 This article contains details about registration operations. You can use these operations to:
 
 - Manage tenant registrations

@@ -21,8 +21,6 @@ ms.lastreviewed: 02/08/2019
 ---
 # Infrastructure Backup Service best practices
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Follow these best practices when you deploy and manage Azure Stack Hub to help mitigate data loss if there's a catastrophic failure.
 
 Review the best practices regularly to verify that your installation is still in compliance when changes are made to the operation flow. If you come across any issues while implementing these best practices, contact Microsoft Support for help.

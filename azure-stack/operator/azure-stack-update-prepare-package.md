@@ -21,8 +21,6 @@ ms.reviewer: ppacent
 
 # Prepare an Azure Stack Hub update package
 
-*Applies to: Azure Stack Hub integrated systems*
-
 This article provides an overview of preparing Azure Stack Hub update packages so that they can be used to update your Azure Stack Hub  environment. This process consists of:
 
 - [Downloading the update package](#download-the-update-package)

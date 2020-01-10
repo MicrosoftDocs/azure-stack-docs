@@ -20,8 +20,6 @@ ms.lastreviewed: 01/18/2019
 
 # Create VM disk storage in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 This article describes how to create virtual machine (VM) disk storage by using the Azure Stack Hub portal or by using PowerShell.
 
 ## Overview

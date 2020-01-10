@@ -15,8 +15,6 @@ ms.lastreviewed: 06/17/2019
 
 # Configure Azure Stack Hub security controls
 
-*Applies to: Azure Stack Hub integrated systems*
-
 This article explains the security controls that can be changed in Azure Stack Hub and highlights the tradeoffs where applicable.
 
 Azure Stack Hub architecture is built on two security principle pillars: assume breach and hardened by default. For more information Azure Stack Hub security, see [Azure Stack Hub infrastructure security posture](azure-stack-security-foundations.md). While the default security posture of Azure Stack Hub is production-ready, there are some deployment scenarios that require additional hardening.

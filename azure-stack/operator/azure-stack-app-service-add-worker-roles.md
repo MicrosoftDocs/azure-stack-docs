@@ -21,8 +21,6 @@ ms.lastreviewed: 06/08/2018
 ---
 # Add workers and infrastructure in App Service on Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*  
-
 This document provides instructions on how to scale infrastructure and worker roles in App Service on Azure Stack Hub. We'll cover all the steps necessary for creating additional worker roles to support apps of any size.
 
 > [!NOTE]

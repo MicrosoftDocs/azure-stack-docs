@@ -19,8 +19,6 @@ ms.lastreviewed: 01/14/2019
 ---
 # Introduction to Azure Stack Hub storage
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 ## Overview
 
 Azure Stack Hub Storage is a set of cloud storage services consistent with the services provided by Azure Storage. These services include blobs, tables, and queues.

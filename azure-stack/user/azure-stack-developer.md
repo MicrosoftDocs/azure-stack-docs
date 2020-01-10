@@ -22,8 +22,6 @@ ms.lastreviewed: 05/21/2019
 
 # Develop for Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You can get started developing apps today, even if you do not have access to an Azure Stack Hub environment. Azure Stack Hub delivers Microsoft Azure services that run in your datacenter, which means you can use the same Azure tools and processes to develop on Azure Stack Hub.
 
 ## Development considerations

@@ -19,8 +19,6 @@ ms.lastreviewed: 05/16/2019
 ---
 # Recover data in Azure Stack Hub with the Infrastructure Backup Service
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You can back up and restore configuration and service data using the Azure Stack Hub Infrastructure Backup Service. Each Azure Stack Hub installation contains an instance of the service. You can use backups created by the service for the redeployment of the Azure Stack Hub cloud to restore identity, security, and Azure Resource Manager data.
 
 Enable backup when you're ready to put your cloud into production. Don't enable backup if you plan to perform testing and validation for a long period of time.

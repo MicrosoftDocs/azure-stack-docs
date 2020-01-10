@@ -22,8 +22,6 @@ ms.lastreviewed: 05/07/2019
 
 # Deploy a template using the portal in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You can use the portal to deploy Azure Resource Manager templates to Azure Stack Hub.
 
 ## To deploy a template

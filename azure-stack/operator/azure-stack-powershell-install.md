@@ -19,8 +19,6 @@ ms.lastreviewed: 09/19/2019
 ---
 # Install PowerShell for Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Azure PowerShell provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure Stack Hub resources.
 
 To work with your cloud, you need to install Azure Stack Hub compatible PowerShell modules. Azure Stack Hub uses the **AzureRM** module instead of the newer **AzureAZ** module used in global Azure. You also need to use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.

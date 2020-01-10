@@ -21,8 +21,6 @@ ms.lastreviewed: 05/20/2019
 
 # Let your Cloud Solution Provider manage your Azure Stack Hub subscription
 
-*Applies to: Azure Stack Hub integrated systems*
-
 If you use Azure Stack Hub with a Cloud Solution Provider (CSP), you might choose to manage your own subscription to access resources in Azure and in Azure Stack Hub. You can also let the provider manage your subscription for you. This article shows you how to:
 
 * Give your service provider access to your subscription.

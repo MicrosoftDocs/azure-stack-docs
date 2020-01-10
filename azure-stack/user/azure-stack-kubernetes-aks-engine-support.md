@@ -21,8 +21,6 @@ ms.lastreviewed: 11/21/2019
 
 # Support policies for AKS engine on Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 This article provides details about technical support policies and limitations for AKS engine on Azure Stack Hub. The article also details Kubernetes Marketplace item, third-party open-source components, and security or patch management. 
 
 ## Self-managed Kubernetes clusters on Azure Stack Hub with AKS engine

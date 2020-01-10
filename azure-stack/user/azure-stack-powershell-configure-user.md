@@ -21,8 +21,6 @@ ms.lastreviewed: 10/02/2019
 
 # Connect to Azure Stack Hub with PowerShell as a user
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You can connect to Azure Stack Hub with PowerShell to manage Azure Stack Hub resources. For example, you can use PowerShell to subscribe to offers, create virtual machines (VMs), and deploy Azure Resource Manager templates.
 
 To get setup:

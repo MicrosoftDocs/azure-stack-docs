@@ -21,8 +21,6 @@ ms.lastreviewed: 11/26/2019
 
 # SQL resource provider 1.1.47.0 release notes
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 These release notes describe the improvements and known issues in SQL resource provider version 1.1.47.0.
 
 ## Build reference
@@ -34,7 +32,7 @@ Download the SQL resource provider binary and then run the self-extractor to ext
 > |     |     |
 
 > [!IMPORTANT]
-> Apply the minimum supported Azure Stack Hub update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development Kit (ASDK) before deploying the latest version of the SQL resource provider.
+> Apply the minimum supported Azure Stack Hub update to your Azure Stack Hub integrated system before deploying the latest version of the SQL resource provider.
 
 ## New features and fixes
 

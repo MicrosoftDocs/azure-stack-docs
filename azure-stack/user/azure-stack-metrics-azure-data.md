@@ -20,8 +20,6 @@ ms.lastreviewed: 12/01/2018
 
 # Use Azure Monitor on Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems*
-
 This article provides an overview of the Azure Monitor service in Azure Stack Hub. It discusses the operation of Azure Monitor and additional information on how to use Azure Monitor on Azure Stack Hub. 
 
 For an overview of Azure Monitor, see the global Azure article [Get started with Azure Monitor on Azure Stack Hub](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started).
