@@ -1,17 +1,10 @@
 ---
-title: Add a new Azure Stack Hub tenant account in Azure Active Directory | Microsoft Docs
-description: Learn how to create a tenant account in the ASDK so you can explore the tenant portal.
-services: azure-stack
-documentationcenter: ''
+title: Add a new Azure Stack Hub user account in Azure Active Directory
+description: Learn how to create a user account in Azure Active Directory, so you can explore the user portal.
 author: PatAltimore
 manager: femila
-editor: ''
 
-ms.assetid: a75d5c88-5b9e-4e9a-a6e3-48bbfa7069a7
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/20/2019
 ms.author: patricka
@@ -19,14 +12,11 @@ ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
 ---
 
-# Add a new Azure Stack Hub tenant account in Azure Active Directory
+# Add a new Azure Stack Hub user account in Azure Active Directory (Azure AD)
 
+Before you can test offers and plans, and create resources, you'll need a user account. You create a user account in your Azure AD tenant, by using the Azure portal or PowerShell.
 
-After [deploying the Azure Stack Development Kit](../asdk/asdk-install.md), you'll need a tenant user account so you can explore the tenant portal and test your offers and plans. You can create a tenant account by using the Azure portal or by using PowerShell.
-
-
-
-## Create an Azure Stack Hub tenant account by using the Azure portal
+## Create user account using the Azure portal
 
 You must have an Azure subscription to use the Azure portal.
 
@@ -53,9 +43,9 @@ You must have an Azure subscription to use the Azure portal.
     The user is created and added to your Azure AD tenant.
 
 7. Sign in to the Azure portal with the new account. Change the password when prompted.
-8. Sign in to `https://portal.local.azurestack.external` with the new account to see the tenant portal.
+8. Sign in to `https://portal.local.azurestack.external` with the new account to see the user portal.
 
-## Create an Azure Stack Hub user account using PowerShell
+## Create a user account using PowerShell
 
 If you don't have an Azure subscription, you can't use the Azure portal to add a tenant user account. In this case, you can use the Azure AD Module for Windows PowerShell instead.
 
@@ -78,7 +68,7 @@ If you don't have an Azure subscription, you can't use the Azure portal to add a
 
             $msolcred = get-credential
 
-    # Add a tenant account "Tenant Admin <username>@<yourdomainname>" with the initial password "<password>".
+    # Add a user account "Tenant Admin <username>@<yourdomainname>" with the initial password "<password>".
 
             connect-msolservice -credential $msolcred
             $user = new-msoluser -DisplayName "Tenant Admin" -UserPrincipalName <username>@<yourdomainname> -Password <password>
@@ -87,7 +77,7 @@ If you don't have an Azure subscription, you can't use the Azure portal to add a
     ```
 
 1. Sign in to Azure with the new account. Change the password when prompted.
-2. Sign in to `https://portal.local.azurestack.external` with the new account to see the tenant portal.
+2. Sign in to `https://portal.local.azurestack.external` with the new account to see the user portal.
 
 ## Next steps
 

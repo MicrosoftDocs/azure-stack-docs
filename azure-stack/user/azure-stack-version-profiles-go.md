@@ -20,8 +20,6 @@ ms.lastreviewed: 05/26/2019
 
 # Use API version profiles with Go in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 ## Go and version profiles
 
 A profile is a combination of different resource types with different versions from different services. Using a profile helps you mix and match between different resource types. Profiles can provide the following benefits:

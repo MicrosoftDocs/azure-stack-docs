@@ -20,8 +20,6 @@ ms.lastreviewed: 01/14/2019
 
 # Quickstart: Create a Linux server VM by using the Azure CLI in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and the Azure Stack Development Kit*
-
 You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using the Azure CLI. In this article, you create and use a virtual machine. This article also shows you how to:
 
 * Connect to the virtual machine with a remote client.

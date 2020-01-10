@@ -19,8 +19,6 @@ ms.lastreviewed: 11/05/2018
 ---
 # Monitor updates in Azure Stack Hub using the privileged endpoint
 
-*Applies to: Azure Stack Hub integrated systems*
-
 You can use the [privileged endpoint](azure-stack-privileged-endpoint.md) to monitor the progress of an Azure Stack Hub update run. You can also use the privileged endpoint to resume a failed update run from the last successful step should the Azure Stack Hub portal become unavailable. Using the Azure Stack Hub portal is the recommended method to manage updates in Azure Stack Hub.
 
 The following new PowerShell cmdlets for update management are included in the 1710 update for Azure Stack Hub integrated systems.

@@ -20,8 +20,6 @@ ms.reviewer:
 ---
 # App Service on Azure Stack Hub update 7 release notes
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub Update 7 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
 
 > [!IMPORTANT]

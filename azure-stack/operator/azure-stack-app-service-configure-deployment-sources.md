@@ -22,8 +22,6 @@ ms.lastreviewed: 10/15/2018
 
 # Configure deployment sources for App Services on Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 App Service on Azure Stack Hub supports on-demand deployment from multiple source control providers. This feature lets app developers deploy direct from their source control repositories. If users want to configure App Service to connect to their repositories, a cloud operator must first configure the integration between App Service on Azure Stack Hub and the source control provider.  
 
 In addition to local Git, the following source control providers are supported:

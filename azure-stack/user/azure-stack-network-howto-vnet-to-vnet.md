@@ -21,7 +21,7 @@ This article describes how to create a connection between two virtual networks i
 
 ## Prerequisites
 
--   Access to an Azure Stack Hub integrated system or ASDK with available capacity to deploy the required compute, network, and resource requirements needed for this solution.
+-   Access to a system with available capacity to deploy the required compute, network, and resource requirements needed for this solution.
 
 -  A network virtual appliance (NVA) solution downloaded and published to the Azure Stack Hub Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the [Fortinet FortiGate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-FortiGate-singlevm).
 

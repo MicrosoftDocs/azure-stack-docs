@@ -21,8 +21,6 @@ ms.lastreviewed: 01/02/2020
 ---
 # Azure Marketplace items available for Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit.*
-
 ## Virtual Machine extensions
 
 Whenever there are updates to virtual machine (VM) extensions you use, you should download them. Extensions shipped in the product don't update in the normal patch and update process, so check for updates frequently. Other extensions are only available through Marketplace Management.

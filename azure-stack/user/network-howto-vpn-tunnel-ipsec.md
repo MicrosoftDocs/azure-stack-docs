@@ -17,8 +17,6 @@ ms.lastreviewed: 09/19/2019
 
 # How to create a VPN Tunnel using IPSEC  in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You can use the Azure Stack Hub Resource Manager template in this solution to connect two Azure Stack Hub VNets within the same Azure Stack Hub environment. You [can't connect Azure Stack Hub VNets](https://docs.microsoft.com/azure-stack/user/azure-stack-network-differences) using the built-in Virtual Network Gateway. For now, you must use network virtual appliances (NVA)s to create a VPN tunnel between two Azure Stack Hub VNets. The solution template deploys two Windows Server 2016 VMs with RRAS installed. The solution configures the two RRAS servers to use a S2SVPN IKEv2 tunnel between the two VNETs. The appropriate NSG and UDR rules are created to allow routing between the subnets on each VNET designated as **internal** 
 
 This solution is the foundation that will allow VPN Tunnels to be created not only within an Azure Stack Hub instance but also between Azure Stack Hub Instances and to other resources such as on-premises networks with the use of the Windows RRAS S2S VPN Tunnels.
@@ -29,7 +27,7 @@ You can find the templates in the [Azure Intelligent Edge Patterns](https://gith
 
 ## Requirements
 
-- ASDK or Azure Stack Hub Integrated System with latest updates applied. 
+- A system deployed with latest updates applied. 
 - Required Azure Stack Hub Marketplace items:
     -  Windows Server 2016 Datacenter or Windows Server 2019 Datacenter (latest build recommended)
 	-  Custom Script Extension

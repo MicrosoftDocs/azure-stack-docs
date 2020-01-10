@@ -21,8 +21,6 @@ ms.lastreviewed: 03/21/2019
 ---
 # App Service recovery on Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*  
-
 This topic provides instructions on what actions to take for App Service disaster recovery.
 
 The following actions must be taken to recover App Service on Azure Stack Hub from backup:

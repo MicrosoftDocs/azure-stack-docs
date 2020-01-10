@@ -23,8 +23,6 @@ ms.lastreviewed: 10/25/2018
 
 ## Azure backup infrastructure
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Azure Stack Hub consists of many services that comprise the portal (Azure Resource Manager) and the overall infrastructure management experience. The app-like management experience of Azure Stack Hub focuses on reducing the complexity exposed to the operator of the solution.
 
 Infrastructure Backup Service is designed to internalize the complexity of backing up and restoring data for infrastructure services, ensuring operators can focus on managing the solution and maintaining an SLA to users.

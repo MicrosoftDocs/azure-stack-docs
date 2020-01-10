@@ -12,8 +12,6 @@ ms.lastreviewed: 11/05/2019
 
 # Create a geo-distributed app solution to direct traffic with Azure and Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
-
 Learn how to direct traffic to specific endpoints based on various metrics using the geo-distributed apps pattern. Creating a Traffic Manager profile with geographic-based routing and endpoint configuration ensures information is routed to endpoints based on regional requirements, corporate and international regulation, and your data needs.
 
 In this solution, you'll build a sample environment to:

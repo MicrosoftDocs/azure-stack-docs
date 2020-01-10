@@ -20,8 +20,6 @@ ms.reviewer:
 ---
 # App Service on Azure Stack Hub update 6 release notes
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub Update 6 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
 
 > [!IMPORTANT]
@@ -111,7 +109,7 @@ In order to reach the deployment options and deployment credentials user experie
 
 - Azure Function Monitoring continually shows "Loading" in the portal
 
-When you attempt to monitor individual Functions, in the tenant portal, you will see no invocation log, success count, or error count.  To re-enable this functionality, go to your **Function App**, go to **Platform Features**, and go to **Application settings**.  Add a new app setting - name **AzureWebJobsDashboard** and set the value to the same value as set in AzureWebJobsStorage.  Then go to the Monitor view on your function and you will see the monitoring information.
+When you attempt to monitor individual Functions, in the user portal, you will see no invocation log, success count, or error count.  To re-enable this functionality, go to your **Function App**, go to **Platform Features**, and go to **Application settings**.  Add a new app setting - name **AzureWebJobsDashboard** and set the value to the same value as set in AzureWebJobsStorage.  Then go to the Monitor view on your function and you will see the monitoring information.
 
 ## Next steps
 

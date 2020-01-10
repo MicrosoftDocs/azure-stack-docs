@@ -21,8 +21,6 @@ ms.lastreviewed: 06/07/2019
 ---
 # Use the administrator portal in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 There are two portals in Azure Stack Hub: the administrator portal and the user portal. As an Azure Stack Hub operator, you use the administrator portal for day-to-day management and operations of Azure Stack Hub.
 
 ## Access the administrator portal

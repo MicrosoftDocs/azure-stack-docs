@@ -16,8 +16,6 @@ ms.lastreviewed: 01/14/2019
 
 # Quickstart: Create a Windows server VM with the Azure Stack Hub portal
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Learn how to create a Windows Server 2016 virtual machine (VM) by using the Azure Stack Hub portal.
 
 > [!NOTE]  

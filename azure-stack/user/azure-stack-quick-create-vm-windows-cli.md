@@ -20,8 +20,6 @@ ms.lastreviewed: 01/14/2019
 
 # Quickstart: Create a Windows Server virtual machine using Azure CLI in Azure Stack Hub
 
-‎*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You can create a Windows Server 2016 virtual machine by using the Azure CLI. Follow the steps in this article to create and use a virtual machine. This article also gives you the following steps:
 
 * Connect to the virtual machine with a remote client.

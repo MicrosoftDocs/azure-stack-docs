@@ -37,8 +37,6 @@ More information can be found about MAC address pool utilization using the cmdle
 
 ## View public IP address consumption in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 As a cloud administrator, you can view:
  - The number of public IP addresses that have been allocated to tenants.
  - The number of public IP addresses that are still available for allocation.

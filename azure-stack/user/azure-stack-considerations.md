@@ -40,8 +40,6 @@ The [Azure technical documentation content](/azure) assumes that apps are being 
 
 The following table describes the high-level differences between Azure Stack Hub and Azure. Keep these differences in mind when you develop for Azure Stack Hub or use Azure Stack Hub services:
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 | Area | Azure (global) | Azure Stack Hub |
 | -------- | ------------- | ----------|
 | Who operates it? | Microsoft | Your organization or service provider.|

@@ -20,8 +20,6 @@ ms.lastreviewed: 01/14/2019
 ---
 # Deploy an Azure Stack Hub VM using a password stored in Key Vault
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 This article steps through deploying a Windows Server virtual machine (VM) using a password stored in Azure Stack Hub Key Vault. Using a key vault password is more secure than passing a plain text password.
 
 ## Overview

@@ -20,8 +20,6 @@ ms.lastreviewed: 10/15/2018
 ---
 # Azure Stack Hub telemetry
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Azure Stack Hub telemetry automatically uploads system data to Microsoft via the Connected User Experience. Microsoft teams use the data that Azure Stack Hub telemetry gathers to improve customer experiences. This data is also used for security, health, quality, and performance analysis.
 
 For an Azure Stack Hub operator, telemetry can provide valuable insights into enterprise deployments and gives you a voice that helps shape future versions of Azure Stack Hub.

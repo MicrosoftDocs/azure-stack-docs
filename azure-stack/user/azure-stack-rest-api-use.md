@@ -22,8 +22,6 @@ ms.lastreviewed: 01/14/2019
 
 # Make API requests to Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You can use the Azure Stack Hub REST APIs to automate operations such as adding a virtual machine (VM) to your Azure Stack Hub cloud.
 
 The APIs require your client to authenticate to the Microsoft Azure sign-in endpoint. The endpoint returns a token to use in the header of every request sent to the Azure Stack Hub APIs. Microsoft Azure uses Oauth 2.0.

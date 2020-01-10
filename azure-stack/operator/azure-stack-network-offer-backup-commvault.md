@@ -21,8 +21,6 @@ ms.lastreviewed: 10/28/2019
 
 # Add Commvault to the Azure Stack Hub Marketplace
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 This article walks through offering Commvault Live Sync to update a recovery VM located on a separate Azure Stack Hub scale unit. You can download and offer Commvault as a backup and replication solution for your users. 
 
 ## Notes for Commvault

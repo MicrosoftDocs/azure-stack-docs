@@ -20,8 +20,6 @@ ms.lastreviewed: 05/09/2019
 ---
 # Deploy a template with the command line in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You can use the Azure command-line interface (CLI) to deploy Azure Resource Manager templates in Azure Stack Hub. Azure Resource Manager templates deploy and set up resources for your app in a single, coordinated action.
 
 ## Deploy template
