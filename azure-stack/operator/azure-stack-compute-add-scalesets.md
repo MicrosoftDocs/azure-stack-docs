@@ -70,15 +70,9 @@ After you create a virtual machine scale set, users can update images in the sca
         }
     ```
 
-   Before scale-up can use a new image, you must download that new image:  
-
-   * When the image on Azure Stack Hub Marketplace is a newer version than the image in the scale set, download the new image that replaces the older image. After the image is replaced, a user can proceed to scale up.
-
-   * When the image version on Azure Stack Hub Marketplace is the same as the image in the scale set, delete the image that's in use in the scale set, and then download the new image. During the time between the removal of the original image and the download of the new image, you can't scale up.
-
 2. Virtual machine scale set deployment template **does not specify latest** for **version** and specifies a version number instead:  
 
-    If you download an image with a newer version (which changes the available version), the scale set can't scale up. This is by design, as the image version specified in the scale set template must be available.  
+    If the Azure Stack operator downloads an image with a newer version (and deletes the older version), the scale set can't scale up. This is by design, as the image version specified in the scale set template must be available.  
 
 For more information, see [operating system disks and images](../user/azure-stack-compute-overview.md#operating-system-disks-and-images).  
 
