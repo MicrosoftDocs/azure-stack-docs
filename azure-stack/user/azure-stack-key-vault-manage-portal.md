@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/10/2020
+ms.date: 01/10/2020
 ms.author: sethm
 ms.lastreviewed: 1/10/2020
 
