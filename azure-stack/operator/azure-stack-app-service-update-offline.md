@@ -23,7 +23,7 @@ ms.reviewer: anwestg
 *Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
 
 > [!IMPORTANT]
-> Apply the 1907 update or later to your Azure Stack Hub integrated system or deploy the latest Azure Stack hub development kit before deploying Azure App Service 1.7.
+> Apply the 1907 update or later to your Azure Stack Hub integrated system or deploy the latest Azure Stack hub development kit before deploying Azure App Service 1.8.
 
 By following the instructions in this article, you can upgrade the [Azure App Service resource provider](azure-stack-app-service-overview.md) deployed in an Azure Stack Hub environment that is:
 
@@ -31,7 +31,7 @@ By following the instructions in this article, you can upgrade the [Azure App Se
 * secured by Active Directory Federation Services (AD FS).
 
 > [!IMPORTANT]
-> Prior to running the upgrade, make sure that you have already completed the [deployment of the Azure App Service on Azure Stack Hub Resource Provider](azure-stack-app-service-deploy-offline.md) and that you have read the [release notes](azure-stack-app-service-release-notes-update-seven.md), which accompany the 1.7 release, to learn about new functionality, fixes, and any known issues that could affect your deployment.
+> Prior to running the upgrade, make sure that you have already completed the [deployment of the Azure App Service on Azure Stack Hub Resource Provider](azure-stack-app-service-deploy-offline.md) and that you have read the [release notes](azure-stack-app-service-release-notes-update-eight.md), which accompany the 1.8 release, to learn about new functionality, fixes, and any known issues that could affect your deployment.
 
 ## Run the App Service resource provider installer
 
