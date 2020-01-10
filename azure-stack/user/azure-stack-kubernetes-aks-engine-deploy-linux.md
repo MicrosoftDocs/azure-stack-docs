@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 01/10/2020
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 11/21/2019
@@ -78,9 +78,16 @@ Once your client VM is set up, check that you have installed the AKS engine.
 1. Connect to your client VM.
 2. Run the following command:
 
-    ```bash  
-    aks-engine version
-    ```
+   ```bash  
+   aks-engine version
+   ```
+
+3. If Azure Resource Manager endpoint is using a self-signed certificate, you need to explicitly add the root certificate to trusted certificate store of the machine. You can find the root certificate in the VM in this directory: /var/lib/waagent/Certificates.pem. Copy the certificate file with the following command: 
+
+   ```bash
+   sudo cp /var/lib/waagent/Certificates.pem /usr/local/share/ca-certificates/azurestackca.crt 
+   sudo update-ca-certificates
+   ```
 
 If you are unable to verify that you have installed the AKS engine on your client VM, see [Troubleshoot AKS engine install](azure-stack-kubernetes-aks-engine-troubleshoot.md)
 

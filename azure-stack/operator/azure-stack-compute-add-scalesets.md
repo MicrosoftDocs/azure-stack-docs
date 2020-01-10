@@ -37,7 +37,7 @@ On Azure Stack Hub, virtual machine scale sets do not support autoscale. You can
 ## Use the Azure Stack Hub portal
 
 >[!IMPORTANT]  
-> The information in this section applies when you use Azure Stack Hub version 1808 or later. If your version is 1807 or earlier, see [Add the virtual machine scale set (Prior to 1808)](#add-the-virtual-machine-scale-set-prior-to-version-1808).
+> The information in this section applies when you use Azure Stack Hub version 1808 or later. 
 
 1. Sign in to the Azure Stack Hub portal. Then, go to **All services**, then **Virtual machine scale sets**, and then under **COMPUTE**, select **Virtual machine scale sets**.
    ![Select virtual machine scale sets](media/azure-stack-compute-add-scalesets/all-services.png)
@@ -50,19 +50,6 @@ On Azure Stack Hub, virtual machine scale sets do not support autoscale. You can
 
 4. To see your new virtual machine scale set, go to **All resources**, search for the virtual machine scale set name, and then select its name in the search.
    ![View the virtual machine scale set](media/azure-stack-compute-add-scalesets/search.png)
-
-## Add the virtual machine scale set (prior to version 1808)
-
->[!IMPORTANT]  
-> The information in this section applies when you use a version of Azure Stack Hub prior to 1808. If you use version 1808 or later, see [Use the Azure Stack Hub portal](#use-the-azure-stack-hub-portal).
-
-1. Open the Azure Stack Hub Marketplace and connect to Azure. Select **Marketplace management**, then click **+ Add from Azure**.
-
-    ![Azure Stack Hub Marketplace management](media/azure-stack-compute-add-scalesets/image01.png)
-
-2. Add and download the virtual machine scale set marketplace item.
-
-    ![Virtual machine scale set Marketplace item](media/azure-stack-compute-add-scalesets/image02.png)
 
 ## Update images in a virtual machine scale set
 
@@ -83,17 +70,9 @@ After you create a virtual machine scale set, users can update images in the sca
         }
     ```
 
-   Before scale-up can use a new image, you must download that new image:  
-
-   * When the image on Azure Stack Hub Marketplace is a newer version than the image in the scale set, download the new image that replaces the older image. After the image is replaced, a user can proceed to scale up.
-
-   * When the image version on Azure Stack Hub Marketplace is the same as the image in the scale set, delete the image that's in use in the scale set, and then download the new image. During the time between the removal of the original image and the download of the new image, you can't scale up.
-
-   This process is required to resyndicate images that make use of the sparse file format, introduced with version 1803.
-
 2. Virtual machine scale set deployment template **does not specify latest** for **version** and specifies a version number instead:  
 
-    If you download an image with a newer version (which changes the available version), the scale set can't scale up. This is by design, as the image version specified in the scale set template must be available.  
+    If the Azure Stack operator downloads an image with a newer version (and deletes the older version), the scale set can't scale up. This is by design, as the image version specified in the scale set template must be available.  
 
 For more information, see [operating system disks and images](../user/azure-stack-compute-overview.md#operating-system-disks-and-images).  
 
@@ -106,17 +85,6 @@ You can scale the size of a virtual machine scale set to make it larger or small
 2. Use the slide bar to set the new level of scaling for this virtual machine scale set, and then click **Save**.
 
      ![Scale the virtual machine set](media/azure-stack-compute-add-scalesets/scale.png)
-
-## Remove a virtual machine scale set
-
-To remove a virtual machine scale set gallery item, run the following PowerShell command:
-
-```powershell  
-Remove-AzsGalleryItem
-```
-
-> [!NOTE]
-> The gallery item might not be removed immediately. You might need to refresh the portal several times before the item shows as removed from Azure Stack Hub Marketplace.
 
 ## Next steps
 
