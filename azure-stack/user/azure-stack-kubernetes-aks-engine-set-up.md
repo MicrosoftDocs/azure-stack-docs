@@ -31,7 +31,7 @@ If you are the cloud operator for Azure Stack Hub and would like to offer the AK
 
 To use the AKS engine, you need to have the following resources available. Keep in mind that the AKS engine is meant to be used by tenants of Azure Stack Hub to deploy Kubernetes clusters into their tenant subscription. The only part where involvement of the Azure Stack Hub operator may be required is for downloading Marketplace items and the creation of a service principal identity. You can find details in the following table.
 
-The your cloud operator will need to have the following items in place.
+Your cloud operator will need to have the following items in place.
 
 | Prerequisite | Description | Required | Instructions |
 | --- | --- | --- | --- | --- |
@@ -40,7 +40,7 @@ The your cloud operator will need to have the following items in place.
 | Service principal identity (SPN) |  An application that needs to deploy or configure resources through Azure Resource Manager, must be represented by a service principal. | Required | You may need to contact your Azure Stack Hub operator for this item.  For instructions see [Use an app identity to access resources](https://docs.microsoft.com/azure-stack/operator/azure-stack-create-service-principals) |
 | (SPN) assigned **Contributor** role | To allow an application to access resources in your subscription using its service principal, you must assign the service principal to a role for a specific resource. | Required | For instructions, see [Assign a role](https://docs.microsoft.com/azure-stack/operator/azure-stack-create-service-principals#assign-a-role) |
 
-You can set the following items:
+You can set the following items.
 
 | Prerequisite | Description | Required | Instructions |
 | --- | --- | --- | --- |
