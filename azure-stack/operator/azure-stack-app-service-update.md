@@ -69,7 +69,7 @@ To upgrade your deployment of Azure App Service on Azure Stack Hub, follow these
             - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
     1. **Service Principal**
-            - The service principal which you use **must** have 
+            - The service principal which you use **must** have **Owner** rights on the **Default Provider Subscription**
             - Provide the **Service Principal ID**, **Certificate File** and **Password** and select **Connect**.
 
    1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.
