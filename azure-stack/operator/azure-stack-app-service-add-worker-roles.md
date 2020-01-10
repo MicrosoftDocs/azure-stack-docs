@@ -1,5 +1,5 @@
 ---
-title: Add workers and infrastructure in App Service on Azure Stac Hub | Microsoft Docs
+title: Add workers and infrastructure in App Service on Azure Stack Hub | Microsoft Docs
 description: Detailed guidance for scaling Azure App Service on Azure Stack Hub
 services: azure-stack
 documentationcenter: ''
