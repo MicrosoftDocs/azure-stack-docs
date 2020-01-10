@@ -1,5 +1,5 @@
 ---
-title: Add a new Azure Stack tenant account in Azure Active Directory | Microsoft Docs
+title: Add a new Azure Stack Hub tenant account in Azure Active Directory | Microsoft Docs
 description: Learn how to create a tenant account in the ASDK so you can explore the tenant portal.
 services: azure-stack
 documentationcenter: ''
@@ -19,19 +19,19 @@ ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
 ---
 
-# Add a new Azure Stack tenant account in Azure Active Directory
+# Add a new Azure Stack Hub tenant account in Azure Active Directory
 
 
 After [deploying the Azure Stack Development Kit](../asdk/asdk-install.md), you'll need a tenant user account so you can explore the tenant portal and test your offers and plans. You can create a tenant account by using the Azure portal or by using PowerShell.
 
 
 
-## Create an Azure Stack tenant account by using the Azure portal
+## Create an Azure Stack Hub tenant account by using the Azure portal
 
 You must have an Azure subscription to use the Azure portal.
 
 1. Sign in to [Azure](https://portal.azure.com).
-2. In the left navigation bar, select **Active Directory** and switch to the directory that you want to use for Azure Stack (or create a new one).
+2. In the left navigation bar, select **Active Directory** and switch to the directory that you want to use for Azure Stack Hub (or create a new one).
 3. Select **Azure Active Directory** > **Users** > **New user**.
 
     ![Users - All users page with New user highlighted](media/azure-stack-add-new-user-aad/new-user-all-users.png)
@@ -55,7 +55,7 @@ You must have an Azure subscription to use the Azure portal.
 7. Sign in to the Azure portal with the new account. Change the password when prompted.
 8. Sign in to `https://portal.local.azurestack.external` with the new account to see the tenant portal.
 
-## Create an Azure Stack user account using PowerShell
+## Create an Azure Stack Hub user account using PowerShell
 
 If you don't have an Azure subscription, you can't use the Azure portal to add a tenant user account. In this case, you can use the Azure AD Module for Windows PowerShell instead.
 
@@ -91,4 +91,4 @@ If you don't have an Azure subscription, you can't use the Azure portal to add a
 
 ## Next steps
 
-[Add Azure Stack users in AD FS](azure-stack-add-users-adfs.md)
+[Add Azure Stack Hub users in AD FS](azure-stack-add-users-adfs.md)

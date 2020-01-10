@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot the AKS Engine on Azure Stack | Microsoft Docs
-description: This article contains troubleshooting steps for the AKS Engine on Azure Stack. 
+title: Troubleshoot the AKS engine on Azure Stack Hub | Microsoft Docs
+description: This article contains troubleshooting steps for the AKS engine on Azure Stack Hub. 
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,31 +12,26 @@ ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
 ms.devlang: nav
 ms.topic: article
-ms.date: 10/28/2019
+ms.date: 11/21/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 10/28/2019
+ms.lastreviewed: 11/21/2019
 
 ---
 
-# Troubleshoot the AKS Engine on Azure Stack
+# Troubleshoot the AKS engine on Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
-You may encounter an issue when deploying or working with the AKS Engine on Azure Stack. This article looks at the steps to troubleshoot your deployment of the AKS Engine, collect information about your AKS Engine, collect Kubernetes logs, review custom script extension error codes, and instructions on opening a GitHub issue for the AKS Engine.
+You may encounter an issue when deploying or working with the AKS engine on Azure Stack Hub. This article looks at the steps to troubleshoot your deployment of the AKS engine, collect information about your AKS engine, collect Kubernetes logs, review custom script extension error codes, and instructions on opening a GitHub issue for the AKS engine.
 
-> [!IMPORTANT]
-> The AKS Engine is currently in public preview.
-> This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
-> For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-## Troubleshoot the AKS Engine install
+## Troubleshoot the AKS engine install
 
 ### Try GoFish
 
-If your previous installation steps failed, you can install the AKS Engine using the GoFish package manager. [GoFish](https://gofi.sh) describes itself as a cross-platform Homebrew.
+If your previous installation steps failed, you can install the AKS engine using the GoFish package manager. [GoFish](https://gofi.sh) describes itself as a cross-platform Homebrew.
 
-#### Install the AKS Engine with GoFish on Linux
+#### Install the AKS engine with GoFish on Linux
 
 Install GoFish from the [Install](https://gofi.sh/#install) page.
 
@@ -46,13 +41,13 @@ Install GoFish from the [Install](https://gofi.sh/#install) page.
     curl -fsSL https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.sh | bash
     ```
 
-2.  Run the following command to install the AKS Engine with GoFish:
+2.  Run the following command to install the AKS engine with GoFish:
 
     ```bash
     Run "gofish install aks-engine"
     ```
 
-#### Install the AKS Engine with GoFish on Windows
+#### Install the AKS engine with GoFish on Windows
 
 Install GoFish from the [Install](https://gofi.sh/#install) page.
 
@@ -60,10 +55,10 @@ Install GoFish from the [Install](https://gofi.sh/#install) page.
 
     ```PowerShell
     Set-ExecutionPolicy Bypass -Scope Process -Force
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.ps1'))
+    iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.ps1'))
     ```
 
-2.  Run the following command in the same session to install the AKS Engine with GoFish:
+2.  Run the following command in the same session to install the AKS engine with GoFish:
 
     ```PowerShell
     gofish install aks-engine
@@ -71,20 +66,20 @@ iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercon
 
 ### Checklist for common deployment issues
 
-When encountering errors while deploying a Kubernetes cluster using the AKS Engine, you can check:
+When encountering errors while deploying a Kubernetes cluster using the AKS engine, you can check:
 
 1.  Are you using the correct Service Principal credentials (SPN)?
-2.  Does the SPN have a "Contributors" role to the Azure Stack subscription?
-3. Do you have a large enough quota in your Azure Stack plan?
-4.  Is the Azure Stack instance having a patch or upgrade being applied?
+2.  Does the SPN have a "Contributors" role to the Azure Stack Hub subscription?
+3. Do you have a large enough quota in your Azure Stack Hub plan?
+4.  Is the Azure Stack Hub instance having a patch or upgrade being applied?
 
 For more information, see the [Troubleshooting](https://github.com/Azure/aks-engine/blob/master/docs/howto/troubleshooting.md) article in the **Azure/aks-engine** GitHub repo.
 
-## Collect AKS Engine logs
+## Collect AKS engine logs
 
-You can access review information created by the AKS engine. The AKS Engine reports status,  and errors as the application runs. You can either pipe the output to a text file or copy it directly from the command-line console. Refer to a list of error codes triggered by the AKS Engine at [Review custom script extension error codes](#review-custom-script-extension-error-codes).
+You can access review information created by the AKS engine. The AKS engine reports status,  and errors as the application runs. You can either pipe the output to a text file or copy it directly from the command-line console. Refer to a list of error codes triggered by the AKS engine at [Review custom script extension error codes](#review-custom-script-extension-error-codes).
 
-1.  Gather standard output and error from information displayed in the AKS Engine command-line tool.
+1.  Gather standard output and error from information displayed in the AKS engine command-line tool.
 
 2. Get logs from a local file. You can set the output directory with the **--output-directory** parameter.
 
@@ -96,7 +91,7 @@ You can access review information created by the AKS engine. The AKS Engine repo
 
 ## Collect Kubernetes logs
 
-In addition to the AKS Engine logs, the Kubernetes components generate status  and error messages. You can collect these logs using the Bash script, [getkuberneteslogs.sh](https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.0/diagnosis.zip).
+In addition to the AKS engine logs, the Kubernetes components generate status  and error messages. You can collect these logs using the Bash script, [getkuberneteslogs.sh](https://github.com/msazurestackworkloads/azurestack-gallery/releases/download/diagnosis-v0.1.0/diagnosis.zip).
 
 This script automates the process of gathering the following logs: 
 
@@ -115,7 +110,7 @@ Requirements:
 
  - A Linux VM, Git Bash or Bash on Windows.
  - [Azure CLI](azure-stack-version-profiles-azurecli2.md) installed in the machine from where the script will be run.
- - Service principal identity signed into an Azure CLI session to Azure Stack. Since the script has the capability of discovering and creating ARM resources to do its work, it requires the Azure CLI and a service principal identity.
+ - Service principal identity signed into an Azure CLI session to Azure Stack Hub. Since the script has the capability of discovering and creating ARM resources to do its work, it requires the Azure CLI and a service principal identity.
  - User account (subscription) where the Kubernetes cluster is already selected in the environment. 
 1. Download the latest release of the script tar file into your client VM, a machine that has access to your Kubernetes cluster or the same machine you used to deploy your cluster with the AKS engine.
 
@@ -137,9 +132,9 @@ Requirements:
     | -i, --identity-file | RSA private key tied to the public key used to create the Kubernetes cluster (sometimes named 'id_rsa')  | yes | `./rsa.pem` (Putty)<br>`~/.ssh/id_rsa` (SSH) |
     |   -g, --resource-group    | Kubernetes cluster resource group | yes | k8sresourcegroup |
     |   -n, --user-namespace               | Collect logs from containers in the specified namespaces (kube-system logs are always collected) | no |   monitoring |
-    |       --api-model                    | Persists apimodel.json file in an Azure Stack Storage account. Upload apimodel.json file to storage account happens when --upload-logs parameter is also provided. | no | `./apimodel.json` |
+    |       --api-model                    | Persists apimodel.json file in an Azure Stack Hub Storage account. Upload apimodel.json file to storage account happens when --upload-logs parameter is also provided. | no | `./apimodel.json` |
     | --all-namespaces               | Collect logs from containers in all namespaces. It overrides --user-namespace | no | |
-    | --upload-logs                  | Persists retrieved logs in an Azure Stack storage account. Logs can be found in KubernetesLogs resource group | no | |
+    | --upload-logs                  | Persists retrieved logs in an Azure Stack Hub storage account. Logs can be found in KubernetesLogs resource group | no | |
     --disable-host-key-checking    | Sets SSH's StrictHostKeyChecking option to "no" while the script executes. Only use in a safe environment. | no | |
 
 3. Run any of the following example commands with your information:
@@ -154,15 +149,15 @@ Requirements:
 
 ## Review custom script extension error codes
 
-You can consult a list of error codes created by the custom script extension (CSE) in running your cluster. The CSE error can be useful in diagnosing the root cause of the problem. The CSE for the Ubuntu server used in your Kubernetes cluster supports many of the AKS Engine operations. For more information about the CSE exit codes, see [cse_helpers.sh](https://github.com/Azure/aks-engine/blob/master/parts/k8s/cloud-init/artifacts/cse_helpers.sh).
+You can consult a list of error codes created by the custom script extension (CSE) in running your cluster. The CSE error can be useful in diagnosing the root cause of the problem. The CSE for the Ubuntu server used in your Kubernetes cluster supports many of the AKS engine operations. For more information about the CSE exit codes, see [cse_helpers.sh](https://github.com/Azure/aks-engine/blob/master/parts/k8s/cloud-init/artifacts/cse_helpers.sh).
 
 ### Providing Kubernetes logs to a Microsoft support engineer
 
 If after collecting and examining logs you still cannot resolve your issue, you may want to start the process of creating a support ticket and provide the logs that you collected by running `getkuberneteslogs.sh` with the `--upload-logs` parameter set. 
 
-Contact your Azure Stack operator. Your operator uses the information fro your logs to create the support case.
+Contact your Azure Stack Hub operator. Your operator uses the information fro your logs to create the support case.
 
-During the process of addressing any support issues, a Microsoft support engineer may request that your Azure Stack operator collect the Azure Stack system logs. You may need to provide your operator with the storage account information where you uploaded the Kubernetes logs by running `getkuberneteslogs.sh`.
+During the process of addressing any support issues, a Microsoft support engineer may request that your Azure Stack Hub operator collect the Azure Stack Hub system logs. You may need to provide your operator with the storage account information where you uploaded the Kubernetes logs by running `getkuberneteslogs.sh`.
 
 Your operator may run the **Get-AzureStackLog** PowerShell cmdlet. This command uses a parameter (`-InputSaSUri`) that specifies the storage account where you stored the Kubernetes logs.
 
@@ -172,7 +167,7 @@ Your operator may combine the logs you produced along with whatever other system
 
 If you are unable to resolve your deployment error, you can open a GitHub Issue. 
 
-1. Open a [GitHub Issue](https://github.com/Azure/aks-engine/issues/new) in the AKS Engine repository.
+1. Open a [GitHub Issue](https://github.com/Azure/aks-engine/issues/new) in the AKS engine repository.
 2. Add a title using the following format: C`SE error: exit code <INSERT_YOUR_EXIT_CODE>`.
 3. Include the following information in the issue:
 
@@ -182,4 +177,4 @@ If you are unable to resolve your deployment error, you can open a GitHub Issue.
 
 ## Next steps
 
-- Read about the [The AKS Engine on Azure Stack](azure-stack-kubernetes-aks-engine-overview.md)
+- Read about the [The AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)

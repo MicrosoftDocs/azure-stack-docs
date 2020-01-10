@@ -1,6 +1,6 @@
 ---
-title: Allow apps to access Azure Stack Key Vault secrets | Microsoft Docs
-description: Learn how to run a sample app that retrieves keys and secrets from a key vault in Azure Stack.
+title: Allow apps to access Azure Stack Hub Key Vault secrets | Microsoft Docs
+description: Learn how to run a sample app that retrieves keys and secrets from a key vault in Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,30 +13,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/17/2019
+ms.date: 01/06/2020
 ms.author: sethm
 ms.lastreviewed: 04/08/2019
 
 ---
 
-# Allow apps to access Azure Stack Key Vault secrets
+# Allow apps to access Azure Stack Hub Key Vault secrets
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
-Follow the steps in this article to run the sample app **HelloKeyVault** that retrieves keys and secrets from a key vault in Azure Stack.
+Follow the steps in this article to run the sample app **HelloKeyVault** that retrieves keys and secrets from a key vault in Azure Stack Hub.
 
 ## Prerequisites
 
 You can install the following prerequisites from the [Azure Stack Development Kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), or from a Windows-based external client if you're [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn):
 
-* Install [Azure Stack-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
-* Download the [tools required to work with Azure Stack](../operator/azure-stack-powershell-download.md).
+* Install [Azure Stack Hub-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
+* Download the [tools required to work with Azure Stack Hub](../operator/azure-stack-powershell-download.md).
 
 ## Create a key vault and register an app
 
 To prepare for the sample application:
 
-* Create a key vault in Azure Stack.
+* Create a key vault in Azure Stack Hub.
 * Register an app in Azure Active Directory (Azure AD).
 
 Use the Azure portal or PowerShell to prepare for the sample app.
@@ -64,12 +64,12 @@ Function GenerateSymmetricKey()
     return [System.Convert]::ToBase64String($key)
 }
 
-Write-Host 'Please log into your Azure Stack user environment' -foregroundcolor Green
+Write-Host 'Please log into your Azure Stack Hub user environment' -foregroundcolor Green
 
 $tenantARM = "https://management.local.azurestack.external"
 $aadTenantName = "FILL THIS IN WITH YOUR AAD TENANT NAME. FOR EXAMPLE: myazurestack.onmicrosoft.com"
 
-# Configure the Azure Stack operator's PowerShell environment.
+# Configure the Azure Stack Hub operator's PowerShell environment.
 Add-AzureRMEnvironment `
   -Name "AzureStackUser" `
   -ArmEndpoint $tenantARM
@@ -158,7 +158,7 @@ In Visual Studio:
 
 ## Run the app
 
-When you run **HelloKeyVault**, the app signs in to Azure AD and then uses the `AuthClientSecret` token to authenticate to the key vault in Azure Stack.
+When you run **HelloKeyVault**, the app signs in to Azure AD and then uses the `AuthClientSecret` token to authenticate to the key vault in Azure Stack Hub.
 
 You can use the **HelloKeyVault** sample to:
 

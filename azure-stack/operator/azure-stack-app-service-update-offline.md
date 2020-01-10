@@ -68,6 +68,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
 ## Complete the upgrade of App Service on Azure Stack Hub
 
 > [!IMPORTANT]
+
 > The Azure App Service installer must be run on a machine which can reach the Azure Stack Hub Administrator Azure Resource Manager Endpoint.
 >
 >

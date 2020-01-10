@@ -1,6 +1,6 @@
 ---
-title: Use Azure Resource Manager templates in Azure Stack | Microsoft Docs
-description: Learn how to use Azure Resource Manager templates in Azure Stack to provision resources.
+title: Use Azure Resource Manager templates in Azure Stack Hub | Microsoft Docs
+description: Learn how to use Azure Resource Manager templates in Azure Stack Hub to provision resources.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -20,19 +20,19 @@ ms.reviewer: justini
 ms.lastreviewed: 11/14/2018
 
 ---
-# Use Azure Resource Manager templates in Azure Stack
+# Use Azure Resource Manager templates in Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
 You can use Azure Resource Manager templates to deploy and provision all the resources for your application in a single, coordinated operation. You can also redeploy templates to make changes to the resources in a resource group.
 
-These templates can be deployed with the Microsoft Azure Stack portal, PowerShell, the command line, and Visual Studio.
+These templates can be deployed with the Microsoft Azure Stack Hub portal, PowerShell, the command line, and Visual Studio.
 
 The following quickstart templates are [available on GitHub](https://aka.ms/azurestackgithub):
 
 ## Deploy SharePoint Server (non-high-availability deployment)
 
-Use the PowerShell [Desired State Configuration](/powershell/dsc/overview/overview) (DSC) extension to [create a SharePoint Server 2013 farm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) that includes the following resources:
+Use the PowerShell [Desired State Configuration](/powershell/scripting/dsc/overview/overview) (DSC) extension to [create a SharePoint Server 2013 farm](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sharepoint-2013-non-ha) that includes the following resources:
 
 * A virtual network
 * Three storage accounts
@@ -74,7 +74,7 @@ Use the PowerShell DSC extension to configure an existing virtual machine Local 
 
 ## Cancel a running template deployment
 
-To cancel a running template deployment, use the [Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell [cmdlet](/powershell/developer/cmdlet/cmdlet-overview).
+To cancel a running template deployment, use the [Stop-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/stop-azurermresourcegroupdeployment) PowerShell [cmdlet](/powershell/scripting/developer/cmdlet/cmdlet-overview).
 
 ## Next steps
 

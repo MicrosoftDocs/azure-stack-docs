@@ -1,6 +1,6 @@
 ---
-title: Azure Stack services, plans, offers, subscriptions overview | Microsoft Docs
-description: An overview of Azure Stack services, plans, offers, and subscriptions.
+title: Azure Stack Hub services, plans, offers, subscriptions overview | Microsoft Docs
+description: An overview of Azure Stack Hub services, plans, offers, and subscriptions.
 services: azure-stack
 documentationcenter: ''
 author: BryanLa
@@ -9,21 +9,21 @@ editor: ''
 
 ms.service: azure-stack
 ms.topic: conceptual
-ms.date: 08/29/2019
+ms.date: 12/18/2019
 ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 10/01/2019
 
 ---
-# Azure Stack services, plans, offers, subscriptions overview
+# Azure Stack Hub services, plans, offers, subscriptions overview
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
-[Microsoft Azure Stack](azure-stack-overview.md) is a hybrid cloud platform that lets you deliver services from your datacenter. Services include virtual machines (VMs), SQL Server databases, SharePoint, Exchange, and even [Azure Marketplace items](azure-stack-marketplace-azure-items.md). As a service provider, you can offer services to your tenants. Within a business or government agency, you can offer on-premises services to your employees.
+[Microsoft Azure Stack Hub](azure-stack-overview.md) is a hybrid cloud platform that lets you deliver services from your datacenter. Services include virtual machines (VMs), SQL Server databases, SharePoint, Exchange, and even [Azure Marketplace items](azure-stack-marketplace-azure-items.md). As a service provider, you can offer services to your tenants. Within a business or government agency, you can offer on-premises services to your employees.
 
 ## Overview
 
-As an Azure Stack operator, you configure and deliver services by using offers, plans, and subscriptions. Offers contain one or more plans, and each plan includes one or more services, each configured with quotas. By creating plans and combining them into different offers, users can subscribe to your offers and deploy resources. This structure lets you manage:
+As an Azure Stack Hub operator, you configure and deliver services by using offers, plans, and subscriptions. Offers contain one or more plans, and each plan includes one or more services, each configured with quotas. By creating plans and combining them into different offers, users can subscribe to your offers and deploy resources. This structure lets you manage:
 
 - Which services and resources your users can access.
 - The amount of resources that users can consume.
@@ -34,7 +34,7 @@ To deliver a service, follow these high-level steps:
 1. Plan your service offering, using:
 
    - Foundational services, like compute, storage, networking, or Key Vault.
-   - Add-on services, like App Service, SQL Server, or MySQL Server.
+   - Value-add services, like App Service, SQL Server, or MySQL Server.
 
 2. Create a plan that consists of one or more services. When creating a plan, select or create quotas that define the resource limits of each service in the plan.
 3. Create an offer that has one or more plans. The offer can include base plans and optional add-on plans.
@@ -45,9 +45,9 @@ After you've created the offer, your users can subscribe to it to access the ser
 
 ## Services
 
-You can offer [Infrastructure as a Service](https://azure.microsoft.com/overview/what-is-iaas/) (IaaS) services that enable your users to build an on-demand computing infrastructure, provisioned and managed from the Azure Stack user portal.
+You can offer [Infrastructure as a Service](https://azure.microsoft.com/overview/what-is-iaas/) (IaaS) services that enable your users to build an on-demand computing infrastructure, provisioned and managed from the Azure Stack Hub user portal.
 
-You can also deploy [Platform as a Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) services for Azure Stack from Microsoft and other third-party providers. The PaaS services that you can deliver include, but aren't limited to:
+You can also deploy [Platform as a Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) services for Azure Stack Hub from Microsoft and other third-party providers. The PaaS services that you can deliver include, but aren't limited to:
 
 - [App Service](azure-stack-app-service-overview.md)
 - [SQL Server](azure-stack-sql-resource-provider-deploy.md)
@@ -67,11 +67,11 @@ You can set up quotas by region. For example, a plan that provides compute servi
 >[!NOTE]
 >In the Azure Stack Development Kit (ASDK), only one region (named *local*) is available.
 
-Learn more about [quota types in Azure Stack](azure-stack-quota-types.md).
+Learn more about [quota types in Azure Stack Hub](azure-stack-quota-types.md).
 
 ## Plans
 
-Plans are groupings of one or more services. As an Azure Stack operator, you [create plans](azure-stack-create-plan.md) to offer to your users. In turn, your users subscribe to your offers to use the plans and services they include. When creating plans, make sure to set your quotas, define your base plans, and consider including optional add-on plans.
+Plans are groupings of one or more services. As an Azure Stack Hub operator, you [create plans](azure-stack-create-plan.md) to offer to your users. In turn, your users subscribe to your offers to use the plans and services they include. When creating plans, make sure to set your quotas, define your base plans, and consider including optional add-on plans.
 
 ### Base plan
 
@@ -97,13 +97,13 @@ When you're planning your offers, keep the following points in mind:
 
 ## Subscriptions
 
-Subscriptions let users access your offers. If you're an Azure Stack operator for a service provider, your users (tenants) buy your services by subscribing to your offers. If you're an Azure Stack operator at an organization, your users (employees) can subscribe to the services you offer without paying.
+Subscriptions let users access your offers. If you're an Azure Stack Hub operator for a service provider, your users (tenants) buy your services by subscribing to your offers. If you're an Azure Stack Hub operator at an organization, your users (employees) can subscribe to the services you offer without paying.
 
-Users create new subscriptions and get access to existing subscriptions by signing in to Azure Stack. Each subscription represents an association with a single offer. The offer (and its plans and quotas) assigned to one subscription can't be shared with other subscriptions. Each resource that a user creates is associated with one subscription.
+Users create new subscriptions and get access to existing subscriptions by signing in to Azure Stack Hub. Each subscription represents an association with a single offer. The offer (and its plans and quotas) assigned to one subscription can't be shared with other subscriptions. Each resource that a user creates is associated with one subscription.
 
 ### Default provider subscription
 
-The default provider subscription is automatically created when you deploy the ASDK. This subscription can be used to manage Azure Stack, deploy additional resource providers, and create plans and offers for users. For security and licensing reasons, it shouldn't be used to run customer workloads and apps. The quota of the default provider subscription can't be changed.
+The default provider subscription is automatically created when you deploy the ASDK. This subscription can be used to manage Azure Stack Hub, deploy additional resource providers, and create plans and offers for users. For security and licensing reasons, it shouldn't be used to run customer workloads and apps. The quota of the default provider subscription can't be changed.
 
 ## Next steps
 

@@ -1,6 +1,6 @@
 ---
-title: Create a Windows VM with Azure Stack portal | Microsoft Docs
-description: Learn how to create a Windows Server 2016 virtual machine (VM) with the Azure Stack portal.
+title: Create a Windows VM with Azure Stack Hub portal | Microsoft Docs
+description: Learn how to create a Windows Server 2016 virtual machine (VM) with the Azure Stack Hub portal.
 services: azure-stack
 author: mattbriggs
 manager: femila
@@ -14,26 +14,26 @@ ms.reviewer: kivenkat
 ms.lastreviewed: 01/14/2019
 ---
 
-# Quickstart: Create a Windows server VM with the Azure Stack portal
+# Quickstart: Create a Windows server VM with the Azure Stack Hub portal
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
-Learn how to create a Windows Server 2016 virtual machine (VM) by using the Azure Stack portal.
+Learn how to create a Windows Server 2016 virtual machine (VM) by using the Azure Stack Hub portal.
 
 > [!NOTE]  
-> The screenshots in this article are updated to match the user interface that is introduced with Azure Stack version 1808. 1808 adds support for using *managed disks* in addition to unmanaged disks. If you use an earlier version, some images, like disk selection, will be different than what is displayed in this article.  
+> The screenshots in this article are updated to match the user interface that is introduced with Azure Stack Hub version 1808. 1808 adds support for using *managed disks* in addition to unmanaged disks. If you use an earlier version, some images, like disk selection, will be different than what is displayed in this article.  
 
 
-## Sign in to the Azure Stack portal
+## Sign in to the Azure Stack Hub portal
 
-Sign in to the Azure Stack portal. The address of the Azure Stack portal depends on which Azure Stack product you're connecting to:
+Sign in to the Azure Stack Hub portal. The address of the Azure Stack Hub portal depends on which Azure Stack Hub product you're connecting to:
 
 * For the Azure Stack Development Kit (ASDK), go to: https://portal.local.azurestack.external.
-* For an Azure Stack integrated system, go to the URL that your Azure Stack operator provided.
+* For an Azure Stack Hub integrated system, go to the URL that your Azure Stack Hub operator provided.
 
 ## Create a VM
 
-1. Click **+ Create a resource** > **Compute** > **Windows Server 2016 Datacenter - Pay-as-you-use** > **Create**. <br> If you don't see the **Windows Server 2016 Datacenter - Pay-as-you-use** entry, contact your Azure Stack operator and ask that they add it to the marketplace as explained in the [Add the Windows Server 2016 VM image to the Azure Stack marketplace](../operator/azure-stack-create-and-publish-marketplace-item.md) article.
+1. Click **+ Create a resource** > **Compute** > **Windows Server 2016 Datacenter - Pay-as-you-use** > **Create**. <br> If you don't see the **Windows Server 2016 Datacenter - Pay-as-you-use** entry, contact your Azure Stack Hub operator and ask that they add it to the marketplace as explained in the [Add the Windows Server 2016 VM image to the Azure Stack Hub marketplace](../operator/azure-stack-create-and-publish-marketplace-item.md) article.
 
     ![Steps to create a Windows VM in portal](media/azure-stack-quick-windows-portal/image01.png)
 
@@ -46,7 +46,7 @@ Sign in to the Azure Stack portal. The address of the Azure Stack portal depends
     ![Choose size of VM](media/azure-stack-quick-windows-portal/image03.png)
 
 4. On the **Settings** page, make any desired changes to the defaults.
-   - Beginning with Azure Stack version 1808, you can configure **Storage** where you can choose to use *managed disks*. In versions before 1808, only unmanaged disks can be used.  
+   - Beginning with Azure Stack Hub version 1808, you can configure **Storage** where you can choose to use *managed disks*. In versions before 1808, only unmanaged disks can be used.  
 
    ![Configure VM settings](media/azure-stack-quick-windows-portal/image04.png)  
 
@@ -65,4 +65,4 @@ When you're finished using the VM, delete the VM and its resources. To do so, se
 
 ## Next steps
 
-In this quickstart, you deployed a basic Windows Server VM. To learn more about Azure Stack VMs, continue to [Considerations for VMs in Azure Stack](azure-stack-vm-considerations.md).
+In this quickstart, you deployed a basic Windows Server VM. To learn more about Azure Stack Hub VMs, continue to [Considerations for VMs in Azure Stack Hub](azure-stack-vm-considerations.md).

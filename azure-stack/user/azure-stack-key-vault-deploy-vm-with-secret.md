@@ -1,6 +1,6 @@
 ---
-title: Deploy an Azure Stack VM using a password stored in Key Vault | Microsoft Docs
-description: Learn how to deploy a VM using a password stored in an Azure Stack key vault.
+title: Deploy an Azure Stack Hub VM using a password stored in Key Vault | Microsoft Docs
+description: Learn how to deploy a VM using a password stored in an Azure Stack Hub key vault.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,15 +18,15 @@ ms.reviewer: ppacent
 ms.lastreviewed: 01/14/2019
 
 ---
-# Deploy an Azure Stack VM using a password stored in Key Vault
+# Deploy an Azure Stack Hub VM using a password stored in Key Vault
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
 
-This article steps through deploying a Windows Server virtual machine (VM) using a password stored in Azure Stack Key Vault. Using a key vault password is more secure than passing a plain text password.
+This article steps through deploying a Windows Server virtual machine (VM) using a password stored in Azure Stack Hub Key Vault. Using a key vault password is more secure than passing a plain text password.
 
 ## Overview
 
-You can store values such as a password as a secret in an Azure Stack key vault. After you create a secret, you can reference it in Azure Resource Manager templates. Using secrets with Resource Manager provides the following benefits:
+You can store values such as a password as a secret in an Azure Stack Hub key vault. After you create a secret, you can reference it in Azure Resource Manager templates. Using secrets with Resource Manager provides the following benefits:
 
 * You don't have to manually enter secret each time you deploy a resource.
 * You can specify which users or service principals can access a secret.
@@ -34,7 +34,7 @@ You can store values such as a password as a secret in an Azure Stack key vault.
 ## Prerequisites
 
 * You must subscribe to an offer that includes the Key Vault service.
-* [Install PowerShell for Azure Stack.](../operator/azure-stack-powershell-install.md)
+* [Install PowerShell for Azure Stack Hub.](../operator/azure-stack-powershell-install.md)
 * [Configure your PowerShell environment.](azure-stack-powershell-configure-user.md)
 
 The following steps describe the process required to create a VM by retrieving the password stored in a Key Vault:

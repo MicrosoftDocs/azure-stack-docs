@@ -40,7 +40,7 @@ Use API version profiles to specify Azure Stack compatible AzureRM modules.  API
 You can install the latest Azure Stack PowerShell module with or without internet connectivity to the ASDK host computer:
 
 > [!IMPORTANT]
-> Before installing the required version, make sure that you [uninstall any existing Azure PowerShell modules](../operator/azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-powershell-modules).
+> Before installing the required version, make sure that you [uninstall any existing Azure PowerShell modules](../operator/azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
 
 - **With an internet connection** from the ASDK host computer: Run the following PowerShell script to install these modules on your ASDK installation:
 
@@ -54,7 +54,7 @@ You can install the latest Azure Stack PowerShell module with or without interne
 
   # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
   Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
-  Install-Module -Name AzureStack -RequiredVersion 1.7.2
+  Install-Module -Name AzureStack -RequiredVersion 1.8.0
   ```
 
   If the installation is successful, the AzureRM and AzureStack modules are displayed in the output.

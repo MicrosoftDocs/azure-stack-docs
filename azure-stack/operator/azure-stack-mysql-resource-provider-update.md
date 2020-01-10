@@ -1,6 +1,6 @@
 ---
-title: Update the MySQL resource provider in Azure Stack | Microsoft Docs
-description: Learn how to update the Azure Stack MySQL resource provider in Azure Stack.
+title: Update the MySQL resource provider in Azure Stack Hub | Microsoft Docs
+description: Learn how to update the Azure Stack Hub MySQL resource provider in Azure Stack Hub.
 services: azure-stack 
 documentationCenter: '' 
 author: mattbriggs 
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article 
 ms.date: 10/02/2019
 ms.author: mabrigg
-ms.reviewer: jiahan
+ms.reviewer: xiaofmao
 ms.lastreviewed: 01/11/2019
 
 ---
 
-# Update the MySQL resource provider in Azure Stack
+# Update the MySQL resource provider in Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems.*
+*Applies to: Azure Stack Hub integrated systems.*
 
-A new MySQL resource provider adapter might be released when Azure Stack builds are updated. While the existing adapter continues to work, we recommend updating to the latest build as soon as possible.
+A new MySQL resource provider adapter might be released when Azure Stack Hub builds are updated. While the existing adapter continues to work, we recommend updating to the latest build as soon as possible.
 
-Starting with the MySQL resource provider version 1.1.33.0 release, updates are cumulative and don't need to be installed in the order in which they were released as long as you're starting from version 1.1.24.0 or later. For example, if you're running version 1.1.24.0 of the MySQL resource provider, then you can upgrade to version 1.1.33.0 or later without needing to first install version 1.1.30.0. To review available resource provider versions, and the version of Azure Stack they're supported on, refer to the versions list in [Deploy the resource provider prerequisites](./azure-stack-mysql-resource-provider-deploy.md#prerequisites).
+Starting with the MySQL resource provider version 1.1.33.0 release, updates are cumulative and don't need to be installed in the order in which they were released as long as you're starting from version 1.1.24.0 or later. For example, if you're running version 1.1.24.0 of the MySQL resource provider, then you can upgrade to version 1.1.33.0 or later without needing to first install version 1.1.30.0. To review available resource provider versions, and the version of Azure Stack Hub they're supported on, refer to the versions list in [Deploy the resource provider prerequisites](./azure-stack-mysql-resource-provider-deploy.md#prerequisites).
 
 To update of the resource provider, you use the **UpdateMySQLProvider.ps1** script. The process is similar to the process used to install a resource provider, as described in the Deploy the resource provider section of this article. The script is included with the download of the resource provider. 
 
@@ -47,10 +47,10 @@ Specify the following parameters from the command line when you run the **Update
 | Parameter Name | Description | Comment or default value | 
 | --- | --- | --- | 
 | **CloudAdminCredential** | The credential for the cloud admin, necessary for accessing the privileged endpoint. | _Required_ | 
-| **AzCredential** | The credentials for the Azure Stack service admin account. Use the same credentials as you used for deploying Azure Stack. | _Required_ | 
+| **AzCredential** | The credentials for the Azure Stack Hub service admin account. Use the same credentials as you used for deploying Azure Stack Hub. | _Required_ | 
 | **VMLocalCredential** |The credentials for the local admin account of the SQL resource provider VM. | _Required_ | 
 | **PrivilegedEndpoint** | The IP address or DNS name of the privileged endpoint. |  _Required_ | 
-| **AzureEnvironment** | The Azure environment of the service admin account used for deploying Azure Stack. Required only for Azure AD deployments. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure AD, **AzureChinaCloud**. | AzureCloud |
+| **AzureEnvironment** | The Azure environment of the service admin account used for deploying Azure Stack Hub. Required only for Azure AD deployments. Supported environment names are **AzureCloud**, **AzureUSGovernment**, or if using a China Azure AD, **AzureChinaCloud**. | AzureCloud |
 | **DependencyFilesLocalPath** | Your certificate .pfx file must be placed in this directory as well. | _Optional_ (_mandatory_ for multi-node) | 
 | **DefaultSSLCertificatePassword** | The password for the .pfx certificate. | _Required_ | 
 | **MaxRetryCount** | The number of times you want to retry each operation if there's a failure.| 2 | 
@@ -60,25 +60,30 @@ Specify the following parameters from the command line when you run the **Update
 | **AcceptLicense** | Skips the prompt to accept the GPL license.  (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
 
 ## Update script example
-The following example shows the *UpdateMySQLProvider.ps1* script that you can run from an elevated PowerShell console. Be sure to change the variable information and passwords as needed:
 
 > [!NOTE] 
 > The update process only applies to integrated systems.
 
+If you are updating the MySQL resource provider version to 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. If you are updating the MySQL resource provider to version 1.1.47.0, this step can be skipped.
+
 ```powershell 
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
-# Note that this might not be the most currently available version of Azure Stack PowerShell.
+# Note that this might not be the most currently available version of Azure Stack Hub PowerShell.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
 Install-Module -Name AzureStack -RequiredVersion 1.6.0
+```
 
-# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
+The following example shows the *UpdateMySQLProvider.ps1* script that you can run from an elevated PowerShell console. Be sure to change the variable information and passwords as needed:
+
+```powershell 
+# Use the NetBIOS name for the Azure Stack Hub domain. On the Azure Stack Hub SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack" 
 
 # For integrated systems, use the IP address of one of the ERCS VMs.
 $privilegedEndpoint = "AzS-ERCS01" 
 
-# Provide the Azure environment used for deploying Azure Stack. Required only for Azure AD deployments. Supported environment names are AzureCloud, AzureUSGovernment, or AzureChinaCloud. 
+# Provide the Azure environment used for deploying Azure Stack Hub. Required only for Azure AD deployments. Supported environment names are AzureCloud, AzureUSGovernment, or AzureChinaCloud. 
 $AzureEnvironment = "<EnvironmentName>"
 
 # Point to the directory where the resource provider installation files were extracted. 

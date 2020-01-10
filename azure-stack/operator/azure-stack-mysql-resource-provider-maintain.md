@@ -1,6 +1,6 @@
 ---
-title: MySQL resource provider maintenance operations in Azure Stack | Microsoft Docs
-description: Learn how to maintain the MySQL resource provider service in Azure Stack.
+title: MySQL resource provider maintenance operations in Azure Stack Hub | Microsoft Docs
+description: Learn how to maintain the MySQL resource provider service in Azure Stack Hub.
 services: azure-stack
 documentationCenter: ''
 author: mattbriggs
@@ -18,7 +18,7 @@ ms.lastreviewed: 01/11/2019
 
 ---
 
-# MySQL resource provider maintenance operations in Azure Stack
+# MySQL resource provider maintenance operations in Azure Stack Hub
 
 The MySQL resource provider runs on a locked down virtual machine (VM). To enable maintenance operations, you need to update the VM's security. To do this using the principle of least privilege (POLP), you can use PowerShell Just Enough Administration (JEA) endpoint DBAdapterMaintenance. The resource provider installation package includes a script for this operation.
 
@@ -89,9 +89,9 @@ $session | Remove-PSSession
 
 ## Secrets rotation
 
-*These instructions only apply to Azure Stack Integrated Systems.*
+*These instructions only apply to Azure Stack Hub Integrated Systems.*
 
-When using the SQL and MySQL resource providers with Azure Stack integrated systems, the Azure Stack operator is responsible for rotating the following resource provider infrastructure secrets to ensure that they don't expire:
+When using the SQL and MySQL resource providers with Azure Stack Hub integrated systems, the Azure Stack Hub operator is responsible for rotating the following resource provider infrastructure secrets to ensure that they don't expire:
 
 - External SSL Certificate [provided during deployment](azure-stack-pki-certs.md).
 - The resource provider VM local administrator account password provided during deployment.
@@ -151,8 +151,8 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
 
 |Parameter|Description|
 |-----|-----|
-|AzCredential|Azure Stack service admin account credential.|
-|CloudAdminCredential|Azure Stack cloud admin domain account credential.|
+|AzCredential|Azure Stack Hub service admin account credential.|
+|CloudAdminCredential|Azure Stack Hub cloud admin domain account credential.|
 |PrivilegedEndpoint|Privileged Endpoint to access Get-AzureStackStampInformation.|
 |DiagnosticsUserPassword|Diagnostics user account password.|
 |VMLocalCredential|The local admin account on the MySQLAdapter VM.|
@@ -221,6 +221,32 @@ $cleanup = Invoke-Command -Session $session -ScriptBlock {Remove-AzsDBAdapterLog
 $session | Remove-PSSession
 
 ```
+
+## Configure Azure Diagnostics extension for MySQL resource provider
+
+The Azure Diagnostics extension is installed on the MySQL resource provider adapter VM by default. The following steps show how to customize the extension for gathering the MySQL resource provider operational event logs and IIS logs for troubleshooting and auditing purposes.
+
+1. Sign in to the Azure Stack Hub administrator portal.
+
+2. Select **Virtual machines** from the pane on the left, search for the MySQL resource provider adapter VM and select the VM.
+
+3. In the **Diagnostics settings** of the VM, go to the **Logs** tab and choose **Custom** to customize event logs being collected.
+   
+   ![Go to diagnostics settings](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-diagnostics-settings.png)
+
+4. Add **Microsoft-AzureStack-DatabaseAdapter/Operational!\*** to collect MySQL resource provider operational event logs.
+
+   ![Add event logs](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-event-logs.png)
+
+5. To enable the collection of IIS logs, check **IIS logs** and **Failed request logs**.
+
+   ![Add IIS logs](media/azure-stack-mysql-resource-provider-maintain/mysqlrp-iis-logs.png)
+
+6. Finally, select **Save** to save all the diagnostics settings.
+
+Once the event logs and IIS logs collection are configured for MySQL resource provider, the logs can be found in a system storage account named **mysqladapterdiagaccount**.
+
+To learn more about the Azure Diagnostics extension, see [What is Azure Diagnostics extension](/azure/azure-monitor/platform/diagnostics-extension-overview).
 
 ## Next steps
 

@@ -1,6 +1,81 @@
 {
   "redirections": [
     {
+      "source_path": "azure-stack/user/azure-stack-solution-sql-ha.md",
+      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-sql-ha",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-solution-mongodb-ha.md",
+      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-mongodb-ha",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-solution-staged-data.md",
+      "redirect_url": "https://aka.ms/tiereddatadeploy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-solution-hybrid-cloud.md",
+      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling-onprem-data",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-solution-geo-distributed.md",
+      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-geo-distributed",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-solution-cloud-burst.md",
+      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-cross-cloud-scaling",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-solution-hybrid-connectivity.md",
+      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-connectivity",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-solution-hybrid-identity.md",
+      "redirect_url": "/azure-stack/hybrid/solution-deployment-guide-identity",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-solution-pipeline.md",
+      "redirect_url": "https://aka.ms/hybriddevopsdeploy",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-hybrid-cloud-patterns.md",
+      "redirect_url": "/azure-stack/hybrid/overview-patterns-solution-examples",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-edge-pattern-geo-distribution.md",
+      "redirect_url": "/azure-stack/hybrid/pattern-geo-distributed",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/hybrid-solution-retail-footfall-detection.md",
+      "redirect_url": "/azure-stack/hybrid/pattern-retail-footfall-detection",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-edge-pattern-hybrid-ci-cd.md",
+      "redirect_url": "/azure-stack/hybrid/pattern-cicd-pipeline",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-edge-pattern-cross-cloud-scaling.md",
+      "redirect_url": "/azure-stack/hybrid/pattern-cross-cloud-scale",
+      "redirect_document_id": false
+    },
+    {
+      "source_path": "azure-stack/user/azure-stack-edge-pattern-overview.md",
+      "redirect_url": "/azure-stack/hybrid/overview-app-design-considerations",
+      "redirect_document_id": false
+    },
+    {
       "source_path": "azure-stack/operator/azure-stack-plan-offer-quota-overview.md",
       "redirect_url": "/azure-stack/operator/service-plan-offer-subscription-overview",
       "redirect_document_id": false
@@ -162,6 +237,11 @@
       "redirect_document_id": false
     },
     {    
+      "source_path": "azure-stack/operator/azure-stack-release-notes-1910.md",
+      "redirect_url": "/azure-stack/operator/release-notes",
+      "redirect_document_id": false
+    },
+    {    
       "source_path": "azure-stack/operator/azure-stack-release-notes-known-issues-1904.md",
       "redirect_url": "/azure-stack/operator/known-issues",
       "redirect_document_id": false
@@ -230,6 +310,11 @@
     "source_path": "azure-stack/user/azure-stack-kubernetes-ask-engine-support.md",
     "redirect_url": "/azure-stack/operator/azure-stack-kubernetes-aks-engine-support",
     "redirect_document_id": false
-    }
+    },
+    {
+      "source_path": "azure-stack/operator/azure-stack-update-plan.md",
+      "redirect_url": "/azure-stack/operator/release-notes-checklist",
+      "redirect_document_id": false
+      }
   ]
 }
