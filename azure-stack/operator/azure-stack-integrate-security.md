@@ -2,14 +2,14 @@
 title: Integrate Azure Stack Hub with monitoring solutions using syslog forwarding | Microsoft Docs
 description: Learn how to integrate Azure Stack Hub with monitoring solutions using syslog forwarding.
 services: azure-stack
-author: PatAltimore
+author: justinha
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/23/2019
-ms.author: patricka
+ms.date: 01/10/2020
+ms.author: justinha
 ms.reviewer: fiseraci
-ms.lastreviewed: 04/23/2019
+ms.lastreviewed: 01/10/2020
 keywords:
 ---
 
@@ -70,7 +70,7 @@ Parameters for *Set-SyslogClient* cmdlet:
 
 | Parameter | Description | Type |
 |---------|---------| ---------|
-| *pfxBinary* | pfx file containing the certificate to be used by the client as identity to authenticate against the syslog server.  | Byte[] |
+| *pfxBinary* | The contents of the pfx file, piped to a Byte[], containing the certificate to be used by the client as identity to authenticate against the syslog server.  | Byte[] |
 | *CertPassword* |  Password to import the private key that's associated with the pfx file. | SecureString |
 |*RemoveCertificate* | Remove certificate from the client. | flag|
 | *OutputSeverity* | Level of output logging. Values are **Default** or **Verbose**. Default includes severity levels: warning, critical, or error. Verbose includes all severity levels: verbose, informational, warning, critical, or error.  | String |
