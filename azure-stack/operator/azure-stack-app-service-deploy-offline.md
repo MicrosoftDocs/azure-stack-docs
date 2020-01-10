@@ -24,7 +24,7 @@ ms.lastreviewed: 01/11/2019
 *Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 > [!IMPORTANT]
-> Apply the 1907 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.7.
+> Apply the 1910 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.8.
 
 By following the instructions in this article, you can deploy the [App Service resource provider](azure-stack-app-service-overview.md) to an Azure Stack environment that is:
 
@@ -32,7 +32,7 @@ By following the instructions in this article, you can deploy the [App Service r
 - Secured by Active Directory Federation Services (AD FS).
 
 > [!IMPORTANT]
-> Before you run the resource provider installer, make sure you've completed the steps in [Prerequisites for deploying App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md). You should also read the [release notes](azure-stack-app-service-release-notes-update-seven.md) that accompany the 1.7 release to learn about new functionality, fixes, and any known issues that could affect your deployment.
+> Before you run the resource provider installer, make sure you've completed the steps in [Prerequisites for deploying App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md). You should also read the [release notes](azure-stack-app-service-release-notes-update-eight.md) that accompany the 1.8 release to learn about new functionality, fixes, and any known issues that could affect your deployment.
 
 To add the App Service resource provider to your offline Azure Stack deployment, you must complete these top-level tasks:
 
