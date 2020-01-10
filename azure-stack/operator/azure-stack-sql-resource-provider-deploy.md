@@ -86,6 +86,8 @@ $SourceLocation = "C:\temp\azs1.6.0"
 $RepoName = "azs1.6.0"
 
 Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
+
+New-Item -Path $env:ProgramFiles -name "SqlMySqlPsh" -ItemType "Directory"
 ```
 
 ### Certificates
