@@ -21,8 +21,6 @@ ms.lastreviewed: 11/07/2019
 ---
 # Overview of Azure Stack Hub diagnostic log collection 
 
-*Applies to: Azure Stack Hub integrated systems*
-
 Azure Stack Hub is a large collection of components working together and interacting with each other. All these components generate their own unique logs. This can make diagnosing issues a challenging task, especially for errors coming from multiple, interacting Azure Stack Hub components. In order to address this challenge, we have designed a diagnostic log collection experience. 
 
 Prior to 1907, the diagnostic experience included using [Test-AzureStack](azure-stack-diagnostic-test.md) to validate system health and using [the privileged endpoint (PEP)](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs) to collect logs for troubleshooting. 

@@ -22,8 +22,6 @@ ms.lastreviewed: 11/11/2019
 
 # Replace a scale unit node on an Azure Stack Hub integrated system
 
-*Applies to: Azure Stack Hub integrated systems*
-
 This article describes the general process to replace a physical computer (also referred to as a scale unit node) on an Azure Stack Hub integrated system. Actual scale unit node replacement steps will vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor's field replaceable unit (FRU) documentation for detailed steps that are specific to your system.
 
 > [!CAUTION]  

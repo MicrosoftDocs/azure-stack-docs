@@ -21,8 +21,6 @@ ms.lastreviewed: 05/18/2018
 ---
 # App Service on Azure Stack Hub Update 2 release notes
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 These release notes describe improvements, fixes, and known issues in Azure App Service on Azure Stack Hub Update 2. Known issues are divided into three sections: issues directly related to deployment, issues with the update process, and issues with the build (post-installation).
 
 > [!IMPORTANT]

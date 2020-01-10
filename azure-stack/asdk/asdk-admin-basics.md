@@ -4,7 +4,6 @@ description: Learn how to do basic admin tasks for the Azure Stack Development K
 services: azure-stack
 documentationcenter: ''
 author: justinha
-manager: femila
 editor: ''
 
 ms.assetid: 

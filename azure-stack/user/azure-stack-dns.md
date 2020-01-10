@@ -19,8 +19,6 @@ ms.lastreviewed: 01/05/2019
 ---
 # Use DNS in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Azure Stack Hub supports the following Azure DNS features:
 
 * DNS hostname resolution.

@@ -21,8 +21,6 @@ ms.lastreviewed: 07/18/2019
 
 # Replace a hardware component on an Azure Stack Hub scale unit node
 
-*Applies to: Azure Stack Hub integrated systems*
-
 This article describes the general process to replace hardware components that are non hot-swappable. Actual replacement steps vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor's field replaceable unit (FRU) documentation for detailed steps that are specific to your Azure Stack Hub integrated system.
 
 > [!CAUTION]  

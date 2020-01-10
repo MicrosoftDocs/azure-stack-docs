@@ -17,8 +17,6 @@ ms.lastreviewed: 10/28/2019
 
 # How to connect to iSCSI storage with Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You can use the template in this article to connect an Azure Stack Hub virtual machine (VM) to an on-premises iSCSI target set up the VM to use storage hosted outside of our Azure Stack Hub and elsewhere in your datacenter. This article looks at using a Windows machine as the iSCSI target.
 
 You can find the template in the **lucidqdreams** fork of [Azure Intelligent Edge Patterns](https://github.com/lucidqdreams/azure-intelligent-edge-patterns) GitHub repository. The template is in the **storage-iSCSI** folder. The template has been designed to set up up the infrastructure necessary on the Azure Stack Hub side to connect to an iSCSI target. This includes a virtual machine that will act as the iSCSI Initiator along with its accompanying VNet, NSG, PIP, and storage. After the template has been deployed, two PowerShell scripts need to be,  run to complete the configuration. One script will be run on the on-premises VM (target) and one will be run on the Azure Stack Hub VM (Initiator). Once these are completed, you will have on-premises storage added to your Azure Stack Hub VM. 

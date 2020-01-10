@@ -17,8 +17,6 @@ ms.lastreviewed: 10/01/2019
 ---
 # Azure Stack Hub services, plans, offers, subscriptions overview
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 [Microsoft Azure Stack Hub](azure-stack-overview.md) is a hybrid cloud platform that lets you deliver services from your datacenter. Services include virtual machines (VMs), SQL Server databases, SharePoint, Exchange, and even [Azure Marketplace items](azure-stack-marketplace-azure-items.md). As a service provider, you can offer services to your tenants. Within a business or government agency, you can offer on-premises services to your employees.
 
 ## Overview

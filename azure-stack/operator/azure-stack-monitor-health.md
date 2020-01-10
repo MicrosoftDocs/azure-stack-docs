@@ -19,8 +19,6 @@ ms.lastreviewed: 01/18/2019
 ---
 # Monitor health and alerts in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Azure Stack Hub includes infrastructure monitoring capabilities that help you view health and alerts for an Azure Stack Hub region. The **Region management** tile lists all the deployed regions of Azure Stack Hub. It's pinned by default in the administrator portal for the Default Provider Subscription. The tile shows the number of active critical and warning alerts for each region. The tile is your entry point into the health and alert functionality of Azure Stack Hub.
 
 ![The Region Management tile in Azure Stack Hub administrator portal](media/azure-stack-monitor-health/image1.png)

@@ -20,8 +20,6 @@ ms.lastreviewed: 01/11/2019
 
 # Update the MySQL resource provider in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems.*
-
 A new MySQL resource provider adapter might be released when Azure Stack Hub builds are updated. While the existing adapter continues to work, we recommend updating to the latest build as soon as possible.
 
 Starting with the MySQL resource provider version 1.1.33.0 release, updates are cumulative and don't need to be installed in the order in which they were released as long as you're starting from version 1.1.24.0 or later. For example, if you're running version 1.1.24.0 of the MySQL resource provider, then you can upgrade to version 1.1.33.0 or later without needing to first install version 1.1.30.0. To review available resource provider versions, and the version of Azure Stack Hub they're supported on, refer to the versions list in [Deploy the resource provider prerequisites](./azure-stack-mysql-resource-provider-deploy.md#prerequisites).
@@ -64,7 +62,7 @@ Specify the following parameters from the command line when you run the **Update
 > [!NOTE] 
 > The update process only applies to integrated systems.
 
-If you are updating the MySQL resource provider version to 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. If you are updating the MySQL resource provider to version 1.1.47.0, this step can be skipped.
+If you are updating the MySQL resource provider version to 1.1.33.0 or previous versions, you need to install specific versions of AzureRm.BootStrapper and Azure Stack Hub modules in PowerShell. If you are updating the MySQL resource provider to version 1.1.47.0, the deployment script will automatically download and install the necessary PowerShell modules for you to path C:\Program Files\SqlMySqlPsh.
 
 ```powershell 
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
@@ -73,6 +71,9 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
 Install-Module -Name AzureStack -RequiredVersion 1.6.0
 ```
+
+> [!NOTE]
+> In disconnected scenario, you need to download the required PowerShell modules and register the repository manually as a prerequisite. You can get more information in [Deploy MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md)
 
 The following example shows the *UpdateMySQLProvider.ps1* script that you can run from an elevated PowerShell console. Be sure to change the variable information and passwords as needed:
 
@@ -104,7 +105,12 @@ $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domai
 
 # Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force 
- 
+
+# For version 1.1.47.0, the PowerShell modules used by the RP deployment are placed in C:\Program Files\SqlMySqlPsh
+# The deployment script adds this path to the system $env:PSModulePath to ensure correct modules are used.
+$rpModulePath = Join-Path -Path $env:ProgramFiles -ChildPath 'SqlMySqlPsh'
+$env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath 
+
 # Change directory to the folder where you extracted the installation files.
 # Then adjust the endpoints.
 .$tempDir\UpdateMySQLProvider.ps1 -AzCredential $AdminCreds ` 
@@ -116,6 +122,8 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 -DependencyFilesLocalPath $tempDir\cert ` 
 -AcceptLicense 
 ```  
+
+When the resource provider update script finishes, close the current PowerShell session.
 
 ## Next steps
 [Maintain MySQL resource provider](azure-stack-mysql-resource-provider-maintain.md)

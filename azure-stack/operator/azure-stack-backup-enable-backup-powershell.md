@@ -20,8 +20,6 @@ ms.lastreviewed: 03/14/2019
 ---
 # Enable Backup for Azure Stack Hub with PowerShell
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Enable the Infrastructure Backup Service with Windows PowerShell to take periodic backups of:
  - Internal identity service and root certificate.
  - User plans, offers, subscriptions.

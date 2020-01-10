@@ -17,8 +17,7 @@ ms.lastreviewed: 10/22/2018
 
 # Make virtual machine scale sets available in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-  
+ 
 Virtual machine scale sets are an Azure Stack Hub compute resource. You can use them to deploy and manage a set of identical virtual machines (VMs). With all VMs configured in the same way, scale sets do not require pre-provisioning of VMs. It is easier to build large-scale services that target big compute, big data, and containerized workloads.
 
 This article guides you through the process of making scale sets available in Azure Stack Hub Marketplace. After you complete this procedure, your users can add virtual machine scale sets to their subscriptions.

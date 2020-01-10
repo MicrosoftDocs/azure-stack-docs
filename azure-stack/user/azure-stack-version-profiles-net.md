@@ -22,8 +22,6 @@ ms.lastreviewed: 05/16/2019
 
 # Use API version profiles with .NET in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 The .NET SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Networking, Storage, App Services, and [Key Vault](/azure/key-vault/key-vault-whatis). The .NET SDK includes 14 NuGet packages. You must download these packages to your solution every time you compile your project. However, you can specifically download which resource provider you'll use for the **2019-03-01-hybrid** or **2018-03-01-hybrid** versions in order to optimize the memory for your app. Each package consists of a resource provider, the respective API version, and the API profile to which it belongs. API profiles in the .NET SDK enable hybrid cloud development by helping you switch between global Azure resources and resources on Azure Stack Hub.
 
 ## .NET and API version profiles

@@ -21,8 +21,6 @@ ms.lastreviewed: 11/21/2019
 
 # What is the AKS engine on Azure Stack Hub?
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 You can use the AKS engine command-line tool to deploy and manage a Kubernetes cluster on Azure and Azure Stack Hub. Use the AKS engine to create, upgrade, and scale Azure Resource Manager native clusters. You can use the engine to deploy a cluster in both connected and disconnected environments. This article provides an overview of the AKS engine, supported scenarios for using the engine with Azure Stack Hub, and an introduction to operations such as deploy, upgrade, and scale.
 
 ## Overview of the AKS engine

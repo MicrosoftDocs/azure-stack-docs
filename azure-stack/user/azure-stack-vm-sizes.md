@@ -20,8 +20,6 @@ ms.lastreviewed: 12/3/2019
 
 # VM sizes supported in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 This article lists the virtual machine (VM) sizes that are available in Azure Stack Hub. You can use this article to help you make your selection of a VM to support your Azure Stack Hub solution.
 
 Disk IOPS (Input/Output Operations Per Second) on Azure Stack Hub is a function of VM size instead of the disk type. This means that for a Standard_Fs series VM, regardless of whether you choose SSD or HDD for the disk type, the IOPS limit for a single additional data disk is 2300 IOPS. The IOPS limits imposed is a cap (maximum possible) to prevent noisy neighbors. It isn't an assurance of IOPS that you'll get on a specific VM size.

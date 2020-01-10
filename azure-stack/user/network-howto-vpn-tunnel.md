@@ -17,8 +17,6 @@ ms.lastreviewed: 09/19/2019
 
 # How to set up a multiple site-to-site VPN tunnel in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 This article shows you how to use an Azure Stack Hub Resource Manager template to deploy the solution. The solution creates multiple resource groups with associated virtual networks and how to connect these systems.
 
 You can find the templates in the [Azure Intelligent Edge Patterns](https://github.com/Azure-Samples/azure-intelligent-edge-patterns) GitHub repository. The template is in the **rras-gre-vnet-vnet** folder. 

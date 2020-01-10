@@ -17,8 +17,6 @@ ms.lastreviewed: 12/13/2019
 
 # Extending storage to Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 This article provides Azure Stack Hub storage infrastructure information to help you decide how to integrate Azure Stack Hub into your existing networking environment. After providing a general discussion of extending your datacenter, the article presents two different scenarios. You can connect to a Windows file storage server. You can also connect to a Windows iSCSI server.
 
 ## Overview of extending storage to Azure Stack Hub

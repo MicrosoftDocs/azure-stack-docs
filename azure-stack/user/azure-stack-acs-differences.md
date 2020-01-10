@@ -20,8 +20,6 @@ ms.lastreviewed: 01/30/2019
 ---
 # Azure Stack Hub storage: Differences and considerations
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Azure Stack Hub storage is the set of storage cloud services in Microsoft Azure Stack Hub. Azure Stack Hub storage provides blob, table, queue, and account management functionality with Azure-consistent semantics.
 
 This article summarizes the known Azure Stack Hub Storage differences from Azure Storage services. It also lists things to consider when you deploy Azure Stack Hub. To learn about high-level differences between global Azure and Azure Stack Hub, see the [Key considerations](azure-stack-considerations.md) article.

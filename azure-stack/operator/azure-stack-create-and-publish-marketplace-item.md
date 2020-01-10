@@ -20,8 +20,6 @@ ms.lastreviewed: 05/07/2019
 ---
 # Create and publish a custom Azure Stack Hub Marketplace item
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Every item published to the Azure Stack Hub Marketplace uses the Azure Gallery Package (.azpkg) format. The *Azure Gallery Packager* tool enables you to create a custom Azure Gallery package that you can upload to the Azure Stack Hub Marketplace, which can then be downloaded by users. The deployment process uses an Azure Resource Manager template.
 
 ## Marketplace items

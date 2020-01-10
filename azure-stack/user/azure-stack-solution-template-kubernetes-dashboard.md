@@ -20,7 +20,6 @@ ms.lastreviewed: 06/18/2019
 --- 
 # Access the Kubernetes Dashboard in Azure Stack Hub 
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit* 
 > [!Note]   
 > Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
 

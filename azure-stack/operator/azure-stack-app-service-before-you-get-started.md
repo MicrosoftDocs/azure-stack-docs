@@ -22,8 +22,6 @@ ms.lastreviewed: 01/08/2020
 
 # Prerequisites for deploying App Service on Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Before you deploy Azure App Service on Azure Stack Hub, you must complete the prerequisite steps in this article.
 
 > [!IMPORTANT]

@@ -19,8 +19,6 @@ ms.lastreviewed: 01/25/2019
 ---
 # Use the Azure Stack Hub user portal
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 Use the Azure Stack Hub portal to subscribe to public offers and use the services that these offers provide. If you've used the global Azure portal, you're already familiar with how the site works.
 
 ## Access the portal

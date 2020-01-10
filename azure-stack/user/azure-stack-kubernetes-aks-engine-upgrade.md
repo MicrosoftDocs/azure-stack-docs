@@ -21,8 +21,6 @@ ms.lastreviewed: 01/02/2020
 
 # Upgrade a Kubernetes cluster on Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Development Kit*
-
 ## Upgrade a cluster
 
 The AKS engine allows you to upgrade the cluster that was originally deployed using the tool. You can maintain the clusters using the AKS engine. Your maintenance tasks are similar to any IaaS system. You should be aware of the availability of new updates and use the AKS engine to apply them.
