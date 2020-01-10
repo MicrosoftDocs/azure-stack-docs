@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2020
+ms.date: 01/10/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/03/2020
+ms.lastreviewed: 01/10/2020
 ---
 
-# Rotate App Service on Azure Stack Hub Secrets and Certificates
+# Rotate App Service on Azure Stack Hub secrets and certificates
 
 These instructions only apply to Azure App Service on Azure Stack Hub.  Rotation of Azure App Service on Azure Stack Hub secrets is not included in the centralized secret rotation procedure for Azure Stack Hub.  Operators can monitor the validity of secrets within the system, the date on which they were last updated and the time remaining until the secrets expire.
 
@@ -33,7 +33,7 @@ This document contains the procedure for rotating the following secrets:
 * Certificates used by Azure App Service on Azure Stack Hub to secure endpoints;
 * System credentials for Azure App Service on Azure Stack Hub infrastructure roles.
 
-## Rotate Encryption Keys
+## Rotate encryption keys
 
 To rotate the encryption keys used within Azure App Service on Azure Stack Hub complete the following steps:
 
@@ -47,7 +47,7 @@ To rotate the encryption keys used within Azure App Service on Azure Stack Hub c
 
 1. The encryption keys are rotated and all role instances are updated. Operators can monitor the Status of the procedure using the **Status** button.
 
-## Rotate Connection Strings
+## Rotate connection strings
 
 To update the credentials for the database connection string for the App Service hosting and metering databases, complete the following steps:
 
@@ -61,7 +61,7 @@ To update the credentials for the database connection string for the App Service
 
 1. The credentials will be rotated throughout the Azure App Service role instances. Operators can monitor the Status of the procedure using the **Status** button.
 
-## Rotate Certificates
+## Rotate certificates
 
 To rotate the certificates used within Azure App Service on Azure Stack Hub complete the following steps:
 
@@ -75,7 +75,7 @@ To rotate the certificates used within Azure App Service on Azure Stack Hub comp
 
 1. The certificates will be rotated as required throughout the Azure App Service on Azure Stack Hub role instances.  Operators can monitor the status of the procedure using the **Status** button.
 
-## Rotate System Credentials
+## Rotate system credentials
 
 To rotate the System Credentials used within Azure App Service on Azure Stack Hub complete the following steps:
 
