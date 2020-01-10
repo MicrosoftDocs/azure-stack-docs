@@ -128,7 +128,7 @@ $env:PSModulePath = $env:PSModulePath + ";" + $rpModulePath
 
  ```
 
-When the resource provider update script finishes, please close the current PowerShell session and use new session for other Azure Stack operations.
+When the resource provider update script finishes, close the current PowerShell session.
 
 ## Next steps
 
