@@ -17,12 +17,14 @@ ms.lastreviewed: 06/03/2019
 You can use the **Active Directory Users and Computers** snap-in to add additional users to an Azure Stack Hub environment, using AD FS as its identity provider.
 
 ## Add Windows Server Active Directory users
-> [!TIP]
-> Replace \<domain\> with the domain that matches your directory. 
 
 1. Sign in to a computer with an account that provides access to the Windows Administrative Tools and open a new Microsoft Management Console (MMC).
 2. Select **File > Add or remove snap-in**.
-3. Select **Active Directory Users and Computers** > **\<domain\>** > **Users**.
+
+   > [!TIP]
+   > Replace *directory-domain* with the domain that matches your directory. 
+
+3. Select **Active Directory Users and Computers** > *directory-domain* > **Users**.
 4. Select **Action** > **New** > **User**.
 5. In New Object - User, provide user details. Select **Next**.
 6. Provide and confirm a password.
@@ -30,4 +32,5 @@ You can use the **Active Directory Users and Computers** snap-in to add addition
 
 
 ## Next steps
+
 [Create an app identity to access Azure Stack Hub resources](azure-stack-create-service-principals.md)
