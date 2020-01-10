@@ -29,7 +29,7 @@ If you are the cloud operator for Azure Stack Hub and would like to offer the AK
 
 ## Prerequisites for the AKS engine
 
-To use the AKS engine you need to have the following resources available. Keep in mind that the AKS engine is meant to be used by tenants of Azure Stack Hub to deploy Kubernetes clusters into their tenant subscription. The only part where involvement of the Azure Stack Hub operator may be required is for downloading marketplace items and the creation of a service principal identity. You can find details in the following table.
+To use the AKS engine, you need to have the following resources available. Keep in mind that the AKS engine is meant to be used by tenants of Azure Stack Hub to deploy Kubernetes clusters into their tenant subscription. The only part where involvement of the Azure Stack Hub operator may be required is for downloading Marketplace items and the creation of a service principal identity. You can find details in the following table.
 
 The your cloud operator will need to have the following items in place.
 
