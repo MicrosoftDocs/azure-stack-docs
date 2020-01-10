@@ -78,19 +78,22 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
     ![Configure Azure App Service cloud in Azure App Service Installer][3]
 
-1. On the next page:
+1. On the next App Service Installer page you will connect to your Azure Stack Hub:
 
-   a. Select the **Connect** button next to the **Azure Stack Hub Subscriptions** box. 
+    a. Select the connection method you wish to use - **Credential** or **Service Principal**
+        1. **Credential**
+            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
+            - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
+        1. **Service Principal**
+            - The service principal which you use **must** have 
+            - Provide the **Service Principal ID**, **Certificate File** and **Password** and select **Connect**.
 
-   b. Provide your admin account. For example: cloudadmin@azurestack.local. Enter your password and then select **Sign In**.
+   b. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.
 
-   c. In the **Azure Stack Hub Subscriptions** box, select **Default Provider Subscription**.
-   > [!NOTE]
-   > Azure App Service can be deployed only into **Default Provider Subscription**.
+     > [!IMPORTANT]
+     > App Service **must** be deployed to the **Default Provider Subscription**.
 
-   d. In the **Azure Stack Hub Locations** box, select the location that corresponds to the region you're deploying to. For example, if you're deploying to the ASDK, select **local**.
-
-   e. Select **Next**.
+   c. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
 
       ![Azure Stack Hub subscriptions and locations in Azure App Service Installer][4]
 
