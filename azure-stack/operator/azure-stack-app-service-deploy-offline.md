@@ -191,7 +191,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
     ![Summary of selections made in Azure App Service Installer][17]
 
 1. On the next page:
-    1. Track the installation progress. App Service on Azure Stack Hub can takes up to 240 minutes to deploy based on the default selections and age of the base Windows 2016 Datacenter image.
+    1. Track the installation progress. App Service on Azure Stack Hub can take up to 240 minutes to deploy based on the default selections and age of the base Windows 2016 Datacenter image.
 
     2. After the installer finishes running, select **Exit**.
 

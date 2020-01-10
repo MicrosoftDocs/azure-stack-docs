@@ -174,7 +174,7 @@ To deploy App Service resource provider, follow these steps:
 
 16. On the next App Service Installer page, follow these steps:
 
-    a. Track the installation progress. App Service on Azure Stack Hub can takes up to 240 minutes to deploy based on the default selections and age of the base Windows 2016 Datacenter image.
+    a. Track the installation progress. App Service on Azure Stack Hub can take up to 240 minutes to deploy based on the default selections and age of the base Windows 2016 Datacenter image.
 
     b. After the installer successfully finishes, select  **Exit**.
 
