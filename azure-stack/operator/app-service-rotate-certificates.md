@@ -1,5 +1,5 @@
 ---
-title: Rotate App Service on Azure Stack Hub Secrets and Certificates | Microsoft Docs
+title: Rotate App Service on Azure Stack Hub secrets and certificates | Microsoft Docs
 description: Learn how to rotate secrets and certificates used by Azure App Service on Azure Stack Hub
 services: azure-stack
 documentationcenter: ''
