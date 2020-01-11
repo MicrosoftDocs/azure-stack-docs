@@ -8,11 +8,11 @@ manager: femila
 
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 10/02/2019
+ms.date: 1/10/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.custom: mvc
-ms.lastreviewed: 12/03/2018
+ms.lastreviewed: 1/10/2020
 ---
 
 # Quickstart: Create a Linux server VM by using the Azure Stack Hub portal
@@ -70,7 +70,7 @@ The address of the Azure Stack Hub portal depends on which Azure Stack Hub produ
 
 ## Create the VM
 
-1. Select** Create a resource** > **Compute** > Search for `Ubuntu Server 16.04 LTS`. Select the name.
+1. Select **Create a resource** > **Compute**. Search for `Ubuntu Server 16.04 LTS`. Select the name.
 
    ![Create Linux Server](media/azure-stack-quick-linux-portal/image1.png)
 
