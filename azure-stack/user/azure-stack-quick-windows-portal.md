@@ -30,7 +30,7 @@ Sign in to the Azure Stack Hub portal. The address of the Azure Stack Hub portal
 
 ## Create a VM
 
-1. Select **Create a resource** > **Compute** > Search for` Windows Server 2016 Datacenter – Pay as you use`.
+1. Select **Create a resource** > **Compute**. Search for` Windows Server 2016 Datacenter – Pay as you use`.
     If you don't see the **Windows Server 2016 Datacenter - Pay-as-you-use** entry, contact your Azure Stack Hub cloud operator and ask for the image to be added to the Azure Stack Hub Marketplace. For instructions, your cloud operator can refer to [Create and publish a custom Azure Stack Hub Marketplace item](../operator/azure-stack-create-and-publish-marketplace-item.md).
 
     ![Windows Server 2016 Datacenter – Pay as you use](./media/azure-stack-quick-windows-portal/image1.png)
@@ -39,11 +39,11 @@ Sign in to the Azure Stack Hub portal. The address of the Azure Stack Hub portal
 
     ![Create a resource](./media/azure-stack-quick-windows-portal/image2.png)
 
-1. Enter a **Name**, **Disk Type**, **User name**, and **Password** under **Basics**. Choose a **Subscription**. Create a** Resource group**, or select an existing one, select a **Location**, and then select **OK**.
+1. Enter a **Name**, **Disk Type**, **User name**, and **Password** under **Basics**. Choose a **Subscription**. Create a **Resource group**, or select an existing one, select a **Location**, and then select **OK**.
 
     ![Create a VM - Basics](./media/azure-stack-quick-windows-portal/image3.png)
 
-1. Select** D1_v2** under **Size**,  and then choose on **Select**.
+1. Select **D1_v2** under **Size**,  and then choose on **Select**.
 
     ![Create a VM - Size](./media/azure-stack-quick-windows-portal/image4.png)
 
