@@ -61,7 +61,7 @@ Sign in to the Azure Stack Hub portal. The address of the Azure Stack Hub portal
 
 ## Clean up resources
 
-When you're finished using the VM, delete the VM and its resources. To do so, select the resource group on the VM page and click **Delete**.
+When you're finished using the VM, delete the VM and its resources. To do so, select the resource group on the VM page and select **Delete**.
 
 ## Next steps
 
