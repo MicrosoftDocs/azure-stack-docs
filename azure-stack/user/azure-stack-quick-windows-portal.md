@@ -47,7 +47,7 @@ Sign in to the Azure Stack Hub portal. The address of the Azure Stack Hub portal
 
     ![Create a VM - Size](./media/azure-stack-quick-windows-portal/image4.png)
 
-1. Make any desired changes to the defaults on the **Settings** blade. Use managed disks. If you need to allow RDP access, select **RDP (3389)** to open the port. When your configurations are ready, select **OK**.
+1. On the **Settings** page, make any desired changes to the defaults. You must configure the desired public inbound ports from the related drop-down. When you are finished, select **OK**.
 
     ![Create a VM - Settings](./media/azure-stack-quick-windows-portal/image5.png)
 
