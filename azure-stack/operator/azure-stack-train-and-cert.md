@@ -23,8 +23,8 @@ Want to learn about Azure Stack Hub and demonstrate your Azure Stack Hub profici
 ## Training
 
 - Microsoft official courses on-demand:
-   - [ODX20537: Configuring and Operating a Hybrid Cloud with Microsoft Azure Stack Hub (180 Day)](https://www.microsoft.com/en-us/learning/course.aspx?cid=ODX20537)
-   - [OD20537: Configuring and Operating a Hybrid Cloud with Microsoft Azure Stack Hub (90 Day)](https://www.microsoft.com/en-us/learning/course.aspx?cid=OD20537)
+   - [ODX20537: Configuring and Operating a Hybrid Cloud with Microsoft Azure Stack Hub (180 Day)](https://www.microsoft.com/learning/course.aspx?cid=ODX20537)
+   - [OD20537: Configuring and Operating a Hybrid Cloud with Microsoft Azure Stack Hub (90 Day)](https://www.microsoft.com/learning/course.aspx?cid=OD20537)
 
 - Microsoft IT training course:
    - [Course 20537A: Configuring and Operating a Hybrid Cloud with Microsoft Azure Stack Hub](https://aka.ms/azsmoc)

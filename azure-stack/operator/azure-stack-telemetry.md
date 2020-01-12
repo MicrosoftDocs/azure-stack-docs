@@ -121,12 +121,12 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 
 To enable or disable telemetry after deployment, you need access to the privileged endpoint (PEP) which is exposed on the ERCS VMs.
 
-1. To Enable: `Set-Telemetry -Enable`
-2. To Disable: `Set-Telemetry -Disable`
+- To Enable: `Set-Telemetry -Enable`
+- To Disable: `Set-Telemetry -Disable`
 
 PARAMETER details:
-> .PARAMETER Enable - Turn On telemetry data upload</br>
-> .PARAMETER Disable - Turn Off telemetry data upload  
+- `.PARAMETER Enable` - Turn on telemetry data upload
+- `.PARAMETER Disable` - Turn off telemetry data upload  
 
 **Script to enable telemetry:**
 
