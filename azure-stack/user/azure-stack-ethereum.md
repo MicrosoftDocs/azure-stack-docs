@@ -57,7 +57,7 @@ The template can deploy Ethereum consortium for leader and member in a variety o
 
 The consortium leader template configures the first member's footprint in the network. 
 
-1. Download the [leader template from GitHub](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/ConsortiumLeader/mainTemplate.json).
+1. Download the [leader template from GitHub](https://aka.ms/aa6z619).
 2. In the Azure Stack Hub tenant portal, select **+ Create a resource > Template deployment** to deploy from a custom template.
 3. Select **Edit template** to edit the new custom template.
 4. In the editing pane on the right, copy and paste the leader template JSON you previously downloaded.
@@ -112,7 +112,7 @@ To verify leader's deployment, go to the leader's admin site. The admin site add
 
 ### Joining consortium member deployment
 
-1. Download the [consortium member template from GitHub](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/JoiningMember/mainTemplate.json).
+1. Download the [consortium member template from GitHub](https://aka.ms/aa6zkua).
 2. In the Azure Stack Hub tenant portal, select **+ Create a resource > Template deployment** to deploy from a custom template.
 3. Select **Edit template** to edit the new custom template.
 4. In the editing pane on the right, copy and paste the leader template JSON you downloaded previously.
@@ -164,7 +164,7 @@ As shown in the picture, member's nodes status is **Not running**. This status i
 
 This template creates a connection from the leader to a remote member. 
 
-1. Download the [connect member and leader template from GitHub](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/Connection/mainTemplate.json).
+1. Download the [connect member and leader template from GitHub](https://aka.ms/aa6zdyt).
 2. In the Azure Stack Hub tenant portal, select **+ Create a resource > Template deployment** to deploy from a custom template.
 3. Select **Edit template** to edit the new custom template.
 4. In the editing pane on the right, copy and paste the leader template JSON you downloaded previously.
