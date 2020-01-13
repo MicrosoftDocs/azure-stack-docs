@@ -30,7 +30,7 @@ These release notes describe the improvements and fixes in Azure App Service on 
 
 ## Build reference
 
-The App Service on Azure Stack Hub Update 8 build number is **86.0.2.12**
+The App Service on Azure Stack Hub Update 8 build number is **86.0.2.13**
 
 ### Prerequisites
 
