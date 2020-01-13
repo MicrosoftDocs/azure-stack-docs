@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 01/13/2020
 ms.author: anwestg
 ms.reviewer:
 
@@ -81,7 +81,12 @@ Azure App Service on Azure Stack Update 8 includes the following improvements an
   - [2019-12 Cumulative Update for Windows Server 2016 for x64-based Systems (KB4530689)](https://support.microsoft.com/help/4530689)
 
 - **Managed Disk support for new deployments**
- - All new deployments of Azure App Service on Azure Stack Hub will make use of managed disks for all Virtual Machines and Virtual Machine Scale Sets.  All existing deployments will continue to use unmanaged disks.
+
+All new deployments of Azure App Service on Azure Stack Hub will make use of managed disks for all Virtual Machines and Virtual Machine Scale Sets.  All existing deployments will continue to use unmanaged disks.
+
+- **TLS 1.2 Enforced by Front End Load Balancers**
+
+As of this update **TLS 1.2** will be enforced for all applications.
 
 ### Post-deployment steps
 
