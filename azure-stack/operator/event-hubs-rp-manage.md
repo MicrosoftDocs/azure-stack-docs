@@ -27,11 +27,11 @@ Use the following steps to access the Event Hubs management page:
    - **Alerts**: displays all critical and warning alerts for Event Hubs. See the [Alerts section](#alerts) section for details.
    - **Event Hubs clusters**: displays a list of all clusters configured. See the [Event Hubs clusters](#event-hubs-clusters) section for details.
 
-[![Manage event hubs](media/event-hubs-rp-manage/1-manage-event-hubs.png)](media/event-hubs-rp-manage/1-manage-event-hubs.png#lightbox)
+   [![Manage event hubs](media/event-hubs-rp-manage/1-manage-event-hubs.png)](media/event-hubs-rp-manage/1-manage-event-hubs.png#lightbox)
 
 ## Alerts
 
-   Currently, the Event Hubs resource provider supports the following alerts:
+The Event Hubs resource provider supports the following alerts:
    
 | Category | Alert | Type | Condition |
 |----------|-------|------|-----------|
