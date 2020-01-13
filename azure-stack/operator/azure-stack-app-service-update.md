@@ -12,10 +12,10 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/13/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/09/2019
+ms.lastreviewed: 01/13/2019
 
 ---
 # Update Azure App Service on Azure Stack Hub
@@ -64,7 +64,7 @@ To upgrade your deployment of Azure App Service on Azure Stack Hub, follow these
 
 7. On the next page:
 
-    a. Select the connection method you wish to use - **Credential** or **Service Principal**
+    1. Select the connection method you wish to use - **Credential** or **Service Principal**
         1. **Credential**
             - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
@@ -72,13 +72,11 @@ To upgrade your deployment of Azure App Service on Azure Stack Hub, follow these
             - The service principal which you use **must** have **Owner** rights on the **Default Provider Subscription**
             - Provide the **Service Principal ID**, **Certificate File** and **Password** and select **Connect**.
 
-    b. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.
+    1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.    Azure App Service on Azure Stack Hub **must** be deployed in the **Default Provider Subscription**.
 
-     > [!IMPORTANT]
-     > App Service **must** be deployed to the **Default Provider Subscription**.
+    1. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
 
-    c. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
-    d. If an existing Azure App Service deployment is detected, then the resource group and storage account are populated and unavailable.
+    1. If an existing Azure App Service deployment is detected, then the resource group and storage account are populated and unavailable.
 
       ![Azure App Service Installation Detected][3]
 

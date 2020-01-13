@@ -13,10 +13,10 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 01/13/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/09/2020
+ms.lastreviewed: 01/13/2020
 
 ---
 # Deploy App Service in Azure Stack Hub
@@ -65,20 +65,19 @@ To deploy App Service resource provider, follow these steps:
 
 6. On the next App Service Installer page you will connect to your Azure Stack Hub:
 
-    a. Select the connection method you wish to use - **Credential** or **Service Principal**
+    1. Select the connection method you wish to use - **Credential** or **Service Principal**
+ 
         1. **Credential**
             - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
+
         1. **Service Principal**
             - The service principal which you use **must** have **Owner** rights on the **Default Provider Subscription**
             - Provide the **Service Principal ID**, **Certificate File** and **Password** and select **Connect**.
 
-    b. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.
+    1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.  Azure App Service on Azure Stack Hub **must** be deployed in the **Default Provider Subscription**.
 
-     > [!IMPORTANT]
-     > App Service **must** be deployed to the **Default Provider Subscription**.
-
-    c. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
+    1. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
 
     ![App Service Installer][3]
 

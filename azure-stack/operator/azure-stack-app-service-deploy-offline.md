@@ -13,10 +13,10 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2020
+ms.date: 01/13/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/09/2020
+ms.lastreviewed: 01/13/2020
 
 ---
 
@@ -80,7 +80,7 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
 1. On the next App Service Installer page you will connect to your Azure Stack Hub:
 
-    a. Select the connection method you wish to use - **Credential** or **Service Principal**
+    1. Select the connection method you wish to use - **Credential** or **Service Principal**
         1. **Credential**
             - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
@@ -88,14 +88,9 @@ To deploy Azure App Service in an offline environment, first create an offline i
             - The service principal which you use **must** have **Owner** rights on the **Default Provider Subscription**
             - Provide the **Service Principal ID**, **Certificate File** and **Password** and select **Connect**.
 
-    b. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.
+    1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.  Azure App Service on Azure Stack Hub **must** be deployed in the **Default Provider Subscription**.
 
-     > [!IMPORTANT]
-     > App Service **must** be deployed to the **Default Provider Subscription**.
-
-    c. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
-
-      ![Azure Stack Hub subscriptions and locations in Azure App Service Installer][4]
+    1. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
 
 1. You can allow the Azure App Service installer to create a virtual network and associated subnets. Or, you can deploy into an existing virtual network, as configured through [these steps](azure-stack-app-service-before-you-get-started.md#virtual-network).
    - To use the Azure App Service installer method, select **Create VNet with default settings**, accept the defaults, and then select **Next**.
