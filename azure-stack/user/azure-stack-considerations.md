@@ -62,7 +62,7 @@ Microsoft provides tools and guidance that help you develop for Azure Stack Hub.
 | -------- | ------------- |
 | Install the correct tools on your developer workstation. | - [Install PowerShell](../operator/azure-stack-powershell-install.md)<br>- [Download tools](../operator/azure-stack-powershell-download.md)<br>- [Configure PowerShell](azure-stack-powershell-configure-user.md)<br>- [Install Visual Studio](azure-stack-install-visual-studio.md)
 | Review information about the following items:<br>- Azure Resource Manager template considerations.<br>- How to find quickstart templates.<br>- Use a policy module to help you use Azure to develop for Azure Stack Hub. | [Develop for Azure Stack Hub](azure-stack-developer.md) |
-| Review and follow the best practices for templates. | [Resource Manager Quickstart Templates](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md)
+| Review and follow the best practices for templates. | [Resource Manager Quickstart Templates](https://aka.ms/aa6yz42)
 | | |
 
 ## Version requirements

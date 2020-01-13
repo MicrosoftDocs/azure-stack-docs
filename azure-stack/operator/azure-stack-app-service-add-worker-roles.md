@@ -1,6 +1,6 @@
 ---
 title: Add workers and infrastructure in App Service on Azure Stack Hub | Microsoft Docs
-description: Detailed guidance for scaling Azure Stack Hub App Services
+description: Detailed guidance for scaling Azure App Service on Azure Stack Hub
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -13,22 +13,25 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 01/13/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 06/08/2018
+ms.lastreviewed: 01/13/2020
 
 ---
-# Add workers and infrastructure in App Service on Azure Stack Hub
 
-This document provides instructions on how to scale infrastructure and worker roles in App Service on Azure Stack Hub. We'll cover all the steps necessary for creating additional worker roles to support apps of any size.
+# Add workers and infrastructure in Azure App Service on Azure Stack Hub
+
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*  
+
+This document provides instructions on how to scale infrastructure and worker roles in Azure App Service on Azure Stack Hub. We'll cover all the steps necessary for creating additional worker roles to support apps of any size.
 
 > [!NOTE]
 > If your Azure Stack Hub Environment doesn't have more than 96-GB RAM, you may have difficulties adding additional capacity.
 
-App Service on Azure Stack Hub supports free and shared worker tiers by default. To add other worker tiers, you need to add more worker roles.
+Azure App Service on Azure Stack Hub supports free and shared worker tiers by default. To add other worker tiers, you need to add more worker roles.
 
-If you're not sure what was deployed with the default App Service on Azure Stack Hub installation, you can review additional info in the [App Service on Azure Stack Hub overview](azure-stack-app-service-overview.md).
+If you're not sure what was deployed with the default Azure App Service on Azure Stack Hub installation, you can review additional info in the [App Service on Azure Stack Hub overview](azure-stack-app-service-overview.md).
 
 Azure App Service on Azure Stack Hub deploys all roles using Virtual Machine Scale Sets and as such takes advantage of the scaling capabilities of this workload. Therefore, all scaling of the worker tiers is done via the App Service Admin.
 
@@ -87,7 +90,7 @@ Azure App Service on Azure Stack Hub deploys all roles using Virtual Machine Sca
 
     ![Set instances to scale to in App Service Roles in Azure Stack Hub administrator portal](media/azure-stack-app-service-add-worker-roles/image03.png)
 
-6. App Service on Azure Stack Hub will now add the additional VMs, configure them, install all the required software, and mark them as ready when this process is complete. This process can take approximately 80 minutes.
+6. Azure App Service on Azure Stack Hub will now add the additional VMs, configure them, install all the required software, and mark them as ready when this process is complete. This process can take approximately 80 minutes.
 
 7. You can monitor the progress of the readiness of the new roles by viewing the workers in the **Roles** blade.
 
