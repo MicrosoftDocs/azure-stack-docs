@@ -68,10 +68,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
 ## Complete the upgrade of App Service on Azure Stack Hub
 
 > [!IMPORTANT]
-
 > The Azure App Service installer must be run on a machine which can reach the Azure Stack Hub Administrator Azure Resource Manager Endpoint.
->
->
 
 1. Run appservice.exe as an administrator.
 
@@ -94,10 +91,10 @@ To upgrade App Service in a disconnected environment, you must first create an o
 7. On the next page:
 
    1. Select the connection method you wish to use - **Credential** or **Service Principal**
-        1. **Credential**
+        - **Credential**
             - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
-        1. **Service Principal**
+        - **Service Principal**
             - The service principal which you use **must** have **Owner** rights on the **Default Provider Subscription**
             - Provide the **Service Principal ID**, **Certificate File** and **Password** and select **Connect**.
 

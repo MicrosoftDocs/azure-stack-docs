@@ -81,10 +81,10 @@ To deploy Azure App Service in an offline environment, first create an offline i
 1. On the next App Service Installer page you will connect to your Azure Stack Hub:
 
     1. Select the connection method you wish to use - **Credential** or **Service Principal**
-        1. **Credential**
+        - **Credential**
             - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
-        1. **Service Principal**
+        - **Service Principal**
             - The service principal which you use **must** have **Owner** rights on the **Default Provider Subscription**
             - Provide the **Service Principal ID**, **Certificate File** and **Password** and select **Connect**.
 
