@@ -107,8 +107,8 @@ To upgrade App Service in a disconnected environment, you must first create an o
      > App Service **must** be deployed to the **Default Provider Subscription**.
 
    1. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
-   1. If an existing App Service deployment is detected, then the resource group and storage account will be populated and greyed out.
-   1. Click **Next** to review the upgrade summary.
+   4. If an existing App Service deployment is detected, then the resource group and storage account will be populated and greyed out.
+   5. Click **Next** to review the upgrade summary.
 
       ![Azure App Service Installation Detected][4]
 
