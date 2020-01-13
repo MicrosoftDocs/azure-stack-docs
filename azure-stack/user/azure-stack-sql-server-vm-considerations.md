@@ -28,6 +28,8 @@ When creating SQL Server images, [consider provisioning your VMs in the Azure St
 > [!NOTE]  
 > While the article describes how to provision a SQL Server VM using the global Azure portal, the guidance also applies to Azure Stack Hub with the following differences: SSD isn't available for the operating system disk and there are minor differences in storage configuration.
 
+In the VM images, for SQL Server, you can only use bring-your-own-license (BYOL). For Windows Server, the default license model is pay-as-you-go (PAYG). For detailed information of Windows Server license model in VM, refer the article [Windows Server in Azure Stack Hub marketplace FAQ](https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-windows-server-faq#what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server).  
+
 Getting the *best* performance for SQL Server on Azure Stack Hub VMs is the focus of this article. If your workload is less demanding, you might not require every recommended optimization. Consider your performance needs and workload patterns as you evaluate these recommendations.
 
 > [!NOTE]  
