@@ -68,7 +68,7 @@ Use the PowerShell DSC extension to configure an existing virtual machine Local 
 
 ## Basic virtual machine
 
-[Deploy a Windows VM](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-simple-windows-vm) that includes a virtual network (with DNS), public IP address, and a network interface.
+[Deploy a Windows VM](https://aka.ms/aa6zdzx) that includes a virtual network (with DNS), public IP address, and a network interface.
 
 ## Cancel a running template deployment
 

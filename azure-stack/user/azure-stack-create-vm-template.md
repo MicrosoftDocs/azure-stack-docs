@@ -40,7 +40,7 @@ Over time, many GitHub users have contributed to the repo, resulting in a collec
 >[!IMPORTANT]
 > Some of these templates are created by members of the community and not by Microsoft. Each template is licensed under a license agreement by its owner, not Microsoft. Microsoft is not responsible for these templates and does not screen for security, compatibility, or performance. Community templates are not supported under any Microsoft support program or service, and are made available "AS IS," without warranty of any kind.
 
-If you want to contribute Azure Resource Manager templates to GitHub, make your contribution to the [AzureStack-QuickStart-Templates](https://github.com/Azure/AzureStack-QuickStart-Templates) repo. To learn more about this repo and how to contribute to it, see the [readme file](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/README.md).
+If you want to contribute Azure Resource Manager templates to GitHub, make your contribution to the [AzureStack-QuickStart-Templates](https://github.com/Azure/AzureStack-QuickStart-Templates) repo. To learn more about this repo and how to contribute to it, see the [readme file](https://aka.ms/aa6zktg).
 
 ## Create a VM using a custom GitHub template
 
