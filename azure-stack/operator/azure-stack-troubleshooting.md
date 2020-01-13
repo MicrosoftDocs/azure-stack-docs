@@ -1,6 +1,7 @@
 ---
-title: Microsoft Azure Stack Hub troubleshooting | Microsoft Docs
-description: Azure Stack Hub troubleshooting.
+title: Troubleshoot Azure Stack Hub
+titleSuffix: Azure Stack
+description: Learn how to troubleshoot Azure Stack Hub, including issues with VMs, storage, and App Service.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -19,9 +20,9 @@ ms.reviewer: prchint
 ms.lastreviewed: 11/05/2019
 
 ---
-# Microsoft Azure Stack Hub troubleshooting
+# Troubleshoot issues in Azure Stack Hub
 
-This document provides troubleshooting information for Azure Stack Hub integrated environments. For help with the Azure Stack Development Kit, see [ASDK Troubleshooting](../asdk/asdk-troubleshooting.md) or get help from experts on the [Azure Stack Hub MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
+This document provides troubleshooting information for Azure Stack Hub integrated environments. For help with the Azure Stack Development Kit, see [ASDK Troubleshooting](../asdk/asdk-troubleshooting.md) or get help from experts on the [Azure Stack Hub MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
 
 ## Frequently asked questions
 
@@ -55,7 +56,7 @@ To increase the total available memory capacity for Azure Stack Hub, you can add
 
 #### Retention period
 
-The retention period setting allows a cloud operator to specify a time period in days (between 0 and 9999 days) during which any deleted account can potentially be recovered. The default retention period is set to **0** days. Setting the value to **0** means that any deleted account is immediately out of retention and marked for periodic garbage collection.
+The retention period setting lets a cloud operator to specify a time period in days (between 0 and 9999 days) during which any deleted account can potentially be recovered. The default retention period is set to **0** days. Setting the value to **0** means that any deleted account is immediately out of retention and marked for periodic garbage collection.
 
 * [Set the retention period](azure-stack-manage-storage-accounts.md#set-the-retention-period)
 
@@ -83,42 +84,45 @@ Choose the type of shared services account that you use for Azure Stack Hub. The
 
 ### Get scale unit metrics
 
-You can use PowerShell to get stamp utilization information without help from CSS. To obtain stamp utilization: 
+You can use PowerShell to get stamp utilization information without help from CSS. To obtain stamp utilization:
 
-1. Create a PEP session
-2. Run test-azurestack
-3. Exit PEP session
-4. Run get-azurestacklog -filterbyrole seedring using an invoke-command call
-5. Extract the seedring .zip, and you can obtain the validation report from the ERCS folder where you ran test-azurestack
+1. Create a PEP session.
+2. Run `test-azurestack`.
+3. Exit PEP session.
+4. Run `get-azurestacklog -filterbyrole seedring` using an invoke-command call.
+5. Extract the seedring .zip. You can obtain the validation report from the ERCS folder where you ran `test-azurestack`.
 
 For more information, see [Azure Stack Hub Diagnostics](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs).
 
-## Troubleshoot virtual machines
+## Troubleshoot virtual machines (VMs)
+
 ### Default image and gallery item
+
 A Windows Server image and gallery item must be added before deploying VMs in Azure Stack Hub.
 
+### I've deleted some VMs, but still see the VHD files on disk
 
-### I have deleted some virtual machines, but still see the VHD files on disk
 This behavior is by design:
 
-* When you delete a VM, VHDs are not deleted. Disks are separate resources in the resource group.
-* When a storage account gets deleted, the deletion is visible immediately through Azure Resource Manager, but the disks it may contain are still kept in storage until garbage collection runs.
+* When you delete a VM, VHDs aren't deleted. Disks are separate resources in the resource group.
+* When a storage account gets deleted, the deletion is visible immediately through Azure Resource Manager. But the disks it may contain are still kept in storage until garbage collection runs.
 
-If you see "orphan" VHDs, it is important to know if they are part of the folder for a storage account that was deleted. If the storage account was not deleted, it's normal they are still there.
+If you see "orphan" VHDs, it's important to know if they're part of the folder for a storage account that was deleted. If the storage account wasn't deleted, it's normal that they're still there.
 
 You can read more about configuring the retention threshold and on-demand reclamation in [manage storage accounts](azure-stack-manage-storage-accounts.md).
 
 ## Troubleshoot storage
-### Storage reclamation
-It may take up to 14 hours for reclaimed capacity to show up in the portal. Space reclamation depends on various factors including usage percentage of internal container files in block blob store. Therefore, depending on how much data is deleted, there is no guarantee on the amount of space that could be reclaimed when garbage collector runs.
 
-### Azure Storage Explorer not working with Azure Stack Hub 
- 
-If you are using an integrated system in a disconnected scenario, it's recommended to use an Enterprise Certificate Authority (CA). Export the root certificate in a Base-64 format and then import it in Azure Storage Explorer. Make sure that you remove the trailing slash (‘/’) from the ARM endpoint. For more information, see [Prepare for connecting to Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-connect-se#prepare-for-connecting-to-azure-stack).
- 
+### Storage reclamation
+
+It may take up to 14 hours for reclaimed capacity to show up in the portal. Space reclamation depends on different factors including usage percentage of internal container files in block blob store. Therefore, depending on how much data is deleted, there's no guarantee on the amount of space that could be reclaimed when garbage collector runs.
+
+### Azure Storage Explorer not working with Azure Stack Hub
+
+If you're using an integrated system in a disconnected scenario, it's recommended to use an Enterprise Certificate Authority (CA). Export the root certificate in a Base-64 format and then import it in Azure Storage Explorer. Make sure that you remove the trailing slash (`/`) from the Resource Manager endpoint. For more information, see [Prepare for connecting to Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-storage-connect-se#prepare-for-connecting-to-azure-stack).
 
 ## Troubleshooting App Service
+
 ### Create-AADIdentityApp.ps1 script fails
 
-If the Create-AADIdentityApp.ps1 script that is required for App Service fails, be sure to include the required -AzureStackAdminCredential parameter when running the script. For more information, see [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-app).
-
+If the Create-AADIdentityApp.ps1 script that's required for App Service fails, be sure to include the required `-AzureStackAdminCredential` parameter when running the script. For more information, see [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-app).
