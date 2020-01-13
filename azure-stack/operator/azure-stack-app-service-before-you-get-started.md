@@ -1,6 +1,6 @@
 ---
-title: Prerequisites for deploying App Service on Azure Stack Hub | Microsoft Docs
-description: Learn the prerequisite steps to complete before you deploy App Service on Azure Stack Hub.
+title: Prerequisites for deploying Azure App Service on Azure Stack Hub | Microsoft Docs
+description: Learn the prerequisite steps to complete before you deploy Azure App Service on Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: BryanLa
@@ -13,19 +13,21 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 01/13/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/08/2020
+ms.lastreviewed: 01/13/2020
 
 ---
 
 # Prerequisites for deploying App Service on Azure Stack Hub
 
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
+
 Before you deploy Azure App Service on Azure Stack Hub, you must complete the prerequisite steps in this article.
 
 > [!IMPORTANT]
-> Apply the 1904 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.6.
+> Apply the 1910 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Hub Development Kit (ASDK) before you deploy Azure App Service 1.8.
 
 ## Download the installer and helper scripts
 
@@ -147,7 +149,7 @@ The certificate for identity must contain a subject that matches the following f
 
 ### Validate certificates
 
-Before deploying the App Service resource provider, you should [validate the certificates to be used](azure-stack-validate-pki-certs.md#using-validated-certificates) by using the Azure Stack Hub Readiness Checker tool available from the [PowerShell Gallery](https://aka.ms/AzsReadinessChecker). The Azure Stack Hub Readiness Checker Tool validates that the generated PKI certificates are suitable for App Service deployment.
+Before deploying the App Service resource provider, you should [validate the certificates to be used](azure-stack-validate-pki-certs.md) by using the Azure Stack Hub Readiness Checker tool available from the [PowerShell Gallery](https://aka.ms/AzsReadinessChecker). The Azure Stack Hub Readiness Checker Tool validates that the generated PKI certificates are suitable for App Service deployment.
 
 As a best practice, when working with any of the necessary [Azure Stack Hub PKI certificates](azure-stack-pki-certs.md), you should plan enough time to test and reissue certificates if necessary.
 

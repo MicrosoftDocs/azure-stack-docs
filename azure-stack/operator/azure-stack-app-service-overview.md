@@ -1,7 +1,6 @@
 ---
-title: App Service on Azure Stack Hub overview
-titleSuffix: Azure Stack
-description: Overview of App Service on Azure Stack Hub.
+title: Azure App Service on Azure Stack overview | Microsoft Docs
+description: Overview of Azure App Service and Azure Functions on Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: BryanLa
@@ -13,14 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 01/13/2020
 ms.author: BryanLa
 ms.reviewer: anwestg
-ms.lastreviewed: 10/16/2018
+ms.lastreviewed: 01/13/2020
 
 ---
 
-# App Service on Azure Stack Hub overview
+# Azure App Service and Azure Functions on Azure Stack Hub overview
+
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
 
 Azure App Service on Azure Stack Hub is a platform-as-a-service (PaaS) offering from Microsoft Azure available on Azure Stack Hub. The service enables your internal or external customers to create web, API, and Azure Functions apps for any platform or device. They can integrate your apps with on-premises apps and automate their business processes. Azure Stack Hub cloud operators can run customer apps on fully managed virtual machines (VMs) with their choice of shared VM resources or dedicated VMs.
 
@@ -28,9 +29,9 @@ Azure App Service enables you to automate business processes and host cloud APIs
 
 ## Why offer Azure App Service on Azure Stack Hub?
 
-Here are some key features and capabilities of App Service:
+Here are some key features and capabilities of Azure App Service:
 
-- **Multiple languages and frameworks**: App Service has first-class support for ASP.NET, Node.js, Java, PHP, and Python. You can also run Windows PowerShell and other scripts or executables on App Service VMs.
+- **Multiple languages and frameworks**: Azure App Service has first-class support for ASP.NET, Node.js, Java, PHP, and Python. You can also run Windows PowerShell and other scripts or executables on App Service VMs.
 - **DevOps optimization**: Set up continuous integration and deployment with GitHub, local Git, or BitBucket. Promote updates through test and staging environments, and manage your apps in App Service by using Azure PowerShell or the cross-platform command-line interface (CLI).
 - **Visual Studio integration**: Dedicated tools in Visual Studio streamline the work of creating and deploying apps.
 
@@ -42,7 +43,7 @@ App Service offers several app types, each of which is intended to host a specif
 - [API Apps](/azure/app-service/overview) for hosting REST APIs.
 - Azure Functions for hosting event driven, serverless workloads.
 
-The word *app* refers to the hosting resources dedicated to running a workload. Taking *web app* as an example, you're probably accustomed to thinking of a web app as both the compute resources and app code that together deliver functionality to a browser. In App Service, a web app is the compute resource that Azure Stack Hub provides for hosting your app code.
+The word *app* refers to the hosting resources dedicated to running a workload. Taking *web app* as an example, you're probably accustomed to thinking of a web app as both the compute resources and app code that together deliver functionality to a browser. In Azure App Service, a web app is the compute resource that Azure Stack Hub provides for hosting your app code.
 
 Your app can be composed of multiple App Service apps of different kinds. For example, if your app is composed of a web front end and a REST API back end, you can:
 
@@ -59,11 +60,12 @@ In Azure, there are shared and dedicated workers. A shared worker supports high-
 
 ## Portal features
 
-App Service on Azure Stack Hub uses the same user interface that Azure App Service uses. The same is true with the back end. However, some features are disabled in Azure Stack Hub. The Azure-specific expectations or services that those features require aren't currently available in Azure Stack Hub.
+
+Azure App Service on Azure Stack Hub uses the same user interface that Azure App Service uses. The same is true with the back end. However, some features are disabled in Azure Stack Hub. The Azure-specific expectations or services that those features require aren't currently available in Azure Stack Hub.
 
 ## Next steps
 
 - [Prerequisites for deploying App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md)
-- [Install the App Service resource provider](azure-stack-app-service-deploy.md)
+- [Install the Azure App Service resource provider](azure-stack-app-service-deploy.md)
 
 You can also try out other [platform as a service (PaaS) services](service-plan-offer-subscription-overview.md), such as the [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md) and the [MySQL resource provider](azure-stack-mysql-resource-provider-deploy.md).
