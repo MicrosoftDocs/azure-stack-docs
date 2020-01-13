@@ -93,7 +93,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
 7. On the next page:
 
-   1. Select the connection method you wish to use - **Credential** or **Service Principal**
+   a. Select the connection method you wish to use - **Credential** or **Service Principal**
         1. **Credential**
             - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
             - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
@@ -101,17 +101,15 @@ To upgrade App Service in a disconnected environment, you must first create an o
             - The service principal which you use **must** have **Owner** rights on the **Default Provider Subscription**
             - Provide the **Service Principal ID**, **Certificate File** and **Password** and select **Connect**.
 
-   1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.
+   b. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.
 
      > [!IMPORTANT]
      > App Service **must** be deployed to the **Default Provider Subscription**.
 
-   1. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
-   4. If an existing App Service deployment is detected, then the resource group and storage account will be populated and greyed out.
-   5. Click **Next** to review the upgrade summary.
+   c. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
+   d. If an existing App Service deployment is detected, then the resource group and storage account will be populated and greyed out.
 
       ![Azure App Service Installation Detected][4]
-
 8. On the summary page:
    1. Verify the selections you made. To make changes, use the **Previous** buttons to visit previous pages.
    2. If the configurations are correct, select the check box.

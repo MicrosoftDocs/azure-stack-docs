@@ -88,12 +88,12 @@ To deploy Azure App Service in an offline environment, first create an offline i
             - The service principal which you use **must** have **Owner** rights on the **Default Provider Subscription**
             - Provide the **Service Principal ID**, **Certificate File** and **Password** and select **Connect**.
 
-   b. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.
+    b. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.
 
      > [!IMPORTANT]
      > App Service **must** be deployed to the **Default Provider Subscription**.
 
-   c. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
+    c. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
 
       ![Azure Stack Hub subscriptions and locations in Azure App Service Installer][4]
 
