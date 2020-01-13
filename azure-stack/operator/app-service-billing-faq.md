@@ -82,13 +82,13 @@ You can then choose to create a quota, for use in a plan, which only offers free
 
 ## Sample scripts to assist with billing
 
-The Azure App Service team created sample PowerShell scripts to assist with querying the Azure Stack Hub usage service. Cloud operators can use these sample scripts to prepare their own billing for their tenants. The sample scripts are in the [Azure Stack Hub Tools repository](https://github.com/Azure/AzureStack-tools) in GitHub. The App Service scripts are in the [AppService folder under Usage](https://github.com/Azure/AzureStack-Tools/tree/master/Usage/AppService).
+The Azure App Service team created sample PowerShell scripts to assist with querying the Azure Stack Hub usage service. Cloud operators can use these sample scripts to prepare their own billing for their tenants. The sample scripts are in the [Azure Stack Hub Tools repository](https://github.com/Azure/AzureStack-tools) in GitHub. The App Service scripts are in the [AppService folder under Usage](https://aka.ms/aa6zku8).
 
 The sample scripts available are:
 
-- [Get-AppServiceBillingRecords](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Get-AppServiceBillingRecords.ps1): This sample fetches Azure App Service on Azure Stack Hub billing records from the Azure Stack Hub Usage API.
-- [Get-AppServiceSubscriptionUsage](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Get-AppServiceSubscriptionUsage.ps1): This sample calculates Azure App Service on Azure Stack Hub usage amounts per subscription. This script calculates usage amounts based on data from the Usage API and the prices provided per meter by the cloud operator.
-- [Suspend-UserSubscriptions](https://github.com/Azure/AzureStack-Tools/blob/master/Usage/AppService/Suspend-UserSubscriptions.ps1): This sample suspends or enables subscriptions based on usage limits specified by the cloud operator.
+- [Get-AppServiceBillingRecords](https://aka.ms/aa6zku2): This sample fetches Azure App Service on Azure Stack Hub billing records from the Azure Stack Hub Usage API.
+- [Get-AppServiceSubscriptionUsage](https://aka.ms/aa6zku6): This sample calculates Azure App Service on Azure Stack Hub usage amounts per subscription. This script calculates usage amounts based on data from the Usage API and the prices provided per meter by the cloud operator.
+- [Suspend-UserSubscriptions](https://aka.ms/aa6zku7): This sample suspends or enables subscriptions based on usage limits specified by the cloud operator.
 
 ## Next steps
 
