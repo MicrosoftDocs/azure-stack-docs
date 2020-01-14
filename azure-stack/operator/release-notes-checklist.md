@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2019
+ms.date: 01/14/2020
 ms.author: sethm
 ms.reviewer: ppacent
-ms.lastreviewed: 12/10/2019
+ms.lastreviewed: 01/14/2020
 
 ---
 
@@ -37,7 +37,7 @@ Review this checklist in order to prepare for an Azure Stack Hub update. This ar
 | Run Test-AzureStack | Run `Test-AzureStack -Group UpdateReadiness` to identify operational issues. The cmdlet is accessible through the  Privileged Endpoint Session (PEP). For more information, see [Validate Azure Stack Hub system state](azure-stack-diagnostic-test.md). |
 | Resolve issues | Resolve any operational issues identified by `Test-AzureStack`. |
 | Update available | In connected scenarios only, Azure Stack Hub deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. Disconnected customers can download and import new packages using the [process described here](azure-stack-apply-updates.md). |
-| Schedule a Maintenance Window & Notify your users | You should notify users of any maintenance operations, and that you schedule normal maintenance windows during non-business hours if possible. Maintenance operations can affect existing tenant workloads and cause new tenants operations (e.g. creating, reconfiguring, or deleting VMs) to fail - whether the operation is initiated from the portal or programmatically from the Azure Resource Manager API. For Azure Stack Hub express and full updates you can check the release notes for a forecast of how long the update is expected to take for the version you are applying |
+| Schedule a maintenance window and notify your users | You should notify users of any maintenance operations, and schedule normal maintenance windows during non-business hours if possible. Maintenance operations can affect existing tenant workloads and cause new tenants operations (for example, creating, reconfiguring, or deleting VMs) to fail - whether the operation is initiated from the portal or programmatically from the Azure Resource Manager API. For Azure Stack Hub express and full updates, you can check the [release notes](release-notes.md) for a forecast of how long the update is expected to take for the version you are applying. |
 
 ## During Azure Stack Hub update
 
