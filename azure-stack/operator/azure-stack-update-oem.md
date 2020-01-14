@@ -51,6 +51,9 @@ This section contains OEM contact information and links to OEM Azure Stack Hub r
 
 Apply the OEM packages with the following steps:
 
+> [!Important]
+> Before applying updates in Azure Stack Hub, ensure you have completed **ALL** steps in the [Pre-Update Checklist](release-notes-checklist.md) and have scheduled an appropriate maintenance window for the update type that you are applying.
+
 1. You will need to contact your OEM to:
       - Determine the current version of your OEM package.  
       - Find the best method to download your OEM package.  
