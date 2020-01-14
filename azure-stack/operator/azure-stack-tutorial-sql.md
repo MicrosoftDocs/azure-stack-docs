@@ -1,6 +1,7 @@
 ﻿---
-title: Offer highly available SQL databases in Azure Stack 
-description: Learn how to create a SQL Server resource provider host computer and highly available SQL AlwaysOn databases with Azure Stack.
+title: Offer highly available SQL databases
+titleSuffix: Azure Stack Hub
+description: Learn how to create a SQL Server resource provider host computer and highly available SQL AlwaysOn databases with Azure Stack Hub.
 services: azure-stack
 author: BryanLa
 manager: femila
@@ -16,20 +17,20 @@ ms.lastreviewed: 10/23/2018
 
 # Offer highly available SQL databases
 
-As an Azure Stack Operator, you can configure server VMs to host SQL Server databases. After a SQL hosting server is successfully created, and managed by Azure Stack, users who have subscribed to SQL services can easily create SQL databases.
+As an Azure Stack Hub Operator, you can configure server VMs to host SQL Server databases. After a SQL hosting server is successfully created and managed by Azure Stack Hub, users who have subscribed to SQL services can easily create SQL databases.
 
-This article shows how to use an Azure Stack quickstart template to create a [SQL Server AlwaysOn availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017), add it as an Azure Stack SQL Hosting Server, and then create a highly available SQL database.
+This article shows how to use an Azure Stack Hub quickstart template to create a [SQL Server AlwaysOn availability group](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server?view=sql-server-2017), add it as an Azure Stack Hub SQL Hosting Server, and then create a highly available SQL database.
 
-What you will learn:
+What you'll learn:
 
 > [!div class="checklist"]
-> * Create a SQL Server AlwaysOn availability group from a template
-> * Create an Azure Stack SQL Hosting Server
-> * Create a highly available SQL database
+> * Create a SQL Server AlwaysOn availability group from a template.
+> * Create an Azure Stack Hub SQL Hosting Server.
+> * Create a highly available SQL database.
 
-A two VM SQL Server AlwaysOn availability group will be created and configured using available Azure Stack marketplace items. 
+A two VM SQL Server AlwaysOn availability group will be created and configured using available Azure Stack Marketplace items.
 
-Before starting, ensure that the [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md) has been successfully installed and the following items available in the Azure Stack marketplace:
+Before starting, ensure that the [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md) has been successfully installed and the following items available in Azure Stack Marketplace:
 
 > [!IMPORTANT]
 > All of the following are required for the Azure Stack quickstart template to be used.
