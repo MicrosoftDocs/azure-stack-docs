@@ -1,6 +1,6 @@
 ---
-title: Connect to Azure Stack with PowerShell as a user | Microsoft Docs
-description: Learn how to connect to Azure Stack with PowerShell. 
+title: Connect to Azure Stack Hub with PowerShell as a user | Microsoft Docs
+description: Learn how to connect to Azure Stack Hub with PowerShell. 
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -19,11 +19,9 @@ ms.lastreviewed: 10/02/2019
 
 ---
 
-# Connect to Azure Stack with PowerShell as a user
+# Connect to Azure Stack Hub with PowerShell as a user
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
-You can connect to Azure Stack with PowerShell to manage Azure Stack resources. For example, you can use PowerShell to subscribe to offers, create virtual machines (VMs), and deploy Azure Resource Manager templates.
+You can connect to Azure Stack Hub with PowerShell to manage Azure Stack Hub resources. For example, you can use PowerShell to subscribe to offers, create virtual machines (VMs), and deploy Azure Resource Manager templates.
 
 To get setup:
   - Make sure you have the requirements.
@@ -35,17 +33,17 @@ To get setup:
 
 Configure these prerequisites from the [development kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp), or from a Windows-based external client if you're [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn):
 
-* Install [Azure Stack-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
-* Download the [tools required to work with Azure Stack](../operator/azure-stack-powershell-download.md).
+* Install [Azure Stack Hub-compatible Azure PowerShell modules](../operator/azure-stack-powershell-install.md).
+* Download the [tools required to work with Azure Stack Hub](../operator/azure-stack-powershell-download.md).
 
-Make sure you replace the following script variables with values from your Azure Stack configuration:
+Make sure you replace the following script variables with values from your Azure Stack Hub configuration:
 
 - **Azure AD tenant name**  
-  The name of your Azure AD tenant used to manage Azure Stack. For example, yourdirectory.onmicrosoft.com.
+  The name of your Azure AD tenant used to manage Azure Stack Hub. For example, yourdirectory.onmicrosoft.com.
 - **Azure Resource Manager endpoint**  
-  For Azure Stack development kit, this value is set to https://management.local.azurestack.external. To get this value for Azure Stack integrated systems, contact your service provider.
+  For Azure Stack Development kit, this value is set to https://management.local.azurestack.external. To get this value for Azure Stack Hub integrated systems, contact your service provider.
 
-## Connect to Azure Stack with Azure AD
+## Connect to Azure Stack Hub with Azure AD
 
 ```powershell  
     Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
@@ -54,15 +52,15 @@ Make sure you replace the following script variables with values from your Azure
     $AADTenantName = "<myDirectoryTenantName>.onmicrosoft.com"
     $TenantId = (invoke-restmethod "$($AuthEndpoint)/$($AADTenantName)/.well-known/openid-configuration").issuer.TrimEnd('/').Split('/')[-1]
 
-    # After signing in to your environment, Azure Stack cmdlets
-    # can be easily targeted at your Azure Stack instance.
+    # After signing in to your environment, Azure Stack Hub cmdlets
+    # can be easily targeted at your Azure Stack Hub instance.
     Add-AzureRmAccount -EnvironmentName "AzureStackUser" -TenantId $TenantId
 ```
 
-## Connect to Azure Stack with AD FS
+## Connect to Azure Stack Hub with AD FS
 
   ```powershell  
-  # Register an Azure Resource Manager environment that targets your Azure Stack instance
+  # Register an Azure Resource Manager environment that targets your Azure Stack Hub instance
   Add-AzureRMEnvironment -Name "AzureStackUser" -ArmEndpoint "https://management.local.azurestack.external"
 
   # Sign in to your environment
@@ -83,7 +81,7 @@ Get-AzureRmResourceProvider -ListAvailable | Register-AzureRmResourceProvider
 
 ## Test the connectivity
 
-When you've got everything setup, test connectivity by using PowerShell to create resources in Azure Stack. As a test, create a resource group for an application and add a VM. Run the following command to create a resource group named "MyResourceGroup":
+When you've got everything setup, test connectivity by using PowerShell to create resources in Azure Stack Hub. As a test, create a resource group for an application and add a VM. Run the following command to create a resource group named "MyResourceGroup":
 
 ```powershell  
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
@@ -91,7 +89,7 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 
 ## Next steps
 
-- [Develop templates for Azure Stack](azure-stack-develop-templates.md)
+- [Develop templates for Azure Stack Hub](azure-stack-develop-templates.md)
 - [Deploy templates with PowerShell](azure-stack-deploy-template-powershell.md)
-- [Azure Stack PowerShell Module Reference](https://docs.microsoft.com/powershell/azure/azure-stack/overview)
-- If you want to set up PowerShell for the cloud operator environment, refer to the [Configure the Azure Stack operator's PowerShell environment](../operator/azure-stack-powershell-configure-admin.md) article.
+- [Azure Stack Hub PowerShell Module Reference](https://docs.microsoft.com/powershell/azure/azure-stack/overview)
+- If you want to set up PowerShell for the cloud operator environment, refer to the [Configure the Azure Stack Hub operator's PowerShell environment](../operator/azure-stack-powershell-configure-admin.md) article.

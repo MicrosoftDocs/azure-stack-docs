@@ -1,6 +1,6 @@
 ---
-title: Azure Stack managed disks; differences and considerations | Microsoft Docs
-description: Learn about differences and considerations when working with managed disks and managed images in Azure Stack.
+title: Azure Stack Hub managed disks; differences and considerations | Microsoft Docs
+description: Learn about differences and considerations when working with managed disks and managed images in Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -20,18 +20,18 @@ ms.lastreviewed: 03/23/2019
 
 ---
 
-# Azure Stack managed disks: differences and considerations
+# Azure Stack Hub managed disks: differences and considerations
 
-This article summarizes the differences between [managed disks in Azure Stack](azure-stack-manage-vm-disks.md) and [managed disks in Azure](/azure/virtual-machines/windows/managed-disks-overview). To learn about high-level differences between Azure Stack and Azure, see the [Key considerations](azure-stack-considerations.md) article.
+This article summarizes the differences between [managed disks in Azure Stack Hub](azure-stack-manage-vm-disks.md) and [managed disks in Azure](/azure/virtual-machines/windows/managed-disks-overview). To learn about high-level differences between Azure Stack Hub and Azure, see the [Key considerations](azure-stack-considerations.md) article.
 
 Managed disks simplify disk management for IaaS virtual machines (VMs) by managing the [storage accounts](../operator/azure-stack-manage-storage-accounts.md) associated with the VM disks.
 
 > [!NOTE]  
-> Managed disks on Azure Stack are available starting with the 1808 update. Beginning with the 1811 update, the feature is enabled by default when creating VMs using the Azure Stack portal.
+> Managed disks on Azure Stack Hub are available starting with the 1808 update. Beginning with the 1811 update, the feature is enabled by default when creating VMs using the Azure Stack Hub portal.
   
 ## Cheat sheet: managed disk differences
 
-| Feature | Azure (global) | Azure Stack |
+| Feature | Azure (global) | Azure Stack Hub |
 | --- | --- | --- |
 |Encryption for data at rest |Azure Storage Service Encryption (SSE), Azure Disk Encryption (ADE).     |BitLocker 128-bit AES encryption      |
 |Image          | Managed custom image |Supported|
@@ -47,18 +47,18 @@ Managed disks simplify disk management for IaaS virtual machines (VMs) by managi
 |Migration      |Provide tool to migrate from existing unmanaged Azure Resource Manager VMs without the need to recreate the VM.  |Not yet supported |
 
 > [!NOTE]  
-> Managed disks IOPs and throughput in Azure Stack is a cap number instead of a provisioned number, which may be impacted by hardware and workloads running in Azure Stack.
+> Managed disks IOPs and throughput in Azure Stack Hub is a cap number instead of a provisioned number, which may be impacted by hardware and workloads running in Azure Stack Hub.
 
 ## Metrics
 
 There are also differences with storage metrics:
 
-- With Azure Stack, the transaction data in storage metrics does not differentiate internal or external network bandwidth.
-- Azure Stack transaction data in storage metrics does not include virtual machine access to the mounted disks.
+- With Azure Stack Hub, the transaction data in storage metrics does not differentiate internal or external network bandwidth.
+- Azure Stack Hub transaction data in storage metrics does not include virtual machine access to the mounted disks.
 
 ## API versions
 
-Azure Stack managed disks support the following API versions:
+Azure Stack Hub managed disks support the following API versions:
 
 - 2017-03-30
 - 2017-12-01
@@ -66,7 +66,7 @@ Azure Stack managed disks support the following API versions:
 ## Convert to managed disks
 
 > [!NOTE]  
-> The Azure PowerShell cmdlet **ConvertTo-AzureRmVMManagedDisk** cannot be used to convert an unmanaged disk to a managed disk in Azure Stack. Azure Stack does not currently support this cmdlet.
+> The Azure PowerShell cmdlet **ConvertTo-AzureRmVMManagedDisk** cannot be used to convert an unmanaged disk to a managed disk in Azure Stack Hub. Azure Stack Hub does not currently support this cmdlet.
 
 You can use the following script to convert a currently provisioned VM from unmanaged to managed disks. Replace the placeholders with your own values:
 
@@ -89,7 +89,7 @@ $VhdUri = "https://rgmgddisks347.blob.local.azurestack.external/vhds/unmngdvm201
 # The storage type for the managed disk: PremiumLRS or StandardLRS.
 $AccountType = "StandardLRS"
 
-# The Azure Stack location where the managed disk will be located.
+# The Azure Stack Hub location where the managed disk will be located.
 # The location should be the same as the location of the storage account in which VHD file is stored.
 # Configure the new managed VM point to the old unmanaged VM configuration (network config, VM name, location).
 $Location = "local"
@@ -134,7 +134,7 @@ New-AzureRmVM -VM $VirtualMachine -ResourceGroupName $ResourceGroupName -Locatio
 
 ## Managed images
 
-Azure Stack supports *managed images*, which enable you to create a managed image object on a generalized VM (both unmanaged and managed) that can only create managed disk VMs going forward. Managed images enable the following two scenarios:
+Azure Stack Hub supports *managed images*, which enable you to create a managed image object on a generalized VM (both unmanaged and managed) that can only create managed disk VMs going forward. Managed images enable the following two scenarios:
 
 - You have generalized unmanaged VMs and want to use managed disks going forward.
 - You have a generalized managed VM and would like to create multiple, similar managed VMs.
@@ -162,9 +162,9 @@ Follow the instructions in [Create an image from a VM that uses a storage accoun
 
 After you create an image from an existing managed disk VM using the script in [Create an image from a managed disk using PowerShell](/azure/virtual-machines/windows/capture-image-resource#create-an-image-from-a-managed-disk-using-powershell), use the following example script to create a similar Linux VM from an existing image object.
 
-Azure Stack PowerShell module 1.7.0 or later: Follow the instructions in [Create a VM from a managed image](/azure/virtual-machines/windows/create-vm-generalized-managed).
+Azure Stack Hub PowerShell module 1.7.0 or later: Follow the instructions in [Create a VM from a managed image](/azure/virtual-machines/windows/create-vm-generalized-managed).
 
-Azure Stack PowerShell module 1.6.0 or earlier:
+Azure Stack Hub PowerShell module 1.6.0 or earlier:
 
 ```powershell
 # Variables for common values
@@ -223,10 +223,10 @@ You can also use the portal to create a VM from a managed image. For more inform
 After applying the 1808 update or later, you must make the following configuration change before using managed disks:
 
 - If a subscription was created before the 1808 update, follow below steps to update the subscription. Otherwise, deploying VMs in this subscription might fail with an error message "Internal error in disk manager."
-   1. In the Azure Stack user portal, go to **Subscriptions** and find the subscription. Click **Resource Providers**, then click **Microsoft.Compute**, and then click **Re-register**.
-   2. Under the same subscription, go to **Access Control (IAM)**, and verify that **Azure Stack - Managed Disk** is listed.
-- If you use a multi-tenant environment, ask your cloud operator (who may be in your own organization, or from the service provider) to reconfigure each of your guest directories following the steps in [this article](../operator/azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory). Otherwise, deploying VMs in a subscription associated with that guest directory might fail with the error message "Internal error in disk manager."
+   1. In the Azure Stack Hub user portal, go to **Subscriptions** and find the subscription. Click **Resource Providers**, then click **Microsoft.Compute**, and then click **Re-register**.
+   2. Under the same subscription, go to **Access Control (IAM)**, and verify that **Azure Stack Hub - Managed Disk** is listed.
+- If you use a multi-tenant environment, ask your cloud operator (who may be in your own organization, or from the service provider) to reconfigure each of your guest directories following the steps in [this article](../operator/azure-stack-enable-multitenancy.md#registering-azure-stack-hub-with-the-guest-directory). Otherwise, deploying VMs in a subscription associated with that guest directory might fail with the error message "Internal error in disk manager."
 
 ## Next steps
 
-- [Learn about Azure Stack virtual machines](azure-stack-compute-overview.md)
+- [Learn about Azure Stack Hub virtual machines](azure-stack-compute-overview.md)

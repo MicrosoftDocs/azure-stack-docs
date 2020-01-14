@@ -1,6 +1,6 @@
 ---
-title: Deploy App Service in Azure Stack | Microsoft Docs
-description: Learn how to deploy App Service in Azure Stack.
+title: Deploy App Service in Azure Stack Hub | Microsoft Docs
+description: Learn how to deploy App Service in Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -13,41 +13,41 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2019
+ms.date: 01/13/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/11/2019
+ms.lastreviewed: 01/13/2020
 
 ---
-# Deploy App Service in Azure Stack
+# Deploy App Service in Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
 
-This article describes how to deploy App Service in Azure Stack.
+This article describes how to deploy App Service in Azure Stack Hub.
 
 > [!IMPORTANT]
-> Apply the 1907 update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.7.
+> Apply the 1910 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Hub Development Kit (ASDK) before you deploy Azure App Service 1.8.
 
 You can give your users the ability to create web and API applications. To let users create these apps, you need to:
 
-- Add the [App Service resource provider](azure-stack-app-service-overview.md) to your Azure Stack deployment using the steps described in this article.
+- Add the [App Service resource provider](azure-stack-app-service-overview.md) to your Azure Stack Hub deployment using the steps described in this article.
 - After you install the App Service resource provider, you can include it in your offers and plans. Users can then subscribe to get the service and start creating apps.
 
 > [!IMPORTANT]
-> Before you run the resource provider installer, make sure that you've followed the guidance in [Before you get started](azure-stack-app-service-before-you-get-started.md) and have read the [release notes](azure-stack-app-service-release-notes-update-seven.md) which accompany the 1.7 release. Reading this content helps you learn about new functionality, fixes, and any known issues which could affect your deployment.
+> Before you run the resource provider installer, make sure that you've followed the guidance in [Before you get started](azure-stack-app-service-before-you-get-started.md) and have read the [release notes](azure-stack-app-service-release-notes-update-eight.md) which accompany the 1.8 release. Reading this content helps you learn about new functionality, fixes, and any known issues which could affect your deployment.
 
 ## Run the App Service resource provider installer
 
 Installing the App Service resource provider takes at least an hour. The length of time needed depends on how many role instances you deploy. During the deployment, the installer runs the following tasks:
 
-- Create a blob container in the specified Azure Stack storage account.
+- Create a blob container in the specified Azure Stack Hub storage account.
 - Create a DNS zone and entries for App Service.
 - Register the App Service resource provider.
 - Register the App Service gallery items.
 
 To deploy App Service resource provider, follow these steps:
 
-1. Run appservice.exe as an admin from a computer that can access the Azure Stack Admin Azure Resource Management Endpoint.
+1. Run appservice.exe as an admin from a computer that can access the Azure Stack Hub Admin Azure Resource Management Endpoint.
 
 2. Select **Deploy App Service or upgrade to the latest version**.
 
@@ -57,25 +57,27 @@ To deploy App Service resource provider, follow these steps:
 
 4. Review and accept the third-party license terms and then select **Next**.
 
-5. Make sure that the App Service cloud configuration information is correct. If you used the default settings during ASDK deployment, you can accept the default values. But, if you customized the options when you deployed the ASDK, or are deploying on an Azure Stack integrated system, you must edit the values in this window to reflect the differences.
+5. Make sure that the App Service cloud configuration information is correct. If you used the default settings during ASDK deployment, you can accept the default values. But, if you customized the options when you deployed the ASDK, or are deploying on an Azure Stack Hub integrated system, you must edit the values in this window to reflect the differences.
 
-   For example, if you use the domain suffix mycloud.com, your Azure Stack Tenant Azure Resource Manager endpoint must change to management.&lt;region&gt;.mycloud.com. Review these settings, and then select **Next** to save the settings.
+   For example, if you use the domain suffix mycloud.com, your Azure Stack Hub Tenant Azure Resource Manager endpoint must change to management.&lt;region&gt;.mycloud.com. Review these settings, and then select **Next** to save the settings.
 
    ![App Service Installer][2]
 
-6. On the next App Service Installer page, follow these steps:
+6. On the next App Service Installer page you will connect to your Azure Stack Hub:
 
-    a. Select **Connect** next to the **Azure Stack Subscriptions**.
+    1. Select the connection method you wish to use - **Credential** or **Service Principal**
+ 
+        - **Credential**
+            - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack Hub. Select **Connect**.
+            - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Connect**.
 
-   - If you're using Azure Active Directory (Azure AD), enter the Azure AD admin account and password that you provided when you deployed Azure Stack. Select **Sign In**.
-   - If you're using Active Directory Federation Services (AD FS), provide your admin account. For example, cloudadmin@azurestack.local. Enter your password, and then select **Sign In**.
+        - **Service Principal**
+            - The service principal which you use **must** have **Owner** rights on the **Default Provider Subscription**
+            - Provide the **Service Principal ID**, **Certificate File** and **Password** and select **Connect**.
 
-   b. In **Azure Stack Subscriptions**, select the **Default Provider Subscription**.
+    1. In **Azure Stack Hub Subscriptions**, select the **Default Provider Subscription**.  Azure App Service on Azure Stack Hub **must** be deployed in the **Default Provider Subscription**.
 
-     > [!IMPORTANT]
-     > App Service **must** be deployed to the **Default Provider Subscription**.
-
-   c. In the **Azure Stack Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
+    1. In the **Azure Stack Hub Locations**, select the location that corresponds to the region you're deploying to. For example, select **local** if you're deploying to the ASDK.
 
     ![App Service Installer][3]
 
@@ -132,7 +134,7 @@ To deploy App Service resource provider, follow these steps:
 12. Review the role instance and SKU options. The defaults populate with the minimum number of instances and the minimum SKU for each role in an ASDK deployment. A summary of vCPU and memory requirements is provided to help plan your deployment. After you make your selections, select **Next**.
 
     >[!NOTE]
-    >For production deployments, following the guidance in [Capacity planning for Azure App Service server roles in Azure Stack](azure-stack-app-service-capacity-planning.md).
+    >For production deployments, following the guidance in [Capacity planning for Azure App Service server roles in Azure Stack Hub](azure-stack-app-service-capacity-planning.md).
 
     | Role | Minimum instances | Minimum SKU | Notes |
     | --- | --- | --- | --- |
@@ -145,7 +147,7 @@ To deploy App Service resource provider, follow these steps:
     ![App Service Installer][13]
 
     >[!NOTE]
-    >**Windows Server 2016 Core isn't a supported platform image for use with Azure App Service on Azure Stack.  Don't use evaluation images for production deployments.**
+    >**Windows Server 2016 Core isn't a supported platform image for use with Azure App Service on Azure Stack Hub.  Don't use evaluation images for production deployments.**
 
 13. In the **Select Platform Image** box, choose your deployment Windows Server 2016 virtual machine (VM) image from the images available in the compute resource provider for the App Service cloud. Select **Next**.
 
@@ -171,7 +173,7 @@ To deploy App Service resource provider, follow these steps:
 
 16. On the next App Service Installer page, follow these steps:
 
-    a. Track the installation progress. App Service on Azure Stack takes about 60 minutes to deploy based on the default selections.
+    a. Track the installation progress. App Service on Azure Stack Hub can take up to 240 minutes to deploy based on the default selections and age of the base Windows 2016 Datacenter image.
 
     b. After the installer successfully finishes, select  **Exit**.
 
@@ -194,29 +196,29 @@ If you're deploying to an existing virtual network and using an internal IP addr
 - Priority: 700
 - Name: Outbound_Allow_SMB445
 
-## Validate the App Service on Azure Stack installation
+## Validate the App Service on Azure Stack Hub installation
 
-1. In the Azure Stack administrator portal, go to **Administration - App Service**.
+1. In the Azure Stack Hub administrator portal, go to **Administration - App Service**.
 
 2. In the overview, under status, check to see that the **Status** displays **All roles are ready**.
 
     ![App Service administration](media/azure-stack-app-service-deploy/image12.png)
 
-## Test drive App Service on Azure Stack
+## Test drive App Service on Azure Stack Hub
 
 After you deploy and register the App Service resource provider, test it to make sure that users can deploy web and API apps.
 
 >[!NOTE]
 >You need to create an offer that has the Microsoft.Web namespace in the plan. You also need a tenant subscription that subscribes to the offer. For more info, see [Create offer](azure-stack-create-offer.md) and [Create plan](azure-stack-create-plan.md).
 >
->You *must* have a tenant subscription to create apps that use App Service on Azure Stack. The only tasks that a service admin can complete in the administrator portal are related to the resource provider administration of App Service. This includes adding capacity, configuring deployment sources, and adding Worker tiers and SKUs.
+>You *must* have a tenant subscription to create apps that use App Service on Azure Stack Hub. The only tasks that a service admin can complete in the administrator portal are related to the resource provider administration of App Service. This includes adding capacity, configuring deployment sources, and adding Worker tiers and SKUs.
 >
->To create web, API, and Azure Functions apps, you must use the tenant portal and have a tenant subscription.
+>To create web, API, and Azure Functions apps, you must use the user portal and have a tenant subscription.
 >
 
 To create a test web app, follow these steps:
 
-1. In the Azure Stack user portal, select **+ Create a resource** > **Web + Mobile** > **Web App**.
+1. In the Azure Stack Hub user portal, select **+ Create a resource** > **Web + Mobile** > **Web App**.
 
 2. Under **Web App**, enter a name in **Web app**.
 
@@ -234,7 +236,7 @@ To create a test web app, follow these steps:
 
 ## Deploy a WordPress, DNN, or Django website (optional)
 
-1. In the Azure Stack tenant portal, select **+**, go to the Azure Marketplace, deploy a Django website, and then wait for the deployment to finish. The Django web platform uses a file system-based database. It doesn't require any additional resource providers, such as SQL or MySQL.
+1. In the Azure Stack Hub user portal, select **+**, go to the Azure Marketplace, deploy a Django website, and then wait for the deployment to finish. The Django web platform uses a file system-based database. It doesn't require any additional resource providers, such as SQL or MySQL.
 
 2. If you also deployed a MySQL resource provider, you can deploy a WordPress website from the Marketplace. When you're prompted for database parameters, enter the user name as *User1\@Server1*, with the user name and server name of your choice.
 
@@ -242,7 +244,7 @@ To create a test web app, follow these steps:
 
 ## Next steps
 
-Prepare for additional admin operations for App Service on Azure Stack:
+Prepare for additional admin operations for App Service on Azure Stack Hub:
 
 - [Capacity Planning](azure-stack-app-service-capacity-planning.md)
 - [Configure Deployment Sources](azure-stack-app-service-configure-deployment-sources.md)

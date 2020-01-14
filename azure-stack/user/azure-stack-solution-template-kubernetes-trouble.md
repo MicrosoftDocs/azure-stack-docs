@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot Kubernetes deployment to Azure Stack | Microsoft Docs
-description: Learn how to troubleshoot Kubernetes deployment to Azure Stack.
+title: Troubleshoot Kubernetes deployment to Azure Stack Hub | Microsoft Docs
+description: Learn how to troubleshoot Kubernetes deployment to Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,18 +18,16 @@ ms.lastreviewed: 11/14/2019
 
 ---
 
-# Troubleshoot Kubernetes deployment to Azure Stack
-
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Troubleshoot Kubernetes deployment to Azure Stack Hub
 
 > [!Note]  
-> Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
+> Only use the Kubernetes Azure Stack Hub Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack Hub, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
 
-This article reviews how to troubleshoot your Kubernetes cluster. To begin troubleshooting, review the elements required for the deployment. You might need to collect the deployment logs from Azure Stack or the Linux VMs that host Kubernetes. To retrieve logs from an administrative endpoint, contact your Azure Stack admin.
+This article reviews how to troubleshoot your Kubernetes cluster. To begin troubleshooting, review the elements required for the deployment. You might need to collect the deployment logs from Azure Stack Hub or the Linux VMs that host Kubernetes. To retrieve logs from an administrative endpoint, contact your Azure Stack Hub admin.
 
 ## Overview of Kubernetes deployment
 
-Before you troubleshoot your cluster, review the Azure Stack Kubernetes cluster deployment process. The deployment uses an Azure Resource Manager solution template to create the VMs and install the AKS-Engine for your cluster.
+Before you troubleshoot your cluster, review the Azure Stack Hub Kubernetes cluster deployment process. The deployment uses an Azure Resource Manager solution template to create the VMs and install the AKS-Engine for your cluster.
 
 ### Kubernetes deployment workflow
 
@@ -54,7 +52,7 @@ The following diagram shows the general process for deploying the cluster.
         1. Gets the gallery endpoint from the Azure Resource Manager metadata endpoint.
         2. Gets the active directory resource ID from the Azure Resource Manager metadata endpoint.
         3. Loads the API model for the AKS engine.
-        4. Deploys the AKS engine to the Kubernetes cluster and saves the Azure Stack cloud profile to `/etc/kubernetes/azurestackcloud.json`.
+        4. Deploys the AKS engine to the Kubernetes cluster and saves the Azure Stack Hub cloud profile to `/etc/kubernetes/azurestackcloud.json`.
 3. Create the master VMs.
 
 4. Download and run custom script extensions.
@@ -80,26 +78,26 @@ The following diagram shows the general process for deploying the cluster.
 
 ## Steps to troubleshoot Kubernetes
 
-You can collect and review deployment logs on the VMs that support your Kubernetes cluster. Talk to your Azure Stack administrator to verify the version of Azure Stack that you need to use, and to get logs from Azure Stack that are related to your deployment.
+You can collect and review deployment logs on the VMs that support your Kubernetes cluster. Talk to your Azure Stack Hub administrator to verify the version of Azure Stack Hub that you need to use, and to get logs from Azure Stack Hub that are related to your deployment.
 
 1. Review the error code returned by the ARM deployment in your **Deployments** pane in the resource group where you deployed the cluster. The descriptions for the error codes are in the [Troubleshooting](https://github.com/msazurestackworkloads/azurestack-gallery/blob/master/kubernetes/docs/troubleshooting.md) article in AKS Engine GitHub repository. If you can't resolve the issue with the error description, continue with these steps.
 2. Review the [deployment status](#review-deployment-status) and retrieve the logs from the master node in your Kubernetes cluster.
-3. Check that you're using the latest version of Azure Stack. If you're unsure which version you're using, contact your Azure Stack administrator.
+3. Check that you're using the latest version of Azure Stack Hub. If you're unsure which version you're using, contact your Azure Stack Hub administrator.
 4. Review your VM creation files. You might have had the following issues:  
     - The public key might be invalid. Review the key that you created.  
-    - VM creation might have triggered an internal error or triggered a creation error. A number of factors can cause errors, including capacity limitations for your Azure Stack subscription.
+    - VM creation might have triggered an internal error or triggered a creation error. A number of factors can cause errors, including capacity limitations for your Azure Stack Hub subscription.
     - Make sure that the fully qualified domain name (FQDN) for the VM begins with a duplicate prefix.
 5.  If the VM is **OK**, then evaluate the DVM. If the DVM has an error message:
     - The public key might be invalid. Review the key that you created.  
-    - Contact your Azure Stack administrator to retrieve the logs for Azure Stack by using the privileged endpoints. For more information, see [Azure Stack diagnostics tools](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs).
-5. If you have a question about your deployment, you can post it or see if someone has already answered the question in the [Azure Stack forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
+    - Contact your Azure Stack Hub administrator to retrieve the logs for Azure Stack Hub by using the privileged endpoints. For more information, see [Azure Stack Hub diagnostics tools](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs).
+5. If you have a question about your deployment, you can post it or see if someone has already answered the question in the [Azure Stack Hub forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
 
 
 ## Review deployment status
 
 When you deploy your Kubernetes cluster, you can review the deployment status to check for any issues.
 
-1. Open the [Azure Stack portal](https://portal.local.azurestack.external).
+1. Open the [Azure Stack Hub portal](https://portal.local.azurestack.external).
 2. Select **Resource groups**, and then select the name of the resource group that you used when deploying the Kubernetes cluster.
 3. Select **Deployments**, and then select the **Deployment name**.
 
@@ -119,11 +117,11 @@ When you deploy your Kubernetes cluster, you can review the deployment status to
 
 ## Review deployment logs
 
-If the Azure Stack portal doesn't provide enough information for you to troubleshoot or overcome a deployment failure, the next step is to dig into the cluster logs. To manually retrieve the deployment logs, you typically need to connect to one of the cluster's master VMs. A simpler alternative approach would be to download and run the following [Bash script](https://aka.ms/AzsK8sLogCollectorScript) provided by the Azure Stack team. This script connects to the DVM and cluster's VMs, collects relevant system and cluster logs, and downloads them back to your workstation.
+If the Azure Stack Hub portal doesn't provide enough information for you to troubleshoot or overcome a deployment failure, the next step is to dig into the cluster logs. To manually retrieve the deployment logs, you typically need to connect to one of the cluster's master VMs. A simpler alternative approach would be to download and run the following [Bash script](https://aka.ms/AzsK8sLogCollectorScript) provided by the Azure Stack Hub team. This script connects to the DVM and cluster's VMs, collects relevant system and cluster logs, and downloads them back to your workstation.
 
 ### Prerequisites
 
-You need a Bash prompt on the machine you use to manage Azure Stack. On a Windows machine, you can get a Bash prompt by installing [Git for Windows](https://git-scm.com/downloads). Once installed, look for _Git Bash_ in your start menu.
+You need a Bash prompt on the machine you use to manage Azure Stack Hub. On a Windows machine, you can get a Bash prompt by installing [Git for Windows](https://git-scm.com/downloads). Once installed, look for _Git Bash_ in your start menu.
 
 ### Retrieving the logs
 
@@ -166,8 +164,8 @@ Follow these steps to collect and download the cluster logs:
 
 ## Next steps
 
-[Deploy Kubernetes to Azure Stack](azure-stack-solution-template-kubernetes-deploy.md)
+[Deploy Kubernetes to Azure Stack Hub](azure-stack-solution-template-kubernetes-deploy.md)
 
-[Add a Kubernetes cluster to the Marketplace (for the Azure Stack operator)](../operator/azure-stack-solution-template-kubernetes-cluster-add.md)
+[Add a Kubernetes cluster to the Marketplace (for the Azure Stack Hub operator)](../operator/azure-stack-solution-template-kubernetes-cluster-add.md)
 
 [Kubernetes on Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

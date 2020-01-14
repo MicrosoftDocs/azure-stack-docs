@@ -1,6 +1,6 @@
 ---
-title: How to connect two Azure Stacks through VNET peering | Microsoft Docs
-description: Learn how to connect two Azure Stacks through VNET peering.
+title: How to connect two Azure Stack Hubs through VNET peering | Microsoft Docs
+description: Learn how to connect two Azure Stack Hubs through VNET peering.
 services: azure-stack
 author: mattbriggs
 
@@ -11,17 +11,15 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
 
-# keywords:  VNET Peering Azure Stack
-# Intent: As an Azure Stack Operator, I want connect two Azure Stacks with VNET peering so that uses can interact with resources as if it were a continuous network.
+# keywords:  VNET Peering Azure Stack Hub
+# Intent: As an Azure Stack Hub Operator, I want connect two Azure Stack Hubs with VNET peering so that uses can interact with resources as if it were a continuous network.
 ---
 
-# VNET Peering in Azure Stack with VMs
+# VNET Peering in Azure Stack Hub with VMs
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+You can connect two Azure Stack Hub VNets to one another within the same Azure Stack Hub environment. It is not currently possible to connect Azure Stack Hub VNets using the built-in [Virtual Network Gateway](https://docs.microsoft.com/azure-stack/user/azure-stack-network-differences). You must use NVA appliances to create a VPN tunnel between two Azure Stack Hub VNets. In the template references in this article, two Windows Server 2016 VMs are deployed with RRAS installed. The two RRAS servers are configured to implement a S2SVPN IKEv2 tunnel between two VNETs. The appropriate NSG and UDR rules are created to allow routing between the subnets on each VNET designated as **internal**. 
 
-You can connect two Azure Stack VNets to one another within the same Azure Stack environment. It is not currently possible to connect Azure Stack VNets using the built-in [Virtual Network Gateway](https://docs.microsoft.com/azure-stack/user/azure-stack-network-differences). You must use NVA appliances to create a VPN tunnel between two Azure Stack VNets. In the template references in this article, two Windows Server 2016 VMs are deployed with RRAS installed. The two RRAS servers are configured to implement a S2SVPN IKEv2 tunnel between two VNETs. The appropriate NSG and UDR rules are created to allow routing between the subnets on each VNET designated as **internal**. 
-
-This deployment pattern is the foundation that will allow VPN Tunnels to be created not only within an Azure Stack instance but also between Azure Stack Instances and to other resources such as on-premises networks with the use of the Windows RRAS S2S VPN Tunnels. 
+This deployment pattern is the foundation that will allow VPN Tunnels to be created not only within an Azure Stack Hub instance but also between Azure Stack Hub Instances and to other resources such as on-premises networks with the use of the Windows RRAS S2S VPN Tunnels. 
 
 You can find the templates in the [Azure Intelligent Edge Patterns GitHub](https://github.com/Azure-Samples/azure-intelligent-edge-patterns
 ) repository. The template is in the **S2SVPNTunnel** folder.
@@ -30,8 +28,8 @@ You can find the templates in the [Azure Intelligent Edge Patterns GitHub](https
 
 ## Requirements
 
-- ASDK or Azure Stack Integrated System with latest updates applied. 
-- Required Azure Stack Marketplace items:
+- A deployment with latest updates applied. 
+- Required Azure Stack Hub Marketplace items:
     -  Windows Server 2016 Datacenter (latest build recommended)
 	-  Custom Script Extension
 
@@ -58,4 +56,4 @@ The template provides default values for VNet naming and IP addressing. It requi
 
 ## Next steps
 
-[Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)  
+[Differences and considerations for Azure Stack Hub networking](azure-stack-network-differences.md)  

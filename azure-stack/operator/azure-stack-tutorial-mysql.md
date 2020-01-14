@@ -150,7 +150,7 @@ Before the MySQL cluster can be added as an Azure Stack Hub MySQL Server host, e
 
 4. Record the new MySQL user information.
 
-    You'll need to provide this username and password, along with the public IP address or full FQDN of the public IP for the cluster, to an Azure Stack operator so they can create a MySQL hosting server using this MySQL cluster.
+    You'll need to provide this username and password, along with the public IP address or full FQDN of the public IP for the cluster, to an Azure Stack Hub operator so they can create a MySQL hosting server using this MySQL cluster.
 
 ## Create an Azure Stack Hub MySQL Hosting Server
 

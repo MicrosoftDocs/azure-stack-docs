@@ -1,6 +1,7 @@
 ---
-title: Azure Stack training and certification
-description: Learn about Azure Stack training certification opportunities
+title: Training and certification
+titleSuffix: Azure Stack
+description: Learn about Azure Stack Hub training certification opportunities.
 services: azure-stack
 author: mattbriggs
 manager: femila
@@ -13,31 +14,31 @@ ms.reviewer: efemmano
 
 ---
 
-# Azure Stack training and certification
+# Azure Stack Hub training and certification
 
-*Applies to: Azure Stack integrated systems*
+*Applies to: Azure Stack Hub integrated systems*
 
-The following training and certification opportunities are available to help you learn about Azure Stack and demonstrate your Azure Stack proficiency.
+Want to learn about Azure Stack Hub and demonstrate your Azure Stack Hub proficiency? Check out the following training and certification opportunities.
 
 ## Training
 
-- Microsoft official courses on-demand
-   - [ODX20537: Configuring and Operating a Hybrid Cloud with Microsoft Azure Stack (180 Day)](https://www.microsoft.com/en-us/learning/course.aspx?cid=ODX20537)
-   - [OD20537: Configuring and Operating a Hybrid Cloud with Microsoft Azure Stack (90 Day)](https://www.microsoft.com/en-us/learning/course.aspx?cid=OD20537)
+- Microsoft official courses on-demand:
+   - [ODX20537: Configuring and Operating a Hybrid Cloud with Microsoft Azure Stack Hub (180 Day)](https://www.microsoft.com/learning/course.aspx?cid=ODX20537)
+   - [OD20537: Configuring and Operating a Hybrid Cloud with Microsoft Azure Stack Hub (90 Day)](https://www.microsoft.com/learning/course.aspx?cid=OD20537)
 
-- Microsoft IT training course
-   - [Course 20537A: Configuring and Operating a Hybrid Cloud with Microsoft Azure Stack](https://aka.ms/azsmoc)
+- Microsoft IT training course:
+   - [Course 20537A: Configuring and Operating a Hybrid Cloud with Microsoft Azure Stack Hub](https://aka.ms/azsmoc)
 
-- Open edx
-   - [edX: Configuring and Operating Microsoft Azure Stack online course](https://aka.ms/AzureStackMOOC)
+- Open edx:
+   - [edX: Configuring and Operating Microsoft Azure Stack Hub online course](https://aka.ms/AzureStackMOOC)
    
-- Microsoft Learning Paths
+- Microsoft Learning Paths:
    - [Job roles and learning paths](https://azure.microsoft.com/training/learning-paths/)
 
 ## Certification
 
-*Configuring and Operating a Hybrid Cloud with Microsoft Azure Stack certification*, [Exam 70-537](https://www.microsoft.com/learning/exam-70-537.aspx)
+*Configuring and Operating a Hybrid Cloud with Microsoft Azure Stack Hub certification*, [Exam 70-537](https://www.microsoft.com/learning/exam-70-537.aspx)
 
 ## Next steps
 
-[Azure Stack documentation](/azure-stack/operator)
+[Azure Stack Hub documentation](/azure-stack/operator)

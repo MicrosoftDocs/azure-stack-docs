@@ -1,6 +1,6 @@
 ---
-title: Support policies for AKS engine on Azure Stack  | Microsoft Docs
-description: This topic contains the support policies for AKS engine on Azure Stack.
+title: Support policies for AKS engine on Azure Stack Hub  | Microsoft Docs
+description: This topic contains the support policies for AKS engine on Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -19,13 +19,11 @@ ms.lastreviewed: 11/21/2019
 
 ---
 
-# Support policies for AKS engine on Azure Stack
+# Support policies for AKS engine on Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+This article provides details about technical support policies and limitations for AKS engine on Azure Stack Hub. The article also details Kubernetes Marketplace item, third-party open-source components, and security or patch management. 
 
-This article provides details about technical support policies and limitations for AKS engine on Azure Stack. The article also details Kubernetes Marketplace item, third-party open-source components, and security or patch management. 
-
-## Self-managed Kubernetes clusters on Azure Stack with AKS engine
+## Self-managed Kubernetes clusters on Azure Stack Hub with AKS engine
 
 Infrastructure as a service (IaaS) cloud components, such as compute or networking components, give users access to low-level controls and customization options. AKS engine allows the user to laydown Kubernetes clusters utilizing these IaaS components transparently, users can access and affect all aspects of their deployments.
 
@@ -39,10 +37,10 @@ Microsoft provides technical support for the following:
 
 -  Issues with AKS engine commands: deploy, generate, upgrade, and scale. The tool should be consistent with its behavior on Azure.
 -  Issues with a Kubernetes cluster deployed following the [Overview of the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
--  Issues with connectivity to other Azure Stack services 
+-  Issues with connectivity to other Azure Stack Hub services 
 -  Issues with Kubernetes API connectivity
--  Issues with Azure Stack Kubernetes provider functionality and connectivity with Azure Resource Manager
--  Issues with the AKS engine-generated configuration of Azure Stack native artifacts such as Load Balancers, Network Security Groups,  VNETs, Subnets, Network Interfaces, Route table, Availability sets, Public IP addresses, Storage account, and VM Machines 
+-  Issues with Azure Stack Hub Kubernetes provider functionality and connectivity with Azure Resource Manager
+-  Issues with the AKS engine-generated configuration of Azure Stack Hub native artifacts such as Load Balancers, Network Security Groups,  VNETs, Subnets, Network Interfaces, Route table, Availability sets, Public IP addresses, Storage account, and VM Machines 
 -  Issues with network performance and latency
 -  Issues with the AKS base image used by the AKS engine in disconnected deployments. 
 
@@ -51,7 +49,7 @@ Microsoft provides technical support for the following:
 Microsoft does not provide technical support for the following:
 
 -  Using the AKS engine on Azure.
--  Azure Stack Kubernetes Marketplace item.
+-  Azure Stack Hub Kubernetes Marketplace item.
 -  Using the following AKS engine cluster definition options and addons.
     -  Not supported addons:  
             -  AAD Pod Identity  
@@ -95,11 +93,11 @@ Microsoft does not provide technical support for the following:
 
 ##  Security issues and patching
 
-If a security flaw is found in one or more components of AKS engine or Kubernetes provider for Azure Stack, Microsoft will make available a patch for customers to patch affected clusters to mitigate the issue. Alternatively, the team will give users upgrade guidance. Notice that patches may require downtime of the cluster. When reboots are required, Microsoft will notify the customers of this requirement. If users don't apply the patches according to Microsoft guidance, their cluster will continue to be vulnerable to the security issue.
+If a security flaw is found in one or more components of AKS engine or Kubernetes provider for Azure Stack Hub, Microsoft will make available a patch for customers to patch affected clusters to mitigate the issue. Alternatively, the team will give users upgrade guidance. Notice that patches may require downtime of the cluster. When reboots are required, Microsoft will notify the customers of this requirement. If users don't apply the patches according to Microsoft guidance, their cluster will continue to be vulnerable to the security issue.
 
 ## Kubernetes marketplace item
 
-Users can download a Kubernetes Marketplace item, which allows users to deploy Kubernetes clusters using the AKS engine indirectly through a template in the Azure Stack user portal, this makes it simpler than using the AKS engine directly. This is a useful tool to quickly set up clusters for demonstrations, testing, and development. It is not intended for production, as such it is not included in the set of items supported by Microsoft.
+Users can download a Kubernetes Marketplace item, which allows users to deploy Kubernetes clusters using the AKS engine indirectly through a template in the Azure Stack Hub user portal, this makes it simpler than using the AKS engine directly. This is a useful tool to quickly set up clusters for demonstrations, testing, and development. It is not intended for production, as such it is not included in the set of items supported by Microsoft.
 
 ## Preview features
 
@@ -108,4 +106,4 @@ Preview features or feature-flag features aren't meant for production. Ongoing f
 
 ## Next steps
 
-- Read about the [The AKS engine on Azure Stack](azure-stack-kubernetes-aks-engine-overview.md)
+- Read about the [The AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)

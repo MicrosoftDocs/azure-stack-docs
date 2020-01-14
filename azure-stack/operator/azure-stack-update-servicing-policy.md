@@ -1,6 +1,6 @@
 ---
-title: Apply an original equipment manufacturer (OEM) update to Azure Stack | Microsoft Docs
-description: Learn to apply an original equipment manufacturer (OEM) update to Azure Stack.
+title: Apply an original equipment manufacturer (OEM) update to Azure Stack Hub | Microsoft Docs
+description: Learn to apply an original equipment manufacturer (OEM) update to Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -21,13 +21,11 @@ ms.reviewer: ppacent
 
 # Azure Stack Hub servicing policy
 
-*Applies to: Azure Stack Hub integrated systems*
-
 This article describes the servicing policy for Azure Stack Hub integrated systems, what you must do to keep your system in a supported state, and how to get support.
 
 ## Keep your system under support
 
-To continue to receive support, you must keep the updates on your Azure Stack current.
+To continue to receive support, you must keep the updates on your Azure Stack Hub current.
 
 For your Azure Stack Hub system to remain in a supported state, the instance must run the most recently released update version or run either of the two preceding update versions.
 

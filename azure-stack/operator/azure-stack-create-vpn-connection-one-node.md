@@ -25,7 +25,7 @@ ROBOTS: NOINDEX
 
 ## Overview
 
-This article describes how to create a site-to-site VPN connection between two virtual networks in two separate Azure Stack Development Kit (ASDK) environments. When you configure the connections, you learn how VPN gateways in Azure Stack work.
+This article describes how to create a site-to-site VPN connection between two virtual networks in two separate Azure Stack Development Kit (ASDK) environments. When you configure the connections, you learn how VPN gateways in Azure Stack Hub work.
 
 ### Connection
 
@@ -49,7 +49,7 @@ To complete the connection configuration, you must deploy two ASDK environments.
 
 ## Prepare an offer on POC1 and POC2
 
-On both POC1 and POC2, prepare an offer so that a user can subscribe to the offer and deploy the virtual machines (VMs). For information on how to create an offer, see [Make VMs available to your Azure Stack users](azure-stack-tutorial-tenant-vm.md).
+On both POC1 and POC2, prepare an offer so that a user can subscribe to the offer and deploy the virtual machines (VMs). For information on how to create an offer, see [Make VMs available to your Azure Stack Hub users](azure-stack-tutorial-tenant-vm.md).
 
 ## Review and complete the network configuration table
 
@@ -71,7 +71,7 @@ The following table summarizes the network configuration for both ASDK environme
 
 ### Get the IP address of the external adapter of the NAT VM
 
-1. Sign in to the Azure Stack physical machine for POC1.
+1. Sign in to the Azure Stack Hub physical machine for POC1.
 2. Edit the following PowerShell code to add your admin password, and then run the code on the POC host:
 
    ```powershell
@@ -91,7 +91,7 @@ The following table summarizes the network configuration for both ASDK environme
 
 ## Create the network resources in POC1
 
-Now you can create the POC1 network resources that you need to set up your gateways. The following instructions describe how to create the resources by using the Azure Stack user portal. You can also use PowerShell code to create the resources.
+Now you can create the POC1 network resources that you need to set up your gateways. The following instructions describe how to create the resources by using the Azure Stack Hub user portal. You can also use PowerShell code to create the resources.
 
 ![Workflow to create resources](media/azure-stack-create-vpn-connection-one-node-tp2/image2.png)
 
@@ -139,15 +139,15 @@ A service administrator can sign in as a tenant to test the plans, offers, and s
 
 ### Create the local network gateway
 
-The implementation of a *local network gateway* in this Azure Stack evaluation deployment is a bit different than in an actual Azure deployment.
+The implementation of a *local network gateway* in this Azure Stack Hub evaluation deployment is a bit different than in an actual Azure deployment.
 
-In an Azure deployment, a local network gateway represents an on-premises (at the tenant) physical device that you use to connect to a virtual network gateway in Azure. In this Azure Stack evaluation deployment, both ends of the connection are virtual network gateways.
+In an Azure deployment, a local network gateway represents an on-premises (at the tenant) physical device that you use to connect to a virtual network gateway in Azure. In this Azure Stack Hub evaluation deployment, both ends of the connection are virtual network gateways.
 
 A way to think about this more generically is that the local network gateway resource always indicates the remote gateway at the other end of the connection. Because of the way the ASDK is designed, you must provide the IP address of the external network adapter on the network address translation (NAT) VM of the other ASDK as the public IP address of the local network gateway. You then create NAT mappings on the NAT VM to make sure that both ends are connected properly.
 
 ### Create the local network gateway resource
 
-1. Sign in to the Azure Stack physical machine for POC1.
+1. Sign in to the Azure Stack Hub physical machine for POC1.
 2. In the user portal, select **+ Create a resource**.
 3. Go to **Marketplace**, and then select **Networking**.
 4. From the list of resources, select **local network gateway**.
@@ -283,7 +283,7 @@ To configure the VPN connection, you must create a static NAT map route that map
 
    ![Internal IP address](media/azure-stack-create-vpn-connection-one-node-tp2/InternalIP.PNG)
 
-2. Sign in to the Azure Stack physical machine for POC1.
+2. Sign in to the Azure Stack Hub physical machine for POC1.
 3. Copy and edit the following PowerShell script. To configure the NAT on each ASDK, run the script in an elevated Windows PowerShell ISE. In the script, add values to the `External BGPNAT address` and `Internal IP address` placeholders:
 
    ```powershell
@@ -336,7 +336,7 @@ To ensure that you send the traffic through the site-to-site connection, ensure 
 
 ### Sign in to the tenant VM in POC1
 
-1. Sign in to the Azure Stack physical machine for POC1, and then use a tenant account to sign in to the user portal.
+1. Sign in to the Azure Stack Hub physical machine for POC1, and then use a tenant account to sign in to the user portal.
 2. In the left navigation bar, select **Compute**.
 3. In the list of VMs, find **VM01** that you created previously, and then select it.
 4. On the blade for the virtual machine, click **Connect**, and then open the VM01.rdp file.
@@ -357,7 +357,7 @@ To ensure that you send the traffic through the site-to-site connection, ensure 
 
 ### Sign in to the tenant VM in POC2
 
-1. Sign in to the Azure Stack physical machine for POC2, and then use a tenant account to sign in to the user portal.
+1. Sign in to the Azure Stack Hub physical machine for POC2, and then use a tenant account to sign in to the user portal.
 2. In the left navigation bar, click **Compute**.
 3. From the list of VMs, find **VM02** that you created previously, and then select it.
 4. On the blade for the VM, click **Connect**.

@@ -1,6 +1,6 @@
 ---
-title: SQL Server best practices to optimize performance in Azure Stack. | Microsoft Docs
-description: This article provides SQL server best practices to help increase performance and optimize SQL Server in Azure Stack VMs.
+title: SQL Server best practices to optimize performance in Azure Stack Hub. | Microsoft Docs
+description: This article provides SQL server best practices to help increase performance and optimize SQL Server in Azure Stack Hub VMs.
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -19,23 +19,25 @@ ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
 ---
 
-# SQL server best practices to optimize performance in Azure Stack
+# SQL server best practices to optimize performance in Azure Stack Hub
 
-This article provides SQL server best practices to optimize SQL Server and improve performance in Microsoft Azure Stack virtual machines (VMs). When running SQL Server in Azure Stack VMs, use the same database performance-tuning options applicable to SQL Server in an on-premises server environment. The performance of a relational database in an Azure Stack cloud depends on many factors, including family size of a VM and the configuration of the data disks.
+This article provides SQL server best practices to optimize SQL Server and improve performance in Microsoft Azure Stack Hub virtual machines (VMs). When running SQL Server in Azure Stack Hub VMs, use the same database performance-tuning options applicable to SQL Server in an on-premises server environment. The performance of a relational database in an Azure Stack Hub cloud depends on many factors, including family size of a VM and the configuration of the data disks.
 
-When creating SQL Server images, [consider provisioning your VMs in the Azure Stack portal](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Download the SQL IaaS Extension from Marketplace Management in the Azure Stack administrator portal and download your choice of SQL Server VM images. These include SQL Server 2016 SP1, SQL Server 2016 SP2, and SQL Server 2017.
+When creating SQL Server images, [consider provisioning your VMs in the Azure Stack Hub portal](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision). Download the SQL IaaS Extension from Marketplace Management in the Azure Stack Hub administrator portal and download your choice of SQL Server VM images. These include SQL Server 2016 SP1, SQL Server 2016 SP2, and SQL Server 2017.
 
 > [!NOTE]  
-> While the article describes how to provision a SQL Server VM using the global Azure portal, the guidance also applies to Azure Stack with the following differences: SSD isn't available for the operating system disk and there are minor differences in storage configuration.
+> While the article describes how to provision a SQL Server VM using the global Azure portal, the guidance also applies to Azure Stack Hub with the following differences: SSD isn't available for the operating system disk and there are minor differences in storage configuration.
 
-Getting the *best* performance for SQL Server on Azure Stack VMs is the focus of this article. If your workload is less demanding, you might not require every recommended optimization. Consider your performance needs and workload patterns as you evaluate these recommendations.
+In the VM images, for SQL Server, you can only use bring-your-own-license (BYOL). For Windows Server, the default license model is pay-as-you-go (PAYG). For detailed information of Windows Server license model in VM, refer the article [Windows Server in Azure Stack Hub marketplace FAQ](https://docs.microsoft.com/azure-stack/operator/azure-stack-windows-server-faq#what-about-other-vms-that-use-windows-server-such-as-sql-or-machine-learning-server).  
+
+Getting the *best* performance for SQL Server on Azure Stack Hub VMs is the focus of this article. If your workload is less demanding, you might not require every recommended optimization. Consider your performance needs and workload patterns as you evaluate these recommendations.
 
 > [!NOTE]  
 > For performance guidance for SQL Server in Azure VMs, refer to [this article](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance).
 
 ## Checklist for SQL server best practices
 
-The following checklist is for optimal performance of SQL Server on Azure Stack VMs:
+The following checklist is for optimal performance of SQL Server on Azure Stack Hub VMs:
 
 
 |Area|Optimizations|
@@ -57,26 +59,26 @@ For performance-sensitive applications, the following [VM sizes](azure-stack-vm-
 
 - **SQL Server Standard edition and Web edition:** DS2 or higher
 
-With Azure Stack, there's no performance difference between the DS and DS_v2 VM family series.
+With Azure Stack Hub, there's no performance difference between the DS and DS_v2 VM family series.
 
 ## Storage guidance
 
-DS-series (along with DSv2-series) VMs in Azure Stack provide the maximum operating system disk and data disk throughput (IOPS). A VM from the DS or DSv2 series provides up to 1,000 IOPS for the operating system disk and up to 2,300 IOPS per data disk, no matter the type or size of the chosen disk.
+DS-series (along with DSv2-series) VMs in Azure Stack Hub provide the maximum operating system disk and data disk throughput (IOPS). A VM from the DS or DSv2 series provides up to 1,000 IOPS for the operating system disk and up to 2,300 IOPS per data disk, no matter the type or size of the chosen disk.
 
 Data disk throughput is determined uniquely based on the VM family series. You can [refer to this article](azure-stack-vm-sizes.md) to identify the data disk throughput per VM family series.
 
 > [!NOTE]  
 > For production workloads, select a DS-series or DSv2-series VM to provide the maximum possible IOPS on the operating system disk and data disks.
 
-When creating a storage account in Azure Stack, the geo-replication option has no effect because this capability isn't available in Azure Stack.
+When creating a storage account in Azure Stack Hub, the geo-replication option has no effect because this capability isn't available in Azure Stack Hub.
 
 ## Disks guidance
 
-There are three main disk types on an Azure Stack VM:
+There are three main disk types on an Azure Stack Hub VM:
 
-- **Operating system disk:** When you create an Azure Stack VM, the platform attaches at least one disk (labeled as the **C** drive) to the VM for your operating system disk. This disk is a VHD stored as a page blob in storage.
+- **Operating system disk:** When you create an Azure Stack Hub VM, the platform attaches at least one disk (labeled as the **C** drive) to the VM for your operating system disk. This disk is a VHD stored as a page blob in storage.
 
-- **Temporary disk:** Azure Stack VMs contain another disk called the temporary disk (labeled as the **D** drive). This is a disk on the node that can be used for scratch space.
+- **Temporary disk:** Azure Stack Hub VMs contain another disk called the temporary disk (labeled as the **D** drive). This is a disk on the node that can be used for scratch space.
 
 - **Data disks:** You can attach additional disks to your VM as data disks, and these disks are stored in storage as page blobs.
 
@@ -94,12 +96,12 @@ We recommend storing TempDB on a data disk as each data disk provides a maximum 
 
 ### Data disks
 
-- **Use data disks for data and log files.** If you're not using disk striping, use two data disks from a VM that supports Premium storage, where one disk contains the log files and the other contains the data and TempDB files. Each data disk provides a number of IOPS depending on the VM family, as described in [VM sizes supported in Azure Stack](azure-stack-vm-sizes.md). If you're using a disk-striping technique, such as Storage Spaces, place all data and log files on the same drive (including TempDB). This configuration gives you the maximum number of IOPS available for SQL Server to consume, no matter which file needs them at any particular time.
+- **Use data disks for data and log files.** If you're not using disk striping, use two data disks from a VM that supports Premium storage, where one disk contains the log files and the other contains the data and TempDB files. Each data disk provides a number of IOPS depending on the VM family, as described in [VM sizes supported in Azure Stack Hub](azure-stack-vm-sizes.md). If you're using a disk-striping technique, such as Storage Spaces, place all data and log files on the same drive (including TempDB). This configuration gives you the maximum number of IOPS available for SQL Server to consume, no matter which file needs them at any particular time.
 
 > [!NOTE]  
-> When you provision a SQL Server VM in the portal, you have the option of editing your storage configuration. Depending on your configuration, Azure Stack configures one or more disks. Multiple disks are combined into a single storage pool. Both the data and log files reside together in this configuration.
+> When you provision a SQL Server VM in the portal, you have the option of editing your storage configuration. Depending on your configuration, Azure Stack Hub configures one or more disks. Multiple disks are combined into a single storage pool. Both the data and log files reside together in this configuration.
 
-- **Disk striping:** For more throughput, you can add additional data disks and use disk striping. To determine the number of data disks you need, analyze the number of IOPS required for your log files and for your data and TempDB files. Notice that IOPS limits are per data disk based on the VM series family, and not based on the VM size. Network bandwidth limits, however, are based on the VM size. See the tables on [VM sizes in Azure Stack](azure-stack-vm-sizes.md) for more detail. Use the following guidelines:
+- **Disk striping:** For more throughput, you can add additional data disks and use disk striping. To determine the number of data disks you need, analyze the number of IOPS required for your log files and for your data and TempDB files. Notice that IOPS limits are per data disk based on the VM series family, and not based on the VM size. Network bandwidth limits, however, are based on the VM size. See the tables on [VM sizes in Azure Stack Hub](azure-stack-vm-sizes.md) for more detail. Use the following guidelines:
 
   - For Windows Server 2012 or later, use [Storage Spaces](https://technet.microsoft.com/library/hh831739.aspx) with the following guidelines:
 
@@ -116,7 +118,7 @@ We recommend storing TempDB on a data disk as each data disk provides a maximum 
        New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple -UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false
        ```
 
-- Determine the number of disks associated with your storage pool based on your load expectations. Keep in mind that different VM sizes allow different numbers of attached data disks. For more information, see [VM sizes supported in Azure Stack](azure-stack-vm-sizes.md).
+- Determine the number of disks associated with your storage pool based on your load expectations. Keep in mind that different VM sizes allow different numbers of attached data disks. For more information, see [VM sizes supported in Azure Stack Hub](azure-stack-vm-sizes.md).
 - To get the maximum possible IOPS for data disks, the recommendation is to add the maximum number of data disks supported by your [VM size](azure-stack-vm-sizes.md) and to use disk striping.
 - **NTFS allocation unit size:** When formatting the data disk, we recommend you use a 64-KB allocation unit size for data and log files as well as TempDB.
 - **Disk management practices:** When removing a data disk, stop the SQL Server service during the change. Also, don't change cache settings on the disks as it doesn't provide any performance improvements.
@@ -135,26 +137,26 @@ We recommend storing TempDB on a data disk as each data disk provides a maximum 
 
 - Enable locked pages to reduce IO and any paging activities. For more information, see [Enable the Lock Pages in Memory Option (Windows)](https://msdn.microsoft.com/library/ms190730.aspx).
 
-- Consider compressing any data files when transferring in/out of Azure Stack, including backups.
+- Consider compressing any data files when transferring in/out of Azure Stack Hub, including backups.
 
 ## Feature-specific guidance
 
 Some deployments may achieve additional performance benefits using more advanced configuration techniques. The following list highlights some SQL Server features that may help you achieve better performance:
 
-- **Back up to Azure** **storage.** When making backups for SQL Server running in Azure Stack VMs, you can use SQL Server Backup to URL. This feature is available starting with SQL Server 2012 SP1 CU2 and recommended for backing up to the attached data disks.
+- **Back up to Azure** **storage.** When making backups for SQL Server running in Azure Stack Hub VMs, you can use SQL Server Backup to URL. This feature is available starting with SQL Server 2012 SP1 CU2 and recommended for backing up to the attached data disks.
 
     When you backup or restore using Azure storage, follow the recommendations provided in [SQL Server Backup to URL Best Practices and Troubleshooting](https://msdn.microsoft.com/library/jj919149.aspx) and [Restoring From Backups Stored in Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/backup-restore/restoring-from-backups-stored-in-microsoft-azure?view=sql-server-2017). You can also automate these backups using [Automated Backup for SQL Server in Azure VMs](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup).
 
--   **Back up to Azure Stack storage.** You can back up to Azure Stack storage in a similar fashion as with backing up to Azure Storage. When you create a backup inside SQL Server Management Studio (SSMS), you need to enter the configuration information manually. You can't use SSMS to create the storage container or the Shared Access Signature. SSMS only connects to Azure subscriptions, not Azure Stack subscriptions. Instead, you need to create the storage account, container, and Shared Access Signature in the Azure Stack portal or with PowerShell.
+-   **Back up to Azure Stack Hub storage.** You can back up to Azure Stack Hub storage in a similar fashion as with backing up to Azure Storage. When you create a backup inside SQL Server Management Studio (SSMS), you need to enter the configuration information manually. You can't use SSMS to create the storage container or the Shared Access Signature. SSMS only connects to Azure subscriptions, not Azure Stack Hub subscriptions. Instead, you need to create the storage account, container, and Shared Access Signature in the Azure Stack Hub portal or with PowerShell.
 
 
     ![SQL Server Backup](./media/sql-server-vm-considerations/image3.png)
 
     > [!NOTE]  
-    > The Shared Access Signature is the SAS token from the Azure Stack portal, without the leading ‘?' in the string. If you use the copy function from the portal, you need to delete the leading ‘?' for the token to work within SQL Server.
+    > The Shared Access Signature is the SAS token from the Azure Stack Hub portal, without the leading ‘?' in the string. If you use the copy function from the portal, you need to delete the leading ‘?' for the token to work within SQL Server.
 
-    Once you have the Backup Destination set up and configured in SQL Server, you can then back up to the Azure Stack blob storage.
+    Once you have the Backup Destination set up and configured in SQL Server, you can then back up to the Azure Stack Hub blob storage.
 
 ## Next steps
 
-[Using services or building apps for Azure Stack](azure-stack-considerations.md)
+[Using services or building apps for Azure Stack Hub](azure-stack-considerations.md)

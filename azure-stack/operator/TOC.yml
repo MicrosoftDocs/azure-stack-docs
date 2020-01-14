@@ -4,7 +4,7 @@
   items:
   - name: What is Azure Stack Hub?
     href: azure-stack-overview.md
-  - name: What is Azure Stack HCI?
+  - name: What is Azure Stack Hub HCI?
     href: azure-stack-hci-overview.md
   - name: Comparing the Azure ecosystem
     href: compare-azure-azure-stack.md
@@ -37,7 +37,7 @@
       href: azure-stack-capacity-planning-compute.md
     - name: Storage
       href: azure-stack-capacity-planning-storage.md
-    - name: Azure Stack Capacity Planner
+    - name: Azure Stack Hub Capacity Planner
       href: azure-stack-capacity-planner.md
   - name: Datacenter integration
     items:
@@ -86,12 +86,12 @@
         href: azure-stack-validate-adfs.md
       - name: Validate graph integration
         href: azure-stack-validate-graph.md
-    - name: Azure Stack deployment PKI requirements
+    - name: Azure Stack Hub deployment PKI requirements
       href: azure-stack-pki-certs.md
       items:
       - name: Generate PKI certificates
         href: azure-stack-get-pki-certs.md
-      - name: Prepare Azure Stack PKI certificates
+      - name: Prepare Azure Stack Hub PKI certificates
         href: azure-stack-prepare-pki-certs.md
       - name: Validate PKI certificates
         href: azure-stack-validate-pki-certs.md
@@ -118,7 +118,7 @@
         href: azure-stack-integrate-physical-device-auditing.md
 - name: How-to guides
   items:
-  - name: Manage Azure Stack
+  - name: Manage Azure Stack Hub
     items:
     - name: Administration basics
       href: azure-stack-manage-basics.md
@@ -126,7 +126,7 @@
       href: azure-stack-portal-clear.md 
     - name: Configure telemetry collection
       href: azure-stack-telemetry.md
-    - name: Register Azure Stack
+    - name: Register Azure Stack Hub
       href: azure-stack-registration.md
     - name: Region management
       href: azure-stack-region-management.md
@@ -136,7 +136,7 @@
       href: azure-stack-cli-admin.md
     - name: Set up management environment
       items:
-      - name: Install Azure Stack PowerShell
+      - name: Install Azure Stack Hub PowerShell
         href: azure-stack-powershell-install.md
       - name: Download tools
         href: azure-stack-powershell-download.md
@@ -172,7 +172,7 @@
       href: azure-stack-viewing-public-ip-address-consumption.md
     - name: Change user subscription owner
       href: azure-stack-change-subscription-owner.md
-    - name: Start and stop Azure Stack
+    - name: Start and stop Azure Stack Hub
       href: azure-stack-start-and-stop.md
     - name: Manage capacity
       items:
@@ -234,7 +234,7 @@
       href: azure-stack-marketplace.md
     - name: Marketplace changes
       href: azure-stack-marketplace-changes.md
-    - name: Azure Marketplace items for Azure Stack
+    - name: Azure Marketplace items for Azure Stack Hub
       href: azure-stack-marketplace-azure-items.md
     - name: Download marketplace items
       href: azure-stack-download-azure-marketplace-item.md
@@ -242,7 +242,7 @@
       href: azure-stack-add-vm-image.md
     - name: Create and publish a marketplace item
       href: azure-stack-create-and-publish-marketplace-item.md
-    - name: Supported guest operating systems for Azure Stack
+    - name: Supported guest operating systems for Azure Stack Hub
       href: azure-stack-supported-os.md
     - name: Offer a virtual machine scale set
       href: azure-stack-compute-add-scalesets.md
@@ -274,7 +274,7 @@
       href: azure-stack-subscribe-plan-provision-vm.md
     - name: Delete offers
       href: azure-stack-delete-offer.md
-    - name: Delegate offers in Azure Stack
+    - name: Delegate offers in Azure Stack Hub
       href: azure-stack-delegated-provider.md
     - name: Quota types
       href: azure-stack-quota-types.md
@@ -282,7 +282,7 @@
     href: azure-stack-network-solutions-enable.md
   - name: Manage value-add resource providers
     items:
-    - name: App Service on Azure Stack
+    - name: App Service on Azure Stack Hub
       items:
       - name: Overview
         href: azure-stack-app-service-overview.md
@@ -304,29 +304,33 @@
         href: azure-stack-app-service-add-worker-roles.md
       - name: Configure deployment sources
         href: azure-stack-app-service-configure-deployment-sources.md
+      - name: Rotate App Service secrets and certificates
+        href: app-service-rotate-certificates.md
       - name: Back up App Service
         href: app-service-back-up.md
       - name: Recover App Service
         href: app-service-recover.md
       - name: App Service billing FAQ
         href: app-service-billing-faq.md
-      - name: App Service on Azure Stack release notes
+      - name: App Service on Azure Stack Hub release notes
         items:
-        - name: App Service on Azure Stack update 1 release notes
+        - name: App Service on Azure Stack Hub update 1 release notes
           href: azure-stack-app-service-release-notes-update-one.md
-        - name: App Service on Azure Stack update 2 release notes
+        - name: App Service on Azure Stack Hub update 2 release notes
           href: azure-stack-app-service-release-notes-update-two.md
-        - name: App Service on Azure Stack update 3 release notes
+        - name: App Service on Azure Stack Hub update 3 release notes
           href: azure-stack-app-service-release-notes-update-three.md
-        - name: App Service on Azure Stack update 4 release notes
+        - name: App Service on Azure Stack Hub update 4 release notes
           href: azure-stack-app-service-release-notes-update-four.md
-        - name: App Service on Azure Stack update 5 release notes
+        - name: App Service on Azure Stack Hub update 5 release notes
           href: azure-stack-app-service-release-notes-update-five.md
-        - name: App Service on Azure Stack update 6 release notes
+        - name: App Service on Azure Stack Hub update 6 release notes
           href: azure-stack-app-service-release-notes-update-six.md
-        - name: App Service on Azure Stack update 7 release notes
+        - name: App Service on Azure Stack Hub update 7 release notes
           href: azure-stack-app-service-release-notes-update-seven.md
-    - name: MySQL on Azure Stack
+        - name: App Service on Azure Stack Hub update 8 release notes
+          href: azure-stack-app-service-release-notes-update-eight.md
+    - name: MySQL on Azure Stack Hub
       items:
       - name: Overview 
         href: azure-stack-mysql-resource-provider.md
@@ -352,7 +356,7 @@
           href: azure-stack-mysql-resource-provider-11330.md
         - name: MySQL resource provider 1.1.30.0 release notes
           href: azure-stack-mysql-resource-provider-11300.md
-    - name: SQL on Azure Stack
+    - name: SQL on Azure Stack Hub
       items:
       - name: Overview
         href: azure-stack-sql-resource-provider.md
@@ -406,19 +410,19 @@
           href: azure-stack-usage-issues.md
         - name: Usage registration error codes
           href: azure-stack-registration-errors.md        
-  - name: Back up Azure Stack
+  - name: Back up Azure Stack Hub
     items:
-    - name: Enable Backup for Azure Stack from the administration console
+    - name: Enable Backup for Azure Stack Hub from the administration console
       href: azure-stack-backup-enable-backup-console.md
-    - name: Enable Backup for Azure Stack with PowerShell
+    - name: Enable Backup for Azure Stack Hub with PowerShell
       href: azure-stack-backup-enable-backup-powershell.md
-    - name: Back up Azure Stack
+    - name: Back up Azure Stack Hub
       href: azure-stack-backup-back-up-azure-stack.md
     - name: Recover data with the backup service
       href: azure-stack-backup-infrastructure-backup.md
-    - name: Back up files and applications on Azure Stack
+    - name: Back up files and applications on Azure Stack Hub
       href: /azure/backup/backup-mabs-files-applications-azure-stack?toc=/azure-stack/operator/toc.json&bc=/azure-stack/breadcrumb/toc.json
-    - name: Replicate Azure Stack VMs to Azure 
+    - name: Replicate Azure Stack Hub VMs to Azure 
       href: /azure/site-recovery/azure-stack-site-recovery?toc=/azure-stack/operator/toc.json&bc=/azure-stack/breadcrumb/toc.json
     - name: Recover from catastrophic data loss
       href: azure-stack-backup-recover-data.md
@@ -444,13 +448,13 @@
             href: azure-stack-best-practices-automatic-diagnostic-log-collection.md  
         - name: On-demand collection
           href: azure-stack-configure-on-demand-diagnostic-log-collection.md
-    - name: Validation for Azure Stack  
+    - name: Validation for Azure Stack Hub  
       href: azure-stack-diagnostic-test.md
     - name: Troubleshooting
       href: azure-stack-troubleshooting.md
 - name: Reference
   items:
-  - name: Azure Stack PowerShell
+  - name: Azure Stack Hub PowerShell
     href: /powershell/azure/azure-stack/overview
 - name: Related
   items:
@@ -462,11 +466,11 @@
   items:
   - name: Training and certification
     href: azure-stack-train-and-cert.md
-  - name: Azure Stack roadmap
+  - name: Azure Stack Hub roadmap
     href: https://azure.microsoft.com/roadmap/?tag=azure-stack
-  - name: Azure Stack MSDN forum
+  - name: Azure Stack Hub MSDN forum
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack
-  - name: Azure Stack Documentation feedback
+  - name: Azure Stack Hub Documentation feedback
     href: https://feedback.azure.com/forums/344565-azure-stack?category_id=160275
   - name: Pricing information
     href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/

@@ -1,6 +1,6 @@
 ---
-title: App Service recovery on Azure Stack | Microsoft Docs
-description: Learn about disaster recovery for App Service on Azure Stack.
+title: App Service recovery on Azure Stack Hub | Microsoft Docs
+description: Learn about disaster recovery for App Service on Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: bryanla
@@ -19,18 +19,16 @@ ms.reviewer: anwestg
 ms.lastreviewed: 03/21/2019
 
 ---
-# App Service recovery on Azure Stack
-
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*  
+# App Service recovery on Azure Stack Hub
 
 This topic provides instructions on what actions to take for App Service disaster recovery.
 
-The following actions must be taken to recover App Service on Azure Stack from backup:
+The following actions must be taken to recover App Service on Azure Stack Hub from backup:
 1. Restore the App Service databases.
 2. Restore the file server share content.
 3. Restore App Service roles and services.
 
-If Azure Stack storage was used for Function Apps storage, then you must also take steps to restore Function Apps.
+If Azure Stack Hub storage was used for Function Apps storage, then you must also take steps to restore Function Apps.
 
 ## Restore the App Service databases
 The App Service SQL Server databases should be restored on a production ready SQL Server instance. 
@@ -101,9 +99,9 @@ After the App Service databases and file share content are restored, you next ne
 > It's highly recommended to close this PowerShell session when the command completes.
 
 ## Restore Function Apps 
-App Service for Azure Stack doesn't support restoring tenant user apps or data other than file share content. All other data must be backed up and recovered outside of App Service backup and restore operations. If Azure Stack storage was used for Function Apps storage, the following steps should be taken to recover lost data:
+App Service for Azure Stack Hub doesn't support restoring tenant user apps or data other than file share content. All other data must be backed up and recovered outside of App Service backup and restore operations. If Azure Stack Hub storage was used for Function Apps storage, the following steps should be taken to recover lost data:
 
-1. Create a new storage account to be used by the Function App. This storage can be Azure Stack storage, Azure storage, or any compatible storage.
+1. Create a new storage account to be used by the Function App. This storage can be Azure Stack Hub storage, Azure storage, or any compatible storage.
 2. Retrieve the connection string for the storage.
 3. Open the function portal and browse to the function app.
 4. Browse to the **Platform features** tab and click **Application Settings**.
@@ -112,4 +110,4 @@ App Service for Azure Stack doesn't support restoring tenant user apps or data o
 7. Restart the app. It might take several tries to clear all errors.
 
 ## Next steps
-[App Service on Azure Stack overview](azure-stack-app-service-overview.md)
+[App Service on Azure Stack Hub overview](azure-stack-app-service-overview.md)
