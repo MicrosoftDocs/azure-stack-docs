@@ -19,9 +19,9 @@ ms.lastreviewed: 08/29/2019
 
 ---
 
-# Windows Server in Azure Stack Hub marketplace FAQ
+# Windows Server in Azure Stack Hub Marketplace FAQ
 
-This article answers some frequently asked questions about Windows Server images in the [Azure Stack Hub marketplace](azure-stack-marketplace.md).
+This article answers some frequently asked questions about Windows Server images in the [Azure Stack Hub Marketplace](azure-stack-marketplace.md).
 
 ## Marketplace items
 
@@ -33,7 +33,7 @@ Next, if any virtual machine scale sets refer to a specific version, you should 
 
 ### What are the licensing options for Windows Server Marketplace images on Azure Stack Hub?
 
-Microsoft offers two versions of Windows Server images through the Azure Stack Hub marketplace. Only one version of this image can be used in an Azure Stack Hub environment.  
+Microsoft offers two versions of Windows Server images through the Azure Stack Hub Marketplace. Only one version of this image can be used in an Azure Stack Hub environment.  
 
 - **Pay as you use**: These images run the full price Windows meters.
    Who should use: Enterprise Agreement (EA) customers who use the *Consumption billing model*; CSPs who do not want to use SPLA licensing.
