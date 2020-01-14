@@ -28,9 +28,15 @@ What you'll learn:
 > * Create an Azure Stack Hub SQL Hosting Server.
 > * Create a highly available SQL database.
 
+<<<<<<< HEAD
 A two VM SQL Server AlwaysOn availability group will be created and configured using available Azure Stack Marketplace items.
 
 Before starting, ensure that the [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md) has been successfully installed and the following items are available in Azure Stack Marketplace:
+=======
+A two VM SQL Server AlwaysOn availability group will be created and configured using available Azure Stack Hub Marketplace items. 
+
+Before starting, ensure that the [SQL Server resource provider](azure-stack-sql-resource-provider-deploy.md) has been successfully installed and the following items available in the Azure Stack Hub Marketplace:
+>>>>>>> 55037c76ed180c977e1ff6c05430feacf5ba5b93
 
 > [!IMPORTANT]
 > All of the following are required for the Azure Stack Hub quickstart template to be used.
@@ -41,7 +47,11 @@ Before starting, ensure that the [SQL Server resource provider](azure-stack-sql-
 - [Custom script extension for Windows](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.CustomScriptExtension) version 1.9.1 or higher. Custom Script Extension is a tool that can be used to automatically launch post-deployment VM customization tasks.
 - [PowerShell Desired State Configuration (DSC)](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.DSC-arm) version 2.76.0.0 or higher. DSC is a management platform in Windows PowerShell that enables deploying and managing configuration data for software services. The platform also manages the environment in which these services run.
 
+<<<<<<< HEAD
 To learn more about adding items to Azure Stack Marketplace, see the [Azure Stack Hub Marketplace overview](azure-stack-marketplace.md).
+=======
+To learn more about adding items to the Azure Stack Hub Marketplace, see the [Azure Stack Hub Marketplace overview](azure-stack-marketplace.md).
+>>>>>>> 55037c76ed180c977e1ff6c05430feacf5ba5b93
 
 ## Create a SQL Server AlwaysOn availability group
 Use the steps in this section to deploy the SQL Server AlwaysOn availability group by using the [sql-2016-alwayson Azure Stack Hub quickstart template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/sql-2016-alwayson). This template deploys two SQL Server Enterprise, Standard or Developer instances in an Always On Availability Group. It creates the following resources:

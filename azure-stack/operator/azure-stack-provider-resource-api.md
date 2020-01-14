@@ -100,7 +100,7 @@ meterID1",
 
 ### PowerShell
 
-To generate the usage data, you should have resources that are running and actively using the system; for example, an active virtual machine (VM), or a storage account containing some data. If you're not sure whether you have any resources running in the Azure Stack Hub marketplace, deploy a VM, and verify the VM monitoring blade to make sure it's running. Use the following PowerShell cmdlets to view the usage data:
+To generate the usage data, you should have resources that are running and actively using the system; for example, an active virtual machine (VM), or a storage account containing some data. If you're not sure whether you have any resources running in the Azure Stack Hub Marketplace, deploy a VM, and verify the VM monitoring blade to make sure it's running. Use the following PowerShell cmdlets to view the usage data:
 
 1. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
 2. [Configure the Azure Stack Hub user](../user/azure-stack-powershell-configure-user.md) or the [Azure Stack Hub operator](azure-stack-powershell-configure-admin.md) PowerShell environment.

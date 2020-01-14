@@ -36,7 +36,7 @@ Before you begin, make sure that you have everything you need in place.
 
 ## Prerequisites
 
-- An Azure Stack Hub subscription, with access to the Ubuntu Server 16.04 LTS image. You can use a later version of the image, but these instructions are written with the 16.04 LTS in mind. If you don't have this image, contact your cloud operator to get the image into the Azure Stack Hub marketplace.
+- An Azure Stack Hub subscription, with access to the Ubuntu Server 16.04 LTS image. You can use a later version of the image, but these instructions are written with the 16.04 LTS in mind. If you don't have this image, contact your cloud operator to get the image into the Azure Stack Hub Marketplace.
 
 ## Deploy the VM by using the portal
 

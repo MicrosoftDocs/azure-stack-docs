@@ -59,7 +59,7 @@ To subscribe to an offer as a user, sign in to the Azure Stack Hub user portal t
 While signed in to the user portal, test the offer by provisioning a VM using the new subscription capabilities.
 
 > [!NOTE]
-> This test requires that a Windows Server 2016 Datacenter VM first be added to the Azure Stack Hub marketplace.
+> This test requires that a Windows Server 2016 Datacenter VM first be added to the Azure Stack Hub Marketplace.
 
 1. Sign in to the user portal.
 
