@@ -39,7 +39,7 @@ Before starting, ensure that the [SQL Server resource provider](azure-stack-sql-
 - SQL Server 2016 SP1 or SP2 (Enterprise, Standard, or Developer) on Windows Server 2016 server image. This article uses the [SQL Server 2016 SP2 Enterprise on Windows Server 2016](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoftsqlserver.sql2016sp2-ws2016) marketplace image.
 - [SQL Server IaaS Extension](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-server-agent-extension) version 1.2.30 or higher. The SQL IaaS Extension installs necessary components that are required by the Marketplace SQL Server items for all Windows versions. It enables SQL-specific settings to be configured on SQL virtual machines (VMs). If the extension isn't installed in the local marketplace, provisioning of SQL will fail.
 - [Custom script extension for Windows](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.CustomScriptExtension) version 1.9.1 or higher. Custom Script Extension is a tool that can be used to automatically launch post-deployment VM customization tasks.
-- [PowerShell Desired State Configuration (DSC)](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.DSC-arm) version 2.76.0.0 or higher. DSC is a management platform in Windows PowerShell that enables deploying and managing configuration data for software services and managing the environment in which these services run.
+- [PowerShell Desired State Configuration (DSC)](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.DSC-arm) version 2.76.0.0 or higher. DSC is a management platform in Windows PowerShell that enables deploying and managing configuration data for software services. The platform also manages the environment in which these services run.
 
 To learn more about adding items to Azure Stack Marketplace, see the [Azure Stack Hub Marketplace overview](azure-stack-marketplace.md).
 
@@ -63,7 +63,7 @@ Use the steps in this section to deploy the SQL Server AlwaysOn availability gro
 
    ![Custom template deployment in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/1.png)
 
-3. On the **Custom deployment** blade, select **Edit template** > **Quickstart template** and then use the drop-down list of available custom templates to select the **sql-2016-alwayson** template, select **OK**, and then **Save**.
+3. On the **Custom deployment** blade, select **Edit template** > **Quickstart template** and then use the drop-down list of available custom templates to select the **sql-2016-alwayson** template. Select **OK**, then **Save**.
 
    [![Edit template in Azure Stack Hub administrator portal](media/azure-stack-tutorial-sqlrp/2-sm.PNG "Select quickstart template")](media/azure-stack-tutorial-sqlrp/2-lg.PNG#lightbox)
 
@@ -94,7 +94,7 @@ Use the steps in this section to deploy the SQL Server AlwaysOn availability gro
 
 After the template has successfully deployed and configured the SQL AlwaysON availability group, you must enable [automatic seeding](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/automatically-initialize-always-on-availability-group) on each instance of SQL Server in the availability group.
 
-When you create an availability group with automatic seeding, SQL Server automatically creates the secondary replicas for every database in the group without any other manual intervention necessary to ensure high availability of AlwaysOn databases.
+When you create an availability group with automatic seeding, SQL Server automatically creates the secondary replicas for every database in the group without any other manual intervention necessary. This measure ensures high availability of AlwaysOn databases.
 
 Use these SQL commands to configure automatic seeding for the AlwaysOn availability group. Replace `<InstanceName>` with the primary instance SQL Server name and `<availability_group_name>` with the AlwaysOn availability group name as necessary.
 
@@ -135,14 +135,14 @@ Use these commands to set the contained database authentication server option fo
 
 ## Create an Azure Stack Hub SQL Hosting Server
 
-After the SQL Server AlwayOn availability group has been created and properly configured, an Azure Stack Hub operator must create an Azure Stack Hub SQL Hosting Server to make the additional capacity available for users to create databases.
+After the SQL Server AlwayOn availability group has been created and properly configured, an Azure Stack Hub operator has to create an Azure Stack Hub SQL Hosting Server. The SQL Hosting Server makes the additional capacity available for users to create databases.
 
 Be sure to use the public IP or full FQDN for the public IP of the SQL load balancer recorded previously when the SQL AlwaysOn availability group's resource group was created (**SQLPIPsql\<resource group name\>**). In addition, you need to know the SQL Server authentication credentials used to access the SQL instances in the AlwaysOn availability group.
 
 > [!NOTE]
 > This step must be run from the Azure Stack Hub administrator portal by an Azure Stack Hub operator.
 
-With the SQL AlwaysOn availability group's load balancer listener public IP and SQL authentication login information, an Azure Stack Hub operator can now [create a SQL Hosting Server using the SQL AlwaysOn availability group](azure-stack-sql-resource-provider-hosting-servers.md#provide-high-availability-using-sql-always-on-availability-groups). 
+With the SQL AlwaysOn availability group's load balancer listener public IP and SQL authentication login information, an Azure Stack Hub operator can [create a SQL Hosting Server using the SQL AlwaysOn availability group](azure-stack-sql-resource-provider-hosting-servers.md#provide-high-availability-using-sql-always-on-availability-groups). 
 
 Also ensure that you have created plans and offers to make SQL AlwaysOn database creation available for users. The operator will need to add the **Microsoft.SqlAdapter** service to a plan and create a new quota specifically for highly available databases. For more information about creating plans, see [Service, plan, offer, subscription overview](service-plan-offer-subscription-overview.md).
 
@@ -151,7 +151,7 @@ Also ensure that you have created plans and offers to make SQL AlwaysOn database
 
 ## Create a highly available SQL database
 
-After the SQL AlwaysOn availability group has been created, configured, and added as an Azure Stack Hub SQL Hosting Server by an Azure Stack Hub operator, a tenant user with a subscription including SQL Server database capabilities can create SQL databases supporting AlwaysOn functionality by following the steps in this section. 
+After the SQL AlwaysOn availability group has been created, configured, and added as an Azure Stack Hub SQL Hosting Server by an Azure Stack Hub operator, a tenant user with a subscription including SQL Server database capabilities can create SQL databases supporting AlwaysOn functionality. They can create those databases by following the steps in this section.
 
 > [!NOTE]
 > Run these steps from the Azure Stack Hub user portal as a tenant user with a subscription providing SQL Server capabilities (Microsoft.SQLAdapter service).
@@ -161,7 +161,7 @@ After the SQL AlwaysOn availability group has been created, configured, and adde
 
 2. Select **\+** **Create a resource** > **Data \+ Storage**, and then **SQL Database**.
 
-    Provide the required database property information including name, collation, maximum size, and the subscription, resource group, and location to use for the deployment. 
+    Provide the required database property information. This info includes name, collation, maximum size, and the subscription, resource group, and location to use for the deployment.
 
    ![Create SQL database in Azure Stack Hub user portal](./media/azure-stack-tutorial-sqlrp/createdb1.png)
 
