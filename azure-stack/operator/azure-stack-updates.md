@@ -76,7 +76,7 @@ Once you know you have an update, apply it by using the following steps.
 
 1. **Plan for the update**.
 
-    Prepare your Azure Stack Hub to make the update process go as smoothly as possible so that there is a minimal impact on your users. Notifying your users of any possible service outage and then follow the steps to prepare your instance for the update. You should be sure to follow **ALL** steps in [Azure Stack Hub pre-update checklist](release-notes-checklist.md) to ensure that you're appropriately planning for an update and scheduling an appropriate maintenance window for the update type that you are applying.
+    Prepare your Azure Stack Hub to make the update process go as smoothly as possible so that there is a minimal impact on your users. Notifying your users of any possible service outage and then follow the steps to prepare your instance for the update. You should be sure to follow **ALL** steps in [Azure Stack Hub pre-update checklist](release-notes-checklist.md) to ensure that you've completed the required presteps for applying an update and have scheduled an appropriate maintenance window for the update type being applied.
 
 2. **Upload and prepare the update package**.
 
