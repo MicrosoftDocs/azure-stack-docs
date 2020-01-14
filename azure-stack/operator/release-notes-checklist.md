@@ -26,7 +26,7 @@ Review this checklist in order to prepare for an Azure Stack Hub update. This ar
 
 ## Prepare for Azure Stack Hub update
 
-| Activity                     | Details                                                   |
+| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Activity &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                   | Details                                                   |
 |------------------------------|-----------------------------------------------------------|
 | Review known issues     | [List of known issues](known-issues.md).                |
 | Review security updates | [List of security updates](release-notes-security-updates.md).      |
