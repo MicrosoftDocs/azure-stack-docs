@@ -161,7 +161,7 @@ We recommend you reset the password expiration policy to make sure that the pass
 **[Post ASDK deployment tasks](asdk-post-deploy.md)**
 
 ## Register with Azure
-You must register Azure Stack with Azure so that you can [download Azure marketplace items](../operator/azure-stack-create-and-publish-marketplace-item.md) to Azure Stack.
+You must register Azure Stack with Azure so that you can [download Azure Marketplace items](../operator/azure-stack-create-and-publish-marketplace-item.md) to Azure Stack.
 
 **[Register Azure Stack with Azure](asdk-register.md)**
 
