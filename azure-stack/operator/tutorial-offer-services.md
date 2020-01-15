@@ -17,16 +17,16 @@ This tutorial shows an operator how to create an offer. An offer makes services 
 In this tutorial, you learn how to:
 
 > [!div class="checklist"]
-> * Create an offer
-> * Create a plan
-> * Assign services and quotas to a plan
-> * Assign a plan to an offer
+> * Create an offer.
+> * Create a plan.
+> * Assign services and quotas to a plan.
+> * Assign a plan to an offer.
 
 ## Overview
 
-An offer consists of one or more plans. A plan entitles access to one or more services, by specifying each service's corresponding resource provider and a quota. Plans can be added to an offer as the base plan, or extend the offer as an add-on plan. To learn more, see the [Service, plan, offer, subscription overview](service-plan-offer-subscription-overview.md).
+An offer consists of one or more plans. A plan entitles access to one or more services, by specifying each service's corresponding resource provider and a quota. Plans can be added to an offer as the base plan, or they can extend the offer as an add-on plan. To learn more, see the [Service, plan, offer, subscription overview](service-plan-offer-subscription-overview.md).
 
-![Subscriptions, offers, and plans](media/azure-stack-key-features/image4.png)
+![Subscriptions, offers, and plans in Azure Stack Hub](media/azure-stack-key-features/image4.png)
 
 ### Resource providers
 
@@ -43,7 +43,7 @@ Foundational services are supported by the following resource providers, which a
 
 | Resource Provider | Example resources |
 | ----------------- | ------------------|
-| Microsoft.Compute | Virtual machines, disks, virtual machine scale sets |
+| Microsoft.Compute | VMs, disks, virtual machine scale sets |
 | Microsoft.KeyVault | Key Vaults, secrets |
 | Microsoft.Network | Virtual networks, public IP addresses, load balancers |
 | Microsoft.Storage | Storage accounts, blobs, queues, tables |
@@ -51,7 +51,7 @@ Foundational services are supported by the following resource providers, which a
 ### Value-add services
 
 >[!NOTE]
-> In order to offer a value-add service, the corresponding resource provider must first be installed in Azure Stack Hub Marketplace. Once installed, its resources are offered to users the same way as foundational services. Please see the **How-to guides** section of the TOC, for the current set of resource providers that support value-add service offerings.
+> In order to offer a value-add service, the corresponding resource provider must first be installed in Azure Stack Hub Marketplace. Once installed, its resources are offered to users in the same way as foundational services. Please see the **How-to guides** section of the TOC for the current set of resource providers that support value-add service offerings.
 
 Value-add services are supported by resource providers that are installed after Azure Stack Hub has been deployed. Examples include:
 
@@ -62,18 +62,19 @@ Value-add services are supported by resource providers that are installed after 
 | Microsoft.SqlAdapter | SQL Server hosting server, SQL Server database |
 
 ::: moniker range=">=azs-1902"
+
 ## Create an offer
 
-During the offer creation process, you create both an offer and a plan. The plan is used as the offer's base plan. During plan creation, you specify the services made available in the plan, and their respective quotas.
+During the offer creation process, you create both an offer and a plan. The plan is used as the offer's base plan. During plan creation, you specify the services made available in the plan and their respective quotas.
 
-1. Sign in to the administrator portal with a cloud administrator account.
+1. Sign in to the administrator portal with a cloud admin account.
 
-   - For an integrated system, the URL varies based on your operator's region and external domain name, using the format https://adminportal.&lt;*region*&gt;.&lt;*FQDN*&gt;.
-   - If you're using the Azure Stack Development Kit, the URL is https://adminportal.local.azurestack.external.
+  - For an integrated system, the URL varies based on your operator's region and external domain name. The URL uses the format https://adminportal.&lt;*region*&gt;.&lt;*FQDN*&gt;.
+  - If you're using the Azure Stack Development Kit, the URL is `https://adminportal.local.azurestack.external`.
 
-   Then select **+ Create a resource** > **Offers + Plans** > **Offer**.
+  Then select **+ Create a resource** > **Offers + Plans** > **Offer**.
 
-   ![New offer](media/tutorial-offer-services/1-create-resource-offer.png)
+  ![New offer](media/tutorial-offer-services/1-create-resource-offer.png)
 
 1. In **Create a new offer** under the **Basics** tab, enter a **Display name**, **Resource name**, and select an existing or create a new **Resource group**. The Display name is the offer's friendly name. Only the cloud operator can see the Resource name, which is the name that administrators use to work with the offer as an Azure Resource Manager resource.
 
