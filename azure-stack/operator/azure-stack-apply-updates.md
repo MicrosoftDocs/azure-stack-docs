@@ -44,6 +44,9 @@ You can view the current version of Azure Stack Hub in the **Updates** blade. To
 
 ## Install updates and monitor progress
 
+> [!Important]
+> Before applying updates in Azure Stack Hub, ensure you have completed **ALL** steps in the [Pre-Update Checklist](release-notes-checklist.md) and have scheduled an appropriate maintenance window for the update type that you are applying.
+
 1. Open the Azure Stack Hub administrator portal.
 
 2. Select **Dashboard**. Select **Update**.

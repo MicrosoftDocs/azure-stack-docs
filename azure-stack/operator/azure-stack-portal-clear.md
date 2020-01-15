@@ -148,4 +148,4 @@ After receiving the user object ID as an Azure Stack Hub operator, run the follo
 
 ## Next steps
 
-- [Register Azure Stack Hub with Azure](azure-stack-registration.md) and populate the [Azure Stack Hub marketplace](azure-stack-marketplace.md) with items to offer your users.
+- [Register Azure Stack Hub with Azure](azure-stack-registration.md) and populate the [Azure Stack Hub Marketplace](azure-stack-marketplace.md) with items to offer your users.

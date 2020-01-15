@@ -161,7 +161,7 @@ Once you have registered, you can disregard the following message that appears o
 
    The `-azureContext` parameter is also optional. If you do not specify the Azure context, then the cmdlet will use the default Azure context.
 
-7. When the tool runs, you should see a screen similar to the following image, with the list of available Azure marketplace items:
+7. When the tool runs, you should see a screen similar to the following image, with the list of available Azure Marketplace items:
 
    ![Marketplace items](media/azure-stack-download-azure-marketplace-item/tool1.png)
 
