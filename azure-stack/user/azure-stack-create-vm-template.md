@@ -22,7 +22,7 @@ ms.lastreviewed: 11/13/2018
 
 # Tutorial: Create a VM using a community template
 
-As an Azure Stack Hub operator or user, you can create a virtual machine (VM) using [custom GitHub quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates) rather than deploying a template manually from the Azure Stack Hub marketplace.
+As an Azure Stack Hub operator or user, you can create a virtual machine (VM) using [custom GitHub quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates) rather than deploying a template manually from the Azure Stack Hub Marketplace.
 
 In this tutorial, you learn how to:
 
@@ -61,7 +61,7 @@ This template installs the following components:
 * xRDP
 
 > [!IMPORTANT]
-> The Ubuntu VM image (Ubuntu Server 16.04 LTS, in this example) must already have been added to the Azure Stack Hub marketplace before performing these steps.
+> The Ubuntu VM image (Ubuntu Server 16.04 LTS, in this example) must already have been added to the Azure Stack Hub Marketplace before performing these steps.
 
 1. Select **+ Create a resource**, then **Custom**, then **Template deployment**.
 

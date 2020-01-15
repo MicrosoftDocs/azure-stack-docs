@@ -73,7 +73,7 @@ As a solution, Azure Monitor for VMs includes support for monitoring performance
 After the Log Analytics Workspace is created, enable the performance counters in the workspace for collection on Linux and Windows VMs. Then, install and enable the ServiceMap and InfrastructureInsights solution in your workspace. The process is described in the [Deploy Azure Monitor for VMs](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-onboard#how-to-enable-azure-monitor-for-vms-preview) guide.
 
 ### In the Azure Stack Hub administrator portal
-After enabling the Azure Automation solutions in the Azure portal, you next need to sign in to the Azure Stack Hub administrator portal as a cloud admin and download the **Azure Monitor, Update and Configuration Management** and the **Azure Monitor, Update and Configuration Management for Linux** extension in the Azure Stack Hub marketplace.
+After enabling the Azure Automation solutions in the Azure portal, you next need to sign in to the Azure Stack Hub administrator portal as a cloud admin and download the **Azure Monitor, Update and Configuration Management** and the **Azure Monitor, Update and Configuration Management for Linux** extension in the Azure Stack Hub Marketplace.
 
    ![Azure Monitor, update and configuration management extension marketplace item](media/vm-update-management/2.PNG) 
 

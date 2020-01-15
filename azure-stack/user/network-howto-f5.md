@@ -31,7 +31,7 @@ Azure Stack Hub has a separate marketplace from Azure. Only certain items are ad
 
 ## Prerequisites for BIG-IP VE
 
--  Download **F5 BIG-IP VE - ALL (BYOL, 2 Boot Locations)** into each Azure Stack Hub marketplace. If you don't have them available to you in your portal, contact your cloud operator.
+-  Download **F5 BIG-IP VE - ALL (BYOL, 2 Boot Locations)** into each Azure Stack Hub Marketplace. If you don't have them available to you in your portal, contact your cloud operator.
 
 -  You can find the Azure Resource Manager template in the following GitHub repository: https://github.com/Mikej81/f5-azurestack-gslb.
 

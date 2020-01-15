@@ -28,7 +28,7 @@ You can create a Windows Server 2016 virtual machine by using the Azure CLI. Fol
 
 ## Prerequisites
 
-* Make sure that your Azure Stack Hub operator added the **Windows Server 2016** image to the Azure Stack Hub marketplace.
+* Make sure that your Azure Stack Hub operator added the **Windows Server 2016** image to the Azure Stack Hub Marketplace.
 
 * Azure Stack Hub requires a specific version of Azure CLI to create and manage the resources. If you don't have Azure CLI configured for Azure Stack Hub, follow the steps to [install and configure Azure CLI](azure-stack-version-profiles-azurecli2.md).
 

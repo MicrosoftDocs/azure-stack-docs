@@ -520,7 +520,7 @@ You might see one of the errors below while attempting to register your Azure St
 > Cause: this is typically because we try to obtain hardware details such as UUID, Bios, and CPU from the hosts to attempt activation and weren't able to due to the inability to connect to the physical host.
 
 When trying to access Marketplace management, an error occurs when trying to syndicate products. 
-> Cause: this usually happens when Azure Stack Hub is unable to access the registration resource. One common reason for this is that when an Azure subscription's directory tenant changes, it resets the registration. You can't access the Azure Stack Hub marketplace or report usage if you've changed the subscription's directory tenant. You need to re-register to fix this issue.
+> Cause: this usually happens when Azure Stack Hub is unable to access the registration resource. One common reason for this is that when an Azure subscription's directory tenant changes, it resets the registration. You can't access the Azure Stack Hub Marketplace or report usage if you've changed the subscription's directory tenant. You need to re-register to fix this issue.
 
 Marketplace management still asks you to register and activate your Azure Stack Hub even when you've already registered your stamp using the disconnected process.
 > Cause: this is a known issue for disconnected environments. You can verify your registration status by following [these steps](azure-stack-registration.md#verify-azure-stack-hub-registration). In order to use Marketplace management, you need to use [the offline tool](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario).
