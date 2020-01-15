@@ -21,7 +21,7 @@ ms.lastreviewed: 01/02/2020
 
 # Deploy App Service in a highly available configuration
 
-This article shows you how to use Azure Stack Hub marketplace items to deploy App Service for Azure Stack Hub in a highly available configuration. In addition to available marketplace items, this solution also uses the [appservice-fileshare-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Hub Quickstart template. This template automates the creation of a highly available infrastructure for hosting the App Service resource provider. App Service is then installed on this highly available VM infrastructure. 
+This article shows you how to use Azure Stack Hub Marketplace items to deploy App Service for Azure Stack Hub in a highly available configuration. In addition to available marketplace items, this solution also uses the [appservice-fileshare-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Hub Quickstart template. This template automates the creation of a highly available infrastructure for hosting the App Service resource provider. App Service is then installed on this highly available VM infrastructure. 
 
 ## Deploy the highly available App Service infrastructure VMs
 The [appservice-fileshare-sqlserver-ha](https://github.com/Azure/azurestack-quickstart-templates/tree/master/appservice-fileserver-sqlserver-ha) Azure Stack Hub Quickstart template simplifies the deployment of App Service in a highly available configuration. It should be deployed in the Default Provider Subscription. 
@@ -36,8 +36,8 @@ When used to create a custom resource in Azure Stack Hub, the template creates:
 - Two node file server cluster.
 - Two domain controllers.
 
-### Required Azure Stack Hub marketplace items
-Before using this template, ensure that the following [Azure Stack Hub marketplace items](azure-stack-marketplace-azure-items.md) are available in your Azure Stack Hub instance:
+### Required Azure Stack Hub Marketplace items
+Before using this template, ensure that the following [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) are available in your Azure Stack Hub instance:
 
 - Windows Server 2016 Datacenter Core Image (for AD DS and file server VMs)
 - SQL Server 2016 SP2 on Windows Server 2016 (Enterprise)
@@ -117,10 +117,10 @@ Before you can run the App Service installer, several steps are required as desc
 > Not all steps described in the [Before you get started with App Service article](azure-stack-app-service-before-you-get-started.md) are required because the template deployment configures the infrastructure VMs for you.
 
 - [Download the App Service installer and helper scripts](azure-stack-app-service-before-you-get-started.md#download-the-installer-and-helper-scripts).
-- [Download items from the Azure Stack Hub marketplace](azure-stack-app-service-before-you-get-started.md#download-items-from-the-azure-marketplace).
+- [Download items from the Azure Stack Hub Marketplace](azure-stack-app-service-before-you-get-started.md#download-items-from-the-azure-marketplace).
 - [Generate required certificates](azure-stack-app-service-before-you-get-started.md#get-certificates).
 - Create the ID Application based on the identify provider you've chosen for Azure Stack Hub. An ID Application can be made for either [Azure AD](azure-stack-app-service-before-you-get-started.md#create-an-azure-active-directory-app) or [Active Directory Federation Services](azure-stack-app-service-before-you-get-started.md#create-an-active-directory-federation-services-app) and record the application ID.
-- Ensure that you've added the Windows Server 2016 Datacenter image to the Azure Stack Hub marketplace. This image is required for App Service installation.
+- Ensure that you've added the Windows Server 2016 Datacenter image to the Azure Stack Hub Marketplace. This image is required for App Service installation.
 
 ### Steps for App Service deployment
 Installing the App Service resource provider takes at least an hour. The length of time needed depends on how many role instances you deploy. During the deployment, the installer runs the following tasks:
