@@ -22,8 +22,6 @@ ms.lastreviewed: 01/13/2020
 
 # Deploy Azure App Service in an offline environment in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
-
 > [!IMPORTANT]
 > Apply the 1910 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Hub Development Kit (ASDK) before you deploy Azure App Service 1.8.
 
