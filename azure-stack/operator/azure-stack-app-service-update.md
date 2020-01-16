@@ -20,8 +20,6 @@ ms.lastreviewed: 01/13/2019
 ---
 # Update Azure App Service on Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Hub Development Kit*
-
 > [!IMPORTANT]
 > Apply the 1910 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Hub Development Kit (ASDK) before deploying Azure App Service 1.8.
 
