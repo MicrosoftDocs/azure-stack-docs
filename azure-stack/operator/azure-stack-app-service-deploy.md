@@ -21,8 +21,6 @@ ms.lastreviewed: 01/13/2020
 ---
 # Deploy App Service in Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
-
 This article describes how to deploy App Service in Azure Stack Hub.
 
 > [!IMPORTANT]
