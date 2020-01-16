@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 1/16/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
@@ -30,7 +30,7 @@ The following flow diagram shows the general process to add a scale unit node:
 ![Add scale unit flow](media/azure-stack-add-scale-node/add-node-flow.png)
 <br> *Whether your OEM hardware vendor enacts the physical server rack placement and updates the firmware varies based on your support contract.*
 
-The operation to add a new node can take several hours or days to complete.
+The operation to add a new node can take several hours or days to complete. There is no impact to any running workloads on the system while an additional scale unit is added.
 
 > [!Note]  
 > Don't attempt any of the following operations while an add scale unit node operation is already in progress:
