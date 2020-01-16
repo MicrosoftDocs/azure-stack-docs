@@ -161,7 +161,11 @@
         - name: Apply OEM updates
           href: azure-stack-update-oem.md
       - name: Monitor update status
-        href: azure-stack-update-monitor.md
+        items:
+        - name: Use PowerShell
+          href: azure-stack-update-monitor.md
+        - name: Use privileged endpoint
+          href: azure-stack-monitor-update.md
       - name: Troubleshoot updates
         href: azure-stack-updates-troubleshoot.md
     - name: Monitor health and alerts
