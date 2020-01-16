@@ -26,7 +26,7 @@ ms.reviewer: ppacent
 This article provides an overview of best practices for troubleshooting Azure Stack Hub patch and update issues as well as remediations to common patch and update issues.
 
 
-The Azure Stack Hub patch and update process is designed to allow operators to apply update packages in a consistent, streamlined way. While uncommon, issues can occur during patch and update issues. The following steps are recommended should you encounter an issue during the patch and update process:
+The Azure Stack Hub patch and update process is designed to allow operators to apply update packages in a consistent, streamlined way. While uncommon, issues can occur during patch and update process. The following steps are recommended should you encounter an issue during the patch and update process:
 
 0. **Prerequisites**: Be sure that you have followed the [Update Activity Checklist](release-notes-checklist.md) and have [Configured Automatic Log Collection](azure-stack-configure-automatic-diagnostic-log-collection.md).
 1. Follow the remediation steps in the failure alert created when your update failed.
