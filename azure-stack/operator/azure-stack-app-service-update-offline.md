@@ -20,8 +20,6 @@ ms.reviewer: anwestg
 ---
 # Offline update of Azure App Service on Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
-
 > [!IMPORTANT]
 > Apply the 1910 update or later to your Azure Stack Hub integrated system or deploy the latest Azure Stack hub development kit before deploying Azure App Service 1.8.
 
