@@ -31,8 +31,8 @@ Create a custom generalized VHD.
 **If the VHD is from outside Azure**, follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed) to correctly **Sysprep** your VHD and make it generalized.
 
 **If the VHD is from Azure**, prior to generalizing the VM make sure of the following:
-1) When you provision the VM on Azure, please use powershell and provision it without the -ProvisionVMAgent flag 
-2) Remove all VM extensions using the Remove-AzureRmVMExtension cmdlet from the VM before generalizing the VM in Azure. You can find which VM extensions are installed by going to Windows (C:) > WindowsAzure > Logs > Plugins
+1) When you provision the VM on Azure, use PowerShell and provision it without the `-ProvisionVMAgent` flag 
+2) Remove all VM extensions using the **Remove-AzureRmVMExtension** cmdlet from the VM before generalizing the VM in Azure. You can find which VM extensions are installed by going to Windows (C:) > WindowsAzure > Logs > Plugins.
 
 ```Powershell
 Remove-AzureRmVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "CustomScriptExtension"
