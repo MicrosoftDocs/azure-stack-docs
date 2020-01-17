@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 01/17/2020
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 01/14/2020
+ms.lastreviewed: 01/17/2020
 ---
 
 # Azure Stack Hub updates: release notes
@@ -288,7 +288,7 @@ The 1910 release of Azure Stack Hub must be applied on the 1908 release with the
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.9.78](https://support.microsoft.com/help/4536210)
+- [Azure Stack Hub hotfix 1.1910.17.95](https://support.microsoft.com/help/4537833)
 ::: moniker-end
 
 ::: moniker range="azs-1908"
