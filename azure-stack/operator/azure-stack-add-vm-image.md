@@ -26,13 +26,22 @@ In Azure Stack Hub, you can add your custom virtual machine (VM) image to the ma
 
 ### Windows
 
-Create a custom generalized VHD. If the VHD is from outside Azure, follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed) to correctly **Sysprep** your VHD and make it generalized.
+Create a custom generalized VHD. 
 
-If the VHD is from Azure, follow the instructions in [this document](/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before porting it to Azure Stack Hub.
+**If the VHD is from outside Azure**, follow the steps in [Upload a generalized VHD and use it to create new VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed) to correctly **Sysprep** your VHD and make it generalized.
+
+**If the VHD is from Azure**, prior to generalizing the VM make sure of the following:
+1) **(Applies to releases prior to 1910)** - When you provision the VM on Azure, please use powershell and provision it without the -ProvisionVMAgent flag 
+2) **(Applies to all Azure Stack releases)** - Remove all VM extensions using the Remove-AzureRmVMExtension cmdlet from the VM before generalizing the VM in Azure. You can find which VM extensions are installed by going to Windows (C:) > WindowsAzure > Logs > Plugins
+
+```powershell
+Remove-AzureRmVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "CustomScriptExtension"
+```                       
+Post the above, follow the instructions in [this document](/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before porting it to Azure Stack Hub.
 
 ### Linux
 
-If the VHD is from outside Azure, follow the appropriate instructions to generalize the VHD:
+**If the VHD is from outside Azure**, follow the appropriate instructions to generalize the VHD:
 
 - [CentOS-based Distributions](/azure/virtual-machines/linux/create-upload-centos?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Debian Linux](/azure/virtual-machines/linux/debian-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -40,7 +49,7 @@ If the VHD is from outside Azure, follow the appropriate instructions to general
 - [SLES or openSUSE](/azure/virtual-machines/linux/suse-create-upload-vhd?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Ubuntu Server](/azure/virtual-machines/linux/create-upload-ubuntu?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-If the VHD is from Azure, follow these instructions to generalize and download the VHD:
+**If the VHD is from Azure**, follow these instructions to generalize and download the VHD:
 
 1. Stop the **waagent** service:
 
