@@ -142,7 +142,7 @@ Note the following considerations:
 
 - The **ResourceManagerUrl** in the ASDK is: `https://management.local.azurestack.external/`.
 
-- The **ResourceManagerUrl** in integrated systems is: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`.
+- The **ResourceManagerUrl** in integrated systems is: `https://management.region.<fqdn>/`, where `<fqdn>` is your fully qualified domain name.
 
 To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`.
 

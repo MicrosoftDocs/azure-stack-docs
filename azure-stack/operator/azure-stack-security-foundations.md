@@ -16,7 +16,7 @@ ms.topic: article
 ms.date: 06/10/2019
 ms.author: justinha
 ms.reviewer: fiseraci
-ms.lastreviewed: 12/29/2019
+ms.lastreviewed: 1/16/2020
 
 ---
 # Azure Stack Hub infrastructure security controls
@@ -102,7 +102,7 @@ Network ACLs are enforced in three layers:
 
 ## Regulatory compliance
 
-Azure Stack Hub has gone through a formal assessment by a third party-independent auditing firm. As a result, documentation on how the Azure Stack Hub infrastructure meets the applicable controls from several major compliance standards is available. The documentation isn't a certification of Azure Stack Hub because the standards include several personnel-related and process-related controls. Rather, customers can use this documentation to jump-start their certification process.
+Azure Stack Hub has gone through a formal capability assessment by a third party-independent auditing firm. As a result, documentation on how the Azure Stack Hub infrastructure meets the applicable controls from several major compliance standards is available. The documentation isn't a certification of Azure Stack Hub because the standards include several personnel-related and process-related controls. Rather, customers can use this documentation to jump-start their certification process.
 
 The assessments include the following standards:
 
