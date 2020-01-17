@@ -39,7 +39,7 @@ This section contains OEM contact information and links to OEM Azure Stack Hub r
 
 | Hardware Partner | Region | URL |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Cisco | All | [Cisco Integrated System for Microsoft Azure Stack Hub Operations Guide](https://www.cisco.com/c/en/us/td/docs/unified_computing/ucs/azure-stack/b_Azure_Stack_Operations_Guide_4-0/b_Azure_Stack_Operations_Guide_4-0_chapter_01000.html)<br><br>[UCS C-Series Rack-Mount UCS-Managed Server Software](https://software.cisco.com/download/home/283862063/type/286320368/release/2.0(0)) |
+| Cisco | All | [Cisco Integrated System for Microsoft Azure Stack Hub Operations Guide]()<br><br>[UCS C-Series Rack-Mount UCS-Managed Server Software](https://aka.ms/aa708e2) |
 | Dell EMC | All | [Cloud for Microsoft Azure Stack Hub 14G (account and login required)](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Microsoft Azure Stack Hub 13G (account and login required)](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
 | Fujitsu | JAPAN | [Fujitsu managed service support desk (account and login required)](https://eservice.fujitsu.com/supportdesk-web/) |
 |  | EMEA & US | [Fujitsu support IT products and systems](https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del) |
@@ -50,6 +50,9 @@ This section contains OEM contact information and links to OEM Azure Stack Hub r
 ## Apply OEM updates
 
 Apply the OEM packages with the following steps:
+
+> [!IMPORTANT]
+> Before applying updates in Azure Stack Hub, ensure you have completed **ALL** steps in the [Pre-Update Checklist](release-notes-checklist.md) and have scheduled an appropriate maintenance window for the update type that you are applying.
 
 1. You will need to contact your OEM to:
       - Determine the current version of your OEM package.  
