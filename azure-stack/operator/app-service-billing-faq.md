@@ -35,7 +35,7 @@ Infrastructure roles aren't billed because they're required for the core operati
 - Publishers
 - Front ends
 
-Worker tiers consist of two main types: shared and dedicated. Worker usage is billed to the cloud operator according to the following criteria.
+Worker tiers consist of two main types: shared and dedicated. Worker usage is billed to the cloud operator's default provider subscription according to the following criteria.
 
 ## Shared workers
 

@@ -153,8 +153,8 @@ Use these steps to prepare and to validate the Azure Stack Hub PKI certificates 
     # DBAdapter
     Invoke-AzsCertificateValidation -CertificateType DBAdapter -CertificatePath C:\Certificates\DBAdapter -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
 
-    # EventHub
-    Invoke-AzsCertificateValidation -CertificateType EventHubs -CertificatePath C:\Certificates\EventHub -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
+    # EventHubs
+    Invoke-AzsCertificateValidation -CertificateType EventHubs -CertificatePath C:\Certificates\EventHubs -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
 
     # IoTHub
     Invoke-AzsCertificateValidation -CertificateType IoTHub -CertificatePath C:\Certificates\IoTHub -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com
@@ -196,9 +196,9 @@ Each folder should contain a single PFX file for the certificate type, if a cert
                 |   \---Public Portal
                 |           portal.pfx
                 |
-                +---EventHub            # Invoke-AzsCertificateValidation `
-                |       eventhub.pfx    #   -CertificateType EventHub `
-                |                       #   -CertificatePath C:\Certificates\EventHub
+                +---EventHubs           # Invoke-AzsCertificateValidation `
+                |       eventhubs.pfx   #   -CertificateType EventHubs `
+                |                       #   -CertificatePath C:\Certificates\EventHubs
                 |
                 \---IoTHub              # Invoke-AzsCertificateValidation `
                         iothub.pfx      #   -CertificateType IoTHub `
@@ -226,7 +226,6 @@ Each folder should contain a single PFX file for the certificate type, if a cert
     Details:
     The certificate records '*.east.azurestack.contoso.com' do not contain a record that is valid for '*.blob.east.azurestack.contoso.com'. Please refer to the documentation for how to create the required certificate file.
     The Other Certificates check was skipped because Cert Chain and/or DNS Names failed. Follow the guidance to remediate those issues and recheck. 
-    Detailed log can be found C:\AzsReadinessChecker\CertificateValidation\CertChecker.log
 
     Log location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessChecker.log
     Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json

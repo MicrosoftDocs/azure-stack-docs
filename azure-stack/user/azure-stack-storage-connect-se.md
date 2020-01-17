@@ -1,6 +1,6 @@
 ---
 title: Connect Storage Explorer to an Azure Stack Hub subscription or a storage account | Microsoft Docs
-description: Learn how to connect storage explorer to an  Azure Stack Hub subscription
+description: Learn how to connect Storage Explorer to an  Azure Stack Hub subscription
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -17,7 +17,7 @@ ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019
 
 ---
-# Connect storage explorer to an Azure Stack Hub subscription or a storage account
+# Connect Storage Explorer to an Azure Stack Hub subscription or a storage account
 
 In this article, you'll learn how to connect to your Azure Stack Hub subscriptions and storage accounts using [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer). Storage Explorer is a standalone app that enables you to easily work with Azure Stack Hub storage data on Windows, macOS, and Linux.
 
@@ -61,7 +61,7 @@ Export and then import Azure Stack Hub certificate for disconnected integrated s
 
     After importing the certificate, you're prompted to restart Storage Explorer.
 
-    ![Import the certificate into storage explorer](./media/azure-stack-storage-connect-se/import-azure-stack-cert-storage-explorer.png)
+    ![Import the certificate into Storage Explorer](./media/azure-stack-storage-connect-se/import-azure-stack-cert-storage-explorer.png)
 
 8. After Storage Explorer restarts, select the **Edit** menu, and check to see if **Target Azure Stack Hub APIs** is selected. If it isn't, select **Target Azure Stack Hub**, and then restart Storage Explorer for the change to take effect. This configuration is required for compatibility with your Azure Stack Hub environment.
 
@@ -155,6 +155,6 @@ You can also connect to an Azure Stack Hub storage account using storage account
 
 ## Next steps
 
-* [Get started with storage explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
+* [Get started with Storage Explorer](/azure/vs-azure-tools-storage-manage-with-storage-explorer)
 * [Azure Stack Hub storage: differences and considerations](azure-stack-acs-differences.md)
 * To learn more about Azure storage, see [Introduction to Microsoft Azure storage](/azure/storage/common/storage-introduction)

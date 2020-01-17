@@ -15,7 +15,7 @@ ms.lastreviewed: 10/03/2019
 # Intent: As an Azure Stack Hub user, I want create a VPN gateway and connection between Azure Stack Hub and my network so that I can share resources between the two networks.
 ---
 
-# Setup VPN gateway for Azure Stack Hub using FortiGate NVA
+# Set up VPN gateway for Azure Stack Hub using FortiGate NVA
 
 This article describes how to create a VPN connection to your Azure Stack Hub. A VPN gateway is a type of virtual network gateway that sends encrypted traffic between your virtual network in Azure Stack Hub and a remote VPN gateway. The procedure below deploys one VNET with a FortiGate NVA, a network virtual appliance, within a resource group. It also provides steps to set up an IPSec VPN on the FortiGate NVA.
 
