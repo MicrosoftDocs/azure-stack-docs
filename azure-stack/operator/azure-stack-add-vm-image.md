@@ -34,7 +34,7 @@ Create a custom generalized VHD.
 1) When you provision the VM on Azure, please use powershell and provision it without the -ProvisionVMAgent flag 
 2) Remove all VM extensions using the Remove-AzureRmVMExtension cmdlet from the VM before generalizing the VM in Azure. You can find which VM extensions are installed by going to Windows (C:) > WindowsAzure > Logs > Plugins
 
-```powershell
+```Powershell
 Remove-AzureRmVMExtension -ResourceGroupName winvmrg1 -VMName windowsvm -Name "CustomScriptExtension"
 ```                       
 Post the above, follow the instructions in [this document](/azure/virtual-machines/windows/download-vhd) to correctly generalize and download the VHD before porting it to Azure Stack Hub.
