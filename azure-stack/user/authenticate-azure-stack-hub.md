@@ -15,7 +15,7 @@ ms.lastreviewed: 12/13/2019
 # Intent: I am a developer and I would like to programmatically authenticate to Azure Stack Hub.
 ---
 
-# How to get authentication information for Azure Stack Hub
+# Get authentication information for Azure Stack Hub
 
 To authenticate to Azure Stack Hub requires that you provide subscription ID, tenant ID, and Location, and Azure Stack Hub Resource Manager endpoint. You can get these values from the [Azure Stack Hub Resource Manager endpoint](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-ruby?view=azs-1910#the-azure-stack-hub-resource-manager-endpoint) for Azure Stack Hub. Or you can get them using the steps in this article.
 

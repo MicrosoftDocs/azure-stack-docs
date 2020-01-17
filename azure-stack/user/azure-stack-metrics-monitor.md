@@ -18,7 +18,7 @@ ms.lastreviewed: 11/11/2019
 
 ---
 
-# How to consume monitoring data from Azure Stack Hub
+# Consume monitoring data from Azure Stack Hub
 
 Monitoring data is found in a single location with the Azure Monitor pipeline, just like Azure Monitor in global Azure. But not all of the monitoring data found in global Azure is available in Azure Stack Hub. In this article, we provide a summary of the various ways to consume monitoring data in Azure Stack Hub.
  

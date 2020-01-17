@@ -15,7 +15,7 @@ ms.lastreviewed: 10/28/2019
 # Intent: As an Azure Stack Hub Operator, I want < what? > so that < why? >
 ---
 
-# How to connect to iSCSI storage with Azure Stack Hub
+# Connect to iSCSI storage with Azure Stack Hub
 
 You can use the template in this article to connect an Azure Stack Hub virtual machine (VM) to an on-premises iSCSI target set up the VM to use storage hosted outside of our Azure Stack Hub and elsewhere in your datacenter. This article looks at using a Windows machine as the iSCSI target.
 
