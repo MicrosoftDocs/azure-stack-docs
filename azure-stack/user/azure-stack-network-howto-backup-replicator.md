@@ -15,7 +15,7 @@ ms.lastreviewed: 11/07/2019
 # Intent: As an Azure Stack Hub Operator, I want < what? > so that < why? >
 ---
 
-# How to replicate resources using the Azure Stack Hub subscription replicator
+# Replicate resources using the Azure Stack Hub subscription replicator
 
 You can use the Azure Stack Hub subscription replicator PowerShell script to copy the resources between Azure Stack Hub subscriptions, across Azure Stack Hub stamps, or between Azure Stack Hub and Azure. The replicator script reads and rebuilds the Azure Resource Manager resources from different Azure and Azure Stack Hub subscriptions. This article looks at how the script works, how you can use the script, and provides a reference for script operations.
 

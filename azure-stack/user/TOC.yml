@@ -21,14 +21,14 @@
     href: azure-stack-quick-create-vm-linux-cli.md
 - name: Tutorials
   items:
+    - name: Subscribe to an offer
+      href: azure-stack-subscribe-services.md
     - name: Create a VM from a template
       href: azure-stack-create-vm-template.md
 - name: How-to guides
   items:
   - name: Get started building solutions for the hybrid cloud
     items:
-      - name: Subscribe to an offer
-        href: azure-stack-subscribe-services.md
       - name: Enable a Cloud Solution Provider
         href: azure-stack-csp-enable-billing-usage-tracking.md
       - name: Use the Azure Stack Hub Portal
