@@ -118,7 +118,7 @@ You can get the metadata information from the Resource Manager endpoint. The end
 
 > [!Note]  
 > The **ResourceManagerUrl** in the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external`
-The **ResourceManagerUrl** in integrated systems is: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com`
+The **ResourceManagerUrl** in integrated systems is: `https://management.region.<fqdn>/`, where `<fqdn>` is your fully qualified domain name.
 To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
 
 Sample JSON file:
