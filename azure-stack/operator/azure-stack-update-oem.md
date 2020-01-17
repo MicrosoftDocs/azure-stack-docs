@@ -39,7 +39,7 @@ This section contains OEM contact information and links to OEM Azure Stack Hub r
 
 | Hardware Partner | Region | URL |
 |------------------|--------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Cisco | All | [Cisco Integrated System for Microsoft Azure Stack Hub Operations Guide]()<br><br>[UCS C-Series Rack-Mount UCS-Managed Server Software](https://aka.ms/aa708e2) |
+| Cisco | All | [Cisco Integrated System for Microsoft Azure Stack Hub Operations Guide](https://aka.ms/aa708e2)<br><br>[UCS C-Series Rack-Mount UCS-Managed Server Software](https://aka.ms/aa700rq) |
 | Dell EMC | All | [Cloud for Microsoft Azure Stack Hub 14G (account and login required)](https://support.emc.com/downloads/44615_Cloud-for-Microsoft-Azure-Stack-14G)<br><br>[Cloud for Microsoft Azure Stack Hub 13G (account and login required)](https://support.emc.com/downloads/42238_Cloud-for-Microsoft-Azure-Stack-13G) |
 | Fujitsu | JAPAN | [Fujitsu managed service support desk (account and login required)](https://eservice.fujitsu.com/supportdesk-web/) |
 |  | EMEA & US | [Fujitsu support IT products and systems](https://support.ts.fujitsu.com/IndexContact.asp?lng=COM&ln=no&LC=del) |
@@ -57,7 +57,7 @@ Apply the OEM packages with the following steps:
 1. You will need to contact your OEM to:
       - Determine the current version of your OEM package.  
       - Find the best method to download your OEM package.  
-2. Before applying an OEM package update, you should always apply the latest Azure Stack Hub hotfix available on your system's current Azure Stack Hub version. For more information about hotfixes see [Azure Stack Hub Hotfixes](https://docs.microsoft.com/azure-stack/operator/azure-stack-servicing-policy).
+2. Before applying an OEM package update, you should always apply the latest Azure Stack Hub hotfix available on your system's current Azure Stack Hub version. For more information about hotfixes see [Azure Stack Hub hotfixes](azure-stack-servicing-policy.md).
 3. Prepare your OEM package with the steps outlined in [Download update packages for integrated systems](azure-stack-servicing-policy.md).
 4. Apply the updates with the steps outlined in [Apply updates in Azure Stack Hub](azure-stack-apply-updates.md).
 
