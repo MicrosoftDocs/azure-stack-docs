@@ -70,9 +70,13 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- What's new, also net new experiences and features. -->
 
+A new version (1.8.1) of Azure Stack Hub admin PowerShell modules based on AzureRM is available
+
 ### Improvements
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
+
+Improvements to the Azure Stack Hub readniness checker tool to validate AD Graph integration
 
 ### Changes
 
