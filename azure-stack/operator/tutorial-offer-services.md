@@ -1,5 +1,6 @@
 ---
-title: Create a service offering to users in Azure Stack Hub
+title: Create a service offering for users
+titleSuffix: Azure Stack Hub
 description: Learn how to create a service offering in Azure Stack Hub using offers, plans, and services. 
 author: BryanLa
 ms.author: bryanla
@@ -10,7 +11,7 @@ ms.reviewer: shriramnat
 ms.lastreviewed: 10/16/2019
 ---
 
-# Create a service offering to users in Azure Stack Hub
+# Create a service offering for users in Azure Stack Hub
 
 This tutorial shows an operator how to create an offer. An offer makes services available to users on a subscription basis. Once subscribed to an offer, a user is entitled to create and deploy resources within the services specified by the offer.
 
