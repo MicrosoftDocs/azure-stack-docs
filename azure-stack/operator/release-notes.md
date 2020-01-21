@@ -28,7 +28,7 @@ To access release notes for a different version, use the version selector dropdo
 
 ::: moniker range=">=azs-1906"
 > [!IMPORTANT]  
-> This update package is only for Azure Stack Hub integrated systems. Don't apply this update package to the Azure Stack Development Kit.
+> This update package is only for Azure Stack Hub integrated systems. Don't apply this update package to the Azure Stack Development Kit (ASDK).
 ::: moniker-end
 ::: moniker range="<azs-1906"
 > [!IMPORTANT]  
