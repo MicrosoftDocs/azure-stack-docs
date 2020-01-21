@@ -20,7 +20,7 @@ Azure Stack brings the agility of cloud computing to your on-premises environmen
 
 - Reuse code and run cloud-native apps consistently across Azure and your on-premises environments.
 - Run traditional virtualized workloads with optional connections to Azure services.
-- Transfer data to the cloud, or keep it in your sovereign data center to maintain compliance.
+- Transfer data to the cloud, or keep it in your sovereign datacenter to maintain compliance.
 - Run hardware-accelerated machine-learning, containerized, or virtualized workloads, all at the intelligent edge.
 
 Applications that span clouds are also referred to as *hybrid applications*. You can build hybrid cloud apps in Azure and deploy them to your connected or disconnected datacenter located anywhere.

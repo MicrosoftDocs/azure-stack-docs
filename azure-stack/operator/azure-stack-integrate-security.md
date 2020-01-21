@@ -1,32 +1,32 @@
 ---
-title: Integrate Azure Stack with monitoring solutions using syslog forwarding | Microsoft Docs
-description: Learn how to integrate Azure Stack with monitoring solutions using syslog forwarding.
+title: Integrate Azure Stack Hub with monitoring solutions using syslog forwarding | Microsoft Docs
+description: Learn how to integrate Azure Stack Hub with monitoring solutions using syslog forwarding.
 services: azure-stack
-author: PatAltimore
+author: justinha
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 04/23/2019
-ms.author: patricka
+ms.date: 01/10/2020
+ms.author: justinha
 ms.reviewer: fiseraci
-ms.lastreviewed: 04/23/2019
+ms.lastreviewed: 01/10/2020
 keywords:
 ---
 
-# Integrate Azure Stack with monitoring solutions using syslog forwarding
+# Integrate Azure Stack Hub with monitoring solutions using syslog forwarding
 
-This article shows you how to use syslog to integrate Azure Stack infrastructure with external security solution(s) already deployed in your datacenter. For example, a security information event management (SIEM) system. The syslog channel exposes audits, alerts, and security logs from all the components of the Azure Stack infrastructure. Use syslog forwarding to integrate with security monitoring solutions and to retrieve all audits, alerts, and security logs to store them for retention.
+This article shows you how to use syslog to integrate Azure Stack Hub infrastructure with external security solution(s) already deployed in your datacenter. For example, a security information event management (SIEM) system. The syslog channel exposes audits, alerts, and security logs from all the components of the Azure Stack Hub infrastructure. Use syslog forwarding to integrate with security monitoring solutions and to retrieve all audits, alerts, and security logs to store them for retention.
 
-Starting with the 1809 update, Azure Stack has an integrated syslog client that, once configured, emits syslog messages with the payload in Common Event Format (CEF).
+Starting with the 1809 update, Azure Stack Hub has an integrated syslog client that, once configured, emits syslog messages with the payload in Common Event Format (CEF).
 
-The following diagram describes the integration of Azure Stack with an external SIEM. There are two integration patterns that need to be considered: the first one (the one in blue) is the Azure Stack infrastructure that encompasses the infrastructure virtual machines and the Hyper-V nodes. All the audits, security logs, and alerts from those components are centrally collected and exposed via syslog with CEF payload. This integration pattern is described in this document page.
+The following diagram describes the integration of Azure Stack Hub with an external SIEM. There are two integration patterns that need to be considered: the first one (the one in blue) is the Azure Stack Hub infrastructure that encompasses the infrastructure virtual machines and the Hyper-V nodes. All the audits, security logs, and alerts from those components are centrally collected and exposed via syslog with CEF payload. This integration pattern is described in this document page.
 The second integration pattern is the one depicted in orange and covers the baseboard management controllers (BMCs), the hardware lifecycle host (HLH), the virtual machines and virtual appliances that run the hardware partner monitoring and management software, and the top of rack (TOR) switches. Since these components are hardware-partner specific, contact your hardware partner for documentation on how to integrate them with an external SIEM.
 
 ![Syslog forwarding diagram](media/azure-stack-integrate-security/syslog-forwarding.png)
 
 ## Configuring syslog forwarding
 
-The syslog client in Azure Stack supports the following configurations:
+The syslog client in Azure Stack Hub supports the following configurations:
 
 1. **Syslog over TCP, with mutual authentication (client and server) and TLS 1.2 encryption:** In this configuration, both the syslog server and the syslog client can verify the identity of each other via certificates. The messages are sent over a TLS 1.2 encrypted channel.
 
@@ -46,7 +46,7 @@ Configuring syslog forwarding requires access to the privileged endpoint (PEP). 
 ```powershell
 ### cmdlet to pass the syslog server information to the client and to configure the transport protocol, the encryption and the authentication between the client and the server
 
-Set-SyslogServer [-ServerName <String>] [-ServerPort <String>] [-NoEncryption] [-SkipCertificateCheck] [-SkipCNCheck] [-UseUDP] [-Remove]
+Set-SyslogServer [-ServerName <String>] [-ServerPort <UInt16>] [-NoEncryption] [-SkipCertificateCheck] [-SkipCNCheck] [-UseUDP] [-Remove]
 
 ### cmdlet to configure the certificate for the syslog client to authenticate with the server
 
@@ -59,7 +59,7 @@ Parameters for *Set-SyslogServer* cmdlet:
 | Parameter | Description | Type | Required |
 |---------|---------|---------|---------|
 |*ServerName* | FQDN or IP address of the syslog server. | String | yes|
-|*ServerPort* | Port number the syslog server is listening on. | String | yes|
+|*ServerPort* | Port number the syslog server is listening on. | UInt16 | yes|
 |*NoEncryption*| Force the client to send syslog messages in clear text. | flag | no|
 |*SkipCertificateCheck*| Skip validation of the certificate provided by the syslog server during initial TLS handshake. | flag | no|
 |*SkipCNCheck*| Skip validation of the Common Name value of the certificate provided by the syslog server during initial TLS handshake. | flag | no|
@@ -70,13 +70,13 @@ Parameters for *Set-SyslogClient* cmdlet:
 
 | Parameter | Description | Type |
 |---------|---------| ---------|
-| *pfxBinary* | pfx file containing the certificate to be used by the client as identity to authenticate against the syslog server.  | Byte[] |
+| *pfxBinary* | The contents of the pfx file, piped to a Byte[], containing the certificate to be used by the client as identity to authenticate against the syslog server.  | Byte[] |
 | *CertPassword* |  Password to import the private key that's associated with the pfx file. | SecureString |
 |*RemoveCertificate* | Remove certificate from the client. | flag|
 | *OutputSeverity* | Level of output logging. Values are **Default** or **Verbose**. Default includes severity levels: warning, critical, or error. Verbose includes all severity levels: verbose, informational, warning, critical, or error.  | String |
 ### Configuring syslog forwarding with TCP, mutual authentication, and TLS 1.2 encryption
 
-In this configuration, the syslog client in Azure Stack forwards the messages to the syslog server over TCP, with TLS 1.2 encryption. During the initial handshake, the client verifies that the server provides a valid, trusted certificate. The client also provides a certificate to the server as proof of its identity. This configuration is the most secure as it provides a full validation of the identity of both the client and the server and it sends messages over an encrypted channel.
+In this configuration, the syslog client in Azure Stack Hub forwards the messages to the syslog server over TCP, with TLS 1.2 encryption. During the initial handshake, the client verifies that the server provides a valid, trusted certificate. The client also provides a certificate to the server as proof of its identity. This configuration is the most secure as it provides a full validation of the identity of both the client and the server and it sends messages over an encrypted channel.
 
 > [!IMPORTANT]
 > Microsoft strongly recommends to use this configuration for production environments. 
@@ -91,7 +91,7 @@ Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -ServerPort <
 Set-SyslogClient -pfxBinary <Byte[] of pfx file> -CertPassword <SecureString, password for accessing the pfx file>
 ```
 
-The client certificate must have the same root as the one provided during the deployment of Azure Stack. It also must contain a private key.
+The client certificate must have the same root as the one provided during the deployment of Azure Stack Hub. It also must contain a private key.
 
 ```powershell
 ##Example on how to set your syslog client with the certificate for mutual authentication.
@@ -126,14 +126,14 @@ Invoke-Command @params -ScriptBlock {
 
 ### Configuring syslog forwarding with TCP, Server authentication, and TLS 1.2 encryption
 
-In this configuration, the syslog client in Azure Stack forwards the messages to the syslog server over TCP, with TLS 1.2 encryption. During the initial handshake, the client also verifies that the server provides a valid, trusted certificate. This configuration prevents the client from sending messages to untrusted destinations.
+In this configuration, the syslog client in Azure Stack Hub forwards the messages to the syslog server over TCP, with TLS 1.2 encryption. During the initial handshake, the client also verifies that the server provides a valid, trusted certificate. This configuration prevents the client from sending messages to untrusted destinations.
 TCP using authentication and encryption is the default configuration and represents the minimum level of security that Microsoft recommends for a production environment.
 
 ```powershell
 Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -ServerPort <Port number on which the syslog server is listening on>
 ```
 
-In case you want to test the integration of your syslog server with the Azure Stack client by using a self-signed or untrusted certificate, you can use these flags to skip the server validation done by the client during the initial handshake.
+In case you want to test the integration of your syslog server with the Azure Stack Hub client by using a self-signed or untrusted certificate, you can use these flags to skip the server validation done by the client during the initial handshake.
 
 ```powershell
  #Skip validation of the Common Name value in the server certificate. Use this flag if you provide an IP address for your syslog server
@@ -150,7 +150,7 @@ In case you want to test the integration of your syslog server with the Azure St
 
 ### Configuring syslog forwarding with TCP and no encryption
 
-In this configuration, the syslog client in Azure Stack forwards the messages to the syslog server over TCP, with no encryption. The client doesn't verify the identity of the server nor does it provide its own identity to the server for verification.
+In this configuration, the syslog client in Azure Stack Hub forwards the messages to the syslog server over TCP, with no encryption. The client doesn't verify the identity of the server nor does it provide its own identity to the server for verification.
 
 ```powershell
 Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -ServerPort <Port number on which the syslog server is listening on> -NoEncryption
@@ -162,7 +162,7 @@ Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -ServerPort <
 
 ### Configuring syslog forwarding with UDP and no encryption
 
-In this configuration, the syslog client in Azure Stack forwards the messages to the syslog server over UDP, with no encryption. The client doesn't verify the identity of the server nor does it provide its own identity to the server for verification.
+In this configuration, the syslog client in Azure Stack Hub forwards the messages to the syslog server over UDP, with no encryption. The client doesn't verify the identity of the server nor does it provide its own identity to the server for verification.
 
 ```powershell
 Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -ServerPort <Port number on which the syslog server is listening on> -UseUDP
@@ -208,7 +208,7 @@ Get-SyslogClient
 
 ## Syslog message schema
 
-The syslog forwarding of the Azure Stack infrastructure sends messages formatted in Common Event Format (CEF).
+The syslog forwarding of the Azure Stack Hub infrastructure sends messages formatted in Common Event Format (CEF).
 Each syslog message is structured based on this schema:
 
 ```Syslog
@@ -222,7 +222,7 @@ The CEF payload is based on the structure below, but the mapping for each field 
 CEF: <Version>|<Device Vendor>|<Device Product>|<Device Version>|<Signature ID>|<Name>|<Severity>|<Extensions>
 * Version: 0.0
 * Device Vendor: Microsoft
-* Device Product: Microsoft Azure Stack
+* Device Product: Microsoft Azure Stack Hub
 * Device Version: 1.0
 ```
 
@@ -314,7 +314,7 @@ Severity table for Windows events:
 |2|Information|Value: 4. Indicates logs for an informational message|
 |0|Verbose|Value: 5. Indicates logs at all levels|
 
-Custom extension table for Windows events in Azure Stack:
+Custom extension table for Windows events in Azure Stack Hub:
 
 | Custom extension name | Windows event example | 
 |-----------------------|---------|
@@ -345,7 +345,7 @@ Custom extension table for Windows events in Azure Stack:
 ### CEF mapping for alerts created
 
 ```
-* Signature ID: Microsoft Azure Stack Alert Creation : FaultTypeId
+* Signature ID: Microsoft Azure Stack Hub Alert Creation : FaultTypeId
 * Name: FaultTypeId : AlertId
 * Severity: Alert Severity (for details, see alerts severity table below)
 * Extension: Custom Extension Name (for details, see the Custom Extension table below)
@@ -359,7 +359,7 @@ Alerts severity table:
 |10|Critical|
 |5|Warning|
 
-Custom Extension table for Alerts created in Azure Stack:
+Custom Extension table for Alerts created in Azure Stack Hub:
 
 | Custom extension name | Example | 
 |-----------------------|---------|
@@ -368,14 +368,14 @@ Custom Extension table for Alerts created in Azure Stack:
 ### CEF mapping for alerts closed
 
 ```
-* Signature ID: Microsoft Azure Stack Alert Creation : FaultTypeId
+* Signature ID: Microsoft Azure Stack Hub Alert Creation : FaultTypeId
 * Name: FaultTypeId : AlertId
 * Severity: Information
 ```
 
 The example below shows a syslog message with CEF payload:
 ```
-2018:05:17:-23:59:28 -07:00 TestHost CEF:0.0|Microsoft|Microsoft Azure Stack|1.0|3|TITLE: User Account Created -- DESCRIPTION: A user account \<TestUser\> was created for \<TestDomain\>. It's a potential security risk. -- REMEDIATION: Please contact Support. Customer Assistance is required to resolve this issue. Do not try to resolve this issue without their assistance. Before you open a support request, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles|10
+2018:05:17:-23:59:28 -07:00 TestHost CEF:0.0|Microsoft|Microsoft Azure Stack Hub|1.0|3|TITLE: User Account Created -- DESCRIPTION: A user account \<TestUser\> was created for \<TestDomain\>. It's a potential security risk. -- REMEDIATION: Please contact Support. Customer Assistance is required to resolve this issue. Do not try to resolve this issue without their assistance. Before you open a support request, start the log file collection process using the guidance from https://aka.ms/azurestacklogfiles|10
 ```
 
 ## Next steps

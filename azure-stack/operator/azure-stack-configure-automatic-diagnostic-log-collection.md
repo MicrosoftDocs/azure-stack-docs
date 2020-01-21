@@ -1,6 +1,6 @@
 ---
-title: Configure automatic Azure Stack log collection | Microsoft Docs
-description: How to configure automatic log collection in Azure Stack Help + Support.
+title: Configure automatic Azure Stack Hub log collection | Microsoft Docs
+description: How to configure automatic log collection in Azure Stack Hub Help + Support.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -19,9 +19,7 @@ ms.reviewer: shisab
 ms.lastreviewed: 10/08/2019
 
 ---
-# Configure automatic Azure Stack diagnostic log collection
-
-*Applies to: Azure Stack integrated systems*
+# Configure automatic Azure Stack Hub diagnostic log collection
 
 We recommend configuring the automatic diagnostic log collection feature to streamline your log collection and customer support experience. 
 If system health conditions need to be investigated, the logs can be uploaded automatically for analysis by Microsoft Customer Support Services (CSS). 
@@ -29,7 +27,7 @@ If system health conditions need to be investigated, the logs can be uploaded au
 ## Create an Azure blob container SAS URL 
 
 Before you can configure automatic log collection, you'll need to get a shared access signature (SAS) for a blob container. A SAS lets you grant access to resources in your storage account without sharing your account keys. 
-You can save Azure Stack log files to a blob container in Azure, and then provide the SAS URL where CSS can collect the logs. 
+You can save Azure Stack Hub log files to a blob container in Azure, and then provide the SAS URL where CSS can collect the logs. 
 
 ### Prerequisites
 
@@ -37,7 +35,7 @@ You can use a new or existing blob container in Azure.
 To create a blob container in Azure, you need at least the [storage blob contributor role](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor) or the [specific permission](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). 
 Global administrators also have the necessary permission. 
 
-For best practices about choosing parameters for the automatic log collection storage account, see [Best practices for automatic Azure Stack log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md). For more information about types of storage accounts, see [Azure storage account overview](https://docs.microsoft.com/azure/storage/common/storage-account-overview)
+For best practices about choosing parameters for the automatic log collection storage account, see [Best practices for automatic Azure Stack Hub log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md). For more information about types of storage accounts, see [Azure storage account overview](https://docs.microsoft.com/azure/storage/common/storage-account-overview)
 
 ### Create a blob storage account
  
@@ -87,7 +85,7 @@ For more information about SAS URLs, see [Using shared access signatures (SAS)](
 
 Follow these steps to add the SAS URL to the log collection UI: 
 
-1. Sign in to the Azure Stack administrator portal.
+1. Sign in to the Azure Stack Hub administrator portal.
 1. Open **Help and support Overview**.
 1. Click **Automatic collection settings**.
 
@@ -103,7 +101,7 @@ Follow these steps to add the SAS URL to the log collection UI:
 
 ## View log collection
 
-The history of logs collected from Azure Stack appears on the **Log collection** page in Help and Support, with the following dates and times:
+The history of logs collected from Azure Stack Hub appears on the **Log collection** page in Help and Support, with the following dates and times:
 
 - **Collection time**: When the log collection operation began 
 - **From Date**: Start of the time period for which you want to collect
@@ -152,11 +150,11 @@ For example, **Update failed** is an alert that triggers automatic diagnostic lo
 
 ## See also
 
-[Azure Stack log and customer data handling](https://docs.microsoft.com/azure-stack/operator/azure-stack-data-collection)
+[Azure Stack Hub log and customer data handling](https://docs.microsoft.com/azure-stack/operator/azure-stack-data-collection)
 
 [Using shared access signatures (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
 
-[Best practices for automatic Azure Stack log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md)
+[Best practices for automatic Azure Stack Hub log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md)
 
 
 

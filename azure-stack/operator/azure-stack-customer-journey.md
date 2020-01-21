@@ -1,6 +1,6 @@
 ---
-title: Azure Stack datacenter integration walkthrough | Microsoft Docs
-description: Learn what to expect for a successful on-site deployment of Azure Stack in your datacenter, from planning to post-deployment.
+title: Azure Stack Hub datacenter integration walkthrough | Microsoft Docs
+description: Learn what to expect for a successful on-site deployment of Azure Stack Hub in your datacenter, from planning to post-deployment.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -19,9 +19,9 @@ ms.reviewer: asganesh
 ms.lastreviewed: 11/07/2019
 ---
  
-# Azure Stack datacenter integration walkthrough
+# Azure Stack Hub datacenter integration walkthrough
 
-This article describes the end-to-end process for Azure Stack datacenter integration, from purchasing to post-deployment support. The integration is a collaborative project between the customer, a solution provider, and Microsoft. Click the following tabs to see the specific steps for each member of the project, and see the next sections for a summary of different phases for the project timeline. 
+This article describes the end-to-end process for Azure Stack Hub datacenter integration, from purchasing to post-deployment support. The integration is a collaborative project between the customer, a solution provider, and Microsoft. Click the following tabs to see the specific steps for each member of the project, and see the next sections for a summary of different phases for the project timeline. 
 
 # [Customer](#tab/customer)
 
@@ -50,7 +50,7 @@ This article describes the end-to-end process for Azure Stack datacenter integra
 1. Provide onsite engineer
 1. Rack and stack
 1. Deploy Hardware lifecycle host (HLH) 
-1. Deploy Azure Stack
+1. Deploy Azure Stack Hub
 1. Hand off to customer
 
 # [Microsoft](#tab/micro)
@@ -64,20 +64,20 @@ This article describes the end-to-end process for Azure Stack datacenter integra
 ---
 
 ## Planning
-Microsoft or an Azure Stack solution partner will help evaluate your goals. They'll help you decide questions like:
+Microsoft or an Azure Stack Hub solution partner will help evaluate your goals. They'll help you decide questions like:
 
--   Is Azure Stack the right solution for your organization?
+-   Is Azure Stack Hub the right solution for your organization?
 -   What type of billing and licensing model will work for your organization?
 -   What size solution will you need?
 -   What are the power and cooling requirements?
 
-Use the [Azure Stack Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) to investigate and analyze the best hardware capacity and configuration for your needs. 
+Use the [Azure Stack Hub Capacity Planner](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) to investigate and analyze the best hardware capacity and configuration for your needs. 
 
 ## Ordering
-Your organization commits to purchasing Azure Stack, signs contracts and purchase orders, and provides the integration requirements data to the solution provider.
+Your organization commits to purchasing Azure Stack Hub, signs contracts and purchase orders, and provides the integration requirements data to the solution provider.
 
 ## Pre-deployment
-You decide how to integrate Azure Stack into your datacenter. Microsoft collaborated with solution providers to publish a [deployment worksheet](azure-stack-deployment-worksheet.md) to help you gather the necessary information.
+You decide how to integrate Azure Stack Hub into your datacenter. Microsoft collaborated with solution providers to publish a [deployment worksheet](azure-stack-deployment-worksheet.md) to help you gather the necessary information.
 The [general datacenter integration considerations](azure-stack-datacenter-integration.md) article provides information that helps you complete the template, known as the Deployment Worksheet.
 
 > [!IMPORTANT]
@@ -85,23 +85,23 @@ The [general datacenter integration considerations](azure-stack-datacenter-integ
 
 You'll choose the following items:
 
-- **Azure Stack connection model and identity provider**. You can choose to deploy Azure Stack either [connected to the internet (and to Azure) or disconnected](azure-stack-connection-models.md). To get the most benefit from Azure Stack, including hybrid scenarios, you'd want to deploy connected to Azure. Choosing Active Directory Federation Services (AD FS) or Azure Active Directory (Azure AD) is a one-time decision that you must make at deployment time. **You can't change your identity provider later without redeploying the entire system**.
+- **Azure Stack Hub connection model and identity provider**. You can choose to deploy Azure Stack Hub either [connected to the internet (and to Azure) or disconnected](azure-stack-connection-models.md). To get the most benefit from Azure Stack Hub, including hybrid scenarios, you'd want to deploy connected to Azure. Choosing Active Directory Federation Services (AD FS) or Azure Active Directory (Azure AD) is a one-time decision that you must make at deployment time. **You can't change your identity provider later without redeploying the entire system**.
 
 - **Licensing model**. The licensing model options for you to choose from depend on the kind of deployment you'll have. Your identity provider choice has no bearing on tenant virtual machines or the identity system and accounts they use.
     - Customers that are in a [disconnected deployment](azure-stack-disconnected-deployment.md) have only one option: capacity-based billing.
 
     - Customers that are in a [connected deployment](azure-stack-connected-deployment.md) can choose between capacity-based billing and pay-as-you-use. Capacity-based billing requires an Enterprise Agreement (EA) Azure Subscription for registration. This is necessary for registration, which provides for the availability of items in Azure Marketplace through an Azure Subscription.
 
-- **Network integration**. [Network integration](azure-stack-network.md) is crucial for deployment, operation, and management of Azure Stack systems. There are several considerations that go into ensuring the Azure Stack solution is resilient and has a highly available physical infrastructure to support its operations.
+- **Network integration**. [Network integration](azure-stack-network.md) is crucial for deployment, operation, and management of Azure Stack Hub systems. There are several considerations that go into ensuring the Azure Stack Hub solution is resilient and has a highly available physical infrastructure to support its operations.
 
-- **Firewall integration**. It's recommended that you [use a firewall](azure-stack-firewall.md) to help secure Azure Stack. Firewalls can help prevent DDOS attacks, intrusion detection, and content inspection. However, it should be noted that it can become a throughput bottleneck for Azure storage services.
+- **Firewall integration**. It's recommended that you [use a firewall](azure-stack-firewall.md) to help secure Azure Stack Hub. Firewalls can help prevent DDOS attacks, intrusion detection, and content inspection. However, it should be noted that it can become a throughput bottleneck for Azure storage services.
 
 - **Certificate requirements**. It's critical that all [required certificates](azure-stack-pki-certs.md) are available *before* an onsite engineer arrives at your datacenter for deployment.
 
-Once all the pre-requisite information is gathered through the deployment worksheet, the solution provider will kick off the factory process based on the data collected to ensure a successful integration of Azure Stack into your datacenter.
+Once all the pre-requisite information is gathered through the deployment worksheet, the solution provider will kick off the factory process based on the data collected to ensure a successful integration of Azure Stack Hub into your datacenter.
 
 ## Hardware delivery 
-Your solution provider will work with you on scheduling when the solution will arrive to your facility. Once received and put in place, you'll need to schedule time with the solution provider to have an engineer come onsite to perform the Azure Stack deployment.
+Your solution provider will work with you on scheduling when the solution will arrive to your facility. Once received and put in place, you'll need to schedule time with the solution provider to have an engineer come onsite to perform the Azure Stack Hub deployment.
 
 It's **crucial** that all prerequisite data is locked and available *before the onsite engineer arrives to deploy the solution*.
 
@@ -115,7 +115,7 @@ It's **crucial** that all prerequisite data is locked and available *before the 
 > If any of this information has changed, make sure to communicate the change with the solution provider before you schedule the actual deployment.
 
 ## Onsite deployment 
-To deploy Azure Stack, an onsite engineer from your hardware solution provider will need to be present to kick off the deployment. To ensure a successful deployment, ensure that all information provided through the deployment worksheet hasn't changed.
+To deploy Azure Stack Hub, an onsite engineer from your hardware solution provider will need to be present to kick off the deployment. To ensure a successful deployment, ensure that all information provided through the deployment worksheet hasn't changed.
 
 The following checks are what you should expect from the onsite engineer during the deployment experience:
 
@@ -149,7 +149,7 @@ Actions that should be taken by the OEM Partner are:
 
 There are several steps that are required or optional depending on the installation type.
 
-- If deployment was completed using [AD FS](azure-stack-integrate-identity.md), then the Azure Stack stamp will need to be integrated with customer's own AD FS.
+- If deployment was completed using [AD FS](azure-stack-integrate-identity.md), then the Azure Stack Hub stamp will need to be integrated with customer's own AD FS.
 
   > [!NOTE]
   > This step is the responsibility of the customer, although the partner may optionally choose to offer services to do this.
@@ -162,12 +162,12 @@ There are several steps that are required or optional depending on the installat
 
 ## Schedule
 
-![Overall timeline for Azure Stack on-site deployment](./media/azure-stack-datacenter-integration-walkthrough/image1.png)
+![Overall timeline for Azure Stack Hub on-site deployment](./media/azure-stack-datacenter-integration-walkthrough/image1.png)
 
 ## Support
-Azure Stack enables an Azure-consistent, integrated support experience that covers the full system lifecycle. To fully support Azure Stack integrated systems, customers need two support contracts: one with Microsoft (or their Cloud Solution Provider) for Azure services support and one with the hardware provider for system support. The integrated support experience provides coordinated escalation and resolution so that customers get a consistent support experience no matter whom they call first. For customers who already have Premier, Azure -Standard / ProDirect or Partner support with Microsoft, Azure Stack software support is included.
+Azure Stack Hub enables an Azure-consistent, integrated support experience that covers the full system lifecycle. To fully support Azure Stack Hub integrated systems, customers need two support contracts: one with Microsoft (or their Cloud Solution Provider) for Azure services support and one with the hardware provider for system support. The integrated support experience provides coordinated escalation and resolution so that customers get a consistent support experience no matter whom they call first. For customers who already have Premier, Azure -Standard / ProDirect or Partner support with Microsoft, Azure Stack Hub software support is included.
 
-The integrated support experience makes use of a Case Exchange mechanism for bi-directional transfer of support cases and case updates between Microsoft and the hardware partner. Microsoft Azure Stack will follow the [Modern Lifecycle policy](https://support.microsoft.com/help/30881).
+The integrated support experience makes use of a Case Exchange mechanism for bi-directional transfer of support cases and case updates between Microsoft and the hardware partner. Microsoft Azure Stack Hub will follow the [Modern Lifecycle policy](https://support.microsoft.com/help/30881).
 
 ## Next steps
 Learn more about [general datacenter integration considerations](azure-stack-datacenter-integration.md).

@@ -1,7 +1,6 @@
 ---
-title: Quota types in Azure Stack | Microsoft Docs
-titleSuffix: Azure Stack
-description: View and edit the different quota types available for services and resources in Azure Stack.
+title: Quota types in Azure Stack Hub | Microsoft Docs
+description: View and edit the different quota types available for services and resources in Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -14,15 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 01/07/2020
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/18/2018
 
 ---
-# Quota types in Azure Stack
+# Quota types in Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
 
 [Quotas](service-plan-offer-subscription-overview.md#plans) define the limits of resources that a user subscription can provision or consume. For example, a quota might allow a user to create up to five virtual machines (VMs). Each resource can have its own types of quotas.
 
@@ -82,7 +80,7 @@ There are two different ways to view an existing quota:
 3. In the blade that opens, select **Services and quotas**.
 4. Select the quota you want to see by clicking it in the **Name** column.
 
-    [![Quotas in Azure Stack administrator portal](media/azure-stack-quota-types/quotas1sm.png "View quotas in administrator portal")](media/azure-stack-quota-types/quotas1.png#lightbox)
+    [![Quotas in Azure Stack Hub administrator portal](media/azure-stack-quota-types/quotas1sm.png "View quotas in administrator portal")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 ### Resource providers
 
@@ -101,11 +99,11 @@ There are two different ways to edit a quota:
 3. In the blade that opens, select **Services and quotas**.
 4. Select the quota you want to edit by clicking it in the **Name** column.
 
-    [![Quotas in Azure Stack administrator portal](media/azure-stack-quota-types/quotas1sm.png "View quotas in administrator portal")](media/azure-stack-quota-types/quotas1.png#lightbox)
+    [![Quotas in Azure Stack Hub administrator portal](media/azure-stack-quota-types/quotas1sm.png "View quotas in administrator portal")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 5. In the blade that opens, select **Edit in Compute**, **Edit in Network**, or **Edit in Storage**.
 
-    ![Edit a plan in Azure Stack administrator portal](media/azure-stack-quota-types/quotas3.png "Edit a plan in Azure Stack administrator portal")
+    ![Edit a plan in Azure Stack Hub administrator portal](media/azure-stack-quota-types/quotas3.png "Edit a plan in Azure Stack Hub administrator portal")
 
 Alternatively, you can follow this procedure to edit a quota:
 

@@ -12,8 +12,6 @@ ms.lastreviewed: 11/05/2019
 
 # Deploy an app that uses on-premises data, and scales cross-cloud using Azure and Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
-
 This solution guide shows you how to deploy a hybrid application, that spans both Azure and Azure Stack Hub, and uses a single on-premises data source.
 
 By using a hybrid cloud solution, you can combine the compliance benefits of a private cloud with the scalability of the public cloud. Additionally, your developers can take advantage of the Microsoft developer ecosystem, and apply their skills to the cloud and on-premises environments.

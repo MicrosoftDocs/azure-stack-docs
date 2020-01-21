@@ -1,6 +1,6 @@
 ---
-title: Compare Azure Stack and global Azure | Microsoft Docs
-description: Learn how Microsoft provides Azure and the Azure Stack family of services in one Azure ecosystem  
+title: Compare Azure Stack Hub and global Azure | Microsoft Docs
+description: Learn how Microsoft provides Azure and the Azure Stack Hub family of services in one Azure ecosystem  
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -20,11 +20,11 @@ ms.custom:
 ms.lastreviewed: 03/29/2019
 ---
 
-# Differences between global Azure, Azure Stack, and Azure Stack HCI
+# Differences between global Azure, Azure Stack Hub, and Azure Stack HCI
 
-Microsoft provides Azure and the Azure Stack family of services in one Azure ecosystem. Use the same application model, self-service portals, and APIs with Azure Resource Manager to deliver cloud-based capabilities whether your business uses global Azure or on-premises resources.
+Microsoft provides Azure and the Azure Stack Hub family of services in one Azure ecosystem. Use the same application model, self-service portals, and APIs with Azure Resource Manager to deliver cloud-based capabilities whether your business uses global Azure or on-premises resources.
 
-This article describes global Azure, Azure Stack, and Azure Stack HCI capabilities and provides common scenario recommendations to help you make the best choice for delivering Microsoft cloud-based services for your organization.
+This article describes global Azure, Azure Stack Hub, and Azure Stack HCI capabilities and provides common scenario recommendations to help you make the best choice for delivering Microsoft cloud-based services for your organization.
 
 ![Azure ecosystem overview](./media/compare-azure-azure-stack/azure-family.png)
 
@@ -36,9 +36,9 @@ Global Azure offers more than 100 services available in 54 regions around the gl
 
 For more information about global Azure services, see [Get started with Azure](https://docs.microsoft.com/azure/#pivot=get-started&panel=get-started1).
 
-## Azure Stack
+## Azure Stack Hub
 
-Azure Stack is an extension of Azure that brings the agility and innovation of cloud computing to your on-premises environment. Deployed on-premises, Azure Stack can be used to provide Azure consistent services either connected to the internet (and Azure) or in disconnected environments with no internet connectivity. Azure Stack uses the same underlying technologies as global Azure, which includes the core components of Infrastructure-as-a-Service (IaaS), Software-as-a-Service (SaaS), and optional Platform-as-a-Service (PaaS) capabilities including:
+Azure Stack Hub is an extension of Azure that brings the agility and innovation of cloud computing to your on-premises environment. Deployed on-premises, Azure Stack Hub can be used to provide Azure consistent services either connected to the internet (and Azure) or in disconnected environments with no internet connectivity. Azure Stack Hub uses the same underlying technologies as global Azure, which includes the core components of Infrastructure-as-a-Service (IaaS), Software-as-a-Service (SaaS), and optional Platform-as-a-Service (PaaS) capabilities including:
 
 - Azure VMs for Windows and Linux
 - Azure Web Apps and Functions
@@ -48,16 +48,16 @@ Azure Stack is an extension of Azure that brings the agility and innovation of c
 - Containers
 - Admin tools (Plans, offers, RBAC, etc.)
 
-The PaaS capabilities of Azure Stack are optional because Azure Stack is not operated by Microsoft—it is operated by our customers. This means you can offer whatever PaaS service you want to end users if you are prepared to abstract the underlying infrastructure and processes away from the end user. However, Azure Stack does include several optional PaaS service providers including App Service, SQL databases, and MySQL databases. These are delivered as resource providers, so they are multi-tenant ready, updated over time with standard Azure Stack updates, visible in the Azure Stack portal, and well-integrated with Azure Stack.
+The PaaS capabilities of Azure Stack Hub are optional because Azure Stack Hub is not operated by Microsoft—it is operated by our customers. This means you can offer whatever PaaS service you want to end users if you are prepared to abstract the underlying infrastructure and processes away from the end user. However, Azure Stack Hub does include several optional PaaS service providers including App Service, SQL databases, and MySQL databases. These are delivered as resource providers, so they are multi-tenant ready, updated over time with standard Azure Stack Hub updates, visible in the Azure Stack Hub portal, and well-integrated with Azure Stack Hub.
 
-In addition to the resource providers described above, there are additional PaaS services available and tested as [Azure Resource Manager template-based solutions](https://github.com/Azure/AzureStack-QuickStart-Templates) that run in IaaS, but you as an Azure Stack operator can offer them as PaaS services to your users including:
+In addition to the resource providers described above, there are additional PaaS services available and tested as [Azure Resource Manager template-based solutions](https://github.com/Azure/AzureStack-QuickStart-Templates) that run in IaaS, but you as an Azure Stack Hub operator can offer them as PaaS services to your users including:
 
 - Service Fabric
 - Kubernetes Container Service
 - Ethereum Blockchain
 - Cloud Foundry
 
-### Example use cases for Azure Stack:
+### Example use cases for Azure Stack Hub:
 
 - Financial modeling
 - Clinical and claims data
@@ -69,7 +69,7 @@ In addition to the resource providers described above, there are additional PaaS
 - Smart city
 - Citizen engagement
 
-Learn more about Azure Stack at [What is Azure Stack](azure-stack-overview.md).
+Learn more about Azure Stack Hub at [What is Azure Stack Hub](azure-stack-overview.md).
 
 ## Azure Stack HCI
 
@@ -96,6 +96,6 @@ Visit the [Azure Stack HCI website](https://azure.microsoft.com/overview/azure-s
 
 ## Next steps
 
-[Azure Stack administration basics](azure-stack-manage-basics.md)
+[Azure Stack Hub administration basics](azure-stack-manage-basics.md)
 
-[Quickstart: use the Azure Stack administration portal](azure-stack-manage-portals.md)
+[Quickstart: use the Azure Stack Hub administration portal](azure-stack-manage-portals.md)

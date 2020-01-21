@@ -1,7 +1,7 @@
 ﻿---
-title: Azure Stack SQL resource provider 1.1.33.0 release notes
-titleSuffix: Azure Stack
-description: View the releases notes for the Azure Stack SQL resource provider 1.1.33.0 update.
+title: Azure Stack Hub SQL resource provider 1.1.33.0 release notes
+titleSuffix: Azure Stack Hub
+description: View the releases notes for the Azure Stack Hub SQL resource provider 1.1.33.0 update.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -22,23 +22,21 @@ ms.lastreviewed: 01/09/2019
 
 # SQL resource provider 1.1.33.0 release notes
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
 These release notes describe the improvements and known issues in SQL resource provider version 1.1.33.0.
 
 ## Build reference
-Download the SQL resource provider binary and then run the self-extractor to extract the contents to a temporary directory. The resource provider has a minimum corresponding Azure Stack build. The minimum Azure Stack release version required to install this version of the SQL resource provider is listed below:
+Download the SQL resource provider binary and then run the self-extractor to extract the contents to a temporary directory. The resource provider has a minimum corresponding Azure Stack Hub build. The minimum Azure Stack Hub release version required to install this version of the SQL resource provider is listed below:
 
-> |Minimum Azure Stack version|SQL resource provider version|
+> |Minimum Azure Stack Hub version|SQL resource provider version|
 > |-----|-----|
 > |Version 1808 (1.1808.0.97)|[SQL RP version 1.1.33.0](https://aka.ms/azurestacksqlrp11330)|  
 > |     |     |
 
 > [!IMPORTANT]
-> Apply the minimum supported Azure Stack update to your Azure Stack integrated system or deploy the latest Azure Stack Development Kit (ASDK) before deploying the latest version of the SQL resource provider.
+> Apply the minimum supported Azure Stack Hub update to your Azure Stack Hub integrated system before deploying the latest version of the SQL resource provider.
 
 ## New features and fixes
-This version of the Azure Stack SQL resource provider includes the following improvements and fixes:
+This version of the Azure Stack Hub SQL resource provider includes the following improvements and fixes:
 
 ### Fixes
 
@@ -69,8 +67,8 @@ This version of the Azure Stack SQL resource provider includes the following imp
 
     **Workaround**: Ensure that DNS works correctly to resolve the listener IP to listener host name.
 
-### Known issues for Cloud Admins operating Azure Stack
-Refer to the documentation in the [Azure Stack release notes](azure-stack-servicing-policy.md).
+### Known issues for Cloud Admins operating Azure Stack Hub
+Refer to the documentation in the [Azure Stack Hub release notes](azure-stack-servicing-policy.md).
 
 ## Next steps
 [Learn more about the SQL resource provider](azure-stack-sql-resource-provider.md).

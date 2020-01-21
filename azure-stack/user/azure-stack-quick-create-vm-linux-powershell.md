@@ -1,6 +1,6 @@
 ---
-title: Create a Linux VM by using PowerShell in Azure Stack | Microsoft Docs
-description: Create a Linux VM by using PowerShell in Azure Stack.
+title: Create a Linux VM by using PowerShell in Azure Stack Hub | Microsoft Docs
+description: Create a Linux VM by using PowerShell in Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -18,11 +18,9 @@ ms.custom: mvc
 ms.lastreviewed: 11/11/2019
 ---
 
-# Quickstart: Create a Linux server VM by using PowerShell in Azure Stack
+# Quickstart: Create a Linux server VM by using PowerShell in Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and the Azure Stack Development Kit*
-
-You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using Azure Stack PowerShell. In this article, you create and use a virtual machine. This article also shows you how to:
+You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using Azure Stack Hub PowerShell. In this article, you create and use a virtual machine. This article also shows you how to:
 
 * Connect to the VM with a remote client.
 * Install an NGINX web server and view the default home page.
@@ -30,17 +28,17 @@ You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using Azure St
 
 ## Prerequisites
 
-* A Linux image in the Azure Stack Marketplace. The Azure Stack marketplace doesn't have a Linux image by default. Have the Azure Stack operator provide the Ubuntu Server 16.04 LTS image you need. The operator can use the instructions in [Download Marketplace items from Azure to Azure Stack](../operator/azure-stack-download-azure-marketplace-item.md).
+* A Linux image in the Azure Stack Hub Marketplace. The Azure Stack Hub Marketplace doesn't have a Linux image by default. Have the Azure Stack Hub operator provide the Ubuntu Server 16.04 LTS image you need. The operator can use the instructions in [Download Marketplace items from Azure to Azure Stack Hub](../operator/azure-stack-download-azure-marketplace-item.md).
 
-* Azure Stack requires a specific version of the Azure CLI to create and manage its resources. 
-  * If you don't have PowerShell configured for Azure Stack, see [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md). 
-  * After Azure Stack PowerShell is set up, you'll connect to your Azure Stack environment. For instructions, see [Connect to Azure Stack with PowerShell as a user](azure-stack-powershell-configure-user.md).
+* Azure Stack Hub requires a specific version of the Azure CLI to create and manage its resources. 
+  * If you don't have PowerShell configured for Azure Stack Hub, see [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md). 
+  * After Azure Stack Hub PowerShell is set up, you'll connect to your Azure Stack Hub environment. For instructions, see [Connect to Azure Stack Hub with PowerShell as a user](azure-stack-powershell-configure-user.md).
 
 * A public Secure Shell (SSH) key with the name *id_rsa.pub* saved in the *.ssh* directory of your Windows user profile. For detailed information about creating SSH keys, see [Use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
 
 ## Create a resource group
 
-A resource group is a logical container where you can deploy and manage Azure Stack resources. To create a resource group, from your Azure Stack Development Kit (ASDK) or the Azure Stack integrated system, run the following code block: 
+A resource group is a logical container where you can deploy and manage Azure Stack Hub resources. To create a resource group, run the following code block: 
 
 > [!NOTE]
 > We've assigned values for all variables in the following code examples. However, you can assign your own values.
@@ -57,7 +55,7 @@ New-AzureRmResourceGroup `
 
 ## Create storage resources
 
-Create a storage account, and then create a storage container for the Ubuntu Server 16.04 LTS image.
+Create a storage account that will be used for storing the boot diagnostics output.
 
 ```powershell  
 # Create variables to store the storage account name and the storage account SKU information
@@ -208,7 +206,7 @@ New-AzureRmVM `
 ## Create a resource group
 
 <#
-A resource group is a logical container where you can deploy and manage Azure Stack resources. From your development kit or the Azure Stack integrated system, run the following code block to create a resource group. Though we've assigned values for all the variables in this article, you can use these values or assign new ones.
+A resource group is a logical container where you can deploy and manage Azure Stack Hub resources. From your development kit or the Azure Stack Hub integrated system, run the following code block to create a resource group. Though we've assigned values for all the variables in this article, you can use these values or assign new ones.
 #>
 
 # Edit your variables, if required
@@ -414,4 +412,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## Next steps
 
-In this quickstart, you deployed a basic Linux server VM. To learn more about Azure Stack VMs, go to [Considerations for VMs in Azure Stack](azure-stack-vm-considerations.md).
+In this quickstart, you deployed a basic Linux server VM. To learn more about Azure Stack Hub VMs, go to [Considerations for VMs in Azure Stack Hub](azure-stack-vm-considerations.md).

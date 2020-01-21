@@ -17,8 +17,6 @@ ms.lastreviewed: 10/01/2019
 ---
 # Azure Stack Hub services, plans, offers, subscriptions overview
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
-
 [Microsoft Azure Stack Hub](azure-stack-overview.md) is a hybrid cloud platform that lets you deliver services from your datacenter. Services include virtual machines (VMs), SQL Server databases, SharePoint, Exchange, and even [Azure Marketplace items](azure-stack-marketplace-azure-items.md). As a service provider, you can offer services to your tenants. Within a business or government agency, you can offer on-premises services to your employees.
 
 ## Overview
@@ -34,7 +32,7 @@ To deliver a service, follow these high-level steps:
 1. Plan your service offering, using:
 
    - Foundational services, like compute, storage, networking, or Key Vault.
-   - Add-on services, like Event Hubs, App Service, SQL Server, or MySQL Server.
+   - Value-add services, like Event Hubs, App Service, SQL Server, or MySQL Server.
 
 2. Create a plan that consists of one or more services. When creating a plan, select or create quotas that define the resource limits of each service in the plan.
 3. Create an offer that has one or more plans. The offer can include base plans and optional add-on plans.
@@ -47,7 +45,7 @@ After you've created the offer, your users can subscribe to it to access the ser
 
 You can offer [Infrastructure as a Service](https://azure.microsoft.com/overview/what-is-iaas/) (IaaS) services that enable your users to build an on-demand computing infrastructure, provisioned and managed from the Azure Stack Hub user portal.
 
-You can also deploy [Platform as a Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) services for Azure Stack Hub from Microsoft and third-party providers. These are offered by installing resource providers for add-on services. The available resource providers include, but aren't limited to:
+You can also deploy [Platform as a Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) services for Azure Stack Hub from Microsoft and third-party providers. The PaaS services that you can deploy include, but aren't limited to:
 
 - [Event Hubs](event-hubs-rp-overview.md)
 - [App Service](azure-stack-app-service-overview.md)

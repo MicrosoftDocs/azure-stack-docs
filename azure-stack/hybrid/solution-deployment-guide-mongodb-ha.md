@@ -12,8 +12,6 @@ ms.lastreviewed: 11/05/2019
 
 # Deploy a highly available MongoDB solution to Azure and Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems*
-
 This article will step you through an automated deployment of a basic highly available (HA) MongoDB cluster with a disaster recovery (DR) site
 across two Azure Stack Hub environments. To learn more about MongoDB and high availability, see [Replica Set Members](https://docs.mongodb.com/manual/core/replica-set-members/).
 

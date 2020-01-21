@@ -1,6 +1,6 @@
 ---
-title: Validate Azure registration for Azure Stack | Microsoft Docs
-description: Use the Azure Stack Readiness Checker to validate Azure registration.
+title: Validate Azure registration for Azure Stack Hub | Microsoft Docs
+description: Use the Azure Stack Hub Readiness Checker to validate Azure registration.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -22,12 +22,12 @@ ms.lastreviewed: 03/23/2019
 
 # Validate Azure registration
 
-Use the Azure Stack Readiness Checker tool (**AzsReadinessChecker**) to validate that your Azure subscription is ready to use with Azure Stack before you begin an Azure Stack deployment. The readiness checker validates that:
+Use the Azure Stack Hub Readiness Checker tool (**AzsReadinessChecker**) to validate that your Azure subscription is ready to use with Azure Stack Hub before you begin an Azure Stack Hub deployment. The readiness checker validates that:
 
 - The Azure subscription you use is a supported type. Subscriptions must be a Cloud Solution Provider (CSP) or Enterprise Agreement (EA).
 - The account you use to register your subscription with Azure can sign in to Azure and is a subscription owner.
 
-For more information about Azure Stack registration, see [Register Azure Stack with Azure](azure-stack-registration.md).
+For more information about Azure Stack Hub registration, see [Register Azure Stack Hub with Azure](azure-stack-registration.md).
 
 ## Get the readiness checker tool
 
@@ -46,12 +46,12 @@ The following prerequisites are required:
   $PSVersionTable.PSVersion
   ```
 
-- [PowerShell configured for Azure Stack](azure-stack-powershell-install.md).
-- The latest version of the [Microsoft Azure Stack Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.  
+- [PowerShell configured for Azure Stack Hub](azure-stack-powershell-install.md).
+- The latest version of the [Microsoft Azure Stack Hub Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.  
 
 ### Azure Active Directory environment
 
-- Identify the username and password for an account that is an owner for the Azure subscription you will use with Azure Stack.  
+- Identify the username and password for an account that is an owner for the Azure subscription you will use with Azure Stack Hub.  
 - Identify the subscription ID for the Azure subscription you will use.
 - Identify the **AzureEnvironment** you will use. Supported values for the environment name parameter are **AzureCloud**, **AzureChinaCloud**, or **AzureUSGovernment**, depending on which Azure subscription you are using.
 
@@ -101,14 +101,14 @@ The following prerequisites are required:
 
 Each time validation runs, it logs results to **AzsReadinessChecker.log** and **AzsReadinessCheckerReport.json**. The location of these files displays along with the validation results in PowerShell.
 
-These files can help you share validation status before you deploy Azure Stack or investigate validation problems. Both files persist the results of each subsequent validation check. The report provides your deployment team confirmation of the identity configuration. The log file can help your deployment or support team investigate validation issues.
+These files can help you share validation status before you deploy Azure Stack Hub or investigate validation problems. Both files persist the results of each subsequent validation check. The report provides your deployment team confirmation of the identity configuration. The log file can help your deployment or support team investigate validation issues.
 
 By default, both files are written to **C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json**.  
 
 - Use the `-OutputPath <path>` parameter at the end of the run command line to specify a different report location.
 - Use the `-CleanReport` parameter at the end of the run command to clear information about previous runs of the tool from **AzsReadinessCheckerReport.json**.
 
-For more information, see [Azure Stack validation report](azure-stack-validation-report.md).
+For more information, see [Azure Stack Hub validation report](azure-stack-validation-report.md).
 
 ## Validation failures
 
@@ -132,7 +132,7 @@ Invoke-AzsRegistrationValidation Completed
 
 **Cause** - The account is not an administrator of the Azure subscription.
 
-**Resolution** - Use an account that is an administrator of the Azure subscription that will be billed for usage from the Azure Stack deployment.
+**Resolution** - Use an account that is an administrator of the Azure subscription that will be billed for usage from the Azure Stack Hub deployment.
 
 ### Expired or temporary password
 
@@ -185,4 +185,4 @@ Login-AzureRmAccount -EnvironmentName AzureChinaCloud
 
 - [Validate Azure identity](azure-stack-validate-identity.md)
 - [View the readiness report](azure-stack-validation-report.md)
-- [General Azure Stack integration considerations](azure-stack-datacenter-integration.md)
+- [General Azure Stack Hub integration considerations](azure-stack-datacenter-integration.md)

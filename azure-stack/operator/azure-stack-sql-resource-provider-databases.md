@@ -1,6 +1,6 @@
 ---
 title: Create SQL databases
-titleSuffix: Azure Stack
+titleSuffix: Azure Stack Hub
 description: Learn how to create and manage SQL databases provisioned using the SQL resource provider adapter.
 services: azure-stack
 documentationCenter: ''
@@ -21,9 +21,9 @@ ms.lastreviewed: 10/16/2018
 
 # Create SQL databases
 
-You can create and manage self-service databases in the user portal. An Azure Stack user needs a subscription with an offer that includes the SQL database service.
+You can create and manage self-service databases in the user portal. An Azure Stack Hub user needs a subscription with an offer that includes the SQL database service.
 
-1. Sign in to the [Azure Stack](azure-stack-overview.md) user portal.
+1. Sign in to the [Azure Stack Hub](azure-stack-overview.md) user portal.
 
 2. Select **+ New** &gt;**Data + Storage** &gt; **SQL Server Database** &gt; **Add**.
 
@@ -36,10 +36,10 @@ You can create and manage self-service databases in the user portal. An Azure St
 
 4. Under **Create Database**, select **SKU**. Under **Select a SKU**, select the SKU for your database.
 
-   ![Create Database in Azure Stack user portal.](./media/azure-stack-sql-rp-deploy/newsqldb.png)
+   ![Create Database in Azure Stack Hub user portal.](./media/azure-stack-sql-rp-deploy/newsqldb.png)
 
    >[!NOTE]
-   >As hosting servers are added to Azure Stack, they're assigned a SKU. Databases are created in the pool of hosting servers in a SKU.
+   >As hosting servers are added to Azure Stack Hub, they're assigned a SKU. Databases are created in the pool of hosting servers in a SKU.
 
 5. Select **Login**.
 
@@ -50,7 +50,7 @@ You can create and manage self-service databases in the user portal. An Azure St
    >[!NOTE]
    >These settings are the SQL authentication credential that's created for your access to this database only. The login user name must be globally unique. You can reuse login settings for other databases that use the same SKU.
 
-   ![Create a new database login in Azure Stack user portal](./media/azure-stack-sql-rp-deploy/create-new-login.png)
+   ![Create a new database login in Azure Stack Hub user portal](./media/azure-stack-sql-rp-deploy/create-new-login.png)
 
 8. Select **OK** to finish deploying the database.
 

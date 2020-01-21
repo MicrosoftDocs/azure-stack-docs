@@ -1,6 +1,6 @@
 ---
-title: Install Visual Studio and connect to Azure Stack | Microsoft Docs
-description: Learn how to install Visual Studio and connect to Azure Stack.
+title: Install Visual Studio and connect to Azure Stack Hub | Microsoft Docs
+description: Learn how to install Visual Studio and connect to Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,18 +13,16 @@ ms.workload: azure-vs
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/13/2019
+ms.date: 01/07/2020
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2019
 
 ---
 
-# Install Visual Studio and connect to Azure Stack
+# Install Visual Studio and connect to Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
-You can use Visual Studio to write and deploy Azure Resource Manager [templates](azure-stack-arm-templates.md) to Azure Stack. The steps in this article describe how to install Visual Studio on [Azure Stack](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp) or on an external computer if you plan to use Azure Stack through [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn).
+You can use Visual Studio to write and deploy Azure Resource Manager [templates](azure-stack-arm-templates.md) to Azure Stack Hub. The steps in this article describe how to install Visual Studio on [Azure Stack Hub](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp) or on an external computer if you plan to use Azure Stack Hub through [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn).
 
 ## Install Visual Studio
 
@@ -38,11 +36,11 @@ You can use Visual Studio to write and deploy Azure Resource Manager [templates]
 
     ![Screenshot of WebPI install steps](./media/azure-stack-install-visual-studio/image1.png)
 
-5. [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md).
+5. [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
 
 6. Restart the operating system after the installation completes.
 
-## Connect to Azure Stack with Azure AD
+## Connect to Azure Stack Hub with Azure AD
 
 1. Launch Visual Studio.
 
@@ -50,11 +48,11 @@ You can use Visual Studio to write and deploy Azure Resource Manager [templates]
 
 3. In the new pane, select **Add Account** and sign in with your Azure Active Directory (Azure AD) credentials.  
 
-    ![Screenshot of Cloud Explorer once logged in and connected to Azure Stack](./media/azure-stack-install-visual-studio/image2.png)
+    ![Screenshot of Cloud Explorer once logged in and connected to Azure Stack Hub](./media/azure-stack-install-visual-studio/image2.png)
 
 Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-studio.md) or browse available resource types and resource groups to create your own templates.  
 
-## Connect to Azure Stack with AD FS
+## Connect to Azure Stack Hub with AD FS
 
 1. Launch Visual Studio.
 
@@ -62,7 +60,7 @@ Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-st
 
 3. Expand **Environment** in the **Navigation Pane** and select **Accounts**.
 
-4. Select **Add**, and enter the User Azure Resource Manger endpoint. For the Azure Stack Development Kit (ASDK), the URL is: `https://management.local.azurestack/external`.  For Azure Stack integrated systems, the URL is: `https://management.[Region}.[External FQDN]`.
+4. Select **Add**, and enter the User Azure Resource Manger endpoint. For the Azure Stack Development Kit (ASDK), the URL is: `https://management.local.azurestack/external`.  For Azure Stack Hub integrated systems, the URL is: `https://management.[Region}.[External FQDN]`.
 
     ![Add new Azure Cloud discovery endpoint](./media/azure-stack-install-visual-studio/image5.png)
 
@@ -70,7 +68,7 @@ Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-st
 
     Visual Studio calls Azure Resource Manger and discovers the endpoints, including the authentication endpoint, for Azure Directory Federated Services (AD FS).
 
-    ![Screenshot of Cloud Explorer once logged in and connected to Azure Stack](./media/azure-stack-install-visual-studio/image6.png)
+    ![Screenshot of Cloud Explorer once logged in and connected to Azure Stack Hub](./media/azure-stack-install-visual-studio/image6.png)
 
 6. Select **Cloud Explorer** from the **View** menu.
 
@@ -87,4 +85,4 @@ Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-st
 ## Next steps
 
 - Read more about Visual Studio [side by side](/visualstudio/install/install-visual-studio-versions-side-by-side) with other Visual Studio versions.
-- [Develop templates for Azure Stack](azure-stack-develop-templates.md).
+- [Develop templates for Azure Stack Hub](azure-stack-develop-templates.md).
