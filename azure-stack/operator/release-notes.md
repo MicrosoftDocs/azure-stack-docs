@@ -22,13 +22,13 @@ ms.lastreviewed: 11/22/2019
 
 # Azure Stack Hub release notes
 
-This article describes the contents of Azure Stack Hub update packages. The update includes what's new improvements, and fixes for this release of Azure Stack Hub.
+This article describes the contents of Azure Stack Hub update packages. The update includes improvements and fixes for the latest release of Azure Stack Hub.
 
 To access release notes for a different version, use the version selector dropdown above the table of contents on the left.
 
 ::: moniker range=">=azs-1906"
 > [!IMPORTANT]  
-> This update package is only for Azure Stack Hub integrated systems. Do not apply this update package to the Azure Stack Development Kit.
+> This update package is only for Azure Stack Hub integrated systems. Don't apply this update package to the Azure Stack Development Kit.
 ::: moniker-end
 ::: moniker range="<azs-1906"
 > [!IMPORTANT]  
@@ -59,7 +59,7 @@ Starting with 1908, the underlying operating system on which Azure Stack Hub run
 
 The Azure Stack Hub 1910 update build type is **Express**.
 
-The 1910 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The expected time it takes for the 1910 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack Hub environment. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 1910 update and should not be compared to other Azure Stack Hub updates.
+The 1910 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The expected time it takes for the 1910 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack Hub environment. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value are not uncommon and don't require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 1910 update and shouldn't be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
@@ -114,7 +114,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Azure Stack Hub is moving to 4096 bit RSA keys for the internal certificates. Running internal secret rotation will replace old 2048 bit certificates with 4096 bit long certificates. For more information about secret rotation in Azure Stack Hub, see [Rotate secrets in Azure Stack Hub](azure-stack-rotate-secrets.md).
 
-- Upgrades to the complexity of cryptographic algorithms and key strength for several internal components to comply with the Committee on National Security Systems - Policy 15 (CNSSP-15), which provides best practices for the use of public standards for secure information sharing. Among the improvements, there is AES256 for Kerberos authentication, and SHA384 for VPN encryption. For more information about CNSSP-15, see the [Committee on National Security Systems, Policies page](http://www.cnss.gov/CNSS/issuances/Policies.cfm).
+- Upgrades to the complexity of cryptographic algorithms and key strength for several internal components to comply with the Committee on National Security Systems - Policy 15 (CNSSP-15), which provides best practices for the use of public standards for secure information sharing. Among the improvements, there is AES256 for Kerberos authentication and SHA384 for VPN encryption. For more information about CNSSP-15, see the [Committee on National Security Systems, Policies page](http://www.cnss.gov/CNSS/issuances/Policies.cfm).
 
 - As a result of the above upgrade, Azure Stack Hub now has new default values for IPsec/IKEv2 configurations. The new default values used on the Azure Stack Hub side are as follows:
 
@@ -146,13 +146,13 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Changes
 
-- When downloading marketplace items from Azure to Azure Stack Hub, there is a new user interface that enables you to specify a version of the item, when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).  
+- When downloading marketplace items from Azure to Azure Stack Hub, there's a new user interface that enables you to specify a version of the item when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).  
 
-- Starting with the 1910 release, the Azure Stack Hub system **requires** an additional /20 private internal IP space. This network is private to the Azure Stack Hub system and can be re-used on multiple Azure Stack Hub systems within your datacenter. While the network is private to Azure Stack Hub, it must not overlap with a network in your datacenter. The /20 private IP space is divided into multiple networks that enable running the Azure Stack Hub infrastructure on containers (as previously mentioned in the [1905 release notes](release-notes.md?view=azs-1905)). The goal of running the Azure Stack Hub infrastructure in containers is to optimize utilization and enhance performance. In addition, the /20 private IP space is also used to enable ongoing efforts that will reduce required routable IP space prior to deployment.
+- Starting with the 1910 release, the Azure Stack Hub system **requires** an additional /20 private internal IP space. This network is private to the Azure Stack Hub system and can be reused on multiple Azure Stack Hub systems within your datacenter. While the network is private to Azure Stack Hub, it must not overlap with a network in your datacenter. The /20 private IP space is divided into multiple networks that enable running the Azure Stack Hub infrastructure on containers (as previously mentioned in the [1905 release notes](release-notes.md?view=azs-1905)). The goal of running the Azure Stack Hub infrastructure in containers is to optimize utilization and enhance performance. In addition, the /20 private IP space is also used to enable ongoing efforts that will reduce required routable IP space prior to deployment.
 
-  - Please note that the /20 input serves as a pre-requisite to the next Azure Stack Hub update after 1910. When the next Azure Stack Hub update after 1910 is released and you attempt to install it, the update will fail if you have not completed the /20 input as described in the remediation steps as follows. An alert will be present in the admin portal until the above remediation steps have been completed. See the [Datacenter network integration](azure-stack-network.md#private-network) article to understand how this new private space will be consumed. 
+  - Please note that the /20 input serves as a prerequisite to the next Azure Stack Hub update after 1910. When the next Azure Stack Hub update after 1910 is released and you attempt to install it, the update will fail if you haven't completed the /20 input as described in the remediation steps as follows. An alert will be present in the administrator portal until the above remediation steps have been completed. See the [Datacenter network integration](azure-stack-network.md#private-network) article to understand how this new private space will be consumed.
 
-  - Remediation steps: To remediate, follow the instructions to [open a PEP Session](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Prepare a [private internal IP range](azure-stack-network.md#logical-networks) of size /20, and run the following cmdlet (only available starting with 1910) in the PEP session using the following example: `Set-AzsPrivateNetwork -UserSubnet 100.87.0.0/20`. If the operation is performed successfully, you will receive the message **Azs Internal Network range added to the config**. If successfully completed, the alert will close in the admin portal. The Azure Stack Hub system will now be able to update to the next version.
+  - Remediation steps: To remediate, follow the instructions to [open a PEP Session](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Prepare a [private internal IP range](azure-stack-network.md#logical-networks) of size /20, and run the following cmdlet (only available starting with 1910) in the PEP session using the following example: `Set-AzsPrivateNetwork -UserSubnet 100.87.0.0/20`. If the operation is performed successfully, you'll receive the message **Azs Internal Network range added to the config**. If successfully completed, the alert will close in the administrator portal. The Azure Stack Hub system will now be able to update to the next version.
   
 - The infrastructure backup service deletes partially uploaded backup data if the external storage location runs out of capacity during the upload procedure.  
 
@@ -164,7 +164,7 @@ For more information about update build types, see [Manage updates in Azure Stac
            - Support single role restore for Azures stack infrastructure backup. <br />
            - Add parameter `RoleName` to cmdlet `Restore-AzsBackup`.
    - **FRP**: Breaking changes for **Drive** and **Volume** resources with API version `2019-05-01`. The features are supported by Azure Stack Hub 1910 and later: <br />
-            - The value of `ID`, `Name`, `HealthStatus` and `OperationalStatus` have been changed. <br />
+            - The value of `ID`, `Name`, `HealthStatus`, and `OperationalStatus` have been changed. <br />
             - Supported new properties `FirmwareVersion`, `IsIndicationEnabled`, `Manufacturer`, and `StoragePool` for **Drive** resources. <br />
             - The properties `CanPool` and `CannotPoolReason` of **Drive** resources have been deprecated; use `OperationalStatus` instead.
 
@@ -173,10 +173,10 @@ For more information about update build types, see [Manage updates in Azure Stac
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
 
 - Fixed an issue that prevented enforcing TLS 1.2 policy on environments deployed prior to the Azure Stack Hub 1904 release.
-- Fixed an issue where an Ubuntu 18.04 VM created with SSH authorization enabled does not allow you to use the SSH keys to sign in. 
+- Fixed an issue where an Ubuntu 18.04 VM created with SSH authorization enabled doesn't allow you to use the SSH keys to sign in.
 - Removed **Reset Password** from the Virtual Machine Scale Set UI.
-- Fixed an issue where deleting the load balancer from the portal did not result in the deletion of the object in the infrastructure layer.
-- Fixed an issue that showed an inaccurate percentage of the Gateway Pool utilization alert on the admin portal.
+- Fixed an issue where deleting the load balancer from the portal didn't result in the deletion of the object in the infrastructure layer.
+- Fixed an issue that showed an inaccurate percentage of the Gateway Pool utilization alert on the administrator portal.
 <!-- Fixed an issue where adding more than one public IP on the same NIC on a Virtual Machine resulted in internet connectivity issues. Now, a NIC with two public IPs should work as expected.[This fix actually didn't go in 1910 due to build issues, commenting out until next build (2002) ] -->
 
 ## Security updates
@@ -199,7 +199,7 @@ You can download the Azure Stack Hub 1910 update package from [the Azure Stack H
 
 Azure Stack Hub releases hotfixes on a regular basis. Be sure to install the latest Azure Stack Hub hotfix for 1908 before updating Azure Stack Hub to 1910.
 
-Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
+Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; don't attempt to install hotfixes on the ASDK.
 
 ### Prerequisites: Before applying the 1910 update
 
@@ -550,14 +550,14 @@ Systems that can access the internet from the infrastructure network will see th
 
 ## Archive
 
-To access archived release notes for an older version, use the version selector dropdown above the table of contents on the left, and select the version you want to see.
+To access archived release notes for an older version, use the version selector dropdown above the table of contents on the left and select the version you want to see.
 
 ## Next steps
 
 - For an overview of the update management in Azure Stack Hub, see [Manage updates in Azure Stack Hub overview](azure-stack-updates.md).  
 - For more information about how to apply updates with Azure Stack Hub, see [Apply updates in Azure Stack Hub](azure-stack-apply-updates.md).
-- To review the servicing policy for Azure Stack Hub integrated systems, and what you must do to keep your system in a supported state, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md).  
-- To use the Privileged End Point (PEP) to monitor and resume updates, see [Monitor updates in Azure Stack Hub using the privileged endpoint](azure-stack-monitor-update.md).
+- To review the servicing policy for Azure Stack Hub integrated systems and what you must do to keep your system in a supported state, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md).  
+- To use the privileged endpoint (PEP) to monitor and resume updates, see [Monitor updates in Azure Stack Hub using the privileged endpoint](azure-stack-monitor-update.md).
 ::: moniker-end
 
 <!------------------------------------------------------------>
