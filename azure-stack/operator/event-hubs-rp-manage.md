@@ -67,8 +67,9 @@ Selecting **Alerts** on the main page displays the list of alerts issued. Select
 
 For more information on Azure Stack Hub monitoring capability, including alerting, see [Monitor Health and Alerts](azure-stack-monitor-health.md). For details on collecting logs, see [Overview of Azure Stack diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md).
 
-::: moniker test
-::: moniker-stop
+::: moniker range=">=azs-2906"
+test
+::: moniker-end
 
 ## Event Hubs clusters
 
