@@ -1,6 +1,6 @@
 ---
-title: How to replicate resources across multiple Azure Stack subscriptions | Microsoft Docs
-description: Learn how to replicate resources using the Azure Stack subscription replicator set of scripts.
+title: How to replicate resources across multiple Azure Stack Hub subscriptions | Microsoft Docs
+description: Learn how to replicate resources using the Azure Stack Hub subscription replicator set of scripts.
 services: azure-stack
 author: mattbriggs
 
@@ -12,12 +12,12 @@ ms.reviewer: rtiberiu
 ms.lastreviewed: 11/07/2019
 
 # keywords:  X
-# Intent: As an Azure Stack Operator, I want < what? > so that < why? >
+# Intent: As an Azure Stack Hub Operator, I want < what? > so that < why? >
 ---
 
-# How to replicate resources using the Azure Stack subscription replicator
+# Replicate resources using the Azure Stack Hub subscription replicator
 
-You can use the Azure Stack subscription replicator PowerShell script to copy the resources between Azure Stack subscriptions, across Azure Stack stamps, or between Azure Stack and Azure. The replicator script reads and rebuilds the Azure Resource Manager resources from different Azure and Azure Stack subscriptions. This article looks at how the script works, how you can use the script, and provides a reference for script operations.
+You can use the Azure Stack Hub subscription replicator PowerShell script to copy the resources between Azure Stack Hub subscriptions, across Azure Stack Hub stamps, or between Azure Stack Hub and Azure. The replicator script reads and rebuilds the Azure Resource Manager resources from different Azure and Azure Stack Hub subscriptions. This article looks at how the script works, how you can use the script, and provides a reference for script operations.
 
 You can find the scripts used in this article in the [Azure Intelligent Edge Patterns](https://github.com/Azure-Samples/azure-intelligent-edge-patterns) GitHub repository. The scripts are in the [subscription replicator](https://github.com/Azure-Samples/azure-intelligent-edge-patterns/tree/master/subscription%20replicator) folder.
 
@@ -82,7 +82,7 @@ To run the Azure subscription replicator (v3) tool you’ll need to kick off res
 When the script is finished executing, there will be three new folders, **Deployment_Files**, **Parameter_Files**, and **Custom_ARM_Templates**.
 
  > [!Note]  
- > Before you run any of the generated scripts, you must set the right environment and login to the target subscription (in the new Azure Stack for ex) and set the working directory to the **Deployment_Files** folder.
+ > Before you run any of the generated scripts, you must set the right environment and login to the target subscription (in the new Azure Stack Hub for ex) and set the working directory to the **Deployment_Files** folder.
 
 Deployment_Files will hold two files **DeployResourceGroups.ps1** and **DeployResources.ps1**. Executing DeployResourceGroups.ps1 will deploy the resource groups. Executing DeployResources.ps1 will deploy all of the resources that were processed. In the case that the tool was executed with **All** or **Microsoft.Compute/virtualMachines** as the resource type, DeployResources.ps1 will prompt the user to input a virtual machine admin password that will be used to create all of the virtual machines.
 
@@ -192,10 +192,10 @@ The tool can replicate resources from one subscription to another as long as the
 
 To ensure successful replication, mare sure that the target subscription’s resource provider versions match those of the source subscription.
 
-When replicating from commercial Azure to commercial Azure or from one subscription within Azure Stack to another subscription within the same Azure Stack, there will be issues when replicating storage accounts. This is due to the storage account naming requirement that all storage account names be unique across all of commercial Azure or across all subscriptions on an Azure Stack region/instance. Replicating storage accounts across different Azure Stack instances will succeed as the Stacks are separate regions/instances.
+When replicating from commercial Azure to commercial Azure or from one subscription within Azure Stack Hub to another subscription within the same Azure Stack Hub, there will be issues when replicating storage accounts. This is due to the storage account naming requirement that all storage account names be unique across all of commercial Azure or across all subscriptions on an Azure Stack Hub region/instance. Replicating storage accounts across different Azure Stack Hub instances will succeed as the Stacks are separate regions/instances.
 
 
 
 ## Next steps
 
-[Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)  
+[Differences and considerations for Azure Stack Hub networking](azure-stack-network-differences.md)  

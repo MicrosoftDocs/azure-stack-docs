@@ -1,6 +1,6 @@
 ---
-title: How to back up your VM on Azure Stack with Commvault | Microsoft Docs
-description: Learn how to Back up your VM on Azure Stack with Commvault.
+title: How to back up your VM on Azure Stack Hub with Commvault | Microsoft Docs
+description: Learn how to Back up your VM on Azure Stack Hub with Commvault.
 services: azure-stack
 author: mattbriggs
 
@@ -12,16 +12,14 @@ ms.reviewer: sijuman
 ms.lastreviewed: 10/30/2019
 
 # keywords:  X
-# Intent: As an Azure Stack Operator, I want < what? > so that < why? >
+# Intent: As an Azure Stack Hub Operator, I want < what? > so that < why? >
 ---
 
-# Back up your VM on Azure Stack with Commvault
-
-*Applies to: Azure Stack integrated systems and the Azure Stack Development Kit*
+# Back up your VM on Azure Stack Hub with Commvault
 
 ## Overview of backing up a VM with Commvault
 
-This article walks through the configuration of Commvault Live Sync to update a recovery VM located on a separate Azure Stack scale unit. This article details how to configure a common partner solution to protect and recover the data and system state of Virtual Machines deployed on Azure Stack.
+This article walks through the configuration of Commvault Live Sync to update a recovery VM located on a separate Azure Stack Hub scale unit. This article details how to configure a common partner solution to protect and recover the data and system state of Virtual Machines deployed on Azure Stack Hub.
 
 The following diagram shows you the overall solution when using Commvault to back up your VMs.
 
@@ -29,15 +27,15 @@ The following diagram shows you the overall solution when using Commvault to bac
 
 In this article you will:
 
-1. Create a VM running the Commvault software on your source Azure Stack Instance.
+1. Create a VM running the Commvault software on your source Azure Stack Hub Instance.
 
-2. Create a storage account in a secondary location. The article assumes you will create a Blob container in a storage account in an Azure Stack instance separate (the target), and that the target Azure Stack is reachable from the source Azure Stack.
+2. Create a storage account in a secondary location. The article assumes you will create a Blob container in a storage account in an Azure Stack Hub instance separate (the target), and that the target Azure Stack Hub is reachable from the source Azure Stack Hub.
 
-3. Configure Commvault on your source Azure Stack Instance and add VMs in the source Azure Stack to the VM group.
+3. Configure Commvault on your source Azure Stack Hub Instance and add VMs in the source Azure Stack Hub to the VM group.
 
 4. Configure Commvault's LifeSync.
 
-You can also download and offer compatible partner VM images to protect your Azure Stack VMs to an Azure Cloud or another Azure Stack. This article will illustrate VM protection with Commvault Live Sync.
+You can also download and offer compatible partner VM images to protect your Azure Stack Hub VMs to an Azure Cloud or another Azure Stack Hub. This article will illustrate VM protection with Commvault Live Sync.
 
 The topology of this approach will look like the following diagram:
 
@@ -45,7 +43,7 @@ The topology of this approach will look like the following diagram:
 
 ## Create the Commvault VM form the Commvault Marketplace Item
 
-1. Open the Azure Stack user portal.
+1. Open the Azure Stack Hub user portal.
 
 2. Select **Create a resource** > **Compute** > **Commvault**.
 
@@ -70,7 +68,7 @@ The topology of this approach will look like the following diagram:
     
     g. Select a **Resource group**.
     
-    h. Select the **Location** of the Azure Stack. If you are using an ASDK, select **local**.
+    h. Select the **Location** of the Azure Stack Hub. If you are using an ASDK, select **local**.
     
     i. Select **OK**.
 
@@ -110,31 +108,31 @@ The topology of this approach will look like the following diagram:
 
 ## Get your service principal
 
-You will need to know if your identity manager is Azure AD or AD DFS. The following table contains the information you will need to set up the Commvault in your Azure Stack.
+You will need to know if your identity manager is Azure AD or AD DFS. The following table contains the information you will need to set up the Commvault in your Azure Stack Hub.
 
 | Element | Description | Source |
 |--------------------------|--------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure Resource Manager URL | The Azure Stack Resource Manager endpoint. | https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-ruby?view=azs-1908#the-azure-stack-resource-manager-endpoint |
+| Azure Resource Manager URL | The Azure Stack Hub Resource Manager endpoint. | https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles-ruby?view=azs-1908#the-azure-stack-hub-resource-manager-endpoint |
 | Application name |  |  |
 | Application ID | The service principal app ID saved when the service principal was created in the previous section of this article. | https://docs.microsoft.com/azure-stack/operator/azure-stack-create-service-principals?view=azs-1908 |
-| Subscription ID | You use the subscription ID to access offers in Azure Stack. | https://docs.microsoft.com/azure-stack/operator/service-plan-offer-subscription-overview?view=azs-1908#subscriptions |
-| Tenant ID (Directory ID) | Your Azure Stack tenant ID. | https://docs.microsoft.com/azure-stack/operator/azure-stack-identity-overview?view=azs-1908 |
+| Subscription ID | You use the subscription ID to access offers in Azure Stack Hub. | https://docs.microsoft.com/azure-stack/operator/service-plan-offer-subscription-overview?view=azs-1908#subscriptions |
+| Tenant ID (Directory ID) | Your Azure Stack Hub tenant ID. | https://docs.microsoft.com/azure-stack/operator/azure-stack-identity-overview?view=azs-1908 |
 | Application password | The service principal app secret saved when the service principal was created. | https://docs.microsoft.com/azure-stack/operator/azure-stack-create-service-principals?view=azs-1908 |
 
 ## Configure backup using the Commvault Console
 
-1. Open your RDP client and connect to the Commavult VM in your Azure Stack. Enter your credentials.
+1. Open your RDP client and connect to the Commavult VM in your Azure Stack Hub. Enter your credentials.
 
-2. Install Azure Stack PowerShell and Azure Stack Tools on the Commvault VM.
+2. Install Azure Stack Hub PowerShell and Azure Stack Hub Tools on the Commvault VM.
 
-    a. For instructions on installing Azure Stack PowerShell, see [Install PowerShell for Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json).  
-    b. For instructions on installing Azure Stack Tools, see [Download Azure Stack tools from GitHub](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-download?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json%3Fview%3Dazs-1908&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json%3Fview%3Dazs-1908&view=azs-1908).
+    a. For instructions on installing Azure Stack Hub PowerShell, see [Install PowerShell for Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json).  
+    b. For instructions on installing Azure Stack Hub Tools, see [Download Azure Stack Hub tools from GitHub](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-download?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2FTOC.json%3Fview%3Dazs-1908&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json%3Fview%3Dazs-1908&view=azs-1908).
 
 3. After Commvault installs on in your Commvault VM, open the Commcell Console. From Start, select **Commvault** > **Commvault Commcell Console**.
 
     ![](./media/azure-stack-network-howto-backup-commvault/commcell-console.png)
 
-4. Configure your backup repositories to use storage external to the Azure Stack in the Commvault Commcell Console. In the CommCell Browser, select Storage Resources > Storage Pools. Right-click and select **Add Storage Pool.** Select **Cloud**.
+4. Configure your backup repositories to use storage external to the Azure Stack Hub in the Commvault Commcell Console. In the CommCell Browser, select Storage Resources > Storage Pools. Right-click and select **Add Storage Pool.** Select **Cloud**.
 
 5. Add the name of the Storage Pool. Select **Next**.
 
@@ -142,7 +140,7 @@ You will need to know if your identity manager is Azure AD or AD DFS. The follow
 
     ![](./media/azure-stack-network-howto-backup-commvault/commcell-storage-add-storage-device.png)
 
-7. Select your cloud service provider. In this procedure, we will use a second Azure Stack in a different location. Select Microsoft Azure Storage.
+7. Select your cloud service provider. In this procedure, we will use a second Azure Stack Hub in a different location. Select Microsoft Azure Storage.
 
 8. Select your Commvault VM as your MediaAgent.
 
@@ -158,7 +156,7 @@ You will need to know if your identity manager is Azure AD or AD DFS. The follow
     
     -   **Storage Class**: Leave as User container's default storage class.
 
-10. Create a Microsoft Azure Stack Client by following the instructions at [Creating a Microsoft Azure Stack Client](https://documentation.commvault.com/commvault/v11_sp13/article?p=86495.htm)
+10. Create a Microsoft Azure Stack Hub Client by following the instructions at [Creating a Microsoft Azure Stack Hub Client](https://documentation.commvault.com/commvault/v11_sp13/article?p=86495.htm)
 
     ![](./media/azure-stack-network-howto-backup-commvault/commcell-ceate-client.png)
 
@@ -172,13 +170,13 @@ You will need to know if your identity manager is Azure AD or AD DFS. The follow
 
 Two options are available. You can choose to replicate changes from the primary copy of backups or replicate changes from a secondary copy to the recovery VM. Replicating from a Backup Set eliminates the Read IO impact on the source machine.
 
-1. During the configuration of Live Sync, you will need to provide the source Azure Stack (Virtual Server Agent) and the target Azure Stack details.
+1. During the configuration of Live Sync, you will need to provide the source Azure Stack Hub (Virtual Server Agent) and the target Azure Stack Hub details.
 
-2. For the steps to configure Commvault Live Sync, see [Live Sync Replication for Microsoft Azure Stack](https://documentation.commvault.com/commvault/v11_sp13/article?p=94386.htm).
+2. For the steps to configure Commvault Live Sync, see [Live Sync Replication for Microsoft Azure Stack Hub](https://documentation.commvault.com/commvault/v11_sp13/article?p=94386.htm).
 
     ![](./media/azure-stack-network-howto-backup-commvault/live-sync-1.png)
  
-3. During the configuration of Live Sync, you will need to provide the target Azure Stack and Virtual Server Agent details.
+3. During the configuration of Live Sync, you will need to provide the target Azure Stack Hub and Virtual Server Agent details.
 
     ![](./media/azure-stack-network-howto-backup-commvault/live-sync-2.png)
 
@@ -188,7 +186,7 @@ Two options are available. You can choose to replicate changes from the primary 
 
 5. You can also change the VM size and configure network settings by selecting  **Configure** next to each VM.
 
-6. Set the frequency of replication to the target Azure Stack
+6. Set the frequency of replication to the target Azure Stack Hub
 
     ![](./media/azure-stack-network-howto-backup-commvault/live-sync-5.png)
 
@@ -197,11 +195,11 @@ Two options are available. You can choose to replicate changes from the primary 
 
 ## Set up failover behavior using Live Sync
 
-Commvault Live Sync allows you to failover machines from one Azure Stack to another and failback to resume operations on the original Azure Stack. The workflow is automated and logged.
+Commvault Live Sync allows you to failover machines from one Azure Stack Hub to another and failback to resume operations on the original Azure Stack Hub. The workflow is automated and logged.
 
 ![](./media/azure-stack-network-howto-backup-commvault/back-up-live-sync-panel.png)
 
-Select the VMs you wish to failover to your Recovery Azure Stack and choose a planned or unplanned failover. A planned failover is appropriate when there is time to gracefully shut down the production environment before resuming operations in the recovery site. Planned failover shuts down the production VMs, replicates final changes to the recovery site, and brings the recovery VMs online with the latest data and applies the VM size and network configuration specified during the Live Sync configuration. An unplanned failover will attempt to shut down the production VMs, but will proceed if the production environment is unavailable and simply bring the recovery VMs online with the last received replication data set applied to the VM and the size and network configuration previously chosen. The images below illustrate an unplanned failover where the recovery VMs have been brought online by Commvault Live Sync.
+Select the VMs you wish to failover to your Recovery Azure Stack Hub and choose a planned or unplanned failover. A planned failover is appropriate when there is time to gracefully shut down the production environment before resuming operations in the recovery site. Planned failover shuts down the production VMs, replicates final changes to the recovery site, and brings the recovery VMs online with the latest data and applies the VM size and network configuration specified during the Live Sync configuration. An unplanned failover will attempt to shut down the production VMs, but will proceed if the production environment is unavailable and simply bring the recovery VMs online with the last received replication data set applied to the VM and the size and network configuration previously chosen. The images below illustrate an unplanned failover where the recovery VMs have been brought online by Commvault Live Sync.
 
 ![](./media/azure-stack-network-howto-backup-commvault/unplanned-failover.png)
 
@@ -211,4 +209,4 @@ Select the VMs you wish to failover to your Recovery Azure Stack and choose a pl
 
 ## Next steps
 
-[Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)  
+[Differences and considerations for Azure Stack Hub networking](azure-stack-network-differences.md)  

@@ -49,7 +49,11 @@
     "master": [
       "Publish",
       "PDF"
-    ]
+    ],
+    "release-tzl": [
+      "Publish",
+      "PDF"
+    ]    
   },
   "need_generate_pdf_url_template": true,
   "targets": {

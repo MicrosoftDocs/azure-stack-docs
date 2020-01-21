@@ -1,6 +1,6 @@
 ---
 title: Azure Stack Hub public key infrastructure certificate requirements
-description: Learn about the certificate deployment requirements for Azure Stack Hub integrated systems.
+description: Learn about the Azure Stack Hub PKI certificate deployment requirements for Azure Stack Hub integrated systems.
 services: azure-stack
 documentationcenter: ''
 author: justinha
@@ -53,7 +53,7 @@ The following list describes the certificate requirements that are needed to dep
 
 > [!NOTE]  
 > Self-signed certificates aren't supported.  
-> When deploying Azure Stack Hub in disconnected mode it is recommended to use certificates issued by an enterprise certificate authority. This is important because clients accessing Azure Stack endpoints must be able to contact the certificate revocation list (CRL).
+> When deploying Azure Stack Hub in disconnected mode it is recommended to use certificates issued by an enterprise certificate authority. This is important because clients accessing Azure Stack Hub endpoints must be able to contact the certificate revocation list (CRL).
 
 > [!NOTE]  
 > The presence of Intermediary Certificate Authorities in a certificate's chain-of-trusts *is* supported.

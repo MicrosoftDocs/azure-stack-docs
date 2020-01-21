@@ -1,6 +1,6 @@
 ---
-title: Introduction to Azure Stack Storage | Microsoft Docs
-description: Learn about Azure Stack Storage services.
+title: Introduction to Azure Stack Hub Storage | Microsoft Docs
+description: Learn about Azure Stack Hub Storage services.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -17,17 +17,15 @@ ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
 
 ---
-# Introduction to Azure Stack storage
-
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Introduction to Azure Stack Hub storage
 
 ## Overview
 
-Azure Stack Storage is a set of cloud storage services consistent with the services provided by Azure Storage. These services include blobs, tables, and queues.
+Azure Stack Hub Storage is a set of cloud storage services consistent with the services provided by Azure Storage. These services include blobs, tables, and queues.
 
-## Azure Stack Storage services
+## Azure Stack Hub Storage services
 
-Azure Stack Storage provides the following three services:
+Azure Stack Hub Storage provides the following three services:
 
 - **Blob storage**
 
@@ -41,9 +39,9 @@ Azure Stack Storage provides the following three services:
 
     Queue storage provides reliable messaging for workflow processing and for communication between components of cloud services.
 
-An Azure Stack Storage account is a secure account that gives you access to services in Azure Stack Storage. Your storage account provides the unique namespace for your storage resources. The following diagram shows the relationships between the Azure Stack Storage resources in a storage account:
+An Azure Stack Hub Storage account is a secure account that gives you access to services in Azure Stack Hub Storage. Your storage account provides the unique namespace for your storage resources. The following diagram shows the relationships between the Azure Stack Hub Storage resources in a storage account:
 
-![Azure Stack Storage overview](media/azure-stack-storage-overview/AzureStackStorageOverview.png)
+![Azure Stack Hub Storage overview](media/azure-stack-storage-overview/AzureStackStorageOverview.png)
 
 ### Blob storage
 
@@ -70,7 +68,7 @@ Blob storage offers three types of blobs:
 
 - **Page blobs**
 
-    Page blobs are optimized for representing IaaS disks and supporting random writes up to 1 TB in size. An Azure Stack virtual machine attached IaaS disk is a VHD stored as a page blob.
+    Page blobs are optimized for representing IaaS disks and supporting random writes up to 1 TB in size. An Azure Stack Hub virtual machine attached IaaS disk is a VHD stored as a page blob.
 
 ### Table storage
 

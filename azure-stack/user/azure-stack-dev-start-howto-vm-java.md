@@ -1,6 +1,6 @@
 ---
-title: Deploy a Java WAR to a virtual machine in Azure Stack | Microsoft Docs
-description:  Deploy a Java WAR to a virtual machine in Azure Stack.
+title: Deploy a Java WAR to a virtual machine in Azure Stack Hub | Microsoft Docs
+description:  Deploy a Java WAR to a virtual machine in Azure Stack Hub.
 services: azure-stack
 author: mattbriggs
 
@@ -11,18 +11,18 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
 
-# keywords:  Deploy an app to Azure Stack
-# Intent: I am a developer using Windows 10 or Linux Ubuntu who would like to deploy an app for Azure Stack.
+# keywords:  Deploy an app to Azure Stack Hub
+# Intent: I am a developer using Windows 10 or Linux Ubuntu who would like to deploy an app for Azure Stack Hub.
 ---
 
 
-# Deploy a Java web app to a VM in Azure Stack
+# Deploy a Java web app to a VM in Azure Stack Hub
 
-You can create a virtual machine (VM) to host your Python web app in Azure Stack. In this article, you install and configure an Apache Tomcat server on a Linux VM in Azure Stack. You then load a Java Web Application Resource (WAR) file into the server. A WAR file is used to distribute a collection of Java archive (JAR) files, compressed files that contain Java resources such as classes, text, images, XML, and HTML, and other resources that are used to deliver a web application.
+You can create a virtual machine (VM) to host your Python web app in Azure Stack Hub. In this article, you install and configure an Apache Tomcat server on a Linux VM in Azure Stack Hub. You then load a Java Web Application Resource (WAR) file into the server. A WAR file is used to distribute a collection of Java archive (JAR) files, compressed files that contain Java resources such as classes, text, images, XML, and HTML, and other resources that are used to deliver a web application.
 
 ## Create a VM
 
-1. Set up your VM in Azure Stack by following the instructions in [Deploy a Linux VM to host a web app in Azure Stack](azure-stack-dev-start-howto-deploy-linux.md).
+1. Set up your VM in Azure Stack Hub by following the instructions in [Deploy a Linux VM to host a web app in Azure Stack Hub](azure-stack-dev-start-howto-deploy-linux.md).
 
 2. In the VM network pane, make sure that the following ports are accessible:
 
@@ -174,11 +174,11 @@ You can create a virtual machine (VM) to host your Python web app in Azure Stack
         sudo ufw allow 8080
     ```
 
-    If you haven't added the *Inbound port rules* for your Azure Stack VM, add them now. For more information, see [Create a VM](#create-a-vm).
+    If you haven't added the *Inbound port rules* for your Azure Stack Hub VM, add them now. For more information, see [Create a VM](#create-a-vm).
 
-1. Open a browser in the same network as your Azure Stack, and then open your server, *yourmachine.local.cloudapp.azurestack.external:8080*.
+1. Open a browser in the same network as your Azure Stack Hub, and then open your server, *yourmachine.local.cloudapp.azurestack.external:8080*.
 
-    ![Apache Tomcat on an Azure Stack VM](media/azure-stack-dev-start-howto-vm-java/apache-tomcat.png)
+    ![Apache Tomcat on an Azure Stack Hub VM](media/azure-stack-dev-start-howto-vm-java/apache-tomcat.png)
 
     The Apache Tomcat page on your server loads. Next, you configure the server to allow you to access the Server Status, Manager App, and Host Manager.
 
@@ -217,7 +217,7 @@ You can create a virtual machine (VM) to host your Python web app in Azure Stack
 
     c. Save and close the file.
 
-1. Tomcat restricts access to the *Manager* and *Host Manager* apps to connections coming from the server. Because you're installing Tomcat on a VM in Azure Stack, you'll want to remove this restriction. Change the IP address restrictions on these apps by editing the appropriate *context.xml* files.
+1. Tomcat restricts access to the *Manager* and *Host Manager* apps to connections coming from the server. Because you're installing Tomcat on a VM in Azure Stack Hub, you'll want to remove this restriction. Change the IP address restrictions on these apps by editing the appropriate *context.xml* files.
 
     a. Update *context.xml* in the Manager app:
 
@@ -250,13 +250,13 @@ You can create a virtual machine (VM) to host your Python web app in Azure Stack
         sudo systemctl restart tomcat
     ```
 
-1. Open a browser in the same network as your Azure Stack, and then open your server: *yourmachine.local.cloudapp.azurestack.external:8080*.
+1. Open a browser in the same network as your Azure Stack Hub, and then open your server: *yourmachine.local.cloudapp.azurestack.external:8080*.
 
     a. To review the status of the Tomcat server and verify that you have access, select **Server Status**.
 
     b. Sign in with your Tomcat credentials.
 
-    ![Apache Tomcat on an Azure Stack VM](media/azure-stack-dev-start-howto-vm-java/apache-tomcat-management-app.png)
+    ![Apache Tomcat on an Azure Stack Hub VM](media/azure-stack-dev-start-howto-vm-java/apache-tomcat-management-app.png)
 
 ## Create an app
 
@@ -274,7 +274,7 @@ For guidance about developing Java apps in Azure, see [Build and deploy Java app
         sudo systemctl stop tomcat
     ```
 
-1. To be able to write to the webapps folder, add your FTP user to the Tomcat group. Your FTP user is the user you define when you create your VM in Azure Stack.
+1. To be able to write to the webapps folder, add your FTP user to the Tomcat group. Your FTP user is the user you define when you create your VM in Azure Stack Hub.
 
     ```bash  
         sudo usermod -a -G tomcat <VM-user>
@@ -294,6 +294,6 @@ For guidance about developing Java apps in Azure, see [Build and deploy Java app
     
 ## Next steps
 
-- Learn more about how to [develop for Azure Stack](azure-stack-dev-start.md).
-- Learn about [common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
+- Learn more about how to [develop for Azure Stack Hub](azure-stack-dev-start.md).
+- Learn about [common deployments for Azure Stack Hub as IaaS](azure-stack-dev-start-deploy-app.md).
 - To learn the Java programming language and find additional resources for Java, see [Java.com](https://www.java.com).

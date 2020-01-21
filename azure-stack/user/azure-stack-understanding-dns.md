@@ -1,6 +1,6 @@
 ---
-title: Use iDNS in Azure Stack | Microsoft Docs
-description: Learn how to use iDNS features and capabilities in Azure Stack.
+title: Use iDNS in Azure Stack Hub | Microsoft Docs
+description: Learn how to use iDNS features and capabilities in Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: Justinha
@@ -18,15 +18,13 @@ ms.reviewer: scottnap
 ms.lastreviewed: 01/14/2019
 
 ---
-# Use iDNS in Azure Stack 
+# Use iDNS in Azure Stack Hub 
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
-iDNS is an Azure Stack networking feature that enables you to resolve external DNS names (for example, https:\//www.bing.com.) It also allows you to register internal virtual network names. By doing so, you can resolve virtual machines (VMs) on the same virtual network by name rather than IP address. This approach removes the need to provide custom DNS server entries. For more information about DNS, see the [Azure DNS Overview](https://docs.microsoft.com/azure/dns/dns-overview).
+iDNS is an Azure Stack Hub networking feature that enables you to resolve external DNS names (for example, https:\//www.bing.com.) It also allows you to register internal virtual network names. By doing so, you can resolve virtual machines (VMs) on the same virtual network by name rather than IP address. This approach removes the need to provide custom DNS server entries. For more information about DNS, see the [Azure DNS Overview](https://docs.microsoft.com/azure/dns/dns-overview).
 
 ## What does iDNS do?
 
-With iDNS in Azure Stack, you get the following capabilities, without having to specify custom DNS server entries:
+With iDNS in Azure Stack Hub, you get the following capabilities, without having to specify custom DNS server entries:
 
 - Shared DNS name resolution services for tenant workloads.
 - Authoritative DNS service for name resolution and DNS registration within the tenant virtual network.
@@ -44,7 +42,7 @@ In Azure, you have the option of specifying a DNS name label that is associated 
 
 As the previous image shows, Azure will create an "A" record in DNS for the DNS name label specified under the zone **westus.cloudapp.azure.com**. The prefix and the suffix are combined to compose a [fully qualified domain name](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) (FQDN) that can be resolved from anywhere on the public internet.
 
-Azure Stack only supports iDNS for internal name
+Azure Stack Hub only supports iDNS for internal name
 registration, so it can't do the following things:
 
 - Create a DNS record under an existing hosted DNS zone (for example, local.azurestack.external.)
@@ -191,4 +189,4 @@ As you can see from the lab results, you have control over what IP is used. If y
 
 ## Next steps
 
-[Using DNS in Azure Stack](azure-stack-dns.md)
+[Using DNS in Azure Stack Hub](azure-stack-dns.md)

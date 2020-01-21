@@ -21,14 +21,14 @@
     href: azure-stack-quick-create-vm-linux-cli.md
 - name: Tutorials
   items:
+    - name: Subscribe to an offer
+      href: azure-stack-subscribe-services.md
     - name: Create a VM from a template
       href: azure-stack-create-vm-template.md
 - name: How-to guides
   items:
   - name: Get started building solutions for the hybrid cloud
     items:
-      - name: Subscribe to an offer
-        href: azure-stack-subscribe-services.md
       - name: Enable a Cloud Solution Provider
         href: azure-stack-csp-enable-billing-usage-tracking.md
       - name: Use the Azure Stack Hub Portal
@@ -43,7 +43,7 @@
           items: 
           - name: Azure Stack Hub PowerShell overview
             href: azure-stack-powershell-overview.md
-          - name: Install Azure Stack PowerShell
+          - name: Install Azure Stack Hub PowerShell
             href: /azure-stack/operator/azure-stack-powershell-install?toc=/azure-stack/user/toc.json&bc=/azure-stack/breadcrumb/toc.json
             maintainContext: true
           - name: Connect with PowerShell
@@ -284,14 +284,14 @@
       items:
         - name: Connect to iSCSI storage
           href: azure-stack-network-howto-iscsi-storage.md
-        - name: Extend the data center
+        - name: Extend the datacenter
           href: azure-stack-network-howto-extend-datacenter.md
     - name: VNET peering
     - name: Back up and recovery
       items:
-      - name: Back up your VM on Azure Stack with Commvault
+      - name: Back up your VM on Azure Stack Hub with Commvault
         href: azure-stack-network-howto-backup-commvault.md
-      - name: Back up your storage accounts on Azure Stack
+      - name: Back up your storage accounts on Azure Stack Hub
         href: azure-stack-network-howto-backup-storage.md
       - name: Copy subscription resources
         href: azure-stack-network-howto-backup-replicator.md
@@ -311,7 +311,7 @@
         href: iaas-architecture-nva-architecture.md
 - name: Reference
   items:
-  - name: Azure Stack PowerShell
+  - name: Azure Stack Hub PowerShell
     href: /powershell/azure/azure-stack/overview?view=azurestackps-1.3.0
   - name: Azure Stack Hub REST API Browser
     href: /rest/api/
@@ -325,11 +325,11 @@
     href: /azure-stack/asdk/
 - name: Resources
   items:
-  - name: Azure Stack roadmap
+  - name: Azure Stack Hub roadmap
     href: https://azure.microsoft.com/roadmap/?tag=azure-stack
-  - name: Azure Stack MSDN forum
+  - name: Azure Stack Hub MSDN forum
     href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack
-  - name: Azure Stack Documentation feedback
+  - name: Azure Stack Hub Documentation feedback
     href: https://feedback.azure.com/forums/344565-azure-stack?category_id=160275
   - name: Pricing information
     href: https://azure.microsoft.com/overview/azure-stack/how-to-buy/

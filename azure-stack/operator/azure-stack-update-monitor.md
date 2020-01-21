@@ -1,6 +1,6 @@
 ---
-title: Monitor updates in Azure Stack using Powershell | Microsoft Docs
-description: Learn to monitor updates in Azure Stack using Powershell
+title: Monitor updates in Azure Stack Hub using Powershell | Microsoft Docs
+description: Learn to monitor updates in Azure Stack Hub using Powershell
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -19,11 +19,9 @@ ms.reviewer: ppacent
 
 ---
 
-# Monitor updates in Azure Stack using Powershell
+# Monitor updates in Azure Stack Hub using Powershell
 
-*Applies to: Azure Stack integrated systems*
-
-You can use the Azure Stack administrative endpoints to monitor and manage your updates. They're accessible with PowerShell. For instructions on getting set up with PowerShell on Azure Stack, see [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).
+You can use the Azure Stack Hub administrative endpoints to monitor and manage your updates. They're accessible with PowerShell. For instructions on getting set up with PowerShell on Azure Stack Hub, see [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
 
 You can use the following PowerShell cmdlet to manage your updates:
 
@@ -53,4 +51,4 @@ Get-AzsUpdateRun -Name 5173e9f4-3040-494f-b7a7-738a6331d55c -UpdateName Microsof
 
 ## Next steps
 
--   [Managing updates in Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates)
+-   [Managing updates in Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-updates)

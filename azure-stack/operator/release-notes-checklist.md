@@ -13,33 +13,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2019
+ms.date: 01/14/2020
 ms.author: sethm
 ms.reviewer: ppacent
-ms.lastreviewed: 12/10/2019
+ms.lastreviewed: 01/14/2020
 
 ---
 
 # Azure Stack Hub update activity checklist
 
-*Applies to: Azure Stack Hub integrated systems*
-
 Review this checklist in order to prepare for an Azure Stack Hub update. This article contains a checklist of update-related activities for Azure Stack Hub operators.
 
 ## Prepare for Azure Stack Hub update
 
-| Activity                     | Details                                                   |
+| &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Activity &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                   | Details                                                   |
 |------------------------------|-----------------------------------------------------------|
 | Review known issues     | [List of known issues](known-issues.md).                |
 | Review security updates | [List of security updates](release-notes-security-updates.md).      |
-| Apply latest OEM package | Contact your OEM to ensure your system meets the minimum OEM Package requirements for the Azure Stack Hub version your system is being updated to. Ensure your OEM package is compatible with the Azure Stack Hub version you are updating to. If your OEM package is not compatible with the Azure Stack Hub version you are updating to, you will need to perform an OEM package update before running an Azure Stack Hub update. For instructions, see "Apply Azure Stack Hub original equipment manufacturer (OEM) updates." |
+| Apply latest OEM package | Contact your OEM to ensure your system meets the minimum OEM package requirements for the Azure Stack Hub version your system is being updated to. Ensure your OEM package is compatible with the Azure Stack Hub version you are updating to. If your OEM package is not compatible with the Azure Stack Hub version you are updating to, you will need to perform an OEM package update before running an Azure Stack Hub update. For instructions, see "Apply Azure Stack Hub original equipment manufacturer (OEM) updates." |
 | Optional: Configure automatic log collection | It is recommended that you configure automatic log collection on your Azure Stack Hub environment to streamline the process of collecting system logs in the event that you need to open a support ticket. To configure automatic log collection, see the instructions in [Configure automatic Azure Stack Hub diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md). |
-| Apply latest hotfixes | Apply the latest hotfixes that apply to the currently installed release. For a list of the latest hotfixes, see the release notes Hotfix section. |
+| Apply latest hotfixes | Apply the latest hotfixes that apply to the currently installed release. For a list of the latest hotfixes, see the [release notes Hotfixes](release-notes.md#hotfixes) section. |
 | Run capacity planner tool | Make sure to use the latest version of the [Azure Stack Hub Capacity Planner tool](azure-stack-capacity-planning-overview.md) to perform your workload planning and sizing. The latest version contains bug fixes and provides new features that are released with each Azure Stack Hub update. |
-| Run Test-AzureStack | Run `Test-AzureStack -Group UpdateReadiness` to identify operational issues. The cmdlet is accessible through the  Privileged Endpoint Session (PEP). For more information, see [Validate Azure Stack Hub system state](azure-stack-diagnostic-test.md). |
+| Run **Test-AzureStack** | Run `Test-AzureStack -Group UpdateReadiness` to identify operational issues. The cmdlet is accessible through the  Privileged Endpoint Session (PEP). For more information, see [Validate Azure Stack Hub system state](azure-stack-diagnostic-test.md). |
 | Resolve issues | Resolve any operational issues identified by `Test-AzureStack`. |
 | Update available | In connected scenarios only, Azure Stack Hub deployments periodically check a secured endpoint and automatically notify you if an update is available for your cloud. Disconnected customers can download and import new packages using the [process described here](azure-stack-apply-updates.md). |
-| Notify your users | You should notify users of any maintenance operations, and that you schedule normal maintenance windows during non-business hours if possible. Maintenance operations can affect both tenant workloads and portal operations. |
+| Schedule a maintenance window and notify your users | You should notify users of any maintenance operations, and schedule normal maintenance windows during non-business hours if possible. Maintenance operations can affect existing tenant workloads and cause new tenants operations (for example, creating, reconfiguring, or deleting VMs) to fail - whether the operation is initiated from the portal or programmatically from the Azure Resource Manager API. For Azure Stack Hub express and full updates, you can check the [release notes](release-notes.md) for a forecast of how long the update is expected to take for the version you are applying. |
 
 ## During Azure Stack Hub update
 

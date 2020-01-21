@@ -1,7 +1,6 @@
 ---
-title: Provider resource usage API | Microsoft Docs
-titleSuffix: Azure Stack
-description: Reference for the resource usage API, which retrieves Azure Stack usage information.
+title: Azure Stack Hub provider resource usage API | Microsoft Docs
+description: Reference for the resource usage API, which retrieves Azure Stack Hub usage information.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/16/2019
+ms.date: 01/07/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2018
@@ -21,7 +20,7 @@ ms.lastreviewed: 01/25/2018
 ---
 # Provider resource usage API
 
-The term *provider* applies to the service administrator and to any delegated providers. Azure Stack operators and delegated providers can use the provider usage API to view the usage of their direct tenants. For example, as shown in the following diagram, P0 can call the provider API to get direct usage information on P1 and P2, and P1 can call for usage information on P3 and P4.
+The term *provider* applies to the service administrator and to any delegated providers. Azure Stack Hub operators and delegated providers can use the provider usage API to view the usage of their direct tenants. For example, as shown in the following diagram, P0 can call the provider API to get direct usage information on P1 and P2, and P1 can call for usage information on P3 and P4.
 
 ![Conceptual model of the provider hierarchy](media/azure-stack-provider-resource-api/image1.png)
 
@@ -41,7 +40,7 @@ This usage API is a provider API, so the caller must be assigned an **Owner**, *
 
 | Argument | Description |
 | --- | --- |
-| `armendpoint` |Azure Resource Manager endpoint of your Azure Stack environment. The Azure Stack convention is that the name of the Azure Resource Manager endpoint is in the format `https://adminmanagement.{domain-name}`. For example, for the Azure Stack Development Kit (ASDK), if the domain name is *local.azurestack.external*, then the Resource Manager endpoint is `https://adminmanagement.local.azurestack.external`. |
+| `armendpoint` |Azure Resource Manager endpoint of your Azure Stack Hub environment. The Azure Stack Hub convention is that the name of the Azure Resource Manager endpoint is in the format `https://adminmanagement.{domain-name}`. For example, for the Azure Stack Development Kit (ASDK), if the domain name is *local.azurestack.external*, then the Resource Manager endpoint is `https://adminmanagement.local.azurestack.external`. |
 | `subId` |Subscription ID of the user who makes the call. |
 | `reportedStartTime` |Start time of the query. The value for `DateTime` should be in Coordinated Universal Time (UTC) and at the beginning of the hour; for example, 13:00. For daily aggregation, set this value to UTC midnight. The format is escaped ISO 8601; for example, `2015-06-16T18%3a53%3a11%2b00%3a00Z`, where the colon is escaped to `%3a` and the plus is escaped to `%2b` so that it's URI-friendly. |
 | `reportedEndTime` |End time of the query. The constraints that apply to `reportedStartTime` also apply to this argument. The value for `reportedEndTime` can't be either in the future, or the current date. If it is, the result is set to "processing not complete." |
@@ -90,7 +89,7 @@ meterID1",
 |`id` |Unique ID of the usage aggregate. |
 |`name` |Name of the usage aggregate. |
 |`type` |Resource definition. |
-|`subscriptionId` |Subscription identifier of the Azure Stack user. |
+|`subscriptionId` |Subscription identifier of the Azure Stack Hub user. |
 |`usageStartTime`|UTC start time of the usage bucket to which this usage aggregate belongs.|
 |`usageEndTime`|UTC end time of the usage bucket to which this usage aggregate belongs. |
 |`instanceData` |Key-value pairs of instance details (in a new format):<br> `resourceUri`: Fully qualified resource ID, which includes the resource groups and the instance name. <br> `location`: Region in which this service was run. <br> `tags`: Resource tags that are specified by the user. <br> `additionalInfo`: More details about the resource that was consumed; for example, the OS version or image type. |
@@ -101,10 +100,10 @@ meterID1",
 
 ### PowerShell
 
-To generate the usage data, you should have resources that are running and actively using the system; for example, an active virtual machine (VM), or a storage account containing some data. If you're not sure whether you have any resources running in the Azure Stack marketplace, deploy a VM, and verify the VM monitoring blade to make sure it's running. Use the following PowerShell cmdlets to view the usage data:
+To generate the usage data, you should have resources that are running and actively using the system; for example, an active virtual machine (VM), or a storage account containing some data. If you're not sure whether you have any resources running in the Azure Stack Hub Marketplace, deploy a VM, and verify the VM monitoring blade to make sure it's running. Use the following PowerShell cmdlets to view the usage data:
 
-1. [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).
-2. [Configure the Azure Stack user](../user/azure-stack-powershell-configure-user.md) or the [Azure Stack operator](azure-stack-powershell-configure-admin.md) PowerShell environment.
+1. [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+2. [Configure the Azure Stack Hub user](../user/azure-stack-powershell-configure-user.md) or the [Azure Stack Hub operator](azure-stack-powershell-configure-admin.md) PowerShell environment.
 3. To retrieve the usage data, call the [Get-AzsSubscriberUsage](/powershell/module/azs.commerce.admin/get-azssubscriberusage) PowerShell cmdlet:
 
    ```powershell
@@ -113,7 +112,7 @@ To generate the usage data, you should have resources that are running and activ
 
 ### REST API
 
-You can collect usage information for deleted subscriptions by calling the  Microsoft.Commerce.Admin service.
+You can collect usage information for deleted subscriptions by calling the **Microsoft.Commerce.Admin** service.
 
 #### Return all tenant usage for deleted for active users
 

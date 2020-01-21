@@ -12,8 +12,6 @@ ms.lastreviewed: 11/05/2019
 
 # Deploy an app that scales cross-cloud using Azure and Azure Stack Hub
 
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
-
 Learn how to create a cross-cloud solution to provide a manually triggered process for switching from an Azure Stack Hub hosted web app to an Azure hosted web app with autoscaling via traffic manager. This process ensures flexible and scalable cloud utility when under load.
 
 With this pattern, your tenant may not be ready to run your app in the public cloud. However, it may not be economically feasible for the business to maintain the capacity required in their on-premises environment to handle spikes in demand for the app. Your tenant can make use of the elasticity of the public cloud with their on-premises solution.
@@ -54,7 +52,7 @@ In this solution, you'll build a sample environment to:
 
 -   Windows Server 2016 VM with .NET 3.5 is required. This VM will be built in the tenant subscription on Azure Stack Hub as the private build agent.
 
--   [Windows Server 2016 with SQL 2017 VM Image](../operator/azure-stack-add-vm-image.md#add-a-vm-image-as-an-azure-stack-operator-using-the-portal) is available in the Azure Stack Hub Marketplace. If this image isn't available, work with an Azure Stack Hub Operator to ensure it's added to the environment.
+-   [Windows Server 2016 with SQL 2017 VM Image](../operator/azure-stack-add-vm-image.md) is available in the Azure Stack Hub Marketplace. If this image isn't available, work with an Azure Stack Hub Operator to ensure it's added to the environment.
 
 ## Issues and considerations
 

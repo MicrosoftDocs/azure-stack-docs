@@ -1,6 +1,6 @@
 ---
-title: Manage Key Vault in Azure Stack using the portal | Microsoft Docs
-description: Learn how to manage Key Vault in Azure Stack by using the Azure Stack portal.
+title: Manage Key Vault in Azure Stack Hub using the portal | Microsoft Docs
+description: Learn how to manage Key Vault in Azure Stack Hub by using the Azure Stack Hub portal.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -13,15 +13,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2019
+ms.date: 01/10/2020
 ms.author: sethm
-ms.lastreviewed: 01/04/2019
+ms.lastreviewed: 1/10/2020
 
 ---
 
-# Manage Key Vault in Azure Stack using the portal
+# Manage Key Vault in Azure Stack Hub using the portal
 
-This article describes how to create and manage a key vault in Azure Stack using the Azure Stack portal.
+This article describes how to create and manage a key vault in Azure Stack Hub using the Azure Stack Hub portal.
 
 ## Prerequisites
 
@@ -55,11 +55,11 @@ After you create a key vault, use the following procedure to create and manage k
 
 ### Create a key
 
-1. Sign in to the [user portal](https://portal.local.azurestack.external).
+1. Sign in to the Azure Stack Hub [user portal](https://portal.local.azurestack.external).
 
 2. From the dashboard, select **All resources**, select the key vault that you created earlier, and then select the **Keys** tile.
 
-3. In the **Keys** pane, select **Add**.
+3. In the **Keys** pane, select **Generate/Import**.
 
 4. In the **Create a key** pane, from the list of **Options**, choose the method that you want to use to create a key. You can **Generate** a new key, **Upload** an existing key, or use **Restore Backup** to select a backup of a key.
 
