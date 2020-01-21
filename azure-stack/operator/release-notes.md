@@ -1,6 +1,7 @@
 ---
-title: Azure Stack Hub release notes | Microsoft Docs
-description: Learn about the updates for Azure Stack Hub integrated systems, including what's new, and where to download the update.
+title: Azure Stack Hub release notes
+titleSuffix: Azure Stack Hub
+description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
@@ -19,7 +20,7 @@ ms.reviewer: prchint
 ms.lastreviewed: 11/22/2019
 ---
 
-# Azure Stack Hub updates: release notes
+# Azure Stack Hub release notes
 
 This article describes the contents of Azure Stack Hub update packages. The update includes what's new improvements, and fixes for this release of Azure Stack Hub.
 
