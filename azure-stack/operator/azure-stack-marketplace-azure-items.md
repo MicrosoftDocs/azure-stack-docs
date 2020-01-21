@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/02/2020
+ms.date: 01/21/2020
 ms.author: sethm
 ms.reviewer: ihcherie
-ms.lastreviewed: 01/02/2020
+ms.lastreviewed: 01/21/2020
 
 ---
 # Azure Marketplace items available for Azure Stack Hub
@@ -255,6 +255,7 @@ Microsoft Azure Stack Hub supports the following Azure Marketplace VMs and solut
 | ![Quest Rapid Recovery](media/azure-stack-marketplace-azure-items/quest.png) | [Quest Rapid Recovery Core](https://azuremarketplace.microsoft.com/marketplace/apps/quest.rapid-recovery-core-vm) | Rapid Recovery advanced data protection unifies backup, replication, and recovery in one easy-to-use software solution. | Quest Software |
 | ![SIOS DataKeeper Cluster Edition](media/azure-stack-marketplace-azure-items/sioslogo.png) | [SIOS DataKeeper Cluster Edition](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) | SIOS DataKeeper provides high availability (HA) and disaster recovery (DR) in Azure Stack Hub. Simply add SIOS DataKeeper software as an ingredient to your Windows Server Failover Clustering (WSFC) environment in an Azure Stack Hub deployment to eliminate the need for shared storage. | SIOS Technology Corp. |
 | ![SUSE Manager 3.1 Proxy (BYOS)](media/azure-stack-marketplace-azure-items/suse.png) | [SUSE Manager 3.1 Proxy (BYOS)](https://azuremarketplace.microsoft.com/marketplace/apps/suse.suse-manager-proxy-byos) | Best-in-class open-source infrastructure management. | SUSE |
+| ![Teradici Cloud Access Software](media/azure-stack-marketplace-azure-items/teradici.png) | [Teradici Cloud Access Software](https://azuremarketplace.microsoft.com/marketplace/apps/teradici.teradici_cas_azure_stack) | Powered by PCoIP® technology, Cloud Access Software delivers remote desktops and workstations from Azure Stack to any device, anywhere. Consolidate data storage, enhance collaboration, secure data, streamline desktop management, and more. | Teradici |
 | ![CipherTrust Cloud Key Manager](media/azure-stack-marketplace-azure-items/cckm.png) | [CipherTrust Cloud Key Manager](https://azuremarketplace.microsoft.com/marketplace/apps/thales-vormetric.ciphertrust-ckm) | Leveraging Microsoft Azure and other cloud provider Bring Your Own Key (BYOK) APIs, the CipherTrust Cloud Key Manager reduces key management complexity and operational costs by giving you multicloud lifecycle control of encryption keys with centralized management and visibility. | Thales eSecurity |
 | ![Veeam Backup & Replication](media/azure-stack-marketplace-azure-items/veeam.png) | [Veeam Backup & Replication](https://azuremarketplace.microsoft.com/marketplace/apps/veeam.veeam-backup-replication?tab=Overview) | Veeam® Backup & Replication™ helps businesses achieve comprehensive data protection for all workloads — virtual, physical, and cloud-based. With a single console, you can achieve fast, flexible, and reliable backup, recovery, and replication of all apps and data. | Veeam Software |
 | ![ZeroDown Software BCaaS](media/azure-stack-marketplace-azure-items/zerodown.png) | [ZeroDown Software Business Continuity as a Service](https://azuremarketplace.microsoft.com/marketplace/apps/zerodown_software.bcaasforazure) | ZeroDown® Software technology provides businesses with continuous access to their company data via their Business Continuity as a Service (BCaaS)™ architecture, protecting apps, and transactions, if network interruptions occur that would normally cripple the enterprise. | ZeroDown Software |
