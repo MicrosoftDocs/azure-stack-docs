@@ -4,7 +4,7 @@
   items:
   - name: What is Azure Stack Hub?
     href: azure-stack-overview.md
-  - name: What is Azure Stack Hub HCI?
+  - name: What is Azure Stack HCI?
     href: azure-stack-hci-overview.md
   - name: Comparing the Azure ecosystem
     href: compare-azure-azure-stack.md
@@ -161,7 +161,11 @@
         - name: Apply OEM updates
           href: azure-stack-update-oem.md
       - name: Monitor update status
-        href: azure-stack-update-monitor.md
+        items:
+        - name: Use PowerShell
+          href: azure-stack-update-monitor.md
+        - name: Use privileged endpoint
+          href: azure-stack-monitor-update.md
       - name: Troubleshoot updates
         href: azure-stack-updates-troubleshoot.md
     - name: Monitor health and alerts

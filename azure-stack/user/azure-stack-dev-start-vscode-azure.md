@@ -64,7 +64,7 @@ VS Code is a light-weight editor for building and debug web and cloud applicatio
     
     The Microsoft Azure Resource Manager is a management framework that allows you to deploy, manage, and monitor Azure resources.
     - The Resource Manager URL for the Azure Stack Development Kit (ASDK) is: `https://management.local.azurestack.external/` 
-    - The Resource Manager URL for an integrated system is: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`
+    - The Resource Manager URL for an integrated system is: `https://management.region.<fqdn>/`, where `<fqdn>` is your fully qualified domain name.
     - Add the following text to your URL to access the metadata: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
 
     For example, the URL to retrieve the metadata for your Azure Resource Manager endpoint may look something like: `https://management.local.azurestack.external/metadata/endpoints?api-version=1.0`
