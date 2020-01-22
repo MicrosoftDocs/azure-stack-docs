@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2019
+ms.date: 01/22/2020
 ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 10/01/2019
@@ -27,52 +27,34 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 
 ## New Marketplace items
 
-- 06/27/2019:	SIOS Datakeeper Cluster Edition
-
-- 06/27/2019:	Veeam Backup & Replication
-
+- 06/27/2019: SIOS Datakeeper Cluster Edition
+- 06/27/2019: Veeam Backup & Replication
 - 06/27/2019: Windows Server 2019 Datacenter Server Core With Containers Pay-as-you-use
-
 - 06/27/2019: Windows Server 2019 Datacenter Server Core With Containers BYOL
-
-- 06/27/2019:	Windows Server 2019 Datacenter Pay-as-you-use
-
-- 06/27/2019:	Windows Server 2019 Datacenter BYOL
-
+- 06/27/2019: Windows Server 2019 Datacenter Pay-as-you-use
+- 06/27/2019: Windows Server 2019 Datacenter BYOL
 - 06/27/2019: Windows Server 2019 Datacenter Server Core Pay-as-you-use
-
 - 06/27/2019: Windows Server 2019 Datacenter Server Core BYOL
-
-- 06/27/2019:	Windows Server 2019 Datacenter With Containers Pay-as-you-use
-
-- 06/27/2019:	Windows Server 2019 Datacenter With Containers BYOL
-
+- 06/27/2019: Windows Server 2019 Datacenter With Containers Pay-as-you-use
+- 06/27/2019: Windows Server 2019 Datacenter With Containers BYOL
 - 08/05/2019: Bitnami Drupal
-
 - 08/05/2019: Bitnami etcd
-
 - 08/05/2019: Bitnami Grafana
-
 - 08/05/2019: Bitnami Neo4j
-
 - 08/05/2019: Bitnami Parse Server
-
 - 08/05/2019: Bitnami WordPress Multisite
-
 - 08/05/2019: Bitnami ZooKeeper
-
 - 08/05/2019: Bitnami TensorFlow Serving
-
 - 08/05/2019: Bitnami NATS
-
 - 08/05/2019: Bitnami Review Board
-
 - 08/05/2019: Bitnami Composr
-
 - 08/09/2019: Oracle Linux
-
 - 08/19/2019: Iguazio Data Science Platform
-
+- 10/16/2019: SIOS DataKeeper Cluster Edition
+- 12/26/2019: CloudGuard IaaS High Availability
+- 12/26/2019: Check Point CloudGuard IaaS Security Management
+- 12/26/2019: Check Point CloudGuard IaaS Single Gateway
+- 01/21/2020: Teradici Cloud Access Software
 
 ## Deprecated Marketplace items
 
@@ -81,7 +63,7 @@ The [Azure Stack Hub Marketplace items](azure-stack-marketplace-azure-items.md) 
 - Bitnami SugarCRM
 - Bitnami Node.js High-Availability Cluster
 - A10 vThunder: L4-L7 Application Delivery Controller, Global Server Load Balancing (GSLB), SSL Insight
-
+- Check Point vSEC Security Management
 
 ## Updated Marketplace items
 
