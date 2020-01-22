@@ -55,11 +55,11 @@ The Azure Stack Hub 1910 update build number is **1.1910.0.58**.
 
 ### Update type
 
-Starting with 1908, the underlying operating system on which Azure Stack Hub runs was updated to Windows Server 2019. This update enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack Hub in the near future.
+Starting with 1908, the underlying operating system on which Azure Stack Hub runs was updated to Windows Server 2019. This update enables core fundamental enhancements and the ability to bring additional capabilities to Azure Stack Hub.
 
 The Azure Stack Hub 1910 update build type is **Express**.
 
-The 1910 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The expected time it takes for the 1910 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack Hub environment. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value aren't uncommon and don't require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 1910 update and shouldn't be compared to other Azure Stack Hub updates.
+The 1910 update package is larger in size compared to previous updates and the increased size results in longer download times. The update will remain in the **Preparing** state for a long time and operators can expect this process to take longer than previous updates. The expected time for the 1910 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack Hub environment. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value aren't uncommon and don't require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 1910 update and shouldn't be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
@@ -116,7 +116,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Upgrades to the complexity of cryptographic algorithms and key strength for several internal components to comply with the Committee on National Security Systems - Policy 15 (CNSSP-15), which provides best practices for the use of public standards for secure information sharing. Among the improvements, there's AES256 for Kerberos authentication and SHA384 for VPN encryption. For more information about CNSSP-15, see the [Committee on National Security Systems, Policies page](http://www.cnss.gov/CNSS/issuances/Policies.cfm).
 
-- As a result of the above upgrade, Azure Stack Hub now has new default values for IPsec/IKEv2 configurations. The new default values used on the Azure Stack Hub side are as follows:
+- Because of the above upgrade, Azure Stack Hub now has new default values for IPsec/IKEv2 configurations. The new default values used on the Azure Stack Hub side are as follows:
 
    **IKE Phase 1 (Main Mode) parameters**
 
@@ -152,7 +152,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
   - Please note that the /20 input serves as a prerequisite to the next Azure Stack Hub update after 1910. When the next Azure Stack Hub update after 1910 is released and you attempt to install it, the update will fail if you haven't completed the /20 input as described in the remediation steps as follows. An alert will be present in the administrator portal until the above remediation steps have been completed. See the [Datacenter network integration](azure-stack-network.md#private-network) article to understand how this new private space will be consumed.
 
-  - Remediation steps: To remediate, follow the instructions to [open a PEP Session](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Prepare a [private internal IP range](azure-stack-network.md#logical-networks) of size /20, and run the following cmdlet (only available starting with 1910) in the PEP session using the following example: `Set-AzsPrivateNetwork -UserSubnet 100.87.0.0/20`. If the operation is performed successfully, you'll receive the message **Azs Internal Network range added to the config**. If successfully completed, the alert will close in the administrator portal. The Azure Stack Hub system will now be able to update to the next version.
+  - Remediation steps: To remediate, follow the instructions to [open a PEP Session](azure-stack-privileged-endpoint.md#access-the-privileged-endpoint). Prepare a [private internal IP range](azure-stack-network.md#logical-networks) of size /20, and run the following cmdlet (only available starting with 1910) in the PEP session using the following example: `Set-AzsPrivateNetwork -UserSubnet 100.87.0.0/20`. If the operation is performed successfully, you'll receive the message **Azs Internal Network range added to the config**. If successfully completed, the alert will close in the administrator portal. The Azure Stack Hub system can now update to the next version.
   
 - The infrastructure backup service deletes partially uploaded backup data if the external storage location runs out of capacity during the upload procedure.  
 
@@ -223,7 +223,7 @@ The Azure Stack Hub 1908 update build number is **1.1908.4.33**.
 
 ### Update type
 
-For 1908, the underlying operating system on which Azure Stack Hub runs has been updated to Windows Server 2019. This update enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack Hub in the near future.
+For 1908, the underlying operating system on which Azure Stack Hub runs has been updated to Windows Server 2019. This update enables core fundamental enhancements and the ability to bring additional capabilities to Azure Stack Hub.
 
 The Azure Stack Hub 1908 update build type is **Full**. As a result, the 1908 update has a longer runtime than express updates like 1906 and 1907. Exact runtimes for full updates typically depend on the number of nodes that your Azure Stack Hub instance contains, the capacity used on your system by tenant workloads, your system's network connectivity (if connected to the internet), and your system hardware configuration. The 1908 update has had the following expected runtimes in our internal testing: 4 nodes - 42 hours, 8 nodes - 50 hours, 12 nodes - 60 hours, 16 nodes - 70 hours. Update runtimes lasting longer than these expected values aren't uncommon and don't require action by Azure Stack Hub operators unless the update fails.
 
@@ -241,7 +241,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- What's new, also net new experiences and features. -->
 
-- For 1908, note that the underlying operating system on which Azure Stack Hub runs has been updated to Windows Server 2019. This update enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack Hub in the near future.
+- For 1908, note that the underlying operating system on which Azure Stack Hub runs has been updated to Windows Server 2019. This update enables core fundamental enhancements and the ability to bring additional capabilities to Azure Stack Hub.
 - All components of Azure Stack Hub infrastructure now operate in FIPS 140-2 mode.
 - Azure Stack Hub operators can now remove portal user data. For more information, see [Clear portal user data from Azure Stack Hub](azure-stack-portal-clear.md).
 
@@ -316,7 +316,7 @@ The Azure Stack Hub 1907 update build type is **Express**. For more information 
 
 - General availability release of the Azure Stack Hub diagnostic log collection service to facilitate and improve diagnostic log collection. The Azure Stack Hub diagnostic log collection service provides a simplified way to collect and share diagnostic logs with Microsoft Customer Support Services (CSS). This diagnostic log collection service provides a new user experience in the Azure Stack Hub administrator portal that enables operators to set up the automatic upload of diagnostic logs to a storage blob when certain critical alerts are raised, or to perform the same operation on demand. For more information, see the [Diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md) article.
 
-- General availability release of the Azure Stack Hub network infrastructure validation as a part of the Azure Stack Hub validation tool **Test-AzureStack**. Azure Stack Hub network infrastructure will be a part of **Test-AzureStack**, to identify if a failure occurs on the network infrastructure of Azure Stack Hub. The test checks connectivity of the network infrastructure by bypassing the Azure Stack Hub software-defined network. It demonstrates connectivity from a public VIP to the configured DNS forwarders, NTP servers, and identity endpoints. In addition, it checks for connectivity to Azure when using Azure AD as the identity provider, or the federated server when using ADFS. For more information, see the [Azure Stack Hub validation tool](azure-stack-diagnostic-test.md) article.
+- General availability release of the Azure Stack Hub network infrastructure validation as a part of the Azure Stack Hub validation tool **Test-AzureStack**. Azure Stack Hub network infrastructure will be a part of **Test-AzureStack**, to identify if a failure occurs on the network infrastructure of Azure Stack Hub. The test checks connectivity of the network infrastructure by bypassing the Azure Stack Hub software-defined network. It demonstrates connectivity from a public VIP to the configured DNS forwarders, NTP servers, and identity endpoints. It also checks for connectivity to Azure when using Azure AD as the identity provider, or the federated server when using ADFS. For more information, see the [Azure Stack Hub validation tool](azure-stack-diagnostic-test.md) article.
 
 - Added an internal secret rotation procedure to rotate internal SQL TLS certificates as required during a system update.
 
@@ -354,14 +354,14 @@ The Azure Stack Hub 1907 update build type is **Express**. For more information 
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there's an SR/ICM associated to it. -->
-- Fixed an issue in which the publisher, offer, and SKU were treated as case sensitive in a Resource Manager template: the image was not fetched for deployment unless the image parameters were the same case as that of the publisher, offer, and SKU.
+- Fixed an issue in which the publisher, offer, and SKU were treated as case sensitive in a Resource Manager template: the image wasn't fetched for deployment unless the image parameters were the same case as that of the publisher, offer, and SKU.
 
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/129536438/home -->
 - Fixed an issue with backups failing with a **PartialSucceeded** error message, due to timeouts during backup of storage service metadata.  
 
 - Fixed an issue in which deleting user subscriptions resulted in orphaned resources.
 
-- Fixed an issue in which the description field was not saved when creating an offer.
+- Fixed an issue in which the description field wasn't saved when creating an offer.
 
 - Fixed an issue in which a user with **Read only** permissions was able to create, edit, and delete resources. Now the user is only able to create resources when the **Contributor** permission is assigned. 
 
@@ -492,11 +492,11 @@ The Azure Stack Hub 1906 update build type is **Express**. For more information 
 
 - The **Update** blade includes a **Resume** option for failed updates.
 
-- In the administrator and user portals, fixed the issue in marketplace in which the Docker extension was incorrectly returned from search but no further action could be taken, as it is not available in Azure Stack Hub.
+- In the administrator and user portals, fixed the issue in marketplace in which the Docker extension was incorrectly returned from search but no further action could be taken, as it isn't available in Azure Stack Hub.
 
 - Fixed an issue in template deployment UI that does not populate parameters if the template name begins with '_' underscore.
 
-- Fixed an issue where the virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 is not available on Azure Stack Hub. We now provide Centos 7.5 as our option for deployment
+- Fixed an issue where the virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 isn't available on Azure Stack Hub. We now provide Centos 7.5 as our option for deployment
 
 - You can now remove a scale set from the **Virtual machine scale sets** blade.
 
