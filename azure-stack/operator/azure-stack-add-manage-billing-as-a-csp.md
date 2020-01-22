@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 01/22/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 10/15/2018
@@ -52,7 +52,7 @@ CSP subscriptions are the preferred choice for registration when a CSP reseller 
 
 ## Register Azure Stack Hub
 
-Use the APSS subscription created using the info in the preceding section to register Azure Stack Hub with Azure. For more info, see [Register Azure Stack Hub with your Azure Subscription](azure-stack-registration.md).
+Use the APSS subscription created using the information in the preceding section to register Azure Stack Hub with Azure. For more information, see [Register Azure Stack Hub with your Azure Subscription](azure-stack-registration.md).
 
 ## Add end customer
 
@@ -64,7 +64,7 @@ Azure Stack Hub uses a feature called *registration*. A registration is an objec
 
 Using registration, Azure Stack Hub can:
 
-- Forward Azure Stack Hub usage data to Azure Commerce and bill an Azure subscription.
+- Forward [Azure Stack Hub usage data](azure-stack-billing-and-chargeback.md) to Azure Commerce and bill an Azure subscription.
 - Report each customer's usage on a different subscription with a multi-tenant Azure Stack Hub deployment. Multi-tenancy enables Azure Stack Hub to support different organizations on the same Azure Stack Hub instance.
 
 For each Azure Stack Hub, there is one default subscription and many tenant subscriptions. The default subscription is an Azure subscription that is charged if there's no tenant-specific subscription. It must be the first subscription to be registered. For multi-tenant usage reporting to work, the subscription must be a CSP or APSS subscription.
