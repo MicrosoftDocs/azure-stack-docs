@@ -6,7 +6,7 @@ author: mattbriggs
 
 ms.service: azure-stack
 ms.topic: how-to
-ms.date: 09/30/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 09/30/2019
