@@ -4,7 +4,7 @@ description: Guidance to get started with using Azure Stack Hub storage developm
 services: azure-stack 
 author: mattbriggs
 ms.author: mabrigg
-ms.date: 10/02/2019
+ms.date: 1/22/2020
 ms.topic: conceptual
 ms.service: azure-stack
 manager: femila
