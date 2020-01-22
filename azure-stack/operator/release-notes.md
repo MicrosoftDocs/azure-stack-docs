@@ -59,7 +59,7 @@ Starting with 1908, the underlying operating system on which Azure Stack Hub run
 
 The Azure Stack Hub 1910 update build type is **Express**.
 
-The 1910 update package is larger in size compared to previous updates and the increased size results in longer download times. The update will remain in the **Preparing** state for a long time and operators can expect this process to take longer than previous updates. The expected time for the 1910 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack Hub environment. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value aren't uncommon and don't require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 1910 update and shouldn't be compared to other Azure Stack Hub updates.
+The 1910 update package is larger in size compared to previous updates, which results in longer download times. The update will remain in the **Preparing** state for a long time and operators can expect this process to take longer than previous updates. The expected time for the 1910 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack Hub environment. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value aren't uncommon and don't require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 1910 update and shouldn't be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
@@ -148,7 +148,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - When downloading marketplace items from Azure to Azure Stack Hub, there's a new user interface that enables you to specify a version of the item when multiple versions exist. The new UI is available in both connected and disconnected scenarios. For more information, see [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).  
 
-- Starting with the 1910 release, the Azure Stack Hub system **requires** an additional /20 private internal IP space. This network is private to the Azure Stack Hub system and can be reused on multiple Azure Stack Hub systems within your datacenter. While the network is private to Azure Stack Hub, it must not overlap with a network in your datacenter. The /20 private IP space is divided into multiple networks that enable running the Azure Stack Hub infrastructure on containers (as previously mentioned in the [1905 release notes](release-notes.md?view=azs-1905)). The goal of running the Azure Stack Hub infrastructure in containers is to optimize utilization and enhance performance. In addition, the /20 private IP space is also used to enable ongoing efforts that will reduce required routable IP space prior to deployment.
+- Starting with the 1910 release, the Azure Stack Hub system **requires** an additional /20 private internal IP space. This network is private to the Azure Stack Hub system and can be reused on multiple Azure Stack Hub systems within your datacenter. While the network is private to Azure Stack Hub, it must not overlap with a network in your datacenter. The /20 private IP space is divided into multiple networks that enable running the Azure Stack Hub infrastructure on containers (as previously mentioned in the [1905 release notes](release-notes.md?view=azs-1905)). The goal of running the Azure Stack Hub infrastructure in containers is to optimize utilization and enhance performance. In addition, the /20 private IP space is also used to enable ongoing efforts that will reduce required routable IP space before deployment.
 
   - Please note that the /20 input serves as a prerequisite to the next Azure Stack Hub update after 1910. When the next Azure Stack Hub update after 1910 releases and you attempt to install it, the update will fail if you haven't completed the /20 input as described in the remediation steps as follows. An alert will be present in the administrator portal until the above remediation steps have been completed. See the [Datacenter network integration](azure-stack-network.md#private-network) article to understand how this new private space will be consumed.
 
@@ -172,7 +172,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there's an SR/ICM associated to it. -->
 
-- Fixed an issue that prevented enforcing TLS 1.2 policy on environments deployed prior to the Azure Stack Hub 1904 release.
+- Fixed an issue that prevented enforcing TLS 1.2 policy on environments deployed before the Azure Stack Hub 1904 release.
 - Fixed an issue where an Ubuntu 18.04 VM created with SSH authorization enabled doesn't allow you to use the SSH keys to sign in.
 - Removed **Reset Password** from the Virtual Machine Scale Set UI.
 - Fixed an issue where deleting the load balancer from the portal didn't result in the deletion of the object in the infrastructure layer.
@@ -473,8 +473,8 @@ The Azure Stack Hub 1906 update build type is **Express**. For more information 
 - Creating a storage account experience is now consistent with Azure.
 
 - Changed alert triggers for expiration of internal secrets:
-  - Warning alerts are now raised 90 days prior to the expiration of secrets.
-  - Critical alerts are now raised 30 days prior to the expiration of secrets.
+  - Warning alerts are now raised 90 days before the expiration of secrets.
+  - Critical alerts are now raised 30 days before the expiration of secrets.
 
 - Updated strings in infrastructure backup resource provider for consistent terminology.
 
@@ -494,7 +494,7 @@ The Azure Stack Hub 1906 update build type is **Express**. For more information 
 
 - In the administrator and user portals, fixed the issue in marketplace in which the Docker extension was incorrectly returned from search but no further action could be taken, as it isn't available in Azure Stack Hub.
 
-- Fixed an issue in template deployment UI that does not populate parameters if the template name begins with '_' underscore.
+- Fixed an issue in template deployment UI that doesn't populate parameters if the template name begins with '_' underscore.
 
 - Fixed an issue where the virtual machine scale set creation experience provides CentOS-based 7.2 as an option for deployment. CentOS 7.2 isn't available on Azure Stack Hub. We now provide Centos 7.5 as our option for deployment
 
