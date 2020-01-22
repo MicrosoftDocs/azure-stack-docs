@@ -55,11 +55,11 @@ The Azure Stack Hub 1910 update build number is **1.1910.0.58**.
 
 ### Update type
 
-Starting with 1908, the underlying operating system on which Azure Stack Hub runs was updated to Windows Server 2019. This enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack Hub in the near future.
+Starting with 1908, the underlying operating system on which Azure Stack Hub runs was updated to Windows Server 2019. This update enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack Hub in the near future.
 
 The Azure Stack Hub 1910 update build type is **Express**.
 
-The 1910 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The expected time it takes for the 1910 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack Hub environment. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value are not uncommon and don't require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 1910 update and shouldn't be compared to other Azure Stack Hub updates.
+The 1910 update package is larger in size compared to previous updates. The increased size results in longer download times. The update will remain in the **Preparing** state for a long time, and operators can expect this process to take longer than with previous updates. The expected time it takes for the 1910 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack Hub environment. Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value aren't uncommon and don't require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 1910 update and shouldn't be compared to other Azure Stack Hub updates.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
@@ -73,7 +73,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - The administrator portal now shows the privileged endpoint IP addresses in the region properties menu for easier discovery. In addition, it shows the current configured time server and DNS forwarders. For more information, see [Use the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md).
 
-- The Azure Stack Hub health and monitoring system can now raise alerts for various hardware components if an error happens. This requires additional configuration. For more information, see [Monitor Azure Stack Hub hardware components](azure-stack-hardware-monitoring.md).
+- The Azure Stack Hub health and monitoring system can now raise alerts for various hardware components if an error happens. These alerts require additional configuration. For more information, see [Monitor Azure Stack Hub hardware components](azure-stack-hardware-monitoring.md).
 
 - [Cloud-init support for Azure Stack Hub](/azure/virtual-machines/linux/using-cloud-init): Cloud-init is a widely used approach to customize a Linux VM as it boots for the first time. You can use cloud-init to install packages and write files, or to configure users and security. Because cloud-init is called during the initial boot process, there are no additional steps or required agents to apply your configuration. The Ubuntu images on the marketplace have been updated to support cloud-init for provisioning.
 
@@ -90,7 +90,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Added the **Get-AzSDnsForwarder** cmdlet in the privileged endpoint (PEP) to retrieve the forwarder settings of the DNS servers in Azure Stack Hub. For more information about DNS configuration, see [Azure Stack Hub datacenter DNS integration](azure-stack-integrate-dns.md).
 
 - Added support for management of **Kubernetes clusters** using the [AKS engine](../user/azure-stack-kubernetes-aks-engine-overview.md). Starting with this update, customers can deploy production Kubernetes clusters. The AKS engine enables users to:
-  - Manage the life-cycle of their Kubernetes clusters. They can create, update, and scale clusters.
+  - Manage the life cycle of their Kubernetes clusters. They can create, update, and scale clusters.
   - Maintain their clusters using managed images produced by the AKS and the Azure Stack Hub teams.
   - Take advantage of an Azure Resource Manager-integrated Kubernetes cloud provider that builds clusters using native Azure resources.
   - Deploy and manage their clusters in connected or disconnected Azure Stack Hub stamps.
@@ -112,9 +112,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Added an auditing rule to report when an external device (for example, a USB key) is mounted to a node of the Azure Stack Hub infrastructure. The audit log is emitted via syslog and will be displayed as **Microsoft-Windows-Security-Auditing: 6416|Plug and Play Events**. For more information about how to configure the syslog client, see [Syslog forwarding](azure-stack-integrate-security.md).
 
-- Azure Stack Hub is moving to 4096 bit RSA keys for the internal certificates. Running internal secret rotation will replace old 2048 bit certificates with 4096 bit long certificates. For more information about secret rotation in Azure Stack Hub, see [Rotate secrets in Azure Stack Hub](azure-stack-rotate-secrets.md).
+- Azure Stack Hub is moving to 4096-bit RSA keys for the internal certificates. Running internal secret rotation will replace old 2048-bit certificates with 4096-bit long certificates. For more information about secret rotation in Azure Stack Hub, see [Rotate secrets in Azure Stack Hub](azure-stack-rotate-secrets.md).
 
-- Upgrades to the complexity of cryptographic algorithms and key strength for several internal components to comply with the Committee on National Security Systems - Policy 15 (CNSSP-15), which provides best practices for the use of public standards for secure information sharing. Among the improvements, there is AES256 for Kerberos authentication and SHA384 for VPN encryption. For more information about CNSSP-15, see the [Committee on National Security Systems, Policies page](http://www.cnss.gov/CNSS/issuances/Policies.cfm).
+- Upgrades to the complexity of cryptographic algorithms and key strength for several internal components to comply with the Committee on National Security Systems - Policy 15 (CNSSP-15), which provides best practices for the use of public standards for secure information sharing. Among the improvements, there's AES256 for Kerberos authentication and SHA384 for VPN encryption. For more information about CNSSP-15, see the [Committee on National Security Systems, Policies page](http://www.cnss.gov/CNSS/issuances/Policies.cfm).
 
 - As a result of the above upgrade, Azure Stack Hub now has new default values for IPsec/IKEv2 configurations. The new default values used on the Azure Stack Hub side are as follows:
 
@@ -170,7 +170,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 ### Fixes
 
-<!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
+<!-- Product fixes that came up from customer deployments worth highlighting, especially if there's an SR/ICM associated to it. -->
 
 - Fixed an issue that prevented enforcing TLS 1.2 policy on environments deployed prior to the Azure Stack Hub 1904 release.
 - Fixed an issue where an Ubuntu 18.04 VM created with SSH authorization enabled doesn't allow you to use the SSH keys to sign in.
@@ -223,15 +223,15 @@ The Azure Stack Hub 1908 update build number is **1.1908.4.33**.
 
 ### Update type
 
-For 1908, the underlying operating system on which Azure Stack Hub runs has been updated to Windows Server 2019. This enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack Hub in the near future.
+For 1908, the underlying operating system on which Azure Stack Hub runs has been updated to Windows Server 2019. This update enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack Hub in the near future.
 
-The Azure Stack Hub 1908 update build type is **Full**. As a result, the 1908 update has a longer runtime than express updates like 1906 and 1907. Exact runtimes for full updates typically depend on the number of nodes that your Azure Stack Hub instance contains, the capacity used on your system by tenant workloads, your system's network connectivity (if connected to the internet), and your system hardware configuration. The 1908 update has had the following expected runtimes in our internal testing: 4 nodes - 42 hours, 8 nodes - 50 hours, 12 nodes - 60 hours, 16 nodes - 70 hours. Update runtimes lasting longer than these expected values are not uncommon and do not require action by Azure Stack Hub operators unless the update fails.
+The Azure Stack Hub 1908 update build type is **Full**. As a result, the 1908 update has a longer runtime than express updates like 1906 and 1907. Exact runtimes for full updates typically depend on the number of nodes that your Azure Stack Hub instance contains, the capacity used on your system by tenant workloads, your system's network connectivity (if connected to the internet), and your system hardware configuration. The 1908 update has had the following expected runtimes in our internal testing: 4 nodes - 42 hours, 8 nodes - 50 hours, 12 nodes - 60 hours, 16 nodes - 70 hours. Update runtimes lasting longer than these expected values aren't uncommon and don't require action by Azure Stack Hub operators unless the update fails.
 
 For more information about update build types, see [Manage updates in Azure Stack Hub](azure-stack-updates.md).
 
 - Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware configuration.
-- Runtimes lasting longer than expected are not uncommon and do not require action by Azure Stack Hub operators unless the update fails.
-- This runtime approximation is specific to the 1908 update and should not be compared to other Azure Stack Hub updates.
+- Runtimes lasting longer than expected aren't uncommon and don't require action by Azure Stack Hub operators unless the update fails.
+- This runtime approximation is specific to the 1908 update and shouldn't be compared to other Azure Stack Hub updates.
 
 <!-- ## What's in this update -->
 
@@ -241,7 +241,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- What's new, also net new experiences and features. -->
 
-- For 1908, note that the underlying operating system on which Azure Stack Hub runs has been updated to Windows Server 2019. This enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack Hub in the near future.
+- For 1908, note that the underlying operating system on which Azure Stack Hub runs has been updated to Windows Server 2019. This update enables core fundamental enhancements, as well as the ability to bring additional capabilities to Azure Stack Hub in the near future.
 - All components of Azure Stack Hub infrastructure now operate in FIPS 140-2 mode.
 - Azure Stack Hub operators can now remove portal user data. For more information, see [Clear portal user data from Azure Stack Hub](azure-stack-portal-clear.md).
 
@@ -260,7 +260,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue with OEM Firmware update and corrected misdiagnosis in Test-AzureStack for Fabric Ring Health. This issue was found in 1907 and fixed in hotfix [KB4515310](https://support.microsoft.com/en-us/help/4515310/azure-stack-hotfix-1-1907-7-35)
 - Fixed an issue with OEM Firmware update process. This issue was found in 1907 and fixed in hotfix [KB4515650](https://support.microsoft.com/en-us/help/4515650/azure-stack-hotfix-1-1907-8-37)
 
-<!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
+<!-- Product fixes that came up from customer deployments worth highlighting, especially if there's an SR/ICM associated to it. -->
 
 ## Security updates
 
@@ -274,7 +274,7 @@ You can download the Azure Stack Hub 1908 update package from [the Azure Stack H
 
 Azure Stack Hub releases hotfixes on a regular basis. Be sure to install the latest Azure Stack Hub hotfix for 1907 before updating Azure Stack Hub to 1908.
 
-Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
+Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; don't attempt to install hotfixes on the ASDK.
 
 ### Prerequisites: Before applying the 1908 update
 
@@ -303,8 +303,8 @@ The Azure Stack Hub 1907 update build number is **1.1907.0.20**.
 The Azure Stack Hub 1907 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack Hub](azure-stack-updates.md) article. Based on internal testing, the expected time it takes for the 1907 update to complete is approximately 13 hours.
 
 - Exact update runtimes typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware configuration.
-- Runtimes lasting longer than expected are not uncommon and do not require action by Azure Stack Hub operators unless the update fails.
-- This runtime approximation is specific to the 1907 update and should not be compared to other Azure Stack Hub updates.
+- Runtimes lasting longer than expected aren't uncommon and don't require action by Azure Stack Hub operators unless the update fails.
+- This runtime approximation is specific to the 1907 update and shouldn't be compared to other Azure Stack Hub updates.
 
 ## What's in this update
 
@@ -324,7 +324,7 @@ The Azure Stack Hub 1907 update build type is **Express**. For more information 
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
-- The Azure Stack Hub update blade now displays a **Last Step Completed** time for active updates. This can be seen by going to the update blade and clicking on a running update. **Last Step Completed** is then available in the **Update run details** section.
+- The Azure Stack Hub update blade now displays a **Last Step Completed** time for active updates. This addition can be seen by going to the update blade and clicking on a running update. **Last Step Completed** is then available in the **Update run details** section.
 
 - Improvements to **Start-AzureStack** and **Stop-AzureStack** operator actions. The time to start Azure Stack Hub has been reduced by an average of 50%. The time to shut down Azure Stack Hub has been reduced by an average of 30%. The average startup and shutdown times remain the same as the number of nodes increases in a scale-unit.
 
@@ -335,7 +335,7 @@ The Azure Stack Hub 1907 update build type is **Express**. For more information 
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/127669774/home -->
 - Improved virtual disk health check before shutting down a node to avoid unexpected virtual disk detaching.
 
-- Improved storage of internal logs for administrator operations. This results in improved performance and reliability during administrator operations by minimizing the memory and storage consumption of internal log processes. You might also notice improved page load times of the update blade in the administrator portal. As part of this improvement, update logs older than 6 months will no longer be available in the system. If you require logs for these updates, be sure to [Download the summary](azure-stack-apply-updates.md) for all update runs older than 6 months before performing the 1907 update.
+- Improved storage of internal logs for administrator operations. This addition results in improved performance and reliability during administrator operations by minimizing the memory and storage consumption of internal log processes. You might also notice improved page load times of the update blade in the administrator portal. As part of this improvement, update logs older than six months will no longer be available in the system. If you require logs for these updates, be sure to [Download the summary](azure-stack-apply-updates.md) for all update runs older than six months before performing the 1907 update.
 
 ### Changes
 
@@ -345,7 +345,7 @@ The Azure Stack Hub 1907 update build type is **Express**. For more information 
 
 - The infrastructure backup service now deletes partially uploaded backups if the external storage location runs out of capacity.
 
-- Infrastructure backups no longer include a backup of domain services data. This only applies to systems using Azure Active Directory as the identity provider.
+- Infrastructure backups no longer include a backup of domain services data. This change only applies to systems using Azure Active Directory as the identity provider.
 
 - We now validate that an image being ingested into the **Compute -> VM images** blade is of type page blob.
 
@@ -353,7 +353,7 @@ The Azure Stack Hub 1907 update build type is **Express**. For more information 
 
 ### Fixes
 
-<!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
+<!-- Product fixes that came up from customer deployments worth highlighting, especially if there's an SR/ICM associated to it. -->
 - Fixed an issue in which the publisher, offer, and SKU were treated as case sensitive in a Resource Manager template: the image was not fetched for deployment unless the image parameters were the same case as that of the publisher, offer, and SKU.
 
 <!-- https://icm.ad.msft.net/imp/v3/incidents/details/129536438/home -->
@@ -372,7 +372,7 @@ The Azure Stack Hub 1907 update build type is **Express**. For more information 
 
 - Fixed an issue that could cause updates to fail due to the management plane becoming unhealthy due to a bad configuration. This issue was found in 1906 and fixed in hotfix [KB4512794](https://support.microsoft.com/help/4512794/).
 
-- Fixed an issue that prevented users from completing deployment of 3rd party images from the marketplace. This issue was found in 1906 and fixed in hotfix [KB4511259](https://support.microsoft.com/help/4511259/).
+- Fixed an issue that prevented users from completing deployment of third party images from the marketplace. This issue was found in 1906 and fixed in hotfix [KB4511259](https://support.microsoft.com/help/4511259/).
 
 - Fixed an issue that could cause VM creation from managed images to fail due to our user image manager service crashing. This issue was found in 1906 and fixed in hotfix [KB4512794](https://support.microsoft.com/help/4512794/)
 
@@ -400,7 +400,7 @@ You can download the Azure Stack Hub 1907 update package from [the Azure Stack H
 
 Azure Stack Hub releases hotfixes on a regular basis. Be sure to install the latest Azure Stack Hub hotfix for 1906 before updating Azure Stack Hub to 1907.
 
-Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
+Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; don't attempt to install hotfixes on the ASDK.
 
 ### Before applying the 1907 update
 
@@ -424,7 +424,7 @@ The Azure Stack Hub 1906 update build number is **1.1906.0.30**.
 
 ### Update type
 
-The Azure Stack Hub 1906 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack Hub](azure-stack-updates.md) article. The expected time it takes for the 1906 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack Hub environment. Exact update runtimes will typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value are not uncommon and do not require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 1906 update and should not be compared to other Azure Stack Hub updates.
+The Azure Stack Hub 1906 update build type is **Express**. For more information about update build types, see the [Manage updates in Azure Stack Hub](azure-stack-updates.md) article. The expected time it takes for the 1906 update to complete is approximately 10 hours, regardless of the number of physical nodes in your Azure Stack Hub environment. Exact update runtimes will typically depend on the capacity used on your system by tenant workloads, your system network connectivity (if connected to the internet), and your system hardware specifications. Runtimes lasting longer than the expected value aren't uncommon and don't require action by Azure Stack Hub operators unless the update fails. This runtime approximation is specific to the 1906 update and shouldn't be compared to other Azure Stack Hub updates.
 
 ## What's in this update
 
@@ -438,7 +438,7 @@ The Azure Stack Hub 1906 update build type is **Express**. For more information 
 
 - Added an internal secret rotation procedure to rotate internal TLS certificates as required during a system update.
 
-- Added a safeguard to prevent expiration of internal secrets by forcing internal secrets rotation in case a critical alert on expiring secrets is ignored. This should not be relied on as a regular operating procedure. Secrets rotation should be planned during a maintenance window. For more information, see [Azure Stack Hub secret rotation](azure-stack-rotate-secrets.md).
+- Added a safeguard to prevent expiration of internal secrets by forcing internal secrets rotation in case a critical alert on expiring secrets is ignored. This safeguard shouldn't be relied on as a regular operating procedure. Secrets rotation should be planned during a maintenance window. For more information, see [Azure Stack Hub secret rotation](azure-stack-rotate-secrets.md).
 
 - Visual Studio Code is now supported with Azure Stack Hub deployment using AD FS.
 
@@ -446,7 +446,7 @@ The Azure Stack Hub 1906 update build type is **Express**. For more information 
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
-- The **Get-GraphApplication** cmdlet in the privileged endpoint now displays the thumbprint of the currently used certificate. This improves the certificate management for service principals when Azure Stack Hub is deployed with AD FS.
+- The **Get-GraphApplication** cmdlet in the privileged endpoint now displays the thumbprint of the currently used certificate. This update improves the certificate management for service principals when Azure Stack Hub is deployed with AD FS.
 
 - New health monitoring rules have been added to validate the availability of AD Graph and AD FS, including the ability to raise alerts.
 
@@ -458,7 +458,7 @@ The Azure Stack Hub 1906 update build type is **Express**. For more information 
 
 - A new parameter is available for the **Register-CustomAdfs** cmdlet in the privileged endpoint that enables skipping the certificate revocation list checking when configuring the federation trust for AD FS.
 
-- The 1906 release introduces greater visibility into update progress, so you can be assured that updates are not pausing. This results in an increase in the total number of update steps shown to operators in the **Update** blade. You might also notice more update steps happening in parallel than in previous updates.
+- The 1906 release introduces greater visibility into update progress, so you can be assured that updates aren't pausing. This update results in an increase in the total number of update steps shown to operators in the **Update** blade. You might also notice more update steps happening in parallel than in previous updates.
 
 #### Networking updates
 
@@ -480,11 +480,11 @@ The Azure Stack Hub 1906 update build type is **Express**. For more information 
 
 ### Fixes
 
-<!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
+<!-- Product fixes that came up from customer deployments worth highlighting, especially if there's an SR/ICM associated to it. -->
 
 - Fixed an issue where resizing a managed disk VM failed with an **Internal Operation Error**.
 
-- Fixed an issue where a failed user image creation puts the service that manages images is in a bad state; this blocks deletion of the failed image and creation of new images. This is also fixed in the 1905 hotfix.
+- Fixed an issue where a failed user image creation puts the service that manages images is in a bad state; this blocks deletion of the failed image and creation of new images. This issue is also fixed in the 1905 hotfix.
 
 - Active alerts on expiring internal secrets are now automatically closed after successful execution of internal secret rotation.
 
@@ -520,7 +520,7 @@ You can download the Azure Stack Hub 1906 update package from [the Azure Stack H
 
 Azure Stack Hub releases hotfixes on a regular basis. Be sure to install the latest Azure Stack Hub hotfix for 1905 before updating Azure Stack Hub to 1906. After updating, install any [available hotfixes for 1906](#after-successfully-applying-the-1906-update).
 
-Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
+Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; don't attempt to install hotfixes on the ASDK.
 
 ### Before applying the 1906 update
 
@@ -604,7 +604,7 @@ To access archived release notes for an older version, use the version selector 
 ::: moniker-end
 
 ::: moniker range="<azs-1906"
-You can access [older versions of Azure Stack Hub release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and do not imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
+You can access [older versions of Azure Stack Hub release notes on the TechNet Gallery](https://aka.ms/azsarchivedrelnotes). These archived documents are provided for reference purposes only and don't imply support for these versions. For information about Azure Stack Hub support, see [Azure Stack Hub servicing policy](azure-stack-servicing-policy.md). For further assistance, contact Microsoft Customer Support Services.
 ::: moniker-end
 
 
