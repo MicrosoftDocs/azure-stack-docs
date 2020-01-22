@@ -4,7 +4,6 @@ description: Learn how to use the ASDK to validate an Azure Stack integrated sys
 services: azure-stack
 author: justinha
 manager: femila
-services: azure-stack
 cloud: azure-stack
 
 ms.service: azure-stack
