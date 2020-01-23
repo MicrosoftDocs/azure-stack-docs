@@ -96,7 +96,7 @@ _For integrated systems installations only_. You must provide the SQL PaaS PKI c
 
 ## Deploy the SQL resource provider
 
-After you've installed all the prerequisites, run the **DeploySqlProvider.ps1** script to deploy the SQL resource provider. The DeploySqlProvider.ps1 script is extracted as part of the SQL resource provider binary that you downloaded for your version of Azure Stack Hub.
+After you've installed all the prerequisites, run the **DeploySqlProvider.ps1** script from a computer that can access both the Azure Stack Hub Admin Azure Resource Management Endpoint and Privileged Endpoint to deploy the SQL resource provider. The DeploySqlProvider.ps1 script is extracted as part of the SQL resource provider binary that you downloaded for your version of Azure Stack Hub.
 
  > [!IMPORTANT]
  > Before deploying the resource provider, review the release notes to learn about new functionality, fixes, and any known issues that could affect your deployment.
@@ -113,7 +113,7 @@ Run the DeploySqlProvider.ps1 script, which completes the following tasks:
 - Registers your resource provider with the local Azure Resource Manager for the operator account.
 
 > [!NOTE]
-> When the SQL resource provider deployment starts, the **system.local.sqladapter** resource group is created. It may take up to 75 minutes to finish the required deployments to this resource group.
+> When the SQL resource provider deployment starts, the **system.local.sqladapter** resource group is created. It may take up to 75 minutes to finish the required deployments to this resource group. You should not place any other resources in the **system.local.sqladapter** resource group.
 
 ### DeploySqlProvider.ps1 parameters
 
