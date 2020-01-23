@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 01/23/2020
 ms.author: sethm
 ms.lastreviewed: 12/27/2018
 ---
@@ -28,7 +28,7 @@ A VPN gateway connection relies on the configuration of multiple resources, each
 
 ### Gateway types
 
-Each Azure Stack Hub virtual network supports a single virtual network gateway, which must be of the type **Vpn**.  This support is different from Azure, which supports additional types.
+Each Azure Stack Hub virtual network supports a single virtual network gateway, which must be of the type **Vpn**. This support is different from Azure, which supports additional types.
 
 When you create a virtual network gateway, you must make sure that the gateway type is correct for your configuration. A VPN gateway requires the `-GatewayType Vpn` flag; for example:
 
