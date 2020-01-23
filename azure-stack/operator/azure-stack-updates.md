@@ -22,7 +22,7 @@ ms.reviewer: ppacent
 
 # Manage updates in Azure Stack Hub
 
-Full and express updates, hotfixes, as well as driver and firmware updates from the original equipment manufacturer (OEM) all help keep Azure Stack Hub up-to-date. This article explains the different types of updates, when to expect their release, and where to find more about the current release.
+Full and express updates, hotfixes, as well as driver and firmware updates from the original equipment manufacturer (OEM) all help keep Azure Stack Hub up to date. This article explains the different types of updates, when to expect their release, and where to find more about the current release.
 
 > [!Note]  
 > You can't apply Azure Stack Hub update packages to the Azure Stack Development Kit (ASDK). The update packages are designed for integrated systems. For information, see [Redeploy the ASDK](https://docs.microsoft.com/azure-stack/asdk/asdk-redeploy).
@@ -63,7 +63,7 @@ Notice of updates varies on a couple of factors, such as your connection to the 
 
     An update alert for Microsoft software updates and hotfixes will appear in the **Update** blade for Azure Stack Hub instances that are connected to the internet. If the **Update** blade isn't displayed, restart the infrastructure management controller VM.
 
-    If your instance is not connected and you would like to be notified about each hotfix release, subscribe to the [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss) or [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom) feed.
+    If your instance isn't connected and you would like to be notified about each hotfix release, subscribe to the [RSS](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss) or [ATOM](https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom) feed.
 
 - **OEM hardware vendor-provided updates**
 
