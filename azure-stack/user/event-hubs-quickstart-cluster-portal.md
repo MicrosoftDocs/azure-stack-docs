@@ -14,23 +14,23 @@ ms.lastreviewed: 01/22/2020
 
 In this quickstart, you learn how to create an Event Hubs cluster, using the Azure Stack Hub user portal. 
 
-Event Hubs clusters offer single-tenant deployments for the most demanding streaming needs. An Event Hubs cluster can ingress millions of events per second with guaranteed capacity and subsecond latency. Event Hubs cluster includes all popular features, with a close parity with those offered by the Azure Event Hubs edition.
+Event Hubs clusters offer single-tenant deployments for the most demanding streaming needs. An Event Hubs cluster can ingress millions of events per second with guaranteed capacity and subsecond latency. Event Hubs clusters includes all popular features, and close parity with features offered by the Azure Event Hubs edition.
 
 ## Prerequisites
 
-Before you can complete this quickstart you must ensure the Event Hubs service is available in your subscription. If it's not available, work with your administrator to [install the Event Hubs on Azure Stack Hub resource provider](../operator/event-hubs-rp-overview.md). The installation steps also cover the creation of an offer that includes the Event Hubs service. 
+Before you can complete this quickstart, you must ensure the Event Hubs service is available in your subscription. If not, work with your administrator to [install the Event Hubs on Azure Stack Hub resource provider](../operator/event-hubs-rp-overview.md). The installation steps also cover the creation of an offer that includes the Event Hubs service. 
 
 Once an offer is available, your administrator can create or update your subscription to include Event Hubs. Alternatively, you can [subscribe to the new offer and create your own subscription](azure-stack-subscribe-services.md).
 
 ## Overview
 
-Event Hubs clusters are created by specifying Capacity Units (CUs). A CU is a pre-allocated amount of CPU, storage, and memory resources. Event Hubs clusters are billed by CPU/hr. The number of cores (CPUs) used by a cluster is displayed when selecting the number of CUs (cluster size) during the cluster creation experience. See [How to do capacity planning for Event Hubs on Azure Stack Hub](../operator/event-hubs-rp-capacity-planning.md) for more detailed information on cluster resource usage. 
+Event Hubs clusters are created by specifying Capacity Units (CUs). A CU is a pre-allocated amount of CPU, storage, and memory resources. Event Hubs clusters are billed by CPU/hr. The number of cores (CPUs) used by a cluster is displayed when selecting the number of CUs (cluster size) during the cluster creation experience. For more detailed information on cluster resource usage, see [How to do capacity planning for Event Hubs on Azure Stack Hub](../operator/event-hubs-rp-capacity-planning.md). 
 
-In this quickstart, we will walk you through the creation of a 1 CU Event Hubs cluster through the Azure Stack Hub user portal. 
+In this quickstart, you learn how to create of a 1 CU Event Hubs cluster using the Azure Stack Hub user portal. 
 
 ## Create an Event Hubs cluster
 
-An Event Hubs cluster provides a unique scoping container in which you can create one or more namespaces. To create a cluster in your resource group using the User portal, please complete the following steps: 
+An Event Hubs cluster provides a unique scoping container in which you can create one or more namespaces. To create a cluster in your resource group using the User portal, complete the following steps: 
 
 1. Sign in to the Azure Stack Hub user portal.
 2. Select **All services** from the left navigation pane, enter "Event Hubs Clusters" in the search bar, and select the **Event Hubs Clusters** item from results list.

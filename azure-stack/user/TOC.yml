@@ -264,11 +264,11 @@
       items: 
       - name: VNet peering with VMs
         href: azure-stack-network-howto-vnet-peering.md
-      - name: Use third party NVAs (Fortinet Fortigate NVA)
+      - name: Use third-party NVAs (Fortinet Fortigate NVA)
         items:
         - name: VNet peering with FortiGate
           href: azure-stack-network-howto-vnet-to-vnet.md
-        - name: Setup VPN to on-prem
+        - name: Set up VPN to on-prem
           href: azure-stack-network-howto-vnet-to-onprem.md
         - name: VNET to VNET connection
           href: azure-stack-network-howto-vnet-to-vnet-stacks.md
