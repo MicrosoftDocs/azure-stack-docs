@@ -30,12 +30,12 @@ In this quickstart, you learn how to create of a 1 CU Event Hubs cluster using t
 
 ## Create an Event Hubs cluster
 
-An Event Hubs cluster provides a unique scoping container in which you can create one or more namespaces. To create a cluster in your resource group using the User portal, complete the following steps: 
+An Event Hubs cluster provides a unique scoping container in which you can create one or more namespaces. Complete the following steps to create an Event Hubs cluster: 
 
 1. Sign in to the Azure Stack Hub user portal.
 2. Select **All services** from the left navigation pane, enter "Event Hubs Clusters" in the search bar, and select the **Event Hubs Clusters** item from results list.
-3. Select **+ Add** from the top of the page.  
-4. On the **Create Event Hubs Cluster** page, **Basics** tab:  
+3. Select **+ Add** from the top of the **Event Hubs Clusters** page. The **Create Event Hubs Cluster** panel opens on the right.
+4. On the **Basics** tab of the **Create Event Hubs Cluster** page:  
    - **Cluster name**: Enter a name. The system immediately checks to see if the name is available. If available, a checkmark will show at the right end of the field. 
    - **Subscription**: Select the subscription in which you want to create the cluster. 
    - **Resource group**: Create/Select the resource group in which you want to create the cluster. 
@@ -44,30 +44,30 @@ An Event Hubs cluster provides a unique scoping container in which you can creat
    [![Create Event Hub cluster - basics](media/event-hubs-quickstart-cluster-portal/1-create-cluster-basics.png)](media/event-hubs-quickstart-cluster-portal/1-create-cluster-basics.png#lightbox)
 
 5. On the **Tags** tab: 
-   - Enter the name/value pairs for the optional resource tag(s).  
+   - Optionally, enter the name/value pairs for the resource tag(s).  
    - Select the **Next: Review + Create >** button. 
 
-   [![Create Event Hub cluster - tags](media/event-hubs-quickstart-cluster-portal/2-create-cluster-tags.png)](media/event-hubs-quickstart-cluster-portal/2-create-cluster-tags.png#lightbox)
+   [![Create Event Hub cluster - tags](media/event-hubs-quickstart-cluster-portal/1-create-cluster-tags.png)](media/event-hubs-quickstart-cluster-portal/1-create-cluster-tags.png#lightbox)
 
-6. On the **Review + Create** tab, review the details. You should also see a "Validation succeeded banner" at the top of the page. Select **Create** when ready to create the cluster. 
+6. On the **Review + Create** tab, review the details. You should also see a "Validation succeeded" banner at the top of the page. Select **Create** when ready to create the cluster. 
 
-   [![Create Event Hub cluster - review + create](media/event-hubs-quickstart-cluster-portal/3-create-cluster-review.png)](media/event-hubs-quickstart-cluster-portal/3-create-cluster-review.png#lightbox)
+   [![Create Event Hub cluster - review + create](media/event-hubs-quickstart-cluster-portal/1-create-cluster-review.png)](media/event-hubs-quickstart-cluster-portal/1-create-cluster-review.png#lightbox)
 
    >[!NOTE]
    > An Event Hubs cluster deployment can take several minutes to complete, normally at least 45 minutes.
 
 7. When complete, the **Your deployment is underway** status page changes to **Your deployment is complete**. Before continuing to the next section, select the **Go to resource** button to view the new cluster:
 
-   [![Create Event Hub cluster - deployment complete](media/event-hubs-quickstart-cluster-portal/4-deployment-complete.png)](media/event-hubs-quickstart-cluster-portal/4-deployment-complete.png#lightbox)
+   [![Create Event Hub cluster - deployment complete](media/event-hubs-quickstart-cluster-portal/1-deployment-complete.png)](media/event-hubs-quickstart-cluster-portal/1-deployment-complete.png#lightbox)
 
 
-## Create a namespace and event hub
+## Create a namespace
 
 Now you create a namespace within your new cluster:
 
 1. On the Event Hubs Cluster **Overview** page for your cluster, select **+ Namespace** from the top menu. 
 
-   [![Event Hubs Clusters - select cluster](media/event-hubs-quickstart-cluster-portal/5-view-cluster.png)](media/event-hubs-quickstart-cluster-portal/5-view-cluster.png#lightbox)
+   [![Event Hubs Clusters - select cluster](media/event-hubs-quickstart-cluster-portal/2-view-cluster.png)](media/event-hubs-quickstart-cluster-portal/2-view-cluster.png#lightbox)
 
 2. On the **Create namespace in cluster** panel:
 
@@ -80,21 +80,40 @@ Now you create a namespace within your new cluster:
 
    - Select **Create** to create the namespace:
 
-   [![Event Hubs Clusters - create namespace](media/event-hubs-quickstart-cluster-portal/5-view-cluster-create-namespace.png)](media/event-hubs-quickstart-cluster-portal/5-view-cluster-create-namespace.png#lightbox)
+   [![Event Hubs Clusters - create namespace](media/event-hubs-quickstart-cluster-portal/2-view-cluster-create-namespace.png)](media/event-hubs-quickstart-cluster-portal/2-view-cluster-create-namespace.png#lightbox)
 
 3. Note your new namespace under **Cluster Namespaces**. You can now  [create an event hub](/azure/event-hubs/event-hubs-create#create-an-event-hub), within your namespace. 
 
-   [![Event Hubs Clusters - view namespace](media/event-hubs-quickstart-cluster-portal/6-view-cluster-with-namespace.png)](media/event-hubs-quickstart-cluster-portal/6-view-cluster-with-namespace.png#lightbox)
+   [![Event Hubs Clusters - view namespace](media/event-hubs-quickstart-cluster-portal/2-view-cluster-with-namespace.png)](media/event-hubs-quickstart-cluster-portal/2-view-cluster-with-namespace.png#lightbox)
+
+## Create an event hub
+
+1. Select **All services** from the left navigation pane again. Enter "Event Hubs" in the search bar, then select the **Event Hubs** item from results list.
+2. Under the **Name** column, find and select the namespace you created in the previous section:
+
+   [![Event Hubs - namespace](media/event-hubs-quickstart-cluster-portal/3-event-hubs-namespace.png)](media/event-hubs-quickstart-cluster-portal/3-event-hubs-namespace.png#lightbox)
+
+3. On the Event Hubs Namespace **Overview** page, select **+ Event Hub** from the top menu:  
+
+   [![Event Hubs - namespace overview](media/event-hubs-quickstart-cluster-portal/3-event-hubs-namespace-overview.png)](media/event-hubs-quickstart-cluster-portal/3-event-hubs-namespace-overview.png#lightbox)
+
+4. On the **Create Event Hub** panel:
+   - **Name**: Enter a name for the event hub. The name can contain only letters, numbers, periods, hyphens, and underscores. The name must start and end with a letter or number. The system immediately checks to see if the name is available. If available, a checkmark will show at the right end of the field.
+   - Select **Create** to create the event hub.
+
+   [![Event Hubs - namespace overview create event hub](media/event-hubs-quickstart-cluster-portal/3-event-hubs-namespace-overview-create-event-hub.png)](media/event-hubs-quickstart-cluster-portal/3-event-hubs-namespace-overview-create-event-hub.png#lightbox)
 
 ## Delete an Event Hubs cluster
 
 To delete the cluster:
 
-1. Select **Delete** from the top menu.  
-2. A message will appear confirming your wish to delete the cluster. 
-3. Enter the name of the cluster and select **Delete** to delete the cluster. 
+1. Select **All services** from the left navigation pane again. Enter "Event Hubs Clusters" in the search bar, and select the **Event Hubs Clusters** item from results list.
+2. Under the **Name** column, find and select the cluster you created previously.
+3. On the Event Hubs Cluster **Overview** page, select **Delete** from the top menu.  
+4. A message will appear confirming deletion of the cluster. 
+5. Enter the name of the cluster and select **Delete** to delete the cluster. 
 
-   [![Event Hubs Clusters - delete cluster](media/event-hubs-quickstart-cluster-portal/7-delete-cluster.png)](media/event-hubs-quickstart-cluster-portal/7-delete-cluster.png#lightbox)
+   [![Event Hubs Clusters - delete cluster](media/event-hubs-quickstart-cluster-portal/4-delete-cluster.png)](media/event-hubs-quickstart-cluster-portal/4-delete-cluster.png#lightbox)
 
 ## Next steps
 
