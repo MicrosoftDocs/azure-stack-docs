@@ -828,6 +828,13 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Remediation: None.
 - Occurrence: Common
 
+### Issues creating resources
+
+- Applicable: This issue applies to the 1906 release.
+- Cause: There is a known issue in 1906 with custom roles and permission allocation for resource creation. You might face issues creating resources even if you have the correct permissions.
+- Remediation: Please update to build 1907 to mitigate this issue.
+- Occurrence: Common
+
 ### Virtual machine diagnostic settings blade
 
 - Applicable: This issue applies to the 1906 and 1907 releases.    

@@ -13,10 +13,10 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/16/2019
+ms.date: 01/22/2020
 ms.author: justinha
-ms.reviewer: tbd
-ms.lastreviewed: 09/12/2018
+ms.reviewer: misainat
+ms.lastreviewed: 01/22/2020
 
 ROBOTS: NOINDEX
 ---
@@ -72,21 +72,13 @@ The following table summarizes the network configuration for both ASDK environme
 ### Get the IP address of the external adapter of the NAT VM
 
 1. Sign in to the Azure Stack Hub physical machine for POC1.
-2. Edit the following PowerShell code to add your admin password, and then run the code on the POC host:
+2. Open PowerShell as an Administrator and run the following cmdlet:
 
    ```powershell
-   cd \AzureStack-Tools-master\connect
-   Import-Module .\AzureStack.Connect.psm1
-   $Password = ConvertTo-SecureString "<your administrator password>" `
-    -AsPlainText `
-    -Force
-   Get-AzureStackNatServerAddress `
-    -HostComputer "AzS-bgpnat01" `
-    -Password $Password
+   Get-NetNatExternalAddress
    ```
 
 3. Add the IP address to the network configuration table that appears in the previous section.
-
 4. Repeat this procedure on POC2.
 
 ## Create the network resources in POC1

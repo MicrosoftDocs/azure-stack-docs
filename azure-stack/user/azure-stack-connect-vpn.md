@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/04/2019
+ms.date: 01/22/2020
 ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2018
@@ -65,7 +65,7 @@ First, create the network resources for Azure. The following instructions show h
 8. Select **Pin to dashboard**.
 9. Select **Create**.
 
-### Create the Gateway subnet
+### Create the gateway subnet
 
 1. Open the virtual network resource you created (**AzureVNet**) from the dashboard.
 2. On the **Settings** section, select **Subnets**.
