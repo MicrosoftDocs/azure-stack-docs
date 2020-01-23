@@ -1,6 +1,7 @@
 ---
-title: Usage API related FAQs | Microsoft Docs
-description: List of Azure Stack Hub meters, comparison to Azure usage API, Usage Time and Reported Time, error codes.
+title: Usage API related FAQ
+titleSuffix: Azure Stack Hub
+description: List of frequently asked questions about Azure Stack Hub usage, including meters, comparison to Azure usage API, usage time vs reported time, and error codes.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
