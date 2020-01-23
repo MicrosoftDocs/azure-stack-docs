@@ -13,7 +13,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2019
+ms.date: 01/22/2020
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 03/23/2019
@@ -22,7 +22,7 @@ ms.lastreviewed: 03/23/2019
 
 # Azure Stack Hub managed disks: differences and considerations
 
-This article summarizes the differences between [managed disks in Azure Stack Hub](azure-stack-manage-vm-disks.md) and [managed disks in Azure](/azure/virtual-machines/windows/managed-disks-overview). To learn about high-level differences between Azure Stack Hub and Azure, see the [Key considerations](azure-stack-considerations.md) article.
+This article summarizes the differences between [*managed disks* in Azure Stack Hub](azure-stack-manage-vm-disks.md) and [managed disks in Azure](/azure/virtual-machines/windows/managed-disks-overview). To learn about high-level differences between Azure Stack Hub and Azure, see the [Key considerations](azure-stack-considerations.md) article.
 
 Managed disks simplify disk management for IaaS virtual machines (VMs) by managing the [storage accounts](../operator/azure-stack-manage-storage-accounts.md) associated with the VM disks.
 
@@ -141,10 +141,10 @@ Azure Stack Hub supports *managed images*, which enable you to create a managed 
 
 ### Step 1: Generalize the VM
 
-For Windows, follow the [Generalize the Windows VM using Sysprep](/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep) section. For Linux, follow Step 1 [here](/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm).
+For Windows, follow the [Generalize the Windows VM using Sysprep](/azure/virtual-machines/windows/capture-image-resource#generalize-the-windows-vm-using-sysprep) section. For Linux, follow step 1 [here](/azure/virtual-machines/linux/capture-image#step-1-deprovision-the-vm).
 
 > [!NOTE]
-> Make sure to generalize your VM. Creating a VM from an image that hasn't been properly generalized will lead to a **VMProvisioningTimeout** error.
+> Make sure to generalize your VM. Creating a VM from an image that hasn't been properly generalized can produce a **VMProvisioningTimeout** error.
 
 ### Step 2: Create the managed image
 
@@ -229,4 +229,4 @@ After applying the 1808 update or later, you must make the following configurati
 
 ## Next steps
 
-- [Learn about Azure Stack Hub virtual machines](azure-stack-compute-overview.md)
+- Learn about [Azure Stack Hub virtual machines](azure-stack-compute-overview.md).
