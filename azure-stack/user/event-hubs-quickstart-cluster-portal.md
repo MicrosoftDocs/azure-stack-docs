@@ -80,11 +80,11 @@ Now you create a namespace within your new cluster:
 
    - Select **Create** to create the namespace:
 
-   [![Event Hubs Clusters - select cluster](media/event-hubs-quickstart-cluster-portal/5-view-cluster-create-namespace.png)](media/event-hubs-quickstart-cluster-portal/5-view-cluster-create-namespace#lightbox)
+   [![Event Hubs Clusters - create namespace](media/event-hubs-quickstart-cluster-portal/5-view-cluster-create-namespace.png)](media/event-hubs-quickstart-cluster-portal/5-view-cluster-create-namespace.png#lightbox)
 
 3. Note your new namespace under **Cluster Namespaces**. You can now  [create an event hub](/azure/event-hubs/event-hubs-create#create-an-event-hub), within your namespace. 
 
-   [![Event Hubs Clusters - select cluster](media/event-hubs-quickstart-cluster-portal/6-view-cluster-with-namespace.png)](media/event-hubs-quickstart-cluster-portal/6-view-cluster-with-namespace#lightbox)
+   [![Event Hubs Clusters - view namespace](media/event-hubs-quickstart-cluster-portal/6-view-cluster-with-namespace.png)](media/event-hubs-quickstart-cluster-portal/6-view-cluster-with-namespace.png#lightbox)
 
 ## Delete an Event Hubs cluster
 
@@ -94,7 +94,7 @@ To delete the cluster:
 2. A message will appear confirming your wish to delete the cluster. 
 3. Enter the name of the cluster and select **Delete** to delete the cluster. 
 
-   [![Event Hubs Clusters - select cluster](media/event-hubs-quickstart-cluster-portal/7-delete-cluster.png)](media/event-hubs-quickstart-cluster-portal/7-delete-cluster#lightbox)
+   [![Event Hubs Clusters - delete cluster](media/event-hubs-quickstart-cluster-portal/7-delete-cluster.png)](media/event-hubs-quickstart-cluster-portal/7-delete-cluster.png#lightbox)
 
 ## Next steps
 
