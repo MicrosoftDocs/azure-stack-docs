@@ -89,6 +89,8 @@ The administrator portal now indicates if an operation is in progress with an ic
 <!-- Fixed an issue where adding more than one public IP on the same NIC on a Virtual Machine resulted in internet connectivity issues. Now, a NIC with two public IPs should work as expected.[This fix actually didn't go in 1910 due to build issues, commenting out until next build (2002) ] -->
 
 Fixed an issue that prevented alerts for disconnected network adapters to be raised.
+Fixed an issue that caused the system to raise an alert indicating that the Azure AD home directory needs to be configured.
+Fixed an issue that prevented an alert indicating that the Azure AD home directory must be configured to not automatically close.
 
 ## Security updates
 
