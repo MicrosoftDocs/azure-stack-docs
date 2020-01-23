@@ -35,28 +35,28 @@ An Event Hubs cluster provides a unique scoping container in which you can creat
 1. Sign in to the Azure Stack Hub user portal.
 2. Select **All services** from the left navigation pane, enter "Event Hubs Clusters" in the search bar, and select the **Event Hubs Clusters** item from results list.
 3. Select **+ Add** from the top of the page.  
-4. On the **Create Event Hubs Cluster** page, **Basics** tab, configure the following: 
+4. On the **Create Event Hubs Cluster** page, **Basics** tab:  
    - **Cluster name**: Enter a name. The system immediately checks to see if the name is available. If available, a checkmark will show at the right end of the field. 
    - **Subscription**: Select the subscription in which you want to create the cluster. 
    - **Resource group**: Create/Select the resource group in which you want to create the cluster. 
-5. Select the **Next: Tags >** button at the bottom of the page. You may have to wait for the system to fully provision resources. 
+   - Select the **Next: Tags >** button at the bottom of the page. You may have to wait for the system to fully provision resources. 
 
    [![Create Event Hub cluster - basics](media/event-hubs-quickstart-cluster-portal/1-create-cluster-basics.png)](media/event-hubs-quickstart-cluster-portal/1-create-cluster-basics.png#lightbox)
 
-6. On the **Tags** tab, configure the following: 
+5. On the **Tags** tab: 
    - Enter the name/value pairs for the optional resource tag(s).  
-7. Select the **Next: Review + Create >** button. 
+   - Select the **Next: Review + Create >** button. 
 
    [![Create Event Hub cluster - tags](media/event-hubs-quickstart-cluster-portal/2-create-cluster-tags.png)](media/event-hubs-quickstart-cluster-portal/2-create-cluster-tags.png#lightbox)
 
-8. On the **Review + Create** tab, review the details. You should also see a "Validation succeeded banner" at the top of the page. Select **Create** when ready to create the cluster. 
+6. On the **Review + Create** tab, review the details. You should also see a "Validation succeeded banner" at the top of the page. Select **Create** when ready to create the cluster. 
 
    [![Create Event Hub cluster - review + create](media/event-hubs-quickstart-cluster-portal/3-create-cluster-review.png)](media/event-hubs-quickstart-cluster-portal/3-create-cluster-review.png#lightbox)
 
    >[!NOTE]
    > An Event Hubs cluster deployment can take several minutes to complete, normally at least 45 minutes.
 
-9. When complete, the **Your deployment is underway** status page changes to **Your deployment is complete**. Before continuing to the next section, select the **Go to resource** button to view the new cluster:
+7. When complete, the **Your deployment is underway** status page changes to **Your deployment is complete**. Before continuing to the next section, select the **Go to resource** button to view the new cluster:
 
    [![Create Event Hub cluster - deployment complete](media/event-hubs-quickstart-cluster-portal/4-deployment-complete.png)](media/event-hubs-quickstart-cluster-portal/4-deployment-complete.png#lightbox)
 
@@ -65,27 +65,36 @@ An Event Hubs cluster provides a unique scoping container in which you can creat
 
 Now you create a namespace within your new cluster:
 
-1. On the Event Hubs Cluster page for your cluster, select **+ Namespace** from the top menu. 
+1. On the Event Hubs Cluster **Overview** page for your cluster, select **+ Namespace** from the top menu. 
 
    [![Event Hubs Clusters - select cluster](media/event-hubs-quickstart-cluster-portal/5-view-cluster.png)](media/event-hubs-quickstart-cluster-portal/5-view-cluster.png#lightbox)
 
-2. On the **Create namespace in cluster** panel, configure the following: 
+2. On the **Create namespace in cluster** panel:
+
    - **Name**: Enter a name for the namespace. The system immediately checks to see if the name is available. If available, a checkmark will show at the right end of the field. 
    - **Property/Value list**: The namespace inherits the following properties: 
      - Subscription ID 
      - Resource group 
      - Location 
      - Cluster name 
-3. Select **Create** to create the namespace. Now you can manage your cluster. 
-4. Once your namespace is created, you can create an event hub as you would normally create one within a namespace. 
+
+   - Select **Create** to create the namespace:
+
+   [![Event Hubs Clusters - select cluster](media/event-hubs-quickstart-cluster-portal/5-view-cluster-create-namespace.png)](media/event-hubs-quickstart-cluster-portal/5-view-cluster-create-namespace#lightbox)
+
+3. Note your new namespace under **Cluster Namespaces**. You can now  [create an event hub](/azure/event-hubs/event-hubs-create#create-an-event-hub), within your namespace. 
+
+   [![Event Hubs Clusters - select cluster](media/event-hubs-quickstart-cluster-portal/6-view-cluster-with-namespace.png)](media/event-hubs-quickstart-cluster-portal/6-view-cluster-with-namespace#lightbox)
 
 ## Delete an Event Hubs cluster
 
 To delete the cluster:
 
-1. Select Delete from the top menu.  
+1. Select **Delete** from the top menu.  
 2. A message will appear confirming your wish to delete the cluster. 
-3. Type the name of the cluster and select Delete to delete the cluster. 
+3. Enter the name of the cluster and select **Delete** to delete the cluster. 
+
+   [![Event Hubs Clusters - select cluster](media/event-hubs-quickstart-cluster-portal/7-delete-cluster.png)](media/event-hubs-quickstart-cluster-portal/7-delete-cluster#lightbox)
 
 ## Next steps
 
