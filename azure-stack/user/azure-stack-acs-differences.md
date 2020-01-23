@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/2/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviwer: xiaofmao
 ms.lastreviewed: 01/30/2019
@@ -38,7 +38,7 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 |Block blob max size|4.75 TB (100 MB X 50,000 blocks)|4.75 TB (100 MB x 50,000 blocks) for the 1802 update or newer version. 50,000 X 4 MB (approximately 195 GB) for previous versions.
 |Page blob snapshot copy|Backup Azure unmanaged VM disks attached to a running VM supported|Not yet supported.
 |Page blob incremental snapshot copy|Premium and standard Azure page blobs supported|Not yet supported.
-|Page blob billing|Charges are incurred for unique pages, whether they are in the blob or in the snapshot. Would not incur additional charges for snapshots associated with a blob until base blob being updated.|Charges are incurred for base blob and assiociated snapshots. Would incur additional charges for each individual snapshot.
+|Page blob billing|Charges are incurred for unique pages, whether they are in the blob or in the snapshot. Would not incur additional charges for snapshots associated with a blob until base blob being updated.|Charges are incurred for base blob and associated snapshots. Would incur additional charges for each individual snapshot.
 |Storage tiers for blob storage|Hot, cool, and archive storage tiers.|Not yet supported.
 |Soft delete for blob storage|General available|Not yet supported.
 |Page blob max size|8 TB|1 TB

@@ -20,10 +20,10 @@ ms.lastreviewed: 10/25/2018
 
 # Use MySQL databases on Microsoft Azure Stack Hub
 
-Use the MySQL resource provider to offer MySQL database service on [Azure Stack Hub](azure-stack-overview.md). After you deploy the resource provider and connect it to one or more MySQL server instances, you can:
+Use the MySQL resource provider to offer MySQL databases on [Azure Stack Hub](azure-stack-overview.md). After you deploy the resource provider and connect it to one or more MySQL server instances, you can create:
 
-* Create MySQL databases using Azure Resource Manager deployment templates.
-* Provide MySQL databases as a service.  
+* MySQL databases for cloud-native apps.
+* MySQL databases for web applications.  
 
 There are several limitations to consider, before installing the MySQL resource provider:
 
