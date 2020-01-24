@@ -1,5 +1,5 @@
 ---
-title: Usage API related FAQ
+title: Usage API FAQ
 titleSuffix: Azure Stack Hub
 description: List of frequently asked questions about Azure Stack Hub usage, including meters, comparison to Azure usage API, usage time vs reported time, and error codes.
 services: azure-stack
@@ -64,7 +64,7 @@ Usage is reported for the following resource providers:
   
 **Meter ID**: B9FF3CD0-28AA-4762-84BB-FF8FBAEA6A90  
 **Meter name**: TableTransactions  
-**Unit**: Request count in 10,000's  
+**Unit**: Request count in 10,000s  
 **Notes**: Table service requests (in 10,000s).  
   
 **Meter ID**: 50A1AEAF-8ECA-48A0-8973-A5B3077FEE0D  
@@ -79,7 +79,7 @@ Usage is reported for the following resource providers:
   
 **Meter ID**: 43DAF82B-4618-444A-B994-40C23F7CD438  
 **Meter name**: BlobTransactions  
-**Unit**: Requests count in 10,000's  
+**Unit**: Requests count in 10,000s  
 **Notes**: Blob service requests (in 10,000s).  
   
 **Meter ID**: 9764F92C-E44A-498E-8DC1-AAD66587A810  
@@ -94,7 +94,7 @@ Usage is reported for the following resource providers:
   
 **Meter ID**: EB43DD12-1AA6-4C4B-872C-FAF15A6785EA  
 **Meter name**: QueueTransactions  
-**Unit**: Requests count in 10,000's  
+**Unit**: Requests count in 10,000s  
 **Notes**: Queue service requests (in 10,000s).  
   
 **Meter ID**: E518E809-E369-4A45-9274-2017B29FFF25  
@@ -314,7 +314,7 @@ Usage is reported for the following resource providers:
   
 **Meter ID**: EBF13B9F-B3EA-46FE-BF54-396E93D48AB4  
 **Meter name**: Key Vault transactions  
-**Unit**: Request count in 10,000's  
+**Unit**: Request count in 10,000s  
 **Notes**: Number of REST API requests received by Key Vault data plane.  
   
 **Meter ID**: 2C354225-B2FE-42E5-AD89-14F0EA302C87  
@@ -344,34 +344,34 @@ Usage is reported for the following resource providers:
   
 **Meter ID**: 957E9F36-2C14-45A1-B6A1-1723EF71A01D  
 **Meter name**: Shared App Service Hours  
-**Unit**: 1 hour  
+**Unit**: 1 hour
 **Notes**: Per hour usage of shard App Service Plan. Plans are metered on a per App basis.  
   
 **Meter ID**: 539CDEC7-B4F5-49F6-AAC4-1F15CFF0EDA9  
 **Meter name**: Free App Service Hours  
-**Unit**: 1 hour  
+**Unit**: 1 hour
 **Notes**: Per hour usage of free App Service Plan. Plans are metered on a per App basis.  
   
 **Meter ID**: 88039D51-A206-3A89-E9DE-C5117E2D10A6  
 **Meter name**: Small Standard App Service Hours  
-**Unit**: 1 hour  
+**Unit**: 1 hour
 **Notes**: Calculated based on size and number of instances.  
   
 **Meter ID**: 83A2A13E-4788-78DD-5D55-2831B68ED825  
 **Meter name**: Medium Standard App Service Hours  
-**Unit**: 1 hour  
+**Unit**: 1 hour
 **Notes**: Calculated based on size and number of instances.  
   
 **Meter ID**: 1083B9DB-E9BB-24BE-A5E9-D6FDD0DDEFE6  
 **Meter name**: Large Standard App Service Hours  
-**Unit**: 1 hour  
+**Unit**: 1 hour
 **Notes**: Calculated based on size and number of instances.  
   
 ### Custom Worker Tiers
   
 **Meter ID**: *Custom Worker Tiers*
 **Meter name**: Custom Worker Tiers  
-**Unit**: Hours  
+**Unit**: Hours
 **Notes**: Deterministic meter ID is created based on SKU and custom worker tier name. This meter ID is unique for each custom worker tier.  
   
 **Meter ID**: 264ACB47-AD38-47F8-ADD3-47F01DC4F473  
@@ -380,14 +380,14 @@ Usage is reported for the following resource providers:
 **Notes**: App Service supports two types of SSL connections: Server Name Indication (SNI) SSL Connections and IP Address SSL Connections. SNI-based SSL works on modern browsers while IP-based SSL works on all browsers.  
   
 **Meter ID**: 60B42D72-DC1C-472C-9895-6C516277EDB4  
-**Meter name**: IP SSL  
-**Unit**: Per IP Based SSL Binding  
+**Meter name**: IP SSL
+**Unit**: Per IP Based SSL Binding
 **Notes**: App Service supports two types of SSL connections: Server Name Indication (SNI) SSL Connections and IP Address SSL Connections. SNI-based SSL works on modern browsers while IP-based SSL works on all browsers.  
   
 **Meter ID**: 73215A6C-FA54-4284-B9C1-7E8EC871CC5B  
-**Meter name**:  Web Process  
+**Meter name**:  Web Process
 **Unit**:  
-**Notes**: Calculated per active site per hour.  
+**Notes**: Calculated per active site per hour.
   
 **Meter ID**: 5887D39B-0253-4E12-83C7-03E1A93DFFD9  
 **Meter name**: External Egress Bandwidth  
@@ -440,7 +440,7 @@ Alternatively, you can use the REST APIs, as explained in the [Provider resource
 
 ## How can I associate usage extracted from Azure usage APIs to a specific Azure Stack Hub user subscription?
 
-The usage records include a property bag called **additionalinfo**, which includes the Azure Stack Hub subscription ID. This is the user subscription emitting the corresponding usage record.
+The usage records include a property bag called **additionalinfo**, which includes the Azure Stack Hub subscription ID. This ID is the user subscription emitting the corresponding usage record.
 
 ## Next steps
 
