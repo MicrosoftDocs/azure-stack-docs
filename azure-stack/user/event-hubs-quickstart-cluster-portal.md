@@ -26,7 +26,11 @@ Once an offer is available, your administrator can create or update your subscri
 
 Event Hubs clusters are created by specifying Capacity Units (CUs). A CU is a pre-allocated amount of CPU, storage, and memory resources. Event Hubs clusters are billed by CPU/hr. The number of cores (CPUs) used by a cluster is displayed when selecting the number of CUs (cluster size) during the cluster creation experience. For more detailed information on cluster resource usage, see [How to do capacity planning for Event Hubs on Azure Stack Hub](../operator/event-hubs-rp-capacity-planning.md). 
 
-In this quickstart, you learn how to create of a 1 CU Event Hubs cluster using the Azure Stack Hub user portal. 
+In this quickstart, you learn how to use the Azure Stack Hub user portal to:
+- Create a 1 CU Event Hubs cluster.
+- Create a namespace in the cluster.
+- Create an event hub in the namespace.
+- Delete an Event Hubs cluster
 
 ## Create an Event Hubs cluster
 
@@ -34,29 +38,29 @@ An Event Hubs cluster provides a unique scoping container in which you can creat
 
 1. Sign in to the Azure Stack Hub user portal.
 2. Select **All services** from the left navigation pane, enter "Event Hubs Clusters" in the search bar, and select the **Event Hubs Clusters** item from results list.
-3. Select **+ Add** from the top of the **Event Hubs Clusters** page. The **Create Event Hubs Cluster** panel opens on the right.
+3. Once on the **Event Hubs Clusters** page, select **+ Add** from the top menu. The **Create Event Hubs Cluster** panel opens on the right.
 4. On the **Basics** tab of the **Create Event Hubs Cluster** page:  
    - **Cluster name**: Enter a name. The system immediately checks to see if the name is available. If available, a checkmark will show at the right end of the field. 
    - **Subscription**: Select the subscription in which you want to create the cluster. 
    - **Resource group**: Create/Select the resource group in which you want to create the cluster. 
-   - Select the **Next: Tags >** button at the bottom of the page. You may have to wait for the system to fully provision resources. 
+   - Select the **Next: Tags >** button at the bottom of the page to continue. You may have to wait for the system to fully provision resources. 
 
    [![Create Event Hub cluster - basics](media/event-hubs-quickstart-cluster-portal/1-create-cluster-basics.png)](media/event-hubs-quickstart-cluster-portal/1-create-cluster-basics.png#lightbox)
 
 5. On the **Tags** tab: 
    - Optionally, enter the name/value pairs for the resource tag(s).  
-   - Select the **Next: Review + Create >** button. 
+   - Select the **Next: Review + Create >** button to continue. 
 
    [![Create Event Hub cluster - tags](media/event-hubs-quickstart-cluster-portal/1-create-cluster-tags.png)](media/event-hubs-quickstart-cluster-portal/1-create-cluster-tags.png#lightbox)
 
-6. On the **Review + Create** tab, review the details. You should also see a "Validation succeeded" banner at the top of the page. Select **Create** when ready to create the cluster. 
+6. On the **Review + Create** tab, you should also see a "Validation succeeded" banner at the top of the page. After reviewing the details, select **Create** when ready to create the cluster. 
 
    [![Create Event Hub cluster - review + create](media/event-hubs-quickstart-cluster-portal/1-create-cluster-review.png)](media/event-hubs-quickstart-cluster-portal/1-create-cluster-review.png#lightbox)
 
    >[!NOTE]
    > An Event Hubs cluster deployment can take several minutes to complete, normally at least 45 minutes.
 
-7. When complete, the **Your deployment is underway** status page changes to **Your deployment is complete**. Before continuing to the next section, select the **Go to resource** button to view the new cluster:
+7. During deployment, you see a **Your deployment is underway** status page. When deployment finishes, the page changes to **Your deployment is complete**. Before continuing to the next section, select the **Go to resource** button to view the new cluster:
 
    [![Create Event Hub cluster - deployment complete](media/event-hubs-quickstart-cluster-portal/1-deployment-complete.png)](media/event-hubs-quickstart-cluster-portal/1-deployment-complete.png#lightbox)
 
@@ -103,16 +107,19 @@ Now you create a namespace within your new cluster:
 To delete the cluster:
 
 1. Select **All services** from the left navigation pane again. Enter "Event Hubs Clusters" in the search bar, and select the **Event Hubs Clusters** item from results list.
-2. Under the **Name** column, find and select the cluster you created previously.
+2. On the **Event Hub Clusters** page, find and select the cluster you created previously.
+
+   [![Event Hubs Clusters - delete cluster](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-clusters.png)](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-clusters.png#lightbox)
+
 3. On the Event Hubs Cluster **Overview** page, select **Delete** from the top menu.  
 4. A message will appear confirming deletion of the cluster. 
 5. Enter the name of the cluster and select **Delete** to delete the cluster. 
 
-   [![Event Hubs Clusters - delete cluster](media/event-hubs-quickstart-cluster-portal/4-delete-cluster.png)](media/event-hubs-quickstart-cluster-portal/4-delete-cluster.png#lightbox)
+   [![Event Hubs Clusters - delete cluster](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-cluster.png)](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-cluster.png#lightbox)
 
 ## Next steps
 
-In this quickstart, you learned how to create an Event Hubs cluster using the portal. Now continue with the "Send and receive events" quickstarts, starting with the first:  
+In this quickstart, you learned how to create an Event Hubs cluster using the portal. Now continue with the "Send and receive events" quickstarts, starting with the first one:  
 
 > [!div class="nextstepaction"]
 > [Send events to or receive events from Azure Event Hubs using .NET Core](/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)
