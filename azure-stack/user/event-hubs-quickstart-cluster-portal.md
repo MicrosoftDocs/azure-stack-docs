@@ -60,7 +60,7 @@ An Event Hubs cluster provides a unique scoping container in which you can creat
    >[!NOTE]
    > An Event Hubs cluster deployment can take several minutes to complete, normally at least 45 minutes.
 
-7. During deployment, you see a **Your deployment is underway** status page. When deployment finishes, the page changes to **Your deployment is complete**. Before continuing to the next section, select the **Go to resource** button to view the new cluster:
+7. During deployment, you see a **Your deployment is underway** status page. When deployment finishes, the page changes to **Your deployment is complete**. Before continuing to the next section, select the **Go to resource** button to view the new cluster.
 
    [![Create Event Hub cluster - deployment complete](media/event-hubs-quickstart-cluster-portal/1-deployment-complete.png)](media/event-hubs-quickstart-cluster-portal/1-deployment-complete.png#lightbox)
 
@@ -69,11 +69,11 @@ An Event Hubs cluster provides a unique scoping container in which you can creat
 
 Now you create a namespace within your new cluster:
 
-1. On the Event Hubs Cluster **Overview** page for your cluster, select **+ Namespace** from the top menu. 
+1. On the **Overview** page of **Event Hubs Cluster**, select **+ Namespace** from the top menu. 
 
    [![Event Hubs Clusters - select cluster](media/event-hubs-quickstart-cluster-portal/2-view-cluster.png)](media/event-hubs-quickstart-cluster-portal/2-view-cluster.png#lightbox)
 
-2. On the **Create namespace in cluster** panel:
+2. On the **Create namespace in Cluster** panel:
 
    - **Name**: Enter a name for the namespace. The system immediately checks to see if the name is available. If available, a checkmark will show at the right end of the field. 
    - **Property/Value list**: The namespace inherits the following properties: 
@@ -86,13 +86,13 @@ Now you create a namespace within your new cluster:
 
    [![Event Hubs Clusters - create namespace](media/event-hubs-quickstart-cluster-portal/2-view-cluster-create-namespace.png)](media/event-hubs-quickstart-cluster-portal/2-view-cluster-create-namespace.png#lightbox)
 
-3. Note your new namespace under **Cluster Namespaces**. Before continuing to the next section, select the link for your new namespace: 
+3. Note your new namespace under **Cluster Namespaces**. Before continuing to the next section, select the link for your new namespace. 
 
    [![Event Hubs Clusters - view namespace](media/event-hubs-quickstart-cluster-portal/2-view-cluster-with-namespace.png)](media/event-hubs-quickstart-cluster-portal/2-view-cluster-with-namespace.png#lightbox)
 
 ## Create an event hub
 
-1. On the Event Hubs Namespace **Overview** page, select **+ Event Hub** from the top menu:  
+1. On the **Overview** page of **Event Hubs Namespace**, select **+ Event Hub** from the top menu.  
 
    [![Event Hubs - namespace overview](media/event-hubs-quickstart-cluster-portal/3-event-hubs-namespace-overview.png)](media/event-hubs-quickstart-cluster-portal/3-event-hubs-namespace-overview.png#lightbox)
 
@@ -111,9 +111,10 @@ To delete the cluster:
 
    [![Event Hubs Clusters - delete cluster](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-clusters.png)](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-clusters.png#lightbox)
 
-3. On the Event Hubs Cluster **Overview** page, select **Delete** from the top menu.  
-4. The **Delete Cluster** panel opens on the right, with a deletion confirmation message. 
-5. Enter the name of the cluster and select **Delete** to delete the cluster. 
+3. On the **Overview** page of **Event Hubs Cluster**:
+   - Select **Delete** from the top menu.  
+   - The **Delete Cluster** panel opens on the right, with a deletion confirmation message. 
+   - Enter the name of the cluster and select **Delete** to delete the cluster. 
 
    [![Event Hubs Clusters - delete cluster](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-delete.png)](media/event-hubs-quickstart-cluster-portal/4-delete-cluster-delete.png#lightbox)
 
