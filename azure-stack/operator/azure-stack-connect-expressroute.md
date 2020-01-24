@@ -11,7 +11,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 01/23/2020
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2018
@@ -78,7 +78,7 @@ To set up the Azure Stack Hub environment for the first tenant, use the followin
 
 Before you start configuring Azure Stack Hub, you need:
 
-* An Azure Stack Hub deployment. 
+* An Azure Stack Hub deployment.
 * An offer in Azure Stack Hub that your users can subscribe to. For more information, see [Service, plan, offer, subscription overview](service-plan-offer-subscription-overview.md).
 
 ### Create network resources in Azure Stack Hub
