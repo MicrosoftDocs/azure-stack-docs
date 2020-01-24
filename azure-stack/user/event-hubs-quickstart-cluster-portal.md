@@ -82,22 +82,17 @@ Now you create a namespace within your new cluster:
 
    [![Event Hubs Clusters - create namespace](media/event-hubs-quickstart-cluster-portal/2-view-cluster-create-namespace.png)](media/event-hubs-quickstart-cluster-portal/2-view-cluster-create-namespace.png#lightbox)
 
-3. Note your new namespace under **Cluster Namespaces**. You can now  [create an event hub](/azure/event-hubs/event-hubs-create#create-an-event-hub), within your namespace. 
+3. Note your new namespace under **Cluster Namespaces**. Before continuing to the next section, select the link for your new namespace: 
 
    [![Event Hubs Clusters - view namespace](media/event-hubs-quickstart-cluster-portal/2-view-cluster-with-namespace.png)](media/event-hubs-quickstart-cluster-portal/2-view-cluster-with-namespace.png#lightbox)
 
 ## Create an event hub
 
-1. Select **All services** from the left navigation pane again. Enter "Event Hubs" in the search bar, then select the **Event Hubs** item from results list.
-2. Under the **Name** column, find and select the namespace you created in the previous section:
-
-   [![Event Hubs - namespace](media/event-hubs-quickstart-cluster-portal/3-event-hubs-namespace.png)](media/event-hubs-quickstart-cluster-portal/3-event-hubs-namespace.png#lightbox)
-
-3. On the Event Hubs Namespace **Overview** page, select **+ Event Hub** from the top menu:  
+1. On the Event Hubs Namespace **Overview** page, select **+ Event Hub** from the top menu:  
 
    [![Event Hubs - namespace overview](media/event-hubs-quickstart-cluster-portal/3-event-hubs-namespace-overview.png)](media/event-hubs-quickstart-cluster-portal/3-event-hubs-namespace-overview.png#lightbox)
 
-4. On the **Create Event Hub** panel:
+2. On the **Create Event Hub** panel:
    - **Name**: Enter a name for the event hub. The name can contain only letters, numbers, periods, hyphens, and underscores. The name must start and end with a letter or number. The system immediately checks to see if the name is available. If available, a checkmark will show at the right end of the field.
    - Select **Create** to create the event hub.
 
