@@ -21,11 +21,10 @@ ms.lastreviewed: 10/25/2018
 
 # Use SQL databases on Azure Stack Hub
 
-Use the SQL resource provider to offer SQL databases as a service on [Azure Stack Hub](azure-stack-overview.md). After you install the resource provider and connect it to one or more SQL Server instances, you and your users can create:
+Use the SQL resource provider to offer SQL databases on [Azure Stack Hub](azure-stack-overview.md). After you install the resource provider and connect it to one or more SQL Server instances, you and your users can create:
 
-- Databases for cloud-native apps.
-- Websites that use SQL.
-- Workloads that use SQL.
+- SQL databases for cloud-native apps.
+- SQL databases for web applications.
 
 There are several limitations to consider, before installing the SQL resource provider:
 
@@ -33,6 +32,8 @@ There are several limitations to consider, before installing the SQL resource pr
 - Your Azure Stack Hub operator is responsible for deploying, updating, securing, configuring and maintaining the SQL database servers and hosts. The RP service does not provide any host and database server instance management functionality. 
 - Databases from different users in different subscriptions may be located on the same database server instance. The RP does not provide any mechanism for isolating databases on different hosts or database server instances.
 - The RP do not provide any reporting on tenant usage of databases.
+
+For traditional SQL Server workload on premises, SQL Server virtual machine on Azure Stack Hub is recommended.
 
 ## SQL resource provider adapter architecture
 

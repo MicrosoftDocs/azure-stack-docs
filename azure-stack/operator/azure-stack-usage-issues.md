@@ -12,7 +12,7 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2019
+ms.date: 01/22/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 06/27/2019
@@ -21,7 +21,7 @@ ms.lastreviewed: 06/27/2019
 
 # Usage connectivity errors
 
-Azure Stack Hub usage data is sent to Azure by the [*Azure Bridge* component](azure-stack-usage-reporting.md) in Azure Stack Hub. If the bridge within Azure Stack Hub is unable to connect to the Azure usage service, the following error appears:
+Azure Stack Hub usage data is sent to Azure by the [*Azure Bridge*](azure-stack-usage-reporting.md) component in Azure Stack Hub. If the bridge within Azure Stack Hub is unable to connect to the Azure usage service, the following error appears:
 
 ![usage bridge error](media/azure-stack-usage-issues/usageerror2.png)
 
