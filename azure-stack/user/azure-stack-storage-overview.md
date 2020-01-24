@@ -1,16 +1,9 @@
 ---
 title: Introduction to Azure Stack Hub Storage | Microsoft Docs
 description: Learn about Azure Stack Hub Storage services.
-services: azure-stack
-documentationcenter: ''
 author: mattbriggs
-manager: femila
 
-ms.assetid: 092aba28-04bc-44c0-90e1-e79d82f4ff42
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 1/22/2020
 ms.author: mabrigg

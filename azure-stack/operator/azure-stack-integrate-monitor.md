@@ -1,16 +1,9 @@
 ---
 title: Integrate external monitoring solution with Azure Stack Hub | Microsoft Docs
 description: Learn how to integrate Azure Stack Hub with an external monitoring solution in your datacenter.
-services: azure-stack
-documentationcenter: ''
 author: mattbriggs
-manager: femila
-editor: ''
 
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: PowerShell
 ms.topic: article
 ms.date: 06/05/2019
 ms.author: jeffgilb

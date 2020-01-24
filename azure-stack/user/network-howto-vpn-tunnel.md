@@ -1,7 +1,6 @@
 ---
 title: How to set up a multiple site-to-site VPN tunnel in Azure Stack Hub | Microsoft Docs
 description: Learn how to set up a multiple site-to-site VPN tunnel  in Azure Stack Hub.
-services: azure-stack
 author: mattbriggs
 
 ms.service: azure-stack

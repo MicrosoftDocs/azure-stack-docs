@@ -1,17 +1,10 @@
 ---
 title: App Service on Azure Stack Hub Update 1 release notes | Microsoft Docs
 description: Learn about improvements, fixes, and known issues in Update 1 for App Service on Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
 author: bryanla
 manager: stefsch
-editor: ''
 
-ms.assetid:  
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: anwestg

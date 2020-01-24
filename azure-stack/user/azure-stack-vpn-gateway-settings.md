@@ -1,17 +1,9 @@
 ---
 title: Configure VPN gateway settings for Azure Stack Hub | Microsoft Docs
 description: Learn about and configure VPN gateways settings for Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.assetid: fa8d3adc-8f5a-4b4f-8227-4381cf952c56
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: sethm

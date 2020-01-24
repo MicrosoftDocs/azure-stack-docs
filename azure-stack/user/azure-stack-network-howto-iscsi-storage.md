@@ -1,7 +1,6 @@
 ---
 title: How to connect to iSCSI storage with Azure Stack Hub | Microsoft Docs
 description: Learn how to connect to iSCSI storage with Azure Stack Hub.
-services: azure-stack
 author: mattbriggs
 
 ms.service: azure-stack

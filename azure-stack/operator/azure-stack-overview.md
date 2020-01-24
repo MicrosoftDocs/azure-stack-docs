@@ -1,17 +1,9 @@
 ---
 title: Azure Stack Hub overview | Microsoft Docs
 description: An overview of what Azure Stack Hub is and how it lets you run Azure services in your datacenter.  
-services: azure-stack
-documentationcenter: ''
 author: justinha
-manager: femila
-editor: ''
 
-ms.assetid: 
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.date: 11/08/2019
 ms.author: justinha

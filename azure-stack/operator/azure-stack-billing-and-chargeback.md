@@ -1,16 +1,9 @@
 ---
 title: Customer billing and chargeback in Azure Stack Hub | Microsoft Docs
 description: Learn how Azure Stack Hub users are billed for resource usage, and how the billing info is accessed for analytics and chargeback.
-services: azure-stack
-documentationcenter: ''
 author: sethmanheim
-manager: femila
-editor: ''
 
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: sethm

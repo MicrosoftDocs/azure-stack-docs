@@ -1,16 +1,10 @@
 ---
 title: Install the AKS engine on Linux in Azure Stack Hub | Microsoft Docs
 description: Learn how to use a Linux machine in your Azure Stack Hub to host the AKS engine in order to deploy and manage a Kubernetes cluster.
-services: azure-stack
-documentationcenter: ''
 author: mattbriggs
-manager: femila
-editor: ''
 
 ms.service: azure-stack
-ms.workload: na
 pms.tgt_pltfrm: na (Kubernetes)
-ms.devlang: nav
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: mabrigg

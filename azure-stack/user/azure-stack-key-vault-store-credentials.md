@@ -1,16 +1,9 @@
 ---
 title: Store service principal credentials in Azure Stack Hub Key Vault | Microsoft Docs
 description: Learn how Key Vault stores service principal credentials on Azure Stack Hub
-services: azure-stack
-documentationcenter: ''
 author: sethmanheim
-manager: femila
-editor: ''
 
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: sethm

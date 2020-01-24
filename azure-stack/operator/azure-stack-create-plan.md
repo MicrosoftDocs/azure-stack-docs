@@ -1,17 +1,9 @@
 ---
 title: Create a plan in Azure Stack Hub | Microsoft Docs
 description: Learn how to create a plan in Azure Stack Hub that lets subscribers provision virtual machines.
-services: azure-stack
-documentationcenter: ''
 author: bryanla
-manager: femila
-editor: ''
 
-ms.assetid: 3dc92e5c-c004-49db-9a94-783f1f798b98
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: bryanla

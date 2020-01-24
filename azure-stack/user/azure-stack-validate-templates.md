@@ -1,17 +1,9 @@
 ---
 title: Use the template validation tool in Azure Stack Hub | Microsoft Docs
 description: Check templates for deployment to Azure Stack Hub with a template validation tool.
-services: azure-stack
-documentationcenter: ''
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.assetid: d9e6aee1-4cba-4df5-b5a3-6f38da9627a3
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2019
 ms.author: sethm

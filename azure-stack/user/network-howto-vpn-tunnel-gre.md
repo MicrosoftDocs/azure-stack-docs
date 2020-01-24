@@ -1,7 +1,6 @@
 ---
 title: How to create a VPN Tunnel using GRE  in Azure Stack Hub | Microsoft Docs
 description: Learn how to create a VPN Tunnel using GRE in Azure Stack Hub.
-services: azure-stack
 author: mattbriggs
 
 ms.service: azure-stack

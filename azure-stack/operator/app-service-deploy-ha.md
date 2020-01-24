@@ -1,17 +1,9 @@
 ---
 title: Deploy Azure Stack Hub App Service in a highly available configuration | Microsoft Docs
 description: Learn how to deploy App Service in Azure Stack Hub using a highly available configuration.
-services: azure-stack
-documentationcenter: ''
 author: BryanLa
-manager: femila
-editor: ''
 
-ms.assetid:
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: anwestg

@@ -1,7 +1,6 @@
 ---
 title: Deploy a Go web app to a virtual machine in Azure Stack Hub | Microsoft Docs
 description: How to deploy a Go web app to a VM in Azure Stack Hub
-services: azure-stack
 author: mattbriggs
 
 ms.service: azure-stack

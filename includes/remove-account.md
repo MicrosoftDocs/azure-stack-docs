@@ -1,17 +1,9 @@
 ---
 title: Include for Remove-AzureRmAccount | Microsoft Docs
 description: An include file that explains how to run Remove-AzureRmAccount.
-services: azure-stack
-documentationcenter: ''
 author: justinha
-manager: femila
-editor: ''
 
-ms.assetid:
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: justinha

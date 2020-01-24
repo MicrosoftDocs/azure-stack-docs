@@ -1,15 +1,8 @@
 ---
 title: Add MySQL hosting servers in Azure Stack Hub | Microsoft Docs
 description: Learn how to add MySQL hosting servers for provisioning through the MySQL Adapter Resource Provider.
-services: azure-stack
-documentationCenter: ''
 author: mattbriggs
-manager: femila
-editor: ''
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2019
 ms.author: mabrigg

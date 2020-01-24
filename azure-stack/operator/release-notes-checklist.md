@@ -1,17 +1,9 @@
 ---
 title: Azure Stack Hub update activity checklist | Microsoft Docs
 description:  Checklist to prepare your system for the latest Azure Stack Hub update.
-services: azure-stack
-documentationcenter: ''
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.assetid:  
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: sethm

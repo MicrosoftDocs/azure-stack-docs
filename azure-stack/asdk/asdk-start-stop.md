@@ -1,17 +1,10 @@
 ---
 title: Start and stop the ASDK | Microsoft Docs
 description: Learn how to start and stop the Azure Stack Development Kit (ASDK).
-services: azure-stack
-documentationcenter: ''
 author: justinha
-manager: femila
-editor: ''
 
-ms.assetid: 
 ms.service: azure-stack
-ms.workload: na
 pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: justinha

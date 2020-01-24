@@ -2,18 +2,10 @@
 title: Prepare a Red Hat-based virtual machine for Azure Stack Hub | Microsoft Docs
 titleSuffix: Azure Stack Hub
 description: Learn to create and upload an Azure virtual hard disk (VHD) that contains a Red Hat Linux operating system.
-services: azure-stack
-documentationcenter: ''
 author: mattbriggs
-manager: femila
-editor: 
 tags: 
 
-ms.assetid: 
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2019
 ms.author: mabrigg

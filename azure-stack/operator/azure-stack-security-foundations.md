@@ -2,16 +2,9 @@
 title: Azure Stack Hub security controls
 titleSuffix: Azure Stack Hub
 description: Learn about the security posture and controls applied to Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
 author: JustinHall
-manager: femila
-editor: ''
 
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: justinha

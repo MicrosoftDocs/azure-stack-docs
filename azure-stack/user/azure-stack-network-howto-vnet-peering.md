@@ -1,7 +1,6 @@
 ---
 title: How to connect two Azure Stack Hubs through VNET peering | Microsoft Docs
 description: Learn how to connect two Azure Stack Hubs through VNET peering.
-services: azure-stack
 author: mattbriggs
 
 ms.service: azure-stack

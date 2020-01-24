@@ -1,15 +1,8 @@
 ---
 title: Create MySQL databases in Azure Stack Hub | Microsoft Docs
 description: Learn how to create and manage MySQL databases provisioned using the MySQL Adapter Resource Provider in Azure Stack Hub.
-services: azure-stack
-documentationCenter: ''
 author: mattbriggs
-manager: femila
-editor: ''
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg

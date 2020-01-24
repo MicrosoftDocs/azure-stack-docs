@@ -1,9 +1,7 @@
 ---
 title: Integrate physical device auditing with your Azure Stack Hub datacenter | Microsoft Docs
 description: Learn how to integrate physical device access auditing with your Azure Stack Hub datacenter.
-services: azure-stack
 author: PatAltimore
-manager: femila
 ms.service: azure-stack
 ms.topic: article
 ms.date: 06/10/2019

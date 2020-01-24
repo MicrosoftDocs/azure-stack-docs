@@ -1,15 +1,11 @@
 ---
 title: Use the Azure Stack Hub validation tool to validate system state | Microsoft Docs
 description: Learn how to use the Azure Stack Hub validation tool to validate system state.
-services: azure-stack
 author: justinha
-manager: femila
 cloud: azure-stack
 
 ms.service: azure-stack
-ms.workload: na
 pms.tgt_pltfrm: na
-ms.devlang: PowerShell
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: justinha

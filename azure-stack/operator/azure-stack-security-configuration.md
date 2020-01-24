@@ -1,7 +1,6 @@
 ---
 title: Configure Azure Stack Hub security controls
 description: Learn how to configure security controls in Azure Stack Hub
-services: azure-stack
 author: PatAltimore
 
 ms.service: azure-stack

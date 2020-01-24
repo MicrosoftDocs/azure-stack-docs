@@ -1,15 +1,9 @@
 ---
 title: Troubleshoot Azure Stack Validation as a Service | Microsoft Docs
 description: Troubleshoot Validation as a Service for Azure Stack.
-services: azure-stack
-documentationcenter: ''
 author: mattbriggs
-manager: femila
 
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: mabrigg

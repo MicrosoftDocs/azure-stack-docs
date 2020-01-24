@@ -1,16 +1,10 @@
 ---
 title: Register the ASDK with Azure | Microsoft Docs
 description: Learn how to register the Azure Stack Development Kit (ASDK) with Azure to enable marketplace syndication and usage reporting.
-services: azure-stack
-documentationcenter: ''
 author: justinha
-manager: femila
 
-ms.assetid:
 ms.service: azure-stack
-ms.workload: na
 pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2019
 ms.author: justinha

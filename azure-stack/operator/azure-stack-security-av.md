@@ -2,9 +2,7 @@
 title: Update Windows Defender Antivirus
 titleSuffix: Azure Stack Hub
 description: Learn how to update Windows Defender Antivirus on Azure Stack Hub
-services: azure-stack
 author: justinha
-manager: femila
 
 ms.service: azure-stack
 ms.topic: article

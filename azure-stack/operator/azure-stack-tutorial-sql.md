@@ -1,10 +1,7 @@
 ﻿---
 title: Offer highly available SQL databases in Azure Stack Hub 
 description: Learn how to create a SQL Server resource provider host computer and highly available SQL AlwaysOn databases with Azure Stack Hub.
-services: azure-stack
 author: BryanLa
-manager: femila
-editor: ''
 
 ms.service: azure-stack
 ms.topic: article

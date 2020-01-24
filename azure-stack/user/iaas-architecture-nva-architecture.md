@@ -1,7 +1,6 @@
 ---
 title: Deploy highly available network virtual appliances on Azure Stack Hub | Microsoft Docs
 description: Learn how to Deploy highly available network virtual appliances on Azure Stack Hub.
-services: azure-stack
 author: mattbriggs
 
 ms.service: azure-stack

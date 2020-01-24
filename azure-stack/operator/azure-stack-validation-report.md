@@ -1,17 +1,9 @@
 ---
 title: Validation report for Azure Stack Hub | Microsoft Docs
 description: Use the Azure Stack Hub readiness checker report to review validation results.
-services: azure-stack
-documentationcenter: ''
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.assetid:
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.author: sethm

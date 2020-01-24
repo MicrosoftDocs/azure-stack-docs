@@ -1,16 +1,10 @@
 ---
 title: Install PowerShell for Azure Stack Hub | Microsoft Docs
 description: Learn how to install PowerShell for Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
 author: mattbriggs
-manager: femila
-editor: ''
 
 ms.service: azure-stack
-ms.workload: na
 pms.tgt_pltfrm: na
-ms.devlang: PowerShell
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg

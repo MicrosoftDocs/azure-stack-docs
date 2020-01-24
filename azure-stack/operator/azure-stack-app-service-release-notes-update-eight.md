@@ -1,17 +1,10 @@
 ---
 title: App Service on Azure Stack Hub update 8 release notes | Microsoft Docs
 description: Learn about what's in update eight for App Service on Azure Stack Hub, the known issues, and where to download the update.
-services: azure-stack
-documentationcenter: ''
 author: apwestgarth
 manager: stefsch
-editor: ''
 
-ms.assetid:  
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: anwestg

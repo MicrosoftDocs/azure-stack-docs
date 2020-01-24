@@ -1,17 +1,9 @@
 ---
 title: Infrastructure Backup Service reference | Microsoft Docs
 description: Reference material for the Infrastructure Backup Service in Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
 author: justinha
-manager: femila
-editor: ''
 
-ms.assetid: D6EC0224-97EA-446C-BC95-A3D32F668E2C
 ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: justinha
