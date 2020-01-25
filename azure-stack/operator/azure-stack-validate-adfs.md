@@ -1,6 +1,7 @@
 ---
-title: Validate AD FS integration for Azure Stack Hub
-description: Use the Azure Stack Hub Readiness Checker to validate AD FS integration for Azure Stack Hub.
+title: Validate AD FS integration
+titleSuffix: Azure Stack Hub
+description: Learn how to use the Azure Stack Hub Readiness Checker to validate AD FS integration for Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
 author: PatAltimore
