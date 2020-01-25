@@ -1,5 +1,5 @@
 ---
-title: Usage connectivity issues and errors in Azure Stack Hub | Microsoft Docs
+title: Usage connectivity issues and errors in Azure Stack Hub 
 description: Troubleshooting Azure Stack Hub usage issues and errors.
 author: sethmanheim
 

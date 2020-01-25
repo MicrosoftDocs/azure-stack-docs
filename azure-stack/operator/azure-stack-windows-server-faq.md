@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub Windows Server related FAQs | Microsoft Docs
+title: Azure Stack Hub Windows Server related FAQs 
 description: List of Azure Stack Hub Marketplace FAQs for Windows Server
 author: sethmanheim
 

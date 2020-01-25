@@ -1,5 +1,5 @@
 ---
-title: Deploy a Ruby app to a virtual machine in Azure Stack Hub | Microsoft Docs
+title: Deploy a Ruby app to a virtual machine in Azure Stack Hub 
 description: Deploy a Ruby app to a virtual machine in Azure Stack Hub.
 author: mattbriggs
 

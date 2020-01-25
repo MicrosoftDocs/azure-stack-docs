@@ -1,5 +1,5 @@
 ---
-title: Azure-connected deployment decisions for Azure Stack Hub integrated systems | Microsoft Docs
+title: Azure-connected deployment decisions for Azure Stack Hub integrated systems 
 description: Determine deployment planning decisions for Azure-connected deployments of Azure Stack Hub integrated systems, including billing and identity.
 author: mattbriggs
 

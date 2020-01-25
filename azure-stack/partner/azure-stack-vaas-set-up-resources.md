@@ -1,5 +1,5 @@
 ---
-title: Tutorial - set up resources for Validation as a Service | Microsoft Docs
+title: Tutorial - set up resources for Validation as a Service 
 description: In this tutorial, learn how to set up resources for Validation as a Service.
 author: mattbriggs
 

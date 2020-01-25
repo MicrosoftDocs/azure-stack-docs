@@ -1,5 +1,5 @@
 ---
-title: Consume monitoring data from Azure Stack Hub | Microsoft Docs
+title: Consume monitoring data from Azure Stack Hub 
 description: Learn about options for consuming monitoring data from Azure Stack Hub.
 author: mattbriggs
 

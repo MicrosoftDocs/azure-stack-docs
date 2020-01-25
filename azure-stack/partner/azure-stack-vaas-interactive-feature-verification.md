@@ -1,5 +1,5 @@
 ---
-title: Interactive feature verification testing in Azure Stack Validation as a Service | Microsoft Docs
+title: Interactive feature verification testing in Azure Stack Validation as a Service 
 description: Learn how to create interactive feature verification tests for Azure Stack with Validation as a Service.
 author: mattbriggs
 

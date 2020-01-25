@@ -1,5 +1,5 @@
 ---
-title: Deploy an app to Azure Stack Hub | Microsoft Docs
+title: Deploy an app to Azure Stack Hub 
 description: Deploy an app to Azure Stack Hub.
 author: mattbriggs
 

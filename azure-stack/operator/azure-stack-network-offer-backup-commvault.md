@@ -1,5 +1,5 @@
 ---
-title: Add Commvault to the Azure Stack Hub Marketplace | Microsoft Docs
+title: Add Commvault to the Azure Stack Hub Marketplace 
 description: Learn how to add Commvault to the Azure Stack Hub Marketplace.
 author: mattbriggs
 

@@ -1,5 +1,5 @@
 ---
-title: Use Azure Monitor on Azure Stack Hub | Microsoft Docs
+title: Use Azure Monitor on Azure Stack Hub 
 description: Learn how to use Azure Monitor on Azure Stack Hub.
 author: mattbriggs
 

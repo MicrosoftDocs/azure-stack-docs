@@ -1,5 +1,5 @@
 ---
-title: Connect to the ASDK | Microsoft Docs
+title: Connect to the ASDK 
 description: Learn how to connect to the Azure Stack Development Kit (ASDK).
 author: justinha
 

@@ -1,5 +1,5 @@
 ---
-title: Infrastructure Backup Service best practices for Azure Stack Hub | Microsoft Docs
+title: Infrastructure Backup Service best practices for Azure Stack Hub 
 description: Follow these best practices when you deploy and manage Azure Stack Hub to help mitigate data loss if there's a catastrophic failure.
 author: justinha
 

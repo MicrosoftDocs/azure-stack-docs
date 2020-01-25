@@ -1,5 +1,5 @@
 ---
-title: Manage API version profiles in Azure Stack Hub | Microsoft Docs
+title: Manage API version profiles in Azure Stack Hub 
 description: Learn about API version profiles in Azure Stack Hub.
 author: sethmanheim
 

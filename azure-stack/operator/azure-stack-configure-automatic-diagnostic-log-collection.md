@@ -1,5 +1,5 @@
 ---
-title: Configure automatic Azure Stack Hub log collection | Microsoft Docs
+title: Configure automatic Azure Stack Hub log collection 
 description: How to configure automatic log collection in Azure Stack Hub Help + Support.
 author: justinha
 

@@ -1,5 +1,5 @@
 ---
-title: Generate certificate signing requests for Azure Stack Hub | Microsoft Docs
+title: Generate certificate signing requests for Azure Stack Hub 
 description: Learn how to generate certificate signing requests for Azure Stack Hub PKI certificates in Azure Stack Hub integrated systems.
 author: justinha
 

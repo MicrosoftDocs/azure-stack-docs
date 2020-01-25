@@ -1,5 +1,5 @@
 ---
-title: Prepare an Azure Stack Hub update package | Microsoft Docs
+title: Prepare an Azure Stack Hub update package 
 description: Learn to prepare an Azure Stack Hub update package.
 author: mattbriggs
 

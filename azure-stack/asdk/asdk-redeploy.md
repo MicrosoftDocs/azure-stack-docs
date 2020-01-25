@@ -1,5 +1,5 @@
 ﻿---
-title: Redeploy the ASDK | Microsoft Docs
+title: Redeploy the ASDK 
 description: Learn how to redeploy the Azure Stack Development Kit (ASDK).
 author: justinha
 

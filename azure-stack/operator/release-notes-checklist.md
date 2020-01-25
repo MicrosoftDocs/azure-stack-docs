@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub update activity checklist | Microsoft Docs
+title: Azure Stack Hub update activity checklist 
 description:  Checklist to prepare your system for the latest Azure Stack Hub update.
 author: sethmanheim
 

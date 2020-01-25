@@ -1,5 +1,5 @@
 ---
-title: App Service on Azure Stack Hub Update 4 release notes | Microsoft Docs
+title: App Service on Azure Stack Hub Update 4 release notes 
 description: Learn about improvements, fixes, and known issues in Update 4 for App Service on Azure Stack Hub.
 author: bryanla
 manager: stefsch

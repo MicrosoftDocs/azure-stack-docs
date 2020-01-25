@@ -1,5 +1,5 @@
 ---
-title: Add public IP addresses in Azure Stack Hub | Microsoft Docs
+title: Add public IP addresses in Azure Stack Hub 
 description: Learn how to add public IP addresses to Azure Stack Hub.  
 author: justinha
 

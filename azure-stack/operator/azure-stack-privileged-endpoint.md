@@ -1,5 +1,5 @@
 ﻿---
-title: Using the privileged endpoint in Azure Stack Hub | Microsoft Docs
+title: Using the privileged endpoint in Azure Stack Hub 
 description: Learn how to use the privileged endpoint (PEP) in Azure Stack Hub as an operator.
 author: mattbriggs
 

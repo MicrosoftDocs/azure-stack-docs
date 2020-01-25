@@ -1,5 +1,5 @@
 ---
-title: Run a Linux virtual machine on Azure Stack Hub | Microsoft Docs
+title: Run a Linux virtual machine on Azure Stack Hub 
 description: Learn how to run a Linux virtual machine on Azure Stack Hub.
 author: mattbriggs
 

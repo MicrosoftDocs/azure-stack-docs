@@ -1,5 +1,5 @@
 ---
-title: Deploy a Linux VM to Azure Stack Hub | Microsoft Docs
+title: Deploy a Linux VM to Azure Stack Hub 
 description: Deploy an app to Azure Stack Hub.
 author: mattbriggs
 

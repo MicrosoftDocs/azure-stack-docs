@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Validation as a Service key concepts | Microsoft Docs
+title: Azure Stack Validation as a Service key concepts 
 description: Describes key concepts in Azure Stack Validation as a Service.
 author: mattbriggs
 

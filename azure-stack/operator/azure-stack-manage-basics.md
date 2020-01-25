@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub administration basics | Microsoft Docs
+title: Azure Stack Hub administration basics 
 description: Learn the basics of Azure Stack Hub administration.
 author: justinha
 

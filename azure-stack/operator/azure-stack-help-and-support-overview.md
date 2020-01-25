@@ -1,5 +1,5 @@
 ---
-title: Microsoft Azure Stack Hub help and support overview | Microsoft Docs
+title: Microsoft Azure Stack Hub help and support overview 
 description: Get support for Microsoft Azure Stack Hub.
 author: justinha
 

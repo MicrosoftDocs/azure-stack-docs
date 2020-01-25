@@ -1,5 +1,5 @@
 ---
-title: SQL Server best practices to optimize performance in Azure Stack Hub. | Microsoft Docs
+title: SQL Server best practices to optimize performance in Azure Stack Hub. 
 description: This article provides SQL server best practices to help increase performance and optimize SQL Server in Azure Stack Hub VMs.
 author: bryanla
 

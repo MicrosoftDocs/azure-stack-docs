@@ -1,5 +1,5 @@
 ---
-title: Azure App Service on Azure Stack Hub billing overview and FAQ | Microsoft Docs
+title: Azure App Service on Azure Stack Hub billing overview and FAQ 
 description: Details on how Azure App Service on Azure Stack Hub is metered and billed.
 author: apwestgarth
 manager: stefsch

@@ -1,5 +1,5 @@
 ---
-title: What's new in the Azure Stack Hub Marketplace | Microsoft Docs
+title: What's new in the Azure Stack Hub Marketplace 
 description: Changes and updates in the Azure Stack Hub Marketplace.
 author: sethmanheim
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub provider resource usage API | Microsoft Docs
+title: Azure Stack Hub provider resource usage API 
 description: Reference for the resource usage API, which retrieves Azure Stack Hub usage information.
 author: sethmanheim
 

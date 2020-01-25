@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub Marketplace overview | Microsoft Docs
+title: Azure Stack Hub Marketplace overview 
 description: An overview of Azure Stack Hub Marketplace and marketplace items.
 author: sethmanheim
 

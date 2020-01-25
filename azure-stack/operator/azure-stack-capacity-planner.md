@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub Capacity Planner | Microsoft Docs
+title: Azure Stack Hub Capacity Planner 
 description: Learn about capacity planning for Azure Stack Hub deployments.
 author: prchint
 

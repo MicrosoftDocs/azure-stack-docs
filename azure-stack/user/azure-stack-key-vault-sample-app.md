@@ -1,5 +1,5 @@
 ---
-title: Allow apps to access Azure Stack Hub Key Vault secrets | Microsoft Docs
+title: Allow apps to access Azure Stack Hub Key Vault secrets 
 description: Learn how to run a sample app that retrieves keys and secrets from a key vault in Azure Stack Hub.
 author: sethmanheim
 

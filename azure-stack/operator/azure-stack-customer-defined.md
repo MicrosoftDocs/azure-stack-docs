@@ -1,5 +1,5 @@
 ---
-title: Modify specific settings on your Azure Stack Hub switch configuration | Microsoft Docs
+title: Modify specific settings on your Azure Stack Hub switch configuration 
 description: Learn what you can customize on your Azure Stack Hub switch configuration. After the original equipment manufacturer (OEM) creates the configuration, do not alter it without consent from either the OEM or the Microsoft Azure Stack Hub engineering team.
 author: mattbriggs
 

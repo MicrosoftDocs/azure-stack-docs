@@ -1,5 +1,5 @@
 ---
-title: Download and extract the ASDK | Microsoft Docs
+title: Download and extract the ASDK 
 description: Learn how to download and extract the Azure Stack Development Kit (ASDK).
 author: justinha
 

@@ -1,5 +1,5 @@
 ---
-title: Overview of capacity planning for Azure Stack Hub | Microsoft Docs
+title: Overview of capacity planning for Azure Stack Hub 
 description: Learn about capacity planning for Azure Stack Hub deployments.
 author: prchint
 

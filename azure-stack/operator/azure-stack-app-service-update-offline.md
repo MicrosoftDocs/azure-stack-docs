@@ -1,5 +1,5 @@
 ---
-title: 'Update Azure App Service Offline | Microsoft Docs'
+title: 'Update Azure App Service Offline '
 description: Detailed guidance for updating Azure App Service on Azure Stack Hub offline
 author: bryanla
 

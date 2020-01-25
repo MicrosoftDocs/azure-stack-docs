@@ -1,5 +1,5 @@
 ---
-title: App Service on Azure Stack Hub update 6 release notes | Microsoft Docs
+title: App Service on Azure Stack Hub update 6 release notes 
 description: Learn about what's in update six for App Service on Azure Stack Hub, the known issues, and where to download the update.
 author: apwestgarth
 manager: stefsch

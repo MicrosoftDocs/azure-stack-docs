@@ -1,5 +1,5 @@
 ---
-title: Install the ASDK | Microsoft Docs
+title: Install the ASDK 
 description: Learn how to install the Azure Stack Development Kit (ASDK).
 author: justinha
 

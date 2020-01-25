@@ -1,5 +1,5 @@
 ---
-title: Best practices for automatic Azure Stack Hub log collection | Microsoft Docs
+title: Best practices for automatic Azure Stack Hub log collection 
 description: Best practices for automatic log collection in Azure Stack Hub Help + Support
 author: justinha
 

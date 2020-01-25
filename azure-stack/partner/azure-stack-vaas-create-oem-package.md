@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Validation best practices | Microsoft Docs
+title: Azure Stack Validation best practices 
 description: This article describes best practices for using Validation as a Service.
 author: mattbriggs
 

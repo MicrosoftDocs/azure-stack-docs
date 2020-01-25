@@ -1,5 +1,5 @@
 ---
-title: Deploy App Service in Azure Stack Hub | Microsoft Docs
+title: Deploy App Service in Azure Stack Hub 
 description: Learn how to deploy App Service in Azure Stack Hub.
 author: mattbriggs
 

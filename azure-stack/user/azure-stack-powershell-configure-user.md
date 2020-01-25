@@ -1,5 +1,5 @@
 ---
-title: Connect to Azure Stack Hub with PowerShell as a user | Microsoft Docs
+title: Connect to Azure Stack Hub with PowerShell as a user 
 description: Learn how to connect to Azure Stack Hub with PowerShell. 
 author: mattbriggs
 

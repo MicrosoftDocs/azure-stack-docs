@@ -1,5 +1,5 @@
 ---
-title: Integrate AD FS identity with your Azure Stack Hub datacenter | Microsoft Docs
+title: Integrate AD FS identity with your Azure Stack Hub datacenter 
 description: Learn how to integrate Azure Stack Hub AD FS identity provider with your datacenter AD FS.
 author: PatAltimore
 ms.topic: article

@@ -1,8 +1,7 @@
 ---
-title: Use the ASDK to validate an Azure Stack backup | Microsoft Docs
+title: Use the ASDK to validate an Azure Stack backup 
 description: Learn how to use the ASDK to validate an Azure Stack integrated systems backup.
 author: justinha
-cloud: azure-stack
 
 ms.topic: article
 ms.date: 07/31/2019

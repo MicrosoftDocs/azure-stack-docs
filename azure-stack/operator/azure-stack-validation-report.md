@@ -1,5 +1,5 @@
 ---
-title: Validation report for Azure Stack Hub | Microsoft Docs
+title: Validation report for Azure Stack Hub 
 description: Use the Azure Stack Hub readiness checker report to review validation results.
 author: sethmanheim
 

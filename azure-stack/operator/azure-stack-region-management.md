@@ -1,5 +1,5 @@
 ---
-title: Region management in Azure Stack Hub | Microsoft Docs
+title: Region management in Azure Stack Hub 
 titleSuffix: Azure Stack Hub
 description: Overview of region management in Azure Stack Hub.
 author: sethmanheim

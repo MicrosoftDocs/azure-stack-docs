@@ -1,5 +1,5 @@
 ---
-title: App Service on Azure Stack Hub Update 2 release notes | Microsoft Docs
+title: App Service on Azure Stack Hub Update 2 release notes 
 description: Learn about improvements, fixes, and known issues in Update 2 for App Service on Azure Stack Hub.
 author: bryanla
 manager: stefsch

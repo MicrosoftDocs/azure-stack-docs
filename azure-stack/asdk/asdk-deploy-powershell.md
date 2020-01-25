@@ -1,5 +1,5 @@
 ---
-title: Deploy ASDK from the command line using Powershell | Microsoft Docs
+title: Deploy ASDK from the command line using Powershell 
 description: Learn how to deploy the ASDK from the command line using PowerShell.
 author: justinha
 

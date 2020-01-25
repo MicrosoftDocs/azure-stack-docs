@@ -1,5 +1,5 @@
 ---
-title: Workflow common parameters in Azure Stack Validation as a Service| Microsoft Docs
+title: Workflow common parameters in Azure Stack Validation as a Service
 description: Workflow common parameters for Azure Stack Validation as a Service
 author: mattbriggs
 

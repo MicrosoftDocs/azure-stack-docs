@@ -1,5 +1,5 @@
 ---
-title: Support policies for AKS engine on Azure Stack Hub  | Microsoft Docs
+title: Support policies for AKS engine on Azure Stack Hub  
 description: This topic contains the support policies for AKS engine on Azure Stack Hub.
 author: mattbriggs
 

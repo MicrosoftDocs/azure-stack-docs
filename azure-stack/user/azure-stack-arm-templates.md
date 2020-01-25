@@ -1,5 +1,5 @@
 ---
-title: Use Azure Resource Manager templates in Azure Stack Hub | Microsoft Docs
+title: Use Azure Resource Manager templates in Azure Stack Hub 
 description: Learn how to use Azure Resource Manager templates in Azure Stack Hub to provision resources.
 author: mattbriggs
 

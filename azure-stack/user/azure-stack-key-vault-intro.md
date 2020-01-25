@@ -1,5 +1,5 @@
 ---
-title: Introduction to Key Vault in Azure Stack Hub | Microsoft Docs
+title: Introduction to Key Vault in Azure Stack Hub 
 description: Learn how Key Vault manages keys and secrets in Azure Stack Hub.
 author: sethmanheim
 

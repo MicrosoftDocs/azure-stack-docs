@@ -1,5 +1,5 @@
 ---
-title: Get started with Azure Stack Hub storage development tools  | Microsoft Docs
+title: Get started with Azure Stack Hub storage development tools  
 description: Guidance to get started with using Azure Stack Hub storage development tools 
 author: mattbriggs
 ms.author: mabrigg

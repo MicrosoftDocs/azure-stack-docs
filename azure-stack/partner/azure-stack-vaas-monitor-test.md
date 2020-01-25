@@ -1,5 +1,5 @@
 ---
-title: Monitor and manage tests in the Azure Stack VaaS portal | Microsoft Docs
+title: Monitor and manage tests in the Azure Stack VaaS portal 
 description: Monitor and manage tests in the Azure Stack VaaS portal.
 author: mattbriggs
 

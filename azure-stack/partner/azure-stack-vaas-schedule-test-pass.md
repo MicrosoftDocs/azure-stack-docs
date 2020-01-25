@@ -1,5 +1,5 @@
 ---
-title: Use the Validation as a Service for Azure Stack portal to schedule your first test | Microsoft Docs
+title: Use the Validation as a Service for Azure Stack portal to schedule your first test 
 description: Use the Validation as a Service for Azure Stack portal to schedule your first test.
 author: mattbriggs
 

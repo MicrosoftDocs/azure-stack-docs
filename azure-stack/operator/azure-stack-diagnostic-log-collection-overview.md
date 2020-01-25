@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub diagnostic log collection overview | Microsoft Docs
+title: Azure Stack Hub diagnostic log collection overview 
 description: Explains diagnostic log collection in Azure Stack Hub Help + Support, including on-demand and automatic log collection.
 author: justinha
 

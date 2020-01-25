@@ -1,5 +1,5 @@
 ---
-title: In this article, you learn how to update Azure Stack Hub offers and plans | Microsoft Docs
+title: In this article, you learn how to update Azure Stack Hub offers and plans 
 description: This article describes how to view and modify existing Azure Stack Hub offers and plans. 
 author: bryanla
 

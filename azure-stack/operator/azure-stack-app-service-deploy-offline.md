@@ -1,5 +1,5 @@
 ---
-title: Deploy Azure App Service in an offline environment in Azure Stack Hub | Microsoft Docs
+title: Deploy Azure App Service in an offline environment in Azure Stack Hub 
 description: Learn how to deploy Azure App Service in an offline Azure Stack Hub environment secured by AD FS.
 author: BryanLa
 

@@ -1,5 +1,5 @@
 ---
-title: Use MySQL databases as PaaS on Azure Stack Hub | Microsoft Docs 
+title: Use MySQL databases as PaaS on Azure Stack Hub  
 description: Learn how to deploy the MySQL Resource Provider and provide MySQL databases as a service on Azure Stack Hub. 
 author: mattbriggs
 ms.topic: article 

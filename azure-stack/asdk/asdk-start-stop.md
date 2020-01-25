@@ -1,5 +1,5 @@
 ---
-title: Start and stop the ASDK | Microsoft Docs
+title: Start and stop the ASDK 
 description: Learn how to start and stop the Azure Stack Development Kit (ASDK).
 author: justinha
 

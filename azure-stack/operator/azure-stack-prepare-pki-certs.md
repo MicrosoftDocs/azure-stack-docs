@@ -1,5 +1,5 @@
 ﻿---
-title: Prepare Azure Stack Hub PKI certificates for deployment or rotation | Microsoft Docs
+title: Prepare Azure Stack Hub PKI certificates for deployment or rotation 
 titleSuffix: Azure Stack Hub
 description: Learn how to prepare PKI certificates for Azure Stack Hub integrated systems deployment or for rotating secrets in an existing Azure Stack Hub environment.
 author: justinha

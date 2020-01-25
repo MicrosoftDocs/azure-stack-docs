@@ -1,5 +1,5 @@
 ---
-title: Quota types in Azure Stack Hub | Microsoft Docs
+title: Quota types in Azure Stack Hub 
 description: View and edit the different quota types available for services and resources in Azure Stack Hub.
 author: sethmanheim
 

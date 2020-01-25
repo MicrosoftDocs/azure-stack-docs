@@ -1,5 +1,5 @@
 ---
-title: Usage and billing registration error codes for Cloud Solution Providers for Azure Stack Hub | Microsoft Docs
+title: Usage and billing registration error codes for Cloud Solution Providers for Azure Stack Hub 
 description: Azure Stack Hub usage and registration error codes.
 author: sethmanheim
 

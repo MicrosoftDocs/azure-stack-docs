@@ -1,5 +1,5 @@
 ---
-title: Develop templates for Azure Stack Hub | Microsoft Docs
+title: Develop templates for Azure Stack Hub 
 description: Learn how to develop Azure Resource Manager templates for app portability between Azure and Azure Stack Hub.
 author: mattbriggs
 

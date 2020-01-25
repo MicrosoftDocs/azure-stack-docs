@@ -1,5 +1,5 @@
 ---
-title: Azure Marketplace items available for Azure Stack Hub | Microsoft Docs
+title: Azure Marketplace items available for Azure Stack Hub 
 description: Learn which Azure Marketplace items can be used in Azure Stack Hub.
 author: sethmanheim
 

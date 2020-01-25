@@ -1,5 +1,5 @@
 ---
-title: Manage updates in Azure Stack Hub | Microsoft Docs
+title: Manage updates in Azure Stack Hub 
 description: Learn to manage updates in Azure Stack Hub
 author: mattbriggs
 

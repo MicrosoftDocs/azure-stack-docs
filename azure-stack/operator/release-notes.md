@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub release notes | Microsoft Docs
+title: Azure Stack Hub release notes 
 description: Learn about the updates for Azure Stack Hub integrated systems, including what's new, and where to download the update.
 author: sethmanheim
 

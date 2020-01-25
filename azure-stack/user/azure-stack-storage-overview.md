@@ -1,5 +1,5 @@
 ---
-title: Introduction to Azure Stack Hub Storage | Microsoft Docs
+title: Introduction to Azure Stack Hub Storage 
 description: Learn about Azure Stack Hub Storage services.
 author: mattbriggs
 

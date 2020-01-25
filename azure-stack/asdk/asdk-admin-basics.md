@@ -1,5 +1,5 @@
 ---
-title: ASDK Admin Basics| Microsoft Docs
+title: ASDK Admin Basics
 description: Learn how to do basic admin tasks for the Azure Stack Development Kit (ASDK).
 author: justinha
 

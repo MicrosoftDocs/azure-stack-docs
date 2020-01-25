@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Validation as a Service release notes | Microsoft Docs
+title: Azure Stack Validation as a Service release notes 
 description: Azure Stack Validation as a Service release notes.
 author: mattbriggs
 

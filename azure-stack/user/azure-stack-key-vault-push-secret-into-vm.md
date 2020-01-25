@@ -1,5 +1,5 @@
 ---
-title: Deploy a VM with a securely stored certificate on Azure Stack Hub | Microsoft Docs
+title: Deploy a VM with a securely stored certificate on Azure Stack Hub 
 description: Learn how to deploy a virtual machine and push a certificate onto it by using a key vault in Azure Stack Hub
 author: sethmanheim
 

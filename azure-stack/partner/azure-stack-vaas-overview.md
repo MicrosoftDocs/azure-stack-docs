@@ -1,5 +1,5 @@
 ---
-title: An overview of Validation as a Service for Azure Stack Hub | Microsoft Docs
+title: An overview of Validation as a Service for Azure Stack Hub 
 description: An overview of Azure Stack Hub Validation as a Service.
 author: mattbriggs
 

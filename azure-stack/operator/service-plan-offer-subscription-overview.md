@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Hub services, plans, offers, subscriptions overview | Microsoft Docs
+title: Azure Stack Hub services, plans, offers, subscriptions overview 
 description: An overview of Azure Stack Hub services, plans, offers, and subscriptions.
 author: BryanLa
 

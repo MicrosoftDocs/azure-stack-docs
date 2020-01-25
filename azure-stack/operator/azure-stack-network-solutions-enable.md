@@ -1,5 +1,5 @@
 ---
-title: Offer a network solution in Azure Stack Hub with Fortinet FortiGate | Microsoft Docs
+title: Offer a network solution in Azure Stack Hub with Fortinet FortiGate 
 description: Learn how enable network solution in Azure Stack Hub with Fortinet FortiGate
 author: mattbriggs
 

@@ -1,5 +1,5 @@
 ---
-title: Deploy MySQL resource provider on Azure Stack Hub | Microsoft Docs
+title: Deploy MySQL resource provider on Azure Stack Hub 
 description: Learn how to deploy the MySQL resource provider adapter and MySQL databases as a service on Azure Stack Hub.  
 author: mattbriggs  
 ms.topic: article 

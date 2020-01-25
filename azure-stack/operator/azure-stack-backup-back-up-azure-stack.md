@@ -1,5 +1,5 @@
 ---
-title: Back up Azure Stack Hub | Microsoft Docs
+title: Back up Azure Stack Hub 
 description: Learn how to do an on-demand backup on Azure Stack Hub.
 author: justinha
 

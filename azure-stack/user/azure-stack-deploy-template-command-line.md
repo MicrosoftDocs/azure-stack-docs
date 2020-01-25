@@ -1,5 +1,5 @@
 ---
-title: Deploy a template with the command line in Azure Stack Hub | Microsoft Docs
+title: Deploy a template with the command line in Azure Stack Hub 
 description: Learn how to use the Azure cross-platform command-line interface (CLI) to deploy templates to Azure Stack Hub.
 author: mattbriggs
 

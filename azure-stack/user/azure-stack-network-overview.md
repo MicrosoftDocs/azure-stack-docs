@@ -1,5 +1,5 @@
 ---
-title: Introduction to Azure Stack Hub networking | Microsoft Docs
+title: Introduction to Azure Stack Hub networking 
 description: Learn about Azure Stack Hub networking
 author: mattbriggs
 

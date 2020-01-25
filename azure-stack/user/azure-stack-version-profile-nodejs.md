@@ -1,5 +1,5 @@
 ---
-title: Using API version profiles with Node.js in Azure Stack Hub | Microsoft Docs
+title: Using API version profiles with Node.js in Azure Stack Hub 
 description: Learn about using API version profiles with Node.js in Azure Stack Hub.
 author: mattbriggs
 

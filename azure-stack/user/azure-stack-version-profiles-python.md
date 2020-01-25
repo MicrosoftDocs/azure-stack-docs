@@ -1,5 +1,5 @@
 ---
-title: Use API version profiles with Python in Azure Stack Hub | Microsoft Docs
+title: Use API version profiles with Python in Azure Stack Hub 
 description: Learn how to use API version profiles with Python in Azure Stack Hub.
 author: sethmanheim
 
