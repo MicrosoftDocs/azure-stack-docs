@@ -4,7 +4,6 @@ description: Learn how to let your Cloud Solution Provider (CSP) manage your Azu
 author: sethmanheim
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: sethm

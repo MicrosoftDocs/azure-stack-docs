@@ -4,7 +4,6 @@ description: This article contains troubleshooting steps for the AKS engine on A
 author: mattbriggsv
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na (Kubernetes)
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: mabrigg

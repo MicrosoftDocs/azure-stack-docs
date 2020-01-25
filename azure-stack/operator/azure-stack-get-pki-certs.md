@@ -4,7 +4,6 @@ description: Learn how to generate certificate signing requests for Azure Stack 
 author: justinha
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: justinha

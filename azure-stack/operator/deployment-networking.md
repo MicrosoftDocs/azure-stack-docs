@@ -4,7 +4,6 @@ description: This article describes what to expect about Azure Stack Hub deploym
 author: mattbriggs
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: mabrigg

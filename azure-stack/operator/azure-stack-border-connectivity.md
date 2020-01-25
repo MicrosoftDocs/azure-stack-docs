@@ -4,7 +4,6 @@ description: Learn how to plan for datacenter border network connectivity in Azu
 author: mattbriggs
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: mabrigg

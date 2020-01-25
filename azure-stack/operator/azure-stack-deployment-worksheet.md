@@ -4,7 +4,6 @@ description: Learn how to install and use the deployment worksheet tool to deplo
 author: wamota
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: wamota

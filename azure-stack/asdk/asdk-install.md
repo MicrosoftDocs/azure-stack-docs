@@ -4,7 +4,6 @@ description: Learn how to install the Azure Stack Development Kit (ASDK).
 author: justinha
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/06/2019
 ms.author: justinha

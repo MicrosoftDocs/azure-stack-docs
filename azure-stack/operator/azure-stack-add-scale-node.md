@@ -4,7 +4,6 @@ description: Learn how to add scale unit nodes to scale units in Azure Stack Hub
 author: mattbriggs
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 1/16/2020
 ms.author: mabrigg

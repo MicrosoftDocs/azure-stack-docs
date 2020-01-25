@@ -4,7 +4,6 @@ description: Learn the basics of Azure Stack Hub administration.
 author: justinha
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: justinha

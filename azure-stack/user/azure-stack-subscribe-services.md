@@ -4,7 +4,6 @@ description: Learn how to create a new subscription with an offer in Azure Stack
 author: bryanla
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/04/2019

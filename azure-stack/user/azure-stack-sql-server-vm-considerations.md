@@ -4,7 +4,6 @@ description: This article provides SQL server best practices to help increase pe
 author: bryanla
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: bryanla

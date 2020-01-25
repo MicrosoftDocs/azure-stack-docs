@@ -5,7 +5,6 @@ description: Learn how to replace a physical scale unit node on an Azure Stack H
 author: mattbriggs
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: mabrigg

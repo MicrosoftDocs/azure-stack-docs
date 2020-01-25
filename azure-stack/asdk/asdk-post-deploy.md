@@ -4,7 +4,6 @@ description: Learn about the recommended configuration changes to make after ins
 author: justinha
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: justinha

@@ -4,7 +4,6 @@ description: Azure Stack Hub usage and registration error codes.
 author: sethmanheim
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: sethm

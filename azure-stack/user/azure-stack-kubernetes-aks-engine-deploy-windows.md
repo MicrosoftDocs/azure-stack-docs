@@ -4,7 +4,6 @@ description: Learn how to use a Windows machine in your Azure Stack Hub to host 
 author: mattbriggs
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na (Kubernetes)
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: mabrigg

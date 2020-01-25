@@ -4,7 +4,6 @@ description: Learn how to redeploy the Azure Stack Development Kit (ASDK).
 author: justinha
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.custom: 
 ms.date: 02/12/2019

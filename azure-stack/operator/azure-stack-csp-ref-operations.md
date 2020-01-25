@@ -4,7 +4,6 @@ description: Learn how to register tenants and how tenant usage is tracked in Az
 author: sethmanheim
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: sethm

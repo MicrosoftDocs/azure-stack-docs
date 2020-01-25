@@ -4,7 +4,6 @@ description: Understand the differences between Azure and Azure Stack Hub when u
 author: sethmanheim
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: overview
 ms.date: 01/06/2020
 ms.author: sethm

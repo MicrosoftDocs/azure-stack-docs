@@ -4,7 +4,6 @@ description: Learn how to use the Azure Monitor for VMs, Update Management, Chan
 author: mattbriggs
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: mabrigg

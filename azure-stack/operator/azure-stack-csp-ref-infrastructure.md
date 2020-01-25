@@ -4,7 +4,6 @@ description: Learn about the usage reporting infrastructure used to track usage 
 author: sethmanheim
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: sethm

@@ -4,7 +4,6 @@ description: Learn about advanced Azure Stack Development KIt (ASDK) evaluation 
 author: justinha
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: justinha

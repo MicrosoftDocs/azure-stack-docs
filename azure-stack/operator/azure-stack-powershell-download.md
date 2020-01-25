@@ -4,7 +4,6 @@ description: Learn how to download tools required for working with Azure Stack H
 author: mattbriggs
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg

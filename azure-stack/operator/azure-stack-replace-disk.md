@@ -5,7 +5,6 @@ description: Learn how to replace a physical disk in Azure Stack Hub.
 author: mattbriggs
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mabrigg

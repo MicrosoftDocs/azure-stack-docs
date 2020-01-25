@@ -4,7 +4,6 @@ description: Learn about the hardware, software, and environment requirements fo
 author: justinha
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/13/2019
 ms.author: justinha

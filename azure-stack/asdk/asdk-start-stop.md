@@ -4,7 +4,6 @@ description: Learn how to start and stop the Azure Stack Development Kit (ASDK).
 author: justinha
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: justinha

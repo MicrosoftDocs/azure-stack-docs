@@ -4,7 +4,6 @@ description: Learn how to manage Key Vault in Azure Stack Hub by using the Azure
 author: sethmanheim
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: sethm

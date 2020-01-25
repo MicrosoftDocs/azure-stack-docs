@@ -4,7 +4,6 @@ description: Learn how to manage Key Vault in Azure Stack Hub by using PowerShel
 author: sethmanheim
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/07/2020
 ms.author: sethm

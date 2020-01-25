@@ -4,7 +4,6 @@ description: Determine deployment planning decisions for Azure-connected deploym
 author: mattbriggs
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg

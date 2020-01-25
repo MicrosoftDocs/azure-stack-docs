@@ -4,7 +4,6 @@ description: Learn about Azure disconnected deployment of Azure Stack Hub integr
 author: mattbriggs
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/01/2019
 ms.author: mabrigg

@@ -4,7 +4,6 @@ description: Learn how to use Azure Monitor for containers on Azure Stack Hub.
 author: mattbriggs
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na (Kubernetes)
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: mabrigg

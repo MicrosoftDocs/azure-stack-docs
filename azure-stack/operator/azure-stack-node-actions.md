@@ -4,7 +4,6 @@ description: Learn about scale unit node actions, including power on, power off,
 author: mattbriggs
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: mabrigg

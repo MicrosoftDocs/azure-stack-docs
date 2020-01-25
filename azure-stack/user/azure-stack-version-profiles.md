@@ -4,7 +4,6 @@ description: Learn about API version profiles in Azure Stack Hub.
 author: sethmanheim
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: sethm

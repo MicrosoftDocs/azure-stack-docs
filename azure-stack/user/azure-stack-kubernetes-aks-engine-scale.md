@@ -4,7 +4,6 @@ description: Learn how to scale a Kubernetes cluster on Azure Stack Hub.
 author: mattbriggs
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na (Kubernetes)
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: mabrigg

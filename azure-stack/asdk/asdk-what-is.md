@@ -4,7 +4,6 @@ description: Learn about the Azure Stack Hub Development Kit and how it's used t
 author: justinha
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: overview
 ms.custom: mvc
 ms.date: 11/27/2019

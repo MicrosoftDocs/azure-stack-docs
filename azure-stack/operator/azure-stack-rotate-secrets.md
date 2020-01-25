@@ -5,7 +5,6 @@ description: Learn how to rotate your secrets in Azure Stack Hub.
 author: mattbriggs
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/13/2019
 ms.reviewer: ppacent

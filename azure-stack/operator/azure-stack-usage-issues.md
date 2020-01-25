@@ -4,7 +4,6 @@ description: Troubleshooting Azure Stack Hub usage issues and errors.
 author: sethmanheim
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: sethm

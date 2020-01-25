@@ -5,7 +5,6 @@ description: Learn how to register Azure Stack Hub integrated systems with Azure
 author: mattbriggs
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg

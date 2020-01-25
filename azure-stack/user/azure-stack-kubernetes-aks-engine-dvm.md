@@ -4,7 +4,6 @@ description: Learn how to Move your Marketplace item cluster to the AKS engine o
 author: mattbriggs
 
 ms.service: azure-stack
-pms.tgt_pltfrm: na (Kubernetes)
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: mabrigg
