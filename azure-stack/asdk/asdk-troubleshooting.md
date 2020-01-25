@@ -3,7 +3,6 @@ title: Troubleshoot the ASDK | Microsoft Docs
 description: Learn how to troubleshoot Azure Stack Development Kit (ASDK).
 author: justinha
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: justinha

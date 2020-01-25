@@ -4,7 +4,6 @@ description: Learn how to use the Azure Stack Hub validation tool to validate sy
 author: justinha
 cloud: azure-stack
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: justinha

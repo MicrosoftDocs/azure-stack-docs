@@ -3,7 +3,6 @@ title: What is the Azure Stack Hub Development Kit (ASDK)? | Microsoft Docs
 description: Learn about the Azure Stack Hub Development Kit and how it's used to evaluate Azure Stack Hub.
 author: justinha
 
-ms.service: azure-stack
 ms.topic: overview
 ms.custom: mvc
 ms.date: 11/27/2019

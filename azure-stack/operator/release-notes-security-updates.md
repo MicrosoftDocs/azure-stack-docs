@@ -3,7 +3,6 @@ title: Azure Stack Hub release notes - security updates for 1910 | Microsoft Doc
 description: Learn about the 1910 security updates for Azure Stack Hub.
 author: sethmanheim
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: sethm

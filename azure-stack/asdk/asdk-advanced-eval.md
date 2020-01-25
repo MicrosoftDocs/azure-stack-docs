@@ -3,7 +3,6 @@ title: Advanced ASDK evaluation tasks | Microsoft Docs
 description: Learn about advanced Azure Stack Development KIt (ASDK) evaluation tasks.
 author: justinha
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: justinha

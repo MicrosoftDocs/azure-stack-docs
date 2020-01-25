@@ -3,7 +3,6 @@ title: Deploy a Node.js app to a virtual machine in Azure Stack Hub | Microsoft 
 description: Deploy an Node.js app to Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: overview
 ms.date: 1/22/2020
 ms.author: mabrigg

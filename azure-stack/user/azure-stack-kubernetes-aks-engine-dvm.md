@@ -3,7 +3,6 @@ title: Move your Marketplace item cluster to the AKS engine on Azure Stack Hub |
 description: Learn how to Move your Marketplace item cluster to the AKS engine on Azure Stack Hub. 
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: mabrigg

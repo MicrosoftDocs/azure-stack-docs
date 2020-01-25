@@ -4,7 +4,6 @@ description: Learn about improvements, fixes, and known issues in Update 3 for A
 author: bryanla
 manager: stefsch
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: anwestg

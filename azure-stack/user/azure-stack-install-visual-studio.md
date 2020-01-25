@@ -3,7 +3,6 @@ title: Install Visual Studio and connect to Azure Stack Hub | Microsoft Docs
 description: Learn how to install Visual Studio and connect to Azure Stack Hub.
 author: sethmanheim
 
-ms.service: azure-stack
 ms.custom: vs-azure
 ms.topic: article
 ms.date: 01/07/2020

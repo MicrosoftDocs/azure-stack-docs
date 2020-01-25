@@ -3,7 +3,6 @@ title: Compare Azure Stack Hub and global Azure | Microsoft Docs
 description: Learn how Microsoft provides Azure and the Azure Stack Hub family of services in one Azure ecosystem  
 author: justinha
 
-ms.service: azure-stack
 ms.topic: overview
 ms.date: 05/03/2019
 ms.author: justinha

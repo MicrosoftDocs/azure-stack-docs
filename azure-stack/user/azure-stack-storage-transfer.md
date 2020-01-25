@@ -3,7 +3,6 @@ title: Use data transfer tools in Azure Stack Hub Storage | Microsoft Docs
 description: Learn about Azure Stack Hub Storage data transfer tools.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: mabrigg

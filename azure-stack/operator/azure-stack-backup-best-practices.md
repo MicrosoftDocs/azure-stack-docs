@@ -3,7 +3,6 @@ title: Infrastructure Backup Service best practices for Azure Stack Hub | Micros
 description: Follow these best practices when you deploy and manage Azure Stack Hub to help mitigate data loss if there's a catastrophic failure.
 author: justinha
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: justinha

@@ -3,7 +3,6 @@ title: Azure Stack Hub Windows Server related FAQs | Microsoft Docs
 description: List of Azure Stack Hub Marketplace FAQs for Windows Server
 author: sethmanheim
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 12/27/2019
 ms.author: sethm

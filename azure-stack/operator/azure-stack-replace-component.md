@@ -4,7 +4,6 @@ titleSuffix: Azure Stack Hub
 description: Learn how to replace a hardware component on an Azure Stack Hub integrated system.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: thoroet

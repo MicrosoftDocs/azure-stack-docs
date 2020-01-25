@@ -4,7 +4,6 @@ description: Learn about what's in update seven for App Service on Azure Stack H
 author: apwestgarth
 manager: stefsch
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: anwestg

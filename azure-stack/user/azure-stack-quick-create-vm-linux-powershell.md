@@ -3,7 +3,6 @@ title: Create a Linux VM by using PowerShell in Azure Stack Hub | Microsoft Docs
 description: Create a Linux VM by using PowerShell in Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: quickstart
 ms.date: 11/11/2019
 ms.author: mabrigg

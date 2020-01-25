@@ -3,7 +3,6 @@ title: Upgrade a Kubernetes cluster on Azure Stack Hub | Microsoft Docs
 description: Learn how to upgrade a Kubernetes cluster on Azure Stack Hub. 
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: mabrigg

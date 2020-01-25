@@ -3,7 +3,6 @@ title: Make API requests to Azure Stack Hub | Microsoft Docs
 description: Learn how to retrieve an authentication from Azure to make API requests to Azure Stack Hub.
 author: sethmanheim
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: sethm

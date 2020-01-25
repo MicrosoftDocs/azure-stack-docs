@@ -3,7 +3,6 @@ title: Validate original equipment manufacturer (OEM) packages in Azure Stack Va
 description: Learn how to validate original equipment manufacturer (OEM) packages with Validation as a Service.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mabrigg

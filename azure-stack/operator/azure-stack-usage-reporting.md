@@ -3,7 +3,6 @@ title: Report Azure Stack Hub usage data to Azure | Microsoft Docs
 description: Learn how to set up usage data reporting in Azure Stack Hub.
 author: sethmanheim
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 08/12/2019
 ms.author: sethm

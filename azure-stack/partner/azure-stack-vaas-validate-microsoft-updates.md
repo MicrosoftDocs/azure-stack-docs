@@ -3,7 +3,6 @@ title: Validate software updates from Microsoft in Azure Stack Validation as a S
 description: Learn how to validate software updates from Microsoft with Validation as a Service.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: tutorial
 ms.date: 10/29/2019
 ms.author: mabrigg

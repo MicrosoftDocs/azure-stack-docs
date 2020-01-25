@@ -3,7 +3,6 @@ title: Enable backup for Azure Stack Hub from the administrator portal | Microso
 description: Learn how to enable the Infrastructure Backup Service from the administrator portal so that Azure Stack Hub can be restored if there's a failure.
 author: justinha
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: justinha

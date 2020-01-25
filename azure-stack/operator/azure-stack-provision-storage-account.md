@@ -4,7 +4,6 @@ titleSuffix: Azure Stack Hub
 description: Learn how to create storage accounts in Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 1/22/2020
 ms.author: mabrigg

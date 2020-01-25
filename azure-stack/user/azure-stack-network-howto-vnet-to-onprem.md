@@ -3,7 +3,6 @@ title: Set up VPN gateway for Azure Stack Hub | Microsoft Docs
 description: Learn how to set up VPN gateway for Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: how-to
 ms.date: 10/03/2019
 ms.author: mabrigg

@@ -3,7 +3,6 @@ title: How to back up your storage accounts on Azure Stack Hub | Microsoft Docs
 description: Learn how to back up your storage accounts on Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: how-to
 ms.date: 1/22/2020
 ms.author: mabrigg

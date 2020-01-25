@@ -3,7 +3,6 @@ title: Overview of identity providers for Azure Stack Hub | Microsoft Docs
 description: Learn about the identity providers you can use with Azure Stack Hub.
 author: PatAltimore
 
-ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 06/03/2019
 ms.author: patricka

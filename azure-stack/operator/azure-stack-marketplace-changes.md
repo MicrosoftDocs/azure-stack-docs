@@ -3,7 +3,6 @@ title: What's new in the Azure Stack Hub Marketplace | Microsoft Docs
 description: Changes and updates in the Azure Stack Hub Marketplace.
 author: sethmanheim
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: sethm

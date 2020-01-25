@@ -3,7 +3,6 @@ title: Azure Stack Hub release notes | Microsoft Docs
 description: Learn about the updates for Azure Stack Hub integrated systems, including what's new, and where to download the update.
 author: sethmanheim
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: sethm

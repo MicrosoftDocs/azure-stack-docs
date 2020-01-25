@@ -3,7 +3,6 @@ title: Usage connectivity issues and errors in Azure Stack Hub | Microsoft Docs
 description: Troubleshooting Azure Stack Hub usage issues and errors.
 author: sethmanheim
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: sethm

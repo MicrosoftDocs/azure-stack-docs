@@ -3,7 +3,6 @@ title: Deployment Worksheet for Azure Stack Hub integrated systems | Microsoft D
 description: Learn how to install and use the deployment worksheet tool to deploy Azure Stack Hub.
 author: wamota
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: wamota

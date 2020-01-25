@@ -3,7 +3,6 @@ title: Best practices for automatic Azure Stack Hub log collection | Microsoft D
 description: Best practices for automatic log collection in Azure Stack Hub Help + Support
 author: justinha
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 07/25/2019
 ms.author: justinha

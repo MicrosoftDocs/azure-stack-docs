@@ -3,7 +3,6 @@ title: Deploy a secured Service Fabric cluster in Azure Stack Hub | Microsoft Do
 description: Learn how to deploy a secured Service Fabric cluster in Azure Stack Hub
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: mabrigg

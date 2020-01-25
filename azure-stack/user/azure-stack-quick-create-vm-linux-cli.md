@@ -3,7 +3,6 @@ title: Create a Linux virtual machine by using the Azure CLI in Azure Stack Hub 
 description: Create a Linux virtual machine by using the Azure CLI in Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: quickstart
 ms.date: 1/22/2020
 ms.author: mabrigg

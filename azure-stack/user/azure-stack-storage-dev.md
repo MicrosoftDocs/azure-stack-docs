@@ -5,7 +5,6 @@ author: mattbriggs
 ms.author: mabrigg
 ms.date: 1/22/2020
 ms.topic: conceptual
-ms.service: azure-stack
 ms.reviewer: xiaofmao
 ms.lastreviewed: 02/27/2019
 

@@ -3,7 +3,6 @@ title: Troubleshoot updates in Azure Stack Hub | Microsoft Docs
 description: As an Azure Stack Hub operator, learn how to resolve issues with update so that Azure Stack Hub can return to production as quickly as possible. 
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 09/23/2019
 ms.author: mabrigg

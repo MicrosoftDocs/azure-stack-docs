@@ -3,7 +3,6 @@ title: Azure Stack Hub storage differences and considerations | Microsoft Docs
 description: Understand the differences between Azure Stack Hub storage and Azure storage, along with Azure Stack Hub deployment considerations.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 1/22/2020
 ms.author: mabrigg

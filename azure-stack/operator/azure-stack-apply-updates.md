@@ -3,7 +3,6 @@ title: Install Azure Stack Hub Updates | Microsoft Docs
 description: Learn how to install Azure Stack Hub Updates.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg

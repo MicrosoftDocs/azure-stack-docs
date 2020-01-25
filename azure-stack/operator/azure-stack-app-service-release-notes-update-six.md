@@ -4,7 +4,6 @@ description: Learn about what's in update six for App Service on Azure Stack Hub
 author: apwestgarth
 manager: stefsch
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: anwestg

@@ -3,7 +3,6 @@ title: Azure Stack Hub services, plans, offers, subscriptions overview | Microso
 description: An overview of Azure Stack Hub services, plans, offers, and subscriptions.
 author: BryanLa
 
-ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bryanla

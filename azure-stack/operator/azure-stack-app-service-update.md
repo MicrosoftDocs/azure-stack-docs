@@ -3,7 +3,6 @@ title: Update Azure App Service on Azure Stack Hub | Microsoft Docs
 description: Learn how to update Azure App Service on Azure Stack Hub.
 author: BryanLa
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 01/13/2019
 ms.author: anwestg

@@ -3,7 +3,6 @@ title:  Windows N-tier application on Azure Stack Hub with SQL Server | Microsof
 description: Learn how to run a Windows N-tier application on Azure Stack Hub with SQL Server.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: how-to
 ms.date: 11/01/2019
 ms.author: mabrigg

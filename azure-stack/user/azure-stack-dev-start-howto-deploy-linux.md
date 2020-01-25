@@ -3,7 +3,6 @@ title: Deploy a Linux VM to Azure Stack Hub | Microsoft Docs
 description: Deploy an app to Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: overview
 ms.date: 1/22/2020
 ms.author: mabrigg

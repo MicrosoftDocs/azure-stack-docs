@@ -3,7 +3,6 @@ title: Connect Azure Stack Hub to Azure using VPN | Microsoft Docs
 description: How to connect virtual networks in Azure Stack Hub to virtual networks in Azure using VPN.
 author: sethmanheim
 
-ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: sethm

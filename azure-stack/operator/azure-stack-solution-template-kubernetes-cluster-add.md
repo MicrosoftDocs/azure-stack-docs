@@ -4,7 +4,6 @@ titleSuffix: Azure Stack Hub
 description: Learn how to add Kubernetes to Azure Stack Hub Marketplace.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 10/28/2019
 ms.author: mabrigg

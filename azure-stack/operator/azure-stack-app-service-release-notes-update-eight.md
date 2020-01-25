@@ -4,7 +4,6 @@ description: Learn about what's in update eight for App Service on Azure Stack H
 author: apwestgarth
 manager: stefsch
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: anwestg

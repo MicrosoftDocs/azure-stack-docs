@@ -3,7 +3,6 @@ title: Microsoft Azure Stack Hub help and support overview | Microsoft Docs
 description: Get support for Microsoft Azure Stack Hub.
 author: justinha
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 07/24/2019
 ms.author: justinha

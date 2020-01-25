@@ -6,7 +6,6 @@ author: PatAltimore
 ms.author: patricka
 ms.date: 06/03/2019
 ms.topic: tutorial
-ms.service: azure-stack
 ms.reviewer: seyadava
 ms.custom: mvc
 ms.lastreviewed: 06/03/2019

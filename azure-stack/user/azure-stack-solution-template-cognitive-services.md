@@ -3,7 +3,6 @@ title: Deploy Azure Cognitive Services to Azure Stack Hub | Microsoft Docs
 description: Learn how to deploy Azure Cognitive Services to Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: mabrigg

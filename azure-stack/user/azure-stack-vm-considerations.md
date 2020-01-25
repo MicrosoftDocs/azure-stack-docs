@@ -3,7 +3,6 @@ title: Azure Stack Hub VM features | Microsoft Docs
 description: Learn about different features and considerations when working with VMs in Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg

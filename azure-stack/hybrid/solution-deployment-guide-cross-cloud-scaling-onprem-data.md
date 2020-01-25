@@ -2,7 +2,6 @@
 title: Deploy an app that uses on-premises data, and scales cross-cloud using Azure and Azure Stack Hub
 description: Learn how to deploy an app that uses on-premises data, and scales cross-cloud using Azure and Azure Stack Hub.
 author: BryanLa
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: bryanla

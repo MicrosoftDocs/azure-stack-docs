@@ -3,7 +3,6 @@ title: Use API version profiles with .NET in Azure Stack Hub | Microsoft Docs
 description: Learn how to use API version profiles with .NET SDK in Azure Stack Hub.
 author: sethmanheim
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 09/17/2019
 ms.author: sethm

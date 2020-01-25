@@ -3,7 +3,6 @@ title: Deploy a template using the portal in Azure Stack Hub | Microsoft Docs
 description: Learn how to use the Azure Stack Hub portal to deploy a template.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg

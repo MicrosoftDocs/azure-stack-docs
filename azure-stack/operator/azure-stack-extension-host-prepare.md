@@ -6,7 +6,6 @@ author: mattbriggs
 ms.author: mabrigg
 ms.date: 1/22/2020
 ms.topic: article
-ms.service: azure-stack
 ms.reviewer: thoroet
 ms.lastreviewed: 03/07/2019
 ---

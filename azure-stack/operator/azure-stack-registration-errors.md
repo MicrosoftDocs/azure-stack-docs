@@ -3,7 +3,6 @@ title: Usage and billing registration error codes for Cloud Solution Providers f
 description: Azure Stack Hub usage and registration error codes.
 author: sethmanheim
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: sethm

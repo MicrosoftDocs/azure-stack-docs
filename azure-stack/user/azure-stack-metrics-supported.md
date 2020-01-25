@@ -3,7 +3,6 @@ title: Supported metrics for Azure Monitor on Azure Stack Hub | Microsoft Docs
 description: Learn about the supported metrics for Azure Monitor on Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: mabrigg

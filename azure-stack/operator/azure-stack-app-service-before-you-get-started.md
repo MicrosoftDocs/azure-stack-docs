@@ -3,7 +3,6 @@ title: Prerequisites for deploying Azure App Service on Azure Stack Hub | Micros
 description: Learn the prerequisite steps to complete before you deploy Azure App Service on Azure Stack Hub.
 author: BryanLa
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: anwestg

@@ -3,7 +3,6 @@ title: Connect to Azure Stack Hub using Azure Account Extension in Visual Studio
 description: As a developer, connect to Azure Stack Hub using Azure Account Extension in Visual Studio Code
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mabrigg

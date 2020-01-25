@@ -3,7 +3,6 @@ title: Deploy Kubernetes to Azure Stack Hub using Azure Active Directory (Azure 
 description: Learn how to deploy Kubernetes to Azure Stack Hub using Azure Active Directory (Azure AD).
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg

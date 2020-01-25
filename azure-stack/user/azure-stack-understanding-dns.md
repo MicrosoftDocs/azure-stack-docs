@@ -3,7 +3,6 @@ title: Use iDNS in Azure Stack Hub | Microsoft Docs
 description: Learn how to use iDNS features and capabilities in Azure Stack Hub.
 author: Justinha
 
-ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: Justinha

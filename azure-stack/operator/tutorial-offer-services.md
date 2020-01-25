@@ -3,7 +3,6 @@ title: Offer Azure Stack Hub services for subscription.
 description: Learn how to create a service offering, using offers, plans, and services. 
 author: BryanLa
 ms.author: bryanla
-ms.service: azure-stack
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.reviewer: shriramnat

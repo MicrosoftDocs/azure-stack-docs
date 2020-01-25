@@ -4,7 +4,6 @@ description: Details on how Azure App Service on Azure Stack Hub is metered and 
 author: apwestgarth
 manager: stefsch
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: anwestg

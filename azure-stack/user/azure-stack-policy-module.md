@@ -3,7 +3,6 @@ title: Use the Azure Stack Hub policy module| Microsoft Docs
 description: Learn how to constrain an Azure subscription to behave like an Azure Stack Hub subscription
 author: sethmanheim
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 01/07/2020
 ms.author: sethm

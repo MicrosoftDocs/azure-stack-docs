@@ -3,7 +3,6 @@ title: Deploy a Kubernetes cluster with the AKS engine on Azure Stack Hub | Micr
 description: How to deploy a Kubernetes cluster on Azure Stack Hub from a client VM running the AKS engine. 
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: mabrigg

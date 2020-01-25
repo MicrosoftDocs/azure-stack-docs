@@ -3,7 +3,6 @@ title: Manage Key Vault in Azure Stack Hub using PowerShell | Microsoft Docs
 description: Learn how to manage Key Vault in Azure Stack Hub by using PowerShell.
 author: sethmanheim
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 01/07/2020
 ms.author: sethm

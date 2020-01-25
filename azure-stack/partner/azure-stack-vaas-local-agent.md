@@ -3,7 +3,6 @@ title: Deploy the local agent | Microsoft Docs
 description: Deploy the local agent for Azure Stack Validation as a Service.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: quickstart
 ms.date: 11/11/2019
 ms.author: mabrigg

@@ -3,7 +3,6 @@ title: Deploy a Python web app to a virtual machine in Azure Stack Hub | Microso
 description: Deploy a Python web app to a virtual machine in Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: overview
 ms.date: 1/22/2020
 ms.author: mabrigg

@@ -3,7 +3,6 @@ title: Usage reporting infrastructure for Cloud Solution Providers for Azure Sta
 description: Learn about the usage reporting infrastructure used to track usage for tenants serviced by a Cloud Solution Provider (CSP).
 author: sethmanheim
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 01/22/2020
 ms.author: sethm

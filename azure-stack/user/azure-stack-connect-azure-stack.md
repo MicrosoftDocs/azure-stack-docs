@@ -3,7 +3,6 @@ title: Connect to Azure Stack Hub | Microsoft Docs
 description: Learn how to connect Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: conceptual
 ms.date: 1/22/2020
 ms.author: mabrigg

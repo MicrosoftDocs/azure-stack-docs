@@ -3,7 +3,6 @@ title: Azure Stack Validation as a Service release notes | Microsoft Docs
 description: Azure Stack Validation as a Service release notes.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 10/28/2019
 ms.author: mabrigg

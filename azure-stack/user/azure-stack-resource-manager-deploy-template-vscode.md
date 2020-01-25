@@ -2,7 +2,6 @@
 title: Deploy with Visual Studio Code to Azure Stack Hub | Microsoft Docs
 description: As a user, I want to create an Azure Resource Manager template in Visual Studio Code and use the deployment schema to prepare a template that is compatible with my version of Azure Stack Hub.
 author: mattbriggs
-ms.service: azure-stack
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg

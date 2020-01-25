@@ -4,7 +4,6 @@ titleSuffix: Azure Stack
 description: Learn how to troubleshoot Azure Stack Hub, including issues with VMs, storage, and App Service.
 author: justinha
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: justinha

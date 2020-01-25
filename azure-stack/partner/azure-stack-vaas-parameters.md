@@ -3,7 +3,6 @@ title: Workflow common parameters in Azure Stack Validation as a Service| Micros
 description: Workflow common parameters for Azure Stack Validation as a Service
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
