@@ -2,14 +2,14 @@
 title: Make virtual machine scale sets available in Azure Stack Hub | Microsoft Docs
 description: Learn how a cloud operator can add virtual machine scale sets to Azure Stack Hub Marketplace.
 services: azure-stack
-author: sethmanheim
+author: ihenkel
 manager: femila
 editor: ''
 
 ms.service: azure-stack
 ms.topic: article
 ms.date: 01/22/2020
-ms.author: sethm
+ms.author: inhenkel
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/22/2018
 

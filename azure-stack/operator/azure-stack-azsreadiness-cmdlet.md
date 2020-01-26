@@ -3,7 +3,7 @@ title: Start-AzsReadinessChecker cmdlet reference | Microsoft Docs
 description: PowerShell cmdlet help for the Azure Stack Hub Readiness Checker module.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: ihenkel
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.author: sethm
+ms.author: inhenkel
 ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019
 

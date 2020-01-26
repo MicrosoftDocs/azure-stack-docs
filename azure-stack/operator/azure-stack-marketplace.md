@@ -3,7 +3,7 @@ title: Azure Stack Hub Marketplace overview | Microsoft Docs
 description: An overview of Azure Stack Hub Marketplace and marketplace items.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: ihenkel
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2020
-ms.author: sethm
+ms.author: inhenkel
 ms.reviewer: ihcherie
 ms.lastreviewed: 05/07/2019
 
