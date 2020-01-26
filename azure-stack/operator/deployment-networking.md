@@ -3,7 +3,7 @@ title: Azure Stack Hub deployment network traffic | Microsoft Docs
 description: This article describes what to expect about Azure Stack Hub deployment networking processes.
 services: azure-stack
 documentationcenter: ''
-author: inhenkel
+author: ihenkel
 manager: femila
 editor: ''
 

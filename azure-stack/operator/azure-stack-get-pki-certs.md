@@ -12,7 +12,7 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2019
-ms.author: ihenkel
+ms.author: inhenkel
 ms.reviewer: ppacent
 ms.lastreviewed: 09/10/2019
 ---

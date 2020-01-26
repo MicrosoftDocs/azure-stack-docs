@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2020
-ms.author: nihenkel
+ms.author: inhenkel
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/06/2019
 ---
