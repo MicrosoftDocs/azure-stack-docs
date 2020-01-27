@@ -1,5 +1,5 @@
 ---
-title: ASDK Release Notes | Microsoft Docs
+title: ASDK release notes | Microsoft Docs
 description: Improvements, fixes, and known issues for Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 01/27/2020
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 11/21/2019
@@ -21,9 +21,22 @@ ms.lastreviewed: 11/21/2019
 
 # ASDK release notes
 
-This article provides info on changes, fixes, and known issues in the Azure Stack Development Kit (ASDK). If you're not sure which version you're running, [use the portal to check](../operator/azure-stack-updates.md).
+This article provides information about changes, fixes, and known issues in the Azure Stack Development Kit (ASDK). If you're not sure which version you're running, [use the portal to check](../operator/azure-stack-updates.md).
 
 Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [RSS feed](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
+
+::: moniker range="azs-2002"
+## Build 1.2002.x.xx
+
+### New features
+
+- For a list of fixed issues, changes, and new features in this release, see the relevant sections in the [Azure Stack release notes](../operator/release-notes.md).
+
+### Fixed and known issues
+
+- For a list of Azure Stack known issues in this release, see the [known issues](../operator/known-issues.md) article.
+- Note that available Azure Stack hotfixes are not applicable to the ASDK.
+::: moniker-end
 
 ::: moniker range="azs-1910"
 ## Build 1.1910.0.58
@@ -77,23 +90,4 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 - For a list of Azure Stack issues fixed in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1907#fixes-2) of the Azure Stack release notes.
 - For a list of known issues, see [this article](/azure-stack/operator/known-issues?view=azs-1907).
 - Note that [available Azure Stack hotfixes](/azure-stack/operator/release-notes?view=azs-1907#hotfixes-2) are not applicable to the Azure Stack ASDK.
-::: moniker-end
-
-::: moniker range="azs-1906"
-## Build 1.1906.0.30
-
-### New features
-
-- For a list of new features in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1906#whats-in-this-update-1) of the Azure Stack release notes.
-
-### Changes
-
-- Added an **AzS-SRNG01** support ring VM hosting the log collection service for Azure Stack. For more info, see [Virtual machine roles](asdk-architecture.md).
-
-### Fixed and known issues
-
-- When creating VM resources using some Marketplace images, you might not be able to complete the deployment. As a workaround, you can click on the **Download template and parameters** link in the **Summary** page and click on the **Deploy** button in the **Template** blade.
-- For a list of Azure Stack issues fixed in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1906#fixes-3) of the Azure Stack release notes.
-- For a list of known issues, see [this article](/azure-stack/operator/known-issues?view=azs-1906).
-- Note that [available Azure Stack hotfixes](/azure-stack/operator/release-notes?view=azs-1906#hotfixes-3) are not applicable to the Azure Stack ASDK.
 ::: moniker-end
