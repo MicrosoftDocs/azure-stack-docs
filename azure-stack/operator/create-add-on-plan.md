@@ -4,7 +4,6 @@ description: This article describes how to view and modify existing Azure Stack 
 author: bryanla
 
 ms.topic: conceptual
-ms.custom: mvc
 ms.date: 10/05/2019
 ms.author: bryanla
 ms.reviewer: efemmano

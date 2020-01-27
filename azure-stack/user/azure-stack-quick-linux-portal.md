@@ -7,7 +7,6 @@ ms.topic: quickstart
 ms.date: 1/10/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.custom: mvc
 ms.lastreviewed: 1/10/2020
 ---
 

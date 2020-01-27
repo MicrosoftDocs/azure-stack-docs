@@ -4,7 +4,6 @@ description: Learn how to use the administrator portal in Azure Stack Hub.
 author: justinha
 
 ms.topic: quickstart
-ms.custom: mvc
 ms.date: 06/07/2019
 ms.author: justinha
 ms.reviewer: efemmano

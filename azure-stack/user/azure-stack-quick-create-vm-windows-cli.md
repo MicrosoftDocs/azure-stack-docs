@@ -6,7 +6,6 @@ author: mattbriggs
 ms.topic: quickstart
 ms.date: 1/22/2020
 ms.author: mabrigg
-ms.custom: mvc
 ms.lastreviewed: 01/14/2019
 ---
 

@@ -9,7 +9,6 @@ ms.date: 06/17/2019
 ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
-keywords:
 ---
 
 # Data at rest encryption in Azure Stack Hub

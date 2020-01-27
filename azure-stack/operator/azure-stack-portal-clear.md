@@ -4,7 +4,6 @@ description: As an Azure Stack Hub operator, learn how to clear portal user data
 author: sethmanheim
 
 ms.topic: conceptual
-ms.custom: mvc
 ms.date: 09/10/2019
 ms.author: sethm
 ms.reviewer: troettinger

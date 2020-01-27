@@ -4,7 +4,6 @@ description: Learn how to deploy the ASDK from the command line using PowerShell
 author: justinha
 
 ms.topic: article
-ms.custom: 
 ms.date: 05/06/2019
 ms.author: justinha
 ms.reviewer: misainat

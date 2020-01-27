@@ -4,7 +4,6 @@ description: Learn how to use the Azure Stack Development Kit (ASDK) to create a
 author: sethmanheim
 
 ms.topic: tutorial
-ms.custom: mvc
 ms.date: 01/23/2020
 ms.author: sethm
 ms.reviewer: unknown
