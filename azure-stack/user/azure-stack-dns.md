@@ -4,7 +4,7 @@ description: Learn about DNS in Azure Stack Hub and how to create and manage DNS
 author: sethmanheim
 
 ms.topic: article
-ms.date: 10/03/2019
+ms.date: 01/24/2020
 ms.author: sethm
 ms.lastreviewed: 01/05/2019
 

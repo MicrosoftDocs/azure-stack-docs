@@ -4,7 +4,7 @@ description: Development considerations for prototyping apps on Azure Stack Hub 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 10/01/2019
+ms.date: 01/24/2020
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 05/21/2019
@@ -21,11 +21,11 @@ With some preparation, and using the guidance in the following topics, you can u
 
 * In Azure, you can create Azure Resource Manager templates that are deployable to Azure Stack Hub. See [template considerations](azure-stack-develop-templates.md) for guidance on developing templates to ensure portability.
 * There are differences in service availability and service versioning between Azure and Azure Stack Hub. You can use the [Azure Stack Hub policy module](azure-stack-policy-module.md) to restrict Azure service availability and resource types to what is available in Azure Stack Hub. Constraining services ensures that your apps rely on services available to Azure Stack Hub.
-* The [Azure Stack Hub Quickstart Templates](https://github.com/Azure/AzureStack-QuickStart-Templates) are common scenario examples that show how to develop templates deployable to both Azure and Azure Stack Hub.
+* The [Azure Stack Hub quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates) are common scenario examples that show how to develop templates deployable to both Azure and Azure Stack Hub.
 
 ## Next steps
 
-For more information about Azure Stack Development, see the following articles:
+For more information about Azure Stack development, see the following articles:
 
 * [Azure Resource Manager template best practices](azure-stack-develop-templates.md)
-* [Azure Stack Hub Quickstart Templates on GitHub](https://github.com/Azure/AzureStack-QuickStart-Templates)
+* [Azure Stack Hub quickstart templates on GitHub](https://github.com/Azure/AzureStack-QuickStart-Templates)

@@ -4,7 +4,7 @@ description: Learn how to set up usage data reporting in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 01/27/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/07/2019

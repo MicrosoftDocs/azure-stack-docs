@@ -5,7 +5,7 @@ description: Overview of region management in Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 08/13/2019
+ms.date: 01/27/2020
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/27/2018
@@ -24,7 +24,7 @@ Azure Stack Hub has a set of region management capabilities available in the **R
 
 ![The region management tile in Azure Stack Hub administrator portal](media/azure-stack-region-management/image1.png)
 
-If you click a region in the **Region management** tile, you can access the following information:
+If you select a region in the **Region management** tile, you can access the following information:
 
 [![Description of panes on the Region management blade in Azure Stack Hub administrator portal](media/azure-stack-region-management/regionssm.png "Region management blade in Azure Stack Hub administrator portal")](media/azure-stack-region-management/regions.png#lightbox)
 

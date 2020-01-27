@@ -4,7 +4,7 @@ description: As an Azure Stack Hub operator, learn how to clear portal user data
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 01/27/2020
 ms.author: sethm
 ms.reviewer: troettinger
 ms.lastreviewed: 09/10/2019
@@ -13,7 +13,7 @@ monikerRange: 'azs-1802'
 
 # Clear portal user data from Azure Stack Hub
 
-Azure Stack Hub operators can clear portal user data on demand, when Azure Stack Hub users request it. As an Azure Stack Hub user, the portal can be customized by pinning tiles and changing the dashboard layout. Users can also change the theme and adjust the default language to match personal preferences. 
+Azure Stack Hub operators can clear portal user data on demand, when Azure Stack Hub users request it. As an Azure Stack Hub user, the portal can be customized by pinning tiles and changing the dashboard layout. Users can also change the theme and adjust the default language to match personal preferences.
 
 Portal user data includes favorites and recently accessed resources in the Azure Stack Hub user portal. This article describes how to clear the portal user data.
 
@@ -46,7 +46,7 @@ For this procedure, use a computer that can communicate with the admin Resource 
    Import-Module .\DatacenterIntegration\Portal\PortalUserDataUtilities.psm1
    ```
 
-2. Run the following commands. Make sure to substitute the placeholders with values that match your environment.
+2. Run the following commands. Make sure to substitute the placeholders with values that match your environment:
 
    ```powershell
    ## The following Azure Resource Manager endpoint is for the ASDK. If you are in a multinode environment, contact your operator or service provider to get the endpoint.

@@ -4,7 +4,7 @@ description: Learn how to use API version profiles with .NET SDK in Azure Stack 
 author: sethmanheim
 
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 01/27/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
@@ -22,7 +22,7 @@ An API profile is a combination of resource providers and API versions. Use an A
 - To make use of the latest versions of all the services, use the **latest** profile of the packages. This profile is part of the **Microsoft.Azure.Management** NuGet package.
 
 - To use the services compatible with Azure Stack Hub, use one of the following packages:
-  - **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg** 
+  - **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
   - **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
 
   Ensure that the **ResourceProvider** portion of the above NuGet package is changed to the correct provider.
@@ -41,9 +41,9 @@ You can combine all of the options in the same application.
 
 - The packages that need to be installed depend on the profile version you want to use. The package names for the profile versions are:
 
-   - **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
+  - **Microsoft.Azure.Management.Profiles.hybrid\_2019\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
 
-   - **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
+  - **Microsoft.Azure.Management.Profiles.hybrid\_2018\_03\_01.<*ResourceProvider*>.0.9.0-preview.nupkg**
 
 - To install the correct NuGet packages for Visual Studio Code, see the following link to download the [NuGet Package Manager instructions][].
 
@@ -73,7 +73,7 @@ To find the tenant ID for your Azure Stack Hub, follow the instructions [in this
 To set the environment variables in a Windows command prompt, use the following format:
 
 ```shell
-Set Azure_Tenant_ID=Your_Tenant_ID
+set Azure_Tenant_ID=Your_Tenant_ID
 ```
 
 ### MacOS, Linux, and Unix-based systems
@@ -81,7 +81,7 @@ Set Azure_Tenant_ID=Your_Tenant_ID
 In Unix-based systems, use the following command:
 
 ```shell
-Export Azure_Tenant_ID=Your_Tenant_ID
+export Azure_Tenant_ID=Your_Tenant_ID
 ```
 
 ### The Azure Stack Hub Resource Manager endpoint
