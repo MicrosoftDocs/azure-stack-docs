@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn how to create a custom role to avoid using global administrator for Azure Stack Hub registration.
 services: azure-stack
 documentationcenter: ''
-author: PatAltimore
+author: ihenkel
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2019
-ms.author: patricka
+ms.author: inhenkel
 ms.reviewer: rtiberiu
 ms.lastreviewed: 06/10/2019
 
