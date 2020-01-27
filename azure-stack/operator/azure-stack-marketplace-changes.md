@@ -3,7 +3,7 @@ title: What's new in the Azure Stack Hub Marketplace | Microsoft Docs
 description: Changes and updates in the Azure Stack Hub Marketplace.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: ihenkel
 manager: femila
 editor: ''
 
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2020
-ms.author: sethm
+ms.author: inhenkel
 ms.reviewer: ihcherie
 ms.lastreviewed: 10/01/2019
 

@@ -3,7 +3,7 @@ title: Download marketplace items from Azure and publish to Azure Stack Hub | Mi
 description: Learn how to download marketplace items from Azure and publish to Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: ihenkel
 manager: femila
 editor: ''
 
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/23/2019
-ms.author: sethm
+ms.author: inhenkel
 ms.reviewer: avishwan
 ms.lastreviewed: 12/23/2018
 ---
