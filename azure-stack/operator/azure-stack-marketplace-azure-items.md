@@ -3,7 +3,7 @@ title: Azure Marketplace items available for Azure Stack Hub | Microsoft Docs
 description: Learn which Azure Marketplace items can be used in Azure Stack Hub.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: ihenkel
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/21/2020
-ms.author: sethm
+ms.author: inhenkel
 ms.reviewer: ihcherie
 ms.lastreviewed: 01/21/2020
 
