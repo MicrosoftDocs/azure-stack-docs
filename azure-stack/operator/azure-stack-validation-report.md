@@ -3,7 +3,7 @@ title: Validation report for Azure Stack Hub | Microsoft Docs
 description: Use the Azure Stack Hub readiness checker report to review validation results.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: ihenkel
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.author: sethm
+ms.author: inhenkel
 ms.reviewer: unknown
 ms.lastreviewed: 10/23/2018
 
