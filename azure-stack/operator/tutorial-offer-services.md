@@ -70,12 +70,12 @@ During the offer creation process, you create both an offer and a plan. The plan
 
 1. Sign in to the administrator portal with a cloud admin account.
 
-  - For an integrated system, the URL varies based on your operator's region and external domain name. The URL uses the format https://adminportal.&lt;*region*&gt;.&lt;*FQDN*&gt;.
-  - If you're using the Azure Stack Development Kit, the URL is `https://adminportal.local.azurestack.external`.
+    - For an integrated system, the URL varies based on your operator's region and external domain name. The URL uses the format `https://adminportal.<region>.<FQDN>`.
+    - If you're using the Azure Stack Development Kit, the URL is `https://adminportal.local.azurestack.external`.
 
-  Then select **+ Create a resource** > **Offers + Plans** > **Offer**.
+    Then select **+ Create a resource** > **Offers + Plans** > **Offer**.
 
-  ![New offer in Azure Stack Hub administration portal](media/tutorial-offer-services/1-create-resource-offer.png)
+    ![New offer in Azure Stack Hub administration portal](media/tutorial-offer-services/1-create-resource-offer.png)
 
 1. In **Create a new offer** under the **Basics** tab, enter a **Display name**, **Resource name**, and select an existing or create a new **Resource group**. The Display name is the offer's friendly name. Only the cloud operator can see the Resource name, which is the name that admins use to work with the offer as an Azure Resource Manager resource.
 
@@ -127,12 +127,12 @@ During the offer creation process, you create both an offer and a plan. The plan
 
 1. Sign in to the administrator portal with a cloud admin account.
 
-  - For an integrated system, the URL varies based on your operator's region and external domain name, using the format `https://adminportal.&lt;*region*&gt;.&lt;*FQDN*&gt;`.
-  - If you're using the Azure Stack Development Kit, the URL is <https://adminportal.local.azurestack.external>.
+    - For an integrated system, the URL varies based on your operator's region and external domain name, using the format `https://adminportal.<region>.<FQDN>`.
+    - If you're using the Azure Stack Development Kit, the URL is <https://adminportal.local.azurestack.external>.
 
-  Then select **+ Create a resource** > **Offers + Plans** > **Offer**.
+    Then select **+ Create a resource** > **Offers + Plans** > **Offer**.
 
-  ![New offer in Azure Stack Hub administration portal](media/tutorial-offer-services/image01.png)
+    ![New offer in Azure Stack Hub administration portal](media/tutorial-offer-services/image01.png)
 
 1. In **New offer**, enter a **Display name** and **Resource name**, and then select a new or existing **Resource group**. The Display name is the offer's friendly name. Only the cloud operator can see the Resource name, which is the name that admins use to work with the offer as an Azure Resource Manager resource.
 
@@ -152,19 +152,19 @@ During the offer creation process, you create both an offer and a plan. The plan
 
 1. Select **Quotas**, and then select the first service that you want to create a quota for. For an IaaS quota, use the following example as a guide for configuring quotas for the Compute, Network, and Storage services.
 
-  - First, create a quota for the Compute service. In the namespace list, select **Microsoft.Compute** and then select **Create new quota**.
-
-    ![Create new quota](media/tutorial-offer-services/image06.png)
+    - First, create a quota for the Compute service. In the namespace list, select **Microsoft.Compute** and then select **Create new quota**.
+    
+      ![Create new quota](media/tutorial-offer-services/image06.png)
 
    - In **Create quota**, enter a name for the quota. You can change or accept any of the quota values that are shown. In this example, we accept the default settings and select **OK**.
-
-    ![Quota name](media/tutorial-offer-services/image07.png)
-
-  - Pick **Microsoft.Compute** in the namespace list, and then select the quota that you created. This step links the quota to the Compute service.
-
-    ![Select quota](media/tutorial-offer-services/image08.png)
-
-    Repeat these steps for the Network and Storage services. When you're finished, select **OK** in **Quotas** to save all the quotas.
+   
+      ![Quota name](media/tutorial-offer-services/image07.png)
+       
+    - Pick **Microsoft.Compute** in the namespace list, and then select the quota that you created. This step links the quota to the Compute service.
+    
+      ![Select quota](media/tutorial-offer-services/image08.png)
+        
+        Repeat these steps for the Network and Storage services. When you're finished, select **OK** in **Quotas** to save all the quotas.
 
 1. In **New plan**, select **OK**.
 
