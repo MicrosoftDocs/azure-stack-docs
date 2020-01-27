@@ -1,11 +1,10 @@
 ---
 title: Azure Stack Hub firewall integration for Azure Stack Hub integrated systems 
 description: Learn about Azure Stack Hub firewall integration for Azure Stack Hub integrated systems.
-author: mattbriggs
-
+author: ihenkel
 ms.topic: article
 ms.date: 11/15/2019
-ms.author: mabrigg
+ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 11/15/2019
 

@@ -1,15 +1,14 @@
 ---
 title: Add a custom VM image to Azure Stack Hub 
 description: Learn how to add or remove a custom VM image to Azure Stack Hub.
-author: Justinha
-
+author: ihenkel
 ms.topic: conceptual
 ms.date: 10/16/2019
-ms.author: Justinha
+ms.author: inhenkel
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
-
 ---
+
 # Add a custom VM image to Azure Stack Hub
 
 In Azure Stack Hub, you can add your custom virtual machine (VM) image to the marketplace and make it available to your users. You can add VM images to the Azure Stack Hub Marketplace through the administrator portal or Windows PowerShell. Use either an image from the global Azure Marketplace as a base for your custom image, or your create your own using Hyper-V.

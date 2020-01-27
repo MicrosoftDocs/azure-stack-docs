@@ -2,16 +2,14 @@
 title: Prepare a Red Hat-based virtual machine for Azure Stack Hub 
 titleSuffix: Azure Stack Hub
 description: Learn to create and upload an Azure virtual hard disk (VHD) that contains a Red Hat Linux operating system.
-author: mattbriggs
-tags: 
-
+author: ihenkel
 ms.topic: article
 ms.date: 12/11/2019
-ms.author: mabrigg
+ms.author: inhenkel
 ms.reviewer: kivenkat
 ms.lastreviewed: 12/11/2019
-
 ---
+
 # Prepare a Red Hat-based virtual machine for Azure Stack Hub
 
 In this article, you'll learn how to prepare a Red Hat Enterprise Linux (RHEL) virtual machine (VM) for use in Azure Stack Hub. The versions of RHEL that are covered in this article are 7.1+. The hypervisors for preparation that are covered in this article are Hyper-V, kernel-based virtual machine (KVM), and VMware.

@@ -2,14 +2,13 @@
 title: Create and publish a Marketplace item in Azure Stack Hub 
 description: Learn how to create and publish an Azure Stack Hub Marketplace item.
 author: sethmanheim
-
 ms.topic: article
 ms.date: 01/03/2020
-ms.author: sethm
+ms.author: inhenkel
 ms.reviewer: avishwan
 ms.lastreviewed: 05/07/2019
-
 ---
+
 # Create and publish a custom Azure Stack Hub Marketplace item
 
 Every item published to the Azure Stack Hub Marketplace uses the Azure Gallery Package (.azpkg) format. The *Azure Gallery Packager* tool enables you to create a custom Azure Gallery package that you can upload to the Azure Stack Hub Marketplace, which can then be downloaded by users. The deployment process uses an Azure Resource Manager template.
