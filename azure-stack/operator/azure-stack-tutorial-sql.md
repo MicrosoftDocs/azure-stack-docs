@@ -108,7 +108,7 @@ On the primary SQL instance:
   GO
   ```
 
-> ![Primary SQL instance script](./media/azure-stack-tutorial-sqlrp/sql1.png)
+![Primary SQL instance script](./media/azure-stack-tutorial-sqlrp/sql1.png)
 
 On secondary SQL instances:
 
@@ -117,7 +117,7 @@ On secondary SQL instances:
   GO
   ```
 
-> ![Secondary SQL instance script](./media/azure-stack-tutorial-sqlrp/sql2.png)
+![Secondary SQL instance script](./media/azure-stack-tutorial-sqlrp/sql2.png)
 
 ### Configure contained database authentication
 
@@ -132,7 +132,7 @@ Use these commands to set the contained database authentication server option fo
   GO
   ```
 
-> ![Set contained database authentication](./media/azure-stack-tutorial-sqlrp/sql3.png)
+![Set contained database authentication](./media/azure-stack-tutorial-sqlrp/sql3.png)
 
 ## Create an Azure Stack Hub SQL Hosting Server
 

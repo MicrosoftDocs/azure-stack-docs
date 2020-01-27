@@ -95,9 +95,9 @@ For more information about update build types, see [Manage updates in Azure Stac
   - Take advantage of an Azure Resource Manager-integrated Kubernetes cloud provider that builds clusters using native Azure resources.
   - Deploy and manage their clusters in connected or disconnected Azure Stack Hub stamps.
   - Use Azure hybrid features:
-    - Integration with Azure Arc (private preview coming soon).
-    - Integration with Azure Monitor for Containers (in public preview).
-  - Use Windows Containers with AKS engine (in private preview).
+    - Integration with Azure Arc.
+    - Integration with Azure Monitor for Containers.
+  - Use Windows Containers with AKS engine.
   - Receive CSS and engineering support for their deployments.
 
 ### Improvements
