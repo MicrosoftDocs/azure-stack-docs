@@ -3,7 +3,7 @@ title: Azure Stack Hub Windows Server related FAQs | Microsoft Docs
 description: List of Azure Stack Hub Marketplace FAQs for Windows Server
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: ihenkel
 manager: femila
 editor: ''
 
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/27/2019
-ms.author: sethm
+ms.author: inhenkel
 ms.reviewer: avishwan
 ms.lastreviewed: 08/29/2019
 

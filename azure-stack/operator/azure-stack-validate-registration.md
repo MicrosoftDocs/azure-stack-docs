@@ -3,7 +3,7 @@ title: Validate Azure registration for Azure Stack Hub | Microsoft Docs
 description: Use the Azure Stack Hub Readiness Checker to validate Azure registration.
 services: azure-stack
 documentationcenter: ''
-author: sethmanheim
+author: ihenkel
 manager: femila
 editor: ''
 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.author: sethm
+ms.author: inhenkel
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
 
