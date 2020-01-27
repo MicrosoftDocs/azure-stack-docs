@@ -3,7 +3,7 @@ title: Azure Stack Hub Capacity Planner | Microsoft Docs
 description: Learn about capacity planning for Azure Stack Hub deployments.
 services: azure-stack
 documentationcenter: ''
-author: prchint
+author: ihenkel
 manager: femila
 editor: ''
 
@@ -15,7 +15,7 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: justinha
-ms.reviewer: prchint
+ms.reviewer: inhenkel
 ms.lastreviewed: 05/31/2019
 ---
 
