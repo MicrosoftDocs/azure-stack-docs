@@ -187,7 +187,7 @@ Invoke-AzsAzureIdentityValidation Completed
 
 **Cause** -  Although the account can successfully sign in, the account isn't an admin of the Azure AD (**AADDirectoryTenantName**).  
 
-**Resolution** - Sign in into the [Azure portal](https://portal.azure.com) as the account owner, go to **Azure Active Directory**, then **Users**, then **Select the User**, then **Directory Role**, and then ensure the user is a **Global administrator**. If the account is a **User**, go to **Azure Active Directory** > **Custom domain names** and confirm that the name you supplied for **AADDirectoryTenantName** is marked as the primary domain name for this directory. In this example, that's **contoso.onmicrosoft.com**.
+**Resolution** - Sign in into the [Azure portal](https://portal.azure.com) as the account owner, go to **Azure Active Directory**, then **Users**, then **Select the User**. Then select **Directory Role** and ensure the user is a **Global administrator**. If the account is a **User**, go to **Azure Active Directory** > **Custom domain names** and confirm that the name you supplied for **AADDirectoryTenantName** is marked as the primary domain name for this directory. In this example, that's **contoso.onmicrosoft.com**.
 
 Azure Stack Hub requires that the domain name is the primary domain name.
 
