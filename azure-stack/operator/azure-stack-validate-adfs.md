@@ -45,11 +45,9 @@ The following prerequisites must be in place.
 
 * Windows 10 or Windows Server 2016 with domain connectivity.
 * PowerShell 5.1 or later. To check your version, run the following PowerShell command and then review the *Major* version and *Minor* versions:  
-    
     ```powershell
     $PSVersionTable.PSVersion
     ```
-
 * Latest version of the [Microsoft Azure Stack Hub Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.
 
 **Active Directory Federation Services environment:**
