@@ -18,12 +18,12 @@ Use the SQL resource provider to offer SQL databases on [Azure Stack Hub](azure-
 - SQL databases for cloud-native apps.
 - SQL databases for web applications.
 
-There are several limitations to consider, before installing the SQL resource provider:
+Limitations to consider before installing the SQL resource provider:
 
-- Users can only create and manage individual databases. Database Server instance is not accessible to end users. This may limit compatibility with on-premises database applications that need access to master, Temp DB, or to dynamically manage databases.
-- Your Azure Stack Hub operator is responsible for deploying, updating, securing, configuring and maintaining the SQL database servers and hosts. The RP service does not provide any host and database server instance management functionality. 
-- Databases from different users in different subscriptions may be located on the same database server instance. The RP does not provide any mechanism for isolating databases on different hosts or database server instances.
-- The RP do not provide any reporting on tenant usage of databases.
+- Users can only create and manage individual databases. Database Server instance isn't accessible to end users. This may limit compatibility with on-premises database apps that need access to master, Temp DB, or to dynamically manage databases.
+- Your Azure Stack Hub operator is responsible for deploying, updating, securing, configuring and maintaining the SQL database servers and hosts. The RP service doesn't provide any host and database server instance management functionality.
+- Databases from different users in different subscriptions may be located on the same database server instance. The RP doesn't provide any mechanism for isolating databases on different hosts or database server instances.
+- The RP doesn't provide any reporting on tenant usage of databases.
 
 For traditional SQL Server workload on premises, SQL Server virtual machine on Azure Stack Hub is recommended.
 
