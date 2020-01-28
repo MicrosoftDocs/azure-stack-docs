@@ -28,7 +28,7 @@ Use the Azure Stack Hub Readiness Checker tool (AzsReadinessChecker) to validate
 The readiness checker validates:
 
 * The *federation metadata* contains the valid XML elements for federation.
-* The *AD FS SSL certificate* can be retrieved and a chain of trust can be built. On stamp AD FS must trust the SSL certificate chain. The certificate must be signed by the same *certificate authority* used for the Azure Stack Hub deployment certificates or by a trusted root authority partner. For the full list of trusted root authority partners, see [TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
+* The *AD FS SSL certificate* can be retrieved and a chain of trust can be built. On stamp, AD FS must trust the SSL certificate chain. The certificate must be signed by the same *certificate authority* used for the Azure Stack Hub deployment certificates or by a trusted root authority partner. For the full list of trusted root authority partners, see [TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
 * The *AD FS signing certificate* is trusted and not nearing expiration.
 
 For more information about Azure Stack Hub datacenter integration, see [Azure Stack Hub datacenter integration - Identity](azure-stack-integrate-identity.md).
