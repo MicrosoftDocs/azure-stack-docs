@@ -27,8 +27,8 @@ Use the Azure Stack Hub Readiness Checker tool (**AzsReadinessChecker**) to vali
 
 The readiness checker validates:
 
-- Azure Active Directory (Azure AD) as an identity provider for Azure Stack Hub.
-- The Azure AD account that you plan to use can sign in as a global administrator of your Azure Active Directory.
+- Azure AD as an identity provider for Azure Stack Hub.
+- The Azure AD account that you plan to use can sign in as a global administrator of your Azure AD.
 
 Validation ensures your environment is ready for Azure Stack Hub to store information about users, applications, groups, and service principals from Azure Stack Hub in your Azure AD.
 
@@ -42,21 +42,19 @@ The following prerequisites are required:
 
 **The computer on which the tool runs:**
 
-- Windows 10 or Windows Server 2016, with internet connectivity.
+- Windows 10 or Windows Server 2016 with internet connectivity.
 - PowerShell 5.1 or later. To check your version, run the following PowerShell command, and then review the **Major** version and **Minor** versions:  
-
   ```powershell
   $PSVersionTable.PSVersion
   ```
-
 - [PowerShell configured for Azure Stack Hub](azure-stack-powershell-install.md).
 - The latest version of [Microsoft Azure Stack Hub Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.
 
-**Azure Active Directory environment:**
+**Azure AD environment:**
 
-- Identify the Azure AD account to use for Azure Stack Hub, and ensure it is an Azure Active Directory global administrator.
-- Identify your Azure AD tenant name. The tenant name must be the primary domain name for your Azure Active Directory; for example, **contoso.onmicrosoft.com**.
-- Identify the Azure environment you will use. Supported values for the environment name parameter are **AzureCloud**, **AzureChinaCloud**, or **AzureUSGovernment**, depending on which Azure subscription you use.
+- Identify the Azure AD account to use for Azure Stack Hub and ensure it's an Azure AD global administrator.
+- Identify your Azure AD tenant name. The tenant name must be the primary domain name for your Azure AD. For example, **contoso.onmicrosoft.com**.
+- Identify the Azure environment you'll use. Supported values for the environment name parameter are **AzureCloud**, **AzureChinaCloud**, or **AzureUSGovernment**, depending on which Azure subscription you use.
 
 ## Steps to validate Azure identity
 
@@ -66,7 +64,7 @@ The following prerequisites are required:
    Install-Module Microsoft.AzureStack.ReadinessChecker -Force
    ```
 
-2. From the PowerShell prompt, run the following command to set **$serviceAdminCredential** as the service administrator for your Azure AD tenant.  Replace **serviceadmin\@contoso.onmicrosoft.com** with your account and tenant name:
+2. From the PowerShell prompt, run the following command to set `$serviceAdminCredential` as the service administrator for your Azure AD tenant.  Replace `serviceadmin\@contoso.onmicrosoft.com` with your account and tenant name:
 
    ```powershell
    $serviceAdminCredential = Get-Credential serviceadmin@contoso.onmicrosoft.com -Message "Enter credentials for service administrator of Azure Active Directory tenant"
@@ -75,13 +73,13 @@ The following prerequisites are required:
 3. From the PowerShell prompt, run the following command to start validation of your Azure AD:
 
    - Specify the environment name value for **AzureEnvironment**. Supported values for the environment name parameter are **AzureCloud**, **AzureChinaCloud**, or **AzureUSGovernment**, depending on which Azure subscription you use.
-   - Replace **contoso.onmicrosoft.com** with your Azure Active Directory tenant name.
+   - Replace `contoso.onmicrosoft.com` with your Azure AD tenant name.
 
    ```powershell
    Invoke-AzsAzureIdentityValidation -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment <environment name> -AADDirectoryTenantName contoso.onmicrosoft.com
    ```
 
-4. After the tool runs, review the output. Confirm the status is **OK** for installation requirements. A successful validation appears like the following image:
+4. After the tool runs, review the output. Confirm the status is **OK** for installation requirements. A successful validation appears like the following example:
 
    ```powershell
    Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
@@ -104,8 +102,8 @@ These files can help you share validation status before you deploy Azure Stack H
 
 By default, both files are written to **C:\Users\<username>\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json**.  
 
-- Use the **-OutputPath** ***&lt;path&gt;*** parameter at the end of the run command line to specify a different report location.
-- Use the **-CleanReport** parameter at the end of the run command to clear information about previous runs of the tool from **AzsReadinessCheckerReport.json**.
+- Use the `-OutputPath <path>` parameter at the end of the run command line to specify a different report location.
+- Use the `-CleanReport` parameter at the end of the run command to clear information about previous runs of the tool from **AzsReadinessCheckerReport.json**.
 
 For more information, see [Azure Stack Hub validation report](azure-stack-validation-report.md).
 
@@ -133,15 +131,15 @@ Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadines
 Invoke-AzsAzureIdentityValidation Completed
 ```
 
-**Cause** - The account cannot sign in because the password is either expired, or is temporary.
+**Cause** - The account can't sign in because the password is either expired or temporary.
 
-**Resolution** - In PowerShell, run the following command, and then follow the prompts to reset the password:
+**Resolution** - In PowerShell, run the following command and then follow the prompts to reset the password:
 
 ```powershell
 Login-AzureRMAccount
 ```
 
-Alternatively, sign in to the [Azure portal](https://portal.azure.com) as the account owner, and the user will be forced to change the password.
+Another way is to sign in to the [Azure portal](https://portal.azure.com) as the account owner and the user will be forced to change the password.
 
 ### Unknown user type 
  
@@ -161,7 +159,7 @@ Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadines
 Invoke-AzsAzureIdentityValidation Completed
 ```
 
-**Cause** - The account cannot sign in to the specified Azure Active Directory (**AADDirectoryTenantName**). In this example, **AzureChinaCloud** is specified as the **AzureEnvironment**.
+**Cause** - The account can't sign in to the specified Azure AD (**AADDirectoryTenantName**). In this example, **AzureChinaCloud** is specified as the **AzureEnvironment**.
 
 **Resolution** - Confirm that the account is valid for the specified Azure environment. In PowerShell, run the following command to verify the account is valid for a specific environment:
 
@@ -187,9 +185,9 @@ Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadines
 Invoke-AzsAzureIdentityValidation Completed
 ```
 
-**Cause** -  Although the account can successfully sign in, the account is not an admin of the Azure Active Directory (**AADDirectoryTenantName**).  
+**Cause** -  Although the account can successfully sign in, the account isn't an admin of the Azure AD (**AADDirectoryTenantName**).  
 
-**Resolution** - Sign in into the [Azure portal](https://portal.azure.com) as the account owner, go to **Azure Active Directory**, then **Users**, then **Select the User**, then **Directory Role**, and then ensure the user is a **Global administrator**. If the account is a **User**, go to **Azure Active Directory** > **Custom domain names**, and confirm that the name you supplied for **AADDirectoryTenantName** is marked as the primary domain name for this directory. In this example, that is **contoso.onmicrosoft.com**.
+**Resolution** - Sign in into the [Azure portal](https://portal.azure.com) as the account owner, go to **Azure Active Directory**, then **Users**, then **Select the User**, then **Directory Role**, and then ensure the user is a **Global administrator**. If the account is a **User**, go to **Azure Active Directory** > **Custom domain names** and confirm that the name you supplied for **AADDirectoryTenantName** is marked as the primary domain name for this directory. In this example, that's **contoso.onmicrosoft.com**.
 
 Azure Stack Hub requires that the domain name is the primary domain name.
 
