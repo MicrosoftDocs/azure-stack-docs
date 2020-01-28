@@ -114,8 +114,8 @@ By default, both files are written to
 
 Use:
 
-* **-OutputPath**: The *path* parameter at the end of the run command to specify a different report location.
-* **-CleanReport**: The parameter at the end of the run command to clear *AzsReadinessCheckerReport.json* of previous report information. For more information, see [Azure Stack Hub validation report](azure-stack-validation-report.md).
+* `-OutputPath`: The *path* parameter at the end of the run command to specify a different report location.
+* `-CleanReport`: The parameter at the end of the run command to clear *AzsReadinessCheckerReport.json* of previous report information. For more information, see [Azure Stack Hub validation report](azure-stack-validation-report.md).
 
 ## Validation failures
 
