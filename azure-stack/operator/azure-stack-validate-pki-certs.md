@@ -1,6 +1,7 @@
 ---
-title: Validate Azure Stack Hub Public Key Infrastructure certificates for Azure Stack Hub integrated systems deployment | Microsoft Docs
-description: Describes how to validate the Azure Stack Hub PKI certificates for Azure Stack Hub integrated systems. Covers using the Azure Stack Hub Certificate Checker tool.
+title: Validate Azure Stack Hub PKI certificates
+titleSuffix: Azure Stack Hub
+description: Learn how to validate the Azure Stack Hub PKI certificates for Azure Stack Hub integrated systems using the Azure Stack Hub Certificate Checker tool.
 services: azure-stack
 documentationcenter: ''
 author: ihenkel
@@ -20,7 +21,7 @@ ms.lastreviewed: 01/08/2019
 
 # Validate Azure Stack Hub PKI certificates
 
-The Azure Stack Hub Readiness Checker tool described in this article is available [from the PowerShell Gallery](https://aka.ms/AzsReadinessChecker). You can use the tool to validate that  the [generated PKI certificates](azure-stack-get-pki-certs.md) are suitable for pre-deployment. Validate certificates by leaving  enough time to test and reissue certificates if necessary.
+The Azure Stack Hub Readiness Checker tool described in this article is available [from the PowerShell Gallery](https://aka.ms/AzsReadinessChecker). Use the tool to validate that [generated public key infrastructure (PKI) certificates](azure-stack-get-pki-certs.md) are suitable for pre-deployment. Validate certificates by leaving  enough time to test and reissue certificates if necessary.
 
 The Readiness Checker tool performs the following certificate validations:
 
@@ -35,7 +36,7 @@ The Readiness Checker tool performs the following certificate validations:
 - **Cert chain**  
     Checks certificate chain is intact including a check for self-signed certificates.
 - **DNS names**  
-    Checks the SAN contains relevant DNS names for each endpoint, or if a supporting wildcard is present.
+    Checks the SAN contains relevant DNS names for each endpoint or if a supporting wildcard is present.
 - **Key usage**  
     Checks if the key usage contains a digital signature and key encipherment and enhanced key usage contains server authentication and client authentication.
 - **Key size**  
