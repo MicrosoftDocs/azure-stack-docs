@@ -1,5 +1,6 @@
 ---
-title:    Validate Azure Identity for Azure Stack Hub | Microsoft Docs
+title: Validate Azure Identity
+titleSuffix: Azure Stack Hub
 description: Use the Azure Stack Hub Readiness Checker to validate Azure identity.
 services: azure-stack
 documentationcenter: ''
