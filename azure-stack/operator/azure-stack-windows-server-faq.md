@@ -1,16 +1,7 @@
 ---
-title: Azure Stack Hub Windows Server related FAQs | Microsoft Docs
+title: Azure Stack Hub Windows Server related FAQs 
 description: List of Azure Stack Hub Marketplace FAQs for Windows Server
-services: azure-stack
-documentationcenter: ''
 author: ihenkel
-manager: femila
-editor: ''
-
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/27/2019
 ms.author: inhenkel

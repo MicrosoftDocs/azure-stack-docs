@@ -1,16 +1,7 @@
 ---
-title: Validate Azure Stack Hub Public Key Infrastructure certificates for Azure Stack Hub integrated systems deployment | Microsoft Docs
+title: Validate Azure Stack Hub Public Key Infrastructure certificates for Azure Stack Hub integrated systems deployment 
 description: Describes how to validate the Azure Stack Hub PKI certificates for Azure Stack Hub integrated systems. Covers using the Azure Stack Hub Certificate Checker tool.
-services: azure-stack
-documentationcenter: ''
 author: ihenkel
-manager: femila
-editor: ''
-
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date:  07/23/2019
 ms.author: inhenkel

@@ -1,15 +1,8 @@
 ---
-title: VM sizes supported in Azure Stack Hub | Microsoft Docs
+title: VM sizes supported in Azure Stack Hub 
 description: Reference for the supported VM sizes in Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
 author: mattbriggs
-manager: femila
 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 12/3/2019
 ms.author: mabrigg

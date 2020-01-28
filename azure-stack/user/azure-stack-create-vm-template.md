@@ -1,19 +1,9 @@
 ---
-title: Create a VM using a community template | Microsoft Docs
+title: Create a VM using a community template 
 description: Learn how to use the Azure Stack Development Kit (ASDK) to create a VM using a predefined template and a GitHub custom template.
-services: azure-stack
-documentationcenter: ''
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.assetid: 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
 ms.date: 01/23/2020
 ms.author: sethm
 ms.reviewer: unknown
