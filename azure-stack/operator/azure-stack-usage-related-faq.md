@@ -408,15 +408,9 @@ Usage is reported for the following resource providers:
 
 Usage data reports have two main time values:
 
-<<<<<<< HEAD
 * **Reported Time**: The time when the usage event entered the usage
   system.
 * **Usage Time**: The time when the Azure Stack Hub resource was consumed.
-=======
-* **Reported Time**. The time when the usage event entered the usage
-  system.
-* **Usage Time**. The time when the Azure Stack Hub resource was consumed.
->>>>>>> 70ab6c1749d8a1e8dbd34203092dede6a11bb911
 
 You might see a discrepancy in values for usage time and reported time for a specific usage event. The delay can be as long as several hours in any environment.
 
@@ -436,11 +430,7 @@ Currently, you can query only by **Reported Time**.
 
 ## What is the policy for charging for VMs?
 
-<<<<<<< HEAD
 Running and stopped VMs generate usage data. Consistent with Azure, deallocation is needed to stop the emission of usage data. In the case in which the portal is unavailable but the compute resource provider is still running, usage will be emitted.
-=======
-Running and stopped VMs generate usage data. Consistent with Azure, deallocation is needed to stop the emission of usage data. In the case in which the portal is unavailable, but the compute resource provider is still running, usage is emitted.
->>>>>>> 70ab6c1749d8a1e8dbd34203092dede6a11bb911
 
 ## How do I extract usage data from the Azure Stack Hub usage APIs?
 
