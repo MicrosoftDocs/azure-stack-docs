@@ -1,10 +1,8 @@
 ---
-title:  Windows N-tier application on Azure Stack Hub with SQL Server | Microsoft Docs
+title:  Windows N-tier application on Azure Stack Hub with SQL Server 
 description: Learn how to run a Windows N-tier application on Azure Stack Hub with SQL Server.
-services: azure-stack
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: how-to
 ms.date: 11/01/2019
 ms.author: mabrigg

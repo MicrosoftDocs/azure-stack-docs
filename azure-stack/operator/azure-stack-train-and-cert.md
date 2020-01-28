@@ -2,10 +2,7 @@
 title: Training and certification
 titleSuffix: Azure Stack
 description: Learn about Azure Stack Hub training certification opportunities.
-services: azure-stack
 author: mattbriggs
-manager: femila
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: mabrigg

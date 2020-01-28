@@ -1,16 +1,8 @@
 ---
-title: Delete quotas, plans, offers, and subscriptions | Microsoft Docs
+title: Delete quotas, plans, offers, and subscriptions 
 description: Learn how to delete Azure Stack Hub quotas, plans, offers, and subscriptions.
-services: azure-stack
-documentationcenter: ''
 author: bryanla
-manager: femila
 
-ms.assetid:  
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/13/2019
 ms.author: bryanla

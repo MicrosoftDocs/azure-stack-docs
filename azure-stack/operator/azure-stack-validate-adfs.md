@@ -5,14 +5,6 @@ description: Learn how to use the Azure Stack Hub Readiness Checker to validate 
 services: azure-stack
 documentationcenter: ''
 author: ihenkel
-manager: femila
-editor: ''
-
-ms.assetid:
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: inhenkel

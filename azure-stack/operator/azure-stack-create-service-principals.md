@@ -3,7 +3,6 @@ title: Use an app identity to access resources
 description: Learn how to manage an Azure Stack Hub service principal. A service principal can be used with role-based access control for sign-in and access to resources.
 author: BryanLa
 ms.author: bryanla
-ms.service: azure-stack
 ms.topic: how-to
 ms.date: 11/11/2019
 ms.lastreviewed: 11/11/2019

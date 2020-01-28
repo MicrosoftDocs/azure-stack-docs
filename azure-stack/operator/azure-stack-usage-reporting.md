@@ -5,13 +5,7 @@ description: Learn how to report Azure Stack Hub usage data to Azure.
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: sethm

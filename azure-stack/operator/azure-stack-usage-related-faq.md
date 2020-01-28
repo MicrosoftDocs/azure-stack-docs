@@ -5,13 +5,7 @@ description: List of frequently asked questions about Azure Stack Hub usage, inc
 services: azure-stack
 documentationcenter: ''
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: sethm
