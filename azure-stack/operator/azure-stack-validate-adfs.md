@@ -28,7 +28,7 @@ Use the Azure Stack Hub Readiness Checker tool (AzsReadinessChecker) to validate
 The readiness checker validates:
 
 * The *federation metadata* contains the valid XML elements for federation.
-* The *AD FS SSL certificate* can be retrieved, and a chain of trust can be built. On stamp AD FS must trust the SSL certificate chain. The certificate must be signed by the same *certificate authority* used for the Azure Stack Hub deployment certificates or by a trusted root authority partner. For the full list of trusted root authority partners, see [TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
+* The *AD FS SSL certificate* can be retrieved and a chain of trust can be built. On stamp AD FS must trust the SSL certificate chain. The certificate must be signed by the same *certificate authority* used for the Azure Stack Hub deployment certificates or by a trusted root authority partner. For the full list of trusted root authority partners, see [TechNet](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca).
 * The *AD FS signing certificate* is trusted and not nearing expiration.
 
 For more information about Azure Stack Hub datacenter integration, see [Azure Stack Hub datacenter integration - Identity](azure-stack-integrate-identity.md).
@@ -43,31 +43,39 @@ The following prerequisites must be in place.
 
 **The computer where the tool runs:**
 
-* Windows 10 or Windows Server 2016, with domain connectivity.
+* Windows 10 or Windows Server 2016 with domain connectivity.
 * PowerShell 5.1 or later. To check your version, run the following PowerShell command and then review the *Major* version and *Minor* versions:  
-   > `$PSVersionTable.PSVersion`
+    
+    ```powershell
+    $PSVersionTable.PSVersion
+    ```
+
 * Latest version of the [Microsoft Azure Stack Hub Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.
 
 **Active Directory Federation Services environment:**
 
 You need at least one of the following forms of metadata:
 
-* The URL for AD FS federation metadata. An example is `https://adfs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`.
-* The federation metadata XML file. An example is FederationMetadata.xml.
+- The URL for AD FS federation metadata. For example: `https://adfs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`.
+* The federation metadata XML file. For example: FederationMetadata.xml.
 
 ## Validate AD FS integration
 
 1. On a computer that meets the prerequisites, open an administrative PowerShell prompt and then run the following command to install AzsReadinessChecker:
 
-     `Install-Module Microsoft.AzureStack.ReadinessChecker -Force`
+    ```powershell
+    Install-Module Microsoft.AzureStack.ReadinessChecker -Force
+    ```
 
 1. From the PowerShell prompt, run the following command to start validation. Specify the value for **-CustomADFSFederationMetadataEndpointUri** as the URI for the federation metadata.
 
-     `Invoke-AzsADFSValidation -CustomADFSFederationMetadataEndpointUri https://adfs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml`
+     ```powershell
+     Invoke-AzsADFSValidation -CustomADFSFederationMetadataEndpointUri https://adfs.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+     ```
 
 1. After the tool runs, review the output. Confirm that the status is OK for AD FS integration requirements. A successful validation is similar to the following example:
 
-    ```
+    ```powershell
     Invoke-AzsADFSValidation v1.1809.1001.1 started.
 
     Testing ADFS Endpoint https://sts.contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
@@ -112,13 +120,17 @@ The following examples provide guidance on common validation failures.
 
 ### Command Not Found
 
-`Invoke-AzsADFSValidation : The term 'Invoke-AzsADFSValidation' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.`
+```powershell
+Invoke-AzsADFSValidation : The term 'Invoke-AzsADFSValidation' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+```
 
 **Cause**: PowerShell Autoload failed to load the Readiness Checker module correctly.
 
-**Resolution**: Import the Readiness Checker module explicitly. Copy and paste the following code into PowerShell and update \<version\> with the number for the currently installed version.
+**Resolution**: Import the Readiness Checker module explicitly. Copy and paste the following code into PowerShell and update `<version>` with the number for the currently installed version.
 
-`Import-Module "c:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.ReadinessChecker\<version>\Microsoft.AzureStack.ReadinessChecker.psd1" -Force`
+```powershell
+Import-Module "c:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.ReadinessChecker\<version>\Microsoft.AzureStack.ReadinessChecker.psd1" -Force
+```
 
 ## Next steps
 
