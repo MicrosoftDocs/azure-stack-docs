@@ -1,15 +1,8 @@
 ---
-title: Troubleshoot Kubernetes deployment to Azure Stack Hub | Microsoft Docs
+title: Troubleshoot Kubernetes deployment to Azure Stack Hub 
 description: Learn how to troubleshoot Kubernetes deployment to Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
 author: mattbriggs
-manager: femila
 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.author: mabrigg
 ms.date: 11/14/2019

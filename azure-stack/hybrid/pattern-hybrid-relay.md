@@ -2,7 +2,6 @@
 title: Pattern for implementing a hybrid relay solution using Azure and Azure Stack Hub.
 description: Learn how to use Azure and Azure Stack Hub services, to connect to edge resources or devices protected by firewalls.
 author: BryanLa
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: bryanla

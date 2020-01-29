@@ -1,17 +1,7 @@
 ---
-title: Azure Stack Hub datacenter integration walkthrough | Microsoft Docs
+title: Azure Stack Hub datacenter integration walkthrough 
 description: Learn what to expect for a successful on-site deployment of Azure Stack Hub in your datacenter, from planning to post-deployment.
-services: azure-stack
-documentationcenter: ''
 author: ihenkel
-manager: femila
-editor: ''
-
-ms.assetid: 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2019
 ms.author: inhenkel

@@ -1,16 +1,8 @@
 ---
-title: Configure IPsec/IKE site-to-site VPN connections | Microsoft Docs
+title: Configure IPsec/IKE site-to-site VPN connections 
 description: Learn about and configure IPsec/IKE policy for site-to-site VPN or VNet-to-VNet connections in Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2020
 ms.author: sethm
