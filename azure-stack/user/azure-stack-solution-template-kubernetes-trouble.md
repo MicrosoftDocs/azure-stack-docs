@@ -73,7 +73,7 @@ The following diagram shows the general process for deploying the cluster.
 
 You can collect and review deployment logs on the VMs that support your Kubernetes cluster. Talk to your Azure Stack Hub administrator to verify the version of Azure Stack Hub that you need to use, and to get logs from Azure Stack Hub that are related to your deployment.
 
-1. Review the error code returned by the ARM deployment in your **Deployments** pane in the resource group where you deployed the cluster. The descriptions for the error codes are in the [Troubleshooting](https://github.com/msazurestackworkloads/azurestack-gallery/blob/master/kubernetes/docs/troubleshooting.md) article in AKS Engine GitHub repository. If you can't resolve the issue with the error description, continue with these steps.
+1. Review the error code returned by the ARM deployment in your **Deployments** pane in the resource group where you deployed the cluster. The descriptions for the error codes are in the [Troubleshooting](https://github.com/msazurestackworkloads/azurestack-gallery/blob/master/kubernetes/docs/troubleshooting.md) article in AKS engine GitHub repository. If you can't resolve the issue with the error description, continue with these steps.
 2. Review the [deployment status](#review-deployment-status) and retrieve the logs from the master node in your Kubernetes cluster.
 3. Check that you're using the latest version of Azure Stack Hub. If you're unsure which version you're using, contact your Azure Stack Hub administrator.
 4. Review your VM creation files. You might have had the following issues:  
