@@ -21,7 +21,7 @@ The Readiness Checker tool performs the following certificate validations:
 - **Parse PFX**  
     Checks for valid PFX file, correct password, and whether the public information is protected by the password.
 - **Expiry Date**  
-    Checks for minimum validity of 7 days.
+    Checks for minimum validity of seven days.
 - **Signature algorithm**  
     Checks that the signature algorithm isn't SHA1.
 - **Private Key**  
@@ -31,7 +31,7 @@ The Readiness Checker tool performs the following certificate validations:
 - **DNS names**  
     Checks the SAN contains relevant DNS names for each endpoint or if a supporting wildcard is present.
 - **Key usage**  
-    Checks if the key usage contains a digital signature and key encipherment and enhanced key usage contains server authentication and client authentication.
+    Checks if the key usage contains a digital signature and key encipherment and checks if enhanced key usage contains server authentication and client authentication.
 - **Key size**  
     Checks if the key size is 2048 or larger.
 - **Chain order**  
@@ -84,7 +84,7 @@ Use these steps to prepare and to validate the Azure Stack Hub PKI certificates 
         - `C:\Certificates\Deployment\Admin Portal\CustomerCertificate.pfx`
         - `C:\Certificates\Deployment\ARM Admin\CustomerCertificate.pfx`
 
-3. In the PowerShell window, change the values of `RegionName` and `FQDN` appropriate to the Azure Stack Hub environment and run the following:
+3. In the PowerShell window, change the values of `RegionName` and `FQDN` appropriate to the Azure Stack Hub environment and run the following cmdlet:
 
     ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
@@ -247,7 +247,7 @@ Use these steps to prepare and to validate the Azure Stack Hub PKI certificates 
 
 ## Using validated certificates
 
-Once your certificates have been validated by the AzsReadinessChecker, you're ready to use them in your Azure Stack Hub deployment or for Azure Stack Hub secret rotation.
+Once your certificates are validated by the AzsReadinessChecker, you're ready to use them in your Azure Stack Hub deployment or for Azure Stack Hub secret rotation.
 
  - For deployment, securely transfer your certificates to your deployment engineer so that they can copy them onto the deployment host as specified in the [Azure Stack Hub PKI requirements documentation](azure-stack-pki-certs.md).
  - For secret rotation, you can use the certificates to update old certificates for your Azure Stack Hub environment's public infrastructure endpoints by following the [Azure Stack Hub Secret Rotation documentation](azure-stack-rotate-secrets.md).
