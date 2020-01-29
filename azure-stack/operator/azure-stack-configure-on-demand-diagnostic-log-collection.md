@@ -96,7 +96,7 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
   Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
   ```
 
-* Collect logs from tenant deployments running self-managed Kubernetes clusters (AKS Engine) on Azure Stack. Kubernetes logs should be stored in a tenant storage account in a format that will enable the collection time range to be applied to them as well. 
+* Collect logs from tenant deployments running self-managed Kubernetes clusters (AKS engine) on Azure Stack. Kubernetes logs should be stored in a tenant storage account in a format that will enable the collection time range to be applied to them as well. 
 
   ```powershell
   Get-AzureStackLog -OutputPath <Path> -InputSasUri "<Blob Service Sas URI>" -FromDate "<Beginning of the time range>" -ToDate "<End of the time range>"
