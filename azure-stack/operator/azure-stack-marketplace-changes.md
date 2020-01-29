@@ -1,10 +1,10 @@
 ---
 title: What's new in the Azure Stack Hub Marketplace 
 description: Changes and updates in the Azure Stack Hub Marketplace.
-author: ihenkel
+author: sethmanheim
 ms.topic: article
 ms.date: 01/22/2020
-ms.author: inhenkel
+ms.author: sethm
 ms.reviewer: ihcherie
 ms.lastreviewed: 10/01/2019
 
