@@ -1,10 +1,8 @@
 --- 
 
-title: Set up a development environment in Azure Stack Hub | Microsoft Docs 
-description: Get started developing applications for Azure Stack Hub. 
-services: azure-stack 
+title: Set up a development environment in Azure Stack Hub  
+description: Get started developing applications for Azure Stack Hub.  
 author: mattbriggs 
-ms.service: azure-stack 
 ms.topic: overview 
 ms.date: 11/11/2019
 ms.author: mabrigg 

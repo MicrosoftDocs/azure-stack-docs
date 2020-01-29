@@ -1,15 +1,8 @@
 ---
-title: Connect Storage Explorer to an Azure Stack Hub subscription or a storage account | Microsoft Docs
+title: Connect Storage Explorer to an Azure Stack Hub subscription or a storage account 
 description: Learn how to connect Storage Explorer to an  Azure Stack Hub subscription
-services: azure-stack
-documentationcenter: ''
 author: mattbriggs
-manager: femila
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mabrigg

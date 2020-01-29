@@ -1,16 +1,8 @@
 ---
-title: Upgrade a Kubernetes cluster on Azure Stack Hub | Microsoft Docs
+title: Upgrade a Kubernetes cluster on Azure Stack Hub 
 description: Learn how to upgrade a Kubernetes cluster on Azure Stack Hub. 
-services: azure-stack
-documentationcenter: ''
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na (Kubernetes)
-ms.devlang: nav
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: mabrigg

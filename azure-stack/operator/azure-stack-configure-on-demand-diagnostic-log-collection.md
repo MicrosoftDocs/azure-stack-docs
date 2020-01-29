@@ -1,17 +1,8 @@
 ---
-title: Collect Azure Stack Hub diagnostic logs on demand | Microsoft Docs
+title: Collect Azure Stack Hub diagnostic logs on demand 
 description: Learn how to collect diagnostic logs on demand in Azure Stack Hub using Help and Support or privileged endpoint (PEP).
-services: azure-stack
-documentationcenter: ''
 author: justinha
-manager: femila
-editor: ''
 
-ms.assetid: a20bea32-3705-45e8-9168-f198cfac51af
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: justinha

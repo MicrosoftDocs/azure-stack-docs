@@ -2,12 +2,8 @@
 title: Create highly available MySQL databases
 titleSuffix: Azure Stack Hub
 description: Learn how to create a MySQL Server resource provider host computer and highly available MySQL databases with Azure Stack Hub.
-services: azure-stack
 author: BryanLa
-manager: femila
-editor: ''
 
-ms.service: azure-stack
 ms.topic: article
 ms.date: 10/07/2019
 ms.author: bryanla
