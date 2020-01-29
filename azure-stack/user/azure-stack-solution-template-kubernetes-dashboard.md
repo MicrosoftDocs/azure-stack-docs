@@ -13,7 +13,7 @@ ms.lastreviewed: 06/18/2019
 # Access the Kubernetes Dashboard in Azure Stack Hub 
 
 > [!Note]   
-> Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS Engine](azure-stack-kubernetes-aks-engine-overview.md).
+> Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
 
 Kubernetes includes a web dashboard that you can use for basic management operations. This dashboard lets you view basic health status and metrics for your applications, create and deploy services, and edit existing applications. This article shows you how to set up the Kubernetes dashboard on Azure Stack Hub.
 

@@ -15,7 +15,7 @@ ms.lastreviewed: 10/28/2019
 # Add Kubernetes to Azure Stack Hub Marketplace
 
 > [!note]  
-> Only use the Kubernetes Azure Stack Hub Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack Hub, use [the AKS Engine](azure-stack-aks-engine.md).
+> Only use the Kubernetes Azure Stack Hub Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack Hub, use [the AKS engine](azure-stack-aks-engine.md).
 
 You can offer Kubernetes as a marketplace item to your users. Your users can then deploy Kubernetes in a single, coordinated operation.
 
