@@ -1,16 +1,12 @@
 ---
-title: Azure Stack Hub datacenter DNS integration | Microsoft Docs
+title: Azure Stack Hub datacenter DNS integration 
 description: Learn how to integrate Azure Stack Hub DNS with your datacenter DNS.
-services: azure-stack
 author: ihenkel
-manager: femila
-ms.service: azure-stack
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: inhenkel
 ms.reviewer: wfayed
 ms.lastreviewed: 08/21/2019
-keywords:
 ---
 
 # Azure Stack Hub datacenter DNS integration
