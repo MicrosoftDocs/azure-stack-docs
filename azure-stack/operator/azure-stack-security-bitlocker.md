@@ -2,11 +2,11 @@
 title: Data at Rest Encryption
 titleSuffix: Azure Stack Hub
 description: Learn how Azure Stack Hub protects your data with encryption at rest.
-author: PatAltimore
+author: JustinHall
 
 ms.topic: article
 ms.date: 06/17/2019
-ms.author: patricka
+ms.author: justinha
 ms.reviewer: fiseraci
 ms.lastreviewed: 03/11/2019
 ---
