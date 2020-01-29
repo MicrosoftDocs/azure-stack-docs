@@ -1,6 +1,7 @@
 ---
-title: Validate Azure registration for Azure Stack Hub 
-description: Use the Azure Stack Hub Readiness Checker to validate Azure registration.
+title: Validate Azure registration
+titleSuffix: Azure Stack Hub
+description: Learn how to validate Azure registration with the Azure Stack Hub Readiness Checker tool.
 author: ihenkel
 ms.topic: conceptual
 ms.date: 10/03/2019
