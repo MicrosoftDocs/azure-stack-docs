@@ -1,23 +1,12 @@
 ---
-title:    Validate Azure Identity for Azure Stack Hub | Microsoft Docs
+title:    Validate Azure Identity for Azure Stack Hub 
 description: Use the Azure Stack Hub Readiness Checker to validate Azure identity.
-services: azure-stack
-documentationcenter: ''
 author: ihenkel
-manager: femila
-editor: ''
-
-ms.assetid:
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: inhenkel
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
-
 ---
 
 # Validate Azure identity

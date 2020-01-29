@@ -2,17 +2,7 @@
 title: Fix common issues with PKI certificates
 titleSuffix: Azure Stack Hub
 description: Fix common issues with Azure Stack Hub PKI certificates using the Azure Stack Hub Readiness Checker.
-services: azure-stack
-documentationcenter: ''
 author: ihenkel
-manager: femila
-editor: ''
-
-ms.assetid:
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: inhenkel

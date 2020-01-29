@@ -1,15 +1,11 @@
 ---
-title: Prepare for extension host in Azure Stack Hub | Microsoft Docs
+title: Prepare for extension host in Azure Stack Hub 
 description: Learn how to prepare for extension host in Azure Stack Hub, which is automatically enabled through an Azure Stack Hub update package after version 1808.
-services: azure-stack
-keywords: 
 author: ihenkel
 ms.author: inhenkel
 ms.date: 1/22/2020
 ms.topic: article
-ms.service: azure-stack
 ms.reviewer: thoroet
-manager: femila
 ms.lastreviewed: 03/07/2019
 ---
 

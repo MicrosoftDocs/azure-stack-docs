@@ -1,16 +1,8 @@
 ---
-title: Create an offer in Azure Stack Hub | Microsoft Docs
+title: Create an offer in Azure Stack Hub 
 description: Learn how to create an offer for your users in Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
 author: bryanla
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: bryanla

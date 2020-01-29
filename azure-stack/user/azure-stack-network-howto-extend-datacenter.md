@@ -1,10 +1,8 @@
 ---
-title: How to extend the datacenter on Azure Stack Hub | Microsoft Docs
+title: How to extend the datacenter on Azure Stack Hub 
 description: Learn how to extend the datacenter on Azure Stack Hub.
-services: azure-stack
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: how-to
 ms.date: 12/13/2019
 ms.author: mabrigg

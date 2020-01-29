@@ -1,9 +1,8 @@
 ---
 title: Test an Azure Stack Hub service offering.
 description: Learn how to test a service offering, by creating a subscription and deploying resources. 
-author: ihenkel
-ms.author: inhenkel
-ms.service: azure-stack
+author: BryanLa
+ms.author: bryanla
 ms.topic: tutorial
 ms.date: 10/13/2019
 ms.reviewer: shriramnat
