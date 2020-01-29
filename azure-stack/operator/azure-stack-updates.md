@@ -1,17 +1,8 @@
 ---
-title: Manage updates
-titleSuffix: Azure Stack Hub
-description: Learn how to manage updates in Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
+title: Manage updates 
+description: Learn how to manage updates in Azure Stack Hub
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: mabrigg

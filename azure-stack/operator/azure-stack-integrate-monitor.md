@@ -1,23 +1,14 @@
 ---
-title: Integrate external monitoring solution with Azure Stack Hub | Microsoft Docs
+title: Integrate external monitoring solution with Azure Stack Hub 
 description: Learn how to integrate Azure Stack Hub with an external monitoring solution in your datacenter.
-services: azure-stack
-documentationcenter: ''
 author: ihenkel
-manager: femila
-editor: ''
-
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: PowerShell
 ms.topic: article
 ms.date: 06/05/2019
 ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 06/05/2019
-
 ---
+
 # Integrate external monitoring solution with Azure Stack Hub
 
 For external monitoring of the Azure Stack Hub infrastructure, you need to monitor the Azure Stack Hub software, the physical computers, and the physical network switches. Each of these areas offers a method to retrieve health and alert information:

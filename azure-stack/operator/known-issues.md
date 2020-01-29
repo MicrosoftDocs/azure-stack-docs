@@ -1,17 +1,8 @@
 ---
 title: Azure Stack Hub known issues 
 description: Learn about known issues in Azure Stack Hub releases.
-services: azure-stack
-documentationcenter: ''
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.assetid:  
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/14/2020
 ms.author: sethm

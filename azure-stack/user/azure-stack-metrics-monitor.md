@@ -1,16 +1,8 @@
 ---
-title: Consume monitoring data from Azure Stack Hub | Microsoft Docs
+title: Consume monitoring data from Azure Stack Hub 
 description: Learn about options for consuming monitoring data from Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
 author: mattbriggs
-manager: femila
 
-ms.assetid:
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: mabrigg

@@ -2,16 +2,8 @@
 title: Deploy SQL Server resource provider
 titleSuffix: Azure Stack Hub
 description: Learn how to deploy the SQL Server resource provider on Azure Stack Hub.
-services: azure-stack
-documentationCenter: ''
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/02/2019
 ms.lastreviewed: 03/18/2019

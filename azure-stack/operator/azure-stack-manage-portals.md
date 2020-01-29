@@ -1,18 +1,9 @@
 ---
-title: Use the administrator portal in Azure Stack Hub | Microsoft Docs
+title: Use the administrator portal in Azure Stack Hub 
 description: Learn how to use the administrator portal in Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
 author: justinha
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.custom: mvc
 ms.date: 06/07/2019
 ms.author: justinha
 ms.reviewer: efemmano

@@ -1,16 +1,8 @@
 ---
-title: ASDK release notes | Microsoft Docs
+title: ASDK Release Notes 
 description: Improvements, fixes, and known issues for Azure Stack Development Kit (ASDK).
-services: azure-stack
-documentationcenter: ''
 author: sethmanheim
-manager: femila
 
-ms.assetid:
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: sethm

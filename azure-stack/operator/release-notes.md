@@ -1,18 +1,8 @@
 ---
-title: Azure Stack Hub release notes
-titleSuffix: Azure Stack Hub
+title: Azure Stack Hub release notes 
 description: Release notes for Azure Stack Hub integrated systems, including updates and bug fixes.
-services: azure-stack
-documentationcenter: ''
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.assetid:  
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2020
 ms.author: sethm

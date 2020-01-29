@@ -1,17 +1,12 @@
 ---
-title: Create a Linux VM by using Azure Stack Hub | Microsoft Docs
+title: Create a Linux VM by using Azure Stack Hub 
 description: Create a Linux server VM by using Azure Stack Hub.
-services: azure-stack
-cloud: azure-stack
 author: mattbriggs
-manager: femila
 
-ms.service: azure-stack
 ms.topic: quickstart
 ms.date: 1/10/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.custom: mvc
 ms.lastreviewed: 1/10/2020
 ---
 
