@@ -39,7 +39,7 @@ This solution uses the following components:
 | Azure | Azure VM | An Azure VM provides a publicly accessible endpoint for the on-premises resource. |
 | | Azure Service Bus Relay | An [Azure Service Bus Relay](/azure/service-bus-relay/) provides the infrastructure for maintaining the tunnel and connection between the Azure VM and Azure Stack Hub VM.|
 | Azure Stack Hub | Compute | An Azure Stack Hub VM provides the server-side of the Hybrid Relay tunnel. |
-| | Storage | The AKS Engine cluster deployed into Azure Stack Hub provides a scalable, resilient engine to run the Face API container.|
+| | Storage | The AKS engine cluster deployed into Azure Stack Hub provides a scalable, resilient engine to run the Face API container.|
 
 ## Issues and considerations
 
