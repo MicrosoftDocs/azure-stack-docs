@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot the AKS engine on Azure Stack Hub 
-description: This article contains troubleshooting steps for the AKS engine on Azure Stack Hub. 
+title: Troubleshoot the AKS Engine on Azure Stack Hub 
+description: This article contains troubleshooting steps for the AKS Engine on Azure Stack Hub. 
 author: mattbriggs
 
 ms.topic: article
@@ -11,17 +11,17 @@ ms.lastreviewed: 11/21/2019
 
 ---
 
-# Troubleshoot the AKS engine on Azure Stack Hub
+# Troubleshoot the AKS Engine on Azure Stack Hub
 
-You may encounter an issue when deploying or working with the AKS engine on Azure Stack Hub. This article looks at the steps to troubleshoot your deployment of the AKS engine, collect information about your AKS engine, collect Kubernetes logs, review custom script extension error codes, and instructions on opening a GitHub issue for the AKS engine.
+You may encounter an issue when deploying or working with the AKS Engine on Azure Stack Hub. This article looks at the steps to troubleshoot your deployment of the AKS Engine, collect information about your AKS Engine, collect Kubernetes logs, review custom script extension error codes, and instructions on opening a GitHub issue for the AKS Engine.
 
-## Troubleshoot the AKS engine install
+## Troubleshoot the AKS Engine install
 
 ### Try GoFish
 
-If your previous installation steps failed, you can install the AKS engine using the GoFish package manager. [GoFish](https://gofi.sh) describes itself as a cross-platform Homebrew.
+If your previous installation steps failed, you can install the AKS Engine using the GoFish package manager. [GoFish](https://gofi.sh) describes itself as a cross-platform Homebrew.
 
-#### Install the AKS engine with GoFish on Linux
+#### Install the AKS Engine with GoFish on Linux
 
 Install GoFish from the [Install](https://gofi.sh/#install) page.
 
@@ -31,13 +31,13 @@ Install GoFish from the [Install](https://gofi.sh/#install) page.
     curl -fsSL https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.sh | bash
     ```
 
-2.  Run the following command to install the AKS engine with GoFish:
+2.  Run the following command to install the AKS Engine with GoFish:
 
     ```bash
     Run "gofish install aks-engine"
     ```
 
-#### Install the AKS engine with GoFish on Windows
+#### Install the AKS Engine with GoFish on Windows
 
 Install GoFish from the [Install](https://gofi.sh/#install) page.
 
@@ -48,7 +48,7 @@ Install GoFish from the [Install](https://gofi.sh/#install) page.
     iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/fishworks/gofish/master/scripts/install.ps1'))
     ```
 
-2.  Run the following command in the same session to install the AKS engine with GoFish:
+2.  Run the following command in the same session to install the AKS Engine with GoFish:
 
     ```PowerShell
     gofish install aks-engine
@@ -56,7 +56,7 @@ Install GoFish from the [Install](https://gofi.sh/#install) page.
 
 ### Checklist for common deployment issues
 
-When encountering errors while deploying a Kubernetes cluster using the AKS engine, you can check:
+When encountering errors while deploying a Kubernetes cluster using the AKS Engine, you can check:
 
 1.  Are you using the correct Service Principal credentials (SPN)?
 2.  Does the SPN have a "Contributors" role to the Azure Stack Hub subscription?
@@ -65,11 +65,11 @@ When encountering errors while deploying a Kubernetes cluster using the AKS engi
 
 For more information, see the [Troubleshooting](https://github.com/Azure/aks-engine/blob/master/docs/howto/troubleshooting.md) article in the **Azure/aks-engine** GitHub repo.
 
-## Collect AKS engine logs
+## Collect AKS Engine logs
 
-You can access review information created by the AKS engine. The AKS engine reports status,  and errors as the application runs. You can either pipe the output to a text file or copy it directly from the command-line console. Refer to a list of error codes triggered by the AKS engine at [Review custom script extension error codes](#review-custom-script-extension-error-codes).
+You can access review information created by the AKS Engine. The AKS Engine reports status,  and errors as the application runs. You can either pipe the output to a text file or copy it directly from the command-line console. Refer to a list of error codes triggered by the AKS Engine at [Review custom script extension error codes](#review-custom-script-extension-error-codes).
 
-1.  Gather standard output and error from information displayed in the AKS engine command-line tool.
+1.  Gather standard output and error from information displayed in the AKS Engine command-line tool.
 
 2. Get logs from a local file. You can set the output directory with the **--output-directory** parameter.
 
@@ -81,7 +81,7 @@ You can access review information created by the AKS engine. The AKS engine repo
 
 ## Collect Kubernetes logs
 
-In addition to the AKS engine logs, the Kubernetes components generate status  and error messages. You can collect these logs using the Bash script, [getkuberneteslogs.sh](https://aka.ms/aa6z613).
+In addition to the AKS Engine logs, the Kubernetes components generate status  and error messages. You can collect these logs using the Bash script, [getkuberneteslogs.sh](https://aka.ms/aa6z613).
 
 This script automates the process of gathering the following logs: 
 
@@ -102,7 +102,7 @@ Requirements:
  - [Azure CLI](azure-stack-version-profiles-azurecli2.md) installed in the machine from where the script will be run.
  - Service principal identity signed into an Azure CLI session to Azure Stack Hub. Since the script has the capability of discovering and creating ARM resources to do its work, it requires the Azure CLI and a service principal identity.
  - User account (subscription) where the Kubernetes cluster is already selected in the environment. 
-1. Download the latest release of the script tar file into your client VM, a machine that has access to your Kubernetes cluster or the same machine you used to deploy your cluster with the AKS engine.
+1. Download the latest release of the script tar file into your client VM, a machine that has access to your Kubernetes cluster or the same machine you used to deploy your cluster with the AKS Engine.
 
     Run the following commands:
 
@@ -139,7 +139,7 @@ Requirements:
 
 ## Review custom script extension error codes
 
-You can consult a list of error codes created by the custom script extension (CSE) in running your cluster. The CSE error can be useful in diagnosing the root cause of the problem. The CSE for the Ubuntu server used in your Kubernetes cluster supports many of the AKS engine operations. For more information about the CSE exit codes, see [cse_helpers.sh](https://github.com/Azure/aks-engine/blob/master/parts/k8s/cloud-init/artifacts/cse_helpers.sh).
+You can consult a list of error codes created by the custom script extension (CSE) in running your cluster. The CSE error can be useful in diagnosing the root cause of the problem. The CSE for the Ubuntu server used in your Kubernetes cluster supports many of the AKS Engine operations. For more information about the CSE exit codes, see [cse_helpers.sh](https://github.com/Azure/aks-engine/blob/master/parts/k8s/cloud-init/artifacts/cse_helpers.sh).
 
 ### Providing Kubernetes logs to a Microsoft support engineer
 
@@ -157,7 +157,7 @@ Your operator may combine the logs you produced along with whatever other system
 
 If you are unable to resolve your deployment error, you can open a GitHub Issue. 
 
-1. Open a [GitHub Issue](https://github.com/Azure/aks-engine/issues/new) in the AKS engine repository.
+1. Open a [GitHub Issue](https://github.com/Azure/aks-engine/issues/new) in the AKS Engine repository.
 2. Add a title using the following format: C`SE error: exit code <INSERT_YOUR_EXIT_CODE>`.
 3. Include the following information in the issue:
 
@@ -167,4 +167,4 @@ If you are unable to resolve your deployment error, you can open a GitHub Issue.
 
 ## Next steps
 
-- Read about the [The AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)
+- Read about the [The AKS Engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)

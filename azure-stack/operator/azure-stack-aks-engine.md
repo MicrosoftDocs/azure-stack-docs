@@ -1,6 +1,6 @@
 ---
 title: Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace 
-description: Learn how to add AKS engine prerequisites to the Azure Stack Hub Marketplace.
+description: Learn how to add AKS Engine prerequisites to the Azure Stack Hub Marketplace.
 author: mattbriggs
 
 ms.topic: article
@@ -13,7 +13,7 @@ ms.lastreviewed: 11/21/2019
 
 # Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace
 
-You can enable your users to set up the Azure Kubernetes Services (AKS) Engine by adding the items described in this article to your Azure Stack Hub. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS engine available to your users in both connected and disconnected environments. The AKS engine depends on a service principle identity, and in the marketplace, a Custom Script extension and the AKS Base Image.
+You can enable your users to set up the Azure Kubernetes Services (AKS) Engine by adding the items described in this article to your Azure Stack Hub. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS Engine available to your users in both connected and disconnected environments. The AKS Engine depends on a service principle identity, and in the marketplace, a Custom Script extension and the AKS Base Image.
 
 ## Check your user's service offering
 
@@ -47,12 +47,12 @@ Add the following item to the marketplace:
 
 1. Enter `AKS Base`.
 
-1. Select the image version that matches the version of the AKS engine. You can find listing of AKS Base Image to AKS engine version at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). 
+1. Select the image version that matches the version of the AKS Engine. You can find listing of AKS Base Image to AKS Engine version at [Supported Kubernetes Versions](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions). 
 
     In the list, select:
     - **Publisher**: Azure Kubernetes Service
     - **Offer**: aks
-    - **Version**: AKS Base Image 16.04-LTS Image Distro, October 2019 (2019.10.24 or version that maps to AKS engine)
+    - **Version**: AKS Base Image 16.04-LTS Image Distro, October 2019 (2019.10.24 or version that maps to AKS Engine)
 
 1. Select **Download.**
 
@@ -80,6 +80,6 @@ You can add the custom script to the marketplace by getting the item from Azure.
 
 ## Next steps
 
-[What is the AKS engine on Azure Stack Hub?](../user/azure-stack-kubernetes-aks-engine-overview.md)
+[What is the AKS Engine on Azure Stack Hub?](../user/azure-stack-kubernetes-aks-engine-overview.md)
 
 [Overview of offering services in Azure Stack Hub](service-plan-offer-subscription-overview.md)

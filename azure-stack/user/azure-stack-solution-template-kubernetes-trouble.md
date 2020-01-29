@@ -14,7 +14,7 @@ ms.lastreviewed: 11/14/2019
 # Troubleshoot Kubernetes deployment to Azure Stack Hub
 
 > [!Note]  
-> Only use the Kubernetes Azure Stack Hub Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack Hub, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
+> Only use the Kubernetes Azure Stack Hub Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack Hub, use [the AKS Engine](azure-stack-kubernetes-aks-engine-overview.md).
 
 This article reviews how to troubleshoot your Kubernetes cluster. To begin troubleshooting, review the elements required for the deployment. You might need to collect the deployment logs from Azure Stack Hub or the Linux VMs that host Kubernetes. To retrieve logs from an administrative endpoint, contact your Azure Stack Hub admin.
 
@@ -44,8 +44,8 @@ The following diagram shows the general process for deploying the cluster.
     -  Run the DVM custom script. The script does the following tasks:
         1. Gets the gallery endpoint from the Azure Resource Manager metadata endpoint.
         2. Gets the active directory resource ID from the Azure Resource Manager metadata endpoint.
-        3. Loads the API model for the AKS engine.
-        4. Deploys the AKS engine to the Kubernetes cluster and saves the Azure Stack Hub cloud profile to `/etc/kubernetes/azurestackcloud.json`.
+        3. Loads the API model for the AKS Engine.
+        4. Deploys the AKS Engine to the Kubernetes cluster and saves the Azure Stack Hub cloud profile to `/etc/kubernetes/azurestackcloud.json`.
 3. Create the master VMs.
 
 4. Download and run custom script extensions.

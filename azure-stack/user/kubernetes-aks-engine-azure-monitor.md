@@ -13,7 +13,7 @@ ms.lastreviewed: 11/15/2019
 
 # Use Azure Monitor for containers on Azure Stack Hub
 
-You can use [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) for containers to monitor your containers in an AKS engine deployed Kubernetes cluster in Azure Stack Hub. 
+You can use [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/) for containers to monitor your containers in an AKS Engine deployed Kubernetes cluster in Azure Stack Hub. 
 
 > [!IMPORTANT]
 > Azure Monitor for containers on Azure Stack Hub is currently in public preview.
@@ -34,7 +34,7 @@ You can also use the [Helm](https://helm.sh/) chart to install the monitoring ag
 
 ## Method two
 
-You can specify an **addon** in the AKS engine cluster specification json file. The file is also called the API Model. In this addon, provide the base64 encoded version of **WorkspaceGUID** and **WorkspaceKey** of the Azure Log Analytics Workspace where the monitoring information will be stored.
+You can specify an **addon** in the AKS Engine cluster specification json file. The file is also called the API Model. In this addon, provide the base64 encoded version of **WorkspaceGUID** and **WorkspaceKey** of the Azure Log Analytics Workspace where the monitoring information will be stored.
 
 Supported API definitions for the Azure Stack Hub cluster can be found in this example: [kubernetes-container-monitoring_existing_workspace_id_and_key.json](https://github.com/Azure/aks-engine/blob/master/examples/addons/container-monitoring/kubernetes-container-monitoring_existing_workspace_id_and_key.json). Specifically, find the **addons** property in **kubernetesConfig**:
 
@@ -56,5 +56,5 @@ Supported API definitions for the Azure Stack Hub cluster can be found in this e
 
 ## Next steps
 
-- Read about the [The AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)  
+- Read about the [The AKS Engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)  
 - Read about [Azure Monitor for containers overview](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview)
