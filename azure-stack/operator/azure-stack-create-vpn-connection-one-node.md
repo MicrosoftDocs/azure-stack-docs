@@ -1,17 +1,8 @@
 ---
-title: Create a site-to-site VPN connection between two virtual networks in different ASDK environments | Microsoft Docs
+title: Create a site-to-site VPN connection between two virtual networks in different ASDK environments 
 description: Tutorial for cloud operators to create a site-to-site VPN connection between two single-node Azure Stack Development Kit (ASDK) environments.
-services: azure-stack
-documentationcenter: ''
 author: justinha
-manager: femila
-editor: ''
 
-ms.assetid: 3f1b4e02-dbab-46a3-8e11-a777722120ec
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: justinha

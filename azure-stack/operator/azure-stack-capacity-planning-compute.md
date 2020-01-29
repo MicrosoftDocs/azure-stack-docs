@@ -1,17 +1,7 @@
 ---
-title: Azure Stack Hub capacity planning compute | Microsoft Docs
+title: Azure Stack Hub capacity planning compute 
 description: Learn about capacity planning for Azure Stack Hub deployments.
-services: azure-stack
-documentationcenter: ''
-author: ihenkel
-manager: femila
-editor: ''
-
-ms.assetid:
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: prchint
 ms.topic: article
 ms.date: 07/16/2019
 ms.author: inhenkel

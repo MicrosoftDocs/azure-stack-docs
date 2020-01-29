@@ -1,16 +1,8 @@
 ---
-title: Use Docker to run PowerShell in Azure Stack Hub | Microsoft Docs
+title: Use Docker to run PowerShell in Azure Stack Hub 
 description: Use Docker to run PowerShell in Azure Stack Hub
-services: azure-stack
-documentationcenter: ''
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: powershell
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg

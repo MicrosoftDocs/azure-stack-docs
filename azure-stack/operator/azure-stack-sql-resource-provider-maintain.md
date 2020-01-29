@@ -2,16 +2,8 @@
 title: SQL resource provider maintenance operations
 titleSuffix: Azure Stack Hub
 description: Learn about SQL resource provider maintenance operations on Azure Stack Hub.
-services: azure-stack
-documentationCenter: ''
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/02/2019
 ms.author: mabrigg

@@ -2,7 +2,6 @@
 title: Deploy an AI-based footfall detection solution using Azure and Azure Stack Hub
 description: Learn how to deploy a footfall detection solution using Azure and Azure Stack Hub. This solution is used for analyzing visitor traffic in retail stores.
 author: BryanLa
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: bryanla

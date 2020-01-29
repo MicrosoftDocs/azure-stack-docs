@@ -2,7 +2,6 @@
 title: Pattern for implementing out of stock detection at the edge, using Azure and Azure Stack Edge.
 description: Learn how to use Azure and Azure Stack Edge services, to implement out of stock detection.
 author: BryanLa
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: bryanla

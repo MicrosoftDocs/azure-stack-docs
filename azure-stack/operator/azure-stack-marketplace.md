@@ -1,17 +1,7 @@
 ---
-title: Azure Stack Hub Marketplace overview | Microsoft Docs
+title: Azure Stack Hub Marketplace overview 
 description: An overview of Azure Stack Hub Marketplace and marketplace items.
-services: azure-stack
-documentationcenter: ''
 author: ihenkel
-manager: femila
-editor: ''
-
-ms.assetid: 60871cbb-eed2-433c-a76d-d605c7aec06c
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2020
 ms.author: inhenkel
