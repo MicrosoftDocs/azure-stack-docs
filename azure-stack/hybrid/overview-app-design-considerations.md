@@ -2,7 +2,6 @@
 title: Hybrid application design considerations when building on Azure and Azure Stack
 description: Considerations when building a hybrid application for the intelligent cloud and intelligent edge.
 author: BryanLa
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: bryanla

@@ -2,7 +2,6 @@
 title: Deploy a highly available MongoDB solution to Azure and Azure Stack Hub
 description: Learn how to deploy a highly available MongoDB solution to Azure and Azure Stack Hub
 author: BryanLa
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: bryanla

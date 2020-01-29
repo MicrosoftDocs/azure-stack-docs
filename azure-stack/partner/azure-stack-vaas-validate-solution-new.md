@@ -1,15 +1,8 @@
 ---
-title: Validate a new Azure Stack solution | Microsoft Docs
+title: Validate a new Azure Stack solution 
 description: Learn how to validate a new Azure Stack solution with Validation as a Service.
-services: azure-stack
-documentationcenter: ''
 author: mattbriggs
-manager: femila
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/11/2019
 ms.author: mabrigg
