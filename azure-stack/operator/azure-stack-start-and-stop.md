@@ -2,17 +2,8 @@
 title: Start and stop
 titleSuffix: Azure Stack Hub
 description: Learn how to start and stop Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.assetid: 43BF9DCF-F1B7-49B5-ADC5-1DA3AF9668CA
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/02/2019
 ms.author: mabrigg

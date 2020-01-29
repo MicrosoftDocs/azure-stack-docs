@@ -1,10 +1,8 @@
 ---
-title: How to use an SSH public key with Azure Stack Hub | Microsoft Docs
+title: How to use an SSH public key with Azure Stack Hub 
 description: How to use an SSH public key
-services: azure-stack
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: overview
 ms.date: 1/22/2020
 ms.author: mabrigg

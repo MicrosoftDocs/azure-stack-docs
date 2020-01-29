@@ -4,7 +4,6 @@ titleSuffix: Azure Stack Hub
 description: Learn how to create a service offering in Azure Stack Hub using offers, plans, and services. 
 author: BryanLa
 ms.author: bryanla
-ms.service: azure-stack
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.reviewer: shriramnat

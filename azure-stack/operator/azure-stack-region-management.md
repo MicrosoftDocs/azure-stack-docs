@@ -1,18 +1,9 @@
 ---
-title: Region management in Azure Stack Hub | Microsoft Docs
+title: Region management in Azure Stack Hub 
 titleSuffix: Azure Stack Hub
 description: Overview of region management in Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.assetid: e94775d5-d473-4c03-9f4e-ae2eada67c6c
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2020
 ms.author: sethm
