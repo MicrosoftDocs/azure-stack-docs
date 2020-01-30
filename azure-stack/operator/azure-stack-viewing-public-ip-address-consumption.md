@@ -18,7 +18,7 @@ ms.lastreviewed: 09/17/2019
 Azure Stack Hub uses a static MAC address pool to automatically generate and assign MAC address to virtual machines (VMs). This MAC address pool is automatically generated during deployment and uses the following range:
 
 - StartMacAddress: 00-1D-D8-B7-00-00
-- EndMacAddress : 00-1D-D8-F4-FF-FF
+- EndMacAddress: 00-1D-D8-F4-FF-FF
 
 > [!Note]  
 > This MAC address pool is the same across each Azure Stack Hub system and is not configurable.
