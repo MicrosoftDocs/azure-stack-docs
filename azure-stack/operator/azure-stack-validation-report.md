@@ -1,7 +1,7 @@
 ---
 title: Azure Stack Hub validation report
 titleSuffix: Azure Stack Hub
-description: Use the Azure Stack Hub Readiness Checker report to review validation results.
+description: Use the Azure Stack Hub Readiness Checker tool to generate a validation report.
 author: ihenkel
 ms.topic: conceptual
 ms.date: 01/07/2020
@@ -12,7 +12,7 @@ ms.lastreviewed: 10/23/2018
 
 # Azure Stack Hub validation report
 
-Use the *Azure Stack Hub readiness checker* tool to run validations that support deployment and servicing of an Azure Stack Hub environment. The tool writes results to a .json report file. The report displays detailed and summarized data about the state of prerequisites for deployment of Azure Stack Hub. The report also displays information about secrets rotation for existing Azure Stack Hub deployments.  
+Use the [Azure Stack Hub Readiness Checker](https://www.powershellgallery.com/packages/Microsoft.AzureStack.ReadinessChecker/1.2002.1111.69) tool to run validations that support deployment and servicing of an Azure Stack Hub environment. The tool writes results to a .json report file. The report displays detailed and summarized data about the state of prerequisites for deployment of Azure Stack Hub. The report also displays information about secrets rotation for existing Azure Stack Hub deployments.  
 
 ## Where to find the report
 
