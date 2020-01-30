@@ -43,4 +43,4 @@ Learn how to leverage foundational patterns and solution examples in your app de
 
 ## Next steps
 
-[Azure hybrid patterns and solutions documentation](../hybrid/)
+[Azure hybrid patterns and solutions documentation](https://docs.microsoft.com/azure-stack/hybrid/)
