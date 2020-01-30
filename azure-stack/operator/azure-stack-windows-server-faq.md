@@ -1,6 +1,7 @@
 ---
-title: Azure Stack Hub Windows Server related FAQs 
-description: List of Azure Stack Hub Marketplace FAQs for Windows Server
+title: Windows Server in Azure Stack Hub Marketplace FAQ
+titleSuffix: Azure Stack Hub
+description: List of Azure Stack Hub Marketplace FAQs for Windows Server.
 author: sethmanheim
 ms.topic: article
 ms.date: 12/27/2019
