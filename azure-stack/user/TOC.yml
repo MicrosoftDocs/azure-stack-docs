@@ -253,6 +253,7 @@
       - name: Deploy a NodeJS web app 
         href: azure-stack-dev-start-howto-vm-nodejs.md
   - name: Deploy foundational patterns
+    href: deploy-foundational-patterns.md
     items:
     - name: Networking patterns
       items: 
@@ -282,7 +283,6 @@
           href: azure-stack-network-howto-iscsi-storage.md
         - name: Extend the datacenter
           href: azure-stack-network-howto-extend-datacenter.md
-    - name: VNET peering
     - name: Back up and recovery
       items:
       - name: Back up your VM on Azure Stack Hub with Commvault
