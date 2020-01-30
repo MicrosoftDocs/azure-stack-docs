@@ -11,7 +11,7 @@ ms.lastreviewed: 06/04/2019
 
 # Network integration planning for Azure Stack Hub
 
-This article provides Azure Stack Hub network infrastructure information to help you decide how to best integrate Azure Stack Hub into your existing networking environment. 
+This article provides Azure Stack Hub network infrastructure information to help you decide how to best integrate Azure Stack Hub into your existing networking environment.
 
 > [!NOTE]
 > To resolve external DNS names from Azure Stack Hub (for example, www\.bing.com), you need to provide DNS servers to forward DNS requests. For more information about Azure Stack Hub DNS requirements, see [Azure Stack Hub datacenter integration - DNS](azure-stack-integrate-dns.md).
