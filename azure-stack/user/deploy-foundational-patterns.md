@@ -43,7 +43,9 @@ Describe why foundational patterns are necessary, the ability to be hybrid of bo
 | ![Back up your VM on Azure Stack Hub with Commvault](media/deploy-foundational-patterns/icon-storage-100-import-export-jobs.svg)<br>[Back up your VM on Azure Stack Hub with Commvault](azure-stack-network-howto-backup-commvault.md) | ![Copy subscription resources](media/deploy-foundational-patterns/icon-storage-94-data-box.svg)<br>[Copy subscription resources](azure-stack-network-howto-backup-replicator.md) |
 |  | ![Back up your storage accounts on Azure Stack Hub](media/deploy-foundational-patterns/icon-storage-93-storage-sync-services.svg)<br>[Back up your storage accounts on Azure Stack Hub](azure-stack-network-howto-backup-storage.md)  |
 
-## GitHub samples for 
+## GitHub samples
+
+You can find the templates in the [Azure Intelligent Edge Patterns GitHub](https://github.com/Azure-Samples/azure-intelligent-edge-patterns) repository.
 
 ## Next steps
 
