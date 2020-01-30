@@ -1,16 +1,8 @@
 ---
-title: Set access permissions using role-based access control | Microsoft Docs
+title: Set access permissions using role-based access control 
 description: Learn how to set access permissions using role-based access control (RBAC) in Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
 author: justinha
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/23/2019
 ms.author: justinha

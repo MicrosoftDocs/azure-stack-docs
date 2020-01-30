@@ -2,18 +2,10 @@
 title: Tenant resource usage APIs reference
 titleSuffix: Azure Stack
 description: Reference for resource usage APIs, which retrieve Azure Stack Hub usage information.
-services: azure-stack
-documentationcenter: ''
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2019
+ms.date: 01/24/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/14/2019
@@ -29,7 +21,7 @@ You can use the Windows PowerShell cmdlet [Get-UsageAggregates](/powershell/modu
 
 ### Request
 
-The request gets consumption details for the requested subscriptions and for the requested time frame. There's no request body.
+The request gets consumption details for the requested subscriptions and for the requested time frame. There is no request body.
 
 | **Method** | **Request URI** |
 | --- | --- |

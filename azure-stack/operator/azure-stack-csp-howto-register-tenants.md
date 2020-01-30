@@ -1,18 +1,10 @@
 ﻿---
-title: Add tenants for usage and billing to Azure Stack Hub | Microsoft Docs
+title: Add tenants for usage and billing to Azure Stack Hub 
 description: Learn how to add a tenant for usage and billing to Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2019
+ms.date: 01/24/2020
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 09/17/2019
@@ -48,7 +40,7 @@ After you've created a record of your customer in Partner Center, you can sell t
 
 ### Create a guest user in the end customer directory
 
-By default, you, as the CSP, won't have access to the end customer's Azure Stack Hub subscription. However, if your customer wants you to manage their resources, they can then add your account as owner/contributor to their Azure Stack Hub subscription. In order to do that, they'll need to add your account as guest user to their Azure AD tenant. It's advised that you use a different account from your Azure CSP account to manage your customer's Azure Stack Hub subscription to ensure you don't lose access to your customer's Azure subscription.
+By default, you, as the CSP, do not have access to the end customer's Azure Stack Hub subscription. However, if your customer wants you to manage their resources, they can then add your account as owner/contributor to their Azure Stack Hub subscription. In order to do that, they must add your account as guest user to their Azure AD tenant. It's advised that you use a different account from your Azure CSP account to manage your customer's Azure Stack Hub subscription to ensure you don't lose access to your customer's Azure subscription.
 
 ### Update the registration with the end customer subscription
 
