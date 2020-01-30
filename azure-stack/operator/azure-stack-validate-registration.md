@@ -20,7 +20,7 @@ Use the Azure Stack Hub Readiness Checker tool (**AzsReadinessChecker**) to vali
 
 For more information about Azure Stack Hub registration, see [Register Azure Stack Hub with Azure](azure-stack-registration.md).
 
-## Get the Readiness Checker Tool
+## Get the Readiness Checker tool
 
 Download the latest version of **AzsReadinessChecker** from the [PowerShell Gallery](https://aka.ms/AzsReadinessChecker).  
 
