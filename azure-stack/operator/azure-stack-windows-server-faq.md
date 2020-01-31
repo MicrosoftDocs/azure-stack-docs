@@ -27,7 +27,7 @@ Next, if any virtual machine scale sets refer to a specific version, you should 
 
 Microsoft offers two versions of Windows Server images through Azure Stack Hub Marketplace. Only one version of this image can be used in an Azure Stack Hub environment.  
 
-- **Pay as you use**: These images run the full price Windows meters.
+- **Pay as you go (PAYG)**: These images run the full price Windows meters.
    Who should use this option: Enterprise Agreement (EA) customers who use the *Consumption billing model*; CSPs who don't want to use SPLA licensing.
 - **Bring Your Own License (BYOL)**: These images run basic meters.
    Who should use this option: EA customers with a Windows Server license; CSPs who use SPLA licensing.
@@ -42,7 +42,7 @@ If you download both versions of the image, only the latest version is visible t
 
 ### What if my user incorrectly checked the "I have a license" box in previous Windows builds, and they don't have a license?
 
-You can change the license model attribute to switch from bring your own license (BYOL) to the pay-as-you-go (PAYG) model by running the following script:
+You can change the license model attribute to switch from BYOL to the PAYG model by running the following script:
 
 ```powershell
 $vm= Get-Azurermvm -ResourceGroup "<your RG>" -Name "<your VM>"
@@ -50,7 +50,7 @@ $vm.LicenseType = "None"
 Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
 ```
 
-You can check the license type of your VM by running the following commands. If the license model says **Windows_Server**, you'll be charged for the BYOL price, otherwise you'll be charged for the Windows meter per the PAYG model:
+You can check the license type of your VM by running the following commands. If the license model says **Windows_Server**, you'll be charged for the BYOL price. Otherwise, you'll be charged for the Windows meter per the PAYG model:
 
 ```powershell
 $vm | ft Name, VmId,LicenseType,ProvisioningState
@@ -58,7 +58,7 @@ $vm | ft Name, VmId,LicenseType,ProvisioningState
 
 ### What if I have an older image and my user forgot to check the "I have a license" box, or we use our own images and we do have Enterprise Agreement entitlement?
 
-You can change the license model attribute to the bring your own license model by running the following commands:
+You can change the license model attribute to the BYOL model by running the following commands:
 
 ```powershell
 $vm= Get-Azurermvm -ResourceGroup "<your RG>" -Name "<your VM>"
@@ -68,9 +68,9 @@ Update-AzureRmVM -ResourceGroupName "<your RG>" -VM $vm
 
 ### What about other VMs that use Windows Server, such as SQL or Machine Learning Server?
 
-These images do apply the **licenseType** parameter, so they're pay as you use. You can set this parameter (see the previous FAQ answer). This only applies to the Windows Server software, not to layered products such as SQL, which require you to bring your own license. Pay as you use licensing doesn't apply to layered software products.
+These images do apply the **licenseType** parameter, so they're PAYG. You can set this parameter (see the previous FAQ answer). This only applies to the Windows Server software, not to layered products such as SQL, which require you to bring your own license. PAYG licensing doesn't apply to layered software products.
 
-Note that you can only change the **licenseType** property for SQL Server images from Azure Stack Hub Marketplace if the version is XX.X.20190410 or higher. If you're running an older version of the SQL Server images from Azure Stack Hub Marketplace, you can't change the **licenseType** attribute and you must redeploy using the latest SQL Server images from Azure Stack Hub Marketplace.
+You can only change the **licenseType** property for SQL Server images from Azure Stack Hub Marketplace if the version is XX.X.20190410 or higher. If you're running an older version of the SQL Server images from Azure Stack Hub Marketplace, you can't change the **licenseType** attribute and you must redeploy using the latest SQL Server images from Azure Stack Hub Marketplace.
 
 ### I have an Enterprise Agreement (EA) and will be using my EA Windows Server license; how do I make sure images are billed correctly?
 
