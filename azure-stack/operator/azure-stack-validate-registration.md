@@ -1,6 +1,7 @@
 ---
-title: Validate Azure registration for Azure Stack Hub 
-description: Use the Azure Stack Hub Readiness Checker to validate Azure registration.
+title: Validate Azure registration
+titleSuffix: Azure Stack Hub
+description: Learn how to validate Azure registration with the Azure Stack Hub Readiness Checker tool.
 author: ihenkel
 ms.topic: conceptual
 ms.date: 10/03/2019
@@ -19,7 +20,7 @@ Use the Azure Stack Hub Readiness Checker tool (**AzsReadinessChecker**) to vali
 
 For more information about Azure Stack Hub registration, see [Register Azure Stack Hub with Azure](azure-stack-registration.md).
 
-## Get the readiness checker tool
+## Get the Readiness Checker tool
 
 Download the latest version of **AzsReadinessChecker** from the [PowerShell Gallery](https://aka.ms/AzsReadinessChecker).  
 
@@ -31,19 +32,17 @@ The following prerequisites are required:
 
 - Windows 10 or Windows Server 2016, with internet connectivity.
 - PowerShell 5.1 or later. To check your version, run the following PowerShell cmdlet and then review the **Major** and **Minor** versions:  
-
   ```powershell
   $PSVersionTable.PSVersion
   ```
-
 - [PowerShell configured for Azure Stack Hub](azure-stack-powershell-install.md).
 - The latest version of the [Microsoft Azure Stack Hub Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.  
 
-### Azure Active Directory environment
+### Azure Active Directory (AAD) environment
 
-- Identify the username and password for an account that is an owner for the Azure subscription you will use with Azure Stack Hub.  
-- Identify the subscription ID for the Azure subscription you will use.
-- Identify the **AzureEnvironment** you will use. Supported values for the environment name parameter are **AzureCloud**, **AzureChinaCloud**, or **AzureUSGovernment**, depending on which Azure subscription you are using.
+- Identify the username and password for an account that's an owner for the Azure subscription you'll use with Azure Stack Hub.  
+- Identify the subscription ID for the Azure subscription you'll use.
+- Identify the **AzureEnvironment** you'll use. Supported values for the environment name parameter are **AzureCloud**, **AzureChinaCloud**, or **AzureUSGovernment**, depending on which Azure subscription you're using.
 
 ## Steps to validate the Azure registration
 
@@ -53,7 +52,7 @@ The following prerequisites are required:
    Install-Module Microsoft.AzureStack.ReadinessChecker -Force
    ```
 
-2. From the PowerShell prompt, run the following command to set `$registrationCredential` as the account that is the subscription owner. Replace `subscriptionowner@contoso.onmicrosoft.com` with your account and tenant name:
+2. From the PowerShell prompt, run the following command to set `$registrationCredential` as the account that's the subscription owner. Replace `subscriptionowner@contoso.onmicrosoft.com` with your account and tenant name:
 
    ```powershell
    $registrationCredential = Get-Credential subscriptionowner@contoso.onmicrosoft.com -Message "Enter Credentials for Subscription Owner"
@@ -62,7 +61,7 @@ The following prerequisites are required:
    > [!NOTE]
    > As a CSP, when using a shared services or IUR subscription, you must provide the credentials of a user from that respective Azure AD. Usually this will be similar to `subscriptionowner@iurcontoso.onmicrosoft.com`. That user must have the appropriate credentials, as described in the previous step.
 
-3. From the PowerShell prompt, run the following to set `$subscriptionID` as the Azure subscription to use. Replace `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` with your own subscription ID:
+3. From the PowerShell prompt, run the following command to set `$subscriptionID` as the Azure subscription to use. Replace `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` with your own subscription ID:
 
    ```powershell
    $subscriptionID = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -71,8 +70,7 @@ The following prerequisites are required:
 4. From the PowerShell prompt, run the following command to start validation of your subscription:
 
    - Specify the value for `AzureEnvironment` as **AzureCloud**, **AzureGermanCloud**, or **AzureChinaCloud**.  
-   - Provide your Azure Active Directory administrator and your Azure Active Directory tenant name.
-
+   - Provide your Azure AD administrator and your Azure AD tenant name.
       ```powershell
       Invoke-AzsRegistrationValidation -RegistrationAccount $registrationCredential -AzureEnvironment AzureCloud -RegistrationSubscriptionID $subscriptionID
       ```
@@ -93,7 +91,7 @@ Each time validation runs, it logs results to **AzsReadinessChecker.log** and **
 
 These files can help you share validation status before you deploy Azure Stack Hub or investigate validation problems. Both files persist the results of each subsequent validation check. The report provides your deployment team confirmation of the identity configuration. The log file can help your deployment or support team investigate validation issues.
 
-By default, both files are written to **C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json**.  
+By default, both files are written to `C:\Users\username\AppData\Local\Temp\AzsReadinessChecker\AzsReadinessCheckerReport.json`.  
 
 - Use the `-OutputPath <path>` parameter at the end of the run command line to specify a different report location.
 - Use the `-CleanReport` parameter at the end of the run command to clear information about previous runs of the tool from **AzsReadinessCheckerReport.json**.
@@ -140,7 +138,7 @@ Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadines
 Invoke-AzsRegistrationValidation Completed
 ```
 
-**Cause** - The account cannot sign in, because the password is either expired or is temporary.
+**Cause** - The account can't sign in because the password is either expired or temporary.
 
 **Resolution** - In PowerShell, run the following command and follow the prompts to reset the password.
 
@@ -148,7 +146,7 @@ Invoke-AzsRegistrationValidation Completed
 Login-AzureRMAccount
 ```
 
-Alternatively, sign in to the [Azure portal](https://portal.azure.com) as the account owner, and the user will be forced to change the password.
+Another way is to sign in to the [Azure portal](https://portal.azure.com) as the account owner, and the user will be forced to change the password.
 
 ### Unknown user type  
 
@@ -163,7 +161,7 @@ Report location (contains PII): C:\Users\username\AppData\Local\Temp\AzsReadines
 Invoke-AzsRegistrationValidation Completed
 ```
 
-**Cause** - The account cannot sign in to the specified Azure Active Directory environment. In this example, **AzureChinaCloud** is specified as the **AzureEnvironment**.  
+**Cause** - The account can't sign in to the specified Azure AD environment. In this example, **AzureChinaCloud** is specified as the **AzureEnvironment**.  
 
 **Resolution** - Confirm that the account is valid for the specified Azure environment. In PowerShell, run the following command to verify the account is valid for a specific environment:
 
