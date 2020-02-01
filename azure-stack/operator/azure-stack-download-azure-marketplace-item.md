@@ -66,7 +66,7 @@ The marketplace syndication tool can also be used in a connected scenario.
 There are two parts to this scenario:
 
 - **Part 1**: Download from Marketplace items. On the computer with internet access, you configure PowerShell, download the syndication tool, and then download items from Azure Marketplace.
-- **Part 2**: Upload and publish to Azure Stack Hub Marketplace. You move the files you downloaded to your Azure Stack Hub environment, import them to Azure Stack Hub, and then publish them to Azure Stack Hub Marketplace.
+- **Part 2**: Upload and publish to Azure Stack Hub Marketplace. You move the files you downloaded to your Azure Stack Hub environment and then publish them to Azure Stack Hub Marketplace.
 
 ### Prerequisites
 
@@ -82,26 +82,28 @@ There are two parts to this scenario:
 
   - To enable import of a downloaded marketplace item, the [PowerShell environment for the Azure Stack Hub operator](azure-stack-powershell-configure-admin.md) must be configured.
 
-  - Clone the [Azure Stack Hub tools](https://github.com/Azure/AzureStack-Tools) GitHub repo.
+- Download the Azs.Syndication.Admin Module from the PowerShell Gallery using the command below
+  ```
+  Install-Module -Name Azs.Syndication.Admin
+  ```
 
-- You must have a [storage account](azure-stack-manage-storage-accounts.md) in Azure Stack Hub that has a publicly accessible container (which is a storage blob). You use the container as temporary storage for the marketplace items gallery files. If you're not familiar with storage accounts and containers, see [Work with blobs - Azure portal](/azure/storage/blobs/storage-quickstart-blobs-portal) in the Azure documentation.
-
-- The marketplace syndication tool is downloaded during the first procedure.
-
-- You can install [AzCopy](/azure/storage/common/storage-use-azcopy) for optimal download performance, but it's not required.
-
-Once you have registered, you can disregard the following message that appears on the Marketplace management blade, as this is not relevant for the disconnected use case:
+Once you have registered your Azure Stack, you can disregard the following message that appears on the Marketplace management blade, as this is not relevant for the disconnected use case:
 
 ![Marketplace management](media/azure-stack-download-azure-marketplace-item/toolsmsg.png)
 
 ### Use the marketplace syndication tool to download marketplace items
 
 > [!IMPORTANT]
-> Be sure to download the marketplace syndication tool each time you download marketplace items in a disconnected scenario. Frequent changes are made to this script and the most current version should be used for each download.
+> Be sure to download the marketplace syndication tool each time you download marketplace items in a disconnected scenario. Frequent changes are made to this tool and the most current version should be used for each download.
 
 1. On a computer with an Internet connection, open a PowerShell console as an administrator.
 
-2. Add the Azure account that you've used to register Azure Stack Hub. To add the account, in PowerShell run **Add-AzureRmAccount** without any parameters. You are prompted to enter your Azure account credentials and you might have to use two-factor authentication, depending on your account configuration.
+2. Sign in to the appropriate Azure cloud and AAD Directory Tenant using the Azure account that you've used to register Azure Stack Hub. To add the account, in PowerShell run **Add-AzureRmAccount**. 
+
+```powershell  
+Login-AzureRmAccount -Environment AzureCloud -Tenant '<mydirectory>.onmicrosoft.com'
+```
+You are prompted to enter your Azure account credentials and you might have to use two-factor authentication, depending on your account configuration.
 
    > [!NOTE]
    > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Add-AzureRmAccount**: **Remove-AzureRmAccount-Scope Process**.
@@ -110,81 +112,55 @@ Once you have registered, you can disregard the following message that appears o
 
    ```powershell  
    Get-AzureRmSubscription -SubscriptionID 'Your Azure Subscription GUID' | Select-AzureRmSubscription
-   $AzureContext = Get-AzureRmContext
    ```
 
-4. Download the latest version of the marketplace syndication tool by using the following script:
+4. If you haven't done it in the pre-requisites step already, download the latest version of the marketplace syndication tool
 
    ```powershell
-   # Download the tools archive.
-   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-   invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/master.zip `
-     -OutFile master.zip
-
-   # Expand the downloaded files.
-   expand-archive master.zip `
-     -DestinationPath `
-     -Force
-
-   # Change to the tools directory.
-   cd .\AzureStack-Tools-master
+   Install-Module -Name Azs.Syndication.Admin
    ```
 
-5. Import the syndication module and then launch the tool by running the following command:
-
-   ```powershell  
-   Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
-   ```
-
-6. To export Marketplace items such as VM images, extensions, or solution templates, run the following command. Replace the destination folder path with a location to store the files you download from Azure Marketplace:
+5. To select the Marketplace items such as VM images, extensions, or solution templates to download, run the following command. 
 
    ```powershell
-   Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes" -azCopyDownloadThreads "[optional - AzCopy threads number]" -azureContext $AzureContext
+   $products = Select-AzsMarketplaceItem
    ```
+  * This will first pop up a Powershell Grid listing all the Azure Stack Registrations available in the selected subscription. Pick the registration that matches the Azure Stack environment you're downloading the marketplace items for and click OK.
 
-   To export resource providers or PaaS services, run the following command:
+     ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/selectRegistration.png)
 
-   ```powershell
-   Export-AzSOfflineResourceProvider -destination "Destination folder path" -azCopyDownloadThreads "AzCopy threads number" -azureContext $AzureContext
-   ```
-
-   The `-azCopyDownloadThreads` parameter is optional. It should only be used when you have a low-bandwidth network, and you are using premium download. This option specifies the number of concurrent operations in AzCopy. If you are running a low-bandwidth network, you can specify a lower number to avoid failure caused by resource competition. You can see more details in [this Azure article](/previous-versions/azure/storage/storage-use-azcopy#specify-the-number-of-concurrent-operations-to-start).
-
-   The `-azureContext` parameter is also optional. If you do not specify the Azure context, then the cmdlet will use the default Azure context.
-
-7. When the tool runs, you should see a screen similar to the following image, with the list of available Azure Marketplace items:
-
-   ![Marketplace items](media/azure-stack-download-azure-marketplace-item/tool1.png)
-
-8. If more than one version of a Marketplace item is available, the **Version** column shows **Multiple versions**. If the version of an item is shown as **Multiple versions**, you can select that item and then choose a specific version from the resulting version selector window.
-
-9. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images. You reference the *version* when you import the item in the next procedure.
-
+  * You should now see a second PowerShell Grid listing all the marketplace items available for download. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images.
+     ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/selectProducts.png)
+  
     You can also filter the list of images by using the **Add criteria** option.
+     ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/selectProductswithFilter.png)
 
-10. If you have not installed the Azure Storage tools, you will get the following message. In order to install these tools, make sure you download [AzCopy](/azure/storage/common/storage-use-azcopy#download-azcopy):
+    Once you've made your selections. Click OK.
 
-    ![Storage tools](media/azure-stack-download-azure-marketplace-item/vmnew1.png)
+6. The Ids for the marketplace items you've selected for download is saved in the  `$products` variable. Use the command below to begin downloading the selected items. Replace the destination folder path with a location to store the files you download from Azure Marketplace:
 
-11. Select **OK**, and then review and accept the legal terms.
+    ```powershell
+    $products | Export-AzsMarketplaceItem  -RepositoryDir "Destination folder path in quotes"
+    ```
 
-12. The time that the download takes depends on the size of the item. After the download completes, the item is available in the folder that you specified in the script. The download includes a VHD file (for virtual machines), or a .zip file (for virtual machine extensions and resource providers). It might also include a gallery package in the *.azpkg* format, which is simply a .zip file.
+7. The time that the download takes depends on the size of the item. After the download completes, the item is available in the folder that you specified in the script. The download includes a VHD file (for virtual machines), or a .zip file (for virtual machine extensions and resource providers). It might also include a gallery package in the *.azpkg* format, which is simply a .zip file.
 
-13. If the download fails, you can try again by re-running the following PowerShell cmdlet:
+8. If the download fails, you can try again by re-running the following PowerShell cmdlet:
 
-   ```powershell
-   # for Marketplace items
-   Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes"
+    ```powershell
+    $products | Export-AzsMarketplaceItem  -RepositoryDir "Destination folder path in quotes"
+    ```
+9. You should also export the Azs.Syndication.Admin module locally so that you can copy it over to the machine, from which you are importing marketplace items to Azure Stack Hub.
+> [!NOTE]
+   > The destination folder for exporting this module should be different from the location to which you have exported the marketplace items.
 
-   # for Resource providers
-   Export-AzSOfflineResourceProvider -Destination "Destination folder path in quotes"
-   ```
-
-   Before retrying, remove the product folder in which the download failed. For example, if the download script fails when downloading to **D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1**, remove the **D:\downloadFolder\microsoft.customscriptextension-arm-1.9.1** folder, then rerun the cmdlet.
+    ```powershell
+    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name Azs.Syndication.Admin -Path "Destination folder path in quotes" -Force
+    ```
 
 ### Import the download and publish to Azure Stack Hub Marketplace using PowerShell
 
-1. You must move the files that you have [previously downloaded](#use-the-marketplace-syndication-tool-to-download-marketplace-items) locally so that they are available to your Azure Stack Hub environment. The marketplace syndication tool must also be available to your Azure Stack Hub environment because you need to use the tool to perform the import operation.
+1. You must move the files that you have [previously downloaded](#use-the-marketplace-syndication-tool-to-download-marketplace-items) locally to a machine that has connectivity to your Azure Stack Hub environment. The marketplace syndication tool must also be available to your Azure Stack Hub environment because you need to use the tool to perform the import operation.
 
    The following image shows a folder structure example. **D:\downloadfolder** contains all the downloaded marketplace items. Each subfolder is a marketplace item (for example, **microsoft.custom-script-linux-arm-2.0.3**), named by the product ID. Inside each subfolder is the marketplace item's downloaded content.
 
@@ -192,18 +168,12 @@ Once you have registered, you can disregard the following message that appears o
 
 2. Follow the instructions in [this article](azure-stack-powershell-configure-admin.md) to configure the Azure Stack Hub Operator PowerShell session.
 
-3. Import the syndication module and then launch the marketplace syndication tool by running the following script:
+3. Login to your Azure Stack Hub with an identity that has owner access to the "Default Provider Subscription".
 
-   ```powershell
-   $credential = Get-Credential -Message "Enter the Azure Stack Hub operator credential:"
-   Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -AzsCredential $credential
-   ```
+4. Import the syndication module and then launch the marketplace syndication tool by running the following script:
 
-   The `-origin` parameter specifies the top-level folder that contains all the downloaded products; for example, `"D:\downloadfolder"`.
+    ```powershell
+    Import-AzsMarketplaceItem -RepositoryDir "Source folder path in quotes"
+    ```
 
-   The `-AzsCredential` parameter is optional. It's used to renew the access token, if it has expired. If the `-AzsCredential` parameter isn't specified and the token expires, you receive a prompt to enter the operator credentials.
-
-   > [!NOTE]
-   > AD FS only supports interactive authentication with user identities. If a credential object is required, you must use a service principal (SPN). For more information about setting up a service principal with Azure Stack Hub and AD FS as your identity management service, see [Manage an AD FS service principal](azure-stack-create-service-principals.md#manage-an-ad-fs-service-principal).
-
-4. After the script successfully completes, the item should be available in Azure Stack Hub Marketplace.
+4. After the script successfully completes, the marketplace items should be available in Azure Stack Hub Marketplace.
