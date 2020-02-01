@@ -98,7 +98,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
 
 1. On a computer with an Internet connection, open a PowerShell console as an administrator.
 
-2. Sign in to the appropriate Azure cloud and AAD Directory Tenant using the Azure account that you've used to register Azure Stack Hub. To add the account, in PowerShell run **Add-AzureRmAccount**. 
+2. Sign in to the appropriate Azure cloud and AzureAD Directory Tenant using the Azure account that you've used to register Azure Stack Hub. To add the account, in PowerShell run **Add-AzureRmAccount**. 
 
 ```powershell  
 Login-AzureRmAccount -Environment AzureCloud -Tenant '<mydirectory>.onmicrosoft.com'
@@ -125,7 +125,7 @@ You are prompted to enter your Azure account credentials and you might have to u
    ```powershell
    $products = Select-AzsMarketplaceItem
    ```
-  * This will first pop up a Powershell Grid listing all the Azure Stack Registrations available in the selected subscription. Pick the registration that matches the Azure Stack environment you're downloading the marketplace items for and click OK.
+  * This will first display a Powershell Grid listing all the Azure Stack Registrations available in the selected subscription. Pick the registration that matches the Azure Stack environment you're downloading the marketplace items for and select OK.
 
      ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/selectRegistration.png)
 
@@ -135,7 +135,7 @@ You are prompted to enter your Azure account credentials and you might have to u
     You can also filter the list of images by using the **Add criteria** option.
      ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/selectProductswithFilter.png)
 
-    Once you've made your selections. Click OK.
+    Once you've made your selections, select OK.
 
 6. The Ids for the marketplace items you've selected for download is saved in the  `$products` variable. Use the command below to begin downloading the selected items. Replace the destination folder path with a location to store the files you download from Azure Marketplace:
 
@@ -176,4 +176,4 @@ You are prompted to enter your Azure account credentials and you might have to u
     Import-AzsMarketplaceItem -RepositoryDir "Source folder path in quotes"
     ```
 
-4. After the script successfully completes, the marketplace items should be available in Azure Stack Hub Marketplace.
+5. After the script successfully completes, the marketplace items should be available in Azure Stack Hub Marketplace.
