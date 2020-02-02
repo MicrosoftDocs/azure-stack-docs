@@ -114,7 +114,7 @@ You are prompted to enter your Azure account credentials and you might have to u
    Get-AzureRmSubscription -SubscriptionID 'Your Azure Subscription GUID' | Select-AzureRmSubscription
    ```
 
-4. If you haven't done it in the pre-requisites step already, download the latest version of the marketplace syndication tool
+4. If you haven't done it in the pre-requisites step already, download the latest version of the marketplace syndication tool:
 
    ```powershell
    Install-Module -Name Azs.Syndication.Admin
