@@ -204,7 +204,7 @@
         items:
         - name: AKS engine
           items:
-          - name: AKS Engine on Azure Stack Hub
+          - name: AKS engine on Azure Stack Hub
             href: azure-stack-kubernetes-aks-engine-overview.md
           - name: Support policy
             href: azure-stack-kubernetes-aks-engine-support.md 
