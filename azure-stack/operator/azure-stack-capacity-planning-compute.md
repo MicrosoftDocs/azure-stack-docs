@@ -20,24 +20,15 @@ The [virtual machine (VM) sizes](https://docs.microsoft.com/azure-stack/user/azu
 
 The Azure Stack Hub placement engine places tenant VMs across the available hosts.
 
-Azure Stack Hub uses two considerations when placing VMs. One, is enough memory on the host for that VM type. Two, are the VMs a part of an [availability set](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) or are [virtual machine scale sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
+Azure Stack Hub uses two considerations when placing VMs. One, is there enough memory on the host for that VM type? And two, are the VMs a part of an [availability set](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability) or are they [virtual machine scale sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview)?
 
-To achieve high availability of a multi-VM production system in Azure Stack Hub, VMs are placed in an availability set that spreads them across multiple fault domains. 
-A fault domain in an availability set is defined as a single node in the scale unit. 
-Azure Stack Hub supports having an availability set with a maximum of three fault domains to be consistent with Azure. 
-VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains, that is, Azure Stack Hub hosts. 
-If there is a hardware failure, VMs from the failed fault domain will be restarted in other fault domains, but, if possible, kept in separate fault domains from the other VMs in the same availability set. 
-When the host comes back online, VMs will be rebalanced to maintain high availability.  
+To achieve high availability of a multi-VM production system in Azure Stack Hub, virtual machines (VMs) are placed in an availability set that spreads them across multiple fault domains. A fault domain in an availability set is defined as a single node in the scale unit. Azure Stack Hub supports having an availability set with a maximum of three fault domains to be consistent with Azure. VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack Hub hosts). If there's a hardware failure, VMs from the failed fault domain will be restarted in other fault domains, but, if possible, kept in separate fault domains from the other VMs in the same availability set. When the host comes back online, VMs will be rebalanced to maintain high availability.  
 
-Virtual machine scale sets use availability sets on the back end and make sure each virtual machine scale set instance is placed in a different fault domain. 
-This means they use separate Azure Stack Hub infrastructure nodes. 
-For example, in a four node Azure Stack Hub system, there may be a situation where a virtual machine scale set of three instances will fail at creation due to the lack of the 4-node capacity to place three virtual machine scale set instances on three separate Azure Stack Hub nodes. 
-In addition, Azure Stack Hub nodes can be filled up at varying levels prior to trying placement. 
+Virtual machine scale sets use availability sets on the back end and make sure each virtual machine scale set instance is placed in a different fault domain. This means they use separate Azure Stack Hub infrastructure nodes. For example, in a four-node Azure Stack Hub system, there may be a situation where a virtual machine scale set of three instances will fail at creation due to the lack of the four-node capacity to place three virtual machine scale set instances on three separate Azure Stack Hub nodes. In addition, Azure Stack Hub nodes can be filled up at varying levels prior to trying placement.
 
-Azure Stack Hub doesn't over-commit memory. However, an over-commit of the number of physical cores is allowed. 
+Azure Stack Hub doesn't over-commit memory. However, an over-commit of the number of physical cores is allowed.
 
-Since placement algorithms don't look at the existing virtual to physical core over-provisioning ratio as a factor, each host could have a different ratio. 
-As Microsoft, we don't provide guidance on the physical-to-virtual core ratio because of the variation in workloads and service level requirements. 
+Since placement algorithms don't look at the existing virtual to physical core over-provisioning ratio as a factor, each host could have a different ratio. As Microsoft, we don't provide guidance on the physical-to-virtual core ratio because of the variation in workloads and service level requirements. 
 
 ## Consideration for total number of VMs 
 
