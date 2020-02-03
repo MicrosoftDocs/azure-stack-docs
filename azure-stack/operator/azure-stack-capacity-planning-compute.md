@@ -24,17 +24,17 @@ Azure Stack Hub uses two considerations when placing VMs. One, is there enough m
 
 To achieve high availability of a multi-VM production system in Azure Stack Hub, virtual machines (VMs) are placed in an availability set that spreads them across multiple fault domains. A fault domain in an availability set is defined as a single node in the scale unit. Azure Stack Hub supports having an availability set with a maximum of three fault domains to be consistent with Azure. VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack Hub hosts). If there's a hardware failure, VMs from the failed fault domain will be restarted in other fault domains, but, if possible, kept in separate fault domains from the other VMs in the same availability set. When the host comes back online, VMs will be rebalanced to maintain high availability.  
 
-Virtual machine scale sets use availability sets on the back end and make sure each virtual machine scale set instance is placed in a different fault domain. This means they use separate Azure Stack Hub infrastructure nodes. For example, in a four-node Azure Stack Hub system, there may be a situation where a virtual machine scale set of three instances will fail at creation due to the lack of the four-node capacity to place three virtual machine scale set instances on three separate Azure Stack Hub nodes. In addition, Azure Stack Hub nodes can be filled up at varying levels prior to trying placement.
+Virtual machine scale sets use availability sets on the back end and make sure each virtual machine scale set instance is placed in a different fault domain. This means they use separate Azure Stack Hub infrastructure nodes. For example, in a four-node Azure Stack Hub system, there may be a situation where a virtual machine scale set of three instances will fail at creation due to the lack of the four-node capacity to place three virtual machine scale set instances on three separate Azure Stack Hub nodes. In addition, Azure Stack Hub nodes can be filled up at varying levels before trying placement.
 
 Azure Stack Hub doesn't over-commit memory. However, an over-commit of the number of physical cores is allowed.
 
-Since placement algorithms don't look at the existing virtual to physical core over-provisioning ratio as a factor, each host could have a different ratio. As Microsoft, we don't provide guidance on the physical-to-virtual core ratio because of the variation in workloads and service level requirements. 
+Since placement algorithms don't look at the existing virtual to physical core over-provisioning ratio as a factor, each host could have a different ratio. As Microsoft, we don't provide guidance on the physical-to-virtual core ratio because of the variation in workloads and service level requirements.
 
-## Consideration for total number of VMs 
+## Consideration for total number of VMs
 
-There is a new consideration for accurately planning Azure Stack Hub capacity. With the 1901 update (and every update going forward), there is now a limit on the total number of virtual machines that can be created. This limit is intended to be temporary to avoid solution instability. The source of the stability issue, at higher numbers of VMs, is being addressed but a specific timeline for remediation has not yet been determined. There is now a per server limit of 60 VMs with a total solution limit of 700. For example, an 8 server Azure Stack Hub VM limit would be 480 (8 * 60). For a 12 to 16 server Azure Stack Hub solution, the limit would be 700. This limit has been created keeping all the compute capacity considerations in mind, such as the resiliency reserve and the CPU virtual to physical ratio that an operator would like to maintain on the stamp. For more information, see the new release of the capacity planner. 
+There's a new consideration for accurately planning Azure Stack Hub capacity. With the 1901 update (and every update going forward), there's now a limit on the total number of VMs that can be created. This limit is intended to be temporary to avoid solution instability. The source of the stability issue, at higher numbers of VMs, is being addressed but a specific timeline for remediation hasn't been determined. There's now a per-server limit of 60 VMs with a total solution limit of 700. For example, an 8 server Azure Stack Hub VM limit would be 480 (8 * 60). For a 12 to 16 server Azure Stack Hub solution, the limit would be 700. This limit has been created keeping all the compute capacity considerations in mind, such as the resiliency reserve and the CPU virtual-to-physical ratio that an operator would like to maintain on the stamp. For more information, see the new release of the capacity planner.
 
-In the event that the VM scale limit has been reached, the following error codes would be returned as a result: VMsPerScaleUnitLimitExceeded, VMsPerScaleUnitNodeLimitExceeded.
+If the VM scale limit is reached, the following error codes are returned as a result: VMsPerScaleUnitLimitExceeded, VMsPerScaleUnitNodeLimitExceeded.
 
 ## Considerations for deallocation
 
@@ -44,15 +44,11 @@ If the deallocated VM is then started again, the memory usage or allocation is t
 
 If there is no available memory, then the VM will not start.
 
-## Azure Stack Hub memory 
+## Azure Stack Hub memory
 
-Azure Stack Hub is designed to keep VMs running that have been successfully provisioned. 
-For example, if a host is offline because of a hardware failure, Azure Stack Hub will attempt to restart that VM on another host. 
-The second example is patch and update of the Azure Stack Hub software. 
-If there is a need to reboot a physical host, an attempt is made to move the VMs executing on that host to another available host in the solution.   
+Azure Stack Hub is designed to keep VMs running that have been successfully provisioned. For example, if a host is offline because of a hardware failure, Azure Stack Hub will attempt to restart that VM on another host. The second example is patch and update of the Azure Stack Hub software. If there is a need to reboot a physical host, an attempt is made to move the VMs executing on that host to another available host in the solution.
 
-This VM management or movement can only be achieved if there is reserved memory capacity to allow for the restart or migration to occur. 
-A portion of the total host memory is reserved and unavailable for tenant VM placement. 
+This VM management or movement can only be achieved if there is reserved memory capacity to allow for the restart or migration to occur. A portion of the total host memory is reserved and unavailable for tenant VM placement.
 
 You can review a pie chart in the Administration portal that shows the free and used memory in Azure Stack Hub. The following diagram shows the physical memory capacity on an Azure Stack Hub scale unit in the Azure Stack Hub:
 
