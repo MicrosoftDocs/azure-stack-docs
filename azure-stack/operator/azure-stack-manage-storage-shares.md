@@ -9,7 +9,7 @@ ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/19/2019
 
-# Intent: As a cloud operator, I want to understand where to find information about operation status of storage resources and resolve issues in order to maintain continuity of service for my the users that I support.
+# Intent: As a cloud operator, I want to understand where to find information about the operation status of storage resources and resolve issues in order to maintain continuity of service for my the users that I support.
 
 # Keywords: Azure Stack Hub capacity infrastructure, troubleshoot storage for Azure Stack Hub
 
@@ -17,17 +17,17 @@ ms.lastreviewed: 03/19/2019
 
 # Manage storage capacity for Azure Stack Hub
 
-The information in this article helps the Azure Stack Hub cloud operator monitor and manage the storage capacity of their Azure Stack Hub deployment. The Azure Stack Hub storage infrastructure allocates a subset of the total storage capacity of the Azure Stack Hub deployment to be used for *storage services*. The storage services store a tenant's data in shares on volumes that correspond to the nodes of the deployment.
+This article is intended to help the Azure Stack Hub cloud operators monitor and manage the storage capacity of their Azure Stack Hub deployment. The Azure Stack Hub storage infrastructure allocates a subset of the total storage capacity of the Azure Stack Hub deployment to be used for *storage services*. Storage services store a tenant's data in shares on volumes that correspond to the nodes of the deployment.
 
 As a cloud operator, you have a limited amount of storage to work with. The amount of storage is defined by the solution you implement. Your solution is provided by your OEM vendor when you use a multinode solution, or by the hardware on which you install the Azure Stack Development Kit (ASDK).
 
 Because Azure Stack Hub doesn't support expansion of storage capacity, it's important to [monitor](#monitor-shares) the available storage to ensure that efficient operations are maintained.
 
-When the remaining free capacity of a share becomes limited, plan to [manage space](#manage-available-space) to prevent the shares from running out of capacity.
+When the remaining free capacity of a share becomes limited, plan to [manage the available space](#manage-available-space) to prevent the shares from running out of capacity.
 
-Options to manage capacity include:
-- Reclaim capacity
-- Migrate a container
+Your options for managing capacity include:
+- Reclaiming capacity
+- Migrating a container
 
 When a share is 100 percent utilized, the storage service no longer functions for that share. To get assistance in restoring operations for the share, contact Microsoft support.
 
@@ -35,14 +35,14 @@ When a share is 100 percent utilized, the storage service no longer functions fo
 ### Volumes and shares
 The *storage service* partitions the available storage into separate, equal volumes that are allocated to hold tenant data. The number of volumes is equal to the number of nodes in the Azure Stack Hub deployment:
 
-- On a four-node deployment, there are four volumes. Each volume has a single share. On a multinode deployment, the number of shares isn't reduced if a node is removed or malfunctioning.
+- On a four-node deployment, there are four volumes. Each volume has a single share. On a multinode deployment, the number of shares isn't reduced if a node is removed or it malfunctions.
 - If you use the ASDK, there's a single volume with a single share.
 
 Because the storage service shares are for the exclusive use of storage services, you must not directly modify, add, or remove any files on the shares. Only storage services should work on the files stored in these volumes.
 
-Shares on volumes hold tenant data. Tenant data includes page blobs, block blobs, append blobs, tables, queues, databases, and related metadata stores. Because the storage objects (blobs, and so on) are individually contained within a single share, the maximum size of each object can't exceed the size of a share. The maximum size of new objects depends on the capacity that remains in a share as unused space when that new object is created.
+Shares on volumes hold tenant data. Tenant data includes page blobs, block blobs, append blobs, tables, queues, databases, and related metadata stores. Because the storage objects (blobs, and so on) are individually contained within a single share, the maximum size of each object can't exceed the size of a share. The maximum size of a new object depends on the capacity that remains in a share as unused space when the new object is created.
 
-When a share is low on free space and actions to [reclaim](#reclaim-capacity) space aren't successful or available, the Azure Stack Hub cloud operator can migrate the blob containers from one share to another.
+When a share is low on free space and actions to [reclaim](#reclaim-capacity) space aren't successful or available, Azure Stack Hub cloud operators can migrate the blob containers from one share to another.
 
 - For information about how tenant users work with Azure Blob storage in Azure Stack Hub, see [Azure Stack Hub Storage services](/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services).
 
@@ -52,7 +52,7 @@ Tenant users create containers that are then used to store blob data. Although u
 
 After a blob is placed in a container, the blob can grow to use more space. As you add new blobs and existing blobs grow, the available space in the volume that holds the container shrinks.  
 
-Containers aren't limited to a single share. When the combined blob data in a container grows to use 80 percent or more of the available space, the container enters *overflow* mode. When in overflow mode, any new blobs that are created in that container are allocated to a different volume that has sufficient space. Over time, a container in overflow mode can have blobs that are distributed across multiple volumes.
+Containers aren't limited to a single share. When the combined blob data in a container grows to use 80 percent or more of the available space, the container enters *overflow* mode. When the container is in overflow mode, any new blobs that are created in the container are allocated to a different volume that has sufficient space. Over time, a container in overflow mode can have blobs that are distributed across multiple volumes.
 
 When 80 percent (and then 90 percent) of the available space in a volume is used, the system raises alerts in the Azure Stack Hub administrator portal. Cloud operators should review available storage capacity and plan to rebalance the content. The storage service stops working when a disk is 100 percent used and no additional alerts are raised.
 
@@ -60,7 +60,7 @@ When 80 percent (and then 90 percent) of the available space in a volume is used
 Virtual machine (VM) disks are added to containers by tenants and include an operating system disk. VMs can also have one or more data disks. Both types of disks are stored as page blobs. The guidance to tenants is to place each disk into a separate container to improve the performance of the VM.
 
 - Each container that holds a disk, or page blob, from a VM is considered an attached container to the VM that owns the disk.
-- A container that doesn't hold any disk from a VM is considered a free container.
+- A container that doesn't hold any disks from a VM is considered a free container.
 
 The options to free up space on an attached container are limited. To learn more, see [Move VM disks](#move-vm-disks).
 
@@ -68,7 +68,7 @@ The options to free up space on an attached container are limited. To learn more
 > Cloud operators don't directly manage disks, which are attached to VMs that tenants might add to a container. However, when you plan to manage space on storage shares, it can be useful to understand how disks relate to containers and shares.
 
 ## Monitor shares
-Use Azure PowerShell or the administrator portal to monitor shares so you can understand when free space is limited. When you use the portal, you receive alerts about shares that are low on space.
+Use Azure PowerShell or the administrator portal to monitor shares so that you can understand when free space is limited. When you use the portal, you receive alerts about shares that are low on space.
 
 ### Use PowerShell
 As a cloud operator, you can monitor the storage capacity of a share by using the PowerShell `Get-AzsStorageShare` cmdlet. The cmdlet returns the total, allocated, and free space, in bytes, on each of the shares.
@@ -97,18 +97,18 @@ When you use the administrator portal, you receive alerts about shares that are 
 
 * **Warning**: When a file share is over 80 percent utilized, you receive a *Warning* alert in the administrator portal:
 
-  ![Example: Warning alert in Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-warning.png)
+  ![Example: Warning alert in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-warning.png)
 
 * **Critical**: When a file share is over 90 percent utilized, you receive a *Critical* alert in the administrator portal:
 
-  ![Example: Critical alert in Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-critical.png)
+  ![Example: Critical alert in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-critical.png)
 
-* **View details**: In the administrator portal, you can open the details for an alert to view mitigation options:
+* **View details**: In the administrator portal, you can open an alert's details to view your mitigation options:
 
-  ![Example: View alert details in Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-details.png)
+  ![Example: View alert details in the Azure Stack Hub administrator portal](media/azure-stack-manage-storage-shares/alert-details.png)
 
 ## Manage available space
-When it's necessary to free space on a share, use the least invasive methods first. For example, try to reclaim space before you choose to migrate a container.  
+When it's necessary to free up space on a share, use the least invasive methods first. For example, try to reclaim space before you choose to migrate a container.  
 
 ### Reclaim capacity
 *This option applies to both multinode deployments and the Azure Stack Development Kit.*
@@ -128,9 +128,9 @@ Migration consolidates all of a container's blobs on the new share.
 
 - If a container has entered overflow mode and has placed blobs on additional volumes, the new share must have sufficient capacity to hold all of the blobs for the container you migrate. This includes the blobs that are located on additional shares.
 
-- The PowerShell cmdlet `Get-AzsStorageContainer` identifies only the space in use on the initial volume for a container. The cmdlet doesn't identify space that's used by blobs that are put on additional volumes. Therefore, the full size of a container might not be evident. It's possible that consolidation of a container on a new share can send that new share into an overflow condition, where it places data onto additional shares. As a result, you might need to rebalance shares again.
+- The PowerShell cmdlet `Get-AzsStorageContainer` identifies only the space in use on the initial volume for a container. The cmdlet doesn't identify space that's used by blobs that are put on additional volumes. Therefore, the full size of a container might not be evident. It's possible that consolidation of a container on a new share can send that new share into an overflow condition, where it places data onto additional shares. As a result, you might need to rebalance the shares.
 
-- If you lack permissions to certain resource groups and can't use PowerShell to query the additional volumes for overflow data, work with the owner of those resource groups and containers to understand the total size of data to migrate before you migrate that data.  
+- If you lack permissions to certain resource groups and can't use PowerShell to query the additional volumes for overflow data, work with the owner of those resource groups and containers to understand the total amount of data to migrate before you migrate it.  
 
 > [!IMPORTANT]
 > The migration of blobs for a container is an offline operation that requires the use of PowerShell. Until the migration is complete, all blobs for the container that you're migrating remain offline and can't be used. You should also avoid upgrading Azure Stack Hub until all ongoing migration is complete.
@@ -202,7 +202,7 @@ Migration consolidates all of a container's blobs on the new share.
 ### Move VM disks
 *This option applies only to Azure Stack Hub integrated systems.*
 
-The most extreme method to manage space involves the moving of VM disks. Because moving an attached container (one that contains a VM disk) is complex, contact Microsoft support to accomplish this action.
+The most extreme method for managing space involves moving VM disks. Because moving an attached container (one that contains a VM disk) is complex, contact Microsoft support to accomplish this action.
 
 ## Next steps
 To learn more about offering VMs to users, see [Manage storage capacity for Azure Stack Hub](azure-stack-tutorial-tenant-vm.md).
