@@ -100,10 +100,10 @@ Once you have registered your Azure Stack, you can disregard the following messa
 
 2. Sign in to the appropriate Azure cloud and AzureAD Directory Tenant using the Azure account that you've used to register Azure Stack Hub. To add the account, in PowerShell run **Add-AzureRmAccount**. 
 
-```powershell  
-Login-AzureRmAccount -Environment AzureCloud -Tenant '<mydirectory>.onmicrosoft.com'
-```
-You are prompted to enter your Azure account credentials and you might have to use two-factor authentication, depending on your account configuration.
+   ```powershell  
+   Login-AzureRmAccount -Environment AzureCloud -Tenant '<mydirectory>.onmicrosoft.com'
+   ```
+   You are prompted to enter your Azure account credentials and you might have to use two-factor authentication, depending on your account configuration.
 
    > [!NOTE]
    > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Add-AzureRmAccount**: **Remove-AzureRmAccount-Scope Process**.
@@ -125,33 +125,36 @@ You are prompted to enter your Azure account credentials and you might have to u
    ```powershell
    $products = Select-AzsMarketplaceItem
    ```
-  * This will first display a Powershell Grid listing all the Azure Stack Registrations available in the selected subscription. Pick the registration that matches the Azure Stack environment you're downloading the marketplace items for and select OK.
+
+   This displays a Powershell grid listing all the Azure Stack registrations available in the selected subscription. Choose the registration that matches the Azure Stack environment you're downloading the marketplace items for, and select **OK**.
 
      ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/selectRegistration.png)
 
-  * You should now see a second PowerShell Grid listing all the marketplace items available for download. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images.
+   You should now see a second PowerShell grid listing all the marketplace items available for download. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images.
      ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/selectProducts.png)
   
-    You can also filter the list of images by using the **Add criteria** option.
-     ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/selectProductswithFilter.png)
+   You can also filter the list of images by using the **Add criteria** option.
+   ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/selectProductswithFilter.png)
 
-    Once you've made your selections, select OK.
+   Once you've made your selections, select OK.
 
-6. The Ids for the marketplace items you've selected for download is saved in the  `$products` variable. Use the command below to begin downloading the selected items. Replace the destination folder path with a location to store the files you download from Azure Marketplace:
+6. The IDs for the marketplace items you've selected for download are saved in the  `$products` variable. Use the command below to begin downloading the selected items. Replace the destination folder path with a location to store the files you download from Azure Marketplace:
 
     ```powershell
     $products | Export-AzsMarketplaceItem  -RepositoryDir "Destination folder path in quotes"
     ```
 
-7. The time that the download takes depends on the size of the item. After the download completes, the item is available in the folder that you specified in the script. The download includes a VHD file (for virtual machines), or a .zip file (for virtual machine extensions and resource providers). It might also include a gallery package in the *.azpkg* format, which is simply a .zip file.
+7. The time that the download takes depends on the size of the item. After the download completes, the item is available in the folder that you specified in the script. The download includes a VHD file (for virtual machines), or a .zip file (for virtual machine extensions and resource providers). It might also include a gallery package in the *.azpkg* format, which is a .zip file.
 
 8. If the download fails, you can try again by re-running the following PowerShell cmdlet:
 
     ```powershell
     $products | Export-AzsMarketplaceItem  -RepositoryDir "Destination folder path in quotes"
     ```
-9. You should also export the Azs.Syndication.Admin module locally so that you can copy it over to the machine, from which you are importing marketplace items to Azure Stack Hub.
-> [!NOTE]
+
+9. You should also export the **Azs.Syndication.Admin** module locally so that you can copy it over to the machine from which you are importing marketplace items to Azure Stack Hub.
+
+   > [!NOTE]
    > The destination folder for exporting this module should be different from the location to which you have exported the marketplace items.
 
     ```powershell
