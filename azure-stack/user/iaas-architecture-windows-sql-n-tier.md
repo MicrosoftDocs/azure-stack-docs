@@ -79,7 +79,7 @@ Design subnets with functionality and security requirements in mind. All VMs wit
 
 Don't expose the VMs directly to the Internet, but instead give each VM a private IP address. Clients connect using the public IP address associated with the Layer 7 Load Balancer.
 
-Define load balancer rules to direct network traffic to the VMs. For example, to enable HTTP traffic, map port 80 from the front-end configuration to port 80 on the back-end address pool. When a client sends an HTTP request to port 80, the load balancer selects a back-end IP address by using a [hashing algorithm](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#load-balancer-concepts) that includes the source IP address. Client requests are distributed across all the VMs in the back-end address pool.
+Define load balancer rules to direct network traffic to the VMs. For example, to enable HTTP traffic, map port 80 from the front-end configuration to port 80 on the back-end address pool. When a client sends an HTTP request to port 80, the load balancer selects a back-end IP address by using a [hashing algorithm](/azure/load-balancer/concepts-limitations#load-balancer-concepts) that includes the source IP address. Client requests are distributed across all the VMs in the back-end address pool.
 
 ### Network security groups
 
