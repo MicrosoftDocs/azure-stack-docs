@@ -1,6 +1,9 @@
 ---
-title: Usage API related FAQs 
-description: List of Azure Stack Hub meters, comparison to Azure usage API, Usage Time and Reported Time, error codes.
+title: Usage API FAQ
+titleSuffix: Azure Stack Hub
+description: List of frequently asked questions about Azure Stack Hub usage, including meters, comparison to Azure usage API, usage time vs reported time, and error codes.
+services: azure-stack
+documentationcenter: ''
 author: sethmanheim
 
 ms.topic: article
@@ -55,7 +58,7 @@ Usage is reported for the following resource providers:
   
 **Meter ID**: B9FF3CD0-28AA-4762-84BB-FF8FBAEA6A90  
 **Meter name**: TableTransactions  
-**Unit**: Request count in 10,000's  
+**Unit**: Request count in 10,000s  
 **Notes**: Table service requests (in 10,000s).  
   
 **Meter ID**: 50A1AEAF-8ECA-48A0-8973-A5B3077FEE0D  
@@ -70,7 +73,7 @@ Usage is reported for the following resource providers:
   
 **Meter ID**: 43DAF82B-4618-444A-B994-40C23F7CD438  
 **Meter name**: BlobTransactions  
-**Unit**: Requests count in 10,000's  
+**Unit**: Requests count in 10,000s  
 **Notes**: Blob service requests (in 10,000s).  
   
 **Meter ID**: 9764F92C-E44A-498E-8DC1-AAD66587A810  
@@ -85,7 +88,7 @@ Usage is reported for the following resource providers:
   
 **Meter ID**: EB43DD12-1AA6-4C4B-872C-FAF15A6785EA  
 **Meter name**: QueueTransactions  
-**Unit**: Requests count in 10,000's  
+**Unit**: Requests count in 10,000s  
 **Notes**: Queue service requests (in 10,000s).  
   
 **Meter ID**: E518E809-E369-4A45-9274-2017B29FFF25  
@@ -96,7 +99,7 @@ Usage is reported for the following resource providers:
 **Meter ID**: DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2  
 **Meter name**: QueueDataTransOut  
 **Unit**: Egress in GB  
-**Notes**: Queue service data egress in GB  
+**Notes**: Queue service data egress in GB.
 
 ### Compute
   
@@ -113,179 +116,179 @@ Usage is reported for the following resource providers:
 **Meter ID**: 6DAB500F-A4FD-49C4-956D-229BB9C8C793  
 **Meter name**: VM size hours  
 **Unit**: VM hours  
-**Notes**: Captures both base and Windows VM. Does not adjust for cores.  
+**Notes**: Captures both base and Windows VM. Doesn't adjust for cores.  
   
 ### Managed Disks
 
-**Meter ID**: 380874f9-300c-48e0-95a0-d2d9a21ade8f   
-**Meter name**: S4   
-**Unit**: Count of Disks\*month   
-**Notes**: Standard Managed Disk - 32 GB 
+**Meter ID**: 380874f9-300c-48e0-95a0-d2d9a21ade8f
+**Meter name**: S4
+**Unit**: Count of Disks\*month
+**Notes**: Standard Managed Disk - 32 GB
 
-**Meter ID**: 1b77d90f-427b-4435-b4f1-d78adec53222   
-**Meter name**: S6   
-**Unit**: Count of Disks\*month   
-**Notes**: Standard Managed Disk - 64 GB 
+**Meter ID**: 1b77d90f-427b-4435-b4f1-d78adec53222
+**Meter name**: S6
+**Unit**: Count of Disks\*month
+**Notes**: Standard Managed Disk - 64 GB
 
-**Meter ID**: d5f7731b-f639-404a-89d0-e46186e22c8d   
-**Meter name**: S10   
-**Unit**: Count of Disks\*month   
-**Notes**: Standard Managed Disk - 128 GB 
+**Meter ID**: d5f7731b-f639-404a-89d0-e46186e22c8d
+**Meter name**: S10
+**Unit**: Count of Disks\*month
+**Notes**: Standard Managed Disk - 128 GB
 
-**Meter ID**: ff85ef31-da5b-4eac-95dd-a69d6f97b18a   
-**Meter name**: S15   
-**Unit**: Count of Disks\*month   
-**Notes**: Standard Managed Disk - 256 GB 
+**Meter ID**: ff85ef31-da5b-4eac-95dd-a69d6f97b18a
+**Meter name**: S15
+**Unit**: Count of Disks\*month
+**Notes**: Standard Managed Disk - 256 GB
 
-**Meter ID**: 88ea9228-457a-4091-adc9-ad5194f30b6e   
-**Meter name**: S20   
-**Unit**: Count of Disks\*month      
-**Notes**: Standard Managed Disk - 512 GB 
+**Meter ID**: 88ea9228-457a-4091-adc9-ad5194f30b6e
+**Meter name**: S20
+**Unit**: Count of Disks\*month
+**Notes**: Standard Managed Disk - 512 GB
 
-**Meter ID**: 5b1db88a-8596-4002-8052-347947c26940   
-**Meter name**: S30   
-**Unit**: Count of Disks\*month   
-**Notes**: Standard Managed Disk - 1024 GB 
+**Meter ID**: 5b1db88a-8596-4002-8052-347947c26940
+**Meter name**: S30
+**Unit**: Count of Disks\*month
+**Notes**: Standard Managed Disk - 1024 GB
 
-**Meter ID**: 7660b45b-b29d-49cb-b816-59f30fbab011   
-**Meter name**: P4   
-**Unit**: Count of Disks\*month   
-**Notes**: Premium Managed Disk - 32 GB 
+**Meter ID**: 7660b45b-b29d-49cb-b816-59f30fbab011
+**Meter name**: P4
+**Unit**: Count of Disks\*month
+**Notes**: Premium Managed Disk - 32 GB
 
-**Meter ID**: 817007fd-a077-477f-bc01-b876f27205fd   
-**Meter name**: P6   
-**Unit**: Count of Disks\*month   
-**Notes**: Premium Managed Disk - 64 GB 
+**Meter ID**: 817007fd-a077-477f-bc01-b876f27205fd
+**Meter name**: P6
+**Unit**: Count of Disks\*month
+**Notes**: Premium Managed Disk - 64 GB
 
-**Meter ID**: e554b6bc-96cd-4938-a5b5-0da990278519   
-**Meter name**: P10   
-**Unit**: Count of Disks\*month   
+**Meter ID**: e554b6bc-96cd-4938-a5b5-0da990278519
+**Meter name**: P10
+**Unit**: Count of Disks\*month
 **Notes**: Premium Managed Disk - 128 GB  
 
-**Meter ID**: cdc0f53a-62a9-4472-a06c-e99a23b02907   
-**Meter name**: P15  
-**Unit**: Count of Disks\*month   
-**Notes**: Premium Managed Disk - 256 GB 
+**Meter ID**: cdc0f53a-62a9-4472-a06c-e99a23b02907
+**Meter name**: P15
+**Unit**: Count of Disks\*month
+**Notes**: Premium Managed Disk - 256 GB
 
-**Meter ID**: b9cb2d1a-84c2-4275-aa8b-70d2145d59aa   
-**Meter name**: P20   
-**Unit**: Count of Disks\*month   
-**Notes**: Premium Managed Disk - 512 GB 
+**Meter ID**: b9cb2d1a-84c2-4275-aa8b-70d2145d59aa
+**Meter name**: P20
+**Unit**: Count of Disks\*month
+**Notes**: Premium Managed Disk - 512 GB
 
-**Meter ID**: 06bde724-9f94-43c0-84c3-d0fc54538369   
-**Meter name**: P30   
-**Unit**: Count of Disks\*month   
-**Notes**: Premium Managed Disk - 1024 GB 
+**Meter ID**: 06bde724-9f94-43c0-84c3-d0fc54538369
+**Meter name**: P30
+**Unit**: Count of Disks\*month
+**Notes**: Premium Managed Disk - 1024 GB
 
-**Meter ID**: 7ba084ec-ef9c-4d64-a179-7732c6cb5e28   
-**Meter name**: ActualStandardDiskSize   
-**Unit**: GB\*month      
-**Notes**: The actual size on disk of standard managed disk  
+**Meter ID**: 7ba084ec-ef9c-4d64-a179-7732c6cb5e28
+**Meter name**: ActualStandardDiskSize
+**Unit**: GB\*month
+**Notes**: The actual size on disk of standard managed disk.
 
 **Meter ID**: daef389a-06e5-4684-a7f7-8813d9f792d5  
-**Meter name**: ActualPremiumDiskSize   
-**Unit**: GB\*month      
-**Notes**: The actual size on disk of premium managed disk 
+**Meter name**: ActualPremiumDiskSize
+**Unit**: GB\*month
+**Notes**: The actual size on disk of premium managed disk.
 
 **Meter ID**: 108fa95b-be0d-4cd9-96e8-5b0d59505df1  
-**Meter name**: ActualStandardSnapshotSize   
-**Unit**: GB\*month   
+**Meter name**: ActualStandardSnapshotSize
+**Unit**: GB\*month
 **Notes**: The actual size on disk of managed standard snapshot.  
 
-**Meter ID**: 578ae51d-4ef9-42f9-85ae-42b52d3d83ac   
-**Meter name**: ActualPremiumSnapshotSize   
-**Unit**: GB\*month   
-**Notes**: The actual size on disk of managed premium snapshot.   
+**Meter ID**: 578ae51d-4ef9-42f9-85ae-42b52d3d83ac
+**Meter name**: ActualPremiumSnapshotSize
+**Unit**: GB\*month
+**Notes**: The actual size on disk of managed premium snapshot.
 
-**Meter ID**: 5d76e09f-4567-452a-94cc-7d1f097761f0   
-**Meter name**: S4   
-**Unit**: Count of Disks\*hours   
-**Notes**: Standard Managed Disk - 32 GB (Deprecated) 
+**Meter ID**: 5d76e09f-4567-452a-94cc-7d1f097761f0
+**Meter name**: S4
+**Unit**: Count of Disks\*hours
+**Notes**: Standard Managed Disk - 32 GB (Deprecated)
 
-**Meter ID**: dc9fc6a9-0782-432a-b8dc-978130457494   
-**Meter name**: S6   
-**Unit**: Count of Disks\*hours   
-**Notes**: Standard Managed Disk - 64 GB (Deprecated) 
+**Meter ID**: dc9fc6a9-0782-432a-b8dc-978130457494
+**Meter name**: S6
+**Unit**: Count of Disks\*hours
+**Notes**: Standard Managed Disk - 64 GB (Deprecated)
 
-**Meter ID**: e5572fce-9f58-49d7-840c-b168c0f01fff   
-**Meter name**: S10   
-**Unit**: Count of Disks\*hours   
-**Notes**: Standard Managed Disk - 128 GB (Deprecated) 
+**Meter ID**: e5572fce-9f58-49d7-840c-b168c0f01fff
+**Meter name**: S10
+**Unit**: Count of Disks\*hours
+**Notes**: Standard Managed Disk - 128 GB (Deprecated)
 
-**Meter ID**: 9a8caedd-1195-4cd5-80b4-a4c22f9302b8   
-**Meter name**: S15   
-**Unit**: Count of Disks\*hours   
-**Notes**: Standard Managed Disk - 256 GB (Deprecated) 
+**Meter ID**: 9a8caedd-1195-4cd5-80b4-a4c22f9302b8
+**Meter name**: S15
+**Unit**: Count of Disks\*hours
+**Notes**: Standard Managed Disk - 256 GB (Deprecated)
 
-**Meter ID**: 5938f8da-0ecd-4c48-8d5a-c7c6c23546be   
-**Meter name**: S20   
-**Unit**: Count of Disks\*hours      
-**Notes**: Standard Managed Disk - 512 GB (Deprecated) 
+**Meter ID**: 5938f8da-0ecd-4c48-8d5a-c7c6c23546be
+**Meter name**: S20
+**Unit**: Count of Disks\*hours
+**Notes**: Standard Managed Disk - 512 GB (Deprecated)
 
-**Meter ID**: 7705a158-bd8b-4b2b-b4c2-0782343b81e6   
-**Meter name**: S30   
-**Unit**: Count of Disks\*hours   
-**Notes**: Standard Managed Disk - 1024 GB (Deprecated) 
+**Meter ID**: 7705a158-bd8b-4b2b-b4c2-0782343b81e6
+**Meter name**: S30
+**Unit**: Count of Disks\*hours
+**Notes**: Standard Managed Disk - 1024 GB (Deprecated)
 
-**Meter ID**: 5c105f5f-cbdf-435c-b49b-3c7174856dcc   
-**Meter name**: P4   
-**Unit**: Count of Disks\*hours   
-**Notes**: Premium Managed Disk - 32 GB (Deprecated) 
+**Meter ID**: 5c105f5f-cbdf-435c-b49b-3c7174856dcc
+**Meter name**: P4
+**Unit**: Count of Disks\*hours
+**Notes**: Premium Managed Disk - 32 GB (Deprecated)
 
-**Meter ID**: 518b412b-1927-4f25-985f-4aea24e55c4f   
-**Meter name**: P6   
-**Unit**: Count of Disks\*hours   
-**Notes**: Premium Managed Disk - 64 GB (Deprecated) 
+**Meter ID**: 518b412b-1927-4f25-985f-4aea24e55c4f
+**Meter name**: P6
+**Unit**: Count of Disks\*hours
+**Notes**: Premium Managed Disk - 64 GB (Deprecated)
 
-**Meter ID**: 5cfb1fed-0902-49e3-8217-9add946fd624   
-**Meter name**: P10   
-**Unit**: Count of Disks\*hours   
+**Meter ID**: 5cfb1fed-0902-49e3-8217-9add946fd624
+**Meter name**: P10
+**Unit**: Count of Disks\*hours
 **Notes**: Premium Managed Disk - 128 GB (Deprecated)  
 
-**Meter ID**: 8de91c94-f740-4d9a-b665-bd5974fa08d4   
+**Meter ID**: 8de91c94-f740-4d9a-b665-bd5974fa08d4
 **Meter name**: P15  
-**Unit**: Count of Disks\*hours   
-**Notes**: Premium Managed Disk - 256 GB (Deprecated) 
+**Unit**: Count of Disks\*hours
+**Notes**: Premium Managed Disk - 256 GB (Deprecated)
 
-**Meter ID**: c7e7839c-293b-4761-ae4c-848eda91130b   
-**Meter name**: P20   
-**Unit**: Count of Disks\*hours   
-**Notes**: Premium Managed Disk - 512 GB (Deprecated) 
+**Meter ID**: c7e7839c-293b-4761-ae4c-848eda91130b
+**Meter name**: P20
+**Unit**: Count of Disks\*hours
+**Notes**: Premium Managed Disk - 512 GB (Deprecated)
 
-**Meter ID**: 9f502103-adf4-4488-b494-456c95d23a9f   
-**Meter name**: P30   
-**Unit**: Count of Disks\*hours   
-**Notes**: Premium Managed Disk - 1024 GB (Deprecated) 
+**Meter ID**: 9f502103-adf4-4488-b494-456c95d23a9f
+**Meter name**: P30
+**Unit**: Count of Disks\*hours
+**Notes**: Premium Managed Disk - 1024 GB (Deprecated)
 
-**Meter ID**: 8a409390-1913-40ae-917b-08d0f16f3c38   
-**Meter name**: ActualStandardDiskSize   
-**Unit**: Byte\*hours      
-**Notes**: The actual size on disk of standard managed disk (Deprecated)  
+**Meter ID**: 8a409390-1913-40ae-917b-08d0f16f3c38
+**Meter name**: ActualStandardDiskSize
+**Unit**: Byte\*hours
+**Notes**: The actual size on disk of standard managed disk (Deprecated).  
 
 **Meter ID**: 1273b16f-8458-4c34-8ce2-a515de551ef6  
-**Meter name**: ActualPremiumDiskSize   
-**Unit**: Byte\*hours      
-**Notes**: The actual size on disk of premium managed disk (Deprecated) 
+**Meter name**: ActualPremiumDiskSize
+**Unit**: Byte\*hours
+**Notes**: The actual size on disk of premium managed disk (Deprecated).
 
 **Meter ID**: 89009682-df7f-44fe-aeb1-63fba3ddbf4c  
-**Meter name**: ActualStandardSnapshotSize   
-**Unit**: Byte\*hours   
-**Notes**: The actual size on disk of managed standard snapshot (Deprecated) 
+**Meter name**: ActualStandardSnapshotSize
+**Unit**: Byte\*hours
+**Notes**: The actual size on disk of managed standard snapshot (Deprecated).
 
-**Meter ID**: 95b0c03f-8a82-4524-8961-ccfbf575f536   
-**Meter name**: ActualPremiumSnapshotSize   
-**Unit**: Byte\*hours   
-**Notes**: The actual size on disk of managed premium snapshot (Deprecated) 
+**Meter ID**: 95b0c03f-8a82-4524-8961-ccfbf575f536
+**Meter name**: ActualPremiumSnapshotSize
+**Unit**: Byte\*hours
+**Notes**: The actual size on disk of managed premium snapshot (Deprecated).
 
 **Meter ID**: 75d4b707-1027-4403-9986-6ec7c05579c8
 **Meter name**: ActualStandardSnapshotSize
 **Unit**: GB\*month
-**Notes**: The actual size on disk of managed standard snapshot (Deprecated)  
+**Notes**: The actual size on disk of managed standard snapshot (Deprecated).
 
 **Meter ID**: 5ca1cbb9-6f14-4e76-8be8-1ca91547965e
 **Meter name**: ActualPremiumSnapshotSize
 **Unit**: GB\*month
-**Notes**: The actual size on disk of managed premium snapshot (Deprecated)  
+**Notes**: The actual size on disk of managed premium snapshot (Deprecated).
 
 ### Sql RP
   
@@ -294,30 +297,34 @@ Usage is reported for the following resource providers:
 **Unit**: MB\*hours  
 **Notes**: Total DB capacity at creation. If you call the usage API with a daily granularity, the meter returns MB multiplied by the number of hours.  
   
-### MySql RP   
+### MySql RP
   
 **Meter ID**: E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3  
 **Meter name**: DatabaseSizeHourMySqlMeter  
 **Unit**: MB\*hours  
-**Notes**: Total DB capacity at creation. If you call the usage API with a daily granularity, the meter returns MB multiplied by the number of hours.    
-### Key Vault   
+**Notes**: Total DB capacity at creation. If you call the usage API with a daily granularity, the meter returns MB multiplied by the number of hours.
+
+### Key Vault
   
 **Meter ID**: EBF13B9F-B3EA-46FE-BF54-396E93D48AB4  
 **Meter name**: Key Vault transactions  
-**Unit**: Request count in 10,000's  
+**Unit**: Request count in 10,000s  
 **Notes**: Number of REST API requests received by Key Vault data plane.  
   
 **Meter ID**: 2C354225-B2FE-42E5-AD89-14F0EA302C87  
 **Meter name**: Advanced keys transactions  
 **Unit**:  10K transactions  
-**Notes**: RSA 3K/4K, ECC key transactions. (preview).  
+**Notes**: RSA 3K/4K, ECC key transactions (preview).  
   
-### App service   
+### App service
   
 **Meter ID**: 190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  
 **Meter name**: App Service  
 **Unit**: Virtual core hours  
-**Notes**: Number of virtual cores used to run app service. Note: Microsoft uses this meter to charge the App Service on Azure Stack Hub. Cloud Solution Providers can use the other App Service meters (below) to calculate usage for their tenants.  
+**Notes**: Number of virtual cores used to run app service.
+
+>[!NOTE]
+>Microsoft uses this meter to charge the App Service on Azure Stack Hub. Cloud Solution Providers can use the other App Service meters (below) to calculate usage for their tenants.  
   
 **Meter ID**: 67CC4AFC-0691-48E1-A4B8-D744D1FEDBDE  
 **Meter name**: Functions Requests  
@@ -331,34 +338,34 @@ Usage is reported for the following resource providers:
   
 **Meter ID**: 957E9F36-2C14-45A1-B6A1-1723EF71A01D  
 **Meter name**: Shared App Service Hours  
-**Unit**: 1 hour  
+**Unit**: 1 hour
 **Notes**: Per hour usage of shard App Service Plan. Plans are metered on a per App basis.  
   
 **Meter ID**: 539CDEC7-B4F5-49F6-AAC4-1F15CFF0EDA9  
 **Meter name**: Free App Service Hours  
-**Unit**: 1 hour  
+**Unit**: 1 hour
 **Notes**: Per hour usage of free App Service Plan. Plans are metered on a per App basis.  
   
 **Meter ID**: 88039D51-A206-3A89-E9DE-C5117E2D10A6  
 **Meter name**: Small Standard App Service Hours  
-**Unit**: 1 hour  
+**Unit**: 1 hour
 **Notes**: Calculated based on size and number of instances.  
   
 **Meter ID**: 83A2A13E-4788-78DD-5D55-2831B68ED825  
 **Meter name**: Medium Standard App Service Hours  
-**Unit**: 1 hour  
+**Unit**: 1 hour
 **Notes**: Calculated based on size and number of instances.  
   
 **Meter ID**: 1083B9DB-E9BB-24BE-A5E9-D6FDD0DDEFE6  
 **Meter name**: Large Standard App Service Hours  
-**Unit**: 1 hour  
+**Unit**: 1 hour
 **Notes**: Calculated based on size and number of instances.  
   
-### Custom Worker Tiers   
+### Custom Worker Tiers
   
-**Meter ID**: *Custom Worker Tiers*  
+**Meter ID**: *Custom Worker Tiers*
 **Meter name**: Custom Worker Tiers  
-**Unit**: Hours  
+**Unit**: Hours
 **Notes**: Deterministic meter ID is created based on SKU and custom worker tier name. This meter ID is unique for each custom worker tier.  
   
 **Meter ID**: 264ACB47-AD38-47F8-ADD3-47F01DC4F473  
@@ -367,14 +374,14 @@ Usage is reported for the following resource providers:
 **Notes**: App Service supports two types of SSL connections: Server Name Indication (SNI) SSL Connections and IP Address SSL Connections. SNI-based SSL works on modern browsers while IP-based SSL works on all browsers.  
   
 **Meter ID**: 60B42D72-DC1C-472C-9895-6C516277EDB4  
-**Meter name**: IP SSL  
-**Unit**: Per IP Based SSL Binding  
+**Meter name**: IP SSL
+**Unit**: Per IP Based SSL Binding
 **Notes**: App Service supports two types of SSL connections: Server Name Indication (SNI) SSL Connections and IP Address SSL Connections. SNI-based SSL works on modern browsers while IP-based SSL works on all browsers.  
   
 **Meter ID**: 73215A6C-FA54-4284-B9C1-7E8EC871CC5B  
-**Meter name**:  Web Process  
+**Meter name**:  Web Process
 **Unit**:  
-**Notes**: Calculated per active site per hour.  
+**Notes**: Calculated per active site per hour.
   
 **Meter ID**: 5887D39B-0253-4E12-83C7-03E1A93DFFD9  
 **Meter name**: External Egress Bandwidth  
@@ -384,20 +391,20 @@ Usage is reported for the following resource providers:
 ## How do the Azure Stack Hub usage APIs compare to the [Azure usage API](https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview#azure-resource-usage-api-preview) (currently in public preview)?
 
 * The tenant usage API is consistent with the Azure API, with one
-  exception: the *showDetails* flag currently is not supported in
+  exception: the *showDetails* flag currently isn't supported in
   Azure Stack Hub.
 * The provider usage API applies only to Azure Stack Hub.
 * Currently, the [RateCard
   API](/azure/billing/billing-usage-rate-card-overview#azure-resource-ratecard-api-preview)
-  that is available in Azure is not available in Azure Stack Hub.
+  that is available in Azure isn't available in Azure Stack Hub.
 
 ## What is the difference between usage time and reported time?
 
 Usage data reports have two main time values:
 
-* **Reported Time**. The time when the usage event entered the usage
+* **Reported Time**: The time when the usage event entered the usage
   system.
-* **Usage Time**. The time when the Azure Stack Hub resource was consumed.
+* **Usage Time**: The time when the Azure Stack Hub resource was consumed.
 
 You might see a discrepancy in values for usage time and reported time for a specific usage event. The delay can be as long as several hours in any environment.
 
@@ -409,15 +416,15 @@ Currently, you can query only by **Reported Time**.
 | --- | --- | --- |
 | 400/Bad Request |*NoApiVersion* |The *api-version* query parameter is missing. |
 | 400/Bad Request |*InvalidProperty* |A property is missing or has an invalid value. The message in the error code in the response body identifies the missing property. |
-| 400/Bad Request |*RequestEndTimeIsInFuture* |The value for *ReportedEndTime* is in the future. Values in the future are not allowed for this argument. |
-| 400/Bad Request |*SubscriberIdIsNotDirectTenant* |A provider API call has used a subscription ID that is not a valid tenant of the caller. |
+| 400/Bad Request |*RequestEndTimeIsInFuture* |The value for *ReportedEndTime* is in the future. Values in the future aren't allowed for this argument. |
+| 400/Bad Request |*SubscriberIdIsNotDirectTenant* |A provider API call has used a subscription ID that isn't a valid tenant of the caller. |
 | 400/Bad Request |*SubscriptionIdMissingInRequest* |The subscription ID of the caller is missing. |
 | 400/Bad Request |*InvalidAggregationGranularity* |An invalid aggregation granularity was requested. Valid values are daily and hourly. |
 | 503 |*ServiceUnavailable* |A retryable error occurred because the service is busy or the call is being throttled. |
 
 ## What is the policy for charging for VMs?
 
-Running and stopped VMs generate usage data. Consistent with Azure, deallocation is needed to stop the emission of usage data. In the case in which the portal is unavailable, but the compute resource provider is still running, usage is emitted.
+Running and stopped VMs generate usage data. Consistent with Azure, deallocation is needed to stop the emission of usage data. In the case in which the portal is unavailable but the compute resource provider is still running, usage will be emitted.
 
 ## How do I extract usage data from the Azure Stack Hub usage APIs?
 
@@ -427,7 +434,7 @@ Alternatively, you can use the REST APIs, as explained in the [Provider resource
 
 ## How can I associate usage extracted from Azure usage APIs to a specific Azure Stack Hub user subscription?
 
-The usage records include a property bag called **additionalinfo**, which includes the Azure Stack Hub subscription ID. This is the user subscription emitting the corresponding usage record.
+The usage records include a property bag called **additionalinfo**, which includes the Azure Stack Hub subscription ID. This ID is the user subscription emitting the corresponding usage record.
 
 ## Next steps
 
