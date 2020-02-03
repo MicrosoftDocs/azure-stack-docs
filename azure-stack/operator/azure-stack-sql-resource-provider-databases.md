@@ -22,7 +22,7 @@ You can create and manage self-service databases in the user portal. An Azure St
 3. Under **Create Database**, enter the required information, such as **Database Name** and **Max Size in MB**.
 
    >[!NOTE]
-   >The database size must be at least 64 MB, which you can increase after you deploy the database.
+   >The database size must be at least 64 MB, which can be increased after you deploy the database.
 
    Configure the other settings as required for your environment.
 
@@ -62,7 +62,7 @@ The following screen capture shows how you can use SQL Server Management Studio 
 
 Always On databases should show as **Synchronized** and available on all the SQL instances and appear in **Availability Groups**. In the previous screenshot, the database example is newdb1 and its status is **newdb1 (Synchronized)**.
 
-### Delete an AlwaysOn database
+### Delete an Always On database
 
 When you delete a SQL Always On database from the resource provider, SQL deletes the database from the **Primary** replica and from the availability group.
 
