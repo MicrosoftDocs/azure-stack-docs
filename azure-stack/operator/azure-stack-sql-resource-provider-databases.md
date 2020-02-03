@@ -22,7 +22,7 @@ You can create and manage self-service databases in the user portal. An Azure St
 3. Under **Create Database**, enter the required information, such as **Database Name** and **Max Size in MB**.
 
    >[!NOTE]
-   >The database size must be at least 64 MB, which you can increase after you deploy the database.
+   >The database size must be at least 64 MB, which can be increased after you deploy the database.
 
    Configure the other settings as required for your environment.
 
