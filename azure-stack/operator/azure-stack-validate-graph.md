@@ -1,5 +1,6 @@
 ---
-title: Validate Azure Graph integration for Azure Stack Hub
+title: Validate Azure Graph integration
+titleSuffix: Azure Stack Hub
 description: Use the Azure Stack Hub Readiness Checker to validate graph integration for Azure Stack Hub.
 author: ihenkel
 ms.topic: article
@@ -33,9 +34,11 @@ The following prerequisites must be in place.
 
 **The computer where the tool runs:**
 
-* Windows 10 or Windows Server 2016, with domain connectivity.
-* PowerShell 5.1 or later. To check your version, run the following PowerShell command and then review the *Major* version and *Minor* versions:  
-   > `$PSVersionTable.PSVersion`
+* Windows 10 or Windows Server 2016 with domain connectivity.
+* PowerShell 5.1 or later. To check your version, run the following PowerShell command and then review the *Major* version and *Minor* versions:
+    ```powershell
+    $PSVersionTable.PSVersion
+    ```
 * Active Directory PowerShell module.
 * Latest version of the [Microsoft Azure Stack Hub Readiness Checker](https://aka.ms/AzsReadinessChecker) tool.
 
@@ -48,19 +51,25 @@ The following prerequisites must be in place.
 
 1. On a computer that meets the prerequisites, open an administrative PowerShell prompt and then run the following command to install the AzsReadinessChecker:
 
-     `Install-Module Microsoft.AzureStack.ReadinessChecker -Force`
+    ```powershell
+    Install-Module Microsoft.AzureStack.ReadinessChecker -Force
+    ```
 
 1. From the PowerShell prompt, run the following command to set the *$graphCredential* variable to the graph account. Replace `contoso\graphservice` with your account by using the `domain\username` format.
 
-    `$graphCredential = Get-Credential contoso\graphservice -Message "Enter Credentials for the Graph Service Account"`
+    ```powershell
+    $graphCredential = Get-Credential contoso\graphservice -Message "Enter Credentials for the Graph Service Account"
+    ```
 
-1. From the PowerShell prompt, run the following command to start validation for the graph service. Specify the value for **-ForestFQDN** as the FQDN for the forest root.
+1. From the PowerShell prompt, run the following command to start validation for the graph service. Specify the value for `-ForestFQDN` as the FQDN for the forest root.
 
-     `Invoke-AzsGraphValidation -ForestFQDN contoso.com -Credential $graphCredential`
+    ```powershell
+    Invoke-AzsGraphValidation -ForestFQDN contoso.com -Credential $graphCredential
+    ```
 
 1. After the tool runs, review the output. Confirm that the status is OK for graph integration requirements. A successful validation is similar to the following example:
 
-    ```
+    ```powershell
     Testing Graph Integration (v1.0)
             Test Forest Root:            OK
             Test Graph Credential:       OK
@@ -95,8 +104,8 @@ By default, both files are written to
 
 Use:
 
-* **-OutputPath**: The *path* parameter at the end of the run command to specify a different report location.
-* **-CleanReport**: The parameter at the end of the run command to clear *AzsReadinessCheckerReport.json* of previous report information. For more information, see [Azure Stack Hub validation report](azure-stack-validation-report.md).
+* `-OutputPath`: The *path* parameter at the end of the run command to specify a different report location.
+* `-CleanReport`: The parameter at the end of the run command to clear *AzsReadinessCheckerReport.json* of previous report information. For more information, see [Azure Stack Hub validation report](azure-stack-validation-report.md).
 
 ## Validation failures
 
