@@ -38,41 +38,37 @@ If the VM scale limit is reached, the following error codes are returned as a re
 
 ## Considerations for deallocation
 
-When a VM is in the _deallocated_ state, memory resources aren't being used. This allows others VMs to be placed in the system. 
+When a VM is in the _deallocated_ state, memory resources aren't being used. This allows others VMs to be placed in the system.
 
-If the deallocated VM is then started again, the memory usage or allocation is treated like a new VM placed into the system, and available memory is consumed. 
+If the deallocated VM is then started again, the memory usage or allocation is treated like a new VM placed into the system, and available memory is consumed.
 
-If there is no available memory, then the VM will not start.
+If there's no available memory, then the VM won't start.
 
 ## Azure Stack Hub memory
 
-Azure Stack Hub is designed to keep VMs running that have been successfully provisioned. For example, if a host is offline because of a hardware failure, Azure Stack Hub will attempt to restart that VM on another host. The second example is patch and update of the Azure Stack Hub software. If there is a need to reboot a physical host, an attempt is made to move the VMs executing on that host to another available host in the solution.
+Azure Stack Hub is designed to keep VMs running that have been successfully provisioned. For example, if a host is offline because of a hardware failure, Azure Stack Hub will attempt to restart that VM on another host. The second example is patch and update of the Azure Stack Hub software. If there's a need to reboot a physical host, an attempt is made to move the VMs executing on that host to another available host in the solution.
 
-This VM management or movement can only be achieved if there is reserved memory capacity to allow for the restart or migration to occur. A portion of the total host memory is reserved and unavailable for tenant VM placement.
+This VM management or movement can only be achieved if there's reserved memory capacity to allow for the restart or migration to occur. A portion of the total host memory is reserved and unavailable for tenant VM placement.
 
-You can review a pie chart in the Administration portal that shows the free and used memory in Azure Stack Hub. The following diagram shows the physical memory capacity on an Azure Stack Hub scale unit in the Azure Stack Hub:
+You can review a pie chart in the administrator portal that shows the free and used memory in Azure Stack Hub. The following diagram shows the physical memory capacity on an Azure Stack Hub scale unit in the Azure Stack Hub:
 
-![Physical memory capacity](media/azure-stack-capacity-planning/physical-memory-capacity.png)
+![Physical memory capacity on an Azure Stack Hub scale unit](media/azure-stack-capacity-planning/physical-memory-capacity.png)
 
 Used memory is made up of several components. The following components consume the memory in the use section of the pie chart:  
 
- -	Host OS usage or reserve – This is the memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the Spaces Direct memory cache. Since this value is dependent on the memory used by the different Hyper-V processes running on the host, it can fluctuate.
- - Infrastructure services – These are the infrastructure VMs that make up Azure Stack Hub. As of the 1904 release version of Azure Stack Hub, this entails ~31 VMs that take up 242 GB + (4 GB x # of nodes) of memory. The memory utilization of the infrastructure services component may change as we work on making our infrastructure services more scalable and resilient.
- - Resiliency reserve – Azure Stack Hub reserves a portion of the memory to allow for tenant availability during a single host failure as well as during patch and update to allow for successful live migration of VMs.
- - Tenant VMs – These are the tenant VMs created by Azure Stack Hub users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in "Creating" or "Failed" state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option from portal/powershell/cli will not consume memory from Azure Stack Hub.
- - Value-add resource providers (RPs) – VMs deployed for the value-add RPs like SQL, MySQL, App Service etc.
+- **Host OS usage or reserve:** This is the memory used by the operating system (OS) on the host, virtual memory page tables, processes that are running on the host OS, and the Spaces Direct memory cache. Since this value is dependent on the memory used by the different Hyper-V processes running on the host, it can fluctuate.
+- **Infrastructure services:** These are the infrastructure VMs that make up Azure Stack Hub. As of the 1904 release version of Azure Stack Hub, this entails ~31 VMs that take up 242 GB + (4 GB x # of nodes) of memory. The memory utilization of the infrastructure services component may change as we work on making our infrastructure services more scalable and resilient.
+- **Resiliency reserve:** Azure Stack Hub reserves a portion of the memory to allow for tenant availability during a single host failure as well as during patch and update to allow for successful live migration of VMs.
+- **Tenant VMs:** These are the tenant VMs created by Azure Stack Hub users. In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs in "Creating" or "Failed" state, or VMs shut down from within the guest, will consume memory. However, VMs that have been deallocated using the stop deallocated option from portal/powershell/cli won't consume memory from Azure Stack Hub.
+- **Value-add resource providers (RPs):** VMs deployed for the value-add RPs like SQL, MySQL, App Service etc.
 
+The best way to understand memory consumption on the portal is to use the [Azure Stack Hub Capacity Planner](https://aka.ms/azstackcapacityplanner) to see the impact of various workloads. The following calculation is the same one used by the planner.
 
-The best way to understand memory consumption on the portal is to use the [Azure Stack Hub Capacity Planner](https://aka.ms/azstackcapacityplanner) to see the impact of various workloads. 
-The following calculation is the same one used by the planner.
+This calculation results in the total available memory that can be used for tenant VM placement. This memory capacity is for the entirety of the Azure Stack Hub scale unit.
 
-This calculation results in the total, available memory that can be used for tenant VM placement. 
-This memory capacity is for the entirety of the Azure Stack Hub scale unit. 
+Available memory for VM placement = total host memory - resiliency reserve - memory used by running tenant VMs - Azure Stack Hub Infrastructure Overhead <sup>1</sup>
 
-
-  Available Memory for VM placement = Total Host Memory - Resiliency Reserve - Memory used by running tenant VMs - Azure Stack Hub Infrastructure Overhead <sup>1</sup>
-
-  Resiliency reserve = H + R * ((N-1) * H) + V * (N-2)
+Resiliency reserve = H + R * ((N-1) * H) + V * (N-2)
 
 > Where:
 > -	H = Size of single server memory
@@ -80,14 +76,11 @@ This memory capacity is for the entirety of the Azure Stack Hub scale unit.
 > -	R = The operating system reserve for OS overhead, which is .15 in this formula<sup>2</sup>
 > -	V = Largest VM in the scale unit
 
-  <sup>1</sup> Azure Stack Hub Infrastructure Overhead = 242 GB + (4 GB x # of nodes). Approximately 31 VMs are used to host Azure Stack Hub's infrastructure and, in total, consume about 242 GB + (4 GB x # of nodes) of memory and 146 virtual cores. The rationale for this number of VMs is to satisfy the needed service separation to meet security, scalability, servicing and patching requirements. This internal service structure allows for the future introduction of new infrastructure services as they are developed. 
+<sup>1</sup> Azure Stack Hub Infrastructure overhead = 242 GB + (4 GB x # of nodes). Approximately 31 VMs are used to host Azure Stack Hub's infrastructure and, in total, consume about 242 GB + (4 GB x # of nodes) of memory and 146 virtual cores. The rationale for this number of VMs is to satisfy the needed service separation to meet security, scalability, servicing, and patching requirements. This internal service structure allows for the future introduction of new infrastructure services as they're developed.
 
-  <sup>2</sup> Operating system reserve for overhead = 15% (.15) of node memory. The operating system reserve value is an estimate and will vary based on the physical memory capacity of the server and general operating system overhead.
+<sup>2</sup> Operating system reserve for overhead = 15% (.15) of node memory. The operating system reserve value is an estimate and will vary based on the physical memory capacity of the server and general operating system overhead.
 
-
-The value V, largest VM in the scale unit, is dynamically based on the largest tenant VM memory size. 
-For example, the largest VM value could be 7 GB or 112 GB or any other supported VM memory size in the Azure Stack Hub solution. 
-Changing the largest VM on the Azure Stack Hub fabric will result in an increase in the resiliency reserve in addition to the increase in the memory of the VM itself. 
+The value V, largest VM in the scale unit, is dynamically based on the largest tenant VM memory size. For example, the largest VM value could be 7 GB or 112 GB or any other supported VM memory size in the Azure Stack Hub solution. Changing the largest VM on the Azure Stack Hub fabric will result in an increase in the resiliency reserve in addition to the increase in the memory of the VM itself.
 
 ## Frequently Asked Questions
 
