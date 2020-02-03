@@ -53,7 +53,7 @@ Your subscription has default quota limits in place that can impact the deployme
 
 ### Operating system disks and images
 
-VMs in Azure Stack Hub are limited to generation one virtual hard disk (VHD/VHDX) format. VHDs can be used to store the machine operating system (OS) and data. VHDs are also used for the images you choose from to install an OS. Azure Stack Hub provides a marketplace to use with various versions and types of operating systems. Marketplace images are identified by image publisher, offer, SKU, and version (typically the latest version is specified as **latest**).
+VMs in Azure Stack Hub are limited to the generation one virtual hard disk (VHD/VHDX) format. VHDs can be used to store the machine operating system (OS) and data. VHDs are also used for the images you choose from to install an OS. Azure Stack Hub provides a marketplace to use with various versions and types of operating systems. Marketplace images are identified by image publisher, offer, SKU, and version (typically the latest version is specified as **latest**).
 
 The following table shows how to find the information for an image:
 
