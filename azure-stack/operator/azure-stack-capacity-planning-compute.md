@@ -84,7 +84,7 @@ The value V, largest VM in the scale unit, is dynamically based on the largest t
 
 ## Frequently Asked Questions
 
-**Q**: My tenant deployed a new VM, how long will it take for the capability chart on the admin portal to show remaining capacity?
+**Q**: My tenant deployed a new VM, how long will it take for the capability chart on the administrator portal to show remaining capacity?
 
 **A**: The capacity blade refreshes every 15 minutes, so please take that into consideration.
 
@@ -92,17 +92,16 @@ The value V, largest VM in the scale unit, is dynamically based on the largest t
 
 **A**: The available memory for VM placement has multiple dependencies, one of which is the host OS reserve. This value is dependent on the memory used by the different Hyper-V processes running on the host, which isn't a constant value.
 
-**Q**: What state do Tenant VMs have to be in to consume memory?
+**Q**: What state do tenant VMs have to be in to consume memory?
 
-**A**: In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs that are in "Creating", "Failed" or VMs shut down from within the guest as opposed to stop deallocated from portal/powershell/cli will consume memory.
+**A**: In addition to running VMs, memory is consumed by any VMs that have landed on the fabric. This means that VMs that are in a "Creating" or "Failed" state will consume memory. VMs shut down from within the guest as opposed to stop deallocated from portal/powershell/cli will also consume memory.
 
-**Q**: I have a four host Azure Stack Hub. My tenant has 3 VMs that consume 56 GB RAM (D5_v2) each. One of the VMs is resized to 112 GB RAM (D14_v2), and available memory reporting on dashboard resulted in a spike of 168 GB usage on the capacity blade. Subsequent resizing of the other two D5_v2 VMs to D14_v2, resulted in only 56GB of RAM increase each. Why is this so?
+**Q**: I have a four-host Azure Stack Hub. My tenant has 3 VMs that consume 56 GB RAM (D5_v2) each. One of the VMs is resized to 112 GB RAM (D14_v2), and available memory reporting on dashboard resulted in a spike of 168 GB usage on the capacity blade. Subsequent resizing of the other two D5_v2 VMs to D14_v2 resulted in only 56GB of RAM increase each. Why is this so?
 
-**A**: The available memory is a function of the resiliency reserve maintained by Azure Stack Hub. The Resiliency reserve is a function of the largest VM size on the Azure Stack Hub stamp. At first, the largest VM on the stamp was 56 GB memory. When the VM was resized, the largest VM on the stamp became 112 GB memory which not only increased the memory used by that tenant VM but also  increased the Resiliency reserve. This resulted in an increase of 56 GB (56 GB to 112 GB tenant VM memory increase) + 112 GB resiliency reserve memory increase. When subsequent VMs were resized, the largest VM size remained as the 112 GB VM and therefore there was no resultant resiliency reserve increase. The increase in memory consumption was only the tenant VM memory increase (56 GB). 
-
+**A**: The available memory is a function of the resiliency reserve maintained by Azure Stack Hub. The Resiliency reserve is a function of the largest VM size on the Azure Stack Hub stamp. At first, the largest VM on the stamp was 56 GB memory. When the VM was resized, the largest VM on the stamp became 112 GB memory which not only increased the memory used by that tenant VM but also  increased the resiliency reserve. This resulted in an increase of 56 GB (56 GB to 112 GB tenant VM memory increase) + 112 GB resiliency reserve memory increase. When subsequent VMs were resized, the largest VM size remained as the 112 GB VM and therefore there was no resultant resiliency reserve increase. The increase in memory consumption was only the tenant VM memory increase (56 GB).
 
 > [!NOTE]
-> The capacity planning requirements for networking are minimal as only the size of the Public VIP is configurable. For information about how to add more Public IP Addresses to Azure Stack Hub, see [Add Public IP Addresses](azure-stack-add-ips.md).
+> The capacity planning requirements for networking are minimal as only the size of the public VIP is configurable. For information about how to add more public IP addresses to Azure Stack Hub, see [Add public IP addresses](azure-stack-add-ips.md).
 
 ## Next steps
 Learn about [Azure Stack Hub storage](azure-stack-capacity-planning-storage.md)
