@@ -126,11 +126,11 @@ Once you have registered your Azure Stack, you can disregard the following messa
    $products = Select-AzsMarketplaceItem
    ```
 
-   This displays a Powershell grid listing all the Azure Stack registrations available in the selected subscription. Choose the registration that matches the Azure Stack environment you're downloading the marketplace items for, and select **OK**.
+   This displays a table that lists all the Azure Stack registrations available in the selected subscription. Choose the registration that matches the Azure Stack environment you're downloading the marketplace items for, and select **OK**.
 
      ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/selectRegistration.png)
 
-   You should now see a second PowerShell grid listing all the marketplace items available for download. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images.
+   You should now see a second table listing all the marketplace items available for download. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images.
      ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/selectProducts.png)
   
    You can also filter the list of images by using the **Add criteria** option.
