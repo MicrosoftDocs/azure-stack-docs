@@ -40,7 +40,7 @@ Resource modeling within the Azure Stack Hub Capacity Planner depends upon the v
 
 - Select a specific hardware offering, and see which combinations of various resources fit.
 
-- Create a specific combination of VM allocations, and let Azure Resource Calculator show which available hardware SKUs are capable of supporting this VM configuration.
+- Create a specific combination of VM allocations, and let Azure Resource Calculator show which available hardware SKUs can support this VM configuration.
 
 This tool provides two methods for allocating VM resources: either as one single collection of VM resource allocations, or as a collection of up to six differing workload configurations. Each workload configuration can contain a different allocation of available VM resources. The next sections have step-by-step instructions to create and use each of these allocation models. Only values contained in non-background shaded cells or within SKU pull-down lists on this worksheet should be modified. Changes made within shaded cells might break resource calculations.
 
@@ -55,7 +55,7 @@ To create a model by using a single collection of various sizes and quantities o
    > [!NOTE]
    > Total VM Storage refers to the total capacity of the data disk of the VM (the number of supported disks multiplied by the maximum capacity of a single disk [1 TB]). Based on the configuration indicators, we've populated the Available Storage Configurations table so you can choose your desired level of storage resource for each Azure Stack Hub VM. However, it's important to note that you can add or change the Available Storage Configurations table as necessary. <br><br>Each VM starts with an initially assigned local temp storage. To reflect the thin provisioning of temp storage, you can change the local-temp number to anything in the drop-down menu, including the maximum allowable temp storage amount.
 
-4. As you add VMs, you'll see the charts that show available SKU resources changing. This allows you to see the effects of adding various sizes and quantities of VMs during the modeling process. Another way to view the effect of changes is to watch the **Consumed** and **Still Available** numbers, listed directly below the list of available VMs. These numbers reflect estimated values based on the currently selected hardware SKU.
+4. As you add VMs, you'll see the charts that show available SKU resources changing. These charts allow you to see the effects of adding various sizes and quantities of VMs during the modeling process. Another way to view the effect of changes is to watch the **Consumed** and **Still Available** numbers, listed directly below the list of available VMs. These numbers reflect estimated values based on the currently selected hardware SKU.
 5. When you've created your set of VMs, you can find the suggested hardware SKU by selecting **Suggested SKU**. This button is located in the upper right corner of the page, directly below the **Current SKU** label. Using this button, you can then modify your VM configurations and see which hardware supports each configuration.
 
 ## DefineByWorkloadFootprint instructions
@@ -63,14 +63,14 @@ To create a model by using a single collection of various sizes and quantities o
 To create a model by using a collection of Azure Stack Hub workloads, select the **DefineByWorkloadFootprint** tab and follow this sequence of steps. You create Azure Stack Hub workloads by using available VM resources.
 
 > [!TIP]
-> To change the provided storage size for an Azure Stack Hub VM, see the note from step three in the preceding section.
+> To change the provided storage size for an Azure Stack Hub VM, see the note from step 3 in the preceding section.
 
 1. In the upper right corner of this worksheet, use the provided pull-down list box controls to select an initial number of servers (between 4 and 16) that you want installed in each hardware system (SKU).
 2. If you want to model various VM resource allocations against one specific hardware configuration, find the blue pull-down list box directly below the **Current SKU** label in the upper right corner of the page. Pull down this list box and select your desired hardware SKU.
-3. Select the appropriate storage size for each of your desired Azure Stack Hub VMs on the **DefineByVMFootprint** page, as described in step three of the previous section. The storage size per VM is defined in the DefineByVMFootprint sheet.
+3. Select the appropriate storage size for each of your desired Azure Stack Hub VMs on the **DefineByVMFootprint** page. This process is described in step three of the previous section. The storage size per VM is defined in the DefineByVMFootprint sheet.
 4. Starting on the upper left of the **DefineByWorkloadFootprint** page, create configurations for up to six different workload types. Enter the quantity of each VM type contained within that workload. You do this by placing numeric values into the column directly below that workload's name. You can modify workload names to reflect the type of workloads that will be supported by this particular configuration.
 5. You can include a particular quantity of each workload type by entering a value at the bottom of that column, directly below the **Quantity** label.
-6. When you've created workload types and quantities, select **Suggested SKU** in the upper right corner of the page, directly below the **Current SKU** label. This displays the smallest SKU with sufficient resources to support this overall configuration of workloads.
+6. When you've created workload types and quantities, select **Suggested SKU** in the upper right corner of the page, directly below the **Current SKU** label. The smallest SKU with sufficient resources to support this overall configuration of workloads will display.
 7. You can accomplish further modeling by modifying the number of servers selected for a hardware SKU or by changing the VM allocations or quantities within your workload configurations. The associated graphs display immediate feedback, showing how your changes affect the overall resource consumption.
 8. When you're satisfied with your changes, select **Suggested SKU** again to display the SKU suggested for your new configuration. You can also select the drop-down menu to select your desired SKU.
 
