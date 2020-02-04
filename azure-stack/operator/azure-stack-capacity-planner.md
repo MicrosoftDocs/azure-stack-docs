@@ -42,7 +42,7 @@ Resource modeling within the Azure Stack Hub Capacity Planner depends upon the v
 
 - Create a specific combination of VM allocations, and let Azure Resource Calculator show which available hardware SKUs are capable of supporting this VM configuration.
 
-This tool provides two methods for allocating VM resources: either as one single collection of VM resource allocations, or as a collection of up to six differing workload configurations. Each workload configuration can contain a different allocation of available VM resources. The next sections have step-by-step instructions to create and use each of these allocation models. Only values contained in non-background shaded cells, or within SKU pull-down lists on this worksheet, should be modified. Changes made within shaded cells might break resource calculations.
+This tool provides two methods for allocating VM resources: either as one single collection of VM resource allocations, or as a collection of up to six differing workload configurations. Each workload configuration can contain a different allocation of available VM resources. The next sections have step-by-step instructions to create and use each of these allocation models. Only values contained in non-background shaded cells or within SKU pull-down lists on this worksheet should be modified. Changes made within shaded cells might break resource calculations.
 
 ## DefineByVMFootprint instructions
 
