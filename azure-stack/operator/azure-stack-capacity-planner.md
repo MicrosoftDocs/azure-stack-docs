@@ -28,7 +28,7 @@ The following table describes each worksheet in the Azure Stack Hub Capacity Pla
 
 ## DefinedSolutionSKUs instructions
 
-This worksheet contains up to five hardware definition examples. Change details to match the system configurations under consideration.
+This worksheet has up to five hardware definition examples. Change details to match the system configurations under consideration.
 
 ### Hardware selections provided by authorized hardware partners
 
@@ -38,7 +38,7 @@ Azure Stack Hub is delivered as an integrated system with software installed by 
 
 Resource modeling within the Azure Stack Hub Capacity Planner depends upon the various sizes of Azure Stack Hub VMs. VMs range in size from the smallest, Basic 0, up to the largest, Standard_Fsv2. You can model computing resource allocations in two different ways:
 
-- Select a specific hardware offering, and see which combinations of various resources fit.
+- Select a specific hardware offering, and see which combinations of different resources fit.
 
 - Create a specific combination of VM allocations, and let Azure Resource Calculator show which available hardware SKUs can support this VM configuration.
 
@@ -70,7 +70,7 @@ To create a model by using a collection of Azure Stack Hub workloads, select the
 3. Select the appropriate storage size for each of your desired Azure Stack Hub VMs on the **DefineByVMFootprint** page. This process is described in step three of the previous section. The storage size per VM is defined in the DefineByVMFootprint sheet.
 4. Starting on the upper left of the **DefineByWorkloadFootprint** page, create configurations for up to six different workload types. Enter the quantity of each VM type contained within that workload. You do this by placing numeric values into the column directly below that workload's name. You can modify workload names to reflect the type of workloads that will be supported by this particular configuration.
 5. You can include a particular quantity of each workload type by entering a value at the bottom of that column, directly below the **Quantity** label.
-6. When you've created workload types and quantities, select **Suggested SKU** in the upper right corner of the page, directly below the **Current SKU** label. The smallest SKU with sufficient resources to support this overall configuration of workloads will display.
+6. When you've created workload types and quantities, select **Suggested SKU** in the upper right corner of the page, directly below the **Current SKU** label. The smallest SKU with enough resources to support this overall configuration of workloads will display.
 7. You can accomplish further modeling by modifying the number of servers selected for a hardware SKU or by changing the VM allocations or quantities within your workload configurations. The associated graphs display immediate feedback, showing how your changes affect the overall resource consumption.
 8. When you're satisfied with your changes, select **Suggested SKU** again to display the SKU suggested for your new configuration. You can also select the drop-down menu to select your desired SKU.
 
