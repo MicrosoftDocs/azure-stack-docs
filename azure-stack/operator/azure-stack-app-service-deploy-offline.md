@@ -34,9 +34,9 @@ To add the Azure App Service resource provider to your offline Azure Stack Hub d
 
 To deploy Azure App Service in an offline environment, first create an offline installation package on a machine that's connected to the internet.
 
-1. Run the AppService.exe installer on a machine that's connected to the internet.
+1. Run the AppService.exe installer on a machine that's connected to the internet. 
 
-2. Select **Advanced** > **Create offline installation package**.
+2. Select **Advanced** > **Create offline installation package**. This step will take several minutes to complete.
 
     ![Create an offline package in Azure App Service Installer][1]
 
@@ -157,6 +157,13 @@ To deploy Azure App Service in an offline environment, first create an offline i
 
     > [!NOTE]
     > Windows Server 2016 Core is *not* a supported platform image for use with Azure App Service on Azure Stack Hub.  Don't use evaluation images for production deployments. Azure App Service on Azure Stack Hub requires that Microsoft .NET 3.5.1 SP1 be activated on the image used for deployment. Marketplace-syndicated Windows Server 2016 images don't have this feature enabled. Therefore, you must create and use a Windows Server 2016 image with this feature pre-enabled.
+    >
+    > See [Add a custom VM image to Azure Stack Hub](azure-stack-add-vm-image.md) for details on creating a custom image and adding to Marketplace. Be sure to specify the following when adding the image to Marketplace:
+    >
+    >- Publisher = MicrosoftWindowsServer
+    >- Offer = WindowsServer
+    >- SKU = 2016-Datacenter
+    >- Version = Specify the "latest" version
 
 1. In the **Select Platform Image** box, choose your deployment Windows Server 2016 virtual machine (VM) image from the images available on the compute resource provider for the Azure App Service cloud. Select **Next**.
 
