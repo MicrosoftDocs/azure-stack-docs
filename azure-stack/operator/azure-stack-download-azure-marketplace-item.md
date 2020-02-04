@@ -3,7 +3,7 @@ title: Download marketplace items from Azure and publish to Azure Stack Hub
 description: Learn how to download marketplace items from Azure and publish to Azure Stack Hub.
 author: sethmanheim
 ms.topic: conceptual
-ms.date: 12/23/2019
+ms.date: 02/04/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 12/23/2018
@@ -128,13 +128,13 @@ Once you have registered your Azure Stack, you can disregard the following messa
 
    This displays a table that lists all the Azure Stack registrations available in the selected subscription. Choose the registration that matches the Azure Stack environment you're downloading the marketplace items for, and select **OK**.
 
-     ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/selectRegistration.png)
+     ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/select-registration.png)
 
    You should now see a second table listing all the marketplace items available for download. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images.
-     ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/selectProducts.png)
+     ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/select-products.png)
   
    You can also filter the list of images by using the **Add criteria** option.
-   ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/selectProductswithFilter.png)
+   ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/select-products-with-filter.png)
 
    Once you've made your selections, select OK.
 
