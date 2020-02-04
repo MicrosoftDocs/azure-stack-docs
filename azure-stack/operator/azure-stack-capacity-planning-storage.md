@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Hub capacity planning storage 
-description: Learn about capacity planning for Azure Stack Hub deployments.
+title: Azure Stack Hub storage capacity planning
+description: Learn about storage capacity planning for Azure Stack Hub deployments.
 author: ihenkel
 ms.topic: article
 ms.date: 05/31/2019
@@ -9,14 +9,16 @@ ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
 ---
 
-# Azure Stack Hub storage
+# Azure Stack Hub storage capacity planning
 
 The following sections provide Azure Stack Hub storage capacity planning information to assist in planning for the solution's storage needs.
 
 ## Uses and organization of storage capacity
+
 The hyperconverged configuration of Azure Stack Hub allows for the sharing of physical storage devices. There are three main divisions of the available storage that can be shared: the infrastructure, the temporary storage of the tenant virtual machines, and the storage backing the blobs, tables, and queues of the Azure Consistent Storage (ACS) services.
 
 ## Storage Spaces Direct cache and capacity tiers
+
 There is storage capacity used for the operating system, local logging, dumps, and other temporary infrastructure storage needs. This local storage capacity is separate (devices and capacity) from the storage devices brought under management of the Storage Spaces Direct configuration. The remainder of the storage devices is placed in a single pool of storage capacity, regardless of the number of servers in the scale unit.
 
 These devices are of two types: cache and capacity. Storage Spaces Direct consumes cache devices for write-back and read caching. The capacities of these cache devices, while used, aren't committed to formatted, "visible" capacity of the formatted virtual disks. By contrast, Storage Spaces Direct does use capacity devices for this purpose, providing the "home location" of the managed data.
@@ -63,6 +65,6 @@ The virtual disks created automatically, and their capacities, are as follows:
 
 <sup>3</sup> The virtual disks created for use by ACS are a simple division of the remaining capacity. As noted, all virtual disks are a three-way mirror, and one capacity drive's worth of capacity for each server is unallocated. The various virtual disks previously enumerated are allocated first, and the remaining capacity is then used for the ACS virtual disks.
 
-
 ## Next steps
+
 Learn about the [Azure Stack Hub Capacity Planner](azure-stack-capacity-planner.md).
