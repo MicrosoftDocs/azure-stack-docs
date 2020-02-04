@@ -1,15 +1,8 @@
 ---
-title: Azure Stack Validation as a Service release notes | Microsoft Docs
+title: Azure Stack Validation as a Service release notes 
 description: Azure Stack Validation as a Service release notes.
-services: azure-stack
-documentationcenter: ''
 author: mattbriggs
-manager: femila
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2019
 ms.author: mabrigg
@@ -25,6 +18,17 @@ ms.lastreviewed: 10/28/2019
 This article has the release notes for Azure Stack Validation as a Service.
 
 ## Version 4.4.2.1
+
+2020 January 9
+
+- Test content updates
+  - OEM Validation Workflow (Version 5.1.52.0 -> 5.1.53.0) : Reduced the number of required parameters from the test schedule pane. 
+  - Bugfix for Compute test - TestVMOperations
+    
+- Known issues
+  - Contact vaashelp@microsoft.com if the following test cases fail to run during OEM Validation Workflow:
+    - Test101LinuxEmptyAttachedDiskManagedDisk
+    - Test101WindowsEmptyAttachedDiskManagedDisk
 
 2019 December 3
 

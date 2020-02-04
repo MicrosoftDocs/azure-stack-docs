@@ -1,27 +1,17 @@
 ---
-title: Upgrade a Kubernetes cluster on Azure Stack | Microsoft Docs
-description: Learn how to upgrade a Kubernetes cluster on Azure Stack. 
-services: azure-stack
-documentationcenter: ''
+title: Upgrade a Kubernetes cluster on Azure Stack Hub 
+description: Learn how to upgrade a Kubernetes cluster on Azure Stack Hub. 
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na (Kubernetes)
-ms.devlang: nav
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 01/02/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 11/21/2019
+ms.lastreviewed: 01/02/2020
 
 ---
 
-# Upgrade a Kubernetes cluster on Azure Stack
-
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Upgrade a Kubernetes cluster on Azure Stack Hub
 
 ## Upgrade a cluster
 
@@ -34,7 +24,7 @@ Microsoft doesn't manage your cluster. But Microsoft provides the tool and VM im
 For a deployed cluster upgrades cover:
 
 -   Kubernetes
--   Azure Stack Kubernetes provider
+-   Azure Stack Hub Kubernetes provider
 -   Base OS
 
 When upgrading a production cluster, consider:
@@ -42,7 +32,7 @@ When upgrading a production cluster, consider:
 -   Are you using the correct cluster specification (`apimodel.json`) and resource group for the target cluster?
 -   Are you using a reliable machine for the client machine to run the AKS engine and from which you are performing upgrade operations?
 -   Make sure that you have a backup cluster and that it is operational.
--   If possible, run the command from a VM within the Azure Stack environment to decrease the network hops and potential connectivity failures.
+-   If possible, run the command from a VM within the Azure Stack Hub environment to decrease the network hops and potential connectivity failures.
 -   Make sure that your subscription has enough space for the entire process. The process allocates new VMs during the process.
 -   No system updates or scheduled tasks are planned.
 -   Set up a staged upgrade on a cluster that is configured exactly as the production cluster and test the upgrade there before doing so in your production cluster
@@ -83,12 +73,12 @@ The following instructions use the minimum steps to perform the upgrade. If woul
 
     | Parameter | Example | Description |
     | --- | --- | --- |
-    | azure-env | AzureStackCloud | To indicate to AKS engine that your target platform is Azure Stack use `AzureStackCloud`. |
-    | location | local | The region name for your Azure Stack. For the ASDK, the region is set to `local`. |
+    | azure-env | AzureStackCloud | To indicate to AKS engine that your target platform is Azure Stack Hub use `AzureStackCloud`. |
+    | location | local | The region name for your Azure Stack Hub. For the ASDK, the region is set to `local`. |
     | resource-group | kube-rg | Enter the name of a new resource group or select an existing resource group. The resource name needs to be alphanumeric and lowercase. |
     | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter your Subscription ID. For more information, see [Subscribe to an offer](https://docs.microsoft.com/azure-stack/user/azure-stack-subscribe-services#subscribe-to-an-offer) |
     | api-model | ./kubernetes-azurestack.json | Path to the cluster configuration file, or API model. |
-    | client-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal GUID. The Client ID identified as the Application ID when your Azure Stack administrator created the service principal. |
+    | client-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal GUID. The Client ID identified as the Application ID when your Azure Stack Hub administrator created the service principal. |
     | client-secret | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal secret. This is the client secret you set up when creating your service. |
     | identity-system | adfs | Optional. Specify your identity management solution if you are using Active Directory Federated Services (AD FS). |
 
@@ -96,7 +86,7 @@ The following instructions use the minimum steps to perform the upgrade. If woul
 
     ```bash  
     aks-engine upgrade \
-    --azure-env AzureStackCloud   
+    --azure-env AzureStackCloud \
     --location <for an ASDK is local> \
     --resource-group kube-rg \
     --subscription-id xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx \
@@ -113,7 +103,7 @@ The following instructions use the minimum steps to perform the upgrade. If woul
 
 1. Review [the supported-kubernetes-versions table](https://github.com/Azure/aks-engine/blob/master/docs/topics/azure-stack.md#supported-kubernetes-versions) and determine if you have the version of aks-engine and AKS base Image that you plan for your upgrade. To view the version of aks-engine run: `aks-engine version`.
 2. Upgrade your AKS engine accordingly, in the machine where you have installed aks-engine run: `./get-akse.sh --version vx.xx.x` replacing **x.xx.x** with your targeted version.
-3. Ask your Azure Stack operator to add the version of the AKS Base Image you need in the Azure Stack Marketplace that you plan to use.
+3. Ask your Azure Stack Hub operator to add the version of the AKS Base Image you need in the Azure Stack Hub Marketplace that you plan to use.
 4. Run the `aks-engine upgrade` command using the same version of Kubernetes that you are already using, but add the `--force`. You can see an example in [Forcing an upgrade](#forcing-an-upgrade).
 
 
@@ -138,5 +128,5 @@ For instructions, see [Force upgrade](https://github.com/Azure/aks-engine/blob/m
 
 ## Next steps
 
-- Read about the [The AKS engine on Azure Stack](azure-stack-kubernetes-aks-engine-overview.md)
-- [Scale a Kubernetes cluster on Azure Stack](azure-stack-kubernetes-aks-engine-scale.md)
+- Read about the [The AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)
+- [Scale a Kubernetes cluster on Azure Stack Hub](azure-stack-kubernetes-aks-engine-scale.md)

@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Stack Hub Development Kit Documentation
+title: Azure Stack Development Kit Documentation
 metadata:
-  title: Azure Stack Hub Development Kit Documentation - Tutorials, API Reference
-  description: Learn how to deploy and use the Azure Stack Hub Development Kit.
+  title: Azure Stack Development Kit Documentation - Tutorials, API Reference
+  description: Learn how to deploy and use the Azure Stack Development Kit.
   services: azure-stack
   author: mattbriggs
   manager: femila
@@ -14,7 +14,7 @@ metadata:
   ms.date: 04/13/2018
   ms.author: mabrigg
 abstract:
-  description: The Azure Stack Hub Development Kit (ASDK) is a single-node deployment of Azure Stack that you can download and use for free. The ASDK is meant to provide an environment in which you can evaluate Azure Stack and develop modern applications using APIs and tooling consistent with Azure in a non-production environment. <br/><br/>If you're an Azure Stack operator who manages the integrated systems infrastructure and offers services, see our <a href="/azure-stack/operator">operator documentation</a>.<br/><br/>If you're an Azure Stack user who uses services or builds apps for Azure Stack, see our <a href="/azure-stack/user">user documentation</a>.
+  description: The Azure Stack Development Kit (ASDK) is a single-node deployment of Azure Stack that you can download and use for free. The ASDK is meant to provide an environment in which you can evaluate Azure Stack and develop modern applications using APIs and tooling consistent with Azure in a non-production environment. <br/><br/>If you're an Azure Stack operator who manages the integrated systems infrastructure and offers services, see our <a href="/azure-stack/operator">operator documentation</a>.<br/><br/>If you're an Azure Stack user who uses services or builds apps for Azure Stack, see our <a href="/azure-stack/user">user documentation</a>.
 sections:
 - title: Step-by-Step Tutorials
   items:
@@ -24,7 +24,7 @@ sections:
     style: ordered
     items:
     - html: <a href="/azure-stack/asdk/asdk-install">Deploy the ASDK</a>
-    - html: <a href="/azure-stack/operator/azure-stack-create-and-publish-marketplace-item">Add an Azure Stack marketplace item</a>
+    - html: <a href="/azure-stack/operator/azure-stack-create-and-publish-marketplace-item">Add an Azure Stack Hub Marketplace item</a>
     - html: <a href="/azure-stack/operator/azure-stack-tutorial-tenant-vm">Offer IaaS services</a>
     - html: <a href="/azure-stack/user/azure-stack-subscribe-services">Subscribe to an offer</a>
     - html: <a href="/azure-stack/operator/create-add-on-plan">Update offers and plans</a>

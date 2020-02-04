@@ -1,24 +1,16 @@
 ---
-title: Remove the MySQL resource provider in Azure Stack | Microsoft Docs
-description: Learn how to remove the MySQL resource provider from your Azure Stack deployment.
-services: azure-stack
-documentationCenter: ''
+title: Remove the MySQL resource provider in Azure Stack Hub 
+description: Learn how to remove the MySQL resource provider from your Azure Stack Hub deployment.
 author: mattbriggs
-manager: femila
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/20/2018
 
 ---
 
-# Remove the MySQL resource provider in Azure Stack
+# Remove the MySQL resource provider in Azure Stack Hub
 
 Before you remove the MySQL resource provider, you must remove all the provider dependencies. You'll also need a copy of the deployment package that was used to install the resource provider.
 
@@ -31,7 +23,7 @@ Removing the MySQL resource provider doesn't delete tenant databases from hostin
 
 There are several cleanup tasks to do before you run the DeployMySqlProvider.ps1 script to remove the resource provider.
 
-The Azure Stack Operator is responsible for the following cleanup tasks:
+The Azure Stack Hub Operator is responsible for the following cleanup tasks:
 
 * Delete any plans that reference the MySQL Adapter.
 * Delete any quotas that are associated with the MySQL Adapter.
@@ -48,10 +40,10 @@ The Azure Stack Operator is responsible for the following cleanup tasks:
 4. Run the DeployMySqlProvider.ps1 script using the following parameters:
     - **Uninstall**: Removes the resource provider and all associated resources.
     - **PrivilegedEndpoint**: The IP address or DNS name of the privileged endpoint.
-    - **AzureEnvironment**: The Azure environment used for deploying Azure Stack. Required only for Azure AD deployments.
+    - **AzureEnvironment**: The Azure environment used for deploying Azure Stack Hub. Required only for Azure AD deployments.
     - **CloudAdminCredential**: The credential for the cloud administrator, necessary to access the privileged endpoint.
     - **DirectoryTenantID**
-    - **AzCredential**: The credential for the Azure Stack service admin account. Use the same credentials that you used for deploying Azure Stack.
+    - **AzCredential**: The credential for the Azure Stack Hub service admin account. Use the same credentials that you used for deploying Azure Stack Hub.
 
 ## Next steps
 

@@ -1,33 +1,22 @@
 ---
-title: Deploy a VM with a securely stored certificate on Azure Stack | Microsoft Docs
-description: Learn how to deploy a virtual machine and push a certificate onto it by using a key vault in Azure Stack
-services: azure-stack
-documentationcenter: ''
+title: Deploy a VM with a securely stored certificate on Azure Stack Hub 
+description: Learn how to deploy a virtual machine and push a certificate onto it by using a key vault in Azure Stack Hub
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.assetid: 46590eb1-1746-4ecf-a9e5-41609fde8e89
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/03/2019
+ms.date: 01/24/2020
 ms.author: sethm
 ms.lastreviewed: 12/27/2018
 
 ---
 
-# Deploy a VM with a securely stored certificate on Azure Stack 
+# Deploy a VM with a securely stored certificate on Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
-This article describes how to deploy an Azure Stack virtual machine (VM) with a Key Vault certificate installed.
+This article describes how to deploy an Azure Stack Hub virtual machine (VM) with a Key Vault certificate installed.
 
 ## Overview
 
-Certificates are used in many scenarios, such as authenticating to Active Directory, or encrypting web traffic. You can securely store certificates as secrets in an Azure Stack key vault. The benefits of using Azure Stack Key Vault are:
+Certificates are used in many scenarios, such as authenticating to Active Directory, or encrypting web traffic. You can securely store certificates as secrets in an Azure Stack Hub key vault. The benefits of using Azure Stack Hub Key Vault are:
 
 * Certificates are not exposed in a script, command-line history, or template.
 * The certificate management process is streamlined.
@@ -47,8 +36,8 @@ The following steps describe the process required to push a certificate to the V
 ## Prerequisites
 
 * You must subscribe to an offer that includes the Key Vault service.
-* [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md).
-* [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md).
+* [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md).
+* [Configure the Azure Stack Hub user's PowerShell environment](azure-stack-powershell-configure-user.md).
 
 ## Create a key vault secret
 
@@ -174,7 +163,7 @@ When the template is deployed successfully, it displays the following output:
 
 ![Template deployment results](media/azure-stack-key-vault-push-secret-into-vm/deployment-output.png)
 
-Azure Stack pushes the certificate to the VM during deployment. The certificate location depends on the operating system of the VM:
+Azure Stack Hub pushes the certificate to the VM during deployment. The certificate location depends on the operating system of the VM:
 
 * In Windows, the certificate is added to the **LocalMachine** certificate location, with the certificate store that the user provided.
 * In Linux, the certificate is placed under the **/var/lib/waagent** directory, with the file name **UppercaseThumbprint.crt** for the X509 certificate file and **UppercaseThumbprint.prv** for the private key.

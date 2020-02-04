@@ -1,18 +1,9 @@
 ---
 title: Replace a physical disk
-titleSuffix: Azure Stack
-description: Learn how to replace a physical disk in Azure Stack.
-services: azure-stack
-documentationcenter: ''
+titleSuffix: Azure Stack Hub
+description: Learn how to replace a physical disk in Azure Stack Hub.
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mabrigg
@@ -21,25 +12,23 @@ ms.lastreviewed: 12/02/2019
 
 ---
 
-# Replace a physical disk in Azure Stack
+# Replace a physical disk in Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
-This article describes the general process to replace a physical disk in Azure Stack. If a physical disk fails, you should replace it as soon as possible.
+This article describes the general process to replace a physical disk in Azure Stack Hub. If a physical disk fails, you should replace it as soon as possible.
 
 > [!Note]  
-> Replacing a physical data drive does **not** require the scale unit node to be put into maintenance mode  (drain) upfront. Also after the physical drive has been replaced the scale unit node doesn't need to be repaired using the Azure Stack Hub administrator portal. The following article has more information when a repair is required [Replace a hardware component on an Azure Stack scale unit node](azure-stack-replace-component.md).
+> Replacing a physical data drive does **not** require the scale unit node to be put into maintenance mode  (drain) upfront. Also after the physical drive has been replaced the scale unit node doesn't need to be repaired using the Azure Stack Hub administrator portal. The following article has more information when a repair is required [Replace a hardware component on an Azure Stack Hub scale unit node](azure-stack-replace-component.md).
 
-You can use this procedure for integrated systems, and for Azure Stack Development Kit (ASDK) deployments that have hot-swappable disks.
+You can use this procedure for deployments that have hot-swappable disks.
 
 Actual disk replacement steps will vary based on your original equipment manufacturer (OEM) hardware vendor. See your vendor's field replaceable unit (FRU) documentation for detailed steps that are specific to your system.
 
 ## Review disk alert information
 When a disk fails, you receive an alert that tells you that connectivity has been lost to a physical disk.
 
-![Alert showing connectivity lost to physical disk in Azure Stack administration](media/azure-stack-replace-disk/DiskAlert.png)
+![Alert showing connectivity lost to physical disk in Azure Stack Hub administration](media/azure-stack-replace-disk/DiskAlert.png)
 
-If you open the alert, the alert description contains the scale unit node and the exact physical slot location for the disk that you must replace. Azure Stack further helps you to identify the failed disk by using LED indicator capabilities.
+If you open the alert, the alert description contains the scale unit node and the exact physical slot location for the disk that you must replace. Azure Stack Hub further helps you to identify the failed disk by using LED indicator capabilities.
 
 ## Replace the physical disk
 
@@ -50,14 +39,14 @@ Follow your OEM hardware vendor's FRU instructions for actual disk replacement.
 
 To prevent the use of an unsupported disk in an integrated system, the system blocks disks that aren't supported by your vendor. If you try to use an unsupported disk, a new alert tells you a disk has been quarantined because of an unsupported model or firmware.
 
-After you replace the disk, Azure Stack automatically discovers the new disk and starts the virtual disk repair process.
+After you replace the disk, Azure Stack Hub automatically discovers the new disk and starts the virtual disk repair process.
 
-## Check the status of virtual disk repair using Azure Stack PowerShell
+## Check the status of virtual disk repair using Azure Stack Hub PowerShell
 
-After you replace the disk, you can monitor the virtual disk health status and repair job progress by using Azure Stack PowerShell.
+After you replace the disk, you can monitor the virtual disk health status and repair job progress by using Azure Stack Hub PowerShell.
 
-1. Check that you have Azure Stack PowerShell installed. For more information, see [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).
-2. Connect to Azure Stack with PowerShell as an operator. For more information, see [Connect to Azure Stack with PowerShell as an operator](azure-stack-powershell-configure-admin.md).
+1. Check that you have Azure Stack Hub PowerShell installed. For more information, see [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md).
+2. Connect to Azure Stack Hub with PowerShell as an operator. For more information, see [Connect to Azure Stack Hub with PowerShell as an operator](azure-stack-powershell-configure-admin.md).
 3. Run the following cmdlets to verify the virtual disk health and repair status:
 
     ```powershell  
@@ -66,9 +55,9 @@ After you replace the disk, you can monitor the virtual disk health status and r
     Get-AzsVolume -StorageSubSystem $StorageSubSystem.Name -ScaleUnit $scaleunit.name | Select-Object VolumeLabel, OperationalStatus, RepairStatus
     ```
 
-    ![Azure Stack volumes health in Powershell](media/azure-stack-replace-disk/get-azure-stack-volumes-health.png)
+    ![Azure Stack Hub volumes health in Powershell](media/azure-stack-replace-disk/get-azure-stack-volumes-health.png)
 
-4. Validate Azure Stack system state. For instructions, see [Validate Azure Stack system state](azure-stack-diagnostic-test.md).
+4. Validate Azure Stack Hub system state. For instructions, see [Validate Azure Stack Hub system state](azure-stack-diagnostic-test.md).
 5. Optionally, you can run the following command to verify the status of the replaced physical disk.
 
     ```powershell  
@@ -78,7 +67,7 @@ After you replace the disk, you can monitor the virtual disk health status and r
     Get-AzsDrive -StorageSubSystem $StorageSubSystem.Name -ScaleUnit $scaleunit.name | Sort-Object StorageNode,MediaType,PhysicalLocation | Format-Table Storagenode, Healthstatus, PhysicalLocation, Model, MediaType,  CapacityGB, CanPool, CannotPoolReason
     ```
 
-    ![Replaced physical disks in Azure Stack with Powershell](media/azure-stack-replace-disk/check-replaced-physical-disks-azure-stack.png)
+    ![Replaced physical disks in Azure Stack Hub with Powershell](media/azure-stack-replace-disk/check-replaced-physical-disks-azure-stack.png)
 
 ## Check the status of virtual disk repair using the privileged endpoint
 
@@ -108,7 +97,7 @@ After you replace the disk, you can monitor the virtual disk health status and r
 
     ![Powershell output of Get-StorageJob command](media/azure-stack-replace-disk/GetStorageJobOutput.png)
 
-4. Validate the Azure Stack system state. For instructions, see [Validate Azure Stack system state](azure-stack-diagnostic-test.md).
+4. Validate the Azure Stack Hub system state. For instructions, see [Validate Azure Stack Hub system state](azure-stack-diagnostic-test.md).
 
 ## Troubleshoot virtual disk repair using the privileged endpoint
 

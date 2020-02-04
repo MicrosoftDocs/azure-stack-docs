@@ -1,10 +1,8 @@
 ---
-title: How to connect to iSCSI storage with Azure Stack | Microsoft Docs
-description: Learn how to connect to iSCSI storage with Azure Stack.
-services: azure-stack
+title: How to connect to iSCSI storage with Azure Stack Hub 
+description: Learn how to connect to iSCSI storage with Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: how-to
 ms.date: 10/28/2019
 ms.author: mabrigg
@@ -12,27 +10,25 @@ ms.reviewer: sijuman
 ms.lastreviewed: 10/28/2019
 
 # keywords:  X
-# Intent: As an Azure Stack Operator, I want < what? > so that < why? >
+# Intent: As an Azure Stack Hub Operator, I want < what? > so that < why? >
 ---
 
-# How to connect to iSCSI storage with Azure Stack
+# Connect to iSCSI storage with Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+You can use the template in this article to connect an Azure Stack Hub virtual machine (VM) to an on-premises iSCSI target set up the VM to use storage hosted outside of our Azure Stack Hub and elsewhere in your datacenter. This article looks at using a Windows machine as the iSCSI target.
 
-You can use the template in this article to connect an Azure Stack virtual machine (VM) to an on-premises iSCSI target set up the VM to use storage hosted outside of our Azure Stack and elsewhere in your datacenter. This article looks at using a Windows machine as the iSCSI target.
-
-You can find the template in the **lucidqdreams** fork of [Azure Intelligent Edge Patterns](https://github.com/lucidqdreams/azure-intelligent-edge-patterns) GitHub repository. The template is in the **storage-iSCSI** folder. The template has been designed to set up up the infrastructure necessary on the Azure Stack side to connect to an iSCSI target. This includes a virtual machine that will act as the iSCSI Initiator along with its accompanying VNet, NSG, PIP, and storage. After the template has been deployed, two PowerShell scripts need to be,  run to complete the configuration. One script will be run on the on-premises VM (target) and one will be run on the Azure Stack VM (Initiator). Once these are completed, you will have on-premises storage added to your Azure Stack VM. 
+You can find the template in the **lucidqdreams** fork of [Azure Intelligent Edge Patterns](https://github.com/lucidqdreams/azure-intelligent-edge-patterns) GitHub repository. The template is in the **storage-iSCSI** folder. The template has been designed to set up up the infrastructure necessary on the Azure Stack Hub side to connect to an iSCSI target. This includes a virtual machine that will act as the iSCSI Initiator along with its accompanying VNet, NSG, PIP, and storage. After the template has been deployed, two PowerShell scripts need to be,  run to complete the configuration. One script will be run on the on-premises VM (target) and one will be run on the Azure Stack Hub VM (Initiator). Once these are completed, you will have on-premises storage added to your Azure Stack Hub VM. 
 
 ## Overview
 
-The diagram shows a VM hosted on Azure Stack with an iSCSI mounted disk from a Windows machine on premises (physical or virtual) allowing storage external to Azure Stack to mount inside your Azure Stack hosted VM over the iSCSI protocol.
+The diagram shows a VM hosted on Azure Stack Hub with an iSCSI mounted disk from a Windows machine on premises (physical or virtual) allowing storage external to Azure Stack Hub to mount inside your Azure Stack Hub hosted VM over the iSCSI protocol.
 
 ![alt text](./media/azure-stack-network-howto-iscsi-storage/overview.png)
 
 ### Requirements
 
 - An on-premises machine (physical or virtual) running Windows Server 2016 Datacenter or Windows Server 2019 Datacenter.
-- Required Azure Stack Marketplace items:
+- Required Azure Stack Hub Marketplace items:
     -  Windows Server 2016 Datacenter or Windows Server 2019 Datacenter (latest build recommended).
     -  PowerShell DSC extension.
     -  Custom Script Extension.
@@ -64,10 +60,10 @@ The diagram shows the resources deployed from the template to create the iSCSI c
 
 ### The Deployment process
 
-The resource group template generates output, which is meant to be the input for the next step. It is mainly focused on the server name and the Azure Stack public IP address where the iSCSI traffic originates. For this example:
+The resource group template generates output, which is meant to be the input for the next step. It is mainly focused on the server name and the Azure Stack Hub public IP address where the iSCSI traffic originates. For this example:
 
 1. Deploy the infrastructure template.
-2. Deploy an Azure Stack VM to a VM hosted elsewhere in your data center. 
+2. Deploy an Azure Stack Hub VM to a VM hosted elsewhere in your datacenter. 
 3. Run `Create-iSCSITarget.ps1` using the IP address and server name outputs from the template as in-out parameters for the script on the iSCSI target, which can be a virtual machine or physical server.
 4. Use the external IP address or addresses of the iSCSI Target server as inputs to run the `Connect-toiSCSITarget.ps1` script. 
 
@@ -142,4 +138,4 @@ The `Connect-toiSCSITarget.ps1` is the final script, which is run on the iSCSI c
 
 ## Next steps
 
-[Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)  
+[Differences and considerations for Azure Stack Hub networking](azure-stack-network-differences.md)  

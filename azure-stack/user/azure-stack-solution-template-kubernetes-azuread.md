@@ -1,58 +1,48 @@
 ---
-title: Deploy Kubernetes to Azure Stack using Azure Active Directory (Azure AD) | Microsoft Docs
-description: Learn how to deploy Kubernetes to Azure Stack using Azure Active Directory (Azure AD).
-services: azure-stack
-documentationcenter: ''
+title: Deploy Kubernetes to Azure Stack Hub using Azure Active Directory (Azure AD) 
+description: Learn how to deploy Kubernetes to Azure Stack Hub using Azure Active Directory (Azure AD).
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 06/18/2019
 
 ---
 
-# Deploy Kubernetes to Azure Stack using Azure Active Directory
-
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Deploy Kubernetes to Azure Stack Hub using Azure Active Directory
 
 > [!Note]  
-> Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
+> Only use the Kubernetes Azure Stack Marketplace item to deploy clusters as a proof-of-concept. For supported Kubernetes clusters on Azure Stack, use [the AKS engine](azure-stack-kubernetes-aks-engine-overview.md).
 
 You can follow the steps in this article to deploy and set up the resources for Kubernetes, when using Azure Active Directory (Azure AD) as your identity management service, in a single, coordinated operation.
 
 ## Prerequisites
 
-To get started, make sure you have the right permissions and that your Azure Stack is ready.
+To get started, make sure you have the right permissions and that your Azure Stack Hub is ready.
 
 1. Verify that you can create applications in your Azure Active Directory (Azure AD) tenant. You need these permissions for the Kubernetes deployment.
 
     For instructions on checking your permissions, see [Check Azure Active Directory permissions](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
-1. Generate an SSH public and private key pair to sign in to the Linux VM on Azure Stack. You will need the public key when creating the cluster.
+1. Generate an SSH public and private key pair to sign in to the Linux VM on Azure Stack Hub. You will need the public key when creating the cluster.
 
     For instructions on generating a key, see [SSH Key Generation](azure-stack-dev-start-howto-ssh-public-key.md).
 
-1. Check that you have a valid subscription in your Azure Stack tenant portal, and that you have enough public IP addresses available to add new applications.
+1. Check that you have a valid subscription in your Azure Stack Hub tenant portal, and that you have enough public IP addresses available to add new applications.
 
-    The cluster cannot be deployed to an Azure Stack **Administrator** subscription. You must use a **User** subscription. 
+    The cluster cannot be deployed to an Azure Stack Hub **Administrator** subscription. You must use a **User** subscription. 
 
-1. If you do not have Kubernetes Cluster in your marketplace, talk to your Azure Stack administrator.
+1. If you do not have Kubernetes Cluster in your marketplace, talk to your Azure Stack Hub administrator.
 
 ## Create a service principal
 
-Set up a service principal in Azure. The service principal gives your application access to Azure Stack resources.
+Set up a service principal in Azure. The service principal gives your application access to Azure Stack Hub resources.
 
 1. Sign in to the global [Azure portal](https://portal.azure.com).
 
-1. Check that you signed in using the Azure AD tenant associated with the Azure Stack instance. You can switch your sign-in by clicking the filter icon in the Azure toolbar.
+1. Check that you signed in using the Azure AD tenant associated with the Azure Stack Hub instance. You can switch your sign-in by clicking the filter icon in the Azure toolbar.
 
     ![Select you AD tenant](media/azure-stack-solution-template-kubernetes-deploy/tenantselector.png)
 
@@ -78,7 +68,7 @@ Set up a service principal in Azure. The service principal gives your applicatio
 
 Give the service principal access to your subscription so that the principal can create resources.
 
-1.  Sign in to the [Azure Stack portal](https://portal.local.azurestack.external/).
+1.  Sign in to the [Azure Stack Hub portal](https://portal.local.azurestack.external/).
 
 1. Select **All services** > **Subscriptions**.
 
@@ -94,7 +84,7 @@ Give the service principal access to your subscription so that the principal can
 
 ## Deploy Kubernetes
 
-1. Open the [Azure Stack portal](https://portal.local.azurestack.external).
+1. Open the [Azure Stack Hub portal](https://portal.local.azurestack.external).
 
 1. Select **+ Create a resource** > **Compute** > **Kubernetes Cluster**. Click **Create**.
 
@@ -110,7 +100,7 @@ Give the service principal access to your subscription so that the principal can
 
 1. Enter the name of a new resource group or select an existing resource group. The resource name needs to be alphanumeric and lowercase.
 
-1. Select the **Location** of the resource group. This is the region you choose for your Azure Stack installation.
+1. Select the **Location** of the resource group. This is the region you choose for your Azure Stack Hub installation.
 
 ### 2. Kubernetes Cluster Settings
 
@@ -135,13 +125,13 @@ Give the service principal access to your subscription so that the principal can
 
 1. Select the **VMSize of the Kubernetes node VMs**. This specifies the VM Size of Kubernetes node VMs. 
 
-1. Select **Azure AD** for the **Azure Stack identity system** for your Azure Stack installation.
+1. Select **Azure AD** for the **Azure Stack Hub identity system** for your Azure Stack Hub installation.
 
-1. Enter the **Service principal clientId** This is used by the Kubernetes Azure cloud provider. The Client ID identified as the Application ID when your Azure Stack administrator created the service principal.
+1. Enter the **Service principal clientId** This is used by the Kubernetes Azure cloud provider. The Client ID identified as the Application ID when your Azure Stack Hub administrator created the service principal.
 
 1. Enter the **Service principal client secret**. This is the client secret you set up when creating your service.
 
-1. Enter the **Kubernetes version**. This is the version for the Kubernetes Azure provider. Azure Stack releases a custom Kubernetes build for each Azure Stack version.
+1. Enter the **Kubernetes version**. This is the version for the Kubernetes Azure provider. Azure Stack Hub releases a custom Kubernetes build for each Azure Stack Hub version.
 
 ### 3. Summary
 
@@ -154,7 +144,7 @@ Give the service principal access to your subscription so that the principal can
 3. Select **OK** to deploy your cluster.
 
 > [!TIP]  
->  If you have questions about your deployment, you can post your question or see if someone has already answered the question in the [Azure Stack Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
+>  If you have questions about your deployment, you can post your question or see if someone has already answered the question in the [Azure Stack Hub Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
 
 
 ## Next steps

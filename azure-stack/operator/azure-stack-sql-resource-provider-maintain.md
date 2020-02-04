@@ -1,17 +1,9 @@
 ---
 title: SQL resource provider maintenance operations
-titleSuffix: Azure Stack
-description: Learn about SQL resource provider maintenance operations on Azure Stack.
-services: azure-stack
-documentationCenter: ''
+titleSuffix: Azure Stack Hub
+description: Learn about SQL resource provider maintenance operations on Azure Stack Hub.
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/02/2019
 ms.author: mabrigg
@@ -25,7 +17,7 @@ The SQL resource provider runs on a locked down virtual machine (VM). To enable 
 
 ## Patching and updating
 
-The SQL resource provider isn't serviced as part of Azure Stack because it's an add-on component. Microsoft provides updates to the SQL resource provider as necessary. When an updated SQL adapter is released, a script is provided to apply the update. This script creates a new resource provider VM, migrating the state of the old provider VM to the new VM. For more information, see [Update the SQL resource provider](azure-stack-sql-resource-provider-update.md).
+The SQL resource provider isn't serviced as part of Azure Stack Hub because it's an add-on component. Microsoft provides updates to the SQL resource provider as necessary. When an updated SQL adapter is released, a script is provided to apply the update. This script creates a new resource provider VM, migrating the state of the old provider VM to the new VM. For more information, see [Update the SQL resource provider](azure-stack-sql-resource-provider-update.md).
 
 ### Provider VM
 
@@ -33,7 +25,7 @@ Because the resource provider runs on a *user* VM, you need to apply the require
 
 ## Updating SQL credentials
 
-You're responsible for creating and maintaining sysadmin accounts on your SQL servers. The resource provider needs an account with these privileges to manage databases for users, but it doesn't need access to the users' data. If you need to update the sysadmin passwords on your SQL servers, you can use the resource provider's administrator interface to change a stored password. These passwords are stored in a Key Vault on your Azure Stack instance.
+You're responsible for creating and maintaining sysadmin accounts on your SQL servers. The resource provider needs an account with these privileges to manage databases for users, but it doesn't need access to the users' data. If you need to update the sysadmin passwords on your SQL servers, you can use the resource provider's administrator interface to change a stored password. These passwords are stored in a Key Vault on your Azure Stack Hub instance.
 
 To modify the settings, select **Browse** &gt; **ADMINISTRATIVE RESOURCES** &gt; **SQL Hosting Servers** &gt; **SQL Logins** and select a user name. The change must be made on the SQL instance first (and any replicas, if necessary.) Under **Settings**, select **Password**.
 
@@ -41,9 +33,9 @@ To modify the settings, select **Browse** &gt; **ADMINISTRATIVE RESOURCES** &gt;
 
 ## Secrets rotation
 
-*These instructions only apply to Azure Stack Integrated Systems.*
+*These instructions only apply to Azure Stack Hub Integrated Systems.*
 
-When using the SQL and MySQL resource providers with Azure Stack integrated systems, the Azure Stack operator is responsible for rotating the following resource provider infrastructure secrets to ensure that they don't expire:
+When using the SQL and MySQL resource providers with Azure Stack Hub integrated systems, the Azure Stack Hub operator is responsible for rotating the following resource provider infrastructure secrets to ensure that they don't expire:
 
 - External SSL certificate [provided during deployment](azure-stack-pki-certs.md).
 - The resource provider VM local admin account password provided during deployment.
@@ -99,8 +91,8 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
 
 |Parameter|Description|
 |-----|-----|
-|AzCredential|Azure Stack service admin account credential.|
-|CloudAdminCredential|Azure Stack cloud admin domain account credential.|
+|AzCredential|Azure Stack Hub service admin account credential.|
+|CloudAdminCredential|Azure Stack Hub cloud admin domain account credential.|
 |PrivilegedEndpoint|Privileged Endpoint to access Get-AzureStackStampInformation.|
 |DiagnosticsUserPassword|Diagnostics user account password.|
 |VMLocalCredential|Local admin account on the MySQLAdapter VM.|
@@ -247,7 +239,7 @@ Azure Diagnostics extension is installed on the SQL resource provider adapter VM
 
 Once the event logs and IIS logs collection are configured for SQL resource provider, the logs can be found in a system storage account named **sqladapterdiagaccount**.
 
-To learn more about Azure Diagnostics extension, please see [What is Azure Diagnostics extension](/azure-monitor/platform/diagnostics-extension-overview).
+To learn more about Azure Diagnostics extension, please see [What is Azure Diagnostics extension](/azure/azure-monitor/platform/diagnostics-extension-overview).
 
 ## Next steps
 

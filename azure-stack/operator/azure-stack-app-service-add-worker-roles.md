@@ -1,42 +1,32 @@
 ---
-title: Add workers and infrastructure in App Service on Azure Stack | Microsoft Docs
-description: Detailed guidance for scaling Azure Stack App Services
-services: azure-stack
-documentationcenter: ''
+title: Add workers and infrastructure in App Service on Azure Stack Hub 
+description: Detailed guidance for scaling Azure App Service on Azure Stack Hub
 author: bryanla
-manager: femila
-editor: ''
 
-ms.assetid: 3cbe87bd-8ae2-47dc-a367-51e67ed4b3c0
-ms.service: azure-stack
-ms.workload: app-service
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 05/06/2019
+ms.date: 01/13/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 06/08/2018
+ms.lastreviewed: 01/13/2020
 
 ---
-# Add workers and infrastructure in App Service on Azure Stack
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*  
+# Add workers and infrastructure in Azure App Service on Azure Stack Hub
 
-This document provides instructions on how to scale infrastructure and worker roles in App Service on Azure Stack. We'll cover all the steps necessary for creating additional worker roles to support apps of any size.
+This document provides instructions on how to scale infrastructure and worker roles in Azure App Service on Azure Stack Hub. We'll cover all the steps necessary for creating additional worker roles to support apps of any size.
 
 > [!NOTE]
-> If your Azure Stack Environment doesn't have more than 96-GB RAM, you may have difficulties adding additional capacity.
+> If your Azure Stack Hub Environment doesn't have more than 96-GB RAM, you may have difficulties adding additional capacity.
 
-App Service on Azure Stack supports free and shared worker tiers by default. To add other worker tiers, you need to add more worker roles.
+Azure App Service on Azure Stack Hub supports free and shared worker tiers by default. To add other worker tiers, you need to add more worker roles.
 
-If you're not sure what was deployed with the default App Service on Azure Stack installation, you can review additional info in the [App Service on Azure Stack overview](azure-stack-app-service-overview.md).
+If you're not sure what was deployed with the default Azure App Service on Azure Stack Hub installation, you can review additional info in the [App Service on Azure Stack Hub overview](azure-stack-app-service-overview.md).
 
-Azure App Service on Azure Stack deploys all roles using Virtual Machine Scale Sets and as such takes advantage of the scaling capabilities of this workload. Therefore, all scaling of the worker tiers is done via the App Service Admin.
+Azure App Service on Azure Stack Hub deploys all roles using Virtual Machine Scale Sets and as such takes advantage of the scaling capabilities of this workload. Therefore, all scaling of the worker tiers is done via the App Service Admin.
 
 ## Add additional workers with PowerShell
 
-1. [Set up the Azure Stack admin environment in PowerShell](azure-stack-powershell-configure-admin.md)
+1. [Set up the Azure Stack Hub admin environment in PowerShell](azure-stack-powershell-configure-admin.md)
 
 2. Use this example to scale out the scale set:
    ```powershell
@@ -73,23 +63,23 @@ Azure App Service on Azure Stack deploys all roles using Virtual Machine Scale S
 
 ## Add additional workers using the administrator portal
 
-1. Sign in to the Azure Stack administrator portal as the service admin.
+1. Sign in to the Azure Stack Hub administrator portal as the service admin.
 
 2. Browse to **App Services**.
 
-    ![App Service in Azure Stack administrator portal](media/azure-stack-app-service-add-worker-roles/image01.png)
+    ![App Service in Azure Stack Hub administrator portal](media/azure-stack-app-service-add-worker-roles/image01.png)
 
 3. Click **Roles**. Here you see the breakdown of all App Service roles deployed.
 
 4. Right click on the row of the type you want to scale and then click **ScaleSet**.
 
-    ![ScaleSet App Service roles in Azure Stack administrator portal](media/azure-stack-app-service-add-worker-roles/image02.png)
+    ![ScaleSet App Service roles in Azure Stack Hub administrator portal](media/azure-stack-app-service-add-worker-roles/image02.png)
 
 5. Click **Scaling**, select the number of instances you want to scale to, and then click **Save**.
 
-    ![Set instances to scale to in App Service Roles in Azure Stack administrator portal](media/azure-stack-app-service-add-worker-roles/image03.png)
+    ![Set instances to scale to in App Service Roles in Azure Stack Hub administrator portal](media/azure-stack-app-service-add-worker-roles/image03.png)
 
-6. App Service on Azure Stack will now add the additional VMs, configure them, install all the required software, and mark them as ready when this process is complete. This process can take approximately 80 minutes.
+6. Azure App Service on Azure Stack Hub will now add the additional VMs, configure them, install all the required software, and mark them as ready when this process is complete. This process can take approximately 80 minutes.
 
 7. You can monitor the progress of the readiness of the new roles by viewing the workers in the **Roles** blade.
 
@@ -97,7 +87,7 @@ Azure App Service on Azure Stack deploys all roles using Virtual Machine Scale S
 
 After they're fully deployed and ready, the workers become available for users to deploy their workload onto them. The following screenshot shows an example of the multiple pricing tiers available by default. If there are no available workers for a particular worker tier, the option to choose the corresponding pricing tier is unavailable.
 
-![Pricing tiers for new App Service plan in Azure Stack administrator portal](media/azure-stack-app-service-add-worker-roles/image04.png)
+![Pricing tiers for new App Service plan in Azure Stack Hub administrator portal](media/azure-stack-app-service-add-worker-roles/image04.png)
 
 >[!NOTE]
 > To scale out Management, Front End, or Publisher roles, follow the same steps selecting the appropriate role type. Controllers aren't deployed as Scale Sets and therefore two should be deployed at installation time for all production deployments.

@@ -1,41 +1,33 @@
 ---
-title: Store service principal credentials in Azure Stack Key Vault | Microsoft Docs
-description: Learn how Key Vault stores service principal credentials on Azure Stack
-services: azure-stack
-documentationcenter: ''
+title: Store service principal credentials in Azure Stack Hub Key Vault 
+description: Learn how Key Vault stores service principal credentials on Azure Stack Hub
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2019
+ms.date: 01/24/2020
 ms.author: sethm
 ms.lastreviewed: 01/16/2019
 
 ---
 
-# Store service principal credentials in Azure Stack Key Vault
+# Store service principal credentials in Azure Stack Hub Key Vault
 
-Developing apps on Azure Stack typically requires creating a service principal and using those credentials to authenticate before deploying. However, sometimes you lose the stored credentials for the service principal. This article describes how to create a service principal and store the values in Azure Key Vault for later retrieval.
+Developing apps on Azure Stack Hub typically requires creating a service principal and using those credentials to authenticate before deploying. However, sometimes you lose the stored credentials for the service principal. This article describes how to create a service principal and store the values in Azure Key Vault for later retrieval.
 
-For more information about Key Vault, see [Introduction to Key Vault in Azure Stack](azure-stack-key-vault-intro.md).
+For more information about Key Vault, see [Introduction to Key Vault in Azure Stack Hub](azure-stack-key-vault-intro.md).
 
 ## Prerequisites
 
 - A subscription to an offer that includes the Azure Key Vault service.
-- PowerShell installed and configured for use with Azure Stack.
+- PowerShell installed and configured for use with Azure Stack Hub.
 
-## Key Vault in Azure Stack
+## Key Vault in Azure Stack Hub
 
-Key Vault in Azure Stack helps to safeguard cryptographic keys and secrets that cloud apps and services use. By using Key Vault, you can encrypt keys and secrets.
+Key Vault in Azure Stack Hub helps to safeguard cryptographic keys and secrets that cloud apps and services use. By using Key Vault, you can encrypt keys and secrets.
 
 To create a key vault, follow these steps:
 
-1. Sign in to the Azure Stack portal.
+1. Sign in to the Azure Stack Hub portal.
 
 2. From the dashboard, select **+ Create a resource**, then **Security + Identity**, then select **Key Vault.**
 
@@ -77,7 +69,7 @@ To create a key vault, follow these steps:
 
 ## Store the service principal inside Key Vault
 
-1. Sign in to the user portal for Azure Stack, then select the key vault that you created earlier, and then select the **Secret** tile.
+1. Sign in to the user portal for Azure Stack Hub, then select the key vault that you created earlier, and then select the **Secret** tile.
 
 2. In the **Secret** pane, select **Generate/Import**.
 
@@ -98,5 +90,5 @@ After the secret is successfully created, the service principal information is s
 ## Next steps
 
 - [Use service principals](azure-stack-create-service-principals.md)
-- [Manage Key Vault in Azure Stack by the portal](azure-stack-key-vault-manage-portal.md)  
-- [Manage Key Vault in Azure Stack by using PowerShell](azure-stack-key-vault-manage-powershell.md)
+- [Manage Key Vault in Azure Stack Hub by the portal](azure-stack-key-vault-manage-portal.md)  
+- [Manage Key Vault in Azure Stack Hub by using PowerShell](azure-stack-key-vault-manage-powershell.md)

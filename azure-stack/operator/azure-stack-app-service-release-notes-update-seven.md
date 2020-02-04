@@ -1,44 +1,34 @@
 ---
-title: App Service on Azure Stack update 7 release notes | Microsoft Docs
-description: Learn about what's in update seven for App Service on Azure Stack, the known issues, and where to download the update.
-services: azure-stack
-documentationcenter: ''
+title: App Service on Azure Stack Hub update 7 release notes 
+description: Learn about what's in update seven for App Service on Azure Stack Hub, the known issues, and where to download the update.
 author: apwestgarth
 manager: stefsch
-editor: ''
 
-ms.assetid:  
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: anwestg
 ms.reviewer:
 
 ---
-# App Service on Azure Stack update 7 release notes
+# App Service on Azure Stack Hub update 7 release notes
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
-These release notes describe the improvements and fixes in Azure App Service on Azure Stack Update 7 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
+These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub Update 7 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
 
 > [!IMPORTANT]
-> Apply the 1907 update to your Azure Stack integrated system or deploy the latest Azure Stack development kit before deploying Azure App Service 1.7.
+> Apply the 1907 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development kit before deploying Azure App Service 1.7.
 
 
 ## Build reference
 
-The App Service on Azure Stack Update 7 build number is **84.0.2.10**
+The App Service on Azure Stack Hub Update 7 build number is **84.0.2.10**
 
 ### Prerequisites
 
 Refer to the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
-Before you begin the upgrade of Azure App Service on Azure Stack to 1.7:
+Before you begin the upgrade of Azure App Service on Azure Stack Hub to 1.7:
 
-- Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Admin Portal
+- Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Hub Admin Portal
 
 - Back up the App Service and Master Databases:
   - AppService_Hosting;
@@ -51,11 +41,11 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 1.7:
 
 ### New features and fixes
 
-Azure App Service on Azure Stack Update 7 includes the following improvements and fixes:
+Azure App Service on Azure Stack Hub Update 7 includes the following improvements and fixes:
 
 - Resolution for [CVE-2019-1372](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2019-1372) Remote Code Execution Vulnerability
 
-- Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Portal SDK version.
+- Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Hub Portal SDK version.
 
 - Updates **Azure Functions runtime** to **v1.0.12582**.
 
@@ -75,7 +65,7 @@ Azure App Service on Azure Stack Update 7 includes the following improvements an
   - [2019-08 Cumulative Update for Windows Server 2016 for x64-based Systems (KB4512495)](https://support.microsoft.com/help/4512495)
 
 - **Access Restrictions now enabled in User Portal**:
-  - As of this release Users can configure Access Restrictions for their Web/Api/Functions applications according to the documentation published - [Azure App Service Access Restrictions](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions), **NOTE**: Azure App Service on Azure Stack does not support Service Endpoints.
+  - As of this release Users can configure Access Restrictions for their Web/Api/Functions applications according to the documentation published - [Azure App Service Access Restrictions](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions), **NOTE**: Azure App Service on Azure Stack Hub does not support Service Endpoints.
 
 - **Deployment Options (Classic) Functionality Restored**:
   - Users can once again use the Deployment Options (Classic) to configure deployment of their apps from GitHub, Bitbucket, Dropbox, OneDrive, Local and External Repositories, and to set the Deployment Credentials for their applications.
@@ -85,7 +75,7 @@ Azure App Service on Azure Stack Update 7 includes the following improvements an
 - **Windows Update Behavior**:
   Based on customer feedback we have changed the way in which Windows Update is configured on App Service roles from Update 7:
   - Three modes:
-    - **Disabled** - Windows Update service disabled, Windows will be updated with the KB that is shipped with Azure App Service on Azure Stack releases;
+    - **Disabled** - Windows Update service disabled, Windows will be updated with the KB that is shipped with Azure App Service on Azure Stack Hub releases;
     - **Automatic** - Windows Update service enabled and Windows Update will determine how and when to update;
     - **Managed** - Windows Update service is disabled, Azure App Service will perform a Windows Update cycle during OnStart of the individual role.
 
@@ -100,7 +90,7 @@ Azure App Service on Azure Stack Update 7 includes the following improvements an
 
 ### Known issues (post-installation)
 
-- Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network,  as called out in the Azure App Service on Azure Stack deployment documentation.
+- Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network,  as called out in the Azure App Service on Azure Stack Hub deployment documentation.
 
 If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
  * Source: Any
@@ -113,11 +103,11 @@ If you chose to deploy into an existing virtual network and an internal IP addre
  * Priority: 700
  * Name: Outbound_Allow_SMB445
 
-### Known issues for Cloud Admins operating Azure App Service on Azure Stack
+### Known issues for Cloud Admins operating Azure App Service on Azure Stack Hub
 
-Refer to the documentation in the [Azure Stack 1907 Release Notes](azure-stack-release-notes-1907.md)
+Refer to the documentation in the [Azure Stack Hub 1907 Release Notes](azure-stack-release-notes-1907.md)
 
 ## Next steps
 
-- For an overview of Azure App Service, see [Azure App Service on Azure Stack overview](azure-stack-app-service-overview.md).
-- For more information about how to prepare to deploy App Service on Azure Stack, see [Before you get started with App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md).
+- For an overview of Azure App Service, see [Azure App Service on Azure Stack Hub overview](azure-stack-app-service-overview.md).
+- For more information about how to prepare to deploy App Service on Azure Stack Hub, see [Before you get started with App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md).

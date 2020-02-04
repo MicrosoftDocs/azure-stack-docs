@@ -1,15 +1,8 @@
 ---
-title: VM sizes supported in Azure Stack | Microsoft Docs
-description: Reference for the supported VM sizes in Azure Stack.
-services: azure-stack
-documentationcenter: ''
+title: VM sizes supported in Azure Stack Hub 
+description: Reference for the supported VM sizes in Azure Stack Hub.
 author: mattbriggs
-manager: femila
 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: reference
 ms.date: 12/3/2019
 ms.author: mabrigg
@@ -18,13 +11,11 @@ ms.lastreviewed: 12/3/2019
 
 ---
 
-# VM sizes supported in Azure Stack
+# VM sizes supported in Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+This article lists the virtual machine (VM) sizes that are available in Azure Stack Hub. You can use this article to help you make your selection of a VM to support your Azure Stack Hub solution.
 
-This article lists the virtual machine (VM) sizes that are available in Azure Stack. You can use this article to help you make your selection of a VM to support your Azure Stack solution.
-
-Disk IOPS (Input/Output Operations Per Second) on Azure Stack is a function of VM size instead of the disk type. This means that for a Standard_Fs series VM, regardless of whether you choose SSD or HDD for the disk type, the IOPS limit for a single additional data disk is 2300 IOPS. The IOPS limits imposed is a cap (maximum possible) to prevent noisy neighbors. It isn't an assurance of IOPS that you'll get on a specific VM size.
+Disk IOPS (Input/Output Operations Per Second) on Azure Stack Hub is a function of VM size instead of the disk type. This means that for a Standard_Fs series VM, regardless of whether you choose SSD or HDD for the disk type, the IOPS limit for a single additional data disk is 2300 IOPS. The IOPS limits imposed is a cap (maximum possible) to prevent noisy neighbors. It isn't an assurance of IOPS that you'll get on a specific VM size.
 
 ## VM general purpose
 
@@ -56,13 +47,13 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used fo
 |**Standard_A7** |8 |56    |605 |500 |500 |16x500 |4 |
 
 ### Av2-series
-*Requires Azure Stack version 1804 or later*
+*Requires Azure Stack Hub version 1804 or later*
 
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |-----------------|----|----|-----|-----|------|--------------|---------|
 |**Standard_A1_v2**  |1   |2   |10   |500 |1000  |2 / 2x500   |2 |
 |**Standard_A2_v2**  |2   |4   |20   |500 |2000  |4 / 4x500   |2 |
-|**Standard_A4v2**   |4   |8   |40   |500 |4000  |8 / 8x500   |4 |
+|**Standard_A4_v2**  |4   |8   |40   |500 |4000  |8 / 8x500   |4 |
 |**Standard_A8_v2**  |8   |16  |80   |500 |8000  |16 / 16x500 |8 |
 |**Standard_A2m_v2** |2   |16  |20   |500 |2000  |4 / 4x500   |2 |
 |**Standard_A4m_v2** |4   |32  |40   |500 |4000  |8 / 8x500   |4 |
@@ -106,7 +97,7 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used fo
 
 ## Compute optimized
 ### F-series
-*Requires Azure Stack version 1804 or later*
+*Requires Azure Stack Hub version 1804 or later*
 
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |-----------------|----|----|-----|----|------|------------|---------|
@@ -118,7 +109,7 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used fo
 
 
 ### Fs-series
-*Requires Azure Stack version 1804 or later*  
+*Requires Azure Stack Hub version 1804 or later*  
 
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |------------------|----|----|----|-----|------|-------------|---------|
@@ -130,7 +121,7 @@ General-purpose VM sizes provide a balanced CPU-to-memory ratio. They're used fo
 
 
 ### Fsv2-series
-*Requires Azure Stack version 1804 or later* 
+*Requires Azure Stack Hub version 1804 or later* 
 
 |Size     |vCPU     |Memory (GiB) | Temp storage (GiB)  | Max OS disk throughput (IOPS) | Max temp storage throughput (IOPS) | Max data disks / throughput (IOPS) | Max NICs |
 |---------------------|----|----|-----|-----|-------|--------------|---------|
@@ -182,4 +173,4 @@ Memory optimized VM sizes provide a high memory-to-CPU ratio that is designed fo
 
 ## Next steps
 
-[Azure Stack VM features](azure-stack-vm-considerations.md)
+[Azure Stack Hub VM features](azure-stack-vm-considerations.md)

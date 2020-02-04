@@ -1,37 +1,27 @@
 ---
-title: Azure Stack capacity planning storage | Microsoft Docs
-description: Learn about capacity planning for Azure Stack deployments.
-services: azure-stack
-documentationcenter: ''
-author: prchint
-manager: femila
-editor: ''
-
-ms.assetid:
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
+title: Azure Stack Hub capacity planning storage 
+description: Learn about capacity planning for Azure Stack Hub deployments.
+author: ihenkel
 ms.topic: article
 ms.date: 05/31/2019
-ms.author: justinha
+ms.author: inhenkel
 ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
 ---
 
-# Azure Stack storage
+# Azure Stack Hub storage
 
-The following sections provide Azure Stack storage capacity planning information to assist in planning for the solution's storage needs.
+The following sections provide Azure Stack Hub storage capacity planning information to assist in planning for the solution's storage needs.
 
 ## Uses and organization of storage capacity
-The hyperconverged configuration of Azure Stack allows for the sharing of physical storage devices. There are three main divisions of the available storage that can be shared: the infrastructure, the temporary storage of the tenant virtual machines, and the storage backing the blobs, tables, and queues of the Azure Consistent Storage (ACS) services.
+The hyperconverged configuration of Azure Stack Hub allows for the sharing of physical storage devices. There are three main divisions of the available storage that can be shared: the infrastructure, the temporary storage of the tenant virtual machines, and the storage backing the blobs, tables, and queues of the Azure Consistent Storage (ACS) services.
 
 ## Storage Spaces Direct cache and capacity tiers
 There is storage capacity used for the operating system, local logging, dumps, and other temporary infrastructure storage needs. This local storage capacity is separate (devices and capacity) from the storage devices brought under management of the Storage Spaces Direct configuration. The remainder of the storage devices is placed in a single pool of storage capacity, regardless of the number of servers in the scale unit.
 
 These devices are of two types: cache and capacity. Storage Spaces Direct consumes cache devices for write-back and read caching. The capacities of these cache devices, while used, aren't committed to formatted, "visible" capacity of the formatted virtual disks. By contrast, Storage Spaces Direct does use capacity devices for this purpose, providing the "home location" of the managed data.
 
-The Azure Stack infrastructure directly allocates and manages all storage capacity. The operator doesn't need to make choices about configuration, allocation, capacity expansion. Azure Stack automates these design decisions to align with the solution requirements, during either the initial installation and deployment, or capacity expansion. Azure Stack takes into consideration resiliency, reserved capacity for rebuilds, and other details, as part of the design. 
+The Azure Stack Hub infrastructure directly allocates and manages all storage capacity. The operator doesn't need to make choices about configuration, allocation, capacity expansion. Azure Stack Hub automates these design decisions to align with the solution requirements, during either the initial installation and deployment, or capacity expansion. Azure Stack Hub takes into consideration resiliency, reserved capacity for rebuilds, and other details, as part of the design. 
 
 Operators can choose between either an *all flash* or a *hybrid* storage configuration:
 
@@ -41,7 +31,7 @@ In the all flash configuration, the configuration can be either a two-tier or a 
 
 In the hybrid, two-tier configuration, the cache is a choice among NVMe, SATA, or SAS SSD, and the capacity is HDD. 
 
-A brief summary of the Storage Spaces Direct and Azure Stack storage configuration is as follows:
+A brief summary of the Storage Spaces Direct and Azure Stack Hub storage configuration is as follows:
 - One Storage Spaces Direct pool per scale unit (all storage devices are configured within a single pool).
 - Virtual disks are created as a three copy mirror for best performance and resiliency.
 - Each virtual disk is formatted as an ReFS file system.
@@ -53,13 +43,13 @@ The virtual disks created automatically, and their capacities, are as follows:
 |Name|Capacity calculation|Description|
 |-----|-----|-----|
 |Local/boot device|Minimum of 340 GB<sup>1</sup>|Individual server storage for operating system images and "local" infrastructure VMs.|
-|Infrastructure|3.5 TB|All Azure Stack infrastructure usage.|
+|Infrastructure|3.5 TB|All Azure Stack Hub infrastructure usage.|
 |VmTemp|See below<sup>2</sup>|Tenant virtual machines have a temporary disk attached, and that data is stored in these virtual disks.|
 |ACS|See below <sup>3</sup>|Azure Consistent Storage capacity for servicing blobs, tables, and queues.|
 
-<sup>1</sup> Minimum storage capacity required of the Azure Stack solution partner.
+<sup>1</sup> Minimum storage capacity required of the Azure Stack Hub solution partner.
 
-<sup>2</sup> The virtual disk size used for tenant virtual machine temporary disks is calculated as a ratio of the physical memory of the server. The temporary disk is a ratio of the physical memory assigned to the virtual machine. The allocation done for "temp disk" storage in Azure Stack captures most use cases, but might not be able to satisfy all temp disk storage needs. The ratio is a trade-off between making temporary storage available, and not consuming a majority of the storage capacity of the solution for temp disk capacity only. One temporary storage disk is created per server in the scale unit. The capacity of the temporary storage doesn't grow beyond 10 percent of the overall available storage capacity in the storage pool of the scale unit. The calculation is something like the following example:
+<sup>2</sup> The virtual disk size used for tenant virtual machine temporary disks is calculated as a ratio of the physical memory of the server. The temporary disk is a ratio of the physical memory assigned to the virtual machine. The allocation done for "temp disk" storage in Azure Stack Hub captures most use cases, but might not be able to satisfy all temp disk storage needs. The ratio is a trade-off between making temporary storage available, and not consuming a majority of the storage capacity of the solution for temp disk capacity only. One temporary storage disk is created per server in the scale unit. The capacity of the temporary storage doesn't grow beyond 10 percent of the overall available storage capacity in the storage pool of the scale unit. The calculation is something like the following example:
 
 ```
   DesiredTempStoragePerServer = PhysicalMemory * 0.65 * 8
@@ -75,4 +65,4 @@ The virtual disks created automatically, and their capacities, are as follows:
 
 
 ## Next steps
-Learn about the [Azure Stack Capacity Planner](azure-stack-capacity-planner.md).
+Learn about the [Azure Stack Hub Capacity Planner](azure-stack-capacity-planner.md).

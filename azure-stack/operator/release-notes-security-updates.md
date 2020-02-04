@@ -1,17 +1,8 @@
 ---
-title: Azure Stack Hub release notes - security updates for 1910 | Microsoft Docs
+title: Azure Stack Hub release notes - security updates for 1910 
 description: Learn about the 1910 security updates for Azure Stack Hub.
-services: azure-stack
-documentationcenter: ''
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.assetid:  
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: sethm
@@ -239,13 +230,13 @@ For more information about these vulnerabilities, click on the preceding links, 
 ::: moniker range="azs-1907"
 ## 1907 update
 
-This update of Azure Stack does not include security updates to the underlying operating system that hosts Azure Stack.
+This update of Azure Stack Hub does not include security updates to the underlying operating system that hosts Azure Stack Hub.
 ::: moniker-end
 
 ::: moniker range="azs-1906"
 ## 1906 update
 
-This update of Azure Stack does not include security updates to the underlying operating system that hosts Azure Stack.
+This update of Azure Stack Hub does not include security updates to the underlying operating system that hosts Azure Stack Hub.
 ::: moniker-end
 
 ## Next steps

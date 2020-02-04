@@ -1,44 +1,34 @@
 ---
-title: App Service on Azure Stack update 6 release notes | Microsoft Docs
-description: Learn about what's in update six for App Service on Azure Stack, the known issues, and where to download the update.
-services: azure-stack
-documentationcenter: ''
+title: App Service on Azure Stack Hub update 6 release notes 
+description: Learn about what's in update six for App Service on Azure Stack Hub, the known issues, and where to download the update.
 author: apwestgarth
 manager: stefsch
-editor: ''
 
-ms.assetid:  
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2019
 ms.author: anwestg
 ms.reviewer:
 
 ---
-# App Service on Azure Stack update 6 release notes
+# App Service on Azure Stack Hub update 6 release notes
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
-These release notes describe the improvements and fixes in Azure App Service on Azure Stack Update 6 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
+These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub Update 6 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
 
 > [!IMPORTANT]
-> Apply the 1904 update to your Azure Stack integrated system or deploy the latest Azure Stack development kit before deploying Azure App Service 1.6.
+> Apply the 1904 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development kit before deploying Azure App Service 1.6.
 
 
 ## Build reference
 
-The App Service on Azure Stack Update 6 build number is **82.0.1.50**
+The App Service on Azure Stack Hub Update 6 build number is **82.0.1.50**
 
 ### Prerequisites
 
 Refer to the [Before You Get Started documentation](azure-stack-app-service-before-you-get-started.md) before beginning deployment.
 
-Before you begin the upgrade of Azure App Service on Azure Stack to 1.6:
+Before you begin the upgrade of Azure App Service on Azure Stack Hub to 1.6:
 
-- Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Admin Portal
+- Ensure all roles are Ready in the Azure App Service Administration in the Azure Stack Hub Admin Portal
 
 - Back up the App Service and Master Databases:
   - AppService_Hosting;
@@ -51,9 +41,9 @@ Before you begin the upgrade of Azure App Service on Azure Stack to 1.6:
 
 ### New features and fixes
 
-Azure App Service on Azure Stack Update 6 includes the following improvements and fixes:
+Azure App Service on Azure Stack Hub Update 6 includes the following improvements and fixes:
 
-- Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Portal SDK version.
+- Updates to **App Service Tenant, Admin, Functions portals and Kudu tools**. Consistent with Azure Stack Hub Portal SDK version.
 
 - Updates **Azure Functions runtime** to **v1.0.12299**.
 
@@ -82,7 +72,7 @@ Azure App Service on Azure Stack Update 6 includes the following improvements an
 
 ### Known issues (post-installation)
 
-- Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network,  as called out in the Azure App Service on Azure Stack deployment documentation.
+- Workers are unable to reach file server when App Service is deployed in an existing virtual network and the file server is only available on the private network,  as called out in the Azure App Service on Azure Stack Hub deployment documentation.
 
 If you chose to deploy into an existing virtual network and an internal IP address to connect to your file server, you must add an outbound security rule, enabling SMB traffic between the worker subnet and the file server. Go to the WorkersNsg in the Admin Portal and add an outbound security rule with the following properties:
  * Source: Any
@@ -95,11 +85,11 @@ If you chose to deploy into an existing virtual network and an internal IP addre
  * Priority: 700
  * Name: Outbound_Allow_SMB445
 
-### Known issues for Cloud Admins operating Azure App Service on Azure Stack
+### Known issues for Cloud Admins operating Azure App Service on Azure Stack Hub
 
-Refer to the documentation in the [Azure Stack 1908 Release Notes](/azure-stack/operator/release-notes?view=azs-1908)
+Refer to the documentation in the [Azure Stack Hub 1908 Release Notes](/azure-stack/operator/release-notes?view=azs-1908)
 
-### Known issues for Tenants deploying applications on Azure App Service on Azure Stack
+### Known issues for Tenants deploying applications on Azure App Service on Azure Stack Hub
 
 - Deployment Center is greyed out
 
@@ -107,13 +97,13 @@ Tenants cannot yet make use of Deployment Center, which is a feature that was re
 
 - Deployment options (Classic) UX and Deployment credentials portal options not available
 
-In order to reach the deployment options and deployment credentials user experiences in the Azure Stack deployment, tenants should access the portal using this URL format - https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;/?websitesExtension_oldvsts=true - which, for the ASDK would be [https://portal.local.azurestack.external/?websitesExtension_oldvsts=true](https://portal.local.azurestack.external/?websitesExtension_oldvsts=true) , and then navigate to their applications normally.
+In order to reach the deployment options and deployment credentials user experiences in the Azure Stack Hub deployment, tenants should access the portal using this URL format - https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt;/?websitesExtension_oldvsts=true - which, for the ASDK would be [https://portal.local.azurestack.external/?websitesExtension_oldvsts=true](https://portal.local.azurestack.external/?websitesExtension_oldvsts=true) , and then navigate to their applications normally.
 
 - Azure Function Monitoring continually shows "Loading" in the portal
 
-When you attempt to monitor individual Functions, in the tenant portal, you will see no invocation log, success count, or error count.  To re-enable this functionality, go to your **Function App**, go to **Platform Features**, and go to **Application settings**.  Add a new app setting - name **AzureWebJobsDashboard** and set the value to the same value as set in AzureWebJobsStorage.  Then go to the Monitor view on your function and you will see the monitoring information.
+When you attempt to monitor individual Functions, in the user portal, you will see no invocation log, success count, or error count.  To re-enable this functionality, go to your **Function App**, go to **Platform Features**, and go to **Application settings**.  Add a new app setting - name **AzureWebJobsDashboard** and set the value to the same value as set in AzureWebJobsStorage.  Then go to the Monitor view on your function and you will see the monitoring information.
 
 ## Next steps
 
-- For an overview of Azure App Service, see [Azure App Service on Azure Stack overview](azure-stack-app-service-overview.md).
-- For more information about how to prepare to deploy App Service on Azure Stack, see [Before you get started with App Service on Azure Stack](azure-stack-app-service-before-you-get-started.md).
+- For an overview of Azure App Service, see [Azure App Service on Azure Stack Hub overview](azure-stack-app-service-overview.md).
+- For more information about how to prepare to deploy App Service on Azure Stack Hub, see [Before you get started with App Service on Azure Stack Hub](azure-stack-app-service-before-you-get-started.md).

@@ -1,19 +1,9 @@
 ---
-title: Deploy ASDK from the command line using Powershell | Microsoft Docs
+title: Deploy ASDK from the command line using Powershell 
 description: Learn how to deploy the ASDK from the command line using PowerShell.
-services: azure-stack
-documentationcenter: ''
 author: justinha
-manager: femila
-editor: ''
 
-ms.assetid: 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.custom: 
 ms.date: 05/06/2019
 ms.author: justinha
 ms.reviewer: misainat
@@ -161,7 +151,7 @@ We recommend you reset the password expiration policy to make sure that the pass
 **[Post ASDK deployment tasks](asdk-post-deploy.md)**
 
 ## Register with Azure
-You must register Azure Stack with Azure so that you can [download Azure marketplace items](../operator/azure-stack-create-and-publish-marketplace-item.md) to Azure Stack.
+You must register Azure Stack with Azure so that you can [download Azure Marketplace items](../operator/azure-stack-create-and-publish-marketplace-item.md) to Azure Stack.
 
 **[Register Azure Stack with Azure](asdk-register.md)**
 

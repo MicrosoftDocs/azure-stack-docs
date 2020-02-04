@@ -1,44 +1,33 @@
 ---
-title: Add Linux images to Azure Stack Marketplace | Microsoft Docs
-description: Learn how to add Linux images to Azure Stack Marketplace.
-services: azure-stack
-documentationcenter: ''
+title: Add Linux images to the Azure Stack Hub Marketplace 
+description: Learn how to add Linux images to the Azure Stack Hub Marketplace.
 author: sethmanheim
-manager: femila
-editor: ''
-
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2019
+ms.date: 01/23/2020
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/16/2018
-
 ---
-# Add Linux images to Azure Stack Marketplace
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Add Linux images to the Azure Stack Hub Marketplace
 
-You can deploy Linux virtual machines (VMs) on Azure Stack by adding a Linux-based image into Azure Stack Marketplace. The easiest way to add a Linux image to Azure Stack is through Marketplace Management. These images have been prepared and tested for compatibility with Azure Stack.
+You can deploy Linux virtual machines (VMs) on Azure Stack Hub by adding a Linux-based image into Azure Stack Hub Marketplace. The easiest way to add a Linux image to Azure Stack Hub is through Marketplace Management. These images have been prepared and tested for compatibility with Azure Stack Hub.
 
 ## Marketplace Management
 
-To download Linux images from Azure Marketplace, see [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md). Select the Linux images that you want to offer users on your Azure Stack.
+To download Linux images from Azure Marketplace, see [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md). Select the Linux images that you want to offer users on your Azure Stack Hub.
 
 There are frequent updates to these images, so check Marketplace Management often to keep up-to-date.
 
 ## Prepare your own image
 
-Wherever possible, download the images available through Marketplace Management. These images have been prepared and tested for Azure Stack.
+Wherever possible, download the images available through Marketplace Management. These images have been prepared and tested for Azure Stack Hub.
 
 ### Azure Linux Agent
 
-The Azure Linux Agent (typically called **WALinuxAgent** or **walinuxagent**) is required, and not all versions of the agent work on Azure Stack. Versions between 2.2.21 and 2.2.34 (inclusive) aren't supported on Azure Stack. To use the latest agent versions above 2.2.35, apply the 1901 hotfix/1902 hotfix, or update your Azure Stack to the 1903 release (or above). Note that [cloud-init](https://cloud-init.io/) is supported on Azure Stack releases beyond 1910.
+The Azure Linux Agent (typically called **WALinuxAgent** or **walinuxagent**) is required, and not all versions of the agent work on Azure Stack Hub. Versions between 2.2.21 and 2.2.34 (inclusive) are not supported on Azure Stack Hub. To use the latest agent versions above 2.2.35, apply the 1901 hotfix/1902 hotfix, or update your Azure Stack Hub to the 1903 release (or above). Note that [cloud-init](https://cloud-init.io/) is supported on Azure Stack Hub releases beyond 1910.
 
-| Azure Stack build | Azure Linux Agent build |
+| Azure Stack Hub build | Azure Linux Agent build |
 | ------------- | ------------- |
 | 1.1901.0.99 or earlier | 2.2.20 |
 | 1.1902.0.69  | 2.2.20  |
@@ -59,7 +48,7 @@ You can prepare your own Linux image using the following instructions:
 
 ## Cloud-init
 
-[Cloud-init](https://cloud-init.io/) is supported on Azure Stack releases beyond 1910. To use cloud-init to customize your Linux VM, you can use the following PowerShell instructions: 
+[Cloud-init](https://cloud-init.io/) is supported on Azure Stack Hub releases beyond 1910. To use cloud-init to customize your Linux VM, you can use the following PowerShell instructions.
 
 ### Step 1: Create a cloud-init.txt file with your cloud-config
 
@@ -109,8 +98,8 @@ runcmd:
   
 ### Step 2: Reference the cloud-init.txt during the Linux VM deployment
 
-Upload the file to an Azure storage account, Azure Stack storage account, or GitHub repository reachable by your Azure Stack Linux VM.
-Currently, using cloud-init for VM deployment is only supported on REST, Powershell, and CLI, and doesn't have an associated portal UI on Azure Stack.
+Upload the file to an Azure storage account, Azure Stack Hub storage account, or GitHub repository reachable by your Azure Stack Hub Linux VM.
+Currently, using cloud-init for VM deployment is only supported on REST, Powershell, and CLI, and doesn't have an associated portal UI on Azure Stack Hub.
 
 You can follow [these](../user/azure-stack-quick-create-vm-linux-powershell.md) instructions to create the Linux VM using powershell, but make sure to reference the cloud-init.txt as a part of the `-CustomData` flag:
 
@@ -129,5 +118,5 @@ After you've added the image to the Marketplace, a Marketplace item is created a
 
 ## Next steps
 
-* [Download marketplace items from Azure to Azure Stack](azure-stack-download-azure-marketplace-item.md)
-* [Azure Stack Marketplace overview](azure-stack-marketplace.md)
+* [Download marketplace items from Azure to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md)
+* [Azure Stack Hub Marketplace overview](azure-stack-marketplace.md)

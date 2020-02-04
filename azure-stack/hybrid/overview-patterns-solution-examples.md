@@ -2,7 +2,6 @@
 title: Hybrid patterns and solution examples for Azure and Azure Stack
 description: An overview of hybrid patterns and solution examples, useful for learning and building hybrid solutions on Azure and Azure Stack.
 author: BryanLa
-ms.service: azure-stack
 ms.topic: overview
 ms.date: 11/05/2019
 ms.author: bryanla
@@ -20,7 +19,7 @@ Azure Stack brings the agility of cloud computing to your on-premises environmen
 
 - Reuse code and run cloud-native apps consistently across Azure and your on-premises environments.
 - Run traditional virtualized workloads with optional connections to Azure services.
-- Transfer data to the cloud, or keep it in your sovereign data center to maintain compliance.
+- Transfer data to the cloud, or keep it in your sovereign datacenter to maintain compliance.
 - Run hardware-accelerated machine-learning, containerized, or virtualized workloads, all at the intelligent edge.
 
 Applications that span clouds are also referred to as *hybrid applications*. You can build hybrid cloud apps in Azure and deploy them to your connected or disconnected datacenter located anywhere.

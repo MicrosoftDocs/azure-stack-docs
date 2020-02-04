@@ -1,26 +1,15 @@
 ---
-title: Create a Linux virtual machine by using the Azure CLI in Azure Stack | Microsoft Docs
-description: Create a Linux virtual machine by using the Azure CLI in Azure Stack.
-services: azure-stack
-documentationcenter: ''
+title: Create a Linux virtual machine by using the Azure CLI in Azure Stack Hub 
+description: Create a Linux virtual machine by using the Azure CLI in Azure Stack Hub.
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/02/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
-ms.custom: mvc
 ms.lastreviewed: 01/14/2019
 ---
 
-# Quickstart: Create a Linux server VM by using the Azure CLI in Azure Stack
-
-*Applies to: Azure Stack integrated systems and the Azure Stack Development Kit*
+# Quickstart: Create a Linux server VM by using the Azure CLI in Azure Stack Hub
 
 You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using the Azure CLI. In this article, you create and use a virtual machine. This article also shows you how to:
 
@@ -30,17 +19,17 @@ You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using the Azur
 
 ## Prerequisites
 
-* A Linux image in the Azure Stack Marketplace
+* A Linux image in the Azure Stack Hub Marketplace
 
-   The Azure Stack Marketplace doesn't contain a Linux image by default. Have the Azure Stack operator provide the Ubuntu Server 16.04 LTS image you need. The operator can use the instructions in [Download Marketplace items from Azure to Azure Stack](../operator/azure-stack-download-azure-marketplace-item.md).
+   The Azure Stack Hub Marketplace doesn't contain a Linux image by default. Have the Azure Stack Hub operator provide the Ubuntu Server 16.04 LTS image you need. The operator can use the instructions in [Download Marketplace items from Azure to Azure Stack Hub](../operator/azure-stack-download-azure-marketplace-item.md).
 
-* Azure Stack requires a specific version of the Azure CLI to create and manage its resources. If you don't have the Azure CLI configured for Azure Stack, sign in to the [Azure Stack Development Kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp) (or a Windows-based external client if you're [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn)), and follow the instructions for [installing and configuring the Azure CLI](azure-stack-version-profiles-azurecli2.md).
+* Azure Stack Hub requires a specific version of the Azure CLI to create and manage its resources. If you don't have the Azure CLI configured for Azure Stack Hub, sign in to the [Azure Stack Development Kit](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp) (or a Windows-based external client if you're [connected through VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn)), and follow the instructions for [installing and configuring the Azure CLI](azure-stack-version-profiles-azurecli2.md).
 
 * A public Secure Shell (SSH) key with the name *id_rsa.pub* saved in the *.ssh* directory of your Windows user profile. For detailed information about creating SSH keys, see [Use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
 
 ## Create a resource group
 
-A resource group is a logical container where you can deploy and manage Azure Stack resources. From your development kit or the Azure Stack integrated system, run the [az group create](/cli/azure/group#az-group-create) command to create a resource group.
+A resource group is a logical container where you can deploy and manage Azure Stack Hub resources. From your development kit or the Azure Stack Hub integrated system, run the [az group create](/cli/azure/group#az-group-create) command to create a resource group.
 
 > [!NOTE]
 > We've assigned values for all variables in the following code examples. However, you can assign your own values.
@@ -113,4 +102,4 @@ az group delete --name myResourceGroup
 
 ## Next steps
 
-In this quickstart, you deployed a basic Linux server virtual machine with a web server. To learn more about Azure Stack virtual machines, see [Considerations for virtual machines in Azure Stack](azure-stack-vm-considerations.md).
+In this quickstart, you deployed a basic Linux server virtual machine with a web server. To learn more about Azure Stack Hub virtual machines, see [Considerations for virtual machines in Azure Stack Hub](azure-stack-vm-considerations.md).

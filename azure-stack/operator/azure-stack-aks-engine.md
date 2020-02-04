@@ -1,16 +1,8 @@
 ---
-title: Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Marketplace | Microsoft Docs
-description: Learn how to add AKS engine prerequisites to the Azure Stack Marketplace.
-services: azure-stack
-documentationcenter: ''
+title: Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace 
+description: Learn how to add AKS engine prerequisites to the Azure Stack Hub Marketplace.
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: mabrigg
@@ -19,21 +11,19 @@ ms.lastreviewed: 11/21/2019
 
 ---
 
-# Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Marketplace
+# Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
-You can enable your users to set up the Azure Kubernetes Services (AKS) Engine by adding the items described in this article to your Azure Stack. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS engine available to your users in both connected and disconnected environments. The AKS engine depends on a service principle identity, and in the marketplace, a Custom Script extension and the AKS Base Image.
+You can enable your users to set up the Azure Kubernetes Services (AKS) Engine by adding the items described in this article to your Azure Stack Hub. Your users can then deploy a Kubernetes cluster in a single, coordinated operation. This article walks you through the steps you need to make the AKS engine available to your users in both connected and disconnected environments. The AKS engine depends on a service principle identity, and in the marketplace, a Custom Script extension and the AKS Base Image.
 
 ## Check your user's service offering
 
-Your users will need a plan, offer, and subscription to Azure Stack with enough space. Users will often want to deploy clusters of up to six virtual machines, made of three masters and three worker nodes. You will want to make sure they have a large enough quota.
+Your users will need a plan, offer, and subscription to Azure Stack Hub with enough space. Users will often want to deploy clusters of up to six virtual machines, made of three masters and three worker nodes. You will want to make sure they have a large enough quota.
 
-If you need more information about planning and setting up a service offering, see [Overview of offering services in Azure Stack](service-plan-offer-subscription-overview.md)
+If you need more information about planning and setting up a service offering, see [Overview of offering services in Azure Stack Hub](service-plan-offer-subscription-overview.md)
 
 ## Create a service principal and credentials
 
-The Kubernetes cluster will need service principal (SPN) and role-based permissions in Azure Stack.
+The Kubernetes cluster will need service principal (SPN) and role-based permissions in Azure Stack Hub.
 
 ### Create an SPN in Azure AD
 
@@ -45,7 +35,7 @@ If you use Active Directory Federated Services (AD FS) for your identity managem
 
 ## Add the AKS Base Image
 
-You can add the AKS Base Image to the marketplace by getting the item from Azure. However, if your Azure Stack is disconnected, use these instructions [Download marketplace items from Azure](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-1908#disconnected-or-a-partially-connected-scenario) to add the item. Add the item specified in step 5.
+You can add the AKS Base Image to the marketplace by getting the item from Azure. However, if your Azure Stack Hub is disconnected, use these instructions [Download marketplace items from Azure](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-1908#disconnected-or-a-partially-connected-scenario) to add the item. Add the item specified in step 5.
 
 Add the following item to the marketplace:
 
@@ -68,7 +58,7 @@ Add the following item to the marketplace:
 
 ## Add a Custom Script extension
 
-You can add the custom script to the marketplace by getting the item from Azure. However, if your Azure Stack is disconnected, use the instructions [Download marketplace items from Azure](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-1908#disconnected-or-a-partially-connected-scenario) to add the item.  Add the item specified in step 5.
+You can add the custom script to the marketplace by getting the item from Azure. However, if your Azure Stack Hub is disconnected, use the instructions [Download marketplace items from Azure](https://docs.microsoft.com/azure-stack/operator/azure-stack-download-azure-marketplace-item?view=azs-1908#disconnected-or-a-partially-connected-scenario) to add the item.  Add the item specified in step 5.
 
 1. Open the [Administration portal](https://adminportal.local.azurestack.external).
 
@@ -90,6 +80,6 @@ You can add the custom script to the marketplace by getting the item from Azure.
 
 ## Next steps
 
-[What is the AKS engine on Azure Stack?](../user/azure-stack-kubernetes-aks-engine-overview.md)
+[What is the AKS engine on Azure Stack Hub?](../user/azure-stack-kubernetes-aks-engine-overview.md)
 
-[Overview of offering services in Azure Stack](service-plan-offer-subscription-overview.md)
+[Overview of offering services in Azure Stack Hub](service-plan-offer-subscription-overview.md)

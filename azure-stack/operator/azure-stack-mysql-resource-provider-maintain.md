@@ -1,24 +1,16 @@
 ---
-title: MySQL resource provider maintenance operations in Azure Stack | Microsoft Docs
-description: Learn how to maintain the MySQL resource provider service in Azure Stack.
-services: azure-stack
-documentationCenter: ''
+title: MySQL resource provider maintenance operations in Azure Stack Hub 
+description: Learn how to maintain the MySQL resource provider service in Azure Stack Hub.
 author: mattbriggs
-manager: femila
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
 
 ---
 
-# MySQL resource provider maintenance operations in Azure Stack
+# MySQL resource provider maintenance operations in Azure Stack Hub
 
 The MySQL resource provider runs on a locked down virtual machine (VM). To enable maintenance operations, you need to update the VM's security. To do this using the principle of least privilege (POLP), you can use PowerShell Just Enough Administration (JEA) endpoint DBAdapterMaintenance. The resource provider installation package includes a script for this operation.
 
@@ -89,9 +81,9 @@ $session | Remove-PSSession
 
 ## Secrets rotation
 
-*These instructions only apply to Azure Stack Integrated Systems.*
+*These instructions only apply to Azure Stack Hub Integrated Systems.*
 
-When using the SQL and MySQL resource providers with Azure Stack integrated systems, the Azure Stack operator is responsible for rotating the following resource provider infrastructure secrets to ensure that they don't expire:
+When using the SQL and MySQL resource providers with Azure Stack Hub integrated systems, the Azure Stack Hub operator is responsible for rotating the following resource provider infrastructure secrets to ensure that they don't expire:
 
 - External SSL Certificate [provided during deployment](azure-stack-pki-certs.md).
 - The resource provider VM local administrator account password provided during deployment.
@@ -151,8 +143,8 @@ When using the SQL and MySQL resource providers with Azure Stack integrated syst
 
 |Parameter|Description|
 |-----|-----|
-|AzCredential|Azure Stack service admin account credential.|
-|CloudAdminCredential|Azure Stack cloud admin domain account credential.|
+|AzCredential|Azure Stack Hub service admin account credential.|
+|CloudAdminCredential|Azure Stack Hub cloud admin domain account credential.|
 |PrivilegedEndpoint|Privileged Endpoint to access Get-AzureStackStampInformation.|
 |DiagnosticsUserPassword|Diagnostics user account password.|
 |VMLocalCredential|The local admin account on the MySQLAdapter VM.|
@@ -246,7 +238,7 @@ The Azure Diagnostics extension is installed on the MySQL resource provider adap
 
 Once the event logs and IIS logs collection are configured for MySQL resource provider, the logs can be found in a system storage account named **mysqladapterdiagaccount**.
 
-To learn more about the Azure Diagnostics extension, see [What is Azure Diagnostics extension](/azure-monitor/platform/diagnostics-extension-overview).
+To learn more about the Azure Diagnostics extension, see [What is Azure Diagnostics extension](/azure/azure-monitor/platform/diagnostics-extension-overview).
 
 ## Next steps
 

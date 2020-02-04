@@ -1,17 +1,8 @@
 ---
-title: Post deployment configurations for the ASDK | Microsoft Docs
+title: Post deployment configurations for the ASDK 
 description: Learn about the recommended configuration changes to make after installing the Azure Stack Development Kit (ASDK).
-services: azure-stack
-documentationcenter: ''
 author: justinha
-manager: femila
-editor: ''
 
-ms.assetid: 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2019
 ms.author: justinha
@@ -40,7 +31,7 @@ Use API version profiles to specify Azure Stack compatible AzureRM modules.  API
 You can install the latest Azure Stack PowerShell module with or without internet connectivity to the ASDK host computer:
 
 > [!IMPORTANT]
-> Before installing the required version, make sure that you [uninstall any existing Azure PowerShell modules](../operator/azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-powershell-modules).
+> Before installing the required version, make sure that you [uninstall any existing Azure PowerShell modules](../operator/azure-stack-powershell-install.md#3-uninstall-existing-versions-of-the-azure-stack-hub-powershell-modules).
 
 - **With an internet connection** from the ASDK host computer: Run the following PowerShell script to install these modules on your ASDK installation:
 

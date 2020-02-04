@@ -1,42 +1,38 @@
 ---
-title: Integrate AD FS identity with your Azure Stack datacenter | Microsoft Docs
-description: Learn how to integrate Azure Stack AD FS identity provider with your datacenter AD FS.
-services: azure-stack
-author: PatAltimore
-manager: femila
-ms.service: azure-stack
+title: Integrate AD FS identity with your Azure Stack Hub datacenter 
+description: Learn how to integrate Azure Stack Hub AD FS identity provider with your datacenter AD FS.
+author: ihenkel
 ms.topic: article
 ms.date: 05/10/2019
-ms.author: patricka
+ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 05/10/2019
-
 ---
 
-# Integrate AD FS identity with your Azure Stack datacenter
+# Integrate AD FS identity with your Azure Stack Hub datacenter
 
-You can deploy Azure Stack using Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS) as the identity provider. You must make the choice before you deploy Azure Stack. In a connected scenario, you can choose Azure AD or AD FS. For a disconnected scenario, only AD FS is supported. This article shows how to integrate Azure Stack AD FS with your datacenter AD FS.
+You can deploy Azure Stack Hub using Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS) as the identity provider. You must make the choice before you deploy Azure Stack Hub. In a connected scenario, you can choose Azure AD or AD FS. For a disconnected scenario, only AD FS is supported. This article shows how to integrate Azure Stack Hub AD FS with your datacenter AD FS.
 
 > [!IMPORTANT]
-> You can't switch the identity provider without redeploying the entire Azure Stack solution.
+> You can't switch the identity provider without redeploying the entire Azure Stack Hub solution.
 
 ## Active Directory Federation Services and Graph
 
-Deploying with AD FS allows identities in an existing Active Directory forest to authenticate with resources in Azure Stack. This existing Active Directory forest requires a deployment of AD FS to allow the creation of an AD FS federation trust.
+Deploying with AD FS allows identities in an existing Active Directory forest to authenticate with resources in Azure Stack Hub. This existing Active Directory forest requires a deployment of AD FS to allow the creation of an AD FS federation trust.
 
-Authentication is one part of identity. To manage role-based access control (RBAC) in Azure Stack, the Graph component must be configured. When access to a resource is delegated, the Graph component looks up the user account in the existing Active Directory forest using the LDAP protocol.
+Authentication is one part of identity. To manage role-based access control (RBAC) in Azure Stack Hub, the Graph component must be configured. When access to a resource is delegated, the Graph component looks up the user account in the existing Active Directory forest using the LDAP protocol.
 
-![Azure Stack AD FS architecture](media/azure-stack-integrate-identity/Azure-Stack-ADFS-architecture.png)
+![Azure Stack Hub AD FS architecture](media/azure-stack-integrate-identity/Azure-Stack-ADFS-architecture.png)
 
-The existing AD FS is the account security token service (STS) that sends claims to the Azure Stack AD FS (the resource STS). In Azure Stack, automation creates the claims provider trust with the metadata endpoint for the existing AD FS.
+The existing AD FS is the account security token service (STS) that sends claims to the Azure Stack Hub AD FS (the resource STS). In Azure Stack Hub, automation creates the claims provider trust with the metadata endpoint for the existing AD FS.
 
-At the existing AD FS, a relying party trust must be configured. This step isn't done by the automation, and must be configured by the operator. The Azure Stack VIP endpoint for AD FS can be created by using the pattern `https://adfs.<Region>.<ExternalFQDN>/`.
+At the existing AD FS, a relying party trust must be configured. This step isn't done by the automation, and must be configured by the operator. The Azure Stack Hub VIP endpoint for AD FS can be created by using the pattern `https://adfs.<Region>.<ExternalFQDN>/`.
 
 The relying party trust configuration also requires you to configure the claim transformation rules that are provided by Microsoft.
 
 For the Graph configuration, a service account must be provided that has read permission in the existing Active Directory. This account is required as input for the automation to enable RBAC scenarios.
 
-For the last step, a new owner is configured for the default provider subscription. This account has full access to all resources when signed in to the Azure Stack administrator portal.
+For the last step, a new owner is configured for the default provider subscription. This account has full access to all resources when signed in to the Azure Stack Hub administrator portal.
 
 Requirements:
 
@@ -58,14 +54,14 @@ The following information is required as inputs for the automation parameters:
 
 ### Configure Active Directory Sites
 
-For Active Directory deployments having multiple sites, configure the closest Active Directory Site to your Azure Stack deployment. The configuration avoids having the Azure Stack Graph service resolve queries using a Global Catalog Server from a remote site.
+For Active Directory deployments having multiple sites, configure the closest Active Directory Site to your Azure Stack Hub deployment. The configuration avoids having the Azure Stack Hub Graph service resolve queries using a Global Catalog Server from a remote site.
 
-Add the Azure Stack [Public VIP network](azure-stack-network.md#public-vip-network) subnet to the Active Directory Site closest to Azure Stack. For example, let's say your Active Directory has two sites: Seattle and Redmond. If Azure Stack is deployed at the Seattle site, you would add the Azure Stack Public VIP network subnet to the Active Directory site for Seattle.
+Add the Azure Stack Hub [Public VIP network](azure-stack-network.md#public-vip-network) subnet to the Active Directory Site closest to Azure Stack Hub. For example, let's say your Active Directory has two sites: Seattle and Redmond. If Azure Stack Hub is deployed at the Seattle site, you would add the Azure Stack Hub Public VIP network subnet to the Active Directory site for Seattle.
 
 For more information on Active Directory Sites, see [Designing the site topology](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology).
 
 > [!Note]  
-> If your Active Directory consist of a single site, you can skip this step. If you have a catch-all subnet configured, validate that the Azure Stack Public VIP network subnet isn't part of it.
+> If your Active Directory consist of a single site, you can skip this step. If you have a catch-all subnet configured, validate that the Azure Stack Hub Public VIP network subnet isn't part of it.
 
 ### Create user account in the existing Active Directory (optional)
 
@@ -79,7 +75,7 @@ Optionally, you can create an account for the Graph service in the existing Acti
 
 #### Trigger automation to configure graph
 
-For this procedure, use a computer in your datacenter network that can communicate with the privileged endpoint in Azure Stack.
+For this procedure, use a computer in your datacenter network that can communicate with the privileged endpoint in Azure Stack Hub.
 
 1. Open an elevated Windows PowerShell session (run as administrator), and connect to the IP address of the privileged endpoint. Use the credentials for **CloudAdmin** to authenticate.
 
@@ -108,9 +104,9 @@ For this procedure, use a computer in your datacenter network that can communica
 
 #### Graph protocols and ports
 
-Graph service in Azure Stack uses the following protocols and ports to communicate with a writeable Global Catalog Server (GC) and Key Distribution Center (KDC) that can process login requests in the target Active Directory forest.
+Graph service in Azure Stack Hub uses the following protocols and ports to communicate with a writeable Global Catalog Server (GC) and Key Distribution Center (KDC) that can process login requests in the target Active Directory forest.
 
-Graph service in Azure Stack uses the following protocols and ports to communicate with the target Active Directory:
+Graph service in Azure Stack Hub uses the following protocols and ports to communicate with the target Active Directory:
 
 |Type|Port|Protocol|
 |---------|---------|---------|
@@ -130,9 +126,9 @@ The following information is required as input for the automation parameters:
 |SigningCertificateRevocationCheck|NA|Optional Parameter to skip CRL checking.|None|
 
 
-### Trigger automation to configure claims provider trust in Azure Stack
+### Trigger automation to configure claims provider trust in Azure Stack Hub
 
-For this procedure, use a computer that can communicate with the privileged endpoint in Azure Stack. It's expected that the certificate used by the account **STS AD FS** is trusted by Azure Stack.
+For this procedure, use a computer that can communicate with the privileged endpoint in Azure Stack Hub. It's expected that the certificate used by the account **STS AD FS** is trusted by Azure Stack Hub.
 
 1. Open an elevated Windows PowerShell session and connect to the privileged endpoint.
 
@@ -157,8 +153,8 @@ For this procedure, use a computer that can communicate with the privileged endp
 
 Beginning with version 1807, use this method if the either of the following conditions are true:
 
-- The certificate chain is different for AD FS compared to all other endpoints in Azure Stack.
-- There's no network connectivity to the existing AD FS server from Azure Stack's AD FS instance.
+- The certificate chain is different for AD FS compared to all other endpoints in Azure Stack Hub.
+- There's no network connectivity to the existing AD FS server from Azure Stack Hub's AD FS instance.
 
 The following information is required as input for the automation parameters:
 
@@ -184,9 +180,9 @@ For the following procedure, you must use a computer that has network connectivi
 
 2. Copy the metadata file to a computer that can communicate with the privileged endpoint.
 
-### Trigger automation to configure claims provider trust in Azure Stack
+### Trigger automation to configure claims provider trust in Azure Stack Hub
 
-For this procedure, use a computer that can communicate with the privileged endpoint in Azure Stack and has access to the metadata file you created in a previous step.
+For this procedure, use a computer that can communicate with the privileged endpoint in Azure Stack Hub and has access to the metadata file you created in a previous step.
 
 1. Open an elevated Windows PowerShell session and connect to the privileged endpoint.
 
@@ -215,7 +211,7 @@ For this procedure, use a computer that can communicate with the privileged endp
 
 Microsoft provides a script that configures the relying party trust, including the claim transformation rules. Using the script is optional as you can run the commands manually.
 
-You can download the helper script from [Azure Stack Tools](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity) on GitHub.
+You can download the helper script from [Azure Stack Hub Tools](https://github.com/Azure/AzureStack-Tools/tree/vnext/DatacenterIntegration/Identity) on GitHub.
 
 If you decide to manually run the commands, follow these steps:
 
@@ -278,7 +274,7 @@ If you decide to manually run the commands, follow these steps:
    > [!IMPORTANT]  
    > You must use the AD FS MMC snap-in to configure the Issuance Authorization Rules when using Windows Server 2012 or 2012 R2 AD FS.
 
-4. When you use Internet Explorer or the Microsoft Edge browser to access Azure Stack, you must ignore token bindings. Otherwise, the sign-in attempts fail. On your AD FS instance or a farm member, run the following command:
+4. When you use Internet Explorer or the Microsoft Edge browser to access Azure Stack Hub, you must ignore token bindings. Otherwise, the sign-in attempts fail. On your AD FS instance or a farm member, run the following command:
 
    > [!note]  
    > This step isn't applicable when using Windows Server 2012 or 2012 R2 AD FS. In that case, it's safe to skip this command and continue with the integration.
@@ -291,9 +287,9 @@ If you decide to manually run the commands, follow these steps:
 
 There are many scenarios that require the use of a service principal name (SPN) for authentication. The following are some examples:
 
-- CLI usage with AD FS deployment of Azure Stack.
-- System Center Management Pack for Azure Stack when deployed with AD FS.
-- Resource providers in Azure Stack when deployed with AD FS.
+- CLI usage with AD FS deployment of Azure Stack Hub.
+- System Center Management Pack for Azure Stack Hub when deployed with AD FS.
+- Resource providers in Azure Stack Hub when deployed with AD FS.
 - Various apps.
 - You require a non-interactive sign-in.
 

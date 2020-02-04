@@ -34,7 +34,7 @@ metadata:
 
 abstract:
 
-  description: Microsoft Azure Stack Hub is a hybrid cloud platform that lets you provide Azure services from your datacenter. Learn how to manage the Azure Stack Hub integrated systems infrastructure and how to offer services with our quickstarts and tutorials.<br/><br/>If you're an Azure Stack Hub user who uses services or builds apps for Azure Stack Hub, see our <a href="/azure-stack/user">user documentation</a>.<br/><br/>If you are an Azure Stack Hub operator interested in the Azure Stack Hub Development Kit (ASDK), a single-node deployment of Azure Stack Hub that you can download and use for free, see our <a href="/azure-stack/asdk">ASDK documentation</a>.
+  description: Microsoft Azure Stack Hub is a hybrid cloud platform that lets you provide Azure services from your datacenter. Learn how to manage the Azure Stack Hub integrated systems infrastructure and how to offer services with our quickstarts and tutorials.<br/><br/>If you're an Azure Stack Hub user who uses services or builds apps for Azure Stack Hub, see our <a href="/azure-stack/user">user documentation</a>.<br/><br/>If you are an Azure Stack Hub operator interested in the Azure Stack Development Kit (ASDK), a single-node deployment of Azure Stack Hub that you can download and use for free, see our <a href="/azure-stack/asdk">ASDK documentation</a>.
 
 sections:
 
@@ -62,7 +62,7 @@ sections:
 
               <img height="48" width="48" src="https://docs.microsoft.com/media/logos/logo_powershell.svg" alt="">
 
-              <br><b>Azure Stack PowerShell</b></a>
+              <br><b>Azure Stack Hub PowerShell</b></a>
 
               <p>Easily manage your Azure Stack Hub resources from PowerShell.</p>
 

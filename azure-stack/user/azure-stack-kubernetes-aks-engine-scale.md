@@ -1,16 +1,8 @@
 ---
-title: Scale a Kubernetes cluster on Azure Stack | Microsoft Docs
-description: Learn how to scale a Kubernetes cluster on Azure Stack.
-services: azure-stack
-documentationcenter: ''
+title: Scale a Kubernetes cluster on Azure Stack Hub 
+description: Learn how to scale a Kubernetes cluster on Azure Stack Hub.
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na (Kubernetes)
-ms.devlang: nav
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: mabrigg
@@ -19,9 +11,7 @@ ms.lastreviewed: 11/21/2019
 
 ---
 
-# Scale a Kubernetes cluster on Azure Stack
-
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Scale a Kubernetes cluster on Azure Stack Hub
 
 You can scale your cluster with the AKS engine using the **scale** command. The **scale** command reuses your cluster configuration file (`apimodel.json`) inside the output directory as input for a new Azure Resource Manager deployment. The engine executes the scaling operation against the specified agent pool. When the scaling operation is done, the engine updates the cluster definition in that same `apimodel.json` file to reflect the new node count in order to reflect the updated, current cluster configuration.
 
@@ -35,8 +25,8 @@ The following parameters are used by the scale command to find your cluster defi
 
 | Parameter | Example | Description |
 | --- | --- | --- | 
-| azure-env | AzureStackCloud | When using Azure Stack, the environment names needs to be set to `AzureStackCloud`. | 
-| location | local | This is the region for your Azure Stack instance. For an ASDK, the region is set to `local`.  | 
+| azure-env | AzureStackCloud | When using Azure Stack Hub, the environment names needs to be set to `AzureStackCloud`. | 
+| location | local | This is the region for your Azure Stack Hub instance. For an ASDK, the region is set to `local`.  | 
 | resource-group | kube-rg | The name of the resource group that contains your cluster. | 
 | subscription-id |  | The GUID of the subscription that contains the resources used by your cluster. Make sure you have enough quota on your subscription to scale. | 
 | client-id |  | The client ID of the service principal used in creating your cluster from the AKS engine. | 
@@ -46,7 +36,7 @@ The following parameters are used by the scale command to find your cluster defi
 | -master-FQDN |  | Master FQDN. Needed when scaling down. |
 | identity-system | adfs | Optional. Specify your identity management solution if you are using Active Directory Federated Services (AD FS). |
 
-You must specify the **--azure-env** parameter when scaling a cluster in Azure Stack. For more information about parameters and their values used in the **scale** command for the AKS engine, see [Scale - parameters](https://github.com/Azure/aks-engine/blob/master/docs/topics/scale.md#parameters).
+You must specify the **--azure-env** parameter when scaling a cluster in Azure Stack Hub. For more information about parameters and their values used in the **scale** command for the AKS engine, see [Scale - parameters](https://github.com/Azure/aks-engine/blob/master/docs/topics/scale.md#parameters).
 
 ### Command to scale your cluster
 
@@ -68,5 +58,5 @@ aks-engine scale \
 
 ## Next steps
 
-- Read about the [The AKS engine on Azure Stack](azure-stack-kubernetes-aks-engine-overview.md)
-- [Upgrade a Kubernetes cluster on Azure Stack](azure-stack-kubernetes-aks-engine-upgrade.md)
+- Read about the [The AKS engine on Azure Stack Hub](azure-stack-kubernetes-aks-engine-overview.md)
+- [Upgrade a Kubernetes cluster on Azure Stack Hub](azure-stack-kubernetes-aks-engine-upgrade.md)

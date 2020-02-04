@@ -1,17 +1,8 @@
 ---
-title: Back up Azure Stack | Microsoft Docs
-description: Learn how to do an on-demand backup on Azure Stack.
-services: azure-stack
-documentationcenter: ''
+title: Back up Azure Stack Hub 
+description: Learn how to do an on-demand backup on Azure Stack Hub.
 author: justinha
-manager: femila
-editor: ''
 
-ms.assetid: 9565DDFB-2CDB-40CD-8964-697DA2FFF70A
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: justinha
@@ -19,13 +10,11 @@ ms.reviewer: hectorl
 ms.lastreviewed: 09/05/2018
 
 ---
-# Back up Azure Stack
+# Back up Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+This article shows you how to do an on-demand backup on Azure Stack Hub. For instructions on configuring the PowerShell environment, see [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md). To sign in to Azure Stack Hub, see [Using the administrator portal in Azure Stack Hub](azure-stack-manage-portals.md).
 
-This article shows you how to do an on-demand backup on Azure Stack. For instructions on configuring the PowerShell environment, see [Install PowerShell for Azure Stack](azure-stack-powershell-install.md). To sign in to Azure Stack, see [Using the administrator portal in Azure Stack](azure-stack-manage-portals.md).
-
-## Start Azure Stack backup
+## Start Azure Stack Hub backup
 
 ### Start a new backup without job progress tracking
 Use Start-AzSBackup to start a new backup immediately with no job progress tracking.
@@ -34,7 +23,7 @@ Use Start-AzSBackup to start a new backup immediately with no job progress track
    Start-AzsBackup -Force
 ```
 
-### Start Azure Stack backup with job progress tracking
+### Start Azure Stack Hub backup with job progress tracking
 Use Start-AzSBackup to start a new backup with the **-AsJob** parameter and save it as a variable to track backup job progress.
 
 > [!NOTE]
@@ -108,9 +97,9 @@ The result should look like the following output:
 ```
 
 ### Confirm backup has completed in the administrator portal
-Use the Azure Stack administrator portal to verify that backup has completed successfully by following these steps:
+Use the Azure Stack Hub administrator portal to verify that backup has completed successfully by following these steps:
 
-1. Open the [Azure Stack administrator portal](azure-stack-manage-portals.md).
+1. Open the [Azure Stack Hub administrator portal](azure-stack-manage-portals.md).
 2. Select **All services**, and then under the **ADMINISTRATION** category select > **Infrastructure backup**. Choose **Configuration** in the **Infrastructure backup** blade.
 3. Find the **Name** and **Date Completed** of the backup in **Available backups** list.
 4. Verify the **State** is **Succeeded**.

@@ -1,39 +1,34 @@
 ---
-title: Introduction to Azure Stack VMs | Microsoft Docs
-description: Learn about Azure Stack VMs.
-services: azure-stack
+title: Introduction to Azure Stack Hub VMs 
+description: Learn about Azure Stack Hub VMs.
 author: sethmanheim
-manager: femila
 
-ms.service: azure-stack
 ms.topic: conceptual
-ms.date: 10/02/2019
+ms.date: 02/03/2020
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/05/2019
 
 ---
-# Introduction to Azure Stack VMs
+# Introduction to Azure Stack Hub VMs
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+Azure Stack Hub offers virtual machines (VMs) as a type of on-demand and scalable computing resource. You can choose a VM when you need more control over the computing environment. This article provides details before you create your first VM.
 
-Azure Stack offers virtual machines (VMs) as a type of on-demand and scalable computing resource. You can choose a VM when you need more control over the computing environment. This article provides details before you create your first VM.
+An Azure Stack Hub VM gives you the flexibility of virtualization without the need to manage clusters or individual machines. However, you still need to maintain the VM by doing tasks such as configuring, patching/updating, and installing the software that runs on it.
 
-An Azure Stack VM gives you the flexibility of virtualization without the need to manage clusters or individual machines. However, you still need to maintain the VM by doing tasks such as configuring, patching/updating, and installing the software that runs on it.
+You can use Azure Stack Hub VMs in several ways. For example:
 
-You can use Azure Stack VMs in several ways. For example:
+- **Development and test**: Azure Stack Hub VMs enable you to create a computer with a specific configuration required to code and test an application.
 
-- **Development and test**: Azure Stack VMs enable you to create a computer with a specific configuration required to code and test an application.
+- **Applications in the cloud**: Because demand for your application can fluctuate, it might make economic sense to run it on a VM in Azure Stack Hub. You pay for extra VMs when you need them and shut them down when you don't.
 
-- **Applications in the cloud**: Because demand for your application can fluctuate, it might make economic sense to run it on a VM in Azure Stack. You pay for extra VMs when you need them and shut them down when you don't.
-
-- **Extended datacenter**: VMs in an Azure Stack virtual network can be connected to your organization's network, or to Azure.
+- **Extended datacenter**: VMs in an Azure Stack Hub virtual network can be connected to your organization's network, or to Azure.
 
 The VMs that your application uses can scale up, or scale out, to whatever is required to meet your needs.
 
 ## Before creating a VM
 
-There are always design considerations when you build out an application infrastructure in Azure Stack. These aspects of a VM are important to think about before you start creating your infrastructure:
+There are always design considerations when you build out an application infrastructure in Azure Stack Hub. These aspects of a VM are important to think about before you start creating your infrastructure:
 
 - The names of your application resources.
 - The size of the VM.
@@ -46,11 +41,11 @@ There are always design considerations when you build out an application infrast
 
 A VM has a name assigned to it and it has a computer name configured as part of the operating system. The name of a VM can be up to 15 characters.
 
-If you use Azure Stack to create the operating system disk, the computer name and the VM name are the same. If you upload and use your own image that contains a previously configured operating system and use it to create a VM, the names may be different. When you upload your own image file, as a best practice, make sure the computer name in the operating system matches the VM name.
+If you use Azure Stack Hub to create the operating system disk, the computer name and the VM name are the same. If you upload and use your own image that contains a previously configured operating system and use it to create a VM, the names may be different. When you upload your own image file, as a best practice, make sure the computer name in the operating system matches the VM name.
 
 ### VM size
 
-The size of the VM that you use is determined by the workload that you want to run. The size that you choose then determines factors such as processing power, memory, and storage capacity. Azure Stack offers different kinds of sizes to support many types of uses.
+The size of the VM that you use is determined by the workload that you want to run. The size that you choose then determines factors such as processing power, memory, and storage capacity. Azure Stack Hub offers different kinds of sizes to support many types of uses.
 
 ### VM limits
 
@@ -58,14 +53,14 @@ Your subscription has default quota limits in place that can impact the deployme
 
 ### Operating system disks and images
 
-VMs use virtual hard disks (VHDs) to store their operating system (OS) and data. VHDs are also used for the images you choose from to install an OS. Azure Stack provides a marketplace to use with various versions and types of operating systems. Marketplace images are identified by image publisher, offer, SKU, and version (typically the latest version is specified as **latest**).
+VMs in Azure Stack Hub are limited to the generation one virtual hard disk (VHD/VHDX) format. VHDs can be used to store the machine operating system (OS) and data. VHDs are also used for the images you choose from to install an OS. Azure Stack Hub provides a marketplace to use with various versions and types of operating systems. Marketplace images are identified by image publisher, offer, SKU, and version (typically the latest version is specified as **latest**).
 
 The following table shows how to find the information for an image:
 
 |Method|Description|
 |---------|---------|
-|Azure Stack portal|The values are automatically specified for you when you select an image to use.|
-|Azure Stack PowerShell|`Get-AzureRMVMImagePublisher -Location "location"`<br>`Get-AzureRMVMImageOffer -Location "location" -Publisher "publisherName"`<br>`Get-AzureRMVMImageSku -Location "location" -Publisher "publisherName" -Offer "offerName"`|
+|Azure Stack Hub portal|The values are automatically specified for you when you select an image to use.|
+|Azure Stack Hub PowerShell|`Get-AzureRMVMImagePublisher -Location "location"`<br>`Get-AzureRMVMImageOffer -Location "location" -Publisher "publisherName"`<br>`Get-AzureRMVMImageSku -Location "location" -Publisher "publisherName" -Offer "offerName"`|
 |REST APIs     |[List image publishers](/rest/api/compute/platformimages/platformimages-list-publishers)<br>[List image offers](/rest/api/compute/platformimages/platformimages-list-publisher-offers)<br>[List image SKUs](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus)|
 
 You can choose to upload and use your own image. If you do, the publisher name, offer, and SKU aren't used.
@@ -100,10 +95,10 @@ You have several choices to create a VM. Your choice depends on your environment
 
 |Method|Article|
 |---------|---------|
-|Azure Stack portal|Create a Windows VM with the Azure Stack portal<br>[Create a Linux VM using the Azure Stack portal](azure-stack-quick-linux-portal.md)|
-|Templates|Azure Stack Quickstart templates are located at:<br> [https://github.com/Azure/AzureStack-QuickStart-Templates](https://github.com/Azure/AzureStack-QuickStarvirtualt-Templates)|
-|PowerShell|[Create a Windows VM by using PowerShell in Azure Stack](azure-stack-quick-create-vm-windows-powershell.md)<br>[Create a Linux VM by using PowerShell in Azure Stack](azure-stack-quick-create-vm-linux-powershell.md)|
-|CLI|[Create a Windows VM by using CLI in Azure Stack](azure-stack-quick-create-vm-windows-cli.md)<br>[Create a Linux VM by using CLI in Azure Stack](azure-stack-quick-create-vm-linux-cli.md)|
+|Azure Stack Hub portal|Create a Windows VM with the Azure Stack Hub portal<br>[Create a Linux VM using the Azure Stack Hub portal](azure-stack-quick-linux-portal.md)|
+|Templates|Azure Stack Hub Quickstart templates are located at:<br> [https://github.com/Azure/AzureStack-QuickStart-Templates](https://aka.ms/aa6z60s)|
+|PowerShell|[Create a Windows VM by using PowerShell in Azure Stack Hub](azure-stack-quick-create-vm-windows-powershell.md)<br>[Create a Linux VM by using PowerShell in Azure Stack Hub](azure-stack-quick-create-vm-linux-powershell.md)|
+|CLI|[Create a Windows VM by using CLI in Azure Stack Hub](azure-stack-quick-create-vm-windows-cli.md)<br>[Create a Linux VM by using CLI in Azure Stack Hub](azure-stack-quick-create-vm-linux-cli.md)|
 
 ## Manage your VM
 
@@ -120,14 +115,14 @@ The following table shows you some of the ways you can get information about a V
 
 |Method|Description|
 |---------|---------|
-|Azure Stack portal|On the hub menu, click **Virtual Machines** and then select the VM from the list. On the page for the VM, you have access to overview information, setting values, and monitoring metrics.|
-|Azure PowerShell|Managing VMs is similar in Azure and Azure Stack. For more information about using PowerShell, see the following Azure topic:<br>[Create and Manage Windows VMs with the Azure PowerShell module](/azure/virtual-machines/windows/tutorial-manage-vm#understand-vm-sizes)|
-|Client SDKs|Using C# to manage VMs is similar in Azure and Azure Stack. For more information, see the following Azure topic:<br>[Create and manage Windows VMs in Azure using C#](/azure/virtual-machines/windows/csharp)|
+|Azure Stack Hub portal|On the hub menu, click **Virtual Machines** and then select the VM from the list. On the page for the VM, you have access to overview information, setting values, and monitoring metrics.|
+|Azure PowerShell|Managing VMs is similar in Azure and Azure Stack Hub. For more information about using PowerShell, see the following Azure topic:<br>[Create and Manage Windows VMs with the Azure PowerShell module](/azure/virtual-machines/windows/tutorial-manage-vm#understand-vm-sizes)|
+|Client SDKs|Using C# to manage VMs is similar in Azure and Azure Stack Hub. For more information, see the following Azure topic:<br>[Create and manage Windows VMs in Azure using C#](/azure/virtual-machines/windows/csharp)|
 
 ### Connect to your VM
 
-You can use the **Connect** button in the Azure Stack portal to connect to your VM.
+You can use the **Connect** button in the Azure Stack Hub portal to connect to your VM.
 
 ## Next steps
 
-- [Considerations for VMs in Azure Stack](azure-stack-vm-considerations.md)
+- [Considerations for VMs in Azure Stack Hub](azure-stack-vm-considerations.md)

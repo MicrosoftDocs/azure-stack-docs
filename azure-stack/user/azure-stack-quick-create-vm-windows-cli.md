@@ -1,26 +1,15 @@
 ---
-title: Create a Windows virtual machine on Azure Stack using Azure CLI | Microsoft Docs
-description: Create a Windows virtual machine on Azure Stack using Azure CLI
-services: azure-stack
-documentationcenter: ''
+title: Create a Windows virtual machine on Azure Stack Hub using Azure CLI 
+description: Create a Windows virtual machine on Azure Stack Hub using Azure CLI
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/02/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
-ms.custom: mvc
 ms.lastreviewed: 01/14/2019
 ---
 
-# Quickstart: Create a Windows Server virtual machine using Azure CLI in Azure Stack
-
-‎*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Quickstart: Create a Windows Server virtual machine using Azure CLI in Azure Stack Hub
 
 You can create a Windows Server 2016 virtual machine by using the Azure CLI. Follow the steps in this article to create and use a virtual machine. This article also gives you the following steps:
 
@@ -30,13 +19,13 @@ You can create a Windows Server 2016 virtual machine by using the Azure CLI. Fol
 
 ## Prerequisites
 
-* Make sure that your Azure Stack operator added the **Windows Server 2016** image to the Azure Stack marketplace.
+* Make sure that your Azure Stack Hub operator added the **Windows Server 2016** image to the Azure Stack Hub Marketplace.
 
-* Azure Stack requires a specific version of Azure CLI to create and manage the resources. If you don't have Azure CLI configured for Azure Stack, follow the steps to [install and configure Azure CLI](azure-stack-version-profiles-azurecli2.md).
+* Azure Stack Hub requires a specific version of Azure CLI to create and manage the resources. If you don't have Azure CLI configured for Azure Stack Hub, follow the steps to [install and configure Azure CLI](azure-stack-version-profiles-azurecli2.md).
 
 ## Create a resource group
 
-A resource group is a logical container where you can deploy and manage Azure Stack resources. From your Azure Stack environment, run the [az group create](/cli/azure/group#az-group-create) command to create a resource group.
+A resource group is a logical container where you can deploy and manage Azure Stack Hub resources. From your Azure Stack Hub environment, run the [az group create](/cli/azure/group#az-group-create) command to create a resource group.
 
 > [!NOTE]
 >  Values are assigned for all the variables in the code examples. However, you can assign new values if you want to.
@@ -105,4 +94,4 @@ az group delete --name myResourceGroup
 
 ## Next steps
 
-In this quickstart, you deployed a basic Windows Server virtual machine. To learn more about Azure Stack virtual machines, continue to [Considerations for Virtual Machines in Azure Stack](azure-stack-vm-considerations.md).
+In this quickstart, you deployed a basic Windows Server virtual machine. To learn more about Azure Stack Hub virtual machines, continue to [Considerations for Virtual Machines in Azure Stack Hub](azure-stack-vm-considerations.md).

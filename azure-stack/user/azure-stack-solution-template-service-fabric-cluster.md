@@ -1,30 +1,22 @@
 ---
-title: Deploy a secured Service Fabric cluster in Azure Stack | Microsoft Docs
-description: Learn how to deploy a secured Service Fabric cluster in Azure Stack
-services: azure-stack
-documentationcenter: ''
+title: Deploy a secured Service Fabric cluster in Azure Stack Hub 
+description: Learn how to deploy a secured Service Fabric cluster in Azure Stack Hub
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/02/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: shnatara
 ms.lastreviewed: 09/25/2019
 ---
 
-# Deploy a Service Fabric cluster in Azure Stack
+# Deploy a Service Fabric cluster in Azure Stack Hub
 
-Use the **Service Fabric Cluster** item from the Azure Marketplace to deploy a secured Service Fabric cluster in Azure Stack. 
+Use the **Service Fabric Cluster** item from the Azure Marketplace to deploy a secured Service Fabric cluster in Azure Stack Hub. 
 
 For more information about working with Service Fabric, see [Overview of Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) and [Service Fabric cluster security scenarios](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) in the Azure documentation.
 
-The Service Fabric cluster in Azure Stack doesn't use the resource provider Microsoft.ServiceFabric. Instead, in Azure Stack, the Service Fabric cluster is a virtual machine scale set with preinstalled software using [Desired State Configuration (DSC)](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview).
+The Service Fabric cluster in Azure Stack Hub doesn't use the resource provider Microsoft.ServiceFabric. Instead, in Azure Stack Hub, the Service Fabric cluster is a virtual machine scale set with preinstalled software using [Desired State Configuration (DSC)](https://docs.microsoft.com/powershell/scripting/dsc/overview/overview).
 
 ## Prerequisites
 
@@ -41,7 +33,7 @@ The following are required to deploy the Service Fabric cluster:
 1. **Admin Client certificate**  
    This is the certificate that the client uses to authenticate to the Service Fabric cluster, which can be self-signed. See [requirements](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) for creating this client cert.
 
-1. **The following items must be available in the Azure Stack Marketplace:**
+1. **The following items must be available in the Azure Stack Hub Marketplace:**
     - **Windows Server 2016** - The template uses the Windows Server 2016 image to create the cluster.  
     - **Custom Script Extension** - Virtual Machine Extension from Microsoft.  
     - **PowerShell Desired Stage Configuration** - Virtual Machine Extension from Microsoft.
@@ -116,7 +108,7 @@ Use the following script to create the Key Vault and add the *cluster certificat
    ``` 
 
 
-For more information, see [Manage Key Vault on Azure Stack with
+For more information, see [Manage Key Vault on Azure Stack Hub with
 PowerShell](azure-stack-key-vault-manage-powershell.md).
 
 ## Deploy the Marketplace item
@@ -127,13 +119,13 @@ PowerShell](azure-stack-key-vault-manage-powershell.md).
 
 2. For each page, like *Basics*, fill out the deployment form. Use defaults if you're not sure of a value.
 
-    For deployments to a disconnected Azure Stack or to deploy another version of Service Fabric, download the Service Fabric deployment package and its corresponding runtime package and host it on an Azure Stack blob. Provide these values to the **Service Fabric deployment package URL** and **Service Fabric runtime package URL** fields.
+    For deployments to a disconnected Azure Stack Hub or to deploy another version of Service Fabric, download the Service Fabric deployment package and its corresponding runtime package and host it on an Azure Stack Hub blob. Provide these values to the **Service Fabric deployment package URL** and **Service Fabric runtime package URL** fields.
     > [!NOTE]  
     > There are compatibility issues between the latest release of Service Fabric and its corresponding SDK. Until that issue is addressed, please provide the following parameters to the deployment package URL and runtime package URL. Your deployments will fail otherwise.
     > - Service Fabric deployment package URL: <https://download.microsoft.com/download/8/3/6/836E3E99-A300-4714-8278-96BC3E8B5528/6.5.641.9590/Microsoft.Azure.ServiceFabric.WindowsServer.6.5.641.9590.zip>
     > - Service Fabric runtime package URL: <https://download.microsoft.com/download/B/0/B/B0BCCAC5-65AA-4BE3-AB13-D5FF5890F4B5/6.5.641.9590/MicrosoftAzureServiceFabric.6.5.641.9590.cab>
     >
-    > For disconnected deployments, download these packages from the specified location and host it locally on an Azure Stack Blob.
+    > For disconnected deployments, download these packages from the specified location and host it locally on an Azure Stack Hub Blob.
 
    ![Basics](media/azure-stack-solution-template-service-fabric-cluster/image3.png)
 
@@ -238,4 +230,4 @@ You can access the Service Fabric cluster by using either the Service Fabric Exp
 
 ## Next steps
 
-[Deploy Kubernetes to Azure Stack](azure-stack-solution-template-kubernetes-deploy.md)
+[Deploy Kubernetes to Azure Stack Hub](azure-stack-solution-template-kubernetes-deploy.md)

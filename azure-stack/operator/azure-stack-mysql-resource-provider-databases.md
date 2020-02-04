@@ -1,29 +1,21 @@
 ---
-title: Create MySQL databases in Azure Stack | Microsoft Docs
-description: Learn how to create and manage MySQL databases provisioned using the MySQL Adapter Resource Provider in Azure Stack.
-services: azure-stack
-documentationCenter: ''
+title: Create MySQL databases in Azure Stack Hub 
+description: Learn how to create and manage MySQL databases provisioned using the MySQL Adapter Resource Provider in Azure Stack Hub.
 author: mattbriggs
-manager: femila
-editor: ''
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
 
 ---
 
-# Create MySQL databases in Azure Stack
-An Azure Stack user that's subscribed to an offer that includes the MySQL database service can create and manage self-service MySQL databases in the user portal.
+# Create MySQL databases in Azure Stack Hub
+An Azure Stack Hub user that's subscribed to an offer that includes the MySQL database service can create and manage self-service MySQL databases in the user portal.
 
 ## Create a MySQL database
 
-1. Sign in to the Azure Stack user portal.
+1. Sign in to the Azure Stack Hub user portal.
 2. Select **+ Create a resource** > **Data + Storage** > **MySQL Database** > **Add**.
 3. Under **Create MySQL Database**, enter the Database Name, and configure the other settings as required for your environment.
 
@@ -34,7 +26,7 @@ An Azure Stack user that's subscribed to an offer that includes the MySQL databa
     ![Select a MySQL SKU](./media/azure-stack-mysql-rp-deploy/mysql-select-sku.png)
 
     >[!Note]
-    >As hosting servers are added to Azure Stack, they're assigned a SKU. Databases are created in the pool of hosting servers in a SKU.
+    >As hosting servers are added to Azure Stack Hub, they're assigned a SKU. Databases are created in the pool of hosting servers in a SKU.
 
 5. Under **Login**, select ***Configure required settings***.
 6. Under **Select a Login**, you can choose an existing login or select **+ Create a new login** to set up a new login.  Enter a **Database login** name and **Password**, and then select **OK**.

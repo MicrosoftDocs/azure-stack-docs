@@ -1,12 +1,10 @@
 ---
-title: How to use an SSH public key with Azure Stack | Microsoft Docs
+title: How to use an SSH public key with Azure Stack Hub 
 description: How to use an SSH public key
-services: azure-stack
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: overview
-ms.date: 10/02/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
@@ -16,13 +14,13 @@ ms.lastreviewed: 10/02/2019
 
 # Use an SSH public key
 
-To use an open SSH connection from your development machine to the server VM in your Azure Stack instance that hosts your web app, you might need to create a Secure Shell (SSH) public and private key pair. 
+To use an open SSH connection from your development machine to the server VM in your Azure Stack Hub instance that hosts your web app, you might need to create a Secure Shell (SSH) public and private key pair. 
 
 In this article, you create your keys and then use them to connect to your server. You can use an SSH client to get a bash prompt on the Linux server or use a Secure FTP (SFTP) client to move files to and from the server.
 
 ## Create an SSH public key on Windows
 
-In this section, you use PuTTY Key Generator to create a public SSH key and private key pair to use when you create a secure connection to Linux machines in your Azure Stack instance. PuTTY is a free terminal emulator that can allow you to connect to a server via SSH and Telnet.
+In this section, you use PuTTY Key Generator to create a public SSH key and private key pair to use when you create a secure connection to Linux machines in your Azure Stack Hub instance. PuTTY is a free terminal emulator that can allow you to connect to a server via SSH and Telnet.
 
 1. [Download and install PuTTY for your machine.](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)
 
@@ -64,14 +62,14 @@ When an application requests the key, you copy and paste the entire contents of 
 
 ## Connect with SSH by using PuTTY
 
-When you install PuTTY, you have both PuTTY Key Generator and an SSH client. In this section, you open the SSH client, PuTTY, and configure your connection values and SSH key. If you're on the same network as your Azure Stack instance, you connect to your VM.
+When you install PuTTY, you have both PuTTY Key Generator and an SSH client. In this section, you open the SSH client, PuTTY, and configure your connection values and SSH key. If you're on the same network as your Azure Stack Hub instance, you connect to your VM.
 
 Before you connect, you will need:
 - PuTTY
-- The IP address and username for the Linux machine in your Azure Stack instance that uses an SSH public key as the Authentication type.
+- The IP address and username for the Linux machine in your Azure Stack Hub instance that uses an SSH public key as the Authentication type.
 - Port 22 to be open for the machine.
 - The public SSH key that you used when you created the machine.
-- The client machine that runs PuTTY to be on the same network as your Azure Stack instance.
+- The client machine that runs PuTTY to be on the same network as your Azure Stack Hub instance.
 
 1. Open PuTTY.
 
@@ -125,4 +123,4 @@ To move files to and from your Linux machine, you can use FileZilla, an FTP clie
 
 ## Next steps
 
-Learn how to [Set up a development environment in Azure Stack](azure-stack-dev-start.md).
+Learn how to [Set up a development environment in Azure Stack Hub](azure-stack-dev-start.md).

@@ -1,31 +1,22 @@
 ﻿---
-title: Prepare Azure Stack PKI certificates for deployment or rotation | Microsoft Docs
-titleSuffix: Azure Stack
-description: Learn how to prepare PKI certificates for Azure Stack integrated systems deployment or for rotating secrets in an existing Azure Stack environment.
-services: azure-stack
-documentationcenter: ''
-author: justinha
-manager: femila
-editor: ''
-
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
+title: Prepare Azure Stack Hub PKI certificates for deployment or rotation 
+titleSuffix: Azure Stack Hub
+description: Learn how to prepare PKI certificates for Azure Stack Hub integrated systems deployment or for rotating secrets in an existing Azure Stack Hub environment.
+author: ihenkel
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: justinha
+ms.author: inhenkel
 ms.reviewer: ppacent
 ms.lastreviewed: 09/16/2019
 ---
 
-# Prepare Azure Stack PKI certificates for deployment or rotation
+# Prepare Azure Stack Hub PKI certificates for deployment or rotation
 
-The certificate files [obtained from your certificate authority (CA) of choice](azure-stack-get-pki-certs.md) must be imported and exported with properties matching Azure Stack's certificate requirements.
+The certificate files [obtained from your certificate authority (CA) of choice](azure-stack-get-pki-certs.md) must be imported and exported with properties matching Azure Stack Hub's certificate requirements.
 
 ## Prepare certificates for deployment
 
-Use the following steps to prepare and validate the Azure Stack PKI certificates that will be used for deploying a new Azure Stack environment or for rotating secrets in an existing Azure Stack environment.
+Use the following steps to prepare and validate the Azure Stack Hub PKI certificates that will be used for deploying a new Azure Stack Hub environment or for rotating secrets in an existing Azure Stack Hub environment.
 
 ### Import the certificate
 
@@ -50,7 +41,7 @@ Use the following steps to prepare and validate the Azure Stack PKI certificates
 1. Select **Finish** to complete the import.
 
 > [!NOTE]
-> After you import a certificate for Azure Stack, the private key of the certificate is stored as a PKCS 12 file (PFX) on clustered storage.
+> After you import a certificate for Azure Stack Hub, the private key of the certificate is stored as a PKCS 12 file (PFX) on clustered storage.
 
 ### Export the certificate
 
@@ -71,7 +62,7 @@ Open Certificate Manager MMC console and connect to the Local Machine certificat
 5. From the Certificate Manager Console taskbar, select **Actions** > **All Tasks** > **Export**. Select **Next**.
 
    > [!NOTE]
-   > Depending on how many Azure Stack certificates you have, you may need to complete this process more than once.
+   > Depending on how many Azure Stack Hub certificates you have, you may need to complete this process more than once.
 
 6. Select **Yes, Export the Private Key**, and then click **Next**.
 

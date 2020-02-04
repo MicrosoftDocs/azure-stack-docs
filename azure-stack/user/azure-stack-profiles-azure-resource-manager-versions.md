@@ -1,25 +1,18 @@
 ---
-title: Resource provider API versions supported by profiles in Azure Stack | Microsoft Docs
-description: Learn about the Azure Resource Manager API versions supported by profiles in Azure Stack.
-services: azure-stack
-documentationcenter: ''
+title: Resource provider API versions supported by profiles in Azure Stack Hub 
+description: Learn about the Azure Resource Manager API versions supported by profiles in Azure Stack Hub.
 author: sethmanheim
-manager: femila
 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 01/07/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/08/2019
 ---
 
-# Resource provider API versions supported by profiles in Azure Stack
+# Resource provider API versions supported by profiles in Azure Stack Hub
 
-You can find the resource provider and version numbers for each API profile used by Azure Stack in this article. The tables in this article list the versions supported for each resource provider and the API versions of the profiles. Each resource provider contains a set of resource types and specific version numbers.
+You can find the resource provider and version numbers for each API profile used by Azure Stack Hub in this article. The tables in this article list the versions supported for each resource provider and the API versions of the profiles. Each resource provider contains a set of resource types and specific version numbers.
 
 The API profile uses three naming conventions:
 
@@ -27,7 +20,7 @@ The API profile uses three naming conventions:
 - **yyyy-mm-dd-hybrid**
 - **yyyy-mm-dd-profile**
 
-For an explanation of API profiles and version release cadence for Azure Stack, see [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md).
+For an explanation of API profiles and version release cadence for Azure Stack Hub, see [Manage API version profiles in Azure Stack Hub](azure-stack-version-profiles.md).
 
 > [!NOTE]
 > The **latest** API profile contains the latest version of the resource provider API, and is not listed in this article.
@@ -195,5 +188,5 @@ The Storage Resource Provider (SRP) lets you manage your storage account and key
 
 ## Next steps
 
-- [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md)
-- [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md)  
+- [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md)
+- [Configure the Azure Stack Hub PowerShell environment](azure-stack-powershell-configure-user.md)  

@@ -2,7 +2,6 @@
 title: Configure hybrid cloud connectivity using Azure and Azure Stack Hub
 description: Learn how to configure hybrid cloud connectivity using Azure and Azure Stack Hub.
 author: BryanLa
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: bryanla
@@ -11,8 +10,6 @@ ms.lastreviewed: 11/05/2019
 ---
 
 # Configure hybrid cloud connectivity using Azure and Azure Stack Hub
-
-*Applies to: Azure Stack Hub integrated systems and Azure Stack Hub Development Kit*
 
 You can access resources with security in global Azure and Azure Stack Hub using the hybrid connectivity pattern.
 

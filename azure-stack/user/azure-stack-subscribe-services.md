@@ -1,33 +1,23 @@
 ---
-title: Create a subscription with an offer in Azure Stack | Microsoft Docs
-description: Learn how to create a new subscription with an offer in Azure Stack and then test the offer with a test VM.
-services: azure-stack
-documentationcenter: ''
+title: Create a subscription with an offer in Azure Stack Hub 
+description: Learn how to create a new subscription with an offer in Azure Stack Hub and then test the offer with a test VM.
 author: bryanla
-manager: femila
-editor: ''
 
-ms.assetid: 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
 ms.date: 06/04/2019
 ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 11/13/2018
 ---
 
-# Tutorial: Create and test a subscription in Azure Stack
+# Tutorial: Create and test a subscription in Azure Stack Hub
 
-This tutorial shows how to create a subscription containing an offer and then how to test it. For the test, you sign in to the Azure Stack user portal as a cloud admin, subscribe to the offer, and then create a virtual machine (VM).
+This tutorial shows how to create a subscription containing an offer and then how to test it. For the test, you sign in to the Azure Stack Hub user portal as a cloud admin, subscribe to the offer, and then create a virtual machine (VM).
 
 > [!TIP]
 > For more a more advanced evaluation experience, you can [create a subscription for a particular user](../operator/azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator) and then sign in as that user in the user portal.
 
-This tutorial shows how to subscribe to an Azure Stack offer.
+This tutorial shows how to subscribe to an Azure Stack Hub offer.
 
 What you'll learn:
 
@@ -37,7 +27,7 @@ What you'll learn:
 
 ## Subscribe to an offer
 
-To subscribe to an offer as a user, sign in to the Azure Stack user portal to check the available services offered by the Azure Stack operator.
+To subscribe to an offer as a user, sign in to the Azure Stack Hub user portal to check the available services offered by the Azure Stack Hub operator.
 
 1. Sign in to the user portal and select **Get a subscription**.
 
@@ -59,7 +49,7 @@ To subscribe to an offer as a user, sign in to the Azure Stack user portal to ch
 While signed in to the user portal, test the offer by provisioning a VM using the new subscription capabilities.
 
 > [!NOTE]
-> This test requires that a Windows Server 2016 Datacenter VM first be added to the Azure Stack marketplace.
+> This test requires that a Windows Server 2016 Datacenter VM first be added to the Azure Stack Hub Marketplace.
 
 1. Sign in to the user portal.
 

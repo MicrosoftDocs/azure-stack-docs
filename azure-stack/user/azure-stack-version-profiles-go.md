@@ -1,35 +1,26 @@
 ---
-title: Use API version profiles with GO in Azure Stack | Microsoft Docs
-description: Learn how to use API version profiles with GO in Azure Stack.
-services: azure-stack
-documentationcenter: ''
+title: Use API version profiles with GO in Azure Stack Hub 
+description: Learn how to use API version profiles with GO in Azure Stack Hub.
 author: sethmanheim
-manager: femila
 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2019
+ms.date: 01/23/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/26/2019
 
 ---
 
-# Use API version profiles with Go in Azure Stack
-
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Use API version profiles with Go in Azure Stack Hub
 
 ## Go and version profiles
 
 A profile is a combination of different resource types with different versions from different services. Using a profile helps you mix and match between different resource types. Profiles can provide the following benefits:
 
 - Stability for your app by locking to specific API versions.
-- Compatibility for your app with Azure Stack and regional Azure datacenters.
+- Compatibility for your app with Azure Stack Hub and regional Azure datacenters.
 
-In the Go SDK, profiles are available under the profiles path. Profile version numbers are labeled in the **YYYY-MM-DD** format. The latest Azure Stack API profile version is **2019-03-01** for Azure Stack versions 1904 or later. To import a given service from a profile, import its corresponding module from the profile. For example, to import **Compute** service from **2019-03-01** profile, use the following code:
+In the Go SDK, profiles are available under the profiles path. Profile version numbers are labeled in the **YYYY-MM-DD** format. The latest Azure Stack Hub API profile version is **2019-03-01** for Azure Stack Hub versions 1904 or later. To import a given service from a profile, import its corresponding module from the profile. For example, to import **Compute** service from **2019-03-01** profile, use the following code:
 
 ```go
 import "github.com/Azure/azure-sdk-for-go/profiles/2019-03-01/compute/mgmt/compute"
@@ -56,9 +47,9 @@ You can find more information about the Azure Go SDK at the following links:
 
 The Go SDK depends on the Azure **Go-AutoRest** modules to send REST requests to Azure Resource Manager endpoints. You must import the Azure **Go-AutoRest** module dependencies from [Azure Go-AutoRest on GitHub](https://github.com/Azure/go-autorest). You can find the install bash commands in the **Install** section.
 
-## How to use Go SDK profiles on Azure Stack
+## How to use Go SDK profiles on Azure Stack Hub
 
-To run a sample of Go code on Azure Stack, follow these steps:
+To run a sample of Go code on Azure Stack Hub, follow these steps:
 
 1. Install the Azure SDK for Go and its dependencies. For instructions, see the previous section, [Install Azure SDK for Go](#install-the-azure-sdk-for-go).
 2. Get the metadata info from the Resource Manager endpoint. The endpoint returns a JSON file with the info required to run your Go code.
@@ -81,11 +72,11 @@ To run a sample of Go code on Azure Stack, follow these steps:
    }
    ```
 
-3. If not available, create a subscription and save the subscription ID to be used later. For info on creating a subscription, see [Create subscriptions to offers in Azure Stack](../operator/azure-stack-subscribe-plan-provision-vm.md).
+3. If not available, create a subscription and save the subscription ID to be used later. For info on creating a subscription, see [Create subscriptions to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md).
 
-4. Create a service principal that uses a client secret, with **Subscription** scope and **Owner** role. Save the service principal ID and secret. For information about creating a service principal for Azure Stack, see [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md). Your Azure Stack environment is now set up.
+4. Create a service principal that uses a client secret, with **Subscription** scope and **Owner** role. Save the service principal ID and secret. For information about creating a service principal for Azure Stack Hub, see [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md). Your Azure Stack Hub environment is now set up.
 
-5. Import a service module from the Go SDK profile in your code. The current version of Azure Stack profile is **2019-03-01**. For example, to import a network module from the **2019-03-01** profile type, use the following code:
+5. Import a service module from the Go SDK profile in your code. The current version of Azure Stack Hub profile is **2019-03-01**. For example, to import a network module from the **2019-03-01** profile type, use the following code:
 
    ```go
    package main
@@ -121,13 +112,13 @@ To run a sample of Go code on Azure Stack, follow these steps:
    vnetClient .CreateOrUpdate( )
    ```
 
-For a complete example of creating a virtual network on Azure Stack by using the Go SDK profile, see the [example](#example).
+For a complete example of creating a virtual network on Azure Stack Hub by using the Go SDK profile, see the [example](#example).
 
 ## Authentication
 
 To get the **Authorizer** property from Azure Active Directory using the Go SDK, install the **Go-AutoRest** modules. These modules should have been already installed with the "Go SDK" installation. If they aren't, install the [authentication package from GitHub](https://github.com/Azure/go-autorest/tree/master/autorest/adal).
 
-The Authorizer must be set as the authorizer for the resource client. There are different ways to get authorizer tokens on Azure Stack by using client credentials:
+The Authorizer must be set as the authorizer for the resource client. There are different ways to get authorizer tokens on Azure Stack Hub by using client credentials:
 
 1. If a service principal with owner role on the subscription is available, skip this step. Otherwise, see [Use an app identity to access resources](../operator/azure-stack-create-service-principals.md) for instructions on creating a service principal that uses a client secret, and for help on how to assign it an "owner" role scoped to your subscription. Be sure to capture the service principal application ID and secret.
 
@@ -151,7 +142,7 @@ The Authorizer must be set as the authorizer for the resource client. There are 
    }
    ```
 
-   Set `<activeDirectoryEndpoint>` to the value of the `loginEndpoint` property from the `ResourceManagerUrl` metadata retrieved on the previous section of this document. Set the `<tenantID>` value to your Azure Stack tenant ID.
+   Set `<activeDirectoryEndpoint>` to the value of the `loginEndpoint` property from the `ResourceManagerUrl` metadata retrieved on the previous section of this document. Set the `<tenantID>` value to your Azure Stack Hub tenant ID.
 
 4. Finally, create a service principal token by using the `NewServicePrincipalToken` method from the **adal** module:
 
@@ -177,12 +168,12 @@ The Authorizer must be set as the authorizer for the resource client. There are 
 
 ## Example
 
-This example shows a sample of Go code that creates a virtual network on Azure Stack. For complete examples of the Go SDK, see the [Azure Go SDK samples repository](https://github.com/Azure-Samples/azure-sdk-for-go-samples). Azure Stack samples are available under the hybrid path inside service folders of the repository.
+This example shows a sample of Go code that creates a virtual network on Azure Stack Hub. For complete examples of the Go SDK, see the [Azure Go SDK samples repository](https://github.com/Azure-Samples/azure-sdk-for-go-samples). Azure Stack Hub samples are available under the hybrid path inside service folders of the repository.
 
 > [!NOTE]  
-> To run the code in this example, verify that the subscription used has the **Network** resource provider listed as **Registered**. To verify, look for the subscription in the Azure Stack portal, and select **Resource providers.**
+> To run the code in this example, verify that the subscription used has the **Network** resource provider listed as **Registered**. To verify, look for the subscription in the Azure Stack Hub portal, and select **Resource providers.**
 
-1. Import the required packages in your code. Use the latest available profile on Azure Stack to import the network module:
+1. Import the required packages in your code. Use the latest available profile on Azure Stack Hub to import the network module:
 
    ```go
    package main
@@ -297,13 +288,13 @@ This example shows a sample of Go code that creates a virtual network on Azure S
    }
    ```
 
-Some of the code samples available for Azure Stack using the Go SDK are:
+Some of the code samples available for Azure Stack Hub using the Go SDK are:
 
 - [Create Virtual machine](https://github.com/Azure-Samples/Hybrid-Compute-Go-Create-VM)
 - [Storage Dataplane](https://github.com/Azure-Samples/Hybrid-Storage-Go-Dataplane)
-- [Use Managed Disks](https://github.com/Azure-Samples/Hybrid-Compute-Go-ManagedDisks) (a sample that uses 2019-03-01 profile which targets the latest API versions supported by Azure Stack)
+- [Use Managed Disks](https://github.com/Azure-Samples/Hybrid-Compute-Go-ManagedDisks) (a sample that uses 2019-03-01 profile which targets the latest API versions supported by Azure Stack Hub)
 
 ## Next steps
 
-- [Install PowerShell for Azure Stack](../operator/azure-stack-powershell-install.md)
-- [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md)
+- [Install PowerShell for Azure Stack Hub](../operator/azure-stack-powershell-install.md)
+- [Configure the Azure Stack Hub user's PowerShell environment](azure-stack-powershell-configure-user.md)

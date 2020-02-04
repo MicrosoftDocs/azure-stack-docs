@@ -1,34 +1,23 @@
 ---
-title: Use API version profiles with Java in Azure Stack | Microsoft Docs
-description: Learn how to use API version profiles with Java in Azure Stack.
-services: azure-stack
-documentationcenter: ''
+title: Use API version profiles with Java in Azure Stack Hub 
+description: Learn how to use API version profiles with Java in Azure Stack Hub.
 author: sethmanheim
-manager: femila
-editor: ''
 
-ms.assetid: ''
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2019
+ms.date: 01/23/2020
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/16/2019
 
 ---
 
-# Use API version profiles with Java in Azure Stack
+# Use API version profiles with Java in Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+The Java SDK for the Azure Stack Hub Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Networking, Storage, App Services, and [Key Vault](/azure/key-vault/key-vault-whatis).
 
-The Java SDK for the Azure Stack Resource Manager provides tools to help you build and manage your infrastructure. Resource providers in the SDK include Compute, Networking, Storage, App Services, and [Key Vault](/azure/key-vault/key-vault-whatis).
+The Java SDK incorporates API profiles by including dependencies in the **Pom.xml** file that loads the correct modules in the **.java** file. However, you can add multiple profiles as dependencies, such as the **2019-03-01-hybrid**, or **latest**, as the Azure profile. Using these dependencies loads the correct module so that when you create your resource type, you can select which API version from those profiles you want to use. This enables you to use the latest versions in Azure, while developing against the most current API versions for Azure Stack Hub.
 
-The Java SDK incorporates API profiles by including dependencies in the **Pom.xml** file that loads the correct modules in the **.java** file. However, you can add multiple profiles as dependencies, such as the **2019-03-01-hybrid**, or **latest**, as the Azure profile. Using these dependencies loads the correct module so that when you create your resource type, you can select which API version from those profiles you want to use. This enables you to use the latest versions in Azure, while developing against the most current API versions for Azure Stack.
-
-Using the Java SDK enables a true hybrid cloud developer experience. API profiles in the Java SDK enable hybrid cloud development by helping you switch between global Azure resources and resources in Azure Stack.
+Using the Java SDK enables a true hybrid cloud developer experience. API profiles in the Java SDK enable hybrid cloud development by helping you switch between global Azure resources and resources in Azure Stack Hub.
 
 ## Java and API version profiles
 
@@ -38,7 +27,7 @@ An API profile is a combination of resource providers and API versions. Use an A
 
   - To use the latest profile, the dependency is **com.microsoft.azure**.
 
-  - To use the latest supported services available in Azure Stack, use the
+  - To use the latest supported services available in Azure Stack Hub, use the
     **com.microsoft.azure.profile\_2019\_03\_01\_hybrid** profile.
 
     - The profile is specified in the **Pom.xml** file as a dependency, which loads modules automatically if you choose the right class from the dropdown list (as you would with .NET).
@@ -81,26 +70,26 @@ Follow these steps to install the Java SDK:
    - **com.microsoft.azure**
      - **latest**
 
-5. If not available, create a subscription and save the subscription ID for later use. For instructions on how to create a subscription, see [Create subscriptions to offers in Azure Stack](../operator/azure-stack-subscribe-plan-provision-vm.md).
+5. If not available, create a subscription and save the subscription ID for later use. For instructions on how to create a subscription, see [Create subscriptions to offers in Azure Stack Hub](../operator/azure-stack-subscribe-plan-provision-vm.md).
 
-6. Create a service principal and save the client ID and the client secret. For instructions on how to create a service principal for Azure Stack, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md). The client ID is also known as the application ID when creating a service principal.
+6. Create a service principal and save the client ID and the client secret. For instructions on how to create a service principal for Azure Stack Hub, see [Provide applications access to Azure Stack Hub](../operator/azure-stack-create-service-principals.md). The client ID is also known as the application ID when creating a service principal.
 
-7. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack](../operator/azure-stack-create-service-principals.md).
+7. Make sure your service principal has the contributor/owner role on your subscription. For instructions on how to assign a role to service principal, see [Provide applications access to Azure Stack Hub](../operator/azure-stack-create-service-principals.md).
 
 ## Prerequisites
 
-To use the Azure Java SDK with Azure Stack, you must supply the following values, and then set values with environment variables. To set the environmental variables, see the instructions following the table for your operating system.
+To use the Azure Java SDK with Azure Stack Hub, you must supply the following values, and then set values with environment variables. To set the environmental variables, see the instructions following the table for your operating system.
 
 | Value                     | Environment variables | Description                                                                                                                                                                                                          |
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Tenant ID                 | `AZURE_TENANT_ID`            | Your Azure Stack [tenant ID](../operator/azure-stack-identity-overview.md).                                                          |
+| Tenant ID                 | `AZURE_TENANT_ID`            | Your Azure Stack Hub [tenant ID](../operator/azure-stack-identity-overview.md).                                                          |
 | Client ID                 | `AZURE_CLIENT_ID`             | The service principal application ID saved when the service principal was created in the previous section.                                                                                              |
-| Subscription ID           | `AZURE_SUBSCRIPTION_ID`      | You use the [subscription ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) to access offers in Azure Stack.                |
+| Subscription ID           | `AZURE_SUBSCRIPTION_ID`      | You use the [subscription ID](../operator/service-plan-offer-subscription-overview.md#subscriptions) to access offers in Azure Stack Hub.                |
 | Client Secret             | `AZURE_CLIENT_SECRET`        | The service principal application secret saved when the service principal was created.                                                                                                                                   |
-| Resource Manager Endpoint | `ARM_ENDPOINT`              | See the [Azure Stack Resource Manager endpoint](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-resource-manager-endpoint) article. |
-| Location                  | `RESOURCE_LOCATION`    | **Local** for Azure Stack.                                                                                                                                                                                                |
+| Resource Manager Endpoint | `ARM_ENDPOINT`              | See the [Azure Stack Hub Resource Manager endpoint](../user/azure-stack-version-profiles-ruby.md#the-azure-stack-hub-resource-manager-endpoint) article. |
+| Location                  | `RESOURCE_LOCATION`    | **Local** for Azure Stack Hub.                                                                                                                                                                                                |
 
-To find the tenant ID for your Azure Stack, see the instructions [here](../operator/azure-stack-csp-ref-operations.md). To set your environment variables, use the procedures in the following sections:
+To find the tenant ID for your Azure Stack Hub, see the instructions [here](../operator/azure-stack-csp-ref-operations.md). To set your environment variables, use the procedures in the following sections:
 
 ### Microsoft Windows
 
@@ -118,13 +107,13 @@ In Unix based systems, use the following command:
 Export AZURE_TENANT_ID=<Your_Tenant_ID>
 ```
 
-### Trust the Azure Stack CA root certificate
+### Trust the Azure Stack Hub CA root certificate
 
-If you are using the Azure Stack Development Kit (ASDK), you must trust the CA root certificate on your remote machine. You do not need to trust the CA root certificate with Azure Stack integrated systems.
+If you are using the Azure Stack Development Kit (ASDK), you must trust the CA root certificate on your remote machine. You do not need to trust the CA root certificate with Azure Stack Hub integrated systems.
 
 #### Windows
 
-1. Export the Azure Stack self-signed certificate to your desktop.
+1. Export the Azure Stack Hub self-signed certificate to your desktop.
 
 1. In a command prompt, change the directory to `%JAVA_HOME%\bin`.
 
@@ -134,7 +123,7 @@ If you are using the Azure Stack Development Kit (ASDK), you must trust the CA r
    .\keytool.exe -importcert -noprompt -file <location of the exported certificate here> -alias root -keystore %JAVA_HOME%\lib\security\cacerts -trustcacerts -storepass changeit
    ```
 
-### The Azure Stack Resource Manager endpoint
+### The Azure Stack Hub Resource Manager endpoint
 
 Azure Resource Manager is a management framework that allows admins to deploy, manage, and monitor Azure resources. Azure Resource Manager can handle these tasks as a group, rather than individually, in a single operation.
 
@@ -144,7 +133,7 @@ Note the following considerations:
 
 - The **ResourceManagerUrl** in the ASDK is: `https://management.local.azurestack.external/`.
 
-- The **ResourceManagerUrl** in integrated systems is: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`.
+- The **ResourceManagerUrl** in integrated systems is: `https://management.region.<fqdn>/`, where `<fqdn>` is your fully qualified domain name.
 
 To retrieve the metadata required: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`.
 
@@ -165,18 +154,18 @@ Sample JSON file:
 
 ## Existing API profiles
 
-- **com.microsoft.azure.profile\_2019\_03\_01\_hybrid**: Latest profile built for Azure Stack. Use this profile for services to be most compatible with Azure Stack, as long as you're on 1904 or later.
+- **com.microsoft.azure.profile\_2019\_03\_01\_hybrid**: Latest profile built for Azure Stack Hub. Use this profile for services to be most compatible with Azure Stack Hub, as long as you're on 1904 or later.
 
-- **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**: Profile built for Azure Stack. Use this profile for services to be compatible with Azure Stack versions 1808 or later.
+- **com.microsoft.azure.profile\_2018\_03\_01\_hybrid**: Profile built for Azure Stack Hub. Use this profile for services to be compatible with Azure Stack Hub versions 1808 or later.
 
 - **com.microsoft.azure**: Profile consisting of the latest versions of all services. Use the latest versions of all the services.
 
-For more information about Azure Stack and API profiles, see the [Summary
+For more information about Azure Stack Hub and API profiles, see the [Summary
 of API profiles](../user/azure-stack-version-profiles.md#summary-of-api-profiles).
 
 ## Azure Java SDK API profile usage
 
-The following code authenticates the service principal on Azure Stack. It creates a token using the tenant ID and the authentication base, which is specific to Azure Stack:
+The following code authenticates the service principal on Azure Stack Hub. It creates a token using the tenant ID and the authentication base, which is specific to Azure Stack Hub:
 
 ```java
 AzureTokenCredentials credentials = new ApplicationTokenCredentials(client, tenant, key, AZURE_STACK)
@@ -186,14 +175,14 @@ Azure azureStack = Azure.configure()
                     .authenticate(credentials, credentials.defaultSubscriptionID());
 ```
 
-This code enables you to use the API profile dependencies to deploy your app successfully to Azure Stack.
+This code enables you to use the API profile dependencies to deploy your app successfully to Azure Stack Hub.
 
-## Define Azure Stack environment setting functions
+## Define Azure Stack Hub environment setting functions
 
-To register the Azure Stack cloud with the correct endpoints, use the following code:
+To register the Azure Stack Hub cloud with the correct endpoints, use the following code:
 
 ```java
-// Get Azure Stack cloud endpoints
+// Get Azure Stack Hub cloud endpoints
 final HashMap<String, String> settings = getActiveDirectorySettings(armEndpoint);
 
 AzureEnvironment AZURE_STACK = new AzureEnvironment(new HashMap<String, String>() {
@@ -258,7 +247,7 @@ public static HashMap<String, String> getActiveDirectorySettings(String armEndpo
 
 ## Samples using API profiles
 
-Use the following GitHub samples as references for creating solutions with .NET and Azure Stack API profiles:
+Use the following GitHub samples as references for creating solutions with .NET and Azure Stack Hub API profiles:
 
 - [Manage resource groups](https://github.com/Azure-Samples/Hybrid-resources-java-manage-resource-group)
 
@@ -291,19 +280,19 @@ Use the following GitHub samples as references for creating solutions with .NET 
    - `export AZURE_CLIENT_ID={your client ID}`
    - `export AZURE_CLIENT_SECRET={your client secret}`
    - `export AZURE_SUBSCRIPTION_ID={your subscription ID}`
-   - `export ARM_ENDPOINT={your Azure Stack Resource Manager URL}`
-   - `export RESOURCE_LOCATION={location of Azure Stack}`
+   - `export ARM_ENDPOINT={your Azure Stack Hub Resource Manager URL}`
+   - `export RESOURCE_LOCATION={location of Azure Stack Hub}`
 
    In Windows, use **set** instead of **export**.
 
 5. Use the `getActiveDirectorySettings` function to retrieve the Azure Resource Manager metadata endpoints.
 
     ```java
-    // Get Azure Stack cloud endpoints
+    // Get Azure Stack Hub cloud endpoints
     final HashMap<String, String> settings = getActiveDirectorySettings(armEndpoint);
     ```
 
-6. In the **Pom.xml** file, add the following dependency to use the **2019-03-01-hybrid** profile for Azure Stack. This dependency installs the modules associated with this profile for the Compute, Networking, Storage, Key Vault, and App Services resource providers:
+6. In the **Pom.xml** file, add the following dependency to use the **2019-03-01-hybrid** profile for Azure Stack Hub. This dependency installs the modules associated with this profile for the Compute, Networking, Storage, Key Vault, and App Services resource providers:
 
    ```xml
    <dependency>
@@ -323,5 +312,5 @@ Use the following GitHub samples as references for creating solutions with .NET 
 
 For more information about API profiles, see:
 
-- [Version profiles in Azure Stack](azure-stack-version-profiles.md)
+- [Version profiles in Azure Stack Hub](azure-stack-version-profiles.md)
 - [Resource provider API versions supported by profiles](azure-stack-profiles-azure-resource-manager-versions.md)

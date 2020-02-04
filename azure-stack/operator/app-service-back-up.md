@@ -1,17 +1,8 @@
 ---
-title: Back up App Service on Azure Stack | Microsoft Docs
-description: Learn how to back up App Services on Azure Stack.
-services: azure-stack
-documentationcenter: ''
+title: Back up App Service on Azure Stack Hub 
+description: Learn how to back up App Services on Azure Stack Hub.
 author: bryanla
-manager: femila
-editor: ''
 
-ms.assetid: 
-ms.service: azure-stack
-ms.workload: app-service
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2019
 ms.author: anwestg
@@ -19,16 +10,14 @@ ms.reviewer: anwestg
 ms.lastreviewed: 03/21/2019
 
 ---
-# Back up App Service on Azure Stack
+# Back up App Service on Azure Stack Hub
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*  
-
-This document provides instructions on how to back up App Service on Azure Stack.
+This document provides instructions on how to back up App Service on Azure Stack Hub.
 
 > [!IMPORTANT]
-> App Service on Azure Stack isn't backed up as part of [Azure Stack infrastructure backup](azure-stack-backup-infrastructure-backup.md). As an Azure Stack Operator, you must take steps to ensure App Service can be successfully recovered if necessary.
+> App Service on Azure Stack Hub isn't backed up as part of [Azure Stack Hub infrastructure backup](azure-stack-backup-infrastructure-backup.md). As an Azure Stack Hub Operator, you must take steps to ensure App Service can be successfully recovered if necessary.
 
-Azure App Service on Azure Stack has four main components to consider when planning for disaster recovery:
+Azure App Service on Azure Stack Hub has four main components to consider when planning for disaster recovery:
 1. The resource provider infrastructure; server roles, worker tiers, and so on. 
 2. The App Service secrets.
 3. The App Service SQL Server hosting and metering databases.
@@ -39,17 +28,17 @@ When recovering App Service from backup, you need to provide the App Service key
 
 Use the administration portal to back up app service secrets by following these steps: 
 
-1. Sign in to the Azure Stack administrator portal as the service admin.
+1. Sign in to the Azure Stack Hub administrator portal as the service admin.
 
 2. Browse to **App Service** -> **Secrets**. 
 
 3. Select **Download Secrets**.
 
-   ![Download secrets in Azure Stack administrator portal](./media/app-service-back-up/download-secrets.png)
+   ![Download secrets in Azure Stack Hub administrator portal](./media/app-service-back-up/download-secrets.png)
 
 4. When secrets are ready for downloading, click **Save** and store the App Service secrets (**SystemSecrets.JSON**) file in a safe location. 
 
-   ![Save secrets in Azure Stack administrator portal](./media/app-service-back-up/save-secrets.png)
+   ![Save secrets in Azure Stack Hub administrator portal](./media/app-service-back-up/save-secrets.png)
 
 > [!NOTE]
 > Repeat these steps every time the App Service secrets are rotated.
@@ -88,4 +77,4 @@ net use $destination /delete
 ```
 
 ## Next steps
-[Restore App Service on Azure Stack](app-service-recover.md)
+[Restore App Service on Azure Stack Hub](app-service-recover.md)

@@ -1,30 +1,28 @@
 ---
-title: Deploy a Python web app to a virtual machine in Azure Stack | Microsoft Docs
-description: Deploy a Python web app to a virtual machine in Azure Stack.
-services: azure-stack
+title: Deploy a Python web app to a virtual machine in Azure Stack Hub 
+description: Deploy a Python web app to a virtual machine in Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: overview
-ms.date: 10/02/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
 
-# keywords:  Deploy an app to Azure Stack
-# Intent: I am a developer using Windows 10 or Linux Ubuntu who would like to deploy an app for Azure Stack.
+# keywords:  Deploy an app to Azure Stack Hub
+# Intent: I am a developer using Windows 10 or Linux Ubuntu who would like to deploy an app for Azure Stack Hub.
 ---
 
 
-# Deploy a Python web app to a VM in Azure Stack
+# Deploy a Python web app to a VM in Azure Stack Hub
 
-You can create a VM to host your Python web app in Azure Stack. In this article, you set up a server, configure the server to host your Python web app, and then deploy the app to Azure Stack.
+You can create a VM to host your Python web app in Azure Stack Hub. In this article, you set up a server, configure the server to host your Python web app, and then deploy the app to Azure Stack Hub.
 
 This article uses Python 3.x running Flask in a virtual environment on an Nginx server.
 
 ## Create a VM
 
-1. Set up your VM in Azure Stack by following the instructions in [Deploy a Linux VM to host a web app in Azure Stack](azure-stack-dev-start-howto-deploy-linux.md).
+1. Set up your VM in Azure Stack Hub by following the instructions in [Deploy a Linux VM to host a web app in Azure Stack Hub](azure-stack-dev-start-howto-deploy-linux.md).
 
 2. In the VM network pane, make sure that the following ports are accessible:
 
@@ -113,6 +111,6 @@ This article uses Python 3.x running Flask in a virtual environment on an Nginx 
 
 ## Next steps
 
-- Learn more about how to [develop for Azure Stack](azure-stack-dev-start.md).
-- Learn about [common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
+- Learn more about how to [develop for Azure Stack Hub](azure-stack-dev-start.md).
+- Learn about [common deployments for Azure Stack Hub as IaaS](azure-stack-dev-start-deploy-app.md).
 - To learn the Python programming language and find additional resources for Python, see [Python.org](https://www.python.org).

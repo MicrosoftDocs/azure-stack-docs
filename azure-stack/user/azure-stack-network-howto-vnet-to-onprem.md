@@ -1,43 +1,39 @@
 ---
-title: Set up VPN gateway for Azure Stack | Microsoft Docs
-description: Learn how to set up VPN gateway for Azure Stack.
-services: azure-stack
+title: Set up VPN gateway for Azure Stack Hub 
+description: Learn how to set up VPN gateway for Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: how-to
 ms.date: 10/03/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
 
-# keywords:  VPN gateway Azure Stack
-# Intent: As an Azure Stack user, I want create a VPN gateway and connection between Azure Stack and my network so that I can share resources between the two networks.
+# keywords:  VPN gateway Azure Stack Hub
+# Intent: As an Azure Stack Hub user, I want create a VPN gateway and connection between Azure Stack Hub and my network so that I can share resources between the two networks.
 ---
 
-# Setup VPN gateway for Azure Stack using FortiGate NVA
+# Set up VPN gateway for Azure Stack Hub using FortiGate NVA
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
-This article describes how to create a VPN connection to your Azure Stack. A VPN gateway is a type of virtual network gateway that sends encrypted traffic between your virtual network in Azure Stack and a remote VPN gateway. The procedure below deploys one VNET with a FortiGate NVA, a network virtual appliance, within a resource group. It also provides steps to set up an IPSec VPN on the FortiGate NVA.
+This article describes how to create a VPN connection to your Azure Stack Hub. A VPN gateway is a type of virtual network gateway that sends encrypted traffic between your virtual network in Azure Stack Hub and a remote VPN gateway. The procedure below deploys one VNET with a FortiGate NVA, a network virtual appliance, within a resource group. It also provides steps to set up an IPSec VPN on the FortiGate NVA.
 
 ## Prerequisites
 
--  Access to an Azure Stack integrated systems with available capacity to deploy the required compute, network, and resource requirements needed for this solution. 
+-  Access to an Azure Stack Hub integrated systems with available capacity to deploy the required compute, network, and resource requirements needed for this solution. 
 
     > [!Note]  
     > These instructions will **not** work with an Azure Stack Development Kit (ASDK) because of the network limitions in the ASDK. For more information, see [ASDK requirements and considerations](https://docs.microsoft.com/azure-stack/asdk/asdk-deploy-considerations).
 
--  Access to a VPN device in the on-premises network that hosts the Azure Stack integrated system. The device needs to create an IPSec tunnel, which meets the parameters described in the [Deployment parameters](#deployment-parameters).
+-  Access to a VPN device in the on-premises network that hosts the Azure Stack Hub integrated system. The device needs to create an IPSec tunnel, which meets the parameters described in the [Deployment parameters](#deployment-parameters).
 
--  A network virtual appliance (NVA) solution available in your Azure Stack Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the [Fortinet FortiGate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-FortiGate-singlevm).
+-  A network virtual appliance (NVA) solution available in your Azure Stack Hub Marketplace. An NVA controls the flow of network traffic from a perimeter network to other networks or subnets. This procedure uses the [Fortinet FortiGate Next-Generation Firewall Single VM Solution](https://azuremarketplace.microsoft.com/marketplace/apps/fortinet.fortinet-FortiGate-singlevm).
 
     > [!Note]  
-    > If you do not have the **Fortinet FortiGate-VM For Azure BYOL** and **FortiGate NGFW - Single VM Deployment (BYOL)** available in your Azure Stack Marketplace, contact your cloud operator.
+    > If you do not have the **Fortinet FortiGate-VM For Azure BYOL** and **FortiGate NGFW - Single VM Deployment (BYOL)** available in your Azure Stack Hub Marketplace, contact your cloud operator.
 
 -  To activate the FortiGate NVA, you will need at least one available FortiGate license file. Information on how to acquire these licenses, see the Fortinet Document Library article [Registering and downloading your license](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/19071/registering-and-downloading-your-license).
 
-    This procedure uses the [Single FortiGate-VM deployment](ttps://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/632940/single-FortiGate-vm-deployment). You can find steps on how to connect the FortiGate NVA to the Azure Stack VNET to in your on-premises network.
+    This procedure uses the [Single FortiGate-VM deployment](ttps://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/632940/single-FortiGate-vm-deployment). You can find steps on how to connect the FortiGate NVA to the Azure Stack Hub VNET to in your on-premises network.
 
     For more information on how to deploy the FortiGate solution in an active-passive (HA) set up, see the details in the Fortinet Document Library article [HA for FortiGate-VM on Azure](https://docs2.fortinet.com/vm/azure/FortiGate/6.2/azure-cookbook/6.2.0/983245/ha-for-FortiGate-vm-on-azure).
 
@@ -62,11 +58,11 @@ The following table summarizes the parameters that are used in these deployments
 | Public IP address type | Static |
 
 > [!Note]
-> \* Choose a different address space and subnet prefixes if `172.16.0.0/16` overlaps with the on-premises network or the Azure Stack VIP pool.
+> \* Choose a different address space and subnet prefixes if `172.16.0.0/16` overlaps with the on-premises network or the Azure Stack Hub VIP pool.
 
 ## Deploy the FortiGate NGFW Marketplace items
 
-1. Open the Azure Stack user portal.
+1. Open the Azure Stack Hub user portal.
 
     ![](./media/azure-stack-network-howto-vnet-to-onprem/image5.png)
 
@@ -101,7 +97,7 @@ The following table summarizes the parameters that are used in these deployments
 
 ## Configure routes (UDR) for the VNET
 
-1. Open the Azure Stack user portal.
+1. Open the Azure Stack Hub user portal.
 
 2. Select Resource groups. Type `forti1-rg1` in the filter and double-click the forti1-rg1 resource group.
 
@@ -139,7 +135,7 @@ To activate each FortiGate NVA will require a valid license file from Fortinet. 
 
 Once you've activated the NVAs, create an IPSec VPN tunnel on the NVA.
 
-1. Open the Azure Stack user portal.
+1. Open the Azure Stack Hub user portal.
 
 2. Select Resource groups. Enter `forti1` in the filter and double-click the forti1 resource group.
 
@@ -244,19 +240,19 @@ You can route between the VNET network and the on-premises network via the on-pr
 
 To validate the connection:
 
-1. Create a VM in the Azure Stack VNETs and a system on the on-premises network. You can follow the instructions for creating a VM at [Quickstart: Create a Windows server VM with the Azure Stack portal](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-windows-portal).
+1. Create a VM in the Azure Stack Hub VNETs and a system on the on-premises network. You can follow the instructions for creating a VM at [Quickstart: Create a Windows server VM with the Azure Stack Hub portal](https://docs.microsoft.com/azure-stack/user/azure-stack-quick-windows-portal).
 
-2. When creating the Azure Stack VM and preparing the on-premises system, check:
+2. When creating the Azure Stack Hub VM and preparing the on-premises system, check:
 
--  The Azure Stack VM is placed on the **InsideSubnet** of the VNET.
+-  The Azure Stack Hub VM is placed on the **InsideSubnet** of the VNET.
 
--  The on-premises system is placed on the on-premises network within the defined IP range as defined in the IPSec configuration. Also ensure that the on-premises VPN device's local interface IP address is provided to the on-premises system as a route that can reach the Azure Stack VNET network, for example, `172.16.0.0/16`.
+-  The on-premises system is placed on the on-premises network within the defined IP range as defined in the IPSec configuration. Also ensure that the on-premises VPN device's local interface IP address is provided to the on-premises system as a route that can reach the Azure Stack Hub VNET network, for example, `172.16.0.0/16`.
 
--  Do **not** apply any NSGs to the Azure Stack VM on creation. You may need to remove the NSG that gets added by default if creating the VM from the portal.
+-  Do **not** apply any NSGs to the Azure Stack Hub VM on creation. You may need to remove the NSG that gets added by default if creating the VM from the portal.
 
--  Ensure that the on-premises system OS and Azure Stack VM OS do not have OS firewall rules that would prohibit communication you are going to use to test connectivity. For testing purposes, it is recommended to disable the firewall completely within the operating system of both systems.
+-  Ensure that the on-premises system OS and Azure Stack Hub VM OS do not have OS firewall rules that would prohibit communication you are going to use to test connectivity. For testing purposes, it is recommended to disable the firewall completely within the operating system of both systems.
 
 ## Next steps
 
-[Differences and considerations for Azure Stack networking](azure-stack-network-differences.md)  
-[Offer a network solution in Azure Stack with Fortinet FortiGate](../operator/azure-stack-network-solutions-enable.md)  
+[Differences and considerations for Azure Stack Hub networking](azure-stack-network-differences.md)  
+[Offer a network solution in Azure Stack Hub with Fortinet FortiGate](../operator/azure-stack-network-solutions-enable.md)  

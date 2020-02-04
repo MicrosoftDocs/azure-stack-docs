@@ -1,10 +1,8 @@
 ---
-title:  Windows N-tier application on Azure Stack with SQL Server | Microsoft Docs
-description: Learn how to run a Windows N-tier application on Azure Stack with SQL Server.
-services: azure-stack
+title:  Windows N-tier application on Azure Stack Hub with SQL Server 
+description: Learn how to run a Windows N-tier application on Azure Stack Hub with SQL Server.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: how-to
 ms.date: 11/01/2019
 ms.author: mabrigg
@@ -12,10 +10,10 @@ ms.reviewer: kivenkat
 ms.lastreviewed: 11/01/2019
 
 # keywords:  X
-# Intent: As an Azure Stack Operator, I want < what? > so that < why? >
+# Intent: As an Azure Stack Hub Operator, I want < what? > so that < why? >
 ---
 
-# Windows N-tier application on Azure Stack with SQL Server
+# Windows N-tier application on Azure Stack Hub with SQL Server
 
 This reference architecture shows how to deploy virtual machines (VMs) and a virtual network configured for an [N-tier](https://docs.microsoft.com/azure/architecture/guide/architecture-styles/n-tier) application, using SQL Server on Windows for the data tier. 
 
@@ -29,19 +27,19 @@ The architecture has the following components.
 
 -   **Resource group**. [Resource groups](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) are used to group Azure resources so they can be managed by lifetime, owner, or other criteria.
 
--   **Availability Set.** Availability set is a datacenter configuration to provide VM redundancy and availability. This configuration within an Azure Stack stamp ensures that during either a planned or unplanned maintenance event, at least one virtual machine is available. VMs are placed in an availability set that spreads them across multiple fault domains (Azure Stack hosts)
+-   **Availability Set.** Availability set is a datacenter configuration to provide VM redundancy and availability. This configuration within an Azure Stack Hub stamp ensures that during either a planned or unplanned maintenance event, at least one virtual machine is available. VMs are placed in an availability set that spreads them across multiple fault domains (Azure Stack Hub hosts)
 
 ## Networking and load balancing
 
 -   **Virtual network and subnets**. Every Azure VM is deployed into a virtual network that can be segmented into subnets. Create a separate subnet for each tier.
 
--   **Layer 7 Load Balancer.** As Application Gateway is not yet available on Azure Stack, there are alternatives available on [Azure Stack Market place](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1908) such as: [KEMP LoadMaster Load Balancer ADC Content Switch](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure)/ [f5 Big-IP Virtual Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best) or [A10 vThunder ADC](https://azuremarketplace.microsoft.com/marketplace/apps/a10networks.vthunder-414-gr1)
+-   **Layer 7 Load Balancer.** As Application Gateway is not yet available on Azure Stack Hub, there are alternatives available on [Azure Stack Hub Market place](https://docs.microsoft.com/azure-stack/operator/azure-stack-marketplace-azure-items?view=azs-1908) such as: [KEMP LoadMaster Load Balancer ADC Content Switch](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure)/ [f5 Big-IP Virtual Edition](https://azuremarketplace.microsoft.com/marketplace/apps/f5-networks.f5-big-ip-best) or [A10 vThunder ADC](https://azuremarketplace.microsoft.com/marketplace/apps/a10networks.vthunder-414-gr1)
 
 -   **Load balancers**. Use [Azure Load Balancer ](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)to distribute network traffic from the web tier to the business tier, and from the business tier to SQL Server.
 
 -   **Network security groups** (NSGs). Use NSGs to restrict network traffic within the virtual network. For example, in the three-tier architecture shown here, the database tier does not accept traffic from the web front end, only from the business tier and the management subnet.
 
--   **DNS**. Azure Stack does not provide its own DNS hosting service, so please use the DNS server in your ADDS.
+-   **DNS**. Azure Stack Hub does not provide its own DNS hosting service, so please use the DNS server in your ADDS.
 
 **Virtual machines**
 
@@ -49,14 +47,14 @@ The architecture has the following components.
 
 -   **Active Directory Domain Services (AD DS) Servers**. The computer objects for the failover cluster and its associated clustered roles are created in Active Directory Domain Services (AD DS). Set up AD DS servers in VMs in the same virtual network are preferred method to join other VMs to AD DS. You can also join the VMs to existing Enterprise AD DS by connecting virtual network to Enterprise network with VPN connection. With both approaches, you need to change the virtual network DNS to your AD DS DNS server (in virtual network or existing Enterprise network) to resolve the AD DS domain FQDN.
 
--   **Cloud Witness**. A failover cluster requires more than half of its nodes to be running, which is known as having quorum. If the cluster has just two nodes, a network partition could cause each node to think it's the master node. In that case, you need a *witness* to break ties and establish quorum. A witness is a resource such as a shared disk that can act as a tie breaker to establish quorum. Cloud Witness is a type of witness that uses Azure Blob Storage. To learn more about the concept of quorum, see [Understanding cluster and pool quorum](https://docs.microsoft.com/windows-server/storage/storage-spaces/understand-quorum). For more information about Cloud Witness, see [Deploy a Cloud Witness for a Failover Cluster](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness). In Azure Stack, the Cloud Witness endpoint is different from global Azure. 
+-   **Cloud Witness**. A failover cluster requires more than half of its nodes to be running, which is known as having quorum. If the cluster has just two nodes, a network partition could cause each node to think it's the master node. In that case, you need a *witness* to break ties and establish quorum. A witness is a resource such as a shared disk that can act as a tie breaker to establish quorum. Cloud Witness is a type of witness that uses Azure Blob Storage. To learn more about the concept of quorum, see [Understanding cluster and pool quorum](https://docs.microsoft.com/windows-server/storage/storage-spaces/understand-quorum). For more information about Cloud Witness, see [Deploy a Cloud Witness for a Failover Cluster](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness). In Azure Stack Hub, the Cloud Witness endpoint is different from global Azure. 
 
 It may look like:
 
 - For global Azure:  
   `https://mywitness.blob.core.windows.net/`
 
-- For Azure Stack:  
+- For Azure Stack Hub:  
   `https://mywitness.blob.<region>.<FQDN>`
 
 -   **Jumpbox**. Also called a [bastion host](https://en.wikipedia.org/wiki/Bastion_host). A secure VM on the network that administrators use to connect to the other VMs. The jumpbox has an NSG that allows remote traffic only from public IP addresses on a safe list. The NSG should permit remote desktop (RDP) traffic.
@@ -67,7 +65,7 @@ Your requirements might differ from the architecture described here. Use these r
 
 ### Virtual machines
 
-For recommendations on configuring the VMs, see [Run a Windows VM on Azure Stack](iaas-architecture-vm-windows.md).
+For recommendations on configuring the VMs, see [Run a Windows VM on Azure Stack Hub](iaas-architecture-vm-windows.md).
 
 ### Virtual network
 
@@ -81,7 +79,7 @@ Design subnets with functionality and security requirements in mind. All VMs wit
 
 Don't expose the VMs directly to the Internet, but instead give each VM a private IP address. Clients connect using the public IP address associated with the Layer 7 Load Balancer.
 
-Define load balancer rules to direct network traffic to the VMs. For example, to enable HTTP traffic, map port 80 from the front-end configuration to port 80 on the back-end address pool. When a client sends an HTTP request to port 80, the load balancer selects a back-end IP address by using a [hashing algorithm](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#fundamental-load-balancer-features) that includes the source IP address. Client requests are distributed across all the VMs in the back-end address pool.
+Define load balancer rules to direct network traffic to the VMs. For example, to enable HTTP traffic, map port 80 from the front-end configuration to port 80 on the back-end address pool. When a client sends an HTTP request to port 80, the load balancer selects a back-end IP address by using a [hashing algorithm](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#load-balancer-concepts) that includes the source IP address. Client requests are distributed across all the VMs in the back-end address pool.
 
 ### Network security groups
 
@@ -126,7 +124,7 @@ If your application makes more reads than writes, you can offload some of the re
 
 Test your deployment by [forcing a manual failover](https://msdn.microsoft.com/library/ff877957.aspx) of the availability group.
 
-For SQL performance optimization, you can also refer the article [SQL server best practices to optimize performance in Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-sql-server-vm-considerations).
+For SQL performance optimization, you can also refer the article [SQL server best practices to optimize performance in Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-sql-server-vm-considerations).
 
 **Jumpbox**
 
@@ -148,19 +146,19 @@ There are two basic ways to configure VMs deployed in a scale set:
 
 -   Deploy a [managed disk](https://docs.microsoft.com/azure-stack/user/azure-stack-managed-disk-considerations) with a custom disk image. This option may be quicker to deploy. However, it requires you to keep the image up-to-date.
 
-For more information, see [Design considerations for scale sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview). This design consideration is mostly true for Azure Stack, however there are some caveats:
+For more information, see [Design considerations for scale sets](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview). This design consideration is mostly true for Azure Stack Hub, however there are some caveats:
 
--   Virtual machine scale sets on Azure Stack do not support overprovisioning or rolling upgrades.
+-   Virtual machine scale sets on Azure Stack Hub do not support overprovisioning or rolling upgrades.
 
--   You cannot autoscale virtual machine scale sets on Azure Stack.
+-   You cannot autoscale virtual machine scale sets on Azure Stack Hub.
 
--   We strongly recommend using Managed disks on Azure Stack instead of unmanaged disks for virtual machine scale set
+-   We strongly recommend using Managed disks on Azure Stack Hub instead of unmanaged disks for virtual machine scale set
 
--   Currently, there is a 700 VM limit on Azure Stack, which accounts for all Azure Stack infrastructure VMs, individual VMs, and scale set instances.
+-   Currently, there is a 700 VM limit on Azure Stack Hub, which accounts for all Azure Stack Hub infrastructure VMs, individual VMs, and scale set instances.
 
 ## Subscription limits
 
-Each Azure Stack tenant subscription has default limits in place, including a maximum number of VMs per region configured by the Azure Stack operator. For more information, see [Azure Stack services, plans, offers, subscriptions overview](https://docs.microsoft.com/azure-stack/operator/service-plan-offer-subscription-overview). Also refer to [Quota types in Azure Stack](https://docs.microsoft.com/azure-stack/operator/azure-stack-quota-types).
+Each Azure Stack Hub tenant subscription has default limits in place, including a maximum number of VMs per region configured by the Azure Stack Hub operator. For more information, see [Azure Stack Hub services, plans, offers, subscriptions overview](https://docs.microsoft.com/azure-stack/operator/service-plan-offer-subscription-overview). Also refer to [Quota types in Azure Stack Hub](https://docs.microsoft.com/azure-stack/operator/azure-stack-quota-types).
 
 ## Security considerations
 
@@ -170,7 +168,7 @@ Virtual networks are a traffic isolation boundary in Azure. By default, VMs in o
 
 **DMZ**. Consider adding a network virtual appliance (NVA) to create a DMZ between the Internet and the Azure virtual network. NVA is a generic term for a virtual appliance that can perform network-related tasks, such as firewall, packet inspection, auditing, and custom routing.
 
-**Encryption**. Encrypt sensitive data at rest and use [Key Vault in Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal) to manage the database encryption keys. For more information, see [Configure Azure Key Vault Integration for SQL Server on Azure VMs](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-ps-sql-keyvault). It's also recommended to store application secrets, such as database connection strings, in Key Vault.
+**Encryption**. Encrypt sensitive data at rest and use [Key Vault in Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal) to manage the database encryption keys. For more information, see [Configure Azure Key Vault Integration for SQL Server on Azure VMs](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-ps-sql-keyvault). It's also recommended to store application secrets, such as database connection strings, in Key Vault.
 
 ## Next steps
 

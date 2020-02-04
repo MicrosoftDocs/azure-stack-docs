@@ -1,17 +1,8 @@
 ---
-title: Azure Stack diagnostic log collection overview | Microsoft Docs
-description: Explains diagnostic log collection in Azure Stack Help + Support, including on-demand and automatic log collection.
-services: azure-stack
-documentationcenter: ''
+title: Azure Stack Hub diagnostic log collection overview 
+description: Explains diagnostic log collection in Azure Stack Hub Help + Support, including on-demand and automatic log collection.
 author: justinha
-manager: femila
-editor: ''
 
-ms.assetid: a20bea32-3705-45e8-9168-f198cfac51af
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2019
 ms.author: justinha
@@ -19,16 +10,14 @@ ms.reviewer: prchint
 ms.lastreviewed: 11/07/2019
 
 ---
-# Overview of Azure Stack diagnostic log collection 
+# Overview of Azure Stack Hub diagnostic log collection 
 
-*Applies to: Azure Stack integrated systems*
-
-Azure Stack is a large collection of components working together and interacting with each other. All these components generate their own unique logs. This can make diagnosing issues a challenging task, especially for errors coming from multiple, interacting Azure Stack components. In order to address this challenge, we have designed a diagnostic log collection experience. 
+Azure Stack Hub is a large collection of components working together and interacting with each other. All these components generate their own unique logs. This can make diagnosing issues a challenging task, especially for errors coming from multiple, interacting Azure Stack Hub components. In order to address this challenge, we have designed a diagnostic log collection experience. 
 
 Prior to 1907, the diagnostic experience included using [Test-AzureStack](azure-stack-diagnostic-test.md) to validate system health and using [the privileged endpoint (PEP)](azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs) to collect logs for troubleshooting. 
 
 Beginning with the 1907 release, the **Help and Support** page adds a simpler experience using **Diagnostic log collection**. 
-**Diagnostic log collection** is part of an ongoing investment to improve Azure Stack operator's experience with the troubleshooting process. 
+**Diagnostic log collection** is part of an ongoing investment to improve Azure Stack Hub operator's experience with the troubleshooting process. 
 With these improvements, operators can quickly collect and share diagnostic logs with Microsoft Customer Support Services (CSS). 
 The logs can be stored in a blob container in Azure, where access can be customized as needed.    
    
@@ -46,18 +35,18 @@ You should only use [the PEP](azure-stack-configure-on-demand-diagnostic-log-col
 
 ## Automatic diagnostic log collection 
 
-When a [specific health alert](azure-stack-configure-automatic-diagnostic-log-collection.md#automatic-diagnostic-log-collection-alerts) is active, automatic diagnostic log collection starts and proactively uploads diagnostic logs from Azure Stack to a storage blob in Azure, significantly reducing the time required to share diagnostic logs with CSS. Diagnostic logs are only collected when an alert is raised.  
+When a [specific health alert](azure-stack-configure-automatic-diagnostic-log-collection.md#automatic-diagnostic-log-collection-alerts) is active, automatic diagnostic log collection starts and proactively uploads diagnostic logs from Azure Stack Hub to a storage blob in Azure, significantly reducing the time required to share diagnostic logs with CSS. Diagnostic logs are only collected when an alert is raised.  
 
-For more information about automatic log collection, see [Configure automatic Azure Stack diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md).
+For more information about automatic log collection, see [Configure automatic Azure Stack Hub diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md).
 
 ## On-demand diagnostic log collection
 
-With on-demand collection, diagnostic logs are uploaded from Azure Stack to a storage blob in Azure when an Azure Stack operator manually triggers the collection.
+With on-demand collection, diagnostic logs are uploaded from Azure Stack Hub to a storage blob in Azure when an Azure Stack Hub operator manually triggers the collection.
 CSS will provide shared access signature (SAS) URL to a CSS-owned storage blob. 
-An Azure Stack operator can click **Collect logs now** and enter the SAS URL. 
+An Azure Stack Hub operator can click **Collect logs now** and enter the SAS URL. 
 Diagnostic logs will then get uploaded directly to the CSS blob without needing an intermediate share. 
 
-For more information about collecting logs on demand, see [Collect Azure Stack diagnostic logs now](azure-stack-configure-on-demand-diagnostic-log-collection.md).
+For more information about collecting logs on demand, see [Collect Azure Stack Hub diagnostic logs now](azure-stack-configure-on-demand-diagnostic-log-collection.md).
 
 ## Bandwidth considerations
 
@@ -72,12 +61,12 @@ The following table lists considerations for environments with limited or metere
 | Shared connection | The upload may also impact other applications/users sharing the network connection |
 | Metered connection | There may be an additional charge from your ISP for the additional network usage |
 
-For more information, see [Best practices for automatic Azure Stack log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md).
+For more information, see [Best practices for automatic Azure Stack Hub log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md).
 
 ## See also
 
-[Azure Stack log and customer data handling](https://docs.microsoft.com/azure-stack/operator/azure-stack-data-collection)
+[Azure Stack Hub log and customer data handling](https://docs.microsoft.com/azure-stack/operator/azure-stack-data-collection)
 
 [Using shared access signatures (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
 
-[Best practices for automatic Azure Stack log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md)
+[Best practices for automatic Azure Stack Hub log collection](azure-stack-best-practices-automatic-diagnostic-log-collection.md)

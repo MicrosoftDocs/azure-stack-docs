@@ -1,38 +1,27 @@
 ---
-title: Develop templates for Azure Stack | Microsoft Docs
-description: Learn how to develop Azure Resource Manager templates for app portability between Azure and Azure Stack.
-services: azure-stack
-documentationcenter: ''
+title: Develop templates for Azure Stack Hub 
+description: Learn how to develop Azure Resource Manager templates for app portability between Azure and Azure Stack Hub.
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.assetid: 8a5bc713-6f51-49c8-aeed-6ced0145e07b
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/01/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: unknown
 ms.lastreviewed: 05/21/2019
 
 ---
 
-# Develop templates for Azure Stack with Azure Resource Manager
+# Develop templates for Azure Stack Hub with Azure Resource Manager
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
-As you develop your app, it is important to have template portability between Azure and Azure Stack. This article provides considerations for developing [Azure Resource Manager templates](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf). With these templates, you can prototype your app and test deployment in Azure without access to an Azure Stack environment.
+As you develop your app, it is important to have template portability between Azure and Azure Stack Hub. This article provides considerations for developing [Azure Resource Manager templates](https://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf). With these templates, you can prototype your app and test deployment in Azure without access to an Azure Stack Hub environment.
 
 ## Resource provider availability
 
-The template you plan to deploy must only use Microsoft Azure services that are already available, or in preview, in Azure Stack.
+The template you plan to deploy must only use Microsoft Azure services that are already available, or in preview, in Azure Stack Hub.
 
 ## Public namespaces
 
-Because Azure Stack is hosted in your datacenter, it has different service endpoint namespaces than the Azure public cloud. As a result, hard-coded public endpoints in Azure Resource Manager templates fail when you try to deploy them to Azure Stack. You can dynamically build service endpoints using the `reference` and `concatenate` functions to retrieve values from the resource provider during deployment. For example, instead of hard-coding `blob.core.windows.net` in your template, retrieve the [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) to dynamically set the *osDisk.URI* endpoint:
+Because Azure Stack Hub is hosted in your datacenter, it has different service endpoint namespaces than the Azure public cloud. As a result, hard-coded public endpoints in Azure Resource Manager templates fail when you try to deploy them to Azure Stack Hub. You can dynamically build service endpoints using the `reference` and `concatenate` functions to retrieve values from the resource provider during deployment. For example, instead of hard-coding `blob.core.windows.net` in your template, retrieve the [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) to dynamically set the *osDisk.URI* endpoint:
 
 ```json
 "osDisk": {"name": "osdisk","vhd": {"uri":
@@ -42,7 +31,7 @@ Because Azure Stack is hosted in your datacenter, it has different service endpo
 
 ## API versioning
 
-Azure service versions may differ between Azure and Azure Stack. Each resource requires the **apiVersion** attribute, which defines the capabilities offered. To ensure API version compatibility in Azure Stack, the following API versions are valid for each resource provider:
+Azure service versions may differ between Azure and Azure Stack Hub. Each resource requires the **apiVersion** attribute, which defines the capabilities offered. To ensure API version compatibility in Azure Stack Hub, the following API versions are valid for each resource provider:
 
 | Resource Provider | apiVersion |
 | --- | --- |
@@ -60,14 +49,14 @@ Azure Resource Manager [functions](/azure/azure-resource-manager/resource-group-
 * Referencing values from other resources.
 * Iterating on resources to deploy multiple instances.
 
-These functions are not available in Azure Stack:
+These functions are not available in Azure Stack Hub:
 
 * Skip
 * Take
 
 ## Resource location
 
-Azure Resource Manager templates use a `location` attribute to place resources during deployment. In Azure, locations refer to a region such as West US or South America. In Azure Stack, locations are different because Azure Stack is in your datacenter. To ensure templates are transferable between Azure and Azure Stack, you should reference the resource group location as you deploy individual resources. You can do this using `[resourceGroup().Location]` to ensure all resources inherit the resource group location. The following code is an example of using this function while deploying a storage account:
+Azure Resource Manager templates use a `location` attribute to place resources during deployment. In Azure, locations refer to a region such as West US or South America. In Azure Stack Hub, locations are different because Azure Stack Hub is in your datacenter. To ensure templates are transferable between Azure and Azure Stack Hub, you should reference the resource group location as you deploy individual resources. You can do this using `[resourceGroup().Location]` to ensure all resources inherit the resource group location. The following code is an example of using this function while deploying a storage account:
 
 ```json
 "resources": [

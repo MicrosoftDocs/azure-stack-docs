@@ -2,7 +2,6 @@
 title: Pattern for building an application that scales cross-cloud, on Azure and Azure Stack Hub.
 description: Learn how to use Azure and Azure Stack Hub, to build a scalable cross-cloud application.
 author: BryanLa
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: bryanla
@@ -37,7 +36,7 @@ The Cross-cloud Scaling pattern consists of the following components.
 
 **Traffic Manager**  
 
-In the diagram this is located outside of the public cloud group, but it would need to able to coordinate traffic in both the local data center and the public cloud. The balancer delivers high availability for application by monitoring endpoints and providing failover redistribution when required.
+In the diagram this is located outside of the public cloud group, but it would need to able to coordinate traffic in both the local datacenter and the public cloud. The balancer delivers high availability for application by monitoring endpoints and providing failover redistribution when required.
 
 **Domain Name System (DNS)**  
 

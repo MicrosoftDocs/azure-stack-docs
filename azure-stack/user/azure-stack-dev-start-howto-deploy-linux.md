@@ -1,21 +1,19 @@
 ---
-title: Deploy a Linux VM to Azure Stack | Microsoft Docs
-description: Deploy an app to Azure Stack.
-services: azure-stack
+title: Deploy a Linux VM to Azure Stack Hub 
+description: Deploy an app to Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: overview
-ms.date: 10/02/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
 
-# keywords: Deploy a web app to Azure Stack
-# Intent: I am a developer who would like to deploy an app to Azure Stack. I may be using the portal, PowerShell, or the Azure CLI to do this task.
+# keywords: Deploy a web app to Azure Stack Hub
+# Intent: I am a developer who would like to deploy an app to Azure Stack Hub. I may be using the portal, PowerShell, or the Azure CLI to do this task.
 ---
 
-# Deploy a Linux VM to host a web app in Azure Stack
+# Deploy a Linux VM to host a web app in Azure Stack Hub
 
 You can create and deploy a basic Linux virtual machine (VM) by using the Ubuntu image in the Azure Marketplace to host a web app that you've created with a web framework. 
 
@@ -26,17 +24,17 @@ This VM can host web apps by using:
 - **Ruby**: Set up Ruby on Rails as a framework to deliver your Ruby web apps. 
 - **Java**: Use Java to develop web apps that you post to an Apache Tomcat Server. You can install Tomcat on Linux and then deploy your Java WAR files directly to the server. 
 
-Use the instructions in this article to get up and running with any web app, framework, and back-end technology that uses the Linux OS. You can then use Azure Stack to manage your infrastructure and use the management tools within your technology to handle maintenance tasks for your app.
+Use the instructions in this article to get up and running with any web app, framework, and back-end technology that uses the Linux OS. You can then use Azure Stack Hub to manage your infrastructure and use the management tools within your technology to handle maintenance tasks for your app.
 
 ## Deploy a Linux VM for a web app
 
-In this process, you create a secret key, use the base image of the Linux VM, specify the particular attributes of the VM, and then create the VM. After you create the VM, you open the ports that are necessary for working with the VM and for the VM to host your app. Next, you create the DNS name. Finally, you connect to the VM and update the machine by using the apt-get utility. After you've completed the process, you'll have a VM in your Azure Stack instance that's ready to host your web app.
+In this process, you create a secret key, use the base image of the Linux VM, specify the particular attributes of the VM, and then create the VM. After you create the VM, you open the ports that are necessary for working with the VM and for the VM to host your app. Next, you create the DNS name. Finally, you connect to the VM and update the machine by using the apt-get utility. After you've completed the process, you'll have a VM in your Azure Stack Hub instance that's ready to host your web app.
 
 Before you begin, make sure that you have everything you need in place.
 
 ## Prerequisites
 
-- An Azure Stack subscription, with access to the Ubuntu Server 16.04 LTS image. You can use a later version of the image, but these instructions are written with the 16.04 LTS in mind. If you don't have this image, contact your cloud operator to get the image into the Azure Stack marketplace.
+- An Azure Stack Hub subscription, with access to the Ubuntu Server 16.04 LTS image. You can use a later version of the image, but these instructions are written with the 16.04 LTS in mind. If you don't have this image, contact your cloud operator to get the image into the Azure Stack Hub Marketplace.
 
 ## Deploy the VM by using the portal
 
@@ -45,9 +43,9 @@ To deploy the VM, follow the instructions in the next several sections.
 ### Create your VM
 
 1. Create a Secure Shell (SSH) public key for your server. For more information, see [How to use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
-1. In the Azure Stack portal, select **Create a resource** > **Compute** > **Ubuntu Server 16.04 LTS**.
+1. In the Azure Stack Hub portal, select **Create a resource** > **Compute** > **Ubuntu Server 16.04 LTS**.
 
-    ![Deploy a web app to an Azure Stack VM](media/azure-stack-dev-start-howto-deploy-linux/001-portal-compute.png)
+    ![Deploy a web app to an Azure Stack Hub VM](media/azure-stack-dev-start-howto-deploy-linux/001-portal-compute.png)
 
 4. In the **Create a virtual machine** pane, for **1. Configure basic settings**:
 
@@ -68,13 +66,13 @@ To deploy the VM, follow the instructions in the next several sections.
     ---- END SSH2 PUBLIC KEY ----
     ```
 
-    f. Select the subscription for your Azure Stack instance.
+    f. Select the subscription for your Azure Stack Hub instance.
 
     g. Create a new resource group or use an existing one, depending on how you want to organize the resources for your app.
 
-    h. Select your location. The Azure Stack Development Kit (ASDK) is usually in a *local* region. The location depends on your Azure Stack instance.
+    h. Select your location. The Azure Stack Development Kit (ASDK) is usually in a *local* region. The location depends on your Azure Stack Hub instance.
 1. For **2. Size**, type:
-    - Select the size of data and RAM for your VM that's available in your Azure Stack instance.
+    - Select the size of data and RAM for your VM that's available in your Azure Stack Hub instance.
     - You can either browse the list or filter for the size of your VM by **Compute type**, **CPUs**, and **Storage space**.
     
     > [!NOTE]
@@ -122,7 +120,7 @@ To make your web app accessible to users on your network, open the ports that ar
 
 You can modify the destination protocol and port range for a predefined service, such as RDP or SSH, or provide a custom port range. For example, you might want to work with the port range of your web framework. GO, for example, communicates on port 3000.
 
-1. Open the Azure Stack portal for your tenant.
+1. Open the Azure Stack Hub portal for your tenant.
 
 1. Search for your VM. You might have pinned the VM to your dashboard, or you can search for it in the **Search resources** box.
 
@@ -150,7 +148,7 @@ You can modify the destination protocol and port range for a predefined service,
 
 In addition, you can create a DNS name for your server, so that users can connect to your website by using a URL.
 
-1. Open the Azure Stack portal for your tenant.
+1. Open the Azure Stack Hub portal for your tenant.
 
 1. Search for your VM. You might have pinned the VM to your dashboard, or you can search for it in the **Search resources** box.
 
@@ -164,7 +162,7 @@ In addition, you can create a DNS name for your server, so that users can connec
 
 ### Connect via SSH to update your VM
 
-1. On the same network as your Azure Stack instance, open your SSH client. For more information, see [Use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
+1. On the same network as your Azure Stack Hub instance, open your SSH client. For more information, see [Use an SSH public key](azure-stack-dev-start-howto-ssh-public-key.md).
 
 1. Enter the following commands:
 
@@ -175,4 +173,4 @@ In addition, you can create a DNS name for your server, so that users can connec
 
 ## Next steps
 
-Learn how to [Set up a development environment in Azure Stack](azure-stack-dev-start.md).
+Learn how to [Set up a development environment in Azure Stack Hub](azure-stack-dev-start.md).

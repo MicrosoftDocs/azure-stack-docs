@@ -1,38 +1,31 @@
 ---
-title: Create a Linux VM by using Azure Stack | Microsoft Docs
-description: Create a Linux server VM by using Azure Stack.
-services: azure-stack
-cloud: azure-stack
+title: Create a Linux VM by using Azure Stack Hub 
+description: Create a Linux server VM by using Azure Stack Hub.
 author: mattbriggs
-manager: femila
 
-ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 10/02/2019
+ms.date: 1/10/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.custom: mvc
-ms.lastreviewed: 12/03/2018
+ms.lastreviewed: 1/10/2020
 ---
 
-# Quickstart: Create a Linux server VM by using the Azure Stack portal
+# Quickstart: Create a Linux server VM by using the Azure Stack Hub portal
 
-*Applies to: Azure Stack integrated systems and the Azure Stack Development Kit*
-
-You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using the Azure Stack portal. In this article, you create and use a virtual machine. This article also shows you how to:
+You can create an Ubuntu Server 16.04 LTS virtual machine (VM) by using the Azure Stack Hub portal. In this article, you create and use a virtual machine. This article also shows you how to:
 
 * Connect to the VM with a remote client.
 * Install an NGINX web server.
 * Clean up your resources.
 
 > [!NOTE]  
-> The images in this article are updated to match changes that were introduced in Azure Stack version 1808. Version 1808 adds support for using *managed disks* in addition to unmanaged disks. If you're using an earlier version, images for some tasks, such as disk selection, differ from what's displayed in your UI.  
+> The images in this article are updated to match changes that were introduced in Azure Stack Hub version 1808. Version 1808 adds support for using *managed disks* in addition to unmanaged disks. If you're using an earlier version, images for some tasks, such as disk selection, differ from what's displayed in your UI.  
 
 ## Prerequisites
 
-* A Linux image in the Azure Stack Marketplace
+* A Linux image in the Azure Stack Hub Marketplace
 
-   The Azure Stack Marketplace, by default, doesn't have a Linux image. Have the Azure Stack operator provide the Ubuntu Server 16.04 LTS image you need. The operator can use the instructions in [Download Marketplace items from Azure to Azure Stack](../operator/azure-stack-download-azure-marketplace-item.md).
+   The Azure Stack Hub Marketplace, by default, doesn't have a Linux image. Have the Azure Stack Hub operator provide the Ubuntu Server 16.04 LTS image you need. The operator can use the instructions in [Download Marketplace items from Azure to Azure Stack Hub](../operator/azure-stack-download-azure-marketplace-item.md).
 
 * Access to an SSH client
 
@@ -52,7 +45,7 @@ To create an SSH key pair:
 
 1. In the **PuTTY Key Generator** window, set **Type of key to generate** to **RSA**, and set **Number of bits in a generated key** to **2048**.
 
-   ![PuTTY Key Generator configuration](media/azure-stack-quick-linux-portal/Putty01.PNG)
+   ![PuTTY Key Generator configuration](media/azure-stack-quick-linux-portal/Putty01a.png)
 
 1. Select **Generate**.
 
@@ -60,48 +53,44 @@ To create an SSH key pair:
 
 1. When the key generation has finished, select **Save public key**, and then select **Save private key** to save your keys to files.
 
-   ![PuTTY Key Generator results](media/azure-stack-quick-linux-portal/Putty02.PNG)
+   ![PuTTY Key Generator results](media/azure-stack-quick-linux-portal/Putty02a.png)
 
-## Sign in to the Azure Stack portal
+## Sign in to the Azure Stack Hub portal
 
-The address of the Azure Stack portal depends on which Azure Stack product you're connecting to:
+The address of the Azure Stack Hub portal depends on which Azure Stack Hub product you're connecting to:
 
 * For the ASDK, go to https://portal.local.azurestack.external.
 
-* For an Azure Stack integrated system, go to the URL that your Azure Stack operator provided.
+* For an Azure Stack Hub integrated system, go to the URL that your Azure Stack Hub operator provided.
 
 ## Create the VM
 
-1. In the upper-left corner of the Azure Stack portal, select **Create a resource**.
+1. Select **Create a resource** > **Compute**. Search for `Ubuntu Server 16.04 LTS`. Select the name.
 
-1. Select **Compute**, and then select **Ubuntu Server 16.04 LTS**.
-   
-   ![Select the Linux server](media/azure-stack-quick-linux-portal/select.png)
+   ![Create Linux Server](media/azure-stack-quick-linux-portal/image1.png)
 
 1. Select **Create**.
 
-1. Type the VM information. For **Authentication type**, select **SSH public key**, paste the SSH public key that you saved, and then select **OK**.
+   ![Create Linux Server - Create](media/azure-stack-quick-linux-portal/image2.png)
 
-   > [!NOTE]
-   > Make sure that you remove any leading or trailing white space for the key.
+1. Enter the VM information. Select **SSH public key** for Authentication type, and paste the SSH public key that you saved, and then select **OK**.
 
-   ![Basics panel - Configure VM](media/azure-stack-quick-linux-portal/linux-01.PNG)
+    > [!Note]  
+    > Make sure that you remove any leading or trailing white space for the key.
 
-1. Select **D1** for the VM.
+   ![Authentication](media/azure-stack-quick-linux-portal/image3.png)
 
-   ![Size pane - Choose a VM size](media/azure-stack-quick-linux-portal/linux-02.PNG)
+1. Select **D1_v2** for the VM size.
 
-1. On the **Settings** page, make changes to the defaults.
-   
-   Beginning with Azure Stack version 1808, you can configure **Storage** and choose to use *managed disks*. In earlier versions than 1808, only unmanaged disks can be used.
+   ![Create Linux Server - Size](media/azure-stack-quick-linux-portal/image4.png)
 
-   ![Configure storage for managed disks](media/azure-stack-quick-linux-portal/linux-03.PNG)
-    
-   When your configurations are ready, select **OK** to continue.
+1. Enter your changes to the defaults on the **Settings** blade,  Use Managed disks. If you need to allow SSH access, select **SSH (22)** to open the port. When your configurations are ready, select **OK**.
 
-1. On the **Summary** page, select **OK** to start the VM deployment.  
+   ![Create Linux Server - Settings](media/azure-stack-quick-linux-portal/image5.png)
 
-   ![Deploy](media/azure-stack-quick-linux-portal/deploy.png)
+1. Select **OK** in the Summary to start the VM deployment. Select **Virtual Machines** to see your new VM, search for the VM name, and then select the VM in the search results.
+
+![Create Linux Server - Summary](media/azure-stack-quick-linux-portal/image5.png)
 
 ## Connect to the VM
 
@@ -109,17 +98,17 @@ The address of the Azure Stack portal depends on which Azure Stack product you'r
 
 1. On the **PuTTY Configuration** page, in the **Category** pane, scroll down to and expand **SSH**, and then select **Auth**. 
 
-   ![Connect VM](media/azure-stack-quick-linux-portal/putty03.PNG)
+   ![Connect VM](media/azure-stack-quick-linux-portal/putty03a.png)
 
 1. Select **Browse**, and then select the private key file that you saved.
 
 1. In the **Category** pane, scroll up to and select **Session**.
 
-1. In the **Host Name (or IP address)** box, paste the connection string that's shown in the Azure Stack portal. In this example, the string is *asadmin@192.168.102.34*.
+1. In the **Host Name (or IP address)** box, paste the connection string that's shown in the Azure Stack Hub portal. In this example, the string is *asadmin@192.168.102.34*.
 
 1. Select **Open** to open a session for the VM.
 
-   ![Linux session](media/azure-stack-quick-linux-portal/Putty05.PNG)
+   ![Linux session](media/azure-stack-quick-linux-portal/Putty05a.png)
 
 ## Install the NGINX web server
 
@@ -135,11 +124,11 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 ```
 
-When you finish installing NGINX, close the SSH session and open the VM **Overview** page in the Azure Stack portal.
+When you finish installing NGINX, close the SSH session and open the VM **Overview** page in the Azure Stack Hub portal.
 
 ## Open port 80 for web traffic
 
-A network security group (NSG) secures inbound and outbound traffic. When a VM is created in the Azure Stack portal, an inbound rule is created on port 22 for SSH connections. Because this VM hosts a web server, an NSG rule needs to be created to allow web traffic on port 80.
+A network security group (NSG) secures inbound and outbound traffic. When a VM is created in the Azure Stack Hub portal, an inbound rule is created on port 22 for SSH connections. Because this VM hosts a web server, an NSG rule needs to be created to allow web traffic on port 80.
 
 1. On the VM **Overview** page, select the name of the **Resource group**.
 
@@ -161,7 +150,7 @@ With NGINX installed and port 80 open on your VM, you can access the web server 
 
 Open a web browser, and go to *http://\<public IP address>*.
 
-![The NGINX web server Welcome page](media/azure-stack-quick-linux-portal/linux-05.PNG)
+![The NGINX web server Welcome page](media/azure-stack-quick-linux-portal/linux-05a.png)
 
 ## Clean up resources
 
@@ -169,4 +158,4 @@ Clean up the resources that you don't need any longer. To delete the VM and its 
 
 ## Next steps
 
-In this quickstart, you deployed a basic Linux server VM with a web server. To learn more about Azure Stack VMs, continue to [Considerations for VMs in Azure Stack](azure-stack-vm-considerations.md).
+In this quickstart, you deployed a basic Linux server VM with a web server. To learn more about Azure Stack Hub VMs, continue to [Considerations for VMs in Azure Stack Hub](azure-stack-vm-considerations.md).

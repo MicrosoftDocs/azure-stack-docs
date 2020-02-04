@@ -1,28 +1,18 @@
 ---
-title: In this article, you learn how to update Azure Stack offers and plans | Microsoft Docs
-description: This article describes how to view and modify existing Azure Stack offers and plans. 
-services: azure-stack
-documentationcenter: ''
+title: In this article, you learn how to update Azure Stack Hub offers and plans 
+description: This article describes how to view and modify existing Azure Stack Hub offers and plans. 
 author: bryanla
-manager: femila
-editor: ''
 
-ms.assetid: 
-ms.service: azure-stack
-ms.workload: na
-pms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.custom: mvc
 ms.date: 10/05/2019
 ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 06/11/2019
 ---
 
-# Azure Stack add-on plans
+# Azure Stack Hub add-on plans
 
-As an Azure Stack operator, you create add-on plans to modify a [base plan](azure-stack-create-plan.md) when you want to offer additional services or extend *computer*, *storage*, or *network* quotas beyond the base plan initial offer. Add-on plans modify the base plan and are optional extensions that users can choose to enable in their subscription.
+As an Azure Stack Hub operator, you create add-on plans to modify a [base plan](azure-stack-create-plan.md) when you want to offer additional services or extend *computer*, *storage*, or *network* quotas beyond the base plan initial offer. Add-on plans modify the base plan and are optional extensions that users can choose to enable in their subscription.
 
 There are times when combining everything in a single plan is optimal. Other times you might want to have a base plan and then offer the additional services by using add-on plans. For instance, you could decide to offer IaaS services as part of a base plan, with all PaaS services treated as add-on plans.
 
@@ -36,7 +26,7 @@ Add-on plans are [created the same way](azure-stack-create-plan.md) as a base pl
 ::: moniker range=">=azs-1902"
 ## Create an add-on plan (1902 and later)
 
-1. Sign in to the Azure Stack administrator portal as a cloud administrator.
+1. Sign in to the Azure Stack Hub administrator portal as a cloud administrator.
 2. Follow the same steps used to [create a new base plan](azure-stack-create-plan.md) to create a new plan offering services that were not previously offered.
 3. In the administrator portal, click **Offers** and then select the offer to be updated with an add-on plan.
 
@@ -58,7 +48,7 @@ Add-on plans are [created the same way](azure-stack-create-plan.md) as a base pl
 ::: moniker range="<=azs-1901"
 ## Create an add-on plan (1901 and earlier)
 
-1. Sign in to the Azure Stack administrator portal as a cloud administrator.
+1. Sign in to the Azure Stack Hub administrator portal as a cloud administrator.
 2. Follow the same steps used to [create a new base plan](azure-stack-create-plan.md) to create a new plan offering services that were not previously offered. In this example, Key Vault (**Microsoft.KeyVault**) services will be included in the new plan.
 3. In the administrator portal, click **Offers** and then select the offer to be updated with an add-on plan.
 

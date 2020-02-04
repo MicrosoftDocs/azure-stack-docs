@@ -47,9 +47,16 @@
           "depot_name": "Azure.azure-documents",
           "folder_relative_path_in_docset": "articles/azure-stack/"
         }
-      }          
+      },
+      "manager":"femila",
+      "ms.service": "azure-stack"          
     },
-    "fileMetadata": {},
+    "fileMetadata": {
+      "titleSuffix": {
+        "**/*.md": "Azure Stack Hub",
+        "asdk/**/*.md": "Azure Stack Hub Development Kit (ASDK)"
+      }
+    },
     "template": [],
     "dest": "AzureStack",
     "markdownEngineName": "markdig",

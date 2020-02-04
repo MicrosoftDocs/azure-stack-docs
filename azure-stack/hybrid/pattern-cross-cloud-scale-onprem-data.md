@@ -2,7 +2,6 @@
 title: Pattern for building an app that scales cross-cloud using on-prem data, on Azure and Azure Stack Hub.
 description: Learn how to use Azure and Azure Stack Hub, to build a scalable cross-cloud app that uses on-prem data.
 author: BryanLa
-ms.service: azure-stack
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: bryanla
@@ -96,7 +95,7 @@ Azure Stack Hub works with both Azure Active Directory and Active Directory Fede
 
 **Ensure compliance, and data sovereignty**
 
-Azure Stack Hub enables you to run the same service across multiple countries as you would if using a public cloud. Deploying the same application in data centers in each country, allows data sovereignty requirements to be met. This capability ensures personal data is kept within each country’s borders.
+Azure Stack Hub enables you to run the same service across multiple countries as you would if using a public cloud. Deploying the same application in datacenters in each country, allows data sovereignty requirements to be met. This capability ensures personal data is kept within each country’s borders.
 
 **Azure Stack Hub - security posture**
 
@@ -128,7 +127,7 @@ For more information about service principal creation, and using a certificate f
 ## Next steps
 
 To learn more about topics introduced in this article:
-- Watch [Dynamically scale apps between data centers and public cloud](https://www.youtube.com/watch?v=2lw8zOpJTn0) for an overview of how this pattern is used.
+- Watch [Dynamically scale apps between datacenters and public cloud](https://www.youtube.com/watch?v=2lw8zOpJTn0) for an overview of how this pattern is used.
 - See [Hybrid application design considerations](overview-app-design-considerations.md) to learn more about best practices, and answer additional questions.
 - This pattern uses the Azure Stack family of products, including Azure Stack Hub. See the [Azure Stack family of products and solutions](/azure-stack), to learn more about the entire portfolio of products and solutions.
 

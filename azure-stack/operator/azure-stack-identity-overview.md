@@ -1,42 +1,33 @@
 ---
-title: Overview of identity providers for Azure Stack | Microsoft Docs
-description: Learn about the identity providers you can use with Azure Stack.
-services: azure-stack
-documentationcenter: ''
-author: PatAltimore
-manager: femila
-editor: ''
+title: Overview of identity providers for Azure Stack Hub 
+description: Learn about the identity providers you can use with Azure Stack Hub.
+author: ihenkel
 
-ms.assetid:  
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.author: patricka
+ms.author: inhenkel
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
 
 ---
 
-# Overview of identity providers for Azure Stack
+# Overview of identity providers for Azure Stack Hub
 
-Azure Stack requires Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS), backed by Active Directory as an identity provider. The choice of a provider is a one-time decision that you make when you first deploy Azure Stack. The concepts and authorization details in this article can help you choose between identity providers.
+Azure Stack Hub requires Azure Active Directory (Azure AD) or Active Directory Federation Services (AD FS), backed by Active Directory as an identity provider. The choice of a provider is a one-time decision that you make when you first deploy Azure Stack Hub. The concepts and authorization details in this article can help you choose between identity providers.
 
-Your choice of either Azure AD or AD FS is determined by the mode in which you deploy Azure Stack:
+Your choice of either Azure AD or AD FS is determined by the mode in which you deploy Azure Stack Hub:
 
 - When you deploy it in a connected mode, you can use either Azure AD or AD FS.
 - When you deploy it in a disconnected mode, without a connection to the internet, only AD FS is supported.
 
-For more information about your options, which depend on your Azure Stack environment, see the following articles:
+For more information about your options, which depend on your Azure Stack Hub environment, see the following articles:
 
-- Azure Stack deployment kit: [Identity considerations](azure-stack-datacenter-integration.md#identity-considerations).
-- Azure Stack integrated systems: [Deployment planning decisions for Azure Stack integrated systems](azure-stack-connection-models.md).
+- Azure Stack Hub deployment kit: [Identity considerations](azure-stack-datacenter-integration.md#identity-considerations).
+- Azure Stack Hub integrated systems: [Deployment planning decisions for Azure Stack Hub integrated systems](azure-stack-connection-models.md).
 
 ## Common concepts for identity providers
 
-The next sections discuss common concepts about identity providers and their use in Azure Stack.
+The next sections discuss common concepts about identity providers and their use in Azure Stack Hub.
 
 ![Terminology for identity providers](media/azure-stack-identity-overview/terminology.png)
 
@@ -55,14 +46,14 @@ User accounts (identities) are standard accounts that authenticate individuals b
 
 How you create and manage users and groups depends on the identity solution you use.
 
-In Azure Stack, user accounts:
+In Azure Stack Hub, user accounts:
 
 - Are created in the *username\@domain* format. Although AD FS maps user accounts to an Active Directory instance, AD FS doesn't support the use of the *\\\<domain>\\\<alias>* format.
 - Can be set up to use multi-factor authentication.
 - Are restricted to the directory where they first register, which is their organization's directory.
 - Can be imported from your on-premises directories. For more information, see  [Integrate your on-premises directories with Azure Active Directory](/azure/active-directory/connect/active-directory-aadconnect).
 
-When you sign in to your organization's tenant portal, you use the *https:\//portal.local.azurestack.external* URL. When signing into the Azure Stack portal from domains other than the one used to register Azure Stack, the domain name used to register Azure Stack must be appended to the portal url. For example, if Azure Stack has been registered with fabrikam.onmicrosoft.com and the user account logging in is admin@contoso.com, the URL to use to log into the user portal would be: https:\//portal.local.azurestack.external/fabrikam.onmicrosoft.com.
+When you sign in to your organization's user portal, you use the *https:\//portal.local.azurestack.external* URL. When signing into the Azure Stack Hub portal from domains other than the one used to register Azure Stack Hub, the domain name used to register Azure Stack Hub must be appended to the portal url. For example, if Azure Stack Hub has been registered with fabrikam.onmicrosoft.com and the user account logging in is admin@contoso.com, the URL to use to log into the user portal would be: https:\//portal.local.azurestack.external/fabrikam.onmicrosoft.com.
 
 ### Guest users
 
@@ -104,7 +95,7 @@ To learn more about app and service principal objects, see [Application and serv
 
 ### Service principals
 
-A service principal is a set of *credentials* for an app or service that grant access to resources in Azure Stack. The use of a service principal separates the app permissions from the permissions of the user of the app.
+A service principal is a set of *credentials* for an app or service that grant access to resources in Azure Stack Hub. The use of a service principal separates the app permissions from the permissions of the user of the app.
 
 A service principal is created in each tenant where the app is used. The service principal establishes an identity for sign-in and access to resources (such as users) that are secured by that tenant.
 
@@ -114,21 +105,21 @@ A service principal is created in each tenant where the app is used. The service
 Credentials for service principals can be either a key that's generated through the Azure portal or a certificate. The use of a certificate is suited for automation because certificates are considered more secure than keys.
 
 > [!NOTE]
-> When you use AD FS with Azure Stack, only the administrator can create service principals. With AD FS, service principals require certificates and are created through the privileged endpoint (PEP). For more information, see [Use an app identity to access resources](azure-stack-create-service-principals.md).
+> When you use AD FS with Azure Stack Hub, only the administrator can create service principals. With AD FS, service principals require certificates and are created through the privileged endpoint (PEP). For more information, see [Use an app identity to access resources](azure-stack-create-service-principals.md).
 
-To learn about service principals for Azure Stack, see [Create service principals](azure-stack-create-service-principals.md).
+To learn about service principals for Azure Stack Hub, see [Create service principals](azure-stack-create-service-principals.md).
 
 ### Services
 
-Services in Azure Stack that interact with the identity provider are registered as apps with the identity provider. Like apps, registration enables a service to authenticate with the identity system.
+Services in Azure Stack Hub that interact with the identity provider are registered as apps with the identity provider. Like apps, registration enables a service to authenticate with the identity system.
 
 All Azure services use [OpenID Connect](/azure/active-directory/develop/active-directory-protocols-openid-connect-code) protocols and [JSON Web Tokens](/azure/active-directory/develop/active-directory-token-and-claims) to establish their identity. Because Azure AD and AD FS use protocols consistently, you can use [Azure Active Directory Authentication Library](/azure/active-directory/develop/active-directory-authentication-libraries) (ADAL) to authenticate on-premises or to Azure (in a connected scenario). With ADAL, you can also use tools such as Azure PowerShell and Azure CLI for cross-cloud and on-premises resource management.
 
 ### Identities and your identity system
 
-Identities for Azure Stack include user accounts, groups, and service principals.
+Identities for Azure Stack Hub include user accounts, groups, and service principals.
 
-When you install Azure Stack, several built-in apps and services automatically register with your identity provider in the directory tenant. Some services that register are used for administration. Other services are available for users. The default registrations give core services identities that can interact both with each other and with identities that you add later.
+When you install Azure Stack Hub, several built-in apps and services automatically register with your identity provider in the directory tenant. Some services that register are used for administration. Other services are available for users. The default registrations give core services identities that can interact both with each other and with identities that you add later.
 
 If you set up Azure AD with multi-tenancy, some apps propagate to the new directories.
 
@@ -136,16 +127,16 @@ If you set up Azure AD with multi-tenancy, some apps propagate to the new direct
 
 ### Authentication by apps and users
 
-![Identity between layers of Azure Stack](media/azure-stack-identity-overview/identity-layers.png)
+![Identity between layers of Azure Stack Hub](media/azure-stack-identity-overview/identity-layers.png)
 
-For apps and users, the architecture of Azure Stack is described by four layers. Interactions between each of these layers can use different types of authentication.
+For apps and users, the architecture of Azure Stack Hub is described by four layers. Interactions between each of these layers can use different types of authentication.
 
 |Layer    |Authentication between layers  |
 |---------|---------|
-|Tools and clients, such as the administrator portal     | To access or modify a resource in Azure Stack, tools and clients use a [JSON Web Token](/azure/active-directory/develop/active-directory-token-and-claims) to place a call to Azure Resource Manager. <br>Azure Resource Manager validates the JSON Web Token and peeks at the *claims* in the issued token to estimate the level of authorization that user or service principal has in Azure Stack. |
+|Tools and clients, such as the administrator portal     | To access or modify a resource in Azure Stack Hub, tools and clients use a [JSON Web Token](/azure/active-directory/develop/active-directory-token-and-claims) to place a call to Azure Resource Manager. <br>Azure Resource Manager validates the JSON Web Token and peeks at the *claims* in the issued token to estimate the level of authorization that user or service principal has in Azure Stack Hub. |
 |Azure Resource Manager and its core services     |Azure Resource Manager communicates with resource providers to transfer communication from users. <br> Transfers use *direct imperative* calls or *declarative* calls via [Azure Resource Manager templates](/azure-stack/user/azure-stack-arm-templates).|
 |Resource providers     |Calls passed to resource providers are secured with certificate-based authentication. <br>Azure Resource Manager and the resource provider then stay in communication through an API. For every call that's received from Azure Resource Manager, the resource provider validates the call with that certificate.|
-|Infrastructure and business logic     |Resource providers communicate with business logic and infrastructure by using an authentication mode of their choice. The default resource providers that ship with Azure Stack use Windows Authentication to secure this communication.|
+|Infrastructure and business logic     |Resource providers communicate with business logic and infrastructure by using an authentication mode of their choice. The default resource providers that ship with Azure Stack Hub use Windows Authentication to secure this communication.|
 
 ![Information needed for authentication](media/azure-stack-identity-overview/authentication.png)
 
@@ -154,7 +145,7 @@ For apps and users, the architecture of Azure Stack is described by four layers.
 To authenticate with the identity provider and receive a JSON Web Token, you must have the following information:
 
 1. **URL for the identity system (Authority)**: The URL at which your identity provider can be reached. For example, *https:\//login.windows.net*.
-2. **App ID URI for Azure Resource Manager**: The unique identifier for Azure Resource Manager that's registered with your identity provider. It's also unique to each Azure Stack installation.
+2. **App ID URI for Azure Resource Manager**: The unique identifier for Azure Resource Manager that's registered with your identity provider. It's also unique to each Azure Stack Hub installation.
 3. **Credentials**: The credential you use to authenticate with the identity provider.
 4. **URL for Azure Resource Manager**: The URL is the location of the Azure Resource Manager service. For example, *https:\//management.azure.com* or *https:\//management.local.azurestack.external*.
 
@@ -181,20 +172,20 @@ When all validations are complete, Azure Resource Manager uses the *object id* (
 
 ### Use Role-Based Access Control
 
-Role-Based Access Control (RBAC) in Azure Stack is consistent with the implementation in Microsoft Azure. You can manage access to resources by assigning the appropriate RBAC role to users, groups, and apps. For information about how to use RBAC with Azure Stack, see the following articles:
+Role-Based Access Control (RBAC) in Azure Stack Hub is consistent with the implementation in Microsoft Azure. You can manage access to resources by assigning the appropriate RBAC role to users, groups, and apps. For information about how to use RBAC with Azure Stack Hub, see the following articles:
 
 - [Get started with Role-Based Access Control in the Azure portal](/azure/role-based-access-control/overview).
 - [Use Role-Based Access Control to manage access to your Azure subscription resources](/azure/role-based-access-control/role-assignments-portal).
 - [Create custom roles for Azure Role-Based Access Control](/azure/role-based-access-control/custom-roles).
-- [Manage Role-Based Access Control](azure-stack-manage-permissions.md) in Azure Stack.
+- [Manage Role-Based Access Control](azure-stack-manage-permissions.md) in Azure Stack Hub.
 
 ### Authenticate with Azure PowerShell
 
-Details about using Azure PowerShell to authenticate with Azure Stack can be found at [Configure the Azure Stack user's PowerShell environment](../user/azure-stack-powershell-configure-user.md).
+Details about using Azure PowerShell to authenticate with Azure Stack Hub can be found at [Configure the Azure Stack Hub user's PowerShell environment](../user/azure-stack-powershell-configure-user.md).
 
 ### Authenticate with Azure CLI
 
-For information about using Azure PowerShell to authenticate with Azure Stack, see [Install and configure Azure CLI for use with Azure Stack](/azure-stack/user/azure-stack-version-profiles-azurecli2).
+For information about using Azure PowerShell to authenticate with Azure Stack Hub, see [Install and configure Azure CLI for use with Azure Stack Hub](/azure-stack/user/azure-stack-version-profiles-azurecli2).
 
 ## Next steps
 

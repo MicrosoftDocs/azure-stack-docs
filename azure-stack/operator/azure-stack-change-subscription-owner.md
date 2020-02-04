@@ -1,17 +1,8 @@
 ---
-title: Change the billing owner for an Azure Stack user subscription | Microsoft Docs
-description: Learn how to change the billing owner for an Azure Stack user subscription.
-services: azure-stack
-documentationcenter: ''
+title: Change the billing owner for an Azure Stack Hub user subscription 
+description: Learn how to change the billing owner for an Azure Stack Hub user subscription.
 author: justinha
-manager: femila
-editor: ''
 
-ms.assetid:  
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: PowerShell
 ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: justinha
@@ -20,9 +11,9 @@ ms.lastreviewed: 10/19/2018
 
 ---
 
-# Change the billing owner for an Azure Stack user subscription
+# Change the billing owner for an Azure Stack Hub user subscription
 
-Azure Stack operators can use PowerShell to change the billing owner for a user subscription. One reason to change the owner, for example, is to replace a user that leaves your organization.
+Azure Stack Hub operators can use PowerShell to change the billing owner for a user subscription. One reason to change the owner, for example, is to replace a user that leaves your organization.
 
 There are two types of *Owners* that are assigned to a subscription:
 
@@ -36,10 +27,10 @@ There are two types of *Owners* that are assigned to a subscription:
 
 ## Change the billing owner
 
-Run the following script to change the billing owner of a user subscription. The computer that you use to run the script must connect to Azure Stack and run the Azure Stack PowerShell module 1.3.0 or later. For more information, see [Install Azure Stack PowerShell](azure-stack-powershell-install.md).
+Run the following script to change the billing owner of a user subscription. The computer that you use to run the script must connect to Azure Stack Hub and run the Azure Stack Hub PowerShell module 1.3.0 or later. For more information, see [Install Azure Stack Hub PowerShell](azure-stack-powershell-install.md).
 
 >[!NOTE]
->In a multi-tenant Azure Stack, the new owner must be in the same directory as the existing owner. Before you can provide ownership of the subscription to a user that's in another directory, you must first [invite that user as a guest into your directory](/azure/active-directory/b2b/add-users-administrator).
+>In a multi-tenant Azure Stack Hub, the new owner must be in the same directory as the existing owner. Before you can provide ownership of the subscription to a user that's in another directory, you must first [invite that user as a guest into your directory](/azure/active-directory/b2b/add-users-administrator).
 
 Replace the following values in the script before it runs:
 
@@ -49,7 +40,7 @@ Replace the following values in the script before it runs:
 - **$OwnerUpn**: An account, for example **user\@example.com**, to add as the new billing owner.
 
 ```powershell
-# Set up Azure Stack admin environment
+# Set up Azure Stack Hub admin environment
 Add-AzureRmEnvironment -ARMEndpoint $ArmEndpoint -Name AzureStack-admin
 Add-AzureRmAccount -Environment AzureStack-admin -TenantId $TenantId
 

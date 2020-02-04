@@ -1,19 +1,11 @@
 ---
 title: Create SQL databases
-titleSuffix: Azure Stack
+titleSuffix: Azure Stack Hub
 description: Learn how to create and manage SQL databases provisioned using the SQL resource provider adapter.
-services: azure-stack
-documentationCenter: ''
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/02/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
@@ -21,25 +13,25 @@ ms.lastreviewed: 10/16/2018
 
 # Create SQL databases
 
-You can create and manage self-service databases in the user portal. An Azure Stack user needs a subscription with an offer that includes the SQL database service.
+You can create and manage self-service databases in the user portal. An Azure Stack Hub user needs a subscription with an offer that includes the SQL database service.
 
-1. Sign in to the [Azure Stack](azure-stack-overview.md) user portal.
+1. Sign in to the [Azure Stack Hub](azure-stack-overview.md) user portal.
 
 2. Select **+ New** &gt;**Data + Storage** &gt; **SQL Server Database** &gt; **Add**.
 
 3. Under **Create Database**, enter the required information, such as **Database Name** and **Max Size in MB**.
 
    >[!NOTE]
-   >The database size must be at least 64 MB, which you can increase after you deploy the database.
+   >The database size must be at least 64 MB, which can be increased after you deploy the database.
 
    Configure the other settings as required for your environment.
 
 4. Under **Create Database**, select **SKU**. Under **Select a SKU**, select the SKU for your database.
 
-   ![Create Database in Azure Stack user portal.](./media/azure-stack-sql-rp-deploy/newsqldb.png)
+   ![Create Database in Azure Stack Hub user portal.](./media/azure-stack-sql-rp-deploy/newsqldb.png)
 
    >[!NOTE]
-   >As hosting servers are added to Azure Stack, they're assigned a SKU. Databases are created in the pool of hosting servers in a SKU.
+   >As hosting servers are added to Azure Stack Hub, they're assigned a SKU. Databases are created in the pool of hosting servers in a SKU.
 
 5. Select **Login**.
 
@@ -50,7 +42,7 @@ You can create and manage self-service databases in the user portal. An Azure St
    >[!NOTE]
    >These settings are the SQL authentication credential that's created for your access to this database only. The login user name must be globally unique. You can reuse login settings for other databases that use the same SKU.
 
-   ![Create a new database login in Azure Stack user portal](./media/azure-stack-sql-rp-deploy/create-new-login.png)
+   ![Create a new database login in Azure Stack Hub user portal](./media/azure-stack-sql-rp-deploy/create-new-login.png)
 
 8. Select **OK** to finish deploying the database.
 
@@ -70,7 +62,7 @@ The following screen capture shows how you can use SQL Server Management Studio 
 
 Always On databases should show as **Synchronized** and available on all the SQL instances and appear in **Availability Groups**. In the previous screenshot, the database example is newdb1 and its status is **newdb1 (Synchronized)**.
 
-### Delete an AlwaysOn database
+### Delete an Always On database
 
 When you delete a SQL Always On database from the resource provider, SQL deletes the database from the **Primary** replica and from the availability group.
 

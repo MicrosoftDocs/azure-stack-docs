@@ -1,16 +1,8 @@
 ---
-title: Set access permissions using role-based access control | Microsoft Docs
-description: Learn how to set access permissions using role-based access control (RBAC) in Azure Stack.
-services: azure-stack
-documentationcenter: ''
+title: Set access permissions using role-based access control 
+description: Learn how to set access permissions using role-based access control (RBAC) in Azure Stack Hub.
 author: justinha
-manager: femila
-editor: ''
 
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/23/2019
 ms.author: justinha
@@ -20,9 +12,7 @@ ms.lastreviewed: 12/23/2019
 ---
 # Set access permissions using role-based access control
 
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
-
-A user in Azure Stack can be a reader, owner, or contributor for each instance of a subscription, resource group, or service. For example, User A might have reader permissions to Subscription One, but have owner permissions to Virtual Machine Seven.
+A user in Azure Stack Hub can be a reader, owner, or contributor for each instance of a subscription, resource group, or service. For example, User A might have reader permissions to Subscription One, but have owner permissions to Virtual Machine Seven.
 
  - Reader: User can view everything, but can't make any changes.
  - Contributor: User can manage everything except access to resources.
@@ -50,4 +40,4 @@ A user in Azure Stack can be a reader, owner, or contributor for each instance o
 
 ## Next steps
 
-[Add an Azure Stack tenant](azure-stack-add-new-user-aad.md)
+[Add an Azure Stack Hub tenant](azure-stack-add-new-user-aad.md)

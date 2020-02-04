@@ -1,32 +1,21 @@
 ---
-title: Use Azure Resource Manager templates in Azure Stack | Microsoft Docs
-description: Learn how to use Azure Resource Manager templates in Azure Stack to provision resources.
-services: azure-stack
-documentationcenter: ''
+title: Use Azure Resource Manager templates in Azure Stack Hub 
+description: Learn how to use Azure Resource Manager templates in Azure Stack Hub to provision resources.
 author: mattbriggs
-manager: femila
-editor: ''
 
-ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
-ms.service: azure-stack
 
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/07/2019
+ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: justini
 ms.lastreviewed: 11/14/2018
 
 ---
-# Use Azure Resource Manager templates in Azure Stack
-
-*Applies to: Azure Stack integrated systems and Azure Stack Development Kit*
+# Use Azure Resource Manager templates in Azure Stack Hub
 
 You can use Azure Resource Manager templates to deploy and provision all the resources for your application in a single, coordinated operation. You can also redeploy templates to make changes to the resources in a resource group.
 
-These templates can be deployed with the Microsoft Azure Stack portal, PowerShell, the command line, and Visual Studio.
+These templates can be deployed with the Microsoft Azure Stack Hub portal, PowerShell, the command line, and Visual Studio.
 
 The following quickstart templates are [available on GitHub](https://aka.ms/azurestackgithub):
 
@@ -70,7 +59,7 @@ Use the PowerShell DSC extension to configure an existing virtual machine Local 
 
 ## Basic virtual machine
 
-[Deploy a Windows VM](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-simple-windows-vm) that includes a virtual network (with DNS), public IP address, and a network interface.
+[Deploy a Windows VM](https://aka.ms/aa6zdzx) that includes a virtual network (with DNS), public IP address, and a network interface.
 
 ## Cancel a running template deployment
 

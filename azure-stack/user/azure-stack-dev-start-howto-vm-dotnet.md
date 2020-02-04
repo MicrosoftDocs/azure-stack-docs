@@ -1,23 +1,21 @@
 ---
-title: Deploy a C# ASP.NET web app to a virtual machine in Azure Stack | Microsoft Docs
-description: Deploy a C# ASP.NET web app to a VM in Azure Stack.
-services: azure-stack
+title: Deploy a C# ASP.NET web app to a virtual machine in Azure Stack Hub 
+description: Deploy a C# ASP.NET web app to a VM in Azure Stack Hub.
 author: mattbriggs
 
-ms.service: azure-stack
 ms.topic: overview
 ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 11/11/2019
 
-# keywords:  Deploy an app to Azure Stack
-# Intent: I am developer using Windows 10 or Linux Ubuntu who would like to deploy an app to Azure Stack.
+# keywords:  Deploy an app to Azure Stack Hub
+# Intent: I am developer using Windows 10 or Linux Ubuntu who would like to deploy an app to Azure Stack Hub.
 ---
 
-# Deploy a C# ASP.NET web app to a VM in Azure Stack
+# Deploy a C# ASP.NET web app to a VM in Azure Stack Hub
 
-You can create a virtual machine (VM) to host your C# ASP.NET web app in Azure Stack. This article discusses the instructions to follow when you set up your server, configure it to host your C# ASP.NET web app, and then deploy the app right from Visual Studio.
+You can create a virtual machine (VM) to host your C# ASP.NET web app in Azure Stack Hub. This article discusses the instructions to follow when you set up your server, configure it to host your C# ASP.NET web app, and then deploy the app right from Visual Studio.
 
 This article uses a C# 6.0 app that uses ASP.NET Core 2.2 running on a Windows 2016 server.
 
@@ -42,9 +40,9 @@ This article uses a C# 6.0 app that uses ASP.NET Core 2.2 running on a Windows 2
 
 1. Install the .NET Core 2.2 Hosting Bundle on your server. For instructions, see [.NET Core Installer](https://dotnet.microsoft.com/download/dotnet-core/2.2). Make sure you're using the same version of .NET Core on both your development machine and your target server.
 
-1. In the Azure Stack portal, open the ports that are listed in the network settings for your VM.
+1. In the Azure Stack Hub portal, open the ports that are listed in the network settings for your VM.
 
-    a. Open the Azure Stack portal for your tenant.
+    a. Open the Azure Stack Hub portal for your tenant.
 
     b. Search for your VM. You might have pinned the VM to your dashboard, or you can search for it in the **Search resources** box.
 
@@ -82,9 +80,9 @@ This article uses a C# 6.0 app that uses ASP.NET Core 2.2 running on a Windows 2
 
     i. Select **Add**.
 
-1.  In the **Networking** settings for your VM in Azure Stack, create a DNS name for your server. Users can connect to your website by using the URL.
+1.  In the **Networking** settings for your VM in Azure Stack Hub, create a DNS name for your server. Users can connect to your website by using the URL.
 
-    a. Open the Azure Stack portal for your tenant.
+    a. Open the Azure Stack Hub portal for your tenant.
 
     b. Search for your VM. You might have pinned the VM to your dashboard, or you can search for it in the **Search resources** box.
 
@@ -99,15 +97,15 @@ This article uses a C# 6.0 app that uses ASP.NET Core 2.2 running on a Windows 2
 ## Create an app 
 
 You can use either your own web app or the example at [Publish an ASP.NET Core app to Azure with Visual Studio](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start?view=aspnetcore-2.2&tabs=visual-studio
-). The article describes how to create and publish an ASP.NET web app to an Azure virtual machine by using the Azure Virtual Machines publishing feature in Visual Studio 2017. After you've installed and made sure that your app is running locally, you'll update your publishing target to the Windows VM in your Azure Stack instance.
+). The article describes how to create and publish an ASP.NET web app to an Azure virtual machine by using the Azure Virtual Machines publishing feature in Visual Studio 2017. After you've installed and made sure that your app is running locally, you'll update your publishing target to the Windows VM in your Azure Stack Hub instance.
 
 ## Deploy and run the app
 
-Create a publish target to your VM in Azure Stack.
+Create a publish target to your VM in Azure Stack Hub.
 
 1. In **Solution Explorer**, right-click your project, and then select **Publish**.
 
-    ![Deploy an ASP.NET web app to Azure Stack publish](media/azure-stack-dev-start-howto-vm-dotnet/deploy-app-to-azure-stack.png)
+    ![Deploy an ASP.NET web app to Azure Stack Hub publish](media/azure-stack-dev-start-howto-vm-dotnet/deploy-app-to-azure-stack.png)
 
 1. In the **Publish** window, select **New Profile**.
 1. Select **IIS, FTP, etc**.
@@ -135,6 +133,6 @@ Create a publish target to your VM in Azure Stack.
 
 ## Next steps
 
-- Learn how to [Set up a development environment in Azure Stack](azure-stack-dev-start.md).
-- Learn about [common deployments for Azure Stack as IaaS](azure-stack-dev-start-deploy-app.md).
+- Learn how to [Set up a development environment in Azure Stack Hub](azure-stack-dev-start.md).
+- Learn about [common deployments for Azure Stack Hub as IaaS](azure-stack-dev-start-deploy-app.md).
 - To learn the C# programming language and find additional resources for C#, see the [C# Guide](https://docs.microsoft.com/dotnet/csharp/)
