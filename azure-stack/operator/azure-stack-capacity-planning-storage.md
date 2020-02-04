@@ -19,7 +19,7 @@ The hyperconverged configuration of Azure Stack Hub allows for the sharing of ph
 
 ## Storage Spaces Direct cache and capacity tiers
 
-There's storage capacity used for the operating system, local logging, dumps, and other temporary infrastructure storage needs. This local storage capacity is separate (devices and capacity) from the storage devices brought under management of the Storage Spaces Direct configuration. The remainder of the storage devices is placed in a single pool of storage capacity, regardless of the number of servers in the scale unit.
+There's storage capacity used for the operating system, local logging, dumps, and other temporary infrastructure storage needs. This local storage capacity is separate (devices and capacity) from the storage devices brought under management of the Storage Spaces Direct configuration. The rest of the storage devices are placed in a single pool of storage capacity, regardless of the number of servers in the scale unit.
 
 These devices are of two types: cache and capacity. Storage Spaces Direct consumes cache devices for write-back and read caching. The capacities of these cache devices, while used, aren't committed to the formatted and "visible" capacity of the formatted virtual disks. By contrast, Storage Spaces Direct does use capacity devices for this purpose, providing the "home location" of the managed data.
 
@@ -51,7 +51,7 @@ The virtual disks created automatically and their capacities are as follows:
 
 <sup>1</sup> Minimum storage capacity required of the Azure Stack Hub solution partner.
 
-<sup>2</sup> The virtual disk size used for tenant VM temporary disks is calculated as a ratio of the physical memory of the server. The temporary disk is a ratio of the physical memory assigned to the VM. The allocation done for "temp disk" storage in Azure Stack Hub captures most use cases but might not be able to satisfy all temp disk storage needs. The ratio is a trade-off between making temporary storage available and not consuming a majority of the storage capacity of the solution for temp disk capacity only. One temporary storage disk is created per server in the scale unit. The capacity of the temporary storage doesn't grow beyond 10 percent of the overall available storage capacity in the storage pool of the scale unit. The calculation is something like the following example:
+<sup>2</sup> The virtual disk size used for tenant VM temporary disks is calculated as a ratio of the physical memory of the server. The temporary disk is a ratio of the physical memory assigned to the VM. The allocation done for "temp disk" storage in Azure Stack Hub captures most use cases but might not be able to satisfy all temp disk storage needs. The ratio is a trade-off between making temporary storage available and not consuming a majority of the solution's storage capacity for temp disk capacity only. One temporary storage disk is created per server in the scale unit. The capacity of the temporary storage doesn't grow beyond 10 percent of the overall available storage capacity in the storage pool of the scale unit. The calculation is something like the following example:
 
 ```
   DesiredTempStoragePerServer = PhysicalMemory * 0.65 * 8
