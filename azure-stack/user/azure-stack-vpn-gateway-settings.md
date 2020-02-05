@@ -156,9 +156,9 @@ Unlike Azure, which supports multiple offers as both an initiator and a responde
 | Property              | Value|
 |-|-|
 | IKE Version           | IKEv2 |
-|Diffie-Hellman Group   | ECP384 |
+|Diffie-Hellman Group*   | ECP384 |
 | Authentication Method | Pre-Shared Key |
-|Encryption & Hashing Algorithms | AES256, SHA384 |
+|Encryption & Hashing Algorithms* | AES256, SHA384 |
 |SA Lifetime (Time)     | 28,800 seconds|
 
 ### IKE Phase 2 (Quick Mode) parameters
@@ -170,8 +170,17 @@ Unlike Azure, which supports multiple offers as both an initiator and a responde
 |Encryption & Hashing Algorithms (Authentication) | GCMAES256|
 |SA Lifetime (Time)  | 27,000 seconds  |
 |SA Lifetime (Kilobytes) | 33,553,408     |
-|Perfect Forward Secrecy (PFS) | ECP384 |
-|Dead Peer Detection | Supported|  
+|Perfect Forward Secrecy (PFS)* | ECP384 |
+|Dead Peer Detection | Supported| 
+
+>[!NOTE]
+>The default values for Diffie-Hellman Group, Hashing Algorithm and Perfect Forward Secrecy have been changed for builds 1910 and above. If your Azure Stack Hub is on a build version below 1910, please use the following values for the above parameters:
+
+>| Property| Value|
+>|-|-|
+>|Diffie-Hellman Group   | DHGroup2 |
+>|Hashing Algorithms | SHA256 |
+>|Perfect Forward Secrecy (PFS) | None |
 
 ## Next steps
 
