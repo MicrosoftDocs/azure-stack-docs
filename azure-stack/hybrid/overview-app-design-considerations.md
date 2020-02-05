@@ -137,7 +137,7 @@ additional resources can be added in a different location to distribute the load
 
 Availability is the time that a system is functional and working. Availability is measured as a percentage of uptime. Application errors, infrastructure problems, and system load can all reduce availability.
 
-For the core discussion of this pillar, see [*Availability*](https://docs.microsoft.com/azure/architecture/guide/pillars#availability) in Pillars of software quality.
+For the core discussion of this pillar, see [*Availability*](/azure/architecture/framework/) in Pillars of software quality.
 
 ### Availability checklist
 
@@ -181,7 +181,7 @@ For the core discussion of this pillar, see [*Resiliency*](https://docs.microsof
 
 The considerations for how you manage your hybrid applications are critical in designing your architecture. A well-managed hybrid application provides an infrastructure as code that enables the integration of consistent application code in a common development pipeline. By implementing consistent system-wide and individual testing of changes to the infrastructure, you can assure an integrated deployment if the changes pass the tests, allowing them to be merged into the source code.
 
-For the core discussion of this pillar, see [*Management and DevOps*](https://docs.microsoft.com/azure/architecture/guide/pillars#management-and-devops) in Pillars of software quality.
+For the core discussion of this pillar, see [*DevOps*](/azure/architecture/framework/#devops) in Pillars of software quality.
 
 ### Manageability checklist
 
