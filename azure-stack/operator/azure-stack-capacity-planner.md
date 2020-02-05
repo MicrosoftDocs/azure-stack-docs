@@ -38,9 +38,9 @@ Azure Stack Hub is delivered as an integrated system with software installed by 
 
 Resource modeling within the Azure Stack Hub Capacity Planner depends upon the various sizes of Azure Stack Hub VMs. VMs range in size from the smallest, Basic 0, up to the largest, Standard_Fsv2. You can model computing resource allocations in two different ways:
 
-- Select a specific hardware offering, and see which combinations of different resources fit.
+- Select a specific hardware offering and see which combinations of different resources fit.
 
-- Create a specific combination of VM allocations, and let Azure Resource Calculator show which available hardware SKUs can support this VM configuration.
+- Create a specific combination of VM allocations and let Azure Resource Calculator show which available hardware SKUs can support this VM configuration.
 
 This tool provides two methods for allocating VM resources: either as one single collection of VM resource allocations, or as a collection of up to six differing workload configurations. Each workload configuration can contain a different allocation of available VM resources. The next sections have step-by-step instructions to create and use each of these allocation models. Only values contained in non-background shaded cells or within SKU pull-down lists on this worksheet should be modified. Changes made within shaded cells might break resource calculations.
 
