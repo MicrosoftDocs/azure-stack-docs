@@ -39,9 +39,9 @@ Azure Stack Hub is an extension of Azure that brings the agility and innovation 
 - Containers
 - Admin tools (Plans, offers, RBAC, and so on)
 
-The PaaS capabilities of Azure Stack Hub are optional because Azure Stack Hub isn't operated by Microsoft—it's operated by our customers. This means you can offer whatever PaaS service you want to end users if you're prepared to abstract the underlying infrastructure and processes away from the end user. However, Azure Stack Hub does include several optional PaaS service providers including App Service, SQL databases, and MySQL databases. These are delivered as resource providers so they're multi-tenant ready, updated over time with standard Azure Stack Hub updates, visible in the Azure Stack Hub portal, and well-integrated with Azure Stack Hub.
+The PaaS capabilities of Azure Stack Hub are optional because Azure Stack Hub isn't operated by Microsoft—it's operated by our customers. This means you can offer whatever PaaS service you want to end users if you're prepared to abstract the underlying infrastructure and processes away from the end user. However, Azure Stack Hub does include several optional PaaS service providers including App Service, SQL databases, and MySQL databases. These are delivered as resource providers so they're multi-tenant ready, updated over time with standard Azure Stack Hub updates, visible in the Azure Stack Hub portal, and well integrated with Azure Stack Hub.
 
-In addition to the resource providers described above, there are additional PaaS services available and tested as [Azure Resource Manager template-based solutions](https://github.com/Azure/AzureStack-QuickStart-Templates) that run in IaaS, but you as an Azure Stack Hub operator can offer them as PaaS services to your users including:
+In addition to the resource providers described above, there are additional PaaS services available and tested as [Azure Resource Manager template-based solutions](https://github.com/Azure/AzureStack-QuickStart-Templates) that run in IaaS. As an Azure Stack Hub operator, you can offer them as PaaS services to your users including:
 
 - Service Fabric
 - Kubernetes Container Service
