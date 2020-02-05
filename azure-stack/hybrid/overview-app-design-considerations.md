@@ -137,7 +137,7 @@ additional resources can be added in a different location to distribute the load
 
 Availability is the time that a system is functional and working. Availability is measured as a percentage of uptime. Application errors, infrastructure problems, and system load can all reduce availability.
 
-For the core discussion of this pillar, see [*Resiliency*](/azure/architecture/framework/#resiliency) in Pillars of software quality.
+For the core discussion of this pillar, see [*Availability*](/azure/architecture/framework/) in Pillars of software quality.
 
 ### Availability checklist
 
