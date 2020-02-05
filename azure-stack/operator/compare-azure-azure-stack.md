@@ -1,6 +1,7 @@
 ---
-title: Compare Azure Stack Hub and global Azure 
-description: Learn how Microsoft provides Azure and the Azure Stack Hub family of services in one Azure ecosystem  
+title: Compare global Azure, Azure Stack Hub, Azure Stack HCI
+titleSuffix: Azure Stack Hub 
+description: Learn the differences between global Azure, Azure Stack Hub, and Azure Stack HCI.
 author: justinha
 
 ms.topic: overview
