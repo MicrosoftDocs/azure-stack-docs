@@ -1,6 +1,7 @@
 ---
-title: Azure Stack Hub deployment network traffic 
-description: This article describes what to expect about Azure Stack Hub deployment networking processes.
+title: Deployment network traffic 
+titleSuffix: Azure Stack Hub
+description: Learn about network traffic flow during Azure Stack Hub deployment.
 author: ihenkel
 ms.topic: article
 ms.date: 12/05/2019
@@ -9,7 +10,8 @@ ms.reviewer: wamota
 ms.lastreviewed: 12/05/2019
 ---
 
-# About deployment network traffic
+# Deployment network traffic
+
 Understanding network traffic during Azure Stack Hub deployment will help make the deployment successful. This article walks you through the network traffic flow during the deployment process so you know what to expect.
 
 This illustration shows all the components and connections involved in the deployment process:
@@ -19,12 +21,14 @@ This illustration shows all the components and connections involved in the deplo
 > [!NOTE]
 > This article describes the requirements for a connected deployment, to learn about other deployment methods, see [Azure Stack Hub deployment connection models](azure-stack-connection-models.md).
 
-### The Deployment VM
+## The Deployment VM
+
 The Azure Stack Hub solution includes a group of servers that are used to host Azure Stack Hub components and an extra server called the Hardware Lifecycle Host (HLH). This server is used to deploy and manage the lifecycle of your solution and hosts the Deployment VM (DVM) during deployment.
 
 Azure Stack Hub solution providers may provision additional management VMs. Confirm with the solution provider before making any changes to management VMs from a solution provider.
 
 ## Deployment requirements
+
 Before deployment starts, there are some minimum requirements that can be validated by your OEM to ensure deployment completes successfully:
 
 -   [Certificates](azure-stack-pki-certs.md)
@@ -36,7 +40,8 @@ Before deployment starts, there are some minimum requirements that can be valida
 > [!NOTE]
 > This article focuses on the last three requirements. For more information on the first two, see the links above.
 
-## Deployment network traffic
+## About deployment network traffic
+
 The DVM is configured with an IP from the BMC Network and requires network access to the internet. Although not all of the BMC Network components require external routing or access to the Internet, some OEM-specific components utilizing IPs from this network might also require it.
 
 During deployment, the DVM authenticates against Azure Active Directory (Azure AD) using an Azure account from your subscription. In order to do so, the DVM requires internet access to a list of [specific ports and URLs](azure-stack-integrate-endpoints.md). The DVM will utilize a DNS server to forward DNS requests made by internal components to external URLs. The internal DNS forwards these requests to the DNS forwarder address that you provide to the OEM prior to deployment. The same is true for the NTP server, a reliable Time Server is required to maintain consistency and time synchronization for all Azure Stack Hub components.
@@ -48,4 +53,5 @@ Network configurations on Azure Stack Hub switches contain access control lists 
 After deployment is completed, the provided DNS and NTP server addresses will continue to be used by the system's components through the SDN using the External network. For example, if you check DNS requests after deployment is completed, the source will change from the DVM IP to a Public VIP.
 
 ## Next steps
+
 [Validate Azure registration](azure-stack-validate-registration.md)
