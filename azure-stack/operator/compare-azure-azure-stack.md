@@ -15,7 +15,7 @@ ms.lastreviewed: 03/29/2019
 
 Microsoft provides Azure and the Azure Stack Hub family of services in one Azure ecosystem. Use the same application model, self-service portals, and APIs with Azure Resource Manager to deliver cloud-based capabilities whether your business uses global Azure or on-premises resources.
 
-This article describes global Azure, Azure Stack Hub, and Azure Stack HCI capabilities and provides common scenario recommendations to help you make the best choice for delivering Microsoft cloud-based services for your organization.
+This article describes the differences between global Azure, Azure Stack Hub, and Azure Stack HCI capabilities. It provides common scenario recommendations to help you make the best choice for delivering Microsoft cloud-based services for your organization.
 
 ![Azure ecosystem overview](./media/compare-azure-azure-stack/azure-family.png)
 
@@ -75,6 +75,7 @@ Azure Stack HCI provides validated HCI solutions powered by Hyper-V and Storage 
 For an updated list of Azure services that you can connect Azure Stack HCI to, see [Connecting Windows Server to Azure hybrid services](https://docs.microsoft.com/windows-server/azure-hybrid-services/index).
 
 ### Example use cases for Azure Stack HCI
+
 - Remote or branch office systems
 - Datacenter consolidation
 - Virtual desktop infrastructure
