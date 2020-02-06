@@ -1,8 +1,8 @@
 ---
-title: In this article, you learn how to update Azure Stack Hub offers and plans 
-description: This article describes how to view and modify existing Azure Stack Hub offers and plans. 
+title: Create add-on plans
+titleSuffix: Azure Stack Hub 
+description: Learn how to create add-on plans in Azure Stack Hub. 
 author: bryanla
-
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: bryanla
@@ -10,7 +10,7 @@ ms.reviewer: efemmano
 ms.lastreviewed: 06/11/2019
 ---
 
-# Azure Stack Hub add-on plans
+# Create add-on plans in Azure Stack Hub
 
 As an Azure Stack Hub operator, you create add-on plans to modify a [base plan](azure-stack-create-plan.md) when you want to offer additional services or extend *computer*, *storage*, or *network* quotas beyond the base plan initial offer. Add-on plans modify the base plan and are optional extensions that users can choose to enable in their subscription.
 
