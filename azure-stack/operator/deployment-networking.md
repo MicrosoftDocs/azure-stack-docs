@@ -19,7 +19,7 @@ This illustration shows all the components and connections involved in the deplo
 ![Azure Stack Hub deployment network topology](media/deployment-networking/figure1.png)
 
 > [!NOTE]
-> This article describes the requirements for a connected deployment, to learn about other deployment methods, see [Azure Stack Hub deployment connection models](azure-stack-connection-models.md).
+> This article describes the requirements for a connected deployment. To learn about other deployment methods, see [Azure Stack Hub deployment connection models](azure-stack-connection-models.md).
 
 ## The Deployment VM
 
@@ -31,26 +31,26 @@ Azure Stack Hub solution providers may provision additional management VMs. Conf
 
 Before deployment starts, there are some minimum requirements that can be validated by your OEM to ensure deployment completes successfully:
 
--   [Certificates](azure-stack-pki-certs.md)
--   [Azure subscription](azure-stack-validate-registration.md). You may need to check your subscription.
--   Internet access
--   DNS
--   NTP
+- [Certificates](azure-stack-pki-certs.md).
+- [Azure subscription](azure-stack-validate-registration.md). You may need to check your subscription.
+- Internet access.
+- DNS.
+- NTP.
 
 > [!NOTE]
 > This article focuses on the last three requirements. For more information on the first two, see the links above.
 
 ## About deployment network traffic
 
-The DVM is configured with an IP from the BMC Network and requires network access to the internet. Although not all of the BMC Network components require external routing or access to the Internet, some OEM-specific components utilizing IPs from this network might also require it.
+The DVM is configured with an IP from the BMC network and requires network access to the internet. Although not all of the BMC network components require external routing or access to the internet, some OEM-specific components utilizing IPs from this network might also require it.
 
-During deployment, the DVM authenticates against Azure Active Directory (Azure AD) using an Azure account from your subscription. In order to do so, the DVM requires internet access to a list of [specific ports and URLs](azure-stack-integrate-endpoints.md). The DVM will utilize a DNS server to forward DNS requests made by internal components to external URLs. The internal DNS forwards these requests to the DNS forwarder address that you provide to the OEM prior to deployment. The same is true for the NTP server, a reliable Time Server is required to maintain consistency and time synchronization for all Azure Stack Hub components.
+During deployment, the DVM authenticates against Azure Active Directory (Azure AD) using an Azure account from your subscription. In order to do so, the DVM requires internet access to a list of [specific ports and URLs](azure-stack-integrate-endpoints.md). The DVM will utilize a DNS server to forward DNS requests made by internal components to external URLs. The internal DNS forwards these requests to the DNS forwarder address that you provide to the OEM prior to deployment. The same is true for the NTP server: a reliable Time Server is required to maintain consistency and time synchronization for all Azure Stack Hub components.
 
-The internet access required by the DVM during deployment is outbound only, no inbound calls are made during deployment. Keep in mind that it uses its IP as source and that Azure Stack Hub does not support proxy configurations. Therefore, if necessary, you need to provide a transparent proxy or NAT to access the internet. During deployment, some internal components will start accessing the internet through the External Network using Public VIPs. After deployment completes, all communication between Azure and Azure Stack Hub is made through the External Network using Public VIPs.
+The internet access required by the DVM during deployment is outbound only, no inbound calls are made during deployment. Keep in mind that it uses its IP as source and that Azure Stack Hub doesn't support proxy configurations. Therefore, if necessary, you need to provide a transparent proxy or NAT to access the internet. During deployment, some internal components will start accessing the internet through the external network using public VIPs. After deployment completes, all communication between Azure and Azure Stack Hub is made through the external network using public VIPs.
 
-Network configurations on Azure Stack Hub switches contain access control lists (ACLs) that restrict traffic between certain network sources and destinations. The DVM is the only component with unrestricted access; even the HLH is restricted. You can ask your OEM about customization options to ease management and access from your networks. Because of these ACLs, it is important to avoid changing the DNS and NTP server addresses at deployment time. If you do so, you will need to reconfigure all of the switches for the solution.
+Network configurations on Azure Stack Hub switches contain access control lists (ACLs) that restrict traffic between certain network sources and destinations. The DVM is the only component with unrestricted access; even the HLH is restricted. You can ask your OEM about customization options to ease management and access from your networks. Because of these ACLs, it's important to avoid changing the DNS and NTP server addresses at deployment time. If you do so, you need to reconfigure all of the switches for the solution.
 
-After deployment is completed, the provided DNS and NTP server addresses will continue to be used by the system's components through the SDN using the External network. For example, if you check DNS requests after deployment is completed, the source will change from the DVM IP to a Public VIP.
+After deployment is completed, the provided DNS and NTP server addresses will continue to be used by the system's components through the SDN using the external network. For example, if you check DNS requests after deployment is completed, the source will change from the DVM IP to a public VIP.
 
 ## Next steps
 
