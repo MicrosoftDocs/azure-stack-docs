@@ -182,7 +182,7 @@ Unlike Azure, which supports multiple offers as both an initiator and a responde
 >|Hashing Algorithms | SHA256 |
 >|Perfect Forward Secrecy (PFS) | None |
 
-* New or changed parameter.
+/* New or changed parameter.
 
 ## Next steps
 
