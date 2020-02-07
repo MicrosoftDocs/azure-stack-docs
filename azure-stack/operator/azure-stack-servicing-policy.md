@@ -5,7 +5,7 @@ description: Learn about the Azure Stack Hub servicing policy and how to keep an
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 02/07/2020
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/14/2020
