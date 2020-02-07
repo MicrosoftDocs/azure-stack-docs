@@ -28,7 +28,7 @@ You can create and manage self-service databases in the user portal. An Azure St
 
 4. Under **Create Database**, select **SKU**. Under **Select a SKU**, select the SKU for your database.
 
-   ![Create Database in Azure Stack Hub user portal.](./media/azure-stack-sql-rp-deploy/newsqldb.png)
+   ![Create Database in Azure Stack Hub user portal.](./media/azure-stack-sql-rp-deploy/newsqldba.png)
 
    >[!NOTE]
    >As hosting servers are added to Azure Stack Hub, they're assigned a SKU. Databases are created in the pool of hosting servers in a SKU.
@@ -42,13 +42,13 @@ You can create and manage self-service databases in the user portal. An Azure St
    >[!NOTE]
    >These settings are the SQL authentication credential that's created for your access to this database only. The login user name must be globally unique. You can reuse login settings for other databases that use the same SKU.
 
-   ![Create a new database login in Azure Stack Hub user portal](./media/azure-stack-sql-rp-deploy/create-new-login.png)
+   ![Create a new database login in Azure Stack Hub user portal](./media/azure-stack-sql-rp-deploy/create-new-login-a.png)
 
 8. Select **OK** to finish deploying the database.
 
 Under **Essentials**, which is shown after the database is deployed, take note of the **Connection string**. You can use this string in any app that needs to access the SQL Server database.
 
-![Retrieve the connection string for the SQL Server database](./media/azure-stack-sql-rp-deploy/sql-db-settings.png)
+![Retrieve the connection string for the SQL Server database](./media/azure-stack-sql-rp-deploy/sql-db-settings-a.png)
 
 ## SQL Always On databases
 

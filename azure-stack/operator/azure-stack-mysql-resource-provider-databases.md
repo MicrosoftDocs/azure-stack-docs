@@ -31,7 +31,7 @@ An Azure Stack Hub user that's subscribed to an offer that includes the MySQL da
 5. Under **Login**, select ***Configure required settings***.
 6. Under **Select a Login**, you can choose an existing login or select **+ Create a new login** to set up a new login.  Enter a **Database login** name and **Password**, and then select **OK**.
 
-    ![Create a new database login](./media/azure-stack-mysql-rp-deploy/create-new-login.png)
+    ![Create a new database login](./media/azure-stack-mysql-rp-deploy/create-new-login-a.png)
 
     >[!NOTE]
     >The length of the Database login name can't exceed 32 characters in MySQL 5.7. In earlier editions, it can't exceed 16 characters.
