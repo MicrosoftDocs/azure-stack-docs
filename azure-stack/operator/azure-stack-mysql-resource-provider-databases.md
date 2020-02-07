@@ -19,7 +19,7 @@ An Azure Stack Hub user that's subscribed to an offer that includes the MySQL da
 2. Select **+ Create a resource** > **Data + Storage** > **MySQL Database** > **Add**.
 3. Under **Create MySQL Database**, enter the Database Name, and configure the other settings as required for your environment.
 
-    ![Create a test MySQL database](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)
+    ![Create a test MySQL database](./media/azure-stack-mysql-rp-deploy/mysql-create-db-a.png)
 
 4. Under **Create Database**, select **SKU**. Under **Select a MySQL SKU**, pick the SKU for your database.
 
@@ -31,7 +31,7 @@ An Azure Stack Hub user that's subscribed to an offer that includes the MySQL da
 5. Under **Login**, select ***Configure required settings***.
 6. Under **Select a Login**, you can choose an existing login or select **+ Create a new login** to set up a new login.  Enter a **Database login** name and **Password**, and then select **OK**.
 
-    ![Create a new database login](./media/azure-stack-mysql-rp-deploy/create-new-login-a.png)
+    ![Create a new database login](./media/azure-stack-mysql-rp-deploy/create-new-login.png)
 
     >[!NOTE]
     >The length of the Database login name can't exceed 32 characters in MySQL 5.7. In earlier editions, it can't exceed 16 characters.
@@ -40,7 +40,7 @@ An Azure Stack Hub user that's subscribed to an offer that includes the MySQL da
 
 After the database is deployed, take note of the **Connection String** under **Essentials**. You can use this string in any application that needs to access the MySQL database.
 
-![Get the connection string for the MySQL database](./media/azure-stack-mysql-rp-deploy/mysql-db-created.png)
+![Get the connection string for the MySQL database](./media/azure-stack-mysql-rp-deploy/mysql-db-created-a.png)
 
 ## Update the administrative password
 
