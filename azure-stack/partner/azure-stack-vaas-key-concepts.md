@@ -1,6 +1,6 @@
 ---
-title: Azure Stack Validation as a Service key concepts 
-description: Describes key concepts in Azure Stack Validation as a Service.
+title: Azure Stack Hub Validation as a Service key concepts 
+description: Describes key concepts in Azure Stack Hub Validation as a Service.
 author: mattbriggs
 
 ms.topic: article
@@ -21,7 +21,7 @@ This article describes key concepts in Validation as a Service (VaaS).
 
 ## Solutions
 
-A VaaS solution represents an Azure Stack solution with a particular hardware bill of materials (BoM). The VaaS solution acts as a container for the workflows that run against the Azure Stack solution.
+A VaaS solution represents an Azure Stack Hub solution with a particular hardware bill of materials (BoM). The VaaS solution acts as a container for the workflows that run against the Azure Stack Hub solution.
 
 ### Create a solution in the VaaS portal
 
@@ -32,7 +32,7 @@ A VaaS solution represents an Azure Stack solution with a particular hardware bi
 
 ## Workflows
 
-A VaaS workflow operates within the context of a VaaS solution. It represents a set of test suites that exercise the functionality of an Azure Stack deployment. A workflow should be created for every deployment or software update of an Azure Stack solution.
+A VaaS workflow operates within the context of a VaaS solution. It represents a set of test suites that exercise the functionality of an Azure Stack Hub deployment. A workflow should be created for every deployment or software update of an Azure Stack Hub solution.
 
 Workflows are categorized by testing scenario type. In unofficial testing, the **Test Pass** workflow lets you select tests from all available VaaS collateral. In official testing, the **validation** workflows target specific testing scenarios selected by Microsoft.
 
@@ -41,37 +41,37 @@ Workflows are categorized by testing scenario type. In unofficial testing, the *
 > [!NOTE]
 > The **Package Validation** workflow currently supports two scenarios: [Validate OEM packages](azure-stack-vaas-validate-oem-package.md) and [Validate software updates from Microsoft](azure-stack-vaas-validate-microsoft-updates.md).
 
-For more information on workflow types, see [What is Validation as a Service for Azure Stack?](azure-stack-vaas-overview.md).
+For more information on workflow types, see [What is Validation as a Service for Azure Stack Hub?](azure-stack-vaas-overview.md).
 
 ### Getting started with VaaS workflows
 
 1. On the solutions dashboard, create a new solution or select an existing one. This refreshes and activates the workflow tiles.
 2. To create a new workflow, select on **Start** on any tile. For information specific to each workflow, see the following articles:
     - Test Pass: [Quickstart: Use the Validation as a Service portal to schedule your first test](azure-stack-vaas-schedule-test-pass.md)
-    - Solution Validation: [Validate a new Azure Stack solution](azure-stack-vaas-validate-solution-new.md)
+    - Solution Validation: [Validate a new Azure Stack Hub solution](azure-stack-vaas-validate-solution-new.md)
     - Package Validation (monthly update): [Validate software updates from Microsoft](azure-stack-vaas-validate-microsoft-updates.md)
     - Package Validation (package signing): [Validate OEM packages](azure-stack-vaas-validate-oem-package.md)
 
 3. To manage or monitor an existing workflow, select on **Manage** on the workflow tile. Select the name of the workflow and use the **Edit** button to view properties or change common test parameters.
 
-For more information about workflow properties and parameters, see [Workflow common parameters for Azure Stack Validation as a Service](azure-stack-vaas-parameters.md).
+For more information about workflow properties and parameters, see [Workflow common parameters for Azure Stack Hub Validation as a Service](azure-stack-vaas-parameters.md).
 
 ## Tests
 
-A test in VaaS consists of a suite of operations that run against an Azure Stack solution. Tests have different intended purposes identified by a category, like functional or reliability, and target one or more services of Azure Stack. Each test defines its own set of parameters, some of which are specified by common parameters of the containing workflow.
+A test in VaaS consists of a suite of operations that run against an Azure Stack Hub solution. Tests have different intended purposes identified by a category, like functional or reliability, and target one or more services of Azure Stack Hub. Each test defines its own set of parameters, some of which are specified by common parameters of the containing workflow.
 
 For more information about managing and monitoring tests, see [Monitor and manage tests in the VaaS portal](azure-stack-vaas-monitor-test.md).
 
-For more information about test parameters, see [Workflow common parameters for Azure Stack Validation as a Service](azure-stack-vaas-parameters.md).
+For more information about test parameters, see [Workflow common parameters for Azure Stack Hub Validation as a Service](azure-stack-vaas-parameters.md).
 
 ## Agents
 
 A VaaS agent drives test execution. Two types of agents run VaaS tests:
 
-- The **cloud agent**. This is the default agent available in VaaS. No setup is required, but this requires in-bound connectivity to your environment and Azure Stack endpoints must be resolvable from the internet. Some tests are not compatible with the cloud agent.
+- The **cloud agent**. This is the default agent available in VaaS. No setup is required, but this requires in-bound connectivity to your environment and Azure Stack Hub endpoints must be resolvable from the internet. Some tests are not compatible with the cloud agent.
 - A **local agent**. This lets you run validation in scenarios where in-bound connectivity to your environment is not feasible. Some tests require execution through the local agent.
 
-Local agents are not tied to any particular Azure Stack or VaaS solution. As a best practice, they should run outside of an Azure Stack environment.
+Local agents are not tied to any particular Azure Stack Hub or VaaS solution. As a best practice, they should run outside of an Azure Stack Hub environment.
 
 For instructions on adding a local agent, see [Deploy the local agent](azure-stack-vaas-local-agent.md).
 

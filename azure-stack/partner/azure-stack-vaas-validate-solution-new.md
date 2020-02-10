@@ -1,6 +1,6 @@
 ---
-title: Validate a new Azure Stack solution 
-description: Learn how to validate a new Azure Stack solution with Validation as a Service.
+title: Validate a new Azure Stack Hub solution 
+description: Learn how to validate a new Azure Stack Hub solution with Validation as a Service.
 author: mattbriggs
 
 ms.topic: quickstart
@@ -15,13 +15,13 @@ ROBOTS: NOINDEX
 
 ---
 
-# Validate a new Azure Stack solution
+# Validate a new Azure Stack Hub solution
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Learn how to use the **solution validation** workflow to certify new Azure Stack solutions.
+Learn how to use the **solution validation** workflow to certify new Azure Stack Hub solutions.
 
-An Azure Stack solution is a hardware bill of materials (BoM) that has been jointly agreed upon between Microsoft and the partner after meeting the Windows Server logo certification requirements. A solution must be recertified when there has been a change to the hardware BoM. For further questions about when to recertify solutions, contact the team at [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com).
+An Azure Stack Hub solution is a hardware bill of materials (BoM) that has been jointly agreed upon between Microsoft and the partner after meeting the Windows Server logo certification requirements. A solution must be recertified when there has been a change to the hardware BoM. For further questions about when to recertify solutions, contact the team at [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com).
 
 To certify your solution, run the solution validation workflow twice. Run it once for the *minimally* supported configuration. Run it a second time for the *maximally* supported configuration. Microsoft certifies the solution if both configurations pass all tests.
 
@@ -57,7 +57,7 @@ To certify your solution, run the solution validation workflow twice. Run it onc
 
 In the **Solution Validation tests summary** page, you will see a list of the tests required for completing validation.
 
-In the validation workflows, **scheduling** a test uses the workflow-level common parameters that you specified during workflow creation (see [Workflow common parameters for Azure Stack Validation as a Service](azure-stack-vaas-parameters.md)). If any of test parameter values become invalid, you must resupply them as instructed in [Modify workflow parameters](azure-stack-vaas-monitor-test.md#change-workflow-parameters).
+In the validation workflows, **scheduling** a test uses the workflow-level common parameters that you specified during workflow creation (see [Workflow common parameters for Azure Stack Hub Validation as a Service](azure-stack-vaas-parameters.md)). If any of test parameter values become invalid, you must resupply them as instructed in [Modify workflow parameters](azure-stack-vaas-monitor-test.md#change-workflow-parameters).
 
 > [!NOTE]
 > Scheduling a validation test over an existing instance will create a new instance in place of the old instance in the portal. Logs for the old instance will be retained but are not accessible from the portal.  
