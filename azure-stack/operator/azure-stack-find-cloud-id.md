@@ -12,17 +12,27 @@ ms.lastreviewed: 10/08/2019
 ---
 # Find your Cloud ID
 
-This topic covers hot to get you Cloud ID. 
+This topic covers how to get you Cloud ID. 
 
 ## Use the administrator portal
 
 Properties > Properties > Region > Registration status > Stamp Cloud ID
 
+1. Open the Administrator portal. 
+1. Click **Region management**.
+
+   ![Screenshot of the Dashboard](./media/azure-stack-automatic-log-collection/dashboard.png)
+
+1. Click **Properties** > **Properties**.
+
+   ![Screenshot of the the Region blade](media/azure-stack-automatic-log-collection/region-blade.png)
+
+1. Copy the **Stamp Cloud ID**.
+
+   ![Screenshot of Region properties with Stamp Cloud ID](media/azure-stack-automatic-log-collection/region-properties-blade-with-stamp-cloud-id.png)
 
 
-
-
-##  Use the privileged endpoint
+## Use the privileged endpoint
 
 
 
