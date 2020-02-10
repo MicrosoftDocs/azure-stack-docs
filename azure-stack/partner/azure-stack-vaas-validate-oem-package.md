@@ -1,5 +1,5 @@
 ---
-title: Validate original equipment manufacturer (OEM) packages in Azure Stack Validation as a Service 
+title: Validate original equipment manufacturer (OEM) packages in Azure Stack Hub Validation as a Service 
 description: Learn how to validate original equipment manufacturer (OEM) packages with Validation as a Service.
 author: mattbriggs
 
@@ -53,7 +53,7 @@ Create a container in your storage account for package blobs. This container can
 
 ### Generate package blob URL for VaaS
 
-When creating a **Package Validation** workflow in the VaaS portal, you will need to provide a URL to the Azure Storage blob containing your package. Some *interactive* tests, including **Monthly AzureStack Update Verification** and **OEM Extension Package Verification**, also require a URL to package blobs.
+When creating a **Package Validation** workflow in the VaaS portal, you will need to provide a URL to the Azure Storage blob containing your package. Some *interactive* tests, including **Monthly Azure Stack Hub Update Verification** and **OEM Extension Package Verification**, also require a URL to package blobs.
 
 #### Handling container access level
 
@@ -141,14 +141,14 @@ Use this option if it is acceptable to allow unauthenticated clients access to i
 
 5. Enter the Azure Storage blob URL to the test signed OEM package requiring a signature from Microsoft. For instructions, see [Generate package blob URL for VaaS](#generate-package-blob-url-for-vaas).
 
-6. Copy the AzureStack update package folder to a local directory on the DVM. Enter the path to the **folder that contains the package zip file and metadata file** for 'AzureStack update package folder path'
+6. Copy the Azure Stack Hub update package folder to a local directory on the DVM. Enter the path to the **folder that contains the package zip file and metadata file** for 'AzureStack update package folder path'
 
 7. Copy the OEM package folder created above to a local directory on the DVM. Enter the path to the **folder that contains the package zip file and metadata file** for 'OEM update package folder path'
 
     > [!NOTE]
-    > Copy the AzureStack update and OEM update to **2 separate** directories.
+    > Copy the Azure Stack Hub update and OEM update to **2 separate** directories.
 
-8. 'RequireDigitalSignature' - provide **true** if you need the package to be Microsoft signed (Running OEM Validation workflow). If you are validating a Microsoft signed package on latest AzureStack update, provide this value as false (Running Monthly AzureStack update verification).
+8. 'RequireDigitalSignature' - provide **true** if you need the package to be Microsoft signed (Running OEM Validation workflow). If you are validating a Microsoft signed package on latest Azure Stack Hub update, provide this value as false (Running Monthly Azure Stack Hub update verification).
 
 9. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
 
@@ -170,7 +170,7 @@ The following tests are required to be run for OEM package validation:
 
 1. In the **Package Validation tests summary** page, you will run a subset of the listed tests appropriate to your scenario.
 
-    In the validation workflows, **scheduling** a test uses the workflow-level common parameters that you specified during workflow creation (see [Workflow common parameters for Azure Stack Validation as a Service](azure-stack-vaas-parameters.md)). If any of test parameter values become invalid, you must resupply them as instructed in [Modify workflow parameters](azure-stack-vaas-monitor-test.md#change-workflow-parameters).
+    In the validation workflows, **scheduling** a test uses the workflow-level common parameters that you specified during workflow creation (see [Workflow common parameters for Azure Stack Hub Validation as a Service](azure-stack-vaas-parameters.md)). If any of test parameter values become invalid, you must resupply them as instructed in [Modify workflow parameters](azure-stack-vaas-monitor-test.md#change-workflow-parameters).
 
     > [!NOTE]
     > Scheduling a validation test over an existing instance will create a new instance in place of the old instance in the portal. Logs for the old instance will be retained but are not accessible from the portal.  
