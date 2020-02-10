@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/03/2020
+ms.date: 02/10/2020
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 01/17/2020
