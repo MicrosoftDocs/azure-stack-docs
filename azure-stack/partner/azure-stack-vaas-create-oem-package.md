@@ -1,16 +1,13 @@
 ---
-title: Azure Stack Hub Validation best practices 
-description: This article describes best practices for using Validation as a Service.
+title: Create an OEM package
+titleSuffix: Azure Stack Hub
+description: Learn how to create an OEM package in Azure Stack Hub.
 author: mattbriggs
-
 ms.topic: article
 ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019
-
-
-
 ROBOTS: NOINDEX
 
 ---
