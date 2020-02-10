@@ -1,6 +1,6 @@
 ---
-title: Interactive feature verification testing in Azure Stack Validation as a Service 
-description: Learn how to create interactive feature verification tests for Azure Stack with Validation as a Service.
+title: Interactive feature verification testing in Azure Stack Hub Validation as a Service 
+description: Learn how to create interactive feature verification tests for Azure Stack Hub with Validation as a Service.
 author: mattbriggs
 
 ms.topic: tutorial
@@ -21,7 +21,7 @@ ROBOTS: NOINDEX
 
 You can use the interactive feature verification testing framework to request tests for your system. When you request a test, Microsoft uses the framework to prepare tests that require manual interactive steps. Microsoft can use the framework to chain together several standalone automated tests.
 
-This article describes a simple manual scenario. The test checks replacing a disk in Azure Stack. The framework gathers diagnostic logs at each step. You can debug issues as you find them. The framework also allows the sharing of logs produced by other tools or processes, and enables you to provide feedback on the scenario.
+This article describes a simple manual scenario. The test checks replacing a disk in Azure Stack Hub. The framework gathers diagnostic logs at each step. You can debug issues as you find them. The framework also allows the sharing of logs produced by other tools or processes, and enables you to provide feedback on the scenario.
 
 > [!Important]  
 > This article references the steps to perform Disk Identification. This is simply a demonstration, as any results gathered from the Test Pass workflow may not be used for new solution verification.
