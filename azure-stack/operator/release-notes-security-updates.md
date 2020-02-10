@@ -4,15 +4,22 @@ description: Learn about the 1910 security updates for Azure Stack Hub.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 01/14/2020
 ms.author: sethm
 ms.reviewer: fiseraci
-ms.lastreviewed: 11/21/2019
+ms.lastreviewed: 01/14/2020
 ---
 
 # Azure Stack Hub security updates
 
 This article lists all the security updates in the last four updates of Azure Stack Hub. This information is provided for reference purposes only.
+
+::: moniker range="azs-2002"
+## 2002 update
+
+This update of Azure Stack Hub does not include security updates to the underlying operating system that hosts Azure Stack Hub.
+
+::: moniker-end
 
 ::: moniker range="azs-1910"
 ## 1910 update
@@ -229,12 +236,6 @@ For more information about these vulnerabilities, click on the preceding links, 
 
 ::: moniker range="azs-1907"
 ## 1907 update
-
-This update of Azure Stack Hub does not include security updates to the underlying operating system that hosts Azure Stack Hub.
-::: moniker-end
-
-::: moniker range="azs-1906"
-## 1906 update
 
 This update of Azure Stack Hub does not include security updates to the underlying operating system that hosts Azure Stack Hub.
 ::: moniker-end
