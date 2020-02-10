@@ -1,5 +1,5 @@
 ---
-title: Validate software updates from Microsoft in Azure Stack Validation as a Service 
+title: Validate software updates from Microsoft in Azure Stack Hub Validation as a Service 
 description: Learn how to validate software updates from Microsoft with Validation as a Service.
 author: mattbriggs
 
@@ -19,9 +19,9 @@ ROBOTS: NOINDEX
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Microsoft will periodically release updates to the Azure Stack software. These updates are provided to Azure Stack co-engineering partners. The updates are provided in advance of publicly available. You can check the updates against your solution and provide feedback to Microsoft.
+Microsoft will periodically release updates to the Azure Stack Hub software. These updates are provided to Azure Stack Hub co-engineering partners. The updates are provided in advance of publicly available. You can check the updates against your solution and provide feedback to Microsoft.
 
-Microsoft software updates to Azure Stack are designated using a naming convention, for example, 1803 indicating the update is for March 2018. For information about the Azure Stack update policy, cadence and release notes are available, see [Azure Stack servicing policy](../operator/azure-stack-servicing-policy.md).
+Microsoft software updates to Azure Stack Hub are designated using a naming convention, for example, 1803 indicating the update is for March 2018. For information about the Azure Stack Hub update policy, cadence and release notes are available, see [Azure Stack Hub servicing policy](../operator/azure-stack-servicing-policy.md).
 
 ## Prerequisites
 
@@ -38,7 +38,7 @@ The following tests must be executed in the following order for monthly software
 ## Validating software updates
 
 1. Create a new **Package Validation** workflow.
-1. For the required tests above, follow the instructions from [Run Package Validation tests](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests). See the section below for additional instructions on the **Monthly Azure Stack Update Verification** test.
+1. For the required tests above, follow the instructions from [Run Package Validation tests](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests). See the section below for additional instructions on the **Monthly Azure Stack Hub Update Verification** test.
 
 If you have questions or concerns, contact [VaaS Help](mailto:vaashelp@microsoft.com).
 
