@@ -12,11 +12,9 @@ ms.lastreviewed: 10/08/2019
 ---
 # Find your Cloud ID
 
-This topic covers how to get you Cloud ID. 
+This topic covers how to get you Cloud ID by using the Administrator portal or the privileged endpoint (PEP). 
 
 ## Use the administrator portal
-
-Properties > Properties > Region > Registration status > Stamp Cloud ID
 
 1. Open the Administrator portal. 
 1. Click **Region management**.
@@ -34,24 +32,30 @@ Properties > Properties > Region > Registration status > Stamp Cloud ID
 
 ## Use the privileged endpoint
 
+1. Open an elevated PowerShell session and run the follow
 
+   ```powershell
+   $ipAddress = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
 
-```powershell
-$ipAddress = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
+   $password = ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
+   $cred = New-Object -TypeName System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $password)
+   $session = New-PSSession -ComputerName $ipAddress -ConfigurationName PrivilegedEndpoint -Credential $cred
 
-$password = ConvertTo-SecureString "<CLOUD ADMIN PASSWORD>" -AsPlainText -Force
-$cred = New-Object -TypeName System.Management.Automation.PSCredential ("<DOMAIN NAME>\CloudAdmin", $password)
-$session = New-PSSession -ComputerName $ipAddress -ConfigurationName PrivilegedEndpoint -Credential $cred
+   $stampInfo = Invoke-Command -Session $session { Get-AzureStackStampInformation }
+   if ($session) {
+       Remove-PSSession -Session $session
+   }
 
-$stampInfo = Invoke-Command -Session $session { Get-AzureStackStampInformation }
-if ($session) {
-    Remove-PSSession -Session $session
-}
-
-$stampInfo.CloudID
-```
+   $stampInfo.CloudID
+   ```
 
 ## Next steps
+
+* [Enable Proactive diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md)
+* [Send logs now](azure-stack-configure-on-demand-diagnostic-log-collection.md)
+
+
+
 
 
 
