@@ -67,7 +67,9 @@ A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on A
 
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
-Improvements to the Azure Stack Hub readniness checker tool to validate AD Graph integration.
+- Improvements to the Azure Stack Hub readniness checker tool to validate AD Graph integration.
+- The Offline Syndication tool has been updated with reliability improvements. The tool is no longer on GitHub and has been moved to the PowerShell Gallery. For more information, see [Download Marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).
+
 
 ### Changes
 
