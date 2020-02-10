@@ -1,6 +1,6 @@
 ---
-title: Workflow common parameters in Azure Stack Validation as a Service
-description: Workflow common parameters for Azure Stack Validation as a Service
+title: Workflow common parameters in Azure Stack Hub Validation as a Service
+description: Workflow common parameters for Azure Stack Hub Validation as a Service
 author: mattbriggs
 
 ms.topic: article
@@ -15,7 +15,7 @@ ROBOTS: NOINDEX
 
 ---
 
-# Workflow common parameters for Azure Stack Validation as a Service
+# Workflow common parameters for Azure Stack Hub Validation as a Service
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
@@ -26,14 +26,14 @@ Common parameters include values like environment variables and user credentials
 
 ## Environment parameters
 
-Environment parameters describe the Azure Stack environment under test. These values must be provided by generating and uploading an Azure Stack stamp information file for the specific instance you are testing.
+Environment parameters describe the Azure Stack Hub environment under test. These values must be provided by generating and uploading an Azure Stack Hub stamp information file for the specific instance you are testing.
 
 > [!NOTE]
 > In official validation workflows, environment parameters cannot be modified after workflow creation.
 
 ### Generate the stamp information file
 
-1. Sign in to the DVM or any machine that has access to the Azure Stack environment.
+1. Sign in to the DVM or any machine that has access to the Azure Stack Hub environment.
 2. Run the following commands in an elevated PowerShell window:
 
     ```powershell  
@@ -54,9 +54,9 @@ Common test parameters include sensitive information that can't be stored in con
 
 Parameter    | Description
 -------------|-----------------
-Tenant Administrator User                            | Azure Active Directory Tenant Administrator that was provisioned by the service administrator in the AAD directory. This user performs tenant-level actions like deploying templates to set up resources (VMs, storage accounts, etc.) and executing workloads. For details on provisioning the tenant account, see [Add a new Azure Stack tenant](../operator/azure-stack-add-new-user-aad.md).
-Service Administrator User             | Azure Active Directory Administrator of the Azure AD Directory Tenant specified during Azure Stack deployment. Search for `AADTenant` in the ECE configuration file and select the value in the `UniqueName` element.
-Cloud Administrator User               | Azure Stack domain administrator account (for example, `contoso\cloudadmin`). Search for `User Role="CloudAdmin"` in the ECE configuration file and select the value in the `UserName` element.
+Tenant Administrator User                            | Azure Active Directory Tenant Administrator that was provisioned by the service administrator in the AAD directory. This user performs tenant-level actions like deploying templates to set up resources (VMs, storage accounts, etc.) and executing workloads. For details on provisioning the tenant account, see [Add a new Azure Stack Hub tenant](../operator/azure-stack-add-new-user-aad.md).
+Service Administrator User             | Azure Active Directory Administrator of the Azure AD Directory Tenant specified during Azure Stack Hub deployment. Search for `AADTenant` in the ECE configuration file and select the value in the `UniqueName` element.
+Cloud Administrator User               | Azure Stack Hub domain administrator account (for example, `contoso\cloudadmin`). Search for `User Role="CloudAdmin"` in the ECE configuration file and select the value in the `UserName` element.
 Diagnostics Connection String          | A SAS URL to an Azure Storage Account to which diagnostics logs will be copied during test execution. For instructions on generating the SAS URL, see [Generate the diagnostics connection string](#generate-the-diagnostics-connection-string). |
 
 > [!IMPORTANT]
