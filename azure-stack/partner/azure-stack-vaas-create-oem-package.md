@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Validation best practices 
+title: Azure Stack Hub Validation best practices 
 description: This article describes best practices for using Validation as a Service.
 author: mattbriggs
 
@@ -19,7 +19,7 @@ ROBOTS: NOINDEX
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-The Azure Stack OEM Extension Package is the mechanism by which OEM specific content is added to Azure Stack infrastructure, for use in deployment as well as operational processes like update, expansion, and field replacement.
+The Azure Stack Hub OEM Extension Package is the mechanism by which OEM specific content is added to Azure Stack Hub infrastructure, for use in deployment as well as operational processes like update, expansion, and field replacement.
 
 ## Creating the package
 
