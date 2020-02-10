@@ -86,10 +86,10 @@ During upgrade, there is a call to check database existence using the master con
 Take one of the following actions and click retry within the installer.
 
 - Copy the appservice_hostingAdmin login from the now secondary sql node;
- 
+
 **OR**
-    
-- Failover the SQL Cluster to the previous active node.
+
+- Fail over the SQL Cluster to the previous active node.
 
 ### Post-deployment steps
 
