@@ -1,6 +1,6 @@
 ---
-title: Monitor and manage tests in the Azure Stack VaaS portal 
-description: Monitor and manage tests in the Azure Stack VaaS portal.
+title: Monitor and manage tests in the Azure Stack Hub VaaS portal 
+description: Monitor and manage tests in the Azure Stack Hub VaaS portal.
 author: mattbriggs
 
 ms.topic: tutorial
@@ -19,7 +19,7 @@ ROBOTS: NOINDEX
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-After scheduling tests against your Azure Stack solution, Validation as a Service (VaaS) will begin reporting test execution status. This information is available in the VaaS portal along with actions like rescheduling and canceling tests.
+After scheduling tests against your Azure Stack Hub solution, Validation as a Service (VaaS) will begin reporting test execution status. This information is available in the VaaS portal along with actions like rescheduling and canceling tests.
 
 ## Navigate to the workflow tests summary page
 
@@ -37,7 +37,7 @@ You may edit the [Test parameters](azure-stack-vaas-parameters.md#test-parameter
 
 1. On the tests summary page, select the **Edit** button.
 
-1. Provide new values according to [Workflow common parameters for Azure Stack Validation as a Service](azure-stack-vaas-parameters.md).
+1. Provide new values according to [Workflow common parameters for Azure Stack Hub Validation as a Service](azure-stack-vaas-parameters.md).
 
 1. Select **Submit** to save the values.
 
@@ -53,9 +53,9 @@ In **Test Pass** workflows, both the **Add tests** and **Edit** buttons allow yo
 
 ## Managing test instances
 
-For unofficial runs (that is, the **Test Pass** workflow), the tests summary page lists the tests scheduled against the Azure Stack solution.
+For unofficial runs (that is, the **Test Pass** workflow), the tests summary page lists the tests scheduled against the Azure Stack Hub solution.
 
-For official runs (that is, the **validation** workflows), the tests summary page lists the tests required for completing validation of the Azure Stack solution. Validation tests are scheduled from this page.
+For official runs (that is, the **validation** workflows), the tests summary page lists the tests required for completing validation of the Azure Stack Hub solution. Validation tests are scheduled from this page.
 
 Each scheduled test instance shows the following information:
 
@@ -86,7 +86,7 @@ Select **View information** from the context menu to view general information ab
 | Test version | The version of the test. |
 | Publisher | The publisher of the test. |
 | Category |  The purpose of the test. |
-| Target services | The Azure Stack services being tested. |
+| Target services | The Azure Stack Hub services being tested. |
 | Description | The description of the test. |
 | Estimated duration (minutes) | The expected runtime of the test. |
 | Links | Any relevant information about the test or points of contact. |

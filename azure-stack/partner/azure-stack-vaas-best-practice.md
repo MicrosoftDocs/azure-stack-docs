@@ -1,5 +1,5 @@
 ---
-title: Azure Stack Validation Best Practices. 
+title: Azure Stack Hub Validation Best Practices. 
 description: This article discusses best practices for Validation as a Service.
 author: mattbriggs
 
