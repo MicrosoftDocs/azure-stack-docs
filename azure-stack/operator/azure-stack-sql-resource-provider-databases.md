@@ -58,7 +58,7 @@ By design, Always On databases are handled differently than in a standalone serv
 
 The following screen capture shows how you can use SQL Server Management Studio to look at database status in SQL Always On.
 
-![AlwaysOn database status in SQL Server Management Studio](./media/azure-stack-sql-rp-deploy/verifyalwayson.png)
+![AlwaysOn database status in SQL Server Management Studio](./media/azure-stack-sql-rp-deploy/verify-always-on.png)
 
 Always On databases should show as **Synchronized** and available on all the SQL instances and appear in **Availability Groups**. In the previous screenshot, the database example is newdb1 and its status is **newdb1 (Synchronized)**.
 
