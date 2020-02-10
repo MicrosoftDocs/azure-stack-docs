@@ -1,6 +1,6 @@
 ---
-title: Use the Validation as a Service for Azure Stack portal to schedule your first test 
-description: Use the Validation as a Service for Azure Stack portal to schedule your first test.
+title: Use the Validation as a Service for Azure Stack Hub portal to schedule your first test 
+description: Use the Validation as a Service for Azure Stack Hub portal to schedule your first test.
 author: mattbriggs
 
 ms.topic: conceptual
@@ -11,16 +11,16 @@ ms.lastreviewed: 11/11/2019
 
 
 
-# Customer intent: As a partner OEM, I want to let the service test my hardware bill of materials to check that it can run Azure Stack.
+# Customer intent: As a partner OEM, I want to let the service test my hardware bill of materials to check that it can run Azure Stack Hub.
 ---
 
 # Scheduling a test
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Schedule a test in the Validation as a Service (VaaS) portal for your Azure Stack solution. A VaaS solution represents an Azure Stack solution with a particular hardware bill of materials (BoM). You can schedule a test to check that your hardware can run Azure Stack.
+Schedule a test in the Validation as a Service (VaaS) portal for your Azure Stack Hub solution. A VaaS solution represents an Azure Stack Hub solution with a particular hardware bill of materials (BoM). You can schedule a test to check that your hardware can run Azure Stack Hub.
 
-To check your solution, create the workflow for a test. A VaaS workflow operates within the context of a VaaS solution. It represents a set of test suites that exercise the functionality of an Azure Stack deployment on your hardware. Add your solution's environmental parameters and select one or more tests to run on your solution.
+To check your solution, create the workflow for a test. A VaaS workflow operates within the context of a VaaS solution. It represents a set of test suites that exercise the functionality of an Azure Stack Hub deployment on your hardware. Add your solution's environmental parameters and select one or more tests to run on your solution.
 
 While the Test Pass workflow can be used to run any test provided by VaaS, including tests from the validation workflows, results from the Test Pass workflow are not considered *official*. For information about official validation workflows, see [Workflows](azure-stack-vaas-key-concepts.md#workflows).
 

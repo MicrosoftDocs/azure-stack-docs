@@ -1,6 +1,6 @@
 ---
-title: Troubleshoot Azure Stack Validation as a Service 
-description: Troubleshoot Validation as a Service for Azure Stack.
+title: Troubleshoot Azure Stack Hub Validation as a Service 
+description: Troubleshoot Validation as a Service for Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article

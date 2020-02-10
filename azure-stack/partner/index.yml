@@ -3,7 +3,7 @@ documentType: LandingData
 title: Azure Stack Hub partner documentation
 metadata:
   title: Azure Stack Hub partner D\documentation - tutorials, API R\reference
-  description: Learn how to validate your hardware to host Azure Stack. Validation as a Service is a native Azure Service designed for use by solution partners who are co-engineering Azure Stack Hub offerings with Microsoft.
+  description: Learn how to validate your hardware to host Azure Stack Hub. Validation as a Service is a native Azure Service designed for use by solution partners who are co-engineering Azure Stack Hub offerings with Microsoft.
   services: azure-stack
   author: mattbriggs
   manager: femila
@@ -15,7 +15,7 @@ metadata:
   ms.author: mabrigg
   ms.reviewer: johnhas
 abstract:
-  description: You can use Validation as a Service to check your hardware for use with Azure Stack. The service is a native Azure service designed for use by solution partners who are co-engineering Azure Stack Hub offerings with Microsoft.
+  description: You can use Validation as a Service to check your hardware for use with Azure Stack Hub. The service is a native Azure service designed for use by solution partners who are co-engineering Azure Stack Hub offerings with Microsoft.
 sections:
 - title: 5-Minute Quickstart
   items: 
