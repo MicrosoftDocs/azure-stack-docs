@@ -85,11 +85,11 @@ During upgrade, there is a call to check database existence using the master con
 
 Take one of the following actions and click retry within the installer.
 
-    1. Copy the appservice_hostingAdmin login from the now secondary sql node;
+- Copy the appservice_hostingAdmin login from the now secondary sql node;
+ 
+**OR**
     
-    OR
-    
-    1. Failover the SQL Cluster to the previous active node.
+- Failover the SQL Cluster to the previous active node.
 
 ### Post-deployment steps
 
@@ -203,7 +203,7 @@ Due to a regression in this release, both App Service databases (appservice_host
         GO
     ```
 
-**Validate**
+    **Validate**
 
 1. Check if SQL Server has containment enabled.
 
@@ -221,7 +221,7 @@ Due to a regression in this release, both App Service databases (appservice_host
 
   New workers are unable to acquire the required database connection string.  To remedy this situation, connect to one of your controller instances, for example CN0-VM and run the following PowerShell script:
 
-      ```powershell
+        ```powershell
         [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.Web.Hosting") 
     
         $siteManager = New-Object Microsoft.Web.Hosting.SiteManager 
@@ -249,8 +249,7 @@ Due to a regression in this release, both App Service databases (appservice_host
                 $command.ExecuteNonQuery() 
     
                 $conn.Close() 
-    
-                 
+                     
     
                 $conn.Open() 
     
@@ -261,14 +260,11 @@ Due to a regression in this release, both App Service databases (appservice_host
                 $command.ExecuteNonQuery() 
     
                 $conn.Close() 
-    
-                 
+                     
     
                 $builder.Password = $dbUserPassword 
     
                 $builder["User ID"] = $dbUserName 
-    
-                 
     
                 $siteManager.ConnectionContexts.Add($dbUserName, $builder.ToString()) 
     
@@ -277,7 +273,7 @@ Due to a regression in this release, both App Service databases (appservice_host
         } 
     
         $siteManager.CommitChanges() 
-      ```
+        ```
 
 ### Known issues for Cloud Admins operating Azure App Service on Azure Stack
 
