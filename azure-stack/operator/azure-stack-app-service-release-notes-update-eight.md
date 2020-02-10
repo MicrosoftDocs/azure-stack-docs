@@ -81,7 +81,7 @@ As of this update **TLS 1.2** will be enforced for all applications.
 
 - Upgrade will fail if SQL Server Always On Cluster has failed over to secondary node
 
-During upgrade there is a call to check database existence using the master connection string which will fail because the login was on the previous master node.
+During upgrade, there is a call to check database existence using the master connection string that will fail because the login was on the previous master node.
 
 Take one of the following actions and click retry within the installer.
 
@@ -219,7 +219,7 @@ Due to a regression in this release, both App Service databases (appservice_host
 
 - Unable to scale out workers
 
-  New workers are unable to acquire the required database connection string.  To remedy this situation please connect to one of your controller instances, for example CN0-VM and run the following PowerShell script:
+  New workers are unable to acquire the required database connection string.  To remedy this situation, connect to one of your controller instances, for example CN0-VM and run the following PowerShell script:
 
       ```powershell
         [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.Web.Hosting") 
