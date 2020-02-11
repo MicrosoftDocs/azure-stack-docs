@@ -16,7 +16,7 @@ ROBOTS: NOINDEX
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-The Azure Stack Hub OEM extension package is the mechanism by which OEM-specific content is added to Azure Stack Hub infrastructure. The content is used in deployment as well as operational processes like update, expansion, and field replacement.
+The Azure Stack Hub OEM extension package is the mechanism by which OEM-specific content is added to Azure Stack Hub infrastructure. The content is used in deployment and operational processes like update, expansion, and field replacement.
 
 ## Creating the package
 
