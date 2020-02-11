@@ -439,17 +439,17 @@
     - name: Help & Support portal 
       items:
       - name: Overview      
-        href: azure-stack-help-and-support-overview.md
+        href: azure-stack-help-and-support-overview-tzl.md
       - name: Find your Cloud ID
         href: azure-stack-find-cloud-id.md  
       - name: Diagnostic log collection
         items:
         - name: Overview 
-          href: azure-stack-diagnostic-log-collection-overview.md
+          href: azure-stack-diagnostic-log-collection-overview-tzl.md
         - name: Configure proactive collection
-          href: azure-stack-configure-automatic-diagnostic-log-collection.md
+          href: azure-stack-configure-automatic-diagnostic-log-collection-tzl.md
         - name: Send logs now
-          href: azure-stack-configure-on-demand-diagnostic-log-collection.md
+          href: azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md
     - name: Validation for Azure Stack Hub  
       href: azure-stack-diagnostic-test.md
     - name: Troubleshooting
