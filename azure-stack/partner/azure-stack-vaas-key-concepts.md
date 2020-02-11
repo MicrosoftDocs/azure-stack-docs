@@ -1,16 +1,13 @@
 ---
-title: Azure Stack Hub Validation as a Service key concepts 
-description: Describes key concepts in Azure Stack Hub Validation as a Service.
+title: Validation as a service key concepts
+titleSuffix: Azure Stack Hub
+description: Learn the key concepts of Azure Stack Hub validation as a service.
 author: mattbriggs
-
 ms.topic: article
 ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019
-
-
-
 ROBOTS: NOINDEX
 
 ---
