@@ -12,14 +12,14 @@ ms.lastreviewed: 01/16/2020
 ---
 # On-demand log collection
 
-Azure Stack Hub operators can use **Help and Support** in the administrator portal to send diagnostics logs to Microsoft before requesting support. Using **Help and Support** is recommended over PowerShell because it's simpler. But if the portal is unavailable, operators can collect logs through the privileged endpoint (PEP).  
+Azure Stack operators can send diagnostics logs to Microsoft, before requesting support, by using **Help and Support** or PowerShell. Using **Help and Support** is recommended over PowerShell because it's simpler. But if the portal is unavailable, operators can then use the privileged endpoint (PEP).
 
 This topic covers both ways of collecting diagnostic logs on demand.
 
 >[!Note]
->As an alternative to collecting logs on demand, you can streamline the troubleshooting process by [proactively collecting diagnostic logs](azure-stack-configure-automatic-diagnostic-log-collection.md). If system health conditions need to be investigated, the logs are uploaded automatically for analysis by CSS. 
+>As an alternative to collecting logs on demand, you can streamline the troubleshooting process by [proactively collecting diagnostic logs](azure-stack-configure-automatic-diagnostic-log-collection.md). If system health conditions need to be investigated, the logs are uploaded automatically for analysis before opening a case with CSS. 
 
-## Use Help and Support to collect diagnostic logs on demand
+## Send logs now
 
 Specify the start time and end time for log collection and click **Collect and Upload**. 
 
