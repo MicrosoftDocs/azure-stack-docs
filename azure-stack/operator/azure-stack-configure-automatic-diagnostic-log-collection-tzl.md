@@ -21,13 +21,15 @@ Follow these steps to configure proactive log collection. Automatic log collecti
 
 1. Sign in to the Azure Stack Hub administrator portal.
 1. Open **Help and support Overview**.
-1. Click **Settings**.
+1. If the banner appears, click **Enable proactive log collection**. 
 
    ![Screenshot shows where to enable log collection in Help and support](media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png)
 
-1. Set **Proactive log collection** to **Enabled** and **Save**.
 
-   ![Screenshot shows blob SAS URL](media/azure-stack-help-and-support/enable-proactive-logging.png)
+   Or you can click **Settings** and set **Proactive log collection** to **Enable** and click **Save**.
+
+   ![Screenshot shows where to enable log collection in Help and support](media/azure-stack-help-and-support/settings-enable-automatic-log-collection.png)
+
 
 ## View log collection
 
@@ -45,7 +47,7 @@ The history of logs collected from Azure Stack Hub appears on the **Log collecti
 
 ## Proactive diagnostic log collection alerts 
 
-If enabled, proactive diagnostic log collection occurs only when necessary. Only the alerts in the following table trigger collection. 
+If enabled, proactive log collection uploads logs only when one of the following events is raised. 
 
 For example, **Update failed** is an alert that triggers proactive diagnostic log collection. If it is enabled, diagnostic logs will be proactively captured during an update failure to help CSS troubleshoot the problem. The diagnostic logs are only collected when the alert for **Update failed** is raised. 
 
