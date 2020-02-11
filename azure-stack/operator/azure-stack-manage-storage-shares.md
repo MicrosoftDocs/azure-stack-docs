@@ -42,7 +42,7 @@ Because the storage service shares are for the exclusive use of storage services
 
 Shares on volumes hold tenant data. Tenant data includes page blobs, block blobs, append blobs, tables, queues, databases, and related metadata stores. Because the storage objects (blobs, and so on) are individually contained within a single share, the maximum size of each object can't exceed the size of a share. The maximum size of a new object depends on the capacity that remains in a share as unused space when the new object is created.
 
-When a share is low on free space and actions to [reclaim](#reclaim-capacity) space aren't successful or available, Azure Stack Hub cloud operators can migrate the blob containers from one share to another.
+When a share is low on free space and actions to [reclaim](#reclaim-capacity) space aren't successful or they're unavailable, Azure Stack Hub cloud operators can migrate the blob containers from one share to another.
 
 For information about how tenant users work with blob storage in Azure Stack Hub, see [Azure Stack Hub Storage services](/azure-stack/user/azure-stack-storage-overview).
 
@@ -56,7 +56,7 @@ Containers aren't limited to a single share. When the combined blob data in a co
 When 80 percent (and then 90 percent) of the available space in a volume is used, the system raises alerts in the Azure Stack Hub administrator portal. Cloud operators should review available storage capacity and plan to rebalance the content. The storage service stops working when a disk is 100 percent used and no additional alerts are raised.
 
 ### Disks
-Virtual machine (VM) disks are added to containers by tenants and include an operating system disk. VMs can also have one or more data disks. Both types of disks are stored as page blobs. The guidance to tenants is to place each disk into a separate container to improve the performance of the VM.
+Virtual machine (VM) disks are added to containers by tenants, and they include an operating system disk. VMs can also have one or more data disks. Both types of disks are stored as page blobs. The guidance to tenants is to place each disk into a separate container to improve the performance of the VM.
 
 - Each container that holds a disk, or page blob, from a VM is considered an attached container to the VM that owns the disk.
 - A container that doesn't hold any disks from a VM is considered a free container.
