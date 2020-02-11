@@ -1,25 +1,21 @@
 ---
-title: Azure Stack Hub Validation Best Practices. 
-description: This article discusses best practices for Validation as a Service.
+title: Azure Stack validation best practices
+description: Learn the best practices for validation as a service.
 author: mattbriggs
-
 ms.topic: article
 ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019
-
-
-
 ROBOTS: NOINDEX
 
 ---
 
-# Best practices for Validation as a Service
+# Azure Stack validation best practices
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-This article covers best practices for managing resources in Validation as a Service (VaaS). For an overview of VaaS resources, see [Validation as a Service key concepts](azure-stack-vaas-key-concepts.md).
+This article covers best practices for managing resources in Validation as a service (VaaS). For an overview of VaaS resources, see [Validation as a Service key concepts](azure-stack-vaas-key-concepts.md).
 
 ## Solution management
 
@@ -33,7 +29,7 @@ My Solution XYZ |  All Flash | My Switch X01 | MySolutionXYZ_AllFlash_MySwitchX0
 
 ### When to create a new VaaS solution
 
-Use the same VaaS solution when running workflows against the same hardware SKU. A new VaaS solution should be created only when there is a change to the hardware SKU.
+Use the same VaaS solution when running workflows against the same hardware SKU. A new VaaS solution should be created only when there's a change to the hardware SKU.
 
 ## Workflow management
 
