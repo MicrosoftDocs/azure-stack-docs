@@ -1,5 +1,5 @@
 ---
-title: Interactive feature verification testing  
+title: Interactive feature verification testing
 titleSuffix: Azure Stack Hub
 description: Learn how to create interactive feature verification tests for Azure Stack Hub with validation as a service.
 author: mattbriggs
@@ -35,7 +35,7 @@ A test for disk replacement is a common scenario. In this example, the test has 
 
 ## Create a new test pass
 
-If you don't have an existing test pass available, please follow the directions for [scheduling a test](azure-stack-vaas-schedule-test-pass.md).
+If you don't have an existing test pass available, follow the directions for [scheduling a test](azure-stack-vaas-schedule-test-pass.md).
 
 ## Schedule the test
 
@@ -50,7 +50,7 @@ If you don't have an existing test pass available, please follow the directions 
 
 3. Select the appropriate test execution agent/DVM to launch the test on.
 
-    ![Select a test execution agent—Interavtive testing in Azure Stack Hub](media/azure-stack-vaas-interactive-feature-verification/image5.png)
+    ![Select a test execution agent—Interactive testing in Azure Stack Hub](media/azure-stack-vaas-interactive-feature-verification/image5.png)
 
 4. Select **Submit** to start the test.
 
@@ -85,7 +85,7 @@ If you don't have an existing test pass available, please follow the directions 
 
 11. On successful completion of the manual scenario (Disk replacement), select **Submit**.
 
-    ![Submit the Drive Identifcation Test—Interactive testing in Azure Stack Hub](media/azure-stack-vaas-interactive-feature-verification/image14.png)
+    ![Submit the Drive Identification Test—Interactive testing in Azure Stack Hub](media/azure-stack-vaas-interactive-feature-verification/image14.png)
 
     > [!Important]  
     > If you close the window, the test will stop before it's done.
