@@ -72,7 +72,7 @@ A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on A
 
 ### Changes
 
-The administrator portal now indicates if an operation is in progress with an icon next to the Azure Stack region. When hovering over the icon, it displays the name of the operation. This enables you to identify running system background operations; for example, a backup job or a storage expansion which can run for multiple hours.
+- The administrator portal now indicates if an operation is in progress with an icon next to the Azure Stack region. When hovering over the icon, it displays the name of the operation. This enables you to identify running system background operations; for example, a backup job or a storage expansion which can run for multiple hours.
 
 ### Fixes
 
@@ -80,9 +80,9 @@ The administrator portal now indicates if an operation is in progress with an ic
 
 <!-- Fixed an issue where adding more than one public IP on the same NIC on a Virtual Machine resulted in internet connectivity issues. Now, a NIC with two public IPs should work as expected.[This fix actually didn't go in 1910 due to build issues, commenting out until next build (2002) ] -->
 
-Fixed an issue that prevented alerts for disconnected network adapters to be raised.
-Fixed an issue that caused the system to raise an alert indicating that the Azure AD home directory needs to be configured.
-Fixed an issue that prevented an alert indicating that the Azure AD home directory must be configured to not automatically close.
+- Fixed an issue that prevented alerts for disconnected network adapters to be raised.
+- Fixed an issue that caused the system to raise an alert indicating that the Azure AD home directory needs to be configured.
+- Fixed an issue that prevented an alert indicating that the Azure AD home directory must be configured to not automatically close.
 
 ## Security updates
 
