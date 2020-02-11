@@ -4,10 +4,10 @@ description: Explains diagnostic log collection in Azure Stack Hub Help + Suppor
 author: justinha
 
 ms.topic: article
-ms.date: 02/11/2020
+ms.date: 02/20/2020
 ms.author: justinha
 ms.reviewer: shisab
-ms.lastreviewed: 02/11/2020
+ms.lastreviewed: 02/20/2020
 
 ---
 # Overview of Azure Stack Hub diagnostic log collection 
@@ -27,7 +27,7 @@ Diagnostic log collection feature offers two options to send logs. The following
 
 | Option | How is your data handled? |
 |--------|---------------------------|
-|[Proactive log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md) streamlines and simplifies diagnostic log collection so customers can send logs to Microsoft before opening a support case. Diagnostic logs are proactively uploaded from Azure Stack Hub for analysis. These logs are only collected when a [system health alert](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md#automatic-diagnostic-log-collection-alerts) is raised and are only accessed by the CSS in the context of a support case.<br>You agree to periodic automatic log collections by Microsoft based only on Azure Stack Hub system health alerts. You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft. | The data will be used only for the purpose of troubleshooting system health alerts and will not be used for marketing, advertising, or any other commercial purposes without your consent. The data can be retained for up to 90 days and any data Microsoft collects will be handled in accordance with our [standard privacy practices](https://privacy.microsoft.com/).<br> 
+|[Proactive log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md) streamlines and simplifies diagnostic log collection so customers can send logs to Microsoft before opening a support case. Diagnostic logs are proactively uploaded from Azure Stack Hub for analysis. These logs are only collected when a [system health alert](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md#proactive-diagnostic-log-collection-alerts) is raised and are only accessed by the CSS in the context of a support case.<br>You agree to periodic automatic log collections by Microsoft based only on Azure Stack Hub system health alerts. You also acknowledge and consent to the upload and retention of those logs in an Azure storage account managed and controlled by Microsoft. | The data will be used only for the purpose of troubleshooting system health alerts and will not be used for marketing, advertising, or any other commercial purposes without your consent. The data can be retained for up to 90 days and any data Microsoft collects will be handled in accordance with our [standard privacy practices](https://privacy.microsoft.com/).<br> 
 Any data previously collected with your consent will not be affected by the revocation of your permission.<br>
 Logs collected using Proactive log collection are uploaded to an Azure storage account managed and controlled by Microsoft. These logs may be accessed by Microsoft in the context of a support case and to improve the health of Azure Stack Hub.<br> |
 |[Send logs now](azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md) is a manual option where diagnostic logs are uploaded from Azure Stack Hub only when you (as the customer) initiate the collection, usually before opening a support case. <br>
