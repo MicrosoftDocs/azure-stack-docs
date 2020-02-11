@@ -113,7 +113,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 2002 release of Azure Stack Hub must be applied on the 1910 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.16.93](https://support.microsoft.com/help/4537833)
+- [Azure Stack Hub hotfix 1.1910.17.95](https://support.microsoft.com/help/4537833)
 
 ### After successfully applying the 2002 update
 
