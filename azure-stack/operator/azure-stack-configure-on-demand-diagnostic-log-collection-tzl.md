@@ -105,7 +105,7 @@ if ($session) {
   Get-AzureStackLogs -FilterByResourceProvider IotHub
   ```
  
-  To collect logs for Event Hub:
+  To collect logs for Event Hubs:
 
   ```powershell
   Get-AzureStackLogs -FilterByResourceProvider eventhub
