@@ -4,10 +4,10 @@ description: Explains diagnostic log collection in Azure Stack Hub Help + Suppor
 author: justinha
 
 ms.topic: article
-ms.date: 12/26/2019
+ms.date: 02/11/2020
 ms.author: justinha
 ms.reviewer: shisab
-ms.lastreviewed: 12/26/2019
+ms.lastreviewed: 02/11/2020
 
 ---
 # Overview of Azure Stack Hub diagnostic log collection 
