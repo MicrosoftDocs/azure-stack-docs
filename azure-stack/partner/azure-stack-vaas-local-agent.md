@@ -1,6 +1,6 @@
 ---
 title: Deploy the local agent 
-description: Deploy the local agent for Azure Stack Validation as a Service.
+description: Deploy the local agent for Azure Stack Hub Validation as a Service.
 author: mattbriggs
 
 ms.topic: quickstart
@@ -32,13 +32,13 @@ To deploy the local agent:
 
 ## Download and start the local agent
 
-Download the agent to a machine that meets the prerequisites in your datacenter and has access to all the Azure Stack endpoints. This machine should not be part of the Azure Stack system or hosted in the Azure Stack cloud.
+Download the agent to a machine that meets the prerequisites in your datacenter and has access to all the Azure Stack Hub endpoints. This machine should not be part of the Azure Stack Hub system or hosted in the Azure Stack Hub cloud.
 
 ### Machine prerequisites
 
 Check that your machine meets the following criteria:
 
-- Access to all Azure Stack endpoints
+- Access to all Azure Stack Hub endpoints
 - .NET 4.6 and PowerShell 5.0 installed
 - At least 8-GB RAM
 - Minimum 8 core processors
@@ -48,7 +48,7 @@ Check that your machine meets the following criteria:
 ### Download and install the local agent
 
 1. Open Windows PowerShell in an elevated prompt on the machine you will use to run the tests.
-2. Run the following command to download and install the local agent dependencies and copy the public image repository (PIR) images (OS VHD) to your Azure Stack environment.
+2. Run the following command to download and install the local agent dependencies and copy the public image repository (PIR) images (OS VHD) to your Azure Stack Hub environment.
 
     ```powershell
     # Review and update the following five parameters
@@ -93,7 +93,7 @@ Check that your machine meets the following criteria:
 
 ## Perform sanity checks before starting the tests
 
-The tests run remote operations. The machine that runs the tests must have access to the Azure Stack endpoints, otherwise the tests will not work. If you are using the VaaS local agent, use the machine where the agent will run. You can check that your machine has access to the Azure Stack endpoints by running the following checks:
+The tests run remote operations. The machine that runs the tests must have access to the Azure Stack Hub endpoints, otherwise the tests will not work. If you are using the VaaS local agent, use the machine where the agent will run. You can check that your machine has access to the Azure Stack Hub endpoints by running the following checks:
 
 1. Check that the Base URI can be reached. Open a CMD prompt or bash shell, and run the following command, replacing `<EXTERNALFQDN>` with the External FQDN of your environment:
 
@@ -105,7 +105,7 @@ The tests run remote operations. The machine that runs the tests must have acces
 
 3. Sign in using the Azure AD service administrator name and password values provided when creating the test pass.
 
-4. Check the system's health by running the **Test-AzureStack** PowerShell cmdlet as described in [Run a validation test for Azure Stack](../operator/azure-stack-diagnostic-test.md). Fix any warnings and errors before launching any tests.
+4. Check the system's health by running the **Test-AzureStack** PowerShell cmdlet as described in [Run a validation test for Azure Stack Hub](../operator/azure-stack-diagnostic-test.md). Fix any warnings and errors before launching any tests.
 
 ## Run the local agent
 

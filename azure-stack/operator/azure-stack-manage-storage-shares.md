@@ -9,7 +9,7 @@ ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/19/2019
 
-# Intent: As a cloud operator, I want to understand where to find information about the operation status of storage resources and resolve issues in order to maintain continuity of service for my the users that I support.
+# Intent: As a cloud operator, I want to understand where to find information about the operation status of storage resources and resolve issues to maintain continuity of service for the users that I support.
 
 # Keywords: Azure Stack Hub capacity infrastructure, troubleshoot storage for Azure Stack Hub
 
@@ -17,17 +17,17 @@ ms.lastreviewed: 03/19/2019
 
 # Manage storage capacity for Azure Stack Hub
 
-This article is intended to help the Azure Stack Hub cloud operators monitor and manage the storage capacity of their Azure Stack Hub deployment. The Azure Stack Hub storage infrastructure allocates a subset of the total storage capacity of the Azure Stack Hub deployment to be used for *storage services*. Storage services store a tenant's data in shares on volumes that correspond to the nodes of the deployment.
+This article helps Azure Stack Hub cloud operators monitor and manage the storage capacity of their Azure Stack Hub deployment. The Azure Stack Hub storage infrastructure allocates a subset of the total storage capacity of the Azure Stack Hub deployment as *storage services*. Storage services store a tenant's data in shares on volumes that correspond to the nodes of the deployment.
 
-As a cloud operator, you have a limited amount of storage to work with. The amount of storage is defined by the solution you implement. Your solution is provided by your OEM vendor when you use a multinode solution, or by the hardware on which you install the Azure Stack Development Kit (ASDK).
+As a cloud operator, you have a limited amount of storage to work with. The amount of storage is defined by the solution you implement. The solution is provided by your OEM vendor when you use a multinode solution, or it's provided by the hardware on which you install the Azure Stack Development Kit (ASDK).
 
 Because Azure Stack Hub doesn't support expansion of storage capacity, it's important to [monitor](#monitor-shares) the available storage to ensure that efficient operations are maintained.
 
 When the remaining free capacity of a share becomes limited, plan to [manage the available space](#manage-available-space) to prevent the shares from running out of capacity.
 
 Your options for managing capacity include:
-- Reclaiming capacity
-- Migrating a container
+- Reclaiming capacity.
+- Migrating a container.
 
 When a share is 100 percent utilized, the storage service no longer functions for that share. To get assistance in restoring operations for the share, contact Microsoft support.
 
@@ -35,7 +35,7 @@ When a share is 100 percent utilized, the storage service no longer functions fo
 ### Volumes and shares
 The *storage service* partitions the available storage into separate, equal volumes that are allocated to hold tenant data. The number of volumes is equal to the number of nodes in the Azure Stack Hub deployment:
 
-- On a four-node deployment, there are four volumes. Each volume has a single share. On a multinode deployment, the number of shares isn't reduced if a node is removed or it malfunctions.
+- In a four-node deployment, there are four volumes. Each volume has a single share. In a multinode deployment, the number of shares isn't reduced if a node is removed or if it malfunctions.
 - If you use the ASDK, there's a single volume with a single share.
 
 Because the storage service shares are for the exclusive use of storage services, you must not directly modify, add, or remove any files on the shares. Only storage services should work on the files stored in these volumes.
@@ -44,8 +44,7 @@ Shares on volumes hold tenant data. Tenant data includes page blobs, block blobs
 
 When a share is low on free space and actions to [reclaim](#reclaim-capacity) space aren't successful or available, Azure Stack Hub cloud operators can migrate the blob containers from one share to another.
 
-For information about how tenant users work with Azure Blob storage in Azure Stack Hub, see [Azure Stack Hub Storage services](/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services).
-
+For information about how tenant users work with blob storage in Azure Stack Hub, see [Azure Stack Hub Storage services](/azure-stack/user/azure-stack-storage-overview).
 
 ### Containers
 Tenant users create containers that are then used to store blob data. Although users decide in which container to place blobs, the storage service uses an algorithm to determine on which volume to put the container. The algorithm typically chooses the volume with the most available space.  
