@@ -1,25 +1,21 @@
 ---
-title: Deploy the local agent 
-description: Deploy the local agent for Azure Stack Hub Validation as a Service.
+title: Deploy the local agent
+titleSuffix: Azure Stack Hub
+description: Learn how to deploy the local agent for Azure Stack Hub validation as a service.
 author: mattbriggs
-
 ms.topic: quickstart
 ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
-
-
-
 ROBOTS: NOINDEX
-
 ---
 
 # Deploy the local agent
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Learn how to use the Validation as a Service (VaaS) local agent to run validation tests. The local agent must be deployed before running validation tests.
+Learn how to use the validation as a service (VaaS) local agent to run validation tests. The local agent must be deployed before running validation tests.
 
 > [!Note]  
 > Make sure that the machine on which the local agent is running doesn't lose outbound access to the internet. This machine should be accessible only to users who are authorized to use VaaS on behalf of your tenant.
