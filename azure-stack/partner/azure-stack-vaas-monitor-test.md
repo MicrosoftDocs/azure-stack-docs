@@ -1,16 +1,13 @@
 ---
-title: Monitor and manage tests in the Azure Stack Hub VaaS portal 
-description: Monitor and manage tests in the Azure Stack Hub VaaS portal.
+title: Monitor and manage tests in VaaS portal
+titleSuffix: Azure Stack Hub
+description: Learn how to monitor and manage tests in the Azure Stack Hub VaaS portal.
 author: mattbriggs
-
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
-
-
-
 ROBOTS: NOINDEX
 
 ---
