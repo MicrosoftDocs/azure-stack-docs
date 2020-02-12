@@ -74,7 +74,7 @@ Check that your machine meets the following criteria:
     ```
 
 > [!Note]  
-> `Install-VaaSPrerequisites` cmdlet downloads large VM image files. If you're experiencing slow network speed, you can download files to your local file server and manually add VM images to your test environemnt. See [Handle slow network connectivity](azure-stack-vaas-troubleshoot.md#handle-slow-network-connectivity) for more information.
+> `Install-VaaSPrerequisites` cmdlet downloads large VM image files. If you're experiencing slow network speed, you can download files to your local file server and manually add VM images to your test environemnt. For more information, see [Handle slow network connectivity](azure-stack-vaas-troubleshoot.md#handle-slow-network-connectivity).
 
 **Parameters**
 
@@ -82,7 +82,7 @@ Check that your machine meets the following criteria:
 | --- | --- |
 | `AadServiceAdminUser` | The global admin user for your Azure AD tenant. For example: vaasadmin@contoso.onmicrosoft.com. |
 | `AadServiceAdminPassword` | The password for the global admin user. |
-| `CloudAdminUserName` | The cloud admin user who can access and run permitted commands within the privileged endpoint. For example: AzusreStack\CloudAdmin. See [Workflow common parameters for VaaS](azure-stack-vaas-parameters.md) for more information. |
+| `CloudAdminUserName` | The cloud admin user who can access and run permitted commands within the privileged endpoint. For example: AzusreStack\CloudAdmin. For more information, see [Workflow common parameters for VaaS](azure-stack-vaas-parameters.md). |
 | `CloudAdminPassword` | The password for cloud admin account.|
 
 ![Download prerequisites for local agent](media/installing-prereqs.png)
