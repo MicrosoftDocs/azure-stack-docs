@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/10/2020
+ms.date: 02/12/2020
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 01/17/2020
@@ -70,7 +70,7 @@ A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on A
 - Improvements to the Azure Stack Hub readiness checker tool to validate AD Graph integration.
 - The offline syndication tool has been updated with reliability improvements. The tool is no longer on GitHub, and has been moved to the PowerShell Gallery. For more information, see [Download Marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).
 - Improved the entire experience for [Proactive diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md). The new experience streamlines and simplifies diagnostic log collection by removing the SAS URI option. Customers can send logs to Microsoft before opening a support case. 
-- The download progress of an Azure Stack update package is now visible in the update blade after an update is initiated. This only applies to connected Azure Stack Hub systems who choose to [prepare update packages via automatic download](https://docs.microsoft.com/azure-stack/operator/azure-stack-update-prepare-package#automatic-download-and-preparation-for-update-packages).
+- The download progress of an Azure Stack update package is now visible in the update blade after an update is initiated. This only applies to connected Azure Stack Hub systems that choose to [prepare update packages via automatic download](azure-stack-update-prepare-package.md#automatic-download-and-preparation-for-update-packages).
 
 ### Changes
 
@@ -86,11 +86,9 @@ A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on A
 - Fixed an issue that caused the system to raise an alert indicating that the Azure AD home directory needs to be configured.
 - Fixed an issue that prevented an alert indicating that the Azure AD home directory must be configured to not automatically close.
 - Fixed an issue that caused updates to fail during the update preparation phase as a result of internal failures of the update resource provider.
-- Fixed an issue causing Add-On RP operations to fail after performing Azure Stack Hub secret rotation.
-- Fixed an issue that was a common cause of Azure Stack updates failures due to memory pressure on the ERCS role.
-- Fixed a bug in the update blade in which an update's status showed as "Installing" instead of "Preparing" during the preparation phase of an Azure Stack Hub update.
-
-
+- Fixed an issue causing add-on resource provider operations to fail after performing Azure Stack Hub secret rotation.
+- Fixed an issue that was a common cause of Azure Stack update failures due to memory pressure on the ERCS role.
+- Fixed a bug in the update blade in which the update status showed as **Installing** instead of **Preparing** during the preparation phase of an Azure Stack Hub update.
 
 ## Security updates
 
