@@ -69,8 +69,7 @@ A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on A
 
 - Improvements to the Azure Stack Hub readiness checker tool to validate AD Graph integration.
 - The offline syndication tool has been updated with reliability improvements. The tool is no longer on GitHub, and has been moved to the PowerShell Gallery. For more information, see [Download Marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).
-- Improvements to [Proactive diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md) (formerly called Automatic diagnostic log collection).
-
+- Improved the entire experience for [Proactive diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md). The new experience streamlines and simplifies diagnostic log collection by removing the SAS URI option. Customers can send logs to Microsoft before opening a support case. 
 
 ### Changes
 
@@ -145,8 +144,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 ### What's new
 
 <!-- What's new, also net new experiences and features. -->
-
-- [Proactive diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md) streamlines the process and reduces time in support calls. Diagnostic logs are proactively uploaded from Azure Stack Hub for Microsoft CSS analysis with no configuration necessary. These logs are only collected when a [system health alert](azure-stack-configure-automatic-diagnostic-log-collection.md#automatic-diagnostic-log-collection-alerts) is raised and are only accessed by the CSS in the context of a support case. 
 
 - The administrator portal now shows the privileged endpoint IP addresses in the region properties menu for easier discovery. In addition, it shows the current configured time server and DNS forwarders. For more information, see [Use the privileged endpoint in Azure Stack Hub](azure-stack-privileged-endpoint.md).
 
