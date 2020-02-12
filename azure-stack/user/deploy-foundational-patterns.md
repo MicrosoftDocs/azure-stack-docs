@@ -17,7 +17,7 @@ ms.lastreviewed: 11/06/2019
 
 You can use foundational patterns and solution examples in your app development. Develop hybrid applications with Azure and Azure Stack and bring your the apps created in the cloud to your local datacenter.
 
-Each of these patterns contains guidance, Azure Resource Manager templates, and tutorials. You can use the pattern along with third-party apps to create offerings not yet supported by Azure Stack. For example, operators often deal with the complexities involved in setting up a virtual private network (VPN) to a single Azure Stack Hub instance, much less creating a VPN that spans two or more environments. Operators can come across issues when trying to create a load balancer in front of an Azure Stack Hub to manage workloads. With the following guidance, you can speed up the deployment time for releasing your production ready workloads.
+Each of these patterns contains guidance, Azure Resource Manager templates, and tutorials. You can use these patterns along with third-party apps to create offerings not yet supported by Azure Stack. For example, operators often deal with the complexities involved in setting up a virtual private network (VPN) to a single Azure Stack Hub instance, much less creating a VPN that spans two or more environments. Operators can come across issues when trying to create a load balancer in front of an Azure Stack Hub to manage workloads. With the following guidance, you can speed up the deployment time for releasing your production ready workloads.
 
 ## Networking
 
