@@ -15,23 +15,24 @@ ms.lastreviewed: 11/06/2019
 
 # Deploy foundational patterns overview
 
-Learn how to leverage foundational patterns and solution examples in your app development. Azure and Azure Stack enable development of hybrid applications, built on a suite of intelligent cloud and intelligent edge services.
+Use foundational patterns and solution examples in your app development. You can develop hybrid applications with Azure and Azure Stack bringing apps created in the cloud to your local datacenter.
 
-There is a need for foundational patterns to help guide Azure Stack operators on setting up certain key scenarios for production environments. These foundational patterns are to be prescriptive guidance documents, templates, and tutorials that users can follow using third party applications to solve features that are not yet supported in Azure Stack.  
-
-Azure Stack Hub foundational patterns attempts to resolve real-world customer issues that exist with their deployments. It helps to mitigate that may exist in current Azure Stack Hub functionality that may not be released quiet as yet. For example, operators often deal with the complexities involved in setting up VPN to Azure Stacks, let alone setting it up across two or more environments due to limitations of the product. This can be further seen when trying to create a load balancer in front of an Azure Stack to manage workloads. Tutorials for these scenarios and others currently do not exist. Creating prescriptive guidance for the operators and users of Azure Stack will vastly improve the product experience and decrease the deployment time for getting their device production ready. Azure Stack needs to have a set of articles/playbooks that guide customers in this area. How to documents that include prescriptive guidance on creating specific network implementations. Each scenario will include a summary of a common business problem, the solution implementation using Azure Stack/The Intelligent Cloud, an architectural diagram (a component diagram), step-by-step instructions, and if helpful code collateral in the Azure Code Sample repo including Azure Resource Manager Templates.
-
-Azure Stack needs prescriptive guides for setting up networks, high availability, and disaster recovery scenarios in a connected and a disconnected environment for specific high-level use cases such as:
-
+Each of these patterns contains guidance, Azure Resource Manager templates, and tutorials. You can use the pattern along with third-party apps to create offerings not yet supported by Azure Stack. For example, operators often deal with the complexities involved in setting up a virtual private network (VPN) to a single Azure Stack Hub instance, much less creating a VPN that spans two or more environments. Operators can come across issues when trying to create a load balancer in front of an Azure Stack Hub to manage workloads. With the following guidance, you can speed up the deployment time for releasing your production ready workloads.
 
 ## Networking
 
-The following networking foundational patterns for Azure Stack Hub focus on mitigating the gap that currently exists as VNET peering functionality is not currently available. VNET peering does not currently exist in Azure Stack, however these scripts allow you to deploy two VNETs across resource groups in one azure stack resource group, across subscriptions, and across two Azure Stack Hub instances. This site to site connectivity across VNETS is accomplished through the Remote and Routing Service (RRAS), which allows for Windows VMs to be treated as if they performed like routers. The scripts also encompass bout IPSEC and GRE tunneling for bettering throughput. The topics below not only have step-by-step guidance on how to deploy these scripts, but also perform a walkthrough of how to accomplish the same task using third party NVAs such as Fortinet Fortigate NVA. Lastly, the external load balancer pattern utilizes F5 BIG IP and an ARM template to allow for applications to be managed across two Azure Stack Hub stamps. All of the networking foundational patterns scripts can be deployed on Azure Stack Hub and on public Azure. This topic will address common consideration such as: scale, bandwidth, security, business continuity, etc.
+Use the networking patterns to find instructions on creating virtual network peering with Azure Stack Hub. Virtual network peering allows you to connect two virtual networks so that they appear as a single network. Site-to-site connectivity across virtual networks is accomplished through the Remote and Routing Service (RRAS). RRAS allows for Windows virtual machines (VM) to work as routers. With these scripts, you can deploy two virtual networks across resource groups in one Azure Stack Hub resource group, across subscriptions, and across two Azure Stack Hub instances. You can deploy the scripts on Azure Stack Hub and on public Azure. 
 
-|  VNet peering  |  VPN  |  Load balancer  |
+Each article addresses common consideration such as: 
+- Scale
+- Bandwidth
+- Security
+- Business continuity
+
+|  Virtual network peering  |  VPN  |  Load balancer  |
 | --- | --- | --- |
-| ![VNet peering with VMs](media/deploy-foundational-patterns/icon-networking-61-virtual-networks.svg)<br>[VNet peering with VMs](azure-stack-network-howto-vnet-peering.md) | ![Setup VPN to on-prem](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Setup VPN to on-prem](azure-stack-network-howto-vnet-to-onprem.md) | ![F5 load balancer](media/deploy-foundational-patterns/icon-networking-62-load-balancers.svg)<br>[F5 load balancer](network-howto-f5.md) |
-| ![VNet peering with FortiGate](media/deploy-foundational-patterns/icon-networking-61-virtual-networks.svg)<br>[VNet peering with FortiGate](azure-stack-network-howto-vnet-to-vnet.md) | ![Virtual Private Network](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[VNET to VNET connection](azure-stack-network-howto-vnet-to-vnet-stacks.md) |  |
+| ![Virtual network peering with VMs](media/deploy-foundational-patterns/icon-networking-61-virtual-networks.svg)<br>[Virtual network peering with VMs](azure-stack-network-howto-vnet-peering.md) | ![Set up VPN to on-prem](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Setup VPN to on-prem](azure-stack-network-howto-vnet-to-onprem.md) | ![F5 load balancer](media/deploy-foundational-patterns/icon-networking-62-load-balancers.svg)<br>[F5 load balancer](network-howto-f5.md) |
+| ![Virtual network peering with FortiGate](media/deploy-foundational-patterns/icon-networking-61-virtual-networks.svg)<br>[Virtual network peering with FortiGate](azure-stack-network-howto-vnet-to-vnet.md) | ![Virtual Private Network](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Virtual network to virtual network connection](azure-stack-network-howto-vnet-to-vnet-stacks.md) |  |
 |  | ![Create a VPN tunnel (GRE)](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Create a VPN tunnel (GRE)](network-howto-vpn-tunnel-gre.md) | |
 |  | ![Set up a multiple site-to-site VPN](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Set up a multiple site-to-site VPN](network-howto-vpn-tunnel.md) | |
 |  | ![Create a VPN tunnel (IPSEC)](media/deploy-foundational-patterns/icon-networking-63-virtual-network-gateways.svg)<br>[Create a VPN tunnel (IPSEC)](network-howto-vpn-tunnel-ipsec.md)| |
@@ -39,15 +40,17 @@ The following networking foundational patterns for Azure Stack Hub focus on miti
 
 ## Storage
 
-The following storage foundational patterns for Azure Stack Hub focus on extending the storage options for your own environment. It also allows users to connect their existing datacenter options with that of Azure Stack Hub. Azure Stack storage is finite. Which brings us to the scenario that we will cover below. How can we connect Azure Stack systems, specifically virtualized workloads running on the Azure Stack, simply and efficiently, to storage systems outside of the Azure Stack, accessible via the network. In the documents below, we will create a Windows VM on Azure Stack Hub to connect to an external iSCSI Target, which will also be running Windows Server 2019. Where appropriate we will enable key features such as MPIO, to optimize performance and connectivity between the VM and external storage.
+Use the storage patterns to increase your storage options with Azure Stack Hub. In Azure Stack Hub storage is finite. Connect to resources in your existing datacenter. Find instructions for creating a Windows VM in Azure Stack Hub to connect to an external iSCSI target. You can learn how to enable key features such as Multipath I/O (MPIO), to optimize performance and connectivity between the VM and external storage.
 
 | iSCSI storage | Extend storage |
 | --- | --- | --- |
-| ![Connect to iSCSI storage](media/deploy-foundational-patterns/icon-storage-87-storage-accounts-(classic).svg)<br>[Connect to iSCSI storage](azure-stack-network-howto-iscsi-storage.md) | ![xtend the datacenter](media/deploy-foundational-patterns/icon-storage-88-recovery-services-vaults.svg)<br>[Extend the datacenter](azure-stack-network-howto-extend-datacenter.md) |
+| ![Connect to iSCSI storage](media/deploy-foundational-patterns/icon-storage-87-storage-accounts-(classic).svg)<br>[Connect to iSCSI storage](azure-stack-network-howto-iscsi-storage.md) | ![Extend the datacenter](media/deploy-foundational-patterns/icon-storage-88-recovery-services-vaults.svg)<br>[Extend the datacenter](azure-stack-network-howto-extend-datacenter.md) |
 
 ## Backup
 
-The following backup and disaster recovery foundational patterns for Azure Stack hub allows users to copy all of the resources in a subscription to Azure or another Azure Stack Hub instance. Users can copy all of the resources in a subscription and replicate them on another environment. Users can then use Commvault live-sync to replicate information stored on the inside of the virtual machines to another environment as well. The scripts available allow you to create a storage account and a backup storage account to send the data to as well. The Azure subscription replicator was designed to be modular. This tool uses a core processor that orchestrates the resource replication. In addition, the tool supports customizable processors that act as templates for copying different types of resources. The scripts as well as the step-by-step guidance can be deployed on Azure Stack Hub and Azure.
+You can use the backup and disaster recovery patterns to copy all the resources in a subscription to Azure or another Azure Stack Hub instance. These patterns look at using Commvault live-sync to replicate information stored on the inside of the VMs to another environment. You can find scripts to create a storage account and a backup storage account to send the data. With the module Azure subscription replicator you can orchestrate resource replication, and you can customize the processor to handle a variety of resources. 
+
+
 
 |  Back up  |  Copy  |
 | --- | --- | --- |
