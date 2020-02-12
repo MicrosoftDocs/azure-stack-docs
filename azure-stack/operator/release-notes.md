@@ -79,17 +79,21 @@ A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on A
 
 - The following administrator APIs have been deprecated:
 
-Microsoft.Storage.Admin                    farms                                                     2015-12-01-preview
-Microsoft.Storage.Admin                    farms/acquisitions                                        2015-12-01-preview
-Microsoft.Storage.Admin                    farms/shares                                              2015-12-01-preview
-Microsoft.Storage.Admin                    farms/storageaccounts                                     2015-12-01-preview
+  | Resource provider       | Resource              | Version            |
+  |-------------------------|-----------------------|--------------------|
+  | Microsoft.Storage.Admin | farms                 | 2015-12-01-preview |
+  | Microsoft.Storage.Admin | farms/acquisitions    | 2015-12-01-preview |
+  | Microsoft.Storage.Admin | farms/shares          | 2015-12-01-preview |
+  | Microsoft.Storage.Admin | farms/storageaccounts | 2015-12-01-preview |
 
 - The following administrator APIs have been replaced by a newer version (2018-09-01):
 
-Microsoft.Backup.Admin                     backupLocation                                            2016-05-01
-Microsoft.Backup.Admin                     backups                                                   2016-05-01
-Microsoft.Backup.Admin                     operations                                                2016-05-01
-
+  | Resource provider      | Resource              | Version    |
+  |------------------------|-----------------------|------------|
+  | Microsoft.Backup.Admin | backupLocation         | 2016-05-01 |
+  | Microsoft.Backup.Admin | backups                | 2016-05-01 |
+  | Microsoft.Backup.Admin | operations             | 2016-05-01 |
+  
 ### Fixes
 
 <!-- Product fixes that came up from customer deployments worth highlighting, especially if there is an SR/ICM associated to it. -->
