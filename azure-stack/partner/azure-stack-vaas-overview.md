@@ -1,30 +1,28 @@
 ---
-title: An overview of Validation as a Service for Azure Stack Hub 
-description: An overview of Azure Stack Hub Validation as a Service.
+title: Validation as a service overview
+titleSuffix: Azure Stack Hub 
+description: An overview of Azure Stack Hub validation as a service.
 author: mattbriggs
-
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
-
 ROBOTS: NOINDEX
-
 ---
 
-# What is Validation as a Service for Azure Stack Hub?
+# Validation as a service for Azure Stack Hub
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Validation as a Service (VaaS) is a native Azure service designed for solution partners who are co-engineering Azure Stack Hub offerings with Microsoft. Solution partners can use the service to check that their solutions meet Microsoft's requirements and work as expected with Azure Stack Hub.
+Validation as a service (VaaS) is a native Azure service designed for solution partners who are co-engineering Azure Stack Hub offerings with Microsoft. Solution partners can use the service to check that their solutions meet Microsoft's requirements and work as expected with Azure Stack Hub.
 
 The primary uses for VaaS are:
 
-- Validating new Azure Stack Hub solutions
-- Validating changes to the Azure Stack Hub software
-- Digitally signing solution partner packages used during deployment
-- Previewing VaaS test collateral
+- Validating new Azure Stack Hub solutions.
+- Validating changes to the Azure Stack Hub software.
+- Digitally signing solution partner packages used during deployment.
+- Previewing VaaS test collateral.
 
 ## Validate a new Azure Stack Hub solution
 
