@@ -44,7 +44,7 @@ Use the storage patterns to increase your storage options with Azure Stack Hub. 
 
 | iSCSI storage | Extend storage |
 | --- | --- | --- |
-| ![Connect to iSCSI storage](media/deploy-foundational-patterns/icon-storage-87-storage-accounts-(classic).svg)<br>[Connect to iSCSI storage](azure-stack-network-howto-iscsi-storage.md) | ![Extend the datacenter](media/deploy-foundational-patterns/icon-storage-88-recovery-services-vaults.svg)<br>[Extend the datacenter](azure-stack-network-howto-extend-datacenter.md) |
+| ![Connect to iSCSI storage](media/deploy-foundational-patterns/icon-storage-87-storage-accounts-classic.svg)<br>[Connect to iSCSI storage](azure-stack-network-howto-iscsi-storage.md) | ![Extend the datacenter](media/deploy-foundational-patterns/icon-storage-88-recovery-services-vaults.svg)<br>[Extend the datacenter](azure-stack-network-howto-extend-datacenter.md) |
 
 ## Backup
 
