@@ -23,7 +23,7 @@ The Azure Stack Hub patch and update process is designed to allow operators to a
 0. **Prerequisites**: Be sure that you have followed the [Update Activity Checklist](release-notes-checklist.md) and have [Configured Automatic Log Collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md).
 1. Follow the remediation steps in the failure alert created when your update failed.
 2. Review the [Common Azure Stack Hub patch and update issues](#common-azure-stack-hub-patch-and-update-issues) and take the recommended actions if your issue is listed.
-3. If you have been unable to resolve your issue with the above steps, create an [Azure Stack Hub support ticket](azure-stack-help-and-support-overview.md). Be sure you have [logs collected](https://docs.microsoft.com/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection) for the timespan that the issue occurred.
+3. If you have been unable to resolve your issue with the above steps, create an [Azure Stack Hub support ticket](azure-stack-help-and-support-overview-tzl.md). Be sure you have [logs collected](https://docs.microsoft.com/azure-stack/operator/azure-stack-configure-on-demand-diagnostic-log-collection) for the timespan that the issue occurred.
 
 ## Common Azure Stack Hub patch and update issues
 
@@ -42,4 +42,4 @@ The Azure Stack Hub patch and update process is designed to allow operators to a
 ## Next steps
 
 - [Update Azure Stack Hub](azure-stack-updates.md)  
-- [Microsoft Azure Stack Hub help and support](azure-stack-help-and-support-overview.md)
+- [Microsoft Azure Stack Hub help and support](azure-stack-help-and-support-overview-tzl.md)
