@@ -62,7 +62,7 @@ Use the steps in this section to deploy the MySQL Server cluster using the [MySQ
 
 3. Select **\+** **Create a resource** > **Compute**, and then **MySQL with Replication**.
 
-   ![Custom template deployment in Azure Stack Hub](media/azure-stack-tutorial-mysqlrp/1.png)
+   ![Custom template deployment in Azure Stack Hub](media/azure-stack-tutorial-mysqlrp/img1.png)
 
 4. Provide basic deployment information on the **Basics** page. Review the default values and change as needed and select **OK**.
 
@@ -76,7 +76,7 @@ Use the steps in this section to deploy the MySQL Server cluster using the [MySQ
    - Select the resource group to use or create a new one.
    - Select the location (default is local for ASDK).
 
-     ![Deployment basics — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/2.png)
+     ![Deployment basics — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/img2.png)
 
 5. On the **Environment Configuration** page, provide the following information and then select **OK**:
 
@@ -84,15 +84,15 @@ Use the steps in this section to deploy the MySQL Server cluster using the [MySQ
    - VM size (default is Standard D1 v2 VMs).
    - Data disk size in GB
 
-     ![Environment configuration — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/3.png)
+     ![Environment configuration — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/img3.png)
 
 6. Review the deployment **Summary**. Optionally, you can download the customized template and parameters and then select **OK**.
 
-   ![Summary — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/4.png)
+   ![Summary — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/img4.png)
 
 7. Select **Create** on the **Buy** page to start the deployment.
 
-   ![Buy page — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/5.png)
+   ![Buy page — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/img5.png)
 
     > [!NOTE]
     > The deployment will take about an hour. Ensure that the deployment has finished and the MySQL cluster has been completely configured before continuing.
@@ -107,13 +107,13 @@ By default, no public access is configured for MySQL into the host VM. For the A
 
 1. In the administrator portal, go to the resource group created when deploying the MySQL cluster and select the network security group (**default-subnet-sg**):
 
-   ![Select network security group in Azure Stack Hub administrator portal](media/azure-stack-tutorial-mysqlrp/6.png)
+   ![Select network security group in Azure Stack Hub administrator portal](media/azure-stack-tutorial-mysqlrp/img6.png)
 
 2. Select **Inbound security rules** and then select **Add**.
 
     Enter **3306** in the **Destination port range** and optionally provide a description in the **Name** and **Description** fields.
 
-   ![open](media/azure-stack-tutorial-mysqlrp/7.png)
+   ![open](media/azure-stack-tutorial-mysqlrp/img7.png)
 
 3. Select **Add** to close the inbound security rule dialog.
 
