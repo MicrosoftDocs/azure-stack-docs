@@ -15,13 +15,12 @@ ms.lastreviewed: 11/06/2019
 
 # Deploy foundational patterns overview
 
-You can use foundational patterns and solution examples in your app development. Develop hybrid applications with Azure and Azure Stack and bring your the apps created in the cloud to your local datacenter.
 
 Each of these patterns contains guidance, Azure Resource Manager templates, and tutorials. You can use these patterns along with third-party apps to create offerings not yet supported by Azure Stack. For example, operators often deal with the complexities involved in setting up a virtual private network (VPN) to a single Azure Stack Hub instance, much less creating a VPN that spans two or more environments. Operators can come across issues when trying to create a load balancer in front of an Azure Stack Hub to manage workloads. With the following guidance, you can speed up the deployment time for releasing your production ready workloads.
 
 ## Networking
 
-Use the networking patterns to find instructions on creating virtual network peering with Azure Stack Hub. Virtual network peering allows you to connect two virtual networks so that they appear as a single network. Site-to-site connectivity across virtual networks is accomplished through the Remote and Routing Service (RRAS). RRAS allows for Windows virtual machines (VM) to work as routers. With these scripts, you can deploy two virtual networks across resource groups in one Azure Stack Hub resource group, across subscriptions, and across two Azure Stack Hub instances. You can deploy the scripts on Azure Stack Hub and on global Azure Azure. 
+Use the networking patterns to find instructions on creating virtual network peering with Azure Stack Hub. Virtual network peering allows you to connect two virtual networks so that they appear as a single network. Site-to-site connectivity across virtual networks is accomplished through the Remote and Routing Service (RRAS). RRAS allows for Windows virtual machines (VM) to work as routers. With these scripts, you can deploy two virtual networks across resource groups in one Azure Stack Hub resource group, across subscriptions, and across two Azure Stack Hub instances. You can deploy the scripts on Azure Stack Hub and on global Azure. 
 
 Each article addresses common consideration such as: 
 - Scale
