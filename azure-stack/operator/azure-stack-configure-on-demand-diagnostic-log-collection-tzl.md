@@ -17,7 +17,7 @@ Azure Stack operators can send diagnostics logs to Microsoft, before requesting 
 This topic covers both ways of collecting diagnostic logs on demand.
 
 >[!Note]
->As an alternative to collecting logs on demand, you can streamline the troubleshooting process by [proactively collecting diagnostic logs](azure-stack-configure-automatic-diagnostic-log-collection.md). If system health conditions need to be investigated, the logs are uploaded automatically for analysis before opening a case with CSS. 
+>As an alternative to collecting logs on demand, you can streamline the troubleshooting process by [proactively collecting diagnostic logs](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md). If system health conditions need to be investigated, the logs are uploaded automatically for analysis before opening a case with CSS. 
 
 ## Send logs now
 
