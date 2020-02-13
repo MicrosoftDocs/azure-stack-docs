@@ -35,7 +35,7 @@ You should only use [the PEP](azure-stack-configure-on-demand-diagnostic-log-col
 
 ## Automatic diagnostic log collection 
 
-When a [specific health alert](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md#automatic-diagnostic-log-collection-alerts) is active, automatic diagnostic log collection starts and proactively uploads diagnostic logs from Azure Stack Hub to a storage blob in Azure, significantly reducing the time required to share diagnostic logs with CSS. Diagnostic logs are only collected when an alert is raised.  
+When a [specific health alert](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md#proactive-diagnostic-log-collection-alerts) is active, automatic diagnostic log collection starts and proactively uploads diagnostic logs from Azure Stack Hub to a storage blob in Azure, significantly reducing the time required to share diagnostic logs with CSS. Diagnostic logs are only collected when an alert is raised.  
 
 For more information about automatic log collection, see [Configure automatic Azure Stack Hub diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md).
 
