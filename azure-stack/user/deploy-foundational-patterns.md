@@ -1,5 +1,5 @@
 ---
-title: Deploy foundational patterns on Azure Stack Hub.
+title: Deploy foundational patterns on Azure Stack Hub
 description: Learn how to Deploy foundational patterns with Azure Stack Hub.
 author: mattbriggs
 
@@ -21,7 +21,7 @@ Each of these patterns contains guidance, Azure Resource Manager templates, and 
 
 ## Networking
 
-Use the networking patterns to find instructions on creating virtual network peering with Azure Stack Hub. Virtual network peering allows you to connect two virtual networks so that they appear as a single network. Site-to-site connectivity across virtual networks is accomplished through the Remote and Routing Service (RRAS). RRAS allows for Windows virtual machines (VM) to work as routers. With these scripts, you can deploy two virtual networks across resource groups in one Azure Stack Hub resource group, across subscriptions, and across two Azure Stack Hub instances. You can deploy the scripts on Azure Stack Hub and on public Azure. 
+Use the networking patterns to find instructions on creating virtual network peering with Azure Stack Hub. Virtual network peering allows you to connect two virtual networks so that they appear as a single network. Site-to-site connectivity across virtual networks is accomplished through the Remote and Routing Service (RRAS). RRAS allows for Windows virtual machines (VM) to work as routers. With these scripts, you can deploy two virtual networks across resource groups in one Azure Stack Hub resource group, across subscriptions, and across two Azure Stack Hub instances. You can deploy the scripts on Azure Stack Hub and on global Azure Azure. 
 
 Each article addresses common consideration such as: 
 - Scale
