@@ -56,13 +56,15 @@ Use the steps in this section to deploy the MySQL Server cluster using the [MySQ
 - Three Linux VMs to host the MySQL cluster
 
 1. 
-   [!INCLUDE [azs-admin-portal](../includes/azs-admin-portal.md)]
+   [!INCLUDE [azs-admin-portal](../includes/azs-user-portal.md)]
 
-2. Select **\+** **Create a resource** > **Compute**, and then **MySQL with Replication**.
+2. If no subscriptions were assigned yet, select **Get a Subscription** from the Dashboard. In the blade, type a name for the subscription, and then select an offer. It is recommended that you keep the MySQL cluster deployment in its own subscription to prevent accidental removal.
+
+3. Select **\+** **Create a resource** > **Compute**, and then **MySQL with Replication**.
 
    ![Custom template deployment in Azure Stack Hub](media/azure-stack-tutorial-mysqlrp/1.png)
 
-3. Provide basic deployment information on the **Basics** page. Review the default values and change as needed and select **OK**.
+4. Provide basic deployment information on the **Basics** page. Review the default values and change as needed and select **OK**.
 
     At a minimum, provide the following info:
 
@@ -74,28 +76,28 @@ Use the steps in this section to deploy the MySQL Server cluster using the [MySQ
    - Select the resource group to use or create a new one.
    - Select the location (default is local for ASDK).
 
-   [![Deployment basics — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/2-sm.PNG)](media/azure-stack-tutorial-mysqlrp/2-lg.PNG#lightbox)
+     ![Deployment basics — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/2.png)
 
-4. On the **Environment Configuration** page, provide the following information and then select **OK**:
+5. On the **Environment Configuration** page, provide the following information and then select **OK**:
 
    - Password or SSH public key to use for secure shell (SSH) authentication. If using a password, it must contain letters, numbers, and **can** contain special characters.
    - VM size (default is Standard D1 v2 VMs).
    - Data disk size in GB
 
-   [![Environment configuration — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/3-sm.PNG)](media/azure-stack-tutorial-mysqlrp/3-lg.PNG#lightbox)
+     ![Environment configuration — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/3.png)
 
-5. Review the deployment **Summary**. Optionally, you can download the customized template and parameters and then select **OK**.
+6. Review the deployment **Summary**. Optionally, you can download the customized template and parameters and then select **OK**.
 
-   [![Summary — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/4-sm.PNG)](media/azure-stack-tutorial-mysqlrp/4-lg.PNG#lightbox)
+   ![Summary — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/4.png)
 
-6. Select **Create** on the **Buy** page to start the deployment.
+7. Select **Create** on the **Buy** page to start the deployment.
 
    ![Buy page — Create MySQL with Replication](media/azure-stack-tutorial-mysqlrp/5.png)
 
     > [!NOTE]
     > The deployment will take about an hour. Ensure that the deployment has finished and the MySQL cluster has been completely configured before continuing.
 
-7. After all deployments have completed successfully, review the resource group items and select the **mysqlip** Public IP address item. Record the public IP address and full FQDN of the public IP for the cluster.
+8. After all deployments have completed successfully, review the resource group items and select the **mysqlip** Public IP address item. Record the public IP address and full FQDN of the public IP for the cluster.
 
     You'll need to provide this IP address to an Azure Stack Hub operator so they can create a MySQL hosting server leveraging this MySQL cluster.
 
