@@ -1,7 +1,7 @@
 ---
-title: Monitor and manage tests in VaaS portal
+title: Manage tests in VaaS portal
 titleSuffix: Azure Stack Hub
-description: Learn how to monitor and manage tests in the Azure Stack Hub VaaS portal.
+description: Learn how to manage tests in the Azure Stack Hub VaaS portal.
 author: mattbriggs
 ms.topic: tutorial
 ms.date: 11/11/2019
@@ -12,7 +12,7 @@ ROBOTS: NOINDEX
 
 ---
 
-# Monitor and manage tests in the VaaS portal
+# Manage tests in the VaaS portal
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
@@ -48,7 +48,7 @@ In **Test Pass** workflows, both the **Add tests** and **Edit** buttons allow yo
 > [!TIP]
 > Select **Add tests** if you want to schedule new tests and don't need to edit parameters for a **Test Pass** workflow.
 
-## Managing test instances
+## Manage test instances
 
 For unofficial runs (the **Test Pass** workflow), the tests summary page lists the tests scheduled against the Azure Stack Hub solution.
 
