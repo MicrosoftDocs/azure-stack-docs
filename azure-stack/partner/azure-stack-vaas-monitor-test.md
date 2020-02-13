@@ -75,7 +75,7 @@ Each test instance lists available actions you can take when you select its cont
 
 #### View information about the test definition
 
-Select **View information** from the context menu to view general information about the test definition. This is shared by each test instance with the same name and version.
+Select **View information** from the context menu to view general information about the test definition. This info is shared by each test instance with the same name and version.
 
 | Test property | Description |
 | -- | -- |
