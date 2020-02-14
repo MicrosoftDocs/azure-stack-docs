@@ -1,7 +1,7 @@
 ---
-title: Workflow common parameters in VaaS
+title: Common workflow parameters in VaaS
 titleSuffix: Azure Stack Hub
-description: Learn about workflow common parameters for Azure Stack Hub validation as a service.
+description: Learn about common workflow parameters for Azure Stack Hub validation as a service.
 author: mattbriggs
 ms.topic: article
 ms.date: 1/22/2020
@@ -12,7 +12,7 @@ ROBOTS: NOINDEX
 
 ---
 
-# Workflow common parameters in validation as a service
+# Common workflow parameters in validation as a service
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
