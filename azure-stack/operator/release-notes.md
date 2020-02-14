@@ -71,6 +71,7 @@ A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on A
 - The offline syndication tool has been updated with reliability improvements. The tool is no longer on GitHub, and has been moved to the PowerShell Gallery. For more information, see [Download Marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).
 - Improved the entire experience for [diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md). The new experience streamlines and simplifies diagnostic log collection by removing the SAS URI option. Customers can send logs to Microsoft before opening a support case. 
 - The download progress of an Azure Stack update package is now visible in the update blade after an update is initiated. This only applies to connected Azure Stack Hub systems that choose to [prepare update packages via automatic download](azure-stack-update-prepare-package.md#automatic-download-and-preparation-for-update-packages).
+- A new monitoring capability is being introduced. The low disk space alert for physical hosts and infrastructure VMs will be auto-remediated by the platform and only if this action fails will the alert be visible in the Azure Stack Hub administrator portal, for the operator to take action.
 
 
 ### Changes
@@ -100,7 +101,7 @@ A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on A
 
 <!-- Fixed an issue where adding more than one public IP on the same NIC on a Virtual Machine resulted in internet connectivity issues. Now, a NIC with two public IPs should work as expected.[This fix actually didn't go in 1910 due to build issues, commenting out until next build (2002) ] -->
 
-- Fixed an issue that prevented alerts for disconnected network adapters to be raised.
+
 - Fixed an issue that caused the system to raise an alert indicating that the Azure AD home directory needs to be configured.
 - Fixed an issue that prevented an alert indicating that the Azure AD home directory must be configured to not automatically close.
 - Fixed an issue that caused updates to fail during the update preparation phase as a result of internal failures of the update resource provider.
