@@ -47,11 +47,11 @@ Environment parameter values can also be manually located in the **ECE configura
 
 ## Test parameters
 
-Common test parameters include sensitive information that can't be stored in configuration files. These must be manually provided.
+Common test parameters include sensitive information that can't be stored in configuration files. These parameters must be manually provided.
 
 Parameter    | Description
 -------------|-----------------
-Tenant Administrator User                            | Azure Active Directory (Azure AD) tenant admin that was provisioned by the service administrator in the AAD directory. This user performs tenant-level actions like deploying templates to set up resources (VMs, storage accounts, etc.) and executing workloads. For details on provisioning the tenant account, see [Add a new Azure Stack Hub tenant](../operator/azure-stack-add-new-user-aad.md).
+Tenant Administrator User                            | Azure Active Directory (Azure AD) tenant admin that was provisioned by the service administrator in the AAD directory. This user performs tenant-level actions like deploying templates to set up resources (VMs, storage accounts, and so on.) and executing workloads. For details on provisioning the tenant account, see [Add a new Azure Stack Hub tenant](../operator/azure-stack-add-new-user-aad.md).
 Service Administrator User             | Azure AD admin of the Azure AD directory tenant specified during Azure Stack Hub deployment. Search for `AADTenant` in the ECE configuration file and select the value in the `UniqueName` element.
 Cloud Administrator User               | Azure Stack Hub domain admin account (for example, `contoso\cloudadmin`). Search for `User Role="CloudAdmin"` in the ECE configuration file and select the value in the `UserName` element.
 Diagnostics Connection String          | A SAS URL to an Azure Storage Account to which diagnostics logs will be copied during test execution. For instructions on generating the SAS URL, see [Generate the diagnostics connection string](#generate-the-diagnostics-connection-string). |
