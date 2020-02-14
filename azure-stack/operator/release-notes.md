@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/12/2020
+ms.date: 02/14/2020
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 01/17/2020
@@ -69,9 +69,8 @@ A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on A
 
 - Improvements to the Azure Stack Hub readiness checker tool to validate AD Graph integration.
 - The offline syndication tool has been updated with reliability improvements. The tool is no longer on GitHub, and has been moved to the PowerShell Gallery. For more information, see [Download Marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).
-- Improved the entire experience for [diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md). The new experience streamlines and simplifies diagnostic log collection by removing the SAS URI option. Customers can send logs to Microsoft before opening a support case. 
+- Improved the entire experience for [diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md). The new experience streamlines and simplifies diagnostic log collection by removing the SAS URI option. Customers can send logs to Microsoft before opening a support case.
 - The download progress of an Azure Stack update package is now visible in the update blade after an update is initiated. This only applies to connected Azure Stack Hub systems that choose to [prepare update packages via automatic download](azure-stack-update-prepare-package.md#automatic-download-and-preparation-for-update-packages).
-
 
 ### Changes
 
@@ -107,6 +106,7 @@ A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on A
 - Fixed an issue causing add-on resource provider operations to fail after performing Azure Stack Hub secret rotation.
 - Fixed an issue that was a common cause of Azure Stack update failures due to memory pressure on the ERCS role.
 - Fixed a bug in the update blade in which the update status showed as **Installing** instead of **Preparing** during the preparation phase of an Azure Stack Hub update.
+- Fixed a filtering issue in Marketplace management, which incorrectly cleared all results when filters were set after the page loaded for the first time.
 
 ## Security updates
 
@@ -135,7 +135,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 2002 release of Azure Stack Hub must be applied on the 1910 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.17.95](https://support.microsoft.com/help/4537833)
+- [Azure Stack Hub hotfix 1.1910.24.108](https://support.microsoft.com/help/4541350)
 
 ### After successfully applying the 2002 update
 
