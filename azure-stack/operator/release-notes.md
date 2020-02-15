@@ -71,9 +71,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 - The offline syndication tool has been updated with reliability improvements. The tool is no longer on GitHub, and has been moved to the PowerShell Gallery. For more information, see [Download Marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).
 - Improved the entire experience for [diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md). The new experience streamlines and simplifies diagnostic log collection by removing the SAS URI option. Customers can send logs to Microsoft before opening a support case.
 - The download progress of an Azure Stack update package is now visible in the update blade after an update is initiated. This only applies to connected Azure Stack Hub systems that choose to [prepare update packages via automatic download](azure-stack-update-prepare-package.md#automatic-download-and-preparation-for-update-packages).
-- Reliability improvement for Network Controller Host agent.
+- Reliability improvements for Network Controller Host agent.
 - Improve reliability of network validation at deployment time of Azure Stack Hub.
-- Introduced new micro-service called DNS Orchestrator that improves the resiliency logic for the internal DNS services during Patch and Update. 
+- Introduced new micro-service called DNS Orchestrator that improves the resiliency logic for the internal DNS services during patch and update. 
 
 ### Changes
 
@@ -110,10 +110,10 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue that was a common cause of Azure Stack update failures due to memory pressure on the ERCS role.
 - Fixed a bug in the update blade in which the update status showed as **Installing** instead of **Preparing** during the preparation phase of an Azure Stack Hub update.
 - Fixed a filtering issue in Marketplace management, which incorrectly cleared all results when filters were set after the page loaded for the first time.
-- Fixed an issue where a VM with multiple NICs and multiple IP configurations is not reachable via the Public IP. 
+- Fixed an issue where a VM with multiple NICs and multiple IP configurations is not reachable via the public IP. 
 - Fixed an issue where the RSC feature on the physical switches was creating inconsistences and dropping the traffic flowing through a load balancer. The RSC feature will now be disabled by default. 
 - Fixed an issue where adding a secondary IP to the VM was causing RDP issues.
-- Fixed an issue where the MAC address of a NIC was being cached and assigning of that address to another resource was causing VM deployment failures. 
+- Fixed an issue where the MAC address of a NIC was being cached, and assigning of that address to another resource was causing VM deployment failures. 
 
 ## Security updates
 
