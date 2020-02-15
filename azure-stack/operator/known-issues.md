@@ -83,7 +83,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 ### Alert for network interface disconnected
 
-- Applicable: This issue applies to the 1908 and 1910 releases.
+- Applicable: This issue applies to all releases post 1908.
 - Cause: When a cable is disconnected from a network adapter, an alert does not show in the administrator portal. This issue is caused because this fault is disabled by default in Windows Server 2019.
 - Occurrence: Common
 
