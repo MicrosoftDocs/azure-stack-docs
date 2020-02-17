@@ -107,6 +107,7 @@ A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on A
 - Fixed an issue that was a common cause of Azure Stack update failures due to memory pressure on the ERCS role.
 - Fixed a bug in the update blade in which the update status showed as **Installing** instead of **Preparing** during the preparation phase of an Azure Stack Hub update.
 - Fixed a filtering issue in Marketplace management, which incorrectly cleared all results when filters were set after the page loaded for the first time.
+- Fixed an issue with I/O stall in the guest OS as a result of snapshotting disks while the IaaS VMs is powered on. The fix introduces functionality changes as part of the API. Backup solutions that create crash-consistent IaaS VM backups using the disk snapshot API will also require updates to consume the new functionality. For more information, see [Protect VMs deployed on Azure Stack Hub](../user/azure-stack-manage-vm-protect.md).
 
 ## Security updates
 
