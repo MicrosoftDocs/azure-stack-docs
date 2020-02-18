@@ -3,7 +3,7 @@ title: Network integration planning for Azure Stack Hub
 description: Learn how to plan for datacenter network integration with Azure Stack Hub integrated systems.
 author: ihenkel
 ms.topic: article
-ms.date: 10/23/2019
+ms.date: 02/18/2020
 ms.author: inhenkel
 ms.reviewer: wamota
 ms.lastreviewed: 06/04/2019
@@ -20,7 +20,7 @@ This article provides Azure Stack Hub network infrastructure information to help
 
 The Azure Stack Hub solution requires a resilient and highly available physical infrastructure to support its operation and services. Uplinks from ToR to Border switches are limited to SFP+ or SFP28 media and 1 GB, 10 GB, or 25-GB speeds. Check with your original equipment manufacturer (OEM) hardware vendor for availability. The following diagram presents our recommended design:
 
-![Recommended Azure Stack Hub network design](media/azure-stack-network/recommended-design.png)
+![Recommended Azure Stack Hub network design](media/azure-stack-network/recommended-design-update.png)
 
 
 ## Logical Networks
