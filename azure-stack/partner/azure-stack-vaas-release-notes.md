@@ -32,7 +32,7 @@ This article has the release notes for Azure Stack Hub validation as a service.
 2019 December 3
 
 - Test content updates:
-  - Online documentation for the Monthly Azure Stack Hub Update workflow and the OEM Package Validation workflow have been updated. Please review the updated documentation here​ Validate OEM packages and here Validate software updates from Microsoft
+  - Online documentation for the Monthly Azure Stack Hub Update workflow and the OEM Package Validation workflow have been updated. Please review the updated documentation [Validate OEM packages](azure-stack-vaas-validate-oem-package.md) and [Validate software updates](azure-stack-vaas-validate-microsoft-updates.md) from Microsoft.
   - VaaS Package Validation workflow update: OEM Validation Workflow is the only test required for monthly Azure Stack Hub update verification and OEM package validation. The test updates the stamp with the provided AzureStack/OEM packages and runs Cloud Simulation Engine verification tests.
   - VaaS PowerShell Extension update: Package Validation workflow automation is now supported. Please see Azure Stack Hub VaaS Automate with Powershell for detailed information about the location and step-by-step instructions to use this extension.
 
@@ -69,7 +69,7 @@ This article has the release notes for Azure Stack Hub validation as a service.
 
 - Online documentation for the Monthly Azure Stack Hub Update workflow and the OEM Package Validation workflow have been updated.
 
-    Please review the updated documentation here Validate OEM packages and here Validate software updates from Microsoft.
+    Please review the updated documentation [Validate OEM packages](azure-stack-vaas-validate-oem-package.md) and [Validate software updates](azure-stack-vaas-validate-microsoft-updates.md) from Microsoft.
 - VaaS Workflow Update: Monthly Azure Stack Hub Update  (Version 5.1.30.0 -> 5.1.46.0)  – the monthly Azure Stack Hub update verification test workflow has been updated.
 
     The workflow no longer requires manual intervention and can be scheduled to run seamlessly.
@@ -102,7 +102,7 @@ This article has the release notes for Azure Stack Hub validation as a service.
 - OEM Extension Package Verification updated to perform necessary checks before the Azure Stack Hub update step. Version: 5.1.14.0 -> 5.1.16.0
 - Internal bug fixes.
 
-## Version 4.0.2
+## Version 4.0.3
 
 2019 January 7
 
