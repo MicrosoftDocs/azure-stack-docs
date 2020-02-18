@@ -17,7 +17,7 @@ Azure Stack operators can send diagnostics logs to Microsoft, before requesting 
 This topic covers both ways of collecting diagnostic logs on demand.
 
 >[!Note]
->As an alternative to collecting logs on demand, you can streamline the troubleshooting process by [proactively collecting diagnostic logs](azure-stack-configure-automatic-diagnostic-log-collection.md). If system health conditions need to be investigated, the logs are uploaded automatically for analysis before opening a case with CSS. 
+>As an alternative to collecting logs on demand, you can streamline the troubleshooting process by [proactively collecting diagnostic logs](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md). If system health conditions need to be investigated, the logs are uploaded automatically for analysis before opening a case with CSS. 
 
 ## Send logs now
 
@@ -33,7 +33,8 @@ Specify the start time and end time for log collection and click **Collect and U
 <!--how do you look up the PEP IP address. You look up the azurestackstampinfo.json--->
 
 
-To run Get-AzureStackLog on an integrated system, you need to have access to the privileged endpoint (PEP). Here's an example script you can run using the PEP to collect logs:
+To run Get-AzureStackLog on an integrated system, you need to have access to the privileged endpoint (PEP). Here's an example script you can run using the PEP to collect logs. If you are canceling a running log collection to start a new one, please wait 5 minutes Before starting new log collection and enter `Remove-PSSession -Session $session`.
+
 
 ```powershell
 $ipAddress = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.

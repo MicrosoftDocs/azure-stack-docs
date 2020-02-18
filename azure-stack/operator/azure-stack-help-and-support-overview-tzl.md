@@ -53,5 +53,5 @@ For more information, see [Azure Stack Hub diagnostic log collection overview](a
 
 - Learn about [troubleshooting Azure Stack Hub](azure-stack-troubleshooting.md)
 - Learn about [diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md)
-- Configure [proactive diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md)
-- Configure [on-demand diagnostic log collection](azure-stack-configure-on-demand-diagnostic-log-collection.md)
+- Configure [proactive diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md)
+- Configure [on-demand diagnostic log collection](azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md)
