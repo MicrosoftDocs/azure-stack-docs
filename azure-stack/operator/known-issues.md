@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 02/18/2020
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 01/14/2020
@@ -134,8 +134,8 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 ### Create Managed Disk snapshot
 
 - Applicable: This issue applies to release 2002.
-- Cause: In the user portal, when creating the Managed Ddisk snapshot, the "**Account type**" box is empty.  When you click the "Create" button with empty "Account type", the snapshot creation will be failed later. 
-- Remediation: User needs to select an account type from the "Account type" drop list, then create snapshot. 
+- Cause: In the user portal, when creating a Managed Disk snapshot, the **Account type** box is empty. When you select the **Create** button with an empty account type, the snapshot creation fails.
+- Remediation: Select an account type from the **Account type** dropdown list, then create the snapshot.
 - Occurrence: Common
 
 ### Storage account configuration
