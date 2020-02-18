@@ -32,9 +32,9 @@ This article has the release notes for Azure Stack Hub validation as a service.
 2019 December 3
 
 - Test content updates:
-  - Online documentation for the Monthly Azure Stack Hub Update workflow and the OEM Package Validation workflow have been updated. Please review the updated documentation [Validate OEM packages](azure-stack-vaas-validate-oem-package.md) and [Validate software updates](azure-stack-vaas-validate-microsoft-updates.md) from Microsoft.
+  - Online documentation for the Monthly Azure Stack Hub Update workflow and the OEM Package Validation workflow has been updated. Review the updated documentation [Validate OEM packages](azure-stack-vaas-validate-oem-package.md) and [Validate software updates](azure-stack-vaas-validate-microsoft-updates.md) from Microsoft.
   - VaaS Package Validation workflow update: OEM Validation Workflow is the only test required for monthly Azure Stack Hub update verification and OEM package validation. The test updates the stamp with the provided AzureStack/OEM packages and runs Cloud Simulation Engine verification tests.
-  - VaaS PowerShell Extension update: Package Validation workflow automation is now supported. Please see Azure Stack Hub VaaS Automate with Powershell for detailed information about the location and step-by-step instructions to use this extension.
+  - VaaS PowerShell Extension update: Package Validation workflow automation is now supported. See Azure Stack Hub VaaS Automate with PowerShell for detailed information about the location and step-by-step instructions to use this extension.
 
 - Known issues:
   - Contact vaashelp@microsoft.com if the following test cases fail to run during OEM Validation Workflow:
@@ -67,9 +67,9 @@ This article has the release notes for Azure Stack Hub validation as a service.
 
 2019 October 29
 
-- Online documentation for the Monthly Azure Stack Hub Update workflow and the OEM Package Validation workflow have been updated.
+- Online documentation for the Monthly Azure Stack Hub Update workflow and the OEM Package Validation workflow has been updated.
 
-    Please review the updated documentation [Validate OEM packages](azure-stack-vaas-validate-oem-package.md) and [Validate software updates](azure-stack-vaas-validate-microsoft-updates.md) from Microsoft.
+    Review the updated documentation [Validate OEM packages](azure-stack-vaas-validate-oem-package.md) and [Validate software updates](azure-stack-vaas-validate-microsoft-updates.md) from Microsoft.
 - VaaS Workflow Update: Monthly Azure Stack Hub Update  (Version 5.1.30.0 -> 5.1.46.0)  – the monthly Azure Stack Hub update verification test workflow has been updated.
 
     The workflow no longer requires manual intervention and can be scheduled to run seamlessly.
@@ -77,11 +77,11 @@ This article has the release notes for Azure Stack Hub validation as a service.
 
     The workflow no longer requires manual intervention and can be scheduled to run seamlessly.
 - Cloud Simulation Engine in the OEM Package Validation workflow (Version 5.1.30.0 -> 5.1.46.0) has been updated to expedite validation time: Run time reduced to 1 hour.
-- Cloud Simulation Engine in the OEM Package Validation workflow and the Azure Stack Hub Update workflow  (Version 5.1.30.0 -> 5.1.46.0) require that the updates to be validated be in two distinct parent folders with no other updates in child folders.
+- Cloud Simulation Engine in the OEM Package Validation workflow and the Azure Stack Hub Update workflow (Version 5.1.30.0 -> 5.1.46.0) require that the updates be validated in two distinct parent folders with no other updates in child folders.
 - Cloud Simulation Engine in the OEM Package Validation workflow and the Azure Stack Hub Update workflow  (Version 5.1.30.0 -> 5.1.46.0) require that the tests be scheduled in the following order – Monthly Azure Stack Hub Update Verification test, OEM Extension Package Verification test, and finally Cloud Simulation Engine.
 - VaaS Agent Update: The updated VaaS Agent now uses the Azure Stack Hub Cloud Admin credentials to query the stamp to get the stamp information in order to autopopulate the workflows.
 
-    This update requires all of the agents to be updated and restarted. Please see these instructions on how to update the VaaS Agent: https://docs.microsoft.com/azure-stack/partner/azure-stack-vaas-local-agent
+    This update requires all of the agents to be updated and restarted. See these instructions on how to update the VaaS Agent: https://docs.microsoft.com/azure-stack/partner/azure-stack-vaas-local-agent
 - VaaS Portal UI Update: The agent selection table has been moved above the test scheduling pane to facilitate testing.
 
     When scheduling a job, it's no longer requires to enter stamp information if the VaaS agents have been correctly updated.
@@ -106,7 +106,7 @@ This article has the release notes for Azure Stack Hub validation as a service.
 
 2019 January 7
 
-If you're running the Azure Stack Hub Monthly Update Verification workflow and the version for your OEM update package isn't 1810 or higher, you'll receive an error once you get to the OEM update step. This is a bug. A fix is being developed. The mitigation steps are as follows:
+If you're running the Azure Stack Hub Monthly Update Verification workflow and the version for your OEM update package isn't 1810 or higher, you'll receive an error once you get to the OEM update step. This error is a bug. A fix is being developed. The mitigation steps are as follows:
 
 1. Run the OEM update as normal.
 2. Execute Test-AzureStack after successful application of the package and save the output.
@@ -142,7 +142,7 @@ If you're running the Azure Stack Hub Monthly Update Verification workflow and t
 
 - VaaS prerequisites and VHD updates:
 
-    `Install-VaaSPrerequisites` now requires cloud admin credentials to address an issue during Package Validation. The documentation at [Download and install the local agent](azure-stack-vaas-local-agent.md#download-and-install-the-local-agent) has been updated with the following:
+    `Install-VaaSPrerequisites` now requires cloud admin credentials to address an issue during Package Validation. The documentation at [Download and install the local agent](azure-stack-vaas-local-agent.md#download-and-install-the-local-agent) has been updated with the following code:
 
     ```powershell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -169,7 +169,7 @@ If you're running the Azure Stack Hub Monthly Update Verification workflow and t
 
   - Package signing notifications
 
-    When an OEM customization package is submitted as part of the Package Validation workflow, the package format will be validated to ensure that it follows the published specification. If the package doesn't comply, the run will fail. Email notifications will be sent to the email address of the registered Azure Active Directory contact for the tenant.
+    When an OEM customization package is submitted as part of the Package Validation workflow, the package format will be validated to ensure it follows the published specification. If the package doesn't comply, the run will fail. Email notifications will be sent to the email address of the registered Azure Active Directory contact for the tenant.
 
   - Interactive test category:
 
