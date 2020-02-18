@@ -1,30 +1,29 @@
 ---
-title: Azure Stack Hub Validation as a Service release notes 
-description: Azure Stack Hub Validation as a Service release notes.
+title: Validation as a service release notes
+titleSuffix: Azure Stack Hub
+description: Release notes for Azure Stack Hub validation as a service.
 author: mattbriggs
-
 ms.topic: article
 ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019
-
 ---
 
-# Release notes for Validation as a Service
+# Validation as a service release notes
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-This article has the release notes for Azure Stack Hub Validation as a Service.
+This article has the release notes for Azure Stack Hub validation as a service.
 
 ## Version 4.4.2.1
 
 2020 January 9
 
 - Test content updates
-  - OEM Validation Workflow (Version 5.1.52.0 -> 5.1.53.0) : Reduced the number of required parameters from the test schedule pane. 
+  - OEM Validation Workflow (Version 5.1.52.0 -> 5.1.53.0) : Reduced the number of required parameters from the test schedule pane.
   - Bugfix for Compute test - TestVMOperations
-    
+
 - Known issues
   - Contact vaashelp@microsoft.com if the following test cases fail to run during OEM Validation Workflow:
     - Test101LinuxEmptyAttachedDiskManagedDisk
