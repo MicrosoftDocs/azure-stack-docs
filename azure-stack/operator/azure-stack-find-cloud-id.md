@@ -10,9 +10,9 @@ ms.reviewer: shisab
 ms.lastreviewed: 10/08/2019
 
 ---
-# Find your Cloud Id
+# Find your Cloud ID
 
-This topic covers how to get you Cloud Id by using the Administrator portal or the privileged endpoint (PEP). 
+This topic covers how to get you Cloud ID by using the Administrator portal or the privileged endpoint (PEP). 
 
 ## Use the administrator portal
 
@@ -25,7 +25,7 @@ This topic covers how to get you Cloud Id by using the Administrator portal or t
 
    ![Screenshot of the the Region blade](media/azure-stack-automatic-log-collection/region-blade.png)
 
-1. Copy the **Stamp Cloud Id**.
+1. Copy the **Stamp Cloud ID**.
 
    ![Screenshot of Region properties with Stamp Cloud ID](media/azure-stack-automatic-log-collection/region-properties-blade-with-stamp-cloud-id.png)
 
