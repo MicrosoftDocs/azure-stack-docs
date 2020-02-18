@@ -10,16 +10,19 @@ ms.reviewer: shisab
 ms.lastreviewed: 01/16/2020
 
 ---
-# On-demand log collection
+# Send diagnostic logs now
 
-Azure Stack operators can send diagnostics logs to Microsoft, before requesting support, by using **Help and Support** or PowerShell. Using **Help and Support** is recommended over PowerShell because it's simpler. But if the portal is unavailable, operators can then use the privileged endpoint (PEP).
+Azure Stack operators can send diagnostics logs to Microsoft, before requesting support, by using the Administrator portal or PowerShell. Using the Administrator portal is recommended over PowerShell because it's simpler. But if the portal is unavailable, operators can then use the privileged endpoint (PEP).
 
 This topic covers both ways of collecting diagnostic logs on demand.
+
+If your want to provide logs to Microsoft for support, please use Send logs Now or the Script if portal is down. If you are disconnected or save logs locally use Get-AzurestackLog
+
 
 >[!Note]
 >As an alternative to collecting logs on demand, you can streamline the troubleshooting process by [proactively collecting diagnostic logs](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md). If system health conditions need to be investigated, the logs are uploaded automatically for analysis before opening a case with CSS. 
 
-## Send logs now
+## Using the Administrator portal
 
 Specify the start time and end time for log collection and click **Collect and Upload**. 
 
@@ -27,6 +30,15 @@ Specify the start time and end time for log collection and click **Collect and U
 
 >[!NOTE]
 >If proactive log collection is enabled, **Help and Support** shows when log collection is in progress. If you click **Send logs now** to collect logs from a specific time while proactive log collection is in progress, on-demand collection begins after proactive log collection is complete. 
+
+## Using PowerShell
+
+```powershell
+$session = New-PSSession -ComputerName S11R1804-ERCS01 -ConfigurationName PrivilegedEndpoint -Credential $cred
+$stampinfo=Invoke-Command -Session $session { Get-Azurestackstampinformation }
+$stampinfo.CloudId
+$stampinfo=Invoke-Command -Session $session { Send-AzureStackDiagnosticLog }
+```
 
 ## Use the privileged endpoint (PEP) to collect diagnostic logs
 
