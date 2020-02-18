@@ -77,10 +77,10 @@ For more information about update build types, see [Manage updates in Azure Stac
 - You can now create disk snapshots without interrupting the IO workload in the running VM. Backup vendor solutions (Commvault and Veritas) use the live snapshot functionality to provide backup of VMs with managed and unmanaged disks. We recommend using backup solutions to ensure consistent backups of VMs and efficient use of live snapshot functionality. Work with your backup vendor to deploy the appropriate version of their solution that uses the live snapshot functionality. For managed disk snapshots, see [Azure Stack Hub managed disks](../user/azure-stack-managed-disk-considerations.md). For unmanaged disk snapshots, see [Azure Stack Hub storage: Differences and considerations](../user/azure-stack-acs-differences.md).
 - This update contains changes to the update process that significantly improve the performance of future full updates. These changes take effect with the next full update after the 2002 release. These changes will specifically target improving the performance of the phase of a full update in which the host operating systems are updated. Improving the performance of host operating system updates significantly reduces the window of time for which tenant workloads are impacted during full updates.
 - Added a new request validation to fail invalid blob URIs for the boot diagnostic storage account.
-- We hardened VM resize operations and made them idempotent.
-- We issued a performance fix to relieve pressure from the cluster resource by switching to query for the VM powerstate through Hyper-V instead.
-- We issued a performance fix to relieve pressure by caused by CRP on the XRP ring.
-- We added auto-remediation and logging improvements for Rdagent and Host agent - two services on the host that faciliate VM CRUD operations.
+- Hardened VM resize operations and made them idempotent.
+- Added a performance fix to relieve pressure from the cluster resource by switching to query for the VM powerstate through Hyper-V instead.
+- Added a performance fix to relieve pressure by caused by CRP on the XRP ring.
+- Added auto-remediation and logging improvements for Rdagent and Host agent - two services on the host that faciliate VM CRUD operations.
 
 
 ### Changes
