@@ -131,6 +131,13 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: In the user portal, the name of storage accounts is shown as **Storage account - blob, file, table, queue**; however, **file** is not supported in Azure Stack Hub.
 - Occurrence: Common
 
+### Create Managed Disk snapshot
+
+- Applicable: This issue applies to release 2002.
+- Cause: In the user portal, when creating the Managed Ddisk snapshot, the "**Account type**" box is empty.  When you click the "Create" button with empty "Account type", the snapshot creation will be failed later. 
+- Remediation: User needs to select an account type from the "Account type" drop list, then create snapshot. 
+- Occurrence: Common
+
 ### Storage account configuration
 
 - Applicable: This issue applies to all supported releases.
