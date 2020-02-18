@@ -68,7 +68,7 @@ For best practices about choosing parameters for the automatic log collection st
 
 1. Click **Create**.  
 
-Copy the URL and enter it when you [configure automatic log collection](azure-stack-configure-automatic-diagnostic-log-collection.md). 
+Copy the URL and enter it when you [configure automatic log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md). 
 For more information about SAS URLs, see [Using shared access signatures (SAS)](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1). 
 
 

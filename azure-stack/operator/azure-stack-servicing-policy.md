@@ -8,7 +8,7 @@ ms.topic: article
 ms.date: 02/07/2020
 ms.author: sethm
 ms.reviewer: harik
-ms.lastreviewed: 01/11/2019
+ms.lastreviewed: 01/14/2020
 
 ---
 
@@ -42,10 +42,10 @@ Find documentation on how to plan for and manage updates, and how to determine y
 
 For information about a specific update, including how to download it, see the release notes for that update:
 
+- [Azure Stack Hub 2002 update](/azure-stack/operator/release-notes?view=azs-2002)
 - [Azure Stack Hub 1910 update](/azure-stack/operator/release-notes?view=azs-1910)
 - [Azure Stack Hub 1908 update](/azure-stack/operator/release-notes?view=azs-1908)
 - [Azure Stack Hub 1907 update](/azure-stack/operator/release-notes?view=azs-1907)
-- [Azure Stack Hub 1906 update](/azure-stack/operator/release-notes?view=azs-1906)
 
 ## Hotfixes
 
@@ -55,10 +55,10 @@ Hotfixes are downloaded and installed just like the regular full update packages
 
 For information about currently available hotfixes, see the release notes for that update:
 
-- [Azure Stack Hub 1910 hotfix](/azure-stack/operator/release-notes?view=azs-1910#hotfixes)
-- [Azure Stack Hub 1908 hotfix](/azure-stack/operator/release-notes?view=azs-1908#hotfixes-1)
-- [Azure Stack Hub 1907 hotfix](/azure-stack/operator/release-notes?view=azs-1907#hotfixes-2)
-- [Azure Stack Hub 1906 hotfix](/azure-stack/operator/release-notes?view=azs-1906#hotfixes-3)
+- [Azure Stack Hub 2002 hotfix](/azure-stack/operator/release-notes?view=azs-2002#hotfixes)
+- [Azure Stack Hub 1910 hotfix](/azure-stack/operator/release-notes?view=azs-1910#hotfixes-1)
+- [Azure Stack Hub 1908 hotfix](/azure-stack/operator/release-notes?view=azs-1908#hotfixes-2)
+- [Azure Stack Hub 1907 hotfix](/azure-stack/operator/release-notes?view=azs-1907#hotfixes-3)
 
 ## Keep your system under support
 

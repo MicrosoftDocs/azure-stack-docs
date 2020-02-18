@@ -79,4 +79,4 @@ Follow these steps if Azure Stack services don't successfully start within two h
 If running **Start-AzureStack** results in a failure, visit the [Azure Stack support forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack) to get ASDK troubleshooting support. 
 
 ## Next steps 
-Learn more about Azure Stack diagnostic tool and issue logging, see [Azure Stack diagnostic tools](../operator/azure-stack-configure-on-demand-diagnostic-log-collection.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs).
+Learn more about Azure Stack diagnostic tool and issue logging, see [Azure Stack diagnostic tools](../operator/azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs).
