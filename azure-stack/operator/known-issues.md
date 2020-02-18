@@ -113,12 +113,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Remediation: The status is automatically updated every 5 minutes regardless of whether the refresh button has been clicked or not. Wait 5 minutes and check the status.
 - Occurrence: Common
 
-### Virtual Network Gateway
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you create a route table, **Virtual Network gateway** appears as one of the next hop type options; however, this is not supported in Azure Stack Hub.
-- Occurrence: Common
-
 ### Storage account options
 
 - Applicable: This issue applies to all supported releases.
@@ -171,12 +165,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
 - Occurrence: Common
 
-### Service endpoints
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack Hub.
-- Occurrence: Common
-
 ### Network interface
 
 #### Adding/removing network interface
@@ -193,24 +181,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Occurrence: Common
 
 ### Virtual Network Gateway
-
-#### Alerts
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Virtual Network Gateway** blade shows an option to use **Alerts**. This feature is currently not supported in Azure Stack Hub.
-- Occurrence: Common
-
-#### Active-Active
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, while creating, and in the resource menu of **Virtual Network Gateway**, you will see an option to enable **Active-Active** configuration. This feature is currently not supported in Azure Stack Hub.
-- Occurrence: Common
-
-#### VPN troubleshooter
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Connections** blade displays a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack Hub.
-- Occurrence: Common
 
 #### Documentation
 
