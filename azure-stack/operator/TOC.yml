@@ -440,16 +440,20 @@
       items:
       - name: Overview      
         href: azure-stack-help-and-support-overview-tzl.md
-      - name: Find your Cloud ID
+      - name: Find your Cloud Id
         href: azure-stack-find-cloud-id.md  
       - name: Diagnostic log collection
         items:
         - name: Overview 
           href: azure-stack-diagnostic-log-collection-overview-tzl.md
-        - name: Configure proactive collection
+        - name: Send logs proactively
           href: azure-stack-configure-automatic-diagnostic-log-collection-tzl.md
         - name: Send logs now
-          href: azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md
+          items:
+          - name: Use the Administrator portal
+            href: azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md
+          - Name: Use the privileged endpoint (PEP)
+            href: azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md
     - name: Validation for Azure Stack Hub  
       href: azure-stack-diagnostic-test.md
     - name: Troubleshooting
