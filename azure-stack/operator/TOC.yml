@@ -351,7 +351,7 @@
         - name: Collect logs
           href: azure-stack-diagnostic-log-collection-overview.md
         - name: Health & alerts
-          href: azure-stack-monitor-health-tzl.md
+          href: azure-stack-monitor-health.md
         - name: Manage 
           href: iot-hub-rp-manage.md
         - name: Rotate secrets
