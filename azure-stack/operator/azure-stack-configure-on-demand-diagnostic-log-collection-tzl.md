@@ -33,7 +33,7 @@ Specify the start time and end time for log collection and click **Collect and U
 <!--how do you look up the PEP IP address. You look up the azurestackstampinfo.json--->
 
 
-To run Get-AzureStackLog on an integrated system, you need to have access to the privileged endpoint (PEP). Here's an example script you can run using the PEP to collect logs. If you are cancelling a running log collection to start a new one, please wait 5 minutes Before starting new log collection and enter `Remove-PSSession -Session $session`.
+To run Get-AzureStackLog on an integrated system, you need to have access to the privileged endpoint (PEP). Here's an example script you can run using the PEP to collect logs. If you are canceling a running log collection to start a new one, please wait 5 minutes Before starting new log collection and enter `Remove-PSSession -Session $session`.
 
 
 ```powershell

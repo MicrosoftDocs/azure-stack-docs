@@ -18,7 +18,7 @@ Diagnostic log collection in Help and Support helps operators quickly collec
  
 It is recommended to use this approach of log collection and only resort to using the privileged endpoint (PEP) if the Administrator portal or Help and Support blade is unavailable. 
 
->![NOTE]
+>[!NOTE]
 >Azure Stack Hub must be registered and have internet connectivity to use Diagnostic log collection. If Azure Stack Hub is not registered, then use the [Get-AzureStackLog PEP method](azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs) to share logs. 
 
 ![Screenshot of diagnostic log collection options](media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png)
