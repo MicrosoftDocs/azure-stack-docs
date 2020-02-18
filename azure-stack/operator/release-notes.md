@@ -61,7 +61,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 <!-- What's new, also net new experiences and features. -->
 
-A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on AzureRM is available.
+- A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on AzureRM is available.
 
 ### Improvements
 
@@ -71,6 +71,9 @@ A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on A
 - The offline syndication tool has been updated with reliability improvements. The tool is no longer on GitHub, and has been moved to the PowerShell Gallery. For more information, see [Download Marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).
 - Improved the entire experience for [diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md). The new experience streamlines and simplifies diagnostic log collection by removing the SAS URI option. Customers can send logs to Microsoft before opening a support case.
 - The download progress of an Azure Stack update package is now visible in the update blade after an update is initiated. This only applies to connected Azure Stack Hub systems that choose to [prepare update packages via automatic download](azure-stack-update-prepare-package.md#automatic-download-and-preparation-for-update-packages).
+- Reliability improvements for Network Controller Host agent.
+- Improve reliability of network validation at deployment time of Azure Stack Hub.
+- Introduced new micro-service called DNS Orchestrator that improves the resiliency logic for the internal DNS services during patch and update. 
 - You can now create disk snapshots without interrupting the IO workload in the running VM. Backup vendor solutions (Commvault and Veritas) use the live snapshot functionality to provide backup of VMs with managed and unmanaged disks. We recommend using backup solutions to ensure consistent backups of VMs and efficient use of live snapshot functionality. Work with your backup vendor to deploy the appropriate version of their solution that uses the live snapshot functionality. For managed disk snapshots, see [Azure Stack Hub managed disks](../user/azure-stack-managed-disk-considerations.md). For unmanaged disk snapshots, see [Azure Stack Hub storage: Differences and considerations](../user/azure-stack-acs-differences.md).
 - This update contains changes to the update process that significantly improve the performance of future full updates. These changes take effect with the next full update after the 2002 release. These changes will specifically target improving the performance of the phase of a full update in which the host operating systems are updated. Improving the performance of host operating system updates significantly reduces the window of time for which tenant workloads are impacted during full updates.
 
@@ -109,6 +112,10 @@ A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on A
 - Fixed an issue that was a common cause of Azure Stack update failures due to memory pressure on the ERCS role.
 - Fixed a bug in the update blade in which the update status showed as **Installing** instead of **Preparing** during the preparation phase of an Azure Stack Hub update.
 - Fixed a filtering issue in Marketplace management, which incorrectly cleared all results when filters were set after the page loaded for the first time.
+- Fixed an issue where a VM with multiple NICs and multiple IP configurations is not reachable via the public IP. 
+- Fixed an issue where the RSC feature on the physical switches was creating inconsistences and dropping the traffic flowing through a load balancer. The RSC feature will now be disabled by default. 
+- Fixed an issue where adding a secondary IP to the VM was causing RDP issues.
+- Fixed an issue where the MAC address of a NIC was being cached, and assigning of that address to another resource was causing VM deployment failures. 
 - Fixed an issue with I/O stall in the guest OS as a result of snapshotting disks while the IaaS VMs is powered on. The fix introduces functionality changes as part of the API. Backup solutions that create crash-consistent IaaS VM backups using the disk snapshot API will also require updates to consume the new functionality. For more information, see [Protect VMs deployed on Azure Stack Hub](../user/azure-stack-manage-vm-protect.md).
 
 ## Security updates
@@ -199,6 +206,7 @@ For more information about update build types, see [Manage updates in Azure Stac
     - Integration with Azure Monitor for Containers.
   - Use Windows Containers with AKS engine.
   - Receive CSS and engineering support for their deployments.
+
 
 ### Improvements
 
