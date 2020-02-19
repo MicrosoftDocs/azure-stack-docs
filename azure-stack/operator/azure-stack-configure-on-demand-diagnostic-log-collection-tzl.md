@@ -30,13 +30,15 @@ Specify the start time and end time for log collection and click **Collect and U
 
 ## Using PowerShell
 
-Replace the <Computer name> 
+Replace `<Computer_name>` with the actual name of the actual name of the computer where yu run the script.
 
 ```powershell
-$session = New-PSSession -ComputerName <Computer name> -ConfigurationName PrivilegedEndpoint -Credential $cred
+$session = New-PSSession -ComputerName <computer_name> -ConfigurationName PrivilegedEndpoint -Credential $cred
 $stampinfo=Invoke-Command -Session $session { Get-Azurestackstampinformation }
 $stampinfo.CloudId
 $stampinfo=Invoke-Command -Session $session { Send-AzureStackDiagnosticLog }
 ```
 
+## Next steps
 
+[Use the privileged endpoint (PEP) to send Azure Stack Hub diagnostic logs](azure-stack-get-azurestacklog.md)
