@@ -127,7 +127,7 @@ The tests run remote operations. The machine that runs the tests must have acces
     | --- | --- |
     | `CloudAdminUserName` | The cloud admin user who can access and run permitted commands within the privileged endpoint. For example: AzusreStack\CloudAdmin. See [Workflow common parameters for VaaS](azure-stack-vaas-parameters.md) for more information. |
     | `CloudAdminPassword` | The password for cloud admin account.|
-    | `VaaSUserId` | User ID used to sign in to the VaaS Portal. For example: UserName\@Contoso.com). |
+    | `VaaSUserId` | User ID used to sign in to the Azure Stack Hub Validation portal. For example: UserName\@Contoso.com). |
     | `VaaSTenantId` | Azure AD tenant ID for the Azure account registered with validation as a service. |
 
     > [!Note]  
@@ -145,4 +145,4 @@ An agent is uniquely identified by its name. By default, it uses the FQDN name o
 
 - [Troubleshoot Validation as a Service](azure-stack-vaas-troubleshoot.md)
 - [Validation as a Service key concepts](azure-stack-vaas-key-concepts.md)
-- [Quickstart: Use the Validation as a Service portal to schedule your first test](azure-stack-vaas-schedule-test-pass.md)
+- [Quickstart: Use the Azure Stack Hub Validation portal to schedule your first test](azure-stack-vaas-schedule-test-pass.md)

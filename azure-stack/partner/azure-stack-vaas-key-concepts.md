@@ -57,7 +57,7 @@ For more information about workflow properties and parameters, see [Workflow com
 
 A test in VaaS consists of a suite of operations that run against an Azure Stack Hub solution. Tests have different intended purposes identified by a category (like functional or reliability) and target one or more services of Azure Stack Hub. Each test defines its own set of parameters, some of which are specified by common parameters of the containing workflow.
 
-For more information about managing and monitoring tests, see [Monitor and manage tests in the Azure Stack Hub validation portal](azure-stack-vaas-monitor-test.md).
+For more information about managing and monitoring tests, see [Monitor and manage tests in the Azure Stack Hub Validation portal](azure-stack-vaas-monitor-test.md).
 
 For more information about test parameters, see [Workflow common parameters for Azure Stack Hub validation as a service](azure-stack-vaas-parameters.md).
 
