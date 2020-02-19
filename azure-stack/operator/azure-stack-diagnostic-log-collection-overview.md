@@ -31,7 +31,7 @@ The logs can be stored in a blob container in Azure, where access can be customi
 **Diagnostic log collection** has an easy user interface and doesn't require PowerShell. 
 Logs get collected reliably even if infrastructure services are down.
 If your policy allows sharing diagnostic logs with CSS, **Diagnostic log collection** is the recommended collection method beginning with the 1907 release. 
-You should only use [the PEP](azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs) to collect logs if **Diagnostic log collection** in Help and Support is unavailable.
+You should only use [the PEP](azure-stack-get-azurestacklog.md) to collect logs if **Diagnostic log collection** in Help and Support is unavailable.
 
 ## Automatic diagnostic log collection 
 

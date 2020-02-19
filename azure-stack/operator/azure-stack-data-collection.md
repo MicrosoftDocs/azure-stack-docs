@@ -17,7 +17,7 @@ To the extent Microsoft is a processor or subprocessor of personal data in conne
 - The "Processing of Personal Data; GDPR" provision in the "Data Protection Terms" section of the [Online Services Terms](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
 - The European Union General Data Protection Regulation Terms in Attachment 4 of the [Online Services Terms](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31).
 
-As Azure Stack Hub resides in customer datacenters, Microsoft is the Data Controller solely of the data that is shared with Microsoft through [Diagnostics](azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs), [Telemetry](azure-stack-telemetry.md), and [Billing](azure-stack-usage-reporting.md).  
+As Azure Stack Hub resides in customer datacenters, Microsoft is the Data Controller solely of the data that is shared with Microsoft through [Diagnostics](azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md), [Telemetry](azure-stack-telemetry.md), and [Billing](azure-stack-usage-reporting.md).  
 
 ## Data access controls 
 Microsoft employees, who are assigned to investigate a specific support case, will be granted read-only access to the encrypted data. Microsoft employees also have access to tools used to delete the data if needed. All access to the customer data is audited and logged.  
