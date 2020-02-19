@@ -43,12 +43,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Remediation: If you have resources running on these two subscriptions, recreate them in user subscriptions.
 - Occurrence: Common
 
-### Subscriptions Lock blade
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the administrator portal, the **Lock** blade for user subscriptions has two buttons that say **Subscription**.
-- Occurrence: Common
-
 ### Subscription permissions
 
 - Applicable: This issue applies to all supported releases.
@@ -56,67 +50,11 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
 - Occurrence: Common
 
-### Storage account settings
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the storage account **Configuration** blade shows an option to change **security transfer type**. The feature is currently not supported in Azure Stack Hub.
-- Occurrence: Common
-
-### Upload blob with OAuth error
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you try to upload a blob using the **OAuth(preview)** option, the task fails with an error message.
-- Remediation: Upload the blob using the SAS option.
-- Occurrence: Common
-
-### Upload blob option unsupported
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you try to upload a blob in the upload blade, there is an option to select **AAD** or **Key Authentication**, however **AAD** is not supported in Azure Stack Hub.
-- Occurrence: Common
-
-### Load balancer backend pool
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when adding a **Load balancer** backend pool, the operation results in an error message of **Failed to save load balancer backend pool**; however, the operation did actually succeed.
-- Occurrence: Common
-
-### Incorrect tooltip when creating VM
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you select a managed disk, with disk type Premium SSD, the drop-down list shows **OS Disk**. The tooltip next to that option says **Certain OS Disk sizes may be available for free with Azure Free Account**; however, this is not valid for Azure Stack Hub. In addition, the list includes **Free account eligible** which is also not valid for Azure Stack Hub.
-- Occurrence: Common
-
-### VPN troubleshoot and metrics
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack Hub.
-- Occurrence: Common
 
 ### Adding extension to VM Scale Set
 
 - Applicable: This issue applies to releases 1907 and later.
 - Cause: In the user portal, once a virtual machine scale set is created, the UI does not permit the user to add an extension.
-- Occurrence: Common
-
-### Delete a storage container
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when a user attempts to delete a storage container, the operation fails when the user does not toggle **Override Azure Policy and RBAC Role settings**.
-- Remediation: Ensure that the box is checked for **Override Azure Policy and RBAC Role settings**.
-- Occurrence: Common
-
-### Refresh button on virtual machines fails
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you navigate to **Virtual Machines** and try to refresh using the button at the top, the states fail to update accurately.
-- Remediation: The status is automatically updated every 5 minutes regardless of whether the refresh button has been clicked or not. Wait 5 minutes and check the status.
-- Occurrence: Common
-
-### Virtual Network Gateway
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you create a route table, **Virtual Network gateway** appears as one of the next hop type options; however, this is not supported in Azure Stack Hub.
 - Occurrence: Common
 
 ### Storage account options
@@ -132,11 +70,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Remediation: Select an account type from the **Account type** dropdown list, then create the snapshot.
 - Occurrence: Common
 
-### Storage account configuration
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when you create a storage account and view its **Configuration**, you cannot save configuration changes, as it results in an AJAX error.
-- Occurrence: Common
 
 ### Capacity monitoring in SQL resource provider keeps loading
 
@@ -145,11 +78,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Remediation: Follow the resource provider update process to apply the SQL resource provider hotfix 1.1.47.0 after Azure Stack Hub is upgraded to the 2002 update ([SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)). For the MySQL resource provider, it is also recommended that you apply the MySQL resource provider hotfix 1.1.47.0 after Azure Stack Hub is upgraded to 2002 update ([MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)).
 - Occurrence: Common
 
-### Access Control (IAM)
-
-- Applicable: This issue applies to all supported releases.
-- Cause: The IAM extension is out of date. The Ibiza portal that shipped with Azure Stack Hub introduces a new behavior that causes the RBAC extension to fail if the user is opening the **Access Control (IAM)** blade for a subscription that is not selected in the global subscription selector (**Directory + Subscription** in the user portal). The blade displays **Loading** in a loop, and the user cannot add new roles to the subscription. The **Add** blade also displays **Loading** in a loop.
-- Remediation: Ensure that the subscription is checked in the **Directory + Subscription** menu. The menu can be accessed from the top of the portal, near the **Notifications** button, or via the shortcut on the **All resources** blade that displays **Don't see a subscription? Open Directory + Subscription settings**. The subscription must be selected in this menu.
 
 ### SQL resource provider
 
@@ -171,12 +99,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: An explicit **DenyAllOutbound** rule cannot be created in an NSG as this will prevent all internal communication to infrastructure needed for the VM deployment to complete.
 - Occurrence: Common
 
-### Service endpoints
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Virtual Network** blade shows an option to use **Service Endpoints**. This feature is currently not supported in Azure Stack Hub.
-- Occurrence: Common
-
 ### Network interface
 
 #### Adding/removing network interface
@@ -193,24 +115,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Occurrence: Common
 
 ### Virtual Network Gateway
-
-#### Alerts
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Virtual Network Gateway** blade shows an option to use **Alerts**. This feature is currently not supported in Azure Stack Hub.
-- Occurrence: Common
-
-#### Active-Active
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, while creating, and in the resource menu of **Virtual Network Gateway**, you will see an option to enable **Active-Active** configuration. This feature is currently not supported in Azure Stack Hub.
-- Occurrence: Common
-
-#### VPN troubleshooter
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, the **Connections** blade displays a feature called **VPN Troubleshooter**. This feature is currently not supported in Azure Stack Hub.
-- Occurrence: Common
 
 #### Documentation
 

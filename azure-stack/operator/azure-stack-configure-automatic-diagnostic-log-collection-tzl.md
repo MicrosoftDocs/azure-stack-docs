@@ -10,7 +10,7 @@ ms.reviewer: shisab
 ms.lastreviewed: 02/12/2020
 
 ---
-# Configure proactive log collection
+# Send Azure Stack Hub diagnostic logs proactively
 
 You can save time with customer support by proactively collecting diagnostic logs when an alert gets raised on Azure Stack Hub.
 If system health conditions need to be investigated, the logs can be uploaded automatically for analysis before opening a support case with Microsoft Customer Support Services (CSS). 

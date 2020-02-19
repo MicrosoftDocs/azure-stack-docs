@@ -59,7 +59,7 @@ This section looks at creating an API model for your cluster.
     ```
 
     > [!Note]  
-    > If you're using Azure AD for your identity system, you don't need add the **identitySystem** field.
+    > If you're using Azure AD for your identity system, you don't need to add the **identitySystem** field.
 
 6. Find `portalURL` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`.
 
