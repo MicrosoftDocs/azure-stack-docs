@@ -2,11 +2,11 @@
 title: SQL resource provider maintenance operations
 titleSuffix: Azure Stack Hub
 description: Learn about SQL resource provider maintenance operations on Azure Stack Hub.
-author: mattbriggs
+author: bryanla
 
 ms.topic: article
 ms.date: 10/02/2019
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
 ---
@@ -29,7 +29,7 @@ You're responsible for creating and maintaining sysadmin accounts on your SQL se
 
 To modify the settings, select **Browse** &gt; **ADMINISTRATIVE RESOURCES** &gt; **SQL Hosting Servers** &gt; **SQL Logins** and select a user name. The change must be made on the SQL instance first (and any replicas, if necessary.) Under **Settings**, select **Password**.
 
-![Update the SQL admin password](./media/azure-stack-sql-rp-deploy/sqlrp-update-password.PNG)
+![Update the SQL admin password](./media/azure-stack-sql-rp-deploy/sql-rp-update-password.png)
 
 ## Secrets rotation
 

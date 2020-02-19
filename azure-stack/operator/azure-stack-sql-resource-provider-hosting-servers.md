@@ -2,11 +2,11 @@
 title: Add hosting servers for the SQL resource provider
 titleSuffix: Azure Stack Hub
 description: Learn how to add hosting servers for provisioning through the SQL resource provider adapter.
-author: mattbriggs
+author: bryanla
 
 ms.topic: article
 ms.date: 10/02/2019
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
 
@@ -80,11 +80,11 @@ To add a standalone hosting server that's already set up, follow these steps:
 
    Under **SQL Hosting Servers**,  you can connect the SQL resource provider to instances of SQL Server that will serve as the resource provider's backend.
 
-   ![SQL Adapter dashboard in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sqlrp-hostingserver.png)
+   ![SQL Adapter dashboard in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sql-rp-hosting-server.png)
 
 3. Click **Add** and then provide the connection details for your SQL Server instance on the **Add a SQL Hosting Server** blade.
 
-   ![Add a SQL Hosting Server in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sqlrp-newhostingserver.png)
+   ![Add a SQL Hosting Server in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sql-rp-new-hosting-server.png)
 
     Optionally, provide an instance name, and specify a port number if the instance isn't assigned to the default port of 1433.
 
@@ -96,7 +96,7 @@ To add a standalone hosting server that's already set up, follow these steps:
    * To use an existing SKU, choose an available SKU and then select **Create**.
    * To create a SKU, select **+ Create new SKU**. In **Create SKU**, enter the required information, and then select **OK**.
 
-     ![Create a SKU in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sqlrp-newsku.png)
+     ![Create a SKU in Azure Stack Hub administrator portal](./media/azure-stack-sql-rp-deploy/sqlrp-new-sku.png)
 
 ## Provide high availability using SQL Always On Availability Groups
 

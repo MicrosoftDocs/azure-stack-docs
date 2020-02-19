@@ -3,7 +3,7 @@ title: Configure the time server for Azure Stack Hub
 description: Learn how to configure the time server for Azure Stack Hub.
 author: ihenkel
 ms.topic: article
-ms.date: 1/22/2020
+ms.date: 2/19/2020
 ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 10/10/2019
@@ -35,10 +35,16 @@ Providing one time server (NTP) is required for Azure Stack Hub to synchronize t
 3. Run the following command to update Azure Stack Hub to use the new NTP Server and to immediately synchronize the time.
 
     > [!Note]  
-    > This procedure don't update the time server on the physical switches
+    > This procedure doesn't update the time server on the physical switches. If you time server is a not a Windows based NTP server, you need to add the flag `0x8`.
 
     ```PowerShell
     Set-AzsTimeSource -TimeServer NEWTIMESERVERIP -resync
+    ```
+
+    For servers other than Windows-based time servers:
+
+    ```PowerShell
+    Set-AzsTimeSource -TimeServer "NEWTIMESERVERIP,0x8" -resync
     ```
 
 4. Review the output of the command for any errors.

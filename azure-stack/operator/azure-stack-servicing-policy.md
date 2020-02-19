@@ -5,7 +5,7 @@ description: Learn about the Azure Stack Hub servicing policy and how to keep an
 author: sethmanheim
 
 ms.topic: article
-ms.date: 10/30/2019
+ms.date: 02/07/2020
 ms.author: sethm
 ms.reviewer: harik
 ms.lastreviewed: 01/11/2019
@@ -74,6 +74,9 @@ Microsoft software update packages are non-cumulative and require the previous u
 
 Azure Stack Hub follows the same support process as Azure. Enterprise customers can follow the process described in [How to create an Azure support request](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). If you're a customer of a Cloud Solution Provider (CSP), contact your CSP for support. For more information, see the [Azure Support FAQs](https://azure.microsoft.com/support/faq/).
 
+For help troubleshooting update issues, see [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-updates-troubleshoot.md).
+
 ## Next steps
 
 - [Manage updates in Azure Stack Hub](azure-stack-updates.md)
+- [Best practices for troubleshooting Azure Stack Hub patch and update issues](azure-stack-updates-troubleshoot.md)

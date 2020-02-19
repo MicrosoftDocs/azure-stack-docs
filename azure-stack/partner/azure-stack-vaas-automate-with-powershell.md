@@ -1,19 +1,18 @@
 ---
-title: Automate Azure Stack Validation with PowerShell 
-description: You can automate Azure Stack Validation with PowerShell.
+title: Automate Azure Stack validation with PowerShell
+titleSuffix: Azure Stack Hub
+description: Learn how to automate Azure Stack validation with PowerShell.
 author: mattbriggs
-
 ms.topic: tutorial
 ms.date: 11/26/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2019
-
 ROBOTS: NOINDEX
 
 ---
 
-# Automate Azure Stack validation with PowerShell
+# Automate Azure Stack Hub validation with PowerShell
 
 Validation as a Service (VaaS) provides the ability to automate the launching of tests using the **RunVaaSAutomation.ps1** script.
 
@@ -27,7 +26,7 @@ This script can be used to:
 
 The following links contain information about how to run tests via the VaaS portal. Before using the script, you should learn about the required parameters and their values:
 
-* SolutionValidation Workflow: [Validate a new Azure Stack solution](azure-stack-vaas-validate-solution-new.md)
+* SolutionValidation Workflow: [Validate a new Azure Stack Hub solution](azure-stack-vaas-validate-solution-new.md)
 * PackageValidation Workflow: [Validate OEM packages](azure-stack-vaas-validate-oem-package.md)
 * TestPass Workflow: [Scheduling a test](azure-stack-vaas-schedule-test-pass.md)
 
@@ -256,8 +255,8 @@ For more information, see [Workflow common parameters](azure-stack-vaas-paramete
 | VaaSAccountUserName | Your VaaS user name for VaaS Portal. |
 | VaaSAccountPassword | Your VaaS password for VaaS Portal. |
 | VaaSAccountTenantId | Your VaaS tenant GUID. |
-| ServiceAdminUserName | Your Azure Stack service admin account.  |
-| ServiceAdminPassword | Your Azure Stack service password.  |
+| ServiceAdminUserName | Your Azure Stack Hub service admin account.  |
+| ServiceAdminPassword | Your Azure Stack Hub service password.  |
 | TenantAdminUserName | The administrator for the primary tenant.  |
 | TenantAdminPassword | The password for the primary tenant.  |
 | CloudAdminUserName | The cloud administrator username.  |
@@ -274,6 +273,6 @@ For other options, see [Monitor and manage tests in the VaaS portal](azure-stack
 
 ## Next steps
 
-To learn more about PowerShell on Azure Stack, review the latest modules.
+To learn more about PowerShell on Azure Stack Hub, review the latest modules.
 
-- [Azure Stack module](/powershell/azure/azure-stack/overview?view=azurestackps-1.6.0)
+- [Azure Stack Hub module](/powershell/azure/azure-stack/overview?view=azurestackps-1.6.0)

@@ -1,10 +1,10 @@
 ---
 title: Create MySQL databases in Azure Stack Hub 
 description: Learn how to create and manage MySQL databases provisioned using the MySQL Adapter Resource Provider in Azure Stack Hub.
-author: mattbriggs
+author: bryanla
 ms.topic: article
 ms.date: 1/22/2020
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: xiaofmao
 ms.lastreviewed: 10/16/2018
 
@@ -19,7 +19,7 @@ An Azure Stack Hub user that's subscribed to an offer that includes the MySQL da
 2. Select **+ Create a resource** > **Data + Storage** > **MySQL Database** > **Add**.
 3. Under **Create MySQL Database**, enter the Database Name, and configure the other settings as required for your environment.
 
-    ![Create a test MySQL database](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)
+    ![Create a test MySQL database](./media/azure-stack-mysql-rp-deploy/mysql-create-db-a.png)
 
 4. Under **Create Database**, select **SKU**. Under **Select a MySQL SKU**, pick the SKU for your database.
 
@@ -40,7 +40,7 @@ An Azure Stack Hub user that's subscribed to an offer that includes the MySQL da
 
 After the database is deployed, take note of the **Connection String** under **Essentials**. You can use this string in any application that needs to access the MySQL database.
 
-![Get the connection string for the MySQL database](./media/azure-stack-mysql-rp-deploy/mysql-db-created.png)
+![Get the connection string for the MySQL database](./media/azure-stack-mysql-rp-deploy/mysql-db-created-a.png)
 
 ## Update the administrative password
 
