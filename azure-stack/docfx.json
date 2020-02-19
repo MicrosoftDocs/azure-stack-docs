@@ -2,7 +2,78 @@
   "build": {
     "content": [
       {
-        "group": "all",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },
+      {
+        "group": "asdk",
+        "src" : "asdk",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },
+      {
+        "group": "operator",
+        "src" : "operator",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },
+      {
+        "group": "partner",
+        "src" : "partner",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },      
+      {
+        "group": "user",
+        "src" : "user",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -68,10 +139,22 @@
     "dest": "AzureStack",
     "markdownEngineName": "markdig",
     "groups": {
-      "all": {
-        "dest": "all",
+      "asdk": {
+        "dest": "asdk",
         "moniker_range": ">=azs-1802"
-      }
+      },
+      "operator": {
+        "dest": "operator",
+        "moniker_range": ">=azs-1802"
+      },
+      "partner": {
+        "dest": "partner",
+        "moniker_range": ">=azs-1802"
+      },
+      "user": {
+        "dest": "user",
+        "moniker_range": ">=azs-1802"
+      }                  
     }
   }
 }
