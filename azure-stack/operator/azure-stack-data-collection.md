@@ -37,7 +37,7 @@ For the automated data deletion action (90 days after case close), we don't proa
 For the on-demand data deletion action, Microsoft support engineers have access to the tool that lets them delete data on demand. They can provide confirmation on the phone with the customer when it's done.
 
 ## Diagnostic data
-As part of the support process, Azure Stack Hub Operators can [share diagnostic logs](azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs) with Azure Stack Hub support and engineering teams to help with troubleshooting.
+As part of the support process, Azure Stack Hub Operators can [share diagnostic logs](azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md) with Azure Stack Hub support and engineering teams to help with troubleshooting.
 
 Microsoft provides a tool and script for customers to collect and upload requested diagnostic log files. Once collected, the log files are transferred over an HTTPS protected encrypted connection to Microsoft. Because HTTPS provides the encryption over the wire, there's no password needed for the encryption in transit. After they're received, logs are encrypted and stored until they're automatically deleted 90 days after the support case is closed.
 
