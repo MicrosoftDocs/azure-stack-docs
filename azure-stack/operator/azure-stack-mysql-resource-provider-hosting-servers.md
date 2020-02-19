@@ -10,7 +10,16 @@ ms.lastreviewed: 11/06/2019
 
 ---
 
-# Configure external access to the MySQL hosting server
+# Add MySQL hosting servers in Azure Stack Hub
+
+You can host a MySQL hosting server instance on a virtual machine (VM) in [Azure Stack Hub](azure-stack-overview.md), or on a VM outside your Azure Stack Hub environment, as long as the MySQL resource provider can connect to the instance.
+
+> [!NOTE]
+> The MySQL resource provider should be created in the default provider subscription while MySQL hosting servers should be created in billable, user subscriptions. The resource provider server shouldn't be used to host user databases.
+
+MySQL versions 5.6, 5.7 and 8.0 may be used for your hosting servers. The MySQL RP doesn't support caching_sha2_password authentication; that will be added in the next release. MySQL 8.0 servers must be configured to use mysql_native_password. MariaDB is also supported.
+
+## Configure external access to the MySQL hosting server
 
 Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, external access must be enabled. Take BitNami MySQL which is available in Azure Stack Hub marketplace as an example, you can take the following steps to configure the external access.
 
@@ -42,15 +51,6 @@ Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, ex
 4. Record the new MySQL user information.
 
 This username and password will be used while Azure Stack Hub operator create a MySQL hosting server using this MySQL server.
-
-# Add MySQL hosting servers in Azure Stack Hub
-
-You can host a MySQL hosting server instance on a virtual machine (VM) in [Azure Stack Hub](azure-stack-overview.md), or on a VM outside your Azure Stack Hub environment, as long as the MySQL resource provider can connect to the instance.
-
-> [!NOTE]
-> The MySQL resource provider should be created in the default provider subscription while MySQL hosting servers should be created in billable, user subscriptions. The resource provider server shouldn't be used to host user databases.
-
-MySQL versions 5.6, 5.7 and 8.0 may be used for your hosting servers. The MySQL RP doesn't support caching_sha2_password authentication; that will be added in the next release. MySQL 8.0 servers must be configured to use mysql_native_password. MariaDB is also supported.
 
 ## Connect to a MySQL hosting server
 
