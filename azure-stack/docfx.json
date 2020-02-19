@@ -58,7 +58,7 @@
       },
       "monikerRange": {
         "asdk/**": ">=azs-1802",
-        "hybrid/**": ">=azs-1802",
+        "hybrid/**": ">=azs-1910",
         "operator/**": ">=azs-1802",
         "partner/**": ">=azs-1802",
         "user/**": ">=azs-1802"
