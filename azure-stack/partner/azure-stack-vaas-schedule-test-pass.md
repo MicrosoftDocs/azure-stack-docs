@@ -1,7 +1,7 @@
 ---
 title: Schedule a test in VaaS
 titleSuffix: Azure Stack Hub
-description: Learn how use the validation as a service for Azure Stack Hub portal to schedule your first test.
+description: Learn how to use the validation as a service for Azure Stack Hub portal to schedule your first test.
 author: mattbriggs
 ms.topic: conceptual
 ms.date: 11/11/2019
