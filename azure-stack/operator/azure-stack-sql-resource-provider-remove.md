@@ -2,11 +2,11 @@
 title: Remove the SQL resource provider
 titleSuffix: Azure Stack Hub
 description: Learn how to remove the SQL resource provider from your Azure Stack Hub deployment.
-author: mattbriggs
+author: bryanla
 
 ms.topic: article
 ms.date: 10/02/2019
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/20/2018
 

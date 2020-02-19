@@ -1,10 +1,10 @@
 ---
 title: Remove the MySQL resource provider in Azure Stack Hub 
 description: Learn how to remove the MySQL resource provider from your Azure Stack Hub deployment.
-author: mattbriggs
+author: bryanla
 ms.topic: article
 ms.date: 1/22/2020
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/20/2018
 
