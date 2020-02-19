@@ -104,4 +104,4 @@ If you don't have an existing test pass available, follow the directions for [sc
 
 ## Next steps
 
-- [Monitor and manage tests in the VaaS portal](azure-stack-vaas-monitor-test.md)
+- [Monitor and manage tests in the Azure Stack Hub Validation portal](azure-stack-vaas-monitor-test.md)
