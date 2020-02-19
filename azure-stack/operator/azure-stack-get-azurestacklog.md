@@ -10,7 +10,7 @@ ms.reviewer: shisab
 ms.lastreviewed: 02/18/2020
 
 ---
-# Use the privileged endpoint (PEP) to collect diagnostic logs
+# Send Azure Stack Hub diagnostic logs by using the privileged endpoint (PEP)
 
 <!--how do you look up the PEP IP address. You look up the azurestackstampinfo.json--->
 

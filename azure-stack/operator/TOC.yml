@@ -454,6 +454,8 @@
             href: azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md
           - Name: Use the privileged endpoint (PEP)
             href: azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md
+        - name: Send logs using (PEP)
+          href: azure-stack-get-azurestacklog.md    
     - name: Validation for Azure Stack Hub  
       href: azure-stack-diagnostic-test.md
     - name: Troubleshooting

@@ -10,7 +10,7 @@ ms.reviewer: shisab
 ms.lastreviewed: 02/18/2020
 
 ---
-# Send diagnostic logs now
+# Send Azure Stack Hub diagnostic logs now
 
 Azure Stack operators can send diagnostics logs to Microsoft, before requesting support, by using the Administrator portal or PowerShell. Using the Administrator portal is recommended over PowerShell because it's simpler. But if the portal is unavailable, operators can then use the privileged endpoint (PEP).
 
@@ -33,8 +33,10 @@ Specify the start time and end time for log collection and click **Collect and U
 
 ## Using PowerShell
 
+Replace the <Computer name> 
+
 ```powershell
-$session = New-PSSession -ComputerName S11R1804-ERCS01 -ConfigurationName PrivilegedEndpoint -Credential $cred
+$session = New-PSSession -ComputerName <Computer name> -ConfigurationName PrivilegedEndpoint -Credential $cred
 $stampinfo=Invoke-Command -Session $session { Get-Azurestackstampinformation }
 $stampinfo.CloudId
 $stampinfo=Invoke-Command -Session $session { Send-AzureStackDiagnosticLog }
