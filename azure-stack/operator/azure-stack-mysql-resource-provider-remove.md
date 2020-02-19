@@ -17,16 +17,7 @@ Before you remove the MySQL resource provider, you must remove all the provider 
 > [!NOTE]
 > You can find the download links for the resource provider installers in [Deploy the resource provider prerequisites](./azure-stack-mysql-resource-provider-deploy.md#prerequisites).
 
-Removing the MySQL resource provider doesn't delete tenant databases from hosting servers.
-
-## Dependency cleanup
-
-There are several cleanup tasks to do before you run the DeployMySqlProvider.ps1 script to remove the resource provider.
-
-The Azure Stack Hub Operator is responsible for the following cleanup tasks:
-
-* Delete any plans that reference the MySQL Adapter.
-* Delete any quotas that are associated with the MySQL Adapter.
+Removing the MySQL resource provider will delete the associated plans and quotas managed by operator. But it doesn't delete tenant databases from hosting servers.
 
 ## To remove the MySQL resource provider
 

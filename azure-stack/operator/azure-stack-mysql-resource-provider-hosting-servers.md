@@ -19,6 +19,39 @@ You can host a MySQL hosting server instance on a virtual machine (VM) in [Azure
 
 MySQL versions 5.6, 5.7 and 8.0 may be used for your hosting servers. The MySQL RP doesn't support caching_sha2_password authentication; that will be added in the next release. MySQL 8.0 servers must be configured to use mysql_native_password. MariaDB is also supported.
 
+## Configure external access to the MySQL hosting server
+
+Before the MySQL server can be added as an Azure Stack Hub MySQL Server host, external access must be enabled. Take BitNami MySQL which is available in Azure Stack Hub marketplace as an example, you can take the following steps to configure the external access.
+
+1. Using an SSH client (this example uses [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html)) log in to the MySQL server from a computer that can access the public IP.
+
+    Use the public IP and log in to the VM with the username of **bitnami** and the application password you created earlier without special characters.
+
+   ![LinuxLogin](media/azure-stack-tutorial-mysqlrp/bitnami1.png)
+
+2. In the SSH client window, use the following command to ensure the bitnami service is active and running. Provide the bitnami password again when prompted:
+
+   `sudo service bitnami status`
+
+   ![Check bitnami service](media/azure-stack-tutorial-mysqlrp/bitnami2.png)
+
+3. Create a remote access user account to be used by the Azure Stack Hub MySQL Hosting Server to connect to MySQL and then exit the SSH client.
+
+    Run the following commands to log in to MySQL as root, using the root password created earlier. Create a new admin user and replace *\<username\>* and *\<password\>* as required for your environment. In this example, the created user is named **sqlsa** and a strong password is used:
+
+   ```mysql
+   mysql -u root -p
+   create user <username>@'%' identified by '<password>';
+   grant all privileges on *.* to <username>@'%' with grant option;
+   flush privileges;
+   ```
+
+   ![Create admin user](media/azure-stack-tutorial-mysqlrp/bitnami3.png)
+
+4. Record the new MySQL user information.
+
+This username and password will be used while Azure Stack Hub operator create a MySQL hosting server using this MySQL server.
+
 ## Connect to a MySQL hosting server
 
 Make sure you have the credentials for an account with system admin privileges.
