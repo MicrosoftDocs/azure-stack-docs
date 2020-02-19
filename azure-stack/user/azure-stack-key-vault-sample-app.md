@@ -4,7 +4,7 @@ description: Learn how to run a sample app that retrieves keys and secrets from 
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 01/06/2020
+ms.date: 02/19/2020
 ms.author: sethm
 ms.lastreviewed: 04/08/2019
 
@@ -139,9 +139,17 @@ To load the **HelloKeyVault** sample:
 In Visual Studio:
 
 1. Open the HelloKeyVault\App.config file and find the `<appSettings>` element.
-2. Update the **VaultUrl**, **AuthClientId**, and **AuthClientSecret** keys with the values returned when creating the key vault. By default, the App.config file has a placeholder for `AuthCertThumbprint`. Replace this placeholder with `AuthClientSecret`.
+2. Update the **VaultUrl**, **AuthClientId**, and **AuthCertThumbprint** keys with the values returned when creating the key vault. By default, the App.config file has a placeholder for `AuthCertThumbprint`. Replace this placeholder with `AuthClientSecret`.
 
-   ![App settings](media/azure-stack-key-vault-sample-app/appconfig.png)
+   ```xml
+   <appSettings>
+    <!-- Update these settings for your test environment -->
+    <add key="VaultUrl" value="URL to your Vault" />
+    <add key="AuthClientId" value="Client Id of your Service Principal" />
+    <add key="AuthCertThumbprint" value="Thumbprint of the certificate used for authentication" />
+    <add key="TracingEnabled" value="false" />
+   </appSettings>
+   ```
 
 3. Rebuild the solution.
 
