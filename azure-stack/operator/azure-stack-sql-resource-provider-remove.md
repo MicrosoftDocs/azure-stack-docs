@@ -19,7 +19,7 @@ Before you remove the SQL resource provider, you must remove all the provider de
 > [!NOTE]
 > You can find the download links for the resource provider installers in [Deploy the resource provider prerequisites](./azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
-Removing the SQL resource provider will delete the associated plans and quotas. But it doesn't delete tenant databases from hosting servers.
+Removing the SQL resource provider will delete the associated plans and quotas managed by operator. But it doesn't delete tenant databases from hosting servers.
 
 ## To remove the SQL resource provider
 
