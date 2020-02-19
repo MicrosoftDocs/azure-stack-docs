@@ -1,16 +1,13 @@
 ---
-title: Tutorial - set up resources for Validation as a Service 
-description: In this tutorial, learn how to set up resources for Validation as a Service.
+title: Set up resources for validation as a service
+titleSuffix: Azure Stack Hub
+description: Learn how to set up resources for Azure Stack Hub validation as a service.
 author: mattbriggs
-
 ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
-
-
-
 ROBOTS: NOINDEX
 
 # Customer intent: As a system engineer at a partner OEM, I need to create a solution to check for a new, unique set of hardware intended to run Azure Stack Hub, so I can validate that my hardware runs Azure Stack Hub.
