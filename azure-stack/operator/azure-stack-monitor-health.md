@@ -1,11 +1,11 @@
 ---
 title: Monitor health and alerts in Azure Stack Hub 
 description: Learn how to monitor health and alerts in Azure Stack Hub.
-author: ihenkel
+author: IngridAtMicrosoft
 
 ms.topic: article
 ms.date: 1/22/2020
-ms.author: inhenkel
+author: inhenkel
 ms.lastreviewed: 01/18/2019
 
 ---
