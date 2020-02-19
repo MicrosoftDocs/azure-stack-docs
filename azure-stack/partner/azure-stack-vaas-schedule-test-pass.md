@@ -1,20 +1,18 @@
 ---
-title: Use the Validation as a Service for Azure Stack Hub portal to schedule your first test 
-description: Use the Validation as a Service for Azure Stack Hub portal to schedule your first test.
+title: Schedule a test in VaaS
+titleSuffix: Azure Stack Hub
+description: Learn how use the validation as a service for Azure Stack Hub portal to schedule your first test.
 author: mattbriggs
-
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
 
-
-
 # Customer intent: As a partner OEM, I want to let the service test my hardware bill of materials to check that it can run Azure Stack Hub.
 ---
 
-# Scheduling a test
+# Schedule a test in validation as a service
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
