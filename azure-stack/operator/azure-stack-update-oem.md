@@ -5,7 +5,7 @@ author: IngridAtMicrosoft
 
 ms.topic: article
 ms.date: 10/15/2019
-author: inhenkel
+ms.author: inhenkel
 ms.lastreviewed: 08/15/2019
 ms.reviewer: ppacent 
 

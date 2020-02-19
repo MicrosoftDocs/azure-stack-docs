@@ -4,7 +4,7 @@ description: Learn about Azure disconnected deployment of Azure Stack Hub integr
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 11/01/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: wfayed
 ms.lastreviewed: 11/01/2019
 ---

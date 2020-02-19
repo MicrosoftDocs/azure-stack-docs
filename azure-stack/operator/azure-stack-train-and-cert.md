@@ -5,7 +5,7 @@ description: Learn about Azure Stack Hub training certification opportunities.
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 11/11/2019
-author: inhenkel
+ms.author: inhenkel
 ms.lastreviewed: 11/11/2019
 ms.reviewer: efemmano
 

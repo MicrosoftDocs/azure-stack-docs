@@ -4,7 +4,7 @@ description: Determine deployment planning decisions for Azure-connected deploym
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 1/22/2020
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: wfayed
 ms.lastreviewed: 11/05/2018
 ---

@@ -5,7 +5,7 @@ description: Learn how to replace a hardware component on an Azure Stack Hub int
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 07/18/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: thoroet 
 ms.lastreviewed: 07/18/2019
 

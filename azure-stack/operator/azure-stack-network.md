@@ -4,7 +4,7 @@ description: Learn how to plan for datacenter network integration with Azure Sta
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 02/18/2020
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: wamota
 ms.lastreviewed: 06/04/2019
 ---

@@ -7,7 +7,7 @@ documentationcenter: ''
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 06/10/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: jerskine
 ms.lastreviewed: 06/10/2019
 

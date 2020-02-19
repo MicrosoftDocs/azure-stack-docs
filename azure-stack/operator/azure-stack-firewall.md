@@ -4,7 +4,7 @@ description: Learn about Azure Stack Hub firewall integration for Azure Stack Hu
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 11/15/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 11/15/2019
 

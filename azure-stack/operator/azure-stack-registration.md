@@ -6,7 +6,7 @@ author: IngridAtMicrosoft
 
 ms.topic: article
 ms.date: 2/02/2020
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: avishwan
 ms.lastreviewed: 03/04/2019
 

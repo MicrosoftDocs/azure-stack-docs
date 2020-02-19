@@ -4,7 +4,7 @@ description: Learn how to integrate Azure Stack Hub AD FS identity provider with
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 05/10/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 05/10/2019
 ---

@@ -4,7 +4,7 @@ description: Learn how to plan and prepare for datacenter integration with Azure
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 1/22/2020
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2018
 ---

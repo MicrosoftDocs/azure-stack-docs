@@ -5,7 +5,7 @@ description: Use the Azure Stack Hub Readiness Checker tool to generate a valida
 author: IngridAtMicrosoft
 ms.topic: conceptual
 ms.date: 01/07/2020
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: unknown
 ms.lastreviewed: 10/23/2018
 ---

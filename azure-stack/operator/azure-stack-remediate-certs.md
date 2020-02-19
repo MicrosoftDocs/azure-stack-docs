@@ -5,7 +5,7 @@ description: Fix common issues with Azure Stack Hub PKI certificates using the A
 author: IngridAtMicrosoft
 ms.topic: conceptual
 ms.date: 10/03/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: unknown
 ms.lastreviewed: 11/19/2018
 

@@ -4,7 +4,7 @@ description: Learn how to integrate physical device access auditing with your Az
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 06/10/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 06/10/2019
 ---

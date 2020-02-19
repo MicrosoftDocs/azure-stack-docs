@@ -5,7 +5,7 @@ author: IngridAtMicrosoft
 
 ms.topic: conceptual
 ms.date: 06/03/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/14/2019
 

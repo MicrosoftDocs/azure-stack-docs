@@ -4,7 +4,7 @@ description: PowerShell cmdlet help for the Azure Stack Hub Readiness Checker mo
 author: IngridAtMicrosoft
 ms.topic: conceptual
 ms.date: 01/07/2020
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: unknown
 ms.lastreviewed: 05/09/2019
 ---

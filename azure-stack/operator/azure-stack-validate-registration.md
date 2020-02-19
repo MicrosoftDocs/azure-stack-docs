@@ -5,7 +5,7 @@ description: Learn how to validate Azure registration with the Azure Stack Hub R
 author: IngridAtMicrosoft
 ms.topic: conceptual
 ms.date: 10/03/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
 

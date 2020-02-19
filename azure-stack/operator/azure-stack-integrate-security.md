@@ -4,7 +4,7 @@ description: Learn how to integrate Azure Stack Hub with monitoring solutions us
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 01/10/2020
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/10/2020
 ---

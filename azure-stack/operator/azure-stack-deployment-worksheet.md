@@ -4,7 +4,7 @@ description: Learn how to install and use the deployment worksheet tool to deplo
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 04/19/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: wamota
 ms.lastreviewed: 04/19/2019
 ---

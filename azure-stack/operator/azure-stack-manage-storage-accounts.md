@@ -5,7 +5,7 @@ author: IngridAtMicrosoft
 
 ms.topic: conceptual
 ms.date: 1/22/2020
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/19/2019
 

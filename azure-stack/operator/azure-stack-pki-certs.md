@@ -4,7 +4,7 @@ description: Learn about the Azure Stack Hub PKI certificate deployment requirem
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 12/16/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: ppacent
 ms.lastreviewed: 12/16/2019
 ---

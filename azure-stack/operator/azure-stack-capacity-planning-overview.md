@@ -5,7 +5,7 @@ description: Learn about capacity planning for Azure Stack Hub deployments.
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 05/31/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
 ---

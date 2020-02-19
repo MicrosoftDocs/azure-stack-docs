@@ -4,7 +4,7 @@ description: Learn how to use the Azure Stack Hub Capacity Planner spreadsheet f
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 05/31/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
 ---

@@ -6,7 +6,7 @@ author: IngridAtMicrosoft
 
 ms.topic: conceptual
 ms.date: 1/22/2020
-author: inhenkel
+ms.author: inhenkel
 ms.lastreviewed: 01/18/2019
 
 ---

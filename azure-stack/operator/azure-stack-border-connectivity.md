@@ -4,7 +4,7 @@ description: Learn how to plan for datacenter border network connectivity in Azu
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 11/15/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: wamota
 ms.lastreviewed: 11/15/2019
 ---

@@ -5,7 +5,7 @@ description: Use the Azure Stack Hub Readiness Checker to validate Azure identit
 author: IngridAtMicrosoft
 ms.topic: conceptual
 ms.date: 06/24/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
 ---

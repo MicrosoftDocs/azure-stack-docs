@@ -4,7 +4,7 @@ description: Learn what you can customize on your Azure Stack Hub switch configu
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 11/11/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: wamota
 ms.lastreviewed: 11/11/2019
 ---

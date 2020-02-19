@@ -4,7 +4,7 @@ description: Learn what to expect for a successful on-site deployment of Azure S
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 11/07/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: asganesh
 ms.lastreviewed: 11/07/2019
 ---

@@ -5,7 +5,7 @@ description: Learn about network traffic flow during Azure Stack Hub deployment.
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 12/05/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: wamota
 ms.lastreviewed: 12/05/2019
 ---

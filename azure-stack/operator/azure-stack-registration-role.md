@@ -5,7 +5,7 @@ description: Learn how to create a custom role to avoid using global administrat
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 06/10/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: rtiberiu
 ms.lastreviewed: 06/10/2019
 

@@ -5,7 +5,7 @@ description: Learn how to prepare PKI certificates for Azure Stack Hub integrate
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 09/16/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: ppacent
 ms.lastreviewed: 09/16/2019
 ---

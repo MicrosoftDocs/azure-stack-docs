@@ -4,7 +4,7 @@ description: Learn how to integrate Azure Stack Hub with an external monitoring 
 author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 06/05/2019
-author: inhenkel
+ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 06/05/2019
 ---
