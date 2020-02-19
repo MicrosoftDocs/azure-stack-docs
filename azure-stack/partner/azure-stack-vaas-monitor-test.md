@@ -1,7 +1,7 @@
 ---
-title: Manage tests in VaaS portal
+title: Manage tests in the Azure Stack Hub Validation portal
 titleSuffix: Azure Stack Hub
-description: Learn how to manage tests in the Azure Stack Hub VaaS portal.
+description: Learn how to manage tests in the Azure Stack Hub Validation portal.
 author: mattbriggs
 ms.topic: tutorial
 ms.date: 11/11/2019
@@ -12,11 +12,11 @@ ROBOTS: NOINDEX
 
 ---
 
-# Manage tests in the VaaS portal
+# Manage tests in the Azure Stack Hub Validation portal
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-After scheduling tests against your Azure Stack Hub solution, validation as a service (VaaS) will begin reporting test execution status. This information is available in the VaaS portal along with actions like rescheduling and canceling tests.
+After scheduling tests against your Azure Stack Hub solution, validation as a service (VaaS) will begin reporting test execution status. This information is available in the Azure Stack Hub Validation portal along with actions like rescheduling and canceling tests.
 
 ## Navigate to the workflow tests summary page
 
