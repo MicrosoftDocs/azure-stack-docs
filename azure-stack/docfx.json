@@ -20,6 +20,7 @@
       {
         "group": "asdk",
         "src" : "asdk",
+        "dest" : "asdk",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -38,6 +39,7 @@
       {
         "group": "operator",
         "src" : "operator",
+        "dest" : "operator",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -56,6 +58,7 @@
       {
         "group": "partner",
         "src" : "partner",
+        "dest" : "partner",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -74,6 +77,7 @@
       {
         "group": "user",
         "src" : "user",
+        "dest" : "user",
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -92,7 +96,6 @@
     ],
     "resource": [
       {
-        "group": "all",
         "files": [
           "**/*.png",
           "**/*.jpg",
@@ -127,13 +130,6 @@
         "**/*.md": "Azure Stack Hub",
         "asdk/**/*.md": "Azure Stack Hub Development Kit (ASDK)"
       },
-      "monikerRange": {
-        "asdk/**": ">=azs-1802",
-        "hybrid/**": ">=azs-1910",
-        "operator/**": ">=azs-1802",
-        "partner/**": ">=azs-1802",
-        "user/**": ">=azs-1802"
-      }
     },
     "template": [],
     "dest": "AzureStack",
