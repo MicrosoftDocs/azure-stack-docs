@@ -1,7 +1,7 @@
 ---
-title: Set up resources for validation as a service
+title: Set up identity and storage resources for VaaS
 titleSuffix: Azure Stack Hub
-description: Learn how to set up resources for Azure Stack Hub validation as a service.
+description: Learn how to set up identity and storage resources for Azure Stack Hub validation as a service.
 author: mattbriggs
 ms.topic: tutorial
 ms.date: 1/22/2020
@@ -13,7 +13,7 @@ ROBOTS: NOINDEX
 # Customer intent: As a system engineer at a partner OEM, I need to create a solution to check for a new, unique set of hardware intended to run Azure Stack Hub, so I can validate that my hardware runs Azure Stack Hub.
 ---
 
-# Tutorial: Set up resources for Validation as a Service
+# Set up identity and storage resources for Validation as a Service
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
