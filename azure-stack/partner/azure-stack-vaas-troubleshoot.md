@@ -22,14 +22,14 @@ The following are common problems unrelated to software releases and their solut
 
 ### The portal shows local agent in debug mode
 
-This is likely because the agent is unable to send heartbeats to the service because of an unstable network connection. A heartbeat is sent every five minutes. If the service doesn't receive a heartbeat for 15 minutes, then the service considers the agent inactive and tests will no longer be scheduled on it. Check the error message in the *Agenthost.log* file located in the directory where the agent was started.
+This problem is likely because the agent is unable to send heartbeats to the service because of an unstable network connection. A heartbeat is sent every five minutes. If the service doesn't receive a heartbeat for 15 minutes, then the service considers the agent inactive and tests will no longer be scheduled on it. Check the error message in the *Agenthost.log* file located in the directory where the agent was started.
 
 > [!Note]
 > Any tests already running on the agent will continue to run, but if the heartbeat isn't restored before the test ends, the agent will fail to update the test status or upload logs. The test will always show up as **running** and will need to be canceled.
 
 ### Agent process on machine was shut down while executing test. What to expect?
 
-If the agent process is shut down ungracefully then the test that was running on it will continue to show as **running**. An example of an ungraceful shutdown is machine restarted and process killed (CTRL+C on the agent window is considered graceful shutdown). If the agent is restarted, then the agent will update the status of the test to **canceled**. If the agent isn't restarted, then the test appears as **running** and you must manually cancel the test.
+If the agent process is shut down ungracefully, then the test that was running on it will continue to show as **running**. An example of an ungraceful shutdown is machine restarted and process killed (CTRL+C on the agent window is considered graceful shutdown). If the agent is restarted, then the agent will update the status of the test to **canceled**. If the agent isn't restarted, then the test appears as **running** and you must manually cancel the test.
 
 > [!Note]
 > Tests within a workflow are scheduled to run sequentially. **Pending** tests won't get executed until tests in the **running** state in the same workflow complete.
@@ -84,7 +84,7 @@ First check that the environment is healthy:
 1. From the DVM / jump box, check that you can successfully sign in to the administrator portal using the admin credentials.
 1. Confirm that there are no alerts or warnings.
 
-If the environment is healthy, manually upload the 5 VM Images required for VaaS test runs:
+If the environment is healthy, manually upload the five VM Images required for VaaS test runs:
 
 1. Sign in as the service admin to the administrator portal. You can find the administrator portal URL from ECE store or your stamp information file. For instructions, see [Environment parameters](azure-stack-vaas-parameters.md#environment-parameters).
 1. Select **More services** > **Resource Providers** > **Compute** > **VM Images**.
@@ -105,7 +105,7 @@ If the environment is healthy, manually upload the 5 VM Images required for VaaS
 1. Select the **Create** button.
 1. Repeat for the remaining VM images.
 
-The properties of all 5 VM images are as follows:
+The properties of all five VM images are as follows:
 
 | Publisher  | Offer  | OS Type | SKU | Version | OS Disk Blob URI |
 |---------|---------|---------|---------|---------|---------|
