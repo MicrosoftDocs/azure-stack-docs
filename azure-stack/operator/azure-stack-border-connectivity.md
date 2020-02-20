@@ -1,7 +1,7 @@
 ---
 title: Border connectivity and network integration for Azure Stack Hub integrated systems 
 description: Learn how to plan for datacenter border network connectivity in Azure Stack Hub integrated systems.
-author: ihenkel
+author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: inhenkel
