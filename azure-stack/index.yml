@@ -41,7 +41,7 @@ productDirectory:
   - title: Azure Stack HCI
     imageSrc: media/index/azure-stack-hci.svg
     links:
-      - url: /azure-stack/operator/azure-stack-hci-overview
+      - url: /azure-stack/hci/overview
         text: Azure Stack HCI overview
 
 # conceptualContent section (optional)
