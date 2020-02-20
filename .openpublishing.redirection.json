@@ -315,6 +315,11 @@
       "source_path": "azure-stack/operator/azure-stack-update-plan.md",
       "redirect_url": "/azure-stack/operator/release-notes-checklist",
       "redirect_document_id": false
-      }
+      },
+    { 
+      "source_path": "azure-stack/operator/azure-stack-hci-overview.md", 
+      "redirect_url": "/azure-stack/hci/overview", 
+      "redirect_document_id": true 
+      } 
   ]
 }
