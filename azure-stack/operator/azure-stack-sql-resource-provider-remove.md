@@ -2,11 +2,11 @@
 title: Remove the SQL resource provider
 titleSuffix: Azure Stack Hub
 description: Learn how to remove the SQL resource provider from your Azure Stack Hub deployment.
-author: mattbriggs
+author: bryanla
 
 ms.topic: article
 ms.date: 10/02/2019
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/20/2018
 
@@ -19,16 +19,7 @@ Before you remove the SQL resource provider, you must remove all the provider de
 > [!NOTE]
 > You can find the download links for the resource provider installers in [Deploy the resource provider prerequisites](./azure-stack-sql-resource-provider-deploy.md#prerequisites).
 
-Removing the SQL resource provider doesn't delete tenant databases from hosting servers.
-
-## Dependency cleanup
-
-There are several cleanup tasks to do before you run the DeploySqlProvider.ps1 script to remove the resource provider.
-
-The Azure Stack Hub operator is responsible for the following cleanup tasks:
-
-* Delete any plans that reference the SQL adapter.
-* Delete any quotas that are associated with the SQL adapter.
+Removing the SQL resource provider will delete the associated plans and quotas managed by operator. But it doesn't delete tenant databases from hosting servers.
 
 ## To remove the SQL resource provider
 
