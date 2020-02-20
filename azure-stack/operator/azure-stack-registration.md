@@ -2,7 +2,7 @@
 title: Register Azure Stack Hub with Azure
 titleSuffix: Azure Stack Hub
 description: Learn how to register Azure Stack Hub integrated systems with Azure so you can download Azure Marketplace items and set up data reporting. 
-author: ihenkel
+author: IngridAtMicrosoft
 
 ms.topic: article
 ms.date: 2/02/2020

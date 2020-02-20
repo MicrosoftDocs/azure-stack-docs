@@ -1,7 +1,7 @@
 ---
 title: Manage Azure Stack Hub storage accounts 
 description: Learn how to find, manage, recover, and reclaim Azure Stack Hub storage accounts.
-author: ihenkel
+author: IngridAtMicrosoft
 
 ms.topic: conceptual
 ms.date: 1/22/2020

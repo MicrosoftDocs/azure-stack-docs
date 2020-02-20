@@ -1,7 +1,7 @@
 ---
 title: Manage updates 
 description: Learn how to manage updates in Azure Stack Hub
-author: ihenkel
+author: IngridAtMicrosoft
 
 ms.topic: article
 ms.date: 10/01/2019

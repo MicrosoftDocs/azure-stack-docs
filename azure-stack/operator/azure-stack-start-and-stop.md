@@ -2,7 +2,7 @@
 title: Start and stop
 titleSuffix: Azure Stack Hub
 description: Learn how to start and stop Azure Stack Hub.
-author: ihenkel
+author: IngridAtMicrosoft
 
 ms.topic: article
 ms.date: 10/02/2019
