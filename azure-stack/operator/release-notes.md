@@ -60,8 +60,10 @@ For more information about update build types, see [Manage updates in Azure Stac
 <!-- What's new, also net new experiences and features. -->
 
 - A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on AzureRM is available.
+- A new version of the az.* Azure PowerShell tenant modules for Azure Stack will be released on March 16, 2020. The currently used Azure Stack tenant resource manager modules will continue to work, but will no longer be updated after build 2002.
 - Added new warning alert on the Azure Stack Hub administrator portal to report on connectivity issues with the configured syslog server. Alert title is **The Syslog client encountered a networking issue while sending a Syslog message**.
 - Added new warning alert on the Azure Stack Hub administrator portal to report on connectivity issues with the Network Time Protocol (NTP) server. Alert title is **Invalid Time Source on [node name]**.
+- The [Java SDK](https://azure.microsoft.com/develop/java/) released new packages due to a breaking change in 2002. Users must install the new Java SDK dependency.
 
 ### Improvements
 
