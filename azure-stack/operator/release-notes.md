@@ -106,7 +106,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Fixed an issue where adding more than one public IP on the same NIC on a Virtual Machine resulted in internet connectivity issues. Now, a NIC with two public IPs works as expected.
 - Fixed an issue that caused the system to raise an alert indicating that the Azure AD home directory needs to be configured.
-- Fixed an issue that prevented an alert indicating that the Azure AD home directory must be configured to not automatically close.
+- Fixed an issue that caused an alert to not automatically close. The alert indicated that the Azure AD home directory must be configured, but did not close even after the issue was mitigated.
 - Fixed an issue that caused updates to fail during the update preparation phase as a result of internal failures of the update resource provider.
 - Fixed an issue causing add-on resource provider operations to fail after performing Azure Stack Hub secret rotation.
 - Fixed an issue that was a common cause of Azure Stack Hub update failures due to memory pressure on the ERCS role.
