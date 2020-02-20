@@ -1,0 +1,48 @@
+### YamlMime:Landing
+
+title: Test
+summary: Test
+
+metadata:
+  title: Test
+  description: Test
+  ms.service: azure-stack 
+  ms.topic: landing-page 
+  author: BryanLa
+  ms.author: bryanla
+  ms.date: 10/31/2019
+
+# linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
+
+landingContent:
+# Cards and links should be based on top customer tasks or top subjects
+# Start card title with a verb
+  # Card (optional)
+  - title: About hybrid patterns and solutions
+    linkLists:
+      - linkListType: overview
+        links:
+          - text: What are hybrid patterns and solution examples?
+            url: test.md
+      - linkListType: concept
+        links:
+          - text: Hybrid app design considerations
+            url: test.md
+
+  # Card
+  - title: Explore hybrid patterns
+    linkLists:
+      - linkListType: architecture
+        links:
+          - text: Cross-cloud scaling
+            url: test.md
+          - text: DevOps hybrid CI/CD
+            url: test.md
+
+  # Card
+  - title: Deploy hybrid solution examples
+    linkLists:
+      - linkListType: tutorial
+        links:
+          - text: Cross-cloud scaling
+            url: test.md

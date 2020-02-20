@@ -2,7 +2,82 @@
   "build": {
     "content": [
       {
-        "group": "all",
+        "group": "asdk",
+        "src" : "asdk",
+        "dest" : "asdk",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },
+      {
+        "group": "operator",
+        "src" : "operator",
+        "dest" : "operator",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },
+      {
+        "group": "partner",
+        "src" : "partner",
+        "dest" : "partner",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },      
+      {
+        "group": "user",
+        "src" : "user",
+        "dest" : "user",
+        "files": [
+          "**/*.md",
+          "**/*.yml"
+        ],
+        "exclude": [
+          "**/obj/**",
+          "**/includes/**",
+          "_themes/**",
+          "_themes.pdf/**",
+          "README.md",
+          "LICENSE",
+          "LICENSE-CODE",
+          "ThirdPartyNotices"
+        ]
+      },
+      {
         "files": [
           "**/*.md",
           "**/*.yml"
@@ -21,7 +96,6 @@
     ],
     "resource": [
       {
-        "group": "all",
         "files": [
           "**/*.png",
           "**/*.jpg",
@@ -61,10 +135,22 @@
     "dest": "AzureStack",
     "markdownEngineName": "markdig",
     "groups": {
-      "all": {
-        "dest": "all",
+      "asdk": {
+        "dest": "asdk",
         "moniker_range": ">=azs-1802"
-      }
+      },
+      "operator": {
+        "dest": "operator",
+        "moniker_range": ">=azs-1802"
+      },
+      "partner": {
+        "dest": "partner",
+        "moniker_range": ">=azs-1802"
+      },
+      "user": {
+        "dest": "user",
+        "moniker_range": ">=azs-1802"
+      }                  
     }
   }
 }
