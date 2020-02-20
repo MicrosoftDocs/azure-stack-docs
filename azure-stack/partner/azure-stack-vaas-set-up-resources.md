@@ -77,7 +77,7 @@ As the Azure AD administrator, give the VaaS Azure AD application the required p
 
 2. Select **My Account**.
 
-3 Accept the terms to proceed when prompted to grant VaaS the listed Azure AD permissions.
+3 Accept the terms to continue when prompted to grant VaaS the listed Azure AD permissions.
 
 ## Create an Azure Storage account
 
