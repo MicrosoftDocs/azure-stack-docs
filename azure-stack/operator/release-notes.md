@@ -61,7 +61,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - A new version (1.8.1) of the Azure Stack Hub admin PowerShell modules based on AzureRM is available.
 - Added new warning alert on the Azure Stack Hub administrator portal to report on connectivity issues with the configured syslog server. Alert title is **The Syslog client encountered a networking issue while sending a Syslog message**.
-- Added new warning alert on the Azure Stack Hub administrator portal to report on connectivity issues with the Network Time Protocol (NTP) server. Alert title is **Invalid Time Source on <node name>**.
+- Added new warning alert on the Azure Stack Hub administrator portal to report on connectivity issues with the Network Time Protocol (NTP) server. Alert title is **Invalid Time Source on [node name]**.
 
 ### Improvements
 
