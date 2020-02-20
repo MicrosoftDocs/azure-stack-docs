@@ -1,21 +1,18 @@
 ---
-title: Troubleshoot Azure Stack Hub Validation as a Service 
-description: Troubleshoot Validation as a Service for Azure Stack Hub.
+title: Troubleshoot validation as a service
+titleSuffix: Azure Stack Hub
+description: Troubleshoot validation as a service for Azure Stack Hub.
 author: mattbriggs
-
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
-
-
-
 ROBOTS: NOINDEX
 
 ---
 
-# Troubleshoot Validation as a Service
+# Troubleshoot validation as a service
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
