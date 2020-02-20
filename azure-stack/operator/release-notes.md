@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 02/20/2020
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 01/17/2020
@@ -67,16 +67,16 @@ For more information about update build types, see [Manage updates in Azure Stac
 
 - Improvements to the Azure Stack Hub readiness checker tool to validate AD Graph integration.
 - The offline syndication tool has been updated with reliability improvements. The tool is no longer available on GitHub, and has been [moved to the PowerShell Gallery](https://www.powershellgallery.com/packages/Azs.Syndication.Admin/). For more information, see [Download Marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).
-- Improvements to [diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md). The new experience streamlines and simplifies diagnostic log collection by removing the need to configure a blob storage account in advance. The storage environment is preconfigured so that you can send logs before opening a support case, and spend less time on a support call.
-- Improved the time required to collect diagnostic logs for [Proactive Log Collection and the on-demand log collection](azure-stack-diagnostic-log-collection-overview.md).
+- Improvements to [diagnostic log collection](azure-stack-diagnostic-log-collection-overview-tzl.md). The new experience streamlines and simplifies diagnostic log collection by removing the need to configure a blob storage account in advance. The storage environment is preconfigured so that you can send logs before opening a support case, and spend less time on a support call.
+- Improved the time required to collect diagnostic logs for [Proactive Log Collection and the on-demand log collection](azure-stack-diagnostic-log-collection-overview-tzl.md).
 - The download progress of an Azure Stack Hub update package is now visible in the update blade after an update is initiated. This only applies to connected Azure Stack Hub systems that choose to [prepare update packages via automatic download](azure-stack-update-prepare-package.md#automatic-download-and-preparation-for-update-packages).
 - Reliability improvements for Network Controller Host agent.
 - Improve reliability of network validation at deployment time of Azure Stack Hub.
 - Introduced new micro-service called DNS Orchestrator that improves the resiliency logic for the internal DNS services during patch and update. 
 - You can now create disk snapshots without interrupting the IO workload in the running VM. Backup vendor solutions (Commvault and Veritas) use the live snapshot functionality to provide backup of VMs with managed and unmanaged disks. We recommend using backup solutions to ensure consistent backups of VMs and efficient use of live snapshot functionality. Work with your backup vendor to deploy the appropriate version of their solution that uses the live snapshot functionality. For managed disk snapshots, see [Azure Stack Hub managed disks](../user/azure-stack-managed-disk-considerations.md). For unmanaged disk snapshots, see [Azure Stack Hub storage: Differences and considerations](../user/azure-stack-acs-differences.md).
 - This update contains changes to the update process that significantly improve the performance of future full updates. These changes take effect with the next full update after the 2002 release. These changes will specifically target improving the performance of the phase of a full update in which the host operating systems are updated. Improving the performance of host operating system updates significantly reduces the window of time for which tenant workloads are impacted during full updates.
-- Added a new request validation to fail invalid blob URIs for the boot diagnostic storage account paramete while creating VMs.
-- Added auto-remediation and logging improvements for Rdagent and Host agent - two services on the host that faciliate VM CRUD operations.
+- Added a new request validation to fail invalid blob URIs for the boot diagnostic storage account parameter while creating VMs.
+- Added auto-remediation and logging improvements for Rdagent and Host agent - two services on the host that facilitate VM CRUD operations.
 - Introduced a new micro-service called DNS Orchestrator that improves the resiliency logic for the internal DNS services during patch and update. 
 - You can now create disk snapshots without interrupting the IO workload in the running VM. Backup vendor solutions (Commvault and Veritas) use the live snapshot functionality to provide backup of VMs with managed and unmanaged disks. We recommend using backup solutions to ensure consistent backups of VMs and efficient use of the live snapshot functionality. Work with your backup vendor to deploy the appropriate version of their solution that uses the live snapshot functionality. For managed disk snapshots, see [Azure Stack Hub managed disks](../user/azure-stack-managed-disk-considerations.md). For unmanaged disk snapshots, see [Azure Stack Hub storage: Differences and considerations](../user/azure-stack-acs-differences.md).
 - This update contains changes to the update process that significantly improve the performance of future full updates. These changes take effect with the next full update after the 2002 release, and specifically target improving the performance of the phase of a full update in which the host operating systems are updated. Improving the performance of host operating system updates significantly reduces the window of time in which tenant workloads are impacted during full updates.
@@ -122,7 +122,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue where the MAC address of a NIC was being cached, and assigning of that address to another resource was causing VM deployment failures. 
 - Fixed an issue with I/O stall in the guest OS as a result of snapshotting disks while the IaaS VMs is powered on. The fix introduces functionality changes as part of the API. Backup solutions that create crash-consistent IaaS VM backups using the disk snapshot API will also require updates to consume the new functionality. For more information, see [Protect VMs deployed on Azure Stack Hub](../user/azure-stack-manage-vm-protect.md).
 - Fixed an issue where Windows VM images from the RETAIL channel could not have their license activated by AVMA.
-- Fixed an isue where VMs would fail to be created if the number of virtual cores requested by the VM was equal to the node's physical cores. We will now allow VMs to have virtual cores equal to or below the node's physical cores.
+- Fixed an issue where VMs would fail to be created if the number of virtual cores requested by the VM was equal to the node's physical cores. We will now allow VMs to have virtual cores equal to or below the node's physical cores.
 - Fixed an issue where we do not allow to set the license type "null" to switch pay as you go images to BYOL.
 - Fixed an issue to allow extensions to be added to a VMSS.
 
