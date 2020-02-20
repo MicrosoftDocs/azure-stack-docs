@@ -88,7 +88,7 @@ Use these steps to prepare and to validate the Azure Stack Hub PKI certificates 
 
     ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
-    Invoke-AzsCertificateValidation -CertificateType Deployment -CertificatePath C:\Certificates\Deployment -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD  
+    Invoke-AzsCertificateValidation -CertificateType Deployment -CertificatePath C:\Certificates\Deployment -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com  
     ```
 
 4. Check the output and ensure that all certificates pass all tests. For example:
@@ -233,7 +233,7 @@ Use these steps to prepare and to validate the Azure Stack Hub PKI certificates 
 
 | Directory | Certificate |
 | ---    | ----        |
-| acsBlob | `wildcard_blob_<region>_<externalFQDN>` |
+| ACSBlob | `wildcard_blob_<region>_<externalFQDN>` |
 | ACSQueue  |  `wildcard_queue_<region>_<externalFQDN>` |
 | ACSTable  |  `wildcard_table_<region>_<externalFQDN>` |
 | Admin Extension Host  |  `wildcard_adminhosting_<region>_<externalFQDN>` |
