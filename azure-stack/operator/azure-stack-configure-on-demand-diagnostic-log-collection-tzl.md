@@ -30,7 +30,7 @@ Specify the start time and end time for log collection and click **Collect and U
 
 ## Using PowerShell
 
-Replace `<Computer_name>` with the actual name of the actual name of the computer where yu run the script.
+Replace `<computer_name>` with the actual name of the computer where you run the script.
 
 ```powershell
 $session = New-PSSession -ComputerName <computer_name> -ConfigurationName PrivilegedEndpoint -Credential $cred
