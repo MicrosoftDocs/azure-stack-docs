@@ -2,11 +2,11 @@
 title: Replace a physical disk
 titleSuffix: Azure Stack Hub
 description: Learn how to replace a physical disk in Azure Stack Hub.
-author: mattbriggs
+author: IngridAtMicrosoft
 
 ms.topic: article
 ms.date: 12/02/2019
-ms.author: mabrigg
+ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 12/02/2019
 

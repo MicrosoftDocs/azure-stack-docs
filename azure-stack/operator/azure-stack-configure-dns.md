@@ -1,7 +1,7 @@
 ---
 title: Update the DNS forwarder in Azure Stack Hub 
 description: Learn how to update the DNS forwarder in Azure Stack Hub.
-author: ihenkel
+author: IngridAtMicrosoft
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: inhenkel
