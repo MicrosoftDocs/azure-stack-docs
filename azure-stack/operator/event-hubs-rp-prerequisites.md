@@ -18,7 +18,7 @@ The following prerequisites must be completed before you can install Event Hubs 
 > These prerequisites assume that you've already deployed at least a 4-node Azure Stack Hub integrated system. The Event Hubs resource provider is not supported on the Azure Stack Development Kit (ASDK).
 
 > [!IMPORTANT]
-> Azure Stack Hub 2002 build version or higher is required by Event Hubs. Please note that Azure Stack Hub builds are incremental. For example, if you have [version 1907](/azure-stack/operator/release-notes?view=azs-1907#1907-build-reference) installed, you must first upgrade to [1908](/azure-stack/operator/release-notes?view=azs-1908#1908-build-reference), and then to 1910, in order to participate in the private preview. That is, you cannot skip builds in-between.
+> Azure Stack Hub 2002 build version or higher is required by Event Hubs. Please note that Azure Stack Hub builds are incremental. For example, if you have [version 1908](/azure-stack/operator/release-notes?view=azs-1908#1908-build-reference) installed, you must first upgrade to [1910](/azure-stack/operator/release-notes?view=azs-1910#1910-build-reference), then to 2002. That is, you cannot skip builds in-between.
 
 ## Common prerequisites
 
