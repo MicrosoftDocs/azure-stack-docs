@@ -118,7 +118,7 @@ additionalContent:
           - url: /azure-stack/user/azure-stack-key-vault-manage-portal
             text: Create and manage a Key Vault         
         # Card
-        - title: Azure Stack Hub Development Kit (ASDK)
+        - title: Azure Stack Development Kit (ASDK)
           links:
           - url: /azure-stack/asdk/asdk-deploy-considerations
             text: ASDK requirements and considerations
