@@ -448,7 +448,7 @@
           href: azure-stack-configure-automatic-diagnostic-log-collection-tzl.md
         - name: Send logs now
           href: azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md
-        - name: Send logs using (PEP)
+        - name: Get-AzureStackLog (PEP)
           href: azure-stack-get-azurestacklog.md    
     - name: Validation for Azure Stack Hub  
       href: azure-stack-diagnostic-test.md
