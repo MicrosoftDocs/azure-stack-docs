@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: Learn how to validate PKI certificates for Azure Stack Hub integrated systems using the Azure Stack Hub Readiness Checker tool.
 services: azure-stack
 documentationcenter: ''
-author: ihenkel
+author: IngridAtMicrosoft
 ms.topic: article
 ms.date:  07/23/2019
 ms.author: inhenkel
@@ -88,7 +88,7 @@ Use these steps to prepare and to validate the Azure Stack Hub PKI certificates 
 
     ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
-    Invoke-AzsCertificateValidation -CertificateType Deployment -CertificatePath C:\Certificates\Deployment -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD  
+    Invoke-AzsCertificateValidation -CertificateType Deployment -CertificatePath C:\Certificates\Deployment -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com  
     ```
 
 4. Check the output and ensure that all certificates pass all tests. For example:
@@ -233,7 +233,7 @@ Use these steps to prepare and to validate the Azure Stack Hub PKI certificates 
 
 | Directory | Certificate |
 | ---    | ----        |
-| acsBlob | `wildcard_blob_<region>_<externalFQDN>` |
+| ACSBlob | `wildcard_blob_<region>_<externalFQDN>` |
 | ACSQueue  |  `wildcard_queue_<region>_<externalFQDN>` |
 | ACSTable  |  `wildcard_table_<region>_<externalFQDN>` |
 | Admin Extension Host  |  `wildcard_adminhosting_<region>_<externalFQDN>` |

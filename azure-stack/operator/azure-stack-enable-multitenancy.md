@@ -1,7 +1,7 @@
 ---
 title: Configure multi-tenancy in Azure Stack Hub 
 description: Learn how to enable and disable multiple Azure Active Directory tenants in Azure Stack Hub.
-author: ihenkel
+author: IngridAtMicrosoft
 
 ms.topic: article
 ms.date: 06/10/2019
