@@ -59,7 +59,7 @@ To help manage your cloud capacity, you can use pre-configured *quotas*, or crea
 You can set up quotas by region. For example, a plan that provides compute services for Region A could have a quota of two VMs.
 
 >[!NOTE]
->In the Azure Stack Hub Development Kit (ASDK), only one region (named *local*) is available.
+>In the Azure Stack Development Kit (ASDK), only one region (named *local*) is available.
 
 Learn more about [quota types in Azure Stack Hub](azure-stack-quota-types.md).
 
