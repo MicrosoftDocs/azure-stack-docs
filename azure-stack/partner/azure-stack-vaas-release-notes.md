@@ -24,6 +24,15 @@ ms.lastreviewed: 10/28/2019
 
 This article has the release notes for Azure Stack Validation as a Service.
 
+## Version 4.4.3.2
+
+2020 February 2
+
+- Service maintenance updates.
+
+- Bug fixes
+  - Fixed tests Test101LinuxEmptyAttachedDiskManagedDisk, Test101WindowsEmptyAttachedDiskManagedDisk.
+
 ## Version 4.4.2.1
 
 2019 December 3
