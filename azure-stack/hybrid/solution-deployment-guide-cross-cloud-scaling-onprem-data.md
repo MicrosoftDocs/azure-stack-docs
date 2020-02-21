@@ -50,7 +50,7 @@ This tutorial also assumes that you have an Azure subscription. If you don't hav
 
 Before you start this solution, make sure you meet the following requirements:
 
-- An Azure Stack Hub Development Kit (ASDK) or a subscription on an Azure Stack Hub Integrated System. To deploy an Azure Stack Hub Development Kit, follow the instructions in [Deploy the ASDK using the installer](../asdk/asdk-install.md).
+- An Azure Stack Development Kit (ASDK) or a subscription on an Azure Stack Hub Integrated System. To deploy an Azure Stack Development Kit, follow the instructions in [Deploy the ASDK using the installer](../asdk/asdk-install.md).
 - Your Azure Stack Hub installation should have the following installed:
   - The Azure App Service. Work with your Azure Stack Hub Operator to deploy and configure the Azure App Service on your environment. This tutorial requires the App Service to have at least one (1) available dedicated worker role.
   - A Windows Server 2016 image.
@@ -255,7 +255,7 @@ You'll configure the app code to report telemetry to the correct Application Ins
 Each instance of the web app will use a different method to connect to the SQL database. The app in Azure uses the private IP address of the SQL Server virtual machine (VM), and the app in Azure Stack Hub uses the public IP address of the SQL Server VM.
 
 > [!Note]  
-> On an Azure Stack Hub Integrated System, the public IP address shouldn't be internet-routable. On an Azure Stack Hub Development Kit (ASDK), the public IP address isn't routable outside the ASDK.
+> On an Azure Stack Hub Integrated System, the public IP address shouldn't be internet-routable. On an Azure Stack Development Kit (ASDK), the public IP address isn't routable outside the ASDK.
 
 You can use App Service environment variables to pass a different connection string to each instance of the app.
 
