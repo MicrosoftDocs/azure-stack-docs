@@ -12,9 +12,9 @@ ms.lastreviewed: 02/18/2020
 ---
 # Send Azure Stack Hub diagnostic logs now
 
-Azure Stack operators can send diagnostics logs to Microsoft, before requesting support, by using the Administrator portal or PowerShell. If you are connected to the internet, the Administrator portal is recommended over PowerShell because it's simpler. If the portal is unavailable, operators should use the PowerShell script included in this topic.
+Azure Stack operators can send diagnostics logs on-demand to Microsoft, before requesting support, by using the Administrator portal or PowerShell. If Azure Stack Hub is connected to the Azure, the **Send logs now** option in the Administrator portal is recommended because it sends the logs directly to Microsoft simply. If the portal is unavailable, operators should use the PowerShell script included in this topic to send the logs directly to Microsoft.
 
-If you are disconnected from the internet or want to only save logs locally, use should use the [privileged endpoint (PEP)](azure-stack-get-azurestacklog.md) method to send logs.
+If you are disconnected from the internet or want to only save logs locally, use the [privileged endpoint (PEP)](azure-stack-get-azurestacklog.md) method to send logs.
 
 >[!Note]
 >As an alternative to collecting logs on demand, you can streamline the troubleshooting process by [proactively collecting diagnostic logs](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md). If system health conditions need to be investigated, the logs are uploaded automatically for analysis before opening a case with CSS. 
