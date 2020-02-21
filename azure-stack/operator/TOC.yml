@@ -447,11 +447,7 @@
         - name: Send logs proactively
           href: azure-stack-configure-automatic-diagnostic-log-collection-tzl.md
         - name: Send logs now
-          items:
-          - name: Use the Administrator portal
-            href: azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md
-          - Name: Use the privileged endpoint (PEP)
-            href: azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md
+          href: azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md
         - name: Send logs using (PEP)
           href: azure-stack-get-azurestacklog.md    
     - name: Validation for Azure Stack Hub  
