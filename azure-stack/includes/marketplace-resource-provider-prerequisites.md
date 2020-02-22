@@ -16,5 +16,5 @@ If you've already installed a resource provider from Azure Stack Hub Marketplace
 
 3. Update your Azure Active Directory (Azure AD) home directory. Starting with build 1910, the new Deployment Resource Provider (DRP) application must be used to register your home directory tenant. This app will enable DRP to successfully create and register Resource Providers. If this step isn't completed, your Resource Provider installation will fail. 
 
-   - After you've successfully updated your Azure Stack Hub instance to 1910, follow the [instructions for cloning/downloading the Azure Stack Hub Tools repository](../operator/azure-stack-powershell-download.md). 
+   - After you've successfully updated your Azure Stack Hub instance to 1910 or greater, follow the [instructions for cloning/downloading the Azure Stack Hub Tools repository](../operator/azure-stack-powershell-download.md). 
    - Then, follow the instructions for [Updating the Azure Stack Hub Azure AD Home Directory (after installing updates or new Resource Providers)](https://github.com/Azure/AzureStack-Tools/tree/master/Identity#updating-the-azure-stack-aad-home-directory-after-installing-updates-or-new-resource-providers). 
