@@ -2,11 +2,11 @@
 title: Update the Azure Stack Hub SQL resource provider
 titleSuffix: Azure Stack Hub
 description: Learn how to update the Azure Stack Hub SQL resource provider.
-author: mattbriggs
+author: bryanla
 
 ms.topic: article
 ms.date: 11/11/2019
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/11/2019
 ---
