@@ -32,7 +32,7 @@ A few components are required to build a hybrid connectivity deployment. Some of
 
 **Azure Stack Hub**
 
-An Azure OEM/hardware partner can deploy a production Azure Stack Hub, and all users can deploy an Azure Stack Hub Development Kit (ASDK).
+An Azure OEM/hardware partner can deploy a production Azure Stack Hub, and all users can deploy an Azure Stack Development Kit (ASDK).
 
 **Azure Stack Hub components**
 
@@ -50,7 +50,7 @@ This solution example assumes that you have some basic knowledge of Azure and Az
 
 ### Azure Stack Hub
 
- - Use your production Azure Stack Hub or deploy the Azure Stack Hub Development Kit from https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1.
+ - Use your production Azure Stack Hub or deploy the Azure Stack Development Kit from https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1.
    >[!Note]
    >Deploying the ASDK can take up to 7 hours, so plan accordingly.
 

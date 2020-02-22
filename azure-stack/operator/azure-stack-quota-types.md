@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.author: sethm
 ms.reviewer: xiaofmao
-ms.lastreviewed: 12/07/2018
+ms.lastreviewed: 11/18/2018
 
 ---
 # Quota types in Azure Stack Hub
@@ -53,6 +53,12 @@ ms.lastreviewed: 12/07/2018
 | Maximum NICs |100 |The maximum number of network interfaces that a subscription can create in this location. |
 | Maximum load balancers |50 |The maximum number of load balancers that a subscription can create in this location. |
 | Maximum network security groups |50 |The maximum number of network security groups that a subscription can create in this location. |
+
+## Event Hubs quota types
+
+| **Type** | **Default value** | **Description** |
+| --- | --- | --- |
+| Maximum number of VM cores | 10 | The maximum number of cores that a subscription can create in this location (for example, an A3 VM has four cores). |
 
 ## View an existing quota
 

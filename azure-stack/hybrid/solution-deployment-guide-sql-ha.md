@@ -32,7 +32,7 @@ In this solution, you will build a sample environment to:
 
 ## Prerequisites for SQL Server 2016
 
-  - Two connected Azure Stack Hub Integrated Systems (Azure Stack Hub), this deployment does not work on Azure Stack Hub Development Kits (ASDKs). To learn more about Azure Stack Hub, see [What is Azure Stack Hub?](https://azure.microsoft.com/overview/azure-stack/).
+  - Two connected Azure Stack Hub Integrated Systems (Azure Stack Hub), this deployment does not work on Azure Stack Development Kits (ASDKs). To learn more about Azure Stack Hub, see [What is Azure Stack Hub?](https://azure.microsoft.com/overview/azure-stack/).
   - A tenant subscription on each Azure Stack Hub.    
       - **Make a note of each subscription ID and the Azure Resource Manager endpoint for each Azure Stack Hub.**
   - An Azure Active Directory (Azure AD) service principal that has permissions to the tenant subscription on each Azure Stack Hub. You may need to create two service principals if the Azure Stack Hubs are deployed against different Azure AD tenants. To learn how to create a service principal for Azure Stack Hub, see [Create service principals to give applications access to Azure Stack Hub resources](https://docs.microsoft.com/azure-stack/user/azure-stack-create-service-principals).

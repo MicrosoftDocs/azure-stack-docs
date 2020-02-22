@@ -138,3 +138,4 @@ Next, learn about deploying resource providers for value-add services. They allo
 - [Offer SQL on Azure Stack Hub](azure-stack-sql-resource-provider.md)
 - [Offer MySQL on Azure Stack Hub](azure-stack-mysql-resource-provider.md)
 - [Offer App Service on Azure Stack Hub](azure-stack-app-service-overview.md)
+- [Offer Event Hubs on Azure Stack Hub](event-hubs-rp-overview.md)

@@ -19,6 +19,8 @@
     href: azure-stack-quick-create-vm-linux-powershell.md
   - name: Create Linux VM - CLI
     href: azure-stack-quick-create-vm-linux-cli.md
+  - name: Create Event Hubs cluster - Portal
+    href: event-hubs-quickstart-cluster-portal.md    
 - name: Tutorials
   items:
     - name: Subscribe to an offer
@@ -181,6 +183,10 @@
           href: azure-stack-key-vault-store-credentials.md
         - name: KeyVault sample app
           href: azure-stack-key-vault-sample-app.md
+      - name: Event Hubs
+        items:
+        - name: Overview
+          href: event-hubs-overview.md
       - name: Azure Monitor
         href: azure-stack-metrics-azure-data.md
         items: 
@@ -259,11 +265,11 @@
       items: 
       - name: VNet peering with VMs
         href: azure-stack-network-howto-vnet-peering.md
-      - name: Use third party NVAs (Fortinet Fortigate NVA)
+      - name: Use third-party NVAs (Fortinet Fortigate NVA)
         items:
         - name: VNet peering with FortiGate
           href: azure-stack-network-howto-vnet-to-vnet.md
-        - name: Setup VPN to on-prem
+        - name: Set up VPN to on-prem
           href: azure-stack-network-howto-vnet-to-onprem.md
         - name: VNET to VNET connection
           href: azure-stack-network-howto-vnet-to-vnet-stacks.md

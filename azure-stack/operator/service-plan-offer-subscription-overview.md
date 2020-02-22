@@ -27,7 +27,7 @@ To deliver a service, follow these high-level steps:
 1. Plan your service offering, using:
 
    - Foundational services, like compute, storage, networking, or Key Vault.
-   - Value-add services, like App Service, SQL Server, or MySQL Server.
+   - Value-add services, like Event Hubs, App Service, SQL Server, or MySQL Server.
 
 2. Create a plan that consists of one or more services. When creating a plan, select or create quotas that define the resource limits of each service in the plan.
 3. Create an offer that has one or more plans. The offer can include base plans and optional add-on plans.
@@ -40,8 +40,9 @@ After you've created the offer, your users can subscribe to it to access the ser
 
 You can offer [Infrastructure as a Service](https://azure.microsoft.com/overview/what-is-iaas/) (IaaS) services that enable your users to build an on-demand computing infrastructure, provisioned and managed from the Azure Stack Hub user portal.
 
-You can also deploy [Platform as a Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) services for Azure Stack Hub from Microsoft and other third-party providers. The PaaS services that you can deliver include, but aren't limited to:
+You can also deploy [Platform as a Service](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) services for Azure Stack Hub from Microsoft and third-party providers. The PaaS services that you can deploy include, but aren't limited to:
 
+- [Event Hubs](event-hubs-rp-overview.md)
 - [App Service](azure-stack-app-service-overview.md)
 - [SQL Server](azure-stack-sql-resource-provider-deploy.md)
 - [MySQL Server](azure-stack-mysql-resource-provider-deploy.md)
