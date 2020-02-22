@@ -9,7 +9,7 @@ ms.reviewer: ppacent
 ms.lastreviewed: 12/16/2019
 ---
 
-# Azure Stack Hub public key infrastructure certificate requirements
+# Azure Stack Hub public key infrastructure (PKI) certificate requirements
 
 Azure Stack Hub has a public infrastructure network using externally accessible public IP addresses assigned to a small set of Azure Stack Hub services and possibly tenant VMs. PKI certificates with the appropriate DNS names for these Azure Stack Hub public infrastructure endpoints are required during Azure Stack Hub deployment. This article provides information about:
 
@@ -55,7 +55,7 @@ Certificates with the appropriate DNS names for each Azure Stack Hub public infr
 
 For your deployment, the [region] and [externalfqdn] values must match the region and external domain names that you chose for your Azure Stack Hub system. As an example, if the region name was *Redmond* and the external domain name was *contoso.com*, the DNS names would have the format *&lt;prefix>.redmond.contoso.com*. The *&lt;prefix>* values are predesignated by Microsoft to describe the endpoint secured by the certificate. In addition, the *&lt;prefix>* values of the external infrastructure endpoints depend on the Azure Stack Hub service that uses the specific endpoint.
 
-For the production environments, we recommend individual certificates are generated for each endpoint and copied into the corresponding directory. For development environments, certificates can be provided as a single wild card certificate covering all namespaces in the Subject and Subject Alternative Name (SAN) fields copied into all directories. A single certificate covering all endpoints and services is an insecure posture and hence development-only. Remember, both options require you to use wildcard certificates for endpoints like **acs** and Key Vault where they're required.
+For the production environments, we recommend individual certificates are generated for each endpoint and copied into the corresponding directory. For development environments, certificates can be provided as a single wildcard certificate covering all namespaces in the Subject and Subject Alternative Name (SAN) fields copied into all directories. A single certificate covering all endpoints and services is an insecure posture and hence development-only. Remember, both options require you to use wildcard certificates for endpoints like **acs** and Key Vault where they're required.
 
 > [!Note]  
 > During deployment, you must copy certificates to the deployment folder that matches the identity provider you're deploying against (Azure AD or AD FS). If you use a single certificate for all endpoints, you must copy that certificate file into each deployment folder as outlined in the following tables. The folder structure is pre-built in the deployment virtual machine and can be found at: C:\CloudDeployment\Setup\Certificates.
@@ -86,12 +86,12 @@ If you deploy Azure Stack Hub using the Azure AD deployment mode, you only need 
 > All the certificates listed in this section must have the same password.
 
 ## Optional PaaS certificates
-If you're planning to deploy the additional Azure Stack Hub PaaS services (SQL, MySQL, and App Service) after Azure Stack Hub has been deployed and configured, you need to request additional certificates to cover the endpoints of the PaaS services.
+If you're planning to deploy the additional Azure Stack Hub PaaS services (such as SQL, MySQL, App Service, or Event Hubs) after Azure Stack Hub has been deployed and configured, you must request additional certificates to cover the endpoints of the PaaS services.
 
 > [!IMPORTANT]
-> The certificates that you use for App Service, SQL, and MySQL resource providers need to have the same root authority as those used for the global Azure Stack Hub endpoints.
+> The certificates that you use for resource providers must have the same root authority as those used for the global Azure Stack Hub endpoints.
 
-The following table describes the endpoints and certificates required for the SQL and MySQL adapters and for App Service. You don't need to copy these certificates to the Azure Stack Hub deployment folder. Instead, you provide these certificates when you install the additional resource providers.
+The following table describes the endpoints and certificates required for resource providers. You don't need to copy these certificates to the Azure Stack Hub deployment folder. Instead, you provide these certificates during resource provider installation.
 
 |Scope (per region)|Certificate|Required certificate subject and Subject Alternative Names (SANs)|Subdomain namespace|
 |-----|-----|-----|-----|
@@ -100,10 +100,11 @@ The following table describes the endpoints and certificates required for the SQ
 |App Service|API|api.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL Certificate<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|FTP|ftp.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL Certificate<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
 |App Service|SSO|sso.appservice.*&lt;region>.&lt;fqdn>*<br>(SSL Certificate<sup>2</sup>)|appservice.*&lt;region>.&lt;fqdn>*<br>scm.appservice.*&lt;region>.&lt;fqdn>*|
+|Event Hubs|Event Hubs|&#42;.eventhub.*&lt;region>.&lt;fqdn>* (SAN)| eventhub.*&lt;region>.&lt;fqdn>* |
 
 <sup>1</sup> Requires one certificate with multiple wildcard subject alternative names. Multiple wildcard SANs on a single certificate might not be supported by all public certificate authorities.
 
-<sup>2</sup> A &#42;.appservice.*&lt;region>.&lt;fqdn>* wild card certificate can't be used in place of these three certificates (api.appservice.*&lt;region>.&lt;fqdn>*, ftp.appservice.*&lt;region>.&lt;fqdn>*, and sso.appservice.*&lt;region>.&lt;fqdn>*. Appservice explicitly requires the use of separate certificates for these endpoints.
+<sup>2</sup> A &#42;.appservice.*&lt;region>.&lt;fqdn>* wildcard certificate can't be used in place of these three certificates (api.appservice.*&lt;region>.&lt;fqdn>*, ftp.appservice.*&lt;region>.&lt;fqdn>*, and sso.appservice.*&lt;region>.&lt;fqdn>*. Appservice explicitly requires the use of separate certificates for these endpoints.
 
 ## Learn more
 Learn how to [generate PKI certificates for Azure Stack Hub deployment](azure-stack-get-pki-certs.md).

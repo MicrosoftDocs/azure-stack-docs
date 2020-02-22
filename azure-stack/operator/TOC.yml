@@ -332,6 +332,60 @@
           href: azure-stack-app-service-release-notes-update-seven.md
         - name: App Service on Azure Stack Hub update 8 release notes
           href: azure-stack-app-service-release-notes-update-eight.md
+    - name: IoT Hub on Azure Stack Hub
+      items:
+      - name: Overview 
+        href: iot-hub-rp-overview.md
+      - name: Prerequisites
+        href: iot-hub-rp-prerequisites.md
+      - name: Install 
+        href: iot-hub-rp-install.md
+      - name: Lifecycle management
+        items:
+        - name: Apply updates
+          href: resource-provider-apply-updates.md
+        - name: Backup & restore
+          href: azure-stack-backup-infrastructure-backup.md
+        - name: Collect logs
+          href: azure-stack-diagnostic-log-collection-overview.md
+        - name: Health & alerts
+          href: azure-stack-monitor-health.md
+        - name: Manage 
+          href: iot-hub-rp-manage.md
+        - name: Rotate secrets
+          href: azure-stack-rotate-secrets.md
+        - name: Service update announcements
+          href: https://azure.microsoft.com/updates/?query=IoT%20Hub
+      - name: Remove 
+        href: iot-hub-rp-remove.md
+    - name: Event Hubs on Azure Stack Hub
+      items:
+      - name: Overview
+        href: event-hubs-rp-overview.md
+      - name: Capacity planning
+        href: event-hubs-rp-capacity-planning.md
+      - name: Prerequisites
+        href: event-hubs-rp-prerequisites.md
+      - name: Install
+        href: event-hubs-rp-install.md
+      - name: Life cycle management
+        items:
+        - name: Apply updates
+          href: resource-provider-apply-updates.md
+        - name: Backup & restore
+          href: azure-stack-backup-infrastructure-backup.md
+        - name: Collect logs
+          href: azure-stack-diagnostic-log-collection-overview.md
+        - name: Health & alerts
+          href: azure-stack-monitor-health.md
+        - name: Manage
+          href: event-hubs-rp-manage.md 
+        - name: Rotate secrets
+          href: azure-stack-rotate-secrets.md
+        - name: Service update announcements
+          href: https://techcommunity.microsoft.com/t5/Event-Hubs-Blog/bg-p/EventHubs
+      - name: Remove
+        href: event-hubs-rp-remove.md  
     - name: MySQL on Azure Stack Hub
       items:
       - name: Overview 
