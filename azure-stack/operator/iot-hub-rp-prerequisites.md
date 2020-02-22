@@ -12,7 +12,7 @@ ms.date: 1/6/2020
 The following prerequisites must be completed before you can install IoT Hub on Azure Stack Hub. **Several days or weeks of lead time may be required** to complete all steps.
 
 > [!IMPORTANT]
-> These prerequisites assume that you've already deployed at least a 4-node Azure Stack Hub integrated system. <!-- TZLASDKFIX The IoT Hub resource provider is not supported on the Azure Stack Hub Development Kit (ASDK).-->
+> These prerequisites assume that you've already deployed at least a 4-node Azure Stack Hub integrated system. The IoT Hub resource provider is not supported on the Azure Stack Hub Development Kit (ASDK).
 
 ## Prerequisites
 
