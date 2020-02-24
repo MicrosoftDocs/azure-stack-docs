@@ -46,7 +46,7 @@ CSS will provide shared access signature (SAS) URL to a CSS-owned storage blob.
 An Azure Stack Hub operator can click **Collect logs now** and enter the SAS URL. 
 Diagnostic logs will then get uploaded directly to the CSS blob without needing an intermediate share. 
 
-For more information about collecting logs on demand, see [Collect Azure Stack Hub diagnostic logs now](azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md).
+For more information about collecting logs on demand, see [Send Azure Stack Hub diagnostic logs now](azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md).
 
 ## Bandwidth considerations
 
