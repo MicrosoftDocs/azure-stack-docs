@@ -193,4 +193,4 @@ After the transcript log files are successfully transferred to the file share, t
 
 ## Next steps
 
-[Azure Stack Hub diagnostic tools](azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md)
+[Azure Stack Hub diagnostic tools](azure-stack-diagnostic-log-collection-overview-tzl.md)
