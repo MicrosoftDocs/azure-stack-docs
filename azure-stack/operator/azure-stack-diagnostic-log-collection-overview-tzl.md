@@ -43,7 +43,7 @@ Logs collected using Proactive log collection are uploaded to an Azure storage a
 
 ### Send logs now
 
-[Send logs now](azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md) is a manual option where diagnostic logs are uploaded from Azure Stack Hub only when you (as the customer) initiate the collection, usually before opening a support case. 
+[Send logs now](azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md) is a manual option where diagnostic logs are uploaded from Azure Stack Hub only when you (as the customer) initiate the collection, usually before opening a support case. 
 
 By initiating diagnostic log collection from Azure Stack Hub, you acknowledge and consent to uploading those logs and retaining them in an Azure storage account managed and controlled by Microsoft. Microsoft CSS can access these logs right away with the support case without having to engage with the customer for log collection. 
 
