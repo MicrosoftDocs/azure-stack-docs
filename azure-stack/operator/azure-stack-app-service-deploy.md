@@ -15,7 +15,7 @@ ms.lastreviewed: 01/13/2020
 This article describes how to deploy App Service in Azure Stack Hub.
 
 > [!IMPORTANT]
-> Apply the 1910 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Hub Development Kit (ASDK) before you deploy Azure App Service 1.8.
+> Apply the 1910 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.8.
 
 You can give your users the ability to create web and API applications. To let users create these apps, you need to:
 
