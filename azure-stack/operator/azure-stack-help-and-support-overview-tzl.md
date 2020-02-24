@@ -47,11 +47,11 @@ There are two ways to collect logs in **Help and support**:
 
 ![Screenshot of diagnostic log collection options](media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png)
 
-For more information, see [Azure Stack Hub diagnostic log collection overview](azure-stack-diagnostic-log-collection-overview.md).
+For more information, see [Azure Stack Hub diagnostic log collection overview](azure-stack-diagnostic-log-collection-overview-tzl.md).
 
 ## Next steps
 
 - Learn about [troubleshooting Azure Stack Hub](azure-stack-troubleshooting.md)
-- Learn about [diagnostic log collection](azure-stack-diagnostic-log-collection-overview.md)
-- Configure [proactive diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md)
-- Configure [on-demand diagnostic log collection](azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md)
+- Learn about [diagnostic log collection](azure-stack-diagnostic-log-collection-overview-tzl.md)
+- [Send logs proactively diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md)
+- [Send logs now](azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md)
