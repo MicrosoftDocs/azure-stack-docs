@@ -4,7 +4,7 @@ description: Learn how to monitor the health of Azure Stack Hub hardware compone
 author: sethmanheim
 
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 02/24/2020
 ms.author: sethm
 ms.reviewer: thoroet
 ms.lastreviewed: 11/21/2019
@@ -13,7 +13,7 @@ ms.lastreviewed: 11/21/2019
 
 # Monitor Azure Stack Hub hardware components
 
-The health and monitoring system of Azure Stack Hub already monitors the status of the storage subsystem and raises alerts as needed. With the 1910 release of Azure Stack Hub, the health and monitoring system can now also raise alerts for the following hardware components:
+The Azure Stack Hub health and monitoring system monitors the status of the storage subsystem and raises alerts as needed. The health and monitoring system can also raise alerts for the following hardware components:
 
 - System fans
 - System temperature
