@@ -9,8 +9,7 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/19/2019
 
-# keywords:  X
-# Intent: As an Azure Stack Hub Operator, I want < what? > so that < why? >
+
 ---
 
 # Back up your storage accounts on Azure Stack Hub

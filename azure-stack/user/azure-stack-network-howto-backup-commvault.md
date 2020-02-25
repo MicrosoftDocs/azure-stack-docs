@@ -9,8 +9,7 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/30/2019
 
-# keywords:  X
-# Intent: As an Azure Stack Hub Operator, I want < what? > so that < why? >
+
 ---
 
 # Back up your VM on Azure Stack Hub with Commvault

@@ -9,8 +9,7 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/13/2019
 
-# keywords:  X
-# Intent: As an Azure Stack Hub Operator, I want < what? > so that < why? >
+
 ---
 
 # Extending storage to Azure Stack Hub

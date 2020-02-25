@@ -9,8 +9,7 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 09/30/2019
 
-# keywords:  X
-# Intent: As an Azure Stack Hub Operator, I want < what? > so that < why? >
+
 ---
 
 # Offer a network solution in Azure Stack Hub with Fortinet FortiGate

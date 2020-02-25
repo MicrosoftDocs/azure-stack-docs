@@ -9,8 +9,7 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/28/2019
 
-# keywords:  X
-# Intent: As an Azure Stack Hub Operator, I want < what? > so that < why? >
+
 ---
 
 # Connect to iSCSI storage with Azure Stack Hub

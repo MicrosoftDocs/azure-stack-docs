@@ -9,8 +9,6 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
 
-# keywords:  Deploy an app to Azure Stack Hub
-# Intent: I am a developer using Windows 10 or Linux Ubuntu who would like to deploy an app to Azure Stack Hub.
 ---
 
 # Common deployments for Azure Stack Hub

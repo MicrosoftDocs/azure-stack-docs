@@ -9,8 +9,6 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
 
-# keywords: Deploy a web app to Azure Stack Hub
-# Intent: I am a developer who would like to deploy an app to Azure Stack Hub. I may be using the portal, PowerShell, or the Azure CLI to do this task.
 ---
 
 # Deploy a Linux VM to host a web app in Azure Stack Hub

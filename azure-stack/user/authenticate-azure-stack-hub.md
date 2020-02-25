@@ -9,8 +9,6 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/13/2019
 
-# keywords: authentication info
-# Intent: I am a developer and I would like to programmatically authenticate to Azure Stack Hub.
 ---
 
 # Get authentication information for Azure Stack Hub

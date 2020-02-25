@@ -9,8 +9,7 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 11/06/2019
 
-# keywords:  networking, storage, backup
-# Intent: As an Azure Stack Hub user, I want develop a solution that requires complex connectivity between networks.
+
 ---
 
 # Deploy foundational patterns overview

@@ -9,8 +9,7 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
 
-# keywords:  VNET Peering Azure Stack Hub
-# Intent: As an Azure Stack Hub Operator, I want connect two Azure Stack Hubs with VNET peering so that uses can interact with resources as if it were a continuous network.
+
 ---
 
 # Connect two VNETs through peering

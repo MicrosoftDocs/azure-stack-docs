@@ -9,8 +9,7 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 11/11/2019
 
-# keywords: Azure Stack Hub Visual Studio Code
-# Intent: I am a developer using Visual Studio Code and I would like to connect to Azure Stack Hub. or Linux Ubuntu who would like to deploy an app to Azure Stack Hub.
+
 ---
 
 # Connect to Azure Stack Hub using Azure Account Extension in Visual Studio Code

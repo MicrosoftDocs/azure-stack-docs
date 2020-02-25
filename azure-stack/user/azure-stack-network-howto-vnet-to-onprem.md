@@ -9,8 +9,6 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
 
-# keywords:  VPN gateway Azure Stack Hub
-# Intent: As an Azure Stack Hub user, I want create a VPN gateway and connection between Azure Stack Hub and my network so that I can share resources between the two networks.
 ---
 
 # Set up VPN gateway for Azure Stack Hub using FortiGate NVA

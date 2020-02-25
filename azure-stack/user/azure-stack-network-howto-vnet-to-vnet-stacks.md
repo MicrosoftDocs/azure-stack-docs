@@ -9,8 +9,7 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/03/2019
 
-# keywords: VNET connection Azure Stack Hub
-# Intent: As an Azure Stack Hub user, I want connect two VNETs so that they can share resources.
+
 ---
 
 # Establish a VNET to VNET connection in Azure Stack Hub with Fortinet FortiGate NVA
