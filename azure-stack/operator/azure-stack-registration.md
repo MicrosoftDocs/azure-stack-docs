@@ -512,7 +512,7 @@ You might see one of the errors below while attempting to register your Azure St
 
 - Cloud identifier [`GUID`] is already registered. Reusing cloud identifiers is not allowed.
 
-   Cause: this happens if your Azure Stack environment is already registered. If you want to re-register your environment with a different subscription or billing model, [see these instructions](azure-stack-registration.md#change-the-subscription-you-use).
+   Cause: this happens if your Azure Stack environment is already registered. If you want to re-register your environment with a different subscription or billing model, [see these instructions](#change-the-subscription-you-use).
 
 - When trying to access Marketplace management, an error occurs when trying to syndicate products.
 
