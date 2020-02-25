@@ -23,6 +23,7 @@ The Event Hubs editions (on Azure Stack Hub and on Azure) offer a high degree of
 | Operator administrator experience | ✔ | ✘ |
 | Kafka support | ✔ | ✔ |
 | Same set of SDKs | ✔ | ✔ |
+| Authorize access to Event Hubs using Azure Active Directory | ✘ | ✔ |
 | Capture feature | ✘ | ✔ |
 | Geo-disaster recovery | ✘ | ✔ |
 | Azure Monitor | ✔ | ✔ |
