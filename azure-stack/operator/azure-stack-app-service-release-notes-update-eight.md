@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 02/10/2020
+ms.date: 02/25/2020
 ms.author: anwestg
 ms.reviewer:
 
@@ -228,7 +228,7 @@ Due to a regression in this release, both App Service databases (appservice_host
     $builder = New-Object System.Data.SqlClient.SqlConnectionStringBuilder -ArgumentList (Get-AppServiceConnectionString -Type Hosting)
     $conn = New-Object System.Data.SqlClient.SqlConnection -ArgumentList $builder.ToString()
 
-    $siteManager.Workers | ForEach-Object {
+    $siteManager.RoleServers | Where-Object {$_.IsWorker} | ForEach-Object {
         $worker = $_
         $dbUserName = "WebWorker_" + $worker.Name
 

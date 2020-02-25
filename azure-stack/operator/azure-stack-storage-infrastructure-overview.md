@@ -2,7 +2,7 @@
 title: Manage storage infrastructure for Azure Stack Hub
 titleSuffix: Azure Stack
 description: Learn how to manage storage infrastructure for Azure Stack Hub.
-author: ihenkel
+author: IngridAtMicrosoft
 
 ms.topic: article
 ms.date: 1/22/2020
@@ -68,7 +68,7 @@ In a multi-node deployment, you would see three infrastructure volumes, while th
 
 - The number of volumes remains the same even if a node malfunctioning or is removed.
 
-- If you use the Azure Stack Hub Development Kit, there's a single volume with multiple shares.
+- If you use the Azure Stack Development Kit, there's a single volume with multiple shares.
 
 Volumes in Storage Spaces Direct provide resiliency to protect against hardware problems, such as drive or server failures. They also enable continuous availability throughout server maintenance, like software updates. Azure Stack Hub deployment uses three-way mirroring to ensure data resilience. Three copies of tenant data are written to different servers, where they land in cache:
 

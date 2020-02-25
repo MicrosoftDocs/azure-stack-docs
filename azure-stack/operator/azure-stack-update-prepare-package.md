@@ -1,7 +1,7 @@
 ---
 title: Prepare an Azure Stack Hub update package 
 description: Learn to prepare an Azure Stack Hub update package.
-author: ihenkel
+author: IngridAtMicrosoft
 
 ms.topic: article
 ms.date: 1/22/2020
