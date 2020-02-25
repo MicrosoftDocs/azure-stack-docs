@@ -54,7 +54,7 @@ walks you through the steps needed to install Azure PowerShell and connect to yo
 
 ### Prerequisites
 
-You need an Azure Stack Hub installation connected to Azure Active Directory with a subscription you can access. If you don't have an Azure Stack Hub installation, you can use these instructions to set up an [Azure Stack Hub Development Kit](../asdk/asdk-install.md).
+You need an Azure Stack Hub installation connected to Azure Active Directory with a subscription you can access. If you don't have an Azure Stack Hub installation, you can use these instructions to set up an [Azure Stack Development Kit](../asdk/asdk-install.md).
 
 #### Connect to Azure Stack Hub using code
 
