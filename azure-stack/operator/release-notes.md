@@ -4,7 +4,7 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/03/2020
+ms.date: 02/25/2020
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 11/22/2019
@@ -203,7 +203,7 @@ The 1910 release of Azure Stack Hub must be applied on the 1908 release with the
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1910.17.95](https://support.microsoft.com/help/4537833)
+- [Azure Stack Hub hotfix 1.1910.24.108](https://support.microsoft.com/help/4541350)
 ::: moniker-end
 
 ::: moniker range="azs-1908"
