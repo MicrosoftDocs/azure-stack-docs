@@ -319,7 +319,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 1910 release of Azure Stack Hub must be applied on the 1908 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1908.14.53](https://support.microsoft.com/help/4537661)
+- [Azure Stack Hub hotfix 1.1908.19.62](https://support.microsoft.com/help/4541349)
 
 ### After successfully applying the 1910 update
 
@@ -394,7 +394,7 @@ Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated syste
 The 1908 release of Azure Stack Hub must be applied on the 1907 release with the following hotfixes:
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1907.18.56](https://support.microsoft.com/help/4528552)
+- [Azure Stack Hub hotfix 1.1907.26.70](https://support.microsoft.com/help/4541348)
 
 The Azure Stack Hub 1908 Update requires **Azure Stack Hub OEM version 2.1 or later** from your system's hardware provider. OEM updates include driver and firmware updates to your Azure Stack Hub system hardware. For more information about applying OEM updates, see [Apply Azure Stack Hub original equipment manufacturer updates](azure-stack-update-oem.md)
 
@@ -403,7 +403,7 @@ The Azure Stack Hub 1908 Update requires **Azure Stack Hub OEM version 2.1 or la
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1908.14.53](https://support.microsoft.com/help/4537661)
+- [Azure Stack Hub hotfix 1.1908.19.62](https://support.microsoft.com/help/4541349)
 ::: moniker-end
 
 ::: moniker range="azs-1907"
@@ -527,7 +527,7 @@ The 1907 release of Azure Stack Hub must be applied on the 1906 release with the
 After the installation of this update, install any applicable hotfixes. For more information, see our [servicing policy](azure-stack-servicing-policy.md).
 
 <!-- One of these. Either no updates at all, nothing is required, or the LATEST hotfix that is required-->
-- [Azure Stack Hub hotfix 1.1907.18.56](https://support.microsoft.com/help/4528552)
+- [Azure Stack Hub hotfix 1.1907.26.70](https://support.microsoft.com/help/4541348)
 ::: moniker-end
 
 ::: moniker range=">=azs-1907"
