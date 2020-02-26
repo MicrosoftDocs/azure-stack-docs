@@ -4,7 +4,7 @@ description: Step-by-step how-to guide on replacing failed drives on Azure Stack
 author: khdownie
 ms.author: v-kedow
 ms.prod: windows-server
-ms.topic: how-to guide
+ms.topic: article
 ms.date: 02/21/2020
 ---
 
