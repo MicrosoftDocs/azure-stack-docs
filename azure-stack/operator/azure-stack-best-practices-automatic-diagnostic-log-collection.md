@@ -9,7 +9,11 @@ ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 07/25/2019
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 # Best practices for automatic Azure Stack Hub log collection 
 
 This topic covers best practices for managing automatic diagnostic log collection for Azure Stack Hub. 

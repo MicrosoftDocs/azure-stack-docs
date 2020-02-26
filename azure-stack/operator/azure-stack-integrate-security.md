@@ -6,8 +6,13 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: inhenkel
 ms.reviewer: fiseraci
-ms.lastreviewed: 01/10/2020
+ms.lastreviewed: 01/10/2019
+
+# Intent: As an Azure Stack operator, I want to integrate Azure Stack with monitoring solutions with syslog forwarding
+# Keyword: azure stack syslog forwarding
+
 ---
+
 
 # Integrate Azure Stack Hub with monitoring solutions using syslog forwarding
 

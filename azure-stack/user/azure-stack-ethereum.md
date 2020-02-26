@@ -8,7 +8,11 @@ ms.topic: tutorial
 ms.reviewer: seyadava
 ms.lastreviewed: 06/03/2019
 
+# Intent: As an Azure Stack user, I want to deploy an Ethereum blockchain network ...
+# Keyword: azure stack ethereumn blockchain network
+
 ---
+
 # Deploy an Ethereum blockchain network on Azure Stack Hub
 
 The Ethereum solution template is designed to make it easier and quicker to deploy and configure a multi-member consortium Ethereum blockchain network with minimal Azure and Ethereum knowledge.
