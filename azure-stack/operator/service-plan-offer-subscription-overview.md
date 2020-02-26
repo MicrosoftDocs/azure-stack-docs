@@ -7,9 +7,13 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bryanla
 ms.reviewer: efemmano
-ms.lastreviewed: 10/01/2019
+ms.lastreviewed: 10/01/2
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 # Azure Stack Hub services, plans, offers, subscriptions overview
 
 [Microsoft Azure Stack Hub](azure-stack-overview.md) is a hybrid cloud platform that lets you deliver services from your datacenter. Services include virtual machines (VMs), SQL Server databases, SharePoint, Exchange, and even [Azure Marketplace items](azure-stack-marketplace-azure-items.md). As a service provider, you can offer services to your tenants. Within a business or government agency, you can offer on-premises services to your employees.

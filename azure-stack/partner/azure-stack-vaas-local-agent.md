@@ -11,9 +11,13 @@ ms.lastreviewed: 11/11/2019
 
 
 
-ROBOTS: NOINDEX
+ROBOTS: NOIN
+
+# Intent: As an Azure Stack Hub user, I want to learn how to deploy the local agent for Azure Stack Hub validation as a service.
+# Keyword: azure stack hub deploy local agent
 
 ---
+
 
 # Deploy the local agent
 

@@ -6,9 +6,13 @@ author: sethmanheim
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.author: sethm
-ms.lastreviewed: 12/27/2018
+ms.lastreviewed: 12/27/2
+
+# Intent: As an Azure Stack user, I want to deply a VM with a securely stored certificate so I can use it for authentication or encryption. 
+# Keyword: azure stack vm certificate 
 
 ---
+
 
 # Deploy a VM with a securely stored certificate on Azure Stack Hub
 

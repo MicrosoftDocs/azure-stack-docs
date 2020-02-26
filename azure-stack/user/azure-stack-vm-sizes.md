@@ -7,9 +7,13 @@ ms.topic: reference
 ms.date: 12/3/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 12/3/2019
+ms.lastreviewed: 12/3/2
+
+# Intent: As an Azure Stack user, I want to learn about virtual machine sizes available in Azure Stack.
+# Keyword: virtual machine sizes
 
 ---
+
 
 # VM sizes supported in Azure Stack Hub
 

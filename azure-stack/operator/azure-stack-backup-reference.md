@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: hectorl
-ms.lastreviewed: 10/25/2018
+ms.lastreviewed: 10/25/2
+
+# Intent: As an Azure Stack operator, I want a reference page for Infrastructure Backup Service so I can quickly scan and reference info.
+# Keyword: infrastructure backup service reference
 
 ---
+
 # Infrastructure Backup Service reference
 
 ## Azure backup infrastructure

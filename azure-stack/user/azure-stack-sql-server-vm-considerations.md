@@ -7,8 +7,13 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 01/14/2019
+ms.lastreviewed: 01/14/
+
+# Intent: As an Azure Stack user, I want an optimized SQL Server so that the users of my apps experience smooth and rapid applications.
+# Keyword: SQL server best practices
+
 ---
+
 
 # SQL server best practices to optimize performance in Azure Stack Hub
 

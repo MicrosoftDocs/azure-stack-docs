@@ -6,9 +6,13 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/16/2018
+ms.lastreviewed: 10/16/2
+
+# Intent: As an Azure Stack operator, I want to create and manage MySQL databases using the MySQL Adapter Resource Provider.
+# Keyword: create mySQL database/s azure stack
 
 ---
+
 
 # Create MySQL databases in Azure Stack Hub
 An Azure Stack Hub user that's subscribed to an offer that includes the MySQL database service can create and manage self-service MySQL databases in the user portal.

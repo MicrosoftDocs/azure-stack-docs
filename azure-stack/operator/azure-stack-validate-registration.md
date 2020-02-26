@@ -7,9 +7,13 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: inhenkel
 ms.reviewer: unknown
-ms.lastreviewed: 03/23/2019
+ms.lastreviewed: 03/23/2
+
+# Intent: As an Azure Stack Hub operator, I want to validate Azure registration with the Azure Stack Hub 
+# Keyword: azure stack hub validate registration
 
 ---
+
 
 # Validate Azure registration
 

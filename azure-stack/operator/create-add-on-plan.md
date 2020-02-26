@@ -7,8 +7,13 @@ ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: bryanla
 ms.reviewer: efemmano
-ms.lastreviewed: 06/11/2019
+ms.lastreviewed: 06/11/
+
+# Intent: As an Azure Stack Hub operator, I want to learn how to create add-on plans in Azure Stack Hub.
+# Keyword: create add-on plans azure stack hub
+
 ---
+
 
 # Create add-on plans in Azure Stack Hub
 

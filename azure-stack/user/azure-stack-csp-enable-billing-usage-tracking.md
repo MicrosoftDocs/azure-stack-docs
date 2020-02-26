@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 01/22/2020
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 05/20/2019
+ms.lastreviewed: 05/20/2
+
+# Intent: As an Azure Stack user, I want to let my CSP manage my subscription for me so I can .... 
+# Keyword: cloud service provider azure stack
 
 ---
+
 
 # Let your Cloud Solution Provider manage your Azure Stack Hub subscription
 

@@ -6,9 +6,13 @@ author: sethmanheim
 ms.topic: article
 ms.date: 01/07/2020
 ms.author: sethm
-ms.lastreviewed: 03/26/2019
+ms.lastreviewed: 03/26/2
+
+# Intent: As an Azure/Azure Stack user, I want to use the Azure Stack policy module to configure an Azure sub with the same versioning and service availability as my Azure Stack sub, allowing me to develop apps targeted for Azure Stack.
+# Keyword: azure stack policy module
 
 ---
+
 
 # Manage Azure policy using the Azure Stack Hub policy module
 

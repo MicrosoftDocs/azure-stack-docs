@@ -6,9 +6,13 @@ author: justinha
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: justinha
-ms.lastreviewed: 05/29/2019
+ms.lastreviewed: 05/29/2
+
+# Intent: As an Azure Stack operator, I want to learn the Azure Stack administration basics so I can get my users what they need.
+# Keyword: azure stack administration basics
 
 ---
+
 # Azure Stack Hub administration basics
 
 If you're new to Azure Stack Hub administration, there are several things you need to know. This article provides an overview of your role as an Azure Stack Hub operator, and what you need to tell your users to help them become productive.

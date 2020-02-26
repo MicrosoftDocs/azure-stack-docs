@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: inhenkel
 ms.lastreviewed: 09/10/2019
-ms.reviewer: ppacent 
+ms.reviewer: ppace
+
+# Intent: As an Azure Stack operator, I want to install OEM updates to keep my system up to date.
+# Keyword: install oem updates azure stack
 
 ---
+
 
 # Install Azure Stack Hub Updates
 

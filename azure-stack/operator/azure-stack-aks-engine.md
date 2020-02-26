@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 11/21/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 11/21/2019
+ms.lastreviewed: 11/21/2
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 
 # Add the Azure Kubernetes Services (AKS) engine prerequisites to the Azure Stack Hub Marketplace
 

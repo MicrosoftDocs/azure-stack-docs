@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 05/07/2019
+ms.lastreviewed: 05/07/2
+
+# Intent: As an Azure Stack user, I want to deploy a template using the portal in Azure Stack so I can manage resources efficiently.
+# Keyword: deploy template portal
 
 ---
+
 
 # Deploy a template using the portal in Azure Stack Hub
 

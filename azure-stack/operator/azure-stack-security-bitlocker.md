@@ -8,8 +8,13 @@ ms.topic: article
 ms.date: 06/17/2019
 ms.author: inhenkel
 ms.reviewer: fiseraci
-ms.lastreviewed: 03/11/2019
+ms.lastreviewed: 03/11/
+
+# Intent: As an Azure Stack operator, I want to learn to protect my data with encryption at rest.
+# Keyword: rest encryption azure stack
+
 ---
+
 
 # Data at rest encryption in Azure Stack Hub
 

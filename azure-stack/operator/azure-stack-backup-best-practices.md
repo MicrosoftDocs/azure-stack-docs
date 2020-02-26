@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 02/08/2019
 ms.author: justinha
 ms.reviewer: hectorl
-ms.lastreviewed: 02/08/2019
+ms.lastreviewed: 02/08/2
+
+# Intent: As an Azure Stack operator, I want to know the Infrastructure Backup Services best practices.
+# Keyword: infrastructure backup service azure stack
 
 ---
+
 # Infrastructure Backup Service best practices
 
 Follow these best practices when you deploy and manage Azure Stack Hub to help mitigate data loss if there's a catastrophic failure.

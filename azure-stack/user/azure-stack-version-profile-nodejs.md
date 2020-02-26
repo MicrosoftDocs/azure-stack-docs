@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 11/11/2019
+ms.lastreviewed: 11/11/2
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 
 # Use API version Profiles with Node.js software development kit (SDK) in Azure Stack Hub
 

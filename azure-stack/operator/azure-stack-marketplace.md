@@ -6,9 +6,13 @@ ms.topic: article
 ms.date: 01/07/2020
 ms.author: sethm
 ms.reviewer: ihcherie
-ms.lastreviewed: 05/07/2019
+ms.lastreviewed: 05/07/2
+
+# Intent: As an Azure Stack operator, I want an overview of Azure Stack Marketplace before I move on to more specific tutorials.
+# Keyword: azure stack marketplace
 
 ---
+
 # Azure Stack Hub Marketplace overview
 
 Azure Stack Hub Marketplace is a collection of services, apps, and resources customized for Azure Stack Hub. Resources include networks, virtual machines (VMs), storage, and more. Use Azure Stack Hub Marketplace to create new resources and deploy new apps or browse and choose the items you want to use. To use a marketplace item, users must subscribe to an offer that grants them access to the item.

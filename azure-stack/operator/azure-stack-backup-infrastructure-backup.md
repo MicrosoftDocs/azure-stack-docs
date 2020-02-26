@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 05/16/2019
 ms.author: justinha
 ms.reviewer: hectorl
-ms.lastreviewed: 05/16/2019
+ms.lastreviewed: 05/16/2
+
+# Intent: As an Azure Stack operator, I want to recover data in Azure Stack with the Infrastructure Backup Service in case of disaster.
+# Keyword: recover data infrastructure backup service
 
 ---
+
 # Recover data in Azure Stack Hub with the Infrastructure Backup Service
 
 You can back up and restore configuration and service data using the Azure Stack Hub Infrastructure Backup Service. Each Azure Stack Hub installation contains an instance of the service. You can use backups created by the service for the redeployment of the Azure Stack Hub cloud to restore identity, security, and Azure Resource Manager data.

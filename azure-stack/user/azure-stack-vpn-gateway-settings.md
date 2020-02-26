@@ -6,8 +6,13 @@ author: sethmanheim
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: sethm
-ms.lastreviewed: 12/27/2018
+ms.lastreviewed: 12/27/
+
+# Intent: As an Azure Stack user, I want to configure my VPN gateway settings so that my VPN gateway works the way I want it to.
+# Keyword: azure stack vpn gateway settings
+
 ---
+
 
 # Configure VPN gateway settings for Azure Stack Hub
 

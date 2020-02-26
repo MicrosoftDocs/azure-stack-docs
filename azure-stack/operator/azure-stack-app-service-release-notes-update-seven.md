@@ -7,9 +7,13 @@ manager: stefsch
 ms.topic: article
 ms.date: 10/11/2019
 ms.author: anwestg
-ms.reviewer:
+ms.review
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 # App Service on Azure Stack Hub update 7 release notes
 
 These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub Update 7 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).

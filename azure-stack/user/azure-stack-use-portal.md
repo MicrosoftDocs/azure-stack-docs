@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.lastreviewed: 01/25/2019
+ms.lastreviewed: 01/25/2
+
+# Intent: As an Azure Stack user, I want to use the portal so I can subscribe to offers and use the services the offers provide.
+# Keyword: azure stack portal 
 
 ---
+
 # Use the Azure Stack Hub user portal
 
 Use the Azure Stack Hub portal to subscribe to public offers and use the services that these offers provide. If you've used the global Azure portal, you're already familiar with how the site works.

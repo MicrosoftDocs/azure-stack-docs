@@ -6,8 +6,13 @@ author: bryanla
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: bryanla
-ms.lastreviewed: 05/10/2019
+ms.lastreviewed: 05/10/
+
+# Intent: As an Azure Stack operator, I want to create subscriptions for offers in Azure Stack.
+# Keyword: create subscriptions azure stack
+
 ---
+
 # Create subscriptions to offers in Azure Stack Hub
 
 After you [create an offer](azure-stack-create-offer.md), users need a subscription to that offer before they can use it. There are two ways that users can subscribe to an offer:

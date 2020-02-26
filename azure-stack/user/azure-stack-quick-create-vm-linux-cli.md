@@ -6,8 +6,13 @@ author: mattbriggs
 ms.topic: quickstart
 ms.date: 1/22/2020
 ms.author: mabrigg
-ms.lastreviewed: 01/14/2019
+ms.lastreviewed: 01/14/
+
+# Intent: As an Azure Stack user, I want to create a Linux server virtual machine using Azure CLI.
+# Keyword: linux virtual machine CLI
+
 ---
+
 
 # Quickstart: Create a Linux server VM by using the Azure CLI in Azure Stack Hub
 

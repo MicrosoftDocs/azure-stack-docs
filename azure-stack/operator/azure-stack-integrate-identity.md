@@ -6,8 +6,13 @@ ms.topic: article
 ms.date: 05/10/2019
 ms.author: inhenkel
 ms.reviewer: thoroet
-ms.lastreviewed: 05/10/2019
+ms.lastreviewed: 05/10/
+
+# Intent: As an Azure Stack operator, I want to integrate Azure Stack AD FS identity with my datacenter AD FS.
+# Keyword: azure stack integrate ad fs identity
+
 ---
+
 
 # Integrate AD FS identity with your Azure Stack Hub datacenter
 

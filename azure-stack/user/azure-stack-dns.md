@@ -6,9 +6,13 @@ author: sethmanheim
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: sethm
-ms.lastreviewed: 01/05/2019
+ms.lastreviewed: 01/05/2
+
+# Intent: As an Azure Stack user, I want to use DNS features so I can compare and manage DNS zones.
+# Keyword: azure stack dns zones
 
 ---
+
 # Use DNS in Azure Stack Hub
 
 Azure Stack Hub supports the following Azure DNS features:

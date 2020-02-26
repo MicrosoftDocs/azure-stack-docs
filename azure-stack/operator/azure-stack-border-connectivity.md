@@ -6,8 +6,13 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: inhenkel
 ms.reviewer: wamota
-ms.lastreviewed: 11/15/2019
+ms.lastreviewed: 11/15/
+
+# Intent: As an Azure Stack operator, I want to know how to plan for datacenter border network connectivity with multi-node Azure Stack.
+# Keyword: azure stack border connectivity
+
 ---
+
 
 # Border connectivity 
 Network integration planning is an important prerequisite for successful Azure Stack Hub integrated systems deployment, operation, and management. Border connectivity planning begins by choosing if you want use dynamic routing with border gateway protocol (BGP). This requires assigning a 16-bit BGP autonomous system number (public or private) or using static routing, where a static default route is assigned to the border devices.

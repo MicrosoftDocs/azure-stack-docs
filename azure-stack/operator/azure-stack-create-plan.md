@@ -7,9 +7,13 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: bryanla
 ms.reviewer: efemmano
-ms.lastreviewed: 06/11/2019
+ms.lastreviewed: 06/11/2
+
+# Intent: As an Azure Stack operator, I want to create plans to offer to my users.
+# Keyword: create plan azure stack
 
 ---
+
 # Create a plan in Azure Stack Hub
 
 [Azure Stack Hub plans](azure-stack-overview.md) are groupings of one or more services and their quotas. As a provider, you can create plans to offer to your users. In turn your users subscribe to your offers to use the plans, services, and quotas they include. This example shows you how to create a plan that includes the compute, network, and storage resource providers. This plan gives subscribers the ability to provision virtual machines.

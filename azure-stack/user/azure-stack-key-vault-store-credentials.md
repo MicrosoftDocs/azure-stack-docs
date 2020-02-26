@@ -6,9 +6,13 @@ author: sethmanheim
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: sethm
-ms.lastreviewed: 01/16/2019
+ms.lastreviewed: 01/16/2
+
+# Intent: As an Azure Stack user, I want to store my service principal credentials in Key Vault so I can later retrieve them. 
+# Keyword: service principal key vault
 
 ---
+
 
 # Store service principal credentials in Azure Stack Hub Key Vault
 

@@ -11,9 +11,13 @@ ms.lastreviewed: 11/11/2019
 
 
 
-ROBOTS: NOINDEX
+ROBOTS: NOIN
+
+# Intent: As an Azure Stack Hub user, I want to troubleshoot validation as a service for Azure Stack Hub.
+# Keyword: azure stack hub validation troubleshoot
 
 ---
+
 
 # Troubleshoot Validation as a Service
 

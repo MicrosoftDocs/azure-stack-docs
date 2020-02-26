@@ -7,9 +7,13 @@ ms.topic: conceptual
 ms.date: 09/17/2019
 ms.author: justinha
 ms.reviewer: shnatara
-ms.lastreviewed: 10/19/2018
+ms.lastreviewed: 10/19/2
+
+# Intent: As an Azure Stack operator, I want to change the billing owner for a user subscription because I may need to make changes to my organization.
+# Keyword: change billing owner azure stack
 
 ---
+
 
 # Change the billing owner for an Azure Stack Hub user subscription
 

@@ -8,9 +8,13 @@ ms.topic: article
 ms.date: 11/11/2019
 ms.author: inhenkel
 ms.reviewer: thoroet
-ms.lastreviewed: 11/11/2019
+ms.lastreviewed: 11/11/2
+
+# Intent: As an Azure Stack operator, I want to replace a physical scale unit node in Azure Stack.
+# Keyword: replace scale unit node azure stack
 
 ---
+
 
 # Replace a scale unit node on an Azure Stack Hub integrated system
 

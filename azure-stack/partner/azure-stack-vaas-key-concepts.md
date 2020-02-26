@@ -11,9 +11,13 @@ ms.lastreviewed: 10/28/2019
 
 
 
-ROBOTS: NOINDEX
+ROBOTS: NOIN
+
+# Intent: As an Azure Stack Hub user, I want to learn the key concepts of Azure Stack Hub validation as a service.
+# Keyword: azure stack hub VaaS validation
 
 ---
+
 
 # Validation as a Service key concepts
 

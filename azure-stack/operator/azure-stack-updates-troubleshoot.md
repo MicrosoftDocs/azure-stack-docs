@@ -7,11 +7,13 @@ ms.topic: article
 ms.date: 09/23/2019
 ms.author: inhenkel
 ms.lastreviewed: 09/23/2019
-ms.reviewer: ppacent 
+ms.reviewer: ppacent
 
-
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 # Best practices for troubleshooting Azure Stack Hub patch and update issues
 
 This article provides an overview of best practices for troubleshooting Azure Stack Hub patch and update issues as well as remediations to common patch and update issues.

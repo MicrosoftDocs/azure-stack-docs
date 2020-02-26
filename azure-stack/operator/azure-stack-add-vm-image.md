@@ -6,8 +6,13 @@ ms.topic: conceptual
 ms.date: 02/07/2020
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.lastreviewed: 06/08/2018
+ms.lastreviewed: 06/08/
+
+# Intent: As an Azure Stack operator, I want to add a VM image to offer to my tenants.
+# Keyword: add vm image azure stack
+
 ---
+
 
 # Add a custom VM image to Azure Stack Hub
 

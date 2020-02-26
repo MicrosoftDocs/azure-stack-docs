@@ -8,9 +8,13 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 03/25/2019
+ms.lastreviewed: 03/25/2
+
+# Intent: As an Azure Stack operator, I want to know the release notes for Azure App Service on Azure Stack Update 5.
+# Keyword: app service update 5 azure stack
 
 ---
+
 # App Service on Azure Stack Hub Update 5 release notes
 
 These release notes describe improvements, fixes, and known issues in Azure App Service on Azure Stack Hub Update 5. Known issues are divided into three sections: issues directly related to deployment, issues with the update process, and issues with the build (post-installation).

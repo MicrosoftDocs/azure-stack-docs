@@ -7,9 +7,13 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 11/11/2019
+ms.lastreviewed: 11/11/2
+
+# Intent: As an Azure Stack user, I want to manage my Azure Stack Storage so that my apps can access data.
+# Keyword: Azure Stack storage explorer
 
 ---
+
 # Connect Storage Explorer to an Azure Stack Hub subscription or a storage account
 
 In this article, you'll learn how to connect to your Azure Stack Hub subscriptions and storage accounts using [Azure Storage Explorer](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer). Storage Explorer is a standalone app that enables you to easily work with Azure Stack Hub storage data on Windows, macOS, and Linux.

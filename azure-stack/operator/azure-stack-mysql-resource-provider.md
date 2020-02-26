@@ -6,9 +6,13 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/25/2018
+ms.lastreviewed: 10/25/2
+
+# Intent: As an Azure Stack operator, I want to use MySQL databases as PaaS on Azure Stack.
+# Keyword: use mysql azure stack
 
 ---
+
 
 # Use MySQL databases on Microsoft Azure Stack Hub
 

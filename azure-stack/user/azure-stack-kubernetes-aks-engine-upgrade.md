@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 01/02/2020
+ms.lastreviewed: 01/02/2
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 
 # Upgrade a Kubernetes cluster on Azure Stack Hub
 

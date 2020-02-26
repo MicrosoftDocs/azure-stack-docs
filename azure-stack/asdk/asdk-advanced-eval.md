@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 10/16/2018
+ms.lastreviewed: 10/16/2
+
+# Intent: As an ASDK user, I want to know about advanced ASDK evalutation tasks to save my tenants time and resources.
+# Keyword: asdk advanced evaluation tasks
 
 ---
+
 
 # Advanced ASDK evaluation tasks
 After you have gained familiarity with the basic Azure Stack Development Kit (ASDK) service features and capabilities, you can deepen your understanding of Azure Stack further by testing out more advanced scenarios. These more advanced evaluation tasks are documented fully in the Azure Stack Operator documentation.

@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/13/2020
+ms.lastreviewed: 01/13/2
+
+# Intent: As an Azure Stack operator, I want to scale infrastructure and worker roles in App Service on Azure Stack so I can deploy workloads onto them.
+# Keyword: add workers app service azure stack
 
 ---
+
 
 # Add workers and infrastructure in Azure App Service on Azure Stack Hub
 

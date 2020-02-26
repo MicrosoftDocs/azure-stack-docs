@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 05/07/2019
+ms.lastreviewed: 05/07/2
+
+# Intent: As an Azure Stack operator, I want to know how to delegate tasks like creating offers so I can put other people in charge.
+# Keyword: azure stack delegate offers
 
 ---
+
 # Delegate offers in Azure Stack Hub
 
 As an Azure Stack Hub operator, you might want to put other people in charge of signing up users and creating subscriptions. For example, if you're a service provider, you might want resellers to sign up customers and manage them on your behalf. Or, if you're part of a central IT group in an enterprise, you might want to delegate user sign-up to other IT staff.

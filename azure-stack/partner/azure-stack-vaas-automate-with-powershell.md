@@ -8,9 +8,13 @@ ms.date: 11/26/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2019
-ROBOTS: NOINDEX
+ROBOTS: NOIN
+
+# Intent: As an Azure Stack Hub operator, I want to learn how to automate Azure Stack validation with powershell.
+# Keyword: automate azure stack validation
 
 ---
+
 
 # Automate Azure Stack Hub validation with PowerShell
 

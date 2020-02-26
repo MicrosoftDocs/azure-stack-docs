@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 03/13/2019
+ms.lastreviewed: 03/13/2
+
+# Intent: As an Azure Stack operator, I want to learn about how much computing capacy I need for a stable production deployment. 
+# Keyword: capacity planning azure stack
 
 ---
+
 # Capacity planning for App Service server roles in Azure Stack Hub
 
 To set up a production-ready deployment of Azure App Service on Azure Stack Hub, you must plan for the capacity you expect the system to support.  

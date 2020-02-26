@@ -8,9 +8,13 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 01/14/2019
+ms.lastreviewed: 01/14/2
+
+# Intent: As an Azure Stack operator, I want a reference for tenant resource usage APIs.
+# Keyword: azure stack resource usage APIs reference
 
 ---
+
 # Tenant resource usage API reference
 
 A tenant can use the tenant APIs to view the tenant's own resource usage data. These APIs are consistent with the Azure usage APIs.

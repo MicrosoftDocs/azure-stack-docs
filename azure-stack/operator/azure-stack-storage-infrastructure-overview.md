@@ -8,11 +8,13 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: inhenkel
 ms.lastreviewed: 03/11/2019
-ms.reviewer: jiahan
+ms.reviewer: jiaha
 
-
+# Intent: As an Azure Stack operator, I want to manage storage infrastructure in Azure Stack.
+# Keyword: manage storage infrastructure azure stack
 
 ---
+
 
 # Manage storage infrastructure for Azure Stack Hub
 

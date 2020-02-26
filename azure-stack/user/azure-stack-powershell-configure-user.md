@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 10/02/2019
+ms.lastreviewed: 10/02/2
+
+# Intent: As an Azure Stack user, I want to connect to Azure Stack with PowerShell so that I can use interactive prompt or write scripts to create and manage resources.
+# Keyword: connect Azure Stack powershell
 
 ---
+
 
 # Connect to Azure Stack Hub with PowerShell as a user
 

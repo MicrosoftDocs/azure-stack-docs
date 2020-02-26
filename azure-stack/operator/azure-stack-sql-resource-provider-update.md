@@ -8,8 +8,13 @@ ms.topic: article
 ms.date: 11/11/2019
 ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 11/11/2019
+ms.lastreviewed: 11/11/
+
+# Intent: As an Azure Stack operator, I want to update the SQL resource provider.
+# Keyword: update sql resource provider azure stack
+
 ---
+
 
 # Update the SQL resource provider
 

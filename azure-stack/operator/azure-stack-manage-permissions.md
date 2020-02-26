@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 12/23/2019
 ms.author: justinha
 ms.reviewer: thoroet
-ms.lastreviewed: 12/23/2019
+ms.lastreviewed: 12/23/2
+
+# Intent: As an Azure Stack operator, I want to set access permissions using RBAC so I can control permissions.
+# Keyword: set access permissions azure stack
 
 ---
+
 # Set access permissions using role-based access control
 
 A user in Azure Stack Hub can be a reader, owner, or contributor for each instance of a subscription, resource group, or service. For example, User A might have reader permissions to Subscription One, but have owner permissions to Virtual Machine Seven.

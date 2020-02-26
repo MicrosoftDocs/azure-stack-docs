@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 10/28/2019
+ms.lastreviewed: 10/28/2
+
+# Intent: As an Azure Stack Hub user, I want release notes for Azure Stack Hub validation as a service.
+# Keyword: azure stack hub validation release notes
 
 ---
+
 
 # Release notes for Validation as a Service
 

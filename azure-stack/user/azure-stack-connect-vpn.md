@@ -7,9 +7,13 @@ ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: sethm
 ms.reviewer: scottnap
-ms.lastreviewed: 10/24/2018
+ms.lastreviewed: 10/24/2
+
+# Intent: As an Azure Stack user, I want to connect Azure Stack to Azure using VPN so I can have a site-to-site connection.
+# Keyword: connect azure stack vpn
 
 ---
+
 # Connect Azure Stack Hub to Azure using VPN
 
 This article describes how to create a site-to-site VPN to connect a virtual network in Azure Stack Hub to a virtual network in Azure.

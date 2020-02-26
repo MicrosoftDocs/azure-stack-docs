@@ -6,8 +6,13 @@ ms.topic: article
 ms.date: 04/19/2019
 ms.author: inhenkel
 ms.reviewer: wamota
-ms.lastreviewed: 04/19/2019
+ms.lastreviewed: 04/19/
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Deployment worksheet for Azure Stack Hub integrated systems
 

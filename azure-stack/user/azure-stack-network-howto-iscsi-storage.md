@@ -7,10 +7,13 @@ ms.topic: how-to
 ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/28/2019
+ms.lastreviewed: 10/28/20
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 
 # Connect to iSCSI storage with Azure Stack Hub
 

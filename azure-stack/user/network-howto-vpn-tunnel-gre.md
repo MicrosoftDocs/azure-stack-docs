@@ -7,10 +7,13 @@ ms.topic: how-to
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 09/19/2019
+ms.lastreviewed: 09/19/20
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 
 # How to create a VPN tunnel using GRE in Azure Stack Hub
 

@@ -8,9 +8,13 @@ ms.topic: article
 ms.date: 02/25/2020
 ms.author: inhenkel
 ms.reviewer: avishwan
-ms.lastreviewed: 03/04/2019
+ms.lastreviewed: 03/04/2
+
+# Intent: As an Azure Stack operator, I want to register my Azure Stack with Azure so I can download marketplace items and set up data reporting.
+# Keyword: register azure stack (registration)
 
 ---
+
 
 # Register Azure Stack Hub with Azure
 

@@ -6,8 +6,13 @@ ms.topic: overview
 ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
-ms.lastreviewed: 11/05/2019
+ms.lastreviewed: 11/05/
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Hybrid patterns and solution examples for Azure and Azure Stack
 

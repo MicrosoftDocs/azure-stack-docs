@@ -8,9 +8,13 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: justini
-ms.lastreviewed: 11/14/2018
+ms.lastreviewed: 11/14/2
+
+# Intent: As an Azure Stack user, I want to use Azure Resource Manager templates to provision resources for my application.
+# Keyword: resource manager templates
 
 ---
+
 # Use Azure Resource Manager templates in Azure Stack Hub
 
 You can use Azure Resource Manager templates to deploy and provision all the resources for your application in a single, coordinated operation. You can also redeploy templates to make changes to the resources in a resource group.

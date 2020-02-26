@@ -7,8 +7,13 @@ ms.topic: article
 ms.date: 06/14/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 06/14/2019
+ms.lastreviewed: 06/14/
+
+# Intent: As an ASDK user, I want to register my ASDK with Azure so I can download marketplace items and report data back to global Azure.
+# Keyword: register asdk azure
+
 ---
+
 
 # Register the ASDK with Azure
 

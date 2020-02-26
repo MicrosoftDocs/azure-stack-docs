@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: hectorl
-ms.lastreviewed: 09/05/2018
+ms.lastreviewed: 09/05/2
+
+# Intent: As an Azure Stack operator, I want to perform an on-demand backup.
+# Keyword: azure stack backup
 
 ---
+
 # Back up Azure Stack Hub
 
 This article shows you how to do an on-demand backup on Azure Stack Hub. For instructions on configuring the PowerShell environment, see [Install PowerShell for Azure Stack Hub](azure-stack-powershell-install.md). To sign in to Azure Stack Hub, see [Using the administrator portal in Azure Stack Hub](azure-stack-manage-portals.md).

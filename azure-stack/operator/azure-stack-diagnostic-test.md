@@ -7,8 +7,13 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: justinha
 ms.reviewer: adshar
-ms.lastreviewed: 01/10/2020
+ms.lastreviewed: 01/10/
+
+# Intent: As an Azure Stack operator, I want to use the Azure Stack validation tool to validate the system state.
+# Keyword: azure stack validation tool
+
 ---
+
 
 # Validate Azure Stack Hub system state
 

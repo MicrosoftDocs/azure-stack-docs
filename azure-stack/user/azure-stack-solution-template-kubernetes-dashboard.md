@@ -8,8 +8,13 @@ ms.author: mabrigg
 ms.reviewer: waltero 
 ms.lastreviewed: 06/18/2019
 
-# Keyword target: Azure Stack Hub Kubernetes dashboard 
---- 
+# Keyword target: Azure Stack Hub Kubernetes dashbo
+
+# Intent: As an Azure Stack user, I want to access the Kubernetes dashboard from Azure Stack for basic management operations.
+# Keyword: azure stack kubernetes dashboard
+
+---
+ 
 # Access the Kubernetes Dashboard in Azure Stack Hub 
 
 > [!Note]   

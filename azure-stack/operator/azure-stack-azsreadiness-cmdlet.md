@@ -6,8 +6,13 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.author: inhenkel
 ms.reviewer: unknown
-ms.lastreviewed: 05/09/2019
+ms.lastreviewed: 05/09/
+
+# Intent: As an Azure Stack operator, I want a reference page for the Azure Stack Readiness checker cmdlet. 
+# Keyword: Azure Stack Readiness Checker 
+
 ---
+
 
 # Start-AzsReadinessChecker cmdlet reference
 

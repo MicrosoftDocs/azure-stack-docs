@@ -8,8 +8,13 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/16/2018
+ms.lastreviewed: 10/16/
+
+# Intent: As an Azure Stack operator, I want to create and manage SQL databases provisiuoned using the SQL resource provider adapter.
+# Keyword: create sql databases azure stack
+
 ---
+
 
 # Create SQL databases
 

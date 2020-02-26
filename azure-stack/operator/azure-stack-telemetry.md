@@ -8,8 +8,13 @@ ms.topic: conceptual
 ms.date: 1/16/2020
 ms.author: inhenkel
 ms.reviewer: comartin
-ms.lastreviewed: 10/15/2018
+ms.lastreviewed: 10/15/
+
+# Intent: As an Azure Stack operator, I want to configure telemetry settings using Powershell.
+# Keyword: configure telemetry azure stack
+
 ---
+
 # Configure Azure Stack Hub telemetry
 
 Azure Stack Hub telemetry automatically uploads system data to Microsoft via the Connected User Experience. Microsoft teams use the data that Azure Stack Hub telemetry gathers to improve customer experiences. This data is also used for security, health, quality, and performance analysis.

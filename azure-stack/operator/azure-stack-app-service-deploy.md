@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: bryanla
 ms.reviewer: anwestg
-ms.lastreviewed: 01/13/2020
+ms.lastreviewed: 01/13/2
+
+# Intent: As an Azure Stack operator, I want to deploy App Service on Azure Stack.
+# Keyword: deploy app service azure stack
 
 ---
+
 # Deploy App Service in Azure Stack Hub
 
 This article describes how to deploy App Service in Azure Stack Hub.

@@ -6,8 +6,13 @@ ms.topic: conceptual
 ms.date: 02/04/2020
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 12/23/2018
+ms.lastreviewed: 12/23/
+
+# Intent: As an Azure Stack operator, I want to download marketplace items from Azure Marketplace and publish them to my Azure Stack.
+# Keyword: download marketplace items azure stack
+
 ---
+
 
 # Download Marketplace items to Azure Stack Hub 
 

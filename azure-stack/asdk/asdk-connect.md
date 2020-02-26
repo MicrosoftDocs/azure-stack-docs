@@ -7,10 +7,13 @@ ms.topic: article
 ms.date: 05/06/2019
 ms.author: justinha
 ms.reviewer: knithinc
-ms.lastreviewed: 10/25/2018
+ms.lastreviewed: 10/25/20
 
+# Intent: As an ASDK user, I want to connect to the ASDK so I can manage resources.
+# Keyword: connect to asdk
 
 ---
+
 # Connect to the ASDK
 
 To manage resources, you must first connect to the Azure Stack Development Kit (ASDK). In this article, we describe the steps that you take to connect to the ASDK by using the following connection options:

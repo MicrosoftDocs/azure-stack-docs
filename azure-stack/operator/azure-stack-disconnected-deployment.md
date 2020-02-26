@@ -6,8 +6,13 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: inhenkel
 ms.reviewer: wfayed
-ms.lastreviewed: 11/01/2019
+ms.lastreviewed: 11/01/
+
+# Intent: As an Azure Stack operator, I want to know the planning decisions for deploying Azure Stack integrated systems disconnected from Azure.
+# Keyword: azure stack disconnected deployment
+
 ---
+
 
 # Azure disconnected deployment planning decisions for Azure Stack Hub integrated systems
 After you've decided [how you'll integrate Azure Stack Hub into your hybrid cloud environment](azure-stack-connection-models.md), you can finish your Azure Stack Hub deployment decisions.

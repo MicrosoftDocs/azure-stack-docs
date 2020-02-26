@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 12/27/2019
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 08/29/2019
+ms.lastreviewed: 08/29/2
+
+# Intent: As an Azure Stack Hub operator, I want to view Azure Stack Hub Marketplace FAQs for Windows Server.
+# Keyword: azure stack hub windows server marketplace FAQ
 
 ---
+
 
 # Windows Server in Azure Stack Hub Marketplace FAQ
 

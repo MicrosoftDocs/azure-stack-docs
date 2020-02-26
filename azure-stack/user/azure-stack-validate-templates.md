@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 12/27/2018
+ms.lastreviewed: 12/27/2
+
+# Intent: As an Azure Stack user, I want to use the template validation tool so I can see if my templates are ready to deploy.
+# Keyword: azure stack template validation tool
 
 ---
+
 
 # Use the template validation tool in Azure Stack Hub
 

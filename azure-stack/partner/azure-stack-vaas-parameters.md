@@ -11,9 +11,13 @@ ms.lastreviewed: 11/11/2019
 
 
 
-ROBOTS: NOINDEX
+ROBOTS: NOIN
+
+# Intent: As an Azure Stack Hub user, I want to learn about workflow common parameters for Azure Stack Hub validation as a service.
+# Keyword: azure stack hub vaas workflow parameters
 
 ---
+
 
 # Workflow common parameters for Azure Stack Hub Validation as a Service
 

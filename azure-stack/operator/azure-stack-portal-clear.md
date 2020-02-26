@@ -8,8 +8,13 @@ ms.date: 01/27/2020
 ms.author: sethm
 ms.reviewer: troettinger
 ms.lastreviewed: 09/10/2019
-monikerRange: 'azs-1802'
+monikerRange: 'azs-1
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Clear portal user data from Azure Stack Hub
 

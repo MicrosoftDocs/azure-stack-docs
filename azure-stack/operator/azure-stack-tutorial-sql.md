@@ -8,8 +8,13 @@ ms.topic: article
 ms.date: 10/07/2019
 ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/23/2018
+ms.lastreviewed: 10/23/
+
+# Intent: As an Azure Stack operator, I want to learn how to create highly available SQL databases
+# Keyword: create sql database azure stack hub
+
 ---
+
 
 # Create highly available SQL databases with Azure Stack Hub
 

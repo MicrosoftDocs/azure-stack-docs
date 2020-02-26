@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: sethm
 ms.reviewer: sijuman
-ms.lastreviewed: 05/16/2019
+ms.lastreviewed: 05/16/2
+
+# Intent: As an Azure Stack user, I want to use API version profiles with Java in Azure stack so I can benefit from the use of profiles.
+# Keyword: azure stack api profiles java
 
 ---
+
 
 # Use API version profiles with Java in Azure Stack Hub
 

@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 01/22/2020
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 10/15/2018
+ms.lastreviewed: 10/15/2
+
+# Intent: As an Azure Stack operator, I want to manage usage and billing for my users.
+# Keyword: azure stack cloud service provider csp
 
 ---
+
 
 # Manage usage and billing for Azure Stack Hub as a Cloud Solution Provider
 

@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 10/15/2018
+ms.lastreviewed: 10/15/2
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 
 # Configure deployment sources for App Services on Azure Stack Hub
 

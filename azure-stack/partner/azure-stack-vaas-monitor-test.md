@@ -11,9 +11,13 @@ ms.lastreviewed: 11/11/2019
 
 
 
-ROBOTS: NOINDEX
+ROBOTS: NOIN
+
+# Intent: As an Azure Stack Hub user, I want to learn how to manage tests in the Azure Stack Hub VaaS portal.
+# Keyword: azure stack hub manage vaas tests
 
 ---
+
 
 # Monitor and manage tests in the VaaS portal
 

@@ -5,9 +5,13 @@ author: BryanLa
 ms.author: bryanla
 ms.topic: how-to
 ms.date: 11/11/2019
-ms.lastreviewed: 11/11/2019
+ms.lastreviewed: 11/11/2
+
+# Intent: As an Azure Stack operator, I want to use an app identity via a service principal to access resources. 
+# Keyword: app identity service principals azure stack
 
 ---
+
 # Use an app identity to access Azure Stack Hub resources
 
 An application that needs to deploy or configure resources through Azure Resource Manager must be represented by a service principal. Just as a user is represented by a user principal, a service principal is a type of security principal that represents an app. The service principal provides an identity for your app, allowing you to delegate only the necessary permissions to that service principal.  

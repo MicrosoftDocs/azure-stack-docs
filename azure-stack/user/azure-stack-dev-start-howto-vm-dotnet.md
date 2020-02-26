@@ -7,10 +7,13 @@ ms.topic: overview
 ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 11/11/2019
+ms.lastreviewed: 11/11/20
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 
 # Deploy a C# ASP.NET web app to a VM in Azure Stack Hub
 

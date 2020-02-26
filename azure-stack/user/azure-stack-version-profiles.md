@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 01/06/2020
 ms.author: sethm
 ms.reviewer: sijuman
-ms.lastreviewed: 07/24/2019
+ms.lastreviewed: 07/24/2
+
+# Intent: As an Azure Stack user, I want to create API version profiles so I can create custom clients. 
+# Keyword: azure stack api version profiles
 
 ---
+
 
 # Manage API version profiles in Azure Stack Hub
 

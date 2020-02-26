@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 01/22/2020
 ms.author: sethm
 ms.reviewer: jiahan
-ms.lastreviewed: 03/23/2019
+ms.lastreviewed: 03/23/2
+
+# Intent: As an Azure Stack user, I want to know the differences between managed disks for Azure and managed disks for Azure Stack so I can simplify disk management for IaaS.
+# Keyword: managed disks azure stack
 
 ---
+
 
 # Azure Stack Hub managed disks: differences and considerations
 

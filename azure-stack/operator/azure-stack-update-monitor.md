@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: inhenkel
 ms.lastreviewed: 08/23/2019
-ms.reviewer: ppacent 
+ms.reviewer: ppace
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 
 # Monitor updates in Azure Stack Hub using Powershell
 

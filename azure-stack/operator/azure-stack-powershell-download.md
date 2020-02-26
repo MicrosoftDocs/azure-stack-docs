@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 09/19/2019
+ms.lastreviewed: 09/19/2
+
+# Intent: As an Azure Stack operator, I want to download Azure Stack tools from GitHub so I can use them in Azure Stack.
+# Keyword: download azure stack tools
 
 ---
+
 
 # Download Azure Stack Hub tools from GitHub
 

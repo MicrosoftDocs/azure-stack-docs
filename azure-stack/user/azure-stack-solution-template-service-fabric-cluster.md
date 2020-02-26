@@ -7,8 +7,13 @@ ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: shnatara
-ms.lastreviewed: 09/25/2019
+ms.lastreviewed: 09/25/
+
+# Intent: As an Azure Stack user, I want to ÿdeploy a secured Service Fabric cluster in Azure Stack.
+# Keyword: service fabric cluster
+
 ---
+
 
 # Deploy a Service Fabric cluster in Azure Stack Hub
 

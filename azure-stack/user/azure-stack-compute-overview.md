@@ -7,9 +7,13 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.lastreviewed: 01/05/2019
+ms.lastreviewed: 01/05/2
+
+# Intent: As an Azure Stack user, I want an introduction to virtual machines so I can see an overview of the virtual machine creation process.
+# Keyword: azure stack VM
 
 ---
+
 # Introduction to Azure Stack Hub VMs
 
 Azure Stack Hub offers virtual machines (VMs) as a type of on-demand and scalable computing resource. You can choose a VM when you need more control over the computing environment. This article provides details before you create your first VM.

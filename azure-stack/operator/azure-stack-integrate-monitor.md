@@ -6,8 +6,13 @@ ms.topic: article
 ms.date: 06/05/2019
 ms.author: inhenkel
 ms.reviewer: thoroet
-ms.lastreviewed: 06/05/2019
+ms.lastreviewed: 06/05/
+
+# Intent: As an Azure Stack operator, I want to integrate an external monitoring solution with Azure Stack so I can monitor system health information.
+# Keyword: azure stack monitoring solution
+
 ---
+
 
 # Integrate external monitoring solution with Azure Stack Hub
 

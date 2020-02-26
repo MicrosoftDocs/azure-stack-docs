@@ -7,8 +7,13 @@ ms.topic: article
 ms.date: 05/20/2019
 ms.author: justinha
 ms.reviewer: thoroet
-ms.lastreviewed: 09/17/2018
+ms.lastreviewed: 09/17/
+
+# Intent: As an Azure Stack operator, I want to add a new tenant account in AAD so I can explore the tenant portal and test offers and plans.
+# Keyword: tenant account active directory
+
 ---
+
 
 # Add a new Azure Stack Hub user account in Azure Active Directory (Azure AD)
 

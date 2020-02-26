@@ -6,8 +6,13 @@ ms.topic: article
 ms.date: 12/11/2019
 ms.author: inhenkel
 ms.reviewer: wamota
-ms.lastreviewed: 12/11/2019
+ms.lastreviewed: 12/11/
+
+# Intent: As an Azure Stack operator, I want to publish Azure Stack services to my datacenter so they can be available to external networks.
+# Keyword: publish azure stack services
+
 ---
+
 
 # Publish Azure Stack Hub services in your datacenter 
 

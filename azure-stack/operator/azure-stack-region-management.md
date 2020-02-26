@@ -8,9 +8,13 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: sethm
 ms.reviewer: efemmano
-ms.lastreviewed: 11/27/2018
+ms.lastreviewed: 11/27/2
+
+# Intent: As an Azure Stack operator, I want an overview of region management in Azure Stack.
+# Keyword: region management azure stack
 
 ---
+
 
 # Region management in Azure Stack Hub
 

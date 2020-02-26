@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: hectorl
-ms.lastreviewed: 11/05/2018
+ms.lastreviewed: 11/05/2
+
+# Intent: As an Azure Stack operator, I want to recover from catastrophic data loss so I can restore some user data.
+# Keyword: recover data loss azure stack
 
 ---
+
 # Recover from catastrophic data loss
 
 Azure Stack Hub runs Azure services in your datacenter and can run on environments as small as four nodes installed in a single rack. In contrast, Azure runs in more than 40 regions in multiple datacenters and multiple zones in each region. User resources can span multiple servers, racks, datacenters, and regions. With Azure Stack Hub, you currently only have the choice to deploy your entire cloud to a single rack. This limitation exposes your cloud to the risk of catastrophic events at your datacenter or failures due to major product bugs. When a disaster strikes, the Azure Stack Hub instance goes offline. All of the data is potentially unrecoverable.

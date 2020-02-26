@@ -7,10 +7,13 @@ ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 11/01/2019
+ms.lastreviewed: 11/01/20
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 
 # Run a Windows virtual machine on Azure Stack Hub
 

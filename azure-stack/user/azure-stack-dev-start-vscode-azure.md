@@ -7,10 +7,13 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 11/11/2019
+ms.lastreviewed: 11/11/20
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 
 # Connect to Azure Stack Hub using Azure Account Extension in Visual Studio Code
 

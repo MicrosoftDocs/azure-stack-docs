@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 02/19/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 10/15/2018
+ms.lastreviewed: 10/15/2
+
+# Intent: As an ASDK user, I want to familiarize myself with the admin basics so my users can become productive as quickly as possible.
+# Keyword: asdk admin basics
 
 ---
+
 
 # ASDK admin basics
 There are several things you need to know if you're new to Azure Stack Development Kit (ASDK) administration. This guidance provides an overview of your role as an Azure Stack operator in the evaluation environment. Familiarizing yourself with this info ensures your test users will become productive as quickly as possible.

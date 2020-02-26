@@ -9,10 +9,11 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
 
+# Intent: As an Azure Stack Hub user, I want to learn how to use the Azure Stack Hub Validation portal to schedule my first test.
+# Keyword: azure stack hub validation schedule test
 
-
-# Customer intent: As a partner OEM, I want to let the service test my hardware bill of materials to check that it can run Azure Stack Hub.
 ---
+
 
 # Scheduling a test
 

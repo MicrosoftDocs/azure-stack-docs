@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 07/09/2019
+ms.lastreviewed: 07/09/2
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 # Use Docker to run PowerShell in Azure Stack Hub
 
 In this article, you use Docker to create Windows-based containers on which to run the version of PowerShell that's required for working with the various interfaces. In Docker, you must use Windows-based containers.

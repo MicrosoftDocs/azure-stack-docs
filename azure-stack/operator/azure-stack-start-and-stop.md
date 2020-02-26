@@ -8,8 +8,13 @@ ms.topic: article
 ms.date: 10/02/2019
 ms.author: inhenkel
 ms.reviewer: misainat
-ms.lastreviewed: 10/15/2018
+ms.lastreviewed: 10/15/
+
+# Intent: As an Azure Stack operator, I want to start and stop Azure Stack.
+# Keyword: start stop azure stack
+
 ---
+
 
 # Start and stop Azure Stack Hub
 

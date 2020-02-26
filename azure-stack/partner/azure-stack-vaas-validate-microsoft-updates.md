@@ -11,9 +11,13 @@ ms.lastreviewed: 10/29/2019
 
 
 
-ROBOTS: NOINDEX
+ROBOTS: NOIN
+
+# Intent: As an Azure Stack Hub user, I want to learn how to validate software updates from Microsoft with Azure Stack Hub validation as a service.
+# Keyword: azure stack hub validation software updates
 
 ---
+
 
 # Validate software updates from Microsoft
 
