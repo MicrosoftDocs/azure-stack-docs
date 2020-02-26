@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 01/07/2020
 ms.author: sethm
 ms.reviewer: ihcherie
-ms.lastreviewed: 05/07/2
+ms.lastreviewed: 05/07/2019
 
 # Intent: As an Azure Stack operator, I want an overview of Azure Stack Marketplace before I move on to more specific tutorials.
 # Keyword: azure stack marketplace

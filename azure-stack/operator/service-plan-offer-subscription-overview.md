@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: bryanla
 ms.reviewer: efemmano
-ms.lastreviewed: 10/01/2
+ms.lastreviewed: 10/01/2019
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase

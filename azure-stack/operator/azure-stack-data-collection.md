@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 06/10/2019
 ms.author: justinha
 ms.reviewer: chengwei
-ms.lastreviewed: 06/10/2
+ms.lastreviewed: 06/10/2019
 
 # Intent: As an Azure Stack operator, I want to know how Azure Stack handles my customer data.
 # Keyword: azure stack customer data

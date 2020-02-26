@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 01/07/2020
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 01/25/2
+ms.lastreviewed: 01/25/2019
 
 # Intent: As an Azure Stack operator, I want a reference page for the resource usage API.
 # Keyword: provider resource usage API azure stack

@@ -8,7 +8,7 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 01/14/2
+ms.lastreviewed: 01/14/2019
 
 # Intent: As an Azure Stack operator, I want a reference for tenant resource usage APIs.
 # Keyword: azure stack resource usage APIs reference

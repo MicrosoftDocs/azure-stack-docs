@@ -6,7 +6,7 @@ ms.author: patricka
 ms.date: 06/03/2019
 ms.topic: tutorial
 ms.reviewer: seyadava
-ms.lastreviewed: 06/03/2
+ms.lastreviewed: 06/03/2019
 
 # Intent: As an Azure Stack user, I want to deploy an Ethereum blockchain network ...
 # Keyword: azure stack ethereumn blockchain network

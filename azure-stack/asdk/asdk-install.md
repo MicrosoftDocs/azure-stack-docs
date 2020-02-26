@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 05/06/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 02/08/20
+ms.lastreviewed: 02/08/2019
 
 # Intent: As an ASDK user, I want to install the ASDK so I can start using it. 
 # Keyword: install asdk

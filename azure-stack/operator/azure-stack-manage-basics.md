@@ -6,7 +6,7 @@ author: justinha
 ms.topic: article
 ms.date: 05/29/2019
 ms.author: justinha
-ms.lastreviewed: 05/29/2
+ms.lastreviewed: 05/29/2019
 
 # Intent: As an Azure Stack operator, I want to learn the Azure Stack administration basics so I can get my users what they need.
 # Keyword: azure stack administration basics

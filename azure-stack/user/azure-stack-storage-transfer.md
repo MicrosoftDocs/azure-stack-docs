@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 11/06/20
+ms.lastreviewed: 11/06/2019
 
 # Intent: As an Azure Stack user, I want to learn about data transfer tools for Azure Stack Storage so I can transfer data to and from Azure Stack.
 # Keyword: Azure stack storage data transfer

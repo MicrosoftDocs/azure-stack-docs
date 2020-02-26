@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 10/15/20
+ms.lastreviewed: 10/15/2019
 
 # Intent: As an ASDK user, I want to learn about Azure Stack telemetry, so I can learn how use it, leverage it, and manage it. 
 # Keyword: azure stack telemetry

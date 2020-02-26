@@ -1,8 +1,8 @@
 ---
-title: Workflow common parameters in Azure Stack Hub Validation as a Service
-description: Workflow common parameters for Azure Stack Hub Validation as a Service
+title: Common workflow parameters in VaaS
+titleSuffix: Azure Stack Hub
+description: Learn about common workflow parameters for Azure Stack Hub validation as a service.
 author: mattbriggs
-
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
@@ -10,8 +10,7 @@ ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
 
 
-
-ROBOTS: NOIN
+ROBOTS: NOINDEX
 
 # Intent: As an Azure Stack Hub user, I want to learn about workflow common parameters for Azure Stack Hub validation as a service.
 # Keyword: azure stack hub vaas workflow parameters
@@ -23,17 +22,17 @@ ROBOTS: NOIN
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Common parameters include values like environment variables and user credentials required by all tests in Validation as a Service (VaaS). These values are defined at the workflow level when you create or change a workflow. When scheduling tests, these values are passed as parameters to each test under the workflow.
+Common parameters include values like environment variables and user credentials required by all tests in validation as a service (VaaS). These values are defined at the workflow level when you create or change a workflow. When scheduling tests, these values are passed as parameters to each test under the workflow.
 
 > [!NOTE]
-> Each test defines its own set of parameters. At schedule time, a test may require you to enter a value independently of the common parameters, or may allow you to override the common parameter value.
+> Each test defines its own set of parameters. At scheduling time, a test may require you to enter a value independently of the common parameters or may allow you to override the common parameter value.
 
 ## Environment parameters
 
-Environment parameters describe the Azure Stack Hub environment under test. These values must be provided by generating and uploading an Azure Stack Hub stamp information file for the specific instance you are testing.
+Environment parameters describe the Azure Stack Hub environment under test. These values must be provided by generating and uploading an Azure Stack Hub stamp information file for the specific instance you're testing.
 
 > [!NOTE]
-> In official validation workflows, environment parameters cannot be modified after workflow creation.
+> In official validation workflows, environment parameters can't be modified after workflow creation.
 
 ### Generate the stamp information file
 
@@ -54,13 +53,13 @@ Environment parameter values can also be manually located in the **ECE configura
 
 ## Test parameters
 
-Common test parameters include sensitive information that can't be stored in configuration files. These must be manually provided.
+Common test parameters include sensitive information that can't be stored in configuration files. These parameters must be manually provided.
 
 Parameter    | Description
 -------------|-----------------
-Tenant Administrator User                            | Azure Active Directory Tenant Administrator that was provisioned by the service administrator in the AAD directory. This user performs tenant-level actions like deploying templates to set up resources (VMs, storage accounts, etc.) and executing workloads. For details on provisioning the tenant account, see [Add a new Azure Stack Hub tenant](../operator/azure-stack-add-new-user-aad.md).
-Service Administrator User             | Azure Active Directory Administrator of the Azure AD Directory Tenant specified during Azure Stack Hub deployment. Search for `AADTenant` in the ECE configuration file and select the value in the `UniqueName` element.
-Cloud Administrator User               | Azure Stack Hub domain administrator account (for example, `contoso\cloudadmin`). Search for `User Role="CloudAdmin"` in the ECE configuration file and select the value in the `UserName` element.
+Tenant Administrator User                            | Azure Active Directory (Azure AD) tenant admin that was provisioned by the service administrator in the AAD directory. This user performs tenant-level actions like deploying templates to set up resources (VMs, storage accounts, and so on.) and executing workloads. For details on provisioning the tenant account, see [Add a new Azure Stack Hub tenant](../operator/azure-stack-add-new-user-aad.md).
+Service Administrator User             | Azure AD admin of the Azure AD directory tenant specified during Azure Stack Hub deployment. Search for `AADTenant` in the ECE configuration file and select the value in the `UniqueName` element.
+Cloud Administrator User               | Azure Stack Hub domain admin account (for example, `contoso\cloudadmin`). Search for `User Role="CloudAdmin"` in the ECE configuration file and select the value in the `UserName` element.
 Diagnostics Connection String          | A SAS URL to an Azure Storage Account to which diagnostics logs will be copied during test execution. For instructions on generating the SAS URL, see [Generate the diagnostics connection string](#generate-the-diagnostics-connection-string). |
 
 > [!IMPORTANT]
@@ -68,7 +67,7 @@ Diagnostics Connection String          | A SAS URL to an Azure Storage Account t
 
 ### Generate the diagnostics connection string
 
-The diagnostics connection string is required for storing diagnostics logs during test execution. Use the Azure Storage Account created during setup (see [Set up your Validation as a Service resources](azure-stack-vaas-set-up-resources.md)) to create a shared access signature (SAS) URL to give VaaS access to upload logs to your storage account.
+The diagnostics connection string is required for storing diagnostics logs during test execution. Use the Azure Storage Account created during setup (see [Set up your validation as a service resources](azure-stack-vaas-set-up-resources.md)) to create a shared access signature (SAS) URL to give VaaS access to upload logs to your storage account.
 
 1. [!INCLUDE [azure-stack-vaas-sas-step_navigate](includes/azure-stack-vaas-sas-step_navigate.md)]
 
@@ -83,8 +82,7 @@ The diagnostics connection string is required for storing diagnostics logs durin
 1. [!INCLUDE [azure-stack-vaas-sas-step_generate](includes/azure-stack-vaas-sas-step_generate.md)]
 
 > [!NOTE]  
-> The SAS URL expires at the end time specified when the URL was generated.  
-When scheduling tests, ensure that the URL is valid for at least 30 days plus the time required for test execution (three months is suggested).
+> The SAS URL expires at the end time specified when the URL was generated. When scheduling tests, ensure that the URL is valid for at least 30 days plus the time required for test execution (three months is suggested).
 
 ## Next steps
 

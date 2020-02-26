@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 03/18/
+ms.lastreviewed: 03/18/2019
 
 # Intent: As an Azure Stack operator, I want to deploy the MySQL resource provider adapter and databases as a service on Azure Stack.
 # Keyword: deploy mySQL resource provider azure stack

@@ -7,7 +7,7 @@ ms.topic: tutorial
 ms.date: 01/23/2020
 ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 11/13/
+ms.lastreviewed: 11/13/2019
 
 # Intent: As an Azure Stack user, I want to create a VM using a community template so it's easier and I can evaluate Azure Stack.
 # Keyword: azure stack vm template

@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: bryanla
 ms.reviewer: efemmano
-ms.lastreviewed: 06/11/2
+ms.lastreviewed: 06/11/2019
 
 # Intent: As an Azure Stack operator, I want to create an offer that uses the plan I created so my users can buy it/subscribe to it.
 # Keyword: create offer azure stack

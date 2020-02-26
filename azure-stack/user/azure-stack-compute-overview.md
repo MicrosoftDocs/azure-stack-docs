@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.lastreviewed: 01/05/2
+ms.lastreviewed: 01/05/2020
 
 # Intent: As an Azure Stack user, I want an introduction to virtual machines so I can see an overview of the virtual machine creation process.
 # Keyword: azure stack VM

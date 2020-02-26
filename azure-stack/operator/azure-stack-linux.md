@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 11/16/
+ms.lastreviewed: 11/16/2019
 
 # Intent: As an Azure Stack operator, I want to add Linux images to Azure Stack so my users can deploy Linux VMs.
 # Keyword: azure stack add linux image marketplace

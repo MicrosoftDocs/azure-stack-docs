@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: hectorl
-ms.lastreviewed: 11/05/2
+ms.lastreviewed: 11/05/2019
 
 # Intent: As an Azure Stack operator, I want to recover from catastrophic data loss so I can restore some user data.
 # Keyword: recover data loss azure stack

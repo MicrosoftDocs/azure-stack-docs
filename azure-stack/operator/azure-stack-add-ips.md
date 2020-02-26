@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: justinha
 ms.reviewer: scottnap
-ms.lastreviewed: 09/10/2
+ms.lastreviewed: 09/10/2019
 
 # Intent: As an Azure Stack operator, I want to add public IP addresses to my Azure Stack network.
 # Keyword: add ip addresses azure stack

@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 09/13/2019
 ms.author: bryanla
 ms.reviewer: fiseraci
-ms.lastreviewed: 03/11/2
+ms.lastreviewed: 03/11/2019
 
 # Intent: As an Azure Stack user, I want to manage access to resources with RBAC so I can delegate permissions and access.
 # Keyword: manage access azure stack

@@ -8,7 +8,7 @@ ms.topic: article
 ms.date: 10/02/2019
 ms.author: bryanla
 ms.reviewer: jiahan
-ms.lastreviewed: 01/11/
+ms.lastreviewed: 01/11/2020
 
 # Intent: As an Azure Stack operator, I want to learn about SQL resource provider maintainance operators.
 # Keyword: sql resource provider maintenance azure stack

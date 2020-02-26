@@ -7,7 +7,7 @@ ms.topic: quickstart
 ms.date: 1/10/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 1/10/
+ms.lastreviewed: 1/10/2020
 
 # Intent: As an Azure Stack user, I want to create a Linux virtual machine in Azure Stack so that I can install an app.
 # Keyword: Azure Stack Linux Server

@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: unknown
-ms.lastreviewed: 05/21/2
+ms.lastreviewed: 05/21/2019
 
 # Intent: As an Azure/Azure Stack user, I want to use Azure Resource Manager templates so I can test app portability from Azure to Azure Stack.
 # Keyword: azure stack templates

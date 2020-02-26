@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: inhenkel
 ms.reviewer: thoroet
-ms.lastreviewed: 11/15/2
+ms.lastreviewed: 11/15/2019
 
 # Intent: As an Azure Stack operator, I want to use a firewall so I can protect my Azure Stack from attacks and security threats.
 # Keyword: azure stack firewall integration

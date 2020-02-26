@@ -5,7 +5,7 @@ author: BryanLa
 ms.author: bryanla
 ms.topic: how-to
 ms.date: 11/11/2019
-ms.lastreviewed: 11/11/2
+ms.lastreviewed: 11/11/2019
 
 # Intent: As an Azure Stack operator, I want to use an app identity via a service principal to access resources. 
 # Keyword: app identity service principals azure stack

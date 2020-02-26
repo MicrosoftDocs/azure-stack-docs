@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: inhenkel
 ms.reviewer: wfayed
-ms.lastreviewed: 11/05/
+ms.lastreviewed: 11/05/2019
 
 # Intent: As an Azure Stack operator, I want to know identity and billing models for an Azure-connected deployment of multi-node Azure Stack.
 # Keyword: identity billing azure stack deployment

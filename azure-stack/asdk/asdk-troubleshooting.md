@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 11/05/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 11/05/2
+ms.lastreviewed: 11/05/2019
 
 # Intent: As an ASDK user, I want to troubleshoot the ASDK so I can solve some common problems.
 # Keyword: troubleshoot asdk

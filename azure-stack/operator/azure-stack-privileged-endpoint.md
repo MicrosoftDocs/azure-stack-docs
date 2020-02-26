@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 1/8/2020
 ms.author: mabrigg
 ms.reviewer: fiseraci
-ms.lastreviewed: 1/8/2
+ms.lastreviewed: 1/8/2020
 
 # Intent: As an Azure Stack operator, I want to use the privileged endpoint in Azure Stack so I can complete certain tasks.
 # Keyword: azure stack privileged endpoint PEP

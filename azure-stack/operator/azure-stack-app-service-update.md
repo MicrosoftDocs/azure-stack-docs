@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 01/13/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/13/2
+ms.lastreviewed: 01/13/2019
 
 # Intent: As an Azure Stack operator, I want to update my App Service so I'm up to date.
 # Keyword: update app service azure stack

@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 06/28/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 06/28/201
+ms.lastreviewed: 06/28/2019
 
 # Intent: As an ASDK user, I want to learn about the ASDK achitecture. 
 # Keyword: asdk architecture

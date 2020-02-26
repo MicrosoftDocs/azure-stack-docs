@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 12/23/2019
 ms.author: justinha
 ms.reviewer: thoroet
-ms.lastreviewed: 12/23/2
+ms.lastreviewed: 12/23/2019
 
 # Intent: As an Azure Stack operator, I want to set access permissions using RBAC so I can control permissions.
 # Keyword: set access permissions azure stack

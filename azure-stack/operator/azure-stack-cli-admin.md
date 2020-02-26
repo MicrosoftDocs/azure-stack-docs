@@ -6,7 +6,7 @@ author: mattbriggs
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
-ms.lastreviewed: 05/16/2
+ms.lastreviewed: 05/16/2019
 
 # Intent: As an Azure Stack operator, I want to enable Azure CLI so my users can manage resources through CLI.
 # Keyword: enable azure cli azure stack

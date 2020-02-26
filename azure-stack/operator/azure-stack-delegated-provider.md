@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 05/07/2
+ms.lastreviewed: 05/07/2019
 
 # Intent: As an Azure Stack operator, I want to know how to delegate tasks like creating offers so I can put other people in charge.
 # Keyword: azure stack delegate offers

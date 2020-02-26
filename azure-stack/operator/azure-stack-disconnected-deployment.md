@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: inhenkel
 ms.reviewer: wfayed
-ms.lastreviewed: 11/01/
+ms.lastreviewed: 11/01/2019
 
 # Intent: As an Azure Stack operator, I want to know the planning decisions for deploying Azure Stack integrated systems disconnected from Azure.
 # Keyword: azure stack disconnected deployment

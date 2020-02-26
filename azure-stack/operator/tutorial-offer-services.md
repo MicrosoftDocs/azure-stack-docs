@@ -7,7 +7,7 @@ ms.author: bryanla
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.reviewer: shriramnat
-ms.lastreviewed: 10/16/
+ms.lastreviewed: 10/16/2019
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase

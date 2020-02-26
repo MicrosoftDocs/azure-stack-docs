@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: justinha
 ms.reviewer: hectorl
-ms.lastreviewed: 07/31/
+ms.lastreviewed: 07/31/2019
 
 # Intent: As an ASDK user, I want to use the ASDK to validate an Azure Stack backup so I don't impact my production cloud.
 # Keyword: validate azure stack backup

@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: bryanla
 ms.reviewer: jiahan
-ms.lastreviewed: 01/11/2
+ms.lastreviewed: 01/11/2020
 
 # Intent: As an Azure Stack operator, I want to perform maintenance operations on my MySQL resource provider.
 # Keyword: azure stack mysql resource provider maintenance

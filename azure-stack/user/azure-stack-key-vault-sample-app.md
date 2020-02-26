@@ -6,7 +6,7 @@ author: sethmanheim
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: sethm
-ms.lastreviewed: 04/08/2
+ms.lastreviewed: 04/08/2019
 
 # Intent: As an Azure Stack user, I want to create an app that accesses key vault secrets
 # Keyword: access key vault secrets

@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 01/22/2020
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 03/21/2
+ms.lastreviewed: 03/21/2019
 
 # Intent: As an Azure Stack operator, I want to know how billing and chargebacks work and how to access them for analytics.
 # Keyword: azure stack billing chargebacks

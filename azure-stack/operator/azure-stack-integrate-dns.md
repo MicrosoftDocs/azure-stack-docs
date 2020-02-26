@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: inhenkel
 ms.reviewer: wfayed
-ms.lastreviewed: 08/21/
+ms.lastreviewed: 08/21/2019
 
 # Intent: As an Azure Stack operator, I want to integrate my Azure Stack DNS with my datacenter DNS so I can access endpoints from outside Azure Stack.
 # Keyword: azure stack datacenter dns integration

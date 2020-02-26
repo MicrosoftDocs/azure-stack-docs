@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 11/05/
+ms.lastreviewed: 11/05/2019
 
 # Intent: As an ASDK user, I want to redeploy the ASDK so I can upgrade to and evalutate a newer version of Azure Stack.
 # Keyword: redeploy ASDK

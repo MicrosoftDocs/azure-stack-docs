@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 01/16/2020
 ms.author: justinha
 ms.reviewer: shisab
-ms.lastreviewed: 01/16/2
+ms.lastreviewed: 01/16/2019
 
 # Intent: As an Azure Stack operator, I want to collect diagnostic logs on demand to assist with troubleshooting.
 # Keyword: azure stack collect diagnostic logs

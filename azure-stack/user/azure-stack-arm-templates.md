@@ -8,7 +8,7 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: justini
-ms.lastreviewed: 11/14/2
+ms.lastreviewed: 11/14/2019
 
 # Intent: As an Azure Stack user, I want to use Azure Resource Manager templates to provision resources for my application.
 # Keyword: resource manager templates

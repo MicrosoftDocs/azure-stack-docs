@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.author: sethm
 ms.reviewer: xiaofmao
-ms.lastreviewed: 12/07/2
+ms.lastreviewed: 12/07/2019
 
 # Intent: As an Azure Stack operator, I want to view and edit quota types available for services and resources in Azure Stack.
 # Keyword: quota types azure stack

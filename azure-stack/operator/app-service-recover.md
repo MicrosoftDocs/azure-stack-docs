@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 03/21/2
+ms.lastreviewed: 03/21/2019
 
 # Intent: As an Azure Stack operator, I want to be able to restore App Service during disaster recovery. 
 # Keyword: app service recovery azure stack

@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: efemmano
-ms.lastreviewed: 01/25/2
+ms.lastreviewed: 01/25/2019
 
 # Intent: As an Azure Stack user, I want to use the portal so I can subscribe to offers and use the services the offers provide.
 # Keyword: azure stack portal 

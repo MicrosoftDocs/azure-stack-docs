@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.lastreviewed: 01/30/2
+ms.lastreviewed: 01/30/2020
 
 # Intent: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Azure Stack keyword

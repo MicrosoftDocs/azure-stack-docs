@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 02/19/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 10/15/2
+ms.lastreviewed: 10/15/2019
 
 # Intent: As an ASDK user, I want to familiarize myself with the admin basics so my users can become productive as quickly as possible.
 # Keyword: asdk admin basics

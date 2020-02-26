@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 01/27/2020
 ms.author: sethm
 ms.reviewer: sijuman
-ms.lastreviewed: 05/16/2
+ms.lastreviewed: 05/16/2019
 
 # Intent: As an Azure Stack user, I want to use API version profiles with .NET SDK in Azure Stack so I can benefit from the use of profiles
 # Keyword: azure stack api profiles .net

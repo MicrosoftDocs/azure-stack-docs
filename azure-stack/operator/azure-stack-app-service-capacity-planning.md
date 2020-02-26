@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 03/13/2
+ms.lastreviewed: 03/13/20192
 
 # Intent: As an Azure Stack operator, I want to learn about how much computing capacy I need for a stable production deployment. 
 # Keyword: capacity planning azure stack

@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 10/16/2
+ms.lastreviewed: 10/16/2019
 
 # Intent: As an ASDK user, I want to know about advanced ASDK evalutation tasks to save my tenants time and resources.
 # Keyword: asdk advanced evaluation tasks

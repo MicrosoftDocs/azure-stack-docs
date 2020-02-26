@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: Justinha
 ms.reviewer: scottnap
-ms.lastreviewed: 01/14/2
+ms.lastreviewed: 01/14/2019
 
 # Intent: As an Azure Stack user, I want to use iDNS so I can resolve external and internal DNS names.
 # Keyword: azure stack iDNS

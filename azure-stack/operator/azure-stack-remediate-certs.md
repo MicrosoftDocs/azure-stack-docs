@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: inhenkel
 ms.reviewer: unknown
-ms.lastreviewed: 11/19/2
+ms.lastreviewed: 11/19/2019
 
 # Intent: As an Azure Stack operator, I want to fix common issues with PKI certificates.
 # Keyword: fix issues pki certificates

@@ -6,7 +6,7 @@ author: mattbriggs
 ms.topic: conceptual
 ms.date: 1/22/2020
 ms.author: mabrigg
-ms.lastreviewed: 01/14/2
+ms.lastreviewed: 01/14/2020
 
 # Intent: As an Azure Stack user, I want to learn about Azure Stack Storage services so I can store my data.
 # Keyword: azure stack storage

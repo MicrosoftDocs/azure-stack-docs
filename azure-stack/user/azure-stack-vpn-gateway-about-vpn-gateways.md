@@ -6,7 +6,7 @@ author: sethmanheim
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.author: sethm
-ms.lastreviewed: 05/21/
+ms.lastreviewed: 05/21/2019
 
 # Intent: As an Azure Stack user, I want to create a VPN gateway so I can send traffic between my Azure virtual network and my on-premises site.
 # Keyword: azure stack vpn gateway

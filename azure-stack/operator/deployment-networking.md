@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 12/05/2019
 ms.author: inhenkel
 ms.reviewer: wamota
-ms.lastreviewed: 12/05/
+ms.lastreviewed: 12/05/2019
 
 # Intent: As an Azure Stack Hub operator, I want to learn about network traffic flow during Azure Stack Hub deployment.
 # Keyword: network traffic azure stack hub

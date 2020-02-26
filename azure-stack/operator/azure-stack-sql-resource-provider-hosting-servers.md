@@ -8,7 +8,7 @@ ms.topic: article
 ms.date: 10/02/2019
 ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/16/2
+ms.lastreviewed: 10/16/2019
 
 # Intent: As an Azure Stack operator, I want to add hosting servers to provision through SQL resource provider adapter.
 # Keyword: add hosting servers sql resource provider

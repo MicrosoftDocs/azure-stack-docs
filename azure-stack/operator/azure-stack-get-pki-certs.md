@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: inhenkel
 ms.reviewer: ppacent
-ms.lastreviewed: 09/10/
+ms.lastreviewed: 09/10/2019
 
 # Intent: As an Azure Stack operator, I want to generate CSRs before deploying Azure Stack so my identity system is ready.
 # Keyword: azure stack certificate signing request 

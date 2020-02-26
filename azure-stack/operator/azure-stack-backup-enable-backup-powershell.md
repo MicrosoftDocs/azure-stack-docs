@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 04/25/2019
 ms.author: justinha
 ms.reviewer: hectorl
-ms.lastreviewed: 03/14/2
+ms.lastreviewed: 03/14/2019
 
 # Intent: As an Azure Stack operator, I want to enable backups with Powershell so Azure Stack can generate infrastructure backups.
 # Keyword: enable backup powershell

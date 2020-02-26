@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 06/11/2019
 ms.author: bryanla
 ms.reviewer: efemmano
-ms.lastreviewed: 06/11/2
+ms.lastreviewed: 06/11/2019
 
 # Intent: As an Azure Stack operator, I want to create plans to offer to my users.
 # Keyword: create plan azure stack

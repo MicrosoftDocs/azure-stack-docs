@@ -7,7 +7,7 @@ ms.topic: article
 ms.author: mabrigg
 ms.date: 11/14/2019
 ms.reviewer: waltero
-ms.lastreviewed: 11/14/2
+ms.lastreviewed: 11/14/2019
 
 # Intent: As an Azure Stack user, I want to resolve issues with my Kubernetes deployment so that I can continue to deploy containers.
 # Keyword: troubleshoot Kubernetes deployment

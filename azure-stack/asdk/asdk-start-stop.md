@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 07/18/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 07/18/20
+ms.lastreviewed: 07/18/2019
 
 # Intent: As an ASDK user, I want to start, stop, and retart the ASDK properly. 
 # Keyword: start stop asdk

@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: inhenkel
 ms.reviewer: wamota
-ms.lastreviewed: 11/15/
+ms.lastreviewed: 11/15/2019
 
 # Intent: As an Azure Stack operator, I want to know how to plan for datacenter border network connectivity with multi-node Azure Stack.
 # Keyword: azure stack border connectivity

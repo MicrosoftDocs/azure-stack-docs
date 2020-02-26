@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 06/18/2
+ms.lastreviewed: 06/18/2019
 
 # Intent: As an Azure Stack user, I want to deploy and set up the resources for Kubernetes to run containers on Azure Stack.
 # Keyword: Azure Stack containers

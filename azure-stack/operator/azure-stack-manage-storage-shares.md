@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 1/22/2020
 ms.author: inhenkel
 ms.reviewer: xiaofmao
-ms.lastreviewed: 03/19/20
+ms.lastreviewed: 03/19/2019
 
 # Intent: As an Azure Stack operator, I want to learn how to manage storage capacity so I can increase total available capacity. 
 # Keyword: azure stack storage capacity

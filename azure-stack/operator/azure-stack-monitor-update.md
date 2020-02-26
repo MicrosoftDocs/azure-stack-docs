@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: inhenkel
 ms.reviewer: fiseraci
-ms.lastreviewed: 11/05/2
+ms.lastreviewed: 11/05/2019
 
 # Intent: As an Azure Stack operator, I want to monitor updates using the privileged endpoint.
 # Keyword: monitor updates privileged endpoint

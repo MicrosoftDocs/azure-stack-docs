@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: inhenkel
 ms.reviewer: prchint
-ms.lastreviewed: 05/31/
+ms.lastreviewed: 05/31/2019
 
 # Intent: As an Azure Stack Hub operator, I want to learn about storage capacity planning for Azure Stack Hub deployments.
 # Keyword: azure stack hub storage capacity planning

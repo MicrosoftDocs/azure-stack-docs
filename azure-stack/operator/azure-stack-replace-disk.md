@@ -8,7 +8,7 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: inhenkel
 ms.reviewer: thoroet
-ms.lastreviewed: 12/02/2
+ms.lastreviewed: 12/02/2019
 
 # Intent: As an Azure Stack operator, I want to replace a physical disk in Azure Stack.
 # Keyword: replace disk/disk repair azure stack

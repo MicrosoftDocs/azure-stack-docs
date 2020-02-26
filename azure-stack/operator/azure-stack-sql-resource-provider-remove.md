@@ -8,7 +8,7 @@ ms.topic: article
 ms.date: 10/02/2019
 ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 11/20/2
+ms.lastreviewed: 11/20/2019
 
 # Intent: As an Azure Stack operator, I want to remove the SQL resource provider.
 # Keyword: remove sql resource provider azure stack

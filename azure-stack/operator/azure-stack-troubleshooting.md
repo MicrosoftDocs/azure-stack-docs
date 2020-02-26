@@ -8,7 +8,7 @@ ms.topic: article
 ms.date: 11/05/2019
 ms.author: justinha
 ms.reviewer: prchint
-ms.lastreviewed: 11/05/2
+ms.lastreviewed: 11/05/2019
 
 # Intent: As an Azure Stack operator, I want to troubleshoot Azure Stack issues.
 # Keyword: toubleshoot azure stack

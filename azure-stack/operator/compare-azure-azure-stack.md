@@ -8,7 +8,7 @@ ms.topic: overview
 ms.date: 05/03/2019
 ms.author: justinha
 ms.reviewer: unknown
-ms.lastreviewed: 03/29/
+ms.lastreviewed: 03/29/2019
 
 # Intent: As an Azure Stack Hub operator, I want to learn the differences between global Azure, Azure Stack Hub, and Azure Stack HCI.
 # Keyword: differences azure stack hub

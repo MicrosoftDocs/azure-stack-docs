@@ -7,7 +7,8 @@ manager: stefsch
 ms.topic: article
 ms.date: 02/25/2020
 ms.author: anwestg
-ms.review
+ms.reviewer: anwestg
+ms.lastreviewed: 03/25/2019
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase

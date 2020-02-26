@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.lastreviewed: 01/14/2
+ms.lastreviewed: 01/14/2020
 
 # Intent: As an Azure Stack user, I want to deploy a VM on Azure Stack with a securely-stored password in Key Vault so it's more secure.
 # Keyword: deploy vm password key vault

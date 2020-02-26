@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 06/18/2
+ms.lastreviewed: 06/18/20192
 
 # Intent: As an Azure Stack user, I want to deploy Kubernetes using AD FS so I can use Kubernetes with the AD FS identity management system.
 # Keyword: deploy kubernetes ad fs

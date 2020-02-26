@@ -9,7 +9,7 @@ ms.topic: article
 ms.date:  07/23/2019
 ms.author: inhenkel
 ms.reviewer: ppacent
-ms.lastreviewed: 01/08/
+ms.lastreviewed: 01/08/2019
 
 # Intent: As an Azure Stack Hub operator, I want to validate PKI certificates for Azure Stack Hub integrated systems using the Readiness Checker tool.
 # Keyword: azure stack hub validate pki certificates readiness checker

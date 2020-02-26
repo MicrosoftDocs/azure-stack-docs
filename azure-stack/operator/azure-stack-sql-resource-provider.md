@@ -8,7 +8,7 @@ ms.topic: article
 ms.date: 10/02/2019
 ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/25/
+ms.lastreviewed: 10/25/2019
 
 # Intent: As an Azure Stack operator, I want to use the SQL Server resource provider to offer SQL databases as a service on Azure Stack.
 # Keyword: use sql databases azure stack

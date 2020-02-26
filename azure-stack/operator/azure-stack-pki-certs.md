@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 12/16/2019
 ms.author: inhenkel
 ms.reviewer: ppacent
-ms.lastreviewed: 12/16/
+ms.lastreviewed: 12/16/2019
 
 # Intent: As an Azure Stack operator, I want to learn about the Azure Stack PKI certificate deployment requirements.
 # Keyword: azure stack pki certificate requirements

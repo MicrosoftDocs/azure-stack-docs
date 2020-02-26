@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 11/15/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 11/15/2
+ms.lastreviewed: 11/15/2019
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase

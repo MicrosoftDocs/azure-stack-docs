@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 01/22/2020
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 10/14/2
+ms.lastreviewed: 10/14/2019
 
 # Intent: As an Azure Stack operator, I want to register tenants for usage tracking so I can manage their usage tracking.
 # Keyword: register tenants azure stack

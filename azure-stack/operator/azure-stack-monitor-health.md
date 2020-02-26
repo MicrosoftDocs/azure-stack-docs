@@ -6,7 +6,7 @@ author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: inhenkel
-ms.lastreviewed: 01/18/2
+ms.lastreviewed: 01/18/2019
 
 # Intent: As an Azure Stack operator, I want to monitor health and alerts so I can assess system issues.
 # Keyword: azure stack monitor health alerts

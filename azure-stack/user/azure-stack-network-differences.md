@@ -6,7 +6,7 @@ ms.date: 1/22/2020
 ms.topic: article
 ms.author: mabrigg
 ms.reviewer: wamota
-ms.lastreviewed: 07/10/2
+ms.lastreviewed: 07/10/2019
 
 # Intent: As an Azure Stack user, I want to know the networking differences between Azure and Azure Stack
 # Keyword: azure stack networking differences

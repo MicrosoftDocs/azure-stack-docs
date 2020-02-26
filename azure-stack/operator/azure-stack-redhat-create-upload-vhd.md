@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 12/11/2019
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.lastreviewed: 12/11/
+ms.lastreviewed: 12/11/2019
 
 # Intent: As an Azure Stack operator, I want to prepare a red hat-based virtual machine for Azure Stack.
 # Keyword: red hat operating system azure stack

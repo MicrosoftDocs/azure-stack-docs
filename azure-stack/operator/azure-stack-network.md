@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 02/18/2020
 ms.author: inhenkel
 ms.reviewer: wamota
-ms.lastreviewed: 06/04/
+ms.lastreviewed: 06/04/2019
 
 # Intent: As an Azure Stack operator, I want to plan for my network integration so I'm prepared.
 # Keyword: azure stack network integration planning

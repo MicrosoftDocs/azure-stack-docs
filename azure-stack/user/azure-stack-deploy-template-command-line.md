@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: unknown
-ms.lastreviewed: 05/09/2
+ms.lastreviewed: 05/09/2019
 
 # Intent: As an Azure Stack user, I want to deploy a template using the command line in Azure Stack so I can manage resources efficiently.
 # Keyword: deploy template command line

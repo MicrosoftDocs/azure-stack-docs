@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 01/02/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/02/
+ms.lastreviewed: 01/02/2019
 
 # Intent: As an Azure Stack operator, I want to deploy App Services in a highly available configuration so I can.....
 # Keyword: deploy app service

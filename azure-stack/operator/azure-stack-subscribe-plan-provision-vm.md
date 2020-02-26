@@ -6,7 +6,7 @@ author: bryanla
 ms.topic: conceptual
 ms.date: 10/05/2019
 ms.author: bryanla
-ms.lastreviewed: 05/10/
+ms.lastreviewed: 05/10/2019
 
 # Intent: As an Azure Stack operator, I want to create subscriptions for offers in Azure Stack.
 # Keyword: create subscriptions azure stack

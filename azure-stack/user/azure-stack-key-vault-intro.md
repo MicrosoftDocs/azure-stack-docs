@@ -6,7 +6,7 @@ author: sethmanheim
 ms.topic: conceptual
 ms.date: 01/24/2020
 ms.author: sethm
-ms.lastreviewed: 05/21/2
+ms.lastreviewed: 05/21/2019
 
 # Intent: As an Azure Stack user, I want an intro to using the Azure Key Vault service in Azure Stack.
 # Keyword: azure stack key vault

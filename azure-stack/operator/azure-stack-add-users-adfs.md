@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 06/03/2019
 ms.author: inhenkel
 ms.reviewer: unknown
-ms.lastreviewed: 06/03/2
+ms.lastreviewed: 06/03/2019
 
 # Intent: As an Azure Stack operator, I want to to add new users using AD FS.
 # Keyword: add users ad fs azure stack

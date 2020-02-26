@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 01/03/2020
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 05/07/
+ms.lastreviewed: 05/07/2019
 
 # Intent: As an Azure Stack operator, I want to create and publish a Marketplace items so my users can use them.
 # Keyword: create marketplace item azure stack

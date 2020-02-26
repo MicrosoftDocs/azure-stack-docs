@@ -7,7 +7,7 @@ author: IngridAtMicrosoft
 ms.topic: conceptual
 ms.date: 1/22/2020
 ms.author: inhenkel
-ms.lastreviewed: 01/18/2
+ms.lastreviewed: 01/18/2019
 
 # Intent: As an Azure Stack operator, I want to create storage accounts in Azure Stack.
 # Keyword: create storage account azure stack

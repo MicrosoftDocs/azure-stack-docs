@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: bryanla
 ms.reviewer: anwestg
-ms.lastreviewed: 01/13/2
+ms.lastreviewed: 01/13/2019
 
 # Intent: As an Azure Stack operator, I want to deploy App Service on Azure Stack.
 # Keyword: deploy app service azure stack

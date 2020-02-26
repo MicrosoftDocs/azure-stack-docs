@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: bryanla
 ms.reviewer: jiahan
-ms.lastreviewed: 12/10/
+ms.lastreviewed: 12/10/2019
 
 # Intent: As an Azure Stack operator, I want to view the release notes for MySQL RP 1.1.30.0 so I can see what's new.
 # Keyword: azure stack mysql release notes 1.1.30.0

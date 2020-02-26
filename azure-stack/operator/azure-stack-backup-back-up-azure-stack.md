@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 02/12/2019
 ms.author: justinha
 ms.reviewer: hectorl
-ms.lastreviewed: 09/05/2
+ms.lastreviewed: 09/05/2019
 
 # Intent: As an Azure Stack operator, I want to perform an on-demand backup.
 # Keyword: azure stack backup

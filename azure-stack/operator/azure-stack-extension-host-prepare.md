@@ -6,7 +6,7 @@ ms.author: inhenkel
 ms.date: 1/22/2020
 ms.topic: article
 ms.reviewer: thoroet
-ms.lastreviewed: 03/07/
+ms.lastreviewed: 03/07/2019
 
 # Intent: As an Azure Stack operator, I want to prepare my Azure Stack for extension host, which comes in an update package after version 1808.
 # Keyword: azure stack extension host

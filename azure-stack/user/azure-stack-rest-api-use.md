@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: sethm
 ms.reviewer: thoroet
-ms.lastreviewed: 01/14/2
+ms.lastreviewed: 01/14/2020
 
 # Intent: As an Azure Stack user, I want to make API requests to Azure Stack so I can automate operations.
 # Keyword: api requests azure stack

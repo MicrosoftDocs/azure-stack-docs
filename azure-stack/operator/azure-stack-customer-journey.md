@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 11/07/2019
 ms.author: inhenkel
 ms.reviewer: asganesh
-ms.lastreviewed: 11/07/
+ms.lastreviewed: 11/07/2019
 
 # Intent: As an Azure Stack operator, I want a walkthrough on Azure Stack on-site deployment, from planning to post-deployment.
 # Keyword: azure stack datacenter integration process

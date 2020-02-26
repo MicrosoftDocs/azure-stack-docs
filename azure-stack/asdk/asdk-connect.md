@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 05/06/2019
 ms.author: justinha
 ms.reviewer: knithinc
-ms.lastreviewed: 10/25/20
+ms.lastreviewed: 10/25/2019
 
 # Intent: As an ASDK user, I want to connect to the ASDK so I can manage resources.
 # Keyword: connect to asdk

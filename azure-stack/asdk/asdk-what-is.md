@@ -6,7 +6,7 @@ ms.topic: overview
 ms.date: 11/27/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 11/27/
+ms.lastreviewed: 11/27/2019
 
 # Intent: As a potential ASDK user, I want to know what the ASDK is.
 # Keyword: what is the asdk

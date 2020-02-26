@@ -7,7 +7,7 @@ ms.topic: quickstart
 ms.date: 06/07/2019
 ms.author: justinha
 ms.reviewer: efemmano
-ms.lastreviewed: 06/07/2
+ms.lastreviewed: 06/07/2019
 
 # Intent: As an Azure Stack operator, I want to learn how to use the administrator portal so I can do my day-to-day operations.
 # Keyword: administrator portal azure stack

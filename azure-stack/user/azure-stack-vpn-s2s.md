@@ -6,7 +6,7 @@ author: sethmanheim
 ms.topic: article
 ms.date: 01/07/2020
 ms.author: sethm
-ms.lastreviewed: 05/07/
+ms.lastreviewed: 05/07/2019
 
 # Intent: As an Azure Stack user, I want to configure an IPsec/IKE policy for S2S VPN connections for compliance and security reasons.
 # Keyword: azure stack ipsec ike vpn

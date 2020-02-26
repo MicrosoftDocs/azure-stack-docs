@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 01/24/2020
 ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 05/21/2
+ms.lastreviewed: 05/21/2019
 
 # Intent: As an Azure/Azure Stack user, I want to start developing apps for Azure Stack using Azure services because I might not yet have access to a Stack environment.
 # Keyword: develop apps azure stack

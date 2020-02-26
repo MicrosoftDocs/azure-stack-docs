@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 11/11/2
+ms.lastreviewed: 11/11/2019
 
 # Intent: As an Azure Stack user, I want to manage my Azure Stack Storage so that my apps can access data.
 # Keyword: Azure Stack storage explorer

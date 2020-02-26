@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 2/3/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 10/09/2
+ms.lastreviewed: 10/09/2019
 
 # Intent: As an Azure Stack user, I want to know what I need to do to move them to Azure Stack or work with them in Azure Stack.
 # Keyword: Azure Stack VM

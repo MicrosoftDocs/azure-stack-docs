@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 01/22/2020
 ms.author: sethm
 ms.reviewer: kivenkat
-ms.lastreviewed: 10/22/
+ms.lastreviewed: 10/22/2019
 
 # Intent: As an Azure Stack operator, I want to make virtual machine scale sets available in Azure Stack so I can deploy and manage a set of identical VMs.
 # Keyword: virtual machine scale sets azure stack

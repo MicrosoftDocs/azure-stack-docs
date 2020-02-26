@@ -6,7 +6,7 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: inhenkel
 ms.reviewer: wfayed
-ms.lastreviewed: 02/21/
+ms.lastreviewed: 02/21/2019
 
 # Intent: As an Azure Stack operator, I want to learn about Azure Stack integrated systems connection models before I deploy.
 # Keyword: azure stack connection models

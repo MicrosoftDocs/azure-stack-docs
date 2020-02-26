@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 01/14/2
+ms.lastreviewed: 01/14/2020
 
 # Intent: As an Azure Stack SDK user, I want to connect to Azure Stack so that I can manage resources.
 # Keyword: connect Azure Stack

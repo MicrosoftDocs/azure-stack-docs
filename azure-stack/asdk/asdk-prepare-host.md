@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 08/28/2019
 ms.author: justinha
 ms.reviewer: misainat
-ms.lastreviewed: 08/28/
+ms.lastreviewed: 08/28/2019
 
 # Intent: As an ASDK user, I want to prepare the ASDK host computer so it's ready to have the ASDK deployed.
 # Keyword: prepare asdk host computer

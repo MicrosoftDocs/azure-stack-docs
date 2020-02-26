@@ -8,7 +8,7 @@ ms.topic: article
 ms.date: 10/07/2019
 ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/23/
+ms.lastreviewed: 10/23/2019
 
 # Intent: As an Azure Stack operator, I want to learn how to create highly available MySQL databases
 # Keyword: create mysql database azure stack

@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: sethm
 ms.reviewer: scottnap
-ms.lastreviewed: 10/24/2
+ms.lastreviewed: 10/24/2019
 
 # Intent: As an Azure Stack user, I want to connect Azure Stack to Azure using VPN so I can have a site-to-site connection.
 # Keyword: connect azure stack vpn
