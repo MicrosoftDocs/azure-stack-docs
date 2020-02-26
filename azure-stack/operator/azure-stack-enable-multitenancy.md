@@ -8,7 +8,12 @@ ms.date: 06/10/2019
 ms.author: inhenkel
 ms.reviewer: bryanr
 ms.lastreviewed: 06/10/2019
+
+# Intent: As an Azure Stack operator, I want to configure multi-tenancy so multiple tenants can access my Azure Stack.
+# Keyword: configure multi-tenancy azure stack
+
 ---
+
 
 # Configure multi-tenancy in Azure Stack Hub
 

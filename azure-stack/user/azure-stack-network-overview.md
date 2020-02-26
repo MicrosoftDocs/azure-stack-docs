@@ -7,9 +7,13 @@ ms.topic: conceptual
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.lastreviewed: 01/14/2019
+ms.lastreviewed: 01/14/2020
+
+# Intent: As an Azure Stack user, I want an introduction to networking in Azure Stack so I can get started.
+# Keyword: azure stack networking 
 
 ---
+
 # Introduction to Azure Stack Hub networking
 
 Azure Stack Hub provides different kinds of networking capabilities that can be used together or separately:

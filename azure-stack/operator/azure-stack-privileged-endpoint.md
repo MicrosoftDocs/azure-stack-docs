@@ -9,7 +9,11 @@ ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 1/8/2020
 
+# Intent: As an Azure Stack operator, I want to use the privileged endpoint in Azure Stack so I can complete certain tasks.
+# Keyword: azure stack privileged endpoint PEP
+
 ---
+
 # Use the privileged endpoint in Azure Stack Hub
 
 As an Azure Stack Hub operator, you should use the administrator portal, PowerShell, or Azure Resource Manager APIs for most day-to-day management tasks. However, for some less common operations, you need to use the *privileged endpoint* (PEP). The PEP is a pre-configured remote PowerShell console that provides you with just enough capabilities to help you do a required task. The endpoint uses [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) to expose only a restricted set of cmdlets. To access the PEP and invoke the restricted set of cmdlets, a low-privileged account is used. No admin accounts are required. For additional security, scripting isn't allowed.

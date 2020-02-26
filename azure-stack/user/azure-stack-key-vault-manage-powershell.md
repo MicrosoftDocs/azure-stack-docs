@@ -8,7 +8,11 @@ ms.date: 01/07/2020
 ms.author: sethm
 ms.lastreviewed: 05/09/2019
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Manage Key Vault in Azure Stack Hub using PowerShell
 

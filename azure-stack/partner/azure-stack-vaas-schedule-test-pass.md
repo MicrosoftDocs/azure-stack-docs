@@ -9,10 +9,16 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
 
-# Customer intent: As a partner OEM, I want to let the service test my hardware bill of materials to check that it can run Azure Stack Hub.
+
+ROBOTS: NOINDEX
+
+# Intent: As an Azure Stack Hub user, I want to learn how to use the Azure Stack Hub Validation portal to schedule my first test.
+# Keyword: azure stack hub validation schedule test
+
 ---
 
-# Schedule a test in Azure Stack Validation portal
+
+# Scheduling a test
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
@@ -37,7 +43,7 @@ Before you follow this quickstart, finish the following tasks:
 Sign in to the portal, select or create a solution, and then select the solution.
 
 1. Sign in to the [VaaS portal](https://azurestackvalidation.com).
-2. Type the name of an existing solution or select **New solution** to create a new solution. For instructions, see [Create a solution in the VaaS portal](azure-stack-vaas-key-concepts.md#create-a-solution-in-the-vaas-portal).
+2. Type the name of an existing solution or select **New solution** to create a new solution. For instructions, see [Create a solution in the VaaS portal](azure-stack-vaas-key-concepts.md#create-a-solution-in-the-azure-stack-hub-validation-portal).
 3. Select **Start** on the **Test Passes** tile.
 
 ## Specify parameters

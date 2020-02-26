@@ -8,7 +8,12 @@ ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 09/19/2019
+
+# Intent: As an Azure Stack operator, I want to install Powershell for Azure Stack.
+# Keyword: install powershell azure stack
+
 ---
+
 # Install PowerShell for Azure Stack Hub
 
 Azure PowerShell provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure Stack Hub resources.

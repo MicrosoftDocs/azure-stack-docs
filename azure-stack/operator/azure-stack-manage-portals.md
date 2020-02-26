@@ -9,7 +9,11 @@ ms.author: justinha
 ms.reviewer: efemmano
 ms.lastreviewed: 06/07/2019
 
+# Intent: As an Azure Stack operator, I want to learn how to use the administrator portal so I can do my day-to-day operations.
+# Keyword: administrator portal azure stack
+
 ---
+
 # Use the administrator portal in Azure Stack Hub
 
 There are two portals in Azure Stack Hub: the administrator portal and the user portal. As an Azure Stack Hub operator, you use the administrator portal for day-to-day management and operations of Azure Stack Hub.

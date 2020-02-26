@@ -7,7 +7,12 @@ ms.date: 1/22/2020
 ms.author: inhenkel
 ms.reviewer: wfayed
 ms.lastreviewed: 02/21/2019
+
+# Intent: As an Azure Stack operator, I want to learn about Azure Stack integrated systems connection models before I deploy.
+# Keyword: azure stack connection models
+
 ---
+
 
 # Azure Stack Hub integrated systems connection models
 If you're interested in purchasing an Azure Stack Hub integrated system, you need to understand [several datacenter integration considerations](azure-stack-datacenter-integration.md) for Azure Stack Hub deployment to determine how the system will fit into your datacenter. In addition, you need to decide how you'll integrate Azure Stack Hub into your hybrid cloud environment. This article provides an overview of these major decisions including Azure connection models, identity store options, and billing model options.

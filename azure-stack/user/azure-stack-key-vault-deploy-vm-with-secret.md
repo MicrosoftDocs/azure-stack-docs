@@ -7,9 +7,13 @@ ms.topic: conceptual
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.lastreviewed: 01/14/2019
+ms.lastreviewed: 01/14/2020
+
+# Intent: As an Azure Stack user, I want to deploy a VM on Azure Stack with a securely-stored password in Key Vault so it's more secure.
+# Keyword: deploy vm password key vault
 
 ---
+
 # Deploy an Azure Stack Hub VM using a password stored in Key Vault
 
 This article steps through deploying a Windows Server virtual machine (VM) using a password stored in Azure Stack Hub Key Vault. Using a key vault password is more secure than passing a plain text password.
