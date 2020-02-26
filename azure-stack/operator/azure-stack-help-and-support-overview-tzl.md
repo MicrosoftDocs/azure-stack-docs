@@ -4,15 +4,17 @@ description: Get support for Microsoft Azure Stack Hub.
 author: justinha
 
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 02/26/2020
 ms.author: justinha
 ms.reviewer: shisab
-ms.lastreviewed: 01/08/2020
+ms.lastreviewed: 02/26/2020
 
 ---
 # Microsoft Azure Stack Hub help and support
 
-**Help + support** in the Azure Stack Hub portal has resources to help operators learn more about Azure Stack, check their support options, and get expert help. Operators can also use **Help + support** to collect diagnostic logs for troubleshooting.
+Azure Stack Hub operators can use **Help + support** to collect diagnostic logs and send them to Microsoft for troubleshooting. **Help + support** in the Azure Stack Hub portal can be accessed from the Administrator portal. It has resources to help operators learn more about Azure Stack, check their support options, and get expert help.  
+
+![Screenshot of how to access Help and Support in the Administrator portal](media/azure-stack-help-and-support/help-and-support.png)
 
 ## Help resources 
 
@@ -32,7 +34,7 @@ At the top of **Help + support** are links to things you might try first, like r
 
 ### Get expert help 
 
-To contact support, use the [Azure portal](https://portal.azure.us)
+To contact support, use the [Azure portal](https://portal.azure.us).
 
 ### Hardware related issues
 
@@ -40,18 +42,15 @@ For any hardware related issues, please contact Microsoft.
 
 ## Diagnostic log collection
 
-There are two ways to collect logs in **Help and support**:
+There are two ways to send diagnostic logs to Microsoft: 
 
-- **Proactive log collection**: If enabled, log collection is triggered by specific health alerts 
-- **Send logs now**: You can manually choose a specific sliding window as the time frame for log collection
+- [Send logs proactively](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md): If enabled, log collection is triggered by specific health alerts 
+- [Send logs now](azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md): You can manually choose a specific sliding window as the time frame for log collection
 
 ![Screenshot of diagnostic log collection options](media/azure-stack-help-and-support/banner-enable-automatic-log-collection.png)
 
-For more information, see [Azure Stack Hub diagnostic log collection overview](azure-stack-diagnostic-log-collection-overview-tzl.md).
 
 ## Next steps
 
 - Learn about [troubleshooting Azure Stack Hub](azure-stack-troubleshooting.md)
 - Learn about [diagnostic log collection](azure-stack-diagnostic-log-collection-overview-tzl.md)
-- [Send logs proactively diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md)
-- [Send logs now](azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md)
