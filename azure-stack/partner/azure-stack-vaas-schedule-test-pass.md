@@ -1,50 +1,48 @@
 ---
-title: Use the Validation as a Service for Azure Stack Hub portal to schedule your first test 
-description: Use the Validation as a Service for Azure Stack Hub portal to schedule your first test.
+title: Schedule a test in Azure Stack Hub Validation portal
+titleSuffix: Azure Stack Hub
+description: Learn how to schedule a test in the Azure Stack Hub Validation portal.
 author: mattbriggs
-
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
 
-
-
 # Customer intent: As a partner OEM, I want to let the service test my hardware bill of materials to check that it can run Azure Stack Hub.
 ---
 
-# Scheduling a test
+# Schedule a test in Azure Stack Validation portal
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Schedule a test in the Validation as a Service (VaaS) portal for your Azure Stack Hub solution. A VaaS solution represents an Azure Stack Hub solution with a particular hardware bill of materials (BoM). You can schedule a test to check that your hardware can run Azure Stack Hub.
+Schedule a test in the Microsoft Azure Stack Validation portal for your Azure Stack Hub solution. A validation as a service (VaaS) solution represents an Azure Stack Hub solution with a particular hardware bill of materials (BoM). You can schedule a test to check that your hardware can run Azure Stack Hub.
 
 To check your solution, create the workflow for a test. A VaaS workflow operates within the context of a VaaS solution. It represents a set of test suites that exercise the functionality of an Azure Stack Hub deployment on your hardware. Add your solution's environmental parameters and select one or more tests to run on your solution.
 
-While the Test Pass workflow can be used to run any test provided by VaaS, including tests from the validation workflows, results from the Test Pass workflow are not considered *official*. For information about official validation workflows, see [Workflows](azure-stack-vaas-key-concepts.md#workflows).
+While the Test Pass workflow can be used to run any test provided by VaaS, including tests from the validation workflows, results from the Test Pass workflow aren't considered *official*. For information about official validation workflows, see [Workflows](azure-stack-vaas-key-concepts.md#workflows).
 
 ## Prerequisites
 
-Before you follow this quickstart, you should finish the following items:
+Before you follow this quickstart, finish the following tasks:
 
-- [Set up your Validation as a Service resources](azure-stack-vaas-set-up-resources.md)
-- [Deploy the local agent](azure-stack-vaas-local-agent.md) (Required)
-- [Validation as a Service key concepts](azure-stack-vaas-key-concepts.md) (Required)
+- [Set up your validation as a service resources](azure-stack-vaas-set-up-resources.md).
+- [Deploy the local agent](azure-stack-vaas-local-agent.md) (required).
+- [Validation as a Service key concepts](azure-stack-vaas-key-concepts.md) (required).
 
 ## Start a workflow
 
 ![Sign into the VaaS portal](media/vaas_portalsignin.png)
 
-Sign in to the portal, select or creation a solution, and then select the solution.
+Sign in to the portal, select or create a solution, and then select the solution.
 
 1. Sign in to the [VaaS portal](https://azurestackvalidation.com).
-2. Type the name of an existing solution or select **New solution** to create a new solution. For instructions, see [Create a solution in the VaaS portal](azure-stack-vaas-key-concepts.md#create-a-solution-in-the-vaas-portal).
+2. Type the name of an existing solution or select **New solution** to create a new solution. For instructions, see [Create a solution in the VaaS portal](azure-stack-vaas-key-concepts.md#create-a-solution-in-the-azure-stack-hub-validation-portal).
 3. Select **Start** on the **Test Passes** tile.
 
 ## Specify parameters
 
-![Alt Text](media/vaas_test_pass_parameters.png)
+![Specify parameters in the VaaS portal](media/vaas_test_pass_parameters.png)
 
 Provide parameters that apply to all tests within the workflow.
 
@@ -60,7 +58,7 @@ The tests you select will be scheduled once the workflow is created.
 
 1. Select the test(s) you want to run in your workflow.
 
-    If you want to override the common parameters (that is, the parameters provided in the previous section) for any test, select on the **Edit** link next to specify new values.
+    If you want to override the common parameters (the parameters provided in the previous section) for any test, select the **Edit** link next to specify new values.
 
 1. [!INCLUDE [azure-stack-vaas-workflow-step_select-agent](includes/azure-stack-vaas-workflow-step_select-agent.md)]
 
