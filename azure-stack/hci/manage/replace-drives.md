@@ -5,7 +5,7 @@ author: khdownie
 ms.author: v-kedow
 ms.prod: windows-server
 ms.topic: article
-ms.date: 02/26/2020
+ms.date: 02/25/2020
 ---
 
 # How-To Guide: Replacing failed drives on Azure Stack HCI
