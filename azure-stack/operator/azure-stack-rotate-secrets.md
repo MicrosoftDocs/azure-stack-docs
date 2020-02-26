@@ -8,7 +8,7 @@ ms.date: 12/13/2019
 ms.reviewer: ppacent
 ms.author: inhenkel
 ms.lastreviewed: 12/13/2019
-monikerRange: '>=azs-1
+monikerRange: '>=azs-1802'
 
 # Intent: As an Azure Stack operator, I want to rotate secrets in Azure Stack.
 # Keyword: rotate secrets azure stack
