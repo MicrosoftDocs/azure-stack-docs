@@ -19,3 +19,6 @@ When a drive fails, an alert appears in the upper left **Alerts** area of the **
    Storage Spaces Direct automatically retires and evacuates failed drives. When this has happened, the drive status is Retired, and its storage capacity bar is empty.
 1. Remove the failed drive and insert its replacement.
 In **Drives > Inventory**, the new drive will appear. In time, the alert will clear, volumes will repair back to OK status, and storage will rebalance onto the new drive – no user action is required.
+
+## Next steps
+-  To learn about how storage health is tracked at different levels, including at the drive level, see [Health and operational states](/windows-server/storage/storage-spaces/storage-spaces-states).
