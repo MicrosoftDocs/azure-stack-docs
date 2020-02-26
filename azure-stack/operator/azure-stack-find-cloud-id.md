@@ -21,11 +21,7 @@ This topic covers how to get you Cloud ID by using the Administrator portal or t
 
    ![Screenshot of the Dashboard](./media/azure-stack-automatic-log-collection/dashboard.png)
 
-1. Click **Properties** > **Properties**.
-
-   ![Screenshot of the the Region blade](media/azure-stack-automatic-log-collection/region-blade.png)
-
-1. Copy the **Stamp Cloud ID**.
+1. Click **Properties** and copy the **Stamp Cloud ID**.
 
    ![Screenshot of Region properties with Stamp Cloud ID](media/azure-stack-automatic-log-collection/region-properties-blade-with-stamp-cloud-id.png)
 
