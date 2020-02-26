@@ -3,7 +3,6 @@ title: How-to guide for replacing drives on Azure Stack HCI
 description: Step-by-step how-to guide on replacing failed drives on Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
-ms.prod: windows-server
 ms.topic: article
 ms.date: 02/25/2020
 ---
