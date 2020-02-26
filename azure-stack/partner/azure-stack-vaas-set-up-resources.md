@@ -1,26 +1,23 @@
 ---
-title: Tutorial - set up resources for Validation as a Service 
-description: In this tutorial, learn how to set up resources for Validation as a Service.
+title: Set up Azure AD and storage resources for VaaS
+titleSuffix: Azure Stack Hub
+description: Learn how to set up Azure AD and storage resources for Azure Stack Hub validation as a service.
 author: mattbriggs
-
 ms.topic: tutorial
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
-
-
-
 ROBOTS: NOINDEX
 
 # Customer intent: As a system engineer at a partner OEM, I need to create a solution to check for a new, unique set of hardware intended to run Azure Stack Hub, so I can validate that my hardware runs Azure Stack Hub.
 ---
 
-# Tutorial: Set up resources for Validation as a Service
+# Set up Azure AD and storage resources for validation as a service
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-Validation as a Service (VaaS) is an Azure service that is used to validate and support Azure Stack Hub solutions in the market. Follow this article before using the service to validate your solution.
+Validation as a service (VaaS) is an Azure service that's used to validate and support Azure Stack Hub solutions in the market. Follow this article before using the service to validate your solution.
 
 In this tutorial, you learn how to:
 
@@ -34,29 +31,29 @@ An Azure AD tenant is used to register an organization and authenticate users wi
 
 ### Create a tenant
 
-Create a tenant that your organization will use to access VaaS services. Use a descriptive name, for example, `ContosoVaaS@onmicrosoft.com`.
+Create a tenant that your organization will use to access VaaS services. Use a descriptive name (for example, `ContosoVaaS@onmicrosoft.com`).
 
 1. Create an Azure AD tenant in the [Azure portal](https://portal.azure.com), or use an existing tenant. <!-- For instructions on creating new Azure AD tenants, see [Get started with Azure AD](https://docs.microsoft.com/azure/active-directory/get-started-azure-ad). -->
 
-2. Add members of your organization to the tenant. These users will be responsible for using the service to view or schedule tests. Once you finish registration, you will define users' access levels.
+2. Add members of your organization to the tenant. These users will be responsible for using the service to view or schedule tests. Once you finish registration, you'll define users' access levels.
 
     Authorize the users in your tenant to run actions in VaaS by assigning one of the following roles:
 
     | Role Name | Description |
     |---------------------|------------------------------------------|
     | Owner | Has full access to all resources. |
-    | Reader | Can view all resources but not create or manage. |
+    | Reader | Can view all resources but can't create or manage. |
     | Test Contributor | Can create and manage test resources. |
 
-    To assign roles in the **Azure Stack Hub Validation Service** application:
+    To assign roles in the **Azure Stack Hub Validation Service** app:
 
    1. Sign in to the [Azure portal](https://portal.azure.com).
    2. Select **All Services** > **Azure Active Directory** under the **Identity** section.
-   3. Select **Enterprise Applications** > **Azure Stack Hub Validation Service** application.
-   4. Select **Users and groups**. The **Azure Stack Hub Validation Service - Users and group** blade lists the users with permission to use the application.
+   3. Select **Enterprise Applications** > **Azure Stack Hub Validation Service** app.
+   4. Select **Users and groups**. The **Azure Stack Hub Validation Service - Users and group** blade lists the users with permission to use the app.
    5. Select **+ Add user** to add a user from your tenant and assign a role.
 
-      If you would like to isolate VaaS resources and actions among different groups within an organization, you can create multiple Azure AD tenant directories.
+      If you want to isolate VaaS resources and actions among different groups within an organization, you can create multiple Azure AD tenant directories.
 
 ### Register your tenant
 
@@ -70,17 +67,17 @@ This process authorizes your tenant with the **Azure Stack Hub Validation Servic
     | Azure AD Tenant Directory Name | The Azure AD Tenant Directory name being registered. |
     | Azure AD Tenant Directory ID | The Azure AD Tenant Directory GUID associated with the directory. For information on how to find your Azure AD Tenant Directory ID, see [Get tenant ID](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-values-for-signing-in). |
 
-2. Wait for confirmation from the Azure Stack Hub Validation team to check that your tenant can use the VaaS portal.
+2. Wait for confirmation from the Azure Stack Hub Validation team to check that your tenant can use the Azure Stack Hub Validation portal.
 
-### Consent to the VaaS application
+### Consent to the VaaS app
 
 As the Azure AD administrator, give the VaaS Azure AD application the required permissions on behalf of your tenant:
 
-1. Use the global admin credentials for the tenant to sign into the [VaaS portal](https://azurestackvalidation.com/). 
+1. Use the global admin credentials for the tenant to sign into the [Azure Stack Hub Validation portal](https://azurestackvalidation.com/).
 
 2. Select **My Account**.
 
-3 Accept the terms to proceed when prompted to grant VaaS the listed Azure AD permissions.
+3 Accept the terms to continue when prompted to grant VaaS the listed Azure AD permissions.
 
 ## Create an Azure Storage account
 
@@ -98,7 +95,7 @@ The Azure Storage account is hosted in the Azure public cloud, not on your Azure
 
 5. Select the **US West** region for your storage account.
 
-    In order to ensure that networking charges are not incurred for storing logs, the Azure Storage account can be configured to use only the **US West** region. Data replication and the hot storage tier feature are not necessary for this data. Enabling either feature will dramatically increase your costs.
+    To ensure that networking charges aren't incurred for storing logs, the Azure Storage account can be configured to use only the **US West** region. Data replication and the hot storage tier feature aren't necessary for this data. Enabling either feature will dramatically increase your costs.
 
 6. Leave the settings to the default values except for **Account kind**:
 
@@ -112,7 +109,7 @@ The Azure Storage account is hosted in the Azure public cloud, not on your Azure
 
 ## Next steps
 
-If your environment does not allow in-bound connections, follow the tutorial on deploying the local agent to run a test on your hardware.
+If your environment doesn't allow inbound connections, follow the tutorial on deploying the local agent to run a test on your hardware.
 
 > [!div class="nextstepaction"]
 > [Deploy the local agent](azure-stack-vaas-local-agent.md)
