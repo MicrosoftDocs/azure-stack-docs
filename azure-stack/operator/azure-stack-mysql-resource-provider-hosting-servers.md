@@ -8,7 +8,11 @@ ms.author: bryanla
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/06/2019
 
+# Intent: As an Azure Stack operator, I want to add MySQL hosting servers so I can provision them through the MySQL resource provider.
+# Keyword: add mySQL hosting servers azure stack
+
 ---
+
 
 # Add MySQL hosting servers in Azure Stack Hub
 

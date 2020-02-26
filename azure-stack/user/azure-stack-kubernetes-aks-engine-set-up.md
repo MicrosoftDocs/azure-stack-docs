@@ -9,7 +9,11 @@ ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 1/10/2020
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Set up the prerequisites for the AKS engine on Azure Stack Hub
 

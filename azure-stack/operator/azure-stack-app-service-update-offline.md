@@ -6,9 +6,13 @@ author: bryanla
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: anwestg
-ms.reviewer: anwestg
+ms.reviewer: anwe
+
+# Intent: As an Azure Stack operator, I want to deploy App Service in an offline environment secured by AD FS.
+# Keyword: deploy app service offline azure stack
 
 ---
+
 # Offline update of Azure App Service on Azure Stack Hub
 
 > [!IMPORTANT]

@@ -9,9 +9,11 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 10/02/2019
 
-# keywords:  Deploy a Go web app to Azure Stack Hub
-# Intent: I am a developer using Windows 10 or Linux Ubuntu who would like to deploy a Go web app for Azure Stack Hub.
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Deploy a Go web app to a VM in Azure Stack Hub
 

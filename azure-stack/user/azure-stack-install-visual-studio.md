@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 01/07/2020
 ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 01/04/2019
+ms.lastreviewed: 01/04/2020
+
+# Intent: As an Azure Stack user, I want to install Visual Studio on Azure stack so I can write and deploy Azure Resource Manager templates.
+# Keyword: install visual studio azure stack
 
 ---
+
 
 # Install Visual Studio and connect to Azure Stack Hub
 
