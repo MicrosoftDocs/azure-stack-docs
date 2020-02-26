@@ -7,7 +7,12 @@ ms.date: 07/16/2019
 ms.author: inhenkel
 ms.reviewer: prchint
 ms.lastreviewed: 06/13/2019
+
+# Intent: As an Azure Stack Hub operator, I want to learn about compute capacity planning for Azure Stack Hub deployments
+# Keyword: azure stack hub compute capacity
+
 ---
+
 
 # Azure Stack Hub compute capacity
 

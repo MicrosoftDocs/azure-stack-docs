@@ -8,7 +8,12 @@ ms.date: 1/10/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 1/10/2020
+
+# Intent: As an Azure Stack user, I want to quickly create a VM using the Azure Stack portal so I can begin using the VM.
+# Keyword: azure stack vm windows
+
 ---
+
 
 # Quickstart: Create a Windows server VM with the Azure Stack Hub portal
 

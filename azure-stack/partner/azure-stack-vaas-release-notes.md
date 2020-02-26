@@ -8,9 +8,17 @@ ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019
+
+
+ROBOTS: NOINDEX
+
+# Intent: As an Azure Stack Hub user, I want release notes for Azure Stack Hub validation as a service.
+# Keyword: azure stack hub validation release notes
+
 ---
 
-# Validation as a service release notes
+
+# Release notes for Validation as a Service
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 

@@ -7,9 +7,14 @@ ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019
+
 ROBOTS: NOINDEX
 
+# Intent: As an Azure Stack Hub operator, I want to learn the best practices for validation as a service.
+# Keyword: azure stack validation best practices
+
 ---
+
 
 # Azure Stack validation best practices
 

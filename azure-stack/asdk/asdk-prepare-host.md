@@ -8,7 +8,12 @@ ms.date: 08/28/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 08/28/2019
+
+# Intent: As an ASDK user, I want to prepare the ASDK host computer so it's ready to have the ASDK deployed.
+# Keyword: prepare asdk host computer
+
 ---
+
 
 # Prepare the ASDK host computer
 Before you can install the Azure Stack Development Kit (ASDK) on the host computer, the ASDK host must be prepared for installation. When the host has been prepared, it will boot from the CloudBuilder.vhdx virtual machine (VM) hard drive to begin ASDK deployment.

@@ -9,7 +9,11 @@ ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 11/07/2019
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 # Overview of Azure Stack Hub diagnostic log collection 
 
 Azure Stack Hub is a large collection of components working together and interacting with each other. All these components generate their own unique logs. This can make diagnosing issues a challenging task, especially for errors coming from multiple, interacting Azure Stack Hub components. In order to address this challenge, we have designed a diagnostic log collection experience. 
