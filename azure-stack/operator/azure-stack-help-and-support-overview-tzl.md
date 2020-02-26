@@ -12,7 +12,9 @@ ms.lastreviewed: 02/26/2020
 ---
 # Microsoft Azure Stack Hub help and support
 
-**Help + support** in the Azure Stack Hub portal has resources to help operators learn more about Azure Stack, check their support options, and get expert help. Operators can also use **Help + support** to collect diagnostic logs for troubleshooting.
+Azure Stack Hub operators can use **Help + support** to collect diagnostic logs and send them to Microsoft for troubleshooting. **Help + support** in the Azure Stack Hub portal can be accessed from the Administrator portal. It has resources to help operators learn more about Azure Stack, check their support options, and get expert help.  
+
+![Screenshot of how to access Help and Support in the Administrator portal](media/azure-stack-help-and-support/help-and-support.png)
 
 ## Help resources 
 
@@ -32,7 +34,7 @@ At the top of **Help + support** are links to things you might try first, like r
 
 ### Get expert help 
 
-To contact support, use the [Azure portal](https://portal.azure.us)
+To contact support, use the [Azure portal](https://portal.azure.us).
 
 ### Hardware related issues
 
