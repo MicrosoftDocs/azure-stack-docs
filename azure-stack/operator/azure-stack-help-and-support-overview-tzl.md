@@ -32,13 +32,34 @@ At the top of **Help + support** are links to things you might try first, like r
 
 - **Support options**. Azure Stack Hub operators can choose from a range of [Azure support options](https://aka.ms/azstacksupport) that can fit the needs of any enterprise. 
 
+
 ### Get expert help 
 
-To contact support, use the [Azure portal](https://portal.azure.us).
+For an integrated system, there is a coordinated escalation and resolution process between Microsoft and our original equipment manufacturer (OEM) hardware partners.
 
-### Hardware related issues
+If there is a cloud services issue, support is offered through Microsoft Customer Support Services (CSS). 
+You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open **Help + Support Overview** and submit a new support request. Creating a support request will preselect Azure Stack Hub service. We highly recommend that customers use this experience to submit tickets rather than using the Global Azure portal. 
 
-For any hardware related issues, please contact Microsoft. 
+If there is an issue with deployment, patch and update, hardware (including field replaceable units), and any hardware-branded software, such as software running on the hardware lifecycle host, contact your OEM hardware vendor first. 
+For anything else, contact Microsoft CSS.
+
+![Get expert help for integrated systems](media/azure-stack-help-and-support/get-support-integrated.png)
+
+For the ASDK, you can ask support-related questions in the [Azure Stack Hub MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). 
+
+You can click **Help** (question mark) in the upper-right corner of the administrator portal and then click **Help + support** to open **Help + Support Overview**, which has a link to the forum. 
+MSDN forums are regularly monitored.  
+Because the development kit is an evaluation environment, there is no official support offered through Microsoft CSS.
+
+You can also reach out to the MSDN Forums to discuss an issue, or take online training and improve your own skills. 
+
+![Get expert help](media/azure-stack-help-and-support/get-support-cards.png)
+
+### Get up to speed with Azure Stack Hub
+
+This set of tutorials is customized depending on whether you're running the ASDK or integrated systems so you can quickly get up to speed with your environment. 
+
+![Get support tutorials](media/azure-stack-help-and-support/get-support-tutorials.png)
 
 ## Diagnostic log collection
 
@@ -52,5 +73,6 @@ There are two ways to send diagnostic logs to Microsoft:
 
 ## Next steps
 
-- Learn about [troubleshooting Azure Stack Hub](azure-stack-troubleshooting.md)
 - Learn about [diagnostic log collection](azure-stack-diagnostic-log-collection-overview-tzl.md)
+- Learn how to [find your Cloud ID](azure-stack-find-cloud-id.md)
+- Learn about [troubleshooting Azure Stack Hub](azure-stack-troubleshooting.md)
