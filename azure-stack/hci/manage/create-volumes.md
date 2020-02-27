@@ -12,10 +12,7 @@ ms.date: 02/26/2020
 > Applies to: Windows Server 2019, Windows Server 2016
 
 This topic describes how to create volumes on a Storage Spaces Direct cluster by using Windows Admin Center and PowerShell.
-<!--->
-> [!TIP]
-> If you haven't already, check out [Planning volumes in Storage Spaces Direct](plan-volumes.md) first.
---->
+
 ## Create a three-way mirror volume
 
 To create a three-way mirror volume in Windows Admin Center: 
