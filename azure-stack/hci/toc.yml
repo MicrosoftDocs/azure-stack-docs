@@ -7,7 +7,7 @@
 - name: Managing Azure Stack HCI
   items:
   - name: Replacing failed drives
-    href: /manage/replace-drives.md
+    href: manage/replace-drives.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
