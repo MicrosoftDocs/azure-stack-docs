@@ -3,7 +3,7 @@ title: Managing virtual machines with Windows Admin Center
 description: In this how-to article, learn how to manage virtual machines in a hyper-converged server cluster for Azure Stack HCI using Windows Admin Center.
 author: v-dasis
 ms.topic: article
-ms.prod: windows-server
+ms.prod: 
 ms.date: 02/25/2020
 ms.author: v-dasis
 ms.reviewer: JasonGerend
@@ -17,7 +17,7 @@ Alternatively, you can also manage virtual machines using PowerShell scripts. Fo
 
 ## Install Windows Admin Center
 
-Windows Admin Center (WAC) must be installed on a Windows 10 PC. You have several installation options available depending on your needs. For more information, see [Install Windows Admin Center](https://docs.microsoft.com/en-us/windows-server/manage/windows-admin-center/deploy/install).
+Windows Admin Center (WAC) must be installed on a Windows 10 PC. You have several installation options available depending on your needs. For more information, see [Install Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/deploy/install).
 
 ## Create a new virtual machine ##
 
@@ -146,4 +146,4 @@ You can view Hyper-V event logs using Windows Admin Center as follows:
 
 ## Next Steps ##
 
-- [Manage a hyperconverged cluster](https://docs.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/azure-site-recovery)
+- [Manage a hyperconverged cluster](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-site-recovery)
