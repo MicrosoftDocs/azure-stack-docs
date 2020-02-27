@@ -8,8 +8,13 @@ ms.date: 06/17/2019
 ms.author: inhenkel
 ms.reviewer: fiseraci
 ms.lastreviewed: 06/17/2019
-# As a service administrator, I want to learn about the security controls applied to Azure Stack Hub, so that I can configure security.
+# As a service administrator, I want to learn about the security controls applied to Azure Stack Hub, so that I can configure secur
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Configure Azure Stack Hub security controls
 

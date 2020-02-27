@@ -9,10 +9,11 @@ ms.author: mabrigg
 ms.reviewer: sijuman 
 ms.lastreviewed: 11/11/2019
 
-# keywords: Develop apps on Azure Stack Hub 
-# Intent: I am a developer using Windows 10 or Linux Ubuntu who would like to develop an app for Azure Stack Hub using the SDKs. 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
---- 
+---
+ 
 
 # Set up a development environment in Azure Stack Hub 
 

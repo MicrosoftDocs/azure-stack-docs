@@ -9,7 +9,11 @@ ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/26/2019
 
+# Intent: As an Azure Stack user, I want to use API version profiles with Go in Azure Stack so I can benefit from the use of profiles.
+# Keyword: azure stack API profiles Go
+
 ---
+
 
 # Use API version profiles with Go in Azure Stack Hub
 

@@ -7,9 +7,14 @@ ms.date: 12/16/2019
 ms.author: inhenkel
 ms.reviewer: ppacent
 ms.lastreviewed: 12/16/2019
+
+# Intent: As an Azure Stack operator, I want to learn about the Azure Stack PKI certificate deployment requirements.
+# Keyword: azure stack pki certificate requirements
+
 ---
 
-# Azure Stack Hub public key infrastructure (PKI) certificate requirements
+
+# Azure Stack Hub public key infrastructure certificate requirements
 
 Azure Stack Hub has a public infrastructure network using externally accessible public IP addresses assigned to a small set of Azure Stack Hub services and possibly tenant VMs. PKI certificates with the appropriate DNS names for these Azure Stack Hub public infrastructure endpoints are required during Azure Stack Hub deployment. This article provides information about:
 
