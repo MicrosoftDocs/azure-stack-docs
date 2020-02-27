@@ -4,16 +4,16 @@ description: How to replace failed drives on Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 02/26/2020
+ms.date: 02/27/2020
 ---
 
 # Replacing failed drives on Azure Stack HCI
 
 Azure Stack HCI works with direct-attached SATA, SAS, or NVMe drives that are physically attached to just one server each. If a drive fails, you will need access to the physical server hardware to replace it.
 
-When a drive fails, an alert appears in the upper left **Alerts** area of the **Windows Admin Center Dashboard**. You can also select **Drives** from the navigation on the left side or click the **VIEW DRIVES >** link on the tile in the lower right corner to browse drives and see their status for yourself. In the **Inventory** tab, the grid supports sorting, grouping, and keyword search.
+When a drive fails, an alert appears in the upper left **Alerts** area of the **Windows Admin Center** dashboard. You can also select **Drives** from the navigation on the left side or click the **VIEW DRIVES >** link on the tile in the lower right corner to browse drives and see their status for yourself. In the **View** tab, the grid supports sorting, grouping, and keyword search.
 
-1. From the **Dashboard**, click the alert to see details, like the drive's physical location.
+1. From the dashboard, click the alert to see details, like the drive's physical location.
 1. To learn more, click the **Go to drive** shortcut to the **Drive** detail page.
 1. If your hardware supports it, you can click **Turn light on/off** to control the drive's indicator light.
    Storage Spaces Direct automatically retires and evacuates failed drives. When this has happened, the drive status is Retired, and its storage capacity bar is empty.
