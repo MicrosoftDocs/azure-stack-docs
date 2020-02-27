@@ -21,7 +21,7 @@ Windows Admin Center (WAC) must be installed on a Windows 10 PC. You have severa
 
 ## Create a new virtual machine ##
 
-1. In Windows Admin Center, select the server or cluster you want to create virtual machine on.
+1. In Windows Admin Center, select the server or cluster you want to create the virtual machine on.
 1. Under **Tools**, scroll down and select **Virtual Machines**.
 1. Under **Virtual Machines**, select **Inventory**, and then select **New**.
 1. Under **New Virtual Machine**, enter a name for your VM.
@@ -34,7 +34,7 @@ Windows Admin Center (WAC) must be installed on a Windows 10 PC. You have severa
 1. Under **Virtual processors**, select the number of virtual processors and whether you want nested virtualization enabled.
 1. Under **Memory**, select the amount of startup memory (4 GB is recommended as a minimum), and a min and max range of dynamic memory as applicable to be allocated to the VM.
 1. Under **Network**, select a virtual network adapter to use.
-1. Under **Storage**, click **Add** and select whether to create a new virtual hard disk or to use an existing virtual hard disk. If using an existing virtual hard disk, click **Browse** and select the applicable file path.  
+1. Under **Storage**, click **Add** and select whether to create a new virtual hard disk or to use an existing virtual hard disk. If you're using an existing virtual hard disk, click **Browse** and select the applicable file path.  
 1. Under **Operating system**, choose whether you want to install an operating system later, whether to install an OS now from a disc image (*.iso) file (click **Browse** to select the applicable file), or whether to install an OS now from a network share.
 1. When finished, click **Create** to create the VM.
 1. To start the VM, in the **Virtual Machines** list, hover over the new VM, enable the checkbox for it on the left, and select **Start**.
@@ -44,7 +44,7 @@ Windows Admin Center (WAC) must be installed on a Windows 10 PC. You have severa
 > The following steps only apply if you previously selected to install an operating system from a network share.
 
 9. Hover over the VM, enable the checkbox for it on the left, then select **More > Download RDP File**. 
-1. Under Tools, scroll down and select **Remote Desktop**. 
+1. Under **Tools**, scroll down and select **Remote Desktop**. 
 1. Enter your domain admin username and password credentials, then click **Connect**.
 1. In the remote session window, enter **[move this task to separate topic or link to John's topic?]**
 
@@ -83,7 +83,7 @@ If you are connected to a cluster, you can live migrate a virtual machine to ano
 
 ## View detailed information for a virtual machine ##
 
-You can view detailed information and performance charts for a specific virtual machine from it's page as follows:
+You can view detailed information and performance charts for a specific virtual machine from its page as follows:
 
 1. Under **Tools**, scroll down and select **Virtual Machines**.
 1. Click the **Inventory** tab on the right, then click on the name of the virtual machine. On the subsequent page, you can do the following:
