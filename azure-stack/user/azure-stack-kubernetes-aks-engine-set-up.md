@@ -4,10 +4,10 @@ description: Establish the requirements for running the ASK Engine on your Azure
 author: mattbriggs
 
 ms.topic: article
-ms.date: 1/10/2020
+ms.date: 2/27/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 1/10/2020
+ms.lastreviewed: 2/27/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -31,6 +31,7 @@ Your cloud operator will need to have the following items in place.
 
 | Prerequisite | Description | Required | Instructions |
 | --- | --- | --- | --- | --- |
+| Azure Stack Hub 1910 or greater | The AKS engine requires Azure Stack Hub 1910 or greater. | Required | If you are unsure of your version of Azure Stack Hub, contact your cloud operator. |
 | Linux custom script extension | Linux Custom Script extension 2.0<br>Offer: Custom Script for Linux 2.0<br>Version: 2.0.6 (or latest version)<br>Publisher: Microsoft Corp | Required | If you do not have this item in your subscription, contact your cloud operator. |
 | AKS Base Ubuntu Image | AKS Base Image<br>Offer: aks<br> 2019.10.24 (or newer version)<br>Publisher: microsoft-aks<br>SKU: aks-ubuntu-1604-201910 | Required | If you don't have this item in your subscription, contact your cloud operator. See more information on the version dependency see [Matching engine to base image version](#matching-engine-to-base-image-version).<br> If you are the cloud operator for Azure Stack Hub and would like to offer the AKS engine, follow the instructions at [Add the AKS engine to the Azure Stack Hub Marketplace](../operator/azure-stack-aks-engine.md). |
 | Service principal identity (SPN) |  An application that needs to deploy or configure resources through Azure Resource Manager, must be represented by a service principal. | Required | You may need to contact your Azure Stack Hub operator for this item.  For instructions see [Use an app identity to access resources](https://docs.microsoft.com/azure-stack/operator/azure-stack-create-service-principals) |
