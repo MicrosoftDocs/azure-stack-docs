@@ -9,7 +9,11 @@ ms.author: inhenkel
 ms.reviewer: jerskine
 ms.lastreviewed: 06/10/2019
 
+# Intent: As an Azure Stack Hub operator, I want to use the Readiness Checker to validate graph integration for Azure Stack Hub.
+# Keyword: azure stack hub graph integration readiness checker
+
 ---
+
 
 # Validate graph integration for Azure Stack Hub
 

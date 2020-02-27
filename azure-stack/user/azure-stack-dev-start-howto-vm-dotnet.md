@@ -9,9 +9,11 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 11/11/2019
 
-# keywords:  Deploy an app to Azure Stack Hub
-# Intent: I am developer using Windows 10 or Linux Ubuntu who would like to deploy an app to Azure Stack Hub.
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Deploy a C# ASP.NET web app to a VM in Azure Stack Hub
 

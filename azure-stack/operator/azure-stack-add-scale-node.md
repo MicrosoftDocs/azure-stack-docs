@@ -7,8 +7,13 @@ ms.topic: article
 ms.date: 1/16/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 09/17/2018
+ms.lastreviewed: 09/17/2019
+
+# Intent: As an Azure Stack operator, I want to add an additional scale unit node/physical computer to increase the overall capacity. 
+# Keyword: (add) scale unit node azure stack
+
 ---
+
 
 # Add additional scale unit nodes in Azure Stack Hub
 

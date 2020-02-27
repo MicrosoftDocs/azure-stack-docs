@@ -9,7 +9,11 @@ ms.author: inhenkel
 ms.reviewer: thoroet 
 ms.lastreviewed: 07/18/2019
 
+# Intent: As an Azure Stack operator, I want to replace a hardware component in Azure Stack.
+# Keyword: replace hardware component azure stack
+
 ---
+
 
 # Replace a hardware component on an Azure Stack Hub scale unit node
 

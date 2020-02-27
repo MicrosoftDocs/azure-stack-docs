@@ -7,7 +7,12 @@ ms.topic: quickstart
 ms.date: 11/11/2019
 ms.author: mabrigg
 ms.lastreviewed: 11/11/2019
+
+# Intent: As an Azure Stack user, I want to create a Linux server virtual machine using PowerShell.�
+# Keyword: linuxVM powershell
+
 ---
+
 
 # Quickstart: Create a Linux server VM by using PowerShell in Azure Stack Hub
 

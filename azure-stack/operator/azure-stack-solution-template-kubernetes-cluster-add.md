@@ -10,7 +10,11 @@ ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 10/28/2019
 
+# Intent: As an Azure Stack operator, I want to add Kubernetes to Azure Stack Marketplace.
+# Keyword: add kubernetes azure stack marketplace
+
 ---
+
 
 # Add Kubernetes to Azure Stack Hub Marketplace
 

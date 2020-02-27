@@ -9,7 +9,11 @@ ms.author: justinha
 ms.reviewer: chengwei
 ms.lastreviewed: 02/24/2020
 
+# Intent: As an Azure Stack operator, I want to know how Azure Stack handles my customer data.
+# Keyword: azure stack customer data
+
 ---
+
 # Azure Stack Hub log and customer data handling 
 
 To the extent Microsoft is a processor or subprocessor of personal data in connection with Azure Stack Hub, Microsoft makes to all customers, effective May 25, 2018, the following commitments:

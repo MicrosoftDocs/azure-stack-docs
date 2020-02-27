@@ -7,8 +7,13 @@ ms.topic: conceptual
 ms.date: 01/07/2020
 ms.author: inhenkel
 ms.reviewer: unknown
-ms.lastreviewed: 10/23/2018
+ms.lastreviewed: 10/23/2019
+
+# Intent: As an Azure Stack Hub operator, I want to usethe Azure Stack Hub Readiness Checker tool to generate a validation report.
+# Keyword: azure stack hub validation report readiness checker
+
 ---
+
 
 # Azure Stack Hub validation report
 
