@@ -3,7 +3,6 @@ title: Understanding the cache in Azure Stack HCI
 description: How read and write caching works in Storage Spaces Direct and Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
-ms.topic: concepts
 ms.date: 02/27/2020
 ---
 
