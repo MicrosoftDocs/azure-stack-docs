@@ -9,8 +9,11 @@ ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 07/18/2019
 
+# Intent: As an ASDK user, I want to start, stop, and retart the ASDK properly. 
+# Keyword: start stop asdk
 
 ---
+
 
 # Start and stop the ASDK
 It's not recommended to simply restart the ASDK host computer. Instead, follow the procedures in this article to properly shut down and restart ASDK services.

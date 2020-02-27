@@ -8,7 +8,12 @@ ms.date: 06/24/2019
 ms.author: inhenkel
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
+
+# Intent: As an Azure Stack Hub operator, I want to use the Azure Stack Hub Readiness Checker to validate Azure identity.
+# Keyword:  azure stack hub azure identity readiness checker
+
 ---
+
 
 # Validate Azure identity
 

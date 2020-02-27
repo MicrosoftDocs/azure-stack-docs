@@ -9,9 +9,11 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 11/06/2019
 
-# keywords:  networking, storage, backup
-# Intent: As an Azure Stack Hub user, I want develop a solution that requires complex connectivity between networks.
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Deploy foundational patterns overview
 
