@@ -6,9 +6,13 @@ ms.topic: article
 ms.date: 01/21/2020
 ms.author: sethm
 ms.reviewer: ihcherie
-ms.lastreviewed: 01/21/2020
+ms.lastreviewed: 01/21/2019
+
+# Intent: As an Azure Stack operator, I want to know which Azure Marketplace items can be used in Azure Stack.
+# Keyword: azure stack marketplace items
 
 ---
+
 # Azure Marketplace items available for Azure Stack Hub
 
 ## Virtual Machine extensions

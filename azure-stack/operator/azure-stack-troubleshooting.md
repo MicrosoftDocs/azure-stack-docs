@@ -10,7 +10,11 @@ ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 11/05/2019
 
+# Intent: As an Azure Stack operator, I want to troubleshoot Azure Stack issues.
+# Keyword: toubleshoot azure stack
+
 ---
+
 # Troubleshoot issues in Azure Stack Hub
 
 This document provides troubleshooting information for Azure Stack Hub integrated environments. For help with the Azure Stack Development Kit, see [ASDK Troubleshooting](../asdk/asdk-troubleshooting.md) or get help from experts on the [Azure Stack Hub MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).

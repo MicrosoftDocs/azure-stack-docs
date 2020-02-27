@@ -8,9 +8,13 @@ ms.topic: article
 ms.date: 02/07/2020
 ms.author: sethm
 ms.reviewer: harik
-ms.lastreviewed: 01/14/2020
+ms.lastreviewed: 01/11/2020
+
+# Intent: As an Azure Stack operator, I want to learn about servicing policy and how to keep an integrated system supported.
+# Keyword: servicing policy azure stack
 
 ---
+
 
 # Azure Stack Hub servicing policy
 

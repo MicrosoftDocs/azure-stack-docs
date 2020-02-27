@@ -9,7 +9,11 @@ ms.author: justinha
 ms.reviewer: shisab
 ms.lastreviewed: 10/08/2019
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 # Configure automatic Azure Stack Hub diagnostic log collection
 
 We recommend configuring the automatic diagnostic log collection feature to streamline your log collection and customer support experience. 

@@ -9,8 +9,13 @@ ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 01/22/2020
 
-ROBOTS: NOINDEX
+ROBOTS: NOI
+
+# Intent: As an Azure Stack operator, I want to create a site-to-site VPN connection between two virtual networks in different ASDK environments.
+# Keyword: asdk environments vpn connection
+
 ---
+
 
 # Create a site-to-site VPN connection between two virtual networks in different ASDK environments
 

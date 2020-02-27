@@ -9,7 +9,11 @@ ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 06/27/2019
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Usage connectivity errors
 
