@@ -140,7 +140,9 @@ New-Volume -FriendlyName "Volume4" -FileSystem CSVFS_ReFS -StoragePoolFriendlyNa
 
 You're done! Repeat as needed to create more than one volume.
 
-## See also
+## Next steps
+
+To perform other storage management tasks in Storage Spaces Direct, see also:
 
 - [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
 - [Planning volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/plan-volumes)
