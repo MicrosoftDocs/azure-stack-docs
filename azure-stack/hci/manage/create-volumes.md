@@ -9,7 +9,7 @@ ms.date: 02/28/2020
 
 # Creating volumes in Azure Stack HCI
 
-> Applies to: Windows Server 2019, Windows Server 2016
+> Applies to: Windows Server 2019
 
 This topic describes how to create volumes on a Storage Spaces Direct cluster by using Windows Admin Center and Windows PowerShell.
 
@@ -51,7 +51,7 @@ Watch a quick video on how to create a mirror-accelerated parity volume.
 To open a volume and add files to the volume in Windows Admin Center:
 
 1. In Windows Admin Center, connect to a Storage Spaces Direct cluster, and then select **Volumes** from the **Tools** pane.
-2. On the Volumes page, select the **Inventory** tab.
+2. On the **Volumes** page, select the **Inventory** tab.
 2. In the list of volumes, select the name of the volume that you want to open.
 
     On the volume details page, you can see the path to the volume.
