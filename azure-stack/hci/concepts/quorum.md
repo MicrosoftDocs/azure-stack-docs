@@ -4,7 +4,7 @@ description: Understanding cluster and pool quorum in Storage Spaces Direct on A
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 02/27/2020
+ms.date: 02/28/2020
 ---
 
 # Understanding cluster and pool quorum on Azure Stack HCI
@@ -217,7 +217,9 @@ Each of the 24 drives has one vote and node two also has one vote (since it's th
 - Enable three-way mirror or dual parity so that you can tolerate a node failures and keep the virtual disks online. 
 - If more than two nodes are down, or two nodes and a disk on another node are down, volumes may not have access to all three copies of their data, and therefore be taken offline and be unavailable. It's recommended to bring the servers back or replace the disks quickly to ensure the most resiliency for all the data in the volume.
 
-## More information
+## Next steps
+
+For more information, see the following:
 
 - [Configure and manage quorum](/windows-server/failover-clustering/manage-cluster-quorum)
 - [Deploy a cloud witness](/windows-server/failover-clustering/deploy-cloud-witness)

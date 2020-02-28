@@ -4,7 +4,7 @@ description: How read and write caching works in Storage Spaces Direct and Azure
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 02/27/2020
+ms.date: 02/28/2020
 ---
 
 # Understanding the cache in Azure Stack HCI
@@ -262,7 +262,9 @@ For example, 2 cache drives bound to 4 capacity drives results in 4 "Hybrid Disk
 
 There is no universal rule, but if too many reads are missing the cache, it may be undersized and you should consider adding cache drives to expand your cache. You can add cache drives or capacity drives independently whenever you want.
 
-## See also
+## Next steps
+
+For additional storage knowledge, see also:
 
 - [Fault tolerance and storage efficiency](fault-tolerance.md)
 - [Cluster and pool quorum](quorum.md)

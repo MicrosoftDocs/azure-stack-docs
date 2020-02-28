@@ -29,7 +29,7 @@ Storage Spaces offers two flavors of mirroring – "two-way" and "three-way."
 
 ### Two-way mirror
 
-Two-way mirroring writes two copies of everything. Its storage efficiency is 50% – to write 1 TB of data, you need at least 2 TB of physical storage capacity. Likewise, you need at least two [hardware 'fault domains'](/windows-server/failover-clustering/fault-domains) – with Storage Spaces Direct, that means two servers.
+Two-way mirroring writes two copies of everything. Its storage efficiency is 50 percent – to write 1 TB of data, you need at least 2 TB of physical storage capacity. Likewise, you need at least two [hardware 'fault domains'](/windows-server/failover-clustering/fault-domains) – with Storage Spaces Direct, that means two servers.
 
 ![two-way-mirror](media/fault-tolerance/two-way-mirror-180px.png)
 
@@ -38,7 +38,7 @@ Two-way mirroring writes two copies of everything. Its storage efficiency is 50%
 
 ### Three-way mirror
 
-Three-way mirroring writes three copies of everything. Its storage efficiency is 33.3% – to write 1 TB of data, you need at least 3 TB of physical storage capacity. Likewise, you need at least three hardware fault domains – with Storage Spaces Direct, that means three servers.
+Three-way mirroring writes three copies of everything. Its storage efficiency is 33.3 percent – to write 1 TB of data, you need at least 3 TB of physical storage capacity. Likewise, you need at least three hardware fault domains – with Storage Spaces Direct, that means three servers.
 
 Three-way mirroring can safely tolerate at least [two hardware problems (drive or server) at a time](#examples). For example, if you're rebooting one server when suddenly another drive or server fails, all data remains safe and continuously accessible.
 
@@ -65,7 +65,7 @@ Dual parity implements Reed-Solomon error-correcting codes to keep two bitwise p
 
 ![dual-parity](media/fault-tolerance/dual-parity-180px.png)
 
-The storage efficiency of dual parity increases the more hardware fault domains you have, from 50% up to 80%. For example, at seven (with Storage Spaces Direct, that means seven servers) the efficiency jumps to 66.7% – to store 4 TB of data, you need just 6 TB of physical storage capacity.
+The storage efficiency of dual parity increases the more hardware fault domains you have, from 50 percent up to 80 percent. For example, at seven (with Storage Spaces Direct, that means seven servers) the efficiency jumps to 66.7 percent – to store 4 TB of data, you need just 6 TB of physical storage capacity.
 
 ![dual-parity-wide](media/fault-tolerance/dual-parity-wide-180px.png)
 
@@ -75,7 +75,7 @@ See the [Summary](#summary) section for the efficiency of dual party and local r
 
 Storage Spaces introduces an advanced technique developed by Microsoft Research called "local reconstruction codes," or LRC. At large scale, dual parity uses LRC to split its encoding/decoding into a few smaller groups, to reduce the overhead required to make writes or recover from failures.
 
-With hard disk drives (HDD) the group size is four symbols; with solid-state drives (SSD), the group size is six symbols. For example, here's what the layout looks like with hard disk drives and 12 hardware fault domains (meaning 12 servers) – there are two groups of four data symbols. It achieves 72.7% storage efficiency.
+With hard disk drives (HDD) the group size is four symbols; with solid-state drives (SSD), the group size is six symbols. For example, here's what the layout looks like with hard disk drives and 12 hardware fault domains (meaning 12 servers) – there are two groups of four data symbols. It achieves 72.7 percent storage efficiency.
 
 ![local-reconstruction-codes](media/fault-tolerance/local-reconstruction-codes-180px.png)
 
@@ -83,11 +83,11 @@ We recommend this in-depth yet eminently readable walk-through of [how local rec
 
 ## Mirror-accelerated parity
 
-Beginning in Windows Server 2016, a Storage Spaces Direct volume can be part mirror and part parity. Writes land first in the mirrored portion and are gradually moved into the parity portion later. Effectively, this is [using mirroring to accelerate erasure coding](https://blogs.technet.microsoft.com/filecab/2016/09/06/volume-resiliency-and-efficiency-in-storage-spaces-direct/).
+A Storage Spaces Direct volume can be part mirror and part parity. Writes land first in the mirrored portion and are gradually moved into the parity portion later. Effectively, this is [using mirroring to accelerate erasure coding](https://blogs.technet.microsoft.com/filecab/2016/09/06/volume-resiliency-and-efficiency-in-storage-spaces-direct/).
 
 To mix three-way mirror and dual parity, you need at least four fault domains, meaning four servers.
 
-The storage efficiency of mirror-accelerated parity is in between what you'd get from using all mirror or all parity, and depends on the proportions you choose. For example, the demo at the 37-minute mark of this presentation shows [various mixes achieving 46%, 54%, and 65% efficiency](https://www.youtube.com/watch?v=-LK2ViRGbWs&t=36m55s) with 12 servers.
+The storage efficiency of mirror-accelerated parity is in between what you'd get from using all mirror or all parity, and depends on the proportions you choose. For example, the demo at the 37-minute mark of this presentation shows [various mixes achieving 46 percent, 54 percent, and 65 percent efficiency](https://www.youtube.com/watch?v=-LK2ViRGbWs&t=36m55s) with 12 servers.
 
 > [!IMPORTANT]
 > We recommend using mirroring for most performance-sensitive workloads. To learn more about how to balance performance and capacity depending on your workload, see [Plan volumes](/windows-server/storage/storage-spaces/plan-volumes#choosing-the-resiliency-type).
@@ -199,9 +199,9 @@ Over its lifetime, Storage Spaces can tolerate any number of failures, because i
 
 Check out [Creating volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/create-volumes).
 
-## See also
+## Next steps
 
-Every link below is inline somewhere in the body of this topic.
+For further reading on subjects mentioned in this article, see the following:
 
 - [Erasure Coding in Azure by Microsoft Research](https://www.microsoft.com/research/publication/erasure-coding-in-windows-azure-storage/)
 - [Local Reconstruction Codes and Accelerating Parity Volumes](https://blogs.technet.microsoft.com/filecab/2016/09/06/volume-resiliency-and-efficiency-in-storage-spaces-direct/)
