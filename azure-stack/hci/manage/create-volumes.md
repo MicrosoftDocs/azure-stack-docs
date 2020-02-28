@@ -4,21 +4,21 @@ description: How to create volumes in Azure Stack HCI using Windows Admin Center
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 02/26/2020
+ms.date: 02/28/2020
 ---
 
 # Creating volumes in Azure Stack HCI
 
 > Applies to: Windows Server 2019, Windows Server 2016
 
-This topic describes how to create volumes on a Storage Spaces Direct cluster by using Windows Admin Center and PowerShell.
+This topic describes how to create volumes on a Storage Spaces Direct cluster by using Windows Admin Center and Windows PowerShell.
 
 ## Create a three-way mirror volume
 
-To create a three-way mirror volume in Windows Admin Center: 
+To create a three-way mirror volume using Windows Admin Center:
 
 1. In Windows Admin Center, connect to a Storage Spaces Direct cluster, and then select **Volumes** from the **Tools** pane.
-2. On the Volumes page, select the **Inventory** tab, and then select **Create volume**.
+2. On the **Volumes** page, select the **Inventory** tab, and then select **Create volume**.
 3. In the **Create volume** pane, enter a name for the volume, and leave **Resiliency** as **Three-way mirror**.
 4. In **Size on HDD**, specify the size of the volume. For example, 5 TB (terabytes).
 5. Select **Create**.
@@ -56,10 +56,10 @@ To open a volume and add files to the volume in Windows Admin Center:
 
     On the volume details page, you can see the path to the volume.
 
-4. At the top of the page, select **Open**. This launches the Files tool in Windows Admin Center.
+4. At the top of the page, select **Open**. This launches the **Files** tool in Windows Admin Center.
 5. Navigate to the path of the volume. Here you can browse the files in the volume.
 6. Select **Upload**, and then select a file to upload.
-7. Use the browser **Back** button to go back to the Tools pane in Windows Admin Center.
+7. Use the browser **Back** button to go back to the **Tools** pane in Windows Admin Center.
 
 Watch a quick video on how to open a volume and add files.
 
@@ -70,10 +70,10 @@ Watch a quick video on how to open a volume and add files.
 Deduplication and compression is managed per volume. Deduplication and compression uses a post-processing model, which means that you won't see savings until it runs. When it does, it'll work over all files, even those that were there from before.
 
 1. In Windows Admin Center, connect to a Storage Spaces Direct cluster, and then select **Volumes** from the **Tools** pane.
-2. On the Volumes page, select the **Inventory** tab.
+2. On the **Volumes** page, select the **Inventory** tab.
 3. In the list of volumes, select the name of the volume that want to manage.
 4. On the volume details page, click the switch labeled **Deduplication and compression**.
-5. In the Enable deduplication pane, select the deduplication mode.
+5. In the **Enable deduplication** pane, select the deduplication mode.
 
     Instead of complicated settings, Windows Admin Center lets you choose between ready-made profiles for different workloads. If you're not sure, use the default setting.
 
@@ -83,9 +83,9 @@ Watch a quick video on how to turn on deduplication and compression.
 
 > [!VIDEO https://www.youtube-nocookie.com/embed/PRibTacyKko]
 
-## Create volumes using PowerShell
+## Create volumes using Windows PowerShell
 
-We recommend using the **New-Volume** cmdlet to create volumes for Azure Stack HCI. It provides the fastest and most straightforward experience. This single cmdlet automatically creates the virtual disk, partitions and formats it, creates the volume with matching name, and adds it to cluster shared volumes – all in one easy step.
+First, launch Windows PowerShell from the Windows start menu. We recommend using the **New-Volume** cmdlet to create volumes for Azure Stack HCI. It provides the fastest and most straightforward experience. This single cmdlet automatically creates the virtual disk, partitions and formats it, creates the volume with matching name, and adds it to cluster shared volumes – all in one easy step.
 
 The **New-Volume** cmdlet has four parameters you'll always need to provide:
 
@@ -140,9 +140,9 @@ New-Volume -FriendlyName "Volume4" -FileSystem CSVFS_ReFS -StoragePoolFriendlyNa
 
 You're done! Repeat as needed to create more than one volume.
 
-<!---## See also
+## See also
 
-- [Storage Spaces Direct overview](storage-spaces-direct-overview.md)
-- [Planning volumes in Storage Spaces Direct](plan-volumes.md)
-- [Extending volumes in Storage Spaces Direct](resize-volumes.md)
-- [Deleting volumes in Storage Spaces Direct](delete-volumes.md)--->
+- [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
+- [Planning volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/plan-volumes)
+- [Extending volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/resize-volumes)
+- [Deleting volumes in Storage Spaces Direct](/windows-server/storage/storage-spaces/delete-volumes)
