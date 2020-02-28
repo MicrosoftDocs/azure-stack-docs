@@ -4,7 +4,7 @@ description: A discussion of resiliency options in Storage Spaces Direct includi
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 02/27/2020
+ms.date: 02/28/2020
 ---
 
 # Fault tolerance and storage efficiency in Azure Stack HCI
@@ -17,15 +17,15 @@ If you are already familiar with Storage Spaces, you may want to skip to the [Su
 
 ## Overview
 
-At its heart, Storage Spaces is about providing fault tolerance, often called 'resiliency', for your data. Its implementation is similar to RAID, except distributed across servers and implemented in software.
+At its heart, Storage Spaces is about providing fault tolerance, often called "resiliency," for your data. Its implementation is similar to RAID, except distributed across servers and implemented in software.
 
-As with RAID, there are a few different ways Storage Spaces can do this, which make different tradeoffs between fault tolerance, storage efficiency, and compute complexity. These broadly fall into two categories: 'mirroring' and 'parity', the latter sometimes called 'erasure coding'.
+As with RAID, there are a few different ways Storage Spaces can do this, which make different tradeoffs between fault tolerance, storage efficiency, and compute complexity. These broadly fall into two categories: "mirroring" and "parity," the latter sometimes called "erasure coding."
 
 ## Mirroring
 
 Mirroring provides fault tolerance by keeping multiple copies of all data. This most closely resembles RAID-1. How that data is striped and placed is non-trivial (see [this blog](https://blogs.technet.microsoft.com/filecab/2016/11/21/deep-dive-pool-in-spaces-direct/) to learn more), but it is absolutely true to say that any data stored using mirroring is written, in its entirety, multiple times. Each copy is written to different physical hardware (different drives in different servers) that are assumed to fail independently.
 
-In Windows Server 2016, Storage Spaces offers two flavors of mirroring – 'two-way' and 'three-way'.
+Storage Spaces offers two flavors of mirroring – "two-way" and "three-way."
 
 ### Two-way mirror
 
@@ -46,9 +46,9 @@ Three-way mirroring can safely tolerate at least [two hardware problems (drive o
 
 ## Parity
 
-Parity encoding, often called 'erasure coding', provides fault tolerance using bitwise arithmetic, which can get [remarkably complicated](https://www.microsoft.com/research/wp-content/uploads/2016/02/LRC12-cheng20webpage.pdf). The way this works is less obvious than mirroring, and there are many great online resources (for example, this third-party [Dummies Guide to Erasure Coding](http://smahesh.com/blog/2012/07/01/dummies-guide-to-erasure-coding/)) that can help you get the idea. Sufficed to say it provides better storage efficiency without compromising fault tolerance.
+Parity encoding, often called "erasure coding," provides fault tolerance using bitwise arithmetic, which can get [remarkably complicated](https://www.microsoft.com/research/wp-content/uploads/2016/02/LRC12-cheng20webpage.pdf). The way this works is less obvious than mirroring, and there are many great online resources (for example, this third-party [Dummies Guide to Erasure Coding](http://smahesh.com/blog/2012/07/01/dummies-guide-to-erasure-coding/)) that can help you get the idea. Sufficed to say it provides better storage efficiency without compromising fault tolerance.
 
-Storage Spaces offers two flavors of parity – 'single' parity and 'dual' parity, the latter employing an advanced technique called 'local reconstruction codes' at larger scales.
+Storage Spaces offers two flavors of parity – "single" parity and "dual" parity, the latter employing an advanced technique called "local reconstruction codes" at larger scales.
 
 > [!IMPORTANT]
 > We recommend using mirroring for most performance-sensitive workloads. To learn more about how to balance performance and capacity depending on your workload, see [Plan volumes](/windows-server/storage/storage-spaces/plan-volumes#choosing-the-resiliency-type).
@@ -73,7 +73,7 @@ See the [Summary](#summary) section for the efficiency of dual party and local r
 
 ### Local reconstruction codes
 
-Storage Spaces introduces an advanced technique developed by Microsoft Research called 'local reconstruction codes', or LRC. At large scale, dual parity uses LRC to split its encoding/decoding into a few smaller groups, to reduce the overhead required to make writes or recover from failures.
+Storage Spaces introduces an advanced technique developed by Microsoft Research called "local reconstruction codes," or LRC. At large scale, dual parity uses LRC to split its encoding/decoding into a few smaller groups, to reduce the overhead required to make writes or recover from failures.
 
 With hard disk drives (HDD) the group size is four symbols; with solid-state drives (SSD), the group size is six symbols. For example, here's what the layout looks like with hard disk drives and 12 hardware fault domains (meaning 12 servers) – there are two groups of four data symbols. It achieves 72.7% storage efficiency.
 
