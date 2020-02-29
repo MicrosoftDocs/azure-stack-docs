@@ -210,6 +210,8 @@
             href: azure-stack-kubernetes-aks-engine-deploy-windows.md
           - name: Deploy a cluster
             href: azure-stack-kubernetes-aks-engine-deploy-cluster.md
+          - name: Deploy to custom virtual network
+            href: kubernetes-aks-engine-custom-vnet.md
           - name: Scale a cluster
             href: azure-stack-kubernetes-aks-engine-scale.md
           - name: Upgrade a cluster

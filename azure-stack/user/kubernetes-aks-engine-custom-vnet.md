@@ -18,25 +18,25 @@ ms.lastreviewed: 2/28/2020
 
 You can deploy a Kubernetes cluster using the AKS engine on a custom virtual network so that I can deliver your service in an environment that extends your data center or in a hybrid cloud solution extending Azure Stack to Azure.
 
-## Create or check your custom virtual network
+## Create custom virtual network
 
-You must have a custom virtual network in your Azure Stack instance. For more information see X.
+You must have a custom virtual network in your Azure Stack instance. For more information, see [Quickstart: Create a virtual network using the Azure portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal).
 
 Get the Azure Resource Manager path/id of Subnets  as we as the first IP address. Yu will use when specifying the first consecutive IP address when using static IP allocation in your API model.
 
-1. Open the Azure Stack Hub user portal In your Azure Stack Hub instance.
-2. Select All resources.
+1. Open the Azure Stack Hub user portal in your Azure Stack Hub instance.
+2. Select **All resources**.
 3. Enter the name of your virtual network in search.
-4. Select Properties in the Virtual networks blade. Copy the Resource ID, and then add :/subnets/<nameofyoursubnect>. You will use this value as your value for the vnetSubnetId in the API Model for the cluster. The subnet ID should have the following format: /subscriptions/SUB_ID/resourceGroups/RG_NAME/providers/Microsoft.Network/virtualNetworks/VNET_NAME/subnets/SUBNET_NAME
+4. Select **Properties** in the **Virtual networks** blade. Copy the **Resource ID**, and then add `/subnets/<nameofyoursubnect>`. You will use this value as your value for the `vnetSubnetId` key in the API model for your cluster. The subnet ID should use the following format: `/subscriptions/SUB_ID/resourceGroups/RG_NAME/providers/Microsoft.Network/virtualNetworks/VNET_NAME/subnets/SUBNET_NAME`
 
     ![virtual network id](media/kubernetes-aks-engine-custom-vnet/virtual-network-id.png)
 
-5. Select Subnets in the Virtual networks blade. Select the subnet name, for example default.
-6. In the subnet blade, make a note of the address range and the virtual network CIDR Block, for example: 10.1.0.0 - 10.1.0.255 (256 addresses) and 10.1.0.0/24.
+5. Select **Subnets** in the **Virtual networks** blade. Select the subnet name, for example default.
+6. In the subnet blade, make a note of the address range and the virtual network CIDR Block, for example: `10.1.0.0 - 10.1.0.255 (256 addresses)` and `10.1.0.0/24`.
 
 ![virtual network cidr block](media/kubernetes-aks-engine-custom-vnet/virtual-network-cidr-block.png)
 
-## Determine the available IP address block
+## Get IP address block
 
 Assess your available IP address space in your custom virtual network to determine your first available IP address.
 
@@ -44,7 +44,7 @@ The AKS engine supports deploying into an existing virtual network. You must spe
 
 By default, the ipAddressCount has a value of 31, 1 for the node and 30 for pods, (note that the number of pods can be changed via KubeletConfig["--max-pods"]). ipAddressCount can be changed if desired. Furthermore, to prevent source address NAT'ing within the virtual network, we assign to the vnetCidr property in masterProfile the CIDR block that represents the usable address space in the existing virtual network. Therefore, it is recommended to use a large subnet size such as /16.
 
-Depending upon the size of the virtual network address space, during deployment, it is possible to experience IP address assignment collision between the required Kubernetes static IPs (one each per master and one for the API server load balancer, if more than one masters) and Azure CNI-assigned dynamic IPs (one for each NIC on the agent nodes). In practice, the larger the virtual network the less likely this is to happen; some detail, and then a guideline.
+Depending upon the size of the virtual network address space, during deployment, it is possible to experience IP address assignment collision between the required Kubernetes static IPs (one each per master and one for the API server load balancer, if more than one master) and Azure CNI-assigned dynamic IPs (one for each NIC on the agent nodes). In practice, the larger the virtual network the less likely this is to happen; some detail, and then a guideline.
 
 Azure CNI assigns dynamic IP addresses from the "beginning" of the subnet IP address space (specifically, it looks for available addresses starting at ".4" ["10.0.0.4" in a "10.0.0.0/24" network]).
 
@@ -54,9 +54,9 @@ A guideline that will remove the danger of IP address allocation collision durin
 
 In larger subnets (for example, /16) it's not as practically useful to push static IP assignment to the very "end" of large subnet, but as long as it's not in the "first" /24 (for example) your deployment will be resilient to this edge case behavior.
 
-## Update the API Model for your cluster
+## Update the API model
 
-Update the API Model used to deploy the cluster from your AKS Client machine to your custom virtual network.
+Update the API model used to deploy the cluster from your AKS Client machine to your custom virtual network.
 
 In the array **masterProfile** set the following values:
 
@@ -64,7 +64,7 @@ In the array **masterProfile** set the following values:
 | --- | --- | --- |
 | vnetSubnetId | `/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/default` | Specify the ARM path/id of Subnets  as we as the first IP address to use for static IP allocation in firstConsecutiveStaticIP.  |
 | firstConsecutiveStaticIP | 10.1.0.239 | Assign to the firstConsecutiveStaticIP configuration property an IP address that is near the "end" of the available IP address space in the desired subnet.  |
-| vnetCidr | 10.1.0.0/24 | The subnet's address range in CIDR notation (e.g. 192.168.1.0/24). It must be contained by the address space of the virtual network. The address range of a subnet which is in use can't be edited. |
+| vnetCidr | 10.1.0.0/24 | The subnet's address range in CIDR notation (for example, 192.168.1.0/24). It must be contained by the address space of the virtual network. The address range of a subnet, which is in use can't be edited. |
 
 In the array **agentPoolProfiles** set the following values:
 
@@ -77,7 +77,7 @@ For example:
 ```json
 "masterProfile": {
   ...
-  "vnetSubnetId": "/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S",
+  "vnetSubnetId": "/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/default",
   "firstConsecutiveStaticIP": "10.1.0.239",  
   "vnetCidr": "10.1.0.0/24",
   ...
@@ -86,7 +86,7 @@ For example:
 "agentPoolProfiles": [
   {
     ...
-    "vnetSubnetId": "/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S",
+    "vnetSubnetId": "/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/default",
     ...
   },
 
@@ -94,13 +94,13 @@ For example:
 
 ## Deploy your cluster
 
-See deploy your cluster in X.
+After adding the values to your API model, you can deploy your cluster from your client machine using the deploy command with aks-engine. For instructions, see [Deploy a Kubernetes cluster](azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
 
 ## Set the RouteTable and NSG
 
 Set both the RoutTable and the NSG in the subnet blade in the Azure Stack user portal.
 
-If you're not using Azure CNI (for example, "networkPlugin": "kubenet" in the kubernetesConfig api model configuration object): After a custom virtual network-configured cluster finishes provisioning, fetch the id of the Route Table resource from Microsoft.Network provider in your new cluster's Resource Group.
+If you're not using Azure CNI (for example, "networkPlugin": "kubenet" in the kubernetesConfig API model configuration object): After a custom virtual network-configured cluster finishes provisioning, fetch the id of the Route Table resource from Microsoft.Network provider in your new cluster's Resource Group.
 
 The route table resource id is of the format: /subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUPNAME/providers/Microsoft.Network/routeTables/ROUTETABLENAME
 
@@ -113,7 +113,7 @@ Update properties of all subnets in the existing virtual network route table res
         "id": "/subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.Network/routeTables/k8s-master-<SOMEID>-routetable>"
 }
 ```
-For example update the API Model:
+For example, update the API model:
 
 ```json
 "subnets": [
