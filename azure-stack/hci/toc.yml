@@ -4,9 +4,9 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
-- name: Managing Azure Stack HCI
+- name: How-to guides
   items:
-  - name: Replacing failed drives
+  - name: Replace failed drives
     href: manage/replace-drives.md
 - name: Reference
   items:

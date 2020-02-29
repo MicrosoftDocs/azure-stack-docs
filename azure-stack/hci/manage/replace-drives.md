@@ -1,5 +1,5 @@
 ---
-title: Replacing failed drives on Azure Stack HCI
+title: Replace failed drives on Azure Stack HCI
 description: How to replace failed drives on Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 02/27/2020
 ---
 
-# Replacing failed drives on Azure Stack HCI
+# Replace failed drives on Azure Stack HCI
 
 Azure Stack HCI works with direct-attached SATA, SAS, or NVMe drives that are physically attached to just one server each. If a drive fails, you will need access to the physical server hardware to replace it.
 
