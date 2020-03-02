@@ -34,15 +34,18 @@ You will need to the get the Resource path ID of the subnet and the IP address r
     ![virtual network id](media/kubernetes-aks-engine-custom-vnet/virtual-network-id.png)
 
 5. Select **Subnets** in the **Virtual networks** blade. Select the subnet name, for example default.
+    
+    ![virtual network CIDR block](media/kubernetes-aks-engine-custom-vnet/virtual-network-cidr-block.png)
+    
 6. In the subnet blade, make a note of the address range and the virtual network CIDR Block, for example: `10.1.0.0 - 10.1.0.255 (256 addresses)` and `10.1.0.0/24`.
 
-![virtual network CIDR block](media/kubernetes-aks-engine-custom-vnet/virtual-network-cidr-block.png)
+
 
 ## Get the IP address block
 
 The AKS engine supports deploying into an existing virtual network. When deploying into an existing subnet, your cluster will consume a block of IP addresses. You will need to set your cluster to avoid assignment collision with other resources using IP addresses and the resources needed by your cluster.
 
-You will need to set two values. You will need to know the number of IP addresses you will need to reserve for your cluster, and first Consecutive Static IP within the subnet IP space.
+You will need to set two values. You will need to know the number of IP addresses you will need to reserve for your cluster, and first consecutive static IP within the subnet IP space.
 
 Your Kubernetes cluster will take up a block of IP addresses. The following elements of the cluster consume IP addresses:
  - Each pod requires an IP address in the subnet.
