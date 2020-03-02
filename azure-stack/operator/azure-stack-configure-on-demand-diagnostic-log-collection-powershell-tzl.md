@@ -4,10 +4,10 @@ description: Learn how to send Azure Stack Hub diagnostic logs to Azure using th
 author: justinha
 
 ms.topic: article
-ms.date: 02/22/2020
+ms.date: 03/02/2020
 ms.author: justinha
 ms.reviewer: shisab
-ms.lastreviewed: 02/22/2020
+ms.lastreviewed: 03/02/2020
 
 ---
 # Send Azure Stack Hub diagnostic logs to Azure using the privileged endpoint (PEP)
@@ -36,6 +36,25 @@ if ($session) {
     Remove-PSSession -Session $session 
 } 
 ```
+
+## Parameter considerations 
+
+* The parameters **OutputSharePath** and **OutputShareCredential** are used to store logs in a user specified location.
+
+* The **FromDate** and **ToDate** parameters can be used to collect logs for a particular time period. If these parameters aren't specified, logs are collected for the past four hours by default.
+
+* Use the **FilterByNode** parameter to filter logs by computer name. For example:
+
+    ```powershell
+    Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByNode azs-xrp01
+    ```
+
+* Use the **FilterByLogType** parameter to filter logs by type. You can choose to filter by File, Share, or WindowsEvent. For example:
+
+    ```powershell
+    Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByLogType File
+    ```
+
 
 ## Next steps
 
