@@ -2,10 +2,10 @@
 title: Azure Stack Hub administration basics
 titleSuffix: Azure Stack Hub
 description: Learn the basics to Azure Stack Hub administration.
-author:
+author: n/a
 ms.topic: article
 ms.date: 03/02/2020
-ms.author:
+ms.author: n/a
 ms.reviewer:
 ms.lastreviewed:
 
@@ -50,7 +50,7 @@ We support the following additional platform-as-a-service (PaaS) services:
 - IoT Hub
 - Event Hub
 
-These services require additional configuration before you can make them available to your users. For more information, see the "Tutorials" and the "How-to guides>Offer services" sections of our [Azure Stack Hub operator documentation](https://docs.microsoft.com/en-us/azure-stack/operator/).
+These services require additional configuration before you can make them available to your users. For more information, see the "Tutorials" and the "How-to guides>Offer services" sections of our [Azure Stack Hub operator documentation](https://docs.microsoft.com/azure-stack/operator/).
 
 ### Service roadmap
 
