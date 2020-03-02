@@ -111,19 +111,38 @@ monthly schedule:
 
 ## Operator tasks
 
- 
+# [Daily](#tab/daily)
 
-| Daily​                                                             | Weekly​                                                      | Monthly​                                         | OnDemand​                                          |
-|-------------------------------------------------------------------|-------------------------------------------------------------|-------------------------------------------------|---------------------------------------------------|
-| Check Alerts​                                                      | CheckCapacity​                                               | Apply monthly Update packages(Microsoft & OEM)​ ​ | Secret Rotation​                                   |
-| Check Backup state​                                                | ​                                                            | Validate Backup using ASDK​ ​                     | Create / Update Offers, Plans and Quotas​          |
-| Update Defender Signature(Disconnected Systems)​                   | ​                                                            | Manage Marketplace (keepcurrent)​                | Apply Hotfix packages​                             |
-| ​                                                                  | ​                                                            | Update Switch Firmware &Avocent​                 | Expand Capacity (Nodes & IPSpace)​                 |
-| Check Isilon System Health​ and Events in OneFS                   ​ | Run isi status –verbose​ In Avocent connection              ​ | ​                                                | Run isi status –verbose​ In Avocent connection    ​ |
-| Check Isilon capacity ​                                            | ​                                                            | ​                                                | ​                                                  |
-| ​                                                                  | ​                                                            | Reclaim Storage capacity​                        | Restore Storage Accounts​                          |
-| ​                                                                  | ​                                                            | ​                                                | Stop System​                                       |
-| ​                                                                  | ​                                                            | ​                                                | Diagnostic log collection​                         |
+1. Check alerts.
+2. Check backup state.
+3. Update Defender Signature (disconnected systems).
+4. Check Isilon system health and events in OneFS.
+5. Check Isilon capacity.
+
+# [Weekly](#tab/weekly)
+
+1. Check capacity.
+2. Run isi `status –verbose` in Avocent connection.
+
+# [Monthly](#tab/monthly)
+
+1. Apply monthly ipdate packages (Microsoft & OEM).
+2. Validate backup using ASDK.
+3. Manage Azure Stack Hub Marketplace (keep current).
+4. Update switch firmware & Avocent.
+5. Reclaim storage capacity.
+
+# [OnDemand](#tab/ondemand)
+
+1. Secret rotation.
+2. Create and update offers, plans, and quotas.
+3. Apply hotfix packages.
+4. Apply hotfix packages.
+5. Expand capacity (nodes & IPSpace).
+6. Run `isi status –verbose` in Avocent connection.
+7. Restore storage accounts.
+8. Stop system.
+9. Diagnostic log collection.
 
 ## What to tell your users
 
