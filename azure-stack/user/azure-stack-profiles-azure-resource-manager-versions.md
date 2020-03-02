@@ -9,7 +9,7 @@ ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 05/08/2019
 
-# Intent: As an Azure Stack user, I want to know which resource provider API versions are supported �by profiles in Azure Stack.
+# Intent: As an Azure Stack user, I want to know which resource provider API versions are supported by profiles in Azure Stack.
 # Keyword: resource api versions
 
 ---

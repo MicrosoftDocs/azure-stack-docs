@@ -8,7 +8,7 @@ ms.date: 1/22/2020
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2020
 
-# Intent: As an Azure Stack user, I want to create a Windows  virtual server using CLI.�
+# Intent: As an Azure Stack user, I want to create a Windows  virtual server using CLI.
 # Keyword: windows virtual machine CLI
 
 ---
