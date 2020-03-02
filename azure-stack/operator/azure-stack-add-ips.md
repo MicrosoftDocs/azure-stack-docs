@@ -9,7 +9,11 @@ ms.author: justinha
 ms.reviewer: scottnap
 ms.lastreviewed: 09/10/2019
 
+# Intent: As an Azure Stack operator, I want to add public IP addresses to my Azure Stack network.
+# Keyword: add ip addresses azure stack
+
 ---
+
 # Add public IP addresses
 
 In this article, we refer to external addresses as public IP addresses. In the context of Azure Stack Hub, a public IP address is an IP address that's accessible from outside of Azure Stack Hub. Whether that external network is public internet routable or is on an intranet and uses private address space doesn't matter for the purposes of this article—the steps are the same.

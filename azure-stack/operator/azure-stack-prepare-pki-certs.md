@@ -8,7 +8,12 @@ ms.date: 09/16/2019
 ms.author: inhenkel
 ms.reviewer: ppacent
 ms.lastreviewed: 09/16/2019
+
+# Intent: As an Azure Stack operator, I want to prepare my PKI certiciates for Azure Stack deployment.
+# Keyword: prepare PKI certificates azure stack
+
 ---
+
 
 # Prepare Azure Stack Hub PKI certificates for deployment or rotation
 

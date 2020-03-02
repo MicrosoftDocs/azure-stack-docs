@@ -8,11 +8,17 @@ ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
+
+
 ROBOTS: NOINDEX
+
+# Intent: As an Azure Stack Hub user, I want to troubleshoot validation as a service for Azure Stack Hub.
+# Keyword: azure stack hub validation troubleshoot
 
 ---
 
-# Troubleshoot validation as a service
+
+# Troubleshoot Validation as a Service
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
