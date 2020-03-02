@@ -4,6 +4,12 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
+- name: Manage
+  items:
+  - name: Extend volumes
+    href: manage/extend-volumes.md
+  - name: Delete volumes
+    href: manage/delete-volumes.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
