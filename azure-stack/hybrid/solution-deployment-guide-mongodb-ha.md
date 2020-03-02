@@ -7,7 +7,12 @@ ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Deploy a highly available MongoDB solution to Azure and Azure Stack Hub
 
@@ -36,7 +41,7 @@ In this solution, you'll create a sample environment to:
 
 ## Prerequisites for MongoDB with Azure Stack Hub
 
-  - Two connected Azure Stack Hub Integrated Systems (Azure Stack Hub), this deployment does not work on Azure Stack Hub Development Kits (ASDKs). To
+  - Two connected Azure Stack Hub Integrated Systems (Azure Stack Hub), this deployment does not work on Azure Stack Development Kits (ASDKs). To
     learn more about Azure Stack Hub, see [What is Azure Stack Hub?](https://azure.microsoft.com/overview/azure-stack/)
       - A tenant subscription on each Azure Stack Hub.    
       - **Make a note of each subscription ID and the Azure Resource Manager endpoint for each Azure Stack Hub.**

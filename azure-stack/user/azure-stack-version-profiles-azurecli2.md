@@ -9,7 +9,11 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/10/2019
 
+# Intent: As an Azure Stack user, I want to use cross-platform CLI to manage and deploy resources on Azure Stack.
+# Keyword: manage azure stack CLI
+
 ---
+
 # Manage and deploy resources to Azure Stack Hub with Azure CLI
 
 Follow the steps in this article to set up the Azure Command-Line Interface (CLI) to manage Azure Stack Development Kit (ASDK) resources from Linux, Mac, and Windows client platforms.

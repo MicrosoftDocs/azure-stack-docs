@@ -2,14 +2,18 @@
 title: Create storage accounts in Azure Stack Hub 
 titleSuffix: Azure Stack Hub
 description: Learn how to create storage accounts in Azure Stack Hub.
-author: mattbriggs
+author: IngridAtMicrosoft
 
 ms.topic: conceptual
 ms.date: 1/22/2020
-ms.author: mabrigg
+ms.author: inhenkel
 ms.lastreviewed: 01/18/2019
 
+# Intent: As an Azure Stack operator, I want to create storage accounts in Azure Stack.
+# Keyword: create storage account azure stack
+
 ---
+
 # Create storage accounts in Azure Stack Hub
 
 Storage accounts in Azure Stack Hub include Blob and Table services, and the unique namespace for your storage data objects. By default, the data in your account is available only to you, the storage account owner.

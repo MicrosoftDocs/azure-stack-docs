@@ -6,13 +6,17 @@ author: bryanla
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: anwestg
-ms.reviewer: anwestg
+ms.reviewer: anwe
+
+# Intent: As an Azure Stack operator, I want to deploy App Service in an offline environment secured by AD FS.
+# Keyword: deploy app service offline azure stack
 
 ---
+
 # Offline update of Azure App Service on Azure Stack Hub
 
 > [!IMPORTANT]
-> Apply the 1910 update or later to your Azure Stack Hub integrated system or deploy the latest Azure Stack hub development kit before deploying Azure App Service 1.8.
+> Apply the 1910 update or later to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development Kit before deploying Azure App Service 1.8.
 
 By following the instructions in this article, you can upgrade the [Azure App Service resource provider](azure-stack-app-service-overview.md) deployed in an Azure Stack Hub environment that is:
 
@@ -73,7 +77,7 @@ To upgrade App Service in a disconnected environment, you must first create an o
 
 5. Review and accept the third-party license terms and then click **Next**.
 
-6. Make sure that the Azure Stack Hub Azure Resource Manager endpoint and Active Directory Tenant information is correct. If you used the default settings during Azure Stack Hub Development Kit deployment, you can accept the default values here. However, if you customized the options when you deployed Azure Stack Hub, you must edit the values in this window. For example, if you use the domain suffix *mycloud.com*, your Azure Stack Hub Azure Resource Manager endpoint must change to *management.region.mycloud.com*. After you confirm your information, click **Next**.
+6. Make sure that the Azure Stack Hub Azure Resource Manager endpoint and Active Directory Tenant information is correct. If you used the default settings during Azure Stack Development Kit deployment, you can accept the default values here. However, if you customized the options when you deployed Azure Stack Hub, you must edit the values in this window. For example, if you use the domain suffix *mycloud.com*, your Azure Stack Hub Azure Resource Manager endpoint must change to *management.region.mycloud.com*. After you confirm your information, click **Next**.
 
     ![Azure Stack Hub Cloud Information][3]
 

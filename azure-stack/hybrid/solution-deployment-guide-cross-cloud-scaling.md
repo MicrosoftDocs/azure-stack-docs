@@ -7,7 +7,12 @@ ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Deploy an app that scales cross-cloud using Azure and Azure Stack Hub
 
@@ -34,8 +39,8 @@ In this solution, you'll build a sample environment to:
 
 -   Azure subscription. If needed, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before beginning.
 
-- An Azure Stack Hub Integrated System or deployment of Azure Stack Hub Development Kit.
-    - For instructions on installing Azure Stack Hub, see [Install the Azure Stack Hub Development Kit](../asdk/asdk-install.md).
+- An Azure Stack Hub Integrated System or deployment of Azure Stack Development Kit.
+    - For instructions on installing Azure Stack Hub, see [Install the Azure Stack Development Kit](../asdk/asdk-install.md).
     - For an ASDK post-deployment automation script, go to: [https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1](https://github.com/mattmcspirit/azurestack/blob/master/deployment/ConfigASDK.ps1) 
     - This installation may require a few hours to complete.
 

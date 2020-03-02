@@ -1,8 +1,8 @@
 ---
-title: Troubleshoot Azure Stack Hub Validation as a Service 
-description: Troubleshoot Validation as a Service for Azure Stack Hub.
+title: Troubleshoot validation as a service
+titleSuffix: Azure Stack Hub
+description: Troubleshoot validation as a service for Azure Stack Hub.
 author: mattbriggs
-
 ms.topic: article
 ms.date: 11/11/2019
 ms.author: mabrigg
@@ -10,10 +10,13 @@ ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
 
 
-
 ROBOTS: NOINDEX
 
+# Intent: As an Azure Stack Hub user, I want to troubleshoot validation as a service for Azure Stack Hub.
+# Keyword: azure stack hub validation troubleshoot
+
 ---
+
 
 # Troubleshoot Validation as a Service
 
@@ -25,17 +28,17 @@ The following are common problems unrelated to software releases and their solut
 
 ### The portal shows local agent in debug mode
 
-This is likely because the agent is unable to send heartbeats to the service because of an unstable network connection. A heartbeat is sent every five minutes. If the service does not receive a heartbeat for 15 minutes, then the service considers the agent inactive and tests will no longer be scheduled on it. Check the error message in the *Agenthost.log* file located in the directory where the agent was started.
+This problem is likely because the agent is unable to send heartbeats to the service because of an unstable network connection. A heartbeat is sent every five minutes. If the service doesn't receive a heartbeat for 15 minutes, then the service considers the agent inactive and tests will no longer be scheduled on it. Check the error message in the *Agenthost.log* file located in the directory where the agent was started.
 
 > [!Note]
-> Any tests already running on the agent will continue to run, but if the heartbeat is not restored before the test ends, then the agent will fail to update the test status or upload logs. The test will always show up as **running** and will need to be canceled.
+> Any tests already running on the agent will continue to run, but if the heartbeat isn't restored before the test ends, the agent will fail to update the test status or upload logs. The test will always show up as **running** and will need to be canceled.
 
 ### Agent process on machine was shut down while executing test. What to expect?
 
-If the agent process is shut down ungracefully for example, machine restarted, process killed (CTRL+C on the agent window is considered graceful shutdown) then the test that was running on it will continue to show as **running**. If the agent is restarted, then the agent will update the status of the test to **canceled**. If the agent is not restarted, then the test appears as **running** and you must manually cancel the test.
+If the agent process is shut down ungracefully, then the test that was running on it will continue to show as **running**. An example of an ungraceful shutdown is machine restarted and process killed (CTRL+C on the agent window is considered graceful shutdown). If the agent is restarted, then the agent will update the status of the test to **canceled**. If the agent isn't restarted, then the test appears as **running** and you must manually cancel the test.
 
 > [!Note]
-> Tests within a workflow are scheduled to run sequentially. **Pending** tests will not get executed until tests in the **running** state in the same workflow complete.
+> Tests within a workflow are scheduled to run sequentially. **Pending** tests won't get executed until tests in the **running** state in the same workflow complete.
 
 ## VM images
 
@@ -47,9 +50,9 @@ You can download the PIR image to a share in your local datacenter. And then you
 
 #### Download PIR image to local share in case of slow network traffic
 
-1. Download AzCopy from: [vaasexternaldependencies(AzCopy)](https://vaasexternaldependencies.blob.core.windows.net/prereqcomponents/AzCopy.zip)
+1. Download AzCopy from: [vaasexternaldependencies(AzCopy)](https://vaasexternaldependencies.blob.core.windows.net/prereqcomponents/AzCopy.zip).
 
-2. Extract AzCopy.zip and change to the directory containing AzCopy.exe
+2. Extract AzCopy.zip and change to the directory containing `AzCopy.exe`.
 
 3. Open Windows PowerShell from an elevated prompt. Run the following commands:
 
@@ -80,21 +83,21 @@ You can use **Get-HashFile** cmdlet to get the hash value for the downloaded pub
 | OpenLogic-CentOS-69-20180105.vhd | C8B874FE042E33B488110D9311AF1A5C7DC3B08E6796610BF18FDD6728C7913C |
 | Debian8_latest.vhd | 06F8C11531E195D0C90FC01DFF5DC396BB1DD73A54F8252291ED366CACD996C1 |
 
-### Failure occurs when uploading VM image in the `VaaSPreReq` script
+### Failure happens when uploading VM image in the `VaaSPreReq` script
 
 First check that the environment is healthy:
 
-1. From the DVM / jump box, check that you can successfully sign in to the admin portal using the admin credentials.
+1. From the DVM / jump box, check that you can successfully sign in to the administrator portal using the admin credentials.
 1. Confirm that there are no alerts or warnings.
 
-If the environment is healthy, manually upload the 5 VM Images required for VaaS test runs:
+If the environment is healthy, manually upload the five VM Images required for VaaS test runs:
 
-1. Sign in as the service admin to the admin portal. You can find the admin portal URL from ECE store or your stamp information file. For instructions, see [Environment parameters](azure-stack-vaas-parameters.md#environment-parameters).
+1. Sign in as the service admin to the administrator portal. You can find the administrator portal URL from ECE store or your stamp information file. For instructions, see [Environment parameters](azure-stack-vaas-parameters.md#environment-parameters).
 1. Select **More services** > **Resource Providers** > **Compute** > **VM Images**.
 1. Select the **+ Add** button at the top of the **VM Images** blade.
 1. Modify or check values of the following fields for the first VM image:
     > [!IMPORTANT]
-    > Not all defaults are correct for the existing Marketplace Item.
+    > Not all defaults are correct for the existing marketplace item.
 
     | Field  | Value  |
     |---------|---------|
@@ -108,7 +111,7 @@ If the environment is healthy, manually upload the 5 VM Images required for VaaS
 1. Select the **Create** button.
 1. Repeat for the remaining VM images.
 
-The properties of all 5 VM images are as follows:
+The properties of all five VM images are as follows:
 
 | Publisher  | Offer  | OS Type | SKU | Version | OS Disk Blob URI |
 |---------|---------|---------|---------|---------|---------|
@@ -122,4 +125,4 @@ The properties of all 5 VM images are as follows:
 
 ## Next steps
 
-- Review [Release notes for Validation as a Service](azure-stack-vaas-release-notes.md) for changes in the latest releases.
+- Review [Release notes for validation as a service](azure-stack-vaas-release-notes.md) for changes in the latest releases.

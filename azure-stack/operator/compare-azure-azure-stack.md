@@ -9,7 +9,12 @@ ms.date: 05/03/2019
 ms.author: justinha
 ms.reviewer: unknown
 ms.lastreviewed: 03/29/2019
+
+# Intent: As an Azure Stack Hub operator, I want to learn the differences between global Azure, Azure Stack Hub, and Azure Stack HCI.
+# Keyword: differences azure stack hub
+
 ---
+
 
 # Differences between global Azure, Azure Stack Hub, and Azure Stack HCI
 
@@ -64,7 +69,7 @@ Learn more about Azure Stack Hub at [What is Azure Stack Hub](azure-stack-overvi
 
 ## Azure Stack HCI
 
-[Azure Stack HCI](azure-stack-hci-overview.md) solutions let you run virtual machines on-premises and easily connect to Azure with a hyperconverged infrastructure (HCI) solution. Build and run cloud apps using consistent Azure services on-premises to meet regulatory or technical requirements. In addition to running virtualized apps on-premises, Azure Stack HCI lets you replace and consolidate aging server infrastructure and connect to Azure for cloud services using the Windows Admin Center.
+[Azure Stack HCI](../hci/overview.md) solutions let you run virtual machines on-premises and easily connect to Azure with a hyperconverged infrastructure (HCI) solution. Build and run cloud apps using consistent Azure services on-premises to meet regulatory or technical requirements. In addition to running virtualized apps on-premises, Azure Stack HCI lets you replace and consolidate aging server infrastructure and connect to Azure for cloud services using the Windows Admin Center.
 
 Azure Stack HCI provides validated HCI solutions powered by Hyper-V and Storage Spaces Direct with Windows Server 2019 Software-Defined Datacenter (SDDC). The Windows Admin Center is used for management and integrated access to Azure services such as:
 

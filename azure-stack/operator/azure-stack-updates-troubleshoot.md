@@ -1,18 +1,19 @@
 ---
 title: Troubleshoot updates in Azure Stack Hub 
 description: As an Azure Stack Hub operator, learn how to resolve issues with update so that Azure Stack Hub can return to production as quickly as possible. 
-author: mattbriggs
+author: IngridAtMicrosoft
 
 ms.topic: article
 ms.date: 09/23/2019
-ms.author: mabrigg
+ms.author: inhenkel
 ms.lastreviewed: 09/23/2019
-ms.reviewer: ppacent 
+ms.reviewer: ppacent
 
-# Intent: As an Azure Stack Hub operator, I want to resolve issues with my update so that Azure Stack Hub can return to production as quickly as possible. 
-# Keywords: update Azure Stack Hub troubleshoot
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 # Best practices for troubleshooting Azure Stack Hub patch and update issues
 
 This article provides an overview of best practices for troubleshooting Azure Stack Hub patch and update issues as well as remediations to common patch and update issues.

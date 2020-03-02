@@ -4,8 +4,6 @@
   items:
   - name: What is Azure Stack Hub?
     href: azure-stack-overview.md
-  - name: What is Azure Stack HCI?
-    href: azure-stack-hci-overview.md
   - name: Comparing the Azure ecosystem
     href: compare-azure-azure-stack.md
   - name: Release notes
@@ -459,9 +457,7 @@
 - name: Reference
   items:
   - name: Azure Stack Hub PowerShell
-    href: /powershell/azure/azure-stack/overview
-- name: Related
-  items:
+    href: https://docs.microsoft.com/powershell/azure/azure-stack/overview
   - name: Azure Stack Hub User documentation
     href: /azure-stack/user/
   - name: ASDK documentation
