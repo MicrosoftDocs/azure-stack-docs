@@ -127,7 +127,7 @@ Set both the route table and the network security group (NSG) in the subnet blad
     ![route table and network security group](media/kubernetes-aks-engine-custom-vnet/virtual-network-rt-nsg.png)
     
 5. Select **Route table** and then select the route table for your cluster.
-6. Select Network security group and then select the NSG for your cluster.
+6. Select **Network security group** and then select the NSG for your cluster.
 
 > [!Note]  
 > Custom virtual network for Kubernetes Windows cluster has a [known issue](https://github.com/Azure/aks-engine/issues/371).
