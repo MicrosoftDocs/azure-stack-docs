@@ -11,7 +11,11 @@ ms.author: inhenkel
 ms.reviewer: jerskine
 ms.lastreviewed: 06/10/2019
 
+# Intent: As an Azure Stack Hub operator, I want to use the Azure Stack Hub Readiness Checker to validate AD FS integration for Azure Stack Hub.
+# Keyword: azure stack hub readiness checker ad fs
+
 ---
+
 
 # Validate AD FS integration for Azure Stack Hub
 

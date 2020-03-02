@@ -8,12 +8,13 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: inhenkel
 ms.lastreviewed: 03/11/2019
-ms.reviewer: jiahan
+ms.reviewer: jiaha
 
-# Intent: As a cloud operator, I want to understand where to find information about operation status of storage resources and resolve issues in order to maintain continuity of service for the users that I support.
-# Google Keywords: 'storage infrastructure Azure Stack Hub', 'troubleshoot storage for Azure Stack Hub'
+# Intent: As an Azure Stack operator, I want to manage storage infrastructure in Azure Stack.
+# Keyword: manage storage infrastructure azure stack
 
 ---
+
 
 # Manage storage infrastructure for Azure Stack Hub
 

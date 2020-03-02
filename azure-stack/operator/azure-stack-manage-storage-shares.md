@@ -9,11 +9,11 @@ ms.author: inhenkel
 ms.reviewer: xiaofmao
 ms.lastreviewed: 03/19/2019
 
-# Intent: As a cloud operator, I want to understand where to find information about the operation status of storage resources and resolve issues to maintain continuity of service for the users that I support.
-
-# Keywords: Azure Stack Hub capacity infrastructure, troubleshoot storage for Azure Stack Hub
+# Intent: As an Azure Stack operator, I want to learn how to manage storage capacity so I can increase total available capacity. 
+# Keyword: azure stack storage capacity
 
 ---
+
 
 # Manage storage capacity for Azure Stack Hub
 

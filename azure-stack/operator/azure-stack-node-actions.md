@@ -9,7 +9,11 @@ ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 11/11/2019
 
+# Intent: As an Azure Stack operator, I want to learn about the scale unit node actions I can take.
+# Keyword: azure stack scale unit node actions
+
 ---
+
 
 # Scale unit node actions in Azure Stack Hub
 

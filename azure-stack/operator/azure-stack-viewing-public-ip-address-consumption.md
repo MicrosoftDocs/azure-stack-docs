@@ -10,7 +10,11 @@ ms.author: inhenkel
 ms.reviewer: scottnap
 ms.lastreviewed: 09/17/2019
 
+# Intent: As an Azure Stack Hub operator, I want to manage network resources.
+# Keyword: manage network resources azure stack hub
+
 ---
+
 # Manage network resources in Azure Stack Hub
 
 ## MAC address pool
