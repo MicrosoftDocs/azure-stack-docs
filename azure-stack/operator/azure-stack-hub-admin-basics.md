@@ -20,13 +20,11 @@ If you're new to Azure Stack Hub administration, there are several things you ne
 
 ## Understand the builds
 
-### Integrated systems
-
-If you're using an Azure Stack Hub integrated system, update packages distribute updated versions of Azure Stack Hub. You can import these packages and apply them by using the **Updates** tile in the administrator portal.
+If you're using an Azure Stack Hub integrated system, updated versions of Azure Stack Hub are distributed via update packages. You can import these packages and apply them by using the **Updates** tile in the administrator portal.
 
 ## Learn about available services
 
-You'll need an awareness of which services you can make available to your users. Azure Stack Hub supports a subset of Azure services. The list of supported services will continue to evolve.
+Be aware of the services you can make available to your users. Azure Stack Hub supports a subset of Azure services. The list of supported services will continue to evolve.
 
 ### Foundational services
 
@@ -50,7 +48,7 @@ We support the following additional platform-as-a-service (PaaS) services:
 - IoT Hub
 - Event Hub
 
-These services require additional configuration before you can make them available to your users. For more information, see the "Tutorials" and the "How-to guides>Offer services" sections of our [Azure Stack Hub operator documentation](https://docs.microsoft.com/azure-stack/operator/).
+These services require additional configuration before you can make them available to your users. For more information, see **Tutorials** and **How-to guides** > **Offer services** in our [Azure Stack Hub operator documentation](https://docs.microsoft.com/azure-stack/operator/).
 
 ### Service roadmap
 
@@ -62,8 +60,8 @@ There are a few account considerations to be aware of when managing Azure Stack 
 
 | **Account** | **Azure** | **AD FS** |
 |---|---|---|
-| Local Administrator\Administrator) |   |
-| Azure AD Global Administrator | Used during installation. <br> Owner of the Default Provider | Not applicable. |
+| Local administrator (.\Administrator) |   |
+| Azure AD global administrator | Used during installation. <br> Owner of the default provider | Not applicable. |
 | Account for Extended Storage|   |   |
 ||
 
@@ -85,7 +83,7 @@ If you want to test your plans, offers, and services, you can use the [user por
 In addition to providing services, you must do the regular duties of an operator to keep Azure Stack Hub up and running. These duties include the following tasks:
 
 - Add user accounts for [Azure AD](https://review.docs.microsoft.com/en-us/azure-stack/operator/azure-stack-add-new-user-aad?view=azs-2002) deployment.
-- [Assign role-based access control (RBAC) roles](https://review.docs.microsoft.com/en-us/azure-stack/operator/azure-stack-manage-permissions?view=azs-2002) (This task isn't restricted to admins.)
+- [Assign role-based access control (RBAC) roles](https://review.docs.microsoft.com/en-us/azure-stack/operator/azure-stack-manage-permissions?view=azs-2002). (This task isn't restricted to admins.)
 - [Monitor infrastructure health](https://review.docs.microsoft.com/en-us/azure-stack/operator/azure-stack-monitor-health?view=azs-2002).
 - Manage [network](https://review.docs.microsoft.com/en-us/azure-stack/operator/azure-stack-viewing-public-ip-address-consumption?view=azs-2002) and [storage](https://review.docs.microsoft.com/en-us/azure-stack/operator/azure-stack-manage-storage-accounts?view=azs-2002) resources.
 - [Start and stop Azure Stack Hub](https://review.docs.microsoft.com/en-us/azure-stack/operator/azure-stack-start-and-stop?view=azs-2002&branch=release-tzl).
@@ -94,12 +92,11 @@ In addition to providing services, you must do the regular duties of an operator
 - [Manage Event Hub](https://review.docs.microsoft.com/en-us/azure-stack/operator/event-hubs-rp-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl).
 - [Manage App Service](https://review.docs.microsoft.com/en-us/azure-stack/operator/azure-stack-app-service-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl).
 - Replace bad hardware. Here is the list of [replaceable parts](https://review.docs.microsoft.com/en-us/azure-stack/tdc/cru-replaceable-parts?view=azs-2002&branch=release-tzl).
-- [Get Support](https://review.docs.microsoft.com/en-us/azure-stack/operator/azure-stack-help-and-support-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl).
-
-Here is the list of tasks for an operator on the bases of daily, weekly, and
-monthly schedule:
+- [Get support](https://review.docs.microsoft.com/en-us/azure-stack/operator/azure-stack-help-and-support-overview?toc=%2Fazure-stack%2Ftdc%2Ftoc.json&bc=%2Fazure-stack%2Fbreadcrumb%2Ftoc.json&view=azs-2002&branch=release-tzl).
 
 ## Operator tasks
+
+Here is a list of daily, weekly, and monthly tasks for an operator:
 
 # [Daily](#tab/daily)
 
@@ -112,7 +109,7 @@ monthly schedule:
 # [Weekly](#tab/weekly)
 
 1. Check capacity.
-2. Run isi `status –verbose` in Avocent connection.
+2. Run `isi status –verbose` in Avocent connection.
 
 # [Monthly](#tab/monthly)
 
@@ -133,6 +130,8 @@ monthly schedule:
 7. Restore storage accounts.
 8. Stop system.
 9. Diagnostic log collection.
+
+---
 
 ## What to tell your users
 
