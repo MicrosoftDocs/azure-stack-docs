@@ -7,9 +7,13 @@ ms.topic: conceptual
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviewer: thoroet
-ms.lastreviewed: 01/14/2019
+ms.lastreviewed: 01/14/2020
+
+# Intent: As an Azure Stack SDK user, I want to connect to Azure Stack so that I can manage resources.
+# Keyword: connect Azure Stack
 
 ---
+
 # Connect to Azure Stack Hub
 
 To manage resources, you must connect to the Azure Stack Development Kit. This article details the steps required to connect to the development kit. You can use either of the following connection options:

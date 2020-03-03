@@ -7,9 +7,13 @@ ms.topic: conceptual
 ms.date: 1/22/2020
 ms.author: mabrigg
 ms.reviwer: xiaofmao
-ms.lastreviewed: 01/30/2019
+ms.lastreviewed: 01/30/2020
+
+# Intent: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Azure Stack keyword
 
 ---
+
 # Azure Stack Hub storage: Differences and considerations
 
 Azure Stack Hub storage is the set of storage cloud services in Microsoft Azure Stack Hub. Azure Stack Hub storage provides blob, table, queue, and account management functionality with Azure-consistent semantics.

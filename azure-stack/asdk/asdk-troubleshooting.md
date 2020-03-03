@@ -9,7 +9,11 @@ ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 11/05/2019
 
+# Intent: As an ASDK user, I want to troubleshoot the ASDK so I can solve some common problems.
+# Keyword: troubleshoot asdk
+
 ---
+
 # Troubleshoot the ASDK
 This article provides common troubleshooting info for the Azure Stack Development Kit (ASDK). For help with Azure Stack integrated systems, see [Microsoft Azure Stack troubleshooting](../operator/azure-stack-troubleshooting.md). 
 

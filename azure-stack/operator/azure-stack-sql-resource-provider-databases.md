@@ -2,14 +2,19 @@
 title: Create SQL databases
 titleSuffix: Azure Stack Hub
 description: Learn how to create and manage SQL databases provisioned using the SQL resource provider adapter.
-author: mattbriggs
+author: bryanla
 
 ms.topic: article
 ms.date: 1/22/2020
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/16/2018
+ms.lastreviewed: 10/16/2019
+
+# Intent: As an Azure Stack operator, I want to create and manage SQL databases provisiuoned using the SQL resource provider adapter.
+# Keyword: create sql databases azure stack
+
 ---
+
 
 # Create SQL databases
 

@@ -8,7 +8,12 @@ ms.date: 10/05/2019
 ms.author: bryanla
 ms.reviewer: efemmano
 ms.lastreviewed: 06/11/2019
+
+# Intent: As an Azure Stack Hub operator, I want to learn how to create add-on plans in Azure Stack Hub.
+# Keyword: create add-on plans azure stack hub
+
 ---
+
 
 # Create add-on plans in Azure Stack Hub
 
@@ -42,7 +47,7 @@ Add-on plans are [created the same way](azure-stack-create-plan.md) as a base pl
 
 6. Review the list of add-on plans included with the offer to verify that the new add-on plan is listed.
 
-    ![Review list of add-on plans in Azure Stack administrator portal](media/create-add-on-plan/add-on4.png "Create add-on plan")](media/create-add-on-plan/add-on4lg.png#lightbox)
+    ![[Review list of add-on plans in Azure Stack administrator portal](media/create-add-on-plan/add-on4.png "Create add-on plan")](media/create-add-on-plan/add-on4lg.png#lightbox)
 ::: moniker-end
 
 ::: moniker range="<=azs-1901"

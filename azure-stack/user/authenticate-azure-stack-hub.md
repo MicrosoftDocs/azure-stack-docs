@@ -9,9 +9,11 @@ ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 12/13/2019
 
-# keywords: authentication info
-# Intent: I am a developer and I would like to programmatically authenticate to Azure Stack Hub.
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Get authentication information for Azure Stack Hub
 

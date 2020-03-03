@@ -6,8 +6,13 @@ ms.topic: conceptual
 ms.date: 02/04/2020
 ms.author: sethm
 ms.reviewer: avishwan
-ms.lastreviewed: 12/23/2018
+ms.lastreviewed: 12/23/2019
+
+# Intent: As an Azure Stack operator, I want to download marketplace items from Azure Marketplace and publish them to my Azure Stack.
+# Keyword: download marketplace items azure stack
+
 ---
+
 
 # Download Marketplace items to Azure Stack Hub 
 
@@ -29,19 +34,19 @@ If Azure Stack Hub connects to the internet, you can use the administrator porta
 
 ### Prerequisites
 
-Your Azure Stack Hub deployment must have internet connectivity and be registered with Azure.
+Your Azure Stack Hub deployment must have internet connectivity and be registered with Azure.
 
 ### Use the portal to download marketplace items
 
 1. Sign into the Azure Stack Hub administrator portal.
 
-2. Review the available storage space before downloading marketplace items. Later, when you select items for download, you can compare the download size to your available storage capacity. If capacity is limited, consider options for [managing available space](azure-stack-manage-storage-shares.md#manage-available-space).
+2. Review the available storage space before downloading marketplace items. Later, when you select items for download, you can compare the download size to your available storage capacity. If capacity is limited, consider options for [managing available space](azure-stack-manage-storage-shares.md#manage-available-space).
 
-   To review available space: in **Region management**, select the region you want to explore and then go to **Resource Providers** > **Storage**:
+   To review available space: in **Region management**, select the region you want to explore and then go to **Resource Providers** > **Storage**:
 
    ![Review storage space in Azure Stack Hub administrator portal](media/azure-stack-download-azure-marketplace-item/storage.png)
 
-3. Open Azure Stack Hub Marketplace and connect to Azure. To do so, select the **Marketplace management** service, select **Marketplace items**, and then select **Add from Azure**:
+3. Open Azure Stack Hub Marketplace and connect to Azure. To do so, select the **Marketplace management** service, select **Marketplace items**, and then select **Add from Azure**:
 
    ![Add marketplace items from Azure](media/azure-stack-download-azure-marketplace-item/marketplace.png)
 
@@ -53,20 +58,20 @@ Your Azure Stack Hub deployment must have internet connectivity and be register
 
    ![Add from Azure](media/azure-stack-download-azure-marketplace-item/add-from-azure3.png)
 
-6. Select the item you want, and then select **Download**. Download times vary and depends on the network connectivity. After the download completes, you can deploy the new marketplace item as either an Azure Stack Hub operator or a user.
+6. Select the item you want, and then select **Download**. Download times vary and depends on the network connectivity. After the download completes, you can deploy the new marketplace item as either an Azure Stack Hub operator or a user.
 
-7. To deploy the downloaded item, select **+ Create a resource**, and then search among the categories for the new marketplace item. Next, select the item to begin the deployment process. The process varies for different marketplace items.
+7. To deploy the downloaded item, select **+ Create a resource**, and then search among the categories for the new marketplace item. Next, select the item to begin the deployment process. The process varies for different marketplace items.
 
 ## Disconnected or a partially connected scenario
 
-If Azure Stack Hub has limited or no internet connectivity, you can use PowerShell and the *marketplace syndication tool* to download the marketplace items to a machine with internet connectivity. You then transfer the items to your Azure Stack Hub environment. In a disconnected environment, you can't download marketplace items by using the Azure Stack Hub portal.
+If Azure Stack Hub has limited or no internet connectivity, you can use PowerShell and the *marketplace syndication tool* to download the marketplace items to a machine with internet connectivity. You then transfer the items to your Azure Stack Hub environment. In a disconnected environment, you can't download marketplace items by using the Azure Stack Hub portal.
 
 The marketplace syndication tool can also be used in a connected scenario.
 
 There are two parts to this scenario:
 
-- **Part 1**: Download from Marketplace items. On the computer with internet access, you configure PowerShell, download the syndication tool, and then download items from Azure Marketplace.
-- **Part 2**: Upload and publish to Azure Stack Hub Marketplace. You move the files you downloaded to your Azure Stack Hub environment and then publish them to Azure Stack Hub Marketplace.
+- **Part 1**: Download from Marketplace items. On the computer with internet access, you configure PowerShell, download the syndication tool, and then download items from Azure Marketplace.
+- **Part 2**: Upload and publish to Azure Stack Hub Marketplace. You move the files you downloaded to your Azure Stack Hub environment and then publish them to Azure Stack Hub Marketplace.
 
 ### Prerequisites
 
@@ -76,11 +81,11 @@ There are two parts to this scenario:
 
 - A disconnected Azure Stack Hub environment with the following prerequisites:
 
-  - Your Azure Stack Hub deployment must be registered with Azure.
+  - Your Azure Stack Hub deployment must be registered with Azure.
 
-  - The computer that has internet connectivity must have **Azure Stack Hub PowerShell Module version 1.2.11** or later. If not already present, [install Azure Stack Hub-specific PowerShell modules](azure-stack-powershell-install.md).
+  - The computer that has internet connectivity must have **Azure Stack Hub PowerShell Module version 1.2.11** or later. If not already present, [install Azure Stack Hub-specific PowerShell modules](azure-stack-powershell-install.md).
 
-  - To enable import of a downloaded marketplace item, the [PowerShell environment for the Azure Stack Hub operator](azure-stack-powershell-configure-admin.md) must be configured.
+  - To enable import of a downloaded marketplace item, the [PowerShell environment for the Azure Stack Hub operator](azure-stack-powershell-configure-admin.md) must be configured.
 
 - Download the Azs.Syndication.Admin Module from the PowerShell Gallery using the command below
   ```
@@ -98,7 +103,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
 
 1. On a computer with an Internet connection, open a PowerShell console as an administrator.
 
-2. Sign in to the appropriate Azure cloud and AzureAD Directory Tenant using the Azure account that you've used to register Azure Stack Hub. To add the account, in PowerShell run **Add-AzureRmAccount**. 
+2. Sign in to the appropriate Azure cloud and AzureAD Directory Tenant using the Azure account that you've used to register Azure Stack Hub. To add the account, in PowerShell run **Add-AzureRmAccount**. 
 
    ```powershell  
    Login-AzureRmAccount -Environment AzureCloud -Tenant '<mydirectory>.onmicrosoft.com'
@@ -106,7 +111,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
    You are prompted to enter your Azure account credentials and you might have to use two-factor authentication, depending on your account configuration.
 
    > [!NOTE]
-   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Add-AzureRmAccount**: **Remove-AzureRmAccount-Scope Process**.
+   > If your session expires, your password has changed, or you simply wish to switch accounts, run the following cmdlet before you sign in using **Add-AzureRmAccount**: **Remove-AzureRmAccount-Scope Process**.
 
 3. If you have multiple subscriptions, run the following command to select the one you've used for registration:
 
@@ -130,10 +135,10 @@ Once you have registered your Azure Stack, you can disregard the following messa
 
      ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/select-registration.png)
 
-   You should now see a second table listing all the marketplace items available for download. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images.
+   You should now see a second table listing all the marketplace items available for download. Select the item that you want to download and make a note of the **Version**. You can hold the **Ctrl** key to select multiple images.
      ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/select-products.png)
   
-   You can also filter the list of images by using the **Add criteria** option.
+   You can also filter the list of images by using the **Add criteria** option.
    ![Select Azure Stack Registrations](media/azure-stack-download-azure-marketplace-item/select-products-with-filter.png)
 
    Once you've made your selections, select OK.
@@ -144,7 +149,7 @@ Once you have registered your Azure Stack, you can disregard the following messa
     $products | Export-AzsMarketplaceItem  -RepositoryDir "Destination folder path in quotes"
     ```
 
-7. The time that the download takes depends on the size of the item. After the download completes, the item is available in the folder that you specified in the script. The download includes a VHD file (for virtual machines), or a .zip file (for virtual machine extensions and resource providers). It might also include a gallery package in the *.azpkg* format, which is a .zip file.
+7. The time that the download takes depends on the size of the item. After the download completes, the item is available in the folder that you specified in the script. The download includes a VHD file (for virtual machines), or a .zip file (for virtual machine extensions and resource providers). It might also include a gallery package in the *.azpkg* format, which is a .zip file.
 
 8. If the download fails, you can try again by re-running the following PowerShell cmdlet:
 
@@ -163,13 +168,13 @@ Once you have registered your Azure Stack, you can disregard the following messa
 
 ### Import the download and publish to Azure Stack Hub Marketplace using PowerShell
 
-1. You must move the files that you have [previously downloaded](#use-the-marketplace-syndication-tool-to-download-marketplace-items) locally to a machine that has connectivity to your Azure Stack Hub environment. The marketplace syndication tool must also be available to your Azure Stack Hub environment because you need to use the tool to perform the import operation.
+1. You must move the files that you have [previously downloaded](#use-the-marketplace-syndication-tool-to-download-marketplace-items) locally to a machine that has connectivity to your Azure Stack Hub environment. The marketplace syndication tool must also be available to your Azure Stack Hub environment because you need to use the tool to perform the import operation.
 
-   The following image shows a folder structure example. **D:\downloadfolder** contains all the downloaded marketplace items. Each subfolder is a marketplace item (for example, **microsoft.custom-script-linux-arm-2.0.3**), named by the product ID. Inside each subfolder is the marketplace item's downloaded content.
+   The following image shows a folder structure example. **D:\downloadfolder** contains all the downloaded marketplace items. Each subfolder is a marketplace item (for example, **microsoft.custom-script-linux-arm-2.0.3**), named by the product ID. Inside each subfolder is the marketplace item's downloaded content.
 
    ![Marketplace download directory structure](media/azure-stack-download-azure-marketplace-item/mp1.png)
 
-2. Follow the instructions in [this article](azure-stack-powershell-configure-admin.md) to configure the Azure Stack Hub Operator PowerShell session.
+2. Follow the instructions in [this article](azure-stack-powershell-configure-admin.md) to configure the Azure Stack Hub Operator PowerShell session.
 
 3. Login to your Azure Stack Hub with an identity that has owner access to the "Default Provider Subscription".
 

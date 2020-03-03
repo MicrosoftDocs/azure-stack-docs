@@ -7,16 +7,20 @@ ms.topic: article
 ms.date: 01/13/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/13/2020
+ms.lastreviewed: 01/13/2019
+
+# Intent: As an Azure Stack operator, I want to know the prerequisites steps to complete before deploying App Service.
+# Keyword: app service prerequisites azure stack
 
 ---
+
 
 # Prerequisites for deploying App Service on Azure Stack Hub
 
 Before you deploy Azure App Service on Azure Stack Hub, you must complete the prerequisite steps in this article.
 
 > [!IMPORTANT]
-> Apply the 1910 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Hub Development Kit (ASDK) before you deploy Azure App Service 1.8.
+> Apply the 1910 update to your Azure Stack Hub integrated system or deploy the latest Azure Stack Development Kit (ASDK) before you deploy Azure App Service 1.8.
 
 ## Download the installer and helper scripts
 
