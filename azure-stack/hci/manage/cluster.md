@@ -1,6 +1,6 @@
 ---
-title: Manage clusters on Azure Stack HCI using Windows Admin Center
-description: Learn how to manage your Azure Stack HCI hyperconverged clusters using Windows Admin Center. 
+title: Manage clusters on Azure Stack HCI
+description: Learn how to manage your hyperconverged clusters on Azure Stack HCI. 
 ms.topic: article
 ms.prod: 
 author: v-dasis
@@ -9,7 +9,7 @@ ms.reviewer: jgerend
 ms.date: 03/04/2020
 ---
 
-# Manage clusters on Azure Stack HCI using Windows Admin Center
+# Manage clusters on Azure Stack HCI
 
 >Applies to: Windows Server 2019
 
@@ -75,4 +75,4 @@ Windows Admin Center can be used to manage your hyperconverged clusters on Azure
 
 ## Next Steps ##
 
-- Learn how to manage your clusters using Windows PowerShell.
+- Learn how to add or remove server nodes from your cluster.
