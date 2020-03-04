@@ -9,14 +9,18 @@ ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 1/8/2020
 
+# Intent: As an Azure Stack operator, I want to use the privileged endpoint in Azure Stack so I can complete certain tasks.
+# Keyword: azure stack privileged endpoint PEP
+
 ---
+
 # Use the privileged endpoint in Azure Stack Hub
 
 As an Azure Stack Hub operator, you should use the administrator portal, PowerShell, or Azure Resource Manager APIs for most day-to-day management tasks. However, for some less common operations, you need to use the *privileged endpoint* (PEP). The PEP is a pre-configured remote PowerShell console that provides you with just enough capabilities to help you do a required task. The endpoint uses [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview) to expose only a restricted set of cmdlets. To access the PEP and invoke the restricted set of cmdlets, a low-privileged account is used. No admin accounts are required. For additional security, scripting isn't allowed.
 
 You can use the PEP to perform these tasks:
 
-- Low-level tasks, such as [collecting diagnostic logs](azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs).
+- Low-level tasks, such as [collecting diagnostic logs](azure-stack-get-azurestacklog.md).
 - Many post-deployment datacenter integration tasks for integrated systems, such as adding Domain Name System (DNS) forwarders after deployment, setting up Microsoft Graph integration, Active Directory Federation Services (AD FS) integration, certificate rotation, and so on.
 - To work with support to obtain temporary, high-level access for in-depth troubleshooting of an integrated system.
 
@@ -193,4 +197,4 @@ After the transcript log files are successfully transferred to the file share, t
 
 ## Next steps
 
-[Azure Stack Hub diagnostic tools](azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs)
+[Azure Stack Hub diagnostic tools](azure-stack-diagnostic-log-collection-overview-tzl.md)

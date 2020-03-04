@@ -12,7 +12,11 @@ ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 02/26/2019
 
+# Intent: As an Azure Stack Hub operator, I want to see commonly asked questions about Azure Stack Hub API usage.
+# Keyword: azure stack hub api usage
+
 ---
+
 
 # Frequently asked questions about Azure Stack Hub usage
 

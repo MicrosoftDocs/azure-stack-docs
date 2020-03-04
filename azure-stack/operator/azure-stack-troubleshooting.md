@@ -10,7 +10,11 @@ ms.author: justinha
 ms.reviewer: prchint
 ms.lastreviewed: 11/05/2019
 
+# Intent: As an Azure Stack operator, I want to troubleshoot Azure Stack issues.
+# Keyword: toubleshoot azure stack
+
 ---
+
 # Troubleshoot issues in Azure Stack Hub
 
 This document provides troubleshooting information for Azure Stack Hub integrated environments. For help with the Azure Stack Development Kit, see [ASDK Troubleshooting](../asdk/asdk-troubleshooting.md) or get help from experts on the [Azure Stack Hub MSDN Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack).
@@ -83,7 +87,7 @@ You can use PowerShell to get stamp utilization information without help from CS
 4. Run `get-azurestacklog -filterbyrole seedring` using an invoke-command call.
 5. Extract the seedring .zip. You can obtain the validation report from the ERCS folder where you ran `test-azurestack`.
 
-For more information, see [Azure Stack Hub Diagnostics](azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs).
+For more information, see [Azure Stack Hub Diagnostics](azure-stack-get-azurestacklog.md).
 
 ## Troubleshoot virtual machines (VMs)
 

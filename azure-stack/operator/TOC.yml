@@ -4,8 +4,6 @@
   items:
   - name: What is Azure Stack Hub?
     href: azure-stack-overview.md
-  - name: What is Azure Stack HCI?
-    href: azure-stack-hci-overview.md
   - name: Comparing the Azure ecosystem
     href: compare-azure-azure-stack.md
   - name: Release notes
@@ -446,10 +444,16 @@
         items:
         - name: Overview 
           href: azure-stack-diagnostic-log-collection-overview-tzl.md
-        - name: Configure proactive collection
+        - name: Send logs proactively
           href: azure-stack-configure-automatic-diagnostic-log-collection-tzl.md
         - name: Send logs now
-          href: azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md
+          items: 
+          - name: Use the Administrator portal
+            href: azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md
+          - name: Use PowerShell
+            href: azure-stack-configure-on-demand-diagnostic-log-collection-powershell-tzl.md
+        - name: Get-AzureStackLog (PEP)
+          href: azure-stack-get-azurestacklog.md    
     - name: Validation for Azure Stack Hub  
       href: azure-stack-diagnostic-test.md
     - name: Troubleshooting
@@ -457,9 +461,7 @@
 - name: Reference
   items:
   - name: Azure Stack Hub PowerShell
-    href: /powershell/azure/azure-stack/overview
-- name: Related
-  items:
+    href: https://docs.microsoft.com/powershell/azure/azure-stack/overview
   - name: Azure Stack Hub User documentation
     href: /azure-stack/user/
   - name: ASDK documentation

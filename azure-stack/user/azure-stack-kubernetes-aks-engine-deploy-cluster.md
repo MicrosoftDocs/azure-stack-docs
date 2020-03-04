@@ -9,7 +9,11 @@ ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 11/21/2019
 
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Deploy a Kubernetes cluster with the AKS engine on Azure Stack Hub
 
@@ -59,7 +63,7 @@ This section looks at creating an API model for your cluster.
     ```
 
     > [!Note]  
-    > If you're using Azure AD for your identity system, you don't need add the **identitySystem** field.
+    > If you're using Azure AD for your identity system, you don't need to add the **identitySystem** field.
 
 6. Find `portalURL` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`.
 

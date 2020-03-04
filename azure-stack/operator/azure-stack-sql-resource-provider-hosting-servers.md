@@ -2,15 +2,19 @@
 title: Add hosting servers for the SQL resource provider
 titleSuffix: Azure Stack Hub
 description: Learn how to add hosting servers for provisioning through the SQL resource provider adapter.
-author: mattbriggs
+author: bryanla
 
 ms.topic: article
 ms.date: 10/02/2019
-ms.author: mabrigg
+ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 10/16/2018
+ms.lastreviewed: 10/16/2019
+
+# Intent: As an Azure Stack operator, I want to add hosting servers to provision through SQL resource provider adapter.
+# Keyword: add hosting servers sql resource provider
 
 ---
+
 # Add hosting servers for the SQL resource provider
 
 You can create SQL Server database hosting servers on a virtual machine (VM) in [Azure Stack Hub](azure-stack-overview.md), or on a VM outside your Azure Stack Hub environment, as long as the SQL resource provider can connect to the instance.

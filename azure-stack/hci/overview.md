@@ -6,7 +6,12 @@ author: jasongerend
 ms.author: jgerend
 ms.localizationpriority: medium
 ms.date: 11/04/2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 # Azure Stack HCI overview
 
 Azure Stack HCI is a hyperconverged Windows Server 2019 cluster that uses validated hardware to run virtualized workloads on-premises. You can also optionally connect to Azure services for cloud-based backup, site-recovery, and more. Azure Stack HCI solutions use Microsoft-validated hardware to ensure optimal performance and reliability, and include support for technologies such as NVMe drives, persistent memory, and remote-direct memory access (RDMA) networking.
@@ -21,7 +26,7 @@ Azure Stack HCI is a solution that combines several products:
 
 - Azure services (optional)
 
-![Azure Stack HCI is Microsoft’s hyperconverged solution available from a wide range of hardware partners.](media/azure-stack-hci/azure-stack-hci-solution.png)
+![Azure Stack HCI is Microsoft’s hyperconverged solution available from a wide range of hardware partners.](media/overview/azure-stack-hci-solution.png)
 
 Azure Stack HCI is Microsoft’s hyperconverged solution available from a wide range of hardware partners. Consider the following scenarios for a hyperconverged solution to help you determine if Azure Stack HCI is the solution that best suits your needs:
 
@@ -31,16 +36,16 @@ Azure Stack HCI is Microsoft’s hyperconverged solution available from a wide r
 
 - **Connect to Azure for hybrid cloud services.** Streamline access to cloud management and security services in Azure, including offsite backup, site recovery, cloud-based monitoring, and more.
 
-## The Azure Stack Hub family
+## The Azure Stack family
 
-Azure Stack HCI is part of the Azure and Azure Stack Hub family, using the same software-defined compute, storage, and networking software as Azure Stack Hub. Here's a quick summary of the different solutions (for more details, see [Comparing the Azure Stack Hub ecosystem](compare-azure-azure-stack.md)):
+Azure Stack HCI is part of the Azure and Azure Stack family, using the same software-defined compute, storage, and networking software as Azure Stack Hub. Here's a quick summary of the different solutions (for more details, see [Comparing the Azure Stack ecosystem](../operator/compare-azure-azure-stack.md)):
 
 - [Azure](https://azure.microsoft.com) - Use public cloud services for on-demand, self-service computing resources to migrate and modernize existing apps and build new cloud-native apps.
 - [Azure Stack Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview) - Accelerate machine learning workloads and run containerized apps or virtualized workloads on-premises, on a cloud-managed appliance.
 - [Azure Stack HCI](https://azure.microsoft.com/overview/azure-stack/hci) - Run virtualized apps on-premises, replace and consolidate aging server infrastructure, and connect to Azure for cloud services.
-- [Azure Stack Hub](azure-stack-overview.md) - Run cloud apps on-premises, when disconnected, or to meet regulatory requirements, using consistent Azure services.
+- [Azure Stack Hub](../operator/azure-stack-overview.md) - Run cloud apps on-premises, when disconnected, or to meet regulatory requirements, using consistent Azure services.
 
-![Azure Stack Edge is a cloud-managed appliance for running machine-learning and containerized apps at the edge, Azure Stack HCI is a hyperconverged solution for running VMs and storage on-premises, while Azure Stack Hub provides cloud-native, Azure-consistent services on-premises.](media/compare-azure-azure-stack/azure-stack-family.png)
+![Azure Stack Edge is a cloud-managed appliance for running machine-learning and containerized apps at the edge, Azure Stack HCI is a hyperconverged solution for running VMs and storage on-premises, while Azure Stack Hub provides cloud-native, Azure-consistent services on-premises.](media/overview/azure-family.png)
 
 To learn more:
 
@@ -100,6 +105,22 @@ You can purchase validated Azure Stack HCI solutions that run Windows Server 201
 
 Visit the [Azure Stack HCI website](https://azure.microsoft.com/overview/azure-stack/hci) to view our 70+ Azure Stack HCI solutions currently available from these Microsoft partners: ASUS, Axellio, bluechip, DataON, Dell EMC, Fujitsu, HPE, Hitachi, Huawei, Lenovo, NEC, primeLine Solutions, QCT, SecureGUARD, and Supermicro.
 
+## Video-based learning
+
+Here are some videos from Microsoft Ignite 2019 sessions:
+
+- [Microsoft Ignite Live 2019 - Getting Started with Azure Stack HCI](https://www.youtube.com/watch?v=vueHIBqNIEU)
+- [Discover Azure Stack HCI](https://www.youtube.com/watch?v=4aGZK0Ndmh8&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=13&t=0s)
+- [Modernize your retail stores or branch offices with Azure Stack HCI](https://www.youtube.com/watch?v=-JzLhjfkhmM&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=9&t=0s)
+- [What's new for Azure Stack HCI: 45 things in 45 minutes](https://www.youtube.com/watch?v=C5J4IEnlS_E&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=12&t=0s)
+- [Jumpstart your Azure Stack HCI deployment](https://www.youtube.com/watch?v=gxaPJLrWy5w&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=11&t=0s)
+- [The case of the shrinking data: Data Deduplication in Azure Stack HCI](https://www.youtube.com/watch?v=fmm4iDbDiY4&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=23&t=0s)
+- [Dave Kawula's notes from the field on Azure Stack HCI](https://www.youtube.com/watch?v=OXv7fLlz0ew&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=2&t=0s)
+
+Here is a video from a Hybrid Cloud Virtual Event:
+
+- [Azure Stack HCI | Hybrid Cloud Virtual Event](https://www.youtube.com/watch?v=nxpoEva-R2Y)
+
 ## FAQ
 
 ### What do Azure Stack Hub and Azure Stack HCI solutions have in common?
@@ -112,11 +133,11 @@ With Azure Stack Hub, you run cloud services on-premises. You can run Azure IaaS
 
 With Azure Stack HCI, you run virtualized workloads on-premises, managed with Windows Admin Center and familiar Windows Server tools. You can optionally connect to Azure for hybrid scenarios such as cloud-based site recovery, monitoring, and others.
 
-### Why is Microsoft bringing its HCI offering to the Azure Stack Hub family?
+### Why is Microsoft bringing its HCI offering to the Azure Stack family?
 
 Microsoft’s hyperconverged technology is already the foundation of Azure Stack Hub.
 
-Many Microsoft customers have complex IT environments and our goal is to provide solutions that meet them where they are with the right technology for the right business need. Azure Stack HCI is an evolution of the Windows Server 2016-based Windows Server Software-Defined (WSSD) solutions previously available from our hardware partners. We brought it into the Azure Stack Hub family because we have started to offer new options to connect seamlessly with Azure for infrastructure management services.
+Many Microsoft customers have complex IT environments and our goal is to provide solutions that meet them where they are with the right technology for the right business need. Azure Stack HCI is an evolution of the Windows Server 2016-based Windows Server Software-Defined (WSSD) solutions previously available from our hardware partners. We brought it into the Azure Stack family because we have started to offer new options to connect seamlessly with Azure for infrastructure management services.
 
 ### Does Azure Stack HCI need to be connected to Azure?
 
@@ -148,7 +169,7 @@ Follow these steps:
 1. Install Windows Server 2019 Datacenter edition and Windows Admin Center for management and the ability to connect to Azure for cloud services
 1. Optionally use your Azure account to attach cloud-based management and security services to your workloads.
 
-![To buy Azure Stack HCI solutions, choose the hardware partner and configuration that best fits your needs.](media/azure-stack-hci/buying-azure-stack-hci.png)
+![To buy Azure Stack HCI solutions, choose the hardware partner and configuration that best fits your needs.](media/overview/buying-azure-stack-hci.png)
 
 ## Compare Azure Stack Hub and Azure Stack HCI
 

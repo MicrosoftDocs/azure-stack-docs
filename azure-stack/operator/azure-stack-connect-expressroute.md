@@ -7,9 +7,13 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: sethm
 ms.reviewer: unknown
-ms.lastreviewed: 10/22/2018
+ms.lastreviewed: 10/22/2019
+
+# Intent: As an Azure Stack operator, I want to connect Azure Stack to Azure using ExpressRoute so I can extend my on-premises networks.
+# Keyword: connect azure stack expressroute
 
 ---
+
 
 # Connect Azure Stack Hub to Azure using Azure ExpressRoute
 

@@ -5,11 +5,16 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 02/10/2020
+ms.date: 02/25/2020
 ms.author: anwestg
-ms.reviewer:
+ms.reviewer: anwestg
+ms.lastreviewed: 03/25/2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 # App Service on Azure Stack Hub update 8 release notes
 
 These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub Update 8 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
@@ -228,7 +233,7 @@ Due to a regression in this release, both App Service databases (appservice_host
     $builder = New-Object System.Data.SqlClient.SqlConnectionStringBuilder -ArgumentList (Get-AppServiceConnectionString -Type Hosting)
     $conn = New-Object System.Data.SqlClient.SqlConnection -ArgumentList $builder.ToString()
 
-    $siteManager.Workers | ForEach-Object {
+    $siteManager.RoleServers | Where-Object {$_.IsWorker} | ForEach-Object {
         $worker = $_
         $dbUserName = "WebWorker_" + $worker.Name
 

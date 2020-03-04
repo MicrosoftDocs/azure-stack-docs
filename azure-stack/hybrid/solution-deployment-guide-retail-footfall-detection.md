@@ -7,7 +7,12 @@ ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Deploy an AI-based footfall detection solution using Azure and Azure Stack Hub
 
@@ -31,7 +36,7 @@ In this solution, you learn how to:
 Before getting started with this deployment guide, make sure you:
 
 - Review the [Footfall detection solution overview](pattern-retail-footfall-detection.md) 
-- Obtain user access to an Azure Stack Hub Development Kit (ASDK) or Azure Stack Hub Integrated System instance, with:
+- Obtain user access to an Azure Stack Development Kit (ASDK) or Azure Stack Hub Integrated System instance, with:
   - The [Azure App Service on Azure Stack Hub resource provider](../operator/azure-stack-app-service-overview.md) installed. You need operator access to your Azure Stack Hub instance, or work with your administrator to install.
   - A subscription to an offer that provides App Service and Storage quota. You need operator access to create an offer.
 - Obtain access to an Azure subscription

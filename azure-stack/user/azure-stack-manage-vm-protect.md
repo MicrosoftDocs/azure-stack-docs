@@ -8,7 +8,11 @@ ms.date: 02/18/2020
 ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 2/19/2020
+
+# Intent: As an Azure Stack user, I need a recovery plan to protect VMs deployed on Azure Stack against data loss and unplanned downtime. 
+# Keyword: protect vms data loss
 ---
+
 
 # Protect VMs deployed on Azure Stack Hub
 

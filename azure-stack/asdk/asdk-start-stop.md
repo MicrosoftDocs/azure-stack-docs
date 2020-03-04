@@ -9,8 +9,11 @@ ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 07/18/2019
 
+# Intent: As an ASDK user, I want to start, stop, and retart the ASDK properly. 
+# Keyword: start stop asdk
 
 ---
+
 
 # Start and stop the ASDK
 It's not recommended to simply restart the ASDK host computer. Instead, follow the procedures in this article to properly shut down and restart ASDK services.
@@ -79,4 +82,4 @@ Follow these steps if Azure Stack services don't successfully start within two h
 If running **Start-AzureStack** results in a failure, visit the [Azure Stack support forum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurestack) to get ASDK troubleshooting support. 
 
 ## Next steps 
-Learn more about Azure Stack diagnostic tool and issue logging, see [Azure Stack diagnostic tools](../operator/azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md#use-the-privileged-endpoint-pep-to-collect-diagnostic-logs).
+Learn more about Azure Stack diagnostic tool and issue logging, see [Azure Stack diagnostic tools](../operator/azure-stack-get-azurestacklog.md).

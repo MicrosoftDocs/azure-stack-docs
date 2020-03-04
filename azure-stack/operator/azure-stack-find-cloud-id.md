@@ -21,18 +21,14 @@ This topic covers how to get you Cloud ID by using the Administrator portal or t
 
    ![Screenshot of the Dashboard](./media/azure-stack-automatic-log-collection/dashboard.png)
 
-1. Click **Properties** > **Properties**.
-
-   ![Screenshot of the the Region blade](media/azure-stack-automatic-log-collection/region-blade.png)
-
-1. Copy the **Stamp Cloud ID**.
+1. Click **Properties** and copy the **Stamp Cloud ID**.
 
    ![Screenshot of Region properties with Stamp Cloud ID](media/azure-stack-automatic-log-collection/region-properties-blade-with-stamp-cloud-id.png)
 
 
 ## Use the privileged endpoint
 
-1. Open an elevated PowerShell session and run the follow
+1. Open an elevated PowerShell session and run the following script. Replace the IP address of the PEP VM and  Cloud Admin credentials as needed for your environment. 
 
    ```powershell
    $ipAddress = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
@@ -51,8 +47,8 @@ This topic covers how to get you Cloud ID by using the Administrator portal or t
 
 ## Next steps
 
-* [Enable Proactive diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md)
-* [Send logs now](azure-stack-configure-on-demand-diagnostic-log-collection-tzl.md)
+* [Send logs proactively](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md)
+* [Send logs now](azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md)
 
 
 
