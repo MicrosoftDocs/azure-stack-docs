@@ -1,15 +1,19 @@
 ---
 title: Apply an original equipment manufacturer (OEM) update to Azure Stack Hub 
 description: Learn to apply an original equipment manufacturer (OEM) update to Azure Stack Hub.
-author: ihenkel
+author: IngridAtMicrosoft
 
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: inhenkel
 ms.lastreviewed: 08/15/2019
-ms.reviewer: ppacent 
+ms.reviewer: ppacent
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 
 # Apply Azure Stack Hub original equipment manufacturer (OEM) updates
 

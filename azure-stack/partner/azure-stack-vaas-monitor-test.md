@@ -1,8 +1,8 @@
 ---
-title: Monitor and manage tests in the Azure Stack Hub VaaS portal 
-description: Monitor and manage tests in the Azure Stack Hub VaaS portal.
+title: Manage tests in the Azure Stack Hub Validation portal
+titleSuffix: Azure Stack Hub
+description: Learn how to manage tests in the Azure Stack Hub Validation portal.
 author: mattbriggs
-
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mabrigg
@@ -10,22 +10,25 @@ ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
 
 
-
 ROBOTS: NOINDEX
 
+# Intent: As an Azure Stack Hub user, I want to learn how to manage tests in the Azure Stack Hub VaaS portal.
+# Keyword: azure stack hub manage vaas tests
+
 ---
+
 
 # Monitor and manage tests in the VaaS portal
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-After scheduling tests against your Azure Stack Hub solution, Validation as a Service (VaaS) will begin reporting test execution status. This information is available in the VaaS portal along with actions like rescheduling and canceling tests.
+After scheduling tests against your Azure Stack Hub solution, validation as a service (VaaS) will begin reporting test execution status. This information is available in the Azure Stack Hub Validation portal along with actions like rescheduling and canceling tests.
 
 ## Navigate to the workflow tests summary page
 
 1. On the solutions dashboard, select an existing solution that has at least one workflow.
 
-    ![Workflow tiles](media/tile_all-workflows.png)
+    ![Workflow tiles on the solutions dashboard](media/tile_all-workflows.png)
 
 1. Select **Manage** on the workflow tile. The next page lists the workflows created for the selected solution.
 
@@ -33,29 +36,29 @@ After scheduling tests against your Azure Stack Hub solution, Validation as a Se
 
 ## Change workflow parameters
 
-You may edit the [Test parameters](azure-stack-vaas-parameters.md#test-parameters) specified during workflow creation for any type of workflow.
+You can edit the [Test parameters](azure-stack-vaas-parameters.md#test-parameters) specified during workflow creation for any type of workflow.
 
-1. On the tests summary page, select the **Edit** button.
+1. On the tests summary page, select **Edit**.
 
-1. Provide new values according to [Workflow common parameters for Azure Stack Hub Validation as a Service](azure-stack-vaas-parameters.md).
+1. Provide new values according to [Workflow common parameters for Azure Stack Hub validation as a service](azure-stack-vaas-parameters.md).
 
 1. Select **Submit** to save the values.
 
 > [!NOTE]
-> In the **Test Pass** workflow, you will need to finish the test selection and go to the review page before you can save the new parameter values.
+> In the **Test Pass** workflow, you need to finish the test selection and go to the review page before you can save the new parameter values.
 
 ### Add tests (Test Pass only)
 
 In **Test Pass** workflows, both the **Add tests** and **Edit** buttons allow you to schedule new tests in the workflow.
 
 > [!TIP]
-> Select **Add tests** if you only want to schedule new tests and don't need to edit parameters for a **Test Pass** workflow.
+> Select **Add tests** if you want to schedule new tests and don't need to edit parameters for a **Test Pass** workflow.
 
-## Managing test instances
+## Manage test instances
 
-For unofficial runs (that is, the **Test Pass** workflow), the tests summary page lists the tests scheduled against the Azure Stack Hub solution.
+For unofficial runs (the **Test Pass** workflow), the tests summary page lists the tests scheduled against the Azure Stack Hub solution.
 
-For official runs (that is, the **validation** workflows), the tests summary page lists the tests required for completing validation of the Azure Stack Hub solution. Validation tests are scheduled from this page.
+For official runs (the **validation** workflows), the tests summary page lists the tests required for completing validation of the Azure Stack Hub solution. Validation tests are scheduled from this page.
 
 Each scheduled test instance shows the following information:
 
@@ -78,7 +81,7 @@ Each test instance lists available actions you can take when you select its cont
 
 #### View information about the test definition
 
-Select **View information** from the context menu to view general information about the test definition. This is shared by each test instance with the same name and version.
+Select **View information** from the context menu to view general information about the test definition. This info is shared by each test instance with the same name and version.
 
 | Test property | Description |
 | -- | -- |
@@ -93,7 +96,7 @@ Select **View information** from the context menu to view general information ab
 
 #### View test instance parameters
 
-Select **View parameters** from the context menu to view the parameters provided to the test instance at schedule time. Sensitive strings like passwords are not displayed. This action is available only for tests that have been scheduled.
+Select **View parameters** from the context menu to view the parameters provided to the test instance at schedule time. Sensitive strings like passwords aren't displayed. This action is available only for tests that have been scheduled.
 
 This window includes the following metadata for all test instances:
 
@@ -111,7 +114,7 @@ Select **View operations** from the context menu to view a detailed status of op
 
 #### Download logs for a completed test instance
 
-Select **Download logs** from the context menu to download a `.zip` file of the logs output during test execution. This action is available only for tests that have completed, that is, a test with a status of either `Cancelled`, `Failed`, `Aborted`, or `Succeeded`.
+Select **Download logs** from the context menu to download a `.zip` file of the logs output during test execution. This action is available only for tests that have completed, which means they have a status of either `Cancelled`, `Failed`, `Aborted`, or `Succeeded`.
 
 #### Reschedule a test instance or schedule a test
 
@@ -119,7 +122,7 @@ Scheduling tests from the management page depends on the type of workflow the te
 
 ##### Test Pass workflow
 
-In the Test Pass workflow, **rescheduling** a test instance reuses the same set of parameters as the original test instance and *replaces* the original result, including its logs. You will need to reenter sensitive strings like passwords when you reschedule.
+In the Test Pass workflow, **rescheduling** a test instance reuses the same set of parameters as the original test instance and *replaces* the original result, including its logs. You need to reenter sensitive strings like passwords when you reschedule.
 
 1. Select **Reschedule** from the context menu to open a prompt for rescheduling the test instance.
 
@@ -133,7 +136,7 @@ In the Test Pass workflow, **rescheduling** a test instance reuses the same set 
 
 #### Cancel a test instance
 
-A scheduled test may be canceled if its status is `Pending` or `Running`.  
+A scheduled test can be canceled if its status is `Pending` or `Running`.  
 
 1. Select **Cancel** from the context menu to open a prompt for canceling the test instance.
 

@@ -7,7 +7,12 @@ ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Configure hybrid cloud identity for Azure and Azure Stack Hub applications
 
@@ -54,7 +59,7 @@ walks you through the steps needed to install Azure PowerShell and connect to yo
 
 ### Prerequisites
 
-You need an Azure Stack Hub installation connected to Azure Active Directory with a subscription you can access. If you don't have an Azure Stack Hub installation, you can use these instructions to set up an [Azure Stack Hub Development Kit](../asdk/asdk-install.md).
+You need an Azure Stack Hub installation connected to Azure Active Directory with a subscription you can access. If you don't have an Azure Stack Hub installation, you can use these instructions to set up an [Azure Stack Development Kit](../asdk/asdk-install.md).
 
 #### Connect to Azure Stack Hub using code
 

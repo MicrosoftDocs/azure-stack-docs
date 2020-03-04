@@ -1,15 +1,19 @@
 ---
 title: Manage updates 
 description: Learn how to manage updates in Azure Stack Hub
-author: ihenkel
+author: IngridAtMicrosoft
 
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: inhenkel
 ms.lastreviewed: 09/10/2019
-ms.reviewer: ppacent 
+ms.reviewer: ppacent
+
+# Intent: As an Azure Stack Hub operator, I want to manage updates so I can keep everything up to date.
+# Keyword: manage updates azure stack hub
 
 ---
+
 
 # Manage updates in Azure Stack Hub
 

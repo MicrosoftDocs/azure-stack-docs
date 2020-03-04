@@ -2,7 +2,7 @@
 title: Replace a scale unit node on an Azure Stack Hub integrated system
 titleSuffix: Azure Stack Hub
 description: Learn how to replace a physical scale unit node on an Azure Stack Hub integrated system.
-author: ihenkel
+author: IngridAtMicrosoft
 
 ms.topic: article
 ms.date: 11/11/2019
@@ -10,7 +10,11 @@ ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 11/11/2019
 
+# Intent: As an Azure Stack operator, I want to replace a physical scale unit node in Azure Stack.
+# Keyword: replace scale unit node azure stack
+
 ---
+
 
 # Replace a scale unit node on an Azure Stack Hub integrated system
 

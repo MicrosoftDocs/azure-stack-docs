@@ -2,14 +2,18 @@
 title: Create a custom role for Azure Stack Hub registration
 titleSuffix: Azure Stack Hub
 description: Learn how to create a custom role to avoid using global administrator for Azure Stack Hub registration.
-author: ihenkel
+author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 06/10/2019
 ms.author: inhenkel
 ms.reviewer: rtiberiu
 ms.lastreviewed: 06/10/2019
 
+# Intent: As an Azure Stack operator, I want to create a custom role to avoid using global admin for Azure Stack registration. 
+# Keyword: create custom role azure stack registration
+
 ---
+
 # Create a custom role for Azure Stack Hub registration
 
 > [!WARNING]

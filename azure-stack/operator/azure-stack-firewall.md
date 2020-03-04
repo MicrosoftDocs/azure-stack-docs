@@ -1,14 +1,18 @@
 ---
 title: Azure Stack Hub firewall integration for Azure Stack Hub integrated systems 
 description: Learn about Azure Stack Hub firewall integration for Azure Stack Hub integrated systems.
-author: ihenkel
+author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: inhenkel
 ms.reviewer: thoroet
 ms.lastreviewed: 11/15/2019
 
+# Intent: As an Azure Stack operator, I want to use a firewall so I can protect my Azure Stack from attacks and security threats.
+# Keyword: azure stack firewall integration
+
 ---
+
 # Azure Stack Hub firewall integration
 It's recommended that you use a firewall device to help secure Azure Stack Hub. Firewalls can help defend against things like distributed denial-of-service (DDOS) attacks, intrusion detection, and content inspection. However, they can also become a throughput bottleneck for Azure storage services like blobs, tables, and queues.
 

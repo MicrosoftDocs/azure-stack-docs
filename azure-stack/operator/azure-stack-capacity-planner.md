@@ -1,13 +1,18 @@
 ---
 title: Azure Stack Hub Capacity Planner 
 description: Learn how to use the Azure Stack Hub Capacity Planner spreadsheet for deployments.
-author: ihenkel
+author: IngridAtMicrosoft
 ms.topic: article
 ms.date: 05/31/2019
 ms.author: inhenkel
 ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
+
+# Intent: As an Azure Stack Hub operator, I want to learn how to use the Capacity Planner spreadsheet for deployments.
+# Keyword: azure stack hub capacity planner spreadsheet
+
 ---
+
 
 # Azure Stack Hub Capacity Planner
 

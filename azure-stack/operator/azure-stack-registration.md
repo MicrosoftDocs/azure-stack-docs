@@ -2,15 +2,19 @@
 title: Register Azure Stack Hub with Azure
 titleSuffix: Azure Stack Hub
 description: Learn how to register Azure Stack Hub integrated systems with Azure so you can download Azure Marketplace items and set up data reporting. 
-author: ihenkel
+author: IngridAtMicrosoft
 
 ms.topic: article
-ms.date: 2/02/2020
+ms.date: 02/25/2020
 ms.author: inhenkel
 ms.reviewer: avishwan
 ms.lastreviewed: 03/04/2019
 
+# Intent: As an Azure Stack operator, I want to register my Azure Stack with Azure so I can download marketplace items and set up data reporting.
+# Keyword: register azure stack (registration)
+
 ---
+
 
 # Register Azure Stack Hub with Azure
 
@@ -504,17 +508,23 @@ Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-Privil
 
 You might see one of the errors below while attempting to register your Azure Stack Hub:
 
-- Could not retrieve mandatory hardware info for $hostName. Check physical host and connectivity then try to rerun registration.
+- Could not retrieve mandatory hardware info for `$hostName`. Check physical host and connectivity, then try to re-run registration.
 
-- Cannot connect to $hostName to get hardware info - please check physical host and connectivity then try to rerun registration.
+- Cannot connect to `$hostName` to get hardware info. Check physical host and connectivity, then try to re-run registration.
 
-> Cause: this is typically because we try to obtain hardware details such as UUID, Bios, and CPU from the hosts to attempt activation and weren't able to due to the inability to connect to the physical host.
+   Cause: this is typically because we try to obtain hardware details such as UUID, Bios, and CPU from the hosts to attempt activation and weren't able to due to the inability to connect to the physical host.
 
-When trying to access Marketplace management, an error occurs when trying to syndicate products. 
-> Cause: this usually happens when Azure Stack Hub is unable to access the registration resource. One common reason for this is that when an Azure subscription's directory tenant changes, it resets the registration. You can't access the Azure Stack Hub Marketplace or report usage if you've changed the subscription's directory tenant. You need to re-register to fix this issue.
+- Cloud identifier [`GUID`] is already registered. Reusing cloud identifiers is not allowed.
 
-Marketplace management still asks you to register and activate your Azure Stack Hub even when you've already registered your stamp using the disconnected process.
-> Cause: this is a known issue for disconnected environments. You can verify your registration status by following [these steps](azure-stack-registration.md#verify-azure-stack-hub-registration). In order to use Marketplace management, you need to use [the offline tool](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario).
+   Cause: this happens if your Azure Stack environment is already registered. If you want to re-register your environment with a different subscription or billing model, [see these instructions](#change-the-subscription-you-use).
+
+- When trying to access Marketplace management, an error occurs when trying to syndicate products.
+
+   Cause: this usually happens when Azure Stack Hub is unable to access the registration resource. One common reason for this is that when an Azure subscription's directory tenant changes, it resets the registration. You can't access the Azure Stack Hub Marketplace or report usage if you've changed the subscription's directory tenant. You need to re-register to fix this issue.
+
+- Marketplace management still asks you to register and activate your Azure Stack Hub even when you've already registered your stamp using the disconnected process.
+
+   Cause: this is a known issue for disconnected environments. You can verify your registration status by [following these steps](azure-stack-registration.md#verify-azure-stack-hub-registration). In order to use Marketplace management, use [the offline tool](azure-stack-download-azure-marketplace-item.md#disconnected-or-a-partially-connected-scenario).
 
 ## Next steps
 
