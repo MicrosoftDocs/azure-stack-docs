@@ -33,7 +33,7 @@ Create a new subnet in your virtual network. You will need to the get the subnet
 5. Add a **Name** and an **Address range** using CIDR notation. Select **OK**.
 4. Select **Properties** in the **Virtual networks** blade. Copy the **Resource ID**, and then add `/subnets/<nameofyoursubnect>`. You will use this value as your value for the `vnetSubnetId` key in the API model for your cluster. The Resource ID for the subnet uses the following format:<br>`/subscriptions/SUB_ID/resourceGroups/RG_NAME/providers/Microsoft.Network/virtualNetworks/VNET_NAME/subnets/SUBNET_NAME`
 
-    ![virtual network id](media/kubernetes-aks-engine-custom-vnet/virtual-network-id.png)
+    ![virtual network Resource ID](media/kubernetes-aks-engine-custom-vnet/virtual-network-id.png)
 
 5. Select **Subnets** in the **Virtual networks** blade. Select the subnet name, for example default.
     
