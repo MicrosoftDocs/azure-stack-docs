@@ -18,6 +18,8 @@ When a drive fails, an alert appears in the upper left **Alerts** area of the **
 1. If your hardware supports it, you can click **Turn light on/off** to control the drive's indicator light.
    Storage Spaces Direct automatically retires and evacuates failed drives. When this has happened, the drive status is Retired, and its storage capacity bar is empty.
 1. Remove the failed drive and insert its replacement.
+
+## Wait for the alert to clear
 In **Drives > Inventory**, the new drive will appear. In time, the alert will clear, volumes will repair back to OK status, and storage will rebalance onto the new drive – no user action is required.
 
 ## Next steps
