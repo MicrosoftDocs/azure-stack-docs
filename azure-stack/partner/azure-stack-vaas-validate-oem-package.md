@@ -21,7 +21,7 @@ ROBOTS: NOINDEX
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-You can test a new original equipment manufacturer (OEM) package when there has been a change to the firmware or drivers for a completed solution validation. When your package has passed the test, it is signed by Microsoft. Your test must contain the updated OEM extension package with the drivers and firmware that have passed Windows Server logo and PCS tests.
+You can test a new original equipment manufacturer (OEM) package when there has been a change to the firmware or drivers for a completed solution validation. When your package has passed the test, it's signed by Microsoft. Your test must contain the updated OEM extension package with the drivers and firmware that have passed Windows Server logo and PCS tests.
 
 [!INCLUDE [azure-stack-vaas-workflow-validation-completion](includes/azure-stack-vaas-workflow-validation-completion.md)]
 
@@ -30,18 +30,18 @@ You can test a new original equipment manufacturer (OEM) package when there has 
 
 ## Managing packages for validation
 
-When using the **Package Validation** workflow to validate a package, you will need to provide a URL to an **Azure Storage blob**. This blob is the test signed OEM package that will be installed as part of the update process. Create the blob using the Azure Storage Account you created during setup (see [Set up your Validation as a Service resources](azure-stack-vaas-set-up-resources.md)).
+When using the **Package Validation** workflow to validate a package, you need to provide a URL to an **Azure Storage blob**. This blob is the test signed OEM package installed as part of the update process. Create the blob using the Azure Storage account you created during setup (see [Set up your validation as a service [VaaS] resources](azure-stack-vaas-set-up-resources.md)).
 
 ### Prerequisite: Provision a storage container
 
 Create a container in your storage account for package blobs. This container can be used for all your Package Validation runs.
 
-1. In the [Azure portal](https://portal.azure.com), go to the storage account created in [Set up your Validation as a Service resources](azure-stack-vaas-set-up-resources.md).
+1. In the [Azure portal](https://portal.azure.com), go to the storage account created in [Set up your VaaS resources](azure-stack-vaas-set-up-resources.md).
 
 2. On the left blade under **Blob Service**, select **Containers**.
 
 3. Select **+ Container** from the menu bar.
-    1. Provide a name for the container, for example, `vaaspackages`.
+    1. Provide a name for the container. For example, `vaaspackages`.
     1. Select the desired access level for unauthenticated clients such as VaaS. For details on how to grant VaaS access to packages in each scenario, see [Handling container access level](#handling-container-access-level).
 
 ### Upload package to storage account
@@ -51,19 +51,19 @@ Create a container in your storage account for package blobs. This container can
     > [!NOTE]
     > Please ensure that the `.zip` contents are placed at the root of the `.zip` file. There should be no sub-folders in the package.
 
-1. In the [Azure portal](https://portal.azure.com), select the package container and upload the package by selecting on **Upload** in the menu bar.
+1. In the [Azure portal](https://portal.azure.com), select the package container and upload the package by selecting **Upload** in the menu bar.
 
 1. Select the package `.zip` file to upload. Keep defaults for **Blob type** (that is, **Block Blob**) and **Block size**.
 
 ### Generate package blob URL for VaaS
 
-When creating a **Package Validation** workflow in the VaaS portal, you will need to provide a URL to the Azure Storage blob containing your package. Some *interactive* tests, including **Monthly Azure Stack Hub Update Verification** and **OEM Extension Package Verification**, also require a URL to package blobs.
+When creating a **Package Validation** workflow in the VaaS portal, you need to provide a URL to the Azure Storage blob containing your package. Some *interactive* tests, including **Monthly Azure Stack Hub Update Verification** and **OEM Extension Package Verification**, also require a URL to package blobs.
 
 #### Handling container access level
 
-The minimum access level required by VaaS depends on whether you are creating a Package Validation workflow or scheduling an *interactive* test.
+The minimum access level required by VaaS depends on whether you're creating a Package Validation workflow or scheduling an *interactive* test.
 
-In the case of **Private** and **Blob** access levels, you must temporarily grant access to the package blob by giving VaaS a [shared access signature](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1?) (SAS). The **Container** access level does not require you to generate SAS URLs, but allows unauthenticated access to the container and its blobs.
+In the case of **Private** and **Blob** access levels, you must temporarily grant access to the package blob by giving VaaS a [shared access signature](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1?) (SAS). The **Container** access level doesn't require you to generate SAS URLs but allows unauthenticated access to the container and its blobs.
 
 |Access level | Workflow requirement | Test requirement |
 |---|---------|---------|
@@ -75,18 +75,18 @@ The options for granting access to your packages are ordered from least access t
 
 #### Option 1: Generate a blob SAS URL
 
-Use this option if the access level of your storage container is set to **Private**, where the container does not enable public read access to the container or its blobs.
+Use this option if the access level of your storage container is set to **Private**, where the container doesn't enable public read access to the container or its blobs.
 
 > [!NOTE]
-> This method will not work for *interactive* tests. See [Option 2: Construct a container SAS URL](#option-2-construct-a-container-sas-url).
+> This method won't work for *interactive* tests. See [Option 2: Construct a container SAS URL](#option-2-construct-a-container-sas-url).
 
-1. In the [Azure portal](https://portal.azure.com/), go to your storage account, and navigate to the .zip containing your package.
+1. In the [Azure portal](https://portal.azure.com/), go to your storage account and navigate to the `.zip` containing your package.
 
 2. Select **Generate SAS** from the context menu.
 
 3. Select **Read** from **Permissions**.
 
-4. Set **Start time** to the current time, and **End time** to at least 48 hours from **Start time**. If you will be creating other workflows with the same package, consider increasing **End time** for the length of your testing.
+4. Set **Start time** to the current time, and **End time** to at least 48 hours from **Start time**. If you'll be creating other workflows with the same package, consider increasing **End time** for the length of your testing.
 
 5. Select **Generate blob SAS token and URL**.
 
@@ -104,20 +104,20 @@ Use this option if the access level of your storage container is set to **Privat
 
 1. Select **Read** and **List** from **Allowed permissions**. Deselect any remaining options.
 
-1. Select **Start time** as current time and **End time** to at least 14 days from **Start time**. If you will be running other tests with the same package, consider increasing **End time** for the length of your testing. Any tests scheduled through VaaS after **End time** will fail and a new SAS will need to be generated.
+1. Select **Start time** as current time and **End time** to at least 14 days from **Start time**. If you'll be running other tests with the same package, consider increasing **End time** for the length of your testing. Any tests scheduled through VaaS after **End time** will fail and a new SAS will need to be generated.
 
 1. [!INCLUDE [azure-stack-vaas-sas-step_generate](includes/azure-stack-vaas-sas-step_generate.md)]
-    The format should appear as follows:
+    The format should look like this:
     `https://storageaccountname.blob.core.windows.net/?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
 
-1. Modify the generated SAS URL to include the package container, `{containername}`, and the name of your package blob, `{mypackage.zip}`, as follows:
+1. Modify the generated SAS URL to include the package container, `{containername}`, and the name of your package blob, `{mypackage.zip}`. Like this:
     `https://storageaccountname.blob.core.windows.net/{containername}/{mypackage.zip}?sv=2016-05-31&ss=b&srt=co&sp=rl&se=2017-05-11T21:41:05Z&st=2017-05-11T13:41:05Z&spr=https`
 
     Use this value when providing package blob URLs to the portal.
 
 #### Option 3: Grant public read access
 
-Use this option if it is acceptable to allow unauthenticated clients access to individual blobs or, in the case of *interactive* tests, the container.
+Use this option if it's acceptable to allow unauthenticated clients access to individual blobs or, in the case of *interactive* tests, the container.
 
 > [!CAUTION]
 > This option opens up your blob(s) for anonymous read-only access.
@@ -125,7 +125,7 @@ Use this option if it is acceptable to allow unauthenticated clients access to i
 1. Set the access level of the package container to **Blob** or **Container** by following the instructions in section [Grant anonymous users permissions to containers and blobs](https://docs.microsoft.com/azure/storage/storage-manage-access-to-resources#grant-anonymous-users-permissions-to-containers-and-blobs).
 
     > [!NOTE]
-    > If you are providing a package URL to an *interactive* test, you must grant **full public read access** to the container to proceed with testing.
+    > If you're providing a package URL to an *interactive* test, you must grant **full public read access** to the container to proceed with testing.
 
 1. In the package container, select the package blob to open the properties pane.
 
