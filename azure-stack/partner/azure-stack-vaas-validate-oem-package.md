@@ -13,9 +13,7 @@ ROBOTS: NOINDEX
 # Intent: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Azure Stack keyword
 
-
 ---
-
 
 # Validate OEM packages
 
@@ -145,19 +143,19 @@ Use this option if it's acceptable to allow unauthenticated clients access to in
 
 5. Enter the Azure Storage blob URL to the test signed OEM package requiring a signature from Microsoft. For instructions, see [Generate package blob URL for VaaS](#generate-package-blob-url-for-vaas).
 
-6. Copy the Azure Stack Hub update package folder to a local directory on the DVM. Enter the path to the **folder that contains the package zip file and metadata file** for 'AzureStack update package folder path'
+6. Copy the Azure Stack Hub update package folder to a local directory on the DVM. Enter the path to the **folder that contains the package zip file and metadata file** for 'AzureStack update package folder path'.
 
-7. Copy the OEM package folder created above to a local directory on the DVM. Enter the path to the **folder that contains the package zip file and metadata file** for 'OEM update package folder path'
+7. Copy the OEM package folder created above to a local directory on the DVM. Enter the path to the **folder that contains the package zip file and metadata file** for 'OEM update package folder path'.
 
     > [!NOTE]
     > Copy the Azure Stack Hub update and OEM update to **2 separate** directories.
 
-8. 'RequireDigitalSignature' - provide **true** if you need the package to be Microsoft signed (Running OEM Validation workflow). If you are validating a Microsoft signed package on latest Azure Stack Hub update, provide this value as false (Running Monthly Azure Stack Hub update verification).
+8. `RequireDigitalSignature` - provide the value **true** if you need the package to be Microsoft signed (Running OEM Validation workflow). If you're validating a Microsoft signed package on the latest Azure Stack Hub update, make this value false (running monthly Azure Stack Hub update verification).
 
 9. [!INCLUDE [azure-stack-vaas-workflow-step_test-params](includes/azure-stack-vaas-workflow-step_test-params.md)]
 
     > [!NOTE]
-    > Environment parameters cannot be modified after creating a workflow.
+    > Environment parameters can't be modified after creating a workflow.
 
 10. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
 
@@ -172,12 +170,12 @@ The following tests are required to be run for OEM package validation:
 
 ## Run Package Validation tests
 
-1. In the **Package Validation tests summary** page, you will run a subset of the listed tests appropriate to your scenario.
+1. In the **Package Validation tests summary** page, you'll run a subset of the listed tests appropriate to your scenario.
 
-    In the validation workflows, **scheduling** a test uses the workflow-level common parameters that you specified during workflow creation (see [Workflow common parameters for Azure Stack Hub Validation as a Service](azure-stack-vaas-parameters.md)). If any of test parameter values become invalid, you must resupply them as instructed in [Modify workflow parameters](azure-stack-vaas-monitor-test.md#change-workflow-parameters).
+    In the validation workflows, **scheduling** a test uses the workflow-level common parameters that you specified during workflow creation (see [Workflow common parameters for Azure Stack Hub validation as a service](azure-stack-vaas-parameters.md)). If any of test parameter values become invalid, you must resupply them as instructed in [Modify workflow parameters](azure-stack-vaas-monitor-test.md#change-workflow-parameters).
 
     > [!NOTE]
-    > Scheduling a validation test over an existing instance will create a new instance in place of the old instance in the portal. Logs for the old instance will be retained but are not accessible from the portal.  
+    > Scheduling a validation test over an existing instance will create a new instance in place of the old instance in the portal. Logs for the old instance will be retained but aren't accessible from the portal.<br><br>
     > Once a test has completed successfully, the **Schedule** action becomes disabled.
 
 2. Select the agent that will run the test. For information about adding local test execution agents, see [Deploy the local agent](azure-stack-vaas-local-agent.md).
@@ -188,7 +186,7 @@ The following tests are required to be run for OEM package validation:
 
 5. Review the results for the **required** tests.
 
-To submit a package signing request, send [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) the Solution name and Package Validation name associated with this run.
+To submit a package signing request, send an email to [vaashelp@microsoft.com](mailto:vaashelp@microsoft.com) with the Solution name and Package Validation name associated with this run.
 
 ## Next steps
 
