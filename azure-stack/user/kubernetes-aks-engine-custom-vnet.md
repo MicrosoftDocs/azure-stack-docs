@@ -24,12 +24,12 @@ For a discussion of kubenet networking in Azure, see [Use kubenet networking wit
 
 You must have a custom virtual network in your Azure Stack instance. For more information, see [Quickstart: Create a virtual network using the Azure portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal).
 
-You will need to the get the Resource path ID of the subnet and the IP address range in your subnet. You will use the Resource path ID and range in your API model when you deploy your cluster.
+You will need to the get the subnet Resource ID and IP address range. You will use the Resource ID and range in your API model when you deploy your cluster.
 
 1. Open the Azure Stack Hub user portal in your Azure Stack Hub instance.
 2. Select **All resources**.
 3. Enter the name of your virtual network in the search box.
-4. Select **Properties** in the **Virtual networks** blade. Copy the **Resource ID**, and then add `/subnets/<nameofyoursubnect>`. You will use this value as your value for the `vnetSubnetId` key in the API model for your cluster. The Resource path ID for the subnet uses the following format:<br>`/subscriptions/SUB_ID/resourceGroups/RG_NAME/providers/Microsoft.Network/virtualNetworks/VNET_NAME/subnets/SUBNET_NAME`
+4. Select **Properties** in the **Virtual networks** blade. Copy the **Resource ID**, and then add `/subnets/<nameofyoursubnect>`. You will use this value as your value for the `vnetSubnetId` key in the API model for your cluster. The Resource ID for the subnet uses the following format:<br>`/subscriptions/SUB_ID/resourceGroups/RG_NAME/providers/Microsoft.Network/virtualNetworks/VNET_NAME/subnets/SUBNET_NAME`
 
     ![virtual network id](media/kubernetes-aks-engine-custom-vnet/virtual-network-id.png)
 
@@ -48,7 +48,6 @@ The AKS engine supports deploying into an existing virtual network. When deployi
 You will need to set two values. You will need to know the number of IP addresses you will need to reserve for your cluster, and first consecutive static IP within the subnet IP space.
 
 Your Kubernetes cluster will take up a block of IP addresses. The following elements of the cluster consume IP addresses:
- - Each pod requires an IP address in the subnet.
  - Each master requires an IP address.
  - Each node requires an IP address
  - If more than one master:
@@ -62,7 +61,7 @@ The subnet requires the following allocations of the existing IP addresses:
  - Leave a buffer of 16 IP addresses.
  - The value of the first IP should be toward the end of the address space to avoid IP conflicts.
 
-`ipAddressCount` has a default count of 31. This is one for the node and 30 for the pods. If you are using a subnet with 256 addresses, for example 10.1.0.0/24, you will need to set your first consecutive static IP address at 207. The following table shows the addresses and considerations:
+In the following example we will look at a cluster that uses 31 IP addresses. This is one for the node and 30 for the pods. If you are using a subnet with 256 addresses, for example 10.1.0.0/24, you will need to set your first consecutive static IP address at 207. The following table shows the addresses and considerations:
 
 | Range for /24 subnet | Number | Note |
 | --- | --- | --- |
@@ -83,7 +82,6 @@ In the array **masterProfile** set the following values:
 | --- | --- | --- |
 | vnetSubnetId | `/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/default` | Specify the Azure Resource Manager path ID the subnet.  |
 | firstConsecutiveStaticIP | 10.1.0.207 | Assign to the `firstConsecutiveStaticIP` configuration property an IP address that is near the *end* of the available IP address space in the desired subnet.  |
-| vnetCidr | 10.1.0.0/24 | The subnet's address range in CIDR notation (for example, 192.168.1.0/24). It must be contained by the address space of the virtual network. The address range of a subnet, which is in use can't be edited. |
 
 In the array **agentPoolProfiles** set the following values:
 
@@ -97,8 +95,7 @@ For example:
 "masterProfile": {
   ...
   "vnetSubnetId": "/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/default",
-  "firstConsecutiveStaticIP": "10.1.0.207",  
-  "vnetCidr": "10.1.0.0/24",
+  "firstConsecutiveStaticIP": "10.1.0.207",
   ...
 },
 ...
