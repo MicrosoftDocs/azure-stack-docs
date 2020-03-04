@@ -11,7 +11,7 @@ ms.date: 02/28/2020
 
 > Applies to: Windows Server 2019
 
-This topic describes how to create volumes on a Storage Spaces Direct cluster by using Windows Admin Center and Windows PowerShell.
+This topic describes how to create volumes on a Storage Spaces Direct cluster by using Windows Admin Center and Windows PowerShell, how to work with files on the volumes, and how to enable Data Deduplication and compression on volumes.
 
 ## Create a three-way mirror volume
 
