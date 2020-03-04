@@ -8,7 +8,11 @@ ms.date: 1/22/2020
 ms.author: mabrigg
 ms.lastreviewed: 05/16/2019
 
+# Intent: As an Azure Stack operator, I want to enable Azure CLI so my users can manage resources through CLI.
+# Keyword: enable azure cli azure stack
+
 ---
+
 # Enable Azure CLI for Azure Stack Hub users
 
 You can provide the CA root certificate to users of Azure Stack Hub so that they can enable Azure CLI on their development machines. Your users need the certificate to manage resources through CLI.

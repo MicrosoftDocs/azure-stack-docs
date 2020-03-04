@@ -6,9 +6,13 @@ ms.topic: article
 ms.date: 1/22/2020
 ms.author: bryanla
 ms.reviewer: xiaofmao
-ms.lastreviewed: 11/20/2018
+ms.lastreviewed: 11/20/2
+
+# Intent: As an Azure Stack operator, I want to remove the MySQL resource provider on Azure Stack.
+# Keyword: azure stack remove mysql resource provider
 
 ---
+
 
 # Remove the MySQL resource provider in Azure Stack Hub
 

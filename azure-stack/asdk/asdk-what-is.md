@@ -7,7 +7,12 @@ ms.date: 11/27/2019
 ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 11/27/2019
+
+# Intent: As a potential ASDK user, I want to know what the ASDK is.
+# Keyword: what is the asdk
+
 ---
+
 
 # What is the Azure Stack Development Kit (ASDK)?
 [Microsoft Azure Stack Hub integrated systems](../operator/azure-stack-overview.md) range in size from 4-16 nodes, and are jointly supported by a hardware partner and Microsoft. Use Azure Stack Hub integrated systems to enable new scenarios for your production workloads. If you're an Azure Stack Hub operator who manages the integrated systems infrastructure and offers services, see our [operator documentation](/azure-stack/operator).

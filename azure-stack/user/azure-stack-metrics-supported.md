@@ -8,7 +8,11 @@ ms.date: 11/11/2019
 ms.author: mabrigg
 ms.lastreviewed: 11/11/2019
 
+# Intent: As an Azure Stack user, I want to use Azure Monitor and I want to know which metrics are supported by its pipeline so I can retrieve them. 
+# Keyword: monitor metrics azure stack
+
 ---
+
 
 # Supported metrics for Azure Monitor on Azure Stack Hub
 

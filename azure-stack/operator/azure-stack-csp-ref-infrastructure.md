@@ -9,7 +9,11 @@ ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 05/09/2019
 
+# Intent: As an Azure Stack operator, I want to learn about the usage reporting infrastructure in Azure Stack.
+# Keyword: usage reporting azure stack
+
 ---
+
 
 # Usage reporting infrastructure for Cloud Solution Providers
 

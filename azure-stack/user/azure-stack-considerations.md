@@ -6,9 +6,13 @@ author: sethmanheim
 ms.topic: overview
 ms.date: 01/06/2020
 ms.author: sethm
-ms.lastreviewed: 12/27/2018
+ms.lastreviewed: 12/27/2019
+
+# Intent: As an Azure Stack user, I want to know the differences between Azure and Azure stack when using services and building apps.
+# Keyword: azure stack building apps
 
 ---
+
 
 # Differences between Azure Stack Hub and Azure when using services and building apps
 
