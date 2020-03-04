@@ -18,17 +18,19 @@ ms.lastreviewed: 2/28/2020
 
 You can deploy a Kubernetes cluster using the Azure Kubernetes Service (AKS) engine on a custom virtual network. This article looks at finding the information you need in your virtual network. You can find steps for calculating the IP addresses used by your cluster, setting the vales in the API Model, and setting the route table and network security group.
 
-For a discussion of kubenet networking in Azure, see [Use kubenet networking with your own IP address ranges in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/configure-kubenet).
+The AKS cluster in Azure Stack Hub using the AKS engine uses kubenet. For a discussion of kubenet networking in Azure, see [Use kubenet networking with your own IP address ranges in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/configure-kubenet).
 
 ## Create custom virtual network
 
 You must have a custom virtual network in your Azure Stack instance. For more information, see [Quickstart: Create a virtual network using the Azure portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal).
 
-You will need to the get the subnet Resource ID and IP address range. You will use the Resource ID and range in your API model when you deploy your cluster.
+Create a new subnet in your virtual network. You will need to the get the subnet Resource ID and IP address range. You will use the Resource ID and range in your API model when you deploy your cluster.
 
 1. Open the Azure Stack Hub user portal in your Azure Stack Hub instance.
 2. Select **All resources**.
 3. Enter the name of your virtual network in the search box.
+4. Select Subnets > + Subnets to add a subnet.
+5. Add a **Name** and an **Address range** using CIDR notation. Select **OK**.
 4. Select **Properties** in the **Virtual networks** blade. Copy the **Resource ID**, and then add `/subnets/<nameofyoursubnect>`. You will use this value as your value for the `vnetSubnetId` key in the API model for your cluster. The Resource ID for the subnet uses the following format:<br>`/subscriptions/SUB_ID/resourceGroups/RG_NAME/providers/Microsoft.Network/virtualNetworks/VNET_NAME/subnets/SUBNET_NAME`
 
     ![virtual network id](media/kubernetes-aks-engine-custom-vnet/virtual-network-id.png)
@@ -43,34 +45,30 @@ You will need to the get the subnet Resource ID and IP address range. You will u
 
 ## Get the IP address block
 
-The AKS engine supports deploying into an existing virtual network. When deploying into an existing subnet, your cluster will consume a block of IP addresses. You will need to set your cluster to avoid assignment collision with other resources using IP addresses and the resources needed by your cluster.
+The AKS engine supports deploying into an existing virtual network. When deploying into an existing subnet, your cluster will use  a block of IP addresses. You will need to set your cluster to avoid assignment collision with other resources using IP addresses and the resources needed by your cluster.
 
-You will need to set two values. You will need to know the number of IP addresses you will need to reserve for your cluster, and first consecutive static IP within the subnet IP space.
+You will need to set two values. You will need to know the number of IP addresses you will need to reserve for your cluster, and the first consecutive static IP within the subnet IP space.
 
-Your Kubernetes cluster will take up a block of IP addresses. The following elements of the cluster consume IP addresses:
- - Each master requires an IP address.
- - Each node requires an IP address
- - If more than one master:
-     - One for the API server load balancer.
-     - One for each master up to five masters.
-     - 10 following the last master for headroom reservation.
+The AKS engine requires a range of up to 16 unused IP addresses when you use multiple master nodes. The cluster will use one IP address for reach master up to five masters. The AKS engine will also require the next 10 IP address after the last master for headroom IP address reservation. Finally an additional IP address will be used by the load balancer after the masters and headroom reservation for a total of 16.
 
-The subnet requires the following allocations of the existing IP addresses:
- - The first IP address to use for static IP allocation.
- - The first four and the last IP address is reserved and can't be used in any Azure subnet
- - Leave a buffer of 16 IP addresses.
- - The value of the first IP should be toward the end of the address space to avoid IP conflicts.
+When placing your block of IP addresses, the subnet requires the following allocations of the existing IP addresses:
+ - The first four IP addresses and the last IP address are reserved and can't be used in any Azure subnet
+ - A buffer of 16 IP addresses should be left open.
+ - The value of your cluster's first IP should be toward the end of the address space to avoid IP conflicts. If possible, assign to the `firstConsecutiveStaticIP` property to an IP address near the *end* of the available IP address space in the subnet.
 
-In the following example we will look at a cluster that uses 31 IP addresses. This is one for the node and 30 for the pods. If you are using a subnet with 256 addresses, for example 10.1.0.0/24, you will need to set your first consecutive static IP address at 207. The following table shows the addresses and considerations:
+In the following example, you can see how these various considerations fill out the IP range in a subnet. This is for three masters. If you are using a subnet with 256 addresses, for example 10.1.0.0/24, you will need to set your first consecutive static IP address at 207. The following table shows the addresses and considerations:
 
 | Range for /24 subnet | Number | Note |
 | --- | --- | --- |
 | 10.1.0.0  - 10.1.03 | 4 | Reserved in Azure subnet. |
-| 10.1.0.207-10.1.0.238 | 31 | Default IP address count for an AKS engine defined cluster. |
+| **10.1.0.224**-10.1.0.238 | 14 | IP address count for an AKS engine defined cluster.<br><br> 3 IP addresses for 3 masters<br>10 IP addresses for headroom<br>1 IP address for the load balancer |
 | 10.1.0.239 - 10.1.0.255 | 16 | 16 IP address buffer. |
 | 10.1.0.256 | 1 | Reserved in Azure subnet. |
 
+In this example, then `firstConsecutiveStaticIP` property would be `10.1.0.224`.
+
 For larger subnets, for example /16 with more than 60 thousand addresses, you may not find it to be practical to set your static IP assignments to the end of the network space. Set your cluster static IP address range away from the first 24 addresses in your IP space so that the cluster can be resilient when claiming addresses.
+
 
 ## Update the API model
 
@@ -81,7 +79,7 @@ In the array **masterProfile** set the following values:
 | Field | Example | Description |
 | --- | --- | --- |
 | vnetSubnetId | `/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/default` | Specify the Azure Resource Manager path ID the subnet.  |
-| firstConsecutiveStaticIP | 10.1.0.207 | Assign to the `firstConsecutiveStaticIP` configuration property an IP address that is near the *end* of the available IP address space in the desired subnet. `firstConsecutiveStaticIP` only applies to the master pool. |
+| firstConsecutiveStaticIP | 10.1.0.224 | Assign to the `firstConsecutiveStaticIP` configuration property an IP address that is near the *end* of the available IP address space in the desired subnet. `firstConsecutiveStaticIP` only applies to the master pool. |
 
 In the array **agentPoolProfiles** set the following values:
 
@@ -95,7 +93,7 @@ For example:
 "masterProfile": {
   ...
   "vnetSubnetId": "/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/default",
-  "firstConsecutiveStaticIP": "10.1.0.207",
+  "firstConsecutiveStaticIP": "10.1.0.224",
   ...
 },
 ...
