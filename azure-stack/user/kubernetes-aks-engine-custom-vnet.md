@@ -29,7 +29,7 @@ Create a new subnet in your virtual network. You will need to the get the subnet
 1. Open the Azure Stack Hub user portal in your Azure Stack Hub instance.
 2. Select **All resources**.
 3. Enter the name of your virtual network in the search box.
-4. Select Subnets > + Subnets to add a subnet.
+4. Select **Subnets** > **+ Subnets** to add a subnet.
 5. Add a **Name** and an **Address range** using CIDR notation. Select **OK**.
 4. Select **Properties** in the **Virtual networks** blade. Copy the **Resource ID**, and then add `/subnets/<nameofyoursubnect>`. You will use this value as your value for the `vnetSubnetId` key in the API model for your cluster. The Resource ID for the subnet uses the following format:<br>`/subscriptions/SUB_ID/resourceGroups/RG_NAME/providers/Microsoft.Network/virtualNetworks/VNET_NAME/subnets/SUBNET_NAME`
 
