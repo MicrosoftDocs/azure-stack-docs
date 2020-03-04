@@ -1,15 +1,13 @@
 ---
-title: Validate original equipment manufacturer (OEM) packages in Azure Stack Hub Validation as a Service 
-description: Learn how to validate original equipment manufacturer (OEM) packages with Validation as a Service.
+title: Validate OEM packages
+titleSuffix: Azure Stack Hub
+description: Learn how to validate OEM packages with Azure Stack Hub validation as a service.
 author: mattbriggs
-
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
-
-
 ROBOTS: NOINDEX
 
 # Intent: As a < type of user >, I want < what? > so that < why? >
@@ -23,7 +21,7 @@ ROBOTS: NOINDEX
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 
-You can test a new OEM package when there has been a change to the firmware or drivers for a completed solution validation. When your package has passed the test, it is signed by Microsoft. Your test must contain the updated OEM extension package with the drivers and firmware that have passed Windows Server logo and PCS tests.
+You can test a new original equipment manufacturer (OEM) package when there has been a change to the firmware or drivers for a completed solution validation. When your package has passed the test, it is signed by Microsoft. Your test must contain the updated OEM extension package with the drivers and firmware that have passed Windows Server logo and PCS tests.
 
 [!INCLUDE [azure-stack-vaas-workflow-validation-completion](includes/azure-stack-vaas-workflow-validation-completion.md)]
 
