@@ -82,7 +82,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - The download progress of an Azure Stack Hub update package is now visible in the update blade after an update is initiated. This only applies to connected Azure Stack Hub systems that choose to [prepare update packages via automatic download](azure-stack-update-prepare-package.md#automatic-download-and-preparation-for-update-packages).
 - Reliability improvements for Network Controller Host agent.
 - Introduced a new micro-service called DNS Orchestrator that improves the resiliency logic for the internal DNS services during patch and update. 
-- You can now create disk snapshots without interrupting the IO workload in the running VM. Backup vendor solutions use the live snapshot functionality to provide backup of VMs with managed and unmanaged disks. We recommend using backup solutions to ensure consistent backups of VMs and efficient use of live snapshot functionality. Work with your backup vendor to deploy the appropriate version of their solution that uses the live snapshot functionality. For managed disk snapshots, see [Azure Stack Hub managed disks](../user/azure-stack-managed-disk-considerations.md). For unmanaged disk snapshots, see [Azure Stack Hub storage: Differences and considerations](../user/azure-stack-acs-differences.md).
+
 - Added a new request validation to fail invalid blob URIs for the boot diagnostic storage account parameter while creating VMs.
 - Added auto-remediation and logging improvements for Rdagent and Host agent - two services on the host that facilitate VM CRUD operations.
 
