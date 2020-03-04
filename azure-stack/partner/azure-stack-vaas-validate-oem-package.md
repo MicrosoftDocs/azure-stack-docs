@@ -120,7 +120,7 @@ Use this option if it's acceptable to allow unauthenticated clients access to in
 > [!CAUTION]
 > This option opens up your blob(s) for anonymous read-only access.
 
-1. Set the access level of the package container to **Blob** or **Container** by following the instructions in section [Grant anonymous users permissions to containers and blobs](https://docs.microsoft.com/azure/storage/storage-manage-access-to-resources#grant-anonymous-users-permissions-to-containers-and-blobs).
+1. Set the access level of the package container to **Blob** or **Container**. For more information, see [Grant anonymous users permissions to containers and blobs](https://docs.microsoft.com/azure/storage/storage-manage-access-to-resources#grant-anonymous-users-permissions-to-containers-and-blobs).
 
     > [!NOTE]
     > If you're providing a package URL to an *interactive* test, you must grant **full public read access** to the container to proceed with testing.
@@ -160,7 +160,7 @@ Use this option if it's acceptable to allow unauthenticated clients access to in
 10. [!INCLUDE [azure-stack-vaas-workflow-step_tags](includes/azure-stack-vaas-workflow-step_tags.md)]
 
 11. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
-    You will be redirected to the tests summary page.
+    You'll be redirected to the tests summary page.
 
 ## Required tests
 
