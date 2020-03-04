@@ -6,14 +6,12 @@
     href: overview.md
 - name: Concepts
   items:
-  - name: Understand Storage
-    items:
-    - name: Understand the cache
-      href: concepts/cache.md
-    - name: Fault tolerance and storage efficiency
-      href: concepts/fault-tolerance.md
-    - name: Cluster and storage pool quorum
-      href: concepts/quorum.md
+  - name: Understand the cache
+    href: concepts/cache.md
+  - name: Fault tolerance and storage efficiency
+    href: concepts/fault-tolerance.md
+  - name: Cluster and storage pool quorum
+    href: concepts/quorum.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
