@@ -4,7 +4,7 @@ description: How to delete volumes in Azure Stack HCI using Windows Admin Center
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 03/02/2020
+ms.date: 03/05/2020
 ---
 
 # Deleting volumes in Azure Stack HCI
