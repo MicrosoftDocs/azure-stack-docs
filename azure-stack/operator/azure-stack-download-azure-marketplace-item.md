@@ -91,6 +91,8 @@ There are two parts to this scenario:
   ```
   Install-Module -Name Azs.Syndication.Admin
   ```
+  
+- .NET Framework 4.7 or later versions
 
 Once you have registered your Azure Stack, you can disregard the following message that appears on the Marketplace management blade, as this is not relevant for the disconnected use case:
 
