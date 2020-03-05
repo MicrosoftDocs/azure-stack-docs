@@ -4,6 +4,10 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
+- name: Deploy
+  items:
+  - name: Before you start
+    href: deploy/before-you-start.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
