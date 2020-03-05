@@ -5,7 +5,7 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 02/25/2020
+ms.date: 03/05/2020
 ms.author: anwestg
 ms.reviewer:
 
@@ -172,7 +172,7 @@ Due to a regression in this release, both App Service databases (appservice_host
             GO  
 
             /********[appservice_hosting] Migration End********/
-    '''
+    ```
 
 1. Migrate logins to contained database users.
 
@@ -223,36 +223,41 @@ Due to a regression in this release, both App Service databases (appservice_host
 
   ```powershell
  
-    [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.Web.Hosting")
-    $siteManager = New-Object Microsoft.Web.Hosting.SiteManager
-    $builder = New-Object System.Data.SqlClient.SqlConnectionStringBuilder -ArgumentList (Get-AppServiceConnectionString -Type Hosting)
-    $conn = New-Object System.Data.SqlClient.SqlConnection -ArgumentList $builder.ToString()
+[System.Reflection.Assembly]::LoadWithPartialName("Microsoft.Web.Hosting")
+$siteManager = New-Object Microsoft.Web.Hosting.SiteManager
 
-    $siteManager.RoleServers | Where-Object {$_.IsWorker} | ForEach-Object {
-        $worker = $_
-        $dbUserName = "WebWorker_" + $worker.Name
+$builder = New-Object System.Data.SqlClient.SqlConnectionStringBuilder -ArgumentList (Get-AppServiceConnectionString -Type Hosting)
+$conn = New-Object System.Data.SqlClient.SqlConnection -ArgumentList $builder.ToString()
 
-        if (!$siteManager.ConnectionContexts[$dbUserName]) {
-            $dbUserPassword = [Microsoft.Web.Hosting.Common.Security.PasswordHelper]::GenerateDatabasePassword()
-            $conn.Open()
-            $command = $conn.CreateCommand()
-            $command.CommandText = "CREATE USER [$dbUserName] WITH PASSWORD = '$dbUserPassword'"
-            $command.ExecuteNonQuery()
-            $conn.Close()
-            $conn.Open()
+$siteManager.RoleServers | Where-Object {$_.IsWorker} | ForEach-Object {
+    $worker = $_
+    $dbUserName = "WebWorker_" + $worker.Name
 
-            $command = $conn.CreateCommand()
-            $command.CommandText = "ALTER ROLE [WebWorkerRole] ADD MEMBER [$dbUserName]"
-            $command.ExecuteNonQuery()
-            $conn.Close()
+    if (!$siteManager.ConnectionContexts[$dbUserName]) {
+        $dbUserPassword = [Microsoft.Web.Hosting.Common.Security.PasswordHelper]::GenerateDatabasePassword()
 
-            $builder.Password = $dbUserPassword
-            $builder["User ID"] = $dbUserName
-            $siteManager.ConnectionContexts.Add($dbUserName, $builder.ToString())
-        }
+        $conn.Open()
+        $command = $conn.CreateCommand()
+        $command.CommandText = "CREATE USER [$dbUserName] WITH PASSWORD = '$dbUserPassword'"
+        $command.ExecuteNonQuery()
+        $conn.Close()
+        
+        $conn.Open()
+        $command = $conn.CreateCommand()
+        $command.CommandText = "ALTER ROLE [WebWorkerRole] ADD MEMBER [$dbUserName]"
+        $command.ExecuteNonQuery()
+        $conn.Close()
+        
+        $builder.Password = $dbUserPassword
+        $builder["User ID"] = $dbUserName
+        
+        $siteManager.ConnectionContexts.Add($dbUserName, $builder.ToString())
     }
-    $siteManager.CommitChanges()
-    ```
+}
+
+$siteManager.CommitChanges()
+    
+  ```
 
 ### Known issues for Cloud Admins operating Azure App Service on Azure Stack
 
