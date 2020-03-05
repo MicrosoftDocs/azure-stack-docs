@@ -34,7 +34,7 @@ To download IoT Hub, complete the following steps:
 
 4. Once the package is downloaded, the status will show up as **Not installed** in the Marketplace.
 
-[![Download IoT Hub 4](../operator/media/iot-hub-rp-install//download4.png)](../operator/media/iot-hub-rp-install//download4.png#lightbox)
+    [![Download IoT Hub 4](../operator/media/iot-hub-rp-install//download4.png)](../operator/media/iot-hub-rp-install//download4.png#lightbox)
 
 ### Download IoT Hub - disconnected or partially connected scenario
 
