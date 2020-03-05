@@ -30,9 +30,11 @@ To download IoT Hub, complete the following steps:
 
 3. Click **Download**. Wait for the package to be downloaded. This step might take up to 10 minutes.
 
-    [![Download IoT Hub 3](../operator/media/iot-hub-rp-install//download3.png)](../operator/media/iot-hub-rp-install//download3.png#lightbox)
+    [![Download IoT Hub 3](../operator/media/iot-hub-rp-install//download_3.png)](../operator/media/iot-hub-rp-install//download_3.png#lightbox)
 
 4. Once the package is downloaded, the status will show up as **Not installed** in the Marketplace.
+
+[![Download IoT Hub 4](../operator/media/iot-hub-rp-install//download4.png)](../operator/media/iot-hub-rp-install//download4.png#lightbox)
 
 ### Download IoT Hub - disconnected or partially connected scenario
 
@@ -76,13 +78,15 @@ Follow these steps to install the IoT Hub package:
 
     [![Install IoT Hub 7](../operator/media/iot-hub-rp-install//install7.png)](../operator/media/iot-hub-rp-install//install7.png#lightbox)
 
-8. Installation starts and can take between 90 – 120 minutes. The deployment status can be seen in the Marketplace or in the notification pane.
+8. Once the installation starts, deployment status can be found in the Marketplace or in the notification pane.
 
-    [![Install IoT Hub 10](../operator/media/iot-hub-rp-install//install10.png)](../operator/media/iot-hub-rp-install//install10.png#lightbox)
+    [![Install IoT Hub 8](../operator/media/iot-hub-rp-install//install_8.png)](../operator/media/iot-hub-rp-install//install_8.png#lightbox)
 
-9. Wait for the installation to complete.
+9. Installation can take between 90 – 120 minutes. Wait for the installation to complete.
 
-    [![Install IoT Hub 11](../operator/media/iot-hub-rp-install//install11.png)](../operator/media/iot-hub-rp-install//install11.png#lightbox)
+    [![Install IoT Hub 9](../operator/media/iot-hub-rp-install//install_9(1).png)](../operator/media/iot-hub-rp-install//install_9(1).png#lightbox)
+
+    [![Install IoT Hub 9](../operator/media/iot-hub-rp-install//install_9(2).png)](../operator/media/iot-hub-rp-install//install_9(2).png#lightbox)
 
 Your IoT hub is installed successfully! To get started, complete the following steps:
 
