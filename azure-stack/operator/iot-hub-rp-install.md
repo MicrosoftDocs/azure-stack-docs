@@ -30,7 +30,7 @@ To download IoT Hub, complete the following steps:
 
 3. Click **Download**. Wait for the package to be downloaded. This step might take up to 10 minutes.
 
-    [![Download IoT Hub 3](../operator/media/iot-hub-rp-install//download_3.png)](../operator/media/iot-hub-rp-install//download_3.png#lightbox)
+    [![Download IoT Hub 3](../operator/media/iot-hub-rp-install//download3.png)](../operator/media/iot-hub-rp-install//download3.png#lightbox)
 
 4. Once the package is downloaded, the status will show up as **Not installed** in the Marketplace.
 
@@ -84,9 +84,9 @@ Follow these steps to install the IoT Hub package:
 
 9. Installation can take between 90 – 120 minutes. Wait for the installation to complete.
 
-    [![Install IoT Hub 9](../operator/media/iot-hub-rp-install//install_9(1).png)](../operator/media/iot-hub-rp-install//install_9(1).png#lightbox)
+    [![Install IoT Hub 9](../operator/media/iot-hub-rp-install//install91.png)](../operator/media/iot-hub-rp-install//install91.png#lightbox)
 
-    [![Install IoT Hub 9](../operator/media/iot-hub-rp-install//install_9(2).png)](../operator/media/iot-hub-rp-install//install_9(2).png#lightbox)
+    [![Install IoT Hub 9](../operator/media/iot-hub-rp-install//install92.png)](../operator/media/iot-hub-rp-install//install92.png#lightbox)
 
 Your IoT hub is installed successfully! To get started, complete the following steps:
 
