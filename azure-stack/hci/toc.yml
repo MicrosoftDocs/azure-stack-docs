@@ -4,9 +4,15 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
-- name: How-to guides
+- name: Manage
   items:
-  - name: Replace failed drives
+  - name: Create volumes
+    href: manage/create-volumes.md
+  - name: Extend volumes
+    href: manage/extend-volumes.md
+  - name: Delete volumes
+    href: manage/delete-volumes.md
+  - name: Replace drives
     href: manage/replace-drives.md
 - name: Reference
   items:

@@ -8,9 +8,15 @@ ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019
+
+
 ROBOTS: NOINDEX
 
+# Intent: As an Azure Stack Hub operator, I want to learn how to create interactive feature verification tests for Azure Stack Hub with validation as a service.
+# Keyword: azure stack hub feature verification test
+
 ---
+
 
 # Interactive feature verification testing  
 

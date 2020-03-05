@@ -2,12 +2,17 @@
 title: Azure Stack Hub storage capacity planning
 description: Learn about storage capacity planning for Azure Stack Hub deployments.
 author: IngridAtMicrosoft
-ms.topic: article
-ms.date: 05/31/2019
+ms.topic: conceptual
+ms.date: 03/04/2020
 ms.author: inhenkel
 ms.reviewer: prchint
 ms.lastreviewed: 05/31/2019
+
+# Intent: As an Azure Stack Hub operator, I want to learn about storage capacity planning for Azure Stack Hub deployments.
+# Keyword: azure stack hub storage capacity planning
+
 ---
+
 
 # Azure Stack Hub storage capacity planning
 

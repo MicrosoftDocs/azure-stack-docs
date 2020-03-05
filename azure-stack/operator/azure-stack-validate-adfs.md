@@ -5,13 +5,17 @@ description: Learn how to use the Azure Stack Hub Readiness Checker to validate 
 services: azure-stack
 documentationcenter: ''
 author: IngridAtMicrosoft
-ms.topic: article
-ms.date: 06/10/2019
+ms.topic: how-to
+ms.date: 03/04/2020
 ms.author: inhenkel
 ms.reviewer: jerskine
 ms.lastreviewed: 06/10/2019
 
+# Intent: As an Azure Stack Hub operator, I want to use the Azure Stack Hub Readiness Checker to validate AD FS integration for Azure Stack Hub.
+# Keyword: azure stack hub readiness checker ad fs
+
 ---
+
 
 # Validate AD FS integration for Azure Stack Hub
 

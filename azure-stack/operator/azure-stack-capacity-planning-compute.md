@@ -2,12 +2,17 @@
 title: Azure Stack Hub compute capacity
 description: Learn about compute capacity planning for Azure Stack Hub deployments.
 author: IngridAtMicrosoft
-ms.topic: article
-ms.date: 07/16/2019
+ms.topic: conceptual
+ms.date: 03/04/2020
 ms.author: inhenkel
 ms.reviewer: prchint
 ms.lastreviewed: 06/13/2019
+
+# Intent: As an Azure Stack Hub operator, I want to learn about compute capacity planning for Azure Stack Hub deployments
+# Keyword: azure stack hub compute capacity
+
 ---
+
 
 # Azure Stack Hub compute capacity
 
@@ -71,10 +76,10 @@ Available memory for VM placement = total host memory - resiliency reserve - mem
 Resiliency reserve = H + R * ((N-1) * H) + V * (N-2)
 
 > Where:
-> -	H = Size of single server memory
+> -    H = Size of single server memory
 > - N = Size of Scale Unit (number of servers)
-> -	R = The operating system reserve for OS overhead, which is .15 in this formula<sup>2</sup>
-> -	V = Largest VM in the scale unit
+> -    R = The operating system reserve for OS overhead, which is .15 in this formula<sup>2</sup>
+> -    V = Largest VM in the scale unit
 
 <sup>1</sup> Azure Stack Hub Infrastructure overhead = 242 GB + (4 GB x # of nodes). Approximately 31 VMs are used to host Azure Stack Hub's infrastructure and, in total, consume about 242 GB + (4 GB x # of nodes) of memory and 146 virtual cores. The rationale for this number of VMs is to satisfy the needed service separation to meet security, scalability, servicing, and patching requirements. This internal service structure allows for the future introduction of new infrastructure services as they're developed.
 

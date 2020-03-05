@@ -7,7 +7,12 @@ ms.date: 11/05/2019
 ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Create a geo-distributed app solution to direct traffic with Azure and Azure Stack Hub
 
@@ -108,7 +113,7 @@ Set up Hybrid Continuous Integration/Continuous Delivery (CI/CD) to deploy Web A
 
 ### Create web app deployment in both clouds
 
-1.  Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and add `win10-x64`. (See [Self-contained Deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.)
+1.  Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and add `win10-x64`. (See [Self-contained Deployment](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) documentation.)
 
     ![Edit web application project file in Visual Studio](media/solution-deployment-guide-geo-distributed/image3.png)
 
@@ -124,7 +129,7 @@ Set up Hybrid Continuous Integration/Continuous Delivery (CI/CD) to deploy Web A
 
     ![Add code to the build definition](media/solution-deployment-guide-geo-distributed/image4.png)
 
-3. **Run the build**. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that can run on Azure and Azure Stack Hub.
+3. **Run the build**. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) process will publish artifacts that can run on Azure and Azure Stack Hub.
 
 **Using an Azure Hosted Agent**
 
