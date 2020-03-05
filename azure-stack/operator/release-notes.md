@@ -4,16 +4,15 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 02/25/2020
+ms.date: 03/05/2020
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 11/22/2019
+ms.lastreviewed: 03/05/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
 
 ---
-
 
 # Azure Stack Hub release notes
 
@@ -148,6 +147,9 @@ You can download the Azure Stack Hub 2002 update package from [the Azure Stack H
 
 Azure Stack Hub releases hotfixes on a regular basis. Be sure to install the latest Azure Stack Hub hotfix for 1910 before updating Azure Stack Hub to 2002.
 
+> [!NOTE]
+> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
+
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; do not attempt to install hotfixes on the ASDK.
 
 ### Prerequisites: Before applying the 2002 update
@@ -216,7 +218,6 @@ For more information about update build types, see [Manage updates in Azure Stac
     - Integration with Azure Monitor for Containers.
   - Use Windows Containers with AKS engine.
   - Receive CSS and engineering support for their deployments.
-
 
 ### Improvements
 
