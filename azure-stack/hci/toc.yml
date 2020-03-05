@@ -4,6 +4,10 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
+  - name: Manage
+  items:
+  - name: Create volumes
+    href: manage/create-volumes.md
 - name: Concepts
   items:
   - name: Understand the cache
