@@ -221,7 +221,7 @@ Due to a regression in this release, both App Service databases (appservice_host
 
   New workers are unable to acquire the required database connection string.  To remedy this situation, connect to one of your controller instances, for example CN0-VM and run the following PowerShell script:
 
-  ```powershell
+```powershell
  
 [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.Web.Hosting")
 $siteManager = New-Object Microsoft.Web.Hosting.SiteManager
@@ -257,7 +257,7 @@ $siteManager.RoleServers | Where-Object {$_.IsWorker} | ForEach-Object {
 
 $siteManager.CommitChanges()
     
-  ```
+```
 
 ### Known issues for Cloud Admins operating Azure App Service on Azure Stack
 
