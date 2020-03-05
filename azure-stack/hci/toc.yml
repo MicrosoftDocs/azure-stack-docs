@@ -10,7 +10,7 @@
     href: deploy/before-you-start.md
 - name: Manage
   items:
-  - name: Create volumes 
+  - name: Create volumes
     href: manage/create-volumes.md
 - name: Reference
   items:
