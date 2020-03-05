@@ -14,7 +14,6 @@ ms.lastreviewed: 11/22/2019
 
 ---
 
-
 # Azure Stack Hub release notes
 
 This article describes the contents of Azure Stack Hub update packages. The update includes improvements and fixes for the latest release of Azure Stack Hub.
@@ -193,6 +192,9 @@ You can download the Azure Stack Hub 1910 update package from [the Azure Stack H
 ## Hotfixes
 
 Azure Stack Hub releases hotfixes on a regular basis. Be sure to install the latest Azure Stack Hub hotfix for 1908 before updating Azure Stack Hub to 1910.
+
+> [!NOTE]
+> Azure Stack Hub hotfix releases are cumulative; you only need to install the latest hotfix to get all fixes included in any previous hotfix releases for that version.
 
 Azure Stack Hub hotfixes are only applicable to Azure Stack Hub integrated systems; don't attempt to install hotfixes on the ASDK.
 
