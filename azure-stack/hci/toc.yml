@@ -1,0 +1,32 @@
+- name: Azure Stack HCI documentation
+  href: overview.md
+- name: Overview
+  items:
+  - name: What is Azure Stack HCI?
+    href: overview.md
+- name: Manage
+  items:
+  - name: Create volumes
+    href: manage/create-volumes.md
+- name: Reference
+  items:
+  - name: Hyper-V PowerShell commands
+    href: /powershell/module/hyper-v
+  - name: Storage PowerShell commands
+    href: /powershell/module/storage
+- name: Related
+  items:
+  - name: Azure Stack family
+    href: ../index.yml
+  - name: Windows Admin Center
+    href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
+  - name: Azure Hybrid Services
+    href: /windows-server/manage/windows-admin-center/azure
+  - name: Storage Spaces Direct
+    href: /windows-server/storage/storage-spaces/storage-spaces-direct-overview
+  - name: Failover Clustering
+    href: /windows-server/failover-clustering/failover-clustering-overview
+  - name: Hyper-V
+    href: /windows-server/virtualization/hyper-v/hyper-v-on-windows-server
+  - name: Software Defined Networking
+    href: /windows-server/networking/sdn
