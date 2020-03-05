@@ -8,7 +8,7 @@ ms.topic: article
 ms.date: 06/10/2019
 ms.author: justinha
 ms.reviewer: fiseraci
-ms.lastreviewed: 1/16/2019
+ms.lastreviewed: 3/4/2020
 
 # Intent: As an Azure Stack operator, I want to learn about the security controls applied in Azure Stack.
 # Keyword: security controls azure stack
@@ -48,9 +48,7 @@ For more information on how to enforce TLS 1.2 on the external endpoints of Azur
 
 ## Secret management
 
-Azure Stack Hub infrastructure uses a multitude of secrets, like passwords, to function. Most of them are automatically rotated frequently because they're group Managed Service Accounts (gMSA), which rotate every 24 hours.
-
-The remaining secrets that aren't gMSA can be rotated manually with a script in the privileged endpoint.
+Azure Stack Hub infrastructure uses a multitude of secrets, like passwords and certificates, to function. Most of the passwords associated with the internal service accounts are automatically rotated every 24 hours because they're [group Managed Service Accounts (gMSA)](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview), a type of domain account managed directly by the internal domain controller.
 
 Azure Stack Hub infrastructure uses 4096-bit RSA keys for all its internal certificates. Same key-length certificates can also be used for the external endpoints. For more information on secrets and certificate rotation, please refer to [Rotate secrets in Azure Stack Hub](azure-stack-rotate-secrets.md).
 
