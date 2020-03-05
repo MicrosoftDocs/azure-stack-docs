@@ -17,12 +17,12 @@ Watch a quick video on how to delete a volume.
 
 > [!VIDEO https://www.youtube-nocookie.com/embed/DbjF8r2F6Jo]
 
-To delete a volume in Windows Admin Center:
+## Use Windows Admin Center to delete a volume
 
 1. In Windows Admin Center, connect to a Storage Spaces Direct cluster, and then select **Volumes** from the **Tools** pane.
 2. On the **Volumes** page, select the **Inventory** tab, and then select the volume that you want to delete.
-4. At the top of the volumes detail page, select **Delete**.
-5. In the confirmations dialog, select the check box to confirm that you want to delete the volume, and select **Delete**.
+3. At the top of the volumes detail page, select **Delete**.
+4. In the confirmations dialog, select the check box to confirm that you want to delete the volume, and select **Delete**.
 
 ## Next steps
 
