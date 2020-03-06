@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.date: 02/18/2020
 ms.author: mabrigg
 ms.reviewer: hectorl
-ms.lastreviewed: 2/19/2020
+ms.lastreviewed: 3/5/2020
 
 # Intent: As an Azure Stack user, I need a recovery plan to protect VMs deployed on Azure Stack against data loss and unplanned downtime. 
 # Keyword: protect vms data loss
@@ -54,34 +54,22 @@ Another metric is *Mean Time to Recover* (MTTR), which is the average time that 
 
 ### Backup-restore
 
-The most common protection scheme for VM-based applications is to protect the entire system using disk snapshots, or install an agent in the guest operating system.
+Backing up your applications and datasets enables you to quickly recover from downtime due to data corruption, accidental deletions, or disasters. For IaaS VM based applications you can use an in-guest agent to protect application data, operating system configuration, and data stored on volumes. 
 
-::: moniker range="azs-2002"
-### Disk snapshots
-
-For VMs with managed disks, you can create a crash-consistent snapshot of each disk attached to a VM without interrupting the workload in the running VM, using the portal or PowerShell in the same way as in Azure.
-
-For VMs with unmanaged disks, you can create a crash-consistent snapshot of each page blob using REST APIs. See [storage considerations](azure-stack-acs-differences.md) for instructions on how to make an asynchronous call to the API required for taking a snapshot of unmanaged disks attached to a running VM. This is not required if the VM is powered off.
-
-::: moniker-end
-
-::: moniker range="<=azs-1910"
-### Disk snapshots
-For VMs with managed or unmanaged disks, you can create a snapshot of each disk attached to a VM while the VM is powered off using REST APIs. 
-
-Creating snapshots of managed or unmanaged disk snapshots attached to a running VM is not recommended. Make sure you update to 2002 before snapshotting disks attached to a running VM.
-
-::: moniker-end
-
-Recovering a VM from snapshots requires that you first create a copy of the snapshot to use a new disk. The new disk can then be attached to a new VM. 
-
-The recommended approach is to use a backup solution from one of the Azure Stack Hub partners that supports disk snapshot for backup. These solutions orchestrate recovering the VM from the disk snapshots. 
-
-### Guest agent
+#### Backup using in-guest agent
 
 Backing up a VM using a guest OS agent typically includes capturing operating system configuration, files/folders, disks, application binaries, or application data. 
 
 Recovering an application from an agent requires manually recreating the VM, installing the operating system, and installation of the guest agent. At that point, data can be restored into the guest OS or directly to the application.
+
+#### Backup using disk snapshot for stopped VMs
+
+Backup products can protect IaaS VM configuration and disks attached to a stopped VM. Backup products that integrate with Azure Stack Hub APIs to capture VM configuration and create disk snapshots. If planned downtime for the application is possible, then make surethe VM is in a stopped state before starting backup workflow.  
+
+#### Backup using disk snapshot snapshot for running VMs
+
+> [!Important]  
+> Using disk snapshots is currently not supported for VM in a running state. Creating a snapshot of a disk attached to a running VM may degrade the performance or impact the availability of the operating system or application in the VM. The recommendation is to use an in-guest agent to protect the application if planned downtime is not an option. 
 
 ### VMs in a scale-set or availability group
 
