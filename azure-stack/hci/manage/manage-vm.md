@@ -27,7 +27,7 @@ Windows Admin Center can be used to create and manage the virtual machines in Az
 1. Select a preassigned file path from the dropdown list or select **Browse** to choose the folder to save the VM configuration and virtual hard disk (VHD) files to. You can browse to any available SMB share on the network by entering the path as *\\server\share*.
 
 > [!NOTE]
-> Using a network share for VM storage will require that [CredSSP](https://docs.microsoft.com/en-us/windows-server/manage/windows-admin-center/understand/faq#does-windows-admin-center-use-credssp) is enabled.
+> Using a network share for VM storage will require that [CredSSP](https://docs.microsoft.com/windows-server/manage/windows-admin-center/understand/faq#does-windows-admin-center-use-credssp) is enabled.
 
 1. Under **Virtual processors**, select the number of virtual processors and whether you want nested virtualization enabled.
 1. Under **Memory**, select the amount of startup memory (4 GB is recommended as a minimum), and a min and max range of dynamic memory as applicable to be allocated to the VM.
@@ -116,7 +116,7 @@ You can view virtual machine event logs using Windows Admin Center as follows:
 
 ## Protect VMs with Azure Site Recovery ##
 
-You can use Windows Admin Center to configure Azure Site Recovery and replicate your on-premises virtual machines to Azure. This is an optional service. [Learn More](https://docs.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/azure-site-recovery)
+You can use Windows Admin Center to configure Azure Site Recovery and replicate your on-premises virtual machines to Azure. This is an optional service. [Learn More](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-site-recovery)
 
 ## Manage a VM through the Hyper-V host ## 
 

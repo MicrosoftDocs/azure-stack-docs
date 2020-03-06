@@ -17,9 +17,7 @@ Windows PowerShell can be used to create and manage virtual machines in Azure St
 
 ## Create a VM using Windows PowerShell  
 
-1. On the Windows desktop, click the Start button and type any part of the name **Windows PowerShell**.  
-
-1. Right-click **Windows PowerShell** and select **Run as administrator**.  
+1. In Windows Admin Center, under **Tools**, scroll down and select **PowerShell**.
 
 1. Get the name of the virtual switch that you want the virtual machine to use by using [Get-VMSwitch](https://technet.microsoft.com/library/hh848499.aspx).  For example,  
 
