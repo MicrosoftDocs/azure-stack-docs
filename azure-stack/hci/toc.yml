@@ -4,6 +4,10 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
+- name: Deploy
+  items:
+  - name: Deploy Azure Stack HCI
+    href: deploy/operating-system.md
 - name: Manage
   items:
   - name: Create volumes
