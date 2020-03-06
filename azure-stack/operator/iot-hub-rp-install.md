@@ -80,7 +80,7 @@ Follow these steps to install the IoT Hub package:
 
 8. Once the installation starts, deployment status can be found in the Marketplace or in the notification pane.
 
-    [![Install IoT Hub 8](../operator/media/iot-hub-rp-install//install_8.png)](../operator/media/iot-hub-rp-install//install_8.png#lightbox)
+    [![Install IoT Hub 8](../operator/media/iot-hub-rp-install//install8.png)](../operator/media/iot-hub-rp-install//install8.png#lightbox)
 
 9. Installation can take between 90 – 120 minutes. Wait for the installation to complete.
 
