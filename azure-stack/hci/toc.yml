@@ -8,6 +8,12 @@
   items:
   - name: Create volumes
     href: manage/create-volumes.md
+- name: Concepts
+  items:
+  - name: Choose drives
+    href: concepts/choosing-drives.md
+  - name: Plan volumes
+    href: concepts/plan-volumes.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
