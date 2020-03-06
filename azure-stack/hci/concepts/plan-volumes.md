@@ -70,7 +70,7 @@ With three servers, you should use three-way mirroring for better fault toleranc
 
 With four or more servers, you can choose for each volume whether to use three-way mirroring, dual parity (often called "erasure coding"), or mix the two with mirror-accelerated parity.
 
-Dual parity provides the same fault tolerance as three-way mirroring but with better storage efficiency. With four servers, its storage efficiency is 50.0 percent; to store 2 TB of data, you need 4 TB of physical storage capacity in the storage pool. This increases to 66.7 percent storage efficiency with seven servers, and continues up to 80.0% storage efficiency. The tradeoff is that parity encoding is more compute-intensive, which can limit its performance.
+Dual parity provides the same fault tolerance as three-way mirroring but with better storage efficiency. With four servers, its storage efficiency is 50.0 percent; to store 2 TB of data, you need 4 TB of physical storage capacity in the storage pool. This increases to 66.7 percent storage efficiency with seven servers, and continues up to 80.0 percent storage efficiency. The tradeoff is that parity encoding is more compute-intensive, which can limit its performance.
 
 ![dual-parity](media/plan-volumes/dual-parity.png)
 
