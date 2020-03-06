@@ -4,10 +4,10 @@ description: Learn how to collect diagnostic logs on demand in Azure Stack Hub u
 author: justinha
 
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 03/05/2020
 ms.author: justinha
 ms.reviewer: shisab
-ms.lastreviewed: 02/18/2020
+ms.lastreviewed: 03/05/2020
 
 ---
 # Send Azure Stack Hub diagnostic logs by using the privileged endpoint (PEP)

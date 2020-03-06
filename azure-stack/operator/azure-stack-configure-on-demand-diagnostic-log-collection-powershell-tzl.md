@@ -4,10 +4,10 @@ description: Learn how to send Azure Stack Hub diagnostic logs to Azure using th
 author: justinha
 
 ms.topic: article
-ms.date: 03/02/2020
+ms.date: 03/05/2020
 ms.author: justinha
 ms.reviewer: shisab
-ms.lastreviewed: 03/02/2020
+ms.lastreviewed: 03/05/2020
 
 ---
 # Send Azure Stack Hub diagnostic logs to Azure using the privileged endpoint (PEP)
@@ -39,21 +39,61 @@ if ($session) {
 
 ## Parameter considerations 
 
-* The parameters **OutputSharePath** and **OutputShareCredential** are used to store logs in a user specified location.
-
 * The **FromDate** and **ToDate** parameters can be used to collect logs for a particular time period. If these parameters aren't specified, logs are collected for the past four hours by default.
 
 * Use the **FilterByNode** parameter to filter logs by computer name. For example:
 
-    ```powershell
-    Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByNode azs-xrp01
-    ```
+  ```powershell
+  Send-AzureStackDiagnosticLog -FilterByNode azs-xrp01
+  ```
 
 * Use the **FilterByLogType** parameter to filter logs by type. You can choose to filter by File, Share, or WindowsEvent. For example:
 
-    ```powershell
-    Get-AzureStackLog -OutputSharePath "<path>" -OutputShareCredential $cred -FilterByLogType File
-    ```
+  ```powershell
+  Send-AzureStackDiagnosticLog -FilterByLogType File
+  ```
+
+* Use the **FilterByResourceProvider** parameter to send diagnostic logs for value-add Resource Providers (RPs). The general syntax is:
+ 
+  ```powershell
+  Send-AzureStackDiagnosticLog -FilterByResourceProvider <<value-add RP name>>
+  ```
+ 
+  To send diagnostic logs for IoT Hub: 
+
+  ```powershell
+  Send-AzureStackDiagnosticLog -FilterByResourceProvider IotHub
+  ```
+ 
+  To send diagnostic logs for Event Hubs:
+
+  ```powershell
+  Send-AzureStackDiagnosticLog -FilterByResourceProvider eventhub
+  ```
+ 
+  To send diagnostic logs for Azure Stack Edge:
+
+  ```powershell
+  Send-AzureStackDiagnosticLog -FilterByResourceProvide databoxedge
+  ```
+
+* Use the **FilterByRole** parameter to send diagnostic logs from VirtualMachines and BareMetal roles:
+
+  ```powershell
+  Send-AzureStackDiagnosticLog -FilterByRole VirtualMachines,BareMetal
+  ```
+
+* To send diagnostic logs from VirtualMachines and BareMetal roles, with date filtering for log files for the past 8 hours:
+
+  ```powershell
+  Send-AzureStackDiagnosticLog -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8)
+  ```
+
+* To send diagnostic logs from VirtualMachines and BareMetal roles, with date filtering for log files for the time period between 8 hours ago and 2 hours ago:
+
+  ```powershell
+  Send-AzureStackDiagnosticLog -FilterByRole VirtualMachines,BareMetal -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2)
+  ```
 
 
 ## Next steps
