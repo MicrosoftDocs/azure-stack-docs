@@ -1,6 +1,6 @@
 --- 
-title: Manage virtual machines using Windows PowerShell 
-description: Learn how to manage virtual machines for Azure Stack HCI using Windows PowerShell 
+title: Manage VMs using Windows PowerShell 
+description: Learn how to manage virtual machines in Azure Stack HCI using Windows PowerShell 
 author: v-dasis 
 ms.topic: article 
 ms.prod:  
@@ -9,13 +9,13 @@ ms.author: v-dasis
 ms.reviewer: JasonGerend 
 ---
 
-# Manage virtual machines using Windows PowerShell
+# Manage VMs using Windows PowerShell
 
-Windows PowerShell can be used to manage the virtual machines for all Azure Stack HCI servers running Windows Server 2019 Datacenter.
+> Applies to Windows Server 2019
 
-Alternatively, you can also manage virtual machines using Windows Admin Center from a Web browser. For more information, see [Managing virtual machines using Windows Admin Center]().
+Windows PowerShell can be used to create and manage virtual machines in Azure Stack HCI.
 
-## Create a virtual machine using Windows PowerShell  
+## Create a VM using Windows PowerShell  
 
 1. On the Windows desktop, click the Start button and type any part of the name **Windows PowerShell**.  
 
@@ -36,7 +36,7 @@ Alternatively, you can also manage virtual machines using Windows Admin Center f
      - **-VHDPath** is the path to the virtual machine disk that you want to use.  
      - **-Path** is the path to store the virtual machine configuration files.  
      - **-Generation** is the virtual machine generation. Use generation 1 for VHD and generation 2 for VHDX.
-     - **-Switch** is the name of the virtual switch that you want the virtual machine to use to connect to other virtual machines or the network. See [Create a virtual switch for Hyper-V virtual machines](Create-a-virtual-switch-for-Hyper-V-virtual-machines.md).  
+     - **-Switch** is the name of the virtual switch that you want the virtual machine to use to connect to other virtual machines or the network. 
 
        ```  
        New-VM -Name <Name> -MemoryStartupBytes <Memory> -BootDevice <BootDevice> -VHDPath <VHDPath> -Path <Path> -Generation <Generation> -Switch <SwitchName>  
@@ -70,7 +70,9 @@ Alternatively, you can also manage virtual machines using Windows Admin Center f
    Start-VM -Name Win10VM  
    ```  
 
-6. Connect to the virtual machine by using Virtual Machine Connection (VMConnect).  
+## Connect to a VM using VMConnect ##
+
+1. Connect to the virtual machine by using Virtual Machine Connection (VMConnect).  
 
    ```  
    VMConnect.exe  
@@ -78,6 +80,4 @@ Alternatively, you can also manage virtual machines using Windows Admin Center f
 
 ## Next Steps  
 
-- [New-VM](https://technet.microsoft.com/library/hh848537.aspx)  
-
--   [Create a virtual switch for Hyper-V virtual machines](Create-a-virtual-switch-for-Hyper-V-virtual-machines.md)  
+- You can also create and manage VMs using Windows Admin Center. For more information, see [Managing VMs using Windows Admin Center](manage-vm.md).
