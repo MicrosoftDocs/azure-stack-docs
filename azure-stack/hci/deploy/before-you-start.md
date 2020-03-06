@@ -4,7 +4,7 @@ description: How to prepare to deploy Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 03/05/2020
+ms.date: 03/06/2020
 ---
 
 # Before you deploy Azure Stack HCI
