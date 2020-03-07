@@ -12,6 +12,8 @@
     href: manage/extend-volumes.md
   - name: Delete volumes
     href: manage/delete-volumes.md
+  - name: Replace drives
+    href: manage/replace-drives.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
