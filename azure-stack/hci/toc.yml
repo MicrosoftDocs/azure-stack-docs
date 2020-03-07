@@ -10,6 +10,14 @@
     href: manage/create-volumes.md
   - name: Replace drives
     href: manage/replace-drives.md
+- name: Concepts
+  items:
+  - name: Understand the cache
+    href: concepts/cache.md
+  - name: Fault tolerance and storage efficiency
+    href: concepts/fault-tolerance.md
+  - name: Cluster and storage pool quorum
+    href: concepts/quorum.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
