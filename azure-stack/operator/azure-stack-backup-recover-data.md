@@ -28,7 +28,7 @@ This scenario addresses recovering your entire installation if there's a failure
 
 ## Workflows
 
-The journey of protecting Azure Start starts with backing up the infrastructure and app/tenant data separately. This document covers how to protect the infrastructure. 
+The journey of protecting Azure Stack Hub starts with backing up the infrastructure and app/tenant data separately. This document covers how to protect the infrastructure. 
 
 ![Azure Stack Hub data recovery workflow — Deployment](media/azure-stack-backup/azure-stack-backup-workflow1.png)
 
