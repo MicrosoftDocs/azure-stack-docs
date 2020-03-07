@@ -16,6 +16,12 @@
     href: concepts/choosing-drives.md
   - name: Plan volumes
     href: concepts/plan-volumes.md
+  - name: Understand the cache
+    href: concepts/cache.md
+  - name: Fault tolerance and storage efficiency
+    href: concepts/fault-tolerance.md
+  - name: Cluster and storage pool quorum
+    href: concepts/quorum.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
