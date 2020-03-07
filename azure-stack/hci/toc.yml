@@ -8,6 +8,8 @@
   items:
   - name: Create volumes
     href: manage/create-volumes.md
+  - name: Replace drives
+    href: manage/replace-drives.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
