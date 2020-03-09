@@ -72,6 +72,6 @@ Now you're ready to get your hardware provider's latest firmware updates.
 1. Click the hardware provider's product name to go to the company's Azure Stack HCI solutions website to get the product's latest firmware updates.
 
 ## Next steps
-Advance to the next article to learn how to create...
+To perform the next management task related to this article, see:
 > [!div class="nextstepaction"]
-> [Next steps button]()
+> [Creating volumes in Azure Stack HCI](../manage/create-volumes.md)
