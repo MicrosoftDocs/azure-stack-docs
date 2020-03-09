@@ -180,12 +180,12 @@ For simplicity, this example uses decimal (base-10) units throughout, meaning 1 
 
 ## Usage
 
-See [Creating volumes in Storage Spaces Direct](/en-us/windows-server/storage/storage-spaces/create-volumes).
+See [Creating volumes in Azure Stack HCI](../manage/create-volumes.md).
 
 ## Next steps
 
 For more information, see also:
 
-- [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
+- [Azure Stack HCI overview](../overview.md)
 - [Choosing drives for Storage Spaces Direct](choose-drives.md)
-- [Fault tolerance and storage efficiency](/windows-server/storage/storage-spaces/storage-spaces-fault-tolerance)
+- [Fault tolerance and storage efficiency](fault-tolerance.md)
