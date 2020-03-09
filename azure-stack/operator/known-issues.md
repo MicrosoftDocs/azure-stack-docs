@@ -234,11 +234,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: In the user portal, the **VPN Troubleshoot** feature and **Metrics** in a VPN gateway resource appears, however this is not supported in Azure Stack Hub.
 - Occurrence: Common
 
-### Adding extension to VM Scale Set
-
-- Applicable: This issue applies to releases 1907 and later.
-- Cause: In the user portal, once a virtual machine scale set is created, the UI does not permit the user to add an extension.
-- Occurrence: Common
 
 ### Delete a storage container
 
