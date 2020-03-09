@@ -4,13 +4,13 @@ description: Learn how to run a Windows virtual machine on Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: how-to
-ms.date: 11/11/2019
+ms.date: 3/9/2020
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.lastreviewed: 11/01/2019
+ms.lastreviewed: 3/9/2020
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, learn about the requirements of configuring and deploying a virtual machine (VM).
+# Keyword: Azure Stack Hub VM requirements
 
 ---
 
@@ -76,7 +76,7 @@ While the infrastructure of Azure Stack Hub is already resilient to failures, th
 | **Fault domains** | VMs placed in an availability set will be physically isolated from each other by spreading them as evenly as possible over multiple fault domains (Azure Stack Hub nodes). If there's a hardware failure, VMs from the failed fault domain will be restarted in other fault domains. They'll be kept in separate fault domains from the other VMs but in the same availability set if possible. When the hardware comes back online, VMs will be rebalanced to maintain high availability. |
 | **Update domains**| Update domains are another way that Azure provides high availability in availability sets. An update domain is a logical group of underlying hardware that can undergo maintenance at the same time. VMs located in the same update domain will be restarted together during planned maintenance. As tenants create VMs within an availability set, the Azure platform automatically distributes VMs across these update domains. <br>In Azure Stack Hub, VMs are live migrated across the other online hosts in the cluster before their underlying host is updated. Since there's no tenant downtime during a host update, the update domain feature on Azure Stack Hub only exists for template compatibility with Azure. VMs in an availability set will show 0 as their update domain number on the portal. |
 
-**Backups** For recommendations on protecting your Azure Stack Hub IaaS VMs, reference this article.
+**Backups** For recommendations on protecting your Azure Stack Hub IaaS VMs, reference [Protect VMs deployed on Azure Stack Hub](azure-stack-manage-vm-protect.md).
 
 **Stopping a VM**. Azure makes a distinction between "stopped" and "deallocated" states. You are charged when the VM status is stopped, but not when the VM is deallocated. In the Azure Stack Hub portal, the **Stop** button deallocates the VM. If you shut down through the OS while logged in, the VM is stopped but **not** deallocated, so you will still be charged.
 
