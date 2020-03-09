@@ -56,11 +56,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Occurrence: Common
 
 
-### Adding extension to VM Scale Set
-
-- Applicable: This issue applies to releases 1907 and later.
-- Cause: In the user portal, once a virtual machine scale set is created, the UI does not permit the user to add an extension.
-- Occurrence: Common
 
 ### Storage account options
 
@@ -92,11 +87,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 ## Networking
 
-### Load balancer
-
-- Applicable: This issue applies to all supported releases.
-- Cause: When adding availability set VMs to the backend pool of a load balancer, an error message is displayed on the portal stating **Failed to save load balancer backend pool**. This is a cosmetic issue on the portal; the functionality is still in place and VMs are successfully added to the backend pool internally.
-- Occurrence: Common
 
 ### Network Security Groups
 
@@ -210,11 +200,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: In the user portal, when you try to upload a blob in the upload blade, there is an option to select **AAD** or **Key Authentication**, however **AAD** is not supported in Azure Stack Hub.
 - Occurrence: Common
 
-### Load balancer backend pool
-
-- Applicable: This issue applies to all supported releases.
-- Cause: In the user portal, when adding a **Load balancer** backend pool, the operation results in an error message of **Failed to save load balancer backend pool**; however, the operation did actually succeed.
-- Occurrence: Common
 
 ### Alert for network interface disconnected
 
