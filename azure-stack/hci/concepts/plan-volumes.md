@@ -187,5 +187,5 @@ See [Creating volumes in Storage Spaces Direct](/en-us/windows-server/storage/st
 For more information, see also:
 
 - [Storage Spaces Direct overview](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Choosing drives for Storage Spaces Direct](choosing-drives.md)
+- [Choosing drives for Storage Spaces Direct](choose-drives.md)
 - [Fault tolerance and storage efficiency](/windows-server/storage/storage-spaces/storage-spaces-fault-tolerance)
