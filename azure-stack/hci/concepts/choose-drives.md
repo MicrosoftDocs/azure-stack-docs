@@ -17,32 +17,11 @@ This topic provides guidance on how to choose drives for [Storage Spaces Direct]
 
 Storage Spaces Direct currently works with three types of drives:
 
-<table>
-    <tr style="border: 0;">
-        <td style="padding: 10px; border: 0; width:70px">
-            <img src="media/choosing-drives/NVMe-100px.png">
-        </td>
-        <td style="padding: 10px; border: 0;" valign="middle">
-            <b>NVMe</b> (Non-Volatile Memory Express) refers to solid-state drives that sit directly on the PCIe bus. Common form factors are 2.5" U.2, PCIe Add-In-Card (AIC), and M.2. NVMe offers higher IOPS and IO throughput with lower latency than any other type of drive we support today.
-        </td>
-    </tr>
-    <tr style="border: 0;">
-        <td style="padding: 10px; border: 0; width:70px" >
-            <img src="media/choosing-drives/SSD-100px.png">
-        </td>
-        <td style="padding: 10px; border: 0;" valign="middle">
-            <b>SSD</b> refers to solid-state drives, which connect via conventional SATA or SAS.
-        </td>
-    </tr>
-    <tr style="border: 0;">
-        <td style="padding: 10px; border: 0; width:70px">
-            <img src="media/choosing-drives/HDD-100px.png">
-        </td>
-        <td style="padding: 10px; border: 0;" valign="middle">
-            <b>HDD</b> refers to rotational, magnetic hard disk drives, which offer vast storage capacity.
-        </td>
-    </tr>
-</table>
+|||
+|----------------------|--------------------------|
+|![NVMe](media/choose-drives/NVMe-100-px.png)|**NVMe** (Non-Volatile Memory Express) refers to solid-state drives that sit directly on the PCIe bus. Common form factors are 2.5" U.2, PCIe Add-In-Card (AIC), and M.2. NVMe offers higher IOPS and IO throughput with lower latency than any other type of drive we support today.|
+|![SSD](media/choose-drives/SSD-100-px.png)|**SSD** refers to solid-state drives, which connect via conventional SATA or SAS.|
+|![HDD](media/choose-drives/HDD-100-px.png)|**HDD** refers to rotational, magnetic hard disk drives, which offer vast storage capacity.|
 
 ## Built-in cache
 
@@ -56,7 +35,7 @@ To achieve predictable and uniform submillisecond latency across random reads an
 
 There are currently three ways to do so:
 
-![All-Flash-Deployment-Possibilities](media/choosing-drives/All-Flash-Deployment-Possibilities.png)
+![All-Flash-Deployment-Possibilities](media/choose-drives/All-Flash-Deployment-Possibilities.png)
 
 1. **All NVMe.** Using all NVMe provides unmatched performance, including the most predictable low latency. If all your drives are the same model, there is no cache. You can also mix higher-endurance and lower-endurance NVMe models, and configure the former to cache writes for the latter ([requires set-up](/windows-server/storage/storage-spaces/understand-the-cache#manual-configuration)).
 
@@ -71,7 +50,7 @@ There are currently three ways to do so:
 
 For environments with a variety of applications and workloads, some with stringent performance requirements and others requiring considerable storage capacity, you should go "hybrid" with either NVMe or SSDs caching for larger HDDs.
 
-![Hybrid-Deployment-Possibilities](media/choosing-drives/Hybrid-Deployment-Possibilities.png)
+![Hybrid-Deployment-Possibilities](media/choose-drives/Hybrid-Deployment-Possibilities.png)
 
 1. **NVMe + HDD**. The NVMe drives will accelerate reads and writes by caching both. Caching reads allows the HDDs to focus on writes. Caching writes absorbs bursts and allows writes to coalesce and be de-staged only as needed, in an artificially serialized manner that maximizes HDD IOPS and IO throughput. This provides NVMe-like write characteristics, and for frequently or recently read data, NVMe-like read characteristics too.
 
@@ -88,7 +67,7 @@ For environments with a variety of applications and workloads, some with stringe
 
 For workloads that require vast capacity and write infrequently, such as archival, backup targets, data warehouses or "cold" storage, you should combine a few SSDs for caching with many larger HDDs for capacity.
 
-![Deployment options for maximizing capacity](media/choosing-drives/maximizing-capacity.png)
+![Deployment options for maximizing capacity](media/choose-drives/maximizing-capacity.png)
 
 1. **SSD + HDD**. The SSDs will cache reads and writes, to absorb bursts and provide SSD-like write performance, with optimized de-staging later to the HDDs.
 

@@ -13,7 +13,7 @@
 - name: Concepts
   items:
   - name: Choose drives
-    href: concepts/choosing-drives.md
+    href: concepts/choose-drives.md
   - name: Plan volumes
     href: concepts/plan-volumes.md
   - name: Understand the cache
