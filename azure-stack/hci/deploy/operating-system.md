@@ -47,7 +47,9 @@ Now you're ready to connect the servers in your cluster to Windows Admin Center.
 1. On the **Add resources** menu, under **Windows Server**, **Connect to servers**, click **Add**.
 1. In the **Server name** box, type the name of the server, and then click **Add**.
 
-    **Note:** Repeat this step to add all of the servers to Windows Admin Center for your Azure Stack HCI solution.
+    > [!NOTE]
+    > Repeat Step 3 to add all of the servers to Windows Admin Center for your Azure Stack HCI solution.
+
 1. Under **All connections**, in the **Name** column, select the checkbox next to the first server, and then click **Connect** to display the server's **Overview** page in Windows Admin Center from **Server Manger**.
 
     > [!NOTE]
