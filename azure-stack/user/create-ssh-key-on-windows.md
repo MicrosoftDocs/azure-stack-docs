@@ -21,7 +21,7 @@ You can create an SSH (secure shell) key for your Linux machine on a windows mac
 ## Open bash on Windows
 
 1. If you do not have the Windows Subsystem for Linux installed on your machine, install "[Ubuntu on Windows](https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab).  
-    For more information about using the Windows Subsystem for Linux, see[Windows Subsystem for Linux Documentation](https://docs.microsoft.com/windows/wsl/about).
+    For more information about using the Windows Subsystem for Linux, see [Windows Subsystem for Linux Documentation](https://docs.microsoft.com/windows/wsl/about).
 
 2. Type **Ubuntu** in your toolbar and select **Open**.
 
@@ -36,8 +36,8 @@ You can create an SSH (secure shell) key for your Linux machine on a windows mac
     Bash displays the following prompt:
 
     ```bash
-        Generating public/private rsa key pair.
-        Enter file in which to save the key (/home/username/.ssh/id_rsa):
+    Generating public/private rsa key pair.
+    Enter file in which to save the key (/home/username/.ssh/id_rsa):
     ```
 
 2. Type the filename and passphrase. Type the passphrase again.
@@ -70,18 +70,18 @@ You can create an SSH (secure shell) key for your Linux machine on a windows mac
 3. To view and the public ssh key:
 
     ```bash
-        cat /home/<username>/<filename>
+    cat /home/<username>/<filename>
     ```
 
     Bash displays something like the following:
 
     ```bash
-        ssh-rsa AAAAB3NzaC1ycTHISISANEXAMPLEDITqEJRNrf6tXy9c0vKnMhiol1BFzHFV3
-        +suXk6NDeFcA9uI58VdD/CuvG826R+3OPnXutDdl2MLyH3DGG1fJAHObUWQxmDWluhSGb
-        JMHiw2L9Wnf9klG6+qWLuZgjB3TQdus8sZI8YdB4EOIuftpMQ1zkAJRAilY0p4QxHhKbU
-        IkvWqBNR+rd5FcQx33apIrB4LMkjd+RpDKOTuSL2qIM2+szhdL5Vp5Y6Z1Ut1EpOrkbg1
-        cVw7oW0eP3ROPdyNqnbi9m1UVzB99aoNXaepmYviwJGMzXsTkiMmi8Qq+F8/qy7i4Jxl0
-        aignia880qOtQrvNEvyhgZOM5oDhgE3IJ username@machine
+    ssh-rsa AAAAB3NzaC1ycTHISISANEXAMPLEDITqEJRNrf6tXy9c0vKnMhiol1BFzHFV3
+    +suXk6NDeFcA9uI58VdD/CuvG826R+3OPnXutDdl2MLyH3DGG1fJAHObUWQxmDWluhSGb
+    JMHiw2L9Wnf9klG6+qWLuZgjB3TQdus8sZI8YdB4EOIuftpMQ1zkAJRAilY0p4QxHhKbU
+    IkvWqBNR+rd5FcQx33apIrB4LMkjd+RpDKOTuSL2qIM2+szhdL5Vp5Y6Z1Ut1EpOrkbg1
+    cVw7oW0eP3ROPdyNqnbi9m1UVzB99aoNXaepmYviwJGMzXsTkiMmi8Qq+F8/qy7i4Jxl0
+    aignia880qOtQrvNEvyhgZOM5oDhgE3IJ username@machine
     ```
 
 4. Copy the text `ssh-rsa [...]` up to `username@machinename`. Make sure the text doesn't include any carriage returns. You can use this text when creating your VM or Kubernetes cluster using the AKS engine.
