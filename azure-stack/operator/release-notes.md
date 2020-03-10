@@ -4,10 +4,10 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/05/2020
+ms.date: 03/10/2020
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 03/05/2020
+ms.lastreviewed: 03/10/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -81,9 +81,9 @@ For more information about update build types, see [Manage updates in Azure Stac
 - The download progress of an Azure Stack Hub update package is now visible in the update blade after an update is initiated. This only applies to connected Azure Stack Hub systems that choose to [prepare update packages via automatic download](azure-stack-update-prepare-package.md#automatic-download-and-preparation-for-update-packages).
 - Reliability improvements for Network Controller Host agent.
 - Introduced a new micro-service called DNS Orchestrator that improves the resiliency logic for the internal DNS services during patch and update. 
-
 - Added a new request validation to fail invalid blob URIs for the boot diagnostic storage account parameter while creating VMs.
 - Added auto-remediation and logging improvements for Rdagent and Host agent - two services on the host that facilitate VM CRUD operations.
+- Added a new feature to marketplace management that provides the ability to block administrators from downloading marketplace products that are incompatible with their Azure Stack, due to various attributes such as the Azure Stack version or billing model.
 
 ### Changes
 
@@ -117,7 +117,6 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Fixed an issue causing add-on resource provider operations to fail after performing Azure Stack Hub secret rotation.
 - Fixed an issue that was a common cause of Azure Stack Hub update failures due to memory pressure on the ERCS role.
 - Fixed a bug in the update blade in which the update status showed as **Installing** instead of **Preparing** during the preparation phase of an Azure Stack Hub update.
-- Fixed a filtering issue in Marketplace management, which incorrectly cleared all results when filters were set after the page loaded for the first time.
 - Fixed an issue where the RSC feature on the physical switches was creating inconsistences and dropping the traffic flowing through a load balancer. The RSC feature is now disabled by default.
 - Fixed an issue where adding a secondary IP to the VM was causing RDP issues.
 - Fixed an issue where the MAC address of a NIC was being cached, and assigning of that address to another resource was causing VM deployment failures.
