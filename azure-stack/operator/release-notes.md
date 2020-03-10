@@ -83,7 +83,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Introduced a new micro-service called DNS Orchestrator that improves the resiliency logic for the internal DNS services during patch and update. 
 - Added a new request validation to fail invalid blob URIs for the boot diagnostic storage account parameter while creating VMs.
 - Added auto-remediation and logging improvements for Rdagent and Host agent - two services on the host that facilitate VM CRUD operations.
-- Added a new feature to marketplace management that provides the ability to warn if a product is incompatible with your Azure Stack version prior to download.
+- Added a new feature to marketplace management that provides the ability to block administrators from downloading marketplace products that are incompatible with their Azure Stack, due to various attributes such as the Azure Stack version or billing model.
 
 ### Changes
 
