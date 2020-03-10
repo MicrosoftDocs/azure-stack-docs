@@ -12,9 +12,8 @@ ms.date: 03/02/2020
 
 This topic provides instructions for resizing volumes on a [Storage Spaces Direct](/windows-server/storage/storage-spaces/storage-spaces-direct-overview) cluster by using Windows Admin Center.
 
-[!WARNING] Not supported: resizing volumes on virtual machines
-
-If you are running Storage Spaces Direct on virtual machines, including in Azure, resizing of that storage is not supported and will cause data to become inaccessible. Instead, follow the instructions in the [Add servers or drives](/windows-server/storage/storage-spaces/add-nodes) section to add additional capacity before extending volumes.
+> [!WARNING]
+> **Not supported: resizing volumes on virtual machines.** If you are running Storage Spaces Direct on virtual machines, including in Azure, resizing of that storage is not supported and will cause data to become inaccessible. Instead, follow the instructions in the [Add servers or drives](/windows-server/storage/storage-spaces/add-nodes) section to add additional capacity before extending volumes.
 
 Watch a quick video on how to resize a volume.
 
