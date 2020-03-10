@@ -22,7 +22,7 @@ The AKS cluster in Azure Stack Hub using the AKS engine uses kubenet. For a disc
 
 ## Create custom virtual network
 
-You must have a custom virtual network in your Azure Stack instance. For more information, see [Quickstart: Create a virtual network using the Azure portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal).
+You must have a custom virtual network in your Azure Stack Hub instance. For more information, see [Quickstart: Create a virtual network using the Azure portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal).
 
 Create a new subnet in your virtual network. You will need to the get the subnet Resource ID and IP address range. You will use the Resource ID and range in your API model when you deploy your cluster.
 
@@ -45,7 +45,7 @@ Create a new subnet in your virtual network. You will need to the get the subnet
 
 ## Get the IP address block
 
-The AKS engine supports deploying into an existing virtual network. When deploying into an existing subnet, your cluster will use  a block of IP addresses. You will need to set your cluster to avoid assignment collision with other resources using IP addresses and the resources needed by your cluster.
+The AKS engine supports deploying into an existing virtual network. When deploying into an existing subnet, your cluster will use a block of consecutive IPs for agents and another for masters.
 
 You will need to set two values. You will need to know the number of IP addresses you will need to reserve for your cluster, and the first consecutive static IP within the subnet IP space.
 
@@ -72,13 +72,13 @@ For larger subnets, for example /16 with more than 60 thousand addresses, you ma
 
 ## Update the API model
 
-Update the API model used to deploy the cluster from your AKS Client machine to your custom virtual network.
+Update the API model used to deploy the cluster from the AKS engine to your custom virtual network.
 
 In the array **masterProfile** set the following values:
 
 | Field | Example | Description |
 | --- | --- | --- |
-| vnetSubnetId | `/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/default` | Specify the Azure Resource Manager path ID the subnet.  |
+| vnetSubnetId | `/subscriptions/77e28b6a-582f-42b0-94d2-93b9eca60845/resourceGroups/MDBN-K8S/providers/Microsoft.Network/virtualNetworks/MDBN-K8S/subnets/default` | Specify the Resource ID the subnet.  |
 | firstConsecutiveStaticIP | 10.1.0.224 | Assign to the `firstConsecutiveStaticIP` configuration property an IP address that is near the *end* of the available IP address space in the desired subnet. `firstConsecutiveStaticIP` only applies to the master pool. |
 
 In the array **agentPoolProfiles** set the following values:
@@ -108,11 +108,11 @@ For example:
 
 ## Deploy your cluster
 
-After adding the values to your API model, you can deploy your cluster from your client machine using the deploy command with aks-engine. For instructions, see [Deploy a Kubernetes cluster](azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
+After adding the values to your API model, you can deploy your cluster from your client machine using the `deploy` command using the AKS engine. For instructions, see [Deploy a Kubernetes cluster](azure-stack-kubernetes-aks-engine-deploy-cluster.md#deploy-a-kubernetes-cluster).
 
 ## Set the route table and network security group
 
-Set both the route table and the network security group (NSG) in the subnet blade in the Azure Stack user portal. If you're not using Azure CNI (for example, `networkPlugin`: `kubenet` in the kubernetesConfig API model configuration object. After you have successfully deployed a cluster to your custom virtual network, get the ID of the Route Table resource from **Network** blade in your cluster's resource group.
+Set both the route table and the network security group (NSG) in the subnet blade in the Azure Stack user portal. If you're not using Azure CNI, for example, `networkPlugin`: `kubenet` in the kubernetesConfig API model configuration object. After you have successfully deployed a cluster to your custom virtual network, get the ID of the Route Table resource from **Network** blade in your cluster's resource group.
 
 1. Open the Azure Stack Hub user portal in your Azure Stack Hub instance.
 2. Select **All resources**.
