@@ -16,6 +16,10 @@
     href: manage/replace-drives.md
 - name: Concepts
   items:
+  - name: Choose drives
+    href: concepts/choose-drives.md
+  - name: Plan volumes
+    href: concepts/plan-volumes.md
   - name: Understand the cache
     href: concepts/cache.md
   - name: Fault tolerance and storage efficiency
