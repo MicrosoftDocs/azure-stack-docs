@@ -107,7 +107,7 @@ Azure Repos
 
 ### Create self-contained web app deployment for App Services in both clouds
 
-1.  Edit the **WebApplication.csproj** file. Select `Runtimeidentifier` and add `win10-x64`. (See [Self-contained Deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.) 
+1.  Edit the **WebApplication.csproj** file. Select `Runtimeidentifier` and add `win10-x64`. (See [Self-contained Deployment](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) documentation.) 
 
     ![Edit web app project file](media/solution-deployment-guide-cross-cloud-scaling/image3.png)
 
@@ -123,7 +123,7 @@ Azure Repos
 
     ![Add code to the web app](media/solution-deployment-guide-cross-cloud-scaling/image4.png)
 
-3. Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that run on Azure and Azure Stack Hub.
+3. Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) process will publish artifacts that run on Azure and Azure Stack Hub.
 
 ## Use an Azure hosted agent
 
@@ -266,7 +266,7 @@ Use [Azure Resource Manager templates](https://azure.microsoft.com/resources/tem
 
 #### Create self-contained web app deployment for App Services in both clouds
 
-1.  Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and then add `win10-x64`. For more information, see [Self-contained deployment](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) documentation.
+1.  Edit the **WebApplication.csproj** file: Select `Runtimeidentifier` and then add `win10-x64`. For more information, see [Self-contained deployment](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) documentation.
 
 2.  Use Team Explorer to check the code into Azure Repos.
 
@@ -280,7 +280,7 @@ Use [Azure Resource Manager templates](https://azure.microsoft.com/resources/tem
 
 3.  In **Arguments**, add **-r win10-x64** code. This addition is required to trigger a self-contained deployment with .NET Core.
 
-4.  Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd) process will publish artifacts that can run on Azure and Azure Stack Hub.
+4.  Run the build. The [self-contained deployment build](https://docs.microsoft.com/dotnet/core/deploying/deploy-with-vs#simpleSelf) process will publish artifacts that can run on Azure and Azure Stack Hub.
 
 #### Use an Azure hosted build agent
 
