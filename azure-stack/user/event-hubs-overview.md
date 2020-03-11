@@ -52,6 +52,6 @@ To learn more about the Event Hubs on Azure Stack Hub operator experience, refer
 
 ## Next steps
 
-If it's not available in your subscription, work with your administrator to [install the Event Hubs on Azure Stack Hub resource provider](../operator/event-hubs-rp-overview.md).
+If Event Hubs is not available in your subscription, work with your administrator to [install the Event Hubs on Azure Stack Hub resource provider](../operator/event-hubs-rp-overview.md).
 
 If you have Event Hubs installed and you're ready to use it, consult the [Event Hubs documentation](/azure/event-hubs/event-hubs-about) for more details on the service.
