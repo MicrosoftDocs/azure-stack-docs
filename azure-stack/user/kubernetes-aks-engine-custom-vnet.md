@@ -18,7 +18,7 @@ ms.lastreviewed: 2/28/2020
 
 You can deploy a Kubernetes cluster using the Azure Kubernetes Service (AKS) engine on a custom virtual network. This article looks at finding the information you need in your virtual network. You can find steps for calculating the IP addresses used by your cluster, setting the vales in the API Model, and setting the route table and network security group.
 
-The AKS cluster in Azure Stack Hub using the AKS engine uses the kubenet network plugin. For a discussion of he kubenet network plugin networking in Azure, see [Use kubenet networking with your own IP address ranges in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/configure-kubenet).
+The Kubernetes cluster in Azure Stack Hub using the AKS engine uses the kubenet network plugin. For a discussion of he kubenet network plugin networking in Azure, see [Use kubenet networking with your own IP address ranges in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/configure-kubenet).
 
 ## Create custom virtual network
 
