@@ -4,7 +4,7 @@ description: How to prepare to deploy Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 03/06/2020
+ms.date: 03/11/2020
 ---
 
 # Before you deploy Azure Stack HCI
@@ -49,4 +49,4 @@ Windows Admin Center is a locally deployed, browser-based app for managing Azure
 
 Advance to the next article to learn how to deploy the operating system for Azure Stack HCI.
 > [!div class="nextstepaction"]
-> [Deploy the operating system](operating-system.md)
+> [Deploy the operating system](before-you-start.md)
