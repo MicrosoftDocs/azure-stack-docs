@@ -29,7 +29,7 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 |Azure storage service encryption for data at Rest|256-bit AES encryption. Support encryption using customer-managed keys in Key Vault.|BitLocker 128-bit AES encryption. Encryption using customer-managed keys isn't supported.
 |Storage account type|General-purpose V1, V2, and Blob storage accounts. |General-purpose V1 only.
 |Replication options|Locally redundant storage, geo-redundant storage, read-access geo-redundant storage, and zone-redundant storage. |Locally redundant storage.
-|Premium storage|Provide high-performance and low-latency storage. Only support page blobs in premium storage accounts.|Can be provisioned, but no performance limit or guarantee. Wouldn'tt block using block blobs, append blobs, tables, and queues in premium storage accounts.
+|Premium storage|Provide high-performance and low-latency storage. Only support page blobs in premium storage accounts.|Can be provisioned, but no performance limit or guarantee. Wouldn't block using block blobs, append blobs, tables, and queues in premium storage accounts.
 |Managed disks|Premium and standard supported. |Supported when you use version 1808 or later.
 |Blob name|1,024 characters (2,048 bytes). |880 characters (1,760 bytes).
 |Block blob max size|4.75 TB (100 MB X 50,000 blocks). |4.75 TB (100 MB x 50,000 blocks) for the 1802 update or newer version. 50,000 X 4 MB (approximately 195 GB) for previous versions.
