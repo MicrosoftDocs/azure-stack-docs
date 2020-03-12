@@ -39,6 +39,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 
 - For a list of Azure Stack known issues in this release, see the [known issues](../operator/known-issues.md) article.
 - Note that available Azure Stack hotfixes are not applicable to the ASDK.
+::: moniker-end
 
 ::: moniker range="azs-1910"
 ## Build 1.1910.0.58
