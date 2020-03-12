@@ -16,12 +16,20 @@ This topic provides instructions for monitoring the performance of an Azure Stac
 
 ## Connect to a cluster using Windows Admin Center
 
-1. In Windows Admin Center, connect to an Azure Stack HCI cluster. The Dashboard will appear, providing alerts and health information about servers, drives and volumes, as well as details about CPU, memory, and storage usage.
-2. Scroll down to view cluster performance information such as IOPS and latency by hour, day, week, month, or year.
+In Windows Admin Center, connect to an Azure Stack HCI cluster. The Dashboard will appear, providing alerts and health information about servers, drives and volumes, as well as details about CPU, memory, and storage usage.
+
+![dashboard-alerts](media/dashboard-alerts.png)
+
+Scroll down to view cluster performance information such as IOPS and latency by hour, day, week, month, or year.
+
+![dashboard-performance](media/dashboard-performance.png)
 
 ## Using the Performance Monitor tool
 
-View and compare performance counters for Windows, apps, or devices in real-time.
+Use the Performance Monitor tool to view and compare performance counters for Windows, apps, or devices in real-time.
+
+1. Select **Performance Monitor** from the **Tools** menu on the left.
+2. Click "blank workspace" to start a new workspace, or "restore previous" to restore a previous workspace.
 
 ## Next steps
 
