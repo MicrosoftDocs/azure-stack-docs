@@ -24,6 +24,15 @@ ROBOTS: NOINDEX
 
 This article has the release notes for Azure Stack Hub validation as a service.
 
+## Version 4.4.3.2
+
+2020 February 2
+
+- Service maintenance updates.
+
+- Bug fixes
+  - Fixed tests Test101LinuxEmptyAttachedDiskManagedDisk, Test101WindowsEmptyAttachedDiskManagedDisk.
+
 ## Version 4.4.2.1
 
 2020 January 9
