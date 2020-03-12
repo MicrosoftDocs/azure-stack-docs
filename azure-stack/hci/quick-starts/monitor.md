@@ -18,13 +18,13 @@ This topic provides instructions for monitoring the performance of an Azure Stac
 
 1. In Windows Admin Center, connect to an Azure Stack HCI cluster. The Dashboard will appear, providing alerts and health information about servers, drives and volumes, as well as details about CPU, memory, and storage usage.
 
-[!div class="mx-imgBorder"]
-![dashboard-alerts](media/dashboard-alerts.png)
+> [!div class="mx-imgBorder"]
+> ![dashboard-alerts](media/dashboard-alerts.png)
 
 2. Scroll down to view cluster performance information such as IOPS and latency by hour, day, week, month, or year.
 
-[!div class="mx-imgBorder"]
-![dashboard-performance](media/dashboard-performance.png)
+> [!div class="mx-imgBorder"]
+> ![dashboard-performance](media/dashboard-performance.png)
 
 ## Using the Performance Monitor tool
 
