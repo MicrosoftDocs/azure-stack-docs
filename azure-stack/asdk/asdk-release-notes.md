@@ -7,7 +7,7 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 03/12/2019
+ms.lastreviewed: 03/12/2020
 
 # Intent: As an ASDK user, I want to know the latest changes, updates, and bug fixes to the ASDK.
 # Keyword: asdk release notes
