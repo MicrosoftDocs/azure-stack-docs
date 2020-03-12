@@ -32,6 +32,9 @@ Use the Performance Monitor tool to view and compare performance counters for Wi
 
 1. Select **Performance Monitor** from the **Tools** menu on the left.
 2. Click "blank workspace" to start a new workspace, or "restore previous" to restore a previous workspace.
+3. If creating a new workspace, click the **Add counter** button and select or more source servers to monitor, or select the entire cluster.
+4. Select the object and instance you wish to monitor, as well as the counter and graph type to view dynamic performance information.
+5. Save the workspace by choosing Save > Save As from the top menu.
 
 ## Next steps
 
