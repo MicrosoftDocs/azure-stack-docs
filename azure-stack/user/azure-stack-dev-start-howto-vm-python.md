@@ -4,10 +4,10 @@ description: Deploy a Python web app to a virtual machine in Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: overview
-ms.date: 1/22/2020
+ms.date: 3/12/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 10/02/2019
+ms.lastreviewed: 3/12/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -68,9 +68,9 @@ This article uses Python 3.x running Flask in a virtual environment on an Nginx 
 1. Set up your Git repository on the VM. While you're still connected to your VM in your SSH session, enter the following commands:
 
     ```bash  
-       git clone https://github.com/mattbriggs/flask-hello-world.git
+       git clone https://github.com/https://github.com/Azure-Samples/azure-stack-hub-flask-hello-world.git
     
-       cd flask-hello-world
+       cd azure-stack-hub-flask-hello-world
     ```
 
 2. Create a virtual environment, and populate it with all the package dependencies. While you're still connected to your VM in your SSH session, enter the following commands:
