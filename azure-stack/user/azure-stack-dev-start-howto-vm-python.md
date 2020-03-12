@@ -68,7 +68,7 @@ This article uses Python 3.x running Flask in a virtual environment on an Nginx 
 1. Set up your Git repository on the VM. While you're still connected to your VM in your SSH session, enter the following commands:
 
     ```bash  
-       git clone https://github.com/https://github.com/Azure-Samples/azure-stack-hub-flask-hello-world.git
+       git clone https://github.com/Azure-Samples/azure-stack-hub-flask-hello-world.git
     
        cd azure-stack-hub-flask-hello-world
     ```
