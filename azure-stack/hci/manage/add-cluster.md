@@ -9,54 +9,65 @@ ms.reviewer: jgerend
 ms.date: 03/04/2020
 ---
 
-# Add or remove servers from a cluster in Azure Stack HCI
+# Add or remove servers from an Azure Stack HCI cluster
 
->Applies to: Windows Server 2019
+>Applies to: Azure Stack HCI
 
-Each new physical server that you add must be homogeneous in CPU type, memory, and disk number and size to the servers that are already present in the cluster.
+You can easily add or remove servers from a cluster in Azure Stack HCI. When you want to add a server, keep in mind that each new physical server must be homogeneous in CPU type, memory, and disk number and size to the servers that are already present in the cluster.
+
+Whenever you add or remove a server, you must perform cluster validation to ensure the cluster is functioning normally.
 
 ## Add hardware from your OEM ##
 
-1. Refer to your OEM-provided documentation.
+The first step to adding a server is to get the new hardware from your original OEM. Always refer to your OEM-provided documentation first when adding new hardware to your solution.
+
 1. Place the new physical server in the rack and cable it appropriately.
 1. Enable physical switch ports and adjust access control lists (ACLs) if applicable.
-1. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per your OEM instructions.
-1. Apply the current firmware baseline to all components by using the tools that are provided by the hardware OEM.
+1. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per OEM instructions.
+1. Apply the current firmware baseline to all components by using the tools that are provided by your OEM.
 
-## Perform cluster validation ##
+## Perform server validation ##
 
-You must perform cluster validation on the server before joining the server to your cluster.
-
-1. Open **XYZ Tool**, and select **XYZ**.
-2. ** PLACEHOLDER STEPS**
-3. Verify that all validations steps were successful.
+You must perform validation on the server before joining the server to your cluster. Contact your OEM to determine how to do this. When done, verify that all validations steps were successful.
 
 ## Add the server to the cluster ##
 
-You use Windows Admin Center to join the server to your cluster.
+Once your server has passed validation, use Windows Admin Center to join the server to your cluster.
 
-1. Open **Windows Admin Center**.
-1. Select **Cluster Manager** from the top drop-down arrow.
+1. In **Windows Admin Center**, select **Cluster Manager** from the top drop-down arrow.
 1. Under **Cluster connections**, select the cluster.
 1. Under **Tools**, select **Servers**.
 1. Under **Servers**, select the **Inventory** tab.
 1. On the **Inventory** tab, select **Add**.
 1. In **Server name**, enter the full-qualified domain name of the server you want to add, click **Add**, then click **Add** again at the bottom.
-1. **PLACEHOLDER STEP**
+1. Verify the server has been successfully added to your cluster.
 
 ## Remove a server from the cluster ##
 
-These steps are similar to those are adding a server to a cluster.
+The steps for removing a server from your cluster are similar to those for adding a server to a cluster.
 
-1. Open **Windows Admin Center**.
-1. Select **Cluster Manager** from the top drop-down arrow.
+Keep in mind that when you remove a server, you will also remove any virtual machines, storage drives, and workloads associated with the server.
+
+1. In **Windows Admin Center**, select **Cluster Manager** from the top drop-down arrow.
 1. Under **Cluster connections**, select the cluster.
 1. Under **Tools**, select **Servers**.
 1. Under **Servers**, select the **Inventory** tab.
 1. On the **Inventory** tab, select the server you want to remove, then select **Remove**.
-1. **PLACEHOLDER STEP**
+1. To also remove any server drives from the storage pool, enable that checkbox.
 1. Verify the server has been successfully removed from the cluster.
+
+## Validate the cluster ##
+
+Whenever you add or remove a server from a cluster, you must validate the cluster.
+
+> [!NOTE]
+> Cluster validation requires that [CredSSP](https://docs.microsoft.com/windows-server/manage/windows-admin-center/understand/faq#does-windows-admin-center-use-credssp) is enabled.
+
+1. In **Windows Admin Center**, select **Cluster Manager** from the top drop-down arrow.
+1. Under **Tools**, select **Servers**.
+1. Under **Servers**, select the **Inventory** tab, select **More**, then select **Validate Cluster (Preview)**.
+1. Verify that all validation steps passed successfully.
 
 ## Next Steps ##
 
-To do xyz, see zyx for more information.
+To manage your clusters, see [Manage clusters in Azure Stack HCI](cluster.md).
