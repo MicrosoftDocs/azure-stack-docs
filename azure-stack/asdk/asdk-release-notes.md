@@ -4,10 +4,10 @@ description: Improvements, fixes, and known issues for Azure Stack Development K
 author: sethmanheim
 
 ms.topic: article
-ms.date: 01/27/2020
+ms.date: 03/12/2020
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 11/21/2019
+ms.lastreviewed: 03/12/2019
 
 # Intent: As an ASDK user, I want to know the latest changes, updates, and bug fixes to the ASDK.
 # Keyword: asdk release notes
@@ -30,9 +30,16 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 
 ### Fixed and known issues
 
+- The decryption certification password is a new option to specify the password for the self-signed certificate's (.pfx) that contains the private key necessary to decrypt backup data. This password is required only if the backup is encrypted using a certificate. 
+- Fixed an issue with collecting logs and storing them in an Azure Storage blob container. The syntax for this operation is as follows:
+
+  ```powershell
+  Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
+  ``` 
+
+- Fixed a deployment issue where a slow loading spooler service prevents the removal of some Windows features and requires a reboot.
 - For a list of Azure Stack known issues in this release, see the [known issues](../operator/known-issues.md) article.
 - Note that available Azure Stack hotfixes are not applicable to the ASDK.
-::: moniker-end
 
 ::: moniker range="azs-1910"
 ## Build 1.1910.0.58
