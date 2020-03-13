@@ -1,23 +1,23 @@
 ---
-title: Manage clusters on Azure Stack HCI
+title: Manage Azure Stack HCI clusters
 description: Learn how to manage your hyperconverged clusters on Azure Stack HCI. 
 ms.topic: article
 ms.prod: 
 author: v-dasis
 ms.author: v-dasis
 ms.reviewer: jgerend
-ms.date: 03/04/2020
+ms.date: 03/12/2020
 ---
 
 # Manage clusters on Azure Stack HCI
 
->Applies to: Windows Server 2019
+>Applies to: Azure Stack HCI
 
-Windows Admin Center can be used to manage your hyperconverged clusters on Azure Stack HCI hardware running Windows Server 2019 Datacenter. Specifically, you will be using the Cluster Manager extension in Windows Admin Center to manage your clusters.
+Windows Admin Center can be used to manage your clusters on Azure Stack HCI. Specifically, you will be using the Cluster Manager extension in Windows Admin Center to manage your clusters.
 
 ## View cluster metrics ##
 
-1. Open Windows Admin Center and click the Windows Server Cluster name under **All connections**.
+1. In Windows Admin Center, click the Windows Server Cluster name under **All connections**.
 1. Under **Tools** on the left, click **Servers**, then click the **Inventory** tab under **Servers** on the right. You can view the following:
     - Cluster event alerts
     - List of the servers joined to the cluster
@@ -32,7 +32,7 @@ Windows Admin Center can be used to manage your hyperconverged clusters on Azure
 
 ## View cluster server inventory ##
 
-1. Open Windows Admin Center and click the Windows Server Cluster name under **All connections**.
+1. In Windows Admin Center, click the Windows Server Cluster name under **All connections**.
 1. Under **Tools** on the left, click **Servers**, then click the **Inventory** tab under **Servers** on the right.
 1. Select a server to view metrics for.
 
@@ -75,4 +75,4 @@ Windows Admin Center can be used to manage your hyperconverged clusters on Azure
 
 ## Next Steps ##
 
-- Learn how to add or remove server nodes from your cluster.
+- To add or remove a server node from a cluster, see [Add or remove servers on an Azure HCI cluster](add-cluster.md).
