@@ -99,7 +99,7 @@ Install-Module -Name AzureStack -RequiredVersion 1.8.1
 
 ::: moniker-end
 ::: moniker range="azs-1910"
-For Azure Stack Hub 1909 or 1910:
+For Azure Stack Hub 1910:
 
 ```powershell  
 # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
@@ -115,7 +115,7 @@ Install-Module -Name AzureStack -RequiredVersion 1.8.0
 
 ::: moniker-end
 ::: moniker range="<=azs-1908"
-For Azure Stack Hub 1908 or after 1903:
+For Azure Stack Hub 1908 or earlier:
 
 ```powershell  
 # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
@@ -173,7 +173,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 ::: moniker-end
 
 ::: moniker range="azs-1910"
-Azure Stack Hub 1909 or 1910.
+Azure Stack Hub 1910.
 
 ```powershell
 Install-module -Name PowerShellGet -Force 
@@ -189,7 +189,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
 ::: moniker-end
 ::: moniker range="<=azs-1908"
-For Azure Stack Hub 1908 or after 1903:
+For Azure Stack Hub 1908 or earlier:
 
 ```powershell
 Install-module -Name PowerShellGet -Force 
