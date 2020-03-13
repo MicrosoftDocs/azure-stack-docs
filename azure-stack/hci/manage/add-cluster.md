@@ -13,26 +13,23 @@ ms.date: 03/04/2020
 
 >Applies to: Azure Stack HCI
 
-You can easily add or remove servers from a cluster in Azure Stack HCI. When you want to add a server, keep in mind that each new physical server must be homogeneous in CPU type, memory, and disk number and size to the servers that are already present in the cluster.
+You can easily add or remove servers from a cluster in Azure Stack HCI. Keep in mind that each new physical server must be homogeneous in CPU type, memory, and disk number and size to the servers that are already present in the cluster.
 
-Whenever you add or remove a server, you must perform cluster validation to ensure the cluster is functioning normally.
+Whenever you add or remove a server, you must also perform cluster validation afterwards to ensure the cluster is functioning normally.
 
-## Add hardware from your OEM ##
+## Obtain server hardware from your OEM ##
 
-The first step to adding a server is to get the new hardware from your original OEM. Always refer to your OEM-provided documentation first when adding new hardware to your solution.
+The first step is to acquire new HCI hardware from your original OEM. Always refer to your OEM-provided documentation when adding new server hardware for use in your cluster.
 
 1. Place the new physical server in the rack and cable it appropriately.
 1. Enable physical switch ports and adjust access control lists (ACLs) if applicable.
 1. Configure the correct IP address in the baseboard management controller (BMC) and apply all BIOS settings per OEM instructions.
 1. Apply the current firmware baseline to all components by using the tools that are provided by your OEM.
-
-## Perform server validation ##
-
-You must perform validation on the server before joining the server to your cluster. Contact your OEM to determine how to do this. When done, verify that all validations steps were successful.
+1. Run OEM validation tests to ensure homogeneity with the existing cluster servers.
 
 ## Add the server to the cluster ##
 
-Once your server has passed validation, use Windows Admin Center to join the server to your cluster.
+Once your server has spun up correctly, use Windows Admin Center to join the server to your cluster.
 
 ![Add server node](media/manage-cluster/add-server.png)
 
@@ -62,7 +59,7 @@ Keep in mind that when you remove a server, you will also remove any virtual mac
 
 ## Validate the cluster ##
 
-Whenever you add or remove a server from a cluster, you must validate the cluster.
+Whenever you add or remove a server from a cluster, you must validate the cluster. Cluster validation must pass without errors to be supported by Microsoft.
 
 ![Validate cluster](media//manage-cluster/validate-cluster.png)
 
@@ -76,4 +73,4 @@ Whenever you add or remove a server from a cluster, you must validate the cluste
 
 ## Next Steps ##
 
-To manage your clusters, see [Manage clusters in Azure Stack HCI](cluster.md).
+ - To manage your clusters, see [Manage clusters in Azure Stack HCI].
