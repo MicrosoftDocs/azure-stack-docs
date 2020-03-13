@@ -44,7 +44,7 @@ To use PowerShell to access resources in Azure Stack Hub, you need a service pri
 
 The Dockerfile opens the Microsoft image *microsoft/windowsservercore*, which has Windows PowerShell 5.1 installed. The file then loads NuGet and the Azure Stack Hub PowerShell modules, and downloads the tools from Azure Stack Hub Tools.
 
-1. [Download the azure-stack-powershell repository](https://github.com/mattbriggs/azure-stack-powershell) as a ZIP file, or clone the repository.
+1. [Download the azure-stack-powershell repository](https://github.com/Azure-Samples/azure-stack-hub-powershell-in-docker.git) as a ZIP file, or clone the repository.
 
 2. Open the repository folder from your terminal.
 
