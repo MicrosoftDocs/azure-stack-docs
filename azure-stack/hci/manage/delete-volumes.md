@@ -28,11 +28,13 @@ Watch a quick video on how to delete a volume using Windows Admin Center.
 
 Use the **Remove-VirtualDisk** cmdlet to delete volumes in Storage Spaces Direct. This cmdlet is used to delete the **VirtualDisk** object, and return the space it used to the storage pool that exposes the **VirtualDisk** object.
 
-First, log into any server on the cluster and run the **Get-VirtualDisk** cmdlet with the **CimSession** parameter, which is the name of any server node in your Storage Spaces Direct cluster, for example *Node1.* This will return a list of possible values for the **-FriendlyName** parameter, which correspond to volume names on your cluster.
+First, log into any server on the cluster and run the **Get-VirtualDisk** cmdlet with the **CimSession** parameter, which is the name of any server node in your Storage Spaces Direct cluster, for example *Node1.* 
 
 ```PowerShell
 Get-VirtualDisk -CimSession "Node1"
 ```
+
+This will return a list of possible values for the **-FriendlyName** parameter, which correspond to volume names on your cluster.
 
 ### Example
 
