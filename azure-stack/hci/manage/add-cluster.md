@@ -34,6 +34,8 @@ You must perform validation on the server before joining the server to your clus
 
 Once your server has passed validation, use Windows Admin Center to join the server to your cluster.
 
+![Add server node](media/manage-cluster/add-server.png)
+
 1. In **Windows Admin Center**, select **Cluster Manager** from the top drop-down arrow.
 1. Under **Cluster connections**, select the cluster.
 1. Under **Tools**, select **Servers**.
@@ -48,6 +50,8 @@ The steps for removing a server from your cluster are similar to those for addin
 
 Keep in mind that when you remove a server, you will also remove any virtual machines, storage drives, and workloads associated with the server.
 
+![Remove server node](media/manage-cluster/remove-server.png)
+
 1. In **Windows Admin Center**, select **Cluster Manager** from the top drop-down arrow.
 1. Under **Cluster connections**, select the cluster.
 1. Under **Tools**, select **Servers**.
@@ -59,6 +63,8 @@ Keep in mind that when you remove a server, you will also remove any virtual mac
 ## Validate the cluster ##
 
 Whenever you add or remove a server from a cluster, you must validate the cluster.
+
+![Validate cluster](media//manage-cluster/validate-cluster.png)
 
 > [!NOTE]
 > Cluster validation requires that [CredSSP](https://docs.microsoft.com/windows-server/manage/windows-admin-center/understand/faq#does-windows-admin-center-use-credssp) is enabled.
