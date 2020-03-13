@@ -49,7 +49,7 @@ The AKS engine supports deploying into an existing virtual network. When deployi
 
 You will need to set two values. You will need to know the number of IP addresses you will need to reserve for your cluster, and the first consecutive static IP within the subnet IP space.
 
-The AKS engine requires a range of up to 16 unused IP addresses when you use multiple master nodes. The cluster will use one IP address for reach master up to five masters. The AKS engine will also require the next 10 IP address after the last master for headroom IP address reservation. Finally, an additional IP address will be used by the load balancer after the masters and headroom reservation for a total of 16.
+The AKS engine requires a range of up to 16 unused IP addresses when you use multiple master nodes. The cluster will use one IP address for each master up to five masters. The AKS engine will also require the next 10 IP address after the last master for headroom IP address reservation. Finally, an additional IP address will be used by the load balancer after the masters and headroom reservation for a total of 16.
 
 When placing your block of IP addresses, the subnet requires the following allocations of the existing IP addresses:
  - The first four IP addresses and the last IP address are reserved and can't be used in any Azure subnet
@@ -112,7 +112,7 @@ After adding the values to your API model, you can deploy your cluster from your
 
 ## Set the route table and network security group
 
-Set both the route table and the network security group (NSG) in the subnet blade in the Azure Stack Hub user portal. If you're not using Azure CNI, for example, `networkPlugin`: `kubenet` in the kubernetesConfig API model configuration object. After you have successfully deployed a cluster to your custom virtual network, get the ID of the Route Table resource from **Network** blade in your cluster's resource group.
+After you deploy your cluster, return to your virtual network in the Azure Stack user portal. Set both the route table and the network security group (NSG) in the subnet blade. If you're not using Azure CNI, for example, `networkPlugin`: `kubenet` in the `kubernetesConfig` API model configuration object. After you have successfully deployed a cluster to your custom virtual network, get the ID of the Route Table resource from **Network** blade in your cluster's resource group.
 
 1. Open the Azure Stack Hub user portal in your Azure Stack Hub instance.
 2. Select **All resources**.
