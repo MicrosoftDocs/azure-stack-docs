@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 12/27/2019
+ms.date: 03/12/2020
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 11/21/2019
@@ -160,6 +160,12 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Applicable: This issue applies to stamps that are running 1908 or earlier.
 - Cause: When deploying the SQL resource provider (RP) version 1.1.47.0, the portal shows no assets other than those associated with the SQL RP.
 - Remediation: Delete the RP, upgrade the stamp, and re-deploy the SQL RP.
+
+### Activity log blade
+
+- Applicable: This issue applies to stamps that are running 1907 or later. <!-- Note: Applies to 2002 as well -->
+- Cause: When accessing the activity log, the portal only shows the first page of entries. **Load more results** will not load addition entries.
+- Remediation: Adjust the time range in the filter to review entries that fall after the first page.
 
 ## Networking
 
