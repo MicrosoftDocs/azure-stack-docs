@@ -79,11 +79,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Occurrence: Common
 
 
-### SQL resource provider
-
-- Applicable: This issue applies to stamps that are running 1908 or earlier.
-- Cause: When deploying the SQL resource provider (RP) version 1.1.47.0, the portal shows no assets other than those associated with the SQL RP.
-- Remediation: Delete the RP, upgrade the stamp, and re-deploy the SQL RP.
 
 ## Networking
 
@@ -145,6 +140,19 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Applicable: This issue applies to all supported releases.
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack Hub environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack Hub deployment.
+
+
+## Resource Providers
+
+### SQL/MySQL 
+- Applicable: This issue applies to stamps that are running 2002. 
+- Cause: When deploying the SQL resource provider (RP) version 1.1.33.0 or earlier, the portal shows no assets other than those associated with the SQL RP. 
+- Remediation: Upgrade the RP to version 1.1.47.0
+
+### App Service	
+- Applicable: This issue applies to stamps that are running 2002.
+- Cause: When deploying the App Service resource provider (RP) version 1.7 and older, the portal shows no assets other than those associated with the App Service RP.
+- Remediation: Update the RP to 1.8
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
