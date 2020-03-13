@@ -82,13 +82,13 @@ There are five general settings that can be applied to your cluster.
 
 ## Change cluster Hyper-V settings ##
 
-There are five Hyper-v host settings that can be applied to your cluster.
+There are five Hyper-V host settings that can be applied to your cluster.
 
 1. In Windows Admin Center, click **Cluster Manager** from the top drop-down arrow.
 1. Under **Tools**, click **Settings**.
 1. In the **Hyper-V Host Settings** section, select **General**.
 
-![Hyper-v general settings](media/manage-cluster/cluster-settings-hyperv.png)
+![Hyper-V general settings](media/manage-cluster/cluster-settings-hyperv.png)
 
 4. Make the following changes as needed:
 
@@ -97,7 +97,7 @@ There are five Hyper-v host settings that can be applied to your cluster.
 
 5. Select **Enhanced Session Mode**.
 
-![Hyper-v enhanced session mode settings](media/manage-cluster/cluster-settings-session.png)
+![Hyper-V enhanced session mode settings](media/manage-cluster/cluster-settings-session.png)
 
 6. Make the following changes as needed:
 
@@ -105,7 +105,7 @@ There are five Hyper-v host settings that can be applied to your cluster.
 
 7. Select **NUMA Spanning**.
 
-![Hyper-v NUMA spanning settings](media/manage-cluster/cluster-settings-numa.png)
+![Hyper-V NUMA spanning settings](media/manage-cluster/cluster-settings-numa.png)
 
 8. Make the following changes as needed:
 
@@ -113,7 +113,7 @@ There are five Hyper-v host settings that can be applied to your cluster.
 
 9. Select **Live Migration**.
 
-![Hyper-v live migration settings](media/manage-cluster/cluster-settings-liv-migration.png)
+![Hyper-V live migration settings](media/manage-cluster/cluster-settings-liv-migration.png)
 
 10. Make the following changes as needed:
 
@@ -121,7 +121,7 @@ There are five Hyper-v host settings that can be applied to your cluster.
 
  11. Select **Storage Migration**.
 
- ![Hyper-v storage migration settings](media/manage-cluster/cluster-settings-sto-migration.png)
+ ![Hyper-V storage migration settings](media/manage-cluster/cluster-settings-sto-migration.png)
 
 12. Make the following changes as needed:
 
