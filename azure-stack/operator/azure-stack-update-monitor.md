@@ -3,8 +3,8 @@ title: Monitor updates in Azure Stack Hub using Powershell
 description: Learn to monitor updates in Azure Stack Hub using Powershell
 author: IngridAtMicrosoft
 
-ms.topic: article
-ms.date: 1/22/2020
+ms.topic: how-to
+ms.date: 03/04/2020
 ms.author: inhenkel
 ms.lastreviewed: 08/23/2019
 ms.reviewer: ppacent

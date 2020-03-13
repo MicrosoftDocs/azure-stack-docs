@@ -3,8 +3,8 @@ title: Monitor updates in Azure Stack Hub using the privileged endpoint
 description: Learn how to use the privileged endpoint to monitor update status for Azure Stack Hub integrated systems.
 author: IngridAtMicrosoft
 
-ms.topic: article
-ms.date: 1/22/2020
+ms.topic: how-to
+ms.date: 03/04/2020
 ms.author: inhenkel
 ms.reviewer: fiseraci
 ms.lastreviewed: 11/05/2019
@@ -49,11 +49,11 @@ You can also determine whether the cmdlets are available programmatically by que
 
    ```powershell
    $updateManagementModuleName = "Microsoft.Azurestack.UpdateManagement"
-	if (($commands | ? Source -eq $updateManagementModuleName)) {
+    if (($commands | ? Source -eq $updateManagementModuleName)) {
    Write-Host "Privileged endpoint was updated to support update monitoring tools."
-	} else {
+    } else {
    Write-Host "Privileged endpoint has not been updated yet. Please try again later."
-	} 
+    } 
    ```
 
 4. List the commands specific to the Microsoft.AzureStack.UpdateManagement module.
@@ -66,7 +66,7 @@ You can also determine whether the cmdlets are available programmatically by que
    $commands | ? Source -eq $updateManagementModuleName
    
    CommandType     Name                                               Version    Source                                                  PSComputerName
-	-----------     ----                                               -------    ------                                                  --------------
+    -----------     ----                                               -------    ------                                                  --------------
    Function        Get-AzureStackUpdateStatus                         0.0        Microsoft.Azurestack.UpdateManagement                   Contoso-ercs01
    Function        Resume-AzureStackUpdate                            0.0        Microsoft.Azurestack.UpdateManagement                   Contoso-ercs01
    ``` 
@@ -123,30 +123,30 @@ In the following example, the top-level step (Cloud Update) has a child plan to 
 
 $updateStatus.SelectNodes("//Step[@Status='InProgress']") 
 
-	FullStepIndex : 2
-	Index         : 2
-	Name          : Cloud Update
-	Description   : Perform cloud update.
-	StartTimeUtc  : 2017-10-13T12:50:39.9020351Z
-	Status        : InProgress
-	Task          : Task
-	
-	FullStepIndex  : 2.9
-	Index          : 9
-	Name           : Restart Storage Hosts
-	Description    : Restart Storage Hosts.
-	EceErrorAction : Stop
-	StartTimeUtc   : 2017-10-13T15:44:06.7431447Z
-	Status         : InProgress
-	Task           : Task
-	
-	FullStepIndex : 2.9.2
-	Index         : 2
-	Name          : PreUpdate ACS Blob Service
-	Description   : Check function level, update deployment artifacts, configure Blob service settings
-	StartTimeUtc  : 2017-10-13T15:44:26.0708525Z
-	Status        : InProgress
-	Task          : Task
+    FullStepIndex : 2
+    Index         : 2
+    Name          : Cloud Update
+    Description   : Perform cloud update.
+    StartTimeUtc  : 2017-10-13T12:50:39.9020351Z
+    Status        : InProgress
+    Task          : Task
+    
+    FullStepIndex  : 2.9
+    Index          : 9
+    Name           : Restart Storage Hosts
+    Description    : Restart Storage Hosts.
+    EceErrorAction : Stop
+    StartTimeUtc   : 2017-10-13T15:44:06.7431447Z
+    Status         : InProgress
+    Task           : Task
+    
+    FullStepIndex : 2.9.2
+    Index         : 2
+    Name          : PreUpdate ACS Blob Service
+    Description   : Check function level, update deployment artifacts, configure Blob service settings
+    StartTimeUtc  : 2017-10-13T15:44:26.0708525Z
+    Status        : InProgress
+    Task          : Task
 ```
 
 ### Resume a failed update operation
