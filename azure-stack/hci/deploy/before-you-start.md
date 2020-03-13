@@ -1,5 +1,5 @@
 ---
-title: Getting Started with Azure Stack HCI Deployment
+title: Getting started with Azure Stack HCI deployment
 description: How to prepare to deploy Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
