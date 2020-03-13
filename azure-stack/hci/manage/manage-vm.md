@@ -112,7 +112,9 @@ You can use Windows Admin Center to configure Azure Site Recovery and replicate 
 1. Under **Tools**, scroll down and select **Virtual Machines**.
 1. Click the **Inventory** tab on the right. Choose a virtual machine from the list and select **More > Connect** or **More > Download RDP file**. The **Connect** option will allow you to interact with the guest VM using **Remote Desktop** in Windows Admin Center. The **Download RDP file** option will download an .rdp file that you can open using the Remote Desktop Connection app (mstsc.exe). Both options use VMConnect to connect to the guest VM through the Hyper-V host and require you to enter your domain administrator username and password credentials for the Hyper-V host server.
 
-## Monitor Hyper-V host metrics ##
+## Monitor aggregate VM metrics ##
+
+You can view resources usage and performance metrics for all VMs in your cluster.
 
 ![Monitor host metrics](media/manage-vm/host-metrics.png)
 
