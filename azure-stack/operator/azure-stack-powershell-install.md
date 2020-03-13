@@ -98,7 +98,7 @@ Install-Module -Name AzureStack -RequiredVersion 1.8.1
 ```
 
 ::: moniker-end
-::: moniker range="=azs-1909 <=azs-1910"
+::: moniker range=">=azs-1909 <=azs-1910"
 For Azure Stack Hub 1909 or 1910:
 
 ```powershell  
@@ -172,7 +172,7 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 ```
 ::: moniker-end
 
-::: moniker range="=azs-1909 <=azs-1910"
+::: moniker range=">=azs-1909 <=azs-1910"
 Azure Stack Hub 1909 or 1910.
 
 ```powershell
