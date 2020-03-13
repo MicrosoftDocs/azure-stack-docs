@@ -137,6 +137,12 @@ In scenarios that require a proxy server to access the internet, you first confi
    [System.Net.WebRequest]::DefaultWebProxy.Credentials = Get-Credential
    ```
 
+## 7. Use the Az module
+
+You can use the cmdlets and code samples based on AzureRM. However, you will want to change the name of the modules and cmdlets. The module names have been changed so that `AzureRM` and Azure become `Az`, and the same for cmdlets. For example, the `AzureRM.Compute` module has been renamed to `Az.Compute`.` New-AzureRMVM` has become` New-AzVM`, and `Get-AzureStorageBlob` is now `Get-AzStorageBlob`.
+
+For a more thorough discussion and guidance for moving AzurRM script to Az and breaking changes in Azure Stack Hub's AZ module, see [Migrate from AzureRM to Azure PowerShell Az](migrate-from-azurerm-to-az-azure-stack.md).
+
 ## Next steps
 
 - [Download Azure Stack Hub tools from GitHub](azure-stack-powershell-download.md)
