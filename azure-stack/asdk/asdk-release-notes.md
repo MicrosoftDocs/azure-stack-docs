@@ -31,12 +31,6 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 ### Fixed and known issues
 
 - The decryption certification password is a new option to specify the password for the self-signed certificate's (.pfx) that contains the private key necessary to decrypt backup data. This password is required only if the backup is encrypted using a certificate. 
-- Fixed an issue with collecting logs and storing them in an Azure Storage blob container. The syntax for this operation is as follows:
-
-  ```powershell
-  Get-AzureStackLog -OutputSasUri "<Blob service SAS Uri>"
-  ``` 
-
 - For a list of Azure Stack known issues in this release, see the [known issues](../operator/known-issues.md) article.
 - Note that available Azure Stack hotfixes are not applicable to the ASDK.
 ::: moniker-end
