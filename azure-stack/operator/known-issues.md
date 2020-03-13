@@ -71,14 +71,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Occurrence: Common
 
 
-### Capacity monitoring in SQL resource provider keeps loading
-
-- Applicable: This issue applies to the Azure Stack Hub 1910 update or later, with SQL resource provider version 1.1.33.0 or earlier installed.
-- Cause: The current version of the SQL resource provider is not compatible with some of the latest portal changes.
-- Remediation: Follow the resource provider update process to apply the SQL resource provider hotfix 1.1.47.0 after Azure Stack Hub is upgraded to the 2002 update ([SQL RP version 1.1.47.0](https://aka.ms/azurestacksqlrp11470)). For the MySQL resource provider, it is also recommended that you apply the MySQL resource provider hotfix 1.1.47.0 after Azure Stack Hub is upgraded to 2002 update ([MySQL RP version 1.1.47.0](https://aka.ms/azurestackmysqlrp11470)).
-- Occurrence: Common
-
-
 
 ## Networking
 
@@ -146,13 +138,13 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 ### SQL/MySQL 
 - Applicable: This issue applies to stamps that are running 2002. 
-- Cause: When deploying the SQL resource provider (RP) version 1.1.33.0 or earlier, the portal shows no assets other than those associated with the SQL RP. 
-- Remediation: Upgrade the RP to version 1.1.47.0
+- Cause: If the stamp contains SQL resource provider (RP) version 1.1.33.0 or earlier, upon update of the stamp, the blades for SQL/MySQL will not load.
+- Remediation: Update the RP to version 1.1.47.0
 
 ### App Service	
 - Applicable: This issue applies to stamps that are running 2002.
-- Cause: When deploying the App Service resource provider (RP) version 1.7 and older, the portal shows no assets other than those associated with the App Service RP.
-- Remediation: Update the RP to 1.8
+- Cause: If the stamp contains App Service resource provider (RP) version 1.7 and older, upon update of the stamp, the blades for App Service will not load.
+- Remediation: Update the RP to version 1.8
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
