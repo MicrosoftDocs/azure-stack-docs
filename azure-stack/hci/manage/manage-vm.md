@@ -32,9 +32,9 @@ Windows Admin Center can be used to create and manage virtual machines in Azure 
 
 ## View VM metrics ##
 
-![View VM detailed information](media/manage-vm/vm-details.png)
+You can view detailed information and performance charts for a specific virtual machine from its page.
 
-You can view detailed information and performance charts for a specific virtual machine from its page as follows:
+![View VM detailed information](media/manage-vm/vm-details.png)
 
 1. Under **Tools**, scroll down and select **Virtual Machines**.
 1. Click the **Inventory** tab on the right, then click on the name of the virtual machine. On the subsequent page, you can do the following:
@@ -50,15 +50,62 @@ You can view detailed information and performance charts for a specific virtual 
 
 ## Change VM settings ##
 
-![Change VM settings](media/manage-vm/vm-settings.png)
-
-1. Under **Tools**, scroll down and select **Virtual Machines**.
-1. Click the **Inventory** tab on the right. Select the virtual machine, then click **Settings**.
-1. Select a category as applicable and make setting changes as needed.
-1. When finished, click **Save settings** to save the specific category settings. 
+There are a variety of settings that you can change for your VMs.
 
 > [!NOTE]
 > Some settings cannot be changed for a VM that is running and you will need to stop the VM first.
+
+1. Under **Tools**, scroll down and select **Virtual Machines**.
+1. Click the **Inventory** tab on the right. Select the virtual machine, then click **Settings**.
+
+1. Select **General**.
+
+![Change VM memory settings](media/manage-vm/vm-settings-general.png)
+
+4. Make the following changed as needed:
+
+5. Select **Memory**.
+
+![Change VM memory settings](media/manage-vm/vm-settings-memory.png)
+
+6. Make the following changed as needed:
+
+7. Select **Processors**.
+
+![Change VM processor settings](media/manage-vm/vm-settings-processor.png)
+
+8. Make the following changed as needed:
+
+9. Select **Disks**.
+
+![Change VM disk settings](media/manage-vm/vm-settings-disk.png)
+
+10. Make the following changed as needed:
+
+11. Select **Networks**.
+
+![Change VM network settings](media/manage-vm/vm-settings-network.png)
+
+12. Make the following changed as needed:
+
+13. Select **Boot order**.
+
+![Change VM boot order](media/manage-vm/vm-settings-boot.png)
+
+14. Make the following changed as needed:
+
+15. Select **Checkpoints**.
+
+![Change VM checkpoints](media/manage-vm/vm-settings-checkpoint.png)
+
+16. Make the following changed as needed:
+
+17. Select **Security**.
+
+![Change VM security settings](media/manage-vm/vm-settings-security.png)
+
+18. Make the following changed as needed:
+
 
 ## Create a new VM ##
 
@@ -86,14 +133,32 @@ You can view detailed information and performance charts for a specific virtual 
 1. To start the VM, in the **Virtual Machines** list, hover over the new VM, enable the checkbox for it on the left, and select **Start**.
 1. Under **State**, verify that the VM is **Running**.
 
-## Migrate a VM to another cluster node ##
+## Move a VM to another node ##
 
-If you are connected to a cluster, you can live migrate a virtual machine to another cluster node as follows:
+You can easily move a virtual machine to another cluster node.
+
+![Move a VM](media/manage-vm/vm-more-move.png)
 
 1. Under **Tools**, scroll down and select **Virtual Machines**.
 1. Click the **Inventory** tab on the right. Choose a clustered virtual machine from the list and click **More > Move**.
 1. Choose a server from the list and click **Move**.
-1. After a successful move, you will see the **Host** name updated in the virtual machine list.
+1. Under **Move Virtual Machine**, select **Failover cluster**, then enter the cluster name and cluster node to move the VM to.
+1. After a successful move, you will see the **Host server** name updated in the virtual machine list.
+
+## Import or Export a VM ##
+
+You can import or export a VM. The following procedure describes the Import process. 
+
+![Import a VM](media/manage-vm/vm-more-import.png)
+
+1. Under **Tools**, scroll down and select **Virtual Machines**.
+1. Click the **Inventory** tab on the right. Choose a clustered virtual machine from the list and click **More > Import**.
+1. Enter the folder name containing the VM or click **Browse** and select a folder.
+1. Select the VM you want to import.
+1. Create a unique ID for the VM if needed.
+1. When finished, click **Import**.
+
+For exporting a VM, the process is very similar. simply select **More > Export** instead.
 
 ##  View VM event logs ##
 
@@ -106,6 +171,12 @@ You can view virtual machine event logs using Windows Admin Center as follows:
 ## Protect VMs with Azure Site Recovery ##
 
 You can use Windows Admin Center to configure Azure Site Recovery and replicate your on-premises virtual machines to Azure. This is an optional service. [Learn More](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-site-recovery)
+
+![Setup Azure Site Recovery](media/manage-vm/vm-more-azure.png)
+
+1. Under **Tools**, scroll down and select **Virtual Machines**.
+1. Click the **Inventory** tab on the right. Choose a virtual machine from the list and select **More > Setup VM Protection**.
+1. Follow the instructions listed.
 
 ## Manage a VM through the Hyper-V host ## 
 
@@ -125,21 +196,6 @@ You can view resources usage and performance metrics for all VMs in your cluster
     - CPU and memory usage with host vs guest breakdown
     - Live and historical data line charts for IOPS and IO throughput for clusters
 
-## Change Hyper-V host settings ##
-
-![Change host settings](media/manage-vm/host-settings.png)
-
-1. For the applicable server or cluster, select **Settings** on the left menu.
-1. Under the **Settings** group, see the following sections:
-
-   - General: Change virtual hard disks and virtual machines file path, and hypervisor schedule type (if supported)
-   - Enhanced Session Mode
-   - NUMA Spanning
-   - Live Migration
-   - Storage Migration
-
-If you make Hyper-V host setting changes in a cluster, the change will be applied to all cluster nodes.
-
 ##  View Hyper-V event logs ##
 
 You can view Hyper-V event logs using Windows Admin Center as follows:
@@ -150,3 +206,5 @@ You can view Hyper-V event logs using Windows Admin Center as follows:
 ## Next Steps ##
 
 - You can also manage VMs using Windows PowerShell. For more information, see [Managing virtual machines using PowerShell](manage-vm-ps.md).
+
+- Find out how to manage cluster-wide VM settings. See [Manage Azure Stack HCI clusters]
