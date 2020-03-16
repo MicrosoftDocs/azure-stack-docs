@@ -10,13 +10,13 @@ ms.localizationpriority: low
 
 # Protect your Hyper-V VMs with Azure Site Recovery and Windows Admin Center
 
->Applies To: Windows Admin Center Preview, Windows Admin Center
+>Applies To: Windows Admin Center
 
 Windows Admin Center streamlines the process of replicating virtual machines (VMs) on your Hyper-V servers or clusters, giving you the power to take advantage of Azure from your own datacenter. To automate setup, you connect the Windows Admin Center gateway to Azure.
 
 This article shows you how to configure replication settings and create a recovery plan in the Azure portal. Completing these tasks enables Windows Admin Center to start VM replication to protect your VMs.
 
-To learn more, see [About Azure integration with Windows Admin Center](../plan/azure-integration-options.md).
+To learn more, see [Connecting Windows Server to Azure hybrid services](/windows-server/manage/windows-admin-center/azure/).
 
 ## How Azure Site Recovery works with Windows Admin Center
 
