@@ -47,7 +47,7 @@ The steps for removing a server from your cluster are similar to those for addin
 
 Keep in mind that when you remove a server, you will also remove any virtual machines, storage drives, and workloads associated with the server.
 
-![Remove server node](media/manage-cluster/remove-server.png)
+[!div class="mx-imgBorder"]![Remove server node](media/manage-cluster/remove-server.png)
 
 1. In **Windows Admin Center**, select **Cluster Manager** from the top drop-down arrow.
 1. Under **Cluster connections**, select the cluster.
@@ -61,7 +61,7 @@ Keep in mind that when you remove a server, you will also remove any virtual mac
 
 Whenever you add or remove a server from a cluster, you must validate the cluster. Cluster validation must pass without errors to be supported by Microsoft.
 
-![Validate cluster](media//manage-cluster/validate-cluster.png)
+[!div class="mx-imgBorder"]![Validate cluster](media//manage-cluster/validate-cluster.png)
 
 > [!NOTE]
 > Cluster validation requires that [CredSSP](https://docs.microsoft.com/windows-server/manage/windows-admin-center/understand/faq#does-windows-admin-center-use-credssp) is enabled.
@@ -73,4 +73,5 @@ Whenever you add or remove a server from a cluster, you must validate the cluste
 
 ## Next Steps ##
 
- - To manage your clusters, see [Manage clusters in Azure Stack HCI].
+ - To learn more about cluster validation, see [Future Topic]
+ To manage your clusters, see [Manage clusters in Azure Stack HCI].
