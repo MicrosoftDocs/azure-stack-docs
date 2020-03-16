@@ -2,7 +2,7 @@
   "build": {
     "content": [
       {
-        "group": "asdk",
+        "group": "version-ash",
         "src" : "asdk",
         "dest" : "asdk",
         "files": [
@@ -21,7 +21,7 @@
         ]
       },
       {
-        "group": "operator",
+        "group": "version-ash",
         "src" : "operator",
         "dest" : "operator",
         "files": [
@@ -40,7 +40,7 @@
         ]
       },
       {
-        "group": "partner",
+        "group": "version-ash",
         "src" : "partner",
         "dest" : "partner",
         "files": [
@@ -59,7 +59,7 @@
         ]
       },      
       {
-        "group": "user",
+        "group": "version-ash",
         "src" : "user",
         "dest" : "user",
         "files": [
@@ -135,22 +135,9 @@
     "dest": "AzureStack",
     "markdownEngineName": "markdig",
     "groups": {
-      "asdk": {
-        "dest": "asdk",
-        "moniker_range": ">=azs-1802"
-      },
-      "operator": {
-        "dest": "operator",
-        "moniker_range": ">=azs-1802"
-      },
-      "partner": {
-        "dest": "partner",
-        "moniker_range": ">=azs-1802"
-      },
-      "user": {
-        "dest": "user",
-        "moniker_range": ">=azs-1802"
-      }                  
+      "version-ash": {
+      "moniker_range": ">=azs-1802"
+      }
     }
   }
 }
