@@ -4,7 +4,7 @@ description: Use Windows Admin Center to protect Hyper-V VMs with Azure Site Rec
 ms.topic: article
 author: haley-rowland
 ms.author: harowl
-ms.date: 03/12/2020
+ms.date: 03/16/2020
 ms.localizationpriority: low
 ---
 
@@ -64,12 +64,12 @@ This could take up to 10 minutes. You can watch the progress by going to **Notif
 
 Complete the following steps to protect your VMs:
 
-1. In Windows Admin Center, return to the server or cluster that you configured in the previous task, and go to **Virtual Machines > Inventory**.
+1. In Windows Admin Center, return to the server or cluster that you configured in the previous task.
 1. Under **Tools** click **Virtual machines** and then click the  **Inventory** tab.
 1. Select the VM that you want to protect, then expand the **More** submenu and click **Protect VM**.
 1. Review capacity requirements for protecting the VM. For more information, see [Plan capacity for Hyper-V VM disaster recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-capacity-planner).
 
-    If you want to use a premium storage account, [create one in the Azure portal](https://docs.microsoft.com/azure/storage/common/storage-premium-storage). The **Create New** option provided in the Windows Admin Center pane creates a standard storage account.
+    If you want to use a premium storage account, create one in the Azure portal. To learn more, see the **Premium SSD** section of [What disk types are available in Azure?](https://docs.microsoft.com/azure/storage/common/storage-premium-storage) The **Create New** option provided in the Windows Admin Center creates a standard storage account.
 
 1. Enter the name of the **Storage Account** to use for this VM's replication, and then select **Protect VM** to enable replication for the VM. 
 
@@ -81,7 +81,7 @@ Complete the following steps to protect your VMs:
  
  Complete the following steps to prepare failover to an Azure VM:
 
-1. Set up an Azure network that the failed-over VM will attach to this VNET. To learn more, see [Set up disaster recovery of on-premises Hyper-V VMs to Azure](https://docs.microsoft.com/azure/site-recovery/hyper-v-site-walkthrough-prepare-azure). 
+1. Set up an Azure network that the failed-over VM will attach to this VNET. To learn more, see [Set up disaster recovery of on-premises Hyper-V VMs to Azure](https://docs.microsoft.com/azure/site-recovery/hyper-v-site-walkthrough-prepare-azure).
 
     >[!NOTE]
     > Windows Admin Center automatically completes the steps in this resource. You only need to set up the Azure network.
@@ -96,7 +96,7 @@ Recovery Plan lets you group VMs, sequence the order in which they should be bro
 
 ## Monitor replicated VMs in Azure
 
-To verify no failures in server registration processs, go to the **Azure portal**, click **All resources**, click **Recovery Services Vault** (the one you specified in the first task, Step 6) click **Jobs**, and then click **Site Recovery Jobs**.
+To verify no failures in the server registration processs, go to the **Azure portal**, click **All resources**, click **Recovery Services Vault** (the one you specified in the first task, Step 6) click **Jobs**, and then click **Site Recovery Jobs**.
 
 To monitor VM replication, go to the **Recovery Services Vault**, and then **Replicated Items**.
 
@@ -105,3 +105,9 @@ To see all servers that are registered to the vault, go to **Recovery Services V
 ## Known issue ##
 
 When registering ASR with a cluster, if a node fails to install ASR or register to the ASR service, your VMs may not be protected. Verify that all nodes in the cluster are registered in the Azure portal by going to the **Recovery Services vault**, **Jobs**, and then **Site Recovery Jobs**.
+
+## Next steps
+
+For more information about ASR, see also:
+
+- [General questions about Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq)
