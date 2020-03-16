@@ -14,6 +14,8 @@
     href: manage/delete-volumes.md
   - name: Replace drives
     href: manage/replace-drives.md
+  - name: Use Azure Site Recovery
+    href: azure-site-recovery.md
 - name: Concepts
   items:
   - name: Choose drives
