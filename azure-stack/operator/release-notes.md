@@ -45,7 +45,7 @@ For help with troubleshooting updates and the update process, see [Troubleshoot 
 ::: moniker range="azs-2002"
 ## 2002 build reference
 
-The Azure Stack Hub 2002 update build number is **1.2002.x.xx**.
+The Azure Stack Hub 2002 update build number is **1.0.2002.35**.
 
 ### Update type
 
