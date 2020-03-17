@@ -4,7 +4,7 @@ description: How to delete volumes in Azure Stack HCI using Windows Admin Center
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 03/13/2020
+ms.date: 03/17/2020
 ---
 
 # Deleting volumes in Azure Stack HCI
@@ -28,10 +28,10 @@ Watch a quick video on how to delete a volume using Windows Admin Center.
 
 Use the **Remove-VirtualDisk** cmdlet to delete volumes in Storage Spaces Direct. This cmdlet is used to delete the **VirtualDisk** object, and return the space it used to the storage pool that exposes the **VirtualDisk** object.
 
-First, log into any server on the cluster and run the **Get-VirtualDisk** cmdlet with the **CimSession** parameter, which is the name of any server node in your Storage Spaces Direct cluster, for example *Node1.* 
+First, launch PowerShell on your management PC and run the **Get-VirtualDisk** cmdlet with the **CimSession** parameter, which is the name of a Storage Spaces Direct cluster or server node, for example *clustername.microsoft.com*: 
 
 ```PowerShell
-Get-VirtualDisk -CimSession "Node1"
+Get-VirtualDisk -CimSession clustername.microsoft.com
 ```
 
 This will return a list of possible values for the **-FriendlyName** parameter, which correspond to volume names on your cluster.
@@ -48,9 +48,6 @@ You will be asked to confirm that you want to perform the action and erase all t
 
    > [!WARNING]
    > This is not a recoverable action. This example permanently deletes a **VirtualDisk** Volume object.
-
-   > [!NOTE]
-   > You can log into any server in the cluster and run the above command to delete a volume from the entire cluster.
 
 ## Next steps
 
