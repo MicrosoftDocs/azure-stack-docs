@@ -4,10 +4,10 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/17/2020
+ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 03/17/2020
+ms.lastreviewed: 03/18/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -75,13 +75,13 @@ For more information about update build types, see [Manage updates in Azure Stac
 <!-- Changes and product improvements with tangible customer-facing value. -->
 
 - This update contains changes to the update process that significantly improve the performance of future full updates. These changes take effect with the next full update after the 2002 release, and specifically target improving the performance of the phase of a full update in which the host operating systems are updated. Improving the performance of host operating system updates significantly reduces the window of time in which tenant workloads are impacted during full updates.
-- Improvements to the Azure Stack Hub readiness checker tool to validate AD Graph integration using all TCP IP ports allocated to AD Graph.
+- The Azure Stack Hub readiness checker tool now validates AD Graph integration using all TCP IP ports allocated to AD Graph.
 - The offline syndication tool has been updated with reliability improvements. The tool is no longer available on GitHub, and has been [moved to the PowerShell Gallery](https://www.powershellgallery.com/packages/Azs.Syndication.Admin/). For more information, see [Download Marketplace items to Azure Stack Hub](azure-stack-download-azure-marketplace-item.md).
 - Improvements to [diagnostic log collection](azure-stack-diagnostic-log-collection-overview-tzl.md). The new experience streamlines and simplifies diagnostic log collection by removing the need to configure a blob storage account in advance. The storage environment is preconfigured so that you can send logs before opening a support case, and spend less time on a support call.
-- Time taken for both [Proactive Log Collection and the on-demand log collection](azure-stack-diagnostic-log-collection-overview-tzl.md) has been reduced by 80% . Log collection time can take longer than this expected value but doesn't require action by Azure Stack Hub operators unless the log collection fails.
+- Time taken for both [Proactive Log Collection and the on-demand log collection](azure-stack-diagnostic-log-collection-overview-tzl.md) has been reduced by 80%. Log collection time can take longer than this expected value but doesn't require action by Azure Stack Hub operators unless the log collection fails.
 - The download progress of an Azure Stack Hub update package is now visible in the update blade after an update is initiated. This only applies to connected Azure Stack Hub systems that choose to [prepare update packages via automatic download](azure-stack-update-prepare-package.md#automatic-download-and-preparation-for-update-packages).
-- Reliability improvements for Network Controller Host agent.
-- Introduced a new micro-service called DNS Orchestrator that improves the resiliency logic for the internal DNS services during patch and update. 
+- Reliability improvements to the Network Controller Host agent.
+- Introduced a new micro-service called DNS Orchestrator that improves the resiliency logic for the internal DNS services during patch and update.
 - Added a new request validation to fail invalid blob URIs for the boot diagnostic storage account parameter while creating VMs.
 - Added auto-remediation and logging improvements for Rdagent and Host agent - two services on the host that facilitate VM CRUD operations.
 - Added a new feature to marketplace management that provides the ability to block administrators from downloading marketplace products that are incompatible with their Azure Stack, due to various attributes such as the Azure Stack version or billing model.

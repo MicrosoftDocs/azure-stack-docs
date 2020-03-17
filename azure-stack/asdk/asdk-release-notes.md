@@ -4,10 +4,10 @@ description: Improvements, fixes, and known issues for Azure Stack Development K
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/12/2020
+ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 03/12/2020
+ms.lastreviewed: 03/18/2020
 
 # Intent: As an ASDK user, I want to know the latest changes, updates, and bug fixes to the ASDK.
 # Keyword: asdk release notes
@@ -30,7 +30,7 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 
 ### Fixed and known issues
 
-- The decryption certification password is a new option to specify the password for the self-signed certificate's (.pfx) that contains the private key necessary to decrypt backup data. This password is required only if the backup is encrypted using a certificate. 
+- The decryption certification password is a new option to specify the password for the self-signed certificate (.pfx) that contains the private key necessary to decrypt backup data. This password is required only if the backup is encrypted using a certificate.
 - For a list of Azure Stack known issues in this release, see the [known issues](../operator/known-issues.md) article.
 - Note that available Azure Stack hotfixes are not applicable to the ASDK.
 ::: moniker-end
