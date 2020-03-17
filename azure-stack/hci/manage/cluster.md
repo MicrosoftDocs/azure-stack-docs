@@ -74,7 +74,7 @@ There are five general settings that can be applied to your cluster.
 
   - **Cloud witness** - to use an Azure cloud resource as witness 
    - **Disk witness** - to use a disk resource as witness
-  - **File share wtness** - to use a file share as witness 
+  - **File share witness** - to use a file share as witness 
 
 For more information, see [Configure and manage quorum](https://docs.microsoft.com/windows-server/failover-clustering/manage-cluster-quorum).
 
