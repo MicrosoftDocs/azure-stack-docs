@@ -4,10 +4,10 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/12/2020
+ms.date: 03/18/2020
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 11/21/2019
+ms.lastreviewed: 03/18/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -55,8 +55,6 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Remediation: Use [PowerShell to verify permissions](/powershell/module/azurerm.resources/get-azurermroleassignment).
 - Occurrence: Common
 
-
-
 ### Storage account options
 
 - Applicable: This issue applies to all supported releases.
@@ -70,10 +68,7 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Remediation: Select an account type from the **Account type** dropdown list, then create the snapshot.
 - Occurrence: Common
 
-
-
 ## Networking
-
 
 ### Network Security Groups
 
@@ -133,18 +128,19 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack Hub environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack Hub deployment.
 
-
 ## Resource Providers
 
-### SQL/MySQL 
-- Applicable: This issue applies to stamps that are running 2002. 
+### SQL/MySQL
+
+- Applicable: This issue applies to release 2002. 
 - Cause: If the stamp contains SQL resource provider (RP) version 1.1.33.0 or earlier, upon update of the stamp, the blades for SQL/MySQL will not load.
 - Remediation: Update the RP to version 1.1.47.0
 
-### App Service    
-- Applicable: This issue applies to stamps that are running 2002.
-- Cause: If the stamp contains App Service resource provider (RP) version 1.7 and older, upon update of the stamp, the blades for App Service will not load.
-- Remediation: Update the RP to version 1.8
+### App Service
+
+- Applicable: This issue applies to release 2002.
+- Cause: If the stamp contains App Service resource provider (RP) version 1.7 and older, upon update of the stamp, the blades for App Service do not load.
+- Remediation: Update the RP to version 1.8.
 
 <!-- ## Storage -->
 <!-- ## SQL and MySQL-->
