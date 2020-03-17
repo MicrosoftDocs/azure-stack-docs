@@ -4,10 +4,10 @@ description: Release notes for Azure Stack Hub integrated systems, including upd
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/10/2020
+ms.date: 03/17/2020
 ms.author: sethm
 ms.reviewer: prchint
-ms.lastreviewed: 03/10/2020
+ms.lastreviewed: 03/17/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -68,7 +68,7 @@ For more information about update build types, see [Manage updates in Azure Stac
 - Added new warning alert on the Azure Stack Hub administrator portal to report on connectivity issues with the configured syslog server. Alert title is **The Syslog client encountered a networking issue while sending a Syslog message**.
 - Added new warning alert on the Azure Stack Hub administrator portal to report on connectivity issues with the Network Time Protocol (NTP) server. Alert title is **Invalid Time Source on [node name]**.
 - The [Java SDK](https://azure.microsoft.com/develop/java/) released new packages due to a breaking change in 2002. Users must install the new Java SDK dependency.
-- A new version (1.0.5.10) of the System Center Operations Manager - Azure Stack Hub MP is available and required for all systems running 2002 due to breaking API changes. The API changes do impact the backup and the storage performance dashboards and it is recommended to first update all systems to 2002 before updating the MP.
+- A new version (1.0.5.10) of the System Center Operations Manager - Azure Stack Hub MP is available and required for all systems running 2002 due to breaking API changes. The API changes impact the backup and storage performance dashboards, and it is recommended that you first update all systems to 2002 before updating the MP.
 
 ### Improvements
 
