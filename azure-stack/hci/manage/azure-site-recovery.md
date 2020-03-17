@@ -4,7 +4,7 @@ description: Use Windows Admin Center to protect Hyper-V VMs with Azure Site Rec
 ms.topic: article
 author: haley-rowland
 ms.author: harowl
-ms.date: 03/16/2020
+ms.date: 03/17/2020
 ms.localizationpriority: low
 ---
 
@@ -22,11 +22,11 @@ To learn more, see [Connecting Windows Server to Azure hybrid services](/windows
 
 **Azure Site Recovery** is an Azure service that replicates workloads running on VMs so that your business-critical infrastructure is protected from a disaster. To learn more, see [About Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview).
 
-Azure Site Recovery consists of two components: **replication** and **failover**. The replication portion protects your VMs in case of disaster by replicating the target VM's VHD to an Azure storage account. You can then fail over the VMs and run them in Azure in the event of a disaster. You can also perform a test failover without impacting your primary VMs to test the recovery process in Azure.
+Azure Site Recovery consists of two components: **replication** and **failover**. The replication portion protects your VMs from disaster by replicating the target VM's VHD to an Azure storage account. You can then fail over the VMs and run them in Azure in the event of a disaster. You can also do a test failover without impacting your primary VMs to test the recovery process in Azure.
 
-Completing setup for the replication component alone is sufficient to protect your VMs from a disaster. However, you won't be able to start the VMs in Azure until you configure the failover portion of the process.
+Completing setup for the replication component alone is sufficient to protect your VMs from a disaster. However, you can't start the VMs in Azure until you configure the failover portion of the process.
 
-You can set up the failover portion when you want to failover to an Azure VM, because it's not required during initial setup. If the host server goes down, you can configure the failover component at that time and access the workloads of the protected VM. However, we recommend configuring the failover related settings before a disaster.
+You can set up the failover portion when you want to fail over to an Azure VM, because it's not required during initial setup. If the host server goes down, you can configure the failover component at that time and access the workloads of the protected VM. However, we recommend configuring the failover-related settings before a disaster.
 
 ## Prerequisites and planning
 
@@ -48,17 +48,17 @@ Complete the following steps once per host server or cluster containing the VMs 
 1. Enter the required information:
 
    - **Subscription:** The Azure subscription that you want to use for VM replication on this host.
-   - **Location:** The Azure region where the ASR resources should be created.
+   - **Location:** The Azure region where the Azure Site Recovery resources should be created.
    - **Storage Account:** The storage account where replicated VM workloads on this host will be saved.
    - **Vault:** A name for the Azure Site Recovery vault for the protected VMs on this host.
 
 1. Select **Setup ASR**.
 1. Wait until you see the notification: **Site Recovery Setting Completed**.
  
-This could take up to 10 minutes. You can watch the progress by going to **Notifications** (the bell icon at the top right of Windows Admin Center).
+This process could take up to 10 minutes. You can watch the progress by going to **Notifications** (the bell icon at the top right of Windows Admin Center).
 
 >[!NOTE]
-> This process automatically installs the ASR agent onto the target server or nodes (if you are configuring a cluster), and creates a **Resource Group** with the specified **Storage Account** and **Vault**, in the specified **Location**. It also registers the target host with the ASR service and configures a default replication policy.
+> This process automatically installs the ASR agent onto the target server or nodes (if you are configuring a cluster), and creates a **Resource Group** with the specified **Storage Account** and **Vault**, in the specified **Location**. It also registers the target host with the Azure Site Recovery service and configures a default replication policy.
 
 ## Step 2: Select VMs to protect
 
@@ -69,15 +69,15 @@ Complete the following steps to protect your VMs:
 1. Select the VM that you want to protect, then expand the **More** submenu and click **Protect VM**.
 1. Review capacity requirements for protecting the VM. For more information, see [Plan capacity for Hyper-V VM disaster recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-capacity-planner).
 
-    If you want to use a premium storage account, create one in the Azure portal. To learn more, see the **Premium SSD** section of [What disk types are available in Azure?](https://docs.microsoft.com/azure/storage/common/storage-premium-storage) The **Create New** option provided in the Windows Admin Center creates a standard storage account.
+    If you want to use a premium storage account, create one in the Azure portal. To learn more, see the **Premium SSD** section of [What disk types are available in Azure?](https://docs.microsoft.com/azure/storage/common/storage-premium-storage) The **Create New** option provided in Windows Admin Center creates a standard storage account.
 
 1. Enter the name of the **Storage Account** to use for this VM's replication, and then select **Protect VM** to enable replication for the VM. 
 
-    Azure Site Recovery (ASR) starts the replication process. The VM is protected when the value in the **Protected** column of the **Virtual Machine Inventory** grid changes to **Yes**. This can take several minutes.  
+    Azure Site Recovery starts the replication process. The VM is protected when the value in the **Protected** column of the **Virtual Machine Inventory** grid changes to **Yes**. This process could take several minutes.  
 
 ## Step 3: Configure and run a test failover in the Azure portal
 
- Although it is not required to complete this step before starting VM replication (the VM is protected with only replication), we recommend configuring failover settings when you set up ASR.
+ Although it is not required to complete this step before starting VM replication (the VM is protected with only replication), we recommend configuring failover settings when you set up Azure Site Recovery.
  
  Complete the following steps to prepare failover to an Azure VM:
 
@@ -90,13 +90,13 @@ Complete the following steps to protect your VMs:
 
 ## Step 4: Create recovery plans
 
-**Recovery Plan** is a feature in ASR that lets you failover and recover an entire application comprising a collection of VMs. While it is possible to recover protected VMs individually, by adding the VMs of an application to a recovery plan, you can fail over the entire application through the recovery plan. You can also use the test failover feature of Recovery Plan to test the recovery of the application.
+**Recovery Plan** is a feature in Azure Site Recovery that lets you fail over and recover an entire application's collection of VMs. It's possible to recover protected VMs individually. But a better way is to add the VMs of an application to your recovery plan. You can then fail over the entire application through the recovery plan. You can also use the test failover feature of Recovery Plan to test the recovery of the application.
 
-Recovery Plan lets you group VMs, sequence the order in which they should be brought up during a failover, and automate additional steps as part of the recovery process. After you've protected your VMs, you can go to the Azure Site Recovery vault in the Azure portal to create recovery plans for them. To learn more, see [Create and customize recovery plans](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans).
+Recovery Plan lets you group VMs, sequence the order in which they should start during a failover, and automate additional steps as part of the recovery process. After you've protected your VMs, you can go to the Azure Site Recovery vault in the Azure portal to create recovery plans for them. To learn more, see [Create and customize recovery plans](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans).
 
 ## Monitor replicated VMs in Azure
 
-To verify no failures in the server registration processs, go to the **Azure portal**, click **All resources**, click **Recovery Services Vault** (the one you specified in the first task, Step 6) click **Jobs**, and then click **Site Recovery Jobs**.
+To verify no failures in the server registration process, go to the **Azure portal**, click **All resources**, click **Recovery Services Vault**, click **Jobs**, and then click **Site Recovery Jobs**. The **Recovery Services Vault** name is the one that you specified in Step 6 of the first task in this article.
 
 To monitor VM replication, go to the **Recovery Services Vault**, and then **Replicated Items**.
 
@@ -104,10 +104,10 @@ To see all servers that are registered to the vault, go to **Recovery Services V
 
 ## Known issue ##
 
-When registering ASR with a cluster, if a node fails to install ASR or register to the ASR service, your VMs may not be protected. Verify that all nodes in the cluster are registered in the Azure portal by going to the **Recovery Services vault**, **Jobs**, and then **Site Recovery Jobs**.
+When you register Azure Site Recovery with a cluster, if a node fails to install Azure Site Recovery or register the Azure Site Recovery service, your VMs may not be protected. To verify all nodes in the cluster are registered in the Azure portal, go to the **Recovery Services vault**, **Jobs**, and then **Site Recovery Jobs**.
 
 ## Next steps
 
-For more information about ASR, see also:
+For more information about Azure Site Recovery, see also:
 
 - [General questions about Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq)
