@@ -11,16 +11,19 @@ ms.date: 03/12/2020
 
 # Manage Azure Stack HCI clusters
 
->Applies to: Azure Stack HCI
+>Applies to: Windows Server 2019
 
 Windows Admin Center can be used to manage your clusters in Azure Stack HCI. Specifically, you will be using the Cluster Manager extension in Windows Admin Center to manage your clusters.
 
 ## View the cluster dashboard ##
 
+The cluster dashboard displays information regarding cluster health and performance.
+
+[!div class="mx-imgBorder"]
 ![cluster settings](media/manage-cluster/cluster-dashboard.png)
 
-1. In Windows Admin Center, click the Windows Server Cluster name under **All connections**.
-1. Under **Tools** on the left, click **Dashboard**. You can view the following:
+1. In Windows Admin Center, click the cluster name under **All connections**.
+1. Under **Tools** on the left, select **Dashboard**. You can view the following:
     - Cluster event alerts
     - List of the servers joined to the cluster
     - List of virtual machines running on the cluster
@@ -38,94 +41,90 @@ There are five general settings that can be applied to your cluster.
 
 1. In Windows Admin Center, click **Cluster Manager** from the top drop-down arrow.
 1. Under **Tools**, click **Settings**.
-1. In the **Cluster** section, select **Access point**.
+1. To change the cluster name, select **Access point** and enter the new name.
 
+[!div class="mx-imgBorder"]
 ![cluster settings](media/manage-cluster/cluster-settings-access.png)
 
-4. Make the following changes as needed:
+4. To control node shutdown behavior, select **Node shutdown behavior** and ensure the checkbox is enabled. This moves any virtual machines from the node first to allow graceful node shutdown.
 
- - change the cluster name
-5. Select **Node shutdown behavior**.
-
+[!div class="mx-imgBorder"]
 ![cluster settings](media/manage-cluster/cluster-settings-shutdown.png)
 
-6. Make the following changes as needed:
+5. To encrypt SMB connections used to send data between cluster nodes, select **Cluster traffic encryption**, then select **Encrypt** from the dropdown boxes for the following:
 
- - enable virtual machine move upon shutdown
+ - **Core traffic** - encrypts traffic sent over NetFT (cluster virtual adapter) on port 3343
 
+  - **Server traffic** - encrypts Cluster Shared Volume (CSV) and Storage Bus Layer (SBL) traffic
 
-7. Select **Cluster traffic encryption**.
-
+[!div class="mx-imgBorder"]
 ![cluster settings](media/manage-cluster/cluster-settings-encryption.png)
 
-8. Make the following changes as needed:
+6. To automatically load-balance virtual machines across the cluster, select **Virtual machine load balancing**, and do the following:
 
- - encrypt all SMB connections between servers for core traffic (NetFT on port 3343) and for storage traffic (CSV and SBL) 
+ - For **Balance virtual machines**, select the appropriate action
+ - For **Aggressiveness**, select the appropriate behavior
 
+ For information on how this works, see [Virtual Machine Load Balancing overview](https://docs.microsoft.com/windows-server/failover-clustering/vm-load-balancing-overview).
 
-9. Select **Virtual machine load balancing**.
-
+[!div class="mx-imgBorder"]
 ![cluster settings](media/manage-cluster/cluster-settings-vm-load.png)
 
-10. Make the following changes as needed:
+7. To select a quorum witness type, select **Witness**, then select one of the following:
 
- - automatically redistribute VMs to less busy nodes
+  - **Cloud witness** - to use an Azure cloud resource as witness 
+   - **Disk witness** - to use a disk resource as witness
+  - **File share wtness** - to use a file share as witness 
+
+For more information, see [Configure and manage quorum](https://docs.microsoft.com/windows-server/failover-clustering/manage-cluster-quorum).
 
 
-11. Select **Witness**.
-
+[!div class="mx-imgBorder"]
 ![cluster settings](media/manage-cluster/cluster-settings-witness.png)
-
-12. Make the following changes as needed:
-
- - select a quorum witness type for your cluster
 
 ## Change cluster Hyper-V settings ##
 
 There are five Hyper-V host settings that can be applied to your cluster.
 
 1. In Windows Admin Center, click **Cluster Manager** from the top drop-down arrow.
-1. Under **Tools**, click **Settings**.
-1. In the **Hyper-V Host Settings** section, select **General**.
+2. Under **Tools**, click **Settings**.
+3. Select **General** and do the following:
 
+ - for **Virtual Hard Disks Path**, specify the default folder to store the virtual hard disk files to
+
+ - for **Virtual Machines Path**, specify the default folder to store the virtual machine configuration files to
+
+ - for **Hypervisor Scheduler Type**, select either **Core Scheduler** or **Classic Scheduler**. This determines how the hypervisor schedules virtual processes to run on physical processors that use simultaneous multi-threading (also known as SMT or hyper-threading)
+
+[!div class="mx-imgBorder"]
 ![Hyper-V general settings](media/manage-cluster/cluster-settings-hyperv.png)
 
-4. Make the following changes as needed:
+4. To allow redirection of local devices and resources from virtual machines, select **Enhanced Session Mode**. Note that enhanced session mode connections require a supported guest operating system.
 
- - default paths for Virtual Hard Disks and Virtual Machines Paths and Hypervisor Scheduler Type for virtual processes.
-
-
-5. Select **Enhanced Session Mode**.
-
+[!div class="mx-imgBorder"]
 ![Hyper-V enhanced session mode settings](media/manage-cluster/cluster-settings-session.png)
 
-6. Make the following changes as needed:
+5. To allow virtual machines to span physical NUMA nodes, select **NUMA Spanning**. Non-uniform memory architecture (NUMA) spanning can provide a virtual machine with more memory than what is available on a single NUMA node.
 
- - allow enhanced session mode connections to VMs running on each server node.
-
-7. Select **NUMA Spanning**.
-
+[!div class="mx-imgBorder"]
 ![Hyper-V NUMA spanning settings](media/manage-cluster/cluster-settings-numa.png)
 
-8. Make the following changes as needed:
+6. To specify the number of live migrations that can be performed at the same time, select **Live Migration**, select a number, then specify the following:
 
- - allow VMs to span non-uniform memory architecture (NUMA) nodes for additional computing resources.
+ - for **Authentication Protocol**, select either **CredSSP** or **Kerberos**.
 
-9. Select **Live Migration**.
+  - for **Performance Option**, select either **Compression** or **SMB**. Compressed data is sent over a TCP/IP connection.
 
+   - enable the **Use any network** checkbox to use any available network on a node to perform the migration
+
+
+[!div class="mx-imgBorder"]
 ![Hyper-V live migration settings](media/manage-cluster/cluster-settings-liv-migration.png)
 
-10. Make the following changes as needed:
+7. To specify the number of storage migrations that can be performed at the same time, select **Storage Migration**, then select a number. 
 
- - enable incoming and outgoing live migrations, and specify authentication and performance options.
-
- 11. Select **Storage Migration**.
-
+[!div class="mx-imgBorder"]
  ![Hyper-V storage migration settings](media/manage-cluster/cluster-settings-sto-migration.png)
-
-12. Make the following changes as needed:
-
-  - specify how many storage migrations can be performed at the same time.
 
 ## Change cluster storage settings ##
 
@@ -133,21 +132,21 @@ There are two settings you can change related to Storage Spaces Direct that can 
 
 1. In Windows Admin Center, click **Cluster Manager** from the top drop-down arrow.
 1. Under **Tools**, click **Settings** at the bottom.
-1. In the **Storage** section, select **Storage Spaces Direct**.
+1. To configure the storage cache, select **Storage Spaces Direct**, then configure the following:
 
+ - for **Persistent cache**, select either **Enabled** or **Disabled**
+
+  - for **Cache mode for HDD**, select **Read only**, **Write only**, or **Read/Write**
+
+   - for **Cache mode for SSD**, select **Read only**, **Write only**, or **Read/Write** 
+
+[!div class="mx-imgBorder"]
 ![Storage Spaces Direct settings](media/manage-cluster/cluster-settings-ssd.png)
 
-4. Make the following changes as needed:
+4. To use server memory to cache frequent reads, select **In-memory cache** and specify the maximum memory to be used per sever. Also see [Using Storage Spaces Direct with the CSV in-memory read cache](https://docs.microsoft.com/windows-server/storage/storage-spaces/csv-cache).
 
- - to specify cache persistence, cache mode for HDD/SSD, cache page size, and cache metadata reserve.
-
-5. In the **Storage** section, select **In-memory cache**.
-
+[!div class="mx-imgBorder"]
 ![In-memory cache settings](media/manage-cluster/cluster-settings-memory.png)
-
-6. To the right, make the following changes as needed:
-
-  - to specify maximum memory per server used to boost performance.
 
 ## Next Steps ##
 
