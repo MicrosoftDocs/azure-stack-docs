@@ -23,7 +23,7 @@ This article lists all the security updates in the last four updates of Azure St
 ## 2002 update
 
 Because of the cumulative nature of Windows updates, this update contains the security payloads for the previous months. This list of CVEs reflects the security payloads since the last Full update, hence [October 2019](https://portal.msrc.microsoft.com/en-us/security-guidance/releasenotedetail/2019-Oct), [November 2019](https://portal.msrc.microsoft.com/en-us/security-guidance/releasenotedetail/2019-Nov), [December 2019](https://portal.msrc.microsoft.com/en-us/security-guidance/releasenotedetail/2019-Dec) and [January 2020](https://portal.msrc.microsoft.com/en-us/security-guidance/releasenotedetail/2020-Jan).
-For more information about these vulnerabilities, click on the links below, or see Microsoft Knowledge Base articles [4534273](https://support.microsoft.com/en-us/help/4534273).
+For more information about these vulnerabilities, click on the links below, or see Microsoft Knowledge Base article [4534273](https://support.microsoft.com/en-us/help/4534273).
 
 - [CVE-2020-0601](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2020-0601)
 - [CVE-2020-0607](https://portal.msrc.microsoft.com/en-us/security-guidance/advisory/CVE-2020-0607)
