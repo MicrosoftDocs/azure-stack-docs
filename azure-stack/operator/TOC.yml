@@ -134,8 +134,12 @@
       href: azure-stack-cli-admin.md
     - name: Set up management environment
       items:
-      - name: Install Azure Stack Hub PowerShell
+      - name: Install PowerShell RM
         href: azure-stack-powershell-install.md
+      - name: Install PowerShell Az
+        href: powershell-install-az-module.md
+      - name: Migrate PowerShell AzureRM to Az
+        href: migrate-azurerm-az.md
       - name: Download tools
         href: azure-stack-powershell-download.md
       - name: Connect with PowerShell
@@ -491,19 +495,23 @@
     - name: Help & Support portal 
       items:
       - name: Overview      
-        href: azure-stack-help-and-support-overview.md
+        href: azure-stack-help-and-support-overview-tzl.md
+      - name: Find your Cloud ID
+        href: azure-stack-find-cloud-id.md  
       - name: Diagnostic log collection
         items:
         - name: Overview 
-          href: azure-stack-diagnostic-log-collection-overview.md
-        - name: Automatic collection
-          items:
-          - name: Configure automatic collection
-            href: azure-stack-configure-automatic-diagnostic-log-collection.md
-          - name: Best practices
-            href: azure-stack-best-practices-automatic-diagnostic-log-collection.md  
-        - name: On-demand collection
-          href: azure-stack-configure-on-demand-diagnostic-log-collection.md
+          href: azure-stack-diagnostic-log-collection-overview-tzl.md
+        - name: Send logs proactively
+          href: azure-stack-configure-automatic-diagnostic-log-collection-tzl.md
+        - name: Send logs now
+          items: 
+          - name: Use the Administrator portal
+            href: azure-stack-configure-on-demand-diagnostic-log-collection-portal-tzl.md
+          - name: Use PowerShell
+            href: azure-stack-configure-on-demand-diagnostic-log-collection-powershell-tzl.md
+        - name: Get-AzureStackLog (PEP)
+          href: azure-stack-get-azurestacklog.md    
     - name: Validation for Azure Stack Hub  
       href: azure-stack-diagnostic-test.md
     - name: Troubleshooting
