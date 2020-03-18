@@ -103,7 +103,7 @@ Install-Module -Name AzureStack -RequiredVersion 2.0.0-preview -AllowPrerelease
 > You can't have both the AzureRM and Az modules installed for PowerShell 5.1 for Windows at the same time. If you need to keep AzureRM available on your system, install the Az module for PowerShell Core 6.x or later. To do this, [install PowerShell Core 6.x or later](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows) and then follow these instructions in a PowerShell Core terminal.
 
 
-## 5. Disconnected:without an internet connection
+## 5. Disconnected: Install without internet connection
 
 In some environments it's not possible to connect to the PowerShell Gallery. In those situations,
 you can still install offline using one of these methods:
