@@ -32,7 +32,7 @@ To check which version(s) of AzureRM you have installed, run the command:
 Get-InstalledModule -Name AzureRM -AllVersions
 ```
 
-## Ensure your existing scripts work with the latest AzureRM release
+## Check current scripts work with AzureRM
 
 This is the most important step! Run your existing scripts, and make sure that they work with the
 _latest_ release of AzureRM (__2.5.0__). If your scripts don't work, make sure to read
@@ -48,7 +48,7 @@ To install the Azure PowerShell Az module, follow these steps:
 
 * __RECOMMENDED__: [Uninstall the AzureRM module](/powershell/azure/uninstall-az-ps#uninstall-the-azurerm-module).
   Make sure that you remove _all_ installed versions of AzureRM, not just the most recent version.
-* [Install the Az module]((https://docs.microsoft.com/powershell/azure/install-az-ps)
+* [Install the Az module](https://docs.microsoft.com/powershell/azure/install-az-ps)
 
 ## Enable AzureRM compatibility aliases 
 
@@ -77,7 +77,7 @@ aliases are written to the user profile for the selected scope. If no user profi
 
 Once the alias mode is enabled, run your scripts again to confirm that they still function as expected. 
 
-## Change module imports and cmdlet names
+## Change module and cmdlet names
 
 In general, the module names have been changed so that `AzureRM` and `Azure` become `Az`, and the same for cmdlets.
 For example, the `AzureRM.Compute` module has been renamed to `Az.Compute`. `New-AzureRMVM` has become `New-AzVM`,
@@ -109,7 +109,7 @@ path, including module-specific changes that may affect your scripts.
 
 This section details the general breaking changes that are part of the redesign of the Az module.
 
-### Cmdlet Noun Prefix Changes
+### Cmdlet noun prefix changes
 
 In the AzureRM module, cmdlets used either `AzureRM` or `Azure` as a noun prefix.  Az simplifies and normalizes cmdlet names, so that all cmdlets use 'Az' as their cmdlet noun prefix. For example:
 
@@ -176,7 +176,7 @@ The module names have changed from `AzureRM.*` to `Az.*`, except for the followi
 The changes in module names mean that any script that uses `#Requires` or `Import-Module` to load specific modules will need to be changed to use the new module instead. For modules where the cmdlet suffix has not changed,
 this means that although the module name has changed, the suffix indicating the operation space has _not_.
 
-#### Migrating #Requires and Import-Module Statements
+#### Migrating requires and import module statements
 
 Scripts that use `#Requires` or `Import-Module` to declare a dependency on AzureRM modules must be updated to use the new module names. For example:
 
@@ -245,7 +245,7 @@ The tools for these services are no longer actively supported.  Customers are en
 Using Az with PowerShell 5.1 for Windows requires the installation of .NET Framework 4.7.2. Using PowerShell
 Core 6.x or later does not require .NET Framework.
 
-### Temporary removal of User login using PSCredential
+### Temporary removal of user login using PSCredential
 
 Due to changes in the authentication flow for .NET Standard, we are temporarily removing user login via PSCredential. This capability will be re-introduced in the 1/15/2019 release for PowerShell 5.1 for Windows. This is discussed in detail in [this GitHub issue.](https://github.com/Azure/azure-powershell/issues/7430)
 
@@ -417,3 +417,5 @@ $task.Wait()
 
 ## Next steps
 
+- Learn more about PowerShell on Azure Stack Hub, see [Get started with PowerShell in Azure Stack Hub](../user/azure-stack-powershell-overview.md)
+- Install the PowerShell Az module, see [Install PowerShell Az module for Azure Stack Hub](migrate-azurerm-az.md)

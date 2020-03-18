@@ -83,7 +83,7 @@ session using **Run as administrator** in Windows or use the `sudo` command on m
 Install-Module -Name Az -AllowClobber -Scope AllUsers
 ```
 
-## 3. Connected: Install PowerShell for Azure Stack Hub with internet connectivity
+## 3. Connected: Install with internet connectivity
 
 The Azure Stack AZ module will work Azure Stack Hub 2002 or later. In addition the Azure Stack Az module will work with PowerShell 5.1 or greater on a Windows machine, or PowerShell 6.x or greater on a Linux or macOS platform. Using the PowerShellGet cmdlets is the preferred installation method. This method works the same on the supported platforms. 
 
@@ -97,13 +97,13 @@ Install-Module -Name AzureStack -RequiredVersion 2.0.0-preview -AllowPrerelease
 ```
 
 > [!Note]  
-> - Azure Stack Hub module version 2.0.0 is a breaking change. Refer to the [Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub](migrate-from-azurerm-to-az-azure-stack.md) for details.
+> Azure Stack Hub module version 2.0.0 is a breaking change. Refer to the [Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub](migrate-azurerm-az.md) for details.
 
 > [!WARNING]  
 > You can't have both the AzureRM and Az modules installed for PowerShell 5.1 for Windows at the same time. If you need to keep AzureRM available on your system, install the Az module for PowerShell Core 6.x or later. To do this, [install PowerShell Core 6.x or later](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows) and then follow these instructions in a PowerShell Core terminal.
 
 
-## 5. Disconnected: Install PowerShell without an internet connection
+## 5. Disconnected:without an internet connection
 
 In some environments it's not possible to connect to the PowerShell Gallery. In those situations,
 you can still install offline using one of these methods:
@@ -141,7 +141,7 @@ In scenarios that require a proxy server to access the internet, you first confi
 
 You can use the cmdlets and code samples based on AzureRM. However, you will want to change the name of the modules and cmdlets. The module names have been changed so that `AzureRM` and Azure become `Az`, and the same for cmdlets. For example, the `AzureRM.Compute` module has been renamed to `Az.Compute`.` New-AzureRMVM` has become ` New-AzVM`, and `Get-AzureStorageBlob` is now `Get-AzStorageBlob`.
 
-For a more thorough discussion and guidance for moving AzurRM script to Az and breaking changes in Azure Stack Hub's AZ module, see [Migrate from AzureRM to Azure PowerShell Az](migrate-from-azurerm-to-az-azure-stack.md).
+For a more thorough discussion and guidance for moving AzurRM script to Az and breaking changes in Azure Stack Hub's AZ module, see [Migrate from AzureRM to Azure PowerShell Az](migrate-azurerm-az.md).
 
 ## Next steps
 

@@ -35,7 +35,7 @@ To check your version, run **$PSVersionTable.PSVersion** and compare the **Major
   > [!Note]
   > PowerShell 5.1 requires a Windows machine.
 
-- **Run Powershell in an elevated command prompt**.
+- **Run PowerShell in an elevated command prompt**.
 
 - **PowerShell Gallery access** <br>
   You need access to the [PowerShell Gallery](https://www.powershellgallery.com). The gallery is the central repository for PowerShell content. The **PowerShellGet** module contains cmdlets for discovering, installing, updating, and publishing PowerShell artifacts. Examples of these artifacts are modules, DSC resources, role capabilities, and scripts from the PowerShell Gallery and other private repositories. If you're using PowerShell in a disconnected scenario, you must retrieve resources from a machine with a connection to the internet and store them in a location accessible to your disconnected machine.
@@ -127,7 +127,7 @@ Install-Module -Name AzureStack -RequiredVersion 1.7.2
 ```
 
 > [!Note]  
-> - The Azure Stack Hub module version 1.7.2 is a breaking change release. To migrate from Azure Stack Hub 1.6.0, please refer to the [migration guide](https://aka.ms/azspshmigration171).
+> The Azure Stack Hub module version 1.7.2 is a breaking change release. To migrate from Azure Stack Hub 1.6.0, please refer to the [migration guide](https://aka.ms/azspshmigration171).
 
 ::: moniker-end
 
@@ -148,7 +148,7 @@ In a disconnected scenario, you first download the PowerShell modules to a machi
 
 Sign in to a computer with internet connectivity and use the following scripts to download the Azure Resource Manager and Azure Stack Hub packages, depending on your version of Azure Stack Hub.
 
-Installation has four steps:
+Installation has five steps:
 
 1. Install Azure Stack Hub PowerShell to a connected machine.
 2. Enable additional storage features.
