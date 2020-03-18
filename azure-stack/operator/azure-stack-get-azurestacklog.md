@@ -1,50 +1,22 @@
 ---
-title: Collect Azure Stack Hub diagnostic logs on demand 
-description: Learn how to collect diagnostic logs on demand in Azure Stack Hub using Help and Support or privileged endpoint (PEP).
+title: Use the privileged endpoint (PEP) to collect diagnostic logs
+description: Learn how to collect diagnostic logs on demand in Azure Stack Hub using the Administrator portal or a PowerShell script.
 author: justinha
 
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 03/05/2020
 ms.author: justinha
 ms.reviewer: shisab
-ms.lastreviewed: 01/16/2019
-
-# Intent: As an Azure Stack operator, I want to collect diagnostic logs on demand to assist with troubleshooting.
-# Keyword: azure stack collect diagnostic logs
+ms.lastreviewed: 03/05/2020
 
 ---
-
-# Collect Azure Stack Hub diagnostic logs on demand
-
-As part of troubleshooting, Microsoft Customer Support Services (CSS) may need to analyze diagnostic logs. Beginning with the 1907 release, Azure Stack Hub operators can upload diagnostic logs to a blob container in Azure by using **Help and Support**. Using **Help and Support** is recommended over the previous method of using PowerShell because it's simpler. But if the portal is unavailable, operators can continue to collect logs using **Get-AzureStackLog** through the privileged endpoint (PEP) as in previous releases. This topic covers both ways of collecting diagnostic logs on demand.
-
->[!Note]
->As an alternative to collecting logs on demand, you can streamline the troubleshooting process by enabling [automatic diagnostic log collection](azure-stack-configure-automatic-diagnostic-log-collection-tzl.md). If system health conditions need to be investigated, the logs are uploaded automatically for analysis by CSS. 
-
-## Use Help and Support to collect diagnostic logs on demand
-
-To troubleshoot a problem, CSS might request an Azure Stack Hub operator to collect diagnostic logs on demand for a specific time window from the previous week. In that case, CSS will provide the operator with a SAS URL for uploading the collection. 
-Use the following steps to configure on-demand log collection using the SAS URL from CSS:
-
-1. Open **Help and Support Overview** and click **Collect logs now**. 
-1. Choose a 1-4 hour sliding window from the last seven days. 
-1. Choose the local time zone.
-1. Enter the SAS URL that CSS provided.
-
-   ![Screenshot of on-demand log collection](media/azure-stack-automatic-log-collection/collect-logs-now.png)
-
->[!NOTE]
->If automatic diagnostic log collection is enabled, **Help and Support** shows when log collection is in progress. If you click **Collect logs now** to collect logs from a specific time while automatic log collection is in progress, on-demand collection begins after automatic log collection is complete. 
-
-## Use the privileged endpoint (PEP) to collect diagnostic logs
+# Send Azure Stack Hub diagnostic logs by using the privileged endpoint (PEP)
 
 <!--how do you look up the PEP IP address. You look up the azurestackstampinfo.json--->
 
 
+To run Get-AzureStackLog on an integrated system, you need to have access to the privileged endpoint (PEP). Here's an example script you can run using the PEP to collect logs. If you are canceling a running log collection to start a new one, please wait 5 minutes Before starting new log collection and enter `Remove-PSSession -Session $session`.
 
-### Run Get-AzureStackLog on Azure Stack Hub integrated systems
-
-To run Get-AzureStackLog on an integrated system, you need to have access to the Privileged End Point (PEP). Here's an example script you can run using the PEP to collect logs on an integrated system:
 
 ```powershell
 $ipAddress = "<IP ADDRESS OF THE PEP VM>" # You can also use the machine name instead of IP here.
@@ -59,22 +31,14 @@ $session = New-PSSession -ComputerName $ipAddress -ConfigurationName PrivilegedE
 $fromDate = (Get-Date).AddHours(-8)
 $toDate = (Get-Date).AddHours(-2) # Provide the time that includes the period for your issue
 
-Invoke-Command -Session $session { Get-AzureStackLog -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred  -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
+Invoke-Command -Session $session { Get-AzureStackLog -OutputSharePath "<EXTERNAL SHARE ADDRESS>" -OutputShareCredential $using:shareCred -FilterByRole Storage -FromDate $using:fromDate -ToDate $using:toDate}
 
 if ($session) {
     Remove-PSSession -Session $session
 }
 ```
 
-### Run Get-AzureStackLog on an Azure Stack Development Kit (ASDK) system
-
-Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
-
-1. Sign in as **AzureStack\CloudAdmin** on the ASDK host computer.
-2. Open a new PowerShell window as an administrator.
-3. Run the **Get-AzureStackLog** PowerShell cmdlet.
-
-#### Examples
+### Examples
 
 * Collect all logs for all roles:
 
@@ -112,6 +76,30 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
   Get-AzureStackLog -OutputPath C:\KubernetesLogs -InputSasUri "https://<storageAccountName>.blob.core.windows.net/<ContainerName><SAS token>" -FromDate (Get-Date).AddHours(-8) -ToDate (Get-Date).AddHours(-2) 
   ```
 
+* Collect logs for the value-add RPs. The general syntax is:
+ 
+  ```powershell
+  Get-AzureStackLogs -FilterByResourceProvider <<value-add RP name>>
+  ```
+ 
+  To collect logs for IoT Hub: 
+
+  ```powershell
+  Get-AzureStackLogs -FilterByResourceProvider IotHub
+  ```
+ 
+  To collect logs for Event Hubs:
+
+  ```powershell
+  Get-AzureStackLogs -FilterByResourceProvider eventhub
+  ```
+ 
+  To collect logs for Azure Stack Edge:
+
+  ```powershell
+  Get-AzureStackLogs -FilterByResourceProvide databoxedge
+  ```
+
 * Collect logs and store them in the specified Azure Storage blob container. The general syntax for this operation is as follows:
 
   ```powershell
@@ -145,7 +133,7 @@ Use these steps to run `Get-AzureStackLog` on an ASDK host computer.
   9. Select **Create**.
   10. You'll get a Shared Access Signature. Copy the URL portion and provide it to the `-OutputSasUri` parameter.
 
-### Parameter considerations for both ASDK and integrated systems
+### Parameter considerations 
 
 * The parameters **OutputSharePath** and **OutputShareCredential** are used to store logs in a user specified location.
 
@@ -270,5 +258,4 @@ The following are some example log types that are collected:
 * **ETW logs**
 
 These files are collected and saved in a share by Trace Collector. Get-AzureStackLog can then be used to collect them when necessary.
-
 
