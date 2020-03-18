@@ -328,7 +328,7 @@
       },
     { 
       "source_path": "azure-stack/operator/powershell-install-az-module.md", 
-      "redirect_url": "/azure-stack/operator/azure-stack-powershell-install", 
+      "redirect_url": "/azure-stack/operator/azure-stack-powershell-configure-admin", 
       "redirect_document_id": true 
       } 
   ]
