@@ -418,4 +418,4 @@ $task.Wait()
 ## Next steps
 
 - Learn more about PowerShell on Azure Stack Hub, see [Get started with PowerShell in Azure Stack Hub](../user/azure-stack-powershell-overview.md)
-- Install the PowerShell Az module, see [Install PowerShell Az module for Azure Stack Hub](migrate-azurerm-az.md)
+- Install the PowerShell Az module, see [Install PowerShell Az module for Azure Stack Hub](powershell-install-az-module.md)
