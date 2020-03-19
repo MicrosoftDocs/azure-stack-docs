@@ -26,7 +26,7 @@ Azure Site Recovery consists of two components: *replication* and *failover*. Th
 
 Completing setup for the replication component alone is sufficient to protect your VMs from a disaster. However, you can't start the VMs in Azure until you configure the failover portion of the process.
 
-You can set up the failover portion when you want to fail over to an Azure VM, because it's not required during initial setup. If the host server goes down, you can configure the failover component at that time and access the workloads of the protected VM. However, we recommend configuring the failover-related settings before a disaster.
+You can set up the failover portion when you want to fail over to an Azure VM; it's not required during initial setup. If the host server goes down, you can configure the failover component at that time and access the workloads of the protected VM. However, we recommend configuring the failover-related settings before a disaster.
 
 ## Prerequisites and planning
 
@@ -46,7 +46,7 @@ Complete the following steps once per host server or cluster containing the VMs 
 1. Expand the **More** submenu and then select **Set up VM Protection**.
 
     > [!div class="mx-imgBorder"]
-    > ![Set up VM Protection](media/set-up-vm-protection.png)
+    > ![Set up VM Protection](media/azure-site-recovery/set-up-vm-protection.png)
 
 1. Sign in to your Azure Account.
 1. Enter the required information:
@@ -81,7 +81,7 @@ Complete the following steps to protect your VMs:
 
 ## Step 3: Configure and run a test failover in the Azure portal
 
- Although it is not required to complete this step before starting VM replication (the VM is protected with only replication), we recommend configuring failover settings when you set up Azure Site Recovery.
+ It's not required to complete this step before starting VM replication. The VM is protected with only replication. However, we recommend configuring failover settings when you set up Azure Site Recovery.
  
  Complete the following steps to prepare failover to an Azure VM:
 
@@ -96,7 +96,7 @@ Complete the following steps to protect your VMs:
 
 *Recovery Plan* is a feature in Azure Site Recovery that lets you fail over and recover an entire application's collection of VMs. It's possible to recover protected VMs individually. But a better way is to add the VMs of an application to your recovery plan. You can then fail over the entire application through the recovery plan. You can also use the test failover feature of Recovery Plan to test the recovery of the application.
 
-Recovery Plan lets you group VMs, sequence the order in which they should start during a failover, and automate additional steps as part of the recovery process. After you've protected your VMs, you can go to the Azure Site Recovery vault in the Azure portal to create recovery plans for them. To learn more, see [Create and customize recovery plans](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans).
+Recovery Plan lets you group VMs, sequence the order in which they should start during a failover, and automate additional recovery steps. After you've protected your VMs, you can go to the Azure Site Recovery vault in the Azure portal to create recovery plans for them. To learn more, see [Create and customize recovery plans](https://docs.microsoft.com/azure/site-recovery/site-recovery-create-recovery-plans).
 
 ## Step 5: Monitor replicated VMs in Azure
 
@@ -108,7 +108,7 @@ To see all servers that are registered to the vault, go to **Recovery Services V
 
 ## Known issue ##
 
-When you register Azure Site Recovery with a cluster, if a node fails to install Azure Site Recovery or register the Azure Site Recovery service, your VMs may not be protected. To verify all nodes in the cluster are registered in the Azure portal, go to the **Recovery Services vault**, **Jobs**, and then **Site Recovery Jobs**.
+When you register Azure Site Recovery with a cluster, if a node either fails to install Azure Site Recovery or register the Azure Site Recovery service, your VMs may not be protected. To verify all nodes in the cluster are registered in the Azure portal, go to the **Recovery Services vault**, **Jobs**, and then **Site Recovery Jobs**.
 
 ## Next steps
 
