@@ -18,9 +18,8 @@ ms.lastreviewed: 09/19/2019
 
 Azure PowerShell AzureRM provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure Stack Hub resources.
 
-To work with your cloud, you need to install Azure Stack Hub compatible PowerShell modules. Azure Stack Hub can use the **AzureRM** module rather than [the newer **AzureAZ** module](powershell-install-az-module.md). 
-
 You also need to use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.
+
 API profiles provide a way to manage version differences between Azure and Azure Stack Hub. An API version profile is a set of Azure Resource Manager PowerShell modules with specific API versions. Each cloud platform has a set of supported API version profiles. For example, Azure Stack Hub supports a specific profile version such as **2019-03-01-hybrid**. When you install a profile, the Azure Resource Manager PowerShell modules that correspond to the specified profile are installed.
 
 You can install Azure Stack Hub compatible PowerShell modules in internet-connected, partially connected, or disconnected scenarios. This article walks you through the detailed instructions for these scenarios.

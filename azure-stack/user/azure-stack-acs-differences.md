@@ -32,6 +32,7 @@ This article summarizes the known Azure Stack Hub Storage differences from Azure
 |Managed disks|Premium and standard supported|Supported when you use version 1808 or later.
 |Managed disk snapshots|General available|Supported.
 |Managed disk incremental snapshots|General available|Not yet supported.
+|Managed disk snapshots for VM in a running state|General available|Not yet supported.
 |Blob name|1,024 characters (2,048 bytes)|880 characters (1,760 bytes)
 |Block blob max size|4.75 TB (100 MB X 50,000 blocks)|4.75 TB (100 MB x 50,000 blocks) for the 1802 update or newer version. 50,000 X 4 MB (approximately 195 GB) for previous versions.
 |Page blob snapshot copy|Backup Azure unmanaged VM disks attached to a running VM supported|Supported in [API as an async operation](azure-stack-acs-differences.md).
