@@ -18,13 +18,13 @@ landingContent:
 # Cards and links should be based on top customer tasks or top subjects
 # Start card title with a verb
   # Card (optional)
-  - title: About [service]
+  - title: About Azure Stack Hub
     linkLists:
       - linkListType: overview
         links:
           - text: What is Azure Stack Hub?
             url: user-overview.md
-          - text: Differences with Azure
+          - text: Differences between Azure and Azure Stack Hub
             url: azure-stack-considerations.md
 
   # Card (optional)
@@ -69,6 +69,8 @@ landingContent:
         links:
           - text: Deploy a VM in IaaS with a template
             url: azure-stack-create-vm-template.md
+          - text: Configure a virtual network
+            url: deploy-foundational-patterns.md
           - text: Quickstart - Create a VM
             url: azure-stack-quick-linux-portal.md
           - text: Host Apps written in your code
