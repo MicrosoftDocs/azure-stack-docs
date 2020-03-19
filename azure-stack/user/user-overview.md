@@ -26,4 +26,4 @@ If you are an Azure Stack Hub user interested in the Azure Stack Development Kit
 
 ## Next steps
 
-[Develop solutions with Azure Stack Hub](azure-stack-dev-start)
+[Develop solutions with Azure Stack Hub](azure-stack-dev-start.md)
