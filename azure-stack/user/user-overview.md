@@ -20,9 +20,9 @@ Azure Stack Hub is a hybrid cloud platform that lets you use Azure services from
 
 ## How to us Azure Stack Hub
 
-If you're an Azure Stack Hub operator who manages the infrastructure and offers services, check out the [operator documentation](../operator/).
+If you're an Azure Stack Hub operator who manages the infrastructure and offers services, check out the [operator documentation](https://docs.microsoft.com/azure-stack/operator/).
 
-If you are an Azure Stack Hub user interested in the Azure Stack Development Kit (ASDK), a single-node deployment of Azure Stack Hub that you can download and use for free, see the [ASDK documentation](../asdk/).
+If you are an Azure Stack Hub user interested in the Azure Stack Development Kit (ASDK), a single-node deployment of Azure Stack Hub that you can download and use for free, see the [ASDK documentation](https://docs.microsoft.com/azure-stack/asdk/).
 
 ## Next steps
 

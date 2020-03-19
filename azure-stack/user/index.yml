@@ -49,7 +49,7 @@ landingContent:
   # Card
   - title: Configure your client
     linkLists:
-      - linkListType: linkListType
+      - linkListType: get-started
         links:
           - text: Install Azure Stack Hub PowerShell
             url: https://docs.microsoft.com/en-us/azure-stack/operator/azure-stack-powershell-install?toc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fuser%2Ftoc.json%3Fview%3Dazs-2002&bc=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure-stack%2Fbreadcrumb%2Ftoc.json%3Fview%3Dazs-2002&view=azs-2002
@@ -65,7 +65,7 @@ landingContent:
   # Card
   - title: Infrastructure-as-a-Service (IaaS) on Azure Stack Hub
     linkLists:
-      - linkListType: linkListType
+      - linkListType: how-to-guide
         links:
           - text: Deploy a VM in IaaS with a template
             url: azure-stack-create-vm-template.md
@@ -78,7 +78,7 @@ landingContent:
   # Card
   - title: Platform-as-a-Service (PaaS) on Azure Stack Hub
     linkLists:
-      - linkListType: linkListType
+      - linkListType: how-to-guide
         links:
           - text: Deploy a Service Fabric cluster
             url: azure-stack-solution-template-service-fabric-cluster.md
