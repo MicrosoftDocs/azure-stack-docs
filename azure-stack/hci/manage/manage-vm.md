@@ -215,7 +215,7 @@ Instead of using Windows Admin Center, you can also manage your VMs through a Hy
 
 ## Protect VMs with Azure Site Recovery ##
 
-You can use Windows Admin Center to configure Azure Site Recovery and replicate your on-premises Vms to Azure. This is an optional value-add service. To get started, see [Protect VMs using Azure Site Recovery](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-site-recovery).
+You can use Windows Admin Center to configure Azure Site Recovery and replicate your on-premises VMs to Azure. This is an optional value-add service. To get started, see [Protect VMs using Azure Site Recovery](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/azure-site-recovery).
 
 > [!div class="mx-imgBorder"]
 > ![Setup Azure Site Recovery](media/manage-vm/vm-more-azure.png)
