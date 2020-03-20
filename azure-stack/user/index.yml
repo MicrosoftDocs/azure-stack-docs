@@ -1,10 +1,10 @@
 ### YamlMime:Landing
 
-title: Azure Stack Hub User Documentation # < 60 chars
+title: Azure Stack Hub user documentation # < 60 chars
 summary: Azure Stack Hub is a hybrid cloud platform that lets you use Azure services from your company's or service provider's datacenter. # < 160 chars
 
 metadata:
-  title: Azure Stack Hub Documentation - Tutorials, API Reference
+  title: Azure Stack Hub documentation - tutorials, API reference
   description: Azure Stack Hub is a hybrid cloud platform that lets you use Azure services from your company's or service provider's datacenter.
   ms.service: azure-stack
   ms.topic: landing-page

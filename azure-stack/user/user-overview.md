@@ -18,7 +18,7 @@ ms.lastreviewed: 3/19/2020
 
 Azure Stack Hub is a hybrid cloud platform that lets you use Azure services from your company's or service provider's datacenter. As a developer, you can build apps on Azure Stack Hub. You can then deploy them to Azure Stack Hub, to Azure, or you can build truly hybrid apps that leverage the connectivity between an Azure Stack Hub cloud and Azure. Learn how to create resources and deploy apps with our quickstarts and tutorials.
 
-## How to us Azure Stack Hub
+## How to use Azure Stack Hub
 
 If you're an Azure Stack Hub operator who manages the infrastructure and offers services, check out the [operator documentation](https://docs.microsoft.com/azure-stack/operator/).
 
