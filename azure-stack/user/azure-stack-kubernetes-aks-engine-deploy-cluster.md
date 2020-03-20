@@ -67,7 +67,7 @@ This section looks at creating an API model for your cluster.
 
 6. Find `portalURL` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`.
 
-7.  In the array `masterProfile`, set the following fields:
+7.  In `masterProfile`, set the following fields:
 
     | Field | Description |
     | --- | --- |
@@ -76,7 +76,7 @@ This section looks at creating an API model for your cluster.
     | vmSize |  Enter [a size supported by Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example `Standard_D2_v2`. |
     | distro | Enter `aks-ubuntu-16.04`. |
 
-8.  In the array `agentPoolProfiles` update:
+8.  In `agentPoolProfiles` update:
 
     | Field | Description |
     | --- | --- |
@@ -84,7 +84,7 @@ This section looks at creating an API model for your cluster.
     | vmSize | Enter [a size supported by Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example `Standard_D2_v2`. |
     | distro | Enter `aks-ubuntu-16.04`. |
 
-9.  In the array `linuxProfile` update:
+9.  In `linuxProfile` update:
 
     | Field | Description |
     | --- | --- |
