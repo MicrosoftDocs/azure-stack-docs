@@ -11,16 +11,12 @@ ms.date: 03/19/2020
 
 > Applies to: Windows Server 2019
 
-This topic provides step-by-step instructions to configure an NVIDIA graphics processing unit (GPU) with Azure Stack HCI using Discrete Device Assignment (DDA) technology for an Ubuntu VM.
+This topic provides step-by-step instructions on how to install and configure an NVIDIA graphics processing unit (GPU) with Azure Stack HCI using Discrete Device Assignment (DDA) technology for an Ubuntu VM.
 This document assumes you have the Azure Stack HCI cluster deployed and VMs installed.
 
-## Install and configure NVIDIA GPU with DDA
+## Configure the Azure Stack HCI node
 
-Install the NVIDIA GPU physically into the server, following OEM instructions and BIOS recommendations.
-
-### Configure the Azure Stack HCI node
-
-Choose the server node(s) in your Azure Stack HCI cluster to install NVIDIA GPUs. Once the server boots up:
+Choose the server node(s) in your Azure Stack HCI cluster to install NVIDIA GPUs. Install the NVIDIA GPU physically into the server, following OEM instructions and BIOS recommendations. Once the server boots up:
 
 1. Login as Administrator to the Azure Stack HCI node with the NVIDIA GPU installed.
 2. Open **Device Manager** and navigate to the *other devices* section. You should see a device listed as "PCI Express Graphics Processing Unit."
@@ -35,7 +31,7 @@ Choose the server node(s) in your Azure Stack HCI cluster to install NVIDIA GPUs
     > [!div class="mx-imgBorder"]
     > ![Dismounted Device Screenshot](media/attach-gpu-to-linux-vm/dismounted.png)
 
-### Create and configure an Ubuntu virtual machine
+## Create and configure an Ubuntu virtual machine
 
 1. Download [Ubuntu desktop release 18.04.02 ISO](http://cdimage.ubuntu.com/lubuntu/releases/18.04.2/release/lubuntu-18.04.2-desktop-amd64.iso).
 2. Open **Hyper-V Manager** on the node of the system with the GPU installed.
@@ -85,15 +81,74 @@ Choose the server node(s) in your Azure Stack HCI cluster to install NVIDIA GPUs
     $ sudo apt install openssh-server
    ```
 
-8. Find The TCP/IP address for the Ubuntu installation using the ifconfig command and copy the IP address for the eth0 interface.
+8. Find The TCP/IP address for the Ubuntu installation using the **ifconfig** command and copy the IP address for the eth0 interface.
 
 9. Use a SSH client such as [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/) and connect to the Ubuntu VM for further configuration.
 
-10. Upon login through the SSH client, issue the command "lspci" to validate that the NVIDIA GPU is listed:
-    ![lspci screenshot](media/attach-gpu-to-linux-vm/lspci.png)
+10. Upon login through the SSH client, issue the command **lspci** and validate that the NVIDIA GPU is listed as "3D controller."
 
     > [!IMPORTANT]
     > If The NVIDIA GPU is not seen as "3D controller," please do not proceed further. Please ensure that the steps above are followed before proceeding.
+
+11. Within the VM, search for and open **Software & Updates**. Navigate to **Additional Drivers**, then choose the latest NVIDIA GPU drivers listed. Complete the driver install by clicking the **Apply Changes** button.
+    ![Driver Install Screenshot](media/attach-gpu-to-linux-vm/driver-install.png)
+
+12. Restart the Ubuntu VM after the driver installation completes. Once the VM starts, connect through the SSH client and issue the command **nvidia-smi** to verify that the NVIDIA GPU driver install completed successfully. The output should be similar to the screenshot below:
+    ![nvidia-smi screenshot](media/attach-gpu-to-linux-vm/nvidia-smi.png)
+
+13. Using the SSH client, setup the repository and install the Docker CE Engine:
+
+    ```shell
+    $ sudo apt-get update
+    $ sudo apt-get install \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    gnupg-agent \
+    software-properties-common
+    ```
+    Add Docker's official GPG key:
+
+    ```shell
+    $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    ```
+
+    Verify that you now have the key with the fingerprint 9DC8 5822 9FC7 DD38 854A E2D8 8D81 803C 0EBF CD88 by searching for the last 8 characters of the fingerprint:
+
+    ```shell
+    $ sudo apt-key fingerprint 0EBFCD88
+    ```
+
+    Your output should look similar to this:
+
+    ```shell
+    pub   rsa4096 2017-02-22 [SCEA]
+    9DC8 5822 9FC7 DD38 854A  E2D8 8D81 803C 0EBF CD88
+    uid           [ unknown] Docker Release (CE deb) <docker@docker.com>
+    sub   rsa4096 2017-02-22 [S]
+    ```
+
+    Set up the stable repository for Ubuntu AM64 architecture:
+
+    ```shell
+    $ sudo add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) \
+    stable"
+    ```
+
+    Update packages and install Docker CE:
+
+    ```shell
+    $ sudo apt-get update
+    $ sudo apt-get install docker-ce docker-ce-cli containerd.io
+    ```
+
+    Verify the Docker CE install:
+
+    ```shell
+    $ sudo docker run hello-world
+    ```
 
 ## Next steps
 
