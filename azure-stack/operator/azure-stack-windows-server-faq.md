@@ -4,7 +4,7 @@ titleSuffix: Azure Stack Hub
 description: List of Azure Stack Hub Marketplace FAQs for Windows Server.
 author: sethmanheim
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 03/19/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 08/29/2019
@@ -19,6 +19,10 @@ ms.lastreviewed: 08/29/2019
 This article answers some frequently asked questions about Marketplace items in the [Azure Stack Hub Marketplace](azure-stack-marketplace.md).
 
 ## Marketplace items
+
+### Who should I contact for support issues with Azure Stack Hub Marketplace items?
+
+Azure Marketplace support guidance extends to Azure Stack Hub Marketplace items as well. Publishers are responsible for providing technical support for their products on the Azure Stack Hub Marketplace. To learn more about support guidance for Azure Marketplace items, see the [support section](/azure/marketplace/marketplace-faq-publisher-guide#customer-support) in the Azure Marketplace FAQs article.
 
 ### How do I update to a newer Windows image?
 
@@ -78,10 +82,6 @@ You can only change the **licenseType** property for SQL Server images from Azur
 ### I have an Enterprise Agreement (EA) and will be using my EA Windows Server license; how do I make sure images are billed correctly?
 
 You can add **licenseType: Windows_Server** in an Azure Resource Manager template. This setting must be added to each virtual machine (VM) resource block.
-
-### Who should I contact for support issues with Azure Stack Hub Marketplace items?
-
-Azure Marketplace support guidance extends to Azure Stack Hub Marketplace items as well. Publishers are responsible for providing technical support for their products on the Azure Stack Hub Marketplace. To learn more about support guidance for Azure Marketplace items, see the [support section](/azure/marketplace/marketplace-faq-publisher-guide#customer-support) in the Azure Marketplace FAQs article.
 
 ## Activation
 
