@@ -64,7 +64,7 @@ sections:
               <img height="48" width="48" src="/azure-stack/user/media/index/service-fabric-cluster.png" alt="">
               <br><b>Deploy a Service Fabric cluster</b></a>
               <p>Deploy a secured Service Fabric cluster in Azure Stack Hub.</p>
-      - html: <a href="/azure-stack/user/azure-stack-solution-template-kubernetes-deploy">
+      - html: <a href="/azure-stack/user/azure-stack-kubernetes-aks-engine-overview">
               <img height="48" width="48" src="/azure-stack/user/media/index/kubernetes.png" alt="">
               <br><b>Deploy a Kubernetes Cluster</b></a>
               <p>Deploy and set up the resources for Kubernetes in a single, coordinated operation.</p>
