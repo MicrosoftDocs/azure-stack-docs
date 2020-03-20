@@ -79,6 +79,7 @@ landingContent:
 
   # Card
   - title: Platform-as-a-Service (PaaS) on Azure Stack Hub
+<<<<<<< HEAD
     linkLists:
       - linkListType: how-to-guide
         links:
@@ -88,3 +89,22 @@ landingContent:
             url: azure-stack-kubernetes-aks-engine-overview.md
           - text: Deploy Azure Cognitive Services
             url: azure-stack-solution-template-cognitive-services.md
+=======
+    items:
+    - type: list
+      style: cards
+      className: cardsA
+      items:  
+      - html: <a href="/azure-stack/user/azure-stack-solution-template-service-fabric-cluster">
+              <img height="48" width="48" src="/azure-stack/user/media/index/service-fabric-cluster.png" alt="">
+              <br><b>Deploy a Service Fabric cluster</b></a>
+              <p>Deploy a secured Service Fabric cluster in Azure Stack Hub.</p>
+      - html: <a href="/azure-stack/user/azure-stack-kubernetes-aks-engine-overview">
+              <img height="48" width="48" src="/azure-stack/user/media/index/kubernetes.png" alt="">
+              <br><b>Deploy a Kubernetes Cluster</b></a>
+              <p>Deploy and set up the resources for Kubernetes in a single, coordinated operation.</p>
+      - html: <a href="/azure-stack/user/azure-stack-solution-template-cognitive-services">
+              <img height="48" width="48" src="/azure-stack/user/media/index/icon-cognitive-services.svg" alt="">
+              <br><b>Deploy Azure Cognitive Services</b></a>
+              <p>Container support in Azure Cognitive Services allows you to use the same APIs that are available in Azure.</p>
+>>>>>>> 9d40e5c6b66e16c76868d370612ef884e160e9fc
