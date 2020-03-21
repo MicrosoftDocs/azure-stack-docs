@@ -208,7 +208,7 @@ To prepare for this configuration, review the FAQ contained in the [NVIDIA-Deeps
     > [!NOTE]
     > After installing Azure IoT Edge, verify that the config.yaml is present on the Ubuntu VM at /etc/iotedge/config.yaml
 
-6. Create an IoT Edge device identity in the Azure portal following guidance [here](https://docs.microsoft.com/en-us/azure/iot-edge/how-to-register-device#register-in-the-azure-portal). Next, copy the device connection string for the newly created IoT Edge.
+6. Create an IoT Edge device identity in the Azure portal following guidance [here](/azure/iot-edge/how-to-register-device#register-in-the-azure-portal). Next, copy the device connection string for the newly created IoT Edge.
 
 7. Using the SSH client, update the device connection string in config.yaml on the Ubuntu VM:
 
