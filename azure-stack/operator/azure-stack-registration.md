@@ -409,6 +409,11 @@ Or you can use the registration name:
   $RegistrationName = "AzureStack-<unique-registration-name>"
   Unregister-AzsEnvironment -RegistrationName $RegistrationName
   ```
+### Re-register using connected steps
+
+If changing your billing model from capacity billing in a disconnected state to consumption billing in a connected state, now that you have unregistered your disconnected environment, you will re-register following the [connected model steps](#change-the-billing-model-or-how-to-offer-features). Note that this does not change your identity model, only the billing mechanism, and you will still use ADFS as your identity source.
+
+Otherwise...
 
 ### Re-register using disconnected steps
 
