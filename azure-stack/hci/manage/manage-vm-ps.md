@@ -40,7 +40,7 @@ Get-VM | where {$_.State -eq 'Off'}
 
 ## Start and stop a VM
 
-Use the `Start-VM` and `Stop-VM` commands to start or stop a VM. For detailed information, see the [Start-VM](https://docs.microsoft.com/en-us/powershell/module/hyper-v/start-vm?view=win10-ps) and [Stop-VM](https://docs.microsoft.com/powershell/module/hyper-v/stop-vm?view=win10-ps) reference documentation.
+Use the `Start-VM` and `Stop-VM` commands to start or stop a VM. For detailed information, see the [Start-VM](https://docs.microsoft.com/powershell/module/hyper-v/start-vm?view=win10-ps) and [Stop-VM](https://docs.microsoft.com/powershell/module/hyper-v/stop-vm?view=win10-ps) reference documentation.
 
 The following example shows how to start a VM named TestVM:
 
@@ -194,9 +194,9 @@ The full command as follows:
  ```  
 The next example creates a Generation 2 virtual machine named Win10VM with 4GB of memory. It boots from the folder VMs\Win10.vhdx in the current directory and uses the virtual switch named ExternalSwitch. The virtual machine configuration files are stored in the folder VMData.  
 
-    ``` powershell 
-    New-VM -Name Win10VM -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath .\VMs\Win10.vhdx -Path .\VMData -Generation 2 -Switch ExternalSwitch  
-    ``  
+``` powershell 
+New-VM -Name Win10VM -MemoryStartupBytes 4GB -BootDevice VHD -VHDPath .\VMs\Win10.vhdx -Path .\VMData -Generation 2 -Switch ExternalSwitch  
+``` 
 The following parameters are used to specify virtual hard disks:
 
 To create a virtual machine with a new virtual hard disk, replace the **-VHDPath** parameter from the example above with  **-NewVHDPath** and add the **-NewVHDSizeBytes** parameter as shown here:  
