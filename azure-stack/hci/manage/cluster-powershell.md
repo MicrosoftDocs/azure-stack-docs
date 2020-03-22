@@ -18,7 +18,7 @@ For the complete reference documentation for managing clusters using PowerShell,
 
 ## Run Windows PowerShell
 
-The Windows Powershell app is used to perform all the tasks in this article. It is recommended that you pin the app to your taskbar for convenience.
+The Windows PowerShell app is used to perform all the tasks in this article. It is recommended that you pin the app to your taskbar for convenience.
 
 1. Click the Taskbar search bar in the lower left and then type *PowerShell* in the text field.
 2. Under **Windows PowerShell** on the right, select **Run as administrator**.
