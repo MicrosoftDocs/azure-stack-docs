@@ -45,7 +45,7 @@ For help with troubleshooting updates and the update process, see [Troubleshoot 
 ::: moniker range="azs-2002"
 ## 2002 build reference
 
-The Azure Stack Hub 2002 update build number is **1.2002.12.59**.
+The Azure Stack Hub 2002 update build number is **1.2002.0.35**.
 
 > [!IMPORTANT]  
 > With the Azure Stack Hub 2002 update, Microsoft is temporarily extending our [Azure Stack Hub support policy statements](azure-stack-servicing-policy.md).  We are working with customers around the world who are responding to COVID-19 and who may be making important decisions about their Azure Stack Hub systems, how they are updated and managed, and as a result, ensuring their data center business operations continue to operate normally. In support of our customers, Microsoft is offering a temporary support policy change extension to include three previous update versions.  As a result, the newly released 2002 update and any one of the three previous update versions (e.g. 1910, 1908, and 1907) will be supported.
