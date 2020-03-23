@@ -43,8 +43,8 @@ Requirements:
 
 |Component|Requirement|
 |---------|---------|
-|Graph|Microsoft Active Directory 2012/2012 R2/2016|
-|AD FS|Windows Server 2012/2012 R2/2016|
+|Graph|Microsoft Active Directory 2012/2012 R2/2016 2019|
+|AD FS|Windows Server 2012/2012 R2/2016 2019|
 
 ## Setting up Graph integration
 
@@ -264,7 +264,7 @@ If you decide to manually run the commands, follow these steps:
 
 3. To add the relying party trust, run the following Windows PowerShell command on your AD FS instance or a farm member. Make sure to update the AD FS endpoint and point to the file created in Step 1.
 
-   **For AD FS 2016**
+   **For AD FS 2016/2019**
 
    ```powershell  
    Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone" -TokenLifeTime 1440
