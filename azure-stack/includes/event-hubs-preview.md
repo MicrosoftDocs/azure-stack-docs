@@ -9,4 +9,4 @@ ms.lastreviewed: 03/23/2020
 ---
 
 > [!IMPORTANT]
-> Event Hubs on Azure Stack Hub is currently in preview, and is provided free during the public preview period.
+> Event Hubs on Azure Stack Hub is currently in preview, and is provided free during the preview period.
