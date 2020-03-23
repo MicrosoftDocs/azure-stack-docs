@@ -23,7 +23,7 @@ Choose the server node(s) in your Azure Stack HCI cluster to install NVIDIA GPUs
 3. Right-click on "PCI Express Graphics Processing Unit" to bring up the **Properties** page. Click **Details**. From the dropdown under **Property**, select "Location paths."
 4. Note the value with string PCIRoot as highlighted in the screen shot below. Right-click on **Value** and copy/save it.
     ![Location Path Screenshot](media/attach-gpu-to-linux-vm/pciroot.png)
-5. Open Windows PowerShell with elevated privileges and execute the **Dismount-VMHostAssignableDevice** cmdlet to dismount the GPU device for DDA to VM. Replace the *LocationPath* value with the value for your device obtained in step 4.
+5. Open Windows PowerShell with elevated privileges and execute the `Dismount-VMHostAssignableDevice` cmdlet to dismount the GPU device for DDA to VM. Replace the *LocationPath* value with the value for your device obtained in step 4.
     ```PowerShell
     Dismount-VMHostAssignableDevice -LocationPath "PCIROOT(16)#PCI(0000)#PCI(0000)" -force
     ```
@@ -222,7 +222,7 @@ To prepare for this configuration, review the FAQ contained in the [NVIDIA-Deeps
 
     To paste clipboard contents into Nano, shift+right click or press shift+insert. Save and close the file (Ctrl + X, Y, Enter).
 
-8. Using the SSH client, restart the IotEdge daemon:
+8. Using the SSH client, restart the IoT Edge daemon:
 
     ```shell
     sudo systemctl restart iotedge
