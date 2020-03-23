@@ -4,10 +4,10 @@ description: How to deploy a Kubernetes cluster on Azure Stack Hub from a client
 author: mattbriggs
 
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 3/19/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 11/21/2019
+ms.lastreviewed: 3/19/2020
 
 # Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
 # Keyword: Notdone: keyword noun phrase
@@ -36,7 +36,7 @@ This section looks at creating an API model for your cluster.
     > [!Note]  
     > If you are disconnected, you can download the file and manually copy it to the disconnected machine where you plan to edit it. You can copy the file to your Linux machine using tools such as [PuTTY or WinSCP](https://www.suse.com/documentation/opensuse103/opensuse103_startup/data/sec_filetrans_winssh.html).
 
-2.  To open the  in an editor, you can use nano:
+2.  To open API model in an editor, you can use nano:
 
     ```bash
     nano ./kubernetes-azurestack.json
@@ -67,7 +67,7 @@ This section looks at creating an API model for your cluster.
 
 6. Find `portalURL` and provide the URL to the tenant portal. For example, `https://portal.local.azurestack.external`.
 
-7.  In the array `masterProfile`, set the following fields:
+7.  In `masterProfile`, set the following fields:
 
     | Field | Description |
     | --- | --- |
@@ -76,7 +76,7 @@ This section looks at creating an API model for your cluster.
     | vmSize |  Enter [a size supported by Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example `Standard_D2_v2`. |
     | distro | Enter `aks-ubuntu-16.04`. |
 
-8.  In the array `agentPoolProfiles` update:
+8.  In `agentPoolProfiles` update:
 
     | Field | Description |
     | --- | --- |
@@ -84,14 +84,14 @@ This section looks at creating an API model for your cluster.
     | vmSize | Enter [a size supported by Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example `Standard_D2_v2`. |
     | distro | Enter `aks-ubuntu-16.04`. |
 
-9.  In the array `linuxProfile` update:
+9.  In `linuxProfile` update:
 
     | Field | Description |
     | --- | --- |
     | adminUsername | Enter the VM admin user name. |
-    | ssh | Enter the public key that will be used for SSH authentication with VMs. If you are using Putty, open PuTTY Key Generator to load the Putty private key and the public key which starts with ssh-rsa as in the following example. You can use the key generated when creating the Linux client but **you need to copy the public key so that it is a single line text as shown in the example**.|
+    | ssh | Enter the public key that will be used for SSH authentication with VMs. Use `ssh-rsa` and then the key. For instructions on creating a public key, see [Create an SSH key for Linux](create-ssh-key-on-windows.md). |
 
-    ![PuTTY key generator](media/azure-stack-kubernetes-aks-engine-deploy-cluster/putty-key-generator.png)
+    If you are deploying to a custom virtual network, you can find instructions on finding and adding the required key and values to the appropriate arrays in the API Model in [Deploy a Kubernetes cluster to a custom virtual network](kubernetes-aks-engine-custom-vnet.md).
 
 ### More information about the API model
 
@@ -116,13 +116,13 @@ Proceed to deploy a cluster:
     | --- | --- | --- |
     | azure-env | AzureStackCloud | To indicate to AKS engine that your target platform is Azure Stack Hub use `AzureStackCloud`. |
     | identity-system | adfs | Optional. Specify your identity management solution if you are using Active Directory Federated Services (AD FS). |
-    | location | local | The region name for your Azure Stack Hub. For the ASDK the region is set to `local`. |
+    | location | local | The region name for your Azure Stack Hub. For the ASDK, the region is set to `local`. |
     | resource-group | kube-rg | Enter the name of a new resource group or select an existing resource group. The resource name needs to be alphanumeric and lowercase. |
     | api-model | ./kubernetes-azurestack.json | Path to the cluster configuration file, or API model. |
     | output-directory | kube-rg | Enter the name of the directory to contain the output file `apimodel.json` as well as other generated files. |
     | client-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal GUID. The Client ID identified as the Application ID when your Azure Stack Hub administrator created the service principal. |
-    | client-secret | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal secret. This is the client secret you set up when creating your service. |
-    | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter your Subscription ID. For more information see [Subscribe to an offer](https://docs.microsoft.com/azure-stack/user/azure-stack-subscribe-services#subscribe-to-an-offer) |
+    | client-secret | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter the service principal secret. You set up the client secret when creating your service. |
+    | subscription-id | xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx | Enter your Subscription ID. For more information, see [Subscribe to an offer](https://docs.microsoft.com/azure-stack/user/azure-stack-subscribe-services#subscribe-to-an-offer) |
 
     Here is an example:
 

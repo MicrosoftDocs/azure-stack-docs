@@ -1,24 +1,24 @@
 ---
-title: Install PowerShell for Azure Stack Hub 
+title: Install PowerShell AzureRM module for Azure Stack Hub 
 description: Learn how to install PowerShell for Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
 ms.date: 1/22/2020
 ms.author: mabrigg
-ms.reviewer: thoroet
+ms.reviewer: sijuman
 ms.lastreviewed: 09/19/2019
 
 # Intent: As an Azure Stack operator, I want to install Powershell for Azure Stack.
-# Keyword: install powershell azure stack
+# Keyword: install powershell azure stack AzureRM
 
 ---
 
-# Install PowerShell for Azure Stack Hub
+# Install PowerShell AzureRM module for Azure Stack Hub
 
-Azure PowerShell provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure Stack Hub resources.
+Azure PowerShell AzureRM provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure Stack Hub resources.
 
-To work with your cloud, you need to install Azure Stack Hub compatible PowerShell modules. Azure Stack Hub uses the **AzureRM** module instead of the newer **AzureAZ** module used in global Azure. You also need to use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.
+You also need to use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.
 
 API profiles provide a way to manage version differences between Azure and Azure Stack Hub. An API version profile is a set of Azure Resource Manager PowerShell modules with specific API versions. Each cloud platform has a set of supported API version profiles. For example, Azure Stack Hub supports a specific profile version such as **2019-03-01-hybrid**. When you install a profile, the Azure Resource Manager PowerShell modules that correspond to the specified profile are installed.
 
@@ -26,15 +26,15 @@ You can install Azure Stack Hub compatible PowerShell modules in internet-connec
 
 ## 1. Verify your prerequisites
 
-Before you get started with Azure Stack Hub and PowerShell, you must have the following prerequisites:
+Before you get started with Azure Stack Hub and the PowerShell AzureRM module, you must have the following prerequisites:
 
-- **PowerShell Version 5.0** <br>
-To check your version, run **$PSVersionTable.PSVersion** and compare the **Major** version. If you don't have PowerShell 5.0, follow the [Installing Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell).
+- **PowerShell Version 5.1** <br>
+To check your version, run **$PSVersionTable.PSVersion** and compare the **Major** version. If you don't have PowerShell 5.1, follow the [Installing Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell).
 
   > [!Note]
-  > PowerShell 5.0 requires a Windows machine.
+  > PowerShell 5.1 requires a Windows machine.
 
-- **Run Powershell in an elevated command prompt**.
+- **Run PowerShell in an elevated command prompt**.
 
 - **PowerShell Gallery access** <br>
   You need access to the [PowerShell Gallery](https://www.powershellgallery.com). The gallery is the central repository for PowerShell content. The **PowerShellGet** module contains cmdlets for discovering, installing, updating, and publishing PowerShell artifacts. Examples of these artifacts are modules, DSC resources, role capabilities, and scripts from the PowerShell Gallery and other private repositories. If you're using PowerShell in a disconnected scenario, you must retrieve resources from a machine with a connection to the internet and store them in a location accessible to your disconnected machine.
@@ -49,7 +49,7 @@ Validate if PSGallery is registered as a repository.
 Open an elevated PowerShell prompt, and run the following cmdlets:
 
 ```powershell
-Import-Module -Name PowerShellGet -ErrorAction Stop
+Install-module -Name PowerShellGet -Force 
 Import-Module -Name PackageManagement -ErrorAction Stop
 Get-PSRepository -Name "PSGallery"
 ```
@@ -84,43 +84,51 @@ The API version profile and Azure Stack Hub PowerShell modules you require will 
 
 Run the following PowerShell script to install these modules on your development workstation:
 
-- For Azure Stack Hub 1910 or later:
+::: moniker range=">=azs-2002"
+For Azure Stack Hub 2002 or later:
 
-    ```powershell  
-    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
-    Install-Module -Name AzureRM.BootStrapper
+```powershell  
+# Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
+Install-Module -Name AzureRM.BootStrapper
 
-    # Install and import the API Version Profile required by Azure Stack Hub into the current PowerShell session.
-    Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
-    Install-Module -Name AzureStack -RequiredVersion 1.8.0
-    ```
+# Install and import the API Version Profile required by Azure Stack Hub into the current PowerShell session.
+Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
+Install-Module -Name AzureStack -RequiredVersion 1.8.1
+```
 
-- For Azure Stack Hub 1908 or after 1903:
+::: moniker-end
+::: moniker range="azs-1910"
+For Azure Stack Hub 1910:
 
-    ```powershell  
-    # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
-    Install-Module -Name AzureRM.BootStrapper
+```powershell  
+# Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
+Install-Module -Name AzureRM.BootStrapper
 
-    # Install and import the API Version Profile required by Azure Stack Hub into the current PowerShell session.
-    Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
-    Install-Module -Name AzureStack -RequiredVersion 1.7.2
-    ```
-  
-- For Azure Stack Hub version 1903 or earlier, only install the two modules below:
+# Install and import the API Version Profile required by Azure Stack Hub into the current PowerShell session.
+Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
+Install-Module -Name AzureStack -RequiredVersion 1.8.0
+```
 
-    ```powershell  
-    # Install and import the API Version Profile required by Azure Stack Hub into the current PowerShell session.
+> [!Note]  
+> - Azure Stack Hub module version 1.8.0 is a breaking change release. Refer to the [release note](release-notes.md) for details.
 
-    Install-Module -Name AzureRM -RequiredVersion 2.4.0
-    Install-Module -Name AzureStack -RequiredVersion 1.7.1
-    ```
+::: moniker-end
+::: moniker range="<=azs-1908"
+For Azure Stack Hub 1908 or earlier:
 
-    > [!Note]  
-    > - Azure Stack Hub module version 1.8.0 is a breaking change release. Refer to the [release note](release-notes.md) for details.
-    > - The Azure Stack Hub module version 1.7.2 is a breaking change release. To migrate from Azure Stack Hub 1.6.0, please refer to the [migration guide](https://aka.ms/azspshmigration171).
-    > - The AzureRM module version 2.4.0 comes with a breaking change for the cmdlet Remove-AzureRmStorageAccount. This cmdlet expects `-Force` parameter to be specified for removing the storage account without confirmation.
-    > - You don't need to install **AzureRM.BootStrapper** to install the modules for Azure Stack Hub version 1901 or later.
-    > - Don't install the 2018-03-01-hybrid profile in addition to using the above AzureRM modules on Azure Stack Hub version 1901 or later.
+```powershell  
+# Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
+Install-Module -Name AzureRM.BootStrapper
+
+# Install and import the API Version Profile required by Azure Stack Hub into the current PowerShell session.
+Use-AzureRmProfile -Profile 2019-03-01-hybrid -Force
+Install-Module -Name AzureStack -RequiredVersion 1.7.2
+```
+
+> [!Note]  
+> The Azure Stack Hub module version 1.7.2 is a breaking change release. To migrate from Azure Stack Hub 1.6.0, please refer to the [migration guide](https://aka.ms/azspshmigration171).
+
+::: moniker-end
 
 ### Confirm the installation of PowerShell
 
@@ -131,7 +139,7 @@ Get-Module -Name "Azure*" -ListAvailable
 Get-Module -Name "Azs*" -ListAvailable
 ```
 
-If the installation is successful, the `AzureRM` and `AzureStack` modules are displayed in the output.
+If the installation is successful, the `AzureAz` and `AzureStack` modules are displayed in the output.
 
 ## 5. Disconnected: Install PowerShell without an internet connection
 
@@ -139,7 +147,7 @@ In a disconnected scenario, you first download the PowerShell modules to a machi
 
 Sign in to a computer with internet connectivity and use the following scripts to download the Azure Resource Manager and Azure Stack Hub packages, depending on your version of Azure Stack Hub.
 
-Installation has four steps:
+Installation has five steps:
 
 1. Install Azure Stack Hub PowerShell to a connected machine.
 2. Enable additional storage features.
@@ -149,48 +157,58 @@ Installation has four steps:
 
 ### Install Azure Stack Hub PowerShell
 
-- Azure Stack Hub 1910 or later.
+::: moniker range=">=azs-2002"
+Azure Stack Hub 2002 or later.
 
-    ```powershell
-    Import-Module -Name PowerShellGet -ErrorAction Stop
-    Import-Module -Name PackageManagement -ErrorAction Stop
+```powershell
 
-    $Path = "<Path that is used to save the packages>"
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.0
-    ```
+Install-module -Name PowerShellGet -Force 
+Import-Module -Name PackageManagement -ErrorAction Stop
 
-- For Azure Stack Hub 1908 or after 1903:
+$Path = "<Path that is used to save the packages>"
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.1
+```
+::: moniker-end
 
-    ```powershell
-    Import-Module -Name PowerShellGet -ErrorAction Stop
-    Import-Module -Name PackageManagement -ErrorAction Stop
+::: moniker range="azs-1910"
+Azure Stack Hub 1910.
 
-    $Path = "<Path that is used to save the packages>"
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.7.2
-    ```
+```powershell
+Install-module -Name PowerShellGet -Force 
+Import-Module -Name PackageManagement -ErrorAction Stop
 
-- Azure Stack Hub 1903 or earlier.
+$Path = "<Path that is used to save the packages>"
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.8.0
+```
 
-    ```powershell
-    Import-Module -Name PowerShellGet -ErrorAction Stop
-    Import-Module -Name PackageManagement -ErrorAction Stop
+> [!NOTE]  
+> Azure Stack Hub module version 1.8.0 is a breaking change release. Refer to the [release note](release-notes.md) for details.
 
-    $Path = "<Path that is used to save the packages>"
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.4.0
-    Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.7.1
-    ```
+::: moniker-end
+::: moniker range="<=azs-1908"
+For Azure Stack Hub 1908 or earlier:
 
-    > [!Note]  
-    > - Azure Stack Hub module version 1.8.0 is a breaking change release. Refer to the [release note](release-notes.md) for details.
-    > The Azure Stack Hub module version 1.7.1 is a breaking change. To migrate from Azure Stack Hub 1.6.0 please refer to the [migration guide](https://github.com/Azure/azure-powershell/tree/AzureRM/documentation/migration-guides/Stack).
+```powershell
+Install-module -Name PowerShellGet -Force 
+Import-Module -Name PackageManagement -ErrorAction Stop
 
-    > [!NOTE]
-    > On machines without an internet connection, we recommend executing the following cmdlet for disabling the telemetry data collection. You may experience a performance degradation of the cmdlets without disabling the telemetry data collection. This is applicable only for the machines without internet connections
-    > ```powershell
-    > Disable-AzureRmDataCollection
-    > ```
+$Path = "<Path that is used to save the packages>"
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 2.5.0
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 1.7.2
+```
+
+> [!NOTE]  
+> The Azure Stack Hub module version 1.7.1 is a breaking change. To migrate from Azure Stack Hub 1.6.0 please refer to the [migration guide](https://github.com/Azure/azure-powershell/tree/AzureRM/documentation/migration-guides/Stack).
+
+::: moniker-end
+
+> [!NOTE]  
+> On machines without an internet connection, we recommend executing the following cmdlet for disabling the telemetry data collection. You may experience a performance degradation of the cmdlets without disabling the telemetry data collection. This is applicable only for the machines without internet connections
+> ```powershell
+> Disable-AzureRmDataCollection
+> ```
 
 ### Add your packages to your workstation
 
