@@ -4,7 +4,7 @@ description: How to use a GPU with AI workloads running in an Ubuntu Linux VM on
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 03/19/2020
+ms.date: 03/23/2020
 ---
 
 # Attaching a GPU to an Ubuntu Linux VM on Azure Stack HCI
@@ -23,11 +23,11 @@ Choose the server node(s) in your Azure Stack HCI cluster to install NVIDIA GPUs
 3. Right-click on "PCI Express Graphics Processing Unit" to bring up the **Properties** page. Click **Details**. From the dropdown under **Property**, select "Location paths."
 4. Note the value with string PCIRoot as highlighted in the screen shot below. Right-click on **Value** and copy/save it.
     ![Location Path Screenshot](media/attach-gpu-to-linux-vm/pciroot.png)
-5. Open Windows PowerShell with elevated privileges and execute the **Dismount-VMHostAssignableDevice** cmdlet to dismount the GPU device for DDA to VM. Replace the LocationPath value for your device obtained in step 4.
+5. Open Windows PowerShell with elevated privileges and execute the **Dismount-VMHostAssignableDevice** cmdlet to dismount the GPU device for DDA to VM. Replace the *LocationPath* value with the value for your device obtained in step 4.
     ```PowerShell
     Dismount-VMHostAssignableDevice -LocationPath "PCIROOT(16)#PCI(0000)#PCI(0000)" -force
     ```
-6. Confirm the device is listed under system devices in device manager as Dismounted.
+6. Confirm the device is listed under system devices in **Device Manager** as Dismounted.
     > [!div class="mx-imgBorder"]
     > ![Dismounted Device Screenshot](media/attach-gpu-to-linux-vm/dismounted.png)
 
@@ -37,7 +37,7 @@ Choose the server node(s) in your Azure Stack HCI cluster to install NVIDIA GPUs
 2. Open **Hyper-V Manager** on the node of the system with the GPU installed.
    > [!NOTE]
    > DDA does not support failover, and [here's why](/windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment). This is a virtual machine limitation with DDA. Therefore, we recommend using **Hyper-V Manager** to deploy the VM on the node instead of **Failover Cluster Manager**. Use of **Failover Cluster Manager** with DDA will fail with an error message indicating that the VM has a device that doesn't support high availability.
-3. Using the Ubuntu ISO downloaded in step 1, create a new virtual machine using the **New Virtual Machine Wizard** to create a Ubuntu Gen 1 VM with 2GB of memory and a network card attached to it.
+3. Using the Ubuntu ISO downloaded in step 1, create a new virtual machine using the **New Virtual Machine Wizard** in **Hyper-V Manager** to create a Ubuntu Gen 1 VM with 2GB of memory and a network card attached to it.
 4. In PowerShell, assign the Dismounted GPU device to the VM using the cmdlets below, replacing the *LocationPath* value with the value for your device.
     ```PowerShell
     # Confirm that there are no DDA devices assigned to the VM
@@ -71,7 +71,7 @@ Choose the server node(s) in your Azure Stack HCI cluster to install NVIDIA GPUs
 
 5. Connect to the VM and start the Ubuntu OS install. Choose the defaults to install the Ubuntu OS on the VM.
 
-6. After the installation is complete, shut down the VM and configure the **Automatic Stop Action** for the VM to shut down the guest operating system as in the screenshot below:
+6. After the installation is complete, use **Hyper-V Manager** to shut down the VM and configure the **Automatic Stop Action** for the VM to shut down the guest operating system as in the screenshot below:
     > [!div class="mx-imgBorder"]
     > ![Guest OS Shutdown Screenshot](media/attach-gpu-to-linux-vm/guest-shutdown.png)
 
@@ -83,7 +83,7 @@ Choose the server node(s) in your Azure Stack HCI cluster to install NVIDIA GPUs
 
 8. Find The TCP/IP address for the Ubuntu installation using the **ifconfig** command and copy the IP address for the **eth0** interface.
 
-9. Use a SSH client such as [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/) to connect to the Ubuntu VM for further configuration.
+9. Use an SSH client such as [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty/) to connect to the Ubuntu VM for further configuration.
 
 10. Upon login through the SSH client, issue the command **lspci** and validate that the NVIDIA GPU is listed as "3D controller."
 
@@ -220,7 +220,7 @@ To prepare for this configuration, review the FAQ contained in the [NVIDIA-Deeps
 
     ![Manual Provisioning Configuration Screenshot](media/attach-gpu-to-linux-vm/manual-provisioning.png)
 
-    To paste clipboard contents into Nano, shift+right click or press shift+insert. Save and close the file (CTRL + X, Y, Enter).
+    To paste clipboard contents into Nano, shift+right click or press shift+insert. Save and close the file (Ctrl + X, Y, Enter).
 
 8. Using the SSH client, restart the IotEdge daemon:
 
@@ -282,11 +282,11 @@ To prepare for this configuration, review the FAQ contained in the [NVIDIA-Deeps
 
     ![DeepStream SDK Screenshot](media/attach-gpu-to-linux-vm/deepstream.png)
 
-16. Ensure NvidiaDeepStreamSDK module is listed under under IoT Edge Modules:
+16. Ensure NvidiaDeepStreamSDK module is listed under IoT Edge Modules:
 
     ![IoT Edge Modules Screenshot](media/attach-gpu-to-linux-vm/edge-modules.png)
 
-17. Click on The "NVIDIADeepStreamSDK" Module and choose "Container Create Options." The default configuration is shown here:
+17. Click on The "NVIDIADeepStreamSDK" module and choose "Container Create Options." The default configuration is shown here:
 
     ![Container Create Options Screenshot](media/attach-gpu-to-linux-vm/container-create-options.png)
 
@@ -342,8 +342,8 @@ To prepare for this configuration, review the FAQ contained in the [NVIDIA-Deeps
 
     ![nvidia-smi screenshot](media/attach-gpu-to-linux-vm/verify-modules-nvidia-smi.png)
 
-   > [!NOTE]
-   > It will take a few minutes for the NvidiaDeepstream Container to be downloaded. You can validate the download using the command "journalctl -u iotedge --no-pager --no-full" to look at the iotedge daemon logs.
+    > [!NOTE]
+    > It will take a few minutes for the NvidiaDeepstream Container to be downloaded. You can validate the download using the command "journalctl -u iotedge --no-pager --no-full" to look at the iotedge daemon logs.
 
 20. Confirm that the NvdiaDeepStreem Container is operational. The command output in the screenshots below indicates success.
 
@@ -365,11 +365,11 @@ To prepare for this configuration, review the FAQ contained in the [NVIDIA-Deeps
 
     ![iotedge list screenshot](media/attach-gpu-to-linux-vm/verify3.png)
 
-21. Confirm the TCP/IP address for your Ubuntu VM using the **ifconfig** command and look for the TCP/IP address next to **eth0** interface.
+21. Confirm the TCP/IP address for your Ubuntu VM using the **ifconfig** command and look for the TCP/IP address next to the **eth0** interface.
 
-22. Install the VLC player on your workstation. Within the VLC Player, click Media -> open network stream, and type in the address using this format:
+22. Install the VLC Player on your workstation. Within the VLC Player, click Media -> open network stream, and type in the address using this format:
 
-    rtsp://ipadress:8554/ds-test
+    rtsp://ipaddress:8554/ds-test
 
     where ipaddress is the TCP/IP address of your VM.
 
