@@ -4,7 +4,7 @@ description: This article details how to deploy the operating system for Azure S
 author: JohnCobb1
 ms.author: v-johcob 
 ms.topic: article
-ms.date: 03/6/2020
+ms.date: 03/23/2020
 ---
 
 # Deploy Azure Stack HCI
@@ -43,25 +43,25 @@ If you're using VMM to set up and deploy Windows Server on your server nodes, yo
 
 ## Connect Windows Admin Center to your cluster servers
 Now you're ready to connect the servers in your cluster to Windows Admin Center.
-1. Open **Windows Admin Center**, and then under **All connections**, click **+ Add**. 
-1. On the **Add resources** menu, under **Windows Server**, **Connect to servers**, click **Add**.
-1. In the **Server name** box, type the name of the server, and then click **Add**.
+1. Open **Windows Admin Center**, and then under **All connections**, select **+ Add**. 
+1. On the **Add resources** menu, under **Windows Server**, **Connect to servers**, select **Add**.
+1. In the **Server name** box, type the name of the server, and then select **Add**.
 
     > [!NOTE]
     > Repeat Step 3 to add all of the servers to Windows Admin Center for your Azure Stack HCI solution.
 
-1. Under **All connections**, in the **Name** column, select the checkbox next to the first server, and then click **Connect** to display the server's **Overview** page in Windows Admin Center from **Server Manger**.
+1. Under **All connections**, in the **Name** column, select the checkbox next to the first server, and then select **Connect** to display the server's **Overview** page in Windows Admin Center from **Server Manger**.
 
     > [!NOTE]
     > Repeat Step 4 to start each server.
 
 ## Get the latest Windows updates
 After connecting your servers, use Windows Admin Center to get the latest Windows updates.
-1. In **Windows Admin Center**, under **All connections** in the **Name** column, select the checkbox next to the first server, and then click **Connect** to display the server's **Overview** page.
-1. On the server's **Overview** page, under **Tools**, click **Updates**.
+1. In **Windows Admin Center**, under **All connections** in the **Name** column, select the checkbox next to the first server, and then select **Connect** to display the server's **Overview** page.
+1. On the server's **Overview** page, under **Tools**, select **Updates**.
 1. On the **Windows Update** page, review any available updates.
 1. Under **Update title**, select the updates that you want to apply to the server.
-1. Leave the update restart option set to either **Restart immediately**, or click **Schedule restart**, set the date and time, and then click **Install updates**.
+1. Leave the update restart option set to either **Restart immediately**, or select **Schedule restart**, set the date and time, and then select **Install updates**.
 
     > [!NOTE]
     > Repeat these steps to apply Windows updates to each server.
@@ -69,9 +69,9 @@ After connecting your servers, use Windows Admin Center to get the latest Window
 ## Get the latest firmware updates from your hardware provider
 Now you're ready to get your hardware provider's latest firmware updates.
 1. Visit the [Azure Stack HCI solutions](https://azure.microsoft.com/products/azure-stack/hci/) website.
-1. On the website, click [Azure Stack HCI Catalog](https://www.microsoft.com/cloud-platform/azure-stack-hci-catalog).
+1. On the website, select [Azure Stack HCI Catalog](https://www.microsoft.com/cloud-platform/azure-stack-hci-catalog).
 1. On the Preferred hardware vendor page of the catalog, under **Hardware partners**, reference your Azure Stack HCI hardware provider.
-1. Click the hardware provider's product name to go to the company's Azure Stack HCI solutions website to get the product's latest firmware updates.
+1. Select the hardware provider's product name to go to the company's Azure Stack HCI solutions website to get the product's latest firmware updates.
 
 ## Next steps
 To perform the next management task related to this article, see:
