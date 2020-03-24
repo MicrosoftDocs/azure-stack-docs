@@ -8,8 +8,8 @@ ms.author: jgerend
 ms.localizationpriority: medium
 ms.date: 11/04/2019
 
-# Intent: Notdone: As an Azure Stack operator, I want an overview of HCI solutions so I can run VMs on-premises and connect to Azure with an HCI solution.
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack operator, I want an overview of HCI solutions so I can run VMs on-premises and connect to Azure with an HCI solution.
+# Keyword: HCI solutions azure stack
 
 ---
 
