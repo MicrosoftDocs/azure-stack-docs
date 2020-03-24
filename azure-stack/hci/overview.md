@@ -60,20 +60,14 @@ Help keep apps and data secure with shielded VMs, network microsegmentation, and
 
 ## Hybrid capabilities
 
-You can take advantage of cloud and on-premises working together with a hyperconverged infrastructure platform in public cloud. Your team can start building cloud skills with built-in integration to Azure infrastructure management services:
+You can take advantage of cloud and on-premises working together with a hyperconverged infrastructure platform in a public cloud. Your team can start building cloud skills with built-in integration to Azure infrastructure management services:
 
 - Azure Site Recovery for high availability and disaster recovery as a service (DRaaS).
-
 - Azure Monitor, a centralized hub to track what's happening across your applications, network, and infrastructure – with advanced analytics powered by AI.
-
 - Cloud Witness, to use Azure as the lightweight tie breaker for cluster quorum.
-
 - Azure Backup for offsite data protection and to protect against ransomware.
-
 - Azure Update Management for update assessment and update deployments for Windows VMs running in Azure and on-premises.
-
 - Azure Network Adapter to connect resources on-premises with your VMs in Azure via a point-to-site VPN.
-
 - Sync your file server with the cloud, using Azure File Sync.
 
 For details, see [Connecting Windows Server to Azure hybrid services](https://docs.microsoft.com/windows-server/manage/windows-admin-center/azure/index).
@@ -92,10 +86,10 @@ To manage these technologies, you can use the following management tools:
 - [Windows Admin Center](https://docs.microsoft.com/windows-server/manage/windows-admin-center/overview)
 - [System Center](https://www.microsoft.com/cloud-platform/system-center)
 - [PowerShell](https://docs.microsoft.com/powershell/?view=powershell-6)
-- Other management tools such as [Server Manager](https://docs.microsoft.com/windows-server/administration/server-manager/server-manager), and MMC snap-ins
-- Non-Microsoft tools such as 5Nine Manager
+- Other management tools, like [Server Manager](https://docs.microsoft.com/windows-server/administration/server-manager/server-manager), and MMC snap-ins
+- Non-Microsoft tools like 5Nine Manager
 
-If you choose to use System Center to deploy and manage your infrastructure, you'll use System Center Virtual Machine Management (VMM) and System Center Operations Manager. With VMM, you provision and manage the resources needed to create and deploy virtual machines and services to private clouds. With Operations Manager, you monitor services, devices, and operations across your enterprise to identify problems for immediate action.
+If you choose to use System Center to deploy and manage your infrastructure, you'll use System Center Virtual Machine Management (VMM) and System Center Operations Manager. With VMM, you provision and manage the resources needed to create and deploy VMs and services to private clouds. With Operations Manager, you monitor services, devices, and operations across your enterprise to identify problems for immediate action.
 
 ## Hardware partners
 
@@ -115,7 +109,7 @@ Here are some videos from Microsoft Ignite 2019 sessions:
 - [The case of the shrinking data: Data Deduplication in Azure Stack HCI](https://www.youtube.com/watch?v=fmm4iDbDiY4&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=23&t=0s)
 - [Dave Kawula's notes from the field on Azure Stack HCI](https://www.youtube.com/watch?v=OXv7fLlz0ew&list=PLQXpv_NQsPICdXZoH-EzlIFa4P6VS5m11&index=2&t=0s)
 
-Here is a video from a Hybrid Cloud Virtual Event:
+Here's a video from a Hybrid Cloud Virtual Event:
 
 - [Azure Stack HCI | Hybrid Cloud Virtual Event](https://www.youtube.com/watch?v=nxpoEva-R2Y)
 
