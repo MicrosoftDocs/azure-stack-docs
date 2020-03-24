@@ -117,13 +117,13 @@ Here's a video from a Hybrid Cloud Virtual Event:
 
 ### What do Azure Stack Hub and Azure Stack HCI solutions have in common?
 
-Azure Stack HCI solutions feature the same Hyper-V based software-defined compute, storage, and networking technologies as Azure Stack Hub. Both offerings meet rigorous testing and validation criteria to ensure reliability and compatibility with the underlying hardware platform.
+Azure Stack HCI solutions feature the same Hyper-V-based software-defined compute, storage, and networking technologies as Azure Stack Hub. Both offerings meet rigorous testing and validation criteria to ensure reliability and compatibility with the underlying hardware platform.
 
 ### How are they different?
 
-With Azure Stack Hub, you run cloud services on-premises. You can run Azure IaaS and PaaS services on-premises to consistently build and run cloud applications anywhere, managed with the Azure portal on-premises.
+With Azure Stack Hub, you run cloud services on-premises. You can run Azure IaaS and PaaS services on-premises to consistently build and run cloud apps anywhere, managed with the Azure portal on-premises.
 
-With Azure Stack HCI, you run virtualized workloads on-premises, managed with Windows Admin Center and familiar Windows Server tools. You can optionally connect to Azure for hybrid scenarios such as cloud-based site recovery, monitoring, and others.
+With Azure Stack HCI, you run virtualized workloads on-premises, managed with Windows Admin Center and familiar Windows Server tools. You can optionally connect to Azure for hybrid scenarios like cloud-based site recovery, monitoring, and others.
 
 ### Why is Microsoft bringing its HCI offering to the Azure Stack family?
 
@@ -133,7 +133,7 @@ Many Microsoft customers have complex IT environments and our goal is to provide
 
 ### Does Azure Stack HCI need to be connected to Azure?
 
-No, it's optional. You can take advantage of integration with Azure for hybrid scenarios such as off-site backup and disaster recovery, and cloud-based monitoring and update management, but they're optional. It's no problem to run disconnected from the Internet.
+No, it's optional. You can take advantage of integration with Azure for hybrid scenarios like off-site backup and disaster recovery, and cloud-based monitoring and update management, but they're optional. It's no problem to run disconnected from the internet.
 
 ### How does Azure Stack HCI relate to Windows Server?
 
@@ -158,10 +158,10 @@ Azure Stack HCI solutions follow the traditional purchasing model. You can purch
 Follow these steps:
 
 1. Buy a Microsoft-validated hardware system from your preferred hardware partner.
-1. Install Windows Server 2019 Datacenter edition and Windows Admin Center for management and the ability to connect to Azure for cloud services
+1. Install Windows Server 2019 Datacenter edition and Windows Admin Center for management and the ability to connect to Azure for cloud services.
 1. Optionally use your Azure account to attach cloud-based management and security services to your workloads.
 
-![To buy Azure Stack HCI solutions, choose the hardware partner and configuration that best fits your needs.](media/overview/buying-azure-stack-hci.png)
+![Steps to buy Azure Stack HCI solutions](media/overview/buying-azure-stack-hci.png)
 
 ## Compare Azure Stack Hub and Azure Stack HCI
 
