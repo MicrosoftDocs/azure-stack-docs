@@ -21,6 +21,20 @@ This article provides information about changes, fixes, and known issues in the 
 
 Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [RSS feed](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
 
+::: moniker range="azs-2004"
+## Build 1.2004.x.xx
+
+### New features
+
+- For a list of fixed issues, changes, and new features in this release, see the relevant sections in the [Azure Stack release notes](../operator/release-notes.md).
+
+### Fixed and known issues
+
+- The decryption certification password is a new option to specify the password for the self-signed certificate (.pfx) that contains the private key necessary to decrypt backup data. This password is required only if the backup is encrypted using a certificate.
+- For a list of Azure Stack known issues in this release, see the [known issues](../operator/known-issues.md) article.
+- Note that available Azure Stack hotfixes are not applicable to the ASDK.
+::: moniker-end
+
 ::: moniker range="azs-2002"
 ## Build 1.2002.0.35
 
@@ -70,21 +84,4 @@ Stay up-to-date with what's new in the ASDK by subscribing to the [![RSS](./medi
 <!-- - For a list of Azure Stack issues fixed in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1908#fixes-1) of the Azure Stack release notes. -->
 - For a list of known issues, see [this article](/azure-stack/operator/known-issues?view=azs-1908).
 - Note that available Azure Stack hotfixes are not applicable to the ASDK.
-::: moniker-end
-
-::: moniker range="azs-1907"
-## Build 1.1907.0.20
-
-### New features
-
-- For a list of new features in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1907#whats-in-this-update) of the Azure Stack release notes.
-
-<!-- ### Changes -->
-
-### Fixed and known issues
-
-- When creating VM resources using some Marketplace images, you might not be able to complete the deployment. As a workaround, you can click on the **Download template and parameters** link in the **Summary** page and click on the **Deploy** button in the **Template** blade.
-- For a list of Azure Stack issues fixed in this release, see [this section](/azure-stack/operator/release-notes?view=azs-1907#fixes-2) of the Azure Stack release notes.
-- For a list of known issues, see [this article](/azure-stack/operator/known-issues?view=azs-1907).
-- Note that [available Azure Stack hotfixes](/azure-stack/operator/release-notes?view=azs-1907#hotfixes-2) are not applicable to the Azure Stack ASDK.
 ::: moniker-end
