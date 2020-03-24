@@ -80,7 +80,7 @@ This section looks at creating an API model for your cluster.
 
     | Field | Description |
     | --- | --- |
-    | count | Enter the number of agents you want for your deployment. |
+    | count | Enter the number of agents you want for your deployment. The maximum count of nodes to use per subscription is 50. If you are deploying more than one cluster per subscription ensure that the total agent count does not go beyond 50. |
     | vmSize | Enter [a size supported by Azure Stack Hub](https://docs.microsoft.com/azure-stack/user/azure-stack-vm-sizes), example `Standard_D2_v2`. |
     | distro | Enter `aks-ubuntu-16.04`. |
 
