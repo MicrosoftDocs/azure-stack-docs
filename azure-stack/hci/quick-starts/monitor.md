@@ -9,7 +9,7 @@ ms.date: 03/24/2020
 
 # Quickstart: Monitor Azure Stack HCI clusters with Windows Admin Center
 
-> Applies to: Windows Server 2019
+> Applies to: Azure Stack HCI, Windows Server 2019
 
 This topic provides instructions for monitoring the performance of an Azure Stack HCI cluster at a glance by using Windows Admin Center, a locally deployed, browser-based app for managing Azure Stack HCI.
 
@@ -25,19 +25,19 @@ The simplest way to install Windows Admin Center is on a local Windows 10 PC, al
 
 After you have completed the installation of Windows Admin Center, you can add a cluster to manage from the main overview page.
 
- **Add a single server or a cluster as a managed node**
-
 1. Click **+ Add** under **All Connections**.
 
-   ![Add Cluster Screenshot](media/addcluster.png)
+    > [!div class="mx-imgBorder"]
+    > ![Add Cluster Screenshot](media/addcluster.png)
 
 2. Choose to add a Windows Server cluster:
     
-   ![Choose Connection Type Screenshot](media/chooseconnectiontype.png)
+    > [!div class="mx-imgBorder"]
+    > ![Choose Connection Type Screenshot](media/chooseconnectiontype.png)
 
 3. Type the name of the cluster to manage and click **Submit**. The cluster will be added to your connection list on the overview page.
 
-## Monitor performance at a glance with the Windows Admin Center dashboard
+## Monitor performance with the Windows Admin Center dashboard
 
 The Windows Admin Center dashboard provides alerts and health information about servers, drives, and volumes, as well as details about CPU, memory, and storage usage.
 
