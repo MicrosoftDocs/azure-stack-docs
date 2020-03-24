@@ -19,7 +19,7 @@ ms.reviewer: jiaha
 # Manage storage infrastructure for Azure Stack Hub
 
 This article describes the health and operational status of Azure Stack Hub storage infrastructure resources. These resources include storage drives and volumes. The information in this topic helps you troubleshoot various issues, like when a drive can't be added to a pool.
-v
+
 ## Understand drives and volumes
 
 ### Drives
