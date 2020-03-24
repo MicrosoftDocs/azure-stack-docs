@@ -1,34 +1,32 @@
 ---
-title: Azure Stack HCI overview
-description: Azure Stack HCI is a hyper-converged Windows Server 2019 cluster that uses validated hardware to run virtualized workloads on-premises. You can also optionally connect to Azure services for cloud-based backup, site-recovery, and more. Azure Stack HCI solutions use Microsoft-validated hardware to ensure optimal performance and reliability, and include support for technologies such as NVMe drives, persistent memory, and remote-direct memory access (RDMA) networking.
+title: Azure Stack HCI solutions overview
+titleSuffix: Azure Stack HCI
+description: An overview of Azure Stack HCI solutions.
 ms.topic: article
 author: jasongerend
 ms.author: jgerend
 ms.localizationpriority: medium
 ms.date: 11/04/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Intent: Notdone: As an Azure Stack operator, I want an overview of HCI solutions so I can run VMs on-premises and connect to Azure with an HCI solution.
 # Keyword: Notdone: keyword noun phrase
 
 ---
 
-# Azure Stack HCI overview
+# Azure Stack HCI solutions overview
 
-Azure Stack HCI is a hyperconverged Windows Server 2019 cluster that uses validated hardware to run virtualized workloads on-premises. You can also optionally connect to Azure services for cloud-based backup, site-recovery, and more. Azure Stack HCI solutions use Microsoft-validated hardware to ensure optimal performance and reliability, and include support for technologies such as NVMe drives, persistent memory, and remote-direct memory access (RDMA) networking.
+Azure Stack HCI is a hyperconverged Windows Server 2019 cluster that uses validated hardware to run virtualized workloads on-premises. You can also optionally connect to Azure services for cloud-based backup, site recovery, and more. Azure Stack HCI solutions use Microsoft-validated hardware to ensure optimal performance and reliability. The solutions include support for technologies such as NVMe drives, persistent memory, and remote-direct memory access (RDMA) networking.
 
 Azure Stack HCI is a solution that combines several products:
 
 - Hardware from an OEM partner
-
 - Windows Server 2019 Datacenter edition
-
 - Windows Admin Center
-
 - Azure services (optional)
 
-![Azure Stack HCI is Microsoft’s hyperconverged solution available from a wide range of hardware partners.](media/overview/azure-stack-hci-solution.png)
+![Azure Stack HCI is Microsoft's hyperconverged solution available from a wide range of hardware partners.](media/overview/azure-stack-hci-solution.png)
 
-Azure Stack HCI is Microsoft’s hyperconverged solution available from a wide range of hardware partners. Consider the following scenarios for a hyperconverged solution to help you determine if Azure Stack HCI is the solution that best suits your needs:
+Azure Stack HCI is Microsoft's hyperconverged solution available from a wide range of hardware partners. Consider the following scenarios for a hyperconverged solution to help you determine if Azure Stack HCI is the solution that best suits your needs:
 
 - **Refresh aging hardware.** Replace older servers and storage infrastructure and run Windows and Linux virtual machines on-premises and at the edge with existing IT skills and tools.
 
@@ -66,7 +64,7 @@ You can take advantage of cloud and on-premises working together with a hypercon
 
 - Azure Site Recovery for high availability and disaster recovery as a service (DRaaS).
 
-- Azure Monitor, a centralized hub to track what’s happening across your applications, network, and infrastructure – with advanced analytics powered by AI.
+- Azure Monitor, a centralized hub to track what's happening across your applications, network, and infrastructure – with advanced analytics powered by AI.
 
 - Cloud Witness, to use Azure as the lightweight tie breaker for cluster quorum.
 
@@ -135,13 +133,13 @@ With Azure Stack HCI, you run virtualized workloads on-premises, managed with Wi
 
 ### Why is Microsoft bringing its HCI offering to the Azure Stack family?
 
-Microsoft’s hyperconverged technology is already the foundation of Azure Stack Hub.
+Microsoft's hyperconverged technology is already the foundation of Azure Stack Hub.
 
 Many Microsoft customers have complex IT environments and our goal is to provide solutions that meet them where they are with the right technology for the right business need. Azure Stack HCI is an evolution of the Windows Server 2016-based Windows Server Software-Defined (WSSD) solutions previously available from our hardware partners. We brought it into the Azure Stack family because we have started to offer new options to connect seamlessly with Azure for infrastructure management services.
 
 ### Does Azure Stack HCI need to be connected to Azure?
 
-No, it’s optional. You can take advantage of integration with Azure for hybrid scenarios such as off-site backup and disaster recovery, and cloud-based monitoring and update management, but they're optional. It's no problem to run disconnected from the Internet.
+No, it's optional. You can take advantage of integration with Azure for hybrid scenarios such as off-site backup and disaster recovery, and cloud-based monitoring and update management, but they're optional. It's no problem to run disconnected from the Internet.
 
 ### How does Azure Stack HCI relate to Windows Server?
 
