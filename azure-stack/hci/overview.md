@@ -24,11 +24,11 @@ Azure Stack HCI is a solution that combines several products:
 - Windows Admin Center
 - Azure services (optional)
 
-![Azure Stack HCI is Microsoft's hyperconverged solution available from a wide range of hardware partners.](media/overview/azure-stack-hci-solution.png)
+![Azure Stack HCI solution](media/overview/azure-stack-hci-solution.png)
 
 Azure Stack HCI is Microsoft's hyperconverged solution available from a wide range of hardware partners. Consider the following scenarios for a hyperconverged solution to help you determine if Azure Stack HCI is the solution that best suits your needs:
 
-- **Refresh aging hardware.** Replace older servers and storage infrastructure and run Windows and Linux virtual machines on-premises and at the edge with existing IT skills and tools.
+- **Refresh aging hardware.** Replace older servers and storage infrastructure and run Windows and Linux virtual machines (VMs) on-premises and at the edge with existing IT skills and tools.
 
 - **Consolidate virtualized workloads.** Consolidate legacy apps on an efficient, hyperconverged infrastructure. Tap into the same types of cloud efficiencies used to run hyper-scale datacenters such as Microsoft Azure.
 
@@ -43,20 +43,20 @@ Azure Stack HCI is part of the Azure and Azure Stack family, using the same soft
 - [Azure Stack HCI](https://azure.microsoft.com/overview/azure-stack/hci) - Run virtualized apps on-premises, replace and consolidate aging server infrastructure, and connect to Azure for cloud services.
 - [Azure Stack Hub](../operator/azure-stack-overview.md) - Run cloud apps on-premises, when disconnected, or to meet regulatory requirements, using consistent Azure services.
 
-![Azure Stack Edge is a cloud-managed appliance for running machine-learning and containerized apps at the edge, Azure Stack HCI is a hyperconverged solution for running VMs and storage on-premises, while Azure Stack Hub provides cloud-native, Azure-consistent services on-premises.](media/overview/azure-family.png)
+![Azure, Azure Stack, and Azure Stack HCI](media/overview/azure-family.png)
 
 To learn more:
 
-- Learn more at our [Azure Stack HCI](https://azure.microsoft.com/overview/azure-stack/hci) solutions website.
+- Check out our [Azure Stack HCI](https://azure.microsoft.com/overview/azure-stack/hci) solutions website.
 - Watch Microsoft experts Jeff Woolsey and Vijay Tewari [discuss the new Azure Stack HCI solutions](https://aka.ms/AzureStackOverviewVideo).
 
 ## Hyperconverged efficiencies
 
 Azure Stack HCI solutions bring together highly virtualized compute, storage, and networking on industry-standard x86 servers and components. Combining resources in the same cluster makes it easier for you to deploy, manage, and scale. Manage with your choice of command-line automation or Windows Admin Center.
 
-Achieve industry-leading virtual machine performance for your server applications with Hyper-V, the foundational hypervisor technology of the Microsoft cloud, and Storage Spaces Direct technology with built-in support for NVMe, persistent memory, and remote-direct memory access (RDMA) networking.
+Achieve industry-leading VM performance for your server apps with Hyper-V, the foundational hypervisor technology of the Microsoft cloud, and Storage Spaces Direct technology with built-in support for NVMe, persistent memory, and remote-direct memory access (RDMA) networking.
 
-Help keep apps and data secure with shielded virtual machines, network microsegmentation, and native encryption.
+Help keep apps and data secure with shielded VMs, network microsegmentation, and native encryption.
 
 ## Hybrid capabilities
 
