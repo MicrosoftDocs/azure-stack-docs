@@ -4,7 +4,7 @@ description: This article details how to deploy the operating system for Azure S
 author: JohnCobb1
 ms.author: v-johcob 
 ms.topic: article
-ms.date: 03/23/2020
+ms.date: 03/24/2020
 ---
 
 # Deploy Azure Stack HCI
@@ -15,6 +15,14 @@ This article details Windows Server 2019 deployment options for Azure Stack HCI.
 ## Prerequisites
 - Server Core of Windows Server 2019 Datacenter installed on the primary management computer.
 
+## Deployment preparation
+After you've acquired the server hardware for your Azure Stack HCI solution, it's time to rack and cable it. Use the following steps to prepare the server hardware for deployment of Windows Server 2019 Datacenter, and then getting Windows updates and the latest firmware settings.
+
+1. Rack all server nodes that you want to use in your server cluster.
+1. Connect the server nodes to your primary management computer running Windows Server 2019 Datacenter, according to instructions from your Azure Stack HCI hardware vendor.
+1. Connect the server nodes to your network switches.
+1. Configure the BIOS or the Unified Extensible Firmware Interface (UEFI) of your servers as recommended by your Azure Stack HCI hardware vendor to maximize performance and reliability.
+
 ## Deployment options
 Windows Server 2019 deployment options include:
 - Manual deployment by connecting either a keyboard and monitor directly to the server hardware in your datacenter, or by connecting a KVM hardware device to the server hardware.
@@ -22,13 +30,7 @@ Windows Server 2019 deployment options include:
 - System Center Virtual Machine Manager (VMM).
 
 ### Manual deployment
-After you've acquired the server hardware for your Azure Stack HCI solution, it's time to rack and cable it to deploy Windows Server 2019 Datacenter.
-
-1. Rack all server nodes that you want to use in your server cluster.
-1. Connect the server nodes to your primary management computer running Windows Server 2019 Datacenter, according to instructions from your Azure Stack HCI hardware vendor.
-1. Connect the server nodes to your network switches.
-1. Configure the BIOS or the Unified Extensible Firmware Interface (UEFI) of your servers as recommended by your Azure Stack HCI hardware vendor to maximize performance and reliability.
-1. Install Windows Server 2019 Datacenter on a local disk of each server node.
+Install Windows Server 2019 Datacenter on a local disk of each server node. Or refer to the preinstalled operating system that came with the server nodes of your Azure Stack HCI solution hardware.
 
 ### Headless deployment
 You can use an answer file to do a headless deployment of Windows Server 2019 Datacenter. The answer file uses an XML format to define configuration settings and values during an unattended installation of Windows Server.
@@ -74,6 +76,6 @@ Now you're ready to get your hardware provider's latest firmware updates.
 1. Select the hardware provider's product name to go to the company's Azure Stack HCI solutions website to get the product's latest firmware updates.
 
 ## Next steps
-To perform the next management task related to this article, see:
+To perform the next management task related to this article, see:K
 > [!div class="nextstepaction"]
 > [Creating volumes in Azure Stack HCI](../manage/create-volumes.md)
