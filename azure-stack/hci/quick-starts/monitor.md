@@ -29,11 +29,11 @@ After you have completed the installation of Windows Admin Center, you can add a
 
 1. Click **+ Add** under **All Connections**.
 
-   ![Add Cluster Screenshot](addcluster.png)
+   ![Add Cluster Screenshot](media/addcluster.png)
 
 2. Choose to add a Windows Server cluster:
     
-   ![Choose Connection Type Screenshot](chooseconnectiontype.png)
+   ![Choose Connection Type Screenshot](media/chooseconnectiontype.png)
 
 3. Type the name of the cluster to manage and click **Submit**. The cluster will be added to your connection list on the overview page.
 
