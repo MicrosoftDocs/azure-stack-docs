@@ -50,30 +50,30 @@ The common app components to include in your inventory are listed in Table 1.
 
 | **Component** | **Hybrid application guidance** |
 | ---- | ---- |
-| Client connections | Your application (on any device) can access users in various ways, from a single-entry point, including the following:<br>-   A client-server model that requires the user to have a client installed to work with the application. A server-based application that is accessed from a web browser.<br>-   Client connections can include notifications when the connection is broken or alerts when roaming charges may apply. |
-| Authentication  | Authentication can be required for a user connecting to the application, or from one component connecting to another. |
-| APIs  | You can provide developers with programmatic access to your application with API sets and class libraries and provide a connection interface based on Internet standards. You can also use APIs to decompose an application into independently operating logical units. |
-| Services  | You can employ succinct services to provide the features for an application. A service can be the engine that the application runs on. |
-| Queues | You can use queues to organize the status of the life cycles and states of your application's components. These queues can provide messaging, notifications, and buffering capabilities to subscribing parties. |
-| Data storage | An application can be stateless or stateful. Stateful applications need data storage that can be met by numerous formats and volumes. |
+| Client connections | Your app (on any device) can access users in various ways, from a single-entry point, including the following:<br>-   A client-server model that requires the user to have a client installed to work with the app. A server-based app that's accessed from a browser.<br>-   Client connections can include notifications when the connection is broken or alerts when roaming charges may apply. |
+| Authentication  | Authentication can be required for a user connecting to the app, or from one component connecting to another. |
+| APIs  | You can provide developers with programmatic access to your app with API sets and class libraries and provide a connection interface based on internet standards. You can also use APIs to decompose an app into independently operating logical units. |
+| Services  | You can employ succinct services to provide the features for an app. A service can be the engine that the app runs on. |
+| Queues | You can use queues to organize the status of the life cycles and states of your app's components. These queues can provide messaging, notifications, and buffering capabilities to subscribing parties. |
+| Data storage | An app can be stateless or stateful. Stateful apps need data storage that can be met by numerous formats and volumes. |
 | Data caching  | A data caching component in your design can strategically address latency issues and play a role in triggering cloud bursting. |
-| Data ingestion | Data can be submitted to an application in many ways, ranging from user-submitted values in a web form to continuously high-volume data flow. |
+| Data ingestion | Data can be submitted to an app in many ways, ranging from user-submitted values in a web form to continuously high-volume data flow. |
 | Data processing | Your data processing tasks (such as reports, analytics, batch exports, and data transformation) can either be processed at the source or offloaded on a separate component using a copy of the data. |
 
 ## Assess app components for pillars
 
-For each component, evaluate its characteristics for each pillar. As you evaluate each component with all of the pillars, questions you might not have considered may become known to you that affect the design of the hybrid application. Acting on these considerations could add value in optimizing your application. Table 2 provides a description of each pillar as it relates to hybrid applications.
+For each component, evaluate its characteristics for each pillar. As you evaluate each component with all of the pillars, questions you might not have considered may become known to you that affect the design of the hybrid app. Acting on these considerations could add value in optimizing your app. Table 2 provides a description of each pillar as it relates to hybrid apps.
 
 ### Table 2. Pillars
 
 | **Pillar** | **Description** |
 | ----------- | --------------------------------------------------------- |
-| Placement  | The strategic positioning of components in hybrid applications. |
+| Placement  | The strategic positioning of components in hybrid apps. |
 | Scalability  | The ability of a system to handle increased load. |
-| Availability  | The proportion of time that a hybrid application is functional and working. |
-| Resiliency | The ability for a hybrid application to recover. |
+| Availability  | The proportion of time that a hybrid app is functional and working. |
+| Resiliency | The ability for a hybrid app to recover. |
 | Manageability | Operations processes that keep a system running in production. |
-| Security | Protecting hybrid applications and data from threats. |
+| Security | Protecting hybrid apps and data from threats. |
 
 ## Placement
 
