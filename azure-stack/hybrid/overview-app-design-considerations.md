@@ -1,6 +1,7 @@
 ---
-title: Hybrid application design considerations when building on Azure and Azure Stack
-description: Considerations when building a hybrid application for the intelligent cloud and intelligent edge.
+title: Hybrid app design considerations
+titleSuffix: Azure Stack
+description: Learn about considerations when building a hybrid app for the intelligent cloud and intelligent edge, including things like placement, scalability, availability, and resilience.
 author: BryanLa
 ms.topic: article
 ms.date: 11/05/2019
@@ -13,8 +14,7 @@ ms.lastreviewed: 11/05/2019
 
 ---
 
-
-# Hybrid application design considerations 
+# Hybrid app design considerations
 
 Microsoft Azure is the only consistent hybrid cloud. It allows you to reuse your development investments and enables applications that can span global Azure, the sovereign Azure clouds, and Azure Stack, which is an extension of Azure in your datacenter. Applications that span clouds are also referred to as *hybrid applications*.
 
@@ -24,7 +24,7 @@ This article augments the [*Pillars of software quality*](https://docs.microsoft
 
 Hybrid scenarios vary greatly with the resources that are available for development, and span considerations such as geography, security, Internet access, and other considerations. Although this guide cannot enumerate your specific considerations, it can provide some key guidelines and best practices for you to follow. Successfully designing, configuring, deploying, and maintaining a hybrid application architecture involves many design considerations that might not be inherently known to you.
 
-This document aims to aggregate the possible questions that might arise when implementing hybrid applications and provides considerations (these pillars) and best practices to work with them. By addressing these questions during the design phase, you’ll avoid the issues they could cause in production.
+This document aims to aggregate the possible questions that might arise when implementing hybrid applications and provides considerations (these pillars) and best practices to work with them. By addressing these questions during the design phase, you'll avoid the issues they could cause in production.
 
 Essentially, these are questions you need to think about before creating a hybrid application. To get started, you need to do the following:
 
@@ -34,9 +34,9 @@ Essentially, these are questions you need to think about before creating a hybri
 
 ## Evaluate the application components
 
-Each component of an application has its own specific role within the larger application and should be reviewed with all design considerations. Each component’s requirements and features should map to these considerations to help determine the application architecture.
+Each component of an application has its own specific role within the larger application and should be reviewed with all design considerations. Each component's requirements and features should map to these considerations to help determine the application architecture.
 
-Decompose your application into its components by studying your application’s architecture and determining what it consists of. Components can also include other applications that your application interacts with. As you identify the components, evaluate your intended hybrid operations according to their characteristics, such as the following:
+Decompose your application into its components by studying your application's architecture and determining what it consists of. Components can also include other applications that your application interacts with. As you identify the components, evaluate your intended hybrid operations according to their characteristics, such as the following:
 
 -   What is the purpose of the component?
 
@@ -59,7 +59,7 @@ The common application components to include in your inventory are listed in Tab
 | Authentication  | Authentication can be required for a user connecting to the application, or from one component connecting to another. |
 | APIs  | You can provide developers with programmatic access to your application with API sets and class libraries and provide a connection interface based on Internet standards. You can also use APIs to decompose an application into independently operating logical units. |
 | Services  | You can employ succinct services to provide the features for an application. A service can be the engine that the application runs on. |
-| Queues | You can use queues to organize the status of the life cycles and states of your application’s components. These queues can provide messaging, notifications, and buffering capabilities to subscribing parties. |
+| Queues | You can use queues to organize the status of the life cycles and states of your application's components. These queues can provide messaging, notifications, and buffering capabilities to subscribing parties. |
 | Data storage | An application can be stateless or stateful. Stateful applications need data storage that can be met by numerous formats and volumes. |
 | Data caching  | A data caching component in your design can strategically address latency issues and play a role in triggering cloud bursting. |
 | Data ingestion | Data can be submitted to an application in many ways, ranging from user-submitted values in a web form to continuously high-volume data flow. |
@@ -118,7 +118,7 @@ For the core discussion of this pillar, see [*Scalability*](https://docs.microso
 
 A horizontal scaling approach for hybrid applications allows for adding more instances to meet demand and then disabling them during quieter periods.
 
-In hybrid scenarios, scaling out individual components requires additional consideration when components are spread across clouds. Scaling one part of the application can require the scaling of another. For example, if the number of client connections increases but the application’s web services are not scaled out appropriately, the load on the database might saturate the application.
+In hybrid scenarios, scaling out individual components requires additional consideration when components are spread across clouds. Scaling one part of the application can require the scaling of another. For example, if the number of client connections increases but the application's web services are not scaled out appropriately, the load on the database might saturate the application.
 
 Some application components can scale out linearly, while others have scaling dependencies and might be limited to what extend they are able to scale. For example, a VPN tunnel providing hybrid connectivity for the application components locations has a limit to the bandwidth and latency it can be scaled to. How are components of the application scaled to ensure these requirements are met?
 
@@ -128,7 +128,7 @@ Some application components can scale out linearly, while others have scaling de
 
 **Define scale schedules.** Most applications have busy periods, so you need to aggregate their peak times into schedules to coordinate optimal scaling.
 
-**Use a centralized monitoring system.** Platform monitoring capabilities can provide autoscaling, but hybrid applications need a centralized monitoring system that aggregates system health and load. A centralized monitoring system can initiate scaling a resource in one location and scaling a depending on resource in another location. Additionally, a central monitoring system can track which clouds autoscale resources and which clouds don’t.
+**Use a centralized monitoring system.** Platform monitoring capabilities can provide autoscaling, but hybrid applications need a centralized monitoring system that aggregates system health and load. A centralized monitoring system can initiate scaling a resource in one location and scaling a depending on resource in another location. Additionally, a central monitoring system can track which clouds autoscale resources and which clouds don't.
 
 **Leverage autoscaling capabilities (as available).** If autoscaling capabilities are part of your architecture, you implement autoscaling by setting thresholds that define when an application component needs to be scaled up, out, down, or in. An example of autoscaling is a client connection that is autoscaled in one cloud to handle increased capacity, but causes other dependencies of the application, spread across different clouds, to also be scaled. The autoscaling capabilities of these dependent components must be ascertained.
 
@@ -168,13 +168,13 @@ For the core discussion of this pillar, see [*Resiliency*](https://docs.microsof
 
 **Uncover disaster-recovery dependencies.** Disaster recovery in one cloud might require changes to application components in another cloud. If one or multiple components from one cloud are failed over to another location, either within the same cloud or to another cloud, the dependent components need to be made aware of these changes. This also includes the connectivity dependencies. Resiliency requires a fully tested application recovery plan for each cloud.
 
-**Establish recovery flow.** An effective recovery flow design has evaluated application components for their ability to accommodate buffers, retries, retrying failed data transfer, and, if necessary, fall back to a different service or workflow. You must determine what back-up mechanism to use, what its restore procedure involves, and how often it’s tested. You should also determine the frequency for both incremental and full backups.
+**Establish recovery flow.** An effective recovery flow design has evaluated application components for their ability to accommodate buffers, retries, retrying failed data transfer, and, if necessary, fall back to a different service or workflow. You must determine what back-up mechanism to use, what its restore procedure involves, and how often it's tested. You should also determine the frequency for both incremental and full backups.
 
-**Test partial recoveries.** A partial recovery for part of the application can provide reassurance to users that all is not unavailable. This part of the plan should ensure that a partial restore doesn’t have any side effects, such as a backup and restore service that interacts with the application to gracefully shut it down before the backup is made.
+**Test partial recoveries.** A partial recovery for part of the application can provide reassurance to users that all is not unavailable. This part of the plan should ensure that a partial restore doesn't have any side effects, such as a backup and restore service that interacts with the application to gracefully shut it down before the backup is made.
 
 **Determine disaster-recovery instigators and assign responsibility.** A recovery plan should describe who, and what roles, can initiate backup and recovery actions in addition to what can be backed up and restored.
 
-**Compare self-healing thresholds with disaster recovery.** Determine an application’s self-healing capabilities for automatic recovery initiation and the time required for an application’s self- healing to be considered a failure or success. Determine the thresholds for each cloud.
+**Compare self-healing thresholds with disaster recovery.** Determine an application's self-healing capabilities for automatic recovery initiation and the time required for an application's self- healing to be considered a failure or success. Determine the thresholds for each cloud.
 
 **Verify availability of resiliency features.** Determine the availability of resiliency features and capabilities for each location. If a location does not provide the required capabilities, consider integrating that location into a centralized service that provides the resiliency features.
 
@@ -200,7 +200,7 @@ Determine the parts of the application that require monitoring.
 
 **Use CI/CD pipelines.** A Continuous Integration and Continuous Development (CI/CD) pipeline can provide a consistent process for authoring and deploying applications that span across clouds, and to provide quality assurance for their infrastructure and application. This pipeline enables the infrastructure and application to be tested on one cloud and deployed on another cloud. The pipeline even allows you to deploy certain components of your hybrid application to one cloud and other components to another cloud, essentially forming the foundation for hybrid application deployment. A CI/CD system is critical for handling the dependencies application components have for each other during installation, such as the web application needing a connection string to the database.
 
-**Manage the life cycle.** Because resources of a hybrid application can span locations, each single location’s life-cycle management capability needs to be aggregated into a single life-cycle management unit. Consider how they are created, updated, and deleted.
+**Manage the life cycle.** Because resources of a hybrid application can span locations, each single location's life-cycle management capability needs to be aggregated into a single life-cycle management unit. Consider how they are created, updated, and deleted.
 
 **Examine troubleshooting strategies.** Troubleshooting a hybrid application involves more application components than the same application that is running in a single cloud. Besides the connectivity between the clouds, the application is running on two platforms instead of one. An important task in troubleshooting hybrid applications is to examine the aggregated health and performance monitoring of the application components.
 
