@@ -4,7 +4,7 @@ description: Quickly connect to an existing cluster using Windows Admin Center t
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 03/25/2020
 ---
 
 # Quickstart: Monitor Azure Stack HCI clusters with Windows Admin Center
@@ -59,6 +59,8 @@ Use the Performance Monitor tool to view and compare performance counters for Wi
     > ![Performance Monitor Screenshot](media/performance-monitor.png)
 3. If creating a new workspace, click the **Add counter** button and select one or more source servers to monitor, or select the entire cluster.
 4. Select the object and instance you wish to monitor, as well as the counter and graph type to view dynamic performance information.
+    > [!div class="mx-imgBorder"]
+    > ![Example Counter Screenshot](media/example-counter.png)
 5. Save the workspace by choosing **Save > Save As** from the top menu.
 
 ## Next steps
