@@ -1,5 +1,5 @@
 ---
-title: Attaching a GPU to a Linux VM in Azure Stack HCI
+title: Attach a GPU to a Linux VM in Azure Stack HCI
 description: How to use a GPU with AI workloads running in an Ubuntu Linux VM on Azure Stack HCI.
 author: khdownie
 ms.author: v-kedow
@@ -9,25 +9,25 @@ ms.date: 03/24/2020
 
 # Attaching a GPU to an Ubuntu Linux VM on Azure Stack HCI
 
-> Applies to: Azure Stack HCI, Windows Server 2019
+> Applies to: Windows Server 2019
 
 This topic provides step-by-step instructions on how to install and configure an NVIDIA graphics processing unit (GPU) with Azure Stack HCI using Discrete Device Assignment (DDA) technology for an Ubuntu virtual machine (VM).
 This document assumes you have the Azure Stack HCI cluster deployed and VMs installed.
 
-## Configure the Azure Stack HCI node
+## Install the GPU and then dismount it in PowerShell
 
-Choose the server node(s) in your Azure Stack HCI cluster to install NVIDIA GPUs. Install the NVIDIA GPU physically into the server, following OEM instructions and BIOS recommendations. Once the server boots up:
-
-1. Login as Administrator to the Azure Stack HCI node with the NVIDIA GPU installed.
-2. Open **Device Manager** and navigate to the *other devices* section. You should see a device listed as "PCI Express Graphics Processing Unit."
-3. Right-click on "PCI Express Graphics Processing Unit" to bring up the **Properties** page. Click **Details**. From the dropdown under **Property**, select "Location paths."
-4. Note the value with string PCIRoot as highlighted in the screen shot below. Right-click on **Value** and copy/save it.
+1. Install the NVIDIA GPU(s) physically into the appropriate server(s) following OEM instructions and BIOS recommendations.
+2. Power on each server.
+3. Sign in using an account with administrative privileges to the server(s) with the NVIDIA GPU installed.
+4. Open **Device Manager** and navigate to the *other devices* section. You should see a device listed as "PCI Express Graphics Processing Unit."
+5. Right-click on "PCI Express Graphics Processing Unit" to bring up the **Properties** page. Click **Details**. From the dropdown under **Property**, select "Location paths."
+6. Note the value with string PCIRoot as highlighted in the screen shot below. Right-click on **Value** and copy/save it.
     :::image type="content" source="media/attach-gpu-to-linux-vm/pciroot.png" alt-text="Location Path Screenshot":::
-5. Open Windows PowerShell with elevated privileges and execute the `Dismount-VMHostAssignableDevice` cmdlet to dismount the GPU device for DDA to VM. Replace the *LocationPath* value with the value for your device obtained in step 4.
+7. Open Windows PowerShell with elevated privileges and execute the `Dismount-VMHostAssignableDevice` cmdlet to dismount the GPU device for DDA to VM. Replace the *LocationPath* value with the value for your device obtained in step 6.
     ```PowerShell
     Dismount-VMHostAssignableDevice -LocationPath "PCIROOT(16)#PCI(0000)#PCI(0000)" -force
     ```
-6. Confirm the device is listed under system devices in **Device Manager** as Dismounted.
+8. Confirm the device is listed under system devices in **Device Manager** as Dismounted.
     :::image type="content" source="media/attach-gpu-to-linux-vm/dismounted.png" alt-text="Dismounted Device Screenshot":::
 
 ## Create and configure an Ubuntu virtual machine
@@ -35,7 +35,7 @@ Choose the server node(s) in your Azure Stack HCI cluster to install NVIDIA GPUs
 1. Download [Ubuntu desktop release 18.04.02 ISO](http://cdimage.ubuntu.com/lubuntu/releases/18.04.2/release/lubuntu-18.04.2-desktop-amd64.iso).
 2. Open **Hyper-V Manager** on the node of the system with the GPU installed.
    > [!NOTE]
-   > DDA does not support failover, and [here's why](/windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment). This is a virtual machine limitation with DDA. Therefore, we recommend using **Hyper-V Manager** to deploy the VM on the node instead of **Failover Cluster Manager**. Use of **Failover Cluster Manager** with DDA will fail with an error message indicating that the VM has a device that doesn't support high availability.
+   > [DDA doesn't support failover](/windows-server/virtualization/hyper-v/plan/plan-for-deploying-devices-using-discrete-device-assignment). This is a virtual machine limitation with DDA. Therefore, we recommend using **Hyper-V Manager** to deploy the VM on the node instead of **Failover Cluster Manager**. Use of **Failover Cluster Manager** with DDA will fail with an error message indicating that the VM has a device that doesn't support high availability.
 3. Using the Ubuntu ISO downloaded in step 1, create a new virtual machine using the **New Virtual Machine Wizard** in **Hyper-V Manager** to create a Ubuntu Gen 1 VM with 2GB of memory and a network card attached to it.
 4. In PowerShell, assign the Dismounted GPU device to the VM using the cmdlets below, replacing the *LocationPath* value with the value for your device.
     ```PowerShell
@@ -246,7 +246,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     cd ./custom_streams
     ```
 
-10. Ensure your working directory is /var/deepstream/custom_streams and download the demo videos file as indicated [here](https://github.com/Azure-Samples/NVIDIA-Deepstream-Azure-IoT-Edge-on-a-NVIDIA-Jetson-Nano) by executing the following command in the SSH client:
+10. Ensure your working directory is /var/deepstream/custom_streams and download the [demo videos file](https://github.com/Azure-Samples/NVIDIA-Deepstream-Azure-IoT-Edge-on-a-NVIDIA-Jetson-Nano) by executing the following command in the SSH client:
 
     ```shell
     wget -O cars-streams.tar.gz --no-check-certificate https://onedrive.live.com/download?cid=0C0A4A69A0CDCB4C&resid=0C0A4A69A0CDCB4C%21588371&authkey=AAavgrxG95v9gu0
