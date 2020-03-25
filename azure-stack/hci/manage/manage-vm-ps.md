@@ -30,12 +30,13 @@ Use the `Get-VM` cmdlet to return a list of all virtual machines. For more infor
 The following example returns a list of all running VMs by adding a filter using the `Where-Object` command. For more information, see [Using the Where-Object](<https://docs.microsoft.com/previous-versions/windows/it-pro/windows-powershell-1.0/ee177028(v=technet.10)>) documentation.
 
 ```powershell
-Get-VM | where {$_.State -eq 'Running'}
+Get-VM -ComputerName hci_cluster1  | Where-Object -Property State -eq "Running"
 ```
+
 The next example returns a list of all shut-down VMs.
 
 ```powershell
-Get-VM | where {$_.State -eq 'Off'}
+Get-VM -ComputerName hci_cluster1  | Where-Object -Property State -eq "Off"
 ```
 
 ## Start and stop a VM
