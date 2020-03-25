@@ -32,21 +32,18 @@ Essentially, these are questions you need to think about before creating a hybri
 
 ## Evaluate the application components
 
-Each component of an application has its own specific role within the larger application and should be reviewed with all design considerations. Each component's requirements and features should map to these considerations to help determine the application architecture.
+Each component of an app has its own specific role within the larger app and should be reviewed with all design considerations. Each component's requirements and features should map to these considerations to help determine the application architecture.
 
-Decompose your application into its components by studying your application's architecture and determining what it consists of. Components can also include other applications that your application interacts with. As you identify the components, evaluate your intended hybrid operations according to their characteristics, such as the following:
+Decompose your app into its components by studying your app's architecture and determining what it consists of. Components can also include other apps that your app interacts with. As you identify the components, evaluate your intended hybrid operations according to their characteristics, like the following:
 
--   What is the purpose of the component?
+- What is the purpose of the component?
+- What are the interdependencies between the components?
 
--   What are the interdependencies between the components?
+For example, an app can have a front-end and back-end defined as two components. In a hybrid scenario, the front end is in one cloud and the back-end is in the other. The app provides communication channels between the front-end and the user, and also between the front-end and the back-end.
 
-For example, an application can have a front-end and back-end defined as two components. In a hybrid scenario, the front end is in one cloud and the back-end is in the other. The application
+An app component is defined by many forms and scenarios. The most important task is identifying them and their cloud or on-premises location.
 
-provides communication channels between the front end and the user, and also between the front end and the back-end.
-
-An application component is defined by many forms and scenarios. The most important task is identifying them and their cloud or on-premises location.
-
-The common application components to include in your inventory are listed in Table 1.
+The common app components to include in your inventory are listed in Table 1.
 
 ### Table 1. Common app components
 
