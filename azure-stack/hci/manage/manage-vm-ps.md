@@ -106,12 +106,6 @@ The following example creates a checkpoint named BeforeInstallingUpdates for the
 Checkpoint-VM -Name Test -SnapshotName BeforeInstallingUpdates
 ```
 
-The next example creates a checkpoints virtual machine Test on Hyper-V host Server1.
-
-```powershell
-Checkpoint-VM -Name Test -SnapshotName BeforeInstallingUpdates
-```
-
 ## Create a VHD for a VM
 
 The `New-VHD` cmdlet is used to create a new VHD for a VM. For detailed information on how to use it, see the [New-VHD](https://docs.microsoft.com/powershell/module/hyper-v/new-vhd?view=win10-ps) reference documentation.
@@ -172,9 +166,7 @@ Set-VMProcessor TestVM -Count 2 -Reserve 10 -Maximum 75 -RelativeWeight 200
 
 The `New-VM` cmdlet is used to create a new VM. For detailed usage, see the [New-VM](https://docs.microsoft.com/powershell/module/hyper-v/new-vm?view=win10-ps) reference documentation.
 
-Here are the settings that you can specify when creating a new VM:  
-
-   - **Existing virtual hard disk** - To create a virtual machine with an existing virtual hard disk, you can use the following command where,  
+Here are the settings that you can specify when creating a new VM with an existing virtual hard disk, where:  
    - **-Name** is the name that you provide for the virtual machine that you're creating.  
    - **-MemoryStartupBytes** is the amount of memory   that is available to the virtual machine at start up.  
    - **-BootDevice** is the device that the virtual machine boots to  when it starts like the network adapter (NetworkAdapter) or virtual hard disk (VHD).  
@@ -233,5 +225,5 @@ The following shows how to create a new VM in the PowerShell Integrated Scriptin
 
 ## Next Steps  
 
- - You can also create and manage VMs using Windows Admin Center. For more information, see [Managing VMs using Windows Admin Center](manage-vm.md).
+ - You can also create and manage VMs using Windows Admin Center. For more information, see [Manage VMs using Windows Admin Center](manage-vm.md).
  - Find out how to manage cluster-wide VM settings using PowerShell. See [Manage Azure Stack HCI clusters].
