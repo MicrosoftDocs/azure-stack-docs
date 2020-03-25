@@ -12,7 +12,7 @@ ms.reviewer: JasonGerend
 
 > Applies to Windows Server 2019
 
-Windows PowerShell can be used to manage resources and configure features on your Azure Stack HCI clusters. For information using on managing the VMS in your cluster, see [Manage VMs on Azure Stack HCI with Windows PowerShell].
+Windows PowerShell can be used to manage resources and configure features on your Azure Stack HCI clusters. For information on managing the VMs in your cluster, see [Manage VMs on Azure Stack HCI with Windows PowerShell].
 
 For the complete reference documentation for managing clusters using PowerShell, see [FailoverCluster reference](https://docs.microsoft.com/powershell/module/failoverclusters/?view=win10-ps).
 
@@ -32,7 +32,7 @@ Get-Cluster
 Get-ClusterNode
 ```
 
-To see which Windows features are installed on the cluster use the Get-WindowsFeature cmdlet. For example:
+To see which Windows features are installed on the cluster use the `Get-WindowsFeature` cmdlet. For example:
 
 ```powershell
 Get-WindowsFeature "Hyper-V", "Failover-Clustering", "Data-Center-Bridging", "BitLocker"
@@ -52,7 +52,7 @@ Get-VMSwitch
 Get-VMSwitchTeam
 ```
 
-To see host virtual network adapters
+To see host virtual network adapters:
 
 ```powershell
 Get-VMNetworkAdapter -ManagementOS | Format-Table Name, IsManagementOS, SwitchName
@@ -108,7 +108,7 @@ Remove-ClusterNode -Name node4
 
 Use the `Set-ClusterQuorum` cmdlet to set quorum options for the cluster. For more examples and usage information, see the [Set-ClusterQuorum](https://docs.microsoft.com/powershell/module/failoverclusters/set-clusterquorum?view=win10-ps) reference documentation.
 
-This example changes the quorum configuration to Node Majority on the local cluster
+This example changes the quorum configuration to Node Majority on the local cluster:
 
 ```powershell
 Set-ClusterQuorum -NodeMajority
@@ -262,10 +262,10 @@ The following example removes cluster resources by name:
 Get-ClusterResource -Name "<NAME>" | Remove-ClusterResource
 ```
 
-This example removes the cluster entirely:
+This example removes the cluster entirely using the `Remove-Cluster` cmdlet:
 
 ```powershell
-Get-ClusterResource -Name "<NAME>" | Remove-ClusterResource
+Remove-Cluster
 ```
 
 ## Next Steps
