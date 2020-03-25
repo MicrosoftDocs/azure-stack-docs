@@ -139,23 +139,23 @@ For the core discussion of this pillar, see [*Availability*](/azure/architecture
 
 ### Availability checklist
 
-**Provide redundancy for connectivity.** Hybrid applications require connectivity among the clouds that the application is spread across. You have a choice of technologies for hybrid connectivity, so in addition to your primary technology choice, use another technology to provide redundancy with automated failover capabilities should the primary technology fail.
+**Provide redundancy for connectivity.** Hybrid apps require connectivity among the clouds that the app is spread across. You have a choice of technologies for hybrid connectivity, so in addition to your primary technology choice, use another technology to provide redundancy with automated failover capabilities should the primary technology fail.
 
-**Classify fault domains.** Fault-tolerant applications require multiple fault domains. Fault domains help isolate the point of failure, such as if a single hard disk fails on premises, if a top-of-rack switch goes down, or if the full datacenter is unavailable. In a hybrid application, a location can be classified as a fault domain. With more availability requirements, the more you need to evaluate how a single fault domain should be classified.
+**Classify fault domains.** Fault-tolerant apps require multiple fault domains. Fault domains help isolate the point of failure, such as if a single hard disk fails on premises, if a top-of-rack switch goes down, or if the full datacenter is unavailable. In a hybrid app, a location can be classified as a fault domain. With more availability requirements, the more you need to evaluate how a single fault domain should be classified.
 
-**Classify upgrade domains.** Upgrade domains are used to ensure that instances of application components are available, while other instances of the same component are being serviced with updates or feature upgrades. As with fault domains, upgrade domains can be classified by their placement across locations. You must determine if an application component can accommodate getting upgraded in one location before it is upgraded in another location, or if other domain configurations are required. A single location itself can have multiple upgrade domains.
+**Classify upgrade domains.** Upgrade domains are used to ensure that instances of app components are available, while other instances of the same component are being serviced with updates or feature upgrades. As with fault domains, upgrade domains can be classified by their placement across locations. You must determine if an app component can accommodate getting upgraded in one location before it's upgraded in another location, or if other domain configurations are required. A single location itself can have multiple upgrade domains.
 
-**Track instances and availability.** Highly available application components can be available through load balancing and synchronous data replication. You must determine how many instances can be offline before the service is interrupted.
+**Track instances and availability.** Highly available app components can be available through load balancing and synchronous data replication. You must determine how many instances can be offline before the service is interrupted.
 
-**Implement self-healing.** In the event an issue causes an interruption to the application availability, a detection by a monitoring system could initiate self-healing activities to the application, such as draining the failed instance and redeploying it. Most likely this requires a central monitoring solution, integrated with a hybrid Continuous Integration, and Continuous Delivery (CI/CD) pipeline. The application is integrated with a monitoring system to identify issues that could require redeployment of an application component. The monitoring system can also trigger hybrid CI/CD to redeploy the application component and potentially any other dependent components in the same or other locations.
+**Implement self-healing.** In the event an issue causes an interruption to the app availability, a detection by a monitoring system could initiate self-healing activities to the app, such as draining the failed instance and redeploying it. Most likely this requires a central monitoring solution, integrated with a hybrid Continuous Integration, and Continuous Delivery (CI/CD) pipeline. The app is integrated with a monitoring system to identify issues that could require redeployment of an app component. The monitoring system can also trigger hybrid CI/CD to redeploy the app component and potentially any other dependent components in the same or other locations.
 
-**Maintain service-level agreements (SLAs).** Availability is critical for any agreements to maintain connectivity to the services and applications that you have with your customers. Each location that your hybrid application relies on might have its own SLA. These different SLAs can affect the overall SLA of your hybrid application.
+**Maintain service-level agreements (SLAs).** Availability is critical for any agreements to maintain connectivity to the services and apps that you have with your customers. Each location that your hybrid app relies on might have its own SLA. These different SLAs can affect the overall SLA of your hybrid app.
 
 ## Resiliency
 
-Resiliency is the ability for a hybrid application and system to recover from failures and continue to function. The goal of resiliency is to return the application to a fully functioning state after a failure occurs. Resiliency strategies include solutions like backup, replication, and disaster recovery.
+Resiliency is the ability for a hybrid app and system to recover from failures and continue to function. The goal of resiliency is to return the app to a fully functioning state after a failure occurs. Resiliency strategies include solutions like backup, replication, and disaster recovery.
 
-For the core discussion of this pillar, see [*Resiliency*](https://docs.microsoft.com/azure/architecture/guide/pillars#resiliency) in Pillars of software quality.
+For the core discussion of this pillar, see [*Resiliency*](https://docs.microsoft.com/azure/architecture/guide/pillars#resiliency) in the five pillars of architecture excellence.
 
 ### Resiliency checklist
 
