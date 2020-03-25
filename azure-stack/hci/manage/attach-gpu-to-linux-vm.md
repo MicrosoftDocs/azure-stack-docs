@@ -367,14 +367,14 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
 
 21. Confirm the TCP/IP address for your Ubuntu VM using the **ifconfig** command and look for the TCP/IP address next to the **eth0** interface.
 
-22. Install the VLC Player on your workstation. Within the VLC Player, click Media -> open network stream, and type in the address using this format:
+22. Install the VLC Player on your workstation. Within the VLC Player, click **Media -> open network stream**, and type in the address using this format:
 
     rtsp://ipaddress:8554/ds-test
 
     where ipaddress is the TCP/IP address of your VM.
 
-    ![VLC Player Screenshot](media/attach-gpu-to-linux-vm/vlc-player.png)
-
+    > [!div class="mx-imgBorder"]
+    > ![VLC Player Screenshot](media/attach-gpu-to-linux-vm/vlc-player.png)
 
 ## Next steps
 
