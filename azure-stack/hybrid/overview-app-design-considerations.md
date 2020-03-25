@@ -107,15 +107,15 @@ Placement is the important task of positioning components so that they can best 
 
 ## Scalability
 
-Scalability is the ability of a system to handle increased load on an application, which can vary over time as other factors, and forces, affect the audience size in addition to the size and scope of the application.
+Scalability is the ability of a system to handle increased load on an app, which can vary over time as other factors and forces affect the audience size, in addition to the size and scope of the app.
 
-For the core discussion of this pillar, see [*Scalability*](https://docs.microsoft.com/azure/architecture/guide/pillars#scalability) in Pillars of software quality.
+For the core discussion of this pillar, see [*Scalability*](https://docs.microsoft.com/azure/architecture/guide/pillars#scalability) in the five pillars of architecture excellence.
 
-A horizontal scaling approach for hybrid applications allows for adding more instances to meet demand and then disabling them during quieter periods.
+A horizontal scaling approach for hybrid apps allows for adding more instances to meet demand and then disabling them during quieter periods.
 
-In hybrid scenarios, scaling out individual components requires additional consideration when components are spread across clouds. Scaling one part of the application can require the scaling of another. For example, if the number of client connections increases but the application's web services are not scaled out appropriately, the load on the database might saturate the application.
+In hybrid scenarios, scaling out individual components requires additional consideration when components are spread across clouds. Scaling one part of the app can require the scaling of another. For example, if the number of client connections increases but the app's web services aren't scaled out appropriately, the load on the database might saturate the app.
 
-Some application components can scale out linearly, while others have scaling dependencies and might be limited to what extend they are able to scale. For example, a VPN tunnel providing hybrid connectivity for the application components locations has a limit to the bandwidth and latency it can be scaled to. How are components of the application scaled to ensure these requirements are met?
+Some app components can scale out linearly, while others have scaling dependencies and might be limited to what extent they're able to scale. For example, a VPN tunnel providing hybrid connectivity for the app components locations has a limit to the bandwidth and latency it can be scaled to. How are components of the app scaled to ensure these requirements are met?
 
 ### Scalability checklist
 
