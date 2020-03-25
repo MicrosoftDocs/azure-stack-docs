@@ -14,24 +14,25 @@ ms.lastreviewed: 09/19/2019
 
 ---
 
-# Install PowerShell Az module for Azure Stack Hub
+# Install PowerShell Az preview module for Azure Stack Hub
 
-This article explains how to install the Azure PowerShell Az modules using PowerShellGet. These instructions work on Windows, macOS, and Linux platforms.
+This article explains how to install the Azure PowerShell Az and compatible azurestack administrator modules using PowerShellGet. The Az modules can be installed on Windows, macOS, and Linux platforms.
 
 If you would like to install PowerShell AzureRM module for Azure Stack Hub, see [Install PowerShell AzureRM module for Azure Stack Hub](azure-stack-powershell-install.md).
 
 > [!IMPORTANT]
->  The PowerShell Az module is currently in public preview.
-> This preview version is provided without a service level agreement, and it's not recommended for production workloads. Certain features might not be supported or might have constrained capabilities. 
+> The PowerShell Az module is currently in public preview.
+> This preview version may have breaking changes in the upcoming releases
 > For more information, see [Supplemental Terms of Use for Microsoft Azure Previews](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> There will likely not be new AzureRM module releases. The AzureRM modules are under support for critical fixes only. Going forward there will only be Az releases for Azurestack
 
-You also need to use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.
+You can use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.
 API profiles provide a way to manage version differences between Azure and Azure Stack Hub. An API version profile is a set of Azure Resource Manager PowerShell modules with specific API versions. Each cloud platform has a set of supported API version profiles. For example, Azure Stack Hub supports a specific profile version such as **2019-03-01-hybrid**. When you install a profile, the Azure Resource Manager PowerShell modules that correspond to the specified profile are installed.
 
 You can install Azure Stack Hub compatible PowerShell Az modules in internet-connected, partially connected, or disconnected scenarios. This article walks you through the detailed instructions for these scenarios.
 
 ## 1. Verify your prerequisites
-
+Az modules are supported only on Azure Stack Hub with Update 2002 and hotfix fillherexxxxx
 Azure PowerShell works with PowerShell 5.1 or higher on Windows, or PowerShell Core 6.x and later on all platforms. You should install the
 [latest version of PowerShell Core](/powershell/scripting/install/installing-powershell#powershell-core) available for your operating system. Azure PowerShell has no additional requirements when run on PowerShell Core.
 
@@ -48,50 +49,34 @@ To use Azure PowerShell in PowerShell 5.1 on Windows:
    [Windows PowerShell 5.1](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)
    if needed. If you're on Windows 10, you already have PowerShell 5.1 installed.
 2. Install [.NET Framework 4.7.2 or later](/dotnet/framework/install).
-3. Make sure you have the latest version of PowerShellGet. Run `Update-Module PowerShellGet -Force`.
+3. Make sure you have the latest version of PowerShellGet. Run `Install-Module PowerShellGet -Force`. 
 
-## 2. Validate the PowerShell Gallery accessibility
+## 2. Prerequisites for Linux and Mac
+Powershell Core 6.x or later version is needed. Please follow the [link](/powershell/scripting/install/installing-powershell-core-on-windows) for instructions
 
-By default, the PowerShell gallery isn't configured as a trusted repository for PowerShellGet. The first time you use the PSGallery you see the following prompt:
+## 3. Uninstall existing versions of the Azure Stack Hub PowerShell modules
 
-```Output
-Untrusted repository
+Before installing the required version, make sure that you uninstall any previously installed Azure Stack Hub AzureRM  or Az powerShell modules. Uninstall the modules by using one of the following two methods:
 
-You are installing the modules from an untrusted repository. If you trust this repository, change its InstallationPolicy value by running the `Set-PSRepository` cmdlet.
+1. To uninstall the existing AzureRM and Az PowerShell modules, close all the active PowerShell sessions, and run the following cmdlets:
 
-Are you sure you want to install the modules from 'PSGallery'?
-[Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "N"):
-```
+    ```powershell
+    Get-Module -Name Azure* -ListAvailable | Uninstall-Module -Force -Verbose -ErrorAction Continue
+    Get-Module -Name Azs.* -ListAvailable | Uninstall-Module -Force -Verbose -ErrorAction Continue
+    Get-Module -Name Az.* -ListAvailable | Uninstall-Module -Force -Verbose -ErrorAction Continue
+    ```
+    If you hit an error such as 'The module is already in use', close the PowerShell sessions that are using the modules and rerun the above script.
 
-Answer `Yes` or `Yes to All` to continue with the installation.
-
-The Az module is a rollup module for the Azure PowerShell cmdlets. Installing it downloads all of the available Azure Resource Manager modules, and makes their cmdlets available for use.
-
-First, [install PowerShell Core 6.x or later](/powershell/scripting/install/installing-powershell-core-on-windows)
-
-Then, from a PowerShell Core session, install the Az module for the current user only. This is the
-recommended installation scope.
-
-```powershell  
-Install-Module -Name Az -AllowClobber -Scope CurrentUser
-```
-
-Installing the module for all users on a system requires elevated privileges. Start the PowerShell
-session using **Run as administrator** in Windows or use the `sudo` command on macOS or Linux:
-
-```powershell  
-Install-Module -Name Az -AllowClobber -Scope AllUsers
-```
+2. Delete all the folders that start with `Azure`, `Az` or `Azs.` from the `C:\Program Files\WindowsPowerShell\Modules` and `C:\Users\{yourusername}\Documents\WindowsPowerShell\Modules` folders. Deleting these folders removes any existing PowerShell modules.
 
 ## 3. Connected: Install with internet connectivity
 
-The Azure Stack AZ module will work Azure Stack Hub 2002 or later. In addition the Azure Stack Az module will work with PowerShell 5.1 or greater on a Windows machine, or PowerShell 6.x or greater on a Linux or macOS platform. Using the PowerShellGet cmdlets is the preferred installation method. This method works the same on the supported platforms. 
+The Azure Stack Az module will work Azure Stack Hub 2002 or later. In addition the Azure Stack Az module will work with PowerShell 5.1 or greater on a Windows machine, or PowerShell 6.x or greater on a Linux or macOS platform. Using the PowerShellGet cmdlets is the preferred installation method. This method works the same on the supported platforms.
 
 Run the following command from a PowerShell session:
 
 ```powershell  
-Install-Module -Name Az -AllowClobber
-Install-Module -Name Az.BootStrapper
+Install-Module -Name Az.BootStrapper -Force
 Use-AzProfile -Profile 2019-03-01-hybrid -Force
 Install-Module -Name AzureStack -RequiredVersion 2.0.0-preview -AllowPrerelease
 ```
@@ -99,28 +84,80 @@ Install-Module -Name AzureStack -RequiredVersion 2.0.0-preview -AllowPrerelease
 > [!Note]  
 > Azure Stack Hub module version 2.0.0 is a breaking change. Refer to the [Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub](migrate-azurerm-az.md) for details.
 
-> [!WARNING]  
+> [!WARNING]
 > You can't have both the AzureRM and Az modules installed for PowerShell 5.1 for Windows at the same time. If you need to keep AzureRM available on your system, install the Az module for PowerShell Core 6.x or later. To do this, [install PowerShell Core 6.x or later](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-windows) and then follow these instructions in a PowerShell Core terminal.
-
 
 ## 5. Disconnected: Install without internet connection
 
-In some environments it's not possible to connect to the PowerShell Gallery. In those situations,
-you can still install offline using one of these methods:
+In a disconnected scenario, you first download the PowerShell modules to a machine that has internet connectivity. Then, you transfer them to the Azure Stack Development Kit (ASDK) for installation.
 
-* Download the modules to another location in your network and use that as an installation source.
-  This allows you to cache PowerShell modules on a single server or file share to be deployed with
-  PowerShellGet to any disconnected systems. Learn how to set up a local repository and install on
-  disconnected systems with [Working with local PowerShellGet repositories](https://docs.microsoft.com/powershell/scripting/gallery/how-to/working-with-local-psrepositories).
-* [Download the Azure PowerShell MSI](https://docs.microsoft.com/powershell/azure/install-az-ps-msi) to a machine connected to the network,
-  and then copy the installer to systems without access to PowerShell Gallery. Keep in mind that the
-  MSI installer only works for PowerShell 5.1 on Windows.
-* Save the module with [Save-Module](https://docs.microsoft.com/powershell/module/PowershellGet/Save-Module) to a file share,
-  or save it to another source and manually copy it to other machines:
+Sign in to a computer with internet connectivity and use the following scripts to download the Azure Resource Manager and Azure Stack Hub packages, depending on your version of Azure Stack Hub.
 
-  ```powershell  
-  Save-Module -Name Az -Path '\\server\share\PowerShell\modules' -Force
-  ```
+Installation has five steps:
+
+1. Install Azure Stack Hub PowerShell to a connected machine.
+2. Enable additional storage features.
+3. Transport the PowerShell packages to your disconnected workstation.
+4. Manually bootstrap the NuGet provider on your disconnected workstation.
+5. Confirm the installation of PowerShell.
+
+### Install Azure Stack Hub PowerShell
+
+::: moniker range=">=azs-2002"
+Azure Stack Hub 2002 or later.
+
+You could either use AzureRM or Az preview modules. For Az modules please see instructions at herexxxxxx
+```powershell
+
+Install-module -Name PowerShellGet -Force
+Import-Module -Name PackageManagement -ErrorAction Stop
+
+$Path = "<Path that is used to save the packages>"
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureRM -Path $Path -Force -RequiredVersion 0.10.0-preview
+Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v2 -Name AzureStack -Path $Path -Force -RequiredVersion 2.0.0-preview
+```
+::: moniker-end
+
+> [!NOTE]  
+> On machines without an internet connection, we recommend executing the following cmdlet for disabling the telemetry data collection. You may experience a performance degradation of the cmdlets without disabling the telemetry data collection. This is applicable only for the machines without internet connections
+> ```powershell
+> Disable-AzDataCollection
+> ```
+
+### Add your packages to your workstation
+
+1. Copy the downloaded packages to a USB device.
+
+2. Sign in to the disconnected workstation and copy the packages from the USB device to a location on the workstation.
+
+3. Manually bootstrap the NuGet provider on your disconnected workstation. For instructions, see [Manually bootstrapping the NuGet provider on a machine that isn't connected to the internet](https://docs.microsoft.com/powershell/scripting/gallery/how-to/getting-support/bootstrapping-nuget#manually-bootstrapping-the-nuget-provider-on-a-machine-that-is-not-connected-to-the-internet).
+
+4. Register this location as the default repository and install the AzureRM and `AzureStack` modules from this repository:
+
+   ```powershell
+   # requires -Version 5
+   # requires -RunAsAdministrator
+   # requires -Module PowerShellGet
+   # requires -Module PackageManagement
+
+   $SourceLocation = "<Location on the development kit that contains the PowerShell packages>"
+   $RepoName = "MyNuGetSource"
+
+   Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
+
+   Install-Module -Name AzureRM -Repository $RepoName
+
+   Install-Module -Name AzureStack -Repository $RepoName
+   ```
+
+### Confirm the installation of PowerShell
+
+Confirm the installation by running the following command:
+
+```powershell
+Get-Module -Name "Az*" -ListAvailable
+Get-Module -Name "Azs*" -ListAvailable
+```
 
 ## 6. Configure PowerShell to use a proxy server
 
@@ -141,7 +178,9 @@ In scenarios that require a proxy server to access the internet, you first confi
 
 You can use the cmdlets and code samples based on AzureRM. However, you will want to change the name of the modules and cmdlets. The module names have been changed so that `AzureRM` and Azure become `Az`, and the same for cmdlets. For example, the `AzureRM.Compute` module has been renamed to `Az.Compute`.` New-AzureRMVM` has become ` New-AzVM`, and `Get-AzureStorageBlob` is now `Get-AzStorageBlob`.
 
-For a more thorough discussion and guidance for moving AzurRM script to Az and breaking changes in Azure Stack Hub's AZ module, see [Migrate from AzureRM to Azure PowerShell Az](migrate-azurerm-az.md).
+For a more thorough discussion and guidance for moving AzurRM script to Az and breaking changes in Azure Stack Hub's Az module, see [Migrate from AzureRM to Azure PowerShell Az](migrate-azurerm-az.md).
+
+Most of the document pages of azurestack still uses the AzureRM as Az modules for azurestack is a preview release. All the functionalities of AzureRM is available in Az modules as well. Please use the above migration guidance for modifying the AzureRM document page contents for Az.
 
 ## Next steps
 
@@ -149,4 +188,3 @@ For a more thorough discussion and guidance for moving AzurRM script to Az and b
 - [Configure the Azure Stack Hub user's PowerShell environment](../user/azure-stack-powershell-configure-user.md)
 - [Configure the Azure Stack Hub operator's PowerShell environment](azure-stack-powershell-configure-admin.md)
 - [Manage API version profiles in Azure Stack Hub](../user/azure-stack-version-profiles.md)
-

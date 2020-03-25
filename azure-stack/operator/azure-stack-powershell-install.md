@@ -14,7 +14,7 @@ ms.lastreviewed: 09/19/2019
 
 ---
 
-# Install PowerShell AzureRM module for Azure Stack Hub
+# Install PowerShell AzureRM or Az module for Azure Stack Hub
 
 Azure PowerShell AzureRM provides a set of cmdlets that use the Azure Resource Manager model for managing your Azure Stack Hub resources.
 
@@ -49,7 +49,7 @@ Validate if PSGallery is registered as a repository.
 Open an elevated PowerShell prompt, and run the following cmdlets:
 
 ```powershell
-Install-module -Name PowerShellGet -Force 
+Install-module -Name PowerShellGet -Force
 Import-Module -Name PackageManagement -ErrorAction Stop
 Get-PSRepository -Name "PSGallery"
 ```
@@ -65,16 +65,17 @@ Set-PSRepository -Name "PSGallery" -InstallationPolicy Trusted
 
 Before installing the required version, make sure that you uninstall any previously installed Azure Stack Hub AzureRM PowerShell modules. Uninstall the modules by using one of the following two methods:
 
-1. To uninstall the existing AzureRM PowerShell modules, close all the active PowerShell sessions, and run the following cmdlets:
+1. To uninstall the existing AzureRM and Az PowerShell modules, close all the active PowerShell sessions, and run the following cmdlets:
 
     ```powershell
-    Get-Module -Name Azs.* -ListAvailable | Uninstall-Module -Force -Verbose
-    Get-Module -Name Azure* -ListAvailable | Uninstall-Module -Force -Verbose
+    Get-Module -Name Azure* -ListAvailable | Uninstall-Module -Force -Verbose -ErrorAction Continue
+    Get-Module -Name Azs.* -ListAvailable | Uninstall-Module -Force -Verbose -ErrorAction Continue
+    Get-Module -Name Az.* -ListAvailable | Uninstall-Module -Force -Verbose -ErrorAction Continue
     ```
 
     If you hit an error such as 'The module is already in use', close the PowerShell sessions that are using the modules and rerun the above script.
 
-2. Delete all the folders that start with `Azure` or `Azs.` from the `C:\Program Files\WindowsPowerShell\Modules` and `C:\Users\{yourusername}\Documents\WindowsPowerShell\Modules` folders. Deleting these folders removes any existing PowerShell modules.
+2. Delete all the folders that start with `Azure`, `Az` or `Azs.` from the `C:\Program Files\WindowsPowerShell\Modules` and `C:\Users\{yourusername}\Documents\WindowsPowerShell\Modules` folders. Deleting these folders removes any existing PowerShell modules.
 
 ## 4. Connected: Install PowerShell for Azure Stack Hub with internet connectivity
 
@@ -87,6 +88,9 @@ Run the following PowerShell script to install these modules on your development
 ::: moniker range=">=azs-2002"
 For Azure Stack Hub 2002 or later:
 
+You could either user AzureRm modules or Az preview modules. Note that use of Az modules requires 2002 update and the hotfix.
+
+To use Az preview modules please follow the instructions at herexxxxxxx
 ```powershell  
 # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
 Install-Module -Name AzureRM.BootStrapper
@@ -139,7 +143,7 @@ Get-Module -Name "Azure*" -ListAvailable
 Get-Module -Name "Azs*" -ListAvailable
 ```
 
-If the installation is successful, the `AzureAz` and `AzureStack` modules are displayed in the output.
+If the installation is successful, the `AzureRm` and `AzureStack` modules are displayed in the output.
 
 ## 5. Disconnected: Install PowerShell without an internet connection
 
@@ -160,6 +164,7 @@ Installation has five steps:
 ::: moniker range=">=azs-2002"
 Azure Stack Hub 2002 or later.
 
+You could either use AzureRM or Az preview modules. For Az modules please see instructions at herexxxxxx
 ```powershell
 
 Install-module -Name PowerShellGet -Force 
