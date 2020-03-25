@@ -373,8 +373,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
 
     where ipaddress is the TCP/IP address of your VM.
 
-    > [!div class="mx-imgBorder"]
-    > ![VLC Player Screenshot](media/attach-gpu-to-linux-vm/vlc-player.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/vlc-player.png" alt-text="VLC Player Screenshot":::
 
 ## Next steps
 
