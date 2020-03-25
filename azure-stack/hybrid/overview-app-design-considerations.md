@@ -77,31 +77,31 @@ For each component, evaluate its characteristics for each pillar. As you evaluat
 
 ## Placement
 
-A hybrid application inherently has a placement consideration, such as for the datacenter.
+A hybrid app inherently has a placement consideration, like for the datacenter.
 
-Placement is the important task of positioning components so that they can best service a hybrid application. By definition, hybrid applications span locations, such as from on-premises to the cloud and among different clouds. You can place components of the application on clouds in two ways:
+Placement is the important task of positioning components so that they can best service a hybrid app. By definition, hybrid apps span locations, like from on-premises to the cloud and among different clouds. You can place components of the app on clouds in two ways:
 
--   **Vertical hybrid applications**  
-    Application components are distributed across locations. Each individual component can have multiple instances located only in a single location.
+- **Vertical hybrid appns**  
+    App components are distributed across locations. Each individual component can have multiple instances located only in a single location.
 
--   **Horizontal hybrid applications**  
-    Application components are distributed across locations. Each individual component can have multiple instances spanning multiple locations.
-    
-    Some components can be aware of their location while others do not have any knowledge of their location and placement. This virtuousness can be achieved with an abstraction layer. This layer, with a modern application framework like microservices, can define how the application is serviced by the placement of application components operating on nodes across clouds.
+- **Horizontal hybrid apps**  
+    App components are distributed across locations. Each individual component can have multiple instances spanning multiple locations.
+
+    Some components can be aware of their location while others don't have any knowledge of their location and placement. This virtuousness can be achieved with an abstraction layer. This layer, with a modern app framework like microservices, can define how the app is serviced by the placement of app components operating on nodes across clouds.
 
 ### Placement checklist
 
-**Verify required locations.** Make sure the application or any of its components are required to operate in, or require certification for, a specific cloud. This can include sovereignty requirements from your company or dictated by law. Also, determine if any on-premises operations are required for a particular location or locale.
+**Verify required locations.** Make sure the app or any of its components are required to operate in, or require certification for, a specific cloud. This can include sovereignty requirements from your company or dictated by law. Also, determine if any on-premises operations are required for a particular location or locale.
 
 **Ascertain connectivity dependencies.** Required locations and other factors can dictate the connectivity dependencies among your components. As you place the components, determine the optimal connectivity and security for communication among them. Choices include [*VPN*,](https://docs.microsoft.com/azure/vpn-gateway/) [*ExpressRoute*,](https://docs.microsoft.com/azure/expressroute/) and [*Hybrid Connections*.](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
 
-**Evaluate platform capabilities.** For each application component, see if the required resource provider for the application component is available on the cloud and if the bandwidth can accommodate the expected throughput and latency requirements.
+**Evaluate platform capabilities.** For each app component, see if the required resource provider for the app component is available on the cloud and if the bandwidth can accommodate the expected throughput and latency requirements.
 
-**Plan for portability.** Use modern application frameworks, like containers or microservices, to plan for moving operations and to prevent service dependencies.
+**Plan for portability.** Use modern app frameworks, like containers or microservices, to plan for moving operations and to prevent service dependencies.
 
-**Determine data sovereignty requirements.** Hybrid applications are geared for accommodating data isolation, such as on a local datacenter. Review the placement of your resources to optimize the success for accommodating this requirement.
+**Determine data sovereignty requirements.** Hybrid apps are geared for accommodating data isolation, such as on a local datacenter. Review the placement of your resources to optimize the success for accommodating this requirement.
 
-**Plan for latency.** Inter-cloud operations can introduce physical distance between the application components. Ascertain the requirements to accommodate any latency.
+**Plan for latency.** Inter-cloud operations can introduce physical distance between the app components. Ascertain the requirements to accommodate any latency.
 
 **Control traffic flows.** Handle peak usage and the appropriate and secured communications for personal identifiable information data when accessed by the front end in a public cloud.
 
