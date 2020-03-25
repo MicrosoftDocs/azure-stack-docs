@@ -4,10 +4,10 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 1/22/2020
+ms.date: 03/25/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 09/19/2019
+ms.lastreviewed: 03/25/2020
 
 # Intent: As an Azure Stack operator, I want to install Powershell Az for Azure Stack.
 # Keyword: install powershell azure stack Az
@@ -16,7 +16,7 @@ ms.lastreviewed: 09/19/2019
 
 # Install PowerShell Az preview module for Azure Stack Hub
 
-This article explains how to install the Azure PowerShell Az and compatible azurestack administrator modules using PowerShellGet. The Az modules can be installed on Windows, macOS, and Linux platforms.
+This article explains how to install the Azure PowerShell Az and compatible Azure Stack Hub administrator modules using PowerShellGet. The Az modules can be installed on Windows, macOS, and Linux platforms.
 
 If you would like to install PowerShell AzureRM module for Azure Stack Hub, see [Install PowerShell AzureRM module for Azure Stack Hub](azure-stack-powershell-install.md).
 
@@ -27,14 +27,17 @@ If you would like to install PowerShell AzureRM module for Azure Stack Hub, see 
 > There will likely not be new AzureRM module releases. The AzureRM modules are under support for critical fixes only. Going forward there will only be Az releases for Azurestack
 
 You can use *API profiles* to specify the compatible endpoints for the Azure Stack Hub resource providers.
+
 API profiles provide a way to manage version differences between Azure and Azure Stack Hub. An API version profile is a set of Azure Resource Manager PowerShell modules with specific API versions. Each cloud platform has a set of supported API version profiles. For example, Azure Stack Hub supports a specific profile version such as **2019-03-01-hybrid**. When you install a profile, the Azure Resource Manager PowerShell modules that correspond to the specified profile are installed.
 
-You can install Azure Stack Hub compatible PowerShell Az modules in internet-connected, partially connected, or disconnected scenarios. This article walks you through the detailed instructions for these scenarios.
+You can install Azure Stack Hub compatible PowerShell Az modules in Internet-connected, partially connected, or disconnected scenarios. This article walks you through the detailed instructions for these scenarios.
 
 ## 1. Verify your prerequisites
-Az modules are supported only on Azure Stack Hub with Update 2002 and hotfix fillherexxxxx
+
+Az modules are supported only on [Azure Stack Hub with Update 2002](https://docs.microsoft.com/azure-stack/operator/release-notes?view=azs-2002#2002-build-reference) and the latest [hotfix](https://docs.microsoft.com/azure-stack/operator/release-notes?view=azs-2002#hotfixes).
+
 Azure PowerShell works with PowerShell 5.1 or higher on Windows, or PowerShell Core 6.x and later on all platforms. You should install the
-[latest version of PowerShell Core](/powershell/scripting/install/installing-powershell#powershell-core) available for your operating system. Azure PowerShell has no additional requirements when run on PowerShell Core.
+[latest version of PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell-core) available for your operating system. Azure PowerShell has no additional requirements when run on PowerShell Core.
 
 To check your PowerShell version, run the command:
 
@@ -46,17 +49,17 @@ $PSVersionTable.PSVersion
 To use Azure PowerShell in PowerShell 5.1 on Windows:
 
 1. Update to
-   [Windows PowerShell 5.1](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)
+   [Windows PowerShell 5.1](https://docs.microsoft.com//powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)
    if needed. If you're on Windows 10, you already have PowerShell 5.1 installed.
-2. Install [.NET Framework 4.7.2 or later](/dotnet/framework/install).
+2. Install [.NET Framework 4.7.2 or later](https://docs.microsoft.com//dotnet/framework/install).
 3. Make sure you have the latest version of PowerShellGet. Run `Install-Module PowerShellGet -Force`. 
 
 ## 2. Prerequisites for Linux and Mac
-Powershell Core 6.x or later version is needed. Please follow the [link](/powershell/scripting/install/installing-powershell-core-on-windows) for instructions
+PowerShell Core 6.x or later version is needed. Follow the [link](https://docs.microsoft.com//powershell/scripting/install/installing-powershell-core-on-windows) for instructions
 
 ## 3. Uninstall existing versions of the Azure Stack Hub PowerShell modules
 
-Before installing the required version, make sure that you uninstall any previously installed Azure Stack Hub AzureRM  or Az powerShell modules. Uninstall the modules by using one of the following two methods:
+Before installing the required version, make sure that you uninstall any previously installed Azure Stack Hub AzureRM  or Az PowerShell modules. Uninstall the modules by using one of the following two methods:
 
 1. To uninstall the existing AzureRM and Az PowerShell modules, close all the active PowerShell sessions, and run the following cmdlets:
 
@@ -71,7 +74,7 @@ Before installing the required version, make sure that you uninstall any previou
 
 ## 3. Connected: Install with internet connectivity
 
-The Azure Stack Az module will work Azure Stack Hub 2002 or later. In addition the Azure Stack Az module will work with PowerShell 5.1 or greater on a Windows machine, or PowerShell 6.x or greater on a Linux or macOS platform. Using the PowerShellGet cmdlets is the preferred installation method. This method works the same on the supported platforms.
+The Azure Stack Az module will work Azure Stack Hub 2002 or later. In addition, the Azure Stack Az module will work with PowerShell 5.1 or greater on a Windows machine, or PowerShell 6.x or greater on a Linux or macOS platform. Using the PowerShellGet cmdlets is the preferred installation method. This method works the same on the supported platforms.
 
 Run the following command from a PowerShell session:
 
@@ -106,7 +109,8 @@ Installation has five steps:
 ::: moniker range=">=azs-2002"
 Azure Stack Hub 2002 or later.
 
-You could either use AzureRM or Az preview modules. For Az modules please see instructions at herexxxxxx
+You could either use AzureRM or Az preview modules. For RM modules, see the instructions at [Install PowerShell AzureRM module](azure-stack-powershell-install.md).
+
 ```powershell
 
 Install-module -Name PowerShellGet -Force
@@ -180,7 +184,7 @@ You can use the cmdlets and code samples based on AzureRM. However, you will wan
 
 For a more thorough discussion and guidance for moving AzurRM script to Az and breaking changes in Azure Stack Hub's Az module, see [Migrate from AzureRM to Azure PowerShell Az](migrate-azurerm-az.md).
 
-Most of the document pages of azurestack still uses the AzureRM as Az modules for azurestack is a preview release. All the functionalities of AzureRM is available in Az modules as well. Please use the above migration guidance for modifying the AzureRM document page contents for Az.
+The PowerShell snippets used in the Azure Stack Hub content use the AzureRM module. The Az module is a preview release. You can refactor the snippets to use with the Az module by following the guidance in the migration guide, [Migrate from AzureRM to Azure PowerShell Az in Azure Stack Hub](powershell-install-az-module.md).
 
 ## Next steps
 

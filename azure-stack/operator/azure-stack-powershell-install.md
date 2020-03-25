@@ -4,10 +4,10 @@ description: Learn how to install PowerShell for Azure Stack Hub.
 author: mattbriggs
 
 ms.topic: article
-ms.date: 1/22/2020
+ms.date: 03/25/2020
 ms.author: mabrigg
 ms.reviewer: sijuman
-ms.lastreviewed: 09/19/2019
+ms.lastreviewed: 03/25/2020
 
 # Intent: As an Azure Stack operator, I want to install Powershell for Azure Stack.
 # Keyword: install powershell azure stack AzureRM
@@ -88,9 +88,10 @@ Run the following PowerShell script to install these modules on your development
 ::: moniker range=">=azs-2002"
 For Azure Stack Hub 2002 or later:
 
-You could either user AzureRm modules or Az preview modules. Note that use of Az modules requires 2002 update and the hotfix.
+You could either user AzureRm modules or Az preview modules. The use of the Az modules requires Azure Stack Hub 2002 and the latest hotfix.
 
-To use Az preview modules please follow the instructions at herexxxxxxx
+To use Az preview modules, follow the instructions at [Install PowerShell Az module](powershell-install-az-module.md).
+
 ```powershell  
 # Install the AzureRM.BootStrapper module. Select Yes when prompted to install NuGet
 Install-Module -Name AzureRM.BootStrapper
@@ -164,7 +165,8 @@ Installation has five steps:
 ::: moniker range=">=azs-2002"
 Azure Stack Hub 2002 or later.
 
-You could either use AzureRM or Az preview modules. For Az modules please see instructions at herexxxxxx
+You could either use AzureRM or Az preview modules. For Az modules, see instructions at [Install PowerShell Az module](powershell-install-az-module.md).
+
 ```powershell
 
 Install-module -Name PowerShellGet -Force 
