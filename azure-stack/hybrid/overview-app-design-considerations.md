@@ -159,27 +159,27 @@ For the core discussion of this pillar, see [*Resiliency*](https://docs.microsof
 
 ### Resiliency checklist
 
-**Uncover disaster-recovery dependencies.** Disaster recovery in one cloud might require changes to application components in another cloud. If one or multiple components from one cloud are failed over to another location, either within the same cloud or to another cloud, the dependent components need to be made aware of these changes. This also includes the connectivity dependencies. Resiliency requires a fully tested application recovery plan for each cloud.
+**Uncover disaster-recovery dependencies.** Disaster recovery in one cloud might require changes to app components in another cloud. If one or multiple components from one cloud are failed-over to another location, either within the same cloud or to another cloud, the dependent components need to be made aware of these changes. This also includes the connectivity dependencies. Resiliency requires a fully tested app recovery plan for each cloud.
 
-**Establish recovery flow.** An effective recovery flow design has evaluated application components for their ability to accommodate buffers, retries, retrying failed data transfer, and, if necessary, fall back to a different service or workflow. You must determine what back-up mechanism to use, what its restore procedure involves, and how often it's tested. You should also determine the frequency for both incremental and full backups.
+**Establish recovery flow.** An effective recovery flow design has evaluated app components for their ability to accommodate buffers, retries, retrying failed data transfer, and, if necessary, fall back to a different service or workflow. You must determine what back-up mechanism to use, what its restore procedure involves, and how often it's tested. You should also determine the frequency for both incremental and full backups.
 
-**Test partial recoveries.** A partial recovery for part of the application can provide reassurance to users that all is not unavailable. This part of the plan should ensure that a partial restore doesn't have any side effects, such as a backup and restore service that interacts with the application to gracefully shut it down before the backup is made.
+**Test partial recoveries.** A partial recovery for part of the app can provide reassurance to users that all isn't unavailable. This part of the plan should ensure that a partial restore doesn't have any side effects, such as a backup and restore service that interacts with the app to gracefully shut it down before the backup is made.
 
 **Determine disaster-recovery instigators and assign responsibility.** A recovery plan should describe who, and what roles, can initiate backup and recovery actions in addition to what can be backed up and restored.
 
-**Compare self-healing thresholds with disaster recovery.** Determine an application's self-healing capabilities for automatic recovery initiation and the time required for an application's self- healing to be considered a failure or success. Determine the thresholds for each cloud.
+**Compare self-healing thresholds with disaster recovery.** Determine an app's self-healing capabilities for automatic recovery initiation and the time required for an app's self- healing to be considered a failure or success. Determine the thresholds for each cloud.
 
-**Verify availability of resiliency features.** Determine the availability of resiliency features and capabilities for each location. If a location does not provide the required capabilities, consider integrating that location into a centralized service that provides the resiliency features.
+**Verify availability of resiliency features.** Determine the availability of resiliency features and capabilities for each location. If a location doesn't provide the required capabilities, consider integrating that location into a centralized service that provides the resiliency features.
 
-**Determine downtimes.** Determine the expected downtime due to maintenance for the application as a whole and as application components.
+**Determine downtimes.** Determine the expected downtime due to maintenance for the app as a whole and as app components.
 
-**Document troubleshooting procedures.** Define troubleshooting procedures for redeploying resources and application components.
+**Document troubleshooting procedures.** Define troubleshooting procedures for redeploying resources and app components.
 
 ## Manageability
 
-The considerations for how you manage your hybrid applications are critical in designing your architecture. A well-managed hybrid application provides an infrastructure as code that enables the integration of consistent application code in a common development pipeline. By implementing consistent system-wide and individual testing of changes to the infrastructure, you can assure an integrated deployment if the changes pass the tests, allowing them to be merged into the source code.
+The considerations for how you manage your hybrid apps are critical in designing your architecture. A well-managed hybrid app provides an infrastructure as code that enables the integration of consistent application code in a common development pipeline. By implementing consistent system-wide and individual testing of changes to the infrastructure, you can ensure an integrated deployment if the changes pass the tests, allowing them to be merged into the source code.
 
-For the core discussion of this pillar, see [*DevOps*](/azure/architecture/framework/#devops) in Pillars of software quality.
+For the core discussion of this pillar, see [*DevOps*](/azure/architecture/framework/#devops) in the five pillars of architecture excellence.
 
 ### Manageability checklist
 
