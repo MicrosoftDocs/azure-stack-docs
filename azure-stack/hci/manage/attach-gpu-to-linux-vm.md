@@ -4,12 +4,12 @@ description: How to use a GPU with AI workloads running in an Ubuntu Linux VM on
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 03/23/2020
+ms.date: 03/24/2020
 ---
 
 # Attaching a GPU to an Ubuntu Linux VM on Azure Stack HCI
 
-> Applies to: Windows Server 2019
+> Applies to: Azure Stack HCI, Windows Server 2019
 
 This topic provides step-by-step instructions on how to install and configure an NVIDIA graphics processing unit (GPU) with Azure Stack HCI using Discrete Device Assignment (DDA) technology for an Ubuntu virtual machine (VM).
 This document assumes you have the Azure Stack HCI cluster deployed and VMs installed.
@@ -69,7 +69,7 @@ Choose the server node(s) in your Azure Stack HCI cluster to install NVIDIA GPUs
    > [!NOTE]
    > The Value 33280Mb should suffice for most GPUs, but should be replaced with a value greater than your GPU memory.
 
-5. Connect to the VM and start the Ubuntu OS install. Choose the defaults to install the Ubuntu OS on the VM.
+5. Using Hyper-V Manager, connect to the VM and start the Ubuntu OS install. Choose the defaults to install the Ubuntu OS on the VM.
 
 6. After the installation is complete, use **Hyper-V Manager** to shut down the VM and configure the **Automatic Stop Action** for the VM to shut down the guest operating system as in the screenshot below:
     > [!div class="mx-imgBorder"]
@@ -264,7 +264,7 @@ To prepare for this configuration, review the FAQ contained in the [NVIDIA-Deeps
 
     ![Custom Streams Screenshot](media/attach-gpu-to-linux-vm/custom-streams.png)
 
-11. Download the [test5_config_file_src_infer_azure_iotedge_edited.txt](https://github.com/Azure-Samples/NVIDIA-Deepstream-Azure-IoT-Edge-on-a-NVIDIA-Jetson-Nano/blob/master/DeepstreamOnIoTEdge/modules/NVIDIADeepStreamSDK/configs/test5_config_file_src_infer_azure_iotedge.txt) file and copy it to /var/deepstream/custom_configs
+11. Download the [test5_config_file_src_infer_azure_iotedge_edited.txt](test5_config_file_src_infer_azure_iotedge_edited.txt) file and copy it to /var/deepstream/custom_configs
 
 12. Navigate to the Azure Portal. Select **IoT Hub Provisioned**, click on **Automatic Device Management**, then click on **IoT Edge**:
 
