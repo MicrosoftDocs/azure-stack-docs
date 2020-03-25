@@ -35,7 +35,7 @@ After you have completed the installation of Windows Admin Center, you can add a
     > [!div class="mx-imgBorder"]
     > ![Choose Connection Type Screenshot](media/chooseconnectiontype.png)
 
-3. Type the name of the cluster to manage and click **Submit**. The cluster will be added to your connection list on the overview page.
+3. Type the name of the cluster to manage and click **Add**. The cluster will be added to your connection list on the overview page.
 
 ## Monitor performance with the Windows Admin Center dashboard
 
@@ -55,6 +55,8 @@ Use the Performance Monitor tool to view and compare performance counters for Wi
 
 1. Select **Performance Monitor** from the **Tools** menu on the left.
 2. Click **blank workspace** to start a new workspace, or **restore previous** to restore a previous workspace.
+    > [!div class="mx-imgBorder"]
+    > ![Performance Monitor Screenshot](media/performance-monitor.png)
 3. If creating a new workspace, click the **Add counter** button and select one or more source servers to monitor, or select the entire cluster.
 4. Select the object and instance you wish to monitor, as well as the counter and graph type to view dynamic performance information.
 5. Save the workspace by choosing **Save > Save As** from the top menu.
