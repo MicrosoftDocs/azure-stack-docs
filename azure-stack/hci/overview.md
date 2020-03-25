@@ -1,6 +1,5 @@
 ---
 title: Azure Stack HCI solutions overview
-titleSuffix: Azure Stack HCI
 description: An overview of Azure Stack HCI solutions.
 ms.topic: article
 author: jasongerend
@@ -63,7 +62,7 @@ Help keep apps and data secure with shielded VMs, network microsegmentation, and
 You can take advantage of cloud and on-premises working together with a hyperconverged infrastructure platform in a public cloud. Your team can start building cloud skills with built-in integration to Azure infrastructure management services:
 
 - Azure Site Recovery for high availability and disaster recovery as a service (DRaaS).
-- Azure Monitor, a centralized hub to track what's happening across your applications, network, and infrastructure – with advanced analytics powered by AI.
+- Azure Monitor, a centralized hub to track what's happening across your apps, network, and infrastructure – with advanced analytics powered by AI.
 - Cloud Witness, to use Azure as the lightweight tie breaker for cluster quorum.
 - Azure Backup for offsite data protection and to protect against ransomware.
 - Azure Update Management for update assessment and update deployments for Windows VMs running in Azure and on-premises.

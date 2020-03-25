@@ -1,6 +1,6 @@
 ---
 title: Hybrid app design considerations
-description: Learn about considerations when building a hybrid app for the intelligent cloud and intelligent edge, including things like placement, scalability, availability, and resilience.
+description: Learn about considerations when building a hybrid app for the intelligent cloud and intelligent edge, including placement, scalability, availability, and resilience.
 author: BryanLa
 ms.topic: article
 ms.date: 11/05/2019
@@ -15,21 +15,20 @@ ms.lastreviewed: 11/05/2019
 
 # Hybrid app design considerations
 
-Microsoft Azure is the only consistent hybrid cloud. It allows you to reuse your development investments and enables applications that can span global Azure, the sovereign Azure clouds, and Azure Stack, which is an extension of Azure in your datacenter. Applications that span clouds are also referred to as *hybrid applications*.
+Microsoft Azure is the only consistent hybrid cloud. It allows you to reuse your development investments and enables apps that can span global Azure, the sovereign Azure clouds, and Azure Stack, which is an extension of Azure in your datacenter. Apps that span clouds are also referred to as *hybrid apps*.
 
-The [*Azure Application Architecture Guide*](https://docs.microsoft.com/azure/architecture/guide) describes a structured approach for designing applications that are scalable, resilient, and highly available. The considerations described in the [*Azure Application Architecture Guide*](https://docs.microsoft.com/azure/architecture/guide) equally apply to applications that are designed for a single cloud and for applications that span clouds.
+The [*Azure Application Architecture Guide*](https://docs.microsoft.com/azure/architecture/guide) describes a structured approach for designing apps that are scalable, resilient, and highly available. The considerations described in the [*Azure Application Architecture Guide*](https://docs.microsoft.com/azure/architecture/guide) equally apply to apps that are designed for a single cloud and for apps that span clouds.
 
-This article augments the [*Pillars of software quality*](https://docs.microsoft.com/azure/architecture/guide/pillars) discussed in the [*Azure Application*](https://docs.microsoft.com/azure/architecture/guide/) [*Architecture Guide*,](https://docs.microsoft.com/azure/architecture/guide/) focusing specifically on designing hybrid applications. In addition, we add a *placement* pillar as hybrid applications are not exclusive to one cloud or one on-premises datacenter.
+This article augments the [*Pillars of software quality*](https://docs.microsoft.com/azure/architecture/guide/pillars) discussed in the [*Azure Application*](https://docs.microsoft.com/azure/architecture/guide/) [*Architecture Guide*,](https://docs.microsoft.com/azure/architecture/guide/) focusing specifically on designing hybrid apps. In addition, we add a *placement* pillar as hybrid apps aren'tt exclusive to one cloud or one on-premises datacenter.
 
-Hybrid scenarios vary greatly with the resources that are available for development, and span considerations such as geography, security, Internet access, and other considerations. Although this guide cannot enumerate your specific considerations, it can provide some key guidelines and best practices for you to follow. Successfully designing, configuring, deploying, and maintaining a hybrid application architecture involves many design considerations that might not be inherently known to you.
+Hybrid scenarios vary greatly with the resources that are available for development, and span considerations such as geography, security, internet access, and other considerations. Although this guide can't enumerate your specific considerations, it can provide some key guidelines and best practices for you to follow. Successfully designing, configuring, deploying, and maintaining a hybrid app architecture involves many design considerations that might not be inherently known to you.
 
-This document aims to aggregate the possible questions that might arise when implementing hybrid applications and provides considerations (these pillars) and best practices to work with them. By addressing these questions during the design phase, you'll avoid the issues they could cause in production.
+This document aims to aggregate the possible questions that might arise when implementing hybrid apps and provides considerations (these pillars) and best practices to work with them. By addressing these questions during the design phase, you'll avoid the issues they could cause in production.
 
-Essentially, these are questions you need to think about before creating a hybrid application. To get started, you need to do the following:
+Essentially, these are questions you need to think about before creating a hybrid app. To get started, you need to do the following:
 
--   Identify and evaluate the application components.
-
--   Evaluate application components against the pillars.
+- Identify and evaluate the app components.
+- Evaluate app components against the pillars.
 
 ## Evaluate the application components
 
