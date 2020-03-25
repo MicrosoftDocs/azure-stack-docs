@@ -22,14 +22,13 @@ Choose the server node(s) in your Azure Stack HCI cluster to install NVIDIA GPUs
 2. Open **Device Manager** and navigate to the *other devices* section. You should see a device listed as "PCI Express Graphics Processing Unit."
 3. Right-click on "PCI Express Graphics Processing Unit" to bring up the **Properties** page. Click **Details**. From the dropdown under **Property**, select "Location paths."
 4. Note the value with string PCIRoot as highlighted in the screen shot below. Right-click on **Value** and copy/save it.
-    ![Location Path Screenshot](media/attach-gpu-to-linux-vm/pciroot.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/pciroot.png" alt-text="Location Path Screenshot":::
 5. Open Windows PowerShell with elevated privileges and execute the `Dismount-VMHostAssignableDevice` cmdlet to dismount the GPU device for DDA to VM. Replace the *LocationPath* value with the value for your device obtained in step 4.
     ```PowerShell
     Dismount-VMHostAssignableDevice -LocationPath "PCIROOT(16)#PCI(0000)#PCI(0000)" -force
     ```
 6. Confirm the device is listed under system devices in **Device Manager** as Dismounted.
-    > [!div class="mx-imgBorder"]
-    > ![Dismounted Device Screenshot](media/attach-gpu-to-linux-vm/dismounted.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/dismounted.png" alt-text="Dismounted Device Screenshot":::
 
 ## Create and configure an Ubuntu virtual machine
 
@@ -51,7 +50,7 @@ Choose the server node(s) in your Azure Stack HCI cluster to install NVIDIA GPUs
     ```
 
     Successful assignment of the GPU to the VM will show the output below:
-    ![Assign GPU Screenshot](media/attach-gpu-to-linux-vm/assign-gpu.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/assign-gpu.png" alt-text="Assign GPU Screenshot":::
 
     Configure additional values following GPU documentation [here](/windows-server/virtualization/hyper-v/deploy/deploying-graphics-devices-using-dda):
 
@@ -72,8 +71,7 @@ Choose the server node(s) in your Azure Stack HCI cluster to install NVIDIA GPUs
 5. Using Hyper-V Manager, connect to the VM and start the Ubuntu OS install. Choose the defaults to install the Ubuntu OS on the VM.
 
 6. After the installation is complete, use **Hyper-V Manager** to shut down the VM and configure the **Automatic Stop Action** for the VM to shut down the guest operating system as in the screenshot below:
-    > [!div class="mx-imgBorder"]
-    > ![Guest OS Shutdown Screenshot](media/attach-gpu-to-linux-vm/guest-shutdown.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/guest-shutdown.png" alt-text="Guest OS Shutdown Screenshot":::
 
 7. Log in to Ubuntu and open the terminal to install SSH:
 
@@ -91,10 +89,10 @@ Choose the server node(s) in your Azure Stack HCI cluster to install NVIDIA GPUs
     > If The NVIDIA GPU is not seen as "3D controller," please do not proceed further. Please ensure that the steps above are followed before proceeding.
 
 11. Within the VM, search for and open **Software & Updates**. Navigate to **Additional Drivers**, then choose the latest NVIDIA GPU drivers listed. Complete the driver install by clicking the **Apply Changes** button.
-    ![Driver Install Screenshot](media/attach-gpu-to-linux-vm/driver-install.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/driver-install.png" alt-text="Driver Install Screenshot":::
 
 12. Restart the Ubuntu VM after the driver installation completes. Once the VM starts, connect through the SSH client and issue the command **nvidia-smi** to verify that the NVIDIA GPU driver installation completed successfully. The output should be similar to the screenshot below:
-    ![nvidia-smi screenshot](media/attach-gpu-to-linux-vm/nvidia-smi.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/nvidia-smi.png" alt-text="nvidia-smi screenshot":::
 
 13. Using the SSH client, set up the repository and install the Docker CE Engine:
 
@@ -189,7 +187,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     ```
 
     Successful installation will look like the output in the screenshot below:
-    ![Successful Docker Install Screenshot](media/attach-gpu-to-linux-vm/docker.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/docker.png" alt-text="Successful Docker Install Screenshot":::
 
 5. Following the instructions here, proceed to install Azure IoT Edge, skipping the runtime install:
 
@@ -218,7 +216,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
 
     Find the provisioning configurations of the file and uncomment the "Manual provisioning configuration" section. Update the value of device_connection_string with the connection string from your IoT Edge device. Make sure any other provisioning sections are commented out. Make sure that the provisioning: line has no preceding whitespace and that nested items are indented by two spaces:
 
-    ![Manual Provisioning Configuration Screenshot](media/attach-gpu-to-linux-vm/manual-provisioning.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/manual-provisioning.png" alt-text="Manual Provisioning Configuration Screenshot":::
 
     To paste clipboard contents into Nano, shift+right click or press shift+insert. Save and close the file (Ctrl + X, Y, Enter).
 
@@ -262,33 +260,33 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
 
     The contents of the directory /var/deepstream/custom_streams should be similar to the screenshot below:
 
-    ![Custom Streams Screenshot](media/attach-gpu-to-linux-vm/custom-streams.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/custom-streams.png" alt-text="Custom Streams Screenshot":::
 
 11. Download the [test5_config_file_src_infer_azure_iotedge_edited.txt](test5_config_file_src_infer_azure_iotedge_edited.txt) file and copy it to /var/deepstream/custom_configs
 
 12. Navigate to the Azure Portal. Select **IoT Hub Provisioned**, click on **Automatic Device Management**, then click on **IoT Edge**:
 
-    ![Automatic Device Management Screenshot](media/attach-gpu-to-linux-vm/iot-edge.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/iot-edge.png" alt-text="Automatic Device Management Screenshot":::
 
 13. In the right-hand pane, select the device identity whose device connection string was used above. Click on set modules:
 
-    ![Set Modules Screenshot](media/attach-gpu-to-linux-vm/set-modules.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/set-modules.png" alt-text="Set Modules Screenshot":::
 
 14. Under IoT Edge Modules, click and choose Marketplace Module:
 
-    ![Marketplace Module Screenshot](media/attach-gpu-to-linux-vm/marketplace-module.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/marketplace-module.png" alt-text="Marketplace Module Screenshot":::
 
 15. Search for NVIDIA and choose DeepStream SDK like displayed below:
 
-    ![DeepStream SDK Screenshot](media/attach-gpu-to-linux-vm/deepstream.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/deepstream.png" alt-text="DeepStream SDK Screenshot":::
 
 16. Ensure NvidiaDeepStreamSDK module is listed under IoT Edge Modules:
 
-    ![IoT Edge Modules Screenshot](media/attach-gpu-to-linux-vm/edge-modules.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/edge-modules.png" alt-text="IoT Edge Modules Screenshot":::
 
 17. Click on The "NVIDIADeepStreamSDK" module and choose "Container Create Options." The default configuration is shown here:
 
-    ![Container Create Options Screenshot](media/attach-gpu-to-linux-vm/container-create-options.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/container-create-options.png" alt-text="Container Create Options Screenshot":::
 
     Replace the configuration above with the configuration below:
 
@@ -326,7 +324,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
 
 18. Click **Review and Create**, and on the next page click **Create**. You should now see the three modules listed below for your IoT Edge device in the Azure Portal:
 
-    ![Modules and IoT Edge Hub Connections Screenshot](media/attach-gpu-to-linux-vm/edge-hub-connections.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/edge-hub-connections.png" alt-text="Modules and IoT Edge Hub Connections Screenshot":::
 
 19. Connect to the Ubuntu VM using the SSH client and verify that the correct modules are running:
 
@@ -334,13 +332,13 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     sudo iotedge list
     ```
 
-    ![iotedge list screenshot](media/attach-gpu-to-linux-vm/verify-modules-sudo.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify-modules-sudo.png" alt-text="iotedge list screenshot":::
 
     ```shell
     nvidia-smi
     ```
 
-    ![nvidia-smi screenshot](media/attach-gpu-to-linux-vm/verify-modules-nvidia-smi.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify-modules-nvidia-smi.png" alt-text="nvidia-smi screenshot":::
 
     > [!NOTE]
     > It will take a few minutes for the NvidiaDeepstream Container to be downloaded. You can validate the download using the command "journalctl -u iotedge --no-pager --no-full" to look at the iotedge daemon logs.
@@ -351,19 +349,19 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     sudo iotedge list
     ```
 
-    ![iotedge list screenshot](media/attach-gpu-to-linux-vm/verify1.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify1.png" alt-text="iotedge list screenshot":::
 
     ```shell
     sudo iotedge logs -f NVIDIADeepStreamSDK
     ```
 
-    ![iotedge list screenshot](media/attach-gpu-to-linux-vm/verify2.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify2.png" alt-text="iotedge list screenshot":::
 
     ```shell
     nvidia-smi
     ```
 
-    ![iotedge list screenshot](media/attach-gpu-to-linux-vm/verify3.png)
+    :::image type="content" source="media/attach-gpu-to-linux-vm/verify3.png" alt-text="iotedge list screenshot":::
 
 21. Confirm the TCP/IP address for your Ubuntu VM using the **ifconfig** command and look for the TCP/IP address next to the **eth0** interface.
 
