@@ -1,6 +1,5 @@
 ---
 title: Hybrid app design considerations
-titleSuffix: Azure Stack
 description: Learn about considerations when building a hybrid app for the intelligent cloud and intelligent edge, including things like placement, scalability, availability, and resilience.
 author: BryanLa
 ms.topic: article
