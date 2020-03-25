@@ -119,25 +119,23 @@ Some app components can scale out linearly, while others have scaling dependenci
 
 ### Scalability checklist
 
-**Ascertain scaling thresholds.** To handle the various dependencies in your application, determine the extent to which application components in different clouds can scale independently of each other, while still meeting the requirements to run the application. Hybrid applications often need to scale particular areas in the application to handle a feature as it interacts and affects the rest of the application. For example, exceeding a number of front-end instances may require scaling the back-end.
+**Ascertain scaling thresholds.** To handle the various dependencies in your app, determine the extent to which app components in different clouds can scale independently of each other, while still meeting the requirements to run the app. Hybrid app often need to scale particular areas in the app to handle a feature as it interacts and affects the rest of the app. For example, exceeding a number of front-end instances may require scaling the back-end.
 
-**Define scale schedules.** Most applications have busy periods, so you need to aggregate their peak times into schedules to coordinate optimal scaling.
+**Define scale schedules.** Most apps have busy periods, so you need to aggregate their peak times into schedules to coordinate optimal scaling.
 
-**Use a centralized monitoring system.** Platform monitoring capabilities can provide autoscaling, but hybrid applications need a centralized monitoring system that aggregates system health and load. A centralized monitoring system can initiate scaling a resource in one location and scaling a depending on resource in another location. Additionally, a central monitoring system can track which clouds autoscale resources and which clouds don't.
+**Use a centralized monitoring system.** Platform monitoring capabilities can provide autoscaling, but hybrid apps need a centralized monitoring system that aggregates system health and load. A centralized monitoring system can initiate scaling a resource in one location and scaling depending on resource in another location. Additionally, a central monitoring system can track which clouds autoscale resources and which clouds don't.
 
-**Leverage autoscaling capabilities (as available).** If autoscaling capabilities are part of your architecture, you implement autoscaling by setting thresholds that define when an application component needs to be scaled up, out, down, or in. An example of autoscaling is a client connection that is autoscaled in one cloud to handle increased capacity, but causes other dependencies of the application, spread across different clouds, to also be scaled. The autoscaling capabilities of these dependent components must be ascertained.
+**Leverage autoscaling capabilities (as available).** If autoscaling capabilities are part of your architecture, you implement autoscaling by setting thresholds that define when an app component needs to be scaled up, out, down, or in. An example of autoscaling is a client connection that's autoscaled in one cloud to handle increased capacity, but causes other dependencies of the app, spread across different clouds, to also be scaled. The autoscaling capabilities of these dependent components must be ascertained.
 
-If autoscaling is not available, consider implementing scripts and other resources to accommodate manual scaling, triggered by thresholds in the centralized monitoring system.
+If autoscaling isn't available, consider implementing scripts and other resources to accommodate manual scaling, triggered by thresholds in the centralized monitoring system.
 
-**Determine expected load by location.** Hybrid applications that handle client requests might primarily rely on a single location. When the load of client requests exceeds a threshold,
-
-additional resources can be added in a different location to distribute the load of inbound requests. Make sure that the client connections can handle the increased loads and also determine any automated procedures for the client connections to handle the load.
+**Determine expected load by location.** Hybrid apps that handle client requests might primarily rely on a single location. When the load of client requests exceeds a threshold, additional resources can be added in a different location to distribute the load of inbound requests. Make sure that the client connections can handle the increased loads and also determine any automated procedures for the client connections to handle the load.
 
 ## Availability
 
-Availability is the time that a system is functional and working. Availability is measured as a percentage of uptime. Application errors, infrastructure problems, and system load can all reduce availability.
+Availability is the time that a system is functional and working. Availability is measured as a percentage of uptime. App errors, infrastructure problems, and system load can all reduce availability.
 
-For the core discussion of this pillar, see [*Availability*](/azure/architecture/framework/) in Pillars of software quality.
+For the core discussion of this pillar, see [*Availability*](/azure/architecture/framework/) in the five pillars of architecture excellence.
 
 ### Availability checklist
 
