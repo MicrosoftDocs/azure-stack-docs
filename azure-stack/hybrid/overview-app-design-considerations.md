@@ -183,23 +183,23 @@ For the core discussion of this pillar, see [*DevOps*](/azure/architecture/frame
 
 ### Manageability checklist
 
-**Implement monitoring.** Use a centralized monitoring system of application components spread across clouds to provide an aggregated view of their health and performance. This system includes monitoring both the application components and related platform capabilities.
+**Implement monitoring.** Use a centralized monitoring system of app components spread across clouds to provide an aggregated view of their health and performance. This system includes monitoring both the app components and related platform capabilities.
 
-Determine the parts of the application that require monitoring.
+Determine the parts of the app that require monitoring.
 
-**Coordinate policies.** Each location that a hybrid application spans can have its own policy that covers allowed resource types, naming conventions, tags, and other criteria.
+**Coordinate policies.** Each location that a hybrid app spans can have its own policy that covers allowed resource types, naming conventions, tags, and other criteria.
 
-**Define and use roles.** As a database administrator, you need to determine the permissions required for different personas (like an application owner, a database administrator, and an end user) that need to access application resources. These permissions need to be configured on the resources and inside the application. A role-based access control (RBAC) system allows you to set these permissions on the application resources. These access rights are challenging when all resources are deployed in a single cloud but require even more attention when the resources are spread across clouds. Permissions on resources set in one cloud do not apply to resources set in another cloud.
+**Define and use roles.** As a database admin, you need to determine the permissions required for different personas (like an app owner, a database admin, and an end user) that need to access app resources. These permissions need to be configured on the resources and inside the app. A role-based access control (RBAC) system allows you to set these permissions on the app resources. These access rights are challenging when all resources are deployed in a single cloud but require even more attention when the resources are spread across clouds. Permissions on resources set in one cloud don't apply to resources set in another cloud.
 
-**Use CI/CD pipelines.** A Continuous Integration and Continuous Development (CI/CD) pipeline can provide a consistent process for authoring and deploying applications that span across clouds, and to provide quality assurance for their infrastructure and application. This pipeline enables the infrastructure and application to be tested on one cloud and deployed on another cloud. The pipeline even allows you to deploy certain components of your hybrid application to one cloud and other components to another cloud, essentially forming the foundation for hybrid application deployment. A CI/CD system is critical for handling the dependencies application components have for each other during installation, such as the web application needing a connection string to the database.
+**Use CI/CD pipelines.** A Continuous Integration and Continuous Development (CI/CD) pipeline can provide a consistent process for authoring and deploying apps that span across clouds, and to provide quality assurance for their infrastructure and app. This pipeline enables the infrastructure and app to be tested on one cloud and deployed on another cloud. The pipeline even allows you to deploy certain components of your hybrid app to one cloud and other components to another cloud, essentially forming the foundation for hybrid app deployment. A CI/CD system is critical for handling the dependencies app components have for each other during installation, such as the web app needing a connection string to the database.
 
-**Manage the life cycle.** Because resources of a hybrid application can span locations, each single location's life-cycle management capability needs to be aggregated into a single life-cycle management unit. Consider how they are created, updated, and deleted.
+**Manage the life cycle.** Because resources of a hybrid app can span locations, each single location's life-cycle management capability needs to be aggregated into a single life-cycle management unit. Consider how they're created, updated, and deleted.
 
-**Examine troubleshooting strategies.** Troubleshooting a hybrid application involves more application components than the same application that is running in a single cloud. Besides the connectivity between the clouds, the application is running on two platforms instead of one. An important task in troubleshooting hybrid applications is to examine the aggregated health and performance monitoring of the application components.
+**Examine troubleshooting strategies.** Troubleshooting a hybrid app involves more app components than the same app that's running in a single cloud. Besides the connectivity between the clouds, the app is running on two platforms instead of one. An important task in troubleshooting hybrid apps is to examine the aggregated health and performance monitoring of the app components.
 
 ## Security
 
-Security is one of the primary considerations for any cloud application, and it becomes even more critical for hybrid cloud applications.
+Security is one of the primary considerations for any cloud app and it becomes even more critical for hybrid cloud apps.
 
 For the core discussion of this pillar, see [*Security*](https://docs.microsoft.com/azure/architecture/guide/pillars#security) in Pillars of software quality.
 
