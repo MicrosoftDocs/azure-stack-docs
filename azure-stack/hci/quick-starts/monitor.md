@@ -35,7 +35,9 @@ After you have completed the installation of Windows Admin Center, you can add a
 
 3. Type the name of the cluster to manage and click **Add**. The cluster will be added to your connection list on the overview page.
 
-## Monitor performance with the Windows Admin Center dashboard
+4. Under **All Connections**, click the name of the cluster you just added. Windows Admin Center will start **Cluster Manager** and take you directly to the Windows Admin Center dashboard for that cluster.
+
+## Monitor cluster performance with the Windows Admin Center dashboard
 
 The Windows Admin Center dashboard provides alerts and health information about servers, drives, and volumes, as well as details about CPU, memory, and storage usage.
 
@@ -45,7 +47,51 @@ You can scroll down to view cluster performance information such as IOPS and lat
 
 :::image type="content" source="media/dashboard-performance.png" alt-text="Dashboard Performance Screen Shot":::
 
-## Using the Performance Monitor tool
+## Monitor performance of individual components
+
+The **Tools** menu to the left of the dashboard allows you to drill down on any component of the cluster to view summaries and inventories of virtual machines, servers, volumes, and drives.
+
+### Virtual machines
+
+To view a summary of virtual machines that are running on the cluster, click **Virtual machines** from the **Tools** menu at the left.
+
+:::image type="content" source="media/vms-summary.png" alt-text="Virtual Machine Summary":::
+
+For a complete inventory of virtual machines running on the cluster along with their state, host server, CPU usage, memory pressure, memory demand, assigned memory, and uptime, click **Inventory** at the top of the page.
+
+:::image type="content" source="media/vms-inventory.png" alt-text="Virtual Machine Inventory":::
+
+### Servers
+
+To view a summary of the servers in the cluster, click **Servers** from the **Tools** menu at the left.
+
+:::image type="content" source="media/servers-summary.png" alt-text="Servers Summary":::
+
+For a complete inventory of servers in the cluster including their status, uptime, manufacturer, model, and serial number, click **Inventory** at the top of the page.
+
+:::image type="content" source="media/servers-inventory.png" alt-text="Servers Inventory":::
+
+### Volumes
+
+To view a summary of volumes on the cluster, click **Volumes** from the **Tools** menu at the left.
+
+:::image type="content" source="media/volumes-summary.png" alt-text="Volumes Summary":::
+
+For a complete inventory of volumes on the cluster including their status, file system, resiliency, size, storage usage, and IOPS, click **Inventory** at the top of the page.
+
+:::image type="content" source="media/volumes-inventory.png" alt-text="Volumes Inventory":::
+
+### Drives
+
+To view a summary of drives in the cluster, click **Drives** from the **Tools** menu at the left.
+
+:::image type="content" source="media/drives-summary.png" alt-text="Drives Summary":::
+
+For a complete inventory of drives in the cluster along with their serial number, status, model, size, type, use, location, server, and capacity, click **Inventory** at the top of the page.
+
+:::image type="content" source="media/drives-inventory.png" alt-text="Drives Inventory":::
+
+## Add counters with the Performance Monitor tool
 
 Use the Performance Monitor tool to view and compare performance counters for Windows, apps, or devices in real-time.
 
