@@ -4,7 +4,7 @@ description: Quickly connect to an existing cluster using Windows Admin Center t
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 03/25/2020
+ms.date: 03/26/2020
 ---
 
 # Quickstart: Monitor Azure Stack HCI clusters with Windows Admin Center
@@ -27,13 +27,11 @@ After you have completed the installation of Windows Admin Center, you can add a
 
 1. Click **+ Add** under **All Connections**.
 
-    > [!div class="mx-imgBorder"]
-    > ![Add Cluster Screenshot](media/addcluster.png)
+    :::image type="content" source="media/addcluster.png" alt-text="[Add Cluster Screenshot":::
 
 2. Choose to add a Windows Server cluster:
     
-    > [!div class="mx-imgBorder"]
-    > ![Choose Connection Type Screenshot](media/chooseconnectiontype.png)
+    :::image type="content" source="media/chooseconnectiontype.png" alt-text="Choose Connection Type Screenshot":::
 
 3. Type the name of the cluster to manage and click **Add**. The cluster will be added to your connection list on the overview page.
 
@@ -41,13 +39,11 @@ After you have completed the installation of Windows Admin Center, you can add a
 
 The Windows Admin Center dashboard provides alerts and health information about servers, drives, and volumes, as well as details about CPU, memory, and storage usage.
 
-> [!div class="mx-imgBorder"]
-> ![Dashboard Alerts Screenshot](media/dashboard-alerts.png)
+:::image type="content" source="media/dashboard-alerts.png" alt-text="Dashboard Alerts Screenshot":::
 
 You can scroll down to view cluster performance information such as IOPS and latency by hour, day, week, month, or year.
 
-> [!div class="mx-imgBorder"]
-> ![Dashboard Performance Screen Shot](media/dashboard-performance.png)
+:::image type="content" source="media/dashboard-performance.png" alt-text="Dashboard Performance Screen Shot":::
 
 ## Using the Performance Monitor tool
 
@@ -55,12 +51,10 @@ Use the Performance Monitor tool to view and compare performance counters for Wi
 
 1. Select **Performance Monitor** from the **Tools** menu on the left.
 2. Click **blank workspace** to start a new workspace, or **restore previous** to restore a previous workspace.
-    > [!div class="mx-imgBorder"]
-    > ![Performance Monitor Screenshot](media/performance-monitor.png)
+    :::image type="content" source="media/performance-monitor.png" alt-text="Performance Monitor Screenshot":::
 3. If creating a new workspace, click the **Add counter** button and select one or more source servers to monitor, or select the entire cluster.
 4. Select the object and instance you wish to monitor, as well as the counter and graph type to view dynamic performance information.
-    > [!div class="mx-imgBorder"]
-    > ![Example Counter Screenshot](media/example-counter.png)
+    :::image type="content" source="media/example-counter.png" alt-text="Example Counter Screenshot":::
 5. Save the workspace by choosing **Save > Save As** from the top menu.
 
 ## Next steps
