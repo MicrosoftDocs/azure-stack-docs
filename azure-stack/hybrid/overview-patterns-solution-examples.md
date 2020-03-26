@@ -37,7 +37,7 @@ Design patterns cull generalized repeatable design guidance, from real world cus
 There are two types of pattern articles:
 
 - Single pattern: provides design guidance for a single general-purpose scenario.
-- Multi-pattern: provides design guidance where the application of multiple patterns is used. This is frequently required for solving more complex scenarios or industry-specific problems.
+- Multi-pattern: provides design guidance where the application of multiple patterns is used. This pattern is frequently required for solving more complex scenarios or industry-specific problems.
 
 ## Solution deployment guides
 
