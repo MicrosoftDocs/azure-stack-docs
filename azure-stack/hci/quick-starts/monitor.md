@@ -111,7 +111,7 @@ Use the Performance Monitor tool to view and compare performance counters for Wi
 
 ## Use Azure Monitor for monitoring and alerts
 
-You can also use [Azure Monitor](https://docs.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/azure-monitor) (requires an Azure subscription) to collect events and performance counters for analysis and reporting, take action when a particular condition is detected, and receive notifications via email. Click **Azure Monitor** from the **Tools** menu to connect directly to Azure from Windows Admin Center. 
+You can also use [Azure Monitor](/windows-server/manage/windows-admin-center/azure/azure-monitor) (requires an Azure subscription) to collect events and performance counters for analysis and reporting, take action when a particular condition is detected, and receive notifications via email. Click **Azure Monitor** from the **Tools** menu to connect directly to Azure from Windows Admin Center. 
 
 ## Collect diagnostics information
 
