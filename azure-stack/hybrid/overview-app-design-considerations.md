@@ -1,6 +1,6 @@
 ---
 title: Hybrid app design considerations
-description: Learn about considerations when building a hybrid app for the intelligent cloud and intelligent edge, including placement, scalability, availability, and resilience.
+description: Learn about design considerations when building a hybrid app for the intelligent cloud and intelligent edge, including placement, scalability, availability, and resilience.
 author: BryanLa
 ms.topic: article
 ms.date: 11/05/2019
@@ -8,8 +8,8 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack user, I want to research design considerations to know before building a hybrid app so I don't encounter problems forcing me to revisit my design.
+# Keyword: azure stack hybrid app design
 
 ---
 
@@ -201,34 +201,34 @@ Determine the parts of the app that require monitoring.
 
 Security is one of the primary considerations for any cloud app and it becomes even more critical for hybrid cloud apps.
 
-For the core discussion of this pillar, see [*Security*](https://docs.microsoft.com/azure/architecture/guide/pillars#security) in Pillars of software quality.
+For the core discussion of this pillar, see [*Security*](https://docs.microsoft.com/azure/architecture/guide/pillars#security) in the five pillars of architecture excellence.
 
 ### Security checklist
 
-**Assume breach.** If one part of the application is compromised, ensure there are solutions in place to minimize the spread of the breach, not only within the same location but also across locations.
+**Assume breach.** If one part of the app is compromised, ensure there are solutions in place to minimize the spread of the breach, not only within the same location but also across locations.
 
-**Monitor allowed network access.** Determine the network access policies for the application, such as only accessing the application from a specific subnet and only allow the minimum ports and protocols between the components required for the application to function properly.
+**Monitor allowed network access.** Determine the network access policies for the app, such as only accessing the app from a specific subnet and only allow the minimum ports and protocols between the components required for the app to function properly.
 
-**Employ robust authentication.** A robust authentication scheme is critical for the security of your application. Consider using a federated identity provider that provides single sign-on capabilities and employs one or more of the following schemes: username and password sign-on, public and private keys, two-factor or multi-factor authentication, and trusted security groups. Determine the appropriate resources to store sensitive data and other secrets for application authentication in addition to certificate types and their requirements.
+**Employ robust authentication.** A robust authentication scheme is critical for the security of your app. Consider using a federated identity provider that provides single sign-on capabilities and employs one or more of the following schemes: username and password sign-on, public and private keys, two-factor or multi-factor authentication, and trusted security groups. Determine the appropriate resources to store sensitive data and other secrets for app authentication in addition to certificate types and their requirements.
 
-**Use encryption.** Identify which areas of the application use encryption, such as for data storage or client communication and access.
+**Use encryption.** Identify which areas of the app use encryption, such as for data storage or client communication and access.
 
 **Use secure channels.** A secure channel across the clouds is critical for providing security and authentication checks, real-time protection, quarantine, and other services across clouds.
 
-**Define and use roles.** Implement roles for resource configurations and single-identity access across clouds. Determine the role-based access control (RBAC) requirements for the application and its platform resources.
+**Define and use roles.** Implement roles for resource configurations and single-identity access across clouds. Determine the role-based access control (RBAC) requirements for the app and its platform resources.
 
-**Audit your system.** System monitoring can log and aggregate data from both the application components and the related cloud platform operations.
+**Audit your system.** System monitoring can log and aggregate data from both the app components and the related cloud platform operations.
 
 ## Summary
 
-This article provides a checklist of items that are important to consider during the authoring and designing of your hybrid applications. Reviewing these pillars before you deploy your application prevents you from running into these questions in production outages and potentially requiring you to revisit your design.
+This article provides a checklist of items that are important to consider during the authoring and designing of your hybrid apps. Reviewing these pillars before you deploy your app prevents you from running into these questions in production outages and potentially requiring you to revisit your design.
 
-It can seem like a time-consuming task beforehand, but you easily get your return on investment if you design your application based on these pillars.
+It can seem like a time-consuming task beforehand, but you easily get your return on investment if you design your app based on these pillars.
 
 ## Next steps
 
 For more information, see the following resources:
 
--   [Hybrid cloud](https://azure.microsoft.com/overview/hybrid-cloud/)
--   [Hybrid cloud applications](https://azure.microsoft.com/solutions/hybrid-cloud-app/)
--   [Develop Azure Resource Manager templates for cloud consistency](https://aka.ms/consistency)
+- [Hybrid cloud](https://azure.microsoft.com/overview/hybrid-cloud/)
+- [Hybrid cloud applications](https://azure.microsoft.com/solutions/hybrid-cloud-app/)
+- [Develop Azure Resource Manager templates for cloud consistency](https://aka.ms/consistency)
