@@ -19,13 +19,13 @@ Microsoft Azure is the only consistent hybrid cloud. It allows you to reuse your
 
 The [*Azure Application Architecture Guide*](https://docs.microsoft.com/azure/architecture/guide) describes a structured approach for designing apps that are scalable, resilient, and highly available. The considerations described in the [*Azure Application Architecture Guide*](https://docs.microsoft.com/azure/architecture/guide) equally apply to apps that are designed for a single cloud and for apps that span clouds.
 
-This article augments the [*Pillars of software quality*](https://docs.microsoft.com/azure/architecture/guide/pillars) discussed in the [*Azure Application*](https://docs.microsoft.com/azure/architecture/guide/) [*Architecture Guide*,](https://docs.microsoft.com/azure/architecture/guide/) focusing specifically on designing hybrid apps. In addition, we add a *placement* pillar as hybrid apps aren'tt exclusive to one cloud or one on-premises datacenter.
+This article augments the [*Pillars of software quality*](https://docs.microsoft.com/azure/architecture/guide/pillars) discussed in the [*Azure Application*](https://docs.microsoft.com/azure/architecture/guide/) [*Architecture Guide*,](https://docs.microsoft.com/azure/architecture/guide/) focusing specifically on designing hybrid apps. In addition, we add a *placement* pillar as hybrid apps aren't exclusive to one cloud or one on-premises datacenter.
 
 Hybrid scenarios vary greatly with the resources that are available for development, and span considerations such as geography, security, internet access, and other considerations. Although this guide can't enumerate your specific considerations, it can provide some key guidelines and best practices for you to follow. Successfully designing, configuring, deploying, and maintaining a hybrid app architecture involves many design considerations that might not be inherently known to you.
 
 This document aims to aggregate the possible questions that might arise when implementing hybrid apps and provides considerations (these pillars) and best practices to work with them. By addressing these questions during the design phase, you'll avoid the issues they could cause in production.
 
-Essentially, these are questions you need to think about before creating a hybrid app. To get started, you need to do the following:
+Essentially, these are questions you need to think about before creating a hybrid app. To get started, you need to do the following things:
 
 - Identify and evaluate the app components.
 - Evaluate app components against the pillars.
@@ -34,12 +34,12 @@ Essentially, these are questions you need to think about before creating a hybri
 
 Each component of an app has its own specific role within the larger app and should be reviewed with all design considerations. Each component's requirements and features should map to these considerations to help determine the application architecture.
 
-Decompose your app into its components by studying your app's architecture and determining what it consists of. Components can also include other apps that your app interacts with. As you identify the components, evaluate your intended hybrid operations according to their characteristics, like the following:
+Decompose your app into its components by studying your app's architecture and determining what it consists of. Components can also include other apps that your app interacts with. As you identify the components, evaluate your intended hybrid operations according to their characteristics by asking these questions:
 
 - What is the purpose of the component?
 - What are the interdependencies between the components?
 
-For example, an app can have a front-end and back-end defined as two components. In a hybrid scenario, the front end is in one cloud and the back-end is in the other. The app provides communication channels between the front-end and the user, and also between the front-end and the back-end.
+For example, an app can have a front end and back end defined as two components. In a hybrid scenario, the front end is in one cloud and the back end is in the other. The app provides communication channels between the front end and the user, and also between the front end and the back end.
 
 An app component is defined by many forms and scenarios. The most important task is identifying them and their cloud or on-premises location.
 
@@ -50,7 +50,7 @@ The common app components to include in your inventory are listed in Table 1.
 
 | **Component** | **Hybrid application guidance** |
 | ---- | ---- |
-| Client connections | Your app (on any device) can access users in various ways, from a single-entry point, including the following:<br>-   A client-server model that requires the user to have a client installed to work with the app. A server-based app that's accessed from a browser.<br>-   Client connections can include notifications when the connection is broken or alerts when roaming charges may apply. |
+| Client connections | Your app (on any device) can access users in various ways, from a single-entry point, including the following ways:<br>-   A client-server model that requires the user to have a client installed to work with the app. A server-based app that's accessed from a browser.<br>-   Client connections can include notifications when the connection is broken or alerts when roaming charges may apply. |
 | Authentication  | Authentication can be required for a user connecting to the app, or from one component connecting to another. |
 | APIs  | You can provide developers with programmatic access to your app with API sets and class libraries and provide a connection interface based on internet standards. You can also use APIs to decompose an app into independently operating logical units. |
 | Services  | You can employ succinct services to provide the features for an app. A service can be the engine that the app runs on. |
@@ -81,7 +81,7 @@ A hybrid app inherently has a placement consideration, like for the datacenter.
 
 Placement is the important task of positioning components so that they can best service a hybrid app. By definition, hybrid apps span locations, like from on-premises to the cloud and among different clouds. You can place components of the app on clouds in two ways:
 
-- **Vertical hybrid appns**  
+- **Vertical hybrid apps**  
     App components are distributed across locations. Each individual component can have multiple instances located only in a single location.
 
 - **Horizontal hybrid apps**  
@@ -119,7 +119,7 @@ Some app components can scale out linearly, while others have scaling dependenci
 
 ### Scalability checklist
 
-**Ascertain scaling thresholds.** To handle the various dependencies in your app, determine the extent to which app components in different clouds can scale independently of each other, while still meeting the requirements to run the app. Hybrid app often need to scale particular areas in the app to handle a feature as it interacts and affects the rest of the app. For example, exceeding a number of front-end instances may require scaling the back-end.
+**Ascertain scaling thresholds.** To handle the various dependencies in your app, determine the extent to which app components in different clouds can scale independently of each other, while still meeting the requirements to run the app. Hybrid apps often need to scale particular areas in the app to handle a feature as it interacts and affects the rest of the app. For example, exceeding a number of front-end instances may require scaling the back end.
 
 **Define scale schedules.** Most apps have busy periods, so you need to aggregate their peak times into schedules to coordinate optimal scaling.
 
