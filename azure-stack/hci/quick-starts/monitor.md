@@ -91,6 +91,12 @@ For a complete inventory of drives in the cluster along with their serial number
 
 :::image type="content" source="media/drives-inventory.png" alt-text="Drives Inventory":::
 
+### Virtual switches
+
+To view the settings for a virtual switch in the cluster, click **Virtual switches** from the **Tools** menu at the left, then click the name of the virtual switch you want to display the settings for. Windows Admin Center will display the network adapters associated with the virtual switch, including their IP addresses, connection state, link speed, and MAC address.
+
+:::image type="content" source="media/virtual-switch-settings.png" alt-text="Virtual Switch Settings":::
+
 ## Add counters with the Performance Monitor tool
 
 Use the Performance Monitor tool to view and compare performance counters for Windows, apps, or devices in real-time.
@@ -102,6 +108,14 @@ Use the Performance Monitor tool to view and compare performance counters for Wi
 4. Select the object and instance you wish to monitor, as well as the counter and graph type to view dynamic performance information.
     :::image type="content" source="media/example-counter.png" alt-text="Example Counter Screenshot":::
 5. Save the workspace by choosing **Save > Save As** from the top menu.
+
+## Use Azure Monitor for monitoring and alerts
+
+You can also use [Azure Monitor](https://docs.microsoft.com/en-us/windows-server/manage/windows-admin-center/azure/azure-monitor) (requires an Azure subscription) to collect events and performance counters for analysis and reporting, take action when a particular condition is detected, and receive notifications via email. Click **Azure Monitor** from the **Tools** menu to connect directly to Azure from Windows Admin Center. 
+
+## Collect diagnostics information
+
+Select **Diagnostics** from the **Tools** menu to collect information for troubleshooting problems with your cluster. If you call Microsoft Support, they may ask for this information.
 
 ## Next steps
 
