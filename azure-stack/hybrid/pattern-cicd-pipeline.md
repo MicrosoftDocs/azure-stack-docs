@@ -62,7 +62,7 @@ Availability in the context of the DevPattern means being able to recover any st
 
 -   Recovery Point Objective (RPO) indicates how much data you can afford to lose if a disruption in service affects the system.
 
-In practice, RTO, and RPO imply redundancy and backup. On the global Azure cloud, availability is not a question of hardware recovery—that is part of Azure—but rather ensuring you maintain the state of your DevOps systems. On Azure Stack Hub, hardware recovery may be a consideration.
+In practice, RTO, and RPO imply redundancy and backup. On the global Azure cloud, availability isn't a question of hardware recovery—that's part of Azure—but rather ensuring you maintain the state of your DevOps systems. On Azure Stack Hub, hardware recovery may be a consideration.
 
 Another major consideration when designing the system used for deployment automation is access control and the proper management of the rights needed to deploy services to cloud environments. What rights are needed to create, delete, or modify deployments? For example, one set of rights is typically required to create a resource group in Azure and another to deploy services in the resource group.
 
@@ -81,13 +81,13 @@ Use this pattern if:
 
 This pattern isn't recommended:
 
-- If you cannot automate infrastructure, provisioning resources, configuration, identity, and security tasks.
-- If teams do not have access to hybrid cloud resources to implement a Continuous Integration/Continuous Development (CI/CD) approach.
+- If you can't automate infrastructure, provisioning resources, configuration, identity, and security tasks.
+- If teams don't have access to hybrid cloud resources to implement a Continuous Integration/Continuous Development (CI/CD) approach.
 
 ## Next steps
 
 To learn more about topics introduced in this article:
 - See the [Azure DevOps documentation](/azure/devops) to learn more about Azure DevOps and related tools, including Azure Repos, and Azure Pipelines.
-- See the [Azure Stack family of products and solutions](/azure-stack), to learn more about the entire portfolio of products and solutions.
+- See the [Azure Stack family of products and solutions](/azure-stack) to learn more about the entire portfolio of products and solutions.
 
-When you're ready to test the solution example, continue with the [DevOps hybrid CI/CD solution deployment guide](https://aka.ms/hybriddevopsdeploy). The deployment guide provides step-by-step instructions for deploying and testing its components. You learn how to deploy an application to Azure and Azure Stack Hub using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.
+When you're ready to test the solution example, continue with the [DevOps hybrid CI/CD solution deployment guide](https://aka.ms/hybriddevopsdeploy). The deployment guide provides step-by-step instructions for deploying and testing its components. You learn how to deploy an app to Azure and Azure Stack Hub using a hybrid continuous integration/continuous delivery (CI/CD) pipeline.
