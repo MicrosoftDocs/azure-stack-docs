@@ -10,8 +10,11 @@ ms.author: justinha
 ms.reviewer: fiseraci
 ms.lastreviewed: 12/04/2019
 
-#Customer intent: As an Azure AD Administrator, I want to understand how antivirus is kept up to date on Azure Stack Hub.
+# Intent: As an Azure Stack operator, I want to update Windows Defender Antivurus on my Azure Stack so my security is up-to-date.
+# Keyword: update windows defender antivirus azure stack
+
 ---
+
 # Update Windows Defender Antivirus on Azure Stack Hub
 
 [Windows Defender Antivirus](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10) is an antimalware solution that provides security and virus protection. Every Azure Stack Hub infrastructure component (Hyper-V hosts and virtual machines) is protected with Windows Defender Antivirus. For up-to-date protection, you need periodic updates to Windows Defender Antivirus definitions, engine, and platform. How updates are applied depends on your configuration.

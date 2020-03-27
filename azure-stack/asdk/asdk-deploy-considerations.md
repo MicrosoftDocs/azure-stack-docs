@@ -9,8 +9,11 @@ ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 05/13/2019
 
+# Intent: As an ASDK user, I want to know the requirements for properly deploying the ASDK.
+# Keyword: asdk requirements
 
 ---
+
 
 # ASDK requirements and considerations
 

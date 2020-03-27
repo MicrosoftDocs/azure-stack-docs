@@ -5,11 +5,16 @@ author: apwestgarth
 manager: stefsch
 
 ms.topic: article
-ms.date: 02/25/2020
+ms.date: 03/05/2020
 ms.author: anwestg
-ms.reviewer:
+ms.reviewer: anwestg
+ms.lastreviewed: 03/25/2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 # App Service on Azure Stack Hub update 8 release notes
 
 These release notes describe the improvements and fixes in Azure App Service on Azure Stack Hub Update 8 and any known issues. Known issues are divided into issues directly related to the deployment, update process, and issues with the build (post-installation).
@@ -172,7 +177,7 @@ Due to a regression in this release, both App Service databases (appservice_host
             GO  
 
             /********[appservice_hosting] Migration End********/
-    '''
+    ```
 
 1. Migrate logins to contained database users.
 
@@ -221,37 +226,42 @@ Due to a regression in this release, both App Service databases (appservice_host
 
   New workers are unable to acquire the required database connection string.  To remedy this situation, connect to one of your controller instances, for example CN0-VM and run the following PowerShell script:
 
-  ```powershell
- 
+    ```powershell
+    
     [System.Reflection.Assembly]::LoadWithPartialName("Microsoft.Web.Hosting")
-    $siteManager = New-Object Microsoft.Web.Hosting.SiteManager
-    $builder = New-Object System.Data.SqlClient.SqlConnectionStringBuilder -ArgumentList (Get-AppServiceConnectionString -Type Hosting)
-    $conn = New-Object System.Data.SqlClient.SqlConnection -ArgumentList $builder.ToString()
+    $siteManager = New-Object Microsoft.Web.Hosting.SiteManager
+
+    $builder = New-Object System.Data.SqlClient.SqlConnectionStringBuilder -ArgumentList (Get-AppServiceConnectionString -Type Hosting)
+    $conn = New-Object System.Data.SqlClient.SqlConnection -ArgumentList $builder.ToString()
 
     $siteManager.RoleServers | Where-Object {$_.IsWorker} | ForEach-Object {
-        $worker = $_
-        $dbUserName = "WebWorker_" + $worker.Name
+        $worker = $_
+        $dbUserName = "WebWorker_" + $worker.Name
 
-        if (!$siteManager.ConnectionContexts[$dbUserName]) {
-            $dbUserPassword = [Microsoft.Web.Hosting.Common.Security.PasswordHelper]::GenerateDatabasePassword()
+        if (!$siteManager.ConnectionContexts[$dbUserName]) {
+            $dbUserPassword = [Microsoft.Web.Hosting.Common.Security.PasswordHelper]::GenerateDatabasePassword()
+
             $conn.Open()
-            $command = $conn.CreateCommand()
-            $command.CommandText = "CREATE USER [$dbUserName] WITH PASSWORD = '$dbUserPassword'"
+            $command = $conn.CreateCommand()
+            $command.CommandText = "CREATE USER [$dbUserName] WITH PASSWORD = '$dbUserPassword'"
             $command.ExecuteNonQuery()
             $conn.Close()
+            
             $conn.Open()
-
-            $command = $conn.CreateCommand()
-            $command.CommandText = "ALTER ROLE [WebWorkerRole] ADD MEMBER [$dbUserName]"
+            $command = $conn.CreateCommand()
+            $command.CommandText = "ALTER ROLE [WebWorkerRole] ADD MEMBER [$dbUserName]"
             $command.ExecuteNonQuery()
             $conn.Close()
-
-            $builder.Password = $dbUserPassword
-            $builder["User ID"] = $dbUserName
-            $siteManager.ConnectionContexts.Add($dbUserName, $builder.ToString())
-        }
+            
+            $builder.Password = $dbUserPassword
+            $builder["User ID"] = $dbUserName
+            
+            $siteManager.ConnectionContexts.Add($dbUserName, $builder.ToString())
+        }
     }
+
     $siteManager.CommitChanges()
+        
     ```
 
 ### Known issues for Cloud Admins operating Azure App Service on Azure Stack

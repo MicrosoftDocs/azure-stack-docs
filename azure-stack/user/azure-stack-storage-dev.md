@@ -8,7 +8,11 @@ ms.topic: conceptual
 ms.reviewer: xiaofmao
 ms.lastreviewed: 02/27/2019
 
+# Intent: As an Azure Stack user, I want to get started with Azure Stack storage dev tools.
+# Keyword: azure stack storage development
+
 ---
+
 
 # Get started with Azure Stack Hub storage development tools
 

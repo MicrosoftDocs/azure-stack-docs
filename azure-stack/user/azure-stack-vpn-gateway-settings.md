@@ -6,8 +6,13 @@ author: sethmanheim
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: sethm
-ms.lastreviewed: 12/27/2018
+ms.lastreviewed: 12/27/2019
+
+# Intent: As an Azure Stack user, I want to configure my VPN gateway settings so that my VPN gateway works the way I want it to.
+# Keyword: azure stack vpn gateway settings
+
 ---
+
 
 # Configure VPN gateway settings for Azure Stack Hub
 
@@ -150,6 +155,11 @@ Sometimes you need to modify the local network gateway settings; for example, wh
 When you set up a VPN connection in Azure Stack Hub, you must configure the connection at both ends. If you're configuring a VPN connection between Azure Stack Hub and a hardware device such as a switch or router that is acting as a VPN gateway, that device might ask you for additional settings.
 
 Unlike Azure, which supports multiple offers as both an initiator and a responder, Azure Stack Hub supports only one offer by default. If you need to use different IPSec/IKE settings to work with your VPN device, there are more settings available to you to configure your connection manually. For more information, see [Configure IPsec/IKE policy for site-to-site VPN connections](azure-stack-vpn-s2s.md).
+
+> [!IMPORTANT] 
+> When using S2S tunnel, packets are further encapsulated with additional headers which increases the overall size of the packet. In these scenarios, you must clamp TCP **MSS** at **1350**. Or if your VPN devices do not support MSS clamping, you can alternatively set the **MTU** on the tunnel interface to **1400** bytes instead. 
+For more information, see [Virutal Network TCPIP performance tuning] (virtual-network-tcpip-performance-tuning.md) 
+>
 
 ### IKE Phase 1 (Main Mode) parameters
 

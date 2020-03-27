@@ -8,7 +8,11 @@ ms.author: mabrigg
 ms.reviewer: wamota
 ms.lastreviewed: 07/10/2019
 
+# Intent: As an Azure Stack user, I want to know the networking differences between Azure and Azure Stack
+# Keyword: azure stack networking differences
+
 ---
+
 
 # Differences and considerations for Azure Stack Hub networking
 

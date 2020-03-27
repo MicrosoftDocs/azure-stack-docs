@@ -8,7 +8,12 @@ ms.date: 01/07/2020
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/06/2019
+
+# Intent: As an Azure Stack operator, I want to learnm which guest operating systems can be used on Azure Stack.
+# Keyword: azure stack guest operating systems
+
 ---
+
 
 # Guest operating systems supported on Azure Stack Hub
 

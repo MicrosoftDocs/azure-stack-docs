@@ -9,7 +9,11 @@ ms.author: justinha
 ms.reviewer: hectorl
 ms.lastreviewed: 08/21/2019
 
+# Intent: As an Azure Stack operator, I want to enable backups from the admin portal so Azure Stack can generate infrastructure backups.
+# Keyword: enable backup admin portal
+
 ---
+
 # Enable backup for Azure Stack Hub from the administrator portal
 
 You can enable the Infrastructure Backup Service from the administrator portal so that Azure Stack Hub can generate infrastructure backups. The hardware partner can use these backups to restore your environment using cloud recovery in the event of [a catastrophic failure](./azure-stack-backup-recover-data.md). The purpose of cloud recovery is to ensure that your operators and users can log back into the portal after recovery is complete. Users will have their subscriptions restored, including:

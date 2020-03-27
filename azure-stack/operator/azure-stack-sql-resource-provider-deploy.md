@@ -8,8 +8,13 @@ ms.topic: article
 ms.date: 10/02/2019
 ms.lastreviewed: 03/18/2019
 ms.author: bryanla
-ms.reviewer: xiaofmao
+ms.reviewer: xiao
+
+# Intent: As an Azure Stack operator, I want to deploy the SQL server resource provider.
+# Keyword: deploy sql server resource provider azure stack
+
 ---
+
 
 # Deploy the SQL Server resource provider on Azure Stack Hub
 

@@ -8,9 +8,15 @@ ms.date: 10/28/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 10/28/2019
+
+
 ROBOTS: NOINDEX
 
+# Intent: As an Azure Stack Hub operator, I want to learn how to create an OEM package in Azure Stack Hub.
+# Keyword: azure stack hub oem extension package
+
 ---
+
 
 # Create an OEM package
 

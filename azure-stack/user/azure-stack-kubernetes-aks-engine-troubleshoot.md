@@ -4,12 +4,16 @@ description: This article contains troubleshooting steps for the AKS engine on A
 author: mattbriggs
 
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 3/19/2020
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 11/21/2019
+ms.lastreviewed: 3/19/2020
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
 
 ---
+
 
 # Troubleshoot the AKS engine on Azure Stack Hub
 
@@ -81,7 +85,7 @@ You can access review information created by the AKS engine. The AKS engine repo
 
 ## Collect Kubernetes logs
 
-In addition to the AKS engine logs, the Kubernetes components generate status  and error messages. You can collect these logs using the Bash script, [getkuberneteslogs.sh](https://aka.ms/aa6z613).
+In addition to the AKS engine logs, the Kubernetes components generate status  and error messages. You can collect these logs using the Bash script, [getkuberneteslogs.sh](https://github.com/msazurestackworkloads/azurestack-gallery/releases/tag/diagnosis-v0.1.3).
 
 This script automates the process of gathering the following logs: 
 

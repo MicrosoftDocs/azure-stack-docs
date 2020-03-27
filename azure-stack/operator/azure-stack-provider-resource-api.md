@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 01/07/2020
 ms.author: sethm
 ms.reviewer: alfredop
-ms.lastreviewed: 01/25/2018
+ms.lastreviewed: 01/25/2019
+
+# Intent: As an Azure Stack operator, I want a reference page for the resource usage API.
+# Keyword: provider resource usage API azure stack
 
 ---
+
 # Provider resource usage API
 
 The term *provider* applies to the service administrator and to any delegated providers. Azure Stack Hub operators and delegated providers can use the provider usage API to view the usage of their direct tenants. For example, as shown in the following diagram, P0 can call the provider API to get direct usage information on P1 and P2, and P1 can call for usage information on P3 and P4.

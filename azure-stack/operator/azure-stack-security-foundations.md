@@ -8,9 +8,13 @@ ms.topic: article
 ms.date: 06/10/2019
 ms.author: justinha
 ms.reviewer: fiseraci
-ms.lastreviewed: 1/16/2020
+ms.lastreviewed: 1/16/2019
+
+# Intent: As an Azure Stack operator, I want to learn about the security controls applied in Azure Stack.
+# Keyword: security controls azure stack
 
 ---
+
 # Azure Stack Hub infrastructure security controls
 
 Security considerations and compliance regulations are among the main drivers for using hybrid clouds. Azure Stack Hub is designed for these scenarios. This article explains the security controls in place for Azure Stack Hub.

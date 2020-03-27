@@ -8,9 +8,13 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 03/20/2018
+ms.lastreviewed: 08/20/2019
+
+# Intent: As an Azure Stack operator, I want to know the release notes for Azure App Service on Azure Stack Update 1.
+# Keyword: app service update 1 azure stack
 
 ---
+
 # App Service on Azure Stack Hub Update 1 release notes
 
 These release notes describe improvements, fixes, and known issues in Azure App Service on Azure Stack Hub Update 1. Known issues are divided into three sections: issues directly related to deployment, issues with the update process, and issues with the build (post-installation).

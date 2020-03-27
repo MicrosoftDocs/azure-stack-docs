@@ -9,7 +9,11 @@ ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 10/09/2019
 
+# Intent: As an Azure Stack user, I want to know what I need to do to move them to Azure Stack or work with them in Azure Stack.
+# Keyword: Azure Stack VM
+
 ---
+
 
 # Azure Stack Hub VM features
 
@@ -22,7 +26,7 @@ Azure Stack Hub virtual machines (VMs) provide on-demand, scalable computing res
 | Virtual machine images | The Azure Marketplace has images that you can use to create a VM. See the [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute?subcategories=virtual-machine-images&page=1) page to view the list of images that are available in the Azure Marketplace. | By default, there aren't any images available in the Azure Stack Hub Marketplace. The Azure Stack Hub cloud admin must publish or download images to the Azure Stack Hub Marketplace before users can use them. |
 | VHD generation | Generation two VMs support key features that aren't supported in generation one VMs. These features include increased memory, Intel Software Guard Extensions (Intel SGX), and virtualized persistent memory (vPMEM). Generation two VMs running on-premises, have some features that aren't supported in Azure yet. For more information see [Support for generation 2 VMs on Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2)  | Azure Stack Hub supports only generation one VMs. You can convert a generation one VM from VHDX to the VHD file format and from dynamically expanding to a fixed-size disk. You can't change a VM's generation. For more information, see [Support for generation 2 VMs on Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2). |
 | Virtual machine sizes | Azure supports a wide variety of sizes for VMs. To learn about the available sizes and options, refer to the [Windows VMs sizes](/azure/virtual-machines/virtual-machines-windows-sizes) and [Linux VM sizes](/azure/virtual-machines/linux/sizes) topics. | Azure Stack Hub supports a subset of VM sizes that are available in Azure. To view the list of supported sizes, refer to the [VM sizes](#vm-sizes) section of this article. |
-| Virtual machine quotas | [Quota limits](/azure/azure-subscription-service-limits#service-specific-limits) are set by Microsoft. | The Azure Stack Hub cloud admin must assign quotas before they offer VM to their users. |
+| Virtual machine quotas | [Quota limits](/azure/azure-resource-manager/management/azure-subscription-service-limits#managing-limits) are set by Microsoft. | The Azure Stack Hub cloud admin must assign quotas before they offer VM to their users. |
 | Virtual machine extensions |Azure supports a wide variety of VM extensions. To learn about the available extensions, refer to the [VM extensions and features](/azure/virtual-machines/windows/extensions-features) article.| Azure Stack Hub supports a subset of extensions that are available in Azure and each of the extensions have specific versions. The Azure Stack Hub cloud admin can choose which extensions to be made available to for their users. To view the list of supported extensions, refer to the [VM extensions](#vm-extensions) section of this article. |
 | Virtual machine network | Public IP addresses assigned to a tenant VM are accessible over the Internet.<br><br><br>Azure VMs have a fixed DNS name. | Public IP addresses assigned to a tenant VM are accessible within the Azure Stack Development Kit environment only. A user must have access to the Azure Stack Development Kit via [RDP](../asdk/asdk-connect.md#connect-to-azure-stack-using-rdp) or [VPN](../asdk/asdk-connect.md#connect-to-azure-stack-using-vpn) to connect to a VM that is created in Azure Stack Hub.<br><br>VMs created within a specific Azure Stack Hub instance have a DNS name based on the value that is configured by the cloud admin. |
 | Virtual machine storage | Supports [managed disks.](/azure/virtual-machines/windows/managed-disks-overview) | Managed disks are supported in Azure Stack Hub with version 1808 and later. |

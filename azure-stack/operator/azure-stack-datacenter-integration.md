@@ -2,12 +2,17 @@
 title: Datacenter integration planning considerations for Azure Stack Hub integrated systems 
 description: Learn how to plan and prepare for datacenter integration with Azure Stack Hub integrated systems.
 author: IngridAtMicrosoft
-ms.topic: article
-ms.date: 1/22/2020
+ms.topic: conceptual
+ms.date: 03/04/2020
 ms.author: inhenkel
 ms.reviewer: wfayed
-ms.lastreviewed: 09/12/2018
+ms.lastreviewed: 09/12/2019
+
+# Intent: As an Azure Stack operator, I want to know the planning considerations for datacenter integration with Azure Stack integrated systems.
+# Keyword: azure stack datacenter integration planning
+
 ---
+
  
 # Datacenter integration planning considerations for Azure Stack Hub integrated systems
 
@@ -63,8 +68,8 @@ For more information about the licensing models, see [Microsoft Azure Stack Hub 
 
 You'll need to think about how you want to plan your Azure Stack Hub namespace, especially the region name and external domain name. The external fully qualified domain name (FQDN) of your Azure Stack Hub deployment for public-facing endpoints is the combination of these two names: &lt;*region*&gt;.&lt;*fqdn*&gt;. For example, *east.cloud.fabrikam.com*. In this example, the Azure Stack Hub portals would be available at the following URLs:
 
-- https://portal.east.cloud.fabrikam.com
-- https://adminportal.east.cloud.fabrikam.com
+- `https://portal.east.cloud.fabrikam.com`
+- `https://adminportal.east.cloud.fabrikam.com`
 
 > [!IMPORTANT]
 > The region name you choose for your Azure Stack Hub deployment must be unique and will appear in the portal addresses. 

@@ -9,7 +9,11 @@ ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/21/2019
 
+# Intent: As an Azure Stack operator, I want to back up App Service on Azure Stack so I don't lose important data.
+# Keyword: back up app service azure stack
+
 ---
+
 # Back up App Service on Azure Stack Hub
 
 This document provides instructions on how to back up App Service on Azure Stack Hub.

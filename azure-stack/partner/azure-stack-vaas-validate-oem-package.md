@@ -9,9 +9,15 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
 
+
 ROBOTS: NOINDEX
 
+# Intent: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Azure Stack keyword
+
+
 ---
+
 
 # Validate OEM packages
 

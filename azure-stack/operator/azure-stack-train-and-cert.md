@@ -7,9 +7,13 @@ ms.topic: article
 ms.date: 11/11/2019
 ms.author: inhenkel
 ms.lastreviewed: 11/11/2019
-ms.reviewer: efemmano
+ms.reviewer: efemm
+
+# Intent: As an Azure Stack operator, I want to learn about training and certificiation opportunities.
+# Keyword: azure stack training certification
 
 ---
+
 
 # Azure Stack Hub training and certification
 

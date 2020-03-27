@@ -1,21 +1,28 @@
 ---
-title: Windows Server in Azure Stack Hub Marketplace FAQ
+title: Azure Stack Hub Marketplace FAQ
 titleSuffix: Azure Stack Hub
 description: List of Azure Stack Hub Marketplace FAQs for Windows Server.
 author: sethmanheim
 ms.topic: article
-ms.date: 12/27/2019
+ms.date: 03/19/2020
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 08/29/2019
 
+# Intent: As an Azure Stack Hub operator, I want to view Azure Stack Hub Marketplace FAQs for Windows Server.
+# Keyword: azure stack hub windows server marketplace FAQ
+
 ---
 
-# Windows Server in Azure Stack Hub Marketplace FAQ
+# Azure Stack Hub Marketplace FAQ
 
-This article answers some frequently asked questions about Windows Server images in the [Azure Stack Hub Marketplace](azure-stack-marketplace.md).
+This article answers some frequently asked questions about Marketplace items in the [Azure Stack Hub Marketplace](azure-stack-marketplace.md).
 
 ## Marketplace items
+
+### Who should I contact for support issues with Azure Stack Hub Marketplace items?
+
+Azure Marketplace support guidance extends to Azure Stack Hub Marketplace items as well. Publishers are responsible for providing technical support for their products on the Azure Stack Hub Marketplace. To learn more about support guidance for Azure Marketplace items, see the [support section](/azure/marketplace/marketplace-faq-publisher-guide#customer-support) in the Azure Marketplace FAQs article.
 
 ### How do I update to a newer Windows image?
 

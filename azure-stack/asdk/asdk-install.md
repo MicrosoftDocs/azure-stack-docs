@@ -9,8 +9,11 @@ ms.author: justinha
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
 
+# Intent: As an ASDK user, I want to install the ASDK so I can start using it. 
+# Keyword: install asdk
 
 ---
+
 
 # Install the ASDK
 After [preparing the ASDK host computer](asdk-prepare-host.md), the Azure Stack Development Kit (ASDK) can be deployed into the CloudBuilder.vhdx image using the following steps in this article.

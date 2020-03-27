@@ -5,9 +5,13 @@ author: BryanLa
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: bryanla
-ms.reviewer: anajod
-ms.lastreviewed: 11/05/2019
+ms.reviewer: anajod2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Geo-distributed pattern
 

@@ -8,10 +8,17 @@ ms.date: 11/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/11/2019
+
+
 ROBOTS: NOINDEX
+
+# Intent: As an Azure Stack Hub user, I want an overview of Azure Stack Hub validation as a service.
+# Keyword: azure stack hub VaaS validation
+
 ---
 
-# Validation as a service for Azure Stack Hub
+
+# What is Validation as a Service for Azure Stack Hub?
 
 [!INCLUDE [Azure_Stack_Partner](./includes/azure-stack-partner-appliesto.md)]
 

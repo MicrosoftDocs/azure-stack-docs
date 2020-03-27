@@ -8,7 +8,11 @@ ms.date: 11/11/2019
 ms.author: mabrigg
 ms.lastreviewed: 11/11/2019
 
+# Intent: As an Azure Stack user, I want to consume monitoring data in Azure Stack so I can make decisions based on those metrics.
+# Keyword: azure stack monitoring data
+
 ---
+
 
 # Consume monitoring data from Azure Stack Hub
 

@@ -7,8 +7,13 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: anwestg
 ms.reviewer: anwestg
-ms.lastreviewed: 01/10/2020
+ms.lastreviewed: 01/10/2019
+
+# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
+# Keyword: Notdone: keyword noun phrase
+
 ---
+
 
 # Rotate App Service on Azure Stack Hub secrets and certificates
 

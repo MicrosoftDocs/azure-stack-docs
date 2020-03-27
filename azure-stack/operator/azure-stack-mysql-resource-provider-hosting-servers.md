@@ -8,7 +8,11 @@ ms.author: bryanla
 ms.reviewer: xiaofmao
 ms.lastreviewed: 11/06/2019
 
+# Intent: As an Azure Stack operator, I want to add MySQL hosting servers so I can provision them through the MySQL resource provider.
+# Keyword: add mySQL hosting servers azure stack
+
 ---
+
 
 # Add MySQL hosting servers in Azure Stack Hub
 
@@ -17,7 +21,7 @@ You can host a MySQL hosting server instance on a virtual machine (VM) in [Azure
 > [!NOTE]
 > The MySQL resource provider should be created in the default provider subscription while MySQL hosting servers should be created in billable, user subscriptions. The resource provider server shouldn't be used to host user databases.
 
-MySQL versions 5.6, 5.7 and 8.0 may be used for your hosting servers. The MySQL RP doesn't support caching_sha2_password authentication; that will be added in the next release. MySQL 8.0 servers must be configured to use mysql_native_password. MariaDB is also supported.
+MySQL versions 5.6, 5.7 and 8.0 may be used for your hosting servers. The MySQL RP doesn't support caching_sha2_password authentication. MySQL 8.0 servers must be configured to use mysql_native_password.
 
 ## Configure external access to the MySQL hosting server
 

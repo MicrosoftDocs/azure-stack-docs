@@ -9,7 +9,11 @@ ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 09/17/2019
 
+# Intent: As an Azure Stack operator, I want to add tenants to Azure Stack for usage and billing.
+# Keyword: add tenants azure stack
+
 ---
+
 
 # Add tenant for usage and billing to Azure Stack Hub
 
