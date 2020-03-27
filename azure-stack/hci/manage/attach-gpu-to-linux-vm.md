@@ -417,7 +417,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     file-loop=1
     ```
 
-12. Navigate to the Azure Portal. Select **IoT Hub Provisioned**, click on **Automatic Device Management**, then click on **IoT Edge**:
+12. Navigate to the Azure portal. Select **IoT Hub Provisioned**, click on **Automatic Device Management**, then click on **IoT Edge**:
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/iot-edge.png" alt-text="Automatic Device Management Screenshot":::
 
@@ -475,7 +475,7 @@ To prepare for this configuration, please review the FAQ contained in the [NVIDI
     }
     ```
 
-18. Click **Review and Create**, and on the next page click **Create**. You should now see the three modules listed below for your IoT Edge device in the Azure Portal:
+18. Click **Review and Create**, and on the next page click **Create**. You should now see the three modules listed below for your IoT Edge device in the Azure portal:
 
     :::image type="content" source="media/attach-gpu-to-linux-vm/edge-hub-connections.png" alt-text="Modules and IoT Edge Hub Connections Screenshot":::
 
