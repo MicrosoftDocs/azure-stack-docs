@@ -4,6 +4,34 @@
   items:
   - name: What is Azure Stack HCI?
     href: overview.md
+- name: Manage
+  items:
+  - name: Create volumes
+    href: manage/create-volumes.md
+  - name: Extend volumes
+    href: manage/extend-volumes.md
+  - name: Delete volumes
+    href: manage/delete-volumes.md
+  - name: Replace drives
+    href: manage/replace-drives.md
+  - name: Manage VMs
+    href: manage/manage-vm.md
+  - name: Manage VMs with PowerShell
+    href: manage/manage-vm-ps.md
+  - name: Use Azure Site Recovery
+    href: manage/azure-site-recovery.md
+- name: Concepts
+  items:
+  - name: Choose drives
+    href: concepts/choose-drives.md
+  - name: Plan volumes
+    href: concepts/plan-volumes.md
+  - name: Understand the cache
+    href: concepts/cache.md
+  - name: Fault tolerance and storage efficiency
+    href: concepts/fault-tolerance.md
+  - name: Cluster and storage pool quorum
+    href: concepts/quorum.md
 - name: Reference
   items:
   - name: Hyper-V PowerShell commands
@@ -26,3 +54,4 @@
     href: /windows-server/virtualization/hyper-v/hyper-v-on-windows-server
   - name: Software Defined Networking
     href: /windows-server/networking/sdn
+
