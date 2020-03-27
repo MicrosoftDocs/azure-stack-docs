@@ -39,7 +39,7 @@ Using a DevOps release pipeline helps you:
 
 ## Issues and considerations
 
-The DevOps Pattern is intended to ensure consistency across deployments regardless of the target environment. However, capabilities vary across cloud and on-premises environments. Consider the following:
+The DevOps Pattern is intended to ensure consistency across deployments regardless of the target environment. However, capabilities vary across cloud and on-premises environments. Consider the following points:
 
 - Are the functions, endpoints, services, and other resources in your deployment available in the target deployment locations?
 - Are configuration artifacts stored in locations that are accessible across clouds?
@@ -77,7 +77,7 @@ Deploy production environments and development/test environments in separate res
 Use this pattern if:
 
 - You can develop code in one environment that meets the needs of your developers, and deploy to an environment specific to your solution where it may be difficult to develop new code.
-- You can use the code and tools your developers would like, as long as they are able to follow the continuous integration and continuous delivery process in the DevOps Pattern.
+- You can use the code and tools your developers would like, as long as they're able to follow the continuous integration and continuous delivery process in the DevOps Pattern.
 
 This pattern isn't recommended:
 
