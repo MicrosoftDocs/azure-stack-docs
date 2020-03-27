@@ -50,7 +50,9 @@ To create a custom role, you must have the `Microsoft.Authorization/roleDefiniti
         "Microsoft.Authorization/roleAssignments/read",
         "Microsoft.Authorization/roleAssignments/write",
         "Microsoft.Authorization/roleAssignments/delete",
-        "Microsoft.Authorization/permissions/read"
+        "Microsoft.Authorization/permissions/read",
+        "Microsoft.Authorization/locks/read",
+        "Microsoft.Authorization/locks/write
       ],
       "NotActions": [
       ],
