@@ -4,12 +4,12 @@ description: Quickly connect to an existing cluster using Windows Admin Center t
 author: khdownie
 ms.author: v-kedow
 ms.topic: article
-ms.date: 03/26/2020
+ms.date: 03/27/2020
 ---
 
 # Quickstart: Monitor Azure Stack HCI clusters with Windows Admin Center
 
-> Applies to: Azure Stack HCI, Windows Server 2019
+> Applies to: Windows Server 2019
 
 This topic provides instructions for monitoring the performance of an Azure Stack HCI cluster at a glance by using Windows Admin Center, a locally deployed, browser-based app for managing Azure Stack HCI.
 
