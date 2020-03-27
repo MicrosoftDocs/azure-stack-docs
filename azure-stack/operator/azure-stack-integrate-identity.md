@@ -287,7 +287,9 @@ If you decide to manually run the commands, follow these steps:
    ```powershell  
    Set-AdfsProperties -IgnoreTokenBinding $true
    ```
-   **For AD FS 2002 or greater **
+
+   **For AD FS 2002 and greater**
+
    > [!NOTE]
    > When executing `Add-ADFSRelyingPartyTrust` on the customer owned ADFS host/farm, you must first ensure that TLS1.2 is enforced on the ADFS host/farm else the attempt will result in the following error message:
 
