@@ -1,6 +1,6 @@
 ---
-title: Pattern for building an app that scales cross-cloud using on-prem data, on Azure and Azure Stack Hub.
-description: Learn how to use Azure and Azure Stack Hub, to build a scalable cross-cloud app that uses on-prem data.
+title: Cross-cloud scaling (on-premises data) pattern
+description: Learn how to build a scalable cross-cloud app that uses on-prem data in Azure and Azure Stack Hub.
 author: BryanLa
 ms.topic: article
 ms.date: 11/05/2019
@@ -8,11 +8,10 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack Hub user, I want to build a scalable cross-cloud app that uses on-prem data so I can deploy an identical web app to a public and private cloud.
+# Keyword: cross-cloud scaling pattern azure stack hub
 
 ---
-
 
 # Cross-cloud scaling (on-premises data) pattern
 
@@ -55,7 +54,7 @@ Consider the following points when deciding how to implement this solution:
 
 ### Scalability 
 
-Azure and Azure Stack Hub are uniquely suited to support the needs of today’s globally distributed business.
+Azure and Azure Stack Hub are uniquely suited to support the needs of today's globally distributed business.
 
 **Hybrid cloud without the hassle**
 
@@ -100,7 +99,7 @@ Azure Stack Hub works with both Azure Active Directory and Active Directory Fede
 
 **Ensure compliance, and data sovereignty**
 
-Azure Stack Hub enables you to run the same service across multiple countries as you would if using a public cloud. Deploying the same application in datacenters in each country, allows data sovereignty requirements to be met. This capability ensures personal data is kept within each country’s borders.
+Azure Stack Hub enables you to run the same service across multiple countries as you would if using a public cloud. Deploying the same application in datacenters in each country, allows data sovereignty requirements to be met. This capability ensures personal data is kept within each country's borders.
 
 **Azure Stack Hub - security posture**
 
@@ -112,7 +111,7 @@ Thanks to partnerships with Azure Stack Hub OEM partners, Microsoft extends the 
 
 To give resource access to a script or app, set up an identity for your app and authenticate the app with its own credentials. This identity is known as a service principal and enables you to:
 
-- Assign permissions to the app identity that are different than your own permissions and are restricted to precisely the app’s needs.
+- Assign permissions to the app identity that are different than your own permissions and are restricted to precisely the app's needs.
 - Use a certificate for authentication when executing an unattended script. 
 
 For more information about service principal creation, and using a certificate for credentials, see [Use an app identity to access resources](/azure-stack/operator/azure-stack-create-service-principals).
