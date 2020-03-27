@@ -36,6 +36,12 @@
   items:
   - name: Azure Stack family
     href: ../index.yml
+  - name: Azure Stack Hub
+    href: ../operator/azure-stack-overview?view=azs-2002
+  - name: Azure Stack Edge
+    href: /azure/databox-online/data-box-edge-overview
+  - name: Windows Server
+    href: /windows-server/
   - name: Windows Admin Center
     href: /windows-server/manage/windows-admin-center/understand/windows-admin-center
   - name: Azure Hybrid Services
@@ -48,3 +54,5 @@
     href: /windows-server/virtualization/hyper-v/hyper-v-on-windows-server
   - name: Software Defined Networking
     href: /windows-server/networking/sdn
+  - name: System Center
+    href: /system-center/
