@@ -1,6 +1,6 @@
 ---
-title: The DevOps pattern for the intelligent edge using Azure and Azure Stack Hub.
-description: Learn about the DevOps pattern for the intelligent edge using Azure and Azure Stack Hub. 
+title: The DevOps pattern
+description: Learn about the DevOps pattern so you can ensure consistency across deployments in Azure and Azure Stack Hub.
 author: BryanLa
 ms.topic: article
 ms.date: 11/05/2019
@@ -8,11 +8,10 @@ ms.author: bryanla
 ms.reviewer: anajod
 ms.lastreviewed: 11/05/2019
 
-# Intent: Notdone: As a < type of user >, I want < what? > so that < why? >
-# Keyword: Notdone: keyword noun phrase
+# Intent: As an Azure Stack user, I want to learn about the DevOps so I can ensure consistency across deployments in Azure and Azure Stack Hub.
+# Keyword: devops pattern azure stack hub
 
 ---
-
 
 # DevOps pattern
 
@@ -22,7 +21,7 @@ Code from a single location and deploy to multiple targets in development, test,
 
 Application deployment continuity, security, and reliability are essential to organizations and critical to development teams.
 
-Apps often require refactored code to run in each target environment. This means that an app is not completely portable. It must be updated, tested, and validated as it moves through each environment. For example, code written in a development environment must then be rewritten to work in a test environment, and rewritten when it finally lands in a production environment. Furthermore, this code is specifically tied to the host. This increases the cost and complexity of maintaining your app. Each version of the app is tied to each environment. The increased complexity and duplication increase the risk of security and code quality. In addition, the code cannot be readily redeployed when you remove restore failed hosts or deploy additional hosts to handle increases in demand.
+Apps often require refactored code to run in each target environment. This means that an app isn't completely portable. It must be updated, tested, and validated as it moves through each environment. For example, code written in a development environment must then be rewritten to work in a test environment and rewritten when it finally lands in a production environment. Furthermore, this code is specifically tied to the host. This increases the cost and complexity of maintaining your app. Each version of the app is tied to each environment. The increased complexity and duplication increase the risk of security and code quality. In addition, the code can't be readily redeployed when you remove restore failed hosts or deploy additional hosts to handle increases in demand.
 
 ## Solution
 
@@ -71,7 +70,7 @@ Another major consideration when designing the system used for deployment automa
 
 The design of any system based on the DevOps pattern must consider automation, logging, and alerting for each service across the portfolio. Use shared services, an application team, or both, and track security policies and governance as well.
 
-Deploy production environments and development/test environments in separate resource groups on Azure or Azure Stack Hub. Then you can monitor each environment’s resources and roll up billing costs by resource group. You can also delete resources as a set, which is useful for test deployments.
+Deploy production environments and development/test environments in separate resource groups on Azure or Azure Stack Hub. Then you can monitor each environment's resources and roll up billing costs by resource group. You can also delete resources as a set, which is useful for test deployments.
 
 ## When to use this pattern
 
