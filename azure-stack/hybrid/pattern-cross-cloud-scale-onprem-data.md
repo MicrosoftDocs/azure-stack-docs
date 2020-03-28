@@ -83,55 +83,56 @@ Global deployment has its own challenges, like variable connectivity and differi
 
 #### A single, consistent development approach
 
-Azure and Azure Stack Hub enable you to use a consistent set of development tools across the organization. This consistency makes it easier to implement a practice of continuous integration and continuous development (CI/CD). Many apps and services deployed in Azure or Azure Stack Hub are interchangeable, and can run in either location seamlessly.
+Azure and Azure Stack Hub let you use a consistent set of development tools across the organization. This consistency makes it easier to implement a practice of continuous integration and continuous development (CI/CD). Many apps and services deployed in Azure or Azure Stack Hub are interchangeable and can run in either location seamlessly.
 
 A hybrid CI/CD pipeline can help you:
+
 - Initiate a new build based on code commits to your code repository.
 - Automatically deploy your newly built code to Azure for user acceptance testing.
 - Once your code has passed testing, automatically deploy to Azure Stack Hub.
 
-**A single, consistent identity management solution**
+### A single, consistent identity management solution
 
-Azure Stack Hub works with both Azure Active Directory and Active Directory Federation Services (ADFS). Azure Stack Hub works with Azure Active Directory in connected scenarios. For environments that don't have connectivity, you can use ADFS as a disconnected solution. Service principals are used to grant access to applications, allowing them to deploy or configure resources through Azure Resource Manager. 
+Azure Stack Hub works with both Azure Active Directory (Azure AD) and Active Directory Federation Services (ADFS). Azure Stack Hub works with Azure AD in connected scenarios. For environments that don't have connectivity, you can use ADFS as a disconnected solution. Service principals are used to grant access to apps, allowing them to deploy or configure resources through Azure Resource Manager.
 
 ### Security
 
-**Ensure compliance, and data sovereignty**
+#### Ensure compliance, and data sovereignty
 
-Azure Stack Hub enables you to run the same service across multiple countries as you would if using a public cloud. Deploying the same application in datacenters in each country, allows data sovereignty requirements to be met. This capability ensures personal data is kept within each country's borders.
+Azure Stack Hub lets you run the same service across multiple countries as you would if using a public cloud. Deploying the same app in datacenters in each country allows data sovereignty requirements to be met. This capability ensures personal data is kept within each country's borders.
 
-**Azure Stack Hub - security posture**
+#### Azure Stack Hub - security posture
 
 There's no security posture without a solid, continuous servicing process. For this reason, Microsoft invested in an orchestration engine that applies patches and updates seamlessly across the entire infrastructure.
 
-Thanks to partnerships with Azure Stack Hub OEM partners, Microsoft extends the same security posture to OEM-specific components. Such as the Hardware Lifecycle Host and the software running on top of it. This partnership ensures Azure Stack Hub has a uniform, solid security posture across the entire infrastructure. In turn, customers can build and secure their application workloads.
+Thanks to partnerships with Azure Stack Hub OEM partners, Microsoft extends the same security posture to OEM-specific components, like the Hardware Lifecycle Host and the software running on top of it. This partnership ensures Azure Stack Hub has a uniform, solid security posture across the entire infrastructure. In turn, customers can build and secure their app workloads.
 
-**Use of service principals via PowerShell, CLI, and Azure portal**
+#### Use of service principals via PowerShell, CLI, and Azure portal
 
-To give resource access to a script or app, set up an identity for your app and authenticate the app with its own credentials. This identity is known as a service principal and enables you to:
+To give resource access to a script or app, set up an identity for your app and authenticate the app with its own credentials. This identity is known as a service principal and lets you:
 
 - Assign permissions to the app identity that are different than your own permissions and are restricted to precisely the app's needs.
-- Use a certificate for authentication when executing an unattended script. 
+- Use a certificate for authentication when executing an unattended script.
 
-For more information about service principal creation, and using a certificate for credentials, see [Use an app identity to access resources](/azure-stack/operator/azure-stack-create-service-principals).
+For more information about service principal creation and using a certificate for credentials, see [Use an app identity to access resources](/azure-stack/operator/azure-stack-create-service-principals).
 
-## When to use this pattern 
+## When to use this pattern
 
 - My organization is using a DevOps approach, or has one planned for the near future.
 - I want to implement CI/CD practices across my Azure Stack Hub implementation and the public cloud.
 - I want to consolidate the CI/CD pipeline across cloud and on-premises environments.
-- I want the ability to develop applications seamlessly using cloud or on-premises services.
-- I want to leverage consistent developer skills across cloud and on-premises applications.
-- I'm using Azure, but I have developers who are working in an on-premises Azure Stack Hub cloud.
-- My on-premises applications experience spikes in demand during seasonal, cyclical, or unpredictable fluctuations.
-- I have on-premises components, and I want to use the cloud to scale them seamlessly.
-- I want cloud scalability, but I want my application to run on-premises as much as possible.
+- I want the ability to develop apps seamlessly using cloud or on-premises services.
+- I want to leverage consistent developer skills across cloud and on-premises apps.
+- I'm using Azure but I have developers who are working in an on-premises Azure Stack Hub cloud.
+- My on-premises apps experience spikes in demand during seasonal, cyclical, or unpredictable fluctuations.
+- I have on-premises components and I want to use the cloud to scale them seamlessly.
+- I want cloud scalability but I want my app to run on-premises as much as possible.
 
 ## Next steps
 
 To learn more about topics introduced in this article:
 - Watch [Dynamically scale apps between datacenters and public cloud](https://www.youtube.com/watch?v=2lw8zOpJTn0) for an overview of how this pattern is used.
-- See [Hybrid application design considerations](overview-app-design-considerations.md) to learn more about best practices, and answer additional questions.
-- This pattern uses the Azure Stack family of products, including Azure Stack Hub. See the [Azure Stack family of products and solutions](/azure-stack), to learn more about the entire portfolio of products and solutions.
+- See [Hybrid app design considerations](overview-app-design-considerations.md) to learn more about best practices and to answer additional questions you might have.
+- This pattern uses the Azure Stack family of products, including Azure Stack Hub. See the [Azure Stack family of products and solutions](/azure-stack) to learn more about the entire portfolio of products and solutions.
 
 When you're ready to test the solution example, continue with the [cross-cloud scaling (on-premises data) solution deployment guide](solution-deployment-guide-cross-cloud-scaling-onprem-data.md). The deployment guide provides step-by-step instructions for deploying and testing its components.
