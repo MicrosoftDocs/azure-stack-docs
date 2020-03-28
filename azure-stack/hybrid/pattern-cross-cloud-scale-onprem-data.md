@@ -58,31 +58,30 @@ Azure and Azure Stack Hub are uniquely suited to support the needs of today's gl
 
 #### Hybrid cloud without the hassle
 
-Microsoft offers an unrivaled integration of on-premises assets with Azure Stack Hub and Azure in one unified solution. This integration eliminates the hassle of managing multiple point solutions and a mix of cloud providers. With Cross-Cloud Scaling, the power of Azure is just a few clicks away. Merely connect your Azure Stack Hub to Azure with cloud bursting and your data and applications will be available in Azure when needed.
+Microsoft offers an unrivaled integration of on-premises assets with Azure Stack Hub and Azure in one unified solution. This integration eliminates the hassle of managing multiple point solutions and a mix of cloud providers. With cross-cloud scaling, the power of Azure is just a few clicks away. Just connect your Azure Stack Hub to Azure with cloud bursting and your data and apps will be available in Azure when needed.
 
 - Eliminate the need to build and maintain a secondary DR site.
-- Save time and money, by eliminating tape backup and house up to 99 years of backup data in Azure.
+- Save time and money by eliminating tape backup and house up to 99 years of backup data in Azure.
 - Easily migrate running Hyper-V, Physical (in preview), and VMware (in preview) workloads into Azure to leverage the economics and elasticity of the cloud.
-- Run compute intensive reports or analytics on a replicated copy of your on-premises asset in Azure, without impacting production workloads.
+- Run compute intensive reports or analytics on a replicated copy of your on-premises asset in Azure without impacting production workloads.
 - Burst into the cloud and run on-premises workloads in Azure, with larger compute templates when needed. Hybrid gives you the power you need, when you need it.
-- Create multi-tier development environments in Azure with a few clicks – even replicate live production data to your dev/test environment to keep it in near real-time sync.
+- Create multi-tier development environments in Azure with a few clicks–even replicate live production data to your dev/test environment to keep it in near real-time sync.
 
-**Economy of cross-cloud scaling with Azure Stack Hub**
+#### Economy of cross-cloud scaling with Azure Stack Hub
 
-The key advantage to cloud bursting is economical savings. You only pay for the additional resources when there's a demand for those resources. No more spending on unnecessary extra capacity, or trying to predict demand peaks and fluctuations.
+The key advantage to cloud bursting is economical savings. You only pay for the additional resources when there's a demand for those resources. No more spending on unnecessary extra capacity or trying to predict demand peaks and fluctuations.
 
-**Reduce high demand loads into the cloud**
+#### Reduce high demand loads into the cloud
 
-Cross-Cloud scaling can be used to shoulder processing burdens. Load is distributed by moving basic applications to the public cloud, freeing up local resources for business-critical applications. An application can be applied to the private cloud, then burst to the public cloud only when necessary to meet demands.
-
+Cross-cloud scaling can be used to shoulder processing burdens. Load is distributed by moving basic apps to the public cloud, freeing up local resources for business-critical apps. An app can be applied to the private cloud, then burst to the public cloud only when necessary to meet demands.
 
 ### Availability
 
-Global deployment has its own challenges, such as variable connectivity and differing government regulations by region. Developers can develop just one app and then deploy it across different reasons with different requirements.  Deploy your application to the Azure public cloud, then deploy additional instances or components locally. You can manage traffic between all instances using Azure.
+Global deployment has its own challenges, like variable connectivity and differing government regulations by region. Developers can develop just one app and then deploy it across different reasons with different requirements. Deploy your app to the Azure public cloud, then deploy additional instances or components locally. You can manage traffic between all instances using Azure.
 
 ### Manageability
 
-**A single, consistent development approach**
+#### A single, consistent development approach
 
 Azure and Azure Stack Hub enable you to use a consistent set of development tools across the organization. This consistency makes it easier to implement a practice of continuous integration and continuous development (CI/CD). Many apps and services deployed in Azure or Azure Stack Hub are interchangeable, and can run in either location seamlessly.
 
@@ -135,4 +134,4 @@ To learn more about topics introduced in this article:
 - See [Hybrid application design considerations](overview-app-design-considerations.md) to learn more about best practices, and answer additional questions.
 - This pattern uses the Azure Stack family of products, including Azure Stack Hub. See the [Azure Stack family of products and solutions](/azure-stack), to learn more about the entire portfolio of products and solutions.
 
-When you're ready to test the solution example, continue with the [Cross-cloud scaling (on-premises data) solution deployment guide](solution-deployment-guide-cross-cloud-scaling-onprem-data.md). The deployment guide provides step-by-step instructions for deploying and testing its components.
+When you're ready to test the solution example, continue with the [cross-cloud scaling (on-premises data) solution deployment guide](solution-deployment-guide-cross-cloud-scaling-onprem-data.md). The deployment guide provides step-by-step instructions for deploying and testing its components.
