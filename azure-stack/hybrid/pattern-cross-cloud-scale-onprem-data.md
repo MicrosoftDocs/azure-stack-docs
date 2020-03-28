@@ -15,17 +15,17 @@ ms.lastreviewed: 11/05/2019
 
 # Cross-cloud scaling (on-premises data) pattern
 
-Learn how to build a hybrid application that spans Azure and Azure Stack Hub. This pattern also shows you how to use a single on-premises data source for compliance.
+Learn how to build a hybrid app that spans Azure and Azure Stack Hub. This pattern also shows you how to use a single on-premises data source for compliance.
 
 ## Context and problem
 
-Many organizations collect and store massive amounts of customer-sensitive data. Frequently they're prevented from storing sensitive data in the public cloud, because of corporate regulations or government policy. Those organizations also want to take advantage of the scalability of the public cloud. The public cloud can handle seasonal peaks in traffic, allowing customers to pay for exactly the hardware they need, when they need it.
+Many organizations collect and store massive amounts of sensitive customer data. Frequently they're prevented from storing sensitive data in the public cloud because of corporate regulations or government policy. Those organizations also want to take advantage of the scalability of the public cloud. The public cloud can handle seasonal peaks in traffic, allowing customers to pay for exactly the hardware they need, when they need it.
 
 ## Solution
 
-The solution takes advantage of the compliance benefits of the private cloud, combining them with the scalability of the public cloud. The Azure and Azure Stack Hub hybrid cloud provide a consistent experience for developers. This consistency allows them to apply their skills to both public cloud and on-premises environments.
+The solution takes advantage of the compliance benefits of the private cloud, combining them with the scalability of the public cloud. The Azure and Azure Stack Hub hybrid cloud provide a consistent experience for developers. This consistency lets them to apply their skills to both public cloud and on-premises environments.
 
-The solution deployment guide allows you to deploy an identical web application to a public and private cloud. You can also access a non-internet routable network, hosted on the private cloud. The web applications are monitored for load. Upon a significant increase in traffic, a program manipulates DNS records to redirect traffic to the public cloud. When traffic is no longer significant, the DNS records are updated to direct traffic back to the private cloud.
+The solution deployment guide allows you to deploy an identical web app to a public and private cloud. You can also access a non-internet routable network hosted on the private cloud. The web apps are monitored for load. Upon a significant increase in traffic, a program manipulates DNS records to redirect traffic to the public cloud. When traffic is no longer significant, the DNS records are updated to direct traffic back to the private cloud.
 
 [![Cross-cloud scaling with on-prem data pattern](media/pattern-cross-cloud-scale-onprem-data/solution-architecture.png)](media/pattern-cross-cloud-scale-onprem-data/solution-architecture.png)
 
