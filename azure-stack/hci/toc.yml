@@ -32,6 +32,12 @@
     href: /powershell/module/hyper-v
   - name: Storage PowerShell commands
     href: /powershell/module/storage
+  - name: ClusterAwareUpdating PowerShell commands
+    href: /powershell/module/clusterawareupdating
+  - name: FailoverClusters PowerShell commands
+    href: /powershell/module/failoverclusters
+  - name: StorageReplica PowerShell commands
+    href: /powershell/module/storagereplica
 - name: Related
   items:
   - name: Azure Stack family
