@@ -25,7 +25,7 @@ This article provides Azure Stack network infrastructure information to help you
 
 The Azure Stack solution requires a resilient and highly available physical infrastructure to support its operation and services. To integrate Azure Stack to the network it requires uplinks from the Top-of-Rack switches (ToR) to the nearest switch or router, which on this documentation is referred as Border. The ToRs can be uplinked to a single or a pair of Borders. The ToR is pre-configured by our automation tool, it expects a minimum of one connection between ToR and Border when using BGP Routing and a minimum of two connections (one per ToR) between ToR and Border when using Static Routing, with a maximum of four connections on either routing options. These connections are limited to SFP+ or SFP28 media and one GB, 10 GB, or 25-GB speeds. Check with your original equipment manufacturer (OEM) hardware vendor for availability. The following diagram presents the recommended design:
 
-![Recommended Azure Stack network design](media/azure-stack-network/physical-network.png)
+![Recommended Azure Stack network design](media/azure-stack-network/physical-network.svg)
 
 
 ## Logical Networks
@@ -50,7 +50,7 @@ The following table shows the logical networks and associated IPv4 subnet ranges
 
 The network infrastructure for Azure Stack consists of several logical networks that are configured on the switches. The following diagram shows these logical networks and how they integrate with the top-of-rack (TOR), baseboard management controller (BMC), and border (customer network) switches.
 
-![Logical network diagram and switch connections](media/azure-stack-network/NetworkDiagram.png)
+![Logical network diagram and switch connections](media/azure-stack-network/networkdiagram.svg)
 
 ### BMC network
 
