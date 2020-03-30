@@ -149,9 +149,13 @@ Save-Package -ProviderName NuGet -Source https://www.powershellgallery.com/api/v
 
    Register-PSRepository -Name $RepoName -SourceLocation $SourceLocation -InstallationPolicy Trusted
 
-   Install-Module -Name AzureRM -Repository $RepoName
+   Install-Module -Name Az.BootStrapper -Repository $RepoName -Scope AllUsers 
 
-   Install-Module -Name AzureStack -Repository $RepoName
+   Set-BootstrapRepo -Repo $RepoName
+
+   Use-AzProfile -Profile '2019-03-01-hybrid' -Force -Scope AllUsers
+
+   Install-Module -Name AzureStack -Repository $RepoName -RequiredVersion 2.0.0-preview -AllowPrerelease -Scope AllUsers
    ```
 
 ### Confirm the installation of PowerShell
