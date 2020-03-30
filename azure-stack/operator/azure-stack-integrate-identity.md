@@ -288,6 +288,13 @@ If you decide to manually run the commands, follow these steps:
    Set-AdfsProperties -IgnoreTokenBinding $true
    ```
 
+   **For AD FS 2002 and greater**
+
+   > [!NOTE]
+   > When executing `Add-ADFSRelyingPartyTrust` on the customer owned ADFS host/farm, you must first ensure that TLS1.2 is enforced on the ADFS host/farm else the attempt will result in the following error message:
+
+`Add-ADFSRelyingPartyTrust : The underlying connection was closed: An unexpected error occurred on a send.`
+
 ## SPN creation
 
 There are many scenarios that require the use of a service principal name (SPN) for authentication. The following are some examples:
