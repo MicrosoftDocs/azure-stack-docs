@@ -112,6 +112,12 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 ## Compute
 
+### Vm Overview blade does not show correct Computer Name
+
+- Applicable: This issue applies to 2002 and later.
+- Cause: When viewing details of a VM in the overview blade, the computer names shows as "(not available)".
+- Remediation: View the properties blade under Settings.
+
 ### NVv4 VM size on portal
 
 - Applicable: This issue applies to 2002 and later.
@@ -139,6 +145,11 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Applicable: This issue applies to all supported releases.
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack Hub environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack Hub deployment.
+
+### SQL VM provision will be failed in ASDK
+- Applicable: This issue applies to ASDK 2002 only. 
+- Cause: When creating a new SQL VM in ASDK 2002, you may receive an error message **"Extension with publisher 'Microsoft.SqlServer.Management', type 'SqlIaaSAgent', and type handler version '2.0' could not be found in the extension repository."** There is no 'SqlIaaSAgent' 2.0 in Azure Stack Hub. 
+
 
 ## Resource Providers
 
