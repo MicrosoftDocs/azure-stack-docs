@@ -138,7 +138,8 @@
     "markdownEngineName": "markdig",
     "groups": {
       "version-ash": {
-      "moniker_range": ">=azs-1802"
+        "moniker_range": ">=azs-1802",
+        "dest": "version-ash"
       }
     }
   }
