@@ -70,8 +70,8 @@ The pattern ensures seamless management and familiar interface between environme
 
 - My organization has international branches requiring custom regional security and distribution policies.
 - Each of my organization's offices pulls employee, business, and facility data, requiring reporting activity per local regulations and time zone.
-- High-scale requirements can be met by horizontally scaling out apps, with multiple app deployments being made within a single region, as well as across regions, to handle extreme load requirements.
-- The apps must be highly available and responsive to client requests even in the case of a single region outage.
+- High-scale requirements can be met by horizontally scaling out apps, with multiple app deployments being made within a single region and across regions to handle extreme load requirements.
+- The apps must be highly available and responsive to client requests even in single-region outages.
 
 ## Next steps
 
