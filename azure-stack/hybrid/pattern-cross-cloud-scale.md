@@ -55,7 +55,7 @@ An environment for hosting your build pipeline.
 
 #### App resources
 
-The app resources need to be able to scale in and scale out, like VM ScaleSets and Containers.
+The app resources need to be able to scale in and scale out, like virtual machine scale sets and Containers.
 
 #### Custom domain name
 
@@ -73,7 +73,7 @@ An environment for hosting your build pipeline.
 
 #### App resources
 
-The app resources need the ability to scale in and scale out, such as VM ScaleSets and Containers.
+The app resources need the ability to scale in and scale out, like virtual machine scale sets and Containers.
 
 #### Custom domain name
 
