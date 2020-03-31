@@ -1,5 +1,5 @@
 ---
-title: The DevOps pattern
+title: The DevOps pattern in Azure Stack Hub
 description: Learn about the DevOps pattern so you can ensure consistency across deployments in Azure and Azure Stack Hub.
 author: BryanLa
 ms.topic: article
