@@ -4,7 +4,7 @@ description: Learn about known issues in Azure Stack Hub releases.
 author: sethmanheim
 
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 03/20/2020
 ms.author: sethm
 ms.reviewer: prchint
 ms.lastreviewed: 03/18/2020
@@ -114,9 +114,9 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 ### NVv4 VM size on portal
 
-- Applicable: This issue applies to 2002 and beyond
-- Cause: When going through the VM creation experience you will see the VM size: NV4as_v4 . Customers who have hardware required for the AMD Mi25 based Azure Stack Hub GPU preview will be able to have a successful VM deployment. All other customers will have a failed VM deployment with this VM size.
-- Remediation: By design in preparation for the Azure Stack Hub GPU Preview.
+- Applicable: This issue applies to 2002 and later.
+- Cause: When going through the VM creation experience, you will see the VM size: NV4as_v4. Customers who have the hardware required for the AMD Mi25-based Azure Stack Hub GPU preview are able to have a successful VM deployment. All other customers will have a failed VM deployment with this VM size.
+- Remediation: By design in preparation for the Azure Stack Hub GPU preview.
 
 ### VM boot diagnostics
 
@@ -139,6 +139,11 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 - Applicable: This issue applies to all supported releases.
 - Cause: Creating VMs in an availability set of 3 fault domains and creating a virtual machine scale set instance fails with a **FabricVmPlacementErrorUnsupportedFaultDomainSize** error during the update process on a 4-node Azure Stack Hub environment.
 - Remediation: You can create single VMs in an availability set with 2 fault domains successfully. However, scale set instance creation is still not available during the update process on a 4-node Azure Stack Hub deployment.
+
+### SQL VM provision will be failed in ASDK
+- Applicable: This issue applies to ASDK 2002 only. 
+- Cause: When creating a new SQL VM in ASDK 2002, you may receive an error message **"Extension with publisher 'Microsoft.SqlServer.Management', type 'SqlIaaSAgent', and type handler version '2.0' could not be found in the extension repository."** There is no 'SqlIaaSAgent' 2.0 in Azure Stack Hub. 
+
 
 ## Resource Providers
 
