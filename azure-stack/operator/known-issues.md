@@ -112,6 +112,12 @@ For known Azure Stack Hub update issues please see [Troubleshooting Updates in A
 
 ## Compute
 
+### VM Overview missing Computer Name
+
+- Applicable: This issue applies to 2002 and later.
+- Cause: When viewing details of the VM through the Overview blade, the Computer Name shows as "(not available)".
+- Remediation: Check the properties menu under settings.
+
 ### NVv4 VM size on portal
 
 - Applicable: This issue applies to 2002 and later.
